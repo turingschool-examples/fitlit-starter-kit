@@ -11,5 +11,6 @@ class User {
     // Return a user’s first name only
   }
 
-
 }
+
+module.exports = User;

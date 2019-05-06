@@ -20,5 +20,17 @@ describe('User', function() {
     expect(user).to.be.an.instanceof(User);
   });
 
+  it('should have properties', function() {
+    const user = new User({
+      "id": 1,
+      "name": "Nyasia Weber",
+      "address": "270 August Meadows, Maribelside SD 36129",
+      "email": "Jordane_Schultz@yahoo.com",
+      "strideLength": 4.7,
+      "dailyStepGoal": 8000
+    });
+    expect(user.userData.id).to.eql(1);
+  });
+
 
 });

@@ -1,4 +1,4 @@
-[
+const hydrationData = [
   {
     "userID": 1,
     "hydrationData": [
@@ -20250,3 +20250,5 @@
     ]
   }
 ]
+
+module.exports = hydrationData;

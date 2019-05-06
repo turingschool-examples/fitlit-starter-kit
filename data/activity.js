@@ -1,4 +1,4 @@
-[
+const activityData = [
   {
     "userID": 1,
     "activityData": [
@@ -30250,3 +30250,5 @@
     ]
   }
 ]
+
+module.exports = activityData;

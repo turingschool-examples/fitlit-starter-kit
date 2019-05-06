@@ -1,4 +1,4 @@
-[
+const userData = [
   {
     "id": 1,
     "name": "Nyasia Weber",
@@ -400,3 +400,5 @@
     "dailyStepGoal": 7000
   }
 ]
+
+module.exports = userData;

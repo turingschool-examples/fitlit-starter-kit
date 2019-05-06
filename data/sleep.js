@@ -1,4 +1,4 @@
-[
+const sleepData = [
   {
     "userID": 1,
     "sleepData": [
@@ -25250,3 +25250,5 @@
     ]
   }
 ]
+
+module.exports = sleepData;

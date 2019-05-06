@@ -14,6 +14,7 @@
 }
 
 .headline {
+  color: #F97B7C;
   font-size: 48px;
   font-weight: bold 700;
   margin-left: 20px;
@@ -21,6 +22,7 @@
 }
 
 body {
+  background-color: #0F0C2B;
   display: flex;
   font-family: 'Ubuntu', sans-serif;
   flex-direction: column;
@@ -34,6 +36,7 @@ main {
 }
 
 h3 {
+  color: #FEC869;
   font-size: 24px;
   text-align: center;
 }

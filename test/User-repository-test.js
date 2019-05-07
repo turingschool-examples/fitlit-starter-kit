@@ -6,6 +6,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const UserRepository = require('../src/User-repository');
+const usersTestData = require('../data/users-test-data')
 
 describe('UserRepository', function() {
 
@@ -13,6 +14,23 @@ describe('UserRepository', function() {
     const userRepository = new UserRepository();
     expect(UserRepository).to.be.a('function');
   });
+
+  it('should be an instance of userRepository', function() {
+    const userRepository = new UserRepository();
+    expect(userRepository).to.be.an.instanceof(UserRepository);
+  });
+
+  it('should have be connected to test data file', function() {
+    const userRepository = new UserRepository('filepathway');
+    expect(usersTestData[0].id).to.eql(1);
+  });
+
+  it('should have a method that returns a users data from their id', function() {
+    const userRepository = new UserRepository(usersTestData);
+    expect(userRepository.returnData(1)).to.eql(usersTestData[0]);
+  });
+
+
 
 
 

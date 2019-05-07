@@ -25,4 +25,9 @@ describe('UserRepository', function() {
 		const userRepository2 = new UserRepository('../data/proxy-activity');
 		expect(userRepository2.returnUserData(2).activityData[1].flightsOfStairs).to.eql(28);
 	})
+
+	it('Should calculate and return the average step goal for all users', function() {
+		const userRepository = new UserRepository('../data/proxy-users');
+		expect(userRepository.calculateAvgStepGoal()).to.equal(7667);
+	})
 })

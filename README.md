@@ -14,6 +14,12 @@ The details of this project are outline in [this project spec](http://frontend.t
 
 There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you have run `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
 
+## Linting Your Code
+
+Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but the linter is still running successfully.
+
+Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory.
+
 ## Data Model
 
 **Users**

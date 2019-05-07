@@ -54,9 +54,9 @@ describe('User', function() {
     expect(user.dailyStepGoal).to.equal(userData.dailyStepGoal);
   })
 
-  // it ('should return a user first name', function() {
-  //   expect(user.id).to.equal(userData.id);
-  // })
+  it ('should return a user first name', function() {
+    expect(user.returnFirstName()).to.equal('Nyasia');
+  })
 
 });
 

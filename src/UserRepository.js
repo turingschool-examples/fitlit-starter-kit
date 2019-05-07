@@ -6,7 +6,7 @@ class UserRepository {
     this.dataFilePath = dataFilePath || '';
   }
   getUserData(id) {
-    return this.dataFilePath.includes(id)
+    return this.dataFilePath.filter(user => user.id === id)
   }
 }
 

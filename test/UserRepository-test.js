@@ -14,5 +14,14 @@ describe('UserRepository', function() {
     const userRepository = new UserRepository();
     expect(userRepository).to.be.an.instanceof(UserRepository);
   });
- 
+  it('should return data file path', function() {
+    const userRepository = new UserRepository('../data/usersSub.js');
+    expect(userRepository.dataFilePath).to.equal('../data/usersSub.js');
+  });
+  it('should return user data given a user ID', function() {
+    const userRepository = new UserRepository();
+    expect(userRepository.returnUserData(2)).to.equal('Shayne Swift');
+  });
+
+  )
 })

@@ -30,7 +30,10 @@ describe('UserRepository', function() {
     expect(userRepository.returnData(1)).to.eql(usersTestData[0]);
   });
 
-
+  it('it should have a method that shows average daily step goal of all users', function () {
+    const userRepository = new UserRepository(usersTestData);
+    expect(userRepository.aveDailySteps()).to.eql(8400);
+  });
 
 
 

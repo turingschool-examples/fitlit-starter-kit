@@ -4,12 +4,11 @@ const User = require('../src/User');
 class UserRepository {
 	constructor(dataFilepath) {
 		this.dataFilepath = dataFilepath;
-		// use the file path to determine which data set we're using
+		this.path = require(this.dataFilepath);
 	}
 
 	returnUserData(userId) {
-		// should use id to find correct user object in userData
-		// instantiate a new User with that user object
+		return this.path.find(user => user.userID === userId);
 	}
 
 	calculateAvgStepGoal() {
@@ -27,8 +26,8 @@ class UserRepository {
 	}
 
 	runActivityMethod(dataFilepath) {
-		const newActivity = instantiateNewThing(dataFilePath);
-		newActivity.activityMethod();
+		//const newActivity = instantiateNewThing(dataFilePath);
+		//newActivity.activityMethod();
 	}
 
 

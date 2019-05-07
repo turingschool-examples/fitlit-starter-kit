@@ -12,6 +12,10 @@ class UserRepository {
       return totalSteps += (singleUserSteps.dailyStepGoal / this.filepathway.length);
     }, 0);
   }
+
+  findMostCommonState() {
+    
+  }
 }
 
 module.exports = UserRepository;

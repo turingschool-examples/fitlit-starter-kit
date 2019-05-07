@@ -35,6 +35,11 @@ describe('UserRepository', function() {
     expect(userRepository.aveDailySteps()).to.eql(8400);
   });
 
+  it('it should have a method that shows most common state of users', function () {
+    const userRepository = new UserRepository(usersTestData);
+    expect(userRepository.findMostCommonState()).to.eql('AR');
+  });
+
 
 
 });

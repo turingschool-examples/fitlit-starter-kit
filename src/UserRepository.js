@@ -2,8 +2,14 @@ class UserRepository {
   constructor (dataFilePath) {
     this.dataFilePath = dataFilePath
   }
-  returnUserData() {
- 
+  returnUserData(userID) {
+    return this.userData.name;
+  }
+  averageStepGoal() {
+
+  }
+  mostCommonState(){
+
   }
 }
 

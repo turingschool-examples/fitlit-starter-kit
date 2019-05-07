@@ -28,6 +28,11 @@ describe('UserRepository', function() {
 
 	it('Should calculate and return the average step goal for all users', function() {
 		const userRepository = new UserRepository('../data/proxy-users');
-		expect(userRepository.calculateAvgStepGoal()).to.equal(7667);
+		expect(userRepository.calculateAvgStepGoal()).to.equal(7600);
+	})
+
+	it('Should calculate and return the mode of the user\'s home states', function() {
+		const userRepository = new UserRepository('../data/proxy-users');
+		expect(userRepository.calculateModeState()).to.equal('CO');
 	})
 })

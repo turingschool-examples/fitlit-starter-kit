@@ -18,7 +18,17 @@ class UserRepository {
 	}
 
 	calculateModeState() {
-		// should iterate through every object and find most common state
+		let stateCount = {};
+		this.path.forEach(el => {
+			const state = el.address.split(' ')[el.address.split(' ').length - 2]
+			if (stateCount[state] > 0) {
+				stateCount[state]++;
+			} else {
+				stateCount[state] = 1;
+			}
+		})
+		
+		return Object.keys(stateCount).find(el => stateCount[el] === Math.max(...Object.values(stateCount)));
 	}
 
 	instantiateNewThing(dataFilePath) {

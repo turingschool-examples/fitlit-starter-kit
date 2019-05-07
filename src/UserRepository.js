@@ -1,5 +1,5 @@
 // const User = require('../src/User')
-const userData = require('../ data / users')
+const userData = require('../data/users')
 
 class UserRepository {
   constructor(dataFilePath) {
@@ -7,6 +7,14 @@ class UserRepository {
   }
   getUserData(id) {
     return this.dataFilePath.filter(user => user.id === id)
+  }
+
+  averageSteps() {
+
+  }
+
+  mostStates() {
+    
   }
 }
 

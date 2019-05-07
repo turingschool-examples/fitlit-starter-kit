@@ -30,6 +30,8 @@ describe('User', function() {
       "dailyStepGoal": 8000
     });
     expect(user.userData.id).to.eql(1);
+    expect(user.userData.name).to.eql('Nyasia Weber');
+    expect(user.userData.strideLength).to.eql(4.7);
   });
 
 

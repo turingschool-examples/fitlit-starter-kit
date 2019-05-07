@@ -1,27 +1,45 @@
-<html>
-  <head>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Activity Tracker | Emily Dittmer & Andreea Hanson FEE 1903</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,400,600,800" rel="stylesheet">
+</head>
   <body>
     <header>
-      <h1> Welcome to Activity Tracker, <span>${Name}</span>!</h1>
+      <h1>Welcome to Activity Tracker, <span>${Name}</span>!</h1>
       <!-- <input>Date -->
     </header>
-    <main>
       <aside>
         <!--Button-->
       </aside>
-      <article>
-        <h2>Goals</h2>
-        <h3>Step Count: <span>#</span></h3>
+    <main>
+        <article class="main-top-left-date-card">
+        <p class="main-top-date">Date</p>
+        <form>
+          <input type="Date" name="date"></input>
+        </form>
+<!--         <button>BUTTON</button> -->
       </article>
       <article>
         <h2>Hydration</h2>
         <h3>Number of Ounces: <span>#</span></h3>
       </article>
       <article>
+        <h2>Goals</h2>
+        <h3>Step Count: <span>#</span></h3>
+      </article>
+      <article>
         <h2>Sleep</h2>
         <h3>Hours of Sleep: <span>#</span></h3>
         <h3>Sleep Quality:<span>#</span></h3>
+      </article>
+        <article>
+        <h2>Motto</h2>
+        <h3>Do your thing!</h3>
       </article>
       <article>
         <h2>Activity</h2>

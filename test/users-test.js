@@ -1,6 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const userData = require('../data/sample-users');
+const User = require('../src/user')
 
 describe('User', function() {
   
@@ -27,7 +28,7 @@ describe('User', function() {
       "dailyStepGoal": 8000
     }
     user = new User(userData);
-  }
+  });
 
   it ('should store user id', function() {
     expect(user.id).to.equal(userData.id);
@@ -61,8 +62,3 @@ describe('User', function() {
 
 
 
-
-
-
-
-})

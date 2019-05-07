@@ -24,8 +24,6 @@ describe('User', function() {
       "dailyStepGoal": 8000
     });
     expect(user.userFirstName()).to.equal('Nyasia');
-
-    
   });
  
 })

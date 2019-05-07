@@ -1,10 +1,13 @@
 class UserRepository {
   constructor (dataFilePath) {
     this.data = require(dataFilePath);
-    this.mostCommonState()
   }
+ 
   returnUserData(userID) {
-    return this.data.name;
+    var found = this.data.find(function(element) {
+      return element.id === userID;
+    }); 
+    return found;
   }
 
   averageStepGoal() {

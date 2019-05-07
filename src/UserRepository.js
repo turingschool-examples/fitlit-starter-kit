@@ -12,7 +12,9 @@ class UserRepository {
 	}
 
 	calculateAvgStepGoal() {
-		// should iterate through every object and find average step goal
+		return Math.ceil(this.path.reduce((sum, num) => {
+			return sum + num.dailyStepGoal;
+		}, 0) / this.path.length);
 	}
 
 	calculateModeState() {

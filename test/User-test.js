@@ -3,7 +3,8 @@ const expect = chai.expect;
 const assert = chai.assert;
 
 const User = require('../src/User');
-const data = require('../data/users-test-data');
+const UserRepo = require('../src/UserRepo')
+const data = require('../data/users-test-data')
 
 describe('User', function () {
   it('should be a function', function () {
@@ -15,13 +16,9 @@ describe('User', function () {
     expect(user).to.be.a.instanceOf(User)
   })
 
-  it('should take in user data', function () {
-    const user = new User(data)
-    expect(user.data).to.equal(data)
-  })
-
   it('should return the first name of the user called', function () {
-    const user = new User(data)
+    const userRepo = new UserRepo(data)
+    const user = new User(userRepo.usersData)
     
     expect(user.returnUserFirstName(3)).to.equal('Elaina')
   })

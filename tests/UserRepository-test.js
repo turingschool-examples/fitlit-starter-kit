@@ -9,8 +9,20 @@ describe('UserRepository', function() {
 		expect(UserRepository).to.be.a('function');
 	});
 
-	it('Should be an instance of the User class', function() {
-		const userRepository = new UserRepository();
+	it('Should be an instance of the userRepository class', function() {
+		const userRepository = new UserRepository('../data/hydration');
 		expect(userRepository).to.be.an.instanceOf(UserRepository);
 	});
+
+	it('Should reassign a new path variable using the dataFilepath', function() {
+		const userRepository = new UserRepository('../data/hydration');
+		expect(userRepository.path[0].hydrationData.length).to.eql(100);
+	})
+
+	it('Should return user data object based on userId and data file', function() {
+		const userRepository1 = new UserRepository('../data/hydration');
+		expect(userRepository1	.returnUserData(1).hydrationData[0].numOunces).to.eql(64);
+		const userRepository2 = new UserRepository('../data/activity');
+		expect(userRepository2.returnUserData(2).activityData[1].flightsOfStairs).to.eql(28);
+	})
 })

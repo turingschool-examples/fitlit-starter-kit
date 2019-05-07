@@ -210,3 +210,9 @@ const testActivityData = [
     ]
   }
 ]
+
+module.exports = {
+  testUserData, testHydrationData, testSleepData, testActivityData
+};
+
+

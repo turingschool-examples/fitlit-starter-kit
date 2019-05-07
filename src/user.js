@@ -1,14 +1,10 @@
 class User {
-  constructor(id, name, address, email, dailyStepGoal) {
-    this.id = id;
-    this.name = name;
-    this.address = address;
-    this.email = email;
-    this.dailyStepGoal = dailyStepGoal;
+  constructor(userData) {
+    this.userData = userData;
   }
-
   getFirstName() {
     // Return a user’s first name only
+    return this.userData.name.split(' ')[0];
   }
 
 }

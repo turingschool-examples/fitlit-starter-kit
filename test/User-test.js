@@ -43,8 +43,7 @@ describe('User', function() {
       "strideLength": 4.7,
       "dailyStepGoal": 8000
     });
-    expect(user.returnFirstName()).to.eql('Nyasia')
+    expect(user.returnFirstName()).to.eql('Nyasia');
+  });
 
-
-  
 });

@@ -14,10 +14,19 @@ describe('UserRepository', function() {
     const userRepository = new UserRepository('../data/usersSub.js');
     expect(userRepository).to.be.an.instanceof(UserRepository);
   });
-  it('should return data file path', function() {
+
+
+  it('should have a averageStepGoal to return the average of step goal', function() {
     const userRepository = new UserRepository('../data/usersSub.js');
-    expect(userRepository.dataFilePath).to.equal('../data/usersSub.js');
+    expect(userRepository.averageStepGoal()).to.equal(7750);
   });
+
+  it('should have a mostCommonState to return the most common state', function() {
+    const userRepository = new UserRepository('../data/usersSub.js');
+    expect(userRepository.mostCommonState()).to.equal('SD');
+  });
+
+})
   it('should return user data given a user ID', function() {
     const userRepository = new UserRepository('../data/usersSub.js');
     expect(userRepository.returnUserData(2)).to.deep.equal( {
@@ -30,3 +39,4 @@ describe('UserRepository', function() {
     });
 });
 });
+

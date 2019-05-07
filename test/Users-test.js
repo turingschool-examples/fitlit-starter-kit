@@ -6,7 +6,7 @@ const User = require('../src/User');
 describe('User', function() {
 
   it('should be a function', function() {
-    const user = new User();
+    // const user = new User();
     expect(User).to.be.a('function');
   });
 

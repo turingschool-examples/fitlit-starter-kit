@@ -1,10 +1,10 @@
-const data = require('../data/users')
+// const data = require('../data/users')
 
 class User {
   constructor(data, index) {
     this.userData = data[index];
   }
-  returnUserFirstName(){
+  returnUserFirstName() {
     return this.userData.name.split(' ').shift()
   }
 }

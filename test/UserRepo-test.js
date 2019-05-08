@@ -34,7 +34,10 @@ describe('UserRepo', function () {
     expect(userRepo.averageStepGoal()).to.equal(7833)
   })
 
-  it('should return which stae has the most users', function () {
-    
+  it('should return which state has the most users', function () {
+    const userRepo = new UserRepo(data)
+
+    expect(userRepo.stateWithMostUsers()).to.be.a('string')
+    expect(userRepo.stateWithMostUsers()).to.equal('AK')
   })
 })

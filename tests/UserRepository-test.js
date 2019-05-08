@@ -21,7 +21,7 @@ describe('UserRepository', function() {
 
 	it('Should return user data object based on userId and data file', function() {
 		const userRepository1 = new UserRepository('../data/proxy-hydration');
-		expect(userRepository1	.returnUserData(1).hydrationData[0].numOunces).to.eql(64);
+		expect(userRepository1.returnUserData(1).hydrationData[0].numOunces).to.eql(64);
 		const userRepository2 = new UserRepository('../data/proxy-activity');
 		expect(userRepository2.returnUserData(2).activityData[1].flightsOfStairs).to.eql(28);
 	})

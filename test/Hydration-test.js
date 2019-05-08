@@ -17,7 +17,6 @@ describe('Hydration', function() {
 
   it('should have be connected to test data file', function() {
     const hydration = new Hydration(hydrationTestData);
-    console.log(hydrationTestData)
     expect(hydrationTestData[0].userID).to.eql(1);
   });
 });

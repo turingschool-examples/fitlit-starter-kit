@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js"></script>
   </head>
   <body>
     <header>
@@ -11,21 +12,17 @@
     </header>
     <main>
       <section>
-        <h2>Welcome, <span>First Name</span></h2>
+        <h2>Welcome, <span class="h2--first-name"></span></h2>
         <ul>
-          <li>Name: <span></span></li>
-          <li>Address: <span></span></li>
-          <li>Email: <span></span></li>
-          <li>Stride Length: <span></span></li>
-          <li>Daily Step Goal: <span></span></li>
+          <li class="li--name">Name: <span></span></li>
+          <li class="li--address">Address: <span></span></li>
+          <li class="li--email">Email: <span></span></li>
+          <li class="li--stride-length">Stride Length: <span></span></li>
+          <li class="li--daily-step-goal">Daily Step Goal: <span></span></li>
         </ul>
-        <p></p>
+        <p class="step-goal-message"></p>
       </section>
     </main>
-    <script type="text/javascript" src="../data/proxy-activity.js"></script>
-    <script type="text/javascript" src="../data/proxy-hydration.js"></script>
-    <script type="text/javascript" src="../data/proxy-sleep.js"></script>
-    <script type="text/javascript" src="../data/proxy-users.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>

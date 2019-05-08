@@ -20251,4 +20251,6 @@ const hydrationData = [
   }
 ]
 
-module.exports = hydrationData;
+if (typeof module !== 'undefined') {
+  module.exports = hydrationData;
+}

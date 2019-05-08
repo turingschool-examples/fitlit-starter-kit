@@ -400,5 +400,6 @@ const userData = [
     "dailyStepGoal": 7000
   }
 ]
-
-module.exports = userData;
+if (typeof module !== 'undefined') {
+  module.exports = userData;
+}

@@ -1,20 +1,19 @@
 class User {
-	constructor(id, name, address, email, strideLength, dailyStepGoal) {
-		this.id = id;
-		this.name = name;
-		this.address = address;
-		this.email = email;
-		this.strideLength = strideLength;
-		this.dailyStepGoal = dailyStepGoal;
+	constructor(userData) {
+		this.userData = userData;
+		this.id = userData.id;
+		this.name = userData.name;
+		this.address = userData.address;
+		this.email = userData.email;
+		this.strideLength = userData.strideLength;
+		this.dailyStepGoal = userData.dailyStepGoal;
 	}
 
 	returnFirstName() {
-		// uses userData
-
+		return this.name.split(' ')[0];
 	}
 }
 
-if (typeof module !== undefined) {
-	var users = require('../data/users');
+if (typeof module !== 'undefined') {
 	module.exports = User;
 }

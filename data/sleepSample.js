@@ -36,6 +36,41 @@ const sleepData = [
         "date": "08/05/2019",
         "hoursSlept": 6.6,
         "sleepQuality": 4.5
+      },
+      {
+        "date": "09/05/2019",
+        "hoursSlept": 10.3,
+        "sleepQuality": 4
+      },
+      {
+        "date": "10/05/2019",
+        "hoursSlept": 10.2,
+        "sleepQuality": 3.2
+      },
+      {
+        "date": "11/05/2019",
+        "hoursSlept": 10.2,
+        "sleepQuality": 3.2
+      },
+      {
+        "date": "12/05/2019",
+        "hoursSlept": 5.3,
+        "sleepQuality": 4.9
+      },
+      {
+        "date": "13/05/2019",
+        "hoursSlept": 8,
+        "sleepQuality": 4.8
+      },
+      {
+        "date": "14/05/2019",
+        "hoursSlept": 10.7,
+        "sleepQuality": 4.8
+      },
+      {
+        "date": "15/05/2019",
+        "hoursSlept": 6.3,
+        "sleepQuality": 2.2
       }
     ]
     },

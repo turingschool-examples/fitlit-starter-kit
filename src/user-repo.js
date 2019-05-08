@@ -33,7 +33,8 @@ class UserRepository {
       return acc;
    
 }, {})
- return Object.entries(state).sort().shift()[0]
+ return Object.entries(state).sort().shift()[0] //get an array of the key:value pairs
+                                                //sort the array and unshift the largest
 }
 
 

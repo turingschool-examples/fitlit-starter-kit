@@ -2,9 +2,14 @@ const chai = require('chai')
 const expect = chai.expect;
 const assert = chai.assert;
 
-const UserRepo = require('../src/UserRepo');
-// const User = require('../src/User')
-const data = require('../data/users-test-data')
+if(typeof module !== 'undefined') {
+  var UserRepo = require('../src/UserRepo');
+  // var User = require('../src/User'
+  var data = require('../data/users-test-data')
+}
+// const UserRepo = require('../src/UserRepo');
+// // const User = require('../src/User')
+// const data = require('../data/users-test-data')
 
 describe('UserRepo', function () {
   let userRepo;

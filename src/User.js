@@ -1,4 +1,3 @@
-
 class User {
   constructor(data, index) {
     this.userData = data[index];
@@ -8,6 +7,6 @@ class User {
   }
 }
 
-if (typeof module !== undefined) {
+if (typeof module !== 'undefined') {
   module.exports = User;
 }

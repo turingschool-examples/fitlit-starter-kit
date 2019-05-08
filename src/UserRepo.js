@@ -1,3 +1,6 @@
+// let data = ('../')
+// import { data } from 'module'; // or './module'
+// let data = '../data/users'
 class UserRepo {
   constructor(data) {
     this.usersData = data;
@@ -26,6 +29,6 @@ class UserRepo {
   }
 }
 
-if (typeof module !== undefined) {
+if (typeof module !== 'undefined') {
   module.exports = UserRepo;
 }

@@ -30251,4 +30251,7 @@ const activityData = [
   }
 ]
 
-module.exports = activityData;
+
+if (typeof module !== 'undefined') {
+  module.exports = activityData;
+}

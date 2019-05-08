@@ -1,4 +1,3 @@
-const data = require('../data/users')
 
 class User {
   constructor(data, index) {
@@ -9,4 +8,6 @@ class User {
   }
 }
 
-module.exports = User;
+if (typeof module !== undefined) {
+  module.exports = User;
+}

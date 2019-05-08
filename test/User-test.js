@@ -12,14 +12,15 @@ describe('User', function () {
   });
 
   it('should be an instance of User', function () {
-    const user = new User()
+    const userRepo = new UserRepo(data)
+    const user = new User(userRepo.usersData, 1)
     expect(user).to.be.a.instanceOf(User)
   })
 
   it('should return the first name of the user called', function () {
     const userRepo = new UserRepo(data)
-    const user = new User(userRepo.usersData)
-    
-    expect(user.returnUserFirstName(3)).to.equal('Elaina')
+    const user = new User(userRepo.usersData, 1)
+    expect(user.returnUserFirstName()).to.equal('Shayne')
   })
+
 })

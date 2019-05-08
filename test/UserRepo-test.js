@@ -20,6 +20,24 @@ describe('UserRepo', function () {
     const userRepo = new UserRepo(data)
     expect(userRepo.usersData).to.equal(data)
     expect(userRepo.usersData[3]).to.equal(data[3])
+    })
+
+  it('should be able to return a user object by ID', function () {
+    const userRepo = new UserRepo(data)
+    expect(userRepo.returnUserData(3)).to.equal(data[2])
   })
 
+  it('should return the average step goal for all users', function () {
+    const userRepo = new UserRepo(data)
+
+    expect(userRepo.averageStepGoal()).to.be.a('number')
+    expect(userRepo.averageStepGoal()).to.equal(7833)
+  })
+
+  it('should return which state has the most users', function () {
+    const userRepo = new UserRepo(data)
+
+    expect(userRepo.stateWithMostUsers()).to.be.a('string')
+    expect(userRepo.stateWithMostUsers()).to.equal('AK')
+  })
 })

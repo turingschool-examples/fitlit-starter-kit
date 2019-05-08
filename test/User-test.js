@@ -18,7 +18,7 @@ describe('User', function () {
   })
 
   it('should return the first name of the user called', function () {
-    const userRepo = new UserRepo(data)
+    const userRepo = new UserRepo()
     const user = new User(userRepo.usersData, 1)
     expect(user.returnUserFirstName()).to.equal('Shayne')
   })

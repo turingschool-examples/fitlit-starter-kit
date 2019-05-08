@@ -3,7 +3,7 @@ const expect = chai.expect;
 const assert = chai.assert;
 
 const UserRepo = require('../src/UserRepo');
-const User = require('../src/User')
+// const User = require('../src/User')
 const data = require('../data/users-test-data')
 
 describe('UserRepo', function () {
@@ -27,7 +27,7 @@ describe('UserRepo', function () {
   })
 
   it('should be able to return a user object by ID', function () {
-    expect(userRepo.returnUserData(3)).to.equal(data[2])
+    expect(userRepo.returnUserData(3)).to.equal(userRepo.usersData[2])
   })
 
   it('should return the average step goal for all users', function () {

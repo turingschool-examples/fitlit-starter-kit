@@ -17,13 +17,18 @@ class UserRepo {
       .split(' ')
       .filter(strings => strings.length === 2)
 
-      return justStates.sort((a, b) =>
-      justStates.filter(state => state === a).length - justStates.filter(state => state === b).length)
+    let oneState = justStates.sort((a, b) => justStates
+      .filter(state => state === a).length - justStates
+      .filter(state => state === b).length)
       .pop()
+
+      return oneState
   }
   // compareID() {
   //   console.log(this.returnUserData(1).id)
   // }
 }
 
-module.exports = UserRepo;
+if (typeof module !== undefined) {
+  module.exports = UserRepo;
+}

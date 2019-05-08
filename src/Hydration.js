@@ -9,12 +9,11 @@ class Hydration {
   getAverageFluidConsumption(userID) {
     return dataFile.reduce((total, fluid) => { 
       console.log(fluid.hydrationData[userID].numOunces)
-      return total + fluid.hydrationData[userID].numOunces},0)/10
-      //dataFile.length
+      return total + fluid.hydrationData[userID].numOunces},0)/dataFile.length
   }
 
-  getDailyFluidConsumption() {
-
+  getDailyFluidConsumption(userID) {
+    
   }
   getWeekFluidConsumption() {
 

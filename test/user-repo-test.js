@@ -35,12 +35,14 @@ describe('User Repository', function() {
   });
 
     it('should be able to access the user\'s data based on id', function() {
-  		expect(userRepository.findUserData(1)).to.equal(userData[0]);
+  		expect(userRepository.findUserData(2)).to.equal(userData[1]);
   });
 
+  it('should be able to return average step goal for all users', function() {
+    expect(userRepository.averageStepGoal()).to.equal(7667);
+});
+
  })
-
-
 
 //method to take in userData.user.id
 //compare to dataset ids

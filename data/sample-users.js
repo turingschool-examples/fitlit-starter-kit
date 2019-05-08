@@ -26,4 +26,6 @@ const sampleUsers = [
 
 ]
 
-module.exports = sampleUsers;
+if(typeof module !== 'undefined') {
+  module.exports = sampleUsers;
+}

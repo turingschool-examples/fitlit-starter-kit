@@ -17,20 +17,20 @@ class UserRepository {
 
   mostStates() {
     let states = this.dataFilePath.map(user => user.address.split(' ').reverse()[1]);
-    let statesObj = states.reduce(function(acc,curr){
-      if(acc[curr]){
+    let statesObj = states.reduce(function(acc,curr) {
+      if (acc[curr]) {
         acc[curr] += 1
       } else {
-      acc[curr] = 1;
+        acc[curr] = 1;
       }
       return acc
     }, {})
     let stateVals = Object.values(statesObj)
     let result = Object.keys(statesObj).filter(el => statesObj[el] === Math.max(...stateVals))
-    return result;
+    return result[0];
   }
 }
 
-if(typeof module !== undefined){
-module.exports = UserRepository;
+if (typeof module === undefined) {
+  module.exports = UserRepository;
 }

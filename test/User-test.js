@@ -29,9 +29,9 @@ describe('User', function() {
       "strideLength": 4.7,
       "dailyStepGoal": 8000
     });
-    expect(user.userData.id).to.eql(1);
-    expect(user.userData.name).to.eql('Nyasia Weber');
-    expect(user.userData.strideLength).to.eql(4.7);
+    expect(user.filepathway.id).to.eql(1);
+    expect(user.filepathway.name).to.eql('Nyasia Weber');
+    expect(user.filepathway.strideLength).to.eql(4.7);
   });
 
   it('should be able to return a user\'s first name only', function() {

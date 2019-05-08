@@ -9,6 +9,7 @@ class UserRepository {
   }
 
 	findUserData(userId) {
+
     let currentUser = this.userData.find(function(element){
     return element.id === userId 
     })
@@ -20,7 +21,6 @@ class UserRepository {
     let goal = Math.ceil(goals.reduce((acc,curr)=> acc + curr,0)/goals.length);
     return goal;
   }
-
 
 
 };

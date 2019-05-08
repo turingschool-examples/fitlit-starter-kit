@@ -8,6 +8,14 @@ const userData = [
     "dailyStepGoal": 8000
   },
   {
+    "id": 2,
+    "name": "Shayne Swift",
+    "address": "747 Dickinson Gardens, South Helga AR 88484-2240",
+    "email": "Lawson74@yahoo.com",
+    "strideLength": 4.5,
+    "dailyStepGoal": 11000
+  },
+  {
     "id": 3,
     "name": "Cleo Lindgren",
     "address": "744 Josephine Parkway, Hellerside OH 17625",

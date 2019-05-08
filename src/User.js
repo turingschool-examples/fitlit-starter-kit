@@ -1,4 +1,4 @@
-const userData = require('../data/users')
+// const userFakeData = require('../data/mock-users')
 
 class User {
   constructor(userData) {

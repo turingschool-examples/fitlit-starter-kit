@@ -4,7 +4,7 @@ class User {
   constructor(data, index) {
     this.userData = data[index];
   }
-  returnUserFirstName(){
+  returnUserFirstName() {
     return this.userData.name.split(' ').shift()
   }
 }

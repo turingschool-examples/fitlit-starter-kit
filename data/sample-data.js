@@ -1,4 +1,4 @@
-const SampleData = [
+const sampleData = [
   {
     "userID": 1,
     "activityData": [
@@ -606,4 +606,7 @@ const SampleData = [
   }
 ];
 
-module.exports = SampleData;
+
+if(typeof module !== 'undefined') {
+  module.exports = sampleData;
+}

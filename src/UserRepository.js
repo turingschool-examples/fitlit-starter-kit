@@ -1,13 +1,7 @@
-const userData = require('../data/users.js')
-const User = require('./user.js')
-
 class UserRepository {
   constructor(dataFilepath) {
     this.dataFilepath = dataFilepath;
-    this.path = require(dataFilepath);
-
     this.userData = userData;
-    this.user = {};
   }
   getUserDataFromId(id) {
     return this.userData.find(user => user.id === id);
@@ -34,4 +28,7 @@ class UserRepository {
 };
 
 
-module.exports = UserRepository;
+
+if(typeof module !== 'undefined') {
+  module.exports = UserRepository;
+}

@@ -9,7 +9,8 @@ class UserRepository {
 	}
 
 	findUserData(userId) {
-
+		const user = new User(userData);
+		return user.userData.find(id => id.id === userId) ? userData.user : null;
 	}
   
 }

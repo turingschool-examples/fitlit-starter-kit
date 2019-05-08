@@ -1,1 +1,2 @@
-var 
+$('#user-identity')
+$('#user-fitness-info')

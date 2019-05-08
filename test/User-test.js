@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const User = require('../src/User');
-const users = require('../data/users');
+const userFakeData = require('../data/mock-users');
 
 describe('User', function() {
   
@@ -17,12 +17,12 @@ describe('User', function() {
   });
 
   it('should be able to get user by id', function() {
-    const user = new User(users[0]);
+    const user = new User(userFakeData[0]);
     expect(user.person.id).to.equal(1);
   });
 
   it('should be able to return the first name of a user', function() {
-    const user = new User(users[0]);
+    const user = new User(userFakeData[0]);
 
     expect(user.returnFirstName()).to.equal('Nyasia')
   });

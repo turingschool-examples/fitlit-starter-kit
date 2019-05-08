@@ -6,7 +6,7 @@ const UserRepository = require('../src/UserRepository');
 describe('UserRepository', function() {
 
   it('should be a function', function() {
-    const userRepository = new UserRepository('../data/usersSub.js');
+    // const userRepository = new UserRepository('../data/usersSub.js');
     expect(UserRepository).to.be.a('function');
   });
 
@@ -22,14 +22,13 @@ describe('UserRepository', function() {
   });
 
   it('should have a mostCommonState to return the most common state', function() {
-    const userRepository = new UserRepository('../data/usersSub.js');
-    expect(userRepository.mostCommonState()).to.equal('SD');
+    const userRepository = new UserRepository('../data/users.js');
+    expect(userRepository.mostCommonState()).to.equal('NM');
   });
 
-})
   it('should return user data given a user ID', function() {
     const userRepository = new UserRepository('../data/usersSub.js');
-    expect(userRepository.returnUserData(2)).to.deep.equal( {
+    expect(userRepository.returnUserData(2)).to.deep.equal({
       "id": 2,
       "name": "Shayne Swift",
       "address": "747 Dickinson Gardens, South Helga AR 88484-2240",
@@ -37,6 +36,6 @@ describe('UserRepository', function() {
       "strideLength": 4.5,
       "dailyStepGoal": 11000
     });
-});
+  });
 });
 

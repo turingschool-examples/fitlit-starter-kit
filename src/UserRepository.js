@@ -11,7 +11,7 @@ class UserRepository {
   }
 
   averageStepGoal() {
-    return this.data.reduce((total, crr) => { return total + crr.dailyStepGoal },0)/this.data.length
+    return this.data.reduce((total, crr) =>  total + crr.dailyStepGoal ,0)/this.data.length
   }
   mostCommonState(){
     var  states = this.data.map(el => el.address.split(" ").splice(-2,1)[0]);

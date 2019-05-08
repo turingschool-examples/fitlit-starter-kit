@@ -1,9 +1,9 @@
 if(typeof module !== 'undefined') {
 var chai = require('chai');
 var expect = chai.expect;
-var userData = require('../data/sample-users.js');
-var User = require('../src/user.js');
-var UserRepository = require('../src/user-repo.js');
+var userData = require('../data/sample-users');
+var User = require('../src/user');
+var UserRepository = require('../src/user-repo');
 }
 
 describe('User Repository', function() {
@@ -45,7 +45,7 @@ describe('User Repository', function() {
 });
 
 it('should be able to return most common user state', function() {
-  expect(userRepository.findMostCommonState()).to.equal('OH');
+  expect(userRepository.findMostCommonState()).to.equal('AK');
 });
 
  });

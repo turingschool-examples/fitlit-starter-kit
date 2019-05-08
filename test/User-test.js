@@ -2,13 +2,9 @@
 // create constructor within class
 // create id, name, address, email, strideLength, dailyStepGoal
 // create method to return only the first name
-// DONE
-
 const chai = require('chai');
 const expect = chai.expect;
 const User = require('../src/User');
-
-
 
 describe('User', function() {
 

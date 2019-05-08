@@ -21,3 +21,5 @@ const hydrationTestData = [
       ]
     }
   ]
+
+  module.exports = hydrationTestData;

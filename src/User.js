@@ -1,10 +1,10 @@
 class User {
-  constructor(userData) {
-    this.userData = userData
+  constructor(filepathway) {
+    this.filepathway = filepathway;
   }
 
   returnFirstName() {
-    return this.userData.name.split(' ')[0];
+    return this.filepathway.name.split(' ')[0];
   }
 }
 

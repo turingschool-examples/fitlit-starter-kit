@@ -1,6 +1,6 @@
 class Hydration {
-  constructor() {
-    
+  constructor(filepathway) {
+    this.filepathway = filepathway
   }
 }
 

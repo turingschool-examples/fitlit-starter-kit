@@ -38,6 +38,14 @@ const userDataSample = [
     "email": "Isadore42@gmail.com",
     "strideLength": 5.5,
     "dailyStepGoal": 11000
+  }, 
+    {
+    "id": 12,
+    "name": "Alanna Kerluke",
+    "address": "8350 Bailee Motorway, South Pascale AR 08695-4819",
+    "email": "Eldon15@yahoo.com",
+    "strideLength": 4.6,
+    "dailyStepGoal": 11000
   }];
 
   module.exports = userDataSample;

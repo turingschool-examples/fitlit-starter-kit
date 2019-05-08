@@ -1,6 +1,8 @@
-const chai = require('chai');
-const expect = chai.expect;
-const Sleep = require('../data/sleep');
+if(typeof module !== 'undefined') {
+var chai = require('chai');
+var expect = chai.expect;
+var Sleep = require('../data/sleep');
+}
 
 describe('Sleep', function() {
 	

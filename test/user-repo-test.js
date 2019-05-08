@@ -1,8 +1,10 @@
-const chai = require('chai');
-const expect = chai.expect;
-const userData = require('../data/sample-users.js');
-const User = require('../src/user.js');
-const UserRepository = require('../src/user-repo.js');
+if(typeof module !== 'undefined') {
+var chai = require('chai');
+var expect = chai.expect;
+var userData = require('../data/sample-users.js');
+var User = require('../src/user.js');
+var UserRepository = require('../src/user-repo.js');
+}
 
 describe('User Repository', function() {
   
@@ -46,10 +48,6 @@ it('should be able to return most common user state', function() {
   expect(userRepository.findMostCommonState()).to.equal('OH');
 });
 
- })
-
-//method to take in userData.user.id
-//compare to dataset ids
-//return remaining properties from user object
+ });
 
 

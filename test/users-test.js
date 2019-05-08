@@ -1,7 +1,9 @@
-const chai = require('chai');
-const expect = chai.expect;
-const userData = require('../data/sample-users');
-const User = require('../src/user')
+if(typeof module !== 'undefined') {
+var chai = require('chai');
+var expect = chai.expect;
+var userData = require('../data/sample-users');
+var User = require('../src/user')
+}
 
 describe('User', function() {
   

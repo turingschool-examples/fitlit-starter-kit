@@ -1,8 +1,11 @@
-const users = require('../data/users');
-
 class User {
-	constructor(userData) {
-		this.userData = userData;
+	constructor(id, name, address, email, strideLength, dailyStepGoal) {
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.email = email;
+		this.strideLength = strideLength;
+		this.dailyStepGoal = dailyStepGoal;
 	}
 
 	returnFirstName() {
@@ -11,4 +14,7 @@ class User {
 	}
 }
 
-module.exports = User;
+if (typeof module !== undefined) {
+	var users = require('../data/users');
+	module.exports = User;
+}

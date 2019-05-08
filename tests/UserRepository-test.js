@@ -10,20 +10,18 @@ describe('UserRepository', function() {
 	});
 
 	it('Should be an instance of the userRepository class', function() {
-		const userRepository = new UserRepository('../data/proxy-hydration');
+		const userRepository = new UserRepository('../data/proxy-users');
 		expect(userRepository).to.be.an.instanceOf(UserRepository);
 	});
 
-	it('Should reassign a new path variable using the dataFilepath', function() {
-		const userRepository = new UserRepository('../data/proxy-hydration');
-		expect(userRepository.path[0].hydrationData.length).to.eql(3);
+	it('Should instantiate users with the given file path', function() {
+		const userRepository = new UserRepository('../data/proxy-users');
+		expect(userRepository.instantiateUsers()[0].strideLength).to.eql(4.7);
 	})
 
 	it('Should return user data object based on userId and data file', function() {
-		const userRepository1 = new UserRepository('../data/proxy-hydration');
-		expect(userRepository1.returnUserData(1).hydrationData[0].numOunces).to.eql(64);
-		const userRepository2 = new UserRepository('../data/proxy-activity');
-		expect(userRepository2.returnUserData(2).activityData[1].flightsOfStairs).to.eql(28);
+		const userRepository = new UserRepository('../data/proxy-users');
+		expect(userRepository.returnUserData(5).name).to.eql("Cleo Lindgren");
 	})
 
 	it('Should calculate and return the average step goal for all users', function() {

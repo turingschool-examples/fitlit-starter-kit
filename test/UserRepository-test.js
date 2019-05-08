@@ -6,7 +6,6 @@ const UserRepository = require('../src/UserRepository');
 describe('UserRepository', function() {
 
   it('should be a function', function() {
-    // const userRepository = new UserRepository('../data/usersSub.js');
     expect(UserRepository).to.be.a('function');
   });
 
@@ -36,4 +35,4 @@ describe('UserRepository', function() {
       "dailyStepGoal": 11000
     });
 });
-
+});

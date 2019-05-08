@@ -32,8 +32,16 @@ let sleep
     expect(sleep.hoursSleptQualityInDate("08/05/2019")).to.equal(4.5);
   });
 
-  it('hoursSleptQualityInDate should return hours slept in one day', function() {
+  it('hoursSleptWeek should return hours slept of one week', function() {
     expect(sleep.hoursSleptWeek("08/05/2019")).to.eql([6.6, 10.3, 10.2, 10.2, 5.3, 8, 10.7]);
+  });
+
+  it('qualitySleptWeek should return sleeping quality of one week', function() {
+    expect(sleep.qualitySleptWeek("07/05/2019")).to.eql([4.8, 4.5, 4, 3.2, 3.2, 4.9, 4.8]);
+  });
+
+  it('averageSleepQualityAll should return average sleeping quality of all users', function() {
+    expect(sleep.averageSleepQualityAll()).to.eql(3.7);
   });
 
 });

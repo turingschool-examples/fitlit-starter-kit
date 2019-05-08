@@ -6,13 +6,14 @@
 const chai = require('chai');
 const expect = chai.expect;
 const UserRepository = require('../src/User-repository');
-const usersTestData = require('../data/users-test-data')
+const usersTestData = require('../data/users-test-data');
+const User = require('../src/User');
 
 describe('UserRepository', function() {
 
   let userRepository
   beforeEach(function() {
-    userRepository = new UserRepository(usersTestData);
+    userRepository = new UserRepository(usersTestData, 1);
   });
 
   it('should be a function', function() {
@@ -21,6 +22,10 @@ describe('UserRepository', function() {
 
   it('should be an instance of userRepository', function() {
     expect(userRepository).to.be.an.instanceof(UserRepository);
+  });
+
+  it('should be an instance of user', function() {
+    expect(userRepository.currentUser).to.be.an.instanceof(User);
   });
 
   it('should have be connected to test data file', function() {

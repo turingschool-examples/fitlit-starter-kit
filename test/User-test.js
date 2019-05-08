@@ -8,8 +8,6 @@ const chai = require('chai');
 const expect = chai.expect;
 const User = require('../src/User');
 
-
-
 describe('User', function() {
 
   let user
@@ -33,9 +31,9 @@ describe('User', function() {
   });
 
   it('should have properties', function() {
-    expect(user.filepathway.id).to.eql(1);
-    expect(user.filepathway.name).to.eql('Nyasia Weber');
-    expect(user.filepathway.strideLength).to.eql(4.7);
+    expect(user.currentUserData.id).to.eql(1);
+    expect(user.currentUserData.name).to.eql('Nyasia Weber');
+    expect(user.currentUserData.strideLength).to.eql(4.7);
   });
 
   it('should be able to return a user\'s first name only', function() {

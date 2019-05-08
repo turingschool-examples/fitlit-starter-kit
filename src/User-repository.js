@@ -1,6 +1,9 @@
+const User = require('../src/User');
+
 class UserRepository {
-  constructor(filepathway) {
+  constructor(filepathway, userId) {
     this.filepathway = filepathway;
+    this.currentUser = new User(this.returnData(userId));
   }
 
   returnData(userId) {

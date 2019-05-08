@@ -8,14 +8,19 @@ describe('User Repository', function() {
   
   
   it('should be a function', function() {
-    const userRepository = new UserRepository();
+    const userRepository = new UserRepository('../data/sample-users.js');
     expect(UserRepository).to.be.a('function');
   });
 
-  it('should be an instance of Card', function() {
-    const userRepository = new UserRepository();
+  it('should be an instance of User Repository', function() {
+    const userRepository = new UserRepository('../data/sample-users.js');
     expect(userRepository).to.be.an.instanceof(UserRepository);
   }); 
+
+  it('should accept a data file path', function() {
+  	const userRepository = new UserRepository('../data/sample-users.js');
+  	expect(userRepository.dataFilePath).to.equal('../data/sample-users.js')
+  })
 
 
 

@@ -1,5 +1,5 @@
 
-const userData = require('../data/sample-users.js');
+const userData = require('../data/users');
 const User = require('../src/user.js')
 
 class UserRepository {
@@ -42,4 +42,6 @@ class UserRepository {
 
 
 
-module.exports = UserRepository;
+if(typeof module !== 'undefined') {
+	module.exports = UserRepository;
+}

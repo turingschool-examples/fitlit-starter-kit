@@ -40,6 +40,4 @@ describe('UserRepository', function() {
     expect(userRepository.findMostCommonState()).to.eql('AR');
   });
 
-
-
 });

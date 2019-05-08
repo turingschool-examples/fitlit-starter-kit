@@ -39,7 +39,11 @@ describe('User Repository', function() {
   });
 
   it('should be able to return average step goal for all users', function() {
-    expect(userRepository.averageStepGoal()).to.equal(7667);
+    expect(userRepository.findAverageStepGoal()).to.equal(7667);
+});
+
+it('should be able to return most common user state', function() {
+  expect(userRepository.findMostCommonState()).to.equal('OH');
 });
 
  })

@@ -21,7 +21,7 @@ describe('UserRepository', function() {
     expect(userRepository.averageSteps()).to.be.a('number');
   });
 
-  it('should return the state nost people are from', function() {
+  it('should return the state most people are from', function() {
     
     expect(userRepository.mostStates()).to.equal('AK');
   });

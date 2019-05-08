@@ -401,4 +401,6 @@ const userData = [
   }
 ]
 
-module.exports = userData;
+if (module === undefined) {
+  module.exports = userData;
+}

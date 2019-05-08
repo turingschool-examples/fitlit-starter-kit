@@ -76,7 +76,8 @@ footer {
   grid-row-end: 4;
   background-color: rgb(129, 151, 180);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0px 10px;
   align-items: center;
 }
 
@@ -91,4 +92,8 @@ h2 {
 .footer-socialmedia {
   margin: 0px 10px;
   height: 3.5em;
+}
+
+.footer-greeting-js {
+  font-size: 1.5em;
 }

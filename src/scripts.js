@@ -14,7 +14,7 @@ $(document).ready(() => {
       `<p class='main-widget__daily-step'>Daily Step Goal: ${sampleUser.dailyStepGoal}</p>` +
     "</article> "
   )
-  $('.header-greeting-js').append(`Hello, ${sampleUser.name}!  Your daily step goal is ${compareStepGoal(sampleUser)} average.`)
+  $('.footer-greeting-js').append(`Hello, ${sampleUser.name}!  Your daily step goal is ${compareStepGoal(sampleUser)} average.`)
   console.log(userRepository.getAverageStepGoal())
 });
 

@@ -7,6 +7,10 @@ class UserRepository {
 		this.dataFilePath = dataFilePath;
 		this.userData = require(dataFilePath);
 	}
+
+	findUserData(userId) {
+
+	}
   
 }
 

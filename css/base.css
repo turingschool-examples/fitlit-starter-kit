@@ -1,8 +1,28 @@
 body {
-    background-color: #5D5D5D;
+  background-color: #5D5D5D;
 }
 
 h1 {
-    text-align: center;
-    color: white;
+  color: white;
+  text-align: center;
+}
+
+section.widgetContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 10px;
+}
+
+article.dashTitle {
+  background-color: white;
+  height: 100%;
+  margin: auto;
+  width: 95%;
+}
+
+article.widget {
+  background-color: white;
+  height: 200px;
+  width: 200px;
 }

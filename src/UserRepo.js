@@ -7,11 +7,11 @@ class UserRepo {
   }
   averageStepGoal() {
     return Math.floor(this.usersData.reduce((acc, stepSum) => {
-      acc +=stepSum.dailyStepGoal
+      acc += stepSum.dailyStepGoal
       return acc
-    }, 0)/this.usersData.length)
+    }, 0) / this.usersData.length)
   }
-  stateWithMostUsers(){
+  stateWithMostUsers() {
     let justStates = this.usersData.map(ele => ele.address)
       .toString('')
       .split(' ')
@@ -24,9 +24,6 @@ class UserRepo {
 
       return oneState
   }
-  // compareID() {
-  //   console.log(this.returnUserData(1).id)
-  // }
 }
 
 if (typeof module !== undefined) {

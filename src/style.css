@@ -27,7 +27,8 @@ header {
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 4em;
+  margin: 0px;
 }
 
 #header-h1__accent {
@@ -35,10 +36,12 @@ h1 {
 }
 
 #header-logo {
-  height: 5em;
+  height: 8em;
 }
 
 main {
+  border-top: 3px solid;
+  border-bottom: 3px solid;
   grid-row-start: 2;
   grid-row-end: 3;
   display: flex;
@@ -71,10 +74,15 @@ footer {
   align-items: center;
 }
 
+h2 {
+  font-size: 2em;
+}
+
 #footer-socialmedia__links {
   margin: 0% 2%;
 }
 
 .footer-socialmedia {
-  margin: 0px 5px;
+  margin: 0px 10px;
+  height: 3.5em;
 }

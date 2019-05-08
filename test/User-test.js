@@ -24,7 +24,7 @@ describe('User', function () {
   });
   it('should take in user data', function () {
     const user = new User(userData);
-    expect(user.userData.id).to.equal(1);
+    expect(user.id).to.equal(1);
   });
   it('should return the users first name', function() {
     const user = new User(userData);

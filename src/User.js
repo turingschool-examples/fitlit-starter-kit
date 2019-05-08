@@ -4,6 +4,7 @@ class User {
     this.id = userData.id;
     this.name = userData.name;
     this.address = userData.address;
+    this.email = userData.email;
     this.strideLength = userData.strideLength;
     this.dailyStepGoal = userData.dailyStepGoal;
   }
@@ -12,6 +13,6 @@ class User {
   }
 }
 
-if(typeof module !== 'undefined') {
+if(typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = User;
 }

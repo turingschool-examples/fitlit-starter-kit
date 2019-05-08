@@ -10,11 +10,13 @@ class UserRepository {
   }
 
   averageSteps() {
-
+    let allSteps = this.dataFilePath.map(el => el.dailyStepGoal);
+    let totalSteps = allSteps.reduce((acc, curr) => acc + curr);
+    return totalSteps / allSteps.length;
   }
 
   mostStates() {
-    
+
   }
 }
 

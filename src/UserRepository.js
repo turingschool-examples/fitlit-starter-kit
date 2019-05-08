@@ -1,25 +1,21 @@
-const users = require('../data/users');
-const User = require('../src/User');
-
 class UserRepository {
 	constructor(dataFilepath) {
 		this.dataFilepath = dataFilepath;
-		this.path = require(this.dataFilepath);
 	}
 
 	returnUserData(userId) {
-		return this.path.find(user => user.userID === userId);
+		return this.instantiateUsers().find(user => user.id === userId);
 	}
 
 	calculateAvgStepGoal() {
-		return Math.ceil(this.path.reduce((sum, num) => {
+		return Math.ceil(this.instantiateUsers().reduce((sum, num) => {
 			return sum + num.dailyStepGoal;
-		}, 0) / this.path.length);
+		}, 0) / this.instantiateUsers().length);
 	}
 
 	calculateModeState() {
 		let stateCount = {};
-		this.path.forEach(el => {
+		this.instantiateUsers().forEach(el => {
 			const state = el.address.split(' ')[el.address.split(' ').length - 2]
 			if (stateCount[state] > 0) {
 				stateCount[state]++;
@@ -42,10 +38,21 @@ class UserRepository {
 		//newActivity.activityMethod();
 	}
 
+	instantiateUsers() {
+		if (typeof module !== undefined) {
+			return require(this.dataFilepath).map(user => new User(user.id, user.name, user.address, user.email, user.strideLength, user.dailyStepGoal));
+		} else {
+			return userData.map(user => new User(user.id, user.name, user.address, user.email, user.strideLength, user.dailyStepGoal));
+		}
+	}
 
 }
 
-module.exports = UserRepository;
+if (typeof module !== undefined) {
+	var users = require('../data/users');
+	var User = require('../src/User');
+	module.exports = UserRepository;
+}
 
 // create method that parses the filePath and returns the require variable
 // use that method at the start of other methods to access each data set

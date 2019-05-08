@@ -19,8 +19,11 @@ class UserRepo {
 
     const uniqueStates = Array.from(new Set(justStates))
 
-    let counts = uniqueStates.map(a => justStates.filter(b => b == a).length);
-    let averageState = counts.map((a, b) => Math.max(...counts) === a ? b : 0).filter(b => b !== 0).map(a => uniqueStates[a]);
+    let counts = uniqueStates.map(a => justStates
+    .filter(b => b == a).length);
+    let averageState = counts.map((a, b) => Math.max(...counts) === a ? b : 0) 
+    .filter(b => b !== 0)
+    .map(a => uniqueStates[a]);
     return averageState.toString();
   }
   // compareID() {

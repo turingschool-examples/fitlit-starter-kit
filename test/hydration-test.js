@@ -9,6 +9,7 @@ var sampleHydrationData =require('../data/sample-hydration');
 describe('Hydration', function() {
 	let hydration;
 	let userData;
+	let hydrationData;
 
 	beforeEach(function() {
 		  userData = {
@@ -19,6 +20,51 @@ describe('Hydration', function() {
       "strideLength": 4.7,
       "dailyStepGoal": 8000
     }
+    	hydrationData = {
+  "userID": 1,
+    "hydrationData": [
+      {
+        "date": "06/05/2019",
+        "numOunces": 64
+      },
+      {
+        "date": "07/05/2019",
+        "numOunces": 80
+      },
+      {
+        "date": "08/05/2019",
+        "numOunces": 39
+      },
+      {
+        "date": "09/05/2019",
+        "numOunces": 40
+      },
+      {
+        "date": "10/05/2019",
+        "numOunces": 65
+      },
+      {
+        "date": "11/05/2019",
+        "numOunces": 84
+      },
+      {
+        "date": "12/05/2019",
+        "numOunces": 33
+      },
+      {
+        "date": "13/05/2019",
+        "numOunces": 60
+      },
+      {
+        "date": "14/05/2019",
+        "numOunces": 30
+      },
+      {
+        "date": "15/05/2019",
+        "numOunces": 59
+      }
+    ]
+}
 		hydration = new Hydration('../data/sample-hydration', '../data/sample-users');
 	});
 
@@ -31,15 +77,15 @@ describe('Hydration', function() {
 	});
 
 	it('should accept a file path', function() {
-		expect(hydration.hydrationData).to.equal('../data/sample-hydration')
+		expect(hydration.hydrationStats).to.equal(sampleHydrationData)
 	});
 
 	it('should find a user by id', function() {
-		expect(hydration.returnUserId(1)).to.eql(userData.id)
+		expect(hydration.returnUserHydration(userData.id)).to.eql(hydrationData.hydrationData)
 	})
 
-	it.skip('should return a user\'s avg water intake in a day', function() {
-		expect(hydration.findAvgWaterIntake()).to.equal(55)
+	it('should return a user\'s avg water intake in a day', function() {
+		expect(hydration.findAvgWaterIntake(1)).to.equal(55.4)
 	});
 
 	

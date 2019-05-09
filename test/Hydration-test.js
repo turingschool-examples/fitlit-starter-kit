@@ -2,22 +2,18 @@ const chai = require('chai');
 const expect = chai.expect;
 const assert = chai.assert;
 
-if (typeof module !== 'undefined') {
-  var User = require('../src/User');
-  var UserRepo = require('../src/UserRepo')
-  var Hydration = require('../src/Hydration')
-  var userData = require('../data/users-test-data')
-  var hydrationData = require('../data/hydration-test-data')
-}
+const User = require('../src/User');
+const UserRepo = require('../src/UserRepo')
+const Hydration = require('../src/Hydration')
 
 describe('Hydration Test', function () {
   let user;
   let userRepo;
   let hydration;
   beforeEach(function () {
-    userRepo = new UserRepo(userData)
-    user = new User(userData, 1)
-    hydration = new Hydration(userRepo.returnUserData(1))
+    user = new User(1)
+    userRepo = new UserRepo()
+    hydration = new Hydration(0)
   })
 
   it('should be a function', function () {
@@ -30,19 +26,30 @@ describe('Hydration Test', function () {
 
   it('should take in user and hydration data', function () {
     expect(hydration.userObj).to.equal(userRepo.returnUserData(1))
+
   })
 
   it('should return a users hydration data', function () {
-    expect(hydration.findHydrationData(hydrationData)).to.equal(hydrationData[0])
+    // expect(hydration.findHydrationData()).to.equal()
   })
 
   it('should find the average ounces per day', function () {
-    hydration.findHydrationData(hydrationData)
-    expect(hydration.averageOuncesPerDay(hydrationData)).to.be.a('number')
-    expect(hydration.averageOuncesPerDay(hydrationData)).to.equal(55)
+    hydration.findHydrationData()
+    expect(hydration.averageOuncesPerDay()).to.be.a('number')
+    expect(hydration.averageOuncesPerDay()).to.equal(55)
   })
 
   it('should find the amount of ounces xonsumed for a specific day', function () {
-    hydration.findHydrationData(hydrationData)
+    hydration.findHydrationData()
+    expect(hydration.amountHydratedByDay('06/05/2019')).to.be.a('number')
+    expect(hydration.amountHydratedByDay('06/05/2019')).to.equal(64)
   })
+
+  it('should return the total consumed each day over a week', function () {
+    hydration.findHydrationData()
+    // hydration.waterForWeek('06/05/2019')
+    expect(hydration.waterForWeek('06/05/2019')).to.have.length(7)
+  })
+
+
 })

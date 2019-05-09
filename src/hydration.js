@@ -6,29 +6,20 @@ if(typeof module !== 'undefined') {
 
 
 class Hydration {
-	constructor(hydrationData, userData) {
-		this.hydrationData = hydrationData;
+	constructor(hydrationStats, userData, userId) {
+		this.hydrationStats = require(hydrationStats);
 		this.userData = require(userData);
+		// this.userHydration = this.returnUserHydration(userId)
 	}
 
-	returnUserId(userId) {
-		let currentUser = this.userData.find(element => element.id === userId)
-		return currentUser.id
+	returnUserHydration(userId) {
+		let currentUser = this.hydrationStats.find(element => element.userID === userId)
+		return currentUser.hydrationData;
 		}
 
-	findAvgWaterIntake() {
-
-        // let water = this.hydrationData.reduce((acc ,curr) => acc + curr, 0)/hydrationData.length;
-        // console.log(water)
-
-        let water = this.userData.map(element => element.hydrationData);
-        console.log(water)
-   let avgWater = Math.ceil(water.reduce((acc,curr)=> acc + curr,0)/water.length);
-   return avgWater;
-    //by user ID number go into the array
-    //pull all hydrationData.numOunces
-    //sum and divide by hydrationData.length
-
+	findAvgWaterIntake(userId) {
+		let currentUserHydration = this.returnUserHydration(userId);
+		return currentUserHydration.reduce((a, b) => a += b.numOunces, 0)/ currentUserHydration.length;
     }
 }
 

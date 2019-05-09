@@ -136,3 +136,5 @@ const sampleHydration = [
     ]
   }
 ]
+
+module.exports = sampleHydration;

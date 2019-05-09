@@ -28,7 +28,12 @@ class Hydration {
     return fluid.numOunces;
     }
 
- 
+ 	findWeeklyWater(userId, date) {
+ 		let currentUser = this.returnUserHydration(userId);
+    let startDate = currentUser.findIndex(element => element.date === date);
+   	let dateRange = currentUser.slice(startDate, startDate+7).map(element => element.numOunces);
+   return dateRange
+ 	}
 
 
 }

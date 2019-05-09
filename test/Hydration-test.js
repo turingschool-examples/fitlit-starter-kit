@@ -50,7 +50,7 @@ describe('Hydration Test', function () {
   it('should return the total consumed each day over a week', function () {
     hydration.findHydrationData()
     // hydration.waterForWeek('06/05/2019')
-    expect(hydration.waterForWeek('06/05/2019')).to.have.length(7)
+    expect(hydration.waterForWeek('06/05/2019')).to.have.length(7);
   })
 
 

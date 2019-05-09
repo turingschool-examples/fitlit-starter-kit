@@ -9,7 +9,17 @@ describe('UserRepository', function() {
   let userRepository;
   beforeEach(function() {
     userRepository = new UserRepository(userFakeData);
-  })
+  });
+
+  it('should be a function', function () {
+
+    expect(UserRepository).to.be.a('function');
+  });
+
+  it('should instatiate a new user repo', function () {
+
+    expect(userRepository).to.an.instanceOf(UserRepository);
+  });
 
   it('should return user data based off id', function() {
     

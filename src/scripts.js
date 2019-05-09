@@ -13,12 +13,12 @@ let sleep = new Sleep(dynamicUser)
 console.log(sleep)
 
 // Event Listeners
-document.getElementById('userName').innerText = `Welcome ${user.userData.name}!`;
-document.getElementById('userAddress').innerText = user.userData.address;
-document.getElementById('userEmail').innerText = user.userData.email;
-document.getElementById('userStepGoal').innerText = `Daily Step Goal: ${user.userData.dailyStepGoal}`;
-document.getElementById('userStrideLength').innerText = `Stride Length ${user.userData.strideLength}`;
-document.getElementById('compStepGoal').innerText = `You: ${user.userData.dailyStepGoal}`;
+document.getElementById('userName').innerText = `Welcome ${user.userObj.name}!`;
+document.getElementById('userAddress').innerText = user.userObj.address;
+document.getElementById('userEmail').innerText = user.userObj.email;
+document.getElementById('userStepGoal').innerText = `Daily Step Goal: ${user.userObj.dailyStepGoal}`;
+document.getElementById('userStrideLength').innerText = `Stride Length ${user.userObj.strideLength}`;
+document.getElementById('compStepGoal').innerText = `You: ${user.userObj.dailyStepGoal}`;
 document.getElementById('compTheirStepGoal').innerText = `Them: ${userStep}`;
 // Functions
 

@@ -1,4 +1,5 @@
 const sleep = require('../data/sleepSample');
+const UserRepository = require('./UserRepository');
 const sleepData = sleep.sleepData;
 
 
@@ -55,18 +56,6 @@ class Sleep {
       }
     }
     return qualityWeekDays;
-  }
-
-  averageSleepQualityAll() {
-    var totalQualityHours = 0;
-    var days = 0;
-    sleepData.forEach(user => {
-       user.sleepData.forEach(day => {
-          totalQualityHours += day.sleepQuality;
-          days++;
-       })
-    })
-    return parseFloat((totalQualityHours/days).toFixed(1));
   }
 }
 

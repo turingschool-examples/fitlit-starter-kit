@@ -20,8 +20,8 @@ describe('UserRepository', function() {
   });
 
   it('should have a mostCommonState to return the most common state', function() {
-    const userRepository = new UserRepository('../data/users.js');
-    expect(userRepository.mostCommonState()).to.equal('NM');
+    const userRepository = new UserRepository('../data/usersSub.js');
+    expect(userRepository.mostCommonState()).to.equal('AK');
   });
 
   it('should return user data given a user ID', function() {
@@ -29,10 +29,16 @@ describe('UserRepository', function() {
     expect(userRepository.returnUserData(2)).to.deep.equal({
       "id": 2,
       "name": "Shayne Swift",
-      "address": "747 Dickinson Gardens, South Helga SD 88484-2240",
+      "address": "747 Dickinson Gardens, South Helga AK 88484-2240",
       "email": "Lawson74@yahoo.com",
       "strideLength": 4.5,
       "dailyStepGoal": 11000
-    });
-});
+    });  
+  });
+
+  it('returnNamesFromIds should return all users names from their IDs', function() {
+    const userRepository = new UserRepository('../data/usersSub.js');
+    expect(userRepository.returnNamesFromIds([1,2,4])).to.eql(["Nyasia Weber", "Shayne Swift", "Elaina Rau"]);
+  });
+
 });

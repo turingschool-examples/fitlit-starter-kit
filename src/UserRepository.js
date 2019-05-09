@@ -24,7 +24,17 @@ class UserRepository {
       })
       y=0;
     })
-    return state 
+    return state
+  }
+
+  returnNamesFromIds(ids) {
+    var names = [];
+    ids.forEach(i => {
+      this.data.forEach(user => {
+        if(user.id === i) {names.push(user.name)}
+      })
+    })
+    return names
   }
 }
 

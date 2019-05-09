@@ -1,6 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const Sleep = require('../src/Sleep');
+const UserRepository = require('../src/UserRepository');
 
 describe('Sleep', function() {
 let sleep
@@ -38,10 +39,6 @@ let sleep
 
   it('qualitySleptWeek should return sleeping quality of one week', function() {
     expect(sleep.qualitySleptWeek("07/05/2019")).to.eql([4.8, 4.5, 4, 3.2, 3.2, 4.9, 4.8]);
-  });
-
-  it('averageSleepQualityAll should return average sleeping quality of all users', function() {
-    expect(sleep.averageSleepQualityAll()).to.eql(3.7);
   });
 
 });

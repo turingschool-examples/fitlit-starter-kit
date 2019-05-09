@@ -16,7 +16,7 @@ describe('Hydration', function() {
     expect(hydration).to.be.an.instanceof(Hydration);
   });
 
-  it('should return a user average ounces of liquid consumed', function() {
+  it.skip('should return a user average ounces of liquid consumed', function() {
     expect(hydration.getAverageFluidConsumption(1)).to.equal(55);
   })
 });

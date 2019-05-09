@@ -1,29 +1,41 @@
-// let hydrationData = 
-
+if (typeof module !== 'undefined') {
+  var users = require('../data/users-test-data')
+  var hydrateData = require('../data/hydration-test-data')
+} else {
+  var users = userData
+  var hydrateData = hydrationData
+}
 class Hydration {
-  constructor(userObj) {
-    this.userObj = userObj;
+  constructor(index) {
+    this.userObj = users[index];
   }
-  findHydrationData(h2oData) {
-    return h2oData.find(ele => ele.userID === this.userObj.id)
+
+  findHydrationData() {
+    return hydrateData.find(ele => ele.userID === this.userObj.id)
   }
-  averageOuncesPerDay(h2oData) {
-    let ounces = this.findHydrationData(h2oData).hydrationData
+
+  averageOuncesPerDay() {
+    let ounces = this.findHydrationData().hydrationData
     let average = ounces.map(ele => ele.numOunces).reduce((acc, value) => {
       acc += value / ounces.length
       return acc
     }, 0)
     return Math.floor(average)
   }
-  amountHydratedByDay(){
-    
+
+  amountHydratedByDay(day) {
+    let userOunce = this.findHydrationData().hydrationData;
+    return userOunce.filter(ounces => ounces.date === day).map(oz => oz.numOunces).shift()
   }
+
+  waterForWeek(startDate) {
+    let week = this.findHydrationData().hydrationData;
+    let firstDayIndex = week.findIndex(ele => ele.date === startDate) 
+    return week.splice(firstDayIndex, 7)
+  }
+
 }
 
-// get the id from the userObj
-// whatever id you plug into the function
-
-// hydrationData.userId[userObj.id]
 if (typeof module !== 'undefined') {
   module.exports = Hydration;
 }

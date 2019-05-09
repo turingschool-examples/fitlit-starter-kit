@@ -1,9 +1,12 @@
-// let data = ('../')
-// import { data } from 'module'; // or './module'
-// let data = '../data/users'
+if (typeof module !== 'undefined') {
+  var users = require('../data/users-test-data')
+} else {
+  var users = userData
+}
+
 class UserRepo {
-  constructor(data) {
-    this.usersData = data;
+  constructor() {
+    this.usersData = users;
   }
   returnUserData(ident) {
     return this.usersData.find(ele => ele.id === ident)

@@ -1,14 +1,9 @@
 const chai = require('chai');
 const expect = chai.expect;
 const assert = chai.assert;
-if(typeof module !=='undefined') {
-  var User = require('../src/User');
-  var UserRepo = require('../src/UserRepo')
-  var data = require('../data/users-test-data')
-}
-// const User = require('../src/User');
-// const UserRepo = require('../src/UserRepo')
-// const data = require('../data/users-test-data')
+
+var User = require('../src/User');
+var UserRepo = require('../src/UserRepo')
 
 describe('User', function () {
   it('should be a function', function () {
@@ -16,14 +11,13 @@ describe('User', function () {
   });
 
   it('should be an instance of User', function () {
-    const userRepo = new UserRepo(data)
+    const userRepo = new UserRepo()
     const user = new User(userRepo.usersData, 1)
     expect(user).to.be.a.instanceOf(User)
   })
 
   it('should return the first name of the user called', function () {
-    const userRepo = new UserRepo(data)
-    const user = new User(userRepo.usersData, 1)
+    const user = new User(1)
     expect(user.returnUserFirstName()).to.equal('Shayne')
   })
 

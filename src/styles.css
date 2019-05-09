@@ -21,6 +21,10 @@
   margin-top: 30px;
 }
 
+.user-card {
+  background-color: #F97B7C;
+}
+
 body {
   background-color: #0F0C2B;
   display: flex;

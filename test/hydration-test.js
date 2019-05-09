@@ -82,10 +82,18 @@ describe('Hydration', function() {
 
 	it('should find a user by id', function() {
 		expect(hydration.returnUserHydration(userData.id)).to.eql(hydrationData.hydrationData)
-	})
+	});
 
 	it('should return a user\'s avg water intake in a day', function() {
 		expect(hydration.findAvgWaterIntake(1)).to.equal(55.4)
+	});
+
+	it('should return the amount of fluid ounces consumed on a particular date', function() {
+		expect(hydration.findFluidOzByDay(1, '15/05/2019')).to.equal(59)
+	});
+
+	it('should return the amount of fluid ounces consumed within a week-long date range', function() {
+		expect(hydration.findWeeklyWater(1, '08/05/2019')).to.eql([39, 40, 65, 84, 33, 60, 30])
 	});
 
 	

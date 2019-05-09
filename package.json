@@ -4,7 +4,8 @@
   "description": "The details of this project are outline in [this project spec](http://frontend.turing.io/projects/activity-tracker.html).",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "eslint": "./node_modules/eslint/bin/eslint"
   },
   "author": "Turing School of Software and Design",
   "license": "MIT",

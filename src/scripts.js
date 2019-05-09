@@ -1,4 +1,5 @@
 const userRepository = new UserRepository()
+const hydrationRepository = new HydrationRepository();
 
 const users = userRepository.instantiateUsers();
 
@@ -14,6 +15,9 @@ function compareStepGoal(user) {
 
 let instantiatedUser = users.find(item => item.id === user.id)
 
+let hydrationUserData = hydrationRepository.getHydrationDataFromId(randomId());
+let hydration = new Hydration(randomId(), hydrationUserData);
+console.log(hydration);
 
 $(document).ready(() => {
   $('main').append( 

@@ -95,6 +95,6 @@ describe('HydrationRepository', function() {
   it('should retrieve user data from id', function() {
     const hydrationRepository = new HydrationRepository('../data/sample-Hydration-data');
     expect(hydrationRepository.getHydrationDataFromId(1)).to.eql(hydrationDataSample)    
-
   })
+  
 });

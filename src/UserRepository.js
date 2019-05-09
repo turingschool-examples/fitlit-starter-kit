@@ -14,7 +14,7 @@ class UserRepository {
       return acc;
     }, 0) / this.userData.length
   }
-  
+
   getMostCommonState() {
     let states = [];
     this.userData.forEach((datum) => {

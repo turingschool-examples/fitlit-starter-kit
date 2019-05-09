@@ -1,5 +1,5 @@
 if(typeof module !== 'undefined') {
-	var User = require('../src/user');
+	// var User = require('../src/user');
 	var userData = require('../data/users');
 	var userHydrationData = require('../data/sample-hydration');
 };
@@ -32,9 +32,8 @@ class Hydration {
  		let currentUser = this.returnUserHydration(userId);
     let startDate = currentUser.findIndex(element => element.date === date);
    	let dateRange = currentUser.slice(startDate, startDate+7).map(element => element.numOunces);
-   return dateRange
+   	return dateRange;
  	}
-
 
 }
 

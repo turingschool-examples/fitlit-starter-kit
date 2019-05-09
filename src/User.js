@@ -1,6 +1,11 @@
+if (typeof module !== 'undefined') {
+  var users = require('../data/users-test-data')
+} else {
+  var users = userData
+}
 class User {
-  constructor(data, index) {
-    this.userData = data[index];
+  constructor(index) {
+    this.userData = users[index];
   }
   returnUserFirstName() {
     return this.userData.name.split(' ').shift()

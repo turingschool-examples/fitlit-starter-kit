@@ -2,11 +2,11 @@ const chai = require('chai')
 const expect = chai.expect;
 const assert = chai.assert;
 
-if(typeof module !== 'undefined') {
+// if(typeof module !== 'undefined') {
   var UserRepo = require('../src/UserRepo');
-  // var User = require('../src/User'
-  var data = require('../data/users-test-data')
-}
+//   // var User = require('../src/User'
+//   var data = require('../data/users-test-data')
+// }
 // const UserRepo = require('../src/UserRepo');
 // // const User = require('../src/User')
 // const data = require('../data/users-test-data')
@@ -15,7 +15,7 @@ describe('UserRepo', function () {
   let userRepo;
 
   beforeEach(function () {
-    userRepo = new UserRepo(data)
+    userRepo = new UserRepo()
   })
 
   it('should be a function', function () {
@@ -27,8 +27,8 @@ describe('UserRepo', function () {
   })
 
   it('should take in user data', function () {
-    expect(userRepo.usersData).to.equal(data)
-    expect(userRepo.usersData[3]).to.equal(data[3])
+    // expect(userRepo.usersData).to.equal()
+    expect(userRepo.usersData[3].name).to.equal('Elaina Rau')
   })
 
   it('should be able to return a user object by ID', function () {

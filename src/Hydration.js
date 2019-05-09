@@ -30,4 +30,6 @@ class UserHydration {
   } 
 }
 
-module.exports = UserHydration;
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = UserHydration;
+}

@@ -25,6 +25,12 @@ describe('SleepRepository', function() {
     expect(sleepRepository.sleepQualityGreaterThanThreeIDs("07/05/2019")).to.eql([1,2,4]);
   });
 
-  
+  it('sleepMostIds should find the ID of users who slept the most number of hours (one or more if they tied)', function() {
+    expect(sleepRepository.sleepMostIds("08/05/2019")).to.eql([2,4]);
+  });
+
+  it('sleepMostNames should find the Names of users who slept the most number of hours (one or more if they tied)', function() {
+    expect(sleepRepository.sleepMostNames([2,4])).to.eql(["Shayne Swift","Elaina Rau"]);
+  });
 
 });

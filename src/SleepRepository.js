@@ -45,6 +45,32 @@ class SleepRepository {
     const userRepository = new UserRepository('../data/usersSub.js');
     return userRepository.returnNamesFromIds(finalIds)
   }
+
+  sleepMostIds(date) {
+    var sleepHours = [];
+    var allIds = [];
+    this.data.sleepData.forEach(user => {
+      user.sleepData.forEach(day =>{
+        if(day.date === date) {
+          sleepHours.push(day.hoursSlept);
+          allIds.push(user.userID);
+        };
+      })
+    })
+    var max = Math.max(...sleepHours)
+    var ids = [];
+    for(let i = 0; i < sleepHours.length; i++) {
+      if (sleepHours[i] === max) {ids.push(allIds[i])}
+    }
+    this.sleepMostNames(ids)
+    return ids
+  }
+
+  sleepMostNames(ids) {
+    const userRepository = new UserRepository('../data/usersSub.js');
+    return userRepository.returnNamesFromIds(ids)
+  }
+
 }
 
 module.exports = SleepRepository;

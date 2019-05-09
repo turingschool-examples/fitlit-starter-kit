@@ -1,7 +1,9 @@
 class Hydration {
-  constructor(filepathway) {
-    this.filepathway = filepathway
+  constructor(data) {
+    this.userID = data.userID;
+    this.hydrationData = data.hydrationData;
   }
+  
 }
 
 module.exports = Hydration;

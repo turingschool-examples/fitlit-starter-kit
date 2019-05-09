@@ -1,5 +1,5 @@
 class UserRepository {
-  constructor(dataFilepath,) {
+  constructor(dataFilepath) {
     this.dataFilepath = dataFilepath;
     this.userData = this.findFilepath(dataFilepath)
 
@@ -7,12 +7,14 @@ class UserRepository {
   getUserDataFromId(id) {
     return this.userData.find(user => user.id === id);
   }
+
   getAverageStepGoal() {
     return this.userData.reduce((acc, stepGoal) => {
       acc += stepGoal.dailyStepGoal
       return acc;
     }, 0) / this.userData.length
   }
+  
   getMostCommonState() {
     let states = [];
     this.userData.forEach((datum) => {
@@ -25,19 +27,18 @@ class UserRepository {
     states.filter(v => v===a).length
   - states.filter(v => v===b).length
     ).pop();
-  };
+  }
   findFilepath(dataFilepath) {
     if(typeof module !== 'undefined') {
       return require(dataFilepath);
   } else {
     return userData;
-    };
+    }
   }
   instantiateUsers() {
     return userData.map(datum => datum = new User(datum));
-
   }
-};
+}
 
 
 

@@ -4,22 +4,16 @@ const users = userRepository.instantiateUsers();
 
 
 var randomId = function generateRandomId() {
-  return Math.floor(Math.random() * 50);
+  return Math.ceil(Math.random() * 50);
 }
 
 var user = userRepository.getUserDataFromId(randomId())
-
-let instantiatedUser = users.find(item => item.id === user.id)
-
-
-// const user = new User(currentUser);
-// console.log(userRepository.userData);
-
 function compareStepGoal(user) {
   return user.dailyStepGoal > userRepository.getAverageStepGoal() ? 'above' : 'below';
 }
 
-// console.log(userRepository.instantiateUsers(userData));
+let instantiatedUser = users.find(item => item.id === user.id)
+
 
 $(document).ready(() => {
   $('main').append( 
@@ -30,8 +24,6 @@ $(document).ready(() => {
       `<p class='main-widget__daily-step'>Daily Step Goal: ${instantiatedUser.dailyStepGoal}</p>` +
     "</article> "
   )
-  $('.footer-greeting-js').append(`Hello, ${instantiatedUser.name}!  Your daily step goal is ${compareStepGoal(instantiatedUser)} average.`);
+  $('.footer-greeting-js').append(`Hello, ${instantiatedUser.getFirstName()}!  Your daily step goal is ${compareStepGoal(instantiatedUser)} average.`);
 });
 
-
-// module.exports = Scripts;

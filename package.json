@@ -1,7 +1,7 @@
 {
   "name": "activity-tracker",
   "version": "1.0.0",
-  "description": "",
+  "description": "The details of this project are outline in [this project spec](http://frontend.turing.io/projects/activity-tracker.html).",
   "main": "index.js",
   "scripts": {
     "test": "npm test"
@@ -10,6 +10,20 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.2.0",
+    "eslint": "^5.16.0",
     "mocha": "^6.1.4"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/David5280/activity-tracker-starter.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/David5280/activity-tracker-starter/issues"
+  },
+  "homepage": "https://github.com/David5280/activity-tracker-starter#readme"
 }

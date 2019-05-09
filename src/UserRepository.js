@@ -1,7 +1,8 @@
 class UserRepository {
-  constructor(dataFilepath) {
+  constructor(dataFilepath,) {
     this.dataFilepath = dataFilepath;
     this.userData = this.findFilepath(dataFilepath)
+
   }
   getUserDataFromId(id) {
     return this.userData.find(user => user.id === id);
@@ -33,7 +34,7 @@ class UserRepository {
     };
   }
   instantiateUsers() {
-    console.log(userData.map(datum => datum = new User(datum)));
+    return userData.map(datum => datum = new User(datum));
 
   }
 };

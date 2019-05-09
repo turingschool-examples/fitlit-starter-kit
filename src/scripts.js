@@ -1,12 +1,16 @@
 const userRepository = new UserRepository()
 
-const users = userRepository.instantiateUsers(userData);
+const users = userRepository.instantiateUsers();
+
 
 var randomId = function generateRandomId() {
   return Math.floor(Math.random() * 50);
 }
 
 var user = userRepository.getUserDataFromId(randomId())
+
+let instantiatedUser = users.find(item => item.id === user.id)
+
 
 // const user = new User(currentUser);
 // console.log(userRepository.userData);
@@ -20,13 +24,13 @@ function compareStepGoal(user) {
 $(document).ready(() => {
   $('main').append( 
     "<article class='main-widget'>" +
-      `<p class='main-widget__address'>Address: ${user.address} </p>` +
-      `<p class='main-widget__email'>Email: ${user.email} </p>` +
-      `<p class='main-widget__Stride'>Stride: ${user.strideLength} </p>` +
-      `<p class='main-widget__daily-step'>Daily Step Goal: ${user.dailyStepGoal}</p>` +
+      `<p class='main-widget__address'>Address: ${instantiatedUser.address} </p>` +
+      `<p class='main-widget__email'>Email: ${instantiatedUser.email} </p>` +
+      `<p class='main-widget__Stride'>Stride: ${instantiatedUser.strideLength} </p>` +
+      `<p class='main-widget__daily-step'>Daily Step Goal: ${instantiatedUser.dailyStepGoal}</p>` +
     "</article> "
   )
-  $('.footer-greeting-js').append(`Hello, ${user.name}!  Your daily step goal is ${compareStepGoal(user)} average.`);
+  $('.footer-greeting-js').append(`Hello, ${instantiatedUser.name}!  Your daily step goal is ${compareStepGoal(instantiatedUser)} average.`);
 });
 
 

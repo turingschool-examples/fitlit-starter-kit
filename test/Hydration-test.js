@@ -5,6 +5,7 @@ const assert = chai.assert;
 const User = require('../src/User');
 const UserRepo = require('../src/UserRepo')
 const Hydration = require('../src/Hydration')
+const data = require('../data/hydration-test-data')
 
 describe('Hydration Test', function () {
   let user;
@@ -25,12 +26,13 @@ describe('Hydration Test', function () {
   })
 
   it('should take in user and hydration data', function () {
-    expect(hydration.userObj).to.equal(userRepo.returnUserData(1))
-
+    userRepo.returnUserData(1)
+    expect(hydration.userID).to.equal(userRepo.returnUserData(1).id)
+    expect()
   })
 
   it('should return a users hydration data', function () {
-    // expect(hydration.findHydrationData()).to.equal()
+    expect(hydration.usersHydrationData).to.equal(data[0])
   })
 
   it('should find the average ounces per day', function () {

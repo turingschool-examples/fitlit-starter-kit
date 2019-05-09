@@ -1,15 +1,8 @@
 const chai = require('chai')
 const expect = chai.expect;
-const assert = chai.assert;
 
-// if(typeof module !== 'undefined') {
-  var UserRepo = require('../src/UserRepo');
-//   // var User = require('../src/User'
-//   var data = require('../data/users-test-data')
-// }
-// const UserRepo = require('../src/UserRepo');
-// // const User = require('../src/User')
-// const data = require('../data/users-test-data')
+var UserRepo = require('../src/UserRepo');
+
 
 describe('UserRepo', function () {
   let userRepo;
@@ -27,12 +20,11 @@ describe('UserRepo', function () {
   })
 
   it('should take in user data', function () {
-    // expect(userRepo.usersData).to.equal()
-    expect(userRepo.usersData[3].name).to.equal('Elaina Rau')
+    expect(userRepo.users[3].name).to.equal('Elaina Rau')
   })
 
   it('should be able to return a user object by ID', function () {
-    expect(userRepo.returnUserData(3)).to.equal(userRepo.usersData[2])
+    expect(userRepo.returnUserData(3)).to.equal(userRepo.users[2])
   })
 
   it('should return the average step goal for all users', function () {

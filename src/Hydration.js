@@ -1,17 +1,20 @@
+let hydrData = {}
+let hydrUser = {}
 if (typeof module !== 'undefined') {
-  var users = require('../data/users-test-data')
-  var hydrateData = require('../data/hydration-test-data')
+  hydrUser = require('../data/users-test-data')
+  hydrData = require('../data/hydration-test-data')
 } else {
-  var users = userData
-  var hydrateData = hydrationData
+  hydrUser = userData;
+  hydrData = hydrationData;
 }
 class Hydration {
   constructor(index) {
-    this.userObj = users[index];
+    this.userID = hydrUser[index].id;
+    this.usersHydrationData = (this.findHydrationData());
   }
 
   findHydrationData() {
-    return hydrateData.find(ele => ele.userID === this.userObj.id)
+    return hydrData.find(ele => ele.userID === this.userID)
   }
 
   averageOuncesPerDay() {

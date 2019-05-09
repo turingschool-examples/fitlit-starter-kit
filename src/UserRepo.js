@@ -1,24 +1,25 @@
+let allUsers = {}
 if (typeof module !== 'undefined') {
-  var users = require('../data/users-test-data')
+  allUsers = require('../data/users-test-data')
 } else {
-  var users = userData
+  allUsers = userData
 }
 
 class UserRepo {
   constructor() {
-    this.usersData = users;
+    this.users = allUsers;
   }
   returnUserData(ident) {
-    return this.usersData.find(ele => ele.id === ident)
+    return this.users.find(ele => ele.id === ident)
   }
   averageStepGoal() {
-    return Math.floor(this.usersData.reduce((acc, stepSum) => {
+    return Math.floor(this.users.reduce((acc, stepSum) => {
       acc += stepSum.dailyStepGoal
       return acc
-    }, 0) / this.usersData.length)
+    }, 0) / this.users.length)
   }
   stateWithMostUsers() {
-    let justStates = this.usersData.map(ele => ele.address)
+    let justStates = this.users.map(ele => ele.address)
       .toString('')
       .split(' ')
       .filter(strings => strings.length === 2)

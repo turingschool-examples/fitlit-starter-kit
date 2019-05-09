@@ -1,6 +1,5 @@
 const chai = require('chai');
 const expect = chai.expect;
-const assert = chai.assert;
 
 var User = require('../src/User');
 var UserRepo = require('../src/UserRepo')

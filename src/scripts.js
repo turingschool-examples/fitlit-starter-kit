@@ -1,14 +1,14 @@
 const userRepository = new UserRepository()
 
-console.log(sampleData);
+const users = userRepository.instantiateUsers(userData);
 
 var randomId = function generateRandomId() {
   return Math.floor(Math.random() * 50);
 }
 
-var currentUser = userRepository.getUserDataFromId(randomId())
+var user = userRepository.getUserDataFromId(randomId())
 
-const user = new User(currentUser);
+// const user = new User(currentUser);
 // console.log(userRepository.userData);
 
 function compareStepGoal(user) {

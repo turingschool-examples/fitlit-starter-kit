@@ -1,6 +1,5 @@
 class User {
   constructor(userData) {
-    this.userData = userData;
     this.id = userData.id;
     this.name = userData.name;
     this.address = userData.address;
@@ -9,7 +8,7 @@ class User {
     this.dailyStepGoal = userData.dailyStepGoal;
   }
   getFirstName() {
-    return this.userData.name.split(' ')[0];
+    return this.name.split(' ')[0];
   }
 }
 

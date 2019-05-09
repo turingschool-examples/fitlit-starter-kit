@@ -1,11 +1,20 @@
 
-const userData = require('../data/sample-users');
-const User = require('../src/user.js')
+// if(typeof module !== 'undefined') {
+// var userData = require('../data/sample-users');
+// }
 
 class UserRepository {
 	constructor(dataFilePath) {
 		this.dataFilePath = dataFilePath;
-    this.userData = require(dataFilePath);
+    this.userData = this.findFilepath(dataFilePath);
+  }
+
+  findFilepath(dataFilePath) {
+    if(typeof module !== 'undefined') {
+      return require(dataFilePath)
+    } else {
+      return userData;
+    }
   }
 
 	findUserData(userId) {
@@ -23,7 +32,7 @@ class UserRepository {
   }
 
   findMostCommonState() {
-    let states = userData.map(element => element.address.split(' ')[element.address.split(' ').length-2]);
+    let states = this.userData.map(element => element.address.split(' ')[element.address.split(' ').length-2]);
     //gets array state abbreviations
     let state = states.reduce(function(acc,curr) {
       if (!acc[curr]) {                  //if object[abb] doesn't exist

@@ -45,7 +45,7 @@ describe('User Repository', function() {
 });
 
 it('should be able to return most common user state', function() {
-  expect(userRepository.findMostCommonState()).to.equal('AK');
+  expect(userRepository.findMostCommonState()).to.equal('OH');
 });
 
  });

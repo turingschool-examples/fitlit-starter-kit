@@ -1,5 +1,5 @@
 
-const userData = require('../data/users');
+const userData = require('../data/sample-users');
 const User = require('../src/user.js')
 
 class UserRepository {
@@ -23,7 +23,8 @@ class UserRepository {
   }
 
   findMostCommonState() {
-    let states = userData.map(element => element.address.split(' ')[element.address.split(' ').length-2]);//gets array state abbreviations
+    let states = userData.map(element => element.address.split(' ')[element.address.split(' ').length-2]);
+    //gets array state abbreviations
     let state = states.reduce(function(acc,curr) {
       if (!acc[curr]) {                  //if object[abb] doesn't exist
             acc[curr] = 1;             //set object[abb] value to 1

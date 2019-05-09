@@ -88,5 +88,9 @@ describe('Hydration', function() {
 		expect(hydration.findAvgWaterIntake(1)).to.equal(55.4)
 	});
 
+	it('should return the amount of fluid ounces consumed on a particular date', function() {
+		expect(hydration.findFluidOzByDay(1, '15/05/2019')).to.equal(59)
+	})
+
 	
 })

@@ -21,6 +21,16 @@ class Hydration {
 		let currentUserHydration = this.returnUserHydration(userId);
 		return currentUserHydration.reduce((a, b) => a += b.numOunces, 0)/ currentUserHydration.length;
     }
+
+  findFluidOzByDay(userId, date) {
+    let currentUser = this.returnUserHydration(userId);
+    const fluid = currentUser.find(element => element.date === date);
+    return fluid.numOunces;
+    }
+
+ 
+
+
 }
 
 

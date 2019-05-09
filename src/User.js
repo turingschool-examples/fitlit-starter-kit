@@ -1,14 +1,13 @@
 if (typeof module !== 'undefined') {
-  var users = require('../data/users-test-data')
-} else {
-  var users = userData
+  userData = require('../data/users-test-data')
 }
+
 class User {
   constructor(index) {
-    this.userData = users[index];
+    this.userObj = userData[index];
   }
   returnUserFirstName() {
-    return this.userData.name.split(' ').shift()
+    return this.userObj.name.split(' ').shift()
   }
 }
 

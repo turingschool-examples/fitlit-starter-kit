@@ -11,6 +11,7 @@ hydration.findHydrationData();
 console.log('hydration: ', hydration)
 let sleep = new Sleep()
 console.log(sleep)
+var dt = new Date();document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
 
 // Event Listeners
 // User Info

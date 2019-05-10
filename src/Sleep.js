@@ -1,4 +1,6 @@
-const SleepRepository = require('./SleepRepository');
+if (typeof module !== 'undefined' && module.exports !== 'undefined') {
+  const SleepRepository = require('./SleepRepository');
+}
 
 class Sleep {
   constructor(userID) {
@@ -57,4 +59,6 @@ class Sleep {
   }
 }
 
-module.exports = Sleep;
+if (typeof module !== 'undefined' && module.exports !== 'undefined') {
+  module.exports = Sleep;
+}

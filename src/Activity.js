@@ -1,5 +1,7 @@
-const ActivityRepository = require('./ActivityRepository');
-const UserRepository = require('./UserRepository');
+if (typeof module !== 'undefined' && module.exports !== 'undefined') {
+  const ActivityRepository = require('./ActivityRepository');
+  const UserRepository = require('./UserRepository');
+}
 
 class Activity {
    constructor(userID) {
@@ -22,4 +24,6 @@ class Activity {
    }
 }
 
-module.exports = Activity;
+if (typeof module !== 'undefined' && module.exports !== 'undefined') {
+  module.exports = Activity;
+}

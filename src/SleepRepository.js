@@ -1,4 +1,6 @@
-const UserRepository = require('../src/UserRepository');
+if (typeof module !== 'undefined' && module.exports !== 'undefined') {
+  const UserRepository = require('../src/UserRepository');
+}
 
 class SleepRepository {
   constructor (dataFilePath) {
@@ -77,4 +79,6 @@ class SleepRepository {
 
 }
 
-module.exports = SleepRepository;
+if (typeof module !== 'undefined' && module.exports !== 'undefined') {
+  module.exports = SleepRepository;
+}

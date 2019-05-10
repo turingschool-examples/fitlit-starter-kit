@@ -7,6 +7,7 @@ const sleepData = [
         "hoursSlept": 8,
         "sleepQuality": 4.8
       },
+      
       {
         "date": "07/05/2019",
         "hoursSlept": 10.7,

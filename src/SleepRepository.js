@@ -5,6 +5,10 @@ class SleepRepository {
     this.data = require(dataFilePath);
   }
 
+  getSlepDataOfAUser(id) {
+    return this.data.sleepData.find(el => el.userID === id).sleepData
+  }
+
   averageSleepQualityAll() {
     var totalQualityHours = 0;
     var days = 0;

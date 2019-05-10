@@ -1,6 +1,6 @@
 if(typeof module !== 'undefined') {
 	// var User = require('../src/user');
-	var userData = require('../data/users');
+	// var userData = require('../data/users');
 	var userHydrationData = require('../data/sample-hydration');
 };
 

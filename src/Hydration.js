@@ -11,7 +11,7 @@ class Hydration {
   getAverageFluidIntake(user) {
     
     return user.hydrationData.reduce((fluid, dailyIntake) => {
-      fluid += dailyIntake.numOunces
+      fluid += dailyIntake.numOuncescd
       return fluid;
     }, 0) / user.hydrationData.length
     

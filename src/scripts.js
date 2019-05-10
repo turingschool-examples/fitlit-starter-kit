@@ -2,6 +2,8 @@ const userRepository = new UserRepository()
 const hydrationRepository = new HydrationRepository();
 
 const users = userRepository.instantiateUsers();
+const waters = hydrationRepository.instantiateHydration();
+console.log(waters);
 
 
 var randomId = function generateRandomId() {
@@ -12,11 +14,15 @@ var user = userRepository.getUserDataFromId(randomId())
 function compareStepGoal(user) {
   return user.dailyStepGoal > userRepository.getAverageStepGoal() ? 'above' : 'below';
 }
+// WE NOW HAVE FIFTY INSTANTIATIONS OF HYDRATION, 
+// INSIDE THEY SHOULD PROPERTY OF ID WITH INSTANTIATED USER ID,
+// AND A PROPERTY OF HYDRATIONDATA.
+// WE WANT TO MOVE THE BELOW INSTANTIATION INTO THE HYDRATIONREPO METHOD WITH PARAMETERS OF USER ID AND CORRECT DATA SOURCE.
 
 let instantiatedUser = users.find(item => item.id === user.id)
 
-let hydrationUserData = hydrationRepository.getHydrationDataFromId(randomId());
-let hydration = new Hydration(randomId(), hydrationUserData);
+let hydrationUserData = hydrationRepository.getHydrationDataFromId(instantiatedUser.id);
+let hydration = new Hydration(instantiatedUser.id, hydrationUserData.hydrationData);
 console.log(hydration);
 
 $(document).ready(() => {

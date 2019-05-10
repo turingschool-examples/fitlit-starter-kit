@@ -6,15 +6,14 @@ class UserRepo {
   constructor() {
     this.users = userData;
   }
-  // returnUserData(userID) {
-  //   return this.users.find(ele => ele.id === userID)
-  // }
+
   averageStepGoal() {
     return Math.floor(this.users.reduce((acc, stepSum) => {
       acc += stepSum.dailyStepGoal
       return acc
     }, 0) / this.users.length)
   }
+  
   stateWithMostUsers() {
     let justStates = this.users.map(ele => ele.address)
       .toString('')

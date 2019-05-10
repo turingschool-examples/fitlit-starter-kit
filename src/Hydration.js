@@ -15,16 +15,18 @@ class Hydration {
 
   averageOuncesPerDay() {
     let ounces = this.data.hydrationData
-    let average = ounces.map(ele => ele.numOunces).reduce((acc, value) => {
-      acc += value / ounces.length
-      return acc
-    }, 0)
+    let average = ounces.map(ele => ele.numOunces)
+      .reduce((acc, value) => {
+        acc += value / ounces.length
+        return acc
+      }, 0)
     return Math.floor(average)
   }
 
   amountHydratedByDay(day) {
     let userOunce = this.data.hydrationData;
-    return userOunce.filter(ounces => ounces.date === day).map(oz => oz.numOunces).shift()
+    return userOunce.filter(ounces => ounces.date === day)
+      .map(oz => oz.numOunces).shift()
   }
 
   waterForWeek(startDate) {

@@ -7,9 +7,7 @@ if (typeof module !== 'undefined') {
 
 class Sleep {
   constructor() {
-    // console.log(user)
     this.data = (this.findSleepData(user.user.id));
-    
   }
   
   findSleepData(ident) {

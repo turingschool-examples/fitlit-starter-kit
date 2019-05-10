@@ -7,12 +7,9 @@
   </head>
   <body>
     <header>
-      <h1>Activity Tracker</h1>
+      <h1 id='userName'></h1>
     </header>
   <main>
-      <article class='dashTitle'>
-        <h2 id='userName'></h2>
-      </article>
       <section class="widgetContainer">
         <article class="widget">
           <h3>Personal Info</h3>
@@ -28,21 +25,64 @@
           <p id='compTheirStepGoal'></p>
         </article>
       </section>
-    <section>
-      <article class='dashTitle'>
+      <nav class='dashTitle'>
         <h2>Hydration Dashboard</h2>
-      </article>
-    </section>
-    <section>
-      <article class='dashTitle'>
-        <h2>Sleep Dash</h2>
-      </article>
-    </section>
-    <section>
-        <article class='dashTitle'>
-          <h2>Activity Dash</h2>
+      </nav>
+      <section class="widgetContainer">
+        <article class="widget">
+          <h3>H2O Today</h3>
+          <p id='userWater'>H2O Consumed Today</p>
         </article>
-      </section>
+        <article class="widget">
+          <h3>H2O This Week</h3>
+          <p id='waterWeek'>H2O consumed per day this week</p>
+        </article>
+      </section>  
+      <nav class='dashTitle'>
+        <h2>Sleep Dash</h2>
+      </nav>
+      <section class="widgetContainer">
+        <article class="widget">
+          <h3>Sleep Today</h3>
+          <p id='userSleep'>Hours Slept</p>
+          <p id='userSleepQual'>Quality of Sleep</p>
+        </article>
+        <article class="widget">
+          <h3>Sleep This Week</h3>
+          <p id='sleepWeek'>Hours slept per day this week</p>
+          <p id='sleepQualWeek'>Quality of sleep per day this week</p>
+        </article>
+        <article class="widget">
+          <h3>Your Sleep Alltime</h3>
+          <p id='userSleepAll'>Average hours slept alltime</p>
+          <p id='userSleepQualAll'>Quality of sleep alltime</p>
+        </article>
+      </section> 
+      <nav class='dashTitle'>
+        <h2>Activity Dash</h2>
+      </nav>
+      <section class="widgetContainer">
+        <article class="widget">
+          <h3>Steps Today</h3>
+          <p id='userSteps'>Steps Taken</p>
+        </article>
+        <article class="widget">
+          <h3>Minutes Active Today</h3>
+          <p id='userActive'>Number of minutes active today</p>
+        </article>
+        <article class="widget">
+          <h3>Miles Walked</h3>
+          <p id='userMiles'>Distance walked based on step count</p>
+        </article>
+        <article class="widget">
+          <h3>Activity Challenge</h3>
+          <p id='userComp'>Steps, minutes, flights vs user</p>
+        </article>
+        <article class="widget">
+          <h3>Weekly Activity</h3>
+          <p id='userWeek'>Steps, minutes, flights</p>
+        </article>
+      </section> 
   </main>
   <script type="text/javascript" src="../data/activity.js"></script>
   <script type="text/javascript" src="../data/hydration.js"></script>

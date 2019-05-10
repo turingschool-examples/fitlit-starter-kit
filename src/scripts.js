@@ -6,21 +6,21 @@ console.log('userRepo: ', userRepo)
 let user = new User(dynamicUser)
 let userStep = userRepo.averageStepGoal();
 console.log('user: ', user)
-let hydration = new Hydration(dynamicUser)
+let hydration = new Hydration()
 hydration.findHydrationData();
 console.log('hydration: ', hydration)
-let sleep = new Sleep(dynamicUser)
+let sleep = new Sleep()
 console.log(sleep)
 var dt = new Date();document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
 
 // Event Listeners
 // User Info
-document.getElementById('userName').innerText = `Welcome ${user.userObj.name}!`;
-document.getElementById('userAddress').innerText = user.userObj.address;
-document.getElementById('userEmail').innerText = user.userObj.email;
-document.getElementById('userStepGoal').innerText = `Daily Step Goal: ${user.userObj.dailyStepGoal}`;
-document.getElementById('userStrideLength').innerText = `Stride Length ${user.userObj.strideLength}`;
-document.getElementById('compStepGoal').innerText = `You: ${user.userObj.dailyStepGoal}`;
+document.getElementById('userName').innerText = `Welcome ${user.user.name}!`;
+document.getElementById('userAddress').innerText = user.user.address;
+document.getElementById('userEmail').innerText = user.user.email;
+document.getElementById('userStepGoal').innerText = `Daily Step Goal: ${user.user.dailyStepGoal}`;
+document.getElementById('userStrideLength').innerText = `Stride Length ${user.user.strideLength}`;
+document.getElementById('compStepGoal').innerText = `You: ${user.user.dailyStepGoal}`;
 document.getElementById('compTheirStepGoal').innerText = `Them: ${userStep}`;
 // Hydration Info
 

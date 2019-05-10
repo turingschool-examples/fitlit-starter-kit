@@ -1,33 +1,27 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const User = require('../src/User');
-const UserRepo = require('../src/UserRepo');
 const Sleep = require('../src/Sleep');
 const data = require('../data/sleep-test-data')
 
 describe('Sleep Test', function () {
-  let person;
-  let userRepo;
   let sleep;
 
   beforeEach(function () {
-    person = new User(1)
-    userRepo = new UserRepo()
-    sleep = new Sleep(0)
+    sleep = new Sleep()
   })
 
   it('should be a function', function () {
-    expect(User).to.be.a('function')
+    expect(Sleep).to.be.a('function')
   })
 
   it('should be an instantiation of Sleep', function () {
-    expect(person).to.be.a.instanceOf(User)
+    expect(sleep).to.be.a.instanceOf(Sleep)
   })
 
-  it('should find the speciifc sleep data per user', function () {
-    expect(sleep.findSleepData().userID).to.be.equal(sleep.userID)
-    expect(sleep.findSleepData()).to.be.equal(data[0])
+  it('should find the specific sleep data per user', function () {
+    expect(sleep.findSleepData(1)).to.be.equal(sleep.data)
+    expect(sleep.findSleepData(1)).to.be.equal(data[0])
   })
 
   it('should average their hours slept per day', function () {

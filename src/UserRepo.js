@@ -9,9 +9,9 @@ class UserRepo {
   constructor() {
     this.users = allUsers;
   }
-  returnUserData(ident) {
-    return this.users.find(ele => ele.id === ident)
-  }
+  // returnUserData(userID) {
+  //   return this.users.find(ele => ele.id === userID)
+  // }
   averageStepGoal() {
     return Math.floor(this.users.reduce((acc, stepSum) => {
       acc += stepSum.dailyStepGoal
@@ -29,7 +29,7 @@ class UserRepo {
       .filter(state => state === b).length)
       .pop()
 
-      return oneState
+    return oneState
   }
 }
 

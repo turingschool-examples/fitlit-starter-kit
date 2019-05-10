@@ -1,24 +1,24 @@
 let hydrData = {}
-let hydrUser = {}
 if (typeof module !== 'undefined') {
   hydrUser = require('../data/users-test-data')
-  hydrData = require('../data/hydration-test-data')
+  hydrationData = require('../data/hydration-test-data')
+  User = require('./User')
+  user = new User(1)
 } else {
   hydrUser = userData;
   hydrData = hydrationData;
 }
 class Hydration {
-  constructor(index) {
-    this.userID = hydrUser[index].id;
-    this.usersHydrationData = (this.findHydrationData());
+  constructor() {
+    this.data = (this.findHydrationData(user.user.id));
   }
 
-  findHydrationData() {
-    return hydrData.find(ele => ele.userID === this.userID)
+  findHydrationData(ident) {
+    return hydrationData.find(ele => ele.userID === ident)
   }
 
   averageOuncesPerDay() {
-    let ounces = this.findHydrationData().hydrationData
+    let ounces = this.data.hydrationData
     let average = ounces.map(ele => ele.numOunces).reduce((acc, value) => {
       acc += value / ounces.length
       return acc
@@ -27,12 +27,12 @@ class Hydration {
   }
 
   amountHydratedByDay(day) {
-    let userOunce = this.findHydrationData().hydrationData;
+    let userOunce = this.data.hydrationData;
     return userOunce.filter(ounces => ounces.date === day).map(oz => oz.numOunces).shift()
   }
 
   waterForWeek(startDate) {
-    let week = this.findHydrationData().hydrationData;
+    let week = this.data.hydrationData;
     let firstDayIndex = week.findIndex(ele => ele.date === startDate) 
     return week.slice(firstDayIndex, 7)
   }

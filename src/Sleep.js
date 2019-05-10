@@ -1,21 +1,23 @@
-let sleepUser = {}
 let userSleepData = {}
 if (typeof module !== 'undefined') {
   sleepUser = require('../data/users-test-data')
   userSleepData = require('../data/sleep-test-data')
+  User = require('./User')
+  user = new User(1)
 } else {
   sleepUser = userData
   userSleepData = sleepData
 }
 
 class Sleep {
-  constructor(index) {
-    this.userID = sleepUser[index].id
-    this.data = (this.findSleepData());
+  constructor() {
+    // console.log(user)
+    this.data = (this.findSleepData(user.user.id));
+    
   }
   
-  findSleepData() {
-    return userSleepData.find(user => user.userID === this.userID)
+  findSleepData(ident) {
+    return userSleepData.find(user => user.userID === ident)
   }
 
 //For a user(identified by their userID), the average number of hours slept per day

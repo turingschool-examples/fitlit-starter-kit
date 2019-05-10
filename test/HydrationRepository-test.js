@@ -1,10 +1,8 @@
 const chai = require('chai');
 const expect = chai.expect;
-const User = require('../src/User.js');
-const UserRepository = require('../src/UserRepository');
 const HydrationRepository = require('../src/HydrationRepository');
 const Hydration = require('../src/Hydration.js');
-const sampleHydrationData = require('../data/sample-Hydration-data')
+
 
 
 describe('HydrationRepository', function() {
@@ -95,6 +93,15 @@ describe('HydrationRepository', function() {
   it('should retrieve user data from id', function() {
     const hydrationRepository = new HydrationRepository('../data/sample-Hydration-data');
     expect(hydrationRepository.getHydrationDataFromId(1)).to.eql(hydrationDataSample)    
-  })
+  });
+
+  it('should instantiate Hydration', function() {
+    const hydrationRepository = new HydrationRepository(hydrationDataSample);
+    const hydration = new Hydration(hydrationDataSample.userID, hydrationDataSample);
+
+    hydrationRepository.instantiateHydration()
+
+    expect(hydration).to.be.an.instanceOf(Hydration)
+  });
   
 });

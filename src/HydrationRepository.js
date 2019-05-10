@@ -16,7 +16,7 @@ class HydrationRepository {
     }
   }
   instantiateHydration() {
-    return hydrationData.map(datum => datum = new Hydration(datum));
+    return hydrationData.map(datum => datum = new Hydration(datum.userID, datum.hydrationData));
   }
 }
 

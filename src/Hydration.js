@@ -9,9 +9,8 @@ class Hydration {
   }
     // this.currentDate = Date.now();
   getAverageFluidIntake(user) {
-    
     return user.hydrationData.reduce((fluid, dailyIntake) => {
-      fluid += dailyIntake.numOuncescd
+      fluid += dailyIntake.numOunces
       return fluid;
     }, 0) / user.hydrationData.length
     

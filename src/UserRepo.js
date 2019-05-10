@@ -1,13 +1,10 @@
-let allUsers = {}
 if (typeof module !== 'undefined') {
-  allUsers = require('../data/users-test-data')
-} else {
-  allUsers = userData
+  userData = require('../data/users-test-data')
 }
 
 class UserRepo {
   constructor() {
-    this.users = allUsers;
+    this.users = userData;
   }
   // returnUserData(userID) {
   //   return this.users.find(ele => ele.id === userID)

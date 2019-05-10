@@ -1,12 +1,8 @@
-let userSleepData = {}
 if (typeof module !== 'undefined') {
-  sleepUser = require('../data/users-test-data')
-  userSleepData = require('../data/sleep-test-data')
+  userData = require('../data/users-test-data')
+  sleepData = require('../data/sleep-test-data')
   User = require('./User')
   user = new User(1)
-} else {
-  sleepUser = userData
-  userSleepData = sleepData
 }
 
 class Sleep {
@@ -17,7 +13,7 @@ class Sleep {
   }
   
   findSleepData(ident) {
-    return userSleepData.find(user => user.userID === ident)
+    return sleepData.find(user => user.userID === ident)
   }
 
 //For a user(identified by their userID), the average number of hours slept per day
@@ -64,7 +60,7 @@ class Sleep {
 //For all users, the average sleep quality
 
   allUsersSleepQuality() {
-    let allSleepQual = userSleepData.reduce((acc, sum) => {
+    let allSleepQual = sleepData.reduce((acc, sum) => {
       sum.sleepData.forEach(sums => {
         if (acc.indexOf(sums) === -1)
           acc.push(sums)

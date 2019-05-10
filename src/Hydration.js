@@ -1,13 +1,9 @@
-let hydrData = {}
 if (typeof module !== 'undefined') {
-  hydrUser = require('../data/users-test-data')
+  userData = require('../data/users-test-data')
   hydrationData = require('../data/hydration-test-data')
   User = require('./User')
   user = new User(1)
-} else {
-  hydrUser = userData;
-  hydrData = hydrationData;
-}
+} 
 class Hydration {
   constructor() {
     this.data = (this.findHydrationData(user.user.id));

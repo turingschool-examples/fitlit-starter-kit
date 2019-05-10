@@ -23,10 +23,6 @@ describe('UserRepo', function () {
     expect(userRepo.users[3].name).to.equal('Elaina Rau')
   })
 
-  it('should be able to return a user object by ID', function () {
-    expect(userRepo.returnUserData(3)).to.equal(userRepo.users[2])
-  })
-
   it('should return the average step goal for all users', function () {
     expect(userRepo.averageStepGoal()).to.be.a('number')
     expect(userRepo.averageStepGoal()).to.equal(7833)

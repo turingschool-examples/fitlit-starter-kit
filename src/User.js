@@ -1,13 +1,19 @@
 if (typeof module !== 'undefined') {
   userData = require('../data/users-test-data')
+  UserRepo = require('./UserRepo')
 }
 
 class User {
-  constructor(index) {
-    this.userObj = userData[index];
+  constructor(userID) {
+    this.user = (this.returnUserData(userID));
   }
+
+  returnUserData(index) {
+    return userData.find(ele => ele.id === index)
+  }
+
   returnUserFirstName() {
-    return this.userObj.name.split(' ').shift()
+    return this.user.name.split(' ').shift()
   }
 }
 

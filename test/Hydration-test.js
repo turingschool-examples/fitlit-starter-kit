@@ -1,20 +1,15 @@
 const chai = require('chai');
 const expect = chai.expect;
-const assert = chai.assert;
 
-const User = require('../src/User');
-const UserRepo = require('../src/UserRepo')
 const Hydration = require('../src/Hydration')
 const data = require('../data/hydration-test-data')
 
 describe('Hydration Test', function () {
-  let user;
-  let userRepo;
+
   let hydration;
+
   beforeEach(function () {
-    user = new User(1)
-    userRepo = new UserRepo()
-    hydration = new Hydration(0)
+    hydration = new Hydration()
   })
 
   it('should be a function', function () {
@@ -25,14 +20,14 @@ describe('Hydration Test', function () {
     expect(hydration).to.be.a.instanceOf(Hydration)
   })
 
-  it('should take in user and hydration data', function () {
-    userRepo.returnUserData(1)
-    expect(hydration.userID).to.equal(userRepo.returnUserData(1).id)
-    expect()
+  it('should take in hydration data per user', function () {
+    expect(hydration.data.userID).to.equal(1)
+    expect(hydration.data.hydrationData).to.be.a('array')
+    expect(hydration.data.hydrationData).to.have.length(100)
   })
 
   it('should return a users hydration data', function () {
-    expect(hydration.usersHydrationData).to.equal(data[0])
+    expect(hydration.data).to.equal(data[0])
   })
 
   it('should find the average ounces per day', function () {

@@ -11,11 +11,13 @@ if (typeof module !== 'undefined') {
 class Sleep {
   constructor(index) {
     this.userID = sleepUser[index].id
-    this.data = this.findSleepData();
+    this.data = (this.findSleepData());
   }
+  
   findSleepData() {
-    return userSleepData.find(user => user.id === userSleepData.userID)
+    return userSleepData.find(user => user.userID === this.userID)
   }
+
 //For a user(identified by their userID), the average number of hours slept per day
   averageSleepPerDay() {
     return this.data.sleepData.reduce((acc, sum) => {
@@ -34,6 +36,7 @@ class Sleep {
   }
 
 //For a user, how many hours they slept for a specific day(identified by a date)
+
   hoursSleptOnDay(day) {
     return this.data.sleepData.filter(hours => hours.date === day).map(hr => hr.hoursSlept).shift()
   }

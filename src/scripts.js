@@ -36,16 +36,15 @@ const loadHydrationData = (user) => {
   let userHydration = new UserHydration(hydrationData);
   let dayData = userHydration.getOuncesByDay(user.person.id, "12/05/2019");
   ouncesDrankToday.innerText = `you drank ${dayData} oz of water today`;
-  loadWeeklyData(user, userHydration);
+  weeklyHydrationData(user, userHydration);
 }
 
-const loadWeeklyData = (user, userHydration) => {
+const weeklyHydrationData = (user, userHydration) => {
   let weekData = userHydration.getWeeklyOunces(user.person.id, "12/05/2019");
   let listedData = weekData.map(el => {
     return `<li>Date: ${el.date}</li><li>Ounces: ${el.numOunces}</li></br>`;
   });
   ouncesThisWeek.innerHTML = `<ul id="ounces-weekly">${listedData.join(' ')}</ul>`;
-  console.log(weekData)
 }
 
 loadName();

@@ -16,30 +16,18 @@ describe('SleepRepository', function() {
     expect(sleepRepository).to.be.an.instanceof(SleepRepository);
   });
 
-  ////// i'm here...
-
-  it.skip('getSlepDataOfAUser method should return sleep data of one user by ID', function() {
-    expect(sleepRepository.getSlepDataOfAUser(1)).to.eql([
+  it('getSlepDataOfAUser method should return sleep data of one user by ID', function() {
+    expect(sleepRepository.getSleepDataOfAUser(5)).to.eql([
       {
         "date": "06/05/2019",
-        "hoursSlept": 8,
-        "sleepQuality": 4.8
-      },
-      {
-        "date": "07/05/2019",
-        "hoursSlept": 10.7,
-        "sleepQuality": 4.8
-      },
-      {
-        "date": "08/05/2019",
-        "hoursSlept": 5,
-        "sleepQuality": 1.9
+        "hoursSlept": 7.6,
+        "sleepQuality": 1.5
       }
     ]);
   });
 
   it('averageSleepQualityAll should return average sleeping quality of all users', function() {
-    expect(sleepRepository.averageSleepQualityAll()).to.eql(3.6);
+    expect(sleepRepository.averageSleepQualityAll()).to.eql(3.5);
   });
 
   it('sleepQualityGreaterThanThreeIDs should return all users ID who average a sleep quality greater than 3 for a given week', function() {

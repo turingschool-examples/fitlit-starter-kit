@@ -118,6 +118,16 @@ const sleepData = [
           "sleepQuality": 4.9
         }
       ]
+    },
+    {
+      "userID": 5,
+      "sleepData": [
+        {
+          "date": "06/05/2019",
+          "hoursSlept": 7.6,
+          "sleepQuality": 1.5
+        }
+      ]
     }
 ]
 

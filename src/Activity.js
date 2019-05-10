@@ -1,12 +1,24 @@
-const sleep = require('../data/activity');
-const sleepData = sleep.sleepData;
+const ActivityRepository = require('./ActivityRepository');
+const UserRepository = require('./UserRepository');
 
 class Activity {
    constructor(userID) {
     this.userID = userID;
    }
-   stepsToMiles() {
 
+   userData() {
+     const userRepository = new UserRepository('../data/usersSub.js')
+     return userRepository.returnUserData(this.userID)
+   }
+
+   userActivityData() {
+     const activityRepository = new ActivityRepository('../data/activitySample.js');
+     return activityRepository.getActivityDataOfAUser(this.userID)
+   }
+   stepsToMiles(date) {
+     const steps = this.userActivityData().find(el => el.date === date).numSteps;
+     console.log(steps)
+     console.log(this.userData().strideLength)
    }
 }
 

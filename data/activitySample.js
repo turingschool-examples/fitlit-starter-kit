@@ -114,6 +114,17 @@ const activityData = [
         "flightsOfStairs": 22
       },
     ]
+  },
+  {
+    "userID": 5,
+    "activityData": [
+      {
+        "date": "06/05/2019",
+        "numSteps": 3905,
+        "minutesActive": 146,
+        "flightsOfStairs": 42
+      }
+    ]
   }
 ]
 

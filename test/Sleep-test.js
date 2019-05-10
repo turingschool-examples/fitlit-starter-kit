@@ -1,6 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const Sleep = require('../src/Sleep');
+const SleepRepository = require('../src/SleepRepository');
 
 describe('Sleep', function() {
 let sleep
@@ -15,6 +16,15 @@ let sleep
   it('should be an instance of Sleep', function() {
     expect(sleep).to.be.an.instanceof(Sleep);
   });
+
+  it('userSleepData method should return sleep data of one user using ID', function() {
+    const sleep = new Sleep(5);    
+    expect(sleep.userSleepData()).to.eql([{
+      "date": "06/05/2019",
+      "hoursSlept": 7.6,
+      "sleepQuality": 1.5
+    }])
+  })
 
   it('averageHrsSlept method should return users average of hours slept', function() {
     expect(sleep.averageHrsSlept()).to.equal(8.3);

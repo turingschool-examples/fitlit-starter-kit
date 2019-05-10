@@ -5,7 +5,7 @@ class SleepRepository {
     this.data = require(dataFilePath);
   }
 
-  getSlepDataOfAUser(id) {
+  getSleepDataOfAUser(id) {
     return this.data.sleepData.find(el => el.userID === id).sleepData
   }
 

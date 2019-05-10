@@ -34,6 +34,6 @@ describe("UserHydration", function() {
 
   it('should return a weeks worth of ounces drank', function() {
 
-    expect(userHydration.getWeeklyOunces(1, "18/05/2019")).to.be.an('array')
+    expect(userHydration.getWeeklyOunces(1, "09/05/2019")).to.be.an('array')
   });
 });

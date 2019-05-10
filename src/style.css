@@ -18,3 +18,7 @@ article {
 border: 1px black solid;
 flex: 1;
 }
+
+#ounces-weekly-card {
+  overflow: scroll
+}

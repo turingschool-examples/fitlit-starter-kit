@@ -22,11 +22,11 @@ class UserHydration {
 
   getWeeklyOunces(id, date) {
     let drinkingData = this.getHydrationData(id);
-    let getDay = drinkingData.find(el => el.date.includes(date));
-    let dayIndex = drinkingData.indexOf(getDay)
-    let weekOfData = drinkingData.slice(dayIndex, dayIndex + 7);
-    console.log(weekOfData.map(el => el.numOunces));
-    return weekOfData.map(el => el.numOunces);
+    let reversed = drinkingData.reverse();
+    let getDay = reversed.find(el => el.date.includes(date));
+    let dayIndex = reversed.indexOf(getDay)
+    let weekOfData = reversed.slice(dayIndex, dayIndex + 7);
+    return weekOfData;
   } 
 }
 

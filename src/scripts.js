@@ -14,6 +14,10 @@ console.log(weekHydration)
 console.log('hydration: ', hydration)
 let sleep = new Sleep()
 console.log(sleep)
+var dt = new Date(); 
+
+document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+
 
 // Event Listeners
 document.getElementById("datetime").innerHTML = (("0"+dt.getDate()).slice(-2)) +"/"+ (("0"+(dt.getMonth()+1)).slice(-2)) +"/"+ (dt.getFullYear());

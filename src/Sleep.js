@@ -1,23 +1,17 @@
-let userSleepData = {}
 if (typeof module !== 'undefined') {
-  sleepUser = require('../data/users-test-data')
-  userSleepData = require('../data/sleep-test-data')
+  userData = require('../data/users-test-data')
+  sleepData = require('../data/sleep-test-data')
   User = require('./User')
   user = new User(1)
-} else {
-  sleepUser = userData
-  userSleepData = sleepData
 }
 
 class Sleep {
   constructor() {
-    // console.log(user)
     this.data = (this.findSleepData(user.user.id));
-    
   }
   
   findSleepData(ident) {
-    return userSleepData.find(user => user.userID === ident)
+    return sleepData.find(user => user.userID === ident)
   }
 
 //For a user(identified by their userID), the average number of hours slept per day
@@ -40,35 +34,39 @@ class Sleep {
 //For a user, how many hours they slept for a specific day(identified by a date)
 
   hoursSleptOnDay(day) {
-    return this.data.sleepData.filter(hours => hours.date === day).map(hr => hr.hoursSlept).shift()
+    return this.data.sleepData.filter(hours => hours.date === day)
+      .map(hr => hr.hoursSlept).shift()
   }
 
 //For a user, how many hours slept each day over the course of a given week(7 days) - you should be able to calculate this for any week, not just the latest week
 
   hoursSleptGivenWeek(weekStart) {
     let firstDayIndex = this.data.sleepData.findIndex(ele => ele.date === weekStart)
-    return this.data.sleepData.slice(firstDayIndex, 7).map(hours => { 
-      return {date: hours.date, hoursSlept: hours.hoursSlept}
-    })
+    return this.data.sleepData.slice(firstDayIndex, 7)
+      .map(hours => { 
+        return {date: hours.date, hoursSlept: hours.hoursSlept}
+      })
   }
 
 //For a user, their sleep quality each day over the course of a given week(7 days) - you should be able to calculate this for any week, not just the latest week
 
   sleepQualityGivenWeek(weekStart) {
     let firstDayIndex = this.data.sleepData.findIndex(ele => ele.date === weekStart)
-    return this.data.sleepData.slice(firstDayIndex, 7).map(hours => {
-      return { date: hours.date, quality: hours.sleepQuality}
-    })
+    return this.data.sleepData.slice(firstDayIndex, 7)
+      .map(hours => {
+        return { date: hours.date, quality: hours.sleepQuality}
+      })
   }
 
 //For all users, the average sleep quality
 
   allUsersSleepQuality() {
-    let allSleepQual = userSleepData.reduce((acc, sum) => {
-      sum.sleepData.forEach(sums => {
-        if (acc.indexOf(sums) === -1)
-          acc.push(sums)
-      })
+    let allSleepQual = sleepData.reduce((acc, sum) => {
+      sum.sleepData
+        .forEach(sums => {
+          if (acc.indexOf(sums) === -1)
+            acc.push(sums)
+        })
       return acc;
     }, [])
     return allSleepQual.reduce((accs, summed) => {

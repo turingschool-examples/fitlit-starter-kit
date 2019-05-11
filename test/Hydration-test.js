@@ -36,7 +36,7 @@ describe('Hydration Test', function () {
     expect(hydration.averageOuncesPerDay()).to.equal(55)
   })
 
-  it('should find the amount of ounces xonsumed for a specific day', function () {
+  it('should find the amount of ounces consumed for a specific day', function () {
     hydration.findHydrationData()
     expect(hydration.amountHydratedByDay('06/05/2019')).to.be.a('number')
     expect(hydration.amountHydratedByDay('06/05/2019')).to.equal(64)

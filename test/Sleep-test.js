@@ -45,7 +45,6 @@ describe('Sleep Test', function () {
 
   it('should return how many hours slept each day over the course of a given week(7 days)', function () {
     expect(sleep.hoursSleptGivenWeek('10/05/2019')).to.have.length(7)
-    console.log(sleep.hoursSleptGivenWeek('06/05/2019'))
   })
 
   it('should return their sleep quality each day over the course of a given week(7 days)', function () {

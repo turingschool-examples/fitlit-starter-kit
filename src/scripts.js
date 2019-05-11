@@ -35,6 +35,7 @@ let alltimeQualSleep = sleep.averageSleepQualAllTime()
 
 /*----------------User info---------------*/
 document.getElementById('userName').innerText = `Welcome ${user.returnUserFirstName()}!`;
+document.getElementById('full-name').innerText = user.user.name;
 document.getElementById('userAddress').innerText = user.user.address;
 document.getElementById('userEmail').innerText = user.user.email;
 document.getElementById('userStepGoal').innerText = `Daily Step Goal: ${user.user.dailyStepGoal}`;
@@ -268,9 +269,9 @@ let sleepChart = new Chart(sleepToday, {
 
 
 /*------------Circle Graphs--------*/
-const waterPercentage = () => dayHydration / 64 * 100;
+const waterPercentage = () => parseFloat(dayHydration / 64 * 100).toFixed(2)
 
-const walkingPercentage = () => todaysSteps / user.user.dailyStepGoal * 100
+const walkingPercentage = () => parseFloat((todaysSteps / user.user.dailyStepGoal * 100).toFixed(2))
 
 const minutesPerDay = () => (todaysMinutesActive / 150) * 100
 
@@ -298,8 +299,9 @@ document.getElementById('user-water').innerHTML = `<div class="single-chart">
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831"
       />
-      <text x="18" y="20.35" class="percentage">${dayHydration} Oz</text>
+      <text x="18" y="20.35" class="percentage">${waterPercentage()}%</text>
     </svg>
+    <p>You have drank ${dayHydration}oz's out of your goal of 64oz</p>
   </div>`
 
 document.getElementById('user-steps').innerHTML = `<div class="single-chart">
@@ -315,8 +317,9 @@ document.getElementById('user-steps').innerHTML = `<div class="single-chart">
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831"
       />
-      <text x="18" y="20.35" class="percentage">${todaysSteps}</text>
+      <text x="18" y="20.35" class="percentage">${walkingPercentage()}%</text>
     </svg>
+    <p>Steps today ${todaysSteps} our of your goal of ${user.user.dailyStepGoal}</p>
   </div>`
 
   document.getElementById('user-active').innerHTML = `<div class="single-chart">

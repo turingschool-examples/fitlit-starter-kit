@@ -5,6 +5,8 @@
     <link href="https://fonts.googleapis.com/css?family=Bevan" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/base.css">
     <link rel="stylesheet" type="text/css" href="../libraries/package/dist/Chart.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   </head>
   <body>
     <header>
@@ -16,6 +18,7 @@
       <section class="widgetContainer">
         <article class="widget">
           <h3>Personal Info</h3>
+          <p id="full-name"></p>
           <p id='userAddress'></p>
           <p id='userEmail'></p>
           <p id='userStepGoal'></p>
@@ -33,7 +36,6 @@
         <article class="widget">
           <h3>H2O Today</h3>
           <p id='user-water'>Ounces of Water Drank Today</p>
-          <p>Goal of 64 Ounces</p>
         </article>
         <article class="widget">
           <h3>H2O This Week</h3>
@@ -63,17 +65,17 @@
       <section class="widgetContainer">
         <article class="widget">
           <h3>Steps Today</h3>
-          <p id='user-steps'>Steps Taken</p>
+          <p id='user-steps'></p>
         </article>
         <article class="widget">
           <h3>Minutes Active Today</h3>
-          <p id='user-active'>Number of minutes active today</p>
+          <p id='user-active'></p>
           <p>Goal of 150 Minutes</p>
         </article>
         <article class="widget">
           <h3>Miles Walked</h3>
           <img class='shoe'src='../images/running.svg'/>
-          <p id='user-miles'>Distance walked based on step count</p>
+          <p id='user-miles'>Miles</p>
         </article>
         <article class="widget">
           <h3>Activity Challenge</h3>

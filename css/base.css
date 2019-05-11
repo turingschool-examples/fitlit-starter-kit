@@ -77,6 +77,10 @@ nav.dashTitle {
   width: 100%;
 }
 
+fa {
+  display: inline-block;
+}
+
 .flex-wrapper {
   display: flex;
   flex-flow: row nowrap;
@@ -90,7 +94,7 @@ nav.dashTitle {
 .circular-chart {
   display: block;
   margin: 10px auto;
-  max-width: 80%;
+  max-width: 70%;
   max-height: 250px;
 }
 
@@ -128,7 +132,7 @@ nav.dashTitle {
 .percentage {
   fill: #666;
   font-family: sans-serif;
-  font-size: 0.5em;
+  font-size: 0.4em;
   text-anchor: middle;
 }
 

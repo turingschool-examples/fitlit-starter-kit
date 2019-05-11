@@ -1,24 +1,23 @@
 
-// if(typeof module !== 'undefined') {
-// var userData = require('../data/sample-users');
-// }
+if(typeof module !== 'undefined') {
+ userData = require('../data/sample-users');
+}
 
 class UserRepository {
-	constructor(dataFilePath) {
-		this.dataFilePath = dataFilePath;
-    this.userData = this.findFilepath(dataFilePath);
+	constructor() {
+		this.userData = userData;
+    // this.userData = this.findFilepath(dataFilePath);
   }
 
-  findFilepath(dataFilePath) {
-    if(typeof module !== 'undefined') {
-      return require(dataFilePath)
-    } else {
-      return userData;
-    }
-  }
+  // findFilepath(dataFilePath) {
+  //   if(typeof module !== 'undefined') {
+  //     return require(dataFilePath)
+  //   } else {
+  //     return userData;
+  //   }
+  // }
 
-	findUserData(userId) {
-
+	findUserData(userId) {  //redundant to the method in User - should be in User
     let currentUser = this.userData.find(function(element){
     return element.id === userId 
     })

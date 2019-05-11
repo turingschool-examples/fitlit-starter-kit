@@ -1,7 +1,7 @@
 if(typeof module !== 'undefined') {
 var chai = require('chai');
 var expect = chai.expect;
-var userData = require('../data/sample-users');
+// var userData = require('../data/sample-users');
 var User = require('../src/user')
 }
 
@@ -21,19 +21,19 @@ describe('User', function() {
   let user;
 
   beforeEach(function() {
-    const userData = {
-      "id": 1,
-      "name": "Nyasia Weber",
-      "address": "270 August Meadows, Maribelside SD 36129",
-      "email": "Jordane_Schultz@yahoo.com",
-      "strideLength": 4.7,
-      "dailyStepGoal": 8000
-    }
-    user = new User(userData);
+    // const userData = {
+    //   "id": 1,
+    //   "name": "Nyasia Weber",
+    //   "address": "270 August Meadows, Maribelside SD 36129",
+    //   "email": "Jordane_Schultz@yahoo.com",
+    //   "strideLength": 4.7,
+    //   "dailyStepGoal": 8000
+    // }
+    user = new User(1);
   });
 
   it ('should store user id', function() {
-    expect(user.id).to.equal(userData.id);
+    expect(user.user.id).to.equal(userData.id);
   })
 
   it ('should store user name', function() {

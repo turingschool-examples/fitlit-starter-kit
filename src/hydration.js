@@ -1,15 +1,19 @@
 if(typeof module !== 'undefined') {
-	// var User = require('../src/user');
-	// var userData = require('../data/users');
-	var userHydrationData = require('../data/sample-hydration');
+	User = require('../src/user');
+	userData = require('../data/users');
+	hydrationRepo = require('../src/hydration-repo');
+	hydrationStats = require('../data/sample-hydration');
 };
 
 
 class Hydration {
-	constructor(hydrationStats, userData, userId) {
-		this.hydrationStats = require(hydrationStats);
-		this.userData = require(userData);
-		// this.userHydration = this.returnUserHydration(userId)
+	constructor(userId) {
+		// this.hydrationStats = require(hydrationStats);
+		this.hydrationStats = hydrationStats;
+		// this.userData = userData;
+		this.hydrationStats = hydrationData;
+		this.userData = userData;
+		this.userHydration = (this.returnUserHydration(user.user.id))
 	}
 
 	returnUserHydration(userId) {
@@ -35,7 +39,7 @@ class Hydration {
    	return dateRange;
  	}
 
-}
+};
 
 
 

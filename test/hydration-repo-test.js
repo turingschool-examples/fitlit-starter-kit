@@ -18,7 +18,10 @@ describe('Hydration Repository', function() {
 		expect(hydrationRepository).to.be.an.instanceof(HydrationRepository);
 	});
 
-	it('should find a user\'s hydration data by id', function() {
-		
-	})
+	// it('should find a user\'s hydration data by id', function() {  
+	// 	const hydrationRepository = new HydrationRepository('../data/sample-hydration');
+	// 	expect(hydrationRepository.findUserHydration(1)).to.equal(userHydrationData[0]);
+	// });
+
+
 })

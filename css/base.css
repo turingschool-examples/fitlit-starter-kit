@@ -1,7 +1,11 @@
+/*----------------HTML-------------------*/
+
 body {
   background-color: #5D5D5D;
   margin: 0px;
 }
+
+/*---------------Header------------------*/
 
 header {
   background-color: white;
@@ -16,6 +20,8 @@ h1 {
   margin: 0px;
   padding: 17px;
 }
+
+/*------------------Main-----------------*/
 
 figure {
   border: solid;
@@ -34,6 +40,16 @@ h2 {
   margin: 0px;
   padding: 8px;
 }
+/*----------Widget Container-----------*/
+h3 {
+  margin: 5px 0px 5px 0px;
+  text-align: center;
+}
+
+h4, p {
+  margin: 10px 2px, 10px, 2px;
+  text-align: center;
+}
 
 section.widgetContainer {
   display: flex;
@@ -41,6 +57,7 @@ section.widgetContainer {
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 10px;
+  padding: 10px;
 }
 
 nav.dashTitle {
@@ -53,18 +70,14 @@ nav.dashTitle {
 
 article.widget {
   background-color: white;
-  height: 200px;
+  height: 260px;
   margin: 10px;
-  width: 200px;
+  padding: 10px;
+  width: 240px;
+  border-radius: 5px;
 }
 
-h3 {
-  margin: 5px 0px 5px 0px;
-  text-align: center;
-}
-
-h4, p {
-  margin: 10px 2px, 10px, 2px;
-  text-align: center;
+canvas {
+  margin: auto;
 }
 

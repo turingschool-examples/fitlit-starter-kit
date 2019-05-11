@@ -33,19 +33,14 @@ console.log('sleep: ', sleep)
 const sleepWeek = sleep.hoursSleptGivenWeek(todaysDate)
 let dayHydration = hydration.amountHydratedByDay(todaysDate);
 let weekHydration = hydration.waterForWeek(todaysDate)
-console.log('hydration: ', hydration)
 let daySleep = sleep.hoursSleptOnDay(todaysDate);
 let qualitySleep = sleep.qualityOnDay(todaysDate);
 let weekSleep = sleep.hoursSleptGivenWeek(todaysDate)
-console.log(weekSleep)
 let weekQualSleep = sleep.sleepQualityGivenWeek(todaysDate)
-console.log(weekQualSleep)
 let alltimeHoursSleep = sleep.averageSleepHoursAllTime()
-console.log(alltimeHoursSleep)
 let alltimeQualSleep = sleep.averageSleepQualAllTime()
 
 document.getElementById('datetime').innerHTML = dt.toLocaleDateString();
-
 
 
 // Event Listeners
@@ -53,7 +48,7 @@ document.getElementById('datetime').innerHTML = dt.toLocaleDateString();
 document.getElementById("datetime").innerHTML = todaysDate;
 
 // User Info
-document.getElementById('userName').innerText = `Welcome ${user.user.name}!`;
+document.getElementById('userName').innerText = `Welcome ${user.returnUserFirstName()}!`;
 document.getElementById('userAddress').innerText = user.user.address;
 document.getElementById('userEmail').innerText = user.user.email;
 document.getElementById('userStepGoal').innerText = `Daily Step Goal: ${user.user.dailyStepGoal}`;
@@ -88,6 +83,8 @@ document.getElementById('user-steps').innerText = `You have taken ${activity.ste
 document.getElementById('user-active').innerText = `You have been active for ${activity.minutesActiveForDate(todaysDate)} minutes today`
 
 document.getElementById('user-miles').innerText = `You have walked ${activity.milesWalkedToday(todaysDate)} miles today.`
+
+
 // Hydration Info
 
 

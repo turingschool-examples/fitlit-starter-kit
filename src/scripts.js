@@ -53,8 +53,8 @@ document.getElementById('userAddress').innerText = user.user.address;
 document.getElementById('userEmail').innerText = user.user.email;
 document.getElementById('userStepGoal').innerText = `Daily Step Goal: ${user.user.dailyStepGoal}`;
 document.getElementById('userStrideLength').innerText = `Stride Length ${user.user.strideLength}`;
-document.getElementById('compStepGoal').innerText = `You: ${user.user.dailyStepGoal}`;
-document.getElementById('compTheirStepGoal').innerText = `Them: ${userStep}`;
+// document.getElementById('compStepGoal').innerText = `You: ${user.user.dailyStepGoal}`;
+// document.getElementById('compTheirStepGoal').innerText = `Them: ${userStep}`;
 // user hydration
 document.getElementById('userWater').innerText = `You have consumed ${dayHydration} ounces today.`;
 // document.getElementById('waterWeek').innerText = `You have consumed ${weekHydration} ounces this week.`;
@@ -62,8 +62,8 @@ document.getElementById('userWater').innerText = `You have consumed ${dayHydrati
 // user sleep
 
 // days
-document.getElementById('user-sleep-hour-today').innerText = `You slept ${daySleep} hours today.`;
-document.getElementById('user-sleep-qual-today').innerText = `Your quality of sleep today was ${qualitySleep}`;
+// document.getElementById('user-sleep-hour-today').innerText = `You slept ${daySleep} hours today.`;
+// document.getElementById('user-sleep-qual-today').innerText = `Your quality of sleep today was ${qualitySleep}`;
 // document.getElementById('sleep-week').innerText = `You slept ${weekSleep} hours this week.`;
 // document.getElementById('user-sleep-qual-all').innerText = `Your sleep quality this week was ${alltimeQualSleep}`;
 
@@ -72,10 +72,9 @@ let sleepQual = document.getElementById('qual-slept-week-chart').getContext('2d'
 let sleepHours = document.getElementById('hours-slept-week-chart').getContext('2d');
 let hydrationWeek = document.getElementById('hydration-week-chart').getContext('2d');
 let activityWeek = document.getElementById('activity-week-chart').getContext('2d')
-
 // all time
-document.getElementById('user-sleep-hours-all').innerText = `Your average hours of sleep per night all time is ${alltimeHoursSleep}`;
-document.getElementById('user-sleep-qual-all').innerText = `Your average quality of sleep per night all time is ${alltimeQualSleep}`;
+// document.getElementById('user-sleep-hours-all').innerText = `Your average hours of sleep per night all time is ${alltimeHoursSleep}`;
+// document.getElementById('user-sleep-qual-all').innerText = `Your average quality of sleep per night all time is ${alltimeQualSleep}`;
 
 //activity info
 
@@ -248,6 +247,72 @@ let activityWeekChart = new Chart(activityWeek, {
     }
   }
 });
+
+let stepGoals = document.getElementById('step-goal-chart').getContext('2d')
+
+let stepGoalComparisonChart = new Chart(stepGoals, {
+  type: 'bar',
+  data: {
+    labels: [`Your Step Goal`,`Their Step Goal`],
+    datasets: [{
+      label: '#Goal',
+      data: [(user.user.dailyStepGoal), (userStep)],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+let sleepToday = document.getElementById('sleep-chart').getContext('2d')
+
+let sleepChart = new Chart(sleepToday, {
+  type: 'bar',
+  data: {
+    labels: [`Hours Slept Today`, `Sleep Quality Today`, `Average Hours Slept`, `Average Sleep Quality`],
+    datasets: [{
+      label: 'Sleep',
+      data: [(daySleep), (qualitySleep), (alltimeHoursSleep), (alltimeQualSleep) ],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+})
 
 // const displayUserName = () => {
   

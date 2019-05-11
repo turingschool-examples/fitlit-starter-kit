@@ -10,9 +10,15 @@ console.log('user: ', user)
 let hydration = new Hydration()
 let dayHydration = hydration.amountHydratedByDay("10/05/2019");
 let weekHydration = hydration.waterForWeek("10/05/2019")
-console.log(weekHydration)
 console.log('hydration: ', hydration)
 let sleep = new Sleep()
+let daySleep = sleep.hoursSleptOnDay("10/05/2019");
+let qualitySleep = sleep.qualityOnDay("10/05/2019");
+let weekSleep = sleep.hoursSleptGivenWeek("10/05/2019")
+let weekQualSleep = sleep.sleepQualityGivenWeek("10/05/2019")
+let alltimeHoursSleep = sleep.averageSleepHoursAllTime("10/05/2019")
+let alltimeQualSleep = sleep.averageSleepQualAllTime("10/05/2019")
+
 console.log(sleep)
 var dt = new Date(); 
 
@@ -30,7 +36,12 @@ document.getElementById('userStrideLength').innerText = `Stride Length ${user.us
 document.getElementById('compStepGoal').innerText = `You: ${user.user.dailyStepGoal}`;
 document.getElementById('userWater').innerText = `You have consumed ${dayHydration} ounces today.`;
 document.getElementById('waterWeek').innerText = `You have consumed ${weekHydration} ounces this week.`;
-
+document.getElementById('userSleep').innerText = `You slept ${daySleep} hours today.`;
+document.getElementById('userSleepQual').innerText = `Your quality of sleep today was ${qualitySleep}`;
+document.getElementById('sleepWeek').innerText = `You slept ${weekSleep} hours this week.`;
+document.getElementById('sleepQualWeek').innerText = `Your sleep quality this week was ${weekSleep}`;
+document.getElementById('userSleepHoursAll').innerText = `Your average hours of sleep per night all time is ${alltimeHoursSleep}`;
+document.getElementById('userSleepQualAll').innerText = `Your average quality of sleep per night all time is ${alltimeQualSleep}`;
 // Hydration Info
 
 // Functions

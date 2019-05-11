@@ -22,6 +22,11 @@ class Activity {
     return parseFloat(walkedToday.toFixed(2))
   }
 
+  userStepsTakenToday(day) {
+    let todaysData = this.activeData.activityData.find(today => today.date === day)
+    return todaysData.numSteps
+  }
+
   //For a user, (identified by their userID) how many minutes were they active for a given day(specified by a date) ?
   activeMinutesPerDay(day) {
     let todaysData = this.activeData.activityData.find(today => today.date === day)

@@ -16,11 +16,13 @@ console.log('userRepo: ', userRepo)
 console.log('hydration: ', hydration)
 console.log('sleep: ', sleep)
 
-/*---------Methods Called---------*/
+/*------------Methods Called-----------*/
 
-let userStep = userRepo.averageStepGoal();
+let usersStepAverage = userRepo.averageStepGoal();
+const todaysSteps = activity.userStepsTakenToday(todaysDate)
 let dayHydration = hydration.amountHydratedByDay(todaysDate);
 let weekHydration = hydration.waterForWeek(todaysDate)
+
 let daySleep = sleep.hoursSleptOnDay(todaysDate);
 let qualitySleep = sleep.qualityOnDay(todaysDate);
 let weekSleep = sleep.hoursSleptGivenWeek(todaysDate)
@@ -28,23 +30,22 @@ let weekQualSleep = sleep.sleepQualityGivenWeek(todaysDate)
 let alltimeHoursSleep = sleep.averageSleepHoursAllTime()
 let alltimeQualSleep = sleep.averageSleepQualAllTime()
 
-
-/*---------User info---------*/
+/*----------------User info---------------*/
 document.getElementById('userName').innerText = `Welcome ${user.returnUserFirstName()}!`;
 document.getElementById('userAddress').innerText = user.user.address;
 document.getElementById('userEmail').innerText = user.user.email;
 document.getElementById('userStepGoal').innerText = `Daily Step Goal: ${user.user.dailyStepGoal}`;
 document.getElementById('userStrideLength').innerText = `Stride Length ${user.user.strideLength}`;
-document.getElementById('userWater').innerText = `You have consumed ${dayHydration} ounces today.`;
+// document.getElementById('userWater').innerText = `You have consumed ${dayHydration} ounces today.`;
 
-/*---------activity info---------*/
+/*-------------activity info---------*/
 
-document.getElementById('user-steps').innerText = `You have taken ${activity.stepsTakenOnDate(todaysDate)} steps today, that means you've walked ${activity.milesWalkedToday(todaysDate)}, miles!!!`
+document.getElementById('user-steps').innerText = `You have taken ${todaysSteps} steps today, that means you've walked ${activity.milesWalkedToday(todaysDate)}, miles!!!`
 document.getElementById('user-active').innerText = `You have been active for ${activity.minutesActiveForDate(todaysDate)} minutes today`
 document.getElementById('user-miles').innerText = `You have walked ${activity.milesWalkedToday(todaysDate)} miles today.`
 
 
-// weekly charts
+/*------------Charts----------------*/
 const sleepQual = document.getElementById('qual-slept-week-chart').getContext('2d');
 const sleepHours = document.getElementById('hours-slept-week-chart').getContext('2d');
 const hydrationWeek = document.getElementById('hydration-week-chart').getContext('2d');
@@ -203,10 +204,10 @@ let activityWeekChart = new Chart(activityWeek, {
 let stepGoalComparisonChart = new Chart(stepGoals, {
   type: 'bar',
   data: {
-    labels: [`Your Step Goal`, `Their Step Goal`],
+    labels: [`Your Step Goal`, `Average Step Goal`],
     datasets: [{
       label: '#Goal',
-      data: [(user.user.dailyStepGoal), (userStep)],
+      data: [(user.user.dailyStepGoal), (usersStepAverage)],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
@@ -261,3 +262,53 @@ let sleepChart = new Chart(sleepToday, {
     }
   }
 })
+
+
+/*------------Circle Graphs--------*/
+const waterPercentage = () => dayHydration / 64 * 100;
+
+const walkingPercentage = () => todaysSteps / user.user.dailyStepGoal * 100
+
+const determineColor = percentage => {
+  if (percentage < 50) {
+    return 'red'
+  } else if (percentage < 80) {
+    return 'orange'
+  } else {
+    return 'green'
+  }
+}
+
+document.getElementById('user-water').innerHTML = `<div class="single-chart">
+    <svg viewBox="0 0 36 36" class="circular-chart ${determineColor(waterPercentage())}">
+      <path class="circle-bg"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <path class="circle"
+        stroke-dasharray="${waterPercentage()}, 100"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <text x="18" y="20.35" class="percentage">${dayHydration} Oz</text>
+    </svg>
+  </div>`
+
+document.getElementById('user-steps').innerHTML = `<div class="single-chart">
+    <svg viewBox="0 0 36 36" class="circular-chart ${determineColor(walkingPercentage())}">
+      <path class="circle-bg"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <path class="circle"
+        stroke-dasharray="${walkingPercentage()}, 100"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <text x="18" y="20.35" class="percentage">${todaysSteps}</text>
+    </svg>
+  </div>`

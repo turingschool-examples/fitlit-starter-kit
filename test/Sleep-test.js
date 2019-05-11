@@ -30,8 +30,13 @@ describe('Sleep Test', function () {
   })
 
   it('should return their average sleep quality per day over all time', function () {
-    expect(sleep.averageSleepAllTime()).to.be.a('number')
-    expect(sleep.averageSleepAllTime()).to.equal(2.48)
+    expect(sleep.averageSleepQualAllTime()).to.be.a('number')
+    expect(sleep.averageSleepQualAllTime()).to.equal(2.48)
+  })
+
+  it('should return their average sleep hours per day over all time', function () {
+    expect(sleep.averageSleepHoursAllTime()).to.be.a('number')
+    expect(sleep.averageSleepHoursAllTime()).to.equal(7.06)
   })
 
   it('should return how many hours they slept for a specific day(identified by a date)', function () {
@@ -40,12 +45,10 @@ describe('Sleep Test', function () {
 
   it('should return how many hours slept each day over the course of a given week(7 days)', function () {
     expect(sleep.hoursSleptGivenWeek('06/05/2019')).to.have.length(7)
-    expect(sleep.hoursSleptGivenWeek('06/05/2019')).to.deep.include({ date: '08/05/2019', hoursSlept: 8.1 })
   })
 
   it('should return their sleep quality each day over the course of a given week(7 days)', function () {
     expect(sleep.sleepQualityGivenWeek('06/05/2019')).to.have.length(7)
-    expect(sleep.sleepQualityGivenWeek('06/05/2019')).to.deep.include({ date: '11/05/2019', quality: 3.5 })
   })
 
   it('should return for all users, the average sleep quality', function () {

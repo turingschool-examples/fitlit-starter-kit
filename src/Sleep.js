@@ -23,13 +23,22 @@ class Sleep {
 
   }
 //For a user, their average sleep quality per day over all time
-  averageSleepAllTime() {
+  averageSleepQualAllTime() {
     return this.data.sleepData.reduce((acc, sum) => {
       acc += sum.sleepQuality
       return Math.floor(acc)
     }, 0) / this.data.sleepData.length
 
   }
+
+//For a user, their average sleep hours per day over all time
+  averageSleepHoursAllTime() {
+    return this.data.sleepData.reduce((acc, sum) => {
+      acc += sum.hoursSlept
+      return Math.floor(acc)
+    }, 0) / this.data.sleepData.length
+
+}
 
 //For a user, how many hours they slept for a specific day(identified by a date)
 
@@ -38,24 +47,31 @@ class Sleep {
       .map(hr => hr.hoursSlept).shift()
   }
 
+  qualityOnDay(day) {
+    return this.data.sleepData.filter(hours => hours.date === day)
+    .map(hr => hr.sleepQuality).shift()
+  }
+
 //For a user, how many hours slept each day over the course of a given week(7 days) - you should be able to calculate this for any week, not just the latest week
 
   hoursSleptGivenWeek(weekStart) {
     let firstDayIndex = this.data.sleepData.findIndex(ele => ele.date === weekStart)
-    return this.data.sleepData.slice(firstDayIndex, 7)
+    let week = this.data.sleepData.slice(firstDayIndex, firstDayIndex + 7)
       .map(hours => { 
         return {date: hours.date, hoursSlept: hours.hoursSlept}
       })
+    return week.map(hrs => hrs.hoursSlept)
   }
 
 //For a user, their sleep quality each day over the course of a given week(7 days) - you should be able to calculate this for any week, not just the latest week
 
   sleepQualityGivenWeek(weekStart) {
     let firstDayIndex = this.data.sleepData.findIndex(ele => ele.date === weekStart)
-    return this.data.sleepData.slice(firstDayIndex, 7)
+    let week = this.data.sleepData.slice(firstDayIndex, 7)
       .map(hours => {
         return { date: hours.date, quality: hours.sleepQuality}
       })
+      return week.map(hrs => hrs.sleepQuality)
   }
 
 //For all users, the average sleep quality

@@ -113,6 +113,13 @@ class Sleep {
   championOfSleepers(date) {
 
   }
+// Make your own metric
+// For a user, their longest night of sleep.
+  longestNightSleep() {
+    return this.data.sleepData.sort((a,b) => {
+      return b.hoursSlept - a.hoursSlept
+    }).shift()
+  }
 }
 
 if (typeof module !== 'undefined') {

@@ -30,6 +30,7 @@ let daySleep = sleep.hoursSleptOnDay(todaysDate);
 let qualitySleep = sleep.qualityOnDay(todaysDate);
 let weekSleep = sleep.hoursSleptGivenWeek(todaysDate)
 let weekQualSleep = sleep.sleepQualityGivenWeek(todaysDate)
+let longestNight = sleep.longestNightSleep()
 let alltimeHoursSleep = sleep.averageSleepHoursAllTime()
 let alltimeQualSleep = sleep.averageSleepQualAllTime()
 
@@ -41,7 +42,8 @@ document.getElementById('userEmail').innerText = user.user.email;
 document.getElementById('userStepGoal').innerText = `Daily Step Goal: ${user.user.dailyStepGoal}`;
 document.getElementById('userStrideLength').innerText = `Stride Length ${user.user.strideLength}`;
 document.getElementById('user-profile-pic').innerHTML = `<img id="prof-pic" src="../images/${user.user.id}.jpg">`
-
+document.getElementById('user-longest-sleep-date').innerText = `${longestNight.date}`
+document.getElementById('user-longest-sleep-hours').innerText = `${longestNight.hoursSlept}`
 /*-------------activity info---------*/
 
 document.getElementById('user-steps').innerText = `You have taken ${todaysSteps} steps today, that means you've walked ${activity.milesWalkedToday(todaysDate)}, miles!!!`

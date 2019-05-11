@@ -126,6 +126,7 @@ class Activity {
     return Math.round(totalOfMinutes / minutesForDays.length)
   }
 //Make a metric of your own! Document it, calculate it, and display it.
+
 }
 
 

@@ -28,10 +28,13 @@ let weekHydration = hydration.waterForWeek("10/05/2019")
 console.log('hydration: ', hydration)
 let daySleep = sleep.hoursSleptOnDay("10/05/2019");
 let qualitySleep = sleep.qualityOnDay("10/05/2019");
-// let weekSleep = sleep.hoursSleptGivenWeek("10/05/2019")
+let weekSleep = sleep.hoursSleptGivenWeek("10/05/2019")
+console.log(weekSleep)
 let weekQualSleep = sleep.sleepQualityGivenWeek("10/05/2019")
-let alltimeHoursSleep = sleep.averageSleepHoursAllTime("10/05/2019")
-let alltimeQualSleep = sleep.averageSleepQualAllTime("10/05/2019")
+console.log(weekQualSleep)
+let alltimeHoursSleep = sleep.averageSleepHoursAllTime()
+console.log(alltimeHoursSleep)
+let alltimeQualSleep = sleep.averageSleepQualAllTime()
 
 document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
 
@@ -46,15 +49,28 @@ document.getElementById('userStepGoal').innerText = `Daily Step Goal: ${user.use
 document.getElementById('userStrideLength').innerText = `Stride Length ${user.user.strideLength}`;
 document.getElementById('compStepGoal').innerText = `You: ${user.user.dailyStepGoal}`;
 document.getElementById('compTheirStepGoal').innerText = `Them: ${userStep}`;
-
+// user hydration
 document.getElementById('userWater').innerText = `You have consumed ${dayHydration} ounces today.`;
 document.getElementById('waterWeek').innerText = `You have consumed ${weekHydration} ounces this week.`;
-document.getElementById('userSleep').innerText = `You slept ${daySleep} hours today.`;
-document.getElementById('userSleepQual').innerText = `Your quality of sleep today was ${qualitySleep}`;
-document.getElementById('sleepWeek').innerText = `You slept ${weekSleep} hours this week.`;
-document.getElementById('sleepQualWeek').innerText = `Your sleep quality this week was ${weekSleep}`;
-document.getElementById('userSleepHoursAll').innerText = `Your average hours of sleep per night all time is ${alltimeHoursSleep}`;
-document.getElementById('userSleepQualAll').innerText = `Your average quality of sleep per night all time is ${alltimeQualSleep}`;
+
+// user sleep
+
+// days
+document.getElementById('user-sleep-hour-today').innerText = `You slept ${daySleep} hours today.`;
+document.getElementById('user-sleep-qual-today').innerText = `Your quality of sleep today was ${qualitySleep}`;
+// document.getElementById('sleep-week').innerText = `You slept ${weekSleep} hours this week.`;
+// document.getElementById('user-sleep-qual-all').innerText = `Your sleep quality this week was ${alltimeQualSleep}`;
+
+// week
+let sleepQual = document.getElementById('qual-slept-week-chart').getContext('2d');
+// console.log(weekSleep[0].hoursSlept)
+var sleepHours = document.getElementById('hours-slept-week-chart').getContext('2d');
+
+// all time
+document.getElementById('user-sleep-hours-all').innerText = `Your average hours of sleep per night all time is ${alltimeHoursSleep}`;
+document.getElementById('user-sleep-qual-all').innerText = `Your average quality of sleep per night all time is ${alltimeQualSleep}`;
+
+
 
 // Hydration Info
 
@@ -70,17 +86,15 @@ document.getElementById('userSleepQualAll').innerText = `Your average quality of
 //   // $('.tagline').fadeIn(1000)
 // })
 
-let ctx = document.getElementById('myChart').getContext('2d');
-console.log(sleepWeek[0].hoursSlept)
-var sleepHours = document.getElementById('hours-slept-chart').getContext('2d');
+
 
 let hoursSleptChart = new Chart(sleepHours, {
   type: 'bar',
   data: {
-    labels: [`${(sleepWeek[0].date)}`, `${(sleepWeek[1].date)}`, `${(sleepWeek[2].date)}`, `${(sleepWeek[3].date)}`, `${(sleepWeek[4].date)}`, `${(sleepWeek[5].date)}`, `${(sleepWeek[6].date)}`],
+    labels: [`${(weekSleep[0].date)}`, `${(weekSleep[1].date)}`, `${(weekSleep[2].date)}`, `${(weekSleep[3].date)}`, `${(weekSleep[4].date)}`, `${(weekSleep[5].date)}`, `${(weekSleep[6].date)}`],
     datasets: [{
       label: '#hours slept',
-      data: [(sleepWeek[0].hoursSlept), (sleepWeek[1].hoursSlept), (sleepWeek[2].hoursSlept), (sleepWeek[3].hoursSlept), (sleepWeek[4].hoursSlept), (sleepWeek[5].hoursSlept), (sleepWeek[6].hoursSlept)],
+      data: [(weekSleep[0].hoursSlept), (weekSleep[1].hoursSlept), (weekSleep[2].hoursSlept), (weekSleep[3].hoursSlept), (weekSleep[4].hoursSlept), (weekSleep[5].hoursSlept), (weekSleep[6].hoursSlept)],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
@@ -111,13 +125,13 @@ let hoursSleptChart = new Chart(sleepHours, {
   }
 });
 
-var myChart = new Chart(ctx, {
+var sleepQualityChart = new Chart(sleepQual, {
   type: 'bar',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: [`${(weekQualSleep[0].date)}`, `${(weekQualSleep[1].date)}`, `${(weekQualSleep[2].date)}`, `${(weekQualSleep[3].date)}`, `${(weekQualSleep[4].date)}`, `${(weekQualSleep[5].date)}`, `${(weekQualSleep[6].date)}`],
     datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
+      label: '#hours slept',
+      data: [(weekQualSleep[0].quality), (weekQualSleep[1].quality), (weekQualSleep[2].quality), (weekQualSleep[3].quality), (weekQualSleep[4].quality), (weekQualSleep[5].quality), (weekQualSleep[6].quality)],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',

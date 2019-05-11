@@ -60,18 +60,19 @@ class Sleep {
       .map(hours => { 
         return {date: hours.date, hoursSlept: hours.hoursSlept}
       })
-    return week.map(hrs => hrs.hoursSlept)
+    return week
   }
 
 //For a user, their sleep quality each day over the course of a given week(7 days) - you should be able to calculate this for any week, not just the latest week
 
   sleepQualityGivenWeek(weekStart) {
     let firstDayIndex = this.data.sleepData.findIndex(ele => ele.date === weekStart)
-    let week = this.data.sleepData.slice(firstDayIndex, 7)
+    let week = this.data.sleepData.slice(firstDayIndex, firstDayIndex + 7)
       .map(hours => {
         return { date: hours.date, quality: hours.sleepQuality}
       })
-      return week.map(hrs => hrs.sleepQuality)
+      
+      return week
   }
 
 //For all users, the average sleep quality

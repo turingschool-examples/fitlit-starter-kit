@@ -15,6 +15,7 @@ let userRepo = new UserRepo();
 let user = new User(dynamicUser)
 let hydration = new Hydration()
 let sleep = new Sleep()
+let activity = new Activity()
 var dt = new Date();
 
 // methods called
@@ -81,8 +82,12 @@ let activityWeek = document.getElementById('activity-week-chart').getContext('2d
 document.getElementById('user-sleep-hours-all').innerText = `Your average hours of sleep per night all time is ${alltimeHoursSleep}`;
 document.getElementById('user-sleep-qual-all').innerText = `Your average quality of sleep per night all time is ${alltimeQualSleep}`;
 
+//activity info
 
+document.getElementById('user-steps').innerText = `You have taken ${activity.stepsTakenOnDate(todaysDate)} steps today, that means you've walked ${activity.milesWalkedToday(todaysDate)}, miles!!!`
+document.getElementById('user-active').innerText = `You have been active for ${activity.minutesActiveForDate(todaysDate)} minutes today`
 
+document.getElementById('user-miles').innerText = `You have walked ${activity.milesWalkedToday(todaysDate)} miles today.`
 // Hydration Info
 
 

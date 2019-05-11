@@ -4133,7 +4133,7 @@
         return listWeekdaysImpl(localeSorted, format, index, 'weekdaysMin');
     }
 
-    getSetGlobalLocale('en', {
+    getSetGlobalLocale('en-gb', {
         dayOfMonthOrdinalParse: /\d{1,2}(th|st|nd|rd)/,
         ordinal : function (number) {
             var b = number % 10,

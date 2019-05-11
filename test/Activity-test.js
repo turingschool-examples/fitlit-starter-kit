@@ -54,6 +54,19 @@ describe('Activity Test', function () {
     expect(activity.allTimeStairRecord()).to.equal(50)
   })
 
+  it('should return the average number of stairs climbed for a specified date for all users', function () {
+    expect(activity.allUsersStairsClimbedToday('06/05/2019')).to.be.a('number')
+    expect(activity.allUsersStairsClimbedToday('06/05/2019')).to.equal(29)
+  })
+
+  it('should return the average number of steps taken for a specific date', function () {
+    expect(activity.stepsTakenOnDate('06/05/2019')).to.be.equal(6872)
+  })
+
+  it('should return the average number of minutes active for a specific date', function () {
+    expect(activity.minutesActiveForDate('06/05/2019')).to.equal(128)
+  })
+
   
 
 })

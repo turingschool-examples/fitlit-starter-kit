@@ -1,5 +1,6 @@
 // Variables
 let dynamicUser = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
+var dt = new Date();
 
 // instantiations
 
@@ -22,10 +23,21 @@ console.log('sleep: ', sleep)
 
 
 const sleepWeek = sleep.hoursSleptGivenWeek('06/05/2019')
+let dayHydration = hydration.amountHydratedByDay("10/05/2019");
+let weekHydration = hydration.waterForWeek("10/05/2019")
+console.log('hydration: ', hydration)
+let daySleep = sleep.hoursSleptOnDay("10/05/2019");
+let qualitySleep = sleep.qualityOnDay("10/05/2019");
+// let weekSleep = sleep.hoursSleptGivenWeek("10/05/2019")
+let weekQualSleep = sleep.sleepQualityGivenWeek("10/05/2019")
+let alltimeHoursSleep = sleep.averageSleepHoursAllTime("10/05/2019")
+let alltimeQualSleep = sleep.averageSleepQualAllTime("10/05/2019")
 
 document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
 
+
 // Event Listeners
+document.getElementById("datetime").innerHTML = (("0"+dt.getDate()).slice(-2)) +"/"+ (("0"+(dt.getMonth()+1)).slice(-2)) +"/"+ (dt.getFullYear());
 // User Info
 document.getElementById('userName').innerText = `Welcome ${user.user.name}!`;
 document.getElementById('userAddress').innerText = user.user.address;
@@ -34,6 +46,15 @@ document.getElementById('userStepGoal').innerText = `Daily Step Goal: ${user.use
 document.getElementById('userStrideLength').innerText = `Stride Length ${user.user.strideLength}`;
 document.getElementById('compStepGoal').innerText = `You: ${user.user.dailyStepGoal}`;
 document.getElementById('compTheirStepGoal').innerText = `Them: ${userStep}`;
+
+document.getElementById('userWater').innerText = `You have consumed ${dayHydration} ounces today.`;
+document.getElementById('waterWeek').innerText = `You have consumed ${weekHydration} ounces this week.`;
+document.getElementById('userSleep').innerText = `You slept ${daySleep} hours today.`;
+document.getElementById('userSleepQual').innerText = `Your quality of sleep today was ${qualitySleep}`;
+document.getElementById('sleepWeek').innerText = `You slept ${weekSleep} hours this week.`;
+document.getElementById('sleepQualWeek').innerText = `Your sleep quality this week was ${weekSleep}`;
+document.getElementById('userSleepHoursAll').innerText = `Your average hours of sleep per night all time is ${alltimeHoursSleep}`;
+document.getElementById('userSleepQualAll').innerText = `Your average quality of sleep per night all time is ${alltimeQualSleep}`;
 
 // Hydration Info
 

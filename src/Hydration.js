@@ -32,7 +32,8 @@ class Hydration {
   waterForWeek(startDate) {
     let week = this.data.hydrationData;
     let firstDayIndex = week.findIndex(ele => ele.date === startDate) 
-    return week.slice(firstDayIndex, 7)
+    let sliceWeek = week.slice(firstDayIndex, firstDayIndex + 7)
+    return sliceWeek.map(ozs => ozs.numOunces)
   }
 
 }

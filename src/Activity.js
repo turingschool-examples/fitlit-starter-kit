@@ -31,10 +31,13 @@ class Activity {
 //For a user, how many minutes active did they average for a given week(7 days) ?
   activeMinutesPerWeek(weekStart) {
     let firstDayIndex = this.activeData.activityData.findIndex(ele => ele.date === weekStart)
-    let week = this.activeData.activityData.slice(firstDayIndex, firstDayIndex + 7)
+    let week = this.activeData.activityData
+      .slice(firstDayIndex, firstDayIndex + 7)
       .map(minutes => minutes.minutesActive)
+
     let weekTotal = week.reduce((acc, minute) =>
       acc += minute, 0) / 7
+      
     return parseFloat(weekTotal.toFixed(2))
   }
 //For a user, did they reach their step goal for a given day(specified by a date) ?
@@ -57,7 +60,9 @@ class Activity {
   //For a user, find their all - time stair climbing record
 
   allTimeStairRecord() {
-    return this.activeData.activityData.sort((a, b)=> b.flightsOfStairs - a.flightsOfStairs).map(stair => stair.flightsOfStairs).shift()
+    return this.activeData.activityData
+      .sort((a, b)=> b.flightsOfStairs - a.flightsOfStairs)
+      .map(stair => stair.flightsOfStairs).shift()
   }
 
 //For *ALL* users, what is the average number of:

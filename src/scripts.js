@@ -1,36 +1,24 @@
-// Variables
-let dynamicUser = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
-// var dt = new Date();
-// const todaysDate = (("0" + dt.getDate()).slice(-2)) + "/" + (("0" + (dt.getMonth() + 1)).slice(-2)) + "/" + (dt.getFullYear())
-moment.locale('en-gb')
-moment().format('L')
-
-
-let checkThis = moment().subtract(10, 'days').calendar()
+/*----------------Variables-------------------*/
+const dynamicUser = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
 const todaysDate = moment().format("DD" + "/" + "MM" + "/" + "YYYY")
-// instantiations
-// const lastWeek = moment().subtract(10 , 'days').todaysDate
 
-let userRepo = new UserRepo();
-let user = new User(dynamicUser)
-let hydration = new Hydration()
-let sleep = new Sleep()
-let activity = new Activity()
-var dt = new Date();
+document.getElementById("datetime").innerHTML = todaysDate;
 
-// methods called
-
-hydration.findHydrationData();
-let userStep = userRepo.averageStepGoal();
-
+/*----------------new instantiations---------*/
+const userRepo = new UserRepo();
+const user = new User(dynamicUser)
+const hydration = new Hydration()
+const sleep = new Sleep()
+const activity = new Activity()
 
 console.log('user: ', user)
 console.log('userRepo: ', userRepo)
 console.log('hydration: ', hydration)
 console.log('sleep: ', sleep)
 
+/*---------Methods Called---------*/
 
-const sleepWeek = sleep.hoursSleptGivenWeek(todaysDate)
+let userStep = userRepo.averageStepGoal();
 let dayHydration = hydration.amountHydratedByDay(todaysDate);
 let weekHydration = hydration.waterForWeek(todaysDate)
 let daySleep = sleep.hoursSleptOnDay(todaysDate);
@@ -40,65 +28,29 @@ let weekQualSleep = sleep.sleepQualityGivenWeek(todaysDate)
 let alltimeHoursSleep = sleep.averageSleepHoursAllTime()
 let alltimeQualSleep = sleep.averageSleepQualAllTime()
 
-document.getElementById('datetime').innerHTML = dt.toLocaleDateString();
 
-
-// Event Listeners
-
-document.getElementById("datetime").innerHTML = todaysDate;
-
-// User Info
+/*---------User info---------*/
 document.getElementById('userName').innerText = `Welcome ${user.returnUserFirstName()}!`;
 document.getElementById('userAddress').innerText = user.user.address;
 document.getElementById('userEmail').innerText = user.user.email;
 document.getElementById('userStepGoal').innerText = `Daily Step Goal: ${user.user.dailyStepGoal}`;
 document.getElementById('userStrideLength').innerText = `Stride Length ${user.user.strideLength}`;
-// document.getElementById('compStepGoal').innerText = `You: ${user.user.dailyStepGoal}`;
-// document.getElementById('compTheirStepGoal').innerText = `Them: ${userStep}`;
-// user hydration
 document.getElementById('userWater').innerText = `You have consumed ${dayHydration} ounces today.`;
-// document.getElementById('waterWeek').innerText = `You have consumed ${weekHydration} ounces this week.`;
 
-// user sleep
-
-// days
-// document.getElementById('user-sleep-hour-today').innerText = `You slept ${daySleep} hours today.`;
-// document.getElementById('user-sleep-qual-today').innerText = `Your quality of sleep today was ${qualitySleep}`;
-// document.getElementById('sleep-week').innerText = `You slept ${weekSleep} hours this week.`;
-// document.getElementById('user-sleep-qual-all').innerText = `Your sleep quality this week was ${alltimeQualSleep}`;
-
-// weekly charts
-let sleepQual = document.getElementById('qual-slept-week-chart').getContext('2d');
-let sleepHours = document.getElementById('hours-slept-week-chart').getContext('2d');
-let hydrationWeek = document.getElementById('hydration-week-chart').getContext('2d');
-let activityWeek = document.getElementById('activity-week-chart').getContext('2d')
-// all time
-// document.getElementById('user-sleep-hours-all').innerText = `Your average hours of sleep per night all time is ${alltimeHoursSleep}`;
-// document.getElementById('user-sleep-qual-all').innerText = `Your average quality of sleep per night all time is ${alltimeQualSleep}`;
-
-//activity info
+/*---------activity info---------*/
 
 document.getElementById('user-steps').innerText = `You have taken ${activity.stepsTakenOnDate(todaysDate)} steps today, that means you've walked ${activity.milesWalkedToday(todaysDate)}, miles!!!`
 document.getElementById('user-active').innerText = `You have been active for ${activity.minutesActiveForDate(todaysDate)} minutes today`
-
 document.getElementById('user-miles').innerText = `You have walked ${activity.milesWalkedToday(todaysDate)} miles today.`
 
 
-// Hydration Info
-
-
-// Functions
-
-
-
-// $(document).ready(() => {
-//   displayUserName()
-//   // startClock()
-//   // $btnUpdateRange.attr('disabled', 'disbaled')
-//   // $('.tagline').fadeIn(1000)
-// })
-
-// charts
+// weekly charts
+const sleepQual = document.getElementById('qual-slept-week-chart').getContext('2d');
+const sleepHours = document.getElementById('hours-slept-week-chart').getContext('2d');
+const hydrationWeek = document.getElementById('hydration-week-chart').getContext('2d');
+const activityWeek = document.getElementById('activity-week-chart').getContext('2d')
+const stepGoals = document.getElementById('step-goal-chart').getContext('2d')
+const sleepToday = document.getElementById('sleep-chart').getContext('2d')
 
 let hoursSleptChart = new Chart(sleepHours, {
   type: 'bar',
@@ -248,8 +200,6 @@ let activityWeekChart = new Chart(activityWeek, {
   }
 });
 
-let stepGoals = document.getElementById('step-goal-chart').getContext('2d')
-
 let stepGoalComparisonChart = new Chart(stepGoals, {
   type: 'bar',
   data: {
@@ -278,8 +228,6 @@ let stepGoalComparisonChart = new Chart(stepGoals, {
     }
   }
 });
-
-let sleepToday = document.getElementById('sleep-chart').getContext('2d')
 
 let sleepChart = new Chart(sleepToday, {
   type: 'bar',
@@ -313,8 +261,3 @@ let sleepChart = new Chart(sleepToday, {
     }
   }
 })
-
-// const displayUserName = () => {
-  
-//   console.log(user.returnUserFirstName())
-// }

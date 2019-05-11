@@ -60,14 +60,58 @@ class Activity {
     return this.activeData.activityData.sort((a, b)=> b.flightsOfStairs - a.flightsOfStairs).map(stair => stair.flightsOfStairs).shift()
   }
 
-  //For *ALL* users, what is the average number of:
+//For *ALL* users, what is the average number of:
 
-//stairs climbed for a specified date
+// stairs climbed for a specified date
+  allUsersStairsClimbedToday(day) {
+    let allStairs = activityData.reduce((acc, sum) => {
+      sum.activityData.forEach(stair => {
+        if (acc.indexOf(stair) === -1)
+        acc.push(stair)
+      })
+      return acc
+    }, [])
+    let stairsForDays = allStairs.filter(days => days.date === day)
+    let totalOfStairs = stairsForDays.reduce((acc, stairs) => {
+      acc += stairs.flightsOfStairs
+      return acc
+    }, 0)
+    return Math.round(totalOfStairs / stairsForDays.length)
+  }
+// steps taken for a specific date
 
-//steps taken for a specific date
+  stepsTakenOnDate(day) {
+    let allSteps = activityData.reduce((acc, sum) => {
+      sum.activityData.forEach(step => {
+        if (acc.indexOf(step) === -1)
+          acc.push(step)
+      })
+      return acc
+    }, [])
+    let stepsForDays = allSteps.filter(days => days.date === day)
+    let totalOfSteps = stepsForDays.reduce((acc, steps) => {
+      acc += steps.numSteps
+      return acc
+    }, 0)
+    return Math.round(totalOfSteps / stepsForDays.length)
+  }
 
 //minutes active for a specific date
-
+  minutesActiveForDate(day) {
+    let allMinutes = activityData.reduce((acc, sum) => {
+      sum.activityData.forEach(minute => {
+        if (acc.indexOf(minute) === -1)
+          acc.push(minute)
+      })
+      return acc
+    }, [])
+    let minutesForDays = allMinutes.filter(days => days.date === day)
+    let totalOfMinutes = minutesForDays.reduce((acc, minutes) => {
+      acc += minutes.minutesActive
+      return acc
+    }, 0)
+    return Math.round(totalOfMinutes / minutesForDays.length)
+  }
 //Make a metric of your own! Document it, calculate it, and display it.
 }
 

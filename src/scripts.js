@@ -203,7 +203,7 @@ let activityWeekChart = new Chart(activityWeek, {
 let stepGoalComparisonChart = new Chart(stepGoals, {
   type: 'bar',
   data: {
-    labels: [`Your Step Goal`,`Their Step Goal`],
+    labels: [`Your Step Goal`, `Their Step Goal`],
     datasets: [{
       label: '#Goal',
       data: [(user.user.dailyStepGoal), (userStep)],

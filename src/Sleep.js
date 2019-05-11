@@ -14,7 +14,7 @@ class Sleep {
     return sleepData.find(user => user.userID === ident)
   }
 
-//For a user(identified by their userID), the average number of hours slept per day
+  //For a user(identified by their userID), the average number of hours slept per day
   averageSleepPerDay() {
     return this.data.sleepData.reduce((acc, sum) => {
       acc += sum.hoursSlept
@@ -22,7 +22,7 @@ class Sleep {
     }, 0) / this.data.sleepData.length
 
   }
-//For a user, their average sleep quality per day over all time
+  //For a user, their average sleep quality per day over all time
   averageSleepQualAllTime() {
     return this.data.sleepData.reduce((acc, sum) => {
       acc += sum.sleepQuality
@@ -31,16 +31,16 @@ class Sleep {
 
   }
 
-//For a user, their average sleep hours per day over all time
+  //For a user, their average sleep hours per day over all time
   averageSleepHoursAllTime() {
     return this.data.sleepData.reduce((acc, sum) => {
       acc += sum.hoursSlept
       return Math.floor(acc)
     }, 0) / this.data.sleepData.length
 
-}
+  }
 
-//For a user, how many hours they slept for a specific day(identified by a date)
+  //For a user, how many hours they slept for a specific day(identified by a date)
 
   hoursSleptOnDay(day) {
     return this.data.sleepData.filter(hours => hours.date === day)
@@ -49,10 +49,10 @@ class Sleep {
 
   qualityOnDay(day) {
     return this.data.sleepData.filter(hours => hours.date === day)
-    .map(hr => hr.sleepQuality).shift()
+      .map(hr => hr.sleepQuality).shift()
   }
 
-//For a user, how many hours slept each day over the course of a given week(7 days) - you should be able to calculate this for any week, not just the latest week
+  //For a user, how many hours slept each day over the course of a given week(7 days) - you should be able to calculate this for any week, not just the latest week
 
   hoursSleptGivenWeek(weekStart) {
     let firstDayIndex = this.data.sleepData.findIndex(ele => ele.date === weekStart)
@@ -63,7 +63,7 @@ class Sleep {
     return week
   }
 
-//For a user, their sleep quality each day over the course of a given week(7 days) - you should be able to calculate this for any week, not just the latest week
+  //For a user, their sleep quality each day over the course of a given week(7 days) - you should be able to calculate this for any week, not just the latest week
 
   sleepQualityGivenWeek(weekStart) {
     let firstDayIndex = this.data.sleepData.findIndex(ele => ele.date === weekStart)
@@ -72,17 +72,18 @@ class Sleep {
         return { date: hours.date, quality: hours.sleepQuality}
       })
       
-      return week
+    return week
   }
 
-//For all users, the average sleep quality
+  //For all users, the average sleep quality
 
   allUsersSleepQuality() {
     let allSleepQual = sleepData.reduce((acc, sum) => {
       sum.sleepData
         .forEach(sums => {
-          if (acc.indexOf(sums) === -1)
+          if (acc.indexOf(sums) === -1) {
             acc.push(sums)
+          }
         })
       return acc;
     }, [])
@@ -92,7 +93,7 @@ class Sleep {
     }, 0) / allSleepQual.length
   }
 
-//Find all users who average a sleep quality greater than 3 for a given week(7 days) - you should be able to calculate this for any week, not just the latest week
+  //Find all users who average a sleep quality greater than 3 for a given week(7 days) - you should be able to calculate this for any week, not just the latest week
 
   allUsersGoodSleepGivenWeek(weekStart) {
     // let allSleep = userSleepData.reduce((acc, sum) => {
@@ -108,7 +109,7 @@ class Sleep {
     //   return accs
     // }, 0))
   }
-//For a given day(identified by the date), find the users who slept the most number of hours(one or more if they tied)
+  //For a given day(identified by the date), find the users who slept the most number of hours(one or more if they tied)
   championOfSleepers(date) {
 
   }

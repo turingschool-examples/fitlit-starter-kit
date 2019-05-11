@@ -14,7 +14,7 @@ class Activity {
     return activityData.find(user => user.userID === ident)
   }
 
-//For a specific day(specified by a date), return the miles a user has walked based on their number of steps(use their strideLength to help calculate this)
+  //For a specific day(specified by a date), return the miles a user has walked based on their number of steps(use their strideLength to help calculate this)
 
   milesWalkedToday(day) {
     let todaysData = this.activeData.activityData.find(today => today.date === day)
@@ -22,13 +22,13 @@ class Activity {
     return parseFloat(walkedToday.toFixed(2))
   }
 
-//For a user, (identified by their userID) how many minutes were they active for a given day(specified by a date) ?
+  //For a user, (identified by their userID) how many minutes were they active for a given day(specified by a date) ?
   activeMinutesPerDay(day) {
     let todaysData = this.activeData.activityData.find(today => today.date === day)
     return todaysData.minutesActive
   }
   
-//For a user, how many minutes active did they average for a given week(7 days) ?
+  //For a user, how many minutes active did they average for a given week(7 days) ?
   activeMinutesPerWeek(weekStart) {
     let firstDayIndex = this.activeData.activityData.findIndex(ele => ele.date === weekStart)
     let week = this.activeData.activityData
@@ -40,7 +40,7 @@ class Activity {
       
     return parseFloat(weekTotal.toFixed(2))
   }
-//For a user, did they reach their step goal for a given day(specified by a date) ?
+  //For a user, did they reach their step goal for a given day(specified by a date) ?
   stepGoalReached(day) {
     let activityDataForDay = this.activeData.activityData.find(ele => ele.date === day)
     let stepsForDay = activityDataForDay.numSteps
@@ -65,14 +65,15 @@ class Activity {
       .map(stair => stair.flightsOfStairs).shift()
   }
 
-//For *ALL* users, what is the average number of:
+  //For *ALL* users, what is the average number of:
 
-// stairs climbed for a specified date
+  // stairs climbed for a specified date
   allUsersStairsClimbedToday(day) {
     let allStairs = activityData.reduce((acc, sum) => {
       sum.activityData.forEach(stair => {
-        if (acc.indexOf(stair) === -1)
-        acc.push(stair)
+        if (acc.indexOf(stair) === -1) {
+          acc.push(stair)
+        }
       })
       return acc
     }, [])
@@ -83,13 +84,14 @@ class Activity {
     }, 0)
     return Math.round(totalOfStairs / stairsForDays.length)
   }
-// steps taken for a specific date
+  // steps taken for a specific date
 
   stepsTakenOnDate(day) {
     let allSteps = activityData.reduce((acc, sum) => {
       sum.activityData.forEach(step => {
-        if (acc.indexOf(step) === -1)
+        if (acc.indexOf(step) === -1) {
           acc.push(step)
+        }
       })
       return acc
     }, [])
@@ -101,12 +103,13 @@ class Activity {
     return Math.round(totalOfSteps / stepsForDays.length)
   }
 
-//minutes active for a specific date
+  //minutes active for a specific date
   minutesActiveForDate(day) {
     let allMinutes = activityData.reduce((acc, sum) => {
       sum.activityData.forEach(minute => {
-        if (acc.indexOf(minute) === -1)
+        if (acc.indexOf(minute) === -1) {
           acc.push(minute)
+        }
       })
       return acc
     }, [])

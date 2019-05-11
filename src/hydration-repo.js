@@ -1,4 +1,4 @@
-class HydrationRepo {
+class HydrationRepository {
 	constructor(dataFilePath) {
 		this.dataFilePath = dataFilePath;
 		this.userHydrationData = this.findFilepath(dataFilePath);
@@ -12,4 +12,8 @@ class HydrationRepo {
       return hydrationData;
     }
   }
+}
+
+if(typeof module !== 'undefined') {
+	module.exports = HydrationRepository;
 }

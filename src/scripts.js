@@ -6,9 +6,6 @@ const strideLength = document.querySelector('#user-stride-length')
 const ouncesDrankToday = document.querySelector('#ounces-drank');
 const ouncesThisWeek = document.querySelector('#ounces-weekly-card');
 
-var a = moment().format('DD/MM/YYYY');
-console.log(a)
-
 const loadName = () => {
   let randomNum = Math.floor(Math.random() * userData.length + 1)
   let user = new User(userData[randomNum]);

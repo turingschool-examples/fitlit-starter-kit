@@ -21,6 +21,10 @@ h1 {
   padding: 17px;
 }
 
+span {
+  border-radius: 50px;
+}
+
 /*------------------Main-----------------*/
 
 figure {

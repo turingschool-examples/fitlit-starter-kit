@@ -15,11 +15,13 @@ console.log('user: ', user)
 console.log('userRepo: ', userRepo)
 console.log('hydration: ', hydration)
 console.log('sleep: ', sleep)
+console.log('activity: ', activity)
 
 /*------------Methods Called-----------*/
 
 let usersStepAverage = userRepo.averageStepGoal();
-const todaysSteps = activity.userStepsTakenToday(todaysDate)
+const todaysSteps = activity.userStepsTakenToday(todaysDate);
+const todaysMinutesActive = activity.activeMinutesPerDay(todaysDate)
 let dayHydration = hydration.amountHydratedByDay(todaysDate);
 let weekHydration = hydration.waterForWeek(todaysDate)
 
@@ -269,6 +271,8 @@ const waterPercentage = () => dayHydration / 64 * 100;
 
 const walkingPercentage = () => todaysSteps / user.user.dailyStepGoal * 100
 
+const minutesPercentage = () => todaysMinutesActive / 1440
+
 const determineColor = percentage => {
   if (percentage < 50) {
     return 'red'
@@ -310,5 +314,22 @@ document.getElementById('user-steps').innerHTML = `<div class="single-chart">
           a 15.9155 15.9155 0 0 1 0 -31.831"
       />
       <text x="18" y="20.35" class="percentage">${todaysSteps}</text>
+    </svg>
+  </div>`
+
+  document.getElementById('user-active').innerHTML = `<div class="single-chart">
+    <svg viewBox="0 0 36 36" class="circular-chart ${determineColor(minutesPercentage())}">
+      <path class="circle-bg"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <path class="circle"
+        stroke-dasharray="${minutesPercentage()}, 100"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <text x="18" y="20.35" class="percentage">${todaysMinutesActive}</text>
     </svg>
   </div>`

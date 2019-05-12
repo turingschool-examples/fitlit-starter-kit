@@ -5,26 +5,11 @@ if(typeof module !== 'undefined') {
 
 
 class User {
-  constructor(userId) {
-  this.user = (this.findUserData(userId));
-  
+  constructor(user) {
+  this.user = user;
   }
 
-  findUserData(userId) {
-    let currentUser = this.userData.find(function(element){
-    return element.id === userId 
-    })
-    return currentUser; 
-    }
-
-  // findFilepath(dataFilePath) {
-  //   if(typeof module !== 'undefined') {
-  //     return require(dataFilePath)
-  //   } else {
-  //     return userData;
-  //   }
-  // }
-
+  
   returnFirstName() {
   	return this.user.name.split(' ')[0];
   }

@@ -1,18 +1,22 @@
 $( document ).ready(function() {
-let user = new User(userData[1])
-let userRepo = new UserRepository()
-// let hydrationRepo = new HydrationRepository()
-// let hydration = new Hydration()
+let userRepo = new UserRepository(userData, 1)
+let user = new User(userRepo.currentUser)
+
+let hydrationRepo = new HydrationRepository(hydrationData, 1)
+let hydration = new Hydration(hydrationRepo.currentUser)
 
 $('span.user-name').html(user.returnFirstName());
 $('article.user').append("<div class='user-card'></div>")
+$('img.user-image').click(function() {
+  $('div.user-card').toggle();
+})
 $('div.user-card').append("<h6> Name: <span class='name-span'></span></h6><h6>Address: <span class='address-span'></span></h6><h6> Email: <span class='email-span'></span></h6><h6>Daily Step Goal: <span class ='goal-span'></span></h6><h6>Average Step Goal: <span class ='av-goal-span'></span></h6>")
-$('span.name-span').text(`${user.userData.name}`)
-$('span.address-span').text(`${user.userData.address}`)
-$('span.email-span').text(`${user.userData.email}`)
-$('span.goal-span').text(`${user.userData.dailyStepGoal}`)
+$('span.name-span').text(`${user.user.name}`)
+$('span.address-span').text(`${user.user.address}`)
+$('span.email-span').text(`${user.user.email}`)
+$('span.goal-span').text(`${user.user.dailyStepGoal}`)
 $('span.av-goal-span').text(userRepo.findAverageStepGoal())
-});
+
 
 $('.activity').append("<h4>Your Steps Today: <span class='steps-today'></span></h3")
 $('.activity').append("<h4>Your Minutes Active Today: <span class='steps-today'></span></h3")
@@ -28,7 +32,7 @@ $('.activity').append("<h4>Weekly Stats: <span class='weekly-stats'></span></h3"
 
 $('.hydration').append("<h4>Your H2O Intake Today: <span class='water-today'></span></h3")
 $('.hydration').append("<h4>Your H2O Intake This Week: <span class='water-week'></span></h3") //put in a chart
-// $('.water-today').text(hydration.findFluidOzByDay(1, '15/05/2019'))
+$('.water-today').text(hydration.findFluidOzByDay('15/05/2019'))
 
 //A display to show how much water they have consumed today (these displays are often called “widgets” in the FE tech world)
 //A display to show much water they have consumed each day over the course of the latest week
@@ -41,3 +45,5 @@ $('.sleep').append("<h4>Your Average Tracked Sleep: <span class='sleep-average'>
 //For a user, their sleep data for the latest day (hours slept and quality of sleep)
 //For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)
 //For a user, their all-time average sleep quality and all-time average number of hours slept
+
+});

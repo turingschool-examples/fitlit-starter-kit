@@ -8,23 +8,34 @@ if(typeof module !== 'undefined') {
 class Sleep {
   constructor(){
 
-
   }
-
 
 };
 
-//For a user (identified by their userID), the average number of hours slept per day
-//For a user, their average sleep quality per day over all time
-//For a user, how many hours they slept for a specific day (identified by a date)
-//For a user, their sleep quality for a specific day (identified by a date)
-//For a user, how many hours slept each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
-//For a user, their sleep quality each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
+//Sleep
 
+//Find average hours of sleep per day(userId)
+    //Calculate sum of total hours slept
+    //Divide by length of sleepData array
+    //const totalSleep = sleepData.map((a, b) => a += b.hoursSlept, 0)/sleepData.length
+    
+//Find average sleep quality per day(userId)
+    //Calculate sum of sleep quality
+    //Divide by length of sleepData array
 
+//Find sleep quality for specific date(userId, date)
+    //Use find() method to search specific date
+    //return sleepData.sleepQuality
 
+//Find total hours slept for specific week(userId, date)
+    //Use slice() method to access date range
+    //Map() sleepData.hoursSlept
+    //return dates and hoursSlept
 
-
+//Find sleep quality for specific week(userId, date)
+    //Use slice() method to access date range
+    //Map() sleepData.sleepQuality
+    //return dates and sleepQuality
 
 
 

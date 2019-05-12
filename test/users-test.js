@@ -21,19 +21,19 @@ describe('User', function() {
   let user;
 
   beforeEach(function() {
-    // const userData = {
-    //   "id": 1,
-    //   "name": "Nyasia Weber",
-    //   "address": "270 August Meadows, Maribelside SD 36129",
-    //   "email": "Jordane_Schultz@yahoo.com",
-    //   "strideLength": 4.7,
-    //   "dailyStepGoal": 8000
-    // }
-    user = new User(1);
+    const userData = {
+      "id": 1,
+      "name": "Nyasia Weber",
+      "address": "270 August Meadows, Maribelside SD 36129",
+      "email": "Jordane_Schultz@yahoo.com",
+      "strideLength": 4.7,
+      "dailyStepGoal": 8000
+    }
+    user = new User(userData);
   });
 
   it ('should store user id', function() {
-    expect(user.user.id).to.equal(userData.id);
+    expect(user.id).to.equal(userData.id);
   })
 
   it ('should store user name', function() {

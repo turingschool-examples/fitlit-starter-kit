@@ -13,14 +13,31 @@ class SleepRepository {
 
 
 };
+//Sleep Repo
 
-//For all users, the average sleep quality
-//Find all users who average a sleep quality greater than 3 for a given week (7 days) - you should be able to calculate this for any week, not just the latest week
-//For a given day (identified by the date), find the users who slept the most number of hours (one or more if they tied)
-//Make a metric of your own! Document it, calculate it, and display it.
+//Find average sleep quality(userSleepData)
+    //Access object keys to target sleepData
+    //Find sum of sleepQuality through all users (using reduce or map)
+    //Calculate average
+    //Return number
 
+//Find good sleepers(userSleepData, date)
+    //Access object keys to target sleepData
+    //Use slice method to set date range
+    //Map through users and set conditional for sleepQuality > 3
 
+//Find Top Sleeper(userSleepData, date)
+    //Access object keys to target sleepData
+    //Filter specific date
+    //const specificDate = sleepData.filter(item => item.date === date)
+    
+    //Find most hours amongst sleepers(date)
+    //const mostHours = Math.max(specificDate.hoursslept)
+    //
+    //Create new array of users with most sleep
+    //const topSleepers =specificDate.filter(item => item.hoursSlept === mostHours)
 
+    //** proposing a method to access object keys and target sleepData to be used within each of these methods **//
 
 
 

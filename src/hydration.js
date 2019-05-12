@@ -7,35 +7,23 @@ if(typeof module !== 'undefined') {
 
 
 class Hydration {
-	constructor(userId) {
-		// this.hydrationStats = require(hydrationStats);
-		this.hydrationStats = hydrationStats;
-		// this.userData = userData;
+	constructor(userHydData) {
 		this.hydrationStats = hydrationData;
-		this.userData = userData;
-		this.userHydration = (this.returnUserHydration(user.user.id))
+		this.userHydData = userHydData; 
 	}
 
-	returnUserHydration(userId) {
-		let currentUser = this.hydrationStats.find(element => element.userID === userId)
-		return currentUser.hydrationData;
-		}
-
-	findAvgWaterIntake(userId) {
-		let currentUserHydration = this.returnUserHydration(userId);
-		return currentUserHydration.reduce((a, b) => a += b.numOunces, 0)/ currentUserHydration.length;
+	findAvgWaterIntake() {
+		return this.userHydData.hydrationData.reduce((a, b) => a += b.numOunces, 0)/ this.userHydData.hydrationData.length;
     }
 
-  findFluidOzByDay(userId, date) {
-    let currentUser = this.returnUserHydration(userId);
-    const fluid = currentUser.find(element => element.date === date);
+  findFluidOzByDay(date) {
+		const fluid = this.userHydData.hydrationData.find(element => element.date === date);
     return fluid.numOunces;
     }
 
- 	findWeeklyWater(userId, date) {
- 		let currentUser = this.returnUserHydration(userId);
-    let startDate = currentUser.findIndex(element => element.date === date);
-   	let dateRange = currentUser.slice(startDate, startDate+7).map(element => element.numOunces);
+ 	findWeeklyWater(date) {
+    let startDate = this.userHydData.hydrationData.findIndex(element => element.date === date);
+		 let dateRange = this.userHydData.hydrationData.slice(startDate, startDate+7).map(element => element.numOunces);
    	return dateRange;
  	}
 

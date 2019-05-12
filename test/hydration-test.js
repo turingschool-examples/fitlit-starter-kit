@@ -2,12 +2,13 @@ if(typeof module !== 'undefined') {
 var chai = require('chai');
 var expect = chai.expect;
 var Hydration = require('../src/hydration')
-var sampleUserData = require('../data/sample-users')
+var HydrationRepository = require('../src/hydration-repo')
+var User = require('../src/user')
 var sampleHydrationData =require('../data/sample-hydration');
 }
 
 describe('Hydration', function() {
-	let hydration;
+  let hydration;
 	let userData;
 	let hydrationData;
 
@@ -65,7 +66,9 @@ describe('Hydration', function() {
       }
     ]
 }
-		hydration = new Hydration('../data/sample-hydration', '../data/sample-users');
+    hydrationRepo = new HydrationRepository('../data/sample-hydration', 1)
+    hydration = new Hydration(hydrationData);
+  
 	});
 
 	it('should be a function', function() {
@@ -80,20 +83,16 @@ describe('Hydration', function() {
 		expect(hydration.hydrationStats).to.equal(sampleHydrationData)
 	});
 
-	it('should find a user by id', function() {
-		expect(hydration.returnUserHydration(userData.id)).to.eql(hydrationData.hydrationData)
-	});
-
 	it('should return a user\'s avg water intake in a day', function() {
-		expect(hydration.findAvgWaterIntake(1)).to.equal(55.4)
+		expect(hydration.findAvgWaterIntake()).to.equal(55.4)
 	});
 
 	it('should return the amount of fluid ounces consumed on a particular date', function() {
-		expect(hydration.findFluidOzByDay(1, '15/05/2019')).to.equal(59)
+		expect(hydration.findFluidOzByDay('15/05/2019')).to.equal(59)
 	});
 
 	it('should return the amount of fluid ounces consumed within a week-long date range', function() {
-		expect(hydration.findWeeklyWater(1, '08/05/2019')).to.eql([39, 40, 65, 84, 33, 60, 30])
+		expect(hydration.findWeeklyWater('08/05/2019')).to.eql([39, 40, 65, 84, 33, 60, 30])
 	});
 
 	

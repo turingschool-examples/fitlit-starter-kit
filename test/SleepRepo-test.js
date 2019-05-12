@@ -25,6 +25,10 @@ describe('SleepRepo', function() {
     
     expect(sleepRepo.avgSleepQual()).to.be.a('number');
     expect(sleepRepo.avgSleepQual()).to.equal(8);
-  })
+  });
 
+  it('should return the users who average a quality of 3 given a week', function() {
+    
+    expect(sleepRepo.goodSleepQuality()).to.be.an('array');
+  });
 });

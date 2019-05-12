@@ -9,16 +9,18 @@ var HydrationRepository = require('../src/hydration-repo');
 describe('Hydration Repository', function() {
 
 	it('should be a function', function() {
-		const hydrationRepository = new HydrationRepository('../data/sample-hydration');
 		expect(HydrationRepository).to.be.a('function');
 	});
 
 	it('should be an instance of Hydration Repository', function() {
-		const hydrationRepository = new HydrationRepository('../data/sample-hydration');
+		const hydrationRepository = new HydrationRepository('../data/sample-hydration', 1);
 		expect(hydrationRepository).to.be.an.instanceof(HydrationRepository);
 	});
 
-	it('should find a user\'s hydration data by id', function() {
-		
-	})
+	it('should find a user\'s hydration data by id', function() {  
+		const hydrationRepository = new HydrationRepository('../data/sample-hydration', 1);
+		expect(hydrationRepository.findUserHydration(1)).to.equal(userHydrationData[0]);
+	});
+
+
 })

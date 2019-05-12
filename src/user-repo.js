@@ -1,12 +1,13 @@
 
-// if(typeof module !== 'undefined') {
-// var userData = require('../data/sample-users');
-// }
+if(typeof module !== 'undefined') {
+ userData = require('../data/sample-users');
+}
 
 class UserRepository {
-	constructor(dataFilePath) {
-		this.dataFilePath = dataFilePath;
-    this.userData = this.findFilepath(dataFilePath);
+	constructor(dataFilePath, userId) {
+    this.userData = userData;
+    this.currentUser = (this.findUserData(userId));
+    this.userData = (this.findFilepath(dataFilePath));
   }
 
   findFilepath(dataFilePath) {
@@ -17,8 +18,7 @@ class UserRepository {
     }
   }
 
-	findUserData(userId) {
-
+	findUserData(userId) {  
     let currentUser = this.userData.find(function(element){
     return element.id === userId 
     })
@@ -33,18 +33,17 @@ class UserRepository {
 
   findMostCommonState() {
     let states = this.userData.map(element => element.address.split(' ')[element.address.split(' ').length-2]);
-    //gets array state abbreviations
     let state = states.reduce(function(acc,curr) {
-      if (!acc[curr]) {                  //if object[abb] doesn't exist
-            acc[curr] = 1;             //set object[abb] value to 1
-        } else {                      //if does exist
-            acc[curr] = acc[curr] + 1; //increment existing value by 1
+      if (!acc[curr]) {                 
+            acc[curr] = 1;            
+        } else {                      
+            acc[curr] = acc[curr] + 1; 
           } 
       return acc;
    
 }, {})
- return Object.entries(state).sort().shift()[0] //get an array of the key:value pairs
-                                                //sort the array and unshift the largest
+ return Object.entries(state).sort().shift()[0] 
+                                                
 }
 
 

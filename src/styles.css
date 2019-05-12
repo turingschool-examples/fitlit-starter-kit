@@ -5,7 +5,8 @@
 
 .user {
   display: flex;
-  height: 250px;
+  height: 200px;
+  justify-content: space-between;
 }
 
 .user-image {
@@ -41,13 +42,19 @@ main {
 
 h3 {
   color: #FEC869;
-  font-size: 24px;
+  font-size: 28px;
   text-align: center;
 }
 
 figure {
   height: 500px;
   width: 33%;
+}
+
+h4 {
+  color: #FEC869;
+  font-size: 18px;
+  text-align: left; 
 }
 
 .activity, 

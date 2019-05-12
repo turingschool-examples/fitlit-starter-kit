@@ -1,7 +1,7 @@
 if(typeof module !== 'undefined') {
 var chai = require('chai');
 var expect = chai.expect;
-var userData = require('../data/sample-users');
+// var userData = require('../data/sample-users');
 var User = require('../src/user')
 }
 

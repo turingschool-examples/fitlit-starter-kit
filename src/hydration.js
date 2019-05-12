@@ -1,41 +1,33 @@
 if(typeof module !== 'undefined') {
-	// var User = require('../src/user');
-	// var userData = require('../data/users');
-	var userHydrationData = require('../data/sample-hydration');
+	User = require('../src/user');
+	userData = require('../data/users');
+	hydrationRepo = require('../src/hydration-repo');
+	hydrationStats = require('../data/sample-hydration');
 };
 
 
 class Hydration {
-	constructor(hydrationStats, userData, userId) {
-		this.hydrationStats = require(hydrationStats);
-		this.userData = require(userData);
-		// this.userHydration = this.returnUserHydration(userId)
+	constructor(userHydData) {
+		this.hydrationStats = hydrationData;
+		this.userHydData = userHydData; 
 	}
 
-	returnUserHydration(userId) {
-		let currentUser = this.hydrationStats.find(element => element.userID === userId)
-		return currentUser.hydrationData;
-		}
-
-	findAvgWaterIntake(userId) {
-		let currentUserHydration = this.returnUserHydration(userId);
-		return currentUserHydration.reduce((a, b) => a += b.numOunces, 0)/ currentUserHydration.length;
+	findAvgWaterIntake() {
+		return this.userHydData.hydrationData.reduce((a, b) => a += b.numOunces, 0)/ this.userHydData.hydrationData.length;
     }
 
-  findFluidOzByDay(userId, date) {
-    let currentUser = this.returnUserHydration(userId);
-    const fluid = currentUser.find(element => element.date === date);
+  findFluidOzByDay(date) {
+		const fluid = this.userHydData.hydrationData.find(element => element.date === date);
     return fluid.numOunces;
     }
 
- 	findWeeklyWater(userId, date) {
- 		let currentUser = this.returnUserHydration(userId);
-    let startDate = currentUser.findIndex(element => element.date === date);
-   	let dateRange = currentUser.slice(startDate, startDate+7).map(element => element.numOunces);
+ 	findWeeklyWater(date) {
+    let startDate = this.userHydData.hydrationData.findIndex(element => element.date === date);
+		 let dateRange = this.userHydData.hydrationData.slice(startDate, startDate+7).map(element => element.numOunces);
    	return dateRange;
  	}
 
-}
+};
 
 
 

@@ -32,9 +32,9 @@ describe('User Repository', function() {
     userRepository = new UserRepository('../data/sample-users.js');
   });
 
-  it('should accept a data file path', function() {
-  	expect(userRepository.dataFilePath).to.equal('../data/sample-users.js');
-  });
+  // it('should accept a data file path', function() {
+  // 	expect(userRepository.dataFilePath).to.equal('../data/sample-users.js');
+  // });
 
     it('should be able to access the user\'s data based on id', function() {
   		expect(userRepository.findUserData(2)).to.equal(userData[1]);

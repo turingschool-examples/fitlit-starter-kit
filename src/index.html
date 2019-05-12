@@ -22,9 +22,7 @@
         </article>
         <article class="widget">
           <h3>Step Goal Challenge</h3>
-          <h4>You vs Competition</h3>
-          <p id='compStepGoal'></p>
-          <p id='compTheirStepGoal'></p>
+          <canvas id="step-goal-chart" width="400" height="400"></canvas>
         </article>
       </section>
       <nav class='dashTitle'>
@@ -33,11 +31,12 @@
       <section class="widgetContainer">
         <article class="widget">
           <h3>H2O Today</h3>
-          <p id='userWater'>H2O Consumed Today</p>
+          <p id='user-water'>Ounces of Water Drank Today</p>
+          <p>Goal of 64 Ounces</p>
         </article>
         <article class="widget">
           <h3>H2O This Week</h3>
-          <p id='waterWeek'>H2O consumed per day this week</p>
+          <canvas id="hydration-week-chart" width="400" height="400"></canvas>
         </article>
       </section>  
       <nav class='dashTitle'>
@@ -45,29 +44,17 @@
       </nav>
       <section class="widgetContainer">
         <article class="widget">
-          <h3>Sleep Hours Today</h3>
-          <p id='user-sleep-hour-today'>Hours Slept</p>
+          <h3>Sleep Comparison</h3>
+          <canvas id="sleep-chart" width="400" height="400"></canvas>
         </article>
         <article class="widget">
-          <h3>Sleep Quality Today</h3>
-          <p id='user-sleep-qual-today'>Quality of Sleep</p>
-        </article>
-        <article class="widget">
-          <h3>Sleep This Week</h3>
+          <h3>Hours Slept This Week</h3>
           <canvas id="hours-slept-week-chart" width="400" height="400"></canvas>
         </article>
         <article class="widget">
           <h3>Sleep Quality This Week</h3>
             <canvas id="qual-slept-week-chart" width="400" height="400"></canvas>
         </article>
-        <article class="widget">
-          <h3>Your Sleep Alltime</h3>
-          <p id="user-sleep-hours-all">Average hours slept alltime</p>
-        </article>
-        <article class="widget">
-          <h3>Your Sleep Alltime</h3>
-          <p id='user-sleep-qual-all'>Quality of sleep alltime</p>
-        </article> 
       </section> 
       <nav class='dashTitle'>
         <h2>Activity Dash</h2>
@@ -75,15 +62,15 @@
       <section class="widgetContainer">
         <article class="widget">
           <h3>Steps Today</h3>
-          <p id='userSteps'>Steps Taken</p>
+          <p id='user-steps'>Steps Taken</p>
         </article>
         <article class="widget">
           <h3>Minutes Active Today</h3>
-          <p id='userActive'>Number of minutes active today</p>
+          <p id='user-active'>Number of minutes active today</p>
         </article>
         <article class="widget">
           <h3>Miles Walked</h3>
-          <p id='userMiles'>Distance walked based on step count</p>
+          <p id='user-miles'>Distance walked based on step count</p>
         </article>
         <article class="widget">
           <h3>Activity Challenge</h3>
@@ -91,7 +78,7 @@
         </article>
         <article class="widget">
           <h3>Weekly Activity</h3>
-          <p id='userWeek'>Steps, minutes, flights</p>
+          <canvas id="activity-week-chart" width="400" height="400"></canvas>
         </article>
       </section> 
   </main>

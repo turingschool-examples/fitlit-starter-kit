@@ -6,6 +6,9 @@ const strideLength = document.querySelector('#user-stride-length')
 const ouncesDrankToday = document.querySelector('#ounces-drank');
 const ouncesThisWeek = document.querySelector('#ounces-weekly-card');
 
+var a = moment().format('DD/MM/YYYY');
+console.log(a)
+
 const loadName = () => {
   let randomNum = Math.floor(Math.random() * userData.length + 1)
   let user = new User(userData[randomNum]);
@@ -34,13 +37,13 @@ const compareGoal = (goal) => {
 
 const loadHydrationData = (user) => {
   let userHydration = new UserHydration(hydrationData);
-  let dayData = userHydration.getOuncesByDay(user.person.id, "12/05/2019");
+  let dayData = userHydration.getOuncesByDay(user.person.id, moment().format('DD/MM/YYYY'));
   ouncesDrankToday.innerText = `you drank ${dayData} oz of water today`;
   weeklyHydrationData(user, userHydration);
 }
 
 const weeklyHydrationData = (user, userHydration) => {
-  let weekData = userHydration.getWeeklyOunces(user.person.id, "12/05/2019");
+  let weekData = userHydration.getWeeklyOunces(user.person.id, moment().format('DD/MM/YYYY'));
   let listedData = weekData.map(el => {
     return `<li>Date: ${el.date}</li><li>Ounces: ${el.numOunces}</li></br>`;
   });

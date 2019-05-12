@@ -15,6 +15,8 @@ class SleepRepository {
 };
 //Sleep Repo
 
+//Find user by Id and set a property to call that method in constructor
+
 //Find average sleep quality(userSleepData)
     //Access object keys to target sleepData
     //Find sum of sleepQuality through all users (using reduce or map)

@@ -27,8 +27,8 @@ describe('SleepRepo', function() {
     expect(sleepRepo.avgSleepQual()).to.equal(8);
   });
 
-  it('should return the users who average a quality of 3 given a week', function() {
+  it('should return the users who average above a quality of 3 given a week', function() {
     
-    expect(sleepRepo.goodSleepQuality()).to.be.an('array');
+    expect(sleepRepo.goodSleepQual("09/05/2019")).to.be.an('array');
   });
 });

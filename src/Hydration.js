@@ -16,7 +16,7 @@ class UserHydration {
 
   getOuncesByDay(id, date) {
     let drinkingData = this.getHydrationData(id);
-    let objectByDate = drinkingData.filter(el => el.date.includes(date))
+    let objectByDate = drinkingData.filter(el => el.date.includes(date));
     return objectByDate[0].numOunces;
   }
 

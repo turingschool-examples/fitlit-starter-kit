@@ -36,7 +36,7 @@ document.getElementById('userAddress').innerText = user.user.address;
 document.getElementById('userEmail').innerText = user.user.email;
 document.getElementById('userStepGoal').innerText = `Daily Step Goal: ${user.user.dailyStepGoal}`;
 document.getElementById('userStrideLength').innerText = `Stride Length ${user.user.strideLength}`;
-// document.getElementById('userWater').innerText = `You have consumed ${dayHydration} ounces today.`;
+document.getElementById('user-profile-pic').innerHTML = `<img src="../images/${user.user.id}.jpg">`
 
 /*-------------activity info---------*/
 

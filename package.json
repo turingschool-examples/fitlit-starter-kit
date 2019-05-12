@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "chart.js": "^2.8.0",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "wget": "0.0.1"
   }
 }

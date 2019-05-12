@@ -18,23 +18,32 @@ header {
 
 h1 {
   margin: 0px;
-  padding: 17px;
+  padding: 11px;
 }
 
-/*------------------Main-----------------*/
+#prof-pic {
+  border: solid;
+  border-radius: 72px;
+  height: 60px;
+  width: 60px;
+}
 
 figure {
   border: solid;
   border-radius: 50px;
+  height: 30px;
   margin: 10px;
   padding: 7px;
-  width: 14%;
+  width: 11%;
 }
 
 img.calendar {
   height: 20px;
+  padding: 2px;
   width: 20px;
 }
+
+/*------------------Main-----------------*/
 
 h2 {
   margin: 0px;
@@ -121,6 +130,21 @@ nav.dashTitle {
   font-family: sans-serif;
   font-size: 0.5em;
   text-anchor: middle;
+}
+
+img.shoe {
+  height: 180px;
+  width: 180px;
+  padding: 0px 10px;
+  margin: 0px 20px 0px 20px;
+}
+
+#user-miles {
+  font-size: 2.5em;
+  margin: 0px;
+  padding: 0px;
+  color: #666;
+  font-family: sans-serif;
 }
 
 article.widget {

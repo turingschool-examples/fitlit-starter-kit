@@ -15,11 +15,14 @@ console.log('user: ', user)
 console.log('userRepo: ', userRepo)
 console.log('hydration: ', hydration)
 console.log('sleep: ', sleep)
+console.log('activity: ', activity)
 
 /*------------Methods Called-----------*/
 
 let usersStepAverage = userRepo.averageStepGoal();
-const todaysSteps = activity.userStepsTakenToday(todaysDate)
+const todaysSteps = activity.userStepsTakenToday(todaysDate);
+const todaysMinutesActive = activity.activeMinutesPerDay(todaysDate)
+const todaysMilesWalked = activity.milesWalkedToday(todaysDate)
 let dayHydration = hydration.amountHydratedByDay(todaysDate);
 let weekHydration = hydration.waterForWeek(todaysDate)
 
@@ -36,13 +39,13 @@ document.getElementById('userAddress').innerText = user.user.address;
 document.getElementById('userEmail').innerText = user.user.email;
 document.getElementById('userStepGoal').innerText = `Daily Step Goal: ${user.user.dailyStepGoal}`;
 document.getElementById('userStrideLength').innerText = `Stride Length ${user.user.strideLength}`;
-document.getElementById('user-profile-pic').innerHTML = `<img src="../images/${user.user.id}.jpg">`
+document.getElementById('user-profile-pic').innerHTML = `<img id="prof-pic" src="../images/${user.user.id}.jpg">`
 
 /*-------------activity info---------*/
 
 document.getElementById('user-steps').innerText = `You have taken ${todaysSteps} steps today, that means you've walked ${activity.milesWalkedToday(todaysDate)}, miles!!!`
 document.getElementById('user-active').innerText = `You have been active for ${activity.minutesActiveForDate(todaysDate)} minutes today`
-document.getElementById('user-miles').innerText = `You have walked ${activity.milesWalkedToday(todaysDate)} miles today.`
+document.getElementById('user-miles').innerText = `${activity.milesWalkedToday(todaysDate)}`
 
 
 /*------------Charts----------------*/
@@ -269,6 +272,9 @@ const waterPercentage = () => dayHydration / 64 * 100;
 
 const walkingPercentage = () => todaysSteps / user.user.dailyStepGoal * 100
 
+const minutesPerDay = () => (todaysMinutesActive / 150) * 100
+
+
 const determineColor = percentage => {
   if (percentage < 50) {
     return 'red'
@@ -312,3 +318,21 @@ document.getElementById('user-steps').innerHTML = `<div class="single-chart">
       <text x="18" y="20.35" class="percentage">${todaysSteps}</text>
     </svg>
   </div>`
+
+  document.getElementById('user-active').innerHTML = `<div class="single-chart">
+    <svg viewBox="0 0 36 36" class="circular-chart ${determineColor(minutesPerDay())}">
+      <path class="circle-bg"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <path class="circle"
+        stroke-dasharray="${minutesPerDay()}, 100"
+        d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+      />
+      <text x="18" y="20.35" class="percentage">${todaysMinutesActive}</text>
+    </svg>
+  </div>`
+

@@ -1,5 +1,6 @@
 * {
 box-sizing: border-box;
+
 }
 
 body {
@@ -8,7 +9,8 @@ background-color: lightslategrey;
 
 section {
 background-color: white;
-display: flex;
+display: grid;
+grid-template-columns: 1fr;
 width: 100%;
 height: 250px;
 margin: 10px auto;

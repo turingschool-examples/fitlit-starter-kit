@@ -10,9 +10,9 @@ class SleepRepo {
   }
 
   getWeek(date) {
-    let allSleepData = this.getSleepData();
-    let dates = allSleepData.map(el => el.date);
-    dates.indexOf(date);
+    let allSleepData = this.dataFilePath.map(el => el.sleepData.reverse());
+    let dates = allSleepData[0].map(el => el.date);
+    return dates.indexOf(date);
   }
 
   avgSleepQual() {
@@ -24,11 +24,17 @@ class SleepRepo {
   // I need to get the index of the element where the date is included.
   // I need to 
   goodSleepQual(date) {
-    let index = this.getWeek();
+    let index = this.getWeek(date);
     let allSleepData = this.dataFilePath.map(el => el.sleepData);
-    
-    console.log(allSleepData)
-
+    let week = allSleepData.map(array => {
+      return array.slice(index, index + 7);
+    });
+    let sleepQualityAverage = week.map(array => {
+      let quality = array.map(el => el.sleepQuality);
+      let average = quality.reduce((acc, curr) => acc + curr / quality.length);
+      return Math.floor(average);
+    });
+    console.log(sleepQualityAverage)
   }
 
   mostSleep(date) {

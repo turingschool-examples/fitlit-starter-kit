@@ -5,37 +5,37 @@ const mockSleepData = [
       {
         "date": "06/05/2019",
         "hoursSlept": 8,
-        "sleepQuality": 4.8
+        "sleepQuality": 1
       },
       {
         "date": "07/05/2019",
         "hoursSlept": 10.7,
-        "sleepQuality": 4.8
+        "sleepQuality": 1
       },
       {
         "date": "08/05/2019",
         "hoursSlept": 8.1,
-        "sleepQuality": 1.9
+        "sleepQuality": 1
       },
       {
         "date": "09/05/2019",
         "hoursSlept": 4.5,
-        "sleepQuality": 3.4
+        "sleepQuality": 1
       },
       {
         "date": "10/05/2019",
         "hoursSlept": 10.7,
-        "sleepQuality": 4.3
+        "sleepQuality": 1
       },
       {
         "date": "11/05/2019",
         "hoursSlept": 5.6,
-        "sleepQuality": 3.5
+        "sleepQuality": 1
       },
       {
         "date": "12/05/2019",
         "hoursSlept": 10.1,
-        "sleepQuality": 1.7
+        "sleepQuality": 1
       },
       {
         "date": "13/05/2019",

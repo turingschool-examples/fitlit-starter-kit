@@ -24,7 +24,22 @@ describe('SleepRepo', function() {
   it('should return a average sleep quality of all users', function() {
     
     expect(sleepRepo.avgSleepQual()).to.be.a('number');
-    expect(sleepRepo.avgSleepQual()).to.equal(8);
-  })
+    expect(sleepRepo.avgSleepQual()).to.equal(4);
+  });
 
+  it('should return the users who average above a quality of 3 given a week', function() {
+    
+    expect(sleepRepo.goodSleepQual("12/05/2019")).to.be.an('array');
+  });
+
+  it('sould return the users who slept the mos on a given day', function() {
+
+    expect(sleepRepo.mostSleep('12/05/2019')).to.be.a('number');
+    expect(sleepRepo.mostSleep('12/05/2019')).to.equal(2)
+  });
+
+  it('should return the users who average below a quality of 3 given a week', function() {
+
+    expect(sleepRepo.worstSleepQual('12/05/2019')).to.be.an('array');
+  });
 });

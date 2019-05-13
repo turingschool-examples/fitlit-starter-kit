@@ -62,5 +62,9 @@ describe('Sleep Test', function () {
     // expect(sleep.allUsersGoodSleepGivenWeek())
   })
 
+  it('should display the night they slept the longest', function () {
+    expect(sleep.longestNightSleep()).to.be.a('object');
+  })
+
 
 })

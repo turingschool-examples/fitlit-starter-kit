@@ -30,6 +30,7 @@ $('.activity').append("<h4>Weekly Stats: <span class='weekly-stats'></span></h3"
 //How their number of steps, minutes active, and flights of stairs climbed compares to all users for the latest day
 
 
+
 $('.hydration').append("<h4>Your H2O Intake Today: <span class='water-today'></span> oz</h3")
 $('.hydration').append("<h4>Your H2O Intake This Week: <span class='water-week'></span></h3") //put in a chart
 $('.water-today').text(hydration.findFluidOzByDay('15/05/2019'))

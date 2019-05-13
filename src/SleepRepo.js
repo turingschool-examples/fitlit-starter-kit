@@ -63,7 +63,6 @@ class SleepRepo {
       return Math.floor(average);
     });
     let users = this.dataFilePath.filter((el, i) => qualityAverage[i] <= 3);
-    console.log(users.map(el => el.userID))
     return users.map(el => el.userID);
   }
 }

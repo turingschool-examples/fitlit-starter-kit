@@ -1,17 +1,17 @@
 if(typeof module !== 'undefined') {
   userData = require('../data/users');
   hydrationData = require('../data/sample-hydration')
-  hydration = require('./hydration')
+  hydration = require('../src/hydration')
  }
 
 
 class HydrationRepository {
 	constructor(dataFilePath,userId) {
-    this.userHydrationData = this.findFilepath(dataFilePath);
+    this.userHydrationData = this.findFilePath(dataFilePath);
     this.currentUser = (this.findUserHydration(userId))
 	}
 
-	 findFilepath(dataFilePath) {
+	 findFilePath(dataFilePath) {
     if(typeof module !== 'undefined') {
       return require(dataFilePath)
     } else {

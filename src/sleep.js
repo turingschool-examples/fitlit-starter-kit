@@ -42,5 +42,5 @@ class Sleep {
 
 
 if(typeof module !== 'undefined') {
-moduele.exports = Sleep;
+module.exports = Sleep;
 }

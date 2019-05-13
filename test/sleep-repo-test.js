@@ -140,6 +140,6 @@ describe('Sleep Repo', function() {
 	});
 
 	it('should find average sleep quality of all users', function() {
-		expect(sleepRepo.findAvgUserSleep()).to.equal(3.26)
+		expect(sleepRepo.findAvgUserSleep()).to.equal(3)
 	});
 })

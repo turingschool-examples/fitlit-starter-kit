@@ -8,7 +8,6 @@ if(typeof module !== 'undefined') {
 class SleepRepository {
 	constructor(dataFilePath) {
 		this.userSleepData = this.findFilePath(dataFilePath);
-		console.log(this.userSleepData)
 	}
 
 	findFilePath(dataFilePath) {
@@ -20,9 +19,20 @@ class SleepRepository {
   }
 
   findAvgUserSleep() {
-  	const avgSleep = this.userSleepData.reduce((a, b) => a += b.sleepQuality, 0);
-  	console.log(avgSleep)
-  }
+  		let array2 =[]
+  		let array = this.userSleepData.map(el => el.sleepData)
+  		array.reduce(function(acc,curr) {
+  			let sleepQual = curr.filter(el => array2.push(el.sleepQuality))
+  		},[])
+  		return Math.floor(array2.reduce((acc,curr)=> acc +=curr)/array2.length)
+
+  	}
+
+  	findGoodSleepers() {
+
+  	}
+
+  
   
 };
 //Sleep Repo

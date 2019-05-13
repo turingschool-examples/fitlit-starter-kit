@@ -16,7 +16,7 @@ describe("UserHydration", function() {
     expect(UserHydration).to.be.a('function');
   });
 
-  it('should an instance of UserHydration', function() {
+  it('should make an instance of UserHydration', function() {
     
     expect(userHydration).to.be.an.instanceOf(UserHydration);
   });

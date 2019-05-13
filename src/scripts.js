@@ -6,9 +6,9 @@ let hydrationRepo = new HydrationRepository(hydrationData, 1)
 let hydration = new Hydration(hydrationRepo.currentUser)
 
 $('span.user-name').html(user.returnFirstName());
-$('article.user').append("<div class='user-card'></div>")
+$('.user').append("<div class='user-card' aria-expanded='true' hidden></div>")
 $('img.user-image').click(function() {
-  $('div.user-card').toggle();
+$('div.user-card').toggle();
 })
 $('div.user-card').append("<h6> Name: <span class='name-span'></span></h6><h6>Address: <span class='address-span'></span></h6><h6> Email: <span class='email-span'></span></h6><h6>Daily Step Goal: <span class ='goal-span'></span></h6><h6>Average Step Goal: <span class ='av-goal-span'></span></h6>")
 $('span.name-span').text(`${user.user.name}`)
@@ -30,7 +30,8 @@ $('.activity').append("<h4>Weekly Stats: <span class='weekly-stats'></span></h3"
 //How their number of steps, minutes active, and flights of stairs climbed compares to all users for the latest day
 
 
-$('.hydration').append("<h4>Your H2O Intake Today: <span class='water-today'></span> ounces</h3")
+
+$('.hydration').append("<h4>Your H2O Intake Today: <span class='water-today'></span> oz</h3")
 $('.hydration').append("<h4>Your H2O Intake This Week: <span class='water-week'></span></h3") //put in a chart
 $('.water-today').text(hydration.findFluidOzByDay('15/05/2019'))
 

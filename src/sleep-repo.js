@@ -1,17 +1,29 @@
 if(typeof module !== 'undefined') {
 	User = require('../src/user');
 	userData = require('../data/users');
-	userSleepData = require('../data/sleep');
+	sampleSleepData = require('../data/sleep');
 };
 
 
 class SleepRepository {
-  constructor(){
+	constructor(dataFilePath) {
+		this.userSleepData = this.findFilePath(dataFilePath);
+		console.log(this.userSleepData)
+	}
 
-
+	findFilePath(dataFilePath) {
+    if(typeof module !== 'undefined') {
+      return require(dataFilePath)
+    } else {
+      return sleepData;
+    } 
   }
 
-
+  findAvgUserSleep() {
+  	const avgSleep = this.userSleepData.reduce((a, b) => a += b.sleepQuality, 0);
+  	console.log(avgSleep)
+  }
+  
 };
 //Sleep Repo
 
@@ -48,5 +60,5 @@ class SleepRepository {
 
 
 if(typeof module !== 'undefined') {
-moduele.exports = SleepRepository;
+module.exports = SleepRepository;
 }

@@ -19,16 +19,31 @@ class SleepRepository {
   }
 
   findAvgUserSleep() {
-  		let array2 =[]
-  		let array = this.userSleepData.map(el => el.sleepData)
+  		const array2 =[]
+  		const array = this.userSleepData.map(el => el.sleepData)
   		array.reduce(function(acc,curr) {
-  			let sleepQual = curr.filter(el => array2.push(el.sleepQuality))
+  			const sleepQual = curr.filter(el => array2.push(el.sleepQuality))
   		},[])
   		return Math.floor(array2.reduce((acc,curr)=> acc +=curr)/array2.length)
 
   	}
 
-  	findGoodSleepers() {
+  	findGoodSleepers(date) {
+  		const dates = this.userSleepData.map(el => el.sleepData)
+  		const newDates = dates.map(el => el.concat())
+  		console.log(newDates)
+  		// const allSleep = this.userSleepData.map(el => el.sleepData);
+  		// // console.log(allSleep)
+  		// allSleep.reduce(function(a,b) {
+  		// 	const sleepDates = b.filter(el => dates.push(el.date))
+  		// 	return a
+  		// }, [])
+  		// console.log(dates)
+  		// const startDate = dates.findIndex(el => el === date)
+  		// const dateRange = allSleep.slice(startDate, startDate+7).map(el => el.sleepQuality <3)
+  		// console.log(dateRange)
+
+
 
   	}
 

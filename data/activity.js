@@ -1,4 +1,4 @@
-const activityData = [
+numconst activityData = [
   {
     "userID": 1,
     "activityData": [

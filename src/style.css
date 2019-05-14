@@ -1,26 +1,69 @@
 * {
-box-sizing: border-box;
-
+  box-sizing: border-box;
+  font-family: "Open Sans", serif;
 }
 
 body {
-background-color: lightslategrey;
+  background-color: lightslategrey;
+  padding: 0;
+}
+
+nav {
+  border-bottom: 1px solid lightgray;
 }
 
 section {
-background-color: white;
-display: grid;
-grid-template-columns: 1fr;
-width: 100%;
-height: 250px;
-margin: 10px auto;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 250px;
+  margin: 10px auto;
+}
+
+h3 {
+  margin: 0;
 }
 
 article {
-border: 1px black solid;
-flex: 1;
+  background-color: white;
+  border: 1px black solid;
+  width: 45%;
+  padding: 15px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+tr,
+th,
+table {
+  border: 1px black solid;
+  width: 300px;  
+}
+
+#user-step-goal {
+  line-height: 2em;
+}
+
+.hydration-card {
+  text-align: center
+}
+
+#ounces-drank-today {
+  font-size: 2em;
+}
+
+#ounces-drank {
+  font-size: 3em;
 }
 
 #ounces-weekly-card {
-  overflow: scroll
+  overflow: scroll;
+}
+
+#weekly-hydration-data {
+  margin: 15px auto;
+  padding: 0;
 }

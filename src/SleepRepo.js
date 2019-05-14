@@ -34,7 +34,7 @@ class SleepRepo {
     let qualityAverage = week.map(array => {
       let quality = array.map(el => el.sleepQuality);
       let average = quality.reduce((acc, curr) => acc + curr / quality.length);
-      return Math.floor(average);
+      return Math.round(average);
     });
     let users = this.dataFilePath.filter((el, i) => qualityAverage[i] >= 3);
     return users.map(el => el.userID);

@@ -1,30 +1,32 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Activity Tracker</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
 </head>
-
 <body>
-  <h1>Activity Tracker</h1>
+  <nav >
+    <h1>Activity Tracker</h1>
+  </nav>
   <header>
     <h2><span class="user-name-span">User</span>'s Info</h2>
     <section id="user-data">
       <article class="user-data-card" id="user-identity">
-        <p id="user-email">Email:</p>
+        <h3>General User Info</h3>
+        <p id="user-email" aria-label="user-email">Email:</p>
         <address id="user-address">Address:</address>
       </article>
       <article class="user-data-card" id="user-fitness-info">
+        <h3>User Fitness Info</h3>
         <p id="user-step-goal">Step Goal:</p>
         <p id="user-stride-length">Stride Length:</p>
       </article>
     </section>  
   </header>
   <main>
-    <h3>Physical Activity</h3>
+    <h2>Physical Activity</h3>
     <section id="physical-activity-sect">
       <article class="physical-activity-card" id="steps-card">
 
@@ -36,7 +38,7 @@
 
       </article>
     </section>
-    <h3>Sleep</h3>
+    <h2>Sleep</h3>
     <section id="sleep">
       <article class="sleep-card" id="hours-slept-card">
 
@@ -45,13 +47,23 @@
 
       </article>
     </section>
-    <h3>Hydration</h3>
+    <h2>Hydration</h3>
     <section id="hydration">
       <article class="hydration-card" id="ounces-card">
+        <h3 id="ounces-drank-today" aria-label="ounces-drank-today">Ounces drank today:</h3>
         <p id="ounces-drank"></p>
       </article>
       <article class="hydration-card" id="ounces-weekly-card">
-        
+        <h3>Weekly Hydration Data</h3>
+        <table id="weekly-hydration-data" aria-label="weekly-hydration-data">
+          <thead>
+            <th>Date</th>
+            <th>Ounces Drank</th>
+          </thead>
+          <tbody id="hydration-table-data">
+
+          </tbody>
+        </table>
       </article>
     </section>
   </main>
@@ -66,5 +78,4 @@
   <script type="text/javascript" src="./UserRepository.js"></script>
   <script type="text/javascript" src="./scripts.js"></script>
 </body>
-
 </html>

@@ -28,6 +28,13 @@ class Sleep {
   	return avgQuality
   }
 
+  findHoursSleptByDay(userId, date) {
+  	const currentUser = this.findUserSleepData(userId);
+  	const findDate = currentUser.sleepData.find(item => item.date === date);
+  	return findDate.hoursSlept
+
+  }
+
 };
 
 //Sleep

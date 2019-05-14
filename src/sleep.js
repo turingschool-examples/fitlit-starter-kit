@@ -43,8 +43,15 @@ class Sleep {
   findHoursSleptByWeek(userId, date) {
   	const currentUser = this.findUserSleepData(userId);
   	const startDate = currentUser.sleepData.findIndex(item => item.date === date)
-  	const weekOfSleep = currentUser.sleepData.slice(startDate, startDate+7).reduce((a, b) => a += b.hoursSlept, 0)
+  	const weekOfSleep = currentUser.sleepData.slice(startDate, startDate+7).map(item => item.hoursSlept)
   	return weekOfSleep
+  }
+
+  findSleepQualityByWeek(userId, date) {
+  	const currentUser = this.findUserSleepData(userId);
+  	const startDate = currentUser.sleepData.findIndex(item => item.date === date)
+  	const weekOfSleepQuality = currentUser.sleepData.slice(startDate, startDate+7).map(item => item.sleepQuality)
+  	return weekOfSleepQuality
   }
 
 };

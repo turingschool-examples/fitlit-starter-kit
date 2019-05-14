@@ -1,8 +1,8 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const UserHydration = require("../src/Sleep");
-const mocksleepData = require("../data/mock-sleep");
+const Sleep = require("../src/Sleep");
+const mocksleepData = require("../data/mock-user-sleep");
 const mockuserData = require('../data/mock-users');
 const mockUser = mockuserData[0]
 const sleepInfo = mocksleepData.filter(user => {

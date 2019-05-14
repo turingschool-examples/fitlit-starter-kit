@@ -44,10 +44,25 @@ class SleepRepository {
   			return weekAvg > 3
 
   		}).map(el => el.userID)
-  		console.log(findGoodSleepers())
+  	}
 
+  	findTopSleepers(date){
+  		let ids = [];
+  		let final = [];
+  		let dateData = this.userSleepData.map(function(el) {
+  			ids.push(el.userID)
+  			let values = Object.values(el.sleepData)
+   			let hours = values.find(el => el.date ===date).hoursSlept
+   		return hours
+ 			})
+  		let max = Math.max(...dateData)
+  		dateData.forEach((el, i) => {
+  			if (el === max) {
+  				final.push([el, ids[i]]);
+  			}
+  		});
 
-
+  		return final;
   	}
 
   

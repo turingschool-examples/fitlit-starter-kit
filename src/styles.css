@@ -16,7 +16,7 @@
 
 .headline {
   color: #F97B7C;
-  font-size: 48px;
+  font-size: 42px;
   font-weight: bold 700;
   margin-left: 20px;
   margin-top: 30px;
@@ -24,6 +24,7 @@
 
 .user-card {
   background-color: #A47DCF;
+
 }
 
 body {
@@ -63,7 +64,14 @@ span {
 
 #sleep-chart {
   background-color: white;
-  
+ 
+h6 {
+  background-color: ##FFFFFF;
+  font-weight: normal;
+  margin-left: 5px;
+}
+.user-info {
+  color: #0F0C2B;
 }
 
 .activity, 

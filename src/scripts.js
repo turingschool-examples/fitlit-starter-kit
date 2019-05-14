@@ -10,12 +10,12 @@ let hydration = new Hydration(hydrationRepo.currentUser)
 let sleepRepo = new SleepRepository(sleepData)
 let sleep = new Sleep(sleepRepo.currentUser)
 
+$('.user').prepend("<div class='user-card' aria-expanded='true' hidden></div>")
 $('span.user-name').html(user.returnFirstName());
-$('.user').append("<div class='user-card' aria-expanded='true' hidden></div>")
 $('img.user-image').click(function() {
-$('div.user-card').toggle();
+$('div.user-card').slideToggle('slow');
 })
-$('div.user-card').append("<h6> Name: <span class='name-span'></span></h6><h6>Address: <span class='address-span'></span></h6><h6> Email: <span class='email-span'></span></h6><h6>Daily Step Goal: <span class ='goal-span'></span></h6><h6>Average Step Goal: <span class ='av-goal-span'></span></h6>")
+$('div.user-card').append("<h6> Name: <span class='name-span user-info'></span></h6><h6>Address: <span class='address-span user-info'></span></h6><h6> Email: <span class='email-span user-info'></span></h6><h6>Daily Step Goal: <span class ='goal-span user-info'></span></h6><h6>Average Step Goal: <span class ='av-goal-span user-info'></span></h6>")
 $('span.name-span').text(`${user.user.name}`)
 $('span.address-span').text(`${user.user.address}`)
 $('span.email-span').text(`${user.user.email}`)

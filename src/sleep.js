@@ -21,6 +21,13 @@ class Sleep {
   	return avgSleep
   }
 
+  findAvgSleepQuality(userId) {
+  	const currentUser = this.findUserSleepData(userId);
+  	const sleepQualityTotal = currentUser.sleepData.map(item => item.sleepQuality);
+  	const avgQuality = sleepQualityTotal.reduce((a, b) => a += b, 0)/sleepQualityTotal.length;
+  	return avgQuality
+  }
+
 };
 
 //Sleep

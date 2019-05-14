@@ -141,10 +141,14 @@ describe('Sleep', function() {
 
 	it('should find a user by id', function() {
 		expect(sleep.findUserSleepData(1)).to.eql(sleepData[0])
-	})
+	});
 
-	it('should find a user\'s average hours slept for a given date', function() {
+	it('should find a user\'s average hours slept', function() {
 		expect(sleep.findAvgHoursSlept(1)).to.equal(8.44)
+	});
+
+	it('should find a user\'s average sleep quality', function() {
+		expect(sleep.findAvgSleepQuality(1)).to.equal(3.25)
 	})
 	
 })

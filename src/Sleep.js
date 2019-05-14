@@ -38,17 +38,19 @@ class Sleep {
     let sleepInfo = this.info.sleepData
     let workArray = sleepInfo.map(el => el.date)
     let index = workArray.indexOf(day)
-    let data = sleepInfo.slice(index, index+7)
-    return data.map(stuff => `Date: ${stuff.date}, Hours Slept: ${stuff.hoursSlept}`)
+    let data = sleepInfo.slice(index-6, index+1)
+    return data
   }
 
   weekQuality(day){
     let sleepInfo = this.info.sleepData
     let workArray = sleepInfo.map(el => el.date)
     let index = workArray.indexOf(day)
-    let data = sleepInfo.slice(index, index+7)
-    return data.map(stuff => `Date: ${stuff.date}, Sleep Quality: ${stuff.sleepQuality}`)
+    let data = sleepInfo.slice(index-6, index+1)
+    return data
   }
 }
 
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 module.exports = Sleep;
+}

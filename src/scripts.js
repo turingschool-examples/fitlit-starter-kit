@@ -4,6 +4,7 @@ const loadName = () => {
   $('.user-name-span').text(`User ${user.returnFirstName()}`)
   loadInfo(user);
   loadHydrationData(user);
+  loadSleepInfo(user);
 }
 
 const loadInfo = (user) => {
@@ -38,5 +39,32 @@ const weeklyHydrationData = (user, userHydration) => {
   });
   $('#hydration-table-data').append(`${listedData.join(' ')}`)
 }
+
+const loadSleepInfo = (user) => {
+  let info = sleepData.filter((el) => {return el.userID === user.person.id})[0]
+  let sleep = new Sleep(user, info)
+  $('#todays-hours-slept').append(` ${sleep.hoursSlept(moment().format('DD/MM/YYYY'))}`)
+  $('#avg-hours-slept').append(` ${sleep.avgHoursSlept()}`)
+  weeklyHrsSlept(sleep)
+}
+
+const weeklyHrsSlept = (sleep) => {
+  let weekData = sleep.weekSleep(moment().format('DD/MM/YYYY'))
+  let listedData = weekData.map(el => {
+    return `<tr><td>${el.date}</td><td>${el.hoursSlept}</td>`
+  })
+  $('#weekly-sleep-info').append(` ${listedData.join(' ')}`)
+  weeklySleepQual(sleep)
+  // $('#weekly-sleep-qual').append(`${sleep.weekQuality(moment().format('DD/MM/YYYY'))} </br>` )
+}
+
+const weeklySleepQual = (sleep) => {
+  let weekData = sleep.weekSleep(moment().format('DD/MM/YYYY'))
+  let listedData = weekData.map(el => {
+    return `<tr><td>${el.date}</td><td>${el.sleepQuality}</td>`
+  })
+  $('#weekly-sleep-qual').append(` ${listedData.join(' ')}`)
+}
+
 
 loadName();

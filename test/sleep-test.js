@@ -153,6 +153,10 @@ describe('Sleep', function() {
 
 	it('should find a user\'s hours slept for a given date', function() {
 		expect(sleep.findHoursSleptByDay(1, '07/05/2019')).to.equal(10.7)
+	});
+
+	it('should find a user\'s sleep quality for a given date', function() {
+		expect(sleep.findSleepQualityByDay(2, '15/05/2019')).to.equal(3.8)
 	})
 	
 })

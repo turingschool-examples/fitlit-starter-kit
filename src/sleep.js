@@ -32,7 +32,12 @@ class Sleep {
   	const currentUser = this.findUserSleepData(userId);
   	const findDate = currentUser.sleepData.find(item => item.date === date);
   	return findDate.hoursSlept
+  }
 
+  findSleepQualityByDay(userId, date) {
+  	const currentUser = this.findUserSleepData(userId);
+  	const findDate = currentUser.sleepData.find(item => item.date === date)
+  	return findDate.sleepQuality
   }
 
 };

@@ -61,6 +61,11 @@ span {
   color:#81E6CE; 
 }
 
+#sleep-chart {
+  background-color: white;
+  
+}
+
 .activity, 
 .hydration {
   border-right: solid 1px gray;

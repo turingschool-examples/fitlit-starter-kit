@@ -145,5 +145,9 @@ describe('Sleep Repo', function() {
 
 	it('should find users who have a sleep quality greater than 3 for a given week', function() {
 		expect(sleepRepo.findGoodSleepers('06/05/2019')).to.eql([1, 2])
+	});
+
+	it('should find user\'s that have slept the most hours for a given date', function() {
+		expect(sleepRepo.findTopSleepers('13/05/2019')).to.eql([[10.1, 1]])
 	})
 })

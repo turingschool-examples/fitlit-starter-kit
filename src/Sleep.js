@@ -35,11 +35,11 @@ class Sleep {
   }
 
   weekSleep(day){
-  let sleepInfo = this.info.sleepData
-  let workArray = sleepInfo.map(el => el.date)
-  let index = workArray.indexOf(day)
-  let data = sleepInfo.slice(index, index+2)
-  return data.map(stuff => `Date: ${stuff.date}, Hours Slept: ${stuff.hoursSlept}`)
+    let sleepInfo = this.info.sleepData
+    let workArray = sleepInfo.map(el => el.date)
+    let index = workArray.indexOf(day)
+    let data = sleepInfo.slice(index, index+2)
+    return data.map(stuff => `Date: ${stuff.date}, Hours Slept: ${stuff.hoursSlept}`)
   }
 
   weekQuality(day){

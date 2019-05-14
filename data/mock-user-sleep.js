@@ -1,4 +1,4 @@
-const sleepData = [
+const mockSleepData = [
   {
     "userID": 1,
     "sleepData": [
@@ -1515,3 +1515,5 @@ const sleepData = [
     ]
   }
 ]
+
+module.exports = mockSleepData

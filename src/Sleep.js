@@ -5,7 +5,7 @@ class Sleep {
   }
 
   avgHoursSlept(){
-    let sum = info.sleepData.map(date => date.hoursSlept);
+    let sum = this.info.sleepData.map(date => date.hoursSlept);
     let avg = sum.reduce((acc, curr) => {
       return acc + curr
     }, 0)/sum.length
@@ -38,7 +38,7 @@ class Sleep {
     let sleepInfo = this.info.sleepData
     let workArray = sleepInfo.map(el => el.date)
     let index = workArray.indexOf(day)
-    let data = sleepInfo.slice(index, index+2)
+    let data = sleepInfo.slice(index, index+7)
     return data.map(stuff => `Date: ${stuff.date}, Hours Slept: ${stuff.hoursSlept}`)
   }
 
@@ -46,8 +46,8 @@ class Sleep {
     let sleepInfo = this.info.sleepData
     let workArray = sleepInfo.map(el => el.date)
     let index = workArray.indexOf(day)
-    let data = sleepInfo.slice(index, index+2)
-    return data.map(stuff => `Date: ${stuff.date}, Hours Slept: ${stuff.sleepQuality}`)
+    let data = sleepInfo.slice(index, index+7)
+    return data.map(stuff => `Date: ${stuff.date}, Sleep Quality: ${stuff.sleepQuality}`)
   }
 }
 

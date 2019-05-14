@@ -4,14 +4,9 @@ if(typeof module !== 'undefined') {
 	activityData = require('../data/activity');
 };
 
-
-For a specific day, convert a user’s number of steps to miles (use the strideLength to help calculate this)
-For a user, (identified by their userID) how many minutes were they active for a given day (specified by a date)?
-For a user, how many minutes active did they average for a given week (7 days)?
-For a user, did they reach their step goal for a given day (specified by a date)?
-For a user, find all the days where they exceeded their step goal
-For a user, find their all-time stair climbing record
-
+class Activity {
+	
+}
 
 //Convert numSteps to miles(userID, date)
 	//Move into specific user obj --> find(specificDate)

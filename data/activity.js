@@ -1,4 +1,4 @@
-numconst activityData = [
+const activityData = [
   {
     "userID": 1,
     "activityData": [
@@ -30251,4 +30251,6 @@ numconst activityData = [
   }
 ]
 
-module.exports = activityData;
+if(typeof module !== 'undefined') {
+  module.exports = activityData;
+}

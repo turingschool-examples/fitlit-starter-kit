@@ -31,7 +31,7 @@ class SleepRepository {
   	findGoodSleepers(date) {
   		const dates = this.userSleepData.map(el => el.sleepData)
   		const newDates = dates.map(el => el.concat())
-  		console.log(newDates)
+  		// console.log(newDates)
   		// const allSleep = this.userSleepData.map(el => el.sleepData);
   		// // console.log(allSleep)
   		// allSleep.reduce(function(a,b) {

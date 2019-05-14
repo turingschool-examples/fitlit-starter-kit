@@ -6,15 +6,21 @@ if(typeof module !== 'undefined') {
 
 
 class Sleep {
-  constructor(){
+  constructor(userSleepData){
+  	this.userSleepData = userSleepData;
+  }
 
+  findUserSleepData(userId) {
+  	return this.userSleepData.find(user => user.userID === userId)
   }
 
 };
 
 //Sleep
 
-//Find average hours of sleep per day(userId)
+//Find user by ID
+
+//Find average hours of sleep per day(userId, date)
     //Calculate sum of total hours slept
     //Divide by length of sleepData array
     //const totalSleep = sleepData.map((a, b) => a += b.hoursSlept, 0)/sleepData.length
@@ -22,6 +28,10 @@ class Sleep {
 //Find average sleep quality per day(userId)
     //Calculate sum of sleep quality
     //Divide by length of sleepData array
+
+//Find total hours slept for specific day(userId, date)
+    //match date to sleepData.date
+    //return sleepData[hoursSlept]
 
 //Find sleep quality for specific date(userId, date)
     //Use find() method to search specific date

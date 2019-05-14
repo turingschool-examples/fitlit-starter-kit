@@ -1,24 +1,102 @@
 * {
-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "Open Sans", serif;
 }
 
 body {
-background-color: lightslategrey;
+  margin: 0;
+  background-color: lightslategrey;
+  padding: 0;
+}
+
+nav {
+  width: 100%;
+  background-color: rgb(72, 72, 155);
+  border-bottom: 2px solid  rgb(94, 95, 102);
+}
+
+nav,
+header,
+main {
+  padding: 1%;
 }
 
 section {
-background-color: white;
-display: flex;
-width: 100%;
-height: 250px;
-margin: 10px auto;
+  display: grid;
+  grid-gap: 1%;
+  width: 100%;
+  height: 250px;
+  margin: 10px auto;
+}
+
+#sleep,
+#hydration,
+#user-data {
+  grid-template-columns: 1fr 1fr;
+}
+
+#physical-activity {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+h3 {
+  margin: 0;
+}
+
+h2 {
+  width: 100%;
+  grid-column: span 2;
+}
+
+h1 {
+  margin: 0;
+  width: 100%;
+}
+
+#physical-activity-header {
+  grid-column: span 3;
 }
 
 article {
-border: 1px black solid;
-flex: 1;
+  background-color: white;
+  border: 2px rgb(94, 95, 102) solid;
+  width: 100%;
+  padding: 15px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+tr,
+th,
+table {
+  border: 1px black solid;
+  width: 300px;  
+}
+
+#user-step-goal {
+  line-height: 2em;
+}
+
+.hydration-card {
+  text-align: center
+}
+
+#ounces-drank-today {
+  font-size: 2em;
+}
+
+#ounces-drank {
+  font-size: 3em;
 }
 
 #ounces-weekly-card {
-  overflow: scroll
+  overflow: scroll;
+}
+
+#weekly-hydration-data {
+  margin: 15px auto;
+  padding: 0;
 }

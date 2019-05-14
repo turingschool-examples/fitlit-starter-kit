@@ -9,34 +9,34 @@ const loadName = () => {
 const loadInfo = (user) => {
   $('#user-email').append(` ${user.person.email}`)
   $('#user-address').append(` ${user.person.address}`)
-  $('#user-step-goal').append(` ${user.person.dailyStepGoal} ${compareGoal(user.person.dailyStepGoal)}`)
+  $('#user-step-goal').append(` ${user.person.dailyStepGoal} </br> ${compareGoal(user.person.dailyStepGoal)}`)
   $('#user-stride-length').append(` ${user.person.strideLength}`)
 }
 
 const compareGoal = (goal) => {
   let userRepo = new UserRepository(userData);
   if (goal < userRepo.averageSteps()) {
-    return `Your goal is lower than the average of your peers. Avg: ${userRepo.averageSteps()}`
+    return `Avg: ${userRepo.averageSteps()} </br> Your goal is lower than the average.`
   } else if (goal === userRepo.averageSteps()) {
-    return `Your goal is in-line with the average of your peers. Avg: ${userRepo.averageSteps()}`
+    return `Avg: ${userRepo.averageSteps()} </br> Your goal is in-line with the average.`
   } else {
-    return ` Your goal is higher than the average of your peers. Avg: ${userRepo.averageSteps()}`
+    return `Avg: ${userRepo.averageSteps()} </br> Your goal is higher than the average.`
   }
 }
 
 const loadHydrationData = (user) => {
   let userHydration = new UserHydration(hydrationData);
   let dayData = userHydration.getOuncesByDay(user.person.id, moment().format('DD/MM/YYYY'));
-  $('#ounces-drank').text(`you drank ${dayData} oz of water today`);
+  $('#ounces-drank').text(`${dayData}oz`);
   weeklyHydrationData(user, userHydration);
 }
 
 const weeklyHydrationData = (user, userHydration) => {
   let weekData = userHydration.getWeeklyOunces(user.person.id, moment().format('DD/MM/YYYY'));
   let listedData = weekData.map(el => {
-    return `<li>Date: ${el.date}</li><li>Ounces: ${el.numOunces}</li></br>`;
+    return `<tr><td>${el.date}</td><td>${el.numOunces}</td>`;
   });
-  $('#ounces-weekly-card').append(`<ul id="ounces-weekly">${listedData.join(' ')}</ul>`)
+  $('#hydration-table-data').append(`${listedData.join(' ')}`)
 }
 
 loadName();

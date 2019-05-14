@@ -14,6 +14,13 @@ class Sleep {
   	return this.userSleepData.find(user => user.userID === userId)
   }
 
+  findAvgHoursSlept(userId) {
+  	const currentUser = this.findUserSleepData(userId);
+  	const totalHours = currentUser.sleepData.map(item => item.hoursSlept)
+  	const avgSleep = totalHours.reduce((a, b) => a += b, 0)/totalHours.length;
+  	return avgSleep
+  }
+
 };
 
 //Sleep

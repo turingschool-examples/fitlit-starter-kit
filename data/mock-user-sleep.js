@@ -1,0 +1,1517 @@
+const sleepData = [
+  {
+    "userID": 1,
+    "sleepData": [
+      {
+        "date": "06/05/2019",
+        "hoursSlept": 8,
+        "sleepQuality": 4.8
+      },
+      {
+        "date": "07/05/2019",
+        "hoursSlept": 10.7,
+        "sleepQuality": 4.8
+      },
+      {
+        "date": "08/05/2019",
+        "hoursSlept": 8.1,
+        "sleepQuality": 1.9
+      },
+      {
+        "date": "09/05/2019",
+        "hoursSlept": 4.5,
+        "sleepQuality": 3.4
+      },
+      {
+        "date": "10/05/2019",
+        "hoursSlept": 10.7,
+        "sleepQuality": 4.3
+      },
+      {
+        "date": "11/05/2019",
+        "hoursSlept": 5.6,
+        "sleepQuality": 3.5
+      },
+      {
+        "date": "12/05/2019",
+        "hoursSlept": 10.1,
+        "sleepQuality": 1.7
+      },
+      {
+        "date": "13/05/2019",
+        "hoursSlept": 10.1,
+        "sleepQuality": 3.2
+      },
+      {
+        "date": "14/05/2019",
+        "hoursSlept": 10.5,
+        "sleepQuality": 2
+      },
+      {
+        "date": "15/05/2019",
+        "hoursSlept": 6.1,
+        "sleepQuality": 2.9
+      },
+      {
+        "date": "16/05/2019",
+        "hoursSlept": 8.7,
+        "sleepQuality": 4.2
+      },
+      {
+        "date": "17/05/2019",
+        "hoursSlept": 10.1,
+        "sleepQuality": 4.4
+      },
+      {
+        "date": "18/05/2019",
+        "hoursSlept": 10.9,
+        "sleepQuality": 2.5
+      },
+      {
+        "date": "19/05/2019",
+        "hoursSlept": 4.6,
+        "sleepQuality": 1.9
+      },
+      {
+        "date": "20/05/2019",
+        "hoursSlept": 5.8,
+        "sleepQuality": 3.8
+      },
+      {
+        "date": "21/05/2019",
+        "hoursSlept": 8.5,
+        "sleepQuality": 2.2
+      },
+      {
+        "date": "22/05/2019",
+        "hoursSlept": 6.1,
+        "sleepQuality": 3.5
+      },
+      {
+        "date": "23/05/2019",
+        "hoursSlept": 9.4,
+        "sleepQuality": 2
+      },
+      {
+        "date": "24/05/2019",
+        "hoursSlept": 6.6,
+        "sleepQuality": 3.2
+      },
+      {
+        "date": "25/05/2019",
+        "hoursSlept": 7,
+        "sleepQuality": 4.2
+      },
+      {
+        "date": "26/05/2019",
+        "hoursSlept": 9.8,
+        "sleepQuality": 4.9
+      },
+      {
+        "date": "27/05/2019",
+        "hoursSlept": 7.5,
+        "sleepQuality": 1.9
+      },
+      {
+        "date": "28/05/2019",
+        "hoursSlept": 8.9,
+        "sleepQuality": 1.9
+      },
+      {
+        "date": "29/05/2019",
+        "hoursSlept": 9.7,
+        "sleepQuality": 4.9
+      },
+      {
+        "date": "30/05/2019",
+        "hoursSlept": 5.5,
+        "sleepQuality": 1.5
+      },
+      {
+        "date": "31/05/2019",
+        "hoursSlept": 9.8,
+        "sleepQuality": 4.9
+      },
+      {
+        "date": "01/06/2019",
+        "hoursSlept": 4.7,
+        "sleepQuality": 1.2
+      },
+      {
+        "date": "02/06/2019",
+        "hoursSlept": 4.9,
+        "sleepQuality": 4.9
+      },
+      {
+        "date": "03/06/2019",
+        "hoursSlept": 5.6,
+        "sleepQuality": 4.8
+      },
+      {
+        "date": "04/06/2019",
+        "hoursSlept": 10.2,
+        "sleepQuality": 4.9
+      },
+      {
+        "date": "05/06/2019",
+        "hoursSlept": 10.3,
+        "sleepQuality": 2.5
+      },
+      {
+        "date": "06/06/2019",
+        "hoursSlept": 5.2,
+        "sleepQuality": 4.1
+      },
+      {
+        "date": "07/06/2019",
+        "hoursSlept": 8,
+        "sleepQuality": 2.6
+      },
+      {
+        "date": "08/06/2019",
+        "hoursSlept": 4,
+        "sleepQuality": 2.4
+      },
+      {
+        "date": "09/06/2019",
+        "hoursSlept": 4.6,
+        "sleepQuality": 2.5
+      },
+      {
+        "date": "10/06/2019",
+        "hoursSlept": 7.7,
+        "sleepQuality": 2.7
+      },
+      {
+        "date": "11/06/2019",
+        "hoursSlept": 10.8,
+        "sleepQuality": 4.5
+      },
+      {
+        "date": "12/06/2019",
+        "hoursSlept": 6.7,
+        "sleepQuality": 3.3
+      },
+      {
+        "date": "13/06/2019",
+        "hoursSlept": 4.8,
+        "sleepQuality": 3.5
+      },
+      {
+        "date": "14/06/2019",
+        "hoursSlept": 7.2,
+        "sleepQuality": 3.1
+      },
+      {
+        "date": "15/06/2019",
+        "hoursSlept": 9.5,
+        "sleepQuality": 1.5
+      },
+      {
+        "date": "16/06/2019",
+        "hoursSlept": 7.4,
+        "sleepQuality": 3.7
+      },
+      {
+        "date": "17/06/2019",
+        "hoursSlept": 10.6,
+        "sleepQuality": 2.7
+      },
+      {
+        "date": "18/06/2019",
+        "hoursSlept": 10.1,
+        "sleepQuality": 4.9
+      },
+      {
+        "date": "19/06/2019",
+        "hoursSlept": 4.1,
+        "sleepQuality": 3
+      },
+      {
+        "date": "20/06/2019",
+        "hoursSlept": 5.5,
+        "sleepQuality": 3.5
+      },
+      {
+        "date": "21/06/2019",
+        "hoursSlept": 4.6,
+        "sleepQuality": 1.6
+      },
+      {
+        "date": "22/06/2019",
+        "hoursSlept": 5.6,
+        "sleepQuality": 3.3
+      },
+      {
+        "date": "23/06/2019",
+        "hoursSlept": 10.8,
+        "sleepQuality": 1.8
+      },
+      {
+        "date": "24/06/2019",
+        "hoursSlept": 6,
+        "sleepQuality": 2.9
+      },
+      {
+        "date": "25/06/2019",
+        "hoursSlept": 8.2,
+        "sleepQuality": 2.8
+      },
+      {
+        "date": "26/06/2019",
+        "hoursSlept": 6.5,
+        "sleepQuality": 1.5
+      },
+      {
+        "date": "27/06/2019",
+        "hoursSlept": 9.5,
+        "sleepQuality": 1.7
+      },
+      {
+        "date": "28/06/2019",
+        "hoursSlept": 8.7,
+        "sleepQuality": 1.5
+      },
+      {
+        "date": "29/06/2019",
+        "hoursSlept": 4.2,
+        "sleepQuality": 1.4
+      },
+      {
+        "date": "30/06/2019",
+        "hoursSlept": 5.8,
+        "sleepQuality": 2.9
+      },
+      {
+        "date": "01/07/2019",
+        "hoursSlept": 10.9,
+        "sleepQuality": 2
+      },
+      {
+        "date": "02/07/2019",
+        "hoursSlept": 4.2,
+        "sleepQuality": 4.8
+      },
+      {
+        "date": "03/07/2019",
+        "hoursSlept": 10.9,
+        "sleepQuality": 4.9
+      },
+      {
+        "date": "04/07/2019",
+        "hoursSlept": 7.3,
+        "sleepQuality": 3.1
+      },
+      {
+        "date": "05/07/2019",
+        "hoursSlept": 10.6,
+        "sleepQuality": 4
+      },
+      {
+        "date": "06/07/2019",
+        "hoursSlept": 5,
+        "sleepQuality": 1.6
+      },
+      {
+        "date": "07/07/2019",
+        "hoursSlept": 5.1,
+        "sleepQuality": 2.8
+      },
+      {
+        "date": "08/07/2019",
+        "hoursSlept": 7.3,
+        "sleepQuality": 3.4
+      },
+      {
+        "date": "09/07/2019",
+        "hoursSlept": 10,
+        "sleepQuality": 4.3
+      },
+      {
+        "date": "10/07/2019",
+        "hoursSlept": 8.1,
+        "sleepQuality": 3.3
+      },
+      {
+        "date": "11/07/2019",
+        "hoursSlept": 5.4,
+        "sleepQuality": 4.3
+      },
+      {
+        "date": "12/07/2019",
+        "hoursSlept": 10.9,
+        "sleepQuality": 2.4
+      },
+      {
+        "date": "13/07/2019",
+        "hoursSlept": 6.3,
+        "sleepQuality": 4.6
+      },
+      {
+        "date": "14/07/2019",
+        "hoursSlept": 4.3,
+        "sleepQuality": 2.4
+      },
+      {
+        "date": "15/07/2019",
+        "hoursSlept": 7.8,
+        "sleepQuality": 2.1
+      },
+      {
+        "date": "16/07/2019",
+        "hoursSlept": 8.9,
+        "sleepQuality": 2.9
+      },
+      {
+        "date": "17/07/2019",
+        "hoursSlept": 6.3,
+        "sleepQuality": 1.8
+      },
+      {
+        "date": "18/07/2019",
+        "hoursSlept": 10.9,
+        "sleepQuality": 2
+      },
+      {
+        "date": "19/07/2019",
+        "hoursSlept": 5.6,
+        "sleepQuality": 1.3
+      },
+      {
+        "date": "20/07/2019",
+        "hoursSlept": 7.5,
+        "sleepQuality": 4.4
+      },
+      {
+        "date": "21/07/2019",
+        "hoursSlept": 4.6,
+        "sleepQuality": 2.8
+      },
+      {
+        "date": "22/07/2019",
+        "hoursSlept": 8.1,
+        "sleepQuality": 1.4
+      },
+      {
+        "date": "23/07/2019",
+        "hoursSlept": 4.3,
+        "sleepQuality": 3
+      },
+      {
+        "date": "24/07/2019",
+        "hoursSlept": 5.7,
+        "sleepQuality": 2.9
+      },
+      {
+        "date": "25/07/2019",
+        "hoursSlept": 9.5,
+        "sleepQuality": 2.1
+      },
+      {
+        "date": "26/07/2019",
+        "hoursSlept": 4.4,
+        "sleepQuality": 4.8
+      },
+      {
+        "date": "27/07/2019",
+        "hoursSlept": 7.4,
+        "sleepQuality": 2.1
+      },
+      {
+        "date": "28/07/2019",
+        "hoursSlept": 10.1,
+        "sleepQuality": 2.9
+      },
+      {
+        "date": "29/07/2019",
+        "hoursSlept": 9.3,
+        "sleepQuality": 1.3
+      },
+      {
+        "date": "30/07/2019",
+        "hoursSlept": 6.7,
+        "sleepQuality": 1.3
+      },
+      {
+        "date": "31/07/2019",
+        "hoursSlept": 6.1,
+        "sleepQuality": 4.4
+      },
+      {
+        "date": "01/08/2019",
+        "hoursSlept": 6.3,
+        "sleepQuality": 3.9
+      },
+      {
+        "date": "02/08/2019",
+        "hoursSlept": 4.8,
+        "sleepQuality": 3.1
+      },
+      {
+        "date": "03/08/2019",
+        "hoursSlept": 9.1,
+        "sleepQuality": 2.9
+      },
+      {
+        "date": "04/08/2019",
+        "hoursSlept": 6.5,
+        "sleepQuality": 3.3
+      },
+      {
+        "date": "05/08/2019",
+        "hoursSlept": 8.4,
+        "sleepQuality": 2.6
+      },
+      {
+        "date": "06/08/2019",
+        "hoursSlept": 6.3,
+        "sleepQuality": 2.1
+      },
+      {
+        "date": "07/08/2019",
+        "hoursSlept": 10.1,
+        "sleepQuality": 4.3
+      },
+      {
+        "date": "08/08/2019",
+        "hoursSlept": 8.9,
+        "sleepQuality": 1.7
+      },
+      {
+        "date": "09/08/2019",
+        "hoursSlept": 6,
+        "sleepQuality": 4.7
+      },
+      {
+        "date": "10/08/2019",
+        "hoursSlept": 4.8,
+        "sleepQuality": 2.4
+      },
+      {
+        "date": "11/08/2019",
+        "hoursSlept": 10.2,
+        "sleepQuality": 1.5
+      },
+      {
+        "date": "12/08/2019",
+        "hoursSlept": 4.4,
+        "sleepQuality": 1.7
+      },
+      {
+        "date": "13/08/2019",
+        "hoursSlept": 10.1,
+        "sleepQuality": 1.3
+      }
+    ]
+  },
+  {
+    "userID": 2,
+    "sleepData": [
+      {
+        "date": "06/05/2019",
+        "hoursSlept": 6.3,
+        "sleepQuality": 2.2
+      },
+      {
+        "date": "07/05/2019",
+        "hoursSlept": 9.2,
+        "sleepQuality": 4.8
+      },
+      {
+        "date": "08/05/2019",
+        "hoursSlept": 6.6,
+        "sleepQuality": 4.5
+      },
+      {
+        "date": "09/05/2019",
+        "hoursSlept": 6.8,
+        "sleepQuality": 1.4
+      },
+      {
+        "date": "10/05/2019",
+        "hoursSlept": 9.3,
+        "sleepQuality": 4.8
+      },
+      {
+        "date": "11/05/2019",
+        "hoursSlept": 8.5,
+        "sleepQuality": 1.7
+      },
+      {
+        "date": "12/05/2019",
+        "hoursSlept": 5.9,
+        "sleepQuality": 3.2
+      },
+      {
+        "date": "13/05/2019",
+        "hoursSlept": 4.1,
+        "sleepQuality": 2.1
+      },
+      {
+        "date": "14/05/2019",
+        "hoursSlept": 4.3,
+        "sleepQuality": 4.2
+      },
+      {
+        "date": "15/05/2019",
+        "hoursSlept": 9.6,
+        "sleepQuality": 3.8
+      },
+      {
+        "date": "16/05/2019",
+        "hoursSlept": 8.4,
+        "sleepQuality": 1.9
+      },
+      {
+        "date": "17/05/2019",
+        "hoursSlept": 8.1,
+        "sleepQuality": 3.6
+      },
+      {
+        "date": "18/05/2019",
+        "hoursSlept": 6,
+        "sleepQuality": 2.6
+      },
+      {
+        "date": "19/05/2019",
+        "hoursSlept": 6.4,
+        "sleepQuality": 3.9
+      },
+      {
+        "date": "20/05/2019",
+        "hoursSlept": 7.2,
+        "sleepQuality": 4.9
+      },
+      {
+        "date": "21/05/2019",
+        "hoursSlept": 7.1,
+        "sleepQuality": 1.2
+      },
+      {
+        "date": "22/05/2019",
+        "hoursSlept": 7.5,
+        "sleepQuality": 2.1
+      },
+      {
+        "date": "23/05/2019",
+        "hoursSlept": 4.6,
+        "sleepQuality": 3.9
+      },
+      {
+        "date": "24/05/2019",
+        "hoursSlept": 4.6,
+        "sleepQuality": 1.5
+      },
+      {
+        "date": "25/05/2019",
+        "hoursSlept": 5.3,
+        "sleepQuality": 3.3
+      },
+      {
+        "date": "26/05/2019",
+        "hoursSlept": 9.4,
+        "sleepQuality": 4.8
+      },
+      {
+        "date": "27/05/2019",
+        "hoursSlept": 8.5,
+        "sleepQuality": 4
+      },
+      {
+        "date": "28/05/2019",
+        "hoursSlept": 6.9,
+        "sleepQuality": 2.4
+      },
+      {
+        "date": "29/05/2019",
+        "hoursSlept": 9.4,
+        "sleepQuality": 2.9
+      },
+      {
+        "date": "30/05/2019",
+        "hoursSlept": 5.9,
+        "sleepQuality": 3
+      },
+      {
+        "date": "31/05/2019",
+        "hoursSlept": 5.4,
+        "sleepQuality": 4.8
+      },
+      {
+        "date": "01/06/2019",
+        "hoursSlept": 9.8,
+        "sleepQuality": 4.5
+      },
+      {
+        "date": "02/06/2019",
+        "hoursSlept": 8.5,
+        "sleepQuality": 1.7
+      },
+      {
+        "date": "03/06/2019",
+        "hoursSlept": 10,
+        "sleepQuality": 1.5
+      },
+      {
+        "date": "04/06/2019",
+        "hoursSlept": 9.4,
+        "sleepQuality": 4.9
+      },
+      {
+        "date": "05/06/2019",
+        "hoursSlept": 10,
+        "sleepQuality": 1.4
+      },
+      {
+        "date": "06/06/2019",
+        "hoursSlept": 10.8,
+        "sleepQuality": 4.1
+      },
+      {
+        "date": "07/06/2019",
+        "hoursSlept": 9.8,
+        "sleepQuality": 4.2
+      },
+      {
+        "date": "08/06/2019",
+        "hoursSlept": 7.4,
+        "sleepQuality": 4
+      },
+      {
+        "date": "09/06/2019",
+        "hoursSlept": 5.1,
+        "sleepQuality": 4.4
+      },
+      {
+        "date": "10/06/2019",
+        "hoursSlept": 8.2,
+        "sleepQuality": 3.5
+      },
+      {
+        "date": "11/06/2019",
+        "hoursSlept": 4,
+        "sleepQuality": 4.3
+      },
+      {
+        "date": "12/06/2019",
+        "hoursSlept": 4.8,
+        "sleepQuality": 4.5
+      },
+      {
+        "date": "13/06/2019",
+        "hoursSlept": 7.5,
+        "sleepQuality": 4.6
+      },
+      {
+        "date": "14/06/2019",
+        "hoursSlept": 6.6,
+        "sleepQuality": 4
+      },
+      {
+        "date": "15/06/2019",
+        "hoursSlept": 10.8,
+        "sleepQuality": 2.8
+      },
+      {
+        "date": "16/06/2019",
+        "hoursSlept": 10,
+        "sleepQuality": 3.6
+      },
+      {
+        "date": "17/06/2019",
+        "hoursSlept": 8.5,
+        "sleepQuality": 4.8
+      },
+      {
+        "date": "18/06/2019",
+        "hoursSlept": 6.2,
+        "sleepQuality": 2.7
+      },
+      {
+        "date": "19/06/2019",
+        "hoursSlept": 9,
+        "sleepQuality": 1.2
+      },
+      {
+        "date": "20/06/2019",
+        "hoursSlept": 8.8,
+        "sleepQuality": 1.6
+      },
+      {
+        "date": "21/06/2019",
+        "hoursSlept": 6.3,
+        "sleepQuality": 2.6
+      },
+      {
+        "date": "22/06/2019",
+        "hoursSlept": 4.2,
+        "sleepQuality": 4.2
+      },
+      {
+        "date": "23/06/2019",
+        "hoursSlept": 5.1,
+        "sleepQuality": 1.1
+      },
+      {
+        "date": "24/06/2019",
+        "hoursSlept": 6.4,
+        "sleepQuality": 1.3
+      },
+      {
+        "date": "25/06/2019",
+        "hoursSlept": 8,
+        "sleepQuality": 2.9
+      },
+      {
+        "date": "26/06/2019",
+        "hoursSlept": 9.6,
+        "sleepQuality": 4.7
+      },
+      {
+        "date": "27/06/2019",
+        "hoursSlept": 8.1,
+        "sleepQuality": 3.8
+      },
+      {
+        "date": "28/06/2019",
+        "hoursSlept": 8.7,
+        "sleepQuality": 1.7
+      },
+      {
+        "date": "29/06/2019",
+        "hoursSlept": 8.7,
+        "sleepQuality": 1.8
+      },
+      {
+        "date": "30/06/2019",
+        "hoursSlept": 6.2,
+        "sleepQuality": 3.9
+      },
+      {
+        "date": "01/07/2019",
+        "hoursSlept": 5.1,
+        "sleepQuality": 4.9
+      },
+      {
+        "date": "02/07/2019",
+        "hoursSlept": 11,
+        "sleepQuality": 3.6
+      },
+      {
+        "date": "03/07/2019",
+        "hoursSlept": 10.8,
+        "sleepQuality": 1.8
+      },
+      {
+        "date": "04/07/2019",
+        "hoursSlept": 9.8,
+        "sleepQuality": 1.9
+      },
+      {
+        "date": "05/07/2019",
+        "hoursSlept": 8,
+        "sleepQuality": 4.9
+      },
+      {
+        "date": "06/07/2019",
+        "hoursSlept": 8,
+        "sleepQuality": 2.2
+      },
+      {
+        "date": "07/07/2019",
+        "hoursSlept": 7.6,
+        "sleepQuality": 3.8
+      },
+      {
+        "date": "08/07/2019",
+        "hoursSlept": 10.9,
+        "sleepQuality": 4.6
+      },
+      {
+        "date": "09/07/2019",
+        "hoursSlept": 6.9,
+        "sleepQuality": 4.6
+      },
+      {
+        "date": "10/07/2019",
+        "hoursSlept": 7.1,
+        "sleepQuality": 2.7
+      },
+      {
+        "date": "11/07/2019",
+        "hoursSlept": 7.8,
+        "sleepQuality": 3.3
+      },
+      {
+        "date": "12/07/2019",
+        "hoursSlept": 9,
+        "sleepQuality": 1.5
+      },
+      {
+        "date": "13/07/2019",
+        "hoursSlept": 7.6,
+        "sleepQuality": 4.1
+      },
+      {
+        "date": "14/07/2019",
+        "hoursSlept": 6.1,
+        "sleepQuality": 3.3
+      },
+      {
+        "date": "15/07/2019",
+        "hoursSlept": 9.7,
+        "sleepQuality": 1.6
+      },
+      {
+        "date": "16/07/2019",
+        "hoursSlept": 9.8,
+        "sleepQuality": 4.1
+      },
+      {
+        "date": "17/07/2019",
+        "hoursSlept": 8.1,
+        "sleepQuality": 2.1
+      },
+      {
+        "date": "18/07/2019",
+        "hoursSlept": 10,
+        "sleepQuality": 2
+      },
+      {
+        "date": "19/07/2019",
+        "hoursSlept": 5.9,
+        "sleepQuality": 2.7
+      },
+      {
+        "date": "20/07/2019",
+        "hoursSlept": 7.6,
+        "sleepQuality": 3.9
+      },
+      {
+        "date": "21/07/2019",
+        "hoursSlept": 5.9,
+        "sleepQuality": 2.6
+      },
+      {
+        "date": "22/07/2019",
+        "hoursSlept": 11,
+        "sleepQuality": 4.3
+      },
+      {
+        "date": "23/07/2019",
+        "hoursSlept": 5.9,
+        "sleepQuality": 4.1
+      },
+      {
+        "date": "24/07/2019",
+        "hoursSlept": 10.1,
+        "sleepQuality": 2.1
+      },
+      {
+        "date": "25/07/2019",
+        "hoursSlept": 8.4,
+        "sleepQuality": 4.4
+      },
+      {
+        "date": "26/07/2019",
+        "hoursSlept": 5.9,
+        "sleepQuality": 4.1
+      },
+      {
+        "date": "27/07/2019",
+        "hoursSlept": 5.2,
+        "sleepQuality": 4.7
+      },
+      {
+        "date": "28/07/2019",
+        "hoursSlept": 10.6,
+        "sleepQuality": 2.9
+      },
+      {
+        "date": "29/07/2019",
+        "hoursSlept": 7.7,
+        "sleepQuality": 2
+      },
+      {
+        "date": "30/07/2019",
+        "hoursSlept": 7.9,
+        "sleepQuality": 3.8
+      },
+      {
+        "date": "31/07/2019",
+        "hoursSlept": 10.5,
+        "sleepQuality": 4.4
+      },
+      {
+        "date": "01/08/2019",
+        "hoursSlept": 8.9,
+        "sleepQuality": 2.2
+      },
+      {
+        "date": "02/08/2019",
+        "hoursSlept": 7.4,
+        "sleepQuality": 2.9
+      },
+      {
+        "date": "03/08/2019",
+        "hoursSlept": 4.5,
+        "sleepQuality": 4
+      },
+      {
+        "date": "04/08/2019",
+        "hoursSlept": 11,
+        "sleepQuality": 3.4
+      },
+      {
+        "date": "05/08/2019",
+        "hoursSlept": 8,
+        "sleepQuality": 1.7
+      },
+      {
+        "date": "06/08/2019",
+        "hoursSlept": 9.6,
+        "sleepQuality": 2.7
+      },
+      {
+        "date": "07/08/2019",
+        "hoursSlept": 5.2,
+        "sleepQuality": 4.9
+      },
+      {
+        "date": "08/08/2019",
+        "hoursSlept": 9.2,
+        "sleepQuality": 1.2
+      },
+      {
+        "date": "09/08/2019",
+        "hoursSlept": 6.8,
+        "sleepQuality": 4
+      },
+      {
+        "date": "10/08/2019",
+        "hoursSlept": 5,
+        "sleepQuality": 4.3
+      },
+      {
+        "date": "11/08/2019",
+        "hoursSlept": 9.2,
+        "sleepQuality": 2.7
+      },
+      {
+        "date": "12/08/2019",
+        "hoursSlept": 8.7,
+        "sleepQuality": 1.1
+      },
+      {
+        "date": "13/08/2019",
+        "hoursSlept": 5.2,
+        "sleepQuality": 3.4
+      }
+    ]
+  },
+  {
+    "userID": 3,
+    "sleepData": [
+      {
+        "date": "06/05/2019",
+        "hoursSlept": 7.2,
+        "sleepQuality": 5
+      },
+      {
+        "date": "07/05/2019",
+        "hoursSlept": 5.4,
+        "sleepQuality": 4.1
+      },
+      {
+        "date": "08/05/2019",
+        "hoursSlept": 4.7,
+        "sleepQuality": 1.2
+      },
+      {
+        "date": "09/05/2019",
+        "hoursSlept": 10.2,
+        "sleepQuality": 1.7
+      },
+      {
+        "date": "10/05/2019",
+        "hoursSlept": 7.9,
+        "sleepQuality": 2.7
+      },
+      {
+        "date": "11/05/2019",
+        "hoursSlept": 5.6,
+        "sleepQuality": 3.7
+      },
+      {
+        "date": "12/05/2019",
+        "hoursSlept": 10.2,
+        "sleepQuality": 2.4
+      },
+      {
+        "date": "13/05/2019",
+        "hoursSlept": 6.4,
+        "sleepQuality": 1.7
+      },
+      {
+        "date": "14/05/2019",
+        "hoursSlept": 4.5,
+        "sleepQuality": 4
+      },
+      {
+        "date": "15/05/2019",
+        "hoursSlept": 7.8,
+        "sleepQuality": 2.4
+      },
+      {
+        "date": "16/05/2019",
+        "hoursSlept": 4.2,
+        "sleepQuality": 4.3
+      },
+      {
+        "date": "17/05/2019",
+        "hoursSlept": 8.7,
+        "sleepQuality": 2.2
+      },
+      {
+        "date": "18/05/2019",
+        "hoursSlept": 4.6,
+        "sleepQuality": 1.2
+      },
+      {
+        "date": "19/05/2019",
+        "hoursSlept": 6.6,
+        "sleepQuality": 4.3
+      },
+      {
+        "date": "20/05/2019",
+        "hoursSlept": 4.7,
+        "sleepQuality": 4.8
+      },
+      {
+        "date": "21/05/2019",
+        "hoursSlept": 7.1,
+        "sleepQuality": 2.5
+      },
+      {
+        "date": "22/05/2019",
+        "hoursSlept": 9.6,
+        "sleepQuality": 1.9
+      },
+      {
+        "date": "23/05/2019",
+        "hoursSlept": 6.5,
+        "sleepQuality": 4.2
+      },
+      {
+        "date": "24/05/2019",
+        "hoursSlept": 4.3,
+        "sleepQuality": 3.6
+      },
+      {
+        "date": "25/05/2019",
+        "hoursSlept": 6.1,
+        "sleepQuality": 1.1
+      },
+      {
+        "date": "26/05/2019",
+        "hoursSlept": 6.1,
+        "sleepQuality": 1.7
+      },
+      {
+        "date": "27/05/2019",
+        "hoursSlept": 6.5,
+        "sleepQuality": 3.8
+      },
+      {
+        "date": "28/05/2019",
+        "hoursSlept": 8.5,
+        "sleepQuality": 4.9
+      },
+      {
+        "date": "29/05/2019",
+        "hoursSlept": 4.1,
+        "sleepQuality": 4.6
+      },
+      {
+        "date": "30/05/2019",
+        "hoursSlept": 10.6,
+        "sleepQuality": 4.4
+      },
+      {
+        "date": "31/05/2019",
+        "hoursSlept": 7.5,
+        "sleepQuality": 2.6
+      },
+      {
+        "date": "01/06/2019",
+        "hoursSlept": 7.3,
+        "sleepQuality": 2.8
+      },
+      {
+        "date": "02/06/2019",
+        "hoursSlept": 11,
+        "sleepQuality": 4.7
+      },
+      {
+        "date": "03/06/2019",
+        "hoursSlept": 6.7,
+        "sleepQuality": 4.1
+      },
+      {
+        "date": "04/06/2019",
+        "hoursSlept": 9.6,
+        "sleepQuality": 4.5
+      },
+      {
+        "date": "05/06/2019",
+        "hoursSlept": 6,
+        "sleepQuality": 4.5
+      },
+      {
+        "date": "06/06/2019",
+        "hoursSlept": 6.3,
+        "sleepQuality": 2.4
+      },
+      {
+        "date": "07/06/2019",
+        "hoursSlept": 9.7,
+        "sleepQuality": 1.9
+      },
+      {
+        "date": "08/06/2019",
+        "hoursSlept": 10.9,
+        "sleepQuality": 5
+      },
+      {
+        "date": "09/06/2019",
+        "hoursSlept": 5.1,
+        "sleepQuality": 3.5
+      },
+      {
+        "date": "10/06/2019",
+        "hoursSlept": 7.8,
+        "sleepQuality": 4.6
+      },
+      {
+        "date": "11/06/2019",
+        "hoursSlept": 10.2,
+        "sleepQuality": 2.7
+      },
+      {
+        "date": "12/06/2019",
+        "hoursSlept": 10.6,
+        "sleepQuality": 3.8
+      },
+      {
+        "date": "13/06/2019",
+        "hoursSlept": 5.2,
+        "sleepQuality": 2.4
+      },
+      {
+        "date": "14/06/2019",
+        "hoursSlept": 10.7,
+        "sleepQuality": 3
+      },
+      {
+        "date": "15/06/2019",
+        "hoursSlept": 6.1,
+        "sleepQuality": 1.7
+      },
+      {
+        "date": "16/06/2019",
+        "hoursSlept": 5.9,
+        "sleepQuality": 1.4
+      },
+      {
+        "date": "17/06/2019",
+        "hoursSlept": 9,
+        "sleepQuality": 1.8
+      },
+      {
+        "date": "18/06/2019",
+        "hoursSlept": 4.8,
+        "sleepQuality": 3.9
+      },
+      {
+        "date": "19/06/2019",
+        "hoursSlept": 9.6,
+        "sleepQuality": 1.9
+      },
+      {
+        "date": "20/06/2019",
+        "hoursSlept": 8.5,
+        "sleepQuality": 2.5
+      },
+      {
+        "date": "21/06/2019",
+        "hoursSlept": 10.3,
+        "sleepQuality": 2.9
+      },
+      {
+        "date": "22/06/2019",
+        "hoursSlept": 8.1,
+        "sleepQuality": 4
+      },
+      {
+        "date": "23/06/2019",
+        "hoursSlept": 5.7,
+        "sleepQuality": 2
+      },
+      {
+        "date": "24/06/2019",
+        "hoursSlept": 8.3,
+        "sleepQuality": 1.8
+      },
+      {
+        "date": "25/06/2019",
+        "hoursSlept": 9.2,
+        "sleepQuality": 5
+      },
+      {
+        "date": "26/06/2019",
+        "hoursSlept": 4.8,
+        "sleepQuality": 2
+      },
+      {
+        "date": "27/06/2019",
+        "hoursSlept": 9.2,
+        "sleepQuality": 2.5
+      },
+      {
+        "date": "28/06/2019",
+        "hoursSlept": 10.3,
+        "sleepQuality": 1.7
+      },
+      {
+        "date": "29/06/2019",
+        "hoursSlept": 10.1,
+        "sleepQuality": 3.4
+      },
+      {
+        "date": "30/06/2019",
+        "hoursSlept": 7,
+        "sleepQuality": 4.6
+      },
+      {
+        "date": "01/07/2019",
+        "hoursSlept": 4.3,
+        "sleepQuality": 4.6
+      },
+      {
+        "date": "02/07/2019",
+        "hoursSlept": 10.6,
+        "sleepQuality": 4.7
+      },
+      {
+        "date": "03/07/2019",
+        "hoursSlept": 8.4,
+        "sleepQuality": 1.9
+      },
+      {
+        "date": "04/07/2019",
+        "hoursSlept": 9.8,
+        "sleepQuality": 3.2
+      },
+      {
+        "date": "05/07/2019",
+        "hoursSlept": 7.2,
+        "sleepQuality": 3.5
+      },
+      {
+        "date": "06/07/2019",
+        "hoursSlept": 10.4,
+        "sleepQuality": 2.2
+      },
+      {
+        "date": "07/07/2019",
+        "hoursSlept": 10.8,
+        "sleepQuality": 3.5
+      },
+      {
+        "date": "08/07/2019",
+        "hoursSlept": 10.8,
+        "sleepQuality": 2.1
+      },
+      {
+        "date": "09/07/2019",
+        "hoursSlept": 10,
+        "sleepQuality": 2.6
+      },
+      {
+        "date": "10/07/2019",
+        "hoursSlept": 8.8,
+        "sleepQuality": 4.5
+      },
+      {
+        "date": "11/07/2019",
+        "hoursSlept": 10.5,
+        "sleepQuality": 3
+      },
+      {
+        "date": "12/07/2019",
+        "hoursSlept": 8,
+        "sleepQuality": 4.6
+      },
+      {
+        "date": "13/07/2019",
+        "hoursSlept": 7.4,
+        "sleepQuality": 2.7
+      },
+      {
+        "date": "14/07/2019",
+        "hoursSlept": 8.8,
+        "sleepQuality": 3.7
+      },
+      {
+        "date": "15/07/2019",
+        "hoursSlept": 4.9,
+        "sleepQuality": 2.4
+      },
+      {
+        "date": "16/07/2019",
+        "hoursSlept": 5.1,
+        "sleepQuality": 1.5
+      },
+      {
+        "date": "17/07/2019",
+        "hoursSlept": 9.8,
+        "sleepQuality": 3.8
+      },
+      {
+        "date": "18/07/2019",
+        "hoursSlept": 5.8,
+        "sleepQuality": 2.7
+      },
+      {
+        "date": "19/07/2019",
+        "hoursSlept": 10.5,
+        "sleepQuality": 1.7
+      },
+      {
+        "date": "20/07/2019",
+        "hoursSlept": 7.6,
+        "sleepQuality": 2.9
+      },
+      {
+        "date": "21/07/2019",
+        "hoursSlept": 8.2,
+        "sleepQuality": 3.9
+      },
+      {
+        "date": "22/07/2019",
+        "hoursSlept": 6.8,
+        "sleepQuality": 4.2
+      },
+      {
+        "date": "23/07/2019",
+        "hoursSlept": 7.3,
+        "sleepQuality": 3.7
+      },
+      {
+        "date": "24/07/2019",
+        "hoursSlept": 7.4,
+        "sleepQuality": 4.3
+      },
+      {
+        "date": "25/07/2019",
+        "hoursSlept": 4.8,
+        "sleepQuality": 2.9
+      },
+      {
+        "date": "26/07/2019",
+        "hoursSlept": 6.5,
+        "sleepQuality": 2.2
+      },
+      {
+        "date": "27/07/2019",
+        "hoursSlept": 7.2,
+        "sleepQuality": 3.5
+      },
+      {
+        "date": "28/07/2019",
+        "hoursSlept": 10.7,
+        "sleepQuality": 4
+      },
+      {
+        "date": "29/07/2019",
+        "hoursSlept": 5.8,
+        "sleepQuality": 1.6
+      },
+      {
+        "date": "30/07/2019",
+        "hoursSlept": 5.1,
+        "sleepQuality": 2.1
+      },
+      {
+        "date": "31/07/2019",
+        "hoursSlept": 7.4,
+        "sleepQuality": 4.4
+      },
+      {
+        "date": "01/08/2019",
+        "hoursSlept": 8.4,
+        "sleepQuality": 1.2
+      },
+      {
+        "date": "02/08/2019",
+        "hoursSlept": 10.3,
+        "sleepQuality": 2.6
+      },
+      {
+        "date": "03/08/2019",
+        "hoursSlept": 7,
+        "sleepQuality": 3
+      },
+      {
+        "date": "04/08/2019",
+        "hoursSlept": 9.5,
+        "sleepQuality": 1.7
+      },
+      {
+        "date": "05/08/2019",
+        "hoursSlept": 10.4,
+        "sleepQuality": 1.9
+      },
+      {
+        "date": "06/08/2019",
+        "hoursSlept": 6.5,
+        "sleepQuality": 2.7
+      },
+      {
+        "date": "07/08/2019",
+        "hoursSlept": 10.4,
+        "sleepQuality": 4.9
+      },
+      {
+        "date": "08/08/2019",
+        "hoursSlept": 7.1,
+        "sleepQuality": 3.2
+      },
+      {
+        "date": "09/08/2019",
+        "hoursSlept": 7.7,
+        "sleepQuality": 3.6
+      },
+      {
+        "date": "10/08/2019",
+        "hoursSlept": 7.5,
+        "sleepQuality": 3.9
+      },
+      {
+        "date": "11/08/2019",
+        "hoursSlept": 9.8,
+        "sleepQuality": 5
+      },
+      {
+        "date": "12/08/2019",
+        "hoursSlept": 4.3,
+        "sleepQuality": 1.5
+      },
+      {
+        "date": "13/08/2019",
+        "hoursSlept": 8.6,
+        "sleepQuality": 3.7
+      }
+    ]
+  }
+]

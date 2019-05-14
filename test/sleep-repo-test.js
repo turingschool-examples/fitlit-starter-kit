@@ -140,10 +140,10 @@ describe('Sleep Repo', function() {
 	});
 
 	it('should find average sleep quality of all users', function() {
-		expect(sleepRepo.findAvgUserSleep()).to.equal(3)
+		expect(sleepRepo.findAvgUserSleep()).to.equal(3.26)
 	});
 
-	it.skip('should find users who have a sleep quality greater than 3 for a given week', function() {
-		expect(sleepRepo.findGoodSleepers('06/05/2019')).to.eql(sleepData)
+	it('should find users who have a sleep quality greater than 3 for a given week', function() {
+		expect(sleepRepo.findGoodSleepers('06/05/2019')).to.eql([1, 2])
 	})
 })

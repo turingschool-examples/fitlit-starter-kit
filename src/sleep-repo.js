@@ -24,24 +24,27 @@ class SleepRepository {
   		array.reduce(function(acc,curr) {
   			const sleepQual = curr.filter(el => array2.push(el.sleepQuality))
   		},[])
-  		return Math.floor(array2.reduce((acc,curr)=> acc +=curr)/array2.length)
+  		const final = Number(array2.reduce((acc,curr)=> acc +=curr)/array2.length).toFixed(2);
+  		return parseFloat(final)
 
   	}
 
   	findGoodSleepers(date) {
-  		const dates = this.userSleepData.map(el => el.sleepData)
-  		const newDates = dates.map(el => el.concat())
-  		// console.log(newDates)
-  		// const allSleep = this.userSleepData.map(el => el.sleepData);
-  		// // console.log(allSleep)
-  		// allSleep.reduce(function(a,b) {
-  		// 	const sleepDates = b.filter(el => dates.push(el.date))
-  		// 	return a
-  		// }, [])
-  		// console.log(dates)
-  		// const startDate = dates.findIndex(el => el === date)
-  		// const dateRange = allSleep.slice(startDate, startDate+7).map(el => el.sleepQuality <3)
-  		// console.log(dateRange)
+  		return this.userSleepData.filter(function(el) {
+  			let values = Object.values(el.sleepData)
+  			let num = values.findIndex(el => el.date === date)
+  			let week = values.slice(num, num+7)
+
+  			let sleepQualitySum = week.reduce((acc,curr) => {
+
+  				acc += curr.sleepQuality
+  				return acc
+  			},0)
+  			let weekAvg = sleepQualitySum/7
+  			return weekAvg > 3
+
+  		}).map(el => el.userID)
+  		console.log(findGoodSleepers())
 
 
 

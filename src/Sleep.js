@@ -50,3 +50,5 @@ class Sleep {
     return data.map(stuff => `Date: ${stuff.date}, Hours Slept: ${stuff.sleepQuality}`)
   }
 }
+
+module.exports = Sleep;

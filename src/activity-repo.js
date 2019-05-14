@@ -5,6 +5,21 @@ if(typeof module !== 'undefined') {
 };
 
 class ActivityRepository {
+	constructor(dataFilePath) {
+		this.userActivityData = this.findFilePath(dataFilePath);
+	}
+	findFilePath(dataFilePath) {
+    if(typeof module !== 'undefined') {
+      return require(dataFilePath)
+    } else {
+      return activityData;
+    } 
+  }
+
+  findAvgStairsClimbed(date) {
+  	console.log(this.userActivityData)
+
+  }
 	
 }
 

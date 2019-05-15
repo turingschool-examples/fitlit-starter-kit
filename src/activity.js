@@ -1,6 +1,5 @@
 if(typeof module !== 'undefined') {
 	User = require('../src/user');
-	// Activity = require('../src/activity')
 	userData = require('../data/users');
 	activityData = require('../data/activity');
 };
@@ -31,8 +30,15 @@ class Activity {
 		const currentUser = this.findUserById()
 		const dateInfo = currentUser.activityData.find(el => el.date === date)
 		const totalMinutes = dateInfo.minutesActive;
-		console.log(totalMinutes)
 		return totalMinutes
+	}
+
+	findAvgMinutesActiveByWeek(date) {
+		const currentUser = this.findUserById();
+		const startDate = currentUser.activityData.findIndex(el => el.date === date)
+		const minutesForWeek = currentUser.activityData.slice(startDate, startDate+7).reduce((a, b) => a += b.minutesActive, 0)
+		const average = Number(minutesForWeek/7).toFixed(2)
+		return parseFloat(average)
 	}
 	
 }

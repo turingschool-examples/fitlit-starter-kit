@@ -174,5 +174,9 @@ describe('Activity', function() {
 		expect(activity.findMinutesActiveByDay('14/05/2019')).to.equal(142)
 	});
 
+	it('should find the average minutes active for a given week', function() {
+		expect(activity.findAvgMinutesActiveByWeek('06/05/2019')).to.equal(176.43)
+	})
+
 
 })

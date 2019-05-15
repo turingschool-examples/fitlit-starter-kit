@@ -8,8 +8,12 @@ if(typeof module !== 'undefined') {
 class SleepRepository {
 	constructor(dataFilePath, userId) {
 		this.userSleepData = this.findFilePath(dataFilePath);
-		this.currentUser = (this.findUserSleep(userId))
+		this.currentUser = (this.findUserSleepData(userId))
 	}
+
+	findUserSleepData(userId) {
+  	return this.userSleepData.find(user => user.userID === userId)
+  }
 
 	findFilePath(dataFilePath) {
     if(typeof module !== 'undefined') {

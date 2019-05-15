@@ -40,6 +40,25 @@ class Activity {
 		const average = Number(minutesForWeek/7).toFixed(2)
 		return parseFloat(average)
 	}
+
+	assessDailyStepGoalByDate(date) {
+		const currentUser = this.findUserById();
+		const stepGoal = this.userData.dailyStepGoal;
+		const givenDate = currentUser.activityData.find(el => el.date === date)
+		if(givenDate.numSteps >= stepGoal) {
+			return 'Great job! You reached your goal!'
+		} else {
+			return 'Your goal was not reached, but keep trying!'
+		}
+	}
+
+	findExceededDailyStepGoalDates() {
+		const currentUser = this.findUserById();
+		const stepGoal = this.userData.dailyStepGoal;
+		const findDates = currentUser.activityData.filter(el => el.numSteps > stepGoal)
+		const mostSteps = findDates.map(el => el.date)
+		return mostSteps
+	}
 	
 }
 

@@ -176,6 +176,14 @@ describe('Activity', function() {
 
 	it('should find the average minutes active for a given week', function() {
 		expect(activity.findAvgMinutesActiveByWeek('06/05/2019')).to.equal(176.43)
+	});
+
+	it('should assess if the user met their dailyStepGoal for a given date', function() {
+		expect(activity.assessDailyStepGoalByDate('15/05/2019')).to.equal('Great job! You reached your goal!')
+	});
+
+	it('should find all days a user exceeded their step goal', function() {
+		expect(activity.findExceededDailyStepGoalDates()).to.eql(['10/05/2019', '12/05/2019', '15/05/2019'])
 	})
 
 

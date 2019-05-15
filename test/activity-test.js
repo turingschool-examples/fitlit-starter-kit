@@ -184,6 +184,10 @@ describe('Activity', function() {
 
 	it('should find all days a user exceeded their step goal', function() {
 		expect(activity.findExceededDailyStepGoalDates()).to.eql(['10/05/2019', '12/05/2019', '15/05/2019'])
+	});
+
+	it('should find a user\'s most stairs climbed', function() {
+		expect(activity.findMostStairsClimbed()).to.equal(46)
 	})
 
 

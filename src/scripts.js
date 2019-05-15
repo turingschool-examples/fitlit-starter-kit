@@ -1,13 +1,18 @@
 
-$( document ).ready(function() {
-let userRepo = new UserRepository(userData, 1)
+$(document).ready(function() {
+const ourUser = 1;
+const date = '16/05/2019'
+let userRepo = new UserRepository(userData, ourUser)
 let user = new User(userRepo.currentUser)
 
-let hydrationRepo = new HydrationRepository(hydrationData, 1)
+let hydrationRepo = new HydrationRepository(hydrationData, ourUser)
 let hydration = new Hydration(hydrationRepo.currentUser)
 
-let sleepRepo = new SleepRepository(sleepData, 1)
+let sleepRepo = new SleepRepository(sleepData, ourUser)
 let sleep = new Sleep(sleepData)
+
+let activityRepo = new ActivityRepository(activityData)
+let activity = new Activity(activityData, userData[0], ourUser)
 
 //Header and Card
 
@@ -24,24 +29,42 @@ $('span.goal-span').text(`${user.user.dailyStepGoal}`)
 $('span.av-goal-span').text(userRepo.findAverageStepGoal())
 
 //Activity
-
-$('.activity').append("<h4>Your Steps Today: <span class='steps-today'></span></h3")
-$('.activity').append("<h4>Your Minutes Active Today: <span class='steps-today'></span></h3")
-$('.activity').append("<h4>Your Miles Walked Today: <span class='miles-today'></span></h3")
-$('.activity').append("<h4>How You Stack Up: <span class='activity-compare-today'></span></h3")
-// $('.activity').append("<h4>Weekly Stats: <span class='weekly-stats'></span></h3")
-stepsDayOne = 4000;
-stepsDayTwo = 5000;
-stepsDayThree = 3000;
-stepsDayFour = 9000;
-stepsDayFive = 10000;
-stepsDaySix = 4000;
-stepsDaySeven = 12000;
-
-//For a user, the number of steps for the latest day
-//For a user, the number minutes active for the latest day
-//For a user, the distance they have walked (in miles) for the latest day based on their step count
-//How their number of steps, minutes active, and flights of stairs climbed compares to all users for the latest day
+$('.activity').append("<h4>Your Steps Today: <span class='steps-today'></span></h4>")
+$('.activity').append("<h4>Your Minutes Active Today: <span class='mins-today'></span></h4>")
+$('.activity').append("<h4>Your Miles Walked Today: <span class='miles-today'></span></h4>")
+$('.activity').append("<h4>Your Steps:<span class='stack-steps'></span> Average: <span class='avg-steps'></span></h4>")
+$('.activity').append("<h4>Your Flights of Stairs: <span class='stack-stairs'></span> Average: <span class='avg-stairs'></span></h4>")
+$('.activity').append("<h4>Your Activity Minutes: <span class='stack-mins'></span> Average: <span class='avg-mins'></span></h4>")
+$('.steps-today').text(activity.findStepsByDay(date))
+$('.mins-today').text(activity.findMinutesActiveByDay(date))
+$('.miles-today').text(activity.findMilesWalkedByDay(date))
+$('.stack-steps').text(activity.findStepsByDay(date))
+$('.avg-steps').text(activityRepo.findAvgSteps(date))
+$('.stack-stairs').text(activity.findStairsByDay(date))
+$('.avg-stairs').text(activityRepo.findAvgStairsClimbed(date))
+$('.stack-mins').text(activity.findMinutesActiveByDay(date))
+$('.avg-mins').text(activityRepo.findAvgActivity(date))
+flightsDayOne = activity.findStairsByDay(date)
+flightsDayTwo = activity.findStairsByDay('15/05/2019')
+flightsDayThree = activity.findStairsByDay('14/05/2019')
+flightsDayFour = activity.findStairsByDay('13/05/2019')
+flightsDayFive = activity.findStairsByDay('12/05/2019')
+flightsDaySix = activity.findStairsByDay('11/05/2019')
+flightsDaySeven = activity.findStairsByDay('10/05/2019')
+milesDaySeven = activity.findMilesWalkedByDay(date)
+milesDaySix = activity.findMilesWalkedByDay('15/05/2019')
+milesDayFive = activity.findMilesWalkedByDay('14/05/2019')
+milesDayFour = activity.findMilesWalkedByDay('13/05/2019')
+milesDayThree = activity.findMilesWalkedByDay('12/05/2019')
+milesDayTwo = activity.findMilesWalkedByDay('11/05/2019')
+milesDayOne = activity.findMilesWalkedByDay('10/05/2019')
+actDaySeven = activity.findHoursActiveByDay(date)
+actDaySix = activity.findHoursActiveByDay('15/05/2019')
+actDayFive = activity.findHoursActiveByDay('14/05/2019')
+actDayFour = activity.findHoursActiveByDay('13/05/2019')
+actDayThree = activity.findHoursActiveByDay('12/05/2019')
+actDayTwo = activity.findHoursActiveByDay('11/05/2019')
+actDayOne = activity.findHoursActiveByDay('10/05/2019')
 //Make a metric of your own! Document it, calculate it, and display it.
 
 new Chart(document.getElementById("activity-chart"), {
@@ -50,9 +73,19 @@ new Chart(document.getElementById("activity-chart"), {
     labels: ["Day One", "Day Two", "Day Three", "Day Four", "Day Five", "Day Six", "Day Seven"],
     datasets: [
       {
-        label: "Steps",
+        label: "Flights of Stairs",
         backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "#3e95cd", "#8e5ea2", "#3cba9f"],
-        data: [stepsDaySeven, stepsDaySix, stepsDayFive, stepsDayFour, stepsDayThree, stepsDayTwo, stepsDayOne]
+        data: [flightsDaySeven, flightsDaySix, flightsDayFive, flightsDayFour, flightsDayThree, flightsDayTwo, flightsDayOne]
+      },
+       {
+        label: "Miles Walked",
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "#3e95cd", "#8e5ea2", "#3cba9f"],
+        data: [milesDaySeven, milesDaySix, milesDayFive, milesDayFour, milesDayThree, milesDayTwo, milesDayOne]
+      },
+      {
+        label: "Activity(hours)",
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "#3e95cd", "#8e5ea2", "#3cba9f"],
+        data: [actDaySeven, actDaySix, actDayFive, actDayFour, actDayThree, actDayTwo, actDayOne]
       } 
     ]
   },
@@ -60,7 +93,7 @@ new Chart(document.getElementById("activity-chart"), {
     legend: { display: false },
     title: {
       display: true,
-      text: 'Steps Walked This Week',
+      text: 'Weekly Activity Wrap-Up',
       fontColor: "white",
       fontSize: 16,
     },
@@ -76,9 +109,9 @@ new Chart(document.getElementById("activity-chart"), {
                 fontColor: "white",
                 fontSize: 10,
                 maxTicksLimit: 4,
-                min: 2000,
-                max: 12000,
-                stepSize: 1000,
+                min: 0,
+                max: 40,
+                stepSize: 10,
                 }
             }]
 }
@@ -88,15 +121,15 @@ new Chart(document.getElementById("activity-chart"), {
 
 //Hydration
 $('.hydration').append("<h4>Your H2O Intake Today: <span class='water-today'></span> oz</h4")
-$('.water-today').text(hydration.findFluidOzByDay('15/05/2019'))
+$('.water-today').text(hydration.findFluidOzByDay(date))
 
-waterDayOne = hydration.findWeeklyWater('15/05/2019')[0]
-waterDayTwo = hydration.findWeeklyWater('15/05/2019')[1]
-waterDayThree = hydration.findWeeklyWater('15/05/2019')[2]
-waterDayFour = hydration.findWeeklyWater('15/05/2019')[3]
-waterDayFive = hydration.findWeeklyWater('15/05/2019')[4]
-waterDaySix = hydration.findWeeklyWater('15/05/2019')[5]
-waterDaySeven = hydration.findWeeklyWater('15/05/2019')[6]
+waterDayOne = hydration.findWeeklyWater(date)[0]
+waterDayTwo = hydration.findWeeklyWater(date)[1]
+waterDayThree = hydration.findWeeklyWater(date)[2]
+waterDayFour = hydration.findWeeklyWater(date)[3]
+waterDayFive = hydration.findWeeklyWater(date)[4]
+waterDaySix = hydration.findWeeklyWater(date)[5]
+waterDaySeven = hydration.findWeeklyWater(date)[6]
 
 new Chart(document.getElementById("water-chart"), {
   type: 'bar',
@@ -140,32 +173,31 @@ new Chart(document.getElementById("water-chart"), {
 
 });
 
-
 //Sleep
 
 $('.sleep').append("<h4>Your Hours of Sleep Today: <span class='sleep-today'> </span></h4")
 $('.sleep').append("<h4>Your Quality of Sleep Today: <span class='sleep-quality-today'> </span></h4")
 $('.sleep').append("<h4>Your Average Tracked Sleep Hours: <span class='sleep-average'></span></h4") 
 $('.sleep').append("<h4>Your Average Tracked Sleep Quality: <span class='sleep-quality'></span></h4") 
-$('.sleep-today').text(sleep.findHoursSleptByDay(1,'15/05/2019'))
-$('.sleep-quality-today').text(sleep.findSleepQualityByDay(1,'15/05/2019'))
+$('.sleep-today').text(sleep.findHoursSleptByDay(ourUser, date))
+$('.sleep-quality-today').text(sleep.findSleepQualityByDay(ourUser, date))
 $('.sleep-average').text(Number(sleep.findAvgHoursSlept(1)).toFixed(1))
 $('.sleep-quality').text(Number(sleep.findAvgSleepQuality(1)).toFixed(1))
 
-sleepDayOne = sleep.findHoursSleptByWeek(1,'15/05/2019')[0]
-sleepDayTwo = sleep.findHoursSleptByWeek(1,'15/05/2019')[1]
-sleepDayThree = sleep.findHoursSleptByWeek(1,'15/05/2019')[2]
-sleepDayFour = sleep.findHoursSleptByWeek(1,'15/05/2019')[3]
-sleepDayFive = sleep.findHoursSleptByWeek(1,'15/05/2019')[4]
-sleepDaySix = sleep.findHoursSleptByWeek(1,'15/05/2019')[5]
-sleepDaySeven = sleep.findHoursSleptByWeek(1,'15/05/2019')[6]
-qualDayOne = sleep.findSleepQualityByWeek(1,'15/05/2019')[0]
-qualDayTwo = sleep.findSleepQualityByWeek(1,'15/05/2019')[1]
-qualDayThree = sleep.findSleepQualityByWeek(1,'15/05/2019')[2]
-qualDayFour = sleep.findSleepQualityByWeek(1,'15/05/2019')[3]
-qualDayFive = sleep.findSleepQualityByWeek(1,'15/05/2019')[4]
-qualDaySix = sleep.findSleepQualityByWeek(1,'15/05/2019')[5]
-qualDaySeven = sleep.findSleepQualityByWeek(1,'15/05/2019')[6]
+sleepDayOne = sleep.findHoursSleptByWeek(ourUser, date)[0]
+sleepDayTwo = sleep.findHoursSleptByWeek(ourUser, date)[1]
+sleepDayThree = sleep.findHoursSleptByWeek(ourUser, date)[2]
+sleepDayFour = sleep.findHoursSleptByWeek(ourUser, date)[3]
+sleepDayFive = sleep.findHoursSleptByWeek(ourUser, date)[4]
+sleepDaySix = sleep.findHoursSleptByWeek(ourUser, date)[5]
+sleepDaySeven = sleep.findHoursSleptByWeek(ourUser, date)[6]
+qualDayOne = sleep.findSleepQualityByWeek(ourUser, date)[0]
+qualDayTwo = sleep.findSleepQualityByWeek(ourUser, date)[1]
+qualDayThree = sleep.findSleepQualityByWeek(ourUser, date)[2]
+qualDayFour = sleep.findSleepQualityByWeek(ourUser, date)[3]
+qualDayFive = sleep.findSleepQualityByWeek(ourUser, date)[4]
+qualDaySix = sleep.findSleepQualityByWeek(ourUser, date)[5]
+qualDaySeven = sleep.findSleepQualityByWeek(ourUser, date)[6]
 
 //For a user, their sleep data for the latest day (hours slept and quality of sleep)
 //For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)

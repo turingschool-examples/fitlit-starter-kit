@@ -8,6 +8,8 @@ class Activity {
 	constructor(userActivityData, userData, userId) {
 		this.userActivityData = userActivityData;
 		this.userData = userData;
+		// this.currentUser = this.findUserById()
+		console.log(this.userActivityData)
 	}
 
 	findUserById(userId) {

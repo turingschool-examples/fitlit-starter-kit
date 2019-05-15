@@ -24,12 +24,12 @@ class SleepRepository {
   }
 
   findAvgUserSleep() {
-  		const array2 =[]
-  		const array = this.userSleepData.map(el => el.sleepData)
-  		array.reduce(function(acc,curr) {
-  			const sleepQual = curr.filter(el => array2.push(el.sleepQuality))
+  		const sleepQualTotals =[]
+  		const allData = this.userSleepData.map(el => el.sleepData)
+  		allData.reduce(function(acc,curr) {
+  			const sleepQual = curr.filter(el => sleepQualTotals.push(el.sleepQuality))
   		},[])
-  		const final = Number(array2.reduce((acc,curr)=> acc +=curr)/array2.length).toFixed(2);
+  		const final = Number(sleepQualTotals.reduce((acc,curr)=> acc +=curr)/sleepQualTotals.length).toFixed(2);
   		return parseFloat(final)
 
   	}

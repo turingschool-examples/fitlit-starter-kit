@@ -5,6 +5,27 @@ if(typeof module !== 'undefined') {
 };
 
 class Activity {
+	constructor(userActivityData, userData, userId) {
+		this.userActivityData = userActivityData;
+		this.userData = userData
+	}
+
+	findUserById(userId) {
+		return this.userActivityData.activityData.find(user => user.id === userId)
+	}
+
+	findMilesWalkedByDay(date) {
+		const strideLength = this.userData.strideLength
+		const dateInfo = this.userActivityData.activityData.find(el => {
+			if(el.date === date) {
+				return el.numSteps
+			}
+		})
+		const miles = Number((strideLength * dateInfo.numSteps)/5280).toFixed(2)
+		return parseFloat(miles)
+		
+		
+	}
 	
 }
 

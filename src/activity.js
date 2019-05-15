@@ -1,5 +1,6 @@
 if(typeof module !== 'undefined') {
 	User = require('../src/user');
+	// Activity = require('../src/activity')
 	userData = require('../data/users');
 	activityData = require('../data/activity');
 };
@@ -7,24 +8,31 @@ if(typeof module !== 'undefined') {
 class Activity {
 	constructor(userActivityData, userData, userId) {
 		this.userActivityData = userActivityData;
-		this.userData = userData
+		this.userData = userData;
 	}
 
 	findUserById(userId) {
-		return this.userActivityData.activityData.find(user => user.id === userId)
+		return this.userActivityData.find(user => user.id === userId)
 	}
 
 	findMilesWalkedByDay(date) {
+		const currentUser = this.findUserById()
 		const strideLength = this.userData.strideLength
-		const dateInfo = this.userActivityData.activityData.find(el => {
+		const dateInfo = currentUser.activityData.find(el => {
 			if(el.date === date) {
 				return el.numSteps
 			}
 		})
 		const miles = Number((strideLength * dateInfo.numSteps)/5280).toFixed(2)
 		return parseFloat(miles)
-		
-		
+		}
+
+	findMinutesActiveByDay(date) {
+		const currentUser = this.findUserById()
+		const dateInfo = currentUser.activityData.find(el => el.date === date)
+		const totalMinutes = dateInfo.minutesActive;
+		console.log(totalMinutes)
+		return totalMinutes
 	}
 	
 }

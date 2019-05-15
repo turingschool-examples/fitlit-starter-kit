@@ -17,43 +17,59 @@ class ActivityRepository {
   }
 
   findAvgStairsClimbed(date) {
-  	const flightsOfStairs = [];
-  	const userActivity = this.userActivityData.map(el => el.activityData)
-  	const stairsClimbed = userActivity.map(el => {
-  		flightsOfStairs.push(el.flightsOfStairs)
-  	})
-  	console.log(flightsOfStairs)
-  }
-	
+		const userActivity = this.userActivityData.map(el => el.activityData)
+		let stairs = []
+		userActivity.map(el =>
+			el.filter(el => {
+			if(el.date === date) {
+			 stairs.push(el.flightsOfStairs)
+			}  
+		}))
+	 let final = stairs.reduce(function(acc,curr){
+			return Math.round((acc += curr)/stairs.length)
+		})
+		return final
+	}
+
+
+findAvgSteps(date) {
+	console.log(this.userActivityData)
+	const userActivity = this.userActivityData.map(el => el.activityData)
+	let steps = []
+	userActivity.map(el =>
+		el.filter(el => {
+		if(el.date === date) {
+		 steps.push(el.numSteps)
+		
+		}  
+	}))
+ let final = steps.reduce(function(acc,curr){
+		return Math.round((acc += curr)/steps.length)
+	})
+	return final
 }
 
+findAvgActivity(date) {
+	console.log(this.userActivityData)
+	const userActivity = this.userActivityData.map(el => el.activityData)
+	let mins = []
+	userActivity.map(el =>
+		el.filter(el => {
+		if(el.date === date) {
+		 mins.push(el.minutesActive)
+		
+		}  
+	}))
+ let final = mins.reduce(function(acc,curr){
+		return Math.round((acc += curr)/mins.length)
+	})
+	return final
+}
 
-
-
-//Find average flightsOfStairs (date)
-	//Slice objects by specific date range
-	//Map through array of objects to find activityData
-	//Calculate sum of flightOfStairs for all users
-	//Divide by array.length
-	//return Average
-
-//Find average numSteps(date)
-	//Slice objects by spec date range
-	//Map through array of objects to find activityData
-	//Calculate sum of numSteps for all users
-	//Divide by array.length
-	//return Average
-
-//Find average minutesActive(date)
-	//Slice objects by spec date range
-	//Map through array of objects to find activityData
-	//Calculate sum of minutesActive for all users
-	//Divide by array.length
-	//return Average
-
+};
 
 
 
 if(typeof module !== 'undefined') {
-module.exports = ActivityRepository;
+module.exports = ActivityRepository
 }

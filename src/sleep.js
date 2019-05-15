@@ -1,18 +1,20 @@
 if(typeof module !== 'undefined') {
 	User = require('../src/user');
 	userData = require('../data/users');
-	userSleepData = require('../data/sleep');
+	userSleepData = require('../data/sample-sleep');
 };
 
 
 class Sleep {
   constructor(userSleepData){
-  	this.userSleepData = userSleepData;
+		this.userSleepData = userSleepData;
+	
   }
 
   findUserSleepData(userId) {
   	return this.userSleepData.find(user => user.userID === userId)
-  }
+
+	}
 
   findAvgHoursSlept(userId) {
   	const currentUser = this.findUserSleepData(userId);

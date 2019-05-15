@@ -5,7 +5,7 @@
 
 .user {
   display: flex;
-  height: 200px;
+  height: 180px;
   justify-content: space-between;
 }
 
@@ -24,6 +24,7 @@
 
 .user-card {
   background-color: #A47DCF;
+  height: 195px;
 
 }
 
@@ -62,9 +63,6 @@ span {
   color:#81E6CE; 
 }
 
-#sleep-chart {
-  background-color: white;
- 
 h6 {
   background-color: ##FFFFFF;
   font-weight: normal;
@@ -85,7 +83,7 @@ h6 {
   display: block;
   margin: 10px auto;
   max-width: 80%;
-  max-height: 250px;
+  max-height: 200px;
 }
 
 .circle-bg {

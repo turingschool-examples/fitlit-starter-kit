@@ -2,7 +2,6 @@ if(typeof module !== 'undefined') {
 var chai = require('chai');
 var expect = chai.expect;
 var sampleActivityData = require('../data/sample-activity');
-// var UserData = requre('../data/sample-users')
 var Activity = require('../src/activity')
 var ActivityRepository = require('../src/activity-repo')
 }

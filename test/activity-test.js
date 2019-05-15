@@ -15,8 +15,9 @@ describe('Activity', function() {
 
 	beforeEach(function() {
 		activityRepo = new ActivityRepository('../data/sample-activity');
-		activity = new Activity(activitySampleData,userData, 1);
-		activitySampleData = {
+		activity = new Activity(activitySampleData, userData, 1);
+		activitySampleData = [
+		{
     "userID": 1,
     "activityData": [
       {
@@ -80,7 +81,73 @@ describe('Activity', function() {
         "flightsOfStairs": 32
       }
      ]
+   },
+         {
+    "userID": 2,
+    "activityData": [
+      {
+        "date": "06/05/2019",
+        "numSteps": 9101,
+        "minutesActive": 202,
+        "flightsOfStairs": 1
+      },
+      {
+        "date": "07/05/2019",
+        "numSteps": 11825,
+        "minutesActive": 77,
+        "flightsOfStairs": 28
+      },
+      {
+        "date": "08/05/2019",
+        "numSteps": 4423,
+        "minutesActive": 266,
+        "flightsOfStairs": 31
+      },
+      {
+        "date": "09/05/2019",
+        "numSteps": 6241,
+        "minutesActive": 146,
+        "flightsOfStairs": 43
+      },
+      {
+        "date": "10/05/2019",
+        "numSteps": 3455,
+        "minutesActive": 154,
+        "flightsOfStairs": 47
+      },
+      {
+        "date": "11/05/2019",
+        "numSteps": 2629,
+        "minutesActive": 150,
+        "flightsOfStairs": 19
+      },
+      {
+        "date": "12/05/2019",
+        "numSteps": 9521,
+        "minutesActive": 240,
+        "flightsOfStairs": 30
+      },
+      {
+        "date": "13/05/2019",
+        "numSteps": 10671,
+        "minutesActive": 161,
+        "flightsOfStairs": 23
+      },
+      {
+        "date": "14/05/2019",
+        "numSteps": 10847,
+        "minutesActive": 248,
+        "flightsOfStairs": 40
+      },
+      {
+        "date": "15/05/2019",
+        "numSteps": 3838,
+        "minutesActive": 243,
+        "flightsOfStairs": 10
+      }
+     ]
    }
+  ]
    userData =   {
     "id": 1,
     "name": "Nyasia Weber",
@@ -101,6 +168,26 @@ describe('Activity', function() {
 
 	it('should convert a user\'s number of steps to miles', function() {
 		expect(activity.findMilesWalkedByDay('14/05/2019', 1)).to.equal(2.97)
+	});
+
+	it('should return the amount of minutes the user spent active on a given date', function() {
+		expect(activity.findMinutesActiveByDay('14/05/2019')).to.equal(142)
+	});
+
+	it('should find the average minutes active for a given week', function() {
+		expect(activity.findAvgMinutesActiveByWeek('06/05/2019')).to.equal(176.43)
+	});
+
+	it('should assess if the user met their dailyStepGoal for a given date', function() {
+		expect(activity.assessDailyStepGoalByDate('15/05/2019')).to.equal('Great job! You reached your goal!')
+	});
+
+	it('should find all days a user exceeded their step goal', function() {
+		expect(activity.findExceededDailyStepGoalDates()).to.eql(['10/05/2019', '12/05/2019', '15/05/2019'])
+	});
+
+	it('should find a user\'s most stairs climbed', function() {
+		expect(activity.findMostStairsClimbed()).to.equal(46)
 	})
 
 

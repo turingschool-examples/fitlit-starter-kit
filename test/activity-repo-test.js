@@ -158,7 +158,7 @@ describe('Activity Repository', function() {
 	});
 
 	it.skip('find average flights of stairs climbed on a given date', function() {
-		expect(activityRepo.findAvgStairsClimbed('07/05/2019')).to.equal(32)
+		expect(activityRepo.findAvgStairsClimbed('07/05/2019')).to.equal(16)
 	});
 
 

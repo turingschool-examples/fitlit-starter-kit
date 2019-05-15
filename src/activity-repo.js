@@ -5,6 +5,25 @@ if(typeof module !== 'undefined') {
 };
 
 class ActivityRepository {
+	constructor(dataFilePath) {
+		this.userActivityData = this.findFilePath(dataFilePath);
+	}
+	findFilePath(dataFilePath) {
+    if(typeof module !== 'undefined') {
+      return require(dataFilePath)
+    } else {
+      return activityData;
+    } 
+  }
+
+  findAvgStairsClimbed(date) {
+  	const flightsOfStairs = [];
+  	const userActivity = this.userActivityData.map(el => el.activityData)
+  	const stairsClimbed = userActivity.map(el => {
+  		flightsOfStairs.push(el.flightsOfStairs)
+  	})
+  	console.log(flightsOfStairs)
+  }
 	
 }
 

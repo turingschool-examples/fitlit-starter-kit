@@ -14,6 +14,20 @@ class Activity {
 		return this.userActivityData.find(user => user.id === userId)
 	}
 
+	findStepsByDay(date) {
+		const currentUser = this.findUserById()
+		const dateInfo = currentUser.activityData.find(el => el.date === date)
+		const totalSteps = dateInfo.numSteps;
+		return totalSteps
+	}
+
+	findStairsByDay(date) {
+		const currentUser = this.findUserById()
+		const dateInfo = currentUser.activityData.find(el => el.date === date)
+		const totalFlights = dateInfo.flightsOfStairs;
+		return totalFlights
+	}
+
 	findMilesWalkedByDay(date) {
 		const currentUser = this.findUserById()
 		const strideLength = this.userData.strideLength
@@ -31,6 +45,13 @@ class Activity {
 		const dateInfo = currentUser.activityData.find(el => el.date === date)
 		const totalMinutes = dateInfo.minutesActive;
 		return totalMinutes
+	}
+
+	findHoursActiveByDay(date) {
+		const currentUser = this.findUserById()
+		const dateInfo = currentUser.activityData.find(el => el.date === date)
+		const totalMinutes = dateInfo.minutesActive;
+		return totalMinutes/60
 	}
 
 	findAvgMinutesActiveByWeek(date) {

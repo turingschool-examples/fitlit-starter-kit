@@ -164,7 +164,16 @@ describe('Activity', function() {
 
 	it('should be an instance of Activity', function() {
 		expect(activity).to.be.an.instanceof(Activity)
-	});
+  });
+  
+  it('should find the user\'s steps by for a given day', function(){
+    expect(activity.findStepsByDay('14/05/2019', 1)).to.equal(3338)
+  })
+
+  it('should find the user\'s stairs by for a given day', function(){
+    expect(activity.findStairsByDay('14/05/2019', 1)).to.equal(24)
+  })
+
 
 	it('should convert a user\'s number of steps to miles', function() {
 		expect(activity.findMilesWalkedByDay('14/05/2019', 1)).to.equal(2.97)

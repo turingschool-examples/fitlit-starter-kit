@@ -33,7 +33,6 @@ class ActivityRepository {
 
 
 findAvgSteps(date) {
-	console.log(this.userActivityData)
 	const userActivity = this.userActivityData.map(el => el.activityData)
 	let steps = []
 	userActivity.map(el =>
@@ -50,7 +49,6 @@ findAvgSteps(date) {
 }
 
 findAvgActivity(date) {
-	console.log(this.userActivityData)
 	const userActivity = this.userActivityData.map(el => el.activityData)
 	let mins = []
 	userActivity.map(el =>
@@ -67,8 +65,6 @@ findAvgActivity(date) {
 }
 
 };
-
-
 
 if(typeof module !== 'undefined') {
 module.exports = ActivityRepository

@@ -42,6 +42,7 @@ stepsDaySeven = 12000;
 //For a user, the number minutes active for the latest day
 //For a user, the distance they have walked (in miles) for the latest day based on their step count
 //How their number of steps, minutes active, and flights of stairs climbed compares to all users for the latest day
+//Make a metric of your own! Document it, calculate it, and display it.
 
 new Chart(document.getElementById("activity-chart"), {
   type: 'bar',
@@ -139,11 +140,17 @@ new Chart(document.getElementById("water-chart"), {
 
 });
 
+
+//Sleep
+
 $('.sleep').append("<h4>Your Hours of Sleep Today: <span class='sleep-today'> </span></h4")
 $('.sleep').append("<h4>Your Quality of Sleep Today: <span class='sleep-quality-today'> </span></h4")
-$('.sleep').append("<h4>Your Average Tracked Sleep: <span class='sleep-average'></span></h4") 
+$('.sleep').append("<h4>Your Average Tracked Sleep Hours: <span class='sleep-average'></span></h4") 
+$('.sleep').append("<h4>Your Average Tracked Sleep Quality: <span class='sleep-quality'></span></h4") 
 $('.sleep-today').text(sleep.findHoursSleptByDay(1,'15/05/2019'))
 $('.sleep-quality-today').text(sleep.findSleepQualityByDay(1,'15/05/2019'))
+$('.sleep-average').text(Number(sleep.findAvgHoursSlept(1)).toFixed(1))
+$('.sleep-quality').text(Number(sleep.findAvgSleepQuality(1)).toFixed(1))
 
 sleepDayOne = sleep.findHoursSleptByWeek(1,'15/05/2019')[0]
 sleepDayTwo = sleep.findHoursSleptByWeek(1,'15/05/2019')[1]
@@ -163,6 +170,7 @@ qualDaySeven = sleep.findSleepQualityByWeek(1,'15/05/2019')[6]
 //For a user, their sleep data for the latest day (hours slept and quality of sleep)
 //For a user, their sleep data over the course of the latest week (hours slept and quality of sleep)
 //For a user, their all-time average sleep quality and all-time average number of hours slept
+//Make a metric of your own! Document it, calculate it, and display it.
 new Chart(document.getElementById("sleep-chart"), {
   type: 'bar',
   data: {

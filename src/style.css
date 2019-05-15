@@ -61,6 +61,7 @@ article {
   background-color: white;
   border: 2px rgb(94, 95, 102) solid;
   width: 100%;
+  overflow: scroll;
   padding: 15px;
 }
 
@@ -80,6 +81,7 @@ table {
   line-height: 2em;
 }
 
+#sleep-quality-card,
 .hydration-card {
   text-align: center
 }
@@ -92,11 +94,7 @@ table {
   font-size: 3em;
 }
 
-#ounces-weekly-card {
-  overflow: scroll;
-}
-
-#weekly-hydration-data {
+table {
   margin: 15px auto;
   padding: 0;
 }

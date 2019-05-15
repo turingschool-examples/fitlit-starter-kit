@@ -53,7 +53,7 @@ class Activity {
 		const currentUser = this.findUserById()
 		const dateInfo = currentUser.activityData.find(el => el.date === date)
 		const totalMinutes = dateInfo.minutesActive;
-		return totalMinutes/60
+		return Math.round(totalMinutes/60)
 	}
 
 	findAvgMinutesActiveByWeek(date) {

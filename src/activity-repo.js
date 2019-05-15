@@ -26,7 +26,7 @@ class ActivityRepository {
 			}  
 		}))
 	 let final = stairs.reduce(function(acc,curr){
-			return Math.round((acc += curr)/stairs.length)
+			return Math.ceil((acc += curr)/stairs.length)
 		})
 		return final
 	}

@@ -90,16 +90,21 @@ class Activity {
 
 	findCaloriesBurnedByDay(date){
 		const miles = this.findMilesWalkedByDay(date)
-		console.log(miles)
 		const flights = this.findStairsByDay(date)
-		console.log(flights)
 		const activity = this.findHoursActiveByDay(date)
-		console.log(activity)
 		const total = (miles*100) + (flights*12) + (activity*300)
 		return total;
 	}
+
+	findStepsForWeek(date) {
+		const currentUser = this.findUserById();
+		const startDate = currentUser.activityData.findIndex(el => el.date === date)
+		const minutesForWeek = currentUser.activityData.slice(startDate, startDate+7).reduce((a, b) => a += b.numSteps, 0)
+		const num = Number(minutesForWeek).toFixed(2)
+		return parseFloat(num)
+	}
 	
-}
+};
 
 
 if(typeof module !== 'undefined') {

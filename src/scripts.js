@@ -1,10 +1,19 @@
 $(document).ready(function() {
-const ourUser = 1;
+const ourUser = 5;
 const date = '16/05/2019'
 let userRepo = new UserRepository(userData, ourUser)
 let user = new User(userRepo.currentUser)
-let user2 = new User(userRepo.currentUser)
-let user3 = new User(userRepo.currentUser)
+
+let userRepo2 = new UserRepository(userData, 5)
+let user2 = new User(userRepo2.currentUser)
+let activity2 = new Activity(activityData,userData[4], 5)
+let userRepo3 = new UserRepository(userData, 7)
+let user3 = new User(userRepo3.currentUser)
+let activity3 = new Activity(activityData,userData[6], 7)
+let userRepo4 = new UserRepository(userData, 10)
+let user4 = new User(userRepo4.currentUser)
+let activity4 = new Activity(activityData,userData[9], 10)
+
 
 let hydrationRepo = new HydrationRepository(hydrationData, ourUser)
 let hydration = new Hydration(hydrationRepo.currentUser)
@@ -34,10 +43,19 @@ $('h2.friend-tag').click(function() {
   $('.friends').slideToggle('slow');
   })
 
-  $('.friends').append("<h6><span class='friend-1></span>has XXX steps this week</h6>")
-  $('.friends').append("<h6><span class='friend-2></span>has XXX steps this week</h6>")
-  $('.friends').append("<h6><span class='friend-3></span>has XXX steps this week</h6>")
-  $('span.friend1').html(user2.returnFirstName());
+  $('.friends').append("<h6> You have <span class='you'></span> steps this week</h6>")
+  $('.friends').append("<h6><span class='friend-1'></span> has <span class='steps-1'></span> steps this week</h6>")
+  $('.friends').append("<h6><span class='friend-2'></span> has <span class='steps-2'></span> steps this week</h6>")
+  $('.friends').append("<h6><span class='friend-3'></span> has <span class='steps-3'></span> steps this week</h6>")
+  $('span.you').text(activity.findStepsForWeek(date))
+  $('span.friend-1').html(user2.returnFirstName());
+  $('span.steps-1').text(activity2.findStepsForWeek(date))
+  $('span.friend-2').html(user3.returnFirstName());
+  $('span.steps-2').text(activity3.findStepsForWeek(date))
+  $('span.friend-3').html(user4.returnFirstName());
+  $('span.steps-3').text(activity4.findStepsForWeek(date))
+
+
 
 //Activity
 $('.activity').append("<h4>Your Steps Today: <span class='steps-today'></span></h4>")

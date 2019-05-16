@@ -202,5 +202,9 @@ describe('Activity', function() {
     expect(activity.findCaloriesBurnedByDay('15/05/2019')).to.equal(2672)
   })
 
+  it('should find a user\'s step count for the week', function(){
+    expect(activity.findStepsForWeek('06/05/2019')).to.equal(46209)
+  })
+
 
 })

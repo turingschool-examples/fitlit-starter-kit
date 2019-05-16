@@ -25,7 +25,10 @@
 .user-card {
   background-color: #A47DCF;
   height: 195px;
+}
 
+.friend-tag {
+  color: #81E6CE;
 }
 
 body {
@@ -38,8 +41,9 @@ body {
 main {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  
+  align-items: center; 
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 h3 {
@@ -63,11 +67,6 @@ span {
   color:#81E6CE; 
 }
 
-h6 {
-  background-color: ##FFFFFF;
-  font-weight: normal;
-  margin-left: 5px;
-}
 .user-info {
   color: #0F0C2B;
 }
@@ -75,6 +74,14 @@ h6 {
 .activity, 
 .hydration {
   border-right: solid 1px gray;
+}
+
+
+.friends {
+  background-color: #A47DCF;
+  color: #0F0C2B;
+  height: 200px;
+  width: 200px;
 }
 
 /*--------- svg styling -----------*/

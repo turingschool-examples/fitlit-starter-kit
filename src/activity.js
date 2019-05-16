@@ -8,8 +8,6 @@ class Activity {
 	constructor(userActivityData, userData, userId) {
 		this.userActivityData = userActivityData;
 		this.userData = userData;
-		// this.currentUser = this.findUserById()
-		console.log(this.userActivityData)
 	}
 
 	findUserById(userId) {
@@ -89,8 +87,24 @@ class Activity {
 		const mostStairs = Math.max(...flightsOfStairs)
 		return mostStairs
 	}
+
+	findCaloriesBurnedByDay(date){
+		const miles = this.findMilesWalkedByDay(date)
+		const flights = this.findStairsByDay(date)
+		const activity = this.findHoursActiveByDay(date)
+		const total = (miles*100) + (flights*12) + (activity*300)
+		return total;
+	}
+
+	findStepsForWeek(date) {
+		const currentUser = this.findUserById();
+		const startDate = currentUser.activityData.findIndex(el => el.date === date)
+		const minutesForWeek = currentUser.activityData.slice(startDate, startDate+7).reduce((a, b) => a += b.numSteps, 0)
+		const num = Number(minutesForWeek).toFixed(2)
+		return parseFloat(num)
+	}
 	
-}
+};
 
 
 if(typeof module !== 'undefined') {

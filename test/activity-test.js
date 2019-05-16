@@ -196,7 +196,15 @@ describe('Activity', function() {
 
 	it('should find a user\'s most stairs climbed', function() {
 		expect(activity.findMostStairsClimbed()).to.equal(46)
-	})
+  })
+  
+  it('should find a user\'s calories burned for day', function() {
+    expect(activity.findCaloriesBurnedByDay('15/05/2019')).to.equal(2672)
+  })
+
+  it('should find a user\'s step count for the week', function(){
+    expect(activity.findStepsForWeek('06/05/2019')).to.equal(46209)
+  })
 
 
 })

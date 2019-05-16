@@ -99,9 +99,7 @@ class Activity {
 	findStepsForWeek(date) {
 		const currentUser = this.findUserById();
 		const startDate = currentUser.activityData.findIndex(el => el.date === date)
-		const minutesForWeek = currentUser.activityData.slice(startDate, startDate+7).reduce((a, b) => a += b.numSteps, 0)
-		const num = Number(minutesForWeek).toFixed(2)
-		return parseFloat(num)
+		return currentUser.activityData.slice(startDate, startDate+7).reduce((a, b) => a += b.numSteps, 0)
 	}
 	
 };

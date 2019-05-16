@@ -56,6 +56,15 @@ class Sleep {
   	return weekOfSleepQuality
   }
 
+  findAvgHoursSleptByWeek(userId, date) {
+  	const currentUser = this.findUserSleepData(userId);
+  	const startDate = currentUser.sleepData.findIndex(item => item.date === date);
+  	const totalHours = currentUser.sleepData.slice(startDate, startDate+7).map(item => item.hoursSlept).reduce((a, b) => a +=b, 0);
+  	const average = Number(totalHours/7).toFixed(2)
+  	return parseFloat(average)
+
+  }
+
 };
 
 //Sleep

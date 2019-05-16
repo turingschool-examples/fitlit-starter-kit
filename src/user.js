@@ -14,6 +14,8 @@ class User {
   	return this.user.name.split(' ')[0];
   }
 
+
+
 }
 
 

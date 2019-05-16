@@ -30,7 +30,7 @@ $('span.user-name').html(user.returnFirstName());
 $('img.user-image').click(function() {
 $('div.user-card').slideToggle('slow');
 })
-$('div.user-card').append("<h6> Name: <span class='name-span user-info'></span></h6><h6>Address: <span class='address-span user-info'></span></h6><h6> Email: <span class='email-span user-info'></span></h6><h6>Daily Step Goal: <span class ='goal-span user-info'></span></h6><h6>Average Step Goal: <span class ='av-goal-span user-info'></span></h6>")
+$('div.user-card').append("<h6> Name: <span class='name-span user-info'></span></h6><h6>Address: <span class='address-span user-info'></span></h6><h6> Email: <span class='email-span user-info'></span></h6><h6>Daily Step Goal: <span class ='goal-span user-info'></span></h6><h6>Average Steps: <span class ='av-goal-span user-info'></span></h6>")
 $('span.name-span').text(`${user.user.name}`)
 $('span.address-span').text(`${user.user.address}`)
 $('span.email-span').text(`${user.user.email}`)

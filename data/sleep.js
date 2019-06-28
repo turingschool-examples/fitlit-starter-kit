@@ -1,3 +1,6 @@
+//userId is foreign key
+//sleep.fixtures.js
+
 const sleepData = [
   {
     "userID": 1,

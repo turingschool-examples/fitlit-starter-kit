@@ -22,6 +22,11 @@ const UserRepository = require('../src/user-repository')
     expect(userRepository.returnUserData(1)).to.eql(data[0])
   });
 
-  
+  it("should return average step goal amongst all users", () => {
+    expect(userRepository.returnAverageStepGoal()).to.eql(6667)
+
+  });
+
+
 
 })

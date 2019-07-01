@@ -1,4 +1,4 @@
-const practiceUserData = [
+const userData = [
   {
     "id": 3,
     "name": "Herminia Witting",
@@ -14,59 +14,84 @@ const practiceUserData = [
     ]
   },
   {
-    "id": 4,
-    "name": "Mae Connelly",
-    "address": "28926 Schinner Islands, Turnermouth NE 23720-3230",
-    "email": "Marcos_Pollich@hotmail.com",
-    "strideLength": 3.1,
-    "dailyStepGoal": 4000,
-    "friends": [
-      48,
-      7,
-      44,
-      8
-    ]
-  },
-  {
-    "id": 5,
-    "name": "Erick Schaden",
-    "address": "514 Mayert Walk, Jordaneside SC 55023-6523",
-    "email": "Vanessa_Gerhold@gmail.com",
-    "strideLength": 3.1,
-    "dailyStepGoal": 8000,
-    "friends": [
-      13,
-      44,
-      49,
-      33,
-      10
-    ]
-  },
-  {
-    "id": 6,
-    "name": "Jerrold Bogisich",
-    "address": "8283 Carroll Harbor, Borerfort CT 69020-3448",
-    "email": "Mercedes_Zboncak53@yahoo.com",
-    "strideLength": 3.7,
-    "dailyStepGoal": 11000,
-    "friends": [
-      11,
-      48,
-      15
-    ]
-  },
-  {
-    "id": 7,
-    "name": "Breanne Fay",
-    "address": "834 Retta Knoll, Stantonland MA 71627-4121",
-    "email": "Dashawn28@gmail.com",
+    "id": 11,
+    "name": "Dannie Berge",
+    "address": "52042 Douglas Passage, Port Faye NC 82258",
+    "email": "Fabian_Murray92@yahoo.com",
     "strideLength": 2.9,
+    "dailyStepGoal": 9000,
+    "friends": [
+      15,
+      19
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Wilburn Collins",
+    "address": "543 Keeling Road, Schummside ID 47123-6269",
+    "email": "Blake27@gmail.com",
+    "strideLength": 3.3,
     "dailyStepGoal": 8000,
     "friends": [
-      12,
-      27,
+      30,
+      43,
       22,
+      39
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Leilani Quitzon",
+    "address": "60013 Golden Overpass, Lake Dejon WI 77309-0820",
+    "email": "Trinity_Rowe@hotmail.com",
+    "strideLength": 3.5,
+    "dailyStepGoal": 8000,
+    "friends": [
+      4,
+      18,
+      36,
       30
     ]
+  },
+  {
+    "id": 42,
+    "name": "Ernestine Heathcote",
+    "address": "9160 Blanche Ford, Dawnmouth OH 11816-1604",
+    "email": "Brandyn_Quitzon@hotmail.com",
+    "strideLength": 4.5,
+    "dailyStepGoal": 9000,
+    "friends": [
+      20,
+      25,
+      22
+    ]
+  },
+  {
+    "id": 43,
+    "name": "Alfonso Sporer",
+    "address": "584 Mayert Greens, West Arden SC 97033",
+    "email": "Jadon_Borer@gmail.com",
+    "strideLength": 4,
+    "dailyStepGoal": 5000,
+    "friends": [
+      2,
+      19,
+      43,
+      33
+    ]
+  },
+  {
+    "id": 44,
+    "name": "Cora Rice",
+    "address": "32723 Brekke Burg, West Randallburgh DE 20889",
+    "email": "Coralie80@yahoo.com",
+    "strideLength": 3.1,
+    "dailyStepGoal": 8000,
+    "friends": [
+      25,
+      37,
+      42,
+      27
+    ]
   }
-]
+];

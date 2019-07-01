@@ -14,10 +14,11 @@ describe('User', function(){
   })
   it('should represent a single user', function() {
     let user = new User(userData);
-    expect(user.length).to.equal();
+    expect(user.length).to.equal(1);
   })
   it('should hold properties from sample data file', function() {
     let user = new User();
     expect(user.name).to.equal();
   })
+
 });

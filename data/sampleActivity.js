@@ -700,3 +700,7 @@ const sampleActivity = [
     "flightsOfStairs": 45
   }
 ]
+
+  if (typeof module != 'undefined' && typeof module.exports != 'undefined') {
+ module.exports = sampleActivity;
+}

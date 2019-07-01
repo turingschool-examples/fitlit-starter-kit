@@ -135,3 +135,7 @@ const sampleUsers = [
       33
     ]
   }]
+
+  if (typeof module != 'undefined' && typeof module.exports != 'undefined') {
+ module.exports = sampleUsers;
+}

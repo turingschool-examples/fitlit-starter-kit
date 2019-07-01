@@ -2,17 +2,17 @@
 <html>
   <head>
     <meta charset=“UTF-8”>
-    <title>GETFIT</title>
+    <title>GITFIT</title>
     <meta name=“viewport” content=“width=device-width, initial-scale=1.0”>
+    <link rel="stylesheet" href="styles.css">
     <link href=“https://fonts.googleapis.com/css?family=Oxygen:300,400,700” rel=“stylesheet”>
-    <link rel=“stylesheet” href=“styles.css”>
     <script src=“https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js”></script>
   </head>
   <body>
     <aside class="user-info">
-      <h1>GitFit</h1>
-      <h2 class="aside__welcome-message">Welcome, <span class="aside__user-name"></span></h2>
-      <h2 class="aside-date">Date</h2>
+      <h1>gitFit</h1>
+      <h2 class="aside__welcome-message aside__h2">Welcome, <span class="aside__user-name">Name!</span></h2>
+      <h2 class="aside__date aside__h2">Date</h2>
       <figure class="aside__figure">
         <section class="figure__user-name">
           <label class="aside__user-name-label">Name</label>
@@ -33,17 +33,21 @@
       </figure>
     </aside>
     <main>
-      <section class="main__activity">
-        <h3 class="activity__header">Activity</h3>
+      <section class="main__column-one">
+        <section class="main__activity main__section">
+          <h3 class="activity__header">Activity</h3>
+        </section>
+        <section class="main__sleep main__section">
+          <h3 class="sleep__header">Sleep</h3>
+        </section>
       </section>
-      <section class="main__sleep">
-        <h3 class="sleep__header">Sleep</h3>
-      </section>
-      <section class="main__hydration">
-        <h3 class="hydration__header">Hydration</h3>
-      </section>
-      <section class="main__step-challenge">
-        <h3 class="step-challenge-header">Step Challenge</h3>
+      <section class="main__column-two">
+        <section class="main__hydration main__section">
+          <h3 class="hydration__header">Hydration</h3>
+        </section>
+        <section class="main__step-challenge main__section">
+          <h3 class="step-challenge-header">Step Challenge</h3>
+        </section>
       </section>
     </main>
     <script type="text/javascript" src="./scripts.js"></script>

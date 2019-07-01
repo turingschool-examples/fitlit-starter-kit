@@ -1,4 +1,4 @@
-const userData = [
+const userTestData = [
   {
     "id": 1,
     "name": "Luisa Hane",
@@ -40,3 +40,5 @@ const userData = [
       33
     ]
   }];
+
+  module.exports = userTestData

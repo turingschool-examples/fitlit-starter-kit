@@ -5,15 +5,19 @@ if (typeof module !== 'undefined') {
 }
 
 class User {
-	constructor(data){
-		console.log(data)
-		this.name = data[obj].name 
+	constructor(dataIndex){
+		this.name = userData[dataIndex].name;
+		this.strideLength = userData[dataIndex].strideLength;
+		this.id = userData[dataIndex].id;
+		this.address = userData[dataIndex].address;
+		this.email = userData[dataIndex].email;
+		this.dailyStepGoal = userData[dataIndex].dailyStepGoal;
+		this.friends = userData[dataIndex].friends;
+	}
 
+	findFirstName(){
+		return this.name.split(' ')[0];
 	}
 }
-
-
-//passing thru an array of objects 
-
 
 module.exports = User;

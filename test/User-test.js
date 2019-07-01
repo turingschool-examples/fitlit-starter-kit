@@ -6,7 +6,7 @@ var User = require('../src/User');
 describe('User', () => {
 
 	beforeEach(() => {
-		let user = new User(1); // what variable prefix should we be using here? 
+		let user = new User(); // what variable prefix should we be using here? 
 	})
 
 	it.only('should be a function', () => {

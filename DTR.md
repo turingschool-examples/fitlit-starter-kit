@@ -23,28 +23,44 @@ Any additional questions that you would like to add:
 Template for DTR Memo
 Project:
 
-Group Member Names:
+Group Member Names: Lacy Rudd & David Gitlen
 
 Goals and Expectations for the Project (What does each group member hope to get out of this project? What do we want to achieve as a team? How will we know that we're successful?):
 
-Team strengths & collaboration styles (consider discussing your Pairin qualities here):
 
+Better time management on the project and the other goals outside of this project. MVP: Through iteration 5 and then come back and set up DOM fancy later. 
+
+Team strengths & collaboration styles (consider discussing your Pairin qualities here):
+Both prefer working in person. Set goals for the day, and set to accomplish. Prefer Turing or house. Lacy is happy to give you rides. 
 How we can use our strengths to overcome obstacles:
 
 Schedule Expectations (When are we available to work together and individually? What constraints do we have?):
+  Plan on jsFun & and codeWars in the AM. ( 1 hour a day each minimum) : Practice articulating those. Use them as study breaks. And work through weekend. Thursday the only day we are taking off.
+  
+  Goal: to finish through iteration 5 by Tuesday.  Clean up // on Wednesday. // Both sleeping thoroughly that night. 
 
 Communication Expectations (How and often will we communicate? How do we keep lines of communication open? How will we make decisions as a team?):
 
+Be forward be honest, communicate with scheduling. 
+
 Abilities & Growth Expectations (Technical strengths and areas for desired improvement):
+  Articulating through, data manipulation, concieving of the classes and knowing what we need -- how to create SRP to the smallest level. 
 
 Workload Expectations (What features do we each want to work on?):
+Split it up as we go. 
 
 Workflow Expectations (Git workflow/Tools/Code Review/Reviewing Pull Requests/Debugging and Problem-solving Techniques):
+Neither push to master without other: ie you do PR and the other approves it. Figure it out as we go together. 
 
 Expectations for giving and receiving feedback:
+Honest, upfront, immediate: it is not personal. 
 
 Project management tools we will use:
+Trello. 
+
 
 Day 1 Agenda:
+
+DTR, look through data, figure out outlines.
 
 Additional Notes:

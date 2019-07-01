@@ -3,7 +3,7 @@ const expect = chai.expect;
 const data = require('../data/user-test-data')
 const UserRepository = require('../src/user-repository')
 
-  describe("User-Repository", () => {
+describe("User-Repository", () => {
 
   beforeEach(function() {
     userRepository = new UserRepository(data);
@@ -24,7 +24,6 @@ const UserRepository = require('../src/user-repository')
 
   it("should return average step goal amongst all users", () => {
     expect(userRepository.returnAverageStepGoal()).to.eql(6667)
-
   });
 
 

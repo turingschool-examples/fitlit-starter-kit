@@ -1,3 +1,5 @@
+
+
 const userData = [
   {
     "id": 3,
@@ -95,3 +97,5 @@ const userData = [
     ]
   }
 ];
+
+module.exports = userData;

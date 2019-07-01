@@ -600,3 +600,7 @@ const sampleSleep = [
     "sleepQuality": 5
   }
  ]
+
+   if (typeof module != 'undefined' && typeof module.exports != 'undefined') {
+ module.exports = sampleSleep;
+}

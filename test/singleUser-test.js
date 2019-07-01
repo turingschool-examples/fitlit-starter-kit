@@ -2,6 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const User = require("../src/singleUser");
+const userData = require("../data/sampleUsers");
 
 describe('User', function(){
   it('should be a function', function() {
@@ -12,8 +13,8 @@ describe('User', function(){
     expect(user).to.be.an.instanceof(User);
   })
   it('should represent a single user', function() {
-    let user = new User();
-    expect(user.length).to.equal(1);
+    let user = new User(userData);
+    expect(user.length).to.equal();
   })
   it('should hold properties from sample data file', function() {
     let user = new User();

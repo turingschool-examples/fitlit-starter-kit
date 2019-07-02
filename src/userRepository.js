@@ -10,6 +10,7 @@ class UserRepository {
     this.data.forEach(function(user){
       if (user.id === id) {
         theUser = user
+
       }
     })
     this.user = theUser
@@ -30,6 +31,7 @@ class UserRepository {
         return `Your goal is ${this.user.dailyStepGoal - totalStepAverage} steps more than your friends!`
       }
   };
+
   };
 
 if (typeof module !== 'undefined') {

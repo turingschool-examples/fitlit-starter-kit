@@ -8,7 +8,7 @@ const HydrationRepository = require('../src/hydration-repository')
 describe("Hydration", () => {
 
   beforeEach(function() {
-    hydrationRepository = new HydrationRepository(hydrationData);
+    hydrationRepository = new HydrationRepository(hydrationData2);
     hydration = new Hydration(hydrationRepository.returnUserHydrationData(1));
   });
 
@@ -26,15 +26,12 @@ describe("Hydration", () => {
 
   it("should return a weeks worth of data", () => {
     hydrationRepository = new HydrationRepository(hydrationData2);
-    hydration = new Hydration(hydrationRepository.returnUserHydrationData(1));
     expect(hydration.returnAWeek("2019/06/15").length).to.eql(7)
   });
 
   it("should return number of fluid ounces consumed each day over a week", () => {
     hydrationRepository = new HydrationRepository(hydrationData2);
-    hydration = new Hydration(hydrationRepository.returnUserHydrationData(1));
-    // expect(hydration.returnAverageWeeklyFluidOunces("2019/06/15")).to.eql(43);
-    expect(hydration.returnAverageWeeklyFluidOunces("2019/06/17")).to.eql(46)
+    expect(hydration.returnAverageWeeklyFluidOunces("2019/06/17")).to.eql([ 37, 36, 30, 55, 66, 20, 75 ])
   });
 
 });

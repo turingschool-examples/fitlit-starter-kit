@@ -1,7 +1,17 @@
 class UserRepository {
-    constructor(thing) {
-        this.thing = thing;
-    }
+  constructor(data) {
+    this.data = data;
+  }
+
+  returnUser(id) {
+    return this.data.find(user => user.id === id);
+  } 
+
+  returnAvgStepGoal() {
+    return this.data.reduce((sum, currentUser) => {
+      return sum += currentUser.dailyStepGoal
+    }, 0) / this.data.length;
+  } 
 }
 
 module.exports = UserRepository;

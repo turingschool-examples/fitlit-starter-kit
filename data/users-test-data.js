@@ -136,3 +136,5 @@ const usersTestData = [
       ]
     }
 ];
+
+module.exports = usersTestData;

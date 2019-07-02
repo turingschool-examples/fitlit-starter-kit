@@ -1,1 +1,3 @@
-console.log("Hello World");
+// $(document).ready(function() {
+//     $('.greeting').text(${user.randomUser.returnFirstName()})
+// })

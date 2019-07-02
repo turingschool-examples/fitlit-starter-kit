@@ -6,8 +6,8 @@ class User {
   returnFirstName() {
     return this.randomUser.name.split(" ")[0]
   }
+}
 
 if (typeof module !== 'undefined') {
   module.exports = User;
 }
-

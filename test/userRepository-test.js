@@ -18,4 +18,11 @@ describe('UserRepository', function() {
     
     expect(userRepository.getUserData(1)).to.be.eql(fakeUsers[0])
   })
+
+  it('should compare the users step goal against the average of all users', function () {
+    const userRepository = new UserRepository(fakeUsers);
+
+    expect(userRepository.compareStepGoal(10000)).to.be.eql('Your goal is 4000 steps more than your friends!')
+    // 6000 for avg.
+  })
 });

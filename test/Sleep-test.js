@@ -25,6 +25,11 @@ describe('Sleep', function() {
   it('should calculate average hours slept per day', function(){
     const sleep = new Sleep(sleepData);
     expect(sleep.calculateAverageDailySleepHours(1)).to.equal(5.1)
+  })
+
+  it('should calculate average sleep quality per day over all time', function(){
+    const sleep = new Sleep(sleepData);
+    expect(sleep.calculateAverageSleepQuality(1)).to.equal(3)
 
   })
 

@@ -17,5 +17,10 @@ describe("Sleep-Repository", () => {
     expect(sleepRepository).to.be.an.instanceof(SleepRepository)
   });
 
+  it("should return return average sleep per day based on ID", () => {
+    expect(sleepRepository.returnAverageSleep(1)).to.eql(5.1)
+    expect(sleepRepository.returnAverageSleep(2)).to.eql(7.25)
+  });
+
 
 });

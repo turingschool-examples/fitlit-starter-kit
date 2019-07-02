@@ -1,18 +1,16 @@
-class UserRepo{
-  constructor(sampleUsers) {
-    this.sampleUsers = sampleUsers;
+class UserRepo {
+  constructor(userData) {
+    this.userData = userData;
   }
 
-  returnUserData(id, sampleUsers) {
-    return sampleUsers.find(user => id === user.id);
-}
+  returnUserData(id) {
+    return this.userData.find(user => id === user.id);
+  }
   averageGoalSteps() {
-    return sampleUsers.reduce(function(steps,cur) {
-      return steps + cur.dailyStepGoal/sampleUsers.length;
+    return this.userData.reduce((steps, cur) => {
+      return steps + (cur.dailyStepGoal / this.userData.length);
     }, 0);
-};
-
-
+  };
 }
 
 if (typeof module !== 'undefined') {

@@ -1,7 +1,6 @@
 const chai = require('chai')
 const expect = chai.expect;
 
-// var userRepository = new UserRepository;
 
 const UserRepository = require('../src/userRepository');
 const fakeUsers = require('../fakeData/fakeUsers');

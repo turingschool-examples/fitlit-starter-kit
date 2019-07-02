@@ -5,12 +5,12 @@ class UserRepository {
   }
 
   getUserData(id) {
-      return this.data.find(function(user){
-          if (user.id === id) {
-              return user
-          }
+    return this.data.find(function(user){
+      if (user.id === id) {
+        return user
+        }
       })
-      }
+    }
   };
 
 if (typeof module !== 'undefined') {

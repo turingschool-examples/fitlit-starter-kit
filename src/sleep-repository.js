@@ -8,6 +8,11 @@ class SleepRepository {
       return found.reduce((acc, total) => acc + total.hoursSlept, 0) / found.length
   }
 
+  returnAverageSleepForAllUsers() {
+    return Math.round(10 * this.sleepData.reduce((acc, total) => acc + total.sleepQuality, 0) / this.sleepData.length) / 10
+  }
+
+
 
 }
 

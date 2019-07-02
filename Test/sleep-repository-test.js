@@ -22,5 +22,15 @@ describe("Sleep-Repository", () => {
     expect(sleepRepository.returnAverageSleep(2)).to.eql(7.25)
   });
 
+  it("should return average sleep quality for all users", () => {
+    expect(sleepRepository.returnAverageSleepForAllUsers()).to.eql(3.8)
+  });
+
+
+
+
+
+
+
 
 });

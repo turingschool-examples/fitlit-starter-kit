@@ -25,5 +25,10 @@ describe('User', function() {
   it('should hold properties from sample data file', function() {
     let user = new User(randomUser);
     expect(user.name).to.equal(randomUser.name);
+    expect(user.address).to.equal(randomUser.address);
+    expect(user.email).to.equal(randomUser.email);
+    expect(user.strideLength).to.equal(randomUser.strideLength);
+    expect(user.dailyStepGoal).to.equal(randomUser.dailyStepGoal);
+    expect(user.friends).to.equal(randomUser.friends);
   })
 });

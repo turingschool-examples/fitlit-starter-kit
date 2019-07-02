@@ -1,6 +1,9 @@
-class User {
-  constructor() {
+const fakeUsers = require('../fakeData/fakeUsers');
+const userRepository = require('../src/userRepository')
 
+class User {
+  constructor(userData) {
+    
 
   }
 

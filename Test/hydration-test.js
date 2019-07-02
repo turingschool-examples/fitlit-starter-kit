@@ -1,13 +1,15 @@
 const chai = require('chai');
 const expect = chai.expect;
 const hydrationData = require('../data/hydration-test-data');
+const hydrationData2 = require('../data/hydration-test-2');
 const Hydration = require('../src/hydration');
-const 
+const HydrationRepository = require('../src/hydration-repository')
 
 describe("Hydration", () => {
 
   beforeEach(function() {
-    hydration = new Hydration(hydrationData[0]);
+    hydrationRepository = new HydrationRepository(hydrationData);
+    hydration = new Hydration(hydrationRepository.returnUserHydrationData(1));
   });
 
   it("should be a function", () => {
@@ -23,7 +25,9 @@ describe("Hydration", () => {
   });
 
   it("should return number of fluid ounces consumed each day over a week", () => {
-    expect(hydration.returnAverageWeeklyFluidOunces()).to.eql(Hydration)
+    hydrationRepository = new HydrationRepository(hydrationData2);
+    hydration = new Hydration(hydrationRepository.returnUserHydrationData(1));
+    expect(hydration.returnAverageWeeklyFluidOunces()).to.eql(43)
   });
 
 

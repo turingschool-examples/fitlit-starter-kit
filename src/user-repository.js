@@ -1,7 +1,7 @@
-class userRepository {
+class UserRepository {
     constructor(thing) {
         this.thing = thing
     }
 }
 
-module.exports = userRepository;
+module.exports = UserRepository;

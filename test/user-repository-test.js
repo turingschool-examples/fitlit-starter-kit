@@ -1,10 +1,10 @@
 const chai = require("chai")
 const expect = chai.expect;
-const userRepository = require("../src/user-repository");
+const UserRepository = require("../src/user-repository");
 
-describe('userRepository', function() {
+describe('UserRepository', function() {
 
     it('should be a function', function() {
-        expect(userRepository).to.be.a('function');
+        expect(UserRepository).to.be.a('function');
     })
 })

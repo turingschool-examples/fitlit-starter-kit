@@ -25,11 +25,16 @@ FilePath = require("../data/HydrationSub");
           acc.push(user.numOunces);
         }
         return Number(acc);
-      }, [])
+      }, []);
     }
 
     returnWaterEachDay(userID) {
-      this.data.reduce(function())
+      return this.data.reduce(function(totalDays, user) {
+        if (totalDays.length < 8 && user.userID === userID) {
+          totalDays.push(user.numOunces);
+        };
+        return totalDays;
+      }, []);
     }
   
   }  

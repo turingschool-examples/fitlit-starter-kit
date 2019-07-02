@@ -23,5 +23,12 @@ const hydrationData = [
     "userID": 5,
     "date": "2019/06/15",
     "numOunces": 42
-  }
+  },
+   {
+    "userID": 1,
+    "date": "2019/06/16",
+    "numOunces": 69
+  },
 ]
+
+module.exports = hydrationData

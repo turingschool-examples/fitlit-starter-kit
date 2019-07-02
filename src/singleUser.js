@@ -6,7 +6,14 @@ class User {
   returnFirstName() {
     return this.randomUser.name.split(" ")[0]
   }
+  returnUserFirstName(id, userData) {
+  return sampleUsers.find(user => id === user.id).name
+  .split(' ')
+  .shift();
 }
+};
+
+
 
 
 if (typeof module !== 'undefined') {

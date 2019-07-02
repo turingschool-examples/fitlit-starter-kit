@@ -26,4 +26,5 @@ describe('User', function() {
     let user = new User(randomUser);
     expect(user.returnFirstName()).to.equal(randomUser.name.split(" ")[0]);
   })
+
 });

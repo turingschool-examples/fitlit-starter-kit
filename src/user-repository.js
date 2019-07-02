@@ -1,6 +1,6 @@
 class UserRepository {
     constructor(thing) {
-        this.thing = thing
+        this.thing = thing;
     }
 }
 

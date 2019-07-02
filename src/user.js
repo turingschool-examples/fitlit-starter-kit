@@ -12,6 +12,7 @@ class User {
   getFirstName() {
     return this.name.split(' ')[0];
   }
+}
 
 
 if (typeof module !== 'undefined') {

@@ -75,3 +75,6 @@ const hydrationData = [{
   "numOunces": 97
 }
 ]
+
+
+  module.exports = hydrationData;

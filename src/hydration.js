@@ -15,7 +15,7 @@ class Hydration {
 
   returnAverageWeeklyFluidOunces(firstDate) {
     const week = this.returnAWeek(firstDate);
-    return Math.ceil(week.reduce((acc, total) => acc + total.numOunces, 0) / week.length);
+    return week.map(el => el.numOunces);
   }
 }
 

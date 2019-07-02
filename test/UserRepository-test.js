@@ -36,7 +36,7 @@ describe("UserRepository", function() {
   });
 
   it("should return user data given a user ID", function() {
-    const userRepository = new UserRepository("../data/usersSub.js");
+    const userRepository = new UserRepository("../data/userSub.js");
     expect(userRepository.returnUserData(2)).to.deep.equal({
       "id": 2,
       "name": "Jarvis Considine",
@@ -51,5 +51,15 @@ describe("UserRepository", function() {
         19
       ]
     });
+  });
+
+  it("should return the average step goal amongst all users", function() {
+    const userRepository = new UserRepository("../data/userSub.js");
+    expect(userRepository.returnAvgStepGoal()).equal(6200)
+  });
+
+  it("should give an error if the average step goal is incorrect", function() {
+    const userRepository = new UserRepository("../data/userSub.js");
+    expect(userRepository.returnAvgStepGoal()).not.equal(5000)
   });
 });

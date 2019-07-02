@@ -1,15 +1,35 @@
-
-  usersFilePath = require("../data/hydroSub");
-
+FilePath = require("../data/HydrationSub");
 
   class Hydration {
     constructor(userID) {
       this.userID = userID,
-      this.data = usersFilePath
+      this.data = FilePath
     }
   
-    returnUserData(userID) {
-      return this.data.find(element => element.id === userID);
+    returnAllTimeAvg(userID) {
+      let users = this.data.filter(function(user) {
+          return user.userID === userID;
+      });
+      return Math.floor(Number(users.reduce(function(totalOunces, user) {
+          return totalOunces += user.numOunces;
+      }, 0) / users.length));
+    }
+
+    returnSpecificDayOz(userID, date) {
+      let users = this.data.filter(function(user) {
+        return user.userID === userID;
+      });
+
+      return users.reduce(function(acc, user) {
+        if (user.date === date) {
+          acc.push(user.numOunces);
+        }
+        return Number(acc);
+      }, [])
+    }
+
+    returnWaterEachDay(userID) {
+      this.data.reduce(function())
     }
   
   }  

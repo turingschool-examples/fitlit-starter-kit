@@ -9,21 +9,9 @@ var user1
 
 const UserRepository = require("../src/UserRepository");
 
-// beforeEach(() => {
-//     user1 = new User({
-//         "id": 1,
-//         "name": "Luisa Hane",
-//         "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-//         "email": "Diana.Hayes1@hotmail.com",
-//         "strideLength": 4.3,
-//         "dailyStepGoal": 10000,
-//         "friends": [
-//           16,
-//           4,
-//           8
-//         ]
-//       });
-//   });
+ beforeEach(() => {
+  const userRepository = new UserRepository("../data/usersSub.js");
+ });
 
 describe("UserRepository", function() {
   it("should be a function", function() {
@@ -36,7 +24,7 @@ describe("UserRepository", function() {
   });
 
   it("should return user data given a user ID", function() {
-    const userRepository = new UserRepository("../data/usersSub.js");
+    const userRepository = new UserRepository("../data/userSub.js");
     expect(userRepository.returnUserData(2)).to.deep.equal({
       "id": 2,
       "name": "Jarvis Considine",
@@ -49,6 +37,24 @@ describe("UserRepository", function() {
         18,
         24,
         19
+      ]
+    });
+  });
+
+  it("should return user data given a user ID", function() {
+    const userRepository = new UserRepository("../data/usersSub.js");
+    expect(userRepository.returnUserData(8)).to.deep.equal({
+      "id": 8,
+      "name": "Laney Abshire",
+      "address": "86416 Koch Inlet, North Kaciefurt MA 80635",
+      "email": "Janice_Nitzsche2@yahoo.com",
+      "strideLength": 2.8,
+      "dailyStepGoal": 2000,
+      "friends": [
+        11,
+        41,
+        23,
+        49
       ]
     });
   });

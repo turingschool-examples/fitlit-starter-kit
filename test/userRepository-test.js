@@ -3,7 +3,8 @@ const expect = chai.expect;
 
 
 const UserRepository = require('../src/userRepository');
-const fakeUsers = require('../fakeData/fakeUsers')
+const fakeUsers = require('../fakeData/fakeUsers');
+
 
 describe('UserRepository', function() {
 
@@ -12,9 +13,10 @@ describe('UserRepository', function() {
     expect(UserRepository).to.be.a('function');
   }),
 
-  it('should take an object as an arguement', function() {
-    const userRepository = new UserRepository(fakeUsers)
 
-    expect(userRepository.data).to.be.an('object')
+  it('should find the users information using their ID', function() {
+    const userRepository = new UserRepository(fakeUsers);
+    
+    expect(userRepository.getUserData(1)).to.be.eql(fakeUsers[0])
   })
 });

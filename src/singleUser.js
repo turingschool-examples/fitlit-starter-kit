@@ -1,6 +1,7 @@
 class User {
-  constructor(userData) {
-    this.userData = userData;
+  constructor(randomUser) {
+    this.randomUser = randomUser;
+    console.log(randomUser)
   }
 }
 

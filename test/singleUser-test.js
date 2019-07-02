@@ -4,7 +4,7 @@ const expect = chai.expect;
 const User = require("../src/singleUser");
 const userData = require("../data/sampleUsers");
 const randomIndex = Math.floor(Math.random() * (userData.length - 1) + 1)
-const randomUser = userData.filter(user => user.id === randomIndex)
+const randomUser = userData.find(user => user.id === randomIndex)
 
 describe('User', function() {
 
@@ -17,18 +17,13 @@ describe('User', function() {
     expect(user).to.be.an.instanceof(User);
   })
 
-  it('should represent a single user', function() {
-    let user = new User(randomUser);
-    expect(randomUser.length).to.equal(1);
-  })
-
   it('should hold properties from sample data file', function() {
     let user = new User(randomUser);
-    expect(user.name).to.equal(randomUser.name);
-    expect(user.address).to.equal(randomUser.address);
-    expect(user.email).to.equal(randomUser.email);
-    expect(user.strideLength).to.equal(randomUser.strideLength);
-    expect(user.dailyStepGoal).to.equal(randomUser.dailyStepGoal);
-    expect(user.friends).to.equal(randomUser.friends);
+    expect(user.randomUser.name).to.equal(randomUser.name);
+  })
+
+  it('should return the first name of the user', function() {
+    let user = new User(randomUser);
+    expect(user.returnFirstName()).to.equal(randomUser.name.split(" ")[0]);
   })
 });

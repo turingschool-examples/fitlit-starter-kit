@@ -1,7 +1,10 @@
 class User {
   constructor(randomUser) {
     this.randomUser = randomUser;
-    console.log(randomUser)
+  }
+
+  returnFirstName() {
+    return this.randomUser.name.split(" ")[0]
   }
 }
 

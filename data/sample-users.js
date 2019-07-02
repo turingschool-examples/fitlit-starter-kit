@@ -70,3 +70,7 @@ const sampleUserData = [
     ]
   }
 ]
+
+module.exports = {
+  sampleUserData 
+}

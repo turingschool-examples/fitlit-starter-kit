@@ -18,25 +18,22 @@ class SleepRepository {
   }
 
   returnUserSleepQualityAveOver3(firstDate) {
-    let allIds = this.sleepData.filter(el => el.date === firstDate).map(el => el.userID)
+    let data1 = [...this.sleepData]
+    let allIds = data1.filter(el => el.date === firstDate).map(el => el.userID)
     let array1 = allIds.map(el => this.returnUserSleepData(el))
     let array2 = array1.map(el => {
-      let index = this.sleepData.findIndex(el => el.date === firstDate);
-      return this.sleepData.splice(index, 7);
+      let index = data1.findIndex(el => el.date === firstDate);
+      return data1.splice(index, 7);
     })
     let final = {}
     let array3 = array2.map(el => el.reduce((acc, total) => final[total.userID] = (acc + total.sleepQuality), 0))
     return Object.keys(final).filter(key => final[key] > 21).map(Number)
-
   }
 
-  // returnUserSleepQualityAveOver3(firstDate) {
-  //   let week = this.sleepRepository.returnAWeekOfAllUsers(firstDate)
-  //   return week
-  //   return week.map(el => el.reduce((acc, total) => acc + total.sleepQuality, 0))
-  // }
-
-
+  returnUserWithMostSleepForDate(firstDate1) {
+    let array1 = this.sleepData.filter(el => el.date === firstDate1)
+    return array1.reduce((acc, total) => acc.hoursSlept > total.hoursSlept ? acc : total).userID
+  }
 }
 
 module.exports = SleepRepository

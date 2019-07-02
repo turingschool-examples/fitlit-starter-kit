@@ -56,7 +56,7 @@ const sleepData2 = [
   {
     "userID": 2,
     "date": "2019/06/15",
-    "hoursSlept": 6.1,
+    "hoursSlept": 6.2,
     "sleepQuality": 2.5
   },
   {

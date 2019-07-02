@@ -56,7 +56,7 @@ describe("UserRepository", function() {
         23,
         49
       ]
-    });
+    })});
 
   it("should return the average step goal amongst all users", function() {
     const userRepository = new UserRepository("../data/userSub.js");
@@ -66,6 +66,6 @@ describe("UserRepository", function() {
   it("should give an error if the average step goal is incorrect", function() {
     const userRepository = new UserRepository("../data/userSub.js");
     expect(userRepository.returnAvgStepGoal()).not.equal(5000)
-
   });
+
 });

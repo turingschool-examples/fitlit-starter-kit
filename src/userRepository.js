@@ -1,15 +1,15 @@
-const fakeUsers = require('../fakeData/fakeUsers');
+
 class UserRepository {
-  constructor(data) {
+  constructor(data, id) {
     this.data = data;
+    this.id = id;
   }
 
-  getUserData(id) {
-    return this.data.find(function(user) {
-      if (user.id === id) {
-        return user
-      }
-    })
+  getUserData() {
+    return this.data.find (user => user.id === this.id)
+  }
+  getAverageStepGoal() {
+    return Number(this.data.reduce((a, b) => a + b.dailyStepGoal, 0) / this.data.length);
   }
 }
 

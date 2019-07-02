@@ -21,7 +21,7 @@ describe('UserRepository', function() {
     expect(userRepository.getUserData(2)).to.equal(userData[1])
   });
 
-  it('should calculate average step goal of all users', function(){
+  it('should calculate average step goal of all users', function() {
     const userRepository = new UserRepository(userData)
     expect(userRepository.calculateAverageStepGoal()).to.equal(6400)
   })

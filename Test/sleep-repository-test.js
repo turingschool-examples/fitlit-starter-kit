@@ -1,6 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const sleepData = require('../data/sleep-test-data');
+const sleepData2 = require('../data/sleep-test-data-2');
 const SleepRepository = require('../src/sleep-repository');
 
 describe("Sleep-Repository", () => {
@@ -26,10 +27,10 @@ describe("Sleep-Repository", () => {
     expect(sleepRepository.returnAverageSleepForAllUsers()).to.eql(3.8)
   });
 
-
-
-
-
+  it("should return all users who have average sleep quality over 3 for a given week", () => {
+    sleepRepository = new SleepRepository(sleepData2);
+    expect(sleepRepository.returnUserSleepQualityAveOver3("2019/06/15")).to.eql([2])
+  });
 
 
 

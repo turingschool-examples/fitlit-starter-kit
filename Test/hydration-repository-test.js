@@ -18,8 +18,8 @@ describe("Hydration-Repository", () => {
   });
 
   it("should return a user's hydration data based on its id", () => {
-    expect(hydrationRepository.returnUserHydrationData(2)).to.eql(hydrationData[1])
-    expect(hydrationRepository.returnUserHydrationData(1)).to.eql(hydrationData[0])
+    expect(hydrationRepository.returnUserHydrationData(2)).to.eql([hydrationData[1], hydrationData[4]])
+    expect(hydrationRepository.returnUserHydrationData(1)).to.eql([hydrationData[0], hydrationData[3]])
   });
 
 });

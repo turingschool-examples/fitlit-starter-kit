@@ -24,11 +24,17 @@ describe("Hydration", () => {
     expect(hydration.returnFluidOunces("2019/06/15")).to.eql(37)
   });
 
+  it("should return a weeks worth of data", () => {
+    hydrationRepository = new HydrationRepository(hydrationData2);
+    hydration = new Hydration(hydrationRepository.returnUserHydrationData(1));
+    expect(hydration.returnAWeek("2019/06/15").length).to.eql(7)
+  });
+
   it("should return number of fluid ounces consumed each day over a week", () => {
     hydrationRepository = new HydrationRepository(hydrationData2);
     hydration = new Hydration(hydrationRepository.returnUserHydrationData(1));
-    expect(hydration.returnAverageWeeklyFluidOunces()).to.eql(43)
+    // expect(hydration.returnAverageWeeklyFluidOunces("2019/06/15")).to.eql(43);
+    expect(hydration.returnAverageWeeklyFluidOunces("2019/06/17")).to.eql(46)
   });
-
 
 });

@@ -1,3 +1,4 @@
+
 class User {
   constructor(object) {
     this.id = object.id;
@@ -11,7 +12,7 @@ class User {
   getFirstName() {
     return this.name.split(' ')[0];
   }
-}
+
 
 if (typeof module !== 'undefined') {
   module.exports = User;

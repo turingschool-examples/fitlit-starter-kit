@@ -5,6 +5,7 @@ class UserRepository {
     this.id = id;
   }
 
+
   getUserData() {
     return this.data.find (user => user.id === this.id)
   }

@@ -13,6 +13,7 @@ describe('User', function() {
     expect(User).to.be.a('function')
   });
 
+
   it('should find a users id', function() {
     let repo1 = new UserRepository(fakeUsers, 1)
     let repo2 = new UserRepository(fakeUsers, 25)
@@ -111,4 +112,6 @@ describe('User', function() {
     expect(firstName1).to.equal('Luisa')
     expect(firstName2).to.equal('Isobel')
   });
+
+
 })

@@ -1,15 +1,15 @@
 const chai = require("chai");
 const expect = chai.expect;
 
-var userRepo = require('../src/userRepo');
-var User = require('../src/User');
+// var userRepo = require('../src/UserRepo');
+const User = require('../src/User');
 
 
 describe('userRepo', () => {
   	let userRepo;
 
 	beforeEach(() => {
-		user = new User(4);
+		user = new User(4); //is user doing soemthing?
 		userRepo = new UserRepo();
 	});
 

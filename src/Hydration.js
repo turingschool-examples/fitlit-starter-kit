@@ -21,7 +21,16 @@ class Hydration {
     }, 0);
     return Math.ceil(avgHydration/userHydroData.length);
   } 
+
+  totalOuncesDaily(day, id) {
+    return this.consumerInfo(id).find(obj => obj.date === day).numOunces;
+  }
+
+  dailyOuncesPerWeek(id) {
+    return this.consumerInfo(id).slice(-7).map(obj => obj.numOunces);
+  }
 }
+
 
 if (typeof module !== 'undefined') {
  module.exports = Hydration; 

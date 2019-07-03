@@ -30,6 +30,4 @@ describe("Activity-Repository", () => {
     expect(activityRepository.aveMinutesActiveForDay("2019/06/15")).to.eql(131.3)
   });
 
-
-
 });

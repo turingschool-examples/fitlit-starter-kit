@@ -1,5 +1,4 @@
-
-  usersFilePath = require("../data/userSub");
+usersFilePath = require("../data/userSub");
 
 
 class UserRepository {

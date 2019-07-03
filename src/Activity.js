@@ -62,8 +62,15 @@ class Activity {
       return obj.numSteps > goal
     });
     return actualSteps.map(function(obj) {
-    return obj.date;
+      return obj.date;
     })
+  }
+  displayStairClimbRecored(id) {
+    let userId = this.findIdHelper(id);
+    let stairsClimbed = userId.map(function(obj) {
+      return obj.flightsOfStairs 
+    });
+    return Math.max(...stairsClimbed);
   }
 }
   

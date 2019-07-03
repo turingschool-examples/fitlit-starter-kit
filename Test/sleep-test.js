@@ -45,4 +45,11 @@ describe("Sleep", () => {
     expect(sleep2.userWeeklyQualitySleep("2019/06/15")).to.eql([ 2.2, 3.8, 2.6, 3.1, 1.2, 1.2, 4.2 ])
   });
 
+  it("should tell if a user is rested or not", () => {
+    const sleepRepository2 = new SleepRepository(sleepData2);
+    const sleep2 = new Sleep(sleepRepository2.returnUserSleepData(2));
+    sleep2.checkRested()
+    expect(sleep2.rested).to.eql(true)
+  });
+
 });

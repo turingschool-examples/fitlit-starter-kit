@@ -1,10 +1,17 @@
+const SleepRepository = require("../src/sleep-repository")
+
 class Sleep {
-  constructor (currentUser) {
+  constructor (currentUser ) {
     this.currentUser = currentUser
+    this.rested = false
   }
 
   userSleepAve() {
-    return this.currentUser.reduce((acc, total) => acc + total.sleepQuality, 0)/this.currentUser.length;
+    return this.currentUser.reduce((acc, total) => acc + total.sleepQuality, 0) / this.currentUser.length;
+  }
+
+  userHoursAve() {
+    return this.currentUser.reduce((acc, total) => acc + total.hoursSlept, 0) / this.currentUser.length;
   }
 
   userHoursSleptForDay(specificDate) {
@@ -21,15 +28,23 @@ class Sleep {
     return data.splice(index, 7);
   }
 
-    userWeeklySleep(firstDate) {
+  userWeeklySleep(firstDate) {
     let week = this.returnAWeek(firstDate);
     return week.map(el => el.hoursSlept)
   }
 
   userWeeklyQualitySleep(firstDate) {
-  let week = this.returnAWeek(firstDate);
-  return week.map(el => el.sleepQuality)
+    let week = this.returnAWeek(firstDate);
+    return week.map(el => el.sleepQuality)
   }
+
+  checkRested() {
+    if ((this.userHoursAve() > 7) && (this.userSleepAve() > 3 )) {
+      this.rested = true
+    }
+  }
+
+
 }
 
 module.exports = Sleep

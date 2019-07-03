@@ -1,14 +1,12 @@
 const chai = require("chai");
 const expect = chai.expect;
 
-var User = require('../src/User');
+const User = require('../src/User');
 
 describe('User', () => {
   	let user;
-  	// let userRepo;
 
 	beforeEach(() => {
-		// userRepo = new userRepo()
 		user = new User(0); // what variable prefix should we be using here? 
 	})
 

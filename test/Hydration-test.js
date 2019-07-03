@@ -23,11 +23,6 @@ describe('hydration', () => {
 			expect(hydration).to.be.a.instanceOf(Hydration);
 		});
 
-		// it.only('should be able to access the user\'s data', () => {
-		// 	console.log(hydration.data)
-		// 	hydration.findHydrationData(); 									//utilize userRepo.findUserData
-		// 	expect(hydration.data.length).to.equal(40)
-		// });
 
 		it.skip('should calculate the fluid ounces consumed by a user on a date', () => {
 			hydration.calculateOuncesOnDate();

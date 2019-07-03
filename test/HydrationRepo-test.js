@@ -30,7 +30,7 @@ describe('hydrationRepo', () => {
 		it.only('should return the amount consumed by the user on a date', () => {
 			hydrationRepo.findHydrationData(4);
 			hydrationRepo.findDailyConsumption('2019/06/18');
-			expect(hydrationRepo.specificUser[3].date).to.equal('2019/06/18')
+			expect(hydrationRepo.specificUser[3].numOunces).to.equal(93)
 		});
 
   });

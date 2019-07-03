@@ -24,4 +24,9 @@ describe('UserRepo', () => {
     const name = userRepo.returnUserData(2).name;
     expect(name).to.equal('Jarvis Considine');
   });
+
+  it('should return the average step goal for all users', () => {
+    const average = userRepo.returnAllUsersStepGoalAverage();
+    expect(average).to.equal(6400);
+  });
 })

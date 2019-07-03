@@ -5,7 +5,6 @@ class Hydration {
   } 
 
   returnDailyAverage() {
-    console.log(this.data)
     let dayIntake = this.data.filter(user => user.userID === this.id);
     let unparsedDailyAverage = dayIntake.reduce((acc, day) => {
       return acc += day.numOunces
@@ -22,4 +21,6 @@ class Hydration {
   }
 };
 
-module.exports = Hydration;
+if (typeof module !== 'undefined') {
+  module.exports = Hydration;
+}

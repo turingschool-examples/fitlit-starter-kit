@@ -4,7 +4,6 @@ const Hydration = require("../src/hydration");
 const hydrationData = require("../data/hydration");
 const hydrationTestData = hydrationData.filter(data => data.userID === 1 || data.userID === 2).filter(data => data.date === '2019/06/16' || data.date === '2019/06/17' || data.date === '2019/06/19' || data.date === '2019/06/18' || data.date === '2019/06/20' || data.date === '2019/06/21' || data.date === '2019/06/22' || data.date === '2019/06/23' )
 const weekHydrationTestData = hydrationTestData.filter(user => user.userID === 1).slice(-7);
-console.log(weekHydrationTestData);
 
 describe('Hydration', function() {
 

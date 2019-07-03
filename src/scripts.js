@@ -16,6 +16,4 @@ $(document).ready(function(){
     $("li").eq(1).text(currentUser.dailyStepGoal)
     $("li").eq(2).text(currentUser.strideLength)
     $("li").eq(3).text(currentUser.friends)
-
-
 });

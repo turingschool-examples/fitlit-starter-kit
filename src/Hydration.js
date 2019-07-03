@@ -1,7 +1,6 @@
 class Hydration {
   constructor(userData) {
     this.userData = userData;
-    // console.log('class this', this.userData)
   }
 
   returnUserHydrationAverage() {
@@ -17,15 +16,14 @@ class Hydration {
 
   returnOuncesGivenDateWeek(date) {
     let daySeven = this.userData.findIndex(record => record.date === date);
-    let dayOne = daySeven -= 6;
+    let dayOne = daySeven - 6;
   
     return this.userData.reduce((acc, record, index) => {
-      if(record[index] >= dayOne && <= daySeven) {
-        acc.push(record.numOunces);
+      if (index <= daySeven && index >= dayOne) {
+        acc.push({[record.date]: record.numOunces});
       }
       return acc;
-    }, [])
-    // console.log(records)
+    }, []);
   }
 }
 

@@ -19,7 +19,7 @@ describe('Hydration', function() {
     expect(hydration).to.be.an.instanceof(Hydration);
   });
 
-   it('should return Id from current user', function() {
+  it('should return list of current users hydratation data', function() {
     expect(hydration.consumerInfo(3)).to.eql([hydrationData[0], hydrationData[1],hydrationData[2],hydrationData[3],hydrationData[4],hydrationData[5],hydrationData[6],hydrationData[7],hydrationData[8]]); 
   });
 

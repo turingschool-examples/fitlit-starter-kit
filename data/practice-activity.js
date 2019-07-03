@@ -1,3 +1,5 @@
+
+
 const activityData = [
   {
     "userID": 3,
@@ -49,3 +51,5 @@ const activityData = [
     "flightsOfStairs": 26
   }
 ];
+
+module.exports = activityData;

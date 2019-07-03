@@ -19,7 +19,7 @@ class Hydration {
     let avgHydration = userHydroData.reduce(function(accumulator, ounces) {
       return accumulator + ounces
     }, 0);
-    return Math.ceil(avgHydration/userHydroData.length);
+    return Math.round(avgHydration / userHydroData.length);
   } 
 
   totalOuncesDaily(day, id) {
@@ -33,5 +33,5 @@ class Hydration {
 
 
 if (typeof module !== 'undefined') {
- module.exports = Hydration; 
+  module.exports = Hydration; 
 }

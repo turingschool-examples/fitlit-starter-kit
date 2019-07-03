@@ -42,12 +42,15 @@ describe('Sleep', function() {
     expect(sleep.displaySleepQuality(1, "2019/06/15")).to.equal(2.2)
   })
 
-  // it('should calculate hours slept per day for a user', function(){
-  //     const sleep = new Sleep(sleepData);
-  //     expect(sleep.calulateAverageSleepPerDay(1)).to.deep.eql([6.1])
-  // })
+  it('should display a weeks worth of sleep for a user', function(){
+      const sleep = new Sleep(sleepData);
+      expect(sleep.displayWeeklySleep(1)).to.deep.eql([6.1, 4.1])
+  })
 
-
+it('should display a weeks worth of sleep quality for a user', function(){
+      const sleep = new Sleep(sleepData);
+      expect(sleep.displayWeeklySleepQuality(1)).to.deep.eql([2.2, 3.8])
+  })
 
 
 })

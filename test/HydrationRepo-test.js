@@ -35,8 +35,7 @@ describe('hydrationRepo', () => {
 
 		it.only('should return a users weekly average value', () => {
 			hydrationRepo.findHydrationData(5)
-			hydrationRepo.findSingleUserWeeklyConsumption()
-			expect(hydrationRepo.findWeeklyConsumption()).to.equal(80)
-		})
+			expect(hydrationRepo.weeklyConsumptionAverage('2019/06/22')).to.equal(77)
+		});
 
   });

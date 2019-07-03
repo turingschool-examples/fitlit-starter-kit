@@ -41,6 +41,27 @@ const activityData = [
     "minutesActive": 292,
     "flightsOfStairs": 37
   },
+  {
+    "userID": 1,
+    "date": "2019/06/17",
+    "numSteps": 14329,
+    "minutesActive": 168,
+    "flightsOfStairs": 18
+  },
+  {
+    "userID": 1,
+    "date": "2019/06/20",
+    "numSteps": 14478,
+    "minutesActive": 140,
+    "flightsOfStairs": 12
+  },
+  {
+    "userID": 1,
+    "date": "2019/06/22",
+    "numSteps": 10289,
+    "minutesActive": 119,
+    "flightsOfStairs": 6
+  },
 ]
 
 module.exports = activityData;

@@ -54,6 +54,17 @@ class Activity {
       return true;
     }
   }
+  findExceededStepGoal(id) {
+    let user = new User(userData[0]);
+    let userId = this.findIdHelper(id);
+    let goal = user.userData.dailyStepGoal;
+    let actualSteps = userId.filter(function(obj) {
+      return obj.numSteps > goal
+    });
+    return actualSteps.map(function(obj) {
+    return obj.date;
+    })
+  }
 }
   
 

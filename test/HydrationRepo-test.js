@@ -33,4 +33,10 @@ describe('hydrationRepo', () => {
 			expect(hydrationRepo.specificUser[3].numOunces).to.equal(93)
 		});
 
+		it.only('should return a users weekly average value', () => {
+			hydrationRepo.findHydrationData(5)
+			hydrationRepo.findSingleUserWeeklyConsumption()
+			expect(hydrationRepo.findWeeklyConsumption()).to.equal(80)
+		})
+
   });

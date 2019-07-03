@@ -8,7 +8,7 @@ describe("Sleep", () => {
 
   beforeEach(function() {
     sleepRepository = new SleepRepository(sleepData);
-    sleep = new Sleep(sleepRepository.returnUserSleepData(1));
+    sleep1 = new Sleep(sleepRepository.returnUserSleepData(1));
   });
 
   it("should be a function", () => {
@@ -16,8 +16,20 @@ describe("Sleep", () => {
   });
 
   it("should be an instance", () => {
-    expect(sleep).to.be.an.instanceof(Sleep)
+    expect(sleep1).to.be.an.instanceof(Sleep)
   });
+
+  it.skip("should return total average sleep quality for a user", () => {
+    expect(sleep1.UserSleepAve()).to.be.an.instanceof(Sleep)
+  });
+
+  it.skip("should return total average sleep quality for a user", () => {
+    expect(sleep1).to.be.an.instanceof(Sleep)
+  });
+
+
+
+
 
 
 

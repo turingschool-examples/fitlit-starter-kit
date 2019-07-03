@@ -18,4 +18,18 @@ describe("Activity-Repository", () => {
     expect(activityRepository).to.be.an.instanceof(ActivityRepository)
   });
 
+  it.skip("should return average stairs climbed for a certain date", () => {
+    expect(activityRepository.aveStairsClimbedForDay()).to.eql('')
+  });
+
+  it.skip("should return average steps taken for a certain date", () => {
+    expect(activityRepository.aveStepsTakenForDay()).to.eql('')
+  });
+
+  it.skip("should return average minutes active for a certain date", () => {
+    expect(activityRepository.aveStepsTakenForDay()).to.eql('')
+  });
+
+
+
 });

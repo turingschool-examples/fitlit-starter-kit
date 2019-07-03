@@ -33,5 +33,5 @@ class Hydration {
 
 
 if (typeof module !== 'undefined') {
- module.exports = Hydration; 
+  module.exports = Hydration; 
 }

@@ -24,5 +24,4 @@ describe('HydrationRepo', () => {
     const length = hydrationRepo.returnUserData(2).length;
     expect(length).to.equal(9);
   });
-
 })

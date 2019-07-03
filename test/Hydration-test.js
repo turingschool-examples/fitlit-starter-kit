@@ -27,4 +27,14 @@ describe('Hydration', () => {
     expect(average).to.equal(25);
   });
 
+  it('should return the ounces consumed on a given date', () => {
+    const ounces = hydration.returnOuncesGivenDate("2019/06/15");
+    expect(ounces).to.equal(5);
+  });
+
+  it('should return ounces consumed for each day in a given week', () => {
+    const weekOunces = hydration.returnOuncesGivenDateWeek("2019/06/23");
+    expect(weekOunces).to.equal([45, 40, 35, 30, 25, 20, 15, 10]);
+  });
+
 })

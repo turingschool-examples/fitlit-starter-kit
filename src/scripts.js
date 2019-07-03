@@ -1,1 +1,7 @@
-console.log("Hello World");
+$(document).ready(() => {
+
+});
+
+$(window).on("load", () => {
+  console.log('loaded')
+})

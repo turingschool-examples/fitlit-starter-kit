@@ -1,8 +1,11 @@
 console.log("Hello World");
 // const userRepository = require("../src/user-repository");
 
-globalRepo = new UserRepository(userData);
-currentUser = new User(globalRepo.returnUser(1));
+const globalRepo = new UserRepository(userData);
+let currentUser = new User(globalRepo.returnUser(1));
+currentHydration = new Hydration(currentUser);
+currentUser.findHydrationData();
+
 console.log(currentUser);
 
 $(document).ready(function(){

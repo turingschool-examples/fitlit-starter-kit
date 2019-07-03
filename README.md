@@ -1,12 +1,6 @@
 # FitLit 
 
 
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
-
-Your linter will look only at the JavaScript files you have within the `src` and the `test` directories.
-
 ## Data Model
 
 **Users**

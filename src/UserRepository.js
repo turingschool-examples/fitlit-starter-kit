@@ -1,6 +1,3 @@
-// const data = require('../test-data/users-fixtures');
-
-
 class UserRepository {
   constructor(data) {
     this.data = data || {}

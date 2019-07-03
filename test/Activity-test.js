@@ -24,6 +24,11 @@ describe('Activity', function() {
     expect(activity.findIdHelper(1)).to.be.a('array')
   });
 
+  it('should calculate miles walked for a user on a specific day', function() {
+    const activity = new Activity(activityData);
+    expect(activity.calculateMilesWalked(1, '2019/06/15', 3577)).to.equal(2.91)
+  });
+
   it('should display how many active minutes per day for a user based on a specific date', function() {
     const activity = new Activity(activityData);
     expect(activity.displayActiveMinutes(1, '2019/06/15')).to.equal(140)
@@ -34,9 +39,8 @@ describe('Activity', function() {
     expect(activity.displayWeeklyActiveMinutes(1)).to.deep.eql([140, 292])
   });
 
-  // it('should compare a users step goal with their actual steps for a given day', function() {
-  //   const activity = new Activity(activityData);
-  //   const user = new User(userData[0]);
-  //   expect(activity.compareStepGoal(1, '2019/06/15')).to.equal(false)
-  // });
+  it('should compare a users step goal with their actual steps for a given day', function() {
+    const activity = new Activity(activityData);
+    expect(activity.compareStepGoal(1, '2019/06/15')).to.equal(false)
+  });
 });

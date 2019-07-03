@@ -25,6 +25,10 @@ class Hydration {
   totalOuncesDaily(day, id) {
     return this.consumerInfo(id).find(obj => obj.date === day).numOunces;
   }
+
+  dailyOuncesPerWeek(id) {
+    return this.consumerInfo(id).slice(-7).map(obj => obj.numOunces);
+  }
 }
 
 

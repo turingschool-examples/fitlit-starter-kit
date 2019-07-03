@@ -19,7 +19,7 @@ describe('Hydration', function() {
   it('should calculate average daily hydration in ounces', function() {
     const hydration = new Hydration(hydrationData);
     expect(hydration.calculateAverageDailyHydration(1)).to.equal(55)
-  })
+  });
 
   it('should return the how many fluid ounces a used consumes on a specific day', function() {
     const hydration = new Hydration(hydrationData);

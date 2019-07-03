@@ -49,5 +49,8 @@ describe('Activity', function() {
     expect(activity.findExceededStepGoal(1)).to.deep.eql(['2019/06/17', '2019/06/20', '2019/06/22'])
   });
 
-  
+  it('should display a users all time stair climbing record', function() {
+    const activity = new Activity(activityData);
+    expect(activity.displayStairClimbRecored(1)).to.equal(37)
+  });
 });

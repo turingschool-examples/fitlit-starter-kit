@@ -22,9 +22,19 @@ describe('Hydration', () => {
     expect(hydration).to.be.an.instanceOf(Hydration);
   });
 
-  it('should return the given user\'s average hydration ounces for all time', () => {
+  it('should return the given user\'s avg oz for all time', () => {
     const average = hydration.returnUserHydrationAverage();
     expect(average).to.equal(25);
+  });
+
+  it('should return the ounces consumed on a given date', () => {
+    const ounces = hydration.returnOuncesGivenDate("2019/06/15");
+    expect(ounces).to.equal(5);
+  });
+
+  it('should return ounces consumed for each day in a given week', () => {
+    const weekOunces = hydration.returnOuncesGivenDateWeek("2019/06/23");
+    expect(weekOunces[6]["2019/06/23"]).to.equal(45);
   });
 
 })

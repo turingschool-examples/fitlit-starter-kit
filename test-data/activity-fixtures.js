@@ -33,5 +33,14 @@ const activityData = [
     "numSteps": 11374,
     "minutesActive": 213,
     "flightsOfStairs": 13
-  }
+  },
+  {
+    "userID": 1,
+    "date": "2019/09/02",
+    "numSteps": 7167,
+    "minutesActive": 292,
+    "flightsOfStairs": 37
+  },
 ]
+
+module.exports = activityData;

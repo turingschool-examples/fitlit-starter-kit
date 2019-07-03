@@ -1,6 +1,4 @@
-# FitLit Starter Kit
-
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+# FitLit 
 
 ## Setup
 
@@ -80,5 +78,3 @@ Your linter will look only at the JavaScript files you have within the `src` and
   ...more sleep data
 ]
 ```
-# fitlit
-# fitlit

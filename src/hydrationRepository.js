@@ -11,14 +11,8 @@ class HydrationRepository {
 
   getTotalAvg() {
     var user = this.data.filter(el => 
-      el.userID === this.id)
-
-    var userOunces = user.map(function (el) {
-      return el.numOunces
-    })
-    var avg = userOunces.reduce(function (a, b) {
-      return  a + b / user.length
-    }, 0)
+      el.userID === this.id).map(el => el.numOunces)
+    var avg = user.reduce((a, b) => a + b / user.length, 0)
     return Math.floor(avg)
   }
 }

@@ -36,11 +36,18 @@ describe('Activity', function() {
 
   it('should display average active minutes per week for a user', function() {
     const activity = new Activity(activityData);
-    expect(activity.displayWeeklyActiveMinutes(1)).to.deep.eql([140, 292])
+    expect(activity.displayWeeklyActiveMinutes(1)).to.deep.eql([140, 292, 168, 140, 119])
   });
 
   it('should compare a users step goal with their actual steps for a given day', function() {
     const activity = new Activity(activityData);
     expect(activity.compareStepGoal(1, '2019/06/15')).to.equal(false)
   });
+
+  it('should find days where the user exceeded their step goal', function() {
+    const activity = new Activity(activityData);
+    expect(activity.findExceededStepGoal(1)).to.deep.eql(['2019/06/17', '2019/06/20', '2019/06/22'])
+  });
+
+  
 });

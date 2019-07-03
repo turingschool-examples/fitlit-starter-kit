@@ -1,6 +1,5 @@
 const chai = require('chai');
 const expect = chai.expect;
-const hydrationData = require('../data/hydration-test-data');
 const hydrationData2 = require('../data/hydration-test-2');
 const Hydration = require('../src/hydration');
 const HydrationRepository = require('../src/hydration-repository')

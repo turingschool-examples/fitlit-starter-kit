@@ -9,8 +9,9 @@ class Hydration {
   }
 
   returnAWeek(firstDate) {
-    let index = this.currentUser.findIndex(el => el.date === firstDate);
-    return this.currentUser.splice(index, 7);
+    let data = [...this.currentUser]
+    let index = data.findIndex(el => el.date === firstDate);
+    return data.splice(index, 7);
   }
 
   returnAverageWeeklyFluidOunces(firstDate) {

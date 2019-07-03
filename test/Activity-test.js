@@ -4,6 +4,8 @@ const expect = chai.expect;
 
 const Activity = require('../src/Activity');
 const activityData = require('../test-data/activity-fixtures');
+const User = require('../src/User');
+const userData = require('../test-data/users-fixtures')
 
 describe('Activity', function() {
 
@@ -32,6 +34,9 @@ describe('Activity', function() {
     expect(activity.displayWeeklyActiveMinutes(1)).to.deep.eql([140, 292])
   });
 
-  it('should', function() {
-  });
+  // it('should compare a users step goal with their actual steps for a given day', function() {
+  //   const activity = new Activity(activityData);
+  //   const user = new User(userData[0]);
+  //   expect(activity.compareStepGoal(1, '2019/06/15')).to.equal(false)
+  // });
 });

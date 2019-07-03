@@ -1,3 +1,5 @@
+const User = require('../src/User');
+
 class Activity {
   constructor(activityData) {
     this.activityData = activityData;
@@ -27,6 +29,20 @@ class Activity {
     }
     return userWeeklyActivityMinutes;
   }
+  // compareStepGoal(id, date) {
+  //   let dateOfStepGoal = this.findIdHelper(id).find(function(obj) {
+  //     return obj.date === date
+  //   })
+  //   if (this.dateOfStepGoal.numSteps < this.user.dailyStepGoal) {
+  //     console.log(this.user.dailyStepGoal);
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // }
 }
+  
+
+
 
 module.exports = Activity;

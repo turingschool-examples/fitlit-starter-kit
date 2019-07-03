@@ -44,36 +44,6 @@ const hydrationData = [
     "date": "2019/06/21",
     "numOunces": 41
   },
-  // {
-  //   "userID": 11,
-  //   "date": "2019/06/15",
-  //   "numOunces": 51
-  // },
-  // {
-  //   "userID": 11,
-  //   "date": "2019/06/16",
-  //   "numOunces": 21
-  // },
-  // {
-  //   "userID": 19,
-  //   "date": "2019/06/15",
-  //   "numOunces": 62
-  // },
-  // {
-  //   "userID": 19,
-  //   "date": "2019/06/16",
-  //   "numOunces": 73
-  // },
-  // {
-  //   "userID": 33,
-  //   "date": "2019/06/15",
-  //   "numOunces": 51
-  // },
-  // {
-  //   "userID": 33,
-  //   "date": "2019/06/16",
-  //   "numOunces": 89
-  // },
   {
     "userID": 42,
     "date": "2019/06/15",
@@ -210,3 +180,5 @@ const hydrationData = [
     "numOunces": 44
   }
 ];
+
+module.exports = hydrationData

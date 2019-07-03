@@ -7,9 +7,7 @@ const User = require('../src/User');
 describe('User', function() {
 
   let user;
-
   beforeEach(() => {
-
     user = new User(userData[0]);
   });
 

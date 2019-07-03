@@ -20,9 +20,10 @@ describe('Sleep', function() {
   });
 
   it('should return a list of current user sleep data', function() {
-    
     expect(sleep.consumerInfo(3)).to.eql([sleepData[0], sleepData[1],sleepData[2],sleepData[3],sleepData[4],sleepData[5],sleepData[6],sleepData[7],sleepData[8]]); 
   });
 
-  
+  it('should return the average sleep quality per day', function() {
+    expect(sleep.averageQualitySleep(3)).to.equal(3)
+  })
 });

@@ -9,7 +9,7 @@ describe("Hydration", function() {
       expect(Hydration).to.be.a("function");
     });
   
-    it("should benpm t an instance of Hydration", function() {
+    it("should be an instance of Hydration", function() {
       const hydration = new Hydration();
       expect(hydration).to.be.an.instanceof(Hydration);
     });

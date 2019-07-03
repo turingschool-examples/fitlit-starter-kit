@@ -71,6 +71,6 @@ const sampleUserData = [
   }
 ]
 
-module.exports = {
-  sampleUserData 
+if (typeof module !== 'undefined') {
+module.exports = sampleUserData; 
 }

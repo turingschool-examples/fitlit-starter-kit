@@ -1,6 +1,6 @@
 class UserRepository {
   constructor(data) {
-    this.data = data || {}
+    this.data = data || []
   }
   getUserData(specificId) {
     let userData = this.data.find(function(object) {

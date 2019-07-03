@@ -11,4 +11,15 @@ describe('SleepRepository', function() {
     const sleepRepository = new SleepRepository();
     expect(SleepRepository).to.be.a('function');
   });
+
+  it('should store user information', function() {
+    const sleepRepository = new SleepRepository(sleepData);
+    expect(sleepData).to.be.a('array')
+  });
+
+
+   it('should be able to calculate the average sleep quality of all users', function() {
+    const sleepRepository = new SleepRepository(sleepData);
+    expect(sleepRepository.calculateAverageUsersSleepQuality()).to.equal(3.7);
+  });
 });

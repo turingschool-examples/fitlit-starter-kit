@@ -34,16 +34,15 @@ describe("Sleep", () => {
   });
 
   it("should return hours slept for each day over the course of a week", () => {
-    sleepRepository2 = new SleepRepository(sleepData2);
-    sleep2 = new Sleep(sleepRepository2.returnUserSleepData(1));
+    const sleepRepository2 = new SleepRepository(sleepData2);
+    const sleep2 = new Sleep(sleepRepository2.returnUserSleepData(1));
     expect(sleep2.userWeeklySleep("2019/06/15")).to.eql([ 6.1, 4.1, 8, 10.4, 10.7, 9.3, 7.8 ])
   });
 
   it("should sleep quality for each day over the course of a week", () => {
-    sleepRepository2 = new SleepRepository(sleepData2);
-    sleep2 = new Sleep(sleepRepository2.returnUserSleepData(1));
+    const sleepRepository2 = new SleepRepository(sleepData2);
+    const sleep2 = new Sleep(sleepRepository2.returnUserSleepData(1));
     expect(sleep2.userWeeklyQualitySleep("2019/06/15")).to.eql([ 2.2, 3.8, 2.6, 3.1, 1.2, 1.2, 4.2 ])
   });
-
 
 });

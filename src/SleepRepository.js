@@ -1,4 +1,5 @@
 dataFilePath = require('../data/sleepSub');
+User = require('../src/User');
 
 class SleepRepository {
   constructor (userID) {
@@ -12,10 +13,21 @@ class SleepRepository {
     }, 0) / this.data.length).toFixed(1);
   };
 
-  getHighestAvgSleepOnDay(sleepDate) {
-    return this.data.forEach(user => {
-      console.log(user.hoursSlept);
+  getSleptMostOnDay(sleepDate) {
+    let dateOfSleep = this.data.filter(el => el.date === sleepDate);
+    let maxSleep = 0;
+    var sleepChamp = [];
+    dateOfSleep.forEach(user => {
+      if (user.hoursSlept > maxSleep) {
+        maxSleep = user.hoursSlept;
+        sleepChamp[0] = user.userID;
+      } else if (user.hoursSlept === maxSleep) {
+        sleepChamp.push(user.userID);
+      }
     });
+
+    const user = new User("../data/UserSub.js");
+    return user.getUserNameFromID(sleepChamp[0]);
   };
 }
 

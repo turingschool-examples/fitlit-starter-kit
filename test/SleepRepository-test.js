@@ -3,7 +3,8 @@ const expect = chai.expect;
 
 //const User = require('../src/User');
 const SleepRepository = require('../src/SleepRepository');
-const sleepSub = require('../data/sleepSub')
+const sleepSub = require('../data/sleepSub');
+const Sleep = require('../data/sleep')
 
 
 describe('SleepRepository', function () {
@@ -23,7 +24,14 @@ describe('SleepRepository', function () {
 
   it('should find user(s) who slept the most on given day', function() {
     const sleepRepo = new SleepRepository();
-    expect(sleepRepo.getHighestAvgSleepOnDay('2019/06/21')).to.equal(3);
+    //console.log(sleepRepo);
+    expect(sleepRepo.getSleptMostOnDay('2019/06/20')).to.equal('Jarvis Considine');
+  });
+
+  it('should find user(s) who slept the most on given day', function() {
+    const sleepRepo = new SleepRepository();
+    //console.log(sleepRepo);
+    expect(sleepRepo.getSleptMostOnDay('2019/06/17')).to.equal('Luisa Hane');
   });
 
 });

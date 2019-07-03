@@ -1,8 +1,8 @@
-// if (typeof module !== "undefined") {
-//   usersFilePath = require("../data/userSub");
-// } else {
-//   usersFilePath = userData;
-// }
+if (typeof module !== "undefined") {
+  usersFilePath = require("../data/userSub");
+} else {
+  usersFilePath = userData;
+}
 
 class User {
   constructor(user) {
@@ -12,10 +12,15 @@ class User {
     this.dailyStepGoal = user.dailyStepGoal,
     this.strideLength = user.strideLength,
     this.email = user.email,
-    this.friends = user.friends
+    this.friends = user.friends,
+    this.data = usersFilePath
   }
-  returnUserName() {
+  returnUserFirstName() {
     return this.name.split(' ')[0];
+  }
+
+  getUserNameFromID(id) {
+    return (this.data.find(element => element.id === id)).name;
   }
 }
 

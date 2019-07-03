@@ -9,4 +9,6 @@ class HydrationRepository {
 
 }
 
-module.exports = HydrationRepository;
+if (typeof module !== 'undefined') {
+  module.exports = HydrationRepository;
+}

@@ -4,7 +4,6 @@ const activityData = require('../data/activity-test-data');
 // const activityData2 = require('../data/sleep-test-data-2');
 const userData1 = require('../data/user-test-data')
 const UserRepository = require('../src/user-repository');
-const User = require('../src/user');
 const Activity = require('../src/activity');
 const ActivityRepository = require('../src/activity-repository')
 console.log(userData1)
@@ -18,7 +17,7 @@ describe("Activity", () => {
   beforeEach(function() {
     userRepository = new UserRepository(userData1)
     activityRepository = new ActivityRepository(activityData);
-    activity1 = new Activity(userRepository.returnUserData(2), activityRepository.returnUserActivityData(1));
+    activity1 = new Activity(userRepository.returnUserData(1), activityRepository.returnUserActivityData(1));
 
   });
 
@@ -32,7 +31,7 @@ describe("Activity", () => {
   });
 
   it("should return miles walked based on day", () => {
-    expect(activity1.milesWalked("2019/06/15")).to.eql("idk")
+    expect(activity1.milesWalked("2019/06/15")).to.eql("2.91")
   });
 
   it.skip("should return how many minutes active for a given day, identified by ID", () => {

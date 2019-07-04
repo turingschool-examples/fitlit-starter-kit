@@ -8,8 +8,10 @@ class Activity extends User {
   }
 
   milesWalked(date) {
-    console.log(this.user)
+    let found = this.currentUser.find(el => el.date === date);
+    return ((found.numSteps * this.user.strideLength) / 5280).toFixed(2)
   }
+
 
 }
 

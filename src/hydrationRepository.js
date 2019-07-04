@@ -17,7 +17,7 @@ class HydrationRepository {
     return Math.floor(avg)
   }
 }
-}
+
 
 
 

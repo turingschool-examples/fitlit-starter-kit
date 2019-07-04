@@ -1,21 +1,16 @@
-// $(document).ready(() => {
+
+let randomId = Math.floor(Math.random() * 50 + 1)
+
+let userRepository = new UserRepository(userData, randomId)
+let user = new User(userRepository.getUserData())
+
+let currentUser = userRepository.getUserData()
+
+$(document).ready(() => {
  
-    // const UserRepository = require('../src/userRepository.js')
-   if (const dataset = require('../data/users.js') !== 'undefined'){
-       const dataset = require('../data/users.js'
-   }
-    
-    const data = dataset
-    let userRepository = new UserRepository(data, randomId)
-    
-    let randomId = function() {
-        Math.floor(Math.random()*50 + 1)
-    }
-    randomId();
-    console.log(randomId)
-    let randomUser = randomId
-    let currentUser = data.find(user => user.id === randomUser)
-
-    $('user-name__display').text(userRepository.getFirstName(currentUser.name))
-
-// });
+$("#user-name__display").text(user.getFirstName())
+$("#user-full-name__display").text(user.name)
+$("#user-address__display").text(user.address)
+$("#user-email__display").text(user.email)
+$("#user-daily-step-goal__display").text(user.dailyStepGoal)
+});

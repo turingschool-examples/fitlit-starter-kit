@@ -1,5 +1,5 @@
-class HydrationUser{
-	constructor(array){
+class HydrationUser {
+	constructor(array) {
 		this.array = array;
 	}
 

@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const User = require('../src/User.js');
-const MockUsers = require('../mock-data/mock-users.js')
+const mockUsers = require('../mock-data/mock-users.js')
 const UserRepository = require('../src/UserRepository.js')
 
 let mockUser1, mockUser2, mockUser3
@@ -10,9 +10,9 @@ let mockUser1, mockUser2, mockUser3
 describe('User', function() {
 
     beforeEach(function() {
-      mockUser1 = new User(MockUsers[0])
-      mockUser2 = new User(MockUsers[1])
-      mockUser3 = new User(MockUsers[2])
+      mockUser1 = new User(mockUsers[0])
+      mockUser2 = new User(mockUsers[1])
+      mockUser3 = new User(mockUsers[2])
       });
 
     it('should be a function', function() {

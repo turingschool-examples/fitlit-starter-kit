@@ -1,13 +1,14 @@
 $(document).ready(function() {
   const id = 22;
+  const date = "2019/06/23";
   const userRepo = new UserRepo(userData);
   const user = new User(userRepo.returnUserData(id));
-  const hyrationRepo = new Hydration();
-  const hydration = new HydrationRepo();
-  // const sleep = new Sleep();
-  // const sleepRepo = new SleepRepo();
-  // const activity = new Activity();
-  // const activityRepo = new ActivityRepo();
+  const hydrationRepo = new HydrationRepo(hydrationData);
+  const hydration = new Hydration(hydrationRepo.returnUserData(id));
+  // const sleepRepo = new SleepRepo(sleepData);
+  // const sleep = new Sleep(sleepRepo.returnUserData(id));
+  // const activityRepo = new ActivityRepo(activityData);
+  // const activity = new Activity(activityRepo.returnUserData(id));
   appendUser();
   appendHydration();
   appendSleep();
@@ -21,7 +22,7 @@ $(document).ready(function() {
 
 
   function appendHydration() {
-
+    appendTodayWater();
   }
 
   function appendSleep() {
@@ -47,6 +48,10 @@ $(document).ready(function() {
   }
 
   function appendAverageStepGoals() {
-    $('.avg').text(userRepo.returnAllUsersStepGoalAverage());
+    $('.users--stepAverage').text(userRepo.returnAllUsersStepGoalAverage());
+  }
+
+  function appendTodayWater() {
+    $('.user--todayWater').text(hydration.returnOuncesGivenDate(date));
   }
 });

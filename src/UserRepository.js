@@ -9,8 +9,8 @@ class UserRepository {
   }
 
   findAverageStepGoal() {
-    return this.dataset.reduce((a,b) => 
-      a + b.dailyStepGoal, 0)/this.dataset.length
+    return Math.floor(this.dataset.reduce((a,b) => 
+      a + b.dailyStepGoal, 0)/this.dataset.length)
   }
 
 }

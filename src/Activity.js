@@ -72,6 +72,21 @@ class Activity {
     });
     return Math.max(...stairsClimbed);
   }
+
+  displayRecordActiveDay(id){
+    let userId = this.findIdHelper(id);
+    let minutesActiveList = userId.map(function(obj){
+      return obj.minutesActive
+    })
+    let mostActiveMinutes = Math.max(...minutesActiveList)
+    let mostActiveDate = userId.find(function(obj){
+      return obj.minutesActive === mostActiveMinutes
+    })
+    let activityRecord = []
+    activityRecord.push(mostActiveDate.date)
+    activityRecord.push(mostActiveDate.minutesActive)
+    return activityRecord
+  }
 }
   
 

@@ -67,7 +67,20 @@ class Sleep {
       return userWeeklySleepQuality;
     }
 
-
+    displayRecordSleepQuality(id) {
+    let userId = this.findIdHelper(id);
+    let sleepQualityList = userId.map(function(obj) {
+      return obj.sleepQuality
+    })
+    let mostQualitySleep = Math.max(...sleepQualityList)
+    let bestSleepDate = userId.find(function(obj){
+      return obj.sleepQuality === mostQualitySleep
+    })
+    let sleepRecord = []
+    sleepRecord.push(bestSleepDate.date)
+    sleepRecord.push(bestSleepDate.sleepQuality)
+    return sleepRecord
+  }
 }
 
 

@@ -53,4 +53,9 @@ describe('Activity', function() {
     const activity = new Activity(activityData);
     expect(activity.displayStairClimbRecored(1)).to.equal(37)
   });
+
+  it('should display the date with the most activity for a user ever', function() {
+    const activity = new Activity(activityData);
+    expect(activity.displayRecordActiveDay(1)).to.deep.equal(["2019/09/02" , 292])
+  });
 });

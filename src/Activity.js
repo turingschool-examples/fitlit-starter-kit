@@ -78,12 +78,14 @@ class Activity {
     let minutesActiveList = userId.map(function(obj){
       return obj.minutesActive
     })
-    console.log(minutesActiveList)
     let mostActiveMinutes = Math.max(...minutesActiveList)
     let mostActiveDate = userId.find(function(obj){
       return obj.minutesActive === mostActiveMinutes
     })
-    return mostActiveDate.date
+    let activityRecord = []
+    activityRecord.push(mostActiveDate.date)
+    activityRecord.push(mostActiveDate.minutesActive)
+    return activityRecord
   }
 }
   

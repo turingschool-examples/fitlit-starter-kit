@@ -36,9 +36,6 @@ class SleepRepository {
     })
     return userWhoSleptMost.name
   }
-
-  
-
 }
 
 module.exports = SleepRepository;

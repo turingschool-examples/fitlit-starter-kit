@@ -5,7 +5,7 @@ const UserRepository = require('../src/UserRepository.js');
 const mockUsers = require('../mock-data/mock-users.js')
 
 
-var newUserRepo
+let newUserRepo
 
 describe('UserRepository', function() {
 

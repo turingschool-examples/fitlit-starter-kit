@@ -37,6 +37,10 @@ class Activity extends User {
     return days.map(el => el.date)
   }
 
+  allTimeStairClimbRecord() {
+    let dataArray = this.currentUser.map(el => el.flightsOfStairs)
+    return Math.max(...dataArray)
+  }
 
 }
 

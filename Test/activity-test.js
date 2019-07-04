@@ -55,8 +55,8 @@ describe("Activity", () => {
     expect(activity1.allDaysStepGoalMet()).to.eql([ '2019/06/17', '2019/06/20', '2019/06/22' ])
   });
 
-  it.skip("should return a users all time stair climbing record", () => {
-    expect(activity1.allTimeStairClimbRecord()).to.eql()
+  it("should return a users all time stair climbing record", () => {
+    expect(activity1.allTimeStairClimbRecord()).to.eql(36)
   });
 
 

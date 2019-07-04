@@ -8,8 +8,8 @@ class SleepRepository {
   }
 
   returnAverageSleep(id) {
-    const found = this.sleepData.filter(el => el.userID === id)
-    return found.reduce((acc, total) => acc + total.hoursSlept, 0) / found.length
+    const found = this.sleepData.filter(el => el.userID === id);
+    return found.reduce((acc, total) => acc + total.hoursSlept, 0) / found.length;
   }
 
 
@@ -18,21 +18,21 @@ class SleepRepository {
   }
 
   returnUserSleepQualityAveOver3(firstDate) {
-    let data1 = [...this.sleepData]
-    let allIds = data1.filter(el => el.date === firstDate).map(el => el.userID)
-    let array1 = allIds.map(el => this.returnUserSleepData(el))
+    let data1 = [...this.sleepData];
+    let allIds = data1.filter(el => el.date === firstDate).map(el => el.userID);
+    let array1 = allIds.map(el => this.returnUserSleepData(el));
     let array2 = array1.map(el => {
       let index = data1.findIndex(el => el.date === firstDate);
       return data1.splice(index, 7);
     })
     let final = {}
     let array3 = array2.map(el => el.reduce((acc, total) => final[total.userID] = (acc + total.sleepQuality), 0))
-    return Object.keys(final).filter(key => final[key] > 21).map(Number)
+    return Object.keys(final).filter(key => final[key] > 21).map(Number);
   }
 
   returnUserWithMostSleepForDate(firstDate1) {
-    let array1 = this.sleepData.filter(el => el.date === firstDate1)
-    return array1.reduce((acc, total) => acc.hoursSlept > total.hoursSlept ? acc : total).userID
+    let array1 = this.sleepData.filter(el => el.date === firstDate1);
+    return array1.reduce((acc, total) => acc.hoursSlept > total.hoursSlept ? acc : total).userID;
   }
 }
 

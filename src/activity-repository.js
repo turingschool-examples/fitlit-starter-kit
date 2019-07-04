@@ -3,6 +3,10 @@ class ActivityRepository {
     this.activityData = activityData
   }
 
+  returnUserActivityData(id) {
+    return this.activityData.filter(el => el.userID === id);
+  }
+
 
   aveFlightsOfStairsClimbedForDay(date) {
     let users = this.activityData.filter(el => el.date === date)

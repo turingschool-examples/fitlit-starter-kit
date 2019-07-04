@@ -14,6 +14,11 @@ class Activity extends User {
         var miles = 5280 / stridesAndSteps
         return miles.toFixed(2)
 }
+
+    getDailyMinutesActive() {
+        let minActive = this.userActivity.find(el => el.date === this.date)
+        return minActive.minutesActive
+    }
 }
 
 if (typeof module !== 'undefined') {

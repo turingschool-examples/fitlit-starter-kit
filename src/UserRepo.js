@@ -17,5 +17,5 @@ class UserRepo {
 }
 
 if (typeof module !== 'undefined') {
-module.exports = UserRepo;
+  module.exports = UserRepo;
 }

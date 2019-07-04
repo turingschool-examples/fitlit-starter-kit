@@ -1,16 +1,96 @@
 $(document).ready(function() {
-  const userRepo = new UserRepo(sampleUserData);
-  const user = new User(userRepo.returnUserData(2));
-  const hyrationRepo = new Hydration();
-  const hydration = new HydrationRepo();
-  appendUserCard();
+  const id = 22;
+  const date = "2019/06/23";
+  const userRepo = new UserRepo(userData);
+  const user = new User(userRepo.returnUserData(id));
+  const hydrationRepo = new HydrationRepo(hydrationData);
+  const hydration = new Hydration(hydrationRepo.returnUserData(id));
+  // const sleepRepo = new SleepRepo(sleepData);
+  // const sleep = new Sleep(sleepRepo.returnUserData(id));
+  // const activityRepo = new ActivityRepo(activityData);
+  // const activity = new Activity(activityRepo.returnUserData(id));
+  appendUser();
+  appendHydration();
+  appendSleep();
+  appendActivity();
 
-  function appendUserCard() {
+  function appendUser() {
+    appendFirstName();
+    appendUserProfile();
     appendAverageStepGoals();
-  };
+  }
+
+
+  function appendHydration() {
+    appendTodayWater();
+  }
+
+  function appendSleep() {
+
+  }
+
+  function appendActivity() {
+
+  }
+
+  function appendFirstName() {
+    $('.user--firstName').text(user.returnUserFirstName());
+  }
+
+  function appendUserProfile() {
+    $('.user--id').text(userRepo.returnUserData(id).id);
+    $('.user--name').text(userRepo.returnUserData(id).name);
+    $('.user--address').text(userRepo.returnUserData(id).address);
+    $('.user--email').text(userRepo.returnUserData(id).email);
+    $('.user--strideLength').text(userRepo.returnUserData(id).strideLength);
+    $('.user--dailyStepGoal').text(userRepo.returnUserData(id).dailyStepGoal);
+    $('.user--friends').text(userRepo.returnUserData(id).friends);
+  }
 
   function appendAverageStepGoals() {
-    $('.avg').text(userRepo.returnAllUsersStepGoalAverage())
-  };
+    $('.users--stepAverage').text(userRepo.returnAllUsersStepGoalAverage());
+  }
 
+  function appendTodayWater() {
+    $('.user--todayWater').text(hydration.returnOuncesGivenDate(date));
+  }
+
+  let abc = hydrationRepo.returnUserData(id);
+
+
+  const weeklyWaterChart = new Chart($('#chart--weekHydration'), {
+        type: 'bar',
+        data: {
+            labels: ['Today', 'Yesterday', '2 Days', '3 Days', '4 Days', '5 Days', '6 Days'],
+            datasets: [{
+                label: 'Weekly Hydration',
+                data: hydration.returnOuncesGivenDateWeek(date),
+                backgroundColor: [
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)'
+                ]
+            }]
+        },
+        options: {
+            defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Fira Sans'",
+            responsive: false,
+            maintainAspectRatio: true,
+            aspectRatio: 2,
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    })
 });

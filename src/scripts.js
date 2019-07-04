@@ -64,7 +64,7 @@ $(document).ready(function() {
             labels: ['Today', 'Yesterday', '2 Days', '3 Days', '4 Days', '5 Days', '6 Days'],
             datasets: [{
                 label: 'Weekly Hydration',
-                data: console.log(hydration.returnOuncesGivenDateWeek(date)),
+                data: hydration.returnOuncesGivenDateWeek(date),
                 backgroundColor: [
                     'rgba(11, 204, 207, .3)',
                     'rgba(11, 204, 207, .3)',

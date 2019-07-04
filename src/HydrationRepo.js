@@ -10,5 +10,5 @@ class HydrationRepo {
 }
 
 if (typeof module !== 'undefined') {
-module.exports = HydrationRepo;
+  module.exports = HydrationRepo;
 }

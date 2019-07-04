@@ -30,3 +30,7 @@ const sampleSleepData = [
     "sleepQuality": 3.6
   }
 ]
+
+if (typeof module !== 'undefined') {
+module.exports = {sampleSleepData} 
+}

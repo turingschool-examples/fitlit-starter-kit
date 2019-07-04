@@ -72,5 +72,5 @@ const sampleUserData = [
 ]
 
 if (typeof module !== 'undefined') {
-module.exports = sampleUserData; 
+module.exports = {sampleUserData} 
 }

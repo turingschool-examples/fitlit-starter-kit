@@ -91,6 +91,6 @@ const sampleHydrationData = [
   }
 ]
 
-module.exports = {
-  sampleHydrationData
+if (typeof module !== 'undefined') {
+module.exports = {sampleHydrationData} 
 }

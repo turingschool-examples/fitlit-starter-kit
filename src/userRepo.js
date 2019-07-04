@@ -10,7 +10,7 @@ class UserRepo {
     return this.userData.reduce((steps, cur) => {
       return steps + (cur.dailyStepGoal / this.userData.length);
     }, 0);
-  };
+  }
 }
 
 if (typeof module !== 'undefined') {

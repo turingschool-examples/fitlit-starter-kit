@@ -1,28 +1,38 @@
 const chai = require('chai');
 const expect = chai.expect;
 const activityData = require('../data/activity-test-data');
-const activityData2 = require('../data/sleep-test-data-2');
+// const activityData2 = require('../data/sleep-test-data-2');
+const userData1 = require('../data/user-test-data')
+const UserRepository = require('../src/user-repository');
+const User = require('../src/user');
 const Activity = require('../src/activity');
 const ActivityRepository = require('../src/activity-repository')
+console.log(userData1)
+
+
 
 describe("Activity", () => {
+  let userRepository
   let activityRepository
   let activity1
   beforeEach(function() {
+    userRepository = new UserRepository(userData1)
     activityRepository = new ActivityRepository(activityData);
-    activity1 = new Activity(activityRepository.returnUserActivityData(1));
+    activity1 = new Activity(userRepository.returnUserData(2), activityRepository.returnUserActivityData(1));
+
   });
 
   it("should be a function", () => {
     expect(Activity).to.be.a("function")
+
   });
 
   it("should be an instance", () => {
     expect(activity1).to.be.an.instanceof(Activity)
   });
 
-  it.skip("should return miles walked based on day", () => {
-    expect(activity1.milesWalked()).to.eql()
+  it("should return miles walked based on day", () => {
+    expect(activity1.milesWalked("2019/06/15")).to.eql("idk")
   });
 
   it.skip("should return how many minutes active for a given day, identified by ID", () => {

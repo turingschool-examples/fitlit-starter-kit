@@ -2,10 +2,21 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="reset.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <title>Activity Tracker</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
+    <header>
+      <h1>Activity Tracker</h1>
+    </header>
+    <nav>
+      <ul>
+        <li>Hydration</li>
+        <li>Sleep</li>
+        <li>Activity</li>
+      </ul>
+    </nav>
     <main>
       <h2 id="js-first-name">First Name</h2>
       <p>Full name:<span id="js-full-name"></span></p>
@@ -13,7 +24,6 @@
       <p>Email:<span id="js-email"></span></p>
       <p>StrideLength:<span id="js-stride-length"></span></p>
       <p>Friends:<span id="js-friends"></span></p>
-
       <p>Water consumed today:<span id="js-water-consumed-today"></span></p>
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

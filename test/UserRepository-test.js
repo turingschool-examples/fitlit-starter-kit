@@ -2,16 +2,16 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const UserRepository = require('../src/UserRepository.js');
-const MockUsers = require('../mock-data/mock-users.js')
+const mockUsers = require('../mock-data/mock-users.js')
 
 
 var newUserRepo
 
 describe('UserRepository', function() {
 
-    beforeEach(function() {
+    beforeEach( function() {
 
-        newUserRepo = new UserRepository(MockUsers, 1)
+        newUserRepo = new UserRepository(mockUsers, 1)
   });
 
     it('should be a function', function() {
@@ -23,7 +23,7 @@ describe('UserRepository', function() {
     }); 
 
     it('should store a a collection of users' , function() {
-    expect(newUserRepo.dataset).to.equal(MockUsers);
+    expect(newUserRepo.dataset).to.equal(mockUsers);
     });
 
     it('should store the id correlated with the user trying to be accessed', function() {
@@ -32,7 +32,7 @@ describe('UserRepository', function() {
 
     describe('findUser', () =>
         it('should be able to find the user based on the id it stored', function() {
-            expect(newUserRepo.findUser()).to.eql(MockUsers[0])
+            expect(newUserRepo.findUser()).to.eql(mockUsers[0])
         }));
 
     describe('findAverageStepGoal', () =>

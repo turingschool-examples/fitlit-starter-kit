@@ -49,6 +49,12 @@ class Sleep {
   userSleepQualityAboveThree(startDate) {
 
   }
+
+  bestSleeper(day) {
+  let sleepByDate = this.sleepData.filter(obj => obj.date === day);
+  let topHours = sleepByDate.filter(person => person.hoursSlept).find(hours => Math.max(hours.hoursSlept)).hoursSlept;
+  return sleepByDate.filter(person => person.hoursSlept === topHours);
+  }
 }
 
 if (typeof module !== 'undefined') {

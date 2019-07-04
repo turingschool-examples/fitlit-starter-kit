@@ -55,4 +55,8 @@ describe('Sleep', function() {
     expect(sleep.userSleepQualityAboveThree("2019/06/15")).to.eql(3);
   });
 
+  it('should return user or users who slept the most number of hours given a date', function() {
+    expect(sleep.bestSleeper("2019/06/15")).to.eql([sleepData[0]]);
+  });
+
 });

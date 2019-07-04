@@ -26,6 +26,10 @@ class ActivityRepository {
     return parseFloat(value.toFixed(1))
   }
 
+  minutesActiveForUser(id, date) {
+    let users = this.activityData.filter(el => el.userID === id)
+    return users.find(el => el.date === date).minutesActive
+  }
 
 
 }

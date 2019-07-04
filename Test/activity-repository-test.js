@@ -30,4 +30,8 @@ describe("Activity-Repository", () => {
     expect(activityRepository.aveMinutesActiveForDay("2019/06/15")).to.eql(131.3)
   });
 
+  it("should return how many minutes active for a given day, identified by ID", () => {
+    expect(activityRepository.minutesActiveForUser(1, "2019/06/15")).to.eql(140)
+  });
+
 });

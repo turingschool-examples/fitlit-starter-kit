@@ -14,8 +14,11 @@ class User {
     console.log(this.name.split(' ')[0]);
     return this.name.split(' ')[0];
   }
+  
+  getStrideLength() {
+    return this.strideLength;
+  }
 }
-
 
 if (typeof module !== 'undefined') {
   module.exports = User;

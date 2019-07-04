@@ -16,7 +16,7 @@ const avgQual = testUserData.reduce((acc, day) => {
     return acc += day.sleepQuality;
 }, 0) / testUserData.length;
 const parsedAvgQual = avgQual.toFixed(1);
-console.log('quality average', parsedAvgQual);
+
 
 
 
@@ -24,7 +24,7 @@ console.log('quality average', parsedAvgQual);
 describe('Sleep', function() {
 
 beforeEach(function() {
-    sleep = new Sleep(sleepTestData, 1);
+    sleep = new Sleep(testUserData, 1);
     });
 
     it('should be a function', function() {
@@ -32,6 +32,7 @@ beforeEach(function() {
     });
 
     it('should retun given user data', function() {
+    
     expect(sleep.data).to.deep.equal(testUserData);
     });
 

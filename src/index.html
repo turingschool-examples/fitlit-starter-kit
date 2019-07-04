@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <title>FitLit</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <h1>FitLit</h1>
@@ -17,6 +20,12 @@
     <h2>Friends: <span class="user--friends"></span></h2>
     <h2>All user's step goal average <span class="users--stepAverage"></span></h2>
     <h2>Your Water Consumed Today: <span class="user--todayWater"></span></h2>
+    <figure class="test">
+      <canvas id="chart--weekHydration" height="400px" width="400px"></canvas>
+    </figure>
+    
+
+
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>

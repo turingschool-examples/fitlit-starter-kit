@@ -54,4 +54,43 @@ $(document).ready(function() {
   function appendTodayWater() {
     $('.user--todayWater').text(hydration.returnOuncesGivenDate(date));
   }
+
+  let abc = hydrationRepo.returnUserData(id);
+
+
+  const weeklyWaterChart = new Chart($('#chart--weekHydration'), {
+        type: 'bar',
+        data: {
+            labels: ['Today', 'Yesterday', '2 Days', '3 Days', '4 Days', '5 Days', '6 Days'],
+            datasets: [{
+                label: 'Weekly Hydration',
+                data: console.log(hydration.returnOuncesGivenDateWeek(date)),
+                backgroundColor: [
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)'
+                ]
+            }]
+        },
+        options: {
+            defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Fira Sans'",
+            responsive: false,
+            maintainAspectRatio: true,
+            aspectRatio: 2,
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    })
 });

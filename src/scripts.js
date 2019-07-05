@@ -21,6 +21,29 @@ $(document).ready(function() {
     $('#js-h2--user').show();
   });
 
+  // Bar chart
+  new Chart($("#step-goal-chart"), {
+    type: 'bar',
+    data: {
+      labels: ["Africa", "Asia"],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: ["#3e95cd", "#8e5ea2"],
+          data: [2478, 5267]
+        }
+      ]
+    },
+    options: {
+      responsive: false,
+      maintainAspectRatio: false,
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Predicted world population (millions) in 2050'
+      }
+    }
+  });
   // let foundUser = hydrationRepo.returnUserHydrationData(userID);
   // const hydration = new Hydration(foundUser);
   // $('#js-water-consumed-today').html(hydration.returnFluidOunces("2019/06/15"));

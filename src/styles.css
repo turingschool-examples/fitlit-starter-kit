@@ -11,9 +11,10 @@ body {
   display: grid;
   grid-template-areas:
     "head head"
+    "nav label"
     "nav main";
   grid-template-columns: 20% 80%;
-  grid-template-rows: 15% 85%;
+  grid-template-rows: 15% 10% 75%;
   height: 90vh;
   padding: 0 3% 3% 3%;
 }
@@ -67,6 +68,11 @@ body {
   background-color: #c91b1b;
 }
 
+.label {
+  background-color: #e4e4e4;
+  grid-area: label;
+}
+
 /* .list-item-active {
   width: 0;
   height: 0;
@@ -81,6 +87,10 @@ body {
 .section {
   background-color: #e4e4e4;
   grid-area: main;
+}
+
+.step-goal-chart {
+  margin: auto;
 }
 
 .user-profile {

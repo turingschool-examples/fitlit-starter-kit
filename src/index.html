@@ -31,6 +31,7 @@
             New User
           </li>
           <li class="list-item" id="js-user">User Profile</li>
+          <li class="list-item" id="js-user">User Profile</li>
           <li class="list-item" id="js-hydration">Hydration</li>
           <li class="list-item" id="js-sleep">Sleep</li>
           <li class="list-item" id="js-min-active">Minutes Active</li>
@@ -38,6 +39,7 @@
           <li class="list-item" id="js-flights">Flights Climbed</li>
         </ul>
       </nav>
+      <div class="label"></div>
       <section class="section">
         <div class="user-profile" id="js-user-profile">
           <p>Full name:<span id="js-full-name"></span></p>
@@ -45,9 +47,16 @@
           <p>Email:<span id="js-email"></span></p>
           <p>Friends:<span id="js-friends"></span></p>
         </div>
+        <canvas
+          class="step-goal-chart"
+          id="step-goal-chart"
+          width="600"
+          height="450"
+        ></canvas>
       </section>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>

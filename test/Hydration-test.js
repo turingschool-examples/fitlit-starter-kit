@@ -34,7 +34,7 @@ describe('Hydration', () => {
 
   it('should return ounces consumed for each day in a given week', () => {
     const weekOunces = hydration.returnOuncesGivenDateWeek("2019/06/23");
-    expect(weekOunces[6]["2019/06/23"]).to.equal(45);
+    expect(weekOunces[6]["y"]).to.equal(45);
   });
 
 })

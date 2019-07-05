@@ -76,4 +76,6 @@ const userData = [
   }
 ]
 
-module.exports = userData;
+if (typeof module !== 'undefined') {
+  module.exports = userData; 
+}

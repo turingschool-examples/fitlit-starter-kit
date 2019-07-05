@@ -38,4 +38,6 @@ class SleepRepository {
   }
 }
 
-module.exports = SleepRepository;
+if (typeof module !== 'undefined') {
+  module.exports = SleepRepository;
+}

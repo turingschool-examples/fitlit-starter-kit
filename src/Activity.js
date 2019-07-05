@@ -64,6 +64,11 @@ class Activity {
     });
     return user.numSteps >= correctUser.dailyStepGoal ? true : false;
   }
+
+  daysExceededStepGoal() {
+    let correctUser = this.findCorrectUser();
+    console.log(correctUser)
+  }
 }
 
 

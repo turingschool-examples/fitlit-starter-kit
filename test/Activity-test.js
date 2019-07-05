@@ -33,4 +33,9 @@ describe("Activity", function() {
         const activity = new Activity(1);
         expect(activity.metStepGoalForDay("2019/06/15")).to.equal(false);
     });
+
+    it("return all days the user exceeded their step goal", function() {
+        const activity = new Activity(1);
+        expect(activity.daysExceededStepGoal()).to.equal(["2019/06/16", "2019/06/17"]);
+    });
 });

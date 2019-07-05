@@ -79,7 +79,7 @@ const activityData = [
       {
         "userID": 1,
         "date": "2019/06/16",
-        "numSteps": 4294,
+        "numSteps": 11,224,
         "minutesActive": 140,
         "flightsOfStairs": 10
       },
@@ -93,7 +93,7 @@ const activityData = [
       {
         "userID": 1,
         "date": "2019/06/17",
-        "numSteps": 7402,
+        "numSteps": 10,502,
         "minutesActive": 100,
         "flightsOfStairs": 33
       }

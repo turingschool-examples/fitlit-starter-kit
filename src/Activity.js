@@ -8,22 +8,84 @@ class Activity {
     this.data = filePath;
   }
 
-  returnMilesWalked(date) {
-    let users = userData.map((user) => {
+  instantiateUsers() {
+    return userData.map((user) => {
       return new User(user);
     });
-    let correctUser = users.find((user) => {
+  }
+
+  findCorrectUser() {
+    let users = this.instantiateUsers();
+    return users.find((user) => {
       return user.id === this.userID;
-    })
-    let correctUserDate = this.data.filter((user) => {
-      return user.date === date;
     });
+  }
+
+  findCorrectUserDate(date) {
+    return this.data.filter((user) => {
+        return user.date === date;
+      });
+  }
+
+  returnMilesWalked(date) {
+    let correctUser =  this.findCorrectUser();
+    let correctUserDate = this.findCorrectUserDate(date);
     let user = correctUserDate.find((user) =>{
       return user.userID === correctUser.id
     });
     let stepsPerMile = 5280 / correctUser.strideLength;
     return Number(((user.numSteps / stepsPerMile).toFixed(2)))
   }
+
+  returnMinutesActive(date) {
+    let correctUser =  this.findCorrectUser();
+    let correctUserDate = this.findCorrectUserDate(date);
+    let user = correctUserDate.find((user) =>{
+        return user.userID === correctUser.id
+    });
+    return user.minutesActive;
+  }
+
+  returnMinutesActiveForWeek() {
+    let totalMinutes = this.data.reduce((allMinutes, user) => {
+      if (user.userID === this.userID) {
+        allMinutes += user.minutesActive
+      }
+      return allMinutes;
+    }, 0)
+    return Number((totalMinutes / 7).toFixed(2));
+  }
+
+  metStepGoalForDay(date) {
+    let correctUser = this.findCorrectUser();
+    let correctUserDate = this.findCorrectUserDate(date);
+    let user = correctUserDate.find((user) =>{
+        return user.userID === correctUser.id;
+    });
+    return user.numSteps >= correctUser.dailyStepGoal ? true : false;
+  }
+
+  daysExceededStepGoal() {
+    let correctUser = this.findCorrectUser();
+    return this.data.reduce((allDates, user) => {
+      if (user.userID === correctUser.id && user.numSteps >= correctUser.dailyStepGoal) {
+        allDates.push(user.date);
+      }
+      return allDates;
+    }, [])
+  }
+
+  allTimeClimbRecord() {
+    let correctUser = this.findCorrectUser();
+    let flights = this.data.reduce((allFlights, user) => {
+      if (user.userID === correctUser.id) {
+        allFlights.push(user.flightsOfStairs);
+      }
+      return allFlights;
+    }, [])
+    return Math.max(...flights)
+  }
 }
+
 
 module.exports = Activity

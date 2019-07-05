@@ -21,7 +21,7 @@ let maxHours = currentDay.reduce((acc, user) => {
 }, 0)
 let maxSleepers = currentDay.filter(user => user.hoursSlept === maxHours);
 
-console.log(maxSleepers)
+// console.log(maxSleepers)
 
 describe('SleepRepository', function() {
 

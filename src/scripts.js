@@ -1,7 +1,7 @@
 $(document).ready(function() {
   // const hydrationRepo = new HydrationRepository(hydrationData);
   
-  
+  $('#js-h2--user').hide();
 
   $('#js-change-user').click(function() {
     const userRepo = new UserRepository(userData);
@@ -10,6 +10,8 @@ $(document).ready(function() {
     const user = new User(specificUser);
     $('#js-first-name').html(user.returnFirstName());
     $('#js-full-name').html(user.name);
+    $('#js-h2--welcome').hide();
+    $('#js-h2--user').show();
     console.log(userID);
   });
 
@@ -18,16 +20,6 @@ $(document).ready(function() {
   // let foundUser = hydrationRepo.returnUserHydrationData(userID);
   // const hydration = new Hydration(foundUser);
   // $('#js-water-consumed-today').html(hydration.returnFluidOunces("2019/06/15"));
-
-  // $('.nav-list').on('click', () => {
-  //   $('.list-item').addClass('.list-item-active');
-  // })
-
-
-
-
-
-
 
   
 });

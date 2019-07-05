@@ -39,9 +39,9 @@ class ActivityRepository {
 
     returnAvgMins(date) {
       let usersOnDate = this.findCorrectDate(date);
-      return Number(usersOnDate.reduce((allStairs, user) => {
-        allStairs += user.flightsOfStairs;
-        return allStairs;
+      return Number(usersOnDate.reduce((allMins, user) => {
+        allMins += user.minutesActive;
+        return allMins;
       }, 0) / usersOnDate.length.toFixed(2))
     }
 }

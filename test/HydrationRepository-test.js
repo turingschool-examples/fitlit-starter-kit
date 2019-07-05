@@ -15,7 +15,7 @@ describe("HydrationRepository", function() {
     });
 
     it.only("should return the correct user based on a user ID", function() {
-        const hydrationRepository = new HydrationRepository();
-        expect(hydrationRepository.findId(1).length).to.equal(8);
+        const hydrationRepository = new HydrationRepository(1);
+        expect(hydrationRepository.findId().length).to.equal(8);
     });
 });

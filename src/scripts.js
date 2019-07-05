@@ -19,18 +19,28 @@ $(document).ready(function() {
     $('#js-friends').html(userRepo.makeFriendNames(userID));
     $('#js-h2--welcome').hide();
     $('#js-h2--user').show();
+    updateCharts(user);
   });
 
-  // Bar chart
-  new Chart($("#step-goal-chart"), {
+  function updateStepGoalChart(user) {
+    stepGoalChart.data.labels[0] = user.name;
+    stepGoalChart.data.datasets[0].data[0] = user.dailyStepGoal;
+    stepGoalChart.update();
+  }
+
+  function updateCharts(user) {
+    updateStepGoalChart(user);
+  }
+
+  var stepGoalChart = new Chart($("#step-goal-chart"), {
     type: 'bar',
     data: {
-      labels: ["Africa", "Asia"],
+      labels: ["", "All Users"],
       datasets: [
         {
           label: "Population (millions)",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
-          data: [2478, 5267]
+          data: [0, 6700]
         }
       ]
     },
@@ -39,8 +49,25 @@ $(document).ready(function() {
       maintainAspectRatio: false,
       legend: { display: false },
       title: {
-        display: true,
-        text: 'Predicted world population (millions) in 2050'
+        display: false,
+      },
+      scales: {
+        xAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+            maxTicksLimit: 12,
+            min: 0,
+            max: 12000,
+            stepSize: 2000,
+          }
+        }]
       }
     }
   });

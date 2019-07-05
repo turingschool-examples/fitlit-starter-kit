@@ -1,5 +1,4 @@
 
-
 class User {
   constructor(currentUser) {
     this.id = currentUser.id;
@@ -17,4 +16,6 @@ class User {
 
 }
 
-module.exports = User;
+if (typeof module !== 'undefined') {
+  module.exports = User;
+}

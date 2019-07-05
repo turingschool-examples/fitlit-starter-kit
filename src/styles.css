@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.main {
+  background-color: #fff;
+  display: grid;
+  grid-template-areas:
+    "head head"
+    "nav main";
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 15% 85%;
+  height: 90vh;
+  padding: 0 3% 3% 3%;
+}
+
+.top {
+  align-items: center;
+  display: flex;
+  height: 10vh;
+  justify-content: flex-end;
+  padding: 0% 3%;
+}
+
+.h1 {
+  font-family: "Racing Sans One", cursive;
+  font-size: 2.8em;
+}
+
+.header {
+  align-items: center;
+  background-color: #323240;
+  display: flex;
+  grid-area: head;
+}
+
+.h2 {
+  color: #fff;
+  font-family: "Racing Sans One", cursive;
+  font-size: 2.5em;
+  margin-left: 15px;
+}
+
+.nav {
+  background-color: #838286;
+  grid-area: nav;
+}
+
+.nav-list {
+  font-size: 1.1em;
+  text-align: center;
+}
+
+.list-item {
+  background-color: #404055;
+  color: #fff;
+  /* border: 1px solid black; */
+  margin-top: 15px;
+  padding: 8px 0;
+}
+
+.list-item--active {
+  background-color: #c91b1b;
+}
+
+/* .list-item-active {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #e5e5e5;
+  content: " ";
+  position: absolute;
+  right: -100px;
+} */
+
+.section {
+  background-color: #e4e4e4;
+  grid-area: main;
+}
+
+.user-profile {
+  border: 1px solid black;
+}

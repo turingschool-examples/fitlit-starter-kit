@@ -8,14 +8,14 @@ const activityData = [
     },
     {
       "userID": 1,
-      "date": "2019/06/16",
+      "date": "2019/06/21",
       "numSteps": 4294,
       "minutesActive": 138,
       "flightsOfStairs": 10
     },
     {
       "userID": 1,
-      "date": "2019/06/17",
+      "date": "2019/06/22",
       "numSteps": 7402,
       "minutesActive": 116,
       "flightsOfStairs": 33
@@ -68,7 +68,35 @@ const activityData = [
       "numSteps": 8015,
       "minutesActive": 106,
       "flightsOfStairs": 37
-    }
+    },
+    {
+        "userID": 1,
+        "date": "2019/06/20",
+        "numSteps": 3577,
+        "minutesActive": 130,
+        "flightsOfStairs": 16
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/16",
+        "numSteps": 4294,
+        "minutesActive": 140,
+        "flightsOfStairs": 10
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/18",
+        "numSteps": 7402,
+        "minutesActive": 115,
+        "flightsOfStairs": 33
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/17",
+        "numSteps": 7402,
+        "minutesActive": 100,
+        "flightsOfStairs": 33
+      }
 ]
 
 if (typeof module !== 'undefined') {

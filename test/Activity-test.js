@@ -24,8 +24,13 @@ describe("Activity", function() {
         expect(activity.returnMinutesActive("2019/06/15")).to.equal(140);
     });
 
-    it("should return the active minutes for a give week", function() {
+    it("should return the active minutes for a given week", function() {
         const activity = new Activity(1);
-        expect(activity.returnMinutesActive("2019/06/15")).to.equal(140);
+        expect(activity.returnMinutesActiveForWeek()).to.equal(125.57);
+    });
+
+    it("should let the user know if they reached their step goal on a specific day", function() {
+        const activity = new Activity(1);
+        expect(activity.metStepGoalForDay("2019/06/15")).to.equal(false);
     });
 });

@@ -22,7 +22,6 @@ class Activity {
   }
 
   returnMilesWalked(date) {
-    let users = this.instantiateUsers();
     let correctUser =  this.findCorrectUser();
     let correctUserDate = this.data.filter((user) => {
       return user.date === date;
@@ -35,7 +34,6 @@ class Activity {
   }
 
   returnMinutesActive(date) {
-    let users = this.instantiateUsers();
     let correctUser =  this.findCorrectUser();
     let correctUserDate = this.data.filter((user) => {
         return user.date === date;
@@ -44,6 +42,27 @@ class Activity {
         return user.userID === correctUser.id
     });
     return user.minutesActive;
+  }
+
+  returnMinutesActiveForWeek() {
+    let totalMinutes = this.data.reduce((allMinutes, user) => {
+      if (user.userID === this.userID) {
+        allMinutes += user.minutesActive
+      }
+      return allMinutes;
+    }, 0)
+    return Number((totalMinutes / 7).toFixed(2));
+  }
+
+  metStepGoalForDay(date) {
+    let correctUser = this.findCorrectUser();
+    let correctUserDate = this.data.filter((user) => {
+        return user.date === date;
+      });
+    let user = correctUserDate.find((user) =>{
+        return user.userID === correctUser.id
+    });
+    return user.numSteps >= correctUser.dailyStepGoal ? true : false;
   }
 }
 

@@ -19,19 +19,35 @@ main {
 /* ----------------Aside----------------- */
 
 aside {
+  background-color: #51768C;
   border: solid 1px black;
+  color: white;
+  display: flex;
   width: 320px; 
   flex-direction: column;
   align-items: center;
   padding: .5em 1em 0 1em;
 }
 
+.aside__logo {
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+.aside__logo-fit {
+  font-weight: 700;
+}
+
 h1 {
   margin-bottom: 1em;
 }
 
+.aside__date {
+  font-size: 12px;
+  margin-top: 10px;
+}
 .aside__h2 {
-  margin-bottom: 1em;
+
 }
 
 .aside__figure {
@@ -39,6 +55,18 @@ h1 {
   flex-direction: column;
   justify-content: space-between;
   height: 50%;
+  margin-top: 60px;
+
+}
+
+.user-label {
+  border-bottom: 1px solid lightgray;
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+}
+
+.user-info {
+  font-size: 14px;
 }
 
 /* ----------------Main----------------- */

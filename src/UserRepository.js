@@ -1,5 +1,9 @@
-usersFilePath = require("../data/userSub");
 
+if (typeof module !== "undefined") {
+  usersFilePath = require("../data/userSub");
+} else {
+  usersFilePath = userData;
+}
 
 class UserRepository {
   constructor(userID) {

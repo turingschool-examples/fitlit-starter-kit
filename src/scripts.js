@@ -14,7 +14,9 @@ $(document).ready(function() {
   const hydration = new Hydration(foundUser);
   $('#js-water-consumed-today').html(hydration.returnFluidOunces("2019/06/15"));
 
-
+  $('.nav-list').on('click', () => {
+    $('.list-item').addClass('.list-item-active');
+  })
 
 
 

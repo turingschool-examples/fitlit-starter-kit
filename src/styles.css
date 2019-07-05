@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
 .main {
   background-color: #fff;
   display: grid;
@@ -29,20 +33,42 @@
 
 .header {
   align-items: center;
-  background-color: #b0b0b0;
+  background-color: #323240;
   display: flex;
   grid-area: head;
 }
 
 .h2 {
+  color: #fff;
   font-family: "Racing Sans One", cursive;
   font-size: 2.5em;
+  margin-left: 15px;
 }
 
 .nav {
   background-color: #a7a3a3;
   grid-area: nav;
 }
+
+.nav-list {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.list-item {
+  margin: 25px;
+}
+
+/* .list-item-active {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #e5e5e5;
+  content: " ";
+  position: absolute;
+  right: -100px;
+} */
 
 .section {
   background-color: #e4e4e4;

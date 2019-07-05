@@ -30,24 +30,38 @@
         <canvas id="water-chart"></canvas>
       </section>
       <section class="nav-boxes" id="sleep-metrics">
-        <article>
+        <article class="sleep-info" id="sleep-metrics-hours">
           <h3>hours slept</h3>
           <h4 class="big-nums" id="num-daily-hours-slept"></h4>
-          <p class="small-nums-header" id="all-time-sleep-hours"></p>
+          <p class="small-nums-header" id="all-time-sleep-hours">most hours slept</p>
           <h5 class="small-nums" id="num-all-time-sleep-hours"></h5>
-          <p class="small-nums-header" id="average-hours-slept"></p>
+          <p class="small-nums-header" id="average-hours-slept">average hours slept</p>
           <h5 class="small-nums" id="num-average-hours-slept"></h5>
         </article>
-        <article>
+        <article class="sleep-info" id="sleep-metrics-quality">
           <h3>quality of sleep</h3>
           <h4 class="big-nums" id="num-daily-quality-slept"></h4>
-          <p class="small-nums-header" id="all-time-quality-sleep"></p>
+          <p class="small-nums-header" id="all-time-quality-sleep">highest quality sleep</p>
           <h5 class="small-nums" id="num-all-time-quality-sleep"></h5>
-          <p class="small-nums-header" id="average-quality-slept"></p>
+          <p class="small-nums-header" id="average-quality-slept">average sleep quality</p>
           <h5 class="small-nums" id="num-average-quality-slept"></h5>
         </article>
       </section>
+      <section id="weekly-sleep-chart">
+        <canvas id="sleep-chart"></canvas>
+      </section>
       <section class="nav-boxes" id="daily-activity-metrics"></section>
+      <article class="miles-info" id="miles-metrics">
+        <h3>miles today</h3>
+        <h4 class="big-nums" id="num-daily-miles"></h4>
+        <h5 class="small-nums" id="num-daily-steps">Steps Today<span id="num-steps-today"></span></h5>
+      </article>
+      <article class="activity-info" id="activity-metrics">
+        <h3>todays active minutes</h3>
+        <h4 class="big-nums" id="num-daily-active-minutes"></h4>
+        <p class="small-nums-header" id="all-time-active-minutes-header">all time active minutes</p>
+        <h5 class="small-nums" id="num-all-time-active-minutes"></h5>
+      </article>
       <section class="nav-boxes" id="weekly-activity-metrics"></section>
     </nav>
     <script type="text/javascript" src="./User.js"></script>

@@ -34,7 +34,6 @@ describe ('HydrationUser', function() {
 
     describe('flOzOneWeek', function() {
         it('should return the number of ounces consumed over the course of a week', function() {
-            console.log(newHydrationUser.flOzOneWeek())
             expect(newHydrationUser.flOzOneWeek()).to.eql(
                 `<p>On 2019/06/15 you drank 75 ounces of water!</p><p>On 2019/06/16 you drank 47 ounces of water!</p><p>On 2019/06/17 you drank 96 ounces of water!</p><p>On 2019/06/18 you drank 61 ounces of water!</p><p>On 2019/06/19 you drank 91 ounces of water!</p><p>On 2019/06/20 you drank 50 ounces of water!</p><p>On 2019/06/21 you drank 50 ounces of water!</p>`
               )      

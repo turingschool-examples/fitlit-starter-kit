@@ -18,7 +18,7 @@ const activityData = [
       "date": "2019/06/22",
       "numSteps": 7402,
       "minutesActive": 116,
-      "flightsOfStairs": 33
+      "flightsOfStairs": 32
     },
     {
       "userID": 4,
@@ -79,7 +79,7 @@ const activityData = [
       {
         "userID": 1,
         "date": "2019/06/16",
-        "numSteps": 11,224,
+        "numSteps": 11224,
         "minutesActive": 140,
         "flightsOfStairs": 10
       },
@@ -88,12 +88,12 @@ const activityData = [
         "date": "2019/06/18",
         "numSteps": 7402,
         "minutesActive": 115,
-        "flightsOfStairs": 33
+        "flightsOfStairs": 34
       },
       {
         "userID": 1,
         "date": "2019/06/17",
-        "numSteps": 10,502,
+        "numSteps": 10502,
         "minutesActive": 100,
         "flightsOfStairs": 33
       }

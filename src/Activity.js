@@ -60,14 +60,30 @@ class Activity {
         return user.date === date;
       });
     let user = correctUserDate.find((user) =>{
-        return user.userID === correctUser.id
+        return user.userID === correctUser.id;
     });
     return user.numSteps >= correctUser.dailyStepGoal ? true : false;
   }
 
   daysExceededStepGoal() {
     let correctUser = this.findCorrectUser();
-    console.log(correctUser)
+    return this.data.reduce((allDates, user) => {
+      if (user.userID === correctUser.id && user.numSteps >= correctUser.dailyStepGoal) {
+        allDates.push(user.date);
+      }
+      return allDates;
+    }, [])
+  }
+
+  allTimeClimbRecord() {
+    let correctUser = this.findCorrectUser();
+    let flights = this.data.reduce((allFlights, user) => {
+      if (user.userID === correctUser.id) {
+        allFlights.push(user.flightsOfStairs);
+      }
+      return allFlights;
+    }, [])
+    return Math.max(...flights)
   }
 }
 

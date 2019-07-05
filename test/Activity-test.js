@@ -36,6 +36,11 @@ describe("Activity", function() {
 
     it("return all days the user exceeded their step goal", function() {
         const activity = new Activity(1);
-        expect(activity.daysExceededStepGoal()).to.equal(["2019/06/16", "2019/06/17"]);
+        expect(activity.daysExceededStepGoal()).to.eql(["2019/06/16", "2019/06/17"]);
+    });
+
+    it("return their all-time stair climbing record", function() {
+        const activity = new Activity(1);
+        expect(activity.allTimeClimbRecord()).to.eql(34);
     });
 });

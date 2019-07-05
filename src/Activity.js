@@ -14,8 +14,8 @@ class Activity {
 
   milesWalkedInDay(day, data) {
     let currentDay = this.activityData.find((date) => date.date === day);
-    let y = data.find((x) => x.id === currentDay.userID);
-    let calculatedMiles = (currentDay.numSteps * y.strideLength) / 5280;
+    let user = data.find((x) => x.id === currentDay.userID);
+    let calculatedMiles = (currentDay.numSteps * user.strideLength) / 5280;
     return Math.round(calculatedMiles);
   }
 
@@ -27,17 +27,17 @@ class Activity {
     let array = this.consumerInfo(id);
     let dayThing = array.filter((obj) => obj.date === day);
     let index = array.indexOf(dayThing[0]);
-    let y = array.slice(index, 8).map((obj) => obj.minutesActive);
-    let o = y.reduce((acc, el) => {
+    let minutesByWeek = array.slice(index, 8).map((obj) => obj.minutesActive);
+    let minAddition = minutesByWeek.reduce((acc, el) => {
       return  acc + el;
     }, 0);
-    return o / y.length;
+    return minAddition / minutesByWeek.length;
   }
 
   stepGoalDay(id, day, data) {
-    let x = this.consumerInfo(id).find((obj) => obj.date === day).numSteps;
-    let y = data.find((obj) => id === obj.id).dailyStepGoal;
-    if ( x > y) {
+    let steps = this.consumerInfo(id).find((obj) => obj.date === day).numSteps;
+    let stepGoal = data.find((obj) => id === obj.id).dailyStepGoal;
+    if ( steps > stepGoal) {
       return true;
     } else {
       return false;
@@ -45,10 +45,10 @@ class Activity {
   }
 
   exceededStepGoal(id, data) {
-    let x = this.consumerInfo(id);
-    let y = data.find((obj) => id === obj.id).dailyStepGoal;
-    let o = x.filter((obj) => obj.numSteps > y );
-    let dates = o.map((obj) => obj.date);
+    let user = this.consumerInfo(id);
+    let goalStep = data.find((obj) => id === obj.id).dailyStepGoal;
+    let filterWinner = user.filter((obj) => obj.numSteps > goalStep);
+    let dates = filterWinner.map((obj) => obj.date);
     return dates;
   }
 
@@ -59,14 +59,15 @@ class Activity {
     return Math.max(...filterFlights);
   }
 
-  averageStairsClimbed(day) {
-    let x = this.activityData.filter((obj) => obj.date === day);
-    let xo = x.map((obj) => obj.flightsOfStairs);
-    let y = xo.reduce((acc, el) => {
+  averageSActivity(day, el) {
+    let findDay = this.activityData.filter((obj) => obj.date === day);
+    let findElementArr = findDay.map((obj) => obj[el]);
+    let sumTotal = findElementArr.reduce((acc, el) => {
       return acc + el;
     }, 0);
-    return Math.round(y / xo.length);
+    return Math.round(sumTotal / findElementArr.length);
   }
+
 } 
 
 if (typeof module !== 'undefined') {

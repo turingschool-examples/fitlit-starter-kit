@@ -45,14 +45,14 @@ describe('Activity', function() {
   });
 
   it('should return average number of stairs climbed specific date', function() {
-    expect(activity.averageStairsClimbed("2019/06/15")).to.equal(35);
+    expect(activity.averageSActivity('2019/06/15', 'flightsOfStairs')).to.equal(35);
   });
 
-  it.skip('should return average number of steps taken specific date', function() {
-    expect(activity.averageStepsTaken("2019/06/15")).to.equal();
+  it('should return average number of steps taken specific date', function() {
+    expect(activity.averageSActivity('2019/06/15', 'numSteps')).to.equal(7309);
   });
 
-  it.skip('should return average number of minutes active specific date', function() {
-    expect(activity.averageMinutesActive("2019/06/15")).to.equal();
+  it('should return average number of minutes active specific date', function() {
+    expect(activity.averageSActivity('2019/06/15', 'minutesActive')).to.equal(145);
   });
 });

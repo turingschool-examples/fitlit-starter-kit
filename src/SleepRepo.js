@@ -16,12 +16,14 @@ class SleepRepo {
     };
 
     findAverageSleep(){
-        let potato = this.sleepData.map(user => user.sleepQuality);
-        let squash = potato.reduce((a,b)=> a += b)
-        return Math.round(squash/this.sleepData.length)
+        let allQuality = this.sleepData.map(user => user.sleepQuality);
+        let AllQualityReduced = allQuality.reduce((a,b)=> a += b)
+        return Math.round(AllQualityReduced/this.sleepData.length)
     };
 
     
 };
 
-module.exports = SleepRepo;
+if (typeof module !== 'undefined') {
+    module.exports = SleepRepo;
+  }

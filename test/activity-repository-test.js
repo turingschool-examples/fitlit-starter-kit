@@ -26,15 +26,14 @@ describe('ActivityRepository', function() {
   });
 
   it('should return overall average steps taken for a given date', function() {
-    expect(activityRepository.returnAvgSteps('2019/06/23')).to.equal(_________)
+    expect(activityRepository.returnAvgSteps('2019/06/23')).to.equal(9038)
   });
 
   it('should return overall average active minutes for a given date', function() {
-    expect(activityRepository.returnAvgMins('2019/06/23').to.equal(_________))
+    expect(activityRepository.returnAvgMins('2019/06/23')).to.equal(180)
 });
 
-
-  it('should return user with top steps for a given date', function() {
-    expect(activityRepository.returnTopSteps('2019/06/23').to.equal(_______))
+  it.only('should return user with top steps for a given date', function() {
+    expect(activityRepository.returnTopStepper('2019/06/23')).to.deep.equal({userID: 1, date: '2019/06/23', numSteps: 13928, minutesActive: 218, flightsOfStairs: 21 })
   });
 });

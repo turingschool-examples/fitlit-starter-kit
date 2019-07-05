@@ -5,7 +5,7 @@ class UserRepository {
   }
 
   returnUserData(userId) {
-    return this.data.find(dataSet => dataSet.id === userId);
+    return this.data.find(dataSet => dataSet.id === userId);//not sure if this should look more like consumerInfo in other?
   }
 
   averageStepGoals() {

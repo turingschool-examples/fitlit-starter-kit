@@ -11,7 +11,17 @@ const allSleepQual = sleepTestData.reduce((acc, day) => {
 const fixedSleepQual = allSleepQual.toFixed(1)
 let users = new Set(sleepTestData.map(user => user.userID))
 users = [...users]
-// console.log(fixedSleepQual)
+
+let currentDay = sleepTestData.filter(day => day.date === '2019/06/23')
+let maxHours = currentDay.reduce((acc, user) => {
+  if(user.hoursSlept > acc) {
+    acc = user.hoursSlept;
+  }
+  return acc;
+}, 0)
+let maxSleepers = currentDay.filter(user => user.hoursSlept === maxHours);
+
+console.log(maxSleepers)
 
 describe('SleepRepository', function() {
 
@@ -33,6 +43,10 @@ describe('SleepRepository', function() {
 
       it('should return users who have sleep quality greater than 3', function() {
         expect(sleepRepository.returnGreatSleepers('2019/06/23')).to.deep.equal([2]);
+      });
+
+      it.only('should return the user with the highest hours of sleep for a given day', function() {
+        expect(sleepRepository.returnHighestSleepers('2019/06/23')).to.deep.equal([{ userID: 2, date: '2019/06/23', hoursSlept: 8, sleepQuality: 4.9 }]);
       });
 
 });

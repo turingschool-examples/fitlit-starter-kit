@@ -12,7 +12,6 @@ class SleepRepository {
     return allSleepQual.toFixed(1);
   }
 
-
   returnGreatSleepers(date) {
     let userIds = new Set(this.data.map(user => user.userID))
     let uniqueIds = [...userIds];
@@ -37,6 +36,17 @@ class SleepRepository {
   //   })
   //   console.log(sleepUsers);
   // }
+
+  returnHighestSleepers(date) {
+    let currentDay = this.data.filter(day => day.date === date)
+    let maxHours = currentDay.reduce((acc, user) => {
+      if(user.hoursSlept > acc) {
+        acc = user.hoursSlept;
+      }
+      return acc;
+    }, 0)
+    return currentDay.filter(user => user.hoursSlept === maxHours);
+  }
 }
 
 if (typeof module !== 'undefined') {

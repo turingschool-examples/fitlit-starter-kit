@@ -6,25 +6,21 @@
   </head>
   <body>
     <h1>Activity Tracker</h1>
-      <h2> Hello <span class = "userFirstName">UserName!</span> </h2>
-      <output>
-        <article class = "userInfo">
-          <p> name: <span class = "userName">name</span> </p>
-          <p> address: <span class = "address"> address </span> </p>
-          <p> email: <span class = "email"> email </span> </p>
-          <p> strideLength: <span class = "strideLength"> strideLength </span> </p>
-          <p> dailyStepGoal: <span class = "dailyStepGoal"> dailyStepGoal </span> </p>
-          <ul>
-            <li>friend1</li>
-            <li>friend2</li>
-            <li>friend3</li>
-          </ul>
-        </article>
+      <h2> Hello <span class = "userFirstName"></span>!</h2>
+      <output class="infoDisplay">
+     <!--    <article class = "hydrationInfo">
+          <p> Date: <span class = "currentDateHydro">${currentHydrationUser.flOzOneDay(currentHydrationUser.array.slice(0,1))}</span> </p>
+          <p> Latest Week:<span class = "latestWeekHydro">${currentHydrationuser.flOzOneWeek()}</span> </p>
+          <p> Weekly Average: <span class = "weeklyAvgHydro">${currentHydrationRepo.findHydrationAverage()}</span> </p>
+        </article> -->
       </output>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>
+    <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="./User.js"></script>
     <script type="text/javascript" src="./UserRepository.js"></script>
+    <script type="text/javascript" src="./HydrationUser.js"></script>
+    <script type="text/javascript" src="./HydrationRepository.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>

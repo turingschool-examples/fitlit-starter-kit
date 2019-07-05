@@ -45,7 +45,7 @@ describe('SleepRepository', function() {
         expect(sleepRepository.returnGreatSleepers('2019/06/23')).to.deep.equal([2]);
       });
 
-      it.only('should return the user with the highest hours of sleep for a given day', function() {
+      it('should return the user with the highest hours of sleep for a given day', function() {
         expect(sleepRepository.returnHighestSleepers('2019/06/23')).to.deep.equal([{ userID: 2, date: '2019/06/23', hoursSlept: 8, sleepQuality: 4.9 }]);
       });
 

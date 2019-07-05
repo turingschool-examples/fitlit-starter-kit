@@ -1,3 +1,6 @@
+const userData = require("../data/users")
+const UserRepository = require("./user-repository");
+
 class Activity {
     constructor(data, id) {
       this.data = data.filter(user => user.userID === id);
@@ -5,9 +8,10 @@ class Activity {
     }
 
   returnDailyMiles(date) {
-    let currentStrideLength = testUserRepo.returnUser(this.id).strideLength;
+    let userRepo = new UserRepository(userData);
+    let currentStrideLength = userRepo.returnUser(this.id).strideLength;
     let currentDay = this.data.find(day => day.date === date);
-    return (currentStrideLength * currentDay.numSteps / 5280).toFixed(1)
+    return parseFloat((currentStrideLength * currentDay.numSteps / 5280).toFixed(1))
   }
 
   returnDay(date) {

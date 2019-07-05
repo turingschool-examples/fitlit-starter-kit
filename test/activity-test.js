@@ -11,14 +11,14 @@ const UserRepository = require("../src/user-repository");
 const userDataRepo = require("../data/users")
 // console.log(testActivityUserData)
 // const usersTestData = userTestRepository.usersTestData;
-var activity, testUserRepo;
+var activity, userRepository;
 
 describe('Activity', function() {
 
   beforeEach(function() {
     activity = new Activity(activityTestData, 1);
-    testUserRepo = new UserRepository(userDataRepo);
-    console.log(activity)
+    userRepository = new UserRepository(userDataRepo);
+    // console.log(activity)
   });
 
   it('should be a function', function() {
@@ -39,7 +39,7 @@ describe('Activity', function() {
       })
   });
 
-  it('should return the miles a user has walked in a day, based on their steps and stride length', function() {
+  it.only('should return the miles a user has walked in a day, based on their steps and stride length', function() {
     expect(activity.returnDailyMiles('2019/06/23')).to.equal(11.3)
   });
 

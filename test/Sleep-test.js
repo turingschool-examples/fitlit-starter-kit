@@ -48,4 +48,9 @@ describe('Sleep', () => {
     expect(hours[0]['y']).to.equal(2);
   });
 
+  it('should return a user\'s all time hours slept', () => {
+    let hours = sleep.returnUserAllTimeSleepHours();
+    expect(hours).to.equal(63);
+  })
+
 })

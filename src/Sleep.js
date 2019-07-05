@@ -42,6 +42,12 @@ class Sleep {
     }, []);
   }
   
+  returnUserAllTimeSleepHours() {
+    return this.userData.reduce((acc, record) => {
+      acc += record.hoursSlept;
+      return acc;
+    }, 0);
+  }
 }
 
 if (typeof module !== 'undefined') {

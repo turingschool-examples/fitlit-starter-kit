@@ -19,12 +19,12 @@ describe('HydrationRepository', function() {
         expect(newHydrationUserRepo).to.be.an.instanceof(HydrationRepository)
     });
 
-    it('should store a collection of users' , function() {
-        expect(newHydrationUserRepo.dataset).to.equal(mockHydrationData);
+    it('should store a collection of users hydration data' , function() {
+        expect(newHydrationUserRepo.dataset).to.equal(mockHydrationData)
     });
 
     it('should store the id correlated with the user trying to be accessed', function() {
-        expect(newHydrationUserRepo.id).to.equal(2);
+        expect(newHydrationUserRepo.id).to.equal(2)
     });
       
      describe('findHydrationUser', () =>

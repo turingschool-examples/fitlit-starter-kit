@@ -5,19 +5,19 @@ const sleepData = require("../data/sleep");
 const sleepTestData = sleepData.filter(data => data.userID === 1 || data.userID === 2).filter(data => data.date === '2019/06/16' || data.date === '2019/06/17' || data.date === '2019/06/19' || data.date === '2019/06/18' || data.date === '2019/06/20' || data.date === '2019/06/21' || data.date === '2019/06/22' || data.date === '2019/06/23' )
 const weekSleepTestData = sleepTestData.filter(user => user.userID === 1).slice(-7);
 const testUserData = sleepTestData.filter(user => user.userID === 1);
-console.log('test user data', testUserData)
+// console.log('test user data', testUserData)
 const avgHours = testUserData.reduce((acc, day) => {
     return acc += day.hoursSlept;
 }, 0) / testUserData.length;
 const parsedAvgHours = avgHours.toFixed(1)
-console.log(parsedAvgHours)
+// console.log(parsedAvgHours)
 
 const avgQual = testUserData.reduce((acc, day) => {
     return acc += day.sleepQuality;
 }, 0) / testUserData.length;
 const parsedAvgQual = avgQual.toFixed(1);
 
-
+// const uniqueIds = new Set(testUserDaya)
 
 
 

@@ -21,11 +21,15 @@ class Activity {
     });
   }
 
+  findCorrectUserDate(date) {
+    return this.data.filter((user) => {
+        return user.date === date;
+      });
+  }
+
   returnMilesWalked(date) {
     let correctUser =  this.findCorrectUser();
-    let correctUserDate = this.data.filter((user) => {
-      return user.date === date;
-    });
+    let correctUserDate = this.findCorrectUserDate(date);
     let user = correctUserDate.find((user) =>{
       return user.userID === correctUser.id
     });
@@ -35,9 +39,7 @@ class Activity {
 
   returnMinutesActive(date) {
     let correctUser =  this.findCorrectUser();
-    let correctUserDate = this.data.filter((user) => {
-        return user.date === date;
-      });
+    let correctUserDate = this.findCorrectUserDate(date);
     let user = correctUserDate.find((user) =>{
         return user.userID === correctUser.id
     });
@@ -56,9 +58,7 @@ class Activity {
 
   metStepGoalForDay(date) {
     let correctUser = this.findCorrectUser();
-    let correctUserDate = this.data.filter((user) => {
-        return user.date === date;
-      });
+    let correctUserDate = this.findCorrectUserDate(date);
     let user = correctUserDate.find((user) =>{
         return user.userID === correctUser.id;
     });

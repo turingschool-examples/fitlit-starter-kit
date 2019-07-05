@@ -47,13 +47,13 @@ describe('SleepRepository', function() {
 
 	describe('findSleepQualityGreaterThanThree', function() {
 		it('should be able to find each user in a week with a sleep quality greater than 3', function() {
-			expect(newSleepRepository.findSleepQualityGreaterThanThree()).to.eql([2,3])
+			expect(newSleepRepository.findSleepQualityGreaterThanThree('2019/06/15', '2019/06/21')).to.eql([2,3,4,5])
 		});
 	});
 
 	describe('findMostSleep', function() {
 		it('should be able to find the user/s who slept the most number of hours on a given date', function() {
-			exepct(newSleepRepository.findMostSleep('2019/06/15').to.eql([3]))
+			expect(newSleepRepository.findMostSleep('2019/06/15')).to.eql([3])
 		});
 	});
 

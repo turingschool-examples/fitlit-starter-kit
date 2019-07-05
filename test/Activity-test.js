@@ -60,4 +60,9 @@ describe('Activity', () => {
     expect(stairClimbingRecord).to.equal(25);
   });
 
+  it('should return user\'s all-time steps total', () => {
+    const usersTotalSteps = activity.returnUsersStepTotal(2);
+    expect(usersTotalSteps).to.equal(54000);
+  });
+
 })

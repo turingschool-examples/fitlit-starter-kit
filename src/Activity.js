@@ -51,6 +51,14 @@ class Activity {
       return acc;
     }, 0);
   }
+
+  returnUsersStepTotal() {
+    return this.userData.reduce((acc, record) => {
+      acc += record.numSteps;
+      return acc;
+    }, 0);
+  }
+
 }
 
 if (typeof module !== 'undefined') {

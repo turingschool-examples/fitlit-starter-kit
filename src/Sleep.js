@@ -31,8 +31,11 @@ class Sleep {
     return this.consumerInfo(id).find((obj) => obj.date === day).sleepQuality;
   }
 
-  dailyHoursPerWeek(id) {
-    return this.consumerInfo(id).slice(-7).map((obj) => obj.hoursSlept);
+  dailyHoursSleptPerWeek(id, day) {
+    let userArray = this.consumerInfo(id);
+    let userDay = userArray.filter(obj => obj.date === day);
+    let index = userArray.indexOf(userDay[0]);
+    return userArray.slice(index, 8).map((obj) => obj.hoursSlept);
   }
 
   dailySleepQualityPerWeek(id) {

@@ -23,11 +23,11 @@ describe('Sleep', function() {
     expect(sleep.consumerInfo(3)).to.eql([sleepData[0], sleepData[1],sleepData[2],sleepData[3],sleepData[4],sleepData[5],sleepData[6],sleepData[7],sleepData[8]]); 
   });
 
-  it('should return the average hours slept per day', function() {
+  it('should return the average hours slept per day per user', function() {
     expect(sleep.averageHoursSlept(3)).to.equal(9)
   });
 
-  it('should return the average sleep quality per day', function() {
+  it('should return the average sleep quality', function() {
     expect(sleep.averageQualitySleep(3)).to.equal(3)
   });
 
@@ -40,7 +40,7 @@ describe('Sleep', function() {
   });
 
   it('should return a list of hours slept over a week for user', function() {
-    expect(sleep.dailyHoursPerWeek(3)).to.eql([5.3, 9.8, 7.2, 9.4, 8.9, 9.8, 4.7]);
+    expect(sleep.dailyHoursSleptPerWeek(3, "2019/06/16")).to.eql([10.7, 5.3, 9.8, 7.2, 9.4, 8.9, 9.8]);
   });
 
   it('should return a list of quality sleep over a week for user', function() {

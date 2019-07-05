@@ -28,6 +28,22 @@ class ActivityRepository {
         return allSteps;
       }, 0) / usersOnDate.length.toFixed(2))
     }
+
+    returnAvgStairs(date) {
+      let usersOnDate = this.findCorrectDate(date);
+      return Number(usersOnDate.reduce((allStairs, user) => {
+        allStairs += user.flightsOfStairs;
+        return allStairs;
+      }, 0) / usersOnDate.length.toFixed(2))
+    }
+
+    returnAvgMins(date) {
+      let usersOnDate = this.findCorrectDate(date);
+      return Number(usersOnDate.reduce((allStairs, user) => {
+        allStairs += user.flightsOfStairs;
+        return allStairs;
+      }, 0) / usersOnDate.length.toFixed(2))
+    }
 }
 
 if (typeof module !== 'undefined') {

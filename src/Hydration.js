@@ -20,7 +20,7 @@ class Hydration {
   
     return this.userData.reduce((acc, record, index) => {
       if (index <= daySeven && index >= dayOne) {
-      acc.push({['x']:record.date, ['y']: record.numOunces});
+        acc.push({['x']: record.date, ['y']: record.numOunces});
       }
       return acc;
     }, []);

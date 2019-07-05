@@ -41,7 +41,7 @@ describe('Activity', () => {
   });
 
   it('should return the avg num min active in a given week', () => {
-    const avgMinutesActive = activity.returnAvgMinutesActiveGivenWeek("2019/06/23");
+    const avgMinutesActive = activity.returnAvgMinActiveGivenWeek("2019/06/23");
     expect(avgMinutesActive).to.equal(157.14);
   });
 

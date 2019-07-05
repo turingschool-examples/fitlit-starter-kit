@@ -25,11 +25,6 @@ describe('ActivityRepo', () => {
     expect(activityRepo).to.be.an.instanceOf(ActivityRepo);
   });
 
-  // it('should return the user\'s data for given id', () => {
-  //   const name = userRepo.returnUserData(2).name;
-  //   expect(name).to.equal('Jarvis Considine');
-  // });
-
   it('should return the user\'s activity data for given id', () => {
     const  userActivity = activityRepo.returnUserActivityData(2);
     expect(userActivity[0].numSteps).to.equal(3000);

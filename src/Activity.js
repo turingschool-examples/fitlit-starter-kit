@@ -16,13 +16,13 @@ class Activity {
     return this.userData.find(record => record.date === date).minutesActive;
   }
 
-  returnAvgMinutesActiveGivenWeek(date) {
+  returnAvgMinActiveGivenWeek(date) {
     let daySeven = this.userData.findIndex(record => record.date === date);
     let dayOne = daySeven - 6;
 
     return +(this.userData.reduce((acc, record, index) => {
       if (index <= daySeven && index >= dayOne) {
-      acc += record.minutesActive ;
+        acc += record.minutesActive;
       }
       return acc;
     }, 0) / 7).toFixed(2);
@@ -30,7 +30,7 @@ class Activity {
 
   wasStepGoalAchieved(date) {
     let steps = this.userData.find(record => record.date === date).numSteps;
-    if(steps >= this.userRepo.dailyStepGoal) {
+    if (steps >= this.userRepo.dailyStepGoal) {
       return true;
     } else {
       return false;
@@ -45,7 +45,7 @@ class Activity {
 
   stairClimbingRecord() {
     return this.userData.reduce((acc, record) => {
-      if(record.flightsOfStairs > acc) {
+      if (record.flightsOfStairs > acc) {
         acc = record.flightsOfStairs;
       }
       return acc;

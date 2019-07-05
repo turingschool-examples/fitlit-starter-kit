@@ -15,7 +15,7 @@ class ActivityRepo {
     let records = this.findAllRecordsForGivenDate(date);
     return +(records.reduce((acc, record) => {
       acc += record.flightsOfStairs; 
-        return acc;
+      return acc;
     }, 0) / records.length).toFixed(2);
   }
 
@@ -23,15 +23,15 @@ class ActivityRepo {
     let records = this.findAllRecordsForGivenDate(date);
     return +(records.reduce((acc, record) => {
       acc += record.numSteps; 
-        return acc;
+      return acc;
     }, 0) / records.length).toFixed(2);
   }
 
   avgNumMinActiveGivenDate(date) {
-  let records = this.findAllRecordsForGivenDate(date);
+    let records = this.findAllRecordsForGivenDate(date);
     return +(records.reduce((acc, record) => {
       acc += record.minutesActive; 
-        return acc;
+      return acc;
     }, 0) / records.length).toFixed(2);
   }
 

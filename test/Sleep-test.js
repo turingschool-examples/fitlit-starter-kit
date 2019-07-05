@@ -39,12 +39,16 @@ describe('Sleep', function() {
     expect(sleep.sleepQualityByDate('2019/06/15', 3)).to.eql(4.7);
   });
 
+  it('should return the index of the date', function() {
+    expect(sleep.startDayIndx(3, "2019/06/16")).to.eql(1);
+  });
+
   it('should return a list of hours slept over a week for user', function() {
     expect(sleep.dailyHoursSleptPerWeek(3, "2019/06/16")).to.eql([10.7, 5.3, 9.8, 7.2, 9.4, 8.9, 9.8]);
   });
 
   it('should return a list of quality sleep over a week for user', function() {
-    expect(sleep. dailySleepQualityPerWeek(3)).to.eql([4.9, 2.6, 3.4, 1.2, 3.7, 2.1, 3.9]);
+    expect(sleep. dailySleepQualityPerWeek(3, "2019/06/17")).to.eql([4.9, 2.6, 3.4, 1.2, 3.7, 2.1, 3.9]);
   });
 
   it('should return the average sleep quality for all users', function() {

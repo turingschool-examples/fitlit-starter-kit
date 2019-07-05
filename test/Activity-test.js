@@ -33,6 +33,31 @@ describe('Activity', () => {
   it('should return the miles walked for a given user and day', () => {
     const miles = activity.returnMilesWalkedForDate("2019/06/23");
     expect(miles).to.equal(8.52);
-  })
+  });
+
+  it('should return the minutes active for given day', () => {
+    const minutes = activity.returnMinutesActiveGivenDate("2019/06/23");
+    expect(minutes).to.equal(200)
+  });
+
+  it('should return the avg num min active in a given week', () => {
+    const avgMinutesActive = activity.returnAvgMinutesActiveGivenWeek("2019/06/23");
+    expect(avgMinutesActive).to.equal(157.14);
+  });
+
+  it('should tell user if they reached step goal for given day', () => {
+    const wasStepGoalReached = activity.wasStepGoalAchieved("2019/06/23");
+    expect(wasStepGoalReached).to.equal(true);
+  });
+
+  it('should return all days user exceeds their step goal', () => {
+    const daysStepGoalExceeded = activity.daysStepGoalExceeded();
+    expect(daysStepGoalExceeded.length).to.equal(5);
+  });
+
+  it('should return user\'s stair climbing record', () => {
+    const stairClimbingRecord = activity.stairClimbingRecord();
+    expect(stairClimbingRecord).to.equal(25);
+  });
 
 })

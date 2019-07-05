@@ -5,7 +5,7 @@ class ActivityRepo {
 
   returnUserActivityData(id) {
     return this.userData.filter(user => user.userID === id);
-  }
+  } 
 
 }
 

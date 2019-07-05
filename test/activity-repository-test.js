@@ -22,7 +22,7 @@ describe('ActivityRepository', function() {
   });
 
   it('should return overall average flights of stairs for a given date', function() {
-    expect(activityRepository.returnAvgStairs('2019/06/23')).to.equal(_________)
+    expect(activityRepository.returnAvgStairs('2019/06/23')).to.equal(10.5)
   });
 
   it('should return overall average steps taken for a given date', function() {

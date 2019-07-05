@@ -16,7 +16,7 @@ users = [...users]
 describe('SleepRepository', function() {
 
     beforeEach(function() {
-        sleepRepository = new SleepRepository(sleepData, 1);
+        sleepRepository = new SleepRepository(sleepTestData, 1);
       });
 
       it('should be a function', function() {
@@ -31,8 +31,8 @@ describe('SleepRepository', function() {
         expect(sleepRepository.returnAllSleepQual()).to.equal(fixedSleepQual);
       });
 
-      it.only('should return users who have sleep quality greater than 3', function() {
-        expect(sleepRepository.returnGreatSleepers('2019/08/07')).to.deep.equal([2]);
+      it('should return users who have sleep quality greater than 3', function() {
+        expect(sleepRepository.returnGreatSleepers('2019/06/23')).to.deep.equal([2]);
       });
 
 });

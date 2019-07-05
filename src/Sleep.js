@@ -26,7 +26,7 @@ class Sleep {
       if (index <= daySeven && index >= dayOne) {
         acc.push({ ['x']: record.date, ['y']: record.hoursSlept })
       }
-        return acc;
+      return acc;
     }, []);
   }
 

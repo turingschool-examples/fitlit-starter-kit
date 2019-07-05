@@ -24,31 +24,29 @@ class SleepRepo {
     
     users.forEach(user => {
       this.userData.forEach(record => {
-      let oneUserAllRecords = this.userData.filter(record => record.userID === user);
-          let daySeven = oneUserAllRecords.findIndex(record => record.date === date);
-          let dayOne = daySeven - 6;
-        
-      let oneUserSevenRecords = oneUserAllRecords.filter((record, index) => {
-        if (index <= daySeven && index >= dayOne) {
-          return record;
-        };
-      });
-
-      let avg = oneUserSevenRecords.reduce((acc, record) => {
-        acc += record.sleepQuality;
-        return acc;
-      }, 0) / 7;
-      
-      if (avg >= 3) {
-        !matchingUserIDS.includes(user) ? matchingUserIDS.push(user) : null;
-      }
+        let oneUserAllRecords = this.userData.filter(record => record.userID === user);
+        let daySeven = oneUserAllRecords.findIndex(record => record.date === date);
+        let dayOne = daySeven - 6;
+        let oneUserSevenRecords = oneUserAllRecords.filter((record, index) => {
+          if (index <= daySeven && index >= dayOne) {
+            return record;
+          }
+        });
+        let avg = oneUserSevenRecords.reduce((acc, record) => {
+          acc += record.sleepQuality;
+          return acc;
+        }, 0) / 7;      
+        if (avg >= 3) {
+          !matchingUserIDS.includes(user) ? matchingUserIDS.push(user) : null;
+        }
+      })
     })
-  })
     return matchingUserIDS;
   }  
 
   returnLongestSleeperGivenDate(date) {
-    return this.userData.reduce((acc, record) => {
+    let records = this.userData.filter(record => record.date === date)
+    return records.reduce((acc, record) => {
       if (record.hoursSlept > acc.hoursSlept) {
         acc = record;
       }

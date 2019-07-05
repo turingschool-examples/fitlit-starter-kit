@@ -28,9 +28,9 @@ describe('SleepRepo', () => {
     expect(average).to.equal(3);
   });
 
-  it('should return all users who average higher than 3 sleep quality for a week, based on a given date', () => {
+  it('should return users who avg higher than qlty of 3 for a week, from a given date', () => {
     let bestSleepers = sleepRepo.returnAllUserQualityOverThree(givenDate);
-    expect(bestSleepers).to.eql([3,4,5]);
+    expect(bestSleepers).to.eql([3, 4, 5]);
   });
 
   it('should return the user with the highest sleep hours for a given date (or all, if tied)', () => {

@@ -10,7 +10,7 @@ describe('SleepRepo', () => {
 
   let sleepRepo, givenDate;
   beforeEach(() => {
-    givenDate = "2019/06/16";
+    givenDate = "2019/06/22";
     sleepRepo = new SleepRepo(sampleSleepData);
     sleep = new Sleep(sleepRepo.returnUserData(2));
   });
@@ -25,12 +25,12 @@ describe('SleepRepo', () => {
 
   it('should return the average sleep quality for all users', () => {
     let average = sleepRepo.returnAllUserSleepQualityAvg();
-    expect(average).to.equal(2.97);
+    expect(average).to.equal(3);
   });
 
-  it.skip('should return all users who average higher than 3 sleep quality for a week, based on a given date', () => {
+  it('should return all users who average higher than 3 sleep quality for a week, based on a given date', () => {
     let bestSleepers = sleepRepo.returnAllUserQualityOverThree(givenDate);
-    expect(bestSleepers).to.equal([5]);
+    expect(bestSleepers).to.eql([3,4,5]);
   });
 
   it('should return the user with the highest sleep hours for a given date (or all, if tied)', () => {

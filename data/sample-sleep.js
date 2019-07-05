@@ -57,7 +57,7 @@ const sampleSleepData = [
     "userID": 5,
     "date": "2019/06/16",
     "hoursSlept": 4.1,
-    "sleepQuality": 3.6
+    "sleepQuality": 5
   },
   {
     "userID": 1,
@@ -195,13 +195,13 @@ const sampleSleepData = [
     "userID": 3,
     "date": "2019/06/21",
     "hoursSlept": 10.8,
-    "sleepQuality": 4
+    "sleepQuality": 3
   },
   {
     "userID": 4,
     "date": "2019/06/21",
     "hoursSlept": 5.4,
-    "sleepQuality": 3
+    "sleepQuality": 4
   },
   {
     "userID": 5,

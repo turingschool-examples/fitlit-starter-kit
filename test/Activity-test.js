@@ -3,6 +3,7 @@ const expect = chai.expect;
 
 const activityData = require('../data/practice-activity');
 const Activity = require('../src/Activity');
+const userData = require('../data/users');
 
 describe('Activity', function() {
 
@@ -19,6 +20,8 @@ describe('Activity', function() {
     expect(activity).to.be.an.instanceof(Activity);
   });
 
-  // it('should return a list of current user sleep data', function() {
-  //   expect(sleep.consumerInfo(3)).to.eql([sleepData[0], sleepData[1],sleepData[2],sleepData[3],sleepData[4],sleepData[5],sleepData[6],sleepData[7],sleepData[8]]); 
+  it('should return miles a user has walked ', function() {
+    expect(activity.milesWalkedInDay("2019/06/15", userData)).to.equal(6); 
+});
+
 });

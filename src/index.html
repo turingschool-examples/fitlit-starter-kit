@@ -1,56 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="normalize" type="text/css" href="normalize.css">
-    <link rel="styles" type="text/css" href="styles.css">
-    <title>FitLit</title>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  </head>
-  <body>
-    <header>
-      <h1>FitLit</h1>
-      <h2>Welcome <span>NAME</span>></h2>
-    </header>
-    <nav>
-      <section class="nav-boxes" id="personal-info">
-        <h5 class="personal-info-box"><span id="personal-stride"></span>stride</h5> 
-        <h5 class="personal-info-box">email<span id="personal-email"></span></h5> 
-        <h5 class="personal-info-box"><span id="personal-step-goal"></span>daily steps</h5> 
-        <h5 class="personal-info-box">address<span id="personal-address"></span></h5> 
-      </section>
-      <canvas id="step-goal-chart"></canvas>
-      <section id="water-wrapper">
-        <section id="daily-water">
-          <h3>daily water consumption</h3>
-          <h4 id="daily-ounces"></h4>
-        </section>
-        <canvas id="water-chart"></canvas>
-      </section>
-      <section class="nav-boxes" id="sleep-metrics">
-        <article class="sleep-info" id="sleep-metrics-hours">
-          <h3>hours slept</h3>
-          <h4 class="big-nums" id="num-daily-hours-slept"></h4>
-          <p class="small-nums-header" id="all-time-sleep-hours">most hours slept</p>
-          <h5 class="small-nums" id="num-all-time-sleep-hours"></h5>
-          <p class="small-nums-header" id="average-hours-slept">average hours slept</p>
-          <h5 class="small-nums" id="num-average-hours-slept"></h5>
-        </article>
-        <article class="sleep-info" id="sleep-metrics-quality">
-          <h3>quality of sleep</h3>
-          <h4 class="big-nums" id="num-daily-quality-slept"></h4>
-          <p class="small-nums-header" id="all-time-quality-sleep">highest quality sleep</p>
-          <h5 class="small-nums" id="num-all-time-quality-sleep"></h5>
-          <p class="small-nums-header" id="average-quality-slept">average sleep quality</p>
-          <h5 class="small-nums" id="num-average-quality-slept"></h5>
-        </article>
-      </section>
-      <section id="weekly-sleep-chart">
-        <canvas id="sleep-chart"></canvas>
-      </section>
-      <section class="nav-boxes" id="daily-activity-metrics"></section>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="normalize" type="text/css" href="normalize.css">
+  <link rel="styles" type="text/css" href="styles.css">
+  <title>FitLit</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+<body>
+  <header>
+    <h1>FitLit</h1>
+    <h2>Welcome <span>NAME</span>></h2>
+  </header>
+  <nav>
+    <section class="nav-boxes" id="personal-info">
+      <h5 class="personal-info-box-text"><span id="personal-stride"></span>stride</h5>
+      <h5 class="personal-info-box-text">email<span id="personal-email"></span></h5>
+      <h5 class="personal-info-box-text"><span id="personal-step-goal"></span>daily steps</h5>
+      <h5 class="personal-info-box-text">address<span id="personal-address"></span></h5>
+    </section>
+    <section class="nav-boxes" id="sleep-metrics">
+      <article class="sleep-info" id="sleep-metrics-hours">
+        <h3>hours slept</h3>
+        <h4 class="big-nums" id="num-daily-hours-slept"></h4>
+        <p class="small-nums-header" id="all-time-sleep-hours">most hours slept</p>
+        <h5 class="small-nums" id="num-all-time-sleep-hours"></h5>
+        <p class="small-nums-header" id="average-hours-slept">average hours slept</p>
+        <h5 class="small-nums" id="num-average-hours-slept"></h5>
+      </article>
+      <article class="sleep-info" id="sleep-metrics-quality">
+        <h3>quality of sleep</h3>
+        <h4 class="big-nums" id="num-daily-quality-slept"></h4>
+        <p class="small-nums-header" id="all-time-quality-sleep">highest quality sleep</p>
+        <h5 class="small-nums" id="num-all-time-quality-sleep"></h5>
+        <p class="small-nums-header" id="average-quality-slept">average sleep quality</p>
+        <h5 class="small-nums" id="num-average-quality-slept"></h5>
+      </article>
+    </section>
+    <section class="nav-boxes" id="daily-activity-metrics">
       <article class="miles-info" id="miles-metrics">
         <h3>miles today</h3>
         <h4 class="big-nums" id="num-daily-miles"></h4>
@@ -62,19 +51,50 @@
         <p class="small-nums-header" id="all-time-active-minutes-header">all time active minutes</p>
         <h5 class="small-nums" id="num-all-time-active-minutes"></h5>
       </article>
-      <section class="nav-boxes" id="weekly-activity-metrics"></section>
-    </nav>
-    <script type="text/javascript" src="./User.js"></script>
-    <script type="text/javascript" src="../data/activity.js"></script>
-    <script type="text/javascript" src="../data/hydration.js"></script>
-    <script type="text/javascript" src="../data/sleep.js"></script>
-    <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="./Activity.js"></script>
-    <script type="text/javascript" src="./ActivityRepository.js"></script>
-    <script type="text/javascript" src="./Hydration.js"></script>
-    <script type="text/javascript" src="./Sleep.js"></script>
-    <script type="text/javascript" src="./SleepRepository.js"></script>
-    <script type="text/javascript" src="./UserRepository.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
-  </body>
+    </section>
+    <section class="nav-boxes" id="weekly-activity-metrics">
+      <h3>weekly activity</h3>
+      <h4 class="big-nums" id="num-weekly-steps"></h4>
+      <h6 class="weekly-activity-text" id="weekly-steps">steps</h6>
+      <h4 class="big-nums" id="num-weekly-min-active"></h4>
+      <h6 class="weekly-activity-text" id="weekly-min-active">minutes</h6>
+      <h4 class="big-nums" id="num-weekly-flights"></h4>
+      <h6 class="weekly-activity-text" id="weekly-flights">flights</h6>
+    </section>
+  </nav>
+  <main>
+    <section id="step-goal-comparison">
+      <canvas id="step-goal-chart"></canvas>
+    </section>
+    <section id="water-wrapper">
+      <article id="daily-water">
+        <h3>daily water consumption</h3>
+        <h4 id="daily-ounces"></h4>
+      </article>
+      <canvas id="water-chart"></canvas>
+    </section>
+    <section id="weekly-sleep-chart">
+      <canvas id="hours-sleep-chart"></canvas>
+      <canvas id="quality-sleep-chart"></canvas>
+    </section>
+    <section id="daily-activity-charts">
+      <h3>daily activity</h3>
+      <canvas class="comparison-cart" id="daily-step-comparison-chart"></canvas>
+      <canvas class="comparison-cart" id="daily-active-minutes-comparison-chart"></canvas>
+      <canvas class="comparison-cart" id="daily-flight-comparison-chart"></canvas>
+    </section>
+  </main>
+  <script type="text/javascript" src="./User.js"></script>
+  <script type="text/javascript" src="../data/activity.js"></script>
+  <script type="text/javascript" src="../data/hydration.js"></script>
+  <script type="text/javascript" src="../data/sleep.js"></script>
+  <script type="text/javascript" src="../data/users.js"></script>
+  <script type="text/javascript" src="./Activity.js"></script>
+  <script type="text/javascript" src="./ActivityRepository.js"></script>
+  <script type="text/javascript" src="./Hydration.js"></script>
+  <script type="text/javascript" src="./Sleep.js"></script>
+  <script type="text/javascript" src="./SleepRepository.js"></script>
+  <script type="text/javascript" src="./UserRepository.js"></script>
+  <script type="text/javascript" src="./scripts.js"></script>
+</body>
 </html>

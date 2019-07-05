@@ -52,7 +52,7 @@ describe('Sleep', function() {
     expect(sleep.displayWeeklySleepQuality(1)).to.deep.eql([2.2, 3.8])
   })
 
-   it('should display the date with the most sleep for a user ever', function() {
+  it('should display the date with the most sleep for a user ever', function() {
     const sleep = new Sleep(sleepData);
     expect(sleep.displayRecordSleepQuality(1)).to.deep.equal(["2019/06/16", 3.8])
   });

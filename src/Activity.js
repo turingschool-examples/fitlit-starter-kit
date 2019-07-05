@@ -73,13 +73,13 @@ class Activity {
     return Math.max(...stairsClimbed);
   }
 
-  displayRecordActiveDay(id){
+  displayRecordActiveDay(id) {
     let userId = this.findIdHelper(id);
-    let minutesActiveList = userId.map(function(obj){
+    let minutesActiveList = userId.map(function(obj) {
       return obj.minutesActive
     })
     let mostActiveMinutes = Math.max(...minutesActiveList)
-    let mostActiveDate = userId.find(function(obj){
+    let mostActiveDate = userId.find(function(obj) {
       return obj.minutesActive === mostActiveMinutes
     })
     let activityRecord = []

@@ -24,7 +24,14 @@ $(document).ready(function(){
   $('#num-all-time-quality-sleep').text(sleep.displayRecordSleepQuality(randomUser + 1)[1])
   $('#num-all-time-quality-sleep-date').text(sleep.displayRecordSleepQuality(randomUser + 1)[0]);
   $('#num-average-quality-slept').text(sleep.calculateAverageSleepQuality(randomUser +1));
+  $('#num-daily-miles').text(activity.calculateMilesWalked(randomUser + 1, "2019/06/15"));
+  $('#num-steps-today').text(activityData[randomUser].numSteps)
+  $('#num-daily-active-minutes').text(activity.displayActiveMinutes(randomUser + 1, "2019/06/15"));
+  $('#num-all-time-active-minutes').text(activity.displayRecordActiveDay(randomUser + 1)[1]);
+  $('#num-all-time-active-minutes-date').text(activity.displayRecordActiveDay(randomUser + 1)[0]);
+  // $('#num-weekly-steps').text(activity.displayWeeklySteps())
   
+
  // $('#num-daily-hours-slept').text(sleep.displayHoursSlept(randomUser + 1, ${dateInput}));
 })
 

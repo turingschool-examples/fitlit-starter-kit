@@ -119,9 +119,9 @@ describe('Activity', function() {
         })
     });
         it('should return the average of all users stair climbing stats', function () {
-        const repo1 = new Activity(fakeData, fakeActivity, 3577, "2019/06/16");
+        const repo1 = new Activity(fakeData, fakeActivity, 3577, "2019/06/15");
             
-            expect(repo1.getAllUsersStairClimbingAverage()).to.eql(22)
-            //   15 users
+            expect(repo1.getAllUsersStairClimbingAverage()).to.eql(28)
+            //   7 users
         });
     });

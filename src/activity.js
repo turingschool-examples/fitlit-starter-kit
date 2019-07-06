@@ -53,10 +53,11 @@ class Activity extends ActivityRepository {
 }
 
     getAllUsersStairClimbingAverage() {
-        let users = this.userActivity.reduce(function (user, cV) {
+        let userByDate = this.userActivity.filter(el => el.date === this.date)
+        let users = userByDate.reduce(function (user, cV) {
             return user += cV.flightsOfStairs 
         }, 0) 
-        return Math.floor(users / this.userActivity.length)
+        return Math.floor(users / userByDate.length)
 }
 }
 

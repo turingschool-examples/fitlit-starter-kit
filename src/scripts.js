@@ -16,26 +16,38 @@ function populateUser() {
 
   populateUserCard(user, activity);
   populateMainPage(user, activity);
-  
 
-  // console.log(randomUser, userRepository);
-  // console.log(userInfo, user);
+  populateHydrationWidget(user);
+  populateSleepwidget(user);
 }
 
-function populateUserCard(data, actData) {
+function populateUserCard(userData, actData) {
   let avgUserSteps = actData.averageActivity('2019/09/22', 'numSteps');
-  $('.user__address').text(`${data.address}`);
-  $('.user__email').text(`${data.email}`);
-  $('.user__strideLength').text(`${data.strideLength}`);
-  $('.user__dailyStepGoal').text(`${data.dailyStepGoal}`);
+  $('.user__address').text(`${userData.address}`);
+  $('.user__email').text(`${userData.email}`);
+  $('.user__strideLength').text(`${userData.strideLength}`);
+  $('.user__dailyStepGoal').text(`${userData.dailyStepGoal}`);
   $('.average__dailyStepGoal').text(`${avgUserSteps}`);
 }
 
-function populateMainPage(data, actData) {
-  // console.log(data, actData);
-  let stepsToday = actData.totalUserStepsDaily(data.id, "2019/09/22");
+function populateMainPage(userData, actData) {
+  let stepsToday = actData.totalUserStepsDaily(userData.id, "2019/09/22");
   $('.steps').text(`${stepsToday}`);
-  console.log(stepsToday);
-  // let 
-  // $('.steps').text(`${data.address}`);
 }
+
+function populateHydrationWidget(user) {
+  const hydration = new Hydration(hydrationData);
+  let waterIntakeToday = hydration.totalOuncesDaily("2019/09/22", user.id);
+  $('.ounces').text(`${waterIntakeToday}`);
+}
+
+function populateSleepwidget(user) {
+  const sleep = new Sleep(sleepData);
+  let hoursSleptToday = sleep.hoursSleptByDate('2019/09/22', user.id);
+  $('.hrsSlept').text(`${hoursSleptToday}`);
+  let qualSleepToday = sleep.sleepQualityByDate('2019/09/22', user.id)
+  $('.qualSlept').text(`${qualSleepToday}`);
+  // console.log(hoursSleptToday);
+}
+// .hoursSleptByDate('2019/06/15', 3)
+// .sleepQualityByDate('2019/06/15', 3)

@@ -3,6 +3,7 @@ $(document).ready(function() {
   
   $('#js-h2--user').hide();
   $('#js-user-profile').hide();
+  $('#js-step-goal-chart').hide();
 
   $('#js-change-user').click(function() {
     const userRepo = new UserRepository(userData);
@@ -11,6 +12,7 @@ $(document).ready(function() {
     const user = new User(specificUser);
     $('#js-user-profile').show();
     $('#js-change-user').removeClass('list-item--active');
+    $('#js-step-goal').removeClass('list-item--active');
     $('#js-user').addClass('list-item--active');
     $('#js-first-name').html(user.returnFirstName());
     $('#js-full-name').html(user.name);
@@ -18,9 +20,17 @@ $(document).ready(function() {
     $('#js-email').html(user.email);
     $('#js-friends').html(userRepo.makeFriendNames(userID));
     $('#js-h2--welcome').hide();
+    $('#js-step-goal-chart').hide();
     $('#js-h2--user').show();
     updateCharts(user);
   });
+
+  $('#js-step-goal').click(function() {
+    $('#js-user-profile').hide();
+    $('#js-step-goal-chart').show();
+    $('#js-user').removeClass('list-item--active');
+    $('#js-step-goal').addClass('list-item--active');
+  })
 
   function updateStepGoalChart(user) {
     stepGoalChart.data.labels[0] = user.name;
@@ -32,13 +42,13 @@ $(document).ready(function() {
     updateStepGoalChart(user);
   }
 
-  var stepGoalChart = new Chart($("#step-goal-chart"), {
+  var stepGoalChart = new Chart($("#js-step-goal-chart"), {
     type: 'bar',
     data: {
       labels: ["", "All Users"],
       datasets: [
         {
-          label: "Population (millions)",
+          label: "Daily Step Goal",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
           data: [0, 6700]
         }

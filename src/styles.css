@@ -6,6 +6,12 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+p {
+  font-size: 1.5em;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+
 .main {
   background-color: #fff;
   display: grid;
@@ -86,6 +92,7 @@ body {
 
 .section {
   background-color: #e4e4e4;
+  display: flex;
   grid-area: main;
 }
 
@@ -95,4 +102,7 @@ body {
 
 .user-profile {
   border: 1px solid black;
+  margin: auto;
+  margin-top: 50px;
+  padding: 50px;
 }

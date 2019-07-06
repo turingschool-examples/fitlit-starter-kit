@@ -19,7 +19,12 @@ $(document).ready(function(){
   $('#num-daily-hours-slept').text(sleep.displayHoursSlept(randomUser + 1, "2019/06/15"));
   $('#num-all-time-sleep-hours').text(sleep.displayRecordHoursSlept(randomUser + 1)[1])
   $('#num-all-time-sleep-hours-date').text(sleep.displayRecordHoursSlept(randomUser + 1)[0]);
-  $('#num-average-hours-slept').text(sleep.calculateAverageDailySleepHours(randomUser + 1))
+  $('#num-average-hours-slept').text(sleep.calculateAverageDailySleepHours(randomUser + 1));
+  $('#num-daily-quality-slept').text(sleep.displaySleepQuality(randomUser + 1, "2019/06/15"));
+  $('#num-all-time-quality-sleep').text(sleep.displayRecordSleepQuality(randomUser + 1)[1])
+  $('#num-all-time-quality-sleep-date').text(sleep.displayRecordSleepQuality(randomUser + 1)[0]);
+  $('#num-average-quality-slept').text(sleep.calculateAverageSleepQuality(randomUser +1));
+  
  // $('#num-daily-hours-slept').text(sleep.displayHoursSlept(randomUser + 1, ${dateInput}));
 })
 

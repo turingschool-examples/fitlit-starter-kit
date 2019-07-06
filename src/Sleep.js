@@ -29,7 +29,8 @@ class Sleep {
       return acc = acc + curVal
     }, 0 )
     let averageSleepQuality = totalSleepQuality / userSleepData.length
-    return averageSleepQuality 
+    let roundedQualitySleep = averageSleepQuality.toFixed(2)
+    return Number(roundedQualitySleep) 
   }
 
   displayHoursSlept(id, date) {

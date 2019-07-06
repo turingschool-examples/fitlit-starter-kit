@@ -3,7 +3,6 @@ const ActivityRepository = require('../src/activityRepository');
 class Activity extends ActivityRepository {
     constructor(userData, userActivity, numSteps, date) {
         super(userData)
-        // console.log(userData)
         this.userActivity = userActivity;
         this.numSteps = numSteps;
         this.date = date;
@@ -24,17 +23,28 @@ class Activity extends ActivityRepository {
         return minActive.minutesActive
     }
     
-    getWeeklyMinutesActive() {
-        var week = super.object.reverse()
-        // .slice(0, 7).map(el => el.minutesActive).reduce((a, b) => a+b)
-        // return Math.floor(week / 7)
+    getWeeklyMinutesActive(id) {
+        let weekActive = this.userActivity.filter(el => el.userID === id)
+        let startDateIndex = weekActive.find(el => el.date === this.date)
+        let startDate = weekActive.indexOf(startDateIndex)
+        let weekOfActivity = weekActive.slice(startDate, 7)
+        let sum = weekOfActivity.reduce((a, b) => a + b.minutesActive, 0)
+        return Math.floor(sum / 7)
+    }
+
+    achieveStepGoal(id) {
+      let user = this.userActivity.filter(el => el.userID === id)
+      let userByDate = user.find(el => el.date === this.date)
+      let stepGoal = super.getUserData(userByDate.userID).map(user => user.dailyStepGoal)
+      return this.numSteps >= stepGoal ? 'step goal met!' : 'step goal not met!'
+    }
+
+    exceedStepGoal(id) {
+     let stepGoal = super.getUserData(id).map(user => user.dailyStepGoal)
+     return this.numSteps >= stepGoal ? 'step goal met!' : 'step goal not met!'
+
     }
 }
-//         let userDay = 
-//         // let userDay = object.find(el => el.date === this.date)
-//         // var stridesAndSteps = Math.floor(super.getStrideLength() * userDay.numSteps)
-//         // var miles = 5280 / stridesAndSteps
-//         // return miles.toFixed(2)
 
 if (typeof module !== 'undefined') {
     module.exports = Activity;

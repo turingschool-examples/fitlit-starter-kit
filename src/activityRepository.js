@@ -7,7 +7,6 @@ class ActivityRepository {
     }
 
    getUserData(id) {
-    //    console.log(id)
        return this.data.filter(el =>
            el.id === id)
    }

@@ -25,13 +25,14 @@ $(document).ready(function() {
   $('#num-all-time-quality-sleep-date').text(sleep.displayRecordSleepQuality(randomUser + 1)[0]);
   $('#num-average-quality-slept').text(sleep.calculateAverageSleepQuality(randomUser +1));
   $('#num-daily-miles').text(activity.calculateMilesWalked(randomUser + 1, "2019/06/15"));
-  $('#num-steps-today').text(activityData[randomUser].numSteps)
+  $('#num-steps-today').text(activityData[randomUser].numSteps);
   $('#num-daily-active-minutes').text(activity.displayActiveMinutes(randomUser + 1, "2019/06/15"));
   $('#num-all-time-active-minutes').text(activity.displayRecordActiveDay(randomUser + 1)[1]);
   $('#num-all-time-active-minutes-date').text(activity.displayRecordActiveDay(randomUser + 1)[0]);
-  $('#num-weekly-steps-average').text(activity.displayWeeklyStepsAverage(randomUser + 1))
-  $('#num-weekly-min-active-average').text(activity.displayWeeklyActiveMinutesAverage(randomUser + 1))
-  $('#num-weekly-flights-average').text(activity.displayWeeklyFlightsAverage(randomUser + 1))
+  $('#num-weekly-steps-average').text(activity.displayWeeklyStepsAverage(randomUser + 1));
+  $('#num-weekly-min-active-average').text(activity.displayWeeklyActiveMinutesAverage(randomUser + 1));
+  $('#num-weekly-flights-average').text(activity.displayWeeklyFlightsAverage(randomUser + 1));
+  $('#daily-ounces').text(hydration.displayFluidOuncesPerDay(randomUser + 1, "2019/06/15"));
 
 
 
@@ -158,6 +159,38 @@ $(document).ready(function() {
                 }]
             }
         });
+
+
+      var weeklyWaterConsumptionChart = new Chart($('#water-chart'), {
+            type: 'bar',
+            data: {
+                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    label: 'weekly active minutes overview',
+                    data: hydration.displayWeeklyFluidOunce(randomUser + 1),
+                    backgroundColor: [
+                        'rgba(250, 250, 250, 0.4)',
+                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                        'rgba(50, 50, 50, 0.4)', // 50 red, 50 blue, 50 green, 40% opacity
+                        'rgba(100, 100, 100, 0.4)', //alternatively use a hex code
+                        'rgba(150, 150, 150, 0.4)',
+                        'rgba(200, 200, 200, 0.4)',
+                        'rgba(250, 250, 250, 0.4)'
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)', //full black border
+                    ],
+                    borderWidth: 2 //2 pixel border
+                }]
+            }
+        });
+
 
 
 })

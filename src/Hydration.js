@@ -33,8 +33,8 @@ class Hydration {
     let userWeeklyFluidOunces = user.map(function(obj) {
       return obj.numOunces;
     });
-    if (userWeeklyFluidOunces.length >= 7) {
-      userWeeklyFluidOunces.shift();
+    if (userWeeklyFluidOunces.length > 7) {
+      userWeeklyFluidOunces.length = 7;
     }
     return userWeeklyFluidOunces;
   }

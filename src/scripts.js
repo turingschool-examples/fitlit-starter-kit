@@ -11,19 +11,28 @@ function populateUser() {
   const user = new User(userInfo);
   let name = user.returnUserName();
   $('.user__name').text(`${name}`);
-  populateUserCard(user);
+  
+  const activity = new Activity(activityData);
+
+  populateUserCard(user, activity);
+  populateMainPage(user, activity);
   
 
   console.log(randomUser, userRepository);
   console.log(userInfo, user);
 }
 
-function populateUserCard(data) {
-  const activity = new Activity(activityData);
-  let avgUserSteps = activity.averageActivity('2019/09/22', 'numSteps');
+function populateUserCard(data, actData) {
+  let avgUserSteps = actData.averageActivity('2019/09/22', 'numSteps');
   $('.user__address').text(`${data.address}`);
   $('.user__email').text(`${data.email}`);
   $('.user__strideLength').text(`${data.strideLength}`);
   $('.user__dailyStepGoal').text(`${data.dailyStepGoal}`);
   $('.average__dailyStepGoal').text(`${avgUserSteps}`);
+}
+
+function populateMainPage(data, actData) {
+  console.log(actData);
+  // let 
+  // $('.steps').text(`${data.address}`);
 }

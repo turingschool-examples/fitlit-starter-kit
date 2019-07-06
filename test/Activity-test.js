@@ -20,13 +20,17 @@ describe('Activity', function() {
     expect(activity).to.be.an.instanceof(Activity);
   });
 
+  it('should return number of steps for a user given the date', function() {
+    expect(activity.totalUserStepsDaily(3, "2019/06/15")).to.eql(7402);
+  });
+
   it('should return miles a user has walked ', function() {
     expect(activity.milesWalkedInDay("2019/06/15", userData)).to.equal(6); 
-});
+  });
 
   it('should return the amount of minutes they were active for a given day', function() {
     expect(activity.minutesActive(3, '2019/06/15')).to.equal(116);
-});
+  });
 
   it('should return minutes active the user averaged for a given week', function() {
     expect(activity.minutesAveragedByWeek(3, '2019/06/16')).to.equal(156);

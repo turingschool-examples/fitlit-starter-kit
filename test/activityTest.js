@@ -61,7 +61,41 @@ describe('Activity', function() {
         const repo1 = new Activity(fakeData, fakeActivity, 3577, "2019/06/16");
         const repo2 = new Activity(fakeData, fakeActivity, 5144, "2019/06/15");
 
-        expect(repo1.exceedStepGoal(1)).to.eql('step goal not met!')
-        expect(repo2.exceedStepGoal(25)).to.eql('step goal met!')
+        expect(repo1.exceedStepGoal(1)).to.eql([{
+                userID: 1,
+                date: '2019/06/17',
+                numSteps: 14329,
+                minutesActive: 168,
+                flightsOfStairs: 18
+            },
+            {
+                userID: 1,
+                date: '2019/06/20',
+                numSteps: 14478,
+                minutesActive: 140,
+                flightsOfStairs: 12
+            },
+            {
+                userID: 1,
+                date: '2019/06/22',
+                numSteps: 10289,
+                minutesActive: 119,
+                flightsOfStairs: 6
+            },
+            {
+                userID: 1,
+                date: '2019/06/23',
+                numSteps: 13928,
+                minutesActive: 218,
+                flightsOfStairs: 21
+            }
+        ])
+        expect(repo2.exceedStepGoal(25)).to.eql([{
+            userID: 25,
+            date: '2019/06/15',
+            numSteps: 5144,
+            minutesActive: 282,
+            flightsOfStairs: 16
+        }])
       });
 });

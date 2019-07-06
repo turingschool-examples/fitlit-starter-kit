@@ -39,8 +39,11 @@ class Activity extends ActivityRepository {
     }
 
     exceedStepGoal(id) {
-     let stepGoal = super.getUserData(id).map(user => user.dailyStepGoal)
-     return this.numSteps >= stepGoal ? 'step goal met!' : 'step goal not met!'
+     let userStepGoal = super.getUserData(id).reduce(function (user, cV) {
+        return user += cV.dailyStepGoal
+     }, 0)
+     let exceededGoalDays = this.userActivity.filter(user => user.numSteps >= userStepGoal).filter(user => user.userID === id)
+     return exceededGoalDays
     }
 }
 

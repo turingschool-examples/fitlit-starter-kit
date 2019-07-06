@@ -43,7 +43,7 @@ describe('sleep', () => {
 			expect(sleep.findSleepQualityForWeek('2019/06/23')).to.equal(2)
 		})
 
-		it.only('should be able to return the hours of sleep for a user', () => {
+		it.skip('should be able to return the hours of sleep for a user', () => {
 			sleep.findSleepData(4);
 			expect(sleep.findHoursSleptForWeek('2019/06/23')).to.equal(53)
 		})

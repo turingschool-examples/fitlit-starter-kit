@@ -1,6 +1,7 @@
 $( document ).ready(() => {
   console.log('doc ready');
   populateUser();
+
 });
 
 function populateUser() {
@@ -8,16 +9,21 @@ function populateUser() {
   const userRepository = new UserRepository(userData);
   const userInfo = userRepository.returnUserData(randomUser);
   const user = new User(userInfo);
-  const activity = new Activity(activityData);
   let name = user.returnUserName();
-  let avgUserSteps = activity.averageActivity('2019/09/22', 'numSteps');
   $('.user__name').text(`${name}`);
-  $('.user__address').text(`${user.address}`);
-  $('.user__email').text(`${user.email}`);
-  $('.user__strideLength').text(`${user.strideLength}`);
-  $('.user__dailyStepGoal').text(`${user.dailyStepGoal}`);
-  $('.average__dailyStepGoal').text(`${avgUserSteps}`);
+  populateUserCard(user);
+  
 
   console.log(randomUser, userRepository);
   console.log(userInfo, user);
+}
+
+function populateUserCard(data) {
+  const activity = new Activity(activityData);
+  let avgUserSteps = activity.averageActivity('2019/09/22', 'numSteps');
+  $('.user__address').text(`${data.address}`);
+  $('.user__email').text(`${data.email}`);
+  $('.user__strideLength').text(`${data.strideLength}`);
+  $('.user__dailyStepGoal').text(`${data.dailyStepGoal}`);
+  $('.average__dailyStepGoal').text(`${avgUserSteps}`);
 }

@@ -64,6 +64,7 @@ h3 {
 p {
   color: white;
   font-family: 'Roboto Mono', monospace;
+  margin: 5px 0;
 }
 
 .section--right__info {

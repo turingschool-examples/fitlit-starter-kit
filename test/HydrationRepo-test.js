@@ -10,30 +10,30 @@ describe('hydrationRepo', () => {
 			hydrationRepo = new HydrationRepo();
 		});
 
-  		it.only('should be a function', () => {
+  		it.skip('should be a function', () => {
 			expect(HydrationRepo).to.be.a('function');
 		});
 
-		it.only('should be an instance of Hydration', () => {
+		it.skip('should be an instance of Hydration', () => {
 			expect(hydrationRepo).to.be.a.instanceOf(HydrationRepo);
 		});
 
-		it.only('should be able to access the user\'s data', () => {
+		it.skip('should be able to access the user\'s data', () => {
 			expect(hydrationRepo.data.length).to.equal(40)
 		});
 
-		it.only('should be able to access a specific user', () => {
+		it.skip('should be able to access a specific user', () => {
 			hydrationRepo.findHydrationData(4)
 			expect(hydrationRepo.specificUser.length).to.deep.equal(8)
 		})
 
-		it.only('should return the amount consumed by the user on a date', () => {
+		it.skip('should return the amount consumed by the user on a date', () => {
 			hydrationRepo.findHydrationData(4);
 			hydrationRepo.findDailyConsumption('2019/06/18');
 			expect(hydrationRepo.specificUser[3].numOunces).to.equal(93)
 		});
 
-		it.only('should return a users weekly average value', () => {
+		it.skip('should return a users weekly average value', () => {
 			hydrationRepo.findHydrationData(5)
 			expect(hydrationRepo.weeklyConsumptionAverage('2019/06/22')).to.equal(77)
 		});

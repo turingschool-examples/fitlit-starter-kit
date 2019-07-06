@@ -15,11 +15,11 @@ describe('hydration', () => {
 			userRepo = new UserRepo();
 		});
 
-		it.only('should be a function', () => {
+		it.skip('should be a function', () => {
 			expect(Hydration).to.be.a('function');
 		});
 
-		it.only('should be an instance of Hydration', () => {
+		it.skip('should be an instance of Hydration', () => {
 			expect(hydration).to.be.a.instanceOf(Hydration);
 		});
 

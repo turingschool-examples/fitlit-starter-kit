@@ -45,6 +45,12 @@ class Activity extends ActivityRepository {
      let exceededGoalDays = this.userActivity.filter(user => user.numSteps >= userStepGoal).filter(user => user.userID === id)
      return exceededGoalDays
     }
+
+    findStairClimbingRecord(id) {
+        let user = this.userActivity.filter(el => el.userID === id)
+        let stairClimbingRecord = user.sort((a, b) => b.flightsOfStairs - a.flightsOfStairs)
+        return stairClimbingRecord[0]
+}
 }
 
 if (typeof module !== 'undefined') {

@@ -98,4 +98,24 @@ describe('Activity', function() {
             flightsOfStairs: 16
         }])
       });
+
+      it('should return a users all time stair climbing record', function() {
+        const repo1 = new Activity(fakeData, fakeActivity, 3577, "2019/06/16");
+        const repo2 = new Activity(fakeData, fakeActivity, 5144, "2019/06/15");
+
+        expect(repo1.findStairClimbingRecord(1)).to.eql({
+            userID: 1,
+            date: '2019/06/16',
+            numSteps: 6637,
+            minutesActive: 175,
+            flightsOfStairs: 36
+        })
+        expect(repo2.findStairClimbingRecord(25)).to.eql({
+            "userID": 25,
+            "date": "2019/06/15",
+            "numSteps": 5144,
+            "minutesActive": 282,
+            "flightsOfStairs": 16
+        })
+      });
 });

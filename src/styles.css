@@ -85,3 +85,11 @@ main {
   padding: 1em;
   border: 1px solid black;
 }
+
+.activity__chart-day-allUsers {
+  /* background-color: red; */
+}
+
+.activity__chart-weeklyView-oneUser {
+  /* background-color: blue */
+}

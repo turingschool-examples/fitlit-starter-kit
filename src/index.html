@@ -3,8 +3,12 @@
   <head>
     <meta charset='UTF-8'>
     <title>Activity Tracker</title>
+
+    <link rel="stylesheet" href="reset.css">
+
   </head>
   <body>
+    <main>
     <section class='section--left'> 
       <h1>FitLit</h1>
       <section class='section--left__data'>
@@ -14,9 +18,10 @@
 
     <section class='section--right'> 
       <section class='section--right__data'>
-        <h3>Welcome, <span class = 'user__name'>name</span></h3>
-        <p><span class = 'user__date'>date</span></p>
-
+        <div>
+          <h3>Welcome, <span class = 'user__name'>name</span></h3>
+          <p><span class = 'user__date'>date</span></p>
+        </div>
         <section class='section--right__info'>
           <article></article>
           <article></article>
@@ -25,6 +30,7 @@
         <section class = 'friends'> </section>
       </section>
     </section>
+  </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type='text/javascript' src='../data/activity.js'></script>
     <script type='text/javascript' src='../data/hydration.js'></script>

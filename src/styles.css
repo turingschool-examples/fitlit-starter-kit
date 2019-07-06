@@ -1,11 +1,14 @@
 body {
-    height: 100vh;
+    height: 90vh;
+    max-width: 100vw;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: 10% 90%;
+    grid-row-gap: 20px;
+    /* grid-column-gap: 20px; */
     grid-template-areas:
     "header header header header"
-    "body body body body "
+    "body body body body"
 
 }
 
@@ -20,8 +23,13 @@ main {
     background: blue;
     display: grid;
     grid-area: body;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    width: 90%;
+    justify-self: center;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
     grid-template-areas: 
     "friends hydration hydration hydration"
     "friends sleep sleep sleep"
@@ -33,20 +41,23 @@ main {
 .main__section--friends {
     background: papayawhip;
     grid-area: friends;
+    width: 100%;
 }
 
 .main__section--hydration {
     grid-area: hydration;
+    width: 100%;
     background: palevioletred;
-    height: 100%;
 }
 
 .main__section--sleep {
     grid-area: sleep;
+    width: 100%;
     background: yellow;
 }
 
 .main__section--activity {
     grid-area: activity;
+    width: 100%;
     background: pink;
 }

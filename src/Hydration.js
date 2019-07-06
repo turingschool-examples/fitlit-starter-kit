@@ -1,4 +1,6 @@
+if (typeof module !== "undefined") {
 FilePath = require("../data/HydrationSub");
+}
 
   class Hydration {
     constructor(userID) {

@@ -1,6 +1,8 @@
+if (typeof module !== "undefined") {
 filePath = require("../data/activitySub")
 userData = require("../data/UserSub")
 User = require("../src/User")
+}
 
 class Activity {
   constructor(userID) {
@@ -87,5 +89,6 @@ class Activity {
   }
 }
 
-
+if (typeof module !== "undefined") {
 module.exports = Activity
+}

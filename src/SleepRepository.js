@@ -1,5 +1,7 @@
+if (typeof module !== "undefined") {
 dataFilePath = require('../data/sleepSub2');
 User = require('../src/User');
+}
 
 class SleepRepository {
   constructor (userID) {

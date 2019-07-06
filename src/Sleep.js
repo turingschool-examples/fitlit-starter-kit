@@ -1,4 +1,6 @@
+if (typeof module !== "undefined") {
 usersFilePath = require('../data/sleepSub');
+}
 
 class Sleep {
   constructor(userID) {

@@ -8,8 +8,9 @@ if (typeof module !== 'undefined') {
 class ActivityRepo{
 	constructor(id){
 		this.data = activityData;
-		this.userData = new Activity(id);
-		this.specificUser = [];
+		this.userData = userData;
+		this.userActivityData = new Activity(id);
+
     };
 };
     

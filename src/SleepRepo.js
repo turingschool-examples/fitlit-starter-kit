@@ -31,23 +31,16 @@ class SleepRepo {
     };
 
     findUserWithMostHours(dateOf){
-        let days = this.findDateForSleep(dateOf);
         let userHours = days.sort(function(a,b){
             return b.hoursSlept - a.hoursSlept
         });
 
-        let longestSleeper =  userHours.filter(day => day.hoursSlept === userHours[0].hoursSlept)
-        let champion = longestSleeper.forEach(function(){
-            if(longestSleeper.length > 1){
-                return longestSleeper.shift()
-            } else{
-                return longestSleeper[0].hoursSlept
-            }
-        })
-        
+        let longestSleeper =  userHours.filter(day => day.hoursSlept === userHours[0].hoursSlept);
 
-        // let dog = longestSleeper.forEach(sleeper => sleeper.hoursSlept)
-        console.log(champion)
+        return longestSleeper[0].hoursSlept
+
+        // let results = longestSleeper.length >= 1 ? longestSleeper[0].hoursSlept : 
+        
     }
 };
 

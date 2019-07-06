@@ -65,7 +65,7 @@ class Sleep {
 
     findUserWithMostHours(dateOf){
         let day = findDateForSleep(dateOf);
-        console.log(day);
+        return day;
     }
 
 

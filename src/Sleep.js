@@ -60,24 +60,20 @@ class Sleep {
 
     let ids = this.sleepData.filter(obj => 
       obj.date === startDate).map(obj => obj.userID);
-
-    // console.log(ids)
     let slpQualWk = ids.map(el => {
-        var newObj = {};
+        let newObj = {};
         newObj.id = el;
-        newObj.slpQual = this.consumerInfo(el).slice((this.startDayIndx(el, startDate)), 7).map(el => el.sleepQuality);
+        let userBlock = this.consumerInfo(el);
+        let index = this.startDayIndx(el, startDate);
+        let userBlkWk = userBlock.slice((index), 7);
+        newObj.slpQual = userBlkWk.map(el => el.sleepQuality);
         return newObj;
       });
-    let slpQualOverWk = slpQualWk.map(obj => {
-      obj.slpQual = obj.slpQual.reduce((acc, value) => {
-      return (acc + value);
-      }, 0)/obj.slpQual.length;
-    });
-    // .reduce((acc, slpQlDay) => acc + slpQual);
-    console.log(slpQualWk);
-      // console.log(ids, slpQualWk);
-    // this.sleepData.reduce()
+      slpQualWk.map(obj => {
+        obj.slpQual = this.averageQualitySleep(obj.id);
 
+    });
+      return slpQualWk.filter(obj => obj.slpQual >= 3);
   }
 
   bestSleeper(day) {

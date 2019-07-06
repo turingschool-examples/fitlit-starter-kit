@@ -56,7 +56,7 @@ describe('Sleep', function() {
   });
 
   it('should return users whose average quality is above 3', function() {
-    expect(sleep.userSleepQualityAboveThree("2019/06/15")).to.eql([3, 11, 33, 44]);
+    expect(sleep.userSleepQualityAboveThree("2019/06/15")).to.eql([{"id": 3, "slpQual": 3}, {"id": 11, "slpQual": 4}, {"id": 33, "slpQual": 4}, {"id": 42, "slpQual": 3}, {"id": 44, "slpQual": 4}]);
   });
 
   it('should return user or users who slept the most number of hours given a date', function() {

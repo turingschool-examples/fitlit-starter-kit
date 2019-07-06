@@ -1,6 +1,6 @@
 console.log("Hello World");
 
-let randomUser = Math.floor(Math.random() * 50 ) + 1
+let randomUser = Math.floor(Math.random() * 50 ) 
 let userRepository = new UserRepository(userData);
 let hydration = new Hydration(hydrationData);
 let sleep = new Sleep(sleepData);
@@ -10,7 +10,7 @@ let activityRepository = new ActivityRepository(activityData);
 let activeUser = new User(userData[randomUser]);
 
 
-$(document).ready(function(){
+$(document).ready(function() {
   $('.first-name').text(activeUser.displayUsersFirstName());
   $('#personal-stride').text(userData[randomUser].strideLength);
   $('#personal-email').text(userData[randomUser].email);
@@ -29,6 +29,7 @@ $(document).ready(function(){
   $('#num-daily-active-minutes').text(activity.displayActiveMinutes(randomUser + 1, "2019/06/15"));
   $('#num-all-time-active-minutes').text(activity.displayRecordActiveDay(randomUser + 1)[1]);
   $('#num-all-time-active-minutes-date').text(activity.displayRecordActiveDay(randomUser + 1)[0]);
+  $('#num-weekly-steps').text(activity.displayWeeklyActiveMinutesList(randomUser + 1));
   // $('#num-weekly-steps').text(activity.displayWeeklySteps())
   
 

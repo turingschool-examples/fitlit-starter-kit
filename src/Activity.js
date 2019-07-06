@@ -33,16 +33,66 @@ class Activity {
     return dateOfActiveMinutes.minutesActive;
   }
 
-  displayWeeklyActiveMinutes(id) {
+  displayWeeklyActiveMinutesList(id) {
     let user = this.findIdHelper(id);
     let userWeeklyActivityMinutes = user.map(function(obj) {
       return obj.minutesActive
     })
-    if (userWeeklyActivityMinutes >= 7) {
-      userWeeklyActivityMinutes.shift();
+    console.log(userWeeklyActivityMinutes)
+    if (userWeeklyActivityMinutes.length > 7) {
+      userWeeklyActivityMinutes.length = 7;
     }
     return userWeeklyActivityMinutes;
   }
+
+  displayWeeklyActiveMinutesAverage(id) {
+    let user = this.findIdHelper(id);
+    let userWeeklyActivityMinutes = user.map(function(obj) {
+      return obj.minutesActive
+    })
+    if (userWeeklyActivityMinutes.length > 7) {
+      userWeeklyActivityMinutes.length = 7
+    }
+    let weeklyTotalMinutes = userWeeklyActivityMinutes.reduce(function(acc, curVal) {
+      return acc = acc + curVal
+    }, 0)
+    let averageWeeklyMinutes = weeklyTotalMinutes / userWeeklyActivityMinutes.length;
+    let roundedAverageWeeklyMinutes = Math.ceil(averageWeeklyMinutes)
+    return Number(roundedAverageWeeklyMinutes)
+  }
+
+  displayWeeklyStepsAverage(id) {
+    let user = this.findIdHelper(id);
+    let userWeeklySteps = user.map(function(obj) {
+      return obj.numSteps
+    })
+    if (userWeeklySteps.length > 7) {
+      userWeeklySteps.length = 7;
+    }
+    let weeklyTotalSteps = userWeeklySteps.reduce(function(acc, curVal) {
+      return acc = acc + curVal
+    }, 0)
+    let averageWeeklySteps = weeklyTotalSteps / userWeeklySteps.length;
+    let roundedAverageWeeklySteps = Math.ceil(averageWeeklySteps)
+    return Number(roundedAverageWeeklySteps)
+  }
+
+  displayWeeklyFlightsAverage(id) {
+    let user = this.findIdHelper(id);
+    let userWeeklyFlights = user.map(function(obj) {
+      return obj.flightsOfStairs
+    })
+    if (userWeeklyFlights.length >= 7) {
+      userWeeklyFlights.length = 7;
+    }
+    let weeklyTotalFlights = userWeeklyFlights.reduce(function(acc, curVal) {
+      return acc = acc + curVal
+    }, 0)
+    let averageWeeklyFlights = weeklyTotalFlights / userWeeklyFlights.length;
+    let roundedAverageWeeklyFlights = Math.ceil(averageWeeklyFlights)
+    return Number(roundedAverageWeeklyFlights)
+  }
+  
   compareStepGoal(id, date) {
     let user = new User(userData[0]);
     let dateOfStepGoal = this.findIdHelper(id).find(function(obj) {

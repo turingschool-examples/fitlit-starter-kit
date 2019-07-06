@@ -18,8 +18,8 @@ function populateUser() {
   populateMainPage(user, activity);
   
 
-  console.log(randomUser, userRepository);
-  console.log(userInfo, user);
+  // console.log(randomUser, userRepository);
+  // console.log(userInfo, user);
 }
 
 function populateUserCard(data, actData) {
@@ -32,7 +32,10 @@ function populateUserCard(data, actData) {
 }
 
 function populateMainPage(data, actData) {
-  console.log(actData);
+  // console.log(data, actData);
+  let stepsToday = actData.totalUserStepsDaily(data.id, "2019/09/22");
+  $('.steps').text(`${stepsToday}`);
+  console.log(stepsToday);
   // let 
   // $('.steps').text(`${data.address}`);
 }

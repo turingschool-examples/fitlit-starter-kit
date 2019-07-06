@@ -63,4 +63,7 @@ describe('Sleep', function() {
     expect(sleep.bestSleeper("2019/06/15")).to.eql([sleepData[0]]);
   });
 
+  it('should return a users total hours slept for the last week', function() {
+    expect(sleep.lastWkSleepTotal(3)).to.eql(50.4);
+  });
 });

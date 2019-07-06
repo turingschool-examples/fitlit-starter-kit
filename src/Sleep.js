@@ -81,6 +81,15 @@ class Sleep {
     let topHours = sleepByDate.filter(person => person.hoursSlept).find(hours => Math.max(hours.hoursSlept)).hoursSlept;
     return sleepByDate.filter(person => person.hoursSlept === topHours);
   }
+
+  lastWkSleepTotal(id) {
+    let userBlock = this.consumerInfo(id);
+    let userBlkWk = userBlock.splice(-7);
+    let startDate = userBlkWk[0].date;
+    let wklyHours = this.dailyHoursSleptPerWeek(id, startDate);
+    let total = wklyHours.reduce((acc, hours) => acc + hours);
+    return parseFloat(total.toFixed(1));
+  }
 }
 
 if (typeof module !== 'undefined') {

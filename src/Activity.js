@@ -12,6 +12,11 @@ class Activity {
     return this.activityData.filter(obj => obj.userID === id);
   }
 
+  totalUserStepsDaily(id, day) {
+    let userObj = this.consumerInfo(id).filter(obj => obj.date === day);
+    return userObj[0].numSteps;
+  }
+
   milesWalkedInDay(day, data) {
     let currentDay = this.activityData.find((date) => date.date === day);
     let user = data.find((x) => x.id === currentDay.userID);
@@ -59,7 +64,7 @@ class Activity {
     return Math.max(...filterFlights);
   }
 
-  averageSActivity(day, el) {
+  averageActivity(day, el) {
     let findDay = this.activityData.filter((obj) => obj.date === day);
     let findElementArr = findDay.map((obj) => obj[el]);
     let sumTotal = findElementArr.reduce((acc, el) => {

@@ -5,19 +5,31 @@
     <title>Activity Tracker</title>
   </head>
   <body>
+    <header>
     <h1>Activity Tracker</h1>
+    <h3>Welcome, <span class="user-name">Name</span></h3>
+    <h3>Daily Step Goal: <span class="user-steps"></span> Average Step Goal: <span class="avg-step-goal"></span></h3>
+    </header>
       <main>
-        <article>
-          <h2>Welcome, <span class="user-name">Name</span></h2>
-          <h3>Daily Step Goal: <span class="user-steps"></span> Average Step Goal: <span class="avg-step-goal"></span></h3>
+        <section class="main__section-friends">
+          <h3>Friends Section</h3>
+          <h3>Friends</h3>
           <ul>
             <li></li>
             <li></li>
             <li></li>
             <li></li>
           </ul>
-          <h3>Friends</h3>
-        </article>
+        </section>
+        <section class="main__section-hydration">
+          <h2>Hydration</h2>
+        </section>
+        <section class="main__section-sleep">
+          <h2>Sleep</h2>
+        </section>
+        <section class="main__section-activity">
+          <h2>Activity</h2>
+        </section>
       </main>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="./user-repository.js"></script>

@@ -8,7 +8,7 @@
 
 body {
   display: flex;
-  height: 100vh;
+  height: 100%;
 }
 
 main {
@@ -23,7 +23,9 @@ aside {
   border: solid 1px black;
   color: white;
   display: flex;
+  height: 100vh;
   width: 320px; 
+  position: fixed;
   flex-direction: column;
   align-items: center;
   padding: .5em 1em 0 1em;
@@ -77,14 +79,22 @@ main {
 
 .main__column-one,
 .main__column-two {
-  width: 50%;
+  width: 39%;
+}
+
+.main__column-one {
+  margin-left: 320px;
 }
 
 .main__section {
-  height: 50%;
+  height: 500px;
   padding: 1em;
   border: 1px solid black;
 }
+
+/* .main__activity {
+  height: 500px;
+} */
 
 .activity__chart-day-allUsers {
   /* background-color: red; */

@@ -26,7 +26,13 @@ describe('sleepRepo', () => {
             expect(sleepRepo.findAverageSleep()).to.equal(3);
         });
 
-        it.only('')
+        // it.only('should give a list of above average sleepers', () =>{
+        //     expect(sleepRepo.findAboveAverageSleepers('2019/06/22')).to.equal('mama')
+        // });
+
+        it.only('should provide the user or users with the most hours of sleep', () => {
+            expect(sleepRepo.findUserWithMostHours('2019/06/22')).to.equal('9.8');
+        });
 
 
         

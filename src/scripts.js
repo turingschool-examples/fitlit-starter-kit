@@ -25,16 +25,300 @@ $(document).ready(function() {
   $('#num-all-time-quality-sleep-date').text(sleep.displayRecordSleepQuality(randomUser + 1)[0]);
   $('#num-average-quality-slept').text(sleep.calculateAverageSleepQuality(randomUser +1));
   $('#num-daily-miles').text(activity.calculateMilesWalked(randomUser + 1, "2019/06/15"));
-  $('#num-steps-today').text(activityData[randomUser].numSteps)
+  $('#num-steps-today').text(activityData[randomUser].numSteps);
   $('#num-daily-active-minutes').text(activity.displayActiveMinutes(randomUser + 1, "2019/06/15"));
   $('#num-all-time-active-minutes').text(activity.displayRecordActiveDay(randomUser + 1)[1]);
   $('#num-all-time-active-minutes-date').text(activity.displayRecordActiveDay(randomUser + 1)[0]);
-  $('#num-weekly-steps-average').text(activity.displayWeeklyStepsAverage(randomUser + 1))
-  $('#num-weekly-min-active-average').text(activity.displayWeeklyActiveMinutesAverage(randomUser + 1))
-  $('#num-weekly-flights-average').text(activity.displayWeeklyFlightsAverage(randomUser + 1))
-  
+  $('#num-weekly-steps-average').text(activity.displayWeeklyStepsAverage(randomUser + 1));
+  $('#num-weekly-min-active-average').text(activity.displayWeeklyActiveMinutesAverage(randomUser + 1));
+  $('#num-weekly-flights-average').text(activity.displayWeeklyFlightsAverage(randomUser + 1));
+  $('#daily-ounces').text(hydration.displayFluidOuncesPerDay(randomUser + 1, "2019/06/15"));
+
+
+
 
  // $('#num-daily-hours-slept').text(sleep.displayHoursSlept(randomUser + 1, ${dateInput}));
+
+
+
+
+
+
+
+        var weeklyStepsBarGraph = new Chart($('#weekly-steps-chart'), {
+            type: 'bar',
+            data: {
+                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    label: 'weekly step overview',
+                    data: activity.displayWeeklyStepsList(randomUser + 1),
+                    backgroundColor: [
+                        'rgba(250, 250, 250, 0.4)',
+                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                        'rgba(50, 50, 50, 0.4)', // 50 red, 50 blue, 50 green, 40% opacity
+                        'rgba(100, 100, 100, 0.4)', //alternatively use a hex code
+                        'rgba(150, 150, 150, 0.4)',
+                        'rgba(200, 200, 200, 0.4)',
+                        'rgba(250, 250, 250, 0.4)'
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)', //full black border
+                    ],
+                    borderWidth: 2 //2 pixel border
+                }]
+            }
+        });
+
+
+
+
+        var weeklyMinutesActiveBarGraph = new Chart($('#weekly-minutes-active-chart'), {
+            type: 'bar',
+            data: {
+                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    label: 'weekly active minutes overview',
+                    data: activity.displayWeeklyActiveMinutesList(randomUser + 1),
+                    backgroundColor: [
+                        'rgba(250, 250, 250, 0.4)',
+                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                        'rgba(50, 50, 50, 0.4)', // 50 red, 50 blue, 50 green, 40% opacity
+                        'rgba(100, 100, 100, 0.4)', //alternatively use a hex code
+                        'rgba(150, 150, 150, 0.4)',
+                        'rgba(200, 200, 200, 0.4)',
+                        'rgba(250, 250, 250, 0.4)'
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)', //full black border
+                    ],
+                    borderWidth: 2 //2 pixel border
+                }]
+            }
+        });
+
+  var weeklyFligthsClimbedBarGraph = new Chart($('#weekly-flights-chart'), {
+            type: 'bar',
+            data: {
+                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    label: 'weekly flights climbed overview',
+                    data: activity.displayWeeklyFlightsList(randomUser + 1),
+                    backgroundColor: [
+                        'rgba(250, 250, 250, 0.4)',
+                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                        'rgba(50, 50, 50, 0.4)', // 50 red, 50 blue, 50 green, 40% opacity
+                        'rgba(100, 100, 100, 0.4)', //alternatively use a hex code
+                        'rgba(150, 150, 150, 0.4)',
+                        'rgba(200, 200, 200, 0.4)',
+                        'rgba(250, 250, 250, 0.4)'
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)', //full black border
+                    ],
+                    borderWidth: 2 //2 pixel border
+                }]
+            }
+        });
+
+
+    var stepGoalComparisonGraph = new Chart($('#step-goal-chart'), {
+            type: 'horizontalBar',
+            data: {
+                labels: ["me", "all users"],
+                datasets: [{
+                    label: 'my step goal versus all users',
+                    data: [userData[randomUser].dailyStepGoal,userRepository.calculateAverageStepGoal()],
+                    backgroundColor: [
+                        'rgba(250, 250, 250, 0.4)',
+                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
+                    ],
+                    borderWidth: 2 //2 pixel border
+                }]
+            }
+        });
+
+
+      var weeklyWaterConsumptionChart = new Chart($('#water-chart'), {
+            type: 'bar',
+            data: {
+                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    label: 'weekly active minutes overview',
+                    data: hydration.displayWeeklyFluidOunce(randomUser + 1),
+                    backgroundColor: [
+                        'rgba(250, 250, 250, 0.4)',
+                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                        'rgba(50, 50, 50, 0.4)', // 50 red, 50 blue, 50 green, 40% opacity
+                        'rgba(100, 100, 100, 0.4)', //alternatively use a hex code
+                        'rgba(150, 150, 150, 0.4)',
+                        'rgba(200, 200, 200, 0.4)',
+                        'rgba(250, 250, 250, 0.4)'
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)', //full black border
+                    ],
+                    borderWidth: 2 //2 pixel border
+                }]
+            }
+        });
+
+
+   var hoursSleptChart = new Chart($('#hours-sleep-chart'), {
+            type: 'line',
+            data: {
+                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    label: 'hours slept this week',
+                    data: sleep.displayWeeklySleep(randomUser + 1),
+                    backgroundColor: [
+                        'rgba(250, 250, 250, 0.4)',
+                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                        'rgba(50, 50, 50, 0.4)', // 50 red, 50 blue, 50 green, 40% opacity
+                        'rgba(100, 100, 100, 0.4)', //alternatively use a hex code
+                        'rgba(150, 150, 150, 0.4)',
+                        'rgba(200, 200, 200, 0.4)',
+                        'rgba(250, 250, 250, 0.4)'
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)', //full black border
+                    ],
+                    borderWidth: 2 //2 pixel border
+                }]
+            }
+        });
+
+ var qualitySleepChart = new Chart($('#quality-sleep-chart'), {
+            type: 'line',
+            data: {
+                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    label: 'quality sleep this week',
+                    data: sleep.displayWeeklySleepQuality(randomUser + 1),
+                    backgroundColor: [
+                        'rgba(250, 250, 250, 0.4)',
+                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                        'rgba(50, 50, 50, 0.4)', // 50 red, 50 blue, 50 green, 40% opacity
+                        'rgba(100, 100, 100, 0.4)', //alternatively use a hex code
+                        'rgba(150, 150, 150, 0.4)',
+                        'rgba(200, 200, 200, 0.4)',
+                        'rgba(250, 250, 250, 0.4)'
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)', //full black border
+                    ],
+                    borderWidth: 2 //2 pixel border
+                }]
+            }
+        });
+
+
+ var dailyStepComparisonChart = new Chart($('#daily-step-comparison-chart'), {
+            type: 'polarArea',
+            data: {
+                labels: ["me", "all users"],
+                datasets: [{
+                    label: 'daily step comparison',
+                    data: [activityData[randomUser].numSteps, activityRepository.calculateAverageSteps('2019/06/15')
+                    ],
+                    backgroundColor: [
+                        'rgba(250, 250, 250, 0.4)',
+                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
+                    ],
+                    borderWidth: 2 //2 pixel border
+                }]
+            }
+        });
+
+
+ var dailyMinutesActiveComparisonChart = new Chart($('#daily-active-minutes-comparison-chart'), {
+            type: 'polarArea',
+            data: {
+                labels: ["me", "all users"],
+                datasets: [{
+                    label: 'daily active minutes comparison',
+                    data: [activityData[randomUser].minutesActive, activityRepository.calculateAverageMinutesActive('2019/06/15')
+                    ],
+                    backgroundColor: [
+                        'rgba(250, 250, 250, 0.4)',
+                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
+                    ],
+                    borderWidth: 2 //2 pixel border
+                }]
+            }
+        });
+
+ var dailyFlightsClimbedComparisonChart = new Chart($('#daily-flight-comparison-chart'), {
+            type: 'polarArea',
+            data: {
+                labels: ["me", "all users"],
+                datasets: [{
+                    label: 'daily flights climbed comparison',
+                    data: [activityData[randomUser].flightsOfStairs, activityRepository.calculateAverageStairs('2019/06/15')
+                    ],
+                    backgroundColor: [
+                        'rgba(250, 250, 250, 0.4)',
+                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
+                    ],
+                    borderWidth: 2 //2 pixel border
+                }]
+            }
+        });
+
+
+
+
 })
 
 

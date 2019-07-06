@@ -3,6 +3,7 @@ class ActivityUser {
 		this.array = array;
 		this.strideLength = user.strideLength;
 		this.dailyStepGoal = user.dailyStepGoal;
+		this.friends = user.friends;
 	}
 
 	milesWalked(dateString) {

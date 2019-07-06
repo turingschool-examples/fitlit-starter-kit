@@ -29,19 +29,19 @@ class ActivityRepository {
 			day.numSteps >= this.dailyStepGoal).map(day => day.date)
 	}
 
-	stairsClimbedAverage(dateString) {
+	usersStairsClimbedAverage(dateString) {
 		let date = this.activityDataset.filter(day => day.date === dateString)
 		return Math.ceil(date.reduce((a,b) => 
 			a + b.flightsOfStairs, 0)/date.length);
 	}
 
-	stepsTakenAverage(dateString) {
+	usersStepsTakenAverage(dateString) {
 		let date = this.activityDataset.filter(day => day.date === dateString)
 		return Math.ceil(date.reduce((a,b) => 
 			a + b.numSteps, 0)/date.length);
 	}
 
-	minutesActiveAverage(dateString) {
+	usersMinutesActiveAverage(dateString) {
 		let date = this.activityDataset.filter(day => day.date === dateString)
 		return Math.ceil(date.reduce((a,b) => 
 			a + b.minutesActive, 0)/date.length);

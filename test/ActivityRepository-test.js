@@ -39,21 +39,21 @@ describe('ActivityRepository', function() {
 		});
 	});
 
-	describe('stairsClimbedAverage', function(){
+	describe('usersStairsClimbedAverage', function(){
 		it('should return the average stairs climbed for a specific date for all users', function() {
-			expect(newActivityUserRepo.stairsClimbedAverage("2019/06/18")).to.equal(32)
+			expect(newActivityUserRepo.usersStairsClimbedAverage("2019/06/18")).to.equal(32)
 		});
 	});
 
-	describe('stepsTakenAverage', function() {
+	describe('usersStepsTakenAverage', function() {
 		it('should return the average steps taken for a specific date for all users', function() {
-			expect(newActivityUserRepo.stepsTakenAverage("2019/06/18")).to.equal(4541)
+			expect(newActivityUserRepo.usersStepsTakenAverage("2019/06/18")).to.equal(4541)
 		});
 	});
 
-	describe('minutesActiveAverage', function() {
+	describe('usersMinutesActiveAverage', function() {
 		it('should return the average minutes active for a specific date for all users', function() {
-			expect(newActivityUserRepo.minutesActiveAverage("2019/06/18")).to.equal(173)
+			expect(newActivityUserRepo.usersMinutesActiveAverage("2019/06/18")).to.equal(173)
 		});
 	});
 

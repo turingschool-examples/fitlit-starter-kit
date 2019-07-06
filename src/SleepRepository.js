@@ -1,4 +1,4 @@
-dataFilePath = require('../data/sleepSub');
+dataFilePath = require('../data/sleepSub2');
 User = require('../src/User');
 
 class SleepRepository {
@@ -26,9 +26,43 @@ class SleepRepository {
       }
     });
 
-    const user = new User("../data/UserSub.js");
+    const user = new User("../data/UserSub2.js");
     return user.getUserNameFromID(sleepChamp[0]);
   };
+
+  getHoursSleptForWeek(userID, sleepDate) {
+    let daysSlept = this.data.filter(el => el.userID === userID);
+    let todayIndex = daysSlept.indexOf(daysSlept.find(el => el.date === sleepDate)) + 1;
+    let fixFirstDayIndex = todayIndex - 7 > 0 ? todayIndex - 7 : 0;
+    let sleepDays = daysSlept.slice(fixFirstDayIndex, todayIndex);
+    return sleepDays.map(sleeper => sleeper.hoursSlept);
+  };
+
+  getSleepQualityForWeek(userID, sleepDate) {
+    let daysSlept = this.data.filter(el => el.userID === userID);
+    let todayIndex = daysSlept.indexOf(daysSlept.find(el => el.date === sleepDate)) + 1;
+    let fixFirstDayIndex = todayIndex - 7 > 0 ? todayIndex - 7 : 0;
+    let sleepDays = daysSlept.slice(fixFirstDayIndex, todayIndex);
+    console.log(`todayIndex is: ${todayIndex}`);
+    return sleepDays.map(sleeper => sleeper.sleepQuality);
+  };
+
+  getSleepQualityAvgOverThree(sleepDate) {
+    let todayIndex = this.data.indexOf(this.data.find(el => el.date === sleepDate)) + 1;
+    let fixFirstDayIndex = todayIndex - 7 > 0 ? todayIndex - 7 : 0;
+    let sleepQuality = this.data.slice(fixFirstDayIndex, todayIndex);
+
+    console.log(`sleepQuality is: ${sleepQuality[3].name/*[0].sleepQuality*/}`);
+    let avgOverThree = [];
+    this.data.forEach((el, i) => {
+    console.log(el.userID, i)
+    if (sleepQuality.reduce((a, b) => { 
+      return a + b.sleepQuality}, 0) / sleepQuality.length >= 3) {
+        avgOverThree.push(el.userID)
+      }
+  });
+  return avgOverThree;
+  }
 }
 
 if (typeof module !== 'undefined') {

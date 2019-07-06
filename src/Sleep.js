@@ -16,8 +16,9 @@ class Sleep {
     let totalHoursSlept = userSleepData.reduce(function(acc, curVal) {
       return acc = acc + curVal
     }, 0 )
-    let averageHourSlept = totalHoursSlept / userSleepData.length
-    return averageHourSlept 
+    let averageHoursSlept = totalHoursSlept / userSleepData.length
+    let roundedHoursSlept = averageHoursSlept.toFixed(2)
+    return Number(roundedHoursSlept)
   }
 
   calculateAverageSleepQuality(id) {
@@ -28,7 +29,8 @@ class Sleep {
       return acc = acc + curVal
     }, 0 )
     let averageSleepQuality = totalSleepQuality / userSleepData.length
-    return averageSleepQuality 
+    let roundedQualitySleep = averageSleepQuality.toFixed(2)
+    return Number(roundedQualitySleep) 
   }
 
   displayHoursSlept(id, date) {
@@ -81,6 +83,22 @@ class Sleep {
     sleepRecord.push(bestSleepDate.sleepQuality)
     return sleepRecord
   }
+
+    displayRecordHoursSlept(id) {
+    let userId = this.findIdHelper(id);
+    let sleepHoursList = userId.map(function(obj) {
+      return obj.hoursSlept
+    })
+    let mostHoursSlept = Math.max(...sleepHoursList)
+    let mostSleepDate = userId.find(function(obj) {
+      return obj.hoursSlept === mostHoursSlept
+    })
+    let sleepHoursRecord = []
+    sleepHoursRecord.push(mostSleepDate.date)
+    sleepHoursRecord.push(mostSleepDate.hoursSlept)
+    return sleepHoursRecord
+  }
+
 
   //add same method above but for sleep hours
 }

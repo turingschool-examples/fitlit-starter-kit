@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+}
+
+main {
+    display: flex;
+    background-color: #F8712E;
+}
+
+.section--left {
+  width: 50%;
+  background-image: url('images/jump_girl.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  height: 100vh;
+}
+
+h1 {
+  margin: 20px;
+  font-size: 2em;
+  font-family: 'Roboto Mono', monospace;
+  color: white;
+}
+
+.section--left__date {
+  height: 34em;
+  background-color: #4747471f;
+  margin: 20px;
+  border-radius: 2em;
+}
+
+.section--right {
+  background-color:#898989de;
+  width: 50%;
+  height: 100vh;
+}
+
+.section--right__data {
+  margin: 20px;
+  background-color: #47474796;
+  padding: 13px;
+  border-radius: .5em;
+}
+
+.section--right__name-image {
+  display: flex;
+}
+
+.section--right__name-image > img {
+  height: 60px;
+  width: 10%;
+  border-radius: 50%;
+}
+
+h3 {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.5em;
+    color: white;
+    padding: 20px;
+}
+
+p {
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.section--right__info {
+  background-color: #47474796;
+  height: 15em;
+  margin: 20px;
+  border-radius: .5em;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.section--right__info > article {
+
+}
+
+

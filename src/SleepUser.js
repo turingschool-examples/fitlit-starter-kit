@@ -1,4 +1,4 @@
-class SleepUser{
+class SleepUser {
 	constructor(array) {
 		this.array = array;
 	}
@@ -28,7 +28,6 @@ class SleepUser{
 	}
 
 }
-
 
 if (typeof module !== 'undefined') {
     module.exports = SleepUser;

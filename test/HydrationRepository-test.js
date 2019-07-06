@@ -7,7 +7,7 @@ const mockHydrationData = require('../mock-data/mock-hydration-data.js');
 let newHydrationUserRepo;
 
 describe('HydrationRepository', function() {
-    beforeEach( function() {
+    beforeEach(function() {
         newHydrationUserRepo = new HydrationRepository(mockHydrationData, 2)
     });
 
@@ -30,7 +30,7 @@ describe('HydrationRepository', function() {
      describe('findHydrationUser', () =>
         it('should be able to find all instances of the user based on the id it stored', function() {
             expect(newHydrationUserRepo.findHydrationUser()).to.eql(
-            [  {
+            [ {
                 "userID": 2,
                 "date": "2019/06/14",
                 "numOunces": 39

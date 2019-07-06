@@ -42,4 +42,3 @@ $('.infoDisplay').append(`<article class = "sleepInfo">
     <p> Here is the quality of sleep for the last week: ${currentSleepUser.sleepQualityOneWeek('2019/09/16', '2019/09/22')}</p>
     <p> Here is your average sleep hours for all time: ${currentSleepRepo.findUserSleepAverage()}</p>
      <p> Here is your average sleep quality for all time: ${currentSleepRepo.findUserSleepQualityAverage()}</p>`)
-

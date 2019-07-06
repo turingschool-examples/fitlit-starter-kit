@@ -38,19 +38,19 @@ class SleepRepository {
     let userIds = this.data.map(user => user.userID);
     let uniqueIds = new Set(userIds);
     uniqueIds = [...uniqueIds];
-    let stuff = uniqueIds.reduce((acc, userId) => {
+    return uniqueIds.reduce((acc, userId) => {
       let userData = this.data.filter(el =>
         el.userID === userId)
       let index = userData.findIndex(day => day.date === date)
       let week = userData.slice(index - 6, index + 1);
       let weekAvg = week.reduce((acc, day) => {
-        return acc += day.sleepQuality}, 0) / week.length
-      if(weekAvg >= 3) {
+        return acc += day.sleepQuality
+      }, 0) / week.length
+      if (weekAvg >= 3) {
         acc.push(userId)
       }
       return acc
     }, [])
-    console.log(stuff)
   }
 }
 

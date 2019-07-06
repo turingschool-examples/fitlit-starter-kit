@@ -1,15 +1,15 @@
 const User = require('../src/user');
 
 class ActivityRepository {
-    constructor(data, id) {
-        this.data = data;
-        this.id = id;
-    }
+  constructor(data, id) {
+    this.data = data;
+    this.id = id;
+  }
 
-   getUserData(id) {
-       return this.data.filter(el =>
-           el.id === id)
-   }
+  getUserData(id) {
+    return this.data.filter(el =>
+      el.id === id)
+  }
 
 }
 
@@ -22,5 +22,5 @@ class ActivityRepository {
 // minutes active
 // for a specific date
 if (typeof module !== 'undefined') {
-    module.exports = ActivityRepository;
+  module.exports = ActivityRepository;
 }

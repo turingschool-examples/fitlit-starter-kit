@@ -1,0 +1,43 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+    "header header header header"
+    "friends hydration hydration hydration" 
+    "friends sleep sleep sleep"
+    "friends activity activity activity"
+    ". activity activity activity" 
+
+}
+
+header {
+    grid-area: header;
+}
+
+main {
+
+} */
+
+.main__section--friends {
+    /* grid-row-start: 2;
+    grid-row-end: span row3-start; */
+    grid-column-start: 2;
+    /* width: 100%; */
+    /* height: 100%; */
+    background: black;
+    /* grid-area: friends; */
+    color: white;
+}
+
+.main__section--hydration {
+    grid-area: hydration;
+}
+
+.main__section--sleep {
+    grid-area: sleep;
+}
+
+.main__section--activity {
+    grid-area: activity;
+}

@@ -1,43 +1,52 @@
 body {
+    height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 10% 90%;
     grid-template-areas:
     "header header header header"
-    "friends hydration hydration hydration" 
-    "friends sleep sleep sleep"
-    "friends activity activity activity"
-    ". activity activity activity" 
+    "body body body body "
 
 }
 
 header {
     grid-area: header;
+    background-color: dodgerblue;
+    grid-column-start: 1;
+    grid-column-end: 6;
 }
 
 main {
-
-} */
+    background: blue;
+    display: grid;
+    grid-area: body;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "friends hydration hydration hydration"
+    "friends sleep sleep sleep"
+    ". activity activity activity"
+    ". activity activity activity"
+    
+}
 
 .main__section--friends {
-    /* grid-row-start: 2;
-    grid-row-end: span row3-start; */
-    grid-column-start: 2;
-    /* width: 100%; */
-    /* height: 100%; */
-    background: black;
-    /* grid-area: friends; */
-    color: white;
+    background: papayawhip;
+    grid-area: friends;
 }
 
 .main__section--hydration {
     grid-area: hydration;
+    background: palevioletred;
+    height: 100%;
 }
 
 .main__section--sleep {
     grid-area: sleep;
+    background: yellow;
 }
 
 .main__section--activity {
     grid-area: activity;
+    background: pink;
 }

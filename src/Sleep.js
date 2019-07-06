@@ -52,9 +52,10 @@ class Sleep {
     let userWeeklySleep = user.map(function(obj) {
       return obj.hoursSlept
     })
-    if (userWeeklySleep.length >= 7) {
-      userWeeklySleep.shift();
+    if (userWeeklySleep.length > 7) {
+      userWeeklySleep.length = 7;
     }
+    console.log(userWeeklySleep)
     return userWeeklySleep;
   }
 

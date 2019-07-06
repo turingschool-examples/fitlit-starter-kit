@@ -145,7 +145,7 @@ $(document).ready(function() {
                 labels: ["me", "all users"],
                 datasets: [{
                     label: 'my step goal versus all users',
-                    data: [userData[randomUser].dailyStepGoal, userRepository.calculateAverageStepGoal()],
+                    data: [userData[randomUser].dailyStepGoal,userRepository.calculateAverageStepGoal()],
                     backgroundColor: [
                         'rgba(250, 250, 250, 0.4)',
                         'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
@@ -153,7 +153,6 @@ $(document).ready(function() {
                     borderColor: [
                         'rgba(0,0,0,1)', //full black border
                         'rgba(0,0,0,1)',
-              
                     ],
                     borderWidth: 2 //2 pixel border
                 }]
@@ -192,6 +191,65 @@ $(document).ready(function() {
         });
 
 
+   var hoursSleptChart = new Chart($('#hours-sleep-chart'), {
+            type: 'line',
+            data: {
+                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    label: 'hours slept this week',
+                    data: sleep.displayWeeklySleep(randomUser + 1),
+                    backgroundColor: [
+                        'rgba(250, 250, 250, 0.4)',
+                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                        'rgba(50, 50, 50, 0.4)', // 50 red, 50 blue, 50 green, 40% opacity
+                        'rgba(100, 100, 100, 0.4)', //alternatively use a hex code
+                        'rgba(150, 150, 150, 0.4)',
+                        'rgba(200, 200, 200, 0.4)',
+                        'rgba(250, 250, 250, 0.4)'
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)', //full black border
+                    ],
+                    borderWidth: 2 //2 pixel border
+                }]
+            }
+        });
+
+ var qualitySleepChart = new Chart($('#quality-sleep-chart'), {
+            type: 'line',
+            data: {
+                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    label: 'quality sleep this week',
+                    data: sleep.displayWeeklySleepQuality(randomUser + 1),
+                    backgroundColor: [
+                        'rgba(250, 250, 250, 0.4)',
+                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                        'rgba(50, 50, 50, 0.4)', // 50 red, 50 blue, 50 green, 40% opacity
+                        'rgba(100, 100, 100, 0.4)', //alternatively use a hex code
+                        'rgba(150, 150, 150, 0.4)',
+                        'rgba(200, 200, 200, 0.4)',
+                        'rgba(250, 250, 250, 0.4)'
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)',
+                        'rgba(0,0,0,1)', //full black border
+                    ],
+                    borderWidth: 2 //2 pixel border
+                }]
+            }
+        });
 
 })
 

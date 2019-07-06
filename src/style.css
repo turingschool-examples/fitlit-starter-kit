@@ -80,4 +80,29 @@ p {
 
 }
 
+.section--right__friends {
+    background-color: #47474796;
+    position: absolute;
+    bottom: 0;
+    height: 6em;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    overflow: auto;
+}
+
+.section--right__img-name {
+    padding: 16px;
+    text-align: center;
+}
+
+.section--right__img-name > img {
+    height: 60px;
+    border-radius: 50%;
+}
+
+.section--right__img-name > h5 {
+    
+}
+
 

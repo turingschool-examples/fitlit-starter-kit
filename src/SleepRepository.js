@@ -26,7 +26,7 @@ class SleepRepository {
       }
     });
 
-    const user = new User("../data/UserSub2.js");
+    const user = new User("../data/UserSub.js");
     return user.getUserNameFromID(sleepChamp[0]);
   };
 
@@ -48,21 +48,54 @@ class SleepRepository {
   };
 
   getSleepQualityAvgOverThree(sleepDate) {
-    let todayIndex = this.data.indexOf(this.data.find(el => el.date === sleepDate)) + 1;
-    let fixFirstDayIndex = todayIndex - 7 > 0 ? todayIndex - 7 : 0;
-    let sleepQuality = this.data.slice(fixFirstDayIndex, todayIndex);
+    let averages = [], ids = [], finalIds = [];
+    this.data.forEach((userData, i) => {
+      let total = 0,  days = 0, index;
+      //console.log(`userData is ${userData.date}`)
+      this.data.forEach((el, i) => {
+        if (userData.date === sleepDate) {index = i;}
+      });
+     
+      console.log(`index is ${index}`)
+      this.data.forEach((el, i) => {
+        if (i >= index && i <= index + 6) {
+          total += this.data[i].sleepQuality;
+          days++;
+          console.log(`userDate is ${this.data[i].date}`)
+        }
+      });
 
-    console.log(`sleepQuality is: ${sleepQuality[3].name/*[0].sleepQuality*/}`);
-    let avgOverThree = [];
-    this.data.forEach((el, i) => {
-    console.log(el.userID, i)
-    if (sleepQuality.reduce((a, b) => { 
-      return a + b.sleepQuality}, 0) / sleepQuality.length >= 3) {
-        avgOverThree.push(el.userID)
+      averages.push(parseFloat((total / days).toFixed(1)));
+      ids.push(userData.userID);
+    });
+
+    averages.forEach((el, i) => {
+      if (averages[i] >= 3) {
+        finalIds.push(averages[i]);
       }
-  });
-  return avgOverThree;
+    });
+
+    return finalIds;
   }
+
+
+
+
+  // getSleepQualityAvgOverThree(sleepDate) {
+  //   let todayIndex = this.data.indexOf(this.data.find(el => el.date === sleepDate)) + 1;
+  //   let fixFirstDayIndex = todayIndex - 7 > 0 ? todayIndex - 7 : 0;
+  //   let sleepQuality = this.data.slice(fixFirstDayIndex, todayIndex);
+  //   console.log(`sleepQuality is: ${sleepQuality/*[3].name/*[0].sleepQuality*/}`);
+  //   let avgOverThree = [];
+  //   this.data.forEach((el, i) => {
+  //  // console.log(el.userID, i, sleepQuality)
+  //   if ((sleepQuality.reduce((a, b) => { 
+  //     return a + b.sleepQuality}, 0)) / sleepQuality.length >= 3) {
+  //       avgOverThree.push(el.userID)
+  //     }
+  // });
+  // return avgOverThree;
+  // }
 }
 
 if (typeof module !== 'undefined') {

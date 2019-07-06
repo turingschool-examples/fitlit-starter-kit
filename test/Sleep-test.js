@@ -1,9 +1,8 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-//const User = require('../src/User');
 const Sleep = require('../src/Sleep');
-const sleepSub = require('../data/sleepSub')
+const sleepSub = require('../data/sleepSub2')
 
 
 describe('Sleep', function () {
@@ -18,7 +17,7 @@ describe('Sleep', function () {
 
   it('should return average hours slept for a given userID', function () {
     const sleep = new Sleep();
-    expect(sleep.getAvgHoursSlept(2)).to.equal('7.3');
+    expect(sleep.getAvgHoursSlept(2)).to.equal('7.5');
   });
 
   it('should return average hours slept for a given userID', function () {
@@ -28,7 +27,7 @@ describe('Sleep', function () {
 
   it('should return average sleep quality for a given userID', function () {
     const sleep = new Sleep();
-    expect(sleep.getAvgSleepQuality(2)).to.equal('2.5');
+    expect(sleep.getAvgSleepQuality(2)).to.equal('2.4');
   });
 
   it('should return hours slept on a given dayfor a given userID', function () {

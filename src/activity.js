@@ -51,6 +51,13 @@ class Activity extends ActivityRepository {
         let stairClimbingRecord = user.sort((a, b) => b.flightsOfStairs - a.flightsOfStairs)
         return stairClimbingRecord[0]
 }
+
+    getAllUsersStairClimbingAverage() {
+        let users = this.userActivity.reduce(function (user, cV) {
+            return user += cV.flightsOfStairs 
+        }, 0) 
+        return Math.floor(users / this.userActivity.length)
+}
 }
 
 if (typeof module !== 'undefined') {

@@ -22,5 +22,6 @@ describe('Activity Repository', function() {
         expect(repo2.id).to.equal(25)
     });
 
-  
-});
+    
+
+    });

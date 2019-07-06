@@ -62,7 +62,7 @@ describe('SleepRepository', function () {
     expect(sleepRepo.getSleepQualityForWeek(2, "2019/06/22")).to.deep.equal([ 3.8, 3, 3.2, 2.5, 2.4, 4.8, 3.3]);
   });
 
-  it.skip('should find all users who average sleep quality over 3 for a given week', function () {
+  it('should find all users who average sleep quality over 3 for a given week', function () {
     const sleepRepo = new SleepRepository();
     expect(sleepRepo.getSleepQualityAvgOverThree('2019/06/21')).to.equal([3, 5, 8])
   });

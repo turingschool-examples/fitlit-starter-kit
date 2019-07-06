@@ -75,6 +75,14 @@ class Activity extends ActivityRepository {
     }, 0)
       return Math.floor(users / userByDate.length)
 }
+
+    daysStepGoalNotMet(id) {
+      let userStepGoal = super.getUserData(id).reduce(function (user, cV) {
+        return user += cV.dailyStepGoal
+       }, 0)
+      let exceededGoalDays = this.userActivity.filter(user => user.numSteps <= userStepGoal).filter(user => user.userID === id)
+        return exceededGoalDays
+    }
 }
 
 if (typeof module !== 'undefined') {

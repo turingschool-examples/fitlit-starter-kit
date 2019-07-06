@@ -135,4 +135,47 @@ describe('Activity', function() {
 
              expect(repo1.getAllUsersMinutesActiveAverage()).to.eql(191)
          });
+
+         it('should return all of the days that a user did not meet their step goal', function() {
+            const repo1 = new Activity(fakeData, fakeActivity, 3577, "2019/06/16");
+            const repo2 = new Activity(fakeData, fakeActivity, 5144, "2019/06/15");
+
+            expect(repo1.daysStepGoalNotMet(1)).to.eql([{
+                    userID: 1,
+                    date: '2019/06/15',
+                    numSteps: 3577,
+                    minutesActive: 140,
+                    flightsOfStairs: 16
+                },
+                {
+                    userID: 1,
+                    date: '2019/06/16',
+                    numSteps: 6637,
+                    minutesActive: 175,
+                    flightsOfStairs: 36
+                },
+                {
+                    userID: 1,
+                    date: '2019/06/18',
+                    numSteps: 4419,
+                    minutesActive: 165,
+                    flightsOfStairs: 33
+                },
+                {
+                    userID: 1,
+                    date: '2019/06/19',
+                    numSteps: 8429,
+                    minutesActive: 275,
+                    flightsOfStairs: 2
+                },
+                {
+                    userID: 1,
+                    date: '2019/06/21',
+                    numSteps: 6760,
+                    minutesActive: 135,
+                    flightsOfStairs: 6
+                }
+            ])
+
+         })
     });

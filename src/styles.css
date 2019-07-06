@@ -103,3 +103,89 @@ main {
 .activity__chart-weeklyView-oneUser {
   /* background-color: blue */
 }
+
+
+/*--------widget--------*/
+.widget {
+  border: 1px solid gray;
+  height: auto;
+  width: 95%;
+  border-radius: 5px;
+  margin: 10px;
+  background-color: #fff;
+}
+
+.widget-main-header {
+  padding: 7px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.widget-header {
+  font-size: 15px;
+  padding: 7px;
+}
+
+/*-----------Sleep---------*/
+.hours_slept_inner-data-one,
+.hours_slept_inner-data-two{
+  margin-left: 15px;
+  margin-right: 15px;
+  width: 50%;
+}
+
+.center-hand-align {
+  text-align: center;
+  padding-bottom: 5px;
+  width: 30%;
+}
+
+.hours-slept__today-table {
+  margin-top: 20px;
+}
+
+.today-activities-table {
+  width: 90%;
+  margin-left: auto;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.steps__daily-goal-table {
+  display: block;
+  margin-left: 130px;
+  margin-bottom: 10px;
+}
+
+.steps__daily-goal-table,
+.steps__daily-goal-input {
+  width: 70%;
+}
+
+table, td, th {
+  border-collapse: collapse;
+}
+th, td {
+  text-align: left;
+}
+
+th {
+  font-size: 14px;
+}
+.user-input {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.red {
+  border: #D96459 1px solid;
+  color : #D96459;
+  background-color: rgba(217, 100, 89, 0.05)
+}
+
+.red-b {
+  background-color: #D96459;
+  color : #fff;
+  border: 1px solid #D96459;
+}
+

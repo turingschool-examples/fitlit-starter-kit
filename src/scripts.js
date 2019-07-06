@@ -60,17 +60,16 @@ $( window ).on( "load", () => {
     }
   }
 
-  const randomID = newIDs[1];
+  const randomID = newIDs[0];
 
   //const user = new User();
   const userRepository = new UserRepository ();
 
-  //$(".aside__welcome-name").html(user.getUserNameFromID(1));
-  $(".aside__user-name").html(userRepository.returnUserData(1).name.split(' ')[0]);
-  $(".section_full-user-name").html(userRepository.returnUserData(1).name);
-  $(".section__address").html(userRepository.returnUserData(1).address);
-  $(".section__email").html(userRepository.returnUserData(1).email);
-  $(".section__stride-length").html(userRepository.returnUserData(1).strideLength);
+  $(".aside__user-name").html(userRepository.returnUserData(randomID).name.split(' ')[0]);
+  $(".section_full-user-name").html(userRepository.returnUserData(randomID).name);
+  $(".section__address").html(userRepository.returnUserData(randomID).address);
+  $(".section__email").html(userRepository.returnUserData(randomID).email);
+  $(".section__stride-length").html(userRepository.returnUserData(randomID).strideLength);
   $(".aside__date").html(asideDate());
 
 

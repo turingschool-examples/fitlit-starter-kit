@@ -23,4 +23,4 @@ describe('Activity Repository', function() {
     });
 
   
-})
+});

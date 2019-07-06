@@ -52,10 +52,8 @@ describe('Activity', function() {
       it('should show if a user has met their step goal on a given date', function() {
         const repo1 = new Activity(fakeData, fakeActivity, 3577, "2019/06/16");
         const repo2 = new Activity(fakeData, fakeActivity, 5144, "2019/06/15");
-        // console.log(fakeActivity)
 
         expect(repo1.achieveStepGoal(1)).to.equal('step goal not met!')
-        // console.log(repo1)
         expect(repo2.achieveStepGoal(25)).to.equal('step goal met!')
       });
 
@@ -64,7 +62,6 @@ describe('Activity', function() {
         const repo2 = new Activity(fakeData, fakeActivity, 5144, "2019/06/15");
 
         expect(repo1.exceedStepGoal(1)).to.eql('step goal not met!')
-        // console.log(repo1)
         expect(repo2.exceedStepGoal(25)).to.eql('step goal met!')
-      })
-})
+      });
+});

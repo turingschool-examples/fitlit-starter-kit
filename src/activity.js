@@ -8,7 +8,6 @@ class Activity extends ActivityRepository {
         this.date = date;
     }
 
-
     calculateMiles() {
         let userDay = this.userActivity.find(el => el.date === this.date)
         let steps = userDay.numSteps
@@ -42,14 +41,9 @@ class Activity extends ActivityRepository {
     exceedStepGoal(id) {
      let stepGoal = super.getUserData(id).map(user => user.dailyStepGoal)
      return this.numSteps >= stepGoal ? 'step goal met!' : 'step goal not met!'
-
     }
 }
 
 if (typeof module !== 'undefined') {
     module.exports = Activity;
 }
-
-// For a specific day(specified by a date),
-//     return the miles a user has walked based on their number of steps
-//     (use their strideLength to help calculate this)

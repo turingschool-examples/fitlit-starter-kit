@@ -31,15 +31,25 @@ class Sleep {
     return this.consumerInfo(id).find((obj) => obj.date === day).sleepQuality;
   }
 
-  dailyHoursPerWeek(id) {
-    return this.consumerInfo(id).slice(-7).map((obj) => obj.hoursSlept);
+  startDayIndx(id, day) {
+    let userArray = this.consumerInfo(id);
+    let userDay = userArray.filter(obj => obj.date === day);
+    return userArray.indexOf(userDay[0]);
   }
 
-  dailySleepQualityPerWeek(id) {
-    return this.consumerInfo(id).slice(-7).map((obj) => obj.sleepQuality);
+  dailyHoursSleptPerWeek(id, day) {
+    let userArray = this.consumerInfo(id);
+    let index = this.startDayIndx(id, day);
+    return userArray.slice(index, 8).map((obj) => obj.hoursSlept);
   }
 
-  averageSleepQuality() {
+  dailySleepQualityPerWk(id, day) {
+    let userArray = this.consumerInfo(id);
+    let index = this.startDayIndx(id, day);
+    return userArray.slice(index, 9).map((obj) => obj.sleepQuality);
+  }
+
+  averageSleepQualForAll() {
     let sleepQualityArr = this.sleepData.map((quality) => quality.sleepQuality).reduce((acc, quality) => {
       return acc + quality;
     }, 0);
@@ -48,6 +58,22 @@ class Sleep {
 
   userSleepQualityAboveThree(startDate) {
 
+    let ids = this.sleepData.filter(obj => 
+      obj.date === startDate).map(obj => obj.userID);
+    let slpQualWk = ids.map(el => {
+        let newObj = {};
+        newObj.id = el;
+        let userBlock = this.consumerInfo(el);
+        let index = this.startDayIndx(el, startDate);
+        let userBlkWk = userBlock.slice((index), 7);
+        newObj.slpQual = userBlkWk.map(el => el.sleepQuality);
+        return newObj;
+      });
+      slpQualWk.map(obj => {
+        obj.slpQual = this.averageQualitySleep(obj.id);
+
+    });
+      return slpQualWk.filter(obj => obj.slpQual >= 3);
   }
 
   bestSleeper(day) {

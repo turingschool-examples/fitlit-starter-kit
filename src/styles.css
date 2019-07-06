@@ -60,4 +60,16 @@ main {
     grid-area: activity;
     width: 100%;
     background: pink;
+   
+}
+
+.main__section--activity article {
+    height: 100px;
+    width: 100px;
+    background: gray;
+    display: inline-block;
+}
+
+.main__section--activity h2 {
+    height: 30px;
 }

@@ -12,6 +12,13 @@ body {
 
 }
 
+/* clear fix */
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
 header {
     grid-area: header;
     background-color: dodgerblue;
@@ -63,13 +70,54 @@ main {
    
 }
 
-.main__section--activity article {
+/* .main__section--activity article {
     height: 100px;
     width: 100px;
     background: gray;
     display: inline-block;
-}
+} */
 
 .main__section--activity h2 {
     height: 30px;
 }
+
+.grid {
+    background: #DDD;
+    max-width: 100%;
+  }
+
+.grid-item {
+    float: left;
+    width: 150px;
+    height: 150px;
+    background: #C09;
+    border: 2px solid hsla(0, 0%, 0%, 0.5);
+  }
+  
+  .grid-item--width2 { width: 300px; }
+  .grid-item--height2 { height: 300px; }
+  
+  .grid-item:hover {
+    border-color: hsla(0, 0%, 100%, 0.5);
+    cursor: move;
+  }
+  
+  .grid-item.is-dragging,
+  .grid-item.is-positioning-post-drag {
+    background: #C90;
+    z-index: 2;
+  }
+  
+  .packery-drop-placeholder {
+    outline: 3px dashed hsla(0, 0%, 0%, 0.5);
+    outline-offset: -6px;
+    -webkit-transition: -webkit-transform 0.2s;
+            transition: transform 0.2s;
+  }
+
+  .grid-item.is-pointer-down {
+    background: #09F;
+    z-index: 2; /* above other draggies */
+  }
+  .grid-item.is-dragging { opacity: 0.7; }
+  

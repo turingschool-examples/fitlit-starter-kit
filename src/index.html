@@ -40,17 +40,20 @@
           <p>Last Week's Sleep Summary - Hours: <span class="main__section--week-sleep-hours"></span> Quality: <span class="main__section--week-sleep-quality"></span></p>
           <p>Overall Sleep Summary - Hours: <span class="main__section--average-sleep-hours"></span> Quality: <span class="main__section--average-sleep-quality"></p>
         </section>
-        <section class="main__section--activity">
+        <section class="main__section--activity grid">
           <h2>Activity</h2>
-          <article>Steps: <span></span></article>
-          <article>Miles Walked: <span></span></article>
-          <article>Active Minutes: <span></span></article>
-          <article>Flights of Stairs: <span></span></article>
-          <article>Empire State Building: <span></span></article>
-          <article>Weekly View: : <span></span></article>
-          <article>You vs. The World: <span></span></article> 
+          <article class="grid-item">Steps: <span></span></article>
+          <article class="grid-item">Miles Walked: <span></span></article>
+          <article class="grid-item">Active Minutes: <span></span></article>
+          <article class="grid-item">Flights of Stairs: <span></span></article>
+          <article class="grid-item">Empire State Building: <span></span></article>
+          <article class="grid-item grid-item--width2 grid-item--height2 ">Weekly View: : <span></span></article>
+          <article class="grid-item">You vs. The World: <span></span></article> 
         </section>
       </main>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+      <script src="../node_modules/packery/dist/packery.pkgd.min.js"></script>
+      <script src="../node_modules/draggabilly/dist/draggabilly.pkgd.min.js"></script> 
     <script type="text/javascript" src="./sleep.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
@@ -62,7 +65,7 @@
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="./user-repository.js"></script>
     <script type="text/javascript" src="./user.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>

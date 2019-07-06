@@ -14,5 +14,9 @@
     "eslint": "^5.16.0",
     "mocha": "^6.1.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "draggabilly": "^2.2.0",
+    "packable": "0.0.0",
+    "packery": "^2.1.2"
+  }
 }

@@ -1,11 +1,10 @@
-
 class UserRepository {
   constructor(data) {
     this.data = data;
   }
 
   returnUserData(userId) {
-    return this.data.find(dataSet => dataSet.id === userId);//not sure if this should look more like consumerInfo in other?
+    return this.data.find(dataSet => dataSet.id === userId);
   }
 
   averageStepGoals() {

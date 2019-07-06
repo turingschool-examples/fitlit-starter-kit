@@ -1,6 +1,9 @@
 if (typeof module !== "undefined") {
 dataFilePath = require('../data/sleepSub2');
 User = require('../src/User');
+Sleep = require('../src/Sleep');
+} else {
+  dataFilePath = sleepData;
 }
 
 class SleepRepository {
@@ -98,6 +101,7 @@ class SleepRepository {
   // });
   // return avgOverThree;
   // }
+ 
 }
 
 if (typeof module !== 'undefined') {

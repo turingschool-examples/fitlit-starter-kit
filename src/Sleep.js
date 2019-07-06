@@ -1,11 +1,13 @@
 if (typeof module !== "undefined") {
-usersFilePath = require('../data/sleepSub');
+sleepFilePath = require('../data/sleepSub2');
+} else {
+  sleepFilePath = sleepData
 }
 
 class Sleep {
   constructor(userID) {
     this.userID = userID,
-    this.data = usersFilePath
+    this.data = sleepFilePath
   }
 
   getAvgHoursSlept(userID) {
@@ -33,6 +35,10 @@ class Sleep {
   geSleepQualityOnDay(userID, date) {
     return this.data.find(user => user.userID === userID && user.date === date).sleepQuality;
   };
+
+  instantiateSleep() {
+    return this.data.map(sleep => (sleep = new Sleep(sleep)));
+  }
 }
 
 if (typeof module !== 'undefined') {

@@ -72,6 +72,23 @@ $( window ).on( "load", () => {
   $(".section__stride-length").html(userRepository.returnUserData(randomID).strideLength);
   $(".aside__date").html(asideDate());
 
+  const newSleep = new Sleep(randomID);
+  const sleep = newSleep.instantiateSleep();
+  let instantiatedSleep = sleep.find(item => item.userID === randomID);
+
+  $(".hours-slept__today-input").html(
+    instantiatedSleep.getHoursSleptOnDay(randomID, currentDate())
+  );
+  $(".hours-quality__today-input").html(
+    instantiatedSleep.hoursSleptQualityInDate(currentDate())
+  );
+  $(".hours-slept__average-input").html(
+    instantiatedSleep.averageHrsSlept(currentDate())
+  );
+  $(".hours-quality__average-input").html(
+    instantiatedSleep.averageSleepQuality(currentDate())
+  );
+
 
 });
 

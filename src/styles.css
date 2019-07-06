@@ -105,7 +105,8 @@ main {
 }
 
 
-/*--------widget--------*/
+
+/*------widget------*/
 .widget {
   border: 1px solid gray;
   height: auto;
@@ -126,7 +127,16 @@ main {
   padding: 7px;
 }
 
+
+
 /*-----------Sleep---------*/
+.hours_slept_inner-data-container {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
 .hours_slept_inner-data-one,
 .hours_slept_inner-data-two{
   margin-left: 15px;
@@ -134,47 +144,8 @@ main {
   width: 50%;
 }
 
-.center-hand-align {
-  text-align: center;
-  padding-bottom: 5px;
-  width: 30%;
-}
-
 .hours-slept__today-table {
   margin-top: 20px;
-}
-
-.today-activities-table {
-  width: 90%;
-  margin-left: auto;
-  margin-bottom: 10px;
-  margin-top: 20px;
-}
-
-.steps__daily-goal-table {
-  display: block;
-  margin-left: 130px;
-  margin-bottom: 10px;
-}
-
-.steps__daily-goal-table,
-.steps__daily-goal-input {
-  width: 70%;
-}
-
-table, td, th {
-  border-collapse: collapse;
-}
-th, td {
-  text-align: left;
-}
-
-th {
-  font-size: 14px;
-}
-.user-input {
-  font-size: 30px;
-  font-weight: 700;
 }
 
 .red {
@@ -188,4 +159,3 @@ th {
   color : #fff;
   border: 1px solid #D96459;
 }
-

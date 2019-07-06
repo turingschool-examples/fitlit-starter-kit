@@ -45,6 +45,30 @@ class Activity {
     return userWeeklyActivityMinutes;
   }
 
+  displayWeeklyStepsList(id) {
+    let user = this.findIdHelper(id);
+    let userWeeklySteps = user.map(function(obj) {
+      return obj.numSteps
+    })
+    console.log(userWeeklySteps)
+    if (userWeeklySteps.length > 7) {
+      userWeeklySteps.length = 7;
+    }
+    return userWeeklySteps;
+  }
+
+  displayWeeklyFlightsList(id) {
+    let user = this.findIdHelper(id);
+    let userWeeklyFlightsOfStairs = user.map(function(obj) {
+      return obj.flightsOfStairs
+    })
+    console.log(userWeeklyFlightsOfStairs)
+    if (userWeeklyFlightsOfStairs.length > 7) {
+      userWeeklyFlightsOfStairs.length = 7;
+    }
+    return userWeeklyFlightsOfStairs;
+  }
+
   displayWeeklyActiveMinutesAverage(id) {
     let user = this.findIdHelper(id);
     let userWeeklyActivityMinutes = user.map(function(obj) {

@@ -36,7 +36,22 @@ describe('Activity', function() {
 
   it('should display average active minutes per week for a user', function() {
     const activity = new Activity(activityData);
-    expect(activity.displayWeeklyActiveMinutes(1)).to.deep.eql([140, 292, 168, 140, 119])
+    expect(activity.displayWeeklyActiveMinutesList(1)).to.deep.eql([140, 292, 168, 140, 119])
+  });
+
+  it('should display average active minutes per week for a user', function() {
+    const activity = new Activity(activityData);
+    expect(activity.displayWeeklyActiveMinutesAverage(1)).to.deep.eql(172)
+  });
+
+  it('should display average steps per week for a user', function() {
+    const activity = new Activity(activityData);
+    expect(activity.displayWeeklyStepsAverage(1)).to.deep.eql(9968)
+  });
+
+  it('should display average flights climbed per week for a user', function() {
+    const activity = new Activity(activityData);
+    expect(activity.displayWeeklyFlightsAverage(1)).to.deep.eql(18)
   });
 
   it('should compare a users step goal with their actual steps for a given day', function() {

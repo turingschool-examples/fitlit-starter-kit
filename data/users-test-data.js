@@ -137,4 +137,6 @@ const usersTestData = [
     }
 ];
 
-module.exports = usersTestData;
+if (typeof module !== 'undefined') {
+  module.exports = userTestData;
+}

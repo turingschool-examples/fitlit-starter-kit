@@ -1,5 +1,8 @@
+if (typeof require !== 'undefined') {
 const userData = require("../data/users")
 const UserRepository = require("./user-repository");
+}
+
 
 class Activity {
     constructor(data, id) {
@@ -69,3 +72,4 @@ class Activity {
 if (typeof module !== 'undefined') {
     module.exports = Activity;
 }
+

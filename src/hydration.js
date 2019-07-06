@@ -1,6 +1,6 @@
 class Hydration {
   constructor(data, id) {
-    this.data = data;
+    this.data = data.filter(user => user.userID === id);
     this.id = id;
   } 
 

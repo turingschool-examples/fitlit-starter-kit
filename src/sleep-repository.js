@@ -1,4 +1,6 @@
-const Sleep = require("../src/sleep")
+if (typeof require !== 'undefined') {
+  const Sleep = require("../src/sleep")
+}
 
 class SleepRepository {
   constructor(data) {

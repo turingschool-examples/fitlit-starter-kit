@@ -51,6 +51,23 @@ class Activity{
     	} else{
     		return 'Keep twerking!'
     	}
+    }
+
+    daysExceedStepGoal(id){
+    	this.findActivityData(id)
+    	this.findUserData(id)
+    	let stepGoal = this.specificUserIdentityData[0].dailyStepGoal
+    	let allDates = this.specificUserActivityData.filter(day => day.numSteps >= stepGoal)
+    	return allDates.map(day => day.date)
+    }
+
+    allTimeStairRecord(id){
+    	this.findActivityData(id)
+    	let stairRecord = this.specificUserActivityData.sort((a,b) =>{
+ 			return b.flightsOfStairs - a.flightsOfStairs;
+    	})
+    	return stairRecord[0].flightsOfStairs
+
 
     }
 

@@ -29,8 +29,9 @@ $(document).ready(function() {
   $('#num-daily-active-minutes').text(activity.displayActiveMinutes(randomUser + 1, "2019/06/15"));
   $('#num-all-time-active-minutes').text(activity.displayRecordActiveDay(randomUser + 1)[1]);
   $('#num-all-time-active-minutes-date').text(activity.displayRecordActiveDay(randomUser + 1)[0]);
-  $('#num-weekly-steps').text(activity.displayWeeklyActiveMinutesList(randomUser + 1));
-  // $('#num-weekly-steps').text(activity.displayWeeklySteps())
+  $('#num-weekly-steps-average').text(activity.displayWeeklyStepsAverage(randomUser + 1))
+  $('#num-weekly-min-active-average').text(activity.displayWeeklyActiveMinutesAverage(randomUser + 1))
+  $('#num-weekly-flights-average').text(activity.displayWeeklyFlightsAverage(randomUser + 1))
   
 
  // $('#num-daily-hours-slept').text(sleep.displayHoursSlept(randomUser + 1, ${dateInput}));

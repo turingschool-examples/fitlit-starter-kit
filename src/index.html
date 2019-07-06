@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +10,7 @@
   <script src="https://code.jquery.com/jquery-3.4.1.slim.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
+
 <body>
   <header>
     <h1>FitLit</h1>
@@ -57,12 +59,21 @@
     </section>
     <section class="nav-boxes" id="weekly-activity-metrics">
       <h3>weekly activity</h3>
-      <h4 class="big-nums" id="num-weekly-steps"></h4>
-      <h6 class="weekly-activity-text" id="weekly-steps">steps</h6>
-      <h4 class="big-nums" id="num-weekly-min-active"></h4>
-      <h6 class="weekly-activity-text" id="weekly-min-active">minutes</h6>
-      <h4 class="big-nums" id="num-weekly-flights"></h4>
-      <h6 class="weekly-activity-text" id="weekly-flights">flights</h6>
+      <h4 class="big-nums" id="num-weekly-steps-average"></h4>
+      <h6 class="weekly-activity-text" id="weekly-steps-averge">average weekly steps</h6>
+      <h4 class="big-nums" id="num-weekly-min-active-average"></h4>
+      <h6 class="weekly-activity-text" id="weekly-min-active-average">average weekly minutes</h6>
+      <h4 class="big-nums" id="num-weekly-flights-average"></h4>
+      <h6 class="weekly-activity-text" id="weekly-flights-average">average weekly flights</h6>
+    </section>
+    <section class="nav-boxes" id="weekly-steps">
+      <canvas id="weekly-steps-chart"></canvas>
+    </section>
+    <section class="nav-boxes" id="weekly-minutes-active">
+        <canvas id="weekly-minutes-active-chart"></canvas>
+    </section>
+    <section class="nav-boxes" id="weekly-flights">
+        <canvas id="weekly-flights-chart"></canvas>
     </section>
   </nav>
   <main>
@@ -100,4 +111,5 @@
   <script type="text/javascript" src="./UserRepository.js"></script>
   <script type="text/javascript" src="./scripts.js"></script>
 </body>
+
 </html>

@@ -5,6 +5,8 @@
     <title>Activity Tracker</title>
 
     <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
 
   </head>
   <body>
@@ -18,17 +20,18 @@
 
     <section class='section--right'> 
       <section class='section--right__data'>
-        <div>
+        <div class="section--right__name-image">
+          <img src='images/fitness-594143__480.jpg' alt='gym weights as default image'/>
           <h3>Welcome, <span class = 'user__name'>name</span></h3>
-          <p><span class = 'user__date'>date</span></p>
         </div>
+          <p><span class = 'user__date'>date</span></p>
+        </section>
         <section class='section--right__info'>
-          <article></article>
-          <article></article>
-          <article></article>
+          <article class = section--right__info-steps> <span class = 'steps'>20 </span> STEPS</article>
+          <article class = section--right__info-water> <span class = 'ounces'>20 </span> OZ</article>
+          <article class = section--right__info-sleep> <span class = 'hrs&sleep'>20 </span>HRS & <span>20 </span> QUALITY</article>
         </section>
         <section class = 'friends'> </section>
-      </section>
     </section>
   </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

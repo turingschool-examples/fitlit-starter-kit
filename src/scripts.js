@@ -16,6 +16,9 @@ function populateUser() {
 
   populateUserCard(user, activity);
   populateMainPage(user, activity);
+
+  populateHydrationWidget(user);
+  populateSleepwidget(user);
 }
 
 function populateUserCard(userData, actData) {
@@ -30,7 +33,6 @@ function populateUserCard(userData, actData) {
 function populateMainPage(userData, actData) {
   let stepsToday = actData.totalUserStepsDaily(userData.id, "2019/09/22");
   $('.steps').text(`${stepsToday}`);
-  populateHydrationWidget(userData);
 }
 
 function populateHydrationWidget(user) {
@@ -38,3 +40,14 @@ function populateHydrationWidget(user) {
   let waterIntakeToday = hydration.totalOuncesDaily("2019/09/22", user.id);
   $('.ounces').text(`${waterIntakeToday}`);
 }
+
+function populateSleepwidget(user) {
+  const sleep = new Sleep(sleepData);
+  let hoursSleptToday = sleep.hoursSleptByDate('2019/09/22', user.id);
+  $('.hrsSlept').text(`${hoursSleptToday}`);
+  let qualSleepToday = sleep.sleepQualityByDate('2019/09/22', user.id)
+  $('.qualSlept').text(`${qualSleepToday}`);
+  // console.log(hoursSleptToday);
+}
+// .hoursSleptByDate('2019/06/15', 3)
+// .sleepQualityByDate('2019/06/15', 3)

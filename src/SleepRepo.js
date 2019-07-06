@@ -11,10 +11,6 @@ class SleepRepo {
         this.users = new Sleep(id);
     };
 
-    // findUserData(id){
-    //     this.users.filter(user => user.id === id); 
-    // };
-
     findAverageSleep(){
         let allQuality = this.sleepData.map(user => user.sleepQuality);
         let AllQualityReduced = allQuality.reduce((a,b)=> a += b)
@@ -36,11 +32,7 @@ class SleepRepo {
         });
 
         let longestSleeper =  userHours.filter(day => day.hoursSlept === userHours[0].hoursSlept);
-
-        return longestSleeper[0].hoursSlept
-
-        // let results = longestSleeper.length >= 1 ? longestSleeper[0].hoursSlept : 
-        
+        return longestSleeper[0].hoursSlept        
     }
 };
 

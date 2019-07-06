@@ -30,15 +30,16 @@ class Sleep {
         return Math.round(reducedHoursForOneUser/this.specificUser.length);
     };
 
-    findAverageHoursSleptForWeek(dateOf){
+    findHoursSleptForWeek(dateOf){
         let week = this.findWeekForSleep(dateOf)
         let sleepHoursForWeek = week.map(day => day.hoursSlept)
-        let totalSleepHours = sleepHoursForWeek.reduce((totalHours, hours)=>{
+        return Math.floor(sleepHoursForWeek.reduce((totalHours, hours)=>{
             totalHours += hours
             return totalHours
-        })
-        return Math.floor(totalSleepHours/7)
+        }))
+        
     }
+
 
     findSleepQualityForSpecificDay(dateOf) {
         return this.findDateForSleep(dateOf).sleepQuality

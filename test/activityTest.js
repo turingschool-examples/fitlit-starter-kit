@@ -118,10 +118,21 @@ describe('Activity', function() {
             "flightsOfStairs": 16
         })
     });
-        it('should return the average of all users stair climbing stats', function () {
+        it('should return the average of all users stair climbing stats for a given date', function () {
         const repo1 = new Activity(fakeData, fakeActivity, 3577, "2019/06/15");
             
             expect(repo1.getAllUsersStairClimbingAverage()).to.eql(28)
-            //   7 users
         });
+
+        it('should return the average of all users steps for a given date', function () {
+            const repo1 = new Activity(fakeData, fakeActivity, 3577, "2019/06/15");
+
+            expect(repo1.getAllUsersStepsAverage()).to.eql(7145)
+        });
+
+         it('should return the average of all users steps for a given date', function () {
+             const repo1 = new Activity(fakeData, fakeActivity, 3577, "2019/06/15");
+
+             expect(repo1.getAllUsersMinutesActiveAverage()).to.eql(191)
+         });
     });

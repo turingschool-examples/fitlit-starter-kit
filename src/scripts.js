@@ -3,7 +3,9 @@ console.log("Hello World");
 const globalRepo = new UserRepository(userData);
 let currentUser = new User(globalRepo.returnUser(getRandomNumber()));
 let currentHydration = new Hydration(hydrationData, currentUser.id);
-console.log(currentHydration)
+let currentSleep = new Sleep(sleepData, currentUser.id);
+let sleepRepo = new SleepRepository(sleepData)
+console.log(currentSleep.returnWeekHours("2019/06/23"))
 
 
 // console.log(currentHydration);
@@ -19,6 +21,12 @@ $(document).ready(function(){
     $('.main__section--daily-intake').text(currentHydration.returnIntakeByDay("2019/06/23"))
     $('.main__section--average-intake').text(currentHydration.returnDailyAverage())
     $('.main__section--hydration-canvas').text(currentHydration.returnWeekIntake())
+    $('.main__section--daily-sleep-hours').text(currentSleep.returnDayHours("2019/06/23"))
+    $('.main__section--daily-sleep-quality').text(currentSleep.returnDayQual("2019/06/23"))
+    $('.main__section--week-sleep-hours').text(currentSleep.returnWeekHours("2019/06/23"))
+    $('.main__section--week-sleep-quality').text(currentSleep.returnWeekHours("2019/06/23"))
+    $('.main__section--average-sleep-hours').text(currentSleep.returnAllTimeAvgHours())
+    $('.main__section--average-sleep-quality').text(currentSleep.returnAllTimeAvgQual())
 });
 
 function getRandomNumber() {

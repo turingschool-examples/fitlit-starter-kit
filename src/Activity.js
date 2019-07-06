@@ -59,7 +59,7 @@ class Activity {
     return Math.max(...filterFlights);
   }
 
-  averageSActivity(day, el) {
+  averageActivity(day, el) {
     let findDay = this.activityData.filter((obj) => obj.date === day);
     let findElementArr = findDay.map((obj) => obj[el]);
     let sumTotal = findElementArr.reduce((acc, el) => {

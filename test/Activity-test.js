@@ -32,7 +32,7 @@ describe('Activity', function() {
     expect(activity.minutesAveragedByWeek(3, '2019/06/16')).to.equal(156);
   });
 
-  it('should return their step goal for a given day', function() {
+  it('should return if they met their step goal for a given day', function() {
     expect(activity.stepGoalDay(3, '2019/06/17', userData)).to.equal(false);
   });
 
@@ -45,14 +45,14 @@ describe('Activity', function() {
   });
 
   it('should return average number of stairs climbed specific date', function() {
-    expect(activity.averageSActivity('2019/06/15', 'flightsOfStairs')).to.equal(35);
+    expect(activity.averageActivity('2019/06/15', 'flightsOfStairs')).to.equal(35);
   });
 
   it('should return average number of steps taken specific date', function() {
-    expect(activity.averageSActivity('2019/06/15', 'numSteps')).to.equal(7309);
+    expect(activity.averageActivity('2019/06/15', 'numSteps')).to.equal(7309);
   });
 
   it('should return average number of minutes active specific date', function() {
-    expect(activity.averageSActivity('2019/06/15', 'minutesActive')).to.equal(145);
+    expect(activity.averageActivity('2019/06/15', 'minutesActive')).to.equal(145);
   });
 });

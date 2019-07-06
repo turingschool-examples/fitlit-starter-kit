@@ -6,6 +6,9 @@ let currentHydration = new Hydration(hydrationData, currentUser.id);
 let currentSleep = new Sleep(sleepData, currentUser.id);
 let sleepRepo = new SleepRepository(sleepData)
 console.log(currentSleep.returnWeekHours("2019/06/23"))
+console.log(currentHydration);
+let activity = new Activity(activityData, getRandomNumber());
+let activityDay = activity.returnDay("2019/06/23")
 
 
 // console.log(currentHydration);
@@ -27,6 +30,11 @@ $(document).ready(function(){
     $('.main__section--week-sleep-quality').text(currentSleep.returnWeekHours("2019/06/23"))
     $('.main__section--average-sleep-hours').text(currentSleep.returnAllTimeAvgHours())
     $('.main__section--average-sleep-quality').text(currentSleep.returnAllTimeAvgQual())
+    $('.main__section--activity span').eq(0).text(activityDay.numSteps)
+    $('.main__section--activity span').eq(1).text(activity.returnDailyMiles("2019/06/23"))
+    $('.main__section--activity span').eq(2).text(activityDay.minutesActive)
+    $('.main__section--activity span').eq(3).text(activityDay.flightsOfStairs)
+    $('.main__section--activity span').eq(4).text(activity.returnEmpireCount())
 });
 
 function getRandomNumber() {

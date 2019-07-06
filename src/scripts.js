@@ -251,6 +251,74 @@ $(document).ready(function() {
             }
         });
 
+
+ var dailyStepComparisonChart = new Chart($('#daily-step-comparison-chart'), {
+            type: 'polarArea',
+            data: {
+                labels: ["me", "all users"],
+                datasets: [{
+                    label: 'daily step comparison',
+                    data: [activityData[randomUser].numSteps, activityRepository.calculateAverageSteps('2019/06/15')
+                    ],
+                    backgroundColor: [
+                        'rgba(250, 250, 250, 0.4)',
+                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
+                    ],
+                    borderWidth: 2 //2 pixel border
+                }]
+            }
+        });
+
+
+ var dailyMinutesActiveComparisonChart = new Chart($('#daily-active-minutes-comparison-chart'), {
+            type: 'polarArea',
+            data: {
+                labels: ["me", "all users"],
+                datasets: [{
+                    label: 'daily active minutes comparison',
+                    data: [activityData[randomUser].minutesActive, activityRepository.calculateAverageMinutesActive('2019/06/15')
+                    ],
+                    backgroundColor: [
+                        'rgba(250, 250, 250, 0.4)',
+                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
+                    ],
+                    borderWidth: 2 //2 pixel border
+                }]
+            }
+        });
+
+ var dailyFlightsClimbedComparisonChart = new Chart($('#daily-flight-comparison-chart'), {
+            type: 'polarArea',
+            data: {
+                labels: ["me", "all users"],
+                datasets: [{
+                    label: 'daily flights climbed comparison',
+                    data: [activityData[randomUser].flightsOfStairs, activityRepository.calculateAverageStairs('2019/06/15')
+                    ],
+                    backgroundColor: [
+                        'rgba(250, 250, 250, 0.4)',
+                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                    ],
+                    borderColor: [
+                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
+                    ],
+                    borderWidth: 2 //2 pixel border
+                }]
+            }
+        });
+
+
+
+
 })
 
 

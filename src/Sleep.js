@@ -20,9 +20,8 @@ class Sleep {
       return user.userID === userID;
     });
       return (users.reduce((sleepQual, currentUser) => {
-      //console.log(`hoursSlept is ${currentUser.hoursSlept}`);
-      return sleepQual += currentUser.sleepQuality;
-    }, 0) / users.length).toFixed(1);
+        return sleepQual += currentUser.sleepQuality;
+      }, 0) / users.length).toFixed(1);
   };
 
   getHoursSleptOnDay(userID, date) {

@@ -67,7 +67,9 @@ $( window ).on( "load", () => {
   const activityRepository = new ActivityRepository(randomID);
   const activity = new Activity(randomID);
 
+
   //$(".aside__welcome-name").html(user.getUserNameFromID(1));
+
   $(".aside__user-name").html(userRepository.returnUserData(randomID).name.split(' ')[0]);
   $(".section_full-user-name").html(userRepository.returnUserData(randomID).name);
   $(".section__address").html(userRepository.returnUserData(randomID).address);
@@ -76,6 +78,23 @@ $( window ).on( "load", () => {
   $(".aside__date").html(asideDate());
   // populateAvgActivityChart();
 
+  const newSleep = new Sleep(randomID);
+  const sleep = newSleep.instantiateSleep();
+  let instantiatedSleep = sleep.find(item => item.userID === randomID);
+
+  $(".hours-slept__today-input").html(
+    instantiatedSleep.getHoursSleptOnDay(randomID, currentDate())
+  );
+  $(".hours-quality__today-input").html(
+    instantiatedSleep.hoursSleptQualityInDate(currentDate())
+  );
+  $(".hours-slept__average-input").html(
+    instantiatedSleep.averageHrsSlept(currentDate())
+  );
+  $(".hours-quality__average-input").html(
+    instantiatedSleep.averageSleepQuality(currentDate())
+  );
+  
   // function populateAvgActivityChart() {
   //   console.log(avgActivityChart.data.datasets[0].data)
   //   avgActivityChart.data.datasets[0].data[0] = activity.returnMilesWalked("2019/06/15");

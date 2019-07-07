@@ -17,7 +17,8 @@ $(document).ready(function() {
 
   var $grid = $('.grid').packery({
     itemSelector: '.grid-item',
-    columnWidth: 200,
+    columnWidth: 20,
+    rowHeight: 20,
     gutter: 0
   });
 

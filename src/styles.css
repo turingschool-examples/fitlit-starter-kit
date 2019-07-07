@@ -88,14 +88,14 @@ main {
 
 .grid-item {
     float: left;
-    width: 150px;
+    width: 20%;
     height: 150px;
-    background: #C09;
+    background: #ffffff;
     border: 2px solid hsla(0, 0%, 0%, 0.5);
   }
   
-  .grid-item--width2 { width: 300px; }
-  .grid-item--height2 { height: 300px; }
+  .grid-item--width2 { width: 40%; }
+  .grid-item--height2 { height: 150px; }
   
   .grid-item:hover {
     border-color: hsla(0, 0%, 100%, 0.5);

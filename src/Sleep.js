@@ -5,28 +5,24 @@ if (typeof module !== 'undefined') {
   } 
 
 class Sleep {
-    constructor(data){
-        this.id = sleepData.userID;
-        this.data = sleepData;
-        this.specificUser = []
-        
+    constructor(id){
+        this.userSleepData = (this.findSleepData(user.id));
     };
 
 	findSleepData(id){
-		let filteredSleepData = this.data.filter(sleep => sleep.userID === id); 
-        filteredSleepData.forEach(user => this.specificUser.push(user));
+		return sleepData.filter(sleep => sleep.userID === id); 
     };
     
     findAverageSleepQualityForUser(){
-        let allQualityForOneUser = this.specificUser.map(user => user.sleepQuality);
+        let allQualityForOneUser = this.userSleepData.map(user => user.sleepQuality);
         let reducedQualityForOneUser = allQualityForOneUser.reduce((a,b) => a += b)
-        return Math.round(reducedQualityForOneUser/this.specificUser.length)
+        return Math.round(reducedQualityForOneUser/this.userSleepData.length)
     };
 
     findAverageHoursSleptForUser() {
-        let allHoursForOneUser = this.specificUser.map(user => user.hoursSlept);
+        let allHoursForOneUser = this.userSleepData.map(user => user.hoursSlept);
         let reducedHoursForOneUser = allHoursForOneUser.reduce((a,b) => a += b);
-        return Math.round(reducedHoursForOneUser/this.specificUser.length);
+        return Math.round(reducedHoursForOneUser/this.userSleepData.length);
     };
 
     findHoursSleptForWeek(dateOf){
@@ -42,6 +38,10 @@ class Sleep {
         return this.findDateForSleep(dateOf).sleepQuality
     };
 
+    findHoursSleptForSpecificDay(dateOf) {
+        return this.findDateForSleep(dateOf).hoursSlept
+    };
+
     findSleepQualityForWeek(dateOf){
         let week = this.findWeekForSleep(dateOf)
         let sleepQualForWeek = week.map(day => day.sleepQuality)
@@ -53,12 +53,12 @@ class Sleep {
     }
 
     findDateForSleep(dateOf) {
-        return this.specificUser.find(day => day.date === dateOf)
+        return this.userSleepData.find(day => day.date === dateOf)
     };
 
     findWeekForSleep(dateOf) {
-        let dateIndex = this.specificUser.findIndex(day => day.date === dateOf);
-        return this.specificUser.slice(dateIndex - 6, dateIndex + 1)
+        let dateIndex = this.userSleepData.findIndex(day => day.date === dateOf);
+        return this.userSleepData.slice(dateIndex - 6, dateIndex + 1)
     };
 
     findUserWithMostHours(dateOf){

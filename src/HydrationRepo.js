@@ -7,29 +7,41 @@ if (typeof module !== 'undefined') {
 
 class HydrationRepo{
 	constructor(id){
-		this.data = hydrationData;
-		this.userData = new Hydration(id);
-		this.specificUser = [];
+		this.hydrationUserData= (this.findHydrationData(id));
+		console.log(this.hydrationUserData)
+		// this.users = new Hydration(id);
 	};
 
 	findHydrationData(id){
-		let filteredHydrationData = this.data.filter(hydration => hydration.userID === id); 
-		filteredHydrationData.forEach(user => this.specificUser.push(user));
+		return hydrationData.filter(hydration => hydration.userID === id); 
 	};
 
+	findSpecificDayHydrationOunces(id, dateOf) {
+		let numOuncesDate = this.hydrationUserData.find(day => day.date === dateOf);
+		return numOuncesDate.numOunces
+	}
+
 	findDailyConsumption(dateOf){
-		return this.specificUser.find(day=> day.date === dateOf).numOunces;
+		return this.hydrationUserData.find(day=> day.date === dateOf).numOunces;
 	};
 
 	weeklyConsumptionAverage(specificDate){
-		let newDateIndex = this.specificUser.findIndex(user => user.date === specificDate);
-		let slicedDates = this.specificUser.slice(newDateIndex - 6, newDateIndex + 1);
+		let newDateIndex = this.hydrationUserData.findIndex(user => user.date === specificDate);
+		let slicedDates = this.hydrationUserData.slice(newDateIndex - 6, newDateIndex + 1);
 		let weeklyOzs = slicedDates.map(user => user.numOunces);
 		return Math.floor(weeklyOzs.reduce((totalOzs, dailyOz) => {
 			return totalOzs += dailyOz
 		}, 0)/ 7)
-
 	};
+
+	returnHydrationValuesForWeek(specificDate) {
+		let newDateIndex = this.hydrationUserData.findIndex(user => user.date === specificDate);
+		let slicedDates = this.hydrationUserData.slice(newDateIndex - 6, newDateIndex + 1);
+		return slicedDates.map(user => user.numOunces);
+	}
+
+
+
 
 };
 

@@ -5,10 +5,9 @@ if (typeof module !== 'undefined') {
 
 }
 
-class Hydration{
-	constructor(){
+class Hydration {
+	constructor(id){
 		this.data = hydrationData;
-
 	}
 
 	

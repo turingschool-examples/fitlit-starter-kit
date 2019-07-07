@@ -1,4 +1,4 @@
-/* eslint-disable space-before-blocks */
+
 class Hydration {
   constructor(object, date) {
     this.object = object

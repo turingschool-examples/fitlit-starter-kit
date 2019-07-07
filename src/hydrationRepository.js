@@ -9,7 +9,6 @@ class HydrationRepository {
       el.userID === this.id)
   }
 
-
   getTotalAvg() {
     var user = this.data.filter(el => 
       el.userID === this.id).map(el => el.numOunces)

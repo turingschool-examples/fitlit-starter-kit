@@ -35,7 +35,8 @@ describe('Hydration', function() {
     let user1 = new Hydration(object1, )
     let user2 = new Hydration(object2, )
 
-    expect(user1.getWeeklyOunces()).to.eql([39, 43, 50 , 50, 91, 61, 96])
+    expect(user1.getWeeklyOunces()).to.eql(
+          [96, 61, 91, 50, 50, 43, 39])
     expect(user2.getWeeklyOunces()).to.eql([40]) 
   })
 })

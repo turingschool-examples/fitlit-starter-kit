@@ -1,6 +1,8 @@
 if (typeof module !== "undefined") {
 const Hydration = ('../src/Hydration')
 FilePath = require("../data/HydrationSub")
+} else {
+  FilePath = hydrationData;
 }
 
 class HydrationRepository {

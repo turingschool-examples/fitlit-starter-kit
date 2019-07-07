@@ -1,11 +1,13 @@
 if (typeof module !== "undefined") {
-FilePath = require("../data/HydrationSub");
+hydrationFilePath = require("../data/HydrationSub");
+} else {
+  hydrationFilePath = hydrationData;
 }
 
   class Hydration {
     constructor(userID) {
       this.userID = userID,
-      this.data = FilePath
+      this.data = hydrationFilePath;
     }
   
     returnAllTimeAvg(userID) {
@@ -17,17 +19,16 @@ FilePath = require("../data/HydrationSub");
       }, 0) / users.length));
     }
 
-    returnSpecificDayOz(userID, date) {
-      let users = this.data.filter(function(user) {
-        return user.userID === userID;
+    returnSpecificDayOz(date) {
+      let users = this.data.filter(user => {
+        return user.userID === this.userID;
       });
-
       return users.reduce(function(acc, user) {
         if (user.date === date) {
-          acc.push(user.numOunces);
+          acc += user.numOunces;
         }
         return Number(acc);
-      }, []);
+      }, 0);
     }
 
     returnWaterEachDay(userID) {

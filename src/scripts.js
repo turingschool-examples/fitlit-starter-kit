@@ -68,6 +68,7 @@ $(document).ready(function() {
   $('.main__section--activity--world table tr td').eq(8).text(activityRepo.returnAvgStairs("2019/06/23"))
   $('.main__section--sleep--worst span').first().text(currentSleep.returnWorstDay("2019/06/23").date)
   $('.main__section--sleep--worst span').eq(1).text(currentSleep.returnWorstDay("2019/06/23").sleepQuality)
+  $('.main__section--hydration--today span').text(currentHydration.returnIntakeByDay("2019/06/23"))
 
 
 });

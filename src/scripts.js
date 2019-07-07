@@ -11,8 +11,8 @@ $(document).ready(function() {
     const specificUser = userRepo.returnUserData(userID);
     const user = new User(specificUser);
     $('#js-user-profile').show();
-    $('#js-change-user').removeClass('list-item--active');
     removeClasses();
+    $('#js-change-user').removeClass('list-item--active');
     $('#js-user').addClass('list-item--active');
     $('#js-first-name').html(user.returnFirstName());
     $('#js-full-name').html(user.name);
@@ -28,15 +28,17 @@ $(document).ready(function() {
   $('#js-user').click(function() {
     $('#js-user-profile').show();
     $('#js-step-goal-chart').hide();
-    $('#js-user').addClass('list-item--active');
+
     removeClasses();
+    addClasses();
   });
 
   $('#js-step-goal').click(function() {
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').show();
+    
     removeClasses();
-    $('#js-step-goal').addClass('list-item--active');
+    addClasses();
   });
 
   $('#js-hydration').click(function() {
@@ -44,6 +46,7 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
 
     removeClasses();
+    addClasses();
   });
 
   $('#js-sleep').click(function() {
@@ -51,6 +54,7 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
 
     removeClasses();
+    addClasses();
   });
 
   $('#js-min-active').click(function() {
@@ -58,6 +62,7 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
 
     removeClasses();
+    addClasses();
   });
 
   $('#js-distance').click(function() {
@@ -65,9 +70,16 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
 
     removeClasses();
+    addClasses();
   });
 
+  $('#js-flights').click(function() {
+    $('#js-user-profile').hide();
+    $('#js-step-goal-chart').hide();
 
+    removeClasses();
+    addClasses();
+  });
 
   function removeClasses() {
     $('.list-item').each(value => {
@@ -77,6 +89,11 @@ $(document).ready(function() {
         $(`#${id}`).removeClass('list-item--active');
       }
     })
+  }
+
+  function addClasses() {
+    let clickedID = event.target.id;
+    $(`#${clickedID}`).addClass('list-item--active');
   }
 
   function updateStepGoalChart(user) {
@@ -128,6 +145,7 @@ $(document).ready(function() {
       }
     }
   });
+
   // let foundUser = hydrationRepo.returnUserHydrationData(userID);
   // const hydration = new Hydration(foundUser);
   // $('#js-water-consumed-today').html(hydration.returnFluidOunces("2019/06/15"));

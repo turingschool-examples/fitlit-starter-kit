@@ -82,14 +82,22 @@ class Sleep {
     return sleepByDate.filter(person => person.hoursSlept === topHours);
   }
 
-  lastWkSleepTotal(id) {
-    let userBlock = this.consumerInfo(id);
-    let userBlkWk = userBlock.splice(-7);
-    let startDate = userBlkWk[0].date;
-    let wklyHours = this.dailyHoursSleptPerWeek(id, startDate);
-    let total = wklyHours.reduce((acc, hours) => acc + hours);
-    return parseFloat(total.toFixed(1));
+  sleepComp(day, id) {
+    if (this.sleepQualityByDate(day, id) >= this.averageQualitySleep(id) && this.hoursSleptByDate(day, id) >= this.averageHoursSlept(id)) {
+      return true;
+    } else {
+      return false;
+    }
   }
+
+  // lastWkSleepTotal(id) {
+  //   let userBlock = this.consumerInfo(id);
+  //   let userBlkWk = userBlock.splice(-7);
+  //   let startDate = userBlkWk[0].date;
+  //   let wklyHours = this.dailyHoursSleptPerWeek(id, startDate);
+  //   let total = wklyHours.reduce((acc, hours) => acc + hours);
+  //   return parseFloat(total.toFixed(1));
+  // }
 }
 
 if (typeof module !== 'undefined') {

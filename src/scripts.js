@@ -1,7 +1,6 @@
 $( document ).ready(() => {
   console.log('doc ready');
   populateUser();
-
 });
 
 function populateUser() {
@@ -9,16 +8,13 @@ function populateUser() {
   const userRepository = new UserRepository(userData);
   const userInfo = userRepository.returnUserData(randomUser);
   const user = new User(userInfo);
-  let name = user.returnUserName();
-  $('.user__name').text(`${name}`);
-  
   const activity = new Activity(activityData);
-
   populateUserCard(user, activity);
   populateMainPage(user, activity);
-
   populateHydrationWidget(user);
   populateSleepwidget(user);
+   let name = user.returnUserName();
+  $('.user__name').text(`${name}`);
 }
 
 function populateUserCard(userData, actData) {
@@ -31,13 +27,13 @@ function populateUserCard(userData, actData) {
 }
 
 function populateMainPage(userData, actData) {
-  let stepsToday = actData.totalUserStepsDaily(userData.id, "2019/09/22");
+  let stepsToday = actData.totalUserStepsDaily(userData.id, '2019/09/22');
   $('.steps').text(`${stepsToday}`);
 }
 
 function populateHydrationWidget(user) {
   const hydration = new Hydration(hydrationData);
-  let waterIntakeToday = hydration.totalOuncesDaily("2019/09/22", user.id);
+  let waterIntakeToday = hydration.totalOuncesDaily('2019/09/22', user.id);
   $('.ounces').text(`${waterIntakeToday}`);
 }
 
@@ -47,7 +43,13 @@ function populateSleepwidget(user) {
   $('.hrsSlept').text(`${hoursSleptToday}`);
   let qualSleepToday = sleep.sleepQualityByDate('2019/09/22', user.id)
   $('.qualSlept').text(`${qualSleepToday}`);
-  // console.log(hoursSleptToday);
+  displaySleepComp(user, sleep);
 }
-// .hoursSleptByDate('2019/06/15', 3)
-// .sleepQualityByDate('2019/06/15', 3)
+
+function displaySleepComp(user, sleep) {
+  if (sleep.sleepComp('2019/09/22', user.id)) {
+    //return message to the DOM 'Great Sleep! Keep it up!'
+  } else {
+    //return message 'You need good sleep for great health!'
+  }
+}

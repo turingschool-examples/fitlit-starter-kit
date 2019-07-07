@@ -1,4 +1,8 @@
-const User = require('../src/user');
+if (typeof module !== 'undefined') {
+  User = require('../src/user');
+}
+
+
 
 class Activity extends User {
   constructor (user, currentUser) {
@@ -7,9 +11,16 @@ class Activity extends User {
     this.user = user
   }
 
+
+
   milesWalked(date) {
     let found = this.currentUser.find(el => el.date === date);
     return ((found.numSteps * this.user.strideLength) / 5280).toFixed(2)
+  }
+
+  userMinActiveForDay(date) {
+    let found = this.currentUser.find(el => el.date === date);
+    return found.minutesActive;
   }
 
   returnAWeek(firstDate) {
@@ -28,8 +39,9 @@ class Activity extends User {
     let found = this.currentUser.find(el => el.date === date);
     if (this.user.dailyStepGoal < found.numSteps) {
       return true
+    } else {
+      return false
     }
-      else return false
   }
 
   allDaysStepGoalMet() {
@@ -44,4 +56,7 @@ class Activity extends User {
 
 }
 
-module.exports = Activity
+if (typeof module !== 'undefined') {
+  module.exports = Activity;
+}
+

@@ -17,7 +17,7 @@ describe("Activity", () => {
     userRepository = new UserRepository(userData1)
     activityRepository = new ActivityRepository(activityData);
     activity1 = new Activity(userRepository.returnUserData(1), activityRepository.returnUserActivityData(1));
-
+  
   });
 
   it("should be a function", () => {

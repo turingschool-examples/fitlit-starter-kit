@@ -14,22 +14,26 @@ $(document).ready(function() {
     const userRepo = new UserRepository(userData);
     const hydrationRepo = new HydrationRepository(hydrationData);
     const sleepRepo = new SleepRepository(sleepData);
+    const activityRepo = new ActivityRepository(activityData);
+
     const userID = Math.floor((Math.random() * 50) + 1);
     const specificUser = userRepo.returnUserData(userID);
-    const user = new User(specificUser);
+    const user1 = new User(specificUser);
     const hydrationUser = hydrationRepo.returnUserHydrationData(userID);
     const hydration = new Hydration(hydrationUser);
     const sleepUser = sleepRepo.returnUserSleepData(userID);
     const sleep = new Sleep(sleepUser);
+    const activityUser = activityRepo.returnUserActivityData(userID);
+    const activity = new Activity(user1, activityUser);
     
     removeClasses();
     $('#js-change-user').removeClass('list-item--active');
     $('#js-user').addClass('list-item--active');
 
-    $('#js-first-name').html(user.returnFirstName());
-    $('#js-full-name').html(user.name);
-    $('#js-address').html(user.address);
-    $('#js-email').html(user.email);
+    $('#js-first-name').html(user1.returnFirstName());
+    $('#js-full-name').html(user1.name);
+    $('#js-address').html(user1.address);
+    $('#js-email').html(user1.email);
     $('#js-friends').html(userRepo.makeFriendNames(userID));
 
     $('#js-h2--welcome').hide();
@@ -42,7 +46,7 @@ $(document).ready(function() {
 
     $('#js-user-profile').show();
     $('#js-h2--user').show();
-    updateCharts(user, hydration, sleep);
+    updateCharts(user1, hydration, sleep, activity, activityRepo);
   });
 
   $('#js-user').click(function() {
@@ -162,25 +166,30 @@ $(document).ready(function() {
     sleepHoursLineChart.update();
   }
 
-  function minsActiveCharts(activity) {
+  function minsActiveCharts(activity, activityRepo) {
+    numMinActiveChart.data.labels[0] = activity.user.name;
+    numMinActiveChart.data.datasets[0].data[0] = activity.userMinActiveForDay(today);
+    numMinActiveChart.data.datasets[0].data[1] = activityRepo.aveMinutesActiveForDay(today);
+    // numMinActiveLineChart.data.datasets[0].data = 
+    numMinActiveChart.update();
+    numMinActiveLineChart.update();
+  }
+
+  function distanceTraveledCharts(activity, activityRepo) {
     
   }
 
-  function distanceTraveledCharts(activity) {
+  function flightsClimbedCharts(activity, activityRepo) {
 
   }
 
-  function flightsClimbedCharts(activity) {
-
-  }
-
-  function updateCharts(user, hydration, sleep) {
+  function updateCharts(user, hydration, sleep, activity, activityRepo) {
     updateStepGoalChart(user);
     updateHydrationLineChart(hydration);
     updateSleepCharts(sleep);
-    minsActiveCharts(activity);
-    distanceTraveledCharts(activity);
-    flightsClimbedCharts(activity);
+    minsActiveCharts(activity, activityRepo);
+    distanceTraveledCharts(activity, activityRepo);
+    flightsClimbedCharts(activity, activityRepo);
   }
 
 
@@ -366,7 +375,7 @@ $(document).ready(function() {
         {
           label: "Daily Step Goal",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
-          data: [0, 6700]
+          data: [0, 0]
         }
       ]
     },
@@ -390,8 +399,8 @@ $(document).ready(function() {
             fontSize: 16,
             maxTicksLimit: 12,
             min: 0,
-            max: 12000,
-            stepSize: 2000,
+            max: 300,
+            stepSize: 50,
           }
         }]
       }

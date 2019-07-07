@@ -100,13 +100,19 @@ p {
   grid-area: main;
 }
 
-.sleep-charts {
+.sleep-charts,
+.num-of-steps-charts,
+.num-mins-active-charts,
+.distance-miles-charts {
   display: flex;
 }
 
 .step-goal-chart,
 .hydration-line-chart,
-.sleep-charts {
+.sleep-charts,
+.num-of-steps-charts,
+.num-mins-active-charts,
+.distance-miles-charts {
   margin: auto;
 }
 

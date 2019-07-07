@@ -6,6 +6,9 @@ $(document).ready(function() {
   $('#js-step-goal-chart').hide();
   $('#js-hydration-line-chart').hide();
   $('.sleep-charts').hide();
+  $('.num-of-steps-charts').hide();
+  $('.num-mins-active-charts').hide();
+  $('.distance-miles-charts').hide();
 
   $('#js-change-user').click(function() {
     const userRepo = new UserRepository(userData);
@@ -18,17 +21,26 @@ $(document).ready(function() {
     const hydration = new Hydration(hydrationUser);
     const sleepUser = sleepRepo.returnUserSleepData(userID);
     const sleep = new Sleep(sleepUser);
-    $('#js-user-profile').show();
+    
     removeClasses();
     $('#js-change-user').removeClass('list-item--active');
     $('#js-user').addClass('list-item--active');
+
     $('#js-first-name').html(user.returnFirstName());
     $('#js-full-name').html(user.name);
     $('#js-address').html(user.address);
     $('#js-email').html(user.email);
     $('#js-friends').html(userRepo.makeFriendNames(userID));
+
     $('#js-h2--welcome').hide();
     $('#js-step-goal-chart').hide();
+    $('#js-hydration-line-chart').hide();
+    $('.sleep-charts').hide();
+    $('.num-of-steps-charts').hide();
+    $('.num-mins-active-charts').hide();
+    $('.distance-miles-charts').hide();
+
+    $('#js-user-profile').show();
     $('#js-h2--user').show();
     updateCharts(user, hydration, sleep);
   });
@@ -38,6 +50,9 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
     $('#js-hydration-line-chart').hide();
     $('.sleep-charts').hide();
+    $('.num-of-steps-charts').hide();
+    $('.num-mins-active-charts').hide();
+    $('.distance-miles-charts').hide();
     removeClasses();
     addClasses();
   });
@@ -47,6 +62,9 @@ $(document).ready(function() {
     $('#js-user-profile').hide();
     $('#js-hydration-line-chart').hide();
     $('.sleep-charts').hide();
+    $('.num-of-steps-charts').hide();
+    $('.num-mins-active-charts').hide();
+    $('.distance-miles-charts').hide();
     removeClasses();
     addClasses();
   });
@@ -56,39 +74,57 @@ $(document).ready(function() {
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').hide();
     $('.sleep-charts').hide();
+    $('.num-of-steps-charts').hide();
+    $('.num-mins-active-charts').hide();
+    $('.distance-miles-charts').hide();
     removeClasses();
     addClasses();
   });
 
   $('#js-sleep').click(function() {
     $('.sleep-charts').show();
+    $('#js-hydration-line-chart').hide();
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').hide();
-
+    $('.num-of-steps-charts').hide();
+    $('.num-mins-active-charts').hide();
+    $('.distance-miles-charts').hide();
     removeClasses();
     addClasses();
   });
 
   $('#js-min-active').click(function() {
+    $('.num-mins-active-charts').show();
+    $('.sleep-charts').hide();
+    $('#js-hydration-line-chart').hide();
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').hide();
-
+    $('.num-of-steps-charts').hide();
+    $('.distance-miles-charts').hide();
     removeClasses();
     addClasses();
   });
 
   $('#js-distance').click(function() {
+    $('.distance-miles-charts').show();
+    $('#js-hydration-line-chart').hide();
+    $('.num-mins-active-charts').hide();
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').hide();
-
+    $('.num-of-steps-charts').hide();
+    $('.num-mins-active-charts').hide();
     removeClasses();
     addClasses();
   });
 
   $('#js-flights').click(function() {
+    $('.num-of-steps-charts').show();
+    $('#js-hydration-line-chart').hide();
+    $('.sleep-charts').hide();
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').hide();
-
+    $('.num-mins-active-charts').hide();
+    $('.distance-miles-charts').hide();
     removeClasses();
     addClasses();
   });
@@ -126,10 +162,25 @@ $(document).ready(function() {
     sleepHoursLineChart.update();
   }
 
+  function minsActiveCharts(activity) {
+    
+  }
+
+  function distanceTraveledCharts(activity) {
+
+  }
+
+  function flightsClimbedCharts(activity) {
+
+  }
+
   function updateCharts(user, hydration, sleep) {
     updateStepGoalChart(user);
     updateHydrationLineChart(hydration);
     updateSleepCharts(sleep);
+    minsActiveCharts(activity);
+    distanceTraveledCharts(activity);
+    flightsClimbedCharts(activity);
   }
 
 
@@ -245,7 +296,7 @@ $(document).ready(function() {
   });
 
   
-  var numOfStepsChart = new Chart($("#js-step-goal-chart"), {
+  var numOfStepsChart = new Chart($("#js-num-of-steps-chart"), {
     type: 'bar',
     data: {
       labels: ["", "All Users"],
@@ -285,7 +336,7 @@ $(document).ready(function() {
     }
   });
 
-  var numOfStepsLineChart = new Chart($('#js-sleepHours-line-chart'), {
+  var numOfStepsLineChart = new Chart($('#js-num-of-steps-line-chart'), {
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
@@ -307,7 +358,7 @@ $(document).ready(function() {
     }
   });
 
-  var numMinActiveChart = new Chart($("#js-step-goal-chart"), {
+  var numMinActiveChart = new Chart($("#js-num-mins-active-chart"), {
     type: 'bar',
     data: {
       labels: ["", "All Users"],
@@ -347,7 +398,7 @@ $(document).ready(function() {
     }
   });
 
-  var numMinActiveLineChart = new Chart($('#js-sleepHours-line-chart'), {
+  var numMinActiveLineChart = new Chart($('#js-num-mins-active-line-chart'), {
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
@@ -369,7 +420,7 @@ $(document).ready(function() {
     }
   });
 
-  var distanceMilesChart = new Chart($("#js-step-goal-chart"), {
+  var distanceMilesChart = new Chart($("#js-distance-miles-chart"), {
     type: 'bar',
     data: {
       labels: ["", "All Users"],
@@ -409,7 +460,7 @@ $(document).ready(function() {
     }
   });
 
-  var distanceMilesLineChart = new Chart($('#js-sleepHours-line-chart'), {
+  var flightsClimbedLineChart = new Chart($('#js-flights-climbed-line-chart'), {
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],

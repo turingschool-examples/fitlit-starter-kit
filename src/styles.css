@@ -4,7 +4,14 @@
 
 body {
   font-family: "Open Sans", sans-serif;
+  margin: 3%;
+  margin-top: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(../images/art-sunset.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
 
 p {
   font-size: 1.5em;
@@ -13,7 +20,6 @@ p {
 }
 
 .main {
-  background-color: #fff;
   display: grid;
   grid-template-areas:
     "head head"
@@ -21,26 +27,25 @@ p {
     "nav main";
   grid-template-columns: 20% 80%;
   grid-template-rows: 15% 10% 75%;
-  height: 90vh;
-  padding: 0 3% 3% 3%;
+  height: 85vh;
 }
 
 .top {
   align-items: center;
   display: flex;
-  height: 10vh;
+  height: 8vh;
   justify-content: flex-end;
-  padding: 0% 3%;
 }
 
 .h1 {
+  color: aliceblue;
   font-family: "Racing Sans One", cursive;
   font-size: 2.8em;
 }
 
 .header {
   align-items: center;
-  background-color: #323240;
+  background-color: rgba(50, 50, 64, 0.7);
   display: flex;
   grid-area: head;
 }
@@ -53,7 +58,7 @@ p {
 }
 
 .nav {
-  background-color: #838286;
+  background-color: rgba(28, 28, 37, 0.7);
   grid-area: nav;
 }
 
@@ -79,7 +84,7 @@ p {
 }
 
 .label {
-  background-color: #e4e4e4;
+  background-color: #47484e99;
   grid-area: label;
 }
 
@@ -95,7 +100,7 @@ p {
 } */
 
 .section {
-  background-color: #e4e4e4;
+  background-color: #47484e99;
   display: flex;
   grid-area: main;
 }

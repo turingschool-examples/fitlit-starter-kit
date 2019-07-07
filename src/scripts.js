@@ -19,8 +19,8 @@ $(document).ready(function() {
   var $grid = $('.grid').packery({
     itemSelector: '.grid-item',
     columnWidth: 50,
-    rowHeight: 50,
-    gutter: 0
+    rowHeight: 40,
+    gutter: 0,
   });
 
   var $draggables = $('.grid-item').draggabilly({
@@ -51,7 +51,7 @@ $(document).ready(function() {
   $('.main__section--week-sleep-quality').text(currentSleep.returnWeekHours("2019/06/23"))
   $('.main__section--average-sleep-hours').text(currentSleep.returnAllTimeAvgHours())
   $('.main__section--average-sleep-quality').text(currentSleep.returnAllTimeAvgQual())
-  $('.main__section--activity--steps span').text(activityDay.numSteps)
+  $('.main__section--activity--steps span').text(activityDay.numSteps.toLocaleString())
   $('.main__section--activity--miles span').text(activity.returnDailyMiles("2019/06/23"))
   $('.main__section--activity--minutes span').text(activityDay.minutesActive)
   $('.main__section--activity--flights span').text(activityDay.flightsOfStairs)
@@ -60,8 +60,8 @@ $(document).ready(function() {
   $('.main__section--sleep--last-night span').eq(1).text(currentSleep.returnDayQual("2019/06/23"))
   $('.main__section--sleep--averages span').first().text(currentSleep.returnAllTimeAvgHours())
   $('.main__section--sleep--averages span').eq(1).text(currentSleep.returnAllTimeAvgQual())
-  $('.main__section--activity--world table tr td').eq(1).text(activityDay.numSteps)
-  $('.main__section--activity--world table tr td').eq(2).text(activityRepo.returnAvgSteps("2019/06/23"))
+  $('.main__section--activity--world table tr td').eq(1).text(activityDay.numSteps.toLocaleString())
+  $('.main__section--activity--world table tr td').eq(2).text(activityRepo.returnAvgSteps("2019/06/23").toLocaleString())
   $('.main__section--activity--world table tr td').eq(4).text(activityDay.minutesActive)
   $('.main__section--activity--world table tr td').eq(5).text(activityRepo.returnAvgMins("2019/06/23"))
   $('.main__section--activity--world table tr td').eq(7).text(activityDay.flightsOfStairs)

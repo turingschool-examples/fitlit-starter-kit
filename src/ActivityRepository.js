@@ -1,5 +1,9 @@
-const Hydration = ('../src/Activity')
+if (typeof module !== "undefined") {
+const Activity = ('../src/Activity')
 FilePath = require("../data/ActivitySub")
+} else {
+  FilePath = activityData;
+}
 
 class ActivityRepository {
     constructor (userID) {

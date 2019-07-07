@@ -1,4 +1,4 @@
-let stepGoalChart = new Chart($('.activity__chart-day-allUsers'), {
+let avgActivityChart = new Chart($('.activity__chart-day-allUsers'), {
     type: 'bar',
     data: {
       labels: ["Number of steps", "Minutes active", "Flights of stairs climbed"],
@@ -22,7 +22,7 @@ let stepGoalChart = new Chart($('.activity__chart-day-allUsers'), {
     }
   });
 
-  new Chart($(".activity__chart-weeklyView-oneUser"), {
+let userWeeklyChart = new Chart($(".activity__chart-weeklyView-oneUser"), {
     type: 'line',
     data: {
       labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],

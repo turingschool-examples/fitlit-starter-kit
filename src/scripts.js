@@ -64,6 +64,11 @@ $( window ).on( "load", () => {
 
   //const user = new User();
   const userRepository = new UserRepository ();
+  const activityRepository = new ActivityRepository(randomID);
+  const activity = new Activity(randomID);
+
+
+  //$(".aside__welcome-name").html(user.getUserNameFromID(1));
 
   $(".aside__user-name").html(userRepository.returnUserData(randomID).name.split(' ')[0]);
   $(".section_full-user-name").html(userRepository.returnUserData(randomID).name);
@@ -71,6 +76,7 @@ $( window ).on( "load", () => {
   $(".section__email").html(userRepository.returnUserData(randomID).email);
   $(".section__stride-length").html(userRepository.returnUserData(randomID).strideLength);
   $(".aside__date").html(asideDate());
+  // populateAvgActivityChart();
 
   const newSleep = new Sleep(randomID);
   const sleep = newSleep.instantiateSleep();
@@ -88,7 +94,37 @@ $( window ).on( "load", () => {
   $(".hours-quality__average-input").html(
     instantiatedSleep.averageSleepQuality(currentDate())
   );
+  
+  // function populateAvgActivityChart() {
+  //   console.log(avgActivityChart.data.datasets[0].data)
+  //   avgActivityChart.data.datasets[0].data[0] = activity.returnMilesWalked("2019/06/15");
+  // }
 
+
+
+  let avgActivityChart = new Chart($('.activity__chart-day-allUsers'), {
+    type: 'bar',
+    data: {
+      labels: ["Number of steps", "Minutes active", "Flights of stairs climbed"],
+      datasets: [
+        {
+          label: "Your stats",
+          backgroundColor: "#3e95cd",
+          data: [activity.returnSteps("2019/06/15")/50, activity.returnMinutesActive("2019/06/15"), activity.returnFlightsOfStairs("2019/06/15")]
+        }, {
+          label: "The average stats of all users",
+          backgroundColor: "#8e5ea2",
+          data: [activityRepository.returnAvgSteps("2019/06/15")/50, activityRepository.returnAvgMins("2019/06/15"), activityRepository.returnAvgStairs("2019/06/15")]
+        }
+      ]
+    },
+    options: {
+    title: {
+        display: true,
+        text: 'Your stats compared to all users'
+      }
+    }
+  });
 
 });
 

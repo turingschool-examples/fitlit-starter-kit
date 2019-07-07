@@ -34,4 +34,6 @@ class HydrationRepo{
 };
 
 
-module.exports = HydrationRepo;
+if (typeof module !== 'undefined') {
+	module.exports = HydrationRepo;
+  }

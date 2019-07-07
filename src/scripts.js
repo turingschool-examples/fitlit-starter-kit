@@ -66,7 +66,11 @@ $( window ).on( "load", () => {
   const userRepository = new UserRepository ();
   const activityRepository = new ActivityRepository(randomID);
   const activity = new Activity(randomID);
+  const hydrationRepository = new HydrationRepository(randomID);
+  const hydration = new Hydration(randomID);
+
   populateActivityNums();
+  populateHydrationNums();
 
 
   //$(".aside__welcome-name").html(user.getUserNameFromID(1));
@@ -95,11 +99,15 @@ $( window ).on( "load", () => {
   // $(".hours-quality__average-input").html(
   //   instantiatedSleep.averageSleepQuality(currentDate())
   // );
-console.log(currentDate())
+
   function populateActivityNums() {
     $(".activity__steps-stepNum").html(activity.returnSteps("2019/06/15"));
     $(".activity__minsActive-minsActive").html(activity.returnMinutesActive("2019/06/15"));
     $(".activity__distance-distanceNum").html(activity.returnMilesWalked("2019/06/15"));
+  }
+
+  function populateHydrationNums() {
+    $(".hydration__steps-ozNum").html(hydration.returnSpecificDayOz("2019/06/15"));
   }
 
 /////////////////////////////Activity Section Charts/////////////////////////////////
@@ -120,9 +128,11 @@ console.log(currentDate())
         }, {
             label: "The average stats of all users",
             backgroundColor: "#8e5ea2",
-            data: [activityRepository.returnAvgSteps("2019/06/15")/50, 
+            data: [
+            activityRepository.returnAvgSteps("2019/06/15")/50, 
             activityRepository.returnAvgMins("2019/06/15"), 
-            activityRepository.returnAvgStairs("2019/06/15")]
+            activityRepository.returnAvgStairs("2019/06/15")
+          ]
           }
         ]
       },
@@ -218,5 +228,35 @@ console.log(currentDate())
       }
     }
   });
+
+/////////////////////////////Hydration Section Chart/////////////////////////////////
+
+let userWeeklyHydration = new Chart($(".hydration__chart-weeklyOz-oneUser"), {
+  type: 'line',
+  data: {
+    labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    datasets: [{ 
+      data: [
+        hydration.returnSpecificDayOz("2019/06/15"),
+        hydration.returnSpecificDayOz("2019/06/16"),
+        hydration.returnSpecificDayOz("2019/06/17"),
+        hydration.returnSpecificDayOz("2019/06/18"),
+        hydration.returnSpecificDayOz("2019/06/19"),
+        hydration.returnSpecificDayOz("2019/06/20"),
+        hydration.returnSpecificDayOz("2019/06/21"),
+      ],
+      label: "Water you consumed each day (oz)",
+      borderColor: "#8e5ea2",
+      fill: false
+    }  
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Your weekly water consumption overview'
+    }
+  }
+});
 });
 

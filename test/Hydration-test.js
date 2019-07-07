@@ -19,12 +19,12 @@ describe("Hydration", function() {
         expect(hydration.returnAllTimeAvg(1)).to.equal(59);
       });
 
-    it("should give how many fluid ounces a user consumed on a specific day", function() {
-      const hydration = new Hydration();
-      expect(hydration.returnSpecificDayOz(1, "2019/06/15")).to.equal(37);
+    it.only("should give how many fluid ounces a user consumed on a specific day", function() {
+      const hydration = new Hydration(1);
+      expect(hydration.returnSpecificDayOz("2019/06/15")).to.equal(37);
     });
 
-    it.only("should give how many fluid ounces a user consumed every day", function() {
+    it("should give how many fluid ounces a user consumed every day", function() {
       const hydration = new Hydration();
       expect(hydration.returnWaterEachDay(1)).to.deep.equal([37, 85, 94, 75, 30, 40, 62, 55]);
     });

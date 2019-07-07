@@ -117,7 +117,28 @@ main {
   padding-bottom: .5em;
 }
 
+/* ----------------Main Hydration Section----------------- */
 
+.hydration__header {
+  font-weight: 700;
+}
+
+.hydration__info-header {
+  font-weight: 400;
+}
+
+.hydration__header-div {
+  border-bottom: 1px solid gray;
+  margin-bottom: .5em;
+}
+
+.hydration__info-div {
+  border-bottom: 1px solid gray;
+  margin-bottom: .5em;
+  padding-bottom: .5em;
+}
+
+/* --------------------------------- */
 .activity__chart-day-allUsers {
   /* background-color: red; */
 }

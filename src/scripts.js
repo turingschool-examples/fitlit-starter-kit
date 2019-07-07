@@ -129,7 +129,7 @@ console.log(currentDate())
       options: {
       title: {
         display: true,
-        text: 'Your stats compared to all users'
+        text: 'How you stack up to all users'
       }
     }
   });
@@ -158,7 +158,7 @@ console.log(currentDate())
     options: {
       title: {
         display: true,
-        text: 'Weekly overview'
+        text: 'Your weekly step oveview'
       }
     }
   });
@@ -186,7 +186,7 @@ console.log(currentDate())
       options: {
         title: {
         display: true,
-        text: 'Weekly overview'
+        text: 'Your weekly minutes active oveview'
       }
     }
   });
@@ -214,7 +214,7 @@ console.log(currentDate())
     options: {
       title: {
         display: true,
-        text: 'Weekly overview'
+        text: 'Your weekly flights of stairs climbed oveview'
       }
     }
   });

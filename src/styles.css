@@ -95,10 +95,27 @@ main {
 /* ----------------Main Activity Section----------------- */
 
 .main__activity {
-  height: 850px;
+  height: 930px;
 }
 
+.activity__header {
+  font-weight: 700;
+}
 
+.activity__info-header {
+  font-weight: 400;
+}
+
+.activity__header-div {
+  border-bottom: 1px solid gray;
+  margin-bottom: .5em;
+}
+
+.activity__info-div {
+  border-bottom: 1px solid gray;
+  margin-bottom: .5em;
+  padding-bottom: .5em;
+}
 
 
 .activity__chart-day-allUsers {

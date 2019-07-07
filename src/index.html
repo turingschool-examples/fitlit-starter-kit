@@ -35,10 +35,16 @@
     <main>
       <section class="main__column-one">
         <section class="main__activity main__section">
-          <h3 class="activity__header">Activity</h3>
-          <h4 class="activity__steps">You have taken <span class="activity__steps-stepNum">X</span> steps today.</h4>
-          <h4 class="activity__minsActive">You were active for <span class="activity__minsActive-minsActive">X</span> minutes today.</h4>
-          <h4 class="activity__distance">You have walked <span class="activity__distance-distanceNum">X</span> miles today.</h4>
+          <div class="activity__header-div">
+            <h2 class="activity__header">Activity</h3>
+          </div>
+          <div class="activity__info-div">
+            <h3 class="activity__info-header">Today at a glance:</h2>
+            <br>
+            <h4 class="activity__steps">You have taken <span class="activity__steps-stepNum">X</span> steps today.</h4>
+            <h4 class="activity__minsActive">You were active for <span class="activity__minsActive-minsActive">X</span> minutes today.</h4>
+            <h4 class="activity__distance">You have walked <span class="activity__distance-distanceNum">X</span> miles today.</h4>
+          </div>
           <canvas class="activity__chart-day-allUsers" height="180" width="500"></canvas>
           <canvas class="activity__chart-weeklySteps-oneUser" height="180" width="500"></canvas>
           <canvas class="activity__chart-weeklyMins-oneUser" height="180" width="500"></canvas>

@@ -7,7 +7,7 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i&display=swap"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" type="text/css" href="reset.css" />
@@ -31,6 +31,7 @@
             New User
           </li>
           <li class="list-item" id="js-user">User Profile</li>
+          <li class="list-item" id="js-step-goal">Step Goal</li>
           <li class="list-item" id="js-hydration">Hydration</li>
           <li class="list-item" id="js-sleep">Sleep</li>
           <li class="list-item" id="js-min-active">Minutes Active</li>
@@ -38,16 +39,86 @@
           <li class="list-item" id="js-flights">Flights Climbed</li>
         </ul>
       </nav>
+      <div class="label"></div>
       <section class="section">
         <div class="user-profile" id="js-user-profile">
-          <p>Full name:<span id="js-full-name"></span></p>
-          <p>Address:<span id="js-address"></span></p>
-          <p>Email:<span id="js-email"></span></p>
-          <p>Friends:<span id="js-friends"></span></p>
+          <p>Full name: <span id="js-full-name"></span></p>
+          <p>Address: <span id="js-address"></span></p>
+          <p>Email: <span id="js-email"></span></p>
+          <p>Friends: <span id="js-friends"></span></p>
+        </div>
+        <canvas
+          class="step-goal-chart"
+          id="js-step-goal-chart"
+          width="600"
+          height="450"
+        ></canvas>
+        <canvas
+          class="hydration-line-chart"
+          id="js-hydration-line-chart"
+          width="800"
+          height="450"
+        ></canvas>
+        <div class="sleep-charts">
+          <canvas
+            class="sleepQuality-line-chart"
+            id="js-sleepQuality-line-chart"
+            width="475"
+            height="350"
+          ></canvas>
+          <canvas
+            class="sleepHours-line-chart"
+            id="js-sleepHours-line-chart"
+            width="475"
+            height="350"
+          ></canvas>
+        </div>
+        <div class="num-of-steps-charts">
+          <canvas
+            class="num-of-steps-chart"
+            id="js-num-of-steps-chart"
+            width="475"
+            height="350"
+          ></canvas>
+          <canvas
+            class="num-of-steps-line-chart"
+            id="js-num-of-steps-line-chart"
+            width="475"
+            height="350"
+          ></canvas>
+        </div>
+        <div class="num-mins-active-charts">
+          <canvas
+            class="num-mins-active-chart"
+            id="js-num-mins-active-chart"
+            width="475"
+            height="350"
+          ></canvas>
+          <canvas
+            class="num-mins-active-line-chart"
+            id="js-num-mins-active-line-chart"
+            width="475"
+            height="350"
+          ></canvas>
+        </div>
+        <div class="distance-miles-charts">
+          <canvas
+            class="distance-miles-chart"
+            id="js-distance-miles-chart"
+            width="475"
+            height="350"
+          ></canvas>
+          <canvas
+            class="distance-miles-line-chart"
+            id="js-flights-climbed-line-chart"
+            width="475"
+            height="350"
+          ></canvas>
         </div>
       </section>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>

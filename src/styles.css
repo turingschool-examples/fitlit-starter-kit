@@ -6,14 +6,21 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+p {
+  font-size: 1.5em;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+
 .main {
   background-color: #fff;
   display: grid;
   grid-template-areas:
     "head head"
+    "nav label"
     "nav main";
   grid-template-columns: 20% 80%;
-  grid-template-rows: 15% 85%;
+  grid-template-rows: 15% 10% 75%;
   height: 90vh;
   padding: 0 3% 3% 3%;
 }
@@ -67,6 +74,15 @@ body {
   background-color: #c91b1b;
 }
 
+.list-item:hover {
+  background-color: #000;
+}
+
+.label {
+  background-color: #e4e4e4;
+  grid-area: label;
+}
+
 /* .list-item-active {
   width: 0;
   height: 0;
@@ -80,9 +96,29 @@ body {
 
 .section {
   background-color: #e4e4e4;
+  display: flex;
   grid-area: main;
+}
+
+.sleep-charts,
+.num-of-steps-charts,
+.num-mins-active-charts,
+.distance-miles-charts {
+  display: flex;
+}
+
+.step-goal-chart,
+.hydration-line-chart,
+.sleep-charts,
+.num-of-steps-charts,
+.num-mins-active-charts,
+.distance-miles-charts {
+  margin: auto;
 }
 
 .user-profile {
   border: 1px solid black;
+  margin: auto;
+  margin-top: 50px;
+  padding: 50px;
 }

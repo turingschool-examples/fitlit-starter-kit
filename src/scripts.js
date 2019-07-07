@@ -25,12 +25,23 @@ $(document).ready(function() {
     updateCharts(user);
   });
 
+  $('#js-user').click(function() {
+    $('#js-user-profile').show();
+    $('#js-step-goal-chart').hide();
+    $('#js-user').addClass('list-item--active');
+    $('#js-step-goal').removeClass('list-item--active');
+  });
+
   $('#js-step-goal').click(function() {
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').show();
     $('#js-user').removeClass('list-item--active');
     $('#js-step-goal').addClass('list-item--active');
-  })
+  });
+
+  $('#js-hydration').click(function() {
+
+  });
 
   function updateStepGoalChart(user) {
     stepGoalChart.data.labels[0] = user.name;

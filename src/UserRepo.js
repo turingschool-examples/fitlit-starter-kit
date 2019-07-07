@@ -20,4 +20,6 @@ class UserRepo{
 	};
 };
 
-module.exports = UserRepo;
+if (typeof module !== 'undefined') {
+	module.exports = UserRepo;
+  }

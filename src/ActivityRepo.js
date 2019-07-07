@@ -14,4 +14,6 @@ class ActivityRepo{
 };
     
 
-    module.exports = ActivityRepo;
+if (typeof module !== 'undefined') {
+  module.exports = ActivityRepo;
+}

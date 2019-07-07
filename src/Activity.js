@@ -17,7 +17,6 @@ class Activity{
 	findActivityData(id){
 		let filteredActivityData = this.data.filter(activity => activity.userID === id); 
         filteredActivityData.forEach(user => this.specificUserActivityData.push(user));
-
     };
 
     findUserData(id){

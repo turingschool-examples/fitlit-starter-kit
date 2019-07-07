@@ -30,5 +30,9 @@ describe('ActivityRepo', () => {
             expect(activityRepo.findAverageAmtStepsTaken("2019/06/23")).to.equal(8555);
         });
 
+    it.only('should calculate the average numbers of sterps taken by users on a specific date', () => {
+            expect(activityRepo.findAverageMinActive("2019/06/23")).to.equal(174);
+        });
+
         
     });

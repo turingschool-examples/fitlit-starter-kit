@@ -24,6 +24,11 @@ h1 {
   color: white;
 }
 
+.user__name {
+  color: #F8712E;
+  text-shadow: 1px 1px 0 #0009;
+}
+
 .section--left__date {
   height: 34em;
   background-color: #4747471f;
@@ -32,7 +37,7 @@ h1 {
 }
 
 .section--right {
-  background-color:#898989de;
+  background: linear-gradient(90deg,#F8712E, #f39c12);
   width: 50%;
   height: 100vh;
 }
@@ -78,11 +83,41 @@ p {
 }
 
 .section--right__info > div > img {
-  height: 20px;
+  height: 25px;
 }
 
 .section--right__info > div {
+    height: 63%;
     text-align: center;
+    width: 25%;
+    background-color: gray;
+    border-radius: 2px;
+    padding: 10px;
+}
+
+.section--right__info-steps > p,
+.section--right__info-water > p{ 
+  font-size: 12px;
+  padding-top: 20px;
+  color:white;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.ounces,
+.steps,
+.hrsSlept,
+.qualSlept{ 
+  font-size: 20px;
+  /* color: white; */
+  color: #F8712E;
+  text-shadow: 1px 1px 0 #0009;
+}
+
+.section--right__info-sleep > p {
+  font-size: 12px;
+  padding-top: 5px;
+  color: white;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .section--right__friends {
@@ -107,7 +142,7 @@ p {
 }
 
 .section--right__img-name > h5 {
-    
+  font-family: 'Roboto Mono', monospace;
 }
 
 

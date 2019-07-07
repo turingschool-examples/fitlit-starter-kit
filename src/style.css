@@ -32,7 +32,7 @@ h1 {
 }
 
 .section--right {
-  background-color:#898989de;
+  background: linear-gradient(90deg,#F8712E, #f39c12);
   width: 50%;
   height: 100vh;
 }
@@ -95,6 +95,7 @@ p {
   font-size: 12px;
   padding-top: 20px;
   color: black;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .ounces,
@@ -106,9 +107,10 @@ p {
 }
 
 .section--right__info-sleep > p {
-    font-size: 12px;
-    padding-top: 5px;
-    color: black;
+  font-size: 12px;
+  padding-top: 5px;
+  color: black;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .section--right__friends {
@@ -133,7 +135,7 @@ p {
 }
 
 .section--right__img-name > h5 {
-    
+  font-family: 'Roboto Mono', monospace;
 }
 
 

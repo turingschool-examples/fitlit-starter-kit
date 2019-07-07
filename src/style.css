@@ -29,11 +29,22 @@ h1 {
   text-shadow: 1px 1px 0 #0009;
 }
 
-.section--left__date {
+/* .section--left__date {
   height: 34em;
   background-color: #4747471f;
   margin: 20px;
   border-radius: 2em;
+} */
+
+.section--left__data {
+    background-color: #47474796;
+    height: 7em;
+    display: flex;
+    overflow: auto;
+    margin: 20px;
+    border-radius: .5em;
+    position: relative;
+    top: 10%;
 }
 
 .section--right {
@@ -73,13 +84,13 @@ p {
 }
 
 .section--right__info {
-  background-color: #47474796;
-  height: 15em;
-  margin: 20px;
-  border-radius: .5em;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+    background-color: #47474796;
+    height: 25em;
+    margin: 20px;
+    border-radius: .5em;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .section--right__info > div > img {
@@ -87,19 +98,20 @@ p {
 }
 
 .section--right__info > div {
-    height: 63%;
+    height: 40%;
     text-align: center;
     width: 25%;
     background-color: gray;
     border-radius: 2px;
     padding: 10px;
+    margin: 20px;
 }
 
 .section--right__info-steps > p,
 .section--right__info-water > p{ 
   font-size: 12px;
   padding-top: 20px;
-  color:white;
+  color: white;
   font-family: 'Roboto Mono', monospace;
 }
 
@@ -122,13 +134,11 @@ p {
 
 .section--right__friends {
     background-color: #47474796;
-    position: absolute;
-    bottom: 0;
-    height: 6em;
+    height: 7em;
     display: flex;
-    width: 100%;
-    justify-content: space-around;
     overflow: auto;
+    margin: 20px;
+    border-radius: .5em;
 }
 
 .section--right__img-name {
@@ -144,5 +154,27 @@ p {
 .section--right__img-name > h5 {
   font-family: 'Roboto Mono', monospace;
 }
+
+.section--right__friends-average-users {
+  text-align: center;
+  padding: 10px 5px 0 10px;
+  border-right: 1px solid black;
+}
+
+.section--right__friends-average-users > .user-avg {
+    color: black;
+    padding-bottom: 10px;
+  }
+
+.section--right__friends-average-users > .average__dailyStepGoal {
+  color: #F8712E;
+  text-shadow: 1px 1px 0 #0009;
+  font-size: 25px;
+}
+
+.section--right__friends-average-users > .step-text {
+    font-size: 12px;
+    padding: 10px;
+  }
 
 

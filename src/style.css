@@ -24,6 +24,11 @@ h1 {
   color: white;
 }
 
+.user__name {
+  color: #F8712E;
+  text-shadow: 1px 1px 0 #0009;
+}
+
 .section--left__date {
   height: 34em;
   background-color: #4747471f;
@@ -94,7 +99,7 @@ p {
 .section--right__info-water > p{ 
   font-size: 12px;
   padding-top: 20px;
-  color: black;
+  color:white;
   font-family: 'Roboto Mono', monospace;
 }
 
@@ -103,13 +108,15 @@ p {
 .hrsSlept,
 .qualSlept{ 
   font-size: 20px;
-  color: white;
+  /* color: white; */
+  color: #F8712E;
+  text-shadow: 1px 1px 0 #0009;
 }
 
 .section--right__info-sleep > p {
   font-size: 12px;
   padding-top: 5px;
-  color: black;
+  color: white;
   font-family: 'Roboto Mono', monospace;
 }
 

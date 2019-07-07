@@ -92,9 +92,9 @@ main {
   border: 1px solid black;
 }
 
-/* .main__activity {
-  height: 500px;
-} */
+.main__activity {
+  height: 850px;
+}
 
 .activity__chart-day-allUsers {
   /* background-color: red; */

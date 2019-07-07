@@ -82,18 +82,18 @@ $( window ).on( "load", () => {
   const sleep = newSleep.instantiateSleep();
   let instantiatedSleep = sleep.find(item => item.userID === randomID);
 
-  $(".hours-slept__today-input").html(
-    instantiatedSleep.getHoursSleptOnDay(randomID, currentDate())
-  );
-  $(".hours-quality__today-input").html(
-    instantiatedSleep.hoursSleptQualityInDate(currentDate())
-  );
-  $(".hours-slept__average-input").html(
-    instantiatedSleep.averageHrsSlept(currentDate())
-  );
-  $(".hours-quality__average-input").html(
-    instantiatedSleep.averageSleepQuality(currentDate())
-  );
+  // $(".hours-slept__today-input").html(
+  //   instantiatedSleep.getHoursSleptOnDay(randomID, currentDate())
+  // );
+  // $(".hours-quality__today-input").html(
+  //   instantiatedSleep.hoursSleptQualityInDate(currentDate())
+  // );
+  // $(".hours-slept__average-input").html(
+  //   instantiatedSleep.averageHrsSlept(currentDate())
+  // );
+  // $(".hours-quality__average-input").html(
+  //   instantiatedSleep.averageSleepQuality(currentDate())
+  // );
   
   // function populateAvgActivityChart() {
   //   console.log(avgActivityChart.data.datasets[0].data)
@@ -101,8 +101,9 @@ $( window ).on( "load", () => {
   // }
 
 
-
-  let avgActivityChart = new Chart($('.activity__chart-day-allUsers'), {
+/////////////////////////////Activity Section Charts/////////////////////////////////
+  
+let avgActivityChart = new Chart($('.activity__chart-day-allUsers'), {
     type: 'bar',
     data: {
       labels: ["Number of steps", "Minutes active", "Flights of stairs climbed"],
@@ -110,11 +111,15 @@ $( window ).on( "load", () => {
         {
           label: "Your stats",
           backgroundColor: "#3e95cd",
-          data: [activity.returnSteps("2019/06/15")/50, activity.returnMinutesActive("2019/06/15"), activity.returnFlightsOfStairs("2019/06/15")]
+          data: [activity.returnSteps("2019/06/15")/50, 
+          activity.returnMinutesActive("2019/06/15"), 
+          activity.returnFlightsOfStairs("2019/06/15")]
         }, {
           label: "The average stats of all users",
           backgroundColor: "#8e5ea2",
-          data: [activityRepository.returnAvgSteps("2019/06/15")/50, activityRepository.returnAvgMins("2019/06/15"), activityRepository.returnAvgStairs("2019/06/15")]
+          data: [activityRepository.returnAvgSteps("2019/06/15")/50, 
+          activityRepository.returnAvgMins("2019/06/15"), 
+          activityRepository.returnAvgStairs("2019/06/15")]
         }
       ]
     },
@@ -122,6 +127,84 @@ $( window ).on( "load", () => {
     title: {
         display: true,
         text: 'Your stats compared to all users'
+      }
+    }
+  });
+
+  let userWeeklySteps = new Chart($(".activity__chart-weeklySteps-oneUser"), {
+    type: 'line',
+    data: {
+      labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      datasets: [{ 
+          data: [activity.returnSteps("2019/06/15"),
+          activity.returnSteps("2019/06/16"),
+          activity.returnSteps("2019/06/17"),
+          activity.returnSteps("2019/06/18"),
+          activity.returnSteps("2019/06/19"),
+          activity.returnSteps("2019/06/20"),
+          activity.returnSteps("2019/06/21")],
+          label: "Your step count",
+          borderColor: "#3e95cd",
+          fill: false
+        }  
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Weekly overview'
+      }
+    }
+  });
+
+  let userWeeklyMins = new Chart($(".activity__chart-weeklyMins-oneUser"), {
+    type: 'line',
+    data: {
+      labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      datasets: [{ 
+          data: [activity.returnMinutesActive("2019/06/15"),
+          activity.returnMinutesActive("2019/06/16"),
+          activity.returnMinutesActive("2019/06/17"),
+          activity.returnMinutesActive("2019/06/18"),
+          activity.returnMinutesActive("2019/06/19"),
+          activity.returnMinutesActive("2019/06/20"),
+          activity.returnMinutesActive("2019/06/21")],
+          label: "Your minutes active",
+          borderColor: "#3cba9f",
+          fill: false
+        } 
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Weekly overview'
+      }
+    }
+  });
+
+  let userWeeklyStairs = new Chart($(".activity__chart-weeklyStairs-oneUser"), {
+    type: 'line',
+    data: {
+      labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      datasets: [{ 
+          data: [activity.returnFlightsOfStairs("2019/06/15"),
+          activity.returnFlightsOfStairs("2019/06/16"),
+          activity.returnFlightsOfStairs("2019/06/17"),
+          activity.returnFlightsOfStairs("2019/06/18"),
+          activity.returnFlightsOfStairs("2019/06/19"),
+          activity.returnFlightsOfStairs("2019/06/20"),
+          activity.returnFlightsOfStairs("2019/06/21")],
+          label: "Your flights of stairs climbed",
+          borderColor: "#8e5ea2",
+          fill: false
+        }  
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Weekly overview'
       }
     }
   });

@@ -12,7 +12,7 @@ $(document).ready(function() {
     const user = new User(specificUser);
     $('#js-user-profile').show();
     $('#js-change-user').removeClass('list-item--active');
-    $('#js-step-goal').removeClass('list-item--active');
+    removeClasses();
     $('#js-user').addClass('list-item--active');
     $('#js-first-name').html(user.returnFirstName());
     $('#js-full-name').html(user.name);
@@ -29,19 +29,55 @@ $(document).ready(function() {
     $('#js-user-profile').show();
     $('#js-step-goal-chart').hide();
     $('#js-user').addClass('list-item--active');
-    $('#js-step-goal').removeClass('list-item--active');
+    removeClasses();
   });
 
   $('#js-step-goal').click(function() {
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').show();
-    $('#js-user').removeClass('list-item--active');
+    removeClasses();
     $('#js-step-goal').addClass('list-item--active');
   });
 
   $('#js-hydration').click(function() {
+    $('#js-user-profile').hide();
+    $('#js-step-goal-chart').hide();
 
+    removeClasses();
   });
+
+  $('#js-sleep').click(function() {
+    $('#js-user-profile').hide();
+    $('#js-step-goal-chart').hide();
+
+    removeClasses();
+  });
+
+  $('#js-min-active').click(function() {
+    $('#js-user-profile').hide();
+    $('#js-step-goal-chart').hide();
+
+    removeClasses();
+  });
+
+  $('#js-distance').click(function() {
+    $('#js-user-profile').hide();
+    $('#js-step-goal-chart').hide();
+
+    removeClasses();
+  });
+
+
+
+  function removeClasses() {
+    $('.list-item').each(value => {
+      let id = $('.list-item')[value].id;
+      let clickedID = event.target.id;
+      if (id !== clickedID) {
+        $(`#${id}`).removeClass('list-item--active');
+      }
+    })
+  }
 
   function updateStepGoalChart(user) {
     stepGoalChart.data.labels[0] = user.name;

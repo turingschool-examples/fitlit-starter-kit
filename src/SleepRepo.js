@@ -13,7 +13,7 @@ class SleepRepo {
 
     findAverageSleep(){
         let allQuality = this.sleepData.map(user => user.sleepQuality);
-        let AllQualityReduced = allQuality.reduce((a,b)=> a += b)
+        let AllQualityReduced = allQuality.reduce((a,b)=> a += b);
         return Math.round(AllQualityReduced/this.sleepData.length)
     };
 

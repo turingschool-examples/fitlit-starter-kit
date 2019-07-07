@@ -32,11 +32,11 @@ describe('sleepRepo', () => {
             expect(sleepRepo.findAboveAverageSleepers('2019/06/22')).to.equal('mama')
         });
 
-        it.only('should provide the user or users with the most hours of sleep', () => {
+        it.skip('should provide the user or users with the most hours of sleep', () => {
             expect(sleepRepo.findUserWithMostHours('2019/06/22')).to.equal(9.8);
         });
 
-        it.only('should shame the worst sleeper for a specific date', () => {
+        it.skip('should shame the worst sleeper for a specific date', () => {
             expect(sleepRepo.findWorstSleeper('2019/06/22')).to.equal(4.8);
         });
 

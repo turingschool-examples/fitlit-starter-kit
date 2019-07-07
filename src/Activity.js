@@ -7,33 +7,37 @@ if (typeof module !== 'undefined') {
 }
 
 class Activity{
-	constructor(){
-		this.data = activityData;
-		this.users = userData;
-		this.specificUserActivityData = [];
-		this.specificUserIdentityData = []
+	constructor(id){
+		this.userActivity = (this.findActivityData(id));
+		this.uniqueUserData = (this.findUserData(id));
 	};
 
 	findActivityData(id){
-		let filteredActivityData = this.data.filter(activity => activity.userID === id); 
-        filteredActivityData.forEach(user => this.specificUserActivityData.push(user));
+		return activityData.filter(activity => activity.userID === id); 
     };
 
     findUserData(id){
-        let uniqueUser = this.users.filter(user => user.id === id); 
-        uniqueUser.forEach(user => this.specificUserIdentityData.push(user));
+        return userData.find(user => user.id === id); 
     };
 
     findActiveMinutesForDay(id, dateOf){
-    	this.findActivityData(id);
-    	let dateOfActivity = this.specificUserActivityData.find(day => day.date === dateOf);
+    	let dateOfActivity = this.userActivity.find(day => day.date === dateOf);
     	return dateOfActivity.minutesActive;
-    };
+	};
+	
+	findStepsForDay(id, dateOf){
+		let dateOfActivity = this.userActivity.find(day => day.date === dateOf);
+    	return dateOfActivity.numSteps;
+	}
+
+	findFlightsForDay(id, dateOf){
+		let dateOfActivity = this.userActivity.find(day => day.date === dateOf);
+    	return dateOfActivity.flightsOfStairs;
+	}
 
     findActiveMinutesForWeek(id, dateOf){
-    	this.findActivityData(id);
-    	let dateIndex = this.specificUserActivityData.findIndex(day => day.date === dateOf);
-        let weekOf= this.specificUserActivityData.slice(dateIndex - 6, dateIndex + 1)
+    	let dateIndex = this.userActivity.findIndex(day => day.date === dateOf);
+        let weekOf= this.userActivity.slice(dateIndex - 6, dateIndex + 1)
     	let dailyMinutesActive =  weekOf.map(day => day.minutesActive)
     	return Math.floor(dailyMinutesActive.reduce((totalMinutes, dailyMinutes) => {
     		totalMinutes += dailyMinutes
@@ -42,10 +46,8 @@ class Activity{
     };
 
     compareNumStepsToStepGoal(id, dateOf){
-    	this.findActivityData(id)
-    	this.findUserData(id)
-    	let dayOfActivity = this.specificUserActivityData.find(day => day.date === dateOf)
-    	if(dayOfActivity.numSteps >= this.specificUserIdentityData[0].dailyStepGoal){
+    	let dayOfActivity = this.userActivity.find(day => day.date === dateOf)
+    	if(dayOfActivity.numSteps >= this.uniqueUserData[0].dailyStepGoal){
     		return `Great job at meeting your Daily Step Goal!`
     	} else{
     		return 'Keep twerking!'
@@ -53,20 +55,24 @@ class Activity{
     };
 
     daysExceedStepGoal(id){
-    	this.findActivityData(id)
-    	this.findUserData(id)
-    	let stepGoal = this.specificUserIdentityData[0].dailyStepGoal
-    	let allDates = this.specificUserActivityData.filter(day => day.numSteps >= stepGoal)
+    	let stepGoal = this.uniqueUserData[0].dailyStepGoal
+    	let allDates = this.userActivity.filter(day => day.numSteps >= stepGoal)
     	return allDates.map(day => day.date)
     };
 
     allTimeStairRecord(id){
-    	this.findActivityData(id)
-    	let stairRecord = this.specificUserActivityData.sort((a,b) =>{
+    	let stairRecord = this.userActivity.sort((a,b) =>{
  			return b.flightsOfStairs - a.flightsOfStairs;
     	})
     	return stairRecord[0].flightsOfStairs
-    };
+	};
+	
+	findMilesForDay(id, dateOf){
+		let dayOfActivity = this.userActivity.find(day => day.date === dateOf);
+		let daySteps = dayOfActivity.numSteps;
+		let strideLength = this.uniqueUserData.strideLength;
+		return Math.floor((daySteps*strideLength)/5280)
+	}
 }
 
 if (typeof module !== 'undefined') {

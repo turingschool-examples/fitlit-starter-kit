@@ -9,6 +9,7 @@ const hydrationRepo = new HydrationRepo(uniqueUserId);
 const sleepRepo = new SleepRepo(uniqueUserId);
 const activityRepo = new ActivityRepo(uniqueUserId);
 
+
 console.log('userRepo: ', userRepo);
 console.log('user: ', user);
 console.log('hydrationRepo: ', hydrationRepo);
@@ -35,6 +36,13 @@ $('.sleep__span--overallQuality').text(`${sleepRepo.users.findAverageSleepQualit
 $('.hydro__span--today').text(`${hydrationRepo.findSpecificDayHydrationOunces(2, "2019/06/23")}`); //make date dynamic
 $('.hydro__span--average').text(`${hydrationRepo.weeklyConsumptionAverage("2019/06/23")}`);
 $('.hydro__span--week').text(`${hydrationRepo.returnHydrationValuesForWeek("2019/06/23")}`);
+
+// Activity Info 
+$('.activity__span--minutes').text(`${activityRepo.users.findActiveMinutesForDay(2, "2019/06/23")}`);
+$('.activity__span--steps').text(`${activityRepo.users.findStepsForDay(2, "2019/06/23")}`);
+$('.activity__span--flights').text(`${activityRepo.users.findFlightsForDay(2, "2019/06/23")}`);
+$('.activity__span--miles').text(`${activityRepo.users.findMilesForDay(2, "2019/06/23")}`);
+
 
 
 

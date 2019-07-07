@@ -30,7 +30,6 @@
           <div class="main__section--hydration-week">
             Week Info:
             <span class="main__section--hydration-canvas">
-              
             </span>
           </div>
         </section>
@@ -41,19 +40,86 @@
           <p>Overall Sleep Summary - Hours: <span class="main__section--average-sleep-hours"></span> Quality: <span class="main__section--average-sleep-quality"></p>
         </section>
         <section class="main__section--activity grid">
-          <h2>Activity</h2>
-          <article class="grid-item">Steps: <span></span></article>
-          <article class="grid-item">Miles Walked: <span></span></article>
-          <article class="grid-item">Active Minutes: <span></span></article>
-          <article class="grid-item">Flights of Stairs: <span></span></article>
-          <article class="grid-item">Empire State Building: <span></span></article>
-          <article class="grid-item grid-item--width2 grid-item--height2 ">Weekly View: : <span></span></article>
-          <article class="grid-item">You vs. The World: <span></span></article> 
-        </section>
+          <article class="main__section--sleep--last-night grid-item">
+            <h4>Last Night</h4>
+            <img src="../images/moon.svg" class="main__section--sleep--hours icon">
+            <p>Hours: <span></span> Quality: <span></span></p>
+          </article>
+            <article class="main__section--sleep--week grid-item--width2 grid-item">
+              <h4>Sleep This Week</h4>
+              <p>Here is where a chart will go with a purple border</p>
+            </article> 
+            <article class="main__section--sleep--averages grid-item">
+              <h4>Your Averages</h4>
+              <img src="../images/bed.svg" class="main__section--sleep--averages icon">
+              <p>Hours: <span></span> Quality: <span></span></p>
+            </article>
+            <article class="main__section--sleep--worst grid-item">
+                <h4>Worst Night This week</h4>
+                <img src="../images/sleepy-worker.svg" class="icon">
+                <p>Date: <span></span></p> 
+                <p>Quality: <span></span></p>
+              </article>
+          
+          <article class="grid-item main__section--activity--item grid-item--width2">
+            <h4>Your Activity This Week</h4>
+          </article>
+          <article class="grid-item main__section--activity--steps">
+            <h4>Steps</h4>
+            <img class= "main__section--activity--steps icon" src="../images/footprint.svg">
+            <p>
+              <span></span>
+            </p>
+          </article>
+          <article class="grid-item main__section--activity--miles">
+            <h4>Miles</h4>
+            <img class= "main__section--activity--miles icon" src="../images/miles.svg">
+            <span></span>
+          </article>
+          <article class="grid-item main__section--activity--minutes">
+            <h4>Active Minutes</h4>
+            <img class= "main__section--activity--minutes icon" src="../images/lightning.svg">
+            <p><span></span></p>
+          </article>
+          <article class="grid-item main__section--activity--flights">
+              <h4>Flights of Stairs</h4>
+              <img class= "main__section--activity--minutes icon" src="../images/climbing-stairs.svg">
+              <p><span></span></p>
+            </article>
+          <article class="grid-item main__section--activity--empire grid-item--height2">
+            <h4>Empire Challenge</h4>
+            <img class= "main__section--activity--empire icon" src="../images/empire-state-building.svg">
+            <p>You've climbed the Empire State Building <span></span> times.
+            </p>
+          </article>
+          <article class="grid-item main__section--activity--world grid-item--width2 grid-item--height2">
+              <h4>You vs. The World</h4>
+              <img class="main__section--activity--world icon" src="../images/world.svg">
+              <table>
+                  <tr>
+                    <th></th>
+                    <th>Your Avg</th>
+                    <th>World Avg</th> 
+                  </tr>
+                  <tr>
+                    <td>Steps</td>
+                    <td>Your Day Steps</td>
+                    <td>Global Avg Steps</td>
+                  </tr>
+                  <tr>
+                    <td>Active Minutes </td>
+                    <td>Your Active Minutes</td>
+                    <td>Global Avg Minutes</td>
+                  </tr>
+                  <tr>
+                    <td>Flights of Stairs</td>
+                    <td>Your Flights</td>
+                    <td>Global Avg Flights</td>
+                  </tr>
+                </table>
+            </article>        
+          </section>
       </main>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-      <script src="../node_modules/packery/dist/packery.pkgd.min.js"></script>
-      <script src="../node_modules/draggabilly/dist/draggabilly.pkgd.min.js"></script> 
     <script type="text/javascript" src="./sleep.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
@@ -65,7 +131,9 @@
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="./user-repository.js"></script>
     <script type="text/javascript" src="./user.js"></script>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="../node_modules/packery/dist/packery.pkgd.min.js"></script>
+    <script src="../node_modules/draggabilly/dist/draggabilly.pkgd.min.js"></script> 
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>

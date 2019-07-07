@@ -1,14 +1,13 @@
 class ActivityRepository {
     constructor(data) {
-        this.data = data;
-    }
+        this.data = data;    }
 
     returnAvgStairs(date) {
         let dateArray = this.data.filter((user) => user.date === date);
         let avgStairs = dateArray.reduce((acc, day) => {
             return acc += day.flightsOfStairs;
         }, 0) / dateArray.length;
-        return avgStairs;
+        return Math.ceil(avgStairs);
     }
 
     returnAvgSteps(date) {
@@ -16,7 +15,7 @@ class ActivityRepository {
         let avgSteps = dateArray.reduce((acc, day) => {
             return acc += day.numSteps;
         }, 0) / dateArray.length;
-        return avgSteps;
+        return Math.ceil(avgSteps);
     }
 
     returnAvgMins(date) {
@@ -24,7 +23,7 @@ class ActivityRepository {
         let avgMins = dateArray.reduce((acc, day) => {
             return acc += day.minutesActive;
         }, 0) / dateArray.length;
-        return avgMins;
+        return Math.ceil(avgMins);
     }
 
     returnTopStepper(date) {

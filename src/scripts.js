@@ -5,11 +5,12 @@ let currentUser = new User(globalRepo.returnUser(getRandomNumber()));
 let currentHydration = new Hydration(hydrationData, currentUser.id);
 let currentSleep = new Sleep(sleepData, currentUser.id);
 let sleepRepo = new SleepRepository(sleepData)
-console.log(currentSleep.returnWeekHours("2019/06/23"))
-console.log(currentHydration);
+// console.log(currentSleep.returnWeekHours("2019/06/23"))
+// console.log(currentHydration);
 let activity = new Activity(activityData, getRandomNumber());
-let activityDay = activity.returnDay("2019/06/23")
-
+let activityDay = activity.returnDay("2019/06/23");
+let activityRepo = new ActivityRepository(activityData)
+console.log(activityRepo)
 
 // console.log(currentHydration);
 
@@ -17,8 +18,8 @@ $(document).ready(function() {
 
   var $grid = $('.grid').packery({
     itemSelector: '.grid-item',
-    columnWidth: 20,
-    rowHeight: 20,
+    columnWidth: 50,
+    rowHeight: 50,
     gutter: 0
   });
 
@@ -50,11 +51,25 @@ $(document).ready(function() {
   $('.main__section--week-sleep-quality').text(currentSleep.returnWeekHours("2019/06/23"))
   $('.main__section--average-sleep-hours').text(currentSleep.returnAllTimeAvgHours())
   $('.main__section--average-sleep-quality').text(currentSleep.returnAllTimeAvgQual())
-  $('.main__section--activity span').eq(0).text(activityDay.numSteps)
-  $('.main__section--activity span').eq(1).text(activity.returnDailyMiles("2019/06/23"))
-  $('.main__section--activity span').eq(2).text(activityDay.minutesActive)
-  $('.main__section--activity span').eq(3).text(activityDay.flightsOfStairs)
-  $('.main__section--activity span').eq(4).text(activity.returnEmpireCount())
+  $('.main__section--activity--steps span').text(activityDay.numSteps)
+  $('.main__section--activity--miles span').text(activity.returnDailyMiles("2019/06/23"))
+  $('.main__section--activity--minutes span').text(activityDay.minutesActive)
+  $('.main__section--activity--flights span').text(activityDay.flightsOfStairs)
+  $('.main__section--activity--empire span').text(activity.returnEmpireCount())
+  $('.main__section--sleep--last-night span').first().text(currentSleep.returnDayHours("2019/06/23"))
+  $('.main__section--sleep--last-night span').eq(1).text(currentSleep.returnDayQual("2019/06/23"))
+  $('.main__section--sleep--averages span').first().text(currentSleep.returnAllTimeAvgHours())
+  $('.main__section--sleep--averages span').eq(1).text(currentSleep.returnAllTimeAvgQual())
+  $('.main__section--activity--world table tr td').eq(1).text(activityDay.numSteps)
+  $('.main__section--activity--world table tr td').eq(2).text(activityRepo.returnAvgSteps("2019/06/23"))
+  $('.main__section--activity--world table tr td').eq(4).text(activityDay.minutesActive)
+  $('.main__section--activity--world table tr td').eq(5).text(activityRepo.returnAvgMins("2019/06/23"))
+  $('.main__section--activity--world table tr td').eq(7).text(activityDay.flightsOfStairs)
+  $('.main__section--activity--world table tr td').eq(8).text(activityRepo.returnAvgStairs("2019/06/23"))
+  $('.main__section--sleep--worst span').first().text(currentSleep.returnWorstDay("2019/06/23").date)
+  $('.main__section--sleep--worst span').eq(1).text(currentSleep.returnWorstDay("2019/06/23").sleepQuality)
+
+
 });
 
 function getRandomNumber() {

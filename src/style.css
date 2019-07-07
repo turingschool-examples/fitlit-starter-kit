@@ -78,11 +78,37 @@ p {
 }
 
 .section--right__info > div > img {
-  height: 20px;
+  height: 25px;
 }
 
 .section--right__info > div {
+    height: 63%;
     text-align: center;
+    width: 25%;
+    background-color: gray;
+    border-radius: 2px;
+    padding: 10px;
+}
+
+.section--right__info-steps > p,
+.section--right__info-water > p{ 
+  font-size: 12px;
+  padding-top: 20px;
+  color: black;
+}
+
+.ounces,
+.steps,
+.hrsSlept,
+.qualSlept{ 
+  font-size: 20px;
+  color: white;
+}
+
+.section--right__info-sleep > p {
+    font-size: 12px;
+    padding-top: 5px;
+    color: black;
 }
 
 .section--right__friends {

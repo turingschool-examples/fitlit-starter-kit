@@ -37,7 +37,10 @@ class Activity {
   }
 
   userStairRecord(id) {
-
+    let stairTotals = []
+    let userStairInstances = this.activityData.filter(user => id === user.userID)
+    userStairInstances.map(item => stairTotals.push(item.flightsOfStairs))
+    return stairTotals.sort((a,b) => b - a)[0]
   }
 
   avgStairsAllUsers(date) {

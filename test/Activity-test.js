@@ -19,6 +19,16 @@ describe("Activity", function() {
         expect(activity.returnMilesWalked("2019/06/15")).to.equal(2.91);
       });
 
+    it.only("should return steps for a given day", function() {
+        const activity = new Activity(1);
+        expect(activity.returnSteps("2019/06/15")).to.equal(3577);
+    });
+
+    it.only("should return flights of stairs climbed on a day", function() {
+        const activity = new Activity(1);
+        expect(activity.returnFlightsOfStairs("2019/06/15")).to.equal(16);
+    });
+
     it("should return the minutes active on a given day", function() {
         const activity = new Activity(1);
         expect(activity.returnMinutesActive("2019/06/15")).to.equal(140);

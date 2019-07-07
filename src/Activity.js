@@ -2,6 +2,8 @@ if (typeof module !== "undefined") {
 filePath = require("../data/activitySub")
 userData = require("../data/UserSub")
 User = require("../src/User")
+} else {
+  filePath = activityData;
 }
 
 class Activity {
@@ -28,6 +30,24 @@ class Activity {
         return user.date === date;
       });
   }
+
+  returnFlightsOfStairs(date) {
+    let correctUser =  this.findCorrectUser();
+    let correctUserDate = this.findCorrectUserDate(date);
+    let user = correctUserDate.find((user) =>{
+      return user.userID === correctUser.id
+    });
+    return user.flightsOfStairs;
+  }
+
+  returnSteps(date) {
+    let correctUser =  this.findCorrectUser();
+    let correctUserDate = this.findCorrectUserDate(date);
+    let user = correctUserDate.find((user) =>{
+      return user.userID === correctUser.id
+    });
+    return user.numSteps;
+  };
 
   returnMilesWalked(date) {
     let correctUser =  this.findCorrectUser();

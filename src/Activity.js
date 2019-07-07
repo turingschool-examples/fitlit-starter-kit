@@ -1,5 +1,5 @@
 if (typeof module !== "undefined") {
-filePath = require("../data/activitySub")
+filePath = require("../data/activitySub2")
 userData = require("../data/UserSub")
 User = require("../src/User")
 } else {
@@ -107,6 +107,23 @@ class Activity {
     }, [])
     return Math.max(...flights)
   }
+
+  getThreeDayIncreasingSteps() {
+    let correctUser = this.findCorrectUser();
+    let threeInARow = [];
+    let threeInARowDates = [];
+    this.data.forEach(function(user) {
+      //console.log(`steps, date are: ${user.numSteps} ${user.date}`);
+      if (threeInARow.length >= 3) {
+        threeInARow.shift();
+      }
+      threeInARow.push(user.numSteps);
+      if (user.userID === correctUser.id && threeInARow[2] > threeInARow[1] && threeInARow[1] > threeInARow[0]) {
+        threeInARowDates.push(user.date);
+      }
+    });
+    return threeInARowDates;
+   }
 }
 
 if (typeof module !== "undefined") {

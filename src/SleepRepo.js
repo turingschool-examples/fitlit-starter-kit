@@ -11,13 +11,9 @@ class SleepRepo {
         this.users = new Sleep(id);
     };
 
-    // findUserData(id){
-    //     this.users.filter(user => user.id === id); 
-    // };
-
     findAverageSleep(){
         let allQuality = this.sleepData.map(user => user.sleepQuality);
-        let AllQualityReduced = allQuality.reduce((a,b)=> a += b)
+        let AllQualityReduced = allQuality.reduce((a,b)=> a += b);
         return Math.round(AllQualityReduced/this.sleepData.length)
     };
 
@@ -31,16 +27,23 @@ class SleepRepo {
     };
 
     findUserWithMostHours(dateOf){
+        let days = this.findDateForSleep(dateOf);
         let userHours = days.sort(function(a,b){
             return b.hoursSlept - a.hoursSlept
         });
 
         let longestSleeper =  userHours.filter(day => day.hoursSlept === userHours[0].hoursSlept);
+        return longestSleeper[0].hoursSlept        
+    }
 
-        return longestSleeper[0].hoursSlept
+    findWorstSleeper(dateOf){
+        let days = this.findDateForSleep(dateOf);
+        let userHours = days.sort(function(a,b){
+            return a.hoursSlept - b.hoursSlept
+        });
 
-        // let results = longestSleeper.length >= 1 ? longestSleeper[0].hoursSlept : 
-        
+        let worstSleeper =  userHours.filter(day => day.hoursSlept === userHours[0].hoursSlept);
+        return worstSleeper[0].hoursSlept
     }
 };
 

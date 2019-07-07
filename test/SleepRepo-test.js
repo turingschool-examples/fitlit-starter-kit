@@ -2,6 +2,8 @@ const chai = require("chai");
 const expect = chai.expect;
 
 const SleepRepo = require('../src/SleepRepo');
+const Sleep = require('../src/Sleep');
+
 
 describe('sleepRepo', () => {
   	let sleepRepo;
@@ -26,12 +28,16 @@ describe('sleepRepo', () => {
             expect(sleepRepo.findAverageSleep()).to.equal(3);
         });
 
-        // it.skip('should give a list of above average sleepers', () =>{
-        //     expect(sleepRepo.findAboveAverageSleepers('2019/06/22')).to.equal('mama')
-        // });
+        it.skip('should give a list of above average sleepers', () =>{
+            expect(sleepRepo.findAboveAverageSleepers('2019/06/22')).to.equal('mama')
+        });
 
         it.skip('should provide the user or users with the most hours of sleep', () => {
-            expect(sleepRepo.findUserWithMostHours('2019/06/22')).to.equal('9.8');
+            expect(sleepRepo.findUserWithMostHours('2019/06/22')).to.equal(9.8);
+        });
+
+        it.skip('should shame the worst sleeper for a specific date', () => {
+            expect(sleepRepo.findWorstSleeper('2019/06/22')).to.equal(4.8);
         });
 
 

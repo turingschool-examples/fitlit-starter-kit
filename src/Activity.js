@@ -12,12 +12,11 @@ class Activity{
 		this.users = userData;
 		this.specificUserActivityData = [];
 		this.specificUserIdentityData = []
-	}
+	};
 
 	findActivityData(id){
 		let filteredActivityData = this.data.filter(activity => activity.userID === id); 
         filteredActivityData.forEach(user => this.specificUserActivityData.push(user));
-
     };
 
     findUserData(id){
@@ -29,7 +28,7 @@ class Activity{
     	this.findActivityData(id);
     	let dateOfActivity = this.specificUserActivityData.find(day => day.date === dateOf);
     	return dateOfActivity.minutesActive;
-    }
+    };
 
     findActiveMinutesForWeek(id, dateOf){
     	this.findActivityData(id);
@@ -40,7 +39,7 @@ class Activity{
     		totalMinutes += dailyMinutes
     		return totalMinutes
     	}, 0) / 7)
-    }
+    };
 
     compareNumStepsToStepGoal(id, dateOf){
     	this.findActivityData(id)
@@ -51,10 +50,23 @@ class Activity{
     	} else{
     		return 'Keep twerking!'
     	}
+    };
 
-    }
+    daysExceedStepGoal(id){
+    	this.findActivityData(id)
+    	this.findUserData(id)
+    	let stepGoal = this.specificUserIdentityData[0].dailyStepGoal
+    	let allDates = this.specificUserActivityData.filter(day => day.numSteps >= stepGoal)
+    	return allDates.map(day => day.date)
+    };
 
-	
+    allTimeStairRecord(id){
+    	this.findActivityData(id)
+    	let stairRecord = this.specificUserActivityData.sort((a,b) =>{
+ 			return b.flightsOfStairs - a.flightsOfStairs;
+    	})
+    	return stairRecord[0].flightsOfStairs
+    };
 }
 
 module.exports = Activity;

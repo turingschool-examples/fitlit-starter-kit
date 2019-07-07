@@ -48,6 +48,14 @@ describe('activity', () => {
         it.only('should let a user know when they have not achieved their step goal', () => {
 			expect(activity.compareNumStepsToStepGoal(1, "2019/06/15")).to.equal('Keep twerking!');
         });
+
+         it.only('should let a user know all days they have achieved their step goal', () => {
+			expect(activity.daysExceedStepGoal(1).length).to.equal(4);
+        });
+
+         it.only('should return all time stair record ', () => {
+			expect(activity.allTimeStairRecord(1)).to.equal(36);
+        });
         
     });
 

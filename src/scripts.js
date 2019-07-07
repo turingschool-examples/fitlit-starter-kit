@@ -45,9 +45,9 @@ const asideDate = () => {
   return formatted_date;
 };
 
-$( document ).ready( () => {
-  console.log( "document loaded" );
-});
+// $( document ).ready( () => {
+//   console.log( "document loaded" );
+// });
 
 $( window ).on( "load", () => {
   console.log( "window loaded" );
@@ -66,6 +66,7 @@ $( window ).on( "load", () => {
   const userRepository = new UserRepository ();
   const activityRepository = new ActivityRepository(randomID);
   const activity = new Activity(randomID);
+  populateActivityNums();
 
 
   //$(".aside__welcome-name").html(user.getUserNameFromID(1));
@@ -94,16 +95,16 @@ $( window ).on( "load", () => {
   // $(".hours-quality__average-input").html(
   //   instantiatedSleep.averageSleepQuality(currentDate())
   // );
-  
-  // function populateAvgActivityChart() {
-  //   console.log(avgActivityChart.data.datasets[0].data)
-  //   avgActivityChart.data.datasets[0].data[0] = activity.returnMilesWalked("2019/06/15");
-  // }
-
+console.log(currentDate())
+  function populateActivityNums() {
+    $(".activity__steps-stepNum").html(activity.returnSteps("2019/06/15"));
+    $(".activity__minsActive-minsActive").html(activity.returnMinutesActive("2019/06/15"));
+    $(".activity__distance-distanceNum").html(activity.returnMilesWalked("2019/06/15"));
+  }
 
 /////////////////////////////Activity Section Charts/////////////////////////////////
   
-let avgActivityChart = new Chart($('.activity__chart-day-allUsers'), {
+  let avgActivityChart = new Chart($('.activity__chart-day-allUsers'), {
     type: 'bar',
     data: {
       labels: ["Number of steps", "Minutes active", "Flights of stairs climbed"],
@@ -111,20 +112,22 @@ let avgActivityChart = new Chart($('.activity__chart-day-allUsers'), {
         {
           label: "Your stats",
           backgroundColor: "#3e95cd",
-          data: [activity.returnSteps("2019/06/15")/50, 
-          activity.returnMinutesActive("2019/06/15"), 
-          activity.returnFlightsOfStairs("2019/06/15")]
+          data: [
+            activity.returnSteps("2019/06/15")/50, 
+            activity.returnMinutesActive("2019/06/15"), 
+            activity.returnFlightsOfStairs("2019/06/15")
+          ]
         }, {
-          label: "The average stats of all users",
-          backgroundColor: "#8e5ea2",
-          data: [activityRepository.returnAvgSteps("2019/06/15")/50, 
-          activityRepository.returnAvgMins("2019/06/15"), 
-          activityRepository.returnAvgStairs("2019/06/15")]
-        }
-      ]
-    },
-    options: {
-    title: {
+            label: "The average stats of all users",
+            backgroundColor: "#8e5ea2",
+            data: [activityRepository.returnAvgSteps("2019/06/15")/50, 
+            activityRepository.returnAvgMins("2019/06/15"), 
+            activityRepository.returnAvgStairs("2019/06/15")]
+          }
+        ]
+      },
+      options: {
+      title: {
         display: true,
         text: 'Your stats compared to all users'
       }
@@ -135,20 +138,23 @@ let avgActivityChart = new Chart($('.activity__chart-day-allUsers'), {
     type: 'line',
     data: {
       labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      datasets: [{ 
-          data: [activity.returnSteps("2019/06/15"),
-          activity.returnSteps("2019/06/16"),
-          activity.returnSteps("2019/06/17"),
-          activity.returnSteps("2019/06/18"),
-          activity.returnSteps("2019/06/19"),
-          activity.returnSteps("2019/06/20"),
-          activity.returnSteps("2019/06/21")],
+      datasets: [
+        { 
+          data: [
+            activity.returnSteps("2019/06/15"),
+            activity.returnSteps("2019/06/16"),
+            activity.returnSteps("2019/06/17"),
+            activity.returnSteps("2019/06/18"),
+            activity.returnSteps("2019/06/19"),
+            activity.returnSteps("2019/06/20"),
+            activity.returnSteps("2019/06/21")
+          ],
           label: "Your step count",
           borderColor: "#3e95cd",
           fill: false
         }  
       ]
-    },
+      },
     options: {
       title: {
         display: true,
@@ -162,21 +168,23 @@ let avgActivityChart = new Chart($('.activity__chart-day-allUsers'), {
     data: {
       labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       datasets: [{ 
-          data: [activity.returnMinutesActive("2019/06/15"),
+          data: [
+          activity.returnMinutesActive("2019/06/15"),
           activity.returnMinutesActive("2019/06/16"),
           activity.returnMinutesActive("2019/06/17"),
           activity.returnMinutesActive("2019/06/18"),
           activity.returnMinutesActive("2019/06/19"),
           activity.returnMinutesActive("2019/06/20"),
-          activity.returnMinutesActive("2019/06/21")],
+          activity.returnMinutesActive("2019/06/21")
+          ],
           label: "Your minutes active",
           borderColor: "#3cba9f",
           fill: false
         } 
       ]
-    },
-    options: {
-      title: {
+      },
+      options: {
+        title: {
         display: true,
         text: 'Weekly overview'
       }
@@ -188,17 +196,19 @@ let avgActivityChart = new Chart($('.activity__chart-day-allUsers'), {
     data: {
       labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       datasets: [{ 
-          data: [activity.returnFlightsOfStairs("2019/06/15"),
+        data: [
+          activity.returnFlightsOfStairs("2019/06/15"),
           activity.returnFlightsOfStairs("2019/06/16"),
           activity.returnFlightsOfStairs("2019/06/17"),
           activity.returnFlightsOfStairs("2019/06/18"),
           activity.returnFlightsOfStairs("2019/06/19"),
           activity.returnFlightsOfStairs("2019/06/20"),
-          activity.returnFlightsOfStairs("2019/06/21")],
-          label: "Your flights of stairs climbed",
-          borderColor: "#8e5ea2",
-          fill: false
-        }  
+          activity.returnFlightsOfStairs("2019/06/21")
+        ],
+        label: "Your flights of stairs climbed",
+        borderColor: "#8e5ea2",
+        fill: false
+      }  
       ]
     },
     options: {
@@ -208,6 +218,5 @@ let avgActivityChart = new Chart($('.activity__chart-day-allUsers'), {
       }
     }
   });
-
 });
 

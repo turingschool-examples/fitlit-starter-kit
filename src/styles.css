@@ -92,9 +92,14 @@ main {
   border: 1px solid black;
 }
 
+/* ----------------Main Activity Section----------------- */
+
 .main__activity {
   height: 850px;
 }
+
+
+
 
 .activity__chart-day-allUsers {
   /* background-color: red; */

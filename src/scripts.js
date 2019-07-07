@@ -1,15 +1,23 @@
 $(document).ready(function() {
   // const hydrationRepo = new HydrationRepository(hydrationData);
-  
+  const today = '2019/06/15';
   $('#js-h2--user').hide();
   $('#js-user-profile').hide();
   $('#js-step-goal-chart').hide();
+  $('#js-hydration-line-chart').hide();
+  $('.sleep-charts').hide();
 
   $('#js-change-user').click(function() {
     const userRepo = new UserRepository(userData);
-    let userID = Math.floor((Math.random() * 50) + 1);
+    const hydrationRepo = new HydrationRepository(hydrationData);
+    const sleepRepo = new SleepRepository(sleepData);
+    const userID = Math.floor((Math.random() * 50) + 1);
     const specificUser = userRepo.returnUserData(userID);
     const user = new User(specificUser);
+    const hydrationUser = hydrationRepo.returnUserHydrationData(userID);
+    const hydration = new Hydration(hydrationUser);
+    const sleepUser = sleepRepo.returnUserSleepData(userID);
+    const sleep = new Sleep(sleepUser);
     $('#js-user-profile').show();
     removeClasses();
     $('#js-change-user').removeClass('list-item--active');
@@ -22,34 +30,38 @@ $(document).ready(function() {
     $('#js-h2--welcome').hide();
     $('#js-step-goal-chart').hide();
     $('#js-h2--user').show();
-    updateCharts(user);
+    updateCharts(user, hydration, sleep);
   });
 
   $('#js-user').click(function() {
     $('#js-user-profile').show();
     $('#js-step-goal-chart').hide();
-
+    $('#js-hydration-line-chart').hide();
+    $('.sleep-charts').hide();
     removeClasses();
     addClasses();
   });
 
   $('#js-step-goal').click(function() {
-    $('#js-user-profile').hide();
     $('#js-step-goal-chart').show();
-    
+    $('#js-user-profile').hide();
+    $('#js-hydration-line-chart').hide();
+    $('.sleep-charts').hide();
     removeClasses();
     addClasses();
   });
 
   $('#js-hydration').click(function() {
+    $('#js-hydration-line-chart').show();
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').hide();
-
+    $('.sleep-charts').hide();
     removeClasses();
     addClasses();
   });
 
   $('#js-sleep').click(function() {
+    $('.sleep-charts').show();
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').hide();
 
@@ -102,9 +114,29 @@ $(document).ready(function() {
     stepGoalChart.update();
   }
 
-  function updateCharts(user) {
-    updateStepGoalChart(user);
+  function updateHydrationLineChart(hydration) {
+    hydrationLineChart.data.datasets[0].data = hydration.returnAverageWeeklyFluidOunces(today);
+    hydrationLineChart.update();
   }
+
+  function updateSleepCharts(sleep) {
+    sleepQualityLineChart.data.datasets[0].data = sleep.userWeeklyQualitySleep(today);
+    sleepHoursLineChart.data.datasets[0].data = sleep.userWeeklySleep(today);
+    sleepQualityLineChart.update();
+    sleepHoursLineChart.update();
+  }
+
+  function updateCharts(user, hydration, sleep) {
+    updateStepGoalChart(user);
+    updateHydrationLineChart(hydration);
+    updateSleepCharts(sleep);
+  }
+
+
+
+
+
+
 
   var stepGoalChart = new Chart($("#js-step-goal-chart"), {
     type: 'bar',
@@ -146,9 +178,256 @@ $(document).ready(function() {
     }
   });
 
-  // let foundUser = hydrationRepo.returnUserHydrationData(userID);
-  // const hydration = new Hydration(foundUser);
-  // $('#js-water-consumed-today').html(hydration.returnFluidOunces("2019/06/15"));
+  var hydrationLineChart = new Chart($('#js-hydration-line-chart'), {
+    type: 'line',
+    data: {
+      labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
+      datasets: [{ 
+        data: [],
+        label: "",
+        borderColor: "#3e95cd",
+        fill: true
+      } 
+      ]
+    },
+    options: {
+      legend: { display: false },
+      responsive: false,
+      maintainAspectRatio: false,
+      title: {
+        display: false,
+      }
+    }
+  });
+
+  var sleepQualityLineChart = new Chart($('#js-sleepQuality-line-chart'), {
+    type: 'line',
+    data: {
+      labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
+      datasets: [{ 
+        data: [],
+        label: "",
+        borderColor: "#3e95cd",
+        fill: true
+      } 
+      ]
+    },
+    options: {
+      legend: { display: false },
+      responsive: false,
+      maintainAspectRatio: false,
+      title: {
+        display: false,
+      }
+    }
+  });
+
+  var sleepHoursLineChart = new Chart($('#js-sleepHours-line-chart'), {
+    type: 'line',
+    data: {
+      labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
+      datasets: [{ 
+        data: [],
+        label: "",
+        borderColor: "#3e95cd",
+        fill: true
+      } 
+      ]
+    },
+    options: {
+      legend: { display: false },
+      responsive: false,
+      maintainAspectRatio: false,
+      title: {
+        display: false,
+      }
+    }
+  });
 
   
+  var numOfStepsChart = new Chart($("#js-step-goal-chart"), {
+    type: 'bar',
+    data: {
+      labels: ["", "All Users"],
+      datasets: [
+        {
+          label: "Daily Step Goal",
+          backgroundColor: ["#3e95cd", "#8e5ea2"],
+          data: [0, 6700]
+        }
+      ]
+    },
+    options: {
+      responsive: false,
+      maintainAspectRatio: false,
+      legend: { display: false },
+      title: {
+        display: false,
+      },
+      scales: {
+        xAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+            maxTicksLimit: 12,
+            min: 0,
+            max: 12000,
+            stepSize: 2000,
+          }
+        }]
+      }
+    }
+  });
+
+  var numOfStepsLineChart = new Chart($('#js-sleepHours-line-chart'), {
+    type: 'line',
+    data: {
+      labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
+      datasets: [{ 
+        data: [],
+        label: "",
+        borderColor: "#3e95cd",
+        fill: true
+      } 
+      ]
+    },
+    options: {
+      legend: { display: false },
+      responsive: false,
+      maintainAspectRatio: false,
+      title: {
+        display: false,
+      }
+    }
+  });
+
+  var numMinActiveChart = new Chart($("#js-step-goal-chart"), {
+    type: 'bar',
+    data: {
+      labels: ["", "All Users"],
+      datasets: [
+        {
+          label: "Daily Step Goal",
+          backgroundColor: ["#3e95cd", "#8e5ea2"],
+          data: [0, 6700]
+        }
+      ]
+    },
+    options: {
+      responsive: false,
+      maintainAspectRatio: false,
+      legend: { display: false },
+      title: {
+        display: false,
+      },
+      scales: {
+        xAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+            maxTicksLimit: 12,
+            min: 0,
+            max: 12000,
+            stepSize: 2000,
+          }
+        }]
+      }
+    }
+  });
+
+  var numMinActiveLineChart = new Chart($('#js-sleepHours-line-chart'), {
+    type: 'line',
+    data: {
+      labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
+      datasets: [{ 
+        data: [],
+        label: "",
+        borderColor: "#3e95cd",
+        fill: true
+      } 
+      ]
+    },
+    options: {
+      legend: { display: false },
+      responsive: false,
+      maintainAspectRatio: false,
+      title: {
+        display: false,
+      }
+    }
+  });
+
+  var distanceMilesChart = new Chart($("#js-step-goal-chart"), {
+    type: 'bar',
+    data: {
+      labels: ["", "All Users"],
+      datasets: [
+        {
+          label: "Daily Step Goal",
+          backgroundColor: ["#3e95cd", "#8e5ea2"],
+          data: [0, 6700]
+        }
+      ]
+    },
+    options: {
+      responsive: false,
+      maintainAspectRatio: false,
+      legend: { display: false },
+      title: {
+        display: false,
+      },
+      scales: {
+        xAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+            maxTicksLimit: 12,
+            min: 0,
+            max: 12000,
+            stepSize: 2000,
+          }
+        }]
+      }
+    }
+  });
+
+  var distanceMilesLineChart = new Chart($('#js-sleepHours-line-chart'), {
+    type: 'line',
+    data: {
+      labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
+      datasets: [{ 
+        data: [],
+        label: "",
+        borderColor: "#3e95cd",
+        fill: true
+      } 
+      ]
+    },
+    options: {
+      legend: { display: false },
+      responsive: false,
+      maintainAspectRatio: false,
+      title: {
+        display: false,
+      }
+    }
+  });
 });

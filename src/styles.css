@@ -74,6 +74,10 @@ p {
   background-color: #c91b1b;
 }
 
+.list-item:hover {
+  background-color: #000;
+}
+
 .label {
   background-color: #e4e4e4;
   grid-area: label;
@@ -96,7 +100,13 @@ p {
   grid-area: main;
 }
 
-.step-goal-chart {
+.sleep-charts {
+  display: flex;
+}
+
+.step-goal-chart,
+.hydration-line-chart,
+.sleep-charts {
   margin: auto;
 }
 

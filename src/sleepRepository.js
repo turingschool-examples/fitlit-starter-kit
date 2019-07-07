@@ -29,7 +29,6 @@ class SleepRepository {
       }
       return acc
     }, 0)
-    
     return dateArr.filter(el => el.hoursSlept === mostHours)
   }
 

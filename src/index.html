@@ -25,16 +25,15 @@
       <article>UserDate</article>
 
       <article>StepGoal
-        <canvas id="stepChart" width="400" height="400"></canvas>
+        <!-- <canvas id="stepChart" width="400" height="400"></canvas> -->
       </article>
 
-      <article>H2O
-        <canvas id="dailyWaterChart" width="400" height="400"></canvas>
+      <div class="water-display__article">H2O
         <canvas id="weeklyWaterChart" width="400" height="400"></canvas>
-      </article>
+      </div>
 
       <article>Sleep</article>
-
+        <canvas id="mostHoursSlept" width="400" height="400"></canvas>
       <article>Steps</article>
 
       <article> Challenges</article>
@@ -43,6 +42,7 @@
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="https://d3js.org/d3.v4.js"></script>
   <script type="text/javascript" src="../data/users.js"></script>
   <script type="text/javascript" src="../data/hydration.js"></script>
   <script type="text/javascript" src="../data/sleep.js"></script>

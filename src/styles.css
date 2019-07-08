@@ -2,14 +2,18 @@
   box-sizing: border-box;
 }
 
+
 body {
-  font-family: "Open Sans", sans-serif;
+  text-rendering: optimizeSpeed;
   margin: 3%;
   margin-top: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(../images/art-sunset.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+}
+
+h2 {
+  color: #fff;
+  font-family: "Racing Sans One";
+  font-size: 2.5em;
+  margin-left: 15px;
 }
 
 
@@ -39,7 +43,7 @@ p {
 
 .h1 {
   color: aliceblue;
-  font-family: "Racing Sans One", cursive;
+  font-family: "Racing Sans One";
   font-size: 2.8em;
 }
 
@@ -50,12 +54,6 @@ p {
   grid-area: head;
 }
 
-.h2 {
-  color: #fff;
-  font-family: "Racing Sans One", cursive;
-  font-size: 2.5em;
-  margin-left: 15px;
-}
 
 .nav {
   background-color: rgba(28, 28, 37, 0.7);
@@ -63,8 +61,10 @@ p {
 }
 
 .nav-list {
+  font-family: "Open Sans";
   font-size: 1.1em;
   text-align: center;
+  padding: 0;
 }
 
 .list-item {
@@ -73,6 +73,7 @@ p {
   /* border: 1px solid black; */
   margin-top: 15px;
   padding: 8px 0;
+  list-style-type: none;
 }
 
 .list-item--active {

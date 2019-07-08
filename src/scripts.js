@@ -1,14 +1,17 @@
+
+// $('#js-user-profile').hide();
+// $('#js-h2--user').hide();
 $(document).ready(function() {
-  // const hydrationRepo = new HydrationRepository(hydrationData);
-  const today = '2019/06/15';
-  $('#js-h2--user').hide();
-  $('#js-user-profile').hide();
+
   $('#js-step-goal-chart').hide();
   $('#js-hydration-line-chart').hide();
   $('.sleep-charts').hide();
   $('.num-of-steps-charts').hide();
   $('.num-mins-active-charts').hide();
   $('.distance-miles-charts').hide();
+
+  const today = '2019/06/15';
+
 
   $('#js-change-user').click(function() {
     const userRepo = new UserRepository(userData);
@@ -21,7 +24,7 @@ $(document).ready(function() {
     const hydration = new Hydration(hydrationUser);
     const sleepUser = sleepRepo.returnUserSleepData(userID);
     const sleep = new Sleep(sleepUser);
-    
+
     removeClasses();
     $('#js-change-user').removeClass('list-item--active');
     $('#js-user').addClass('list-item--active');
@@ -163,7 +166,7 @@ $(document).ready(function() {
   }
 
   function minsActiveCharts(activity) {
-    
+
   }
 
   function distanceTraveledCharts(activity) {
@@ -233,12 +236,12 @@ $(document).ready(function() {
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
-      datasets: [{ 
+      datasets: [{
         data: [],
         label: "",
         borderColor: "#3e95cd",
         fill: true
-      } 
+      }
       ]
     },
     options: {
@@ -255,12 +258,12 @@ $(document).ready(function() {
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
-      datasets: [{ 
+      datasets: [{
         data: [],
         label: "",
         borderColor: "#3e95cd",
         fill: true
-      } 
+      }
       ]
     },
     options: {
@@ -277,12 +280,12 @@ $(document).ready(function() {
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
-      datasets: [{ 
+      datasets: [{
         data: [],
         label: "",
         borderColor: "#3e95cd",
         fill: true
-      } 
+      }
       ]
     },
     options: {
@@ -295,7 +298,7 @@ $(document).ready(function() {
     }
   });
 
-  
+
   var numOfStepsChart = new Chart($("#js-num-of-steps-chart"), {
     type: 'bar',
     data: {
@@ -340,12 +343,12 @@ $(document).ready(function() {
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
-      datasets: [{ 
+      datasets: [{
         data: [],
         label: "",
         borderColor: "#3e95cd",
         fill: true
-      } 
+      }
       ]
     },
     options: {
@@ -402,12 +405,12 @@ $(document).ready(function() {
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
-      datasets: [{ 
+      datasets: [{
         data: [],
         label: "",
         borderColor: "#3e95cd",
         fill: true
-      } 
+      }
       ]
     },
     options: {
@@ -464,12 +467,12 @@ $(document).ready(function() {
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
-      datasets: [{ 
+      datasets: [{
         data: [],
         label: "",
         borderColor: "#3e95cd",
         fill: true
-      } 
+      }
       ]
     },
     options: {

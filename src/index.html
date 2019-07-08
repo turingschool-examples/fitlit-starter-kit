@@ -4,11 +4,11 @@
     <link rel="stylesheet" type="text/css" href="reset.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <meta charset="UTF-8">
-    <title>Activity Tracker</title>
+    <title>FitLit</title>
   </head>
   <body>
     <header>
-    <h1>Activity Tracker</h1>
+    <h1>FitLit</h1>
     <h3>Welcome, <span class="user-name">Name</span></h3>
     <h3>Daily Step Goal: <span class="user-steps"></span> Average Step Goal: <span class="avg-step-goal"></span></h3>
     </header>
@@ -40,43 +40,47 @@
           <p>Overall Sleep Summary - Hours: <span class="main__section--average-sleep-hours"></span> Quality: <span class="main__section--average-sleep-quality"></p>
         </section> -->
         <section class="main__section--activity grid">
-
-
-      
           <article class="main__section--hydration--today grid-item grid-item--height2">
             <h4>Today's Water Intake</h4>
             <img src="../images/water-drop.svg" class="icon">
-            <img src="../images/water-drop.svg" class="icon">
             <p>You've had <span>0</span> ounces of water today.</p>
           </article>
-
-          <article class="main__section--hydration--today grid-item grid-item--width2">
+          <article class="main__section--hydration--week grid-item grid-item--width2 grid-item--height2">
             <h4>Your Week In Water</h4>
-            <img src="../images/water-drop.svg" class="icon">
+            <div class="main__section--hydration--week">
+                <canvas id="hydration-chart"></canvas>
+            </div>
           </article>
-
-
           <article class="main__section--sleep--last-night grid-item">
             <h4>Last Night</h4>
             <img src="../images/moon.svg" class="main__section--sleep--hours icon">
-            <p>Hours: <span></span> Quality: <span></span></p>
+            <p>Hours: <span></span></p>
+            <p>Quality: <span></span></p>
           </article>
-            <article class="main__section--sleep--week grid-item--width2 grid-item">
-              <h4>Sleep This Week</h4>
-              <p>Here is where a chart will go with a purple border</p>
-            </article> 
+          <article class="main__section--sleep--week grid-item--width2 grid-item--height3 grid-item">
+            <h4>Sleep This Week</h4>
+            <div class="main__section--sleep-week">
+                <canvas id="sleep-hours-chart"></canvas>
+            </div>
+            <div class="main__section--sleep-week">
+              <canvas id="sleep-quality-chart"></canvas>
+            </div>
+
+            <div class="main__section--sleep--worst">
+                <h4>Worst Night This week</h4>
+                <img src="../images/sleepy-worker.svg" class="icon">
+                <div>
+                    <p>Date: <span></span></p> 
+                    <p>Quality: <span></span></p>
+                </div>
+                
+            </div>
+          </article> 
             <article class="main__section--sleep--averages grid-item">
               <h4>Your Averages</h4>
               <img src="../images/bed.svg" class="main__section--sleep--averages icon">
               <p>Hours: <span></span> Quality: <span></span></p>
             </article>
-            <article class="main__section--sleep--worst grid-item">
-                <h4>Worst Night This week</h4>
-                <img src="../images/sleepy-worker.svg" class="icon">
-                <p>Date: <span></span></p> 
-                <p>Quality: <span></span></p>
-              </article>
-          
           <article class="grid-item main__section--activity--item grid-item grid-item--width2">
             <h4>Your Activity This Week</h4>
           </article>
@@ -90,7 +94,7 @@
           <article class="grid-item main__section--activity--miles">
             <h4>Miles</h4>
             <img class= "main__section--activity--miles icon" src="../images/miles.svg">
-            <span></span>
+            <p><span></span></p>
           </article>
           <article class="grid-item main__section--activity--minutes">
             <h4>Active Minutes</h4>
@@ -114,7 +118,7 @@
               <table>
                   <tr>
                     <th></th>
-                    <th>Your Avg</th>
+                    <th>Your Day</th>
                     <th>World Avg</th> 
                   </tr>
                   <tr>
@@ -122,6 +126,11 @@
                     <td>Your Day Steps</td>
                     <td>Global Avg Steps</td>
                   </tr>
+                  <tr>
+                      <td>Step Goal</td>
+                      <td>Your Goal</td>
+                      <td>Global Avg Goal</td>
+                    </tr>
                   <tr>
                     <td>Active Minutes </td>
                     <td>Your Active Minutes</td>
@@ -136,6 +145,7 @@
             </article>        
           </section>
       </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script type="text/javascript" src="./sleep.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>

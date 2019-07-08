@@ -62,10 +62,12 @@ $(document).ready(function() {
   $('.main__section--sleep--averages span').eq(1).text(currentSleep.returnAllTimeAvgQual())
   $('.main__section--activity--world table tr td').eq(1).text(activityDay.numSteps.toLocaleString())
   $('.main__section--activity--world table tr td').eq(2).text(activityRepo.returnAvgSteps("2019/06/23").toLocaleString())
-  $('.main__section--activity--world table tr td').eq(4).text(activityDay.minutesActive)
-  $('.main__section--activity--world table tr td').eq(5).text(activityRepo.returnAvgMins("2019/06/23"))
-  $('.main__section--activity--world table tr td').eq(7).text(activityDay.flightsOfStairs)
-  $('.main__section--activity--world table tr td').eq(8).text(activityRepo.returnAvgStairs("2019/06/23"))
+  $('.main__section--activity--world table tr td').eq(4).text(currentUser.dailyStepGoal)
+  $('.main__section--activity--world table tr td').eq(5).text(globalRepo.returnAvgStepGoal())
+  $('.main__section--activity--world table tr td').eq(7).text(activityDay.minutesActive)
+  $('.main__section--activity--world table tr td').eq(8).text(activityRepo.returnAvgMins("2019/06/23"))
+  $('.main__section--activity--world table tr td').eq(10).text(activityDay.flightsOfStairs)
+  $('.main__section--activity--world table tr td').eq(11).text(activityRepo.returnAvgStairs("2019/06/23"))
   $('.main__section--sleep--worst span').first().text(currentSleep.returnWorstDay("2019/06/23").date)
   $('.main__section--sleep--worst span').eq(1).text(currentSleep.returnWorstDay("2019/06/23").sleepQuality)
   $('.main__section--hydration--today span').text(currentHydration.returnIntakeByDay("2019/06/23"))
@@ -82,7 +84,9 @@ function getRandomNumber() {
 
 // Chart  Section //
 
-Chart.defaults.global.defaultFontColor = 'black';
+Chart.defaults.global.defaultFontColor = 'white';
+Chart.defaults.global.defaultFontSize = 16;
+Chart.defaults.scale.ticks.beginAtZero = true;
 
 let hydrationWeekData = currentHydration.returnWeekIntake();
 let hydrationDays = hydrationWeekData.reduce((acc, day) => {
@@ -101,7 +105,7 @@ const chart = new Chart(ctx, {
         labels: [`${hydrationDays[0]}`, `${hydrationDays[1]}`, `${hydrationDays[2]}`, `${hydrationDays[3]}`, `${hydrationDays[4]}`, `${hydrationDays[5]}`, `${hydrationDays[6]}`],
         datasets: [{
             label: 'My Last Week of Hydration in Ounces',
-            backgroundColor: 'blue',
+            backgroundColor: '#0d6aff',
             borderColor: 'black',
             borderWidth: 2,
             data: [`${hydrationWeekData[0].numOunces}`, `${hydrationWeekData[1].numOunces}`, `${hydrationWeekData[2].numOunces}`, `${hydrationWeekData[3].numOunces}`, `${hydrationWeekData[4].numOunces}`, `${hydrationWeekData[5].numOunces}`, `${hydrationWeekData[6].numOunces}`]
@@ -137,10 +141,10 @@ const chart2 = new Chart(ctx2, {
     data: {
         labels: [`${sleepDays[0]}`, `${sleepDays[1]}`, `${sleepDays[2]}`, `${sleepDays[3]}`, `${sleepDays[4]}`, `${sleepDays[5]}`, `${sleepDays[6]}`],
         datasets: [{
-            label: 'My Last Week of Sleep in Hours',
-            backgroundColor: 'grey',
-            borderColor: 'black',
-            borderWidth: 2,
+            label: 'Hours Slept',
+            backgroundColor:  '#7924b3',
+            borderColor: '#000000',
+            borderWidth: 1,
             data: [`${sleepWeek[0].hoursSlept}`, `${sleepWeek[1].hoursSlept}`, `${sleepWeek[2].hoursSlept}`, `${sleepWeek[3].hoursSlept}`, `${sleepWeek[4].hoursSlept}`, `${sleepWeek[5].hoursSlept}`, `${sleepWeek[6].hoursSlept}`]
         }]
     },
@@ -235,10 +239,10 @@ const chart5 = new Chart(ctx5, {
     data: {
         labels: [`${sleepDays[0]}`, `${sleepDays[1]}`, `${sleepDays[2]}`, `${sleepDays[3]}`, `${sleepDays[4]}`, `${sleepDays[5]}`, `${sleepDays[6]}`],
         datasets: [{
-            label: 'Sleep Quality Last Week',
-            backgroundColor: 'grey',
-            borderColor: 'black',
-            borderWidth: 2,
+            label: 'Sleep Quality',
+            backgroundColor:  '#7924b3',
+            borderColor: '#000000',
+            borderWidth: 1,
             data: [`${sleepWeek[0].sleepQuality}`, `${sleepWeek[1].sleepQuality}`, `${sleepWeek[2].sleepQuality}`, `${sleepWeek[3].sleepQuality}`, `${sleepWeek[4].sleepQuality}`, `${sleepWeek[5].sleepQuality}`, `${sleepWeek[6].sleepQuality}`]
         }]
     },
@@ -326,48 +330,3 @@ const chart7 = new Chart(ctx7, {
     }
 });
 
-
-const ctx8 = $('#activity-metrics-yesterday')
-const chart8 = new Chart(ctx8, {
-    // The type of chart we want to create
-    type: 'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-    // The data for our dataset
-    data: {
-        labels: [`My Activity`, 'Average Activity'],
-        datasets: [{
-            label: 'My Steps',
-            backgroundColor: ['red', 'grey'],
-            borderColor: 'black',
-            borderWidth: 1,
-            data: [`${activityDay.numSteps}`, `${activityRepo.returnAvgSteps('2019/06/23')}`]
-            
-        },
-        {
-            label: 'Minutes Active',
-            backgroundColor: ['red', 'grey'],
-            borderColor: 'black',
-            borderWidth: 1,
-            data: [`${activityDay.minutesActive}`, `${activityRepo.returnAvgMins('2019/06/23')}`]
-        },
-        {
-            label: 'Steps Climbed',
-            backgroundColor: ['red', 'grey'],
-            borderColor: 'black',
-            borderWidth: 1,
-            data: [`${activityDay.flightsOfStairs}`, `${activityRepo.returnAvgStairs('2019/06/23')}`]
-        }
-
-    ]
-    },
-
-    // Configuration options go here
-    options: {
-        title: {
-            display: true,
-            text: 'Activity Metrics'
-        },
-        legend: {
-            display: true
-        }
-    }
-});

@@ -1,8 +1,6 @@
 const uniqueUserIndex = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
 const uniqueUserId = uniqueUserIndex + 1;
 
-
-
 const userRepo = new UserRepo();
 const user = new User(uniqueUserIndex);
 const hydrationRepo = new HydrationRepo(uniqueUserId);

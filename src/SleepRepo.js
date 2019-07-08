@@ -8,7 +8,7 @@ if (typeof module !== 'undefined') {
 class SleepRepo {
     constructor(id){
         this.sleepData = sleepData;
-        this.users = new Sleep(id);
+        this.users = new Sleep(id);//this is only one user
     };
 
     findAverageSleep(){

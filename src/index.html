@@ -8,45 +8,55 @@
     <title>Activity Tracker</title>
   </head>
   <body>
-    <nav>      
+    <nav class="nav">      
       <h1 class="nav__h1">Activity Tracker</h1>
-      <h3 class="nav__h3">Welcome, <span class="nav__span--name">Name</span></h3>
-      <h4>Today's Date<span class="nav__span--date">Date</span></h4>
-      <p>Address: <span class="nav__span--address"></span></p>
-      <p>Email: <span class="nav__span--email"></span></p>
-      <p>Daily Step Goal: <span class="nav__span--stepgoal"></span></p>
-      <p>Your Goal vs. Everyone Else: <span class="nav__span--comparison"></span></p>
+      <div class="nav__div">
+        <h3 class="nav__h3">Welcome, <span class="nav__span--name">Name</span></h3>
+        <h4>Today's Date<span class="nav__span--date">Date</span></h4>
+        <p>Address: <span class="nav__span--address"></span></p>
+        <p>Email: <span class="nav__span--email"></span></p>
+        <p>Daily Step Goal: <span class="nav__span--stepgoal"></span></p>
+        <p>Your Goal vs. Everyone Else: <span class="nav__span--comparison"></span></p>
+      </div>
     </nav>
     <main>
       <section class="hydro__section">
         <h2 class="hydro__h2">Hydration</h2>
-        <p>Today: <span class="hydro__span--today"></span> ounces</p>
-        <p>Your Average Water Intake: <span class="hydro__span--average"></span> ounces</p>
-        <div class="hydro__div--week">
-          <p>Week Info: <span class="hydro__span--week"></span></p>
+        <div class="hydro__div">
+          <p>Today: <span class="hydro__span--today"></span> ounces</p>
+          <p>Your Average Water Intake: <span class="hydro__span--average"></span> ounces</p>
+          <div class="hydro__div--week">
+            <p>Week Info: <span class="hydro__span--week"></span></p>
+          </div>
         </div>
       </section>
       <section class="sleep__section">
         <h2 class="sleep__h2">Sleep</h2> 
-        <p>Today's Sleep - Hours: <span class="sleep__span--hours"></span> Quality: <span class="sleep__span--quality"></span></p>
-        <p>Last Week's Sleep Summary - Hours: <span class="sleep__span--weekHours"></span> Quality: <span class="sleep__span--weekQuality"></span></p>
-        <p>Overall Sleep Summary - Hours: <span class="sleep__span--overallHours"></span> Quality: <span class="sleep__span--overallQuality"></p>
+        <div class="sleep__div">
+          <p>Today's Sleep - Hours: <span class="sleep__span--hours"></span> Quality: <span class="sleep__span--quality"></span></p>
+          <p>Last Week's Sleep Summary - Hours: <span class="sleep__span--weekHours"></span> Quality: <span class="sleep__span--weekQuality"></span></p>
+          <p>Overall Sleep Summary - Hours: <span class="sleep__span--overallHours"></span> Quality: <span class="sleep__span--overallQuality"></p>
+        </div>
       </section>
       <section class="activity__section">
         <h2 class="activity__h2">Activity</h2>
-        <article>Steps: <span class="activity__span--steps"></span></article>
-        <article>Miles Walked: <span class="activity__span--miles"></span></article>
-        <article>Active Minutes: <span class="activity__span--minutes"></span></article>
-        <article>Flights of Stairs: <span class="activity__span--flights"></span></article>
+        <div class="activity__div">
+          <article>Steps: <span class="activity__span--steps"></span></article>
+          <article>Miles Walked: <span class="activity__span--miles"></span></article>
+          <article>Active Minutes: <span class="activity__span--minutes"></span></article>
+          <article>Flights of Stairs: <span class="activity__span--flights"></span></article>
+        </div>
       </section>
       <section class="friends__section">
         <h2 class="friends__h2">Friends</h2>
-        <ul class="friends__ul">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+        <div class="friends__div">
+          <ul class="friends__ul">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
       </section>
       <section class="challenges__section">
         <h2 class="challenges__h2">Challenges</h2>

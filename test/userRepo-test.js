@@ -4,7 +4,7 @@ const expect = chai.expect;
 const UserRepo = require("../src/userRepo");
 const userData = require("../data/sampleUsers");
 
-describe('User', function() {
+describe('UserRepo', function() {
 
   it('should be a function', function() {
     expect(UserRepo).to.be.a('function');

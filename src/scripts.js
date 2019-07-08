@@ -59,8 +59,22 @@ function populateSleepwidget(user) {
   let qualSleepToday = sleep.sleepQualityByDate('2019/09/22', user.id)
   $('.qualSlept').text(`${qualSleepToday}`);
   displaySleepComp(user, sleep);
-  sleepHoursMoreInfo(sleep, user);
+  let dailyHoursSleptForWeek = sleep.dailyHoursSleptPerWeek(3, "2019/06/17");
+  // console.log(dailyHoursSleptForWeek);
+  sleepHoursMoreInfo(dailyHoursSleptForWeek);
   // sleepQualityMoreInfo(sleep, user);
+}
+
+function sleepHoursMoreInfo(listOfDailyHours) {
+
+  $('.day-sleep-1').text(`${listOfDailyHours[0]}`);
+  $('.day-sleep-2').text(`${listOfDailyHours[1]}`);
+  console.log(listOfDailyHours);
+  $('.day-sleep-3').text(`${listOfDailyHours[2]}`);
+  $('.day-sleep-4').text(`${listOfDailyHours[3]}`);
+  $('.day-sleep-5').text(`${listOfDailyHours[4]}`);
+  $('.day-sleep-6').text(`${listOfDailyHours[5]}`);
+  $('.day-sleep-7').text(`${listOfDailyHours[6]}`);
 }
 
 // function sleepHoursMoreInfo(sleepInfo, user) {

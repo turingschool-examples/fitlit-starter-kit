@@ -44,7 +44,7 @@ describe('Sleep', function() {
   });
 
   it('should return a list of hours slept over a week for user', function() {
-    expect(sleep.dailyHoursSleptPerWeek(3, "2019/06/16")).to.eql([10.7, 5.3, 9.8, 7.2, 9.4, 8.9, 9.8]);
+    expect(sleep.dailyHoursSleptPerWeek(3, "2019/06/16")).to.eql([10.7, 5.3, 9.8, 7.2, 9.4, 8.9, 9.8, 4.7]);
   });
 
   it('should return a list of quality sleep over a week for user', function() {

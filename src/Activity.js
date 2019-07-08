@@ -71,7 +71,6 @@ class Activity{
 	
 	findMilesForDay(id, dateOf){
 		let dayOfActivity = this.userActivity.find(day => day.date === dateOf);
-        console.log(daysOfActivity)
 		let daySteps = dayOfActivity.numSteps;
 		let strideLength = this.uniqueUserData.strideLength;
 		return Math.floor((daySteps*strideLength)/5280)
@@ -80,8 +79,7 @@ class Activity{
     findLeastActiveDay(id){
         let sortedMins = this.userActivity.sort((a,b) => {
             return a.minutesActive - b.minutesActive});
-        // console.log(sortedMins)
-        
+        return `Your least active day was ${sortedMins[0].date}. What happened?` 
     }
 }
 

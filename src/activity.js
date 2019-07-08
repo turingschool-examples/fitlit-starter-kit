@@ -64,6 +64,8 @@ class Activity extends User {
     return found.flightsOfStairs;
   }
 
+  
+
 }
 
 if (typeof module !== 'undefined') {

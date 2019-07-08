@@ -66,4 +66,25 @@ describe("Activity", () => {
     expect(activity1.returnFlightsClimbedForDate("2019/06/15")).to.eql(16)
   });
 
+  it("should return a weekly view of their step count", () => {
+    userRepository2 = new UserRepository(userData1)
+    activityRepository2 = new ActivityRepository(activityData2);
+    activity1 = new Activity(userRepository2.returnUserData(1), activityRepository2.returnUserActivityData(1));
+    expect(activity1.returnWeekViewOfSteps("2019/06/15")).to.eql([3577, 6637, 14329, 4419, 8429, 14478, 6760])
+  });
+
+  it("should return a weekly view of flights of stairs climbed", () => {
+    userRepository2 = new UserRepository(userData1)
+    activityRepository2 = new ActivityRepository(activityData2);
+    activity1 = new Activity(userRepository2.returnUserData(1), activityRepository2.returnUserActivityData(1));
+    expect(activity1.returnWeekViewOfFlightsClimbed("2019/06/15")).to.eql([16, 36, 18, 33, 2, 12, 6])
+  });
+
+  it("should return a weekly view of minutes active", () => {
+    userRepository2 = new UserRepository(userData1)
+    activityRepository2 = new ActivityRepository(activityData2);
+    activity1 = new Activity(userRepository2.returnUserData(1), activityRepository2.returnUserActivityData(1));
+    expect(activity1.returnWeekViewOfMinsActive("2019/06/15")).to.eql([140, 175, 168, 165, 275, 140, 135])
+  });
+
 });

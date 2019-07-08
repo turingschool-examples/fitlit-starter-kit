@@ -1,11 +1,14 @@
 const currentDate = () => {
-  var fullDate = new Date();
+  let fullDate = new Date();
+  let newDate = fullDate.getDate();
+  let twoDigitDate = 
+    fullDate.getDate()  >= 10 ? fullDate.getDate() : '0' + fullDate.getDate();
   var twoDigitMonth =
-    fullDate.getMonth().length + 1 === 1
-      ? fullDate.getMonth() + 1
+    fullDate.getMonth() + 1 >= 10
+      ? (fullDate.getMonth() + 1)
       : "0" + (fullDate.getMonth() + 1);
   var currentDate =
-    fullDate.getDate() + "/" + twoDigitMonth + "/" + fullDate.getFullYear();
+    `${fullDate.getFullYear()}/${twoDigitMonth}/${twoDigitDate}`
   return currentDate;
 };
 
@@ -64,6 +67,8 @@ $( window ).on( "load", () => {
 
   //const user = new User();
   const userRepository = new UserRepository ();
+  const sleepRepository = new SleepRepository(randomID);
+  const sleep = new Sleep(randomID);
   const activityRepository = new ActivityRepository(randomID);
   const activity = new Activity(randomID);
   const hydrationRepository = new HydrationRepository(randomID);
@@ -83,22 +88,7 @@ $( window ).on( "load", () => {
   $(".aside__date").html(asideDate());
   // populateAvgActivityChart();
 
-  const newSleep = new Sleep(randomID);
-  const sleep = newSleep.instantiateSleep();
-  let instantiatedSleep = sleep.find(item => item.userID === randomID);
 
-  // $(".hours-slept__today-input").html(
-  //   instantiatedSleep.getHoursSleptOnDay(randomID, currentDate())
-  // );
-  // $(".hours-quality__today-input").html(
-  //   instantiatedSleep.hoursSleptQualityInDate(currentDate())
-  // );
-  // $(".hours-slept__average-input").html(
-  //   instantiatedSleep.averageHrsSlept(currentDate())
-  // );
-  // $(".hours-quality__average-input").html(
-  //   instantiatedSleep.averageSleepQuality(currentDate())
-  // );
 
   function populateActivityNums() {
     $(".activity__steps-stepNum").html(activity.returnSteps("2019/06/15"));
@@ -255,6 +245,31 @@ let userWeeklyHydration = new Chart($(".hydration__chart-weeklyOz-oneUser"), {
     title: {
       display: true,
       text: 'Your weekly water consumption overview'
+    }
+  }
+});
+
+/*---------------Sleep Section Chart-------------------*/
+
+let dailySleepData = new Chart($('.sleep-hours-quality__chart'), {
+  type: 'bar',
+  data: {
+    labels: ["Hours slept", "Quality of Sleep"],
+    datasets: [
+      {
+        label: "Your sleep data for xx/xx/xx",
+        backgroundColor: "#3e95cd",
+        data: [
+          sleep.getHoursSleptOnDay(randomID, currentDate()) ,
+          sleep.getSleepQualityOnDay(randomID, currentDate())
+        ]
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Sleep data for the day'
     }
   }
 });

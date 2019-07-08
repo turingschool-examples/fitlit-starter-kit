@@ -123,7 +123,7 @@ class Activity {
       }
     });
     return threeInARowDates;
-   }
+  }
 }
 
 if (typeof module !== "undefined") {

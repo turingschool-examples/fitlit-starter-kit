@@ -17,7 +17,7 @@ class UserRepository {
 
   returnAvgStepGoal() {
     return Number(this.data.reduce(function(allSteps, currentUser) {
-       return allSteps += currentUser.dailyStepGoal;
+      return allSteps += currentUser.dailyStepGoal;
     }, 0) / this.data.length);
   }
 }  

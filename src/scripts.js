@@ -251,27 +251,65 @@ let userWeeklyHydration = new Chart($(".hydration__chart-weeklyOz-oneUser"), {
 
 /*---------------Sleep Section Chart-------------------*/
 
-let dailySleepData = new Chart($('.sleep-hours-quality__chart'), {
-  type: 'bar',
-  data: {
-    labels: ["Hours slept", "Quality of Sleep"],
-    datasets: [
-      {
-        label: "Your sleep data for xx/xx/xx",
-        backgroundColor: "#3e95cd",
-        data: [
-          sleep.getHoursSleptOnDay(randomID, currentDate()) ,
-          sleep.getSleepQualityOnDay(randomID, currentDate())
-        ]
+  let dailySleepData = new Chart($('.sleep-hours-quality__chart'), {
+    type: 'bar',
+    data: {
+      labels: ["Hours slept", "Quality of Sleep"],
+      datasets: [
+        {
+          label: "Your data for the day",
+          backgroundColor: "#51768C",
+          data: [
+            sleep.getHoursSleptOnDay(randomID, currentDate()),
+            sleep.getSleepQualityOnDay(randomID, currentDate()) 
+          ]
+        },
+        {
+          label: "Your averages",
+          backgroundColor: "#D96459",
+          data: [
+            sleep.getAvgHoursSlept(randomID),
+            sleep.getAvgSleepQuality(randomID)
+          ]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Sleep data comparison'
       }
-    ]
-  },
-  options: {
-    title: {
-      display: true,
-      text: 'Sleep data for the day'
     }
-  }
-});
+  });
+
+  let weeklySleepData = new Chart($(".sleep-hours-quality-weekly__chart"), {
+    type: 'bar',
+    data: {
+      labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      datasets: [{ 
+        data: [
+          //sleepRepository.getHoursSleptForWeek(userID, "2019/06/15")
+          sleep.getHoursSleptOnDay(randomID, currentDate()),
+          sleep.getHoursSleptOnDay(randomID, currentDate()) + 1.5,
+          sleep.getHoursSleptOnDay(randomID, currentDate()) + 2,
+          sleep.getHoursSleptOnDay(randomID, currentDate()) - 3,
+          sleep.getHoursSleptOnDay(randomID, currentDate()) - 2,
+          sleep.getHoursSleptOnDay(randomID, currentDate()) + 1,
+          sleep.getHoursSleptOnDay(randomID, currentDate()) - 2.5
+        ],
+        label: "Your hours slept each day",
+        backgroundColor: "#548C72",
+        borderColor: "#8e5ea2"
+      }  
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Your hours slept for the week'
+      }
+    }
+  });
+
 });
 

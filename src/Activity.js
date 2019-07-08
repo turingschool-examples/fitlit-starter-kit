@@ -10,6 +10,8 @@ class Activity{
 	constructor(id){
 		this.userActivity = (this.findActivityData(id));
 		this.uniqueUserData = (this.findUserData(id));
+         // console.log('userActivity:' ,this.userActivity)
+        // console.log('uniqueUser:' ,this.uniqueUserData)
 	};
 
 	findActivityData(id){
@@ -47,7 +49,7 @@ class Activity{
 
     compareNumStepsToStepGoal(id, dateOf){
     	let dayOfActivity = this.userActivity.find(day => day.date === dateOf)
-    	if(dayOfActivity.numSteps >= this.uniqueUserData[0].dailyStepGoal){
+    	if(dayOfActivity.numSteps >= this.uniqueUserData.dailyStepGoal){
     		return `Great job at meeting your Daily Step Goal!`
     	} else{
     		return 'Keep twerking!'
@@ -55,7 +57,7 @@ class Activity{
     };
 
     daysExceedStepGoal(id){
-    	let stepGoal = this.uniqueUserData[0].dailyStepGoal
+    	let stepGoal = this.uniqueUserData.dailyStepGoal
     	let allDates = this.userActivity.filter(day => day.numSteps >= stepGoal)
     	return allDates.map(day => day.date)
     };
@@ -73,6 +75,12 @@ class Activity{
 		let strideLength = this.uniqueUserData.strideLength;
 		return Math.floor((daySteps*strideLength)/5280)
 	}
+
+    findLeastActiveDay(id){
+        let sortedMins = this.userActivity.sort((a,b) => {
+            return a.minutesActive - b.minutesActive});
+        return `Your least active day was ${sortedMins[0].date}. What happened?` 
+    }
 }
 
 if (typeof module !== 'undefined') {

@@ -75,4 +75,8 @@ describe('Activity', function() {
   it('should return average number of minutes active specific date', function() {
     expect(activity.averageActivity('2019/06/15', 'minutesActive')).to.equal(145);
   });
+
+  it('should return total miles in a week', function() {
+    expect(activity.milesWalkedInWeek(3, '2019/06/15', userData)).to.equal(52);
+  });
 });

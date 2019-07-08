@@ -56,6 +56,15 @@ class Activity {
     return userArray.slice(index, 8).map((obj) => obj.minutesActive);
   }
 
+  milesWalkedInWeek(id, day, data) {
+    let currentDay = this.activityData.find((date) => date.date === day);
+    let user = data.find((x) => x.id === currentDay.userID);
+    let stepsPerWeek = this.dailyStepsPerWeek(id, day).reduce((acc, steps) => {
+      return acc + steps;
+    }, 0);
+    return Math.round(stepsPerWeek * user.strideLength / 5280);
+  }
+
   minutesAveragedByWeek(id, day) {
     let array = this.consumerInfo(id);
     let dayThing = array.filter((obj) => obj.date === day);

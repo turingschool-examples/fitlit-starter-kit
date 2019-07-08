@@ -14,9 +14,27 @@ function populateUser() {
   populateMainPage(user, activity);
   populateHydrationWidget(user);
   populateSleepwidget(user);
-  
+  populateActivity(user, activity);
   let name = user.returnUserName();
   $('.user__name').text(`${name}`);
+}
+
+function populateActivity(user, activity) {
+  let milesToday = activity.milesWalkedInDay('2019/06/15', userData);
+  $('.day-act-miles').text(`${milesToday}`);
+  let minsActive = activity.minutesActive(user.id, '2019/06/15');
+  $('.user-mins-active').text(`${minsActive}`);
+  let avgMinsActAll = activity.averageActivity('2019/06/15', 'minutesActive');
+  $('.avg-mins-active-amng-all-users').text(`${avgMinsActAll}`);
+  let userFlights = activity.minutesActive(user.id, '2019/06/15');
+  // $('.day-sleep-q-6').text(`${listOfDailySleepQual[5]}`);
+  // let minsActive = activity.minutesActive(user.id, '2019/06/15');
+  // $('.day-sleep-q-7').text(`${listOfDailySleepQual[6]}`);
+  // let avgFlightsAll = activity.averageActivity('2019/06/15', 'minutesActive');
+  // $('.day-sleep-q-4').text(`${listOfDailySleepQual[3]}`);
+  // let avgStepsAll = activity.averageActivity('2019/06/15', 'minutesActive');
+  // $('.day-sleep-q-5').text(`${listOfDailySleepQual[4]}`);
+
 }
 
 function populateUserCard(userData, actData) {
@@ -89,6 +107,16 @@ function sleepQualityWkInfo(listOfDailySleepQual) {
   $('.day-sleep-q-7').text(`${listOfDailySleepQual[6]}`);
 }
 
+function displaySleepComp(user, sleep) {
+  if (sleep.sleepComp('2019/09/22', user.id)) {
+    $('.sleep__message').text('Great Sleep! Keep it up!');
+  } else {
+    $('.sleep__message').text('You need good sleep for great health!');
+  }
+
+
+}
+
 // function sleepHoursMoreInfo(sleepInfo, user) {
 //   console.log(user);
 //   const weeklySleep = sleepInfo.dailyHoursSleptPerWeek(user.id, '2019/09/15');
@@ -101,11 +129,3 @@ function sleepQualityWkInfo(listOfDailySleepQual) {
 // }
 
 
-
-function displaySleepComp(user, sleep) {
-  if (sleep.sleepComp('2019/09/22', user.id)) {
-    $('.sleep__message').text('Great Sleep! Keep it up!');
-  } else {
-    $('.sleep__message').text('You need good sleep for great health!');
-  }
-}

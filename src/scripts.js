@@ -38,6 +38,7 @@ function populateHydrationWidget(user) {
   let waterIntakeToday = hydration.totalOuncesDaily('2019/09/22', user.id);
   $('.ounces').text(`${waterIntakeToday}`);
   hydrationMoreInfo(hydration, user);
+  console.log(hydration);
 }
 
 function hydrationMoreInfo(instance, user) {
@@ -59,12 +60,21 @@ function populateSleepwidget(user) {
   $('.qualSlept').text(`${qualSleepToday}`);
   displaySleepComp(user, sleep);
   sleepHoursMoreInfo(sleep, user);
+  // sleepQualityMoreInfo(sleep, user);
 }
 
-function sleepHoursMoreInfo(instance, user) {
-  const weeklySleep = instance.dailyHoursSleptPerWeek(user.id, '2019/09/22');
-  console.log(weeklySleep);
-}
+// function sleepHoursMoreInfo(sleepInfo, user) {
+//   console.log(user);
+//   const weeklySleep = sleepInfo.dailyHoursSleptPerWeek(user.id, '2019/09/15');
+//   console.log(sleepInfo);
+// }
+
+// function sleepQualityMoreInfo(sleepInfo, user) {
+//   const weeklyQuality = sleepInfo.dailySleepQualityPerWk(user.id, '2019/09/15');
+//   console.log(weeklyQuality);
+// }
+
+
 
 function displaySleepComp(user, sleep) {
   if (sleep.sleepComp('2019/09/22', user.id)) {

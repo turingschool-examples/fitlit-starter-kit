@@ -48,7 +48,7 @@ describe('ActivityRepo', () => {
 
   it('should return avg num mins active on given date', () => {
     const avgNumMinsActive = activityRepo.avgNumMinActiveGivenDate("2019/06/23");
-    expect(avgNumMinsActive).to.equal(140);
+    expect(avgNumMinsActive).to.equal(130);
   });
 
   it('should return each friend\'s weekly step total', () => {
@@ -59,6 +59,17 @@ describe('ActivityRepo', () => {
 
   it('should declare the friends step challenge winner\'s name', () => {
     const name = activityRepo.returnFriendsWeeklyStepWinner("2019/06/23", user);
+    expect(name.x).to.equal('Jarvis Considine')
+  });
+
+  it('should return each friend\'s weekly total minutes active', () => {
+    const minutes = activityRepo.returnFriendsWeeklyMinutesData("2019/06/23", user);
+    expect(minutes.length).to.equal(4);
+    expect(minutes[0].x).to.equal('Jarvis Considine');
+  });
+
+  it('should declare the friends minutes active challenge winner\'s name', () => {
+    const name = activityRepo.returnFriendsWeeklyMinutesWinner("2019/06/23", user);
     expect(name.x).to.equal('Jarvis Considine')
   });
 

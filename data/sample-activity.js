@@ -297,7 +297,7 @@ const sampleActivityData = [
     "userID": 3,
     "date": "2019/06/23",
     "numSteps": 4000,
-    "minutesActive": 150,
+    "minutesActive": 100,
     "flightsOfStairs": 5
   },
   {

@@ -7,6 +7,10 @@ body {
   text-rendering: optimizeSpeed;
   margin: 3%;
   margin-top: 0;
+  background: #00515b url(sun.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center
 }
 
 h2 {
@@ -18,6 +22,7 @@ h2 {
 
 
 p {
+  color: aliceblue;
   font-size: 1.5em;
   font-weight: 600;
   padding-bottom: 20px;
@@ -89,16 +94,6 @@ p {
   grid-area: label;
 }
 
-/* .list-item-active {
-  width: 0;
-  height: 0;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-left: 20px solid #e5e5e5;
-  content: " ";
-  position: absolute;
-  right: -100px;
-} */
 
 .section {
   background-color: #47484e99;
@@ -123,8 +118,9 @@ p {
 }
 
 .user-profile {
-  border: 1px solid black;
   margin: auto;
+  position: relative;
   margin-top: 50px;
   padding: 50px;
+	background-color: rgba(28, 28, 37, 0.8);
 }

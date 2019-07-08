@@ -18,6 +18,7 @@ function populateUser() {
   let name = user.returnUserName();
   $('.user__name').text(`${name}`);
   populateWeeklyActivity(user, activity);
+  weeklyMilesMessage(user, activity);
 }
 
 function populateActivity(user, activity) {
@@ -133,6 +134,11 @@ function populateWeeklyActivity(user, activity) {
   $('.flights-day-5').text(`${weeklyFlights[4]}`);
   $('.flights-day-6').text(`${weeklyFlights[5]}`);
   $('.flights-day-7').text(`${weeklyFlights[6]}`);
+}
+
+function weeklyMilesMessage(user, activity) {
+  let marathon = Math.round(activity.milesWalkedInWeek(user.id, "2019/06/15", userData) / 26);
+  $('.marathon__message').text(`You walked ${marathon} marathons this week!`)
 }
 
 function displaySleepComp(user, sleep) {

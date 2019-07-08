@@ -26,12 +26,12 @@ function populateActivity(user, activity) {
   $('.user-mins-active').text(`${minsActive}`);
   let avgMinsActAll = activity.averageActivity('2019/06/15', 'minutesActive');
   $('.avg-mins-active-amng-all-users').text(`${avgMinsActAll}`);
-  let userFlights = activity.minutesActive(user.id, '2019/06/15');
-  // $('.day-sleep-q-6').text(`${listOfDailySleepQual[5]}`);
-  // let minsActive = activity.minutesActive(user.id, '2019/06/15');
-  // $('.day-sleep-q-7').text(`${listOfDailySleepQual[6]}`);
-  // let avgFlightsAll = activity.averageActivity('2019/06/15', 'minutesActive');
-  // $('.day-sleep-q-4').text(`${listOfDailySleepQual[3]}`);
+  let allUserSteps = activity.averageActivity('2019/06/15', 'numSteps');
+  $('.avg-steps-amng-all-users').text(`${allUserSteps}`);
+  let allUsersFlights = activity.averageActivity('2019/06/15', 'flightsOfStairs');
+  $('.avg-flights-amng-all-users').text(`${allUsersFlights}`);
+  let userFlightsToday = activity.stairFlightsInDay('2019/06/15', user.id);
+  $('.user-flights').text(`${userFlightsToday}`);
   // let avgStepsAll = activity.averageActivity('2019/06/15', 'minutesActive');
   // $('.day-sleep-q-5').text(`${listOfDailySleepQual[4]}`);
 
@@ -49,6 +49,7 @@ function populateUserCard(userData, actData) {
 function populateMainPage(userData, actData) {
   let stepsToday = actData.totalUserStepsDaily(userData.id, '2019/09/22');
   $('.steps').text(`${stepsToday}`);
+  $('.user-steps').text(`${stepsToday}`);
 }
 
 function populateHydrationWidget(user) {

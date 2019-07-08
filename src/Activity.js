@@ -17,6 +17,11 @@ class Activity {
     return userObj[0].numSteps;
   }
 
+  stairFlightsInDay(day, id) {
+    let userObj = this.consumerInfo(id).filter(obj => obj.date === day);
+    return userObj[0].flightsOfStairs;
+  }
+
   milesWalkedInDay(day, data) {
     let currentDay = this.activityData.find((date) => date.date === day);
     let user = data.find((x) => x.id === currentDay.userID);

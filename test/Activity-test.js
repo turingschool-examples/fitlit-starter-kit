@@ -28,6 +28,10 @@ describe('Activity', function() {
     expect(activity.milesWalkedInDay("2019/06/15", userData)).to.equal(6); 
   });
 
+  it('should return flights of stairs a user has completed in a day', function() {
+    expect(activity.stairFlightsInDay("2019/06/15", 3)).to.equal(33); 
+  });
+
   it('should return the amount of minutes they were active for a given day', function() {
     expect(activity.minutesActive(3, '2019/06/15')).to.equal(116);
   });

@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Activity Tracker</title>
   </head>
   <body>
@@ -18,26 +19,22 @@
         <li id="user-daily-step-goal__display">Steps</li>
         <li id="user-friends__display">Challenges</li>
       </ul>
-      <button>Funzies</button>
     </nav>
     <main>
-
       <article>UserDate</article>
-
+      <label for="start">Start Date:</label>
+      <input type="date" id="date-calendar" name="start-date" value="2019-06-15" min="2019-06-15" max="2019-09-22">
+      <button id="submit-date__button" name="submit-date">Submit</button>
       <article>StepGoal
-        <!-- <canvas id="stepChart" width="400" height="400"></canvas> -->
       </article>
-
       <div class="water-display__article">H2O
+        <img src="../images/water.png" alt="image of water glass" class="water-icon">
+        <p id="daily-water__display">...</p>
         <canvas id="weeklyWaterChart" width="400" height="400"></canvas>
       </div>
-
       <article>Sleep</article>
-        <canvas id="mostHoursSlept" width="400" height="400"></canvas>
       <article>Steps</article>
-
       <article> Challenges</article>
-      
     </main>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

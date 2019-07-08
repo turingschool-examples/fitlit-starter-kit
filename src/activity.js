@@ -1,15 +1,14 @@
 const ActivityRepository = require('../src/activityRepository');
 
 class Activity extends ActivityRepository {
-  constructor(userData, userActivity, numSteps, date) {
+  constructor(userData, userActivity, numSteps) {
     super(userData)
     this.userActivity = userActivity;
     this.numSteps = numSteps;
-    this.date = date;
   }
 
-  calculateMiles() {
-    let userDay = this.userActivity.find(el => el.date === this.date)
+  calculateMiles(id, date="2019/06/15") {
+    let userDay = this.userActivity.find(el => el.date === date && user.userID === id)
     let steps = userDay.numSteps
     let strideLength = super.getUserData(userDay.userID).map(user => user.strideLength)
     let stepsAndStride = Math.floor(steps * strideLength[0])

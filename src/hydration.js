@@ -1,17 +1,19 @@
 
 class Hydration {
-  constructor(userData, date) {
+  constructor(userData) {
     this.userData = userData
-    this.date = date
   }
-  getDailyOunces() {
-    let day = this.userData.find(user => user.date === this.date)
+  getDailyOunces(id, date="2019/06/15") {
+    let day = this.userData.find(user => user.date === date && user.userID === id)
+    console.log(day)
+    console.log(date)
     return day.numOunces
   }
 
-  getWeeklyOunces() {
-    var week = this.userData.slice((this.userData.length -7), (this.userData.length))
-    return week.map(user => user.numOunces)
+  getWeeklyOunces(id) {
+    var userWeek = this.userData.filter(user => user.userID === id)
+    var sevenDays = userWeek.slice((userWeek.length -7), userWeek.length)
+    return sevenDays.map(user => user.numOunces)
   }
 }
 

@@ -2,8 +2,6 @@ class Activity {
   constructor(userData, userRepo) {
     this.userData = userData;
     this.userRepo = userRepo;
-    // console.log(this.userData)
-    // console.log(this.userRepo)
   }
 
   returnMilesWalkedForDate(date) {

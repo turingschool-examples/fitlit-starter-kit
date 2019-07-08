@@ -7,9 +7,9 @@ const sampleUserData = [
     "strideLength": 4.3,
     "dailyStepGoal": 10000,
     "friends": [
-      16,
-      4,
-      8
+      2,
+      3,
+      4
     ]
   },
   {
@@ -20,10 +20,9 @@ const sampleUserData = [
     "strideLength": 4.5,
     "dailyStepGoal": 5000,
     "friends": [
-      9,
-      18,
-      24,
-      19
+      3,
+      4,
+      5
     ]
   },
   {
@@ -34,10 +33,9 @@ const sampleUserData = [
     "strideLength": 4.4,
     "dailyStepGoal": 5000,
     "friends": [
-      19,
-      11,
-      42,
-      33
+      4,
+      5,
+      1,
     ]
   },
   {
@@ -48,10 +46,8 @@ const sampleUserData = [
     "strideLength": 3.1,
     "dailyStepGoal": 4000,
     "friends": [
-      48,
-      7,
-      44,
-      8
+      1,
+      2,
     ]
   },
   {
@@ -62,11 +58,8 @@ const sampleUserData = [
     "strideLength": 3.1,
     "dailyStepGoal": 8000,
     "friends": [
-      13,
-      44,
-      49,
-      33,
-      10
+      2,
+      3
     ]
   }
 ]

@@ -109,7 +109,7 @@ $(document).ready(function() {
     addClasses();
   });
 
-  $('#js-distance').click(function() {
+  $('#js-steps').click(function() {
     $('.distance-miles-charts').show();
     $('#js-hydration-line-chart').hide();
     $('.num-mins-active-charts').hide();
@@ -175,11 +175,16 @@ $(document).ready(function() {
     numMinActiveLineChart.update();
   }
 
-  function distanceTraveledCharts(activity, activityRepo) {
-    
+  function stepsCharts(activity, activityRepo) {
+    numOfStepsChart.data.labels[0] = activity.user.name;
+    // numOfStepsChart.data.datasets[0].data[0] = activity.
+    numOfStepsChart.data.datasets[0].data[1] = activityRepo.aveStepsTakenForDay(today)
+    // numOfStepsLineChart
+    numOfStepsChart.update();
+    numOfStepsLineChart.update();
   }
 
-  function flightsClimbedCharts(activity, activityRepo) {
+  function milesAndFlightsCharts(activity, activityRepo) {
 
   }
 
@@ -188,8 +193,8 @@ $(document).ready(function() {
     updateHydrationLineChart(hydration);
     updateSleepCharts(sleep);
     minsActiveCharts(activity, activityRepo);
-    distanceTraveledCharts(activity, activityRepo);
-    flightsClimbedCharts(activity, activityRepo);
+    stepsCharts(activity, activityRepo);
+    milesAndFlightsCharts(activity, activityRepo);
   }
 
 

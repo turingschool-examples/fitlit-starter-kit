@@ -45,13 +45,18 @@ class Activity extends User {
   }
 
   allDaysStepGoalMet() {
-    var days = this.currentUser.filter(el => el.numSteps > this.user.dailyStepGoal)
+    let days = this.currentUser.filter(el => el.numSteps > this.user.dailyStepGoal)
     return days.map(el => el.date)
   }
 
   allTimeStairClimbRecord() {
     let dataArray = this.currentUser.map(el => el.flightsOfStairs)
     return Math.max(...dataArray)
+  }
+
+  returnNumOfStepsForDate(date) {
+    let found = this.currentUser.find(el => el.date === date);
+    return found.numSteps;
   }
 
 }

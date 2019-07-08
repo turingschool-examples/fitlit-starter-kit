@@ -6,7 +6,6 @@ const userData1 = require('../data/user-test-data')
 const UserRepository = require('../src/user-repository');
 const Activity = require('../src/activity');
 const ActivityRepository = require('../src/activity-repository')
-console.log(userData1)
 
 
 describe("Activity", () => {
@@ -33,7 +32,7 @@ describe("Activity", () => {
     expect(activity1.milesWalked("2019/06/15")).to.eql("2.91")
   });
 
-  it("should, return how many average minutes active for a given week 7 days?", () => {
+  it("should return how many average minutes active for a given week 7 days?", () => {
     userRepository2 = new UserRepository(userData1)
     activityRepository2 = new ActivityRepository(activityData2);
     activity1 = new Activity(userRepository2.returnUserData(1), activityRepository2.returnUserActivityData(1));
@@ -59,6 +58,8 @@ describe("Activity", () => {
     expect(activity1.allTimeStairClimbRecord()).to.eql(36)
   });
 
-
+  it("should return the user's number of steps for the latest day", () => {
+    expect(activity1.returnNumOfStepsForDate("2019/06/15")).to.eql(3577)
+  });
 
 });

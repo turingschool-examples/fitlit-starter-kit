@@ -30,7 +30,6 @@ $('.sleep__span--weekQuality').text(`${sleepRepo.users.findSleepQualityForWeek("
 $('.sleep__span--overallHours').text(`${sleepRepo.users.findAverageHoursSleptForUser()}`);
 $('.sleep__span--overallQuality').text(`${sleepRepo.users.findAverageSleepQualityForUser()}`);
 
-
 // Hydration Info
 $('.hydro__span--today').text(`${hydrationRepo.findSpecificDayHydrationOunces(2, "2019/06/23")}`); //make date dynamic
 $('.hydro__span--average').text(`${hydrationRepo.weeklyConsumptionAverage("2019/06/23")}`);
@@ -42,6 +41,9 @@ $('.activity__span--steps').text(`${activityRepo.users.findStepsForDay(2, "2019/
 $('.activity__span--flights').text(`${activityRepo.users.findFlightsForDay(2, "2019/06/23")}`);
 $('.activity__span--miles').text(`${activityRepo.users.findMilesForDay(2, "2019/06/23")}`);
 $('.activity__span--least').text(`${activityRepo.users.findLeastActiveDay(2)}`)
+
+//Friends 
+
 
 
 

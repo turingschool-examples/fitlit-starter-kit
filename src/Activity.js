@@ -117,8 +117,28 @@ class Activity {
         }
       })
       return matchingUsers;
-    }, [])
-    console.log(friends)
+    }, []);
+    let matchingUsers = userData.reduce((rightUsers, user) => {
+      friends.forEach(friend => {
+        if (friend.userID === user.id) {
+        rightUsers.push(user);
+        }
+      });
+      return rightUsers
+    }, []);
+    return matchingUsers.reduce((userObj, user) => {
+      let obj = {
+        name: user.name,
+        numSteps: friends.reduce((steps, friend) => {
+          if (friend.userID === user.id) {
+            return friend.numSteps;
+          }
+          return steps;
+        }, 0)
+      }
+      userObj.push(obj);
+      return userObj;
+    }, []);
   }
 }
 

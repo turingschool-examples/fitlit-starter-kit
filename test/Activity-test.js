@@ -56,6 +56,6 @@ describe("Activity", function() {
 
     it.only("return an array of their friends", function() {
         const activity = new Activity(1);
-        expect(activity.returnFriends(1)).to.eql([16, 4, 8]);
+        expect(activity.returnFriends(1)).to.eql([{name: 'Mae Connelly', numSteps: 3486}, {name: 'Laney Abshire', numSteps: 10333}]);
     });
 });

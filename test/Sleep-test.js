@@ -63,7 +63,7 @@ describe('Sleep', function() {
     expect(sleep.bestSleeper("2019/06/15")).to.eql([sleepData[0]]);
   });
 
-  it('should return true or false if a users total hours slept and sleep quality meets or exceeds their averages', function() {
+  it('should return true if a users total hours slept and sleep quality meets or exceeds their averages or false otherwise', function() {
     expect(sleep.sleepComp('2019/06/15', 3)).to.equal(true);
     expect(sleep.sleepComp('2019/06/17', 3)).to.equal(false);
   });

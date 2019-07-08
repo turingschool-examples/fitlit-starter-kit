@@ -48,8 +48,8 @@ function populateSleepwidget(user) {
 
 function displaySleepComp(user, sleep) {
   if (sleep.sleepComp('2019/09/22', user.id)) {
-    //return message to the DOM 'Great Sleep! Keep it up!'
+    $('.sleep__message').text('Great Sleep! Keep it up!');
   } else {
-    //return message 'You need good sleep for great health!'
+    $('.sleep__message').text('You need good sleep for great health!');
   }
 }

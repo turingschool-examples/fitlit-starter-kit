@@ -38,7 +38,7 @@ describe('Activity', function() {
 
   it('should return all days a user exceeded their step goal', function() {
     let activity = new Activity(activityData);
-    expect(activity.userStepGoalExceeded(2)).to.deep.eql(["2019/06/17", "2019/06/19", "2019/06/20", "2019/06/21", "2019/06/24"]);
+    expect(activity.userStepGoalExceeded(2, userData)).to.deep.eql(["2019/06/17", "2019/06/19", "2019/06/20", "2019/06/21", "2019/06/24"]);
   })
 
   it('should return day with the most flights of stairs climbed', function() {

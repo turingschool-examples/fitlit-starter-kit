@@ -32,8 +32,10 @@ class Activity {
     }
   }
 
-  userStepGoalExceeded(id, date) {
-
+  userStepGoalExceeded(id, userData) {
+    let userInstances = this.activityData.filter(user => id === user.userID)
+    let userStepGoal = userData.find(user => id === user.id).dailyStepGoal
+    return userInstances.filter(user => user.numSteps > userStepGoal).map(item => item.date)
   }
 
   userStairRecord(id) {
@@ -69,23 +71,3 @@ class Activity {
 if (typeof module !== 'undefined') {
   module.exports = Activity;
 }
-
-// function allUsersSleepQuality() {
-//     let arr = [];
-//     let createIDs = sampleSleep.forEach(item => {
-//       if (!arr.includes(item.userID)) {
-//         arr.push(item.userID)
-//       }
-//     })
-//     let numInstances = sampleSleep.filter((item, index) => item.userID === 1)
-//     return totalHoursPerUser = sampleSleep.reduce((acc, item, index) => {
-//       if (item.userID === arr[index]) {
-//         acc[item.userID] = item.sleepQuality;
-//       } else {
-//         acc[item.userID] += item.sleepQuality
-//       }
-//       // Object.values(acc).map(item => item / numInstances.length)
-//       return acc
-//     }, {})
-        
-//     }

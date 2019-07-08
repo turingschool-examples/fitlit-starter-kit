@@ -110,25 +110,25 @@ $(document).ready(function() {
   });
 
   $('#js-steps').click(function() {
-    $('.distance-miles-charts').show();
+    $('.num-of-steps-charts').show();
     $('#js-hydration-line-chart').hide();
     $('.num-mins-active-charts').hide();
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').hide();
-    $('.num-of-steps-charts').hide();
+    $('.distance-miles-charts').hide();
     $('.num-mins-active-charts').hide();
     removeClasses();
     addClasses();
   });
 
   $('#js-flights').click(function() {
-    $('.num-of-steps-charts').show();
+    $('.distance-miles-charts').show();
     $('#js-hydration-line-chart').hide();
     $('.sleep-charts').hide();
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').hide();
     $('.num-mins-active-charts').hide();
-    $('.distance-miles-charts').hide();
+    $('.num-of-steps-charts').hide();
     removeClasses();
     addClasses();
   });
@@ -177,8 +177,8 @@ $(document).ready(function() {
 
   function stepsCharts(activity, activityRepo) {
     numOfStepsChart.data.labels[0] = activity.user.name;
-    // numOfStepsChart.data.datasets[0].data[0] = activity.
-    numOfStepsChart.data.datasets[0].data[1] = activityRepo.aveStepsTakenForDay(today)
+    numOfStepsChart.data.datasets[0].data[0] = activity.returnNumOfStepsForDate(today);
+    numOfStepsChart.data.datasets[0].data[1] = activityRepo.aveStepsTakenForDay(today);
     // numOfStepsLineChart
     numOfStepsChart.update();
     numOfStepsLineChart.update();
@@ -249,7 +249,7 @@ $(document).ready(function() {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{ 
         data: [],
-        label: "",
+        label: "Water Consumed",
         borderColor: "#3e95cd",
         fill: true
       } 
@@ -271,7 +271,7 @@ $(document).ready(function() {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{ 
         data: [],
-        label: "",
+        label: "Sleep Quality",
         borderColor: "#3e95cd",
         fill: true
       } 
@@ -293,7 +293,7 @@ $(document).ready(function() {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{ 
         data: [],
-        label: "",
+        label: "Hours Slept",
         borderColor: "#3e95cd",
         fill: true
       } 
@@ -316,9 +316,9 @@ $(document).ready(function() {
       labels: ["", "All Users"],
       datasets: [
         {
-          label: "Daily Step Goal",
+          label: "Number of Steps",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
-          data: [0, 6700]
+          data: [0, 0]
         }
       ]
     },
@@ -356,7 +356,7 @@ $(document).ready(function() {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{ 
         data: [],
-        label: "",
+        label: "Number of Steps",
         borderColor: "#3e95cd",
         fill: true
       } 
@@ -378,7 +378,7 @@ $(document).ready(function() {
       labels: ["", "All Users"],
       datasets: [
         {
-          label: "Daily Step Goal",
+          label: "Minutes Active",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
           data: [0, 0]
         }
@@ -418,7 +418,7 @@ $(document).ready(function() {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{ 
         data: [],
-        label: "",
+        label: "Minutes Active",
         borderColor: "#3e95cd",
         fill: true
       } 
@@ -440,7 +440,7 @@ $(document).ready(function() {
       labels: ["", "All Users"],
       datasets: [
         {
-          label: "Daily Step Goal",
+          label: "Distance in Miles",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
           data: [0, 6700]
         }
@@ -480,7 +480,7 @@ $(document).ready(function() {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{ 
         data: [],
-        label: "",
+        label: "Flights Climbed",
         borderColor: "#3e95cd",
         fill: true
       } 

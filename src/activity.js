@@ -64,7 +64,20 @@ class Activity extends User {
     return found.flightsOfStairs;
   }
 
-  
+  returnWeekViewOfSteps(startingDate) {
+    let week = this.returnAWeek(startingDate);
+    return week.map(el => el.numSteps);
+  }
+
+  returnWeekViewOfFlightsClimbed(startingDate) {
+    let week = this.returnAWeek(startingDate);
+    return week.map(el => el.flightsOfStairs);
+  }
+
+  returnWeekViewOfMinsActive(startingDate) {
+    let week = this.returnAWeek(startingDate);
+    return week.map(el => el.minutesActive);
+  }
 
 }
 

@@ -62,4 +62,8 @@ describe("Activity", () => {
     expect(activity1.returnNumOfStepsForDate("2019/06/15")).to.eql(3577)
   });
 
+  it("should return the user's flights of stairs climbed for the latest day", () => {
+    expect(activity1.returnFlightsClimbedForDate("2019/06/15")).to.eql(16)
+  });
+
 });

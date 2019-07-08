@@ -8,7 +8,7 @@ $(document).ready(function() {
   $('.sleep-charts').hide();
   $('.num-of-steps-charts').hide();
   $('.num-mins-active-charts').hide();
-  $('.distance-miles-charts').hide();
+  $('.flights-climbed-charts').hide();
 
   $('#js-change-user').click(function() {
     const userRepo = new UserRepository(userData);
@@ -42,7 +42,7 @@ $(document).ready(function() {
     $('.sleep-charts').hide();
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
-    $('.distance-miles-charts').hide();
+    $('.flights-climbed-charts').hide();
 
     $('#js-user-profile').show();
     $('#js-h2--user').show();
@@ -56,7 +56,7 @@ $(document).ready(function() {
     $('.sleep-charts').hide();
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
-    $('.distance-miles-charts').hide();
+    $('.flights-climbed-charts').hide();
     removeClasses();
     addClasses();
   });
@@ -68,7 +68,7 @@ $(document).ready(function() {
     $('.sleep-charts').hide();
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
-    $('.distance-miles-charts').hide();
+    $('.flights-climbed-charts').hide();
     removeClasses();
     addClasses();
   });
@@ -80,7 +80,7 @@ $(document).ready(function() {
     $('.sleep-charts').hide();
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
-    $('.distance-miles-charts').hide();
+    $('.flights-climbed-charts').hide();
     removeClasses();
     addClasses();
   });
@@ -92,7 +92,7 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
-    $('.distance-miles-charts').hide();
+    $('.flights-climbed-charts').hide();
     removeClasses();
     addClasses();
   });
@@ -104,7 +104,7 @@ $(document).ready(function() {
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').hide();
     $('.num-of-steps-charts').hide();
-    $('.distance-miles-charts').hide();
+    $('.flights-climbed-charts').hide();
     removeClasses();
     addClasses();
   });
@@ -115,14 +115,14 @@ $(document).ready(function() {
     $('.num-mins-active-charts').hide();
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').hide();
-    $('.distance-miles-charts').hide();
+    $('.flights-climbed-charts').hide();
     $('.num-mins-active-charts').hide();
     removeClasses();
     addClasses();
   });
 
   $('#js-flights').click(function() {
-    $('.distance-miles-charts').show();
+    $('.flights-climbed-charts').show();
     $('#js-hydration-line-chart').hide();
     $('.sleep-charts').hide();
     $('#js-user-profile').hide();
@@ -184,8 +184,11 @@ $(document).ready(function() {
     numOfStepsLineChart.update();
   }
 
-  function milesAndFlightsCharts(activity, activityRepo) {
-
+  function flightsCharts(activity, activityRepo) {
+    flightsClimbedChart.data.labels[0] = activity.user.name;
+    // flightsClimbedChart.data.datasets[0].data[0] = activity.
+    flightsClimbedChart.update();
+    flightsClimbedLineChart.update();
   }
 
   function updateCharts(user, hydration, sleep, activity, activityRepo) {
@@ -194,7 +197,7 @@ $(document).ready(function() {
     updateSleepCharts(sleep);
     minsActiveCharts(activity, activityRepo);
     stepsCharts(activity, activityRepo);
-    milesAndFlightsCharts(activity, activityRepo);
+    flightsCharts(activity, activityRepo);
   }
 
 
@@ -434,15 +437,15 @@ $(document).ready(function() {
     }
   });
 
-  var distanceMilesChart = new Chart($("#js-distance-miles-chart"), {
+  var flightsClimbedChart = new Chart($("#js-flights-climbed-chart"), {
     type: 'bar',
     data: {
       labels: ["", "All Users"],
       datasets: [
         {
-          label: "Distance in Miles",
+          label: "Flights Climbed",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
-          data: [0, 6700]
+          data: [0, 0]
         }
       ]
     },
@@ -492,6 +495,46 @@ $(document).ready(function() {
       maintainAspectRatio: false,
       title: {
         display: false,
+      }
+    }
+  });
+
+  var distanceMilesChart = new Chart($("#js-distance-miles-chart"), {
+    type: 'bar',
+    data: {
+      labels: ["", "All Users"],
+      datasets: [
+        {
+          label: "Distance in Miles",
+          backgroundColor: ["#3e95cd", "#8e5ea2"],
+          data: [0, 6700]
+        }
+      ]
+    },
+    options: {
+      responsive: false,
+      maintainAspectRatio: false,
+      legend: { display: false },
+      title: {
+        display: false,
+      },
+      scales: {
+        xAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+            maxTicksLimit: 12,
+            min: 0,
+            max: 12000,
+            stepSize: 2000,
+          }
+        }]
       }
     }
   });

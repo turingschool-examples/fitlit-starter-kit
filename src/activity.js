@@ -59,6 +59,11 @@ class Activity extends User {
     return found.numSteps;
   }
 
+  returnFlightsClimbedForDate(date) {
+    let found = this.currentUser.find(el => el.date === date);
+    return found.flightsOfStairs;
+  }
+
 }
 
 if (typeof module !== 'undefined') {

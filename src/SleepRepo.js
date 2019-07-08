@@ -53,7 +53,6 @@ class SleepRepo {
       return acc;
     })
   }
-
 }
 
 if (typeof module !== 'undefined') {

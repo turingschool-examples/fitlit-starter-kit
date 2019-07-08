@@ -107,6 +107,19 @@ class Activity {
     }, [])
     return Math.max(...flights)
   }
+
+  returnFriends(userID) {
+    let correctUser =  this.findCorrectUser();
+    let friends = this.data.reduce((matchingUsers, user) => {
+      correctUser.friends.forEach(num => {
+        if (num === user.userID)  {
+          matchingUsers.push(user);
+        }
+      })
+      return matchingUsers;
+    }, [])
+    console.log(friends)
+  }
 }
 
 if (typeof module !== "undefined") {

@@ -53,4 +53,9 @@ describe("Activity", function() {
         const activity = new Activity(1);
         expect(activity.allTimeClimbRecord()).to.eql(34);
     });
+
+    it.only("return an array of their friends", function() {
+        const activity = new Activity(1);
+        expect(activity.returnFriends(1)).to.eql([16, 4, 8]);
+    });
 });

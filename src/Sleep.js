@@ -6,7 +6,7 @@ if (typeof module !== 'undefined') {
 
 class Sleep {
     constructor(id){
-        this.userSleepData = (this.findSleepData(user.id));
+        this.userSleepData = (this.findSleepData(id));
     };
 
 	findSleepData(id){
@@ -14,8 +14,8 @@ class Sleep {
     };
     
     findAverageSleepQualityForUser(){
-        let allQualityForOneUser = this.userSleepData.map(user => user.sleepQuality);
-        let reducedQualityForOneUser = allQualityForOneUser.reduce((a,b) => a += b)
+        let allOneUserQuality = this.userSleepData.map(user => user.sleepQuality);
+        let reducedQualityForOneUser = allOneUserQuality.reduce((a,b) => a += b);
         return Math.round(reducedQualityForOneUser/this.userSleepData.length)
     };
 
@@ -39,6 +39,7 @@ class Sleep {
     };
 
     findHoursSleptForSpecificDay(dateOf) {
+        console.log(this.userSleepData)
         return this.findDateForSleep(dateOf).hoursSlept
     };
 

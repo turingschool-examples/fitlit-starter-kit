@@ -33,6 +33,29 @@ class Activity {
     return this.consumerInfo(id).find((obj) => day === obj.date).minutesActive;
   }
 
+  startDayIndx(id, day) {
+    let userArray = this.consumerInfo(id);
+    let userDay = userArray.filter(obj => obj.date === day);
+    return userArray.indexOf(userDay[0]);
+  }
+
+  dailyStepsPerWeek(id, day) {
+    let userArray = this.consumerInfo(id);
+    let index = this.startDayIndx(id, day);
+    return userArray.slice(index, 8).map((obj) => obj.numSteps);
+  }
+  dailyStairFlightsPerWeek(id, day) {
+    let userArray = this.consumerInfo(id);
+    let index = this.startDayIndx(id, day);
+    return userArray.slice(index, 8).map((obj) => obj.flightsOfStairs);
+  }
+
+  dailyMinsActivePerWeek(id, day) {
+    let userArray = this.consumerInfo(id);
+    let index = this.startDayIndx(id, day);
+    return userArray.slice(index, 8).map((obj) => obj.minutesActive);
+  }
+
   minutesAveragedByWeek(id, day) {
     let array = this.consumerInfo(id);
     let dayThing = array.filter((obj) => obj.date === day);

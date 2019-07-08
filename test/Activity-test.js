@@ -36,6 +36,18 @@ describe('Activity', function() {
     expect(activity.minutesActive(3, '2019/06/15')).to.equal(116);
   });
 
+  it('should return a list of steps over a week for user', function() {
+    expect(activity.dailyStepsPerWeek(3, "2019/06/16")).to.eql([12304, 4547, 2546, 10961, 5369, 7498, 11342]);
+  });
+
+  it('should return a list of minutes active over a week for user', function() {
+    expect(activity.dailyMinsActivePerWeek(3, "2019/06/16")).to.eql([152, 97, 274, 188, 129, 199, 53]);
+  });
+
+  it('should return a list of flights of stairs over a week for user', function() {
+    expect(activity.dailyStairFlightsPerWeek(3, "2019/06/16")).to.eql([8, 5, 26, 17, 46, 13, 17]);
+  });
+
   it('should return minutes active the user averaged for a given week', function() {
     expect(activity.minutesAveragedByWeek(3, '2019/06/16')).to.equal(156);
   });

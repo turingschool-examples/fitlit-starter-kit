@@ -2,18 +2,33 @@
   box-sizing: border-box;
 }
 
+
 body {
-  font-family: "Open Sans", sans-serif;
+  text-rendering: optimizeSpeed;
+  margin: 3%;
+  margin-top: 0;
+  background: #00515b url(sun.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center
 }
 
+h2 {
+  color: #fff;
+  font-family: "Racing Sans One";
+  font-size: 2.5em;
+  margin-left: 15px;
+}
+
+
 p {
+  color: aliceblue;
   font-size: 1.5em;
   font-weight: 600;
   padding-bottom: 20px;
 }
 
 .main {
-  background-color: #fff;
   display: grid;
   grid-template-areas:
     "head head"
@@ -21,45 +36,40 @@ p {
     "nav main";
   grid-template-columns: 20% 80%;
   grid-template-rows: 15% 10% 75%;
-  height: 90vh;
-  padding: 0 3% 3% 3%;
+  height: 85vh;
 }
 
 .top {
   align-items: center;
   display: flex;
-  height: 10vh;
+  height: 8vh;
   justify-content: flex-end;
-  padding: 0% 3%;
 }
 
 .h1 {
-  font-family: "Racing Sans One", cursive;
+  color: aliceblue;
+  font-family: "Racing Sans One";
   font-size: 2.8em;
 }
 
 .header {
   align-items: center;
-  background-color: #323240;
+  background-color: rgba(50, 50, 64, 0.7);
   display: flex;
   grid-area: head;
 }
 
-.h2 {
-  color: #fff;
-  font-family: "Racing Sans One", cursive;
-  font-size: 2.5em;
-  margin-left: 15px;
-}
 
 .nav {
-  background-color: #838286;
+  background-color: rgba(28, 28, 37, 0.7);
   grid-area: nav;
 }
 
 .nav-list {
+  font-family: "Open Sans";
   font-size: 1.1em;
   text-align: center;
+  padding: 0;
 }
 
 .list-item {
@@ -68,6 +78,7 @@ p {
   /* border: 1px solid black; */
   margin-top: 15px;
   padding: 8px 0;
+  list-style-type: none;
 }
 
 .list-item--active {
@@ -79,23 +90,13 @@ p {
 }
 
 .label {
-  background-color: #e4e4e4;
+  background-color: #47484e99;
   grid-area: label;
 }
 
-/* .list-item-active {
-  width: 0;
-  height: 0;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-left: 20px solid #e5e5e5;
-  content: " ";
-  position: absolute;
-  right: -100px;
-} */
 
 .section {
-  background-color: #e4e4e4;
+  background-color: #47484e99;
   display: flex;
   grid-area: main;
 }
@@ -117,8 +118,9 @@ p {
 }
 
 .user-profile {
-  border: 1px solid black;
   margin: auto;
+  position: relative;
   margin-top: 50px;
   padding: 50px;
+	background-color: rgba(28, 28, 37, 0.8);
 }

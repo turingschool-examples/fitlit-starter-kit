@@ -1,13 +1,16 @@
+
 $(document).ready(function() {
+  
   const today = '2019/06/15';
-  $('#js-h2--user').hide();
-  $('#js-user-profile').hide();
   $('#js-step-goal-chart').hide();
   $('#js-hydration-line-chart').hide();
   $('.sleep-charts').hide();
   $('.num-of-steps-charts').hide();
   $('.num-mins-active-charts').hide();
   $('.flights-climbed-charts').hide();
+
+  const today = '2019/06/15';
+
 
   $('#js-change-user').click(function() {
     const userRepo = new UserRepository(userData);
@@ -22,12 +25,12 @@ $(document).ready(function() {
     const hydration = new Hydration(hydrationUser);
     const sleepUser = sleepRepo.returnUserSleepData(userID);
     const sleep = new Sleep(sleepUser);
+
     const activityUser = activityRepo.returnUserActivityData(userID);
     const activity = new Activity(user, activityUser);
     
     addClasses();
     removeClasses();
-
     $('#js-first-name').html(user.returnFirstName());
     $('#js-full-name').html(user.name);
     $('#js-address').html(user.address);
@@ -165,6 +168,7 @@ $(document).ready(function() {
     sleepHoursLineChart.update();
   }
 
+
   function minsActiveCharts(activity, activityRepo) {
     numMinActiveChart.data.labels[0] = activity.user.name;
     numMinActiveChart.data.datasets[0].data[0] = activity.userMinActiveForDay(today);
@@ -251,12 +255,12 @@ $(document).ready(function() {
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
-      datasets: [{ 
+      datasets: [{
         data: [],
         label: "Water Consumed",
         borderColor: "#3e95cd",
         fill: true
-      } 
+      }
       ]
     },
     options: {
@@ -273,12 +277,12 @@ $(document).ready(function() {
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
-      datasets: [{ 
+      datasets: [{
         data: [],
         label: "Sleep Quality",
         borderColor: "#3e95cd",
         fill: true
-      } 
+      }
       ]
     },
     options: {
@@ -295,12 +299,12 @@ $(document).ready(function() {
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
-      datasets: [{ 
+      datasets: [{
         data: [],
         label: "Hours Slept",
         borderColor: "#3e95cd",
         fill: true
-      } 
+      }
       ]
     },
     options: {
@@ -313,7 +317,7 @@ $(document).ready(function() {
     }
   });
 
-  
+
   var numOfStepsChart = new Chart($("#js-num-of-steps-chart"), {
     type: 'bar',
     data: {
@@ -358,12 +362,12 @@ $(document).ready(function() {
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
-      datasets: [{ 
+      datasets: [{
         data: [],
         label: "Number of Steps",
         borderColor: "#3e95cd",
         fill: true
-      } 
+      }
       ]
     },
     options: {
@@ -420,12 +424,12 @@ $(document).ready(function() {
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
-      datasets: [{ 
+      datasets: [{
         data: [],
         label: "Minutes Active",
         borderColor: "#3e95cd",
         fill: true
-      } 
+      }
       ]
     },
     options: {
@@ -482,12 +486,12 @@ $(document).ready(function() {
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
-      datasets: [{ 
+      datasets: [{
         data: [],
         label: "Flights Of Stairs Climbed",
         borderColor: "#3e95cd",
         fill: true
-      } 
+      }
       ]
     },
     options: {
@@ -502,3 +506,4 @@ $(document).ready(function() {
 
  
 });
+

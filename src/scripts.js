@@ -18,23 +18,24 @@ $(document).ready(function() {
 
     const userID = Math.floor((Math.random() * 50) + 1);
     const specificUser = userRepo.returnUserData(userID);
-    const user1 = new User(specificUser);
+    const user = new User(specificUser);
     const hydrationUser = hydrationRepo.returnUserHydrationData(userID);
     const hydration = new Hydration(hydrationUser);
     const sleepUser = sleepRepo.returnUserSleepData(userID);
     const sleep = new Sleep(sleepUser);
     const activityUser = activityRepo.returnUserActivityData(userID);
-    const activity = new Activity(user1, activityUser);
+    const activity = new Activity(user, activityUser);
     
     removeClasses();
     $('#js-change-user').removeClass('list-item--active');
     $('#js-user').addClass('list-item--active');
 
-    $('#js-first-name').html(user1.returnFirstName());
-    $('#js-full-name').html(user1.name);
-    $('#js-address').html(user1.address);
-    $('#js-email').html(user1.email);
+    $('#js-first-name').html(user.returnFirstName());
+    $('#js-full-name').html(user.name);
+    $('#js-address').html(user.address);
+    $('#js-email').html(user.email);
     $('#js-friends').html(userRepo.makeFriendNames(userID));
+    $('#js-miles').html(activity.milesWalked(today))
 
     $('#js-h2--welcome').hide();
     $('#js-step-goal-chart').hide();
@@ -46,7 +47,7 @@ $(document).ready(function() {
 
     $('#js-user-profile').show();
     $('#js-h2--user').show();
-    updateCharts(user1, hydration, sleep, activity, activityRepo);
+    updateCharts(user, hydration, sleep, activity, activityRepo);
   });
 
   $('#js-user').click(function() {
@@ -57,6 +58,7 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
+
     removeClasses();
     addClasses();
   });
@@ -69,6 +71,7 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
+
     removeClasses();
     addClasses();
   });
@@ -81,6 +84,7 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
+
     removeClasses();
     addClasses();
   });
@@ -93,6 +97,7 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
+
     removeClasses();
     addClasses();
   });
@@ -105,6 +110,7 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
     $('.num-of-steps-charts').hide();
     $('.flights-climbed-charts').hide();
+
     removeClasses();
     addClasses();
   });
@@ -117,6 +123,7 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
     $('.flights-climbed-charts').hide();
     $('.num-mins-active-charts').hide();
+
     removeClasses();
     addClasses();
   });
@@ -129,6 +136,7 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
     $('.num-mins-active-charts').hide();
     $('.num-of-steps-charts').hide();
+
     removeClasses();
     addClasses();
   });
@@ -186,9 +194,14 @@ $(document).ready(function() {
 
   function flightsCharts(activity, activityRepo) {
     flightsClimbedChart.data.labels[0] = activity.user.name;
-    // flightsClimbedChart.data.datasets[0].data[0] = activity.
+    flightsClimbedChart.data.datasets[0].data[0] = activity.returnFlightsClimbedForDate(today);
+    flightsClimbedChart.data.datasets[0].data[1] = activityRepo.aveFlightsOfStairsClimbedForDay(today);
     flightsClimbedChart.update();
     flightsClimbedLineChart.update();
+  }
+
+  function milesChart(activity) {
+
   }
 
   function updateCharts(user, hydration, sleep, activity, activityRepo) {
@@ -443,7 +456,7 @@ $(document).ready(function() {
       labels: ["", "All Users"],
       datasets: [
         {
-          label: "Flights Climbed",
+          label: "Flights Of Stairs Climbed",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
           data: [0, 0]
         }
@@ -469,8 +482,8 @@ $(document).ready(function() {
             fontSize: 16,
             maxTicksLimit: 12,
             min: 0,
-            max: 12000,
-            stepSize: 2000,
+            max: 50,
+            stepSize: 5,
           }
         }]
       }
@@ -483,7 +496,7 @@ $(document).ready(function() {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{ 
         data: [],
-        label: "Flights Climbed",
+        label: "Flights Of Stairs Climbed",
         borderColor: "#3e95cd",
         fill: true
       } 
@@ -499,43 +512,5 @@ $(document).ready(function() {
     }
   });
 
-  var distanceMilesChart = new Chart($("#js-distance-miles-chart"), {
-    type: 'bar',
-    data: {
-      labels: ["", "All Users"],
-      datasets: [
-        {
-          label: "Distance in Miles",
-          backgroundColor: ["#3e95cd", "#8e5ea2"],
-          data: [0, 6700]
-        }
-      ]
-    },
-    options: {
-      responsive: false,
-      maintainAspectRatio: false,
-      legend: { display: false },
-      title: {
-        display: false,
-      },
-      scales: {
-        xAxes: [{
-          ticks: {
-            fontColor: "black",
-            fontSize: 16,
-          }
-        }],
-        yAxes: [{
-          ticks: {
-            fontColor: "black",
-            fontSize: 16,
-            maxTicksLimit: 12,
-            min: 0,
-            max: 12000,
-            stepSize: 2000,
-          }
-        }]
-      }
-    }
-  });
+ 
 });

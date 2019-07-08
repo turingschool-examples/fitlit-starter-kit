@@ -17,6 +17,7 @@ function populateUser() {
   populateActivity(user, activity);
   let name = user.returnUserName();
   $('.user__name').text(`${name}`);
+  populateWeeklyActivity(user, activity);
 }
 
 function populateActivity(user, activity) {
@@ -82,7 +83,7 @@ function populateSleepwidget(user) {
   let avgWklyHrsSleep = sleep.averageHoursSlept(user.id);
   $('.day-sleep-avg').text(`${avgWklyHrsSleep}`);
   let avgWklySleepQual = sleep.averageQualitySleep(user.id);
-  $('.day-sleep-q-avg').text(`${avgWklySleepQual}`)
+  $('.day-sleep-q-avg').text(`${avgWklySleepQual}`);
 }
 
 function sleepHoursWkInfo(listOfDailyHours) {
@@ -105,15 +106,43 @@ function sleepQualityWkInfo(listOfDailySleepQual) {
   $('.day-sleep-q-7').text(`${listOfDailySleepQual[6]}`);
 }
 
+function populateWeeklyActivity(user, activity) {
+  console.log(user);
+  let weeklySteps = activity.dailyStepsPerWeek(user.id, "2019/06/15");
+
+  $('.steps-day-1').text(`${weeklySteps[0]}`);
+  $('.steps-day-2').text(`${weeklySteps[1]}`);
+  $('.steps-day-3').text(`${weeklySteps[2]}`);
+  $('.steps-day-4').text(`${weeklySteps[3]}`);
+  $('.steps-day-5').text(`${weeklySteps[4]}`);
+  $('.steps-day-6').text(`${weeklySteps[5]}`);
+  $('.steps-day-7').text(`${weeklySteps[6]}`);
+  let weeklyMinsActive = activity.dailyMinsActivePerWeek(user.id, "2019/06/15");
+  $('.mins-day-1').text(`${weeklyMinsActive[0]}`);
+  $('.mins-day-2').text(`${weeklyMinsActive[1]}`);
+  $('.mins-day-3').text(`${weeklyMinsActive[2]}`);
+  $('.mins-day-4').text(`${weeklyMinsActive[3]}`);
+  $('.mins-day-5').text(`${weeklyMinsActive[4]}`);
+  $('.mins-day-6').text(`${weeklyMinsActive[5]}`);
+  $('.mins-day-7').text(`${weeklyMinsActive[6]}`);
+  let weeklyFlights = activity.dailyStairFlightsPerWeek(user.id, "2019/06/15");
+  $('.flights-day-1').text(`${weeklyFlights[0]}`);
+  $('.flights-day-2').text(`${weeklyFlights[1]}`);
+  $('.flights-day-3').text(`${weeklyFlights[2]}`);
+  $('.flights-day-4').text(`${weeklyFlights[3]}`);
+  $('.flights-day-5').text(`${weeklyFlights[4]}`);
+  $('.flights-day-6').text(`${weeklyFlights[5]}`);
+  $('.flights-day-7').text(`${weeklyFlights[6]}`);
+}
+
 function displaySleepComp(user, sleep) {
   if (sleep.sleepComp('2019/09/22', user.id)) {
     $('.sleep__message').text('Great Sleep! Keep it up!');
   } else {
     $('.sleep__message').text('You need good sleep for great health!');
   }
-
-
 }
+
 
 // function sleepHoursMoreInfo(sleepInfo, user) {
 //   console.log(user);

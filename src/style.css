@@ -53,8 +53,8 @@ h1 {
     overflow: auto;
     margin: 20px;
     border-radius: .5em;
-    position: relative;
-    top: 10%;
+    /* position: relative;
+    top: 10%; */
 }
 
 .section--right {

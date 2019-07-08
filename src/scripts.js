@@ -63,7 +63,10 @@ function populateSleepwidget(user) {
   let dailyQualitySleepForWk = sleep.dailySleepQualityPerWk(3, "2019/06/17");
   sleepHoursWkInfo(dailyHoursSleptForWeek);
   sleepQualityWkInfo(dailyQualitySleepForWk);
-  // sleepQualityMoreInfo(sleep, user);
+  let avgWklyHrsSleep = sleep.averageHoursSlept(user.id);
+  $('.day-sleep-avg').text(`${avgWklyHrsSleep}`);
+  let avgWklySleepQual = sleep.averageQualitySleep(user.id);
+  $('.day-sleep-q-avg').text(`${avgWklySleepQual}`)
 }
 
 function sleepHoursWkInfo(listOfDailyHours) {

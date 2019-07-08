@@ -61,8 +61,14 @@ class ActivityRepo {
     }, []);
   }
 
-  returnFriendsWeeklyStepWinner() {
-
+  returnFriendsWeeklyStepWinner(date, selectedUser) {
+    let stepChallenge = this.returnFriendsWeeklyStepData(date, selectedUser);
+    return stepChallenge.reduce((acc, challenger) => {
+      if (challenger.y > acc.y) {
+        acc = challenger;
+      }
+      return acc;
+    });
   }
 
 }

@@ -53,14 +53,13 @@ describe('ActivityRepo', () => {
 
   it('should return each friend\'s weekly step total', () => {
     const steps = activityRepo.returnFriendsWeeklyStepData("2019/06/23", user);
-    console.log(steps)
     expect(steps.length).to.equal(4);
     expect(steps[0].x).to.equal('Jarvis Considine'); 
   });
 
-  // it('should declare the friends step challenge winner\'s name', () => {
-  //   const name = activityRepo.returnFriendsWeeklyStepWinner();
-  //   expect(name)to.equal.('Jarvis')
-  // })
+  it('should declare the friends step challenge winner\'s name', () => {
+    const name = activityRepo.returnFriendsWeeklyStepWinner("2019/06/23", user);
+    expect(name.x).to.equal('Jarvis Considine')
+  });
 
 })

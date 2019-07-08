@@ -6,7 +6,7 @@ class Activity {
   constructor(activityData, userData) {
     this.activityData = activityData;
     this.userData = userData;
-  }
+  } 
 
   consumerInfo(id) {
     return this.activityData.filter(obj => obj.userID === id);

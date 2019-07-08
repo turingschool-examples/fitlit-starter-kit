@@ -29,6 +29,16 @@ h1 {
   text-shadow: 1px 1px 0 #0009;
 }
 
+.water-week,
+.sleep-hours-week,
+.sleep-quality-week {
+  display: flex; 
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  color: white;
+}
+
 /* .section--left__date {
   height: 34em;
   background-color: #4747471f;
@@ -182,5 +192,6 @@ p {
     width: 50px;
     line-height: 20px;
 }
+
 
 

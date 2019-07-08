@@ -1,6 +1,7 @@
 $( document ).ready(() => {
   console.log('doc ready');
   populateUser();
+  // $('.water').toggle('click', hydrationMoreInfo());
 });
 
 function populateUser() {
@@ -13,7 +14,8 @@ function populateUser() {
   populateMainPage(user, activity);
   populateHydrationWidget(user);
   populateSleepwidget(user);
-   let name = user.returnUserName();
+  
+  let name = user.returnUserName();
   $('.user__name').text(`${name}`);
 }
 
@@ -35,6 +37,19 @@ function populateHydrationWidget(user) {
   const hydration = new Hydration(hydrationData);
   let waterIntakeToday = hydration.totalOuncesDaily('2019/09/22', user.id);
   $('.ounces').text(`${waterIntakeToday}`);
+  hydrationMoreInfo(hydration, user);
+  console.log(hydration);
+}
+
+function hydrationMoreInfo(instance, user) {
+  const weeklyOunces = instance.dailyOuncesPerWeek(user.id);
+  $('.day-1').text(`${weeklyOunces[0]}`);
+  $('.day-2').text(`${weeklyOunces[1]}`);
+  $('.day-3').text(`${weeklyOunces[2]}`);
+  $('.day-4').text(`${weeklyOunces[3]}`);
+  $('.day-5').text(`${weeklyOunces[4]}`);
+  $('.day-6').text(`${weeklyOunces[5]}`);
+  $('.day-7').text(`${weeklyOunces[6]}`);
 }
 
 function populateSleepwidget(user) {
@@ -44,7 +59,22 @@ function populateSleepwidget(user) {
   let qualSleepToday = sleep.sleepQualityByDate('2019/09/22', user.id)
   $('.qualSlept').text(`${qualSleepToday}`);
   displaySleepComp(user, sleep);
+  sleepHoursMoreInfo(sleep, user);
+  // sleepQualityMoreInfo(sleep, user);
 }
+
+// function sleepHoursMoreInfo(sleepInfo, user) {
+//   console.log(user);
+//   const weeklySleep = sleepInfo.dailyHoursSleptPerWeek(user.id, '2019/09/15');
+//   console.log(sleepInfo);
+// }
+
+// function sleepQualityMoreInfo(sleepInfo, user) {
+//   const weeklyQuality = sleepInfo.dailySleepQualityPerWk(user.id, '2019/09/15');
+//   console.log(weeklyQuality);
+// }
+
+
 
 function displaySleepComp(user, sleep) {
   if (sleep.sleepComp('2019/09/22', user.id)) {

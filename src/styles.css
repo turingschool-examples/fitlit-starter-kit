@@ -104,7 +104,7 @@ p {
 .sleep-charts,
 .num-of-steps-charts,
 .num-mins-active-charts,
-.distance-miles-charts {
+.flights-climbed-charts {
   display: flex;
 }
 
@@ -113,7 +113,7 @@ p {
 .sleep-charts,
 .num-of-steps-charts,
 .num-mins-active-charts,
-.distance-miles-charts {
+.flights-climbed-charts {
   margin: auto;
 }
 

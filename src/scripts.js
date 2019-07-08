@@ -1,14 +1,13 @@
 
-// $('#js-user-profile').hide();
-// $('#js-h2--user').hide();
 $(document).ready(function() {
-
+  
+  const today = '2019/06/15';
   $('#js-step-goal-chart').hide();
   $('#js-hydration-line-chart').hide();
   $('.sleep-charts').hide();
   $('.num-of-steps-charts').hide();
   $('.num-mins-active-charts').hide();
-  $('.distance-miles-charts').hide();
+  $('.flights-climbed-charts').hide();
 
   const today = '2019/06/15';
 
@@ -17,6 +16,8 @@ $(document).ready(function() {
     const userRepo = new UserRepository(userData);
     const hydrationRepo = new HydrationRepository(hydrationData);
     const sleepRepo = new SleepRepository(sleepData);
+    const activityRepo = new ActivityRepository(activityData);
+
     const userID = Math.floor((Math.random() * 50) + 1);
     const specificUser = userRepo.returnUserData(userID);
     const user = new User(specificUser);
@@ -25,27 +26,22 @@ $(document).ready(function() {
     const sleepUser = sleepRepo.returnUserSleepData(userID);
     const sleep = new Sleep(sleepUser);
 
+    const activityUser = activityRepo.returnUserActivityData(userID);
+    const activity = new Activity(user, activityUser);
+    
+    addClasses();
     removeClasses();
-    $('#js-change-user').removeClass('list-item--active');
-    $('#js-user').addClass('list-item--active');
-
     $('#js-first-name').html(user.returnFirstName());
     $('#js-full-name').html(user.name);
     $('#js-address').html(user.address);
     $('#js-email').html(user.email);
     $('#js-friends').html(userRepo.makeFriendNames(userID));
+    $('#js-miles').html(activity.milesWalked(today))
 
     $('#js-h2--welcome').hide();
-    $('#js-step-goal-chart').hide();
-    $('#js-hydration-line-chart').hide();
-    $('.sleep-charts').hide();
-    $('.num-of-steps-charts').hide();
-    $('.num-mins-active-charts').hide();
-    $('.distance-miles-charts').hide();
-
-    $('#js-user-profile').show();
     $('#js-h2--user').show();
-    updateCharts(user, hydration, sleep);
+
+    updateCharts(user, hydration, sleep, activity, activityRepo);
   });
 
   $('#js-user').click(function() {
@@ -55,7 +51,8 @@ $(document).ready(function() {
     $('.sleep-charts').hide();
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
-    $('.distance-miles-charts').hide();
+    $('.flights-climbed-charts').hide();
+
     removeClasses();
     addClasses();
   });
@@ -67,7 +64,8 @@ $(document).ready(function() {
     $('.sleep-charts').hide();
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
-    $('.distance-miles-charts').hide();
+    $('.flights-climbed-charts').hide();
+
     removeClasses();
     addClasses();
   });
@@ -79,7 +77,8 @@ $(document).ready(function() {
     $('.sleep-charts').hide();
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
-    $('.distance-miles-charts').hide();
+    $('.flights-climbed-charts').hide();
+
     removeClasses();
     addClasses();
   });
@@ -91,7 +90,8 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
-    $('.distance-miles-charts').hide();
+    $('.flights-climbed-charts').hide();
+
     removeClasses();
     addClasses();
   });
@@ -103,31 +103,34 @@ $(document).ready(function() {
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').hide();
     $('.num-of-steps-charts').hide();
-    $('.distance-miles-charts').hide();
+    $('.flights-climbed-charts').hide();
+
     removeClasses();
     addClasses();
   });
 
-  $('#js-distance').click(function() {
-    $('.distance-miles-charts').show();
+  $('#js-steps').click(function() {
+    $('.num-of-steps-charts').show();
     $('#js-hydration-line-chart').hide();
     $('.num-mins-active-charts').hide();
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').hide();
-    $('.num-of-steps-charts').hide();
-    $('.num-mins-active-charts').hide();
+    $('.flights-climbed-charts').hide();
+    $('.sleep-charts').hide();
+
     removeClasses();
     addClasses();
   });
 
   $('#js-flights').click(function() {
-    $('.num-of-steps-charts').show();
+    $('.flights-climbed-charts').show();
     $('#js-hydration-line-chart').hide();
     $('.sleep-charts').hide();
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').hide();
     $('.num-mins-active-charts').hide();
-    $('.distance-miles-charts').hide();
+    $('.num-of-steps-charts').hide();
+
     removeClasses();
     addClasses();
   });
@@ -165,25 +168,41 @@ $(document).ready(function() {
     sleepHoursLineChart.update();
   }
 
-  function minsActiveCharts(activity) {
 
+  function minsActiveCharts(activity, activityRepo) {
+    numMinActiveChart.data.labels[0] = activity.user.name;
+    numMinActiveChart.data.datasets[0].data[0] = activity.userMinActiveForDay(today);
+    numMinActiveChart.data.datasets[0].data[1] = activityRepo.aveMinutesActiveForDay(today);
+    numMinActiveLineChart.data.datasets[0].data = activity.returnWeekViewOfMinsActive(today);
+    numMinActiveChart.update();
+    numMinActiveLineChart.update();
   }
 
-  function distanceTraveledCharts(activity) {
-
+  function stepsCharts(activity, activityRepo) {
+    numOfStepsChart.data.labels[0] = activity.user.name;
+    numOfStepsChart.data.datasets[0].data[0] = activity.returnNumOfStepsForDate(today);
+    numOfStepsChart.data.datasets[0].data[1] = activityRepo.aveStepsTakenForDay(today);
+    numOfStepsLineChart.data.datasets[0].data = activity.returnWeekViewOfSteps(today);
+    numOfStepsChart.update();
+    numOfStepsLineChart.update();
   }
 
-  function flightsClimbedCharts(activity) {
-
+  function flightsCharts(activity, activityRepo) {
+    flightsClimbedChart.data.labels[0] = activity.user.name;
+    flightsClimbedChart.data.datasets[0].data[0] = activity.returnFlightsClimbedForDate(today);
+    flightsClimbedChart.data.datasets[0].data[1] = activityRepo.aveFlightsOfStairsClimbedForDay(today);
+    flightsClimbedLineChart.data.datasets[0].data = activity.returnWeekViewOfFlightsClimbed(today);
+    flightsClimbedChart.update();
+    flightsClimbedLineChart.update();
   }
 
-  function updateCharts(user, hydration, sleep) {
+  function updateCharts(user, hydration, sleep, activity, activityRepo) {
     updateStepGoalChart(user);
     updateHydrationLineChart(hydration);
     updateSleepCharts(sleep);
-    minsActiveCharts(activity);
-    distanceTraveledCharts(activity);
-    flightsClimbedCharts(activity);
+    minsActiveCharts(activity, activityRepo);
+    stepsCharts(activity, activityRepo);
+    flightsCharts(activity, activityRepo);
   }
 
 
@@ -238,7 +257,7 @@ $(document).ready(function() {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{
         data: [],
-        label: "",
+        label: "Water Consumed",
         borderColor: "#3e95cd",
         fill: true
       }
@@ -260,7 +279,7 @@ $(document).ready(function() {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{
         data: [],
-        label: "",
+        label: "Sleep Quality",
         borderColor: "#3e95cd",
         fill: true
       }
@@ -282,7 +301,7 @@ $(document).ready(function() {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{
         data: [],
-        label: "",
+        label: "Hours Slept",
         borderColor: "#3e95cd",
         fill: true
       }
@@ -305,9 +324,9 @@ $(document).ready(function() {
       labels: ["", "All Users"],
       datasets: [
         {
-          label: "Daily Step Goal",
+          label: "Number of Steps",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
-          data: [0, 6700]
+          data: [0, 0]
         }
       ]
     },
@@ -345,7 +364,7 @@ $(document).ready(function() {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{
         data: [],
-        label: "",
+        label: "Number of Steps",
         borderColor: "#3e95cd",
         fill: true
       }
@@ -367,9 +386,9 @@ $(document).ready(function() {
       labels: ["", "All Users"],
       datasets: [
         {
-          label: "Daily Step Goal",
+          label: "Minutes Active",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
-          data: [0, 6700]
+          data: [0, 0]
         }
       ]
     },
@@ -393,8 +412,8 @@ $(document).ready(function() {
             fontSize: 16,
             maxTicksLimit: 12,
             min: 0,
-            max: 12000,
-            stepSize: 2000,
+            max: 300,
+            stepSize: 50,
           }
         }]
       }
@@ -407,7 +426,7 @@ $(document).ready(function() {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{
         data: [],
-        label: "",
+        label: "Minutes Active",
         borderColor: "#3e95cd",
         fill: true
       }
@@ -423,15 +442,15 @@ $(document).ready(function() {
     }
   });
 
-  var distanceMilesChart = new Chart($("#js-distance-miles-chart"), {
+  var flightsClimbedChart = new Chart($("#js-flights-climbed-chart"), {
     type: 'bar',
     data: {
       labels: ["", "All Users"],
       datasets: [
         {
-          label: "Daily Step Goal",
+          label: "Flights Of Stairs Climbed",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
-          data: [0, 6700]
+          data: [0, 0]
         }
       ]
     },
@@ -455,8 +474,8 @@ $(document).ready(function() {
             fontSize: 16,
             maxTicksLimit: 12,
             min: 0,
-            max: 12000,
-            stepSize: 2000,
+            max: 50,
+            stepSize: 5,
           }
         }]
       }
@@ -469,7 +488,7 @@ $(document).ready(function() {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{
         data: [],
-        label: "",
+        label: "Flights Of Stairs Climbed",
         borderColor: "#3e95cd",
         fill: true
       }
@@ -484,4 +503,7 @@ $(document).ready(function() {
       }
     }
   });
+
+ 
 });
+

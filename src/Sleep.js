@@ -40,7 +40,7 @@ class Sleep {
   dailyHoursSleptPerWeek(id, day) {
     let userArray = this.consumerInfo(id);
     let index = this.startDayIndx(id, day);
-    return userArray.slice(index, 8).map((obj) => obj.hoursSlept);
+    return userArray.slice(index, 9).map((obj) => obj.hoursSlept);
   }
 
   dailySleepQualityPerWk(id, day) {

@@ -14,9 +14,27 @@ function populateUser() {
   populateMainPage(user, activity);
   populateHydrationWidget(user);
   populateSleepwidget(user);
-  
+  populateActivity(user, activity);
   let name = user.returnUserName();
   $('.user__name').text(`${name}`);
+}
+
+function populateActivity(user, activity) {
+  let milesToday = activity.milesWalkedInDay('2019/06/15', userData);
+  $('.day-act-miles').text(`${milesToday}`);
+  let minsActive = activity.minutesActive(user.id, '2019/06/15');
+  $('.user-mins-active').text(`${minsActive}`);
+  let avgMinsActAll = activity.averageActivity('2019/06/15', 'minutesActive');
+  $('.avg-mins-active-amng-all-users').text(`${avgMinsActAll}`);
+  let userFlights = activity.minutesActive(user.id, '2019/06/15');
+  // $('.day-sleep-q-6').text(`${listOfDailySleepQual[5]}`);
+  // let minsActive = activity.minutesActive(user.id, '2019/06/15');
+  // $('.day-sleep-q-7').text(`${listOfDailySleepQual[6]}`);
+  // let avgFlightsAll = activity.averageActivity('2019/06/15', 'minutesActive');
+  // $('.day-sleep-q-4').text(`${listOfDailySleepQual[3]}`);
+  // let avgStepsAll = activity.averageActivity('2019/06/15', 'minutesActive');
+  // $('.day-sleep-q-5').text(`${listOfDailySleepQual[4]}`);
+
 }
 
 function populateUserCard(userData, actData) {
@@ -59,8 +77,44 @@ function populateSleepwidget(user) {
   let qualSleepToday = sleep.sleepQualityByDate('2019/09/22', user.id)
   $('.qualSlept').text(`${qualSleepToday}`);
   displaySleepComp(user, sleep);
-  sleepHoursMoreInfo(sleep, user);
-  // sleepQualityMoreInfo(sleep, user);
+  let dailyHoursSleptForWeek = sleep.dailyHoursSleptPerWeek(3, "2019/06/17");
+  let dailyQualitySleepForWk = sleep.dailySleepQualityPerWk(3, "2019/06/17");
+  sleepHoursWkInfo(dailyHoursSleptForWeek);
+  sleepQualityWkInfo(dailyQualitySleepForWk);
+  let avgWklyHrsSleep = sleep.averageHoursSlept(user.id);
+  $('.day-sleep-avg').text(`${avgWklyHrsSleep}`);
+  let avgWklySleepQual = sleep.averageQualitySleep(user.id);
+  $('.day-sleep-q-avg').text(`${avgWklySleepQual}`)
+}
+
+function sleepHoursWkInfo(listOfDailyHours) {
+  $('.day-sleep-1').text(`${listOfDailyHours[0]}`);
+  $('.day-sleep-2').text(`${listOfDailyHours[1]}`);
+  $('.day-sleep-3').text(`${listOfDailyHours[2]}`);
+  $('.day-sleep-4').text(`${listOfDailyHours[3]}`);
+  $('.day-sleep-5').text(`${listOfDailyHours[4]}`);
+  $('.day-sleep-6').text(`${listOfDailyHours[5]}`);
+  $('.day-sleep-7').text(`${listOfDailyHours[6]}`);
+}
+
+function sleepQualityWkInfo(listOfDailySleepQual) {
+  $('.day-sleep-q-1').text(`${listOfDailySleepQual[0]}`);
+  $('.day-sleep-q-2').text(`${listOfDailySleepQual[1]}`);
+  $('.day-sleep-q-3').text(`${listOfDailySleepQual[2]}`);
+  $('.day-sleep-q-4').text(`${listOfDailySleepQual[3]}`);
+  $('.day-sleep-q-5').text(`${listOfDailySleepQual[4]}`);
+  $('.day-sleep-q-6').text(`${listOfDailySleepQual[5]}`);
+  $('.day-sleep-q-7').text(`${listOfDailySleepQual[6]}`);
+}
+
+function displaySleepComp(user, sleep) {
+  if (sleep.sleepComp('2019/09/22', user.id)) {
+    $('.sleep__message').text('Great Sleep! Keep it up!');
+  } else {
+    $('.sleep__message').text('You need good sleep for great health!');
+  }
+
+
 }
 
 // function sleepHoursMoreInfo(sleepInfo, user) {
@@ -75,11 +129,3 @@ function populateSleepwidget(user) {
 // }
 
 
-
-function displaySleepComp(user, sleep) {
-  if (sleep.sleepComp('2019/09/22', user.id)) {
-    $('.sleep__message').text('Great Sleep! Keep it up!');
-  } else {
-    $('.sleep__message').text('You need good sleep for great health!');
-  }
-}

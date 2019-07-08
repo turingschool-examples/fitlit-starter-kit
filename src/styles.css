@@ -1,4 +1,99 @@
 * {
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
+  color: #d1d5d9;
+  font-family: 'Oxygen', sans-serif;
+}
+
+body {
+  background-color: #1c222c;
+}
+
+header {
+  background-color: #2c3a47;
+  border-radius:4px;
+  text-align: center;
+}
+
+h1 {
+  color: #d1d5d9;
+}
+
+.nav-boxes,
+.graph-boxes {
+  background-color: #2c3a47;
+  border-radius:4px;
+  text-align: center;
+}
+
+.box-header {
+  background-color: #314150;
+  font-size: 26px;
+}
+
+.big-nums {
+  font-size: 100px;
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+#sleep-metrics-quality,
+#sleep-metrics-hours {
+  height: 280px;
+}
+
+.record-quality-sleep,
+.record-sleep {
+  float: left;
+  height: 50px;
+  width: 200px;
+}
+
+.average-quality-slept,
+.average-sleep {
+  float: right;
+  height: 50px;
+  width: 200px;
+}
+
+p,
+h5 {
+  margin: 0;
+  padding: 0;
+}
+
+.small-nums {
+  font-size: 30px;
+}
+
+#num-daily-steps {
+  font-size: 22px;
+  padding-bottom: 20px;
+  margin-top: 30px;
+}
+
+#num-steps-today {
+  font-size: 40px;
+}
+
+#activity-metrics {
+  height: 340px;
+  margin-bottom: 20px;
+}
+
+.record-activity-minutes {
+  margin-top: 30px;
+}
+
+#num-all-time-active-minutes-date {
+  font-size: 18px;
+  padding-top: 5px;
+}
+
+#step-goal-comparison {
+  margin-bottom: 20px;
 }

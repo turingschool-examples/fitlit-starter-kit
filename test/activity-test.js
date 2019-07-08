@@ -62,4 +62,8 @@ describe('Activity', function() {
     expect(activity.avgMinActiveAllUsers("2019/06/23")).to.equal(129.2);
   })
 
+  it('should return remaining steps if step goal has not yet been met', function() {
+    let activity = new Activity(activityData);
+    expect(activity.hasUserMetStepGoal(1, "2019/06/24", userData)).to.equal("You have 2814 steps until you have met your goal. Keep up the good work!")
+  })
 });

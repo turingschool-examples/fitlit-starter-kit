@@ -66,6 +66,18 @@ class Activity {
     }, 0)
   }
 
+  hasUserMetStepGoal(id, date, userData) {
+    let userDataToday = this.activityData.find(user => id === user.userID && date === user.date).numSteps
+    let userStepGoal = userData.find(user => id === user.id).dailyStepGoal
+    if (userDataToday >= userStepGoal) {
+      let bonusSteps = userDataToday - userStepGoal
+      return `You have exceeded your goal by ${bonusSteps} steps!`
+    } else {
+      let stepsLeft = userStepGoal - userDataToday
+      return `You have ${stepsLeft} steps until you have met your goal. Keep up the good work!`
+    }
+  }
+
 }
 
 if (typeof module !== 'undefined') {

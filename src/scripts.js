@@ -32,9 +32,6 @@ function populateActivity(user, activity) {
   $('.avg-flights-amng-all-users').text(`${allUsersFlights}`);
   let userFlightsToday = activity.stairFlightsInDay('2019/06/15', user.id);
   $('.user-flights').text(`${userFlightsToday}`);
-  // let avgStepsAll = activity.averageActivity('2019/06/15', 'minutesActive');
-  // $('.day-sleep-q-5').text(`${listOfDailySleepQual[4]}`);
-
 }
 
 function populateUserCard(userData, actData) {

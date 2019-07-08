@@ -35,16 +35,6 @@ class SleepRepo {
         let longestSleeper =  userHours.filter(day => day.hoursSlept === userHours[0].hoursSlept);
         return longestSleeper[0].hoursSlept        
     }
-
-    findWorstSleeper(dateOf){
-        let days = this.findDateForSleep(dateOf);
-        let userHours = days.sort(function(a,b){
-            return a.hoursSlept - b.hoursSlept
-        });
-
-        let worstSleeper =  userHours.filter(day => day.hoursSlept === userHours[0].hoursSlept);
-        return worstSleeper[0].hoursSlept
-    }
 };
 
 if (typeof module !== 'undefined') {

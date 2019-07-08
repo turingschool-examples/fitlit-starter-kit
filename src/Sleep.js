@@ -67,6 +67,13 @@ class Sleep {
         return day;
     }
 
+    findWorstDayOfSleep(id){
+        let sortedHours = this.userSleepData.sort((a,b) => {
+            return a.hoursSlept - b.hoursSlept
+        });
+        return `Your least active day was ${sortedHours[0].hoursSlept}. What happened?` 
+    }
+
 };
 
 if (typeof module !== 'undefined') {

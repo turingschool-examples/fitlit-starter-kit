@@ -29,6 +29,7 @@ $('.sleep__span--weekHours').text(`${sleepRepo.users.findHoursSleptForWeek("2019
 $('.sleep__span--weekQuality').text(`${sleepRepo.users.findSleepQualityForWeek("2019/06/23")}`);//make date dynamic
 $('.sleep__span--overallHours').text(`${sleepRepo.users.findAverageHoursSleptForUser()}`);
 $('.sleep__span--overallQuality').text(`${sleepRepo.users.findAverageSleepQualityForUser()}`);
+$('.activity__span--least').text(`${sleepRepo.users.findWorstDayOfSleep(2)}`)
 
 // Hydration Info
 $('.hydro__span--today').text(`${hydrationRepo.findSpecificDayHydrationOunces(2, "2019/06/23")}`); //make date dynamic

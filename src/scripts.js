@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  // const hydrationRepo = new HydrationRepository(hydrationData);
   const today = '2019/06/15';
   $('#js-h2--user').hide();
   $('#js-user-profile').hide();
@@ -26,9 +25,8 @@ $(document).ready(function() {
     const activityUser = activityRepo.returnUserActivityData(userID);
     const activity = new Activity(user, activityUser);
     
+    addClasses();
     removeClasses();
-    $('#js-change-user').removeClass('list-item--active');
-    $('#js-user').addClass('list-item--active');
 
     $('#js-first-name').html(user.returnFirstName());
     $('#js-full-name').html(user.name);
@@ -38,15 +36,8 @@ $(document).ready(function() {
     $('#js-miles').html(activity.milesWalked(today))
 
     $('#js-h2--welcome').hide();
-    $('#js-step-goal-chart').hide();
-    $('#js-hydration-line-chart').hide();
-    $('.sleep-charts').hide();
-    $('.num-of-steps-charts').hide();
-    $('.num-mins-active-charts').hide();
-    $('.flights-climbed-charts').hide();
-
-    $('#js-user-profile').show();
     $('#js-h2--user').show();
+
     updateCharts(user, hydration, sleep, activity, activityRepo);
   });
 
@@ -122,7 +113,7 @@ $(document).ready(function() {
     $('#js-user-profile').hide();
     $('#js-step-goal-chart').hide();
     $('.flights-climbed-charts').hide();
-    $('.num-mins-active-charts').hide();
+    $('.sleep-charts').hide();
 
     removeClasses();
     addClasses();
@@ -178,7 +169,7 @@ $(document).ready(function() {
     numMinActiveChart.data.labels[0] = activity.user.name;
     numMinActiveChart.data.datasets[0].data[0] = activity.userMinActiveForDay(today);
     numMinActiveChart.data.datasets[0].data[1] = activityRepo.aveMinutesActiveForDay(today);
-    // numMinActiveLineChart.data.datasets[0].data = 
+    numMinActiveLineChart.data.datasets[0].data = activity.returnWeekViewOfMinsActive(today);
     numMinActiveChart.update();
     numMinActiveLineChart.update();
   }
@@ -187,7 +178,7 @@ $(document).ready(function() {
     numOfStepsChart.data.labels[0] = activity.user.name;
     numOfStepsChart.data.datasets[0].data[0] = activity.returnNumOfStepsForDate(today);
     numOfStepsChart.data.datasets[0].data[1] = activityRepo.aveStepsTakenForDay(today);
-    // numOfStepsLineChart
+    numOfStepsLineChart.data.datasets[0].data = activity.returnWeekViewOfSteps(today);
     numOfStepsChart.update();
     numOfStepsLineChart.update();
   }
@@ -196,12 +187,9 @@ $(document).ready(function() {
     flightsClimbedChart.data.labels[0] = activity.user.name;
     flightsClimbedChart.data.datasets[0].data[0] = activity.returnFlightsClimbedForDate(today);
     flightsClimbedChart.data.datasets[0].data[1] = activityRepo.aveFlightsOfStairsClimbedForDay(today);
+    flightsClimbedLineChart.data.datasets[0].data = activity.returnWeekViewOfFlightsClimbed(today);
     flightsClimbedChart.update();
     flightsClimbedLineChart.update();
-  }
-
-  function milesChart(activity) {
-
   }
 
   function updateCharts(user, hydration, sleep, activity, activityRepo) {

@@ -3,6 +3,7 @@ class Hydration {
   constructor(userData) {
     this.userData = userData
   }
+  
   getDailyOunces(id, date="2019/06/15") {
     let day = this.userData.find(user => user.date === date && user.userID === id)
     console.log(day)

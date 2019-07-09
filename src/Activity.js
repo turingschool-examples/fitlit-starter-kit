@@ -85,13 +85,13 @@ class Activity{
         let friends = included.map(friend => ({
             id: friend,
             name: userData.find(user => user.id === friend).name,
-            steps: activityData.filter(day => day.date <= dateOf)
+            steps: activityData.filter(day => day.userID === friend && day.date <= dateOf)
                     .slice(-6, +1)
                     .map(user => user.numSteps)
                     .reduce((totalSteps, dailySteps) => totalSteps += dailySteps, 0)
         }))
         let sorted = friends.sort((a,b) => b.steps - a.steps)
-        console.log(sorted)
+        console.log('friends', friends)
 
     }
 

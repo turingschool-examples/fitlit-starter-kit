@@ -105,7 +105,7 @@ $( window ).on( "load", () => {
   let avgActivityChart = new Chart($('.activity__chart-day-allUsers'), {
     type: 'bar',
     data: {
-      labels: ["Number of steps", "Minutes active", "Flights of stairs climbed"],
+      labels: ["Number of steps / 50", "Minutes active", "Flights of stairs climbed"],
       datasets: [
         {
           label: "Your stats",

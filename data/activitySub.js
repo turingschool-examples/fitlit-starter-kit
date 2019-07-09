@@ -15,7 +15,7 @@ const activityData = [
     },
     {
       "userID": 1,
-      "date": "2019/06/22",
+      "date": "2019/06/20",
       "numSteps": 7402,
       "minutesActive": 116,
       "flightsOfStairs": 32
@@ -96,6 +96,41 @@ const activityData = [
         "numSteps": 10502,
         "minutesActive": 100,
         "flightsOfStairs": 33
+      },
+      {
+        "userID": 8,
+        "date": "2019/06/22",
+        "numSteps": 5000,
+        "minutesActive": 114,
+        "flightsOfStairs": 31
+      },
+      {
+        "userID": 8,
+        "date": "2019/06/17",
+        "numSteps": 12000,
+        "minutesActive": 114,
+        "flightsOfStairs": 31
+      },
+      {
+        "userID": 4,
+        "date": "2019/06/16",
+        "numSteps": 3000,
+        "minutesActive": 114,
+        "flightsOfStairs": 32
+      },
+      {
+        "userID": 4,
+        "date": "2019/06/17",
+        "numSteps": 4000,
+        "minutesActive": 114,
+        "flightsOfStairs": 32
+      },
+      {
+        "userID": 4,
+        "date": "2019/06/21",
+        "numSteps": 4068,
+        "minutesActive": 114,
+        "flightsOfStairs": 32
       }
 ]
 

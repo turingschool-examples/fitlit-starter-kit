@@ -54,8 +54,20 @@ describe("Activity", function() {
         expect(activity.allTimeClimbRecord()).to.eql(34);
     });
 
+
+    it.only("should return an array of their friends", function() {
+        const activity = new Activity(1);
+        expect(activity.returnFriends("2019/06/15", "2019/06/22").length).to.eql(2);
+    });
+
+    it.only("should return a week of steps for a user", function() {
+        const activity = new Activity(1);
+        expect(activity.returnWeeklySteps("2019/06/15", "2019/06/22").length).to.eql(7);
+    });
+
     it.only('should return all dates a user increased step count for 3 consecutive days', function() {
         const activity = new Activity(1);
         expect(activity.getThreeDayIncreasingSteps()).to.eql(["2019/06/22", "2019/06/26"]); 
     })
+
 });

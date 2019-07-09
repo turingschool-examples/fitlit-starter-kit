@@ -108,6 +108,66 @@ class Activity {
     return Math.max(...flights)
   }
 
+
+  returnWeekInfo(startDate, endDate) {
+    let firstIndex = this.data.findIndex(el => {
+      return el.date === startDate;
+    });
+    let allDates = this.data.reduce((dates, user) => {
+      dates.push(user.date)
+      return dates
+    }, [])
+    let lastIndex = allDates.lastIndexOf(endDate);
+    return this.data.slice(firstIndex, lastIndex + 1)
+  }
+
+  returnFriends(startDate, endDate) {
+    let correctUser =  this.findCorrectUser();
+    let correctWeek = this.returnWeekInfo(startDate, endDate);
+    let friends = correctWeek.reduce((matchingUsers, user) => {
+      correctUser.friends.forEach(num => {
+        if (num === user.userID)  {
+          matchingUsers.push(user);
+        }
+      })
+      return matchingUsers;
+    }, []);
+    let matchingFriends = userData.reduce((rightUsers, user) => {
+      friends.forEach(friend => {
+        if (friend.userID === user.id) {
+          rightUsers.push(user);
+        }
+      });
+      return rightUsers;
+    }, []);
+    let uniqueFriends = matchingFriends.filter((user, index) => {
+      return matchingFriends.indexOf(user) == index;
+    })
+    return uniqueFriends.reduce((userObj, user) => {
+      let obj = {
+        name: user.name,
+        numSteps: friends.reduce((steps, friend) => {
+          if (friend.userID === user.id) {
+             return steps += friend.numSteps;
+          }
+          return steps;
+        }, 0)
+      } 
+      userObj.push(obj);
+      return userObj;
+    }, []);
+  }
+
+  returnWeeklySteps(startDate, endDate) {
+    let correctUser =  this.findCorrectUser();
+    let correctWeek = this.returnWeekInfo(startDate, endDate);
+    let correctUserIds = correctWeek.filter(user => {
+     return user.userID === correctUser.id
+    })
+    return correctUserIds.map(user => {
+      return user.numSteps;
+    })
+
   getThreeDayIncreasingSteps() {
     let correctUser = this.findCorrectUser();
     let threeInARow = [];

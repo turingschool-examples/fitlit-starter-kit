@@ -38,7 +38,6 @@ class Activity {
     let userWeeklyActivityMinutes = user.map(function(aUser) {
       return aUser.minutesActive
     })
-    console.log(userWeeklyActivityMinutes)
     if (userWeeklyActivityMinutes.length > 7) {
       userWeeklyActivityMinutes.length = 7;
     }
@@ -50,7 +49,6 @@ class Activity {
     let userWeeklySteps = user.map(function(aUser) {
       return aUser.numSteps
     })
-    console.log(userWeeklySteps)
     if (userWeeklySteps.length > 7) {
       userWeeklySteps.length = 7;
     }
@@ -62,7 +60,6 @@ class Activity {
     let userWeeklyFlightsOfStairs = user.map(function(aUser) {
       return aUser.flightsOfStairs
     })
-    console.log(userWeeklyFlightsOfStairs)
     if (userWeeklyFlightsOfStairs.length > 7) {
       userWeeklyFlightsOfStairs.length = 7;
     }

@@ -68,14 +68,14 @@ h3 {
 .record-sleep {
   float: left;
   height: 50px;
-  width: 35%;
+  margin-left: 5%;
 }
 
 .average-quality-slept,
 .average-sleep {
   float: right;
   height: 50px;
-  width: 35%;
+  margin-right: 5%;
 }
 
 .small-nums-header{
@@ -154,4 +154,47 @@ padding-bottom: 20px;
 .disclaimer{
   margin-top: 10px;
   font-size: 10px;
+}
+
+@media screen and (min-width: 800px) {
+
+  body {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: 33% 65%;
+    grid-template-areas: 
+    "header header header"
+  }
+
+  header {
+    display: flex;
+    grid-area: header;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    margin-left: 15px;
+    width: 98%;
+  }
+
+  h1 {
+    margin-left: 2%;
+  }
+
+  .welcome-user {
+    margin-top: 45px;
+    margin-right: 5%;
+  }
+
+  nav {
+    margin-left: 10px;
+  }
+
+  #step-goal-chart {
+    height: 300px;
+  }
+
+  #daily-activity-charts {
+    display: inline-block;
+    padding-bottom: 20px;
+    width: 600px;
+  }
 }

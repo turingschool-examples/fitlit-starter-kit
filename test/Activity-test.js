@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Activity = require('../src/Activity');
-const activitySub = require('../data/activitySub');
+const activitySub = require('../data/activitySub2');
 
 describe("Activity", function() {
     it("should be a function", function() {
@@ -19,12 +19,12 @@ describe("Activity", function() {
         expect(activity.returnMilesWalked("2019/06/15")).to.equal(2.91);
       });
 
-    it.only("should return steps for a given day", function() {
+    it("should return steps for a given day", function() {
         const activity = new Activity(1);
         expect(activity.returnSteps("2019/06/15")).to.equal(3577);
     });
 
-    it.only("should return flights of stairs climbed on a day", function() {
+    it("should return flights of stairs climbed on a day", function() {
         const activity = new Activity(1);
         expect(activity.returnFlightsOfStairs("2019/06/15")).to.equal(16);
     });
@@ -54,6 +54,7 @@ describe("Activity", function() {
         expect(activity.allTimeClimbRecord()).to.eql(34);
     });
 
+
     it.only("should return an array of their friends", function() {
         const activity = new Activity(1);
         expect(activity.returnFriends("2019/06/15", "2019/06/22").length).to.eql(2);
@@ -63,4 +64,10 @@ describe("Activity", function() {
         const activity = new Activity(1);
         expect(activity.returnWeeklySteps("2019/06/15", "2019/06/22").length).to.eql(7);
     });
+
+    it.only('should return all dates a user increased step count for 3 consecutive days', function() {
+        const activity = new Activity(1);
+        expect(activity.getThreeDayIncreasingSteps()).to.eql(["2019/06/22", "2019/06/26"]); 
+    })
+
 });

@@ -22,22 +22,46 @@ class Activity extends ActivityRepository {
   }
     
   getDailyMinutesActive(id, date="2019/06/15") {
-    let minActive = this.userActivity.find(el => el.date === date && el.userID === id)
+    let minActive = this.userActivity.find(user => user.date === date && user.userID === id)
     return minActive.minutesActive
   }
     
-  getWeeklyMinutesActive(id, date) {
-    let weekActive = this.userActivity.filter(el => el.userID === id)
-    let startDateIndex = weekActive.find(el => el.date === date)
+  getWeeklyMinutesActiveAverage(id, date) {
+    let weekActive = this.userActivity.filter(user => user.userID === id)
+    let startDateIndex = weekActive.find(user => user.date === date)
     let startDate = weekActive.indexOf(startDateIndex)
     let weekOfActivity = weekActive.slice(startDate, 7)
     let sum = weekOfActivity.reduce((a, b) => a + b.minutesActive, 0)
     return Math.floor(sum / 7)
   }
 
+  getWeeklyMinutesActive(id, date="2019/06/15") {
+    let weekActive = this.userActivity.filter(user => user.userID === id)
+    let startDateIndex = weekActive.find(user => user.date === date)
+    let startDate = weekActive.indexOf(startDateIndex)
+    let weekOfActivity = weekActive.slice(startDate, startDate+7)
+    return weekOfActivity.map(user => user.minutesActive)
+  }
+
+  getWeeklyStairsClimbed(id, date) {
+    let weekActive = this.userActivity.filter(user => user.userID === id)
+    let startDateIndex = weekActive.find(user => user.date === date)
+    let startDate = weekActive.indexOf(startDateIndex)
+    let weekOfActivity = weekActive.slice(startDate, startDate+7)
+    return weekOfActivity.map(user => user.flightsOfStairs)
+  }
+
+  getWeeklyStepCount(id, date="2019/06/15") {
+    let weekActive = this.userActivity.filter(user => user.userID === id)
+    let startDateIndex = weekActive.find(user => user.date === date)
+    let startDate = weekActive.indexOf(startDateIndex)
+    let weekOfActivity = weekActive.slice(startDate, startDate+7)
+    return weekOfActivity.map(user => user.numSteps)
+  }
+
   achieveStepGoal(id, date="2019/06/15") {
-    let user = this.userActivity.filter(el => el.userID === id)
-    let userByDate = user.find(el => el.date === date)
+    let user = this.userActivity.filter(user => user.userID === id)
+    let userByDate = user.find(user => user.date === date)
     let stepGoal = super.getUserData(userByDate.userID).map(user => user.dailyStepGoal)
     return user.numSteps >= stepGoal ? 'step goal met!' : 'step goal not met!'
   }
@@ -51,7 +75,7 @@ class Activity extends ActivityRepository {
   }
 
   findStairClimbingRecord(id) {
-    let user = this.userActivity.filter(el => el.userID === id)
+    let user = this.userActivity.filter(user => user.userID === id)
     let stairClimbingRecord = user.sort((a, b) => b.flightsOfStairs - a.flightsOfStairs)
     return stairClimbingRecord[0]
   }
@@ -62,7 +86,7 @@ class Activity extends ActivityRepository {
   }
 
   getAllUsersStairClimbingAverage(date) {
-    let userByDate = this.userActivity.filter(el => el.date === date)
+    let userByDate = this.userActivity.filter(user => user.date === date)
     let users = userByDate.reduce(function (user, cV) {
       return user += cV.flightsOfStairs 
     }, 0) 
@@ -70,7 +94,7 @@ class Activity extends ActivityRepository {
   }
 
   getAllUsersStepsAverage(date) {
-    let userByDate = this.userActivity.filter(el => el.date === date)
+    let userByDate = this.userActivity.filter(user => user.date === date)
     let users = userByDate.reduce(function (user, cV) {
       return user += cV.numSteps
     }, 0)
@@ -78,7 +102,7 @@ class Activity extends ActivityRepository {
   }
 
   getAllUsersMinutesActiveAverage(date) {
-    let userByDate = this.userActivity.filter(el => el.date === date)
+    let userByDate = this.userActivity.filter(user => user.date === date)
     let users = userByDate.reduce(function (user, cV) {
       return user += cV.minutesActive
     }, 0)

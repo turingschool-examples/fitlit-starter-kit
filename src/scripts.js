@@ -45,7 +45,16 @@ allUserSteps.text(activity.getAllUsersStepsAverage(formattedDate));
 var allUserStairs = $('#all-user-stair-count');
 allUserStairs.text(activity.getAllUsersStairClimbingAverage(formattedDate));
 var allUserMinutesActive = $('#all-user-minutes-active');
-allUserMinutesActive.text(activity.getAllUsersMinutesActiveAverage(formattedDate))
+allUserMinutesActive.text(activity.getAllUsersMinutesActiveAverage(formattedDate));
+
+dateSubmitBtn.on("click", updateActivityByDate)
+function updateActivityByDate(chart) {
+    let date = $('#date-calendar').val()
+    let myFormattedDate = date.replace(/-/gi, "/")
+    minutesActiveChart.data = activity.getWeeklyMinutesActive(randomId, myFormattedDate)
+    console.log(minutesActiveChart.data)
+}
+
 /** Charts **/ 
 const options = {
     title: {
@@ -72,20 +81,54 @@ var myWaterChart = new Chart(weeklyWaterChart, {
 myWaterChart.canvas.parentNode.style.height = '300px';
 myWaterChart.canvas.parentNode.style.width = '300px';
 
-// Days Exceeded StepsGoal Chart
-// var exceededSteps = $('#exceededSteps');
-// var myExceededSteps = new Chart(exceededSteps, {
-//     type: 'bar',
-//     data: {
-//         labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
-//         datasets: [{
-//             label: "Days that Step Goal was Exceeded",
-//             backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
-//             data: activity.exceedStepGoal(randomId)
-//         }]
-//     },
-//     options
-// });
-// myExceededSteps.canvas.parentNode.style.height = '300px';
-// myExceededSteps.canvas.parentNode.style.width = '300px';
+// Minutes Active Weekly Chart
+var minutesActiveChart = $('#minutes-active-weekly__display');
+var myMinutesActiveChart = new Chart(minutesActiveChart, {
+    type: 'bar',
+    data: {
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        datasets: [{
+            label: "Minutes Active",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+            data: activity.getWeeklyMinutesActive(randomId, formattedDate)
+        }]
+    },
+    options
+});
+myMinutesActiveChart.canvas.parentNode.style.height = '300px';
+myMinutesActiveChart.canvas.parentNode.style.width = '300px';
+
+// Stairs Climbed Weekly Chart
+var stairsClimbedWeeklyChart = $('#stairs-climbed-weekly__display');
+var myStairsClimbedWeeklyChart = new Chart(stairsClimbedWeeklyChart, {
+    type: 'bar',
+    data: {
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        datasets: [{
+            label: "Stairs Climbed",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+            data: activity.getWeeklyStairsClimbed(randomId, formattedDate)
+        }]
+    },
+    options
+});
+myStairsClimbedWeeklyChart.canvas.parentNode.style.height = '300px';
+myStairsClimbedWeeklyChart.canvas.parentNode.style.width = '300px';
+
+// Step Count Weekly Chart
+var stepCountChart = $('#step-count-weekly__display');
+var myStepCountChart = new Chart(stepCountChart, {
+    type: 'bar',
+    data: {
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        datasets: [{
+            label: "Step Count",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+            data: activity.getWeeklyStepCount(randomId, formattedDate)
+        }]
+    },
+    options
+});
+myStepCountChart.canvas.parentNode.style.height = '300px';
+myStepCountChart.canvas.parentNode.style.width = '300px';
 });

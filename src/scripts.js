@@ -140,15 +140,7 @@ $( window ).on( "load", () => {
       labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       datasets: [
         { 
-          data: [
-            activity.returnSteps("2019/06/15"),
-            activity.returnSteps("2019/06/16"),
-            activity.returnSteps("2019/06/17"),
-            activity.returnSteps("2019/06/18"),
-            activity.returnSteps("2019/06/19"),
-            activity.returnSteps("2019/06/20"),
-            activity.returnSteps("2019/06/21")
-          ],
+          data: activity.returnWeeklySteps("2019/06/15", "2019/06/22"),
           label: "Your step count",
           borderColor: "#3e95cd",
           fill: false
@@ -168,15 +160,7 @@ $( window ).on( "load", () => {
     data: {
       labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       datasets: [{ 
-          data: [
-          activity.returnMinutesActive("2019/06/15"),
-          activity.returnMinutesActive("2019/06/16"),
-          activity.returnMinutesActive("2019/06/17"),
-          activity.returnMinutesActive("2019/06/18"),
-          activity.returnMinutesActive("2019/06/19"),
-          activity.returnMinutesActive("2019/06/20"),
-          activity.returnMinutesActive("2019/06/21")
-          ],
+          data: activity.returnMinutesActiveForWeek(),
           label: "Your minutes active",
           borderColor: "#3cba9f",
           fill: false

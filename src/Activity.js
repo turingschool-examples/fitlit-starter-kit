@@ -120,10 +120,11 @@ class Activity {
     return this.data.slice(firstIndex, lastIndex + 1)
   }
 
-  returnFriends(date) {
+  returnFriends(startDate, endDate) {
     let correctUser =  this.findCorrectUser();
-    let correctDay = this.findCorrectUserDate(date);
-    let friends = this.data.reduce((matchingUsers, user) => {
+    let correctWeek = this.returnWeekInfo(startDate, endDate);
+    console.log(correctWeek)
+    let friends = correctWeek.reduce((matchingUsers, user) => {
       correctUser.friends.forEach(num => {
         if (num === user.userID)  {
           matchingUsers.push(user);
@@ -134,21 +135,24 @@ class Activity {
     let matchingUsers = userData.reduce((rightUsers, user) => {
       friends.forEach(friend => {
         if (friend.userID === user.id) {
-        rightUsers.push(user);
+          rightUsers.push(user);
         }
       });
       return rightUsers;
     }, []);
-    return matchingUsers.reduce((userObj, user) => {
+    return matchingUsers.filter((user, index) => {
+      return matchingUsers.indexOf(user) == index;
+    })
+    let hello = uniqueArray.reduce((userObj, user) => {
       let obj = {
         name: user.name,
         numSteps: friends.reduce((steps, friend) => {
           if (friend.userID === user.id) {
-             return friend.numSteps;
+             return steps += friend.numSteps;
           }
           return steps;
         }, 0)
-      }
+      } 
       userObj.push(obj);
       return userObj;
     }, []);

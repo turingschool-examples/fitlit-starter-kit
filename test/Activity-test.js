@@ -79,4 +79,9 @@ describe("Activity", function() {
         expect(activity.getWeeklyFlights("2019/06/15", "2019/06/22").length).to.eql(3); 
     })
 
+    it('should return total active minutes for a week', function() {
+        const activity = new Activity(1);
+        expect(activity.returnTotalWeeklyMinutes("2019/06/15", "2019/06/22")).to.eql(879); 
+    })
+
 });

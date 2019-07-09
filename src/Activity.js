@@ -123,6 +123,7 @@ class Activity {
   returnFriends(startDate, endDate) {
     let correctUser =  this.findCorrectUser();
     let correctWeek = this.returnWeekInfo(startDate, endDate);
+    correctUser.friends.push(correctUser.id);
     let friends = correctWeek.reduce((matchingUsers, user) => {
       correctUser.friends.forEach(num => {
         if (num === user.userID)  {
@@ -142,13 +143,12 @@ class Activity {
     let uniqueFriends = matchingFriends.filter((user, index) => {
       return matchingFriends.indexOf(user) == index;
     })
-    uniqueFriends.unshift(correctUser)
     return uniqueFriends.reduce((userObj, user) => {
       let obj = {
         name: user.name,
         numSteps: friends.reduce((steps, friend) => {
           if (friend.userID === user.id) {
-             return steps += friend.numSteps;
+             return steps += friend.numSteps
           }
           return steps;
         }, 0)
@@ -205,6 +205,17 @@ class Activity {
     return correctUserIds.map(user => {
       return user.flightsOfStairs;
     })
+  }
+
+  returnTotalWeeklySteps(startDate, endDate) {
+    let correctUser =  this.findCorrectUser();
+    let correctWeek = this.returnWeekInfo(startDate, endDate);
+    let correctUserIds = correctWeek.filter(user => {
+    return user.userID === correctUser.id
+    })
+    return correctUserIds.reduce((totalSteps, user) => {
+      return totalSteps += user.numSteps;
+    }, 0)
   }
 }
 

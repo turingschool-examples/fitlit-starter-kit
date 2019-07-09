@@ -28,5 +28,10 @@ describe("Hydration", function() {
       const hydration = new Hydration();
       expect(hydration.returnWaterEachDay(1)).to.deep.equal([37, 85, 94, 75, 30, 40, 62, 55]);
     });
+
+    it.only("should give a week's worth of hydration data", function() {
+      const hydration = new Hydration(1);
+      expect(hydration.returnWeeklyHydration("2019/06/15", "2019/06/22").length).to.equal(7);
+    });
     
   });

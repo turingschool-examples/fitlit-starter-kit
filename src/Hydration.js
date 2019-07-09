@@ -39,6 +39,28 @@ hydrationFilePath = require("../data/HydrationSub");
         return totalDays;
       }, []);
     }
+
+    returnWeekInfo(startDate, endDate) {
+      let firstIndex = this.data.findIndex(el => {
+        return el.date === startDate;
+      });
+      let allDates = this.data.reduce((dates, user) => {
+        dates.push(user.date)
+        return dates
+      }, [])
+      let lastIndex = allDates.lastIndexOf(endDate);
+      return this.data.slice(firstIndex, lastIndex)
+    }
+
+    returnWeeklyHydration(startDate, endDate) {
+      let correctWeek = this.returnWeekInfo(startDate, endDate);
+      let correctUserData = correctWeek.filter(user => {
+        return user.userID === this.userID
+      })
+      return correctUserData.map(user => {
+        return user.numOunces;
+      })
+    }
   
   }  
   

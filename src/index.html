@@ -9,16 +9,19 @@
   <body>
     <header>
     <h1>FitLit</h1>
-    <h3>Welcome, <span class="user-name">Name</span></h3>
-    <h3>Daily Step Goal: <span class="user-steps"></span> Average Step Goal: <span class="avg-step-goal"></span></h3>
     </header>
       <main>
         <section class="main__section--friends">
+          <article class="main__section--friends--user"> 
+            <h2>Welcome, <span class="user-name">Name</span>!</h2>
+            <ul>
+                <li>Your Daily Step Goal: <span class="user-steps">10000</span></li>
+                <li>Your e-mail address: <span class="user-email">email@email.com</span></li>
+            </ul>
+          </article>
           <article>
             <h4>Friends Step Challenge</h4>
-          
-          <div class="main__section--friends--challenge">
-            
+            <div class="main__section--friends--challenge">
           </div>
           </article>
         </section>
@@ -48,7 +51,6 @@
             <div class="main__section--sleep-week">
               <canvas id="sleep-quality-chart"></canvas>
             </div>
-
             <div class="main__section--sleep--worst">
                 <h4>Worst Night This week</h4>
                 <img src="../images/sleepy-worker.svg" class="icon">
@@ -56,7 +58,6 @@
                     <p>Date: <span></span></p> 
                     <p>Quality: <span></span></p>
                 </div>
-                
             </div>
           </article> 
             <article class="main__section--sleep--averages grid-item">

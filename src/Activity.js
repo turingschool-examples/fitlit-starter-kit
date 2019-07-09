@@ -57,27 +57,27 @@ class Activity{
     daysExceedStepGoal(id){
     	let stepGoal = this.uniqueUserData.dailyStepGoal
     	let allDates = this.userActivity.filter(day => day.numSteps >= stepGoal)
-    	return allDates.map(day => day.date)
+    	return allDates.map(day => day.date);
     };
 
     allTimeStairRecord(id){
     	let stairRecord = this.userActivity.sort((a,b) =>{
  			return b.flightsOfStairs - a.flightsOfStairs;
     	})
-    	return stairRecord[0].flightsOfStairs
+    	return stairRecord[0].flightsOfStairs;
 	};
 	
 	findMilesForDay(id, dateOf){
 		let dayOfActivity = this.userActivity.find(day => day.date === dateOf);
 		let daySteps = dayOfActivity.numSteps;
 		let strideLength = this.uniqueUserData.strideLength;
-		return Math.floor((daySteps*strideLength)/5280)
+		return Math.floor((daySteps*strideLength)/5280);
 	}
 
     findLeastActiveDay(id){
         let sortedMins = this.userActivity.sort((a,b) => {
             return a.minutesActive - b.minutesActive});
-        return `Your least active day was ${sortedMins[0].date}. What happened?` 
+        return `Your least active day was ${sortedMins[0].date}. What happened?`; 
     }
 
     compareFriends(dateOf, id){
@@ -92,7 +92,6 @@ class Activity{
         }))
         let sorted = friends.sort((a,b) => b.steps - a.steps)
         return friends[0]
-
     }
 
 }

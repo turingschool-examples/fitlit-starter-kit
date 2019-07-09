@@ -1,5 +1,4 @@
-const ActivityRepository = require('../src/activityRepository');
-
+const ActivityRepository =require('../src/activityRepository')
 class Activity extends ActivityRepository {
   constructor(userData, userActivity, numSteps) {
     super(userData)
@@ -8,7 +7,7 @@ class Activity extends ActivityRepository {
   }
 
   calculateMiles(id, date="2019/06/15") {
-    let userDay = this.userActivity.find(el => el.date === date && user.userID === id)
+    let userDay = this.userActivity.find(el => el.date === date && el.userID === id)
     let steps = userDay.numSteps
     let strideLength = super.getUserData(userDay.userID).map(user => user.strideLength)
     let stepsAndStride = Math.floor(steps * strideLength[0])
@@ -17,7 +16,7 @@ class Activity extends ActivityRepository {
   }
     
   getDailyMinutesActive(id, date="2019/06/15") {
-    let minActive = this.userActivity.find(el => el.date === date && user.userId === id)
+    let minActive = this.userActivity.find(el => el.date === date && el.userId === id)
     return minActive.minutesActive
   }
     
@@ -51,24 +50,24 @@ class Activity extends ActivityRepository {
     return stairClimbingRecord[0]
   }
 
-  getAllUsersStairClimbingAverage() {
-    let userByDate = this.userActivity.filter(el => el.date === this.date)
+  getAllUsersStairClimbingAverage(date) {
+    let userByDate = this.userActivity.filter(el => el.date === date)
     let users = userByDate.reduce(function (user, cV) {
       return user += cV.flightsOfStairs 
     }, 0) 
     return Math.floor(users / userByDate.length)
   }
 
-  getAllUsersStepsAverage() {
-    let userByDate = this.userActivity.filter(el => el.date === this.date)
+  getAllUsersStepsAverage(date) {
+    let userByDate = this.userActivity.filter(el => el.date === date)
     let users = userByDate.reduce(function (user, cV) {
       return user += cV.numSteps
     }, 0)
     return Math.floor(users / userByDate.length)
   }
 
-  getAllUsersMinutesActiveAverage() {
-    let userByDate = this.userActivity.filter(el => el.date === this.date)
+  getAllUsersMinutesActiveAverage(date) {
+    let userByDate = this.userActivity.filter(el => el.date === date)
     let users = userByDate.reduce(function (user, cV) {
       return user += cV.minutesActive
     }, 0)
@@ -82,6 +81,23 @@ class Activity extends ActivityRepository {
     let exceededGoalDays = this.userActivity.filter(user => user.numSteps <= userStepGoal).filter(user => user.userID === id)
     return exceededGoalDays
   }
+
+  increasingStepsForThreeOrMoreDays(id) {
+    let user = this.userActivity.filter(user => user.userID === id)
+    let array = [];
+    let finalArray = [];
+    user.forEach(function(obj) {
+      if (array.length === 0) {
+        array.push(obj)
+      } else if (obj.numSteps > array[array.length -1].numSteps) {
+        array.push(obj)
+      } else if (obj.numSteps < array[array.length -1].numSteps) {
+        finalArray.push(array)
+        array = [];
+      }
+    }) 
+    return finalArray.filter(obj => obj.length >= 3)
+}
 }
 
 if (typeof module !== 'undefined') {

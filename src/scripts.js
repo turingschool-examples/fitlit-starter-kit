@@ -50,27 +50,26 @@ $(document).ready(function() {
             data: {
                 labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
                 datasets: [{
-                    // label: {display: false},
                     data: activity.displayWeeklyStepsList(randomUser + 1),
                     backgroundColor: [
-                        'rgba(250, 250, 250, 0.4)',
-                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
-                        'rgba(50, 50, 50, 0.4)', // 50 red, 50 blue, 50 green, 40% opacity
-                        'rgba(100, 100, 100, 0.4)', //alternatively use a hex code
-                        'rgba(150, 150, 150, 0.4)',
-                        'rgba(200, 200, 200, 0.4)',
-                        'rgba(250, 250, 250, 0.4)'
+                        '#2FB5B6',
+                        '#FC5D79', 
+                        '#B6E7EC', 
+                        '#fda8b7', 
+                        '#1F768A',
+                        '#fc7d93',
+                        '#346081'
                     ],
                     borderColor: [
-                        'rgba(0,0,0,1)', //full black border
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)', //full black border
+                        '#2FB5B6', 
+                        '#FC5D79',
+                        '#B6E7EC',
+                        '#fda8b7',
+                        '#1F768A',
+                        '#fc7d93',
+                        '#346081', 
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2
                 }]
             },
         options: {legend: {display: false}}
@@ -87,24 +86,24 @@ $(document).ready(function() {
                     label: 'weekly active minutes overview',
                     data: activity.displayWeeklyActiveMinutesList(randomUser + 1),
                     backgroundColor: [
-                        'rgba(250, 250, 250, 0.4)',
-                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
-                        'rgba(50, 50, 50, 0.4)', // 50 red, 50 blue, 50 green, 40% opacity
-                        'rgba(100, 100, 100, 0.4)', //alternatively use a hex code
-                        'rgba(150, 150, 150, 0.4)',
-                        'rgba(200, 200, 200, 0.4)',
-                        'rgba(250, 250, 250, 0.4)'
+                        '#2FB5B6',
+                        '#FC5D79', 
+                        '#B6E7EC', 
+                        '#fda8b7', 
+                        '#1F768A',
+                        '#fc7d93',
+                        '#346081'
                     ],
                     borderColor: [
-                        'rgba(0,0,0,1)', //full black border
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)', //full black border
+                        '#2FB5B6', 
+                        '#FC5D79',
+                        '#B6E7EC',
+                        '#fda8b7',
+                        '#1F768A',
+                        '#fc7d93',
+                        '#346081', 
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2
                 }]
             },
         options: {legend: {display: false}}
@@ -118,24 +117,24 @@ $(document).ready(function() {
                     label: 'weekly flights climbed overview',
                     data: activity.displayWeeklyFlightsList(randomUser + 1),
                     backgroundColor: [
-                        'rgba(250, 250, 250, 0.4)',
-                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
-                        'rgba(50, 50, 50, 0.4)', // 50 red, 50 blue, 50 green, 40% opacity
-                        'rgba(100, 100, 100, 0.4)', //alternatively use a hex code
-                        'rgba(150, 150, 150, 0.4)',
-                        'rgba(200, 200, 200, 0.4)',
-                        'rgba(250, 250, 250, 0.4)'
+                        '#2FB5B6',
+                        '#FC5D79', 
+                        '#B6E7EC', 
+                        '#fda8b7', 
+                        '#1F768A',
+                        '#fc7d93',
+                        '#346081'
                     ],
                     borderColor: [
-                        'rgba(0,0,0,1)', //full black border
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)', //full black border
+                        '#2FB5B6',
+                        '#FC5D79',
+                        '#B6E7EC',
+                        '#fda8b7',
+                        '#1F768A',
+                        '#fc7d93',
+                        '#346081', 
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2 
                 }]
             },
         options: {legend: {display: false}}
@@ -150,14 +149,14 @@ $(document).ready(function() {
                     label: 'my step goal versus all users',
                     data: [userData[randomUser].dailyStepGoal,userRepository.calculateAverageStepGoal()],
                     backgroundColor: [
-                        'rgba(250, 250, 250, 0.4)',
-                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                        '#2FB5B6',
+                        '#FC5D79', 
                     ],
                     borderColor: [
-                        'rgba(0,0,0,1)', //full black border
-                        'rgba(0,0,0,1)',
+                        '#2FB5B6', 
+                        '#FC5D79',
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2
                 }]
             },
         options: {legend: {display: false}}
@@ -172,24 +171,24 @@ $(document).ready(function() {
                     label: 'weekly active minutes overview',
                     data: hydration.displayWeeklyFluidOunce(randomUser + 1),
                     backgroundColor: [
-                        'rgba(250, 250, 250, 0.4)',
-                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
-                        'rgba(50, 50, 50, 0.4)', // 50 red, 50 blue, 50 green, 40% opacity
-                        'rgba(100, 100, 100, 0.4)', //alternatively use a hex code
-                        'rgba(150, 150, 150, 0.4)',
-                        'rgba(200, 200, 200, 0.4)',
-                        'rgba(250, 250, 250, 0.4)'
+                        '#2FB5B6',
+                        '#FC5D79', 
+                        '#B6E7EC', 
+                        '#fda8b7', 
+                        '#1F768A',
+                        '#fc7d93',
+                        '#346081'
                     ],
                     borderColor: [
-                        'rgba(0,0,0,1)', //full black border
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)', //full black border
+                        '#2FB5B6',
+                        '#FC5D79',
+                        '#B6E7EC',
+                        '#fda8b7',
+                        '#1F768A',
+                        '#fc7d93',
+                        '#346081', 
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2 
                 }]
             },
         options: {legend: {display: false}}
@@ -204,24 +203,15 @@ $(document).ready(function() {
                     label: 'hours slept this week',
                     data: sleep.displayWeeklySleep(randomUser + 1),
                     backgroundColor: [
-                        'rgba(250, 250, 250, 0.4)',
-                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
-                        'rgba(50, 50, 50, 0.4)', // 50 red, 50 blue, 50 green, 40% opacity
-                        'rgba(100, 100, 100, 0.4)', //alternatively use a hex code
-                        'rgba(150, 150, 150, 0.4)',
-                        'rgba(200, 200, 200, 0.4)',
-                        'rgba(250, 250, 250, 0.4)'
+                        '#9D9BA3',
+                        '#9D9BA3',
+                        '#9D9BA3', 
+                        '#9D9BA3', 
+                        '#9D9BA3',
+                        '#9D9BA3',
+                        '#fc7d93'
                     ],
-                    borderColor: [
-                        'rgba(0,0,0,1)', //full black border
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)', //full black border
-                    ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2
                 }]
             },
         options: {legend: {display: false}}
@@ -235,24 +225,15 @@ $(document).ready(function() {
                     label: 'quality sleep this week',
                     data: sleep.displayWeeklySleepQuality(randomUser + 1),
                     backgroundColor: [
-                        'rgba(250, 250, 250, 0.4)',
-                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
-                        'rgba(50, 50, 50, 0.4)', // 50 red, 50 blue, 50 green, 40% opacity
-                        'rgba(100, 100, 100, 0.4)', //alternatively use a hex code
-                        'rgba(150, 150, 150, 0.4)',
-                        'rgba(200, 200, 200, 0.4)',
-                        'rgba(250, 250, 250, 0.4)'
+                        '#9D9BA3',
+                        '#9D9BA3', 
+                        '#9D9BA3',
+                        '#9D9BA3', 
+                        '#9D9BA3',
+                        '#9D9BA3',
+                        '#1F768A'
                     ],
-                    borderColor: [
-                        'rgba(0,0,0,1)', //full black border
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)', //full black border
-                    ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2 
                 }]
             },
         options: {legend: {display: false}}
@@ -268,14 +249,14 @@ $(document).ready(function() {
                     data: [activityData[randomUser].numSteps, activityRepository.calculateAverageSteps('2019/06/15')
                     ],
                     backgroundColor: [
-                        'rgba(250, 250, 250, 0.4)',
-                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                        '#2FB5B6',
+                        '#FC5D79', 
                     ],
                     borderColor: [
-                        'rgba(0,0,0,1)', //full black border
-                        'rgba(0,0,0,1)',
+                        '#2FB5B6', 
+                        '#FC5D79',
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2 
                 }]
             }
         });
@@ -290,14 +271,14 @@ $(document).ready(function() {
                     data: [activityData[randomUser].minutesActive, activityRepository.calculateAverageMinutesActive('2019/06/15')
                     ],
                     backgroundColor: [
-                        'rgba(250, 250, 250, 0.4)',
-                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                        '#2FB5B6',
+                        '#FC5D79',
                     ],
                     borderColor: [
-                        'rgba(0,0,0,1)', //full black border
-                        'rgba(0,0,0,1)',
+                        '#2FB5B6', 
+                        '#FC5D79',
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2 
                 }]
             }
         });
@@ -311,12 +292,12 @@ $(document).ready(function() {
                     data: [activityData[randomUser].flightsOfStairs, activityRepository.calculateAverageStairs('2019/06/15')
                     ],
                     backgroundColor: [
-                        'rgba(0, 0, 0, 0.4)',
-                        'rgba(250, 250, 250, 0.4)'
+                        '#2FB5B6',
+                        '#FC5D79'
                     ],
                     borderColor: [
-                        'rgba(0,0,0,1)',
-                        'rgba(0,0,0,1)',
+                        '#2FB5B6',
+                        '#FC5D79',
                     ],
                     borderWidth: 2
                 }]

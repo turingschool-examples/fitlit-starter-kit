@@ -71,7 +71,7 @@ class Sleep {
         let sortedHours = this.userSleepData.sort((a,b) => {
             return a.hoursSlept - b.hoursSlept
         });
-        return `Your least active day was ${sortedHours[0].hoursSlept}. What happened?` 
+        return `Your worst day of sleep was ${sortedHours[0].hoursSlept}. What happened?` 
     }
 
 };

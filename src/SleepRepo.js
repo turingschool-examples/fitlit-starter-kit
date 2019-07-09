@@ -1,8 +1,8 @@
 if (typeof module !== 'undefined') {
     Sleep = require('./Sleep');
     sleepData = require('../data/sleep-test-data');
-	userData = require('../data/users-test-data')
-	user = require('./User')
+    userData = require('../data/users-test-data')
+    user = require('./User')
   } 
 
 class SleepRepo {
@@ -18,7 +18,22 @@ class SleepRepo {
     };
 
     findAboveAverageSleepers(dateOf){
-        let userIndexes = this.sleepData.map(user => user.sleepData.findIndex(day => day.date === dateOf));
+        let userIDs = new Set(sleepData.map(user => user.userID))
+        let uniqueUsers = new Array(...userIDs)
+        console.log(uniqueUsers.reduce((allIds, curId)=> {
+            let user = Sleep.findSleepData(curId)
+            let index = Sleep.findSleepData(curId)
+            let week = Sleep.findWeekForSleep(dateOf) 
+            let averageSleepQuality = week.reduce((overallQuality, dailyQuality) =>{
+                overallQuality += dailyQuality.sleepQuality;
+                return overallQuality;
+            }, 0) / week.length;
+
+            averageSleepQuality>=3 ? overallQuality.push(userIDs) : null;
+
+            return averageSleepQuality;
+
+            }, []))
 
     }
 
@@ -34,6 +49,16 @@ class SleepRepo {
 
         let longestSleeper =  userHours.filter(day => day.hoursSlept === userHours[0].hoursSlept);
         return longestSleeper[0].hoursSlept        
+    }
+
+    findWorstSleeper(dateOf){
+        let days = this.findDateForSleep(dateOf);
+        let userHours = days.sort(function(a,b){
+            return a.hoursSlept - b.hoursSlept
+        });
+
+        let worstSleeper =  userHours.filter(day => day.hoursSlept === userHours[0].hoursSlept);
+        return worstSleeper[0].hoursSlept
     }
 };
 

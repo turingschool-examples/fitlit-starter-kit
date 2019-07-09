@@ -43,7 +43,13 @@ $('.activity__span--flights').text(`${activityRepo.users.findFlightsForDay(2, "2
 $('.activity__span--miles').text(`${activityRepo.users.findMilesForDay(2, "2019/06/23")}`);
 $('.activity__span--least').text(`${activityRepo.users.findLeastActiveDay(2)}`)
 
-//Friends 
+// //Friends 
+// $('.friends__ul--one')
+// $('.friends__ul--two')
+// $('.friends__ul--three')
+// $('.friends__ul--four')
+
+
 
 
 

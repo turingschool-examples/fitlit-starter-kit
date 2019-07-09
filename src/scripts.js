@@ -72,9 +72,7 @@ $(document).ready(function() {
                     borderWidth: 2
                 }]
             },
-        options: {responsive: true,
-                   maintainAspectRatio: false,
-                  legend: {display: false}
+        options: {legend: {display: false}
     }
 
         });
@@ -109,7 +107,10 @@ $(document).ready(function() {
                     ],
                     borderWidth: 2
                 }]
+                
             },
+            options: {legend: {display: false},
+        }
         
         });
 

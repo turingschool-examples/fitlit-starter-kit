@@ -405,21 +405,33 @@ $(document).ready(function() {
 
 
   var numOfStepsChart = new Chart($("#js-num-of-steps-chart"), {
+    plugins: [{
+    beforeInit: function(chart, options) {
+      chart.legend.afterFit = function() {
+        this.height = this.height + 25;
+      };
+    }
+  }],
     type: 'bar',
     data: {
       labels: ["", "All Users"],
       datasets: [
         {
-          label: "Number of Steps",
+          label: "Number of steps!",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
-          data: [0, 0]
+          data: [0, 6700]
         }
       ]
     },
     options: {
       responsive: false,
       maintainAspectRatio: false,
-      legend: { display: false },
+      legend: { display: true,
+        labels: {
+           fontColor: 'black',
+           fontSize: 20
+         }
+       },
       title: {
         display: false,
       },
@@ -493,6 +505,13 @@ $(document).ready(function() {
   });
 
   var numMinActiveChart = new Chart($("#js-num-mins-active-chart"), {
+    plugins: [{
+    beforeInit: function(chart, options) {
+      chart.legend.afterFit = function() {
+        this.height = this.height + 25;
+      };
+    }
+  }],
     type: 'bar',
     data: {
       labels: ["", "All Users"],
@@ -500,14 +519,19 @@ $(document).ready(function() {
         {
           label: "Minutes Active",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
-          data: [0, 0]
+          data: [0, 6700]
         }
       ]
     },
     options: {
       responsive: false,
       maintainAspectRatio: false,
-      legend: { display: false },
+      legend: { display: true,
+        labels: {
+           fontColor: 'black',
+           fontSize: 20
+         }
+       },
       title: {
         display: false,
       },
@@ -581,21 +605,33 @@ $(document).ready(function() {
   });
 
   var flightsClimbedChart = new Chart($("#js-flights-climbed-chart"), {
+    plugins: [{
+    beforeInit: function(chart, options) {
+      chart.legend.afterFit = function() {
+        this.height = this.height + 25;
+      };
+    }
+  }],
     type: 'bar',
     data: {
       labels: ["", "All Users"],
       datasets: [
         {
-          label: "Flights Of Stairs Climbed",
+          label: "Daily Step Goal",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
-          data: [0, 0]
+          data: [0, 6700]
         }
       ]
     },
     options: {
       responsive: false,
       maintainAspectRatio: false,
-      legend: { display: false },
+      legend: { display: true,
+        labels: {
+           fontColor: 'black',
+           fontSize: 20
+         }
+       },
       title: {
         display: false,
       },

@@ -27,7 +27,7 @@ describe('activity', () => {
         });
 
         it.only('should find the user\'s identity data', () => {
-			expect(activity.findUserData(1)).to.eql({"id": 1, "name": "Luisa Hane","address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697", "email": "Diana.Hayes1@hotmail.com", "strideLength": 4.3, "dailyStepGoal": 10000, "friends": [16, 4, 8]});
+			expect(activity.findUserData(1)).to.eql({"id": 1, "name": "Luisa Hane","address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697", "email": "Diana.Hayes1@hotmail.com", "strideLength": 4.3, "dailyStepGoal": 10000, "friends": [2, 3, 4]});
         });
 
         it.only('should find the user\'s active minutes for a specified date', () => {
@@ -43,15 +43,19 @@ describe('activity', () => {
         });
 
         it.only('should let a user know when they have not achieved their step goal', () => {
-			expect(activity.compareNumStepsToStepGoal(1, "2019/06/15")).to.equal('Keep twerking!');
+			expect(activity.compareNumStepsToStepGoal(1, "2019/06/15")).to.equal('Keep twerking hunty!');
         });
 
-         it.only('should let a user know all days they have achieved their step goal', () => {
+        it.only('should let a user know all days they have achieved their step goal', () => {
 			expect(activity.daysExceedStepGoal(1).length).to.equal(4);
         });
 
-         it.only('should return all time stair record ', () => {
+        it.only('should return all time stair record ', () => {
 			expect(activity.allTimeStairRecord(1)).to.equal(36);
+        });
+
+        it.only('should should compare user against friends to determine step challenge winner ', () => {
+            expect(activity.compareFriends("2019/06/15", 1)).to.eql({ id: 5, name: 'Erick Schaden', steps: 11374 });
         });
         
     });

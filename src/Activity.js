@@ -50,7 +50,7 @@ class Activity{
     	if(dayOfActivity.numSteps >= this.uniqueUserData.dailyStepGoal){
     		return `Great job at meeting your Daily Step Goal!`
     	} else{
-    		return 'Keep twerking!'
+    		return 'Keep twerking hunty!'
     	}
     };
 
@@ -80,17 +80,18 @@ class Activity{
         return `Your least active day was ${sortedMins[0].date}. What happened?` 
     }
 
-    compareFriends(dateOf){
-        let included = [...userData.id.friends, userdata.id]
-        let friends = included.map(user => ({
-            id: user,
+    compareFriends(dateOf, id){
+        let included = [...userData[id].friends, userData[id].id]
+        let friends = included.map(friend => ({
+            id: friend,
             name: userData.find(user => user.id === friend).name,
-            step: activityData.filter(day => day.date <= dateOf)
+            steps: activityData.filter(day => day.userID === friend && day.date <= dateOf)
                     .slice(-6, +1)
                     .map(user => user.numSteps)
                     .reduce((totalSteps, dailySteps) => totalSteps += dailySteps, 0)
         }))
-console.log(friends)
+        let sorted = friends.sort((a,b) => b.steps - a.steps)
+        return friends[0]
 
     }
 

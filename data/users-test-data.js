@@ -7,9 +7,9 @@ const userData = [
     "strideLength": 4.3,
     "dailyStepGoal": 10000,
     "friends": [
-      16,
-      4,
-      8
+      2,
+      3,
+      4
     ]
   },
   {
@@ -20,10 +20,10 @@ const userData = [
     "strideLength": 4.5,
     "dailyStepGoal": 5000,
     "friends": [
-      9,
-      18,
-      24,
-      19
+      5,
+      1,
+      3,
+      4
     ]
   },
   {
@@ -62,13 +62,105 @@ const userData = [
     "strideLength": 3.1,
     "dailyStepGoal": 8000,
     "friends": [
-      13,
-      44,
-      49,
-      33,
-      10
+      24,
+      26,
+      2,
+      27,
     ]
-  }
+  },
+  {
+    "id": 24,
+    "name": "Kristin Cruickshank",
+    "address": "806 Raynor Port, Kilbackbury OK 11077",
+    "email": "Waylon_Zulauf@hotmail.com",
+    "strideLength": 3.3,
+    "dailyStepGoal": 4000,
+    "friends": [
+      1,
+      2,
+      4,
+      5
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Isobel Schmeler",
+    "address": "5592 Donnelly Trail, Scottieport SC 35511",
+    "email": "Name79@yahoo.com",
+    "strideLength": 3.3,
+    "dailyStepGoal": 4000,
+    "friends": [
+      3,
+      1,
+      24
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Greta Corkery",
+    "address": "99020 Botsford Knoll, Lake Cecil ID 44141",
+    "email": "Virgil28@hotmail.com",
+    "strideLength": 3,
+    "dailyStepGoal": 12000,
+    "friends": [
+      1,
+      3,
+      2,
+      25
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Johnathan Schulist",
+    "address": "868 Kathryn Pike, Gibsonport ME 79500-6839",
+    "email": "Mayra49@yahoo.com",
+    "strideLength": 3,
+    "dailyStepGoal": 10000,
+    "friends": [
+      3,
+      1,
+      26
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Noemi Huels",
+    "address": "5437 Barton Oval, Caesarview RI 88637",
+    "email": "Geovany.Jaskolski@hotmail.com",
+    "strideLength": 3.3,
+    "dailyStepGoal": 2000,
+    "friends": [
+      5,
+      29,
+      30
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Colten Trantow",
+    "address": "2625 Waino Skyway, Kaceybury ME 18723",
+    "email": "Demetris67@hotmail.com",
+    "strideLength": 4.2,
+    "dailyStepGoal": 9000,
+    "friends": [
+      4,
+      3,
+      24
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Deborah Keebler",
+    "address": "039 Jerde Brook, South Helen TN 08907-6883",
+    "email": "Colt_Hermann59@gmail.com",
+    "strideLength": 3.7,
+    "dailyStepGoal": 9000,
+    "friends": [
+      29,
+      3,
+      2,
+    ]
+  },
 ]
 
 if(typeof module !== 'undefined'){

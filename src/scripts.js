@@ -262,7 +262,8 @@ let userWeeklyHydration = new Chart($(".hydration__chart-weeklyOz-oneUser"), {
           data: [
             sleep.getHoursSleptOnDay(randomID, currentDate()),
             sleep.getSleepQualityOnDay(randomID, currentDate()) 
-          ]
+          ],
+          yAxisID: 'YourData',
         },
         {
           label: "Your averages",
@@ -270,7 +271,8 @@ let userWeeklyHydration = new Chart($(".hydration__chart-weeklyOz-oneUser"), {
           data: [
             sleep.getAvgHoursSlept(randomID),
             sleep.getAvgSleepQuality(randomID)
-          ]
+          ],
+          yAxisID: 'AverageData',
         }
       ]
     },
@@ -278,7 +280,30 @@ let userWeeklyHydration = new Chart($(".hydration__chart-weeklyOz-oneUser"), {
       title: {
         display: true,
         text: 'Sleep data comparison'
-      }
+      },
+      scales: {
+        yAxes: [{
+            id: 'YourData',
+            ticks: {
+                beginAtZero: false,
+            },
+            scaleLabel: {
+                display: true,
+                labelString: 'Hours of Sleep'
+              }
+        },
+       {
+            id: 'AverageData',
+            position: 'right',
+            ticks: {
+                beginAtZero: true,
+            },
+            scaleLabel: {
+                display: true,
+                labelString: 'Quality of Sleep'
+              }
+        }]
+    }
     }
   });
 

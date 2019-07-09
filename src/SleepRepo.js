@@ -8,7 +8,7 @@ if (typeof module !== 'undefined') {
 class SleepRepo {
     constructor(id){
         this.sleepData = sleepData;
-        this.users = new Sleep(id);//this is only one user
+        this.users = new Sleep(id);
     };
 
     findAverageSleep(){
@@ -17,26 +17,26 @@ class SleepRepo {
         return Math.round(AllQualityReduced/this.sleepData.length)
     };
 
-    findAboveAverageSleepers(dateOf){ // not done
-        let userIDs = new Set(sleepData.map(user => user.userID))
-        let uniqueUsers = new Array(...userIDs)
-        console.log(uniqueUsers)
+    findAboveAverageSleepers(dateOf){ 
+        let userIDs = sleepData.map(user => user.userID)
+        let userSet = new Set(userIDs)
+        let uniqueUsers = new Array(...userSet)
+        
         return uniqueUsers.reduce((allIds, curId)=> {
             let user = sleepData.filter(sleep => sleep.userID === curId)
             let dateIndex =  user.findIndex(day => day.date === dateOf);
             let week = user.slice(dateIndex - 6, dateIndex + 1);
             let overallSleepQuality = week.reduce((overallQuality, dailyQuality) => {
                 return overallQuality += dailyQuality.sleepQuality;
-            }, 0)/7
-            
+                }, 0)/7
+
             if(overallSleepQuality >= 3){
-                allIds.push(userIDs)
+                allIds.push(curId)
             }
-            console.log('allIds', allIds)
+
             return allIds;
 
-            }, [])
-
+            }, []) 
     }
 
     findDateForSleep(dateOf) {

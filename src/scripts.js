@@ -224,15 +224,10 @@ let stepChallenge = new Chart($(".main__step-challengeChart"), {
   data: {
     labels: activity.returnFriends("2019/06/15", "2019/06/22").map(user => user.name),
     datasets: [{
-      label: "Your steps",
+      label: "Number of steps",
       backgroundColor: "#3e95cd",
       data: activity.returnFriends("2019/06/15", "2019/06/22").map(user => user.numSteps)
     },
-    {
-      label: '',
-      backgroundColor: "#8e5ea2",
-      data: console.log(activity.returnFriends("2019/06/15", "2019/06/22"))
-      }
     ]
     },
   options: {

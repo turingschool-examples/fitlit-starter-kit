@@ -65,4 +65,12 @@ describe('Activity', () => {
     expect(usersTotalSteps).to.equal(54000);
   });
 
+  it('should return dates for increasing step streaks of more than 3 days', () => {
+    const streaks = activity.returnStepStreaks();
+    console.log('streaks', streaks)
+    expect(streaks).to.equal();
+  });
 })
+
+
+

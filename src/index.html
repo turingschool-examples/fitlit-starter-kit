@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Activity Tracker</title>
@@ -21,21 +22,72 @@
       </ul>
     </nav>
     <main>
-      <article>UserDate</article>
-      <label for="start">Start Date:</label>
-      <input type="date" id="date-calendar" name="start-date" value="2019-06-15" min="2019-06-15" max="2019-09-22">
-      <button id="submit-date__button" name="submit-date">Submit</button>
-      <article>StepGoal
-      </article>
-      <div class="water-display__article"> H2O
-        <img src="../images/water.png" alt="image of water glass" class="water-icon">
-        <p id="daily-water__display">...</p>
-        <p>Ounces of Water Drank Today</p>
+      <div>
+        <label for="start">Start Date:</label>
+        <input type="date" id="date-calendar" name="start-date" value="2019-06-15" min="2019-06-15" max="2019-09-22">
+        <button id="submit-date__button" name="submit-date">Submit</button>
+      </div>
+      <p>
+        H2O
+      </p>
+      <img src="../images/water.png" alt="icon of a water glass" class="icon">
+      <p id="daily-water__display">...</p>
+      <p>Ounces of Water Drank Today</p>
+      <div class="water-display__article"> 
         <canvas id="weeklyWaterChart" width="400" height="400"></canvas>
       </div>
       <article>Sleep</article>
-      <article>Steps</article>
-      <article> Challenges</article>
+      <article>
+        Activity
+        <div>
+          <img src="../images/sneaker.png" alt="icon of a sneaker" class="icon">
+          <p id="step-count__display">...</p>
+          <p>
+            Today's Step Count
+          </p>
+        </div>
+        <div>
+          <img src="../images/stopwatch-icon-6.png" alt="icon of a clock" class="icon">
+          <p id="minutes-active__display">...</p>
+          <p>
+            Minutes Active Today
+          </p>
+        </div>
+        <div>
+          <p id="miles-walked__display">...</p>
+          <p>
+            Miles Walked Based on Steps
+          </p>
+        </div>
+          <div class="compare-users__display">
+            <table>
+              <tr>
+                <th></th>
+                <th>Step Count</th>
+                <th>Flights of Stairs</th>
+                <th>Minutes Active</th>
+              </tr>
+              <tr>
+                <th>You</th>
+                <th id="step-count__display">...</th>
+                <th id="minutes-active__display">...</th>
+                <th id="stairs-climbed__display">...</th>
+              </tr>
+              <tr>
+                <th>All Users</th>
+                <th id="all-user-step-count">...</th>
+                <th id="all-user-stair-count">...</th>
+                <th id="all-user-minutes-active">...</th>
+              </tr>
+            </table>
+          </div>
+        <div class="minutes-active-display__article">
+          <canvas id="exceededSteps" width="400" height="400"></canvas>
+        </div>
+      </article>
+      <article> 
+        Challenges
+      </article>
     </main>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -51,7 +103,7 @@
   <script type="text/javascript" src="./hydrationRepository.js"></script>
   <script type="text/javascript" src="./sleep.js"></script>
   <script type="text/javascript" src="./sleepRepository.js"></script>
-  <script type="text/javascript" src="./activity.js"></script>
   <script type="text/javascript" src="./activityRepository.js"></script>
+  <script type="text/javascript" src="./activity.js"></script>
   <script type="text/javascript" src="./scripts.js"></script>
 </html>

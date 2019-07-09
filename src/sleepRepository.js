@@ -32,8 +32,7 @@ class SleepRepository {
     return dateArr.filter(el => el.hoursSlept === mostHours)
   }
 
-  bestSleepQualtiy(date) {
-    
+  bestSleepQuality(date) {
     let userIds = this.data.map(user => user.userID);
     let uniqueIds = new Set(userIds);
     uniqueIds = [...uniqueIds];

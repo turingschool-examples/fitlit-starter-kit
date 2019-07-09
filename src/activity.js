@@ -1,22 +1,28 @@
-const ActivityRepository =require('../src/activityRepository')
+if (typeof module !=='undefined'){
+  ActivityRepository =require('../src/activityRepository')
+}
 class Activity extends ActivityRepository {
-  constructor(userData, userActivity, numSteps) {
+  constructor(userData, userActivity) {
     super(userData)
     this.userActivity = userActivity;
-    this.numSteps = numSteps;
+  }
+
+  dailyStepCount(id, date="2019/06/15") {
+    let stepCount = this.userActivity.find(user => user.userID === id && user.date === date)
+    return stepCount.numSteps
   }
 
   calculateMiles(id, date="2019/06/15") {
-    let userDay = this.userActivity.find(el => el.date === date && el.userID === id)
-    let steps = userDay.numSteps
-    let strideLength = super.getUserData(userDay.userID).map(user => user.strideLength)
+    let user = this.userActivity.find(user => user.userID === id && user.date === date)
+    let steps = user.numSteps
+    let strideLength = super.getUserData(user.userID).map(user => user.strideLength)
     let stepsAndStride = Math.floor(steps * strideLength[0])
     let miles = 5280 / stepsAndStride
     return Number(miles.toFixed(2))
   }
     
   getDailyMinutesActive(id, date="2019/06/15") {
-    let minActive = this.userActivity.find(el => el.date === date && el.userId === id)
+    let minActive = this.userActivity.find(el => el.date === date && el.userID === id)
     return minActive.minutesActive
   }
     
@@ -33,7 +39,7 @@ class Activity extends ActivityRepository {
     let user = this.userActivity.filter(el => el.userID === id)
     let userByDate = user.find(el => el.date === date)
     let stepGoal = super.getUserData(userByDate.userID).map(user => user.dailyStepGoal)
-    return this.numSteps >= stepGoal ? 'step goal met!' : 'step goal not met!'
+    return user.numSteps >= stepGoal ? 'step goal met!' : 'step goal not met!'
   }
 
   exceedStepGoal(id) {
@@ -41,13 +47,18 @@ class Activity extends ActivityRepository {
       return user += cV.dailyStepGoal
     }, 0)
     let exceededGoalDays = this.userActivity.filter(user => user.numSteps >= userStepGoal).filter(user => user.userID === id)
-    return exceededGoalDays
+    return exceededGoalDays.map(user => user.date)
   }
 
   findStairClimbingRecord(id) {
     let user = this.userActivity.filter(el => el.userID === id)
     let stairClimbingRecord = user.sort((a, b) => b.flightsOfStairs - a.flightsOfStairs)
     return stairClimbingRecord[0]
+  }
+
+  getUserStairClimb (id) {
+    let user = this.userActivity.find(user => user.userID === id)
+    return user.flightsOfStairs
   }
 
   getAllUsersStairClimbingAverage(date) {

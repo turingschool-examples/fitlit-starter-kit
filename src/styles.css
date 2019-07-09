@@ -1,5 +1,11 @@
-.water-icon {
+body {
+   font-family: 'Montserrat', sans-serif;
+
+}
+
+.icon {
     background-color: transparent;
     height: 100px;
     width: 100px;
 }
+

@@ -10,9 +10,13 @@ const ActivityRepository = require('../src/activityRepository');
 
 describe('Activity', function() {
 
+  it('should be able to return the number of steps a user took', function() {
+    const repo1 = new Activity(fakeData, fakeActivity);
 
+    expect(repo1.dailyStepCount(1, "2019/06/15")).to.equal(3577)
+  })
   it('should be able to calculate the miles a user has walked', function () {
-    const repo1 = new Activity(fakeData, fakeActivity, 3577);
+    const repo1 = new Activity(fakeData, fakeActivity);
     const userActivity = new ActivityRepository(fakeActivity)
 
     expect(repo1.calculateMiles(1)).to.equal(.34)
@@ -59,42 +63,12 @@ describe('Activity', function() {
     const repo1 = new Activity(fakeData, fakeActivity, 3577);
     const repo2 = new Activity(fakeData, fakeActivity, 5144);
 
-    expect(repo1.exceedStepGoal(1)).to.eql([{
-      userID: 1,
-      date: '2019/06/17',
-      numSteps: 14329,
-      minutesActive: 168,
-      flightsOfStairs: 18
-    },
-    {
-      userID: 1,
-      date: '2019/06/20',
-      numSteps: 14478,
-      minutesActive: 140,
-      flightsOfStairs: 12
-    },
-    {
-      userID: 1,
-      date: '2019/06/22',
-      numSteps: 10289,
-      minutesActive: 119,
-      flightsOfStairs: 6
-    },
-    {
-      userID: 1,
-      date: '2019/06/23',
-      numSteps: 13928,
-      minutesActive: 218,
-      flightsOfStairs: 21
-    }
-    ])
-    expect(repo2.exceedStepGoal(25)).to.eql([{
-      userID: 25,
-      date: '2019/06/15',
-      numSteps: 5144,
-      minutesActive: 282,
-      flightsOfStairs: 16
-    }])
+    expect(repo1.exceedStepGoal(1)).to.eql([
+          "2019/06/17",
+          "2019/06/20",
+          "2019/06/22",
+          "2019/06/23"])
+    expect(repo2.exceedStepGoal(25)).to.eql(['2019/06/15'])
   });
 
   it('should return a users all time stair climbing record', function() {

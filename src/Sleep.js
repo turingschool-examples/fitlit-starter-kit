@@ -4,17 +4,17 @@ class Sleep {
   }
 
   findIdHelper(id) {
-    let specificUserIntake = this.sleepData.filter(function(object) {
-      return object.userID === id
+    let specificUserIntake = this.sleepData.filter(function(aUser) {
+      return aUser.userID === id
     })
     return specificUserIntake;
   }
   calculateAverageDailySleepHours(id) {
-    let userSleepData = this.findIdHelper(id).map(function(obj) {
-      return obj.hoursSlept
+    let userSleepData = this.findIdHelper(id).map(function(aUser) {
+      return aUser.hoursSlept
     }) 
-    let totalHoursSlept = userSleepData.reduce(function(acc, curVal) {
-      return acc = acc + curVal
+    let totalHoursSlept = userSleepData.reduce(function(total, hours) {
+      return total = total + hours
     }, 0 )
     let averageHoursSlept = totalHoursSlept / userSleepData.length
     let roundedHoursSlept = averageHoursSlept.toFixed(2)
@@ -22,11 +22,11 @@ class Sleep {
   }
 
   calculateAverageSleepQuality(id) {
-    let userSleepData = this.findIdHelper(id).map(function(obj) {
-      return obj.sleepQuality
+    let userSleepData = this.findIdHelper(id).map(function(aUser) {
+      return aUser.sleepQuality
     }) 
-    let totalSleepQuality = userSleepData.reduce(function(acc, curVal) {
-      return acc = acc + curVal
+    let totalSleepQuality = userSleepData.reduce(function(total, quality) {
+      return total = total + quality
     }, 0 )
     let averageSleepQuality = totalSleepQuality / userSleepData.length
     let roundedQualitySleep = averageSleepQuality.toFixed(2)
@@ -34,23 +34,23 @@ class Sleep {
   }
 
   displayHoursSlept(id, date) {
-    let dateOfUserIntake = this.findIdHelper(id).find(function(obj) {
-      return obj.date === date
+    let dateOfUserIntake = this.findIdHelper(id).find(function(aUser) {
+      return aUser.date === date
     });
     return dateOfUserIntake.hoursSlept;
   }
 
   displaySleepQuality(id, date) {
-    let dateOfUserIntake = this.findIdHelper(id).find(function(obj) {
-      return obj.date === date
+    let dateOfUserIntake = this.findIdHelper(id).find(function(aUser) {
+      return aUser.date === date
     });
     return dateOfUserIntake.sleepQuality;
   }
 
   displayWeeklySleep(id) {
     let user = this.findIdHelper(id)
-    let userWeeklySleep = user.map(function(obj) {
-      return obj.hoursSlept
+    let userWeeklySleep = user.map(function(aUser) {
+      return aUser.hoursSlept
     })
     if (userWeeklySleep.length > 7) {
       userWeeklySleep.length = 7;
@@ -61,8 +61,8 @@ class Sleep {
 
   displayWeeklySleepQuality(id) {
     let user = this.findIdHelper(id)
-    let userWeeklySleepQuality = user.map(function(obj) {
-      return obj.sleepQuality
+    let userWeeklySleepQuality = user.map(function(aUser) {
+      return aUser.sleepQuality
     })
     if (userWeeklySleepQuality.length >= 7) {
       userWeeklySleepQuality.shift();
@@ -72,12 +72,12 @@ class Sleep {
 
   displayRecordSleepQuality(id) {
     let userId = this.findIdHelper(id);
-    let sleepQualityList = userId.map(function(obj) {
-      return obj.sleepQuality
+    let sleepQualityList = userId.map(function(aUser) {
+      return aUser.sleepQuality
     })
     let mostQualitySleep = Math.max(...sleepQualityList)
-    let bestSleepDate = userId.find(function(obj) {
-      return obj.sleepQuality === mostQualitySleep
+    let bestSleepDate = userId.find(function(ourUser) {
+      return ourUser.sleepQuality === mostQualitySleep
     })
     let sleepRecord = []
     sleepRecord.push(bestSleepDate.date)
@@ -87,12 +87,12 @@ class Sleep {
 
     displayRecordHoursSlept(id) {
     let userId = this.findIdHelper(id);
-    let sleepHoursList = userId.map(function(obj) {
-      return obj.hoursSlept
+    let sleepHoursList = userId.map(function(aUser) {
+      return aUser.hoursSlept
     })
     let mostHoursSlept = Math.max(...sleepHoursList)
-    let mostSleepDate = userId.find(function(obj) {
-      return obj.hoursSlept === mostHoursSlept
+    let mostSleepDate = userId.find(function(ourUser) {
+      return ourUser.hoursSlept === mostHoursSlept
     })
     let sleepHoursRecord = []
     sleepHoursRecord.push(mostSleepDate.date)
@@ -101,7 +101,6 @@ class Sleep {
   }
 
 
-  //add same method above but for sleep hours
 }
 
 

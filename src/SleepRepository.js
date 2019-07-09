@@ -8,11 +8,11 @@ class SleepRepository {
   }
 
   calculateAverageUsersSleepQuality() {
-    let allSleepQuality = this.sleepData.map(function(obj) {
-      return obj.sleepQuality
+    let allSleepQuality = this.sleepData.map(function(aUser) {
+      return aUser.sleepQuality
     })
-    let totalSleepQuality = allSleepQuality.reduce(function(total, current) {
-      return total = total + current
+    let totalSleepQuality = allSleepQuality.reduce(function(total, quality) {
+      return total = total + quality
     }, 0)
     let averageSleepQuality = totalSleepQuality / allSleepQuality.length 
     let roundedAverageSleepQuality = averageSleepQuality.toFixed(1)
@@ -21,18 +21,18 @@ class SleepRepository {
 
   displayHeaviestSleeper(date) {
     let user = new User(userData);
-    let specificDateSleep = this.sleepData.filter(function(obj) {
-      return obj.date === date 
+    let specificDateSleep = this.sleepData.filter(function(aUser) {
+      return aUser.date === date 
     })
-    let amountSlept = specificDateSleep.map(function(obj) {
-      return obj.hoursSlept
+    let amountSlept = specificDateSleep.map(function(oneUser) {
+      return oneUser.hoursSlept
     })
     let mostSleep = Math.max(...amountSlept)
-    let idWithMostSleep = specificDateSleep.find(function(obj) {
-      return obj.hoursSlept === mostSleep
+    let idWithMostSleep = specificDateSleep.find(function(ourUser) {
+      return ourUser.hoursSlept === mostSleep
     })
-    let userWhoSleptMost = user.userData.find(function(obj) {
-      return obj.id === idWithMostSleep.userID
+    let userWhoSleptMost = user.userData.find(function(thisUser) {
+      return thisUser.id === idWithMostSleep.userID
     })
     return userWhoSleptMost.name
   }

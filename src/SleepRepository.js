@@ -1,7 +1,7 @@
 if (typeof module !== "undefined") {
-dataFilePath = require('../data/sleepSub2');
-User = require('../src/User');
-Sleep = require('../src/Sleep');
+  dataFilePath = require('../data/sleepSub2');
+  User = require('../src/User');
+  Sleep = require('../src/Sleep');
 } else {
   dataFilePath = sleepData;
 }
@@ -60,7 +60,7 @@ class SleepRepository {
       this.data.forEach((el, i) => {
         if (userData.date === sleepDate) {index = i;}
       });
-     
+    
       console.log(`index is ${index}`)
       this.data.forEach((el, i) => {
         if (i >= index && i <= index + 6) {
@@ -101,7 +101,7 @@ class SleepRepository {
   // });
   // return avgOverThree;
   // }
- 
+
 }
 
 if (typeof module !== 'undefined') {

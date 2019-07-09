@@ -27,9 +27,18 @@ class User {
       })
       return friendActivity
     });
-    console.log(friendFind)
+    let friendsWeek = friendFind.map(function(friends) {
+      return friends.slice(0, 7);
+    })
+    let friendsSteps = friendsWeek.map(function(friend) {
+      let dayStep = friend.map(function(day) {
+        return day.numSteps
+      })
+      return dayStep
+    })
+    return friendsSteps
   }
-    
+
 }
 
 

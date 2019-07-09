@@ -75,11 +75,39 @@ $(document).ready(function() {
 
 });
 
+
+
+
 function getRandomNumber() {
   let randNum = (Math.random() * 50) + 1;
   randNum = Math.floor(randNum);
   console.log(randNum);
   return randNum;
+}
+
+
+function friendsStepChallenge() {
+    let friends = currentUser.friends;
+    friends.push(currentUser.id);
+    friends = friends.map(friend => {
+        return friend = new Activity(activityData, friend);
+    }).map(friend => {
+        return friend = {
+            'id': friend.id, 
+            'weeklySteps': friend.returnWeeklySteps("2019/06/23"),
+            'name': globalRepo.returnUser(friend.id).name
+        }
+    })
+    friends.sort((a,b) => {
+        return b.weeklySteps - a.weeklySteps;
+    })
+    console.log('friends', friends)
+    generateFriendsElements(friends)
+} 
+
+function generateFriendsElements(users) {
+    let friendsList = `<ol>`
+    users
 }
 
 // Chart  Section //

@@ -7,8 +7,8 @@ if (typeof module !== 'undefined') {
 class Activity extends User {
   constructor (user, currentUser) {
     super(user, currentUser)
-    this.currentUser = currentUser
-    this.user = user
+    this.currentUser = currentUser;
+    this.user = user;
   }
 
 
@@ -84,4 +84,3 @@ class Activity extends User {
 if (typeof module !== 'undefined') {
   module.exports = Activity;
 }
-

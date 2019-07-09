@@ -9,24 +9,13 @@ $(document).ready(function() {
     const sleepRepo = new SleepRepository(sleepData);
     const activityRepo = new ActivityRepository(activityData);
     const userID = Math.floor((Math.random() * 50) + 1);
-    const specificUser = userRepo.returnUserData(userID);
-    const user = new User(specificUser);
-    const hydrationUser = hydrationRepo.returnUserHydrationData(userID);
-    const hydration = new Hydration(hydrationUser);
-    const sleepUser = sleepRepo.returnUserSleepData(userID);
-    const sleep = new Sleep(sleepUser);
-    const activityUser = activityRepo.returnUserActivityData(userID);
-    const activity = new Activity(user, activityUser);
-
-    $('#js-first-name').html(user.returnFirstName());
-    $('#js-full-name').html(user.name);
-    $('#js-address').html(user.address);
-    $('#js-email').html(user.email);
-    $('#js-friends').html(userRepo.makeFriendNames(userID));
-    $('#js-miles').html(activity.milesWalked(today));
+    const user = new User(userRepo.returnUserData(userID));
+    const hydration = new Hydration(hydrationRepo.returnUserHydrationData(userID));
+    const sleep = new Sleep(sleepRepo.returnUserSleepData(userID));
+    const activity = new Activity(user, activityRepo.returnUserActivityData(userID));
     $('#js-h2--welcome').hide();
     $('#js-h2--user').show();
-    updateCharts(user, hydration, sleep, activity, activityRepo);
+    updateCharts(user, userRepo, hydration, sleep, activity, activityRepo, userID);
   });
 
   $('#js-user').click(function() {
@@ -128,6 +117,15 @@ $(document).ready(function() {
     $(`#${clickedID}`).addClass('list-item--active');
   }
 
+  function updateUserProfile(user, userRepo, activity, userID) {
+    $('#js-first-name').html(user.returnFirstName());
+    $('#js-full-name').html(user.name);
+    $('#js-address').html(user.address);
+    $('#js-email').html(user.email);
+    $('#js-friends').html(userRepo.makeFriendNames(userID));
+    $('#js-miles').html(activity.milesWalked(today));
+  }
+
   function updateStepGoalChart(user) {
     stepGoalChart.data.labels[0] = user.name;
     stepGoalChart.data.datasets[0].data[0] = user.dailyStepGoal;
@@ -174,7 +172,8 @@ $(document).ready(function() {
     flightsClimbedLineChart.update();
   }
 
-  function updateCharts(user, hydration, sleep, activity, activityRepo) {
+  function updateCharts(user, userRepo, hydration, sleep, activity, activityRepo, userID) {
+    updateUserProfile(user, userRepo, activity, userID);
     updateStepGoalChart(user);
     updateHydrationLineChart(hydration);
     updateSleepCharts(sleep);
@@ -182,10 +181,6 @@ $(document).ready(function() {
     stepsCharts(activity, activityRepo);
     flightsCharts(activity, activityRepo);
   }
-
-
-
-
 
 
 
@@ -203,7 +198,9 @@ $(document).ready(function() {
       datasets: [
         {
           label: "Daily Step Goal",
-          backgroundColor: ["#3e95cd", "#8e5ea2"],
+          backgroundColor: ["rgb(4, 249, 233, 0.1)", "rgb(228, 228, 228, 0.2)"],
+          borderWidth: 3,
+          borderColor: ["#04f9e9", "rgb(221, 210, 204)"],
           data: [0, 6700]
         }
       ]
@@ -256,7 +253,7 @@ $(document).ready(function() {
       datasets: [{
         data: [],
         label: "Water Consumed",
-        borderColor: "#3e95cd",
+        borderColor: "#04f9e9",
         fill: true
       }
       ]
@@ -305,7 +302,7 @@ $(document).ready(function() {
       datasets: [{
         data: [],
         label: "Sleep Quality",
-        borderColor: "#3e95cd",
+        borderColor: "#04f9e9",
         fill: true
       }
       ]
@@ -354,7 +351,7 @@ $(document).ready(function() {
       datasets: [{
         data: [],
         label: "Hours Slept",
-        borderColor: "#3e95cd",
+        borderColor: "#04f9e9",
         fill: true
       }
       ]
@@ -403,8 +400,10 @@ $(document).ready(function() {
       labels: ["", "All Users"],
       datasets: [
         {
-          label: "Number of steps!",
-          backgroundColor: ["#3e95cd", "#8e5ea2"],
+          label: "Number of Steps",
+          backgroundColor: ["rgb(4, 249, 233, 0.1)", "rgb(228, 228, 228, 0.2)"],
+          borderWidth: 3,
+          borderColor: ["#04f9e9", "rgb(221, 210, 204)"],
           data: [0, 6700]
         }
       ]
@@ -456,8 +455,8 @@ $(document).ready(function() {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{
         data: [],
-        label: "Number of Steps this week!",
-        borderColor: "#3e95cd",
+        label: "Number of Steps this Week",
+        borderColor: "#04f9e9",
         fill: true
       }
       ]
@@ -506,7 +505,9 @@ $(document).ready(function() {
       datasets: [
         {
           label: "Minutes Active",
-          backgroundColor: ["#3e95cd", "#8e5ea2"],
+          backgroundColor: ["rgb(4, 249, 233, 0.1)", "rgb(228, 228, 228, 0.2)"],
+          borderWidth: 3,
+          borderColor: ["#04f9e9", "rgb(221, 210, 204)"],
           data: [0, 6700]
         }
       ]
@@ -558,8 +559,8 @@ $(document).ready(function() {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{
         data: [],
-        label: "Minutes Active this week",
-        borderColor: "#3e95cd",
+        label: "Minutes Active this Week",
+        borderColor: "#04f9e9",
         fill: true
       }
       ]
@@ -607,8 +608,10 @@ $(document).ready(function() {
       labels: ["", "All Users"],
       datasets: [
         {
-          label: "Flights Climbed!",
-          backgroundColor: ["#3e95cd", "#8e5ea2"],
+          label: "Flights Climbed",
+          backgroundColor: ["rgb(4, 249, 233, 0.1)", "rgb(228, 228, 228, 0.2)"],
+          borderWidth: 3,
+          borderColor: ["#04f9e9", "rgb(221, 210, 204)"],
           data: [0, 6700]
         }
       ]
@@ -660,8 +663,8 @@ $(document).ready(function() {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{
         data: [],
-        label: "Flights climbed this week!",
-        borderColor: "#3e95cd",
+        label: "Flights Climbed this Week",
+        borderColor: "#04f9e9",
         fill: true
       }
       ]

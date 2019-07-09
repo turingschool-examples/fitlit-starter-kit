@@ -12,6 +12,8 @@ let activityDay = activity.returnDay("2019/06/23");
 let activityRepo = new ActivityRepository(activityData)
 console.log(activityRepo)
 
+let friendsShit = friendsStepChallenge();
+
 // console.log(currentHydration);
 
 $(document).ready(function() {
@@ -41,6 +43,7 @@ $(document).ready(function() {
   $("li").eq(0).text(currentUser.email)
   $("li").eq(1).text(currentUser.dailyStepGoal)
   $("li").eq(2).text(currentUser.strideLength)
+  let friendsListItems = $(".main__section--friends--challenge")
   $("li").eq(3).text(currentUser.friends)
   $('.main__section--daily-intake').text(currentHydration.returnIntakeByDay("2019/06/23"))
   $('.main__section--average-intake').text(currentHydration.returnDailyAverage())
@@ -101,14 +104,20 @@ function friendsStepChallenge() {
     friends.sort((a,b) => {
         return b.weeklySteps - a.weeklySteps;
     })
-    console.log('friends', friends)
-    generateFriendsElements(friends)
+    generateFriendsElements(friends);
 } 
 
 function generateFriendsElements(users) {
-    let friendsList = `<ol>`
-    users
+    let friendsList = ''
+    users.forEach(user => {
+        friendsList += `<li>${user.name}: ${user.weeklySteps} steps</li>`
+    })
+    friendsList += ''
+    console.log(friendsList)
+    return friendsList
 }
+
+// friendsStepChallenge();
 
 // Chart  Section //
 

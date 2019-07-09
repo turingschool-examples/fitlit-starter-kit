@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>FitLit</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
@@ -24,11 +25,13 @@
         <p id="user-stepGoal"></p>
         <p id="avg-stepGoal"></p>
         <p id="user-stride"></p>
+        <canvas id="user-vs-avg-steps" width="300" height="300"></canvas>
       </section>
       <section class="hydration-section">
         <h2>Hydration</h2>
         <p id="daily-water"></p>
         <p id="weekly-water"></p>
+        <canvas id="weekly-water-intake" width="300" height="300"></canvas>
       </section>
       <section class="activity-section">
         <h2>Activity</h2>

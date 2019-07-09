@@ -13,8 +13,13 @@ $(document).ready(function() {
     const hydration = new Hydration(hydrationRepo.returnUserHydrationData(userID));
     const sleep = new Sleep(sleepRepo.returnUserSleepData(userID));
     const activity = new Activity(user, activityRepo.returnUserActivityData(userID));
+    $('#js-intro-message').hide();
+    $('#js-user-profile').show();
+    $('#js-change-user').text('Change User').removeClass('list-item--active');
+    $('#js-user').addClass('list-item--active');
     $('#js-h2--welcome').hide();
     $('#js-h2--user').show();
+    enableButtons();
     updateCharts(user, userRepo, hydration, sleep, activity, activityRepo, userID);
   });
 
@@ -26,6 +31,7 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
+    $('#js-intro-message').hide();
     removeClasses();
     addClasses();
   });
@@ -38,6 +44,7 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
+    $('#js-intro-message').hide();
     removeClasses();
     addClasses();
   });
@@ -50,6 +57,7 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
+    $('#js-intro-message').hide();
     removeClasses();
     addClasses();
   });
@@ -62,6 +70,7 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
+    $('#js-intro-message').hide();
     removeClasses();
     addClasses();
   });
@@ -74,6 +83,7 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
     $('.num-of-steps-charts').hide();
     $('.flights-climbed-charts').hide();
+    $('#js-intro-message').hide();
     removeClasses();
     addClasses();
   });
@@ -86,6 +96,7 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
     $('.flights-climbed-charts').hide();
     $('.sleep-charts').hide();
+    $('#js-intro-message').hide();
     removeClasses();
     addClasses();
   });
@@ -98,9 +109,14 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
     $('.num-mins-active-charts').hide();
     $('.num-of-steps-charts').hide();
+    $('#js-intro-message').hide();
     removeClasses();
     addClasses();
   });
+
+  function enableButtons() {
+    $('.list-item').attr('disabled', false)
+  }
 
   function removeClasses() {
     $('.list-item').each(value => {

@@ -59,8 +59,8 @@ describe("Activity", function() {
         expect(activity.returnFriends("2019/06/15", "2019/06/22").length).to.eql(2);
     });
 
-    it("should return a week of steps for a user", function() {
+    it.only("should return a week of steps for a user", function() {
         const activity = new Activity(1);
-        expect(activity.returnWeekInfo("2019/06/15", "2019/06/22")).to.eql([{"userID": 1, "date": "2019/06/15", "numSteps": 3577,}]);
+        expect(activity.returnWeeklySteps("2019/06/15", "2019/06/22").length).to.eql(7);
     });
 });

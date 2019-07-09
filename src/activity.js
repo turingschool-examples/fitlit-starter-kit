@@ -34,6 +34,16 @@ class Activity {
     }, 0) / currentWeek.length)
   }
 
+  //write test for this function below
+
+  returnWeeklySteps(date) {
+    let dayIndex = this.data.findIndex(day => day.date === date)
+    let currentWeek = this.data.slice(dayIndex-6, dayIndex+1);
+    return parseInt(currentWeek.reduce((acc, day) => {
+    return acc += day.numSteps;
+    }, 0))
+  }
+
   checkDailyStepGoal(date) {
     let userRepo = new UserRepository(userData);
     let stepGoal = userRepo.returnUser(1).dailyStepGoal;

@@ -10,6 +10,7 @@
   </head>
   <body>
     <header class="navbar">
+      <div class="img-greeting">
       <img id="winner-icon" src="../css/winner.svg" alt="vector of stick figure standing in first place"/>
       <article id="user-info">
         <p class="greet-user">Welcome back, <span class="user-name"></span>!</p>
@@ -17,30 +18,73 @@
         <p id="user-address"></p>
         <p id="user-email"></p>
       </article>
+    </div>
       <h1 class="page-heading">FitLit</h1>
     </header>
+
     <main>
-      <section class="users-section">
-        <h2>User Stats</h2>
-        <p id="user-stepGoal"></p>
-        <p id="avg-stepGoal"></p>
-        <p id="user-stride"></p>
-        <canvas id="user-vs-avg-steps" width="300" height="300"></canvas>
-      </section>
-      <section class="hydration-section">
-        <h2>Hydration</h2>
-        <p id="daily-water"></p>
-        <p id="weekly-water"></p>
-        <canvas id="weekly-water-intake" width="300" height="300"></canvas>
-      </section>
-      <section class="activity-section">
-        <h2>Activity</h2>
-        <p id="user-numSteps-today"></p>
-      </section>
-      <section class="sleep-section">
-        <h2>Sleep</h2>
-      </section>
-    </main>
+      <div class="whole-cards-container">
+        <section class="container-1">
+          <div class="card-1">
+            <article class="users-section card-face card-front-1">
+              <h2>User Stats</h2>
+              <article class="user-information">
+                <p id="user-stepGoal"></p>
+                <p id="avg-stepGoal"></p>
+                <p id="user-stride"></p>
+                <canvas id="user-vs-avg-steps" width="300" height="300"></canvas>
+              </article>
+
+             <!--  <img id="user-icon" src="../css/hydration.png" alt="picture of a user..."/> -->
+            </article>
+            <article class="card-face card-back-1">INFO DISPLAY</article>
+            
+          </div>
+        </section>
+
+        <section class="container-2">
+          <div class="card-2">
+            <article class="hydration-section card-face card-front-2">
+              <h2>Hydration</h2>
+              <article class="hydration-information">
+              <p id="daily-water"></p>
+              <p id="weekly-water"></p>
+               <canvas id="weekly-water-intake" width="300" height="300"></canvas>
+            </article>
+            <img id="hydration-icon" src="../css/hydration.png" alt="picture of a water drop"/>
+            </article>
+            <article class="card-face card-back-2"><p>INFO DISPLAY</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="container-3">
+          <div class="card-3">
+            <article class="activity-section card-face card-front-3">
+              <h2>Activity</h2>
+              <article class="activity-information">
+              <p id="user-numSteps-today">INFO</p>
+            </article>
+            </article>
+            <article class="card-face card-back-3"><p>INFO DISPLAY</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="container-4">
+          <div class="card-4">
+            <article class="sleep-section card-face card-front-4">
+              <h2>Sleep</h2>
+              <article class="sleep-information">
+                <p>INFO</p>
+              </article>
+            </article>
+            <article class="card-face card-back-4"><p>INFO DISPLAY</p>
+            </article>
+          </div>
+        </section>
+    </div>
+  </main>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>

@@ -5,15 +5,24 @@
 }
 
 header {
-    border-bottom: 2px solid black;
+    border-bottom: 2px ;
     height: 140px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    opacity: 0.6;
+    background-color: #35333b;
 }
 
 #winner-icon {
     width: 8%;
+    margin-left: 25px;
+    margin-right: 50px;
+}
+
+#hydration-icon {
+    margin-top:40px;
+    width: 45%;
 }
 
 .greet-user {
@@ -25,36 +34,100 @@ header {
     font-size: 5em;
 }
 
-main {
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-areas:
-    "users hydration sleep activity";
+.img-greeting {
+    display:flex;
+
+}
+
+.whole-cards-container {
+    display:flex;
     height: 100vh;
+    margin: 0;
 }
 
-section {
-    border: 2px solid black;
+.container-1,
+.container-2,
+.container-3,
+.container-4 {
+    display:flex;
+    width: 25%;
+    height: 100vh;
+    perspective: 600px;
 }
 
-.users-section {
-    grid-area: "users"
+.card-1,
+.card-2,
+.card-3,
+.card-4 {
+    width: 100%; 
+    height: 100%; 
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
 }
 
-.hydration-section {
-    grid-area: "hydration"
+.card-face {
+    display: flex;
+    position: absolute;
+    height: 100%;
+    width:100%;
+    backface-visibility: hidden;
+    text-align:center;
+    color:white;
+    justify-content: center;
 }
 
-.sleep-section {
-    grid-area: "sleep"
+.card-front-1
+{
+  background: #54e8d2;
+  display:block;
+}
+.card-front-2 {
+  background: #54d7e8;
+  display:block;
 }
 
-.activity-section {
-    grid-area: "activity"
+.card-front-3 {
+  background:#54b7e8;
+  display:block;
+}
+
+.card-front-4 {
+  background: #5499e8;
+  display:block;
+}
+
+.card-back-1
+{
+  
+  background: #5476c7;
+  transform: rotateY( 180deg )
+}
+
+.card-back-2 {
+  background: #5461c7;
+  transform: rotateY( 180deg )
+}
+
+.card-back-3 {
+  background: #5f54c7;
+  transform: rotateY( 180deg )
+}
+
+.card-back-4 {
+  background: #7e54c7;
+  transform: rotateY( 180deg )
+}
+
+.card-1.is-flipped,
+.card-2.is-flipped,
+.card-3.is-flipped,
+.card-4.is-flipped{
+  transform: rotateY(180deg);
 }
 
 h2 {
     text-align: center;
     padding: 7px;
     font-size: 2em;
-}
+}*/

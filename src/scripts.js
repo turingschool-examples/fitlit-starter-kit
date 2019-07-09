@@ -12,6 +12,26 @@ $(document).ready(function() {
 //   const todaysDate = year + "/" + "0" + month + "/" + "0" + day;
   const today = "2019/07/10"
 
+  var cardOne= document.querySelector('.card-1');
+cardOne.addEventListener( 'click', function() {
+  cardOne.classList.toggle('is-flipped');
+});
+
+var cardTwo = document.querySelector('.card-2');
+cardTwo.addEventListener( 'click', function() {
+  cardTwo.classList.toggle('is-flipped');
+});
+
+var cardThree = document.querySelector('.card-3');
+cardThree.addEventListener( 'click', function() {
+  cardThree.classList.toggle('is-flipped');
+});
+
+var cardFour = document.querySelector('.card-4');
+cardFour.addEventListener( 'click', function() {
+  cardFour.classList.toggle('is-flipped');
+});
+
 
   $('.user-name').text(`${user.returnFirstName(randomUser)}`)
   $('#user-address').text(`Address: ${user.randomUser.address}`)

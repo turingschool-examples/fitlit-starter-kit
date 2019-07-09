@@ -1,16 +1,24 @@
 body {
     font-family: sans-serif;
     height: 90vh;
-    max-width: 100vw;
+    max-width: 90vw;
+    margin: auto;
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 10% 90%;
+    background: #ffffff;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
     grid-row-gap: 20px;
     /* grid-column-gap: 20px; */
     grid-template-areas:
     "header header header header"
     "body body body body"
 
+}
+
+h1 {
+    display: inline-block;
+    float: left;
+    font-size: 50px;
 }
 
 /* clear fix */
@@ -22,33 +30,33 @@ body {
 
 header {
     grid-area: header;
-    background-color: dodgerblue;
+    background-color: #14A76C;
     grid-column-start: 1;
     grid-column-end: 6;
 }
 
 main {
     display: grid;
+    background: #ffffff;
     grid-area: body;
     width: 100%;
+    margin: 0 auto;
     justify-self: center;
     justify-items: center;
-    grid-template-columns: 15% 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 20% 1fr;
+    grid-template-rows: 1fr 1fr;
     grid-row-gap: 20px;
     grid-column-gap: 20px;
     grid-template-areas: 
-    "friends hydration hydration hydration"
-    "friends sleep sleep sleep"
-    ". activity activity activity"
-    ". activity activity activity"
+    "friends activity"
+    "friends activity"
     
 }
 
 .main__section--friends {
-    background: papayawhip;
     grid-area: friends;
     width: 100%;
+    height: 500px;
 }
 
 .main__section--hydration {
@@ -65,7 +73,7 @@ main {
 
 .main__section--activity {
     grid-area: activity;
-    width: 90%;
+    width: 100%;
 }
 
 .main__section--activity--item {
@@ -89,7 +97,7 @@ main {
 
 .grid {
     background: #ffffff;
-    max-width: 1200px;
+    max-width: 100%;
   }
 
 .grid-item {
@@ -99,11 +107,13 @@ main {
     background-color: #272727;
     color: white;
     border-radius: 10px;
+    box-shadow: 5px 5px 2.5px grey;
     /* border: 2px solid hsla(0, 0%, 0%, 0.5); */
   }
 
 .grid-item--width2 { width: 380px; }
 .grid-item--height2 { height: 380px; }
+.grid-item--height3 { height: 580px;}
 
 .grid-item:hover {
 border-color: hsla(0, 0%, 100%, 0.5);
@@ -134,7 +144,7 @@ z-index: 2; /* above other draggies */
     width: 30%;
     display: block;
     padding: 10px;
-    margin: 10px auto 0px auto;
+    margin: 0px auto 30px auto;
 }
 
 
@@ -152,22 +162,23 @@ h4 {
 article {
 text-align: center;
 padding: 5px;
-box-shadow: 5px 5px 2.5px #a09fa1;
+/* box-shadow: 5px 5px 2.5px #a09fa1; */
 }
 
 article span {
-    margin: 10px 0 10px 0;
+    font-size: 30px;
 }
 
 article p {
-    margin: 5px 10px 5px 10px;
+    margin: -8px 10px 5px 10px;
     display: block;
+    font-size: 18px;
 }
 
 .main__section--activity--empire img {
     height: 95%;
     width: 95%;
-    margin: -60px auto -60px auto;
+    margin: -70px auto -70px auto;
 }
 
 
@@ -183,4 +194,50 @@ border-bottom: 2px solid #FFE400;
 
 td {
 padding: 0.5em;
+}
+
+.main__section--sleep--week div {
+    margin: 10px 5px 10px 5px;
+    height: 180px;
+}
+
+
+div.main__section--hydration--week {
+    margin: 50px auto 0 auto;
+}
+
+.main__section--sleep--worst img {
+    display: inline-block;
+    float: left;
+    margin: 0;
+}   
+
+.main__section--sleep--worst h4 {
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+.main__section--sleep--averages img,
+.main__section--sleep--last-night img {
+    margin: 0px auto 10px;
+}
+
+.main__section--friends--challenge {
+    list-style-type: decimal;
+}
+
+article {
+    background-color: #272727;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 2.5px grey;
+}
+
+.main__section--friends--challenge li {
+    margin: 5px 0px 50px 40px;
+    font-size: 20px;
+}
+
+.main__section--friends h4 {
+    margin: 0px auto 30px auto;
 }

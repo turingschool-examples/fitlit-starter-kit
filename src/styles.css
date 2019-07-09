@@ -19,7 +19,8 @@ h1 {
 }
 
 .nav-boxes,
-.graph-boxes {
+.graph-boxes,
+.weekly-activity-charts {
   background-color: #2c3a47;
   border-radius:4px;
   text-align: center;
@@ -50,18 +51,23 @@ h3 {
 .record-sleep {
   float: left;
   height: 50px;
-  width: 200px;
+  width: 35%;
 }
 
 .average-quality-slept,
 .average-sleep {
   float: right;
   height: 50px;
-  width: 200px;
+  width: 35%;
+}
+
+.small-nums-header{
+  font-size: 14px;
 }
 
 p,
-h5 {
+h5,
+h6 {
   margin: 0;
   padding: 0;
 }
@@ -96,4 +102,39 @@ h5 {
 
 #step-goal-comparison {
   margin-bottom: 20px;
+}
+
+h6{
+  font-size: 18px;
+}
+.weekly-activity-charts {
+padding-bottom: 20px;
+}
+
+#weekly-activity-metrics{
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+#water-wrapper{
+  margin-top: 20px;
+}
+
+#daily-ounces{
+  font-size: 40px;
+}
+
+.today-ounces{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#weekly-sleep-charts,
+#daily-activity-charts {
+  margin-top: 20px;
+}
+
+.disclaimer{
+  margin-top: 10px;
+  font-size: 10px;
 }

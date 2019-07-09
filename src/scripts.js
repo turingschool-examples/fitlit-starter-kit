@@ -50,7 +50,7 @@ $(document).ready(function() {
             data: {
                 labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
                 datasets: [{
-                    label: 'weekly step overview',
+                    // label: {display: false},
                     data: activity.displayWeeklyStepsList(randomUser + 1),
                     backgroundColor: [
                         'rgba(250, 250, 250, 0.4)',
@@ -72,7 +72,8 @@ $(document).ready(function() {
                     ],
                     borderWidth: 2 //2 pixel border
                 }]
-            }
+            },
+        options: {legend: {display: false}}
         });
 
 
@@ -105,7 +106,8 @@ $(document).ready(function() {
                     ],
                     borderWidth: 2 //2 pixel border
                 }]
-            }
+            },
+        options: {legend: {display: false}}
         });
 
   var weeklyFligthsClimbedBarGraph = new Chart($('#weekly-flights-chart'), {
@@ -135,7 +137,8 @@ $(document).ready(function() {
                     ],
                     borderWidth: 2 //2 pixel border
                 }]
-            }
+            },
+        options: {legend: {display: false}}
         });
 
 
@@ -156,7 +159,8 @@ $(document).ready(function() {
                     ],
                     borderWidth: 2 //2 pixel border
                 }]
-            }
+            },
+        options: {legend: {display: false}}
         });
 
 
@@ -187,7 +191,8 @@ $(document).ready(function() {
                     ],
                     borderWidth: 2 //2 pixel border
                 }]
-            }
+            },
+        options: {legend: {display: false}}
         });
 
 
@@ -218,7 +223,8 @@ $(document).ready(function() {
                     ],
                     borderWidth: 2 //2 pixel border
                 }]
-            }
+            },
+        options: {legend: {display: false}}
         });
 
  var qualitySleepChart = new Chart($('#quality-sleep-chart'), {
@@ -248,7 +254,8 @@ $(document).ready(function() {
                     ],
                     borderWidth: 2 //2 pixel border
                 }]
-            }
+            },
+        options: {legend: {display: false}}
         });
 
 
@@ -304,14 +311,14 @@ $(document).ready(function() {
                     data: [activityData[randomUser].flightsOfStairs, activityRepository.calculateAverageStairs('2019/06/15')
                     ],
                     backgroundColor: [
-                        'rgba(250, 250, 250, 0.4)',
-                        'rgba(0, 0, 0, 0.4)', // 0 red, 0 blue, 0 green, 40% opacity
+                        'rgba(0, 0, 0, 0.4)',
+                        'rgba(250, 250, 250, 0.4)'
                     ],
                     borderColor: [
-                        'rgba(0,0,0,1)', //full black border
+                        'rgba(0,0,0,1)',
                         'rgba(0,0,0,1)',
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2
                 }]
             }
         });

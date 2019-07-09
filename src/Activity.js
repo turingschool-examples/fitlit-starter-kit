@@ -101,6 +101,21 @@ class Activity {
     return Math.max(...filterFlights);
   }
 
+  wklyStepsChallenge(id, day) {
+    let friendsFound = userData.find((obj) => id === obj.id).friends;
+    friendsFound.unshift(id);
+    let friendObjs = userData.filter(user => friendsFound.includes(user.id));
+    return friendObjs.map(person => {
+        let personWklySteps = {};
+        personWklySteps.id = person.id;
+        personWklySteps.name = person.name.split(' ')[0];
+        personWklySteps.wklyStepTotal = this.dailyStepsPerWeek(person.id, day).reduce((acc, steps) => {
+          return acc + steps;
+        }, 0);
+        return personWklySteps;
+      });
+    }
+
   averageActivity(day, el) {
     let findDay = this.activityData.filter((obj) => obj.date === day);
     let findElementArr = findDay.map((obj) => obj[el]);
@@ -109,7 +124,6 @@ class Activity {
     }, 0);
     return Math.round(sumTotal / findElementArr.length);
   }
-
 } 
 
 if (typeof module !== 'undefined') {

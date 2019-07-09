@@ -21,9 +21,9 @@ class SleepRepo {
         let userIDs = sleepData.map(user => user.userID)
         let userSet = new Set(userIDs)
         let uniqueUsers = new Array(...userSet)
-        
+
         return uniqueUsers.reduce((allIds, curId)=> {
-            let user = sleepData.filter(sleep => sleep.userID === curId)
+            let user = sleepData.filter(sleep => sleep.userID === curId)git 
             let dateIndex =  user.findIndex(day => day.date === dateOf);
             let week = user.slice(dateIndex - 6, dateIndex + 1);
             let overallSleepQuality = week.reduce((overallQuality, dailyQuality) => {

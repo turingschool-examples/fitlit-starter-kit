@@ -1,0 +1,60 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    border-bottom: 2px solid black;
+    height: 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#winner-icon {
+    width: 8%;
+}
+
+.greet-user {
+    font-size: 2em;
+}
+
+.page-heading {
+    margin-right: 2%;
+    font-size: 5em;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-areas:
+    "users hydration sleep activity";
+    height: 100vh;
+}
+
+section {
+    border: 2px solid black;
+}
+
+.users-section {
+    grid-area: "users"
+}
+
+.hydration-section {
+    grid-area: "hydration"
+}
+
+.sleep-section {
+    grid-area: "sleep"
+}
+
+.activity-section {
+    grid-area: "activity"
+}
+
+h2 {
+    text-align: center;
+    padding: 7px;
+    font-size: 2em;
+}

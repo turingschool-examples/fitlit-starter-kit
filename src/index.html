@@ -3,27 +3,50 @@
   <head>
     <meta charset="UTF-8">
     <title>FitLit</title>
+    <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   </head>
   <body>
-    <aside class="navbar">
-      <h2>FitLit</h2>
-      <p class="greeting"></p>
-    </aside>
-    <section>
-      <h2>Users</h2>
-    </section>
-    <section>
-      <h2>Activity</h2>
-    </section>
-    <section>
-      <h2>Hydration</h2>
-    </section>
-    <section>
-      <h2>Sleep</h2>
-    </section>
-
+    <header class="navbar">
+      <img id="winner-icon" src="../css/winner.svg" alt="vector of stick figure standing in first place"/>
+      <article id="user-info">
+        <p class="greet-user">Welcome back, <span class="user-name"></span>!</p>
+        <br />
+        <p id="user-address"></p>
+        <p id="user-email"></p>
+        <p id="user-stats"></p>
+      </article>
+      <h1 class="page-heading">FitLit</h1>
+    </header>
+    <main>
+      <section class="users-section">
+        <h2>Users</h2>
+        <p></p>
+      </section>
+      <section class="hydration-section">
+        <h2>Hydration</h2>
+        <p id="daily-water"></p>
+        <p id="weekly-water"></p>
+      </section>
+      <section class="activity-section">
+        <h2>Activity</h2>
+      </section>
+      <section class="sleep-section">
+        <h2>Sleep</h2>
+      </section>
+    </main>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="path/to/your/jquery.min.js"><\/script>')</script>
     <script type="text/javascript" src="./scripts.js"></script>
+    <script type="text/javascript" src="../data/users.js"></script>
+    <script type="text/javascript" src="../data/hydration.js"></script>
+    <script type="text/javascript" src="../data/activity.js"></script>
+    <script type="text/javascript" src="../data/sleep.js"></script>
+    <script type="text/javascript" src="./singleUser.js"></script>
+    <script type="text/javascript" src="./userRepo.js"></script>
+    <script type="text/javascript" src="./hydration.js"></script>
+    <script type="text/javascript" src="./sleep.js"></script>
+    <script type="text/javascript" src="./activity.js"></script>
+    <script>window.jQuery || document.write('<script src="path/to/your/jquery.min.js"><\/script>')</script>
   </body>
 </html>

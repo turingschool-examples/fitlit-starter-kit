@@ -91,7 +91,7 @@ class Activity{
                     .reduce((totalSteps, dailySteps) => totalSteps += dailySteps, 0)
         }))
         let sorted = friends.sort((a,b) => b.steps - a.steps)
-        console.log('friends', friends)
+        return friends[0]
 
     }
 

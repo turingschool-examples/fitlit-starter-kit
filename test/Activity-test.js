@@ -79,4 +79,8 @@ describe('Activity', function() {
   it('should return total miles in a week', function() {
     expect(activity.milesWalkedInWeek(3, '2019/06/15', userData)).to.equal(52);
   });
+
+  it('should return a users friends and the total steps they walked in a week', function() {
+    expect(activity.wklyStepsChallenge(3, '2019/06/15')).to.equal({name: 'Herminia', wklyStepTotal: 50627}, {name: 'Wilburn', wklyStepTotal: 45772}, {name: 'Dannie', wklyStepTotal: 47494}, {name: 'Ernestine', wklyStepTotal: 74888}, {name: 'Leilani', wklyStepTotal: 55953});
+  });
 });

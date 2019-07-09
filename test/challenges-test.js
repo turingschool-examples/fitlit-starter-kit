@@ -3,7 +3,9 @@ const expect = chai.expect;
 
 const User = require('../src/user');
 const UserRepository = require('../src/userRepository');
+const activity = require('../data/activity')
 const fakeUsers = require('../fakeData/fakeUsers')
+const fakeActivity = require('../fakeData/fakeActivity')
 const Challenges = require('../src/challenges')
 
 describe('Challenges', function() {
@@ -16,7 +18,6 @@ describe('Challenges', function() {
   it('Should be able to find a users friends', function() {
     let user = new Challenges (fakeUsers, 1)
     let object = user.findFriends()
-  
     expect(object[0]).to.deep.equal({
       "id": 16,
       "name": "Garnett Cruickshank",
@@ -32,5 +33,13 @@ describe('Challenges', function() {
       ]
     },)
     expect(object.length).to.equal(3)
+  }),
+  it.only('Should be able to find the weekly step data for a users friends', function(){
+
+    let user = new Challenges(fakeUsers, 1)
+    let object = user.findFriends()
+    let object1 = user.addUserToFriends()
+    let object2 = user.findActiveWeek(activity, '2019/06/16')
+    expect(object).to.equal(3)
   })
 })

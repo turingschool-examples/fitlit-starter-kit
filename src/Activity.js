@@ -57,6 +57,23 @@ class Activity {
     }, 0);
   }
 
+  returnStepStreaks() {
+    let streak = [];
+    return this.userData.reduce((acc, record, index, array) => {
+      if (streak.length === 0) {
+        streak.push(record.date);
+      } else if (index > 0 && record.numSteps > array[index -1].numSteps) {
+        streak.push(record.date);
+      } else if (index > 0 && record.numSteps <= array[index -1].numSteps && streak.length > 2) {
+        acc.push(streak);
+        streak = [];
+      } else {
+        streak = [];
+      }
+      return acc;
+    }, []);
+  }
+
 }
 
 if (typeof module !== 'undefined') {

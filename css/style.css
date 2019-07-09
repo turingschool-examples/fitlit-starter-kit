@@ -4,34 +4,53 @@
     box-sizing: border-box;
 }
 
-aside {
+header {
     border-bottom: 2px solid black;
-    height: 100px;
+    height: 140px;
     display: flex;
-}
-
-.page-heading {
-    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
-body {
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;
-    grid-template-areas:
-    "users hydration"
-    "sleep activity"
+.greet-user {
+    font-size: 2em;
 }
 
+.page-heading {
+    margin-right: 2%;
+    font-size: 5em;
+}
 
-/* .parent { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    grid-template-rows: 1fr 1fr; 
-    grid-column-gap: 0px;
-    grid-row-gap: 0px; 
-    .div1 { grid-area: 1 / 1 / 2 / 2; } 
-    .div2 { grid-area: 1 / 2 / 2 / 3; } 
-    .div3 { grid-area: 2 / 1 / 3 / 2; } 
-    .div4 { grid-area: 2 / 2 / 3 / 3; } 
-    } */
+main {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-areas:
+    "users hydration sleep activity";
+    height: 100vh;
+}
+
+section {
+    border: 2px solid black;
+}
+
+.users-section {
+    grid-area: "users"
+}
+
+.hydration-section {
+    grid-area: "hydration"
+}
+
+.sleep-section {
+    grid-area: "sleep"
+}
+
+.activity-section {
+    grid-area: "activity"
+}
+
+h2 {
+    text-align: center;
+    padding: 7px;
+    font-size: 2em;
+}

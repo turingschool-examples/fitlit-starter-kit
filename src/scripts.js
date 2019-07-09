@@ -160,7 +160,7 @@ $( window ).on( "load", () => {
     data: {
       labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       datasets: [{ 
-          data: activity.returnMinutesActiveForWeek(),
+          data: activity.getWeeklyMins("2019/06/15", "2019/06/21"),
           label: "Your minutes active",
           borderColor: "#3cba9f",
           fill: false
@@ -180,15 +180,7 @@ $( window ).on( "load", () => {
     data: {
       labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       datasets: [{ 
-        data: [
-          activity.returnFlightsOfStairs("2019/06/15"),
-          activity.returnFlightsOfStairs("2019/06/16"),
-          activity.returnFlightsOfStairs("2019/06/17"),
-          activity.returnFlightsOfStairs("2019/06/18"),
-          activity.returnFlightsOfStairs("2019/06/19"),
-          activity.returnFlightsOfStairs("2019/06/20"),
-          activity.returnFlightsOfStairs("2019/06/21")
-        ],
+        data: activity.getWeeklyFlights("2019/06/15", "2019/06/22"),
         label: "Your flights of stairs climbed",
         borderColor: "#8e5ea2",
         fill: false

@@ -1,15 +1,15 @@
 if (typeof module !== "undefined") {
-filePath = require("../data/activitySub2")
+activityFilePath = require("../data/activitySub2")
 userData = require("../data/UserSub")
 User = require("../src/User")
 } else {
-  filePath = activityData;
+  activityFilePath = activityData;
 }
 
 class Activity {
   constructor(userID) {
     this.userID = userID;
-    this.data = filePath;
+    this.data = activityFilePath;
   }
 
   instantiateUsers() {
@@ -182,6 +182,28 @@ class Activity {
       }
     });
     return threeInARowDates;
+  }
+
+  getWeeklyMins(startDate, endDate) {
+    let correctUser =  this.findCorrectUser();
+    let correctWeek = this.returnWeekInfo(startDate, endDate);
+    let correctUserIds = correctWeek.filter(user => {
+    return user.userID === correctUser.id
+    })
+    return correctUserIds.map(user => {
+      return user.minutesActive;
+    })
+  }
+
+  getWeeklyFlights(startDate, endDate) {
+    let correctUser =  this.findCorrectUser();
+    let correctWeek = this.returnWeekInfo(startDate, endDate);
+    let correctUserIds = correctWeek.filter(user => {
+    return user.userID === correctUser.id
+    })
+    return correctUserIds.map(user => {
+      return user.flightsOfStairs;
+    })
   }
 }
 

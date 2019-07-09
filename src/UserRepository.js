@@ -3,17 +3,17 @@ class UserRepository {
     this.data = data || []
   }
   getUserData(specificId) {
-    let userData = this.data.find(function(object) {
-      return object.id === specificId
+    let userData = this.data.find(function(aUser) {
+      return aUser.id === specificId
     })
     return userData
   }
   calculateAverageStepGoal() {
-    let stepGoals = this.data.map(function(object) {
-      return object.dailyStepGoal
+    let stepGoals = this.data.map(function(aUser) {
+      return aUser.dailyStepGoal
     })
-    let totalStepGoal = stepGoals.reduce(function(acc, curVal) {
-      return acc = acc + curVal
+    let totalStepGoal = stepGoals.reduce(function(total, goal) {
+      return total = total + goal
     }, 0)
     let averageStepGoal = totalStepGoal / this.data.length;
     return averageStepGoal

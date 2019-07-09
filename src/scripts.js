@@ -1,14 +1,6 @@
 
 $(document).ready(function() {
-
   const today = '2019/06/15';
-  $('#js-step-goal-chart').hide();
-  $('#js-hydration-line-chart').hide();
-  $('.sleep-charts').hide();
-  $('.num-of-steps-charts').hide();
-  $('.num-mins-active-charts').hide();
-  $('.flights-climbed-charts').hide();
-
 
 
   $('#js-change-user').click(function() {
@@ -16,7 +8,6 @@ $(document).ready(function() {
     const hydrationRepo = new HydrationRepository(hydrationData);
     const sleepRepo = new SleepRepository(sleepData);
     const activityRepo = new ActivityRepository(activityData);
-
     const userID = Math.floor((Math.random() * 50) + 1);
     const specificUser = userRepo.returnUserData(userID);
     const user = new User(specificUser);
@@ -24,7 +15,6 @@ $(document).ready(function() {
     const hydration = new Hydration(hydrationUser);
     const sleepUser = sleepRepo.returnUserSleepData(userID);
     const sleep = new Sleep(sleepUser);
-
     const activityUser = activityRepo.returnUserActivityData(userID);
     const activity = new Activity(user, activityUser);
 
@@ -36,7 +26,6 @@ $(document).ready(function() {
     $('#js-miles').html(activity.milesWalked(today));
     $('#js-h2--welcome').hide();
     $('#js-h2--user').show();
-
     updateCharts(user, hydration, sleep, activity, activityRepo);
   });
 
@@ -48,7 +37,6 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
-
     removeClasses();
     addClasses();
   });
@@ -61,7 +49,6 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
-
     removeClasses();
     addClasses();
   });
@@ -74,7 +61,6 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
-
     removeClasses();
     addClasses();
   });
@@ -87,7 +73,6 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
-
     removeClasses();
     addClasses();
   });
@@ -100,7 +85,6 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
     $('.num-of-steps-charts').hide();
     $('.flights-climbed-charts').hide();
-
     removeClasses();
     addClasses();
   });
@@ -113,7 +97,6 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
     $('.flights-climbed-charts').hide();
     $('.sleep-charts').hide();
-
     removeClasses();
     addClasses();
   });
@@ -126,7 +109,6 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
     $('.num-mins-active-charts').hide();
     $('.num-of-steps-charts').hide();
-
     removeClasses();
     addClasses();
   });
@@ -231,6 +213,7 @@ $(document).ready(function() {
       maintainAspectRatio: false,
       legend: { display: true,
         labels: {
+          boxWidth: 0,
            fontColor: 'black',
            fontSize: 20
          }
@@ -295,6 +278,7 @@ $(document).ready(function() {
       },
       legend: { display: true,
        labels: {
+         boxWidth: 0,
           fontColor: 'black',
           fontSize: 20
         },
@@ -343,6 +327,7 @@ $(document).ready(function() {
       },
       legend: { display: true,
        labels: {
+         boxWidth: 0,
           fontColor: 'black',
           fontSize: 20
         },
@@ -391,6 +376,7 @@ $(document).ready(function() {
       },
       legend: { display: true,
        labels: {
+         boxWidth: 0,
           fontColor: 'black',
           fontSize: 20
         },
@@ -428,6 +414,7 @@ $(document).ready(function() {
       maintainAspectRatio: false,
       legend: { display: true,
         labels: {
+          boxWidth: 0,
            fontColor: 'black',
            fontSize: 20
          }
@@ -492,6 +479,7 @@ $(document).ready(function() {
       },
       legend: { display: true,
        labels: {
+         boxWidth: 0,
           fontColor: 'black',
           fontSize: 20
         },
@@ -528,6 +516,7 @@ $(document).ready(function() {
       maintainAspectRatio: false,
       legend: { display: true,
         labels: {
+          boxWidth: 0,
            fontColor: 'black',
            fontSize: 20
          }
@@ -592,6 +581,7 @@ $(document).ready(function() {
       },
       legend: { display: true,
        labels: {
+         boxWidth: 0,
           fontColor: 'black',
           fontSize: 20
         },
@@ -617,7 +607,7 @@ $(document).ready(function() {
       labels: ["", "All Users"],
       datasets: [
         {
-          label: "Daily Step Goal",
+          label: "Flights Climbed!",
           backgroundColor: ["#3e95cd", "#8e5ea2"],
           data: [0, 6700]
         }
@@ -628,6 +618,7 @@ $(document).ready(function() {
       maintainAspectRatio: false,
       legend: { display: true,
         labels: {
+          boxWidth: 0,
            fontColor: 'black',
            fontSize: 20
          }
@@ -692,6 +683,7 @@ $(document).ready(function() {
       },
       legend: { display: true,
        labels: {
+         boxWidth: 0,
           fontColor: 'black',
           fontSize: 20
         },

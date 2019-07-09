@@ -7,8 +7,11 @@ $(document).ready(function() {
     const sleep = new Sleep(sleepData);
     const activity = new Activity(activityData);
     $('.user-name').text(`${user.returnFirstName(randomUser)}`)
+    $('#user-address').text(`Address: ${user.randomUser.address}`)
+    $('#user-email').text(`Email: ${user.randomUser.email}`)
+    $('#user-stats').text(`Daily Step Goal: ${user.randomUser.dailyStepGoal}, Stride Length: ${user.randomUser.strideLength}`)
 })
 
 $(document).ready(function() {
-
+    $()
 })

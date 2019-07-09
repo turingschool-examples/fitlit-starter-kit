@@ -12,6 +12,10 @@ header {
     align-items: center;
 }
 
+#winner-icon {
+    width: 8%;
+}
+
 .greet-user {
     font-size: 2em;
 }

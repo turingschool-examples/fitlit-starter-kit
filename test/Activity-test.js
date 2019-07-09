@@ -54,9 +54,9 @@ describe("Activity", function() {
         expect(activity.allTimeClimbRecord()).to.eql(34);
     });
 
-    it("should return an array of their friends", function() {
+    it.only("should return an array of their friends", function() {
         const activity = new Activity(1);
-        expect(activity.returnFriends("2019/06/15", "2019/06/22").length).to.eql(2);
+        expect(activity.returnFriends("2019/06/15", "2019/06/22").length).to.eql(3);
     });
 
     it("should return a week of steps for a user", function() {
@@ -74,7 +74,7 @@ describe("Activity", function() {
         expect(activity.getWeeklyMins("2019/06/15", "2019/06/22").length).to.eql(3); 
     })
 
-    it.only('should return a week of flights climbed for a user', function() {
+    it('should return a week of flights climbed for a user', function() {
         const activity = new Activity(1);
         expect(activity.getWeeklyFlights("2019/06/15", "2019/06/22").length).to.eql(3); 
     })

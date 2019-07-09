@@ -1,5 +1,5 @@
 if (typeof module !== "undefined") {
-activityFilePath = require("../data/activitySub2")
+activityFilePath = require("../data/activitySub")
 userData = require("../data/UserSub")
 User = require("../src/User")
 } else {
@@ -142,6 +142,7 @@ class Activity {
     let uniqueFriends = matchingFriends.filter((user, index) => {
       return matchingFriends.indexOf(user) == index;
     })
+    uniqueFriends.unshift(correctUser)
     return uniqueFriends.reduce((userObj, user) => {
       let obj = {
         name: user.name,

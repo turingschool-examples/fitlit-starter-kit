@@ -46,10 +46,12 @@
             <h4 class="activity__minsActive">You have been active for <span class="activity__minsActive-minsActive">X</span> minutes today.</h4>
             <h4 class="activity__distance">You have walked <span class="activity__distance-distanceNum">X</span> miles today.</h4>
           </div>
-          <canvas class="activity__chart-day-allUsers" height="180" width="500"></canvas>
-          <canvas class="activity__chart-weeklySteps-oneUser" height="180" width="500"></canvas>
-          <canvas class="activity__chart-weeklyMins-oneUser" height="180" width="500"></canvas>
-          <canvas class="activity__chart-weeklyStairs-oneUser" height="180" width="500"></canvas>
+          <figure>
+            <canvas class="activity__chart-day-allUsers" height="180" width="500"></canvas>
+            <canvas class="activity__chart-weeklySteps-oneUser" height="180" width="500"></canvas>
+            <canvas class="activity__chart-weeklyMins-oneUser" height="180" width="500"></canvas>
+            <canvas class="activity__chart-weeklyStairs-oneUser" height="180" width="500"></canvas>
+          </figure>
         </section>
         <section class="main__sleep main__section">          
           <figure class="hours-slept__header-container widget red-b">
@@ -99,11 +101,13 @@
             <h2 class="hydration__header">Hydration</h3>
           </div>
           <div class="hydration__info-div">
-              <h3 class="hydration__info-header">Today at a glance:</h2>
-              <br>
-              <h4 class="hydration__steps">You have consumed <span class="hydration__steps-ozNum">X</span> ounces of water today.</h4>
-            </div>
-          <canvas class="hydration__chart-weeklyOz-oneUser" height="350" width="500"></canvas>
+              h3 class="hydration__info-header">Today at a glance:</h2>
+            <br>
+            <h4 class="hydration__steps">You have consumed <span class="hydration__steps-ozNum">X</span> ounces of water today.</h4>
+          </div>
+          <figure>
+            <canvas class="hydration__chart-weeklyOz-oneUser" height="350" width="500"></canvas>
+          </figure>
         </section>
         <section class="main__step-challenge main__section">
           <h3 class="step-challenge-header">Step Challenge</h3>

@@ -15,7 +15,12 @@ class Hydration {
     let findUserInstances = this.hydrationData.filter(user => id === user.userID)
     let findUserIndex = findUserInstances.findIndex(day => day.date === date)
     let fluidsPerWeek = findUserInstances.slice(-9, findUserIndex + 1)
-    return fluidsPerWeek.map(user => user.numOunces)
+    return fluidsPerWeek.reduce((acc, item) => {
+      if (!acc[item.date]) {
+        acc[item.date] = item.numOunces
+      }
+      return acc
+    }, {})
   }
 }
 

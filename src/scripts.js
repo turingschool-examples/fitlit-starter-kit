@@ -9,15 +9,23 @@ $(document).ready(function() {
   const year = new Date().getFullYear()
   const month = new Date().getMonth() + 1
   const day = new Date().getDate()
-  const todaysDate = year + "/" + month + "/" + day
+//   const todaysDate = year + "/" + "0" + month + "/" + "0" + day;
+  const today = "2019/07/10"
+
+
   $('.user-name').text(`${user.returnFirstName(randomUser)}`)
   $('#user-address').text(`Address: ${user.randomUser.address}`)
   $('#user-email').text(`Email: ${user.randomUser.email}`)
-  $('#user-stats').text(`Daily Step Goal: ${user.randomUser.dailyStepGoal}, Stride Length: ${user.randomUser.strideLength}`)
+  $('#user-stride').text(`Your stride length is ${user.randomUser.strideLength}`)
   $('#user-stepGoal').text(`Your daily step goal is set to ${user.randomUser.dailyStepGoal} steps.`)
   $('#avg-stepGoal').text(`The average step goal among all users is ${users.averageGoalSteps()}.`)
 
-  $('#')
+  $('#daily-water').text(`Today you have consumed ${hydro.fluidOzsPerDay(randomIndex, today)} ounces of water.`)
+  $('#weekly-water').text(`In the past week, you've consumed the following amounts of water per day ${hydro.userFluidsPerWeek(randomIndex, today)}.`)
+  
+//   $('#user-numSteps-today').text(`Today, you've walked ${}`)
+
+
 
 })
 

@@ -17,23 +17,25 @@ class SleepRepo {
         return Math.round(AllQualityReduced/this.sleepData.length)
     };
 
-    findAboveAverageSleepers(dateOf){
+    findAboveAverageSleepers(dateOf){ // not done
         let userIDs = new Set(sleepData.map(user => user.userID))
         let uniqueUsers = new Array(...userIDs)
-        console.log(uniqueUsers.reduce((allIds, curId)=> {
-            let user = Sleep.findSleepData(curId)
-            let index = Sleep.findSleepData(curId)
-            let week = Sleep.findWeekForSleep(dateOf) 
-            let averageSleepQuality = week.reduce((overallQuality, dailyQuality) =>{
-                overallQuality += dailyQuality.sleepQuality;
-                return overallQuality;
-            }, 0) / week.length;
+        console.log(uniqueUsers)
+        return uniqueUsers.reduce((allIds, curId)=> {
+            let user = sleepData.filter(sleep => sleep.userID === curId)
+            let dateIndex =  user.findIndex(day => day.date === dateOf);
+            let week = user.slice(dateIndex - 6, dateIndex + 1);
+            let overallSleepQuality = week.reduce((overallQuality, dailyQuality) => {
+                return overallQuality += dailyQuality.sleepQuality;
+            }, 0)/7
+            
+            if(overallSleepQuality >= 3){
+                allIds.push(userIDs)
+            }
+            console.log('allIds', allIds)
+            return allIds;
 
-            averageSleepQuality>=3 ? overallQuality.push(userIDs) : null;
-
-            return averageSleepQuality;
-
-            }, []))
+            }, [])
 
     }
 

@@ -77,8 +77,12 @@ class Activity {
     },0)
     return parseFloat((totalFlights / 102).toFixed(1))
   }
-};
+  a
+  returnWeekInfo() {
+    return this.data.filter(user => user.userID === this.id).slice(-7)
+  } 
 
+};
 if (typeof module !== 'undefined') {
     module.exports = Activity;
 }

@@ -28,7 +28,7 @@ describe('Hydration', function() {
 
   it('should return array of weekly fluid ounces per user', function() {
     const hydration = new Hydration(hydrationData);
-    expect(hydration.displayWeeklyFluidOunce(1)).to.deep.eql([69, 61, 91, 50, 50, 43, 39]);
+    expect(hydration.displayWeeklyFluidOunce(1)).to.deep.eql([ 37, 69, 61, 91, 50, 50, 43 ]);
   });
 
 });

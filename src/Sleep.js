@@ -55,7 +55,6 @@ class Sleep {
     if (userWeeklySleep.length > 7) {
       userWeeklySleep.length = 7;
     }
-    console.log(userWeeklySleep)
     return userWeeklySleep;
   }
 

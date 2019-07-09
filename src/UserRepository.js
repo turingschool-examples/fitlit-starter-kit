@@ -18,6 +18,7 @@ class UserRepository {
     let averageStepGoal = totalStepGoal / this.data.length;
     return averageStepGoal
   }
+  
 }
 
 

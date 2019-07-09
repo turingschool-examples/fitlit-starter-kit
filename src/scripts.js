@@ -72,7 +72,11 @@ $(document).ready(function() {
                     borderWidth: 2
                 }]
             },
-        options: {legend: {display: false}}
+        options: {responsive: true,
+                   maintainAspectRatio: false,
+                  legend: {display: false}
+    }
+
         });
 
 
@@ -106,7 +110,7 @@ $(document).ready(function() {
                     borderWidth: 2
                 }]
             },
-        options: {legend: {display: false}}
+        
         });
 
   var weeklyFligthsClimbedBarGraph = new Chart($('#weekly-flights-chart'), {
@@ -241,7 +245,7 @@ $(document).ready(function() {
 
 
  var dailyStepComparisonChart = new Chart($('#daily-step-comparison-chart'), {
-            type: 'polarArea',
+            type: 'pie',
             data: {
                 labels: ["me", "all users"],
                 datasets: [{
@@ -263,7 +267,7 @@ $(document).ready(function() {
 
 
  var dailyMinutesActiveComparisonChart = new Chart($('#daily-active-minutes-comparison-chart'), {
-            type: 'polarArea',
+            type: 'pie',
             data: {
                 labels: ["me", "all users"],
                 datasets: [{
@@ -284,7 +288,7 @@ $(document).ready(function() {
         });
 
  var dailyFlightsClimbedComparisonChart = new Chart($('#daily-flight-comparison-chart'), {
-            type: 'polarArea',
+            type: 'pie',
             data: {
                 labels: ["me", "all users"],
                 datasets: [{

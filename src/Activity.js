@@ -10,8 +10,6 @@ class Activity{
 	constructor(id){
 		this.userActivity = (this.findActivityData(id));
 		this.uniqueUserData = (this.findUserData(id));
-         // console.log('userActivity:' ,this.userActivity)
-        // console.log('uniqueUser:' ,this.uniqueUserData)
 	};
 
 	findActivityData(id){
@@ -81,6 +79,21 @@ class Activity{
             return a.minutesActive - b.minutesActive});
         return `Your least active day was ${sortedMins[0].date}. What happened?` 
     }
+
+    compareFriends(dateOf){
+        let included = [...userData.id.friends, userdata.id]
+        let friends = included.map(user => ({
+            id: user,
+            name: userData.find(user => user.id === friend).name,
+            step: activityData.filter(day => day.date <= dateOf)
+                    .slice(-6, +1)
+                    .map(user => user.numSteps)
+                    .reduce((totalSteps, dailySteps) => totalSteps += dailySteps, 0)
+        }))
+console.log(friends)
+
+    }
+
 }
 
 if (typeof module !== 'undefined') {

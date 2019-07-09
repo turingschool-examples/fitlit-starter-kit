@@ -50,27 +50,26 @@ $(document).ready(function() {
             data: {
                 labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
                 datasets: [{
-                    // label: {display: false},
                     data: activity.displayWeeklyStepsList(randomUser + 1),
                     backgroundColor: [
                         '#2FB5B6',
-                        '#FC5D79', // 0 red, 0 blue, 0 green, 40% opacity
-                        '#B6E7EC', // 50 red, 50 blue, 50 green, 40% opacity
-                        '#fda8b7', //alternatively use a hex code
+                        '#FC5D79', 
+                        '#B6E7EC', 
+                        '#fda8b7', 
                         '#1F768A',
                         '#fc7d93',
                         '#346081'
                     ],
                     borderColor: [
-                        '#2FB5B6', //full black border
+                        '#2FB5B6', 
                         '#FC5D79',
                         '#B6E7EC',
                         '#fda8b7',
                         '#1F768A',
                         '#fc7d93',
-                        '#346081', //full black border
+                        '#346081', 
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2
                 }]
             },
         options: {legend: {display: false}}
@@ -88,23 +87,23 @@ $(document).ready(function() {
                     data: activity.displayWeeklyActiveMinutesList(randomUser + 1),
                     backgroundColor: [
                         '#2FB5B6',
-                        '#FC5D79', // 0 red, 0 blue, 0 green, 40% opacity
-                        '#B6E7EC', // 50 red, 50 blue, 50 green, 40% opacity
-                        '#fda8b7', //alternatively use a hex code
+                        '#FC5D79', 
+                        '#B6E7EC', 
+                        '#fda8b7', 
                         '#1F768A',
                         '#fc7d93',
                         '#346081'
                     ],
                     borderColor: [
-                        '#2FB5B6', //full black border
+                        '#2FB5B6', 
                         '#FC5D79',
                         '#B6E7EC',
                         '#fda8b7',
                         '#1F768A',
                         '#fc7d93',
-                        '#346081', //full black border
+                        '#346081', 
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2
                 }]
             },
         options: {legend: {display: false}}
@@ -119,9 +118,9 @@ $(document).ready(function() {
                     data: activity.displayWeeklyFlightsList(randomUser + 1),
                     backgroundColor: [
                         '#2FB5B6',
-                        '#FC5D79', // 0 red, 0 blue, 0 green, 40% opacity
-                        '#B6E7EC', // 50 red, 50 blue, 50 green, 40% opacity
-                        '#fda8b7', //alternatively use a hex code
+                        '#FC5D79', 
+                        '#B6E7EC', 
+                        '#fda8b7', 
                         '#1F768A',
                         '#fc7d93',
                         '#346081'
@@ -133,9 +132,9 @@ $(document).ready(function() {
                         '#fda8b7',
                         '#1F768A',
                         '#fc7d93',
-                        '#346081', //full black border
+                        '#346081', 
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2 
                 }]
             },
         options: {legend: {display: false}}
@@ -151,13 +150,13 @@ $(document).ready(function() {
                     data: [userData[randomUser].dailyStepGoal,userRepository.calculateAverageStepGoal()],
                     backgroundColor: [
                         '#2FB5B6',
-                        '#FC5D79', // 0 red, 0 blue, 0 green, 40% opacity
+                        '#FC5D79', 
                     ],
                     borderColor: [
-                        '#2FB5B6', //full black border
+                        '#2FB5B6', 
                         '#FC5D79',
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2
                 }]
             },
         options: {legend: {display: false}}
@@ -173,9 +172,9 @@ $(document).ready(function() {
                     data: hydration.displayWeeklyFluidOunce(randomUser + 1),
                     backgroundColor: [
                         '#2FB5B6',
-                        '#FC5D79', // 0 red, 0 blue, 0 green, 40% opacity
-                        '#B6E7EC', // 50 red, 50 blue, 50 green, 40% opacity
-                        '#fda8b7', //alternatively use a hex code
+                        '#FC5D79', 
+                        '#B6E7EC', 
+                        '#fda8b7', 
                         '#1F768A',
                         '#fc7d93',
                         '#346081'
@@ -187,9 +186,9 @@ $(document).ready(function() {
                         '#fda8b7',
                         '#1F768A',
                         '#fc7d93',
-                        '#346081', //full black border
+                        '#346081', 
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2 
                 }]
             },
         options: {legend: {display: false}}
@@ -205,14 +204,14 @@ $(document).ready(function() {
                     data: sleep.displayWeeklySleep(randomUser + 1),
                     backgroundColor: [
                         '#9D9BA3',
-                        '#9D9BA3', // 0 red, 0 blue, 0 green, 40% opacity
-                        '#9D9BA3', // 50 red, 50 blue, 50 green, 40% opacity
-                        '#9D9BA3', //alternatively use a hex code
+                        '#9D9BA3',
+                        '#9D9BA3', 
+                        '#9D9BA3', 
                         '#9D9BA3',
                         '#9D9BA3',
                         '#fc7d93'
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2
                 }]
             },
         options: {legend: {display: false}}
@@ -227,14 +226,14 @@ $(document).ready(function() {
                     data: sleep.displayWeeklySleepQuality(randomUser + 1),
                     backgroundColor: [
                         '#9D9BA3',
-                        '#9D9BA3', // 0 red, 0 blue, 0 green, 40% opacity
-                        '#9D9BA3', // 50 red, 50 blue, 50 green, 40% opacity
-                        '#9D9BA3', //alternatively use a hex code
+                        '#9D9BA3', 
+                        '#9D9BA3',
+                        '#9D9BA3', 
                         '#9D9BA3',
                         '#9D9BA3',
                         '#1F768A'
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2 
                 }]
             },
         options: {legend: {display: false}}
@@ -251,13 +250,13 @@ $(document).ready(function() {
                     ],
                     backgroundColor: [
                         '#2FB5B6',
-                        '#FC5D79', // 0 red, 0 blue, 0 green, 40% opacity
+                        '#FC5D79', 
                     ],
                     borderColor: [
-                        '#2FB5B6', //full black border
+                        '#2FB5B6', 
                         '#FC5D79',
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderWidth: 2 
                 }]
             }
         });
@@ -273,13 +272,13 @@ $(document).ready(function() {
                     ],
                     backgroundColor: [
                         '#2FB5B6',
-                        '#FC5D79', // 0 red, 0 blue, 0 green, 40% opacity
-                    ],
-                    borderColor: [
-                        '#2FB5B6', //full black border
                         '#FC5D79',
                     ],
-                    borderWidth: 2 //2 pixel border
+                    borderColor: [
+                        '#2FB5B6', 
+                        '#FC5D79',
+                    ],
+                    borderWidth: 2 
                 }]
             }
         });

@@ -22,4 +22,8 @@ describe('User', function() {
     expect(user.displayUsersFirstName()).to.equal('Luisa');
   });
 
+  it('should return a users friends', function() {
+    const user = new User(userData);
+    expect(user.findFriends(1)).to.deep.eql([16, 4, 8]);
+  });
 });

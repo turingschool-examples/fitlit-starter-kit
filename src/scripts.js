@@ -198,65 +198,65 @@ const chart2 = new Chart(ctx2, {
 });
 
 
-const ctx3 = $('#step-goal-chart')
-const chart3 = new Chart(ctx3, {
-    // The type of chart we want to create
-    type: 'polarArea', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-    // The data for our dataset
-    data: {
-        labels: [`My Step Goal`, `Average Step Goal`,],
-        datasets: [{
-            label: 'My Step Goals',
-            backgroundColor: ['green', 'black'],
-            borderColor: 'black',
-            borderWidth: 2,
-            data: [`${currentUser.dailyStepGoal}`, `${globalRepo.returnAvgStepGoal()}`]
-        }]
-    },
+// const ctx3 = $('#step-goal-chart')
+// const chart3 = new Chart(ctx3, {
+//     // The type of chart we want to create
+//     type: 'polarArea', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+//     // The data for our dataset
+//     data: {
+//         labels: [`My Step Goal`, `Average Step Goal`,],
+//         datasets: [{
+//             label: 'My Step Goals',
+//             backgroundColor: ['green', 'black'],
+//             borderColor: 'black',
+//             borderWidth: 2,
+//             data: [`${currentUser.dailyStepGoal}`, `${globalRepo.returnAvgStepGoal()}`]
+//         }]
+//     },
 
-    // Configuration options go here
-    options: {
-        title: {
-            display: true,
-            text: 'My Step Goals'
-        },
-        legend: {
-            display: false,
-            position: 'bottom'
-        }
-    }
+//     // Configuration options go here
+//     options: {
+//         title: {
+//             display: true,
+//             text: 'My Step Goals'
+//         },
+//         legend: {
+//             display: false,
+//             position: 'bottom'
+//         }
+//     }
 
-});
+// });
 
 
-const ctx4 = $('#step-goal-chart-two')
-const chart4 = new Chart(ctx4, {
-    // The type of chart we want to create
-    type: 'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-    // The data for our dataset
-    data: {
-        labels: [`My Step Goal`, `Average Step Goal`,],
-        datasets: [{
-            label: 'My Step Goals',
-            backgroundColor: ['green', 'black'],
-            borderColor: 'black',
-            borderWidth: 2,
-            data: [`${currentUser.dailyStepGoal}`, `${globalRepo.returnAvgStepGoal()}`]
-        }]
-    },
+// // const ctx4 = $('#step-goal-chart-two')
+// const chart4 = new Chart(ctx4, {
+//     // The type of chart we want to create
+//     type: 'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+//     // The data for our dataset
+//     data: {
+//         labels: [`My Step Goal`, `Average Step Goal`,],
+//         datasets: [{
+//             label: 'My Step Goals',
+//             backgroundColor: ['green', 'black'],
+//             borderColor: 'black',
+//             borderWidth: 2,
+//             data: [`${currentUser.dailyStepGoal}`, `${globalRepo.returnAvgStepGoal()}`]
+//         }]
+//     },
 
-    // Configuration options go here
-    options: {
-        title: {
-            display: true,
-            text: 'My Step Goals'
-        },
-        legend: {
-            display: false
-        }
-    }
+//     // Configuration options go here
+//     options: {
+//         title: {
+//             display: true,
+//             text: 'My Step Goals'
+//         },
+//         legend: {
+//             display: false
+//         }
+//     }
 
-});
+// });
 // let sleepWeek = currentSleep.returnWeekHours("2019/06/23");
 // // console.log(sleepWeek);
 // let sleepDays = sleepWeek.reduce((acc, day) => {
@@ -295,52 +295,58 @@ const chart5 = new Chart(ctx5, {
 
 });
 
-const ctx6 = $('#all-time-sleep-quality-chart')
-const chart6 = new Chart(ctx6, {
-    // The type of chart we want to create
-    type: 'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-    // The data for our dataset
-    data: {
-        labels: [`My Sleep Quality`, 'Average Sleep Quality'],
-        datasets: [{
-            label: 'Sleep Quality All Time',
-            backgroundColor: ['yellow', 'blue'],
-            borderColor: 'black',
-            borderWidth: 1,
-            data: [`${currentSleep.returnAllTimeAvgQual()}`, `${sleepRepo.returnAllSleepQual()}`]
-        }
-    ]
-    },
+// const ctx6 = $('#all-time-sleep-quality-chart')
+// const chart6 = new Chart(ctx6, {
+//     // The type of chart we want to create
+//     type: 'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+//     // The data for our dataset
+//     data: {
+//         labels: [`My Sleep Quality`, 'Average Sleep Quality'],
+//         datasets: [{
+//             label: 'Sleep Quality All Time',
+//             backgroundColor: ['yellow', 'blue'],
+//             borderColor: 'black',
+//             borderWidth: 1,
+//             data: [`${currentSleep.returnAllTimeAvgQual()}`, `${sleepRepo.returnAllSleepQual()}`]
+//         }
+//     ]
+//     },
 
-    // Configuration options go here
-    options: {
-        title: {
-            display: true,
-            text: 'My Average Sleep Quality'
-        },
-        legend: {
-            display: false
-        }
-    }
-});
+//     // Configuration options go here
+//     options: {
+//         title: {
+//             display: true,
+//             text: 'My Average Sleep Quality'
+//         },
+//         legend: {
+//             display: false
+//         }
+//     }
+// });
 
+let activityWeek = activity.returnWeekInfo();
+let activityDays = activityWeek.reduce((acc, day) => {
+  let today = day;
+  let newDate = today.date.split('/').filter(index => index.length !== 4).join('/');
+  acc.push(newDate);
+  return acc;
+}, []);
 
-const ctx7 = $('#all-time-sleep-hours-chart')
+const ctx7 = $('#activity-minutes-chart');
 const chart7 = new Chart(ctx7, {
     // The type of chart we want to create
-    type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+    type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
     // The data for our dataset
     data: {
-        labels: [`My Sleep Hours`, 'Average Sleep Hours'],
-        datasets: [{
-            label: 'Sleep Hours All Time',
-            backgroundColor: ['yellow', 'blue'],
-            borderColor: 'black',
-            borderWidth: 1,
-            data: [`${currentSleep.returnAllTimeAvgHours()}`, `${sleepRepo.returnAllSleepHours()}`]
-        }
-    ]
-    },
+      labels: [`${activityDays[0]}`, `${activityDays[1]}`, `${activityDays[2]}`, `${activityDays[3]}`, `${activityDays[4]}`, `${activityDays[5]}`, `${activityDays[6]}`],
+      datasets: [{
+          label: 'Activity Per Day',
+          backgroundColor:  '#FFE400',
+          borderColor: '#000000',
+          borderWidth: 1,
+          data: [`${activityWeek[0].minutesActive}`, `${activityWeek[1].minutesActive}`, `${activityWeek[2].minutesActive}`, `${activityWeek[3].minutesActive}`, `${activityWeek[4].minutesActive}`, `${activityWeek[5].minutesActive}`, `${activityWeek[6].minutesActive}`]
+      }]
+  },
 
     // Configuration options go here
     options: {
@@ -357,7 +363,86 @@ const chart7 = new Chart(ctx7, {
         },
         title: {
             display: true,
-            text: 'My Average Sleep Hours'
+            text: 'Active Minutes this Week'
+        },
+        legend: {
+            display: false
+        }
+    }
+});
+
+const ctx8 = $('#activity-stairs-chart');
+const chart8 = new Chart(ctx8, {
+    // The type of chart we want to create
+    type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+    // The data for our dataset
+    data: {
+      labels: [`${activityDays[0]}`, `${activityDays[1]}`, `${activityDays[2]}`, `${activityDays[3]}`, `${activityDays[4]}`, `${activityDays[5]}`, `${activityDays[6]}`],
+      datasets: [{
+          label: 'Activity Per Day',
+          backgroundColor:  '#FFE400',
+          borderColor: '#000000',
+          borderWidth: 1,
+          data: [`${activityWeek[0].flightsOfStairs}`, `${activityWeek[1].flightsOfStairs}`, `${activityWeek[2].flightsOfStairs}`, `${activityWeek[3].flightsOfStairs}`, `${activityWeek[4].flightsOfStairs}`, `${activityWeek[5].flightsOfStairs}`, `${activityWeek[6].flightsOfStairs}`]
+      }]
+  },
+
+    // Configuration options go here
+    options: {
+        scales: {
+            yAxes: [{
+                barPercentage: 0.5,
+                barThickness: 1000,
+                maxBarThickness: 8,
+                minBarLength: 20,
+                gridLines: {
+                    offsetGridLines: true
+                }
+            }]
+        },
+        title: {
+            display: true,
+            text: 'Flights of Stairs Climbed this Week'
+        },
+        legend: {
+            display: false
+        }
+    }
+});
+
+
+const ctx9 = $('#activity-steps-chart');
+const chart9 = new Chart(ctx9, {
+    // The type of chart we want to create
+    type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+    // The data for our dataset
+    data: {
+      labels: [`${activityDays[0]}`, `${activityDays[1]}`, `${activityDays[2]}`, `${activityDays[3]}`, `${activityDays[4]}`, `${activityDays[5]}`, `${activityDays[6]}`],
+      datasets: [{
+          label: 'Activity Per Day',
+          backgroundColor:  '#FFE400',
+          borderColor: '#000000',
+          borderWidth: 1,
+          data: [`${activityWeek[0].numSteps}`, `${activityWeek[1].numSteps}`, `${activityWeek[2].numSteps}`, `${activityWeek[3].numSteps}`, `${activityWeek[4].numSteps}`, `${activityWeek[5].numSteps}`, `${activityWeek[6].numSteps}`]
+      }]
+  },
+
+    // Configuration options go here
+    options: {
+        scales: {
+            yAxes: [{
+                barPercentage: 0.5,
+                barThickness: 1000,
+                maxBarThickness: 8,
+                minBarLength: 20,
+                gridLines: {
+                    offsetGridLines: true
+                }
+            }]
+        },
+        title: {
+            display: true,
+            text: 'Flights of Stairs Climbed this Week'
         },
         legend: {
             display: false

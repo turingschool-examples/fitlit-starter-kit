@@ -4,7 +4,7 @@ body {
     max-width: 90vw;
     margin: auto;
     display: grid;
-    background: #000000;
+    background: #ffffff;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
     grid-row-gap: 20px;
@@ -37,7 +37,7 @@ header {
 
 main {
     display: grid;
-    background: #000000;
+    background: #ffffff;
     grid-area: body;
     width: 100%;
     margin: 0 auto;
@@ -54,11 +54,9 @@ main {
 }
 
 .main__section--friends {
-    background: papayawhip;
     grid-area: friends;
     width: 100%;
     height: 500px;
-    background: green;
 }
 
 .main__section--hydration {
@@ -98,7 +96,7 @@ main {
 
 
 .grid {
-    background: #000000;
+    background: #ffffff;
     max-width: 100%;
   }
 
@@ -109,6 +107,7 @@ main {
     background-color: #272727;
     color: white;
     border-radius: 10px;
+    box-shadow: 5px 5px 2.5px grey;
     /* border: 2px solid hsla(0, 0%, 0%, 0.5); */
   }
 
@@ -223,3 +222,22 @@ div.main__section--hydration--week {
     margin: 0px auto 10px;
 }
 
+.main__section--friends--challenge {
+    list-style-type: decimal;
+}
+
+article {
+    background-color: #272727;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 2.5px grey;
+}
+
+.main__section--friends--challenge li {
+    margin: 5px 0px 50px 40px;
+    font-size: 20px;
+}
+
+.main__section--friends h4 {
+    margin: 0px auto 30px auto;
+}

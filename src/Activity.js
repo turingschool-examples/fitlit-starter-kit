@@ -108,8 +108,21 @@ class Activity {
     return Math.max(...flights)
   }
 
-  returnFriends(userID) {
+  returnWeekInfo(startDate, endDate) {
+    let firstIndex = this.data.findIndex(el => {
+      return el.date === startDate;
+    });
+    let allDates = this.data.reduce((dates, user) => {
+      dates.push(user.date)
+      return dates
+    }, [])
+    let lastIndex = allDates.lastIndexOf(endDate);
+    return this.data.slice(firstIndex, lastIndex + 1)
+  }
+
+  returnFriends(date) {
     let correctUser =  this.findCorrectUser();
+    let correctDay = this.findCorrectUserDate(date);
     let friends = this.data.reduce((matchingUsers, user) => {
       correctUser.friends.forEach(num => {
         if (num === user.userID)  {
@@ -124,14 +137,14 @@ class Activity {
         rightUsers.push(user);
         }
       });
-      return rightUsers
+      return rightUsers;
     }, []);
     return matchingUsers.reduce((userObj, user) => {
       let obj = {
         name: user.name,
         numSteps: friends.reduce((steps, friend) => {
           if (friend.userID === user.id) {
-            return friend.numSteps;
+             return friend.numSteps;
           }
           return steps;
         }, 0)

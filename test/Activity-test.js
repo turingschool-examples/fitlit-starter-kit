@@ -54,8 +54,13 @@ describe("Activity", function() {
         expect(activity.allTimeClimbRecord()).to.eql(34);
     });
 
-    it.only("return an array of their friends", function() {
+    it("should return an array of their friends", function() {
         const activity = new Activity(1);
-        expect(activity.returnFriends(1)).to.eql([{name: 'Mae Connelly', numSteps: 3486}, {name: 'Laney Abshire', numSteps: 10333}]);
+        expect(activity.returnFriends("2019/06/15")).to.eql([{name: 'Mae Connelly', numSteps: 3486}, {name: 'Laney Abshire', numSteps: 10333}]);
+    });
+
+    it.only("should return a week of steps for a user", function() {
+        const activity = new Activity(1);
+        expect(activity.returnWeekInfo("2019/06/15", "2019/06/22")).to.eql([{"userID": 1, "date": "2019/06/15", "numSteps": 3577,}]);
     });
 });

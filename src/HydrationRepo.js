@@ -8,7 +8,6 @@ if (typeof module !== 'undefined') {
 class HydrationRepo{
 	constructor(id){
 		this.hydrationUserData= (this.findHydrationData(id));
-		console.log(this.hydrationUserData)
 		// this.users = new Hydration(id);
 	};
 
@@ -39,10 +38,6 @@ class HydrationRepo{
 		let slicedDates = this.hydrationUserData.slice(newDateIndex - 6, newDateIndex + 1);
 		return slicedDates.map(user => user.numOunces);
 	}
-
-
-
-
 };
 
 

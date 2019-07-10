@@ -25,7 +25,6 @@ describe("sleep", () => {
 
   it.only("should be able to identify the average quality of sleep for a user", () => {
     sleep.findSleepData(4);
-    console.log("user Sleep data: ", sleep.findSleepData(4));
     expect(sleep.findAverageSleepQualityForUser()).to.be.equal(3);
   });
 

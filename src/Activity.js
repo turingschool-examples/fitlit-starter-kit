@@ -73,6 +73,13 @@ class Activity{
 		let strideLength = this.uniqueUserData.strideLength;
 		return Math.floor((daySteps*strideLength)/5280)
 	}
+
+	compareAgainstYourFriends(id){
+		let user = this.findUserData(id);
+        let friendData = user.friends.forEach(function(friend){
+			
+		})
+	}
 }
 
 if (typeof module !== 'undefined') {

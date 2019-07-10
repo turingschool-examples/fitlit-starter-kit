@@ -56,6 +56,9 @@ describe('activity', () => {
          it.skip('should return all time stair record ', () => {
 			expect(activity.allTimeStairRecord(1)).to.equal(36);
         });
-        
+		
+		it.only('should return all time stair record ', () => {
+			expect(activity.compareAgainstYourFriends(1)).to.equal(36);
+        });
     });
 

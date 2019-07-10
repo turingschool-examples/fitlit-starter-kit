@@ -16,11 +16,11 @@ console.log('activityRepo: ', activityRepo);
 
 
 // User Info
-$('.nav__span--name').text(`${user.name}`)
+$('.nav__span--name').text(`${user.name.split(' ')[0]}`)
 $('.nav__span--address').text(`${user.address}`)
 $('.nav__span--email').text(`${user.email}`)
 $('.nav__span--stepgoal').text(`${user.dailyStepGoal}`)
-$('.nav__span--comparison').text(`${user.dailyStepGoal}`)//this needs a function to call the average step goal for everyone
+$('.nav__span--comparison').text(`${userRepo.findAverageStepGoal()}`)//this needs a function to call the average step goal for everyone
 
 // Sleep Info
 $('.sleep__span--hours').text(`${sleepRepo.users.findHoursSleptForSpecificDay("2019/06/15")}`); //make date dynamic
@@ -40,6 +40,8 @@ $('.activity__span--minutes').text(`${activityRepo.users.findActiveMinutesForDay
 $('.activity__span--steps').text(`${activityRepo.users.findStepsForDay(2, "2019/06/23")}`);
 $('.activity__span--flights').text(`${activityRepo.users.findFlightsForDay(2, "2019/06/23")}`);
 $('.activity__span--miles').text(`${activityRepo.users.findMilesForDay(2, "2019/06/23")}`);
+
+// Fri
 
 
 

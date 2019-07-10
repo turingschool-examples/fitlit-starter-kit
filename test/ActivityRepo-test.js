@@ -33,6 +33,4 @@ describe('ActivityRepo', () => {
     it.skip('should calculate the average numbers of sterps taken by users on a specific date', () => {
             expect(activityRepo.findAverageMinActive("2019/06/23")).to.equal(174);
         });
-
-        
-    });
+});

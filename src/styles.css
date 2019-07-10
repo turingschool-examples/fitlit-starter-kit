@@ -5,35 +5,171 @@
   }
 
 body {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas: 
-      "nav nav nav"
-      "main main main"
-      "main main main";
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .nav {
     display: block;
-    grid-area: nav;
+    height: 25vh;
+}
+
+.nav--logo {
+    display: inline-flex;
+    width:100%
 }
 
 .nav__h1 {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 50%;
+    height: 15vh;
+    margin-left: 1%;
+    margin-right: 1%;
+    font-size: 3.5em;
 }
 
-.nav__div {
+.nav__span--name {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 50%;
+    margin-left: 1%;
+    margin-right: 1%;
+    font-size: 2.5em;
+}
+
+.nav__div,
+.nav__div--stepgoal {
+    display: inline-block;
+    margin-left: 1%;
+    margin-right: 1%;
+    
+}
+
+.nav__div--stepgoal {
+    text-align: end;
+}
+
+.nav--extras {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hydro__section,
+.activity__section,
+.sleep__section,
+.friends__section,
+.challenges__section {
+    display: flex;
+    height: 15vh;
+    border-top: 2px solid black
+}
+
+.hydro__h2,
+.activity__h2,
+.sleep__h2,
+.friends__h2,
+.challenges__h2 {
+    padding: 20px;
+    width: 20%;
+    border-right: 2px solid black;
+}
+
+.hydro__div,
+.activity__div,
+.sleep__div,
+.challenges__div,
+.friends__div {
     display: inline-flex;
+    width:100%;
+    justify-content: space-evenly;
 }
 
-main {
-    grid-area: main;
+.hydro__section--today,
+.hydro__section--average,
+.hydro__section--week,
+.sleep__section--hours,
+.sleep__section--lastWeek,
+.sleep__section--overall,
+.activity__section--steps, 
+.activity__section--miles,
+.activity__section--minutes,
+.activity__section--stairs {
+    display: block;
+    border-right: 2px solid black;
+    width:100%;
+    text-align: center
 }
 
+.sleep--hours,
+.sleep--lastWeekH,
+.sleep--summaryH {
+    border-right: 1px solid black
+}
+
+.hydro__section span {
+    color: #0d47a1;
+}
 .hydro__section {
-    display: inline;
+    background-color: #bbdefb;
 }
+
+.sleep__section {
+    background-color: #d1c4e9
+}
+
+.sleep__section span {
+    color: #311b92
+}
+
+.activity__section {
+    background-color: #ffcdd2
+}
+
+.activity__section span {
+    color: #b71c1c
+}
+
+.friends__section {
+    background-color: #c8e6c9
+}
+
+friends__section span {
+    color: #1b5e20
+}
+
+.challenges__section {
+    background-color: #fff9c4
+}
+
+.challenges__section span {
+    color: #f57f17
+}
+
+.hydro__span--today,
+.hydro__span--average,
+.activity__section span {
+    font-size: 2em;
+}
+
+.hydro__span--week {
+    font-size: 1.5em;
+}
+
+.sleep__section span {
+    font-size: 1.5em;
+}
+
+.sleep--hours,
+.sleep--quality,
+.sleep--lastWeekH,
+.sleep--lastWeekQ,
+.sleep--summaryH,
+.sleep--summaryQ {
+    display:inline-block;
+    width:50%;
+}
+
+
+

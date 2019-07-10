@@ -2,16 +2,12 @@ if (typeof module !== 'undefined') {
   User = require('../src/user');
 }
 
-
-
 class Activity extends User {
   constructor (user, currentUser) {
     super(user, currentUser)
     this.currentUser = currentUser;
     this.user = user;
   }
-
-
 
   milesWalked(date) {
     let found = this.currentUser.find(el => el.date === date);
@@ -77,6 +73,12 @@ class Activity extends User {
   returnWeekViewOfMinsActive(startingDate) {
     let week = this.returnAWeek(startingDate);
     return week.map(el => el.minutesActive);
+  }
+
+  milesWalkedUS() {
+    let americaWidth = 2680;
+    let totalSteps = this.currentUser.reduce((acc, day) => acc + (day.numSteps * this.user.strideLength), 0);
+    return parseFloat((((totalSteps / 5280) / americaWidth) * 100).toFixed(2));
   }
 
 }

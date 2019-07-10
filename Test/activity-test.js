@@ -87,4 +87,8 @@ describe("Activity", () => {
     expect(activity1.returnWeekViewOfMinsActive("2019/06/15")).to.eql([140, 175, 168, 165, 275, 140, 135])
   });
 
+  it("should return percentage of the US walked", () => {
+    expect(activity1.milesWalkedUS()).to.eql(0.31)
+  })
+
 });

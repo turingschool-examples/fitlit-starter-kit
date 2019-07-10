@@ -37,9 +37,10 @@ describe('Challenges', function() {
   it.only('Should be able to find the weekly step data for a users friends', function(){
 
     let user = new Challenges(fakeUsers, 1)
-    let object = user.findFriends()
-    let object1 = user.addUserToFriends()
-    let object2 = user.findActiveWeek(activity, '2019/06/16')
-    expect(object).to.equal(3)
+    let array = user.findFriends()
+    let obj = user.findFriendData(activity, '2019/09/15')
+    console.table(obj)
+    expect(array.length).to.equal(3)
   })
+  
 })

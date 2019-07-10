@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Activity Tracker</title>
   </head>
   <body>
     <nav> 
-      <h1>Git Fit w FitLit</h1>
+      <h1>Activity Tracker</h1>
       <h2 id="user-name__display"> ... </h2>
       <div>
         Current Date
@@ -18,26 +20,80 @@
         <li id="user-daily-step-goal__display">Steps</li>
         <li id="user-friends__display">Challenges</li>
       </ul>
-      <button>Funzies</button>
     </nav>
     <main>
-
-      <article>UserDate</article>
-
-      <article>StepGoal
-        <!-- <canvas id="stepChart" width="400" height="400"></canvas> -->
-      </article>
-
-      <div class="water-display__article">H2O
+      <div>
+        <label for="start">Start Date:</label>
+        <input type="date" id="date-calendar" name="start-date" value="2019-06-15" min="2019-06-15" max="2019-09-22">
+        <button id="submit-date__button" name="submit-date">Submit</button>
+      </div>
+      <p>
+        H2O
+      </p>
+      <img src="../images/water.png" alt="icon of a water glass" class="icon">
+      <p id="daily-water__display">...</p>
+      <p>Ounces of Water Drank Today</p>
+      <div class="water-display__article"> 
         <canvas id="weeklyWaterChart" width="400" height="400"></canvas>
       </div>
-
       <article>Sleep</article>
-        <canvas id="mostHoursSlept" width="400" height="400"></canvas>
-      <article>Steps</article>
-
-      <article> Challenges</article>
-      
+      <article>
+        Activity
+        <div>
+          <img src="../images/sneaker.png" alt="icon of a sneaker" class="icon">
+          <p id="step-count__display">...</p>
+          <p>
+            Today's Step Count
+          </p>
+        </div>
+        <div>
+          <img src="../images/stopwatch-icon-6.png" alt="icon of a clock" class="icon">
+          <p id="minutes-active__display">...</p>
+          <p>
+            Minutes Active Today
+          </p>
+        </div>
+        <div>
+          <p id="miles-walked__display">...</p>
+          <p>
+            Miles Walked Based on Steps
+          </p>
+        </div>
+          <div class="compare-users__display">
+            <table>
+              <tr>
+                <th></th>
+                <td>Step Count</td>
+                <td>Flights of Stairs</td>
+                <td>Minutes Active</td>
+              </tr>
+              <tr>
+                <th>You</th>
+                <td id="step-count__display">...</td>
+                <td id="minutes-active__display">...</td>
+                <td id="stairs-climbed__display">...</td>
+              </tr>
+              <tr>
+                <th>All Users</th>
+                <td id="all-user-step-count">...</td>
+                <td id="all-user-stair-count">...</td>
+                <td id="all-user-minutes-active">...</td>
+              </tr>
+            </table>
+          </div>
+        <div>
+          <canvas id="minutes-active-weekly__display" width="400" height="400"></canvas>
+        </div>
+        <div>
+          <canvas id="stairs-climbed-weekly__display" width="400" height="400"></canvas>
+        </div>
+        <div>
+          <canvas id="step-count-weekly__display" width="400" height="400"></canvas>
+        </div>
+      </article>
+      <article> 
+        Challenges
+      </article>
     </main>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -53,7 +109,7 @@
   <script type="text/javascript" src="./hydrationRepository.js"></script>
   <script type="text/javascript" src="./sleep.js"></script>
   <script type="text/javascript" src="./sleepRepository.js"></script>
-  <script type="text/javascript" src="./activity.js"></script>
   <script type="text/javascript" src="./activityRepository.js"></script>
+  <script type="text/javascript" src="./activity.js"></script>
   <script type="text/javascript" src="./scripts.js"></script>
 </html>

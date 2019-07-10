@@ -76,8 +76,7 @@ class Activity{
   
 	compareAgainstYourFriends(id){
 		let user = this.findUserData(id);
-        let friendData = user.friends.forEach(function(friend){
-			
+        let friendData = user.friends.forEach(function(friend){	
 		})
 	}
   
@@ -99,6 +98,46 @@ class Activity{
         }))
         let sorted = friends.sort((a,b) => b.steps - a.steps)
         return friends[0]
+    }
+
+    threeDayStepStreak(id){
+        let userObjs = [];
+        let dates = [];
+        let user = activityData.filter(user => user.userID === id)
+        user.forEach(function(day){
+
+            if(userObjs.length >= 3){
+                userObjs.shift();
+            }
+
+            userObjs.push(day.numSteps)
+        
+            if(userObjs[2] > userObjs[1] && userObjs[1] > userObjs[0]){
+                dates.push(day.date);
+            }
+        })
+
+        return dates
+    }
+
+    threeDayStairStreak(id){
+        let userObjs = [];
+        let dates = [];
+        let user = activityData.filter(user => user.userID === id)
+        user.forEach(function(day){
+
+            if(userObjs.length >= 3){
+                userObjs.shift();
+            }
+
+            userObjs.push(day.flightsOfStairs)
+        
+            if(userObjs[2] > userObjs[1] && userObjs[1] > userObjs[0]){
+                dates.push(day.date);
+            }
+        })
+
+        return dates
     }
 
 }

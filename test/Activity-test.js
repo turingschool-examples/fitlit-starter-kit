@@ -54,8 +54,16 @@ describe('activity', () => {
 			expect(activity.allTimeStairRecord(1)).to.equal(36);
         });
 
-     it.only('should should compare user against friends to determine step challenge winner ', () => {
+        it.only('should compare user against friends to determine step challenge winner ', () => {
             expect(activity.compareFriends("2019/06/15", 1)).to.eql({ id: 5, name: 'Erick Schaden', steps: 11374 });
+        });
+
+        it.only('should show a user\'s step streak if it is 3 days or over', () => {
+            expect(activity.threeDayStepStreak(1)).to.eql(["2019/06/15","2019/06/16","2019/06/17"]);
+        });
+
+        it.only('should show a user\'s stair climbing streak if it is 3 days or over', () => {
+            expect(activity.threeDayStairStreak(1)).to.eql(["2019/06/18","2019/06/19","2019/06/20"]);
         });
 
     });

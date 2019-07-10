@@ -36,7 +36,6 @@ class Challenges {
   }
   findFriendData(dataSet, startDate) {
     let friendObjects = this.addUserToFriends(dataSet, startDate);
-    console.log('friendObjects :', friendObjects);
     return friendObjects
   }
 

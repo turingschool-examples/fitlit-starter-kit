@@ -179,7 +179,7 @@ const activityData = [
         "date": "2019/06/20",
         "numSteps": 14478,
         "minutesActive": 140,
-        "flightsOfStairs": 12
+        "flightsOfStairs": 500
       },
       {
         "userID": 2,

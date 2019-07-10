@@ -138,9 +138,19 @@ body {
   background-color: rgba(28, 28, 37, 0.6);
 }
 
+img {
+  width: 40px;
+  vertical-align: middle;
+  margin-left: 15px;
+}
+
 .sleepQuality-line-chart,
 .num-of-steps-chart,
 .num-mins-active-chart,
 .flights-climbed-chart {
   padding-right: 20px;
+}
+
+.last-line {
+  padding-bottom: 0;
 }

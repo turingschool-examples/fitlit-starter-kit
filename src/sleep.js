@@ -42,6 +42,16 @@ class Sleep {
     if ((this.userHoursAve() > 7) && (this.userSleepAve() > 3 )) {
       this.rested = true
     }
+
+  }
+
+  displayRested() {
+    this.checkRested()
+    if (this.rested === true) {
+      return "Rested Status: Getting enough rest!"
+    } else {
+      return "Rested Status: Not Getting enough rest!"
+    }
   }
 
 

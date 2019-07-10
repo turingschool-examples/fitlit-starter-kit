@@ -23,8 +23,13 @@ describe('Sleep', () => {
     expect(sleep).to.be.an.instanceOf(Sleep);
   });
 
-  it('should return the average of a given user\'s sleep quality', () => {
+  it('should return the average of a given user\'s sleep hours', () => {
     let average = sleep.returnUserAverageSleepHours();
+    expect(average).to.equal(7);
+  });
+
+  it('should return the average of a given user\'s sleep quality', () => {
+    let average = sleep.returnUserAverageSleepQuality();
     expect(average).to.equal(2);
   });
 

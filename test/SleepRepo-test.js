@@ -6,12 +6,16 @@ const SleepRepo = require('../src/SleepRepo');
 const sampleData = require('../data/sample-sleep');
 const sampleSleepData = sampleData.sampleSleepData;
 
+const UserRepo = require('../src/UserRepo');
+const sampleDataUsers = require('../data/sample-users');
+const sampleUserData = sampleDataUsers.sampleUserData;
+
 describe('SleepRepo', () => {
 
   let sleepRepo, givenDate;
   beforeEach(() => {
     givenDate = "2019/06/22";
-    sleepRepo = new SleepRepo(sampleSleepData);
+    sleepRepo = new SleepRepo(sampleSleepData, sampleUserData);
     sleep = new Sleep(sleepRepo.returnUserData(2));
   });
 
@@ -34,8 +38,8 @@ describe('SleepRepo', () => {
   });
 
   it('should return the user with the highest sleep hours for a given date (or all, if tied)', () => {
-    let longestSleeper = sleepRepo.returnLongestSleeperGivenDate(givenDate)
-    expect(longestSleeper.userID).to.equal(3);
+    let longestSleeper = sleepRepo.returnLongestSleeperGivenDate(givenDate);
+    expect(longestSleeper).to.equal('Herminia Witting');
   });
 
 })

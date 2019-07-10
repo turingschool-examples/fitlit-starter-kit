@@ -4,10 +4,17 @@ class Sleep {
   }
 
   returnUserAverageSleepHours() {
-    return this.userData.reduce((acc, record) => {
+    return +(this.userData.reduce((acc, record) => {
+      acc += record.hoursSlept;
+      return acc;
+    }, 0) / this.userData.length).toFixed(2);
+  }
+
+  returnUserAverageSleepQuality() {
+    return +(this.userData.reduce((acc, record) => {
       acc += record.sleepQuality;
       return acc;
-    }, 0) / this.userData.length;
+    }, 0) / this.userData.length).toFixed(2);
   }
 
   returnUserSleepHoursDate(date) {
@@ -43,10 +50,10 @@ class Sleep {
   }
   
   returnUserAllTimeSleepHours() {
-    return this.userData.reduce((acc, record) => {
+    return +(this.userData.reduce((acc, record) => {
       acc += record.hoursSlept;
       return acc;
-    }, 0);
+    }, 0)).toFixed(0);
   }
 }
 

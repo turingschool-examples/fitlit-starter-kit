@@ -5,10 +5,10 @@ $(document).ready(function() {
   const user = new User(userRepo.returnUserData(id));
   const hydrationRepo = new HydrationRepo(hydrationData);
   const hydration = new Hydration(hydrationRepo.returnUserData(id));
-  // const sleepRepo = new SleepRepo(sleepData);
-  // const sleep = new Sleep(sleepRepo.returnUserData(id));
-  // const activityRepo = new ActivityRepo(activityData);
-  // const activity = new Activity(activityRepo.returnUserData(id));
+  const sleepRepo = new SleepRepo(sleepData, userData);
+  const sleep = new Sleep(sleepRepo.returnUserData(id));
+  const activityRepo = new ActivityRepo(activityData, userData);
+  const activity = new Activity(activityRepo.returnUserActivityData(id), user);
   appendUser();
   appendHydration();
   appendSleep();
@@ -26,7 +26,14 @@ $(document).ready(function() {
   }
 
   function appendSleep() {
-
+    appendUserAverageSleepHours();
+    appendUserAverageSleepQuality();
+    appendUserHoursSleptDate();
+    appendUserSleepQualityDate();
+    appendUserAllTimeSleepTotal();
+    appendUsersSleepQualityAvg();
+    appendUsersWithSleepQuality3PlusForWeek();
+    appendLongestSleeperGivenDate();
   }
 
   function appendActivity() {
@@ -55,7 +62,38 @@ $(document).ready(function() {
     $('.user--todayWater').text(hydration.returnOuncesGivenDate(date));
   }
 
-  let abc = hydrationRepo.returnUserData(id);
+  function appendUserAverageSleepHours() {
+    $('.user--avgHoursSleep').text(sleep.returnUserAverageSleepHours());
+  }
+
+  function appendUserAverageSleepQuality() {
+    $('.user--avgSleepQuality').text(sleep.returnUserAverageSleepQuality());
+  }
+
+  function appendUserHoursSleptDate() {
+    $('.user--hoursSleptForDate').text(sleep.returnUserSleepHoursDate(date));
+  }
+
+  function appendUserSleepQualityDate() {
+    $('.user--sleepQualityForDate').text(sleep.returnUserSleepQualityDate(date));
+  }
+
+  function appendUserAllTimeSleepTotal() {
+    $('.user--allTimeSleepTotal').text(sleep.returnUserAllTimeSleepHours());
+  }
+
+  function appendUsersSleepQualityAvg() {
+    $('.users--sleepQualityAverage').text(sleepRepo.returnAllUserSleepQualityAvg());
+  }
+
+  function appendUsersWithSleepQuality3PlusForWeek() {
+    $('.users--sleepQualityGreater3ForWeek').text(sleepRepo.returnAllUserQualityOverThree(date));
+  }
+
+  function appendLongestSleeperGivenDate() {
+    $('.user--sleptMostHoursDate').text(sleepRepo.returnLongestSleeperGivenDate(date));
+  }
+
 
 
   const weeklyWaterChart = new Chart($('#chart--weekHydration'), {
@@ -65,6 +103,78 @@ $(document).ready(function() {
             datasets: [{
                 label: 'Weekly Hydration',
                 data: hydration.returnOuncesGivenDateWeek(date),
+                backgroundColor: [
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)'
+                ]
+            }]
+        },
+        options: {
+            defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Fira Sans'",
+            responsive: false,
+            maintainAspectRatio: true,
+            aspectRatio: 2,
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+const weeklySleepHoursChart = new Chart($('#chart--weekSleepHours'), {
+        type: 'bar',
+        data: {
+            labels: ['Today', 'Yesterday', '2 Days', '3 Days', '4 Days', '5 Days', '6 Days'],
+            datasets: [{
+                label: 'Weekly Sleep Hours',
+                data: sleep.returnUserSleepHoursWeek(date),
+                backgroundColor: [
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)',
+                    'rgba(11, 204, 207, .3)'
+                ]
+            }]
+        },
+        options: {
+            defaultFontFamily: Chart.defaults.global.defaultFontFamily = "'Fira Sans'",
+            responsive: false,
+            maintainAspectRatio: true,
+            aspectRatio: 2,
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    })
+
+const weeklySleepQualityChart = new Chart($('#chart--weekSleepQuality'), {
+        type: 'bar',
+        data: {
+            labels: ['Today', 'Yesterday', '2 Days', '3 Days', '4 Days', '5 Days', '6 Days'],
+            datasets: [{
+                label: 'Weekly Sleep Quality',
+                data: sleep.returnUserSleepQualityWeek(date),
                 backgroundColor: [
                     'rgba(11, 204, 207, .3)',
                     'rgba(11, 204, 207, .3)',

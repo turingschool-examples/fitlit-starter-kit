@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="reset.css">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="reset.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Titillium+Web:400,700&display=swap"
+      rel="stylesheet"
+    />
     <title>Activity Tracker</title>
   </head>
   <body>
     <nav class="nav">
-      <div class="nav--logo">    
+      <div class="nav--logo">
         <h1 class="nav__h1">Activity Tracker</h1>
         <span class="nav__span--name">Name</span>
       </div>
-      <div class="nav--extras">  
+      <div class="nav--extras">
         <div class="nav__div">
-          <p class="nav--today">Today's Date<span class="nav__span--date">Date</span></h4>
-          <p class="nav--stepgoal">Daily Step Goal: <span class="nav__span--stepgoal"></span></p>
-          <p class="nav--allStepgoals">Step Goal Average: <span class="nav__span--comparison"></span></p>
+          <p class="nav--stepgoal">
+            Daily Step Goal: <span class="nav__span--stepgoal"></span>
+          </p>
+          <p class="nav--allStepgoals">
+            Step Goal Average: <span class="nav__span--comparison"></span>
+          </p>
         </div>
         <div class="nav__div--stepgoal">
-            <p><span class="nav__span--address"></span></p>
-            <p><span class="nav__span--email"></span></p>
+          <p><span class="nav__span--address"></span></p>
+          <p><span class="nav__span--email"></span></p>
         </div>
       </div>
     </nav>
@@ -30,42 +36,103 @@
       <section class="hydro__section">
         <h2 class="hydro__h2">Hydration</h2>
         <div class="hydro__div">
-          <section class="hydro__section--today"><p class="hydro--1">Today: </p><span class="hydro__span--today"></span><p>ounces</p></section>
-          <section class="hydro__section--average"><p class="hydro--2">Your Average Water Intake: </p><span class="hydro__span--average"></span><p>ounces</p></section>
-          <section class="hydro__section--week"><p class="hydro--3">Week Info: </p><span class="hydro__span--week"></span></section>
+          <section class="hydro__section--today">
+            <p class="hydro--1">Today:</p>
+            <span class="hydro__span--today"></span>
+            <p>ounces</p>
+          </section>
+          <section class="hydro__section--average">
+            <p class="hydro--2">Your Average Water Intake:</p>
+            <span class="hydro__span--average"></span>
+            <p>ounces</p>
+          </section>
+          <section class="hydro__section--week">
+            <p class="hydro--3">Week Info:</p>
+            <span class="hydro__span--week"></span>
+          </section>
         </div>
       </section>
       <section class="sleep__section">
-        <h2 class="sleep__h2">Sleep</h2> 
+        <h2 class="sleep__h2">Sleep</h2>
         <div class="sleep__div">
-          <section class="sleep__section--hours"><p>Today's Sleep</p><div class="sleep--hours"><p>Hours: </p><span class="sleep__span--hours"></span></div><div class="sleep--quality"><p> Quality: </p><span class="sleep__span--quality"></span></div></section>
-          <section class="sleep__section--lastWeek"><p>Last Week's Sleep Summary</p><div class="sleep--lastWeekH"><p>Hours: </p><span class="sleep__span--weekHours"></span></div><div class="sleep--lastWeekQ"><p> Quality: </p><span class="sleep__span--weekQuality"></span></div></section>
-          <section class="sleep__section--overall"><p>Overall Sleep Summary</p><div class="sleep--summaryH"><p>Hours: </p><span class="sleep__span--overallHours"></span></div><div class="sleep--summaryQ"><p> Quality: </p><span class="sleep__span--overallQuality"></span></div></section>
+          <section class="sleep__section--hours">
+            <p>Today's Sleep</p>
+            <div class="sleep--hours">
+              <p>Hours:</p>
+              <span class="sleep__span--hours"></span>
+            </div>
+            <div class="sleep--quality">
+              <p>Quality:</p>
+              <span class="sleep__span--quality"></span>
+            </div>
+          </section>
+          <section class="sleep__section--lastWeek">
+            <p>Last Week's Sleep Summary</p>
+            <div class="sleep--lastWeekH">
+              <p>Hours:</p>
+              <span class="sleep__span--weekHours"></span>
+            </div>
+            <div class="sleep--lastWeekQ">
+              <p>Quality:</p>
+              <span class="sleep__span--weekQuality"></span>
+            </div>
+          </section>
+          <section class="sleep__section--overall">
+            <p>Overall Sleep Summary</p>
+            <div class="sleep--summaryH">
+              <p>Hours:</p>
+              <span class="sleep__span--overallHours"></span>
+            </div>
+            <div class="sleep--summaryQ">
+              <p>Quality:</p>
+              <span class="sleep__span--overallQuality"></span>
+            </div>
+          </section>
+          <section class="sleep__section--worst">
+            <p>Worst Day</p>
+            <div class="sleep--worstH">
+              <p>Hours:</p>
+              <span class="sleep__span--worstHours"></span>
+            </div>
+            <div class="sleep--worstQ">
+              <p>Quality:</p>
+              <span class="sleep__span--worstQuality"></span>
+            </div>
+          </section>
         </div>
       </section>
       <section class="activity__section">
         <h2 class="activity__h2">Activity</h2>
         <div class="activity__div">
-
-          <section class="activity__section--steps"><p>Today's Steps: </p><span class="activity__span--steps"></span></section>
-          <section class="activity__section--miles"><p>Miles Walked: </p><span class="activity__span--miles"></span></section>
-          <section class="activity__section--minutes"><p>Active Minutes: </p><span class="activity__span--minutes"></span></section>
-          <section class="activity__section--stairs"><p>Flights of Stairs: </p><span class="activity__span--flights"></span></section>
+          <section class="activity__section--steps">
+            <p>Today's Steps:</p>
+            <span class="activity__span--steps"></span>
+          </section>
+          <section class="activity__section--miles">
+            <p>Miles Walked:</p>
+            <span class="activity__span--miles"></span>
+          </section>
+          <section class="activity__section--minutes">
+            <p>Active Minutes:</p>
+            <span class="activity__span--minutes"></span>
+          </section>
+          <section class="activity__section--stairs">
+            <p>Flights of Stairs:</p>
+            <span class="activity__span--flights"></span>
+          </section>
+          <section class="activity__section--worst">
+            <p>Least Active Day:</p>
+            <span class="activity__span--worst"></span>
+            <p>minutes</p>
+          </section>
         </div>
       </section>
       <section class="friends__section">
         <h2 class="friends__h2">Friends</h2>
-        <div class="friends__div">
-          <ul class="friends__ul">
-            <li class="friends__ul--one"></li>
-            <li class="friends__ul--two"></li>
-            <li class="friends__ul--three"></li>
-            <li class="friends__ul--four"></li>
-          </ul>
+        <div class="friends--holder">
+          <div class="friends__div--name"></div>
+          <div class="friends__div--steps"></div>
         </div>
-      </section>
-      <section class="challenges__section">
-        <h2 class="challenges__h2">Challenges</h2>
       </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>

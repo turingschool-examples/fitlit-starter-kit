@@ -15,25 +15,19 @@ let waterMethod = []
 let minutesActiveMethod = []
 let stairsClimbedMethod = []
 let stepCountMethod = []
-let friendDisplayChart = []
+// let friendDisplayChart = []
 
 function findTodaysDate () {
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0'); 
   var yyyy = today.getFullYear();
-
   today = yyyy + '/' + mm + '/' + dd;
-
   return `${today}`
 }
 
 
-
-
 $(document).ready(() => {
-
-
 
 /** Packery and Draggable **/ 
 $('.grid').packery({
@@ -70,7 +64,7 @@ minutesActiveMethod = activity.getWeeklyMinutesActive(randomId, formattedDate);
 stairsClimbedMethod = activity.getWeeklyStairsClimbed(randomId, formattedDate);
 stepCountMethod = activity.getWeeklyStepCount(randomId, formattedDate)
 waterMethod = hydration.getWeeklyOunces(randomId)
-friendMethod = challenges.findFriendWeek(userData, formattedDate, randomId)
+// friendMethod = challenges.findFriendWeek(userData, formattedDate, randomId)
 
 
   /** Hydration **/ 
@@ -224,33 +218,33 @@ myStepCountChart.canvas.parentNode.style.height = '200px';
 myStepCountChart.canvas.parentNode.style.width = '200px';
 });
 // Friend Weekly Chart
-var friendDisplayChart = $('#friend__display');
-var myFriendDisplayChart = new Chart(friendDisplayChart, {
-    type: 'line',
-    data: {
-        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
-        datasets: [{
-            label: "Friend Info",
-            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
-            data: friendMethod
-        }, {
-            label: "Friend Info",
-            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
-            data: friendMethod
-        }]
-    },
-    options: options = {
-        title: {
-            display: true,
-            text: 'Friend Info'
-        },
-        responsive: true,
-        maintainAspectRatio: false,
-    }
-});
-myFriendDisplayChart.canvas.parentNode.style.height = '200px';
-myFriendDisplayChart.canvas.parentNode.style.width = '200px';
-});
+// var friendDisplgayChart = $('#friend__display');
+// var myFriendDisplayChart = new Chart(friendDisplayChart, {
+//     type: 'line',
+//     data: {
+//         labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+//         datasets: [{
+//             label: "Friend Info",
+//             backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+//             data: friendMethod
+//         }, {
+//             label: "Friend Info",
+//             backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+//             data: friendMethod
+//         }]
+//     },
+//     options: options = {
+//         title: {
+//             display: true,
+//             text: 'Friend Info'
+//         },
+//         responsive: true,
+//         maintainAspectRatio: false,
+//     }
+// });
+// myFriendDisplayChart.canvas.parentNode.style.height = '200px';
+// myFriendDisplayChart.canvas.parentNode.style.width = '200px';
+
 
 //Sleep hours and quality chart//
 

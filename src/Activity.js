@@ -47,39 +47,60 @@ class Activity{
 
     compareNumStepsToStepGoal(id, dateOf){
     	let dayOfActivity = this.userActivity.find(day => day.date === dateOf)
-    	if(dayOfActivity.numSteps >= this.uniqueUserData[0].dailyStepGoal){
+    	if(dayOfActivity.numSteps >= this.uniqueUserData.dailyStepGoal){
     		return `Great job at meeting your Daily Step Goal!`
     	} else{
-    		return 'Keep twerking!'
+    		return 'Keep twerking hunty!'
     	}
     };
 
     daysExceedStepGoal(id){
-    	let stepGoal = this.uniqueUserData[0].dailyStepGoal
+    	let stepGoal = this.uniqueUserData.dailyStepGoal
     	let allDates = this.userActivity.filter(day => day.numSteps >= stepGoal)
-    	return allDates.map(day => day.date)
+    	return allDates.map(day => day.date);
     };
 
     allTimeStairRecord(id){
     	let stairRecord = this.userActivity.sort((a,b) =>{
  			return b.flightsOfStairs - a.flightsOfStairs;
     	})
-    	return stairRecord[0].flightsOfStairs
+    	return stairRecord[0].flightsOfStairs;
 	};
 	
 	findMilesForDay(id, dateOf){
 		let dayOfActivity = this.userActivity.find(day => day.date === dateOf);
 		let daySteps = dayOfActivity.numSteps;
 		let strideLength = this.uniqueUserData.strideLength;
-		return Math.floor((daySteps*strideLength)/5280)
+		return Math.floor((daySteps*strideLength)/5280);
 	}
-
+  
 	compareAgainstYourFriends(id){
 		let user = this.findUserData(id);
         let friendData = user.friends.forEach(function(friend){
 			
 		})
 	}
+  
+    findLeastActiveDay(id){
+        let sortedMins = this.userActivity.sort((a,b) => {
+            return a.minutesActive - b.minutesActive});
+        return `Your least active day was ${sortedMins[0].date}. What happened?`; 
+    }
+
+    compareFriends(dateOf, id){
+        let included = [...userData[id].friends, userData[id].id]
+        let friends = included.map(friend => ({
+            id: friend,
+            name: userData.find(user => user.id === friend).name,
+            steps: activityData.filter(day => day.userID === friend && day.date <= dateOf)
+                    .slice(-6, +1)
+                    .map(user => user.numSteps)
+                    .reduce((totalSteps, dailySteps) => totalSteps += dailySteps, 0)
+        }))
+        let sorted = friends.sort((a,b) => b.steps - a.steps)
+        return friends[0]
+    }
+
 }
 
 if (typeof module !== 'undefined') {

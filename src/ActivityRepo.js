@@ -32,6 +32,7 @@ class ActivityRepo{
         let averageActiveMinsPerUser = allMins.reduce((totalMins, minsPerUser)=> totalMins += minsPerUser);
         return Math.round(averageActiveMinsPerUser/usersActiveOnDate.length)
     };
+
 };
     
 

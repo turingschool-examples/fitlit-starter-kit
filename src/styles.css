@@ -2,7 +2,6 @@
   box-sizing: border-box;
 }
 
-
 body {
   text-rendering: optimizeSpeed;
   margin: 3%;
@@ -10,18 +9,17 @@ body {
   background: #00515b url(sun.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center
+  background-position: center;
 }
 
-h2 {
+.welcome-message {
   color: #fff;
   font-family: "Racing Sans One";
   font-size: 2.5em;
   margin-left: 15px;
 }
 
-
-p {
+.user-profile-text {
   color: aliceblue;
   font-size: 1.5em;
   font-weight: 600;
@@ -59,7 +57,6 @@ p {
   grid-area: head;
 }
 
-
 .nav {
   background-color: rgba(28, 28, 37, 0.5);
   border-radius: 0 0 0 25px;
@@ -79,10 +76,22 @@ p {
   margin-top: 15px;
   padding: 8px 0;
   list-style-type: none;
+  border: none;
+  font-size: 1em;
+  width: 100%;
+  outline: 0;
 }
 
 .list-item--active {
   background-color: #c91b1b;
+}
+
+.list-item:hover {
+  background-color: #000;
+}
+
+.list-item:disabled {
+  background-color: #404055;
 }
 
 .section {
@@ -95,6 +104,7 @@ p {
 .intro-message {
   background-color: rgba(28, 28, 37, 0.6);
   color: aliceblue;
+  font-family: "Racing Sans One";
   font-size: 2.4em;
   line-height: 1.2;
   margin: auto;
@@ -124,7 +134,7 @@ p {
   margin: auto;
   position: relative;
   padding: 50px;
-	background-color: rgba(28, 28, 37, 0.6);
+  background-color: rgba(28, 28, 37, 0.6);
 }
 
 .sleepQuality-line-chart,
@@ -132,19 +142,4 @@ p {
 .num-mins-active-chart,
 .flights-climbed-chart {
   padding-right: 20px;
-}
-
-button {
-  border: none;
-  font-size: 1em;
-  width: 100%;
-  outline: 0;
-}
-
-button:hover {
-  background-color: #000;
-}
-
-button:disabled:hover {
-  background-color: #404055;
 }

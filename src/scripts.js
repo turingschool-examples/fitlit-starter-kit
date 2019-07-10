@@ -1,12 +1,7 @@
 $(document).ready(function() {
   const today = '2019/06/15';
 
-  function setProgress(amt) {
-    $("stop1").setAttribute("offset", amt);
-    $("stop2").setAttribute("offset", amt);
-  }
 
-  setProgress();
 
 
   $('#js-change-user').click(function() {
@@ -28,6 +23,16 @@ $(document).ready(function() {
     updateCharts(user, userRepo, hydration, sleep, activity, activityRepo, userID);
   });
 
+  function setProgress(amt) {
+    $('#stop1').attr('offset', amt);
+    $('#stop2').attr('offset', amt);
+  }
+
+  function updateMap(activity) {
+    setProgress(activity.milesWalkedUS());
+    $('#js-america-percent').html((activity.milesWalkedUS() * 100).toFixed(0));
+  }
+
   function changeUser() {
     if ($('#js-change-user').html() !== 'Change User') {
       $('#js-intro-message').hide();
@@ -48,6 +53,7 @@ $(document).ready(function() {
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
     $('#js-intro-message').hide();
+    $('.america-width').hide()
     removeClasses();
     addClasses();
   });
@@ -61,6 +67,7 @@ $(document).ready(function() {
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
     $('#js-intro-message').hide();
+    $('.america-width').hide()
     removeClasses();
     addClasses();
   });
@@ -74,6 +81,7 @@ $(document).ready(function() {
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
     $('#js-intro-message').hide();
+    $('.america-width').hide()
     removeClasses();
     addClasses();
   });
@@ -87,6 +95,7 @@ $(document).ready(function() {
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
     $('#js-intro-message').hide();
+    $('.america-width').hide()
     removeClasses();
     addClasses();
   });
@@ -100,6 +109,7 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.flights-climbed-charts').hide();
     $('#js-intro-message').hide();
+    $('.america-width').hide()
     removeClasses();
     addClasses();
   });
@@ -113,6 +123,7 @@ $(document).ready(function() {
     $('.flights-climbed-charts').hide();
     $('.sleep-charts').hide();
     $('#js-intro-message').hide();
+    $('.america-width').hide()
     removeClasses();
     addClasses();
   });
@@ -126,9 +137,27 @@ $(document).ready(function() {
     $('.num-mins-active-charts').hide();
     $('.num-of-steps-charts').hide();
     $('#js-intro-message').hide();
+    $('.america-width').hide()
     removeClasses();
     addClasses();
   });
+
+  $('#js-united-states').click(function() {
+    $('.america-width').show()
+    $('.flights-climbed-charts').hide();
+    $('#js-hydration-line-chart').hide();
+    $('.sleep-charts').hide();
+    $('#js-user-profile').hide();
+    $('#js-step-goal-chart').hide();
+    $('.num-mins-active-charts').hide();
+    $('.num-of-steps-charts').hide();
+    $('#js-intro-message').hide();
+    removeClasses();
+    addClasses();
+  });
+
+
+
 
   function enableButtons() {
     $('.list-item').attr('disabled', false)
@@ -156,7 +185,6 @@ $(document).ready(function() {
     $('#js-email').html(user.email);
     $('#js-friends').html(userRepo.makeFriendNames(userID));
     $('#js-miles').html(activity.milesWalked(today));
-    console.log(sleep)
     displayRested(sleep)
   }
 
@@ -224,6 +252,7 @@ $(document).ready(function() {
     minsActiveCharts(activity, activityRepo);
     stepsCharts(activity, activityRepo);
     flightsCharts(activity, activityRepo);
+    updateMap(activity);
   }
 
 

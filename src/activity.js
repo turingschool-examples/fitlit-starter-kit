@@ -76,9 +76,9 @@ class Activity extends User {
   }
 
   milesWalkedUS() {
-    let americaWidth = 2680;
+    let americaWidth = 1582;
     let totalSteps = this.currentUser.reduce((acc, day) => acc + (day.numSteps * this.user.strideLength), 0);
-    return parseFloat((((totalSteps / 5280) / americaWidth) * 100).toFixed(2));
+    return parseFloat(((totalSteps / 5280) / americaWidth).toFixed(2));
   }
 
 }

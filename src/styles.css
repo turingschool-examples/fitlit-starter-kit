@@ -154,3 +154,14 @@ img {
 .last-line {
   padding-bottom: 0;
 }
+
+.america-label {
+  font-family: "Open Sans";
+  font-size: 1.8em;
+}
+
+.america-width {
+  margin: auto;
+  margin-top: 40px;
+  text-align:center;
+}

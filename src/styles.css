@@ -1,5 +1,5 @@
 body {
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     height: 90vh;
     width: 100%;
     /* max-width: 90vw; */
@@ -19,6 +19,7 @@ h1 {
     font-size: 40px;
     margin: 5px auto 5px auto;
     color: #000000;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* clear fix */
@@ -68,24 +69,9 @@ main {
     width: 100%;
 }
 
-.main__section--activity--item {
-}
-
-.main__section--sleep--hours {
-}
-
-/* .main__section--activity article {
-    height: 100px;
-    width: 100px;
-    background: gray;
-    display: inline-block;
-} */
-
 .main__section--activity h2 {
     height: 30px;
 }
-
-
 
 .grid {
     background: #b0b0b0;
@@ -129,7 +115,10 @@ outline-offset: -6px;
 background: rgb(157, 157, 157);
 z-index: 2; /* above other draggies */
 }
-.grid-item.is-dragging { opacity: 0.7; }
+
+.grid-item.is-dragging { 
+    opacity: 0.7; 
+}
 
 .icon {
     height: 30%;
@@ -138,7 +127,6 @@ z-index: 2; /* above other draggies */
     padding: 10px;
     margin: 0px auto 30px auto;
 }
-
 
 .main__section--activity--world img {
     width: 25%;
@@ -149,12 +137,6 @@ h4 {
     font-weight: bold;
     padding: 10px 0 10px 0;
     text-transform: uppercase;
-}
-
-article {
-text-align: center;
-padding: 5px;
-/* box-shadow: 5px 5px 2.5px #a09fa1; */
 }
 
 article span {
@@ -173,10 +155,8 @@ article p {
     margin: -70px auto -70px auto;
 }
 
-
 table {
 margin: 30px auto 10px auto;
-/* font-size: .; */
 }
 
 th {
@@ -198,13 +178,11 @@ div.main__section--activity--week {
     height: 180px;
 }
 
-
 div.main__section--hydration--week {
     margin: 50px auto 0 auto;
 }
 
 .main__section--sleep--worst img {
-    display: inline-block;
     float: left;
     margin: 0;
 }   
@@ -223,8 +201,9 @@ div.main__section--hydration--week {
     list-style-type: decimal;
 }
 
-
 article {
+    text-align: center;
+    padding: 5px;
     background-color: #272727;
     color: white;
     border-radius: 10px;
@@ -234,6 +213,7 @@ article {
 .main__section--friends--challenge li {
     margin: 5px 0px 50px 40px;
     font-size: 20px;
+    min-width: 170px;
 }
 
 .main__section--friends h4 {
@@ -241,6 +221,32 @@ article {
 }
 
 .main__section--friends--user {
-    height: 400px;
+    height: auto;
+    min-width: 170px;
     margin: 0px auto 20px auto;
 }
+
+.main__section--friends--user span:first {
+    margin: 20px auto 20px auto;
+    font-size:30px;
+}
+
+.main__section--friends--user li,
+.main__section--friends--user li span{
+    margin: 10px auto 10px auto;
+    display: block;
+    font-size: 12px;
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.main__section--hydration--today .icon {
+    margin: 5px -15px 5px -15px;
+    display: inline;
+    height: 30px;
+    width: 30px;
+}
+

@@ -29,20 +29,20 @@
       </header>
       <nav class="nav">
         <ul class="nav-list">
-          <li class="list-item list-item--active" id="js-change-user">
+          <button class="list-item list-item--active" id="js-change-user">
             New User
-          </li>
-          <li class="list-item" id="js-user">User Profile</li>
-          <li class="list-item" id="js-step-goal">Step Goal</li>
-          <li class="list-item" id="js-hydration">Hydration</li>
-          <li class="list-item" id="js-sleep">Sleep</li>
-          <li class="list-item" id="js-min-active">Minutes Active</li>
-          <li class="list-item" id="js-steps">Step Count</li>
-          <li class="list-item" id="js-flights">Flights Climbed</li>
+          </button>
+          <button class="list-item" id="js-user" disabled>User Profile</button>
+          <button class="list-item" id="js-step-goal" disabled>Step Goal</button>
+          <button class="list-item" id="js-hydration" disabled>Hydration</button>
+          <button class="list-item" id="js-sleep" disabled>Sleep</button>
+          <button class="list-item" id="js-min-active" disabled>Minutes Active</button>
+          <button class="list-item" id="js-steps" disabled>Step Count</button>
+          <button class="list-item" id="js-flights" disabled>Flights Climbed</button>
         </ul>
       </nav>
-      <div class="label"></div>
       <section class="section">
+        <h3 class="intro-message" id="js-intro-message">Let's get fit! Select new user to begin.</h3>
         <div class="user-profile" id="js-user-profile"  style="display: none">
           <p>Full name: <span id="js-full-name"></span></p>
           <p>Address: <span id="js-address"></span></p>
@@ -55,67 +55,69 @@
           id="js-step-goal-chart"
           width="600"
           height="450"
+          style="display: none"
         ></canvas>
         <canvas
           class="hydration-line-chart"
           id="js-hydration-line-chart"
           width="800"
           height="450"
+          style="display: none"
         ></canvas>
-        <div class="sleep-charts">
+        <div class="sleep-charts" style="display: none">
           <canvas
             class="sleepQuality-line-chart"
             id="js-sleepQuality-line-chart"
-            width="475"
-            height="350"
+            width="495"
+            height="400"
           ></canvas>
           <canvas
             class="sleepHours-line-chart"
             id="js-sleepHours-line-chart"
             width="475"
-            height="350"
+            height="400"
           ></canvas>
         </div>
-        <div class="num-of-steps-charts">
+        <div class="num-of-steps-charts" style="display: none">
           <canvas
             class="num-of-steps-chart"
             id="js-num-of-steps-chart"
-            width="475"
-            height="350"
+            width="495"
+            height="400"
           ></canvas>
           <canvas
             class="num-of-steps-line-chart"
             id="js-num-of-steps-line-chart"
             width="475"
-            height="350"
+            height="400"
           ></canvas>
         </div>
-        <div class="num-mins-active-charts">
+        <div class="num-mins-active-charts" style="display: none">
           <canvas
             class="num-mins-active-chart"
             id="js-num-mins-active-chart"
-            width="475"
-            height="350"
+            width="495"
+            height="400"
           ></canvas>
           <canvas
             class="num-mins-active-line-chart"
             id="js-num-mins-active-line-chart"
             width="475"
-            height="350"
+            height="400"
           ></canvas>
         </div>
-        <div class="flights-climbed-charts">
+        <div class="flights-climbed-charts" style="display: none">
           <canvas
             class="flights-climbed-chart"
             id="js-flights-climbed-chart"
-            width="475"
-            height="350"
+            width="495"
+            height="400"
           ></canvas>
           <canvas
             class="flights-climbed-line-chart"
             id="js-flights-climbed-line-chart"
             width="475"
-            height="350"
+            height="400"
           ></canvas>
         </div>
       </section>

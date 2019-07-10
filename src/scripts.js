@@ -1,14 +1,5 @@
 
 $(document).ready(function() {
-  
-  const today = '2019/06/15';
-  $('#js-step-goal-chart').hide();
-  $('#js-hydration-line-chart').hide();
-  $('.sleep-charts').hide();
-  $('.num-of-steps-charts').hide();
-  $('.num-mins-active-charts').hide();
-  $('.flights-climbed-charts').hide();
-
   const today = '2019/06/15';
 
 
@@ -17,32 +8,33 @@ $(document).ready(function() {
     const hydrationRepo = new HydrationRepository(hydrationData);
     const sleepRepo = new SleepRepository(sleepData);
     const activityRepo = new ActivityRepository(activityData);
-
     const userID = Math.floor((Math.random() * 50) + 1);
-    const specificUser = userRepo.returnUserData(userID);
-    const user = new User(specificUser);
-    const hydrationUser = hydrationRepo.returnUserHydrationData(userID);
-    const hydration = new Hydration(hydrationUser);
-    const sleepUser = sleepRepo.returnUserSleepData(userID);
-    const sleep = new Sleep(sleepUser);
-
-    const activityUser = activityRepo.returnUserActivityData(userID);
-    const activity = new Activity(user, activityUser);
+    const user = new User(userRepo.returnUserData(userID));
+    const hydration = new Hydration(hydrationRepo.returnUserHydrationData(userID));
+    const sleep = new Sleep(sleepRepo.returnUserSleepData(userID));
+    const activity = new Activity(user, activityRepo.returnUserActivityData(userID));
+    $('#js-user-profile').show();
+    changeUser()
     
-    addClasses();
-    removeClasses();
-    $('#js-first-name').html(user.returnFirstName());
-    $('#js-full-name').html(user.name);
-    $('#js-address').html(user.address);
-    $('#js-email').html(user.email);
-    $('#js-friends').html(userRepo.makeFriendNames(userID));
-    $('#js-miles').html(activity.milesWalked(today))
-
+    $('#js-change-user').text('Change User').removeClass('list-item--active');
+    $('#js-user').addClass('list-item--active');
     $('#js-h2--welcome').hide();
     $('#js-h2--user').show();
-
-    updateCharts(user, hydration, sleep, activity, activityRepo);
+    enableButtons();
+    updateCharts(user, userRepo, hydration, sleep, activity, activityRepo, userID);
   });
+
+  function changeUser() {
+    if ($('#js-change-user').text() === 'New User') {
+      $('#js-intro-message').hide();
+       // $('#js-user-profile').show();
+    } else {
+      $('#js-intro-message').hide();
+       $('#js-user-profile').hide();
+    }
+
+  }
+
 
   $('#js-user').click(function() {
     $('#js-user-profile').show();
@@ -52,7 +44,7 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
-
+    $('#js-intro-message').hide();
     removeClasses();
     addClasses();
   });
@@ -65,7 +57,7 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
-
+    $('#js-intro-message').hide();
     removeClasses();
     addClasses();
   });
@@ -78,7 +70,7 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
-
+    $('#js-intro-message').hide();
     removeClasses();
     addClasses();
   });
@@ -91,7 +83,7 @@ $(document).ready(function() {
     $('.num-of-steps-charts').hide();
     $('.num-mins-active-charts').hide();
     $('.flights-climbed-charts').hide();
-
+    $('#js-intro-message').hide();
     removeClasses();
     addClasses();
   });
@@ -104,7 +96,7 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
     $('.num-of-steps-charts').hide();
     $('.flights-climbed-charts').hide();
-
+    $('#js-intro-message').hide();
     removeClasses();
     addClasses();
   });
@@ -117,7 +109,7 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
     $('.flights-climbed-charts').hide();
     $('.sleep-charts').hide();
-
+    $('#js-intro-message').hide();
     removeClasses();
     addClasses();
   });
@@ -130,10 +122,14 @@ $(document).ready(function() {
     $('#js-step-goal-chart').hide();
     $('.num-mins-active-charts').hide();
     $('.num-of-steps-charts').hide();
-
+    $('#js-intro-message').hide();
     removeClasses();
     addClasses();
   });
+
+  function enableButtons() {
+    $('.list-item').attr('disabled', false)
+  }
 
   function removeClasses() {
     $('.list-item').each(value => {
@@ -148,6 +144,15 @@ $(document).ready(function() {
   function addClasses() {
     let clickedID = event.target.id;
     $(`#${clickedID}`).addClass('list-item--active');
+  }
+
+  function updateUserProfile(user, userRepo, activity, userID) {
+    $('#js-first-name').html(user.returnFirstName());
+    $('#js-full-name').html(user.name);
+    $('#js-address').html(user.address);
+    $('#js-email').html(user.email);
+    $('#js-friends').html(userRepo.makeFriendNames(userID));
+    $('#js-miles').html(activity.milesWalked(today));
   }
 
   function updateStepGoalChart(user) {
@@ -196,7 +201,8 @@ $(document).ready(function() {
     flightsClimbedLineChart.update();
   }
 
-  function updateCharts(user, hydration, sleep, activity, activityRepo) {
+  function updateCharts(user, userRepo, hydration, sleep, activity, activityRepo, userID) {
+    updateUserProfile(user, userRepo, activity, userID);
     updateStepGoalChart(user);
     updateHydrationLineChart(hydration);
     updateSleepCharts(sleep);
@@ -207,18 +213,23 @@ $(document).ready(function() {
 
 
 
-
-
-
-
   var stepGoalChart = new Chart($("#js-step-goal-chart"), {
+    plugins: [{
+    beforeInit: function(chart, options) {
+      chart.legend.afterFit = function() {
+        this.height = this.height + 25;
+      };
+    }
+  }],
     type: 'bar',
     data: {
       labels: ["", "All Users"],
       datasets: [
         {
           label: "Daily Step Goal",
-          backgroundColor: ["#3e95cd", "#8e5ea2"],
+          backgroundColor: ["rgb(4, 249, 233, 0.1)", "rgb(228, 228, 228, 0.2)"],
+          borderWidth: 3,
+          borderColor: ["#04f9e9", "rgb(221, 210, 204)"],
           data: [0, 6700]
         }
       ]
@@ -226,7 +237,13 @@ $(document).ready(function() {
     options: {
       responsive: false,
       maintainAspectRatio: false,
-      legend: { display: false },
+      legend: { display: true,
+        labels: {
+          boxWidth: 0,
+           fontColor: 'black',
+           fontSize: 20
+         }
+       },
       title: {
         display: false,
       },
@@ -252,19 +269,46 @@ $(document).ready(function() {
   });
 
   var hydrationLineChart = new Chart($('#js-hydration-line-chart'), {
+    plugins: [{
+    beforeInit: function(chart, options) {
+      chart.legend.afterFit = function() {
+        this.height = this.height + 25;
+      };
+    }
+  }],
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{
         data: [],
         label: "Water Consumed",
-        borderColor: "#3e95cd",
+        borderColor: "#04f9e9",
         fill: true
       }
       ]
     },
     options: {
-      legend: { display: false },
+      scales: {
+        xAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }]
+      },
+      legend: { display: true,
+       labels: {
+         boxWidth: 0,
+          fontColor: 'black',
+          fontSize: 20
+        },
+       },
       responsive: false,
       maintainAspectRatio: false,
       title: {
@@ -274,19 +318,46 @@ $(document).ready(function() {
   });
 
   var sleepQualityLineChart = new Chart($('#js-sleepQuality-line-chart'), {
+    plugins: [{
+    beforeInit: function(chart, options) {
+      chart.legend.afterFit = function() {
+        this.height = this.height + 25;
+      };
+    }
+  }],
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{
         data: [],
         label: "Sleep Quality",
-        borderColor: "#3e95cd",
+        borderColor: "#04f9e9",
         fill: true
       }
       ]
     },
     options: {
-      legend: { display: false },
+      scales: {
+        xAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }]
+      },
+      legend: { display: true,
+       labels: {
+         boxWidth: 0,
+          fontColor: 'black',
+          fontSize: 20
+        },
+       },
       responsive: false,
       maintainAspectRatio: false,
       title: {
@@ -296,19 +367,46 @@ $(document).ready(function() {
   });
 
   var sleepHoursLineChart = new Chart($('#js-sleepHours-line-chart'), {
+    plugins: [{
+    beforeInit: function(chart, options) {
+      chart.legend.afterFit = function() {
+        this.height = this.height + 25;
+      };
+    }
+  }],
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{
         data: [],
         label: "Hours Slept",
-        borderColor: "#3e95cd",
+        borderColor: "#04f9e9",
         fill: true
       }
       ]
     },
     options: {
-      legend: { display: false },
+      scales: {
+        xAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }]
+      },
+      legend: { display: true,
+       labels: {
+         boxWidth: 0,
+          fontColor: 'black',
+          fontSize: 20
+        },
+       },
       responsive: false,
       maintainAspectRatio: false,
       title: {
@@ -319,21 +417,36 @@ $(document).ready(function() {
 
 
   var numOfStepsChart = new Chart($("#js-num-of-steps-chart"), {
+    plugins: [{
+    beforeInit: function(chart, options) {
+      chart.legend.afterFit = function() {
+        this.height = this.height + 25;
+      };
+    }
+  }],
     type: 'bar',
     data: {
       labels: ["", "All Users"],
       datasets: [
         {
           label: "Number of Steps",
-          backgroundColor: ["#3e95cd", "#8e5ea2"],
-          data: [0, 0]
+          backgroundColor: ["rgb(4, 249, 233, 0.1)", "rgb(228, 228, 228, 0.2)"],
+          borderWidth: 3,
+          borderColor: ["#04f9e9", "rgb(221, 210, 204)"],
+          data: [0, 6700]
         }
       ]
     },
     options: {
       responsive: false,
       maintainAspectRatio: false,
-      legend: { display: false },
+      legend: { display: true,
+        labels: {
+          boxWidth: 0,
+           fontColor: 'black',
+           fontSize: 20
+         }
+       },
       title: {
         display: false,
       },
@@ -359,19 +472,46 @@ $(document).ready(function() {
   });
 
   var numOfStepsLineChart = new Chart($('#js-num-of-steps-line-chart'), {
+    plugins: [{
+    beforeInit: function(chart, options) {
+      chart.legend.afterFit = function() {
+        this.height = this.height + 25;
+      };
+    }
+  }],
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{
         data: [],
-        label: "Number of Steps",
-        borderColor: "#3e95cd",
+        label: "Number of Steps this Week",
+        borderColor: "#04f9e9",
         fill: true
       }
       ]
     },
     options: {
-      legend: { display: false },
+      scales: {
+        xAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }]
+      },
+      legend: { display: true,
+       labels: {
+         boxWidth: 0,
+          fontColor: 'black',
+          fontSize: 20
+        },
+       },
       responsive: false,
       maintainAspectRatio: false,
       title: {
@@ -381,21 +521,36 @@ $(document).ready(function() {
   });
 
   var numMinActiveChart = new Chart($("#js-num-mins-active-chart"), {
+    plugins: [{
+    beforeInit: function(chart, options) {
+      chart.legend.afterFit = function() {
+        this.height = this.height + 25;
+      };
+    }
+  }],
     type: 'bar',
     data: {
       labels: ["", "All Users"],
       datasets: [
         {
           label: "Minutes Active",
-          backgroundColor: ["#3e95cd", "#8e5ea2"],
-          data: [0, 0]
+          backgroundColor: ["rgb(4, 249, 233, 0.1)", "rgb(228, 228, 228, 0.2)"],
+          borderWidth: 3,
+          borderColor: ["#04f9e9", "rgb(221, 210, 204)"],
+          data: [0, 6700]
         }
       ]
     },
     options: {
       responsive: false,
       maintainAspectRatio: false,
-      legend: { display: false },
+      legend: { display: true,
+        labels: {
+          boxWidth: 0,
+           fontColor: 'black',
+           fontSize: 20
+         }
+       },
       title: {
         display: false,
       },
@@ -421,19 +576,46 @@ $(document).ready(function() {
   });
 
   var numMinActiveLineChart = new Chart($('#js-num-mins-active-line-chart'), {
+    plugins: [{
+    beforeInit: function(chart, options) {
+      chart.legend.afterFit = function() {
+        this.height = this.height + 25;
+      };
+    }
+  }],
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{
         data: [],
-        label: "Minutes Active",
-        borderColor: "#3e95cd",
+        label: "Minutes Active this Week",
+        borderColor: "#04f9e9",
         fill: true
       }
       ]
     },
     options: {
-      legend: { display: false },
+      scales: {
+        xAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }]
+      },
+      legend: { display: true,
+       labels: {
+         boxWidth: 0,
+          fontColor: 'black',
+          fontSize: 20
+        },
+       },
       responsive: false,
       maintainAspectRatio: false,
       title: {
@@ -443,21 +625,36 @@ $(document).ready(function() {
   });
 
   var flightsClimbedChart = new Chart($("#js-flights-climbed-chart"), {
+    plugins: [{
+    beforeInit: function(chart, options) {
+      chart.legend.afterFit = function() {
+        this.height = this.height + 25;
+      };
+    }
+  }],
     type: 'bar',
     data: {
       labels: ["", "All Users"],
       datasets: [
         {
-          label: "Flights Of Stairs Climbed",
-          backgroundColor: ["#3e95cd", "#8e5ea2"],
-          data: [0, 0]
+          label: "Flights Climbed",
+          backgroundColor: ["rgb(4, 249, 233, 0.1)", "rgb(228, 228, 228, 0.2)"],
+          borderWidth: 3,
+          borderColor: ["#04f9e9", "rgb(221, 210, 204)"],
+          data: [0, 6700]
         }
       ]
     },
     options: {
       responsive: false,
       maintainAspectRatio: false,
-      legend: { display: false },
+      legend: { display: true,
+        labels: {
+          boxWidth: 0,
+           fontColor: 'black',
+           fontSize: 20
+         }
+       },
       title: {
         display: false,
       },
@@ -483,19 +680,46 @@ $(document).ready(function() {
   });
 
   var flightsClimbedLineChart = new Chart($('#js-flights-climbed-line-chart'), {
+    plugins: [{
+    beforeInit: function(chart, options) {
+      chart.legend.afterFit = function() {
+        this.height = this.height + 25;
+      };
+    }
+  }],
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
       datasets: [{
         data: [],
-        label: "Flights Of Stairs Climbed",
-        borderColor: "#3e95cd",
+        label: "Flights Climbed this Week",
+        borderColor: "#04f9e9",
         fill: true
       }
       ]
     },
     options: {
-      legend: { display: false },
+      scales: {
+        xAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }],
+        yAxes: [{
+          ticks: {
+            fontColor: "black",
+            fontSize: 16,
+          }
+        }]
+      },
+      legend: { display: true,
+       labels: {
+         boxWidth: 0,
+          fontColor: 'black',
+          fontSize: 20
+        },
+       },
       responsive: false,
       maintainAspectRatio: false,
       title: {
@@ -504,6 +728,5 @@ $(document).ready(function() {
     }
   });
 
- 
-});
 
+});

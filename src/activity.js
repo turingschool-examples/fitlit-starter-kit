@@ -77,10 +77,21 @@ class Activity {
     },0)
     return parseFloat((totalFlights / 102).toFixed(1))
   }
-  a
   returnWeekInfo() {
     return this.data.filter(user => user.userID === this.id).slice(-7)
   } 
+
+  returnIncreasedDays() {
+    return this.data.reduce((acc, day, i, array) => {
+      if(i !== 0 && i !== array.length-1) {
+        if(day.numSteps > array[i-1].numSteps && day.numSteps < array[i+1].numSteps) {
+          acc.push(array[i+1])
+        }
+      }
+      return acc;
+    }, [])
+    console.log(this.data);
+  };
 
 };
 if (typeof module !== 'undefined') {

@@ -112,7 +112,7 @@ class Activity{
 
             userObjs.push(day.numSteps)
         
-            if(userObjs[2] > userObjs[1] && userObjs[1] > userObjs[0]){
+            if(userObjs[0] < userObjs[1] && userObjs[2] < userObjs[0]){
                 dates.push(day.date);
             }
         })

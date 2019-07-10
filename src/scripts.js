@@ -1,8 +1,53 @@
 $( document ).ready(() => {
   console.log('doc ready');
   populateUser();
-  // $('.water').toggle('click', hydrationMoreInfo());
+
+})
+
+$('canvas').hide();
+$('.section--right__friend-chart').on('mouseenter', () => {
+  $('#doughnut-chart').show()
+}).on('mouseleave', () => {
+  $('#doughnut-chart').hide();
+})
+ 
+
+ var friendChallengeChart = new Chart(document.getElementById('doughnut-chart'), {
+  type: 'doughnut',
+  data: {
+    labels: [],
+    datasets: [{
+      label: 'Population (millions)',
+      backgroundColor: ['#3e95cd', '#8e5ea2', '#3cba9f', '#e8c3b9', '#c45850', '#f1c40f'],
+      data: []
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Friend Step Challenge',
+      fontColor: 'white',
+      fontSize: 26,
+      fontFamily: 'Roboto Mono'
+    },
+    legend: { display: true,
+      labels: {
+        fontColor: 'white',
+        fontSize: 20,
+        fontFamily: 'Roboto Mono'
+      }
+    },
+  }
 });
+
+function populateFrndChallChart(user, activity) {
+  let chartLabels = activity.wklyStepsChallenge(user.id, '2019/06/15');
+  let labeledNames = chartLabels.map((nameOfFriends) => nameOfFriends.name);
+  let stepsData = chartLabels.map((nameOfFriends) => nameOfFriends.wklyStepTotal);
+  friendChallengeChart.data.labels = labeledNames;
+  friendChallengeChart.data.datasets[0].data = stepsData;
+  friendChallengeChart.update();
+ }
 
 function populateUser() {
   let randomUser = Math.round(Math.random() * (50 - 1) + 1);
@@ -19,6 +64,7 @@ function populateUser() {
   $('.user__name').text(`${name}`);
   populateWeeklyActivity(user, activity);
   weeklyMilesMessage(user, activity);
+  populateFrndChallChart(user, activity);
 }
 
 function populateActivity(user, activity) {

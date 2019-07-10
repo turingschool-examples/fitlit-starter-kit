@@ -13,8 +13,9 @@ $(document).ready(function() {
     const hydration = new Hydration(hydrationRepo.returnUserHydrationData(userID));
     const sleep = new Sleep(sleepRepo.returnUserSleepData(userID));
     const activity = new Activity(user, activityRepo.returnUserActivityData(userID));
-    $('#js-intro-message').hide();
     $('#js-user-profile').show();
+    changeUser()
+    
     $('#js-change-user').text('Change User').removeClass('list-item--active');
     $('#js-user').addClass('list-item--active');
     $('#js-h2--welcome').hide();
@@ -22,6 +23,18 @@ $(document).ready(function() {
     enableButtons();
     updateCharts(user, userRepo, hydration, sleep, activity, activityRepo, userID);
   });
+
+  function changeUser() {
+    if ($('#js-change-user').text() === 'New User') {
+      $('#js-intro-message').hide();
+       // $('#js-user-profile').show();
+    } else {
+      $('#js-intro-message').hide();
+       $('#js-user-profile').hide();
+    }
+
+  }
+
 
   $('#js-user').click(function() {
     $('#js-user-profile').show();

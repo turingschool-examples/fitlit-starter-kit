@@ -138,6 +138,7 @@ button {
   border: none;
   font-size: 1em;
   width: 100%;
+  outline: 0;
 }
 
 button:hover {

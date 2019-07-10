@@ -241,6 +241,25 @@ article {
 }
 
 .main__section--friends--user {
-    height: 400px;
+    height: auto;
     margin: 0px auto 20px auto;
 }
+
+.main__section--friends--user span:first {
+    margin: 20px auto 20px auto;
+    font-size:30px;
+}
+
+
+.main__section--friends--user li,
+.main__section--friends--user li span{
+    margin: 10px auto 10px auto;
+    display: block;
+    font-size: 12px;
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+

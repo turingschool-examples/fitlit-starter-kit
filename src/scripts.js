@@ -6,8 +6,11 @@ let activityRepository = new ActivityRepository(userData, randomId)
 let activity = new Activity(userData, activityData)
 let sleepRepository = new SleepRepository(sleepData, randomId)
 let currentUser = userRepository.getUserData()
-let date = $('#date-calendar').val()
-let formattedDate = date.replace(/-/gi, "/")
+let date 
+let formattedDate 
+let minutesActiveMethod = []
+let stairsClimbedMethod = []
+let stepCountMethod = []
 
 $(document).ready(() => {
 /** User Information Display **/ 
@@ -15,7 +18,12 @@ $("#user-name__display").text(user.getFirstName())
 $("#user-full-name__display").text(user.name)
 $("#user-address__display").text(user.address)
 $("#user-email__display").text(user.email)
+date = $('#date-calendar').val()
+formattedDate = date.replace(/-/gi, "/")
 var dateSubmitBtn = $("#submit-date__button")
+minutesActiveMethod = activity.getWeeklyMinutesActive(randomId, formattedDate);
+stairsClimbedMethod = activity.getWeeklyStairsClimbed(randomId, formattedDate);
+stepCountMethod = activity.getWeeklyStepCount(randomId, formattedDate)
 
 /** Hydration **/ 
 dateSubmitBtn.on("click", updateHydrationByDate)
@@ -24,35 +32,40 @@ var waterDisplay = $("#daily-water__display")
 waterDisplay.text(hydration.getDailyOunces(randomId, formattedDate))
 
 function updateHydrationByDate() {
-    let date = $('#date-calendar').val()
-    let formattedDate = date.replace(/-/gi, "/")
+    date = $('#date-calendar').val()
+    formattedDate = date.replace(/-/gi, "/")
     waterDisplay.text(hydration.getDailyOunces(randomId, formattedDate))
 }
 
 /** Activity **/ 
-var userDailyStepGoal = $("#user-daily-step-goal__display");
+let userDailyStepGoal = $("#user-daily-step-goal__display");
 userDailyStepGoal.text(user.dailyStepGoal);
-var stepCount = $('[id=step-count__display]');
+let stepCount = $('[id=step-count__display]');
 stepCount.text(activity.dailyStepCount(randomId, formattedDate));
-var minutesActive = $('[id=minutes-active__display]');
+let minutesActive = $('[id=minutes-active__display]');
 minutesActive.text(activity.getDailyMinutesActive(randomId, formattedDate));
-var milesWalked = $('#miles-walked__display');
+let milesWalked = $('#miles-walked__display');
 milesWalked.text(activity.calculateMiles(randomId, formattedDate));
-var flightsClimbed = $('#stairs-climbed__display');
+let flightsClimbed = $('#stairs-climbed__display');
 flightsClimbed.text(activity.getUserStairClimb(randomId));
-var allUserSteps = $('#all-user-step-count');
+let allUserSteps = $('#all-user-step-count');
 allUserSteps.text(activity.getAllUsersStepsAverage(formattedDate));
-var allUserStairs = $('#all-user-stair-count');
+let allUserStairs = $('#all-user-stair-count');
 allUserStairs.text(activity.getAllUsersStairClimbingAverage(formattedDate));
-var allUserMinutesActive = $('#all-user-minutes-active');
+let allUserMinutesActive = $('#all-user-minutes-active');
 allUserMinutesActive.text(activity.getAllUsersMinutesActiveAverage(formattedDate));
 
-dateSubmitBtn.on("click", updateActivityByDate)
-function updateActivityByDate(chart) {
-    let date = $('#date-calendar').val()
-    let myFormattedDate = date.replace(/-/gi, "/")
-    minutesActiveChart.data = activity.getWeeklyMinutesActive(randomId, myFormattedDate)
-    console.log(minutesActiveChart.data)
+dateSubmitBtn.on("click", updateByDate)
+
+function updateByDate(e) {
+    date = $('#date-calendar').val()
+    formattedDate = date.replace(/-/gi, "/")
+    myMinutesActiveChart.data.datasets[0].data = activity.getWeeklyMinutesActive(randomId, formattedDate)
+    myMinutesActiveChart.update()
+    myStairsClimbedWeeklyChart.data.datasets[0].data = activity.getWeeklyStairsClimbed(randomId, formattedDate)
+    myStairsClimbedWeeklyChart.update()
+    myStepCountChart.data.datasets[0].data = activity.getWeeklyStepCount(randomId, formattedDate)
+    myStepCountChart.update()
 }
 
 /** Charts **/ 
@@ -90,7 +103,7 @@ var myMinutesActiveChart = new Chart(minutesActiveChart, {
         datasets: [{
             label: "Minutes Active",
             backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
-            data: activity.getWeeklyMinutesActive(randomId, formattedDate)
+            data: minutesActiveMethod
         }]
     },
     options
@@ -107,7 +120,7 @@ var myStairsClimbedWeeklyChart = new Chart(stairsClimbedWeeklyChart, {
         datasets: [{
             label: "Stairs Climbed",
             backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
-            data: activity.getWeeklyStairsClimbed(randomId, formattedDate)
+            data: stairsClimbedMethod
         }]
     },
     options
@@ -124,7 +137,7 @@ var myStepCountChart = new Chart(stepCountChart, {
         datasets: [{
             label: "Step Count",
             backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
-            data: activity.getWeeklyStepCount(randomId, formattedDate)
+            data: stepCountMethod
         }]
     },
     options

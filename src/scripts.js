@@ -202,7 +202,6 @@ let userWeeklyHydration = new Chart($(".hydration__chart-weeklyOz-oneUser"), {
   data: {
     labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
     datasets: [{ 
-      data: hydration.returnWeeklyHydration("2019/06/15", "2019/06/22"),
       label: "Water you consumed each day (oz)",
       borderColor: "#8e5ea2",
       fill: false

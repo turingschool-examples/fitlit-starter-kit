@@ -13,6 +13,35 @@ let stairsClimbedMethod = []
 let stepCountMethod = []
 
 $(document).ready(() => {
+
+
+/** Packery **/ 
+$('.grid').packery({
+    // options
+    itemSelector: '.grid-item',
+    gutter: 10,
+    percentPosition: true,
+    columnWidth: 100,
+});
+
+var $grid = $('.grid').packery({
+    itemSelector: '.grid-item',
+    columnWidth: 100
+});
+var $draggable = $('.draggable').draggabilly({
+    // options...
+})
+$draggable.draggabilly('enable')
+
+$grid.find('.grid-item').each(function (i, gridItem) {
+    var draggie = new Draggabilly(gridItem);
+    $grid.packery('bindDraggabillyEvents', draggie)
+});
+
+// var $items = $grid.find('.grid-item').draggable();
+// $grid.packery('bindUIDraggableEvents', $items);
+
+
 /** User Information Display **/ 
 $("#user-name__display").text(user.getFirstName())
 $("#user-full-name__display").text(user.name)
@@ -69,14 +98,7 @@ function updateByDate(e) {
 }
 
 /** Charts **/ 
-const options = {
-    title: {
-        display: true,
-        text: 'Data'
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-}
+
 // Water Chart
 var weeklyWaterChart = $('#weeklyWaterChart');
 var myWaterChart = new Chart(weeklyWaterChart, {
@@ -89,7 +111,14 @@ var myWaterChart = new Chart(weeklyWaterChart, {
             data: hydration.getWeeklyOunces(randomId)
         }]
     },
-    options
+    options: options = {
+        title: {
+            display: true,
+            text: 'Your Water Intake'
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
 });
 myWaterChart.canvas.parentNode.style.height = '300px';
 myWaterChart.canvas.parentNode.style.width = '300px';
@@ -106,7 +135,14 @@ var myMinutesActiveChart = new Chart(minutesActiveChart, {
             data: minutesActiveMethod
         }]
     },
-    options
+    options: options = {
+        title: {
+            display: true,
+            text: 'Todays Minutes Active'
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
 });
 myMinutesActiveChart.canvas.parentNode.style.height = '300px';
 myMinutesActiveChart.canvas.parentNode.style.width = '300px';
@@ -123,7 +159,14 @@ var myStairsClimbedWeeklyChart = new Chart(stairsClimbedWeeklyChart, {
             data: stairsClimbedMethod
         }]
     },
-    options
+    options: options = {
+        title: {
+            display: true,
+            text: 'Your Weekly Stair Climbs'
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
 });
 myStairsClimbedWeeklyChart.canvas.parentNode.style.height = '300px';
 myStairsClimbedWeeklyChart.canvas.parentNode.style.width = '300px';
@@ -140,7 +183,14 @@ var myStepCountChart = new Chart(stepCountChart, {
             data: stepCountMethod
         }]
     },
-    options
+    options: options = {
+        title: {
+            display: true,
+            text: 'Your Weekly Step Count'
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
 });
 myStepCountChart.canvas.parentNode.style.height = '300px';
 myStepCountChart.canvas.parentNode.style.width = '300px';

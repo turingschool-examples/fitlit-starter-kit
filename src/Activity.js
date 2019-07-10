@@ -1,104 +1,135 @@
-if (typeof module !== 'undefined') {
-	activityData = require('../data/activity-test-data')
-	User = require('./User')
-	userData = require('../data/users-test-data')
-	user = new User(1)
-
+if (typeof module !== "undefined") {
+  activityData = require("../data/activity-test-data");
+  User = require("./User");
+  userData = require("../data/users-test-data");
+  user = new User(1);
 }
 
-class Activity{
-	constructor(id){
-		this.userActivity = (this.findActivityData(id));
-		this.uniqueUserData = (this.findUserData(id));
-	};
+class Activity {
+  constructor(id) {
+    this.userActivity = this.findActivityData(id);
+    this.uniqueUserData = this.findUserData(id);
+  }
 
-	findActivityData(id){
-		return activityData.filter(activity => activity.userID === id); 
-    };
+  findActivityData(id) {
+    return activityData.filter(activity => activity.userID === id);
+  }
 
-    findUserData(id){
-        return userData.find(user => user.id === id); 
-    };
+  findUserData(id) {
+    return userData.find(user => user.id === id);
+  }
 
-    findActiveMinutesForDay(id, dateOf){
-    	let dateOfActivity = this.userActivity.find(day => day.date === dateOf);
-    	return dateOfActivity.minutesActive;
-	};
-	
-	findStepsForDay(id, dateOf){
-		let dateOfActivity = this.userActivity.find(day => day.date === dateOf);
-    	return dateOfActivity.numSteps;
-	}
+  findActiveMinutesForDay(id, dateOf) {
+    let dateOfActivity = this.userActivity.find(day => day.date === dateOf);
+    return dateOfActivity.minutesActive;
+  }
 
-	findFlightsForDay(id, dateOf){
-		let dateOfActivity = this.userActivity.find(day => day.date === dateOf);
-    	return dateOfActivity.flightsOfStairs;
-	}
+  findStepsForDay(id, dateOf) {
+    let dateOfActivity = this.userActivity.find(day => day.date === dateOf);
+    return dateOfActivity.numSteps;
+  }
 
-    findActiveMinutesForWeek(id, dateOf){
-    	let dateIndex = this.userActivity.findIndex(day => day.date === dateOf);
-        let weekOf= this.userActivity.slice(dateIndex - 6, dateIndex + 1)
-    	let dailyMinutesActive =  weekOf.map(day => day.minutesActive)
-    	return Math.floor(dailyMinutesActive.reduce((totalMinutes, dailyMinutes) => {
-    		totalMinutes += dailyMinutes
-    		return totalMinutes
-    	}, 0) / 7)
-    };
+  findFlightsForDay(id, dateOf) {
+    let dateOfActivity = this.userActivity.find(day => day.date === dateOf);
+    return dateOfActivity.flightsOfStairs;
+  }
 
-    compareNumStepsToStepGoal(id, dateOf){
-    	let dayOfActivity = this.userActivity.find(day => day.date === dateOf)
-    	if(dayOfActivity.numSteps >= this.uniqueUserData.dailyStepGoal){
-    		return `Great job at meeting your Daily Step Goal!`
-    	} else{
-    		return 'Keep twerking hunty!'
-    	}
-    };
+  findActiveMinutesForWeek(id, dateOf) {
+    let dateIndex = this.userActivity.findIndex(day => day.date === dateOf);
+    let weekOf = this.userActivity.slice(dateIndex - 6, dateIndex + 1);
+    let dailyMinutesActive = weekOf.map(day => day.minutesActive);
+    return Math.floor(
+      dailyMinutesActive.reduce((totalMinutes, dailyMinutes) => {
+        totalMinutes += dailyMinutes;
+        return totalMinutes;
+      }, 0) / 7
+    );
+  }
 
-    daysExceedStepGoal(id){
-    	let stepGoal = this.uniqueUserData.dailyStepGoal
-    	let allDates = this.userActivity.filter(day => day.numSteps >= stepGoal)
-    	return allDates.map(day => day.date);
-    };
-
-    allTimeStairRecord(id){
-    	let stairRecord = this.userActivity.sort((a,b) =>{
- 			return b.flightsOfStairs - a.flightsOfStairs;
-    	})
-    	return stairRecord[0].flightsOfStairs;
-	};
-	
-	findMilesForDay(id, dateOf){
-		let dayOfActivity = this.userActivity.find(day => day.date === dateOf);
-		let daySteps = dayOfActivity.numSteps;
-		let strideLength = this.uniqueUserData.strideLength;
-		return Math.floor((daySteps*strideLength)/5280);
-	}
-  
-	compareAgainstYourFriends(id){
-		let user = this.findUserData(id);
-        let friendData = user.friends.forEach(function(friend){	
-		})
-	}
-  
-    findLeastActiveDay(id){
-        let sortedMins = this.userActivity.sort((a,b) => {
-            return a.minutesActive - b.minutesActive});
-        return `Your least active day was ${sortedMins[0].date}. What happened?`; 
+  compareNumStepsToStepGoal(id, dateOf) {
+    let dayOfActivity = this.userActivity.find(day => day.date === dateOf);
+    if (dayOfActivity.numSteps >= this.uniqueUserData.dailyStepGoal) {
+      return `Great job at meeting your Daily Step Goal!`;
+    } else {
+      return "Keep twerking hunty!";
     }
+  }
 
-    compareFriends(dateOf, id){
-        let included = [...userData[id].friends, userData[id].id]
-        let friends = included.map(friend => ({
-            id: friend,
-            name: userData.find(user => user.id === friend).name,
-            steps: activityData.filter(day => day.userID === friend && day.date <= dateOf)
-                    .slice(-6, +1)
-                    .map(user => user.numSteps)
-                    .reduce((totalSteps, dailySteps) => totalSteps += dailySteps, 0)
-        }))
-        let sorted = friends.sort((a,b) => b.steps - a.steps)
-        return friends[0]
-    }
+  daysExceedStepGoal(id) {
+    let stepGoal = this.uniqueUserData.dailyStepGoal;
+    let allDates = this.userActivity.filter(day => day.numSteps >= stepGoal);
+    return allDates.map(day => day.date);
+  }
+
+  allTimeStairRecord(id) {
+    let stairRecord = this.userActivity.sort((a, b) => {
+      return b.flightsOfStairs - a.flightsOfStairs;
+    });
+    return stairRecord[0].flightsOfStairs;
+  }
+
+  findMilesForDay(id, dateOf) {
+    let dayOfActivity = this.userActivity.find(day => day.date === dateOf);
+    let daySteps = dayOfActivity.numSteps;
+    let strideLength = this.uniqueUserData.strideLength;
+    return Math.floor((daySteps * strideLength) / 5280);
+  }
+
+  compareAgainstYourFriends(id) {
+    let user = this.findUserData(id);
+    let friendData = user.friends.forEach(function(friend) {});
+  }
+
+  findLeastActiveDay(id) {
+    let sortedMins = this.userActivity.sort((a, b) => {
+      return a.minutesActive - b.minutesActive;
+    });
+    return sortedMins[0].minutesActive;
+  }
+
+  compareFriends(dateOf, id) {
+    let included = [...userData[id].friends, userData[id].id];
+    let friends = included.map(friend => ({
+      id: friend,
+      name: userData.find(user => user.id === friend).name,
+      steps: activityData
+        .filter(day => day.userID === friend && day.date <= dateOf)
+        .slice(-6, +1)
+        .map(user => user.numSteps)
+        .reduce((totalSteps, dailySteps) => (totalSteps += dailySteps), 0)
+    }));
+    let sorted = friends.sort((a, b) => b.steps - a.steps);
+    return friends[0];
+  }
+
+  showFriends(dateOf, id) {
+    let included = [...userData[id].friends];
+    let friends = included.map(friend => ({
+      id: friend,
+      name: userData.find(user => user.id === friend).name,
+      steps: activityData
+        .filter(day => day.userID === friend && day.date <= dateOf)
+        .map(user => user.numSteps)
+    }));
+    return friends.map(friend => {
+      return friend.name;
+    });
+  }
+
+  showFriendsSteps(dateOf, id) {
+    let included = [...userData[id].friends];
+    let friends = included.map(friend => ({
+      id: friend,
+      name: userData.find(user => user.id === friend).name,
+      steps: activityData
+        .filter(day => day.userID === friend && day.date <= dateOf)
+        .map(user => user.numSteps)
+    }));
+    console.log("greg", friends);
+    return friends.map(friend => {
+      return friend.steps[0];
+    });
+  }
 
     threeDayStepStreak(id){
         let userObjs = [];
@@ -140,8 +171,9 @@ class Activity{
         return dates
     }
 
+
 }
 
-if (typeof module !== 'undefined') {
-	module.exports = Activity;
-  }
+if (typeof module !== "undefined") {
+  module.exports = Activity;
+}

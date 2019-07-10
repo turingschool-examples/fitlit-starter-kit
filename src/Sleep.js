@@ -67,14 +67,20 @@ class Sleep {
         return day;
     }
 
-    findWorstDayOfSleep(id){
+    findWorstDayOfSleepHours(id){
         let sortedHours = this.userSleepData.sort((a,b) => {
             return a.hoursSlept - b.hoursSlept
         });
-        return `Your worst day of sleep was ${sortedHours[0].hoursSlept}. What happened?` 
+        return sortedHours[0].hoursSlept;
     }
 
-};
+    findWorstDayOfSleepQuality(id){
+        let sortedHours = this.userSleepData.sort((a,b) => {
+            return a.sleepQuality - b.sleepQuality
+        });
+        return sortedHours[0].sleepQuality;
+    };
+}
 
 if (typeof module !== 'undefined') {
     module.exports = Sleep;

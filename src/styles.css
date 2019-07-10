@@ -76,18 +76,19 @@ body {
   margin-top: 15px;
   padding: 8px 0;
   list-style-type: none;
-  border: none;
+  border-color: #404055;
+  border-width: 2px;
   font-size: 1em;
   width: 100%;
   outline: 0;
 }
 
 .list-item--active {
-  background-color: #c91b1b;
+  border-color: #fc7e40;
 }
 
 .list-item:hover {
-  background-color: #000;
+  background-color: rgb(253, 125, 64, 0.3);
 }
 
 .list-item:disabled {

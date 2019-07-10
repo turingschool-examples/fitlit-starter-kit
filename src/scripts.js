@@ -8,11 +8,14 @@ let activity = new Activity(userData, activityData)
 let sleepRepository = new SleepRepository(sleepData, randomId)
 let sleep = new Sleep(sleepRepository.getUserData(), findTodaysDate())
 let currentUser = userRepository.getUserData()
+let challenges = new Challenges(userData, randomId)
 let date 
 let formattedDate 
+let waterMethod = []
 let minutesActiveMethod = []
 let stairsClimbedMethod = []
 let stepCountMethod = []
+let friendDisplayChart = []
 
 function findTodaysDate () {
   var today = new Date();
@@ -31,11 +34,12 @@ function findTodaysDate () {
 $(document).ready(() => {
 
 
-  /** Packery **/ 
-  $('.grid').packery({
+
+/** Packery and Draggable **/ 
+$('.grid').packery({
     // options
     itemSelector: '.grid-item',
-    gutter: 10,
+    gutter: 30,
     percentPosition: true,
     columnWidth: 100,
   });
@@ -54,21 +58,20 @@ $(document).ready(() => {
     $grid.packery('bindDraggabillyEvents', draggie)
   });
 
-  // var $items = $grid.find('.grid-item').draggable();
-  // $grid.packery('bindUIDraggableEvents', $items);
+/** User Information Display **/ 
+$("#user-name__display").text(user.getFirstName())
+$("#user-full-name__display").text(user.name)
+$("#user-address__display").text(user.address)
+$("#user-email__display").text(user.email)
+date = $('#date-calendar').val()
+formattedDate = date.replace(/-/gi, "/")
+var dateSubmitBtn = $("#submit-date__button")
+minutesActiveMethod = activity.getWeeklyMinutesActive(randomId, formattedDate);
+stairsClimbedMethod = activity.getWeeklyStairsClimbed(randomId, formattedDate);
+stepCountMethod = activity.getWeeklyStepCount(randomId, formattedDate)
+waterMethod = hydration.getWeeklyOunces(randomId)
+friendMethod = challenges.findFriendWeek(userData, formattedDate, randomId)
 
-
-  /** User Information Display **/ 
-  $("#user-name__display").text(user.getFirstName())
-  $("#user-full-name__display").text(user.name)
-  $("#user-address__display").text(user.address)
-  $("#user-email__display").text(user.email)
-  date = $('#date-calendar').val()
-  formattedDate = date.replace(/-/gi, "/")
-  var dateSubmitBtn = $("#submit-date__button")
-  minutesActiveMethod = activity.getWeeklyMinutesActive(randomId, formattedDate);
-  stairsClimbedMethod = activity.getWeeklyStairsClimbed(randomId, formattedDate);
-  stepCountMethod = activity.getWeeklyStepCount(randomId, formattedDate)
 
   /** Hydration **/ 
   dateSubmitBtn.on("click", updateHydrationByDate)
@@ -105,27 +108,31 @@ $(document).ready(() => {
   function updateByDate(e) {
     date = $('#date-calendar').val()
     formattedDate = date.replace(/-/gi, "/")
+    myWaterChart.data.datasets[0].data = activity.getWeeklyMinutesActive(randomId, formattedDate)
+    myWaterChart.update()
     myMinutesActiveChart.data.datasets[0].data = activity.getWeeklyMinutesActive(randomId, formattedDate)
     myMinutesActiveChart.update()
     myStairsClimbedWeeklyChart.data.datasets[0].data = activity.getWeeklyStairsClimbed(randomId, formattedDate)
     myStairsClimbedWeeklyChart.update()
     myStepCountChart.data.datasets[0].data = activity.getWeeklyStepCount(randomId, formattedDate)
     myStepCountChart.update()
-  }
+    // myFriendDisplayChart.data.datasets[0].data = activity.getWeeklyStepCount(randomId, formattedDate)
+    // myFriendDisplayChart.update()
+}
 
   /** Charts **/ 
 
-  // Water Chart
-  var weeklyWaterChart = $('#weeklyWaterChart');
-  var myWaterChart = new Chart(weeklyWaterChart, {
-    type: 'polarArea',
+// Water Chart
+var weeklyWaterChart = $('#weeklyWaterChart');
+var myWaterChart = new Chart(weeklyWaterChart, {
+    type: 'bar',
     data: {
-      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
-      datasets: [{
-        label: "Water Drank (ounces)",
-        backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
-        data: hydration.getWeeklyOunces(randomId)
-      }]
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        datasets: [{
+            label: "Water Drank (ounces)",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+            data: waterMethod,
+        }]
     },
     options: options = {
       title: {
@@ -135,9 +142,9 @@ $(document).ready(() => {
       responsive: true,
       maintainAspectRatio: false,
     }
-  });
-  myWaterChart.canvas.parentNode.style.height = '300px';
-  myWaterChart.canvas.parentNode.style.width = '300px';
+});
+myWaterChart.canvas.parentNode.style.height = '200px';
+myWaterChart.canvas.parentNode.style.width = '200px';
 
   // Minutes Active Weekly Chart
   var minutesActiveChart = $('#minutes-active-weekly__display');
@@ -159,9 +166,11 @@ $(document).ready(() => {
       responsive: true,
       maintainAspectRatio: false,
     }
-  });
-  myMinutesActiveChart.canvas.parentNode.style.height = '300px';
-  myMinutesActiveChart.canvas.parentNode.style.width = '300px';
+
+});
+myMinutesActiveChart.canvas.parentNode.style.height = '200px';
+myMinutesActiveChart.canvas.parentNode.style.width = '200px';
+
 
   // Stairs Climbed Weekly Chart
   var stairsClimbedWeeklyChart = $('#stairs-climbed-weekly__display');
@@ -183,9 +192,11 @@ $(document).ready(() => {
       responsive: true,
       maintainAspectRatio: false,
     }
-  });
-  myStairsClimbedWeeklyChart.canvas.parentNode.style.height = '300px';
-  myStairsClimbedWeeklyChart.canvas.parentNode.style.width = '300px';
+
+});
+myStairsClimbedWeeklyChart.canvas.parentNode.style.height = '200px';
+myStairsClimbedWeeklyChart.canvas.parentNode.style.width = '200px';
+
 
   // Step Count Weekly Chart
   var stepCountChart = $('#step-count-weekly__display');
@@ -208,8 +219,37 @@ $(document).ready(() => {
       maintainAspectRatio: false,
     }
   });
-  myStepCountChart.canvas.parentNode.style.height = '300px';
-  myStepCountChart.canvas.parentNode.style.width = '300px';
+  
+myStepCountChart.canvas.parentNode.style.height = '200px';
+myStepCountChart.canvas.parentNode.style.width = '200px';
+});
+// Friend Weekly Chart
+var friendDisplayChart = $('#friend__display');
+var myFriendDisplayChart = new Chart(friendDisplayChart, {
+    type: 'line',
+    data: {
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        datasets: [{
+            label: "Friend Info",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+            data: friendMethod
+        }, {
+            label: "Friend Info",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+            data: friendMethod
+        }]
+    },
+    options: options = {
+        title: {
+            display: true,
+            text: 'Friend Info'
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+});
+myFriendDisplayChart.canvas.parentNode.style.height = '200px';
+myFriendDisplayChart.canvas.parentNode.style.width = '200px';
 });
 
 //Sleep hours and quality chart//
@@ -244,3 +284,4 @@ let sleepHourQuality = new Chart(sleepCanvas, {
     }
   }
 })
+

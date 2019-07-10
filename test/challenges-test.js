@@ -39,7 +39,7 @@ describe('Challenges', function() {
     let user = new Challenges(fakeUsers, 1)
     let array = user.findFriends()
     let obj = user.findFriendData(activity, '2019/09/15')
-    console.table(obj)
+    console.table("object", obj)
     expect(array.length).to.equal(3)
   })
   

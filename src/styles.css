@@ -1,11 +1,45 @@
 body {
-   font-family: 'Montserrat', sans-serif;
-
+    background-image: url('../images/stairs.jpg');
+    background-size: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background-repeat: no-repeat;
 }
 
+button {
+    font-size: 24px;
+}
+
+.grid-item {
+    background-color: white;
+    border: solid 2px navy;
+    float: left;
+    opacity: 0.8;
+    padding: 15px;
+    width: 25%;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+.text-display {
+    font-size: 34px;
+}
+
+.grid-item.is-dragging,
+.grid-item.is-positioning-post-drag {
+    background: #EA0;
+    z-index: 2;
+}
+
+.calendar {
+    font-size: 24px;
+}
 .icon {
     background-color: transparent;
     height: 100px;
     width: 100px;
 }
+
+
 

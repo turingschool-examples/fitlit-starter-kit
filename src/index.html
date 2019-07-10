@@ -6,104 +6,103 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Activity Tracker</title>
   </head>
-  <body>
-    <nav> 
-      <h1>Activity Tracker</h1>
-      <h2 id="user-name__display"> ... </h2>
-      <div>
-        Current Date
-      </div>
-      <ul>
-        <li id="user-full-name__display"></li>
-        <li id="user-address__display">H2O</li>
-        <li id="user-email__display">Sleep</li>
-        <li id="user-daily-step-goal__display">Steps</li>
-        <li id="user-friends__display">Challenges</li>
-      </ul>
-    </nav>
-    <main>
-      <div>
-        <label for="start">Start Date:</label>
-        <input type="date" id="date-calendar" name="start-date" value="2019-06-15" min="2019-06-15" max="2019-09-22">
-        <button id="submit-date__button" name="submit-date">Submit</button>
-      </div>
-      <p>
-        H2O
-      </p>
-      <img src="../images/water.png" alt="icon of a water glass" class="icon">
-      <p id="daily-water__display">...</p>
-      <p>Ounces of Water Drank Today</p>
-      <div class="water-display__article"> 
-        <canvas id="weeklyWaterChart" width="400" height="400"></canvas>
-      </div>
-      <article>Sleep</article>
-      <article>
-        Activity
+  <body class="grid">
+    <div class="grid-sizer"></div>
+      <nav class="grid-item draggable"> 
+        <h1>Activity Tracker</h1>
+        <h2 id="user-name__display"> ... </h2>
         <div>
+          Current Date
+        </div>
+        <ul>
+          <li id="user-full-name__display"></li>
+          <li id="user-address__display">H2O</li>
+          <li id="user-email__display">Sleep</li>
+          <li id="user-daily-step-goal__display">Steps</li>
+          <li id="user-friends__display">Challenges</li>
+        </ul>
+      </nav>
+      <main>
+        <div class="grid-item draggable calendar">
+          <div>
+            <label for="start">Start Date:</label>
+            <input type="date" id="date-calendar" name="start-date" value="2019-06-15" min="2019-06-15" max="2019-09-22">
+            <button id="submit-date__button" name="submit-date">Submit</button>
+          </div>
+        </div>
+        <article class="grid-item draggable centered-text">
+          <p>
+            H2O
+          </p>
+          <img src="../images/water.png" alt="icon of a water glass" class="icon">
+          <p id="daily-water__display" class="text-display">...</p>
+          <p>Today's Water Intake (Oz)</p>
+        </article>
+          <div class="water-display__article centered-text grid-item">
+            <canvas id="weeklyWaterChart" width="400" height="400"></canvas>
+          </div>
+        <div class="grid-item draggable centered-text">
           <img src="../images/sneaker.png" alt="icon of a sneaker" class="icon">
-          <p id="step-count__display">...</p>
+          <p id="step-count__display" class="text-display">...</p>
           <p>
             Today's Step Count
           </p>
         </div>
-        <div>
+        <div class="grid-item draggable centered-text">
           <img src="../images/stopwatch-icon-6.png" alt="icon of a clock" class="icon">
-          <p id="minutes-active__display">...</p>
+          <p id="minutes-active__display" class="text-display">...</p>
           <p>
             Minutes Active Today
           </p>
         </div>
-        <div>
-          <p id="miles-walked__display">...</p>
+        <div class="grid-item draggable centered-text">
+          <p id="miles-walked__display" class="text-display">...</p>
           <p>
             Miles Walked Based on Steps
           </p>
         </div>
-          <div class="compare-users__display">
-            <table>
-              <tr>
-                <th></th>
-                <td>Step Count</td>
-                <td>Flights of Stairs</td>
-                <td>Minutes Active</td>
-              </tr>
-              <tr>
-                <th>You</th>
-                <td id="step-count__display">...</td>
-                <td id="minutes-active__display">...</td>
-                <td id="stairs-climbed__display">...</td>
-              </tr>
-              <tr>
-                <th>All Users</th>
-                <td id="all-user-step-count">...</td>
-                <td id="all-user-stair-count">...</td>
-                <td id="all-user-minutes-active">...</td>
-              </tr>
-            </table>
-          </div>
-        <div>
+        <div class="compare-users__display grid-item draggable centered-text">
+          <table>
+            <tr>
+              <th></th>
+              <td>Step Count</td>
+              <td>Flights of Stairs</td>
+              <td>Minutes Active</td>
+            </tr>
+            <tr>
+              <th>You</th>
+              <td id="step-count__display">...</td>
+              <td id="minutes-active__display">...</td>
+              <td id="stairs-climbed__display">...</td>
+            </tr>
+            <tr>
+              <th>All Users</th>
+              <td id="all-user-step-count">...</td>
+              <td id="all-user-stair-count">...</td>
+              <td id="all-user-minutes-active">...</td>
+            </tr>
+          </table>
+        </div>
+        <div class="grid-item draggable centered-text">
           <canvas id="minutes-active-weekly__display" width="400" height="400"></canvas>
         </div>
-        <div>
+        <div class="grid-item draggable centered-text">
           <canvas id="stairs-climbed-weekly__display" width="400" height="400"></canvas>
         </div>
-        <div>
+        <div class="grid-item draggable centered-text">
           <canvas id="step-count-weekly__display" width="400" height="400"></canvas>
         </div>
-      </article>
-      <article> 
-        Challenges
-      </article>
-    </main>
-  </body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="https://d3js.org/d3.v4.js"></script>
-  <script type="text/javascript" src="../data/users.js"></script>
-  <script type="text/javascript" src="../data/hydration.js"></script>
-  <script type="text/javascript" src="../data/sleep.js"></script>
-  <script type="text/javascript" src="../data/activity.js"></script>
-  <script type="text/javascript" src="./user.js"></script>
+      </main>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/packery@2/dist/packery.pkgd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
+    <script type="text/javascript" src="../data/users.js"></script>
+    <script type="text/javascript" src="../data/hydration.js"></script>
+    <script type="text/javascript" src="../data/sleep.js"></script>
+    <script type="text/javascript" src="../data/activity.js"></script>
+    <script type="text/javascript" src="./user.js"></script>
   <script type="text/javascript" src="./userRepository.js"></script>
   <script type="text/javascript" src="./hydration.js"></script>
   <script type="text/javascript" src="./hydrationRepository.js"></script>

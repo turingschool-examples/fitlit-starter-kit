@@ -1,7 +1,7 @@
 if (typeof module !== "undefined") {
-activityFilePath = require("../data/activitySub")
-userData = require("../data/UserSub")
-User = require("../src/User")
+  activityFilePath = require("../data/activitySub")
+  userData = require("../data/UserSub")
+  User = require("../src/User")
 } else {
   activityFilePath = activityData;
 }
@@ -27,8 +27,8 @@ class Activity {
 
   findCorrectUserDate(date) {
     return this.data.filter((user) => {
-        return user.date === date;
-      });
+      return user.date === date;
+    });
   }
 
   returnFlightsOfStairs(date) {
@@ -47,7 +47,7 @@ class Activity {
       return user.userID === correctUser.id
     });
     return user.numSteps;
-  };
+  }
 
   returnMilesWalked(date) {
     let correctUser =  this.findCorrectUser();
@@ -63,7 +63,7 @@ class Activity {
     let correctUser =  this.findCorrectUser();
     let correctUserDate = this.findCorrectUserDate(date);
     let user = correctUserDate.find((user) =>{
-        return user.userID === correctUser.id
+      return user.userID === correctUser.id
     });
     return user.minutesActive;
   }
@@ -82,7 +82,7 @@ class Activity {
     let correctUser = this.findCorrectUser();
     let correctUserDate = this.findCorrectUserDate(date);
     let user = correctUserDate.find((user) =>{
-        return user.userID === correctUser.id;
+      return user.userID === correctUser.id;
     });
     return user.numSteps >= correctUser.dailyStepGoal ? true : false;
   }
@@ -117,13 +117,13 @@ class Activity {
       return dates
     }, [])
     let lastIndex = allDates.lastIndexOf(endDate);
-    return this.data.slice(firstIndex, lastIndex + 1)
+    return this.data.slice(firstIndex, lastIndex)
   }
 
   returnFriends(startDate, endDate) {
     let correctUser =  this.findCorrectUser();
     let correctWeek = this.returnWeekInfo(startDate, endDate);
-    correctUser.friends.push(correctUser.id);
+    correctUser.friends.includes(correctUser.id) ? '' : correctUser.friends.push(correctUser.id);
     let friends = correctWeek.reduce((matchingUsers, user) => {
       correctUser.friends.forEach(num => {
         if (num === user.userID)  {
@@ -141,14 +141,14 @@ class Activity {
       return rightUsers;
     }, []);
     let uniqueFriends = matchingFriends.filter((user, index) => {
-      return matchingFriends.indexOf(user) == index;
+      return matchingFriends.indexOf(user) === index;
     })
     return uniqueFriends.reduce((userObj, user) => {
       let obj = {
         name: user.name,
         numSteps: friends.reduce((steps, friend) => {
           if (friend.userID === user.id) {
-             return steps += friend.numSteps
+            return steps += friend.numSteps
           }
           return steps;
         }, 0)
@@ -162,7 +162,7 @@ class Activity {
     let correctUser =  this.findCorrectUser();
     let correctWeek = this.returnWeekInfo(startDate, endDate);
     let correctUserIds = correctWeek.filter(user => {
-     return user.userID === correctUser.id
+      return user.userID === correctUser.id
     })
     return correctUserIds.map(user => {
       return user.numSteps;
@@ -175,11 +175,11 @@ class Activity {
     let threeInARowDates = [];
     this.data.forEach(function(user) {
       if (threeInARow.length >= 3) {
-          threeInARow.shift();
+        threeInARow.shift();
       }
-        threeInARow.push(user.numSteps);
+      threeInARow.push(user.numSteps);
       if (user.userID === correctUser.id && threeInARow[2] > threeInARow[1] && threeInARow[1] > threeInARow[0]) {
-          threeInARowDates.push(user.date);
+        threeInARowDates.push(user.date);
       }
     });
     return threeInARowDates;
@@ -189,7 +189,7 @@ class Activity {
     let correctUser =  this.findCorrectUser();
     let correctWeek = this.returnWeekInfo(startDate, endDate);
     let correctUserIds = correctWeek.filter(user => {
-    return user.userID === correctUser.id
+      return user.userID === correctUser.id
     })
     return correctUserIds.map(user => {
       return user.minutesActive;
@@ -200,7 +200,7 @@ class Activity {
     let correctUser =  this.findCorrectUser();
     let correctWeek = this.returnWeekInfo(startDate, endDate);
     let correctUserIds = correctWeek.filter(user => {
-    return user.userID === correctUser.id
+      return user.userID === correctUser.id
     })
     return correctUserIds.map(user => {
       return user.flightsOfStairs;
@@ -211,7 +211,7 @@ class Activity {
     let correctUser =  this.findCorrectUser();
     let correctWeek = this.returnWeekInfo(startDate, endDate);
     let correctUserIds = correctWeek.filter(user => {
-    return user.userID === correctUser.id
+      return user.userID === correctUser.id
     })
     return correctUserIds.reduce((totalSteps, user) => {
       return totalSteps += user.numSteps;
@@ -220,5 +220,5 @@ class Activity {
 }
 
 if (typeof module !== "undefined") {
-module.exports = Activity
+  module.exports = Activity
 }

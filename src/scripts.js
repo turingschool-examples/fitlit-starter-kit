@@ -218,7 +218,6 @@ let userWeeklyHydration = new Chart($(".hydration__chart-weeklyOz-oneUser"), {
 });
 
 /////////////////////////////Step Challenge Chart/////////////////////////////////
-
 let stepChallenge = new Chart($(".main__step-challengeChart"), {
   type: 'bar',
   data: {

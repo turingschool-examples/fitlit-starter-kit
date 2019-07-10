@@ -1,18 +1,23 @@
 body {
     background-image: url('../images/stairs.jpg');
-    background-size: 100%;
+    background-size: cover;
+    display: grid;
+    margin: 20px;
     font-family: 'Montserrat', sans-serif;
     background-repeat: no-repeat;
 }
 
-button {
-    font-size: 24px;
+button,
+input {
+    font-size: 18px;
 }
 
 .grid-item {
     background-color: white;
-    border: solid 2px navy;
+    border: solid 4px navy;
     float: left;
+    grid-auto-columns: auto;
+    grid-auto-rows: auto; 
     opacity: 0.8;
     padding: 15px;
     width: 25%;
@@ -23,7 +28,8 @@ button {
 }
 
 .text-display {
-    font-size: 34px;
+    font-size: 22px;
+    font-weight: bold;
 }
 
 .grid-item.is-dragging,
@@ -32,8 +38,16 @@ button {
     z-index: 2;
 }
 
+.packery-drop-placeholder {
+    outline: 3px dashed hsla(0, 0%, 0%, 0.5);
+    outline-offset: -6px;
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+}
+
 .calendar {
-    font-size: 24px;
+    font-size: 18px;
+    font-weight: bold;
 }
 .icon {
     background-color: transparent;

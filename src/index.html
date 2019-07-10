@@ -8,7 +8,7 @@
   </head>
   <body class="grid">
     <div class="grid-sizer"></div>
-      <nav class="grid-item draggable"> 
+      <nav class="grid-item"> 
         <h1>Activity Tracker</h1>
         <h2 id="user-name__display"> ... </h2>
         <div>
@@ -23,7 +23,7 @@
         </ul>
       </nav>
       <main>
-        <div class="grid-item draggable calendar">
+        <div class="grid-item calendar">
           <div>
             <label for="start">Start Date:</label>
             <input type="date" id="date-calendar" name="start-date" value="2019-06-15" min="2019-06-15" max="2019-09-22">
@@ -92,6 +92,9 @@
         <div class="grid-item draggable centered-text">
           <canvas id="step-count-weekly__display" width="400" height="400"></canvas>
         </div>
+        <div class="grid-item draggable centered-text">
+          <canvas id="friend__display" width="400" height="400"></canvas>
+        </div>
       </main>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -103,12 +106,13 @@
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
     <script type="text/javascript" src="./user.js"></script>
-  <script type="text/javascript" src="./userRepository.js"></script>
-  <script type="text/javascript" src="./hydration.js"></script>
-  <script type="text/javascript" src="./hydrationRepository.js"></script>
-  <script type="text/javascript" src="./sleep.js"></script>
-  <script type="text/javascript" src="./sleepRepository.js"></script>
-  <script type="text/javascript" src="./activityRepository.js"></script>
-  <script type="text/javascript" src="./activity.js"></script>
-  <script type="text/javascript" src="./scripts.js"></script>
+    <script type="text/javascript" src="./userRepository.js"></script>
+    <script type="text/javascript" src="./hydration.js"></script>
+    <script type="text/javascript" src="./hydrationRepository.js"></script>
+    <script type="text/javascript" src="./sleep.js"></script>
+    <script type="text/javascript" src="./sleepRepository.js"></script>
+    <script type="text/javascript" src="./activityRepository.js"></script>
+    <script type="text/javascript" src="./activity.js"></script>
+    <script type="text/javascript" src="./challenges.js"></script>
+    <script type="text/javascript" src="./scripts.js"></script>
 </html>

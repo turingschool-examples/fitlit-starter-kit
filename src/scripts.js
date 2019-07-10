@@ -6,20 +6,23 @@ let activityRepository = new ActivityRepository(userData, randomId)
 let activity = new Activity(userData, activityData)
 let sleepRepository = new SleepRepository(sleepData, randomId)
 let currentUser = userRepository.getUserData()
+let challenges = new Challenges(userData, randomId)
 let date 
 let formattedDate 
+let waterMethod = []
 let minutesActiveMethod = []
 let stairsClimbedMethod = []
 let stepCountMethod = []
+let friendDisplayChart = []
 
 $(document).ready(() => {
 
 
-/** Packery **/ 
+/** Packery and Draggable **/ 
 $('.grid').packery({
     // options
     itemSelector: '.grid-item',
-    gutter: 10,
+    gutter: 30,
     percentPosition: true,
     columnWidth: 100,
 });
@@ -38,10 +41,6 @@ $grid.find('.grid-item').each(function (i, gridItem) {
     $grid.packery('bindDraggabillyEvents', draggie)
 });
 
-// var $items = $grid.find('.grid-item').draggable();
-// $grid.packery('bindUIDraggableEvents', $items);
-
-
 /** User Information Display **/ 
 $("#user-name__display").text(user.getFirstName())
 $("#user-full-name__display").text(user.name)
@@ -53,6 +52,8 @@ var dateSubmitBtn = $("#submit-date__button")
 minutesActiveMethod = activity.getWeeklyMinutesActive(randomId, formattedDate);
 stairsClimbedMethod = activity.getWeeklyStairsClimbed(randomId, formattedDate);
 stepCountMethod = activity.getWeeklyStepCount(randomId, formattedDate)
+waterMethod = hydration.getWeeklyOunces(randomId)
+friendMethod = challenges.findFriendWeek(userData, formattedDate, randomId)
 
 /** Hydration **/ 
 dateSubmitBtn.on("click", updateHydrationByDate)
@@ -89,12 +90,16 @@ dateSubmitBtn.on("click", updateByDate)
 function updateByDate(e) {
     date = $('#date-calendar').val()
     formattedDate = date.replace(/-/gi, "/")
+    myWaterChart.data.datasets[0].data = activity.getWeeklyMinutesActive(randomId, formattedDate)
+    myWaterChart.update()
     myMinutesActiveChart.data.datasets[0].data = activity.getWeeklyMinutesActive(randomId, formattedDate)
     myMinutesActiveChart.update()
     myStairsClimbedWeeklyChart.data.datasets[0].data = activity.getWeeklyStairsClimbed(randomId, formattedDate)
     myStairsClimbedWeeklyChart.update()
     myStepCountChart.data.datasets[0].data = activity.getWeeklyStepCount(randomId, formattedDate)
     myStepCountChart.update()
+    // myFriendDisplayChart.data.datasets[0].data = activity.getWeeklyStepCount(randomId, formattedDate)
+    // myFriendDisplayChart.update()
 }
 
 /** Charts **/ 
@@ -102,13 +107,13 @@ function updateByDate(e) {
 // Water Chart
 var weeklyWaterChart = $('#weeklyWaterChart');
 var myWaterChart = new Chart(weeklyWaterChart, {
-    type: 'polarArea',
+    type: 'bar',
     data: {
         labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
         datasets: [{
             label: "Water Drank (ounces)",
             backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
-            data: hydration.getWeeklyOunces(randomId)
+            data: waterMethod,
         }]
     },
     options: options = {
@@ -120,8 +125,8 @@ var myWaterChart = new Chart(weeklyWaterChart, {
         maintainAspectRatio: false,
     }
 });
-myWaterChart.canvas.parentNode.style.height = '300px';
-myWaterChart.canvas.parentNode.style.width = '300px';
+myWaterChart.canvas.parentNode.style.height = '200px';
+myWaterChart.canvas.parentNode.style.width = '200px';
 
 // Minutes Active Weekly Chart
 var minutesActiveChart = $('#minutes-active-weekly__display');
@@ -144,8 +149,8 @@ var myMinutesActiveChart = new Chart(minutesActiveChart, {
         maintainAspectRatio: false,
     }
 });
-myMinutesActiveChart.canvas.parentNode.style.height = '300px';
-myMinutesActiveChart.canvas.parentNode.style.width = '300px';
+myMinutesActiveChart.canvas.parentNode.style.height = '200px';
+myMinutesActiveChart.canvas.parentNode.style.width = '200px';
 
 // Stairs Climbed Weekly Chart
 var stairsClimbedWeeklyChart = $('#stairs-climbed-weekly__display');
@@ -168,8 +173,8 @@ var myStairsClimbedWeeklyChart = new Chart(stairsClimbedWeeklyChart, {
         maintainAspectRatio: false,
     }
 });
-myStairsClimbedWeeklyChart.canvas.parentNode.style.height = '300px';
-myStairsClimbedWeeklyChart.canvas.parentNode.style.width = '300px';
+myStairsClimbedWeeklyChart.canvas.parentNode.style.height = '200px';
+myStairsClimbedWeeklyChart.canvas.parentNode.style.width = '200px';
 
 // Step Count Weekly Chart
 var stepCountChart = $('#step-count-weekly__display');
@@ -192,6 +197,34 @@ var myStepCountChart = new Chart(stepCountChart, {
         maintainAspectRatio: false,
     }
 });
-myStepCountChart.canvas.parentNode.style.height = '300px';
-myStepCountChart.canvas.parentNode.style.width = '300px';
+myStepCountChart.canvas.parentNode.style.height = '200px';
+myStepCountChart.canvas.parentNode.style.width = '200px';
+
+// Friend Weekly Chart
+var friendDisplayChart = $('#friend__display');
+var myFriendDisplayChart = new Chart(friendDisplayChart, {
+    type: 'line',
+    data: {
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        datasets: [{
+            label: "Friend Info",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+            data: friendMethod
+        }, {
+            label: "Friend Info",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+            data: friendMethod
+        }]
+    },
+    options: options = {
+        title: {
+            display: true,
+            text: 'Friend Info'
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+});
+myFriendDisplayChart.canvas.parentNode.style.height = '200px';
+myFriendDisplayChart.canvas.parentNode.style.width = '200px';
 });

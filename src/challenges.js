@@ -37,6 +37,7 @@ class Challenges {
   }
   findFriendData(dataSet, startDate) {
     let friendObjects = this.addUserToFriends(dataSet, startDate);
+    console.log(friendObjects)
     return friendObjects
   }
 
@@ -44,8 +45,12 @@ class Challenges {
     let oneFriendDates = dataSet.filter(friend => id === friend.userID);
     let startIndex = oneFriendDates.findIndex(day => day.date === startDate)
     let friendWeek = oneFriendDates.slice(startIndex, startIndex + 7)
-    return friendWeek
+    // console.log(friendWeek)
+    // console.log(friendWeek.map(friend => friend.numSteps))
+    return friendWeek.map(friend => friend.numSteps);
   }
+
+  
 
   // friendWeekInfo() {
   //   return {

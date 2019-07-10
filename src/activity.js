@@ -35,7 +35,7 @@ class Activity extends ActivityRepository {
     return Math.floor(sum / 7)
   }
 
-  getWeeklyMinutesActive(id, date="2019/06/15") {
+  getWeeklyMinutesActive(id, date) {
     let weekActive = this.userActivity.filter(user => user.userID === id)
     let startDateIndex = weekActive.find(user => user.date === date)
     let startDate = weekActive.indexOf(startDateIndex)

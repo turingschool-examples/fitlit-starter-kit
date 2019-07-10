@@ -130,6 +130,48 @@ class Activity {
       return friend.steps[0];
     });
   }
+
+    threeDayStepStreak(id){
+        let userObjs = [];
+        let dates = [];
+        let user = activityData.filter(user => user.userID === id)
+        user.forEach(function(day){
+
+            if(userObjs.length >= 3){
+                userObjs.shift();
+            }
+
+            userObjs.push(day.numSteps)
+        
+            if(userObjs[0] < userObjs[1] && userObjs[2] < userObjs[0]){
+                dates.push(day.date);
+            }
+        })
+
+        return dates
+    }
+
+    threeDayStairStreak(id){
+        let userObjs = [];
+        let dates = [];
+        let user = activityData.filter(user => user.userID === id)
+        user.forEach(function(day){
+
+            if(userObjs.length >= 3){
+                userObjs.shift();
+            }
+
+            userObjs.push(day.flightsOfStairs)
+        
+            if(userObjs[2] > userObjs[1] && userObjs[1] > userObjs[0]){
+                dates.push(day.date);
+            }
+        })
+
+        return dates
+    }
+
+
 }
 
 if (typeof module !== "undefined") {

@@ -12,6 +12,7 @@ $(document).ready(function() {
 //   const todaysDate = year + "/" + "0" + month + "/" + "0" + day;
   const today = "2019/07/10"
 
+
   var cardOne= document.querySelector('.card-1');
 cardOne.addEventListener( 'click', function() {
   cardOne.classList.toggle('is-flipped');
@@ -48,29 +49,34 @@ cardFour.addEventListener( 'click', function() {
 const userVsAvg = new Chart($('#user-vs-avg-steps'), {
     type: 'bar',
     data: {
-        labels: ['Your Steps', 'Average User Steps'],
-        datasets: [{
-            label: 'You VS Everyone (steps)',
-            data: [user.randomUser.dailyStepGoal, users.averageGoalSteps()],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
+      labels: ['Your Steps', 'Average User Steps'],
+      datasets: [{
+        label: 'Steps',
+        data: [user.randomUser.dailyStepGoal, users.averageGoalSteps()],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
     },
     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
+      legend: {display: false},
+      title: {
+        display: true,
+        text: 'You VS Everyone (steps)'
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
     }
 });
 

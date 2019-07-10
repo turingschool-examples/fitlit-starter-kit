@@ -1,6 +1,12 @@
-
 $(document).ready(function() {
   const today = '2019/06/15';
+
+  function setProgress(amt) {
+    $("stop1").setAttribute("offset", amt);
+    $("stop2").setAttribute("offset", amt);
+  }
+
+  setProgress();
 
 
   $('#js-change-user').click(function() {
@@ -14,7 +20,8 @@ $(document).ready(function() {
     const sleep = new Sleep(sleepRepo.returnUserSleepData(userID));
     const activity = new Activity(user, activityRepo.returnUserActivityData(userID));
     changeUser()
-    
+
+
     $('#js-h2--welcome').hide();
     $('#js-h2--user').show();
     enableButtons();
@@ -142,13 +149,25 @@ $(document).ready(function() {
     $(`#${clickedID}`).addClass('list-item--active');
   }
 
-  function updateUserProfile(user, userRepo, activity, userID) {
+  function updateUserProfile(user, userRepo, activity, userID, sleep) {
     $('#js-first-name').html(user.returnFirstName());
     $('#js-full-name').html(user.name);
     $('#js-address').html(user.address);
     $('#js-email').html(user.email);
     $('#js-friends').html(userRepo.makeFriendNames(userID));
     $('#js-miles').html(activity.milesWalked(today));
+    console.log(sleep)
+    displayRested(sleep)
+  }
+
+  function displayRested(sleep) {
+    sleep.checkRested()
+    if (sleep.rested === true) {
+      $('#restedSvg').attr('src','happy.svg');
+    }
+    else {
+      $('#restedSvg').attr('src','sad.svg');
+    }
   }
 
   function updateStepGoalChart(user) {
@@ -198,7 +217,7 @@ $(document).ready(function() {
   }
 
   function updateCharts(user, userRepo, hydration, sleep, activity, activityRepo, userID) {
-    updateUserProfile(user, userRepo, activity, userID);
+    updateUserProfile(user, userRepo, activity, userID, sleep);
     updateStepGoalChart(user);
     updateHydrationLineChart(hydration);
     updateSleepCharts(sleep);

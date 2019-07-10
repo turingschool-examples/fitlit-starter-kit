@@ -81,7 +81,7 @@ class Activity {
     return this.data.filter(user => user.userID === this.id).slice(-7)
   } 
 
-  returnIncreasedDays() {
+  returnIncreasedStepDays() {
     return this.data.reduce((acc, day, i, array) => {
       if(i !== 0 && i !== array.length-1) {
         if(day.numSteps > array[i-1].numSteps && day.numSteps < array[i+1].numSteps) {
@@ -90,7 +90,17 @@ class Activity {
       }
       return acc;
     }, [])
-    console.log(this.data);
+  };
+
+  returnIncreasedStairDays() {
+    return this.data.reduce((acc, day, i, array) => {
+      if(i !== 0 && i !== array.length-1) {
+        if(day.flightsOfStairs > array[i-1].flightsOfStairs && day.flightsOfStairs < array[i+1].flightsOfStairs) {
+          acc.push(array[i+1])
+        }
+      }
+      return acc;
+    }, [])
   };
 
 };

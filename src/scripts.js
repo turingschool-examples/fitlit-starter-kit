@@ -10,7 +10,7 @@ let sleepRepo = new SleepRepository(sleepData)
 let activity = new Activity(activityData, getRandomNumber());
 let activityDay = activity.returnDay("2019/06/23");
 let activityRepo = new ActivityRepository(activityData)
-console.log(activity.returnIncreasedDays())
+console.log(activity.returnIncreasedStairDays())
 console.log(activityRepo)
 
 // console.log(currentHydration);

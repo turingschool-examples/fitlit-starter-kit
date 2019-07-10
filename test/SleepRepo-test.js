@@ -38,6 +38,6 @@ describe('sleepRepo', () => {
 
         it.skip('should shame the worst sleeper for a specific date', () => {
             expect(sleepRepo.findWorstSleeper('2019/06/22')).to.equal(4.8);
-        });   
+        });  
     });
         

@@ -54,9 +54,9 @@ describe('activity', () => {
 			expect(activity.allTimeStairRecord(1)).to.equal(36);
         });
 
-        it.only('should should compare user against friends to determine step challenge winner ', () => {
+     it.only('should should compare user against friends to determine step challenge winner ', () => {
             expect(activity.compareFriends("2019/06/15", 1)).to.eql({ id: 5, name: 'Erick Schaden', steps: 11374 });
         });
-        
+
     });
 

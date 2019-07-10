@@ -83,4 +83,5 @@ describe('Activity', function() {
     const activity = new Activity(activityData);
     expect(activity.displayRecordActiveDay(1)).to.deep.equal(["2019/09/02" , 292])
   });
+
 });

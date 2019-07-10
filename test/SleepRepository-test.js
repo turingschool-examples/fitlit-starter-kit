@@ -26,4 +26,9 @@ describe('SleepRepository', function() {
     const sleepRepository = new SleepRepository(sleepData);
     expect(sleepRepository.displayHeaviestSleeper("2019/06/15")).to.equal("Herminia Witting");
   });
+
+  it('should return the users who averaged a sleep quality greater than 3 for a given week', function() {
+    const sleepRepository = new SleepRepository(sleepData);
+    expect(sleepRepository.calculateUserAverageSleepQuality(1, '2019/06/15')).to.equal();
+  });
 });

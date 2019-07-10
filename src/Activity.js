@@ -16,6 +16,7 @@ class Activity {
   calculateMilesWalked(id, date) {
     let user = new User(userData[0]);
     let specificUser = this.findIdHelper(id);
+    console.log(specificUser);
     let dateWalked = specificUser.find(function(aUser) {
       return aUser.date === date
     });

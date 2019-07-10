@@ -17,12 +17,12 @@ header {
 h1 {
   color: #2FB5B6;
   font-size: 100px;
+  font-weight:700;
   margin: 0;
   padding: 0;
-  font-weight:700;
 }
 
-h2{
+h2 {
   padding-bottom: 10px
 }
 
@@ -78,7 +78,7 @@ h3 {
   margin-right: 5%;
 }
 
-.small-nums-header{
+.small-nums-header {
   font-size: 10px;
 }
 
@@ -95,8 +95,8 @@ h6 {
 
 #num-daily-steps {
   font-size: 22px;
-  padding-bottom: 20px;
   margin-top: 30px;
+  padding-bottom: 20px;
 }
 
 #num-steps-today {
@@ -121,29 +121,30 @@ h6 {
   margin-bottom: 20px;
 }
 
-h6{
+h6 {
   font-size: 18px;
 }
+
 .weekly-activity-charts {
-padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
-#weekly-activity-metrics{
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+#weekly-activity-metrics {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
-#water-wrapper{
+#water-wrapper {
   margin-top: 20px;
 }
 
-#daily-ounces{
+#daily-ounces {
   font-size: 40px;
 }
 
-.today-ounces{
-  margin-top: 20px;
+.today-ounces {
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 #weekly-sleep-charts,
@@ -151,9 +152,9 @@ padding-bottom: 20px;
   margin-top: 20px;
 }
 
-.disclaimer{
-  margin-top: 10px;
+.disclaimer {
   font-size: 10px;
+  margin-top: 10px;
 }
 
 @media screen and (min-width: 800px) {
@@ -180,8 +181,8 @@ padding-bottom: 20px;
   }
 
   .welcome-user {
-    margin-top: 45px;
     margin-right: 5%;
+    margin-top: 45px;
   }
 
   nav {
@@ -194,8 +195,8 @@ padding-bottom: 20px;
 
   #daily-activity-charts {
     display: inline-block;
-    padding-bottom: 20px;
     margin-left: 35px;
+    padding-bottom: 20px;
     width: 1150px;
   }
 }

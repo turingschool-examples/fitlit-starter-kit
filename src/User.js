@@ -1,5 +1,5 @@
-const Activity = require('../src/Activity');
-const activityData = require('../data/activity');
+// const Activity = require('../src/Activity');
+// const activityData = require('../data/activity');
 
 class User {
   constructor(userData) {

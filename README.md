@@ -18,7 +18,7 @@ Run tests by running npm tests.
 
 ## Original Project Prompt
 
-![image](https://github.com/ayladharamsey/fitlit-starter-kit/tree/master/data/images/ )
+![image](https://github.com/ayladharamsey/fitlit-starter-kit/blob/master/images/Screen%20Shot%202019-07-10%20at%204.26.40%20PM.png )
 
 - Follow the specification below to make a working application
 - Implement ES6 classes that communicate to each other as needed

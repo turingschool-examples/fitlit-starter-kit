@@ -9,6 +9,12 @@ $('.section--right__friend-chart').on('mouseenter', () => {
   $('#doughnut-chart').show()
 }).on('mouseleave', () => {
   $('#doughnut-chart').hide();
+});
+
+$('.section--right__sleep-chart').on('mouseenter', () => {
+  $('#mixed-chart').show()
+}).on('mouseleave', () => {
+  $('#mixed-chart').hide();
 })
  
 
@@ -37,6 +43,72 @@ $('.section--right__friend-chart').on('mouseenter', () => {
         fontFamily: 'Roboto Mono'
       }
     },
+  }
+});
+
+var sleepChart = new Chart(document.getElementById("mixed-chart"), {
+  type: 'bar',
+  data: {
+    labels: [],
+    datasets: [{
+        label: "Hours",
+        type: "line",
+        borderColor: "#d35400",
+        data: [],
+        fill: false,
+      }, {
+        label: "Quality",
+        type: "line",
+        borderColor: "#f1c40f",
+        data: [],
+        fill: false
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Sleep',
+      fontColor: 'white',
+      fontSize: 26,
+      fontFamily: 'Roboto Mono'
+    },
+    legend: { 
+      display: true,
+      labels: {
+        fontColor: 'white',
+        fontSize: 20,
+        fontFamily: 'Roboto Mono'
+      }
+    },
+    scales: {
+      xAxes: [{
+        display: true,
+        gridLines: {
+          color: 'white',
+          display: false
+        },
+        scaleLabel: {
+          display: true,
+          fontColor: 'white',
+          fontSize: 20,
+          labelString: 'Week'
+        }
+      }],
+      yAxes: [{
+        display: true,
+        gridLines: {
+          color: 'white',
+          display: false
+        },
+        scaleLabel: {
+          display: true,
+          fontColor: 'white',
+          fontSize: 20,
+          labelString: 'Sleep Hours & Quality'
+        }
+      }]
+    }
   }
 });
 

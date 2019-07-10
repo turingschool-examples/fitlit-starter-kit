@@ -13,11 +13,8 @@ $(document).ready(function() {
     const hydration = new Hydration(hydrationRepo.returnUserHydrationData(userID));
     const sleep = new Sleep(sleepRepo.returnUserSleepData(userID));
     const activity = new Activity(user, activityRepo.returnUserActivityData(userID));
-    $('#js-user-profile').show();
     changeUser()
     
-    $('#js-change-user').text('Change User').removeClass('list-item--active');
-    $('#js-user').addClass('list-item--active');
     $('#js-h2--welcome').hide();
     $('#js-h2--user').show();
     enableButtons();
@@ -25,16 +22,15 @@ $(document).ready(function() {
   });
 
   function changeUser() {
-    if ($('#js-change-user').text() === 'New User') {
+    if ($('#js-change-user').html() !== 'Change User') {
       $('#js-intro-message').hide();
-       // $('#js-user-profile').show();
+      $('#js-user-profile').show();
+      $('#js-change-user').text('Change User').removeClass('list-item--active');
+      $('#js-user').addClass('list-item--active');
     } else {
       $('#js-intro-message').hide();
-       $('#js-user-profile').hide();
     }
-
   }
-
 
   $('#js-user').click(function() {
     $('#js-user-profile').show();
@@ -215,12 +211,12 @@ $(document).ready(function() {
 
   var stepGoalChart = new Chart($("#js-step-goal-chart"), {
     plugins: [{
-    beforeInit: function(chart, options) {
-      chart.legend.afterFit = function() {
-        this.height = this.height + 25;
-      };
-    }
-  }],
+      beforeInit(chart, options) {
+        chart.legend.afterFit = function() {
+          this.height = this.height + 25;
+        };
+      }
+    }],
     type: 'bar',
     data: {
       labels: ["", "All Users"],
@@ -240,10 +236,10 @@ $(document).ready(function() {
       legend: { display: true,
         labels: {
           boxWidth: 0,
-           fontColor: 'black',
-           fontSize: 20
-         }
-       },
+          fontColor: 'black',
+          fontSize: 20
+        }
+      },
       title: {
         display: false,
       },
@@ -270,12 +266,12 @@ $(document).ready(function() {
 
   var hydrationLineChart = new Chart($('#js-hydration-line-chart'), {
     plugins: [{
-    beforeInit: function(chart, options) {
-      chart.legend.afterFit = function() {
-        this.height = this.height + 25;
-      };
-    }
-  }],
+      beforeInit(chart, options) {
+        chart.legend.afterFit = function() {
+          this.height = this.height + 25;
+        };
+      }
+    }],
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
@@ -303,12 +299,12 @@ $(document).ready(function() {
         }]
       },
       legend: { display: true,
-       labels: {
-         boxWidth: 0,
+        labels: {
+          boxWidth: 0,
           fontColor: 'black',
           fontSize: 20
         },
-       },
+      },
       responsive: false,
       maintainAspectRatio: false,
       title: {
@@ -319,12 +315,12 @@ $(document).ready(function() {
 
   var sleepQualityLineChart = new Chart($('#js-sleepQuality-line-chart'), {
     plugins: [{
-    beforeInit: function(chart, options) {
-      chart.legend.afterFit = function() {
-        this.height = this.height + 25;
-      };
-    }
-  }],
+      beforeInit(chart, options) {
+        chart.legend.afterFit = function() {
+          this.height = this.height + 25;
+        };
+      }
+    }],
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
@@ -352,12 +348,12 @@ $(document).ready(function() {
         }]
       },
       legend: { display: true,
-       labels: {
-         boxWidth: 0,
+        labels: {
+          boxWidth: 0,
           fontColor: 'black',
           fontSize: 20
         },
-       },
+      },
       responsive: false,
       maintainAspectRatio: false,
       title: {
@@ -368,12 +364,12 @@ $(document).ready(function() {
 
   var sleepHoursLineChart = new Chart($('#js-sleepHours-line-chart'), {
     plugins: [{
-    beforeInit: function(chart, options) {
-      chart.legend.afterFit = function() {
-        this.height = this.height + 25;
-      };
-    }
-  }],
+      beforeInit(chart, options) {
+        chart.legend.afterFit = function() {
+          this.height = this.height + 25;
+        };
+      }
+    }],
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
@@ -401,12 +397,12 @@ $(document).ready(function() {
         }]
       },
       legend: { display: true,
-       labels: {
-         boxWidth: 0,
+        labels: {
+          boxWidth: 0,
           fontColor: 'black',
           fontSize: 20
         },
-       },
+      },
       responsive: false,
       maintainAspectRatio: false,
       title: {
@@ -418,12 +414,12 @@ $(document).ready(function() {
 
   var numOfStepsChart = new Chart($("#js-num-of-steps-chart"), {
     plugins: [{
-    beforeInit: function(chart, options) {
-      chart.legend.afterFit = function() {
-        this.height = this.height + 25;
-      };
-    }
-  }],
+      beforeInit(chart, options) {
+        chart.legend.afterFit = function() {
+          this.height = this.height + 25;
+        };
+      }
+    }],
     type: 'bar',
     data: {
       labels: ["", "All Users"],
@@ -443,10 +439,10 @@ $(document).ready(function() {
       legend: { display: true,
         labels: {
           boxWidth: 0,
-           fontColor: 'black',
-           fontSize: 20
-         }
-       },
+          fontColor: 'black',
+          fontSize: 20
+        }
+      },
       title: {
         display: false,
       },
@@ -473,12 +469,12 @@ $(document).ready(function() {
 
   var numOfStepsLineChart = new Chart($('#js-num-of-steps-line-chart'), {
     plugins: [{
-    beforeInit: function(chart, options) {
-      chart.legend.afterFit = function() {
-        this.height = this.height + 25;
-      };
-    }
-  }],
+      beforeInit(chart, options) {
+        chart.legend.afterFit = function() {
+          this.height = this.height + 25;
+        };
+      }
+    }],
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
@@ -506,12 +502,12 @@ $(document).ready(function() {
         }]
       },
       legend: { display: true,
-       labels: {
-         boxWidth: 0,
+        labels: {
+          boxWidth: 0,
           fontColor: 'black',
           fontSize: 20
         },
-       },
+      },
       responsive: false,
       maintainAspectRatio: false,
       title: {
@@ -522,12 +518,12 @@ $(document).ready(function() {
 
   var numMinActiveChart = new Chart($("#js-num-mins-active-chart"), {
     plugins: [{
-    beforeInit: function(chart, options) {
-      chart.legend.afterFit = function() {
-        this.height = this.height + 25;
-      };
-    }
-  }],
+      beforeInit(chart, options) {
+        chart.legend.afterFit = function() {
+          this.height = this.height + 25;
+        };
+      }
+    }],
     type: 'bar',
     data: {
       labels: ["", "All Users"],
@@ -547,10 +543,10 @@ $(document).ready(function() {
       legend: { display: true,
         labels: {
           boxWidth: 0,
-           fontColor: 'black',
-           fontSize: 20
-         }
-       },
+          fontColor: 'black',
+          fontSize: 20
+        }
+      },
       title: {
         display: false,
       },
@@ -577,12 +573,12 @@ $(document).ready(function() {
 
   var numMinActiveLineChart = new Chart($('#js-num-mins-active-line-chart'), {
     plugins: [{
-    beforeInit: function(chart, options) {
-      chart.legend.afterFit = function() {
-        this.height = this.height + 25;
-      };
-    }
-  }],
+      beforeInit(chart, options) {
+        chart.legend.afterFit = function() {
+          this.height = this.height + 25;
+        };
+      }
+    }],
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
@@ -610,12 +606,12 @@ $(document).ready(function() {
         }]
       },
       legend: { display: true,
-       labels: {
-         boxWidth: 0,
+        labels: {
+          boxWidth: 0,
           fontColor: 'black',
           fontSize: 20
         },
-       },
+      },
       responsive: false,
       maintainAspectRatio: false,
       title: {
@@ -626,12 +622,12 @@ $(document).ready(function() {
 
   var flightsClimbedChart = new Chart($("#js-flights-climbed-chart"), {
     plugins: [{
-    beforeInit: function(chart, options) {
-      chart.legend.afterFit = function() {
-        this.height = this.height + 25;
-      };
-    }
-  }],
+      beforeInit(chart, options) {
+        chart.legend.afterFit = function() {
+          this.height = this.height + 25;
+        };
+      }
+    }],
     type: 'bar',
     data: {
       labels: ["", "All Users"],
@@ -651,10 +647,10 @@ $(document).ready(function() {
       legend: { display: true,
         labels: {
           boxWidth: 0,
-           fontColor: 'black',
-           fontSize: 20
-         }
-       },
+          fontColor: 'black',
+          fontSize: 20
+        }
+      },
       title: {
         display: false,
       },
@@ -681,12 +677,12 @@ $(document).ready(function() {
 
   var flightsClimbedLineChart = new Chart($('#js-flights-climbed-line-chart'), {
     plugins: [{
-    beforeInit: function(chart, options) {
-      chart.legend.afterFit = function() {
-        this.height = this.height + 25;
-      };
-    }
-  }],
+      beforeInit(chart, options) {
+        chart.legend.afterFit = function() {
+          this.height = this.height + 25;
+        };
+      }
+    }],
     type: 'line',
     data: {
       labels: ['06/15', '06/16', '06/17', '06/18', '06/19', '06/20', '06/21'],
@@ -714,12 +710,12 @@ $(document).ready(function() {
         }]
       },
       legend: { display: true,
-       labels: {
-         boxWidth: 0,
+        labels: {
+          boxWidth: 0,
           fontColor: 'black',
           fontSize: 20
         },
-       },
+      },
       responsive: false,
       maintainAspectRatio: false,
       title: {

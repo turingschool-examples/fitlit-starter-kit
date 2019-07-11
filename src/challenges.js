@@ -21,61 +21,32 @@ class Challenges {
     }, [])
   }
 
-  addUserToFriends(dataSet, startDate) {
+  addUserToFriends(dataSet, startDate, attribute) {
     let user = this.getUserData();
     let friends = this.findFriends();
     friends.push(user)
-    let test = friends.map((obj) => {
+    let finalObj = friends.map((obj) => {
       return  {
         id: obj.id,
         name: obj.name,
         strideLength: obj.strideLength,
-        weekData: this.findFriendWeek(dataSet, startDate, obj.id)
+        weekData: this.findFriendWeek(dataSet, startDate, obj.id, attribute)
       }
     })
-    return test
+    
+    return finalObj
   }
   findFriendData(dataSet, startDate) {
     let friendObjects = this.addUserToFriends(dataSet, startDate);
-    console.log(friendObjects)
     return friendObjects
   }
 
-  findFriendWeek(dataSet, startDate, id) {
+  findFriendWeek(dataSet, startDate, id, attribute) {
     let oneFriendDates = dataSet.filter(friend => id === friend.userID);
     let startIndex = oneFriendDates.findIndex(day => day.date === startDate)
     let friendWeek = oneFriendDates.slice(startIndex, startIndex + 7)
-    // console.log(friendWeek)
-    // console.log(friendWeek.map(friend => friend.numSteps))
-    return friendWeek.map(friend => friend.numSteps);
+    return friendWeek.map(friend => friend[attribute]);
   }
-
-  
-
-  // friendWeekInfo() {
-  //   return {
-  //     id: 1,
-  //     name: 'chris',
-  //     strideLength: 4.3,
-  //     weekData: [
-  //       {
-  //         userID: 1,
-  //         date: '2019/06/21',
-  //         numSteps: 6760,
-  //         minutesActive: 135,
-  //         flightsOfStairs: 6
-  //       },
-  //       {
-  //         userID: 1,
-  //         date: '2019/06/22',
-  //         numSteps: 10289,
-  //         minutesActive: 119,
-  //         flightsOfStairs: 6
-  //       }
-  //     ]
-  //   }
-  // }
-
 
 
 }

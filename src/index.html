@@ -11,7 +11,7 @@
       <nav class="grid-item"> 
         <h1>Activity Tracker</h1>
         <h2 id="user-name__display"> ... </h2>
-        <div>
+        <div id="current-date__display">
           Current Date
         </div>
         <ul>
@@ -19,14 +19,13 @@
           <li id="user-address__display">H2O</li>
           <li id="user-email__display">Sleep</li>
           <li id="user-daily-step-goal__display">Steps</li>
-          <li id="user-friends__display">Challenges</li>
         </ul>
       </nav>
       <main>
         <div class="grid-item calendar">
           <div>
             <label for="start">Start Date:</label>
-            <input type="date" id="date-calendar" name="start-date" value="2019-06-15" min="2019-06-15" max="2019-09-22">
+            <input type="date" id="date-calendar" name="start-date" value="2019-07-11" min="2019-06-15" max="2019-09-22">
             <button id="submit-date__button" name="submit-date">Submit</button>
           </div>
         </div>
@@ -39,7 +38,7 @@
           <p>Today's Water Intake (Oz)</p>
         </article>
           <div class="water-display__article centered-text grid-item">
-            <canvas id="weeklyWaterChart" width="400" height="400"></canvas>
+            <canvas id="weekly-water-chart" width="400" height="400"></canvas>
           </div>
         <div class="grid-item draggable centered-text">
           <img src="../images/sneaker.png" alt="icon of a sneaker" class="icon">
@@ -92,15 +91,29 @@
         <div class="grid-item draggable centered-text">
           <canvas id="step-count-weekly__display" width="400" height="400"></canvas>
         </div>
-        <!-- <div class="grid-item draggable centered-text">
-          <canvas id="friend__display" width="400" height="400"></canvas>
-        </div> -->
+        <div class="grid-item draggable">
+          <canvas id="sleep-hours-quality__display" width="400" height="400"></canvas>
+        </div>
+        <div class="grid-item draggable">
+          <canvas id="sleep-hours-quality-week__display" width="400" height="400"></canvas>
+        </div>
+        <div class="grid-item draggable">
+          <canvas id="sleep-total-average__display" width="400" height="400"></canvas>
+        </div>
+        <div class="grid-item draggable">
+          <canvas id="friends-week-step__display" width="400" height="400"></canvas>
+        </div>
+        <div class="grid-item draggable">
+          <canvas id="friends-week-hydration__display" width="400" height="400"></canvas>
+        </div>
+        <div class="grid-item draggable">
+          <canvas id="friends-week-sleep__display" width="400" height="400"></canvas>
+        </div>
       </main>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://unpkg.com/packery@2/dist/packery.pkgd.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> -->
     <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>

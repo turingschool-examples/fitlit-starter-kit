@@ -8,6 +8,7 @@ class UserRepository {
   getUserData() {
     return this.data.find (user => user.id === this.id)
   }
+  
   getAverageStepGoal() {
     return Number(this.data.reduce((a, b) => a + b.dailyStepGoal, 0) / this.data.length);
   }

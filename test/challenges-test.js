@@ -1,11 +1,8 @@
 const chai = require('chai')
 const expect = chai.expect;
 
-const User = require('../src/user');
-const UserRepository = require('../src/userRepository');
-const activity = require('../data/activity')
+const hydrationData = require('../data/hydration')
 const fakeUsers = require('../fakeData/fakeUsers')
-const fakeActivity = require('../fakeData/fakeActivity')
 const Challenges = require('../src/challenges')
 
 describe('Challenges', function() {
@@ -34,12 +31,11 @@ describe('Challenges', function() {
     },)
     expect(object.length).to.equal(3)
   }),
-  it.only('Should be able to find the weekly step data for a users friends', function(){
+  it('Should be able to find the weekly step data for a users friends', function(){
 
     let user = new Challenges(fakeUsers, 1)
     let array = user.findFriends()
-    let obj = user.findFriendData(activity, '2019/09/15')
-    console.table("object", obj)
+    let obj = user.findFriendData(hydrationData, '2019/09/15')
     expect(array.length).to.equal(3)
   })
   

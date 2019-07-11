@@ -68,34 +68,34 @@ $(document).ready(function() {
       }]
     },
     options: {
-     legend: {display: false},
-       labels: {
-         fontColor: "black",
-         fontSize: 20
-        },
-     title: {
-       display: true,
-       fontColor: 'black',
-       text: 'You VS Everyone (steps)'
-     },
-     scales: {
-       yAxes: [{
-         ticks: {
-          beginAtZero: true,
-           fontColor: 'black',
-           fontSize: 16
-         }
-       }],
-       xAxes: [{
-         ticks: {
-          beginAtZero: true,
-           fontColor: 'black',
-           fontSize: 16
-         }
-       }],
-     }
-   }
-});
+      legend: {display: false},
+      labels: {
+        fontColor: "black",
+        fontSize: 20
+      },
+      title: {
+        display: true,
+        fontColor: 'black',
+        text: 'You VS Everyone (steps)'
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            fontColor: 'black',
+            fontSize: 16
+          }
+        }],
+        xAxes: [{
+          ticks: {
+            beginAtZero: true,
+            fontColor: 'black',
+            fontSize: 16
+          }
+        }],
+      }
+    }
+  });
 
   const weeklyWaterIntake = new Chart($('#weekly-water-intake'), {
     type: 'line',
@@ -105,10 +105,10 @@ $(document).ready(function() {
         label: 'fl Oz',
         data: Object.values(hydro.userFluidsPerWeek(randomIndex, today)),
         backgroundColor: [                             
-            'rgba(255, 159, 64, 0.2)'
+          'rgba(255, 159, 64, 0.2)'
         ],
         borderColor: [
-                '#afff14'
+          '#afff14'
         ],
         borderWidth: 1
       }]
@@ -217,30 +217,29 @@ $(document).ready(function() {
     },
     options: {
       legend: {display: false},
-        title: {
+      title: {
         display: true,
         text: 'Today: You VS Everyone (min Active)'
-        },
-       labels: {
-         fontColor: "black",
-         fontSize: 14
-       }
-     },
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true,
-                    fontColor: 'black',
-                }
-            }],
-            xAxes: [{
-         ticks: {
+      },
+      labels: {
+        fontColor: "black",
+        fontSize: 14
+      }
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
           beginAtZero: true,
-           fontColor: 'black',
-           fontSize: 16
-         }
-       }],
+          fontColor: 'black',
         }
+      }],
+      xAxes: [{
+        ticks: {
+          beginAtZero: true,
+          fontColor: 'black',
+          fontSize: 16
+        }
+      }],
     }
   });
 
@@ -258,8 +257,7 @@ $(document).ready(function() {
           'rgba(75, 192, 192, 0.2)',
           'rgba(153, 102, 255, 0.2)',
           'rgba(255, 159, 64, 0.2)',
-          'rgba(90, 173, 226, 0.2)'
-                
+          'rgba(90, 173, 226, 0.2)'      
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
@@ -303,8 +301,7 @@ $(document).ready(function() {
           'rgba(75, 192, 192, 0.2)',
           'rgba(153, 102, 255, 0.2)',
           'rgba(255, 159, 64, 0.2)',
-          'rgba(90, 173, 226, 0.2)'
-                
+          'rgba(90, 173, 226, 0.2)' 
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
@@ -348,8 +345,7 @@ $(document).ready(function() {
           'rgba(75, 192, 192, 0.2)',
           'rgba(153, 102, 255, 0.2)',
           'rgba(255, 159, 64, 0.2)',
-          'rgba(90, 173, 226, 0.2)'
-                
+          'rgba(90, 173, 226, 0.2)'   
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',

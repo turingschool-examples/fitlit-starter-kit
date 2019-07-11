@@ -2,11 +2,7 @@ const chai = require('chai')
 const expect = chai.expect;
 
 const hydrationData = require('../data/hydration')
-const User = require('../src/user');
-const UserRepository = require('../src/userRepository');
-const activity = require('../data/activity')
 const fakeUsers = require('../fakeData/fakeUsers')
-const fakeActivity = require('../fakeData/fakeActivity')
 const Challenges = require('../src/challenges')
 
 describe('Challenges', function() {

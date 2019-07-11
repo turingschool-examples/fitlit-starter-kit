@@ -3,10 +3,6 @@ const expect = chai.expect;
 
 const HydrationRepository = require('../src/hydrationRepository');
 const fakeHydration = require('../fakeData/fakeHydration');
-const User = require('../src/user');
-const UserRepository = require('../src/userRepository')
-const fakeUsers = require('../fakeData/fakeUsers');
-
 
 describe('HydrationRepository', function() {
 
@@ -39,9 +35,6 @@ describe('HydrationRepository', function() {
 
     const repo1 = new HydrationRepository(fakeHydration, 1);
     const repo2 = new HydrationRepository(fakeHydration, 25);
-    const array1 = repo1.getUserData();
-    const array2 = repo2.getUserData();
-  
     const average1 = repo1.getTotalAvg();
     const average2 = repo2.getTotalAvg();
 

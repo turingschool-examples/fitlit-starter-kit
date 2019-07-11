@@ -4,8 +4,6 @@ const expect = chai.expect;
 const HydrationRepository = require('../src/hydrationRepository');
 const fakeHydration = require('../fakeData/fakeHydration');
 const Hydration = require('../src/hydration');
-const UserRepository = require('../src/userRepository')
-const fakeUsers = require('../fakeData/fakeUsers');
 
 describe('Hydration', function() {
 
@@ -36,7 +34,7 @@ describe('Hydration', function() {
     let user2 = new Hydration(object2)
 
     expect(user1.getWeeklyOunces(1)).to.eql(
-          [96, 61, 91, 50, 50, 43, 39])
+      [96, 61, 91, 50, 50, 43, 39])
     expect(user2.getWeeklyOunces(25)).to.eql([40]) 
   })
 })

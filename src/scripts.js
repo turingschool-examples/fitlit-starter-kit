@@ -24,7 +24,6 @@ $(document).ready(() => {
 
   let date = $("#date-calendar").val();
   let formattedDate = date.replace(/-/gi, "/");
-  //  let dateSubmitBtn = $("#submit-date__button");
   let minutesActiveMethod = activity.getWeeklyMinutesActive(randomId, findTodaysDate());
   let stairsClimbedMethod = activity.getWeeklyStairsClimbed(randomId, findTodaysDate());
   let stepCountMethod = activity.getWeeklyStepCount(randomId, findTodaysDate());

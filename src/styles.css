@@ -1,36 +1,34 @@
 body {
     background-image: url(https://media.istockphoto.com/vectors/abstract-hexagonal-background-hexagonal-molecular-structures-in-vector-id1141303045);
     background-size: contain;
+    background-repeat: repeat;
     display: grid;
-    margin: 20px;
     font-family: 'Montserrat', sans-serif;
-    background-repeat: no-repeat;
+    margin: 20px;
 }
 
-button,
-input {
+button, input {
     font-size: 18px;
 }
 
-.grid-item {
-    background-color: rgba(138, 221, 234, 0.53);
-    border: solid 4px rgba(138, 221, 234, 0.97);
-    float: left;
-    grid-auto-columns: 4;
-    grid-auto-rows: auto; 
-    /* opacity: 0.8; */
-    border-radius: 5% 5% 5% 5%;
-    padding: 15px;
-    width: 27%;
+.calendar {
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .centered-text {
     text-align: center;
 }
 
-.text-display {
-    font-size: 22px;
-    font-weight: bold;
+.grid-item {
+    background-color: rgba(138, 221, 234, 0.53);
+    border: solid 4px rgba(138, 221, 234, 0.97);
+    border-radius: 5% 5% 5% 5%;
+    float: left;
+    grid-auto-columns: 4;
+    grid-auto-rows: auto; 
+    padding: 15px;
+    width: 27%;
 }
 
 .grid-item.is-dragging,
@@ -39,22 +37,22 @@ input {
     z-index: 2;
 }
 
-.packery-drop-placeholder {
-    outline: 3px dashed hsla(0, 0%, 0%, 0.5);
-    outline-offset: -6px;
-    -webkit-transition: -webkit-transform 0.2s;
-    transition: transform 0.2s;
-}
-
-.calendar {
-    font-size: 18px;
-    font-weight: bold;
-}
 .icon {
     background-color: transparent;
     height: 100px;
     width: 100px;
 }
 
+.packery-drop-placeholder {
+    outline: 3px dashed hsla(0, 0%, 0%, 0.5);
+    outline-offset: -6px;
+    transition: transform 0.2s;
+    -webkit-transition: -webkit-transform 0.2s;
+}
+
+.text-display {
+    font-size: 22px;
+    font-weight: bold;
+}
 
 

@@ -1,8 +1,7 @@
 const chai = require('chai')
 const expect = chai.expect;
 
-const User = require('../src/user');
-const UserRepository = require('../src/userRepository');
+
 const fakeData = require('../fakeData/fakeUsers');
 const fakeActivity = require('../fakeData/fakeActivity');
 const Activity = require('../src/activity');
@@ -58,12 +57,6 @@ describe('Activity', function() {
     expect(repo1.getWeeklyMinutesActive(1, "2019/06/17")).to.eql([168, 165, 275, 140, 135])
   });
 
-  // it('should be able to show the users weekly minutes active data', function() {
-  // const repo1 = new Activity(fakeData, fakeActivity);
-
-  // expect(repo1.getWeeklyMinutesActive(1, "2019/06/16")).to.eql([])
-  // })
-
   it('should show if a user has met their step goal on a given date', function() {
     const repo1 = new Activity(fakeData, fakeActivity);
     const repo2 = new Activity(fakeData, fakeActivity);
@@ -77,10 +70,10 @@ describe('Activity', function() {
     const repo2 = new Activity(fakeData, fakeActivity);
 
     expect(repo1.exceedStepGoal(1)).to.eql([
-          "2019/06/17",
-          "2019/06/20",
-          "2019/06/22",
-          "2019/06/23"])
+      "2019/06/17",
+      "2019/06/20",
+      "2019/06/22",
+      "2019/06/23"])
     expect(repo2.exceedStepGoal(25)).to.eql(['2019/06/15'])
   });
 
@@ -170,26 +163,26 @@ describe('Activity', function() {
 
     expect(repo1.increasingStepsForThreeOrMoreDays(1)).to.eql(
       [[{
-          userID: 1,
-          date: '2019/06/15',
-          numSteps: 3577,
-          minutesActive: 140,
-          flightsOfStairs: 16
-        },
-        {
-          userID: 1,
-          date: '2019/06/16',
-          numSteps: 6637,
-          minutesActive: 175,
-          flightsOfStairs: 36
-        },
-        {
-          userID: 1,
-          date: '2019/06/17',
-          numSteps: 14329,
-          minutesActive: 168,
-          flightsOfStairs: 18
-        }
+        userID: 1,
+        date: '2019/06/15',
+        numSteps: 3577,
+        minutesActive: 140,
+        flightsOfStairs: 16
+      },
+      {
+        userID: 1,
+        date: '2019/06/16',
+        numSteps: 6637,
+        minutesActive: 175,
+        flightsOfStairs: 36
+      },
+      {
+        userID: 1,
+        date: '2019/06/17',
+        numSteps: 14329,
+        minutesActive: 168,
+        flightsOfStairs: 18
+      }
       ]])
   })
 });

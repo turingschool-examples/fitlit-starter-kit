@@ -1,4 +1,3 @@
-
 class Hydration {
   constructor(userData) {
     this.userData = userData

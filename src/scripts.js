@@ -1,8 +1,6 @@
 $( document ).ready(() => {
-  console.log('doc ready');
   populateUser();
-
-})
+});
 
 $('canvas').hide();
 $('.section--right__friend-chart').on('mouseenter', () => {
@@ -15,8 +13,7 @@ $('.section--right__sleep-chart').on('mouseenter', () => {
   $('#mixed-chart').show()
 }).on('mouseleave', () => {
   $('#mixed-chart').hide();
-})
- 
+});
 
  var friendChallengeChart = new Chart(document.getElementById('doughnut-chart'), {
   type: 'doughnut',
@@ -45,25 +42,25 @@ $('.section--right__sleep-chart').on('mouseenter', () => {
     },
   }
 });
-// sleepChart.data.datasets[0].data
+
 var sleepChart = new Chart(document.getElementById("mixed-chart"), {
   type: 'bar',
   data: {
     labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
     datasets: [{
-      label: "Hours",
-      type: "line",
-      borderColor: "#d35400",
+      label: 'Hours',
+      type: 'line',
+      borderColor: '#d35400',
       data: [],
       fill: true,
     }, {
-      label: "Quality",
-      type: "line",
-      borderColor: "#f1c40f",
+      label: 'Quality',
+      type: 'line',
+      borderColor: '#f1c40f',
       data: [],
       fill: true
     }
-  ]
+    ]
   },
   options: {
     title: {
@@ -119,16 +116,15 @@ function populateFrndChallChart(user, activity) {
   friendChallengeChart.data.labels = labeledNames;
   friendChallengeChart.data.datasets[0].data = stepsData;
   friendChallengeChart.update();
- }
+}
 
- function populateSleepChart(user, sleep) {
+function populateSleepChart(user, sleep) {
   let chartHours = sleep.dailyHoursSleptPerWeek(user.id, '2019/06/15');
   let chartQuality = sleep.dailySleepQualityPerWk(user.id, "2019/06/17");
-  console.log(chartHours, chartQuality);
   sleepChart.data.datasets[0].data = chartHours;
   sleepChart.data.datasets[1].data = chartQuality;
   sleepChart.update();
- }
+}
 
 function populateUser() {
   let randomUser = Math.round(Math.random() * (50 - 1) + 1);
@@ -183,7 +179,6 @@ function populateHydrationWidget(user) {
   let waterIntakeToday = hydration.totalOuncesDaily('2019/09/22', user.id);
   $('.ounces').text(`${waterIntakeToday}`);
   hydrationMoreInfo(hydration, user);
-  console.log(hydration);
 }
 
 function hydrationMoreInfo(instance, user) {
@@ -236,9 +231,7 @@ function sleepQualityWkInfo(listOfDailySleepQual) {
 }
 
 function populateWeeklyActivity(user, activity) {
-  console.log(user);
   let weeklySteps = activity.dailyStepsPerWeek(user.id, "2019/06/15");
-
   $('.steps-day-1').text(`${weeklySteps[0]}`);
   $('.steps-day-2').text(`${weeklySteps[1]}`);
   $('.steps-day-3').text(`${weeklySteps[2]}`);
@@ -277,16 +270,5 @@ function displaySleepComp(user, sleep) {
   }
 }
 
-
-// function sleepHoursMoreInfo(sleepInfo, user) {
-//   console.log(user);
-//   const weeklySleep = sleepInfo.dailyHoursSleptPerWeek(user.id, '2019/09/15');
-//   console.log(sleepInfo);
-// }
-
-// function sleepQualityMoreInfo(sleepInfo, user) {
-//   const weeklyQuality = sleepInfo.dailySleepQualityPerWk(user.id, '2019/09/15');
-//   console.log(weeklyQuality);
-// }
 
 

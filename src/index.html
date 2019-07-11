@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
-
   </head>
   <body>
     <main>
@@ -27,7 +26,6 @@
                 <td class = 'day-6'> </td>
                 <td class = 'day-7'> </td>
             </tr>
-
             <th>
                 <td>AVERAGE</td>
                 <td>DAY 1</td>
@@ -40,15 +38,13 @@
            </th>
         </table>
       </section>
-
-        
       <section class='section--left__data activity'>
         <h2>ACTIVITY</h2>
         <table>
           <tr>
             <td></td>
             <td class="day-act-miles"></td>
-            <td Class = 'user-mins-active'></td>
+            <td class = 'user-mins-active'></td>
             <td class = 'user-steps'></td>
             <td class = 'user-flights'></td>
           </tr>
@@ -60,7 +56,6 @@
           </th>
         </table>
       </section>
-
       <section class='section--left__data active-weekly'>
         <h2>WEEKLY</h2>
           <table>
@@ -105,57 +100,52 @@
            </th>
          </table>
       </section>
-      <section class="charts">
-          <canvas id="doughnut-chart" width="400" height="225" hidden></canvas>
-          <canvas id="mixed-chart" width="400" height="225" hidden></canvas>
+      <section class="charts" hidden>
+        <canvas id="doughnut-chart" width="800" height="225" hidden></canvas>
+        <canvas id="mixed-chart" width="800" height="225" hidden></canvas>
       </section>
     </section>
-
-
     <section class='section--right'> 
       <section class='section--right__data'>
         <article class="section--right__name-image">
           <img src='images/fitness-594143__480.jpg' alt='gym weights as default image'/>
           <h3>Welcome, <span class = 'user__name'>name</span></h3>
         </article>
-          <!-- <p><span class = 'user__date'>date</span></p> -->
-          <p>Address: 
-            <!-- <br> -->
-            <span class = 'user__address'> </span></p>
+          <p>Address: <span class = 'user__address'> </span></p>
           <p>Email: <span class = 'user__email'>date</span></p>
           <p>Stride Length: <span class = 'user__strideLength'></span></p>
        </section>
-        <section class='section--right__info'>
-          <article class='section--right__info-steps'>
-            <img src='images/PinClipart.com_shoe-prints-clipart_667082.png'/>
-            <p> <span class = 'steps'></span> / <span class = 'user__dailyStepGoal'></span></p>
-            <p>STEPS</p>
-          </article>
-          <article class = 'section--right__info-water'>
-            <img src='images/PinClipart.com_liquid-clipart_188006.png'/>
-            <p> <span class = 'ounces'></span> </p>
-            <p>OZ</p>
-          </article>
-          <article class = 'section--right__info-activity'>
-            <img src='images/PinClipart.com_barbell-clipart_175409.png'/>
-            <p> <span class = 'hrsSlept'></span></p>
-            <p>HRS</p>
-          </article>
-          <article class = 'section--right__info-marathon'>
-            <img src='images/PinClipart.com_barbell-clipart_175409.png'/>
-            <p><span class = 'marathon__message'></span></p>
-          </article>
-          <article class = 'section--right__info-sleep'>
-             <img src='images/sleep.svg'/>
-             <p> <span class = 'hrsSlept'></span></p>
-             <p>HRS</p>
-            <p><span class = "qualSlept"></span ></p>
-            <p>QUALITY</p>
-          </article>
-          <article class = 'section--right__info-sleep'>
-            <img src='images/sleep.svg'/>
-            <p><span class = 'sleep__message'></span></p>
-          </article>
+       <section class='section--right__info'>
+        <article class='section--right__info-steps'>
+          <img src='images/PinClipart.com_shoe-prints-clipart_667082.png'/>
+          <p> <span class = 'steps'></span> / <span class = 'user__dailyStepGoal'></span></p>
+          <p>STEPS</p>
+        </article>
+        <article class = 'section--right__info-water'>
+          <img src='images/PinClipart.com_liquid-clipart_188006.png'/>
+          <p> <span class = 'ounces'></span> </p>
+           <p>OZ</p>
+        </article>
+        <article class = 'section--right__info-activity'>
+          <img src='images/PinClipart.com_barbell-clipart_175409.png'/>
+           <p> <span class = 'hrsSlept'></span></p>
+          <p>HRS</p>
+        </article>
+        <article class = 'section--right__info-marathon'>
+          <img src='images/PinClipart.com_barbell-clipart_175409.png'/>
+          <p><span class = 'marathon__message'></span></p>
+        </article>
+        <article class = 'section--right__info-sleep'>
+           <img src='images/sleep.svg'/>
+           <p> <span class = 'hrsSlept'></span></p>
+           <p>HRS</p>
+           <p><span class = "qualSlept"></span ></p>
+           <p>QUALITY</p>
+        </article>
+        <article class = 'section--right__info-sleep'>
+          <img src='images/sleep.svg'/>
+           <p><span class = 'sleep__message'></span></p>
+        </article>
         </section>
         <section class = 'section--right__friends'> 
           <article class = 'section--right__friends-average-users'>
@@ -163,11 +153,9 @@
             <span class = 'average__dailyStepGoal'></span>
             <p class = 'step-text'>STEPS</p>
           </article>
-          <article class = 'section--right__img-name'>
+          <article class = 'section--right__chart-buttons'>
             <button class = 'section--right__friend-chart'>Friend Challenge</button>
-            <button class = 'section--right__activity-chart'>Activity</button>
             <button class = 'section--right__sleep-chart'>Sleep</button>
-            <button class = 'section--right__friend-chart'>YOLO</button>
           </article>
         </section>
     </section>

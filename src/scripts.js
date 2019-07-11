@@ -120,7 +120,7 @@ function populateFrndChallChart(user, activity) {
 
 function populateSleepChart(user, sleep) {
   let chartHours = sleep.dailyHoursSleptPerWeek(user.id, '2019/06/15');
-  let chartQuality = sleep.dailySleepQualityPerWk(user.id, "2019/06/17");
+  let chartQuality = sleep.dailySleepQualityPerWk(user.id, "2019/06/15");
   sleepChart.data.datasets[0].data = chartHours;
   sleepChart.data.datasets[1].data = chartQuality;
   sleepChart.update();
@@ -194,13 +194,13 @@ function hydrationMoreInfo(instance, user) {
 
 function populateSleepwidget(user) {
   const sleep = new Sleep(sleepData);
-  let hoursSleptToday = sleep.hoursSleptByDate('2019/09/22', user.id);
+  let hoursSleptToday = sleep.hoursSleptByDate('2019/06/15', user.id);
   $('.hrsSlept').text(`${hoursSleptToday}`);
-  let qualSleepToday = sleep.sleepQualityByDate('2019/09/22', user.id)
+  let qualSleepToday = sleep.sleepQualityByDate('2019/06/15', user.id)
   $('.qualSlept').text(`${qualSleepToday}`);
   displaySleepComp(user, sleep);
-  let dailyHoursSleptForWeek = sleep.dailyHoursSleptPerWeek(3, "2019/06/17");
-  let dailyQualitySleepForWk = sleep.dailySleepQualityPerWk(3, "2019/06/17");
+  let dailyHoursSleptForWeek = sleep.dailyHoursSleptPerWeek(3, "2019/06/15");
+  let dailyQualitySleepForWk = sleep.dailySleepQualityPerWk(3, "2019/06/15");
   sleepHoursWkInfo(dailyHoursSleptForWeek);
   sleepQualityWkInfo(dailyQualitySleepForWk);
   let avgWklyHrsSleep = sleep.averageHoursSlept(user.id);
@@ -263,7 +263,7 @@ function weeklyMilesMessage(user, activity) {
 }
 
 function displaySleepComp(user, sleep) {
-  if (sleep.sleepComp('2019/09/22', user.id)) {
+  if (sleep.sleepComp('2019/06/15', user.id)) {
     $('.sleep__message').text('Great Sleep! Keep it up!');
   } else {
     $('.sleep__message').text('You need good sleep for great health!');

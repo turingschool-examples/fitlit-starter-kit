@@ -12,7 +12,7 @@ class UserRepository {
     let avgStepGoal = this.data.reduce(function(accumulator, user) {
       return accumulator + user.dailyStepGoal;
     }, 0);
-    return Math.ceil(avgStepGoal/numOfUsers);
+    return Math.ceil(avgStepGoal / numOfUsers);
   } 
 }
 

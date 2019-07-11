@@ -8,8 +8,7 @@ Brandy Mello
 Amanda Sierra Lopez
 
 ### Contributor comments
-*I really enjoyed this project. It was a challenge, but I learned much more from this project than from any of other project at Turing. I would like to go back and take some time to work on it further. It was a simulation of a current useful and viable application on the market today and I appreciated working on a relevant product. **-Brandy Mello
-*
+* I really enjoyed this project. It was a challenge, but I learned much more from this project than from any of other project at Turing. I would like to go back and take some time to work on it further. It was a simulation of a current useful and viable application on the market today and I appreciated working on a relevant product. -Brandy Mello
 
 
 ## Objectives

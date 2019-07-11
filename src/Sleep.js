@@ -57,23 +57,21 @@ class Sleep {
   }
 
   userSleepQualityAboveThree(startDate) {
-
     let ids = this.sleepData.filter(obj => 
       obj.date === startDate).map(obj => obj.userID);
     let slpQualWk = ids.map(el => {
-        let newObj = {};
-        newObj.id = el;
-        let userBlock = this.consumerInfo(el);
-        let index = this.startDayIndx(el, startDate);
-        let userBlkWk = userBlock.slice((index), 7);
-        newObj.slpQual = userBlkWk.map(el => el.sleepQuality);
-        return newObj;
-      });
-      slpQualWk.map(obj => {
-        obj.slpQual = this.averageQualitySleep(obj.id);
-
+      let newObj = {};
+      newObj.id = el;
+      let userBlock = this.consumerInfo(el);
+      let index = this.startDayIndx(el, startDate);
+      let userBlkWk = userBlock.slice((index), 7);
+      newObj.slpQual = userBlkWk.map(el => el.sleepQuality);
+      return newObj;
     });
-      return slpQualWk.filter(obj => obj.slpQual >= 3);
+    slpQualWk.map(obj => {
+      obj.slpQual = this.averageQualitySleep(obj.id);
+    });
+    return slpQualWk.filter(obj => obj.slpQual >= 3);
   }
 
   bestSleeper(day) {
@@ -89,15 +87,6 @@ class Sleep {
       return false;
     }
   }
-
-  // lastWkSleepTotal(id) {
-  //   let userBlock = this.consumerInfo(id);
-  //   let userBlkWk = userBlock.splice(-7);
-  //   let startDate = userBlkWk[0].date;
-  //   let wklyHours = this.dailyHoursSleptPerWeek(id, startDate);
-  //   let total = wklyHours.reduce((acc, hours) => acc + hours);
-  //   return parseFloat(total.toFixed(1));
-  // }
 }
 
 if (typeof module !== 'undefined') {

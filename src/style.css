@@ -1,11 +1,11 @@
 * {
-    box-sizing: border-box;
-    font-family: 'Roboto Mono', monospace;
+  box-sizing: border-box;
+  font-family: 'Roboto Mono', monospace;
 }
 
 main {
-    display: flex;
-    background-color: #F8712E;
+  display: flex;
+  background-color: #F8712E;
 }
 
 .section--left {
@@ -37,23 +37,6 @@ h2 {
   padding: 5px;
 }
 
-/* .water-week,
-.sleep-hours-week,
-.sleep-quality-week {
-  display: flex; 
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  color: white;
-} */
-
-/* .section--left__date {
-  height: 34em;
-  background-color: #4747471f;
-  margin: 20px;
-  border-radius: 2em;
-} */
-
 .section--left__data {
     background-color: #474747bf;
     height: 7em;
@@ -61,8 +44,6 @@ h2 {
     overflow: auto;
     margin: 20px;
     border-radius: .5em;
-    /* position: relative;
-    top: 10%; */
 }
 
 table, 
@@ -72,7 +53,7 @@ td {
   text-align: center;
   border: 1px solid black;
   color: white;
-  font-size: 16px;
+  font-size: 19px;
   margin: auto;
 }
 
@@ -108,10 +89,10 @@ td {
 }
 
 h3 {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 1.5em;
-    color: white;
-    padding: 20px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.5em;
+  color: white;
+  padding: 20px;
 }
 
 p {
@@ -121,13 +102,13 @@ p {
 }
 
 .section--right__info {
-    background-color: #47474796;
-    height: 25em;
-    margin: 20px;
-    border-radius: .5em;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+  background-color: #47474796;
+  height: 25em;
+  margin: 20px;
+  border-radius: .5em;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .section--right__info > article > img {
@@ -135,13 +116,13 @@ p {
 }
 
 .section--right__info > article {
-    height: 40%;
-    text-align: center;
-    width: 25%;
-    background-color: gray;
-    border-radius: 2px;
-    padding: 10px;
-    margin: 20px;
+  height: 40%;
+  text-align: center;
+  width: 25%;
+  background-color: gray;
+  border-radius: 2px;
+  padding: 10px;
+  margin: 20px;
 }
 
 .section--right__info-steps > p,
@@ -160,7 +141,6 @@ p {
   font-size: 27px;
   color: #F8712E;
   text-shadow: 1px 1px 0 #0009;
-
 }
 
 .section--right__info-sleep > p {
@@ -171,22 +151,24 @@ p {
 }
 
 .section--right__friends {
-    background-color: #47474796;
-    height: 7em;
-    display: flex;
-    overflow: auto;
-    margin: 20px;
-    border-radius: .5em;
+  background-color: #47474796;
+  height: 7.5em;
+  display: flex;
+  overflow: auto;
+  margin: 20px;
+  border-radius: .5em;
 }
 
-.section--right__img-name {
-    padding: 16px;
-    text-align: center;
+.section--right__chart-buttons{
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .section--right__img-name > img {
-    height: 60px;
-    border-radius: 50%;
+  height: 60px;
+  border-radius: 50%;
 }
 
 .section--right__img-name > h5 {
@@ -195,8 +177,13 @@ p {
 
 .section--right__friends-average-users {
   text-align: center;
-  padding: 10px 5px 0 10px;
+  padding: 0px 13px 0 10px;
   border-right: 1px solid black;
+}
+
+.section--right__friend-chart,
+.section--right__sleep-chart {
+  font-size: 30px;
 }
 
 .section--right__friends-average-users > .user-avg {
@@ -211,8 +198,8 @@ p {
 }
 
 .section--right__friends-average-users > .step-text {
-    font-size: 12px;
-    padding: 10px;
+  font-size: 12px;
+  padding: 10px;
   }
 
 .sleep__message,
@@ -227,9 +214,10 @@ p {
 canvas {
   background-color: #47474796;
   padding: 20px;
-  height: 20em;
+  height: 16em !important;
   border-radius: .5em;
-  margin-left: 10px;
+  width: 94% !important;
+  margin: 20px;
 }
 
 

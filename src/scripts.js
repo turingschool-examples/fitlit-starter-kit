@@ -41,8 +41,7 @@ $(document).ready(function() {
   //   $('#avg-stepGoal').text(`The average step goal among all users is ${users.averageGoalSteps()}.`)
 
   $('#daily-water').text(`Today you have consumed ${hydro.fluidOzsPerDay(randomIndex, today)} ounces of water.`)
-  $('#weekly-water').text(`In the past week, you've consumed the following amounts of water per day ${hydro.userFluidsPerWeek(randomIndex, today)}.`)
-
+  
   $('#latest-user-steps').text(`Your step count for today is  ${activity.userStepsWalkedPerDay(randomIndex, today)} steps.`)
   $('#latest-user-minActive').text(`You've been active for ${activity.userMinActivePerDay(randomIndex, today)} minutes today.`)
   $('#latest-user-miles-walked').text(`You've walked ${activity.userMilesWalkedPerDay(randomIndex, today, userData)} miles today.`)

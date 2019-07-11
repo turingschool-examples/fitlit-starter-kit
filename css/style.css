@@ -25,17 +25,6 @@ header {
 .exclamation-point{
     color:#60D4C8;
 }
-.circle-box{
-    border-radius: 50%;
-    height: 40px;
-    margin: 30px auto;
-    height: 26px;
-    width: 26px;
-    background: #60D4C8;
-    transition: 300ms;
-    margin-right: 12px;
-}
-
 
 #user-icon {
     width:55%;
@@ -168,9 +157,36 @@ header {
   display:block;
   margin:0;
   padding:6px;
+  padding-top:15px;
 }
 
 .scroll-box-1 { 
+  background-color: black;
+  display: block;
+  width: 320px;
+  height: 340px;
+  padding: 1em;
+  overflow-x: auto;
+  text-align: center;
+  opacity:0.6;
+  margin-top: 10px;
+  margin-left: 14px;
+} 
+
+.scroll-box-2 { 
+  background-color: black;
+  display: block;
+  width: 320px;
+  height: 420px;
+  padding: 1em;
+  overflow-x: auto;
+  text-align: center;
+  opacity: 0.6;
+  margin-top: 10px;
+  margin-left: 14px;
+} 
+
+.scroll-box-3 {
   background-color: black;
   display: block;
   width: 320px;
@@ -179,28 +195,29 @@ header {
   overflow-x: auto;
   text-align: center;
   opacity:0.6;
-  margin-top: 10px;
   margin-left: 20px;
-  
-} 
+  margin-top:20px;
+  padding-top:20px;
+}
 
-.scroll-box-2 { 
+.scroll-box-4 {
   background-color: black;
   display: block;
   width: 320px;
-  height: 355px;
+  height: 416px;
   padding: 1em;
   overflow-x: auto;
   text-align: center;
   opacity: 0.6;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-left: 20px;
-  
-} 
+}
 
 .card-back-4 {
+
   display: block;
   background: #7e54c7;
+  padding-top:5px;
   transform: rotateY( 180deg )
 }
 

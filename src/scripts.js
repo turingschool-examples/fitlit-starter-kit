@@ -233,10 +233,10 @@ $(document).ready(function() {
   const weeklyUserSteps = new Chart($('#weekly-user-steps'), {
     type: 'line',
     data: {
-      labels: Object.keys(hydro.userFluidsPerWeek(randomIndex, today)),
+      labels: Object.keys(activity.userStepsPerWeek(randomIndex, today)),
       datasets: [{
         label: 'fl Oz',
-        data: Object.values(hydro.userFluidsPerWeek(randomIndex, today)),
+        data: Object.values(activity.userStepsPerWeek(randomIndex, today)),
         backgroundColor: [                
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -278,10 +278,10 @@ $(document).ready(function() {
   const weeklyStairsClimbed = new Chart($('#weekly-stairs-climbed'), {
     type: 'line',
     data: {
-      labels: Object.keys(hydro.userFluidsPerWeek(randomIndex, today)),
+      labels: Object.keys(activity.userStairsPerWeek(randomIndex, today)),
       datasets: [{
         label: 'fl Oz',
-        data: Object.values(hydro.userFluidsPerWeek(randomIndex, today)),
+        data: Object.values(activity.userStairsPerWeek(randomIndex, today)),
         backgroundColor: [                
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -323,10 +323,10 @@ $(document).ready(function() {
   const weeklyMinutesActive = new Chart($('#weekly-minutes-active'), {
     type: 'line',
     data: {
-      labels: Object.keys(hydro.userFluidsPerWeek(randomIndex, today)),
+      labels: Object.keys(activity.userMinutesActivePerWeek(randomIndex, today)),
       datasets: [{
         label: 'fl Oz',
-        data: Object.values(hydro.userFluidsPerWeek(randomIndex, today)),
+        data: Object.values(activity.userMinutesActivePerWeek(randomIndex, today)),
         backgroundColor: [                
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -364,5 +364,6 @@ $(document).ready(function() {
       }
     }
   });
+  
 })
 

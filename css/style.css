@@ -198,13 +198,14 @@ header {
   margin-left: 20px;
   margin-top:20px;
   padding-top:20px;
+
 }
 
 .scroll-box-4 {
   background-color: black;
   display: block;
   width: 320px;
-  height: 416px;
+  height: 426px;
   padding: 1em;
   overflow-x: auto;
   text-align: center;

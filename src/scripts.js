@@ -45,25 +45,25 @@ $('.section--right__sleep-chart').on('mouseenter', () => {
     },
   }
 });
-
+// sleepChart.data.datasets[0].data
 var sleepChart = new Chart(document.getElementById("mixed-chart"), {
   type: 'bar',
   data: {
-    labels: [],
+    labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
     datasets: [{
-        label: "Hours",
-        type: "line",
-        borderColor: "#d35400",
-        data: [],
-        fill: false,
-      }, {
-        label: "Quality",
-        type: "line",
-        borderColor: "#f1c40f",
-        data: [],
-        fill: false
-      }
-    ]
+      label: "Hours",
+      type: "line",
+      borderColor: "#d35400",
+      data: [],
+      fill: true,
+    }, {
+      label: "Quality",
+      type: "line",
+      borderColor: "#f1c40f",
+      data: [],
+      fill: true
+    }
+  ]
   },
   options: {
     title: {
@@ -119,6 +119,15 @@ function populateFrndChallChart(user, activity) {
   friendChallengeChart.data.labels = labeledNames;
   friendChallengeChart.data.datasets[0].data = stepsData;
   friendChallengeChart.update();
+ }
+
+ function populateSleepChart(user, sleep) {
+  let chartHours = sleep.dailyHoursSleptPerWeek(user.id, '2019/06/15');
+  let chartQuality = sleep.dailySleepQualityPerWk(user.id, "2019/06/17");
+  console.log(chartHours, chartQuality);
+  sleepChart.data.datasets[0].data = chartHours;
+  sleepChart.data.datasets[1].data = chartQuality;
+  sleepChart.update();
  }
 
 function populateUser() {
@@ -203,6 +212,7 @@ function populateSleepwidget(user) {
   $('.day-sleep-avg').text(`${avgWklyHrsSleep}`);
   let avgWklySleepQual = sleep.averageQualitySleep(user.id);
   $('.day-sleep-q-avg').text(`${avgWklySleepQual}`);
+  populateSleepChart(user, sleep);
 }
 
 function sleepHoursWkInfo(listOfDailyHours) {

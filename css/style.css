@@ -49,7 +49,7 @@ header {
 .container-2,
 .container-3,
 .container-4 {
-    display:flex;
+    display: flex;
     width: 25%;
     height: 100vh;
     perspective: 600px;
@@ -99,22 +99,25 @@ header {
 
 .card-back-1
 {
-  
+  display: block;
   background: #5476c7;
   transform: rotateY( 180deg )
 }
 
 .card-back-2 {
+  display: block;
   background: #5461c7;
   transform: rotateY( 180deg )
 }
 
 .card-back-3 {
+  display: block;
   background: #5f54c7;
   transform: rotateY( 180deg )
 }
 
 .card-back-4 {
+  display: block;
   background: #7e54c7;
   transform: rotateY( 180deg )
 }

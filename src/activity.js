@@ -3,14 +3,22 @@ class Activity {
     this.activityData = activityData;
   }
   
-  userMilesWalkedPerDay(id, date, userData) {
-    let steps = this.activityData.find(user => id === user.userID && date === user.date).numSteps
-    let stride = userData.find(user => id === user.id).strideLength
-    return parseFloat(((steps * stride) / 5280).toFixed(2))
+  userStepsWalkedPerDay(id, date) {
+    return this.activityData.find(user => id === user.userID && date === user.date).numSteps;
+  }
+
+  userStairsClimbedPerDay(id, date) {
+    return this.activityData.find(user => id === user.userID && date === user.date).flightsOfStairs;
   }
 
   userMinActivePerDay(id, date) {
     return this.activityData.find(user => id === user.userID && date === user.date).minutesActive
+  }
+
+  userMilesWalkedPerDay(id, date, userData) {
+    let steps = this.activityData.find(user => id === user.userID && date === user.date).numSteps;
+    let stride = userData.find(user => id === user.id).strideLength;
+    return parseFloat(((steps * stride) / 5280).toFixed(2));
   }
 
   userAverageMinActivePerWeek(id, date) {
@@ -47,16 +55,18 @@ class Activity {
 
   avgStairsAllUsers(date) {
     let allUserStairActivity = this.activityData.filter(user => date === user.date)
-    return allUserStairActivity.reduce((acc, item) => {
-      return parseFloat((acc + (item.flightsOfStairs / allUserStairActivity.length)).toFixed(2))
+    let total = allUserStairActivity.reduce((acc, item) => {
+      return acc + (item.flightsOfStairs / allUserStairActivity.length)
     }, 0)
+    return Math.floor(total)
   }
 
   avgStepsAllUsers(date) {
     let allUserStepActivity = this.activityData.filter(user => date === user.date)
-    return allUserStepActivity.reduce((acc, item) => {
-      return parseFloat((acc + (item.numSteps / allUserStepActivity.length)).toFixed(2))
+    let total = allUserStepActivity.reduce((acc, item) => {
+      return acc + (item.numSteps / allUserStepActivity.length)
     }, 0)
+    return Math.floor(total)
   }
 
   avgMinActiveAllUsers(date) {

@@ -170,9 +170,7 @@ header {
   overflow-x: auto;
   text-align: center;
   opacity:0.6;
-  /*margin-top: 40px;*/
   margin-left: 20px;
-  
 } 
 
 .scroll-box-2 { 
@@ -186,8 +184,32 @@ header {
   opacity: 0.6;
   margin-top: 10px;
   margin-left: 20px;
-  
 } 
+
+.scroll-box-3 {
+  background-color: black;
+  display: block;
+  width: 320px;
+  height: 320px;
+  padding: 1em;
+  overflow-x: auto;
+  text-align: center;
+  opacity:0.6;
+  margin-left: 20px;
+}
+
+.scroll-box-4 {
+  background-color: black;
+  display: block;
+  width: 320px;
+  height: 320px;
+  padding: 1em;
+  overflow-x: auto;
+  text-align: center;
+  opacity: 0.6;
+  margin-top: 10px;
+  margin-left: 20px;
+}
 
 .card-back-4 {
   display: block;

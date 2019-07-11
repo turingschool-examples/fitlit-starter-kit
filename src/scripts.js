@@ -44,6 +44,8 @@ $(document).ready(function() {
   $('#latest-user-minActive').text(`You've been active for ${activity.userMinActivePerDay(randomIndex, today)} minutes today.`);
   $('#latest-user-miles-walked').text(`You've walked ${activity.userMilesWalkedPerDay(randomIndex, today, userData)} miles today.`);
   $('#step-report').text(`${activity.hasUserMetStepGoal(randomIndex, today, userData)}`);
+  $('#user-least-sleep').text(`Your fewest recorded hours slept is ${sleep.userFewestHoursSlept(randomIndex)}`);
+  $('#user-most-sleep').text(`Your highest recorded hours slept is ${sleep.userMostHoursSlept(randomIndex)}`);
 
   const userVsAvgGoalSteps = new Chart($('#user-vs-avg-steps'), {
     type: 'bar',
@@ -360,6 +362,190 @@ $(document).ready(function() {
       title: {
         display: true,
         text: 'Weekly Minutes Active'
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+  const userVsAvgSleepHours = new Chart($('#user-vs-avg-sleep-hours'), {
+    type: 'bar',
+    data: {
+      labels: ['Latest Hrs', 'Avg Hrs'],
+      datasets: [{
+        label: 'Hours',
+        data: [sleep.hrsSleepForSpecificDay(randomIndex, today), sleep.avgHoursSleepPerUser(randomIndex)],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          '#ef1de7',
+          '#afff14'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      legend: {display: false},
+      labels: {
+        fontColor: "black",
+        fontSize: 20
+      },
+      title: {
+        display: true,
+        fontColor: 'black',
+        text: 'Your Latest VS Avg Hours Slept'
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            fontColor: 'black',
+            fontSize: 16
+          }
+        }],
+        xAxes: [{
+          ticks: {
+            beginAtZero: true,
+            fontColor: 'black',
+            fontSize: 16
+          }
+        }],
+      }
+    }
+  });
+
+  const userVsAvgSleepQuality = new Chart($('#user-vs-avg-sleep-quality'), {
+    type: 'bar',
+    data: {
+      labels: ['Latest SQ', 'Avg SQ'],
+      datasets: [{
+        label: 'Hours',
+        data: [sleep.sleepQualityForSpecificDay(randomIndex, today), sleep.avgSleepQualityAllTime(randomIndex)],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          '#ef1de7',
+          '#afff14'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      legend: {display: false},
+      labels: {
+        fontColor: "black",
+        fontSize: 20
+      },
+      title: {
+        display: true,
+        fontColor: 'black',
+        text: 'Your Latest VS Avg Sleep Quality (SQ)'
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            fontColor: 'black',
+            fontSize: 16
+          }
+        }],
+        xAxes: [{
+          ticks: {
+            beginAtZero: true,
+            fontColor: 'black',
+            fontSize: 16
+          }
+        }],
+      }
+    }
+  });
+
+  const weeklySleepHours = new Chart($('#weekly-hours-sleep'), {
+    type: 'line',
+    data: {
+      labels: Object.keys(sleep.userHrsSleepPerWeek(randomIndex, today)),
+      datasets: [{
+        label: 'Hours Sleep',
+        data: Object.values(sleep.userHrsSleepPerWeek(randomIndex, today)),
+        backgroundColor: [                
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(90, 173, 226, 0.2)'   
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(90, 173, 226, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      legend: {display: false},
+      title: {
+        display: true,
+        text: 'Daily Hours Sleep Per Week'
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+  const weeklySleepQuality = new Chart($('#weekly-sleep-quality'), {
+    type: 'line',
+    data: {
+      labels: Object.keys(sleep.userSleepQualityPerWeek(randomIndex, today)),
+      datasets: [{
+        label: 'Hours Sleep',
+        data: Object.values(sleep.userSleepQualityPerWeek(randomIndex, today)),
+        backgroundColor: [                
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(90, 173, 226, 0.2)'   
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(90, 173, 226, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      legend: {display: false},
+      title: {
+        display: true,
+        text: 'Daily Sleep Quality Per Week'
       },
       scales: {
         yAxes: [{

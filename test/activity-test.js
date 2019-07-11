@@ -68,7 +68,7 @@ describe('Activity', function() {
 
   it('should return remaining steps if step goal has not yet been met', function() {
     let activity = new Activity(activityData);
-    expect(activity.hasUserMetStepGoal(1, "2019/06/24", userData)).to.equal("You have 2814 steps until you have met your goal. Keep up the good work!")
+    expect(activity.hasUserMetStepGoal(1, "2019/06/24", userData)).to.equal("You have 2814 steps until you have met your step goal. You've got this!")
   })
 
   it('should return an object with date keys and numSteps values', function() {

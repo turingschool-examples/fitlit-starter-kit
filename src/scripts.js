@@ -33,25 +33,22 @@ $(document).ready(function() {
   });
 
 
-  $('.user-name').text(`${user.returnFirstName(randomUser)}`)
-  $('#user-address').text(`Address: ${user.randomUser.address}`)
-  $('#user-email').text(`Email: ${user.randomUser.email}`)
-  $('#user-stride').text(`Your stride length is ${user.randomUser.strideLength}`)
-  //   $('#user-stepGoal').text(`Your daily step goal is set to ${user.randomUser.dailyStepGoal} steps.`)
-  //   $('#avg-stepGoal').text(`The average step goal among all users is ${users.averageGoalSteps()}.`)
-
-  $('#daily-water').text(`Today you have consumed ${hydro.fluidOzsPerDay(randomIndex, today)} ounces of water.`)
-  
-  $('#latest-user-steps').text(`Your step count for today is  ${activity.userStepsWalkedPerDay(randomIndex, today)} steps.`)
-  $('#latest-user-minActive').text(`You've been active for ${activity.userMinActivePerDay(randomIndex, today)} minutes today.`)
-  $('#latest-user-miles-walked').text(`You've walked ${activity.userMilesWalkedPerDay(randomIndex, today, userData)} miles today.`)
-
-
+  $('.user-name').text(`${user.returnFirstName(randomUser)}`);
+  $('#user-address').text(`Address: ${user.randomUser.address}`);
+  $('#user-email').text(`Email: ${user.randomUser.email}`);
+  $('#user-stride').text(`Your stride length is ${user.randomUser.strideLength} ft.`);
+  $('#user-stepGoal').text(`Your step goal is set to ${user.randomUser.dailyStepGoal} steps.`);
+  $('#avg-stepGoal').text(`The average step goal among all users ${user.randomUser.dailyStepGoal} steps.`);
+  $('#daily-water').text(`Today you have consumed ${hydro.fluidOzsPerDay(randomIndex, today)} ounces of water.`);
+  $('#latest-user-steps').text(`Your step count for today is ${activity.userStepsWalkedPerDay(randomIndex, today)} steps.`);
+  $('#latest-user-minActive').text(`You've been active for ${activity.userMinActivePerDay(randomIndex, today)} minutes today.`);
+  $('#latest-user-miles-walked').text(`You've walked ${activity.userMilesWalkedPerDay(randomIndex, today, userData)} miles today.`);
+  $('#step-report').text(`${activity.hasUserMetStepGoal(randomIndex, today, userData)}`);
 
   const userVsAvgGoalSteps = new Chart($('#user-vs-avg-steps'), {
     type: 'bar',
     data: {
-      labels: ['Your Steps', 'Avg User Steps'],
+      labels: ['Your Goal', 'Avg User Goal'],
       datasets: [{
         label: 'Steps',
         data: [user.randomUser.dailyStepGoal, users.averageGoalSteps()],
@@ -75,7 +72,7 @@ $(document).ready(function() {
       title: {
         display: true,
         fontColor: 'black',
-        text: 'You VS Everyone (steps)'
+        text: 'You VS Everyone (Step Goal)'
       },
       scales: {
         yAxes: [{

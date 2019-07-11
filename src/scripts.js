@@ -1,9 +1,6 @@
 $(document).ready(function() {
   const today = '2019/06/15';
 
-
-
-
   $('#js-change-user').click(function() {
     const userRepo = new UserRepository(userData);
     const hydrationRepo = new HydrationRepository(hydrationData);
@@ -14,9 +11,7 @@ $(document).ready(function() {
     const hydration = new Hydration(hydrationRepo.returnUserHydrationData(userID));
     const sleep = new Sleep(sleepRepo.returnUserSleepData(userID));
     const activity = new Activity(user, activityRepo.returnUserActivityData(userID));
-    changeUser()
-
-
+    changeUser();
     $('#js-h2--welcome').hide();
     $('#js-h2--user').show();
     enableButtons();
@@ -156,9 +151,6 @@ $(document).ready(function() {
     addClasses();
   });
 
-
-
-
   function enableButtons() {
     $('.list-item').attr('disabled', false)
   }
@@ -185,11 +177,11 @@ $(document).ready(function() {
     $('#js-email').html(user.email);
     $('#js-friends').html(userRepo.makeFriendNames(userID));
     $('#js-miles').html(activity.milesWalked(today));
-    displayRested(sleep)
+    displayRested(sleep);
   }
 
   function displayRested(sleep) {
-    sleep.checkRested()
+    sleep.checkRested();
     if (sleep.rested === true) {
       $('#restedSvg').attr('src','happy.svg');
     }
@@ -254,8 +246,6 @@ $(document).ready(function() {
     flightsCharts(activity, activityRepo);
     updateMap(activity);
   }
-
-
 
   var stepGoalChart = new Chart($("#js-step-goal-chart"), {
     plugins: [{
@@ -458,7 +448,6 @@ $(document).ready(function() {
       }
     }
   });
-
 
   var numOfStepsChart = new Chart($("#js-num-of-steps-chart"), {
     plugins: [{
@@ -771,6 +760,5 @@ $(document).ready(function() {
       }
     }
   });
-
 
 });

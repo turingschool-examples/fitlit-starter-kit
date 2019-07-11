@@ -52,7 +52,7 @@ $(document).ready(function() {
   const userVsAvgGoalSteps = new Chart($('#user-vs-avg-steps'), {
     type: 'bar',
     data: {
-      labels: ['Your Steps', 'Average User Steps'],
+      labels: ['Your Steps', 'Avg User Steps'],
       datasets: [{
         label: 'Steps',
         data: [user.randomUser.dailyStepGoal, users.averageGoalSteps()],
@@ -131,7 +131,7 @@ $(document).ready(function() {
   const stepsUserVsAll = new Chart($('#user-vs-avg-steps-day'), {
     type: 'bar',
     data: {
-      labels: ['Your Steps Today', 'Average User Steps'],
+      labels: ['Your Steps Today', 'Avg User Steps'],
       datasets: [{
         label: 'Steps',
         data: [activity.userStepsWalkedPerDay(randomIndex, today), activity.avgStepsAllUsers(today)],
@@ -165,7 +165,7 @@ $(document).ready(function() {
   const stairsUserVsAll = new Chart($('#user-vs-avg-stairs'), {
     type: 'bar',
     data: {
-      labels: ['Stairs Climbed Today', 'Average User Stairs Climbed Today'],
+      labels: ['Stairs Climbed', 'Avg User Stairs Climbed'],
       datasets: [{
         label: 'Flights',
         data: [activity.userStairsClimbedPerDay(randomIndex, today), activity.avgStairsAllUsers(today)],
@@ -199,7 +199,7 @@ $(document).ready(function() {
   const activeMinutesUserVsAll = new Chart($('#user-vs-avg-activeMin'), {
     type: 'bar',
     data: {
-      labels: ['Your Minutes Active Today', 'Average User Minutes Active'],
+      labels: ['Your Minutes Active', 'Avg User Minutes Active'],
       datasets: [{
         label: 'Minutes',
         data: [activity.userMinActivePerDay(randomIndex, today), activity.avgMinActiveAllUsers(today)],

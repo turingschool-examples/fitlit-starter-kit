@@ -88,6 +88,19 @@ class Activity {
     }
   }
 
+  userStepsPerWeek(id, date) {
+    let findUserInstances = this.activityData.filter(user => id === user.userID)
+    let findUserIndex = findUserInstances.findIndex(day => day.date === date)
+    let stepsPerWeek = findUserInstances.slice(findUserIndex - 6, findUserIndex + 1)
+    let total = stepsPerWeek.reduce((acc, item) => {
+      if (!acc[item.date]) {
+        acc[item.date] = item.numSteps
+      }
+      return acc
+    }, {})
+    console.log(total)
+  }
+
 }
 
 if (typeof module !== 'undefined') {

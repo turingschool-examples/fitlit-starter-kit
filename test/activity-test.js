@@ -70,4 +70,9 @@ describe('Activity', function() {
     let activity = new Activity(activityData);
     expect(activity.hasUserMetStepGoal(1, "2019/06/24", userData)).to.equal("You have 2814 steps until you have met your goal. Keep up the good work!")
   })
+
+  it('should return an object with date keys and numOunces values', function() {
+    let activity = new Activity(activityData);
+    expect(activity.userStepsPerWeek(4, "2019/06/24", userData)).to.equal()
+  })
 });

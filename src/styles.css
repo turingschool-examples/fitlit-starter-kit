@@ -1,6 +1,6 @@
 body {
-    background-image: url('../images/stairs.jpg');
-    background-size: cover;
+    background-image: url(https://media.istockphoto.com/vectors/abstract-hexagonal-background-hexagonal-molecular-structures-in-vector-id1141303045);
+    background-size: contain;
     display: grid;
     margin: 20px;
     font-family: 'Montserrat', sans-serif;
@@ -13,14 +13,15 @@ input {
 }
 
 .grid-item {
-    background-color: white;
-    border: solid 4px navy;
+    background-color: rgba(138, 221, 234, 0.53);
+    border: solid 4px rgba(138, 221, 234, 0.97);
     float: left;
-    grid-auto-columns: auto;
+    grid-auto-columns: 4;
     grid-auto-rows: auto; 
-    opacity: 0.8;
+    /* opacity: 0.8; */
+    border-radius: 5% 5% 5% 5%;
     padding: 15px;
-    width: 28%;
+    width: 27%;
 }
 
 .centered-text {

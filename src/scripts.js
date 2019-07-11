@@ -248,34 +248,223 @@ $(document).ready(() => {
 
 //Sleep hours and quality chart//
 
-const sleepCanvas = $('#sleep-hours-quality__display');
-let sleepHourQuality = new Chart(sleepCanvas, {
-  type: 'bar',
+const sleepHoursQualityPerDay = $('#sleep-hours-quality__display');
+let sleepHourQuality = new Chart(sleepHoursQualityPerDay, {
+  type: "bar",
   data: {
-    labels: ['Hours Slept', 'Sleep Quality'],
-    datasets: [{
-      label: 'Sleep Hours and Quality',
-      data: [sleep.getHoursPerDay(), sleep.getQualityPerDay()],
-      backgroundColor: [
-        'rgba(50, 205, 50, .25)',
-        'rgba(255, 99, 132, .25)',
-      ],
-      borderColor: [
-        'rgba(34, 139, 34)',
-        'rgba(255, 99, 132, 1)',
-      ],
-      borderWidth: 1
-    }]
+    labels: ["Hours Slept", "Sleep Quality"],
+    datasets: [
+      {
+        label: "Sleep Hours and Quality",
+        data: [sleep.getHoursPerDay(), sleep.getQualityPerDay()],
+        backgroundColor: ["#F8B9D4", "#FA8BD6"],
+        borderWidth: 1
+      }
+    ]
   },
   options: {
     responsive: false,
     scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true
+          }
         }
-      }]
+      ]
     }
   }
-})
+});
 
+//Sleep Hours and Quality over A week//
+
+var sleepHoursQualityWeek = $("#sleep-hours-quality-week__display");
+var sleepHoursQuality = new Chart(sleepHoursQualityWeek, {
+  type: "bar",
+  data: {
+    labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+    datasets: [
+      {
+        label: "Sleep Hours",
+        backgroundColor: [
+          "#3e95cd",
+          "#8e5ea2",
+          "#6BBFC3",
+          "#e8c3b9",
+          "#c45850",
+          "pink",
+          "orange"
+        ],
+        data: sleep.getWeeklyData("hoursSlept")
+      },
+      {
+        type: 'bar',
+        label: "Sleep Quality",
+        backgroundColor: [
+          "#E0BBE4",
+          "#957DAD",
+          "#D291BC",
+          "#FEC8D8",
+          "#FFDFD3",
+          "#5BC0BE",
+          "#F694C1"
+        ],
+        data: sleep.getWeeklyData("sleepQuality")
+      },
+    ],
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Sleep Hours and Quality Per Day"
+    },
+    
+    responsive: true,
+    maintainAspectRatio: false
+  }
+});
+// myMinutesActiveChart.canvas.parentNode.style.height = "200px";
+// myMinutesActiveChart.canvas.parentNode.style.width = "200px";
+
+const sleepHoursQualityAvg = $("#sleep-total-average__display");
+let sleepAverage = new Chart(sleepHoursQualityAvg, {
+  type: "bar",
+  data: {
+    labels: ["Hours Slept Average", "Sleep Quality Average"],
+    datasets: [
+      {
+        label: "Sleep Hours and Quality Average",
+        data: [
+          sleepRepository.getUserAvg("sleepQuality"),
+          sleepRepository.getUserAvg("hoursSlept")
+        ],
+        backgroundColor: ["#E4C1F9", "#D3F8E2"],
+        borderWidth: 1
+      }
+    ]
+  },
+  options: {
+    responsive: false,
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true
+          }
+        }
+      ]
+    }
+  }
+});
+var friendStepChallenge = $("#friends-week-step__display");
+var friendsSteps = new Chart(friendStepChallenge, {
+  type: "bar",
+  data: {
+    labels: ["Friend 1", "Friend 2", "Friend 3", "Friend 4"],
+    datasets: [
+      {
+        label: ["Friend Steps Per Week"],
+        backgroundColor: ["#E0BBE4",
+          "#957DAD",
+          "#D291BC",
+          "#FEC8D8"],
+        data: challenges
+          .addUserToFriends(activityData, findTodaysDate(), 'numSteps')
+          .map(el => {
+            return el.weekData.reduce((acc, day) => (acc += day), 0);
+          })
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Friend Steps Per Day"
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true
+          }
+        }
+      ]
+    },
+    responsive: true,
+    maintainAspectRatio: false
+  }
+});
+
+var friendHydrationChallenge = $("#friends-week-hydration__display");
+var friendHydration = new Chart(friendHydrationChallenge, {
+  type: "bar",
+  data: {
+    labels: ["Friend 1", "Friend 2", "Friend 3", "Friend 4"],
+    datasets: [
+      {
+        label: ["Friend Ounces Drank Per Week"],
+        backgroundColor: ["#FEC8D8", "#FFDFD3", "#5BC0BE", "#F694C1"],
+        data: challenges
+          .addUserToFriends(hydrationData, findTodaysDate(), "numOunces")
+          .map(el => {
+            return el.weekData.reduce((acc, day) => (acc += day), 0);
+          })
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Friend Ounces Per Week"
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true
+          }
+        }
+      ]
+    },
+    responsive: true,
+    maintainAspectRatio: false
+  }
+});
+
+var friendSleepChallenge = $("#friends-week-sleep__display");
+var friendSleep = new Chart(friendSleepChallenge, {
+  type: "bar",
+  data: {
+    labels: ["Friend 1", "Friend 2", "Friend 3", "Friend 4"],
+    datasets: [
+      {
+        label: ["Friend Hours Slept Per Week"],
+        backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9"],
+        data: challenges
+          .addUserToFriends(sleepData, findTodaysDate(), "sleepQuality")
+          .map(el => {
+            let friendTotal = el.weekData.reduce((acc, day) => (acc += day), 0)
+            return Math.floor(friendTotal)
+          }) 
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Friend Sleep Quality Per Week"
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true
+          }
+        }
+      ]
+    },
+
+    responsive: true,
+    maintainAspectRatio: false
+  }
+});

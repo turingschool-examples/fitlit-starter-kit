@@ -7,12 +7,6 @@ const hydrationRepo = new HydrationRepo(uniqueUserId);
 const sleepRepo = new SleepRepo(uniqueUserId);
 const activityRepo = new ActivityRepo(uniqueUserId);
 
-console.log("userRepo: ", userRepo);
-console.log("user: ", user);
-console.log("hydrationRepo: ", hydrationRepo);
-console.log("sleepRepo: ", sleepRepo);
-console.log("activityRepo: ", activityRepo);
-
 // User Info
 $(".nav__span--name").text(`${user.name.split(" ")[0]}`);
 $(".nav__span--address").text(`${user.address}`);
@@ -72,9 +66,13 @@ $(".activity__span--miles").text(
 );
 $(".activity__span--worst").text(`${activityRepo.users.findLeastActiveDay(2)}`);
 
-// //Friends
+// Friends
 $(".friends__div--name").html(`${insertFriend()}`);
 $(".friends__div--steps").html(`${insertFriendSteps()}`);
+
+// Challenges
+$(".challenges__div--stairs").html(`${insertStairStreak()}`)
+$(".challenges__div--steps").html(`${insertStepStreak()}`)
 
 function insertFriend() {
   let list = `<ul class="friends__ul">`;
@@ -103,3 +101,31 @@ function insertFriendSteps() {
   return list;
 }
 
+function insertStairStreak() {
+  let list = `<ul class="challenges--stairs">`;
+  let stairStreak = activityRepo.users.threeDayStepStreak(uniqueUserIndex);
+  list += `<li class="challenges__li">
+        <span class="challenges--steps">${stairStreak[0]}</span>
+        <span class="challenges--steps">${stairStreak[1]}</span>
+        <span class="challenges--steps">${stairStreak[2]}</span>
+      </li>`;
+  list += "</ul>";
+  return list;
+}
+
+function insertStepStreak() {
+  let list = `<ul class="challenges--steps">`;
+  let stepStreak = activityRepo.users.threeDayStairStreak(uniqueUserIndex);
+  list += `<li class="challenges__li">
+        <span class="challenges--steps">${stepStreak[0]}</span>
+        <span class="challenges--steps">${stepStreak[1]}</span>
+        <span class="challenges--steps">${stepStreak[2]}</span>
+      </li>`;
+  list += "</ul>";
+  return list;
+}
+
+function insertStepStreakQuote() {
+  let list = `<span class="challenges--stepQuote">3 Day Increase: Steps</span>`
+  return list;
+}

@@ -192,9 +192,28 @@ body {
 .sleep--worstH,
 .sleep--worstQ {
   display: inline-block;
-  width: 50%;
+  width: 40%;
 }
 
 .friends--name {
   color: black;
+}
+
+.challenges__li {
+  display: grid;
+}
+
+.challenges--quotes,
+.challenge--dates {
+  display: inline-flex;
+  justify-content: space-around;
+  width: -webkit-fill-available;
+  list-style: none;
+}
+
+.challenges__div {
+  display: block;
+  border-right: 2px solid black;
+  width: 100%;
+  text-align: center;
 }

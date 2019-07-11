@@ -13,7 +13,7 @@ class UserRepo {
   }
 
   findAverageStepGoal() {
-    return (
+    return Math.round(
       this.users.reduce((totalSteps, user) => {
         totalSteps += user.dailyStepGoal;
         return totalSteps;

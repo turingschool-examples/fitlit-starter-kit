@@ -11,24 +11,24 @@ describe("userRepo", () => {
     userRepo = new UserRepo();
   });
 
-  it.skip("should be a function", () => {
+  it.only("should be a function", () => {
     expect(UserRepo).to.be.a("function");
   });
 
-  it.skip("should be an instance of UserRepo", () => {
+  it.only("should be an instance of UserRepo", () => {
     expect(userRepo).to.be.a.instanceOf(UserRepo);
   });
 
-  it.skip("should have access to all users", () => {
-    expect(userRepo.users.length).to.equal(5);
+  it.only("should have access to all users", () => {
+    expect(userRepo.users.length).to.equal(12);
   });
 
-  it.skip("should acquire user's data by id", () => {
+  it.only("should acquire user's data by id", () => {
     userRepo.findUserData(4);
     expect(userRepo.users[3].id).to.equal(4);
   });
 
-  it.skip("should give the average step goal of all users", () => {
-    expect(userRepo.findAverageStepGoal()).to.equal(6400);
+  it.only("should give the average step goal of all users", () => {
+    expect(userRepo.findAverageStepGoal()).to.equal(6833);
   });
 });

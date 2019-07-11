@@ -39,7 +39,6 @@ class Sleep {
     };
 
     findHoursSleptForSpecificDay(dateOf) {
-        console.log(this.userSleepData)
         return this.findDateForSleep(dateOf).hoursSlept
     };
 

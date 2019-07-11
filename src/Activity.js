@@ -65,6 +65,7 @@ class Activity {
     let stairRecord = this.userActivity.sort((a, b) => {
       return b.flightsOfStairs - a.flightsOfStairs;
     });
+    console.log(stairRecord[0].flightsOfStairs)
     return stairRecord[0].flightsOfStairs;
   }
 
@@ -73,11 +74,6 @@ class Activity {
     let daySteps = dayOfActivity.numSteps;
     let strideLength = this.uniqueUserData.strideLength;
     return Math.floor((daySteps * strideLength) / 5280);
-  }
-
-  compareAgainstYourFriends(id) {
-    let user = this.findUserData(id);
-    let friendData = user.friends.forEach(function(friend) {});
   }
 
   findLeastActiveDay(id) {
@@ -125,7 +121,6 @@ class Activity {
         .filter(day => day.userID === friend && day.date <= dateOf)
         .map(user => user.numSteps)
     }));
-    console.log("greg", friends);
     return friends.map(friend => {
       return friend.steps[0];
     });
@@ -146,9 +141,9 @@ class Activity {
             if(userObjs[0] < userObjs[1] && userObjs[2] < userObjs[0]){
                 dates.push(day.date);
             }
-        })
+          })
+          return dates
 
-        return dates
     }
 
     threeDayStairStreak(id){

@@ -1,82 +1,27 @@
-# FitLit Starter Kit
+# FitLit 
 
 The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
 
-## Setup
+## Contributors
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `open src/index.html` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-1. Make sure both members of your team are collaborators on the forked repo.
+Brandy Mello
+Amanda Sierra Lopez
 
-## Testing
+### Contributor comments
+*I really enjoyed this project. It was a challenge, but I learned much more from this project than from any of other project at Turing. I would like to go back and take some time to work on it further. It was a simulation of a current useful and viable application on the market today and I appreciated working on a relevant product. **-Brandy Mello
+*
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
 
-## Linting Your Code
+## Objectives
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
+This Turing Mod 2 paired project was designed for students to utilize and practice skills in writing tests with Mocha and Chai, transitioning in JavaScript from ES5 to ES6 syntax while creating classes and methods to access data from several datasets, and using jQuery to append the data to the DOM. The project was additional practice in HTML and CSS. We also incorporated charts.js into our project. There was no comp provided.
 
-Your linter will look only at the JavaScript files you have within the `src` and the `test` directories.
+## FitLit
 
-## Data Model
+FitLit simulates a health tracker. The site iterates through data to calculate various health metrics, goals, and comparisons for each user being accessed onload and their friends. Check it out here:  https://brandymello.github.io/fitlit/
 
-**Users**
+![Image description](link-to-image)
 
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
-
-**Activity**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
-
-**Hydration**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
-
-**Sleep**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+### Issues
+1. We would like to have additional hover buttons for each of the data bars on the left side of the page so that they present and respond in a similar fashion to the current graphs and buttons at the bottom of the page.
+1. We also had an issue with one of the functions we reused several times in that it was behaving differently. We were using the array prototype method slice to put a week's worth of values in an array and it was continually returning a different number of values eventhough we expected seven days. One would return 9, one 7, and most recently one returned 5. It is something we want to look into and find out why. We suspect it may have something to do with the dataset dates, because of a previous issue that has sice been resolved.

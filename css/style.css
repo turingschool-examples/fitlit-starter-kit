@@ -10,20 +10,51 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    opacity: 0.6;
-    background-color: #35333b;
+    background-color: rgba(103,128,159,1);
 }
-
 #winner-icon {
     width: 8%;
     margin-left: 25px;
     margin-right: 50px;
 }
 
-#hydration-icon {
-    margin-top:40px;
-    width: 45%;
+.user-name,
+.exclamation-point{
+    color:#60D4C8;
 }
+.circle-box{
+    border-radius: 50%;
+    height: 40px;
+    margin: 30px auto;
+    height: 26px;
+    width: 26px;
+    background: #60D4C8;
+    transition: 300ms;
+    margin-right: 12px;
+}
+
+
+#user-icon {
+    width:55%;
+    margin-top: 15em;
+
+}
+
+#hydration-icon {
+    margin-top:15em;
+    width: 30%;
+}
+
+#activity-icon {
+    margin-top:12em;
+    width: 70%;
+}
+
+#sleep-icon {
+    margin-top:12em;
+    width:70%;
+}
+
 
 .greet-user {
     font-size: 2em;
@@ -31,12 +62,21 @@ header {
 
 .page-heading {
     margin-right: 2%;
-    font-size: 5em;
+    font-size: 4em;
 }
 
 .img-greeting {
     display:flex;
 
+}
+
+#user-vs-avg-steps{
+    margin-left:25px;
+}
+
+#hydration-icon {
+    width: 55%;
+    margin-top: 15em;
 }
 
 .whole-cards-container {
@@ -97,24 +137,57 @@ header {
   display:block;
 }
 
-.card-back-1
-{
-  display: block;
-  background: #5476c7;
-  transform: rotateY( 180deg )
+.card-back-1 {
+    background: #5476c7;
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .card-back-2 {
-  display: block;
-  background: #5461c7;
-  transform: rotateY( 180deg )
+    background: #5461c7;
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .card-back-3 {
   display: block;
   background: #5f54c7;
-  transform: rotateY( 180deg )
+  transform: rotateY( 180deg );
+  display:block;
+  margin:0;
 }
+
+.scroll-box-1 { 
+  background-color: black;
+  display: block;
+  width: 320px;
+  height: 320px;
+  padding: 1em;
+  overflow-x: auto;
+  text-align: center;
+  opacity:0.6;
+  /*margin-top: 40px;*/
+  margin-left: 20px;
+  
+} 
+
+.scroll-box-2 { 
+  background-color: black;
+  display: block;
+  width: 320px;
+  height: 320px;
+  padding: 1em;
+  overflow-x: auto;
+  text-align: center;
+  opacity: 0.6;
+  margin-top: 10px;
+  margin-left: 20px;
+  
+} 
 
 .card-back-4 {
   display: block;
@@ -133,4 +206,6 @@ h2 {
     text-align: center;
     padding: 7px;
     font-size: 2em;
+    margin-top: 15px;
+    color:black;
 }*/

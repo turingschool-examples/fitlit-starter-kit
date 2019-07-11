@@ -61,27 +61,41 @@ $(document).ready(function() {
           'rgba(255, 159, 64, 0.2)'
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(255, 159, 64, 1)'
+          '#ef1de7',
+          '#afff14'
         ],
         borderWidth: 1
       }]
     },
     options: {
-      legend: {display: false},
-      title: {
-        display: true,
-        text: 'You VS Everyone (steps)'
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      }
-    }
-  });
+     legend: {display: false},
+       labels: {
+         fontColor: "black",
+         fontSize: 20
+        },
+     title: {
+       display: true,
+       fontColor: 'black',
+       text: 'You VS Everyone (steps)'
+     },
+     scales: {
+       yAxes: [{
+         ticks: {
+          beginAtZero: true,
+           fontColor: 'black',
+           fontSize: 16
+         }
+       }],
+       xAxes: [{
+         ticks: {
+          beginAtZero: true,
+           fontColor: 'black',
+           fontSize: 16
+         }
+       }],
+     }
+   }
+});
 
   const weeklyWaterIntake = new Chart($('#weekly-water-intake'), {
     type: 'line',
@@ -90,24 +104,11 @@ $(document).ready(function() {
       datasets: [{
         label: 'fl Oz',
         data: Object.values(hydro.userFluidsPerWeek(randomIndex, today)),
-        backgroundColor: [                
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(90, 173, 226, 0.2)'
-                
+        backgroundColor: [                             
+            'rgba(255, 159, 64, 0.2)'
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-          'rgba(90, 173, 226, 1)'
+                '#afff14'
         ],
         borderWidth: 1
       }]
@@ -216,17 +217,30 @@ $(document).ready(function() {
     },
     options: {
       legend: {display: false},
-      title: {
+        title: {
         display: true,
         text: 'Today: You VS Everyone (min Active)'
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      }
+        },
+       labels: {
+         fontColor: "black",
+         fontSize: 14
+       }
+     },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    fontColor: 'black',
+                }
+            }],
+            xAxes: [{
+         ticks: {
+          beginAtZero: true,
+           fontColor: 'black',
+           fontSize: 16
+         }
+       }],
+        }
     }
   });
 

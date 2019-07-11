@@ -19,6 +19,7 @@
         <p id="user-email"></p>
       </article>
     </div>
+    <div class="circle-box"></div>
       <h1 class="page-heading">FitLit</h1>
     </header>
 
@@ -29,15 +30,16 @@
             <article class="users-section card-face card-front-1">
               <h2>User Stats</h2>
               <article class="user-information">
-                <p id="user-stepGoal"></p>
-                <p id="avg-stepGoal"></p>
-                <p id="user-stride"></p>
-                <canvas id="user-vs-avg-steps" width="300" height="300"></canvas>
+              <img id="user-icon" src="../css/training.png" alt="picture of a user"/>
+               
               </article>
 
-             <!--  <img id="user-icon" src="../css/hydration.png" alt="picture of a user..."/> -->
             </article>
-            <article class="card-face card-back-1">INFO DISPLAY</article>
+            <article class="card-face card-back-1">
+              <p id="user-stepGoal"></p>
+                <p id="avg-stepGoal"></p>
+                <p id="user-stride"></p>
+                <canvas id="user-vs-avg-steps" width="300" height="300"></canvas></article>
             
           </div>
         </section>
@@ -46,14 +48,14 @@
           <div class="card-2">
             <article class="hydration-section card-face card-front-2">
               <h2>Hydration</h2>
-              <article class="hydration-information">
+            <img id="hydration-icon" src="../css/h2o.png" alt="picture of a water drop"/>
+            </article>
+            <article class="card-face card-back-2">
+               <article class="hydration-information">
               <p id="daily-water"></p>
               <p id="weekly-water"></p>
                <canvas id="weekly-water-intake" width="300" height="300"></canvas>
             </article>
-            <img id="hydration-icon" src="../css/hydration.png" alt="picture of a water drop"/>
-            </article>
-            <article class="card-face card-back-2"><p>INFO DISPLAY</p>
             </article>
           </div>
         </section>
@@ -62,21 +64,23 @@
           <div class="card-3">
             <article class="activity-section card-face card-front-3">
               <h2>Activity</h2>
-              <article class="activity-information">
-              <p id="user-numSteps-today">INFO</p>
-            </article>
+              <img id="activity-icon" src="../css/hiking.png" alt="icon of activity"/>
             </article>
             <article class="card-face card-back-3">
-              <p>INFO DISPLAY</p>
+              <h2>Info</h2>
               <p id="latest-user-steps"></p>
               <p id="latest-user-minActive"></p>
               <p id="latest-user-miles-walked"></p>
+              <div class="scroll-box-1">
               <canvas id="user-vs-avg-steps-day" width="300" height="300"></canvas>
               <canvas id="user-vs-avg-stairs" width="300" height="300"></canvas>
               <canvas id="user-vs-avg-activeMin" width="300" height="300"></canvas>
+              </div>
+              <div class="scroll-box-2">
               <canvas id="weekly-user-steps" width="300" height="300"></canvas>
               <canvas id="weekly-stairs-climbed" width="300" height="300"></canvas>
               <canvas id="weekly-minutes-active" width="300" height="300"></canvas>
+              </div>
             </article>
           </div>
         </section>
@@ -85,9 +89,7 @@
           <div class="card-4">
             <article class="sleep-section card-face card-front-4">
               <h2>Sleep</h2>
-              <article class="sleep-information">
-                <p>INFO</p>
-              </article>
+              <img id="sleep-icon" src="../css/alarm.svg" alt="picture of alarm"/>
             </article>
             <article class="card-face card-back-4"><p>INFO DISPLAY</p>
             </article>

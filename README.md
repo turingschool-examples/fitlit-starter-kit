@@ -10,6 +10,8 @@ Amanda Sierra Lopez
 ### Contributor comments
 <em><small>I really enjoyed this project. It was a challenge, but I learned much more from this project than from any of other project at Turing. I would like to go back and take some time to work on it further. It was a simulation of a current useful and viable application on the market today and I appreciated working on a relevant product. -Brandy Mello</small></em>
 
+<em><small>Challenging but rewarding. With this project we came to the understanding on how to write better tests. As well as see how much easier it was to build the project with already tested code. -Amanda Sierra Lopez</small></em>
+
 
 ## Objectives
 

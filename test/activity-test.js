@@ -71,8 +71,36 @@ describe('Activity', function() {
     expect(activity.hasUserMetStepGoal(1, "2019/06/24", userData)).to.equal("You have 2814 steps until you have met your goal. Keep up the good work!")
   })
 
-  it('should return an object with date keys and numOunces values', function() {
+  it('should return an object with date keys and numSteps values', function() {
     let activity = new Activity(activityData);
-    expect(activity.userStepsPerWeek(4, "2019/06/24", userData)).to.equal()
+    expect(activity.userStepsPerWeek(4, "2019/06/24")).to.deep.eql({ '2019/06/18': 10056,
+    '2019/06/19': 13451,
+    '2019/06/20': 3314,
+    '2019/06/21': 11807,
+    '2019/06/22': 3595,
+    '2019/06/23': 12134,
+    '2019/06/24': 3704 })
+  })
+
+  it('should return an object with date keys and stair flight values', function() {
+    let activity = new Activity(activityData);
+    expect(activity.userStairsPerWeek(6, "2019/06/24")).to.deep.eql({ '2019/06/18': 10,
+    '2019/06/19': 47,
+    '2019/06/20': 24,
+    '2019/06/21': 22,
+    '2019/06/22': 24,
+    '2019/06/23': 31,
+    '2019/06/24': 20 })
+  })
+
+  it('should return an object with date keys and minutes active values', function() {
+    let activity = new Activity(activityData);
+    expect(activity.userMinutesActivePerWeek(9, "2019/06/24")).to.deep.eql({ '2019/06/18': 188,
+    '2019/06/19': 187,
+    '2019/06/20': 125,
+    '2019/06/21': 281,
+    '2019/06/22': 222,
+    '2019/06/23': 136,
+    '2019/06/24': 126 })
   })
 });

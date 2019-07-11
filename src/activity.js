@@ -92,13 +92,36 @@ class Activity {
     let findUserInstances = this.activityData.filter(user => id === user.userID)
     let findUserIndex = findUserInstances.findIndex(day => day.date === date)
     let stepsPerWeek = findUserInstances.slice(findUserIndex - 6, findUserIndex + 1)
-    let total = stepsPerWeek.reduce((acc, item) => {
+    return stepsPerWeek.reduce((acc, item) => {
       if (!acc[item.date]) {
         acc[item.date] = item.numSteps
       }
       return acc
     }, {})
-    console.log(total)
+  }
+
+  userStairsPerWeek(id, date) {
+    let findUserInstances = this.activityData.filter(user => id === user.userID)
+    let findUserIndex = findUserInstances.findIndex(day => day.date === date)
+    let stairsPerWeek = findUserInstances.slice(findUserIndex - 6, findUserIndex + 1)
+    return stairsPerWeek.reduce((acc, item) => {
+      if (!acc[item.date]) {
+        acc[item.date] = item.flightsOfStairs
+      }
+      return acc
+    }, {})
+  }
+
+  userMinutesActivePerWeek(id, date) {
+    let findUserInstances = this.activityData.filter(user => id === user.userID)
+    let findUserIndex = findUserInstances.findIndex(day => day.date === date)
+    let minutesActivePerWeek = findUserInstances.slice(findUserIndex - 6, findUserIndex + 1)
+    return minutesActivePerWeek.reduce((acc, item) => {
+      if (!acc[item.date]) {
+        acc[item.date] = item.minutesActive
+      }
+      return acc
+    }, {})
   }
 
 }

@@ -28,3 +28,6 @@ Run tests by running npm tests.
 - Display information on the page while maintaining ability to test class properties and methods
 - Create a data dashboard that is easy to use and displays information in a clear way
 
+![final](https://user-images.githubusercontent.com/30326085/61054370-8c983b00-a3ac-11e9-94fb-f0cea1141cb1.png)
+
+This is how we interpreted the project-- Take a look!

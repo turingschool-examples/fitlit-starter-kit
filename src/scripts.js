@@ -44,8 +44,8 @@ $(document).ready(function() {
   $('#latest-user-minActive').text(`You've been active for ${activity.userMinActivePerDay(randomIndex, today)} minutes today.`);
   $('#latest-user-miles-walked').text(`You've walked ${activity.userMilesWalkedPerDay(randomIndex, today, userData)} miles today.`);
   $('#step-report').text(`${activity.hasUserMetStepGoal(randomIndex, today, userData)}`);
-  $('#user-least-sleep').text(`Your fewest recorded hours of sleep is ${sleep.userFewestHoursSlept(randomIndex)}`);
-  $('#user-most-sleep').text(`Your highest recorded hours of sleep is ${sleep.userMostHoursSlept(randomIndex)}`);
+  $('#user-least-sleep').text(`Your fewest recorded hours slept is ${sleep.userFewestHoursSlept(randomIndex)}`);
+  $('#user-most-sleep').text(`Your highest recorded hours slept is ${sleep.userMostHoursSlept(randomIndex)}`);
 
   const userVsAvgGoalSteps = new Chart($('#user-vs-avg-steps'), {
     type: 'bar',

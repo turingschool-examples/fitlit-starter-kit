@@ -86,9 +86,22 @@ class Sleep {
     return goodSleepers;
   }
 
-  leastHourSlept() {  
-    return this.sleepData.reduce((minAcc, day) => day.hoursSlept < minAcc ? day.hoursSlept : minAcc, this.sleepData[0].hoursSlept);
+  userFewestHoursSlept(id) {
+    let findUserInstances = this.sleepData.filter(user => id === user.userID)
+    let sortedHours = findUserInstances.sort((a,b) => a.hoursSlept - b.hoursSlept)
+    return sortedHours[0].hoursSlept
   }
+
+  userMostHoursSlept(id) {
+    let findUserInstances = this.sleepData.filter(user => id === user.userID)
+    let sortedHours = findUserInstances.sort((a,b) => b.hoursSlept - a.hoursSlept)
+    return sortedHours[0].hoursSlept
+  }
+
+  // leastHourSlept() {  
+  //   let x = this.sleepData.reduce((minAcc, day) => day.hoursSlept < minAcc ? day.hoursSlept : minAcc, this.sleepData[0].hoursSlept);
+  //   console.log(x)
+  // }
 
 }
 

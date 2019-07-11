@@ -44,6 +44,8 @@ $(document).ready(function() {
   $('#latest-user-minActive').text(`You've been active for ${activity.userMinActivePerDay(randomIndex, today)} minutes today.`);
   $('#latest-user-miles-walked').text(`You've walked ${activity.userMilesWalkedPerDay(randomIndex, today, userData)} miles today.`);
   $('#step-report').text(`${activity.hasUserMetStepGoal(randomIndex, today, userData)}`);
+  $('#user-least-sleep').text(`Your fewest recorded hours of sleep is ${sleep.userFewestHoursSlept(randomIndex)}`);
+  $('#user-most-sleep').text(`Your highest recorded hours of sleep is ${sleep.userMostHoursSlept(randomIndex)}`);
 
   const userVsAvgGoalSteps = new Chart($('#user-vs-avg-steps'), {
     type: 'bar',
@@ -374,7 +376,7 @@ $(document).ready(function() {
   const userVsAvgSleepHours = new Chart($('#user-vs-avg-sleep-hours'), {
     type: 'bar',
     data: {
-      labels: ['Latest Hrs Sleep', 'Avg Hrs Sleep'],
+      labels: ['Latest Hrs', 'Avg Hrs'],
       datasets: [{
         label: 'Hours',
         data: [sleep.hrsSleepForSpecificDay(randomIndex, today), sleep.avgHoursSleepPerUser(randomIndex)],

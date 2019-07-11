@@ -68,9 +68,15 @@ describe('Sleep', function() {
     expect(sleep.averageSleepQualityNumber('2019/06/24', 3)).to.deep.equal([ 2, 6, 7, 8, 10 ]);
   })
 
-  it('should show the lowest hours slept overall', function() {
+  it('should show the lowest hours slept overall for a user', function() {
     let sleep = new Sleep(sampleSleep);
-    expect(sleep.leastHourSlept()).to.equal(4.1);
+    expect(sleep.userFewestHoursSlept(5)).to.equal(4.1);
   })
+
+  it('should show the most hours slept overall for a user', function() {
+    let sleep = new Sleep(sampleSleep);
+    expect(sleep.userMostHoursSlept(5)).to.equal(10.5);
+  })
+
 })
 

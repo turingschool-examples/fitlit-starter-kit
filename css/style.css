@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: #243b6b;
+}
 header {
     border-bottom: 2px ;
     height: 140px;
@@ -46,12 +49,12 @@ header {
 }
 
 #activity-icon {
-    margin-top:12em;
+    margin-top:14em;
     width: 70%;
 }
 
 #sleep-icon {
-    margin-top:12em;
+    margin-top:14em;
     width:70%;
 }
 
@@ -141,8 +144,9 @@ header {
     background: #5476c7;
     transform: rotateY(180deg);
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: column;
+
 }
 
 .card-back-2 {
@@ -153,12 +157,17 @@ header {
     flex-direction: column;
 }
 
+#daily-water {
+    margin-bottom: 65px;
+}
+
 .card-back-3 {
   display: block;
   background: #5f54c7;
   transform: rotateY( 180deg );
   display:block;
   margin:0;
+  padding:6px;
 }
 
 .scroll-box-1 { 
@@ -170,7 +179,7 @@ header {
   overflow-x: auto;
   text-align: center;
   opacity:0.6;
-  /*margin-top: 40px;*/
+  margin-top: 10px;
   margin-left: 20px;
   
 } 
@@ -179,7 +188,7 @@ header {
   background-color: black;
   display: block;
   width: 320px;
-  height: 320px;
+  height: 355px;
   padding: 1em;
   overflow-x: auto;
   text-align: center;

@@ -111,16 +111,30 @@ $(document).ready(function() {
     },
     options: {
       legend: {display: false},
+      labels: {
+        fontColor: 'black',
+        fontSize: 15
+      },
       title: {
         display: true,
+        fontColor: 'black',
         text: 'Weekly Water Intake (fl oz)'
       },
       scales: {
         yAxes: [{
           ticks: {
-            beginAtZero: true
+            beginAtZero: true,
+            fontColor: 'black',
+            fontSize: 14
           }
-        }]
+        }],
+        xAxes: [{
+          ticks: {
+            beginAtZero: true,
+            fontColor: 'black',
+            fontSize: 14
+          }
+        }],
       }
     }
   });

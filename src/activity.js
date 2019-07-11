@@ -3,14 +3,22 @@ class Activity {
     this.activityData = activityData;
   }
   
-  userMilesWalkedPerDay(id, date, userData) {
-    let steps = this.activityData.find(user => id === user.userID && date === user.date).numSteps
-    let stride = userData.find(user => id === user.id).strideLength
-    return parseFloat(((steps * stride) / 5280).toFixed(2))
+  userStepsWalkedPerDay(id, date) {
+    return this.activityData.find(user => id === user.userID && date === user.date).numSteps;
+  }
+
+  userStairsClimbedPerDay(id, date) {
+    return this.activityData.find(user => id === user.userID && date === user.date).flightsOfStairs;
   }
 
   userMinActivePerDay(id, date) {
     return this.activityData.find(user => id === user.userID && date === user.date).minutesActive
+  }
+
+  userMilesWalkedPerDay(id, date, userData) {
+    let steps = this.activityData.find(user => id === user.userID && date === user.date).numSteps;
+    let stride = userData.find(user => id === user.id).strideLength;
+    return parseFloat(((steps * stride) / 5280).toFixed(2));
   }
 
   userAverageMinActivePerWeek(id, date) {
@@ -47,16 +55,18 @@ class Activity {
 
   avgStairsAllUsers(date) {
     let allUserStairActivity = this.activityData.filter(user => date === user.date)
-    return allUserStairActivity.reduce((acc, item) => {
-      return parseFloat((acc + (item.flightsOfStairs / allUserStairActivity.length)).toFixed(2))
+    let total = allUserStairActivity.reduce((acc, item) => {
+      return acc + (item.flightsOfStairs / allUserStairActivity.length)
     }, 0)
+    return Math.floor(total)
   }
 
   avgStepsAllUsers(date) {
     let allUserStepActivity = this.activityData.filter(user => date === user.date)
-    return allUserStepActivity.reduce((acc, item) => {
-      return parseFloat((acc + (item.numSteps / allUserStepActivity.length)).toFixed(2))
+    let total = allUserStepActivity.reduce((acc, item) => {
+      return acc + (item.numSteps / allUserStepActivity.length)
     }, 0)
+    return Math.floor(total)
   }
 
   avgMinActiveAllUsers(date) {
@@ -76,6 +86,42 @@ class Activity {
       let stepsLeft = userStepGoal - userDataToday
       return `You have ${stepsLeft} steps until you have met your goal. Keep up the good work!`
     }
+  }
+
+  userStepsPerWeek(id, date) {
+    let findUserInstances = this.activityData.filter(user => id === user.userID)
+    let findUserIndex = findUserInstances.findIndex(day => day.date === date)
+    let stepsPerWeek = findUserInstances.slice(findUserIndex - 6, findUserIndex + 1)
+    return stepsPerWeek.reduce((acc, item) => {
+      if (!acc[item.date]) {
+        acc[item.date] = item.numSteps
+      }
+      return acc
+    }, {})
+  }
+
+  userStairsPerWeek(id, date) {
+    let findUserInstances = this.activityData.filter(user => id === user.userID)
+    let findUserIndex = findUserInstances.findIndex(day => day.date === date)
+    let stairsPerWeek = findUserInstances.slice(findUserIndex - 6, findUserIndex + 1)
+    return stairsPerWeek.reduce((acc, item) => {
+      if (!acc[item.date]) {
+        acc[item.date] = item.flightsOfStairs
+      }
+      return acc
+    }, {})
+  }
+
+  userMinutesActivePerWeek(id, date) {
+    let findUserInstances = this.activityData.filter(user => id === user.userID)
+    let findUserIndex = findUserInstances.findIndex(day => day.date === date)
+    let minutesActivePerWeek = findUserInstances.slice(findUserIndex - 6, findUserIndex + 1)
+    return minutesActivePerWeek.reduce((acc, item) => {
+      if (!acc[item.date]) {
+        acc[item.date] = item.minutesActive
+      }
+      return acc
+    }, {})
   }
 
 }

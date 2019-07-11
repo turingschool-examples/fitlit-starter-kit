@@ -30,17 +30,18 @@
             <article class="users-section card-face card-front-1">
               <h2>User Stats</h2>
               <article class="user-information">
-              <img id="user-icon" src="../css/training.png" alt="picture of a user"/>
-               
+                <img id="user-icon" src="../css/training.png" alt="picture of a user"/>
               </article>
-
             </article>
             <article class="card-face card-back-1">
+              <p id="latest-user-steps"></p>
+              <p id="user-stride"></p>
+              <p id="step-report"></p>
+              <p id="latest-user-miles-walked"></p>
               <p id="user-stepGoal"></p>
-                <p id="avg-stepGoal"></p>
-                <p id="user-stride"></p>
-                <canvas id="user-vs-avg-steps" width="300" height="300"></canvas></article>
-            
+              <p id="avg-stepGoal"></p>
+              
+              <canvas id="user-vs-avg-steps" width="300" height="300"></canvas></article>
           </div>
         </section>
 
@@ -52,9 +53,8 @@
             </article>
             <article class="card-face card-back-2">
                <article class="hydration-information">
-              <p id="daily-water"></p>
-              <p id="weekly-water"></p>
-               <canvas id="weekly-water-intake" width="300" height="300"></canvas>
+                <p id="daily-water"></p>
+                <canvas id="weekly-water-intake" width="300" height="300"></canvas>
             </article>
             </article>
           </div>
@@ -67,9 +67,7 @@
               <img id="activity-icon" src="../css/hiking.png" alt="icon of activity"/>
             </article>
             <article class="card-face card-back-3">
-              <p id="latest-user-steps"></p>
               <p id="latest-user-minActive"></p>
-              <p id="latest-user-miles-walked"></p>
               <div class="scroll-box-1">
               <canvas id="user-vs-avg-steps-day" width="300" height="300"></canvas>
               <canvas id="user-vs-avg-stairs" width="300" height="300"></canvas>

@@ -27,6 +27,6 @@ describe('UserRepository', () => {
 
   it('should get the average steps amongst all users', () => {
     const userRepo = new UserRepository(sampleData);
-    expect(userRepo.getAllUsersAvgSteps()).to.eql(7167)
+    expect(userRepo.getAllUsersAvgStepGoal()).to.eql(7167)
   })
 })

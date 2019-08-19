@@ -1,5 +1,5 @@
 if (typeof module !== "undefined") {
-    userData = require("../data/user-test-data");
+    userData = require("../data/users-test-data");
   }
 
 class UserRepo {

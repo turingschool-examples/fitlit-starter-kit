@@ -1,0 +1,32 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  font-family: 'Open Sans', sans-serif;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "header header header header header header"
+    "step step main main main main";
+  margin: 0;
+  height: 100vh;
+}
+
+header {
+  background-color: red;
+  grid-area: header;
+}
+
+main {
+  background-color: blue;
+  grid-area: main;
+}
+
+#article1 {
+  background-color: yellow;
+  grid-area: step;
+}

@@ -1,5 +1,5 @@
 class User {
-    constructor() {
+    constructor(user) {
 
     }
 }

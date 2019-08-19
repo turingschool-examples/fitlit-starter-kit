@@ -3,5 +3,5 @@ const assert = require('chai').assert;
 
 describe('Hydration', () => {
 
-  hydration = new Hydration() 
+  // hydration = new Hydration() 
 });

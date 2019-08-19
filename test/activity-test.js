@@ -3,5 +3,5 @@ const assert = require('chai').assert;
 
 describe('Activity', () => {
 
-  activity = new Activity() 
+  // activity = new Activity() 
 });

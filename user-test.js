@@ -5,6 +5,6 @@ const User = require('../src/User');
 
 describe('User', () => {
   it('should ', () => {
-
+    
   });
 });

@@ -1,0 +1,18 @@
+{
+  "name": "activity-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha",
+    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
+  },
+  "author": "Turing School of Software and Design",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "mocha": "^6.1.4"
+  },
+  "dependencies": {}
+}

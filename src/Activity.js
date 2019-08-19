@@ -1,3 +1,7 @@
+if (typeof module !== "undefined") {
+    activityData = require("../data/activity-test-data");
+  }
+
 class Activity {
     constructor() {
         

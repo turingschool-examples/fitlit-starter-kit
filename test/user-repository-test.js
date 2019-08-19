@@ -45,4 +45,8 @@ describe('UserRepository', () => {
   it("should return an individual user's data", () => {
     expect(userRepo.returnUserData(1)).to.equal(user1);
   })
+
+  it("should return the average step count of all users", () => {
+    expect(userRepo.returnAllUsersAverageStepGoal()).to.equal(6666);
+  })
 })

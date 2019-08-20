@@ -8,7 +8,8 @@ describe('User', () => {
 
   let user;
   beforeEach(() => {
-    user = new User(userData[0])
+    let userID = 0;
+    user = new User(userData[userID])
   });
 
   it('should be a function', () => {

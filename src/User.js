@@ -1,4 +1,3 @@
-
 class User {
   constructor(userData) {
     this.id = userData.id;
@@ -15,16 +14,6 @@ class User {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
 if (typeof module !== 'undefined') {
-    module.exports = User;
-  }
+  module.exports = User;
+}

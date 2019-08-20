@@ -6,33 +6,36 @@
 
 /********** Main **********/
 .main_boi {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: 50% auto;
+	grid-template-rows: 25% auto;
+	grid-template-areas:
+			"header header"
+			"user user"
+			"sleep hydro"
+			"activity activity";
+	height: 100vh;
 }
 
 /********* Header *********/
 .main_header {
-	height: 200px;
-	width: 100%;	
+	grid-area: header;
 }
 
 /******** User Info *******/
 .main_user {
-	height: 350px;
-	width: 100%;
+	grid-area: user;
 }
 
 /******** Sleep Section ***/
 .main_sleep {
-	display: flex;
-	height: 100px;
-	width: 40%;
+	grid-area: sleep;
 }
 /****** Hydro Section *****/
 .main_hydro {
-	display: flex;
-	height: 100px;
-	width: 40%;
+	grid-area: hydro;
 }
 /******* Activity Section */
+.main_activity {
+	grid-area: activity;
+}

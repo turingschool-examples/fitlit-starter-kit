@@ -21,12 +21,21 @@ function initializePage(data) {
 	const userRepository = new UserRepository(data)
 	userRepository.findUser(10)
 	const user = new User(userRepository.currentUser)
-	name.innerHTML = user.name
-	address.innerHTML = user.address
-	email.innerHTML = user.email
-	stride.innerHTML = user.strideLength
-	// console.log(user.dailyStepGoal)
-	goal.innerHTML = user.dailyStepGoal
-	friends.innerHTML = user.friends
+	name.innerHTML = `Name: ${user.name}`
+	address.innerHTML = `Address: ${user.address}`
+	email.innerHTML = `Email: ${user.email}`
+	stride.innerHTML = `Stride Length: ${user.strideLength} feet`
+	goal.innerHTML = `Step Goal: ${user.dailyStepGoal} steps`
+	friends.innerHTML = `Friends: ${findFriends(userRepository, user)}`
 
+}
+
+function findFriends(userRepository, user) {
+	newFriends = [];
+	user.friends.forEach(function(friend) {
+		var friendInfo = userRepository.findUser(friend)
+			newFriends.push(friendInfo.name)
+			newFriends.push(friendInfo.dailyStepGoal)
+		})
+	return newFriends
 }

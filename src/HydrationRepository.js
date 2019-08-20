@@ -1,6 +1,7 @@
 class HydrationRepository {
-  constructor() {
-    
+  constructor(data, id) {
+    this.data = data;
+    this.id = id;
   }
 }
 

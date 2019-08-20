@@ -2,9 +2,15 @@ const User = require('../src/User')
 
 
 class UserRepository {
-  constructor(userObj) {
-
+  constructor(data, id) {
+    this.data = data;
+    this.id = id;
   }
+
+  findUserData() {
+    return this.data.find(user => user.id === this.id)
+
+
 }
 
 

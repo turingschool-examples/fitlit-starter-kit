@@ -8,7 +8,7 @@ let user;
 describe('User', () => {
 
     beforeEach( () => {
-        user = new User(mockData[2]); 
+        user = new User(mockData[1]); 
     });
     
     it('should return true', () => {
@@ -24,7 +24,7 @@ describe('User', () => {
     });
 
     it('should have a parameter to take in a user/s data', () => {
-        expect(user.data).to.eql(mockData[2]);
+        expect(user.userData).to.eql(mockData[1]);
     });
 
     it('should have a property of id', () => {
@@ -36,7 +36,7 @@ describe('User', () => {
     });
 
     it('should have a property of address', () => {
-        expect(user.name).to.equal("30086 Kathryn Port, Ciceroland NE 07273");
+        expect(user.address).to.equal("30086 Kathryn Port, Ciceroland NE 07273");
     });
 
     it('should have a property of email', () => {
@@ -52,7 +52,7 @@ describe('User', () => {
     });
 
     it('should have a property of friends', () => {
-        expect(user.friends).to.eql(mockData[2].friends);
+        expect(user.friends).to.eql(mockData[1].friends);
     });
 
     describe("findUserFirstName", () => {

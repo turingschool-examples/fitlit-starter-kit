@@ -8,7 +8,7 @@ const users = userData;
 
 describe('User', function() {
   let userRepo;
-  let user;
+  let user1, user2, user3;
 
   beforeEach(() => {
     userRepo = new UserRepository(users);

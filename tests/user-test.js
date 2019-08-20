@@ -1,30 +1,36 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-// const data = require('../data/test-data.js');
-
 const User = require('../src/User');
+const UserRepository = require('../src/users-repository');
+const userData  = require('../data/test-data');
+const users = userData;
 
 describe('User', function() {
+  let userRepo;
+  let user;
+
+  beforeEach(() => {
+    userRepo = new UserRepository(users);
+    user1 = new User(userRepo.users.userData[1]);
+    user2 = new User(userRepo.users.userData[2]);
+    user3 = new User(userRepo.users.userData[3]);
+  });
 
   it('should be a function', function() {
-
-    let obj = {
-      "id": 1,
-      "name": "Luisa Hane",
-      "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-      "email": "Diana.Hayes1@hotmail.com",
-      "strideLength": 4.3,
-      "dailyStepGoal": 10000,
-      "friends": [
-        16,
-        4,
-        8
-      ]
-    }
-
-    const user = new User(obj);
     expect(User).to.be.a('function');
   });
+
+  it('should be a single user', function(){
+    expect(user1).to.deep.equal(userRepo.users.userData[1])
+    expect(user2).to.deep.equal(userRepo.users.userData[2])
+    expect(user3).to.deep.equal(userRepo.users.userData[3])
+  })
+
+  it('should return users first name', function() {
+    expect(user1.returnFirstName()).to.equal("Jarvis");
+    expect(user2.returnFirstName()).to.equal("Herminia");
+    expect(user3.returnFirstName()).to.equal("Mae");
+  })
 
 });

@@ -7,6 +7,7 @@ const users = userData;
 
 
 describe('UserRepository', function() {
+  let userRepo;
 
   beforeEach(() => {
     userRepo = new UserRepository(users);
@@ -31,5 +32,5 @@ describe('UserRepository', function() {
   it('should return average step goal of all users', () => {
     expect(userRepo.returnAvgStepGoal()).to.equal(6400)
   });
-  
+
 });

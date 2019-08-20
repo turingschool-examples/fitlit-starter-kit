@@ -66,5 +66,4 @@ describe("User", () => {
 	it("should get the users first name", () => {
 		expect(user.getUserFirstName()).to.equal('Luisa');
 	});
-
 });

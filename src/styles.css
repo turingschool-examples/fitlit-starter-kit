@@ -1,0 +1,52 @@
+.main-page {
+    background: #CDF5FE;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+}
+
+.splash-page {
+    background: #CDF5FE;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+}
+
+.splash-header {
+    background: #CDF5FE;
+    color: #FE247A;
+    font-family: 'Knewave',
+    cursive;
+    font-size: 4em;
+    text-align: center;
+}
+
+.splash-img {
+    align-content: center;
+    margin: 0px 300px;
+}
+
+.enter__button {
+    height: 45px;
+    border-radius: 20px;
+    color: white;
+    background-color: #FCDE2A;
+    margin: 10px;
+    font-family: 'Quantico',
+    sans-serif;
+    font-size: 1.3em;
+    margin-left: 500px;
+    width: 30%;
+}
+
+.header {
+    background-color: #FEEB8A;
+    border-bottom: black solid 2px;
+    color: #FE247A;
+    font-family: 'Knewave',
+    cursive;
+    text-align: center;
+    font-size: 2em;
+}

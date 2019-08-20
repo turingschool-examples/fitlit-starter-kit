@@ -2,10 +2,14 @@ const User = require('../src/User');
 
 
 class UserRepository {
-  constructor(users) {
-    this.users = users
+  constructor(data, id) {
+    this.data = data;
+    this.id = id;
   }
 
+  findUserData() {
+    return this.data.find(user => user.id === this.id)
+    
 
 
 
@@ -14,7 +18,6 @@ class UserRepository {
     return Math.ceil(this.users.reduce((acc, element) => {
       return acc + element.dailyStepGoal}, 0) / this.users.length);
   }
-
 
 }
 

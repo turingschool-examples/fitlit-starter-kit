@@ -16,14 +16,16 @@ describe('UserRepository', function() {
     expect(UserRepository).to.be.a('function');
   });
 
-  it('should be an instance of UserRepository', function() {
+  it('should be an instance of UserRepository', () => {
     expect(userRepo).to.be.an.instanceof(UserRepository);
   });
 
-  it('should store all users', function() {
-    console.log(userRepo)
-    expect(userRepo).to.deep.equal(userRepo);
+  it('should store all users', () => {
+    expect(userRepo.users.userData.length).to.deep.equal(5);
   });
 
+  it('should find a specific user', () => {
+    expect(userRepo.getUser(4)).to.equal(users.userData[3])
+  })
 
 });

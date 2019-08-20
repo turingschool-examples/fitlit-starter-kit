@@ -1,11 +1,19 @@
+main {
+    color: white;
+    font-family: 'Quantico',
+        sans-serif;
+}
+
 .main-page {
-    background-image: linear-gradient(
+    /* background-image: linear-gradient(
         to top right,
         #2B093A,
-        #410F59);
+        #410F59); */
+    background-image: url('../src/images/80s-sunset.png');
     background-position: center;
     background-size: cover;
     height: 100vh;
+    opacity: 0.7;
     width: 100%;
 }
 
@@ -19,7 +27,7 @@
 .splash-header {
     background: #CDF5FE;
     color: #FE247A;
-    font-family: 'Knewave',
+    font-family: 'Faster One',
     cursive;
     font-size: 4em;
     text-align: center;
@@ -48,18 +56,13 @@
     border-bottom: #1ADFED solid 2px;
     filter: hue-rotate(45deg);
     color: #FE247A;
-    font-family: 'Knewave', cursive;
+    font-family: 'Bungee Shade',
+    cursive;
     text-align: center;
     font-size: 2em;
 }
 
 .main-date {
-    font-family: 'Quantico',
-    sans-serif;
-}
-
-main {
-    color: white;
     font-family: 'Quantico',
     sans-serif;
 }

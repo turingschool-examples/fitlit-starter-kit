@@ -2,27 +2,28 @@ const chai = require("chai");
 const expect = chai.expect;
 
 const UserRepository = require('../src/users-repository');
-const { userData } = require('../data/test-data')
+const userData  = require('../data/test-data');
+const users = userData;
 
 
 describe('UserRepository', function() {
 
+  beforeEach(() => {
+    userRepo = new UserRepository(users);
+  });
+
   it('should be a function', () => {
-
-    // let obj = {
-    //   id: 1,
-    //   name: "Luisa Hane",
-    //   address: "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-    //   email: "Diana.Hayes1@hotmail.com",
-    //   strideLength: 4.3,
-    //   dailyStepGoal: 10000,
-    //   friends: [16, 4, 8]
-    // };
-    // console.log(userData);
-
-    const userRepo = new UserRepository(obj);
-
     expect(UserRepository).to.be.a('function');
-  })
+  });
 
-})
+  it('should be an instance of UserRepository', function() {
+    expect(userRepo).to.be.an.instanceof(UserRepository);
+  });
+
+  it('should store all users', function() {
+    console.log(userRepo)
+    expect(userRepo).to.deep.equal(userRepo);
+  });
+
+
+});

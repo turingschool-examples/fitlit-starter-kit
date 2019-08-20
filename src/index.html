@@ -5,12 +5,27 @@
     <title>Activity Tracker</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-
+    <header>
+      <h1>
+        Activity Tracker
+      </h1>
+      <p>Welcome <span id="user-name">NAME</span>!</p>
+    </header>
+    <container>
+      <p id="user-step-goal">
+        User Step Goal
+      </p>
+      <p id="average-step-goal-all-users">
+        Average Step Goal of All Users
+      </p>
+    </container>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
+    <script type="text/javascript" src="../src/User-repository.js"></script><script type="text/javascript" src="../src/User.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>

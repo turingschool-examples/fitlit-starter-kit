@@ -19,14 +19,53 @@ header {
   grid-area: header;
 }
 
+div {
+  display: flex;
+}
+
+.header__div {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__div--greeting {
+  justify-content: space-between;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
 main {
   background-color: coral;
   grid-area: main;
 }
 
+article {
+  display: flex;
+}
+
 .main__hydration {
   background-color: cornflowerblue;
   grid-area: hydration;
+}
+
+.main__hydration--data--container,
+.main__sleep--data--container,
+.main__trends--data--container {
+  width: 50%;
+}
+
+.main__activity__article--data {
+  display: flex;
+}
+
+.user-activity,
+.allusers-activity {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 }
 
 .main__sleep {

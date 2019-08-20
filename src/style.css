@@ -11,7 +11,7 @@ body {
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
     "header header header header header header"
-    "step step main main main main";
+    "step step water water water sleep";
   margin: 0;
   height: 100vh;
 }
@@ -21,12 +21,17 @@ header {
   grid-area: header;
 }
 
-main {
-  background-color: blue;
-  grid-area: main;
-}
-
 #article1 {
   background-color: yellow;
   grid-area: step;
+}
+
+#article2 {
+  background-color: blue;
+  grid-area: water;
+}
+
+#article3 {
+  background-color: green;
+  grid-area: sleep;
 }

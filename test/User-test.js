@@ -14,11 +14,7 @@ beforeEach(() => {
       "email": "Diana.Hayes1@hotmail.com",
       "strideLength": 4.3,
       "dailyStepGoal": 10000,
-      "friends": [
-        16,
-        4,
-        8
-      ]
+      "friends": [16, 4, 8]
     };
   user = new User(data);
   userRepository = new UserRepository(data);
@@ -36,6 +32,12 @@ describe('User', () => {
 
   it('should hold on to the user properties from the data file', () => {
     expect(user.id).to.equal(1);
+    expect(user.name).to.equal('Luisa Hane');
+    expect(user.address).to.equal('15195 Nakia Tunnel, Erdmanport VA 19901-1697');
+    expect(user.email).to.equal('Diana.Hayes1@hotmail.com');
+    expect(user.strideLength).to.equal(4.3);
+    expect(user.dailyStepGoal).to.equal(10000);
+    expect(user.friends).to.deep.equal([16, 4, 8]);
   });
 
   it('should return the first name', () => {

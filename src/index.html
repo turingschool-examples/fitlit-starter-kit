@@ -1,16 +1,80 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Activity Tracker</title>
-  </head>
-  <body>
-    <h1>Activity Tracker</h1>
 
-    <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="../data/hydration.js"></script>
-    <script type="text/javascript" src="../data/sleep.js"></script>
-    <script type="text/javascript" src="../data/activity.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
-  </body>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,400,700&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>FitLit</title>
+</head>
+
+<body>
+  <nav>
+    <h1></h1>
+  </nav>
+  <header>
+
+  </header>
+  <main>
+    <section class="main__section--steps">
+      <h3 class="section__h3--title">Steps</h3>
+      <section class="steps--container">
+        <article class="steps__article--1">
+        </article>
+        <article class="steps__article--2">
+        </article>
+      </section>
+    </section>
+    <section class="main__section--hydration">
+      <h3 class="section__h3--title">Hydration</h3>
+      <section class="hydration--container">
+        <article class="hydration__article--1">
+        </article>
+        <article class="hydration__article--2">
+        </article>
+      </section>
+    </section>
+    <section class="main__section--sleep">
+      <h3 class="section__h3--title">Sleep</h3>
+      <section class="sleep--container">
+        <article class="sleep__article--1">
+        </article>
+        <article class="sleep__article--2">
+        </article>
+        <article class="sleep__article--3">
+        </article>
+      </section>
+    </section>
+    <section class="main__section--activity">
+      <h3 class="section__h3--title">Activity</h3>
+      <section class="activity--container--1">
+        <article class="activity__article--1">
+        </article>
+        <article class="activity__article--2">
+        </article>
+      </section>
+      <section class="activity--container--2">
+        <article class="activity__article--3">
+        </article>
+        <article class="activity__article--4">
+        </article>
+        <article class="activity__article--5">
+        </article>
+      </section>
+    </section>
+
+  </main>
+</body>
+
+<script type="text/javascript" src="../data/users.js"></script>
+<script type="text/javascript" src="../data/hydration.js"></script>
+<script type="text/javascript" src="../data/sleep.js"></script>
+<script type="text/javascript" src="../src/Activity.js"></script>
+<script type="text/javascript" src="../src/Hydration.js"></script>
+<script type="text/javascript" src="../src/Sleep.js"></script>
+<script type="text/javascript" src="../src/User.js"></script>
+<script type="text/javascript" src="../src/UserRepository.js"></script>
+<script type="text/javascript" src="./scripts.js"></script>
+
 </html>

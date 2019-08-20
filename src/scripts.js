@@ -2,8 +2,6 @@ console.log("Hello World");
 
 $(document).ready(function() {
     $('#article__user--name').text(user.getFirstName());
-    console.log()
-    console.log()
     $('#article__user--address').text();
     $('#article__user--email').text();
     $('#article__user--stridelength').text();

@@ -2,9 +2,8 @@ const chai = require('chai');
 const expect = chai.expect;
 const User = require('../src/User')
 
-var user1, user2, user3
-beforeEach(() => {
-  user1 = new User({
+const testUsers = [
+  {
     "id": 1,
     "name": "Luisa Hane",
     "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
@@ -16,9 +15,8 @@ beforeEach(() => {
       4,
       8
     ]
-  })
-
-  user2 = new User({
+  },
+  {
     "id": 2,
     "name": "Jarvis Considine",
     "address": "30086 Kathryn Port, Ciceroland NE 07273",
@@ -31,9 +29,8 @@ beforeEach(() => {
       24,
       19
     ]
-  })
-
-  user3 = new User({
+  },
+  {
     "id": 3,
     "name": "Herminia Witting",
     "address": "85823 Bosco Fork, East Oscarstad MI 85126-5660",
@@ -46,7 +43,13 @@ beforeEach(() => {
       42,
       33
     ]
-  })
+  }
+]
+var user1, user2, user3
+beforeEach(() => {
+  user1 = new User(testUsers[0]);
+  user2 = new User(testUsers[1]);
+  user3 = new User(testUsers[2])
 
 })
 

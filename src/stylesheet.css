@@ -1,0 +1,38 @@
+/********** Body **********/
+*{
+	font-family: 'Open Sans', serif;
+	/*margin: 0px;*/
+}
+
+/********** Main **********/
+.main_boi {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+/********* Header *********/
+.main_header {
+	height: 200px;
+	width: 100%;	
+}
+
+/******** User Info *******/
+.main_user {
+	height: 350px;
+	width: 100%;
+}
+
+/******** Sleep Section ***/
+.main_sleep {
+	display: flex;
+	height: 100px;
+	width: 40%;
+}
+/****** Hydro Section *****/
+.main_hydro {
+	display: flex;
+	height: 100px;
+	width: 40%;
+}
+/******* Activity Section */

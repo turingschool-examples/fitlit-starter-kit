@@ -2,6 +2,7 @@ console.log("Hello World");
 
 $(document).ready(function() {
     $('#article__user--name').text(user.getFirstName());
+    
     $('#article__user--address').text();
     $('#article__user--email').text();
     $('#article__user--stridelength').text();

@@ -51,3 +51,7 @@ const fakeUsers = [{
             ]
         }
     ]
+
+if (typeof module !== 'undefined') {
+    module.exports = fakeUsers;
+}

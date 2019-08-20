@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+  'header header'
+  'main main'
+  'hydration hydration'
+  'sleep sleep'
+  'activity activity'
+  'trends trends';
+}
+
+header {
+  background-color: aquamarine;
+  grid-area: header;
+}
+
+main {
+  background-color: coral;
+  grid-area: main;
+}
+
+.main__hydration {
+  background-color: cornflowerblue;
+  grid-area: hydration;
+}
+
+.main__sleep {
+  background-color: goldenrod;
+  grid-area: sleep;
+}
+
+.main__activity {
+  background-color: lawngreen;
+  grid-area: activity;
+}
+
+.main__trends {
+  background-color: magenta;
+  grid-area: trends;
+}

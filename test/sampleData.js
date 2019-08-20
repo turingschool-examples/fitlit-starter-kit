@@ -68,19 +68,19 @@ const sampleData = [{
       10
     ]
   },
-  {
-    "id": 6,
-    "name": "Jerrold Bogisich",
-    "address": "8283 Carroll Harbor, Borerfort CT 69020-3448",
-    "email": "Mercedes_Zboncak53@yahoo.com",
-    "strideLength": 3.7,
-    "dailyStepGoal": 11000,
-    "friends": [
-      11,
-      48,
-      15
-    ]
-  }
+{
+  "id": 6,
+  "name": "Jerrold Bogisich",
+  "address": "8283 Carroll Harbor, Borerfort CT 69020-3448",
+  "email": "Mercedes_Zboncak53@yahoo.com",
+  "strideLength": 3.7,
+  "dailyStepGoal": 11000,
+  "friends": [
+    11,
+    48,
+    15
+  ]
+}
 ]
 
 if (typeof module !== 'undefined') {

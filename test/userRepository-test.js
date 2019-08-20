@@ -98,9 +98,12 @@ describe('UserRepository', () => {
   })
 
   it('should return user data when given an id', () => {
-    // determineUserData();
     assert.equal(userRepository.determineUserData(1), user1);
     assert.equal(userRepository.determineUserData(2), user2);
+  });
+
+  it('should calculate average step goal of all users', () => {
+    assert.equal(userRepository.calculateAverageStepGoals(), 6400)
   })
 
 })

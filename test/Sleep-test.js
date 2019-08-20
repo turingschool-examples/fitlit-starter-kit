@@ -35,4 +35,12 @@ describe('Sleep', () => {
     expect(sleep.returnSleepQuality('2019/06/15')).to.equal(2.2);
   });
 
+  it('should return hours slept each day for week for a specific user', () => {
+    expect(sleep.returnWeekOfSleepHours(2)).to.eql([ 6.1, 4.1, 8, 10.4, 10.7, 9.3, 7.8 ]);
+  });
+
+  it('should return hours slept each day for week for a specific user', () => {
+    expect(sleep.returnWeekOfSleepQuality(2)).to.eql([ 2.2, 3.8, 2.6, 3.1, 1.2, 1.2, 4.2]);
+  });
+
 });

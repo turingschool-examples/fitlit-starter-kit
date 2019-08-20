@@ -33,6 +33,18 @@ class Sleep {
     let specificUser = this.findUser();
     return specificUser.find(day => day.date === date).sleepQuality;
   }
+
+  returnWeekOfSleepHours(week) {
+    let specificUser = this.findUser();
+    let weekOfData = specificUser.splice((-7 * week), 7);
+    return weekOfData.map(day => day.hoursSlept)
+  }
+
+  returnWeekOfSleepQuality(week) {
+    let specificUser = this.findUser();
+    let weekOfData = specificUser.splice((-7 * week), 7);
+    return weekOfData.map(day => day.sleepQuality)
+  }
 }
 
 if (typeof module !== 'undefined') {

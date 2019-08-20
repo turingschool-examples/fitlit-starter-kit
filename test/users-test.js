@@ -4,12 +4,12 @@ const expect = chai.expect;
 
 const UserRepository = require('../src/userRepository');
 const User = require('../src/User');
-const userData = require('../data-subsets/users-subset')
+const userData = require('../data-subsets/users-subset');
 
 describe('User', () => {
 
-    it('should be a function', () => {
-      expect(User).to.be.a('function');
+  it('should be a function', () => {
+    expect(User).to.be.a('function');
     });
 
     it('should be an instance of User', () => {
@@ -25,5 +25,6 @@ describe('User', () => {
     it('should be able to return user\'s first name only', () => {
         const user = new User(userData[0]);
         expect(user.getFirstName()).to.be.equal('Luisa')
+        console.log();
     })
 });    

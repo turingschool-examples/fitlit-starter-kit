@@ -1,13 +1,13 @@
 // const userData = require('./data-subsets/users-subset')
 
 class User {
-    constructor(userData) {
-     this.userData = userData;
-    }
-    getFirstName() {
-        let name = this.userData.name.split(' ')[0];
-        return name;
-    }
+  constructor(userData) {
+    this.userData = userData;
+  }
+  getFirstName() {
+    let name = this.userData.name.split(' ')[0];
+    return name;
+  }
 }
 
 
@@ -15,5 +15,5 @@ class User {
 
 
 if (typeof module !== 'undefined') {
-    module.exports = User;
-  }
+  module.exports = User;
+}

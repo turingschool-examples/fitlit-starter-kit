@@ -540,3 +540,7 @@ const sleepData = [
     "sleepQuality": 5
   }
 ];
+
+if (typeof module !== 'undefined') {
+  module.exports = sleepData;
+}

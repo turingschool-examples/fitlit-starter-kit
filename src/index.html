@@ -12,7 +12,11 @@
         <h4 class="header__div--date">August 19, 2019</h4>
       </div>
       <div class="header__div--greeting">
-        <h2 class="header__div--h2">Hi User</h2>
+        <container>
+          <h2 class="header__div--h2">Hi User</h2>
+          <p class="header__div__user-stepgoal">Your Goal: 10,000 per day</p>
+          <p class="header__div__allusers-stepgoal">Average User Goal: 12,000 per day</p>
+        </container>
         <container class="header__div--container">
           <p class="header__div__container__avg--title">This week</p>
           <p class="header__div__container__avg--steps">Average Steps: 45</p>
@@ -71,35 +75,39 @@
           <p class="main__activity--chooseDate">Pick a Day</p>
         </article>
         <article class="main__activity__article--data">
-          <container class="main__activity--user--data--container">
-            <p class="activity__container--user--steps--today">Steps Today: 10,000</p>
-            <p class="activity__container--user--active--today">Active minutes today: 55 mins</p>
-            <p class="activity__container--user--miles--today">Miles walked today: 5 miles</p>
-            <p class="activity__container--user--flights--today">Flights climbed today: 3</p>
-          </container>
-          <container class="main__activity--data--container">
-            <p class="activity__container--allusers--steps--today">Steps Today: 10,000</p>
-            <p class="activity__container--allusers--active--today">Active minutes today: 55 mins</p>
-            <p class="activity__container--allusers--miles--today">Miles walked today: 5 miles</p>
-            <p class="activity__container--allusers--flights--today">Flights climbed today: 3</p>
-          </container>
-          <container class="main__activity--data--container">
-            <p class="activity__container--user--steps--alltime">Steps Today: 10,000</p>
-            <p class="activity__container--user--active--alltime">Active minutes today: 55
-              mins</p>
-            <p class="activity__container--user--miles--alltime">Miles walked today: 5 miles
-            </p>
-            <p class="activity__container--user--flights--alltime">Flights climbed today: 3
-            </p>
-          </container>
-          <container class="main__activity--data--container">
-            <p class="activity__container--allusers--steps--alltime">Steps: 10,000</p>
-            <p class="activity__container--allusers--active--alltime">Active minutes:
-              55 mins</p>
-            <p class="activity__container--allusers--miles--alltime">Miles walked: 5
-              miles</p>
-            <p class="activity__container--allusers--flights--alltime">Flights climbed: 3</p>
-          </container>
+          <div class="user-activity">
+            <container class="main__activity--user--steps--today--container">
+              <p class="activity__container--user--steps--today">Steps Today: 10,000</p>
+              <p class="activity__container--user--active--today">Active minutes today: 55 mins</p>
+              <p class="activity__container--user--miles--today">Miles walked today: 5 miles</p>
+              <p class="activity__container--user--flights--today">Flights climbed today: 3</p>
+            </container>
+            <container class="main__activity--user--steps--alltime--container">
+              <p class="activity__container--user--steps--alltime">Steps Today: 10,000</p>
+              <p class="activity__container--user--active--alltime">Active minutes today: 55
+                mins</p>
+              <p class="activity__container--user--miles--alltime">Miles walked today: 5 miles
+              </p>
+              <p class="activity__container--user--flights--alltime">Flights climbed today: 3
+              </p>
+            </container>
+          </div>
+          <div class="allusers-activity">
+            <container class="main__activity--allusers--steps--today--container">
+              <p class="activity__container--allusers--steps--today">Steps Today: 10,000</p>
+              <p class="activity__container--allusers--active--today">Active minutes today: 55 mins</p>
+              <p class="activity__container--allusers--miles--today">Miles walked today: 5 miles</p>
+              <p class="activity__container--allusers--flights--today">Flights climbed today: 3</p>
+            </container>
+            <container class="main__activity--allusers--steps--alltime--container">
+              <p class="activity__container--allusers--steps--alltime">Steps: 10,000</p>
+              <p class="activity__container--allusers--active--alltime">Active minutes:
+                55 mins</p>
+              <p class="activity__container--allusers--miles--alltime">Miles walked: 5
+                miles</p>
+              <p class="activity__container--allusers--flights--alltime">Flights climbed: 3</p>
+            </container>
+          </div>
         </article>
       </section>
       <section class="main__trends">

@@ -20,5 +20,28 @@ describe('UserRepo', () => {
     expect(userRepo).to.be.an.instanceOf(UserRepo);
   });
 
+  it('should hold all user data', () => {
+    expect(userRepo.data.length).to.deep.equal(12)
+  });
+
+  it('should return the users darta based on their id', () => {
+    expect(userRepo.returnUserData(1)).to.deep.equal({
+      "id": 1,
+      "name": "Luisa Hane",
+      "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+      "email": "Diana.Hayes1@hotmail.com",
+      "strideLength": 4.3,
+      "dailyStepGoal": 10000,
+      "friends": [
+        2,
+        3,
+        4
+      ]
+    });
+  });
+
+  it('should return the average step goal among all users', () => {
+    expect(userRepo.returnAverageStepGoal()).to.equal(6833);
+  });
 
 });

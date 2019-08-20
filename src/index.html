@@ -5,7 +5,45 @@
     <title>Activity Tracker</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
+    <header class="header">
+      <img class="logo"> 
+      <p class="header_date"><span class="header_date-span"></span></p>
+    </header>
+    <section class="user_card">
+      <img class="user_card-image">
+      <p class="user_card-name"><span class="user_card-name-span"></span></p>
+    </section>
+    <containter class="main_containter">
+      <section class="main_section">
+        <article class="main_daily-water"></article>
+        <article class="main_weekly-water"></article>
+        <article class="main_daily-sleep"></article>
+        <article class="main_daily-steps"></article>
+        <article class="main_daily-miles"></article>
+        <article class="main_daily-minutes"></article>
+        <article class="main_daily-stairs"></article>
+        <container class="weekly_user">
+          <article class="main_weekly-steps"></article>
+          <article class="main_weekly-minutes"></article>
+          <article class="main_weekly-miles"></article>
+          <article class="main_weekly-stairs"></article>
+          <article class="main_weekly-sleep"></article>
+        </container>
+        <container class="weekly_all-users">
+          <article class="main_weekly-all-users-steps"></article>
+          <article class="main_weekly-all-users-minutes"></article>
+          <article class="main_weekly-all-users-miles"></article>
+          <article class="main_weekly-all-users-stairs"></article>
+        </container>
+        <container class="alltime_user">
+          <article class="main_alltime-steps"></article>
+          <article class="main_alltime-miles"></article>
+          <article class="main_alltime-stairs"></article>
+          <article class="main_alltime-sleep"></article>
+        </container>
+      </section>
+    </containter>
+
 
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>

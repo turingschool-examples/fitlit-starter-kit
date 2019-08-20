@@ -60,16 +60,24 @@ describe('UserRepository', function() {
     expect(UserRepository).to.be.a('function');
   });
 
-  
-
-
-
-
-
-
-  it('should return average step goal amongst all users', function() {
+  it.only('should return average step goal amongst all users', function() {
     const userRepository = new UserRepository(testUsers);
     expect(userRepository.returnAverageStepsGoal()).to.equal(6667);
+  })
+
+  it.only('should store users', function() {
+    const userRepository = new UserRepository(testUsers);
+    expect(userRepository.data).to.equal(testUsers);
+  });
+
+  it.only('should store the id of the current user', function() {
+    const userRepository = new UserRepository(testUsers, 1);
+    expect(userRepository.id).to.equal(1)
+  })
+
+  it.only('should find a user', function() {
+    const userRepository = new UserRepository(testUsers, 1);
+    expect(userRepository.findUserData()).to.deep.equal(testUsers[0])
   })
 
 });

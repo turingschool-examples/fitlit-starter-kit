@@ -20,10 +20,11 @@ describe('User', () => {
     const user = new User(userData[0]);
     expect(user.userData).to.deep.equal(userData[0]);
   })  
+  
+   it('should be able to return user\'s first name only', () => {
+        const user = new User(userData[0]);
+        expect(user.getFirstName()).to.be.equal('Luisa')
+        console.log();
+   })
 
-  it('should be able to return user\'s first name only', () => {
-    const user = new User(userData[0]);
-    console.log();
-    expect(user.getFirstName()).to.be.equal('Luisa')
-  })
 });    

@@ -1,5 +1,5 @@
 .main-page {
-    background-image: url(../src/images/track.jpeg);
+    background: #CDF5FE;
     background-position: center;
     background-size: cover;
     height: 100vh;
@@ -41,3 +41,12 @@
     width: 30%;
 }
 
+.header {
+    background-color: #FEEB8A;
+    border-bottom: black solid 2px;
+    color: #FE247A;
+    font-family: 'Knewave',
+    cursive;
+    text-align: center;
+    font-size: 2em;
+}

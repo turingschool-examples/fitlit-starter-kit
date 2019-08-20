@@ -1,5 +1,8 @@
 .main-page {
-    background: #CDF5FE;
+    background-image: linear-gradient(
+        to top right,
+        #2B093A,
+        #410F59);
     background-position: center;
     background-size: cover;
     height: 100vh;
@@ -11,7 +14,6 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-
 }
 
 .splash-header {
@@ -42,11 +44,22 @@
 }
 
 .header {
-    background-color: #FEEB8A;
-    border-bottom: black solid 2px;
+    background-color: #69188E;
+    border-bottom: #1ADFED solid 2px;
+    filter: hue-rotate(45deg);
     color: #FE247A;
-    font-family: 'Knewave',
-    cursive;
+    font-family: 'Knewave', cursive;
     text-align: center;
     font-size: 2em;
+}
+
+.main-date {
+    font-family: 'Quantico',
+    sans-serif;
+}
+
+main {
+    color: white;
+    font-family: 'Quantico',
+    sans-serif;
 }

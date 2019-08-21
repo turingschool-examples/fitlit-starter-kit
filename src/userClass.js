@@ -1,4 +1,3 @@
-// const data = require('../data/users.js');
 
 class User {
     constructor(userObj) {

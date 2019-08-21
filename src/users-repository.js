@@ -8,7 +8,7 @@ class UserRepository {
       return obj.id === id
     });
   }
-  
+
   returnAvgStepGoal() {
     // console.log(this.users)
     return this.users.map(obj => obj.dailyStepGoal).reduce((acc, num) => {

@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const Hydration = require('../src/Hydration').default;
+const Hydration = require('../src/Hydration-Repository');
 const hydrationTestData = require('../test-data/hydration-test-data')
 
 describe('Hydration', () => {

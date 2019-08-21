@@ -8,10 +8,9 @@ class Hydration {
   }
 
   returnAvgFluidOzPerDayAllTime(userId) {
-    //iterate through array of objects find object with matching userId
-    //
-    //given userId, calculate average fluid 
-    //ounces consumed for all time
+    return this.findCurrentUserData(userId).reduce((totalOunces, hydrationObj) => {
+      return totalOunces += hydrationObj.numOunces;
+    }, 0);
   }
 
   returnFluidOzByDate(userId, date) {
@@ -19,11 +18,10 @@ class Hydration {
   }
 
   returnFluidOzByWeek(userId, date) {
-    //for a given userId and 7 day period, calculate
-    //fluid ounces consumed per day over that period
+    let index = this.findCurrentUserData(userId).findIndex((hydrationObj) => hydrationObj.date === date);
+    return this.findCurrentUserData(userId).map(hydrationObj => hydrationObj.numOunces).splice(index, 7);
   }
 }
-
 
 
 module.exports = Hydration;

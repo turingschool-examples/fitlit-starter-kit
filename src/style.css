@@ -6,7 +6,7 @@
 
 body {
   display: grid;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto Slab', serif;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
@@ -17,8 +17,25 @@ body {
 }
 
 header {
-  background-color: red;
+  background-color: #001527;
+  display: flex;
+  justify-content: space-between;
   grid-area: header;
+  padding: 0px 50px 0 50px ;
+  align-items: center;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+header h1,
+header h2 {
+  color: white;
 }
 
 #article1 {

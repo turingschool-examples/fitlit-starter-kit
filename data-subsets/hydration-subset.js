@@ -249,56 +249,6 @@ const hydrationData = [
     "date": "2019/06/19",
     "numOunces": 38
   },
-   {
-    "userID": 1,
-    "date": "2019/06/19",
-    "numOunces": 91
-  },
-  {
-    "userID": 2,
-    "date": "2019/06/19",
-    "numOunces": 76
-  },
-  {
-    "userID": 3,
-    "date": "2019/06/19",
-    "numOunces": 85
-  },
-  {
-    "userID": 4,
-    "date": "2019/06/19",
-    "numOunces": 21
-  },
-  {
-    "userID": 5,
-    "date": "2019/06/19",
-    "numOunces": 69
-  },
-  {
-    "userID": 6,
-    "date": "2019/06/19",
-    "numOunces": 41
-  },
-  {
-    "userID": 7,
-    "date": "2019/06/19",
-    "numOunces": 41
-  },
-  {
-    "userID": 8,
-    "date": "2019/06/19",
-    "numOunces": 79
-  },
-  {
-    "userID": 9,
-    "date": "2019/06/19",
-    "numOunces": 82
-  },
-  {
-    "userID": 10,
-    "date": "2019/06/19",
-    "numOunces": 38
-  },
   {
     "userID": 1,
     "date": "2019/06/20",

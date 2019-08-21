@@ -60,9 +60,12 @@ section {
     margin-right: 5px;
 }
 
-/* article {
-    text-align: center;
-} */
+article {
+    /* text-align: center; */
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
 
 article h2 {
     background-color: #536a6a;

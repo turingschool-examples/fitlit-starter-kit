@@ -3,7 +3,6 @@ class Hydration {
     this.allHydrationData = allHydrationData;
     this.currentUserId = id;
     this.currentUserData;
-
   }
 
   findCurrentUserData() {
@@ -21,12 +20,24 @@ class Hydration {
   }
 
   findAverageFluidOzConsumedforSpecificDay(dateString) {
-   return this.currentUserData.find(day => day.date === dateString).numOunces
-   
+    return this.currentUserData.find(day => day.date === dateString).numOunces
+  }
+
+  findFluidOzConsumedEveryDayOverSpecificWeek(startDate, endDate) {
+    let week = this.currentUserData.filter((day) => {
+      if (new Date(day.date) >= new Date(startDate) && new Date(day.date) <= new Date(endDate)) {
+        return day
+      }
+    }).map(day => {
+      return {date: day.date, 
+        numOunces: day.numOunces}
+    });
+    return week
   }
 
 
 }
+
 
 
 

@@ -14,8 +14,8 @@ const user = new User(userData[randomUser]);
 
     $('#random-user-span').text(user.getFirstName());
     $('#article__user--name').text(user.getFirstName());
-    $('#article__user--address').text(userData.address);
-    $('#article__user--email').text(userData.email);
+    $('#article__user--address').text(userData[randomUser].address);
+    $('#article__user--email').text(userData[randomUser].email);
     $('#article__user--stridelength').text(userData.strideLength);
     $('#article__user--stepgoal').text(userData.dailyStepGoal);
     $('#article__user--stepcompare').text();

@@ -16,10 +16,10 @@ describe('Hydration', () => {
     const userHydro = new Hydration(repo.getUserData(3));
     expect(userHydro.userTotalAvgOz()).to.equal(56);
   });
-  it('should be able to return average oz consumed by date', () => {
+  it('should be able to return oz consumed on a specific date', () => {
     const repo = new HydrationRepository(sampleHydration)
     const userHydro = new Hydration(repo.getUserData(3));
-    expect(userHydro.userAvgByDate('2019/06/20')).to.equal(51)
+    expect(userHydro.userHydrationByDate('2019/06/20')).to.equal(51)
   });
   it('should display the total oz consumed per day for a given week', () => {
     const repo = new HydrationRepository(sampleHydration)
@@ -33,5 +33,10 @@ describe('Hydration', () => {
       { userID: 3, date: '2019/06/19', numOunces: 85 },
       { userID: 3, date: '2019/06/18', numOunces: 40 }])
   })
-
+  it('should calculate average oz drank for a specific week', () => {
+    const repo = new HydrationRepository(sampleHydration)
+    const userHydro = new Hydration(repo.getUserData(3));
+    userHydro.getHydroArray('2019/06/24')
+    expect(userHydro.getWeeklyHydroAvg()).to.equal(53)
+  })
 })

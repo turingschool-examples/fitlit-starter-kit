@@ -27,17 +27,25 @@
     </header>
     <main class="body__main">
       <section class="main__hydration">
-        <article class="main__hydration__article--title">
-          <h3 class="main__hydration--h3">Hydration</h3>
-        </article>
-        <article class="main__hydration__article--date">
-          <p class="main__hydration--date">Aug 19, 2019</p>
-          <p class="main__hydration--chooseDate">Pick a Day</p>
-        </article>
         <article class="main__hydration__article--data">
           <container class="main__hydration--data--container">
+                    <h3 class="main__hydration--h3">Hydration</h3>
+                    <p class="main__hydration--date">Aug 19, 2019</p>
+                    <p class="main__hydration--chooseDate">Pick a Day</p>
             <p class="hydration__container--consumed--today">Consumed Today: 15oz</p>
             <p class="hydration__container--consumed--this--week">Average consumed this week: 45oz</p>
+          </container>
+          <container class="main__hydration--data--container weeklyHydro">
+            <h4 class="main__hydration--thisWeek">This week:</h4>
+            <!-- <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p> -->
           </container>
           <container class="main__hydration--data--container">
             <p class="main__hydration__average--all-users">
@@ -47,17 +55,25 @@
         </article>
       </section>
       <section class="main__sleep">
-        <article class="main__sleep__article--title">
-          <h3 class="main__sleep--h3">Sleep</h3>
-        </article>
-        <article class="main__sleep__article--date">
-          <p class="main__sleep--date">Aug 19, 2019</p>
-          <p class="main__sleep--chooseDate">Pick a Day</p>
-        </article>
         <article class="main__sleep__article--data">
           <container class="main__sleep--data--container">
+                      <h3 class="main__sleep--h3">Sleep</h3>
+                      <p class="main__sleep--date">Aug 19, 2019</p>
+                      <p class="main__sleep--chooseDate">Pick a Day</p>
             <p class="sleep__container--consumed--today">Hours Slept today: 5 hours</p>
             <p class="sleep__container--consumed--this--week">Average hours slept this week: 6 hours</p>
+          </container>
+          <container class="main__sleep--data--container weeklyHydro">
+            <h4 class="main__sleep--thisWeek">This week:</h4>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
           </container>
           <container class="main__sleep--data--container">
             <p class="main__sleep__average--all-users">
@@ -67,15 +83,15 @@
         </article>
       </section>
       <section class="main__activity">
-        <article class="main__activity__article--title">
-          <h3 class="main__activity--h3">Activity</h3>
-        </article>
-        <article class="main__activity__article--date">
-          <p class="main__activity--date">Aug 19, 2019</p>
-          <p class="main__activity--chooseDate">Pick a Day</p>
-        </article>
         <article class="main__activity__article--data">
           <div class="user-activity">
+            <article class="main__activity__article--title">
+              <h3 class="main__activity--h3">Activity</h3>
+            </article>
+            <article class="main__activity__article--date">
+              <p class="main__activity--date">Aug 19, 2019</p>
+              <p class="main__activity--chooseDate">Pick a Day</p>
+            </article>
             <container class="main__activity--user--steps--today--container">
               <p class="activity__container--user--steps--today">Steps Today: 10,000</p>
               <p class="activity__container--user--active--today">Active minutes today: 55 mins</p>
@@ -92,6 +108,18 @@
               </p>
             </container>
           </div>
+          <container class="main__activity--data--container weeklyHydro">
+            <h4 class="main__activity--thisWeek">This week:</h4>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+            <p class="inserted--p"> 2019/06/25: oz </p>
+          </container>
           <div class="allusers-activity">
             <container class="main__activity--allusers--steps--today--container">
               <p class="activity__container--allusers--steps--today">Steps Today: 10,000</p>
@@ -134,7 +162,9 @@
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
     <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="../data/hydration.js"></script>
+    <script type="text/javascript" src="../src/Hydration.js"></script>
+    <script type="text/javascript" src="../test/sampleHydratation.js"></script>
+    <script type="text/javascript" src="../src/HydrationRepository.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
     <script type="text/javascript" src="../src/UserRepository.js"></script>

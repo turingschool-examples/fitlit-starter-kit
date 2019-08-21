@@ -61,6 +61,10 @@ describe('HydrationRepository', function() {
         "numOunces": 58
       }
     ])
+  });
+
+  it.only('should return average fluid oz consumed per day for all time', function() {
+    expect(hydrationRepository.returnHydrationAvg()).to.equal(71);
   })
 
 

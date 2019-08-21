@@ -8,7 +8,6 @@ class UserRepository {
   }
 
   findUserData() {
-    console.log(this.data.find(user => user.id === this.id))
     return this.data.find(user => user.id === this.id)
   }
 

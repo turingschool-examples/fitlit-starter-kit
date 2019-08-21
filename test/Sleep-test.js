@@ -3,16 +3,18 @@ const expect = chai.expect;
 
 const userData = require('../data/users-test-data');
 const sleepData = require('../data/sleep-test-data');
+const allSleepData = require('../data/sleep');
 
 const User = require('../src/User')
 const Sleep = require('../src/Sleep');
 
 describe('Sleep', () => {
 
-  let user, sleep;
+  let user, sleep, fullSleep;
   beforeEach(() => {
     user = new User(userData[0]);
     sleep = new Sleep(sleepData, user.id);
+    fullSleep = new Sleep(allSleepData, user.id)
   })
 
   it('should be a function', () => {
@@ -36,11 +38,11 @@ describe('Sleep', () => {
   });
 
   it('should return hours slept each day for week for a specific user', () => {
-    expect(sleep.returnWeekOfSleepHours(2)).to.eql([ 6.1, 4.1, 8, 10.4, 10.7, 9.3, 7.8 ]);
+    expect(fullSleep.returnWeekOfSleepHours(2)).to.eql([7.3, 5.1, 8.6, 10.5, 9.1, 6.5, 6.8]);
   });
 
   it('should return hours slept each day for week for a specific user', () => {
-    expect(sleep.returnWeekOfSleepQuality(2)).to.eql([ 2.2, 3.8, 2.6, 3.1, 1.2, 1.2, 4.2]);
+    expect(fullSleep.returnWeekOfSleepQuality(2)).to.eql([4.8, 4.7, 3.7, 1.8, 1.5, 4.2, 2]);
   });
 
 });

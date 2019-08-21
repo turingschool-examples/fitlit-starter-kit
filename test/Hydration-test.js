@@ -8,7 +8,8 @@ let hydration;
 describe('Hydration', () => {
 
   beforeEach( () => {
-    hydration = new Hydration(mockHydrationData); 
+    hydration = new Hydration(mockHydrationData, 1); 
+    hydration.findCurrentUserData();
   });
 
   it('should be a function', () => {
@@ -24,12 +25,11 @@ describe('Hydration', () => {
   })
 
   it('should have a parameter to take in an id for the current user', () => {
-    expect(hydration.idCurrentUser).to.eql(1);
+    expect(hydration.currentUserId).to.eql(1);
   })
 
   describe('findCurrentUserHydrationData', () => {
     it('should return a list of the current user/s hydration information', () => {
-      hydration.findCurrentUserData()
       expect(hydration.currentUserData).to.eql([{
         "userID": 1,
         "date": "2019/06/15",
@@ -85,11 +85,18 @@ describe('Hydration', () => {
   });
 
   describe('findAverageFluidOzConsumedPerDayForAllTime', () => {
-    it('should find the average fluid oz consumed per dat for all time rounding to the nearest whole number', () => {
-      expect(hydration.findAverageFluidOzConsumedPerDayForAllTime()).to.equal(58);
+    it('should find the average fluid oz consumed per day for all time rounding to the nearest whole number', () => {
+      expect(hydration.findAverageFluidOzConsumedPerDayForAllTime()).to.equal(60);
     });
+  });
     
-
+  describe('findAverageFluidOzConsumedforSpecificDay', () => {
+    it('should find the fluid oz consumed for a specific day', () => {
+      expect(hydration.findAverageFluidOzConsumedforSpecificDay("2019/06/15")).to.equal(37);
+      expect(hydration.findAverageFluidOzConsumedforSpecificDay("2019/06/16")).to.equal(69);
+      expect(hydration.findAverageFluidOzConsumedforSpecificDay("2019/06/24")).to.not.equal(62);
+      expect(hydration.findAverageFluidOzConsumedforSpecificDay("2019/06/24")).to.equal(61);
+    });
   })
 
 

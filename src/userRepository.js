@@ -13,7 +13,6 @@ class UserRepository {
       return stepGoalTotal
     }, 0) / this.users.length;
     return stepGoalSum;
-    
   }
 }
 

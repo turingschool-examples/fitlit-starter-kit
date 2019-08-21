@@ -1,5 +1,3 @@
-const userData = require('../data-subsets/users-subset');
-
 class User {
   constructor(userData) {
     this.userData = userData;

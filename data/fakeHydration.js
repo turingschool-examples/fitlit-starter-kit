@@ -115,3 +115,7 @@ const fakeHydration = [
         "numOunces": 61
     }
 ]
+
+if (typeof module !== 'undefined') {
+    module.exports = fakeHydration;
+  }

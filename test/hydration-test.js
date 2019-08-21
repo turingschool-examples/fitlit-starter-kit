@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Hydration = require('../src/Hydration');
-const hydrationTestData = require('../test-data/hydration-test')
+const hydrationTestData = require('../test-data/hydration-test-data')
 
 describe('Hydration', () => {
   let hydration;
@@ -15,7 +15,7 @@ describe('Hydration', () => {
   });
   
   it('should calculate average fluid ozs consumed per day for all time', function() {
-    expect(hydration.returnAvgFluidOzPerDayAllTime()).to.equal();
+    expect(hydration.returnAvgFluidOzPerDayAllTime(1)).to.equal(106);
   });
 
   it('should calculate fluid ounces by specific date', function() {

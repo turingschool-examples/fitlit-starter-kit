@@ -18,16 +18,11 @@
           <h5>Name:<span id= "article__user--name"></span></h5>
           <h5>Address:<span id= "article__user--address"></span></h5>
           <h5>Email:<span id= "article__user--email"></span></h5>
+          <h5>Stride Length:<span id= "article__user--stridelength"></span></h5>
+          <h5>Step Goal:<span id= "article__user--stepgoal"></span></h5>
+          <h5>Steps Compared to Others:<span id= "article__user--stepcompare"></span></h5>
         </article>
       </section>
-      <section class="main__section--2">
-        <article class="main__article--fitlit">
-          <h2>FitLit Information</h2>
-            <h5>Stride Length:<span id= "article__user--stridelength"></span></h5>
-            <h5>Step Goal:<span id= "article__user--stepgoal"></span></h5>
-            <h5>Steps Compared to Others:<span id= "article__user--stepcompare"></span></h5>
-      </article>
-    </section>
     <section class="main__section--3">
       <article class="main__article--sleep">
         <h2>Sleep Tracker</h2>
@@ -40,6 +35,7 @@
       <article class="main__article--hydration">
         <h2>Hydration Tracker</h2>
         <h5>This Week's Graph:</h5>
+        <canvas id= "weekly-hydration-chart" width="300" height="300"></canvas>
        </article>
    </section>
     <section class="main__section--5">
@@ -51,8 +47,11 @@
             <h5>Weekly View:<span id= "article__user--weeklyview"></span></h5>
           <h2>Compared Numbers</h2> 
             <h5>Steps:<span id= "article__user--comparesteps"></span></h5>
+              <canvas id= "compare-user-steps-chart" width="300" height="300"></canvas>
             <h5>Minutes Active:<span id= "article__user--comparemins"></span></h5>
+            <canvas id= "compare-minutes-active-chart" width="300" height="300"></canvas>
             <h5>Flights of Stairs:<span id= "article__user--comparestairs"></span></h5>
+            <canvas id= "compare-user-stairs-chart" width="300" height="300"></canvas>
       </article>
     </section>
     <section class="main__section--6">

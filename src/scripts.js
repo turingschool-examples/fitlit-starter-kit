@@ -3,6 +3,7 @@ $(document).ready(function() {
 const randomUser = Math.floor(Math.random() * 50 ) 
 const userRepository = new UserRepository(userData);
 const hydration = new Hydration(hydrationData);
+const user = new User(userData[randomUser]);
 // const sleep = new Sleep();
 // const sleepRepository = new SleepRepository();
 // const activity = new Activity();
@@ -10,7 +11,6 @@ const hydration = new Hydration(hydrationData);
 
 //the above code is commented out until we finish each of those iterations
 
-const user = new User(userData[randomUser]);
 
     $('#random-user-span').text(user.getFirstName());
     $('#article__user--name').text(user.getFirstName());
@@ -30,6 +30,64 @@ const user = new User(userData[randomUser]);
     $('#article__user--comparemins').text();
     $('#article__user--comparestairs').text();
 
-
+    const weeklyWaterIntake = new Chart($('#weekly-hydration-chart'), {
+        type: 'bar',
+    data: {
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      datasets: [{
+        label: 'weekly active minutes overview',
+        data: hydration.findWeeklyWaterCons(),
+        backgroundColor: [
+          '#2FB5B6',
+          '#FC5D79', 
+          '#B6E7EC', 
+          '#fda8b7', 
+          '#1F768A',
+          '#fc7d93',
+          '#346081'
+        ],
+        borderColor: [
+          '#2FB5B6',
+          '#FC5D79',
+          '#B6E7EC',
+          '#fda8b7',
+          '#1F768A',
+          '#fc7d93',
+          '#346081', 
+        ],
+        borderWidth: 2 
+      }]
+    },
+        options: {
+          legend: {display: false},
+          labels: {
+            fontColor: 'black',
+            fontSize: 15
+          },
+          title: {
+            display: true,
+            fontColor: 'black',
+            text: 'Weekly Water Intake (fl oz)'
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+                fontColor: 'black',
+                fontSize: 14
+              }
+            }],
+            xAxes: [{
+              ticks: {
+                beginAtZero: true,
+                fontColor: 'black',
+                fontSize: 14
+              }
+            }],
+          }
+        }
+      });
+    
+    
 
 });

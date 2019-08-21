@@ -12,4 +12,8 @@ describe('Hydration', function() {
         const water = new Hydration(sampleHydrationData);
         expect(water.allTimeHydration(1)).to.equal(54.36)
     })
+    it.only('should return a user water consumpution on a given day', function() {
+        const water = new Hydration(sampleHydrationData);
+        expect(water.dailyHydration(1, "2019/06/16")).to.equal(69)
+    })
     })

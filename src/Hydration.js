@@ -1,22 +1,26 @@
 class Hydration {
-  constructor() {
-
+  constructor(hydrationData) {
+    this.hydrationData = hydrationData;
   }
 
-  returnFluidOzByWeek() {
-
+  findCurrentUserData(userId) {
+    return this.hydrationData.filter((hydrationObj) => hydrationObj.userID === userId);
   }
 
-  returnFluidOzByDate() {
-
+  returnAvgFluidOzPerDayAllTime(userId) {
+    //iterate through array of objects find object with matching userId
+    //
+    //given userId, calculate average fluid 
+    //ounces consumed for all time
   }
 
-  returnFluidOzPerDayAllTime() {
-
+  returnFluidOzByDate(userId, date) {
+    return this.findCurrentUserData(userId).find((hydrationObj) => hydrationObj.date === date).numOunces;
   }
 
-  returnAvgFluidOzPerDayAllTime() {
-    
+  returnFluidOzByWeek(userId, date) {
+    //for a given userId and 7 day period, calculate
+    //fluid ounces consumed per day over that period
   }
 }
 

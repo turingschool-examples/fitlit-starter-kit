@@ -25,7 +25,7 @@ describe('Sleep', function() {
 
   it('should get avg number of hours slept per day for a user', () => {
 
-    expect(sleep1.avgHours()).to.equal()
+    expect(sleep1.getAvgSleepHours(1)).to.equal(7.7)
   });
 
 });

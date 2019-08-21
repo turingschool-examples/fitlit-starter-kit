@@ -67,4 +67,10 @@ describe('Hydration', () => {
     assert.equal(hydrationData.calculateAverageWaterIntake(), 55)
   })
 
+  it('should return number of fluid ounces consumed for a specific day', () => {
+    assert.equal(hydrationData.hydrationData[0].date, "2019/06/15");
+    var date = hydrationData.hydrationData[0].date
+    assert.equal(hydrationData.waterConsumedThatDay(date), 60)
+  })
+
 });

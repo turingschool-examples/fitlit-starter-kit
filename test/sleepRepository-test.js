@@ -22,7 +22,7 @@ describe('Sleep Repository', () => {
                 userID: 1,
                 date: '2019/06/15',
                 hoursSlept: 6.1,
-                sleepQuality: 2.2
+                sleepQuality: 2.2 
             },
             {
                 userID: 1,

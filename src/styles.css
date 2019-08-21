@@ -1,7 +1,7 @@
 main {
     color: white;
     font-family: 'Quantico',
-        sans-serif;
+    sans-serif;
 }
 
 .main-page {
@@ -33,9 +33,20 @@ main {
     text-align: center;
 }
 
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
 .splash-img {
     align-content: center;
     margin: 0px 300px;
+    animation: 1s ease-in 0s 1 slideInFromLeft;
 }
 
 .enter__button {

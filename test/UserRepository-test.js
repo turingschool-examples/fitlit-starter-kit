@@ -47,9 +47,9 @@ beforeEach(() => {
         33
       ]
     }];
-    userRepository = new UserRepository(data);
-  });
-  
+  userRepository = new UserRepository(data);
+});
+
 describe('UserRepository', () => {
 
   it('should be a function', () => {
@@ -66,6 +66,6 @@ describe('UserRepository', () => {
 
   it('should return the average step count goal of all users', () => {
     expect(userRepository.getAvgStep()).to.equal(6000);
-  })
+  });
 
 });

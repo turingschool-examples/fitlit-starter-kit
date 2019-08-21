@@ -1,9 +1,8 @@
 const chai = require('chai');
 const expect = chai.expect;
 const User = require('../src/User');
-const UserRepository = require('../src/UserRepository');
 
-let user, userRepository, data;
+let user, data;
 
 beforeEach(() => {
   data =
@@ -17,7 +16,6 @@ beforeEach(() => {
       "friends": [16, 4, 8]
     };
   user = new User(data);
-  userRepository = new UserRepository(data);
 });
 
 describe('User', () => {

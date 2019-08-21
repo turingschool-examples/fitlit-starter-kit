@@ -1,4 +1,4 @@
-const users = require('../data/users.js')
+// const users = require('../data/users.js')
 
 class User {
   constructor(userObj) {

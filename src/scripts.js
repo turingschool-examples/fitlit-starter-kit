@@ -1,7 +1,4 @@
-
-// console.log(userRepository)
 var users = new UserRepository(userData)
-console.log(users)
 
 const dailySection = document.querySelector('.daily_section')
 

@@ -81,8 +81,8 @@ describe('UserRepository', () => {
         10
       ]
     });
-    userRepository = new UserRepository([user1, user2, user3, user4, user5])
-    // console.log("One", userRepository)
+
+    userRepository = new UserRepository([user1, user2, user3, user4, user5]);
   })
 
   it('should be a function', () => {

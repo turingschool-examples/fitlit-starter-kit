@@ -9,6 +9,6 @@ const userRepo = new UserRepository(userData);
 const currentUser = userRepo.data.find(user => user.id === uniqueUserIndex)
 const user = new User(currentUser);
 
-
-
-  $('.user_card-name-span').text(user.getUserFirstName(1));
+$('.user_card-name-span').text(user.getUserFirstName(1));
+$('.step_goal-user-span').text(`${user.dailyStepGoal}`);
+$('.step_goal-all-average-span').text(userRepo.averageStepGoal());

@@ -2,13 +2,12 @@
 
 
 class UserRepository {
-  constructor(data, id) {
+  constructor(data) {
     this.data = data;
-    this.id = id;
   }
 
-  findUserData() {
-    return this.data.find(user => user.id === this.id)
+  findUserData(id) {
+    return this.data.find(user => id === user.id)
   }
 
   returnAverageStepsGoal() {

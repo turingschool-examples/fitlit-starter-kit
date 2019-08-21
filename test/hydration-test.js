@@ -19,6 +19,10 @@ describe('HydrationUser', function() {
     expect(hydrationUser.findDailyHydration("2019/06/15", 1)).to.equal(37)
   })
 
+  it.only('should find weekly hydration info based on id', function() {
+    const hydrationUser = new HydrationUser(hydrationTestData);
+    expect(hydrationUser.findWeeklyHydration(1)).to.deep.equal([69, 96, 61, 91, 50, 50, 43])
+  })
 
 
 

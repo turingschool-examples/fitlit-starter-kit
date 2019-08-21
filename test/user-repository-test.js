@@ -55,28 +55,28 @@ beforeEach(() => {
 })
 
 describe('UserRepository', function() {
-  it('should be a function', function() {
+  it.only('should be a function', function() {
     const userRepository = new UserRepository(testUsers);
     expect(UserRepository).to.be.a('function');
   });
 
-  it('should return average step goal amongst all users', function() {
+  it.only('should return average step goal amongst all users', function() {
     const userRepository = new UserRepository(testUsers);
     expect(userRepository.returnAverageStepsGoal()).to.equal(6667);
   })
 
-  it('should store users', function() {
+  it.only('should store users', function() {
     const userRepository = new UserRepository(testUsers);
     expect(userRepository.data).to.equal(testUsers);
   });
 
-  it('should store the id of the current user', function() {
+  it.only('should store the id of the current user', function() {
     const userRepository = new UserRepository(testUsers, 2);
     console.log("in test", userRepository.id)
     expect(userRepository.id).to.equal(2)
   })
 
-  it('should find a user', function() {
+  it.only('should find a user', function() {
     const userRepository = new UserRepository(testUsers, 1);
     expect(userRepository.findUserData()).to.deep.equal(testUsers[0])
   })

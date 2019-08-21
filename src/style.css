@@ -5,19 +5,21 @@
 }
 
 body {
+  background-color: #001527;
   display: grid;
   font-family: 'Roboto Slab', serif;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
     "header header header header header header"
-    "step step water water water sleep";
+    "step step water water sleep sleep";
   margin: 0;
   height: 100vh;
 }
 
 header {
   background-color: #001527;
+  border: 1px solid #3A3A4A;
   display: flex;
   justify-content: space-between;
   grid-area: header;
@@ -26,29 +28,121 @@ header {
 }
 
 h1 {
+  color: white;
   font-size: 3rem;
+  margin: 0;
+}
+
+.header__h1--lt {
+  font-weight: 300;
 }
 
 h2 {
+  color: white;
   font-size: 2rem;
+  font-weight: 300;
+  margin: 0;
 }
 
-header h1,
-header h2 {
+.header__span {
+  font-weight: 700;
+}
+
+h3 {
   color: white;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+p {
+  color: white;
+  font-size: 3rem;
+  margin: 0;
 }
 
 #article1 {
-  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #001527;
+  border: 1px solid #3A3A4A;
   grid-area: step;
 }
 
 #article2 {
-  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #001527;
+  border: 1px solid #3A3A4A;
   grid-area: water;
 }
 
 #article3 {
-  background-color: green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #001527;
+  border: 1px solid #3A3A4A;
   grid-area: sleep;
 }
+
+@media screen and (max-width: 700px) {
+
+  body {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "header header header header"
+      "step step water water"
+      "sleep sleep sleep sleep";
+  }
+
+@media screen and (max-width: 600px) {
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: center;
+    grid-area: header;
+    padding: 0px 50px 0 50px ;
+    align-items: center;
+  }
+
+  h1 {
+    margin-top: 50px;
+  }
+
+  .header__h1--lt {
+    font-weight: 300;
+  }
+
+  h2 {
+    margin-bottom: 50px;
+  }
+
+  @media screen and (max-width: 525px) {
+
+    body {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+      grid-template-areas:
+        "header header"
+        "step step"
+        "water water"
+        "sleep sleep"
+        "sleep sleep";
+    }
+
+    h1 {
+      margin-top: 50px;
+    }
+
+    .header__h1--lt {
+      font-weight: 300;
+    }
+
+    h2 {
+      margin-bottom: 50px;
+    }

@@ -73,4 +73,3 @@ const userData = [
 
 // module.exports = User;
 module.exports = userData;
-

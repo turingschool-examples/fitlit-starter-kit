@@ -5,7 +5,7 @@ class HydrationUser {
 
   findDailyHydration(date, id) {
     var day = this.hydrationTestData.find(user => user.date === date && id)
-  console.log(day)
+    return day.numOunces
   }
 }
 

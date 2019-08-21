@@ -14,14 +14,9 @@ describe('HydrationUser', function() {
     expect(hydrationUser.hydrationTestData).to.equal(hydrationTestData)
   });
 
-  it.only('should find user hydration info based on date', function() {
+  it.only('should find hydration info based on date', function() {
     const hydrationUser = new HydrationUser(hydrationTestData);
-    expect(hydrationUser.findDailyHydration("2019/06/15", 1)).to.equal(
-      {
-      "userID": 1,
-      "date": "2019/06/15",
-      "numOunces": 37
-    })
+    expect(hydrationUser.findDailyHydration("2019/06/15", 1)).to.equal(37)
   })
 
 

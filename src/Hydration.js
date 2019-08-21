@@ -26,6 +26,9 @@ class Hydration {
     return Math.floor(oz);
   }
 
+  findWaterByDate(day) {
+    return this.hydrationFiltered.find(obj => obj.date === day).numOunces; 
+  }  
 }
 
 

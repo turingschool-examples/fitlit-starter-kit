@@ -9,20 +9,20 @@ class Hydration {
       ounces += hydrationObj.numOunces
       return ounces
     }, 0)
-    this.averageOuncesConsumed = Math.floor(totalOunces / this.userHydrationInfo.length);
-    return this.averageOuncesConsumed;
+    this.averageOuncesConsumed = Math.floor(totalOunces / this.userHydrationInfo.length.toFixed(2));
+      return this.averageOuncesConsumed;
   };
 
   getOuncesByDate(date) {
-    let ouncesPerDay = this.userHydrationInfo.find( hydrationObj => hydrationObj.date === date );
-    return ouncesPerDay.numOunces
+    let ouncesPerDay = this.userHydrationInfo.find(hydrationObj => hydrationObj.date === date );
+      return ouncesPerDay.numOunces;
   };
 
   getOuncesByWeek() {
-    let ouncesPerWeekPerDay = this.userHydrationInfo.map( hydrationObj => {
+    let ouncesPerWeekPerDay = this.userHydrationInfo.map(hydrationObj => {
       return hydrationObj.numOunces
     });
-    return ouncesPerWeekPerDay
+    return ouncesPerWeekPerDay;
   };
 
 }

@@ -20,7 +20,7 @@ describe("Hydration", () => {
   });
   
   it("should have an average ounces consumed per day all time", () => {
-    expect(hydration.getAverageOuncesPerDayAllTime()).to.equal(53)
+    expect(hydration.getAverageOuncesPerDayAllTime()).to.equal(53.00)
   });
 
   it("should have ounces consumed per day", () => {

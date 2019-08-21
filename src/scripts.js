@@ -8,7 +8,9 @@ $(document).ready(() => {
   $('.article__strong--address').text(user.address);
   $('.article__strong--email').text(user.email);
   $('.article__strong--stride').text(user.strideLength);
-  
+  $('.article__p--daily-water').text(hydrationUser.findDailyHydration('2019/06/15', 1));
+  $('.article__p--weekly').text(hydrationUser.findWeeklyHydration(1))
+
   
 });
 

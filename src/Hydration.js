@@ -2,7 +2,7 @@ class Hydration {
   constructor(userData) {
     this.userData = userData;
     this.newUserData = [...userData];
-    this.weeklyHydroArr;
+    this.weeklyArr;
   }
 
   userTotalAvgOz() {
@@ -17,16 +17,16 @@ class Hydration {
   getHydroArray(dateToday) {
   const arrayOfDates = this.userData.map(day => day.date)
     const index = (((arrayOfDates.length - arrayOfDates.findIndex(date => dateToday === date)) * -1) - 6)
-    this.weeklyHydroArr = this.newUserData.splice(index, 7).reverse();
-    return this.weeklyHydroArr;
+    this.weeklyArr = this.newUserData.splice(index, 7).reverse();
+    return this.weeklyArr;
   }
   
   getWeeklyHydroAvg() {
-    const weekTotal = this.weeklyHydroArr.reduce((total, day) => {
+    const weekTotal = this.weeklyArr.reduce((total, day) => {
       total += day.numOunces;
       return total
     }, 0)
-    return Math.round(weekTotal/this.weeklyHydroArr.length)
+    return Math.round(weekTotal/this.weeklyArr.length)
   }
 };
 

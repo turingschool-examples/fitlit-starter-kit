@@ -2,19 +2,52 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const activityData = require('../data/activity-test-data');
+const userData = require('../data/users-test-data');
 
 const Activity = require('../src/Activity');
+const User = require('../src/User');
+
 
 describe('Activity', () => {
+  let user;
+  let activity;
   
   beforeEach(() => {
-    let activity = new Activity(activityData)
-  })
+    user = new User(userData[0])
+    activity = new Activity(activityData, user)
+  });
 
   it('should be a function', () => {
     expect(Activity).to.be.a('function');
+  });
 
-  })
+  it('should return the miles walked by a specific user for a specific day', () => {
+    expect(activity.returnMilesWalked()).to.equal(6.60);
+  });
+
+  it('should return the minutes active for a day', () => {
+    expect(activity.returnMinutesActive("2019/06/26")).to.equal(219);
+  });
+
+  it('should return the average minutes active for a week', () => {
+    expect(activity.returnAverageMinutesActiveForWeek(1)).to.equal(148);
+  });
+
+  it('should return false if they did not meet their step goal for a date', () => {
+    expect(activity.metStepGoal('2019/06/15')).to.equal(false);
+  });
+
+  it('should return true if they did  meet their step goal for a date', () => {
+    expect(activity.metStepGoal("2019/06/17")).to.equal(true);
+  });
+
+  it('should return all days where exceeded step goal ', () => {
+    expect(activity.returnAllStepGoalDays()).to.eql([ '2019/06/17', '2019/06/22', '2019/06/23' ]);
+  });
+
+  it('should return alltime stair climbing record ', () => {
+    expect(activity.returnStepRecord()).to.equal(36);
+  });
 
 
 });

@@ -1,6 +1,15 @@
 class Hydration {
-    constructor() {
+    constructor(waterData) {
+        this.waterData = waterData;
+    }
+    dailyHydration(id, date) {
 
+    }
+    allTimeHydration(id) {
+
+    }
+    weeklyHydration(id, date) {
+        
     }
 }
 

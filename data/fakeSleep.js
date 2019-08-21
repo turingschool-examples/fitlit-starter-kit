@@ -141,3 +141,7 @@ const fakeSleep = [
         "sleepQuality": 3
     }
 ]
+
+if (typeof module !== 'undefined') {
+    module.exports = fakeSleep;
+}

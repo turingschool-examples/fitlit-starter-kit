@@ -1,8 +1,19 @@
+main {
+    color: white;
+    font-family: 'Quantico',
+    sans-serif;
+}
+
 .main-page {
-    background: #CDF5FE;
+    /* background-image: linear-gradient(
+        to top right,
+        #2B093A,
+        #410F59); */
+    background-image: url('../src/images/80s-sunset.png');
     background-position: center;
     background-size: cover;
     height: 100vh;
+    opacity: 0.7;
     width: 100%;
 }
 
@@ -11,21 +22,31 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-
 }
 
 .splash-header {
     background: #CDF5FE;
     color: #FE247A;
-    font-family: 'Knewave',
+    font-family: 'Faster One',
     cursive;
     font-size: 4em;
     text-align: center;
 }
 
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
 .splash-img {
     align-content: center;
     margin: 0px 300px;
+    animation: 1s ease-in 0s 1 slideInFromLeft;
 }
 
 .enter__button {
@@ -42,11 +63,17 @@
 }
 
 .header {
-    background-color: #FEEB8A;
-    border-bottom: black solid 2px;
+    background-color: #69188E;
+    border-bottom: #1ADFED solid 2px;
+    filter: hue-rotate(45deg);
     color: #FE247A;
-    font-family: 'Knewave',
+    font-family: 'Bungee Shade',
     cursive;
     text-align: center;
     font-size: 2em;
+}
+
+.main-date {
+    font-family: 'Quantico',
+    sans-serif;
 }

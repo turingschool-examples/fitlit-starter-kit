@@ -1,7 +1,3 @@
-// userData = require("../data-subsets/users-subset");
-// user = require("./User");
-
-
 class UserRepository {
   constructor(userData) {
     this.users = userData;

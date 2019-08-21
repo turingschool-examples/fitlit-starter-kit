@@ -18,8 +18,13 @@ header {
 }
 
 h1 {
-    font-weight: 700;
+    font-size: 60px;
+    /* font-weight: 700; */
     margin: 10px;
+}
+
+header h2 {
+    font-size: 40px;
 }
 
 span {
@@ -37,7 +42,6 @@ section {
     border: 1px solid gray;
     border-radius: 4px;
     height: 280px;
-    padding: 10px;
     margin-top: 20px;
     width: 45%;
 }
@@ -56,6 +60,17 @@ section {
     margin-right: 5px;
 }
 
-article {
+/* article {
     text-align: center;
+} */
+
+article h2 {
+    background-color: #536a6a;
+    padding: 5px;
+    text-align: center;
+}
+
+h5 {
+    font-size: 16px;
+    padding: 5px;
 }

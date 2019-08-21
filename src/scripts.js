@@ -7,6 +7,9 @@ const hydration = new Hydration(hydrationData);
 // const sleepRepository = new SleepRepository();
 // const activity = new Activity();
 // const activityRepository = new ActivityRepository();
+
+//the above code is commented out until we finish each of those iterations
+
 const user = new User(userData[randomUser]);
 
     $('#random-user-span').text(user.getFirstName());

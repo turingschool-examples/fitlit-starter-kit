@@ -1,11 +1,15 @@
 class UserRepository {
     constructor(data) {
         this.data = data;
+        this.currentUserData;
+        
+    }
 
     
-    }
     fetchUserData(userID) {
-        return this.data.find(user => user.id === userID)
+        let currentUser = this.data.find(user => user.id === userID);
+        this.currentUserData = currentUser;
+        return currentUser;
         // we have the userID that we are searching for in our data
         // we need to compare userID to the key of "id" 
         //and if it matches return the entire object --

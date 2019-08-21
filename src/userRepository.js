@@ -11,6 +11,7 @@ class UserRepository {
 		});
 		return this.currentUser
 	}
+
 	findAverageStep() {
 		var sum = 0
 		this.data.forEach(user => {

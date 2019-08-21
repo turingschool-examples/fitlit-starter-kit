@@ -2,13 +2,15 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,300,700&display=swap" rel="stylesheet">
     <link rel="Stylesheet" type="text/css" href="./stylesheet.css" />
     <title>Activity Tracker</title>
   </head>
   <body>
     <main class='main_boi'>
       <header class='main_header'>
-      <h1>FitLit</h1>
+      <h1 class='main_header_title'>Fit<strong class='main_header_title_strong'>Lit</strong></h1>
+      <p class='main_header_welcome'> Welcome </p>
       </header>
         <section class='main_user'>
           <h2 class='main_user_title'> User Info </h2>
@@ -24,10 +26,16 @@
         </section>
         <section class='main_hydro'>
           <h2 class='main_hydro_title'> Hydro Section </h2>
+          <ul class='main_hydro_list'> Date </ul>
+          <p class='main_hydro_average'> Average fluid ounces intake </p>
+          <p class='main_hydro_daily'> Fluid ounces intake by day </p>
+          <p class='main_hydro_weekly'> Fluid ounces intake by week </p>
         </section>
         <section class='main_activity'>
           <h2 class='main_activity_title'> Activity Tracker </h2>
         </section>
+      <script type="text/javascript" src='./userHydro.js'></script>
+      <script type="text/javascript" src='./hydroRepository.js'></script>
       <script type="text/javascript" src='./userRepository.js'></script>
       <script type="text/javascript" src='./user.js'></script>
       <script type="text/javascript" src="../data/users.js"></script>

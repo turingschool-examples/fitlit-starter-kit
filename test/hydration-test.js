@@ -48,7 +48,13 @@ describe('Hydration', () => {
       "numOunces": 99
     };
 
-    hydrationData = new Hydration([day1, day2, day3, day4, day5, day6, day7], 17);
+    day8 = {
+      "userID": 17,
+      "date": "2019/06/22",
+      "numOunces": 54
+    };
+
+    hydrationData = new Hydration([day1, day2, day3, day4, day5, day6, day7, day8], 17);
   });
 
   it('should be a function', () => {
@@ -66,5 +72,15 @@ describe('Hydration', () => {
   it('should calculate average fluid oz intake per day for the whole', () => {
     assert.equal(hydrationData.calculateAverageWaterIntake(), 55)
   })
+
+  it('should return number of fluid ounces consumed for a specific day', () => {
+    assert.equal(hydrationData.hydrationData[0].date, "2019/06/15");
+    let date = hydrationData.hydrationData[0].date
+    assert.equal(hydrationData.waterConsumedThatDay(date), 60)
+  })
+
+  it('should return number of fluid ounces consumed each day for a week', () => {
+    assert.deepEqual(hydrationData.waterConsumedThatWeek(), [43, 59, 52, 50, 24, 99, 54])
+  });
 
 });

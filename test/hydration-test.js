@@ -9,7 +9,7 @@ describe('Hydration', () => {
   beforeEach(() => {
     hydration = new Hydration(hydrationTestData);
   });
-  
+
   it('should be a function', function() {
     expect(Hydration).to.be.a('function');
   });
@@ -19,7 +19,7 @@ describe('Hydration', () => {
   });
 
   it('should calculate fluid ounces by specific date', function() {
-    expect(hydration.returnFluidOzByDate()).to.equal();
+    expect(hydration.returnFluidOzByDate(3, '2019/06/15')).to.equal(47);
   });
 
   it('should calculate water consumption over a week period', function() {

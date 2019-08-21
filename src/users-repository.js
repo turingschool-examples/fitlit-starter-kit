@@ -3,16 +3,23 @@ class UserRepository {
     this.users = data;
   }
 
-  getUser(id) {
-    return this.users.userData.find(obj => obj.id === id)
+  getUser = (id) => {
+    return this.users.find(obj => {
+      return obj.id === id
+    });
   }
-
+  
   returnAvgStepGoal() {
-    return this.users.userData.map(obj => obj.dailyStepGoal).reduce((acc, num) => {
+    // console.log(this.users)
+    return this.users.map(obj => obj.dailyStepGoal).reduce((acc, num) => {
       return acc + num
-    }, 0) / this.users.userData.length
+    }, 0) / this.users.length
   }
   
 }
 
-module.exports = UserRepository;
+
+// module.exports = UserRepository;
+if (typeof module !== "undefined") {
+  module.exports = UserRepository;
+}

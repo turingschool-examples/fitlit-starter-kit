@@ -41,7 +41,7 @@ section {
     background-color: darkslategrey;
     border: 1px solid gray;
     border-radius: 4px;
-    height: 280px;
+    height: auto;
     margin-top: 20px;
     width: 45%;
 }

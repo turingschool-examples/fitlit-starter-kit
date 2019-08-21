@@ -1,6 +1,5 @@
 const hydrationData = require('../data-subsets/hydration-subset');
 
-
 class Hydration {
   constructor(userData) {
     this.userData = userData;
@@ -30,9 +29,6 @@ class Hydration {
     return this.hydrationFiltered.find(obj => obj.date === day).numOunces; 
   }
 
-  // For a user, how many fluid ounces of water consumed each 
-  // day over the course of a week (7 days) - return the amount for 
-  // each day
   findWeeklyWaterCons() {
     return this.ouncesPerDay.slice((7, -7));
   }

@@ -14,7 +14,9 @@ function getRandomNumber() {
 
 
 $('.header__span').text(user.returnFirstName());
-$('#article1').text(user.name)
+$("#step-goal").text(user.dailyStepGoal);
+$('#avg-steps').append(allUsers.returnAvgStepGoal())
+
 
 console.log(user.name)
 console.log(getRandomNumber())

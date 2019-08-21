@@ -1,4 +1,3 @@
-console.log("Hello World");
 /***************** Variables *****************/
 let name = document.querySelector('.main_user_name');
 let address = document.querySelector('.main_user_address');
@@ -15,6 +14,7 @@ let randoNum = null
 
 /*************** Event Listeners *************/
 window.addEventListener('load', initializePage(userData, hydrationData))
+// hydroList.addEventListener('click', initializePage(userData, hydrationData))
 
 /***************** Functions *****************/
 function getRandoNum() {
@@ -37,21 +37,37 @@ function initializePage(data, hydro) {
 	friends.innerHTML = `Friends: ${findFriends(userRepository, user)}`
 	welcome.innerHTML = `Welcome ${user.firstName()}!`;
 	avgFluids.innerHTML = `Average fluid ounces intake: ${userHydro.findAvgOunce()}`
-	userHydro.findDates()
-	hydroList.insertAdjacentHTML('afterend', `<li>${userHydro.populateDates()}</li>`)
+	// dailyFluids.innerHTML = `Fluid ounces intake by day: ${}`;
+	// userHydro.findOunceDay("2019/06/15")
+	let hydroDates = userHydro.findDates()
+	updateHydroDate(hydroDates.reverse());
 }
 
 function findFriends(userRepository, user) {
 	newFriends = [];
 	user.friends.forEach(friend => {
-		var friendInfo = userRepository.findUser(friend)
+		let friendInfo = userRepository.findUser(friend)
 			newFriends.push(friendInfo.name)
 			newFriends.push(friendInfo.dailyStepGoal)
 		})
 	return newFriends
 }
 
+function updateHydroDate(array) {
+	let dateList = document.createElement("select");
+	dateList.setAttribute("id", "mySelect");
+	hydroList.appendChild(dateList);
+	for (let i = 0; i < array.length; i++) {
+		let option = document.createElement("option");
+    option.setAttribute("value", array[i]);
+    option.text = array[i];
+    dateList.appendChild(option);
+	}
+}
+
 // function createHydroList() {
 // 	hydroList.insertAdjacentHTML('afterbegin', `<li>${userHydro.findDates()}</li>`)
 
 // }
+
+// hydroList.insertAdjacentHTML('afterend', `<li>${hydroDates[i]}</li>`)

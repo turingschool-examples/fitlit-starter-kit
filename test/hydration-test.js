@@ -8,7 +8,8 @@ describe('Hydration', function() {
     it('should be a function', function() {
         expect(Hydration).to.be.a('function');
     })
-    it('should return a user all time hydration amount', function() {
-        
+    it.only('should return a user all time hydration amount', function() {
+        const water = new Hydration(sampleHydrationData);
+        expect(water.allTimeHydration(1)).to.equal(54.36)
     })
     })

@@ -2,7 +2,7 @@ class HydrationRepository {
   constructor(data, id) {
     this.data = data;
     this.id = id;
-    this.objs = this.findHydrationUserData()
+    this.userHydro = this.findHydrationUserData()
   }
 
   findHydrationUserData() {
@@ -10,8 +10,8 @@ class HydrationRepository {
   }
 
   returnHydrationAvg() {
-    return Math.ceil(this.objs.reduce((acc, element) => {
-      return acc + element.numOunces}, 1) / this.objs.length)
+    return Math.ceil(this.userHydro.reduce((acc, element) => {
+      return acc + element.numOunces}, 1) / this.userHydro.length)
   }
 
 }

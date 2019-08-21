@@ -2,56 +2,71 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../src/style.css"> 
     <title>Activity Tracker</title>
   </head>
   <body>
     <header>
     <h1>FitLit Activity Tracker</h1>
-    <h2>Welcome<span id= "random-user-span">#</span>!</h2>
+    <h2>Welcome<span id= "random-user-span"></span>!</h2>
     </header>
     <main>
-      <article class="main__article--user">
-        <h2>User Information</h2>
+      <section class="main__section--1"> 
+        <article class="main__article--user">
+          <h2>User Information</h2>
           <h5>Name:<span id= "article__user--name"></span></h5>
           <h5>Address:<span id= "article__user--address"></span></h5>
           <h5>Email:<span id= "article__user--email"></span></h5>
-      </article>
-      <article class="main__article--fitlit">
+        </article>
+      </section>
+      <section class="main__section--2">
+        <article class="main__article--fitlit">
           <h2>FitLit Information</h2>
             <h5>Stride Length:<span id= "article__user--stridelength"></span></h5>
             <h5>Step Goal:<span id= "article__user--stepgoal"></span></h5>
             <h5>Steps Compared to Others:<span id= "article__user--stepcompare"></span></h5>
       </article>
-      <article class="main__article--hydration">
-          <h2>Hydration Tracker</h2>
-            <h5>This Week's Graph:</h5>
-      </article>
+    </section>
+    <section class="main__section--3">
       <article class="main__article--sleep">
-          <h2>Sleep Tracker</h2>
-            <h5>Current Sleep:<span id= "article__user--currentsleep"></span></h5>
-            <h5>Weeks Sleep:<span id= "article__user--weekssleep"></span></h5>
-            <h5>Alltime Average Sleep:<span id= "article__user--avgsleep"></span></h5>
+        <h2>Sleep Tracker</h2>
+        <h5>Current Sleep:<span id= "article__user--currentsleep"></span></h5>
+        <h5>Weeks Sleep:<span id= "article__user--weekssleep"></span></h5>
+        <h5>Alltime Average Sleep:<span id= "article__user--avgsleep"></span></h5>
       </article>
+    </section>
+    <section class="main__section--4">
+      <article class="main__article--hydration">
+        <h2>Hydration Tracker</h2>
+        <h5>This Week's Graph:</h5>
+       </article>
+   </section>
+    <section class="main__section--5">
       <article class="main__article--activity">
           <h2>Activity Tracker</h2>
             <h5>Today's Steps:<span id= "article__user--todaysteps"></span></h5>
             <h5>Active Minutes:<span id= "article__user--activemins"></span></h5>
             <h5>Today's Distance:<span id= "article__user--todaydistance"></span></h5>
             <h5>Weekly View:<span id= "article__user--weeklyview"></span></h5>
-          <h3>Compared Numbers</h3> 
+          <h2>Compared Numbers</h2> 
             <h5>Steps:<span id= "article__user--comparesteps"></span></h5>
             <h5>Minutes Active:<span id= "article__user--comparemins"></span></h5>
             <h5>Flights of Stairs:<span id= "article__user--comparestairs"></span></h5>
       </article>
+    </section>
+    <section class="main__section--6">
       <article class="main__article--trends">
           <h2>User Challenge</h2>
           <h5>Calculate Trends:<span id= "article__user--trends"></span></h5>
           <h5>Friends Status:<span id= "article__user--friendsstatus"></span></h5>
       </article>
+    </section>
     </main>
     <footer>
       <h3>FitLit Copyright 2019</h3>
     </footer>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
@@ -63,7 +78,6 @@
     <script type="text/javascript" src="./Trends.js"></script>
     <script type="text/javascript" src="./User.js"></script>
     <script type="text/javascript" src="./userRepository.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="path/to/your/jquery.min.js"><\/script>')</script>
   </body>
 </html>

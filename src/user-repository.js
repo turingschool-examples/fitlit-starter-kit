@@ -1,12 +1,14 @@
-const data = require('../data/users.js');
+// const data = require('../data/users.js');
 
 class UserRepository {
 constructor(data) {
     this.data = data; 
 }
 returnUserData(id) {
+    console.log(this.data);
     return this.data.find(user => user.id === id)
 }
+
 
 averageStepGoal() {
     let average = this.data.map(user => {

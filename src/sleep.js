@@ -3,7 +3,7 @@ class Sleep {
     this.data = obj;
   }
 
-  getAvgSleepHours(id) {
+  getAvgSleepHours() {
     let person = this.data;
 
     let avgHours = person.reduce((acc, day) => {
@@ -13,7 +13,7 @@ class Sleep {
     return parseFloat((avgHours / 11).toFixed(1));
   }
 
-  getAvgSleepQual(id) {
+  getAvgSleepQual() {
     let person = this.data;
 
     let avgQual = person.reduce((acc, day) => {
@@ -21,6 +21,26 @@ class Sleep {
     }, 0)
 
     return parseFloat((avgQual / 11).toFixed(1));
+  }
+
+  getHoursSleptPerDay(date) {
+    let person = this.data;
+
+    let selectedDay = person.find(day => {
+      return day.date === date;
+    })
+
+    return selectedDay.hoursSlept;
+  }
+
+  getSleepQualPerDay(date) {
+    let person = this.data;
+
+    let selectedDay = person.find(day => {
+      return day.date === date;
+    })
+
+    return selectedDay.sleepQuality;
   }
 
 }

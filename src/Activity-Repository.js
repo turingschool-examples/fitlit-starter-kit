@@ -1,7 +1,6 @@
 class Activity {
-  constructor(activityData, userData) {
+  constructor(activityData) {
     this.activityData = activityData;
-    this.userData = userData;
   }
 
   findCurrentUserData(userId) {

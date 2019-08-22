@@ -24,20 +24,32 @@ class Activity {
     return parseInt(((numOfSteps * user.strideLength) / 5280).toFixed(0));
   } 
 
-  returnActiveMinutesByDate(userId, startDate) {
-    //return active minutes on date for week
+  returnActiveMinutesByDate(userId, date) {
+    return this.findCurrentUserData(userId).find(elem => {
+      return elem.date === date
+    }).minutesActive
   } 
 
   returnAvgActiveMinutesByWeek(userId, startDate) {
     //return average active minutes for a given week 
   } 
-  
+
+
+  checkStepGoalMetByDate(user, date) {
+    if ((user.dailyStepGoal) <= (this.findCurrentUserData(user.id).find(elem => elem.date === date).numSteps)) {
+      return true;
+    }
+    return false; 
+  } 
+
   returnAllDaysStepGoalExceeded(user) {
     return this.activityData.filter((activityObj) => activityObj.userID === user.id && activityObj.numSteps > user.dailyStepGoal).map(activityObj => activityObj.date);
   } 
 
   returnStairClimbingRecord(userId) {
-    //return all time stair climbing record
+    return this.findCurrentUserData(userId).sort((value1, value2) => {
+      return value2.flightsOfStairs - value1.flightsOfStairs
+    })[0].flightsOfStairs
   }
 }
 

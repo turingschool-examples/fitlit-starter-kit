@@ -5,18 +5,18 @@ const Hydration = require('../src/hydrationUser.js');
 const sampleHydrationData = require('../test/hydration-sample-data.js');
 
 describe('Hydration', function() {
-    it.only('should be a function', function() {
+    it('should be a function', function() {
         expect(Hydration).to.be.a('function');
     })
-    it.only('should return a user all time hydration amount', function() {
+    it('should return a user all time hydration amount', function() {
         const water = new Hydration(sampleHydrationData);
         expect(water.allTimeHydration(1)).to.equal(54.36)
     })
-    it.only('should return a user water consumpution on a given day', function() {
+    it('should return a user water consumpution on a given day', function() {
         const water = new Hydration(sampleHydrationData);
         expect(water.dailyHydration(1, "2019/06/16")).to.equal(69)
     })
-    it.only('should return hydration for a week', function() {
+    it('should return hydration for a week', function() {
         const water = new Hydration(sampleHydrationData);
         expect(water.weeklyHydration(1, '2019/07/09')).to.deep.equal([26,30,46,26,34,24,89]);
     })

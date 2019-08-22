@@ -61,6 +61,25 @@ class Sleep {
     return sleepHourArray;
   }
 
+  getSleepQualPerDayPerWeek(date) {
+    let person = this.data;
+
+    let selectedDay = person.find(day => {
+      return day.date === date;
+    })
+
+    let indexOfSelectedDay = this.data.indexOf(selectedDay);
+
+    let weekArray = this.data.slice((indexOfSelectedDay - 6), (indexOfSelectedDay + 1))
+
+    let sleepQualArray = weekArray.map(day => {
+      return day.sleepQuality;
+    })
+
+    return sleepQualArray
+
+  }
+
 }
 
 if (typeof module !== "undefined") {

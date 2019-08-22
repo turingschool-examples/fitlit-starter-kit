@@ -20,7 +20,7 @@ class Sleep {
       return acc += day.sleepQuality;
     }, 0)
 
-    return parseFloat((avgQual / 11).toFixed(1));
+    return parseFloat((avgQual / person.length).toFixed(1));
   }
 
   getHoursSleptPerDay(date) {

@@ -24,7 +24,6 @@ describe('SleepRepository', function() {
   });
 
   it('should find a specific user based on id', () => {
-    console.log('sleepRepo', sleepRepo)
     expect(sleepRepo.getUserSleepInfo(1)).to.deep.equal([
   { userID: 1, date: '2019/06/15', hoursSlept: 6.1, sleepQuality: 2.2 },
   { userID: 1, date: '2019/06/16', hoursSlept: 4.1, sleepQuality: 3.8 },
@@ -49,6 +48,10 @@ describe('SleepRepository', function() {
   { userID: 1, date: '2019/06/25', hoursSlept: 5.1, sleepQuality: 3.7 }
 ]
 );
+  })
+
+  it('should return average sleep quality of all users', () => {
+    expect(sleepRepo.getUsersAvgSleepQual()).to.equal(3);
   })
 
 });

@@ -4,7 +4,9 @@ class SleepUser {
   }
 
   findDailySleep(date, id) {
-    let day = this.sleepTestData.find(user => user.date === date && id)
+    let userInfo = this.sleepTestData.filter(user => user.userID === id)
+    let day = userInfo.find(user => user.date === date)
+    return day.hoursSlept;
   }
 
 

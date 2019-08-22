@@ -18,7 +18,7 @@ describe('SleepUser', function() {
   });
 
   it.only('should calculate average daily sleep for any given week', function() {
-    expect(sleepUser.findAverageSleep()).to.equal()
+    expect(sleepUser.findAverageHoursSlept("2019/06/16", "2019/06/22", 2)).to.equal(7.5)
   })
 
 

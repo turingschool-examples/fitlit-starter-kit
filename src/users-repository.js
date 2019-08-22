@@ -15,7 +15,7 @@ class UserRepository {
       return acc + num
     }, 0) / this.users.length
   }
-  
+
 }
 
 

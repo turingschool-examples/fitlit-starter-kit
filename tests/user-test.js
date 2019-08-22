@@ -12,9 +12,9 @@ describe('User', function() {
 
   beforeEach(() => {
     userRepo = new UserRepository(users);
-    user1 = new User(userRepo.users.userData[1]);
-    user2 = new User(userRepo.users.userData[2]);
-    user3 = new User(userRepo.users.userData[3]);
+    user1 = new User(userRepo.users[1]);
+    user2 = new User(userRepo.users[2]);
+    user3 = new User(userRepo.users[3]);
   });
 
   it('should be a function', function() {
@@ -22,9 +22,9 @@ describe('User', function() {
   });
 
   it('should be a single user', function(){
-    expect(user1).to.deep.equal(userRepo.users.userData[1])
-    expect(user2).to.deep.equal(userRepo.users.userData[2])
-    expect(user3).to.deep.equal(userRepo.users.userData[3])
+    expect(user1).to.deep.equal(userRepo.users[1])
+    expect(user2).to.deep.equal(userRepo.users[2])
+    expect(user3).to.deep.equal(userRepo.users[3])
   })
 
   it('should return users first name', function() {

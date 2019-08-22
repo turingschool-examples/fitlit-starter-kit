@@ -49,18 +49,19 @@ class Activity {
   }
 
   returnFriendsStepCount() {
-    let friends = this.user.friends.map(friend => this.activityData.filter(el => el.userID === friend))
-    // let totalStepsPerFriend = friends.reduce((totalStepsPerFriend, eachFriend) => {
-    //   totalStepsPerFriend[eachFriend] = eachFriend.reduce((totalSteps, eachDay) => {
-    //     totalSteps += eachDay.numSteps
-    //     return totalSteps
-    //   }, 0)
-    //   return totalStepsPerFriend
-    // }, [])
-    console.log(friends)
-  } 
+    let friends = this.user.friends.map(friend => this.activityData.filter(el => el.userID === friend));
+    let friendDataForDates = friends.map(friend => friend.splice(-7));
+    let totalStepsPerFriend = friendDataForDates.map(friend => friend.reduce((totalSteps, day) => {
+      totalSteps += day.numSteps
+      return totalSteps
+    }, 0));
+    var stepObj = this.user.friends.reduce((friendSteps, friend, index) => {
+      friendSteps[friend] = totalStepsPerFriend[index];
+      return friendSteps
+    }, {})
+    return [stepObj, this.user.friends[totalStepsPerFriend.indexOf(Math.max(...totalStepsPerFriend))]]
+  }
 }
-
 
 if (typeof module !== 'undefined') {
     module.exports = Activity;

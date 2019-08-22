@@ -58,11 +58,11 @@ describe('Activity', () => {
   });
 
   it('should return all friends\' step count for the week ', () => {
-    expect(activity.returnFriendsStepCount()).to.equal();
+    expect(activity.returnFriendsStepCount()[0]).to.eql({ '2': 56526, '3': 46615, '4': 63243 });
   });
 
   it('should return friend with most steps ', () => {
-    expect(activity.returnFriendsStepCount()).to.equal();
+    expect(activity.returnFriendsStepCount()[1]).to.equal(4);
   });
 
 

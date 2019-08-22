@@ -19,11 +19,15 @@ describe('Activity', () => {
     expect(Activity).to.be.a('function');
   });
 
-  it('should calculate stairs climbed for all users', function () {
+  it('should calculate stairs climbed for all users on a given day', function () {
     expect(activity.returnStairsClimbedAllUsersByDate('2019/06/15')).to.equal(59);
   });
 
-  it('should calculate minutes active for all users', function () {
+  it('should calculate steps taken for all users on a given day', function () {
+    expect(activity.returnStepsTakenAllUsersByDate('2019/06/16')).to.equal(23053);
+  });
+
+  it('should calculate minutes active for all users on a given day', function () {
     expect(activity.returnActiveMinutesAllUsersByDate('2019/06/16')).to.equal(547);
   });
 
@@ -32,7 +36,7 @@ describe('Activity', () => {
     expect(activity.returnDatesStepGoalMet(user1, '2019/06/16')).to.deep.eql(days);
   });
 
-  it('should calculate a user\'s miles walked', function () {
+  it('should calculate a user\'s miles walked on a given day', function () {
     expect(activity.returnMilesWalkedByDate(user1, '2019/06/16')).to.equal(5);
   });
 

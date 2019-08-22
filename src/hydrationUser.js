@@ -21,8 +21,11 @@ class Hydration {
                 return userAvg;
         }
 
-        weeklyHydration(date) {
-            this.findUser(id)
+        weeklyHydration(id) {
+            let totalOz = this.findUser(id).map(element => {
+                return element.numOunces
+            }).slice(-7);
+            return totalOz;
         }
 }
 

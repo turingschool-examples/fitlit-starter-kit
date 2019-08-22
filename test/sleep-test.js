@@ -14,10 +14,13 @@ describe('SleepUser', function() {
   });
 
   it.only('should find sleep info based on date', function() {
-    expect(sleepUser.findDailySleep('2019/06/15', 3)).to.equal(10.8)
+    expect(sleepUser.findDailySleep('2019/06/26', 3)).to.equal(6.1)
   });
 
- 
+  it.only('should calculate average daily sleep for any given week', function() {
+    expect(sleepUser.findAverageSleep()).to.equal()
+  })
+
 
 
 

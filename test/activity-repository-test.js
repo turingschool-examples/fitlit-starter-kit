@@ -32,6 +32,10 @@ describe('Activity', () => {
     expect(activity.returnDatesStepGoalMet(user1, '2019/06/16')).to.deep.eql(days);
   });
 
+  it('should calculate a user\'s miles walked', function () {
+    expect(activity.returnMilesWalkedByDate(user1, '2019/06/16')).to.equal(5);
+  });
+
 
 
 

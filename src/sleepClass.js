@@ -1,7 +1,7 @@
 class Sleep {
   constructor(sleepData) {
     this.sleepData = sleepData;
-    this.userID = 0
+    // this.userID = 0
   }
 
   setUserID(userID) {

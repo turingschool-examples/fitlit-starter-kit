@@ -31,13 +31,9 @@ class Activity {
   returnAvgActiveMinutesByWeek(userId, startDate) {
     //return average active minutes for a given week 
   } 
-
-  returnDatesStepGoalMet(user) {
-    return this.activityData.filter((activityObj) => activityObj.userID === user.id && activityObj.numSteps > user.dailyStepGoal).map(activityObj => activityObj.date );
-  } 
-
-  returnAllDaysStepGoalExceeded(userId) {
-    //return all days user exceeded step goal
+  
+  returnAllDaysStepGoalExceeded(user) {
+    return this.activityData.filter((activityObj) => activityObj.userID === user.id && activityObj.numSteps > user.dailyStepGoal).map(activityObj => activityObj.date);
   } 
 
   returnStairClimbingRecord(userId) {

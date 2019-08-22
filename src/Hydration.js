@@ -32,12 +32,7 @@ class Hydration {
   findWeeklyWaterCons() {
     return this.ouncesPerDay.slice((7, -7));
   }
-
 }
-
-
-
-  
 
 if (typeof module !== 'undefined') {
   module.exports = Hydration;

@@ -25,18 +25,12 @@ describe('Hydration', () => {
 
   it('should be able to get the average fluid ounces consumed per day for all time', () => {
     const hydration = new Hydration(userData[0]);
-    // console.log(hydration.id);
-    // console.log(hydration.hydrationFiltered);
-    // console.log(hydration.ouncesPerDay);
-    // console.log(hydration.hi);
     expect(hydration.findAvgWaterCons()).to.be.equal(59)
   });
 
   
   it('should be able to get fluid ounces consumed for specific day', () => {
     const hydration = new Hydration(userData[0]);
-    console.log(hydration.ouncesPerDay);
-    console.log(hydration.findWeeklyWaterCons())
     expect(hydration.findWaterByDate('2019/06/21')).to.be.equal(50);
   });
 

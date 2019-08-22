@@ -8,6 +8,10 @@ class Activity {
     return this.activityData.filter(user => user.userID === this.user.id);
   }
 
+  returnWeekOfData(week, userData) {
+    return userData.splice((-7 * week), 7);
+  }
+
   returnMilesWalked() {
     let specificUser = this.findUser();
     return Number((this.user.strideLength * specificUser[specificUser.length - 1].numSteps / 5280).toFixed(2))
@@ -20,9 +24,9 @@ class Activity {
 
   returnAverageMinutesActiveForWeek(week) {
     let specificUser = this.findUser();
-    let weekOfData = specificUser.splice((-7 * week), 7);
+    let weekOfData = this.returnWeekOfData(week, specificUser);
     return Math.floor(weekOfData.reduce((totalMinutes, eachDay) => {
-     totalMinutes += eachDay.minutesActive
+      totalMinutes += eachDay.minutesActive
       return totalMinutes 
     }, 0) / 7)
   }
@@ -31,8 +35,6 @@ class Activity {
     let specificUser = this.findUser();
     let numSteps = specificUser.find(day => day.date === date).numSteps
     return numSteps >= this.user.dailyStepGoal
-
-
   }
 
   returnAllStepGoalDays() {

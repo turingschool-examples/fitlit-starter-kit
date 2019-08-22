@@ -18,6 +18,10 @@ describe('SleepRepo', () => {
     expect(SleepRepo).to.be.a('function');
   });
 
+  it('should should have access the sleep data', () => {
+    expect(sleepRepo.sleepData).to.eql(sleepData);
+  });
+
   it('should return the average sleep quality amongst all users', () => {
     expect(sleepRepo.returnAllSleepQuality()).to.equal(2.9);
   });

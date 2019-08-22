@@ -21,6 +21,14 @@ describe('Activity', () => {
     expect(Activity).to.be.a('function');
   });
 
+  it('should have access to userData', () => {
+    expect(activity.user).to.eql(userData[0]);
+  });
+
+  it('should have access to activityData', () => {
+    expect(activity.activityData).to.eql(activityData);
+  });
+
   it('should return the miles walked by a specific user for a specific day', () => {
     expect(activity.returnMilesWalked()).to.equal(6.60);
   });

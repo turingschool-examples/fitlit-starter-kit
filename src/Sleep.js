@@ -8,6 +8,10 @@ class Sleep {
     return this.sleepData.filter(user => user.userID === this.userID);
   }
 
+  returnWeekOfData(week, userData) {
+    return userData.splice((-7 * week), 7);
+  }
+
   returnAvgSleepHours() {
     let specificUser = this.findUser();
     return Number((specificUser.reduce((totalHours, day) => {
@@ -36,14 +40,12 @@ class Sleep {
 
   returnWeekOfSleepHours(week) {
     let specificUser = this.findUser();
-    let weekOfData = specificUser.splice((-7 * week), 7);
-    return weekOfData.map(day => day.hoursSlept);
+    return this.returnWeekOfData(week, specificUser).map(day => day.hoursSlept);
   }
 
   returnWeekOfSleepQuality(week) {
     let specificUser = this.findUser();
-    let weekOfData = specificUser.splice((-7 * week), 7);
-    return weekOfData.map(day => day.sleepQuality)
+    return this.returnWeekOfData(week, specificUser).map(day => day.sleepQuality);
   }
 }
 

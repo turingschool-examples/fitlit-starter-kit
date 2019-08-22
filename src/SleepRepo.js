@@ -24,6 +24,7 @@ class SleepRepo {
       totalQuality += day.sleepQuality;
       return totalQuality;
     }, 0)).map(user => Number((user / 7).toFixed(2)));
+    
     let goodSleepers = [];
     avgSleepQualityPerUser.forEach((user, index) => {
       if (user >= 3) {
@@ -36,9 +37,9 @@ class SleepRepo {
 
 
   returnLongestSleepers(date) {
-    var dateData = this.sleepData.filter(day => day.date === date)
-    var sortedSleepers = dateData.sort((a, b) => b.hoursSlept - a.hoursSlept)
-    return sortedSleepers.filter(day => day.hoursSlept === sortedSleepers[0].hoursSlept).map(user => user.userID)
+    var dateData = this.sleepData.filter(day => day.date === date);
+    var sortedSleepers = dateData.sort((a, b) => b.hoursSlept - a.hoursSlept);
+    return sortedSleepers.filter(day => day.hoursSlept === sortedSleepers[0].hoursSlept).map(user => user.userID);
   }
 
   returnWeeklyLongestSleepers(week) {
@@ -55,7 +56,7 @@ class SleepRepo {
       totalHours += day.hoursSlept;
       return totalHours;
     }, 0));
-    return avgSleepHoursPerUser.indexOf(Math.max(...avgSleepHoursPerUser)) + 1
+    return avgSleepHoursPerUser.indexOf(Math.max(...avgSleepHoursPerUser)) + 1;
   }
 }
 

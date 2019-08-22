@@ -1,7 +1,13 @@
 class SleepUser {
-  constructor() {
-
+  constructor(sleepTestData) {
+    this.sleepTestData = sleepTestData
   }
+
+  findDailySleep(date, id) {
+    let day = this.sleepTestData.find(user => user.date === date && id)
+  }
+
+
 }
 
 

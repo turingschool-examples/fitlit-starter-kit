@@ -11,7 +11,11 @@ describe('Activity', () => {
   });
 
   it('should be a function', function () {
-    expect(activity).to.be.a('function');
+    expect(Activity).to.be.a('function');
+  });
+
+  it('should calculate stairs climbed for all users', function () {
+    expect(activity.returnStairsClimbedAllUsersByDate('2019/06/15')).to.equal(59);
   });
 
 

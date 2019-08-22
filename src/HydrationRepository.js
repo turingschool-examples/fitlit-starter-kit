@@ -12,8 +12,9 @@ class HydrationRepository {
   returnHydrationAvg() {
     return Math.ceil(this.userHydro.reduce((acc, element) => {
       return acc + element.numOunces}, 1) / this.userHydro.length)
-    }
   }
+
+}
 
 
 

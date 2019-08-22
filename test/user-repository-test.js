@@ -70,15 +70,10 @@ describe('UserRepository', function() {
     expect(userRepository.data).to.equal(testUsers);
   });
 
-  it.only('should store the id of the current user', function() {
-    const userRepository = new UserRepository(testUsers, 2);
-    console.log("in test", userRepository.id)
-    expect(userRepository.id).to.equal(2)
-  })
 
   it.only('should find a user', function() {
     const userRepository = new UserRepository(testUsers, 1);
-    expect(userRepository.findUserData()).to.deep.equal(testUsers[0])
+    expect(userRepository.findUserData(1)).to.deep.equal(testUsers[0])
   })
 
 });

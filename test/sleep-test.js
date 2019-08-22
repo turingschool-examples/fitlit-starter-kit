@@ -35,7 +35,7 @@ describe('Sleep', () => {
   });
 
   it('should show a users quality of sleep per day for a given week', () => {
-    expect(sleep.returnSleepQualityByWeek(3, '2019/06/16').length).to.equal(7);
+    expect(sleep.returnSleepQualityByWeek(3, '2019/06/22').length).to.equal(7);
   });
 
   it('should return the average sleep quality for all users', () => {
@@ -43,7 +43,7 @@ describe('Sleep', () => {
   })
 
   it('should return all users who averaged greater than 3 sleep quality for a given week', () => {
-    expect(sleep.returnSleepQualityGreaterThanThree('2019/06/16')).to.eql([2, 3])
+    expect(sleep.returnSleepQualityGreaterThanThree('2019/06/22')).to.eql([2, 3])
   })
 
   it('should return user(s) who slept the most number of hours on a given day', () => {

@@ -19,9 +19,10 @@ class Hydration {
 
   returnFluidOzByWeek(userId, date) {
     let index = this.findCurrentUserData(userId).findIndex((hydrationObj) => hydrationObj.date === date);
-    return this.findCurrentUserData(userId).map(hydrationObj => hydrationObj.numOunces).splice(index, 7);
+    return this.findCurrentUserData(userId).map(hydrationObj => hydrationObj.numOunces).splice(index - 7, 7);
   }
 }
 
-
-module.exports = Hydration;
+if (typeof module !== 'undefined') {
+  module.exports = Hydration;
+}

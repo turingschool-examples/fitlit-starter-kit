@@ -11,7 +11,7 @@ const User = require('../src/User');
 describe('Activity', () => {
   let user;
   let activity;
-  
+
   beforeEach(() => {
     user = new User(userData[0])
     activity = new Activity(activityData, user)
@@ -45,12 +45,13 @@ describe('Activity', () => {
     expect(activity.metStepGoal('2019/06/15')).to.equal(false);
   });
 
+
   it('should return true if they did  meet their step goal for a date', () => {
     expect(activity.metStepGoal("2019/06/17")).to.equal(true);
   });
 
   it('should return all days where exceeded step goal ', () => {
-    expect(activity.returnAllStepGoalDays()).to.eql([ '2019/06/17', '2019/06/22', '2019/06/23' ]);
+    expect(activity.returnAllStepGoalDays()).to.eql(['2019/06/17', '2019/06/22', '2019/06/23']);
   });
 
   it('should return alltime stair climbing record ', () => {
@@ -58,12 +59,23 @@ describe('Activity', () => {
   });
 
   it('should return all friends\' step count for the week ', () => {
-    expect(activity.returnFriendsStepCount()[0]).to.eql({ '2': 56526, '3': 46615, '4': 63243 });
+    expect(activity.returnFriendsStepCount()[0]).to.eql({
+      '2': 56526,
+      '3': 46615,
+      '4': 63243
+    });
   });
 
   it('should return friend with most steps ', () => {
     expect(activity.returnFriendsStepCount()[1]).to.equal(4);
   });
 
+  it('should return back the dates of what days had increasing steps for 3 or more days', () => {
+    expect(activity.returnThreeDayStepStreak()).to.eql(['2019/06/25', '2019/06/24', '2019/06/23']);
+  });
+
+  it('should return back the dates of what days had increasing floors climbed for 2 or more days', () => {
+    expect(activity.returnTwoDayStairStreak()).to.eql(['2019/06/24', '2019/06/23']);
+  });
 
 });

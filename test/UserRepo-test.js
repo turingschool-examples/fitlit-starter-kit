@@ -22,9 +22,10 @@ describe('UserRepo', () => {
 
   it('should hold all user data', () => {
     expect(userRepo.data.length).to.deep.equal(12)
+    expect(userRepo.data).to.eql(userData);
   });
 
-  it('should return the users darta based on their id', () => {
+  it('should return the users data based on their id', () => {
     expect(userRepo.returnUserData(1)).to.deep.equal({
       "id": 1,
       "name": "Luisa Hane",

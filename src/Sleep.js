@@ -45,7 +45,7 @@ class Sleep {
 
   returnWeekOfSleepQuality(week) {
     let specificUser = this.findUser();
-    return this.returnWeekOfData(week, specificUser).map(day => day.sleepQuality)
+    return this.returnWeekOfData(week, specificUser).map(day => day.sleepQuality);
   }
 }
 

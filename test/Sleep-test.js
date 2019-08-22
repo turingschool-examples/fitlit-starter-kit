@@ -14,12 +14,12 @@ describe('Sleep', () => {
   beforeEach(() => {
     user = new User(userData[0]);
     sleep = new Sleep(sleepData, user.id);
-    fullSleep = new Sleep(allSleepData, user.id)
+    fullSleep = new Sleep(allSleepData, user.id);
   })
 
   it('should be a function', () => {
     expect(Sleep).to.be.a('function');
-  })
+  });
 
   it('should be an instance of the class Sleep', () => {
     expect(sleep).to.be.an.instanceOf(Sleep);
@@ -31,6 +31,10 @@ describe('Sleep', () => {
 
   it('should be able to store user id as a parameter', () => {
     expect(sleep.userID).to.equal(user.id);
+  });
+
+  it.skip('should be able to find data for a specific user', () => {
+
   });
 
   it('should return the average sleep hours for a single user over all time', () => {

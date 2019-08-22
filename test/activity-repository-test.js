@@ -36,6 +36,7 @@ describe('Activity', () => {
   it('should return for a specific user their all time stair climbing record', () => {
     expect(activity.returnStairClimbingRecord(2)).to.equal(44)
   })
+  
   it('should calculate steps taken for all users on a given day', function () {
     expect(activity.returnStepsTakenAllUsersByDate('2019/06/16')).to.equal(23053);
   });
@@ -44,7 +45,9 @@ describe('Activity', () => {
     expect(activity.returnActiveMinutesAllUsersByDate('2019/06/16')).to.equal(547);
   });
 
-  it.skip('should find all of the days the user met their step goal', function () {
+  it('should find all of the days the user met their step goal', function () {
+
+  it('should find all of the days the user met their step goal', function () {
     let days = ['2019/06/17', '2019/06/20']
     expect(activity.returnAllDaysStepGoalExceeded(user1, '2019/06/16')).to.deep.eql(days);
   });
@@ -52,8 +55,5 @@ describe('Activity', () => {
   it('should calculate a user\'s miles walked on a given day', function () {
     expect(activity.returnMilesWalkedByDate(user1, '2019/06/16')).to.equal(5);
   });
-
-
-
 
 });

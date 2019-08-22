@@ -34,6 +34,7 @@ class Activity {
     //return average active minutes for a given week 
   } 
 
+
   checkStepGoalMetByDate(user, date) {
     if ((user.dailyStepGoal) <= (this.findCurrentUserData(user.id).find(elem => elem.date === date).numSteps)) {
       return true;
@@ -41,8 +42,8 @@ class Activity {
     return false; 
   } 
 
-  returnAllDaysStepGoalExceeded(userId) {
-    //return all days user exceeded step goal
+  returnAllDaysStepGoalExceeded(user) {
+    return this.activityData.filter((activityObj) => activityObj.userID === user.id && activityObj.numSteps > user.dailyStepGoal).map(activityObj => activityObj.date);
   } 
 
   returnStairClimbingRecord(userId) {

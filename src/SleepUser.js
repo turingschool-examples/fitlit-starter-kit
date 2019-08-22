@@ -22,6 +22,17 @@ class SleepUser {
     return Math.round((totalHours / 7) *10) / 10;
   }
 
+  findAverageQualitySlept(startDate, endDate, id) {
+    let userInfo = this.findUserInfo(id)
+    let week = userInfo.filter(day => day.date >= startDate && day.date <= endDate);
+    let dailyQuality = week.map(day => day.sleepQuality)
+    console.log(dailyQuality)
+    let totalQuality= dailyQuality.reduce((acc, num) => {
+      return acc + num;
+    }, 0)
+    return Math.round((totalQuality / 7) *10) / 10;
+  }
+
 
 }
 

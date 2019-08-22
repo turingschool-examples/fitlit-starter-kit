@@ -56,6 +56,15 @@ class Activity {
       return value2.flightsOfStairs - value1.flightsOfStairs
     })[0].flightsOfStairs
   }
+
+  checkUserActivityStatusByDate(userID, date) {
+    if ((this.findCurrentUserData(userID).find(day => {
+      return day.date === date;
+    }).minutesActive) >= (90)) {
+      return true;
+    }
+    return false;
+  }
 }
 
 if (typeof module !== 'undefined') {

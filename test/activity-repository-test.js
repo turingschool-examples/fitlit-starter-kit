@@ -57,4 +57,8 @@ describe('Activity', () => {
   it('should calculate a user\'s average active minutes per week', function () { 
   expect(activity.returnAvgActiveMinutesByWeek(1, '2019/06/15')).to.equal(171);
   });
+
+  it('should determine a user\'s activity status for a given day', function () {
+    expect(activity.checkUserActivityStatusByDate(1, '2019/06/15')).to.equal(true);
+  });
 });

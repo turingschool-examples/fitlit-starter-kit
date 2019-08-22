@@ -8,6 +8,10 @@ class Sleep {
     return this.sleepData.filter(user => user.userID === this.userID);
   }
 
+  returnWeekOfData(week, userData) {
+    return userData.splice((-7 * week), 7);
+  }
+
   returnAvgSleepHours() {
     let specificUser = this.findUser();
     return Number((specificUser.reduce((totalHours, day) => {

@@ -26,11 +26,11 @@ class Hydration {
             let index = targetUserData.findIndex(object => {
                 return object.date === day;
             });
-            let weekData = targetUserData.slice(index -6, index +1);
-            let weekDisplay = weekData.map(arr => {
+            let weekData = targetUserData.slice(index - 6, index + 1).map(arr => {
                 return ` ${arr.date}  :  ${arr.numOunces} `;
             })
-            return weekDisplay
+            return weekData;
+
         }
 
     

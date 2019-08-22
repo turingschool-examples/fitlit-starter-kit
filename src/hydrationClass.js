@@ -1,11 +1,22 @@
-const hydration = require('../data/hydration.js');
+// const hydration = require('../data/hydration.js');
 
 class Hydration {
   constructor(hydrationData, userID) {
     this.hydrationData = hydrationData;
     this.userID = userID;
+    this.singleUserData = []
   }
 
+  extractSingleUser() {
+    let userData = this.hydrationData.filter(user => {
+      if (this.userID === user.userID) {
+        return user;
+      }
+    });
+    this.singleUserData = userData
+    return userData
+  }
+  
   calculateAverageWaterIntake() {
     let sumWaterIntake = this.hydrationData.reduce((totalWater, numOunces) => {
       return totalWater += numOunces.numOunces;
@@ -13,14 +24,18 @@ class Hydration {
     return Math.round(sumWaterIntake / this.hydrationData.length);
   }
 
-  waterConsumedThatDay(date) {
-    let dayOunces = this.hydrationData.find(element => {
-      if (this.userID === element.userID && date === element.date) {
-        return element.numOunces;
-     }
-    });
-    return dayOunces.numOunces;
-  }
+  // calculateDailyWaterIntake() {
+  //   // console.log(singleUserIntakeData)
+
+
+
+  //   // let dayOunces = this.hydrationData.find(element => {
+  //   //   if (this.userID === element.userID && date === element.date) {
+  //   //     return element.numOunces;
+  //   //  }
+  //   // });
+  //   // return dayOunces.numOunces;
+  // }
   
   waterConsumedThatWeek() {
     let currentDay = this.hydrationData[this.hydrationData.length - 1]

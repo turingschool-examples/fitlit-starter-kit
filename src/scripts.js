@@ -1,4 +1,6 @@
 var users = new UserRepository(userData)
+const hydration = new Hydration(hydrationData, 17)
+
 
 const dailySection = document.querySelector('.daily_section')
 
@@ -12,3 +14,13 @@ dailySection.insertAdjacentHTML('afterbegin', `<article class="user_info">
   <p>Stride Length: ${userData[16].strideLength}</p>
   <p>Daily Step Goal: ${userData[16].dailyStepGoal} / ${users.calculateAverageStepGoals()}</p>
 </article>`)
+
+
+let singleUserIntakeData = hydration.extractSingleUser()
+
+
+let latestWaterIntake = singleUserIntakeData[singleUserIntakeData.length - 1]
+
+dailySection.insertAdjacentHTML('beforeend', `<article>
+ <p>Daily Water Intake: ${latestWaterIntake.numOunces}</p>
+ </article>`)

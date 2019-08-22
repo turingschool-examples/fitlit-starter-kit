@@ -80,6 +80,7 @@ describe('Hydration', () => {
   })
 
   it('should return number of fluid ounces consumed each day for a week', () => {
+    
     assert.deepEqual(hydrationData.waterConsumedThatWeek(), [43, 59, 52, 50, 24, 99, 54])
   });
 

@@ -8,7 +8,7 @@ class Activity {
   }
 
   returnStairsClimbedAllUsersByDate(date)  {
-    //return average num of stairs climbed for given date (all users)
+    return this.activityData.filter((activityObj) => activityObj.date === date).reduce((activityObjA, activityObjB) => activityObjA + activityObjB.flightsOfStairs, 0);
   }
 
   returnStepsTakenAllUsersByDate(date) {

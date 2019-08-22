@@ -30,8 +30,13 @@ class Activity {
     }).minutesActive
   } 
 
-  returnAvgActiveMinutesByWeek(userId, startDate) {
-    //return average active minutes for a given week 
+  returnAvgActiveMinutesByWeek(userId, date) {
+    let index = this.findCurrentUserData(userId).findIndex((activityObj) => activityObj.date === date);
+    let userActiveMins = this.findCurrentUserData(userId).map(activityObj => activityObj.minutesActive).splice(index, 7);
+    return parseInt(userActiveMins.reduce((totalMins, dailyActiveMins) => {
+      totalMins += dailyActiveMins;
+      return totalMins;
+    }, 0) / 7);
   } 
 
 

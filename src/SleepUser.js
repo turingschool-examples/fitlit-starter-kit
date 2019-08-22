@@ -12,6 +12,7 @@ class SleepUser {
     return day.hoursSlept;
   }
 
+
   findAverageHoursSlept(startDate, endDate, id) {
     let userInfo = this.findUserInfo(id)
     let week = userInfo.filter(day => day.date >= startDate && day.date <= endDate);
@@ -31,6 +32,11 @@ class SleepUser {
       return acc + num;
     }, 0)
     return Math.round((totalQuality / 7) *10) / 10;
+  }
+
+  findDailySleepQuality(date, id) {
+    let day = this.findUserInfo(id).find(user => user.date ===date)
+    return day.sleepQuality;
   }
 
 

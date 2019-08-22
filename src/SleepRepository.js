@@ -10,9 +10,16 @@ class SleepRepository {
   }
 
   returnSleepAvg() {
-    return Math.ceil(this.userSleep.reduce((acc, element) => {
+    return Math.floor(this.userSleep.reduce((acc, element) => {
       return acc + element.hoursSlept}, 1) / this.userSleep.length)
   }
+
+  returnSleepQualityAvg() {
+    return Math.floor(this.userSleep.reduce((acc, element) => {
+      return acc + element.sleepQuality}, 1) / this.userSleep.length)
+  }
+
+
 
 }
 

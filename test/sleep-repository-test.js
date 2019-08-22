@@ -119,6 +119,10 @@ describe('SleepRepository', function() {
   })
 
   it.only('should return average sleep per day for all time', function() {
-    expect(sleepRepository.returnSleepAvg()).to.equal(7.25)
+    expect(sleepRepository.returnSleepAvg()).to.equal(7)
+  });
+
+  it.only('should return average sleep quality for all time', function() {
+    expect(sleepRepository.returnSleepQualityAvg()).to.equal(3)
   })
 })

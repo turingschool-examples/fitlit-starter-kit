@@ -1,6 +1,7 @@
 class UserRepository {
   constructor(data) {
     this.data = data;
+    this.length = this.data.length
   }
   getUserData(id) {
     return this.data.find(user => {
@@ -12,6 +13,7 @@ class UserRepository {
   getAllUsersAvgStepGoal() {
     return Math.round(this.data.reduce((total, user) => total += user.dailyStepGoal, 0) / this.data.length)
   }
+
 }
 
 if (typeof module !== 'undefined') {

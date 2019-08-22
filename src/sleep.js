@@ -13,6 +13,16 @@ class Sleep {
     return parseFloat((avgHours / 11).toFixed(1));
   }
 
+  getAvgSleepQual(id) {
+    let person = this.data;
+
+    let avgQual = person.reduce((acc, day) => {
+      return acc += day.sleepQuality;
+    }, 0)
+
+    return parseFloat((avgQual / 11).toFixed(1));
+  }
+
 }
 
 if (typeof module !== "undefined") {

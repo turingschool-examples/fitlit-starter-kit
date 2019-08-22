@@ -30,4 +30,8 @@ describe('Sleep', function() {
     expect(sleep1.getAvgSleepHours(1)).to.equal(7.7)
   });
 
+  it('should get avg sleep quality per day for a user', () => {
+    expect(sleep1.getAvgSleepQual(1)).to.equal(2.5)
+  });
+
 });

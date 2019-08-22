@@ -23,6 +23,7 @@ class UserHydro {
 		});
 	}
 	findOunceWeek(index) {
+		this.week = []
 		let sum = 0
 		for(let i = index; i < index + 7; i++){
 			this.week.push(this.data[i])

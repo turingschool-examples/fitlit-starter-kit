@@ -37,7 +37,7 @@ function initializePage(data, hydro) {
 	welcome.innerHTML = `Welcome ${user.firstName()}!`;
 	avgFluids.innerHTML = `Average fluid ounces intake: ${userHydro.findAvgOunce()}`
 	let hydroDates = userHydro.findDates()
-	appendHydroList(hydroDates.reverse(), userHydro);
+	appendHydroList(hydroDates, userHydro);
 }
 
 function findFriends(userRepository, user) {
@@ -66,12 +66,11 @@ function appendHydroList(array, obj) {
 		dateList.addEventListener('change', function() {
 			obj.findOunceDay(dateList.value)
 			dailyFluids.innerHTML = `Fluid ounces intake by day: ${obj.day}`;
-			// for (let i = 0; i < array.length; i++) {
-			// 	if (dateList.value === array[i]) {
-			// 		console.log(dateList.value)
-   //  		weeklyFluids.innerHTML = `Fluid ounces intake by week: ${obj.findOunceWeek(i).toFixed(2)}`
-   //  		}
-			// }
+			for (let i = 0; i < array.length; i++) {
+				if (dateList.value === array[i]) {
+    		weeklyFluids.innerHTML = `Fluid ounces intake by week: ${obj.findOunceWeek(i).toFixed(2)}`
+    		}
+			}
 		})
 		obj.findOunceDay(dateList.value)
 		dailyFluids.innerHTML = `Fluid ounces intake by day: ${obj.day}`;

@@ -40,14 +40,12 @@ class Sleep {
 
   returnWeekOfSleepHours(week) {
     let specificUser = this.findUser();
-    let weekOfData = specificUser.splice((-7 * week), 7);
-    return weekOfData.map(day => day.hoursSlept);
+    return this.returnWeekOfData(week, specificUser).map(day => day.hoursSlept);
   }
 
   returnWeekOfSleepQuality(week) {
     let specificUser = this.findUser();
-    let weekOfData = specificUser.splice((-7 * week), 7);
-    return weekOfData.map(day => day.sleepQuality)
+    return this.returnWeekOfData(week, specificUser).map(day => day.sleepQuality)
   }
 }
 

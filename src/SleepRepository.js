@@ -3,6 +3,11 @@ class SleepRepository {
     this.id = id;
     this.data = data;
   }
+
+  findSleepUserData() {
+    return this.data.filter(element => element.userID === this.id)
+  }
+
 }
 
 

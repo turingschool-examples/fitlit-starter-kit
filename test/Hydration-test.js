@@ -109,8 +109,15 @@ describe('Hydration', () => {
         {date: "2019/06/19", numOunces: 91},
         {date: "2019/06/20", numOunces: 50}, 
         {date: "2019/06/21", numOunces: 50}
-        ]);
+      ]);
     });
+
+    describe('findTodaysDate', () => {
+      it('should return the last date from the user/s data to represent today', () => {
+        hydration.findTodaysDate();
+        expect(hydration.today).to.equal("2019/06/24")
+      })
+    })
   });
 
 

@@ -3,11 +3,19 @@ class Hydration {
     this.allHydrationData = allHydrationData;
     this.currentUserId = id;
     this.currentUserData;
+    this.today;
+ 
+
   }
 
   findCurrentUserData() {
-    this.currentUserData = this.allHydrationData.filter((data) => data.userID === this.currentUserId)
+    this.currentUserData = this.allHydrationData.filter((data) => data.userID === this.currentUserId);
     return this.currentUserData;
+  }
+
+  findTodaysDate() {
+    this.today = this.currentUserData.pop().date;
+    return this.today
   }
 
   findAverageFluidOzConsumedPerDayForAllTime() {

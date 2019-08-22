@@ -27,3 +27,5 @@ describe('Activity', () => {
   it('should have a parameter to take in an id for the current user', () => {
     expect(activity.currentUserId).to.eql(2);
   });
+
+});

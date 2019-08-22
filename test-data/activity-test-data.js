@@ -1,138 +1,150 @@
 const activityTestData = [{
   "userID": 1,
   "date": "2019/06/15",
-  "numOunces": 37
+  "numSteps": 3577,
+  "minutesActive": 140,
+  "flightsOfStairs": 16
 },
 {
   "userID": 2,
   "date": "2019/06/15",
-  "numOunces": 75
+  "numSteps": 4294,
+  "minutesActive": 138,
+  "flightsOfStairs": 10
 },
 {
   "userID": 3,
   "date": "2019/06/15",
-  "numOunces": 47
+  "numSteps": 7402,
+  "minutesActive": 116,
+  "flightsOfStairs": 33
 },
 {
   "userID": 1,
   "date": "2019/06/16",
-  "numOunces": 69
-}, 
+  "numSteps": 6637,
+  "minutesActive": 175,
+  "flightsOfStairs": 36
+},
 {
   "userID": 2,
   "date": "2019/06/16",
-  "numOunces": 91
-}, 
+  "numSteps": 4112,
+  "minutesActive": 220,
+  "flightsOfStairs": 37
+},
 {
   "userID": 3,
   "date": "2019/06/16",
-  "numOunces": 99
+  "numSteps": 12304,
+  "minutesActive": 152,
+  "flightsOfStairs": 8
 },
 {
   "userID": 1,
   "date": "2019/06/17",
-  "numOunces": 96
+  "numSteps": 14329,
+  "minutesActive": 168,
+  "flightsOfStairs": 18
 },
 {
   "userID": 2,
   "date": "2019/06/17",
-  "numOunces": 96
+  "numSteps": 13750,
+  "minutesActive": 65,
+  "flightsOfStairs": 4
 },
 {
   "userID": 3,
   "date": "2019/06/17",
-  "numOunces": 28
+  "numSteps": 4547,
+  "minutesActive": 97,
+  "flightsOfStairs": 5
 },
 {
   "userID": 1,
   "date": "2019/06/18",
-  "numOunces": 61
+  "numSteps": 4419,
+  "minutesActive": 165,
+  "flightsOfStairs": 33
 },
 {
   "userID": 2,
   "date": "2019/06/18",
-  "numOunces": 70
+  "numSteps": 4662,
+  "minutesActive": 181,
+  "flightsOfStairs": 31
 },
 {
   "userID": 3,
   "date": "2019/06/18",
-  "numOunces": 40
+  "numSteps": 2546,
+  "minutesActive": 274,
+  "flightsOfStairs": 26
 },
 {
   "userID": 1,
   "date": "2019/06/19",
-  "numOunces": 91
+  "numSteps": 8429,
+  "minutesActive": 275,
+  "flightsOfStairs": 2
 },
 {
   "userID": 2,
   "date": "2019/06/19",
-  "numOunces": 76
+  "numSteps": 9858,
+  "minutesActive": 243,
+  "flightsOfStairs": 44
 },
 {
   "userID": 3,
   "date": "2019/06/19",
-  "numOunces": 85
+  "numSteps": 10961,
+  "minutesActive": 188,
+  "flightsOfStairs": 17
 },
 {
   "userID": 1,
   "date": "2019/06/20",
-  "numOunces": 50
+  "numSteps": 14478,
+  "minutesActive": 140,
+  "flightsOfStairs": 12
 },
 {
   "userID": 2,
   "date": "2019/06/20",
-  "numOunces": 71
+  "numSteps": 8153,
+  "minutesActive": 74,
+  "flightsOfStairs": 10
 },
 {
   "userID": 3,
   "date": "2019/06/20",
-  "numOunces": 51
+  "numSteps": 5369,
+  "minutesActive": 129,
+  "flightsOfStairs": 46
 },
 {
   "userID": 1,
   "date": "2019/06/21",
-  "numOunces": 50
+  "numSteps": 6760,
+  "minutesActive": 135,
+  "flightsOfStairs": 6
 },
 {
   "userID": 2,
   "date": "2019/06/21",
-  "numOunces": 27
+  "numSteps": 10225,
+  "minutesActive": 174,
+  "flightsOfStairs": 26
 },
 {
   "userID": 3,
   "date": "2019/06/21",
-  "numOunces": 41
-},
-{
-  "userID": 1,
-  "date": "2019/06/22",
-  "numOunces": 43
-},
-{
-  "userID": 2,
-  "date": "2019/06/22",
-  "numOunces": 58
-},
-{
-  "userID": 3,
-  "date": "2019/06/22",
-  "numOunces": 78
-},
-{
-  "userID": 1,
-  "date": "2019/06/23",
-  "numOunces": 39
-},
-{
-  "userID": 2,
-  "date": "2019/06/23",
-  "numOunces": 44
-},
-{
-  "userID": 3,
-  "date": "2019/06/23",
-  "numOunces": 35
-},
+  "numSteps": 7498,
+  "minutesActive": 199,
+  "flightsOfStairs": 13
+}
 ];
 
 module.exports = activityTestData;

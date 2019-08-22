@@ -18,6 +18,16 @@ class Sleep {
     let avgSleep = parseFloat(user.toFixed(2));
     return avgSleep
   }
+
+  findHoursSleptByDate(dateString) {
+    let day = this.currentUserData.find(el => el.date === dateString);
+    return day.hoursSlept;
+  }
+
+  findSleepQualityByDate(dateString) {
+    let day = this.currentUserData.find(el => el.date === dateString);
+    return day.sleepQuality; 
+  }
 }
 
 

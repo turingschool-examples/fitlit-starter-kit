@@ -19,6 +19,18 @@ class SleepRepository {
       return acc + element.sleepQuality}, 1) / this.userSleep.length)
   }
 
+  // calculateTotalAverageSleep() {
+  //   return Math.floor(this.data.reduce((acc, element) => {
+  //     return acc + element.hoursSlept}, 1 / this.userSleep.length)
+  // }
+
+  calculateTotalAverageSleep() {
+    return Math.floor(this.data.reduce((acc, element) => {
+      return acc + element.hoursSlept}, 1) / this.data.length)
+  }
+
+
+
 
 
 }

@@ -1,6 +1,6 @@
 class Activity {
   constructor(activityData, user) {
-    this.activityData = activityData; 
+    this.activityData = activityData;
     this.user = user;
   }
 
@@ -19,7 +19,7 @@ class Activity {
 
   returnMinutesActive(date) {
     let specificUser = this.findUser();
-    return specificUser.find(day => day.date === date).minutesActive  
+    return specificUser.find(day => day.date === date).minutesActive
   }
 
   returnAverageMinutesActiveForWeek(week) {
@@ -27,7 +27,7 @@ class Activity {
     let weekOfData = this.returnWeekOfData(week, specificUser);
     return Math.floor(weekOfData.reduce((totalMinutes, eachDay) => {
       totalMinutes += eachDay.minutesActive
-      return totalMinutes 
+      return totalMinutes
     }, 0) / 7)
   }
 
@@ -45,7 +45,7 @@ class Activity {
 
   returnStepRecord() {
     let specificUser = this.findUser();
-    return specificUser.sort((a,b) => b.flightsOfStairs - a.flightsOfStairs)[0].flightsOfStairs
+    return specificUser.sort((a, b) => b.flightsOfStairs - a.flightsOfStairs)[0].flightsOfStairs
   }
 
   returnFriendsStepCount() {
@@ -61,8 +61,40 @@ class Activity {
     }, {})
     return [stepObj, this.user.friends[totalStepsPerFriend.indexOf(Math.max(...totalStepsPerFriend))]]
   }
+
+  returnThreeDayStepStreak() {
+    var specificUser = this.findUser();
+    let dates = [];
+    for (var i = specificUser.length - 1; i >= 2; i--) {
+      if (specificUser[i].numSteps < specificUser[i - 1].numSteps && specificUser[i - 1].numSteps < specificUser[i - 2].numSteps) {
+        dates.push(specificUser[i].date);
+        dates.push(specificUser[i - 1].date);
+        dates.push(specificUser[i - 2].date);
+      }
+    }
+
+    return dates;
+  }
+
+  returnTwoDayStairStreak() {
+    var specificUser = this.findUser();
+    let dates = [];
+    for (var i = specificUser.length - 1; i >= 1; i--) {
+      if (specificUser[i].flightsOfStairs < specificUser[i - 1].flightsOfStairs) {
+        dates.push(specificUser[i].date);
+        dates.push(specificUser[i - 1].date);
+      }
+      if (dates.length === 2) {
+        break;
+      }
+    }
+
+    return dates;
+  }
+
+
 }
 
 if (typeof module !== 'undefined') {
-    module.exports = Activity;
-  }
+  module.exports = Activity;
+}

@@ -33,10 +33,6 @@ describe('Sleep', () => {
     expect(sleep.userID).to.equal(user.id);
   });
 
-  it.skip('should be able to find data for a specific user', () => {
-
-  });
-
   it('should return the average sleep hours for a single user over all time', () => {
     expect(sleep.returnAvgSleepHours()).to.equal(7.66);
   });

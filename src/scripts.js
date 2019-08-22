@@ -14,7 +14,6 @@ let randoNum = null
 
 /*************** Event Listeners *************/
 window.addEventListener('load', initializePage(userData, hydrationData))
-// hydroList.addEventListener('click', initializePage(userData, hydrationData))
 
 /***************** Functions *****************/
 function getRandoNum() {
@@ -37,10 +36,8 @@ function initializePage(data, hydro) {
 	friends.innerHTML = `Friends: ${findFriends(userRepository, user)}`
 	welcome.innerHTML = `Welcome ${user.firstName()}!`;
 	avgFluids.innerHTML = `Average fluid ounces intake: ${userHydro.findAvgOunce()}`
-	// dailyFluids.innerHTML = `Fluid ounces intake by day: ${}`;
-	// userHydro.findOunceDay("2019/06/15")
 	let hydroDates = userHydro.findDates()
-	updateHydroDate(hydroDates.reverse());
+	appendHydroList(hydroDates.reverse(), userHydro);
 }
 
 function findFriends(userRepository, user) {
@@ -53,21 +50,20 @@ function findFriends(userRepository, user) {
 	return newFriends
 }
 
-function updateHydroDate(array) {
+function appendHydroList(array, obj) {
 	let dateList = document.createElement("select");
 	dateList.setAttribute("id", "mySelect");
 	hydroList.appendChild(dateList);
 	for (let i = 0; i < array.length; i++) {
-		let option = document.createElement("option");
+		var option = document.createElement("option");
     option.setAttribute("value", array[i]);
     option.text = array[i];
     dateList.appendChild(option);
 	}
+		dateList.addEventListener('change', function() {
+			obj.findOunceDay(dateList.value)
+			dailyFluids.innerHTML = `Fluid ounces intake by day: ${obj.day}`;
+		})
+		obj.findOunceDay(dateList.value)
+		dailyFluids.innerHTML = `Fluid ounces intake by day: ${obj.day}`;
 }
-
-// function createHydroList() {
-// 	hydroList.insertAdjacentHTML('afterbegin', `<li>${userHydro.findDates()}</li>`)
-
-// }
-
-// hydroList.insertAdjacentHTML('afterend', `<li>${hydroDates[i]}</li>`)

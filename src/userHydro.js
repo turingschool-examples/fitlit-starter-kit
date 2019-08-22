@@ -17,9 +17,8 @@ class UserHydro {
 	findOunceDay(date) {
 		this.data.forEach(user => {
 			if(user.date === date) {
-			this.day = user.numOunces
-			console.log(user)
-			return this.day
+				this.day = user.numOunces
+				return this.day
 			}
 		});
 	}
@@ -34,11 +33,6 @@ class UserHydro {
 		})
 		return this.dates
 	}
-	// populateDates(){
-	// 	this.dates.forEach(date => {
-	// 		return date
-	// 	})
-	// }
 }
 
 if (typeof module !== 'undefined') {

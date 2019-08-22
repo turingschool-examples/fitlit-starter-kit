@@ -26,14 +26,19 @@ h1 {
 header h2 {
     font-size: 40px;
 }
+#random-user-span {
+    color: darkcyan;
+}
 
 span {
+    color: darkcyan;
     margin-left: 5px;
 }
 
 main {
-    /* display: flex; */
-    height: 100vh;
+    column-gap: 30px;
+    columns: 2 250px;
+    height: 175em;
     margin: 0;
 }
 
@@ -43,7 +48,7 @@ section {
     border-radius: 4px;
     height: auto;
     margin-top: 20px;
-    width: 45%;
+    width: 100%;
 }
 
 .main__section--1, 
@@ -63,8 +68,8 @@ section {
 article {
     /* text-align: center; */
     position: relative;
-    transition: transform 1s;
-    transform-style: preserve-3d;
+    /* transition: transform 1s; */
+    /* transform-style: preserve-3d; */
 }
 
 article h2 {

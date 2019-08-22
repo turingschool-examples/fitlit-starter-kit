@@ -1,8 +1,8 @@
-$(document).ready(function() {
+$(function() {
 
 const randomUser = Math.floor(Math.random() * 50 ) 
 const userRepository = new UserRepository(userData);
-const hydration = new Hydration(hydrationData);
+const hydration = new Hydration(userData);
 const user = new User(userData[randomUser]);
 // const sleep = new Sleep();
 // const sleepRepository = new SleepRepository();
@@ -10,6 +10,13 @@ const user = new User(userData[randomUser]);
 // const activityRepository = new ActivityRepository();
 
 //the above code is commented out until we finish each of those iterations
+const date = new Date().toISOString().replace('-', '/').split('T')[0].replace('-', '/');
+
+$('.product-photo').on('mouseenter', event => {
+    $(event.currentTarget).addClass('photo-active')
+  }).on('mouseleave', event => {
+    $(event.currentTarget).removeClass('photo-active')
+  })
 
 
     $('#random-user-span').text(user.getFirstName());
@@ -18,7 +25,7 @@ const user = new User(userData[randomUser]);
     $('#article__user--email').text(userData[randomUser].email);
     $('#article__user--stridelength').text(userData[randomUser].strideLength);
     $('#article__user--stepgoal').text(userData[randomUser].dailyStepGoal);
-    $('#article__user--stepcompare').text();
+    $('#article__user--stepcompare').text(userRepository.calcStepGoalAvg());
     $('#article__user--currentsleep').text();
     $('#article__user--weekssleep').text();
     $('#article__user--avgsleep').text();
@@ -35,8 +42,8 @@ const user = new User(userData[randomUser]);
     data: {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
-        label: 'weekly active minutes overview',
-        data: hydration.findWeeklyWaterCons(),
+        label: 'Weekly Hydration',
+        data: hydration.findWeeklyWaterCons(date),
         backgroundColor: [
           '#2FB5B6',
           '#FC5D79', 
@@ -59,11 +66,18 @@ const user = new User(userData[randomUser]);
       }]
     },
         options: {
-          legend: {display: false},
           labels: {
             fontColor: 'black',
             fontSize: 15
           },
+          layout: {
+            padding: {
+                left: 50,
+                right: 50,
+                top: 0,
+                bottom: 50,
+            }
+        }, 
           title: {
             display: true,
             fontColor: 'black',

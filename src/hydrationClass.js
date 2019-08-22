@@ -14,7 +14,7 @@ class Hydration {
       }
     });
     this.singleUserData = userData
-    return userData
+    // return userData
   }
   
   calculateAverageWaterIntake() {
@@ -37,14 +37,9 @@ class Hydration {
   //   // return dayOunces.numOunces;
   // }
   
-  waterConsumedThatWeek() {
-    let currentDay = this.hydrationData[this.hydrationData.length - 1]
-    let currentDayIndex = this.hydrationData.indexOf(currentDay)
-    let currentWeek = this.hydrationData.slice(-currentDayIndex)
-    let currentWeekOunces = currentWeek.map(element => {
-      return element.numOunces;
-    })
-    return currentWeekOunces;
+  calculateWeeklyWaterIntake() {
+    let currentDay = this.singleUserData[this.singleUserData.length - 1]
+    let currentWeek = this.singleUserData.slice(-7)
   }
 }
 

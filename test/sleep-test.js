@@ -15,8 +15,9 @@ describe('SleepUser', function() {
 
   it.only('should find sleep info based on date', function() {
     expect(sleepUser.findDailySleep('2019/06/15', 3)).to.equal(10.8)
-  })
+  });
 
+ 
 
 
 

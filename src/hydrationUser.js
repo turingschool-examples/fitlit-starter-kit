@@ -21,13 +21,23 @@ class Hydration {
                 return userAvg;
         }
 
-        weeklyHydration(id) {
-            let totalOz = this.findUser(id).map(element => {
-                return element.numOunces
-            }).slice(-7);
-            return totalOz;
+        weeklyHydration(id, day) {
+            // let totalOz = this.findUser(id).map(element => {
+            //     return element.numOunces
+            // }).slice(-7);
+            // return totalOz;
+            let targetUserData = this.findUser(id);
+            let index = targetUserData.findIndex(object => {
+                return object.date === day;
+            });
+            // console.log("index", index);
+            let weekData = targetUserData.slice(index -6);
+            console.log("weekData :", weekData);
+            return weekData;
         }
-}
+    }
+    
+
 
 
 

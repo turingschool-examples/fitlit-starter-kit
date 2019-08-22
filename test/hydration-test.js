@@ -18,6 +18,6 @@ describe('Hydration', function() {
     })
     it.only('should return hydration for a week', function() {
         const water = new Hydration(sampleHydrationData);
-        expect(water.weeklyHydration(1)).to.deep.equal([26,30,46,26,34,24,89]);
+        expect(water.weeklyHydration(1, '2019/07/09')).to.deep.equal([26,30,46,26,34,24,89]);
     })
     })

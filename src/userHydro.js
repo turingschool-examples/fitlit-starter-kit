@@ -4,7 +4,6 @@ class UserHydro {
 		this.day = null
 		this.dates = []
 		this.week = []
-
 	}
 	findAvgOunce() {
 	var sum = 0
@@ -24,7 +23,7 @@ class UserHydro {
 	}
 	findOunceWeek(index) {
 		this.week = []
-		let sum = 0
+		let weekDays = []
 		if (index + 7 < this.data.length) {
 			for (let i = index; i < index + 7; i++){
 				this.week.push(this.data[i])
@@ -35,10 +34,10 @@ class UserHydro {
 			}
 		}
 		for (let i = 0; i < this.week.length; i++) {
-			sum += this.week[i].numOunces
+			// weekDays.push(this.week[i].date)
+			weekDays.push(this.week[i].numOunces) 
 		}
-		sum = sum / this.week.length
-		return sum
+		return weekDays
 	}
 	findDates() {
 		this.data.forEach(user => {

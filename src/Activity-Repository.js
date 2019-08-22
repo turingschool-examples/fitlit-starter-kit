@@ -1,6 +1,7 @@
 class Activity {
-  constructor(activityData) {
+  constructor(activityData, userData) {
     this.activityData = activityData;
+    this.userData = userData;
   }
 
   findCurrentUserData(userId) {
@@ -23,8 +24,10 @@ class Activity {
     //return miles walked on date for user (use stride length)
   } 
 
-  returnActiveMinutesByDate(userId, startDate) {
-    //return active minutes on date for week
+  returnActiveMinutesByDate(userId, date) {
+    return this.findCurrentUserData(userId).find(elem => {
+      return elem.date === date
+    }).minutesActive
   } 
 
   returnAvgActiveMinutesByWeek(userId, startDate) {
@@ -32,7 +35,10 @@ class Activity {
   } 
 
   returnStepGoalMetByDate(userId, date) {
-    //return true or false if user achieved their step goal
+    if ((this.userData.find(elem => elem.id === userId).dailyStepGoal) <= (this.findCurrentUserData(userId).find(elem => elem.date === date).numSteps)) {
+      return true;
+    }
+    return false; 
   } 
 
   returnAllDaysStepGoalExceeded(userId) {
@@ -40,7 +46,9 @@ class Activity {
   } 
 
   returnStairClimbingRecord(userId) {
-    //return all time stair climbing record
+    return this.findCurrentUserData(userId).sort((value1, value2) => {
+      return value2.flightsOfStairs - value1.flightsOfStairs
+    })[0].flightsOfStairs
   }
 }
 

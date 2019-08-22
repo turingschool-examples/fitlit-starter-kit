@@ -25,13 +25,19 @@ class UserHydro {
 	findOunceWeek(index) {
 		this.week = []
 		let sum = 0
-		for(let i = index; i < index + 7; i++){
-			this.week.push(this.data[i])
+		if (index + 7 < this.data.length) {
+			for (let i = index; i < index + 7; i++){
+				this.week.push(this.data[i])
+			}
+		} else {
+				for (let i = index; i < this.data.length; i++){
+					this.week.push(this.data[i])
+			}
 		}
 		for (let i = 0; i < this.week.length; i++) {
 			sum += this.week[i].numOunces
 		}
-		sum = sum / 7
+		sum = sum / this.week.length
 		return sum
 	}
 	findDates() {

@@ -87,6 +87,18 @@ class Sleep {
     })
     return usersWithHighestQualitySleep;
   }
+
+  returnUserWithMostSleep(date) {
+    let sleepByDay = this.sleepData.filter(elem => {
+      return elem.date === date;
+    })
+    sleepByDay.sort((firstElem, secondElem) => {
+      return secondElem.hoursSlept - firstElem.hoursSlept
+    })
+    return sleepByDay.filter(elem => {
+      return sleepByDay[0].hoursSlept === elem.hoursSlept
+    }).map(elem => elem.userID);
+  }
 }
 
 if (typeof module !== 'undefined') {

@@ -42,4 +42,8 @@ describe('Sleep', function() {
     expect(sleep1.getSleepQualPerDay("2019/06/15")).to.equal(2.2)
   })
 
+  it('should get hours slept each day over any given week', () => {
+    expect(sleep1.getHoursSleptPerDayPerWeek("2019/06/21")).to.deep.equal([6.1, 4.1, 8, 10.4, 10.7, 9.3, 7.8])
+  })
+
 });

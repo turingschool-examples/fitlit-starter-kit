@@ -28,6 +28,20 @@ class Sleep {
     let day = this.currentUserData.find(el => el.date === dateString);
     return day.sleepQuality; 
   }
+
+  findHoursSleptEachDayOverWeek(startDate, endDate) {
+    return this.currentUserData.filter(eachDay => {
+        if(new Date(eachDay.date) >= new Date(startDate) && new Date(eachDay.date) <= new Date(endDate)){
+            console.log(eachDay)
+            return eachDay
+        }
+    }).map(eachDay => {
+        return {
+            date: eachDay.date,
+            hoursSlept: eachDay.hoursSlept
+        }
+    });
+  }
 }
 
 

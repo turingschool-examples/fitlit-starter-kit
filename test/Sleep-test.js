@@ -2,6 +2,10 @@ const chai = require('chai');
 const expect = chai.expect;
 const Sleep = require('../src/Sleep');
 const mockSleep = require('../mock-data/mock-sleep');
+const mockSleepUser1 = require('../mock-data/mock-sleep-user1')[0];
+const mockSleepUserEachDayGivenWeek = require('../mock-data/mock-sleep-user1')[1];
+
+
 
 let sleep;
 
@@ -35,68 +39,7 @@ describe('Sleep', () => {
 
   describe('findCurrentUserData', () => {
     it('should be able to find the current user data', () => {
-      expect(sleep.findCurrentUserData()).to.eql([
-        {
-          "userID": 1,
-          "date": "2019/06/15",
-          "hoursSlept": 6.1,
-          "sleepQuality": 2.2
-        },
-        {
-          "userID": 1,
-          "date": "2019/06/16",
-          "hoursSlept": 4.1,
-          "sleepQuality": 3.8
-        },
-        {
-          "userID": 1,
-          "date": "2019/06/17",
-          "hoursSlept": 8,
-          "sleepQuality": 2.6
-        },
-        {
-          "userID": 1,
-          "date": "2019/06/18",
-          "hoursSlept": 10.4,
-          "sleepQuality": 3.1
-        },
-        {
-          "userID": 1,
-          "date": "2019/06/19",
-          "hoursSlept": 10.7,
-          "sleepQuality": 1.2
-        },
-        {
-          "userID": 1,
-          "date": "2019/06/20",
-          "hoursSlept": 9.3,
-          "sleepQuality": 1.2
-        },
-        {
-          "userID": 1,
-          "date": "2019/06/21",
-          "hoursSlept": 7.8,
-          "sleepQuality": 4.2
-        },
-        {
-          "userID": 1,
-          "date": "2019/06/22",
-          "hoursSlept": 7,
-          "sleepQuality": 3
-        },
-        {
-          "userID": 1,
-          "date": "2019/06/23",
-          "hoursSlept": 7.8,
-          "sleepQuality": 1.5
-        },
-        {
-          "userID": 1,
-          "date": "2019/06/24",
-          "hoursSlept": 8,
-          "sleepQuality": 1.3
-        },
-      ]);
+      expect(sleep.findCurrentUserData()).to.eql(mockSleepUser1);
     });
   });
     
@@ -108,22 +51,23 @@ describe('Sleep', () => {
   });
 
   describe('findHoursSleptByDate', () => {
-      it('should be able to find the number of hours a user slept based on date', () => {
+    it('should be able to find the number of hours a user slept based on date', () => {
       expect(sleep.findHoursSleptByDate("2019/06/16")).to.equal(4.1);
-      });
+    });
   });
 
   describe('findSleepQualityByDate', () => {
-      it('should be able to find the quality of sleep based on date', () => {
-        expect(sleep.findSleepQualityByDate("2019/06/16")).to.equal(3.8);
-      });
+    it('should be able to find the quality of sleep based on date', () => {
+      expect(sleep.findSleepQualityByDate("2019/06/16")).to.equal(3.8);
+    });
   });
 
   describe('findHoursSleptEachDayOverWeek', () => {
-      it('should be able to find the the hours of sleep each day over a given week', () => {
-      expect;
-      });
+    it('should be able to find the the hours of sleep each day over a given week', () => {
+      expect(sleep.findHoursSleptEachDayOverWeek("2019/06/15", "2019/06/21")).to.eql(mockSleepUserEachDayGivenWeek)
+    });
   });
+
 
   // describe('fetchQualityOfSleepOverWeek', () => {
   //     it('should be able to find the quality of sleep over a given week', () => {
@@ -153,6 +97,6 @@ describe('Sleep', () => {
   //      it('should be able to find the user/s who slept the most number of hours based on a date', () => {
   //     expect;
   //      });
-  // });
+  //   });
 
 });

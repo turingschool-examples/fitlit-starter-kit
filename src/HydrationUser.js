@@ -6,7 +6,9 @@ class HydrationUser {
   }
 
   findDailyHydration(date, id) {
-    let day = this.hydrationTestData.find(user => user.date === date && id)
+    let userInfo = this.hydrationTestData.filter(element => element.userID === id)
+    let day = userInfo.find(element => element.date === date)
+
     return day.numOunces
   }
 

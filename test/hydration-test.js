@@ -4,7 +4,7 @@ const expect = chai.expect;
 const UserRepository = require('../src/UserRepository');
 const User = require('../src/User');
 const Hydration = require('../src/Hydration');
-const userData = require('../data-subsets/users-subset')
+const userData = require('../data-subsets/users-subset');
 const hydrationData = require('../data-subsets/hydration-subset');
 
 describe('Hydration', () => {

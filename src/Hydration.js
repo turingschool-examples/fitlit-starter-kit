@@ -34,9 +34,8 @@ class Hydration {
   // day over the course of a week (7 days) - return the amount for 
   // each day
   findWeeklyWaterCons() {
-    return this.ouncesPerDay.slice((7, -7));
+    return this.ouncesPerDay.slice((-7));
   }
-
 }
 
 

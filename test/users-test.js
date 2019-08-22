@@ -26,4 +26,9 @@ describe('User', () => {
     expect(user.getFirstName()).to.be.equal('Luisa')
   });
 
+  it.only('should be able to compare the user\'s step goal to the global average', () => {
+    const user = new User(userData[0]);
+    expect(user.getStepGoalComparison()).to.be.equal(1)
+  });
+
 });    

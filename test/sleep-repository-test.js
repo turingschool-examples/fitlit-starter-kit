@@ -126,3 +126,4 @@ describe('SleepRepository', function() {
     expect(sleepRepository.returnSleepQualityAvg()).to.equal(3)
   })
 })
+

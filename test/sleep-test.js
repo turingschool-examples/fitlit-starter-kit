@@ -17,6 +17,10 @@ describe('SleepUser', function() {
     expect(sleepUser.findDailySleep('2019/06/26', 3)).to.equal(6.1)
   });
 
+  it.only('should find sleep quality based on date', function() {
+    expect(sleepUser.findDailySleepQuality('2019/06/19', 3)).to.equal(3.4)
+  })
+
   it.only('should calculate average daily sleep for any given week', function() {
     expect(sleepUser.findAverageSleep()).to.equal()
   })

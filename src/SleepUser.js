@@ -12,6 +12,11 @@ class SleepUser {
     return day.hoursSlept;
   }
 
+  findDailySleepQuality(date, id) {
+    let day = this.findUserInfo(id).find(user => user.date ===date)
+    return day.sleepQuality;
+  }
+
 
 }
 

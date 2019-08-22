@@ -16,11 +16,11 @@ describe('Activity', () => {
     expect(Activity).to.be.a('function');
   });
 
-  it('should be an instance of Hydration', () => {
+  it('should be an instance of Activity', () => {
     expect(activity).to.be.an.instanceof(Activity);
   });
 
-  it('should have a parameter to take in all of the hydration data', () => {
+  it('should have a parameter to take in all of the activity data', () => {
     expect(activity.allActivityData).to.eql(mockActivityData)
   });
 

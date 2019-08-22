@@ -1,6 +1,7 @@
 class SleepRepository {
-  constructor() {
-
+  constructor(data, id) {
+    this.id = id;
+    this.data = data;
   }
 }
 
@@ -11,5 +12,6 @@ class SleepRepository {
 if (typeof module !== 'undefined') {
   module.exports = SleepRepository;
 }
+
 
 

@@ -46,8 +46,6 @@ describe('Activity', () => {
   });
 
   it('should find all of the days the user met their step goal', function () {
-
-  it('should find all of the days the user met their step goal', function () {
     let days = ['2019/06/17', '2019/06/20']
     expect(activity.returnAllDaysStepGoalExceeded(user1, '2019/06/16')).to.deep.eql(days);
   });
@@ -56,4 +54,7 @@ describe('Activity', () => {
     expect(activity.returnMilesWalkedByDate(user1, '2019/06/16')).to.equal(5);
   });
 
+  it('should calculate a user\'s average active minutes per week', function () { 
+  expect(activity.returnAvgActiveMinutesByWeek(1, '2019/06/15')).to.equal(171);
+  });
 });

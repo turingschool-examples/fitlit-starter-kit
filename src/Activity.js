@@ -47,6 +47,18 @@ class Activity {
     let specificUser = this.findUser();
     return specificUser.sort((a,b) => b.flightsOfStairs - a.flightsOfStairs)[0].flightsOfStairs
   }
+
+  returnFriendsStepCount() {
+    let friends = this.user.friends.map(friend => this.activityData.filter(el => el.userID === friend))
+    // let totalStepsPerFriend = friends.reduce((totalStepsPerFriend, eachFriend) => {
+    //   totalStepsPerFriend[eachFriend] = eachFriend.reduce((totalSteps, eachDay) => {
+    //     totalSteps += eachDay.numSteps
+    //     return totalSteps
+    //   }, 0)
+    //   return totalStepsPerFriend
+    // }, [])
+    console.log(friends)
+  } 
 }
 
 

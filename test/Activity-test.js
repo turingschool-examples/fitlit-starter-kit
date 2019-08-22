@@ -57,5 +57,13 @@ describe('Activity', () => {
     expect(activity.returnStepRecord()).to.equal(36);
   });
 
+  it('should return all friends\' step count for the week ', () => {
+    expect(activity.returnFriendsStepCount()).to.equal();
+  });
+
+  it('should return friend with most steps ', () => {
+    expect(activity.returnFriendsStepCount()).to.equal();
+  });
+
 
 });

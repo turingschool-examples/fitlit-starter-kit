@@ -12,15 +12,16 @@ class Activity {
   }
 
   returnStepsTakenAllUsersByDate(date) {
-    //return average num of steps take for given date (all users)
+    return this.activityData.filter((activityObj) => activityObj.date === date).reduce((activityObjA, activityObjB) => activityObjA + activityObjB.numSteps, 0);
   } 
 
   returnActiveMinutesAllUsersByDate(date) {
-    //return average mins active for given date (all users)
+    return this.activityData.filter((activityObj) => activityObj.date === date).reduce((activityObjA, activityObjB) => activityObjA + activityObjB.minutesActive, 0);
   } 
 
-  returnMilesWalkedByDate(userId, date) {
-    //return miles walked on date for user (use stride length)
+  returnMilesWalkedByDate(user, date) {
+    let numOfSteps = this.activityData.find(activityObj => activityObj.userID === user.id && activityObj.date === date).numSteps;
+    return parseInt(((numOfSteps * user.strideLength) / 5280).toFixed(0));
   } 
 
   returnActiveMinutesByDate(userId, startDate) {
@@ -31,8 +32,8 @@ class Activity {
     //return average active minutes for a given week 
   } 
 
-  returnStepGoalMetByDate(userId, date) {
-    //return true or false if user achieved their step goal
+  returnDatesStepGoalMet(user) {
+    return this.activityData.filter((activityObj) => activityObj.userID === user.id && activityObj.numSteps > user.dailyStepGoal).map(activityObj => activityObj.date );
   } 
 
   returnAllDaysStepGoalExceeded(userId) {

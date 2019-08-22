@@ -48,7 +48,7 @@ class Sleep {
     });
     return userSleepData.map(sleepObj => { 
       return sleepObj.hoursSlept
-    }).splice(startDay, 7);
+    }).splice(startDay - 7, 7);
   }
 
   returnSleepQualityByWeek(userID, date) {
@@ -58,7 +58,7 @@ class Sleep {
     });
     return userSleepData.map(sleepObj => {
       return sleepObj.sleepQuality
-    }).splice(startDay, 7);
+    }).splice(startDay - 7, 7);
   }
 
   returnAllUsersAverageSleepQuality() {

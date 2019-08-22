@@ -252,7 +252,15 @@ describe('Sleep', () => {
 
 it('should be a function', () => {
   assert.isFunction(Sleep)
+});
 
-})
+it('should identify user', () => {
+  assert.equal(sleepData.setUserID(5), 5)
+});
+
+it('should return the average number of hours slept', () => {
+  sleepData.setUserID(5)
+  assert.equal(sleepData.averageHoursSlept(), 7.5)
+});
 
 });

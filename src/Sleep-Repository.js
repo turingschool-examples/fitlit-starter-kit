@@ -99,6 +99,15 @@ class Sleep {
       return sleepByDay[0].hoursSlept === elem.hoursSlept
     }).map(elem => elem.userID);
   }
+
+  checkUserRestedByDate(userID, date) {
+    if ((this.findCurrentUserData(userID).find(day => {
+      return day.date === date;
+    }).hoursSlept) >= (8)) {
+      return true;
+    }
+    return false;
+  }
 }
 
 if (typeof module !== 'undefined') {

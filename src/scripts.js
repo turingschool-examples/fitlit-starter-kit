@@ -10,13 +10,6 @@ const user = new User(userData[randomUser]);
 // const activityRepository = new ActivityRepository();
 
 //the above code is commented out until we finish each of those iterations
-const date = new Date().toISOString().replace('-', '/').split('T')[0].replace('-', '/');
-
-$('.product-photo').on('mouseenter', event => {
-    $(event.currentTarget).addClass('photo-active')
-  }).on('mouseleave', event => {
-    $(event.currentTarget).removeClass('photo-active')
-  })
 
 
     $('#random-user-span').text(user.getFirstName());
@@ -43,9 +36,9 @@ $('.product-photo').on('mouseenter', event => {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: 'Weekly Hydration',
-        data: hydration.findWeeklyWaterCons(date),
+        data: hydration.findWeeklyWaterCons(),
         backgroundColor: [
-          '#2FB5B6',
+          '#2FB5B6', 
           '#FC5D79', 
           '#B6E7EC', 
           '#fda8b7', 
@@ -54,53 +47,79 @@ $('.product-photo').on('mouseenter', event => {
           '#346081'
         ],
         borderColor: [
-          '#2FB5B6',
-          '#FC5D79',
-          '#B6E7EC',
-          '#fda8b7',
-          '#1F768A',
-          '#fc7d93',
-          '#346081', 
+            'black'
+        //   '#2FB5B6',
+        //   '#FC5D79',
+        //   '#B6E7EC',
+        //   '#fda8b7',
+        //   '#1F768A',
+        //   '#fc7d93',
+        //   '#346081', 
         ],
         borderWidth: 2 
       }]
     },
-        options: {
-          labels: {
-            fontColor: 'black',
-            fontSize: 15
-          },
-          layout: {
-            padding: {
-                left: 50,
-                right: 50,
-                top: 0,
-                bottom: 50,
-            }
-        }, 
-          title: {
+    options: {
+        title: {
             display: true,
             fontColor: 'black',
             text: 'Weekly Water Intake (fl oz)'
-          },
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true,
-                fontColor: 'black',
-                fontSize: 14
-              }
-            }],
-            xAxes: [{
-              ticks: {
-                beginAtZero: true,
-                fontColor: 'black',
-                fontSize: 14
-              }
-            }],
-          }
-        }
-      });
+        },
+        layout: {
+            padding: {
+                left: 10,
+                right: 0,
+                top: 0,
+                bottom: 10,
+                    }
+                },
+    	responsive: false,
+    		scales: {
+    		    yAxes: [{
+    		        ticks: {
+    		            beginAtZero: true
+    		        }
+    		    }]
+    		}
+    }
+    });
+
+    //     options: {
+    //       labels: {
+    //         fontColor: 'black',
+    //         fontSize: 15
+    //       },
+    //       layout: {
+    //         padding: {
+    //             left: 50,
+    //             right: 50,
+    //             top: 0,
+    //             bottom: 50,
+    //         }
+    //     }, 
+    //       title: {
+    //         display: true,
+    //         fontColor: 'black',
+    //         text: 'Weekly Water Intake (fl oz)'
+    //       },
+    //       scales: {
+    //         yAxes: [{
+    //           ticks: {
+    //             beginAtZero: true,
+    //             fontColor: 'black',
+    //             fontSize: 14
+    //           }
+    //         }],
+    //         xAxes: [{
+    //           ticks: {
+    //             beginAtZero: true,
+    //             fontColor: 'black',
+    //             fontSize: 14
+    //           }
+    //         }],
+    //       }
+    //     }
+    //   });
     
     
 

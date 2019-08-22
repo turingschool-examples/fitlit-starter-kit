@@ -1,6 +1,6 @@
 class Activity {
-    constructor() {
-
+    constructor(activityData) {
+        this.activityData = activityData;
     }
 }
 

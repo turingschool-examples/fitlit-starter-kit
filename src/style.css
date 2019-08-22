@@ -6,79 +6,100 @@
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: black; 
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "header header"
+      "main main"
+      "main main"
+      "main main";
 }
 
 header {
     align-items: center;
-    background-color: darkslategrey;
+    background-color: #3c616f;
     border-radius: 4px;
     display: flex;
-    /* height: 140px; */
+    height: 140px;
+    grid-area: header;
     justify-content: space-evenly;
 }
 
 h1 {
-    font-size: 60px;
-    /* font-weight: 700; */
+    font-size: 7em;
     margin: 10px;
 }
 
 header h2 {
-    font-size: 40px;
+    font-size: 3em;
 }
+
 #random-user-span {
     color: darkcyan;
 }
 
-span {
+header span {
     color: darkcyan;
     margin-left: 5px;
 }
 
 main {
-    column-gap: 30px;
-    columns: 2 250px;
-    height: 175em;
+    display: grid;
+    grid-area: main;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
     margin: 0;
 }
 
 section {
-    background-color: darkslategrey;
-    border: 1px solid gray;
+    border: 2px solid gray;
     border-radius: 4px;
     height: auto;
     margin-top: 20px;
     width: 100%;
 }
 
-.main__section--1, 
-.main__section--2, 
-.main__section--3 {
-    float: left;
-    margin-left: 5px;
-}
-
-.main__section--4, 
-.main__section--5, 
-.main__section--6 {
-    float: right;
-    margin-right: 5px;
-}
-
 article {
-    /* text-align: center; */
+    height: 100%;
     position: relative;
-    /* transition: transform 1s; */
-    /* transform-style: preserve-3d; */
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+article span {
+    margin-left: 9px;
+    font-style: oblique;
+    color: #000000ad;
+}
+
+.main__article--user {
+    background-color: #73A9BB;
+}
+
+.main__article--sleep {
+    background-color: #7397BB;
+}
+
+.main__article--hydration {
+    background-color: #7385BB;
+}
+
+.main__article--activity {
+    background-color: #7373BB;
+}
+
+.main__article--trends {
+    background-color: #8573BB;
 }
 
 article h2 {
-    background-color: #536a6a;
+    background-color: #3c616f;
     padding: 5px;
     text-align: center;
 }
 
 h5 {
-    font-size: 16px;
+    font-size: 1em;
     padding: 5px;
 }

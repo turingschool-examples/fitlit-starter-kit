@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const HydroRepository = require('../src/HydroRepository.js');
+const HydroRepository = require('../src/hydroRepository.js');
 const hydroData = require('../data/hydration.js');
 
 describe('HydroRepository', function() {

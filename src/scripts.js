@@ -11,6 +11,7 @@ let avgFluids = document.querySelector('.main_hydro_average');
 let dailyFluids = document.querySelector('.main_hydro_daily');
 let weeklyFluids = document.querySelector('.main_hydro_weekly')
 let randoNum = null
+let avgSleep = document.querySelector('.main_sleep_average')
 
 /*************** Event Listeners *************/
 window.addEventListener('load', initializePage(userData, hydrationData))
@@ -60,7 +61,7 @@ function appendHydroList(array, obj) {
     option.text = array[i];
     dateList.appendChild(option);
     if (dateList.value === array[i]) {
-    		weeklyFluids.innerHTML = `Fluid ounces intake by week: ${obj.findOunceWeek(i).toFixed(2)}`
+    		weeklyFluids.innerHTML = `Fluid ounces intake by week: ${obj.findOunceWeek(i)}`
     }
 	}
 		dateList.addEventListener('change', function() {
@@ -68,7 +69,7 @@ function appendHydroList(array, obj) {
 			dailyFluids.innerHTML = `Fluid ounces intake by day: ${obj.day}`;
 			for (let i = 0; i < array.length; i++) {
 				if (dateList.value === array[i]) {
-    		weeklyFluids.innerHTML = `Fluid ounces intake by week: ${obj.findOunceWeek(i).toFixed(2)}`
+    		weeklyFluids.innerHTML = `Fluid ounces intake by week: ${obj.findOunceWeek(i)}`
     		}
 			}
 		})

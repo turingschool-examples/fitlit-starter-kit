@@ -28,11 +28,12 @@ describe('UserHydro', function() {
 	expect(userHydro.day).to.equal(37)
 	});
 
-	it('should display weekly average based off user and date', function() {
-	const hydroRepository = new HydroRepository(hydroData)
-	hydroRepository.findUserID(5)
-	const userHydro = new UserHydro(hydroRepository.currentUser)
-	userHydro.findDates()
-	expect(userHydro.findOunceWeek(5).toFixed(2)).to.equal('66.29')
-	});
+	// it('should display weekly average based off user and date', function() {
+	// const hydroRepository = new HydroRepository(hydroData)
+	// hydroRepository.findUserID(5)
+	// const userHydro = new UserHydro(hydroRepository.currentUser)
+	// userHydro.findDates()
+	// expect(userHydro.findOunceWeek(5).toFixed(2)).to.equal('66.29')
+	// expect(userHydro.findOunceWeek(95).toFixed(2)).to.equal('62.40')
+	// });
 });

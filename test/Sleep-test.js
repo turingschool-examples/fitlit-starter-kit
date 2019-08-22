@@ -21,6 +21,18 @@ describe('Sleep', () => {
     expect(Sleep).to.be.a('function');
   })
 
+  it('should be an instance of the class Sleep', () => {
+    expect(sleep).to.be.an.instanceOf(Sleep);
+  });
+
+  it('should be able to store sleep data as a parameter', () => {
+    expect(sleep.sleepData).to.eql(sleepData);
+  });
+
+  it('should be able to store user id as a parameter', () => {
+    expect(sleep.userID).to.equal(user.id);
+  });
+
   it('should return the average sleep hours for a single user over all time', () => {
     expect(sleep.returnAvgSleepHours()).to.equal(7.66);
   });

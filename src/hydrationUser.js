@@ -30,7 +30,10 @@ class Hydration {
                 return ` ${arr.date}  :  ${arr.numOunces} `;
             })
             return weekData;
+
         }
+
+    
     }
     
 

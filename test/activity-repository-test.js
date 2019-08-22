@@ -33,7 +33,7 @@ describe('Activity', () => {
 
   it('should find all of the days the user met their step goal', function () {
     let days = ['2019/06/17', '2019/06/20']
-    expect(activity.returnDatesStepGoalMet(user1, '2019/06/16')).to.deep.eql(days);
+    expect(activity.returnAllDaysStepGoalExceeded(user1, '2019/06/16')).to.deep.eql(days);
   });
 
   it('should calculate a user\'s miles walked on a given day', function () {

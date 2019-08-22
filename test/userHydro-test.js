@@ -27,4 +27,12 @@ describe('UserHydro', function() {
 	userHydro.findOunceDay('2019/09/22')
 	expect(userHydro.day).to.equal(37)
 	});
+
+	it('should display weekly average based off user and date', function() {
+	const hydroRepository = new HydroRepository(hydroData)
+	hydroRepository.findUserID(5)
+	const userHydro = new UserHydro(hydroRepository.currentUser)
+	userHydro.findDates()
+	expect(userHydro.findOunceWeek(5).toFixed(2)).to.equal('66.29')
+	});
 });

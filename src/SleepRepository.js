@@ -36,8 +36,8 @@ class SleepRepository {
     return weekOfData
   }
 
-  createSleepQualityObj(weekOfUsers) {
-    return weekOfUsers.reduce( (acc, user) => {
+  createSleepQualityObj(dateToday) {
+    return this.getWeekOfUsers(dateToday).reduce( (acc, user) => {
       if (!acc[user.userID]) {
         acc[user.userID] = [user.sleepQuality]
       } else {
@@ -46,20 +46,34 @@ class SleepRepository {
       return acc
     }, {})
   }
-
-  getHydroArray(dateToday) {
-    const arrayOfDates = this.userData.map(day => day.date)
-    const index = (((arrayOfDates.length - arrayOfDates.findIndex(date => dateToday === date)) * -1) - 6)
-    this.weeklyArr = this.newUserData.splice(index, 7).reverse();
-    return this.weeklyArr;
+  findBestSleepers(dateToday) {
+    const weekOfUsersFn = this.createSleepQualityObj(dateToday)
+    const bestSlepers = [];
+    for (let key in weekOfUsersFn) {
+      if ((weekOfUsersFn[key].reduce((avgQuality, sleepQuality) => {
+        avgQuality += sleepQuality;
+        return avgQuality
+      }, 0) / weekOfUsersFn[key].length) > 3.1) {
+        bestSlepers.push(parseInt(key))
+      }
+    }
+    return bestSlepers
   }
-
-  getWeeklyHydroAvg() {
-    const weekTotal = this.weeklyArr.reduce((total, day) => {
-      total += day.numOunces;
-      return total
-    }, 0)
-    return Math.round(weekTotal / this.weeklyArr.length)
+  findTopSleeperByDay(dateToday) {
+    const newDateFormat = new Date(dateToday)
+    const currentDate = newDateFormat.getTime();
+    const sortedSleepers = this.data.filter(day => {
+      if (day.date === currentDate) {
+        return day
+      }
+    }).sort((dayA, dayB) => {
+      return dayB.hoursSlept - dayA.hoursSlept
+    })
+    return sortedSleepers.filter(sleeper => {
+      if (sleeper.hoursSlept === sortedSleepers[0].hoursSlept) {
+        return sleeper;
+      }
+    })
   }
 };
 

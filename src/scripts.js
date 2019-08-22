@@ -21,7 +21,6 @@ $(document).ready(() => {
 
 
   function buildWeeklyHTML(unit) {
-
   const weeklyMap = userHydro.weeklyArr.map(function(day) {
     return insertWeeklyStats(day, unit)
   })
@@ -32,9 +31,9 @@ return weeklyMap.join(' ');
     return Math.floor(Math.random() * sampleData.length)
   }
   
-  function insertWeeklyStats(date, unit) {
-  return `<p class="inserted--p"> ${date.date}: ${date.numOunces} ${unit} </p>`
-   }
+  function insertWeeklyStats(obj, unit) {
+  return `<p class="inserted--p"> ${obj.date}: ${obj.numOunces} ${unit} </p>`
+  }
 
 })
       

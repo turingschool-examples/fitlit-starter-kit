@@ -19,14 +19,14 @@ class Sleep {
 			})
 			return this.dates
 		}
-		findSleepDay(date) {
-			this.data.forEach(user => {
-				if(user.date === date) {
-					this.day = user.hoursSlept
-					return this.day
-				}
-			});
-		}
+		// findSleepDay(date) {
+		// 	this.data.forEach(user => {
+		// 		if(user.date === date) {
+		// 			this.day = user.hoursSlept
+		// 			return this.day
+		// 		}
+		// 	});
+		// }
 		findSleepWeek(index) {
 			this.week = []
 			let weekDays = []

@@ -12,6 +12,12 @@ let dailyFluids = document.querySelector('.main_hydro_daily');
 let weeklyFluids = document.querySelector('.main_hydro_weekly')
 let randoNum = null
 let avgSleep = document.querySelector('.main_sleep_average')
+let sleepList = document.querySelector('.main_sleep_list');
+let sleepWeek = document.querySelector('.main_sleep_weekly');
+let sleepQuality = document.querySelector('.main_sleep_quality');
+let sleepAll = document.querySelector('.main_sleep_average_all');
+let sleepAvgQuality = document.querySelector('.main_sleep_average_quality');
+let sleepDay = document.querySelector('.main_sleep_day');
 
 /*************** Event Listeners *************/
 window.addEventListener('load', initializePage(userData, hydrationData, sleepData))
@@ -30,7 +36,7 @@ function initializePage(data, hydro, sleepy) {
 	hydroRepository.findUserID(randoNum);
 	const userHydro = new UserHydro(hydroRepository.currentUser)
 	const sleepRepository = new SleepRepository(sleepy)
-	sleepRepository.findUserID(5)
+	sleepRepository.findUserID(randoNum)
 	const sleep = new Sleep(sleepRepository.currentUser)
 	name.innerHTML = `Name: ${user.name}`
 	address.innerHTML = `Address: ${user.address}`
@@ -41,8 +47,8 @@ function initializePage(data, hydro, sleepy) {
 	welcome.innerHTML = `Welcome ${user.firstName()}!`;
 	avgFluids.innerHTML = `Average fluid ounces intake: ${userHydro.findAvgOunce()}`
 	avgSleep.innerHTML = `Average hours slept per day: ${sleep.findAvgSleep().toFixed(2)}`
-	let hydroDates = userHydro.findDates()
-	appendHydroList(hydroDates, userHydro);
+	appendHydroList(userHydro.findDates(), userHydro);
+	appendSleepList(sleep.findSleepDates(), sleep)
 }
 
 function findFriends(userRepository, user) {
@@ -56,27 +62,53 @@ function findFriends(userRepository, user) {
 }
 
 function appendHydroList(array, obj) {
-	let dateList = document.createElement("select");
-	dateList.setAttribute("id", "mySelect");
-	hydroList.appendChild(dateList);
+	let dateHydroList = document.createElement("select");
+	dateHydroList.setAttribute("id", "mySelect");
+	hydroList.appendChild(dateHydroList);
 	for (let i = 0; i < array.length; i++) {
 		var option = document.createElement("option");
     option.setAttribute("value", array[i]);
     option.text = array[i];
-    dateList.appendChild(option);
-    if (dateList.value === array[i]) {
+    dateHydroList.appendChild(option);
+    if (dateHydroList.value === array[i]) {
     		weeklyFluids.innerHTML = `Fluid ounces intake by week: ${obj.findOunceWeek(i)}`
     }
 	}
-		dateList.addEventListener('change', function() {
-			obj.findOunceDay(dateList.value)
+		dateHydroList.addEventListener('change', function() {
+			obj.findOunceDay(dateHydroList.value)
 			dailyFluids.innerHTML = `Fluid ounces intake by day: ${obj.day}`;
 			for (let i = 0; i < array.length; i++) {
-				if (dateList.value === array[i]) {
+				if (dateHydroList.value === array[i]) {
     		weeklyFluids.innerHTML = `Fluid ounces intake by week: ${obj.findOunceWeek(i)}`
     		}
 			}
 		})
-		obj.findOunceDay(dateList.value)
+		obj.findOunceDay(dateHydroList.value)
 		dailyFluids.innerHTML = `Fluid ounces intake by day: ${obj.day}`;
+}
+
+function appendSleepList(array, obj) {
+	let dateSleepList = document.createElement("select");
+	dateSleepList.setAttribute("id", "mySelect");
+	sleepList.appendChild(dateSleepList);
+	for (let i = 0; i < array.length; i++) {
+		var option = document.createElement("option");
+    option.setAttribute("value", array[i]);
+    option.text = array[i];
+    dateSleepList.appendChild(option);
+    if (dateSleepList.value === array[i]) {
+    		sleepWeek.innerHTML = `Hours slept throughout week: ${obj.findSleepWeek(i)}`
+    }
+	}
+		dateSleepList.addEventListener('change', function() {
+			// obj.findSleepDay(dateSleepList.value)
+			// dailyFluids.innerHTML = `Fluid ounces intake by day: ${obj.day}`;
+			for (let i = 0; i < array.length; i++) {
+				if (dateSleepList.value === array[i]) {
+    		sleepWeek.innerHTML = `Hours slept throughout week: ${obj.findSleepWeek(i)}`
+    		}
+			}
+		})
+		// obj.findSleepDay(dateSleepList.value)
+		// dailyFluids.innerHTML = `Fluid ounces intake by day: ${obj.day}`;
 }

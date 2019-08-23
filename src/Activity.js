@@ -63,15 +63,16 @@ class Activity {
   }
 
   returnThreeDayStepStreak() {
-    var specificUser = this.findUser();
+    var specificUser = this.findUser().reverse();
     let dates = [];
-    for (var i = specificUser.length - 1; i >= 2; i--) {
-      if (specificUser[i].numSteps < specificUser[i - 1].numSteps && specificUser[i - 1].numSteps < specificUser[i - 2].numSteps) {
+    specificUser.some((user, i, specificUser) => {
+      if (specificUser[i].numSteps < specificUser[i + 1].numSteps && specificUser[i + 1].numSteps < specificUser[i + 2].numSteps) {
         dates.push(specificUser[i].date);
-        dates.push(specificUser[i - 1].date);
-        dates.push(specificUser[i - 2].date);
+        dates.push(specificUser[i + 1].date);
+        dates.push(specificUser[i + 2].date);
       }
-    }
+      return dates.length === 3;
+    });
 
     return dates;
   }
@@ -84,7 +85,7 @@ class Activity {
         dates.push(specificUser[i].date);
         dates.push(specificUser[i + 1].date);
       }
-      return dates.length == 2;
+      return dates.length === 2;
     });
 
     return dates;

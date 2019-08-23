@@ -14,14 +14,14 @@ let randoNum = null
 let avgSleep = document.querySelector('.main_sleep_average')
 
 /*************** Event Listeners *************/
-window.addEventListener('load', initializePage(userData, hydrationData))
+window.addEventListener('load', initializePage(userData, hydrationData, sleepData))
 
 /***************** Functions *****************/
 function getRandoNum() {
 randoNum = Math.floor(Math.random() * 50) + 1  
 }
 
-function initializePage(data, hydro) {
+function initializePage(data, hydro, sleepy) {
 	getRandoNum();
 	const userRepository = new UserRepository(data)
 	userRepository.findUser(randoNum)
@@ -29,6 +29,9 @@ function initializePage(data, hydro) {
 	const hydroRepository = new HydroRepository(hydro)
 	hydroRepository.findUserID(randoNum);
 	const userHydro = new UserHydro(hydroRepository.currentUser)
+	const sleepRepository = new SleepRepository(sleepy)
+	sleepRepository.findUserID(5)
+	const sleep = new Sleep(sleepRepository.currentUser)
 	name.innerHTML = `Name: ${user.name}`
 	address.innerHTML = `Address: ${user.address}`
 	email.innerHTML = `Email: ${user.email}`
@@ -37,6 +40,7 @@ function initializePage(data, hydro) {
 	friends.innerHTML = `Friends: ${findFriends(userRepository, user)}`
 	welcome.innerHTML = `Welcome ${user.firstName()}!`;
 	avgFluids.innerHTML = `Average fluid ounces intake: ${userHydro.findAvgOunce()}`
+	avgSleep.innerHTML = `Average hours slept per day: ${sleep.findAvgSleep().toFixed(2)}`
 	let hydroDates = userHydro.findDates()
 	appendHydroList(hydroDates, userHydro);
 }

@@ -18,7 +18,6 @@ const sleepTestData = [
     "hoursSlept": 10.8,
     "sleepQuality": 4.7
   },
-
   {
     "userID": 1,
     "date": "2019/06/16",
@@ -288,7 +287,7 @@ const sleepTestData = [
     "date": "2019/06/30",
     "hoursSlept": 6.7,
     "sleepQuality": 1.1 
-  },
+  }
 ]
 
 if (typeof module !== 'undefined') {

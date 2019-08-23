@@ -6,7 +6,7 @@ class Sleep {
     this.id = userData.id;
     this.name = userData.name;
     this.sleepObjects = this.filterSleepData();
-    // this.hoursSleptDay =  this.filterToHoursSlept();
+    this.hoursSleptDay =  this.filterToHoursSlept();
     this.sleepQualityDay = this.filterToSleepQuality();
   }
 
@@ -16,11 +16,6 @@ class Sleep {
 
   filterToHoursSlept() {
     return this.sleepObjects.map(day => day.hoursSlept);
-  }
-
-  findWeek(day) {
-    let dateIndex = this.sleepObjects.findIndex(obj => obj.date === day);
-    return this.sleepObjects.slice(dateIndex - 6, dateIndex + 1);
   }
 
   filterToSleepQuality() {
@@ -44,10 +39,33 @@ class Sleep {
     return Number(totSleepQual.toFixed(1))
   }
 
-  
-  // hoursSleptByDate(day) {
-  //   return this.sleepObjects.find(obj => obj.date === day).hoursSlept; 
-  // }
+  findDay(givenDate) {
+    return this.sleepObjects.find(day => day.date === givenDate)
+  }
+
+  findSleepQualityDay(givenDate) {
+    return this.findDay(givenDate).sleepQuality
+  }
+
+  findSleepHoursDay(givenDate) {
+    return this.findDay(givenDate).hoursSlept
+  }
+
+  findWeek(startDate) {
+    let dateIndex = this.sleepObjects.findIndex(obj => obj.date === startDate);
+    return this.sleepObjects.slice(dateIndex, dateIndex + 7);
+  }
+
+  findSleepQualityWeek(startDate) {
+    const allWeekData =  this.findWeek(startDate);
+    return allWeekData.map(day => day.sleepQuality)
+  }
+
+  findSleepHoursWeek(startDate) {
+    const allWeekData =  this.findWeek(startDate);
+    return allWeekData.map(day => day.hoursSlept)
+  }
+
 }
 
   

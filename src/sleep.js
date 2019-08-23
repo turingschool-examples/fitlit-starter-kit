@@ -68,9 +68,9 @@ class Sleep {
       return day.date === date;
     })
 
-    let indexOfSelectedDay = this.data.indexOf(selectedDay);
+    let indexOfSelectedDay = person.indexOf(selectedDay);
 
-    let weekArray = this.data.slice((indexOfSelectedDay - 6), (indexOfSelectedDay + 1))
+    let weekArray = person.slice((indexOfSelectedDay - 6), (indexOfSelectedDay + 1))
 
     let sleepQualArray = weekArray.map(day => {
       return day.sleepQuality;

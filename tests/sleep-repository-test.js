@@ -50,8 +50,12 @@ describe('SleepRepository', function() {
 );
   })
 
-  it('should return average sleep quality of all users', () => {
-    expect(sleepRepo.getUsersAvgSleepQual()).to.equal(3);
-  })
+  // it('should return average sleep quality of all users', () => {
+  //   expect(sleepRepo.getUsersAvgSleepQual()).to.equal(3);
+  // })
+  //
+  // it('should return all users with avg sleep quality greater than 3 for a given week', () => {
+  //   expect(sleepRepo.getUsersWithGoodSleepQual("2019/06/21")).to.deep.equal();
+  // })
 
 });

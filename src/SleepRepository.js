@@ -29,6 +29,17 @@ class SleepRepository {
       return acc + element.sleepQuality}, 1) / this.data.length)
   }
 
+  mostHoursSlept(date) {
+    var dates = this.data.filter(user => user.date === date)
+    var mostHours = dates.reduce((acc, user) => {
+      if (user.hoursSlept > acc) {
+        acc = user.hoursSlept
+      }
+      return acc
+    }, 0)
+    return dates.filter(user => user.hoursSlept === mostHours)
+  }
+
 
 
 

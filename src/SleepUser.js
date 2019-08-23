@@ -27,7 +27,6 @@ class SleepUser {
     let userInfo = this.findUserInfo(id)
     let week = userInfo.filter(day => day.date >= startDate && day.date <= endDate);
     let dailyQuality = week.map(day => day.sleepQuality)
-    console.log(dailyQuality)
     let totalQuality= dailyQuality.reduce((acc, num) => {
       return acc + num;
     }, 0)

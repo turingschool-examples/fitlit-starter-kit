@@ -133,5 +133,18 @@ describe('SleepRepository', function() {
   it.only('should return total users average sleep quality for all time', function() {
     expect(sleepRepository.calculateTotalAverageSleepQuality()).to.equal(3)
   })
+
+
+  it.only('Should find the user with the most hours slept on a given date', function () {
+    const data = new SleepRepository(sleepTestData)
+    const date = data.mostHoursSlept('2019/06/15');
+    expect(date).to.deep.equal([{
+      userID: 3,
+      date: '2019/06/15',
+      hoursSlept: 10.8,
+      sleepQuality: 4.7
+    }])
+
 })
 
+})

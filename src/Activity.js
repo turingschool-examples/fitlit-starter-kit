@@ -45,7 +45,7 @@ class Activity {
 
   returnStepRecord() {
     let specificUser = this.findUser();
-    return specificUser.sort((a,b) => b.flightsOfStairs - a.flightsOfStairs)[0].flightsOfStairs
+    return specificUser.sort((a, b) => b.flightsOfStairs - a.flightsOfStairs)[0].flightsOfStairs
   }
 
   returnFriendsStepCount() {
@@ -64,5 +64,5 @@ class Activity {
 }
 
 if (typeof module !== 'undefined') {
-    module.exports = Activity;
-  }
+  module.exports = Activity;
+}

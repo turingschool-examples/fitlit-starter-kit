@@ -12,4 +12,9 @@ describe('SleepRepository', function() {
 		sleepRepository.findUserID(5);
 		expect(sleepRepository.currentUser.length).to.equal(100)
 	})
+
+	it('should be able to calculate all users average sleep quality', function() {
+		sleepRepository.findUserID(5);
+		expect(sleepRepository.findAverageQuality().toFixed(2)).to.equal('2.98')
+	})
 })

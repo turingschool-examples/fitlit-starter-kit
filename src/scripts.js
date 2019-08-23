@@ -33,10 +33,10 @@ function initializePage(data, hydro, sleepy) {
 	userRepository.findUser(randoNum)
 	const user = new User(userRepository.currentUser)
 	const hydroRepository = new HydroRepository(hydro)
-	hydroRepository.findUserID(5);
+	hydroRepository.findUserID(randoNum);
 	const userHydro = new UserHydro(hydroRepository.currentUser)
 	const sleepRepository = new SleepRepository(sleepy)
-	sleepRepository.findUserID(5)
+	sleepRepository.findUserID(randoNum)
 	const sleep = new Sleep(sleepRepository.currentUser)
 	name.innerHTML = `Name: ${user.name}`
 	address.innerHTML = `Address: ${user.address}`
@@ -47,6 +47,7 @@ function initializePage(data, hydro, sleepy) {
 	welcome.innerHTML = `Welcome ${user.firstName()}!`;
 	avgFluids.innerHTML = `Average fluid ounces intake: ${userHydro.findAvgOunce()}`
 	avgSleep.innerHTML = `Average hours slept per day: ${sleep.findAvgSleep().toFixed(2)}`
+	sleepAll.innerHTML = `All users average sleep quality: ${sleepRepository.findAverageQuality().toFixed(2)}`
 	appendHydroList(userHydro.findDates(), userHydro);
 	appendSleepList(sleep.findSleepDates(), sleep)
 }

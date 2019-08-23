@@ -75,7 +75,7 @@ describe('Activity', () => {
   });
 
   it('should return back the dates of what days had increasing floors climbed for 2 or more days', () => {
-    expect(activity.returnTwoDayStairStreak()).to.eql(['2019/06/24', '2019/06/23']);
+    expect(activity.returnTwoDayStairStreak()).to.eql(['2019/06/26', '2019/06/25']);
   });
 
 });

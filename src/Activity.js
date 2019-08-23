@@ -77,17 +77,15 @@ class Activity {
   }
 
   returnTwoDayStairStreak() {
-    var specificUser = this.findUser();
+    var specificUser = this.findUser().reverse();
     let dates = [];
-    for (var i = specificUser.length - 1; i >= 1; i--) {
-      if (specificUser[i].flightsOfStairs < specificUser[i - 1].flightsOfStairs) {
+    specificUser.some((user, i, specificUser) => {
+      if (specificUser[i].flightsOfStairs > specificUser[i + 1].flightsOfStairs) {
         dates.push(specificUser[i].date);
-        dates.push(specificUser[i - 1].date);
+        dates.push(specificUser[i + 1].date);
       }
-      if (dates.length === 2) {
-        break;
-      }
-    }
+      return dates.length == 2;
+    });
 
     return dates;
   }

@@ -448,6 +448,256 @@ const hydrationData = [
     "userID": 10,
     "date": "2019/06/23",
     "numOunces": 81
+  },
+  {
+    "userID": 1,
+    "date": "2019/06/24",
+    "numOunces": 61
+  },
+  {
+    "userID": 2,
+    "date": "2019/06/24",
+    "numOunces": 33
+  },
+  {
+    "userID": 3,
+    "date": "2019/06/24",
+    "numOunces": 40
+  },
+  {
+    "userID": 4,
+    "date": "2019/06/24",
+    "numOunces": 66
+  },
+  {
+    "userID": 5,
+    "date": "2019/06/24",
+    "numOunces": 30
+  },
+  {
+    "userID": 6,
+    "date": "2019/06/24",
+    "numOunces": 45
+  },
+  {
+    "userID": 7,
+    "date": "2019/06/24",
+    "numOunces": 54
+  },
+  {
+    "userID": 8,
+    "date": "2019/06/24",
+    "numOunces": 58
+  },
+  {
+    "userID": 9,
+    "date": "2019/06/24",
+    "numOunces": 79
+  },
+  {
+    "userID": 10,
+    "date": "2019/06/24",
+    "numOunces": 72
+  },
+  {
+    "userID": 1,
+    "date": "2019/06/25",
+    "numOunces": 51
+  },
+  {
+    "userID": 2,
+    "date": "2019/06/25",
+    "numOunces": 67
+  },
+  {
+    "userID": 3,
+    "date": "2019/06/25",
+    "numOunces": 47
+  },
+  {
+    "userID": 4,
+    "date": "2019/06/25",
+    "numOunces": 27
+  },
+  {
+    "userID": 5,
+    "date": "2019/06/25",
+    "numOunces": 76
+  },
+  {
+    "userID": 6,
+    "date": "2019/06/25",
+    "numOunces": 63
+  },
+  {
+    "userID": 7,
+    "date": "2019/06/25",
+    "numOunces": 23
+  },
+  {
+    "userID": 8,
+    "date": "2019/06/25",
+    "numOunces": 74
+  },
+  {
+    "userID": 9,
+    "date": "2019/06/25",
+    "numOunces": 90
+  },
+  {
+    "userID": 10,
+    "date": "2019/06/25",
+    "numOunces": 70
+  },
+  {
+    "userID": 1,
+    "date": "2019/06/26",
+    "numOunces": 52
+  },
+  {
+    "userID": 2,
+    "date": "2019/06/26",
+    "numOunces": 27
+  },
+  {
+    "userID": 3,
+    "date": "2019/06/26",
+    "numOunces": 48
+  },
+  {
+    "userID": 4,
+    "date": "2019/06/26",
+    "numOunces": 44
+  },
+  {
+    "userID": 5,
+    "date": "2019/06/26",
+    "numOunces": 26
+  },
+  {
+    "userID": 6,
+    "date": "2019/06/26",
+    "numOunces": 44
+  },
+  {
+    "userID": 7,
+    "date": "2019/06/26",
+    "numOunces": 23
+  },
+  {
+    "userID": 8,
+    "date": "2019/06/26",
+    "numOunces": 72
+  },
+  {
+    "userID": 9,
+    "date": "2019/06/26",
+    "numOunces": 96
+  },
+  {
+    "userID": 10,
+    "date": "2019/06/26",
+    "numOunces": 91
+  },
+  {
+    "userID": 1,
+    "date": "2019/06/27",
+    "numOunces": 29
+  },
+  {
+    "userID": 2,
+    "date": "2019/06/27",
+    "numOunces": 70
+  },
+  {
+    "userID": 3,
+    "date": "2019/06/27",
+    "numOunces": 89
+  },
+  {
+    "userID": 4,
+    "date": "2019/06/27",
+    "numOunces": 83
+  },
+  {
+    "userID": 5,
+    "date": "2019/06/27",
+    "numOunces": 52
+  },
+  {
+    "userID": 6,
+    "date": "2019/06/27",
+    "numOunces": 30
+  },
+  {
+    "userID": 7,
+    "date": "2019/06/27",
+    "numOunces": 30
+  },
+  {
+    "userID": 8,
+    "date": "2019/06/27",
+    "numOunces": 65
+  },
+  {
+    "userID": 9,
+    "date": "2019/06/27",
+    "numOunces": 91
+  },
+  {
+    "userID": 10,
+    "date": "2019/06/27",
+    "numOunces": 29
+  },
+  {
+    "userID": 1,
+    "date": "2019/06/28",
+    "numOunces": 57
+  },
+  {
+    "userID": 2,
+    "date": "2019/06/28",
+    "numOunces": 56
+  },
+  {
+    "userID": 3,
+    "date": "2019/06/28",
+    "numOunces": 66
+  },
+  {
+    "userID": 4,
+    "date": "2019/06/28",
+    "numOunces": 47
+  },
+  {
+    "userID": 5,
+    "date": "2019/06/28",
+    "numOunces": 97
+  },
+  {
+    "userID": 6,
+    "date": "2019/06/28",
+    "numOunces": 70
+  },
+  {
+    "userID": 7,
+    "date": "2019/06/28",
+    "numOunces": 95
+  },
+  {
+    "userID": 8,
+    "date": "2019/06/28",
+    "numOunces": 36
+  },
+  {
+    "userID": 9,
+    "date": "2019/06/28",
+    "numOunces": 29
+  },
+  {
+    "userID": 10,
+    "date": "2019/06/28",
+    "numOunces": 40
   }
 ];
 

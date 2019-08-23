@@ -1,3 +1,6 @@
+const UserRepository = require('../src/userRepository');
+
+
 class User {
   constructor(userData) {
     this.userData = userData;
@@ -13,6 +16,7 @@ class User {
     let firstName = this.name.split(' ')[0];
     return firstName;
   }
+  
 }
 
 

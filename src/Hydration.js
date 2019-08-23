@@ -30,7 +30,7 @@ class Hydration {
   }
 
   findWeeklyWaterCons() {
-    return this.ouncesPerDay.slice((7, -7));
+    return this.ouncesPerDay.slice((-7));
   }
 }
 

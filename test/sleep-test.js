@@ -17,4 +17,9 @@ describe('Sleep', function() {
 	sleepRepository.findUserID(5)
 	expect(sleep.findAvgSleep().toFixed(2)).to.equal('7.68')
 	});
+
+	it('should display number of hours slept over the course of a week', function() {
+	sleepRepository.findUserID(5)
+	expect(sleep.findSleepWeek(0)).to.eql([4.1,7.4,10.5,5.2,4.8,10.1,9.6])
+	});
 })

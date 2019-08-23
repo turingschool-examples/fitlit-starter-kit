@@ -33,6 +33,6 @@ describe('UserHydro', function() {
 	hydroRepository.findUserID(5)
 	const userHydro = new UserHydro(hydroRepository.currentUser)
 	userHydro.findDates()
-	expect(userHydro.findOunceWeek(0).length).to.equal(7)
+	expect(userHydro.findOunceWeek(0)).to.eql([42,79,99,39,69,89,73])
 	});
 });

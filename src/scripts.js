@@ -33,10 +33,10 @@ function initializePage(data, hydro, sleepy) {
 	userRepository.findUser(randoNum)
 	const user = new User(userRepository.currentUser)
 	const hydroRepository = new HydroRepository(hydro)
-	hydroRepository.findUserID(randoNum);
+	hydroRepository.findUserID(5);
 	const userHydro = new UserHydro(hydroRepository.currentUser)
 	const sleepRepository = new SleepRepository(sleepy)
-	sleepRepository.findUserID(randoNum)
+	sleepRepository.findUserID(5)
 	const sleep = new Sleep(sleepRepository.currentUser)
 	name.innerHTML = `Name: ${user.name}`
 	address.innerHTML = `Address: ${user.address}`

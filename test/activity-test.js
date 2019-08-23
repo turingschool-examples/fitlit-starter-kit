@@ -17,4 +17,34 @@ describe('Activity', () => {
     expect(activity).to.be.an.instanceof(Activity);
   });
 
+  it.skip('shoud be able to tell how many mile walked based on steps taken', () =>{
+    const activity = new Activity(ActivityData);
+
+  });
+
+  it.skip('shoud be know how minutes a user was active, based on their id, on a specified', () =>{
+    const activity = new Activity(ActivityData);
+
+  });
+
+  it.skip('shoud now how many minutes active was their average for a given week', () =>{
+    const activity = new Activity(ActivityData);
+
+  });
+
+  it.skip('shoud be able know if a user met thier step goal for a specified day', () =>{
+    const activity = new Activity(ActivityData);
+
+  });
+
+  it.skip('shoud find all the days the user exceeded thier step goal', () =>{
+    const activity = new Activity(ActivityData);
+
+  });
+
+  it.skip('shoud fin the users all-time stair climbing record', () =>{
+    const activity = new Activity(ActivityData);
+
+  });
+
 });  

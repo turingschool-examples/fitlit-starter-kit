@@ -24,22 +24,16 @@ class Hydration {
     return Math.round(sumWaterIntake / this.hydrationData.length);
   }
 
-  // calculateDailyWaterIntake() {
+calculateDailyWaterIntake() {
   //   // console.log(singleUserIntakeData)
-
-
-
-  //   // let dayOunces = this.hydrationData.find(element => {
-  //   //   if (this.userID === element.userID && date === element.date) {
-  //   //     return element.numOunces;
-  //   //  }
-  //   // });
-  //   // return dayOunces.numOunces;
-  // }
+  let waterConsumed = this.singleUserData[this.singleUserData.length - 1];
+  return waterConsumed.numOunces;
+  }
   
   calculateWeeklyWaterIntake() {
-    let currentDay = this.singleUserData[this.singleUserData.length - 1]
-    let currentWeek = this.singleUserData.slice(-7)
+    let currentDay = this.singleUserData[this.singleUserData.length - 1];
+    let currentWeek = this.singleUserData.slice(-7);
+    return currentWeek;
   }
 }
 

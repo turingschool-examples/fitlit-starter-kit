@@ -1,5 +1,5 @@
 class SleepRepository {
-	construtor(data) {
+	constructor(data) {
 		this.data = data
 		this.currentUser = []
 	}

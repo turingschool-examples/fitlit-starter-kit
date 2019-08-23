@@ -58,7 +58,24 @@ describe('Activity', () => {
   expect(activity.returnAvgActiveMinutesByWeek(1, '2019/06/15')).to.equal(171);
   });
 
+  it('should calculate a user\'s average number of steps per week', function () {
+    expect(activity.returnAvgNumberOfStepsByWeek(1, '2019/06/15')).to.equal(8375);
+  });
+
+  it('should calculate a user\'s average stairs climbed per week', function () {
+    expect(activity.returnAvgStairsClimbedByWeek(1, '2019/06/15')).to.equal(17);
+  });
+
   it('should determine a user\'s activity status for a given day', function () {
     expect(activity.checkUserActivityStatusByDate(1, '2019/06/15')).to.equal(true);
   });
+
+  it('should calculate a user\'s number of steps for a given day', function () {
+    expect(activity.returnNumberOfStepsByDate(1, '2019/06/15')).to.equal(3577);
+  });
+
+  it('should calculate a user\'s flights of stairs for a given day', function () {
+    expect(activity.returnStairsClimbedByDate(1, '2019/06/15')).to.equal(16);
+  });
+
 });

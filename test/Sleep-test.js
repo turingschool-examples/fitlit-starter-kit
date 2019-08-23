@@ -68,12 +68,19 @@ describe('Sleep', () => {
     });
   });
 
+  describe('findSleepHoursOrQualityEachDayOverWeek', () => {
+    it('should be able to find the the hours of sleep or quality each day over a given week', () => {
+      expect(sleep.findHoursSleptEachDayOverWeek("2019/06/15", "2019/06/21", "hoursSlept")).to.eql(mockSleepUserEachDayGivenWeek)
+      expect(sleep.findHoursSleptEachDayOverWeek("2019/06/15", "2019/06/21", "sleepQuality")).to.eql(mockSleepUserEachDayGivenWeek)
+    });
+  });
 
-  // describe('fetchQualityOfSleepOverWeek', () => {
-  //     it('should be able to find the quality of sleep over a given week', () => {
-  //     expect;
-  //     });
-  // });
+
+//   describe('fetchQualityOfSleepOverWeek', () => {
+//       it('should be able to find the quality of sleep over a given week', () => {
+//       expect;
+//       });
+//   });
 
   // describe('fetchAverageQualityOfSleepAllUsers', () => {
   //     it('should be able to find the average quality of sleep for all users', () => {

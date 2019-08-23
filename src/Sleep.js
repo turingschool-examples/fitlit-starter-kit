@@ -29,18 +29,23 @@ class Sleep {
     return day.sleepQuality; 
   }
 
-  findHoursSleptEachDayOverWeek(startDate, endDate) {
-    return this.currentUserData.filter(eachDay => {
-        if(new Date(eachDay.date) >= new Date(startDate) && new Date(eachDay.date) <= new Date(endDate)){
-            console.log(eachDay)
+  function findHoursSleptEachDayOverWeek(startDate, endDate, property) {
+    let answer = [];
+   let week = currentUserData.filter(eachDay => {
+        if (new Date(eachDay.date) >= new Date(startDate) && new Date(eachDay.date) <= new Date(endDate)){
             return eachDay
         }
-    }).map(eachDay => {
-        return {
-            date: eachDay.date,
-            hoursSlept: eachDay.hoursSlept
-        }
-    });
+    }).reduce((acc, day) => {
+      if (!acc.date) {
+        acc.date = day.date
+      }
+      if (!acc[property]) {
+        acc[property] = day[property]
+      }
+       answer.push(acc)
+       return {};
+    }, {})
+    return answer;
   }
 }
 

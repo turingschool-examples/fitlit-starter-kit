@@ -32,7 +32,7 @@ class Hydration {
   }
 
   findFluidOzConsumedEveryDayOverSpecificWeek(startDate, endDate) {
-    let week = this.currentUserData.filter((day) => {
+    return this.currentUserData.filter((day) => {
       if (new Date(day.date) >= new Date(startDate) && new Date(day.date) <= new Date(endDate)) {
         return day
       }
@@ -40,7 +40,7 @@ class Hydration {
       return {date: day.date, 
         numOunces: day.numOunces}
     });
-    return week
+    
   }
 
 
@@ -48,16 +48,6 @@ class Hydration {
 
 
 
-
-
-
-
-
-
-
-
-
-module.exports = Hydration;
 
 if (typeof module !== 'undefined') {
   module.exports = Hydration;

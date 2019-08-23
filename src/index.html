@@ -9,15 +9,40 @@
   </head>
   <body>
     <nav class="side-nav">
-      <
+      <div class="logo-nav">
+        <img src="../images/beFitLogo.svg" alt="A silhouette of three people working out.">
+      </div>
+      <h1>BeFit</h1>
+      <button class="profile-btn"> View Profile</button>
+      <button class="sleep-btn"> View Sleep</button>
+      <button class="hydration-btn"> View Hydration</button>
+      <button class="activity-btn"> View Activity</button>
     </nav>
-    <h1>BeFit</h1>
+   <main>
+     <section class="profile-info">
+     <ul>
+       <li> Name: <span class = "profile-name"></span> </li>
+       <li> Address: <span class = "profile-address"></span> </li>
+       <li> Email: <span class = "profile-email"></span> </li>
+       <li> Stride Length: <span class = "profile-stride-length"></span> </li>
+       <li> Daily Step Goal: <span class = "profile-daily-step-goal"></span> </li>
+     </ul>
+    </section>
+     <section class="sleep-info"></section>
+     <section class="hydration-info"></section>
+     <section class="activity-info"></section>
+   </main>
 
-
+   
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
+    <script type="text/javascript" src="./UserRepository.js"></script>
+    <script type="text/javascript" src="./User.js"></script>
+    <script type="text/javascript" src="./Hydration.js"></script>
+    <!-- <script type="text/javascript" src="./Sleep.js"></script> -->
+
   </body>
 </html>

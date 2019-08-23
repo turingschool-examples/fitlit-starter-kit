@@ -31,7 +31,5 @@ describe('SleepUser', function() {
     expect(sleepUser.findAverageQualitySlept("2019/06/16", "2019/06/22", 2)).to.equal(3.3)
   });
 
-
-
   
 })

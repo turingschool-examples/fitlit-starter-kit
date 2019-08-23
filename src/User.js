@@ -1,5 +1,3 @@
-const UserRepository = require('../src/userRepository');
-
 
 class User {
   constructor(userData) {

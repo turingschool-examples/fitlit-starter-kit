@@ -16,7 +16,7 @@ describe('SleepRepository', () => {
   });
 
   it('should be able to calculate the sleep quality of all users', () => {
-    const sleepRepository = new SleepRepository(userId);
+    const sleepRepository = new SleepRepository();
     expect(sleepRepository).to.be.an.instanceof(SleepRepository);
   });
 

@@ -25,6 +25,10 @@ describe('Hydration', function() {
 
   it('should return a total average of daily consumption', () => {
     expect(hydration.getDailyAvg()).to.equal(59.7)
+  });
+
+  it('should return ounces consumed on a specific day', () => {
+    expect(hydration.getDailyOz('2019/06/20')).to.equal(50)
   })
 
 });

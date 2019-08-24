@@ -11,7 +11,11 @@ class Hydration {
     }, 0) / dailyIntake.length
     
     return daliyAverage
+  }
 
+  getDailyOz(date) {
+    console.log(this.data.find(day => day.date === date).numOunces);
+    return this.data.find(day => day.date === date).numOunces
   }
 }
 

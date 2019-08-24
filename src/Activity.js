@@ -23,6 +23,19 @@ class Activity {
   findTotalMinutesActiveOnSpecificDayForUser(dateString, id) {
     return this.allActivityData.filter(day => day.date === dateString && day.userID === id)[0].minutesActive;
   }
+
+  findMinutesActiveAvgForGivenWeekForUser(startDateString, endDateString) {
+    return Math.round(this.currentUserData.filter((day) => {
+      if (new Date(day.date) >= new Date(startDateString) && new Date(day.date) <= new Date(endDateString)) {
+        return day
+      }
+    }).reduce((acc, currentDay) => {
+      acc += currentDay.minutesActive
+      return acc
+    }, 0) / 7);
+  }
+
+
 }
 
 
@@ -31,4 +44,4 @@ class Activity {
 
 if (typeof module !== 'undefined') {
   module.exports = Activity;
-};
+}

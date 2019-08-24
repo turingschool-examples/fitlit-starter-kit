@@ -1,46 +1,54 @@
 class Activity {
-    constructor(activityData, userData, userRepository) {
+    constructor(activityData) {
         this.activityData = activityData;
-        this.userData = userData;
-        this.userRepository = userRepository;
-
-    }
-    milesUserWalked(date) {
-        let steps = this.activityData.find(day => day.date === date).numSteps;
-        return parseFloat((steps * this.strideLength / 5280).toFixed(1));
-        // let stride = this.userData.strideLength;
-        // console.log(stride)
-        // let user = this.activityData.find(user => user.userID === id && day.date === date);
-        // console.log(user)
-        // let steps = this.activityData.numSteps;
-        // console.log(steps)
-        // return parseFloat(stride * steps /5280).toFixed(1);
-    }
-    //use find() to get specific day(param).numSteps from activity subset
-        //return numstep * strideLength / 1mile(5280) //what is toFixed
-
-
-
-    // minsUserActive(id, date) {
-        //use find() to get specific day      (param).minutesActive from activity   subset
-        //return min for that day
-    // }
-
-    weeklyAvgMins() {
-      
     }
 
-    stepGoalMet(id, date) {
-        //return using find() to get specific day(param).numSteps from activity subset
-        // maybe use >= dailyStepGoal in same return statement
+    userStepsPerDay(id, date) {
+        return this.activityData.find(user => id === user.userID && date === user.date).numSteps;
     }
 
-    overStepGoal() {
 
+    milesUserWalked(id, date, userData) {
+        let userSteps = this.activityData.find(user => id === user.userID && date === user.date).numSteps;
+        let userStride = userData.find(user => id === user.id).strideLength;
+        return parseFloat(((userSteps * userStride) / 5280).toFixed(1)); 
+    }
+   
+    minsUserActive(id, date) {
+        return this.activityData.find(user => id === user.userID && date === user.date).minutesActive;
     }
 
-    stairClimbRecord() {
+    weeklyAvgMins(id, date) {
+        let userActivity = this.activityData.filter(user => id === user.userID);
+        let findIndexOfDates = userActivity.findIndex(index => date === index.date);  
+        let getWeeklyAverage = userActivity.slice(findIndexOfDates, findIndexOfDates + 7)
+        return getWeeklyAverage.reduce((acc, avg) => {
+            return parseFloat((acc + (avg.minutesActive / 7)).toFixed(1))
+        }, 0);
+    }
 
+    stepGoalMet(id, date, userData) {
+        let stepsOfDay = this.activityData.find(user => id === user.userID && date === user.date).numSteps;
+        let goalSteps = userData.find(user => id === user.id).dailyStepGoal;
+        if (stepsOfDay >= goalSteps) {
+          return true
+        } else {
+          return false
+        }
+    }
+    
+    overStepGoal(id, userData) {
+        let userActivity = this.activityData.filter(user => id === user.userID);
+        let goalSteps = userData.find(user => id === user.id).dailyStepGoal;
+        let stepsAbove = userActivity.filter(user => user.numSteps > goalSteps);
+        return stepsAbove.map(steps => steps.date) 
+    }
+
+    stairClimbRecord(id) {
+        let userActivity = this.activityData.filter(user => id === user.userID);
+        let stairsClimbed = userActivity.map(day => day.flightsOfStairs);
+        return Math.max(...stairsClimbed)
+         
     }
 }
 

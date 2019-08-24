@@ -77,26 +77,26 @@ describe('Sleep', () => {
   });
 
   describe('fetchAverageQualityOfSleepAllUsers', () => {
-      it('should be able to find the average quality of sleep for all users', () => {
+    it('should be able to find the average quality of sleep for all users', () => {
       expect(sleep.fetchAverageQualityOfSleepAllUsers()).to.equal(2.95);
-      });
+    });
   });
 
   describe('findAllUsersOverThreeSleepQualityForWeek', () => {
-      it('should be able to find all user/s who average a sleep quality greater than 3 for a given week', () => {
-      expect(sleep.findAllUsersOverThreeSleepQualityForWeek("2019/06/15", "2019/06/21")).to.equal();
-      });
+    it.only('should be able to find all user/s who average a sleep quality greater than 3 for a given week', () => {
+      expect(sleep.findAllUsersOverThreeSleepQualityForWeek("2019/06/15", "2019/06/21")).to.eql([2, 3]);
+    });
   });
 
   describe('findUsersSleptMostHoursBasedOnDate', () => {
-       it('should be able to find the user/s who slept the most number of hours based on a date', () => {
-        expect(sleep.findUsersSleptMostHoursBasedOnDate("2019/06/16")).to.eql({
-            "userID": 3,
-            "date": "2019/06/16",
-            "hoursSlept": 10.7,
-            "sleepQuality": 3.4
-          });
-       });
+    it('should be able to find the user/s who slept the most number of hours based on a date', () => {
+      expect(sleep.findUsersSleptMostHoursBasedOnDate("2019/06/16")).to.eql({
+        "userID": 3,
+        "date": "2019/06/16",
+        "hoursSlept": 10.7,
+        "sleepQuality": 3.4
+      });
     });
+  });
 
 });

@@ -77,7 +77,6 @@ class Sleep {
     let namesID = [];
     let week = this.allSleepData.filter(eachDay => {
       if (new Date(eachDay.date) >= new Date(startDate) && new Date(eachDay.date) <= new Date(endDate)) {
-        console.log(eachDay)
         return eachDay;
       }
     })

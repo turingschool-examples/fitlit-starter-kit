@@ -82,17 +82,11 @@ describe('Sleep', () => {
       });
   });
 
-//   describe('fetchQualityOfSleepBasedOnDate', () => {
-//       it('should be able to find the quality of sleep based on date', () => {
-//       expect(sleep.fetchQualityOfSleepBasedOnDate("2019/06/16")).to.equal(3.8);
-//       });
-//   });
-
-  // describe('fetchAllUsersOverThreeSleepQualityForWeek', () => {
-  //     it('should be able to find all user/s who average a sleep quality greater than 3 for a given week', () => {
-  //     expect;
-  //     });
-  // });
+  describe('fetchAllUsersOverThreeSleepQualityForWeek', () => {
+      it('should be able to find all user/s who average a sleep quality greater than 3 for a given week', () => {
+      expect(sleep.fetchAllUsersOverThreeSleepQualityForWeek()).to.equal();
+      });
+  });
 
   // describe('fetchUsersSleptMostHoursBasedOnDate', () => {
   //      it('should be able to find the user/s who slept the most number of hours based on a date', () => {

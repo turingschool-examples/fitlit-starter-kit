@@ -98,12 +98,22 @@ describe('SleepRepository', () => {
 
   it('should get the average hours slept of all users', ()=> {
     const sleepRepo = new SleepRepository(sampleSleep);
-    expect(sleepRepo.getAvgHoursSleptAllUsers()).to.equal(7.6)
+    expect(sleepRepo.getAvgSleepStatsAllUsers(sleepRepo.data, 'hoursSlept')).to.equal(7.6)
 
   })
   it('should get the average quality slept of all users', () => {
     const sleepRepo = new SleepRepository(sampleSleep);
-    expect(sleepRepo.getAvgQualitySleptAllUsers()).to.equal(3)
+    expect(sleepRepo.getAvgSleepStatsAllUsers(sleepRepo.data, 'sleepQuality')).to.equal(3)
+  })
+
+  it('should find the average hours slept by all users for a specific week', () => {
+    const sleepRepo = new SleepRepository(sampleSleep);
+    expect(sleepRepo.getAvgSleepStatsAllUsers(sleepRepo.getWeekOfUsers('2019/06/23'), 'hoursSlept')).to.equal(7.8)
+  })
+
+  it('should find the average sleep quality by all users for a specific week', () => {
+    const sleepRepo = new SleepRepository(sampleSleep);
+    expect(sleepRepo.getAvgSleepStatsAllUsers(sleepRepo.getWeekOfUsers('2019/06/23'), 'sleepQuality')).to.equal(3)
   })
 
   it('should find all users who average a sleep quality grater than 3 for a given week', () => {

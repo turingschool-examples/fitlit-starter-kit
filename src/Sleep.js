@@ -33,6 +33,15 @@ class Sleep {
     return parseFloat((weekTotal / 7).toFixed(1))
   }
 
+  getSleepHoursByDate(targetDate) {
+    let correctDate = this.changeTimeFormat(targetDate)
+    return this.userData.find(day =>{
+      if (correctDate === day.date) {
+        return day
+      }
+    }).hoursSlept
+  }
+
   
 
 };

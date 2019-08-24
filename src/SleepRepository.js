@@ -15,16 +15,11 @@ class SleepRepository {
     })
   }
 
-  getAvgHoursSleptAllUsers() {
-    const total = this.data.reduce((totalHours, user) => totalHours += user.hoursSlept, 0)
-    return parseFloat((total / this.data.length).toFixed(1))
+  getAvgSleepStatsAllUsers(data, property) {
+    const total = data.reduce((totalHours, user) => totalHours += user[property], 0)
+    return parseFloat((total / data.length).toFixed(1))
   }
-
-  getAvgQualitySleptAllUsers() {
-    const total = this.data.reduce((qualitySlept, user) => qualitySlept += user.sleepQuality, 0)
-    return parseFloat((total / this.data.length).toFixed(1))
-  }
-
+  
   getWeekOfUsers(dateToday) {
     const newDateFormat = new Date(dateToday)
     const startDate = newDateFormat.getTime();
@@ -46,6 +41,7 @@ class SleepRepository {
       return acc
     }, {})
   }
+
   findBestSleepers(dateToday) {
     const weekOfUsersFn = this.createSleepQualityObj(dateToday)
     const bestSlepers = [];
@@ -59,6 +55,7 @@ class SleepRepository {
     }
     return bestSlepers
   }
+
   findTopSleeperByDay(dateToday) {
     const newDateFormat = new Date(dateToday)
     const currentDate = newDateFormat.getTime();

@@ -1,7 +1,11 @@
 class AllUsers {
-    constructor() {
-
+    constructor(sleepData) {
+        this.sleepData = sleepData;
     }
+}
+
+getSleepQualOverThree(day) {
+    let userInfo =     
 }
 
 

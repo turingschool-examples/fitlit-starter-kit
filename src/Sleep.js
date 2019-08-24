@@ -6,17 +6,26 @@ class Sleep {
   }
 
   findCurrentUserData() {
-   this.currentUserData = this.allSleepData.filter(user => user.userID === this.currentUserId);
-   return this.currentUserData;
+    this.currentUserData = this.allSleepData.filter(user => user.userID === this.currentUserId);
+    return this.currentUserData;
   }
 
   findUserAverageHoursSleptEachDayById() {  
     let user = this.currentUserData.reduce((sum, currentDay) => {
-        sum += currentDay.hoursSlept
-        return sum
-    },0) / this.currentUserData.length;
+      sum += currentDay.hoursSlept
+      return sum
+    }, 0) / this.currentUserData.length;
     let avgSleep = parseFloat(user.toFixed(2));
     return avgSleep
+  }
+
+  findUserAverageSleepQualityPerDay() {  
+    let user = this.currentUserData.reduce((sum, currentDay) => {
+      sum += currentDay.sleepQuality
+      return sum
+    }, 0) / this.currentUserData.length;
+    let avgQuality = parseFloat(user.toFixed(2));
+    return avgQuality
   }
 
   findHoursSleptByDate(dateString) {
@@ -29,12 +38,12 @@ class Sleep {
     return day.sleepQuality; 
   }
 
-  function findHoursSleptEachDayOverWeek(startDate, endDate, property) {
+  findSleepHoursOrQualityEachDayOverWeek(startDate, endDate, property) {
     let answer = [];
-   let week = currentUserData.filter(eachDay => {
-        if (new Date(eachDay.date) >= new Date(startDate) && new Date(eachDay.date) <= new Date(endDate)){
-            return eachDay
-        }
+    let week = this.currentUserData.filter(eachDay => {
+      if (new Date(eachDay.date) >= new Date(startDate) && new Date(eachDay.date) <= new Date(endDate)) {
+        return eachDay
+      }
     }).reduce((acc, day) => {
       if (!acc.date) {
         acc.date = day.date
@@ -42,12 +51,22 @@ class Sleep {
       if (!acc[property]) {
         acc[property] = day[property]
       }
-       answer.push(acc)
-       return {};
+      answer.push(acc)
+      return {};
     }, {})
     return answer;
   }
+
+  fetchAverageQualityOfSleepAllUsers() {
+    const result = this.allSleepData.reduce((qualitySleep, user) => {
+      qualitySleep += user.sleepQuality 
+      return qualitySleep;
+    }, 0)/this.allSleepData.length
+    let avgQuality = parseFloat(result.toFixed(2));
+    return avgQuality
+  }
 }
+
 
 
 

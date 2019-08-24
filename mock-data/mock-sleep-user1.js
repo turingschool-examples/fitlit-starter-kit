@@ -89,6 +89,36 @@ const mockSleepUser1 = [[
     "date": "2019/06/21",
     "hoursSlept": 7.8,
   },
-  ]]
+  ],
+  [
+    {
+      "date": "2019/06/15",
+      "sleepQuality": 2.2
+    },
+    {
+      "date": "2019/06/16",
+      "sleepQuality": 3.8
+    },
+    {
+      "date": "2019/06/17",
+      "sleepQuality": 2.6
+    },
+    {
+      "date": "2019/06/18",
+      "sleepQuality": 3.1
+    },
+    {
+      "date": "2019/06/19",
+      "sleepQuality": 1.2
+    },
+    {
+      "date": "2019/06/20",
+      "sleepQuality": 1.2
+    },
+    {
+      "date": "2019/06/21",
+      "sleepQuality": 4.2
+    }
+]]
 
 module.exports = mockSleepUser1;

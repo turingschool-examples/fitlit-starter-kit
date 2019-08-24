@@ -6,7 +6,7 @@ const hydration = new Hydration(userData);
 const user = new User(userData[randomUser]);
 // const sleep = new Sleep();
 // const sleepRepository = new SleepRepository();
-// const activity = new Activity();
+const activity = new Activity(activityData);
 // const activityRepository = new ActivityRepository();
 
 //the above code is commented out until we finish each of those iterations
@@ -22,9 +22,9 @@ const user = new User(userData[randomUser]);
     $('#article__user--currentsleep').text();
     $('#article__user--weekssleep').text();
     $('#article__user--avgsleep').text();
-    $('#article__user--todaysteps').text();
-    $('#article__user--activemins').text();
-    $('#article__user--todaydistance').text();
+    $('#article__user--todaysteps').text(activityData[randomUser].numSteps);
+    $('#article__user--activemins').text(activity.minsUserActive(randomUser +1, '2019/06/15'));
+    $('#article__user--todaydistance').text(activity.milesUserWalked(randomUser +1, '2019/06/15', userData));
     $('#article__user--weeklyview').text();
     $('#article__user--comparesteps').text();
     $('#article__user--comparemins').text();
@@ -36,7 +36,7 @@ const user = new User(userData[randomUser]);
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: 'Weekly Hydration',
-        data: hydration.findWeeklyWaterCons(),
+        data: hydration.findWeeklyWaterCons(randomUser +1),
         backgroundColor: [
           '#2FB5B6', 
           '#FC5D79', 

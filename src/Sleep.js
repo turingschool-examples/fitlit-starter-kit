@@ -67,14 +67,10 @@ class Sleep {
   }
 
   findUsersSleptMostHoursBasedOnDate(dateString) {
-    var date = this.allSleepData.filter(element => element.date === dateString)
-    var mostSleep = date.reduce((acc, user) => {
-      if(user.hoursSlept > acc) {
-        acc = user.hoursSlept
-      }
-      return acc
-    }, 0)
-    return date.filter(element => element.hoursSlept === mostSleep)
+    var dateArray = this.allSleepData.filter(element => element.date === dateString);
+    return dateArray.sort((a,b) => {
+        return b.hoursSlept - a.hoursSlept;
+    }).shift()
   }
 }
 
@@ -85,8 +81,6 @@ class Sleep {
 
 
 
-
-module.exports = Sleep;
 
 if (typeof module !== 'undefined') {
   module.exports = Sleep;

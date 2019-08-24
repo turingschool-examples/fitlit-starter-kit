@@ -90,12 +90,12 @@ describe('Sleep', () => {
 
   describe('findUsersSleptMostHoursBasedOnDate', () => {
        it('should be able to find the user/s who slept the most number of hours based on a date', () => {
-        expect(sleep.findUsersSleptMostHoursBasedOnDate("2019/06/16")).to.eql([{
+        expect(sleep.findUsersSleptMostHoursBasedOnDate("2019/06/16")).to.eql({
             "userID": 3,
             "date": "2019/06/16",
             "hoursSlept": 10.7,
             "sleepQuality": 3.4
-          }]);
+          });
        });
     });
 

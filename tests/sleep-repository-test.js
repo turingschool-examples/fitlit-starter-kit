@@ -60,7 +60,7 @@ describe('SleepRepository', function() {
   it('should return all users within one week', () => {
     sleepRepo2 = new SleepRepository(sleepData2);
 
-    expect(sleepRepo2.getUsersWithGoodSleepQual("2019/06/21")).to.deep.equal([
+    expect(sleepRepo2.getUsersForAWeek("2019/06/21")).to.deep.equal([
   { userID: 1, date: '2019/06/15', hoursSlept: 6.1, sleepQuality: 2.2 },
   { userID: 2, date: '2019/06/15', hoursSlept: 7, sleepQuality: 4.7 },
   {
@@ -144,12 +144,12 @@ describe('SleepRepository', function() {
   ]);
   })
 
-    it('should return a new array with key value pairs of userIDs keys and sleepQuality values', () => {
-      sleepRepo2 = new SleepRepository(sleepData2);
+  it('should return a new array with key value pairs of userIDs keys and sleepQuality values', () => {
+    sleepRepo2 = new SleepRepository(sleepData2);
 
-      sleepRepo2.getUsersWithGoodSleepQual("2019/06/21");
+    sleepRepo2.getUsersForAWeek("2019/06/21");
 
-      expect(sleepRepo2.getUserAndSleepQualArray("2019/06/21")).to.deep.equal({
+    expect(sleepRepo2.getUserAndSleepQualArray("2019/06/21")).to.deep.equal({
   '1': [
     2.2, 3.8, 2.6,
     3.1, 1.2, 1.2,
@@ -175,7 +175,18 @@ describe('SleepRepository', function() {
     4.1, 3.4, 3.5,
     4.1
   ]
-})
-    })
+  })
+  })
+
+  it('should return an array of users with avg sleep qualities for a week over 3', () => {
+    sleepRepo2 = new SleepRepository(sleepData2);
+
+    sleepRepo2.getUsersForAWeek("2019/06/21");
+
+    sleepRepo2.getUserAndSleepQualArray("2019/06/21");
+
+    expect(sleepRepo2.getUsersWithSleepQualAvgAboveThree("2019/06/21")).to.deep.equal([ '2', '3', '5' ]);
+
+  })
 
 });

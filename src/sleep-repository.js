@@ -16,7 +16,7 @@ class SleepRepository {
     return parseFloat((avgQual / this.userSleep.length).toFixed(1));
   }
 
-  getUsersWithGoodSleepQual(date) {
+  getUsersForAWeek(date) {
     let selectedDay = this.userSleep.find(day => {
       return day.date === date;
     })
@@ -30,8 +30,8 @@ class SleepRepository {
     }
 
     getUserAndSleepQualArray(date) {
-      let weekArray2 = this.getUsersWithGoodSleepQual(date);
-      return weekArray2.reduce((acc, obj) => {
+      let weekObj = this.getUsersForAWeek(date);
+      return weekObj.reduce((acc, obj) => {
           if (!acc[obj.userID]) {
             acc[obj.userID] = [];
           }
@@ -40,6 +40,20 @@ class SleepRepository {
         }, {});
       }
 
+    getUsersWithSleepQualAvgAboveThree(date) {
+      let weekObj = this.getUserAndSleepQualArray(date);
+      let goodSleepArray = [];
+      for(let key in weekObj) {
+        let result = weekObj[key].reduce((acc, el) => {
+          return acc += el;
+        }, 0)
+        let resultAvg = result / weekObj[key].length;
+        if (resultAvg >= 3){
+          goodSleepArray.push(key)
+        }
+      }
+      return goodSleepArray;
+    }
 
   } //end
 

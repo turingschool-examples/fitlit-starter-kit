@@ -14,8 +14,15 @@ class Hydration {
   }
 
   getDailyOz(date) {
-    console.log(this.data.find(day => day.date === date).numOunces);
     return this.data.find(day => day.date === date).numOunces
+  }
+
+  getWeekIntake(date, id) {
+    let userWeek = this.data.filter(user => user.userID === id);
+
+    let day = userWeek.findIndex(days => days.date === date)
+
+    return userWeek.slice(day - 3, day + 4);
   }
 }
 

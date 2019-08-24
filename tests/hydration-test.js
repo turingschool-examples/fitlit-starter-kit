@@ -29,6 +29,10 @@ describe('Hydration', function() {
 
   it('should return ounces consumed on a specific day', () => {
     expect(hydration.getDailyOz('2019/06/20')).to.equal(50)
-  })
+  });
+
+  it('should return 7 days worth of consumption values', () => {
+  expect(hydration.getWeekIntake("2019/06/20", 1)).to.deep.equal(hydrationData.filter(user => user.userID === 1).slice(2, 9));
+  });
 
 });

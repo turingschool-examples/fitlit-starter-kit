@@ -1,23 +1,66 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>BeFit</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,900i&display=swap" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=DM+Serif+Display&display=swap" rel="stylesheet">
   </head>
   <body>
     <nav class="side-nav">
-      <
+      <div class="logo-nav-div">
+        <img src="../images/beFitLogo.svg" alt="A silhouette of three people working out." class="logo-nav">
+      </div>
+      <h1>BeFit</h1>
+      <h2> Welcome <span class="profile-first-name"></span>!</h2>
+      <button class="profile-btn"> View Profile</button>
+      <button class="sleep-btn"> View Sleep</button>
+      <button class="hydration-btn"> View Hydration</button>
+      <button class="activity-btn"> View Activity</button>
     </nav>
-    <h1>BeFit</h1>
+   <main>
+     <section class="profile-info">
+     <ul>
+       <li> Name: <span class="profile-name"></span> </li>
+       <li> Address: <span class="profile-address"></span> </li>
+       <li> Email: <span class="profile-email"></span> </li>
+       <li> Stride Length: <span class="profile-stride-length"></span> </li>
+       <li> Daily Step Goal: <span class="profile-daily-step-goal"></span> </li>
+       <li> Step Goal Average of All Users: <span class="avg-step-goal-of-all-users"></span> </li>
 
+     </ul>
+    </section>
+     <section class="sleep-info"></section>
+     <section class="hydration-info"></section>
+     <ul> 
+       <li> Today you consumed <span class="water-consumed-today"> </span> oz of water</li>
+     </ul>
+     <ul class="hydration-week-display">
+       
+     </ul>
+     <section class="activity-info"></section>
+     <section class="default-display">
+      
+       <h3> Today is <span class="today"></span></h3>
+     </section>
+     
+   </main>
 
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
+    <script type="text/javascript" src="./UserRepository.js"></script>
+    <script type="text/javascript" src="./User.js"></script>
+    <script type="text/javascript" src="./Hydration.js"></script>
+    <!-- <script type="text/javascript" src="./Sleep.js"></script> -->
+
   </body>
 </html>

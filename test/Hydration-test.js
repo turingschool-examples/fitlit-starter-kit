@@ -2,6 +2,9 @@ const chai = require('chai');
 const expect = chai.expect;
 const Hydration = require('../src/Hydration');
 const mockHydrationData = require('../mock-data/mock-hydration');
+const mockHydrationUser1 = require('../mock-data/mock-hydration-user1')[0];
+const hydrationUser1ForAWeek = require('../mock-data/mock-hydration-user1')[1];
+
 
 let hydration;
 
@@ -30,57 +33,7 @@ describe('Hydration', () => {
 
   describe('findCurrentUserHydrationData', () => {
     it('should return a list of the current user/s hydration information', () => {
-      expect(hydration.currentUserData).to.eql([{
-        "userID": 1,
-        "date": "2019/06/15",
-        "numOunces": 37
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/16",
-        "numOunces": 69
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/17",
-        "numOunces": 96
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/18",
-        "numOunces": 61
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/19",
-        "numOunces": 91
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/20",
-        "numOunces": 50
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/21",
-        "numOunces": 50
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/22",
-        "numOunces": 43
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/23",
-        "numOunces": 39
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/24",
-        "numOunces": 61
-      }
-      ])
+      expect(hydration.currentUserData).to.eql(mockHydrationUser1)
     });
   });
 
@@ -101,27 +54,16 @@ describe('Hydration', () => {
 
   describe('findFluidOzConsumedEveryDayOverSpecificWeek', () => {
     it('should find the fluid oz consumed for each day over the course of a specified week', () => {
-      expect(hydration.findFluidOzConsumedEveryDayOverSpecificWeek("2019/06/15", "2019/06/21")).to.eql([
-        {date: "2019/06/15", numOunces: 37}, 
-        {date: "2019/06/16", numOunces: 69}, 
-        {date: "2019/06/17", numOunces: 96},
-        {date: "2019/06/18", numOunces: 61},
-        {date: "2019/06/19", numOunces: 91},
-        {date: "2019/06/20", numOunces: 50}, 
-        {date: "2019/06/21", numOunces: 50}
-      ]);
+      expect(hydration.findFluidOzConsumedEveryDayOverSpecificWeek("2019/06/15", "2019/06/21")).to.eql(hydrationUser1ForAWeek);
     });
 
     describe('findTodaysDate', () => {
       it('should return the last date from the user/s data to represent today', () => {
         hydration.findTodaysDate();
         expect(hydration.today).to.equal("2019/06/24")
-      })
-    })
+      });
+    });
   });
-
-
-
 });
 
 

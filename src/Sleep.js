@@ -65,6 +65,17 @@ class Sleep {
     let avgQuality = parseFloat(result.toFixed(2));
     return avgQuality
   }
+
+  findUsersSleptMostHoursBasedOnDate(dateString) {
+    var date = this.allSleepData.filter(element => element.date === dateString)
+    var mostSleep = date.reduce((acc, user) => {
+      if(user.hoursSlept > acc) {
+        acc = user.hoursSlept
+      }
+      return acc
+    }, 0)
+    return date.filter(element => element.hoursSlept === mostSleep)
+  }
 }
 
 

@@ -39,6 +39,11 @@ class SleepUser {
 
 
 
+  // returnSleepQualityGreaterThanThree(startDate, endDate) {
+
+  // }
+
+
 }
 
 

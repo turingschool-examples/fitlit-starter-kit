@@ -2,7 +2,6 @@ class Hydration {
   constructor(allHydrationData, id) {
     this.allHydrationData = allHydrationData;
     this.currentUserId = id;
-    console.log(this.currentUserId)
     this.currentUserData;
     this.today;
  
@@ -29,7 +28,6 @@ class Hydration {
   }
 
   findAverageFluidOzConsumedforSpecificDay(dateString) {
-    console.log(this.currentUserData)
     return this.currentUserData.find(day => day.date === dateString).numOunces
   }
 

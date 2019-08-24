@@ -3,13 +3,13 @@ $(document).ready(() => {
     
   const today = dateToday();
   const todayString = dateTodayString();
-  console.log("hi",typeof todayString)
   const idRandom = Math.ceil(Math.random() * 50 - 1);
   const userRepository = new UserRepository(userData);
   const userDataArray = userRepository.fetchUserData(idRandom);
   const currentUser = new User(userDataArray);
-  let hydration = new Hydration(hydrationData, currentUser.id);
+  const hydration = new Hydration(hydrationData, currentUser.id);
   hydration.findCurrentUserData();
+  
 
   const $profileInfoSection = $('.profile-info');
   const $sleepinfo = $('.sleep-info');
@@ -27,7 +27,7 @@ $(document).ready(() => {
   $('.avg-step-goal-of-all-users').text(userRepository.findAverageStepGoalOfAllUsers());
 
   $('.water-consumed-today').text(hydration.findAverageFluidOzConsumedforSpecificDay(todayString));
-  $('.default-display').text(displayThisWeeksHydration());
+//   $('.default-display').text(displayThisWeeksHydration());
 
 
 })
@@ -78,7 +78,6 @@ const startTodayString = () => {
         mm=`0${mm}`;
     } 
 today = `${yyyy}/${mm}/${dd}`;
-console.log("YO", today)
 return today;
 }
 
@@ -86,11 +85,14 @@ const displayThisWeeksHydration = () => {
     let endDate = dateTodayString();
     let startDate = startTodayString();
     console.log("YO", startDate);
+    console.log("Hydration:", hydration)
     let weekArray = hydration.findFluidOzConsumedEveryDayOverSpecificWeek(startDate, endDate);
+    // console.log("week", weekArray)
     weekArray.forEach((day) => {
         // '<li> `On ${day.date} you drank ${day.numOunces}` </li>'
-        $('.default-display').text(`<li> On ${day.date} you drank ${day.numOunces} </li>`)
+        $('.default-display').append(`<li> On ${day.date} you drank ${day.numOunces} </li>`)
     })
     
 }
 
+displayThisWeeksHydration();

@@ -141,13 +141,41 @@ describe('SleepRepository', function() {
     sleepQuality: 2.7
   },
   { userID: 5, date: '2019/06/21', hoursSlept: 9.6, sleepQuality: 4.1 }
-]);
-
-
-    it('should return all users with avg sleep quality greater than 3 for a given week', () => {
-      expect(sleepRepo2.sleepQualThree).to.equal()
-    })
-
+  ]);
   })
+
+    it('should return a new array with key value pairs of userIDs keys and sleepQuality values', () => {
+      sleepRepo2 = new SleepRepository(sleepData2);
+
+      sleepRepo2.getUsersWithGoodSleepQual("2019/06/21");
+
+      expect(sleepRepo2.getUserAndSleepQualArray("2019/06/21")).to.deep.equal({
+  '1': [
+    2.2, 3.8, 2.6,
+    3.1, 1.2, 1.2,
+    4.2
+  ],
+  '2': [
+    4.7, 3.8,   3,
+    3.2, 2.5, 2.4,
+    4.8
+  ],
+  '3': [
+    4.7, 3.4, 4.9,
+    2.6, 3.4, 1.2,
+    3.7
+  ],
+  '4': [
+      3, 4.5, 1.1,
+    2.5, 2.3, 1.9,
+    2.7
+  ],
+  '5': [
+    3.6, 2.4, 3.7,
+    4.1, 3.4, 3.5,
+    4.1
+  ]
+})
+    })
 
 });

@@ -24,15 +24,24 @@ class SleepRepository {
     let indexOfSelectedDay = this.userSleep.indexOf(selectedDay);
 
     let weekArray = this.userSleep.slice((indexOfSelectedDay - 6 * 5), (indexOfSelectedDay + 5));
-
-    // let sleepQualThree = weekArray.filter(user => {
-    //   return user.sleepQuality > 2;
-    // })
+    // must change for larger data set
 
       return weekArray;
     }
 
-  }
+    getUserAndSleepQualArray(date) {
+      let weekArray2 = this.getUsersWithGoodSleepQual(date);
+      return weekArray2.reduce((acc, obj) => {
+          if (!acc[obj.userID]) {
+            acc[obj.userID] = [];
+          }
+          acc[obj.userID].push(obj.sleepQuality)
+          return acc;
+        }, {});
+      }
+
+
+  } //end
 
 
 if (typeof module !== "undefined") {

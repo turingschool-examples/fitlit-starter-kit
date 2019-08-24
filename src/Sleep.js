@@ -38,7 +38,7 @@ class Sleep {
     return day.sleepQuality; 
   }
 
-  findSleepHoursOrQualityEachDayOverWeek(startDate, endDate, property) {
+  findSleepHoursOrQualityEachDayOverWeekForAUser(startDate, endDate, property) {
     let answer = [];
     let week = this.currentUserData.filter(eachDay => {
       if (new Date(eachDay.date) >= new Date(startDate) && new Date(eachDay.date) <= new Date(endDate)) {
@@ -69,8 +69,36 @@ class Sleep {
   findUsersSleptMostHoursBasedOnDate(dateString) {
     var dateArray = this.allSleepData.filter(element => element.date === dateString);
     return dateArray.sort((a,b) => {
-        return b.hoursSlept - a.hoursSlept;
+      return b.hoursSlept - a.hoursSlept;
     }).shift()
+  }
+
+  findAllUsersOverThreeSleepQualityForWeek(startDate, endDate) {
+    let namesID = [];
+    let week = this.allSleepData.filter(eachDay => {
+      if (new Date(eachDay.date) >= new Date(startDate) && new Date(eachDay.date) <= new Date(endDate)) {
+        console.log(eachDay)
+        return eachDay;
+      }
+    })
+    let idArray = week.reduce((acc, currentElement) => {
+      if(!acc.includes(currentElement.userID)) {
+        acc.push(currentElement.userID)
+      }
+      return acc
+    }, [])
+    idArray.forEach(id => {
+      const filterData = week.filter(day => day.userID === id)
+      const avg = filterData.reduce((acc, currentElement) => {
+        acc += currentElement.sleepQuality
+        return acc
+      }, 0) / filterData.length
+
+      if(avg >= 3) {
+        namesID.push(id)
+      }
+    }) 
+    return namesID
   }
 }
 

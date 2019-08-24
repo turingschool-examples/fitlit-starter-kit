@@ -69,10 +69,10 @@ describe('Sleep', () => {
     });
   });
 
-  describe('findSleepHoursOrQualityEachDayOverWeek', () => {
-    it('should be able to find the the hours of sleep each day over a given week', () => {
-      expect(sleep.findSleepHoursOrQualityEachDayOverWeek("2019/06/15", "2019/06/21", "hoursSlept")).to.eql(mockSleepUserEachDayGivenWeek)
-      expect(sleep.findSleepHoursOrQualityEachDayOverWeek("2019/06/15", "2019/06/21", "sleepQuality")).to.eql(mockQualitySleepUserEachDayGivenWeek);
+  describe('findSleepHoursOrQualityEachDayOverWeekForAUser', () => {
+    it('should be able to find the the hours of sleep each day for a user over a given week', () => {
+      expect(sleep.findSleepHoursOrQualityEachDayOverWeekForAUser("2019/06/15", "2019/06/21", "hoursSlept")).to.eql(mockSleepUserEachDayGivenWeek)
+      expect(sleep.findSleepHoursOrQualityEachDayOverWeekForAUser("2019/06/15", "2019/06/21", "sleepQuality")).to.eql(mockQualitySleepUserEachDayGivenWeek);
     });
   });
 
@@ -82,11 +82,11 @@ describe('Sleep', () => {
       });
   });
 
-//   describe('fetchAllUsersOverThreeSleepQualityForWeek', () => {
-//       it('should be able to find all user/s who average a sleep quality greater than 3 for a given week', () => {
-//       expect(sleep.fetchAllUsersOverThreeSleepQualityForWeek()).to.equal();
-//       });
-//   });
+  describe('findAllUsersOverThreeSleepQualityForWeek', () => {
+      it('should be able to find all user/s who average a sleep quality greater than 3 for a given week', () => {
+      expect(sleep.findAllUsersOverThreeSleepQualityForWeek("2019/06/15", "2019/06/21")).to.equal();
+      });
+  });
 
   describe('findUsersSleptMostHoursBasedOnDate', () => {
        it('should be able to find the user/s who slept the most number of hours based on a date', () => {

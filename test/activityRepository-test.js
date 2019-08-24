@@ -11,8 +11,7 @@ describe('activityRepository', () => {
   let activityRepository;
 
   beforeEach( () => {
-
-    activityRepository = new ActivityRepository();
+    activityRepository = new ActivityRepository(activityData);
   });
 
   it('should be a function', () => {
@@ -24,15 +23,15 @@ describe('activityRepository', () => {
   });
 
   it('should find average number of stairs climbed for a specified date', () => {
-      expect(activityRepository.avgStepsClimbed(1, '2019/06/15').to.eql());
+      expect(activityRepository.avgStepsClimbed('2019/06/15')).to.equal(22);
   });
 
-  it.skip('should find average number of steps taken for a specified date', () => {
-    expect(activityRepository.avgStepsTaken(1, '2019/06/15').to.eql());
+  it('should find average number of steps taken for a specified date', () => {
+    expect(activityRepository.avgStepsTaken('2019/06/15')).to.equal(7231);
   });
 
-  it.skip('should find average minutes active for a specified date', () => {
-    expect(activityRepository.avgMinutesActive(1, '2019/06/15').to.eql());
+  it('should find average minutes active for a specified date', () => {
+    expect(activityRepository.avgMinutesActive('2019/06/15')).to.equal(137.6);
   });
 
 

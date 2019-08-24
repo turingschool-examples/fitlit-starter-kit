@@ -23,7 +23,7 @@ describe('Activity', () => {
   });
 
   it('should have a parameter to take in all of the activity data', () => {
-    expect(activity.allActivityData).to.eql(mockActivityData)
+    expect(activity.allActivityData).to.eql(mockActivityData);
   });
 
   it('should have a parameter to take in an id for the current user', () => {
@@ -32,15 +32,21 @@ describe('Activity', () => {
 
   describe('findCurrentUserData', () => {
     it('should return a list of the current user/s activity information', () => {
-      expect(activity.currentUserData).to.eql(mockActivityUser2Data)
+      expect(activity.currentUserData).to.eql(mockActivityUser2Data);
     });
   });
 
   describe('findMilesWalkedForSpecificDayOfUser', () => {
     it('should return the miles walked for a specific day', () => {
-      expect(activity.findMilesWalkedForSpecificDayOfUser("2019/06/17")).to.equal(1.73)
-    })
-  })
+      expect(activity.findMilesWalkedForSpecificDayOfUser("2019/06/17")).to.equal(1.73);
+    });
+  });
+
+  describe('findTotalMinutesActiveOnSpecificDayForUser', () => {
+      it('should return the total minutes active on a specific day for a user', () => {
+          expect(activity.findTotalMinutesActiveOnSpecificDayForUser("2019/06/17")).to.equal(65);
+      });
+  });
 
 
 });

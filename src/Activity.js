@@ -4,7 +4,6 @@ class Activity {
     this.currentUserId = id;
     this.currentUserData;
     this.allUsers = allUsers;
-    // console.log("line7", this.allUsers)
     
   }
 
@@ -19,6 +18,10 @@ class Activity {
     let totalFeet = dayToCalculateSteps / strideLength
     let milesWalked = 5280 / totalFeet;
     return parseFloat(milesWalked.toFixed(2));
+  }
+
+  findTotalMinutesActiveOnSpecificDayForUser(dateString) {
+    return this.currentUserData.filter(day => day.date === dateString)[0].minutesActive
   }
 }
 

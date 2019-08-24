@@ -27,7 +27,7 @@ $(document).ready(() => {
   $('.avg-step-goal-of-all-users').text(userRepository.findAverageStepGoalOfAllUsers());
 
   $('.water-consumed-today').text(hydration.findAverageFluidOzConsumedforSpecificDay(todayString));
-//   $('.default-display').text(displayThisWeeksHydration());
+  $('.default-display').text(displayThisWeeksHydration(hydration));
 
 
 })
@@ -68,7 +68,7 @@ return today;
 
 const startTodayString = () => {
     let today = new Date();
-    let dd = today.getDate(); - 7;
+    let dd = today.getDate() - 7;
     let mm = today.getMonth() + 1; 
     const yyyy = today.getFullYear();
     if (dd<10) {
@@ -81,18 +81,12 @@ today = `${yyyy}/${mm}/${dd}`;
 return today;
 }
 
-const displayThisWeeksHydration = () => {
+const displayThisWeeksHydration = (hydration) => {
     let endDate = dateTodayString();
     let startDate = startTodayString();
-    console.log("YO", startDate);
-    console.log("Hydration:", hydration)
     let weekArray = hydration.findFluidOzConsumedEveryDayOverSpecificWeek(startDate, endDate);
-    // console.log("week", weekArray)
     weekArray.forEach((day) => {
-        // '<li> `On ${day.date} you drank ${day.numOunces}` </li>'
-        $('.default-display').append(`<li> On ${day.date} you drank ${day.numOunces} </li>`)
+        $('.hydration-week-display').append(`<li> On ${day.date} you drank ${day.numOunces} oz of water </li>`)
     })
     
 }
-
-displayThisWeeksHydration();

@@ -1,11 +1,17 @@
 class Sleep {
-  constructor(sleepData) {
+  constructor(sleepData, userID) {
     this.sleepData = sleepData;
-    // this.userID = 0
+    this.userID = userID;
+    this.singleUserData = []
   }
 
-  setUserID(userID) {
-    return this.userID = userID;
+  extractSingleUser() {
+    let userData = this.sleepData.filter(user => {
+      if (this.userID === user.userID) {
+        return user;
+      }
+    });
+    this.singleUserData = userData
   }
 
   averageHoursSlept() {
@@ -23,6 +29,19 @@ class Sleep {
     totalHoursSlept = +(totalHoursSlept.toFixed(2))
     let averageHoursSlept = +(totalHoursSlept / userHoursSlept.length).toFixed(1)
     return averageHoursSlept
+
+  }
+
+  averageSleepQuality() {
+    let sleepQuality = this.singleUserData.map(user => {
+      return user.sleepQuality
+    })
+    let totalSleepQuality = sleepQuality.reduce((total, sleepQuality) => {
+      return total += sleepQuality
+    }, 0);
+    totalSleepQuality = +(totalSleepQuality.toFixed(2));
+    let averageSleepQuality = +(totalSleepQuality / sleepQuality.length).toFixed(1);
+    return averageSleepQuality;
 
   }
 }

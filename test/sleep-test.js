@@ -247,20 +247,29 @@ describe('Sleep', () => {
       "sleepQuality": 1.3
     }
   ];
-  sleepData = new Sleep(sleeps) 
-});
+  sleepData = new Sleep(sleeps, 5) 
+  });
 
-it('should be a function', () => {
-  assert.isFunction(Sleep)
-});
+  it('should be a function', () => {
+    assert.isFunction(Sleep);
+  });
 
-it('should identify user', () => {
-  assert.equal(sleepData.setUserID(5), 5)
-});
+  it('should identify user', () => {
+    assert.equal(sleepData.userID, 5)
+  });
 
-it('should return the average number of hours slept', () => {
-  sleepData.setUserID(5)
-  assert.equal(sleepData.averageHoursSlept(), 7.5)
-});
+  it('should return a single user data', () => {
+    sleepData.extractSingleUser();
+    assert.equal(sleepData.singleUserData.length, 8)
+  })
+
+  it('should return the average number of hours slept', () => {
+    assert.equal(sleepData.averageHoursSlept(), 7.5)
+  });
+
+  it('should return the average sleep quality', () => {
+    sleepData.extractSingleUser();
+    assert.equal(sleepData.averageSleepQuality() ,3.3)
+  })
 
 });

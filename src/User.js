@@ -14,7 +14,6 @@ class User {
     let firstName = this.name.split(' ')[0];
     return firstName;
   }
-  
 }
 
 

@@ -4,6 +4,7 @@ class Activity {
     this.currentUserId = id;
     this.currentUserData;
     this.allUsers = allUsers;
+
     
   }
 
@@ -43,6 +44,16 @@ class Activity {
     } else {
       return false
     }
+  }
+
+  findDaysWhereStepGoalExceededForUser() {
+    let stepGoal = this.allUsers.filter(user =>  user.id === this.currentUserId)[0].dailyStepGoal;
+    return this.currentUserData.reduce((acc, currentDay) => {
+      if(currentDay.numSteps > stepGoal) {
+        acc.push(currentDay.date)
+      }
+      return acc
+    }, [])
   }
 
 }

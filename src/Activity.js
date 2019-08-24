@@ -20,8 +20,8 @@ class Activity {
     return parseFloat(milesWalked.toFixed(2));
   }
 
-  findTotalMinutesActiveOnSpecificDayForUser(dateString) {
-    return this.currentUserData.filter(day => day.date === dateString)[0].minutesActive
+  findTotalMinutesActiveOnSpecificDayForUser(dateString, id) {
+    return this.allActivityData.filter(day => day.date === dateString && day.userID === id)[0].minutesActive;
   }
 }
 

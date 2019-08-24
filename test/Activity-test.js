@@ -43,8 +43,11 @@ describe('Activity', () => {
   });
 
   describe('findTotalMinutesActiveOnSpecificDayForUser', () => {
-      it('should return the total minutes active on a specific day for a user', () => {
-          expect(activity.findTotalMinutesActiveOnSpecificDayForUser("2019/06/17")).to.equal(65);
+      it('should return the total minutes active on a specific day for a user identified by their id', () => {
+          expect(activity.findTotalMinutesActiveOnSpecificDayForUser("2019/06/15", 2)).to.equal(138);
+          expect(activity.findTotalMinutesActiveOnSpecificDayForUser("2019/06/20", 3)).to.equal(129);
+          expect(activity.findTotalMinutesActiveOnSpecificDayForUser("2019/06/20", 4)).to.equal(240);
+          
       });
   });
 

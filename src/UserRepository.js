@@ -13,7 +13,6 @@ class UserRepository {
   }
 
   findAverageStepGoalOfAllUsers() {
-
     return this.data.reduce((totalSteps, user) => {
       totalSteps += user.dailyStepGoal
       return totalSteps

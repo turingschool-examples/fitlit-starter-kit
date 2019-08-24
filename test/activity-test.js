@@ -37,8 +37,8 @@ describe('Activity', () => {
 
   });
 
-  it.skip('shoud now how many minutes active was their average for a given week', () =>{
-    expect(activity.weeklyAvgMins()).to.equal();
+  it('shoud now how many minutes active was their average for a given week', () =>{
+    expect(activity.weeklyAvgMins(1, '2019/06/15')).to.equal(171.2);
 
   });
 
@@ -47,7 +47,7 @@ describe('Activity', () => {
   });
 
   it.skip('shoud find all the days the user exceeded thier step goal', () =>{
-    expect(activity.overStepGoal()).to.equal();
+    expect(activity.overStepGoal(id, userData)).to.equal();
   });
 
   it.skip('shoud find the users all-time stair climbing record', () =>{

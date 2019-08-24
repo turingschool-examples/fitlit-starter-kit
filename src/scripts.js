@@ -5,6 +5,8 @@ let randomUser = userData.find(user => {
 
 const hydration = new Hydration(hydrationData, randomUser.id);
 const users = new UserRepository(userData);
+const activity = new Activity(activityData, userData);
+console.log(userData[0].strideLength)
 
 
 const dailySection = document.querySelector('.daily_section')
@@ -39,3 +41,4 @@ dailySection.insertAdjacentHTML('beforeend', `<article>
   <li>${weeklyOunces[6].date} : ${weeklyOunces[6].numOunces} ounces</li>
  </ul>
  </article>`)
+

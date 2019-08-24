@@ -2,7 +2,6 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const User = require('../src/User');
-// const UserRepository = require('../src/UserRepository');
 const Activity = require('../src/Activity');
 const userData = require('../data-subsets/users-subset')
 const activityData = require('../data-subsets/activity-subset');
@@ -12,8 +11,6 @@ describe('Activity', () => {
   let activity;
   beforeEach( () => {
     activity = new Activity(activityData);
-    // user = new User(userData);
-    // userRepository = new UserRepository(userData);
   });
 
   it('should be a function', () => {
@@ -46,12 +43,12 @@ describe('Activity', () => {
     expect(activity.stepGoalMet(1, '2019/06/15', userData)).to.equal(false);
   });
 
-  it.skip('shoud find all the days the user exceeded thier step goal', () =>{
-    expect(activity.overStepGoal(id, userData)).to.equal();
+  it('shoud find all the days the user exceeded thier step goal', () =>{
+    expect(activity.overStepGoal(1, userData)).to.deep.equal(['2019/06/17', '2019/06/20', '2019/06/22', '2019/06/23']);
   });
 
-  it.skip('shoud find the users all-time stair climbing record', () =>{
-    expect(activity.stairClimbRecord()).to.equal();
+  it('shoud find the users all-time stair climbing record', () =>{
+    expect(activity.stairClimbRecord(1)).to.equal(36);
   });
 
 });  

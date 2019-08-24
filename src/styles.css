@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+  }
+
+  body {
+      background-color: #FF3361;
+      /* font-family: 'Lato', sans-serif; */
+      /* font-family: 'ZCOOL XiaoWei', serif; */
+      /* font-family: 'DM Sans', sans-serif;*/
+      font-family: 'DM Serif Display', serif;
+ 
+  }
+
+  nav {
+      background-color: #82042D;
+      padding: 10px;
+      margin: 10px;
+  }
+
+  .logo-nav {
+      max-width: 100px;
+      max-height: 100px;
+      display: block;
+  }

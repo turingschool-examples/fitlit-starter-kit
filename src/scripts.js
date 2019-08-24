@@ -18,6 +18,7 @@ let sleepQuality = document.querySelector('.main_sleep_quality');
 let sleepAll = document.querySelector('.main_sleep_average_all');
 let sleepAvgQuality = document.querySelector('.main_sleep_average_quality');
 let sleepDay = document.querySelector('.main_sleep_day');
+let sleepPerDay = document.querySelector('.main_sleep_specific_day');
 
 /*************** Event Listeners *************/
 window.addEventListener('load', initializePage(userData, hydrationData, sleepData))
@@ -99,17 +100,21 @@ function appendSleepList(array, obj) {
     dateSleepList.appendChild(option);
     if (dateSleepList.value === array[i]) {
     		sleepWeek.innerHTML = `Hours slept throughout week: ${obj.findSleepWeek(i)}`
+    		sleepQuality.innerHTML = `Sleep quality throughout week: ${obj.findSleepWeekQuality(i)}`
     }
 	}
 		dateSleepList.addEventListener('change', function() {
-			// obj.findSleepDay(dateSleepList.value)
-			// dailyFluids.innerHTML = `Fluid ounces intake by day: ${obj.day}`;
+			obj.findSleepDay(dateSleepList.value)
+			obj.findSleepQuality(dateSleepList.value)
+			sleepPerDay.innerHTML = `Hours slept for day: ${obj.day}  Quality of sleep: ${obj.quality}`;
 			for (let i = 0; i < array.length; i++) {
 				if (dateSleepList.value === array[i]) {
     		sleepWeek.innerHTML = `Hours slept throughout week: ${obj.findSleepWeek(i)}`
-    		}
+    		sleepQuality.innerHTML = `Sleep quality throughout week: ${obj.findSleepWeekQuality(i)}`
+    			}
 			}
 		})
-		// obj.findSleepDay(dateSleepList.value)
-		// dailyFluids.innerHTML = `Fluid ounces intake by day: ${obj.day}`;
+		obj.findSleepDay(dateSleepList.value)
+		obj.findSleepQuality(dateSleepList.value)
+		sleepPerDay.innerHTML = `Hours slept for day: ${obj.day}  Quality of sleep: ${obj.quality}`;
 }

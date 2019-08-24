@@ -3,6 +3,7 @@ class Sleep {
 			this.data = data
 			this.dates = []
 			this.day = null
+			this.quality = null
 			this.week = []
 		}
 		findAvgSleep() {
@@ -19,14 +20,22 @@ class Sleep {
 			})
 			return this.dates
 		}
-		// findSleepDay(date) {
-		// 	this.data.forEach(user => {
-		// 		if(user.date === date) {
-		// 			this.day = user.hoursSlept
-		// 			return this.day
-		// 		}
-		// 	});
-		// }
+		findSleepDay(date) {
+			this.data.forEach(user => {
+				if(user.date === date) {
+					this.day = user.hoursSlept
+					return this.day 
+				}
+			});
+		}
+		findSleepQuality(date) {
+			this.data.forEach(user => {
+				if(user.date === date) {
+					this.quality = user.sleepQuality
+					return this.quality 
+				}
+			});
+		}
 		findSleepWeek(index) {
 			this.week = []
 			let weekDays = []
@@ -45,7 +54,26 @@ class Sleep {
 			}
 			return weekDays
 		}
-}
+		findSleepWeekQuality(index) {
+			this.week = []
+			let weekDays = []
+			if (index + 7 < this.data.length) {
+				for (let i = index; i < index + 7; i++){
+					this.week.push(this.data[i])
+				}
+			} else {
+					for (let i = index; i < this.data.length; i++){
+						this.week.push(this.data[i])
+				}
+			}
+			for (let i = 0; i < this.week.length; i++) {
+			// weekDays.push(this.week[i].date)
+			weekDays.push(this.week[i].sleepQuality) 
+			}
+			return weekDays
+			}
+		}
+
 
 if (typeof module !== 'undefined') {
   module.exports = Sleep;

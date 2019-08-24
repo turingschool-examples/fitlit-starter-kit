@@ -35,6 +35,15 @@ class Activity {
     }, 0) / 7);
   }
 
+  findIfStepGoalReachedOnDateForUser(dateString) {
+    let stepGoal = this.allUsers.filter(user =>  user.id === this.currentUserId)[0].dailyStepGoal;
+    let stepsForDay = this.currentUserData.filter(day => day.date === dateString)[0].numSteps;
+    if (stepsForDay >= stepGoal) {
+      return true
+    } else {
+      return false
+    }
+  }
 
 }
 

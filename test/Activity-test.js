@@ -52,11 +52,18 @@ describe('Activity', () => {
   });
 
   describe('findMinutesActiveAvgForGivenWeekForUser', () => {
-      it('should return the avg of active mintues for a user during a given week', () => {
-          expect(activity.findMinutesActiveAvgForGivenWeekForUser("2019/06/18","2019/06/24")).to.equal(146)
-      }
+    it('should return the avg of active mintues for a user during a given week', () => {
+      expect(activity.findMinutesActiveAvgForGivenWeekForUser("2019/06/18", "2019/06/24")).to.equal(146)
+    })
+  })
+
+  describe('findIfStepGoalReachedOnDateForUser', () => {
+    it('should find if the user reached their step goal on a certain date', () => {
+      expect(activity.findIfStepGoalReachedOnDateForUser("2019/06/18")).to.equal(false);
+      expect(activity.findIfStepGoalReachedOnDateForUser("2019/06/24")).to.equal(true);
+    })
       
-      )
+
   })
 
 

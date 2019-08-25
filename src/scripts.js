@@ -9,6 +9,9 @@ $(document).ready(() => {
   const currentUser = new User(userDataArray);
   const hydration = new Hydration(hydrationData, currentUser.id);
   hydration.findCurrentUserData();
+  const activity = new Activity(activityData, idRandom, userData);
+//   activity.findCurrentUserData();
+
   
 
   const $profileInfoSection = $('.profile-info');
@@ -28,6 +31,15 @@ $(document).ready(() => {
 
   $('.water-consumed-today').text(hydration.findAverageFluidOzConsumedforSpecificDay(todayString));
   $('.default-display').text(displayThisWeeksHydration(hydration));
+  $('.most-recent-steps').text(activity.findActivityForMostRecentDay(todayString, "numSteps"));
+  $('.all-users-avg-most-recent-steps').text(activity.findAverageOfAnyActivityByDateForAllUsers(todayString, "numSteps"));
+  $('.most-recent-minutes-active').text(activity.findActivityForMostRecentDay(todayString, "minutesActive"));
+  $('.all-users-avg-most-recent-minutes-active').text(activity.findAverageOfAnyActivityByDateForAllUsers(todayString, "minutesActive"));
+  $('.most-recent-stairs').text(activity.findActivityForMostRecentDay(todayString, "flightsOfStairs"));
+  $('.all-users-avg-most-recent-stairs').text(activity.findAverageOfAnyActivityByDateForAllUsers(todayString, "flightsOfStairs"))
+  $('.most-recent-miles').text(activity.findMilesWalkedForSpecificDayOfUser(todayString));
+
+
 
 
 })
@@ -90,3 +102,5 @@ const displayThisWeeksHydration = (hydration) => {
     })
     
 }
+
+

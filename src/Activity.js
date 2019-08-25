@@ -2,7 +2,7 @@ class Activity {
   constructor(allActivityData, id, allUsers) {
     this.allActivityData = allActivityData;
     this.currentUserId = id;
-    this.currentUserData;
+    this.currentUserData = this.findCurrentUserData();
     this.allUsers = allUsers;
 
     
@@ -85,6 +85,10 @@ class Activity {
     });
     let championName = this.allUsers.filter(user => user.id === champion.userID)[0].name;
     return championName
+  }
+
+  findActivityForMostRecentDay(dateString, property) {
+    return this.currentUserData.find(data => data.date === dateString)[property]
   }
 
 

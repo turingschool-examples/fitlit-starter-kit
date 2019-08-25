@@ -91,6 +91,15 @@ describe('Activity', () => {
       expect(activity.findChampionUserOfAnyActivityByDateForAllUsers("2019/06/16", "flightsOfStairs")).to.equal("Jarvis Considine");
     })
   })
+
+  describe('findActivityForMostRecentDay', () => {
+    it('should be able to return the most recent step count', () => {
+      expect(activity.findActivityForMostRecentDay("2019/06/24", "numSteps")).to.eql(8568);
+      expect(activity.findActivityForMostRecentDay("2019/06/24", "minutesActive")).to.eql(81);
+      expect(activity.findActivityForMostRecentDay("2019/06/24", "flightsOfStairs")).to.eql(31);
+          
+    })
+  })
 })
 
 

@@ -13,10 +13,12 @@ class Activity {
 
   returnStepsTakenAllUsersByDate(date) {
     return this.activityData.filter((activityObj) => activityObj.date === date).reduce((activityObjA, activityObjB) => activityObjA + activityObjB.numSteps, 0);
+    //need to return average
   } 
 
   returnActiveMinutesAllUsersByDate(date) {
     return this.activityData.filter((activityObj) => activityObj.date === date).reduce((activityObjA, activityObjB) => activityObjA + activityObjB.minutesActive, 0);
+    //need to return average
   } 
 
   returnMilesWalkedByDate(user, date) {
@@ -43,7 +45,7 @@ class Activity {
 
   returnAvgActiveMinutesByWeek(userId, date) {
     let index = this.findCurrentUserData(userId).findIndex((activityObj) => activityObj.date === date);
-    let userActiveMins = this.findCurrentUserData(userId).map(activityObj => activityObj.minutesActive).splice(index, 7);
+    let userActiveMins = this.findCurrentUserData(userId).map(activityObj => activityObj.minutesActive).splice(index - 7, 7);
     return parseInt(userActiveMins.reduce((totalMins, dailyActiveMins) => {
       totalMins += dailyActiveMins;
       return totalMins;

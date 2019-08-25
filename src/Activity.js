@@ -56,6 +56,16 @@ class Activity {
     }, [])
   }
 
+  findAllTimeStairClimbingRecordForUser() {
+    return this.currentUserData.reduce((acc, currentDay) => {
+      if (currentDay.flightsOfStairs > acc.flightsOfStairs) {
+        acc.date = currentDay.date;
+        acc.flightsOfStairs = currentDay.flightsOfStairs;
+      }
+      return acc
+    }, {date: "", flightsOfStairs: 0})
+  }
+
 }
 
 

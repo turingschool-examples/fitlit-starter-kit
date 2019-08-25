@@ -63,11 +63,17 @@ describe('Activity', () => {
       expect(activity.findIfStepGoalReachedOnDateForUser("2019/06/24")).to.equal(true);
     })
       
- describe('findDaysWhereStepGoalExceededForUser', () => {
-     it('should return all dates where a user exceeded their step goal', () => {
-         expect(activity.findDaysWhereStepGoalExceededForUser()).to.eql(["2019/06/17", "2019/06/19", "2019/06/20", "2019/06/21", "2019/06/24"])
-     })
- })
+    describe('findDaysWhereStepGoalExceededForUser', () => {
+      it('should return all dates where a user exceeded their step goal', () => {
+        expect(activity.findDaysWhereStepGoalExceededForUser()).to.eql(["2019/06/17", "2019/06/19", "2019/06/20", "2019/06/21", "2019/06/24"])
+      })
+    })
+
+    describe("findAllTimeStairClimbingRecordForUser", () => {
+      it('should return the all time stair climbing record', () => {
+        expect(activity.findAllTimeStairClimbingRecordForUser()).to.eql({"date": "2019/06/19", "flightsOfStairs": 44})
+      })
+    })
   })
 
 

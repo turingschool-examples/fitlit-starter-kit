@@ -9,7 +9,6 @@ const activityData = require('../data-subsets/activity-subset');
 describe('activityRepository', () => {
 
   let activityRepository;
-
   beforeEach( () => {
     activityRepository = new ActivityRepository(activityData);
   });

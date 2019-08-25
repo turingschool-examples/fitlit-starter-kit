@@ -36,6 +36,15 @@ class Activity {
     }, 0) / 7)
   }
 
+  returnAverageStepsForWeek(week) {
+    let specificUser = this.findUser();
+    let weekOfData = this.returnWeekOfData(week, specificUser);
+    return Math.floor(weekOfData.reduce((totalSteps, eachDay) => {
+      totalSteps += eachDay.numSteps
+      return totalSteps
+    }, 0) / 7)
+  }
+
   metStepGoal(date) {
     let specificUser = this.findUser();
     let numSteps = specificUser.find(day => day.date === date).numSteps

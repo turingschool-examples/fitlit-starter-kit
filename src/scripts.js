@@ -23,15 +23,15 @@ $(document).ready(() => {
   // $('#user-current-step-count').text(activity.)
   $('#user-current-mins-active').text(activity.returnActiveMinutesByDate(user.id, currentDate));
   $('#user-current-miles-walked').text(activity.returnMilesWalkedByDate(user, currentDate));
-  // $('#user-current-step-count').text(activity.)
+  $('#user-current-step-count').text(activity.returnNumberOfStepsByDate(user.id, currentDate))
   $('#all-users-average-step-count').text(activity.returnStepsTakenAllUsersByDate(currentDate));
-  // $('#user-current-stairs-climbed').text(activity.)
+  $('#user-current-stairs-climbed').text(activity.returnStairsClimbedByDate(user.id, currentDate))
   $('#all-users-average-stairs-climbed').text(activity.returnStairsClimbedAllUsersByDate(currentDate));
-  // $('#user-current-active-mins').text(activity.)
+  $('#user-current-active-mins').text(activity.returnActiveMinutesByDate(user.id, currentDate))
   $('#all-users-average-active-mins').text(activity.returnActiveMinutesAllUsersByDate(currentDate));
-  // $('#user-step-count-by-week').text(activity.)
-  // $('#user-stairs-climbed-by-week').text(activity.)
-  // $('#user-mins-active-by-week').text(activity.)
+  $('#user-step-count-by-week').text(activity.returnAvgNumberOfStepsByWeek(user.id, currentDate))
+  $('#user-stairs-climbed-by-week').text(activity.returnAvgStairsClimbedByWeek(user.id, currentDate))
+  $('#user-mins-active-by-week').text(activity.returnAvgActiveMinutesByWeek(user.id, currentDate))
 
   
 

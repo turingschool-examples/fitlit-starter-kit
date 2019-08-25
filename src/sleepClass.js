@@ -110,6 +110,20 @@ class Sleep {
     console.log(usersWeek);
   }
 
+  returnUsersWhoSleptTheMost(date) {
+    let day = this.sleepData.filter(day => {
+      return day.date === date
+    })
+    day = day.sort((a, b) => a.hoursSlept - b.hoursSlept);
+    let users = []
+    day.forEach(user => {
+      if (day[day.length - 1].hoursSlept === user.hoursSlept) {
+        users.push(user);
+      }
+    })
+    return users
+  }
+  
 }
 
 if (typeof module !== 'undefined') {

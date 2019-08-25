@@ -294,13 +294,28 @@ describe('Sleep', () => {
     sleepData.extractSingleUser();
     // sleepData.findStartDate("2019/06/16");
     assert.deepEqual(sleepData.calculateWeeklySleepQuality("2019/06/16"), [2.4, 3.7, 4.1, 3.4, 3.5, 4.1, 1.3])
-  })
+  });
 
   it('should return average sleep quality of everyone', () => {
     assert.equal(sleepData.calculateAverageSleepQualityForEveryone(), 120.6);
+  });
+
+  it.skip('should return users who average a sleep quality greater than 3 for a given week', () => {
+    assert.deepEqual(sleepData.findUsersSleepQualityGreaterThanThree("2019/06/16"), 1)
+  });
+
+  it('should return the user(s) who slept the most number of hours for a given day', () => {
+    assert.deepEqual(sleepData.returnUsersWhoSleptTheMost("2019/06/16"), [{
+      userID: 3, 
+      date: '2019/06/16', 
+      hoursSlept: 10.7, 
+      sleepQuality: 3.4}]);
+  });
+
+  //Own Metric
+  it('should return date user had the most hours slept', () => {
+    sleepData.extractSingleUser();
+    assert.equal(sleepData.returnDateWithMostHoursSlept('2019/06/16'))
   })
 
-  it('should return users who average a sleep quality greater than 3 for a given week', () => {
-    assert.deepEqual(sleepData.findUsersSleepQualityGreaterThanThree("2019/06/16"), 1)
-  })
 });

@@ -1,0 +1,59 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  font-family: 'Open Sans', sans-serif;
+  grid-template-areas:
+    "welcome welcome welcome date"
+    "hydration sleep activity friends"
+    "hydration sleep activity challenges";
+  margin: 0px;
+  min-width: 320px;
+}
+
+.welcome-section {
+  grid-area: welcome;
+}
+
+.logo {
+  align-items: center;
+  font-size: 20px;
+  margin: none;
+  padding: 10px;
+}
+
+.welcome-message {
+  margin-left: 15px;
+}
+
+.date-section {
+  grid-area: date;
+}
+
+.date {
+  font-size: 20px;
+}
+
+.hydration {
+  grid-area: hydration;
+}
+
+.sleep {
+  grid-area: sleep;
+}
+
+.activity {
+  grid-area: activity;
+}
+
+.friends {
+  grid-area: friends;
+}
+
+.challenges {
+  grid-area: challenges;
+}

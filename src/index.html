@@ -11,53 +11,59 @@
 </head>
 
 <body>
-  <nav class="nav">
-    <section class="welcome-section">
-      <h1 class="logo">FitLit</h1>
-      <h2>Welcome <span class="username">User</span></h2>
-      <h3>Today's Date</h3>
-    </section>
-    <section class="user-info-section">
-
-    </section>
-  </nav>
-  <main class="user-data-container">
-    <section class="hydration">
-      <h4>Hydration</h4>
-
-    </section>
-    <section class="sleep">
-      <h4>Sleep</h4>
-
-    </section>
-    <section class="activity">
-      <h4>Activity</h4>
-
-    </section>
-  </main>
-  <section class="comparison-data-container">
-    <section class="friends">
-      <h4>Friends</h4>
-    </section>
-    <section class="challenges">
-      <h4>Challenges</h4>
-    </section>
+  <section class="welcome-section">
+    <h1 class="logo">FitLit</h1>
+    <h2 class="welcome-message">Welcome <span class="username"></span></h2>
+  </section>
+  <section class="date-section">
+    <h2 class="date"></h2>
+  </section>
+  <section class="data-section hydration">
+    <h4>Hydration</h4>
+    <article class="water-consumed"></article>
+    <article class="water-consumed-week"></article>
+  </section>
+  <section class="data-section sleep">
+    <h4>Sleep</h4>
+    <article class="hours-slept-day"></article>
+    <article class="quality-sleep-day"></article>
+    <article class="hours-slept-week"></article>
+    <article class="quality-sleep-week"></article>
+    <article class="hours-slept-all-time"></article>
+    <article class="quality-sleep-all-time"></article>
+  </section>
+  <section class="data-section activity">
+    <h4>Activity</h4>
+    <article class="user-step-goal"></article>
+    <article class="average-step-goal"></article>
+    <article class="number-of-steps-day"></article>
+    <article class="number-of-minutes-active-day"></article>
+    <article class="distance-of-miles-day"></article>
+    <article class="number-of-steps-week"></article>
+    <article class="number-of-stairs-week"></article>
+    <article class="number-of-minutes-active-week"></article>
+  </section>
+  <section class="friends">
+    <h4>Friends</h4>
+  </section>
+  <section class="challenges">
+    <h4>Challenges</h4>
   </section>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script type="text/javascript" src="../data/activity.js"></script>
-  <script type="text/javascript" src="../data/sleep.js"></script>
-  <script type="text/javascript" src="../data/users.js"></script>
-  <script type="text/javascript" src="../data/hydration.js"></script>
-  <script type="text/javascript" src="./User.js"></script>
-  <script type="text/javascript" src="./UserRepo.js"></script>
-  <script type="text/javascript" src="./Hydration.js"></script>
-  <script type="text/javascript" src="./HydrationRepo.js"></script>
-  <script type="text/javascript" src="./Sleep.js"></script>
-  <script type="text/javascript" src="./SleepRepo.js"></script>
-  <script type="text/javascript" src="./Activity.js"></script>
-  <script type="text/javascript" src="./ActivityRepo.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script type="text/javascript" src="./scripts.js"></script>
+<script type="text/javascript" src="../data/activity.js"></script>
+<script type="text/javascript" src="../data/sleep.js"></script>
+<script type="text/javascript" src="../data/users.js"></script>
+<script type="text/javascript" src="../data/hydration.js"></script>
+<script type="text/javascript" src="./User.js"></script>
+<script type="text/javascript" src="./UserRepo.js"></script>
+<script type="text/javascript" src="./Hydration.js"></script>
+<script type="text/javascript" src="./HydrationRepo.js"></script>
+<script type="text/javascript" src="./Sleep.js"></script>
+<script type="text/javascript" src="./SleepRepo.js"></script>
+<script type="text/javascript" src="./Activity.js"></script>
+<script type="text/javascript" src="./ActivityRepo.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script type="text/javascript" src="./scripts.js"></script>
+
 </html>

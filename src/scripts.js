@@ -103,4 +103,9 @@ const displayThisWeeksHydration = (hydration) => {
     
 }
 
+const displayLatestWeeksStats = (activity) => {
+    let endDate = dateTodayString();
+    let startDate = startTodayString();
+}
+
 

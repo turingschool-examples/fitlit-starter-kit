@@ -149,7 +149,7 @@ function checkMostSleep(sleepObj, userObj) {
   }
  	for (let i = 0; i < userObj.length; i++) {
  		if (i === userIndex) {
- 			sleepDay.innerHTML = `User(s) with most sleep time: ${userObj[i].name}`
+ 			sleepDay.innerHTML = `User(s) with most sleep time: ${userObj[i].name} (${largestNum})`
  		}
  	}
 }

@@ -146,9 +146,9 @@ describe('SleepRepository', function() {
     }])
 })
 
-// it.only('should return all users who averaged greater than 3 sleep quality for a given week', () => {
-//   expect(sleepRepository.returnSleepQualityGreaterThanThree('2019/06/22')).to.deep.equal([])
-// })
+it.only('should return all users who averaged greater than 3 sleep quality for a given week', () => {
+  expect(sleepRepository.findUsersByWeek('2019/06/16', '2019/06/22')).to.deep.equal([2])
+})
 
 
 })

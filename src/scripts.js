@@ -33,12 +33,15 @@ function initializePage(data, hydro, sleepy) {
 	const userRepository = new UserRepository(data)
 	userRepository.findUser(randoNum)
 	const user = new User(userRepository.currentUser)
+	const user2 = userRepository.data
 	const hydroRepository = new HydroRepository(hydro)
 	hydroRepository.findUserID(randoNum);
 	const userHydro = new UserHydro(hydroRepository.currentUser)
 	const sleepRepository = new SleepRepository(sleepy)
 	sleepRepository.findUserID(randoNum)
 	const sleep = new Sleep(sleepRepository.currentUser)
+	const sleep2 = new Sleep(sleepRepository.data)
+	// console.log(sleep.findQualityUsers(randoNum))
 	name.innerHTML = `Name: ${user.name}`
 	address.innerHTML = `Address: ${user.address}`
 	email.innerHTML = `Email: ${user.email}`
@@ -50,7 +53,10 @@ function initializePage(data, hydro, sleepy) {
 	avgSleep.innerHTML = `Average hours slept per day: ${sleep.findAvgSleep().toFixed(2)}`
 	sleepAll.innerHTML = `All users average sleep quality: ${sleepRepository.findAverageQuality().toFixed(2)}`
 	appendHydroList(userHydro.findDates(), userHydro);
-	appendSleepList(sleep.findSleepDates(), sleep)
+	appendSleepList(sleep.findSleepDates(), sleep);
+	appendMostSleep(sleep2, user2);
+	// sleep2.findSleepDay('2019/06/15')
+	// console.log(sleep2.day)
 }
 
 function findFriends(userRepository, user) {
@@ -90,7 +96,7 @@ function appendHydroList(array, obj) {
 }
 
 function appendSleepList(array, obj) {
-	let dateSleepList = document.createElement("select");
+	dateSleepList = document.createElement("select");
 	dateSleepList.setAttribute("id", "mySelect");
 	sleepList.appendChild(dateSleepList);
 	for (let i = 0; i < array.length; i++) {
@@ -117,4 +123,33 @@ function appendSleepList(array, obj) {
 		obj.findSleepDay(dateSleepList.value)
 		obj.findSleepQuality(dateSleepList.value)
 		sleepPerDay.innerHTML = `Hours slept for day: ${obj.day}  Quality of sleep: ${obj.quality}`;
+}
+
+function appendMostSleep(sleepObj, userObj) {
+	checkMostSleep(sleepObj, userObj);
+	dateSleepList.addEventListener('change', function() {
+		checkMostSleep(sleepObj, userObj);
+ })
+}
+
+function checkMostSleep(sleepObj, userObj) {
+	let dateObjects = []
+	let largestNum = 0
+	let userIndex = 0
+	for (let i = 0; i < sleepObj.data.length; i++) {
+		if (dateSleepList.value === sleepObj.data[i].date) {
+				dateObjects.push(sleepObj.data[i].hoursSlept)
+		}
+  }
+  for (let i = 0; i < dateObjects.length; i++) {
+  		if (dateObjects[i] > largestNum) {
+  			largestNum = dateObjects[i]
+  			userIndex = i
+  		} 
+  }
+ 	for (let i = 0; i < userObj.length; i++) {
+ 		if (i === userIndex) {
+ 			sleepDay.innerHTML = `User(s) with most sleep time: ${userObj[i].name} (${largestNum})`
+ 		}
+ 	}
 }

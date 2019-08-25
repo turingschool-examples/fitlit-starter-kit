@@ -72,6 +72,26 @@ class Sleep {
 			}
 			return weekDays
 			}
+			findQualityUsers(index) {
+				this.week = []
+				let weekDays = []
+				if (index + 7 < this.data.length) {
+					for (let i = index; i < index + 7; i++){
+						console.log(this.data[i])
+						this.week.push(this.data[i])
+					}
+				} else {
+						for (let i = index; i < this.data.length; i++){
+							this.week.push(this.data[i])
+					}
+				}
+				for (let i = 0; i < this.week.length; i++) {
+				// weekDays.push(this.week[i].date)
+				weekDays.push(this.week[i].sleepQuality) 
+				}
+				return weekDays
+				}
+			
 		}
 
 

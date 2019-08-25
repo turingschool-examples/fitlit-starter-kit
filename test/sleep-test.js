@@ -31,5 +31,8 @@ describe('SleepUser', function() {
     expect(sleepUser.findAverageQualitySlept("2019/06/16", "2019/06/22", 2)).to.equal(3.3)
   });
 
+  it.only('should tell user how much sleep they got compared to the night before', function() {
+    expect(sleepUser.findSleepComparison("2019/06/28", 2)).to.equal('You slept 42% less than yesteday.')
+  });
   
 })

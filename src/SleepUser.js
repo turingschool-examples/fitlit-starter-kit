@@ -34,15 +34,32 @@ class SleepUser {
     let totalQuality= dailyQuality.reduce((acc, num) => {
       return acc + num;
     }, 0)
-    return Math.round((totalQuality / 7) *10) / 10;
+    return Math.round((totalQuality / 7) * 10) / 10;
   }
 
+  findSleepComparison(date, id) {
+    var userSleepData = this.sleepTestData.filter(user => {
+      return user.userID === id
+    })
+    var infoToday = userSleepData.find(day => {
+      return day.date === date
+    })
+    var indexYesterday = userSleepData.indexOf(infoToday) - 1
+    var infoYesterday = userSleepData.slice(indexYesterday, indexYesterday + 1) 
+    
+    var hoursSleptToday = infoToday.hoursSlept
+    var hoursSleptYesterday = infoYesterday[0].hoursSlept
 
+    if (hoursSleptToday < hoursSleptYesterday) {
+      return `You slept ${Math.round((1 - (hoursSleptToday / hoursSleptYesterday)) * 100)}% less than yesteday.`
+    }  else if (hoursSleptYesterday < hoursSleptToday) {
+      return `You slept ${Math.round(hoursSleptYesterday / hoursSleptToday * 100)}% more than yesterday.`
+    } else {
+      return `You slept the same amount as you did the night before.`
+    }
+  
 
-  // returnSleepQualityGreaterThanThree(startDate, endDate) {
-
-  // }
-
+  }
 
 }
 

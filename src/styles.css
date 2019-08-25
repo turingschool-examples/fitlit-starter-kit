@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #303843;
+  background-color: #404954;
   display: grid;
   font-family: 'Open Sans', sans-serif;
   grid-template-areas:
@@ -40,7 +40,10 @@ body {
 }
 
 .date {
+  background-color: #5e6268;
+  border-radius: 3px;
   font-size: 10px;
+  padding: 3px 5px;
   text-align: right;
 }
 

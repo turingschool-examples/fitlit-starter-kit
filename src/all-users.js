@@ -2,11 +2,63 @@ class AllUsers {
     constructor(sleepData) {
         this.sleepData = sleepData;
     }
-}
 
-getSleepQualOverThree(day) {
-    let userInfo =     
-}
+  
+    getUserWeek(day) {
+        let index = this.sleepData.findIndex(object => {
+            return object.date === day;
+        });
+    
+        let weekData = this.sleepData.slice(index - 35, index + 5)
+        return weekData;
+        }
+
+    getUserWeekArray(day) {
+        let week = this.getUserWeek(day);
+        return week.reduce((acc, obj) => {
+            
+                if(!acc[obj.userID]) {
+                    acc[obj.userID] = []
+                } 
+                acc[obj.userID].push(obj.sleepQuality)
+                return acc;
+        }, {})
+    }
+
+    getUserWeekAverage(day) {
+        let average = this.getUserWeekArray(day);
+        let goodSleep = [];
+        for(let key in average) {
+            let result = average[key].reduce((acc, cur) => {
+                return acc += cur;
+            }, 0)
+            console.log("result: ", result)
+            let avg = result / average[key].length;
+            if (avg >= 3) {
+                goodSleep.push(key)
+            }
+        }
+        console.log(goodSleep);
+        return goodSleep;
+    }
+    }  
+
+        // let key = Object.keys(average)
+        // let values = Object.values(average);
+        // let addedValues = values.map(value => {
+        //     value.reduce((acc, cur) =>{
+
+        //     })
+        // })
+    
+
+
+
+// getSleepQualOverThree(date) {
+//     this.sleepData.forEach(element =>{
+//         element.userID === element.userID
+//     }) 
+// }
 
 
 if (typeof module !== 'undefined') {

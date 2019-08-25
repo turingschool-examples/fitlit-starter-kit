@@ -264,17 +264,35 @@ describe('Sleep', () => {
   })
 
   it('should return the average number of hours slept', () => {
+    sleepData.extractSingleUser();
     assert.equal(sleepData.averageHoursSlept(), 7.5)
   });
 
   it('should return the average sleep quality', () => {
     sleepData.extractSingleUser();
-    assert.equal(sleepData.averageSleepQuality() ,3.3)
-  })
+    assert.equal(sleepData.averageSleepQuality() ,3.3);
+  });
 
   it('should return amount of hours slept for one day', () => {
     sleepData.extractSingleUser();
-    assert.equal(sleepData.hoursSleptSpecificDate("2019/06/22"), 8.1)
-  })
+    assert.equal(sleepData.hoursSleptSpecificDate("2019/06/22"), 8.1);
+  });
 
+  it('should return sleep quality for a specific date', () => {
+    sleepData.extractSingleUser();
+    assert.equal(sleepData.sleepQualitySpecificDate("2019/06/22"), 1.3);
+  });
+
+  it('should return total hours slept for any given week', () => {
+    sleepData.extractSingleUser();
+    sleepData.findStartDate("2019/06/16");
+    assert.deepEqual(sleepData.calculateWeeklyHoursSlept("2019/06/16"), [7.4, 10.5, 5.2, 4.8, 10.1, 9.6, 8.1])
+    //or assert.equal(sleepData.calculateWeeklyHoursSlept("2019/06/16") ,55.7)
+  });
+
+  it('should return total sleep quality for any given week', () => {
+    sleepData.extractSingleUser();
+    // sleepData.findStartDate("2019/06/16");
+    assert.deepEqual(sleepData.calculateWeeklySleepQuality("2019/06/16"), [2.4, 3.7, 4.1, 3.4, 3.5, 4.1, 1.3])
+  })
 });

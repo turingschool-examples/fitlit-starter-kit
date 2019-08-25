@@ -7,7 +7,6 @@ class Activity {
         return this.activityData.find(user => id === user.userID && date === user.date).numSteps;
     }
 
-
     milesUserWalked(id, date, userData) {
         let userSteps = this.activityData.find(user => id === user.userID && date === user.date).numSteps;
         let userStride = userData.find(user => id === user.id).strideLength;

@@ -1,4 +1,4 @@
-const sleepData = require('../data-subsets/sleep-subset');
+// const sleepData = require('../data-subsets/sleep-subset');
 
 class Sleep {
   constructor(userData) {

@@ -7,18 +7,19 @@ class Activity {
     return this.activityData.filter((activityObj) => activityObj.userID === userId);
   }
 
-  returnStairsClimbedAllUsersByDate(date)  {
-    return this.activityData.filter((activityObj) => activityObj.date === date).reduce((activityObjA, activityObjB) => activityObjA + activityObjB.flightsOfStairs, 0);
+  returnAvgStairsClimbedAllUsersByDate(date)  {
+    let allUsersStairs =  this.activityData.filter((activityObj) => activityObj.date === date).reduce((activityObjA, activityObjB) => activityObjA + activityObjB.flightsOfStairs, 0);
+    return parseInt(allUsersStairs / 7);
   }
 
-  returnStepsTakenAllUsersByDate(date) {
-    return this.activityData.filter((activityObj) => activityObj.date === date).reduce((activityObjA, activityObjB) => activityObjA + activityObjB.numSteps, 0);
-    //need to return average
+  returnAvgStepsTakenAllUsersByDate(date) {
+    let allUserSteps = this.activityData.filter((activityObj) => activityObj.date === date).reduce((activityObjA, activityObjB) => activityObjA + activityObjB.numSteps, 0);
+    return parseInt(allUserSteps / 7);
   } 
 
-  returnActiveMinutesAllUsersByDate(date) {
-    return this.activityData.filter((activityObj) => activityObj.date === date).reduce((activityObjA, activityObjB) => activityObjA + activityObjB.minutesActive, 0);
-    //need to return average
+  returnAvgActiveMinutesAllUsersByDate(date) {
+    let allUserActiveMins = this.activityData.filter((activityObj) => activityObj.date === date).reduce((activityObjA, activityObjB) => activityObjA + activityObjB.minutesActive, 0);
+    return parseInt(allUserActiveMins / 7);
   } 
 
   returnMilesWalkedByDate(user, date) {

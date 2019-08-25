@@ -21,8 +21,8 @@ describe('Activity', () => {
     expect(Activity).to.be.a('function');
   });
 
-  it('should calculate stairs climbed for all users on a given day', function () {
-    expect(activity.returnStairsClimbedAllUsersByDate('2019/06/15')).to.equal(59);
+  it('should calculate average stairs climbed for all users on a given day', function () {
+    expect(activity.returnAvgStairsClimbedAllUsersByDate('2019/06/15')).to.equal(8);
   });
 
   it('should return how many minutes active a specified user was on a specific date', () => {
@@ -37,12 +37,12 @@ describe('Activity', () => {
     expect(activity.returnStairClimbingRecord(2)).to.equal(44)
   })
   
-  it('should calculate steps taken for all users on a given day', function () {
-    expect(activity.returnStepsTakenAllUsersByDate('2019/06/16')).to.equal(23053);
+  it('should calculate average steps taken for all users on a given day', function () {
+    expect(activity.returnAvgStepsTakenAllUsersByDate('2019/06/16')).to.equal(3293);
   });
 
-  it('should calculate minutes active for all users on a given day', function () {
-    expect(activity.returnActiveMinutesAllUsersByDate('2019/06/16')).to.equal(547);
+  it('should calculate average minutes active for all users on a given day', function () {
+    expect(activity.returnAvgActiveMinutesAllUsersByDate('2019/06/16')).to.equal(78);
   });
 
   it('should find all of the days the user met their step goal', function () {

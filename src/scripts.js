@@ -8,6 +8,9 @@ $(document).ready(() => {
   const sleepRepo = new SleepRepository(sampleSleep);
   const sleepyPerson = new Sleep(sleepRepo.getUserData(user.id));
 
+  const activeRepo = new ActivityRepository(sampleActivity);
+  const activePerson = new Activity(activeRepo.getUserData(user.id), user);
+
   const sampleDate = '2019/06/25'
 
   $('.header__div--h2').text(`Hi, ${user.getUserFirstName()}!`);
@@ -37,7 +40,31 @@ $(document).ready(() => {
               Sleep quality this week: ${sleepRepo.getAvgSleepStatsAllUsers(sleepRepo.getWeekOfUsers(sampleDate), 'sleepQuality')}
             </p>`)
 
+  $('.activity__container--user--steps--today').text(`Steps Today: ${activePerson.getStatsFromDay(sampleDate, 'numSteps')}`)
 
+  $('.activity__container--user--active--today').text(`Active Minutes Today: ${activePerson.getStatsFromDay(sampleDate, 'minutesActive')}`)
+
+  $('.activity__container--user--miles--today').text(`Miles walked Today: ${activePerson.getMiles(sampleDate, 'numSteps')} miles`)
+
+  $('.main__activity--thisWeek').after(buildWeeklyHTMLActivity())  
+
+  $('.activity__container--allusers--steps--today').text(`Steps Today: ${activeRepo.getAvgActivityStatsAllUsers(sampleDate, 'numSteps')}`)
+
+  $('.activity__container--allusers--active--today').text(`Active Minutes Today: ${activeRepo.getAvgActivityStatsAllUsers(sampleDate, 'minutesActive')}`)
+
+  $('.activity__container--allusers--flights--today').text(`Flights climbed Today: ${activeRepo.getAvgActivityStatsAllUsers(sampleDate, 'flightsOfStairs')} flights of stairs`)
+
+  function buildWeeklyHTMLActivity() {
+    const weeklyMap = activePerson.getWeek(sampleDate).map(function (day) {
+      return insertWeeklyActivityStats(day)
+    })
+    return weeklyMap.join(' ');
+  }
+
+  function insertWeeklyActivityStats(obj) {
+    return `<p class="inserted--p"> ${milisecondsToDate(obj.date)}: <br> ${obj.numSteps} steps <br> ${obj.minutesActive} minutes active <br> ${obj.flightsOfStairs} flights of stairs </p>`
+  }
+  
   function buildWeeklyHTMLSleep() {
     const weeklyMap = sleepyPerson.getWeek(sampleDate).map(function (day) {
       return insertWeeklySleepStats(day)

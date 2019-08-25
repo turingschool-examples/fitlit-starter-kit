@@ -315,7 +315,12 @@ describe('Sleep', () => {
   //Own Metric
   it('should return date user had the most hours slept', () => {
     sleepData.extractSingleUser();
-    assert.equal(sleepData.returnDateWithMostHoursSlept('2019/06/16'))
+    assert.deepEqual(sleepData.returnDateWithMostHoursSlept('2019/06/16'), {
+      userID: 5,
+      date: '2019/06/17',
+      hoursSlept: 10.5,
+      sleepQuality: 3.7
+    });
   })
 
 });

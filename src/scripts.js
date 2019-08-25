@@ -10,7 +10,7 @@ const activityRepo = new ActivityRepo(activityData);
 const user = new User(userData[uniqueUserIndex]);
 const hydration = new Hydration(hydrationData, user.id);
 const sleep = new Sleep(sleepData, user.id);
-const activity = new Activity(activityData, user.id);
+const activity = new Activity(activityData, user);
 
 //Date
 const date = activityData[0].date;
@@ -41,7 +41,7 @@ $('.quality-sleep-all-time').text(`Quality of Sleep On Average: ${sleep.returnAv
 //Activity Section
 $('.user-step-goal').text(`Daily Step Goal: ${user.dailyStepGoal}`);
 $('.average-step-goal').text(`Average Step Goal: ${userRepo.returnAverageStepGoal()}`);
-$('.number-of-steps-day').text(`Daily Steps: ${userRepo.returnNumStepsDay(date)}`);
-$('.number-of-minutes-active-day').text(`Daily Minutes Active: ${userRepo.returnMinutesActive(date)}`);
-$('.distance-of-miles-day').text(`Daily Miles Walked: ${userRepo.returnMilesWalked()}`);
-$('.number-of-steps-week').text(`Weekly Number Of Steps: ${userRepo.returnMilesWalked()}`);
+$('.number-of-steps-day').text(`Daily Steps: ${activity.returnNumStepsDay("2019/06/17")}`);
+$('.number-of-minutes-active-day').text(`Daily Minutes Active: ${activity.returnMinutesActive(date)}`);
+$('.distance-of-miles-day').text(`Daily Miles Walked: ${activity.returnMilesWalked()}`);
+$('.number-of-steps-week').text(`Weekly Number Of Steps: ${activity.returnAverageStepsForWeek()}`);

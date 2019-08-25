@@ -29,6 +29,10 @@ describe('Activity', () => {
     expect(activity.activityData).to.eql(activityData);
   });
 
+  it('should return the number of steps for specific user for a specific day', () => {
+    expect(activity.returnNumStepsDay("2019/06/17")).to.equal(14329);
+  });
+
   it('should return the miles walked by a specific user for a specific day', () => {
     expect(activity.returnMilesWalked()).to.equal(6.60);
   });

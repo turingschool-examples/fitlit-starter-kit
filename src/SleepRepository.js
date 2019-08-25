@@ -40,6 +40,33 @@ class SleepRepository {
     return dates.filter(user => user.hoursSlept === mostHours)
   }
 
+  findUsersByWeek(startDate, endDate) {
+    var sevenDays = this.data.filter(day => day.date >= startDate && day.date <= endDate);
+
+    var sleepQuality= sevenDays.reduce((obj, user) => {
+      if(!obj[user.userID]) {
+        obj[user.userID] = []
+      }
+      obj[user.userID].push(user.sleepQuality)
+      return obj
+    }, {})
+
+    return Object.keys(sleepQuality).map(key => {
+      var qualityTotal = sleepQuality[key].reduce((acc, qual) => {
+        acc += qual
+        return acc
+      }, 0)
+
+      var qualAverage = Math.round((qualityTotal / 7) * 10) / 10;
+      
+      if(qualAverage > 3) {
+        return parseInt(key)
+      }
+
+    }).filter(el => el !== undefined)
+    
+   }
+
 
 }
 

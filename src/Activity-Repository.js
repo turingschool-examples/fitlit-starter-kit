@@ -31,6 +31,17 @@ class Activity {
       return elem.date === date
     }).minutesActive
   } 
+  returnNumberOfStepsByDate(userID, date) {
+    return this.findCurrentUserData(userID).find((element) => {
+      return element.date === date;
+    }).numSteps;
+  }
+
+  returnStairsClimbedByDate(userID, date) {
+    return this.findCurrentUserData(userID).find((element) => {
+      return element.date === date;
+    }).flightsOfStairs;
+  }
 
   returnAvgActiveMinutesByWeek(userId, date) {
     let index = this.findCurrentUserData(userId).findIndex((activityObj) => activityObj.date === date);
@@ -38,6 +49,26 @@ class Activity {
     return parseInt(userActiveMins.reduce((totalMins, dailyActiveMins) => {
       totalMins += dailyActiveMins;
       return totalMins;
+    }, 0) / 7);
+  } 
+
+  returnAvgNumberOfStepsByWeek(userId, date) {
+    let index = this.findCurrentUserData(userId).findIndex((activityObj) => activityObj.date === date);
+    let userNumberOfSteps = this.findCurrentUserData(userId).map(activityObj => activityObj.numSteps).splice(index - 7, 7);
+    return parseInt(userNumberOfSteps.reduce((totalSteps, dailySteps) => {
+      totalSteps += dailySteps;
+      return totalSteps;
+    }, 0) / 7);
+  } 
+
+  returnAvgStairsClimbedByWeek(userId, date) {
+    let index = this.findCurrentUserData(userId).findIndex((activityObj) => activityObj.date === date);
+    let userStairsClimbed = this.findCurrentUserData(userId).map(activityObj => activityObj.flightsOfStairs).splice(index - 7, 7);
+    console.log(userStairsClimbed)
+    return parseInt(userStairsClimbed.reduce((totalStairs, dailyStairs) => {
+      totalStairs += dailyStairs;
+      console.log(totalStairs)
+      return totalStairs;
     }, 0) / 7);
   } 
 
@@ -66,6 +97,7 @@ class Activity {
     }
     return false;
   }
+
 }
 
 if (typeof module !== 'undefined') {

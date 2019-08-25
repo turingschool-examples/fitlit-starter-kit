@@ -76,13 +76,21 @@ describe('Activity', () => {
     })
 
     describe("findAverageOfAnyActivityByDateForAllUsers", () => {
-        it('should be able to return the all time average for all users of an activity on a specific date', () => {
-            expect(activity.findAverageOfAnyActivityByDateForAllUsers("2019/06/20", "minutesActive")).to.equal(146);
-            expect(activity.findAverageOfAnyActivityByDateForAllUsers("2019/06/15", "numSteps")).to.equal(5091);
-            expect(activity.findAverageOfAnyActivityByDateForAllUsers("2019/06/16", "flightsOfStairs")).to.equal(27);
-        })
+      it('should be able to return the all time average for all users of an activity on a specific date', () => {
+        expect(activity.findAverageOfAnyActivityByDateForAllUsers("2019/06/20", "minutesActive")).to.equal(146);
+        expect(activity.findAverageOfAnyActivityByDateForAllUsers("2019/06/15", "numSteps")).to.equal(5091);
+        expect(activity.findAverageOfAnyActivityByDateForAllUsers("2019/06/16", "flightsOfStairs")).to.equal(27);
+      })
     })
   })
 
+  describe("findChampionUserOfAnyActivityByDateForAllUsers", () => {
+    it('should be able to return the all time champion of all users for an activity on a specific date', () => {
+      expect(activity.findChampionUserOfAnyActivityByDateForAllUsers("2019/06/20", "minutesActive")).to.equal("Mae Connelly");
+      expect(activity.findChampionUserOfAnyActivityByDateForAllUsers("2019/06/15", "numSteps")).to.equal("Herminia Witting");
+      expect(activity.findChampionUserOfAnyActivityByDateForAllUsers("2019/06/16", "flightsOfStairs")).to.equal("Jarvis Considine");
+    })
+  })
+})
 
-});
+

@@ -71,10 +71,23 @@ class Activity {
     let avg = dates.reduce((acc, currentDay) => {
       acc += currentDay[property]
       return acc
-    },0) / dates.length;
-    return Math.round(avg)
-
+    }, 0) / dates.length;
+    return Math.round(avg);
   }
+
+  findChampionUserOfAnyActivityByDateForAllUsers(dateString, property) {
+    let dates = this.allActivityData.filter(day => day.date === dateString);
+    let champion = dates.reduce((acc, currentDay) => {
+      if (currentDay[property] > acc[property]  ) {
+        acc = currentDay
+      }
+      return acc
+    });
+    let championName = this.allUsers.filter(user => user.id === champion.userID)[0].name;
+    return championName
+  }
+
+
   
 
 }

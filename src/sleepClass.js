@@ -80,6 +80,16 @@ class Sleep {
     return weeklySleepQuality;
   }
 
+  calculateAverageSleepQualityForEveryone() {
+    let allSleepQuality = this.sleepData.map(user => {
+      return user.sleepQuality;
+    })
+    let averageSleepQuality = allSleepQuality.reduce((total, sleepQuality) => {
+      return total += sleepQuality;
+    }, 0);
+    return +(averageSleepQuality).toFixed(1);
+  }
+
 
 }
 

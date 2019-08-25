@@ -295,4 +295,8 @@ describe('Sleep', () => {
     // sleepData.findStartDate("2019/06/16");
     assert.deepEqual(sleepData.calculateWeeklySleepQuality("2019/06/16"), [2.4, 3.7, 4.1, 3.4, 3.5, 4.1, 1.3])
   })
+
+  it('should return average sleep quality of everyone', () => {
+    assert.equal(sleepData.calculateAverageSleepQualityForEveryone(), 120.6);
+  })
 });

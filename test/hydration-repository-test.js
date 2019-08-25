@@ -9,15 +9,15 @@ beforeEach(() => {
 
 describe('HydrationRepository', function() {
 
-  it.only('should be a function', function() {
+  it('should be a function', function() {
     expect(HydrationRepository).to.be.a('function');
   });
 
-  it.only('should store user hydration id', function() {
+  it('should store user hydration id', function() {
     expect(hydrationRepository.id).to.equal(2);
   });
 
-  it.only('should find hydration object via id', function() {
+  it('should find hydration object via id', function() {
 
     expect(hydrationRepository.findHydrationUserData()).to.deep.equal([
       {
@@ -63,7 +63,7 @@ describe('HydrationRepository', function() {
     ])
   });
 
-  it.only('should return average fluid oz consumed per day for all time', function() {
+  it('should return average fluid oz consumed per day for all time', function() {
     expect(hydrationRepository.returnHydrationAvg()).to.equal(71);
   })
 

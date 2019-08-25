@@ -51,20 +51,22 @@ class SleepRepository {
       return obj
     }, {})
 
-
-    Object.keys(sleepQuality).map(key => {
-      var qualityTotal = sleepQuality[key].reduce((acc, qual, index, array) => {
+    return Object.keys(sleepQuality).map(key => {
+      var qualityTotal = sleepQuality[key].reduce((acc, qual) => {
         acc += qual
         return acc
       }, 0)
-      var qualAverage = Math.round((qualityTotal / 7) * 10) / 10;
-      console.log(qualAverage)
-      return qualAverage;
-    })
 
+      var qualAverage = Math.round((qualityTotal / 7) * 10) / 10;
+      
+      if(qualAverage > 3) {
+        return parseInt(key)
+      }
+
+    }).filter(el => el !== undefined)
+    
    }
 
-  //  Math.round((totalHours / 7) * 10) / 10
 
 }
 

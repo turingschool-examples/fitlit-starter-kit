@@ -66,6 +66,17 @@ class Activity {
     }, {date: "", flightsOfStairs: 0})
   }
 
+  findAverageOfAnyActivityByDateForAllUsers(dateString, property) {
+    let dates = this.allActivityData.filter(day => day.date === dateString);
+    let avg = dates.reduce((acc, currentDay) => {
+      acc += currentDay[property]
+      return acc
+    },0) / dates.length;
+    return Math.round(avg)
+
+  }
+  
+
 }
 
 

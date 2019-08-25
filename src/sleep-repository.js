@@ -29,7 +29,7 @@ class SleepRepository {
       return weekArray;
     }
 
-    getUserAndSleepQualArray(date) {
+    getUserAndSleepQualObj(date) {
       let weekObj = this.getUsersForAWeek(date);
       return weekObj.reduce((acc, obj) => {
           if (!acc[obj.userID]) {
@@ -41,7 +41,7 @@ class SleepRepository {
       }
 
     getUsersWithSleepQualAvgAboveThree(date) {
-      let weekObj = this.getUserAndSleepQualArray(date);
+      let weekObj = this.getUserAndSleepQualObj(date);
       let goodSleepArray = [];
       for(let key in weekObj) {
         let result = weekObj[key].reduce((acc, el) => {
@@ -52,6 +52,7 @@ class SleepRepository {
           goodSleepArray.push(key)
         }
       }
+      console.log('goodSleepArray', goodSleepArray)
       return goodSleepArray;
     }
 

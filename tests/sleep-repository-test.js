@@ -149,7 +149,7 @@ describe('SleepRepository', function() {
 
     sleepRepo2.getUsersForAWeek("2019/06/21");
 
-    expect(sleepRepo2.getUserAndSleepQualArray("2019/06/21")).to.deep.equal({
+    expect(sleepRepo2.getUserAndSleepQualObj("2019/06/21")).to.deep.equal({
   '1': [
     2.2, 3.8, 2.6,
     3.1, 1.2, 1.2,
@@ -183,7 +183,7 @@ describe('SleepRepository', function() {
 
     sleepRepo2.getUsersForAWeek("2019/06/21");
 
-    sleepRepo2.getUserAndSleepQualArray("2019/06/21");
+    sleepRepo2.getUserAndSleepQualObj("2019/06/21");
 
     expect(sleepRepo2.getUsersWithSleepQualAvgAboveThree("2019/06/21")).to.deep.equal([ '2', '3', '5' ]);
 

@@ -12,6 +12,11 @@ class Activity {
     return userData.splice((-7 * week), 7);
   }
 
+  returnNumStepsDay(date) {
+    let specificUser = this.findUser();
+    return specificUser.find(day => day.date === date).numSteps
+  }
+
   returnMilesWalked() {
     let specificUser = this.findUser();
     return Number((this.user.strideLength * specificUser[specificUser.length - 1].numSteps / 5280).toFixed(2))

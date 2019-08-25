@@ -5,6 +5,7 @@
 }
 
 body {
+  background-color: #303843;
   display: grid;
   font-family: 'Open Sans', sans-serif;
   grid-template-areas:
@@ -17,25 +18,39 @@ body {
 
 .welcome-section {
   grid-area: welcome;
+  margin-bottom: 15px;
 }
 
 .logo {
   align-items: center;
   font-size: 20px;
-  margin: none;
-  padding: 10px;
+  margin: 0px;
 }
 
 .welcome-message {
-  margin-left: 15px;
+  margin: 0;
+  padding-left: 11%;
+  text-align: center;
 }
 
 .date-section {
   grid-area: date;
+  margin-bottom: 15px;
+  padding-right: 10px;
 }
 
 .date {
-  font-size: 20px;
+  font-size: 10px;
+  text-align: right;
+}
+
+.data-section {
+  margin: 5px;
+}
+
+.data-heading {
+  margin: 5px 0px;
+  text-decoration: underline;
 }
 
 .hydration {

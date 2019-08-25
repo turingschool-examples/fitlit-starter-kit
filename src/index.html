@@ -12,19 +12,19 @@
 
 <body>
   <section class="welcome-section">
-    <h1 class="logo">FitLit</h1>
+    <h1 class="logo"><img src="../images/logo.png" alt="FitLit logo"></h1>
     <h2 class="welcome-message">Welcome <span class="username"></span></h2>
   </section>
   <section class="date-section">
     <h2 class="date"></h2>
   </section>
   <section class="data-section hydration">
-    <h4>Hydration</h4>
+    <h4 class="data-heading">Hydration</h4>
     <article class="water-consumed"></article>
     <article class="water-consumed-week"></article>
   </section>
   <section class="data-section sleep">
-    <h4>Sleep</h4>
+    <h4 class="data-heading">Sleep</h4>
     <article class="hours-slept-day"></article>
     <article class="quality-sleep-day"></article>
     <article class="hours-slept-week"></article>
@@ -33,8 +33,9 @@
     <article class="quality-sleep-all-time"></article>
   </section>
   <section class="data-section activity">
-    <h4>Activity</h4>
-    <article class="user-step-goal"></article>
+    <h4 class="data-heading">Activity</h4>
+    <article class="user-step-goal">
+    </article>
     <article class="average-step-goal"></article>
     <article class="number-of-steps-day"></article>
     <article class="number-of-minutes-active-day"></article>
@@ -43,11 +44,11 @@
     <article class="number-of-stairs-week"></article>
     <article class="number-of-minutes-active-week"></article>
   </section>
-  <section class="friends">
-    <h4>Friends</h4>
+  <section class="data-section friends">
+    <h4 class="data-heading">Friends</h4>
   </section>
-  <section class="challenges">
-    <h4>Challenges</h4>
+  <section class="data-section challenges">
+    <h4 class="data-heading">Challenges</h4>
   </section>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
@@ -58,7 +59,6 @@
 <script type="text/javascript" src="./User.js"></script>
 <script type="text/javascript" src="./UserRepo.js"></script>
 <script type="text/javascript" src="./Hydration.js"></script>
-<script type="text/javascript" src="./HydrationRepo.js"></script>
 <script type="text/javascript" src="./Sleep.js"></script>
 <script type="text/javascript" src="./SleepRepo.js"></script>
 <script type="text/javascript" src="./Activity.js"></script>

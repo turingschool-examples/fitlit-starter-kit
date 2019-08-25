@@ -98,7 +98,6 @@ class Activity {
     return false;
   }
 
-
 }
 
 if (typeof module !== 'undefined') {

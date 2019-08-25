@@ -83,9 +83,4 @@ describe('Sleep', () => {
     expect(sleep.findSleepHoursWeek('2019/06/18')).to.deep.equal([10.4, 10.7, 9.3, 7.8, 7, 7.8, 8]);
   });
 
-  // it.only('should be able to output a user\'s hours slept by day', () => {
-  //   const sleep = new Sleep(userData[0]);
-  //   expect(sleep.hoursSleptByDate('2019/06/18').to.equal(10.4));
-  // })
-
 });

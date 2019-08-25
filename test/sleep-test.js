@@ -272,4 +272,9 @@ describe('Sleep', () => {
     assert.equal(sleepData.averageSleepQuality() ,3.3)
   })
 
+  it('should return amount of hours slept for one day', () => {
+    sleepData.extractSingleUser();
+    assert.equal(sleepData.hoursSleptSpecificDate("2019/06/22"), 8.1)
+  })
+
 });

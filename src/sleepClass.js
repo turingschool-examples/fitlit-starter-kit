@@ -42,7 +42,13 @@ class Sleep {
     totalSleepQuality = +(totalSleepQuality.toFixed(2));
     let averageSleepQuality = +(totalSleepQuality / sleepQuality.length).toFixed(1);
     return averageSleepQuality;
+  }
 
+  hoursSleptSpecificDate(date) {
+    let hoursSlept = this.singleUserData.find(day => {
+      return day.date === date;
+    });
+    return hoursSlept.hoursSlept;
   }
 }
 

@@ -14,17 +14,21 @@ const activity = new Activity(activityData, user);
 
 //Date
 const date = activityData[0].date;
+const dateObject = new Date(date);
+const options = {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+};
+const formattedDate = dateObject.toLocaleString('en', options)
+
 
 //User Section
 $('.username').text(`${user.returnUserName()}`)
 
 //Date Section
-function reformatDate(date) {
-  let arr = date.split('/');
-  return [arr[1], arr[2], arr[0]].join('/');
-}
-
-$('.date').text(`${reformatDate(date)}`);
+$('.date').text(`${formattedDate}`);
 
 //Hydration
 $('.water-consumed').text(`Daily Water Consumption: ${hydration.returnDailyFluidOunces(date)}`);

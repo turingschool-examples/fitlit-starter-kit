@@ -299,4 +299,8 @@ describe('Sleep', () => {
   it('should return average sleep quality of everyone', () => {
     assert.equal(sleepData.calculateAverageSleepQualityForEveryone(), 120.6);
   })
+
+  it('should return users who average a sleep quality greater than 3 for a given week', () => {
+    assert.deepEqual(sleepData.findUsersSleepQualityGreaterThanThree("2019/06/16"), 1)
+  })
 });

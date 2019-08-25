@@ -90,6 +90,25 @@ class Sleep {
     return +(averageSleepQuality).toFixed(1);
   }
 
+  findUsersSleepQualityGreaterThanThree(date) {
+    let firstPerson = this.sleepData.find(day => {
+      return day.date === date;
+    });
+    let indexOfFirstPerson = this.sleepData.indexOf(firstPerson);
+    let startDateParsed = Date.parse(date);
+    let endDateParse = startDateParsed + (86400000 * 6);
+    let endDate = this.sleepData.filter(day => {
+      let parsed = Date.parse(day.date);
+      if (parsed === endDateParse) {
+        return day;
+      }
+    });
+    let lastPerson = endDate[endDate.length - 1];
+    let indexOfLastPerson = this.sleepData.indexOf(lastPerson);
+    let usersWeek = this.sleepData.slice(indexOfFirstPerson, (indexOfLastPerson + 1));
+
+    console.log(usersWeek);
+  }
 
 }
 

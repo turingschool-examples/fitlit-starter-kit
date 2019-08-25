@@ -21,10 +21,24 @@ body {
   margin-bottom: 10px;
 }
 
+.date {
+  background-color: #d3d7de;
+  border-radius: 3px;
+  display: inline-block;
+  font-size: 10px;
+  margin: 0px;
+  padding: 3px 5px;
+  position: absolute;
+  top: 10px;
+  width: 16%;
+}
+
 .logo {
   align-items: center;
+  display: inline-block;
   font-size: 20px;
   margin: 0px;
+  width: 83%;
 }
 
 .welcome-message {
@@ -33,21 +47,6 @@ body {
   margin: 0px 3px 10px 3px;
   padding: 3px 5px;
   text-align: center;
-}
-
-.date-section {
-  grid-area: date;
-  margin-bottom: 15px;
-  padding-right: 10px;
-}
-
-.date {
-  background-color: #d3d7de;
-  border-radius: 3px;
-  font-size: 10px;
-  margin: 0px 3px;
-  padding: 3px 5px;
-  text-align: right;
 }
 
 .data-section {

@@ -20,10 +20,10 @@ $(document).ready(() => {
   $('#user-sleep-quality-by-week').text(sleep.returnSleepQualityByWeek(user.id, currentDate));
   $('#user-average-sleep-quality').text(sleep.returnAverageSleepQuality(user.id));
   $('#user-average-hours-slept').text(sleep.returnAverageSleep(user.id));
-  // $('#user-current-step-count').text(activity.)
+  $('#user-current-step-count').text(activity.returnNumberOfStepsByDate(user.id, currentDate))
   $('#user-current-mins-active').text(activity.returnActiveMinutesByDate(user.id, currentDate));
   $('#user-current-miles-walked').text(activity.returnMilesWalkedByDate(user, currentDate));
-  $('#user-current-step-count').text(activity.returnNumberOfStepsByDate(user.id, currentDate))
+  $('#user-current-step-count-vs-average').text(activity.returnNumberOfStepsByDate(user.id, currentDate))
   $('#all-users-average-step-count').text(activity.returnStepsTakenAllUsersByDate(currentDate));
   $('#user-current-stairs-climbed').text(activity.returnStairsClimbedByDate(user.id, currentDate))
   $('#all-users-average-stairs-climbed').text(activity.returnStairsClimbedAllUsersByDate(currentDate));

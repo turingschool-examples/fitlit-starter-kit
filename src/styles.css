@@ -9,7 +9,7 @@ body {
   display: grid;
   font-family: 'Open Sans', sans-serif;
   grid-template-areas:
-    "welcome welcome welcome date"
+    "welcome welcome welcome welcome"
     "hydration sleep activity friends"
     "hydration sleep activity challenges";
   margin: 0px;
@@ -18,7 +18,7 @@ body {
 
 .welcome-section {
   grid-area: welcome;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .logo {
@@ -28,8 +28,10 @@ body {
 }
 
 .welcome-message {
-  margin: 0;
-  padding-left: 11%;
+  background-color: #d3d7de;
+  border-radius: 3px;
+  margin: 0px 3px 10px 3px;
+  padding: 3px 5px;
   text-align: center;
 }
 
@@ -40,19 +42,23 @@ body {
 }
 
 .date {
-  background-color: #5e6268;
+  background-color: #d3d7de;
   border-radius: 3px;
   font-size: 10px;
+  margin: 0px 3px;
   padding: 3px 5px;
   text-align: right;
 }
 
 .data-section {
+  background-color: #d3d7de;
+  border-radius: 3px;
   margin: 5px;
+  padding: 3px 5px;
 }
 
 .data-heading {
-  margin: 5px 0px;
+  margin-bottom: 5px;
   text-decoration: underline;
 }
 

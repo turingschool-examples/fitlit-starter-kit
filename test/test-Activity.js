@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
-const AcitivityRepository = require('../src/ActivityRepository');
-const Acitivity = require('../src/Activity');
+const ActivityRepository = require('../src/ActivityRepository');
+const Activity = require('../src/Activity');
 const UserRepository = require('../src/UserRepository');
 const User = require('../src/User');
 const sampleActivity = require('./sampleActivity');
@@ -12,8 +12,8 @@ var userRepo, user, activeRepo, activePerson;
 beforeEach(() => {
   userRepo = new UserRepository(sampleData);
   user = new User(userRepo.getUserData(5))
-  activeRepo = new AcitivityRepository(sampleActivity);
-  activePerson = new Acitivity(activeRepo.getUserData(5), user);
+  activeRepo = new ActivityRepository(sampleActivity);
+  activePerson = new Activity(activeRepo.getUserData(5), user);
 });
 
 describe('Activity', () => {

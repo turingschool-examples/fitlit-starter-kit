@@ -42,3 +42,6 @@ $('.quality-sleep-all-time').text(`Quality of Sleep On Average: ${sleep.returnAv
 $('.user-step-goal').text(`Daily Step Goal: ${user.dailyStepGoal}`);
 $('.average-step-goal').text(`Average Step Goal: ${userRepo.returnAverageStepGoal()}`);
 $('.number-of-steps-day').text(`Daily Steps: ${userRepo.returnNumStepsDay(date)}`);
+$('.number-of-minutes-active-day').text(`Daily Minutes Active: ${userRepo.returnMinutesActive(date)}`);
+$('.distance-of-miles-day').text(`Daily Miles Walked: ${userRepo.returnMilesWalked()}`);
+$('.number-of-steps-week').text(`Weekly Number Of Steps: ${userRepo.returnMilesWalked()}`);

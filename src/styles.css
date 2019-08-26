@@ -1,0 +1,80 @@
+* {
+  /* border: solid olivedrab 1px; */
+	font-family: 'Open Sans', sans-serif;
+}
+
+/* Dark #2C3531
+Dark Blue #116466
+beige1 #D9B08C
+beige2 #FFCB9A
+LightBlue #D1E8E2 */
+
+body {
+  margin: 3%;
+  color: white;
+  background: rgb(17,100,102);
+  background: linear-gradient(310deg, rgba(17,100,102,1) 40%, rgba(44,53,49,1) 73%);
+  /* background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("stock-photo2.jpg");
+  background-image: url("stock-photo2.jpg"); */
+}
+
+header {
+  /* color: #D9B08C; */
+  grid-area: header;
+  display: flex;
+  height: 52vh;
+}
+
+div {
+  display: flex;
+}
+
+.header__h1--title {
+  font-size: 4vw;
+  text-shadow: -5px -5px 5px black;
+  margin-top: 1%;
+  border-bottom: ridge white;
+  width: 94vw;
+  
+}
+
+.article__p--info {
+  margin: 0px
+}
+
+main {
+  /* color: #D1E8E2; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  /* grid-template-areas: 
+    "header header header header"
+    "main main . sidebar"
+    "footer footer footer footer"; */
+}
+
+.article__info {
+  grid-area: sidebar;
+}
+
+.article__water--daily {
+  grid-area: footer;
+}
+
+.header__section--left {
+  display: inline-block;
+  width: 69%;
+}
+
+.header__section--info {
+  display: inline-block;
+  width: 45%;
+  padding-top: 9%;
+}
+
+.section__card {
+  border: ridge white;
+  margin: 12px;
+  text-align: center;
+  border-radius: 50px;
+}

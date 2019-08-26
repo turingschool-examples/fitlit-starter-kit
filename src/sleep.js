@@ -76,7 +76,7 @@ class Sleep {
 			}
 		return weekDays
 	}
-	
+
 	findQualityUsers(index) {
 		this.week = []
 		let weekDays = []
@@ -95,6 +95,7 @@ class Sleep {
 			}
 		return weekDays
 	}
+
 }
 
 

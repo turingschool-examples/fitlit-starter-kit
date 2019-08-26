@@ -1,18 +1,20 @@
+// *** Variables ***
 let randomNum = Math.floor(Math.random() * 50 +1);
-let randomUser = userData.find(user => {
-  return user.id === randomNum;
-})
+let randomUser = userData.find(user => user.id === randomNum);
 
-const hydration = new Hydration(hydrationData, randomUser.id);
 const users = new UserRepository(userData);
+const hydration = new Hydration(hydrationData, randomUser.id);
+const sleep = new Sleep(sleepData, randomUser.id);
 const activity = new Activity(activityData, userData);
 console.log(userData[0].strideLength)
 
+// *** Event Listeners ***
+
+// *** Functionality | Handlers 1st ***
+
 
 const dailySection = document.querySelector('.daily_section')
-
 const header = document.querySelector('header')
-
 header.insertAdjacentHTML('beforeend', `<h2>Welcome, ${randomUser.name}</h2>`)
 
 dailySection.insertAdjacentHTML('afterbegin', `<article class="user_info">

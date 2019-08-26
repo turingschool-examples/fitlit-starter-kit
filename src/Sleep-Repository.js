@@ -1,6 +1,7 @@
 class Sleep {
   constructor(sleepData) {
     this.sleepData = sleepData;
+    this.isRested = false;
   }
 
   findCurrentUserData(userID) {
@@ -48,7 +49,7 @@ class Sleep {
     });
     return userSleepData.map(sleepObj => { 
       return sleepObj.hoursSlept
-    }).splice(startDay - 7, 7);
+    }).splice(startDay - 6, 7);
   }
 
   returnSleepQualityByWeek(userID, date) {
@@ -58,7 +59,7 @@ class Sleep {
     });
     return userSleepData.map(sleepObj => {
       return sleepObj.sleepQuality
-    }).splice(startDay - 7, 7);
+    }).splice(startDay - 6, 7);
   }
 
   returnAllUsersAverageSleepQuality() {
@@ -104,9 +105,8 @@ class Sleep {
     if ((this.findCurrentUserData(userID).find(day => {
       return day.date === date;
     }).hoursSlept) >= (8)) {
-      return true;
+      return this.isRested = true;
     }
-    return false;
   }
 }
 

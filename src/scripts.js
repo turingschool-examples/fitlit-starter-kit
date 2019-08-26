@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  const currentDate = '2019/06/15';
+  const currentDate = '2019/06/30';
 
   const userRepo = new UserRepository(userData);
   let user = userRepo.returnUserData(15);
@@ -8,7 +8,16 @@ $(document).ready(() => {
   let sleep = new Sleep(sleepData);
   let activity = new Activity(activityData)
 
-  
+  function populateFriends (userFriends) {
+    let friends = userFriends.map(friend => {
+      let userFriend = new User(userRepo.returnUserData(friend))
+      return ({id: userFriend.id, name: userFriend.name, steps: activity.returnNumberOfStepsByDate(userFriend.id, currentDate) })
+    });
+    return friends;
+  }
+
+  let friendObjs = populateFriends(user.friends);
+    
   $('#user-name').text(newUser.returnUserFirstName());
   $('#user-step-goal').text(newUser.dailyStepGoal);
   $('#average-step-goal-all-users').text(userRepo.returnAllUsersAverageStepGoal());
@@ -33,8 +42,7 @@ $(document).ready(() => {
   $('#user-stairs-climbed-by-week').text(activity.returnAvgStairsClimbedByWeek(user.id, currentDate))
   $('#user-mins-active-by-week').text(activity.returnAvgActiveMinutesByWeek(user.id, currentDate))
 
-  
-
+  friendObjs.forEach(friend => $('#friend-info').append(`<p>Friend name: ${friend.name}, steps: ${friend.steps}</p>`))
 
 });
 

@@ -80,3 +80,7 @@ body {
 .challenges {
   grid-area: challenges;
 }
+
+.data-article {
+  margin-bottom: 20px;
+}

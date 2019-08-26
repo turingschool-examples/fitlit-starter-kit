@@ -77,9 +77,48 @@ $('.quality-sleep-week').text(`Quality of Sleep Last Week: ${sleep.returnWeekOfS
 $('.quality-sleep-all-time').text(`Quality of Sleep On Average: ${sleep.returnAvgSleepQuality()}`);
 
 //Activity Section
+
+var bar = new ProgressBar.Circle('.number-of-steps-day', {
+  color: '#aaa',
+  // This has to be the same size as the maximum width to
+  // prevent clipping
+  strokeWidth: 4,
+  trailWidth: 1,
+  easing: 'easeInOut',
+  duration: 1400,
+  text: {
+    autoStyleContainer: false
+  },
+  from: {
+    color: '#aaa',
+    width: 1
+  },
+  to: {
+    color: '#333',
+    width: 4
+  },
+  // Set default step function for all animate calls
+  step(state, circle) {
+    circle.path.setAttribute('stroke', state.color);
+    circle.path.setAttribute('stroke-width', state.width);
+
+    var value = Math.round(circle.value());
+    if (value === 0) {
+      circle.setText('');
+    } else {
+      circle.setText(`${activity.returnNumStepsDay(date)} steps`);
+    }
+
+  }
+});
+
+let percentSteps = activity.returnNumStepsDay(date) / user.dailyStepGoal;
+
+bar.animate(percentSteps > 1 ? percentSteps = 1 : null); // Number from 0.0 to 1.0
+
+
 $('.user-step-goal').text(`Daily Step Goal: ${user.dailyStepGoal}`);
 $('.average-step-goal').text(`Average Step Goal: ${userRepo.returnAverageStepGoal()}`);
-$('.number-of-steps-day').text(`Daily Steps: ${activity.returnNumStepsDay("2019/06/17")}`);
 $('.number-of-minutes-active-day').text(`Daily Minutes Active: ${activity.returnMinutesActive(date)}`);
 $('.distance-of-miles-day').text(`Daily Miles Walked: ${activity.returnMilesWalked()}`);
 $('.number-of-steps-week').text(`Weekly Number Of Steps: ${activity.returnAverageStepsForWeek()}`);

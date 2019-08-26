@@ -13,7 +13,7 @@ const sleep = new Sleep(sleepData, user.id);
 const activity = new Activity(activityData, user);
 
 //Date
-const date = activityData[0].date;
+const date = activityData.reverse()[0].date;
 const dateObject = new Date(date);
 const options = {
   weekday: 'long',
@@ -31,7 +31,7 @@ $('.username').text(`${user.returnUserName()}`)
 $('.date').text(`${formattedDate}`);
 
 //Hydration
-$('.water-consumed').text(`Daily Water Consumption: ${hydration.returnDailyFluidOunces(date)}`);
+$('.water-consumed').text(`Today: \n${hydration.returnDailyFluidOunces(date)} ounces`);
 
 const weeklyOuncesChart = new Chart(document.getElementById('water-consumed-week').getContext('2d'), {
   type: 'bar',

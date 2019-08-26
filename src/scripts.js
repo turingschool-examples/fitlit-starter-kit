@@ -22,7 +22,7 @@ var activityRepository = new ActivityRepository(activityData);
     $('#article__user--todaysteps').text(activityData[randomUser].numSteps);
     $('#article__user--activemins').text(activity.minsUserActive(randomUser, '2019/06/15'));
     $('#article__user--todaydistance').text(activity.milesUserWalked(randomUser, '2019/06/15', userData));
-    $('#article__user--weeklyview').text(activity);
+    $('#article__user--weeklyview').text(activity.weeklyAvgMins(randomUser, '2019/06/15'));
     $('#article__user--comparesteps').text(activityRepository.avgStepsClimbed('2019/06/15'));
     $('#article__user--comparemins').text(activityRepository.avgStepsTaken('2019/06/15'));
     $('#article__user--comparestairs').text(activityRepository.avgMinutesActive('2019/06/15'));
@@ -34,24 +34,24 @@ var activityRepository = new ActivityRepository(activityData);
       datasets: [{
         label: 'Weekly Hydration',
         data: [ 43, 39, 61, 51, 52, 29, 57 ],
-        // hydration.findWeeklyWaterCons(randomUser),
+        // [hydration.findWeeklyWaterCons(randomUser)],
         backgroundColor: [
-          '#2FB5B6', 
+          '#73A9BB', 
           '#FC5D79', 
           '#B6E7EC', 
           '#fda8b7', 
-          '#1F768A',
+          '#8573BB',
           '#fc7d93',
-          '#346081'
+          '#73A9BB'
         ],
         borderColor: [
-          '#2FB5B6',
+          '#73A9BB',
           '#FC5D79',
           '#B6E7EC',
           '#fda8b7',
-          '#1F768A',
+          '#8573BB',
           '#fc7d93',
-          '#346081', 
+          '#73A9BB', 
         ],
         borderWidth: 2 
       }]
@@ -83,19 +83,19 @@ var activityRepository = new ActivityRepository(activityData);
 
     
     var dailyStepComparisonChart = new Chart($('#compare-user-steps-chart'), {
-        type: 'pie',
+        type: 'doughnut',
         data: {
-          labels: ['you', 'all users'],
+          labels: ['Your Steps', 'All Users Steps'],
           datasets: [{
             label: 'Daily Step Comparison',
             data: [activityData[randomUser].numSteps, activityRepository.avgStepsTaken('2019/06/15')
             ],
             backgroundColor: [
-              '#2FB5B6',
+              '#73A9BB',
               '#FC5D79', 
             ],
             borderColor: [
-              '#2FB5B6', 
+              '#73A9BB', 
               '#FC5D79',
             ],
             borderWidth: 2 
@@ -110,8 +110,8 @@ var activityRepository = new ActivityRepository(activityData);
             layout: {
                 padding: {
                     left: 10,
-                    right: 0,
-                    top: 0,
+                    right: 10,
+                    top: 10,
                     bottom: 10,
                         }
        
@@ -120,19 +120,19 @@ var activityRepository = new ActivityRepository(activityData);
       });
 
       var dailyMinsComparisonChart = new Chart($('#compare-minutes-active-chart'), {
-        type: 'pie',
+        type:  'polarArea',
         data: {
-          labels: ['you', 'all users'],
+          labels: ['Your Minutes Active', 'All User\'s Minutes Active'],
           datasets: [{
-            label: 'Daily Minutes Comparison',
+            label: ['Your Minutes Active', 'All User\'s Minutes Active'],
             data: [activityData[randomUser].minutesActive, activityRepository.avgMinutesActive('2019/06/15')
             ],
             backgroundColor: [
-              '#2FB5B6',
+              '#73A9BB',
               '#FC5D79', 
             ],
             borderColor: [
-              '#2FB5B6', 
+              '#73A9BB', 
               '#FC5D79',
             ],
             borderWidth: 2 
@@ -147,8 +147,8 @@ var activityRepository = new ActivityRepository(activityData);
             layout: {
                 padding: {
                     left: 10,
-                    right: 0,
-                    top: 0,
+                    right: 10,
+                    top: 10,
                     bottom: 10,
                         }
        
@@ -156,20 +156,20 @@ var activityRepository = new ActivityRepository(activityData);
             }                
       });
 
-      var dailyMinsComparisonChart = new Chart($('#compare-user-stairs-chart'), {
+      var dailyStairsComparisonChart = new Chart($('#compare-user-stairs-chart'), {
         type: 'pie',
         data: {
-          labels: ['you', 'all users'],
+          labels: ['Your Stairs Climbed', 'All User\'s Stair Climbed'],
           datasets: [{
             label: 'Daily Stairs Comparison',
             data: [activityData[randomUser].flightsOfStairs, activityRepository.avgStepsClimbed('2019/06/15')
             ],
             backgroundColor: [
-              '#2FB5B6',
+              '#73A9BB',
               '#FC5D79', 
             ],
             borderColor: [
-              '#2FB5B6', 
+              '#73A9BB', 
               '#FC5D79',
             ],
             borderWidth: 2 
@@ -184,11 +184,10 @@ var activityRepository = new ActivityRepository(activityData);
             layout: {
                 padding: {
                     left: 10,
-                    right: 0,
-                    top: 0,
+                    right: 10,
+                    top: 10,
                     bottom: 10,
                         }
-       
                     },
             }                
       });

@@ -35,12 +35,14 @@ header h2 {
 }
 
 #random-user-span {
-    color: darkcyan;
+    color: #FC5D79;
+    font-style: italic;
 }
 
 header span {
     color: darkcyan;
     margin-left: 5px;
+    margin-right: 5px;
 }
 
 main {

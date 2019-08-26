@@ -53,6 +53,18 @@ class AllUsers {
         })
         return bestSleep               
         }
+
+    getWorstSleeperByDay(today) {
+        let todayInfo = this.sleepData.filter((day) => {
+            return day.date === today
+        })
+        let hoursInfo = todayInfo.map(user => user.hoursSlept)
+        let leastSleep = Math.min(...hoursInfo)
+        let worstSleep = todayInfo.filter((user) => {
+            return user.hoursSlept === leastSleep
+        })
+        return worstSleep;
+    }
     }  
 
         

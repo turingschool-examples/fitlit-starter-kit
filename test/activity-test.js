@@ -252,4 +252,10 @@ describe('Activity', () => {
     assert.deepEqual(activity.calculateDailyMiles("2019/06/15"), 6.17)
   });
 
+  it('should return minutes active for a given date', () => {
+    assert.equal(activity.calculateMinutesActive("2019/06/23", 3), 219)
+  });
+
+  it('should return avergae minutes active over a week ')
+
 });

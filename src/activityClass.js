@@ -34,7 +34,6 @@ class Activity {
       }
     })
     this.oneDay = singleDay;
-    // console.log(this.oneDay)
   };
 
   getStrideLength(day) {
@@ -51,7 +50,19 @@ class Activity {
     let stepsPerMi = 5280 / strideLength;
     let miles = this.oneDay.numSteps / stepsPerMi;
     return +(miles.toFixed(2))
-  }
+  };
+
+  calculateMinutesActive(day, id) {
+    this.extractSingleActivityData()
+   let user = this.singleActivity.filter( user => {
+     if (user.userID === id && user.date === day) {
+       return user.minutesActive
+     }
+    })
+    return user[0].minutesActive
+  };
+
+  
 
 
 

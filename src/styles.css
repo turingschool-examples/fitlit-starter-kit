@@ -1,11 +1,11 @@
-*,
+`*,
 *:before,
 *:after {
   box-sizing: border-box;
 }
 
 body {
-  background-color: #404954;
+  background-color: #EAEBEF;
   display: grid;
   font-family: 'Open Sans', sans-serif;
   grid-template-areas:
@@ -16,19 +16,32 @@ body {
   min-width: 320px;
 }
 
+h2 {
+  font-size: 2em;
+  font-weight: 300;
+  color: #5C75DA;
+}
+
+.username {
+  font-weight: 600;
+}
+
 .welcome-section {
   grid-area: welcome;
   margin-bottom: 10px;
 }
 
 .date {
-  background-color: #d3d7de;
+  background-color: #5C75DA;
   border-radius: 3px;
   float: right;
   font-size: 10px;
   margin: 5px 5px;
   padding: 3px 5px;
-  width: 126px;
+  width: 140px;
+  color: #EAEBEF;
+  font-weight: 600;
+
 }
 
 .logo {
@@ -40,7 +53,6 @@ body {
 }
 
 .welcome-message {
-  background-color: #d3d7de;
   border-radius: 3px;
   margin: 0px 3px 10px 3px;
   padding: 3px 5px;
@@ -48,15 +60,18 @@ body {
 }
 
 .data-section {
-  background-color: #d3d7de;
+  background-color: #FEFEFE;
   border-radius: 3px;
   margin: 5px;
   padding: 3px 5px;
 }
 
 .data-heading {
-  margin: 0px 0px 5px 0px;
-  text-decoration: underline;
+  margin: 0px 0px 15px 0px;
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #5C75DA;
+
 }
 
 .hydration {
@@ -81,4 +96,6 @@ body {
 
 .data-article {
   margin-bottom: 20px;
+  font-weight: 300;
+  font-weight: .8em;
 }

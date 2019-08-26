@@ -24,7 +24,7 @@ class SleepRepo {
       totalQuality += day.sleepQuality;
       return totalQuality;
     }, 0)).map(user => Number((user / 7).toFixed(2)));
-    
+
     let goodSleepers = [];
     avgSleepQualityPerUser.forEach((user, index) => {
       if (user >= 3) {
@@ -33,8 +33,6 @@ class SleepRepo {
     });
     return goodSleepers;
   }
-
-
 
   returnLongestSleepers(date) {
     var dateData = this.sleepData.filter(day => day.date === date);

@@ -45,6 +45,10 @@ describe('Activity', () => {
     expect(activity.returnAverageMinutesActiveForWeek(1)).to.equal(148);
   });
 
+  it('should return the average steps for a week', () => {
+    expect(activity.returnAverageStepsForWeek(1)).to.equal(7908);
+  });
+
   it('should return false if they did not meet their step goal for a date', () => {
     expect(activity.metStepGoal('2019/06/15')).to.equal(false);
   });

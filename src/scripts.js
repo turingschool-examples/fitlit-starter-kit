@@ -10,19 +10,18 @@ const users = new UserRepository(userData);
 const hydration = new Hydration(hydrationData, randomUser.id);
 const sleep = new Sleep(sleepData, randomUser.id);
 const activity = new Activity(activityData, userData);
+console.log("hydra", hydration)
 
 // *** Event Listeners ***
 window.addEventListener('load', handlePageLoad);
 
 // *** Functionality | Handlers 1st ***
 function handlePageLoad() {
-  
   handleUser()
+  handleHydration();
 }
 
-
 function handleUser() {
-
   welcomeUser();
   createUserCard();
 }
@@ -40,24 +39,48 @@ function createUserCard() {
   </article>`)
 }
 
+function handleHydration() {
 
-hydration.extractSingleUser();
-let waterConsumedToday = hydration.calculateDailyWaterIntake();
-let singleUserIntakeData = hydration.singleUserData;
-let weeklyOunces = hydration.calculateWeeklyWaterIntake();
+  // returnDailyWaterIntake();
+  displayUserHydration();
+  // let waterConsumedToday = hydration.calculateDailyWaterIntake();
+  // let singleUserIntakeData = hydration.singleUserData;
+  // let weeklyOunces = hydration.calculateWeeklyWaterIntake();
+}
+
+// function returnAverageWaterIntake() {
+//   hydration.extractSingleUser();
+//   return hydration.calculateAverageWaterIntake();
+// }
+
+function returnDailyWaterIntake() {
+  hydration.extractSingleUser();
+  return hydration.calculateDailyWaterIntake();
+}
+
+function returnWeeklyWaterIntake() {
+  hydration.extractSingleUser();
+  return hydration.calculateWeeklyWaterIntake()
+}
 
 
+function displayUserHydration() {
+  let dailyWaterIntake = returnDailyWaterIntake();
+  let weeklyWaterIntake = returnWeeklyWaterIntake();
+  console.log(weeklyWaterIntake)
+  dailySection.insertAdjacentHTML('beforeend', `<article>
+   <p>Daily Water Intake: ${dailyWaterIntake}</p>
+   <ul>Water consumed this week:
+  let weeklyWaterIntake = returnWeeklyWaterIntake();
+    <li>${weeklyWaterIntake[0].date} : ${weeklyWaterIntake[0].numOunces} ounces</li>
+    <li>${weeklyWaterIntake[1].date} : ${weeklyWaterIntake[1].numOunces} ounces</li>
+    <li>${weeklyWaterIntake[2].date} : ${weeklyWaterIntake[2].numOunces} ounces</li>
+    <li>${weeklyWaterIntake[3].date} : ${weeklyWaterIntake[3].numOunces} ounces</li>
+    <li>${weeklyWaterIntake[4].date} : ${weeklyWaterIntake[4].numOunces} ounces</li>
+    <li>${weeklyWaterIntake[5].date} : ${weeklyWaterIntake[5].numOunces} ounces</li>
+    <li>${weeklyWaterIntake[6].date} : ${weeklyWaterIntake[6].numOunces} ounces</li>
+   </ul>
+   </article>`)
+}
 
-dailySection.insertAdjacentHTML('beforeend', `<article>
- <p>Daily Water Intake: ${waterConsumedToday}</p>
- <ul>Water consumed this week:
-  <li>${weeklyOunces[0].date} : ${weeklyOunces[0].numOunces} ounces</li>
-  <li>${weeklyOunces[1].date} : ${weeklyOunces[1].numOunces} ounces</li>
-  <li>${weeklyOunces[2].date} : ${weeklyOunces[2].numOunces} ounces</li>
-  <li>${weeklyOunces[3].date} : ${weeklyOunces[3].numOunces} ounces</li>
-  <li>${weeklyOunces[4].date} : ${weeklyOunces[4].numOunces} ounces</li>
-  <li>${weeklyOunces[5].date} : ${weeklyOunces[5].numOunces} ounces</li>
-  <li>${weeklyOunces[6].date} : ${weeklyOunces[6].numOunces} ounces</li>
- </ul>
- </article>`)
 

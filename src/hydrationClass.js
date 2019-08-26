@@ -25,7 +25,6 @@ class Hydration {
   }
 
 calculateDailyWaterIntake() {
-  //   // console.log(singleUserIntakeData)
   let waterConsumed = this.singleUserData[this.singleUserData.length - 1];
   return waterConsumed.numOunces;
   }

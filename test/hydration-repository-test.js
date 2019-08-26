@@ -18,7 +18,6 @@ describe('HydrationRepository', function() {
   });
 
   it('should find hydration object via id', function() {
-
     expect(hydrationRepository.findHydrationUserData()).to.deep.equal([
       {
         "userID": 2,

@@ -102,7 +102,7 @@ var bar = new ProgressBar.Circle('.number-of-steps-day', {
     circle.path.setAttribute('stroke', state.color);
     circle.path.setAttribute('stroke-width', state.width);
 
-    var value = Math.round(circle.value());
+    var value = circle.value();
     if (value === 0) {
       circle.setText('');
     } else {
@@ -114,7 +114,9 @@ var bar = new ProgressBar.Circle('.number-of-steps-day', {
 
 let percentSteps = activity.returnNumStepsDay(date) / user.dailyStepGoal;
 
-bar.animate(percentSteps > 1 ? percentSteps = 1 : null); // Number from 0.0 to 1.0
+console.log(percentSteps, activity.returnNumStepsDay(date), user.dailyStepGoal)
+
+bar.animate(percentSteps > 1 ? percentSteps = 1 : percentSteps); // Number from 0.0 to 1.0
 
 
 $('.user-step-goal').text(`Daily Step Goal: ${user.dailyStepGoal}`);

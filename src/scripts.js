@@ -82,20 +82,20 @@ var bar = new ProgressBar.Circle('.number-of-steps-day', {
   color: '#aaa',
   // This has to be the same size as the maximum width to
   // prevent clipping
-  strokeWidth: 4,
-  trailWidth: 1,
+  strokeWidth: 5,
+  trailWidth: 2,
   easing: 'easeInOut',
   duration: 1400,
   text: {
-    autoStyleContainer: false
+    autoStyleContainer: true
   },
   from: {
-    color: '#aaa',
-    width: 1
+    color: '#fff940',
+    width: 2
   },
   to: {
-    color: '#333',
-    width: 4
+    color: '#f2bc33',
+    width: 5
   },
   // Set default step function for all animate calls
   step(state, circle) {
@@ -113,8 +113,6 @@ var bar = new ProgressBar.Circle('.number-of-steps-day', {
 });
 
 let percentSteps = activity.returnNumStepsDay(date) / user.dailyStepGoal;
-
-console.log(percentSteps, activity.returnNumStepsDay(date), user.dailyStepGoal)
 
 bar.animate(percentSteps > 1 ? percentSteps = 1 : percentSteps); // Number from 0.0 to 1.0
 

@@ -25,11 +25,10 @@ body {
   background-color: #d3d7de;
   border-radius: 3px;
   display: inline-block;
+  float: right;
   font-size: 10px;
-  margin: 0px;
+  margin: 5px 5px;
   padding: 3px 5px;
-  position: absolute;
-  top: 10px;
   width: 126px;
 }
 

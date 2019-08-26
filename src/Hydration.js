@@ -8,6 +8,11 @@ class Hydration {
     return this.hydrationData.filter(user => user.userID === this.userID);
   }
 
+  returnWeek() {
+    var specificUser = this.findUser()
+    return specificUser.splice(-7).map(day => day.date);
+  }
+
   returnAverageFluidOunces() {
     var specificUser = this.findUser()
     return Math.floor(specificUser.reduce((totalOunces, dailyOunces) => {

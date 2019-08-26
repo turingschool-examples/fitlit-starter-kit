@@ -1,28 +1,45 @@
 // *** Variables ***
 let randomNum = Math.floor(Math.random() * 50 +1);
 let randomUser = userData.find(user => user.id === randomNum);
+const dailySection = document.querySelector('.daily_section')
+const header = document.querySelector('header')
 
+//*** Instances ***
+const user = new User(randomUser)
 const users = new UserRepository(userData);
 const hydration = new Hydration(hydrationData, randomUser.id);
 const sleep = new Sleep(sleepData, randomUser.id);
 const activity = new Activity(activityData, userData);
-console.log(userData[0].strideLength)
 
 // *** Event Listeners ***
+window.addEventListener('load', handlePageLoad);
 
 // *** Functionality | Handlers 1st ***
+function handlePageLoad() {
+  
+  handleUser()
+}
 
 
-const dailySection = document.querySelector('.daily_section')
-const header = document.querySelector('header')
-header.insertAdjacentHTML('beforeend', `<h2>Welcome, ${randomUser.name}</h2>`)
+function handleUser() {
 
-dailySection.insertAdjacentHTML('afterbegin', `<article class="user_info">
-  <p>Address: ${randomUser.address}</p>
-  <p>E-mail: ${randomUser.email}</p>
-  <p>Stride Length: ${randomUser.strideLength}</p>
-  <p>Daily Step Goal: ${randomUser.dailyStepGoal} / ${users.calculateAverageStepGoals()}</p>
-</article>`)
+  welcomeUser();
+  createUserCard();
+}
+
+function welcomeUser() {
+  header.insertAdjacentHTML('beforeend', `<h2>Welcome, ${user.name}</h2>`)
+}
+
+function createUserCard() {
+  dailySection.insertAdjacentHTML('afterbegin', `<article class="user_info">
+  <p>Address: ${user.address}</p>
+  <p>E-mail: ${user.email}</p>
+  <p>Stride Length: ${user.strideLength}</p>
+  <p>Daily Step Goal: ${user.dailyStepGoal} / ${users.calculateAverageStepGoals()}</p>
+  </article>`)
+}
+
 
 hydration.extractSingleUser();
 let waterConsumedToday = hydration.calculateDailyWaterIntake();

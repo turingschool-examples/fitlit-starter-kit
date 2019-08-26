@@ -24,7 +24,6 @@ body {
 .date {
   background-color: #d3d7de;
   border-radius: 3px;
-  display: inline-block;
   float: right;
   font-size: 10px;
   margin: 5px 5px;

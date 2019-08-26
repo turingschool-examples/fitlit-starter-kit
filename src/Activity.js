@@ -15,7 +15,7 @@ class Activity {
   }
 
   getMiles(date, property) {
-   return parseFloat(((this.getStatsFromDay(date, property) * this.strideLength) / 5280).toFixed(2))
+    return parseFloat(((this.getStatsFromDay(date, property) * this.strideLength) / 5280).toFixed(2))
   }
 
   getWeek(givenDate) {
@@ -31,7 +31,6 @@ class Activity {
       total += day[property];
       return total
     }, 0)
-    // return weekTotal / 7
     return parseInt((weekTotal / 7))
   }
 

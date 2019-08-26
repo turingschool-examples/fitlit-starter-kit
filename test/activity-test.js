@@ -74,6 +74,8 @@ describe('ActivityUser', function() {
     expect(activityUser.findMinutesActive('2019/06/18', 2)).to.equal(181);
   });
 
-
+  it.only('should calculate average active minutes for any given week', function() {
+    expect(activityUser.findAverageMinutesActive("2019/06/23", "2019/07/01", 2)).to.equal(199.4)
+  });
 
 }); //<<----end of describe block

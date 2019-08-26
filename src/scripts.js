@@ -9,10 +9,10 @@ const userRepo = new UserRepository(userData);
 
 const currentUser = userRepo.data.find(user => user.id === uniqueUserId)
 const user = new User(currentUser);
-
 const hydrationRepo = new Hydration(hydrationData);
-const currentUserHydration = hydrationRepo.waterData.filter(user => user.userID === uniqueUserId)
-console.log("currentUserHydration: ", currentUserHydration);
+const currentUserHydration = hydrationRepo.waterData.filter(user => user.userID === uniqueUserId);
+const sleepRepo = new Sleep(sleepData);
+const currentUserSleep = sleepRepo.sleepData.filter(user => user.userID === uniqueUserId)
 // console.log("hydration repo method", typeof hydrationRepo.dailyHydration());
 
 $('.user_card-name-span').text(user.getUserFirstName(uniqueUserId));
@@ -20,6 +20,18 @@ $('.step_goal-user-span').text(`${user.dailyStepGoal}`);
 $('.step_goal-all-average-span').text(userRepo.averageStepGoal());
 $('.main_daily-water-span').text(hydrationRepo.dailyHydration(uniqueUserId, findToday()));
 $('.main_weekly-water-span').text(displayWeek());
+
+$('.main_daily-sleep-span').text(sleepRepo.getHoursForDay(uniqueUserId, findToday()));
+$('.main_quality-sleep-span').text(sleepRepo.getQualityForDay(uniqueUserId, findToday()));
+
+$('.main_alltime-sleep-span').text(sleepRepo.getAverageSleepQuality(uniqueUserId));
+
+$('.main_weekly-sleep-hours-span').text(sleepRepo.getUserHoursWeekAverage(uniqueUserId, findToday()));
+
+$('.main_weeekly-sleep-quality-span').text(sleepRepo.getUserQualityWeekAverage(uniqueUserId, findToday()));
+
+
+
 
 
 function findToday() {

@@ -12,6 +12,7 @@ describe('Sleep', function() {
         const sleep = new Sleep(sleepSampleData);
         expect(sleep.getAverageHours(1)).to.equal(7);
     })
+
     it('should return user average quality of sleep over all time', function() {
         const sleep = new Sleep(sleepSampleData);
         expect(sleep.getAverageSleepQuality(1)).to.equal(3)
@@ -35,6 +36,16 @@ describe('Sleep', function() {
     it('should return average sleep quality over a week', function() {
         const sleep = new Sleep(sleepSampleData);
         expect(sleep.getSleepQualityOverWeek(1, '2019/07/03')).to.deep.equal([" 2019/06/27 : 4.6 ", " 2019/06/28 : 4.7 ", " 2019/06/29 : 1.2 ", " 2019/06/30 : 2.5 ", " 2019/07/01 : 4.3 ", " 2019/07/02 : 4.7 ", " 2019/07/03 : 2.1 "]);
+    })
+
+    it('should return average sleep hours for a week', function () {
+        const sleep = new Sleep(sleepSampleData);
+        expect(sleep.getUserHoursWeekAverage(1, '2019/07/03')).to.equal(7);
+    })
+    
+    it('should return average sleep quality for a week', function () {
+        const sleep = new Sleep(sleepSampleData);
+        expect(sleep.getUserQualityWeekAverage(1, '2019/07/03')).to.equal(3);
     })
 });
 

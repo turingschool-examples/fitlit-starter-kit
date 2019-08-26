@@ -26,11 +26,13 @@ class Sleep {
     }
 
     getHoursForDay(id, date) {
-        return this.findUser(id).find(user => user.date === date).hoursSlept;
+        console.log(this.findUser(id).find(user => user.date === date).hoursSlept.toFixed(0));
+        return this.findUser(id).find(user => user.date === date).hoursSlept.toFixed(0);
+
     }
 
     getQualityForDay(id, date) {
-        return this.findUser(id).find(user => user.date === date).sleepQuality;
+        return this.findUser(id).find(user => user.date === date).sleepQuality.toFixed(0);
     }
 
     getSleepOverWeek(id, day) {
@@ -53,6 +55,34 @@ class Sleep {
             return ` ${arr.date} : ${arr.sleepQuality} `
         })
         return weekInfo;
+    }
+
+    getUserHoursWeekAverage(id, day) {
+        let targetData = this.findUser(id);
+        let index = targetData.findIndex(object => {
+            return object.date === day;
+        });
+        let week = targetData.slice(index - 6, index + 1).map(arr => {
+            return arr.hoursSlept;
+        });
+        let weekAvg = week.reduce((arr, curr) => {
+            return arr += curr;
+        }, 0)/week.length;
+        return parseInt(weekAvg.toFixed(0));
+    }
+
+    getUserQualityWeekAverage(id, day) {
+        let targetData = this.findUser(id);
+        let index = targetData.findIndex(object => {
+            return object.date === day;
+        });
+        let week = targetData.slice(index - 6, index + 1).map(arr => {
+            return arr.sleepQuality;
+        });
+        let weekAvg = week.reduce((arr, curr) => {
+            return arr += curr;
+        }, 0) / week.length;
+        return parseInt(weekAvg.toFixed(0));
     }
 }
 

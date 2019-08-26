@@ -41,26 +41,21 @@ class AllUsers {
         console.log(goodSleep);
         return goodSleep;
     }
+
+    getBestSleeperByDay(today) {
+        let todayInfo = this.sleepData.filter((day) => {
+            return day.date === today
+        })
+        let hoursInfo= todayInfo.map(user => user.hoursSlept)
+        let mostSleep = Math.max(...hoursInfo)
+        let bestSleep = todayInfo.filter((user) => {
+           return user.hoursSlept === mostSleep;
+        })
+        return bestSleep               
+        }
     }  
 
-        // let key = Object.keys(average)
-        // let values = Object.values(average);
-        // let addedValues = values.map(value => {
-        //     value.reduce((acc, cur) =>{
-
-        //     })
-        // })
-    
-
-
-
-// getSleepQualOverThree(date) {
-//     this.sleepData.forEach(element =>{
-//         element.userID === element.userID
-//     }) 
-// }
-
-
+        
 if (typeof module !== 'undefined') {
     module.exports = AllUsers;
   }

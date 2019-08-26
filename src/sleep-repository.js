@@ -69,6 +69,14 @@ class SleepRepository {
       })
     }
 
+    getUsersWhoSleptMostForADay(date) {
+      let sortedUsersArray = this.sortUsersByHoursSlept(date);
+      return sortedUsersArray.filter((user) => {
+        return user.hoursSlept ===
+        sortedUsersArray[sortedUsersArray.length - 1].hoursSlept;
+      })
+    }
+
   } //end
 
 

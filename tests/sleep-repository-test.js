@@ -198,4 +198,15 @@ describe('SleepRepository', function() {
     ])
   })
 
+  it('should return users who slept the most per selected day', () => {
+    sleepRepo2 = new SleepRepository(sleepData2);
+
+    expect(sleepRepo2.getUsersWhoSleptMostForADay("2019/06/15")).to.deep.equal([{
+      "userID": 3,
+      "date": "2019/06/15",
+      "hoursSlept": 10.8,
+      "sleepQuality": 4.7
+    }])
+  })
+
 });

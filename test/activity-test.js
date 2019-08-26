@@ -66,13 +66,18 @@ describe('ActivityUser', function() {
     expect(User).to.be.a('function')
   });
 
-  // it.only('should find user info', function() {
-  //   expect(activityUser.findUserInfo(2)).to.equal(user2)
-  // });
+  it.only('should find user info', function() {
+    expect(activityUser.findActivityInfo(2)).to.equal(user2)
+  });
 
   it.only('should find steps walked based on id', function() {
     expect(activityUser.findStepsWalked("2019/06/19", 2)).to.equal(9858)
-  })
+  });
+
+  it.only('should be able to calculate the miles a user has walked', function () {
+    expect(activityUser.calculateMilesWalked('2019/06/19', 1)).to.equal(.34)
+  });
+
 
   
 

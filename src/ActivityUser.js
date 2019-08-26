@@ -6,13 +6,18 @@ class ActivityUser{
   }
 
   findUserInfo(id) {
+    return this.activityTestData.filter(user => user.userID === id);
+  }
 
+  calculateMilesWalked(date, id) {
+    let day = this.findUserInfo(id).find(user => user.date === date);
+    return day.numSteps
   }
 
 
 
 
-} //<<<-----end of class block
+} 
 
 
 if (typeof module !== 'undefined') {

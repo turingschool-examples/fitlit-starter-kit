@@ -54,9 +54,9 @@ h2 {
 
 .welcome-message {
   border-radius: 3px;
-  margin: 0px 3px 10px 3px;
+  margin: 15px 3px 10px 3px;
   padding: 3px 5px;
-  text-align: center;
+  text-align: left;
 }
 
 .data-section {
@@ -82,6 +82,10 @@ h2 {
 
 .hydration {
   grid-area: hydration;
+}
+
+img{
+  width: 10%;
 }
 
 .sleep {

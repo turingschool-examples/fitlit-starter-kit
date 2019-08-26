@@ -52,8 +52,21 @@ class SleepRepository {
           goodSleepArray.push(key)
         }
       }
-      console.log('goodSleepArray', goodSleepArray)
       return goodSleepArray;
+    }
+
+    getUsersForADay(date) {
+      let arrayOfUsersByDay = this.userSleep.filter(day => {
+        return day.date === date;
+      })
+      return arrayOfUsersByDay;
+    }
+
+    sortUsersByHoursSlept(date) {
+      let usersArray = this.getUsersForADay(date);
+      return usersArray.sort((a, b) => {
+        return (a.hoursSlept - b.hoursSlept);
+      })
     }
 
   } //end

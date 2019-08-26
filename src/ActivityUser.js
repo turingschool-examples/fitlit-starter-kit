@@ -1,15 +1,17 @@
-const User = require('../src/User');
-
 class ActivityUser{
   constructor(activityTestData) {
     this.activityTestData = activityTestData
   }
 
-  findUserInfo(id) {
-
+  findUserStrideLength(user) {
+    return user.strideLength;
   }
 
-
+  findMinutesActive(date, id) {
+    return this.activityTestData.find(user => {
+      return user.date === date && user.userID === id
+    }).minutesActive
+  }
 
 
 } //<<<-----end of class block

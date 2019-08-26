@@ -66,35 +66,14 @@ describe('ActivityUser', function() {
     expect(User).to.be.a('function')
   });
 
-  it.only('should find user info', function() {
-    expect(activityUser.findUserInfo(2)).to.equal(user2)
+  it.only('should find user stride length', function() {
+    expect(activityUser.findUserStrideLength(user2)).to.equal(4.5)
   });
 
-  // it.only('should calculate miles walked', function() {
-  //   expect(activityUser.calculateMilesWalked("2019/06/19")).to.equal('hi')
-  // })
+  it.only('should be able to find minutes active', function() {
+    expect(activityUser.findMinutesActive('2019/06/18', 2)).to.equal(181);
+  });
 
-  // {
-  //   "userID": 2,
-  //   "date": "2019/06/19",
-  //   "numSteps": 9858,
-  //   "minutesActive": 243,
-  //   "flightsOfStairs": 44
-  // },
-  // {
-  //   "id": 2,
-  //   "name": "Jarvis Considine",
-  //   "address": "30086 Kathryn Port, Ciceroland NE 07273",
-  //   "email": "Dimitri.Bechtelar11@gmail.com",
-  //   "strideLength": 4.5,
-  //   "dailyStepGoal": 5000,
-  //   "friends": [
-  //     9,
-  //     18,
-  //     24,
-  //     19
-  //   ]
-  // },
 
 
 }); //<<----end of describe block

@@ -14,14 +14,14 @@ class Activity {
 
   returnNumStepsDay(date) {
     let specificUser = this.findUser();
-    return specificUser.find(day => day.date === date).numSteps
+    return specificUser.find(day => day.date === date).numSteps;
   }
-
+  
   returnMilesWalked() {
     let specificUser = this.findUser();
     return Number((this.user.strideLength * specificUser[specificUser.length - 1].numSteps / 5280).toFixed(2))
   }
-
+  
   returnMinutesActive(date) {
     let specificUser = this.findUser();
     return specificUser.find(day => day.date === date).minutesActive

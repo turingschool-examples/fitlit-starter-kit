@@ -1,0 +1,84 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #404954;
+  display: grid;
+  font-family: 'Open Sans', sans-serif;
+  grid-template-areas:
+    "welcome welcome welcome welcome"
+    "hydration sleep activity friends"
+    "hydration sleep activity challenges";
+  margin: 0px;
+  min-width: 320px;
+}
+
+.welcome-section {
+  grid-area: welcome;
+  margin-bottom: 10px;
+}
+
+.date {
+  background-color: #d3d7de;
+  border-radius: 3px;
+  float: right;
+  font-size: 10px;
+  margin: 5px 5px;
+  padding: 3px 5px;
+  width: 126px;
+}
+
+.logo {
+  align-items: center;
+  display: inline-block;
+  font-size: 20px;
+  margin: 0px;
+  width: 83%;
+}
+
+.welcome-message {
+  background-color: #d3d7de;
+  border-radius: 3px;
+  margin: 0px 3px 10px 3px;
+  padding: 3px 5px;
+  text-align: center;
+}
+
+.data-section {
+  background-color: #d3d7de;
+  border-radius: 3px;
+  margin: 5px;
+  padding: 3px 5px;
+}
+
+.data-heading {
+  margin: 0px 0px 5px 0px;
+  text-decoration: underline;
+}
+
+.hydration {
+  grid-area: hydration;
+}
+
+.sleep {
+  grid-area: sleep;
+}
+
+.activity {
+  grid-area: activity;
+}
+
+.friends {
+  grid-area: friends;
+}
+
+.challenges {
+  grid-area: challenges;
+}
+
+.data-article {
+  margin-bottom: 20px;
+}

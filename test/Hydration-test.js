@@ -34,6 +34,19 @@ describe('Hydration', () => {
     expect(hydration.userID).to.equal(user.id);
   });
 
+  it('should return the dates for the last week', () => {
+    expect(hydration.returnWeek()).to.eql(
+      [
+        "2019/06/16",
+        "2019/06/17",
+        "2019/06/18",
+        "2019/06/19",
+        "2019/06/20",
+        "2019/06/21",
+        "2019/06/22"
+      ])
+  });
+
   it('should return the average fluid ounces for a user for all time', () => {
     expect(hydration.returnAverageFluidOunces()).to.equal(62);
   });

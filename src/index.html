@@ -7,57 +7,66 @@
   <link rel="stylesheet" href="normalize.css">
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-  <nav class="nav">
-    <section class="welcome-section">
-      <h1 class="logo">FitLit</h1>
-      <h2>Welcome <span class="username">User</span></h2>
-      <h3>Today's Date</h3>
-    </section>
-    <section class="user-info-section">
-
-    </section>
-  </nav>
-  <main class="user-data-container">
-    <section class="hydration">
-      <h4>Hydration</h4>
-
-    </section>
-    <section class="sleep">
-      <h4>Sleep</h4>
-
-    </section>
-    <section class="activity">
-      <h4>Activity</h4>
-
-    </section>
-  </main>
-  <section class="comparison-data-container">
-    <section class="friends">
-      <h4>Friends</h4>
-    </section>
-    <section class="challenges">
-      <h4>Challenges</h4>
-    </section>
+  <section class="welcome-section">
+    <h1 class="logo"><img src="../images/logo.png" alt="FitLit logo"></h1>
+    <h2 class="date"></h2>
+    <h2 class="welcome-message">Welcome <span class="username"></span></h2>
+  </section>
+  <section class="data-section hydration">
+    <h4 class="data-heading">Hydration</h4>
+    <article class="data-article water-consumed"></article>
+    <article class="data-article water-consumed-week">
+      <canvas id="water-consumed-week"></canvas>
+    </article>
+  </section>
+  <section class="data-section sleep">
+    <h4 class="data-heading">Sleep</h4>
+    <article class="data-article hours-slept-day"></article>
+    <article class="data-article quality-sleep-day"></article>
+    <article class="data-article quality-sleep-day"></article>
+    <article class="data-article quality-sleep-day"></article>
+    <article class="data-article hours-slept-week"></article>
+    <article class="data-article quality-sleep-week"></article>
+    <article class="data-article hours-slept-all-time"></article>
+    <article class="data-article quality-sleep-all-time"></article>
+  </section>
+  <section class="data-section activity">
+    <h4 class="data-heading">Activity</h4>
+    <article class="data-article user-step-goal"></article>
+    <article class="data-article average-step-goal"></article>
+    <article class="data-article number-of-steps-day"></article>
+    <article class="data-article number-of-minutes-active-day"></article>
+    <article class="data-article distance-of-miles-day"></article>
+    <article class="data-article number-of-steps-week"></article>
+    <article class="data-article number-of-stairs-week"></article>
+    <article class="data-article number-of-minutes-active-week"></article>
+  </section>
+  <section class="data-section friends">
+    <h4 class="data-heading">Friends</h4>
+  </section>
+  <section class="data-section challenges">
+    <h4 class="data-heading">Challenges</h4>
   </section>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script type="text/javascript" src="../data/activity.js"></script>
-  <script type="text/javascript" src="../data/sleep.js"></script>
-  <script type="text/javascript" src="../data/users.js"></script>
-  <script type="text/javascript" src="../data/hydration.js"></script>
-  <script type="text/javascript" src="./User.js"></script>
-  <script type="text/javascript" src="./UserRepo.js"></script>
-  <script type="text/javascript" src="./Hydration.js"></script>
-  <script type="text/javascript" src="./HydrationRepo.js"></script>
-  <script type="text/javascript" src="./Sleep.js"></script>
-  <script type="text/javascript" src="./SleepRepo.js"></script>
-  <script type="text/javascript" src="./Activity.js"></script>
-  <script type="text/javascript" src="./ActivityRepo.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script type="text/javascript" src="./scripts.js"></script>
+<script type="text/javascript" src="../data/activity.js"></script>
+<script type="text/javascript" src="../data/sleep.js"></script>
+<script type="text/javascript" src="../data/users.js"></script>
+<script type="text/javascript" src="../data/hydration.js"></script>
+<script type="text/javascript" src="./User.js"></script>
+<script type="text/javascript" src="./UserRepo.js"></script>
+<script type="text/javascript" src="./Hydration.js"></script>
+<script type="text/javascript" src="./Sleep.js"></script>
+<script type="text/javascript" src="./SleepRepo.js"></script>
+<script type="text/javascript" src="./Activity.js"></script>
+<script type="text/javascript" src="./ActivityRepo.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.7.0/dist/progressbar.js"></script>
+<script type="text/javascript" src="./scripts.js"></script>
+
 </html>

@@ -216,6 +216,7 @@ describe('Activity', () => {
         "userID": 3,
         "date": "2019/06/15", 
         "strideLength": 4.4,
+        "dailyStepGoal": 5000,
       },
     ]
     
@@ -256,6 +257,33 @@ describe('Activity', () => {
     assert.equal(activity.calculateMinutesActive("2019/06/23", 3), 219)
   });
 
-  it('should return avergae minutes active over a week ')
+  it('should return minutes active for one user', () => {
+    assert.deepEqual(activity.getMinsActive(3), [
+      116, 152,
+       97, 274,
+      188, 129,
+      199,  53,
+      219
+    ]);
+  });
+
+  it('should return average minutes active over a week', () => {
+    activity.extractSingleActivityData();
+    assert.equal(activity.calculateWeeklyActiveMins(3), 166)
+  });
+
+
+  it('should return a user\'s daily step goal', () => {
+    activity.extractSingleUser(3)
+    assert.equal(activity.determineStepGoal(3, "2019/06/15"), 5000)
+  });
+
+  it('should return whether a user met their step goal', () => {
+    activity.extractSingleUser(3)
+    // activity.compareStepsToGoal(3, "2019/06/15");
+    assert.equal(activity.compareStepsToGoal(3, "2019/06/15"), true)
+  })
+
+
 
 });

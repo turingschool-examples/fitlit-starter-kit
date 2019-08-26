@@ -1,4 +1,4 @@
-$(document).ready(() => {
+
   const repo = new UserRepository(sampleData);
   const user = new User(repo.getUserData(getRandomNumber()))
   ;
@@ -95,7 +95,19 @@ $(document).ready(() => {
     return `<p class="inserted--p"> ${milisecondsToDate(obj.date)}: ${obj.numOunces} ${unit} </p>`
   }
 
-})
+
       
+
+console.log(user.friends.map(friend => {
+  let newUser = new User(repo.getUserData(friend))
+  let newFriend = new Activity(activeRepo.getUserData(friend), newUser).getWeek(sampleDate).reduce((newObj, day)=> {
+    if (!newObj['id']) {
+      newObj['id'] = day.userID
+      newObj['steps'] = 0;
+    } newObj['steps'] += day.numSteps
+    return newObj
+  }, {})
+  return newFriend
+}))
 
 

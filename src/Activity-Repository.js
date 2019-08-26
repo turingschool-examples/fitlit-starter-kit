@@ -7,18 +7,22 @@ class Activity {
     return this.activityData.filter((activityObj) => activityObj.userID === userId);
   }
 
-  returnStairsClimbedAllUsersByDate(date)  {
-    return this.activityData.filter((activityObj) => activityObj.date === date).reduce((activityObjA, activityObjB) => activityObjA + activityObjB.flightsOfStairs, 0);
+  returnAvgStairsClimbedAllUsersByDate(date)  {
+    let allUsersStairs = this.activityData.filter((activityObj) => activityObj.date === date);
+    let allUsersStairsTotal = allUsersStairs.reduce((activityObjA, activityObjB) => activityObjA + activityObjB.flightsOfStairs, 0);
+    return parseInt(allUsersStairsTotal / allUsersStairs.length);
   }
 
-  returnStepsTakenAllUsersByDate(date) {
-    return this.activityData.filter((activityObj) => activityObj.date === date).reduce((activityObjA, activityObjB) => activityObjA + activityObjB.numSteps, 0);
-    //need to return average
+  returnAvgStepsTakenAllUsersByDate(date) {
+    let allUsersSteps = this.activityData.filter((activityObj) => activityObj.date === date);
+    let allUsersStepsTotal = allUsersSteps.reduce((activityObjA, activityObjB) => activityObjA + activityObjB.numSteps, 0);
+    return parseInt(allUsersStepsTotal / allUsersSteps.length );
   } 
 
-  returnActiveMinutesAllUsersByDate(date) {
-    return this.activityData.filter((activityObj) => activityObj.date === date).reduce((activityObjA, activityObjB) => activityObjA + activityObjB.minutesActive, 0);
-    //need to return average
+  returnAvgActiveMinutesAllUsersByDate(date) {
+    let allUsersActiveMins = this.activityData.filter((activityObj) => activityObj.date === date)
+    let allUsersActiveMinsTotal = allUsersActiveMins.reduce((activityObjA, activityObjB) => activityObjA + activityObjB.minutesActive, 0);
+    return parseInt(allUsersActiveMinsTotal / allUsersActiveMins.length);
   } 
 
   returnMilesWalkedByDate(user, date) {
@@ -52,24 +56,19 @@ class Activity {
     }, 0) / 7);
   } 
 
-  returnAvgNumberOfStepsByWeek(userId, date) {
+  returnActiveMinutesByWeek(userId, date) {
     let index = this.findCurrentUserData(userId).findIndex((activityObj) => activityObj.date === date);
-    let userNumberOfSteps = this.findCurrentUserData(userId).map(activityObj => activityObj.numSteps).splice(index - 7, 7);
-    return parseInt(userNumberOfSteps.reduce((totalSteps, dailySteps) => {
-      totalSteps += dailySteps;
-      return totalSteps;
-    }, 0) / 7);
+    return this.findCurrentUserData(userId).map(activityObj => activityObj.minutesActive).splice(index - 7, 7);
   } 
 
-  returnAvgStairsClimbedByWeek(userId, date) {
+  returnNumberOfStepsByWeek(userId, date) {
     let index = this.findCurrentUserData(userId).findIndex((activityObj) => activityObj.date === date);
-    let userStairsClimbed = this.findCurrentUserData(userId).map(activityObj => activityObj.flightsOfStairs).splice(index - 7, 7);
-    console.log(userStairsClimbed)
-    return parseInt(userStairsClimbed.reduce((totalStairs, dailyStairs) => {
-      totalStairs += dailyStairs;
-      console.log(totalStairs)
-      return totalStairs;
-    }, 0) / 7);
+    return this.findCurrentUserData(userId).map(activityObj => activityObj.numSteps).splice(index - 7, 7);
+  } 
+
+  returnStairsClimbedByWeek(userId, date) {
+    let index = this.findCurrentUserData(userId).findIndex((activityObj) => activityObj.date === date);
+    return this.findCurrentUserData(userId).map(activityObj => activityObj.flightsOfStairs).splice(index - 7, 7);
   } 
 
   checkStepGoalMetByDate(user, date) {

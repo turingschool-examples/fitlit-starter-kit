@@ -19,7 +19,10 @@ $(document).ready(() => {
   let friendObjs = populateFriends(user.friends);
     
   $('#user-name').text(newUser.returnUserFirstName());
-  $('#user-step-goal').text(newUser.dailyStepGoal);
+  $('#user-info-name').text(newUser.name);
+  $('#user-info-email').text(newUser.email);
+  $('#user-info-address').text(newUser.address);
+  $('#user-info-step-goal').text(newUser.dailyStepGoal);
   $('#average-step-goal-all-users').text(userRepo.returnAllUsersAverageStepGoal());
   $('#user-water-by-day').text(hydration.returnFluidOzByDate(user.id, currentDate));
   $('#user-water-by-week').text(hydration.returnFluidOzByWeek(user.id, currentDate));
@@ -33,14 +36,14 @@ $(document).ready(() => {
   $('#user-current-mins-active').text(activity.returnActiveMinutesByDate(user.id, currentDate));
   $('#user-current-miles-walked').text(activity.returnMilesWalkedByDate(user, currentDate));
   $('#user-current-step-count-vs-average').text(activity.returnNumberOfStepsByDate(user.id, currentDate))
-  $('#all-users-average-step-count').text(activity.returnStepsTakenAllUsersByDate(currentDate));
+  $('#all-users-average-step-count').text(activity.returnAvgStepsTakenAllUsersByDate(currentDate));
   $('#user-current-stairs-climbed').text(activity.returnStairsClimbedByDate(user.id, currentDate))
-  $('#all-users-average-stairs-climbed').text(activity.returnStairsClimbedAllUsersByDate(currentDate));
+  $('#all-users-average-stairs-climbed').text(activity.returnAvgStairsClimbedAllUsersByDate(currentDate));
   $('#user-current-active-mins').text(activity.returnActiveMinutesByDate(user.id, currentDate))
-  $('#all-users-average-active-mins').text(activity.returnActiveMinutesAllUsersByDate(currentDate));
-  $('#user-step-count-by-week').text(activity.returnAvgNumberOfStepsByWeek(user.id, currentDate))
-  $('#user-stairs-climbed-by-week').text(activity.returnAvgStairsClimbedByWeek(user.id, currentDate))
-  $('#user-mins-active-by-week').text(activity.returnAvgActiveMinutesByWeek(user.id, currentDate))
+  $('#all-users-average-active-mins').text(activity.returnAvgActiveMinutesAllUsersByDate(currentDate));
+  $('#user-step-count-by-week').text(activity.returnNumberOfStepsByWeek(user.id, currentDate))
+  $('#user-stairs-climbed-by-week').text(activity.returnStairsClimbedByWeek(user.id, currentDate))
+  $('#user-mins-active-by-week').text(activity.returnActiveMinutesByWeek(user.id, currentDate))
 
   friendObjs.forEach(friend => $('#friend-info').append(`<p>Friend name: ${friend.name}, steps: ${friend.steps}</p>`))
 

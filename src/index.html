@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="styles.css">
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700&display=swap"
+      rel="stylesheet">
+
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
   </head>
@@ -9,132 +14,79 @@
       <h1>
         Activity Tracker
       </h1>
-      <p>Welcome <span id="user-name">NAME</span>!</p>
+      <p>Welcome, <span id="user-name">NAME</span>!</p>
     </header>
-    <container>
-      <h3>
-        User Info
-      </h3>
-      <h4>
-        User Step Goal
-      </h4>
-      <p id="user-step-goal">
-      </p>
-      <h4>
-        Average Stepgoal of all Users
-      </h4>
-      <p id="average-step-goal-all-users">
-      </p>
+    <main>
+    <container id="user-admin-info">
+        <h3>User Info</h3>
+        <p class="user-info">Name: <span id="user-info-name"></span></p>
+        <p class="user-info">Email: <span id="user-info-email"></span></p>
+        <p class="user-info">Address: <span id="user-info-address"></span></p>
+        <p class="user-info">Step Goal: <span id="user-info-step-goal"></span></p>
     </container>
     <container>
-      <h3>
-        Hydration Info
-      </h3>
-      <h4>
-        How much water you've consumed today
-      </h4>
-      <p id="user-water-by-day">
-      </p>
-      <h4>
-        How much water you consumed each day this week
-      </h4>
-      <p id="user-water-by-week">
-      </p>
+      <h3>Hydration</h3>
+      <h4>Today's Water Intake</h4>
+      <p>You've consumed <span id="user-water-by-day"></span> ounces.</p>
+      <h4>Weekly Water Consumption</h4>
+      <p id="user-water-by-week"></p>
+    </container>
+    <container id="user-sleep-day">
+      <h3>Last Night's Sleep</h3>
+      <p id="user-sleep-by-day"></p>
+      <h4>hours slept</h4>
+      <p id="user-sleep-quality-by-day"></p>
+      <h4>sleep quality</h4>
+    </container>
+    <container id="user-sleep-week">
+      <h3>Your Sleep This Week</h3>
+      <p id="user-sleep-by-week"></p>
+      <h4>hours slept</h4>
+      <p id="user-sleep-quality-by-week"></p>
+      <h4>sleep quality</h4>
     </container>
     <container>
-      <h3>
-        Sleep Info
-      </h3>
-      <h4>
-        Current hours slept
-      </h4>
-      <p id="user-sleep-by-day">
-      </p>
-      <h4>
-        Current sleep quality
-      </h4>
-      <p id="user-sleep-quality-by-day">
-      </p>
-      <h4>
-        Weekly hours slept
-      </h4>
-      <p id="user-sleep-by-week">
-      </p>
-      <h4>
-        Weekly sleep quality
-      </h4>
-      <p id="user-sleep-quality-by-week">
-      </p>
-      <h4>
-        Average sleep quality
-      </h4>
-      <p id="user-average-sleep-quality">
-      </p>
-      <h4>
-        Average hours slept
-      </h4>
+      <h3>Your Sleep Averages</h3>
       <p id="user-average-hours-slept">
+        <h4>hours slept</h4>
+        <p id="user-average-sleep-quality"></p>
+        <h4>sleep quality</h4>
       </p>
+    </container>
+    <container id="user-activity-day">
+      <h3>Today's Activity</h3>
+      <p id="user-current-step-count"></p>
+      <h4>steps</h4>
+      <p id="user-current-mins-active"></p>
+      <h4>active minutes</h4>
+      <p id="user-current-miles-walked"></p>
+      <h4>miles</h4>
     </container>
     <container>
-      <h3>
-        Activity Info
-      </h3>
-      <h4>
-        Current number of steps
-      </h4>
-      <p id="user-current-step-count">
-      </p>
-      <h4>
-        Current number mins active
-      </h4>
-      <p id="user-current-mins-active">
-      </p>
-      <h4>
-        Current distance walked in miles
-      </h4>
-      <p id="user-current-miles-walked">
-      </p>
-      <h4>
-        User daily step count vs all user average
-      </h4>
-      <p id="user-current-step-count-vs-average">
-      </p>
-      <p id="all-users-average-step-count">
-      </p>
-      <h4>
-        User daily flights of stairs climbed vs all user average
-      </h4>
-      <p id="user-current-stairs-climbed">
-      </p>
-      <p id="all-users-average-stairs-climbed">
-      </p>
-      <h4>
-        User daily mins active vs all user average
-      </h4>
-      <p id="user-current-active-mins">
-      </p>
-      <p id="all-users-average-active-mins">
-      </p>
-      <h4>
-        Weekly view of activity
-      </h4>
-      <h4>
-        Step count this week
-      </h4>
-      <p id="user-step-count-by-week">
-      </p>
-      <h4>
-        Stairs climbed this week
-      </h4>
-      <p id="user-stairs-climbed-by-week">
-      </p>
-      <h4>
-        Minutes active this week
-      </h4>
-      <p id="user-mins-active-by-week">
-      </p>
+      <h3>You vs The World</h3>
+      <h4>Step Count</h4>
+      <p>You: <span id="user-current-step-count-vs-average"></span></p>
+      <p>World Avg: <span id="all-users-average-step-count"></span></p>
+      <h4>Daily Active Minutes</h4>
+      <p>You: <span id="user-current-active-mins"></span></p>
+      <p>World Avg: <span id="all-users-average-active-mins"></span></p>
+      <h4>Stairs Climbed</h4>
+      <p>You: <span id="user-current-stairs-climbed"></span></p>
+      <p>World Avg: <span id="all-users-average-stairs-climbed"></span></p>
     </container>
+    <container>
+      <h3>Your Activity This Week</h3>
+      <p id="user-step-count-by-week"></p>
+      <h4>steps</h4>
+      <p id="user-mins-active-by-week"></p>
+      <h4>active minutes</h4>
+      <p id="user-stairs-climbed-by-week"></p>
+      <h4>stairs climbed</h4>
+    </container>
+    <container>
+      <p id="friend-info"></p>
+    </container>
+    </main>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../data/users.js"></script>

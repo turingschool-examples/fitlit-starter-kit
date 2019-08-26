@@ -12,6 +12,7 @@ class SleepRepository {
 		});
 		return this.currentUser
 	}
+	
 	findAverageQuality() {
 		var sum = 0
 		this.data.forEach(user => {

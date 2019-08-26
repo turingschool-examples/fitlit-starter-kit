@@ -77,6 +77,13 @@ class SleepRepository {
       })
     }
 
+    getUsersAvgHoursSlept() {
+      let avgQual = this.userSleep.reduce((acc, day) => {
+        return acc += day.hoursSlept;
+      }, 0)
+      return parseFloat((avgQual / this.userSleep.length).toFixed(1));
+    }
+
   } //end
 
 

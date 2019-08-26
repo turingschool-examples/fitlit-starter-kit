@@ -209,4 +209,10 @@ describe('SleepRepository', function() {
     }])
   })
 
+  it('should get average hours slept for all users over all time', () => {
+    sleepRepo2 = new SleepRepository(sleepData2);
+
+    expect(sleepRepo2.getUsersAvgHoursSlept()).to.equal(7.8)
+  })
+
 });

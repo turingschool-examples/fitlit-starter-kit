@@ -54,7 +54,7 @@ class SleepRepo {
       totalHours += day.hoursSlept;
       return totalHours;
     }, 0));
-    return avgSleepHoursPerUser.indexOf(Math.max(...avgSleepHoursPerUser)) + 1;
+    return [Math.max(...avgSleepHoursPerUser), avgSleepHoursPerUser.indexOf(Math.max(...avgSleepHoursPerUser)) + 1];
   }
 }
 

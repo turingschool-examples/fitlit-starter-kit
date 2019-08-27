@@ -24,6 +24,14 @@ const options = {
 };
 const formattedDate = dateObject.toLocaleString('en', options)
 
+function dropYear(dates) {
+  const reformattedDates = dates.map(date => {
+    const splitDate = date.split('/');
+    return [splitDate[1], splitDate[2]].join('/');
+  })
+  return reformattedDates
+}
+
 
 //Packery Items 
 let $grid = $('.grid').packery({
@@ -45,12 +53,12 @@ $('.username').text(`${user.returnUserName()}`)
 $('.date').text(`${formattedDate}`);
 
 //Hydration
-$('.water-consumed').text(`Today: \n${hydration.returnDailyFluidOunces(date)} ounces`);
+$('.water-consumed').text(`${hydration.returnDailyFluidOunces(date)} ounces \n\n`);
 
 const weeklyOuncesChart = new Chart(document.getElementById('water-consumed-week').getContext('2d'), {
-  type: 'bar',
+  type: 'horizontalBar',
   data: {
-    labels: hydration.returnWeek(),
+    labels: dropYear(hydration.returnWeek()),
     datasets: [{
       data: hydration.returnWeeklyNumOunces(),
       backgroundColor: [
@@ -83,12 +91,56 @@ const weeklyOuncesChart = new Chart(document.getElementById('water-consumed-week
 });
 
 //Sleep
-$('.hours-slept-day').text(`Hours Slept Last Night: ${sleep.returnSleepHours(date)}`);
-$('.hours-slept-week').text(`Hours Slept Last Week: ${sleep.returnWeekOfSleepHours(1)}`);
-$('.hours-slept-all-time').text(`Hours Slept On Average: ${sleep.returnAvgSleepHours()}`);
-$('.quality-sleep-day').text(`Quality of Sleep Last Night: ${sleep.returnSleepQuality(date)}`);
-$('.quality-sleep-week').text(`Quality of Sleep Last Week: ${sleep.returnWeekOfSleepQuality(1)}`);
-$('.quality-sleep-all-time').text(`Quality of Sleep On Average: ${sleep.returnAvgSleepQuality()}`);
+$('.hours-slept-day').text(`${sleep.returnSleepHours(date)} hours | ${sleep.returnSleepQuality(date)} quality`);
+
+const weeklySleepChart = new Chart(document.getElementById('sleep-week').getContext('2d'), {
+  type: 'line',
+  data: {
+    labels: dropYear(sleep.returnWeek(1)),
+    datasets: [{
+      data: sleep.returnWeekOfSleepHours(1),
+      label: "Sleep Hours",
+      borderColor: "rgba(92, 117, 218, 0.2)",
+      fill: false
+    },
+    {
+      data: Array(7).fill(sleep.returnAvgSleepHours()),
+      label: "Average Hours of Sleep",
+      borderColor: "rgba(92, 117, 218, 0.2)",
+      fill: false
+    },
+    {
+      data: sleep.returnWeekOfSleepQuality(1),
+      label: "Quality of Sleep",
+      borderColor: "rgba(242, 188, 51, 0.2)",
+      fill: false
+    },
+    {
+      data: Array(7).fill(sleep.returnAvgSleepQuality()),
+      label: "Average Quality of Sleep",
+      borderColor: "rgba(242, 188, 51, 0.2)",
+      fill: false
+    }
+    ]
+
+  },
+  options: {
+    legend: {
+      display: false,
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'hours'
+        }
+      }]
+    }
+  }
+});
 
 //Activity Section
 
@@ -96,6 +148,13 @@ var bar = new ProgressBar.Circle('.number-of-steps-day', {
   color: '#aaa',
   // This has to be the same size as the maximum width to
   // prevent clipping
+  svgStyle: {
+    display: 'block',
+
+    // Important: make sure that your container has same
+    // aspect ratio as the SVG canvas. See SVG canvas sizes above.
+    width: '100%'
+  },
   strokeWidth: 5,
   trailWidth: 2,
   easing: 'easeInOut',
@@ -131,8 +190,11 @@ let percentSteps = activity.returnNumStepsDay(date) / user.dailyStepGoal;
 bar.animate(percentSteps > 1 ? percentSteps = 1 : percentSteps); // Number from 0.0 to 1.0
 
 
-$('.user-step-goal').text(`Daily Step Goal: ${user.dailyStepGoal}`);
-$('.average-step-goal').text(`Average Step Goal: ${userRepo.returnAverageStepGoal()}`);
-$('.number-of-minutes-active-day').text(`Daily Minutes Active: ${activity.returnMinutesActive(date)}`);
-$('.distance-of-miles-day').text(`Daily Miles Walked: ${activity.returnMilesWalked()}`);
-$('.number-of-steps-week').text(`Weekly Number Of Steps: ${activity.returnAverageStepsForWeek()}`);
+$('.number-of-steps-goal').text(`Daily Step Goal: ${user.dailyStepGoal}`);
+$('.avg-number-of-steps-goal').text(`Average User Step Goal: ${userRepo.returnAverageStepGoal()}`);
+$('.number-of-minutes-active-day').text(`${activity.returnMinutesActive(date)} minutes active`);
+$('.distance-of-miles-day').text(`${activity.returnMilesWalked()} miles`);
+$('.number-of-steps-week').text(`${activity.returnAverageStepsForWeek()} steps`);
+
+// Friends
+// activity.returnFriendsStepCount()

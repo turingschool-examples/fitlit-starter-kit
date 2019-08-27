@@ -27,6 +27,11 @@ h2 {
   font-weight: 600;
 }
 
+canvas {
+  width: 200px;
+  height: 100px;
+}
+
 .welcome-section {
   grid-area: welcome;
   margin-bottom: 10px;
@@ -71,7 +76,7 @@ h2 {
 }
 
 .data-section:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .data-heading {
@@ -79,15 +84,31 @@ h2 {
   font-size: 1.3em;
   font-weight: 600;
   color: #5C75DA;
+}
 
+.data-article {
+  font-weight: 300;
+  font-weight: .8em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.data-text {
+  margin: 5px;
+}
+
+.subtext {
+  font-size: 10px;
+  font-weight: 700;
+  margin: 0px;
 }
 
 /* .hydration {
   grid-area: hydration;
 } */
 
-img{
-  width: 10%;
+.water-consumed {
+  margin: 5px;
 }
 
 /* .sleep {
@@ -98,6 +119,19 @@ img{
   grid-area: activity;
 }
 
+.number-of-steps-day {
+  margin: 20px;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  position: relative;
+  text-align: center;
+}
+
+.number-of-steps-goal {
+  margin-top: 10px;
+}
+
 .friends {
   grid-area: friends;
 }
@@ -106,8 +140,11 @@ img{
   grid-area: challenges;
 } */
 
-.data-article {
-  margin-bottom: 20px;
-  font-weight: 300;
-  font-weight: .8em;
+img {
+  width: 10%;
+}
+
+.img-medium {
+  opacity: 0.6;
+  width: 100px;
 }

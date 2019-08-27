@@ -33,6 +33,18 @@ describe('Sleep', () => {
     expect(sleep.userID).to.equal(user.id);
   });
 
+  it('should return an array of dates for any desired week', () => {
+    expect(sleep.returnWeek(1)).to.eql([
+      "2019/06/19",
+      "2019/06/20",
+      "2019/06/21",
+      "2019/06/22",
+      "2019/06/23",
+      "2019/06/24",
+      "2019/06/25",
+    ]);
+  });
+
   it('should return the average sleep hours for a single user over all time', () => {
     expect(sleep.returnAvgSleepHours()).to.equal(7.66);
   });

@@ -5,7 +5,7 @@ const uniqueUserIndex = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
 //Repo variables
 const userRepo = new UserRepo(userData);
 const sleepRepo = new SleepRepo(sleepData);
-const activityRepo = new ActivityRepo(activityData);
+const activityRepo = new ActivityRepo(activityData, userData);
 
 //Individual Class Repos
 const user = new User(userData[uniqueUserIndex]);
@@ -147,6 +147,8 @@ const weeklySleepChart = new Chart(document.getElementById('sleep-week').getCont
   }
 });
 
+$('.longest-sleepers').text(`${findUserName(sleepRepo.returnWeeklyLongestSleepers(1)[1])}: ${sleepRepo.returnWeeklyLongestSleepers(1)[0]} hours`);
+
 //Activity Section
 
 var bar = new ProgressBar.Circle('.number-of-steps-day', {
@@ -200,6 +202,47 @@ $('.avg-number-of-steps-goal').text(`Average User Step Goal: ${userRepo.returnAv
 $('.number-of-minutes-active-day').text(`${activity.returnMinutesActive(date)} minutes active`);
 $('.distance-of-miles-day').text(`${activity.returnMilesWalked()} miles`);
 $('.number-of-steps-week').text(`${activity.returnAverageStepsForWeek()} steps`);
+$('.most-active').text(`${activityRepo.returnMostActive()[0]}: ${activityRepo.returnMostActive()[1]} minutes`);
 
 // Friends
-// activity.returnFriendsStepCount()
+
+let userIDs = Object.keys(activity.returnFriendsStepCount()[0]);
+
+function insertFriendSteps() {
+  let list = `<ul class="friends_ul">`
+  userIDs.forEach(userID => {
+    let userName = findUserName(Number(userID));
+    list += `<li class="friends_li">
+             <p class="friends--steps"> ${userName}: ${activity.returnFriendsStepCount()[0][userID]} steps`;
+  });
+  list += `</ul>`;
+  return list;
+}
+
+$('.friends-step').html(`${insertFriendSteps()}`);
+
+// Challenges
+
+function insertStepStreak() {
+  let list = `<ul class="steps_ul">`
+  activity.returnThreeDayStepStreak().forEach(day => {
+    list += `<li class="date_li">
+             <p class="dates"> ${day}`
+  })
+  list += `</ul>`;
+  return list;
+}
+
+$('.increasing-steps').html(`${insertStepStreak()}`);
+
+function insertStairStreak() {
+  let list = `<ul class="stairs_ul">`
+  activity.returnTwoDayStairStreak().forEach(day => {
+    list += `<li class="date_li">
+             <p class="dates"> ${day}`
+  })
+  list += `</ul>`;
+  return list;
+}
+
+$('.increasing-stairs').html(`${insertStairStreak()}`);

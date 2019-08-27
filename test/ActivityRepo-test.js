@@ -30,7 +30,7 @@ describe('ActivityRepo', () => {
   });
 
   it('should return the highest minutes active of all time', () => {
-    expect(activityRepo.returnMostActive()).to.equal('Luisa Hane');
+    expect(activityRepo.returnMostActive()).to.eql(['Luisa Hane', 275]);
   });
 
 })

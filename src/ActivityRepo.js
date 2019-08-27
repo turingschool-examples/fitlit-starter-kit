@@ -15,7 +15,8 @@ class ActivityRepo {
 
   returnMostActive() {
     let person = this.activityData.sort((a, b) => b.minutesActive - a.minutesActive)[0].userID;
-    return this.userData.find(user => user.id === person).name;
+    let minActive = this.activityData.sort((a, b) => b.minutesActive - a.minutesActive)[0].minutesActive;
+    return [this.userData.find(user => user.id === person).name, minActive];
   }
 }
 

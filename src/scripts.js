@@ -46,6 +46,11 @@ $grid.find('.grid-item').each(function (i, gridItem) {
 
 $(".draggable").draggabilly("enable");
 
+// Function to find user name
+function findUserName(id) {
+  return userData.find(user => user.id === id).name;
+}
+
 //User Section
 $('.username').text(`${user.returnUserName()}`)
 

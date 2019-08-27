@@ -9,11 +9,11 @@
   </head>
   <body>
     <header>
-    <h1>FitLit</h1>
-    <h2>Welcome<span id= "random-user-span"></span>!</h2>
+      <h1>FitLit</h1>
+      <h2>Welcome<span id= "random-user-span"></span>!</h2>
     </header>
-    <main>
-      <section class="main__section--1"> 
+    <main class="grid">
+      <section class="main__section--1 grid-item"> 
         <article class="article__section1--top">
           <h2>Personal Information</h2>
           <img class="article__img--avatar" src="../images/contact-1293388_640.png" alt="Image of an person">
@@ -27,38 +27,38 @@
           <h5>Your Steps Compared to Others:<span id= "article__user--stepcompare"></span></h5>
         </article>
       </section>
-    <section class="main__section--3">
-      <article class="article__section3--top">
-        <h2>Sleep Tracker</h2>
-        <img class="article__img-bed" src="../images/sleeping-297724_640.png" alt="Image person sleeping in a bed">
-      </article>
-      <article class="main__article--sleep">
-        <h5>Current Sleep:<span id= "article__user--currentsleep"></span></h5>
-        <!-- <h5>Weeks Sleep:<span id= "article__user--weekssleep"></span></h5> -->
+      <section class="main__section--3 grid-item">
+        <article class="article__section3--top">
+          <h2>Sleep Tracker</h2>
+          <img class="article__img-bed" src="../images/sleeping-297724_640.png" alt="Image person sleeping in a bed">
+        </article>
+        <article class="main__article--sleep">
+          <h5>Current Sleep:<span id= "article__user--currentsleep"></span></h5>
+          <!-- <h5>Weeks Sleep:<span id= "article__user--weekssleep"></span></h5> -->
+        </article>
         <article class="main__article--weekssleep">
-            <canvas id= "weekly-sleep-chart" width="450" height="350" aria-label="Graph to show hours of sleep and quality 7 days" role="bar graph"></canvas>
+          <canvas id= "weekly-sleep-chart" width="450" height="350" aria-label="Graph to show hours of sleep and quality 7 days" role="bar graph"></canvas>
         </article>
         <!-- <h5>Alltime Average Sleep:<span id= "article__user--avgsleep"></span></h5> -->
         <article class="main__article--avgsleep">
-            <canvas id= "alltime-average-sleep-chart" width="450" height="350" aria-label="Graph to show all-time average sleep quality and hours" role="bar graph"></canvas>
+           <canvas id= "alltime-average-sleep-chart" width="450" height="350" aria-label="Graph to show all-time average sleep quality and hours" role="bar graph"></canvas>
         </article>
-      </article>
-    </section>
-    <section class="main__section--4">
-      <article class="article__section4--top">
-        <h2>Hydration Tracker</h2>
-        <img class="article__img--cup" src="../images/water-295323_640.png" alt="Cup of water">
-      </article>
-      <article class="main__article--hydration">
-        <canvas id= "weekly-hydration-chart" width="450" height="350" aria-label="Graph to show ounzes of water drank in 7 days" role="bar graph"></canvas>
-       </article>
-    </section>
-    <section class="main__section--5">
-       <article class="article__section5--top">
-         <h2>Activity Tracker</h2>
-         <img class="article__img-sleep" src="../images/running-297146_640.png" alt="Image person running">
-       </article>
-       <article class="main__article--activity">
+      </section>
+      <section class="main__section--4 grid-item">
+        <article class="article__section4--top">
+          <h2>Hydration Tracker</h2>
+          <img class="article__img--cup" src="../images/water-295323_640.png" alt="Cup of water">
+        </article>
+        <article class="main__article--hydration">
+          <canvas id= "weekly-hydration-chart" width="450" height="350" aria-label="Graph to show ounzes of water drank in 7 days" role="bar graph"></canvas>
+        </article>
+      </section>
+      <section class="main__section--5 grid-item">
+        <article class="article__section5--top">
+          <h2>Activity Tracker</h2>
+          <img class="article__img-sleep" src="../images/running-297146_640.png" alt="Image person running">
+        </article>
+        <article class="main__article--activity">
             <h5>Your Steps Today:<span id= "article__user--todaysteps"></span></h5>
             <h5>Your Active Minutes:<span id= "article__user--activemins"></span></h5>
             <h5>Your Distance Today in Miles:<span id= "article__user--todaydistance"></span></h5>
@@ -70,18 +70,18 @@
             <canvas id= "compare-minutes-active-chart" width="100" height="100" aria-label="Graph to compare minutes active of users" role="pie graph"></canvas>
             <h5>Average of All User's Flights of Stairs:<span id= "article__user--comparestairs"></span></h5>
             <canvas id= "compare-user-stairs-chart" width="300" height="300" aria-label="Graph to compare stairs climbed of users" role="pie graph"></canvas>
-       </article>
-     </section>
-     <section class="main__section--6">
-      <article class="article__section6--top">
-        <h2>User Challenge</h2>
-        <img class="article__img-challenge" src="../images/man-40364_640.png" alt="Image of person holding a trophy">
-      </article>
-      <article class="main__article--trends">
+        </article>
+      </section>
+      <section class="main__section--6 grid-item">
+        <article class="article__section6--top">
+          <h2>User Challenge</h2>
+          <img class="article__img-challenge" src="../images/man-40364_640.png" alt="Image of person holding a trophy">
+        </article>
+        <article class="main__article--trends">
           <h5>Calculate Trends:<span id= "article__user--trends"></span></h5>
           <h5>Friends Status:<span id= "article__user--friendsstatus"></span></h5>
-      </article>
-     </section>
+        </article>
+      </section>
     </main>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>
@@ -98,5 +98,6 @@
     <script type="text/javascript" src="./userRepository.js"></script>
     <script type="text/javascript" src="./activityRepository.js"></script>
     <script>window.jQuery || document.write('<script src="path/to/your/jquery.min.js"><\/script>')</script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
   </body>
 </html>

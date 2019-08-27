@@ -172,4 +172,26 @@ describe('ActivityUser', function() {
     expect(activityUser.findGreatestClimb(2)).to.equal(49)
   });
 
-}); //<<----end of describe block
+  it.only('should find daily step counts', function() {
+    expect(activityUser.getDailyStepCount(2, '2019/06/17')).to.equal(13750)
+  })
+
+  it.only('should do the thing', function() {
+    expect(activityUser.calculatePercentOfWorldWalked(3)).to.equal(.42)
+  })
+
+
+  //function working but test needs accurate equal 
+  it.only('should find weekly step count', function() {
+    expect(activityUser.getWeeklyStepCount(3, '2019/06/17')).to.equal(129)
+  })
+
+  it.only('should find average minutes walked for all users', function(){
+    expect(activityUser.returnTotalMinutesAvg('2019/06/17')).to.equal(156)
+  })
+
+  it.only('should find average steps walked for all users', function(){
+    expect(activityUser.returnTotalMinutesAvg('2019/06/17')).to.equal(1560)
+  })
+
+});

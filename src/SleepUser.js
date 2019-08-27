@@ -13,7 +13,7 @@ class SleepUser {
   }
 
   findDailySleepQuality(date, id) {
-    let day = this.findUserInfo(id).find(user => user.date ===date)
+    let day = this.findUserInfo(id).find(user => user.date === date)
     return day.sleepQuality;
   }
 
@@ -24,9 +24,8 @@ class SleepUser {
         return eachDay
       }
     })
-  
+    
     let dailyHours = week.map(day => day.hoursSlept)
-    // console.log(dailyHours)
     let totalHours = dailyHours.reduce((acc, num) => {
       return acc + num;
     }, 0)
@@ -38,9 +37,10 @@ class SleepUser {
     let week = userInfo.filter(day => day.date >= startDate && day.date <= endDate);
     let dailyQuality = week.map(day => day.sleepQuality);
     let totalQuality= dailyQuality.reduce((acc, num) => {
-      return acc + num;
+      acc += num;
+      return acc
     }, 0)
-    return Math.round((totalQuality / 7) * 10) / 10;
+    return Math.round(totalQuality / 7 * 10) / 10
   }
 
   findSleepComparison(date, id) {
@@ -63,10 +63,7 @@ class SleepUser {
     } else {
       return `You slept the same amount as you did the night before.`
     }
-  
-
   }
-
 }
 
 

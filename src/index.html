@@ -32,7 +32,7 @@
       <section class="section__card section__water--weekly">
           <h3>Weekly Water Intake</h3>
           <article class="article__water--weekly">
-              <p class="article__p--weekly">32, 45, 67, 78, 43, 21, 23</p>
+              <p class="article__p--weekly"></p>
           </article>
       </section>
       <section class="section__card section__sleep--daily">
@@ -55,59 +55,36 @@
               <p>16 stairs</p>
           </article>
       </section>
-      <section class="section__card section__steps--daily">
-          <h3>Steps Daily</h3>
-          <article class="article__steps--daily">
-              <p>1000 steps</p>
-          </article>
-      </section>
       <section class="section__card section__steps--weekly">
           <h3>Steps Weekly</h3>
           <article>
-              <h4>Monday</h4>
-                  <p>1000 steps</p>
-              <h4>Tuesday</h4>
-                  <p>1000 steps</p>
-              <h4>Wednesday</h4>
-                  <p>1000 steps</p>
-              <h4>Thursday</h4>
-                  <p>1000 steps</p>
-              <h4>Friday</h4>
-                  <p>1000 steps</p>
-              <h4>Saturday</h4>
-                  <p>1000 steps</p>
-              <h4>Sunday</h4>
-                  <p>1000 steps</p>
+              <h4 class="article__h4--weekly-steps"></h4>
           </article>
       </section>
       <section class="section__card section__active--daily">
-          <h3>Activity Daily</h3>
+      <h2>Daily Activity</h2>
           <article class="article__active--daily">
-              <p>65 minutes active</p>
+            <section class="section__steps--daily">
+                <h3>Daily Step Count</h3>
+                    <p class="article__p--steps-daily"></p>
+                <h3>Daily Minutes Active</h3>
+                    <p class="article__p--minutes-daily"></p>
+                <h3>Miles Walked</h3>
+                    <p class="section__p--miles-daily"></p>
+            </section>
           </article>
       </section>
       <section class="section__card section__active--weekly">
           <article class="article__active--weekly">
-              <h4>Monday</h4>
-                  <p>65 minutes active</p>
-              <h4>Tuesday</h4>
-                  <p>65 minutes active</p>
-              <h4>Wednesday</h4>
-                  <p>65 minutes active</p>
-              <h4>Thursday</h4>
-                  <p>65 minutes active</p>
-              <h4>Friday</h4>
-                  <p>65 minutes active</p>
-              <h4>Saturday</h4>
-                  <p>65 minutes active</p>
-              <h4>Sunday</h4>
-                  <p>65 minutes active</p>
+              <h2 class="article__h3--min-weekly">Weekly Activity</h2>
+             <p class="article__p--steps-weekly">Average Minutes Active: <span class="
+    article__span--steps-weekly"></span></p>
           </article>
       </section>
       <section class="section__card section__miles--walked">
           <h4>Miles Walked</h4>
           <article>
-              <p>10miles</p>
+              <p>You've walked <span class="article__p--percent-world"></span> percent around the world!</p>
           </article>
       </section>
   </main>
@@ -122,6 +99,7 @@
     <script type="text/javascript" src="./HydrationRepository.js"></script>
     <script type="text/javascript" src="./HydrationUser.js"></script>
     <script type="text/javascript" src="./SleepUser.js"></script>
+    <script type="text/javascript" src="./ActivityUser.js"></script>
     <!-- <script type="text/javascript" src="./SleepRepository.js"></script> -->
     <script type="text/javascript" src="./scripts.js"></script>
     

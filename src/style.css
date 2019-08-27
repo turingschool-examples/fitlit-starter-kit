@@ -12,7 +12,7 @@ body {
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
     "header header header header header header"
-    "step step water water sleep sleep";
+    "step1 step1 step2 step2 water1 water1";
   margin: 0;
   height: 100vh;
 }
@@ -52,6 +52,7 @@ h3 {
   color: white;
   font-size: 1rem;
   font-weight: 300;
+  margin-top: 5px;
 }
 
 p {
@@ -60,31 +61,27 @@ p {
   margin: 0;
 }
 
-#article1 {
+article {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   background-color: #001527;
   border: 1px solid #3A3A4A;
-  grid-area: step;
+  grid-area: step1;
+  justify-content: center;
+  padding: 20px;
+}
+
+#article1 {
+  grid-area: step1;
 }
 
 #article2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #001527;
-  border: 1px solid #3A3A4A;
-  grid-area: water;
+  grid-area: step2;
 }
 
 #article3 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #001527;
-  border: 1px solid #3A3A4A;
-  grid-area: sleep;
+  grid-area: water1;
 }
 
 @media screen and (max-width: 700px) {
@@ -94,8 +91,8 @@ p {
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-areas:
       "header header header header"
-      "step step water water"
-      "sleep sleep sleep sleep";
+      "step1 step1 step2 step2"
+      "water1 water1 sleep sleep";
   }
 
 @media screen and (max-width: 600px) {
@@ -129,9 +126,9 @@ p {
       grid-template-rows: 1fr 1fr 1fr 1fr;
       grid-template-areas:
         "header header"
-        "step step"
-        "water water"
-        "sleep sleep"
+        "step1 step1"
+        "step2 step2"
+        "water1 water1"
         "sleep sleep";
     }
 

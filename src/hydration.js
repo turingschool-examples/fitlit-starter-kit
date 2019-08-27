@@ -9,7 +9,7 @@ class Hydration {
     let daliyAverage = dailyIntake.reduce((acc, day) => {
       return acc += day.numOunces
     }, 0) / dailyIntake.length
-    
+
     return daliyAverage
   }
 
@@ -26,4 +26,6 @@ class Hydration {
   }
 }
 
-module.exports = Hydration;
+if (typeof module !== "undefined") {
+  module.exports = Hydration;
+}

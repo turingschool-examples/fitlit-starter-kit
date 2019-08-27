@@ -41,10 +41,17 @@ class ActivityUser {
     return Math.round((totalTime / 7) * 10) /10
   }
 
-  returnTotalMinutesAvg() {
-    return Math.floor(this.activityTestData.reduce((acc, element) => {
-      return acc + element.minutesActive}, 1) / this.activityTestData.length)
-  }
+  // returnTotalMinutesAvg(date) {
+
+   
+  //   return Math.floor(this.activityTestData.reduce((acc, element) => {
+  //     return acc + element.minutesActive}, 1) / this.activityTestData.length)
+  // }
+
+  // returnTotalStepsAvg() {
+  //   return Math.floor(this.activityTestData.reduce((acc, element) => {
+  //     return acc + element.stepCount}, 1) / this.activityTestData.length)
+  // }
 
   getGoal(id) {
     return this.userData.find(user => {
@@ -110,7 +117,7 @@ getWeeklyStepCount(date, id) {
   let week = this.activityTestData.filter(user => user.userID === id)
   let startDateId = week.find(user => user.date === date)
   let startDate = week.indexOf(startDateId)
-  let weekOfActivity = week.slice(startDate, startDate+7)
+  let weekOfActivity = week.slice(startDate, startDate + 7)
   return weekOfActivity.map(user => user.numSteps)
 }
 

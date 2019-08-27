@@ -37,15 +37,17 @@ $('#user-mins-active-by-week').text(activity.returnActiveMinutesByWeek(user.id, 
 friendObjs.forEach(friend => $('#friend-info').append(`<p>Friend name: ${friend.name}, steps: ${friend.steps}</p>`))
 
 function generateRandomUserId () {
-    let randomNumOneToFifty = (Math.random() * 50);
-    return Math.ceil(randomNumOneToFifty);
+  let randomNumOneToFifty = (Math.random() * 50);
+  return Math.ceil(randomNumOneToFifty);
 }
 
 function displaySleepStatus() {
-  if(this.isRested === true) {
+  if (this.isRested === true) {
     $('#sleep-status').attr('src', '/images/ghost-happy.svg');
   } else {
     $('#sleep-status').attr('src', '/images/ghost-sad.svg');
+  }
+}
 
 function populateFriends (userFriends) {
   let friends = userFriends.map(friend => {
@@ -60,13 +62,13 @@ function populateFriends (userFriends) {
 }
 
 function populateUserDataForFriendChallenge() {
-    return {
-      id: user.id,
-      name: user.name,
-      steps: activity.returnNumberOfStepsByWeek(user.id, currentDate)
-        .reduce((acc, day) => acc += day)
-    }
- }
+  return {
+    id: user.id,
+    name: user.name,
+    steps: activity.returnNumberOfStepsByWeek(user.id,currentDate)
+      .reduce((acc, day) => acc += day)
+  }
+}
 
 function returnDatesOfWeek(userId, date) {
   let userData = activity.findCurrentUserData(userId);

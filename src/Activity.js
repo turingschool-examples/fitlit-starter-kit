@@ -1,5 +1,6 @@
 class Activity {
   constructor(data, user) {
+    this.name = user.name
     this.userData = data;
     this.strideLength = user.strideLength;
     this.stepGoal = user.dailyStepGoal;
@@ -57,6 +58,20 @@ class Activity {
       return day2.flightsOfStairs - day1.flightsOfStairs
     })[0]
   }
+
+  returnIncreasedStepDays(date) {
+    let index = this.userData.findIndex(day => day.date === date);
+    let currentData = this.data.slice(0, index + 1);
+    return currentData.reduce((acc, day, i, array) => {
+      if (i !== 0 && i !== array.length - 1) {
+        if (day.numSteps > array[i - 1].numSteps && day.numSteps < array[i + 1].numSteps) {
+          acc.push(array[i + 1])
+        }
+      }
+      return acc;
+    }, [])
+  }
+
 
 }
 

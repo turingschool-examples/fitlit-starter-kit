@@ -13,6 +13,8 @@
 
   const sampleDate = '2019/06/25'
 
+  activePerson.getLongestStreak();
+
   $('.header__div--h2').text(`Hi, ${user.getUserFirstName()}!`);
 
   $('.header__div__user-stepgoal').text(`Your step goal: ${user.dailyStepGoal} steps`);
@@ -98,16 +100,30 @@
 
       
 
-console.log(user.friends.map(friend => {
+const friends = user.friends.map(friend => {
   let newUser = new User(repo.getUserData(friend))
   let newFriend = new Activity(activeRepo.getUserData(friend), newUser).getWeek(sampleDate).reduce((newObj, day)=> {
     if (!newObj['id']) {
-      newObj['id'] = day.userID
+      newObj['id'] = day.userID;
+      newObj['name'] = newUser.name;
       newObj['steps'] = 0;
     } newObj['steps'] += day.numSteps
     return newObj
   }, {})
   return newFriend
-}))
+})
+
+const compareFriendsSteps = () => {
+  friends.push({id: user.id, name: user.name, steps: (activePerson.getWeeklyAvg(sampleDate, 'numSteps')*7)});
+  friends.sort((personA, personB) => {
+    return personB.steps - personA.steps
+  })
+
+}
+
+compareFriendsSteps();
+
+console.log(friends)
+
 
 

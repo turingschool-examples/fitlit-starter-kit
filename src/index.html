@@ -5,15 +5,12 @@
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700&display=swap"
       rel="stylesheet">
-
-    <meta charset="UTF-8">
+      <meta charset="UTF-8">
     <title>Activity Tracker</title>
   </head>
   <body>
     <header>
-      <h1>
-        Activity Tracker
-      </h1>
+      <h1> Activity Tracker</h1>
       <p>Welcome, <span id="user-name">NAME</span>!</p>
     </header>
     <main>
@@ -29,7 +26,7 @@
       <h4>Today's Water Intake</h4>
       <p>You've consumed <span id="user-water-by-day"></span> ounces.</p>
       <h4>Weekly Water Consumption</h4>
-      <p id="user-water-by-week"></p>
+      <canvas id="user-water-by-week" width="400" height="200"></canvas>
     </container>
     <container id="user-sleep-day">
       <h3>Last Night's Sleep</h3>
@@ -37,6 +34,11 @@
       <h4>hours slept</h4>
       <p id="user-sleep-quality-by-day"></p>
       <h4>sleep quality</h4>
+    </container>
+    <container id="user-rested">
+      <h3>How Rested Are You Today?</h3>
+      <img id="sleep-status"></img>
+      <h4>8 or more hours of sleep will make you more productive!</h4>
     </container>
     <container id="user-sleep-week">
       <h3>Your Sleep This Week</h3>
@@ -90,6 +92,7 @@
     </main>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>

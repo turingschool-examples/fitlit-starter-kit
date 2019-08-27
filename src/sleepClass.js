@@ -62,12 +62,13 @@ class Sleep {
     //find the index of that date
     let index = this.singleUserData.indexOf(startDate)
     //return an arrary at that index and 7+
-    let week = this.singleUserData.slice(index, 8);
+    let week = this.singleUserData.slice(-7);
+    // console.log(week)
     //return array with just the hours slept a given week
-    let weeklyHoursSlept = week.map(day => {
-      return day.hoursSlept
-    })
-    return weeklyHoursSlept;
+    // let weeklyHoursSlept = week.map(day => {
+    //   return day.hoursSlept
+    // })
+    return week;
   }
 
   calculateWeeklySleepQuality(date) {

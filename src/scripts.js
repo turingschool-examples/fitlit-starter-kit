@@ -10,15 +10,15 @@ const users = new UserRepository(userData);
 const hydration = new Hydration(hydrationData, randomUser.id);
 const sleep = new Sleep(sleepData, randomUser.id);
 const activity = new Activity(activityData, userData);
-console.log("hydra", hydration)
 
 // *** Event Listeners ***
 window.addEventListener('load', handlePageLoad);
 
 // *** Functionality | Handlers 1st ***
 function handlePageLoad() {
-  handleUser()
-  handleHydration();
+  handleUser();
+  displayUserHydration();
+  displaySleepInfo();
 }
 
 function handleUser() {
@@ -39,19 +39,6 @@ function createUserCard() {
   </article>`)
 }
 
-function handleHydration() {
-
-  // returnDailyWaterIntake();
-  displayUserHydration();
-  // let waterConsumedToday = hydration.calculateDailyWaterIntake();
-  // let singleUserIntakeData = hydration.singleUserData;
-  // let weeklyOunces = hydration.calculateWeeklyWaterIntake();
-}
-
-// function returnAverageWaterIntake() {
-//   hydration.extractSingleUser();
-//   return hydration.calculateAverageWaterIntake();
-// }
 
 function returnDailyWaterIntake() {
   hydration.extractSingleUser();
@@ -67,11 +54,9 @@ function returnWeeklyWaterIntake() {
 function displayUserHydration() {
   let dailyWaterIntake = returnDailyWaterIntake();
   let weeklyWaterIntake = returnWeeklyWaterIntake();
-  console.log(weeklyWaterIntake)
   dailySection.insertAdjacentHTML('beforeend', `<article>
    <p>Daily Water Intake: ${dailyWaterIntake}</p>
    <ul>Water consumed this week:
-  let weeklyWaterIntake = returnWeeklyWaterIntake();
     <li>${weeklyWaterIntake[0].date} : ${weeklyWaterIntake[0].numOunces} ounces</li>
     <li>${weeklyWaterIntake[1].date} : ${weeklyWaterIntake[1].numOunces} ounces</li>
     <li>${weeklyWaterIntake[2].date} : ${weeklyWaterIntake[2].numOunces} ounces</li>
@@ -82,5 +67,82 @@ function displayUserHydration() {
    </ul>
    </article>`)
 }
+
+function returnLatestHoursSlept() {
+  sleep.extractSingleUser();
+  return sleep.averageHoursSlept();
+}
+
+function returnLatestSleepQuality() {
+  sleep.extractSingleUser();
+  return sleep.averageSleepQuality();
+}
+
+function returnWeeklyHoursSlept() {
+  sleep.extractSingleUser();
+  let userSleep = sleep.singleUserData;
+  let date = userSleep[userSleep.length - 1].date;
+  return sleep.calculateWeeklyHoursSlept(date);
+}
+
+function returnAvgHoursSlept() {
+  sleep.extractSingleUser();
+  return sleep.averageHoursSlept()
+};
+
+function returnAvgSleepQuality() {
+  sleep.extractSingleUser();
+  return sleep.averageSleepQuality()
+};
+
+
+function displaySleepInfo() {
+  let latestHoursSlept = returnLatestHoursSlept();
+  let latestSleepQual = returnLatestSleepQuality();
+  let weeklyHrsSlept = returnWeeklyHoursSlept();
+  let avgHoursSlept = returnAvgHoursSlept();
+  let avgSleepQuality = returnAvgSleepQuality();
+  dailySection.insertAdjacentHTML('beforeend', `<article class="user_info">
+  <p>Hours Slept Last Night: ${latestHoursSlept} hrs</p>
+  <p>Last Night's Sleep Quality: ${latestSleepQual} / 5</p>
+  <p>Weekly Sleep Info:</p>
+    <div class='week-sleep-info'>
+      <h3>${weeklyHrsSlept[0].date}</h3>
+      <p>${weeklyHrsSlept[0].hoursSlept}hrs | ${weeklyHrsSlept[0].sleepQuality} / 5</p>
+    </div>
+    <div class='week-sleep-info'>
+      <h3>${weeklyHrsSlept[1].date}</h3>
+      <p>${weeklyHrsSlept[1].hoursSlept}hrs | ${weeklyHrsSlept[1].sleepQuality} / 5</p>
+    </div>
+    <div class='week-sleep-info'>
+      <h3>${weeklyHrsSlept[2].date}</h3>
+      <p>${weeklyHrsSlept[2].hoursSlept}hrs | ${weeklyHrsSlept[2].sleepQuality} / 5</p>
+    </div>
+    <div class='week-sleep-info'>
+      <h3>${weeklyHrsSlept[3].date}</h3>
+      <p>${weeklyHrsSlept[3].hoursSlept}hrs | ${weeklyHrsSlept[3].sleepQuality} / 5</p>
+    </div>
+    <div class='week-sleep-info'>
+      <h3>${weeklyHrsSlept[4].date}</h3>
+      <p>${weeklyHrsSlept[4].hoursSlept}hrs | ${weeklyHrsSlept[4].sleepQuality} / 5</p>
+    </div>
+    <div class='week-sleep-info'>
+      <h3>${weeklyHrsSlept[5].date}</h3>
+      <p>${weeklyHrsSlept[5].hoursSlept}hrs | ${weeklyHrsSlept[5].sleepQuality} / 5</p>
+    </div>
+    <div class='week-sleep-info'>
+      <h3>${weeklyHrsSlept[6].date}</h3>
+      <p>${weeklyHrsSlept[6].hoursSlept}hrs | ${weeklyHrsSlept[6].sleepQuality} / 5</p>
+    </div>
+    <p>All Time Average:</p>
+    <div class='week-sleep-info'>
+      <p>${avgHoursSlept}hrs | ${avgSleepQuality} / 5</p>
+    </div>
+  </article>`)
+}
+
+
+// console.log(sleepFn)
+
 
 

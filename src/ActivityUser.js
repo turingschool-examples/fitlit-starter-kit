@@ -1,4 +1,4 @@
-class ActivityUser{
+class ActivityUser {
   constructor(activityTestData, userData) {
     this.activityTestData = activityTestData
     this.userData = userData;
@@ -22,7 +22,7 @@ class ActivityUser{
     let miles = totalFeet / 5280
 
     return Number(miles.toFixed(2))
- } 
+  } 
 
   findMinutesActive(date, id) {
     return this.activityTestData.find(user => {
@@ -32,12 +32,12 @@ class ActivityUser{
 
   findAverageMinutesActive(startDate, endDate, id) {
     let totalTime = this.activityTestData
-    .filter(user => user.userID === id)
-    .filter(day => day.date >= startDate && day.date <= endDate)
-    .map(day => day.minutesActive)
-    .reduce((acc, time) => {
-      return acc + time
-    }, 0)
+      .filter(user => user.userID === id)
+      .filter(day => day.date >= startDate && day.date <= endDate)
+      .map(day => day.minutesActive)
+      .reduce((acc, time) => {
+        return acc + time
+      }, 0)
     return Math.round((totalTime / 7) * 10) /10
   }
 
@@ -84,6 +84,10 @@ class ActivityUser{
     let stepCount = this.activityTestData.find(user => user.userID === id && user.date === date)
    return stepCount.numSteps
 }
+
+
+
+
 
 }
 

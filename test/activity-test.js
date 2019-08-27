@@ -176,4 +176,5 @@ describe('ActivityUser', function() {
     expect(activityUser.getDailyStepCount(2, '2019/06/17')).to.equal(13750)
   })
 
+
 });

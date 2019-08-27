@@ -23,6 +23,14 @@ const options = {
 };
 const formattedDate = dateObject.toLocaleString('en', options)
 
+function dropYear(dates) {
+  const reformattedDates = dates.map(date => {
+    const splitDate = date.split('/');
+    return [splitDate[1], splitDate[2]].join('/');
+  })
+  return reformattedDates
+}
+
 
 //User Section
 $('.username').text(`${user.returnUserName()}`)
@@ -34,9 +42,9 @@ $('.date').text(`${formattedDate}`);
 $('.water-consumed').text(`Today: \n${hydration.returnDailyFluidOunces(date)} ounces`);
 
 const weeklyOuncesChart = new Chart(document.getElementById('water-consumed-week').getContext('2d'), {
-  type: 'bar',
+  type: 'horizontalBar',
   data: {
-    labels: hydration.returnWeek(),
+    labels: dropYear(hydration.returnWeek()),
     datasets: [{
       data: hydration.returnWeeklyNumOunces(),
       backgroundColor: [

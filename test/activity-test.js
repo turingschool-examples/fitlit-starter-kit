@@ -48,12 +48,9 @@ const testUsers = [
   }
 ];
 
-var activityUser, user1, user2, user3
+var activityUser
 beforeEach(() => {
-  activityUser = new ActivityUser(activityTestData);
-  user1 = new User(testUsers[0]);
-  user2 = new User(testUsers[1]);
-  user3 = new User(testUsers[2]);
+  activityUser = new ActivityUser(activityTestData, testUsers);
 })
 
 describe('ActivityUser', function() {
@@ -62,12 +59,16 @@ describe('ActivityUser', function() {
     expect(ActivityUser).to.be.a('function')
   });
 
-  it.only('should be a function', function() {
-    expect(User).to.be.a('function')
+  it.only('should find user stride length', function() {
+    expect(activityUser.findUserStrideLength(2)).to.equal(4.5)
   });
 
-  it.only('should find user stride length', function() {
-    expect(activityUser.findUserStrideLength(user2)).to.equal(4.5)
+  // it.only('should find activity user data', function() {
+  //   expect(activityUser.findActivityInfo(3)).to.equal('TEST')
+  // })
+  
+  it.only('should be able to calculate the miles a user has walked', function () {
+    expect(activityUser.calculateMilesWalked('2019/06/19', 3)).to.equal(9.13)
   });
 
   it.only('should be able to find minutes active', function() {
@@ -75,7 +76,11 @@ describe('ActivityUser', function() {
   });
 
   it.only('should calculate average active minutes for any given week', function() {
-    expect(activityUser.findAverageMinutesActive("2019/06/23", "2019/07/01", 2)).to.equal(199.4)
+    expect(activityUser.findAverageMinutesActive('2019/06/23', '2019/07/01', 2)).to.equal(199.4)
   });
+
+  it('should calculate if step goal was/was not reached', function() {
+    expect(activityUser.calculateStepGoal('2019/06/23', user3)).to.equal('Step goal was not met today.')
+  })
 
 }); //<<----end of describe block

@@ -4,17 +4,16 @@ class ActivityUser{
     this.userData = userData;
   }
 
+  findActivityInfo(id) {
+    return this.activityTestData.filter(user => user.userID === id);
+  }
 
   findUserStrideLength(id) {
     return this.userData.find(user => {
       return user.id === id
     }).strideLength;
   }
-
-  findActivityInfo(id) {
-    return this.activityTestData.filter(user => user.userID === id);
-  }
-
+  
   calculateMilesWalked(date, id) {
     let user = this.findActivityInfo(id).find(user => user.date === date)
     let steps = user.numSteps
@@ -42,13 +41,43 @@ class ActivityUser{
     return Math.round((totalTime / 7) * 10) / 10
   }
 
-  calculateStepGoal(date, user) {
-    
+  getGoal(id) {
+    return this.userData.find(user => {
+      return user.id === id
+    }).dailyStepGoal;
   }
-// get step goal from user
-// get id of user to find activity object
-// date & id ---> find activity object
-// return string indicating whether or not a step goal is met
+
+  calculateStepGoal(date, id) {
+    let stepGoal = this.userData.find(user => {
+      return user.id === id
+    }).dailyStepGoal;
+    let dailySteps = this.activityTestData.find(user => {
+      return user.date === date && user.userID === id
+    }).numSteps
+
+    let difference = stepGoal - dailySteps
+
+    return dailySteps >= stepGoal ? 'You have achieved your daily goal!' : `${difference} more steps to go!`
+
+  }
+
+  findExceptionalDays(id) {
+    let stepGoal = this.userData.find(user => {
+      return user.id === id
+    }).dailyStepGoal;
+    var exceptionalDays = this.activityTestData.filter(user => user.userID === id)
+    .filter(day => day.numSteps > stepGoal);
+
+    return exceptionalDays;
+  }
+
+  findGreatestClimb(id) {
+    let greatestClimb = this.findActivityInfo(id).map(day => day.flightsOfStairs)
+    .reduce((acc, climb) => {
+      return (climb < acc) ? acc : climb
+    })
+   return greatestClimb;
+  }
 
 
 

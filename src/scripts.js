@@ -78,9 +78,9 @@ const weeklyOuncesChart = new Chart(document.getElementById('water-consumed-week
 
 //Sleep
 $('.hours-slept-day').text(`${sleep.returnSleepHours(date)} hours`);
+$('.quality-sleep-day').text(`${sleep.returnSleepQuality(date)} sleep quality`);
 $('.hours-slept-week').text(`Hours Slept Last Week: ${sleep.returnWeekOfSleepHours(1)}`);
 $('.hours-slept-all-time').text(`Hours Slept On Average: ${sleep.returnAvgSleepHours()}`);
-$('.quality-sleep-day').text(`Quality of Sleep Last Night: ${sleep.returnSleepQuality(date)}`);
 $('.quality-sleep-week').text(`Quality of Sleep Last Week: ${sleep.returnWeekOfSleepQuality(1)}`);
 $('.quality-sleep-all-time').text(`Quality of Sleep On Average: ${sleep.returnAvgSleepQuality()}`);
 

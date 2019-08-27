@@ -5,7 +5,7 @@ class Activity {
   }
 
   findUser() {
-    return this.activityData.filter(user => user.userID === this.user.id);
+    return this.activityData.filter(person => person.userID === this.user.id);
   }
 
   returnWeekOfData(week, userData) {
@@ -16,12 +16,12 @@ class Activity {
     let specificUser = this.findUser();
     return specificUser.find(day => day.date === date).numSteps;
   }
-  
+
   returnMilesWalked() {
     let specificUser = this.findUser();
     return Number((this.user.strideLength * specificUser[specificUser.length - 1].numSteps / 5280).toFixed(2))
   }
-  
+
   returnMinutesActive(date) {
     let specificUser = this.findUser();
     return specificUser.find(day => day.date === date).minutesActive
@@ -77,7 +77,7 @@ class Activity {
   }
 
   returnThreeDayStepStreak() {
-    var specificUser = this.findUser().reverse();
+    let specificUser = this.findUser().reverse();
     let dates = [];
     specificUser.some((user, i, specificUser) => {
       if (specificUser[i].numSteps < specificUser[i + 1].numSteps && specificUser[i + 1].numSteps < specificUser[i + 2].numSteps) {

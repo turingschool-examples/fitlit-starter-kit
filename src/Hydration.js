@@ -28,7 +28,7 @@ class Hydration {
 
   returnWeeklyNumOunces() {
     var specificUser = this.findUser()
-    return specificUser.splice(-7).map(day => day.numOunces);
+    return specificUser.slice(-7).map(day => day.numOunces);
   }
 
 }

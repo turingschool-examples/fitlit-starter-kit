@@ -9,6 +9,8 @@ const sleep = new Sleep(userData);
 const activity = new Activity(activityData);
 var activityRepository = new ActivityRepository(activityData);
 
+
+  
     $('#random-user-span').text(user.getFirstName());
     $('#article__user--name').text(user.getFirstName());
     $('#article__user--address').text(userData[randomUser].address);
@@ -16,9 +18,9 @@ var activityRepository = new ActivityRepository(activityData);
     $('#article__user--stridelength').text(userData[randomUser].strideLength);
     $('#article__user--stepgoal').text(userData[randomUser].dailyStepGoal);
     $('#article__user--stepcompare').text(userRepository.calcStepGoalAvg());
-    $('#article__user--currentsleep').text();
-    $('#article__user--weekssleep').text();
-    $('#article__user--avgsleep').text();
+    $('#article__user--currentsleep').text(sleep.findAvgHoursSlept('2019/06/18'));
+    // $('#article__user--weekssleep').text();
+    // $('#article__user--avgsleep').text();
     $('#article__user--todaysteps').text(activityData[randomUser].numSteps);
     $('#article__user--activemins').text(activity.minsUserActive(randomUser, '2019/06/15'));
     $('#article__user--todaydistance').text(activity.milesUserWalked(randomUser, '2019/06/15', userData));
@@ -28,13 +30,13 @@ var activityRepository = new ActivityRepository(activityData);
     $('#article__user--comparestairs').text(activityRepository.avgMinutesActive('2019/06/15'));
 
     const weeklyWaterIntake = new Chart($('#weekly-hydration-chart'), {
-        type: 'bar',
+    type: 'bar',
     data: {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: 'Weekly Hydration',
         data: [ 43, 39, 61, 51, 52, 29, 57 ],
-        // [hydration.findWeeklyWaterCons(randomUser)],
+        //hydration.findWeeklyWaterCons(randomUser).map(day=> day[1]),
         backgroundColor: [
           '#73A9BB', 
           '#FC5D79', 
@@ -80,6 +82,59 @@ var activityRepository = new ActivityRepository(activityData);
     		}
     }
     });
+
+    const weeklySleepAverages = new Chart($('#weekly-sleep-chart'), {
+        type: 'horizontalBar',
+        data: {
+          labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+          datasets: [{
+            label: 'Weekly Sleep Chart',
+            data: [sleep.findSleepQualityWeek('2019/06/18'), sleep.findSleepHoursWeek('2019/06/18')],
+            backgroundColor: [
+              '#73A9BB', 
+              '#FC5D79', 
+              '#B6E7EC', 
+              '#fda8b7', 
+              '#8573BB',
+              '#fc7d93',
+              '#73A9BB'
+            ],
+            borderColor: [
+              '#73A9BB',
+              '#FC5D79',
+              '#B6E7EC',
+              '#fda8b7',
+              '#8573BB',
+              '#fc7d93',
+              '#73A9BB', 
+            ],
+            borderWidth: 2 
+          }]
+        },
+        options: {
+            title: {
+                display: true,
+                fontColor: 'black',
+                text: 'Weekly Sleep Chart'
+            },
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 0,
+                    top: 0,
+                    bottom: 10,
+                        }
+                    },
+            responsive: false,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+        }
+        });
 
     
     var dailyStepComparisonChart = new Chart($('#compare-user-steps-chart'), {

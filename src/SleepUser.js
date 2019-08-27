@@ -19,8 +19,14 @@ class SleepUser {
 
   findAverageHoursSlept(startDate, endDate, id) {
     let userInfo = this.findUserInfo(id)
-    let week = userInfo.filter(day => day.date >= startDate && day.date <= endDate);
+    let week = userInfo.filter(eachDay => {
+      if(new Date(eachDay.date) >= new Date(startDate) && new Date(eachDay.date) <= new Date(endDate)){
+        return eachDay
+      }
+    })
+  
     let dailyHours = week.map(day => day.hoursSlept)
+    // console.log(dailyHours)
     let totalHours = dailyHours.reduce((acc, num) => {
       return acc + num;
     }, 0)

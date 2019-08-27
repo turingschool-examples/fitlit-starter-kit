@@ -170,6 +170,6 @@ describe('ActivityUser', function() {
 
   it.only('should find stair climbing record', function() {
     expect(activityUser.findGreatestClimb(2)).to.equal(49)
-  })
+  });
 
 }); //<<----end of describe block

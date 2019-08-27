@@ -43,7 +43,13 @@ describe('Activity', () => {
   });
 
   it('should return all days where the user exceeded their step goal', () => {
-    expect(activity.findGoalDays(1)).to.deep.equal(activity.data.filter(data => data.numSteps > userRepo.users[0].dailyStepGoal)
-.filter(user => user.userID === 1));
+    expect(activity.findGoalDays(1)).to.deep.equal(activity.data.filter(data => data.numSteps > userRepo.users[0].dailyStepGoal).filter(user => user.userID === 1));
   });
+
+  it('should return their all time stair record', () => {
+    // console.log(activity.data);
+    expect(activity.findMostStairs(1)).to.equal(activity.data[5])
+  })
+
+
 });

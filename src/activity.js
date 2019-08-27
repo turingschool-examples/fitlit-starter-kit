@@ -65,7 +65,17 @@ class Activity {
     let goalArray = userSteps.filter(steps => steps.numSteps > goal);
 
     return goalArray
-  }
+  };
+
+  findMostStairs(id) {
+    let userStairs = this.data.filter(user => user.userID === id);
+
+     userStairs.sort((a, b) => {
+     return b.flightsOfStairs - a.flightsOfStairs
+    });
+    
+    return userStairs[0];
+  };
 }
 
 module.exports = Activity;

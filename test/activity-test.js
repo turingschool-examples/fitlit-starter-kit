@@ -27,6 +27,24 @@ describe('Activity', function() {
         const userRepo = new UserRepository(userSampleData) 
         const user = userRepo.returnUserData(1);
         const activity = new Activity(activitySampleData)
-        expect(activity.getAverageActivityForWeek(user, '2019/06/25')).to.equal(175)
+        expect(activity.getAverageActivityForWeek(user, '2019/06/25')).to.equal(156.71)
+    })
+    it('should tell whether a user has met their step goal for a certain day', function() {
+        const userRepo = new UserRepository(userSampleData) 
+        const user = userRepo.returnUserData(1);
+        const activity = new Activity(activitySampleData)
+        expect(activity.returnStepGoalMet(user, '2019/06/25')).to.equal(false)
+    })
+    it('should give the days the user has exceeded their step goal', function() {
+        const userRepo = new UserRepository(userSampleData) 
+        const user = userRepo.returnUserData(1);
+        const activity = new Activity(activitySampleData)
+        expect(activity.getDaysStepGoalExceeded(user)).to.deep.equal(['2019/06/17', '2019/06/20', '2019/06/22', '2019/06/23'])
+    })
+    it('should return when the user climbed the most stairs', function() {
+        const userRepo = new UserRepository(userSampleData) 
+        const user = userRepo.returnUserData(1);
+        const activity = new Activity(activitySampleData)
+        expect(activity.getStairClimbingRecord(user)).to.deep.equal(['2019/06/16'])
     })
     })

@@ -101,6 +101,14 @@ calculatePercentOfWorldWalked(id) {
   return Number(percentWalked.toFixed(2))
 }
 
+getWeeklyStepCount(id, date) {
+  let week = this.activityTestData.filter(user => user.userID === id)
+  let startDateId = week.find(user => user.date === date)
+  let startDate = week.indexOf(startDateId)
+  let weekOfActivity = week.slice(startDate, startDate+7)
+  return weekOfActivity.map(user => user.numSteps)
+}
+
 
 
 

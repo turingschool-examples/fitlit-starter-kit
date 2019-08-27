@@ -10,6 +10,7 @@ $(document).ready(() => {
   const hydration = new Hydration(hydrationData, currentUser.id);
   hydration.findCurrentUserData();
   const activity = new Activity(activityData, idRandom, userData);
+  const findTrends = activity.findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers()
 //   activity.findCurrentUserData();
 
   

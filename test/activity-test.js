@@ -86,87 +86,87 @@ describe('ActivityUser', function() {
     expect(activityUser.calculateStepGoal('2019/06/23', 3)).to.equal('335 more steps to go!')
   });
 
-  // it.only('should show info for days exceeding steps goal', function() {
-  //   expect(activityUser.findExceptionalDays(2)).to.equal([
-  //     {
-  //       "userID": 2,
-  //       "date": '2019/06/17',
-  //       "numSteps": 13750,
-  //       "minutesActive": 65,
-  //       "flightsOfStairs": 4
-  //     },
-  //     {
-  //       "userID": 2,
-  //       "date": '2019/06/19',
-  //       "numSteps": 9858,
-  //       "minutesActive": 243,
-  //       "flightsOfStairs": 44
-  //     },
-  //     {
-  //       "userID": 2,
-  //       "date": '2019/06/20',
-  //       "numSteps": 8153,
-  //       "minutesActive": 74,
-  //       "flightsOfStairs": 10
-  //     },
-  //     {
-  //       "userID": 2,
-  //       "date": '2019/06/21',
-  //       "numSteps": 10225,
-  //       "minutesActive": 174,
-  //       "flightsOfStairs": 26
-  //     },
-  //     {
-  //       "userID": 2,
-  //       "date": '2019/06/24',
-  //       "numSteps": 8568,
-  //       "minutesActive": 81,
-  //       "flightsOfStairs": 31
-  //     },
-  //     {
-  //       "userID": 2,
-  //       "date": '2019/06/25',
-  //       "numSteps": 10305,
-  //       "minutesActive": 214,
-  //       "flightsOfStairs": 5
-  //     },
-  //     {
-  //       "userID": 2,
-  //       "date": '2019/06/26',
-  //       "numSteps": 11522,
-  //       "minutesActive": 88,
-  //       "flightsOfStairs": 18
-  //     },
-  //     {
-  //       "userID": 2,
-  //       "date": '2019/06/28',
-  //       "numSteps": 12555,
-  //       "minutesActive": 193,
-  //       "flightsOfStairs": 45
-  //     },
-  //     {
-  //       "userID": 2,
-  //       "date": '2019/06/29',
-  //       "numSteps": 8096,
-  //       "minutesActive": 181,
-  //       "flightsOfStairs": 40
-  //     },
-  //     {
-  //       "userID": 2,
-  //       "date": '2019/06/30',
-  //       "numSteps": 14974,
-  //       "minutesActive": 300,
-  //       "flightsOfStairs": 49
-  //     },
-  //     {
-  //       "userID": 2,
-  //       "date": '2019/07/01',
-  //       "numSteps": 10276,
-  //       "minutesActive": 46,
-  //       "flightsOfStairs": 3
-  //     }
-  //   ])
-  // })
+  it.only('should show info for days exceeding steps goal', function() {
+    expect(activityUser.findExceptionalDays(2)).to.eql([
+      {
+        "userID": 2,
+        "date": '2019/06/17',
+        "numSteps": 13750,
+        "minutesActive": 65,
+        "flightsOfStairs": 4
+      },
+      {
+        "userID": 2,
+        "date": '2019/06/19',
+        "numSteps": 9858,
+        "minutesActive": 243,
+        "flightsOfStairs": 44
+      },
+      {
+        "userID": 2,
+        "date": '2019/06/20',
+        "numSteps": 8153,
+        "minutesActive": 74,
+        "flightsOfStairs": 10
+      },
+      {
+        "userID": 2,
+        "date": '2019/06/21',
+        "numSteps": 10225,
+        "minutesActive": 174,
+        "flightsOfStairs": 26
+      },
+      {
+        "userID": 2,
+        "date": '2019/06/24',
+        "numSteps": 8568,
+        "minutesActive": 81,
+        "flightsOfStairs": 31
+      },
+      {
+        "userID": 2,
+        "date": '2019/06/25',
+        "numSteps": 10305,
+        "minutesActive": 214,
+        "flightsOfStairs": 5
+      },
+      {
+        "userID": 2,
+        "date": '2019/06/26',
+        "numSteps": 11522,
+        "minutesActive": 88,
+        "flightsOfStairs": 18
+      },
+      {
+        "userID": 2,
+        "date": '2019/06/28',
+        "numSteps": 12555,
+        "minutesActive": 193,
+        "flightsOfStairs": 45
+      },
+      {
+        "userID": 2,
+        "date": '2019/06/29',
+        "numSteps": 8096,
+        "minutesActive": 181,
+        "flightsOfStairs": 40
+      },
+      {
+        "userID": 2,
+        "date": '2019/06/30',
+        "numSteps": 14974,
+        "minutesActive": 300,
+        "flightsOfStairs": 49
+      },
+      {
+        "userID": 2,
+        "date": '2019/07/01',
+        "numSteps": 10276,
+        "minutesActive": 46,
+        "flightsOfStairs": 3
+      }
+    ])
+  })
 
   it.only('should find stair climbing record', function() {
     expect(activityUser.findGreatestClimb(2)).to.equal(49)

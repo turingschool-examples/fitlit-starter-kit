@@ -12,12 +12,12 @@ $(document).ready(() => {
   $('.p__span--address').text(user.address);
   $('.p__span--email').text(user.email);
   $('.p__span--stride').text(user.strideLength);
-  $('.p__span--daily-water').text(hydrationUser.findDailyHydration('2019/06/15', 2));
-  $('.article__p--weekly').text(hydrationUser.findWeeklyHydration(2));
-  $('.p__span--sleep-hours').text(sleepUser.findDailySleep('2019/06/15', 2));
-  $('.p__span--sleep-quality').text(sleepUser.findDailySleepQuality('2019/06/15', 2));
-  $('.p__span--sleep-average-hours').text(sleepUser.findAverageHoursSlept('2019/06/15', '2019/06/21', 2));
-  $('.p__span--sleep-average-quality').text(sleepUser.findAverageQualitySlept('2019/06/15', '2019/06/21', 2));
+  $('.p__span--daily-water').text(hydrationUser.findDailyHydration('2019/06/15', 10));
+  $('.article__p--weekly').text(hydrationUser.findWeeklyHydration(10));
+  $('.p__span--sleep-hours').text(sleepUser.findDailySleep('2019/06/15', 10));
+  $('.p__span--sleep-quality').text(sleepUser.findDailySleepQuality('2019/06/15', 10));
+  $('.p__span--sleep-average-hours').text(sleepUser.findAverageHoursSlept('2019/06/15', '2019/06/21', 10));
+  $('.p__span--sleep-average-quality').text(sleepUser.findAverageQualitySlept('2019/06/15', '2019/06/21', 10));
   
 });
 

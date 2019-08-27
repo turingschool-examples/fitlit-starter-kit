@@ -6,7 +6,7 @@ class Activity {
 
     findUser(user) {
         let person = this.moveData.filter((obj) => {
-            return obj.userID === user.id
+            return obj.userID === user
         })
         return person;
     }
@@ -20,22 +20,24 @@ class Activity {
 
     }
 
-    getMinutesActive(user, date) {
-        let userInfo = this.findUser(user)
+    getMinutesActive(id, date, type) {
+        let userInfo = this.findUser(id)
+        console.log(userInfo)
         let activeToday = userInfo.find((day) => {
             return day.date === date
         })
-        return activeToday.minutesActive
+        console.log(activeToday)
+        return activeToday[type]
     }
 
-    getAverageActivityForWeek(user, day) {
+    getAverageActivityForWeek(user, day, type) {
         let userInfo = this.findUser(user)
         let targetIndex = userInfo.findIndex(obj => {
             return obj.date === day
         })
         let weekData = userInfo.slice(targetIndex - 6, targetIndex + 1);
         let average = weekData.reduce((acc, current) => {
-            return acc += current.minutesActive/weekData.length
+            return acc += current[type]/weekData.length
         },0)
         return parseFloat(average.toFixed(2))
     }

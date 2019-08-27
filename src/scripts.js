@@ -14,7 +14,7 @@ const activePerson = new Activity(activeRepo.getUserData(user.id), user);
 const sampleDate = '2019/06/25'
 
 
-$('.header__div--h2').text(`Hi, ${user.getUserFirstName()}!`);
+$('.header__div--h1').text(`Hi, ${user.getUserFirstName()}!`);
 
 $('.header__div__user-stepgoal').text(`Your step goal: ${user.dailyStepGoal} steps`);
 
@@ -42,9 +42,7 @@ $('.activity__container--user--steps--today').text(`Steps Today: ${activePerson.
 
 $('.activity__container--user--active--today').text(`Active Minutes Today: ${activePerson.getStatsFromDay(sampleDate, 'minutesActive')}`)
 
-$('.activity__container--user--miles--today').text(`Miles walked Today: ${activePerson.getMiles(sampleDate, 'numSteps')} miles`)
-
-$('.main__activity--thisWeek').after(buildWeeklyHTMLActivity())  
+$('.activity__container--user--miles--today').text(`Miles walked Today: ${activePerson.getMiles(sampleDate, 'numSteps')} miles`) 
 
 $('.activity__container--allusers--steps--today').text(`Steps Today: ${activeRepo.getAvgActivityStatsAllUsers(sampleDate, 'numSteps')}`)
 

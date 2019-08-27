@@ -9,6 +9,12 @@ const sleep = new Sleep(userData);
 const activity = new Activity(activityData);
 var activityRepository = new ActivityRepository(activityData);
 
+$('.grid').masonry({
+    // options
+    itemSelector: '.grid-item',
+    columnWidth: 700,
+    fitWidth: true,
+  });
 
   
     $('#random-user-span').text(user.getFirstName());
@@ -36,7 +42,7 @@ var activityRepository = new ActivityRepository(activityData);
       datasets: [{
         label: 'Weekly Hydration',
         data: [ 43, 39, 61, 51, 52, 29, 57 ],
-        //hydration.findWeeklyWaterCons(randomUser).map(day=> day[1]),
+        //hydration.findWeeklyWaterCons(randomUser),
         backgroundColor: [
           '#73A9BB', 
           '#FC5D79', 

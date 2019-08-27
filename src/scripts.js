@@ -39,7 +39,7 @@ $('.username').text(`${user.returnUserName()}`)
 $('.date').text(`${formattedDate}`);
 
 //Hydration
-$('.water-consumed').text(`Today: \n${hydration.returnDailyFluidOunces(date)} ounces`);
+$('.water-consumed').text(`${hydration.returnDailyFluidOunces(date)} ounces \n\n`);
 
 const weeklyOuncesChart = new Chart(document.getElementById('water-consumed-week').getContext('2d'), {
   type: 'horizontalBar',

@@ -70,12 +70,12 @@ canvas {
   border-radius: 3px;
   margin: 5px;
   padding: 15px 15px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
 
 .data-section:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .data-heading {
@@ -90,8 +90,27 @@ canvas {
   grid-area: hydration;
 }
 
-img{
+.water-consumed-article {
+  text-align: center;
+}
+
+.water-consumed {
+  margin: 5px;
+}
+
+.water-consumed-today {
+  font-size: 10px;
+  font-weight: 700;
+  margin: 0px;
+}
+
+img {
   width: 10%;
+}
+
+.img-medium {
+  opacity: 0.6;
+  width: 100px;
 }
 
 .sleep {
@@ -106,7 +125,9 @@ img{
   margin: 20px;
   width: 100px;
   height: 100px;
+  margin: auto;
   position: relative;
+  text-align: center;
 }
 
 .friends {

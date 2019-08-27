@@ -1,7 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
 const ActivityUser = require('../src/ActivityUser');
-const User = require('../src/User');
 const activityTestData = require('../data/test-data/activity-test-data');
 
 const testUsers = [

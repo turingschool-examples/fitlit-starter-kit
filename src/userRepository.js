@@ -3,6 +3,7 @@ class UserRepository {
 		this.data = data
 		this.currentUser = null
 	}
+	
 	findUser(index) {
 		this.data.forEach(user => {
 			if(user.id === index) {

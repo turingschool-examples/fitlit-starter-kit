@@ -19,16 +19,19 @@ let sleepAll = document.querySelector('.main_sleep_average_all');
 let sleepAvgQuality = document.querySelector('.main_sleep_average_quality');
 let sleepDay = document.querySelector('.main_sleep_day');
 let sleepPerDay = document.querySelector('.main_sleep_specific_day');
+let steps = document.querySelector('.main_activity_steps');
+let minutes = document.querySelector('.main_activity_minutes');
+let activityList = document.querySelector('.main_activity_list');
 
 /*************** Event Listeners *************/
-window.addEventListener('load', initializePage(userData, hydrationData, sleepData))
+window.addEventListener('load', initializePage(userData, hydrationData, sleepData, activityData))
 
 /***************** Functions *****************/
 function getRandoNum() {
 randoNum = Math.floor(Math.random() * 50) + 1  
 }
 
-function initializePage(data, hydro, sleepy) {
+function initializePage(data, hydro, sleepy, activity) {
 	getRandoNum();
 	const userRepository = new UserRepository(data)
 	userRepository.findUser(randoNum)
@@ -37,15 +40,18 @@ function initializePage(data, hydro, sleepy) {
 	const hydroRepository = new HydroRepository(hydro)
 	hydroRepository.findUserID(randoNum);
 	const userHydro = new UserHydro(hydroRepository.currentUser)
-	sleepRepository = new SleepRepository(sleepy)
-	sleepRepository.findUserID(randoNum)
+	const sleepRepository = new SleepRepository(sleepy)
+	sleepRepository.findUserID(randoNum);
 	const sleep = new Sleep(sleepRepository.currentUser)
 	const sleep2 = new Sleep(sleepRepository.data)
+	const activityRepository = new ActivityRepository(activity);
+	activityRepository.findUserID(randoNum);
+	const activity1 = new Activity(activityRepository.currentUser);
 	name.innerHTML = `Name: ${user.name}`
 	address.innerHTML = `Address: ${user.address}`
 	email.innerHTML = `Email: ${user.email}`
 	stride.innerHTML = `Stride Length: ${user.strideLength} feet`
-	goal.innerHTML = `Step Goal: ${user.dailyStepGoal} steps       Global Average Step Goal: ${userRepository.findAverageStep()} steps`
+	goal.innerHTML = `Step Goal: ${user.dailyStepGoal} steps Global Average Step Goal: ${userRepository.findAverageStep()} steps`
 	friends.innerHTML = `Friends: ${findFriends(userRepository, user)}`
 	welcome.innerHTML = `Welcome ${user.firstName()}!`;
 	avgFluids.innerHTML = `Average fluid ounces intake: ${userHydro.findAvgOunce()}`
@@ -54,8 +60,7 @@ function initializePage(data, hydro, sleepy) {
 	appendHydroList(userHydro.findDates(), userHydro);
 	appendSleepList(sleep.findSleepDates(), sleep);
 	appendMostSleep(sleep, sleep2, user2);
-	// sleep2.findSleepDay('2019/06/15')
-	// console.log(sleep2)
+	appendActivityList(activity1.findActivityDates(), activity1)
 }
 
 function findFriends(userRepository, user) {
@@ -104,24 +109,24 @@ function appendSleepList(array, obj) {
     option.text = array[i];
     dateSleepList.appendChild(option);
     if (dateSleepList.value === array[i]) {
-    		sleepWeek.innerHTML = `Hours slept throughout week: ${obj.findSleepWeek(i)}`
-    		sleepQuality.innerHTML = `Sleep quality throughout week: ${obj.findSleepWeekQuality(i)}`
-    }
+    	sleepWeek.innerHTML = `Hours slept throughout week: ${obj.findSleepWeek(i)}`
+    	sleepQuality.innerHTML = `Sleep quality throughout week: ${obj.findSleepWeekQuality(i)}`
+    	}
 	}
 		dateSleepList.addEventListener('change', function() {
-			obj.findSleepDay(dateSleepList.value)
-			obj.findSleepQuality(dateSleepList.value)
-			sleepPerDay.innerHTML = `Hours slept for day: ${obj.day}  Quality of sleep: ${obj.quality}`;
-			for (let i = 0; i < array.length; i++) {
-				if (dateSleepList.value === array[i]) {
-    		sleepWeek.innerHTML = `Hours slept throughout week: ${obj.findSleepWeek(i)}`
-    		sleepQuality.innerHTML = `Sleep quality throughout week: ${obj.findSleepWeekQuality(i)}`
-    			}
-			}
-		})
 		obj.findSleepDay(dateSleepList.value)
 		obj.findSleepQuality(dateSleepList.value)
 		sleepPerDay.innerHTML = `Hours slept for day: ${obj.day}  Quality of sleep: ${obj.quality}`;
+		for (let i = 0; i < array.length; i++) {
+			if (dateSleepList.value === array[i]) {
+    	sleepWeek.innerHTML = `Hours slept throughout week: ${obj.findSleepWeek(i)}`
+    	sleepQuality.innerHTML = `Sleep quality throughout week: ${obj.findSleepWeekQuality(i)}`
+    			}
+			}
+		})
+	obj.findSleepDay(dateSleepList.value)
+	obj.findSleepQuality(dateSleepList.value)
+	sleepPerDay.innerHTML = `Hours slept for day: ${obj.day}  Quality of sleep: ${obj.quality}`;
 }
 
 function appendMostSleep(singleSleepObj, sleepObj, userObj) {
@@ -192,3 +197,19 @@ function userSleepAvg(singleSleepObj, sleepObj, userObj) {
 		// sleepAvgQuality.innerHTML = `Users with sleep quality greater than 3: ${sleepIDs}`
 		// console.log(sleepIDs)
 }
+
+function appendActivityList(array, obj) {
+	let dateActivityList = document.createElement("select");
+	dateActivityList.setAttribute("id", "mySelect");
+	activityList.appendChild(dateActivityList);
+	for (let i = 0; i < array.length; i++) {
+	var option = document.createElement("option");
+    option.setAttribute("value", array[i]);
+    option.text = array[i];
+    dateActivityList.appendChild(option);
+    if (dateActivityList.value === array[i]) {
+		steps.innerHTML = `Number of steps today: ${obj.findNumSteps(i)}`
+		minutes.innerHTML =`Number of Minutes active: ${obj.findMinActive(i)}`
+    		}
+		}
+	}

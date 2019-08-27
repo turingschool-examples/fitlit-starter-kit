@@ -78,10 +78,55 @@ const weeklyOuncesChart = new Chart(document.getElementById('water-consumed-week
 
 //Sleep
 $('.hours-slept-day').text(`${sleep.returnSleepHours(date)} hours | ${sleep.returnSleepQuality(date)} quality`);
-$('.hours-slept-week').text(`Hours Slept Last Week: ${sleep.returnWeekOfSleepHours(1)}`);
-$('.hours-slept-all-time').text(`Hours Slept On Average: ${sleep.returnAvgSleepHours()}`);
-$('.quality-sleep-week').text(`Quality of Sleep Last Week: ${sleep.returnWeekOfSleepQuality(1)}`);
-$('.quality-sleep-all-time').text(`Quality of Sleep On Average: ${sleep.returnAvgSleepQuality()}`);
+
+const weeklySleepChart = new Chart(document.getElementById('sleep-week').getContext('2d'), {
+  type: 'line',
+  data: {
+    labels: dropYear(sleep.returnWeek(1)),
+    datasets: [{
+      data: sleep.returnWeekOfSleepHours(1),
+      label: "Sleep Hours",
+      borderColor: "rgba(92, 117, 218, 0.2)",
+      fill: false
+    },
+    {
+      data: Array(7).fill(sleep.returnAvgSleepHours()),
+      label: "Average Hours of Sleep",
+      borderColor: "rgba(92, 117, 218, 0.2)",
+      fill: false
+    },
+    {
+      data: sleep.returnWeekOfSleepQuality(1),
+      label: "Quality of Sleep",
+      borderColor: "rgba(242, 188, 51, 0.2)",
+      fill: false
+    },
+    {
+      data: Array(7).fill(sleep.returnAvgSleepQuality()),
+      label: "Average Quality of Sleep",
+      borderColor: "rgba(242, 188, 51, 0.2)",
+      fill: false
+    }
+    ]
+
+  },
+  options: {
+    legend: {
+      display: false,
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'hours'
+        }
+      }]
+    }
+  }
+});
 
 //Activity Section
 

@@ -85,9 +85,9 @@ class Activity {
     return weeklyAvg
   };
 
-  determineStepGoal(id, date) {
+  determineStepGoal() {
    let info = this.singleUserData.find((element) => {
-     if (element.userID === id && element.date === date) {
+     if (element.userID === this.userID) {
        return element.dailyStepGoal
      }
      return info
@@ -95,21 +95,69 @@ class Activity {
    return info.dailyStepGoal
   };
 
-  compareStepsToGoal(id, date) {
-    let goal = this.determineStepGoal(id, date);
+  compareStepsToGoal(date) {
+    let goal = this.determineStepGoal();
     let userInfo = this.singleUserData.find( element => {
-      if (element.userID === id && element.date === date) {
+      if (element.userID === this.userID && element.date === date) {
         return element
       }
     }); 
-    if (userInfo.dailyStepGoal >= goal) {
-      return true
-    } else {
-      return false
-    }
-    
-
+    let comparison = userInfo.dailyStepGoal >= goal ? true : false;
+    return comparison
   }
+
+  checkIfExceededGoal(id) {
+    let goal = this.determineStepGoal(id);
+    let userSteps = this.singleActivity.filter( day => {
+      return day.numSteps >= goal
+    });
+    let dates = userSteps.map( day => {
+      return day.date
+    })
+    return dates
+  };
+
+  checkFlightsClimbed(id) {
+    let stairs = this.singleActivity.map( element => {
+      return element.flightsOfStairs
+    });
+    return Math.max(...stairs)
+  };
+
+  getStairsClimbedAvg(date) {
+    let day = this.activityData.filter( element => {
+      return element.date === date
+    })
+    let stairs = day.reduce( (acc, climbed) => {
+
+      acc += climbed.flightsOfStairs
+      return acc
+    }, 0)
+    return stairs / day.length
+  };
+
+  getAvgUsersSteps(date) {
+    let day = this.activityData.filter( element => {
+      return element.date === date
+    })
+    let steps = day.reduce( (acc, walked) => {
+      acc += walked.numSteps
+      return acc
+    }, 0)
+    return +(steps / day.length).toFixed()
+  };
+
+  getAvgMinsActive(date) {
+    let day = this.activityData.filter( element => {
+      return element.date === date
+    })
+    let activeMins = day.reduce( (acc, active) => {
+      acc += active.minutesActive
+      return acc
+    }, 0)
+    return activeMins / day.length
+  }
+
 
 
 

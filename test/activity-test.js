@@ -218,6 +218,37 @@ describe('Activity', () => {
         "strideLength": 4.4,
         "dailyStepGoal": 5000,
       },
+      {
+        "userID": 3,
+        "date": "2019/06/16", 
+        "strideLength": 4.4,
+        "dailyStepGoal": 5000,
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/17", 
+        "strideLength": 4.4,
+        "dailyStepGoal": 5000,
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/18", 
+        "strideLength": 4.4,
+        "dailyStepGoal": 5000,
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/19", 
+        "strideLength": 4.4,
+        "dailyStepGoal": 5000,
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/20", 
+        "strideLength": 4.4,
+        "dailyStepGoal": 5000,
+      },
+
     ]
     
     userRepo = new UserRepository(userData)  
@@ -275,15 +306,37 @@ describe('Activity', () => {
 
   it('should return a user\'s daily step goal', () => {
     activity.extractSingleUser(3)
-    assert.equal(activity.determineStepGoal(3, "2019/06/15"), 5000)
+    assert.equal(activity.determineStepGoal(), 5000)
   });
 
   it('should return whether a user met their step goal', () => {
     activity.extractSingleUser(3)
-    // activity.compareStepsToGoal(3, "2019/06/15");
-    assert.equal(activity.compareStepsToGoal(3, "2019/06/15"), true)
+    assert.equal(activity.compareStepsToGoal( "2019/06/15"), true)
   })
 
+  it('should report if user has exceeded their step goal', () => {
+    activity.extractSingleUser(3)
+    activity.extractSingleActivityData();
+    assert.deepEqual(activity.checkIfExceededGoal(3), [
+      '2019/06/15', '2019/06/16', '2019/06/19', '2019/06/20', '2019/06/21', '2019/06/22'])
+  })
+
+  it('should return all time stair climbing record', () => {
+    activity.extractSingleActivityData();
+    assert.equal(activity.checkFlightsClimbed(3), 46)
+  })
+
+  it('should return the average flights of stairs climbed between all users for a given date', () => {
+    assert.equal(activity.getStairsClimbedAvg("2019/06/23"), 10)
+  });
+
+  it('should return the average number of steps walked between all users for a given date', () => {
+    assert.equal(activity.getAvgUsersSteps("2019/06/23"), 7580)
+  });
+
+  it('should return the average number of minutes active between all users for agiven date', () => {
+    assert.equal(activity.getAvgMinsActive("2019/06/23"), 193)
+  });
 
 
 });

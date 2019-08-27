@@ -86,9 +86,14 @@ canvas {
 }
 
 .data-article {
-  margin-bottom: 20px;
   font-weight: 300;
   font-weight: .8em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.data-text {
+  margin: 5px;
 }
 
 .subtext {
@@ -101,10 +106,6 @@ canvas {
   grid-area: hydration;
 }
 
-.water-consumed-article {
-  text-align: center;
-}
-
 .water-consumed {
   margin: 5px;
 }
@@ -115,10 +116,6 @@ canvas {
 
 .activity {
   grid-area: activity;
-}
-
-.number-of-steps-day-article {
-  text-align: center;
 }
 
 .number-of-steps-day {

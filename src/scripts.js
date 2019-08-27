@@ -133,7 +133,7 @@ bar.animate(percentSteps > 1 ? percentSteps = 1 : percentSteps); // Number from 
 
 
 $('.number-of-steps-goal').text(`Daily Step Goal: ${user.dailyStepGoal}`);
-$('.avg-number-of-steps-goal').text(`Average Step Goal: ${userRepo.returnAverageStepGoal()}`);
-$('.number-of-minutes-active-day').text(`Daily Minutes Active: ${activity.returnMinutesActive(date)}`);
-$('.distance-of-miles-day').text(`Daily Miles Walked: ${activity.returnMilesWalked()}`);
+$('.avg-number-of-steps-goal').text(`Average User Step Goal: ${userRepo.returnAverageStepGoal()}`);
+$('.number-of-minutes-active-day').text(`${activity.returnMinutesActive(date)} minutes active`);
+$('.distance-of-miles-day').text(`${activity.returnMilesWalked()} miles`);
 $('.number-of-steps-week').text(`Weekly Number Of Steps: ${activity.returnAverageStepsForWeek()}`);

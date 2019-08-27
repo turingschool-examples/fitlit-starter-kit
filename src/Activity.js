@@ -92,40 +92,40 @@ class Activity {
     return this.currentUserData.find(data => data.date === dateString)[property]
   }
 
-  findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers() {
+  // findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers() {
 
-    //find all users whose steps increase for three or more days
-    //will ultimately need their ids, (their names if we want), but it will
-    //be an array of data.
+  //   //find all users whose steps increase for three or more days
+  //   //will ultimately need their ids, (their names if we want), but it will
+  //   //be an array of data.
 
-    //set an empty answer array for ids.
-    // thought is to first forEach over all users and one at a time to find only
-    // their dataset by calling findCurrentUserData(id) and pass in their id. 
-    //then at that time that user will be the current user
-    //then reduce over their this.currentUserData and use the extra index argument
-    //will need to check if the current index (besides index 0 and the last index)
-    // is greater than the index before it but less than the index after it, and this must
-    //be true for atleast i++ 3x
-    //we need the userId and the dates that are true for greater that three
-    //so maybe final answer is actually an array of objects
-    // each object can have a key of id correlated to the user Id
-    // with an array of dates that are true for greater than three. 
+  //   //set an empty answer array for ids.
+  //   // thought is to first forEach over all users and one at a time to find only
+  //   // their dataset by calling findCurrentUserData(id) and pass in their id. 
+  //   //then at that time that user will be the current user
+  //   //then reduce over their this.currentUserData and use the extra index argument
+  //   //will need to check if the current index (besides index 0 and the last index)
+  //   // is greater than the index before it but less than the index after it, and this must
+  //   //be true for atleast i++ 3x
+  //   //we need the userId and the dates that are true for greater that three
+  //   //so maybe final answer is actually an array of objects
+  //   // each object can have a key of id correlated to the user Id
+  //   // with an array of dates that are true for greater than three. 
 
-    let answerListOfIDs = [];
-    this.allActivityData.forEach(dataSet => {
-      let dataForCurrentUser = this.findCurrentUserData(dataSet.userID);
-      dataForCurrentUser.some((currentDay, i, userArray) => {
-        console.log("line 118", userArray)
-        console.log("line 119:", userArray[i + 1])
+  //   let answerListOfIDs = [];
+  //   this.allActivityData.forEach(dataSet => {
+  //     let dataForCurrentUser = this.findCurrentUserData(dataSet.userID);
+  //     dataForCurrentUser.some((currentDay, i, userArray) => {
+  //       console.log("line 118", userArray)
+  //       console.log("line 119:", userArray[i + 1])
         
-        if (userArray[i].numSteps < userArray[i + 1].numSteps && userArray[i + 1].numSteps < userArray[i + 2].numSteps) {
-          answerListOfIDs.push(userArray[i + 2])
-        }
-      })
-    })
-    console.log("line 125:", answerListOfIDs)
-    return answerListOfIDs;
-  }
+  //       if (userArray[i].numSteps < userArray[i + 1].numSteps && userArray[i + 1].numSteps < userArray[i + 2].numSteps) {
+  //         answerListOfIDs.push(userArray[i + 2])
+  //       }
+  //     })
+  //   })
+  //   console.log("line 125:", answerListOfIDs)
+  //   return answerListOfIDs;
+  // }
 
 
   

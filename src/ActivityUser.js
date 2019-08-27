@@ -41,6 +41,11 @@ class ActivityUser {
     return Math.round((totalTime / 7) * 10) /10
   }
 
+  returnTotalMinutesAvg() {
+    return Math.floor(this.activityTestData.reduce((acc, element) => {
+      return acc + element.minutesActive}, 1) / this.activityTestData.length)
+  }
+
   getGoal(id) {
     return this.userData.find(user => {
       return user.id === id

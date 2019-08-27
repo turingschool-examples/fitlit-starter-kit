@@ -186,4 +186,8 @@ describe('ActivityUser', function() {
     expect(activityUser.getWeeklyStepCount(3, '2019/06/17')).to.equal(129)
   })
 
+  it.only('should find average minutes walked for all users', function(){
+    expect(activityUser.returnTotalMinutesAvg('2019/06/17')).to.equal(156)
+  })
+
 });

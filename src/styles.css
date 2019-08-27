@@ -83,7 +83,18 @@ canvas {
   font-size: 1.3em;
   font-weight: 600;
   color: #5C75DA;
+}
 
+.data-article {
+  margin-bottom: 20px;
+  font-weight: 300;
+  font-weight: .8em;
+}
+
+.subtext {
+  font-size: 10px;
+  font-weight: 700;
+  margin: 0px;
 }
 
 .hydration {
@@ -98,27 +109,16 @@ canvas {
   margin: 5px;
 }
 
-.water-consumed-today {
-  font-size: 10px;
-  font-weight: 700;
-  margin: 0px;
-}
-
-img {
-  width: 10%;
-}
-
-.img-medium {
-  opacity: 0.6;
-  width: 100px;
-}
-
 .sleep {
   grid-area: sleep;
 }
 
 .activity {
   grid-area: activity;
+}
+
+.number-of-steps-day-article {
+  text-align: center;
 }
 
 .number-of-steps-day {
@@ -130,6 +130,10 @@ img {
   text-align: center;
 }
 
+.number-of-steps-goal {
+  margin-top: 10px;
+}
+
 .friends {
   grid-area: friends;
 }
@@ -138,8 +142,11 @@ img {
   grid-area: challenges;
 }
 
-.data-article {
-  margin-bottom: 20px;
-  font-weight: 300;
-  font-weight: .8em;
+img {
+  width: 10%;
+}
+
+.img-medium {
+  opacity: 0.6;
+  width: 100px;
 }

@@ -90,6 +90,13 @@ var bar = new ProgressBar.Circle('.number-of-steps-day', {
   color: '#aaa',
   // This has to be the same size as the maximum width to
   // prevent clipping
+  svgStyle: {
+    display: 'block',
+
+    // Important: make sure that your container has same
+    // aspect ratio as the SVG canvas. See SVG canvas sizes above.
+    width: '100%'
+  },
   strokeWidth: 5,
   trailWidth: 2,
   easing: 'easeInOut',
@@ -125,8 +132,8 @@ let percentSteps = activity.returnNumStepsDay(date) / user.dailyStepGoal;
 bar.animate(percentSteps > 1 ? percentSteps = 1 : percentSteps); // Number from 0.0 to 1.0
 
 
-$('.user-step-goal').text(`Daily Step Goal: ${user.dailyStepGoal}`);
-$('.average-step-goal').text(`Average Step Goal: ${userRepo.returnAverageStepGoal()}`);
+$('.number-of-steps-goal').text(`Daily Step Goal: ${user.dailyStepGoal}`);
+$('.avg-number-of-steps-goal').text(`Average Step Goal: ${userRepo.returnAverageStepGoal()}`);
 $('.number-of-minutes-active-day').text(`Daily Minutes Active: ${activity.returnMinutesActive(date)}`);
 $('.distance-of-miles-day').text(`Daily Miles Walked: ${activity.returnMilesWalked()}`);
 $('.number-of-steps-week').text(`Weekly Number Of Steps: ${activity.returnAverageStepsForWeek()}`);

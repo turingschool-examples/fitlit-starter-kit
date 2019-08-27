@@ -360,6 +360,7 @@ const allUserSleepSampleData = [
     "sleepQuality": 1.8
   }
 ]
+
 if (typeof module !== 'undefined') {
   module.exports = allUserSleepSampleData;
 }

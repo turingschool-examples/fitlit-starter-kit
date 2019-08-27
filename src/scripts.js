@@ -3,6 +3,7 @@ const userRepository = new UserRepository(userData);
 const user = new User(userRepository.findUserData(randomUserId))
 const sleepUser = new SleepUser(sleepData);
 const hydrationUser = new HydrationUser(hydrationData);
+const activityUser = new ActivityUser(activityData, userData)
 // const sleepRepository = new SleepRepository(sleepTestData, 2)
 
 
@@ -19,7 +20,8 @@ $(document).ready(() => {
   $('.p__span--sleep-quality').text(sleepUser.findDailySleepQuality('2019/06/15', 2));
   $('.p__span--sleep-average-hours').text(sleepUser.findAverageHoursSlept('2019/06/15', '2019/06/21', 2));
   $('.p__span--sleep-average-quality').text(sleepUser.findAverageQualitySlept('2019/06/15', '2019/06/21', 2));
-  $('.header__date').text(findTodaysDate())
+  // $('.header__date').text(findTodaysDate());
+  $('.h3__article--steps-daily').text(activityUser.getDailyStepCount(randomUserId))
   
 });
 

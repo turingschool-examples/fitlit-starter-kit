@@ -93,7 +93,26 @@ class Activity {
   }
 
   findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers() {
+    let answerListOfDates = [];
 
+    this.currentUserData.some((currentDay, i, userArray) => {
+      // console.log("line 118", userArray)
+      console.log("indexBefore", i)
+      // console.log("line 119:", userArray[i + 1].numSteps)
+      if (i > 0 && i < 98 && userArray[i].numSteps < userArray[i + 1].numSteps && userArray[i + 1].numSteps < userArray[i + 2].numSteps) {
+        console.log("indexafter", i)
+        console.log(userArray[i].numSteps)
+        console.log(userArray[i + 1].numSteps)
+        console.log(userArray[i + 2].numSteps)
+        answerListOfDates.push(userArray[i])
+        answerListOfDates.push(userArray[i + 1])
+        answerListOfDates.push(userArray[i + 2])
+        console.log("AnswersDates:", answerListOfDates)
+      }
+    })
+      console.log("Answers:", answerListOfDates)
+        return answerListOfDates;
+    }
     //find all users whose steps increase for three or more days
     //will ultimately need their ids, (their names if we want), but it will
     //be an array of data.
@@ -111,25 +130,30 @@ class Activity {
     // each object can have a key of id correlated to the user Id
     // with an array of dates that are true for greater than three. 
 
-    let answerListOfIDs = [];
-    this.allActivityData.forEach(dataSet => {
-      let dataForCurrentUser = this.findCurrentUserData(dataSet.userID);
-      dataForCurrentUser.some((currentDay, i, userArray) => {
-        console.log("line 118", userArray)
-        console.log("line 119:", userArray[i + 1])
-        
-        if (userArray[i].numSteps < userArray[i + 1].numSteps && userArray[i + 1].numSteps < userArray[i + 2].numSteps) {
-          answerListOfIDs.push(userArray[i + 2])
-        }
-      })
-    })
-    console.log("line 125:", answerListOfIDs)
-    return answerListOfIDs;
-  }
+  //   let answerListOfDates = [];
+  //   // this.allActivityData.forEach(dataSet => {
+  //     // let dataForCurrentUser = this.findCurrentUserData(dataSet.userID);
+  //     dataForCurrentUser.some((currentDay, i, userArray) => {
+  //       // console.log("line 118", userArray)
+  //       console.log("indexBefore", i)
+  //       // console.log("line 119:", userArray[i + 1].numSteps)
+  //       if (i > 0 && i < 98 && userArray[i].numSteps < userArray[i + 1].numSteps && userArray[i + 1].numSteps < userArray[i + 2].numSteps) {
+  //         console.log("indexafter", i)
+  //         console.log(userArray[i].numSteps)
+  //         console.log(userArray[i + 1].numSteps)
+  //         console.log(userArray[i + 2].numSteps)
+  //         answerListOfDates.push(userArray[i])
+  //         answerListOfDates.push(userArray[i + 1])
+  //         answerListOfDates.push(userArray[i + 2])
+  //         console.log("AnswersDates:", answerListOfDates)
+  //       }
+  //     })
+  //   })
+  //   console.log("Answers:", answerListOfDatess)
+  //   return answerListOfDates;
+  // }
 
-
-  
-
+ 
 }
 
 

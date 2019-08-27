@@ -8,10 +8,10 @@ $(document).ready(() => {
   const userDataArray = userRepository.fetchUserData(idRandom);
   const currentUser = new User(userDataArray);
   const hydration = new Hydration(hydrationData, currentUser.id);
-  hydration.findCurrentUserData();
+  const currentUserHydrationData = hydration.findCurrentUserData();
   const activity = new Activity(activityData, idRandom, userData);
-  const findTrends = activity.findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers()
-//   activity.findCurrentUserData();
+  const currentUserActivityData = activity.findCurrentUserData();
+  const findTrends = activity.findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers();
 
   
 

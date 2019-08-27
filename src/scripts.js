@@ -11,7 +11,8 @@ $(document).ready(() => {
   const currentUserHydrationData = hydration.findCurrentUserData();
   const activity = new Activity(activityData, idRandom, userData);
   const currentUserActivityData = activity.findCurrentUserData();
-  const findTrends = activity.findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers();
+  const findStepTrends = activity.findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers();
+  const findStairTrends = activity.findTrendOfIncreasingStairsForMoreThanThreeDaysForAllUsers();
 
   
 

@@ -113,6 +113,29 @@ class Activity {
       console.log("Answers:", answerListOfDates)
         return answerListOfDates;
     }
+
+    findTrendOfIncreasingStairsForMoreThanThreeDaysForAllUsers() {
+      let answerListOfDates = [];
+  
+      this.currentUserData.some((currentDay, i, userArray) => {
+        // console.log("line 118", userArray)
+        // console.log("indexBeforeStairs", i)
+        // console.log("line 119:", userArray[i + 1].numSteps)
+        if (i > 0 && i < 98 && userArray[i].flightsOfStairs < userArray[i + 1].flightsOfStairs && userArray[i + 1].flightsOfStairs < userArray[i + 2].flightsOfStairs) {
+          console.log("indexafterStairs", i)
+          console.log("NumberOfStairs", userArray[i].flightsOfStairs)
+          console.log(userArray[i].flightsOfStairs)
+          console.log(userArray[i + 1].flightsOfStairs)
+          console.log(userArray[i + 2].flightsOfStairs)
+          answerListOfDates.push(userArray[i])
+          answerListOfDates.push(userArray[i + 1])
+          answerListOfDates.push(userArray[i + 2])
+          console.log("AnswersDates:Stairs", answerListOfDates)
+        }
+      })
+        console.log("Answers:Stairs", answerListOfDates)
+          return answerListOfDates;
+      }
     //find all users whose steps increase for three or more days
     //will ultimately need their ids, (their names if we want), but it will
     //be an array of data.

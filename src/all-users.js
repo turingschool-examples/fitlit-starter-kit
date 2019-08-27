@@ -77,6 +77,28 @@ class AllUsers {
             },0)/dateArr.length; 
         return parseInt(stairsAvg.toFixed(0)); 
     }  
+    getAverageSteps(day) {
+        let dateArr = this.data.filter((arr) => {
+            return arr.date === day;
+        }).map((arr) => {
+            return arr.numSteps
+        }, 0);
+        let stepsAvg = dateArr.reduce((acc, cur) => {
+            return acc += cur;
+        }, 0) / dateArr.length;
+        return parseInt(stepsAvg.toFixed(0));
+    } 
+    getAverageMinutes(day) {
+        let dateArr = this.data.filter((arr) => {
+            return arr.date === day;
+        }).map((arr) => {
+            return arr.minutesActive;
+        }, 0);
+        let minutesAvg = dateArr.reduce((acc, cur) => {
+            return acc += cur;
+        }, 0) / dateArr.length;
+        return parseInt(minutesAvg.toFixed(0));
+    } 
 }
         
 if (typeof module !== 'undefined') {

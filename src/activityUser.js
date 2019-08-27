@@ -13,7 +13,6 @@ class Activity {
         let userInfo = this.moveData.filter((obj) => {
             return obj.userID === user.id
         })
-        console.log("heres user info", userInfo)
         let dayOfSteps = userInfo.find(obj => obj.date === date);
         let milesWalked = parseFloat(((dayOfSteps.numSteps * user.strideLength)/5280).toFixed(2))
         return milesWalked

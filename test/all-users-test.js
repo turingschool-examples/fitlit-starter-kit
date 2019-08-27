@@ -26,9 +26,20 @@ describe('AllUsers', function() {
         const allUser = new AllUsers(AllUsersSampleData);
         expect(allUser.getWorstSleeperByDay('2019/06/15')).to.deep.equal([{userID: 5, date: "2019/06/15", hoursSlept: 4.1, sleepQuality: 3.6}])
     })
-    it.only('should return the all users stairs climbed for a specific date', function () {
+
+    it('should return the all users stairs climbed average for a specific date', function () {
         const allUser = new AllUsers(AllUserSampleActivityData);
-        allUser.getAverageStairsClimbed('2019/06/15');
+        allUser.getAverageStairsClimbed('2019/06/15').to.equal(21);
+    })
+
+    it('should return the all users steps average for a specific date', function () {
+        const allUser = new AllUsers(AllUserSampleActivityData);
+        allUser.getAverageSteps('2019/06/15').to.equal(6027);
+    })
+
+    it('should return the all users steps average for a specific date', function () {
+        const allUser = new AllUsers(AllUserSampleActivityData);
+        allUser.getAverageMinutes('2019/06/15').to.equal(144);
     })
 
  

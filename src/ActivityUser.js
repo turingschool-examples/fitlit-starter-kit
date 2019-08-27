@@ -79,17 +79,34 @@ class ActivityUser {
    return greatestClimb;
   }
 
-
   getDailyStepCount(id, date="2019/06/15") {
     let stepCount = this.activityTestData.find(user => user.userID === id && user.date === date)
    return stepCount.numSteps
 }
 
+//Write test for percent walked around earth method
+
+calculatePercentOfWorldWalked(id) {
+  const earthMiles = 24901
+  let user = this.findActivityInfo(id)
+  let steps = user.map(day => day.numSteps)
+  .reduce((acc, time) => {
+    return acc + time
+  }, 0)
+  let strideLength = this.findUserStrideLength(id)
+  let totalFeet = steps * strideLength
+  let miles = totalFeet / 5280
+  let total =  Number(miles.toFixed(2));
+  const percentWalked = total / earthMiles * 100
+  return Number(percentWalked.toFixed(2))
+}
 
 
 
 
 }
+
+
 
 if (typeof module !== 'undefined') {
   module.exports = ActivityUser;

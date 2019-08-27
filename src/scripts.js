@@ -13,6 +13,7 @@
 
   const sampleDate = '2019/06/25'
 
+
   $('.header__div--h2').text(`Hi, ${user.getUserFirstName()}!`);
 
   $('.header__div__user-stepgoal').text(`Your step goal: ${user.dailyStepGoal} steps`);
@@ -21,13 +22,10 @@
 
   $('.hydration__container--consumed--today').text(`Consumed today: ${userHydro.userHydrationByDate(sampleDate)}oz`);
 
-  userHydro.getHydroArray(sampleDate);
+  userHydro.getHydroArray()
 
   $('.hydration__container--consumed--this--week').text(`Daily average consumed this week: ${userHydro.getWeeklyHydroAvg()}oz`);
 
-  $('.main__hydration--thisWeek').after(`${buildWeeklyHTML('oz')}`)
-
-  $('.sleep--week-byDay').after(buildWeeklyHTMLSleep())
 
   $('.sleep__container--hours--today').text(`Hours slept today: ${sleepyPerson.getSleepHoursByDate(sampleDate)} hours`)
 
@@ -53,6 +51,98 @@
   $('.activity__container--allusers--active--today').text(`Active Minutes Today: ${activeRepo.getAvgActivityStatsAllUsers(sampleDate, 'minutesActive')}`)
 
   $('.activity__container--allusers--flights--today').text(`Flights climbed Today: ${activeRepo.getAvgActivityStatsAllUsers(sampleDate, 'flightsOfStairs')} flights of stairs`)
+
+const hydroChart = $('#hydroChart--thisWeek');
+
+let weekOfDates = sleepyPerson.getWeek(sampleDate).map(day => milisecondsToDate(day.date));
+
+
+var myChart = new Chart(hydroChart, {
+      type: 'bar',
+    data: {
+      labels: weekOfDates,
+        datasets: [{
+      label: 'Oz',
+          data: userHydro.getHydroArray().map(day => day.numOunces),
+    backgroundColor: [
+        'rgba(255, 99, 132, 1)',
+      'rgba(255, 99, 132, 1)',
+      'rgba(255, 99, 132, 1)',
+      'rgba(255, 99, 132, 1)',
+      'rgba(255, 99, 132, 1)',
+      'rgba(255, 99, 132, 1)',
+      'rgba(255, 99, 132, 1)',
+    ],
+    borderColor: [
+        'rgba(255, 99, 132, 1)',
+    ],
+    borderWidth: 1
+}]
+},
+    options: {
+      scales: {
+      yAxes: [{
+      ticks: {
+      beginAtZero: true
+}
+}]
+}
+}
+});
+const sleepChart = $('#sleepChart--thisWeek');
+
+
+var mixedChart = new Chart(sleepChart, {
+  type: 'bar',
+  data: {
+    datasets: [{
+      label: 'Hours Slept',
+      data: sleepyPerson.getWeek(sampleDate).map(day => day.hoursSlept),
+      backgroundColor: [
+        'rgba(0, 205, 229, .5)',
+        'rgba(0, 205, 229, .5)',
+        'rgba(0, 205, 229, .5)',
+        'rgba(0, 205, 229, .5)',
+        'rgba(0, 205, 229, .5)',
+        'rgba(0, 205, 229, .5)',
+        'rgba(0, 205, 229, .5)',
+      ],
+    }, {
+      type: 'line',
+      label: 'Sleep Quality',
+        data: sleepyPerson.getWeek(sampleDate).map(day => day.sleepQuality),
+        backgroundColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+        ],
+      
+        
+
+      // Changes this dataset to become a line
+      // type: 'bar'
+    
+    }],
+    labels: weekOfDates
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+
+
+
 
   function buildWeeklyHTMLActivity() {
     const weeklyMap = activePerson.getWeek(sampleDate).map(function (day) {
@@ -98,16 +188,30 @@
 
       
 
-console.log(user.friends.map(friend => {
+const friends = user.friends.map(friend => {
   let newUser = new User(repo.getUserData(friend))
   let newFriend = new Activity(activeRepo.getUserData(friend), newUser).getWeek(sampleDate).reduce((newObj, day)=> {
     if (!newObj['id']) {
-      newObj['id'] = day.userID
+      newObj['id'] = day.userID;
+      newObj['name'] = newUser.name;
       newObj['steps'] = 0;
     } newObj['steps'] += day.numSteps
     return newObj
   }, {})
   return newFriend
-}))
+})
+
+const compareFriendsSteps = () => {
+  friends.push({id: user.id, name: user.name, steps: (activePerson.getWeeklyAvg(sampleDate, 'numSteps')*7)});
+  friends.sort((personA, personB) => {
+    return personB.steps - personA.steps
+  })
+
+}
+
+compareFriendsSteps();
+
+console.log(friends)
+
 
 

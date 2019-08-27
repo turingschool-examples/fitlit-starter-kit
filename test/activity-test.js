@@ -52,4 +52,8 @@ describe('Activity', () => {
     expect(activity.stairClimbRecord(1)).to.equal(36);
   });
 
+  it('should tell the user how close to meeting thier step goal for the day', () => {
+    expect(activity.giveUserStepsFeedback(1, '2019/06/15', userData)).to.equal('Almost there! You have 6423 steps until you have met your step goal');
+  });
+
 });  

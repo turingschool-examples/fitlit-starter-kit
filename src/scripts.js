@@ -14,8 +14,7 @@ $('.grid').masonry({
     itemSelector: '.grid-item',
     columnWidth: 700,
     fitWidth: true,
-  });
-
+});
   
     $('#random-user-span').text(user.getFirstName());
     $('#article__user--name').text(user.getFirstName());
@@ -34,6 +33,8 @@ $('.grid').masonry({
     $('#article__user--comparesteps').text(activityRepository.avgStepsClimbed('2019/06/15'));
     $('#article__user--comparemins').text(activityRepository.avgStepsTaken('2019/06/15'));
     $('#article__user--comparestairs').text(activityRepository.avgMinutesActive('2019/06/15'));
+    $('#artice__user--step-goal-reminder').text(activity.giveUserStepsFeedback(randomUser, '2019/06/15', userData))
+
 
     const weeklyWaterIntake = new Chart($('#weekly-hydration-chart'), {
       type: 'bar',

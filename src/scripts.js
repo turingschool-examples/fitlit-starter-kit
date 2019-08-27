@@ -40,13 +40,13 @@ const weeklyOuncesChart = new Chart(document.getElementById('water-consumed-week
     datasets: [{
       data: hydration.returnWeeklyNumOunces(),
       backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(75, 180, 20, 0.2)'
+        'rgba(92, 117, 218, 0.2)',
+        'rgba(242, 188, 51, 0.2)',
+        'rgba(126, 221, 255, 0.2)',
+        'rgba(92, 117, 218, 0.2)',
+        'rgba(242, 188, 51, 0.2)',
+        'rgba(126, 221, 255, 0.2)',
+        'rgba(92, 117, 218, 0.2)'
       ],
     }]
   },

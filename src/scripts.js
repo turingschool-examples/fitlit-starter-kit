@@ -199,9 +199,11 @@ bar.animate(percentSteps > 1 ? percentSteps = 1 : percentSteps); // Number from 
 
 $('.number-of-steps-goal').text(`Daily Step Goal: ${user.dailyStepGoal}`);
 $('.avg-number-of-steps-goal').text(`Average User Step Goal: ${userRepo.returnAverageStepGoal()}`);
-$('.number-of-minutes-active-day').text(`${activity.returnMinutesActive(date)} minutes active`);
-$('.distance-of-miles-day').text(`${activity.returnMilesWalked()} miles`);
-$('.number-of-steps-week').text(`${activity.returnAverageStepsForWeek()} steps`);
+$('.number-of-minutes-active-day').text(`${activity.returnMinutesActive(date)}`);
+$('.average-minutes-active').text(`${activityRepo.returnAverage(date, 'minutesActive')}`)
+$('.distance').text(`${activity.returnNumStepsDay(date)}`);
+$('.average-distance').text(`${activityRepo.returnAverage(date, 'numSteps')}`)
+$('.distance-in-miles').text(`${activity.returnMilesWalked()} Miles`);
 $('.most-active').text(`${activityRepo.returnMostActive()[0]}: ${activityRepo.returnMostActive()[1]} minutes`);
 
 // Friends

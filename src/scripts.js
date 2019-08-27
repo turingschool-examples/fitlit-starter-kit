@@ -24,6 +24,8 @@ $(document).ready(() => {
   $('.article__p--steps-daily').text(activityUser.getDailyStepCount(randomUserId));
   $('.article__p--minutes-daily').text(activityUser.findMinutesActive('2019/06/15', randomUserId))
   $('.section__p--miles-daily').text(activityUser.calculateMilesWalked('2019/06/15', randomUserId))
+  $('.p__span--daily-water').text(hydrationUser.findDailyHydration('2019/06/15', randomUserId))
+
 });
 
 

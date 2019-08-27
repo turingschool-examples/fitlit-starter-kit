@@ -1,6 +1,7 @@
+let userIdNum = generateRandomUserId();
 const currentDate = '2019/06/30';
 const userRepo = new UserRepository(userData);
-let user = userRepo.returnUserData(23);
+let user = userRepo.returnUserData(userIdNum);
 let newUser = new User(user);
 let hydration = new Hydration(hydrationData);
 let sleep = new Sleep(sleepData);
@@ -33,24 +34,39 @@ $('#all-users-average-active-mins').text(activity.returnAvgActiveMinutesAllUsers
 $('#user-step-count-by-week').text(activity.returnNumberOfStepsByWeek(user.id, currentDate))
 $('#user-stairs-climbed-by-week').text(activity.returnStairsClimbedByWeek(user.id, currentDate))
 $('#user-mins-active-by-week').text(activity.returnActiveMinutesByWeek(user.id, currentDate))
-
-function populateFriends (userFriends) {
-  let friends = userFriends.map(friend => {
-    let userFriend = new User(userRepo.returnUserData(friend))
-    return ({id: userFriend.id, name: userFriend.name, steps: activity.returnNumberOfStepsByDate(userFriend.id, currentDate) })
-  });
-  return friends;
-}
-
 friendObjs.forEach(friend => $('#friend-info').append(`<p>Friend name: ${friend.name}, steps: ${friend.steps}</p>`))
+
+function generateRandomUserId () {
+    let randomNumOneToFifty = (Math.random() * 50);
+    return Math.ceil(randomNumOneToFifty);
+}
 
 function displaySleepStatus() {
   if(this.isRested === true) {
     $('#sleep-status').attr('src', '/images/ghost-happy.svg');
   } else {
     $('#sleep-status').attr('src', '/images/ghost-sad.svg');
-  }
+
+function populateFriends (userFriends) {
+  let friends = userFriends.map(friend => {
+    let userFriend = new User(userRepo.returnUserData(friend))
+    return ({
+      id: userFriend.id, 
+      name: userFriend.name, 
+      steps: (activity.returnNumberOfStepsByWeek(userFriend.id, currentDate)).reduce((acc, day) => acc += day)})
+  });
+  friends.push(populateUserDataForFriendChallenge());
+  return friends.sort((userA, userB) => userB.steps - userA.steps);
 }
+
+function populateUserDataForFriendChallenge() {
+    return {
+      id: user.id,
+      name: user.name,
+      steps: activity.returnNumberOfStepsByWeek(user.id, currentDate)
+        .reduce((acc, day) => acc += day)
+    }
+ }
 
 function returnDatesOfWeek(userId, date) {
   let userData = activity.findCurrentUserData(userId);

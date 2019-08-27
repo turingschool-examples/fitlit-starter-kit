@@ -14,49 +14,70 @@
     </header>
     <main>
       <section class="main__section--1"> 
-        <article class="main__article--user">
+        <article class="article__section1--top">
           <h2>Personal Information</h2>
+          <img class="article__img--avatar" src="../images/contact-1293388_640.png" alt="Image of an person">
+        </article>
+        <article class="main__article--user">
           <h5>Name:<span id= "article__user--name"></span></h5>
           <h5>Address:<span id= "article__user--address"></span></h5>
           <h5>Email:<span id= "article__user--email"></span></h5>
           <h5>Stride Length:<span id= "article__user--stridelength"></span></h5>
-          <h5>Step Goal:<span id= "article__user--stepgoal"></span></h5>
-          <h5>Steps Compared to Others:<span id= "article__user--stepcompare"></span></h5>
+          <h5>Your Daily Step Goal:<span id= "article__user--stepgoal"></span></h5>
+          <h5>Your Steps Compared to Others:<span id= "article__user--stepcompare"></span></h5>
         </article>
       </section>
     <section class="main__section--3">
-      <article class="main__article--sleep">
+      <article class="article__section3--top">
         <h2>Sleep Tracker</h2>
+        <img class="article__img-bed" src="../images/sleeping-297724_640.png" alt="Image person sleeping in a bed">
+      </article>
+      <article class="main__article--sleep">
         <h5>Current Sleep:<span id= "article__user--currentsleep"></span></h5>
-        <h5>Weeks Sleep:<span id= "article__user--weekssleep"></span></h5>
-        <h5>Alltime Average Sleep:<span id= "article__user--avgsleep"></span></h5>
+        <!-- <h5>Weeks Sleep:<span id= "article__user--weekssleep"></span></h5> -->
+        <article class="main__article--weekssleep">
+            <canvas id= "weekly-sleep-chart" width="450" height="350" aria-label="Graph to show hours of sleep and quality 7 days" role="bar graph"></canvas>
+        </article>
+        <!-- <h5>Alltime Average Sleep:<span id= "article__user--avgsleep"></span></h5> -->
+        <article class="main__article--avgsleep">
+            <canvas id= "alltime-average-sleep-chart" width="450" height="350" aria-label="Graph to show all-time average sleep quality and hours" role="bar graph"></canvas>
+        </article>
       </article>
     </section>
     <section class="main__section--4">
-      <article class="main__article--hydration">
+      <article class="article__section4--top">
         <h2>Hydration Tracker</h2>
+        <img class="article__img--cup" src="../images/water-295323_640.png" alt="Cup of water">
+      </article>
+      <article class="main__article--hydration">
         <canvas id= "weekly-hydration-chart" width="450" height="350" aria-label="Graph to show ounzes of water drank in 7 days" role="bar graph"></canvas>
        </article>
     </section>
     <section class="main__section--5">
-      <article class="main__article--activity">
-          <h2>Activity Tracker</h2>
-            <h5>Today's Steps:<span id= "article__user--todaysteps"></span></h5>
-            <h5>Active Minutes:<span id= "article__user--activemins"></span></h5>
-            <h5>Today's Distance:<span id= "article__user--todaydistance"></span></h5>
+       <article class="article__section5--top">
+         <h2>Activity Tracker</h2>
+         <img class="article__img-sleep" src="../images/running-297146_640.png" alt="Image person running">
+       </article>
+       <article class="main__article--activity">
+            <h5>Your Steps Today:<span id= "article__user--todaysteps"></span></h5>
+            <h5>Your Active Minutes:<span id= "article__user--activemins"></span></h5>
+            <h5>Your Distance Today in Miles:<span id= "article__user--todaydistance"></span></h5>
             <h5>Weekly View:<span id= "article__user--weeklyview"></span></h5>
           <h2>Compared Numbers</h2> 
-            <h5>Steps:<span id= "article__user--comparesteps"></span></h5>
+            <h5>Average of All User's Steps Taken:<span id= "article__user--comparesteps"></span></h5>
               <canvas id= "compare-user-steps-chart" width="200" height="200" aria-label="Graph to compare steps of users" role="pie graph"></canvas>
-            <h5>Minutes Active:<span id= "article__user--comparemins"></span></h5>
+            <h5>Average of All User's Minutes Active:<span id= "article__user--comparemins"></span></h5>
             <canvas id= "compare-minutes-active-chart" width="100" height="100" aria-label="Graph to compare minutes active of users" role="pie graph"></canvas>
-            <h5>Flights of Stairs:<span id= "article__user--comparestairs"></span></h5>
+            <h5>Average of All User's Flights of Stairs:<span id= "article__user--comparestairs"></span></h5>
             <canvas id= "compare-user-stairs-chart" width="300" height="300" aria-label="Graph to compare stairs climbed of users" role="pie graph"></canvas>
        </article>
      </section>
      <section class="main__section--6">
+      <article class="article__section6--top">
+        <h2>User Challenge</h2>
+        <img class="article__img-challenge" src="../images/man-40364_640.png" alt="Image of person holding a trophy">
+      </article>
       <article class="main__article--trends">
-          <h2>User Challenge</h2>
           <h5>Calculate Trends:<span id= "article__user--trends"></span></h5>
           <h5>Friends Status:<span id= "article__user--friendsstatus"></span></h5>
       </article>

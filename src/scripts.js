@@ -22,7 +22,7 @@ $('#user-sleep-quality-by-week').text(sleep.returnSleepQualityByWeek(user.id, cu
 $('#user-average-sleep-quality').text(sleep.returnAverageSleepQuality(user.id));
 $('#user-average-hours-slept').text(sleep.returnAverageSleep(user.id));
 $('#user-current-step-count').text(activity.returnNumberOfStepsByDate(user.id, currentDate))
-$('#user-is-rested').text(displaySleepStatus())
+$('#user-rested').text(displaySleepStatus())
 $('#user-current-mins-active').text(activity.returnActiveMinutesByDate(user.id, currentDate));
 $('#user-current-miles-walked').text(activity.returnMilesWalkedByDate(user, currentDate));
 $('#user-current-step-count-vs-average').text(activity.returnNumberOfStepsByDate(user.id, currentDate))
@@ -42,7 +42,8 @@ function generateRandomUserId () {
 }
 
 function displaySleepStatus() {
-  if (this.isRested === true) {
+  sleep.checkUserRestedByDate(user.id, currentDate)
+  if (sleep.isRested === true) {
     $('#sleep-status').attr('src', '/images/ghost-happy.svg');
   } else {
     $('#sleep-status').attr('src', '/images/ghost-sad.svg');
@@ -77,6 +78,7 @@ function returnDatesOfWeek(userId, date) {
   return userData.splice(index - 6, 7).map(day => day.date);
 }
 
+Chart.defaults.global.defaultFontColor = 'white';
 $('#user-water-by-week').text(hydration.returnFluidOzByWeek(user.id, currentDate));
 var ctx = $('#user-water-by-week');
 var hydrationByWeek = new Chart(ctx, {
@@ -106,6 +108,9 @@ var hydrationByWeek = new Chart(ctx, {
     }]
   },
   options: {
+    legend: {
+      display: false
+    },
     scales: {
       yAxes: [{
         ticks: {

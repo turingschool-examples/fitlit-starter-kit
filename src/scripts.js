@@ -13,7 +13,6 @@
 
   const sampleDate = '2019/06/25'
 
-  activePerson.getLongestStreak();
 
   $('.header__div--h2').text(`Hi, ${user.getUserFirstName()}!`);
 
@@ -23,7 +22,7 @@
 
   $('.hydration__container--consumed--today').text(`Consumed today: ${userHydro.userHydrationByDate(sampleDate)}oz`);
 
-  userHydro.getHydroArray(sampleDate);
+  userHydro.getHydroArray()
 
   $('.hydration__container--consumed--this--week').text(`Daily average consumed this week: ${userHydro.getWeeklyHydroAvg()}oz`);
 
@@ -55,6 +54,46 @@
   $('.activity__container--allusers--active--today').text(`Active Minutes Today: ${activeRepo.getAvgActivityStatsAllUsers(sampleDate, 'minutesActive')}`)
 
   $('.activity__container--allusers--flights--today').text(`Flights climbed Today: ${activeRepo.getAvgActivityStatsAllUsers(sampleDate, 'flightsOfStairs')} flights of stairs`)
+
+const hydroChart = $('#hydroChart--thisWeek');
+let weeklyOz = userHydro.getHydroArray().map(day => day.numOunces);
+let weekOfDates = sleepyPerson.getWeek(sampleDate).map(day => milisecondsToDate(day.date));
+console.log(weeklyOz)
+
+
+var myChart = new Chart(hydroChart, {
+      type: 'bar',
+    data: {
+      labels: weekOfDates,
+        datasets: [{
+      label: 'Oz',
+    data: weeklyOz,
+    backgroundColor: [
+        'rgba(255, 99, 132, 1)',
+      'rgba(255, 99, 132, 1)',
+      'rgba(255, 99, 132, 1)',
+      'rgba(255, 99, 132, 1)',
+      'rgba(255, 99, 132, 1)',
+      'rgba(255, 99, 132, 1)',
+      'rgba(255, 99, 132, 1)',
+    ],
+    borderColor: [
+        'rgba(255, 99, 132, 1)',
+    ],
+    borderWidth: 1
+}]
+},
+    options: {
+      scales: {
+      yAxes: [{
+      ticks: {
+      beginAtZero: true
+}
+}]
+}
+}
+});
+
 
   function buildWeeklyHTMLActivity() {
     const weeklyMap = activePerson.getWeek(sampleDate).map(function (day) {

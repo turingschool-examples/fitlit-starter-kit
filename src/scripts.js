@@ -21,8 +21,9 @@ $(document).ready(() => {
   $('.p__span--sleep-average-hours').text(sleepUser.findAverageHoursSlept('2019/06/15', '2019/06/21', 2));
   $('.p__span--sleep-average-quality').text(sleepUser.findAverageQualitySlept('2019/06/15', '2019/06/21', 2));
   // $('.header__date').text(findTodaysDate());
-  $('.h3__article--steps-daily').text(activityUser.getDailyStepCount(randomUserId))
-  
+  $('.article__p--steps-daily').text(activityUser.getDailyStepCount(randomUserId));
+  $('.article__p--minutes-daily').text(activityUser.findMinutesActive('2019/06/15', randomUserId))
+  $('.section__p--miles-daily').text(activityUser.calculateMilesWalked('2019/06/15', randomUserId))
 });
 
 

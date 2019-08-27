@@ -10,77 +10,82 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
 <body>
   <section class="welcome-section">
     <h1 class="logo"><img src="../images/logo.png" alt="FitLit logo"></h1>
     <h2 class="date"></h2>
     <h2 class="welcome-message">Welcome <span class="username"></span></h2>
   </section>
-  <section class="data-section hydration" tabindex="1">
-    <h4 class="data-heading">Hydration</h4>
-    <article class="data-article water-consumed-article">
-      <img class="img-medium" src="../images/drop.svg" alt="water droplet">
-      <p class="water-consumed"></p>
-      <p class="subtext">TODAY</p>
-    </article>
-    <article class="data-article water-consumed-week">
-      <canvas id="water-consumed-week"
-        alt="A bar chart that displays the number of ounces of water the user consumed daily, over the course of a week."></canvas>
-    </article>
-  </section>
-  <section class="data-section sleep" tabindex="2">
-    <h4 class="data-heading">Sleep</h4>
-    <article class="data-article hours-slept-day-article">
-      <img class="img-medium" src="../images/moon.svg" alt="road">
-      <p class="data-text hours-slept-day"></p>
-      <p class="data-text quality-sleep-day"></p>
-      <p class="subtext">LAST NIGHT</p>
-    </article>
-    <article class="data-article sleep-week">
-      <canvas id="sleep-week"
-        alt="A libe chart that displays the number of hours slept each day of the week and the quality of sleep each night."></canvas>
-    </article>
-    <article class="data-article hours-slept-week"></article>
-    <article class="data-article quality-sleep-week"></article>
-    <article class="data-article hours-slept-all-time"></article>
-    <article class="data-article quality-sleep-all-time"></article>
-  </section>
-  <section class="data-section activity" tabindex="3">
-    <h4 class="data-heading">Activity</h4>
-    <article class="data-article user-step-goal"></article>
-    <article class="data-article average-step-goal"></article>
-    <article class="data-article number-of-steps-day-article">
-      <p class="number-of-steps-day"></p>
-      <p class="subtext number-of-steps-goal"></p>
-      <p class="subtext avg-number-of-steps-goal"></p>
-    </article>
-    <article class="data-article number-of-minutes-active-day-article">
-      <img class="img-medium" src="../images/stopwatch.svg" alt="road">
-      <p class="data-text number-of-minutes-active-day"></p>
-      <p class="subtext">TODAY</p>
-    </article>
-    <article class="data-article distance-of-miles-day-article">
-      <img class="img-medium" src="../images/road.svg" alt="road">
-      <p class="data-text distance-of-miles-day"></p>
-      <p class="subtext">TODAY</p>
-    </article>
-    <article class="data-article number-of-steps-week-article">
-      <img class="img-medium" src="../images/footsteps-silhouette-variant.svg" alt="road">
-      <p class="data-text number-of-steps-week"></p>
-      <p class="subtext">THIS WEEK</p>
-    </article>
-    <article class="data-article number-of-stairs-week"></article>
-    <article class="data-article number-of-minutes-active-week"></article>
-  </section>
-  <section class="data-section friends" tabindex="4">
-    <h4 class="data-heading">Friends</h4>
-  </section>
-  <section class="data-section challenges" tabindex="5">
-    <h4 class="data-heading">Challenges</h4>
-  </section>
+  <div class ="grid">
+    <section class="data-section hydration grid-item draggable" tabindex="1">
+      <h4 class="data-heading">Hydration</h4>
+      <article class="data-article water-consumed-article">
+        <img class="img-medium" src="../images/drop.svg" alt="water droplet">
+        <p class="water-consumed"></p>
+        <p class="subtext">TODAY</p>
+      </article>
+      <article class="data-article water-consumed-week">
+        <canvas id="water-consumed-week"
+          alt="A bar chart that displays the number of ounces of water the user consumed daily, over the course of a week."></canvas>
+      </article>
+    </section>
+    <section class="data-section sleep grid-item draggable" tabindex="2">
+      <h4 class="data-heading">Sleep</h4>
+      <article class="data-article hours-slept-day-article">
+        <img class="img-medium" src="../images/moon.svg" alt="road">
+        <p class="data-text hours-slept-day"></p>
+        <p class="data-text quality-sleep-day"></p>
+        <p class="subtext">LAST NIGHT</p>
+      </article>
+      <article class="data-article sleep-week">
+        <canvas id="sleep-week"
+          alt="A libe chart that displays the number of hours slept each day of the week and the quality of sleep each night."></canvas>
+      </article>
+      <article class="data-article hours-slept-week"></article>
+      <article class="data-article quality-sleep-week"></article>
+      <article class="data-article hours-slept-all-time"></article>
+      <article class="data-article quality-sleep-all-time"></article>
+    </section>
+    <section class="data-section activity grid-item draggable" tabindex="3">
+      <h4 class="data-heading">Activity</h4>
+      <article class="data-article user-step-goal"></article>
+      <article class="data-article average-step-goal"></article>
+      <article class="data-article number-of-steps-day-article">
+        <p class="number-of-steps-day"></p>
+        <p class="subtext number-of-steps-goal"></p>
+        <p class="subtext avg-number-of-steps-goal"></p>
+      </article>
+      <article class="data-article number-of-minutes-active-day-article">
+        <img class="img-medium" src="../images/stopwatch.svg" alt="road">
+        <p class="data-text number-of-minutes-active-day"></p>
+        <p class="subtext">TODAY</p>
+      </article>
+      <article class="data-article distance-of-miles-day-article">
+        <img class="img-medium" src="../images/road.svg" alt="road">
+        <p class="data-text distance-of-miles-day"></p>
+        <p class="subtext">TODAY</p>
+      </article>
+      <article class="data-article number-of-steps-week-article">
+        <img class="img-medium" src="../images/footsteps-silhouette-variant.svg" alt="road">
+        <p class="data-text number-of-steps-week"></p>
+        <p class="subtext">THIS WEEK</p>
+      </article>
+      <article class="data-article number-of-stairs-week"></article>
+      <article class="data-article number-of-minutes-active-week"></article>
+    </section>
+    <section class="data-section friends grid-item draggable" tabindex="4">
+      <h4 class="data-heading">Friends</h4>
+    </section>
+    <section class="data-section challenges grid-item draggable" tabindex="5">
+      <h4 class="data-heading">Challenges</h4>
+    </section>
+  </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.7.0/dist/progressbar.js"></script>
+<script src="https://unpkg.com/packery@2/dist/packery.pkgd.js"></script>
+<script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
 <script type="text/javascript" src="../data/activity.js"></script>
 <script type="text/javascript" src="../data/sleep.js"></script>
 <script type="text/javascript" src="../data/users.js"></script>
@@ -92,8 +97,5 @@
 <script type="text/javascript" src="./SleepRepo.js"></script>
 <script type="text/javascript" src="./Activity.js"></script>
 <script type="text/javascript" src="./ActivityRepo.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.7.0/dist/progressbar.js"></script>
 <script type="text/javascript" src="./scripts.js"></script>
-
 </html>

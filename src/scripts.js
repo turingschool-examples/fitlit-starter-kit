@@ -1,6 +1,7 @@
 //Generate random user 
 const uniqueUserIndex = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
 
+
 //Repo variables
 const userRepo = new UserRepo(userData);
 const sleepRepo = new SleepRepo(sleepData);
@@ -31,6 +32,19 @@ function dropYear(dates) {
   return reformattedDates
 }
 
+
+//Packery Items 
+let $grid = $('.grid').packery({
+  itemSelector: '.grid-item',
+  columnWidth: 100
+});
+
+$grid.find('.grid-item').each(function (i, gridItem) {
+  let draggie = new Draggabilly(gridItem)
+  $grid.packery('bindDraggabillyEvents', draggie)
+});
+
+$(".draggable").draggabilly("enable");
 
 //User Section
 $('.username').text(`${user.returnUserName()}`)

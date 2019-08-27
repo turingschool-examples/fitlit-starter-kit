@@ -1,15 +1,15 @@
 class AllUsers {
-    constructor(sleepData) {
-        this.sleepData = sleepData;
+    constructor(data) {
+        this.data = data;
+
     }
 
-  
     getUserWeek(day) {
-        let index = this.sleepData.findIndex(object => {
+        let index = this.data.findIndex(object => {
             return object.date === day;
         });
     
-        let weekData = this.sleepData.slice(index - 35, index + 5)
+        let weekData = this.data.slice(index - 35, index + 5)
         return weekData;
         }
 
@@ -43,7 +43,7 @@ class AllUsers {
     }
 
     getBestSleeperByDay(today) {
-        let todayInfo = this.sleepData.filter((day) => {
+        let todayInfo = this.data.filter((day) => {
             return day.date === today
         })
         let hoursInfo= todayInfo.map(user => user.hoursSlept)
@@ -55,7 +55,7 @@ class AllUsers {
         }
 
     getWorstSleeperByDay(today) {
-        let todayInfo = this.sleepData.filter((day) => {
+        let todayInfo = this.data.filter((day) => {
             return day.date === today
         })
         let hoursInfo = todayInfo.map(user => user.hoursSlept)
@@ -65,8 +65,41 @@ class AllUsers {
         })
         return worstSleep;
     }
-    }  
 
+    getAverageStairsClimbed(day){
+        let dateArr = this.data.filter((arr) => {
+            return arr.date === day; 
+            }).map((arr) => {
+                return arr.flightsOfStairs
+            },0);
+            let stairsAvg = dateArr.reduce((acc, cur) => {
+                return acc += cur;
+            },0)/dateArr.length; 
+        return parseInt(stairsAvg.toFixed(0)); 
+    }  
+    getAverageSteps(day) {
+        let dateArr = this.data.filter((arr) => {
+            return arr.date === day;
+        }).map((arr) => {
+            return arr.numSteps
+        }, 0);
+        let stepsAvg = dateArr.reduce((acc, cur) => {
+            return acc += cur;
+        }, 0) / dateArr.length;
+        return parseInt(stepsAvg.toFixed(0));
+    } 
+    getAverageMinutes(day) {
+        let dateArr = this.data.filter((arr) => {
+            return arr.date === day;
+        }).map((arr) => {
+            return arr.minutesActive;
+        }, 0);
+        let minutesAvg = dateArr.reduce((acc, cur) => {
+            return acc += cur;
+        }, 0) / dateArr.length;
+        return parseInt(minutesAvg.toFixed(0));
+    } 
+}
         
 if (typeof module !== 'undefined') {
     module.exports = AllUsers;

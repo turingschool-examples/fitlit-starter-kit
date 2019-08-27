@@ -12,7 +12,8 @@ body {
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
     "header header header header header header"
-    "step1 step1 step2 step2 water1 water1";
+    "step1 step1 step2 step2 water1 water1"
+    "water2 water2 sleep sleep sleep sleep";
   margin: 0;
   height: 100vh;
 }
@@ -53,12 +54,26 @@ h3 {
   font-size: 1rem;
   font-weight: 300;
   margin-top: 5px;
+  text-align: center;
 }
 
 p {
   color: white;
   font-size: 3rem;
   margin: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  color: white;
+  font-size: 3rem;
+  margin: 0;
+  padding: 0;
 }
 
 article {
@@ -84,6 +99,10 @@ article {
   grid-area: water1;
 }
 
+#article4 {
+  grid-area: water2;
+}
+
 @media screen and (max-width: 700px) {
 
   body {
@@ -92,7 +111,7 @@ article {
     grid-template-areas:
       "header header header header"
       "step1 step1 step2 step2"
-      "water1 water1 sleep sleep";
+      "water1 water1 water2 water2";
   }
 
 @media screen and (max-width: 600px) {
@@ -129,7 +148,7 @@ article {
         "step1 step1"
         "step2 step2"
         "water1 water1"
-        "sleep sleep";
+        "water2 water2";
     }
 
     h1 {

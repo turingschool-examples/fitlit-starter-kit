@@ -2,11 +2,11 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Activity = require('../src/activity');
-
-const activityData = require('../data/activity');
+const activityRepo = require('../src/activity-repository');
+const activityData = require('../data/test-data-activity');
 const User = require('../src/user');
-const UserRepository = require('../src/users-repository')
-const userData = require('../data/users');
+const UserRepository = require('../src/users-repository');
+const userData = require('../data/test-data');
 
 describe('Activity', () => {
   
@@ -27,10 +27,29 @@ describe('Activity', () => {
   });
 
   it('should return miles walked for specific date', () => {
-    expect(activity.calculateMilesWalked("2019/06/15")).to.equal(0);
+    expect(activity.calculateMilesWalked("2019/06/15", 1)).to.equal(2.9);
+  });
+
+  it('should be able to return minutes active for a day', () => {
+  expect(activity.calculateMinActive('2019/06/15', 1)).to.equal(140)
+  });
+
+  it('should return avg number of minutes active for a week', () => {
+    expect(activity.calculateAvgTimeActive('2019/06/20', 1)).to.equal(171.1)
+  });
+
+  it('should return true if a user reached their step goal for a specific date', () => {
+    expect(activity.compareGoal('2019/06/20', 1)).to.equal(true);
+  });
+
+  it('should return all days where the user exceeded their step goal', () => {
+    expect(activity.findGoalDays(1)).to.deep.equal(activity.data.filter(data => data.numSteps > userRepo.users[0].dailyStepGoal).filter(user => user.userID === 1));
+  });
+
+  it('should return their all time stair record', () => {
+    // console.log(activity.data);
+    expect(activity.findMostStairs(1)).to.equal(activity.data[5])
   })
 
-    // it('should be able to return avg minutes active for a week', () => {
-  //   expect(activityRepo.calculateAvgMinActive('2019/06/15', 1)).to.equal(0)
-  // });
+
 });

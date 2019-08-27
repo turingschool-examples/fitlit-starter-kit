@@ -22,7 +22,7 @@ class Hydration {
 
     let day = userWeek.findIndex(days => days.date === date)
 
-    return userWeek.slice(day - 3, day + 4);
+    return userWeek.slice(day - 5, day + 2);
   }
 }
 

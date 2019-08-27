@@ -53,7 +53,7 @@
   $('.activity__container--allusers--flights--today').text(`Flights climbed Today: ${activeRepo.getAvgActivityStatsAllUsers(sampleDate, 'flightsOfStairs')} flights of stairs`)
 
 const hydroChart = $('#hydroChart--thisWeek');
-let weeklyOz = userHydro.getHydroArray().map(day => day.numOunces);
+
 let weekOfDates = sleepyPerson.getWeek(sampleDate).map(day => milisecondsToDate(day.date));
 
 
@@ -63,7 +63,7 @@ var myChart = new Chart(hydroChart, {
       labels: weekOfDates,
         datasets: [{
       label: 'Oz',
-    data: weeklyOz,
+          data: userHydro.getHydroArray().map(day => day.numOunces),
     backgroundColor: [
         'rgba(255, 99, 132, 1)',
       'rgba(255, 99, 132, 1)',
@@ -91,18 +91,13 @@ var myChart = new Chart(hydroChart, {
 });
 const sleepChart = $('#sleepChart--thisWeek');
 
-const weeklyHoursSlept = sleepyPerson.getWeek(sampleDate).map(day => day.hoursSlept)
-
-const weeklySleepQuality = sleepyPerson.getWeek(sampleDate).map(day => day.sleepQuality)
-
-
 
 var mixedChart = new Chart(sleepChart, {
   type: 'bar',
   data: {
     datasets: [{
       label: 'Hours Slept',
-      data: weeklyHoursSlept,
+      data: sleepyPerson.getWeek(sampleDate).map(day => day.hoursSlept),
       backgroundColor: [
         'rgba(0, 205, 229, .5)',
         'rgba(0, 205, 229, .5)',
@@ -115,7 +110,7 @@ var mixedChart = new Chart(sleepChart, {
     }, {
       type: 'line',
       label: 'Sleep Quality',
-        data: weeklySleepQuality,
+        data: sleepyPerson.getWeek(sampleDate).map(day => day.sleepQuality),
         backgroundColor: [
           'rgba(255, 99, 132, 1)',
           'rgba(255, 99, 132, 1)',

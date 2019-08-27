@@ -1,6 +1,6 @@
-
+const randomUserId = Math.floor(Math.random() * (50 - 1 + 1)) + 1
 const userRepository = new UserRepository(userData);
-const user = new User(userRepository.findUserData(2))
+const user = new User(userRepository.findUserData(randomUserId))
 const sleepUser = new SleepUser(sleepData);
 const hydrationUser = new HydrationUser(hydrationData);
 // const sleepRepository = new SleepRepository(sleepTestData, 2)

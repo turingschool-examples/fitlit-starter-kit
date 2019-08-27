@@ -1,5 +1,7 @@
-// const hydrationData = require('../data-subsets/hydration-subset');
 
+if (typeof module !== "undefined") {
+  hydrationData = require('../data-subsets/hydration-subset');
+}
 class Hydration {
   constructor(userData) {
     this.userData = userData;

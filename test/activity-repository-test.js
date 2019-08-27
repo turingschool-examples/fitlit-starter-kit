@@ -22,7 +22,7 @@ describe('Activity', () => {
   });
 
   it('should calculate average stairs climbed for all users on a given day', function () {
-    expect(activity.returnAvgStairsClimbedAllUsersByDate('2019/06/15')).to.equal(8);
+    expect(activity.returnAvgStairsClimbedAllUsersByDate('2019/06/15')).to.equal(19);
   });
 
   it('should return how many minutes active a specified user was on a specific date', () => {
@@ -38,11 +38,11 @@ describe('Activity', () => {
   })
   
   it('should calculate average steps taken for all users on a given day', function () {
-    expect(activity.returnAvgStepsTakenAllUsersByDate('2019/06/16')).to.equal(3293);
+    expect(activity.returnAvgStepsTakenAllUsersByDate('2019/06/16')).to.equal(7684);
   });
 
   it('should calculate average minutes active for all users on a given day', function () {
-    expect(activity.returnAvgActiveMinutesAllUsersByDate('2019/06/16')).to.equal(78);
+    expect(activity.returnAvgActiveMinutesAllUsersByDate('2019/06/16')).to.equal(182);
   });
 
   it('should find all of the days the user met their step goal', function () {
@@ -81,5 +81,19 @@ describe('Activity', () => {
   it('should calculate a user\'s flights of stairs for a given day', function () {
     expect(activity.returnStairsClimbedByDate(1, '2019/06/15')).to.equal(16);
   });
+
+  it('should be able to find streaks of three days where steps increased for each day', () => {
+    expect(activity.returnThreeDayStepStreak(1)).to.eql([{
+      "2019/06/15": 3577,
+      "2019/06/16": 6637,
+      "2019/06/17": 14329
+    },
+    {
+      "2019/06/18": 4419,
+      "2019/06/19": 8429,
+      "2019/06/20": 14478
+    }
+    ]);
+  })
 
 });

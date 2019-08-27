@@ -1,22 +1,40 @@
 $(document).ready(() => {
-  const currentDate = '2019/06/30';
+  let userIdNum = generateRandomUserId();
+  let currentDate = '2019/06/30';
 
-  const userRepo = new UserRepository(userData);
-  let user = userRepo.returnUserData(15);
+  let userRepo = new UserRepository(userData);
+  let user = userRepo.returnUserData(userIdNum);
   let newUser = new User(user);
   let hydration = new Hydration(hydrationData);
   let sleep = new Sleep(sleepData);
   let activity = new Activity(activityData)
+  let friendObjs = populateFriends(user.friends);
+
+  function generateRandomUserId () {
+    let randomNumOneToFifty = (Math.random() * 50);
+    return Math.ceil(randomNumOneToFifty);
+  }
 
   function populateFriends (userFriends) {
     let friends = userFriends.map(friend => {
       let userFriend = new User(userRepo.returnUserData(friend))
-      return ({id: userFriend.id, name: userFriend.name, steps: activity.returnNumberOfStepsByDate(userFriend.id, currentDate) })
+      return ({
+        id: userFriend.id, 
+        name: userFriend.name, 
+        steps: (activity.returnNumberOfStepsByWeek(userFriend.id, currentDate)).reduce((acc, day) => acc += day)})
     });
-    return friends;
+    friends.push(populateUserDataForFriendChallenge());
+    return friends.sort((userA, userB) => userB.steps - userA.steps);
   }
 
-  let friendObjs = populateFriends(user.friends);
+  function populateUserDataForFriendChallenge() {
+    return {
+      id: user.id,
+      name: user.name,
+      steps: activity.returnNumberOfStepsByWeek(user.id, currentDate)
+        .reduce((acc, day) => acc += day)
+    }
+  }
     
   $('#user-name').text(newUser.returnUserFirstName());
   $('#user-info-name').text(newUser.name);
@@ -45,7 +63,7 @@ $(document).ready(() => {
   $('#user-stairs-climbed-by-week').text(activity.returnStairsClimbedByWeek(user.id, currentDate))
   $('#user-mins-active-by-week').text(activity.returnActiveMinutesByWeek(user.id, currentDate))
 
-  friendObjs.forEach(friend => $('#friend-info').append(`<p>Friend name: ${friend.name}, steps: ${friend.steps}</p>`))
+  friendObjs.forEach(friend => $('#friend-info').append(`<p>Friend: ${friend.name}, steps: ${friend.steps}</p>`))
 
 });
 

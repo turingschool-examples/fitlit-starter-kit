@@ -79,8 +79,8 @@ describe('ActivityUser', function() {
     expect(activityUser.findAverageMinutesActive('2019/06/23', '2019/07/01', 2)).to.equal(199.4)
   });
 
-  it('should calculate if step goal was/was not reached', function() {
-    expect(activityUser.calculateStepGoal('2019/06/23', user3)).to.equal('Step goal was not met today.')
+  it.only('should calculate if step goal was/was not reached', function() {
+    expect(activityUser.calculateStepGoal('2019/06/23', 3)).to.equal('335 more steps to go!')
   })
 
 }); //<<----end of describe block

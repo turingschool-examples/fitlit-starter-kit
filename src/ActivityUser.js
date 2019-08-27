@@ -71,6 +71,13 @@ class ActivityUser{
     return exceptionalDays;
   }
 
+  findGreatestClimb(id) {
+    let greatestClimb = this.findActivityInfo(id).map(day => day.flightsOfStairs)
+    .reduce((acc, climb) => {
+      return (climb < acc) ? acc : climb
+    })
+   return greatestClimb;
+  }
 
 
 

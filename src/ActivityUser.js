@@ -41,6 +41,12 @@ class ActivityUser{
     return Math.round((totalTime / 7) * 10) / 10
   }
 
+  getGoal(id) {
+    return this.userData.find(user => {
+      return user.id === id
+    }).dailyStepGoal;
+  }
+
   calculateStepGoal(date, id) {
     let stepGoal = this.userData.find(user => {
       return user.id === id
@@ -48,16 +54,23 @@ class ActivityUser{
     let dailySteps = this.activityTestData.find(user => {
       return user.date === date && user.userID === id
     }).numSteps
-    
+
     let difference = stepGoal - dailySteps
 
     return dailySteps >= stepGoal ? 'You have achieved your daily goal!' : `${difference} more steps to go!`
 
   }
-// get step goal from user
-// get id of user to find activity object
-// date & id ---> find activity object
-// return string indicating whether or not a step goal is met
+
+  findExceptionalDays(id) {
+    let stepGoal = this.userData.find(user => {
+      return user.id === id
+    }).dailyStepGoal;
+    var exceptionalDays = this.activityTestData.filter(user => user.userID === id)
+    .filter(day => day.numSteps > stepGoal);
+
+    return exceptionalDays;
+  }
+
 
 
 

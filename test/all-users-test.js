@@ -29,18 +29,17 @@ describe('AllUsers', function() {
 
     it('should return the all users stairs climbed average for a specific date', function () {
         const allUser = new AllUsers(AllUserSampleActivityData);
-        allUser.getAverageStairsClimbed('2019/06/15').to.equal(21);
+        expect(allUser.getAverageStairsClimbed('2019/06/15')).to.equal(21);
     })
 
     it('should return the all users steps average for a specific date', function () {
         const allUser = new AllUsers(AllUserSampleActivityData);
-        allUser.getAverageSteps('2019/06/15').to.equal(6027);
+        expect(allUser.getAverageSteps('2019/06/15')).to.equal(6027);
     })
 
     it('should return the all users steps average for a specific date', function () {
         const allUser = new AllUsers(AllUserSampleActivityData);
-        allUser.getAverageMinutes('2019/06/15').to.equal(144);
+        expect(allUser.getAverageMinutes('2019/06/15')).to.equal(144);
     })
-
  
 })

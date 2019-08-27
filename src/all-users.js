@@ -3,7 +3,6 @@ class AllUsers {
         this.data = data;
 
     }
-
     getUserWeek(day) {
         let index = this.data.findIndex(object => {
             return object.date === day;

@@ -10,6 +10,7 @@ describe('User', function() {
     })
     it('should be able to return the user first name', function() {
         const user1 = new User(sampleData[0]);
-        expect(user1.getUserFirstName()).to.equal('Luisa');
+        expect(user1.getUserFirstName()).to.equal('Luisa');    
     })
-    })
+
+})

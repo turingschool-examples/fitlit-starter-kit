@@ -13,7 +13,10 @@ const hydrationRepo = new Hydration(hydrationData);
 const currentUserHydration = hydrationRepo.waterData.filter(user => user.userID === uniqueUserId);
 const sleepRepo = new Sleep(sleepData);
 const currentUserSleep = sleepRepo.sleepData.filter(user => user.userID === uniqueUserId)
-// console.log("hydration repo method", typeof hydrationRepo.dailyHydration());
+
+const activityRepo = new Activity(activityData);
+const currentUserActivity = activityRepo.moveData.filter(user => user.userID === uniqueUserId)
+
 
 $('.user_card-name-span').text(user.getUserFirstName(uniqueUserId));
 $('.step_goal-user-span').text(`${user.dailyStepGoal}`);
@@ -30,6 +33,13 @@ $('.main_weekly-sleep-hours-span').text(sleepRepo.getUserHoursWeekAverage(unique
 
 $('.main_weeekly-sleep-quality-span').text(sleepRepo.getUserQualityWeekAverage(uniqueUserId, findToday()));
 
+$('.main_weeekly-sleep-quality-span').text(sleepRepo.getUserQualityWeekAverage(uniqueUserId, findToday()));
+
+$('.main_daily-steps-span').text(activityRepo.getStepsToday(uniqueUserId, findToday()));
+
+$('.main_daily-minutes-active-span').text(activityRepo.getMinutesActive(uniqueUserId, findToday()));
+
+// $('.').text(activityRepo.getMilesWalked(uniqueUserId, findToday()));
 
 
 

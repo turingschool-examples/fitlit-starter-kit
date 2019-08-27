@@ -18,7 +18,6 @@ class Activity {
 		this.data.forEach(user => {
 			if(user['date'] === date) {
 				this.numSteps = user.numSteps
-				console.log(this.numSteps)
 			}
 		})
 	}
@@ -27,7 +26,6 @@ class Activity {
 		this.data.forEach(user => {
 			if(user['date'] === date) {
 				this.minutesActive = user.minutesActive
-				console.log(this.minutesActive)
 			}
 		});
 	}

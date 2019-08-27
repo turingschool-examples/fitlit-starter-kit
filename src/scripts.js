@@ -40,7 +40,7 @@ function initializePage(data, hydro, sleepy, activity) {
 	const hydroRepository = new HydroRepository(hydro)
 	hydroRepository.findUserID(randoNum);
 	const userHydro = new UserHydro(hydroRepository.currentUser)
-	const sleepRepository = new SleepRepository(sleepy)
+	sleepRepository = new SleepRepository(sleepy)
 	sleepRepository.findUserID(randoNum);
 	const sleep = new Sleep(sleepRepository.currentUser)
 	const sleep2 = new Sleep(sleepRepository.data)
@@ -194,8 +194,7 @@ function userSleepAvg(singleSleepObj, sleepObj, userObj) {
 				})
 			}
 		})
-		// sleepAvgQuality.innerHTML = `Users with sleep quality greater than 3: ${sleepIDs}`
-		// console.log(sleepIDs)
+		sleepAvgQuality.innerHTML = `Users with sleep quality greater than 3: ${sleepIDs}`
 }
 
 function appendActivityList(array, obj) {
@@ -208,8 +207,25 @@ function appendActivityList(array, obj) {
     option.text = array[i];
     dateActivityList.appendChild(option);
     if (dateActivityList.value === array[i]) {
-		steps.innerHTML = `Number of steps today: ${obj.findNumSteps(i)}`
-		minutes.innerHTML =`Number of Minutes active: ${obj.findMinActive(i)}`
+    	obj.findNumSteps(dateActivityList.value)
+    	obj.findMinActive(dateActivityList.value)
     		}
-		}
+    dateActivityList.addEventListener('change', function() {
+   obj.findNumSteps(dateActivityList.value)
+   obj.findMinActive(dateActivityList.value)
+		steps.innerHTML = `Number of steps today: ${obj.numSteps}`
+		minutes.innerHTML =`Number of Minutes active: ${obj.minutesActive}`
+		// for (let i = 0; i < array.length; i++) {
+		// 	if (dateActivityList.value === array[i]) {
+  //   	sleepWeek.innerHTML = `Hours slept throughout week: ${obj.findSleepWeek(i)}`
+  //   	sleepQuality.innerHTML = `Sleep quality throughout week: ${obj.findSleepWeekQuality(i)}`
+  //   			}
+		// 	}
+		})
+   obj.findNumSteps(dateActivityList.value)
+   obj.findMinActive(dateActivityList.value)
+		steps.innerHTML = `Number of steps today: ${obj.numSteps}`
+		minutes.innerHTML =`Number of Minutes active: ${obj.minutesActive}`
 	}
+}
+	

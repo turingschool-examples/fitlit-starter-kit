@@ -77,7 +77,7 @@ class Sleep {
 		return weekDays
 	}
   
-			compareQualityAverage(index) {
+	compareQualityAverage(index) {
 				this.week = []
 				let weekDays = []
 				if (index + 7 < this.data.length) {

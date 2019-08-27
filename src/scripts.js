@@ -27,7 +27,9 @@ $(document).ready(() => {
   $('.p__span--daily-water').text(hydrationUser.findDailyHydration('2019/06/15', randomUserId));
   $('.article__p--weekly').text(hydrationUser.findWeeklyHydration(randomUserId));
   $('.p__span--sleep-quality').text(sleepUser.findDailySleepQuality('2019/06/15', randomUserId));
-  $('.p__span--sleep-hours').text(sleepUser.findDailySleep('2019/06/15', randomUserId))
+  $('.p__span--sleep-hours').text(sleepUser.findDailySleep('2019/06/15', randomUserId));
+  $('.p__span--sleep-average-quality').text(sleepUser.findAverageQualitySlept('2019/06/08', '2019/06/15', randomUserId));
+  $('.p__span--sleep-average-hours').text(sleepUser.findAverageHoursSlept('2019/06/08', '2019/06/15', randomUserId))
 
 });
 

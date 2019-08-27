@@ -38,7 +38,7 @@ class ActivityUser{
     .reduce((acc, time) => {
       return acc + time
     }, 0)
-    return Math.round((totalTime / 7) * 10) / 10
+    return Math.round((totalTime / 7) * 10) /10
   }
 
   getGoal(id) {

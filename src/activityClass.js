@@ -157,13 +157,6 @@ class Activity {
     }, 0)
     return activeMins / day.length
   }
-
-
-
-
-
-
-
 }
 
 

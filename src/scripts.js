@@ -32,6 +32,9 @@ $(document).ready(() => {
   $('.p__span--sleep-average-hours').text(sleepUser.findAverageHoursSlept('2019/06/08', '2019/06/15', randomUserId));
   $('.article__span--steps-weekly').text(activityUser.findAverageMinutesActive('2019/06/08', '2019/06/15', randomUserId));
   $('.article__p--percent-world').text(activityUser.calculatePercentOfWorldWalked(randomUserId))
+  $('.article__h4--weekly-steps').text(activityUser.getWeeklyStepCount('2019/06/15', randomUserId))
+
+
 });
 
 

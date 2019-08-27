@@ -26,6 +26,8 @@ $(document).ready(() => {
   $('.section__p--miles-daily').text(activityUser.calculateMilesWalked('2019/06/15', randomUserId));
   $('.p__span--daily-water').text(hydrationUser.findDailyHydration('2019/06/15', randomUserId));
   $('.article__p--weekly').text(hydrationUser.findWeeklyHydration(randomUserId));
+  $('.p__span--sleep-quality').text(sleepUser.findDailySleepQuality('2019/06/15', randomUserId));
+  $('.p__span--sleep-hours').text(sleepUser.findDailySleep('2019/06/15', randomUserId))
 
 });
 

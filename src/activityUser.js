@@ -1,28 +1,27 @@
+
 class Activity {
     constructor(moveData) {
         this.moveData = moveData;
     }
 
     findUser(user) {
-        return this.moveData.filter((obj) => {
+        let person = this.moveData.filter((obj) => {
             return obj.userID === user.id
         })
+        return person;
     }
 
     getMilesWalked(user, date) {
-        let userInfo = this.moveData.filter((obj) => {
-            return obj.userID === user.id
-        })
+        let userInfo = this.findUser(user)
         let dayOfSteps = userInfo.find(obj => obj.date === date);
         let milesWalked = parseFloat(((dayOfSteps.numSteps * user.strideLength)/5280).toFixed(2))
+        console.log(milesWalked)
         return milesWalked
 
     }
 
     getMinutesActive(user, date) {
-        let userInfo = this.moveData.filter((obj) => {
-            return obj.userID === user.id
-        })
+        let userInfo = this.findUser(user)
         let activeToday = userInfo.find((day) => {
             return day.date === date
         })
@@ -30,9 +29,7 @@ class Activity {
     }
 
     getAverageActivityForWeek(user, day) {
-        let userInfo = this.moveData.filter((obj) => {
-            return obj.userID === user.id
-        })
+        let userInfo = this.findUser(user)
         let targetIndex = userInfo.findIndex(obj => {
             return obj.date === day
         })
@@ -45,8 +42,6 @@ class Activity {
 
     returnStepGoalMet(user,day) {
         let userInfo = this.findUser(user)
-        console.log("user info", userInfo)
-        console.log("step goal", user.dailyStepGoal)
         let todaysSteps = userInfo.find(obj => obj.date === day)
         console.log("today steps", todaysSteps.numSteps)
         if (todaysSteps.numSteps >= user.dailyStepGoal) {
@@ -73,7 +68,17 @@ class Activity {
         }).map(day => day.date)
         return bestClimbingDay
     }
+
+    getStepsToday(user, day) {
+        let userInfo = this.findUser(user)
+        let todaysSteps = userInfo.find(obj => {
+            return obj.date === day
+        })
+        return todaysSteps.numSteps;
+    }
+
 }
+
 
 
 if (typeof module !== 'undefined') {

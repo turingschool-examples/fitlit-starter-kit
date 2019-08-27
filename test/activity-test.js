@@ -4,7 +4,6 @@ const expect = chai.expect;
 const Activity = require('../src/activityUser')
 const activitySampleData = require('../test/activity-sample-data.js')
 const userSampleData = require('../test/sample-data.js')
-const User = require('../src/userClass.js')
 const UserRepository = require('../src/user-repository.js')
 
 describe('Activity', function() {
@@ -41,10 +40,19 @@ describe('Activity', function() {
         const activity = new Activity(activitySampleData)
         expect(activity.getDaysStepGoalExceeded(user)).to.deep.equal(['2019/06/17', '2019/06/20', '2019/06/22', '2019/06/23'])
     })
+
     it('should return when the user climbed the most stairs', function() {
         const userRepo = new UserRepository(userSampleData) 
         const user = userRepo.returnUserData(1);
         const activity = new Activity(activitySampleData)
         expect(activity.getStairClimbingRecord(user)).to.deep.equal(['2019/06/16'])
     })
+
+    it('should return the steps a user has walked for today', function () {
+        const userRepo = new UserRepository(userSampleData)
+        const user = userRepo.returnUserData(1);
+        const activity = new Activity(activitySampleData)
+        expect(activity.getStepsToday(user, '2019/06/25')).to.equal(3093)
+    })
+
     })

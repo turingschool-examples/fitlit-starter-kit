@@ -97,6 +97,23 @@ class Activity {
     return false;
   }
 
+  returnThreeDayStepStreak(userID) {
+    let userData = this.findCurrentUserData(userID);
+    return userData.reduce((acc, day, index) => {
+      if (index < 2) {
+        return acc;
+      }
+      if ((day.numSteps > userData[index - 1].numSteps) && (userData[index - 1].numSteps > userData[index - 2].numSteps)) {
+        acc.push({
+          [userData[index].date]: userData[index].numSteps,
+          [userData[index - 1].date]: userData[index - 1].numSteps,
+          [userData[index - 2].date]: userData[index - 2].numSteps,
+        });
+      }
+      return acc;
+    }, []);
+  }
+
 }
 
 if (typeof module !== 'undefined') {

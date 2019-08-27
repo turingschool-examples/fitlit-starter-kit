@@ -135,4 +135,7 @@ $('.number-of-steps-goal').text(`Daily Step Goal: ${user.dailyStepGoal}`);
 $('.avg-number-of-steps-goal').text(`Average User Step Goal: ${userRepo.returnAverageStepGoal()}`);
 $('.number-of-minutes-active-day').text(`${activity.returnMinutesActive(date)} minutes active`);
 $('.distance-of-miles-day').text(`${activity.returnMilesWalked()} miles`);
-$('.number-of-steps-week').text(`Weekly Number Of Steps: ${activity.returnAverageStepsForWeek()}`);
+$('.number-of-steps-week').text(`${activity.returnAverageStepsForWeek()} steps`);
+
+// Friends
+// activity.returnFriendsStepCount()

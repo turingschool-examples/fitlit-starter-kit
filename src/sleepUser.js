@@ -26,7 +26,6 @@ class Sleep {
     }
 
     getHoursForDay(id, date) {
-        console.log(this.findUser(id).find(user => user.date === date).hoursSlept.toFixed(0));
         return this.findUser(id).find(user => user.date === date).hoursSlept.toFixed(0);
 
     }

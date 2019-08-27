@@ -1,6 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
+const AllUserSampleActivityData = require('../test/allUserActivitySampleData')
 const AllUsersSampleData = require('../test/allUserSleepSampleData')
 const AllUsers = require('../src/all-users');
 
@@ -25,5 +26,10 @@ describe('AllUsers', function() {
         const allUser = new AllUsers(AllUsersSampleData);
         expect(allUser.getWorstSleeperByDay('2019/06/15')).to.deep.equal([{userID: 5, date: "2019/06/15", hoursSlept: 4.1, sleepQuality: 3.6}])
     })
+    it.only('should return the all users stairs climbed for a specific date', function () {
+        const allUser = new AllUsers(AllUserSampleActivityData);
+        allUser.getAverageStairsClimbed('2019/06/15');
+    })
+
  
 })

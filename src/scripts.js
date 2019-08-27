@@ -26,9 +26,6 @@
 
   $('.hydration__container--consumed--this--week').text(`Daily average consumed this week: ${userHydro.getWeeklyHydroAvg()}oz`);
 
-  $('.main__hydration--thisWeek').after(`${buildWeeklyHTML('oz')}`)
-
-  $('.sleep--week-byDay').after(buildWeeklyHTMLSleep())
 
   $('.sleep__container--hours--today').text(`Hours slept today: ${sleepyPerson.getSleepHoursByDate(sampleDate)} hours`)
 
@@ -58,7 +55,6 @@
 const hydroChart = $('#hydroChart--thisWeek');
 let weeklyOz = userHydro.getHydroArray().map(day => day.numOunces);
 let weekOfDates = sleepyPerson.getWeek(sampleDate).map(day => milisecondsToDate(day.date));
-console.log(weeklyOz)
 
 
 var myChart = new Chart(hydroChart, {
@@ -93,6 +89,64 @@ var myChart = new Chart(hydroChart, {
 }
 }
 });
+const sleepChart = $('#sleepChart--thisWeek');
+
+const weeklyHoursSlept = sleepyPerson.getWeek(sampleDate).map(day => day.hoursSlept)
+
+const weeklySleepQuality = sleepyPerson.getWeek(sampleDate).map(day => day.sleepQuality)
+
+
+
+var mixedChart = new Chart(sleepChart, {
+  type: 'bar',
+  data: {
+    datasets: [{
+      label: 'Hours Slept',
+      data: weeklyHoursSlept,
+      backgroundColor: [
+        'rgba(0, 205, 229, .5)',
+        'rgba(0, 205, 229, .5)',
+        'rgba(0, 205, 229, .5)',
+        'rgba(0, 205, 229, .5)',
+        'rgba(0, 205, 229, .5)',
+        'rgba(0, 205, 229, .5)',
+        'rgba(0, 205, 229, .5)',
+      ],
+    }, {
+      type: 'line',
+      label: 'Sleep Quality',
+        data: weeklySleepQuality,
+        backgroundColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+        ],
+      
+        
+
+      // Changes this dataset to become a line
+      // type: 'bar'
+    
+    }],
+    labels: weekOfDates
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+
+
 
 
   function buildWeeklyHTMLActivity() {

@@ -16,6 +16,11 @@ body {
   min-width: 320px;
 }
 
+canvas {
+  width: 300px;
+  height: 200px;
+}
+
 .welcome-section {
   grid-area: welcome;
   margin-bottom: 10px;
@@ -69,6 +74,13 @@ body {
 
 .activity {
   grid-area: activity;
+}
+
+.number-of-steps-day {
+  margin: 20px;
+  width: 100px;
+  height: 100px;
+  position: relative;
 }
 
 .friends {

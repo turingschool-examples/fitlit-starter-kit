@@ -55,12 +55,6 @@
               <p>16 stairs</p>
           </article>
       </section>
-      <section class="section__card section__steps--daily">
-          <h3>Steps Daily</h3>
-          <article class="article__steps--daily">
-              <p>1000 steps</p>
-          </article>
-      </section>
       <section class="section__card section__steps--weekly">
           <h3>Steps Weekly</h3>
           <article>
@@ -81,9 +75,16 @@
           </article>
       </section>
       <section class="section__card section__active--daily">
-          <h3>Activity Daily</h3>
+      <h2>Activity Daily</h2>
           <article class="article__active--daily">
-              <p>65 minutes active</p>
+            <section class="section__steps--daily">
+                <h3>Daily Step Count</h3>
+                    <p class="article__p--steps-daily"></p>
+                <h3>Daily Minutes Active</h3>
+                    <p class="article__p--minutes-daily"></p>
+                <h3>Miles Walked</h3>
+                    <p class="section__p--miles-daily"></p>
+            </section>
           </article>
       </section>
       <section class="section__card section__active--weekly">
@@ -122,6 +123,7 @@
     <script type="text/javascript" src="./HydrationRepository.js"></script>
     <script type="text/javascript" src="./HydrationUser.js"></script>
     <script type="text/javascript" src="./SleepUser.js"></script>
+    <script type="text/javascript" src="./ActivityUser.js"></script>
     <!-- <script type="text/javascript" src="./SleepRepository.js"></script> -->
     <script type="text/javascript" src="./scripts.js"></script>
     

@@ -37,11 +37,10 @@ function initializePage(data, hydro, sleepy) {
 	const hydroRepository = new HydroRepository(hydro)
 	hydroRepository.findUserID(randoNum);
 	const userHydro = new UserHydro(hydroRepository.currentUser)
-	const sleepRepository = new SleepRepository(sleepy)
+	sleepRepository = new SleepRepository(sleepy)
 	sleepRepository.findUserID(randoNum)
 	const sleep = new Sleep(sleepRepository.currentUser)
 	const sleep2 = new Sleep(sleepRepository.data)
-	// console.log(sleep.findQualityUsers(randoNum))
 	name.innerHTML = `Name: ${user.name}`
 	address.innerHTML = `Address: ${user.address}`
 	email.innerHTML = `Email: ${user.email}`
@@ -54,9 +53,9 @@ function initializePage(data, hydro, sleepy) {
 	sleepAll.innerHTML = `All users average sleep quality: ${sleepRepository.findAverageQuality().toFixed(2)}`
 	appendHydroList(userHydro.findDates(), userHydro);
 	appendSleepList(sleep.findSleepDates(), sleep);
-	appendMostSleep(sleep2, user2);
+	appendMostSleep(sleep, sleep2, user2);
 	// sleep2.findSleepDay('2019/06/15')
-	// console.log(sleep2.day)
+	// console.log(sleep2)
 }
 
 function findFriends(userRepository, user) {
@@ -82,7 +81,7 @@ function appendHydroList(array, obj) {
     		weeklyFluids.innerHTML = `Fluid ounces intake by week: ${obj.findOunceWeek(i)}`
     }
 	}
-		dateHydroList.addEventListener('change', function() {
+		dateHydroList.addEventListener('change', () => {
 			obj.findOunceDay(dateHydroList.value)
 			dailyFluids.innerHTML = `Fluid ounces intake by day: ${obj.day}`;
 			for (let i = 0; i < array.length; i++) {
@@ -125,10 +124,12 @@ function appendSleepList(array, obj) {
 		sleepPerDay.innerHTML = `Hours slept for day: ${obj.day}  Quality of sleep: ${obj.quality}`;
 }
 
-function appendMostSleep(sleepObj, userObj) {
+function appendMostSleep(singleSleepObj, sleepObj, userObj) {
+	userSleepAvg(singleSleepObj, sleepObj, userObj);
 	checkMostSleep(sleepObj, userObj);
-	dateSleepList.addEventListener('change', function() {
+	dateSleepList.addEventListener('change', () => {
 		checkMostSleep(sleepObj, userObj);
+		userSleepAvg(singleSleepObj, sleepObj, userObj);
  })
 }
 
@@ -152,4 +153,42 @@ function checkMostSleep(sleepObj, userObj) {
  			sleepDay.innerHTML = `User(s) with most sleep time: ${userObj[i].name} (${largestNum})`
  		}
  	}
+}
+
+function userSleepAvg(singleSleepObj, sleepObj, userObj) {
+	let sleepIDs = []
+	let dateObjects = []
+	let newDates = [];
+	for (let i = 0; i < singleSleepObj.data.length; i++) {
+		if (dateSleepList.value === singleSleepObj.data[i].date) {
+				dateObjects.push(singleSleepObj.compareQualityAverage(i))
+		}
+	}
+	for (let i = 0; i < sleepObj.data.length; i++) {
+		for (let index = 0; index < dateObjects[0].length; index++) {
+			if (i+1 === sleepObj.data[i].userID && sleepObj.data[i].date === dateObjects[0][index]) {
+				newDates.push(sleepObj.data[i].userID)
+			}
+			}
+		}
+		newDates.forEach(id => {
+			let tomorrow;
+			let today = dateSleepList.value;
+			let currentSleep = sleepRepository.findUserID(id)
+			currentSleep.forEach((person,index) => {
+				if (person.date === today) {
+					tomorrow = index;
+				}
+			})
+			var weekSleep = currentSleep.slice(tomorrow - 6, tomorrow + 1).map(quality => quality.sleepQuality)
+			if (weekSleep.reduce((x,y) => x + y, 0) / 7 > 3) {
+				userObj.forEach(user => {
+					if (user.id === id) {
+						sleepIDs.push(user.name)
+					}
+				})
+			}
+		})
+		// sleepAvgQuality.innerHTML = `Users with sleep quality greater than 3: ${sleepIDs}`
+		// console.log(sleepIDs)
 }

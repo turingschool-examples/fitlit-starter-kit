@@ -45,18 +45,14 @@ class ActivityUser{
   calculateStepGoal(date, user) {
     
   }
-// get step goal from user
-// get id of user to find activity object
-// date & id ---> find activity object
-// return string indicating whether or not a step goal is met
 
 
+  getDailyStepCount(id, date="2019/06/15") {
+    let stepCount = this.activityTestData.find(user => user.userID === id && user.date === date)
+   return stepCount.numSteps
+}
 
-
-
-} //<<<-----end of class block
-
-
+}
 
 if (typeof module !== 'undefined') {
   module.exports = ActivityUser;

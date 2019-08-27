@@ -83,4 +83,8 @@ describe('ActivityUser', function() {
     expect(activityUser.calculateStepGoal('2019/06/23', user3)).to.equal('Step goal was not met today.')
   })
 
-}); //<<----end of describe block
+  it.only('should find daily step counts', function() {
+    expect(activityUser.getDailyStepCount(2, '2019/06/17')).to.equal(13750)
+  })
+
+});

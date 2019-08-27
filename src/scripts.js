@@ -35,9 +35,9 @@ $('.main_weeekly-sleep-quality-span').text(sleepRepo.getUserQualityWeekAverage(u
 
 $('.main_weeekly-sleep-quality-span').text(sleepRepo.getUserQualityWeekAverage(uniqueUserId, findToday()));
 
-$('.main_daily-steps-span').text(activityRepo.getStepsToday(uniqueUserId, findToday()));
+// $('.main_daily-steps-span').text(activityRepo.getStepsToday(uniqueUserId, findToday()));
 
-$('.main_daily-minutes-active-span').text(activityRepo.getMinutesActive(uniqueUserId, findToday()));
+// $('.main_daily-minutes-active-span').text(activityRepo.getMinutesActive(uniqueUserId, findToday()));
 
 // $('.').text(activityRepo.getMilesWalked(uniqueUserId, findToday()));
 
@@ -55,8 +55,23 @@ function findToday() {
 }
 
 function displayWeek() {
-    return display =hydrationRepo.weeklyHydration(uniqueUserId, findToday());
+    return display = hydrationRepo.weeklyHydration(uniqueUserId, findToday());
 }
+
+function friendList(uniqueUserId) {
+    let person = userData.find(user => {
+        return user.id === uniqueUserId;
+     })
+    return person.friends;
+    }
+
+    
+ 
+
+
+
+console.log(friendList(uniqueUserId));
+
 
 
 

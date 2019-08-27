@@ -69,13 +69,13 @@ class Activity {
         return bestClimbingDay
     }
 
-    getStepsToday(user, day) {
-        let userInfo = this.findUser(user)
-        let todaysSteps = userInfo.find(obj => {
-            return obj.date === day
-        })
-        return todaysSteps.numSteps;
-    }
+    // getStepsToday(user, day) {
+    //     let userInfo = this.findUser(user)
+    //     let todaysSteps = userInfo.find(obj => {
+    //         return obj.date === day
+    //     })
+    //     return todaysSteps.numSteps;
+    // }
 
 }
 

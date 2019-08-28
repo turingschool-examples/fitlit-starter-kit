@@ -119,10 +119,9 @@ class Sleep {
   }
 
   returnDateWithMostHoursSlept(date) {
-    let user = this.singleUserData.sort((a,b) => a.hoursSlept - b.hoursSlept);
+    let user = this.singleUserData.sort((a, b) => a.hoursSlept - b.hoursSlept);
     return user[user.length - 1];
-  };
-  
+  }
 }
 
 if (typeof module !== 'undefined') {

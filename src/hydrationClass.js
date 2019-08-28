@@ -1,5 +1,3 @@
-// const hydration = require('../data/hydration.js');
-
 class Hydration {
   constructor(hydrationData, userID) {
     this.hydrationData = hydrationData;
@@ -24,9 +22,9 @@ class Hydration {
     return Math.round(sumWaterIntake / this.hydrationData.length);
   }
 
-calculateDailyWaterIntake() {
-  let waterConsumed = this.singleUserData[this.singleUserData.length - 1];
-  return waterConsumed.numOunces;
+  calculateDailyWaterIntake() {
+    let waterConsumed = this.singleUserData[this.singleUserData.length - 1];
+    return waterConsumed.numOunces;
   }
   
   calculateWeeklyWaterIntake() {

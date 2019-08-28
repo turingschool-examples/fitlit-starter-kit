@@ -5,7 +5,7 @@ class UserRepository {
 
   determineUserData(id) {
     return this.users.find(element => {
-      if(element.id === id) {
+      if (element.id === id) {
         return element;
       }
     });

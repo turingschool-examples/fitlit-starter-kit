@@ -6,25 +6,25 @@ class Activity {
     this.singleUserData = [];
     this.singleActivity = [];
     this.oneDay = {};
-  };
+  }
 
   extractSingleUser() {
     let singleUser = this.userData.filter( (user) => {
       if (this.userID === user.id) {
         return user;
-      };
+      }
     });
     this.singleUserData = singleUser;
-  };
+  }
 
   extractSingleActivityData() {
     let singleUser = this.activityData.filter( (user) => {
       if (this.userID === user.userID) {
         return user;
-      };
+      }
     });
     this.singleActivity = singleUser;
-  };
+  }
 
   extractSingleDay(date) {
     let singleDay = this.singleActivity.find( day => {
@@ -33,12 +33,12 @@ class Activity {
       }
     })
     this.oneDay = singleDay;
-  };
+  }
 
   getStrideLength(day) {
     let stride = this.singleUserData[0].strideLength;
     return stride;
-  };
+  }
 
   calculateDailyMiles(day) {
     this.extractSingleDay(day);
@@ -46,17 +46,17 @@ class Activity {
     let stepsPerMi = 5280 / stride;
     let miles = this.oneDay.numSteps / stepsPerMi;
     return +(miles.toFixed(1));
-  };
+  }
 
   calculateMinutesActive(day) {
     this.extractSingleActivityData();
-   let user = this.singleActivity.filter( user => {
-     if (user.date === day) {
-       return user.minutesActive;
-     };
+    let user = this.singleActivity.filter( user => {
+      if (user.date === day) {
+        return user.minutesActive;
+      }
     });
     return user[0].minutesActive;
-  };
+  }
 
   getMinsActive() {
     let singleUserMins = this.activityData.filter( (element) => {
@@ -68,7 +68,7 @@ class Activity {
       return element.minutesActive;
     })
     return activeMins;
-  };
+  }
   
   calculateWeeklyActiveMins() {
     let allActivity = this.singleActivity.slice(-7);
@@ -78,11 +78,11 @@ class Activity {
     }, 0)
     let weeklyAvg = +(totalMins / 7).toFixed()
     return weeklyAvg;
-  };
+  }
 
   determineStepGoal() {
     return this.singleUserData[0].dailyStepGoal
-  };
+  }
 
   compareStepsToGoal(date) {
     let goal = this.determineStepGoal();
@@ -93,7 +93,7 @@ class Activity {
     }); 
     let comparison = user.numSteps >= goal ? true : false;
     return comparison;
-  };
+  }
 
   checkIfExceededGoal() {
     let goal = this.determineStepGoal();
@@ -104,14 +104,14 @@ class Activity {
       return day.date;
     })
     return dates;
-  };
+  }
 
   checkFlightsClimbed() {
     let stairs = this.singleActivity.map( user => {
       return user.flightsOfStairs;
     });
     return Math.max(...stairs);
-  };
+  }
 
   getStairsClimbedAvg(date) {
     let day = this.activityData.filter( user => {
@@ -122,7 +122,7 @@ class Activity {
       return acc;
     }, 0);
     return stairs / day.length;
-  };
+  }
 
   getAvgSteps(date) {
     let everyonesLastDayInfo = this.activityData.filter( user => {
@@ -136,7 +136,7 @@ class Activity {
       return acc;
     }, 0);
     return +(steps / allUsers.length).toFixed();
-  };
+  }
 
   getAvgMinsActive(date) {
     let day = this.activityData.filter( element => {
@@ -147,7 +147,7 @@ class Activity {
       return acc;
     }, 0)
     return activeMins / day.length;
-  };
+  }
   
   returnEveryonesLastDayInfo(date) {
     let everyonesLastDayInfo = this.activityData.filter( user => {
@@ -166,7 +166,7 @@ class Activity {
       return acc;
     }, 0);
     return +(totalSteps / allUsers.length).toFixed();
-  };
+  }
 
   getEveryonesAvgMinsActive(date) {
     let allUsers = activity.returnEveryonesLastDayInfo(date);
@@ -175,7 +175,7 @@ class Activity {
       return acc;
     }, 0);
     return +(minActive / allUsers.length).toFixed();
-  };
+  }
 
   getEveryonesAvgStairsClimbed(date) {
     let allUsers = activity.returnEveryonesLastDayInfo(date);
@@ -184,7 +184,7 @@ class Activity {
       return acc;
     }, 0);
     return +(stairsClimbed / allUsers.length).toFixed();
-  };
+  }
 
   calculateTotalWeeklySteps() {
     let allActivity = this.singleActivity.slice(-7);
@@ -193,7 +193,7 @@ class Activity {
       return acc;
     }, 0)
     return totalSteps;
-  };
+  }
 
   calculateTotalWeeklyMinActive() {
     let allActivity = this.singleActivity.slice(-7);
@@ -202,7 +202,7 @@ class Activity {
       return acc;
     }, 0)
     return totalMinActive;
-  };
+  }
 
   calculateTotalWeeklyFlightsClimbed() {
     let allActivity = this.singleActivity.slice(-7);
@@ -211,7 +211,7 @@ class Activity {
       return acc;
     }, 0)
     return totalFlightsClimbed;
-  };
+  }
 }
 
 if (typeof module !== 'undefined') {

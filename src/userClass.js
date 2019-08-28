@@ -7,12 +7,12 @@ class User {
     this.strideLength = userObj.strideLength;
     this.dailyStepGoal = userObj.dailyStepGoal;
     this.friends = userObj.friends;
-  };
+  }
 
   returnFirstName() {
     let name = this.name.split(' ');
     return name[0];
-  };
+  }
 }
 
 if (typeof module !== 'undefined') {

@@ -1,7 +1,7 @@
 const chai = require('chai');
 const assert = require('chai').assert;
 
-const User = require('../src/userClass.js')
+const User = require('../src/userClass.js');
 
 describe('User', () => {
   let user1, user2, user3, user4, user5;
@@ -91,7 +91,6 @@ describe('User', () => {
     });
 
     it('should return a user\'s first name only', () => {
-      assert.equal(user1.returnFirstName(), 'Luisa')
-    })
- 
+      assert.equal(user1.returnFirstName(), 'Luisa');
+    });
 }); 

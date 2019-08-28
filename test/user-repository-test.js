@@ -72,13 +72,23 @@ describe('UserRepository', function() {
 
 
   it.only('should find a user', function() {
-    const userRepository = new UserRepository(testUsers, 1);
+    const userRepository = new UserRepository(testUsers);
     expect(userRepository.findUserData(1)).to.deep.equal(testUsers[0])
   });
 
   it.only('should compare average step goals to user average', function() {
-    const userRepository = new UserRepository(testUsers, 1);
+    const userRepository = new UserRepository(testUsers);
     expect(userRepository.getUserGoal(1)).to.equal(10000)
-  })
+  });
+
+  it.only('should compare average step goals to user average', function() {
+    const userRepository = new UserRepository(testUsers);
+    expect(userRepository.getUserGoalAverage()).to.equal(6667)
+  });
+
+  it.only('should compare average step goals to user average', function() {
+    const userRepository = new UserRepository(testUsers);
+    expect(userRepository.compareGoals(1)).to.equal(3333)
+  });
 
 });

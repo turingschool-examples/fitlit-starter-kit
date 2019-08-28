@@ -27,10 +27,17 @@ class UserRepository {
         return acc
     }, 0)
     
-    return (goals / this.data.length).toFixed()
+    return Math.round(goals / this.data.length)
   }
 
-
+  compareGoals(id) {
+    let difference = this.getUserGoal(id) - this.getUserGoalAverage()
+    
+    return this.getUserGoal(id) > this.getUserGoalAverage() ?
+    difference
+    : Math.abs(difference)
+  
+  }
 
 
 

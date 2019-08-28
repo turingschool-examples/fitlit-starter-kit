@@ -34,8 +34,8 @@ class UserRepository {
     let difference = this.getUserGoal(id) - this.getUserGoalAverage()
     
     return this.getUserGoal(id) > this.getUserGoalAverage() ?
-    difference
-    : Math.abs(difference)
+    `Your step goal is ${difference} steps more than the user average.`
+    : `Your step goal is ${Math.abs(difference)} steps less than the user average.`
   
   }
 

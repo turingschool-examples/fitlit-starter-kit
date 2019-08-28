@@ -88,7 +88,7 @@ describe('UserRepository', function() {
 
   it.only('should compare average step goals to user average', function() {
     const userRepository = new UserRepository(testUsers);
-    expect(userRepository.compareGoals(1)).to.equal(3333)
+    expect(userRepository.compareGoals(1)).to.equal('Your step goal is 3333 steps more than the user average.')
   });
 
 });

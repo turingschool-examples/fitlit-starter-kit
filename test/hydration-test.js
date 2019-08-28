@@ -1,6 +1,5 @@
 const chai = require('chai');
 const assert = require('chai').assert;
-
 const Hydration = require('../src/hydrationClass.js')
 
 describe('Hydration', () => {
@@ -62,24 +61,24 @@ describe('Hydration', () => {
   });
 
   it('should be an instance of the Hydration class', () => {
-    assert.equal(hydrationData instanceof Hydration, true)
+    assert.equal(hydrationData instanceof Hydration, true);
   });
 
   it('should identify user by user ID', () => {
-    assert.equal(hydrationData.userID, 17)
+    assert.equal(hydrationData.userID, 17);
   });
 
   it('should calculate average fluid oz intake per day for the whole', () => {
-    assert.equal(hydrationData.calculateAverageWaterIntake(), 55)
+    assert.equal(hydrationData.calculateAverageWaterIntake(), 55);
   })
 
   it('should return number of fluid ounces consumed for latest day', () => {
     hydrationData.extractSingleUser();
-    assert.equal(hydrationData.calculateDailyWaterIntake(), 54)
+    assert.equal(hydrationData.calculateDailyWaterIntake(), 54);
   })
 
   it('should return number of fluid ounces consumed each day for a week', () => {
     hydrationData.extractSingleUser();    
-    assert.deepEqual(hydrationData.calculateWeeklyWaterIntake(), [{"date": "2019/06/16", "numOunces": 43, "userID": 17}, {"date": "2019/06/17", "numOunces": 59, "userID": 17}, {"date": "2019/06/18", "numOunces": 52, "userID": 17}, {"date": "2019/06/19", "numOunces": 50, "userID": 17}, {"date": "2019/06/20", "numOunces": 24, "userID": 17}, {"date": "2019/06/21", "numOunces": 99, "userID": 17}, {"date": "2019/06/22", "numOunces": 54, "userID": 17}])
+    assert.deepEqual(hydrationData.calculateWeeklyWaterIntake(), [{"date": "2019/06/16", "numOunces": 43, "userID": 17}, {"date": "2019/06/17", "numOunces": 59, "userID": 17}, {"date": "2019/06/18", "numOunces": 52, "userID": 17}, {"date": "2019/06/19", "numOunces": 50, "userID": 17}, {"date": "2019/06/20", "numOunces": 24, "userID": 17}, {"date": "2019/06/21", "numOunces": 99, "userID": 17}, {"date": "2019/06/22", "numOunces": 54, "userID": 17}]);
   });
 });

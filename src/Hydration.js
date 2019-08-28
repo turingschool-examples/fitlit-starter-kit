@@ -1,7 +1,6 @@
 class Hydration {
   constructor(userData) {
     this.userData = userData;
-    this.newUserData = [...userData];
     this.weeklyArr;
   }
 
@@ -15,9 +14,8 @@ class Hydration {
   }
 
   getHydroArray(dateToday) {
-  const arrayOfDates = this.userData.map(day => day.date)
-    const index = (((arrayOfDates.length - arrayOfDates.findIndex(date => dateToday === date)) * -1) - 6)
-    this.weeklyArr = this.newUserData.slice(index, 7).reverse();
+    const index = (this.userData.findIndex(day => dateToday === day.date));
+    this.weeklyArr = this.userData.slice((index - 6), (index + 1)).reverse();
     return this.weeklyArr;
   }
   

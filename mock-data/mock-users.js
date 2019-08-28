@@ -20,10 +20,9 @@ const mockUsers = [
     "strideLength": 4.5,
     "dailyStepGoal": 5000,
     "friends": [
-      9,
-      18,
-      24,
-      19
+      1,
+      3,
+      4,
     ]
   },
   {

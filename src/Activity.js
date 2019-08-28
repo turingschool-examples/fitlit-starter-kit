@@ -5,6 +5,7 @@ class Activity {
     this.currentUserData = this.findCurrentUserData();
     this.allUsers = allUsers;
     this.currentUserFriends = this.findCurrentUsersFriends();
+    console.log("this", this.currentUserFriends)
 
   }
 
@@ -117,6 +118,7 @@ class Activity {
   }
 
   findAWeekOfDataForAUser(startDate, endDate, property, id = this.currentUserId) {
+    console.log("id line 121:", id)
     let answer = [];
     let week = this.allActivityData.filter(eachDay => {
       if (eachDay.userID === id && new Date(eachDay.date) >= new Date(startDate) && new Date(eachDay.date) <= new Date(endDate)) {
@@ -129,17 +131,19 @@ class Activity {
       answer.push(acc)
       return {};
     }, {})
+    console.log("AnswerLine143:", answer)
     return answer;
   }
 
-  findTotalStepsOverAWeek(weekOfInfo) {
+  // findTotalStepsOverAWeek(weekOfInfo) {
 
-  }
+  // }
 
-  findWinnerOfStepChallengeBetweenFriendsForAWeek(startDate, endDate, property, id = this.currentUserId) {
+  findWinnerOfStepChallengeBetweenFriendsForAWeek(startDate, endDate, property) {
     let allFriendsInfoForWeek = this.currentUserFriends.map(friendID => {
-      return this.findAWeekOfDataForAUser(startDate, endDate, property, id) 
-    })
+      return this.findAWeekOfDataForAUser(startDate, endDate, property, friendID) 
+    });
+    console.log("AllFriendsInfo150", allFriendsInfoForWeek)
     let friendsTotals = allFriendsInfoForWeek.map(currentFriendWeekInfo => {
       return currentFriendWeekInfo.reduce((acc, currentDay) => {
         acc.id = currentDay.id;
@@ -150,12 +154,16 @@ class Activity {
         return acc
       }, {})
     })
-    console.log(friendsTotals)
-    return friendsTotals
-
+    console.log("friends162", friendsTotals)
+    let sortedFriendsHighToLowSteps = friendsTotals.sort((a, b) => {
+      return b.totalSteps - a.totalSteps
+    })
+    return this.findUserName(sortedFriendsHighToLowSteps.shift().id)
   }
 
-
+  findUserName(id) {
+    return this.allUsers.find(user =>  user.id ===id).name
+  }
 
   findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers() {
     let answerListOfDates = [];

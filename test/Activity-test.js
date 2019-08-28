@@ -116,8 +116,7 @@ describe('Activity', () => {
       it('should', () => {
         console.log("default", activity.findAWeekOfDataForAUser("2019/06/18", "2019/06/24", "numSteps"))
         console.log("with id", activity.findAWeekOfDataForAUser("2019/06/18", "2019/06/24", "numSteps", 1))
-          expect(activity.findAWeekOfDataForAUser("2019/06/18", "2019/06/24", "numSteps")).to.eql('Moo');
-          
+          expect(activity.findAWeekOfDataForAUser("2019/06/18", "2019/06/24", "numSteps")).to.eql('Moo');   
           expect(activity.findAWeekOfDataForAUser("2019/06/18", "2019/06/24", "numSteps", 1)).to.eql('Meow');
           
       })
@@ -125,8 +124,8 @@ describe('Activity', () => {
 
   describe('findWinnerOfStepChallengeBetweenFriendsForAWeek', () => {
       it('should', () => {
-        console.log(activity.findWinnerOfStepChallengeBetweenFriendsForAWeek("2019/06/18", "2019/06/24", "numSteps", 1))
-          expect(activity.findWinnerOfStepChallengeBetweenFriendsForAWeek("2019/06/18", "2019/06/24", "numSteps", 1)).to.eql("hi");
+        console.log(activity.findWinnerOfStepChallengeBetweenFriendsForAWeek("2019/06/18", "2019/06/24", "numSteps"))
+          expect(activity.findWinnerOfStepChallengeBetweenFriendsForAWeek("2019/06/18", "2019/06/24", "numSteps")).to.eql("hi");
       })
   })
 })

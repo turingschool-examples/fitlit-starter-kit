@@ -1,0 +1,27 @@
+body {
+ margin: 0;
+ padding: 0;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 20%;
+  border: 1px solid red;
+}
+
+.header_date,
+.header_header {
+  width: 30%; 
+}
+
+.user_card {
+  display: flex; 
+  width: 80%;
+  border: 1px solid red;
+}

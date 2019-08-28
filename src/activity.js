@@ -35,6 +35,14 @@ class Activity {
 		let distanceMiles = (activity.numSteps * user.strideLength) / 5280;
 		return distanceMiles.toFixed(2)
 	}
+
+	checkStepGoal(user, activity) {
+		if(activity.numSteps <= user.dailyStepGoal) {
+			return "Congratulations! You met your goal!"
+		} else {
+			return "Step Goal not met. Keep working!"
+		}
+	}
 }
 
 if (typeof module !== 'undefined') {

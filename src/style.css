@@ -12,10 +12,7 @@ body {
       "header header"
       "main main";
 }
-.hello {
-    height: 100px;
-    width: 100px;
-}
+
 header {
     align-items: center;
     background-color: #3c616f;

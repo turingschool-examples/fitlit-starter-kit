@@ -8,6 +8,9 @@ let sleep = new Sleep(sleepData);
 let activity = new Activity(activityData)
 let friendNames = returnFriendListNames();
 let friendSteps = returnFriendListSteps();
+let stepsTrend = (activity.returnThreeDayStepStreak(user.id)[0]);
+
+console.log(stepsTrend)
 
 $('#user-name').text(newUser.returnUserFirstName());
 $('#user-info-name').text(newUser.name);
@@ -331,6 +334,47 @@ var friendStepChallenge = new Chart(ctx, {
     datasets: [{
       label: 'steps',
       data: friendSteps,
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgb(221, 160, 221, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(192, 192, 192, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(221, 160, 221, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(192, 192, 192, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    legend: {},
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+var ctx = $('#step-trend');
+var stepTrend = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: Object.keys(stepsTrend).reverse(),
+    datasets: [{
+      label: 'dates',
+      data: Object.values(stepsTrend).reverse(),
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',

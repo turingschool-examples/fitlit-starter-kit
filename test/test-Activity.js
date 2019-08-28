@@ -69,7 +69,7 @@ describe('Activity', () => {
     ])
   })
 
-  it('should all time stairs climbing record', () => {
+  it('should return all time stairs climbing record', () => {
     expect(activePerson.everest()).to.eql({
       userID: 5,
       date: 1561615200000,
@@ -91,5 +91,9 @@ describe('Activity', () => {
         flightsOfStairs: 2
       }
     ])
+  })
+
+  it.only('should return number of fourteeners climbed for all time', () => {
+    expect(activePerson.findFourteeners()).to.equal(`You're on your way. Keep Climbing!`)
   })
 })

@@ -259,13 +259,17 @@ var myChart = new Chart(stepChallange, {
 
 const threeDayStreak = $('#3--day--streak')
 
+let streak = activePerson.returnIncreasedStepDays(sampleDate).splice(-3, 3).reverse()
+
+
+
 var myChart = new Chart(threeDayStreak, {
   type: 'horizontalBar',
   data: {
-    // labels: friends,
+    labels: streak.map(day => milisecondsToDate(day.date)), 
     datasets: [{
       label: 'steps',
-      data: activePerson.getWeek(sampleDate).map(day => day.minutesActive),
+      data: streak.map(day => day.numSteps),
       // borderColor: [
       //   'rgba(255, 99, 132, 1)'
       // ],

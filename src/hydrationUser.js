@@ -8,6 +8,13 @@ class Hydration {
                 return user.userID === id;
             });   
         }
+
+        getUserIndex(id,day) {
+            let targetData = this.findUser(id);
+            return targetData.findIndex(object => {
+                return object.date === day;
+            });
+        }
     
         dailyHydration(id, date) {
             return this.findUser(id).find(user => user.date === date).numOunces;
@@ -23,9 +30,7 @@ class Hydration {
 
         weeklyHydration(id, day) {
             let targetUserData = this.findUser(id);
-            let index = targetUserData.findIndex(object => {
-                return object.date === day;
-            });
+            let index = this.getUserIndex(id, day)
             let weekData = targetUserData.slice(index - 6, index + 1).map(arr => {
                 return ` ${arr.date}  :  ${arr.numOunces} `;
             })
@@ -45,7 +50,6 @@ class Hydration {
                 }
                 return acc
             }, [])
-            console.log("trend", trend)
             return trend
         }
 

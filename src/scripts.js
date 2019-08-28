@@ -216,15 +216,7 @@ function appendActivityList(array, obj, user) {
    obj.findMinActive(dateActivityList.value)
 		steps.innerHTML = `Number of steps today: ${obj.numSteps}`
 		minutes.innerHTML =`Number of Minutes active: ${obj.minutesActive}`
-<<<<<<< Updated upstream
-		// for (let i = 0; i < array.length; i++) {
-		// 	if (dateActivityList.value === array[i]) {
-  //   	sleepWeek.innerHTML = `Hours slept throughout week: ${obj.findSleepWeek(i)}` //   	sleepQuality.innerHTML = `Sleep quality throughout week: ${obj.findSleepWeekQuality(i)}`
-  //   			}
-		// 	}
-=======
 		miles.innerHTML = `Numer of Miles Traveled: ${obj.findDistanceMiles(user, obj)}`
->>>>>>> Stashed changes
 		})
    obj.findNumSteps(dateActivityList.value)
    obj.findMinActive(dateActivityList.value)

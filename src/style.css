@@ -9,11 +9,13 @@ body {
   display: grid;
   font-family: 'Roboto Slab', serif;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
     "header header header header header header"
     "step1 step1 step2 step2 water1 water1"
-    "water2 water2 sleep sleep sleep sleep";
+    "water2 water2 sleep3 sleep3 sleep4 sleep4"
+    "sleep1 sleep1 sleep2 sleep2 sleep5 sleep5"
+    "sleep6 sleep6 activ1 activ1 activ2 activ2";
   margin: 0;
   height: 100vh;
 }
@@ -103,6 +105,30 @@ article {
   grid-area: water2;
 }
 
+#article5 {
+  grid-area: sleep1;
+}
+
+#article6 {
+  grid-area: sleep2;
+}
+
+#article7 {
+  grid-area: sleep3;
+}
+
+#article8 {
+  grid-area: sleep4;
+}
+
+#article9 {
+  grid-area: sleep5;
+}
+
+#article10 {
+  grid-area: sleep6;
+}
+
 @media screen and (max-width: 700px) {
 
   body {
@@ -111,7 +137,8 @@ article {
     grid-template-areas:
       "header header header header"
       "step1 step1 step2 step2"
-      "water1 water1 water2 water2";
+      "water1 water1 water2 water2"
+      "sleep1 sleep1 sleep2 sleep2";
   }
 
 @media screen and (max-width: 600px) {
@@ -148,7 +175,9 @@ article {
         "step1 step1"
         "step2 step2"
         "water1 water1"
-        "water2 water2";
+        "water2 water2"
+        "sleep1 sleep1"
+        "sleep2 sleep2";
     }
 
     h1 {

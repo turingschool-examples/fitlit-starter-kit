@@ -111,6 +111,24 @@ describe('Activity', () => {
       expect(activity.findAnyActivityEachDayOverWeekForAUser("2019/06/18", "2019/06/24", "flightsOfStairs")).to.eql(mockActivityUser2FlightsForAWeek);
     });
   });
+
+  describe('findAWeekOfDataForAUser', () => {
+      it('should', () => {
+        console.log("default", activity.findAWeekOfDataForAUser("2019/06/18", "2019/06/24", "numSteps"))
+        console.log("with id", activity.findAWeekOfDataForAUser("2019/06/18", "2019/06/24", "numSteps", 1))
+          expect(activity.findAWeekOfDataForAUser("2019/06/18", "2019/06/24", "numSteps")).to.eql('Moo');
+          
+          expect(activity.findAWeekOfDataForAUser("2019/06/18", "2019/06/24", "numSteps", 1)).to.eql('Meow');
+          
+      })
+  })
+
+  describe('findWinnerOfStepChallengeBetweenFriendsForAWeek', () => {
+      it('should', () => {
+        console.log(activity.findWinnerOfStepChallengeBetweenFriendsForAWeek("2019/06/18", "2019/06/24", "numSteps", 1))
+          expect(activity.findWinnerOfStepChallengeBetweenFriendsForAWeek("2019/06/18", "2019/06/24", "numSteps", 1)).to.eql("hi");
+      })
+  })
 })
 
 

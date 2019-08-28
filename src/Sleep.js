@@ -88,7 +88,7 @@ class Sleep {
       }
     })
     let idArray = week.reduce((acc, currentElement) => {
-      if(!acc.includes(currentElement.userID)) {
+      if (!acc.includes(currentElement.userID)) {
         acc.push(currentElement.userID)
       }
       return acc
@@ -100,17 +100,17 @@ class Sleep {
         return acc
       }, 0) / filterData.length
 
-      if(avg >= 3) {
+      if (avg >= 3) {
         namesID.push(id)
       }
     }) 
     var groupOverThree = namesID.map((num) => {
-     return this.allUsers.find((user) => {
-      if(num === user.id) {
-        return user
-      }
-    }).name
-  });
+      return this.allUsers.find((user) => {
+        if (num === user.id) {
+          return user
+        }
+      }).name
+    });
 
     return groupOverThree
   

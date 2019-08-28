@@ -8,6 +8,10 @@ class ActivityUser {
     return this.activityTestData.filter(user => user.userID === id);
   }
 
+  getUsers(date) {
+    return this.activityTestData.filter(day => day.date === date)
+  }
+
   findUserStrideLength(id) {
     return this.userData.find(user => {
       return user.id === id
@@ -42,8 +46,6 @@ class ActivityUser {
   }
 
   // returnTotalMinutesAvg(date) {
-
-   
   //   return Math.floor(this.activityTestData.reduce((acc, element) => {
   //     return acc + element.minutesActive}, 1) / this.activityTestData.length)
   // }
@@ -96,8 +98,6 @@ class ActivityUser {
    return stepCount.numSteps
 }
 
-//Write test for percent walked around earth method
-
 calculatePercentOfWorldWalked(id) {
   const earthMiles = 24901
   let user = this.findActivityInfo(id)
@@ -120,6 +120,76 @@ getWeeklyStepCount(date, id) {
   let weekOfActivity = week.slice(startDate, startDate + 7)
   return weekOfActivity.map(user => user.numSteps)
 }
+
+//FIND AVERAGE METHODS ARE FROM ACTIVITY REPO!
+findTotalStepAverage(date) {
+  var totalSteps = this.getUsers(date).reduce((acc, user) => {
+    acc += user.numSteps;
+    return acc
+  }, 0)
+  return Math.round(totalSteps / this.getUsers(date).length);
+}
+
+compareStepAverageWithUser(date, id) {
+  let day = this.findActivityInfo(id).find(user => user.date === date)
+  if(day.numSteps > this.findTotalStepAverage(date)) {
+    return "You exceeded the daily average of steps today!"
+  } else if (day.numSteps < this.findTotalStepAverage(date)) {
+    return "You were lower than the daily average of steps today :("
+  } else {
+    return "You walked exactly the same as the daily average!"
+  }
+}
+
+findTotalMinutesAverage(date) {
+  var totalMinutes = this.getUsers(date).reduce((acc, user) => {
+    acc += user.minutesActive;
+    console.log('acc...', acc)
+    return acc
+  }, 0)
+  return Math.round(totalMinutes / this.getUsers(date).length);
+}
+
+
+compareMinutesAverageWithUser(date, id) {
+  let day = this.findActivityInfo(id).find(user => user.date === date)
+  console.log('day--->', day)
+  if(day.minutesActive > this.findTotalMinutesAverage(date)) {
+    return "You exceeded the daily average of minutes active today!"
+  } else if (day.minutesActive < this.findTotalMinutesAverage(date)) {
+    return "You were lower than the daily average of minutes active today :("
+  } else {
+    return "You were active the exact the same amount as the daily average!"
+  }
+}
+
+findTotalStairsAverage(date) {
+  var totalStairs = this.getUsers(date).reduce((acc, user) => {
+    acc += user.flightsOfStairs;
+    console.log('acc...', acc)
+    return acc
+  }, 0)
+  return Math.round(totalStairs / this.getUsers(date).length);
+}
+
+compareStairsAverageWithUser(date, id) {
+  let day = this.findActivityInfo(id).find(user => user.date === date)
+  console.log('day--->', day)
+  if(day.flightsOfStairs > this.findTotalStairsAverage(date)) {
+    return "You exceeded the daily average of stairs climbed today!"
+  } else if (day.flightsOfStairs < this.findTotalStairsAverage(date)) {
+    return "You were lower than the daily average of stairs climbed today :("
+  } else {
+    return "You climbed the exact the same amount of stairs as the daily average!"
+  }
+}
+
+
+
+
+
+
+
 
 
 

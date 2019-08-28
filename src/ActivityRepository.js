@@ -1,8 +1,7 @@
-class ActivityRepository{
+class ActivityRepository {
   constructor(activityTestData) {
     this.activityTestData = activityTestData;
   }
-
 
   getUsers(date) {
     return this.activityTestData.filter(day => day.date === date)
@@ -34,7 +33,7 @@ class ActivityRepository{
   
 
 
-} //<-----end of class 
+} 
 
 
 if (typeof module !== 'undefined') {

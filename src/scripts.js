@@ -3,7 +3,8 @@ const userRepository = new UserRepository(userData);
 const user = new User(userRepository.findUserData(randomUserId))
 const sleepUser = new SleepUser(sleepData);
 const hydrationUser = new HydrationUser(hydrationData);
-const activityUser = new ActivityUser(activityData, userData)
+const activityUser = new ActivityUser(activityData, userData);
+// const activityRepository = new ActivityRepository(activityTestData);
 // const sleepRepository = new SleepRepository(sleepTestData, 2)
 
 
@@ -26,8 +27,10 @@ $(document).ready(() => {
   $('.section__p--miles-daily').text(activityUser.calculateMilesWalked('2019/06/15', randomUserId));
   $('.article__span--steps-weekly').text(activityUser.findAverageMinutesActive('2019/06/08', '2019/06/15', randomUserId));
   $('.article__p--percent-world').text(activityUser.calculatePercentOfWorldWalked(randomUserId))
-  $('.article__h4--weekly-steps').text(activityUser.getWeeklyStepCount('2019/06/15', randomUserId))
-
+  $('.article__h4--weekly-steps').text(activityUser.getWeeklyStepCount('2019/06/15', randomUserId));
+  $('.section__p--compare-step').text(activityUser.compareStepAverageWithUser('2019/06/15', randomUserId))
+  $('.section__p--compare-minutes').text(activityUser.compareMinutesAverageWithUser('2019/06/15', randomUserId))
+  $('.section__p--compare-stairs').text(activityUser.compareStairsAverageWithUser('2019/06/15', randomUserId))
 
 });
 

@@ -3,7 +3,10 @@ const expect = chai.expect;
 const Activity = require('../src/Activity');
 const mockActivityData = require('../mock-data/mock-activity');
 const mockUsers = require('../mock-data/mock-users');
-const mockActivityUser2Data = require('../mock-data/mock-activity-user2');
+const mockActivityUser2Data = require('../mock-data/mock-activity-user2')[0];
+const mockActivityUser2StepsForAWeek = require('../mock-data/mock-activity-user2')[1];
+const mockActivityUser2MinActiveForAWeek = require('../mock-data/mock-activity-user2')[2];
+const mockActivityUser2FlightsForAWeek = require('../mock-data/mock-activity-user2')[3];
 
 let activity;
 
@@ -100,6 +103,15 @@ describe('Activity', () => {
           
     })
   })
+
+  describe('findAnyActivityEachDayOverWeekForAUser', () => {
+    it('should be able to find any activity stats each day for a user over a given week', () => {
+      expect(activity.findAnyActivityEachDayOverWeekForAUser("2019/06/18", "2019/06/24", "numSteps")).to.eql(mockActivityUser2StepsForAWeek);
+      expect(activity.findAnyActivityEachDayOverWeekForAUser("2019/06/18", "2019/06/24", "minutesActive")).to.eql(mockActivityUser2MinActiveForAWeek);
+      expect(activity.findAnyActivityEachDayOverWeekForAUser("2019/06/18", "2019/06/24", "flightsOfStairs")).to.eql(mockActivityUser2FlightsForAWeek);
+    });
+  });
 })
+
 
 

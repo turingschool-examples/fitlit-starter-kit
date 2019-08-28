@@ -56,7 +56,6 @@ class Sleep {
       answer.push(acc)
       return {};
     }, {})
-    console.log(answer)
     return answer;
     
   }

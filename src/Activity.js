@@ -92,6 +92,26 @@ class Activity {
     return this.currentUserData.find(data => data.date === dateString)[property]
   }
 
+  findAnyActivityEachDayOverWeekForAUser(startDate, endDate, property) {
+    let answer = [];
+    let week = this.currentUserData.filter(eachDay => {
+      if (new Date(eachDay.date) >= new Date(startDate) && new Date(eachDay.date) <= new Date(endDate)) {
+        return eachDay
+      }
+    }).reduce((acc, day) => {
+      if (!acc.date) {
+        acc.date = day.date
+      }
+      if (!acc[property]) {
+        acc[property] = day[property]
+      }
+      answer.push(acc)
+      return {};
+    }, {})
+    return answer;
+    
+  }
+
 
   findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers() {
     let answerListOfDates = [];

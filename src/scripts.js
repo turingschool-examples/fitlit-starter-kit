@@ -26,6 +26,8 @@ $('.grid').masonry({
     $('#article__hyrdation--fldozs').text(hydration.findWaterByDate('2019/06/15'));
     $('#article__user--hours-slept').text(sleep.findSleepHoursDay('2019/06/15'));
     $('#article__user--quality-slept').text(sleep.findSleepQualityDay('2019/06/15'));
+    $('#sleep-hours-avg').text(sleep.findAvgHoursSlept());
+    $('#sleep-qual-avg').text(sleep.findAvgSleepQual());
     $('#article__user--todaysteps').text(activityData[randomUser].numSteps);
     $('#article__user--activemins').text(activity.minsUserActive(randomUser, '2019/06/15'));
     $('#article__user--todaydistance').text(activity.milesUserWalked(randomUser, '2019/06/15', userData));
@@ -96,7 +98,7 @@ $('.grid').masonry({
           labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
           datasets: [{
             label: 'Weekly Sleep Chart',
-            data: [sleep.findSleepQualityWeek('2019/06/15')],
+            data: sleep.findSleepHoursWeek('2019/06/15'),
             backgroundColor: [
               '#73A9BB', 
               '#FC5D79', 
@@ -143,42 +145,6 @@ $('.grid').masonry({
         }
         });
     
-    const allTimeAvgSleepChart = new Chart($('#alltime-average-sleep-chart'), {
-        type: 'pie',
-        data: {
-          labels: ['Average Sleep Quality', 'Average Hours of Sleep'],
-          datasets: [{
-            label: 'All-time Averages of Sleep',
-            data: [8, 4.5],
-            // [sleep.(), sleep.()]''
-            backgroundColor: [
-              '#B6E7EC',
-              '#FC5D79', 
-            ],
-            borderColor: [
-              '#B6E7EC', 
-              '#FC5D79',
-            ],
-            borderWidth: 2 
-          }]
-        },
-        options: {
-            title: {
-                display: true,
-                fontColor: 'black',
-                text: 'All-time Sleep Averages'
-            },
-            layout: {
-                padding: {
-                    left: 10,
-                    right: 10,
-                    top: 10,
-                    bottom: 10,
-                        }
-                    },
-            }                
-      });    
-
     
     const dailyStepComparisonChart = new Chart($('#compare-user-steps-chart'), {
         type: 'doughnut',

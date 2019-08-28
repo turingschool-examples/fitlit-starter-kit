@@ -25,7 +25,7 @@ class Sleep {
   }
 
   findAvgHoursSlept() {
-    const sleepHours = this.hoursSleptDay.reduce((hours, day) => {
+    let sleepHours = this.hoursSleptDay.reduce((hours, day) => {
       hours += day;
       return hours;
     }, 0) / this.hoursSleptDay.length;
@@ -34,7 +34,7 @@ class Sleep {
 
   // For a user, their average sleep quality per day over all time
   findAvgSleepQual() {
-    const totSleepQual = this.sleepQualityDay.reduce((qual, day) => {
+    let totSleepQual = this.sleepQualityDay.reduce((qual, day) => {
       qual += day;
       return qual;
     }, 0) / this.hoursSleptDay.length;
@@ -59,13 +59,18 @@ class Sleep {
   }
 
   findSleepQualityWeek(startDate) {
-    const allWeekData =  this.findWeek(startDate);
+    let allWeekData =  this.findWeek(startDate);
     return allWeekData.map(day => day.sleepQuality)
   }
 
   findSleepHoursWeek(startDate) {
-    const allWeekData =  this.findWeek(startDate);
+    let allWeekData =  this.findWeek(startDate);
     return allWeekData.map(day => day.hoursSlept)
+  }
+
+  findBestAndWorstSleep(startDate) {
+    let fullWeekData = this.findSleepHoursWeek(startDate);
+    return [Math.min.apply(null, fullWeekData), Math.max.apply(null, fullWeekData)]
   }
 
 }

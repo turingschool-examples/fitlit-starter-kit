@@ -75,12 +75,17 @@ describe('Sleep', () => {
 
   it('should be able to produce sleep quality per day for a week, given the starting day', () => {
     const sleep = new Sleep(userData[0]);
-    expect(sleep.findSleepQualityWeek('2019/06/18')).to.deep.equal([3.1, 1.2, 1.2, 4.2, 3, 1.5, 1.3 ]);
+    expect(sleep.findSleepQualityWeek('2019/06/15')).to.deep.equal([2.2, 2.6, 3.1, 1.2, 1.2, 4.2, 3]);
   });
 
   it('should be able to produce hours slept per day for a week, given the starting day', () => {
     const sleep = new Sleep(userData[0]);
     expect(sleep.findSleepHoursWeek('2019/06/18')).to.deep.equal([10.4, 10.7, 9.3, 7.8, 7, 7.8, 8]);
+  });
+
+  it('should be able to show the best and worst nights of sleep for the user\'s week', () => {
+    const sleep = new Sleep(userData[0]);
+    expect(sleep.findBestAndWorstSleep('2019/06/18')).to.deep.equal([7, 10.7]);
   });
 
 });

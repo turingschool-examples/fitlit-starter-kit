@@ -32,7 +32,7 @@ describe('SleepRepository', () => {
 
   it("should provide the user or users with the most hours of sleep", () => {
     const sleepRepository = new SleepRepository();
-    expect(sleepRepository.findSleepiestUserPerDay("2019/06/16")).to.equal(10.8);
+    expect(sleepRepository.findSleepiestUserPerDay("2019/06/21")).to.deep.equal('Mae Connelly');
   });
 
 

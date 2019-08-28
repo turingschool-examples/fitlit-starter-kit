@@ -27,24 +27,23 @@ class SleepRepository {
       let overallSleepQuality = week.reduce((overallQuality, dailyQuality) => {
         return (overallQuality += dailyQuality.sleepQuality);
       }, 0) / 7;
-
       if (overallSleepQuality >= 3) {
         totalIds.push(uniqueId)
       }
-
       return totalIds;
     }, [])
   }
 
   findSleepiestUserPerDay(givenDate) {
-    let days = sleepData.filter(day => day.date === givenDate);
-    let sleptHours = days.sort(function(a, b) {
+    let userObjs = sleepData.filter(obj => obj.date === givenDate);
+    let sortedObjs = userObjs.sort((a, b) => {
       return b.hoursSlept - a.hoursSlept;
     });
-    let sleepiestUser = sleptHours.filter(
-      day => day.hoursSlept === sleptHours[0].hoursSlept
+    let sleepiestUser = sortedObjs.filter(
+      day => day.hoursSlept === sortedObjs[0].hoursSlept
     );
-    return sleepiestUser[0].hoursSlept;
+    let sleepyUserObj =  userData.find(user => user.id === sleepiestUser[0].userID);
+    return sleepyUserObj.name
   }
 
  

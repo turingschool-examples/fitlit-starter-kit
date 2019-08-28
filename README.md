@@ -1,82 +1,24 @@
-# FitLit Starter Kit
+# FitLit - It's Lit to be Fit
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+### Project Overview
 
-## Setup
+FitLit is a fitness tracker comprised of information for 50 users, including their personal fitness goals as well as other related health statistics, including daily number of steps, water intake, and sleep quality and quantity.
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `open src/index.html` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-1. Make sure both members of your team are collaborators on the forked repo.
 
-## Testing
+### Set Up
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
+If you would like to run FitLit for yourself, simply clone down this repo and run `npm instal` in your terminal to ensure all vital dependncies are running properly.
 
-## Linting Your Code
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
+### Testing
 
-Your linter will look only at the JavaScript files you have within the `src` and the `test` directories.
+This project utilizes Test Driven Development - TDD - to ensure functionality (with the exception of testing for DOM functionality).
 
-## Data Model
+To check out the tests, run `npm install` (if you have not already) to ensure functionality of all testing dependencies. To run tests, run `npm run test`. To isolate tests, add `.only` in the assertions.
 
-**Users**
+### PROJECT SPEC/SCREEN SHOT
 
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
 
-**Activity**
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
-
-**Hydration**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
-
-**Sleep**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+#### Contributors
+Kate Malone and Sara Karsh

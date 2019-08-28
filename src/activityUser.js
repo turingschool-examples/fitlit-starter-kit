@@ -1,8 +1,10 @@
+
 // The variables below are required for testing but interfere with DOM functionality
     // const userData = require("../data/users")
     // const User = require('./userClass.js')
     // const UserRepository = require("./user-repository");
 // // }
+
 class Activity {
     constructor(moveData) {
         this.moveData = moveData;
@@ -43,6 +45,17 @@ class Activity {
             return acc += current[type]/weekData.length
         },0)
         return parseFloat(average.toFixed(2))
+    }
+
+    getActivityForWeek(user, day, type) {
+        let userInfo = this.findUser(user)
+        let targetIndex = userInfo.findIndex(obj => {
+            return obj.date === day
+        })
+        let weekData = userInfo.slice(targetIndex - 6, targetIndex + 1);
+        return weekData.map((obj) => {
+            return `${obj.date}  ${obj[type]}`
+        })
     }
 
     returnStepGoalMet(user,day) {

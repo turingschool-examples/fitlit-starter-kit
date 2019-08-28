@@ -38,14 +38,14 @@ class Hydration {
 
         }
 
-        getIncreasingWater(user) {
-            let userInfo = this.findUser(user)
+        getIncreasingWater(id) {
+            let userInfo = this.findUser(id)
             let trend = userInfo.reduce((acc, day, index) => {
                 if (index < 2){
                     return acc;
                 }
     
-                if (day.numSteps > userInfo[index-1].numSteps && userInfo[index-1].numSteps > userInfo[index-2].numSteps) {
+                if (day.numOunces > userInfo[index-1].numOunces && userInfo[index-1].numOunces > userInfo[index-2].numOunces) {
                     {acc.push(day.date)}
                 }
                 return acc

@@ -73,15 +73,13 @@ describe('Hydration', () => {
     assert.equal(hydrationData.calculateAverageWaterIntake(), 55)
   })
 
-  it('should return number of fluid ounces consumed for a specific day', () => {
-    assert.equal(hydrationData.hydrationData[0].date, "2019/06/15");
-    let date = hydrationData.hydrationData[0].date
-    assert.equal(hydrationData.waterConsumedThatDay(date), 60)
+  it('should return number of fluid ounces consumed for latest day', () => {
+    hydrationData.extractSingleUser();
+    assert.equal(hydrationData.calculateDailyWaterIntake(), 54)
   })
 
   it('should return number of fluid ounces consumed each day for a week', () => {
-    
-    assert.deepEqual(hydrationData.waterConsumedThatWeek(), [43, 59, 52, 50, 24, 99, 54])
+    hydrationData.extractSingleUser();    
+    assert.deepEqual(hydrationData.calculateWeeklyWaterIntake(), [{"date": "2019/06/16", "numOunces": 43, "userID": 17}, {"date": "2019/06/17", "numOunces": 59, "userID": 17}, {"date": "2019/06/18", "numOunces": 52, "userID": 17}, {"date": "2019/06/19", "numOunces": 50, "userID": 17}, {"date": "2019/06/20", "numOunces": 24, "userID": 17}, {"date": "2019/06/21", "numOunces": 99, "userID": 17}, {"date": "2019/06/22", "numOunces": 54, "userID": 17}])
   });
-
 });

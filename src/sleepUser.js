@@ -26,12 +26,12 @@ class Sleep {
     }
 
     getHoursForDay(id, date) {
-        return this.findUser(id).find(user => user.date === date).hoursSlept.toFixed(0);
+        return parseFloat(this.findUser(id).find(user => user.date === date).hoursSlept.toFixed(1));
 
     }
 
     getQualityForDay(id, date) {
-        return this.findUser(id).find(user => user.date === date).sleepQuality.toFixed(0);
+        return parseFloat(this.findUser(id).find(user => user.date === date).sleepQuality.toFixed(1));
     }
 
     getSleepOverWeek(id, day) {

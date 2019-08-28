@@ -31,23 +31,23 @@ describe('Sleep', function() {
   });
 
   it('should get avg sleep quality per day for a user', () => {
-    expect(sleep1.getAvgSleepQual()).to.equal(2.5)
+    expect(sleep1.getAvgSleepQual(1)).to.equal(2.5)
   });
 
-  it.only('should get how many hours slept for a particular date for a user', () => {
+  it('should get how many hours slept for a particular date for a user', () => {
     expect(sleep1.getHoursSleptPerDay("2019/06/15", 1)).to.equal(6.1)
   });
 
   it('should get sleep quality for a particular date for a user', () => {
-    expect(sleep1.getSleepQualPerDay("2019/06/15")).to.equal(2.2)
+    expect(sleep1.getSleepQualPerDay("2019/06/15", 1)).to.equal(2.2)
   })
 
   it('should get hours slept each day over any given week for a user', () => {
-    expect(sleep1.getHoursSleptPerDayPerWeek("2019/06/21")).to.deep.equal([6.1, 4.1, 8, 10.4, 10.7, 9.3, 7.8])
+    expect(sleep1.getHoursSleptPerDayPerWeek("2019/06/21", 1)).to.deep.equal([ 10.7, 9.6, 7.2, 9.3, 10.1, 9.4, 7.8 ])
   })
 
   it('should get sleep quality each day over a given week for a user', () => {
-    expect(sleep1.getSleepQualPerDayPerWeek("2019/06/21")).to.deep.equal([2.2, 3.8, 2.6, 3.1, 1.2, 1.2, 4.2])
+    expect(sleep1.getSleepQualPerDayPerWeek("2019/06/21", 1)).to.deep.equal([2.2, 3.8, 2.6, 3.1, 1.2, 1.2, 4.2])
   })
 
 });

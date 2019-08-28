@@ -17,14 +17,14 @@ const allUsersSleep = new Sleep(sleepData, person);
 $('.header__span').text(user.returnFirstName());
 $("#step-goal").append(user.dailyStepGoal);
 $('#avg-steps').append(allUsers.returnAvgStepGoal());
-$('#water-consumption').append(allUsersHydration.getDailyOz('2019/06/20'));
+$('#water-consumption').append(allUsersHydration.getDailyOz('2019/06/20', userNum));
 $('#hours-slept').append(allUsersSleep.getHoursSleptPerDay('2019/06/20', userNum));
-$('#sleep-quality').append(allUsersSleep.getSleepQualPerDay('2019/06/20'));
-$('#sleep-quality-alltime').append(allUsersSleep.getAvgSleepQual());
-$('#hours-slept-alltime').append(allUsersSleep.getAvgSleepHours(userNum))
+$('#sleep-quality').append(allUsersSleep.getSleepQualPerDay('2019/06/20', userNum));
+$('#sleep-quality-alltime').append(allUsersSleep.getAvgSleepQual(userNum));
+$('#hours-slept-alltime').append(allUsersSleep.getAvgSleepHours(userNum));
 
 function appendWaterWeekToDOM() {
-  var weekArray = allUsersHydration.getWeekIntake('2019/06/20', person.id);
+  var weekArray = allUsersHydration.getWeekIntake('2019/06/20', userNum);
   var weekOunces = weekArray.map((day) => {
     return day.numOunces;
   })
@@ -35,7 +35,7 @@ function appendWaterWeekToDOM() {
 appendWaterWeekToDOM()
 
 function appendHoursSleptWeekToDOM() {
-  var weekArray = allUsersSleep.getHoursSleptPerDayPerWeek('2019/06/20');
+  var weekArray = allUsersSleep.getHoursSleptPerDayPerWeek('2019/06/20', userNum);
   var weekHours = weekArray.map((day) => {
     return day;
   })
@@ -46,7 +46,7 @@ function appendHoursSleptWeekToDOM() {
 appendHoursSleptWeekToDOM()
 
 function appendSleepQualityWeekToDOM() {
-  var weekArray = allUsersSleep.getSleepQualPerDayPerWeek('2019/06/20');
+  var weekArray = allUsersSleep.getSleepQualPerDayPerWeek('2019/06/20', userNum);
   var weekHours = weekArray.map((day) => {
     return day;
   })

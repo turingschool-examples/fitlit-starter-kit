@@ -13,8 +13,12 @@ class Hydration {
     return daliyAverage
   }
 
-  getDailyOz(date) {
-    return this.data.find(day => day.date === date).numOunces
+  getDailyOz(date, id) {
+    let dailyIntake = this.data.filter(user => user.userID === id)
+
+    let day = dailyIntake.find(day => day.date === date).numOunces
+
+    return day;
   }
 
   getWeekIntake(date, id) {

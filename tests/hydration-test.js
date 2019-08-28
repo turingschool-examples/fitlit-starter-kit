@@ -25,7 +25,7 @@ describe('Hydration', function() {
   });
 
   it('should return ounces consumed on a specific day', () => {
-    expect(hydration.getDailyOz('2019/06/20')).to.equal(50)
+    expect(hydration.getDailyOz('2019/06/20', 2)).to.equal(50)
   });
 
   it('should return 7 days worth of consumption values', () => {

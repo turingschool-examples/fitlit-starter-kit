@@ -15,8 +15,10 @@ class Sleep {
     return parseFloat((avgHours / 11).toFixed(1));
   }
 
-  getAvgSleepQual() {
-    let person = this.data;
+  getAvgSleepQual(id) {
+    let person = this.data.filter(user => {
+      return user.userID === id;
+    })
 
     let avgQual = person.reduce((acc, day) => {
       return acc += day.sleepQuality;
@@ -37,8 +39,10 @@ class Sleep {
     return selectedDay[0].hoursSlept;
   }
 
-  getSleepQualPerDay(date) {
-    let person = this.data;
+  getSleepQualPerDay(date, id) {
+    let person = this.data.filter(user => {
+      return user.userID === id;
+    })
 
     let selectedDay = person.find(day => {
       return day.date === date;
@@ -47,8 +51,10 @@ class Sleep {
     return selectedDay.sleepQuality;
   }
 
-  getHoursSleptPerDayPerWeek(date) {
-    let person = this.data;
+  getHoursSleptPerDayPerWeek(date, id) {
+    let person = this.data.filter(user => {
+      return user.userID === id;
+    })
 
     let selectedDay = person.find(day => {
       return day.date === date;
@@ -65,16 +71,18 @@ class Sleep {
     return sleepHourArray;
   }
 
-  getSleepQualPerDayPerWeek(date) {
-    let person = this.data;
+  getSleepQualPerDayPerWeek(date, id) {
+    let person = this.data.filter(user => {
+      return user.userID === id;
+    })
 
     let selectedDay = person.find(day => {
       return day.date === date;
     })
 
-    let indexOfSelectedDay = person.indexOf(selectedDay);
+    let indexOfSelectedDay = this.data.indexOf(selectedDay);
 
-    let weekArray = person.slice((indexOfSelectedDay - 6), (indexOfSelectedDay + 1))
+    let weekArray = this.data.slice((indexOfSelectedDay - 6), (indexOfSelectedDay + 1))
 
     let sleepQualArray = weekArray.map(day => {
       return day.sleepQuality;

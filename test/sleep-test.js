@@ -290,9 +290,13 @@ describe('Sleep', () => {
     assert.deepEqual(sleepData.findLatestWeek(), [{"date": "2019/06/16", "hoursSlept": 7.4, "sleepQuality": 2.4, "userID": 5}, {"date": "2019/06/17", "hoursSlept": 10.5, "sleepQuality": 3.7, "userID": 5}, {"date": "2019/06/18", "hoursSlept": 5.2, "sleepQuality": 4.1, "userID": 5}, {"date": "2019/06/19", "hoursSlept": 4.8, "sleepQuality": 3.4, "userID": 5}, {"date": "2019/06/20", "hoursSlept": 10.1, "sleepQuality": 3.5, "userID": 5,}, {"date": "2019/06/21", "hoursSlept": 9.6, "sleepQuality": 4.1, "userID": 5}, {"date": "2019/06/22", "hoursSlept": 8.1, "sleepQuality": 1.3, "userID": 5}]);
   });
 
+  it('should return total hours slept for any given week', () => {
+    sleepData.extractSingleUser();
+    assert.deepEqual(sleepData.calculateWeeklyHoursSlept("2019/06/16"), [7.4, 10.5, 5.2, 4.8, 10.1, 9.6, 8.1]);
+  });
+
   it('should return total sleep quality for any given week', () => {
     sleepData.extractSingleUser();
-    sleepData.findStartDate("2019/06/16");
     assert.deepEqual(sleepData.calculateWeeklySleepQuality("2019/06/16"), [2.4, 3.7, 4.1, 3.4, 3.5, 4.1, 1.3]);
   });
 
@@ -312,7 +316,6 @@ describe('Sleep', () => {
       sleepQuality: 3.4}]);
   });
 
-  //Own Metric
   it('should return date user had the most hours slept', () => {
     sleepData.extractSingleUser();
     assert.deepEqual(sleepData.returnDateWithMostHoursSlept('2019/06/16'), {

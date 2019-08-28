@@ -1,32 +1,35 @@
-
+    const userData = require("../data/users")
+    const User = require('./userClass.js')
+    const UserRepository = require("./user-repository");
+// }
 class Activity {
     constructor(moveData) {
         this.moveData = moveData;
-    }
+        
+     }
 
-    findUser(user) {
+    findUser(id) {
         let person = this.moveData.filter((obj) => {
-            return obj.userID === user
+            return obj.userID === id
         })
         return person;
     }
 
-    getMilesWalked(user, date) {
-        let userInfo = this.findUser(user)
+    getMilesWalked(id, date) {
+        let userInfo = this.findUser(id)
         let dayOfSteps = userInfo.find(obj => obj.date === date);
+        let allUsers = new UserRepository(userData)
+        let user = allUsers.returnUserData(id)
         let milesWalked = parseFloat(((dayOfSteps.numSteps * user.strideLength)/5280).toFixed(2))
-        console.log(milesWalked)
         return milesWalked
 
     }
 
     getMinutesActive(id, date, type) {
         let userInfo = this.findUser(id)
-        console.log(userInfo)
         let activeToday = userInfo.find((day) => {
             return day.date === date
         })
-        console.log(activeToday)
         return activeToday[type]
     }
 
@@ -45,7 +48,6 @@ class Activity {
     returnStepGoalMet(user,day) {
         let userInfo = this.findUser(user)
         let todaysSteps = userInfo.find(obj => obj.date === day)
-        console.log("today steps", todaysSteps.numSteps)
         if (todaysSteps.numSteps >= user.dailyStepGoal) {
             return true
         } else {
@@ -53,8 +55,12 @@ class Activity {
         }
     }
 
-    getDaysStepGoalExceeded(user) {
-        let userInfo = this.findUser(user)
+    getDaysStepGoalExceeded(id) {
+        let userInfo = this.findUser(id)
+        console.log("user info is step goal here", userInfo)
+        let allUsers = new UserRepository(userData)
+        let user = allUsers.returnUserData(id)
+        console.log("maybe step goal here", user)
         let overGoal = userInfo.filter(day => {
             return day.numSteps > user.dailyStepGoal
         }).map(day => day.date)
@@ -71,13 +77,29 @@ class Activity {
         return bestClimbingDay
     }
 
-    // getStepsToday(user, day) {
-    //     let userInfo = this.findUser(user)
-    //     let todaysSteps = userInfo.find(obj => {
-    //         return obj.date === day
-    //     })
-    //     return todaysSteps.numSteps;
-    // }
+    getStepsToday(user, day) {
+        let userInfo = this.findUser(user)
+        let todaysSteps = userInfo.find(obj => {
+            return obj.date === day
+        })
+        return todaysSteps.numSteps;
+    }
+
+    getIncreasingSteps(user) {
+        let userInfo = this.findUser(user)
+        let trend = userInfo.reduce((acc, day, index) => {
+            if (index < 2){
+                return acc;
+            }
+
+            if (day.numSteps > userInfo[index-1].numSteps && userInfo[index-1].numSteps > userInfo[index-2].numSteps) {
+                {acc.push(day.date)}
+            }
+            return acc
+        }, [])
+        console.log("trend", trend)
+        return trend
+    }
 
 }
 

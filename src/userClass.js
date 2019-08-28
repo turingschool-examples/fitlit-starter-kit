@@ -1,5 +1,3 @@
-// const users = require('../data/users.js')
-
 class User {
   constructor(userObj) {
     this.id = userObj.id;
@@ -12,8 +10,8 @@ class User {
   };
 
   returnFirstName() {
-    let name = this.name.split(' ')
-    return name[0]
+    let name = this.name.split(' ');
+    return name[0];
   };
 }
 

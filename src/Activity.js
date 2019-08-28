@@ -1,3 +1,7 @@
+if (typeof module !== 'undefined') {	
+  userData = require('../data-subsets/users-subset');	
+}
+
 class Activity {
     constructor(activityData) {
         this.activityData = activityData;
@@ -59,6 +63,20 @@ class Activity {
           let stepsLeft = goalSteps - userActivityToday
           return `Almost there! You have ${stepsLeft} steps until you have met your step goal.`
         }
+    }
+
+    gatherFriends(givenDate, id) {
+      let allFriends = [...userData[id].friends];
+      return allFriends
+      let userFriends = allFriends.map(friend => ({
+        id: friend,
+        name: userData.find(user => user.id === friend).name,
+        steps: this.activityData.filter(day => day.userID === userFriends && day.date <= givenDate)
+          .map(user => user.numSteps) 
+      }));
+      return userFriends.amp(friend => {
+        return friend.name;
+      });
     }
 }
 

@@ -2,7 +2,7 @@ $(function() {
 
 const randomUser = Math.floor(Math.random() * 50) +1 
 const userRepository = new UserRepository(userData);
-const hydration = new Hydration(userData);
+const hydration = new Hydration(userData[randomUser]);
 const user = new User(userData[randomUser]);
 const sleep = new Sleep(userData);
 // const sleepRepository = new SleepRepository();
@@ -23,7 +23,7 @@ $('.grid').masonry({
     $('#article__user--stridelength').text(userData[randomUser].strideLength);
     $('#article__user--stepgoal').text(userData[randomUser].dailyStepGoal);
     $('#article__user--stepcompare').text(userRepository.calcStepGoalAvg());
-    $('#article__hyrdation--fldozs').text(hydration);
+    $('#article__hyrdation--fldozs').text(hydration.findWaterByDate('2019/06/15'));
     $('#article__user--hours-slept').text(sleep);
     $('#article__user--quality-slept').text(sleep);
     $('#article__user--todaysteps').text(activityData[randomUser].numSteps);
@@ -33,7 +33,8 @@ $('.grid').masonry({
     $('#article__user--comparesteps').text(activityRepository.avgStepsClimbed('2019/06/15'));
     $('#article__user--comparemins').text(activityRepository.avgStepsTaken('2019/06/15'));
     $('#article__user--comparestairs').text(activityRepository.avgMinutesActive('2019/06/15'));
-    $('#artice__user--step-goal-reminder').text(activity.giveUserStepsFeedback(randomUser, '2019/06/15', userData))
+    $('#artice__user--step-goal-reminder').text(activity.giveUserStepsFeedback(randomUser, '2019/06/15', userData));
+    
 
 
     const weeklyWaterIntake = new Chart($('#weekly-hydration-chart'), {
@@ -42,8 +43,7 @@ $('.grid').masonry({
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: 'Weekly Hydration',
-        data: [ 43, 39, 61, 51, 52, 29, 57 ],
-        //hydration.findWeeklyWaterCons(randomUser),
+        data: hydration.findWeeklyWaterCons(),
         backgroundColor: [
           '#73A9BB', 
           '#FC5D79', 

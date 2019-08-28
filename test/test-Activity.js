@@ -78,4 +78,10 @@ describe('Activity', () => {
       flightsOfStairs: 49
     })
   })
+
+  it('should return the days where the user increased their step count for 3 days or more', () => {
+    let user2 = new User(userRepo.getUserData(4));
+    let activePerson2 = new Activity(activeRepo.getUserData(4), user2);
+    expect(console.log(activePerson2.returnIncreasedStepDays(sampleDate))).to.equal(5)
+  })
 })

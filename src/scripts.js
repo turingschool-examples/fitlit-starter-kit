@@ -1,7 +1,6 @@
 //Generate random user 
 const uniqueUserIndex = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
 
-
 //Repo variables
 const userRepo = new UserRepo(userData);
 const sleepRepo = new SleepRepo(sleepData);
@@ -31,12 +30,18 @@ function dropYear(dates) {
   })
   return reformattedDates
 }
-
+$(document).ready(function() {
 
 //Packery Items 
 let $grid = $('.grid').packery({
   itemSelector: '.grid-item',
-  columnWidth: 100
+  columnWidth: 50,
+  rowHeight: 30,
+  gutter: 4,
+});
+
+let $draggable = $('.draggable').draggabilly({
+  containment: true
 });
 
 $grid.find('.grid-item').each(function (i, gridItem) {
@@ -44,7 +49,6 @@ $grid.find('.grid-item').each(function (i, gridItem) {
   $grid.packery('bindDraggabillyEvents', draggie)
 });
 
-$(".draggable").draggabilly("enable");
 
 // Function to find user name
 function findUserName(id) {
@@ -247,4 +251,5 @@ function insertStairStreak() {
   return list;
 }
 
-$('.increasing-stairs').html(`${insertStairStreak()}`);
+
+})

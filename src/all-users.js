@@ -2,7 +2,7 @@ class AllUsers {
     constructor(data) {
         this.data = data;
     }
-    
+
     getUsersWeek(day) {
         let index = this.data.findIndex(object => {
             return object.date === day;
@@ -27,7 +27,6 @@ class AllUsers {
         let average = this.getUserWeekArray(day);
         let goodSleep = [];
         for(let key in average) {
-            console.log("key", key)
             let result = average[key].reduce((acc, cur) => {
                 return acc += cur;
             }, 0)

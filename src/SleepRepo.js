@@ -36,7 +36,7 @@ class SleepRepo {
 
   returnLongestSleepers(date) {
     var dateData = this.sleepData.filter(day => day.date === date);
-    var sortedSleepers = dateData.sort((a, b) => b.hoursSlept - a.hoursSlept);
+    var sortedSleepers = [...dateData].sort((a, b) => b.hoursSlept - a.hoursSlept);
     return sortedSleepers.filter(day => day.hoursSlept === sortedSleepers[0].hoursSlept).map(user => user.userID);
   }
 

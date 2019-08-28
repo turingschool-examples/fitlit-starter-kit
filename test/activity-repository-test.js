@@ -55,19 +55,19 @@ describe('Activity', () => {
   });
 
   it('should calculate a user\'s average active minutes per week', function () {
-    expect(activity.returnAvgActiveMinutesByWeek(1, '2019/06/15')).to.equal(171);
+    expect(activity.returnAvgActiveMinutesByWeek(1, '2019/06/15')).to.equal(151);
   });
 
   it('should calculate a user\'s active minutes per week', function () { 
-    expect(activity.returnActiveMinutesByWeek(1, '2019/06/15')).to.deep.eql([140, 175, 168, 165, 275, 140, 135]);
+    expect(activity.returnActiveMinutesByWeek(1, '2019/06/21')).to.deep.eql([140, 175, 168, 165, 275, 140, 135]);
   });
 
   it('should calculate a user\'s number of steps per week', function () {
-    expect(activity.returnNumberOfStepsByWeek(1, '2019/06/15')).to.deep.eql([3577, 6637, 14329, 4419, 8429, 14478, 6760]);
+    expect(activity.returnNumberOfStepsByWeek(1, '2019/06/21')).to.deep.eql([3577, 6637, 14329, 4419, 8429, 14478, 6760]);
   });
 
   it('should calculate a user\'s stairs climbed per week', function () {
-    expect(activity.returnStairsClimbedByWeek(1, '2019/06/15')).to.deep.eql([16, 36, 18, 33, 2, 12, 6]);
+    expect(activity.returnStairsClimbedByWeek(1, '2019/06/21')).to.deep.eql([16, 36, 18, 33, 2, 12, 6]);
   });
 
   it('should determine a user\'s activity status for a given day', function () {
@@ -94,6 +94,10 @@ describe('Activity', () => {
       "2019/06/20": 14478
     }
     ]);
+  });
+
+  it('should return the number of times the user has climbed the equivelant of Republic Plaza', () => {
+    expect(activity.republicPlazaChallenge(1)).to.equal(2.2);
   })
 
 });

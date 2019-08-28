@@ -18,6 +18,8 @@ let sleepQuality = document.querySelector('.main_sleep_quality');
 let sleepPerDay = document.querySelector('.main_sleep_specific_day');
 let steps = document.querySelector('.main_activity_steps');
 let minutes = document.querySelector('.main_activity_minutes');
+let miles = document.querySelector('.main_activity_miles');
+let activityGoal = document.querySelector('.main_activity_goal');
 let activityList = document.querySelector('.main_activity_list');
 
 /*************** Event Listeners *************/
@@ -43,7 +45,7 @@ function initializePage(data, hydro, sleepy, activity) {
 	const sleep2 = new Sleep(sleepRepository.data)
 	activityRepository = new ActivityRepository(activity);
 	activityRepository.findUserID(randoNum);
-	const activity1 = new Activity(activityRepository.currentUser);
+	const activity1 = new Activity(activityRepository.currentUser, userRepository.currentUser);
 	name.innerHTML = `Name: ${user.name}`
 	address.innerHTML = `Address: ${user.address}`
 	email.innerHTML = `Email: ${user.email}`
@@ -57,7 +59,7 @@ function initializePage(data, hydro, sleepy, activity) {
 	appendHydroList(userHydro.findDates(), userHydro);
 	appendSleepList(sleep.findSleepDates(), sleep);
 	appendMostSleep(sleep, sleep2, user2);
-	appendActivityList(activity1.findActivityDates(), activity1) 
+	appendActivityList(activity1.findActivityDates(), activity1, user)
 }
 
 function findFriends(userRepository, user) {
@@ -194,7 +196,7 @@ function userSleepAvg(singleSleepObj, sleepObj, userObj) {
 		return sleepIDs
 }
 
-function appendActivityList(array, obj) {
+function appendActivityList(array, obj, user) {
 	let dateActivityList = document.createElement("select");
 	dateActivityList.setAttribute("id", "mySelect");
 	activityList.appendChild(dateActivityList);
@@ -207,20 +209,19 @@ function appendActivityList(array, obj) {
     	obj.findNumSteps(dateActivityList.value)
     	obj.findMinActive(dateActivityList.value)
     		}
-    dateActivityList.addEventListener('change', function() {
+   dateActivityList.addEventListener('change', function() {
    obj.findNumSteps(dateActivityList.value)
    obj.findMinActive(dateActivityList.value)
 		steps.innerHTML = `Number of steps today: ${obj.numSteps}`
 		minutes.innerHTML =`Number of Minutes active: ${obj.minutesActive}`
-		for (let i = 0; i < array.length; i++) {
-			if (dateActivityList.value === array[i]) {
-    		// return obj.findActivityWeek(i)
-    			}
-			}
+		miles.innerHTML = `Numer of Miles Traveled: ${obj.findDistanceMiles(user, obj)}`
+		goal.innerHTML = `${obj.checkStepGoal(user, obj)}`
 		})
    obj.findNumSteps(dateActivityList.value)
    obj.findMinActive(dateActivityList.value)
 		steps.innerHTML = `Number of steps today: ${obj.numSteps}`
 		minutes.innerHTML =`Number of Minutes active: ${obj.minutesActive}`
+		miles.innerHTML = `Numer of Miles Traveled: ${obj.findDistanceMiles(user, obj)}`
+		activityGoal.innerHTML = `${obj.checkStepGoal(user, obj)}`
 	}
 }

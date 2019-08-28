@@ -2,14 +2,14 @@
 <html>
   <head>
     <link rel="stylesheet" href="/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Changa:300|Khula|Roboto:500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Changa:300|Khula|Roboto:300,500,700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
   </head>
   <body>
     <header>
       <div class="header__div">
-        <h1 class="header__div--h1">FitLit</h1>
+        <h1 class="header__div--h1">Hi, <span class="header__div-userName"> </span>!</h1>
         <h4 class="header__div--date">August 19, 2019</h4>
       </div>
       <div class="header__div--greeting">
@@ -46,23 +46,28 @@
         <article class="main__hydration__article--data">
           <div class="main__hydration__div--user--group">
             <container class="main__hydration--data--container left--side--hydration hydration-stats">
-              <div class="hydration-stats-text">
-                <p >Consumed Today:</p>
-                <p class="hydration__container--consumed--today hydration-stats-nums">15oz</p>
-              </div>
-              <div class="hydration-stats-text">
-                <p >Average consumed this week:</p>
-                <p class="hydration__container--consumed--this--week hydration-stats-nums">45oz</p>
-              </div>
-            </container>
-            <container class="main__hydration--data--container left--side--hydration">
-              <p class="main__hydration__average--all-users">
-                Average consumed by ALL users this week: 50oz
-              </p>
-            </container>
-          </div>
+              <p class="user-name"><span class="header__div-userName"> </span></p>
+                <div class="main__hydration__article">
+                  <div class="hydration-stats-text">
+                    <p class="top-text">Today</p>
+                    <p class="hydration__container--consumed--today hydration-stats-nums top-nums">15</p>
+                    <p class="top-text bottom-text">OZ</p>
+                  </div>
+                  <div class="hydration-stats-text">
+                    <p class="top-text">Week Avg</p>
+                    <p class="hydration__container--consumed--this--week hydration-stats-nums top-nums">45oz</p>
+                    <p class="top-text bottom-text">OZ</p>
+                  </div>
+                </div>
+              </container>
+              <container class="main__hydration--data--container left--side--hydration">
+                <p class="main__hydration__average--all-users">
+                  Average consumed by ALL users this week: 50oz
+                </p>
+              </container>
+           </div>
           <container class="main__hydration--data--container weeklyHydro">
-            <h4 class="main__hydration--thisWeek">This week:</h4>
+            <h4 class="main__hydration--thisWeek top-text">Past Seven Days</h4>
             <div class="hydroChart-container" style="position: relative; width:98%">
                 <canvas id="hydroChart--thisWeek" ></canvas>
             </div>

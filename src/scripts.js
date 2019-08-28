@@ -13,18 +13,18 @@ const activePerson = new Activity(activeRepo.getUserData(user.id), user);
 
 const sampleDate = '2019/06/25'
 
-
-$('.header__div--h1').text(`Hi, ${user.getUserFirstName()}!`);
+const userName = user.getUserFirstName()
+$('.header__div-userName').text(`${userName}`);
 
 $('.header__div__user-stepgoal').text(`${user.dailyStepGoal}`);
 
 $('.header__div__allusers-stepgoal').text(`${repo.getAllUsersAvgStepGoal()}`);
 
-$('.hydration__container--consumed--today').text(`${userHydro.userHydrationByDate(sampleDate)}oz`);
+$('.hydration__container--consumed--today').text(`${userHydro.userHydrationByDate(sampleDate)}`);
 
 userHydro.getHydroArray(sampleDate)
 
-$('.hydration__container--consumed--this--week').text(`${userHydro.getWeeklyHydroAvg()}oz`);
+$('.hydration__container--consumed--this--week').text(`${userHydro.getWeeklyHydroAvg()}`);
 
 
 $('.sleep__container--hours--today').text(`Hours slept today: ${sleepyPerson.getSleepHoursByDate(sampleDate)} hours`)

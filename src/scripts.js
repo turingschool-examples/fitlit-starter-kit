@@ -10,7 +10,7 @@ $(document).ready(() => {
   const hydration = new Hydration(hydrationData, currentUser.id);
   hydration.findCurrentUserData();
   const activity = new Activity(activityData, idRandom, userData);
-//   const findTrends = activity.findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers()
+  //   const findTrends = activity.findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers()
   const sleep = new Sleep(sleepData, idRandom, userData);
   sleep.findCurrentUserData();
   activity.findCurrentUserData();
@@ -66,111 +66,135 @@ $(document).ready(() => {
 
 
 const dateToday = () => {
-    let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth() + 1; 
-    // console.log(new Intl.DateTimeFormat('en-US', mm).format(today));
-    const yyyy = today.getFullYear();
-    if (dd<10) {
-        dd=`0${dd}`;
-    } 
-    if (mm<10) {
-        mm=`0${mm}`;
-    } 
-// today = `${yyyy}/${mm}/${dd}`;
-today = `${mm}/${dd}/${yyyy}`;
-// console.log(today);
-return today;
+  let today = new Date();
+  let dd = today.getDate();
+  let mm = today.getMonth() + 1; 
+  // console.log(new Intl.DateTimeFormat('en-US', mm).format(today));
+  const yyyy = today.getFullYear();
+  if (dd<10) {
+    dd=`0${dd}`;
+  } 
+  if (mm<10) {
+    mm=`0${mm}`;
+  } 
+  // today = `${yyyy}/${mm}/${dd}`;
+  today = `${mm}/${dd}/${yyyy}`;
+  // console.log(today);
+  return today;
 }
 
 const dateTodayString = () => {
-    let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth() + 1; 
-    const yyyy = today.getFullYear();
-    if (dd<10) {
-        dd=`0${dd}`;
-    } 
-    if (mm<10) {
-        mm=`0${mm}`;
-    } 
-today = `${yyyy}/${mm}/${dd}`;
-return today;
+  let today = new Date();
+  let dd = today.getDate();
+  let mm = today.getMonth() + 1; 
+  const yyyy = today.getFullYear();
+  if (dd<10) {
+    dd=`0${dd}`;
+  } 
+  if (mm<10) {
+    mm=`0${mm}`;
+  } 
+  today = `${yyyy}/${mm}/${dd}`;
+  return today;
 }
 
 const startTodayString = () => {
-    let today = new Date();
-    let dd = today.getDate() - 7;
-    let mm = today.getMonth() + 1; 
-    const yyyy = today.getFullYear();
-    if (dd<10) {
-        dd=`0${dd}`;
-    } 
-    if (mm<10) {
-        mm=`0${mm}`;
-    } 
-today = `${yyyy}/${mm}/${dd}`;
-return today;
+  let today = new Date();
+  let dd = today.getDate() - 7;
+  let mm = today.getMonth() + 1; 
+  const yyyy = today.getFullYear();
+  if (dd<10) {
+    dd=`0${dd}`;
+  } 
+  if (mm<10) {
+    mm=`0${mm}`;
+  } 
+  today = `${yyyy}/${mm}/${dd}`;
+  return today;
 }
 
 const displayThisWeeksHydration = (hydration) => {
-    let endDate = dateTodayString();
-    let startDate = startTodayString();
-    let weekArray = hydration.findFluidOzConsumedEveryDayOverSpecificWeek(startDate, endDate);
-    weekArray.forEach((day) => {
-        $('.hydration-week-display').append(`<li> On ${day.date} you drank ${day.numOunces} oz of water </li>`)
-    })
+  let endDate = dateTodayString();
+  let startDate = startTodayString();
+  let weekArray = hydration.findFluidOzConsumedEveryDayOverSpecificWeek(startDate, endDate);
+  weekArray.forEach((day) => {
+    $('.hydration-week-display').append(`<li> On ${day.date} you drank ${day.numOunces} oz of water </li>`)
+  })
 }
 
 const displayThisWeeksSleepOrQuality = (sleep, property) => {
-    let endDate = dateTodayString();
-    let startDate = startTodayString();
-    let weekArray = sleep.findSleepHoursOrQualityEachDayOverWeekForAUser(startDate, endDate, property);
+  let endDate = dateTodayString();
+  let startDate = startTodayString();
+  let weekArray = sleep.findSleepHoursOrQualityEachDayOverWeekForAUser(startDate, endDate, property);
     
-    weekArray.forEach((day) => {
-        if(property === 'hoursSlept') {
-            $('.sleep-week-display').append(`<li> On ${day.date} you slept ${day[property]} hours. </li>`)
-        }
-        else {
-            $('.sleep-week-quality-display').append(`<li> On ${day.date} your sleep quality was ${day[property]} . </li>`)
-        }
-    })
+  weekArray.forEach((day) => {
+    if(property === 'hoursSlept') {
+      $('.sleep-week-display').append(`<li> On ${day.date} you slept ${day[property]} hours. </li>`)
+    }
+    else {
+      $('.sleep-week-quality-display').append(`<li> On ${day.date} your sleep quality was ${day[property]}. </li>`)
+    }
+  })
     
 }
 
 
 
 const displayLatestWeeksStats = (activity) => {
-    let endDate = dateTodayString();
-    let startDate = startTodayString();
+  let endDate = dateTodayString();
+  let startDate = startTodayString();
 }
 
-$(".sleep-btn").click(function(){
-    $(".sleep-week-display").toggle();
+$(".sleep-btn").click(function() {
+  $(".sleep-week-display").toggle();
+  $(".sleep-week-quality-display").toggle();
+  $(".sleep-info").toggle();
+});
+
+$(".sleep-btn").click(function() {
+  $(".hydration-week-display").hide();
+  $(".hydration-info").hide();
+  $(".activity-week-display").hide();
+  $(".profile-info").hide();
+});
+
+$(".hydration-btn").click(function() {
+  $(".sleep-week-display").hide();
+  $(".sleep-week-quality-display").hide();
+  $(".sleep-info").hide();
+  $(".activity-week-display").hide();
+  $(".profile-info").hide();
+});
+
+$(".hydration-btn").click(function() {
+  $(".hydration-week-display").toggle();
+  $(".hydration-info").toggle();
+});
+
+$(".activity-btn").click(function() {
+  $(".activity-week-display").toggle();
+});
+
+$(".activity-btn").click(function() {
+    $(".sleep-week-display").hide();
+    $(".sleep-week-quality-display").hide();
+    $(".sleep-info").hide();
+    $(".hydration-week-display").hide();
+    $(".hydration-info").hide();
+    $(".profile-info").hide();
   });
 
-  $(".sleep-btn").click(function(){
-    $(".sleep-week-quality-display").toggle();
-  });
+$(".profile-btn").click(function() {
+  $(".profile-info").toggle();
+});
 
-  $(".sleep-btn").click(function(){
-    $(".sleep-info").toggle();
-  });
-
-$(".hydration-btn").click(function(){
-    $(".hydration-week-display").toggle();
-  });
-  $(".hydration-btn").click(function(){
-    $(".hydration-info").toggle();
-  });
-
-
-  $(".activity-btn").click(function(){
-    $(".activity-week-display").toggle();
-  });
-
-  $(".profile-btn").click(function(){
-    $(".profile-info").toggle();
+$(".profile-btn").click(function() {
+    $(".sleep-week-display").hide();
+    $(".sleep-week-quality-display").hide();
+    $(".sleep-info").hide();
+    $(".hydration-week-display").hide();
+    $(".hydration-info").hide();
+    $(".activity-week-display").hide();
   });
 
 

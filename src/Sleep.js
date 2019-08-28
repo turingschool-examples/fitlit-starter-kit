@@ -105,12 +105,12 @@ class Sleep {
       }
     }) 
     var groupOverThree = namesID.map((num) => {
-     return this.allUsers.find((user) => {
-      if(num === user.id) {
-        return user
-      }
-    }).name
-  });
+      return this.allUsers.find((user) => {
+        if(num === user.id) {
+          return user
+        }
+      }).name
+    });
     return groupOverThree 
   }
 
@@ -121,10 +121,6 @@ class Sleep {
     return sleepDate
   }
 }
-
-
-
-
 
 
 

@@ -7,7 +7,6 @@ class AllUsers {
         let index = this.data.findIndex(object => {
             return object.date === day;
         });
-    
         let weekData = this.data.slice(index - 35, index + 5)
         return weekData;
         }

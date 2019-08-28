@@ -22,8 +22,10 @@
         <p class="user-info">Step Goal: <span id="user-info-step-goal"></span></p>
     </container>
     <container class="container-center">
-      <h3>Hydration</h3>
-      <p>You've consumed <span id="user-water-by-day"></span> ounces of water today</p>
+      <!-- <h3>Hydration</h3> -->
+      <p>You've consumed</p> 
+      <span id="user-water-by-day"></span> <p>
+      </p>ounces of water today</p>
     </container>
     <container>
       <h3>Weekly Water Consumption</h3>
@@ -39,16 +41,16 @@
     <container class="container-center" id="user-rested">
       <h3 >How Rested Are You Today?</h3>
       <img id="sleep-status"></img>
-      <h4>Getting 8 hours of sleep will make you more productive!</h4>
+      <p id="sleep-comment">Getting 8 hours of sleep will make you more productive!</p>
     </container>
     <container id="user-sleep-week">
       <h3>Your Sleep Quality & Hours</h3>
       <canvas id="user-sleep-by-week"></canvas>
     </container>
-    <container id="user-water-trend-week">
+    <container class="container-center" id="user-water-trend-week">
       <h3>Water Trend</h3>
-      <img id="sleep-status"></img>
-      <h4>Keep up the good work! You've consumed 64 ounces at least one day this week'</h4>
+      <img id="water-status"></img>
+      <p id="water-comment">Keep up the good work! You've averaged more than 64 ounces per day this week</p>
     </container>
     <container class="container-center">
       <h3>Your Sleep Averages</h3>
@@ -91,9 +93,10 @@
       <h3>Activity: Stairs Climbed This Week</h3>
       <canvas id="user-stairs-climbed-by-week"></canvas>
     </container>
-    <container>
+    <container id="building-challenge">
       <h3>Republic Plaza Challenge</h3>
-      <p id="republic-plaza-challenge"></p>
+      <img src='/images/building.svg'>
+      <p>You have climbed the Republic Plaza Building in Denver, CO <span id="republic-plaza-challenge"></span> times</p>
     </container>
     <container>
       <h3>Friends, Weekly Step Challenge</h3>

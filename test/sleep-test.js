@@ -37,7 +37,11 @@ describe('SleepUser', function() {
 
   it.only('should find weekly information on hours slept', function() {
     expect(sleepUser.findWeeklyHoursSlept("2019/06/16", "2019/06/22", 2)).to.eql([7.5, 5.7, 10.8, 9.6, 10.1, 4.3, 4.8])
-  })
+  });
+
+  it.only('should find weekly information on hours slept', function() {
+    expect(sleepUser.findWeeklySleepQuality("2019/06/16", "2019/06/22", 2)).to.eql([3.8, 3, 3.2, 2.5, 2.4, 4.8, 3.3])
+  });
 
 
   

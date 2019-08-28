@@ -71,6 +71,12 @@ class SleepUser {
     });
   }
 
+  findWeeklySleepQuality(startDate, endDate, id) {
+    return this.findUserWeeklyInfo(startDate, endDate, id).map(day => {
+      return day.sleepQuality
+    });
+  }
+
 
 }
 

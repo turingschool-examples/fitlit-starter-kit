@@ -24,11 +24,12 @@ $(document).ready(() => {
   $('.article__p--steps-daily').text(activityUser.getDailyStepCount(randomUserId));
   $('.article__p--minutes-daily').text(activityUser.findMinutesActive('2019/06/15', randomUserId));
   $('.section__p--miles-daily').text(activityUser.calculateMilesWalked('2019/06/15', randomUserId));
-  $('.article__span--steps-weekly').text(activityUser.findAverageMinutesActive('2019/06/08', '2019/06/15', randomUserId));
+  $('.article__span--steps-weekly').text(activityUser.findAverageMinutesActive('2019/06/15', '2019/06/21', randomUserId));
   $('.article__p--percent-world').text(activityUser.calculatePercentOfWorldWalked(randomUserId))
   $('.article__h4--weekly-steps').text(activityUser.getWeeklyStepCount('2019/06/15', randomUserId))
-
-
+  $('.li__span--total-steps').text(activityUser.calculateWeeksSteps('2019/06/15', '2019/06/21', randomUserId))
+  $('.li__span--total-stairs').text(activityUser.calculateWeeksStairsClimbed('2019/06/15', '2019/06/21', randomUserId))
+  $('.li__span--total-minutes').text(activityUser.calculateWeeksActiveMinutes('2019/06/15', '2019/06/21', randomUserId))
 });
 
 

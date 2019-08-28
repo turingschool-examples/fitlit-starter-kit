@@ -184,6 +184,25 @@ compareStairsAverageWithUser(date, id) {
   }
 }
 
+findThreeDayStepStreak(id) {
+  let userInfo = [];
+  let dates = [];
+  let user = this.activityTestData.filter(user => user.userID === id);
+  user.forEach(function(day) {
+    if(userInfo.length >= 3) {
+      userInfo.shift();
+    }
+    userInfo.push(day.numSteps)
+
+    if(userInfo[0] < userInfo[1] && userInfo[2] > userInfo[1]) {
+      dates.push(day.date)
+    }
+  })
+  return dates
+}
+
+
+
 
 
 

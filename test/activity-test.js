@@ -218,4 +218,13 @@ describe('ActivityUser', function() {
     expect(activityUser.compareStairsAverageWithUser('2019/06/17', 2)).to.equal("You were lower than the daily average of stairs climbed today :(")
   })
 
+  it.only("should show a user's step streak if it is 3 days or over", () => {
+    expect(activityUser.findThreeDayStepStreak(1)).to.eql([
+      "2019/06/17",
+      "2019/06/20",
+      "2019/06/23"
+    ]);
+  });
+
+
 });

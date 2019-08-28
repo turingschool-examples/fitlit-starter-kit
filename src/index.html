@@ -14,27 +14,27 @@
       </div>
       <div class="header__div--greeting">
         <container class="header__div--container">
-            <p class="top-text">Your Goal:</p>
+            <p class="top-text">Your Goal</p>
             <p class="header__div__user-stepgoal top-nums">1000</p>
             <p class="top-text bottom-text">STEPS</p>
           </container>
           <container class="header__div--container">
-            <p class="top-text">Average User Goal:</p>
+            <p class="top-text">Avg User Goal</p>
             <p class="header__div__allusers-stepgoal top-nums">asdf</p>
             <p class="top-text bottom-text">STEPS</p>
         </container>
         <container class="header__div--container">
-          <p class="top-text">Average Steps:</p>
+          <p class="top-text">Avg User Steps</p>
           <p class="header__div__container__avg--steps top-nums">10,555</p>
           <p class="top-text bottom-text">STEPS</p>
         </container>
         <container class="header__div--container">
-          <p class="top-text">Average Hours Slept:</p>
+          <p class="top-text">Avg User Slept</p>
           <p class="header__div__container__avg--sleep top-nums">7.5</p>
           <p class="top-text bottom-text">HOURS</p>
         </container>
         <container class="header__div--container">
-          <p class="top-text">Average Ounces Drank:</p>
+          <p class="top-text">Avg User Drank</p>
           <p class="header__div__container__avg--hydration top-nums">56</p>
           <p class="top-text bottom-text">OZ</p>
       </container>
@@ -48,7 +48,7 @@
             <container class="main__hydration--data--container left--side--hydration hydration-stats">
               <p class="user-name"><span class="header__div-userName"> </span></p>
                 <div class="main__hydration__article">
-                  <div class="hydration-stats-text">
+                  <div class="hydration-stats-text" id="border-right">
                     <p class="top-text">Today</p>
                     <p class="hydration__container--consumed--today hydration-stats-nums top-nums">15</p>
                     <p class="top-text bottom-text">OZ</p>
@@ -61,9 +61,10 @@
                 </div>
               </container>
               <container class="main__hydration--data--container left--side--hydration">
-                <p class="main__hydration__average--all-users">
-                  Average consumed by ALL users this week: 50oz
-                </p>
+                <p class="user-name">Everyone</p>
+                <h4 class="main__hydration--thisWeek top-text">Week Avg</h4>
+                <p class="main__hydration__average--all-users top-nums">10,555</p>
+                <p class="top-text bottom-text">OZ</p>
               </container>
            </div>
           <container class="main__hydration--data--container weeklyHydro">
@@ -83,11 +84,33 @@
               <canvas id="sleepChart--thisWeek"></canvas>
             </div>
           </container>
+
+
           <div class="main__sleep__div--user--group">
-            <container class="main__sleep--data--container right--side--hydration">
-              <p class="sleep__container--hours--today">Hours Slept today: 5 hours</p>
-              <p class="sleep__container--hours--this--week">Average hours slept this week: 6 hours</p>
+            <container class="main__sleep--data--container right--side--hydration flexBox-column">
+
+
+              <p class="user-name"><span class="header__div-userName"> </span></p>
+
+              <div class="flexBox-row">
+
+                <div class="main__sleep--data-div">
+                  <p class="top-text">Today</p>
+                  <p class="sleep__container--hours--today top-nums">5</p>
+                  <p class="top-text bottom-text">HOURS</p>
+                  <p class="sleep__container--quality--today top-nums">3.2</p>
+                  <p class="top-text bottom-text">SLEEP QUAL</p>
+                </div>
+
+                <div class="main__sleep--data-div">
+                  <p class="sleep__container--hours--this--week">Average hours slept this week: 6 hours</p>
+                  <p class="sleep__container--quality--this--week">Average quality slept this week: 4 SQ</p>
+                </div>
+              </div>
+
             </container>
+
+
             <container class="main__sleep--data--container right--side--hydration">
               <h4 class="main__sleep--thisWeek sleep--week--avg"> Averages for Everyone This Week:</h4>
             </container>

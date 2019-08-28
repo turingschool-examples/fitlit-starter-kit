@@ -184,7 +184,7 @@ findTotalStairsAverage(date) {
 
 compareStairsAverageWithUser(date, id) {
   let day = this.findActivityInfo(id).find(user => user.date === date)
-
+  
   if(day.flightsOfStairs > this.findTotalStairsAverage(date)) {
     return "You exceeded the daily average of stairs climbed today!"
   } else if (day.flightsOfStairs < this.findTotalStairsAverage(date)) {
@@ -192,6 +192,53 @@ compareStairsAverageWithUser(date, id) {
   } else {
     return "You climbed the exact the same amount of stairs as the daily average!"
   }
+}
+
+findThreeDayStepStreak(id) {
+  let userInfo = [];
+  let dates = [];
+  let user = this.activityTestData.filter(user => user.userID === id);
+  user.forEach(function(day) {
+    if(userInfo.length >= 3) {
+      userInfo.shift();
+    }
+    userInfo.push(day.numSteps)
+
+    if(userInfo[0] < userInfo[1] && userInfo[2] > userInfo[1]) {
+      dates.push(day.date)
+    }
+  })
+  return dates
+}
+
+showUserFriends(date, id) {
+  let included = [...this.userData[id].friends];
+  let friends = included.map(friend => ({
+    id: friend,
+    name: this.userData.find(user => user.id === friend).name,
+    steps: this.activityTestData
+      .filter(day => day.userID === friend && day.date <= date)
+      .map(user => user.numSteps)
+  }));
+  return friends.map(friend => {
+    return friend.name;
+  });
+}
+
+showUserFriendsSteps(date, id) {
+  let included = [...this.userData[id].friends];
+  let friends = included.map(friend => ({
+    id: friend,
+    name: this.userData.find(user => user.id === friend).name,
+    steps: this.activityTestData
+      .filter(day => day.userID === friend && day.date <= date)
+      .map(user => user.numSteps)
+  }));
+  return friends.map(friend => {
+    let sorted = friends.sort((a, b) => b.steps - a.steps);
+    console.log('user friends--->', friend.steps)
+    return friend.steps[0];
+  });
 }
 
   calculateWeeksStairsClimbed(startDate, endDate, id) {
@@ -209,9 +256,6 @@ compareStairsAverageWithUser(date, id) {
       return acc
     }, 0)
   }
-  
-  
-  
 }
 
 
@@ -219,14 +263,3 @@ compareStairsAverageWithUser(date, id) {
 if (typeof module !== 'undefined') {
   module.exports = ActivityUser;
 }
-      // returnTotalMinutesAvg(date) {
-      
-       
-      //   return Math.floor(this.activityTestData.reduce((acc, element) => {
-      //     return acc + element.minutesActive}, 1) / this.activityTestData.length)
-      // }
-      
-      // returnTotalStepsAvg() {
-      //   return Math.floor(this.activityTestData.reduce((acc, element) => {
-      //     return acc + element.stepCount}, 1) / this.activityTestData.length)
-      // }

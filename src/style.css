@@ -21,13 +21,14 @@ body {
 }
 
 header {
+  align-items: center;
   background-color: #001527;
   border: 1px solid #3A3A4A;
   display: flex;
   justify-content: space-between;
   grid-area: header;
   padding: 0px 50px 0 50px ;
-  align-items: center;
+  text-align: center;
 }
 
 h1 {
@@ -138,7 +139,10 @@ article {
       "header header header header"
       "step1 step1 step2 step2"
       "water1 water1 water2 water2"
-      "sleep1 sleep1 sleep2 sleep2";
+      "sleep3 sleep3 sleep4 sleep4"
+      "sleep1 sleep1 sleep2 sleep2"
+      "sleep5 sleep5 sleep6 sleep6"
+      "activ1 activ1 activ2 activ2";
   }
 
 @media screen and (max-width: 600px) {
@@ -176,8 +180,14 @@ article {
         "step2 step2"
         "water1 water1"
         "water2 water2"
+        "sleep3 sleep3"
+        "sleep4 sleep4"
         "sleep1 sleep1"
-        "sleep2 sleep2";
+        "sleep2 sleep2"
+        "sleep5 sleep5"
+        "sleep6 sleep6"
+        "activ1 activ1"
+        "activ2 activ2";
     }
 
     h1 {

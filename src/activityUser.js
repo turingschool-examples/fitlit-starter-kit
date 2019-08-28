@@ -1,11 +1,11 @@
-    const userData = require("../data/users")
-    const User = require('./userClass.js')
-    const UserRepository = require("./user-repository");
-// }
+// The variables below are required for testing but interfere with DOM functionality
+//     const userData = require("../data/users")
+//     const User = require('./userClass.js')
+//     const UserRepository = require("./user-repository");
+// // }
 class Activity {
     constructor(moveData) {
         this.moveData = moveData;
-        
      }
 
     findUser(id) {
@@ -57,10 +57,8 @@ class Activity {
 
     getDaysStepGoalExceeded(id) {
         let userInfo = this.findUser(id)
-        console.log("user info is step goal here", userInfo)
         let allUsers = new UserRepository(userData)
         let user = allUsers.returnUserData(id)
-        console.log("maybe step goal here", user)
         let overGoal = userInfo.filter(day => {
             return day.numSteps > user.dailyStepGoal
         }).map(day => day.date)
@@ -69,8 +67,7 @@ class Activity {
 
     getStairClimbingRecord(user) {
         let userInfo = this.findUser(user);
-        let flights = userInfo.map(day => day.flightsOfStairs)
-        let mostStairs = Math.max(...flights)
+        let mostStairs = Math.max(...userInfo.map(day => day.flightsOfStairs))
         let bestClimbingDay = userInfo.filter(day => {
            return day.flightsOfStairs === mostStairs
         }).map(day => day.date)
@@ -97,7 +94,6 @@ class Activity {
             }
             return acc
         }, [])
-        console.log("trend", trend)
         return trend
     }
 

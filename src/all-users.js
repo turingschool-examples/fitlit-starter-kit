@@ -1,50 +1,52 @@
 class AllUsers {
     constructor(data) {
         this.data = data;
-
     }
-    getUserWeek(day) {
+    
+    getUsersWeek(day) {
         let index = this.data.findIndex(object => {
             return object.date === day;
         });
-    
         let weekData = this.data.slice(index - 35, index + 5)
         return weekData;
         }
 
     getUserWeekArray(day) {
-        let week = this.getUserWeek(day);
+        let week = this.getUsersWeek(day);
         return week.reduce((acc, obj) => {
-            
                 if(!acc[obj.userID]) {
                     acc[obj.userID] = []
                 } 
                 acc[obj.userID].push(obj.sleepQuality)
                 return acc;
         }, {})
+        
     }
 
-    getUserWeekAverage(day) {
+    getHighQualitySleepers(day) {
         let average = this.getUserWeekArray(day);
         let goodSleep = [];
         for(let key in average) {
+            console.log("key", key)
             let result = average[key].reduce((acc, cur) => {
                 return acc += cur;
             }, 0)
-            console.log("result: ", result)
             let avg = result / average[key].length;
             if (avg >= 3) {
                 goodSleep.push(key)
             }
         }
-        console.log(goodSleep);
         return goodSleep;
     }
 
-    getBestSleeperByDay(today) {
-        let todayInfo = this.data.filter((day) => {
+    getTodayInfo(today) {
+        return this.data.filter((day) => {
             return day.date === today
         })
+    }
+
+    getBestSleeperByDay(today) {
+        let todayInfo = this.getTodayInfo(today);
         let hoursInfo= todayInfo.map(user => user.hoursSlept)
         let mostSleep = Math.max(...hoursInfo)
         let bestSleep = todayInfo.filter((user) => {
@@ -54,9 +56,7 @@ class AllUsers {
         }
 
     getWorstSleeperByDay(today) {
-        let todayInfo = this.data.filter((day) => {
-            return day.date === today
-        })
+        let todayInfo = this.getTodayInfo(today)
         let hoursInfo = todayInfo.map(user => user.hoursSlept)
         let leastSleep = Math.min(...hoursInfo)
         let worstSleep = todayInfo.filter((user) => {
@@ -76,6 +76,7 @@ class AllUsers {
             },0)/dateArr.length; 
         return parseInt(stairsAvg.toFixed(0)); 
     }  
+
     getAverageSteps(day) {
         let dateArr = this.data.filter((arr) => {
             return arr.date === day;
@@ -87,6 +88,7 @@ class AllUsers {
         }, 0) / dateArr.length;
         return parseInt(stepsAvg.toFixed(0));
     } 
+
     getAverageMinutes(day) {
         let dateArr = this.data.filter((arr) => {
             return arr.date === day;

@@ -8,17 +8,83 @@
       /* font-family: 'ZCOOL XiaoWei', serif; */
       /* font-family: 'DM Sans', sans-serif;*/
       font-family: 'DM Serif Display', serif;
+      display: flex;
  
   }
 
   nav {
       background-color: #82042D;
-      padding: 10px;
-      margin: 10px;
+      padding: 10px; 
+      position: relative;  
+      height: 100vh; 
+      max-width: 13%;
+  }
+
+  .sleep-box {
+      display: flex;
+  }
+
+  .profile-info {
+      display: none;
   }
 
   .logo-nav {
       max-width: 100px;
       max-height: 100px;
       display: block;
+  }
+
+  .sleep-week-display {
+      border: solid 1px;
+      width: 40%;
+      margin: 10px;
+      display: none;
+  }
+
+  .sleep-week-quality-display {
+    border: solid 1px;
+    width: 40%;
+    margin: 10px;
+    display: none;
+}
+
+.hydration-week-display {
+    display: none;
+}
+
+.activity-week-display {
+    display: none;
+}
+
+.sleep-info {
+    display: none;
+}
+
+.hydration-info {
+    display: none;  
+}
+
+  .sleep-display-heading {
+    font-size: 25px;
+    color: antiquewhite;
+  }
+
+  .profile-btn {
+      margin: 10px;
+      width: 85%
+  }
+
+  .sleep-btn {
+      margin: 10px;
+      width: 85%
+  }
+
+  .hydration-btn {
+      margin: 10px;
+      width: 85%;
+  }
+  
+  .activity-btn {
+      margin: 10px;
+      width: 85%;
   }

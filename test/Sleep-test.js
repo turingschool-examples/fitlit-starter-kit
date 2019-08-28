@@ -86,13 +86,19 @@ describe('Sleep', () => {
 
   describe('findAllUsersOverThreeSleepQualityForWeek', () => {
     it('should be able to find all user/s who average a sleep quality greater than 3 for a given week', () => {
-      expect(sleep.findAllUsersOverThreeSleepQualityForWeek("2019/06/15", "2019/06/21")).to.eql([ 'Jarvis Considine', 'Herminia Witting' ]);
+      expect(sleep.findAllUsersOverThreeSleepQualityForWeek("2019/06/15", "2019/06/20")).to.eql([ 'Jarvis Considine', 'Herminia Witting' ]);
     });
   });
 
   describe('findUsersSleptMostHoursBasedOnDate', () => {
     it('should be able to find the user/s who slept the most number of hours based on a date', () => {
       expect(sleep.findUsersSleptMostHoursBasedOnDate("2019/06/16")).to.equal('Herminia Witting');
+    });
+  });
+
+  describe('findBestDateOfSleepOfUser', () => {
+    it('should be able to find the best date of sleep', () => {
+      expect(sleep.findBestDateOfSleepOfUser()).to.equal('2019/06/19');
     });
   });
 

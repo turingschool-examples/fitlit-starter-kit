@@ -52,6 +52,8 @@ $(document).ready(() => {
   $(".average-quality-all-users").text(sleep.fetchAverageQualityOfSleepAllUsers(todayString));
   $(".most-hours-slept-date").text(sleep.findUsersSleptMostHoursBasedOnDate(todayString));
   $(".over-three-sleep-quality").text(sleep.findAllUsersOverThreeSleepQualityForWeek(todayString, todayString));
+  $(".best-date-of-sleep").text(sleep.findBestDateOfSleepOfUser(todayString));
+
 
 
  
@@ -130,7 +132,7 @@ const displayThisWeeksSleepOrQuality = (sleep, property) => {
             $('.sleep-week-display').append(`<li> On ${day.date} you slept ${day[property]} hours. </li>`)
         }
         else {
-            $('.sleep-week-display').append(`<li> On ${day.date} your sleep quality was ${day[property]} . </li>`)
+            $('.sleep-week-quality-display').append(`<li> On ${day.date} your sleep quality was ${day[property]} . </li>`)
         }
     })
     
@@ -142,4 +144,33 @@ const displayLatestWeeksStats = (activity) => {
     let endDate = dateTodayString();
     let startDate = startTodayString();
 }
+
+$(".sleep-btn").click(function(){
+    $(".sleep-week-display").toggle();
+  });
+
+  $(".sleep-btn").click(function(){
+    $(".sleep-week-quality-display").toggle();
+  });
+
+  $(".sleep-btn").click(function(){
+    $(".sleep-info").toggle();
+  });
+
+$(".hydration-btn").click(function(){
+    $(".hydration-week-display").toggle();
+  });
+  $(".hydration-btn").click(function(){
+    $(".hydration-info").toggle();
+  });
+
+
+  $(".activity-btn").click(function(){
+    $(".activity-week-display").toggle();
+  });
+
+  $(".profile-btn").click(function(){
+    $(".profile-info").toggle();
+  });
+
 

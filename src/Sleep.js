@@ -56,9 +56,8 @@ class Sleep {
       answer.push(acc)
       return {};
     }, {})
-    console.log(answer)
+
     return answer;
-    
   }
 
   fetchAverageQualityOfSleepAllUsers() {
@@ -112,9 +111,14 @@ class Sleep {
       }
     }).name
   });
+    return groupOverThree 
+  }
 
-    return groupOverThree
-  
+  findBestDateOfSleepOfUser() {
+    let sleepDate = this.currentUserData.sort((a, b) => {
+      return b.hoursSlept - a.hoursSlept;
+    }).shift().date
+    return sleepDate
   }
 }
 

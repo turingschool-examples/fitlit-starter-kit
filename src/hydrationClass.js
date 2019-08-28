@@ -30,7 +30,7 @@ calculateDailyWaterIntake() {
   }
   
   calculateWeeklyWaterIntake() {
-    let currentDay = this.singleUserData[this.singleUserData.length - 1];
+    // let currentDay = this.singleUserData[this.singleUserData.length - 1];
     let currentWeek = this.singleUserData.slice(-7);
     return currentWeek;
   }

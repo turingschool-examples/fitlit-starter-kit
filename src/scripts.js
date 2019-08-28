@@ -17,9 +17,7 @@ $(document).ready(() => {
   sleep.findCurrentUserData();
   activity.findCurrentUserData();
 
-
   
-
   const $profileInfoSection = $('.profile-info');
   const $sleepinfo = $('.sleep-info');
   const $hydrationInfo = $('.hydration-info');
@@ -57,92 +55,86 @@ $(document).ready(() => {
   $(".over-three-sleep-quality").text(sleep.findAllUsersOverThreeSleepQualityForWeek(todayString, todayString));
 
 
- 
-  
-
-
-
 
 })
 
 
 const dateToday = () => {
-    let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth() + 1; 
-    // console.log(new Intl.DateTimeFormat('en-US', mm).format(today));
-    const yyyy = today.getFullYear();
-    if (dd<10) {
-        dd=`0${dd}`;
-    } 
-    if (mm<10) {
-        mm=`0${mm}`;
-    } 
-// today = `${yyyy}/${mm}/${dd}`;
-today = `${mm}/${dd}/${yyyy}`;
-// console.log(today);
-return today;
+  let today = new Date();
+  let dd = today.getDate();
+  let mm = today.getMonth() + 1; 
+  // console.log(new Intl.DateTimeFormat('en-US', mm).format(today));
+  const yyyy = today.getFullYear();
+  if (dd<10) {
+    dd=`0${dd}`;
+  } 
+  if (mm<10) {
+    mm=`0${mm}`;
+  } 
+  // today = `${yyyy}/${mm}/${dd}`;
+  today = `${mm}/${dd}/${yyyy}`;
+  // console.log(today);
+  return today;
 }
 
 const dateTodayString = () => {
-    let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth() + 1; 
-    const yyyy = today.getFullYear();
-    if (dd<10) {
-        dd=`0${dd}`;
-    } 
-    if (mm<10) {
-        mm=`0${mm}`;
-    } 
-today = `${yyyy}/${mm}/${dd}`;
-return today;
+  let today = new Date();
+  let dd = today.getDate();
+  let mm = today.getMonth() + 1; 
+  const yyyy = today.getFullYear();
+  if (dd<10) {
+    dd=`0${dd}`;
+  } 
+  if (mm<10) {
+    mm=`0${mm}`;
+  } 
+  today = `${yyyy}/${mm}/${dd}`;
+  return today;
 }
 
 const startTodayString = () => {
-    let today = new Date();
-    let dd = today.getDate() - 7;
-    let mm = today.getMonth() + 1; 
-    const yyyy = today.getFullYear();
-    if (dd<10) {
-        dd=`0${dd}`;
-    } 
-    if (mm<10) {
-        mm=`0${mm}`;
-    } 
-today = `${yyyy}/${mm}/${dd}`;
-return today;
+  let today = new Date();
+  let dd = today.getDate() - 7;
+  let mm = today.getMonth() + 1; 
+  const yyyy = today.getFullYear();
+  if (dd<10) {
+    dd=`0${dd}`;
+  } 
+  if (mm<10) {
+    mm=`0${mm}`;
+  } 
+  today = `${yyyy}/${mm}/${dd}`;
+  return today;
 }
 
 const displayThisWeeksHydration = (hydration) => {
-    let endDate = dateTodayString();
-    let startDate = startTodayString();
-    let weekArray = hydration.findFluidOzConsumedEveryDayOverSpecificWeek(startDate, endDate);
-    weekArray.forEach((day) => {
-        $('.hydration-week-display').append(`<li> On ${day.date} you drank ${day.numOunces} oz of water </li>`)
-    })
+  let endDate = dateTodayString();
+  let startDate = startTodayString();
+  let weekArray = hydration.findFluidOzConsumedEveryDayOverSpecificWeek(startDate, endDate);
+  weekArray.forEach((day) => {
+    $('.hydration-week-display').append(`<li> On ${day.date} you drank ${day.numOunces} oz of water </li>`)
+  })
+    
 }
 
 const displayThisWeeksSleepOrQuality = (sleep, property) => {
-    let endDate = dateTodayString();
-    let startDate = startTodayString();
-    let weekArray = sleep.findSleepHoursOrQualityEachDayOverWeekForAUser(startDate, endDate, property);
+  let endDate = dateTodayString();
+  let startDate = startTodayString();
+  let weekArray = sleep.findSleepHoursOrQualityEachDayOverWeekForAUser(startDate, endDate, property);
     
-    weekArray.forEach((day) => {
-        if(property === 'hoursSlept') {
-            $('.sleep-week-display').append(`<li> On ${day.date} you slept ${day[property]} hours. </li>`)
-        }
-        else {
-            $('.sleep-week-display').append(`<li> On ${day.date} your sleep quality was ${day[property]} . </li>`)
-        }
-    })
+  weekArray.forEach((day) => {
+    if(property === 'hoursSlept') {
+      $('.sleep-week-display').append(`<li> On ${day.date} you slept ${day[property]} hours. </li>`)
+    }
+    else {
+      $('.sleep-week-display').append(`<li> On ${day.date} your sleep quality was ${day[property]} . </li>`)
+    }
+  })
     
 }
 
-
-
 const displayLatestWeeksStats = (activity) => {
-    let endDate = dateTodayString();
-    let startDate = startTodayString();
+  let endDate = dateTodayString();
+  let startDate = startTodayString();
 }
 

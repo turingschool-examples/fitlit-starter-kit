@@ -4,7 +4,7 @@ const randomUser = Math.floor(Math.random() * 50) +1
 const userRepository = new UserRepository(userData);
 const hydration = new Hydration(userData[randomUser]);
 const user = new User(userData[randomUser]);
-const sleep = new Sleep(userData);
+const sleep = new Sleep(userData[randomUser]);
 // const sleepRepository = new SleepRepository();
 const activity = new Activity(activityData);
 const activityRepository = new ActivityRepository(activityData);
@@ -24,8 +24,8 @@ $('.grid').masonry({
     $('#article__user--stepgoal').text(userData[randomUser].dailyStepGoal);
     $('#article__user--stepcompare').text(userRepository.calcStepGoalAvg());
     $('#article__hyrdation--fldozs').text(hydration.findWaterByDate('2019/06/15'));
-    $('#article__user--hours-slept').text(sleep);
-    $('#article__user--quality-slept').text(sleep);
+    $('#article__user--hours-slept').text(sleep.findSleepHoursDay('2019/06/15'));
+    $('#article__user--quality-slept').text(sleep.findSleepQualityDay('2019/06/15'));
     $('#article__user--todaysteps').text(activityData[randomUser].numSteps);
     $('#article__user--activemins').text(activity.minsUserActive(randomUser, '2019/06/15'));
     $('#article__user--todaydistance').text(activity.milesUserWalked(randomUser, '2019/06/15', userData));
@@ -96,7 +96,7 @@ $('.grid').masonry({
           labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
           datasets: [{
             label: 'Weekly Sleep Chart',
-            data: [sleep.findSleepQualityWeek('2019/06/18'), sleep.findSleepHoursWeek('2019/06/18')],
+            data: [sleep.findSleepQualityWeek('2019/06/15')],
             backgroundColor: [
               '#73A9BB', 
               '#FC5D79', 

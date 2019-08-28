@@ -262,6 +262,16 @@ const threeDayStreak = $('#3--day--streak')
 let streak = activePerson.returnIncreasedStepDays(sampleDate).splice(-3, 3).reverse()
 
 
+function checkStreak() {
+  if (!streak.length) {
+    $('.main__trends--3--day--streak').hide()
+    $('.main__trends--3--day--streak').after(`No recent Streaks. Keep walking!`)
+  }
+}
+
+checkStreak();
+
+
 
 var myChart = new Chart(threeDayStreak, {
   type: 'horizontalBar',
@@ -286,6 +296,20 @@ var myChart = new Chart(threeDayStreak, {
     }
   }
 });
+
+function displayFourteeners() {
+  let fourteeners = activePerson.findFourteeners();
+  if (fourteeners < 1) {
+    message = 'Keep Climbing!'
+  } else {
+    message = fourteeners
+  }
+  $('.main__trends--14er').after(`<p class="fourteener--result"> ${message} </p>`)
+}
+
+displayFourteeners();
+
+
 
 
 

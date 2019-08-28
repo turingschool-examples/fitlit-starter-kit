@@ -79,7 +79,7 @@ function returnDatesOfWeek(userId, date) {
 }
 
 Chart.defaults.global.defaultFontColor = 'white';
-$('#user-water-by-week').text(hydration.returnFluidOzByWeek(user.id, currentDate));
+// $('#user-water-by-week').text(hydration.returnFluidOzByWeek(user.id, currentDate));
 var ctx = $('#user-water-by-week');
 var hydrationByWeek = new Chart(ctx, {
   type: 'bar',
@@ -93,16 +93,18 @@ var hydrationByWeek = new Chart(ctx, {
         'rgba(54, 162, 235, 0.2)',
         'rgba(255, 206, 86, 0.2)',
         'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
+        'rgb(221, 160, 221, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(192, 192, 192, 0.2)'
       ],
       borderColor: [
         'rgba(255, 99, 132, 1)',
         'rgba(54, 162, 235, 1)',
         'rgba(255, 206, 86, 1)',
         'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
+        'rgba(221, 160, 221, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(192, 192, 192, 1)'
       ],
       borderWidth: 1
     }]
@@ -120,7 +122,7 @@ var hydrationByWeek = new Chart(ctx, {
   }
 });
 
-$('#user-sleep-by-week').text(sleep.returnSleepByWeek(user.id, currentDate));
+// $('#user-sleep-by-week').text(sleep.returnSleepByWeek(user.id, currentDate));
 var ctx = $('#user-sleep-by-week');
 var sleepByWeek = new Chart(ctx, {
   type: 'bar',
@@ -128,22 +130,24 @@ var sleepByWeek = new Chart(ctx, {
     labels: returnDatesOfWeek(user.id, currentDate),
     datasets: [{
       label: 'hours',
-      data: hydration.returnFluidOzByWeek(user.id, currentDate),
+      data: sleep.returnSleepByWeek(user.id, currentDate),
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
         'rgba(255, 206, 86, 0.2)',
         'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
+        'rgb(221, 160, 221, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(192, 192, 192, 0.2)'
       ],
       borderColor: [
         'rgba(255, 99, 132, 1)',
         'rgba(54, 162, 235, 1)',
         'rgba(255, 206, 86, 1)',
         'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
+        'rgba(221, 160, 221, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(192, 192, 192, 1)'
       ],
       borderWidth: 1
     }]
@@ -161,7 +165,7 @@ var sleepByWeek = new Chart(ctx, {
   }
 });
 
-$('#user-sleep-quality-by-week').text(sleep.returnSleepQualityByWeek(user.id, currentDate));
+// $('#user-sleep-quality-by-week').text(sleep.returnSleepQualityByWeek(user.id, currentDate));
 var ctx = $('#user-sleep-quality-by-week');
 var sleepQualityByWeek = new Chart(ctx, {
   type: 'bar',
@@ -169,22 +173,24 @@ var sleepQualityByWeek = new Chart(ctx, {
     labels: returnDatesOfWeek(user.id, currentDate),
     datasets: [{
       label: 'quality score',
-      data: hydration.returnFluidOzByWeek(user.id, currentDate),
+      data: sleep.returnSleepQualityByWeek(user.id, currentDate),
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
         'rgba(255, 206, 86, 0.2)',
         'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
+        'rgb(221, 160, 221, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(192, 192, 192, 0.2)'
       ],
       borderColor: [
         'rgba(255, 99, 132, 1)',
         'rgba(54, 162, 235, 1)',
         'rgba(255, 206, 86, 1)',
         'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
+        'rgba(221, 160, 221, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(192, 192, 192, 1)'
       ],
       borderWidth: 1
     }]
@@ -202,30 +208,32 @@ var sleepQualityByWeek = new Chart(ctx, {
   }
 });
 
-$('#user-step-count-by-week').text(activity.returnNumberOfStepsByWeek(user.id, currentDate));
+// $('#user-step-count-by-week').text(activity.returnNumberOfStepsByWeek(user.id, currentDate));
 var ctx = $('#user-step-count-by-week');
 var stepsByWeek = new Chart(ctx, {
-  type: 'bar',
+  type: 'line',
   data: {
     labels: returnDatesOfWeek(user.id, currentDate),
     datasets: [{
       label: 'steps',
-      data: hydration.returnFluidOzByWeek(user.id, currentDate),
+      data: activity.returnNumberOfStepsByWeek(user.id, currentDate),
       backgroundColor: [
+        'rgb(221, 160, 221, 0.2)',
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
         'rgba(255, 206, 86, 0.2)',
         'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(192, 192, 192, 0.2)'
       ],
       borderColor: [
+        'rgba(221, 160, 221, 1)',
         'rgba(255, 99, 132, 1)',
         'rgba(54, 162, 235, 1)',
         'rgba(255, 206, 86, 1)',
         'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
+        'rgba(255, 159, 64, 1)',
+        'rgba(192, 192, 192, 1)'
       ],
       borderWidth: 1
     }]
@@ -243,30 +251,32 @@ var stepsByWeek = new Chart(ctx, {
   }
 });
 
-$('#user-mins-active-by-week').text(activity.returnActiveMinutesByWeek(user.id, currentDate));
+// $('#user-mins-active-by-week').text(activity.returnActiveMinutesByWeek(user.id, currentDate));
 var ctx = $('#user-mins-active-by-week');
 var activityByWeek = new Chart(ctx, {
-  type: 'bar',
+  type: 'line',
   data: {
     labels: returnDatesOfWeek(user.id, currentDate),
     datasets: [{
       label: 'active minutes',
-      data: hydration.returnFluidOzByWeek(user.id, currentDate),
+      data: activity.returnActiveMinutesByWeek(user.id, currentDate),
       backgroundColor: [
+        'rgb(221, 160, 221, 0.2)',
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
         'rgba(255, 206, 86, 0.2)',
         'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(192, 192, 192, 0.2)'
       ],
       borderColor: [
+        'rgba(221, 160, 221, 1)',
         'rgba(255, 99, 132, 1)',
         'rgba(54, 162, 235, 1)',
         'rgba(255, 206, 86, 1)',
         'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
+        'rgba(255, 159, 64, 1)',
+        'rgba(192, 192, 192, 1)'
       ],
       borderWidth: 1
     }]
@@ -284,30 +294,32 @@ var activityByWeek = new Chart(ctx, {
   }
 });
 
-$('#user-stairs-climbed-by-week').text(activity.returnActiveMinutesByWeek(user.id, currentDate));
+// $('#user-stairs-climbed-by-week').text(activity.returnActiveMinutesByWeek(user.id, currentDate));
 var ctx = $('#user-stairs-climbed-by-week');
 var stairsByWeek = new Chart(ctx, {
-  type: 'bar',
+  type: 'line',
   data: {
     labels: returnDatesOfWeek(user.id, currentDate),
     datasets: [{
       label: 'stairs',
-      data: hydration.returnFluidOzByWeek(user.id, currentDate),
+      data: activity.returnStairsClimbedByWeek(user.id, currentDate),
       backgroundColor: [
+        'rgb(221, 160, 221, 0.2)',
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
         'rgba(255, 206, 86, 0.2)',
         'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(192, 192, 192, 0.2)'
       ],
       borderColor: [
+        'rgba(221, 160, 221, 1)',
         'rgba(255, 99, 132, 1)',
         'rgba(54, 162, 235, 1)',
         'rgba(255, 206, 86, 1)',
         'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
+        'rgba(255, 159, 64, 1)',
+        'rgba(192, 192, 192, 1)'
       ],
       borderWidth: 1
     }]

@@ -15,6 +15,7 @@ $(document).ready(() => {
   $('.p__span--address').text(user.address);
   $('.p__span--email').text(user.email);
   $('.p__span--stride').text(user.strideLength);
+  $('.section__p--step-goals').text(userRepository.compareGoals(randomUserId));
   $('.p__span--daily-water').text(hydrationUser.findDailyHydration('2019/06/15', randomUserId));
   $('.article__p--weekly').text(hydrationUser.findWeeklyHydration(randomUserId));
   $('.p__span--sleep-hours').text(sleepUser.findDailySleep('2019/06/15', randomUserId));
@@ -26,14 +27,14 @@ $(document).ready(() => {
   $('.article__p--minutes-daily').text(activityUser.findMinutesActive('2019/06/15', randomUserId));
   $('.section__p--miles-daily').text(activityUser.calculateMilesWalked('2019/06/15', randomUserId));
   $('.article__span--steps-weekly').text(activityUser.findAverageMinutesActive('2019/06/15', '2019/06/21', randomUserId));
-  $('.article__p--percent-world').text(activityUser.calculatePercentOfWorldWalked(randomUserId))
-  $('.article__h4--weekly-steps').text(activityUser.getWeeklyStepCount('2019/06/15', randomUserId))
-  $('.li__span--total-steps').text(activityUser.calculateWeeksSteps('2019/06/15', '2019/06/21', randomUserId))
-  $('.li__span--total-stairs').text(activityUser.calculateWeeksStairsClimbed('2019/06/15', '2019/06/21', randomUserId))
-  $('.li__span--total-minutes').text(activityUser.calculateWeeksActiveMinutes('2019/06/15', '2019/06/21', randomUserId))
-  $('.section__p--compare-step').text(activityUser.compareStepAverageWithUser('2019/06/15', randomUserId))
-  $('.section__p--compare-minutes').text(activityUser.compareMinutesAverageWithUser('2019/06/15', randomUserId))
-  $('.section__p--compare-stairs').text(activityUser.compareStairsAverageWithUser('2019/06/15', randomUserId))
+  $('.article__p--percent-world').text(activityUser.calculatePercentOfWorldWalked(randomUserId));
+  $('.article__h4--weekly-steps').text(activityUser.getWeeklyStepCount('2019/06/15', randomUserId));
+  $('.li__span--total-steps').text(activityUser.calculateWeeksSteps('2019/06/15', '2019/06/21', randomUserId));
+  $('.li__span--total-stairs').text(activityUser.calculateWeeksStairsClimbed('2019/06/15', '2019/06/21', randomUserId));
+  $('.li__span--total-minutes').text(activityUser.calculateWeeksActiveMinutes('2019/06/15', '2019/06/21', randomUserId));
+  $('.section__p--compare-step').text(activityUser.compareStepAverageWithUser('2019/06/15', randomUserId));
+  $('.section__p--compare-minutes').text(activityUser.compareMinutesAverageWithUser('2019/06/15', randomUserId));
+  $('.section__p--compare-stairs').text(activityUser.compareStairsAverageWithUser('2019/06/15', randomUserId));
 
 
 });

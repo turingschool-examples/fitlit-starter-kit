@@ -3,12 +3,11 @@ const expect = chai.expect;
 
 const Activity = require('../src/Activity-Repository');
 const User = require('../src/User');
-const UserRepository = require('../src/User-Repository');
 const activityTestData = require('../test-data/activity-test-data');
 const userTestData = require('../test-data/user-test-data.js')
 
 describe('Activity', () => {
-  let activity, user1, user2, user3, userID1;
+  let activity, user1, user3;
   beforeEach(() => {
     activity = new Activity(activityTestData);
     user1 = new User(userTestData[0]);
@@ -97,7 +96,7 @@ describe('Activity', () => {
   });
 
   it('should return the number of times the user has climbed the equivelant of Republic Plaza', () => {
-    expect(activity.republicPlazaChallenge(1)).to.equal(2.2);
+    expect(activity.republicPlazaChallenge(1)).to.equal(2);
   })
 
 });

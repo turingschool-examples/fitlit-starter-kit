@@ -16,9 +16,9 @@ const sampleDate = '2019/06/25'
 
 $('.header__div--h1').text(`Hi, ${user.getUserFirstName()}!`);
 
-$('.header__div__user-stepgoal').text(`Your step goal: ${user.dailyStepGoal} steps`);
+$('.header__div__user-stepgoal').text(`${user.dailyStepGoal} steps`);
 
-$('.header__div__allusers-stepgoal').text(`Average User Goal: ${repo.getAllUsersAvgStepGoal()} steps`);
+$('.header__div__allusers-stepgoal').text(`${repo.getAllUsersAvgStepGoal()} steps`);
 
 $('.hydration__container--consumed--today').text(`${userHydro.userHydrationByDate(sampleDate)}oz`);
 

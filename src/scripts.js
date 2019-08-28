@@ -3,7 +3,8 @@ const userRepository = new UserRepository(userData);
 const user = new User(userRepository.findUserData(randomUserId))
 const sleepUser = new SleepUser(sleepData);
 const hydrationUser = new HydrationUser(hydrationData);
-const activityUser = new ActivityUser(activityData, userData)
+const activityUser = new ActivityUser(activityData, userData);
+// const activityRepository = new ActivityRepository(activityTestData);
 // const sleepRepository = new SleepRepository(sleepTestData, 2)
 
 

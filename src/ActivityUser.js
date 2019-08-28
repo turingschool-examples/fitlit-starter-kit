@@ -8,6 +8,10 @@ class ActivityUser {
     return this.activityTestData.filter(user => user.userID === id);
   }
 
+  getUsers(date) {
+    return this.activityTestData.filter(day => day.date === date)
+  }
+
   findUserStrideLength(id) {
     return this.userData.find(user => {
       return user.id === id
@@ -42,8 +46,6 @@ class ActivityUser {
   }
 
   // returnTotalMinutesAvg(date) {
-
-   
   //   return Math.floor(this.activityTestData.reduce((acc, element) => {
   //     return acc + element.minutesActive}, 1) / this.activityTestData.length)
   // }
@@ -120,6 +122,30 @@ getWeeklyStepCount(date, id) {
   let weekOfActivity = week.slice(startDate, startDate + 7)
   return weekOfActivity.map(user => user.numSteps)
 }
+
+//From Activity Repo
+findTotalStepAverage(date) {
+  var totalSteps = this.getUsers(date).reduce((acc, user) => {
+    acc += user.numSteps;
+    return acc
+  }, 0)
+  return Math.round(totalSteps / this.getUsers(date).length);
+}
+
+compareStepAverageWithUser(date, id) {
+  let day = this.findActivityInfo(id).find(user => user.date === date)
+  if(day.numSteps > this.findTotalStepAverage(date)) {
+    return "You exceeded the daily average of steps today!"
+  } else if (day.numSteps < this.findTotalStepAverage(date)) {
+    return "You were lower than the daily average of steps today :("
+  } else {
+    return "You walked exactly the same as the daily average!"
+  }
+}
+
+
+
+
 
 
 

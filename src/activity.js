@@ -1,10 +1,11 @@
 class Activity {
-	constructor(data) {
+	constructor(data, user) {
 		this.data = data
 		this.dates = []
 		this.numSteps = null
 		this.minutesActive = null
 		this.flightsOfStairs = null
+		this.user = user 
 	}
 
 	findActivityDates() {
@@ -28,6 +29,11 @@ class Activity {
 				this.minutesActive = user.minutesActive
 			}
 		});
+	}
+
+	findDistanceMiles(user, activity) {
+		let distanceMiles = (activity.numSteps * user.strideLength) / 5280;
+		return distanceMiles.toFixed(2)
 	}
 }
 

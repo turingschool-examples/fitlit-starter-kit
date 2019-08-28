@@ -38,14 +38,26 @@ class Activity {
     } else {
       return false
     }
-  }
-      
+  }  
+   
   overStepGoal(id, userData) {
     let userActivity = this.activityData.filter(user => id === user.userID);
     let goalSteps = userData.find(user => id === user.id).dailyStepGoal;
     let stepsAbove = userActivity.filter(user => user.numSteps > goalSteps);
     return stepsAbove.map(steps => steps.date) 
   }
+
+  giveUserStepsFeedback(id, date, userData) {
+        let userActivityToday = this.activityData.find(user => id === user.userID && date === user.date).numSteps;
+        let goalSteps = userData.find(user => id === user.id).dailyStepGoal
+        if (userActivityToday >= goalSteps) {
+          let stepsOver = userActivityToday - goalSteps
+          return `You're a rockstar! You went ${stepsOver} steps over your goal!`
+        } else {
+          let stepsLeft = goalSteps - userActivityToday
+          return `Almost there! You have ${stepsLeft} steps until you have met your step goal.`
+        }
+      
   
   stairClimbRecord(id) {
     let userActivity = this.activityData.filter(user => id === user.userID);
@@ -70,12 +82,6 @@ class Activity {
       return friend.name;
     });
   }
-  
-  
-  
-  
-  
-}
   
   
 if (typeof module !== 'undefined') {

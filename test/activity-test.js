@@ -32,12 +32,10 @@ describe('Activity', () => {
 
   it('shoud be know how minutes a user was active, based on their id, on a specified', () =>{
     expect(activity.minsUserActive(1, '2019/06/15')).to.equal(140);
-
   });
 
   it('shoud now how many minutes active was their average for a given week', () =>{
     expect(activity.weeklyAvgMins(1, '2019/06/15')).to.equal(171.2);
-
   });
 
   it('shoud be able know if a user met their step goal for a specified day', () =>{
@@ -51,7 +49,7 @@ describe('Activity', () => {
   it('shoud find the users all-time stair climbing record', () =>{
     expect(activity.stairClimbRecord(1)).to.equal(36);
   });
-
+  
   it('shoud test my methods', () =>{
     expect(activity.gatherFriends('2019/06/15', 1)).to.equal(36);
   });
@@ -62,6 +60,9 @@ describe('Activity', () => {
       name: "Erick Schaden",
       steps: 11374
     });
+    
+  it('should tell the user how close to meeting thier step goal for the day', () => {
+    expect(activity.giveUserStepsFeedback(1, '2019/06/15', userData)).to.equal('Almost there! You have 6423 steps until you have met your step goal');
   });
-
+    
 });  

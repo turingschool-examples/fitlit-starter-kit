@@ -64,7 +64,7 @@ main {
 }
 
 .grid-item {
-    margin: 20px 10px 0px 70px;
+    margin: 20px 10px 20px 70px;
     width: 600px;
 }
 
@@ -108,8 +108,13 @@ article {
 
 article span {
     margin-left: 9px;
+    margin-right: 9px;
     font-style: oblique;
     color: #000000ad;
+}
+
+#artice__user--step-goal-reminder {
+    color: #B6E7EC;
 }
 
 .main__section--1 {

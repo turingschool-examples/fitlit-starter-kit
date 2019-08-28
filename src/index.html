@@ -33,13 +33,11 @@
           <img class="article__img-bed" src="../images/sleeping-297724_640.png" alt="Image person sleeping in a bed">
         </article>
         <article class="main__article--sleep">
-          <h5>Current Sleep:<span id= "article__user--currentsleep"></span></h5>
-          <!-- <h5>Weeks Sleep:<span id= "article__user--weekssleep"></span></h5> -->
+          <h5>Your sleep data for the current day is<span id= "article__user--hours-slept"></span>hours and<span id= "article__user--quality-slept"></span>of quality sleep hours</h5>
         </article>
         <article class="main__article--weekssleep">
           <canvas id= "weekly-sleep-chart" width="450" height="350" aria-label="Graph to show hours of sleep and quality 7 days" role="bar graph"></canvas>
         </article>
-        <!-- <h5>Alltime Average Sleep:<span id= "article__user--avgsleep"></span></h5> -->
         <article class="main__article--avgsleep">
            <canvas id= "alltime-average-sleep-chart" width="450" height="350" aria-label="Graph to show all-time average sleep quality and hours" role="bar graph"></canvas>
         </article>
@@ -64,11 +62,12 @@
             <h5>Your Active Minutes:<span id= "article__user--activemins"></span></h5>
             <h5>Your Distance Today in Miles:<span id= "article__user--todaydistance"></span></h5>
             <h5>Weekly View:<span id= "article__user--weeklyview"></span></h5>
+            <h5><span id="artice__user--step-goal-reminder"></span></h5>
           <h2>Compared Numbers</h2> 
             <h5>Average of All User's Steps Taken:<span id= "article__user--comparesteps"></span></h5>
-              <canvas id= "compare-user-steps-chart" width="200" height="200" aria-label="Graph to compare steps of users" role="pie graph"></canvas>
+              <canvas id= "compare-user-steps-chart" width="300" height="300" aria-label="Graph to compare steps of users" role="pie graph"></canvas>
             <h5>Average of All User's Minutes Active:<span id= "article__user--comparemins"></span></h5>
-            <canvas id= "compare-minutes-active-chart" width="100" height="100" aria-label="Graph to compare minutes active of users" role="pie graph"></canvas>
+            <canvas id= "compare-minutes-active-chart" width="300" height="300" aria-label="Graph to compare minutes active of users" role="pie graph"></canvas>
             <h5>Average of All User's Flights of Stairs:<span id= "article__user--comparestairs"></span></h5>
             <canvas id= "compare-user-stairs-chart" width="300" height="300" aria-label="Graph to compare stairs climbed of users" role="pie graph"></canvas>
         </article>

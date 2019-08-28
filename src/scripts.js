@@ -205,7 +205,7 @@ function returnEveryonsAvgSteps() {
   let latestDay = lastUserDay.date
   let avgSteps = activity.getEveryonesAvgSteps(latestDay);
   return avgSteps
-}
+};
 
 function returnEveryonsAvgMinActive() {
   activity.extractSingleActivityData();

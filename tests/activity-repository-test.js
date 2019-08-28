@@ -33,5 +33,5 @@ describe('ActivityRepository', () => {
 
   it('should return the avg number of minutes active for all users on a given day', () => {
     expect(activityRepo.returnAvgMinutesActive('2019/06/20')).to.equal(160.4)
-  })
+  });
 })

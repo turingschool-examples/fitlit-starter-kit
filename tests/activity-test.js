@@ -49,7 +49,9 @@ describe('Activity', () => {
   it('should return their all time stair record', () => {
     // console.log(activity.data);
     expect(activity.findMostStairs(1)).to.equal(activity.data[5])
+  });
+
+  it('should return the steps taken per minute active on a given day', () => {
+    expect(activity.calculateStepsAMin('2019/06/20', 1)).to.equal(103.4)
   })
-
-
 });

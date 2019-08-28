@@ -114,6 +114,14 @@ class Activity {
     }, []);
   }
 
+  republicPlazaChallenge(userID) {
+    let userData = this.findCurrentUserData(userID);
+    return parseFloat((userData.reduce((acc, day) => {
+      acc += day.flightsOfStairs;
+      return acc;
+    }, 0) / 56).toFixed(1));
+  }
+
 }
 
 if (typeof module !== 'undefined') {

@@ -31,7 +31,7 @@ describe('Sleep', () => {
   })
 
   it('should show how much a user slept per day for a given week', () => {
-    expect(sleep.returnSleepByWeek(3, '2019/06/15').length).to.equal(7);
+    expect(sleep.returnSleepByWeek(3, '2019/06/21')).to.eql([10.8, 10.7, 5.3, 9.8, 7.2, 9.4, 8.9]);
   });
 
   it('should show a users quality of sleep per day for a given week', () => {

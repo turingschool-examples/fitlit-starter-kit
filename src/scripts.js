@@ -22,7 +22,7 @@ $('.header__div__allusers-stepgoal').text(`${repo.getAllUsersAvgStepGoal()} step
 
 $('.hydration__container--consumed--today').text(`${userHydro.userHydrationByDate(sampleDate)}oz`);
 
-userHydro.getHydroArray()
+userHydro.getHydroArray(sampleDate)
 
 $('.hydration__container--consumed--this--week').text(`${userHydro.getWeeklyHydroAvg()}oz`);
 
@@ -61,7 +61,7 @@ var myChart = new Chart(hydroChart, {
     labels: weekOfDates,
     datasets: [{
       label: 'Oz',
-      data: userHydro.getHydroArray().map(day => day.numOunces),
+      data: userHydro.getHydroArray(sampleDate).map(day => day.numOunces),
       backgroundColor: [
         'rgba(0, 121, 223, 1)',
         'rgba(0, 121, 223, 1)',
@@ -278,8 +278,6 @@ const compareFriendsSteps = () => {
 }
 
 compareFriendsSteps();
-
-console.log(friends)
 
 
 

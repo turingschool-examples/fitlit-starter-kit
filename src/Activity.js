@@ -66,7 +66,7 @@ class Activity {
     return currentData.reduce((acc, day, i, array) => {
       if (i !== 0 && i !== array.length - 1) {
         if (day.numSteps > array[i - 1].numSteps && day.numSteps < array[i + 1].numSteps) {
-          acc.push(array[i-1], array[i], array[i + 1])
+          acc.push(array[i - 1], array[i], array[i + 1])
         }
       }
       return acc;

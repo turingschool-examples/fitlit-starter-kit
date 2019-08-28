@@ -25,5 +25,9 @@ describe('Hydration', () => {
   it('should calculate water consumption over a week period', function() {
     expect(hydration.returnFluidOzByWeek(3, '2019/06/21')).to.deep.eql([47, 99, 28, 40, 85, 51, 41]);
   });
+
+  it('should return a boolean determining whether the user drank enough water for the last week', () => {
+    expect(hydration.returnDidUserDrinkEnoughWater(1, '2019/06/21')).to.equal(true);
+  })
   
 });

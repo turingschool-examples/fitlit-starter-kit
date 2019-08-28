@@ -72,13 +72,13 @@ $(document).ready(function () {
       datasets: [{
         data: hydration.returnWeeklyNumOunces(),
         backgroundColor: [
-          'rgba(92, 117, 218, 0.2)',
-          'rgba(242, 188, 51, 0.2)',
-          'rgba(126, 221, 255, 0.2)',
-          'rgba(92, 117, 218, 0.2)',
-          'rgba(242, 188, 51, 0.2)',
-          'rgba(126, 221, 255, 0.2)',
-          'rgba(92, 117, 218, 0.2)'
+          'rgba(92, 117, 218, 0.6)',
+          'rgba(242, 188, 51, 0.6)',
+          'rgba(126, 221, 255, 0.6)',
+          'rgba(92, 117, 218, 0.6)',
+          'rgba(242, 188, 51, 0.6)',
+          'rgba(126, 221, 255, 0.6)',
+          'rgba(92, 117, 218, 0.6)'
         ],
       }]
     },
@@ -110,28 +110,28 @@ $(document).ready(function () {
       datasets: [{
         data: sleep.returnWeekOfSleepHours(1),
         label: "Sleep Hours",
-        borderColor: "rgba(92, 117, 218, 0.2)",
+        borderColor: "rgba(92, 117, 218, 0.6)",
         fill: false,
         lineTension: 0.1
       },
       {
         data: Array(7).fill(sleep.returnAvgSleepHours()),
         label: "Average Hours of Sleep",
-        borderColor: "rgba(92, 117, 218, 0.2)",
+        borderColor: "rgba(92, 117, 218, 0.6)",
         fill: false,
         borderDash: [10, 5]
       },
       {
         data: sleep.returnWeekOfSleepQuality(1),
         label: "Quality of Sleep",
-        borderColor: "rgba(242, 188, 51, 0.2)",
+        borderColor: "rgba(242, 188, 51, 0.6)",
         fill: false,
         lineTension: 0.1
       },
       {
         data: Array(7).fill(sleep.returnAvgSleepQuality()),
         label: "Average Quality of Sleep",
-        borderColor: "rgba(242, 188, 51, 0.2)",
+        borderColor: "rgba(242, 188, 51, 0.6)",
         fill: false,
         borderDash: [10, 5]
       }

@@ -1,7 +1,7 @@
 // The variables below are required for testing but interfere with DOM functionality
-//     const userData = require("../data/users")
-//     const User = require('./userClass.js')
-//     const UserRepository = require("./user-repository");
+    // const userData = require("../data/users")
+    // const User = require('./userClass.js')
+    // const UserRepository = require("./user-repository");
 // // }
 class Activity {
     constructor(moveData) {

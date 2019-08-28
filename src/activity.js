@@ -76,6 +76,16 @@ class Activity {
     
     return userStairs[0];
   };
+
+  calculateStepsAMin(date, id) {
+    let userActivity = this.data.filter(user => user.userID === id);
+
+    let day = userActivity.find(day => day.date === date);
+
+    let stepsAMin = (day.numSteps / day.minutesActive).toFixed(1)
+    
+    return parseFloat(stepsAMin)
+  }
 }
 
 module.exports = Activity;

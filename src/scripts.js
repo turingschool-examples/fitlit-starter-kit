@@ -29,15 +29,19 @@ function handleUser() {
 }
 
 function welcomeUser() {
-  header.insertAdjacentHTML('beforeend', `<h2>Welcome, ${user.name}</h2>`)
+  header.insertAdjacentHTML('beforeend', `<h2 class="welcome-msg">Welcome, ${user.name}</h2>`)
 }
 
 function createUserCard() {
   dailySection.insertAdjacentHTML('afterbegin', `<article class="user_info">
-  <p>Address: ${user.address}</p>
-  <p>E-mail: ${user.email}</p>
-  <p>Stride Length: ${user.strideLength}</p>
-  <p>Daily Step Goal: ${user.dailyStepGoal} / ${users.calculateAverageStepGoals()}</p>
+  <h3>Address: </h3>
+  <p>${user.address}</p>
+  <h3>E-mail: </h3>
+  <p>${user.email}</p>
+  <h3>Stride Length: </h3>
+  <p>${user.strideLength}</p>
+  <h3>Daily Step Goal: </h3>
+  <p>${user.dailyStepGoal} / ${users.calculateAverageStepGoals()}</p>
   </article>`)
 }
 
@@ -57,16 +61,37 @@ function displayUserHydration() {
   let dailyWaterIntake = returnDailyWaterIntake();
   let weeklyWaterIntake = returnWeeklyWaterIntake();
   dailySection.insertAdjacentHTML('beforeend', `<article>
-   <p>Daily Water Intake: ${dailyWaterIntake}</p>
-   <ul>Water consumed this week:
-    <li>${weeklyWaterIntake[0].date} : ${weeklyWaterIntake[0].numOunces} ounces</li>
-    <li>${weeklyWaterIntake[1].date} : ${weeklyWaterIntake[1].numOunces} ounces</li>
-    <li>${weeklyWaterIntake[2].date} : ${weeklyWaterIntake[2].numOunces} ounces</li>
-    <li>${weeklyWaterIntake[3].date} : ${weeklyWaterIntake[3].numOunces} ounces</li>
-    <li>${weeklyWaterIntake[4].date} : ${weeklyWaterIntake[4].numOunces} ounces</li>
-    <li>${weeklyWaterIntake[5].date} : ${weeklyWaterIntake[5].numOunces} ounces</li>
-    <li>${weeklyWaterIntake[6].date} : ${weeklyWaterIntake[6].numOunces} ounces</li>
-   </ul>
+   <h3>Daily Water Intake:</h3>
+   <p> ${dailyWaterIntake} oz.</p>
+   <h3>Water consumed this week:</h3>
+    <div class="inline-records">
+      <h4>${weeklyWaterIntake[0].date} : </h4> 
+      <p> ${weeklyWaterIntake[0].numOunces} ounces</p>
+    </div>
+    <div class="inline-records">
+      <h4>${weeklyWaterIntake[1].date} : </h4> 
+      <p> ${weeklyWaterIntake[1].numOunces} ounces</p>
+    </div>
+    <div class="inline-records">
+      <h4>${weeklyWaterIntake[2].date} : </h4> 
+      <p> ${weeklyWaterIntake[2].numOunces} ounces</p>
+    </div>
+    <div class="inline-records">
+      <h4>${weeklyWaterIntake[3].date} : </h4> 
+      <p> ${weeklyWaterIntake[3].numOunces} ounces</p>
+    </div>
+    <div class="inline-records">
+      <h4>${weeklyWaterIntake[4].date} : </h4> 
+      <p> ${weeklyWaterIntake[4].numOunces} ounces</p>
+    </div>
+    <div class="inline-records">
+      <h4>${weeklyWaterIntake[5].date} : </h4> 
+      <p> ${weeklyWaterIntake[5].numOunces} ounces</p>
+    </div>
+    <div class="inline-records">
+      <h4>${weeklyWaterIntake[6].date} : </h4> 
+      <p> ${weeklyWaterIntake[6].numOunces} ounces</p>
+    </div>
    </article>`)
 }
 
@@ -105,38 +130,40 @@ function displaySleepInfo() {
   let avgHoursSlept = returnAvgHoursSlept();
   let avgSleepQuality = returnAvgSleepQuality();
   dailySection.insertAdjacentHTML('beforeend', `<article class="user_info">
-  <p>Hours Slept Last Night: ${latestHoursSlept} hrs</p>
-  <p>Last Night's Sleep Quality: ${latestSleepQual} / 5</p>
-  <p>Weekly Sleep Info:</p>
+  <h3>Hours Slept Last Night: </h3>
+  <p>${latestHoursSlept} hrs</p>
+  <h3>Last Night's Sleep Quality: </h4>
+  <p>${latestSleepQual} / 5</p>
+  <h3>Weekly Sleep Info:</h3>
     <div class='week-sleep-info'>
-      <h3>${weeklyHrsSlept[0].date}</h3>
+      <h4>${weeklyHrsSlept[0].date}</h4>
       <p>${weeklyHrsSlept[0].hoursSlept}hrs | ${weeklyHrsSlept[0].sleepQuality} / 5</p>
     </div>
     <div class='week-sleep-info'>
-      <h3>${weeklyHrsSlept[1].date}</h3>
+      <h4>${weeklyHrsSlept[1].date}</h4>
       <p>${weeklyHrsSlept[1].hoursSlept}hrs | ${weeklyHrsSlept[1].sleepQuality} / 5</p>
     </div>
     <div class='week-sleep-info'>
-      <h3>${weeklyHrsSlept[2].date}</h3>
+      <h4>${weeklyHrsSlept[2].date}</h4>
       <p>${weeklyHrsSlept[2].hoursSlept}hrs | ${weeklyHrsSlept[2].sleepQuality} / 5</p>
     </div>
     <div class='week-sleep-info'>
-      <h3>${weeklyHrsSlept[3].date}</h3>
+      <h4>${weeklyHrsSlept[3].date}</h4>
       <p>${weeklyHrsSlept[3].hoursSlept}hrs | ${weeklyHrsSlept[3].sleepQuality} / 5</p>
     </div>
     <div class='week-sleep-info'>
-      <h3>${weeklyHrsSlept[4].date}</h3>
+      <h4>${weeklyHrsSlept[4].date}</h4>
       <p>${weeklyHrsSlept[4].hoursSlept}hrs | ${weeklyHrsSlept[4].sleepQuality} / 5</p>
     </div>
     <div class='week-sleep-info'>
-      <h3>${weeklyHrsSlept[5].date}</h3>
+      <h4>${weeklyHrsSlept[5].date}</h4>
       <p>${weeklyHrsSlept[5].hoursSlept}hrs | ${weeklyHrsSlept[5].sleepQuality} / 5</p>
     </div>
     <div class='week-sleep-info'>
-      <h3>${weeklyHrsSlept[6].date}</h3>
+      <h4>${weeklyHrsSlept[6].date}</h4>
       <p>${weeklyHrsSlept[6].hoursSlept}hrs | ${weeklyHrsSlept[6].sleepQuality} / 5</p>
     </div>
-    <p>All Time Average:</p>
+    <h3>All Time Average:</h3>
     <div class='week-sleep-info'>
       <p>${avgHoursSlept}hrs | ${avgSleepQuality} / 5</p>
     </div>
@@ -233,18 +260,42 @@ function displayStepInfo() {
     <p>/ ${stepGoal}</p>
 
     <h3>Activity</h3>
-    <p>Minutes Active: ${minutesActive} mins</p>
-    <p>Miles: ${miles}mi</p>
+    <div class="inline-records">
+      <h4>Minutes Active: </h4>
+      <p>${minutesActive} mins</p>
+    </div>
+    <div class="inline-records">
+      <h4>Miles: </h4>
+      <p>${miles}mi</p>
+    </div>
 
     <h3>You vs Everyone</h3>
-    <p>Steps: ${dailySteps} / ${allAvgSteps}</p>
-    <p>Minutes Active: ${minutesActive}min / ${allAvgMinActive} min</p>
-    <p>Stairs Climbed: ${flightsClimbed} / ${allAvgStairsClimbed}</p>
+    <div class="inline-records">
+      <h4>Steps: </h4>
+      <p>${dailySteps} / ${allAvgSteps}</p>
+    </div>
+    <div class="inline-records">
+      <h4>Minutes Active: </h4>
+      <p>${minutesActive}min / ${allAvgMinActive} min</p>
+    </div>
+    <div class="inline-records">
+      <h4>Stairs Climbed: </h4>
+      <p>${flightsClimbed} / ${allAvgStairsClimbed}</p>
+    </div>
 
     <h3>Weekly Report</h3>
-    <p>Steps: ${totalWeeklySteps}</p>
-    <p>Minutes Active:  ${totalWeeklyMinActive} mins</p>
-    <p>Flights Climbed: ${totalWeeklyStairsClimbed }</p>
+    <div class="inline-records">
+      <h4>Steps: </h4>
+      <p>${totalWeeklySteps}</p>
+    </div>
+    <div class="inline-records">
+      <h4>Minutes Active:  </h4>
+      <p>${totalWeeklyMinActive} mins</p>
+    </div>
+    <div class="inline-records">
+      <h4>Flights Climbed: </h4>
+      <p>${totalWeeklyStairsClimbed }</p>
+    </div>
 
 
    </article>`)

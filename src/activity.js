@@ -1,13 +1,12 @@
 class Activity {
-  constructor(data, id) {
+  constructor(data, users) {
     this.data = data;
-    this.id = id;
+    this.users = users;
   }
 
   calculateMilesWalked(date, id) {
-    let userRepo = new UserRepository(userData);
 
-    let stride = userRepo.users.find(user => user.id === id).strideLength;
+    let stride = this.users.users.find(user => user.id === id).strideLength;
 
     let numberSteps = this.data
       .filter(user => user.date === date)
@@ -37,9 +36,8 @@ class Activity {
   }
 
   compareGoal(date, id) {
-    let userRepo = new UserRepository(userData);
 
-    let user = userRepo.users.find(user => user.id === id);
+    let user = this.users.users.find(user => user.id === id);
 
     let goal = user.dailyStepGoal
 
@@ -53,9 +51,8 @@ class Activity {
   }
 
   findGoalDays(id) {
-    let userRepo = new UserRepository(userData);
 
-    let user = userRepo.users.find(user => user.id === id);
+    let user = this.users.users.find(user => user.id === id);
 
     let goal = user.dailyStepGoal;
 
@@ -105,7 +102,6 @@ class Activity {
 
     let array = targetWeek.map(elem => elem.flightsOfStairs);
 
-    console.log(array);
     return array;
   }
 

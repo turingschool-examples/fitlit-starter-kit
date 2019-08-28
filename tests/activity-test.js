@@ -13,9 +13,9 @@ describe('Activity', () => {
   let activity, userRepo, users;
 
   beforeEach(() => {
-    activity = new Activity(activityData);
     userRepo = new UserRepository(userData);
     user = new User(userData);
+    activity = new Activity(activityData, userRepo);
   });
 
   it('should be a function', () => {

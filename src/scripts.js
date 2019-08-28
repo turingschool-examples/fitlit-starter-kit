@@ -1,10 +1,5 @@
-// const data = require('../data/users.js');
 let uniqueUserId = Math.floor(Math.random() * (50 - 1 + 1)) +1;
 
-// const uniqueUserId = uniqueUserIndex + 1;
-// const currentUser = userRepo.data.find(function(user) {
-//   return user.id === uniqueUserIndex
-// })
 const userRepo = new UserRepository(userData);
 const today = findToday();
 
@@ -18,8 +13,6 @@ const currentUserSleep = sleepRepo.sleepData.filter(user => user.userID === uniq
 const activityRepo = new Activity(activityData);
 const allUserActivityRepo = new AllUsers(activityData);
 const currentUserActivity = activityRepo.moveData.filter(user => user.userID === uniqueUserId)
-
-
 
 $('.user_card-name-span').text(user.getUserFirstName(uniqueUserId));
 $('.step_goal-user-span').text(`${user.dailyStepGoal}`);
@@ -54,8 +47,11 @@ $('.daily_single-user-stairs-span').text(activityRepo.getMinutesActive(uniqueUse
 
 $('.daily_all-users-stairs-span').text(allUserActivityRepo.getAverageStairsClimbed(findToday()));
 
+$('.main_weekly-steps-span').text(activityRepo.getActivityForWeek(uniqueUserId, findToday(), 'numSteps'))
 
+$('.main_weekly-minutes-span').text(activityRepo.getActivityForWeek(uniqueUserId, findToday(), 'minutesActive'))
 
+$('.main_weekly-stairs-span').text(activityRepo.getActivityForWeek(uniqueUserId, findToday(), 'flightsOfStairs'))
 
 function findToday() {
     var today = new Date();
@@ -91,19 +87,3 @@ function getFriendInfo(id, date) {
         return ({id: friendId, steps: friendTotalSteps});
         })
     }
-
-allUserActivityRepo.getActivityForWeek(1, findToday());
-
-
-getFriendInfo(1, today);
-
-// console.log(friendList(uniqueUserId));
-
-// console.log(getFriendInfo(1));
-
-
-
-
-// .forEach((index) => {
-    // console.log(hydrationRepo[index].numOunces);
-    // return hydrationRepo[index].numOunces}));

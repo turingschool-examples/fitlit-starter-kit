@@ -96,14 +96,6 @@
               <p class="activity__container--user--miles--today">Miles walked today: 5 miles</p>
               <p class="activity__container--user--flights--today">Flights climbed today: 3</p>
             </container>
-          </div>
-          <div class="allusers-activity">
-            <h4 class="main__activity--thisWeek">This week:</h4>
-            <canvas id="activitySteps--thisWeek" width="400" height="200"></canvas>
-            <canvas id="activityFlights--thisWeek" width="400" height="200"></canvas>
-            <canvas id="activityMins--thisWeek" width="400" height="200"></canvas>
-          </div>
-          <div class="allusers-activity">
             <h4 lass="main__activity--today--all--users">Averages for Everyone:</h4>
             <container class="main__activity--allusers--steps--today--container">
               <p class="activity__container--allusers--steps--today">Steps Today: 10,000</p>
@@ -111,22 +103,31 @@
               <p class="activity__container--allusers--flights--today">Flights climbed today: 3</p>
             </container>
           </div>
+          <div class="allusers-activity">
+            <h4 class="main__activity--thisWeek">This week:</h4>
+            <canvas id="activitySteps--thisWeek" width="400" height="200"></canvas>
+            <canvas id="activityFlights--thisWeek" width="400" height="200"></canvas>
+            <canvas id="activityMins--thisWeek" width="400" height="200"></canvas>
+          </div>
         </article>
       </section>
     <section class="main__trends">
       <h3 class="main__activity--h3 section-title">Friends & Challanges</h3>
       <div class="main__trends-formater">
         <article class="main__trends__article">
+          <p class="top-text">Stepping with Friends</p>
           <div class="main__trends--step--challange" style="position: relative; width:98%">
             <canvas id="step--challange"></canvas>
           </div>
         </article>
         <article class="main__trends__article">
+          <p class="top-text">Latest 3 day streak 🔥</p>
           <div class="main__trends--3--day--streak" style="position: relative; width:98%">
             <canvas id="3--day--streak"></canvas>
           </div>
         </article>
         <article class="main__trends__article">
+          <p class="top-text">14er Challange 🏔</p>
           <div class="main__trends--14er" style="position: relative; width:98%">
             <canvas id="14er"></canvas>
           </div>

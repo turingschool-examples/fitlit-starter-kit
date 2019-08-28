@@ -235,6 +235,32 @@ var myChart = new Chart(stepChallange, {
   }
 });
 
+const threeDayStreak = $('#3--day--streak')
+
+var myChart = new Chart(threeDayStreak, {
+  type: 'horizontalBar',
+  data: {
+    // labels: friends,
+    datasets: [{
+      label: 'steps',
+      data: activePerson.getWeek(sampleDate).map(day => day.minutesActive),
+      // borderColor: [
+      //   'rgba(255, 99, 132, 1)'
+      // ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
 
 
 function buildWeeklyHTMLActivity() {

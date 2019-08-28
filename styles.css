@@ -128,8 +128,7 @@ article {
 .main__activity--h3 {
   font: 'Livvic' 400;
   font-size: 35px;
-  margin: 0;
-  margin-left: 15px;
+  margin: 10px 0 10px 10px;
 }
 
 .main__sleep--data--container,
@@ -208,4 +207,20 @@ article {
   background-color: rgba(200, 200, 200, .7);
   grid-area: trends;
   margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.main__trends-formater {
+  display: flex;
+  flex-direction: row;
+}
+
+.main__trends__article {
+  margin: 0 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  width: 33%;
+  margin-bottom: 10px;
 }

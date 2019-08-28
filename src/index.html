@@ -113,24 +113,26 @@
           </div>
         </article>
       </section>
-      <section class="main__trends">
-        <article class="main__trends__article--date">
-          <p class="main__trends--date">Aug 19, 2019</p>
-          <p class="main__trends--chooseDate">Pick a Day</p>
+    <section class="main__trends">
+      <h3 class="main__activity--h3 section-title">Friends & Challanges</h3>
+      <div class="main__trends-formater">
+        <article class="main__trends__article">
+          <div class="main__trends--step--challange" style="position: relative; width:98%">
+            <canvas id="step--challange"></canvas>
+          </div>
         </article>
-        <article class="main__trends__article--data">
-          <container class="main__trends--data--container">
-            <p class="hydration__container--consumed--today">Consumed Today: 15oz</p>
-            <p class="hydration__container--consumed--this--week">Average consumed this
-              week: 45oz</p>
-          </container>
-          <container class="main__trends--data--container">
-            <p class="main__trends__average--all-users">
-              Average consumed by ALL users this week: 50oz
-            </p>
-          </container>
+        <article class="main__trends__article">
+          <div class="main__trends--3--day--streak" style="position: relative; width:98%">
+            <canvas id="3--day--streak"></canvas>
+          </div>
         </article>
-      </section>
+        <article class="main__trends__article">
+          <div class="main__trends--14er" style="position: relative; width:98%">
+            <canvas id="14er"></canvas>
+          </div>
+        </article>
+      </div>
+    </section>
     </main>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>

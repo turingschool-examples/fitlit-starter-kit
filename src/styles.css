@@ -7,7 +7,7 @@
 }
 
 header {
-  height: 100px;
+  height: 125px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,33 +22,7 @@ header {
 }
 
 .welcome-msg {
-  font-size: 160%;
-}
-
-.daily_section {
-  background-color: #EFEFEF;
-  padding: 10px;
-}
-
-.daily_section {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 20px;
-  height: 100%;
-}
-
-article {
-  /* height: 300px;
-  width: 300px; */
-  background-color: #CAEBF2;
-  border: solid 2px #A9A9A9;
-  margin: 10px;
-  padding: 5px;
-  border-radius: 3px;
-}
-
-h3 {
-  color: #FF3B3F
+  font-size: 185%;
 }
 
 .inline-records {
@@ -58,4 +32,222 @@ h3 {
 
 h4 {
   margin-right: 5px;
+}
+
+p,
+h4 {
+  color: #565656;
+}
+
+h3 {
+  color: #FF3B3F;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.daily_section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #EFEFEF;
+  padding: 40px;
+}
+
+.info_block {
+  background-color: #CAEBF2;
+  border: solid 2px #A9A9A9;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.user_info {
+  align-self: center;
+  text-align: center;
+  width: 60%;
+}
+
+.user_info_headings {
+  margin-top: 3px;
+  font-size: 20px;
+}
+
+.user_info_text {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.water_info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.water_drop_img {
+  height: 115px;
+  width: 115px;
+}
+
+.daily_water_intake > p {
+  font-size: 220%;
+  font-weight: 600;
+  color: #FF3B3F;
+}
+
+.daily_water_intake {
+  text-align: center;
+  align-self: center;
+}
+
+.weekly_water_info > h3 {
+  font-size: 190%;
+  margin-bottom: 10px;
+}
+
+.weekly_water_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 15px;
+  margin-right: -5px;
+}
+
+.week_by_day {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-size: 115%;
+  align-items: center;
+}
+
+.second_half_week {
+  margin-left: 30px;
+}
+
+.sleep_info {
+  padding: 20px;
+}
+
+.latest_night_sleep {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.sleep_qual > h3,
+.sleep_hrs > h3 {
+  font-size: 190%;
+}
+
+.sleep_qual > p,
+.sleep_hrs > p {
+  font-size: 200%;
+  font-weight: 600;
+}
+
+.sleep_qual,
+.sleep_hrs {
+  flex-direction: column;
+  text-align: center;
+}
+
+.pillow_img {
+  height: 280px;
+  width: 280px;
+}
+
+.avg_sleep {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.avg_sleep > h3 {
+  font-size: 190%;
+}
+
+.avg_sleep > p {
+  font-size: 160%;
+  font-weight: 600;
+}
+
+.weekly_sleep_info {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.weekly_sleep_info > h3 {
+  font-size: 185%
+}
+
+.all_sleep_days {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.single_day_sleep {
+  margin: 10px;
+}
+
+.sleep_divider {
+  color: #FF3B3F;
+  font-weight: 700;
+  padding: 5px;
+}
+
+.activity_block {
+  padding: 20px;
+}
+
+.steps_activity_info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.steps {
+  text-align: center;
+}
+
+.shoe_img {
+  height: 155px;
+  width: 165px;
+}
+
+.activity_img {
+  height: 130px;
+  width: 130px;
+}
+
+.steps > p {
+  font-size: 180%;
+  font-weight: 600;
+}
+
+.activity > p {
+  font-size: 140%;
+  font-weight: 600;
+  text-align: center;
+}
+
+.report_and_compare {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: auto 30px;
+}
+
+.weekly_report > h3,
+.activity_comparison > h3 {
+  font-size: 180%;
+  margin-bottom: 10px;
+}
+
+.reports {
+  font-size: 115%;
 }

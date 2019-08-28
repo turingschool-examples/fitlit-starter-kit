@@ -6,12 +6,7 @@
 
 body {
   background-color: #EAEBEF;
-  /* display: grid; */
   font-family: 'Open Sans', sans-serif;
-  /* grid-template-areas:
-    "welcome welcome welcome welcome"
-    "hydration sleep activity friends"
-    "hydration sleep activity challenges"; */
   margin: 0px;
   min-width: 320px;
   padding: 10px;
@@ -89,34 +84,22 @@ canvas {
 .data-article {
   font-weight: 300;
   font-weight: .8em;
-  margin-bottom: 20px;
+  margin: 40px 0px;
   text-align: center;
 }
 
 .data-text {
-  margin: 5px;
+  margin: 15px;
 }
 
 .subtext {
   font-size: 10px;
   font-weight: 700;
-  margin: 0px;
-}
-
-/* .hydration {
-  grid-area: hydration;
-} */
-
-.water-consumed {
   margin: 5px;
 }
 
-/* .sleep {
-  grid-area: sleep;
-}
-
-.activity {
-  grid-area: activity;
+.water-consumed {
+  margin: 5px;
 }
 
 .number-of-steps-day {
@@ -132,13 +115,6 @@ canvas {
   margin-top: 10px;
 }
 
-.friends {
-  grid-area: friends;
-}
-
-.challenges {
-  grid-area: challenges;
-} */
 ul {
   list-style: none;
 }
@@ -149,5 +125,20 @@ img {
 
 .img-medium {
   opacity: 0.6;
-  width: 100px;
+  width: 80px;
+}
+
+.separator {
+  display: flex;
+}
+.user {
+  width: 50%;
+}
+.border {
+  border-right: 2px solid #5C75DA;
+  height: 100px;
+  margin-top: 15px;
+}
+.average {
+  width: 50%;
 }

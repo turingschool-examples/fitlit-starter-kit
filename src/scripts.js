@@ -86,7 +86,7 @@ var hydrationByWeek = new Chart(ctx, {
   data: {
     labels: returnDatesOfWeek(user.id, currentDate),
     datasets: [{
-      label: 'Water By Week',
+      label: 'ounces',
       data: hydration.returnFluidOzByWeek(user.id, currentDate),
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
@@ -109,7 +109,88 @@ var hydrationByWeek = new Chart(ctx, {
   },
   options: {
     legend: {
-      display: false
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+$('#user-sleep-by-week').text(sleep.returnSleepByWeek(user.id, currentDate));
+var ctx = $('#user-sleep-by-week');
+var sleepByWeek = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: returnDatesOfWeek(user.id, currentDate),
+    datasets: [{
+      label: 'hours',
+      data: hydration.returnFluidOzByWeek(user.id, currentDate),
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    legend: {
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+$('#user-sleep-quality-by-week').text(sleep.returnSleepQualityByWeek(user.id, currentDate));
+var ctx = $('#user-sleep-quality-by-week');
+var sleepQualityByWeek = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: returnDatesOfWeek(user.id, currentDate),
+    datasets: [{
+      label: 'quality score',
+      data: hydration.returnFluidOzByWeek(user.id, currentDate),
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    legend: {
     },
     scales: {
       yAxes: [{

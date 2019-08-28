@@ -130,6 +130,14 @@ article {
   grid-area: sleep6;
 }
 
+#article11 {
+  grid-area: activ1;
+}
+
+#article12 {
+  grid-area: activ2;
+}
+
 @media screen and (max-width: 700px) {
 
   body {

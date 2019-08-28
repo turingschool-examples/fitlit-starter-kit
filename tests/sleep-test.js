@@ -19,7 +19,7 @@ describe('Sleep', function() {
     userRepo = new UserRepository(users);
     user1 = new User(userRepo.users[1]);
     sleepRepo = new SleepRepository(sleepData);
-    sleep1 = new Sleep(sleepRepo.getUserSleepInfo(1));
+    sleep1 = new Sleep(sleepData);
   });
 
   it('should be a function', function() {
@@ -27,15 +27,15 @@ describe('Sleep', function() {
   });
 
   it('should get avg number of hours slept per day for a user', () => {
-    expect(sleep1.getAvgSleepHours()).to.equal(7.7)
+    expect(sleep1.getAvgSleepHours(1)).to.equal(7.7)
   });
 
   it('should get avg sleep quality per day for a user', () => {
     expect(sleep1.getAvgSleepQual()).to.equal(2.5)
   });
 
-  it('should get how many hours slept for a particular date for a user', () => {
-    expect(sleep1.getHoursSleptPerDay("2019/06/15")).to.equal(6.1)
+  it.only('should get how many hours slept for a particular date for a user', () => {
+    expect(sleep1.getHoursSleptPerDay("2019/06/15", 1)).to.equal(6.1)
   });
 
   it('should get sleep quality for a particular date for a user', () => {

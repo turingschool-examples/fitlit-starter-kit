@@ -9,22 +9,26 @@ body {
   display: grid;
   font-family: 'Roboto Slab', serif;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
     "header header header header header header"
-    "step step water water sleep sleep";
+    "step1 step1 step2 step2 water1 water1"
+    "water2 water2 sleep3 sleep3 sleep4 sleep4"
+    "sleep1 sleep1 sleep2 sleep2 sleep5 sleep5"
+    "sleep6 sleep6 activ1 activ1 activ2 activ2";
   margin: 0;
   height: 100vh;
 }
 
 header {
+  align-items: center;
   background-color: #001527;
   border: 1px solid #3A3A4A;
   display: flex;
   justify-content: space-between;
   grid-area: header;
   padding: 0px 50px 0 50px ;
-  align-items: center;
+  text-align: center;
 }
 
 h1 {
@@ -52,6 +56,8 @@ h3 {
   color: white;
   font-size: 1rem;
   font-weight: 300;
+  margin-top: 5px;
+  text-align: center;
 }
 
 p {
@@ -60,31 +66,68 @@ p {
   margin: 0;
 }
 
-#article1 {
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  color: white;
+  font-size: 3rem;
+  margin: 0;
+  padding: 0;
+}
+
+article {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   background-color: #001527;
   border: 1px solid #3A3A4A;
-  grid-area: step;
+  grid-area: step1;
+  justify-content: center;
+  padding: 20px;
+}
+
+#article1 {
+  grid-area: step1;
 }
 
 #article2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #001527;
-  border: 1px solid #3A3A4A;
-  grid-area: water;
+  grid-area: step2;
 }
 
 #article3 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #001527;
-  border: 1px solid #3A3A4A;
-  grid-area: sleep;
+  grid-area: water1;
+}
+
+#article4 {
+  grid-area: water2;
+}
+
+#article5 {
+  grid-area: sleep1;
+}
+
+#article6 {
+  grid-area: sleep2;
+}
+
+#article7 {
+  grid-area: sleep3;
+}
+
+#article8 {
+  grid-area: sleep4;
+}
+
+#article9 {
+  grid-area: sleep5;
+}
+
+#article10 {
+  grid-area: sleep6;
 }
 
 @media screen and (max-width: 700px) {
@@ -94,8 +137,12 @@ p {
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-areas:
       "header header header header"
-      "step step water water"
-      "sleep sleep sleep sleep";
+      "step1 step1 step2 step2"
+      "water1 water1 water2 water2"
+      "sleep3 sleep3 sleep4 sleep4"
+      "sleep1 sleep1 sleep2 sleep2"
+      "sleep5 sleep5 sleep6 sleep6"
+      "activ1 activ1 activ2 activ2";
   }
 
 @media screen and (max-width: 600px) {
@@ -129,10 +176,18 @@ p {
       grid-template-rows: 1fr 1fr 1fr 1fr;
       grid-template-areas:
         "header header"
-        "step step"
-        "water water"
-        "sleep sleep"
-        "sleep sleep";
+        "step1 step1"
+        "step2 step2"
+        "water1 water1"
+        "water2 water2"
+        "sleep3 sleep3"
+        "sleep4 sleep4"
+        "sleep1 sleep1"
+        "sleep2 sleep2"
+        "sleep5 sleep5"
+        "sleep6 sleep6"
+        "activ1 activ1"
+        "activ2 activ2";
     }
 
     h1 {

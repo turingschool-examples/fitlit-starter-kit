@@ -140,6 +140,14 @@ class Activity {
     let targetDay = userActivity.find(day => day.date === date);
 
     return targetDay.flightsOfStairs;
+  };
+
+  getFriends(id) {
+    let user = this.users.users.find(person => person.id === id);
+
+    let userFriends 
+
+    console.log(user)
   }
 }
 

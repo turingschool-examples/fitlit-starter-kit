@@ -79,12 +79,9 @@ describe('Activity', () => {
     expect(activity.returnStairsDay("2019/06/20", 1)).to.equal(12);
   });
 
-  
-
-  // **** Iteration 5 ****
-  // it('should return an array of data for a users friends', () => {
-  //   expect(user.getFriends())
-  // })
+  it('should return an array of data for a users friends', () => {
+    expect(activity.getFriends(1))
+  })
 
   // it('should compare user steps for a week compared to friends', () => {
   //   expect(activity.determineWinner('2019/06/20'))

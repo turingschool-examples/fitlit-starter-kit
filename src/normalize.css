@@ -1,27 +1,79 @@
 body {
- margin: 0;
- padding: 0;
- display: flex;
- flex-direction: column;
- align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto; 
+  grid-template-areas: 
+    "header header header"
+    "userCard userCard userCard"
+    "daily1 daily2 daily3"
+    "minutes stairs steps"
+    "water water water"
+    "stepsComp weekSleep weekSleep"
+    "allUsers allUsers allUsers"
+    "allTime allTime allTime"
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  height: 20%;
+.header-title {
+  grid-area: header;
   border: 1px solid red;
 }
 
-.header_date,
-.header_header {
-  width: 30%; 
+.user_card {
+  grid-area: userCard;
+  border: 1px solid red;
 }
 
-.user_card {
-  display: flex; 
-  width: 80%;
+.daily1 {
+  grid-area: daily1;
+  border: 1px solid red;
+}
+
+.daily2 {
+  grid-area: daily2;
+  border: 1px solid red;
+}
+
+.daily3 {
+  grid-area: daily3;
+  border: 1px solid red;
+}
+
+.main_weekly-minutes {
+  grid-area: minutes;
+  border: 1px solid red;
+}
+
+.main_weekly-stairs {
+  grid-area: stairs;
+  border: 1px solid red;
+}
+
+.main_weekly-steps {
+  grid-area: steps;
+  border: 1px solid red;
+}
+
+.main_weekly-water {
+  grid-area: water;
+  border: 1px solid red;
+}
+
+.daily_steps-comparison {
+  grid-area: stepsComp;
+  border: 1px solid red;
+}
+
+.main_weekly-sleep {
+  grid-area: weekSleep;
+  border: 1px solid red;
+}
+
+.alltime_user {
+  grid-area: allTime;
+  border: 1px solid red;
+}
+
+.daily_all-users {
+  grid-area: allUsers;
   border: 1px solid red;
 }

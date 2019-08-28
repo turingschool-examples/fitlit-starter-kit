@@ -7,20 +7,16 @@ let uniqueUserId = Math.floor(Math.random() * (50 - 1 + 1)) +1;
 // })
 const userRepo = new UserRepository(userData);
 const today = findToday();
-
 const currentUser = userRepo.data.find(user => user.id === uniqueUserId)
 const user = new User(currentUser);
 const hydrationRepo = new Hydration(hydrationData);
 const currentUserHydration = hydrationRepo.waterData.filter(user => user.userID === uniqueUserId);
 const sleepRepo = new Sleep(sleepData);
 const currentUserSleep = sleepRepo.sleepData.filter(user => user.userID === uniqueUserId)
-
 const activityRepo = new Activity(activityData);
-
 const currentUserActivity = activityRepo.moveData.filter(user => user.userID === uniqueUserId)
 
-
-
+$('.header_date-span').text(findToday());
 $('.user_card-name-span').text(user.getUserFirstName(uniqueUserId));
 $('.step_goal-user-span').text(`${user.dailyStepGoal}`);
 $('.step_goal-all-average-span').text(userRepo.averageStepGoal());
@@ -34,16 +30,13 @@ $('.main_alltime-sleep-span').text(sleepRepo.getAverageSleepQuality(uniqueUserId
 
 $('.main_weekly-sleep-hours-span').text(sleepRepo.getUserHoursWeekAverage(uniqueUserId, findToday()));
 
-$('.main_weeekly-sleep-quality-span').text(sleepRepo.getUserQualityWeekAverage(uniqueUserId, findToday()));
+$('.main_weekly-sleep-quality-span').text(sleepRepo.getUserQualityWeekAverage(uniqueUserId, findToday()));
 
-$('.main_weeekly-sleep-quality-span').text(sleepRepo.getUserQualityWeekAverage(uniqueUserId, findToday()));
-
-// $('.main_daily-steps-span').text(activityRepo.getStepsToday(uniqueUserId, findToday()));
+$('.main_weekly-sleep-quality-span').text(sleepRepo.getUserQualityWeekAverage(uniqueUserId, findToday()));
 
 $('.main_daily-minutes-active-span').text(activityRepo.getMinutesActive(uniqueUserId, findToday(), 'minutesActive'));
 
 $('.main_daily-steps-span').text(activityRepo.getMinutesActive(uniqueUserId, findToday(), 'numSteps'));
-
 
 $('.main_weekly-steps-span').text(activityRepo.getActivityForWeek(uniqueUserId, findToday(), 'numSteps'))
 

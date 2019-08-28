@@ -1,6 +1,6 @@
 const chai = require('chai');
 const assert = require('chai').assert;
-const Sleep = require('../src/sleepClass.js')
+const Sleep = require('../src/sleepClass.js');
 
 describe('Sleep', () => {
   let sleeps, sleepData;
@@ -261,7 +261,7 @@ describe('Sleep', () => {
   it('should return a single user data', () => {
     sleepData.extractSingleUser();
     assert.equal(sleepData.singleUserData.length, 8);
-  })
+  });
 
   it('should return the average number of hours slept', () => {
     sleepData.extractSingleUser();

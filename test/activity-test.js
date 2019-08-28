@@ -1,12 +1,10 @@
 const chai = require('chai');
 const assert = require('chai').assert;
 const Activity = require('../src/activityClass.js');
-// const User = require('../src/userClass.js')
 const UserRepository = require('../src/userRepository.js');
 
 describe('Activity', () => {
   let activity, activitySamples;
-  
   beforeEach(() => {
     activitySamples = [
       {
@@ -203,53 +201,47 @@ describe('Activity', () => {
     
     userData = [
       {
-        "userID": 1,
-        "date": "2019/06/15",
+        "id": 1,
+        "name": "Luisa Hane",
+        "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+        "email": "Diana.Hayes1@hotmail.com",
         "strideLength": 4.3,
+        "dailyStepGoal": 10000,
+        "friends": [
+          16,
+          4,
+          8
+        ]
       },
       {
-        "userID": 2,
-        "date": "2019/06/15",
-        "strideLength": 4.5, 
+        "id": 2,
+        "name": "Jarvis Considine",
+        "address": "30086 Kathryn Port, Ciceroland NE 07273",
+        "email": "Dimitri.Bechtelar11@gmail.com",
+        "strideLength": 4.5,
+        "dailyStepGoal": 5000,
+        "friends": [
+          9,
+          18,
+          24,
+          19
+        ]
       },
       {
-        "userID": 3,
-        "date": "2019/06/15", 
+        "id": 3,
+        "name": "Herminia Witting",
+        "address": "85823 Bosco Fork, East Oscarstad MI 85126-5660",
+        "email": "Elwin.Tromp@yahoo.com",
         "strideLength": 4.4,
         "dailyStepGoal": 5000,
-      },
-      {
-        "userID": 3,
-        "date": "2019/06/16", 
-        "strideLength": 4.4,
-        "dailyStepGoal": 5000,
-      },
-      {
-        "userID": 3,
-        "date": "2019/06/17", 
-        "strideLength": 4.4,
-        "dailyStepGoal": 5000,
-      },
-      {
-        "userID": 3,
-        "date": "2019/06/18", 
-        "strideLength": 4.4,
-        "dailyStepGoal": 5000,
-      },
-      {
-        "userID": 3,
-        "date": "2019/06/19", 
-        "strideLength": 4.4,
-        "dailyStepGoal": 5000,
-      },
-      {
-        "userID": 3,
-        "date": "2019/06/20", 
-        "strideLength": 4.4,
-        "dailyStepGoal": 5000,
-      },
-
-    ]
+        "friends": [
+          19,
+          11,
+          42,
+          33
+        ]
+      }
+    ];
     
     userRepo = new UserRepository(userData)  
     activity = new Activity(activitySamples, userData, 3) 
@@ -257,39 +249,37 @@ describe('Activity', () => {
   
   
   it('should be a function', () => {
-    assert.isFunction(Activity)
+    assert.isFunction(Activity);
   });
 
   it('should be an instance of the Activity class', () => {
-    assert.equal(activity instanceof Activity, true)
+    assert.equal(activity instanceof Activity, true);
   });
 
   it('should return stride length', () => {
     activity.extractSingleUser();
-    assert.equal(activity.getStrideLength("2019/06/15"), 4.4)
-  })
+    assert.equal(activity.getStrideLength("2019/06/15"), 4.4);
+  });
 
   it('should return a single date', () => {
     activity.extractSingleUser();
     activity.extractSingleActivityData();
-    activity.extractSingleDay("2019/06/15")
-    assert.deepEqual(activity.oneDay, 
-    activity.activityData[2])
-  })
+    activity.extractSingleDay("2019/06/15");
+    assert.deepEqual(activity.oneDay, activity.activityData[2]);
+  });
 
   it('should return number of miles walked that day', () => { 
     activity.extractSingleUser();
     activity.extractSingleActivityData();
-    activity.extractSingleDay("2019/06/15");
-    assert.deepEqual(activity.calculateDailyMiles("2019/06/15"), 6.17)
+    assert.deepEqual(activity.calculateDailyMiles("2019/06/15"), 6.2);
   });
 
   it('should return minutes active for a given date', () => {
-    assert.equal(activity.calculateMinutesActive("2019/06/23", 3), 219)
+    assert.equal(activity.calculateMinutesActive("2019/06/23"), 219);
   });
 
   it('should return minutes active for one user', () => {
-    assert.deepEqual(activity.getMinsActive(3), [
+    assert.deepEqual(activity.getMinsActive(), [
       116, 152,
        97, 274,
       188, 129,
@@ -300,43 +290,41 @@ describe('Activity', () => {
 
   it('should return average minutes active over a week', () => {
     activity.extractSingleActivityData();
-    assert.equal(activity.calculateWeeklyActiveMins(3), 166)
+    assert.equal(activity.calculateWeeklyActiveMins(), 166);
   });
 
-
   it('should return a user\'s daily step goal', () => {
-    activity.extractSingleUser(3)
-    assert.equal(activity.determineStepGoal(), 5000)
+    activity.extractSingleUser();
+    assert.equal(activity.determineStepGoal(), 5000);
   });
 
   it('should return whether a user met their step goal', () => {
-    activity.extractSingleUser(3)
-    assert.equal(activity.compareStepsToGoal( "2019/06/15"), true)
-  })
+    activity.extractSingleUser();
+    activity.extractSingleActivityData();
+    assert.equal(activity.compareStepsToGoal( "2019/06/15"), true);
+  });
 
   it('should report if user has exceeded their step goal', () => {
-    activity.extractSingleUser(3)
+    activity.extractSingleUser();
     activity.extractSingleActivityData();
-    assert.deepEqual(activity.checkIfExceededGoal(3), [
-      '2019/06/15', '2019/06/16', '2019/06/19', '2019/06/20', '2019/06/21', '2019/06/22'])
-  })
+    assert.deepEqual(activity.checkIfExceededGoal(), [
+      '2019/06/15', '2019/06/16', '2019/06/19', '2019/06/20', '2019/06/21', '2019/06/22']);
+  });
 
   it('should return all time stair climbing record', () => {
     activity.extractSingleActivityData();
-    assert.equal(activity.checkFlightsClimbed(3), 46)
-  })
+    assert.equal(activity.checkFlightsClimbed(), 46);
+  });
 
   it('should return the average flights of stairs climbed between all users for a given date', () => {
-    assert.equal(activity.getStairsClimbedAvg("2019/06/23"), 10)
+    assert.equal(activity.getStairsClimbedAvg("2019/06/23"), 10);
   });
 
   it('should return the average number of steps walked between all users for a given date', () => {
-    assert.equal(activity.getAvgUsersSteps("2019/06/23"), 7580)
+    assert.equal(activity.getAvgSteps("2019/06/23"), 7580);
   });
 
   it('should return the average number of minutes active between all users for agiven date', () => {
-    assert.equal(activity.getAvgMinsActive("2019/06/23"), 193)
+    assert.equal(activity.getAvgMinsActive("2019/06/23"), 193);
   });
-
-
 });

@@ -1,7 +1,7 @@
 const chai = require('chai');
 const assert = require('chai').assert;
-const UserRepository = require('../src/userRepository.js')
-const User = require('../src/userClass.js')
+const UserRepository = require('../src/userRepository.js');
+const User = require('../src/userClass.js');
 
 describe('UserRepository', () => {
   let user1, user2, user3, user4, user5, userRepository;
@@ -94,7 +94,7 @@ describe('UserRepository', () => {
 
   it('should return a user', () => {
     assert.deepEqual(userRepository.users, [user1, user2, user3, user4, user5]);
-  })
+  });
 
   it('should return user data when given an id', () => {
     assert.equal(userRepository.determineUserData(1), user1);
@@ -104,4 +104,4 @@ describe('UserRepository', () => {
   it('should calculate average step goal of all users', () => {
     assert.equal(userRepository.calculateAverageStepGoals(), 6400);
   });
-})
+});

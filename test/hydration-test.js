@@ -1,6 +1,6 @@
 const chai = require('chai');
 const assert = require('chai').assert;
-const Hydration = require('../src/hydrationClass.js')
+const Hydration = require('../src/hydrationClass.js');
 
 describe('Hydration', () => {
   let day1, day2, day3, day4, day5, day6, day7, hydrationData;
@@ -70,12 +70,12 @@ describe('Hydration', () => {
 
   it('should calculate average fluid oz intake per day for the whole', () => {
     assert.equal(hydrationData.calculateAverageWaterIntake(), 55);
-  })
+  });
 
   it('should return number of fluid ounces consumed for latest day', () => {
     hydrationData.extractSingleUser();
     assert.equal(hydrationData.calculateDailyWaterIntake(), 54);
-  })
+  });
 
   it('should return number of fluid ounces consumed each day for a week', () => {
     hydrationData.extractSingleUser();    

@@ -201,3 +201,126 @@ var sleepQualityByWeek = new Chart(ctx, {
     }
   }
 });
+
+$('#user-step-count-by-week').text(activity.returnNumberOfStepsByWeek(user.id, currentDate));
+var ctx = $('#user-step-count-by-week');
+var stepsByWeek = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: returnDatesOfWeek(user.id, currentDate),
+    datasets: [{
+      label: 'steps',
+      data: hydration.returnFluidOzByWeek(user.id, currentDate),
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    legend: {
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+$('#user-mins-active-by-week').text(activity.returnActiveMinutesByWeek(user.id, currentDate));
+var ctx = $('#user-mins-active-by-week');
+var activityByWeek = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: returnDatesOfWeek(user.id, currentDate),
+    datasets: [{
+      label: 'active minutes',
+      data: hydration.returnFluidOzByWeek(user.id, currentDate),
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    legend: {
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+$('#user-stairs-climbed-by-week').text(activity.returnActiveMinutesByWeek(user.id, currentDate));
+var ctx = $('#user-stairs-climbed-by-week');
+var stairsByWeek = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: returnDatesOfWeek(user.id, currentDate),
+    datasets: [{
+      label: 'stairs',
+      data: hydration.returnFluidOzByWeek(user.id, currentDate),
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    legend: {
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});

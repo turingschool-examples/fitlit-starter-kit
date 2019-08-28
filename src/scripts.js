@@ -166,12 +166,66 @@ function returnDailyMiles() {
   return miles
 }
 
+function returnFlightsClimbed() {
+  activity.extractSingleActivityData();
+  return activity.checkFlightsClimbed()
+}
+
+function returnEveryonsAvgSteps() {
+  activity.extractSingleActivityData();
+  let singleUserActivity = activity.singleActivity;
+  let lastUserDay = singleUserActivity[singleUserActivity.length - 1]
+  let latestDay = lastUserDay.date
+  let avgSteps = activity.getEveryonesAvgSteps(latestDay);
+  return avgSteps
+}
+
+function returnEveryonsAvgMinActive() {
+  activity.extractSingleActivityData();
+  let singleUserActivity = activity.singleActivity;
+  let lastUserDay = singleUserActivity[singleUserActivity.length - 1]
+  let latestDay = lastUserDay.date
+  let avgMinActive = activity.getEveryonesAvgMinsActive(latestDay);
+  return avgMinActive
+}
+
+function returnEveryonsAvgStairsClimed() {
+  activity.extractSingleActivityData();
+  let singleUserActivity = activity.singleActivity;
+  let lastUserDay = singleUserActivity[singleUserActivity.length - 1]
+  let latestDay = lastUserDay.date
+  let avgStairsClibmed = activity.getEveryonesAvgStairsClimbed(latestDay);
+  return avgStairsClibmed
+}
+
+function returnWeeklyStepCount() {
+  activity.extractSingleActivityData();
+  return activity.calculateTotalWeeklySteps();
+}
+
+function returnWeeklyMinActive() {
+  activity.extractSingleActivityData();
+  return activity.calculateTotalWeeklyMinActive();
+}
+
+function returnWeeklyStairsClimbed() {
+  activity.extractSingleActivityData();
+  return activity.calculateTotalWeeklyFlightsClimbed();
+}
+
 
 function displayStepInfo() {
   let dailySteps = returnDailySteps();
   let stepGoal = user.dailyStepGoal;
   let minutesActive = returnMinutesActive();
   let miles = returnDailyMiles();
+  let flightsClimbed = returnFlightsClimbed()
+  let allAvgSteps = returnEveryonsAvgSteps();
+  let allAvgMinActive = returnEveryonsAvgMinActive();
+  let allAvgStairsClimbed = returnEveryonsAvgStairsClimed()
+  let totalWeeklySteps = returnWeeklyStepCount();
+  let totalWeeklyMinActive = returnWeeklyMinActive();
+  let totalWeeklyStairsClimbed = returnWeeklyStairsClimbed()
 
   dailySection.insertAdjacentHTML('beforeend', `<article>
     <h3>Steps</h3>
@@ -181,6 +235,17 @@ function displayStepInfo() {
     <h3>Activity</h3>
     <p>Minutes Active: ${minutesActive} mins</p>
     <p>Miles: ${miles}mi</p>
+
+    <h3>You vs Everyone</h3>
+    <p>Steps: ${dailySteps} / ${allAvgSteps}</p>
+    <p>Minutes Active: ${minutesActive}min / ${allAvgMinActive} min</p>
+    <p>Stairs Climbed: ${flightsClimbed} / ${allAvgStairsClimbed}</p>
+
+    <h3>Weekly Report</h3>
+    <p>Steps: ${totalWeeklySteps}</p>
+    <p>Minutes Active:  ${totalWeeklyMinActive} mins</p>
+    <p>Flights Climbed: ${totalWeeklyStairsClimbed }</p>
+
 
    </article>`)
 }

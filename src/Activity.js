@@ -12,6 +12,11 @@ class Activity {
     return [...userData].splice((-7 * week), 7);
   }
 
+  returnWeek(week) {
+    var specificUser = this.findUser()
+    return [...specificUser].splice(-7 * week, 7).map(day => day.date);
+  }
+
   returnNumStepsDay(date) {
     let specificUser = this.findUser();
     return specificUser.find(day => day.date === date).numSteps;
@@ -47,6 +52,15 @@ class Activity {
     return Math.floor(weekOfData.reduce((totalSteps, eachDay) => {
       totalSteps += eachDay.numSteps
       return totalSteps
+    }, 0) / 7)
+  }
+
+  returnAverageStairsForWeek(week) {
+    let specificUser = this.findUser();
+    let weekOfData = this.returnWeekOfData(week, specificUser);
+    return Math.floor(weekOfData.reduce((totalStairs, eachDay) => {
+      totalStairs += eachDay.flightsOfStairs
+      return totalStairs
     }, 0) / 7)
   }
 

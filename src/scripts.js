@@ -228,6 +228,9 @@ $(document).ready(function () {
   $('.average-stairs').text(`${activityRepo.returnAverage(date, 'flightsOfStairs')}`)
   $('.distance-in-miles').text(`${activity.returnMilesWalked()} Miles`);
   $('.most-active').text(`${activityRepo.returnMostActive()[0]}: ${activityRepo.returnMostActive()[1]} minutes`);
+  $('.week-review-minutes').text(`${activity.returnAverageMinutesActiveForWeek(1)} minutes active`);
+  $('.week-review-steps').text(`${activity.returnAverageStepsForWeek(1)} steps taken`);
+  $('.week-review-stairs').text(`${activity.returnAverageStairsForWeek(1)} flights of stairs`);
 
   // Friends
 

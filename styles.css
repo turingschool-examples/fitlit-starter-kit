@@ -1,18 +1,14 @@
 * {
   box-sizing: border-box;
- /* font-family: 'Livvic', sans-serif;
-font-family: 'Nunito', sans-serif;
-font-family: 'Quicksand', sans-serif;
-font-family: 'Maven Pro', sans-serif;
-font-family: 'Asap', sans-serif; */
 }
 
 html {
-   background: url("./src/images/FitLit-background-img.png") no-repeat center center fixed; 
-  -webkit-background-size: cover;
+   /* background: url("./src/images/abstract-design-diagonal-2387532.jpg") no-repeat;  */
+  background-color: black;
+  /* -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover; */
 }
 
 
@@ -52,7 +48,7 @@ article {
 
 .header__div {
   align-items: center;
-  background-color: rgba(200, 200, 200, .7);
+  /* background-color: rgba(200, 200, 200, .7); */
   height: 10%;
   justify-content: space-between;
   margin-bottom: 20px;
@@ -64,6 +60,7 @@ article {
   font-family: 'Roboto', sans-serif;
   font-size: 20px; 
   font-weight: 300; 
+  color: #ffffff
 }
 
 .header__div--h1 {
@@ -74,6 +71,7 @@ article {
   font-family: 'Roboto', sans-serif;
   font-size: 50px; 
   font-weight: 600; 
+  color: #ffffff
 }
 
 .header__div,
@@ -85,7 +83,7 @@ article {
 }
 
 .header__div--greeting {
-  background-color: rgba(200, 200, 200, .7);
+  /* background-color: rgba(200, 200, 200, .7); */
   margin: 10px 0;
   display: flex;
   flex-direction: row;
@@ -103,19 +101,19 @@ article {
 
 .top-text {
   margin-top: 0;
-  font-family: 'Nunito', sans-serif;
-  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 27px;
+  font-weight: 300;
 }
 .bottom-text {
-  font-size: 15px;
+  font-size: 20px;
   margin: 0;
 }
 
 .top-nums {
-  font-size: 45px;
-  font-family: 'Maven Pro', sans-serif;
-  margin: 0 0 7px 0;
-  
+  font-size: 60px;
+  font-family: 'Khula', sans-serif;
+  margin: 0;
 }
 
 .main__hydration {
@@ -123,7 +121,14 @@ article {
   margin: 10px 0;
   display: flex;
   flex-direction: column;
-  background-color: rgba(200, 200, 200, .7);
+  /* background-color: rgba(200, 200, 200, .7); */
+}
+
+.main__hydration__article {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .main__hydration--h3,
@@ -150,11 +155,6 @@ article {
   margin: 10px;
 }
 
-.hydration-stats {
-  display: flex;
-  flex-direction: row;
-}
-
 .hydration-stats-text {
   display: flex;
   flex-direction: column;
@@ -174,8 +174,20 @@ article {
   flex: 1 1 auto;
 }
 
+.left--side--hydration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .weeklyHydro {
   width: 69%;
+}
+
+.user-name {
+  font-size: 35px;
+  margin: 5px 0 20px 0;
+  font-family: 'Nunito', sans-serif;
 }
 
 .main__activity__article--data {
@@ -203,7 +215,7 @@ article {
 }
 
 .main__sleep {
-  background-color: rgba(200, 200, 200, .7);
+  /* background-color: rgba(200, 200, 200, .7); */
   grid-area: sleep;
   margin: 10px 0;
   display: flex;
@@ -212,7 +224,7 @@ article {
 
 
 .main__activity {
-  background-color: rgba(200, 200, 200, .7);
+  /* background-color: rgba(200, 200, 200, .7); */
   grid-area: activity;
   margin: 10px 0;
   display: flex;
@@ -220,7 +232,7 @@ article {
 }
 
 .main__trends {
-  background-color: rgba(200, 200, 200, .7);
+  /* background-color: rgba(200, 200, 200, .7); */
   grid-area: trends;
   margin: 10px 0;
   display: flex;

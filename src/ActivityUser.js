@@ -198,22 +198,6 @@ findThreeDayStepStreak(id) {
   return dates
 }
 
-// compareFriends(date, id) {
-//   let included = [...this.userData[id].friends, this.userData[id].id];
-//   console.log(included)
-//   let friends = included.map(friend => ({
-//     id: friend,
-//     name: this.userData.find(user => user.id === friend).name,
-//     steps: this.activityTestData
-//       .filter(day => day.userID === friend && day.date <= date)
-//       .slice(-6, +1)
-//       .map(user => user.numSteps)
-//       .reduce((totalSteps, dailySteps) => (totalSteps += dailySteps), 0)
-//   }));
-//   let sorted = friends.sort((a, b) => b.steps - a.steps);
-//   return friends[0];
-// }
-
 showUserFriends(date, id) {
   let included = [...this.userData[id].friends];
   let friends = included.map(friend => ({

@@ -223,4 +223,6 @@ article {
   padding: 10px;
   width: 33%;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
 }

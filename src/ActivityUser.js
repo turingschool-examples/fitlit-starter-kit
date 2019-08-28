@@ -98,8 +98,6 @@ class ActivityUser {
    return stepCount.numSteps
 }
 
-//Write test for percent walked around earth method
-
 calculatePercentOfWorldWalked(id) {
   const earthMiles = 24901
   let user = this.findActivityInfo(id)
@@ -123,7 +121,7 @@ getWeeklyStepCount(date, id) {
   return weekOfActivity.map(user => user.numSteps)
 }
 
-//From Activity Repo
+//FIND AVERAGE METHODS ARE FROM ACTIVITY REPO!
 findTotalStepAverage(date) {
   var totalSteps = this.getUsers(date).reduce((acc, user) => {
     acc += user.numSteps;
@@ -164,6 +162,28 @@ compareMinutesAverageWithUser(date, id) {
     return "You were active the exact the same amount as the daily average!"
   }
 }
+
+findTotalStairsAverage(date) {
+  var totalStairs = this.getUsers(date).reduce((acc, user) => {
+    acc += user.flightsOfStairs;
+    console.log('acc...', acc)
+    return acc
+  }, 0)
+  return Math.round(totalStairs / this.getUsers(date).length);
+}
+
+compareStairsAverageWithUser(date, id) {
+  let day = this.findActivityInfo(id).find(user => user.date === date)
+  console.log('day--->', day)
+  if(day.flightsOfStairs > this.findTotalStairsAverage(date)) {
+    return "You exceeded the daily average of stairs climbed today!"
+  } else if (day.flightsOfStairs < this.findTotalStairsAverage(date)) {
+    return "You were lower than the daily average of stairs climbed today :("
+  } else {
+    return "You climbed the exact the same amount of stairs as the daily average!"
+  }
+}
+
 
 
 

@@ -155,7 +155,7 @@ compareStepAverageWithUser(date, id) {
 findTotalMinutesAverage(date) {
   var totalMinutes = this.getUsers(date).reduce((acc, user) => {
     acc += user.minutesActive;
-    console.log('acc...', acc)
+    
     return acc
   }, 0)
   return Math.round(totalMinutes / this.getUsers(date).length);
@@ -164,7 +164,7 @@ findTotalMinutesAverage(date) {
 
 compareMinutesAverageWithUser(date, id) {
   let day = this.findActivityInfo(id).find(user => user.date === date)
-  console.log('day--->', day)
+  
   if(day.minutesActive > this.findTotalMinutesAverage(date)) {
     return "You exceeded the daily average of minutes active today!"
   } else if (day.minutesActive < this.findTotalMinutesAverage(date)) {
@@ -177,7 +177,6 @@ compareMinutesAverageWithUser(date, id) {
 findTotalStairsAverage(date) {
   var totalStairs = this.getUsers(date).reduce((acc, user) => {
     acc += user.flightsOfStairs;
-    console.log('acc...', acc)
     return acc
   }, 0)
   return Math.round(totalStairs / this.getUsers(date).length);
@@ -185,7 +184,7 @@ findTotalStairsAverage(date) {
 
 compareStairsAverageWithUser(date, id) {
   let day = this.findActivityInfo(id).find(user => user.date === date)
-  console.log('day--->', day)
+
   if(day.flightsOfStairs > this.findTotalStairsAverage(date)) {
     return "You exceeded the daily average of stairs climbed today!"
   } else if (day.flightsOfStairs < this.findTotalStairsAverage(date)) {
@@ -194,9 +193,6 @@ compareStairsAverageWithUser(date, id) {
     return "You climbed the exact the same amount of stairs as the daily average!"
   }
 }
-
-
-
 
   calculateWeeksStairsClimbed(startDate, endDate, id) {
     return this.findActivityInfo(id).filter(day => day.date >= startDate && day.date <= endDate)

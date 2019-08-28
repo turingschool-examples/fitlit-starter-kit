@@ -52,7 +52,7 @@ beforeEach(() => {
   user1 = new User(testUsers[0]);
   user2 = new User(testUsers[1]);
   user3 = new User(testUsers[2]);
-})
+});
 
 describe('UserRepository', function() {
   it.only('should be a function', function() {
@@ -63,7 +63,7 @@ describe('UserRepository', function() {
   it.only('should return average step goal amongst all users', function() {
     const userRepository = new UserRepository(testUsers);
     expect(userRepository.returnAverageStepsGoal()).to.equal(6667);
-  })
+  });
 
   it.only('should store users', function() {
     const userRepository = new UserRepository(testUsers);
@@ -74,6 +74,11 @@ describe('UserRepository', function() {
   it.only('should find a user', function() {
     const userRepository = new UserRepository(testUsers, 1);
     expect(userRepository.findUserData(1)).to.deep.equal(testUsers[0])
+  });
+
+  it.only('should compare average step goals to user average', function() {
+    const userRepository = new UserRepository(testUsers, 1);
+    expect(userRepository.getUserGoal(1)).to.equal(10000)
   })
 
 });

@@ -10,7 +10,7 @@ class ActivityRepo {
     return Number((amountPerDay.reduce((total, day) => {
       total += day[property];
       return total;
-    }, 0) / amountPerDay.length).toFixed(2));
+    }, 0) / amountPerDay.length).toFixed(0));
   }
 
   returnMostActive() {

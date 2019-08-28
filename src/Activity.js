@@ -9,7 +9,7 @@ class Activity {
   }
 
   returnWeekOfData(week, userData) {
-    return userData.splice((-7 * week), 7);
+    return [...userData].splice((-7 * week), 7);
   }
 
   returnNumStepsDay(date) {
@@ -24,7 +24,12 @@ class Activity {
 
   returnMinutesActive(date) {
     let specificUser = this.findUser();
-    return specificUser.find(day => day.date === date).minutesActive
+    return specificUser.find(day => day.date === date).minutesActive;
+  }
+
+  returnFlightsOfStairs(date) {
+    let specificUser = this.findUser();
+    return specificUser.find(day => day.date === date).flightsOfStairs;
   }
 
   returnAverageMinutesActiveForWeek(week) {
@@ -64,7 +69,7 @@ class Activity {
 
   returnFriendsStepCount() {
     let friends = this.user.friends.map(friend => this.activityData.filter(el => el.userID === friend));
-    let friendDataForDates = friends.map(friend => friend.splice(-7));
+    let friendDataForDates = friends.map(friend => [...friend].splice(-7));
     let totalStepsPerFriend = friendDataForDates.map(friend => friend.reduce((totalSteps, day) => {
       totalSteps += day.numSteps
       return totalSteps

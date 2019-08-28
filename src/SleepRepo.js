@@ -20,7 +20,7 @@ class SleepRepo {
       return arr;
     }, []);
 
-    let avgSleepQualityPerUser = dataByUser.map(user => user.splice(-7 * week, 7)).map(user => user.reduce((totalQuality, day) => {
+    let avgSleepQualityPerUser = dataByUser.map(user => [...user].splice(-7 * week, 7)).map(user => user.reduce((totalQuality, day) => {
       totalQuality += day.sleepQuality;
       return totalQuality;
     }, 0)).map(user => Number((user / 7).toFixed(2)));
@@ -50,7 +50,7 @@ class SleepRepo {
       return arr;
     }, []);
 
-    let avgSleepHoursPerUser = dataByUser.map(user => user.splice(-7 * week, 7)).map(user => user.reduce((totalHours, day) => {
+    let avgSleepHoursPerUser = dataByUser.map(user => [...user].splice(-7 * week, 7)).map(user => user.reduce((totalHours, day) => {
       totalHours += day.hoursSlept;
       return totalHours;
     }, 0));

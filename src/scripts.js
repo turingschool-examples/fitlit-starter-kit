@@ -1,7 +1,6 @@
 //Generate random user 
 const uniqueUserIndex = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
 
-
 //Repo variables
 const userRepo = new UserRepo(userData);
 const sleepRepo = new SleepRepo(sleepData);
@@ -22,6 +21,7 @@ const options = {
   month: 'long',
   day: 'numeric'
 };
+
 const formattedDate = dateObject.toLocaleString('en', options)
 
 function dropYear(dates) {
@@ -106,30 +106,39 @@ const weeklySleepChart = new Chart(document.getElementById('sleep-week').getCont
       data: sleep.returnWeekOfSleepHours(1),
       label: "Sleep Hours",
       borderColor: "rgba(92, 117, 218, 0.2)",
-      fill: false
+      fill: false,
+      lineTension: 0.1
     },
     {
       data: Array(7).fill(sleep.returnAvgSleepHours()),
       label: "Average Hours of Sleep",
       borderColor: "rgba(92, 117, 218, 0.2)",
-      fill: false
+      fill: false,
+      borderDash: [10, 5]
     },
     {
       data: sleep.returnWeekOfSleepQuality(1),
       label: "Quality of Sleep",
       borderColor: "rgba(242, 188, 51, 0.2)",
-      fill: false
+      fill: false,
+      lineTension: 0.1
     },
     {
       data: Array(7).fill(sleep.returnAvgSleepQuality()),
       label: "Average Quality of Sleep",
       borderColor: "rgba(242, 188, 51, 0.2)",
-      fill: false
+      fill: false,
+      borderDash: [10, 5]
     }
     ]
 
   },
   options: {
+    elements: {
+      point: {
+        radius: 0
+      }
+    },
     legend: {
       display: false,
     },
@@ -141,6 +150,20 @@ const weeklySleepChart = new Chart(document.getElementById('sleep-week').getCont
         scaleLabel: {
           display: true,
           labelString: 'hours'
+        },
+
+      }, {
+        id: 'Quality of Sleep',
+        type: 'linear',
+        position: 'right',
+        ticks: {
+          beginAtZero: true,
+          min: 0,
+          max: 10
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'quality'
         }
       }]
     }
@@ -153,13 +176,8 @@ $('.longest-sleepers').text(`${findUserName(sleepRepo.returnWeeklyLongestSleeper
 
 var bar = new ProgressBar.Circle('.number-of-steps-day', {
   color: '#aaa',
-  // This has to be the same size as the maximum width to
-  // prevent clipping
   svgStyle: {
     display: 'block',
-
-    // Important: make sure that your container has same
-    // aspect ratio as the SVG canvas. See SVG canvas sizes above.
     width: '100%'
   },
   strokeWidth: 5,
@@ -177,7 +195,7 @@ var bar = new ProgressBar.Circle('.number-of-steps-day', {
     color: '#f2bc33',
     width: 5
   },
-  // Set default step function for all animate calls
+
   step(state, circle) {
     circle.path.setAttribute('stroke', state.color);
     circle.path.setAttribute('stroke-width', state.width);
@@ -193,16 +211,16 @@ var bar = new ProgressBar.Circle('.number-of-steps-day', {
 });
 
 let percentSteps = activity.returnNumStepsDay(date) / user.dailyStepGoal;
-
 bar.animate(percentSteps > 1 ? percentSteps = 1 : percentSteps); // Number from 0.0 to 1.0
 
-
-$('.number-of-steps-goal').text(`Daily Step Goal: ${user.dailyStepGoal}`);
-$('.avg-number-of-steps-goal').text(`Average User Step Goal: ${userRepo.returnAverageStepGoal()}`);
+$('.number-of-steps-goal').text(`Step Goal: ${user.dailyStepGoal}`);
+$('.avg-number-of-steps-goal').text(`Average Step Goal: ${userRepo.returnAverageStepGoal()}`);
 $('.number-of-minutes-active-day').text(`${activity.returnMinutesActive(date)}`);
 $('.average-minutes-active').text(`${activityRepo.returnAverage(date, 'minutesActive')}`)
 $('.distance').text(`${activity.returnNumStepsDay(date)}`);
 $('.average-distance').text(`${activityRepo.returnAverage(date, 'numSteps')}`)
+$('.stairs').text(`${activity.returnFlightsOfStairs(date)}`);
+$('.average-stairs').text(`${activityRepo.returnAverage(date, 'flightsOfStairs')}`)
 $('.distance-in-miles').text(`${activity.returnMilesWalked()} Miles`);
 $('.most-active').text(`${activityRepo.returnMostActive()[0]}: ${activityRepo.returnMostActive()[1]} minutes`);
 
@@ -215,7 +233,8 @@ function insertFriendSteps() {
   userIDs.forEach(userID => {
     let userName = findUserName(Number(userID));
     list += `<li class="friends_li">
-             <p class="friends--steps"> ${userName}: ${activity.returnFriendsStepCount()[0][userID]} steps`;
+             <p class="friends--steps"><b>${userName}</b>:</p>
+             <p>${activity.returnFriendsStepCount()[0][userID]} steps</p>`;
   });
   list += `</ul>`;
   return list;

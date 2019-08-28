@@ -9,12 +9,12 @@ class Sleep {
   }
 
   returnWeekOfData(week, userData) {
-    return userData.splice((-7 * week), 7);
+    return [...userData].splice((-7 * week), 7);
   }
 
   returnWeek(week) {
     var specificUser = this.findUser()
-    return specificUser.splice(-7 * week, 7).map(day => day.date);
+    return [...specificUser].splice(-7 * week, 7).map(day => day.date);
   }
 
   returnAvgSleepHours() {

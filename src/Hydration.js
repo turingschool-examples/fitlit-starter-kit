@@ -10,7 +10,7 @@ class Hydration {
 
   returnWeek() {
     var specificUser = this.findUser()
-    return specificUser.splice(-7).map(day => day.date);
+    return [...specificUser].splice(-7).map(day => day.date);
   }
 
   returnAverageFluidOunces() {

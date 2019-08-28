@@ -1,6 +1,3 @@
-const UserRepository = require('../src/users-repository');
-const userData = require('../data/test-data');
-
 class Activity {
   constructor(data, id) {
     this.data = data;
@@ -9,7 +6,7 @@ class Activity {
 
   calculateMilesWalked(date, id) {
     let userRepo = new UserRepository(userData);
-    
+
     let stride = userRepo.users.find(user => user.id === id).strideLength;
 
     let numberSteps = this.data.filter(user => user.date === date).find(user => user.userID === id).numSteps;
@@ -19,7 +16,7 @@ class Activity {
 
   calculateMinActive(date, id) {
     let userActivity = this.data.filter(user => user.userID === id).find(day => day.date === date).minutesActive;
- 
+
   return userActivity
   }
 
@@ -43,7 +40,7 @@ class Activity {
     let user = userRepo.users.find(user => user.id === id);
 
     let goal = user.dailyStepGoal
-    
+
     let userSteps = this.data.filter(user => user.userID === id).find(steps => steps.date === date).numSteps;
 
     if (userSteps > goal) {
@@ -73,7 +70,7 @@ class Activity {
      userStairs.sort((a, b) => {
      return b.flightsOfStairs - a.flightsOfStairs
     });
-    
+
     return userStairs[0];
   };
 
@@ -83,9 +80,11 @@ class Activity {
     let day = userActivity.find(day => day.date === date);
 
     let stepsAMin = (day.numSteps / day.minutesActive).toFixed(1)
-    
+
     return parseFloat(stepsAMin)
   }
 }
 
-module.exports = Activity;
+if (typeof module !== "undefined") {
+  module.exports = Activity;
+}

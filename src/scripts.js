@@ -124,7 +124,7 @@ var hydrationByWeek = new Chart(ctx, {
 
 // $('#user-sleep-by-week').text(sleep.returnSleepByWeek(user.id, currentDate));
 var ctx = $('#user-sleep-by-week');
-var sleepByWeek = new Chart(ctx, {
+var sleepQualityHrsByWeek = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: returnDatesOfWeek(user.id, currentDate),
@@ -150,6 +150,25 @@ var sleepByWeek = new Chart(ctx, {
         'rgba(192, 192, 192, 1)'
       ],
       borderWidth: 1
+    },
+    {
+      label: 'quality score',
+      data: sleep.returnSleepQualityByWeek(user.id, currentDate),
+      backgroundColor: [
+        'rgb(221, 160, 221, 0.2)',
+       
+      ],
+      borderColor: [
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(221, 160, 221, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(192, 192, 192, 1)',
+        'rgba(255, 99, 132, 1)',
+      ],
+      borderWidth: 1,
+      type: 'line',
     }]
   },
   options: {
@@ -218,13 +237,7 @@ var stepsByWeek = new Chart(ctx, {
       label: 'steps',
       data: activity.returnNumberOfStepsByWeek(user.id, currentDate),
       backgroundColor: [
-        'rgb(221, 160, 221, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(192, 192, 192, 0.2)'
+        'rgba(221, 160, 221, 0.2)',
       ],
       borderColor: [
         'rgba(221, 160, 221, 1)',
@@ -236,7 +249,8 @@ var stepsByWeek = new Chart(ctx, {
         'rgba(192, 192, 192, 1)'
       ],
       borderWidth: 1
-    }]
+    },
+  ]
   },
   options: {
     legend: {
@@ -262,12 +276,6 @@ var activityByWeek = new Chart(ctx, {
       data: activity.returnActiveMinutesByWeek(user.id, currentDate),
       backgroundColor: [
         'rgb(221, 160, 221, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(192, 192, 192, 0.2)'
       ],
       borderColor: [
         'rgba(221, 160, 221, 1)',
@@ -301,16 +309,10 @@ var stairsByWeek = new Chart(ctx, {
   data: {
     labels: returnDatesOfWeek(user.id, currentDate),
     datasets: [{
-      label: 'stairs',
+      label: 'stairs climbed',
       data: activity.returnStairsClimbedByWeek(user.id, currentDate),
       backgroundColor: [
         'rgb(221, 160, 221, 0.2)',
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(192, 192, 192, 0.2)'
       ],
       borderColor: [
         'rgba(221, 160, 221, 1)',

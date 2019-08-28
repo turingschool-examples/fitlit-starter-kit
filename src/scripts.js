@@ -79,7 +79,6 @@ function returnDatesOfWeek(userId, date) {
 }
 
 Chart.defaults.global.defaultFontColor = 'white';
-// $('#user-water-by-week').text(hydration.returnFluidOzByWeek(user.id, currentDate));
 var ctx = $('#user-water-by-week');
 var hydrationByWeek = new Chart(ctx, {
   type: 'bar',
@@ -122,7 +121,6 @@ var hydrationByWeek = new Chart(ctx, {
   }
 });
 
-// $('#user-sleep-by-week').text(sleep.returnSleepByWeek(user.id, currentDate));
 var ctx = $('#user-sleep-by-week');
 var sleepQualityHrsByWeek = new Chart(ctx, {
   type: 'bar',
@@ -184,7 +182,6 @@ var sleepQualityHrsByWeek = new Chart(ctx, {
   }
 });
 
-// $('#user-sleep-quality-by-week').text(sleep.returnSleepQualityByWeek(user.id, currentDate));
 var ctx = $('#user-sleep-quality-by-week');
 var sleepQualityByWeek = new Chart(ctx, {
   type: 'bar',
@@ -227,7 +224,6 @@ var sleepQualityByWeek = new Chart(ctx, {
   }
 });
 
-// $('#user-step-count-by-week').text(activity.returnNumberOfStepsByWeek(user.id, currentDate));
 var ctx = $('#user-step-count-by-week');
 var stepsByWeek = new Chart(ctx, {
   type: 'line',
@@ -265,7 +261,6 @@ var stepsByWeek = new Chart(ctx, {
   }
 });
 
-// $('#user-mins-active-by-week').text(activity.returnActiveMinutesByWeek(user.id, currentDate));
 var ctx = $('#user-mins-active-by-week');
 var activityByWeek = new Chart(ctx, {
   type: 'line',
@@ -302,7 +297,6 @@ var activityByWeek = new Chart(ctx, {
   }
 });
 
-// $('#user-stairs-climbed-by-week').text(activity.returnActiveMinutesByWeek(user.id, currentDate));
 var ctx = $('#user-stairs-climbed-by-week');
 var stairsByWeek = new Chart(ctx, {
   type: 'line',

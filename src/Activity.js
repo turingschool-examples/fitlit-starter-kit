@@ -60,8 +60,9 @@ class Activity {
   }
 
   returnIncreasedStepDays(date) {
-    let index = this.userData.findIndex(day => day.date === date);
-    let currentData = this.data.slice(0, index + 1);
+    let newDate = this.changeTimeFormat(date)
+    let index = this.userData.findIndex(day => day.date === newDate);
+    let currentData = this.userData.slice(0, index + 1);
     return currentData.reduce((acc, day, i, array) => {
       if (i !== 0 && i !== array.length - 1) {
         if (day.numSteps > array[i - 1].numSteps && day.numSteps < array[i + 1].numSteps) {

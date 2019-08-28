@@ -209,15 +209,37 @@ var myChart = new Chart(activityMins, {
   }
 });
 
+const friends = user.friends.map(friend => {
+  let newUser = new User(repo.getUserData(friend))
+  let newFriend = new Activity(activeRepo.getUserData(friend), newUser).getWeek(sampleDate).reduce((newObj, day) => {
+    if (!newObj['id']) {
+      newObj['id'] = day.userID;
+      newObj['name'] = newUser.name;
+      newObj['steps'] = 0;
+    } newObj['steps'] += day.numSteps
+    return newObj
+  }, {})
+  return newFriend
+})
+
+const compareFriendsSteps = () => {
+  friends.push({ id: user.id, name: user.name, steps: (activePerson.getWeeklyAvg(sampleDate, 'numSteps') * 7) });
+  friends.sort((personA, personB) => {
+    return personB.steps - personA.steps
+  })
+}
+
+friend = compareFriendsSteps();
+
 const stepChallange = $('#step--challange')
 
 var myChart = new Chart(stepChallange, {
   type: 'horizontalBar',
   data: {
-    // labels: friends,
+    labels: friends.map(friend => friend.name),
     datasets: [{
       label: 'steps',
-      data: activePerson.getWeek(sampleDate).map(day => day.minutesActive),
+      data: friends.map(friend => friend.steps),
       // borderColor: [
       //   'rgba(255, 99, 132, 1)'
       // ],
@@ -303,32 +325,4 @@ function getRandomNumber() {
 function insertWeeklyStats(obj, unit) {
   return `<p class="inserted--p"> ${milisecondsToDate(obj.date)}: ${obj.numOunces} ${unit} </p>`
 }
-
-
-      
-
-const friends = user.friends.map(friend => {
-  let newUser = new User(repo.getUserData(friend))
-  let newFriend = new Activity(activeRepo.getUserData(friend), newUser).getWeek(sampleDate).reduce((newObj, day)=> {
-    if (!newObj['id']) {
-      newObj['id'] = day.userID;
-      newObj['name'] = newUser.name;
-      newObj['steps'] = 0;
-    } newObj['steps'] += day.numSteps
-    return newObj
-  }, {})
-  return newFriend
-})
-
-const compareFriendsSteps = () => {
-  friends.push({id: user.id, name: user.name, steps: (activePerson.getWeeklyAvg(sampleDate, 'numSteps')*7)});
-  friends.sort((personA, personB) => {
-    return personB.steps - personA.steps
-  })
-
-}
-
-compareFriendsSteps();
-
-
 

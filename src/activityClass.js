@@ -1,4 +1,3 @@
-
 class Activity {
   constructor(activityData, userData, userID) {
     this.userID = userID;
@@ -7,12 +6,12 @@ class Activity {
     this.singleUserData = [];
     this.singleActivity = [];
     this.oneDay = {};
-  }
+  };
 
-  extractSingleUser(id) {
+  extractSingleUser() {
     let singleUser = this.userData.filter( (user) => {
       if (this.userID === user.id) {
-        return user
+        return user;
       };
     });
     this.singleUserData = singleUser;
@@ -21,7 +20,7 @@ class Activity {
   extractSingleActivityData() {
     let singleUser = this.activityData.filter( (user) => {
       if (this.userID === user.userID) {
-        return user
+        return user;
       };
     });
     this.singleActivity = singleUser;
@@ -30,113 +29,102 @@ class Activity {
   extractSingleDay(date) {
     let singleDay = this.singleActivity.find( day => {
       if (day.date === date) {
-        return day
+        return day;
       }
     })
     this.oneDay = singleDay;
   };
 
-
-  //**DELETE** ??// 
-  // getStrideLength(day) {
-  //   let stride = this.singleUserData[0].strideLength
-  //   console.log(stride)
-  //   return stride
-  // }
+  getStrideLength(day) {
+    let stride = this.singleUserData[0].strideLength;
+    return stride;
+  };
 
   calculateDailyMiles(day) {
-    this.extractSingleDay(day)
-    let stride = this.singleUserData[0].strideLength
+    this.extractSingleDay(day);
+    let stride = this.singleUserData[0].strideLength;
     let stepsPerMi = 5280 / stride;
     let miles = this.oneDay.numSteps / stepsPerMi;
-    return +(miles.toFixed(2))
+    return +(miles.toFixed(1));
   };
 
-  calculateMinutesActive(day, id) {
-    this.extractSingleActivityData()
+  calculateMinutesActive(day) {
+    this.extractSingleActivityData();
    let user = this.singleActivity.filter( user => {
-     if (user.userID === id && user.date === day) {
-       return user.minutesActive
+     if (user.date === day) {
+       return user.minutesActive;
      };
     });
-    return user[0].minutesActive
+    return user[0].minutesActive;
   };
 
-
-  getMinsActive(id) {
+  getMinsActive() {
     let singleUserMins = this.activityData.filter( (element) => {
-      if (id === element.userID) {
-        return element.minutesActive
+      if (this.userID === element.userID) {
+        return element.minutesActive;
       }
     });
     let activeMins = singleUserMins.map( element => {
-      return element.minutesActive
+      return element.minutesActive;
     })
-    return activeMins
+    return activeMins;
   };
   
-  calculateWeeklyActiveMins(id) {
+  calculateWeeklyActiveMins() {
     let allActivity = this.singleActivity.slice(-7);
-    let totalMins = allActivity.reduce( (acc, minutes) => {
+    let totalMins = allActivity.reduce((acc, minutes) => {
       acc += minutes.minutesActive;
-      return acc
+      return acc;
     }, 0)
     let weeklyAvg = +(totalMins / 7).toFixed()
-    return weeklyAvg
+    return weeklyAvg;
   };
 
   determineStepGoal() {
-   let info = this.singleUserData.find((element) => {
-     if (element.userID === this.userID) {
-       return element.dailyStepGoal
-     }
-     return info
-   })
-   return info.dailyStepGoal
+    return this.singleUserData[0].dailyStepGoal
   };
 
   compareStepsToGoal(date) {
     let goal = this.determineStepGoal();
-    let userInfo = this.singleUserData.find( element => {
-      if (element.userID === this.userID && element.date === date) {
-        return element
+    let user = this.singleActivity.find(day => {
+      if (day.date === date) {
+        return day;
       }
     }); 
-    let comparison = userInfo.dailyStepGoal >= goal ? true : false;
-    return comparison
-  }
+    let comparison = user.numSteps >= goal ? true : false;
+    return comparison;
+  };
 
-  checkIfExceededGoal(id) {
-    let goal = this.determineStepGoal(id);
+  checkIfExceededGoal() {
+    let goal = this.determineStepGoal();
     let userSteps = this.singleActivity.filter( day => {
-      return day.numSteps >= goal
+      return day.numSteps >= goal;
     });
     let dates = userSteps.map( day => {
-      return day.date
+      return day.date;
     })
-    return dates
+    return dates;
   };
 
   checkFlightsClimbed() {
-    let stairs = this.singleActivity.map( element => {
-      return element.flightsOfStairs
+    let stairs = this.singleActivity.map( user => {
+      return user.flightsOfStairs;
     });
-    return Math.max(...stairs)
+    return Math.max(...stairs);
   };
 
   getStairsClimbedAvg(date) {
-    let day = this.activityData.filter( element => {
-      return element.date === date
-    })
+    let day = this.activityData.filter( user => {
+      return user.date === date;
+    });
     let stairs = day.reduce( (acc, climbed) => {
-
-      acc += climbed.flightsOfStairs
-      return acc
-    }, 0)
-    return stairs / day.length
+      acc += climbed.flightsOfStairs;
+      return acc;
+    }, 0);
+    return stairs / day.length;
   };
 
-  getEveryonesAvgSteps(date) {
+  getAvgSteps(date) {
     let everyonesLastDayInfo = this.activityData.filter( user => {
       return user.date === date
     });
@@ -144,47 +132,61 @@ class Activity {
       return this.userID !== user.userId;
     });
     let steps = allUsers.reduce( (acc, walked) => {
-      acc += walked.numSteps
-      return acc
+      acc += walked.numSteps;
+      return acc;
     }, 0);
     return +(steps / allUsers.length).toFixed();
   };
 
   getAvgMinsActive(date) {
     let day = this.activityData.filter( element => {
-      return element.date === date
-    })
+      return element.date === date;
+    });
     let activeMins = day.reduce( (acc, active) => {
-      acc += active.minutesActive
-      return acc
+      acc += active.minutesActive;
+      return acc;
     }, 0)
-    return activeMins / day.length
-  }
+    return activeMins / day.length;
+  };
   
+  getEveryonesAvgSteps(date) {
+    let everyonesLastDayInfo = this.activityData.filter( user => {
+      return user.date === date;
+    });
+    let allUsers = everyonesLastDayInfo.filter(user => {
+      return this.userID !== user.userId;
+    });
+    let totalSteps = allUsers.reduce( (acc, walked) => {
+      acc += walked.numSteps;
+      return acc;
+    }, 0);
+    return +(totalSteps / allUsers.length).toFixed();
+  };
+
   getEveryonesAvgMinsActive(date) {
     let everyonesLastDayInfo = this.activityData.filter( user => {
-      return user.date === date
+      return user.date === date;
     });
     let allUsers = everyonesLastDayInfo.filter(user => {
       return this.userID !== user.userId;
     });
     let minActive = allUsers.reduce( (acc, walked) => {
-      acc += walked.minutesActive
-      return acc
+      acc += walked.minutesActive;
+      return acc;
     }, 0);
     return +(minActive / allUsers.length).toFixed();
   };
 
   getEveryonesAvgStairsClimbed(date) {
     let everyonesLastDayInfo = this.activityData.filter( user => {
-      return user.date === date
+      return user.date === date;
     });
     let allUsers = everyonesLastDayInfo.filter(user => {
       return this.userID !== user.userId;
     });
     let stairsClimbed = allUsers.reduce( (acc, walked) => {
-      acc += walked.flightsOfStairs
-      return acc
+      acc += walked.flightsOfStairs;
+      return acc;
     }, 0);
     return +(stairsClimbed / allUsers.length).toFixed();
   };
@@ -193,33 +195,29 @@ class Activity {
     let allActivity = this.singleActivity.slice(-7);
     let totalSteps = allActivity.reduce( (acc, steps) => {
       acc += steps.numSteps;
-      return acc
+      return acc;
     }, 0)
-    return totalSteps
-  }
+    return totalSteps;
+  };
 
   calculateTotalWeeklyMinActive() {
     let allActivity = this.singleActivity.slice(-7);
     let totalMinActive = allActivity.reduce( (acc, minActive) => {
       acc += minActive.minutesActive;
-      return acc
+      return acc;
     }, 0)
-    return totalMinActive
-  }
+    return totalMinActive;
+  };
 
   calculateTotalWeeklyFlightsClimbed() {
     let allActivity = this.singleActivity.slice(-7);
     let totalFlightsClimbed = allActivity.reduce( (acc, flights) => {
       acc += flights.numSteps;
-      return acc
+      return acc;
     }, 0)
-    console.log(totalFlightsClimbed)
-    return totalFlightsClimbed
-  }
-
-
+    return totalFlightsClimbed;
+  };
 }
-
 
 if (typeof module !== 'undefined') {
   module.exports = Activity;

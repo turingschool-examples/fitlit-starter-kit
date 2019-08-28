@@ -5,6 +5,8 @@ const mockSleep = require('../mock-data/mock-sleep');
 const mockSleepUser1 = require('../mock-data/mock-sleep-user1')[0];
 const mockSleepUserEachDayGivenWeek = require('../mock-data/mock-sleep-user1')[1];
 const mockQualitySleepUserEachDayGivenWeek = require('../mock-data/mock-sleep-user1')[2];
+const mockData = require('../mock-data/mock-users');
+
 
 
 
@@ -14,7 +16,7 @@ let sleep;
 describe('Sleep', () => {
 
   beforeEach( () => {
-    sleep = new Sleep(mockSleep, 1);
+    sleep = new Sleep(mockSleep, 1, mockData);
     sleep.findCurrentUserData();
   });
 
@@ -83,19 +85,14 @@ describe('Sleep', () => {
   });
 
   describe('findAllUsersOverThreeSleepQualityForWeek', () => {
-    it.only('should be able to find all user/s who average a sleep quality greater than 3 for a given week', () => {
-      expect(sleep.findAllUsersOverThreeSleepQualityForWeek("2019/06/15", "2019/06/21")).to.eql([2, 3]);
+    it('should be able to find all user/s who average a sleep quality greater than 3 for a given week', () => {
+      expect(sleep.findAllUsersOverThreeSleepQualityForWeek("2019/06/15", "2019/06/21")).to.eql([ 'Jarvis Considine', 'Herminia Witting' ]);
     });
   });
 
   describe('findUsersSleptMostHoursBasedOnDate', () => {
     it('should be able to find the user/s who slept the most number of hours based on a date', () => {
-      expect(sleep.findUsersSleptMostHoursBasedOnDate("2019/06/16")).to.eql({
-        "userID": 3,
-        "date": "2019/06/16",
-        "hoursSlept": 10.7,
-        "sleepQuality": 3.4
-      });
+      expect(sleep.findUsersSleptMostHoursBasedOnDate("2019/06/16")).to.equal('Herminia Witting');
     });
   });
 

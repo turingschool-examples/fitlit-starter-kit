@@ -11,9 +11,9 @@ $(document).ready(() => {
   hydration.findCurrentUserData();
   const activity = new Activity(activityData, idRandom, userData);
 //   const findTrends = activity.findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers()
-  const sleep = new Sleep(sleepData, idRandom);
+  const sleep = new Sleep(sleepData, idRandom, userData);
   sleep.findCurrentUserData();
-//   activity.findCurrentUserData();
+  activity.findCurrentUserData();
 
   
 
@@ -41,6 +41,21 @@ $(document).ready(() => {
   $('.most-recent-stairs').text(activity.findActivityForMostRecentDay(todayString, "flightsOfStairs"));
   $('.all-users-avg-most-recent-stairs').text(activity.findAverageOfAnyActivityByDateForAllUsers(todayString, "flightsOfStairs"))
   $('.most-recent-miles').text(activity.findMilesWalkedForSpecificDayOfUser(todayString));
+
+  $('.default-display').text(displayThisWeeksSleepOrQuality(sleep, 'hoursSlept'));
+  $('.default-display').text(displayThisWeeksSleepOrQuality(sleep, 'sleepQuality'));
+  $(".average-hours-slept").text(sleep.findUserAverageHoursSleptEachDayById(todayString));
+  $(".average-sleep-quality-per-day").text(sleep.findUserAverageSleepQualityPerDay(todayString));
+  $(".hours-slept-date").text(sleep.findHoursSleptByDate(todayString));
+  $(".quality-slept-date").text(sleep.findSleepQualityByDate(todayString));
+  $(".sleep-or-quality-each-day-week").text(sleep.findSleepHoursOrQualityEachDayOverWeekForAUser(todayString));
+  $(".average-quality-all-users").text(sleep.fetchAverageQualityOfSleepAllUsers(todayString));
+  $(".most-hours-slept-date").text(sleep.findUsersSleptMostHoursBasedOnDate(todayString));
+  $(".over-three-sleep-quality").text(sleep.findAllUsersOverThreeSleepQualityForWeek(todayString, todayString));
+
+
+ 
+  
 
 
 
@@ -103,12 +118,28 @@ const displayThisWeeksHydration = (hydration) => {
     weekArray.forEach((day) => {
         $('.hydration-week-display').append(`<li> On ${day.date} you drank ${day.numOunces} oz of water </li>`)
     })
+}
+
+const displayThisWeeksSleepOrQuality = (sleep, property) => {
+    let endDate = dateTodayString();
+    let startDate = startTodayString();
+    let weekArray = sleep.findSleepHoursOrQualityEachDayOverWeekForAUser(startDate, endDate, property);
+    
+    weekArray.forEach((day) => {
+        if(property === 'hoursSlept') {
+            $('.sleep-week-display').append(`<li> On ${day.date} you slept ${day[property]} hours. </li>`)
+        }
+        else {
+            $('.sleep-week-display').append(`<li> On ${day.date} your sleep quality was ${day[property]} . </li>`)
+        }
+    })
     
 }
+
+
 
 const displayLatestWeeksStats = (activity) => {
     let endDate = dateTodayString();
     let startDate = startTodayString();
 }
-
 

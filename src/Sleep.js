@@ -1,7 +1,9 @@
+
 class Sleep {
-  constructor(allSleepData, id) {
+  constructor(allSleepData, id, allUsers) {
     this.allSleepData = allSleepData;
     this.currentUserId = id;
+    this.allUsers = allUsers
     this.currentUserData;
   }
 
@@ -54,7 +56,9 @@ class Sleep {
       answer.push(acc)
       return {};
     }, {})
+    console.log(answer)
     return answer;
+    
   }
 
   fetchAverageQualityOfSleepAllUsers() {
@@ -68,9 +72,13 @@ class Sleep {
 
   findUsersSleptMostHoursBasedOnDate(dateString) {
     var dateArray = this.allSleepData.filter(element => element.date === dateString);
-    return dateArray.sort((a,b) => {
+    let userObject = dateArray.sort((a, b) => {
+
       return b.hoursSlept - a.hoursSlept;
     }).shift()
+    var person = this.allUsers.find((user) => user.id === userObject.userID);
+    var rightPerson = person.name
+    return rightPerson
   }
 
   findAllUsersOverThreeSleepQualityForWeek(startDate, endDate) {
@@ -97,7 +105,16 @@ class Sleep {
         namesID.push(id)
       }
     }) 
-    return namesID
+    var groupOverThree = namesID.map((num) => {
+     return this.allUsers.find((user) => {
+      if(num === user.id) {
+        return user
+      }
+    }).name
+  });
+
+    return groupOverThree
+  
   }
 }
 

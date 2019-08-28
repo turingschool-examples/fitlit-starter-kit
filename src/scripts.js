@@ -79,37 +79,249 @@ function returnDatesOfWeek(userId, date) {
 }
 
 Chart.defaults.global.defaultFontColor = 'white';
-$('#user-water-by-week').text(hydration.returnFluidOzByWeek(user.id, currentDate));
 var ctx = $('#user-water-by-week');
 var hydrationByWeek = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: returnDatesOfWeek(user.id, currentDate),
     datasets: [{
-      label: 'Water By Week',
+      label: 'ounces',
       data: hydration.returnFluidOzByWeek(user.id, currentDate),
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
         'rgba(255, 206, 86, 0.2)',
         'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
+        'rgb(221, 160, 221, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(192, 192, 192, 0.2)'
       ],
       borderColor: [
         'rgba(255, 99, 132, 1)',
         'rgba(54, 162, 235, 1)',
         'rgba(255, 206, 86, 1)',
         'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
+        'rgba(221, 160, 221, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(192, 192, 192, 1)'
       ],
       borderWidth: 1
     }]
   },
   options: {
     legend: {
-      display: false
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+var ctx = $('#user-sleep-by-week');
+var sleepQualityHrsByWeek = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: returnDatesOfWeek(user.id, currentDate),
+    datasets: [{
+      label: 'hours',
+      data: sleep.returnSleepByWeek(user.id, currentDate),
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgb(221, 160, 221, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(192, 192, 192, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(221, 160, 221, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(192, 192, 192, 1)'
+      ],
+      borderWidth: 1
+    },
+    {
+      label: 'quality score',
+      data: sleep.returnSleepQualityByWeek(user.id, currentDate),
+      backgroundColor: [
+        'rgb(221, 160, 221, 0.2)',
+       
+      ],
+      borderColor: [
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(221, 160, 221, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(192, 192, 192, 1)',
+        'rgba(255, 99, 132, 1)',
+      ],
+      borderWidth: 1,
+      type: 'line',
+    }]
+  },
+  options: {
+    legend: {
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+var ctx = $('#user-sleep-quality-by-week');
+var sleepQualityByWeek = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: returnDatesOfWeek(user.id, currentDate),
+    datasets: [{
+      label: 'quality score',
+      data: sleep.returnSleepQualityByWeek(user.id, currentDate),
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgb(221, 160, 221, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(192, 192, 192, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(221, 160, 221, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(192, 192, 192, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    legend: {
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+var ctx = $('#user-step-count-by-week');
+var stepsByWeek = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: returnDatesOfWeek(user.id, currentDate),
+    datasets: [{
+      label: 'steps',
+      data: activity.returnNumberOfStepsByWeek(user.id, currentDate),
+      backgroundColor: [
+        'rgba(221, 160, 221, 0.2)',
+      ],
+      borderColor: [
+        'rgba(221, 160, 221, 1)',
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(192, 192, 192, 1)'
+      ],
+      borderWidth: 1
+    },
+  ]
+  },
+  options: {
+    legend: {
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+var ctx = $('#user-mins-active-by-week');
+var activityByWeek = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: returnDatesOfWeek(user.id, currentDate),
+    datasets: [{
+      label: 'active minutes',
+      data: activity.returnActiveMinutesByWeek(user.id, currentDate),
+      backgroundColor: [
+        'rgb(221, 160, 221, 0.2)',
+      ],
+      borderColor: [
+        'rgba(221, 160, 221, 1)',
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(192, 192, 192, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    legend: {
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+var ctx = $('#user-stairs-climbed-by-week');
+var stairsByWeek = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: returnDatesOfWeek(user.id, currentDate),
+    datasets: [{
+      label: 'stairs climbed',
+      data: activity.returnStairsClimbedByWeek(user.id, currentDate),
+      backgroundColor: [
+        'rgb(221, 160, 221, 0.2)',
+      ],
+      borderColor: [
+        'rgba(221, 160, 221, 1)',
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(192, 192, 192, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    legend: {
     },
     scales: {
       yAxes: [{

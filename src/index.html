@@ -21,47 +21,50 @@
         <p class="user-info">Address: <span id="user-info-address"></span></p>
         <p class="user-info">Step Goal: <span id="user-info-step-goal"></span></p>
     </container>
-    <container>
+    <container class="container-center">
       <h3>Hydration</h3>
-      <h4>Today's Water Intake</h4>
-      <p>You've consumed <span id="user-water-by-day"></span> ounces.</p>
-      <h4>Weekly Water Consumption</h4>
-      <canvas id="user-water-by-week" width="400" height="200"></canvas>
+      <p>You've consumed <span id="user-water-by-day"></span> ounces of water today</p>
     </container>
-    <container id="user-sleep-day">
+    <container>
+      <h3>Weekly Water Consumption</h3>
+      <canvas id="user-water-by-week" width="300" height="150"></canvas>
+    </container>
+    <container class="container-center" id="user-sleep-day">
       <h3>Last Night's Sleep</h3>
-      <p id="user-sleep-by-day"></p>
+      <p class="number"id="user-sleep-by-day"></p>
       <h4>hours slept</h4>
-      <p id="user-sleep-quality-by-day"></p>
+      <p class="number" id="user-sleep-quality-by-day"></p>
       <h4>sleep quality</h4>
     </container>
-    <container id="user-rested">
-      <h3>How Rested Are You Today?</h3>
+    <container class="container-center" id="user-rested">
+      <h3 >How Rested Are You Today?</h3>
       <img id="sleep-status"></img>
-      <h4>8 or more hours of sleep will make you more productive!</h4>
+      <h4>Getting 8 hours of sleep will make you more productive!</h4>
     </container>
     <container id="user-sleep-week">
-      <h3>Your Sleep This Week</h3>
-      <p id="user-sleep-by-week"></p>
-      <h4>hours slept</h4>
-      <p id="user-sleep-quality-by-week"></p>
-      <h4>sleep quality</h4>
+      <h3>Your Sleep Quality & Hours</h3>
+      <canvas id="user-sleep-by-week"></canvas>
     </container>
-    <container>
+    <container id="user-water-trend-week">
+      <h3>Water Trend</h3>
+      <img id="sleep-status"></img>
+      <h4>Keep up the good work! You've consumed 64 ounces at least one day this week'</h4>
+    </container>
+    <container class="container-center">
       <h3>Your Sleep Averages</h3>
-      <p id="user-average-hours-slept">
+      <p class="number" id="user-average-hours-slept">
         <h4>hours slept</h4>
-        <p id="user-average-sleep-quality"></p>
+        <p class="number" id="user-average-sleep-quality"></p>
         <h4>sleep quality</h4>
       </p>
     </container>
-    <container id="user-activity-day">
+    <container class="container-center" id="user-activity-day">
       <h3>Today's Activity</h3>
-      <p id="user-current-step-count"></p>
+      <p class="number" id="user-current-step-count"></p>
       <h4>steps</h4>
-      <p id="user-current-mins-active"></p>
+      <p class="number" id="user-current-mins-active"></p>
       <h4>active minutes</h4>
-      <p id="user-current-miles-walked"></p>
+      <p class="number" id="user-current-miles-walked"></p>
       <h4>miles</h4>
     </container>
     <container>
@@ -77,13 +80,20 @@
       <p>World Avg: <span id="all-users-average-stairs-climbed"></span></p>
     </container>
     <container>
-      <h3>Your Activity This Week</h3>
-      <p id="user-step-count-by-week"></p>
-      <h4>steps</h4>
-      <p id="user-mins-active-by-week"></p>
-      <h4>active minutes</h4>
-      <p id="user-stairs-climbed-by-week"></p>
-      <h4>stairs climbed</h4>
+      <h3>Your Step Count This Week</h3>
+      <canvas id="user-step-count-by-week"></canvas>
+    </container>
+    <container>
+      <h3>Activity: Active Minutes</h3>
+      <canvas id="user-mins-active-by-week"></canvas>
+    </container>
+    <container>
+      <h3>Activity: Stairs Climbed This Week</h3>
+      <canvas id="user-stairs-climbed-by-week"></canvas>
+    </container>
+    <container>
+      <h3>Republic Plaza Challenge</h3>
+      <p id="republic-plaza-challenge"></p>
     </container>
     <container>
       <h3>Friends, Weekly Step Challenge</h3>

@@ -55,12 +55,13 @@ class ActivityUser {
   //     return acc + element.stepCount}, 1) / this.activityTestData.length)
   // }
 
+
   getGoal(id) {
     return this.userData.find(user => {
       return user.id === id
     }).dailyStepGoal;
   }
-
+  
   calculateStepGoal(date, id) {
     let stepGoal = this.userData.find(user => {
       return user.id === id
@@ -68,35 +69,45 @@ class ActivityUser {
     let dailySteps = this.activityTestData.find(user => {
       return user.date === date && user.userID === id
     }).numSteps
-
+    
     let difference = stepGoal - dailySteps
-
+    
     return dailySteps >= stepGoal ? 'You have achieved your daily goal!' : `${difference} more steps to go!`
-
+    
   }
-
+  
   findExceptionalDays(id) {
     let stepGoal = this.userData.find(user => {
       return user.id === id
     }).dailyStepGoal;
     var exceptionalDays = this.activityTestData.filter(user => user.userID === id)
     .filter(day => day.numSteps > stepGoal);
-
+    
     return exceptionalDays;
   }
-
+  
   findGreatestClimb(id) {
     let greatestClimb = this.findActivityInfo(id).map(day => day.flightsOfStairs)
     .reduce((acc, climb) => {
       return (climb < acc) ? acc : climb
     })
-   return greatestClimb;
+    return greatestClimb;
   }
-
+  
   getDailyStepCount(id, date="2019/06/15") {
     let stepCount = this.activityTestData.find(user => user.userID === id && user.date === date)
-   return stepCount.numSteps
-}
+
+    return stepCount.numSteps
+  }
+  
+  
+  calculateWeeksSteps(startDate, endDate, id) {
+    return this.findActivityInfo(id).filter(day => day.date >= startDate && day.date <= endDate)
+    .reduce((acc, day) => {
+      acc += day.numSteps
+      return acc
+    }, 0)
+  }
 
 calculatePercentOfWorldWalked(id) {
   const earthMiles = 24901
@@ -144,6 +155,7 @@ compareStepAverageWithUser(date, id) {
 findTotalMinutesAverage(date) {
   var totalMinutes = this.getUsers(date).reduce((acc, user) => {
     acc += user.minutesActive;
+    
     return acc
   }, 0)
   return Math.round(totalMinutes / this.getUsers(date).length);
@@ -152,7 +164,7 @@ findTotalMinutesAverage(date) {
 
 compareMinutesAverageWithUser(date, id) {
   let day = this.findActivityInfo(id).find(user => user.date === date)
-  console.log('day--->', day)
+  
   if(day.minutesActive > this.findTotalMinutesAverage(date)) {
     return "You exceeded the daily average of minutes active today!"
   } else if (day.minutesActive < this.findTotalMinutesAverage(date)) {
@@ -172,6 +184,7 @@ findTotalStairsAverage(date) {
 
 compareStairsAverageWithUser(date, id) {
   let day = this.findActivityInfo(id).find(user => user.date === date)
+  
   if(day.flightsOfStairs > this.findTotalStairsAverage(date)) {
     return "You exceeded the daily average of stairs climbed today!"
   } else if (day.flightsOfStairs < this.findTotalStairsAverage(date)) {
@@ -228,10 +241,21 @@ showUserFriendsSteps(date, id) {
   });
 }
 
+  calculateWeeksStairsClimbed(startDate, endDate, id) {
+    return this.findActivityInfo(id).filter(day => day.date >= startDate && day.date <= endDate)
+    .reduce((acc, day) => {
+      acc += day.flightsOfStairs
+      return acc
+    }, 0)
+  }
 
-
-
-
+  calculateWeeksActiveMinutes(startDate, endDate, id) {
+    return this.findActivityInfo(id).filter(day => day.date >= startDate && day.date <= endDate)
+    .reduce((acc, day) => {
+      acc += day.minutesActive
+      return acc
+    }, 0)
+  }
 }
 
 

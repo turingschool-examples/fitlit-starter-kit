@@ -22,6 +22,7 @@ let sleepPerDay = document.querySelector('.main_sleep_specific_day');
 let steps = document.querySelector('.main_activity_steps');
 let minutes = document.querySelector('.main_activity_minutes');
 let miles = document.querySelector('.main_activity_miles');
+let activityGoal = document.querySelector('.main_activity_goal');
 let activityList = document.querySelector('.main_activity_list');
 
 /*************** Event Listeners *************/
@@ -217,12 +218,14 @@ function appendActivityList(array, obj, user) {
 		steps.innerHTML = `Number of steps today: ${obj.numSteps}`
 		minutes.innerHTML =`Number of Minutes active: ${obj.minutesActive}`
 		miles.innerHTML = `Numer of Miles Traveled: ${obj.findDistanceMiles(user, obj)}`
+		goal.innerHTML = `${obj.checkStepGoal(user, obj)}`
 		})
    obj.findNumSteps(dateActivityList.value)
    obj.findMinActive(dateActivityList.value)
 		steps.innerHTML = `Number of steps today: ${obj.numSteps}`
 		minutes.innerHTML =`Number of Minutes active: ${obj.minutesActive}`
 		miles.innerHTML = `Numer of Miles Traveled: ${obj.findDistanceMiles(user, obj)}`
+		activityGoal.innerHTML = `${obj.checkStepGoal(user, obj)}`
 	}
 }
 	

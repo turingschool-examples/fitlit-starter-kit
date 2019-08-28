@@ -20,6 +20,6 @@ FitLit is the second project but first parter project of Module 2 at Turing. Our
 With Fitlit we're given data from an activity tracker for different users over a number of days. Fitlit logs the data and presents it on a dashboard for our users. Our goal is to present a useful dashboard for a user to view and see their latest activity data, goals, and milestones.
 
 ## Live Page
-[Our FitLit site](https://jeduardorjx.github.io/fitlit/)
+[Our FitLit site](https://jeduardorjx.github.io/fitlit/src/index.html)
 
 ## Screenshot

@@ -63,4 +63,14 @@ describe('Activity', function() {
         expect(activity.getIncreasingSteps(1)).to.deep.equal(['2019/06/17', '2019/06/20', '2019/06/23'])
     })
 
+    it('should return week activity', function () {
+        const userRepo = new UserRepository(userSampleData)
+        const user = userRepo.returnUserData(1);
+        const activity = new Activity(activitySampleData)
+        expect(activity.getActivityForWeek(1, '2019/06/25', 'numSteps'))
+
+    
+
     })
+
+})

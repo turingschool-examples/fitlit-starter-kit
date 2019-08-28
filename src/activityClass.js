@@ -11,7 +11,7 @@ class Activity {
 
   extractSingleUser(id) {
     let singleUser = this.userData.filter( (user) => {
-      if (this.userID === user.userID) {
+      if (this.userID === user.id) {
         return user
       };
     });
@@ -36,18 +36,18 @@ class Activity {
     this.oneDay = singleDay;
   };
 
-  getStrideLength(day) {
-    let stride = this.singleUserData.find( element => {
-      if (element.date === day) {
-        return element.strideLength;
-      };
-    });
-    return stride.strideLength;
-  }
+
+  //**DELETE** ??// 
+  // getStrideLength(day) {
+  //   let stride = this.singleUserData[0].strideLength
+  //   console.log(stride)
+  //   return stride
+  // }
 
   calculateDailyMiles(day) {
-    let strideLength = this.getStrideLength(day)
-    let stepsPerMi = 5280 / strideLength;
+    this.extractSingleDay(day)
+    let stride = this.singleUserData[0].strideLength
+    let stepsPerMi = 5280 / stride;
     let miles = this.oneDay.numSteps / stepsPerMi;
     return +(miles.toFixed(2))
   };

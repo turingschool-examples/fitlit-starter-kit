@@ -143,6 +143,30 @@ compareStepAverageWithUser(date, id) {
   }
 }
 
+findTotalMinutesAverage(date) {
+  var totalMinutes = this.getUsers(date).reduce((acc, user) => {
+    acc += user.minutesActive;
+    console.log('acc...', acc)
+    return acc
+  }, 0)
+  return Math.round(totalMinutes / this.getUsers(date).length);
+}
+
+
+compareMinutesAverageWithUser(date, id) {
+  let day = this.findActivityInfo(id).find(user => user.date === date)
+  console.log('day--->', day)
+  if(day.minutesActive > this.findTotalMinutesAverage(date)) {
+    return "You exceeded the daily average of minutes active today!"
+  } else if (day.minutesActive < this.findTotalMinutesAverage(date)) {
+    return "You were lower than the daily average of minutes active today :("
+  } else {
+    return "You were active the exact the same amount as the daily average!"
+  }
+}
+
+
+
 
 
 

@@ -203,11 +203,11 @@ describe('ActivityUser', function() {
   })
 
   it.only('should find average of total minutes active', function() {
-    expect(activityUser.findTotalMinutesAverage('2019/06/17')).to.equal(10875)
+    expect(activityUser.findTotalMinutesAverage('2019/06/17')).to.equal(110)
   })
 
-  // it.only('should compare total average steps to single user', function() {
-  //   expect(activityUser.compareStepAverageWithUser('2019/06/17', 2)).to.equal("You exceeded the daily average of steps today!")
-  // })
+  it.only('should compare total average minutes to single user', function() {
+    expect(activityUser.compareMinutesAverageWithUser('2019/06/17', 3)).to.equal("You were lower than the daily average of minutes active today :(")
+  })
 
 });

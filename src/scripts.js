@@ -21,22 +21,24 @@ $('#user-sleep-by-week').text(sleep.returnSleepByWeek(user.id, currentDate));
 $('#user-sleep-quality-by-week').text(sleep.returnSleepQualityByWeek(user.id, currentDate));
 $('#user-average-sleep-quality').text(sleep.returnAverageSleepQuality(user.id));
 $('#user-average-hours-slept').text(sleep.returnAverageSleep(user.id));
-$('#user-current-step-count').text(activity.returnNumberOfStepsByDate(user.id, currentDate))
-$('#user-rested').text(displaySleepStatus())
+$('#user-current-step-count').text(activity.returnNumberOfStepsByDate(user.id, currentDate));
+$('#user-rested').text(displaySleepStatus());
 $('#user-current-mins-active').text(activity.returnActiveMinutesByDate(user.id, currentDate));
 $('#user-current-miles-walked').text(activity.returnMilesWalkedByDate(user, currentDate));
-$('#user-current-step-count-vs-average').text(activity.returnNumberOfStepsByDate(user.id, currentDate))
+$('#user-current-step-count-vs-average').text(activity.returnNumberOfStepsByDate(user.id, currentDate));
 $('#all-users-average-step-count').text(activity.returnAvgStepsTakenAllUsersByDate(currentDate));
-$('#user-current-stairs-climbed').text(activity.returnStairsClimbedByDate(user.id, currentDate))
+$('#user-current-stairs-climbed').text(activity.returnStairsClimbedByDate(user.id, currentDate));
 $('#all-users-average-stairs-climbed').text(activity.returnAvgStairsClimbedAllUsersByDate(currentDate));
-$('#user-current-active-mins').text(activity.returnActiveMinutesByDate(user.id, currentDate))
+$('#user-current-active-mins').text(activity.returnActiveMinutesByDate(user.id, currentDate));
 $('#all-users-average-active-mins').text(activity.returnAvgActiveMinutesAllUsersByDate(currentDate));
-$('#user-step-count-by-week').text(activity.returnNumberOfStepsByWeek(user.id, currentDate))
-$('#user-stairs-climbed-by-week').text(activity.returnStairsClimbedByWeek(user.id, currentDate))
-$('#user-mins-active-by-week').text(activity.returnActiveMinutesByWeek(user.id, currentDate))
-friendObjs.forEach(friend => $('#friend-info').append(`<p>Friend name: ${friend.name}, steps: ${friend.steps}</p>`))
+$('#user-step-count-by-week').text(activity.returnNumberOfStepsByWeek(user.id, currentDate));
+$('#user-stairs-climbed-by-week').text(activity.returnStairsClimbedByWeek(user.id, currentDate));
+$('#user-mins-active-by-week').text(activity.returnActiveMinutesByWeek(user.id, currentDate));
+$('#user-water-trend-week').text(displayWaterStatus());
+$('#republic-plaza-challenge').text(activity.republicPlazaChallenge(user.id))
+friendObjs.forEach(friend => $('#friend-info').append(`<p>Friend name: ${friend.name}, steps: ${friend.steps}</p>`));
 
-function generateRandomUserId () {
+function generateRandomUserId() {
   let randomNumOneToFifty = (Math.random() * 50);
   return Math.ceil(randomNumOneToFifty);
 }
@@ -45,12 +47,25 @@ function displaySleepStatus() {
   sleep.checkUserRestedByDate(user.id, currentDate)
   if (sleep.isRested === true) {
     $('#sleep-status').attr('src', '/images/ghost-happy.svg');
+    $('#sleep-comment').text('Great job on sleeping!');
   } else {
     $('#sleep-status').attr('src', '/images/ghost-sad.svg');
+    $('#sleep-comment').text('Getting 8 hours of sleep will make you more productive!');
   }
 }
 
-function populateFriends (userFriends) {
+function displayWaterStatus() {
+  let checkWater = hydration.returnDidUserDrinkEnoughWater(user.id, currentDate)
+  if (checkWater === true) {
+    $('#water-status').attr('src', '/images/glass-full.svg');
+    $('#water-comment').text('Keep up the good work! You\'ve averaged more than 64 ounces per day this week');
+  } else {
+    $('#water-status').attr('src', '/images/glass-empty.svg');
+    $('#water-comment').text('Make sure you\'re staying hydrated!');
+  }
+}
+
+function populateFriends(userFriends) {
   let friends = userFriends.map(friend => {
     let userFriend = new User(userRepo.returnUserData(friend))
     return ({
@@ -167,48 +182,6 @@ var sleepQualityHrsByWeek = new Chart(ctx, {
       ],
       borderWidth: 1,
       type: 'line',
-    }]
-  },
-  options: {
-    legend: {
-    },
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
-    }
-  }
-});
-
-var ctx = $('#user-sleep-quality-by-week');
-var sleepQualityByWeek = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: returnDatesOfWeek(user.id, currentDate),
-    datasets: [{
-      label: 'quality score',
-      data: sleep.returnSleepQualityByWeek(user.id, currentDate),
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgb(221, 160, 221, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(192, 192, 192, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(221, 160, 221, 1)',
-        'rgba(255, 159, 64, 1)',
-        'rgba(192, 192, 192, 1)'
-      ],
-      borderWidth: 1
     }]
   },
   options: {

@@ -5,7 +5,7 @@ class ActivityRepository {
 
   returnAvgStairs(date) {
     let dayArray = this.data.filter(day => day.date === date);
-    
+
     return dayArray.reduce((acc, stairs) => {
       return acc += stairs.flightsOfStairs
     }, 0) / dayArray.length;
@@ -28,5 +28,6 @@ class ActivityRepository {
   };
 };
 
-
-module.exports = ActivityRepository;
+if (typeof module !== "undefined") {
+  module.exports = ActivityRepository;
+}

@@ -91,6 +91,10 @@ article {
   padding: 20px;
 }
 
+hr {
+  border: 1px solid #3A3A4A;
+}
+
 #article1 {
   grid-area: step1;
 }

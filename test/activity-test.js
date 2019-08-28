@@ -75,7 +75,7 @@ describe('ActivityUser', function() {
   });
 
   it.only('should calculate average active minutes for any given week', function() {
-    expect(activityUser.findAverageMinutesActive('2019/06/23', '2019/07/01', 2)).to.equal(199.4)
+    expect(activityUser.findAverageMinutesActive('2019/06/25', '2019/07/01', 2)).to.equal(167.6)
   });
 
   it.only('should find step goal', function() {
@@ -166,7 +166,7 @@ describe('ActivityUser', function() {
         "flightsOfStairs": 3
       }
     ])
-  })
+  });
 
   it.only('should find stair climbing record', function() {
     expect(activityUser.findGreatestClimb(2)).to.equal(49)
@@ -174,12 +174,25 @@ describe('ActivityUser', function() {
 
   it.only('should find daily step counts', function() {
     expect(activityUser.getDailyStepCount(2, '2019/06/17')).to.equal(13750)
-  })
+  });
 
-  it.only('should do the thing', function() {
+  it.only('should calculate perctage walked around the world', function() {
     expect(activityUser.calculatePercentOfWorldWalked(3)).to.equal(.42)
-  })
+  });
 
+  it.only('should total number of steps walked that week', function() {
+    expect(activityUser.calculateWeeksSteps('2019/06/25', '2019/07/01', 2)).to.equal(71968)
+  });
+
+  it.only('should total number of stairs climbed that week', function() {
+    expect(activityUser.calculateWeeksStairsClimbed('2019/06/25', '2019/07/01', 2)).to.equal(165)
+  });
+
+  it.only('should total number of minutes active that week', function() {
+    expect(activityUser.calculateWeeksActiveMinutes('2019/06/25', '2019/07/01', 2)).to.equal(1173)
+  });
+  
+});
 
   //function working but test needs accurate equal 
   it.only('should find weekly step count', function() {
@@ -217,5 +230,3 @@ describe('ActivityUser', function() {
   it.only('should compare total average stairs climbed to single user', function() {
     expect(activityUser.compareStairsAverageWithUser('2019/06/17', 2)).to.equal("You were lower than the daily average of stairs climbed today :(")
   })
-
-});

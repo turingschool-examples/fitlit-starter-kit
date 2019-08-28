@@ -31,12 +31,18 @@ function dropYear(dates) {
   })
   return reformattedDates
 }
-
+$(document).ready(function() {
 
 //Packery Items 
 let $grid = $('.grid').packery({
   itemSelector: '.grid-item',
-  columnWidth: 100
+  columnWidth: 50,
+  rowHeight: 30,
+  gutter: 4,
+});
+
+let $draggable = $('.draggable').draggabilly({
+  containment: true
 });
 
 $grid.find('.grid-item').each(function (i, gridItem) {
@@ -44,7 +50,6 @@ $grid.find('.grid-item').each(function (i, gridItem) {
   $grid.packery('bindDraggabillyEvents', draggie)
 });
 
-$(".draggable").draggabilly("enable");
 
 // Function to find user name
 function findUserName(id) {
@@ -266,4 +271,5 @@ function insertStairStreak() {
   return list;
 }
 
-$('.increasing-stairs').html(`${insertStairStreak()}`);
+
+})

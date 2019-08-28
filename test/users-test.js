@@ -93,6 +93,5 @@ describe('User', () => {
     it('should return a user\'s first name only', () => {
       assert.equal(user1.returnFirstName(), 'Luisa')
     })
-
-    
+ 
 }); 

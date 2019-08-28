@@ -18,7 +18,6 @@ beforeEach(() => {
 
 describe('Activity', () => {
 
-
   it('should calculate miles for a user on a specific date based on stride', () => {
     expect(activePerson.getMiles(sampleDate, 'numSteps')).to.equal(5.23)
   }) 
@@ -84,16 +83,32 @@ describe('Activity', () => {
     let activePerson2 = new Activity(activeRepo.getUserData(4), user2);
     expect((activePerson2.returnIncreasedStepDays(sampleDate))).to.eql([
       {
-        userID: 4,
-        date: 1560924000000,
-        numSteps: 13451,
-        minutesActive: 203,
-        flightsOfStairs: 2
-      }
-    ])
+        "date": 1560751200000,
+        "flightsOfStairs": 25,
+        "minutesActive": 72,
+        "numSteps": 8160,
+        "userID": 4
+      },
+      {
+        "date": 1560837600000,
+        "flightsOfStairs": 34,
+        "minutesActive": 120,
+        "numSteps": 10056,
+        "userID": 4
+      },
+      {
+        "date": 1560924000000,
+        "flightsOfStairs": 2,
+        "minutesActive": 203,
+        "numSteps": 13451,
+        "userID": 4
+      }]) 
   })
+  
 
-  it.only('should return number of fourteeners climbed for all time', () => {
+  it('should return number of fourteeners climbed for all time', () => {
     expect(activePerson.findFourteeners()).to.equal(`You're on your way. Keep Climbing!`)
   })
+
 })
+

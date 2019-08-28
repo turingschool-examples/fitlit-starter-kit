@@ -27,7 +27,7 @@ userHydro.getHydroArray(sampleDate)
 $('.hydration__container--consumed--this--week').text(`${userHydro.getWeeklyHydroAvg()}`);
 
 
-$('.sleep__container--hours--today').text(`Hours slept today: ${sleepyPerson.getSleepHoursByDate(sampleDate)} hours`)
+$('.sleep__container--hours--today').text(`${sleepyPerson.getSleepHoursByDate(sampleDate)}`)
 
 $('.sleep__container--hours--this--week').text(`Average hours slept this week: ${sleepyPerson.getWeeklyAvg(sampleDate, 'hoursSlept')} hours`)
 
@@ -93,6 +93,7 @@ var mixedChart = new Chart(sleepChart, {
       label: 'Hours Slept',
       data: sleepyPerson.getWeek(sampleDate).map(day => day.hoursSlept),
       backgroundColor: [
+
         'rgba(37, 36, 92, .8 )',
         'rgba(37, 36, 92, .8 )',
         'rgba(37, 36, 92, .8 )',

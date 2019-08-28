@@ -15,7 +15,7 @@ describe('Activity', () => {
   beforeEach(() => {
     activity = new Activity(activityData);
     userRepo = new UserRepository(userData);
-    users = new User(userData);
+    user = new User(userData);
   });
 
   it('should be a function', () => {
@@ -43,7 +43,7 @@ describe('Activity', () => {
   });
 
   it('should return all days where the user exceeded their step goal', () => {
-    expect(activity.findGoalDays(1)).to.deep.equal(activity.data.filter(data => data.numSteps > userRepo.users[0].dailyStepGoal).filter(user => user.userID === 1));
+    expect(activity.findGoalDays(1)).to.deep.equal(activity.data.filter(data => data.numSteps > userRepo.users[0].dailyStepGoal).filter(person => person.userID === 1));
   });
 
   it('should return their all time stair record', () => {
@@ -53,5 +53,27 @@ describe('Activity', () => {
 
   it('should return the steps taken per minute active on a given day', () => {
     expect(activity.calculateStepsAMin('2019/06/20', 1)).to.equal(103.4)
-  })
+  });
+
+  it('should return an array of step count for a week', () => {
+    expect(activity.returnWeekStep('2019/06/21', 1)).to.deep.equal([3577,  6637, 14329, 4419, 8429, 14478, 6760])
+  });
+
+  it('should return an array of stairs climbed for a week', () => {
+    expect(activity.returnWeekStairs("2019/06/21", 1)).to.deep.equal([16, 36, 18, 33, 2,12, 6]);
+  });
+
+  it('should return an array of minutes active for a week', () => {
+    expect(activity.returnWeekMin("2019/06/21", 1)).to.deep.equal([  140, 175, 168, 165,275, 140, 135]);
+  });
+
+
+  // **** Iteration 5 ****
+  // it('should return an array of data for a users friends', () => {
+  //   expect(user.getFriends())
+  // })
+
+  // it('should compare user steps for a week compared to friends', () => {
+  //   expect(activity.determineWinner('2019/06/20'))
+  // })
 });

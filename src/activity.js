@@ -2,6 +2,7 @@ class Activity {
 	constructor(data) {
 		this.data = data
 		this.dates = []
+		this.week = []
 		this.numSteps = null
 		this.minutesActive = null
 		this.flightsOfStairs = null

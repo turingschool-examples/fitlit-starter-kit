@@ -7,17 +7,14 @@ let goal = document.querySelector('.main_user_dailyStepGoal');
 let friends = document.querySelector('.main_user_friends');
 let welcome = document.querySelector('.main_header_welcome');
 let hydroList = document.querySelector('.main_hydro_list');
-let avgFluids = document.querySelector('.main_hydro_average');
 let dailyFluids = document.querySelector('.main_hydro_daily');
 let weeklyFluids = document.querySelector('.main_hydro_weekly')
 let randoNum = null
 let avgSleep = document.querySelector('.main_sleep_average')
+let avgQuality = document.querySelector('.main_sleep_average_quality')
 let sleepList = document.querySelector('.main_sleep_list');
 let sleepWeek = document.querySelector('.main_sleep_weekly');
 let sleepQuality = document.querySelector('.main_sleep_quality');
-let sleepAll = document.querySelector('.main_sleep_average_all');
-let sleepAvgQuality = document.querySelector('.main_sleep_average_quality');
-let sleepDay = document.querySelector('.main_sleep_day');
 let sleepPerDay = document.querySelector('.main_sleep_specific_day');
 let steps = document.querySelector('.main_activity_steps');
 let minutes = document.querySelector('.main_activity_minutes');
@@ -44,7 +41,7 @@ function initializePage(data, hydro, sleepy, activity) {
 	sleepRepository.findUserID(randoNum);
 	const sleep = new Sleep(sleepRepository.currentUser)
 	const sleep2 = new Sleep(sleepRepository.data)
-	const activityRepository = new ActivityRepository(activity);
+	activityRepository = new ActivityRepository(activity);
 	activityRepository.findUserID(randoNum);
 	const activity1 = new Activity(activityRepository.currentUser);
 	name.innerHTML = `Name: ${user.name}`
@@ -54,13 +51,13 @@ function initializePage(data, hydro, sleepy, activity) {
 	goal.innerHTML = `Step Goal: ${user.dailyStepGoal} steps Global Average Step Goal: ${userRepository.findAverageStep()} steps`
 	friends.innerHTML = `Friends: ${findFriends(userRepository, user)}`
 	welcome.innerHTML = `Welcome ${user.firstName()}!`;
-	avgFluids.innerHTML = `Average fluid ounces intake: ${userHydro.findAvgOunce()}`
-	avgSleep.innerHTML = `Average hours slept per day: ${sleep.findAvgSleep().toFixed(2)}`
-	sleepAll.innerHTML = `All users average sleep quality: ${sleepRepository.findAverageQuality().toFixed(2)}`
+	userHydro.findAvgOunce()
+	avgSleep.innerHTML = `Average hours slept per day: ${sleep.findAvg('hoursSlept').toFixed(2)}`
+	avgQuality.innerHTML = `Average quality per day: ${sleep.findAvg('sleepQuality').toFixed(2)}`
 	appendHydroList(userHydro.findDates(), userHydro);
 	appendSleepList(sleep.findSleepDates(), sleep);
 	appendMostSleep(sleep, sleep2, user2);
-	appendActivityList(activity1.findActivityDates(), activity1)
+	appendActivityList(activity1.findActivityDates(), activity1) 
 }
 
 function findFriends(userRepository, user) {
@@ -155,7 +152,7 @@ function checkMostSleep(sleepObj, userObj) {
   }
  	for (let i = 0; i < userObj.length; i++) {
  		if (i === userIndex) {
- 			sleepDay.innerHTML = `User(s) with most sleep time: ${userObj[i].name} (${largestNum})`
+ 			return userObj[i].name
  		}
  	}
 }
@@ -194,7 +191,7 @@ function userSleepAvg(singleSleepObj, sleepObj, userObj) {
 				})
 			}
 		})
-		sleepAvgQuality.innerHTML = `Users with sleep quality greater than 3: ${sleepIDs}`
+		return sleepIDs
 }
 
 function appendActivityList(array, obj) {
@@ -215,12 +212,11 @@ function appendActivityList(array, obj) {
    obj.findMinActive(dateActivityList.value)
 		steps.innerHTML = `Number of steps today: ${obj.numSteps}`
 		minutes.innerHTML =`Number of Minutes active: ${obj.minutesActive}`
-		// for (let i = 0; i < array.length; i++) {
-		// 	if (dateActivityList.value === array[i]) {
-  //   	sleepWeek.innerHTML = `Hours slept throughout week: ${obj.findSleepWeek(i)}`
-  //   	sleepQuality.innerHTML = `Sleep quality throughout week: ${obj.findSleepWeekQuality(i)}`
-  //   			}
-		// 	}
+		for (let i = 0; i < array.length; i++) {
+			if (dateActivityList.value === array[i]) {
+    		// return obj.findActivityWeek(i)
+    			}
+			}
 		})
    obj.findNumSteps(dateActivityList.value)
    obj.findMinActive(dateActivityList.value)
@@ -228,4 +224,3 @@ function appendActivityList(array, obj) {
 		minutes.innerHTML =`Number of Minutes active: ${obj.minutesActive}`
 	}
 }
-	

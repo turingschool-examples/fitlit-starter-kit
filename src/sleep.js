@@ -7,10 +7,10 @@ class Sleep {
 		this.week = []
 	}
 
-	findAvgSleep() {
+	findAvg(key) {
 		var sum = 0
 		this.data.forEach(user => {
-			sum += user["hoursSlept"]
+			sum += user[key]
 		});
 		sum = sum / this.data.length
 		return sum		

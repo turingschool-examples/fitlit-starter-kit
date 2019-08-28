@@ -144,7 +144,6 @@ compareStepAverageWithUser(date, id) {
 findTotalMinutesAverage(date) {
   var totalMinutes = this.getUsers(date).reduce((acc, user) => {
     acc += user.minutesActive;
-    console.log('acc...', acc)
     return acc
   }, 0)
   return Math.round(totalMinutes / this.getUsers(date).length);
@@ -166,7 +165,6 @@ compareMinutesAverageWithUser(date, id) {
 findTotalStairsAverage(date) {
   var totalStairs = this.getUsers(date).reduce((acc, user) => {
     acc += user.flightsOfStairs;
-    console.log('acc...', acc)
     return acc
   }, 0)
   return Math.round(totalStairs / this.getUsers(date).length);
@@ -174,7 +172,6 @@ findTotalStairsAverage(date) {
 
 compareStairsAverageWithUser(date, id) {
   let day = this.findActivityInfo(id).find(user => user.date === date)
-  console.log('day--->', day)
   if(day.flightsOfStairs > this.findTotalStairsAverage(date)) {
     return "You exceeded the daily average of stairs climbed today!"
   } else if (day.flightsOfStairs < this.findTotalStairsAverage(date)) {
@@ -201,13 +198,51 @@ findThreeDayStepStreak(id) {
   return dates
 }
 
+// compareFriends(date, id) {
+//   let included = [...this.userData[id].friends, this.userData[id].id];
+//   console.log(included)
+//   let friends = included.map(friend => ({
+//     id: friend,
+//     name: this.userData.find(user => user.id === friend).name,
+//     steps: this.activityTestData
+//       .filter(day => day.userID === friend && day.date <= date)
+//       .slice(-6, +1)
+//       .map(user => user.numSteps)
+//       .reduce((totalSteps, dailySteps) => (totalSteps += dailySteps), 0)
+//   }));
+//   let sorted = friends.sort((a, b) => b.steps - a.steps);
+//   return friends[0];
+// }
 
+showUserFriends(date, id) {
+  let included = [...this.userData[id].friends];
+  let friends = included.map(friend => ({
+    id: friend,
+    name: this.userData.find(user => user.id === friend).name,
+    steps: this.activityTestData
+      .filter(day => day.userID === friend && day.date <= date)
+      .map(user => user.numSteps)
+  }));
+  return friends.map(friend => {
+    return friend.name;
+  });
+}
 
-
-
-
-
-
+showUserFriendsSteps(date, id) {
+  let included = [...this.userData[id].friends];
+  let friends = included.map(friend => ({
+    id: friend,
+    name: this.userData.find(user => user.id === friend).name,
+    steps: this.activityTestData
+      .filter(day => day.userID === friend && day.date <= date)
+      .map(user => user.numSteps)
+  }));
+  return friends.map(friend => {
+    let sorted = friends.sort((a, b) => b.steps - a.steps);
+    console.log('user friends--->', friend.steps)
+    return friend.steps[0];
+  });
+}
 
 
 

@@ -226,5 +226,13 @@ describe('ActivityUser', function() {
     ]);
   });
 
+  it.only('should compare user to their friends', function() {
+    expect(activityUser.compareFriends("2019/06/15", 1)).to.eql([
+      "2019/06/15",
+      "2019/06/16",
+      "2019/06/17"
+    ])
+  })
+
 
 });

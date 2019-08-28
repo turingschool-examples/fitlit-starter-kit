@@ -31,8 +31,15 @@ $(document).ready(() => {
   $('.section__p--compare-step').text(activityUser.compareStepAverageWithUser('2019/06/15', randomUserId))
   $('.section__p--compare-minutes').text(activityUser.compareMinutesAverageWithUser('2019/06/15', randomUserId))
   $('.section__p--compare-stairs').text(activityUser.compareStairsAverageWithUser('2019/06/15', randomUserId))
+  $('.test').text(activityUser.showUserFriendsSteps("2019/06/23", randomUserId))
+  $('.test2').text(activityUser.showUserFriends("2019/06/23", randomUserId))
+  // $('.test3').text(activityUser.compareUserFriends("2019/06/23", randomUserId))
 
 });
+
+
+
+
 
 
 

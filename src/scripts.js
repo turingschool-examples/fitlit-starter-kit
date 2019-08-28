@@ -217,8 +217,7 @@ function appendActivityList(array, obj) {
 		minutes.innerHTML =`Number of Minutes active: ${obj.minutesActive}`
 		// for (let i = 0; i < array.length; i++) {
 		// 	if (dateActivityList.value === array[i]) {
-  //   	sleepWeek.innerHTML = `Hours slept throughout week: ${obj.findSleepWeek(i)}`
-  //   	sleepQuality.innerHTML = `Sleep quality throughout week: ${obj.findSleepWeekQuality(i)}`
+  //   	sleepWeek.innerHTML = `Hours slept throughout week: ${obj.findSleepWeek(i)}` //   	sleepQuality.innerHTML = `Sleep quality throughout week: ${obj.findSleepWeekQuality(i)}`
   //   			}
 		// 	}
 		})

@@ -2,8 +2,9 @@
 <html>
   <head>
     <link rel="stylesheet" href="/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Livvic:300,400,600,700|Maven+Pro:400,700|Nunito:400,700|Quicksand&display=swap"
-    rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Asap|Livvic:300,400,600,700|Maven+Pro:400,700|Nunito:400,700|Quicksand&display=swap"
+      rel="stylesheet">
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
   </head>
@@ -15,20 +16,30 @@
       </div>
       <div class="header__div--greeting">
         <container class="header__div--container">
-          <p class="header__div__user-stepgoal">Your Goal: 10,000 per day</p>
-          <p class="header__div__allusers-stepgoal">Average User Goal: 12,000 per day</p>
+            <p class="top-text">Your Goal:</p>
+            <p class="header__div__user-stepgoal top-nums">1000 per day</p>
+          </container>
+          <container class="header__div--container">
+            <p class="top-text">Average User Goal:</p>
+            <p class="header__div__allusers-stepgoal top-nums">asdf</p>
         </container>
         <container class="header__div--container">
-          <p class="header__div__container__avg--title">This week</p>
-          <p class="header__div__container__avg--steps">Average Steps: 45</p>
-          <p class="header__div__container__avg--sleep">Average Hours Slept: 5 hours</p>
-          <p class="header__div__container__avg--hydration">Average Ounces Drank: 36 oz</p>
+          <p class="top-text">Average Steps:</p>
+          <p class="header__div__container__avg--steps top-nums">10,555</p>
         </container>
-      </div>
+        <container class="header__div--container">
+          <p class="top-text">Average Hours Slept:</p>
+          <p class="header__div__container__avg--sleep top-nums">7.5 hours</p>
+        </container>
+        <container class="header__div--container">
+          <p class="top-text">Average Ounces Drank:</p>
+          <p class="header__div__container__avg--hydration top-nums">56oz</p>
+      </container>
+    </div>
     </header>
     <main class="body__main">
       <section class="main__hydration">
-        <h3 class="main__hydration--h3">Hydration</h3>
+        <h3 class="main__hydration--h3 section-title">Hydration</h3>
         <article class="main__hydration__article--data">
           <div class="main__hydration__div--user--group">
             <container class="main__hydration--data--container left--side--hydration hydration-stats">
@@ -56,7 +67,7 @@
         </article>
       </section>
       <section class="main__sleep">
-        <h3 class="main__sleep--h3">Sleep</h3>
+        <h3 class="main__sleep--h3 section-title">Sleep</h3>
         <article class="main__sleep__article--data">
           <container class="main__sleep--data--container weeklyHydro">
             <h4 class="main__sleep--thisWeek sleep--week-byDay">This week:</h4>
@@ -76,7 +87,7 @@
         </article>
       </section>
       <section class="main__activity">
-        <h3 class="main__activity--h3">Activity</h3>
+        <h3 class="main__activity--h3 section-title">Activity</h3>
         <article class="main__activity__article--data">
           <div class="user-activity">
             <article class="main__activity__article--title">

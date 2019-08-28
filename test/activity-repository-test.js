@@ -58,4 +58,4 @@ describe('ActivityRepository', function() {
 
 
 
-}); //<<----end of describe block
+}); 

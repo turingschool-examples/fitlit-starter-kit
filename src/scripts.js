@@ -3,7 +3,8 @@ const userRepository = new UserRepository(userData);
 const user = new User(userRepository.findUserData(randomUserId))
 const sleepUser = new SleepUser(sleepData);
 const hydrationUser = new HydrationUser(hydrationData);
-const activityUser = new ActivityUser(activityData, userData)
+const activityUser = new ActivityUser(activityData, userData);
+// const activityRepository = new ActivityRepository(activityTestData);
 // const sleepRepository = new SleepRepository(sleepTestData, 2)
 
 
@@ -30,6 +31,11 @@ $(document).ready(() => {
   $('.li__span--total-steps').text(activityUser.calculateWeeksSteps('2019/06/15', '2019/06/21', randomUserId))
   $('.li__span--total-stairs').text(activityUser.calculateWeeksStairsClimbed('2019/06/15', '2019/06/21', randomUserId))
   $('.li__span--total-minutes').text(activityUser.calculateWeeksActiveMinutes('2019/06/15', '2019/06/21', randomUserId))
+  $('.section__p--compare-step').text(activityUser.compareStepAverageWithUser('2019/06/15', randomUserId))
+  $('.section__p--compare-minutes').text(activityUser.compareMinutesAverageWithUser('2019/06/15', randomUserId))
+  $('.section__p--compare-stairs').text(activityUser.compareStairsAverageWithUser('2019/06/15', randomUserId))
+
+
 });
 
 

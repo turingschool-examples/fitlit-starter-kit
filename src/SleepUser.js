@@ -66,7 +66,9 @@ class SleepUser {
   }
 
   findWeeklyHoursSlept(startDate, endDate, id) {
-    console.log('infindweeklyhoursslept', this.findUserWeeklyInfo(startDate, endDate, id))
+    return this.findUserWeeklyInfo(startDate, endDate, id).map(day => {
+      return day.hoursSlept
+    });
   }
 
 

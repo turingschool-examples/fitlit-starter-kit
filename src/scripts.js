@@ -20,8 +20,8 @@ $('#hours-slept').append(allUsersSleep.getHoursSleptPerDay('2019/06/20', userNum
 $('#sleep-quality').append(allUsersSleep.getSleepQualPerDay('2019/06/20', userNum));
 $('#sleep-quality-alltime').append(allUsersSleep.getAvgSleepQual(userNum));
 $('#hours-slept-alltime').append(allUsersSleep.getAvgSleepHours(userNum));
-// $('#step-count-today').appened(allUsersActivity.userSteps)
-// $('#min-active-today').append(allUsersActivity.)
+$('#step-count-today').append(allUsersActivity.returnStepsDay('2019/06/20', userNum));
+$('#min-active-today').append(allUsersActivity.returnActiveDay('2019/06/20', userNum));
 
 function appendWaterWeekToDOM() {
   var weekArray = allUsersHydration.getWeekIntake('2019/06/20', userNum);

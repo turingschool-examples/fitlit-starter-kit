@@ -105,11 +105,12 @@ function returnLatestSleepQuality() {
   return sleep.averageSleepQuality();
 }
 
-function returnWeeklyHoursSlept() {
+//USE THIS FOR SLEEP REFACTOR
+function returnLatestWeekSleepInfo() {
   sleep.extractSingleUser();
-  let userSleep = sleep.singleUserData;
-  let date = userSleep[userSleep.length - 1].date;
-  return sleep.calculateWeeklyHoursSlept(date);
+  // let userSleep = sleep.singleUserData;
+  // let date = userSleep[userSleep.length - 1].date;
+  return sleep.findLatestWeek();
 }
 
 function returnAvgHoursSlept() {
@@ -122,11 +123,10 @@ function returnAvgSleepQuality() {
   return sleep.averageSleepQuality()
 };
 
-
 function displaySleepInfo() {
   let latestHoursSlept = returnLatestHoursSlept();
   let latestSleepQual = returnLatestSleepQuality();
-  let weeklyHrsSlept = returnWeeklyHoursSlept();
+  let weeklyHrsSlept = returnLatestWeekSleepInfo();
   let avgHoursSlept = returnAvgHoursSlept();
   let avgSleepQuality = returnAvgSleepQuality();
   dailySection.insertAdjacentHTML('beforeend', `<article class="user_info">
@@ -185,8 +185,8 @@ function returnMinutesActive() {
 }
 
 function returnDailyMiles() {
-  activity.extractSingleActivityData();
   activity.extractSingleUser();
+  activity.extractSingleActivityData();
   let singleUserActivity = activity.singleActivity;
   let latestDay = singleUserActivity[singleUserActivity.length - 1]
   let miles = activity.calculateDailyMiles(latestDay.date);

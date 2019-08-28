@@ -37,7 +37,7 @@ describe('AllUsers', function() {
         expect(allUser.getAverageSteps('2019/06/15')).to.equal(6027);
     })
 
-    it('should return the all users steps average for a specific date', function () {
+    it('should return the all users average active minutes for a specific date', function () {
         const allUser = new AllUsers(AllUserSampleActivityData);
         expect(allUser.getAverageMinutes('2019/06/15')).to.equal(144);
     })

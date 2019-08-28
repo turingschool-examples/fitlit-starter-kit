@@ -16,7 +16,7 @@ const sleepRepo = new Sleep(sleepData);
 const currentUserSleep = sleepRepo.sleepData.filter(user => user.userID === uniqueUserId)
 
 const activityRepo = new Activity(activityData);
-
+const allUserActivityRepo = new AllUsers(activityData);
 const currentUserActivity = activityRepo.moveData.filter(user => user.userID === uniqueUserId)
 
 
@@ -38,14 +38,21 @@ $('.main_weeekly-sleep-quality-span').text(sleepRepo.getUserQualityWeekAverage(u
 
 $('.main_weeekly-sleep-quality-span').text(sleepRepo.getUserQualityWeekAverage(uniqueUserId, findToday()));
 
-// $('.main_daily-steps-span').text(activityRepo.getStepsToday(uniqueUserId, findToday()));
-
 $('.main_daily-minutes-active-span').text(activityRepo.getMinutesActive(uniqueUserId, findToday(), 'minutesActive'));
 
 $('.main_daily-steps-span').text(activityRepo.getMinutesActive(uniqueUserId, findToday(), 'numSteps'));
 
+$('.daily_all-users-steps-span').text(allUserActivityRepo.getAverageSteps(findToday()))
 
-// $('.').text(activityRepo.getMilesWalked(uniqueUserId, findToday()));
+$('.daily_single-user-steps-span').text(activityRepo.getMinutesActive(uniqueUserId, findToday(), 'numSteps'));
+
+$('.daily_all-users-minutes-span').text(allUserActivityRepo.getAverageMinutes(findToday()));
+
+$('.daily_single-user-minutes-span').text(activityRepo.getMinutesActive(uniqueUserId, findToday(), 'minutesActive'));
+
+$('.daily_single-user-stairs-span').text(activityRepo.getMinutesActive(uniqueUserId, findToday(), 'flightsOfStairs'));
+
+$('.daily_all-users-stairs-span').text(allUserActivityRepo.getAverageStairsClimbed(findToday()));
 
 
 
@@ -73,23 +80,19 @@ function friendList(id) {
 
 function getFriendInfo(id, date) {
     let friends = friendList(id);
-    console.log("friends", friends);
     let weekFriends = friends.map(friendId => {
         let friendActivities = activityRepo.findUser(friendId)
-        console.log("friend activities", friendActivities)
         let todayIndex = friendActivities.findIndex((day) => {
             return day.date === date
         })
         let friendTotalSteps = friendActivities.slice(todayIndex - 6, todayIndex + 1).reduce((acc, day) => {
             return acc + day.numSteps
         }, 0)
-        console.log("friend total steps", friendTotalSteps)
-        console.log("heres the result", ({id: friendId, steps: friendTotalSteps}) )
         return ({id: friendId, steps: friendTotalSteps});
-
         })
     }
 
+allUserActivityRepo.getActivityForWeek(1, findToday());
 
 
 getFriendInfo(1, today);

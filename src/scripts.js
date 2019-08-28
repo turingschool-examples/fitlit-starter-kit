@@ -7,15 +7,14 @@ const user = new User(userData[randomUser]);
 const sleep = new Sleep(userData);
 // const sleepRepository = new SleepRepository();
 const activity = new Activity(activityData);
-var activityRepository = new ActivityRepository(activityData);
+const activityRepository = new ActivityRepository(activityData);
 
 $('.grid').masonry({
     // options
     itemSelector: '.grid-item',
     columnWidth: 700,
     fitWidth: true,
-  });
-
+});
   
     $('#random-user-span').text(user.getFirstName());
     $('#article__user--name').text(user.getFirstName());
@@ -24,9 +23,9 @@ $('.grid').masonry({
     $('#article__user--stridelength').text(userData[randomUser].strideLength);
     $('#article__user--stepgoal').text(userData[randomUser].dailyStepGoal);
     $('#article__user--stepcompare').text(userRepository.calcStepGoalAvg());
-    $('#article__user--currentsleep').text(sleep.findAvgHoursSlept('2019/06/18'));
-    // $('#article__user--weekssleep').text();
-    // $('#article__user--avgsleep').text();
+    $('#article__hyrdation--fldozs').text(hydration);
+    $('#article__user--hours-slept').text(sleep);
+    $('#article__user--quality-slept').text(sleep);
     $('#article__user--todaysteps').text(activityData[randomUser].numSteps);
     $('#article__user--activemins').text(activity.minsUserActive(randomUser, '2019/06/15'));
     $('#article__user--todaydistance').text(activity.milesUserWalked(randomUser, '2019/06/15', userData));
@@ -34,10 +33,12 @@ $('.grid').masonry({
     $('#article__user--comparesteps').text(activityRepository.avgStepsClimbed('2019/06/15'));
     $('#article__user--comparemins').text(activityRepository.avgStepsTaken('2019/06/15'));
     $('#article__user--comparestairs').text(activityRepository.avgMinutesActive('2019/06/15'));
+    $('#artice__user--step-goal-reminder').text(activity.giveUserStepsFeedback(randomUser, '2019/06/15', userData))
+
 
     const weeklyWaterIntake = new Chart($('#weekly-hydration-chart'), {
-    type: 'bar',
-    data: {
+      type: 'bar',
+      data: {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: 'Weekly Hydration',
@@ -141,9 +142,45 @@ $('.grid').masonry({
                 }
         }
         });
+    
+    const allTimeAvgSleepChart = new Chart($('#alltime-average-sleep-chart'), {
+        type: 'pie',
+        data: {
+          labels: ['Average Sleep Quality', 'Average Hours of Sleep'],
+          datasets: [{
+            label: 'All-time Averages of Sleep',
+            data: [8, 4.5],
+            // [sleep.(), sleep.()]''
+            backgroundColor: [
+              '#B6E7EC',
+              '#FC5D79', 
+            ],
+            borderColor: [
+              '#B6E7EC', 
+              '#FC5D79',
+            ],
+            borderWidth: 2 
+          }]
+        },
+        options: {
+            title: {
+                display: true,
+                fontColor: 'black',
+                text: 'All-time Sleep Averages'
+            },
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 10,
+                    top: 10,
+                    bottom: 10,
+                        }
+                    },
+            }                
+      });    
 
     
-    var dailyStepComparisonChart = new Chart($('#compare-user-steps-chart'), {
+    const dailyStepComparisonChart = new Chart($('#compare-user-steps-chart'), {
         type: 'doughnut',
         data: {
           labels: ['Your Steps', 'All Users Steps'],
@@ -180,7 +217,7 @@ $('.grid').masonry({
             }                
       });
 
-      var dailyMinsComparisonChart = new Chart($('#compare-minutes-active-chart'), {
+      const dailyMinsComparisonChart = new Chart($('#compare-minutes-active-chart'), {
         type:  'polarArea',
         data: {
           labels: ['Your Minutes Active', 'All User\'s Minutes Active'],
@@ -217,7 +254,7 @@ $('.grid').masonry({
             }                
       });
 
-      var dailyStairsComparisonChart = new Chart($('#compare-user-stairs-chart'), {
+      const dailyStairsComparisonChart = new Chart($('#compare-user-stairs-chart'), {
         type: 'pie',
         data: {
           labels: ['Your Stairs Climbed', 'All User\'s Stair Climbed'],
@@ -252,9 +289,6 @@ $('.grid').masonry({
                     },
             }                
       });
-    
-   
-  
     
     
 

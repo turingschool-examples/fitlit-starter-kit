@@ -47,7 +47,18 @@ class Activity {
         let userActivity = this.activityData.filter(user => id === user.userID);
         let stairsClimbed = userActivity.map(day => day.flightsOfStairs);
         return Math.max(...stairsClimbed)
-         
+    }
+    
+    giveUserStepsFeedback(id, date, userData) {
+        let userActivityToday = this.activityData.find(user => id === user.userID && date === user.date).numSteps;
+        let goalSteps = userData.find(user => id === user.id).dailyStepGoal
+        if (userActivityToday >= goalSteps) {
+          let stepsOver = userActivityToday - goalSteps
+          return `You're a rockstar! You went ${stepsOver} steps over your goal!`
+        } else {
+          let stepsLeft = goalSteps - userActivityToday
+          return `Almost there! You have ${stepsLeft} steps until you have met your step goal.`
+        }
     }
 }
 

@@ -8,12 +8,15 @@ $(document).ready(() => {
   const userDataArray = userRepository.fetchUserData(idRandom);
   const currentUser = new User(userDataArray);
   const hydration = new Hydration(hydrationData, currentUser.id);
-  hydration.findCurrentUserData();
+  const currentUserHydrationData = hydration.findCurrentUserData();
   const activity = new Activity(activityData, idRandom, userData);
-//   const findTrends = activity.findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers()
+  const currentUserActivityData = activity.findCurrentUserData();
+  const findStepTrends = activity.findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers();
+  const findStairTrends = activity.findTrendOfIncreasingStairsForMoreThanThreeDaysForAllUsers();
   const sleep = new Sleep(sleepData, idRandom, userData);
   sleep.findCurrentUserData();
   activity.findCurrentUserData();
+
 
   
 

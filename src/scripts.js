@@ -20,11 +20,11 @@ $('.header__div__user-stepgoal').text(`Your step goal: ${user.dailyStepGoal} ste
 
 $('.header__div__allusers-stepgoal').text(`Average User Goal: ${repo.getAllUsersAvgStepGoal()} steps`);
 
-$('.hydration__container--consumed--today').text(`Consumed today: ${userHydro.userHydrationByDate(sampleDate)}oz`);
+$('.hydration__container--consumed--today').text(`${userHydro.userHydrationByDate(sampleDate)}oz`);
 
 userHydro.getHydroArray()
 
-$('.hydration__container--consumed--this--week').text(`Daily average consumed this week: ${userHydro.getWeeklyHydroAvg()}oz`);
+$('.hydration__container--consumed--this--week').text(`${userHydro.getWeeklyHydroAvg()}oz`);
 
 
 $('.sleep__container--hours--today').text(`Hours slept today: ${sleepyPerson.getSleepHoursByDate(sampleDate)} hours`)
@@ -63,18 +63,14 @@ var myChart = new Chart(hydroChart, {
       label: 'Oz',
       data: userHydro.getHydroArray().map(day => day.numOunces),
       backgroundColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-      ],
-      borderWidth: 1
+        'rgba(0, 121, 223, 1)',
+        'rgba(0, 121, 223, 1)',
+        'rgba(0, 121, 223, 1)',
+        'rgba(0, 121, 223, 1)',
+        'rgba(0, 121, 223, 1)',
+        'rgba(0, 121, 223, 1)',
+        'rgba(0, 121, 223, 1)',
+      ]
     }]
   },
   options: {

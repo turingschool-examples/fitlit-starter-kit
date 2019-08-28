@@ -30,39 +30,49 @@
       <section class="main__hydration">
         <h3 class="main__hydration--h3">Hydration</h3>
         <article class="main__hydration__article--data">
-          <container class="main__hydration--data--container">
-                    <p class="main__hydration--date">Aug 19, 2019</p>
-                    <p class="main__hydration--chooseDate">Pick a Day</p>
-            <p class="hydration__container--consumed--today">Consumed Today: 15oz</p>
-            <p class="hydration__container--consumed--this--week">Average consumed this week: 45oz</p>
-          </container>
+          <div class="main__hydration__div--user--group">
+            <container class="main__hydration--data--container left--side--hydration hydration-stats">
+              <div class="hydration-stats-text">
+                <p >Consumed Today:</p>
+                <p class="hydration__container--consumed--today hydration-stats-nums">15oz</p>
+              </div>
+              <div class="hydration-stats-text">
+                <p >Average consumed this week:</p>
+                <p class="hydration__container--consumed--this--week hydration-stats-nums">45oz</p>
+              </div>
+            </container>
+            <container class="main__hydration--data--container left--side--hydration">
+              <p class="main__hydration__average--all-users">
+                Average consumed by ALL users this week: 50oz
+              </p>
+            </container>
+          </div>
           <container class="main__hydration--data--container weeklyHydro">
             <h4 class="main__hydration--thisWeek">This week:</h4>
-            <canvas id="hydroChart--thisWeek" width="400" height="400"></canvas>
-          </container>
-          <container class="main__hydration--data--container">
-            <p class="main__hydration__average--all-users">
-              Average consumed by ALL users this week: 50oz
-            </p>
+            <div class="hydroChart-container" style="position: relative; width:98%">
+                <canvas id="hydroChart--thisWeek" ></canvas>
+            </div>
           </container>
         </article>
       </section>
       <section class="main__sleep">
         <h3 class="main__sleep--h3">Sleep</h3>
         <article class="main__sleep__article--data">
-          <container class="main__sleep--data--container">
-                      <p class="main__sleep--date">Aug 19, 2019</p>
-                      <p class="main__sleep--chooseDate">Pick a Day</p>
-            <p class="sleep__container--hours--today">Hours Slept today: 5 hours</p>
-            <p class="sleep__container--hours--this--week">Average hours slept this week: 6 hours</p>
-          </container>
           <container class="main__sleep--data--container weeklyHydro">
             <h4 class="main__sleep--thisWeek sleep--week-byDay">This week:</h4>
-            <canvas id="sleepChart--thisWeek" width="400" height="400"></canvas>
+            <div class="hydroChart-container" style="position: relative; width:98%">
+              <canvas id="sleepChart--thisWeek"></canvas>
+            </div>
           </container>
-          <container class="main__sleep--data--container">
-            <h4 class="main__sleep--thisWeek sleep--week--avg"> Averages for Everyone This Week:</h4>
-          </container>
+          <div class="main__sleep__div--user--group">
+            <container class="main__sleep--data--container right--side--hydration">
+              <p class="sleep__container--hours--today">Hours Slept today: 5 hours</p>
+              <p class="sleep__container--hours--this--week">Average hours slept this week: 6 hours</p>
+            </container>
+            <container class="main__sleep--data--container right--side--hydration">
+              <h4 class="main__sleep--thisWeek sleep--week--avg"> Averages for Everyone This Week:</h4>
+            </container>
+          </div>
         </article>
       </section>
       <section class="main__activity">
@@ -71,24 +81,11 @@
           <div class="user-activity">
             <article class="main__activity__article--title">
             </article>
-            <article class="main__activity__article--date">
-              <p class="main__activity--date">Aug 19, 2019</p>
-              <p class="main__activity--chooseDate">Pick a Day</p>
-            </article>
             <container class="main__activity--user--steps--today--container">
               <p class="activity__container--user--steps--today">Steps Today: 10,000</p>
               <p class="activity__container--user--active--today">Active minutes today: 55 mins</p>
               <p class="activity__container--user--miles--today">Miles walked today: 5 miles</p>
               <p class="activity__container--user--flights--today">Flights climbed today: 3</p>
-            </container>
-            <container class="main__activity--user--steps--alltime--container">
-              <p class="activity__container--user--steps--alltime">Steps Today: 10,000</p>
-              <p class="activity__container--user--active--alltime">Active minutes today: 55
-                mins</p>
-              <p class="activity__container--user--miles--alltime">Miles walked today: 5 miles
-              </p>
-              <p class="activity__container--user--flights--alltime">Flights climbed today: 3
-              </p>
             </container>
           </div>
           <div class="allusers-activity">
@@ -103,14 +100,6 @@
               <p class="activity__container--allusers--steps--today">Steps Today: 10,000</p>
               <p class="activity__container--allusers--active--today">Active minutes today: 55 mins</p>
               <p class="activity__container--allusers--flights--today">Flights climbed today: 3</p>
-            </container>
-            <container class="main__activity--allusers--steps--alltime--container">
-              <p class="activity__container--allusers--steps--alltime">Steps: 10,000</p>
-              <p class="activity__container--allusers--active--alltime">Active minutes:
-                55 mins</p>
-              <p class="activity__container--allusers--miles--alltime">Miles walked: 5
-                miles</p>
-              <p class="activity__container--allusers--flights--alltime">Flights climbed: 3</p>
             </container>
           </div>
         </article>

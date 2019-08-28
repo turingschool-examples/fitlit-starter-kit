@@ -14,6 +14,7 @@ $(document).ready(() => {
   const sleep = new Sleep(sleepData, idRandom, userData);
   sleep.findCurrentUserData();
   activity.findCurrentUserData();
+  
 
   
 
@@ -53,14 +54,6 @@ $(document).ready(() => {
   $(".most-hours-slept-date").text(sleep.findUsersSleptMostHoursBasedOnDate(todayString));
   $(".over-three-sleep-quality").text(sleep.findAllUsersOverThreeSleepQualityForWeek(todayString, todayString));
   $(".best-date-of-sleep").text(sleep.findBestDateOfSleepOfUser(todayString));
-
-
-
- 
-  
-
-
-
 
 })
 
@@ -176,25 +169,27 @@ $(".activity-btn").click(function() {
 });
 
 $(".activity-btn").click(function() {
-    $(".sleep-week-display").hide();
-    $(".sleep-week-quality-display").hide();
-    $(".sleep-info").hide();
-    $(".hydration-week-display").hide();
-    $(".hydration-info").hide();
-    $(".profile-info").hide();
-  });
+  $(".sleep-week-display").hide();
+  $(".sleep-week-quality-display").hide();
+  $(".sleep-info").hide();
+  $(".hydration-week-display").hide();
+  $(".hydration-info").hide();
+  $(".profile-info").hide();
+});
 
 $(".profile-btn").click(function() {
   $(".profile-info").toggle();
 });
 
 $(".profile-btn").click(function() {
-    $(".sleep-week-display").hide();
-    $(".sleep-week-quality-display").hide();
-    $(".sleep-info").hide();
-    $(".hydration-week-display").hide();
-    $(".hydration-info").hide();
-    $(".activity-week-display").hide();
-  });
+  $(".sleep-week-display").hide();
+  $(".sleep-week-quality-display").hide();
+  $(".sleep-info").hide();
+  $(".hydration-week-display").hide();
+  $(".hydration-info").hide();
+  $(".activity-week-display").hide();
+});
+
+
 
 

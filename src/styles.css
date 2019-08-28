@@ -9,7 +9,10 @@
       /* font-family: 'DM Sans', sans-serif;*/
       font-family: 'DM Serif Display', serif;
       display: flex;
- 
+  }
+
+  h3 {
+      color: aliceblue;
   }
 
   nav {
@@ -22,10 +25,13 @@
 
   .sleep-box {
       display: flex;
+      color: aliceblue;
   }
 
   .profile-info {
       display: none;
+      font-size: 40px;
+      color: aliceblue;
   }
 
   .logo-nav {
@@ -50,18 +56,30 @@
 
 .hydration-week-display {
     display: none;
+    color: aliceblue;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 40px;
 }
 
 .activity-week-display {
     display: none;
+    color: aliceblue;
 }
 
 .sleep-info {
     display: none;
+    color: aliceblue;
 }
 
 .hydration-info {
     display: none;  
+    color: aliceblue
 }
 
   .sleep-display-heading {

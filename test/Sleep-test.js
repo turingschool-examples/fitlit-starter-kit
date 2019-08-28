@@ -85,7 +85,7 @@ describe('Sleep', () => {
   });
 
   describe('findAllUsersOverThreeSleepQualityForWeek', () => {
-    it('should be able to find all user/s who average a sleep quality greater than 3 for a given week', () => {
+    it.only('should be able to find all user/s who average a sleep quality greater than 3 for a given week', () => {
       expect(sleep.findAllUsersOverThreeSleepQualityForWeek("2019/06/15", "2019/06/20")).to.eql([ 'Jarvis Considine', 'Herminia Witting' ]);
     });
   });

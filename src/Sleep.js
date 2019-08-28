@@ -98,15 +98,14 @@ class Sleep {
       const avg = filterData.reduce((acc, currentElement) => {
         acc += currentElement.sleepQuality
         return acc
-      }, 0) / filterData.length
-
-      if(avg >= 3) {
+      }, 0) / filterData.length;
+      if (avg >= 3) {
         namesID.push(id)
       }
     }) 
     var groupOverThree = namesID.map((num) => {
       return this.allUsers.find((user) => {
-        if(num === user.id) {
+        if (num === user.id) {
           return user
         }
       }).name

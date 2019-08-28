@@ -236,6 +236,5 @@ describe('ActivityUser', function() {
       expect(activityUser.compareStairsAverageWithUser('2019/06/17', 2)).to.equal("You were lower than the daily average of stairs climbed today :(")
     });
     
-    });
-
 });
+

@@ -149,13 +149,18 @@ class Activity {
     return activeMins / day.length;
   };
   
-  getEveryonesAvgSteps(date) {
+  returnEveryonesLastDayInfo(date) {
     let everyonesLastDayInfo = this.activityData.filter( user => {
       return user.date === date;
     });
     let allUsers = everyonesLastDayInfo.filter(user => {
       return this.userID !== user.userId;
     });
+    return allUsers;
+  }
+
+  getEveryonesAvgSteps(date) {
+    let allUsers = activity.returnEveryonesLastDayInfo(date);
     let totalSteps = allUsers.reduce( (acc, walked) => {
       acc += walked.numSteps;
       return acc;
@@ -164,12 +169,7 @@ class Activity {
   };
 
   getEveryonesAvgMinsActive(date) {
-    let everyonesLastDayInfo = this.activityData.filter( user => {
-      return user.date === date;
-    });
-    let allUsers = everyonesLastDayInfo.filter(user => {
-      return this.userID !== user.userId;
-    });
+    let allUsers = activity.returnEveryonesLastDayInfo(date);
     let minActive = allUsers.reduce( (acc, walked) => {
       acc += walked.minutesActive;
       return acc;
@@ -178,12 +178,7 @@ class Activity {
   };
 
   getEveryonesAvgStairsClimbed(date) {
-    let everyonesLastDayInfo = this.activityData.filter( user => {
-      return user.date === date;
-    });
-    let allUsers = everyonesLastDayInfo.filter(user => {
-      return this.userID !== user.userId;
-    });
+    let allUsers = activity.returnEveryonesLastDayInfo(date);
     let stairsClimbed = allUsers.reduce( (acc, walked) => {
       acc += walked.flightsOfStairs;
       return acc;

@@ -28,6 +28,8 @@ $('.grid').masonry({
     $('#article__user--quality-slept').text(sleep.findSleepQualityDay('2019/06/15'));
     $('#sleep-hours-avg').text(sleep.findAvgHoursSlept());
     $('#sleep-qual-avg').text(sleep.findAvgSleepQual());
+    $('#least-restful').text(sleep.findBestAndWorstSleep('2019/06/15')[0]);
+    $('#most-restful').text(sleep.findBestAndWorstSleep('2019/06/15')[1]);
     $('#article__user--todaysteps').text(activityData[randomUser].numSteps);
     $('#article__user--activemins').text(activity.minsUserActive(randomUser, '2019/06/15'));
     $('#article__user--todaydistance').text(activity.milesUserWalked(randomUser, '2019/06/15', userData));

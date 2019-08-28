@@ -35,6 +35,4 @@ describe('SleepRepository', () => {
     expect(sleepRepository.findSleepiestUserPerDay("2019/06/21")).to.deep.equal('Mae Connelly');
   });
 
-
-
 });

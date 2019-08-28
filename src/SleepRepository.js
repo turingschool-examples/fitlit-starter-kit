@@ -45,9 +45,10 @@ class SleepRepository {
     let sleepyUserObj =  userData.find(user => user.id === sleepiestUser[0].userID);
     return sleepyUserObj.name
   }
-
  
 }   
+
+
 
 
 if (typeof module !== "undefined") {

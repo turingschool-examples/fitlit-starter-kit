@@ -31,13 +31,11 @@ class AllUsers {
             let result = average[key].reduce((acc, cur) => {
                 return acc += cur;
             }, 0)
-            console.log("result: ", result)
             let avg = result / average[key].length;
             if (avg >= 3) {
                 goodSleep.push(key)
             }
         }
-        console.log(goodSleep);
         return goodSleep;
     }
 

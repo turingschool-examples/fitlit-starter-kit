@@ -57,10 +57,8 @@ class Activity {
 
     getDaysStepGoalExceeded(id) {
         let userInfo = this.findUser(id)
-        console.log("user info is step goal here", userInfo)
         let allUsers = new UserRepository(userData)
         let user = allUsers.returnUserData(id)
-        console.log("maybe step goal here", user)
         let overGoal = userInfo.filter(day => {
             return day.numSteps > user.dailyStepGoal
         }).map(day => day.date)
@@ -97,7 +95,6 @@ class Activity {
             }
             return acc
         }, [])
-        console.log("trend", trend)
         return trend
     }
 

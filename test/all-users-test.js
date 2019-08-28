@@ -1,6 +1,5 @@
 const chai = require('chai');
 const expect = chai.expect;
-
 const AllUserSampleActivityData = require('../test/allUserActivitySampleData')
 const AllUsersSampleData = require('../test/allUserSleepSampleData')
 const AllUsers = require('../src/all-users');

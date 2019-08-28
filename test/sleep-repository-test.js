@@ -9,15 +9,15 @@ beforeEach(() => {
 
 describe('SleepRepository', function() {
 
-  it('should be a function', function() {
+  it.only('should be a function', function() {
     expect(SleepRepository).to.be.a('function');
   });
 
-  it('should store user sleep id', function() {
+  it.only('should store user sleep id', function() {
     expect(sleepRepository.id).to.equal(3);
   });
 
-  it('should find sleep object via id', function() {
+  it.only('should find sleep object via id', function() {
     expect(sleepRepository.findSleepUserData()).to.deep.equal([
       {
         "userID": 3,
@@ -118,24 +118,24 @@ describe('SleepRepository', function() {
     ])
   })
 
-  it('should return average sleep per day for all time', function() {
+  it.only('should return average sleep per day for all time', function() {
     expect(sleepRepository.returnSleepAvg()).to.equal(7)
   });
 
-  it('should return average sleep quality for all time', function() {
+  it.only('should return average sleep quality for all time', function() {
     expect(sleepRepository.returnSleepQualityAvg()).to.equal(3)
   });
 
-  it('should return total users average sleep for all time', function() {
+  it.only('should return total users average sleep for all time', function() {
     expect(sleepRepository.calculateTotalAverageSleep()).to.equal(7)
   })
 
-  it('should return total users average sleep quality for all time', function() {
+  it.only('should return total users average sleep quality for all time', function() {
     expect(sleepRepository.calculateTotalAverageSleepQuality()).to.equal(3)
   })
 
 
-  it('Should find the user with the most hours slept on a given date', function () {
+  it.only('Should find the user with the most hours slept on a given date', function () {
     const data = new SleepRepository(sleepTestData)
     const date = data.returnMostHoursSlept('2019/06/15');
     expect(date).to.deep.equal([{
@@ -144,11 +144,11 @@ describe('SleepRepository', function() {
       hoursSlept: 10.8,
       sleepQuality: 4.7
     }])
-})
+  });  
 
-it('should return all users who averaged greater than 3 sleep quality for a given week', () => {
-  expect(sleepRepository.findUsersByWeek('2019/06/16', '2019/06/22')).to.deep.equal([2])
-})
+  it.only('should return all users who averaged greater than 3 sleep quality for a given week', () => {
+    expect(sleepRepository.findUsersByWeek('2019/06/16', '2019/06/22')).to.deep.equal([2])
+  });
 
 
-})
+});

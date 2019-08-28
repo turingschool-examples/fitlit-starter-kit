@@ -15,23 +15,28 @@
       <div class="header__div--greeting">
         <container class="header__div--container">
             <p class="top-text">Your Goal:</p>
-            <p class="header__div__user-stepgoal top-nums">1000 per day</p>
+            <p class="header__div__user-stepgoal top-nums">1000</p>
+            <p class="top-text bottom-text">STEPS</p>
           </container>
           <container class="header__div--container">
             <p class="top-text">Average User Goal:</p>
             <p class="header__div__allusers-stepgoal top-nums">asdf</p>
+            <p class="top-text bottom-text">STEPS</p>
         </container>
         <container class="header__div--container">
           <p class="top-text">Average Steps:</p>
           <p class="header__div__container__avg--steps top-nums">10,555</p>
+          <p class="top-text bottom-text">STEPS</p>
         </container>
         <container class="header__div--container">
           <p class="top-text">Average Hours Slept:</p>
-          <p class="header__div__container__avg--sleep top-nums">7.5 hours</p>
+          <p class="header__div__container__avg--sleep top-nums">7.5</p>
+          <p class="top-text bottom-text">HOURS</p>
         </container>
         <container class="header__div--container">
           <p class="top-text">Average Ounces Drank:</p>
-          <p class="header__div__container__avg--hydration top-nums">56oz</p>
+          <p class="header__div__container__avg--hydration top-nums">56</p>
+          <p class="top-text bottom-text">OZ</p>
       </container>
     </div>
     </header>
@@ -87,28 +92,31 @@
       <section class="main__activity">
         <h3 class="main__activity--h3 section-title">Activity</h3>
         <article class="main__activity__article--data">
-          <div class="user-activity">
-            <article class="main__activity__article--title">
-            </article>
-            <container class="main__activity--user--steps--today--container">
-              <p class="activity__container--user--steps--today">Steps Today: 10,000</p>
-              <p class="activity__container--user--active--today">Active minutes today: 55 mins</p>
-              <p class="activity__container--user--miles--today">Miles walked today: 5 miles</p>
-              <p class="activity__container--user--flights--today">Flights climbed today: 3</p>
-            </container>
-            <h4 lass="main__activity--today--all--users">Averages for Everyone:</h4>
-            <container class="main__activity--allusers--steps--today--container">
-              <p class="activity__container--allusers--steps--today">Steps Today: 10,000</p>
-              <p class="activity__container--allusers--active--today">Active minutes today: 55 mins</p>
-              <p class="activity__container--allusers--flights--today">Flights climbed today: 3</p>
-            </container>
+          <div class="activity-holder">
+            <div class="user-activity">
+              <container class="main__activity--user--steps--today--container">
+                <p class="activity__container--user--steps--today">Steps Today: 10,000</p>
+                <p class="activity__container--user--active--today">Active minutes today: 55 mins</p>
+                <p class="activity__container--user--miles--today">Miles walked today: 5 miles</p>
+                <p class="activity__container--user--flights--today">Flights climbed today: 3</p>
+              </container>
+            </div>
+            <div class="user-activity">
+              <h4 lass="main__activity--today--all--users">Averages for Everyone:</h4>
+              <container class="main__activity--allusers--steps--today--container">
+                <p class="activity__container--allusers--steps--today">Steps Today: 10,000</p>
+                <p class="activity__container--allusers--active--today">Active minutes today: 55 mins</p>
+                <p class="activity__container--allusers--flights--today">Flights climbed today: 3</p>
+              </container>
+            </div>
           </div>
-          <div class="allusers-activity">
-            <h4 class="main__activity--thisWeek">This week:</h4>
-            <canvas id="activitySteps--thisWeek" width="400" height="200"></canvas>
-            <canvas id="activityFlights--thisWeek" width="400" height="200"></canvas>
-            <canvas id="activityMins--thisWeek" width="400" height="200"></canvas>
-          </div>
+            <div class="allusers-activity--charts">
+              <h4 class="main__activity--thisWeek">This week:</h4>
+              <canvas id="activitySteps--thisWeek" width="400" height="150"></canvas>
+              <canvas id="activityFlights--thisWeek" width="400" height="150"></canvas>
+              <canvas id="activityMins--thisWeek" width="400" height="150"></canvas>
+            </div>
+          
         </article>
       </section>
     <section class="main__trends">

@@ -105,13 +105,16 @@ article {
   margin-top: 0;
   font-family: 'Nunito', sans-serif;
   font-size: 20px;
-
+}
+.bottom-text {
+  font-size: 15px;
+  margin: 0;
 }
 
 .top-nums {
-  font-size: 40px;
+  font-size: 45px;
   font-family: 'Maven Pro', sans-serif;
-  margin: 0;
+  margin: 0 0 7px 0;
   
 }
 
@@ -178,12 +181,25 @@ article {
 .main__activity__article--data {
   display: flex;
 }
-
-.user-activity,
+.activity-holder,
 .allusers-activity {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 33%;
+}
+
+.user-activity {
+  flex: 1 1 auto;
+}
+
+.allusers-activity--charts {
+  display: flex;
+  flex-direction: column;
+  width: 66%;
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding: 10px;
+  margin: 10px;
 }
 
 .main__sleep {

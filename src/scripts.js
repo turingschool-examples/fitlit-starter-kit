@@ -27,7 +27,7 @@ userHydro.getHydroArray(sampleDate)
 $('.hydration__container--consumed--this--week').text(`${userHydro.getWeeklyHydroAvg()}`);
 
 
-$('.sleep__container--hours--today').text(`Hours slept today: ${sleepyPerson.getSleepHoursByDate(sampleDate)} hours`)
+$('.sleep__container--hours--today').text(`${sleepyPerson.getSleepHoursByDate(sampleDate)}`)
 
 $('.sleep__container--hours--this--week').text(`Average hours slept this week: ${sleepyPerson.getWeeklyAvg(sampleDate, 'hoursSlept')} hours`)
 
@@ -93,26 +93,26 @@ var mixedChart = new Chart(sleepChart, {
       label: 'Hours Slept',
       data: sleepyPerson.getWeek(sampleDate).map(day => day.hoursSlept),
       backgroundColor: [
-        'rgba(0, 205, 229, .5)',
-        'rgba(0, 205, 229, .5)',
-        'rgba(0, 205, 229, .5)',
-        'rgba(0, 205, 229, .5)',
-        'rgba(0, 205, 229, .5)',
-        'rgba(0, 205, 229, .5)',
-        'rgba(0, 205, 229, .5)',
+        'rgba(196, 169, 246, .8)',
+        'rgba(196, 169, 246, .8)',
+        'rgba(196, 169, 246, .8)',
+        'rgba(196, 169, 246, .8)',
+        'rgba(196, 169, 246, .8)',
+        'rgba(196, 169, 246, .8)',
+        'rgba(196, 169, 246, .8)',
       ],
     }, {
       type: 'line',
       label: 'Sleep Quality',
       data: sleepyPerson.getWeek(sampleDate).map(day => day.sleepQuality),
       backgroundColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
+        'rgba(136, 153, 172, 1)',
+        'rgba(136, 153, 172, 1)',
+        'rgba(136, 153, 172, 1)',
+        'rgba(136, 153, 172, 1)',
+        'rgba(136, 153, 172, 1)',
+        'rgba(136, 153, 172, 1)',
+        'rgba(136, 153, 172, 1)',
       ],
     }],
     labels: weekOfDates

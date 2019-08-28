@@ -99,6 +99,10 @@ article {
   text-align: center;
 }
 
+#border-right {
+  border-right: 2px solid black;
+}
+
 .top-text {
   margin-top: 0;
   font-family: 'Roboto', sans-serif;
@@ -108,12 +112,15 @@ article {
 .bottom-text {
   font-size: 20px;
   margin: 0;
+  margin-top: -15px;
+  margin-bottom: 5px;
 }
 
 .top-nums {
   font-size: 60px;
   font-family: 'Khula', sans-serif;
   margin: 0;
+  margin-top: -15px;
 }
 
 .main__hydration {
@@ -190,6 +197,16 @@ article {
   font-family: 'Nunito', sans-serif;
 }
 
+.flexBox-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexBox-row {
+   display: flex;
+  flex-direction: row;
+}
+
 .main__activity__article--data {
   display: flex;
 }
@@ -222,6 +239,10 @@ article {
   flex-direction: column;
 }
 
+.main__sleep--data-div{
+  display: flex;
+  flex-direction: column;
+}
 
 .main__activity {
   /* background-color: rgba(200, 200, 200, .7); */

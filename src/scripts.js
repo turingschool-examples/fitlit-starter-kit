@@ -93,26 +93,26 @@ var mixedChart = new Chart(sleepChart, {
       label: 'Hours Slept',
       data: sleepyPerson.getWeek(sampleDate).map(day => day.hoursSlept),
       backgroundColor: [
-        'rgba(0, 205, 229, .5)',
-        'rgba(0, 205, 229, .5)',
-        'rgba(0, 205, 229, .5)',
-        'rgba(0, 205, 229, .5)',
-        'rgba(0, 205, 229, .5)',
-        'rgba(0, 205, 229, .5)',
-        'rgba(0, 205, 229, .5)',
+        'rgba(37, 36, 92, .8 )',
+        'rgba(37, 36, 92, .8 )',
+        'rgba(37, 36, 92, .8 )',
+        'rgba(37, 36, 92, .8 )',
+        'rgba(37, 36, 92, .8 )',
+        'rgba(37, 36, 92, .8 )',
+        'rgba(37, 36, 92, .8 )',
       ],
     }, {
       type: 'line',
       label: 'Sleep Quality',
       data: sleepyPerson.getWeek(sampleDate).map(day => day.sleepQuality),
       backgroundColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
+        'rgba(61, 175, 9, .6)',
+        'rgba(61, 175, 9, .6)',
+        'rgba(61, 175, 9, .6)',
+        'rgba(61, 175, 9, .6)',
+        'rgba(61, 175, 9, .6)',
+        'rgba(61, 175, 9, .6)',
+        'rgba(61, 175, 9, .6)',
       ],
     }],
     labels: weekOfDates
@@ -139,14 +139,14 @@ var myChart = new Chart(activitySteps, {
       label: 'Steps',
       data: activePerson.getWeek(sampleDate).map( day => day.numSteps),
 
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 99, 132, 1)'
+      backgroundColor: [
+        'rgba(215, 4, 0, .8)',
+        'rgba(215, 4, 0, .8)',
+        'rgba(215, 4, 0, .8)',
+        'rgba(215, 4, 0, .8)',
+        'rgba(215, 4, 0, .8)',
+        'rgba(215, 4, 0, .8)',
+        'rgba(215, 4, 0, .8)'
       ],
       borderWidth: 1
     }]
@@ -166,8 +166,14 @@ var myChart = new Chart(activityFlights, {
       label: 'Flights of Stairs',
       data: activePerson.getWeek(sampleDate).map(day => day.flightsOfStairs),
 
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
+      backgroundColor: [
+        'rgba(61, 175, 9, .8)',
+        'rgba(61, 175, 9, .8)',
+        'rgba(61, 175, 9, .8)',
+        'rgba(61, 175, 9, .8)',
+        'rgba(61, 175, 9, .8)',
+        'rgba(61, 175, 9, .8)',
+        'rgba(61, 175, 9, .8)'
       ],
       borderWidth: 1
     }]
@@ -192,8 +198,14 @@ var myChart = new Chart(activityMins, {
     datasets: [{
       label: 'Minutes Active',
       data: activePerson.getWeek(sampleDate).map(day => day.minutesActive),
-      borderColor: [
-        'rgba(255, 99, 132, 1)'
+      backgroundColor: [
+        'rgba(37, 36, 92, .85)',
+        'rgba(37, 36, 92, .85)',
+        'rgba(37, 36, 92, .85)',
+        'rgba(37, 36, 92, .85)',
+        'rgba(37, 36, 92, .85)',
+        'rgba(37, 36, 92, .85)',
+        'rgba(37, 36, 92, .85)'
       ],
       borderWidth: 1
     }]

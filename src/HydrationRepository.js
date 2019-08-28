@@ -9,9 +9,9 @@ class HydrationRepository {
       }
     })
   }
-  getWeeklyAvgAllUsers(){
+  getWeeklyAvgAllUsers() {
     const total = this.data.reduce((acc, user) => acc += user.numOunces, 0)
-    return Math.round(total/this.data.length)
+    return Math.round(total / this.data.length)
   }
 }
 

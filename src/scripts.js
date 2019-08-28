@@ -6,7 +6,8 @@ let newUser = new User(user);
 let hydration = new Hydration(hydrationData);
 let sleep = new Sleep(sleepData);
 let activity = new Activity(activityData)
-let friendObjs = populateFriends(user.friends);
+let friendNames = returnFriendListNames();
+let friendSteps = returnFriendListSteps();
 
 $('#user-name').text(newUser.returnUserFirstName());
 $('#user-info-name').text(newUser.name);
@@ -31,12 +32,12 @@ $('#user-current-stairs-climbed').text(activity.returnStairsClimbedByDate(user.i
 $('#all-users-average-stairs-climbed').text(activity.returnAvgStairsClimbedAllUsersByDate(currentDate));
 $('#user-current-active-mins').text(activity.returnActiveMinutesByDate(user.id, currentDate));
 $('#all-users-average-active-mins').text(activity.returnAvgActiveMinutesAllUsersByDate(currentDate));
-$('#user-step-count-by-week').text(activity.returnNumberOfStepsByWeek(user.id, currentDate));
-$('#user-stairs-climbed-by-week').text(activity.returnStairsClimbedByWeek(user.id, currentDate));
-$('#user-mins-active-by-week').text(activity.returnActiveMinutesByWeek(user.id, currentDate));
+$('#user-step-count-by-week').text(activity.returnNumberOfStepsByWeek(user.id, currentDate))
+$('#user-stairs-climbed-by-week').text(activity.returnStairsClimbedByWeek(user.id, currentDate))
+$('#user-mins-active-by-week').text(activity.returnActiveMinutesByWeek(user.id, currentDate))
+$('#winner-name').text(returnFriendChallengeWinner(friendNames))
 $('#user-water-trend-week').text(displayWaterStatus());
 $('#republic-plaza-challenge').text(activity.republicPlazaChallenge(user.id))
-friendObjs.forEach(friend => $('#friend-info').append(`<p>Friend name: ${friend.name}, steps: ${friend.steps}</p>`));
 
 function generateRandomUserId() {
   let randomNumOneToFifty = (Math.random() * 50);
@@ -70,7 +71,7 @@ function populateFriends(userFriends) {
     let userFriend = new User(userRepo.returnUserData(friend))
     return ({
       id: userFriend.id, 
-      name: userFriend.name, 
+      name: userFriend.returnUserFirstName(),
       steps: (activity.returnNumberOfStepsByWeek(userFriend.id, currentDate)).reduce((acc, day) => acc += day)})
   });
   friends.push(populateUserDataForFriendChallenge());
@@ -80,16 +81,32 @@ function populateFriends(userFriends) {
 function populateUserDataForFriendChallenge() {
   return {
     id: user.id,
-    name: user.name,
+    name: newUser.returnUserFirstName(),
     steps: activity.returnNumberOfStepsByWeek(user.id,currentDate)
       .reduce((acc, day) => acc += day)
   }
 }
 
+function returnFriendListNames() {
+  let friendObjs = populateFriends(user.friends);
+  return friendObjs.map(friend => friend.name);
+}
+
+function returnFriendListSteps() {
+  let friendObjs = populateFriends(user.friends);
+  return friendObjs.map(friend => friend.steps);
+}
+
+function returnFriendChallengeWinner(friendNames) {
+  if (friendNames[0] === newUser.returnUserFirstName()) {
+    return `You win!!`;
+  }
+  return `${friendNames[0]} is the Winner!`
+}
+
 function returnDatesOfWeek(userId, date) {
   let userData = activity.findCurrentUserData(userId);
   let index = userData.findIndex((data) => data.date === date);
-
   return userData.splice(index - 6, 7).map(day => day.date);
 }
 
@@ -296,6 +313,47 @@ var stairsByWeek = new Chart(ctx, {
   options: {
     legend: {
     },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+var ctx = $('#friend-info');
+var friendStepChallenge = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: friendNames,
+    datasets: [{
+      label: 'steps',
+      data: friendSteps,
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgb(221, 160, 221, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(192, 192, 192, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(221, 160, 221, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(192, 192, 192, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    legend: {},
     scales: {
       yAxes: [{
         ticks: {

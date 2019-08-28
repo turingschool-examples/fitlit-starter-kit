@@ -2,7 +2,7 @@ class Sleep {
   constructor(sleepData, userID) {
     this.sleepData = sleepData;
     this.userID = userID;
-    this.singleUserData = []
+    this.singleUserData = [];
   }
 
   extractSingleUser() {
@@ -11,64 +11,59 @@ class Sleep {
         return user;
       }
     });
-    this.singleUserData = userData
+    this.singleUserData = userData;
+  }
+
+  findLatestWeek() {
+    let week = this.singleUserData.slice(-7);
+    return week;
   }
 
   findStartDate(date) {
     let startDate = this.singleUserData.find(day => {
-      return day.date === date
+      return day.date === date;
     })
     return startDate;
   }
 
   averageHoursSlept() {
-    let userHoursSlept = this.singleUserData.map(element => {
-      return element.hoursSlept
+    let hoursSleptThisWeek = this.singleUserData.map(element => {
+      return element.hoursSlept;
     });
-    let totalHoursSlept = userHoursSlept.reduce((totalHours, hours) => {
-      return totalHours += hours;
+    let totalHoursSlept = hoursSleptThisWeek.reduce((totalHours, hours) => {
+      return +(totalHours += hours).toFixed(2);
     }, 0);
-    totalHoursSlept = +(totalHoursSlept.toFixed(2))
-    let averageHoursSlept = +(totalHoursSlept / userHoursSlept.length).toFixed(1)
-    return averageHoursSlept
+    return +(totalHoursSlept / hoursSleptThisWeek.length).toFixed(1);
   }
 
   averageSleepQuality() {
-    let sleepQuality = this.singleUserData.map(user => {
-      return user.sleepQuality
+    let sleepQualityThisWeek = this.singleUserData.map(user => {
+      return user.sleepQuality;
     })
-    let totalSleepQuality = sleepQuality.reduce((total, sleepQuality) => {
-      return total += sleepQuality
+    let totalSleepQuality = sleepQualityThisWeek.reduce((total, sleepQuality) => {
+      return +(total += sleepQuality).toFixed(2);
     }, 0);
-    totalSleepQuality = +(totalSleepQuality.toFixed(2));
-    let averageSleepQuality = +(totalSleepQuality / sleepQuality.length).toFixed(1);
-    return averageSleepQuality;
+    return +(totalSleepQuality / sleepQualityThisWeek.length).toFixed(1);
   }
 
   hoursSleptSpecificDate(date) {
-    let day = this.findStartDate(date)
+    let day = this.findStartDate(date);
     return day.hoursSlept;
   }
 
   sleepQualitySpecificDate(date) {
-    let day = this.findStartDate(date)
+    let day = this.findStartDate(date);
     return day.sleepQuality;
   }
 
-  //method to calculate how many hours slept in any given week
   calculateWeeklyHoursSlept(date) {
-    //give a start date
-    let startDate = this.findStartDate(date)
-    //find the index of that date
-    let index = this.singleUserData.indexOf(startDate)
-    //return an arrary at that index and 7+
-    let week = this.singleUserData.slice(-7);
-    // console.log(week)
-    //return array with just the hours slept a given week
-    // let weeklyHoursSlept = week.map(day => {
-    //   return day.hoursSlept
-    // })
-    return week;
+    let startDate = this.findStartDate(date);
+    let index = this.singleUserData.indexOf(startDate);
+    let week = this.singleUserData.slice(index, 8);
+    let weeklyHoursSlept = week.map(day => {
+      return day.hoursSlept;
+    });
+    return weeklyHoursSlept;
   }
 
   calculateWeeklySleepQuality(date) {
@@ -76,7 +71,7 @@ class Sleep {
     let index = this.singleUserData.indexOf(startDate);
     let week = this.singleUserData.slice(index, 8);
     let weeklySleepQuality = week.map(day => {
-      return day.sleepQuality
+      return day.sleepQuality;
     });
     return weeklySleepQuality;
   }
@@ -107,27 +102,25 @@ class Sleep {
     let lastPerson = endDate[endDate.length - 1];
     let indexOfLastPerson = this.sleepData.indexOf(lastPerson);
     let usersWeek = this.sleepData.slice(indexOfFirstPerson, (indexOfLastPerson + 1));
-
-    console.log(usersWeek);
   }
 
   returnUsersWhoSleptTheMost(date) {
     let day = this.sleepData.filter(day => {
       return day.date === date
-    })
+    });
     day = day.sort((a, b) => a.hoursSlept - b.hoursSlept);
-    let users = []
+    let users = [];
     day.forEach(user => {
       if (day[day.length - 1].hoursSlept === user.hoursSlept) {
         users.push(user);
       }
     })
-    return users
+    return users;
   }
 
   returnDateWithMostHoursSlept(date) {
     let user = this.singleUserData.sort((a,b) => a.hoursSlept - b.hoursSlept);
-    return user[user.length - 1]
+    return user[user.length - 1];
   };
   
 }

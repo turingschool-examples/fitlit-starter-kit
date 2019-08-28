@@ -37,11 +37,6 @@ div {
   display: flex;
 }
 
-.header__div {
-  align-items: center;
-  justify-content: space-between;
-}
-
 section {
   display: flex;
   flex-direction: column;
@@ -56,13 +51,17 @@ article {
 }
 
 .header__div {
-  height: 10%;
+  align-items: center;
   background-color: rgba(200, 200, 200, .7);
+  height: 10%;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 .header__div--h1,
 .header__div--date {
   margin: 0 10px;
-  font-family: 'Livvic', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 20px; 
   font-weight: 300; 
 }
@@ -72,7 +71,7 @@ article {
 }
 
 .section-title{
-  font-family: 'Livvic', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 50px; 
   font-weight: 600; 
 }

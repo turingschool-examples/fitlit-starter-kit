@@ -9,6 +9,12 @@ class Sleep {
         });   
     }
 
+    getUserIndex(id,day) {
+        let targetData = this.findUser(id);
+        return targetData.findIndex(object => {
+            return object.date === day;
+        });
+    }
     getAverageHours(id) {
         let avgHoursSlept = this.findUser(id).map(element => {
             return element.hoursSlept}).reduce((acc, currentVal) => {
@@ -36,9 +42,7 @@ class Sleep {
 
     getSleepOverWeek(id, day) {
         let targetData = this.findUser(id);
-        let index = targetData.findIndex(object => {
-            return object.date === day;
-        });
+        let index = this.getUserIndex(id, day)
         let weekData = targetData.slice(index - 6, index + 1).map(arr => {
             return ` ${arr.date} : ${arr.hoursSlept} `;
         })
@@ -47,9 +51,7 @@ class Sleep {
 
     getSleepQualityOverWeek(id, day) {
         let targetData = this.findUser(id);
-        let index = targetData.findIndex(object => {
-            return object.date === day;
-        })
+        let index = this.getUserIndex(id, day)
         let weekInfo = targetData.slice(index - 6, index + 1).map(arr => {
             return ` ${arr.date} : ${arr.sleepQuality} `
         })
@@ -58,9 +60,7 @@ class Sleep {
 
     getUserHoursWeekAverage(id, day) {
         let targetData = this.findUser(id);
-        let index = targetData.findIndex(object => {
-            return object.date === day;
-        });
+        let index = this.getUserIndex(id, day)
         let week = targetData.slice(index - 6, index + 1).map(arr => {
             return arr.hoursSlept;
         });
@@ -72,9 +72,7 @@ class Sleep {
 
     getUserQualityWeekAverage(id, day) {
         let targetData = this.findUser(id);
-        let index = targetData.findIndex(object => {
-            return object.date === day;
-        });
+        let index = this.getUserIndex(id, day)
         let week = targetData.slice(index - 6, index + 1).map(arr => {
             return arr.sleepQuality;
         });

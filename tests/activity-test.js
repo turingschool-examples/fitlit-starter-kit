@@ -67,6 +67,19 @@ describe('Activity', () => {
     expect(activity.returnWeekMin("2019/06/21", 1)).to.deep.equal([  140, 175, 168, 165,275, 140, 135]);
   });
 
+  it('should return the number of steps for the latest day', () => {
+    expect(activity.returnStepsDay('2019/06/20', 1)).to.equal(14478);
+  });
+
+  it("should return the minutes active for the latest day", () => {
+    expect(activity.returnActiveDay("2019/06/20", 1)).to.equal(140);
+  });
+
+  it("should return the flights of stairs for the latest day", () => {
+    expect(activity.returnStairsDay("2019/06/20", 1)).to.equal(12);
+  });
+
+  
 
   // **** Iteration 5 ****
   // it('should return an array of data for a users friends', () => {

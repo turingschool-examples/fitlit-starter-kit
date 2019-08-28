@@ -5,7 +5,6 @@ class Activity {
   }
 
   calculateMilesWalked(date, id) {
-
     let stride = this.users.users.find(user => user.id === id).strideLength;
 
     let numberSteps = this.data
@@ -16,9 +15,11 @@ class Activity {
   }
 
   calculateMinActive(date, id) {
-    let userActivity = this.data.filter(user => user.userID === id).find(day => day.date === date).minutesActive;
+    let userActivity = this.data
+      .filter(user => user.userID === id)
+      .find(day => day.date === date).minutesActive;
 
-  return userActivity
+    return userActivity;
   }
 
   calculateAvgTimeActive(date, id) {
@@ -36,12 +37,13 @@ class Activity {
   }
 
   compareGoal(date, id) {
-
     let user = this.users.users.find(user => user.id === id);
 
-    let goal = user.dailyStepGoal
+    let goal = user.dailyStepGoal;
 
-    let userSteps = this.data.filter(user => user.userID === id).find(steps => steps.date === date).numSteps;
+    let userSteps = this.data
+      .filter(user => user.userID === id)
+      .find(steps => steps.date === date).numSteps;
 
     if (userSteps > goal) {
       return true;
@@ -51,7 +53,6 @@ class Activity {
   }
 
   findGoalDays(id) {
-
     let user = this.users.users.find(user => user.id === id);
 
     let goal = user.dailyStepGoal;
@@ -115,6 +116,30 @@ class Activity {
     let array = targetWeek.map(elem => elem.minutesActive);
 
     return array;
+  }
+
+  returnStepsDay(date, id) {
+    let userActivity = this.data.filter(user => user.userID === id);
+
+    let targetDay = userActivity.find(day => day.date === date);
+
+    return targetDay.numSteps;
+  }
+
+  returnActiveDay(date, id) {
+    let userActivity = this.data.filter(user => user.userID === id);
+
+    let targetDay = userActivity.find(day => day.date === date);
+
+    return targetDay.minutesActive;
+  }
+
+  returnStairsDay(date, id) {
+    let userActivity = this.data.filter(user => user.userID === id);
+
+    let targetDay = userActivity.find(day => day.date === date);
+
+    return targetDay.flightsOfStairs;
   }
 }
 

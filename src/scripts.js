@@ -45,7 +45,11 @@ $('.main_daily-minutes-active-span').text(activityRepo.getMinutesActive(uniqueUs
 $('.main_daily-steps-span').text(activityRepo.getMinutesActive(uniqueUserId, findToday(), 'numSteps'));
 
 
-// $('.').text(activityRepo.getMilesWalked(uniqueUserId, findToday()));
+$('.main_weekly-steps-span').text(activityRepo.getActivityForWeek(uniqueUserId, findToday(), 'numSteps'))
+
+$('.main_weekly-minutes-span').text(activityRepo.getActivityForWeek(uniqueUserId, findToday(), 'minutesActive'))
+
+$('.main_weekly-stairs-span').text( activityRepo.getActivityForWeek(uniqueUserId, findToday(), 'flightsOfStairs'))
 
 
 
@@ -73,34 +77,16 @@ function friendList(id) {
 
 function getFriendInfo(id, date) {
     let friends = friendList(id);
-    console.log("friends", friends);
     let weekFriends = friends.map(friendId => {
         let friendActivities = activityRepo.findUser(friendId)
-        console.log("friend activities", friendActivities)
         let todayIndex = friendActivities.findIndex((day) => {
             return day.date === date
         })
         let friendTotalSteps = friendActivities.slice(todayIndex - 6, todayIndex + 1).reduce((acc, day) => {
             return acc + day.numSteps
         }, 0)
-        console.log("friend total steps", friendTotalSteps)
-        console.log("heres the result", ({id: friendId, steps: friendTotalSteps}) )
         return ({id: friendId, steps: friendTotalSteps});
 
         })
     }
 
-
-
-getFriendInfo(1, today);
-
-// console.log(friendList(uniqueUserId));
-
-// console.log(getFriendInfo(1));
-
-
-
-
-// .forEach((index) => {
-    // console.log(hydrationRepo[index].numOunces);
-    // return hydrationRepo[index].numOunces}));

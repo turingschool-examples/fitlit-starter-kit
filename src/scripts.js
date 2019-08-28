@@ -9,7 +9,8 @@ const user = new User(randomUser)
 const users = new UserRepository(userData);
 const hydration = new Hydration(hydrationData, randomUser.id);
 const sleep = new Sleep(sleepData, randomUser.id);
-const activity = new Activity(activityData, userData);
+const activity = new Activity(activityData, userData, randomUser.id);
+
 
 // *** Event Listeners ***
 window.addEventListener('load', handlePageLoad);
@@ -19,6 +20,7 @@ function handlePageLoad() {
   handleUser();
   displayUserHydration();
   displaySleepInfo();
+  displayStepInfo();
 }
 
 function handleUser() {
@@ -141,8 +143,51 @@ function displaySleepInfo() {
   </article>`)
 }
 
+function returnDailySteps() {
+  activity.extractSingleActivityData();
+  let singleUserActivity = activity.singleActivity;
+  let latestDay = singleUserActivity[singleUserActivity.length - 1]
+  return latestDay.numSteps
+}
 
-// console.log(sleepFn)
+function returnMinutesActive() {
+  activity.extractSingleActivityData();
+  let singleUserActivity = activity.singleActivity;
+  let latestDay = singleUserActivity[singleUserActivity.length - 1]
+  return latestDay.minutesActive
+}
+
+function returnDailyMiles() {
+  activity.extractSingleActivityData();
+  activity.extractSingleUser();
+  let singleUserActivity = activity.singleActivity;
+  let latestDay = singleUserActivity[singleUserActivity.length - 1]
+  let miles = activity.calculateDailyMiles(latestDay.date);
+  return miles
+}
+
+
+function displayStepInfo() {
+  let dailySteps = returnDailySteps();
+  let stepGoal = user.dailyStepGoal;
+  let minutesActive = returnMinutesActive();
+  let miles = returnDailyMiles();
+
+  dailySection.insertAdjacentHTML('beforeend', `<article>
+    <h3>Steps</h3>
+    <p>${dailySteps}</p> 
+    <p>/ ${stepGoal}</p>
+
+    <h3>Activity</h3>
+    <p>Minutes Active: ${minutesActive} mins</p>
+    <p>Miles: ${miles}mi</p>
+
+   </article>`)
+}
+
+// function displayA
+
+
 
 
 

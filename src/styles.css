@@ -13,14 +13,16 @@ header {
   background-color: tomato;
 }
 
-.daily_section,
-.weekly_section {
+.daily_section {
   background-color: #000066;
   padding: 10px;
 }
 
 .daily_section {
+  display: flex;
+  flex-direction: row;
   margin-bottom: 20px;
+  height: 100%;
 }
 
 article {

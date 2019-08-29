@@ -10,7 +10,6 @@ class UserRepository {
   }
 
   returnAvgStepGoal() {
-    // console.log(this.users)
     return this.users.map(obj => obj.dailyStepGoal).reduce((acc, num) => {
       return acc + num
     }, 0) / this.users.length

@@ -17,7 +17,8 @@ body {
     "sleep1 sleep1 sleep2 sleep2 sleep5 sleep5"
     "sleep6 sleep6 activ1 activ1 activ2 activ2"
     "activ3 activ3 activ4 activ4 activ8 activ8"
-    "activ6 activ6 activ7 activ7 activ5 activ5";
+    "activ6 activ6 activ7 activ7 activ5 activ5"
+    "activ9 activ9 activ9 activ9 activ9 activ9";
   margin: 0;
   height: 100vh;
 }
@@ -240,6 +241,14 @@ hr {
   color: red;
 }
 
+#article19 {
+  grid-area: activ9;
+}
+
+#article19 ul {
+  color: #73bf00;
+}
+
 @media screen and (max-width: 700px) {
 
   body {
@@ -255,7 +264,8 @@ hr {
       "activ1 activ1 activ2 activ2"
       "activ3 activ3 activ4 activ4"
       "activ8 activ8 activ6 activ6"
-      "activ7 activ7 activ5 activ5";
+      "activ7 activ7 activ5 activ5"
+      "activ9 activ9 activ9 activ9";
   }
 
 @media screen and (max-width: 600px) {
@@ -306,7 +316,8 @@ hr {
         "activ8 activ8"
         "activ6 activ6"
         "activ7 activ7"
-        "activ5 activ5";
+        "activ5 activ5"
+        "activ9 activ9";
     }
 
     h1 {

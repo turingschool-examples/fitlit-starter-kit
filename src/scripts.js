@@ -167,6 +167,8 @@ $(".sleep-btn").click(function() {
 
 $(".hydration-btn").click(function() {
   $(".hydration-info").toggle();
+  $(".hydration-over-week").toggle();
+  $(".hydration-today").toggle();
   $(".sleep-info").hide();
   $(".activity-info").hide();
   $(".profile-info").hide();
@@ -174,6 +176,8 @@ $(".hydration-btn").click(function() {
 
 $(".activity-btn").click(function() {
   $(".activity-info").toggle();
+  $(".hydration-over-week").hide();
+  $(".hydration-today").hide();
   $(".sleep-info").hide();
   $(".hydration-info").hide();
   $(".profile-info").hide();

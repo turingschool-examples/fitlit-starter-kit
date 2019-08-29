@@ -55,7 +55,7 @@ class Activity {
     })
     let weekData = userInfo.slice(targetIndex - 6, targetIndex + 1);
     return weekData.map((obj) => {
-      return `${obj.date}  ${obj[type]}`
+        return ` ${obj.date} : ${obj[type]}`
     })
   }
 

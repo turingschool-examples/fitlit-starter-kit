@@ -9,9 +9,10 @@ body {
     "daily1 daily2 daily3"
     "minutes stairs steps"
     "water water water"
-    "stepsComp goal weekSleep"
-    "allUsers allUsers allUsers"
+    "stepsComp goal dailyMinComp"
+    "weekSleep dailyMiles dailyStairComp"
     "allTime allTime allTime"
+    "allUserSleep allUserSleep allUserSleep"
 }
 
 
@@ -20,7 +21,9 @@ body {
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 2px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   border: 1px solid red;
 }
 
@@ -31,16 +34,21 @@ p {
 h4 {
   font-weight: 300px; 
 }
+
 .header-title,
 .user_card,
 .daily1,
 .daily2,
 .daily3,
+.main_daily-miles-walked,
 .main_weekly-minutes,
 .main_weekly-stairs,
 .main_weekly-steps,
 .main_weekly-water,
+.daily_stairs-comparison,
 .daily_steps-comparison,
+.daily_stairs-comparison,
+.daily_minutes-comparison,
 .main_daily-goal,
 .main_weekly-sleep,
 .daily_all-users,
@@ -48,10 +56,75 @@ h4 {
   padding: 20px;
 }
 
-.user_card-welcome,
-.user_card-name-span {
+.main_weekly-water,
+.main_weekly-minutes,
+.main_weekly-stairs,
+.main_weekly-steps-span {
+  letter-spacing: 1px;
+}
+
+.user_card {
   font-weight: 600;
-  font-size: 104%;
+  font-size: 3em;
+}
+
+.daily_minutes-comparison-text,
+.main_daily-goal-text,
+.main_daily-miles,
+.main_daily-water,
+.main_daily-steps,
+.main_daily-minutes-active,
+.main_daily-sleep,
+.daily_steps-comparison-text,
+.daily_stairs-comparison-text,
+.main_weekly-sleep-text,
+.alltime_user-sleep,
+.main_allUser-sleep {
+  text-align: center
+}
+
+.step_goal-all-average-span,
+.step_goal-user-span,
+.daily_all-users-minutes-span,
+.daily_single-user-minutes-span,
+.main_daily-sleep-span,
+.main_daily-minutes-active-span,
+.main_daily-steps-span,
+.main_quality-sleep-span,
+.main_daily-miles-span,
+.daily_single-user-steps-span,
+.daily_all-users-steps-span,
+.daily_all-users-stairs-span,
+.daily_single-user-stairs-span,
+.main_weekly-sleep-hours-span,
+.main_weekly-sleep-quality-span,
+.main_alltime-sleep-span,
+.main_allUser-sleep-hours-span {
+  font-size: 4em;
+  font-weight: 100;
+}
+
+.main_daily-water-span {
+  font-size: 6.5em;
+  font-weight: 100;
+}
+
+.main_weekly-water-header,
+.main_weekly-minutes-header,
+.main_weekly-stairs-header,
+.main_weekly-steps-header {
+  font-size: 111%;
+  font-weight: 600;
+}
+.main_daily-miles,
+.main_daily-water {
+  display: flex;
+  justify-content: center;
+}
+
+.main_daily-miles-span {
+  font-size: 6em;
+  font-weight: 100;
 }
 
 .user_card {
@@ -64,6 +137,11 @@ h4 {
   border: 1px solid red;
 }
 
+.main_daily-miles-walked {
+    grid-area: dailyMiles;
+  border: 1px solid red;
+}
+
 .daily2 {
   grid-area: daily2;
   border: 1px solid red;
@@ -71,6 +149,15 @@ h4 {
 
 .daily3 {
   grid-area: daily3;
+  border: 1px solid red;
+}
+
+.daily_minutes-comparison {
+  grid-area: dailyMinComp;
+  border: 1px solid red;
+}
+.daily_stairs-comparison {
+  grid-area: dailyStairComp;
   border: 1px solid red;
 }
 
@@ -104,17 +191,17 @@ h4 {
   border: 1px solid red;
 }
 
-.alltime_user {
+.alltime_user-sleep {
   grid-area: allTime;
   border: 1px solid red;
 }
 
-.daily_all-users {
-  grid-area: allUsers;
+.main_daily-goal {
+  grid-area: goal;
   border: 1px solid red;
 }
 
-.main_daily-goal {
-    grid-area: goal;
+.main_allUser-sleep {
+  grid-area: allUserSleep;
   border: 1px solid red;
 }

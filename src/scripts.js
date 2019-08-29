@@ -13,8 +13,10 @@ const hydrationRepo = new Hydration(hydrationData);
 const currentUserHydration = hydrationRepo.waterData.filter(user => user.userID === uniqueUserId);
 const sleepRepo = new Sleep(sleepData);
 const currentUserSleep = sleepRepo.sleepData.filter(user => user.userID === uniqueUserId)
+const allUserActivity = new AllUsers(activityData)
 const activityRepo = new Activity(activityData);
 const currentUserActivity = activityRepo.moveData.filter(user => user.userID === uniqueUserId)
+const allUserSleep = new AllUsers(sleepData);
 
 $('.header_date-span').text(findToday());
 $('.user_card-name-span').text(user.getUserFirstName(uniqueUserId));
@@ -24,6 +26,7 @@ $('.main_daily-water-span').text(hydrationRepo.dailyHydration(uniqueUserId, find
 $('.main_weekly-water-span').text(displayWeek());
 
 $('.main_daily-sleep-span').text(sleepRepo.getHoursForDay(uniqueUserId, findToday()));
+
 $('.main_quality-sleep-span').text(sleepRepo.getQualityForDay(uniqueUserId, findToday()));
 
 $('.main_alltime-sleep-span').text(sleepRepo.getAverageSleepQuality(uniqueUserId));
@@ -44,10 +47,22 @@ $('.main_weekly-steps-span').text(activityRepo.getActivityForWeek(uniqueUserId, 
 $('.main_weekly-minutes-span').text(activityRepo.getActivityForWeek(uniqueUserId, findToday(), 'minutesActive'))
 
 $('.main_weekly-stairs-span').text( activityRepo.getActivityForWeek(uniqueUserId, findToday(), 'flightsOfStairs'))
+
 $('.main_daily-miles-span').text(activityRepo.getMilesWalked(uniqueUserId, today));
 
+$('.daily_single-user-steps-span').text(activityRepo.getStepsToday(uniqueUserId, findToday()));
 
+$('.daily_all-users-steps-span').text(allUserActivity.getAverageSteps(findToday()));
 
+$('.daily_all-users-minutes-span').text(allUserActivity.getAverageMinutes(findToday()));
+
+$('.daily_single-user-minutes-span').text(activityRepo.getMinutesActive(uniqueUserId, findToday(), "minutesActive"));
+
+$('.daily_single-user-stairs-span').text(activityRepo.getMinutesActive(uniqueUserId, findToday(), "flightsOfStairs"));
+
+$('.daily_all-users-stairs-span').text(allUserActivity.getAverageStairsClimbed(findToday()));
+
+$('.main_allUser-sleep-hours-span').text(allUserSleep.getAllTimeQualityAvg());
 
 function findToday() {
     var today = new Date();

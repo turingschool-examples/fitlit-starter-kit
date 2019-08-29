@@ -30,7 +30,7 @@ class AllUsers {
 
       console.log(sleepQuality)
       console.log('average', avg.toFixed(2))
-      return parseFloat(avg.toFixed(2))
+      return parseFloat(avg.toFixed(0))
   }
 
   getHighQualitySleepers(day) {

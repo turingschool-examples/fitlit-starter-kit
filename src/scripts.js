@@ -75,7 +75,6 @@ appendStepCountWeekToDOM()
 
 function appendFlightOfStairsClimbedWeekToDOM() {
   let weekArray = allUsersActivity.returnWeekStairs('2019/06/21', userNum);
-
   let weekHours = weekArray.map((day) => {
     return day;
   })
@@ -87,7 +86,6 @@ appendFlightOfStairsClimbedWeekToDOM()
 
 function appendActiveMinsWeekToDOM() {
   let weekArray = allUsersActivity.returnWeekMin('2019/06/21', userNum);
-
   let weekActive = weekArray.map((day) => {
     return day;
   })

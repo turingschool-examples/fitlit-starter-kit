@@ -9,13 +9,11 @@ class User {
     this.friends = obj.friends;
   }
 
-  returnFirstName(){
+  returnFirstName() {
     return this.name.split(' ')[0];
-  }
+  };
+};
 
-}
-
-// module.exports = User;
 if (typeof module !== "undefined") {
   module.exports = User;
 }

@@ -9,11 +9,9 @@ const Sleep = require('../src/Sleep');
 const SleepRepository = require('../src/sleep-repository');
 const sleepData  = require('../data/test-data-sleep');
 
-describe('Sleep', function() {
-  let userRepo;
-  let user1;
-  let sleepRepo;
-  let sleep1;
+describe('Sleep', () => {
+
+  let userRepo, user1, sleepRepo, sleep1;
 
   beforeEach(() => {
     userRepo = new UserRepository(users);
@@ -22,32 +20,31 @@ describe('Sleep', function() {
     sleep1 = new Sleep(sleepData);
   });
 
-  it('should be a function', function() {
+  it('should be a function', () => {
     expect(Sleep).to.be.a('function');
   });
 
   it('should get avg number of hours slept per day for a user', () => {
-    expect(sleep1.getAvgSleepHours(1)).to.equal(7.7)
+    expect(sleep1.getAvgSleepHours(1)).to.equal(7.7);
   });
 
   it('should get avg sleep quality per day for a user', () => {
-    expect(sleep1.getAvgSleepQual(1)).to.equal(2.5)
+    expect(sleep1.getAvgSleepQual(1)).to.equal(2.5);
   });
 
   it('should get how many hours slept for a particular date for a user', () => {
-    expect(sleep1.getHoursSleptPerDay("2019/06/15", 1)).to.equal(6.1)
+    expect(sleep1.getHoursSleptPerDay("2019/06/15", 1)).to.equal(6.1);
   });
 
   it('should get sleep quality for a particular date for a user', () => {
-    expect(sleep1.getSleepQualPerDay("2019/06/15", 1)).to.equal(2.2)
-  })
+    expect(sleep1.getSleepQualPerDay("2019/06/15", 1)).to.equal(2.2);
+  });
 
   it('should get hours slept each day over any given week for a user', () => {
-    expect(sleep1.getHoursSleptPerDayPerWeek("2019/06/21", 1)).to.deep.equal([ 10.7, 9.6, 7.2, 9.3, 10.1, 9.4, 7.8 ])
-  })
+    expect(sleep1.getHoursSleptPerDayPerWeek("2019/06/21", 1)).to.deep.equal([ 10.7, 9.6, 7.2, 9.3, 10.1, 9.4, 7.8 ]);
+  });
 
   it('should get sleep quality each day over a given week for a user', () => {
-    expect(sleep1.getSleepQualPerDayPerWeek("2019/06/21", 1)).to.deep.equal([ 1.2, 2.5, 3.4, 1.2, 2.4, 1.2, 4.2 ])
-  })
-
+    expect(sleep1.getSleepQualPerDayPerWeek("2019/06/21", 1)).to.deep.equal([ 1.2, 2.5, 3.4, 1.2, 2.4, 1.2, 4.2 ]);
+  });
 });

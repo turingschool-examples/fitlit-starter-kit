@@ -137,73 +137,53 @@ const displayThisWeeksSleepOrQuality = (sleep, property) => {
 }
 
 const displayLatestWeeksStats = (activity, property) => {
-    let endDate = dateTodayString();
-    let startDate = startTodayString();
-    let weekArray = activity.findAnyActivityEachDayOverWeekForAUser(startDate, endDate, property);
-    weekArray.forEach((day) => {
-        if(property === 'numSteps') {
-            $('.activity-week-steps-display').append(`<li> On ${day.date} you took ${day[property]} steps </li>`)
-        }
-        else if(property === 'minutesActive') {
-            $('.activity-week-min-active-display').append(`<li> On ${day.date} your total minutes active was ${day[property]} minutes. </li>`)
-        }
-        else if(property === 'flightsOfStairs') {
-            $('.activity-week-stairs-display').append(`<li> On ${day.date} you climbed ${day[property]} flights of stairs. </li>`)
-        }
-    })
+  let endDate = dateTodayString();
+  let startDate = startTodayString();
+  let weekArray = activity.findAnyActivityEachDayOverWeekForAUser(startDate, endDate, property);
+  weekArray.forEach((day) => {
+    if(property === 'numSteps') {
+      $('.activity-week-steps-display').append(`<li> On ${day.date} you took ${day[property]} steps </li>`)
+    }
+    else if(property === 'minutesActive') {
+      $('.activity-week-min-active-display').append(`<li> On ${day.date} your total minutes active was ${day[property]} minutes. </li>`)
+    }
+    else if(property === 'flightsOfStairs') {
+      $('.activity-week-stairs-display').append(`<li> On ${day.date} you climbed ${day[property]} flights of stairs. </li>`)
+    }
+  })
 }
 
-$(".sleep-btn").click(function() {
-  $(".sleep-week-display").toggle();
-  $(".sleep-week-quality-display").toggle();
-  $(".sleep-info").toggle();
-});
+
 
 $(".sleep-btn").click(function() {
-  $(".hydration-week-display").hide();
+  $(".sleep-info").toggle();
   $(".hydration-info").hide();
   $(".activity-week-display").hide();
   $(".profile-info").hide();
 });
 
 $(".hydration-btn").click(function() {
-  $(".sleep-week-display").hide();
-  $(".sleep-week-quality-display").hide();
+  $(".hydration-info").toggle();
   $(".sleep-info").hide();
-  $(".activity-week-display").hide();
+  $(".activity-info").hide();
   $(".profile-info").hide();
 });
 
-$(".hydration-btn").click(function() {
-  $(".hydration-week-display").toggle();
-  $(".hydration-info").toggle();
-});
-
 $(".activity-btn").click(function() {
-  $(".activity-week-display").toggle();
-});
-
-$(".activity-btn").click(function() {
-  $(".sleep-week-display").hide();
-  $(".sleep-week-quality-display").hide();
+  $(".activity-info").toggle();
   $(".sleep-info").hide();
-  $(".hydration-week-display").hide();
   $(".hydration-info").hide();
   $(".profile-info").hide();
 });
 
 $(".profile-btn").click(function() {
   $(".profile-info").toggle();
+  $(".sleep-info").hide();
+  $(".hydration-info").hide();
+  $(".activity-info").hide();
 });
 
-$(".profile-btn").click(function() {
-  $(".sleep-week-display").hide();
-  $(".sleep-week-quality-display").hide();
-  $(".sleep-info").hide();
-  $(".hydration-week-display").hide();
-  $(".hydration-info").hide();
-  $(".activity-week-display").hide();
-});
+
 
 
 

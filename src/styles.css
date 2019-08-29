@@ -3,35 +3,147 @@
   }
 
   body {
-      background-color: #FF3361;
+      background-color: #F9FAF9;
       /* font-family: 'Lato', sans-serif; */
       /* font-family: 'ZCOOL XiaoWei', serif; */
       /* font-family: 'DM Sans', sans-serif;*/
+      /* background-image: url("../images/sunrise.jpg");
+      background-repeat: no-repeat;
+      background-size: cover; */
       font-family: 'DM Serif Display', serif;
       display: flex;
   }
 
+  nav {
+    /* background-color: #82042D; */
+    background-color: #D2B64C;
+    padding: 10px; 
+    position: relative;  
+    height: 100vh; 
+    max-width: 15%;
+    z-index: 1;
+    
+}
+
+.header-display {
+    position: absolute;
+    height: 10%;
+    width: 100%;
+    background-color: #2b3133;
+    text-align: center;
+    margin: auto;
+    font-size: 2vw;
+    margin-left: 4%;
+    
+}
+
+
   h3 {
       color: aliceblue;
+      
   }
 
-  nav {
-      background-color: #82042D;
-      padding: 10px; 
-      position: relative;  
-      height: 100vh; 
-      max-width: 13%;
+  h1 {
+      text-align: center;
+      font-size: 40px;
   }
+
+  h2 {
+      text-align: center;
+      padding-top: 10%;
+      font-size: 40px;
+  }
+
+  h4 {
+    margin: auto;
+  }
+
+.logo-nav {
+    display: block;
+    margin: auto;
+    padding-top: 5%;
+}
+
+.profile-btn {
+    margin: 10px;
+    width: 85%;
+    border-radius: 5px;
+    /* border: 2px solid #EBFCE2; */
+}
+
+.profile-btn:hover {
+    background-color:#EBFCE2;
+    transform: scale(1.1);
+}
+
+.sleep-btn {
+    margin: 10px;
+    width: 85%;
+    border-radius: 5px;
+}
+
+.sleep-btn:hover {
+    background-color: #D8CBEE;
+    transform: scale(1.1);
+}
+
+.hydration-btn {
+    margin: 10px;
+    width: 85%;
+    border-radius: 5px;
+}
+.hydration-btn:hover {
+    background-color: #C1EAF8;
+    transform: scale(1.1);
+}
+
+.activity-btn {
+    margin: 10px;
+    width: 85%;
+    border-radius: 5px;
+}
+
+.activity-btn:hover {
+    background-color: #F8C1C1;
+    transform: scale(1.1);
+}
+
+.profile-box-header{
+    text-align: center;
+    background-color: #2b3133;
+    margin: auto;
+    height: 5vh;
+    width: 100%;
+    color:aliceblue;
+    font-size: 30px;
+    /* border-radius: 25px; */
+
+}
+.profile-box {
+    border: 2px solid #2b3133;
+    margin-top: 20%;
+    margin-left:40%;
+    border-radius: 0px 0px 25px 25px;
+    background-color: #EBFCE2
+}
+
+.profile-info-display {
+    list-style-type: none;
+}
+
 
   .sleep-box {
       display: flex;
-      color: aliceblue;
+      color: #2b3133;
+      /* color: aliceblue; */
   }
 
   .profile-info {
       display: none;
-      font-size: 40px;
-      color: aliceblue;
+      font-size: 30px;
+      color: #2b3133;
+      min-width: 900px;
+      /* color: aliceblue; */
   }
 
   .logo-nav {
@@ -40,69 +152,59 @@
       display: block;
   }
 
-  .sleep-week-display {
+  /* .sleep-week-display {
       border: solid 1px;
       width: 40%;
       margin: 10px;
       display: none;
-  }
+  } */
 
-  .sleep-week-quality-display {
+  /* .sleep-week-quality-display {
     border: solid 1px;
     width: 40%;
     margin: 10px;
     display: none;
-}
+} */
 
-.hydration-week-display {
+/* .hydration-week-display {
     display: none;
     color: aliceblue;
-}
+} */
 
-h1 {
-    font-size: 40px;
+/* h1 {
+    /* font-size: 40px; */
 }
 
 h2 {
-    font-size: 40px;
-}
+    /* font-size: 40px; */
+} */
 
-.activity-week-display {
+/* .activity-week-display {
     display: none;
     color: aliceblue;
+} */
+
+.activity-info {
+    display: none;
+    color: #2b3133;
+    /* color: aliceblue; */
 }
 
 .sleep-info {
     display: none;
-    color: aliceblue;
+    color: #2b3133;
+    /* color: aliceblue; */
 }
 
 .hydration-info {
     display: none;  
-    color: aliceblue
+    color: #2b3133;
+    /* color: aliceblue */
 }
 
-  .sleep-display-heading {
+  /* .sleep-display-heading {
     font-size: 25px;
     color: antiquewhite;
-  }
+  } */
 
-  .profile-btn {
-      margin: 10px;
-      width: 85%
-  }
-
-  .sleep-btn {
-      margin: 10px;
-      width: 85%
-  }
-
-  .hydration-btn {
-      margin: 10px;
-      width: 85%;
-  }
   
-  .activity-btn {
-      margin: 10px;
-      width: 85%;
-  }

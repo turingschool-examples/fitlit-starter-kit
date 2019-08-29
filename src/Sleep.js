@@ -63,7 +63,7 @@ class Sleep {
     const result = this.allSleepData.reduce((qualitySleep, user) => {
       qualitySleep += user.sleepQuality 
       return qualitySleep;
-    }, 0)/this.allSleepData.length
+    }, 0) / this.allSleepData.length
     let avgQuality = parseFloat(result.toFixed(2));
     return avgQuality
   }
@@ -71,7 +71,6 @@ class Sleep {
   findUsersSleptMostHoursBasedOnDate(dateString) {
     var dateArray = this.allSleepData.filter(element => element.date === dateString);
     let userObject = dateArray.sort((a, b) => {
-
       return b.hoursSlept - a.hoursSlept;
     }).shift()
     var person = this.allUsers.find((user) => user.id === userObject.userID);

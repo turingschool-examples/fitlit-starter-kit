@@ -5,8 +5,6 @@ class Activity {
     this.currentUserData = this.findCurrentUserData();
     this.allUsers = allUsers;
     this.currentUserFriends = this.findCurrentUsersFriends();
-    console.log("this", this.currentUserFriends)
-
   }
 
   findCurrentUserData(id = this.currentUserId) {
@@ -192,55 +190,6 @@ class Activity {
     return answerListOfDates;
   }
 }
-
-// findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers() {
-//   let answerListOfDates = [];
-
-//   this.currentUserData.some((currentDay, i, userArray) => {
-//     // console.log("line 118", userArray)
-//     console.log("indexBefore", i)
-//     // console.log("line 119:", userArray[i + 1].numSteps)
-//     if (i > 0 && i < 98 && userArray[i].numSteps < userArray[i + 1].numSteps && userArray[i + 1].numSteps < userArray[i + 2].numSteps) {
-//       console.log("indexafter", i)
-//       console.log(userArray[i].numSteps)
-//       console.log(userArray[i + 1].numSteps)
-//       console.log(userArray[i + 2].numSteps)
-//       answerListOfDates.push(userArray[i])
-//       answerListOfDates.push(userArray[i + 1])
-//       answerListOfDates.push(userArray[i + 2])
-//       console.log("AnswersDates:", answerListOfDates)
-//     }
-//   })
-//     console.log("Answers:", answerListOfDates)
-//       return answerListOfDates;
-//   }
-
-//   findTrendOfIncreasingStairsForMoreThanThreeDaysForAllUsers() {
-//     let answerListOfDates = [];
-
-//     this.currentUserData.some((currentDay, i, userArray) => {
-//       // console.log("line 118", userArray)
-//       // console.log("indexBeforeStairs", i)
-//       // console.log("line 119:", userArray[i + 1].numSteps)
-//       if (i > 0 && i < 98 && userArray[i].flightsOfStairs < userArray[i + 1].flightsOfStairs && userArray[i + 1].flightsOfStairs < userArray[i + 2].flightsOfStairs) {
-//         console.log("indexafterStairs", i)
-//         console.log("NumberOfStairs", userArray[i].flightsOfStairs)
-//         console.log(userArray[i].flightsOfStairs)
-//         console.log(userArray[i + 1].flightsOfStairs)
-//         console.log(userArray[i + 2].flightsOfStairs)
-//         answerListOfDates.push(userArray[i])
-//         answerListOfDates.push(userArray[i + 1])
-//         answerListOfDates.push(userArray[i + 2])
-//         console.log("AnswersDates:Stairs", answerListOfDates)
-//       }
-//     })
-//       console.log("Answers:Stairs", answerListOfDates)
-//         return answerListOfDates;
-//     }
-
-
-
-
 
 if (typeof module !== 'undefined') {
   module.exports = Activity;

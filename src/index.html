@@ -21,22 +21,28 @@
       <h1>BeFit</h1>
       <h2> Welcome <span class="profile-first-name"></span>!</h2>
       <div class = "buttons-sidebar">
-      <button class="profile-btn"> View Profile</button>
+      <button class="profile-btn"></span>View Profile</button>
       <button class="sleep-btn"> View Sleep</button>
       <button class="hydration-btn"> View Hydration</button>
       <button class="activity-btn"> View Activity</button>
       </div>
     </nav>
+    <header class="header-display"> 
+        <h3> Today is <span class="today"></span></h3>
+    </header>
    <main>
      <section class="profile-info">
-     <ul>
-       <li> Name: <span class="profile-name"></span> </li>
-       <li> Address: <span class="profile-address"></span> </li>
-       <li> Email: <span class="profile-email"></span> </li>
-       <li> Stride Length: <span class="profile-stride-length"></span> </li>
-       <li> Daily Step Goal: <span class="profile-daily-step-goal"></span> </li>
-       <li> Step Goal Average of All Users: <span class="avg-step-goal-of-all-users"></span> </li>
+      <div class="profile-box">
+        <header class="profile-box-header"> <h4> Profile Information</h4></header>
+     <ul class="profile-info-display">
+       <li> Name : <span class="profile-name"></span> </li>
+       <li> Address : <span class="profile-address"></span> </li>
+       <li> Email : <span class="profile-email"></span> </li>
+       <li> Stride Length : <span class="profile-stride-length"></span> </li>
+       <li> Daily Step Goal : <span class="profile-daily-step-goal"></span> </li>
+       <li> Step Goal Average of All Users : <span class="avg-step-goal-of-all-users"></span> </li>
      </ul>
+    </div>
     </section>
      <section class="sleep-info">
     <div class="sleep-box1">
@@ -50,7 +56,6 @@
       <li> <span class="most-hours-slept-date"></span> had the most hours slept!</li>
       <li> <span class="over-three-sleep-quality"></span> had over 3 Sleep Quality!!</li>
       <li> <span class="best-date-of-sleep"></span> was the day you had the most hours of Sleep</li>
-    </section>
   </div>
     <div class="sleep-box">
     <ul class="sleep-week-quality-display">
@@ -61,14 +66,15 @@
          </ul>   
     </ul>
     </div>
+  </section>
      <section class="hydration-info">
      <ul> 
        <li> Today you consumed <span class="water-consumed-today"> </span> oz of water</li>
      </ul>
-    </section>
      <ul class="hydration-week-display">  
      </ul>
-     <section class="activity-info"></section>
+    </section>
+     <section class="activity-info">
       <ul class="activity-week-display">
         <li> Your most recent step count is <span class="most-recent-steps"></span> steps</li>
         <li> The most recent step count of all user's average is <span class="all-users-avg-most-recent-steps"></span> steps</li>
@@ -87,9 +93,9 @@
         <ul class="activity-week-min-active-display">
         
           </ul>
-    
+        </section>
      <section class="default-display">
-       <h3> Today is <span class="today"></span></h3>
+       <!-- <h3> Today is <span class="today"></span></h3> -->
      </section>    
    </main>
     <script src="path/to/chartjs/dist/Chart.js"></script>

@@ -140,7 +140,7 @@
       display: grid;
       width: 100%;
       height: auto;
-      grid-template-rows: 45% 45%;
+      grid-template-rows: 1fr 1fr;
       grid-template-areas: 
       "sleep-box1 sleep-box2"
       "sleep-box sleep-week-display"
@@ -277,7 +277,7 @@
 .activity-recent {
     display: none;
     width: 500px;
-    margin: 20%;
+    margin: 15%;
     grid-area: sleep-box;
     border: 2px solid #2b3133;
     border-radius: 0px 0px 25px 25px;
@@ -297,7 +297,7 @@
 .activity-week-steps {
     display: none;
     width: 500px;
-    margin: 20%;
+    margin: 15%;
     grid-area: sleep-box;
     border: 2px solid #2b3133;
     border-radius: 0px 0px 25px 25px;
@@ -317,7 +317,7 @@
 .activity-week-stairs {
     display: none;
     width: 500px;
-    margin: 20%;
+    margin: 15%;
     grid-area: sleep-box;
     border: 2px solid #2b3133;
     border-radius: 0px 0px 25px 25px;
@@ -337,7 +337,7 @@
 .activity-week-active {
     display: none;
     width: 500px;
-    margin: 20%;
+    margin: 15%;
     grid-area: sleep-box;
     border: 2px solid #2b3133;
     border-radius: 0px 0px 25px 25px;

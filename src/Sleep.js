@@ -12,8 +12,14 @@ class Sleep {
     return this.currentUserData;
   }
 
-  findUserAverageHoursSleptEachDayById() {  
-    let user = this.currentUserData.reduce((sum, currentDay) => {
+  findUserAverageHoursSleptEachDayById(id = this.currentUserId) {  
+    let userData;
+    if (id === this.currentUserId) {
+      userData = this.currentUserData
+    } else {
+      userData = this.findCurrentUserData;
+    }
+    let user = userData.reduce((sum, currentDay) => {
       sum += currentDay.hoursSlept
       return sum
     }, 0) / this.currentUserData.length;

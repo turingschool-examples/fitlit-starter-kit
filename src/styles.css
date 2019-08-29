@@ -8,17 +8,101 @@
       /* font-family: 'ZCOOL XiaoWei', serif; */
       /* font-family: 'DM Sans', sans-serif;*/
       font-family: 'DM Serif Display', serif;
- 
+      display: flex;
+  }
+
+  h3 {
+      color: aliceblue;
   }
 
   nav {
       background-color: #82042D;
-      padding: 10px;
-      margin: 10px;
+      padding: 10px; 
+      position: relative;  
+      height: 100vh; 
+      max-width: 13%;
+  }
+
+  .sleep-box {
+      display: flex;
+      color: aliceblue;
+  }
+
+  .profile-info {
+      display: none;
+      font-size: 40px;
+      color: aliceblue;
   }
 
   .logo-nav {
       max-width: 100px;
       max-height: 100px;
       display: block;
+  }
+
+  .sleep-week-display {
+      border: solid 1px;
+      width: 40%;
+      margin: 10px;
+      display: none;
+  }
+
+  .sleep-week-quality-display {
+    border: solid 1px;
+    width: 40%;
+    margin: 10px;
+    display: none;
+}
+
+.hydration-week-display {
+    display: none;
+    color: aliceblue;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+.activity-week-display {
+    display: none;
+    color: aliceblue;
+}
+
+.sleep-info {
+    display: none;
+    color: aliceblue;
+}
+
+.hydration-info {
+    display: none;  
+    color: aliceblue
+}
+
+  .sleep-display-heading {
+    font-size: 25px;
+    color: antiquewhite;
+  }
+
+  .profile-btn {
+      margin: 10px;
+      width: 85%
+  }
+
+  .sleep-btn {
+      margin: 10px;
+      width: 85%
+  }
+
+  .hydration-btn {
+      margin: 10px;
+      width: 85%;
+  }
+  
+  .activity-btn {
+      margin: 10px;
+      width: 85%;
   }

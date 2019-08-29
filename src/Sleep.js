@@ -57,7 +57,6 @@ class Sleep {
       return {};
     }, {})
     return answer;
-    
   }
 
   fetchAverageQualityOfSleepAllUsers() {
@@ -98,7 +97,7 @@ class Sleep {
       const avg = filterData.reduce((acc, currentElement) => {
         acc += currentElement.sleepQuality
         return acc
-      }, 0) / filterData.length
+      }, 0) / filterData.length;
 
       if (avg >= 3) {
         namesID.push(id)
@@ -112,14 +111,17 @@ class Sleep {
       }).name
     });
 
-    return groupOverThree
-  
+    return groupOverThree 
+  }
+
+
+  findBestDateOfSleepOfUser() {
+    let sleepDate = this.currentUserData.sort((a, b) => {
+      return b.hoursSlept - a.hoursSlept;
+    }).shift().date
+    return sleepDate
   }
 }
-
-
-
-
 
 
 

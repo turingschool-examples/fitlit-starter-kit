@@ -20,10 +20,12 @@
       </div>
       <h1>BeFit</h1>
       <h2> Welcome <span class="profile-first-name"></span>!</h2>
+      <div class = "buttons-sidebar">
       <button class="profile-btn"> View Profile</button>
       <button class="sleep-btn"> View Sleep</button>
       <button class="hydration-btn"> View Hydration</button>
       <button class="activity-btn"> View Activity</button>
+      </div>
     </nav>
    <main>
      <section class="profile-info">
@@ -34,33 +36,40 @@
        <li> Stride Length: <span class="profile-stride-length"></span> </li>
        <li> Daily Step Goal: <span class="profile-daily-step-goal"></span> </li>
        <li> Step Goal Average of All Users: <span class="avg-step-goal-of-all-users"></span> </li>
-
      </ul>
     </section>
-     <section class="sleep-info"></section>
-     <ul>
-        <li>  <span class="average-hours-slept"></span> Average Sleep</li>
-        <li> <span class="average-sleep-quality-per-day"></span> Average Sleep Quality</li>
-        <li> <span class="hours-slept-date"></span> Hours Slept Today</li>
-        <li> <span class="quality-slept-date"></span> Sleep Quality Today</li>
-        <ul class="sleep-week-display">
-         
-        </ul>
-        <li>  <span class="sleep-or-quality-each-day-week"></span> Sleep or Quality each Day </li>
-        <li> <span class="average-quality-all-users"></span> was all users average sleep quality </li>
-        <li> <span class="most-hours-slept-date"></span> had the most hours slept!</li>
-        <li> <span class="over-three-sleep-quality"></span> had over 3 Sleep Quality!!</li>
-        
-      </ul>
-     <section class="hydration-info"></section>
+     <section class="sleep-info">
+    <div class="sleep-box1">
+      <li>  <span class="average-hours-slept"></span> hours was your average hours slept </li>
+      <li> <span class="average-sleep-quality-per-day"></span> was your average sleep quality</li>
+      <li> <span class="hours-slept-date"></span> hours you slept today</li>
+      <li> <span class="quality-slept-date"></span> was your sleep quality today</li>
+    </div>
+    <div class="sleep-box2">
+      <li> <span class="average-quality-all-users"></span> was all users average sleep quality </li>
+      <li> <span class="most-hours-slept-date"></span> had the most hours slept!</li>
+      <li> <span class="over-three-sleep-quality"></span> had over 3 Sleep Quality!!</li>
+      <li> <span class="best-date-of-sleep"></span> was the day you had the most hours of Sleep</li>
+    </section>
+  </div>
+    <div class="sleep-box">
+    <ul class="sleep-week-quality-display">
+        <p> <span class="sleep-display-sub-heading">Your Quality of Sleep</span></p>
+       </ul>
+    <ul class="sleep-week-display">
+          <p> <span class="sleep-display-sub-heading">Your Hours Slept</span></p>
+         </ul>   
+    </ul>
+    </div>
+     <section class="hydration-info">
      <ul> 
        <li> Today you consumed <span class="water-consumed-today"> </span> oz of water</li>
      </ul>
-     <ul class="hydration-week-display">
-       
+    </section>
+     <ul class="hydration-week-display">  
      </ul>
      <section class="activity-info"></section>
-      <ul>
+      <ul class="activity-week-display">
         <li> Your most recent step count is <span class="most-recent-steps"></span> steps</li>
         <li> The most recent step count of all user's average is <span class="all-users-avg-most-recent-steps"></span> steps</li>
         <li> Your most recent minutes active total is <span class="most-recent-minutes-active"></span> minutes</li>
@@ -80,10 +89,8 @@
           </ul>
     
      <section class="default-display">
-      
        <h3> Today is <span class="today"></span></h3>
-     </section>
-     
+     </section>    
    </main>
     <script src="path/to/chartjs/dist/Chart.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>

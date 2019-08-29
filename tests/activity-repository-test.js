@@ -24,14 +24,14 @@ describe('ActivityRepository', () => {
   });
 
   it('should return the avg number of stairs climbed for all users on a specific date', () => {
-    expect(activityRepo.returnAvgStairs('2019/06/20')).to.equal(24)
+    expect(activityRepo.returnAvgStairs('2019/06/20')).to.equal(24);
   });
 
   it('should return the avg number of steps taken by all users on a given day', () => {
-    expect(activityRepo.returnAvgSteps('2019/06/20')).to.equal(7214.8)
+    expect(activityRepo.returnAvgSteps('2019/06/20')).to.equal(7214.8);
   });
 
   it('should return the avg number of minutes active for all users on a given day', () => {
-    expect(activityRepo.returnAvgMinutesActive('2019/06/20')).to.equal(160.4)
+    expect(activityRepo.returnAvgMinutesActive('2019/06/20')).to.equal(160.4);
   });
-})
+});

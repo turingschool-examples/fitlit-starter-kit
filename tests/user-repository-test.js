@@ -26,12 +26,10 @@ describe('UserRepository', function() {
   });
 
   it('should find a specific user', () => {
-    // console.log(userRepo.users.userData[0].getUser(2))
     expect(userRepo.getUser(4)).to.equal(users[3])
-  })
+  });
 
   it('should return average step goal of all users', () => {
     expect(userRepo.returnAvgStepGoal()).to.equal(6400)
   });
-
 });

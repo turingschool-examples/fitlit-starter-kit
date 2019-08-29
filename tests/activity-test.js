@@ -31,11 +31,11 @@ describe('Activity', () => {
   });
 
   it('should be able to return minutes active for a day', () => {
-  expect(activity.calculateMinActive('2019/06/15', 1)).to.equal(140)
+  expect(activity.calculateMinActive('2019/06/15', 1)).to.equal(140);
   });
 
   it('should return avg number of minutes active for a week', () => {
-    expect(activity.calculateAvgTimeActive('2019/06/20', 1)).to.equal(171.1)
+    expect(activity.calculateAvgTimeActive('2019/06/20', 1)).to.equal(171.1);
   });
 
   it('should return true if a user reached their step goal for a specific date', () => {
@@ -47,16 +47,15 @@ describe('Activity', () => {
   });
 
   it('should return their all time stair record', () => {
-    // console.log(activity.data);
-    expect(activity.findMostStairs(1)).to.equal(activity.data[5])
+    expect(activity.findMostStairs(1)).to.equal(activity.data[5]);
   });
 
   it('should return the steps taken per minute active on a given day', () => {
-    expect(activity.calculateStepsAMin('2019/06/20', 1)).to.equal(103.4)
+    expect(activity.calculateStepsAMin('2019/06/20', 1)).to.equal(103.4);
   });
 
   it('should return an array of step count for a week', () => {
-    expect(activity.returnWeekStep('2019/06/21', 1)).to.deep.equal([3577,  6637, 14329, 4419, 8429, 14478, 6760])
+    expect(activity.returnWeekStep('2019/06/21', 1)).to.deep.equal([3577,  6637, 14329, 4419, 8429, 14478, 6760]);
   });
 
   it('should return an array of stairs climbed for a week', () => {

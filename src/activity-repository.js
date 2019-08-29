@@ -7,7 +7,7 @@ class ActivityRepository {
     let dayArray = this.data.filter(day => day.date === date);
 
     return dayArray.reduce((acc, stairs) => {
-      return acc += stairs.flightsOfStairs
+      return acc += stairs.flightsOfStairs;
     }, 0) / dayArray.length;
   };
 
@@ -15,7 +15,7 @@ class ActivityRepository {
     let dayArray = this.data.filter(day => day.date === date);
 
     return dayArray.reduce((acc, steps) => {
-      return acc += steps.numSteps
+      return acc += steps.numSteps;
     }, 0) / dayArray.length;
   };
 
@@ -23,7 +23,7 @@ class ActivityRepository {
     let dayArray = this.data.filter(day => day.date === date);
 
     return dayArray.reduce((acc, min) => {
-      return acc += min.minutesActive
+      return acc += min.minutesActive;
     }, 0) / dayArray.length;
   };
 };

@@ -8,8 +8,8 @@ describe('Hydration', function() {
 
   let hydration;
 
-  beforeEach(function() {
-    hydration = new Hydration(hydrationData, 1)
+  beforeEach(() => {
+    hydration = new Hydration(hydrationData, 1);
   });
 
   it('should be a function', () => {
@@ -39,5 +39,4 @@ describe('Hydration', function() {
       { userID: 1, date: '2019/06/21', numOunces: 50 }
     ]);
   });
-
 });

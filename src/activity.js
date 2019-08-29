@@ -5,7 +5,7 @@ class Activity {
   }
 
   calculateMilesWalked(date, id) {
-    let stride = this.users.users.find(user => user.id === id).strideLength;
+    let stride = this.users.strideLength;
 
     let numberSteps = this.data
       .filter(user => user.date === date)

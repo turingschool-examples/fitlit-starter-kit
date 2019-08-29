@@ -5,7 +5,7 @@ class Activity {
   }
 
   calculateMilesWalked(date, id) {
-    let stride = this.users.strideLength;
+    let stride = this.users.users.find(user => user.id === id).strideLength;
 
     let numberSteps = this.data
       .filter(user => user.date === date)
@@ -94,7 +94,6 @@ class Activity {
     let targetDay = userActivity.findIndex(day => day.date === date);
     let targetWeek = userActivity.slice(targetDay - 6, targetDay + 1);
     let array = targetWeek.map(elem => elem.minutesActive);
-console.log(targetWeek)
     return array;
   }
 

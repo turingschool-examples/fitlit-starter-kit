@@ -86,7 +86,7 @@ appendFlightOfStairsClimbedWeekToDOM()
 
 function appendActiveMinsWeekToDOM() {
   var weekArray = allUsersActivity.returnWeekMin('2019/06/20', userNum);
-
+console.log(weekArray)
   var weekOunces = weekArray.map((day) => {
     return day.numOunces;
   })

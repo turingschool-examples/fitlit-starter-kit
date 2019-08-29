@@ -36,13 +36,13 @@
 
   h1 {
       text-align: center;
-      font-size: 40px;
+      font-size: 35px;
   }
 
   h2 {
       text-align: center;
       padding-top: 10%;
-      font-size: 40px;
+      font-size: 35px;
   }
 
   h4 {
@@ -105,7 +105,7 @@
     text-align: center;
     background-color: #2b3133;
     margin: auto;
-    height: 5vh;
+    height: 6vh;
     width: 100%;
     color:aliceblue;
     font-size: 30px;
@@ -113,7 +113,7 @@
 .profile-box {
     border: 2px solid #2b3133;
     margin-top: 20%;
-    margin-left:40%;
+    margin-left:5%;
     border-radius: 0px 0px 25px 25px;
     background-color: #EBFCE2
 }
@@ -139,6 +139,7 @@
       padding: 20px;
       display: grid;
       width: 100%;
+      height: auto;
       grid-template-rows: 45% 45%;
       grid-template-areas: 
       "sleep-box1 sleep-box2"
@@ -149,7 +150,7 @@
     text-align: center;
     background-color: #2b3133;
     margin: auto;
-    height: 4vh;
+    height: 6vh;
     width: 100%;
     color:aliceblue;
     font-size: 25px;
@@ -161,7 +162,7 @@
     margin: 20px;
     grid-area: sleep-box1;
     border: 2px solid #2b3133;
-    height: 20vh;
+    height: 27vh;
     border-radius: 0px 0px 25px 25px;
     background-color: #D8CBEE;
     list-style-type: none;
@@ -185,7 +186,7 @@
     text-align: center;
     background-color: #2b3133;
     margin: auto;
-    height: 4vh;
+    height: 6vh;
     width: 100%;
     color:aliceblue;
     font-size: 25px;
@@ -205,7 +206,7 @@
     text-align: center;
     background-color: #2b3133;
     margin: auto;
-    height: 4vh;
+    height: 6vh;
     width: 100%;
     color:aliceblue;
     font-size: 25px;
@@ -225,7 +226,7 @@
     text-align: center;
     background-color: #2b3133;
     margin: auto;
-    height: 4vh;
+    height: 6vh;
     width: 100%;
     color:aliceblue;
     font-size: 25px;
@@ -247,7 +248,7 @@
     text-align: center;
     background-color: #2b3133;
     margin: auto;
-    height: 4vh;
+    height: 6vh;
     width: 100%;
     color:aliceblue;
     font-size: 25px;
@@ -267,7 +268,7 @@
     text-align: center;
     background-color: #2b3133;
     margin: auto;
-    height: 4vh;
+    height: 6vh;
     width: 100%;
     color:aliceblue;
     font-size: 25px;
@@ -287,7 +288,7 @@
     text-align: center;
     background-color: #2b3133;
     margin: auto;
-    height: 4vh;
+    height: 6vh;
     width: 100%;
     color:aliceblue;
     font-size: 25px;
@@ -307,7 +308,7 @@
     text-align: center;
     background-color: #2b3133;
     margin: auto;
-    height: 4vh;
+    height: 6vh;
     width: 100%;
     color:aliceblue;
     font-size: 25px;
@@ -327,7 +328,7 @@
     text-align: center;
     background-color: #2b3133;
     margin: auto;
-    height: 4vh;
+    height: 6vh;
     width: 100%;
     color:aliceblue;
     font-size: 25px;
@@ -347,7 +348,7 @@
     text-align: center;
     background-color: #2b3133;
     margin: auto;
-    height: 4vh;
+    height: 6vh;
     width: 100%;
     color:aliceblue;
     font-size: 25px;

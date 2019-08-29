@@ -78,9 +78,14 @@ describe('AllUsers', function() {
         expect(allUser.getAverageSteps('2019/06/15')).to.equal(6027);
     })
 
-    it.skip('should return the all users steps average for a specific date', function () {
+    it.skip('should return the all users average minutes active for a specific date', function () {
         const allUser = new AllUsers(AllUserSampleActivityData);
         expect(allUser.getAverageMinutes('2019/06/15')).to.equal(144);
+    })
+
+    it.only('should get all time sleep quality average among all users', function() {
+        const allUser = new AllUsers(AllUsersSampleData);
+        expect(allUser.getAllTimeQualityAvg()).to.equal(2.91)
     })
  
 })

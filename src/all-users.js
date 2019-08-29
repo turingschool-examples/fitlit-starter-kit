@@ -7,7 +7,7 @@ class AllUsers {
     let index = this.data.findIndex(object => {
       return object.date === day;
     });
-    let weekData = this.data.slice(index - 35, index + 5)
+    let weekData = this.data.slice(index - 350, index + 50)
     return weekData;
   }
 
@@ -20,6 +20,17 @@ class AllUsers {
       acc[obj.userID].push(obj.sleepQuality)
       return acc;
     }, {})   
+  }
+
+  getAllTimeQualityAvg() {
+      let sleepQuality = this.data.map(day => day.sleepQuality)
+      let avg = sleepQuality.reduce((acc, currentQual) => {
+        return acc+= currentQual
+      }, 0)/sleepQuality.length
+
+      console.log(sleepQuality)
+      console.log('average', avg.toFixed(2))
+      return parseFloat(avg.toFixed(2))
   }
 
   getHighQualitySleepers(day) {

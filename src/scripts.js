@@ -27,6 +27,7 @@ $('.main_daily-sleep-span').text(sleepRepo.getHoursForDay(uniqueUserId, findToda
 $('.main_quality-sleep-span').text(sleepRepo.getQualityForDay(uniqueUserId, findToday()));
 
 $('.main_alltime-sleep-span').text(sleepRepo.getAverageSleepQuality(uniqueUserId));
+$('.main_alltime-sleep-hours-span').text(sleepRepo.getAverageHours(uniqueUserId));
 
 $('.main_weekly-sleep-hours-span').text(sleepRepo.getUserHoursWeekAverage(uniqueUserId, findToday()));
 
@@ -43,6 +44,7 @@ $('.main_weekly-steps-span').text(activityRepo.getActivityForWeek(uniqueUserId, 
 $('.main_weekly-minutes-span').text(activityRepo.getActivityForWeek(uniqueUserId, findToday(), 'minutesActive'))
 
 $('.main_weekly-stairs-span').text( activityRepo.getActivityForWeek(uniqueUserId, findToday(), 'flightsOfStairs'))
+$('.main_daily-miles-span').text(activityRepo.getMilesWalked(uniqueUserId, today));
 
 
 

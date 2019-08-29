@@ -272,7 +272,86 @@
     color:aliceblue;
     font-size: 25px;
 }
+
+.activity-recent {
+    display: none;
+    width: 500px;
+    margin: 20%;
+    grid-area: sleep-box;
+    border: 2px solid #2b3133;
+    border-radius: 0px 0px 25px 25px;
+    background-color: #F8C1C1;
+}
+
+.activity-recent-header {
+    text-align: center;
+    background-color: #2b3133;
+    margin: auto;
+    height: 4vh;
+    width: 100%;
+    color:aliceblue;
+    font-size: 25px;
+}
+
+.activity-week-steps {
+    display: none;
+    width: 500px;
+    margin: 20%;
+    grid-area: sleep-box;
+    border: 2px solid #2b3133;
+    border-radius: 0px 0px 25px 25px;
+    background-color: #F8C1C1;
+}
+
+.activity-week-steps-header {
+    text-align: center;
+    background-color: #2b3133;
+    margin: auto;
+    height: 4vh;
+    width: 100%;
+    color:aliceblue;
+    font-size: 25px;
+}
+
+.activity-week-stairs {
+    display: none;
+    width: 500px;
+    margin: 20%;
+    grid-area: sleep-box;
+    border: 2px solid #2b3133;
+    border-radius: 0px 0px 25px 25px;
+    background-color: #F8C1C1;
+}
  
+.activity-week-stairs-header {
+    text-align: center;
+    background-color: #2b3133;
+    margin: auto;
+    height: 4vh;
+    width: 100%;
+    color:aliceblue;
+    font-size: 25px;
+}
+
+.activity-week-active {
+    display: none;
+    width: 500px;
+    margin: 20%;
+    grid-area: sleep-box;
+    border: 2px solid #2b3133;
+    border-radius: 0px 0px 25px 25px;
+    background-color: #F8C1C1;
+}
+
+.activity-week-header {
+    text-align: center;
+    background-color: #2b3133;
+    margin: auto;
+    height: 4vh;
+    width: 100%;
+    color:aliceblue;
+    font-size: 25px;
+}
 .activity-info {
     display: none;
     color: #2b3133;

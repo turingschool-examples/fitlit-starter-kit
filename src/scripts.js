@@ -176,6 +176,10 @@ $(".hydration-btn").click(function() {
 
 $(".activity-btn").click(function() {
   $(".activity-info").toggle();
+  $(".activity-recent").toggle();
+  $(".activity-week-steps").toggle();
+  $(".activity-week-stairs").toggle();
+  $(".activity-week-active").toggle();
   $(".hydration-over-week").hide();
   $(".hydration-today").hide();
   $(".sleep-info").hide();

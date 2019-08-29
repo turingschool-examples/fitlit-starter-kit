@@ -30,8 +30,8 @@ $('#users-stairs-today').append(allUsersActivityRepo.returnAvgStairs('2019/06/20
 $('#miles-today').append(allUsersActivity.calculateMilesWalked('2019/06/20', userNum));
 
 function appendWaterWeekToDOM() {
-  var weekArray = allUsersHydration.getWeekIntake('2019/06/20', userNum);
-  var weekOunces = weekArray.map((day) => {
+  let weekArray = allUsersHydration.getWeekIntake('2019/06/20', userNum);
+  let weekOunces = weekArray.map((day) => {
     return day.numOunces;
   })
   weekOunces.forEach((num) => {
@@ -41,8 +41,8 @@ function appendWaterWeekToDOM() {
 appendWaterWeekToDOM()
 
 function appendHoursSleptWeekToDOM() {
-  var weekArray = allUsersSleep.getHoursSleptPerDayPerWeek('2019/06/20', userNum);
-  var weekHours = weekArray.map((day) => {
+  let weekArray = allUsersSleep.getHoursSleptPerDayPerWeek('2019/06/20', userNum);
+  let weekHours = weekArray.map((day) => {
     return day;
   })
   weekHours.forEach((num) => {
@@ -52,8 +52,8 @@ function appendHoursSleptWeekToDOM() {
 appendHoursSleptWeekToDOM()
 
 function appendSleepQualityWeekToDOM() {
-  var weekArray = allUsersSleep.getSleepQualPerDayPerWeek('2019/06/20', userNum);
-  var weekHours = weekArray.map((day) => {
+  let weekArray = allUsersSleep.getSleepQualPerDayPerWeek('2019/06/20', userNum);
+  let weekHours = weekArray.map((day) => {
     return day;
   })
   weekHours.forEach((num) => {
@@ -63,8 +63,8 @@ function appendSleepQualityWeekToDOM() {
 appendSleepQualityWeekToDOM()
 
 function appendStepCountWeekToDOM() {
-  var weekArray = allUsersActivity.returnWeekStep('2019/06/20', userNum);
-  var weekHours = weekArray.map((day) => {
+  let weekArray = allUsersActivity.returnWeekStep('2019/06/21', userNum);
+  let weekHours = weekArray.map((day) => {
     return day;
   })
   weekHours.forEach((num) => {
@@ -74,8 +74,8 @@ function appendStepCountWeekToDOM() {
 appendStepCountWeekToDOM()
 
 function appendFlightOfStairsClimbedWeekToDOM() {
-  var weekArray = allUsersActivity.returnWeekStairs('2019/06/20', userNum);
-  var weekHours = weekArray.map((day) => {
+  let weekArray = allUsersActivity.returnWeekStairs('2019/06/21', userNum);
+  let weekHours = weekArray.map((day) => {
     return day;
   })
   weekHours.forEach((num) => {
@@ -85,12 +85,12 @@ function appendFlightOfStairsClimbedWeekToDOM() {
 appendFlightOfStairsClimbedWeekToDOM()
 
 function appendActiveMinsWeekToDOM() {
-  var weekArray = allUsersActivity.returnWeekMin('2019/06/20', userNum);
-console.log(weekArray)
-  var weekOunces = weekArray.map((day) => {
-    return day.numOunces;
+  let weekArray = allUsersActivity.returnWeekMin('2019/06/21', userNum);
+  let weekActive = weekArray.map((day) => {
+    return day;
   })
-  weekOunces.forEach((num) => {
+
+  weekActive.forEach((num) => {
     $('#mins-active-week').append(`<li>${num}</li>`);
   })
 }

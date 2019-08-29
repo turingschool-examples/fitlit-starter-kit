@@ -11,7 +11,6 @@ class Activity {
       .filter(user => user.date === date)
       .find(user => user.userID === id).numSteps;
 
-    console.log(stride)
     return parseFloat(((stride * numberSteps) / 5280).toFixed(1));
   };
 
@@ -120,7 +119,7 @@ class Activity {
 
   getConsecutiveIncrease(id) {
     let userActivity = this.data.filter(user => user.userID === id)
-    
+
     return userActivity.reduce((acc, day, i, array) => {
       if(i !== 0 && i !== array.length - 1) {
         if(day.numSteps > array[i - 1].numSteps && day.numSteps < array[i + 1].numSteps) {

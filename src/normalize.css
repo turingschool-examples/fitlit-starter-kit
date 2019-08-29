@@ -1,5 +1,6 @@
 body {
   display: grid;
+  font-family: 'Montserrat', sans-serif;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto; 
   grid-template-areas: 
@@ -8,14 +9,49 @@ body {
     "daily1 daily2 daily3"
     "minutes stairs steps"
     "water water water"
-    "stepsComp weekSleep weekSleep"
+    "stepsComp goal weekSleep"
     "allUsers allUsers allUsers"
     "allTime allTime allTime"
 }
 
+
 .header-title {
   grid-area: header;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 2px;
+  display: flex;
+  flex-direction: column;
   border: 1px solid red;
+}
+
+p {
+  font-weight: 300px; 
+}
+
+h4 {
+  font-weight: 300px; 
+}
+.header-title,
+.user_card,
+.daily1,
+.daily2,
+.daily3,
+.main_weekly-minutes,
+.main_weekly-stairs,
+.main_weekly-steps,
+.main_weekly-water,
+.daily_steps-comparison,
+.main_daily-goal,
+.main_weekly-sleep,
+.daily_all-users,
+.alltime_user {
+  padding: 20px;
+}
+
+.user_card-welcome,
+.user_card-name-span {
+  font-weight: 600;
+  font-size: 104%;
 }
 
 .user_card {
@@ -75,5 +111,10 @@ body {
 
 .daily_all-users {
   grid-area: allUsers;
+  border: 1px solid red;
+}
+
+.main_daily-goal {
+    grid-area: goal;
   border: 1px solid red;
 }

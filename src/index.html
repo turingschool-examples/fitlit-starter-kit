@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="path/to/chartjs/dist/Chart.min.css">
     <!-- <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,900i&display=swap" rel="stylesheet"> -->
     <!-- <link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet"> -->
     <!-- <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet"> -->
@@ -75,12 +76,23 @@
         <li> The most recent minutes active of all users average is <span class="all-users-avg-most-recent-minutes-active"></span> minutes</li>
         <li> Your most recent total of flights climbed is <span class="most-recent-stairs"></span> flights </li>
         <li> The most recent flights climbed of all user's average is <span class="all-users-avg-most-recent-stairs"></span> flights </li>
-        <li> Your most recent miles walked is <span class="most-recent-miles"></span> miles</li>      
+        <li> Your most recent miles walked is <span class="most-recent-miles"></span> miles</li>
       </ul>
+      <ul class="activity-week-steps-display">
+        
+      </ul>
+      <ul class="activity-week-stairs-display">
+        
+        </ul>
+        <ul class="activity-week-min-active-display">
+        
+          </ul>
+    
      <section class="default-display">
        <h3> Today is <span class="today"></span></h3>
      </section>    
    </main>
+    <script src="path/to/chartjs/dist/Chart.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>

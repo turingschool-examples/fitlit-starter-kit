@@ -56,7 +56,6 @@ class Sleep {
       answer.push(acc)
       return {};
     }, {})
-
     return answer;
   }
 
@@ -88,7 +87,7 @@ class Sleep {
       }
     })
     let idArray = week.reduce((acc, currentElement) => {
-      if(!acc.includes(currentElement.userID)) {
+      if (!acc.includes(currentElement.userID)) {
         acc.push(currentElement.userID)
       }
       return acc
@@ -99,6 +98,7 @@ class Sleep {
         acc += currentElement.sleepQuality
         return acc
       }, 0) / filterData.length;
+
       if (avg >= 3) {
         namesID.push(id)
       }
@@ -110,8 +110,10 @@ class Sleep {
         }
       }).name
     });
+
     return groupOverThree 
   }
+
 
   findBestDateOfSleepOfUser() {
     let sleepDate = this.currentUserData.sort((a, b) => {

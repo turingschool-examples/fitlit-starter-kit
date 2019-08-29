@@ -4,8 +4,6 @@ class Hydration {
     this.currentUserId = id;
     this.currentUserData;
     this.today;
- 
-
   }
 
   findCurrentUserData() {
@@ -40,14 +38,8 @@ class Hydration {
       return {date: day.date, 
         numOunces: day.numOunces}
     });
-    
   }
-
-
 }
-
-
-
 
 if (typeof module !== 'undefined') {
   module.exports = Hydration;

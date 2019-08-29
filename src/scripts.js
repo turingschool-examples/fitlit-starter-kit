@@ -149,8 +149,9 @@ const displayLatestWeeksStats = (activity, property) => {
     }
   })
 }
-
-
+const displayFriendsStepTotalOverLastWeek = () => {
+    
+}
 
 $(".sleep-btn").click(function() {
   $(".sleep-info").toggle();

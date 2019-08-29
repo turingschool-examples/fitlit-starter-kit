@@ -68,11 +68,11 @@ const dateToday = () => {
   let dd = today.getDate();
   let mm = today.getMonth() + 1; 
   const yyyy = today.getFullYear();
-  if (dd<10) {
-    dd=`0${dd}`;
+  if (dd < 10) {
+    dd = `0${dd}`;
   } 
-  if (mm<10) {
-    mm=`0${mm}`;
+  if (mm < 10) {
+    mm = `0${mm}`;
   } 
   today = `${mm}/${dd}/${yyyy}`;
   return today;
@@ -83,11 +83,11 @@ const dateTodayString = () => {
   let dd = today.getDate();
   let mm = today.getMonth() + 1; 
   const yyyy = today.getFullYear();
-  if (dd<10) {
-    dd=`0${dd}`;
+  if (dd < 10) {
+    dd = `0${dd}`;
   } 
-  if (mm<10) {
-    mm=`0${mm}`;
+  if (mm < 10) {
+    mm = `0${mm}`;
   } 
   today = `${yyyy}/${mm}/${dd}`;
   return today;
@@ -98,11 +98,11 @@ const startTodayString = () => {
   let dd = today.getDate() - 6;
   let mm = today.getMonth() + 1; 
   const yyyy = today.getFullYear();
-  if (dd<10) {
-    dd=`0${dd}`;
+  if (dd < 10) {
+    dd = `0${dd}`;
   } 
-  if (mm<10) {
-    mm=`0${mm}`;
+  if (mm < 10) {
+    mm = `0${mm}`;
   } 
   today = `${yyyy}/${mm}/${dd}`;
   return today;
@@ -123,10 +123,9 @@ const displayThisWeeksSleepOrQuality = (sleep, property) => {
   let weekArray = sleep.findSleepHoursOrQualityEachDayOverWeekForAUser(startDate, endDate, property);
     
   weekArray.forEach((day) => {
-    if(property === 'hoursSlept') {
+    if (property === 'hoursSlept') {
       $('.sleep-week-display').append(`<li> On ${day.date} you slept ${day[property]} hours. </li>`)
-    }
-    else {
+    } else {
       $('.sleep-week-quality-display').append(`<li> On ${day.date} your sleep quality was ${day[property]}. </li>`)
     }
   })
@@ -138,20 +137,16 @@ const displayLatestWeeksStats = (activity, property) => {
   let startDate = startTodayString();
   let weekArray = activity.findAnyActivityEachDayOverWeekForAUser(startDate, endDate, property);
   weekArray.forEach((day) => {
-    if(property === 'numSteps') {
+    if (property === 'numSteps') {
       $('.activity-week-steps-display').append(`<li> On ${day.date} you took ${day[property]} steps </li>`)
-    }
-    else if(property === 'minutesActive') {
+    } else if (property === 'minutesActive') {
       $('.activity-week-min-active-display').append(`<li> On ${day.date} your total minutes active was ${day[property]} minutes. </li>`)
-    }
-    else if(property === 'flightsOfStairs') {
+    } else if (property === 'flightsOfStairs') {
       $('.activity-week-stairs-display').append(`<li> On ${day.date} you climbed ${day[property]} flights of stairs. </li>`)
     }
   })
 }
-const displayFriendsStepTotalOverLastWeek = () => {
-    
-}
+
 
 $(".sleep-btn").click(function() {
   $(".sleep-info").toggle();

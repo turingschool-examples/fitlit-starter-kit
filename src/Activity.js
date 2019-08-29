@@ -133,10 +133,6 @@ class Activity {
     return answer;
   }
 
-  // findTotalStepsOverAWeek(weekOfInfo) {
-
-  // }
-
   findWinnerOfStepChallengeBetweenFriendsForAWeek(startDate, endDate, property) {
     let allFriendsInfoForWeek = this.currentUserFriends.map(friendID => {
       return this.findAWeekOfDataForAUser(startDate, endDate, property, friendID) 

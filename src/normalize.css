@@ -11,8 +11,10 @@ body {
     "water water water"
     "stepsComp goal dailyMinComp"
     "weekSleep dailyMiles dailyStairComp"
+    "stepIncrese stepIncrese stepIncrese"
     "allTime allTime allTime"
     "allUserSleep allUserSleep allUserSleep"
+    
 }
 
 
@@ -52,14 +54,16 @@ h4 {
 .main_daily-goal,
 .main_weekly-sleep,
 .daily_all-users,
-.alltime_user {
+.alltime_user,
+.increasing_step-trend {
   padding: 20px;
 }
 
 .main_weekly-water,
 .main_weekly-minutes,
 .main_weekly-stairs,
-.main_weekly-steps-span {
+.main_weekly-steps-span,
+.increasing_step-trend {
   letter-spacing: 1px;
 }
 
@@ -79,7 +83,8 @@ h4 {
 .daily_stairs-comparison-text,
 .main_weekly-sleep-text,
 .alltime_user-sleep,
-.main_allUser-sleep {
+.main_allUser-sleep,
+.increasing_step-trend {
   text-align: center
 }
 
@@ -112,7 +117,8 @@ h4 {
 .main_weekly-water-header,
 .main_weekly-minutes-header,
 .main_weekly-stairs-header,
-.main_weekly-steps-header {
+.main_weekly-steps-header,
+.increasing_step-trend-text {
   font-size: 111%;
   font-weight: 600;
 }
@@ -203,5 +209,10 @@ h4 {
 
 .main_allUser-sleep {
   grid-area: allUserSleep;
+  border: 1px solid red;
+}
+
+.increasing_step-trend {
+    grid-area: stepIncrese;
   border: 1px solid red;
 }

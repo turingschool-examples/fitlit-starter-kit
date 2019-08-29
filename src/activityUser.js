@@ -105,7 +105,7 @@ class Activity {
 
       if (day.numSteps > userInfo[index - 1].numSteps 
         && userInfo[index - 1].numSteps > userInfo[index - 2].numSteps) {
-        {acc.push(day.date)}
+        {acc.push(` ${day.date} `)}
       }
       return acc
     }, [])

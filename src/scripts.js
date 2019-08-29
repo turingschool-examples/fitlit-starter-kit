@@ -64,6 +64,8 @@ $('.daily_all-users-stairs-span').text(allUserActivity.getAverageStairsClimbed(f
 
 $('.main_allUser-sleep-hours-span').text(allUserSleep.getAllTimeQualityAvg());
 
+$('.increasing_step-trend-span').text(activityRepo.getIncreasingSteps(uniqueUserId));
+
 function findToday() {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -98,5 +100,7 @@ function getFriendInfo(id, date) {
         return ({id: friendId, steps: friendTotalSteps});
 
         })
+
+
     }
 

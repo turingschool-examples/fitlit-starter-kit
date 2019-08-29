@@ -38,8 +38,13 @@ div {
   
 }
 
-.article__p--info {
-  margin: 0px
+#section__card--info {
+  border-style: dotted;
+  border-radius: 10px;
+  height: 27vh;
+  text-align: left;
+  padding: 6%;
+  
 }
 
 main {
@@ -78,3 +83,10 @@ main {
   text-align: center;
   border-radius: 50px;
 }
+
+.section__water--daily,
+.section__water--weekly {
+  border-color: #D1E8E2 
+}
+
+

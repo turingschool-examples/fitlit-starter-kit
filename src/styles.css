@@ -4,25 +4,17 @@
 
   body {
       background-color: #F9FAF9;
-      /* font-family: 'Lato', sans-serif; */
-      /* font-family: 'ZCOOL XiaoWei', serif; */
-      /* font-family: 'DM Sans', sans-serif;*/
-      /* background-image: url("../images/sunrise.jpg");
-      background-repeat: no-repeat;
-      background-size: cover; */
       font-family: 'DM Serif Display', serif;
       display: flex;
   }
 
   nav {
-    /* background-color: #82042D; */
     background-color: #D2B64C;
     padding: 10px; 
     position: relative;  
     height: 100vh; 
     max-width: 15%;
     z-index: 1;
-    
 }
 
 .header-display {
@@ -36,7 +28,6 @@
     margin-left: 4%;
     
 }
-
 
   h3 {
       color: aliceblue;
@@ -62,13 +53,15 @@
     display: block;
     margin: auto;
     padding-top: 5%;
+    max-width: 100px;
+    max-height: 100px;
+   
 }
 
 .profile-btn {
     margin: 10px;
     width: 85%;
     border-radius: 5px;
-    /* border: 2px solid #EBFCE2; */
 }
 
 .profile-btn:hover {
@@ -116,8 +109,6 @@
     width: 100%;
     color:aliceblue;
     font-size: 30px;
-    /* border-radius: 25px; */
-
 }
 .profile-box {
     border: 2px solid #2b3133;
@@ -131,11 +122,9 @@
     list-style-type: none;
 }
 
-
   .sleep-box {
       display: flex;
       color: #2b3133;
-      /* color: aliceblue; */
   }
 
   .profile-info {
@@ -143,68 +132,121 @@
       font-size: 30px;
       color: #2b3133;
       min-width: 900px;
-      /* color: aliceblue; */
   }
 
-  .logo-nav {
-      max-width: 100px;
-      max-height: 100px;
-      display: block;
+  .sleep-info {
+      margin-top: 20%;
+      padding: 20px;
+      display: grid;
+      width: 100%;
+      grid-template-rows: 45% 45%;
+      grid-template-areas: 
+      "sleep-box1 sleep-box2"
+      "sleep-box sleep-week-display"
   }
 
-  /* .sleep-week-display {
-      border: solid 1px;
-      width: 40%;
-      margin: 10px;
+  .sleep-box1-header {
+    text-align: center;
+    background-color: #2b3133;
+    margin: auto;
+    height: 5vh;
+    width: 100%;
+    color:aliceblue;
+    font-size: 30px;
+  }
+
+  .sleep-box1 {
+    font-size: 20px;
+    width: 500px;
+    margin: 20px;
+    grid-area: sleep-box1;
+    border: 2px solid #2b3133;
+    height: 20vh;
+    border-radius: 0px 0px 25px 25px;
+    background-color: #D8CBEE;
+    list-style-type: none;
+    text-align: center;
+  }
+
+  .sleep-box2 {
+    font-size: 20px;
+    width: 500px;
+    margin: 20px;
+    grid-area: sleep-box1;
+    border: 2px solid #2b3133;
+    height: auto;
+    border-radius: 0px 0px 25px 25px;
+    background-color: #D8CBEE;
+    list-style-type: none;
+    text-align: center;
+  }
+
+  .sleep-box2-header {
+    text-align: center;
+    background-color: #2b3133;
+    margin: auto;
+    height: 5vh;
+    width: 100%;
+    color:aliceblue;
+    font-size: 30px;
+  }
+
+  .sleep-box {
+     display: none;
+      width: 500px;
+      margin: 20px;
+      grid-area: sleep-box;
+      border: 2px solid #2b3133;
+      border-radius: 0px 0px 25px 25px;
+      background-color: #D8CBEE;
+  }
+
+  .sleep-box-header {
+    text-align: center;
+    background-color: #2b3133;
+    margin: auto;
+    height: 5vh;
+    width: 100%;
+    color:aliceblue;
+    font-size: 30px;
+  }
+
+  .sleep-week-display {
+      display:inline-block;
+      width: 500px;
+      padding: 20px;
+      margin: 20px;
       display: none;
-  } */
+      grid-area: sleep-week-display;
+      border: 2px solid #2b3133;
+      border-radius: 0px 0px 25px 25px;
+      background-color: #D8CBEE;
+  }
 
-  /* .sleep-week-quality-display {
-    border: solid 1px;
-    width: 40%;
-    margin: 10px;
-    display: none;
-} */
-
-/* .hydration-week-display {
-    display: none;
-    color: aliceblue;
-} */
-
-/* h1 {
-    /* font-size: 40px; */
-}
-
-h2 {
-    /* font-size: 40px; */
-} */
-
-/* .activity-week-display {
-    display: none;
-    color: aliceblue;
-} */
+  .sleep-week-display-header {
+    text-align: center;
+    background-color: #2b3133;
+    margin: auto;
+    height: 5vh;
+    width: 100%;
+    color:aliceblue;
+    font-size: 30px;
+  }
 
 .activity-info {
     display: none;
     color: #2b3133;
-    /* color: aliceblue; */
 }
 
 .sleep-info {
     display: none;
     color: #2b3133;
-    /* color: aliceblue; */
 }
 
 .hydration-info {
     display: none;  
     color: #2b3133;
-    /* color: aliceblue */
 }
 
-  /* .sleep-display-heading {
-    font-size: 25px;
-    color: antiquewhite;
-  } */
 
   

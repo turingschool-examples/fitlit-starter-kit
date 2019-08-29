@@ -67,7 +67,6 @@ const dateToday = () => {
   let today = new Date();
   let dd = today.getDate();
   let mm = today.getMonth() + 1; 
-  // console.log(new Intl.DateTimeFormat('en-US', mm).format(today));
   const yyyy = today.getFullYear();
   if (dd<10) {
     dd=`0${dd}`;
@@ -75,9 +74,7 @@ const dateToday = () => {
   if (mm<10) {
     mm=`0${mm}`;
   } 
-  // today = `${yyyy}/${mm}/${dd}`;
   today = `${mm}/${dd}/${yyyy}`;
-  // console.log(today);
   return today;
 }
 
@@ -98,7 +95,7 @@ const dateTodayString = () => {
 
 const startTodayString = () => {
   let today = new Date();
-  let dd = today.getDate() - 7;
+  let dd = today.getDate() - 6;
   let mm = today.getMonth() + 1; 
   const yyyy = today.getFullYear();
   if (dd<10) {
@@ -157,8 +154,14 @@ const displayLatestWeeksStats = (activity, property) => {
 
 $(".sleep-btn").click(function() {
   $(".sleep-info").toggle();
+  $(".sleep-box1").show();
+  $(".sleep-box2").show();
+  $(".sleep-box").show();
+  $(".sleep-week-quality-display").show();
+  $(".sleep-box3").show();
+  $(".sleep-week-display").show();
   $(".hydration-info").hide();
-  $(".activity-week-display").hide();
+  $(".activity-info").hide();
   $(".profile-info").hide();
 });
 

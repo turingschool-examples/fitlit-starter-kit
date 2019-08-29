@@ -16,7 +16,8 @@ body {
     "water2 water2 sleep3 sleep3 sleep4 sleep4"
     "sleep1 sleep1 sleep2 sleep2 sleep5 sleep5"
     "sleep6 sleep6 activ1 activ1 activ2 activ2"
-    "activ3 activ3 activ4 activ4 activ5 activ5";
+    "activ3 activ3 activ4 activ4 activ5 activ5"
+    "activ6 activ6 activ7 activ7 activ8 activ8";
   margin: 0;
   height: 100vh;
 }
@@ -151,6 +152,22 @@ hr {
   grid-area: activ4;
 }
 
+#article15 {
+  grid-area: activ5;
+}
+
+#article16 {
+  grid-area: activ6;
+}
+
+#article17 {
+  grid-area: activ7;
+}
+
+#article18 {
+  grid-area: activ8;
+}
+
 @media screen and (max-width: 700px) {
 
   body {
@@ -164,7 +181,9 @@ hr {
       "sleep1 sleep1 sleep2 sleep2"
       "sleep5 sleep5 sleep6 sleep6"
       "activ1 activ1 activ2 activ2"
-      "activ3 activ3 activ4 activ4";
+      "activ3 activ3 activ4 activ4"
+      "activ5 activ5 activ6 activ6"
+      "activ7 activ7 activ8 activ8";
   }
 
 @media screen and (max-width: 600px) {
@@ -211,7 +230,11 @@ hr {
         "activ1 activ1"
         "activ2 activ2"
         "activ3 activ3"
-        "activ4 activ4";
+        "activ4 activ4"
+        "activ5 activ5"
+        "activ6 activ6"
+        "activ7 activ7"
+        "activ8 activ8";
     }
 
     h1 {

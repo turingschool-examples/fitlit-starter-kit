@@ -5,9 +5,11 @@ class Activity {
   }
 
   calculateMilesWalked(date, id) {
-    let activePeople = this.users.users;
-    let stride = activePeople.find(user => user.id === id).strideLength;
-    let numberSteps = this.data.filter(user => user.date === date).find(user => user.userID === id).numSteps;
+    let stride = this.users.strideLength;
+
+    let numberSteps = this.data
+      .filter(user => user.date === date)
+      .find(user => user.userID === id).numSteps;
 
     console.log(stride)
     return parseFloat(((stride * numberSteps) / 5280).toFixed(1));

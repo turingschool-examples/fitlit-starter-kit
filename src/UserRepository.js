@@ -5,7 +5,6 @@ class UserRepository {
         
   }
 
-    
   fetchUserData(userID) {
     let currentUser = this.data.find(user => user.id === userID);
     this.currentUserData = currentUser;
@@ -19,9 +18,6 @@ class UserRepository {
     }, 0) / this.data.length
   }
 }
-
-
-
 
 if (typeof module !== 'undefined') {
   module.exports = UserRepository;

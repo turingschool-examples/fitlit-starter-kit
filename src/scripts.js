@@ -13,7 +13,6 @@ $(document).ready(() => {
   const currentUserActivityData = activity.findCurrentUserData();
   const findStepTrends = activity.findTrendOfIncreasingStepsForMoreThanThreeDaysForAllUsers();
   const findStairTrends = activity.findTrendOfIncreasingStairsForMoreThanThreeDaysForAllUsers();
-
   const sleep = new Sleep(sleepData, idRandom, userData);
   sleep.findCurrentUserData();
   activity.findCurrentUserData();

@@ -95,3 +95,16 @@ function appendActiveMinsWeekToDOM() {
   })
 }
 appendActiveMinsWeekToDOM()
+
+function appendIncStepCountToDOM() {
+  let weekArray = allUsersActivity.getConsecutiveIncrease(userNum);
+  let weekActive = weekArray.map((day) => {
+    return day;
+  })
+
+  weekActive.forEach((num) => {
+    console.log('num', num)
+    $('#inc-steps').append(`<li>${num.date}</li>`);
+  })
+}
+appendIncStepCountToDOM()

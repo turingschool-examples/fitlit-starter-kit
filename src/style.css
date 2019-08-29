@@ -17,7 +17,8 @@ body {
     "sleep1 sleep1 sleep2 sleep2 sleep5 sleep5"
     "sleep6 sleep6 activ1 activ1 activ2 activ2"
     "activ3 activ3 activ4 activ4 activ8 activ8"
-    "activ6 activ6 activ7 activ7 activ5 activ5";
+    "activ6 activ6 activ7 activ7 activ5 activ5"
+    "activ9 activ9 activ9 activ9 activ9 activ9";
   margin: 0;
   height: 100vh;
 }
@@ -100,72 +101,152 @@ hr {
   grid-area: step1;
 }
 
+#article1 p {
+  color: #73bf00;
+}
+
 #article2 {
   grid-area: step2;
+}
+
+#article2 p {
+  color: #73bf00;
 }
 
 #article3 {
   grid-area: water1;
 }
 
+#article3 p {
+  color: #00a9bf;
+}
+
 #article4 {
   grid-area: water2;
+}
+
+#article4 li {
+  color: #00a9bf;
 }
 
 #article5 {
   grid-area: sleep1;
 }
 
+#article5 p {
+  color: #8d03ff;
+}
+
 #article6 {
   grid-area: sleep2;
+}
+
+#article6 p {
+  color: #8d03ff;
 }
 
 #article7 {
   grid-area: sleep3;
 }
 
+#article7 li {
+  color: #8d03ff;
+}
+
 #article8 {
   grid-area: sleep4;
+}
+
+#article8 li {
+  color: #8d03ff;
 }
 
 #article9 {
   grid-area: sleep5;
 }
 
+#article9 p {
+  color: #8d03ff;
+}
+
 #article10 {
   grid-area: sleep6;
+}
+
+#article10 p {
+  color: #8d03ff;
 }
 
 #article11 {
   grid-area: activ1;
 }
 
+#article11 p {
+  color: #73bf00;
+}
+
 #article12 {
   grid-area: activ2;
+}
+
+#article12 p {
+  color: #73bf00;
 }
 
 #article13 {
   grid-area: activ3;
 }
 
+#article13 p {
+  color: #73bf00;
+}
+
 #article14 {
   grid-area: activ4;
+}
+
+#article14 p {
+  color: #73bf00;
 }
 
 #article15 {
   grid-area: activ5;
 }
 
+#article15 li {
+  color: #73bf00;
+}
+
 #article16 {
   grid-area: activ6;
+}
+
+#article16 li {
+  color: #73bf00;
 }
 
 #article17 {
   grid-area: activ7;
 }
 
+#article17 li {
+  color: #73bf00;
+}
+
 #article18 {
   grid-area: activ8;
+}
+
+#article18 p {
+  color: red;
+}
+
+#article19 {
+  grid-area: activ9;
+}
+
+#article19 li {
+  color: #73bf00;
 }
 
 @media screen and (max-width: 700px) {
@@ -183,7 +264,8 @@ hr {
       "activ1 activ1 activ2 activ2"
       "activ3 activ3 activ4 activ4"
       "activ8 activ8 activ6 activ6"
-      "activ7 activ7 activ5 activ5";
+      "activ7 activ7 activ5 activ5"
+      "activ9 activ9 activ9 activ9";
   }
 
 @media screen and (max-width: 600px) {
@@ -234,7 +316,8 @@ hr {
         "activ8 activ8"
         "activ6 activ6"
         "activ7 activ7"
-        "activ5 activ5";
+        "activ5 activ5"
+        "activ9 activ9";
     }
 
     h1 {

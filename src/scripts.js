@@ -1,16 +1,16 @@
+/* eslint-disable no-undef */
 // *** Variables ***
-let randomNum = Math.floor(Math.random() * 50 +1);
+let randomNum = Math.floor(Math.random() * 50 + 1);
 let randomUser = userData.find(user => user.id === randomNum);
-const dailySection = document.querySelector('.daily_section')
-const header = document.querySelector('header')
+const dailySection = document.querySelector('.daily_section');
+const header = document.querySelector('header');
 
 //*** Instances ***
-const user = new User(randomUser)
+const user = new User(randomUser);
 const users = new UserRepository(userData);
 const hydration = new Hydration(hydrationData, randomUser.id);
 const sleep = new Sleep(sleepData, randomUser.id);
 const activity = new Activity(activityData, userData, randomUser.id);
-
 
 // *** Event Listeners ***
 window.addEventListener('load', handlePageLoad);
@@ -29,7 +29,7 @@ function handleUser() {
 }
 
 function welcomeUser() {
-  header.insertAdjacentHTML('beforeend', `<h2 class="welcome-msg">Welcome, ${user.name}</h2>`)
+  header.insertAdjacentHTML('beforeend', `<h2 class="welcome-msg">Welcome, ${user.name}</h2>`);
 }
 
 function createUserCard() {
@@ -44,9 +44,8 @@ function createUserCard() {
   <p class="user_info_text">${user.dailyStepGoal}</p>
   <h3 class="user_info_headings">Avg User Step Goal: </h3>
   <p class="user_info_text">${users.calculateAverageStepGoals()}</p>
-  </section>`)
+  </section>`);
 }
-
 
 function returnDailyWaterIntake() {
   hydration.extractSingleUser();
@@ -55,9 +54,8 @@ function returnDailyWaterIntake() {
 
 function returnWeeklyWaterIntake() {
   hydration.extractSingleUser();
-  return hydration.calculateWeeklyWaterIntake()
+  return hydration.calculateWeeklyWaterIntake();
 }
-
 
 function displayUserHydration() {
   let dailyWaterIntake = returnDailyWaterIntake();
@@ -104,7 +102,7 @@ function displayUserHydration() {
         </div>
         </div>
       <div>
-   </section>`)
+   </section>`);
 }
 
 function returnLatestHoursSlept() {
@@ -117,23 +115,20 @@ function returnLatestSleepQuality() {
   return sleep.averageSleepQuality();
 }
 
-//USE THIS FOR SLEEP REFACTOR
 function returnLatestWeekSleepInfo() {
   sleep.extractSingleUser();
-  // let userSleep = sleep.singleUserData;
-  // let date = userSleep[userSleep.length - 1].date;
   return sleep.findLatestWeek();
 }
 
 function returnAvgHoursSlept() {
   sleep.extractSingleUser();
-  return sleep.averageHoursSlept()
-};
+  return sleep.averageHoursSlept();
+}
 
 function returnAvgSleepQuality() {
   sleep.extractSingleUser();
-  return sleep.averageSleepQuality()
-};
+  return sleep.averageSleepQuality();
+}
 
 function displaySleepInfo() {
   let latestHoursSlept = returnLatestHoursSlept();
@@ -190,62 +185,62 @@ function displaySleepInfo() {
     </div>
     </div>
     </div>
-  </section>`)
+  </section>`);
 }
 
 function returnDailySteps() {
   activity.extractSingleActivityData();
   let singleUserActivity = activity.singleActivity;
-  let latestDay = singleUserActivity[singleUserActivity.length - 1]
-  return latestDay.numSteps
+  let latestDay = singleUserActivity[singleUserActivity.length - 1];
+  return latestDay.numSteps;
 }
 
 function returnMinutesActive() {
   activity.extractSingleActivityData();
   let singleUserActivity = activity.singleActivity;
-  let latestDay = singleUserActivity[singleUserActivity.length - 1]
-  return latestDay.minutesActive
+  let latestDay = singleUserActivity[singleUserActivity.length - 1];
+  return latestDay.minutesActive;
 }
 
 function returnDailyMiles() {
   activity.extractSingleUser();
   activity.extractSingleActivityData();
   let singleUserActivity = activity.singleActivity;
-  let latestDay = singleUserActivity[singleUserActivity.length - 1]
+  let latestDay = singleUserActivity[singleUserActivity.length - 1];
   let miles = activity.calculateDailyMiles(latestDay.date);
-  return miles
+  return miles;
 }
 
 function returnFlightsClimbed() {
   activity.extractSingleActivityData();
-  return activity.checkFlightsClimbed()
+  return activity.checkFlightsClimbed();
 }
 
 function returnEveryonsAvgSteps() {
   activity.extractSingleActivityData();
   let singleUserActivity = activity.singleActivity;
   let lastUserDay = singleUserActivity[singleUserActivity.length - 1]
-  let latestDay = lastUserDay.date
+  let latestDay = lastUserDay.date;
   let avgSteps = activity.getEveryonesAvgSteps(latestDay);
-  return avgSteps
-};
+  return avgSteps;
+}
 
 function returnEveryonsAvgMinActive() {
   activity.extractSingleActivityData();
   let singleUserActivity = activity.singleActivity;
-  let lastUserDay = singleUserActivity[singleUserActivity.length - 1]
-  let latestDay = lastUserDay.date
+  let lastUserDay = singleUserActivity[singleUserActivity.length - 1];
+  let latestDay = lastUserDay.date;
   let avgMinActive = activity.getEveryonesAvgMinsActive(latestDay);
-  return avgMinActive
+  return avgMinActive;
 }
 
 function returnEveryonsAvgStairsClimed() {
   activity.extractSingleActivityData();
   let singleUserActivity = activity.singleActivity;
-  let lastUserDay = singleUserActivity[singleUserActivity.length - 1]
-  let latestDay = lastUserDay.date
+  let lastUserDay = singleUserActivity[singleUserActivity.length - 1];
+  let latestDay = lastUserDay.date;
   let avgStairsClibmed = activity.getEveryonesAvgStairsClimbed(latestDay);
-  return avgStairsClibmed
+  return avgStairsClibmed;
 }
 
 function returnWeeklyStepCount() {
@@ -269,14 +264,13 @@ function displayStepInfo() {
   let stepGoal = user.dailyStepGoal;
   let minutesActive = returnMinutesActive();
   let miles = returnDailyMiles();
-  let flightsClimbed = returnFlightsClimbed()
+  let flightsClimbed = returnFlightsClimbed();
   let allAvgSteps = returnEveryonsAvgSteps();
   let allAvgMinActive = returnEveryonsAvgMinActive();
-  let allAvgStairsClimbed = returnEveryonsAvgStairsClimed()
+  let allAvgStairsClimbed = returnEveryonsAvgStairsClimed();
   let totalWeeklySteps = returnWeeklyStepCount();
   let totalWeeklyMinActive = returnWeeklyMinActive();
-  let totalWeeklyStairsClimbed = returnWeeklyStairsClimbed()
-
+  let totalWeeklyStairsClimbed = returnWeeklyStairsClimbed();
   dailySection.insertAdjacentHTML('beforeend', `<section class="info_block activity_block">
     <div class="steps_activity_info">
     <div class="steps">
@@ -321,12 +315,5 @@ function displayStepInfo() {
     </div>
     </div>
     </div>
-   </section>`)
+   </section>`);
 }
-
-// function displayA
-
-
-
-
-

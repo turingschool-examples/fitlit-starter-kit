@@ -23,6 +23,7 @@ header {
 
 aside {
   grid-area: aside;
+  background-color: pink;
 }
 
 main {

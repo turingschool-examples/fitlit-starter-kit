@@ -1,0 +1,13 @@
+* {
+  font-family: 'Open Sans';
+  margin: 0;
+}
+
+html, body {
+  background-color: #353531;
+  height: 100%;
+}
+
+header {
+  height: 80px;
+}

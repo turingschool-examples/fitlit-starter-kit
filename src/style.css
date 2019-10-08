@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+}
+
+body {
+  font-family: 'Open Sans';
+  margin: 0px 150px 0px 150px;
+  background-color: gray;
+}
+
+h1 {
+  text-align: center;
+}
+
+.main-sidebar-body {
+  display: flex;
+  flex-direction: row;
+}
+
+.body-sidebar-sidebarContainer {
+  width: 20%;
+  background-color: white;
+  border: 1px solid black;
+  height: 1000px;
+  flex-direction: column;
+
+}
+
+.sidebar-header-name {
+  text-align: center;
+}
+
+.sidebar-header-line {
+  color: #ffffff;
+  border: 1px solid black;
+  margin: 1em 1em 0 1em;
+  height: 0;
+}
+
+}
+
+.sidebar-body-friendList {
+  text-align: center
+}
+
+.body-main-infoContainter {
+  width: 70%;
+  border: 1px solid black;
+  height: 1000px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.infoContainer-cardContainer-card {
+  width: 20%;
+  height: 20%;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  margin: 3%;
+}

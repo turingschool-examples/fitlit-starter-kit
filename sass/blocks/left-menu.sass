@@ -1,0 +1,37 @@
+// *** LEFT MENU STYLES ***
+.page-header
+  grid-area: header
+  padding: 20px
+
+.page-header>header
+  display: flex
+  margin-bottom: 40px
+  position: relative
+
+.page-header>header>div
+  background-color: #fff
+  border-radius: 60px
+  height: 120px
+  width: 120px
+
+.page-header>header>h2
+  align-self: flex-end
+  background-color: $section-color
+  border-radius: 20px
+  font-size: 24px
+  padding: 0.2em 2.2em
+  position: absolute
+  text-transform: uppercase
+  left: 75px
+  bottom: 30px
+  z-index: -1
+
+.page-header>header>p
+  align-self: flex-end
+  color: #fff
+  opacity: 0.4
+  position: absolute
+  bottom: 7px
+  right: 10px
+
+@import '../elements/bio-info'

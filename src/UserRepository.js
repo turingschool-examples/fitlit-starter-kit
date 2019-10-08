@@ -3,6 +3,12 @@ class UserRepository{
         this.userData = userData;
         this.currentUser;
     }
+
+    returnCurrentUser(id) {
+    this.currentUser = this.userData.find(user => {
+            return user.id === id
+        })
+    }
 }
 
 if (typeof module !== 'undefined') {

@@ -3,11 +3,11 @@ class User {
       this.currentUserData = currentUserData;
       this.id = currentUserData.id;
       this.name = currentUserData.name;
-      this.address = currentUserData.address;;
-      this.email = currentUserData.email;;
-      // this.strideLength;
-      // this.dailyStepGoal;
-      // this.friends;
+      this.address = currentUserData.address;
+      this.email = currentUserData.email;
+      this.strideLength = currentUserData.strideLength;
+      this.dailyStepGoal = currentUserData.dailyStepGoal;
+      this.friends = currentUserData.friends;
     }
 }
 

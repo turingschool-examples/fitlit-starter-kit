@@ -35,15 +35,15 @@ describe('User', () => {
         expect(user.email).to.equal('Hillary83@gmail.com');
     });
 
-    it.skip('should be have a strideLength', () => {
-        expect(user.id).to.equal(4.1);
+    it('should be have a strideLength', () => {
+        expect(user.strideLength).to.equal(4.1);
     });
 
-    it.skip('should be have a dailyStepGoal', () => {
-        expect(user.id).to.equal(3000);
+    it('should be have a dailyStepGoal', () => {
+        expect(user.dailyStepGoal).to.equal(3000);
     });
 
-    it.skip('should be have friends', () => {
-        expect(user.id).to.eql([40, 33]);
+    it('should be have friends', () => {
+        expect(user.friends).to.eql([40, 33]);
     });
 });

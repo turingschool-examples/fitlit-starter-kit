@@ -3,13 +3,54 @@
   <head>
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-     <h2>Hello World</h2>
+    <header role="header">
+      <h1 class="header_h1">FitLIT</h1>
+      <p class="header_h1_p">Hello <span class="header_h1_span"></span>, welcome to your dashboard!</p>
+    </header>
+    <main role="main">
+      <section class="section_user">
+        <h2 class="section_user_h2">USER SECTION</h2>
+          <ul>
+            <li>NAME
+                <p class='user_name'></p>
+            </li>
+            <li>EMAIL
+                <p class='user_email'></p>
+            </li>
+            <li>ADDRESS
+                <p class='user_address'></p>
+            </li>
+            <li>STRIDE LENGTH
+                <p class='user_stride_length'></p>
+            </li>
+            <li>DAILY STEP GOAL
+                <p class='user_step_goal'></p>
+            </li>
+            <li>FRIENDS
 
+            </li>
+          </ul>
+        <div></div>
+      </section>
+      <section class="section_hydro">
+          <h2 class="section_hydro_h2">HYDRO SECTION</h2>
+      </section>
+      <section class="section_sleep">
+          <h2 class="section_sleep_h2">SLEEP SECTION</h2>
+      </section>
+      <section class="section_activity">
+          <h2 class="section_activity_h2">ACTIVITY SECTION</h2>
+      </section>
+    </main>
+    
+    <script type="text/javascript" src="../src/user.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>
+    <script type="text/javascript" src="../src/userRepository.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
+    <script type="text/javascript" src="../src/hydroRepository.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>

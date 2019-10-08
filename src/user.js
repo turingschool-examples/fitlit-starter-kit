@@ -1,12 +1,12 @@
 class User {
-  constructor(userData) {
-    this.id = userData.id;
-    this.name = userData.name;
-    this.address = userData.address;
-    this.email = userData.email;
-    this.strideLength = userData.strideLength;
-    this.dailyStepGoal = userData.dailyStepGoal;
-    this.friends = userData.friends;
+  constructor(data) {
+    this.id = data.id;
+    this.name = data.name;
+    this.address = data.address;
+    this.email = data.email;
+    this.strideLength = data.strideLength;
+    this.dailyStepGoal = data.dailyStepGoal;
+    this.friends = data.friends;
   }
 
   returnFirstName() {
@@ -14,5 +14,6 @@ class User {
 		return this.name[0]
   }
 }
-
-module.exports = User;
+if (typeof module !== 'undefined'){
+  module.exports = User;
+}

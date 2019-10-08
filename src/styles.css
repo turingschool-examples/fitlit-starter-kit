@@ -1,0 +1,36 @@
+/* * { background-color: rgba(255,0,0,.2); }
+* * { background-color: rgba(0,255,0,.2); }
+* * * { background-color: rgba(0,0,255,.2); }
+* * * * { background-color: rgba(255,0,255,.2); }
+* * * * * { background-color: rgba(0,255,255,.2); }
+* * * * * * { background-color: rgba(255,255,0,.2); }
+* * * * * * * { background-color: rgba(255,0,0,.2); }
+* * * * * * * * { background-color: rgba(0,255,0,.2); }
+* * * * * * * * * { background-color: rgba(0,0,255,.2); } */
+
+body {
+  display: grid;
+  grid-template-areas: 
+    "aside header"
+    "aside main";
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr 7fr;
+}
+
+header {
+  grid-area: header;
+}
+
+aside {
+  grid-area: aside;
+}
+
+main {
+  grid-area: main;
+  display: grid;
+  grid-template-areas:
+    "dayOz dayActivity daySleep"
+    "weekOz dayActivity weekSleep"
+    "weekOz weekActivity weekSleep"
+    "weekOz weekActivity allTimeSleep";
+}

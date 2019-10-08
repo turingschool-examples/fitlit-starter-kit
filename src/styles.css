@@ -65,9 +65,7 @@ main {
   border: 2px solid #33658A;
   border-radius: 4px;
   color: #222234;
-  margin-left: auto;
-  margin-right: auto;
-  width: 60%;
+  grid-column: span 1;
 }
 
 h4 {
@@ -86,20 +84,25 @@ h4 {
   width: 40%;
 }
 
+#panel-container {
+  display: grid;
+  grid-template-columns: repeat(3 1fr);
+  grid-auto-flow: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
 #user-info p {
   font-size: 1rem;
-  margin-right: auto;
   padding: 10px;
-  max-width: 50%;
 }
 
 #friend-list {
   background-color: #FFFFFF;
   border: 2px solid #F6AE2D;
   border-radius: 2px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 20%;
+  grid-column: span 1;
 }
 
 .frnd-prof-img {
@@ -110,6 +113,7 @@ h4 {
 }
 
 #large-prof-pic {
-  height: 60px;
-  width: 60px;
+  height: 100px;
+  padding: 10px;
+  width: 100px;
 }

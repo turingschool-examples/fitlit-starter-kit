@@ -2,6 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Hydro = require('../src/hydro.js');
+const HydroRepository = require('../src/hydroRepository.js')
 const data = require('../data/hydration.js')
 
 describe('Hydro', function() {
@@ -10,9 +11,10 @@ describe('Hydro', function() {
   });
 
   it('should have all dates', function() {
-    let hydro = new Hydro(data, 4)
-    hydro.findAllDate(hydro.userID);
-    console.log(hydro.dates)
-    expect(hydro.dates.length).to.eql(50)
+    let hydropRepository = new HydroRepository(data);
+    hydropRepository.findUserId(4)
+    let hydro = new Hydro(hydropRepository.currentUser)
+    console.log(hydro.data)
+    expect(hydro.data.length).to.eql(100)
   });
 });

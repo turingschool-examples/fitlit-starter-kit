@@ -7,7 +7,7 @@ class HydroRepository {
   findUserId(index) {
     this.data.forEach(user => {
       if(user.userID === index) {
-        this.currentUser.push(user)
+        this.currentUser.push(user);
       }
     });
     return this.currentUser

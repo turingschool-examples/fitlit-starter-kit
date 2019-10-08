@@ -10,6 +10,40 @@
 box-sizing: border-box;
 margin: 0;
 padding: 0;
+border: 1px solid red;
+}
+
+body {
+  font-family: 'Oswald', sans-serif;
+  background-color: #1F1F1F;
+}
+
+p,
+h3 {
+  font-family: 'Work Sans', sans-serif;
+}
+
+header {
+  text-align: center;
+}
+
+#nav-button {
+  display: inline;
+  float: right;
+  background-image: url(navbutton.png);
+  background-position: center;
+  background-size: 5.4vw;
+  height: 5.4vw;
+  width: 5.4vw;
+  margin-right: .5vw;
+  border: none;
+  margin-top: 1vw;
+}
+
+h1 {
+  color: #fff;
+  display: inline;
+  font-size: 5.4vw;
 }
 
 main {
@@ -17,8 +51,6 @@ main {
   grid-template-areas:
     'steps hydration'
     'stairs sleep';
-
-
 }
 
 .main-card {
@@ -26,27 +58,38 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+}
+
+.main-card-top-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 #steps-card-container {
   grid-area: steps;
   background-color: #F5634B;
+  margin: .5vw;
 }
 
 #hydration-card-container {
   grid-area: hydration;
   background-color: #54C6BE;
+  margin: .5vw;
 }
 
 #stairs-card-container {
   grid-area: stairs;
   background-color: #8975B2;
+  margin: .5vw;
 
 }
 
 #sleep-card-container {
   grid-area: sleep;
   background-color: #FBD089;
+  margin: .5vw;
 }
 
 /* HIDE CARDS */

@@ -10,7 +10,7 @@
 box-sizing: border-box;
 margin: 0;
 padding: 0;
-border: 1px solid red;
+/* border: 1px solid red; */
 }
 
 body {
@@ -25,13 +25,15 @@ h3 {
 
 h2 {
   font-size: 7vw;
-  font-weight: lighter;
+  /* font-weight: lighter; */
+  letter-spacing: .1em;
 }
 
 h3 {
   display: inline;
   font-size: 3vw;
-  font-weight: bold;
+  font-weight: 700;
+  letter-spacing: .2em;
 
 }
 
@@ -56,6 +58,8 @@ h1 {
   color: #fff;
   display: inline;
   font-size: 5.4vw;
+  letter-spacing: .2em;
+
 }
 
 main {
@@ -79,6 +83,8 @@ main {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  /* margin-top: 1vw; */
 }
 
 .main-card-bottom-row {
@@ -86,8 +92,35 @@ main {
   text-align: center;
 }
 
+.info-button {
+  display: inline;
+  background-image: url(i.png);
+  background-position: center;
+  background-size: 5.4vw;
+  height: 5.4vw;
+  width: 5.4vw;
+  margin-left: 1vw;
+}
+
+.friends-button {
+  display: inline;
+  background-image: url(friend.png);
+  background-position: center;
+  background-size: 5.4vw;
+  height: 5.4vw;
+  width: 5.4vw;
+  margin-right: 1vw;
+}
+
 .calendar-button {
+  display: inline;
   float: right;
+  background-image: url(calendar.png);
+  background-position: center;
+  background-size: 5.4vw;
+  height: 5.4vw;
+  width: 5.4vw;
+  margin-right: 1vw;
 }
 
 #steps-card-container {

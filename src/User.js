@@ -9,6 +9,11 @@ class User {
       this.dailyStepGoal = currentUserData.dailyStepGoal;
       this.friends = currentUserData.friends;
     }
+
+    returnFirstName() {
+      let firstName = this.name.split(" ");
+        return firstName[0];
+    }
 }
 
 

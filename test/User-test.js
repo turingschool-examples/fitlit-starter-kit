@@ -27,12 +27,12 @@ describe('User', () => {
         expect(user.name).to.equal('Roslyn Bernhard');
     });
 
-    it.skip('should be have an address', () => {
-        expect(user.id).to.equal('22859 Sean Meadow, Lake Dorthyfort MA 89560');
+    it('should be have an address', () => {
+        expect(user.address).to.equal('22859 Sean Meadow, Lake Dorthyfort MA 89560');
     });
 
-    it.skip('should be have a user email', () => {
-        expect(user.id).to.equal('Hillary83@gmail.com');
+    it('should be have a user email', () => {
+        expect(user.email).to.equal('Hillary83@gmail.com');
     });
 
     it.skip('should be have a strideLength', () => {

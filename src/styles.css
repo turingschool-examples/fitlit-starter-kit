@@ -23,6 +23,18 @@ h3 {
   font-family: 'Work Sans', sans-serif;
 }
 
+h2 {
+  font-size: 7vw;
+  font-weight: lighter;
+}
+
+h3 {
+  display: inline;
+  font-size: 3vw;
+  font-weight: bold;
+
+}
+
 header {
   text-align: center;
 }
@@ -71,6 +83,11 @@ main {
 
 .main-card-bottom-row {
   width: 100%;
+  text-align: center;
+}
+
+.calendar-button {
+  float: right;
 }
 
 #steps-card-container {

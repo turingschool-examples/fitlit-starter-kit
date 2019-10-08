@@ -2,12 +2,70 @@
   font-family: 'Open Sans';
   margin: 0;
 }
-
+/*
+starting colors :
+  body 222234
+  blue 33658A
+  lighter blue 86BBD8
+  yellow F6AE2D
+  orange F26419
+  white FFFFFF
+   */
 html, body {
-  background-color: #353531;
+  background-color: #222234;
   height: 100%;
 }
 
 header {
+  background-color: #33658A;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.8rem;
+  font-weight: 400;
   height: 80px;
+}
+
+h1 {
+  display: inline-block;
+  padding-left: 20px;
+}
+
+#top-button {
+  background-color: #F6AE2D;
+  border: none;
+  cursor: pointer;
+  float: left;
+  height: 100%;
+  width: 80px;
+}
+
+.bar {
+  background-color: black;
+  height: 5px;
+  margin: 10px auto;
+  width: 50px;
+}
+
+button {
+  cursor: pointer;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+}
+
+#user-info {
+  background-color: #FFFFFF;
+  color: #222234;
+  font-size: 1.6rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  width: 70%;
+}
+
+h4 {
+  padding: 10px;
 }

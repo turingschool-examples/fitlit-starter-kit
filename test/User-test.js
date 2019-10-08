@@ -3,7 +3,7 @@ const expect = chai.expect;
 
 const User = require('../src/User');
 const UsersRepo = require('../src/UsersRepo');
-const userData = require('../subset_data/users-subset')
+const userData = require('../subset_data/users-subset');
 
 
 

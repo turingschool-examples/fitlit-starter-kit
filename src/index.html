@@ -7,10 +7,25 @@
     <title>Activity Tracker</title>
   </head>
   <body>
-    <h1><span id='userFirstName'></span>Activity Tracker</h1>
-    <section>
-      <h2>Info</h2>
-    </section>
+    <header></header>
+      <h1>Activity Tracker</h1>
+      <h2>Welcome<span class="span__currentUser"></span></h2>
+    </header>
+    <main class="main__grid">
+     <section class="section__currentUser">
+       <h2>Personal Information</h2>
+         <p class="users "></p>
+      </section>
+      <section class="section__hydration">
+        <h2>hydration Data</h2>
+      </section>
+      <section class="section__sleep">
+        <h2>Sleep Data</h2>
+      </section>
+      <section class="section__activity">
+        <h2>Activity Data</h2>
+      </section>
+    </main>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>

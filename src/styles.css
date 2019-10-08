@@ -27,4 +27,10 @@ aside {
 
 main {
   grid-area: main;
+  display: grid;
+  grid-template-areas:
+    "dayOz dayActivity daySleep"
+    "weekOz dayActivity weekSleep"
+    "weekOz weekActivity weekSleep"
+    "weekOz weekActivity allTimeSleep";
 }

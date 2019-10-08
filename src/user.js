@@ -16,9 +16,11 @@ class User {
   }
 
   tellAboutSleep(date, hours, quality) {
-    // tell about sleep
+    console.log(date, hours, quality)
   }
 }
 
-module.exports = User;
+if (typeof module !== 'undefined') {
+  module.exports = User;
+}
 

@@ -7,15 +7,16 @@
     <title>Activity Tracker</title>
   </head>
   <body>
-    <header></header>
+    <header>
       <h1>Activity Tracker</h1>
       <h2>Welcome<span class="span__currentUser"></span></h2>
+        <p>Address<span class="user__address"></span></p>
+        <p>Email<span class="user__email"></span></p>
+        <p>Stride Length<span class="user__stride"></span>/p>
+        <p>Step Goal<span class="user__step"></span></p>
+        <p>Friends<span class="user__friends"></span></p>
     </header>
     <main class="main__grid">
-     <section class="section__currentUser">
-       <h2>Personal Information</h2>
-         <p class="users "></p>
-      </section>
       <section class="section__hydration">
         <h2>hydration Data</h2>
       </section>
@@ -24,6 +25,9 @@
       </section>
       <section class="section__activity">
         <h2>Activity Data</h2>
+      </section>
+      <section class="section__compare">
+        <h2>Compared To Other Users</h2>
       </section>
     </main>
     <script type="text/javascript" src="../data/users.js"></script>

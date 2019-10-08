@@ -138,5 +138,5 @@ const userData = [
 ];
 
 if (typeof module !== 'undefined') {
-module.exports = userData;
+  module.exports = userData;
 }

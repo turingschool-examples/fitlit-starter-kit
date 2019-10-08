@@ -2,15 +2,19 @@ class UsersRepo {
   constructor(userData) {
     this.userData = userData;
   }
-  getUsersById() {
 
+  getUserById(id) {
+    let user = this.userData.filter(user => {
+      return user.id === id;
+    })
+    return user[0]
   }
 
-  avgStepGoal(userData) {
-    let avg = userData.reduce((sum, user) => {
+  avgStepGoal() {
+    let avg = this.userData.reduce((sum, user) => {
       sum += user.dailyStepGoal;
       return sum
-    }, 0) / userData.length
+    }, 0) / this.userData.length
 
     return avg
   }

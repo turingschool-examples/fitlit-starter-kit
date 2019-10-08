@@ -1,0 +1,115 @@
+* {
+  font-family: 'Open Sans';
+  margin: 0;
+}
+/*
+starting colors :
+  body 222234
+  blue 33658A
+  lighter blue 86BBD8
+  yellow F6AE2D
+  orange F26419
+  white FFFFFF
+   */
+html, body {
+  background-color: #222234;
+  height: 100%;
+}
+
+header {
+  background-color: #33658A;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.8rem;
+  font-weight: 400;
+  height: 80px;
+}
+
+h1 {
+  display: inline-block;
+  padding-left: 20px;
+}
+
+#top-button {
+  background-color: #F6AE2D;
+  border: none;
+  cursor: pointer;
+  float: left;
+  height: 100%;
+  width: 80px;
+}
+
+.bar {
+  background-color: black;
+  height: 5px;
+  margin: 10px auto;
+  width: 50px;
+}
+
+button {
+  cursor: pointer;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  margin: 20px;
+}
+
+#user-info {
+  background-color: #FFFFFF;
+  border: 2px solid #33658A;
+  border-radius: 4px;
+  color: #222234;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+
+h4 {
+  background-color: #FFFFFF;
+  border: 2px solid #F6AE2D;
+  border-radius: 2px;
+  color: #222234;
+  display: block;
+  font-size: 1.8rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  text-align: center;
+  width: 40%;
+}
+
+#user-info p {
+  font-size: 1rem;
+  margin-right: auto;
+  padding: 10px;
+  max-width: 50%;
+}
+
+#friend-list {
+  background-color: #FFFFFF;
+  border: 2px solid #F6AE2D;
+  border-radius: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
+.frnd-prof-img {
+  height: 40px;
+  margin-left: 7px;
+  margin-top: 7px;
+  width: 40px;
+}
+
+#large-prof-pic {
+  height: 60px;
+  width: 60px;
+}

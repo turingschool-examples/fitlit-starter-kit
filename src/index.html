@@ -2,11 +2,48 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Activity Tracker</title>
+    <title>FitLit</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-
+    <header>
+      <h1>FitLit</h1>
+      <button type="button" name="top-button" id="top-button">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </button>
+    </header>
+    <main>
+      <h4>Welcome, [insert name]!</h4>
+      <section class="container" id="user-info">
+        <img id="large-prof-pic" src="images/profpic.png" alt="Default profile photo"/>
+        <p>
+          Address: [address]
+          <br>
+          Email: [email]
+          <br>
+          Stride Length: [length]
+          <br>
+          Your steps goal: [num]
+          Average steps goal: [num]
+        </p>
+      </section>
+      <section class="container" id="friend-list">
+        <section class="friend" id="friend1">
+          <img class="frnd-prof-img" src="images/profpic.png" alt="Default profile photo"/>
+        </section>
+        <hr>
+        <section class="friend" id="friend2">
+          <img class="frnd-prof-img" src="images/profpic.png" alt="Default profile photo"/>
+        </section>
+        <hr>
+        <section class="friend" id="friend3">
+          <img class="frnd-prof-img" src="images/profpic.png" alt="Default profile photo"/>
+        </section>
+      </section>
+    </main>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>

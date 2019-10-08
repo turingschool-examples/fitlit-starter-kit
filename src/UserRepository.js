@@ -29,6 +29,9 @@ class UserRepository {
   calculateAverageMinutesActive() {
 
   }
+  calculateAverageDailyWater() {
+    
+  }
 }
 
 module.exports = UserRepository;

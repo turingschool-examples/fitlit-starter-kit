@@ -4,11 +4,50 @@
 /* yellow: #FBD089  */
 /* darkgray: #1F1F1F */
 
+*,
+*:after,
+*:before {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+main {
+  display: grid;
+  grid-template-areas:
+    'steps hydration'
+    'stairs sleep';
 
 
+}
 
+.main-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
+#steps-card-container {
+  grid-area: steps;
+  background-color: #F5634B;
+}
 
+#hydration-card-container {
+  grid-area: hydration;
+  background-color: #54C6BE;
+}
+
+#stairs-card-container {
+  grid-area: stairs;
+  background-color: #8975B2;
+
+}
+
+#sleep-card-container {
+  grid-area: sleep;
+  background-color: #FBD089;
+}
 
 /* HIDE CARDS */
 .hide {

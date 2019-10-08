@@ -25,7 +25,7 @@ describe('UserRepository', () => {
 
     it('should be able to find the current user', () => {
         userRepository.returnCurrentUser(10)
-        expect(userRepository.currentUser).to.eql(  {
+        expect(userRepository.currentUser).to.eql({
             "id": 10,
             "name": "Roslyn Bernhard",
             "address": "22859 Sean Meadow, Lake Dorthyfort MA 89560",
@@ -33,12 +33,15 @@ describe('UserRepository', () => {
             "strideLength": 4.1,
             "dailyStepGoal": 3000,
             "friends": [
-              40,
-              33
+                40,
+                33
             ]
         });
-        
+    });
     
+        it('should be able to find the average step goal of all users', () => {
+            expect(userRepository.calculateAvgStepGoalAllUsers()).to.equal(7333);
+        
     });
 
 });

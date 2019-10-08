@@ -9,6 +9,14 @@ class UserRepository{
             return user.id === id
         })
     }
+
+    calculateAvgStepGoalAllUsers() {
+        let stepGoal = this.userData.reduce((acc,user) => {
+            acc += user.dailyStepGoal
+            return acc
+        }, 0) / this.userData.length
+        return Math.round(stepGoal)
+    }    
 }
 
 if (typeof module !== 'undefined') {

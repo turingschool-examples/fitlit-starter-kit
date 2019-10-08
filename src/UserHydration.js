@@ -1,8 +1,8 @@
 class UserHydration {
   constructor(user, hydrationData) {
-  this.user = user;
-  this.hydrationData = hydrationData;
-  this.filteredHydration = this.hydrationDataFilter();
+    this.user = user;
+    this.hydrationData = hydrationData;
+    this.filteredHydration = this.hydrationDataFilter();
   }
 
   hydrationDataFilter() {
@@ -37,5 +37,5 @@ class UserHydration {
 }
 
 if (typeof module !== 'undefined') {
-module.exports = UserHydration;
+  module.exports = UserHydration;
 }

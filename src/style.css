@@ -1,0 +1,47 @@
+body {
+  background-color: #6c8fa8;
+  margin: 0;
+  display: grid;
+  height: 100vh;
+  grid-auto-rows: 1fr 10fr;
+  grid-template-areas: "header"
+                        "main";
+}
+
+header {
+  background-color: #ffffff6b;
+  box-shadow: 3px 3px 10px black;
+  grid-area: header;
+}
+
+h1 {
+  display: inline;
+}
+
+main {
+  display: grid;
+  box-shadow: 3px 3px 10px black;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  background-image: url('../img/field.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: auto;
+  height: 90%;
+  width: 90%;
+  grid-area: main;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas: "column";
+}
+
+p {
+  display: inline;
+}
+
+section {
+  border: 1px solid;
+  border-radius: 5px;
+  margin: 20px;
+  box-shadow: 1px 1px 6px #212b32;
+  background-color: #ffffff6b;
+  }

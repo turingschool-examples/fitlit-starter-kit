@@ -51,6 +51,7 @@ main {
   grid-template-areas:
     'steps hydration'
     'stairs sleep';
+  height: 100%;
 }
 
 .main-card {
@@ -58,6 +59,7 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 20vw;
 
 }
 
@@ -65,6 +67,10 @@ main {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.main-card-bottom-row {
+  width: 100%;
 }
 
 #steps-card-container {

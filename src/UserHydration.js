@@ -34,6 +34,10 @@ class UserHydration {
   userOuncesByWeek() {
     return this.filteredHydration.slice(-7).map(hydrationObject => hydrationObject.numOunces)
   }
+  
+  userOuncesToday() {
+    return this.filteredHydration.slice(-1).map(hydrationObject => hydrationObject.numOunces)
+  }
 }
 
 if (typeof module !== 'undefined') {

@@ -70,19 +70,12 @@ main {
 }
 
 h4 {
-  background-color: #FFFFFF;
-  border: 2px solid #F6AE2D;
-  border-radius: 2px;
-  color: #222234;
+  color: #86BBD8;
   display: block;
   font-size: 1.8rem;
-  margin-left: auto;
+  margin-left: 11%;
   margin-right: auto;
   margin-top: 50px;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  text-align: center;
-  width: 40%;
 }
 
 #panel-container {

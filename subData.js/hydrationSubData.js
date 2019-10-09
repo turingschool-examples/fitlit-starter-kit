@@ -279,3 +279,7 @@ const hydrationTestData = [
   },
 
 ]
+
+if (typeof module !== 'undefined') {
+  module.exports = hydrationTestData;
+}

@@ -8,12 +8,16 @@ function getRandomNum() {
 }
 
 $(window).on('load', function () {
-    console.log(userData)
-    getRandomNum()
-    makeUsers(userData);
+  console.log(userData)
+  getRandomNum()
+  makeUsers(userData);
 
-    $('.header_h1_span').text(`${user.returnFirstName()}`);
-
+  $('.header_h1_span').text(`${user.returnFirstName()}`);
+  $('.user_name').text(`${user.name}`);
+  $('.user_email').text(`${user.email}`);
+  $('.user_address').text(`${user.address}`);
+  $('.user_stride_length').text(`${user.strideLength}`);
+  $('.user_step_goal').text(`${user.dailyStepGoal}`);
 })
 
 function makeUsers(data) {

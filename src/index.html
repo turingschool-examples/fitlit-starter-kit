@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>FitLIT - Dashboard Activity Tracker</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600i&display=swap" rel="stylesheet">
@@ -42,12 +43,35 @@
             HYDRO SECTION
             <span class="section_hydro_h2_span"><img src="icons/tint-solid.svg" class="fas fa-tint"></span>
           </h2>
+          <p>Date: <input type="text" id="datepicker_hydro"></p>
+          <ul>
+            <li>OUNCES CONSUMED TODAY
+              <p class="hydro_day"></p>
+            </li>
+            <li>OUNCES CONSUMED THIS WEEK
+              <p class="hydro_week"></p>
+            </li>
+          </ul>
       </section>
       <section class="section_sleep">
           <h2 class="section_sleep_h2">
             SLEEP SECTION
             <span class="section_sleep_h2_span"><img src="icons/bed-solid.svg" class="fas fa-snooze"></span>
           </h2>
+          <ul>
+            <li>HOURS SLEPT ON <span class="sleep_date"></span>
+              <p class="sleep_hours_day"></p>
+            </li>
+            <li> QUALITY OF SLEEP ON <span class="sleep_date"></span>
+              <p class="sleep_quality_day"></p>
+            </li>
+            <li> AVERAGE HOURS OF SLEEP
+              <p class="sleep_hours_avg"></p>
+            </li>
+            <li> AVERAGE QUALITY RATING
+              <p class="sleep_quality_avg"></p>
+            </li>
+          </ul>
       </section>
       <section class="section_activity">
           <h2 class="section_activity_h2">ACTIVITY SECTION
@@ -64,14 +88,18 @@
         </div>
       </section>
     </main>
-    
-    <script type="text/javascript" src="../src/user.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="../src/userRepository.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
-    <script type="text/javascript" src="../src/hydroRepository.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
+    <script type="text/javascript" src="../src/hydroRepository.js"></script>
+    <script type="text/javascript" src="../src/userRepository.js"></script>
+    <script type="text/javascript" src="../src/sleepRepository.js"></script>
+    <script type="text/javascript" src="../src/user.js"></script>
+    <script type="text/javascript" src="../src/hydro.js"></script>
+    <script type="text/javascript" src="../src/sleep.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>

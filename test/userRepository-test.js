@@ -13,7 +13,6 @@ describe('UserRepo', function() {
   it('Should find a user', function() {
     let userRepository = new UserRepository(data)
     expect(userRepository.users.length).to.equal(50)
-    console.log(userRepository.currentUser)
     expect(userRepository.findUser(4)).to.eql({
       id: 4,
       name: 'Mae Connelly',

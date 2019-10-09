@@ -39,8 +39,8 @@ describe('UserRepository', function() {
    }]);
  });
 
- it('should have a method: Given a user’s ID, what is their user data', function(){
-   expect(data.allUsers[0].id).to.equal(1);
+ it('should have a method: Given a user ID, what is their user data', function(){
+   expect(data.findUserData(0)).to.deep.equal(1);
+ });
 
- })
 }); //end

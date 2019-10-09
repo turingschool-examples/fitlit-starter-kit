@@ -33,48 +33,69 @@ main {
 
 .card-style {
   border-radius: 5px;
-  background-color: cornflowerblue;
+  /* background-color: steelblue; */
   margin: 2%;
   /* padding: 5%; */
-  color: #EBECF0;
+  color: white;
 }
 
 .section-style {
   border-radius: 5px;
   margin: 2.5%;
-  padding: 5%;
+  padding: 1%;
   background-color: aliceblue;
   color: cornflowerblue;
+  height: 10%;
 }
 
 h2 {
   text-align: center;
+  font-size: larger;
+  margin: 2%;
+}
+
+h3{
+  margin: 2%;
+  text-align: center;
+  display: inline-block;
+}
+
+p {
+  margin: 2%;
+  display: inline-block;
 }
 
 .card-daily-oz {
   grid-area: dayOz;
+  background-color: deepskyblue;
 }
 
 .card-weekly-oz {
   grid-area: weekOz;
+  background-color: steelblue;
 }
 
 .card-daily-activity {
   grid-area: dayActivity;
+  background-color: deepskyblue;
 }
 
 .card-weekly-activity {
   grid-area: weekActivity;
+  background-color: steelblue;
 }
 
 .card-daily-sleep {
   grid-area: daySleep;
+  background-color: deepskyblue;
 }
 
 .card-weekly-sleep {
   grid-area: weekSleep;
+  background-color: steelblue;
 }
 
 .card-all-time-sleep {
   grid-area: allTimeSleep;
+  background-color: midnightblue;
 }

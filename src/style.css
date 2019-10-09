@@ -1,0 +1,101 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', sans-serif;
+}
+
+
+* {
+	/*border: 2px solid red;*/
+}
+
+body {
+	height: 100vh;
+	width: 100%;
+	display: grid;
+  grid-template-areas:
+  "header header"
+  "main main"
+  "main main";
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 15% 42% 43%;
+  color: white;
+}
+
+nav {
+	grid-area: header;
+	background-color: #222629;
+	color: #ffffff;
+	text-align: center;
+}
+
+.nav__h1 {
+	font-size: 55px;
+	padding-top: 5px;
+}
+
+.nav__h4 {
+	font-size: 23px;
+	line-height: .5;
+}
+
+.main__section--container {
+	grid-area: main;
+	background: #6b6e70;
+	font-size: 18px;
+}
+
+.main__body--right {
+	width: 47%;
+	height: 95%;
+	float: right;
+	padding: 15px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	/*border: 2px solid orange;*/
+}
+
+.main__body--left {
+	width: 47%;
+	height: 95%;
+	float: left;
+	padding: 15px;
+	display: inline-block;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
+	/*border: 2px solid red;*/
+}
+
+.section {
+	width: 90%;
+	height: 40%;
+	border: 1px white solid;
+	margin: 3% 0;
+	padding: 2%;
+	background: #474b4f;
+}
+
+.main__user:hover {
+	border: 2px solid #86c232;
+	color: #86c232;
+}
+
+.main__hydration:hover {
+	border: 2px solid #86c232;
+	color: #86c232
+}
+
+.main__sleep:hover {
+	border: 2px solid #86c232;
+	color: #86c232
+}
+
+.main__activity:hover {
+	border: 2px solid #86c232;
+	color: #86c232
+}
+

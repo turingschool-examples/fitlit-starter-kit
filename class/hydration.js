@@ -1,7 +1,11 @@
 class Hydration {
   constructor(hydrationData) {
     this.id = hydrationData.userID;
-    console.log(hydrationData.userID)
+    this.date = hydrationData.date;
+    this.numOunces = hydrationData.numOunces;
+  }
+  findDailyHydration(date) {
+    
   }
 }
 

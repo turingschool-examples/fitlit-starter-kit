@@ -1,13 +1,3 @@
-/* * { background-color: rgba(255,0,0,.2); }
-* * { background-color: rgba(0,255,0,.2); }
-* * * { background-color: rgba(0,0,255,.2); }
-* * * * { background-color: rgba(255,0,255,.2); }
-* * * * * { background-color: rgba(0,255,255,.2); }
-* * * * * * { background-color: rgba(255,255,0,.2); }
-* * * * * * * { background-color: rgba(255,0,0,.2); }
-* * * * * * * * { background-color: rgba(0,255,0,.2); }
-* * * * * * * * * { background-color: rgba(0,0,255,.2); } */
-
 body {
   display: grid;
   grid-template-areas: 
@@ -15,6 +5,7 @@ body {
     "aside main";
   grid-template-columns: 1fr 5fr;
   grid-template-rows: 1fr 7fr;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 header {
@@ -36,14 +27,16 @@ main {
     "weekOz weekActivity allTimeSleep";
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
-  height: auto;
+  height: 1000px;
+  background-color: #EBECF0;
 }
 
 .card-style {
-  border-radius: 30px;
-  border: 2px solid cornflowerblue;
-  margin: 1%;
+  border-radius: 5px;
+  background-color: cornflowerblue;
+  margin: 2.5%;
   padding: 5%;
+  color: #EBECF0;
 }
 
 .card-daily-oz {

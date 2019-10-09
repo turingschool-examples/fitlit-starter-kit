@@ -8,15 +8,18 @@ class User {
     this.dailyStepGoal = userData.dailyStepGoal;
     this.friends = userData.friends;
     this.ouncesAverage = 0;
-    this.ouncesRecord = {};
+    this.ouncesRecord = [];
   }
   getFirstName() {
     var names = this.name.split(' ');
     return names[0];
   }
   updateHydration(date, amount) {
+    this.ouncesRecord.unshift({[date]: amount});
     this.ouncesAverage = Math.round((this.ouncesAverage + amount) / 2);
-    this.ouncesRecord[date] = amount;
+  }
+  getWeeklyWater() {
+    return this.ouncesRecord
   }
 }
 

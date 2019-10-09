@@ -17,7 +17,14 @@ class UserRepository {
 
   }
   calculateAverageStepGoal() {
-
+    let goals = this.users.map(function(user) {
+      return user.dailyStepGoal;
+    });
+    let total = goals.reduce(function(sum, goal) {
+      sum += goal;
+      return sum;
+    }, 0);
+    return total/this.users.length;
   }
   calculateAverageSleepQuality() {
 
@@ -36,4 +43,6 @@ class UserRepository {
   }
 }
 
-module.exports = UserRepository;
+if (typeof module !== 'undefined') {
+  module.exports = UserRepository;
+}

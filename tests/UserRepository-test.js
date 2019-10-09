@@ -43,7 +43,7 @@ describe('UserRepository', function() {
       "address": "85823 Bosco Fork, East Oscarstad MI 85126-5660",
       "email": "Elwin.Tromp@yahoo.com",
       "strideLength": 4.4,
-      "dailyStepGoal": 5000,
+      "dailyStepGoal": 15000,
       "friends": [
         19,
         11,
@@ -63,9 +63,10 @@ describe('UserRepository', function() {
     expect(userRepository.users).to.deep.equal([user1, user2, user3]);
     expect(userRepository.users.length).to.equal(3);
   });
-  describe('getUser', function() {
-    it('should return user object when given a user id', function() {
-      expect(userRepository.getUser(2)).to.equal(user2);
-    })
-  });
+  it('getUser should return user object when given a user id', function() {
+    expect(userRepository.getUser(2)).to.equal(user2);
+  })
+  it('calculateAverageStepGoal should return average step goal for all users', function() {
+    expect(userRepository.calculateAverageStepGoal()).to.equal(10000);
+  })
 });

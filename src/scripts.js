@@ -3,6 +3,8 @@
 //Get user from
 //Get user stuff and put it places
 // const User = ('./User');
+
+
 const data = ('../data/users');
 
 var sidebarName = document.getElementById('sidebarName');
@@ -34,7 +36,7 @@ function pickUser() {
 
 function getUserById(id, array) {
   return array.find((user) => (user.id === id));
-}
+};
 
 function addInfoToSidebar(user) {
   sidebarName.innerText = user.name;
@@ -43,7 +45,7 @@ function addInfoToSidebar(user) {
   userAddress.innerText = user.address;
   userEmail.innerText = user.email;
   userStridelength.innerText = `Your stridelength is ${user.strideLength} meters.`;
-}
+};
 
 startApp();
 

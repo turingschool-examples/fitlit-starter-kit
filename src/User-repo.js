@@ -1,7 +1,5 @@
 //need to add data and data  array
-const scripts = require('./scripts');
 
-const User = require('../src/User');
 
 class UserRepo {
   constructor(users) {
@@ -13,4 +11,6 @@ class UserRepo {
   }
 }
 
-module.exports = UserRepo;
+if (typeof module !== 'undefined') {
+  module.exports = UserRepo;
+}

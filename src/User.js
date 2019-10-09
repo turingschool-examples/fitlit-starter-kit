@@ -1,6 +1,4 @@
-// const data = require('../data/users');
-// const userData = data.userData;
-// const scripts = require('./scripts');
+
 
 class User {
   constructor(userDetails) {
@@ -18,4 +16,6 @@ class User {
   }
 }
 
-module.exports = User;
+if (typeof module !== 'undefined') {
+  module.exports = User;
+}

@@ -17,6 +17,7 @@ body {
 header {
    width: 100%;
    margin: 0 auto;
+   margin-left: 20px;
    
 }
 
@@ -63,7 +64,7 @@ p {
 
 
 ul {
-
+    text-align: left;
     list-style-type: none;
 }
 

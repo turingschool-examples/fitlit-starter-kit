@@ -1,16 +1,16 @@
-class User { //holds the information for each individual user
+class User {
   constructor(userData) {
     this.id = userData.id;
-    this.name = name;
-    this.address = address;
-    this.email = email;
-    this.strideLength = strideLength;
-    this.dailyStepGoal = dailyStepGoal;
-    this.friends = []
-    // will connect to other users
+    this.name = userData.name;
+    this.address = userData.address;
+    this.email = userData.email;
+    this.strideLength = userData.strideLength;
+    this.dailyStepGoal = userData.dailyStepGoal;
+    this.friends = userData.friends;
   }
   getFirstName() {
-
+    var names = this.name.split(' ');
+    return names[0];
   }
 }
 

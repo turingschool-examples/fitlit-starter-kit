@@ -10,7 +10,7 @@
 box-sizing: border-box;
 margin: 0;
 padding: 0;
-border: 1px solid red;
+/* border: 1px solid red; */
 }
 
 body {
@@ -21,6 +21,20 @@ body {
 p,
 h3 {
   font-family: 'Work Sans', sans-serif;
+}
+
+h2 {
+  font-size: 7vw;
+  /* font-weight: lighter; */
+  letter-spacing: .1em;
+}
+
+h3 {
+  display: inline;
+  font-size: 3vw;
+  font-weight: 700;
+  letter-spacing: .2em;
+
 }
 
 header {
@@ -44,6 +58,8 @@ h1 {
   color: #fff;
   display: inline;
   font-size: 5.4vw;
+  letter-spacing: .2em;
+
 }
 
 main {
@@ -51,6 +67,7 @@ main {
   grid-template-areas:
     'steps hydration'
     'stairs sleep';
+  height: 100%;
 }
 
 .main-card {
@@ -58,6 +75,7 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 20vw;
 
 }
 
@@ -65,6 +83,44 @@ main {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  /* margin-top: 1vw; */
+}
+
+.main-card-bottom-row {
+  width: 100%;
+  text-align: center;
+}
+
+.info-button {
+  display: inline;
+  background-image: url(i.png);
+  background-position: center;
+  background-size: 3.4vw;
+  height: 3.4vw;
+  width: 3.4vw;
+  margin-left: 1vw;
+}
+
+.friends-button {
+  display: inline;
+  background-image: url(friend.png);
+  background-position: center;
+  background-size: 3.4vw;
+  height: 3.4vw;
+  width: 3.4vw;
+  margin-right: 1vw;
+}
+
+.calendar-button {
+  display: inline;
+  float: right;
+  background-image: url(calendar.png);
+  background-position: center;
+  background-size: 3.4vw;
+  height: 3.4vw;
+  width: 3.4vw;
+  margin-right: 1vw;
 }
 
 #steps-card-container {

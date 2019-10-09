@@ -21,6 +21,14 @@ describe('UserRepository', function() {
         8
       ]
     }])
+    dataStep = new UserRepository([{
+      "dailyStepGoal": 5000
+    }, {
+      "dailyStepGoal": 2500
+    }],
+    {
+      "dailyStepGoal": 7500
+    })
   }); //for each
 
  it('should have a parameter to take in user data', function() {
@@ -41,6 +49,12 @@ describe('UserRepository', function() {
 
  it('should have a method: Given a user ID, what is their user data', function(){
    expect(data.findUserData(0)).to.deep.equal(1);
+ });
+
+ it('should have a method: The average step goal amongst all users', function() {
+
+   console.log(dataStep.allUsers[0].dailyStepGoal, dataStep.calculateUsersStepGoal());
+
  });
 
 }); //end

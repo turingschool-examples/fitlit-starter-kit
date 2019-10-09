@@ -1,19 +1,14 @@
-const data = require('../data/users');
-const userData = data.userData;
-const scripts = require('./scripts');
+// const data = require('../data/users');
+// const userData = data.userData;
+// const scripts = require('./scripts');
 
 class User {
-  constructor(userDetails) {
-    this.id = userDetails.id;
-    this.name = userDetails.name;
-    this.address = userDetails.address;
-    this.email = userDetails.email;
-    this.strideLength = userDetails.strideLength;
-    this.dailyStepGoal = userDetails.dailyStepGoal;
-    this.friends = userDetails.friends;
+  constructor(data) {
+    this.data = data;
+
   }
   getFirstName() {
-    return this.name.split(' ', 1).join();
+    return this.data.name.split(' ', 1).join();
   }
 }
 

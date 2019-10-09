@@ -3,26 +3,45 @@ if (typeof module !== "undefined") {
 }
 
 class UserSleep {
-  constructor (userData) {
+  constructor(userData) {
     this.userData = userData;
     this.id = userData.id;
-    this.sleepObj = this.filterSleepData()
-    // this.sleepData = sleepData;
+    this.name = userData.name;
+    this.sleepObjs = this.filterSleepData();
+    this.hoursSleptDay =  this.filteredUserHoursSleptDay();
+    this.sleepQualityDay = this.filteredUserSleepQuality();
   }
 
   filterSleepData() {
-    return sleepData.filter(sleep => sleep.userID === this.id)
+    return sleepData.filter(sleepObj => sleepObj.userID === this.id)
   }
 
-  // userSleepHoursByDate() {
-    
-  // }
+  filteredUserHoursSleptDay() {
+   return this.sleepObjs.map(day => day.hoursSlept);
+  }
+  
+  filteredUserSleepQuality() {
+    return this.sleepObjs.map(day => day.sleepQuality);
+  }
 
-  //   avgUserHoursSleptDateAllTime() {
+  avgUserHoursSleptPerDay() {
+    let sleepHours = this.hoursSleptDay.reduce((sum, day) => {
+      sum += day;
+      return sum;
+    }, 0) / this.hoursSleptDay.length;
+    return Number(sleepHours.toFixed(1));
+  }
 
-  //   }
+  avgUserSleepQualityDateAllTime() {
+    let totSleepQual = this.sleepQualityDay.reduce((sum, day) => {
+      sum += day;
+      return sum;
+    }, 0) / this.hoursSleptDay.length;
+    return Number(totSleepQual.toFixed(1))
+  }
 
-  //   avgUserSleepQualityDateAllTime() {
+
+  //   userSleepHoursByDate() {
 
   //   }
 
@@ -30,11 +49,11 @@ class UserSleep {
 
   //   }
 
-  //   userSleepByWeek() {
+  //   userDailySleepHoursByWeek() {
 
   //   }
 
-  //   userSleepQualityByWeek() {
+  //   userDailySleepQualityByWeek() {
 
   //   }
 

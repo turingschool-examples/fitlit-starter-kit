@@ -29,5 +29,8 @@ describe('User', () => {
     expect(user.id).to.equal(userData.id);
   });
 
+  it('should have an username', () => {
+    expect(user.name).to.equal(userData.name);
+  });
 
 });

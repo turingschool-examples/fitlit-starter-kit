@@ -11,6 +11,7 @@ class Hydration {
         days++;
       }
     return Math.floor(ozDrank / days);
+  });
   }
 }
 

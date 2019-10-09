@@ -27,15 +27,13 @@ main {
     "weekOz weekActivity allTimeSleep";
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
-  height: 1000px;
   background-color: #EBECF0;
+  padding: .70%;
 }
 
 .card-style {
   border-radius: 5px;
-  /* background-color: steelblue; */
   margin: 2%;
-  /* padding: 5%; */
   color: white;
 }
 
@@ -57,12 +55,10 @@ h2 {
 h3{
   margin: 2%;
   text-align: center;
-  display: inline-block;
 }
 
 p {
   margin: 2%;
-  display: inline-block;
 }
 
 .card-daily-oz {

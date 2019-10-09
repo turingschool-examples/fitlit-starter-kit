@@ -1,14 +1,10 @@
 class UserRepo {
-  constructor(email, usersData){
-    this.email = email;
+  constructor(usersData){
     this.usersData = usersData;
-    this.id = null;
-    this.userData = null;
   }
 
   getUserData(email) {
-    this.userData = this.usersData.find(userData => userData.email === email);
-    return this.userData;
+    return this.usersData.find(userData => userData.email === email);
   }
 
   calcAvgStepGoal() {

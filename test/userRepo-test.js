@@ -9,7 +9,7 @@ describe('UserRepo', () => {
   let email = "Dimitri.Bechtelar11@gmail.com";
 
   beforeEach(() => {
-    userRepo = new UserRepo(email, usersSampleData);
+    userRepo = new UserRepo(usersSampleData);
   });
 
   it('should be a function', () => {
@@ -20,20 +20,8 @@ describe('UserRepo', () => {
     expect(userRepo).to.be.an.instanceOf(UserRepo);
   });
 
-  it('should have a email', () => {
-    expect(userRepo.email).to.equal("Dimitri.Bechtelar11@gmail.com");
-  });
-
-  it('should have an id', () => {
-    expect(userRepo.id).to.equal(null);
-  });
-
   it('should have usersData', () => {
     expect(userRepo.usersData).to.equal(usersSampleData);
-  });
-
-  it('should have userData', () => {
-    expect(userRepo.userData).to.equal(null);
   });
 
   it('should be able to return a specific users data', () => {

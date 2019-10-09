@@ -59,7 +59,7 @@ describe('User', function() {
 
   it('should return user first name', function() {
       const user2 = new User({id: 2,
-        name: "Allie Kennedy Holly McCarthy",
+        name: "Allie McCarthy",
         address: "1235 Turing Street, Denver CO 80301-1697",
         email: "allie.mcc1@hotmail.com",
         strideLength: 3.3,

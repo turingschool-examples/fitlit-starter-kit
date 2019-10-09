@@ -36,4 +36,8 @@ describe('Hydration', () => {
         expect(hydration1.numOunces).to.equal(37);
     });
 
+    it('should have a value for numOunces', () => {
+        expect(hydration.calculateAvgDailyAmtDrankByUserIdAllTime(1)).to.eql(65);
+    });
+
 });

@@ -1,0 +1,33 @@
+body {
+  display: grid;
+  font-size: 20px;
+  height: 120vh;
+  grid-template-areas:
+  "nav main main"
+  "nav main main"
+  "nav main main";
+  grid-template-columns: .5fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  /* grid-template-rows: 10% 42% 43%; */
+  margin: 0 auto;
+}
+
+nav {
+  background-color: red;
+  grid-area: nav;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column; 
+  }
+
+main {
+  background-color: blue;
+  grid-area: main;
+}
+
+header {
+  background-color: green;
+  height: 15%;
+}

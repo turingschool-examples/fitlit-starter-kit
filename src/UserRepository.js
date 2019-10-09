@@ -1,9 +1,11 @@
 class UserRepository {
   constructor(data) {
-    this.users = [{}];
+    this.users = data;
   }
-  getUser() {
-
+  getUser(id) {
+    return this.users.find(function(user) {
+      return user.id === id;
+    })
   }
   getBestSleepers() {
 
@@ -30,7 +32,7 @@ class UserRepository {
 
   }
   calculateAverageDailyWater() {
-    
+
   }
 }
 

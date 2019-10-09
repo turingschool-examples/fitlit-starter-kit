@@ -9,6 +9,6 @@ describe('HydroRepository', function() {
     const hydroRepository = new HydroRepository(data)
     hydroRepository.findUserId(4);
 		expect(hydroRepository.currentUser.length).to.equal(100)
-		console.log(hydroRepository.currentUser)
+		// console.log(hydroRepository.currentUser)
 	});
 }); 

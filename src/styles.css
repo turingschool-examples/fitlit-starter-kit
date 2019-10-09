@@ -1,0 +1,119 @@
+/* Color Palette */
+/* light blue = #04B8E5
+/* navy - #222E50 */
+/* off-white - #EFEFEF */
+/* gray - #C8C8C8 */
+/* red - #DD343C */
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+body {
+    background-image: linear-gradient(45deg, rgb(60, 220, 246) 0%, rgb(60, 220, 246) 23%,rgb(66, 89, 246) 23%, rgb(66, 89, 246) 25%,rgb(59, 253, 246) 25%, rgb(59, 253, 246) 34%,rgb(62, 187, 246) 34%, rgb(62, 187, 246) 64%,rgb(65, 122, 246) 64%, rgb(65, 122, 246) 74%,rgb(63, 155, 246) 74%, rgb(63, 155, 246) 100%)
+
+}
+header {
+   width: 100%;
+   margin: 0 auto;
+   margin-left: 20px;
+   
+}
+
+main{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 20px; 
+}
+section {
+    border: 10px solid;
+    border-color: #222E50;
+    display: inline;
+    background-color: #FFFFFF;
+}
+
+h1 {
+    font-family: 'Nunito', sans-serif;
+    font-style: italic;
+    color: #222E50;
+    font-size: 100px;
+}
+
+h2 {
+    display: inline-block;
+    font-family: 'Nunito', sans-serif;
+    margin-left: 20px;
+}
+
+h3 {
+    font-family: 'Nunito', sans-serif;
+}
+p {
+    font-family: 'Nunito', sans-serif;
+}
+
+.header_h1_p {
+    font-family: 'Nunito', sans-serif;
+    color: #EFEFEF;
+    font-size: 50px;
+    font-weight: 600;
+
+}
+
+
+ul {
+    text-align: left;
+    list-style-type: none;
+}
+
+li {
+    font-family: 'Nunito', sans-serif;
+    display: inline-block;
+    margin: 20px;
+}
+
+.section_other_users {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.section_other_users, h2 {
+    display: block;
+    margin-bottom: 50px;
+}
+
+.div_steps_other_users {
+    display: inline-block;
+    border: 5px solid;
+    border-color: #222E50;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+.fas {
+    display: inline-block;
+    width: 10%;
+    height: 10%;
+    margin-left: 50px;
+    margin-bottom: -3px;
+
+}
+
+.fa-tint {
+    width: 5%;
+    height: 5%;
+}
+
+.fa-running {
+    width: 7%;
+    height: 7%;
+    margin-left: 30px;
+}

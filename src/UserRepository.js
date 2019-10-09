@@ -1,9 +1,11 @@
 class UserRepository {
   constructor(data) {
-    this.users = [{}];
+    this.users = data;
   }
-  getUser() {
-
+  getUser(id) {
+    return this.users.find(function(user) {
+      return user.id === id;
+    })
   }
   getBestSleepers() {
 
@@ -15,7 +17,14 @@ class UserRepository {
 
   }
   calculateAverageStepGoal() {
-
+    let goals = this.users.map(function(user) {
+      return user.dailyStepGoal;
+    });
+    let total = goals.reduce(function(sum, goal) {
+      sum += goal;
+      return sum;
+    }, 0);
+    return total/this.users.length;
   }
   calculateAverageSleepQuality() {
 
@@ -30,8 +39,10 @@ class UserRepository {
 
   }
   calculateAverageDailyWater() {
-    
+
   }
 }
 
-module.exports = UserRepository;
+if (typeof module !== 'undefined') {
+  module.exports = UserRepository;
+}

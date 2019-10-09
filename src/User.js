@@ -7,11 +7,20 @@ class User {
     this.strideLength = userData.strideLength;
     this.dailyStepGoal = userData.dailyStepGoal;
     this.friends = userData.friends;
+    this.ouncesAverage = 0;
+    this.ouncesRecord = {};
   }
   getFirstName() {
     var names = this.name.split(' ');
     return names[0];
   }
+  updateHydration(amount) {
+    // console.log('KAJBDKAJNDL');
+    // update ounces record with key-value pair of date: amount
+    // update the average
+  }
 }
 
-module.exports = User;
+if (typeof module !== 'undefined') {
+  module.exports = User;
+}

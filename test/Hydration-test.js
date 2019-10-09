@@ -27,11 +27,13 @@ describe('Hydration', () => {
     });
 
     it('should have a date', () => {
-        expect(hydration.date).to.equal("2019/06/15");
+        hydration1 = new Hydration(mockHydrationData[0]);
+        expect(hydration1.date).to.equal("2019/06/15");
     });
 
     it('should have a value for numOunces', () => {
-        expect(hydration.numOunces).to.equal(2);
+        hydration1 = new Hydration(mockHydrationData[0]);
+        expect(hydration1.numOunces).to.equal(37);
     });
 
 });

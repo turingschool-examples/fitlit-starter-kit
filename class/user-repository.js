@@ -7,9 +7,9 @@ class UserRepository {
   }
   calculateUsersStepGoal() {
     for (var i = 0; i < this.allUsers.length; i++) {
-      this.dailyStepGoalTotal = (this.allUsers[i].dailyStepGoal / this.allUsers.length);
+      this.dailyStepGoalAverage = (this.allUsers[i].dailyStepGoal / this.allUsers.length);
     }
-    return this.dailyStepGoalTotal;
+    return this.dailyStepGoalAverage;
 }
 }
 module.exports = UserRepository;

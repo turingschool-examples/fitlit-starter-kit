@@ -1,6 +1,4 @@
-// const data = require('../data/users');
-// const userData = data.userData;
-// const scripts = require('./scripts');
+
 
 class User {
   constructor(userDetails) {

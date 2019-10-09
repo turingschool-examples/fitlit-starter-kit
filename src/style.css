@@ -49,8 +49,13 @@ h1 {
   margin: 2px;
 }
 
-.sidebar-body-friendList {
-  text-align: center
+.sidebar-body-friendContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-friendContainer-listItems {
+  text-align: left;
 }
 
 .body-main-infoContainter {

@@ -74,4 +74,16 @@ describe('Hydration', function() {
   it('should have an amount of ounces drank', function() {
     expect(hydrate3.ounces).to.equal(91);
   });
+  describe('updateHydration', function () {
+    it('should update the average number of ounces over all time', function() {
+      hydrate2.drink(userRepository);
+      hydrate3.drink(userRepository);
+      expect(user2.ouncesAverage).to.equal(81); // should be 83?
+    })
+    it.only('should add the date and amount to the object record', function() {
+      hydrate1.drink(userRepository);
+      expect(user1.ouncesRecord).to.deep.equal({"2019/06/15": 37})
+    })
+  });
+
 });

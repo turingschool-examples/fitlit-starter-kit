@@ -14,10 +14,9 @@ class User {
     var names = this.name.split(' ');
     return names[0];
   }
-  updateHydration(amount) {
-    // console.log('KAJBDKAJNDL');
-    // update ounces record with key-value pair of date: amount
-    // update the average
+  updateHydration(date, amount) {
+    this.ouncesAverage = Math.round((this.ouncesAverage + amount) / 2);
+    this.ouncesRecord[date] = amount;
   }
 }
 

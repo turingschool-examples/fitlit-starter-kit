@@ -1,9 +1,9 @@
 class UserRepository {
   constructor(data) {
-    this.usersData = data.users;
-    this.hydrationUsersData = data.hydration;
-    this.sleepUsersData = data.sleep;
-    this.activityUsersData = data.activity;
+    this.usersData = data;
+    this.hydrationUsersData = data.hydration || null;
+    this.sleepUsersData = data.sleep || null;
+    this.activityUsersData = data.activity || null;
     this.currentUserId = null;
     this.currentUserInfo = {
       bio: {},

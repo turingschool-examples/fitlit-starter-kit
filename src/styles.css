@@ -34,9 +34,21 @@ main {
 .card-style {
   border-radius: 5px;
   background-color: cornflowerblue;
+  margin: 2%;
+  /* padding: 5%; */
+  color: #EBECF0;
+}
+
+.section-style {
+  border-radius: 5px;
   margin: 2.5%;
   padding: 5%;
-  color: #EBECF0;
+  background-color: aliceblue;
+  color: cornflowerblue;
+}
+
+h2 {
+  text-align: center;
 }
 
 .card-daily-oz {

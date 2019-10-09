@@ -3,3 +3,8 @@ const activityData = data.activityData;
 const scripts = require('./scripts');
 
 const User = require('../src/User');
+
+
+// if (typeof module !== 'undefined') {
+//   module.exports = Activity;
+// }

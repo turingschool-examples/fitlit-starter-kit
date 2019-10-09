@@ -11,6 +11,14 @@ class UserRepo {
     return this.userData;
   }
 
+  calcAvgStepGoal() {
+    let totalStepGoals = this.usersData.reduce((acc, user) => {
+      acc += user.dailyStepGoal;
+      return acc;
+    }, 0);
+    return totalStepGoals / this.usersData.length;
+  }
+
 }
 
 

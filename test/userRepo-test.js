@@ -40,6 +40,10 @@ describe('UserRepo', () => {
     expect(userRepo.getUserData(email)).to.equal(usersSampleData[1]);
   });
 
+  it('should be able to calculate all users average steps', () => {
+    expect(userRepo.calcAvgStepGoal()).to.equal(6400);
+  });
+
 
 
 });

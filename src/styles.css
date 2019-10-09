@@ -4,7 +4,7 @@
 }
 /*
 starting colors :
-  body 222234
+  body 323A45
   blue 33658A
   lighter blue 86BBD8
   yellow F6AE2D
@@ -12,7 +12,7 @@ starting colors :
   white FFFFFF
    */
 html, body {
-  background-color: #222234;
+  background-color: #323A45;
   height: 100%;
 }
 
@@ -65,9 +65,8 @@ main {
   border: 2px solid #33658A;
   border-radius: 4px;
   color: #222234;
-  margin-left: auto;
-  margin-right: auto;
-  width: 60%;
+  grid-column: span 1;
+  text-align: center;
 }
 
 h4 {
@@ -79,30 +78,83 @@ h4 {
   margin-top: 50px;
 }
 
+#panel-container {
+  display: grid;
+  grid-template-columns: repeat(2 1fr);
+  grid-auto-flow: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
 #user-info p {
   font-size: 1rem;
-  margin-right: auto;
   padding: 10px;
-  max-width: 50%;
 }
 
 #friend-list {
   background-color: #FFFFFF;
   border: 2px solid #F6AE2D;
   border-radius: 2px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 20%;
+  grid-column: span 1;
+}
+
+.box-label {
+  background-color: #F6AE2D;
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 10px;
 }
 
 .frnd-prof-img {
-  height: 40px;
+  height: 60px;
   margin-left: 7px;
   margin-top: 7px;
-  width: 40px;
+  padding-bottom: 7px;
+  width: 60px;
 }
 
 #large-prof-pic {
-  height: 60px;
-  width: 60px;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  width: 150px;
+}
+
+.friend {
+  border-bottom: 2px solid #F6AE2D;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.friend-name {
+  display: inline;
+  font-size: 1.4rem;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+#friend1 {
+  border-top: 2px solid #F6AE2D;
+}
+
+.friend-score {
+  color: #33658A;
+  font-size: 1.6rem;
+  margin-left: 90px;
+  margin-top: -10px;
+}
+
+.score-label {
+  color: black;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.frnd-position {
+  color: black;
+  font-size: 2rem;
+  margin-left: auto;
+  padding: 10px;
 }

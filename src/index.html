@@ -17,32 +17,96 @@
     </header>
     <main>
       <h4>Welcome, [insert name]!</h4>
-      <section class="container" id="user-info">
-        <img id="large-prof-pic" src="images/profpic.png" alt="Default profile photo"/>
-        <p>
-          Address: [address]
-          <br>
-          Email: [email]
-          <br>
-          Stride Length: [length]
-          <br>
-          Your steps goal: [num]
-          Average steps goal: [num]
-        </p>
-      </section>
-      <section class="container" id="friend-list">
-        <section class="friend" id="friend1">
-          <img class="frnd-prof-img" src="images/profpic.png" alt="Default profile photo"/>
+      <div id="panel-container">
+        <section class="container" id="user-info">
+          <img id="large-prof-pic" src="images/profpic.png" alt="Default profile photo"/>
+          <p>
+              <strong>Address:</strong> [address]
+            <br>
+              <strong>Email:</strong> [email]
+            <br>
+              <strong>Stride Length:</strong> [length]
+            <br>
+            <hr>
+            <p>
+              <strong>Your steps goal:</strong> [num]
+            <br>
+              <strong>Average steps goal:</strong> [num]
+            </p>
+          </p>
         </section>
-        <hr>
-        <section class="friend" id="friend2">
-          <img class="frnd-prof-img" src="images/profpic.png" alt="Default profile photo"/>
+        <section class="container" id="friend-list">
+          <p class="box-label">
+            Friends
+          </p>
+          <section class="friend" id="friend1">
+            <img class="frnd-prof-img" src="images/profpic.png" alt="Default profile photo"/>
+            <p class="friend-name">
+              John Doe
+            </p>
+            <p class="friend-score">
+              <span class="score-label">
+                Score:
+              </span>
+              <br>
+              12345
+            </p>
+            <p class="frnd-position">
+              1
+            </p>
+          </section>
+          <section class="friend" id="friend2">
+            <img class="frnd-prof-img" src="images/profpic.png" alt="Default profile photo"/>
+            <p class="friend-name">
+              John Doe
+            </p>
+            <p class="friend-score">
+              <span class="score-label">
+                Score:
+              </span>
+              <br>
+              12345
+            </p>
+            <p class="frnd-position">
+              2
+            </p>
+          </section>
+          <section class="friend" id="friend3">
+            <img class="frnd-prof-img" src="images/profpic.png" alt="Default profile photo"/>
+            <p class="friend-name">
+              John Doe
+            </p>
+            <p class="friend-score">
+              <span class="score-label">
+                Score:
+              </span>
+              <br>
+              12345
+            </p>
+            <p class="frnd-position">
+              3
+            </p>
+          </section>
+          <section class="friend" id="friend4">
+            <img class="frnd-prof-img" src="images/profpic.png" alt="Default profile photo"/>
+            <p class="friend-name">
+              John Doe
+            </p>
+            <p class="friend-score">
+              <span class="score-label">
+                Score:
+              </span>
+              <br>
+              12345
+            </p>
+            <p class="frnd-position">
+              4
+            </p>
+          </section>
         </section>
-        <hr>
-        <section class="friend" id="friend3">
-          <img class="frnd-prof-img" src="images/profpic.png" alt="Default profile photo"/>
+        <section class="container" id="your-activity">
         </section>
-      </section>
+    </div>
     </main>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>

@@ -1,22 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css">
-    <title>Activity Tracker</title>
-  </head>
-  <body>
-    <h1>Activity Tracker</h1>
-    <section class='userInfoCard'>
 
-    </section>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:300,400,700&display=swap" rel="stylesheet">
+  <title>Activity Tracker</title>
+</head>
 
-    <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="../data/hydration.js"></script>
-    <script type="text/javascript" src="../data/sleep.js"></script>
-    <script type="text/javascript" src="../data/activity.js"></script>
-    <script type="text/javascript" src="./User.js"></script>
-    <script type="text/javascript" src="./UserRepo.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
-  </body>
+<body>
+  <header>
+    <h1>FitLit</h1>
+    <!-- <h2 class='name--display'>Welcome, ${randomUser.name}</h2>
+    <div class='contact--info'>
+      <div class='address--wrapper'>
+        <label>Address: </label>
+        <p class='user__address'>${randomUser.address}</p>
+      </div>
+      <div class='email--wrapper'>
+        <label>Email: </label>
+        <p class='user__email'>${randomUser.email}</p>
+      </div>
+      <label>Stride Length: ${randomUser.strideLength}</label>
+      <label>Daily Step Goal: ${randomUser.dailyStepGoal}</label>
+    </div> -->
+  </header>
+  <section class='main__container'>
+    <div class='testcard'>
+      <canvas id="myChart"></canvas>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script type="text/javascript" src="../data/users.js"></script>
+  <script type="text/javascript" src="../data/hydration.js"></script>
+  <script type="text/javascript" src="../data/sleep.js"></script>
+  <script type="text/javascript" src="../data/activity.js"></script>
+  <script type="text/javascript" src="./User.js"></script>
+  <script type="text/javascript" src="./UserRepo.js"></script>
+  <script type="text/javascript" src="./scripts.js"></script>
+</body>
+
 </html>

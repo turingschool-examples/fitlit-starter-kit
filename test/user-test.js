@@ -40,6 +40,8 @@ describe('User', function() {
         8
       ]
     })
-  })
+  });
+
+  it('should hold each users properties from the data file')
 
 });

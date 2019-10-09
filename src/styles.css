@@ -1,4 +1,4 @@
-/* * { background-color: rgba(255,0,0,.2); }
+* { background-color: rgba(255,0,0,.2); }
 * * { background-color: rgba(0,255,0,.2); }
 * * * { background-color: rgba(0,0,255,.2); }
 * * * * { background-color: rgba(255,0,255,.2); }
@@ -6,7 +6,7 @@
 * * * * * * { background-color: rgba(255,255,0,.2); }
 * * * * * * * { background-color: rgba(255,0,0,.2); }
 * * * * * * * * { background-color: rgba(0,255,0,.2); }
-* * * * * * * * * { background-color: rgba(0,0,255,.2); } */
+* * * * * * * * * { background-color: rgba(0,0,255,.2); }
 
 body {
   display: grid;
@@ -23,7 +23,7 @@ header {
 
 aside {
   grid-area: aside;
-  background-color: pink;
+  
 }
 
 main {
@@ -34,4 +34,34 @@ main {
     "weekOz dayActivity weekSleep"
     "weekOz weekActivity weekSleep"
     "weekOz weekActivity allTimeSleep";
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.card-daily-oz {
+  grid-area: dayOz;
+}
+
+.card-weekly-oz {
+  grid-area: weekOz;
+}
+
+.card-daily-activity {
+  grid-area: dayActivity;
+}
+
+.card-weekly-activity {
+  grid-area: weekActivity;
+}
+
+.card-daily-sleep {
+  grid-area: daySleep;
+}
+
+.card-weekly-sleep {
+  grid-area: weekSleep;
+}
+
+.card-all-time-sleep {
+  grid-area: allTimeSleep;
 }

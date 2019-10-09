@@ -10,6 +10,10 @@ class User {
   }
 
   returnFirstName() {
-    
+
   }
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = User;
 }

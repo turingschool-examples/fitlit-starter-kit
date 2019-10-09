@@ -53,4 +53,8 @@ describe('User', () => {
     expect(user.friends).to.equal(userData.friends);
   });
 
+  it('should return the user\'s first name', () => {
+    expect(user.getFirstName()).to.equal("Jarvis");
+  });
+
 });

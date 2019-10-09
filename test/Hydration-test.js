@@ -44,4 +44,8 @@ describe('Hydration', () => {
         expect(hydration.calculateAmtDrankByUserSpecificDate(1, "2019/06/15")).to.equal(37);
     });
 
+    it('should return the daily amounts a user drank over a week', () => {
+        expect(hydration.returnDrinkAmtEachDayOverWeekByUser(1)).to.eql([37, 69, 96, 61, 91, 50, 50]);
+    });
+
 });

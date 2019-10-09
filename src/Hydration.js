@@ -7,7 +7,7 @@ class Hydration {
     }
 
     calculateAvgDailyAmtDrankByUserIdAllTime(id) {
-      const weekHydrationData = this.currentHydrationData.filter(user => {
+      let weekHydrationData = this.currentHydrationData.filter(user => {
         return user.userID === id
       });
 
@@ -27,8 +27,14 @@ class Hydration {
       return userOnSpecificDate.numOunces
     }
 
-    returnDrinkAmtEachDayOverWeekByUser() {
+    returnDrinkAmtEachDayOverWeekByUser(id) {
+      let weekHydrationData = this.currentHydrationData.filter(user => {
+        return user.userID === id
+      });
 
+      return weekHydrationData.map(day => {
+        return day.numOunces
+      });
     }
 }
 

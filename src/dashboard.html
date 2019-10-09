@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="dashboard-styles.css">
     <title>Activity Tracker</title>
   </head>
   <body>
@@ -22,26 +23,43 @@
           <li>Friends: Form goes below this li</li>
         </ul>
       </nav>
-      <article class="info-card">
-        Hydration Picture Goes Here
-      </article>
-      <article class="info-card">
-        Minutes Active Picture Goes Here
-      </article>
-      <article class="info-card">
-        Sleep Picture Goes Here
-      </article>
-      <article class="info-card">
-        Climb Picture Goes Here
-      </article>
-      <article class="info-card">
-        Step Picture Goes Here
-      </article>
+      <section class="main-dashboard">
+        <article class="info-card">
+          <img class="dashboard-photo" src="images/cloud.jpg" alt="Teardrop to signify hydration information">
+        </article>
+        <article class="info-card">
+          <img class="dashboard-photo" src="images/link.png" alt="Clock to signify minutes active">
+        </article>
+        <article class="info-card">
+          <img class="dashboard-photo" src="images/lucina.jpg" alt="Picture of Z's to signify sleep information">
+        </article>
+        <article class="info-card">
+          <img class="dashboard-photo" src="images/mario.jpg" alt="Stairs photo to signify flights of stairs climbed">
+        </article>
+        <article class="info-card">
+          <img class="dashboard-photo" src="images/cloud.jpg" alt="Foot picture to signify step goal information">
+        </article>
+        <article class="info-card">
+          <p class="user-info">USER HYDRATION INFO</p>
+        </article>
+        <article class="info-card">
+          <p class="user-info">USER MINUTES ACTIVE INFO</p>
+        </article>
+        <article class="info-card">
+          <p class="user-info">USER SLEEP INFO</p>
+        </article>
+        <article class="info-card">
+          <p class="user-info">USER CLIMB INFO</p>
+        </article>
+        <article class="info-card">
+          <p class="user-info">USER STEP INFO</p>
+        </article>
+      </section>
     </main>
   </body>
   <script type="text/javascript" src="../data/users.js"></script>
   <script type="text/javascript" src="../data/hydration.js"></script>
   <script type="text/javascript" src="../data/sleep.js"></script>
   <script type="text/javascript" src="../data/activity.js"></script>
-  <script type="text/javascript" src="../main.js"></script>
+  <script type="text/javascript" src="main.js"></script>
 </html>

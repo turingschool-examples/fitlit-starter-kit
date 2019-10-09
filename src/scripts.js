@@ -13,7 +13,7 @@ function startApp() {
   console.log(userList);
   let userNow = getUserById(pickUser(), userList);
   console.log(userNow);
-  sidebarName.innerText = userNow.data.name;
+  sidebarName.innerText = userNow.name;
   console.log(userList);
 
 }
@@ -31,7 +31,7 @@ function pickUser() {
 }
 
 function getUserById(id, array) {
-  return array.find((user) => (user.data.id === id));
+  return array.find((user) => (user.id === id));
 }
 
 startApp();

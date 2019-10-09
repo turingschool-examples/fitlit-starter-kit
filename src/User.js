@@ -3,12 +3,18 @@
 // const scripts = require('./scripts');
 
 class User {
-  constructor(data) {
-    this.data = data;
+  constructor(userDetails) {
+    this.id = userDetails.id;
+    this.name = userDetails.name;
+    this.address = userDetails.address;
+    this.email = userDetails.email;
+    this.strideLength = userDetails.strideLength;
+    this.dailyStepGoal = userDetails.dailyStepGoal;
+    this.friends = userDetails.friends;
 
   }
   getFirstName() {
-    return this.data.name.split(' ', 1).join();
+    return this.name.split(' ', 1).join();
   }
 }
 

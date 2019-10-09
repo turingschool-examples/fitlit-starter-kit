@@ -1,9 +1,9 @@
 class UserRepository {
   constructor(data) {
     this.usersData = data.users;
-    this.hydrationUsersData = data.hydration;
-    this.sleepUsersData = data.sleep;
-    this.activityUsersData = data.activity;
+    this.hydrationUsersData = data.hydration || null;
+    this.sleepUsersData = data.sleep || null;
+    this.activityUsersData = data.activity || null;
     this.currentUserId = null;
     this.currentUserInfo = {
       bio: {},
@@ -16,27 +16,32 @@ class UserRepository {
   findUserByName(name) {
     const user = this.usersData.find((user) => user.name === name);
     this.currentUserId = user.id;
-    delete user['id'];
-    this.currentUserInfo.bio = user;
+    this.currentUserInfo.bio = {
+      name: user.name,
+      address: user.address,
+      email: user.email,
+      strideLength: user.strideLength,
+      dailyStepGoal: user.dailyStepGoal};    
+    return user;
   }
 
   createUser() {
     //
   }
 
-  getWeekDate(date) {
-    let dateGiven = date.split('/');
-    let weekDates = [dateGiven];
-    while weekDates.length === 7 {
-      if (dateGiven[3] > 0) {
-        dateGiven[3] -= 1;
-        weekDates.unshift(dateGiven.join('/'));
-      } else {
+  // getWeekDate(date) {
+  //   let dateGiven = date.split('/');
+  //   let weekDates = [dateGiven];
+  //   while weekDates.length === 7 {
+  //     if (dateGiven[3] > 0) {
+  //       dateGiven[3] -= 1;
+  //       weekDates.unshift(dateGiven.join('/'));
+  //     } else {
 
-      }
-    }
-    console.log(weekDates);
-  }
+  //     }
+  //   }
+  //   console.log(weekDates);
+  // }
 
   updateCurrentUserInfo(type) {
     const userData =  this[`${type}UsersData`].filter((data) => data.userID === this.currentUserId);

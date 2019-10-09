@@ -1,4 +1,4 @@
-class User { 
+class User {
   constructor(userData) {
     this.id = userData.id;
     this.name = userData.name;
@@ -9,7 +9,8 @@ class User {
     this.friends = userData.friends;
   }
   getFirstName() {
-
+    var names = this.name.split(' ');
+    return names[0];
   }
 }
 

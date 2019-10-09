@@ -14,4 +14,8 @@ describe('hydration', function() {
     expect(hydration).to.be.an.instanceOf(Hydration);
   });
 
+  it('should calculate the avg water consumption for a given user', function() {
+    expect(hydration.calculateAvgOunces(hydration.userID, hydrationData)).to.equal(37);
+  });
+
 });

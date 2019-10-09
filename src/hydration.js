@@ -3,15 +3,15 @@ class Hydration {
     this.userID = id;
   }
   calculateAvgOunces(id, hydrationData) {
-    let ozDrank;
-    let days;
+    let ozDrank = 0;
+    let days = 0;
     hydrationData.forEach(function(elem) {
-      if (elem.id === id) {
-        ozDrank = ozDrank + elem.numOunces;
+      if (elem.userID === id) {
+        ozDrank = ozDrank += elem.numOunces;
         days++;
       }
+    });
     return Math.floor(ozDrank / days);
-  });
   }
 }
 

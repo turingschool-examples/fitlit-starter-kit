@@ -1,13 +1,3 @@
-/* * { background-color: rgba(255,0,0,.2); }
-* * { background-color: rgba(0,255,0,.2); }
-* * * { background-color: rgba(0,0,255,.2); }
-* * * * { background-color: rgba(255,0,255,.2); }
-* * * * * { background-color: rgba(0,255,255,.2); }
-* * * * * * { background-color: rgba(255,255,0,.2); }
-* * * * * * * { background-color: rgba(255,0,0,.2); }
-* * * * * * * * { background-color: rgba(0,255,0,.2); }
-* * * * * * * * * { background-color: rgba(0,0,255,.2); } */
-
 body {
   display: grid;
   grid-template-areas: 
@@ -15,6 +5,8 @@ body {
     "aside main";
   grid-template-columns: 1fr 5fr;
   grid-template-rows: 1fr 7fr;
+  font-family: 'Titillium Web', sans-serif;
+  width: 100%;
 }
 
 header {
@@ -23,6 +15,7 @@ header {
 
 aside {
   grid-area: aside;
+  
 }
 
 main {
@@ -33,4 +26,73 @@ main {
     "weekOz dayActivity weekSleep"
     "weekOz weekActivity weekSleep"
     "weekOz weekActivity allTimeSleep";
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  background-color: #EBECF0;
+  padding: .70%;
+}
+
+.card-style {
+  border-radius: 5px;
+  margin: 2%;
+  color: white;
+}
+
+.section-style {
+  border-radius: 5px;
+  margin: 2.5%;
+  padding: 1%;
+  background-color: aliceblue;
+  color: cornflowerblue;
+  height: 10%;
+}
+
+h2 {
+  text-align: center;
+  font-size: larger;
+  margin: 2%;
+}
+
+h3{
+  margin: 2%;
+  text-align: center;
+}
+
+p {
+  margin: 2%;
+}
+
+.card-daily-oz {
+  grid-area: dayOz;
+  background-color: deepskyblue;
+}
+
+.card-weekly-oz {
+  grid-area: weekOz;
+  background-color: steelblue;
+}
+
+.card-daily-activity {
+  grid-area: dayActivity;
+  background-color: deepskyblue;
+}
+
+.card-weekly-activity {
+  grid-area: weekActivity;
+  background-color: steelblue;
+}
+
+.card-daily-sleep {
+  grid-area: daySleep;
+  background-color: deepskyblue;
+}
+
+.card-weekly-sleep {
+  grid-area: weekSleep;
+  background-color: steelblue;
+}
+
+.card-all-time-sleep {
+  grid-area: allTimeSleep;
+  background-color: midnightblue;
 }

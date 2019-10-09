@@ -24,19 +24,19 @@ class UserRepository {
     //
   }
 
-  getWeekDate(date) {
-    let dateGiven = date.split('/');
-    let weekDates = [dateGiven];
-    while weekDates.length === 7 {
-      if (dateGiven[3] > 0) {
-        dateGiven[3] -= 1;
-        weekDates.unshift(dateGiven.join('/'));
-      } else {
+  // getWeekDate(date) {
+  //   let dateGiven = date.split('/');
+  //   let weekDates = [dateGiven];
+  //   while weekDates.length === 7 {
+  //     if (dateGiven[3] > 0) {
+  //       dateGiven[3] -= 1;
+  //       weekDates.unshift(dateGiven.join('/'));
+  //     } else {
 
-      }
-    }
-    console.log(weekDates);
-  }
+  //     }
+  //   }
+  //   console.log(weekDates);
+  // }
 
   updateCurrentUserInfo(type) {
     const userData =  this[`${type}UsersData`].filter((data) => data.userID === this.currentUserId);

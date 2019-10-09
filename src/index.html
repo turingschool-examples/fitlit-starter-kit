@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>FitLit</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> ` 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap" rel="stylesheet">
   </head>
   <body>
@@ -16,22 +17,22 @@
       </button>
     </header>
     <main>
-      <h4>Welcome, [insert name]!</h4>
+      <h4>Welcome, <span class='user-name'>[insert name]</span>!</h4>
       <div id="panel-container">
         <section class="container" id="user-info">
           <img id="large-prof-pic" src="images/profpic.png" alt="Default profile photo"/>
           <p>
-              <strong>Address:</strong> [address]
+              <strong>Address:</strong> <span class="address"></span>
             <br>
-              <strong>Email:</strong> [email]
+              <strong>Email:</strong> <span class="email"></span>
             <br>
-              <strong>Stride Length:</strong> [length]
+              <strong>Stride Length:</strong> <span class="stride"></span>
             <br>
             <hr>
             <p>
-              <strong>Your steps goal:</strong> [num]
+              <strong>Your steps goal:</strong> <span class="step-goal"></span>
             <br>
-              <strong>Average steps goal:</strong> [num]
+              <strong>Average steps goal:</strong> <span class="user-avg"></span>
             </p>
           </p>
         </section>
@@ -112,6 +113,11 @@
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
+    <script type="text/javascript" src="../src/activity.js"></script>
+    <script type="text/javascript" src="../src/hydration.js"></script>
+    <script type="text/javascript" src="../src/sleep.js"></script>
+    <script type="text/javascript" src="../src/user.js"></script>
+    <script type="text/javascript" src="../src/userRepo.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>

@@ -49,4 +49,8 @@ describe('User', () => {
     expect(user.dailyStepGoal).to.equal(userData.dailyStepGoal);
   });
 
+  it('should have an friends', () => {
+    expect(user.friends).to.equal(userData.friends);
+  });
+
 });

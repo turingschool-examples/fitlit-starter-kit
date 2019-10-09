@@ -1,6 +1,6 @@
 class UserRepository {
   constructor(data) {
-    this.usersData = data;
+    this.usersData = data.users;
     this.hydrationUsersData = data.hydration || null;
     this.sleepUsersData = data.sleep || null;
     this.activityUsersData = data.activity || null;
@@ -16,8 +16,13 @@ class UserRepository {
   findUserByName(name) {
     const user = this.usersData.find((user) => user.name === name);
     this.currentUserId = user.id;
-    delete user['id'];
-    this.currentUserInfo.bio = user;
+    this.currentUserInfo.bio = {
+      name: user.name,
+      address: user.address,
+      email: user.email,
+      strideLength: user.strideLength,
+      dailyStepGoal: user.dailyStepGoal};    
+    return user;
   }
 
   createUser() {

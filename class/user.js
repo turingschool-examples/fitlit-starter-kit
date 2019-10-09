@@ -7,8 +7,13 @@ class User {
     this.dailyStepGoal = userData.dailyStepGoal;
     this.strideLength = userData.strideLength;
     this.friends = userData.friends;
-
   }
+
+findUsersFirstName() {
+	let firstName = this.name.split(' ')[0];
+	return firstName;
+}
+
 }
 
 module.exports = User;

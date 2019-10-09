@@ -4,4 +4,81 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #21402E;
+  display: grid;
+  grid-template-areas: "header main";
+  grid-template-columns: 1fr 4fr;
+}
+
+.page-header {
+  grid-area: header;
+  padding: 20px;
+}
+
+.page-header > header {
+  display: flex;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.page-header > header > div {
+  background-color: #fff;
+  border-radius: 60px;
+  height: 120px;
+  width: 120px;
+}
+
+.page-header > header > h2 {
+  align-self: flex-end;
+  background-color: #C4D5C4;
+  border-radius: 20px;
+  font-size: 24px;
+  padding: 0.2em 2.2em;
+  position: absolute;
+  text-transform: uppercase;
+  left: 75px;
+  bottom: 30px;
+  z-index: -1;
+}
+
+.page-header > header > p {
+  align-self: flex-end;
+  color: #fff;
+  opacity: 0.4;
+  position: absolute;
+  bottom: 7px;
+  right: 10px;
+}
+
+.bio-info {
+  background-color: #C4D5C4;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.bio-info header {
+  text-align: center;
+}
+
+.bio-info header h3 {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.bio-info main {
+  font-size: 18px;
+}
+
+.bio-info main p {
+  font-weight: bold;
+}
+
+.content {
+  background-color: #fff;
+  border-radius: 40px;
+  height: 100vh;
+}
+
 /*# sourceMappingURL=index.css.map */

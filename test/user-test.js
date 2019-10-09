@@ -6,12 +6,26 @@ const User = require('../src/User');
 describe('User', function() {
 
   it('should be a function', function() {
-    const user = new User();
+    const user = new User({id: 1,
+      name: "Alex Roth",
+      address: "1234 Turing Street, Denver CO 80301-1697",
+      email: "alex.roth1@hotmail.com",
+      strideLength: 4.3,
+      dailyStepGoal: 10000,
+      friends: [2, 3, 4]
+    });
     expect(User).to.be.a('function');
   });
 
   it('should be an instance of User', function() {
-    const user = new User();
+    const user = new User({id: 1,
+      name: "Alex Roth",
+      address: "1234 Turing Street, Denver CO 80301-1697",
+      email: "alex.roth1@hotmail.com",
+      strideLength: 4.3,
+      dailyStepGoal: 10000,
+      friends: [2, 3, 4]
+    });
     expect(user).to.be.an.instanceof(User);
   });
 
@@ -25,8 +39,8 @@ describe('User', function() {
         friends: [2, 3, 4]
       });
 
-    expect(user.data.id).to.equal(1);
-    expect(user.data.name).to.equal("Alex Roth");
+    expect(user.id).to.equal(1);
+    expect(user.name).to.equal("Alex Roth");
   });
 
   it('should take a different user data object', function() {
@@ -39,13 +53,13 @@ describe('User', function() {
         friends: [1, 3, 4]
       });
 
-    expect(user2.data.id).to.equal(2);
-    expect(user2.data.name).to.equal("Allie McCarthy");
+    expect(user2.id).to.equal(2);
+    expect(user2.name).to.equal("Allie McCarthy");
   });
 
   it('should return user first name', function() {
       const user2 = new User({id: 2,
-        name: "Allie McCarthy",
+        name: "Allie Kennedy Holly McCarthy",
         address: "1235 Turing Street, Denver CO 80301-1697",
         email: "allie.mcc1@hotmail.com",
         strideLength: 3.3,

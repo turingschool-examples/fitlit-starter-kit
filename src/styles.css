@@ -148,6 +148,50 @@ main {
   margin: .5vw;
 }
 
+.card-data-line {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2vw;
+}
+
+p {
+  text-align: right;
+  word-break: keep-all;
+  width: 9vw;
+  letter-spacing: .2vw;
+  font-size: 1.2vw;
+  margin-right: 1vw;
+  font-weight: 600;
+  padding-top: 2vw;
+}
+
+h4 {
+  font-size: 6vw;
+}
+
+.go-back-button {
+  color: white;
+  margin-left: 1vw;
+  font-size: 2vw;
+  background-color: #F5634B;
+  border: none;
+}
+
+.hydration-weekly-label {
+  font-size: 1vw;
+  padding-top: 1vw;
+}
+
+.hydration-weekly-amount {
+  font-size: 2vw;
+}
+
+.hydration-data-line {
+  display: flex;
+  justify-content: center;
+  margin-bottom: .2vw;
+}
+
 /* HIDE CARDS */
 .hide {
   display: none;

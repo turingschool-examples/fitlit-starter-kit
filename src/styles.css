@@ -1,21 +1,153 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* * { background-color: rgba(255,0,0,.2); }
+* * { background-color: rgba(0,255,0,.2); }
+* * * { background-color: rgba(0,0,255,.2); }
+* * * * { background-color: rgba(255,0,255,.2); }
+* * * * * { background-color: rgba(0,255,255,.2); }
+* * * * * * { background-color: rgba(255,255,0,.2); }
+* * * * * * * { background-color: rgba(255,0,0,.2); }
+* * * * * * * * { background-color: rgba(0,255,0,.2); }
+* * * * * * * * * { background-color: rgba(0,0,255,.2); } */
+
 body {
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
     "aside header"
     "aside main";
   grid-template-columns: 1fr 5fr;
-  grid-template-rows: 1fr 7fr;
+  grid-template-rows: 1fr 10fr;
   font-family: 'Titillium Web', sans-serif;
   width: 100%;
 }
 
 header {
+  border: 2px solid #5D6D7E;
+  border-radius: 5px;
+  width: 99%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   grid-area: header;
+  background-color: #D1DCE9;
+}
+
+.header-style {
+  border: 3px solid black;
+  border-radius: 5px;
+  padding: 10px 20px;
+  width: 175px;
+  text-align: center;
+}
+
+.header-hydration-style {
+  background-color: #F7DC6F;
+  border-color: #D4AC0D;
+}
+
+.header-activity-style {
+  background-color: #76D7C4;
+  border-color: #148F77;
+}
+
+.header-sleep-style {
+  background-color: #85C1E9;
+  border-color: #2874A6;
 }
 
 aside {
   grid-area: aside;
-  
+  border: 2px solid #5D6D7E;
+  border-radius: 5px;
+  width: 97%;
+  margin: 0 auto;
+  background-color: #D1DCE9;
+}
+
+.aside-fitlit-logo {
+  margin: 25px auto;
+  text-align: center;
+}
+
+.aside-user-name {
+  text-align: center;
+  border-top: 2px solid black;
+  width: 90%;
+  margin: auto;
+  padding-top: 10px;
+}
+
+.aside-style {
+  text-align: center;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 90%;
+  margin: 25px auto;
+}
+
+.aside-user-info-header {
+  margin: 5px auto;
+  padding-bottom: 3px;
+  width: 90%;
+}
+
+.aside-user-info-div {
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 95%;
+  margin: 7px auto;
+  background-color: #EAECEE;
+}
+
+.aside-user-info-par {
+  padding: 5px;
+}
+
+li {
+  text-align: left;
+  margin: 5px 8px;
+  list-style-type: none;
+}
+
+.user-logout-button {
+  background-color: black;
+  color: white;
+  width: 50%;
+  padding: 3px;
+  border-radius: 5px;
+  outline: none;
+  margin: 5px 0;
+}
+
+.aside-step-goal-header {
+  margin-top: 10px;
+}
+
+.aside-step-goal-style {
+  font-size: 200%;
+  padding-bottom: 5px;
+}
+
+.user-step-goal {
+  border-bottom: 2px solid black;
+  width: 90%;
+  margin: auto;
+}
+
+.aside-trend-div {
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 95%;
+  margin: 10px auto;
+  font-size: 150%;
+  background-color: #EAECEE;
 }
 
 main {

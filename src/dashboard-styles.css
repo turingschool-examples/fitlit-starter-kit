@@ -2,3 +2,40 @@
   margin: 0px;
   padding: 0px;
 }
+
+header {
+  background-color: #00bcd44d;
+  display: flex;
+  justify-content: space-between;
+}
+
+body {
+  background-color: lavenderblush;
+}
+
+.dashboard-photo {
+  height: 200px;
+  width: 200px;
+}
+
+main {
+  display: flex;
+}
+
+.user-info {
+  height: 200px;
+  width: 200px;
+  text-align: center;
+}
+
+.main-dashboard {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.info-card {
+  border: 1px solid black;
+  box-shadow: -4px -3px 20px 0px black;
+  margin: auto;
+  margin-top: 20px;
+}

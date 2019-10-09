@@ -1,12 +1,14 @@
 $(function() {
   const randomUser = Math.floor(Math.random() * 50) + 1  
   
+//   const Chart = require('chart.js');
+  
   const user = new User(userData[randomUser]);
   const usersRepo = new UsersRepo(userData);
-  //   const userSleep = new userSleep();
-  //   const usersSleepRepo = new usersSleepRepo();
-  const userHydration = new userHydration(userData[randomUser]);
-  //   const userActivity = new userActivity();
+  //   const userSleep = new UserSleep();
+  //   const usersSleepRepo = new UsersSleepRepo();
+  const userHydration = new UserHydration(userData[randomUser], hydrationData);
+  //   const userActivity = new UserActivity();
   //   const usersActivityRepo = UsersActivityRepo();
 
   $('.span__currentUser').text(user.getUserFirstName())  
@@ -17,15 +19,15 @@ $(function() {
   $('.user__friends').text(userData[randomUser].friends);
   $('.compare__user-steps-to-all').text(usersRepo.avgStepGoal())
   $('.user__dailyWater').text(userHydration.userOuncesToday())
+console.log(parseInt(userHydration.userOuncesByWeek()))
 
-
-  const myChart = new Chart(ctx, {
+  const usersWeeklyWater = new Chart($('#weeklyUserDailyWater'), {
     type: 'bar',
     data: {
       labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
       datasets: [{
         label: '',
-        data: [],
+        data: [userHydration.userOuncesByWeek().join(',')],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',

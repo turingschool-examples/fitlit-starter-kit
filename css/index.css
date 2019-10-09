@@ -167,6 +167,34 @@ h4 {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
+.friends-section {
+  background-color: #C4D5C4;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.friends-section header {
+  text-align: center;
+}
+
+.friends-section header h3 {
+  font-size: 20px;
+}
+
+.friends-section section img {
+  height: 50px;
+  width: 50px;
+}
+
+.friend-names {
+  font-size: 16px;
+}
+
+.friend-steps {
+  font-size: 14px;
+}
+
 .content {
   background-color: #fff;
   border-radius: 40px;

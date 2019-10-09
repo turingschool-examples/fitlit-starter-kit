@@ -1,18 +1,42 @@
-.bio-info
-  background-color: $section-color
-  box-shadow: $white-shadow
-  border-radius: 20px
-  padding: 10px
-
-.bio-info header
-  text-align: center
-
 .bio-info header h3
-  font-size: 20px
-  text-transform: uppercase
-
+  cursor: pointer
+  
 .bio-info main
-  font-size: 18px
+  font-size: 16px
 
-.bio-info main p
-  font-weight: bold
+.bio-info main .info
+  grid-row-gap: 7px
+  margin-top: 20px
+  display: grid
+  grid-template-areas: 'title desc' 'title desc' 'title desc'
+
+.title
+  font-size: 18px
+  font-weight: 700
+  text-transform: capitalize
+  margin-bottom: 5px
+
+.email
+  word-wrap: break-word
+  margin-left: 7px
+  max-width: 150px
+
+.bio-info main .info .desc
+  margin-left: 7px
+  max-width: 150px
+
+.bio-info main .body
+  align-items: flex-end
+  display: flex
+  flex-wrap: wrap
+  margin-top: 25px
+  padding-bottom: 5px
+
+.bio-info main .body .title
+  margin-right: 6px
+  margin-bottom: 10px
+
+.bio-info main .body .desc
+  margin-right: 12px
+  margin-bottom: 10px
+  text-align: right

@@ -33,4 +33,8 @@ describe('User', () => {
     expect(user.name).to.equal(userData.name);
   });
 
+  it('should have an address', () => {
+    expect(user.address).to.equal(userData.address);
+  });
+
 });

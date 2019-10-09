@@ -45,4 +45,8 @@ describe('User', () => {
     expect(user.strideLength).to.equal(userData.strideLength);
   });
 
+  it('should have an dailyStepGoal', () => {
+    expect(user.dailyStepGoal).to.equal(userData.dailyStepGoal);
+  });
+
 });

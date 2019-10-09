@@ -15,11 +15,16 @@ class Hydration {
         acc += day.numOunces;
         return acc
       }, 0)/weekHydrationData.length;
+
       return Math.round(avgOunces)
     }
 
-    calculateAmtDrankByUserSpecificDate() {
+    calculateAmtDrankByUserSpecificDate(id, date) {
+      const userOnSpecificDate = this.currentHydrationData.find(user => {
+        return (user.userID === id && user.date === date)
+      });
 
+      return userOnSpecificDate.numOunces
     }
 
     returnDrinkAmtEachDayOverWeekByUser() {

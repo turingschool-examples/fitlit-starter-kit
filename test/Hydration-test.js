@@ -36,8 +36,12 @@ describe('Hydration', () => {
         expect(hydration1.numOunces).to.equal(37);
     });
 
-    it('should have a value for numOunces', () => {
-        expect(hydration.calculateAvgDailyAmtDrankByUserIdAllTime(1)).to.eql(65);
+    it('should calculate a user\'s average daily drink amt', () => {
+        expect(hydration.calculateAvgDailyAmtDrankByUserIdAllTime(1)).to.equal(65);
+    });
+
+    it('should return the amount a user drank on a specific day', () => {
+        expect(hydration.calculateAmtDrankByUserSpecificDate(1, "2019/06/15")).to.equal(37);
     });
 
 });

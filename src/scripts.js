@@ -1,25 +1,14 @@
-const data = require('./users');
-const userData = data.userData;
-console.log("Hello World");
 
-function createUsers(data) {
-  let userList = [];
-  data.forEach(function(user) {
-    const newUser = new User(
-      user.id,
-      user.name,
-      user.address,
-      user.email,
-      user.strideLength,
-      user.dailyStepGoal,
-      user.friends
-    );
-    userList.push(newUser);
-  })
-  const newRepository = new UserRepository(userList)
+const data = {
+  users: userData,
+  hydration: hydrationData,
+  sleep: sleepData,
+  activity: activityData
 }
+const userRepository = new UserRepository(data);
+const user = new User(userRepository.findUserByName('Luisa Hane'));
+console.log(user);
 
-createUsers(userData)
 
 function getFriends(user) {
   let friendId = user.friends[0];
@@ -27,8 +16,8 @@ function getFriends(user) {
     homie.id === friendId;
     return myFriend;
   })
-  document.querySelector('.friend-names').innerText = myFriend.name;
+  document.querySelector('.friend-names').innerHTML = `Name: ${myFriend.name}`;
   document.querySelector('.friend-steps').innerText = myFriend.dailyStepGoal;
 }
 
-getFriends(userData[0]);
+getFriends(user);

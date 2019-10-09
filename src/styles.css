@@ -10,7 +10,7 @@
 box-sizing: border-box;
 margin: 0;
 padding: 0;
-border: 1px solid blue;
+/* border: 1px solid blue; */
 }
 
 body {
@@ -111,6 +111,14 @@ p {
 
 h4 {
   font-size: 6vw;
+}
+
+.go-back-button {
+  color: white;
+  margin-left: 1vw;
+  font-size: 2vw;
+  background-color: #F5634B;
+  border: none;
 }
 
 /* HIDE CARDS */

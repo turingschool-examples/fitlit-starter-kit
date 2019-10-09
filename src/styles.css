@@ -6,6 +6,7 @@ body {
   grid-template-columns: 1fr 5fr;
   grid-template-rows: 1fr 7fr;
   font-family: 'Titillium Web', sans-serif;
+  width: 100%;
 }
 
 header {

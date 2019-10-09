@@ -21,6 +21,19 @@ class Hydration {
     });
     return hydrationFind.numOunces;
   }
+  findOzByWeek(id, date, hydrationData) {
+    let week = [];
+    let user = hydrationData.filter(function(elem) {
+      return elem.userID === id;
+    });
+    let userIndex = user.findIndex(function(elem) {
+      return elem.date === date;
+    })
+    for (let i = userIndex; i < (userIndex + 7); i++) {
+      week.push(user[i].numOunces);
+    }
+    return week;
+  }
 }
 
  if (typeof module !== 'undefined') {

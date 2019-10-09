@@ -48,6 +48,44 @@ const sampleHydration = [
     "userID": 2,
     "date": "2019/06/15",
     "numOunces": 500
+  },
+
+
+
+  {
+    "userID": 3,
+    "date": "2019/06/15",
+    "numOunces": 37
+  },
+  {
+    "userID": 3,
+    "date": "2019/06/16",
+    "numOunces": 75
+  },
+  {
+    "userID": 3,
+    "date": "2019/06/17",
+    "numOunces": 47
+  },
+  {
+    "userID": 3,
+    "date": "2019/06/18",
+    "numOunces": 85
+  },
+  {
+    "userID": 3,
+    "date": "2019/06/19",
+    "numOunces": 42
+  },
+  {
+    "userID": 3,
+    "date": "2019/06/20",
+    "numOunces": 87
+  },
+  {
+    "userID": 3,
+    "date": "2019/06/21",
+    "numOunces": 94
   }];
 
   if (typeof module !== 'undefined') {

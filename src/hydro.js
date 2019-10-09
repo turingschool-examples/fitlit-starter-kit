@@ -24,5 +24,6 @@ class Hydro {
     });
   }
 }
-
+if (typeof module !== 'undefined'){
 module.exports = Hydro;
+}

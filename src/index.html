@@ -14,7 +14,7 @@
     </header>
     <main>
       <section class='card-container' id='steps-card-container'>
-        <section class='main-card hide'>
+        <section class='main-card'>
           <div class='main-card-top-row'>
             <button type='button' name='button' class='info-button'></button>
             <h3>YOU HAVE WALKED</h3>
@@ -48,7 +48,7 @@
             <h4 id='steps-friend-steps-average-today'>8320</h4>
           <div class='card-data-line'>
         </section>
-        <section class='calendar-card'>
+        <section class='calendar-card hide'>
           <button type='button' name='button' class='go-back-button'>X</button>
           <div class='card-data-line'>
             <p>WEEKLY MINUTES ACTIVE:</p>
@@ -61,7 +61,7 @@
         </section>
       </section>
       <section class='card-container' id='hydration-card-container'>
-        <section class='main-card'>
+        <section class='main-card hide'>
           <div class='main-card-top-row'>
             <button type='button' name='button' class='info-button'></button>
             <h3>YOU HAVE HAD</h3>
@@ -75,28 +75,44 @@
         </section>
         <section class='info-card hide'>
           <button type='button' name='button' class='go-back-button'>X</button>
-          <p>GLASSES OF WATER CONSUMED:</p>
-          <h4 id='hydration-info-glasses-today'>4</h4>
+          <div class='card-data-line'>
+            <p>GLASSES OF WATER CONSUMED:</p>
+            <h4 id='hydration-info-glasses-today'>4</h4>
+          </div>
         </section>
         <section class='friends-card hide'>
           <button type='button' name='button' class='go-back-button'>X</button>
-          <p>FRIENDS' AVG OZ DRANK TODAY</p>
-          <h4 id='hydration-friend-ounces-today'>5</h4>
+          <div class='card-data-line'>
+            <p>FRIENDS' AVG OZ DRANK TODAY:</p>
+            <h4 id='hydration-friend-ounces-today'>5</h4>
+          </div>
         </section>
-        <section class='calendar-card hide'>
+        <section class='calendar-card'>
           <button type='button' name='button' class='go-back-button'>X</button>
-          <p>YESTERDAY:</p>
-          <h4><span id='hydration-calendar-ounces-1day'>8</span> oz</h4>
-          <p>2 DAYS AGO:</p>
-          <h4><span id='hydration-calendar-ounces-2day'>8</span> oz</h4>
-          <p>3 DAYS AGO:</p>
-          <h4><span id='hydration-calendar-ounces-3day'>8</span> oz</h4>
-          <p>4 DAYS AGO:</p>
-          <h4><span id='hydration-calendar-ounces-4day'>8</span> oz</h4>
-          <p>5 DAYS AGO:</p>
-          <h4><span id='hydration-calendar-ounces-5day'>8</span> oz</h4>
-          <p>6 DAYS AGO:</p>
-          <h4><span id='hydration-calendar-ounces-6day'>8</span> oz</h4>
+          <div class='hydration-data-line'>
+            <p class='hydration-weekly-label'>YESTERDAY:</p>
+            <h4 class='hydration-weekly-amount'><span id='hydration-calendar-ounces-1day'>8</span> oz</h4>
+          </div>
+          <div class='hydration-data-line'>
+            <p class='hydration-weekly-label'>2 DAYS AGO:</p>
+            <h4 class='hydration-weekly-amount'><span id='hydration-calendar-ounces-2day'>8</span> oz</h4>
+          </div>
+          <div class='hydration-data-line'>
+            <p class='hydration-weekly-label'>3 DAYS AGO:</p>
+            <h4 class='hydration-weekly-amount'><span id='hydration-calendar-ounces-3day'>8</span> oz</h4>
+          </div>
+          <div class='hydration-data-line'>
+            <p class='hydration-weekly-label'>4 DAYS AGO:</p>
+            <h4 class='hydration-weekly-amount'><span id='hydration-calendar-ounces-4day'>8</span> oz</h4>
+          </div>
+          <div class='hydration-data-line'>
+            <p class='hydration-weekly-label'>5 DAYS AGO:</p>
+            <h4 class='hydration-weekly-amount'><span id='hydration-calendar-ounces-5day'>8</span> oz</h4>
+          </div>
+          <div class='hydration-data-line'>
+            <p class='hydration-weekly-label'>6 DAYS AGO:</p>
+            <h4 class='hydration-weekly-amount'><span id='hydration-calendar-ounces-6day'>8</span> oz</h4>
+          </div>
         </section>
       </section>
       <section class='card-container' id='stairs-card-container'>

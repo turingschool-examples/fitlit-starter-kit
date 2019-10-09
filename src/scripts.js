@@ -19,15 +19,14 @@ $(function() {
   $('.user__friends').text(userData[randomUser].friends);
   $('.compare__user-steps-to-all').text(usersRepo.avgStepGoal())
   $('.user__dailyWater').text(userHydration.userOuncesToday())
-console.log(parseInt(userHydration.userOuncesByWeek()))
 
   const usersWeeklyWater = new Chart($('#weeklyUserDailyWater'), {
     type: 'bar',
     data: {
-      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: '',
-        data: [userHydration.userOuncesByWeek().join(',')],
+        data: userHydration.userOuncesByWeek(),
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',

@@ -22,8 +22,6 @@ class UserHydration {
   }
 
   userOuncesByDate(date) {
-
-
     let ouncesByDate = this.filteredHydration.find(hydrationObject => {
       return hydrationObject.date === date;
     })
@@ -34,7 +32,7 @@ class UserHydration {
   userOuncesByWeek() {
     return this.filteredHydration.slice(-7).map(hydrationObject => hydrationObject.numOunces)
   }
-  
+
   userOuncesToday() {
     return this.filteredHydration.slice(-1).map(hydrationObject => hydrationObject.numOunces)
   }

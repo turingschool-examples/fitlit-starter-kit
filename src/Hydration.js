@@ -1,7 +1,7 @@
 class Hydration { // instance that is updated each time a user drinks in a given day (will reset each day)
-  constructor(user) {
-    this.userId = user.id;
-    this.date = date;
+  constructor(data) {
+    this.userId = data.id;
+    this.date = data.date;
     this.ouncesToday = 0;
     this.ouncesAverage = 0;
     this.ouncesRecord = []

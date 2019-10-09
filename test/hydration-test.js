@@ -18,4 +18,7 @@ describe('hydration', function() {
     expect(hydration.calculateAvgOunces(hydration.userID, hydrationData)).to.equal(37);
   });
 
+  it('should return the ounces drank when given an id and date', function() {
+    expect(hydration.findOzByDay(1, '2019/08/15', hydrationData)).to.equal(39);
+  });
 });

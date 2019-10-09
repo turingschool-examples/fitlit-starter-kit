@@ -13,6 +13,14 @@ class Hydration {
     });
     return Math.floor(ozDrank / days);
   }
+  findOzByDay(id, date, hydrationData) {
+    let hydrationFind = hydrationData.find(function(elem) {
+      if (elem.userID === id && elem.date === date) {
+        return elem;
+      }
+    });
+    return hydrationFind.numOunces;
+  }
 }
 
  if (typeof module !== 'undefined') {

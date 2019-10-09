@@ -53,7 +53,8 @@ describe('UserRepository', function() {
 
  it('should have a method: The average step goal amongst all users', function() {
 
-   console.log(dataStep.allUsers[0].dailyStepGoal, dataStep.calculateUsersStepGoal());
+   // console.log(dataStep.allUsers[0].dailyStepGoal, dataStep.calculateUsersStepGoal());
+   expect(dataStep.calculateUsersStepGoal()).to.deep.equal(1250);
 
  });
 

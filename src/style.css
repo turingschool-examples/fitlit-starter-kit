@@ -82,20 +82,24 @@ nav {
 .main__user:hover {
 	border: 2px solid #86c232;
 	color: #86c232;
+	box-shadow: 2px 2px 3px #888888;
 }
 
 .main__hydration:hover {
 	border: 2px solid #86c232;
-	color: #86c232
+	color: #86c232;
+	box-shadow: 2px 2px 3px #888888;
 }
 
 .main__sleep:hover {
 	border: 2px solid #86c232;
-	color: #86c232
+	color: #86c232;
+	box-shadow: 2px 2px 3px #888888;
 }
 
 .main__activity:hover {
 	border: 2px solid #86c232;
-	color: #86c232
+	color: #86c232;
+	box-shadow: 2px 2px 3px #888888;
 }
 

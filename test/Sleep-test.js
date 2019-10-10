@@ -41,5 +41,10 @@ describe('Sleep', () => {
         expect(sleep.calculateAvgSleepQualityPerDayByUser()).to.equal(2.61);
     });
 
+    it('should return the amount a user slept on a specific day', () => {
+        sleep.findCurrentUserSleepData();
+        expect(sleep.returnHoursSleptByUserOnSpecificDate("2019/06/15")).to.equal(6.1);
+    });
+
 
 });

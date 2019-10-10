@@ -3,8 +3,8 @@ class Sleep {
     this.currentSleepData = sleepData;
     this.userID = userId;
     this.currentUserSleepData;
-    this.hoursSlept;
-    this.sleepQuality;
+    // this.hoursSlept;
+    // this.sleepQuality;
   }
 
   findCurrentUserSleepData() {
@@ -16,7 +16,6 @@ class Sleep {
   calculateAvgHoursSleptPerDayByUser() {
     let avgSleep = this.currentUserSleepData.reduce((acc, day) => {
       acc += day.hoursSlept;
-      console.log(acc);
       return acc
     }, 0)/this.currentUserSleepData.length;
 
@@ -26,15 +25,18 @@ class Sleep {
   calculateAvgSleepQualityPerDayByUser() {
     let avgSleepQuality = this.currentUserSleepData.reduce((acc, day) => {
       acc += day.sleepQuality;
-      console.log(acc);
       return acc
     }, 0)/this.currentUserSleepData.length;
 
     return parseFloat(avgSleepQuality.toFixed(2))
   }
 
-  returnHoursSleptByUserOnSpecificDate() {
+  returnHoursSleptByUserOnSpecificDate(date) {
+    let sleepDataOnSpecificDate = this.currentUserSleepData.find(user => {
+      return (user.date === date)
+    });
 
+    return sleepDataOnSpecificDate.hoursSlept
   }
 
   returnSleepQualityByUserOnSpecificDate() {

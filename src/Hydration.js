@@ -10,7 +10,6 @@ class Hydration {
       let weekHydrationData = this.currentHydrationData.filter(user => {
         return user.userID === id
       });
-
       let avgOunces = weekHydrationData.reduce((acc, day) => {
         acc += day.numOunces;
         return acc
@@ -32,9 +31,10 @@ class Hydration {
         return user.userID === id
       });
 
-      return weekHydrationData.map(day => {
+      let sevenDayData = weekHydrationData.map(day => {
         return day.numOunces
       });
+      return sevenDayData.slice(-7)
     }
 }
 

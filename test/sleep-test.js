@@ -30,4 +30,8 @@ describe('sleep', function() {
     expect(sleep.showSleep(sleep.userID, "2019/06/16", 'sleepQuality', sleepData)).to.equal(3.5);
   });
 
+  it('should be able to calculate the average sleep quality for all users', function() {
+    expect(sleep.showAllUserSleepQual(sleepData)).to.equal(3.1);
+  });
+
 });

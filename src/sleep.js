@@ -22,6 +22,15 @@ class Sleep {
     });
     return data;
   }
+  showAllUserSleepQual(sleepData) {
+    let sleepQualTotal = 0;
+    let users = 0;
+    sleepData.forEach(function(elem) {
+      sleepQualTotal += elem.sleepQuality;
+      users++;
+    });
+    return Math.round((sleepQualTotal / users) * 100) / 100;
+  }
 }
 
 if (typeof module !== 'undefined') {

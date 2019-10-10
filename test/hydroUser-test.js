@@ -37,7 +37,6 @@ describe('hydroUser', () => {
   });
 
   it('should get fluid oz consumed per day by week', () => {
-    console.log(userHydroData);
     expect(hydroUser.getDailyOzPerWeek()).to.deep.equal([96, 61, 91, 50, 50, 43, 39]);
   });
 

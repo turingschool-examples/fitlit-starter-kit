@@ -32,5 +32,8 @@ describe('hydroUser', () => {
     expect(hydroUser.calcAvgTotalOz()).to.equal(60);
   });
 
+  it('should get fluid oz consumed by specific day', () => {
+    expect(hydroUser.getOzByDate("2019/06/22")).to.equal(43);
+  });
 
 });

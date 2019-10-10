@@ -10,6 +10,13 @@ class HydroUser {
    },0)
    return Math.round(sum / this.hydrationData.length)
   }
+
+  getOzByDate(date) {
+    let userDateData = this.hydrationData.find(hydroData => {
+      return hydroData.date === date;
+    });
+    return userDateData.numOunces;
+  }
 }
 
 

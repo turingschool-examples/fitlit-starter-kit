@@ -46,7 +46,7 @@ class Sleep {
   }
 
   // Not Finished
-  findGoodSleepers(week, sleepData) {
+  findBestSleepers(week, sleepData) {
     let userList = [];
     let userIndex = sleepData.findIndex(function(elem) {
       return elem.date === date;
@@ -56,6 +56,24 @@ class Sleep {
         week.push(userList[i].userID);
       }
     }
+  }
+
+  //
+
+  findSleepiestUsers(date, sleepData) {
+    let userList = [];
+    sleepData.forEach(function(elem) {
+      if (elem.date === date) {
+        userList.push(elem);
+      }
+    });
+    userList.sort((a, b) => b.hoursSlept - a.hoursSlept);
+    let topFiveUsers = userList.slice(0, 5);
+    let topIDs = [];
+    topFiveUsers.forEach(function(elem) {
+      topIDs.push(elem.userID);
+    });
+    return topIDs;
   }
 }
 

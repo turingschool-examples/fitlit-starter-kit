@@ -26,7 +26,4 @@ describe('hydration', function() {
     expect(hydration.findOzByWeek(3, "2019/06/15", hydrationData)).to.deep.equal([37, 75, 47, 85, 42, 87, 94]);
   });
 
-  it('should return an array of user IDs for any users who had an average sleepQuality over 3 for the specified dates', function() {
-
-  })
 });

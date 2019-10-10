@@ -42,4 +42,11 @@ describe('sleep', function() {
     expect(sleep.findSleepWeek(10, '2019/06/15', 'hoursSlept', sleepData)).to.deep.equal([4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5.0]);
   });
 
+  it.skip('should return an array of user IDs for any users who had an average sleepQuality over 3 for the specified dates', function() {
+
+  });
+
+  it('should find the users who slept the most on any given day', function() {
+    expect(sleep.findSleepiestUsers('2019/06/15', sleepData)).to.deep.equal([3, 6, 9, 2, 1])
+  });
 });

@@ -23,6 +23,11 @@ class UserRepo {
   //   }
   //   return weekList;
   // };
+  getFirstWeek(id, dataSet) {
+    let selectedID = dataSet.filter((data) => id === data.userID);
+    let sortedByDate = selectedID.sort((a, b) => new Date(b.date) - new Date(a.date));
+    return sortedByDate.slice(0, 7);
+  }
 }
 
 

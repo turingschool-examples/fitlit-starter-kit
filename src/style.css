@@ -31,3 +31,8 @@ header {
   background-color: green;
   height: 15%;
 }
+
+#myChart {
+  background-color: yellow;
+  height: 20%;
+}

@@ -25,11 +25,11 @@ describe('UserActivity Test', function() {
   });
 
   it('should return user steps in miles for one specific date', function() {
-    expect(userActivity.activityDataFilterByDate('2019/06/15')).to.equal(2.91);
+    expect(userActivity.userMilesByDate()).to.equal(11.34);
   });
 
   it('should return user minutes active for one specific date', function() {
-    expect(userActivity.userMinutesActiveByDate('2019/06/15')).to.equal(140);
+    expect(userActivity.userMinutesActiveByDate('2019/06/15')).to.equal(218);
   });
 
   it('should return user minutes active for one week', function() {
@@ -50,16 +50,16 @@ describe('UserActivity Test', function() {
   });
 
   it('should return all users average for one date and metric (numsteps)', function() {
-    expect(userActivity.usersActivityAvgByDate('2019/06/15', 'numSteps')).to.equal(7231.4);
+    expect(userActivity.usersActivityAvgByDate('numSteps')).to.equal(8726.4);
   });
 
 
   it('should return all users average for one date and metric (minutesActive)', function() {
-    expect(userActivity.usersActivityAvgByDate('2019/06/15', 'minutesActive')).to.equal(137.6);
+    expect(userActivity.usersActivityAvgByDate('minutesActive')).to.equal(162.5);
   });
 
   it('should return all users average for one date and metric (flightsOfStairs)', function() {
-    expect(userActivity.usersActivityAvgByDate('2019/06/15', 'flightsOfStairs')).to.equal(22.8);
+    expect(userActivity.usersActivityAvgByDate('flightsOfStairs')).to.equal(22.4);
   });
 
 

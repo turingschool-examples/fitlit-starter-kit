@@ -1,4 +1,4 @@
-//need to add data and data  array
+//need to add data and data array
 
 
 class UserRepo {
@@ -6,7 +6,6 @@ class UserRepo {
     this.users = users;
   };
   getDataFromID(id) {
-    // given the user's id, what is the user's data?
     return this.users.find((user) => id === user.id);
   };
   calculateAverageStepGoal() {

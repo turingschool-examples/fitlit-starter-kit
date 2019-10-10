@@ -1,10 +1,23 @@
-const data = require('../data/hydration');
-const hydrationData = data.hydrationData;
-const scripts = require('./scripts');
+class Hydration {
+  constructor(hydrationData) {
+    this.hydrationData = hydrationData;
+  }
+  calculateAverageOunces(id) {
+    let perDayUserHydration = this.hydrationData.filter((data) => id === data.userID);
+    return perDayUserHydration.reduce((sumSoFar, data) => {
+      return sumSoFar += data.numOunces;
+    }, 0)/perDayUserHydration.length;
+  }
+  calculateDailyOunces(id, date) {
+    let findOuncesByDate = this.hydrationData.find((data) => id === data.userID && date === data.date);
+    return findOuncesByDate.numOunces;
+  }
+  calculateWeeklyOunces() {
+    
+  }
+}
 
-const User = require('../src/User');
 
-
-// if (typeof module !== 'undefined') {
-//   module.exports = Hydration;
-// }
+if (typeof module !== 'undefined') {
+  module.exports = Hydration;
+}

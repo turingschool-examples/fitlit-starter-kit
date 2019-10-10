@@ -84,5 +84,7 @@ describe('Hydration', function() {
       expect(user1.ouncesRecord).to.deep.equal([{"2019/06/15": 37}])
     })
   });
+  it('should have a method that return the last weeks water', function() {
 
+  })
 });

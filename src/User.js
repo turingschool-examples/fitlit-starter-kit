@@ -19,7 +19,7 @@ class User {
     this.ouncesAverage = Math.round((this.ouncesAverage + amount) / 2);
   }
   getWeeklyWater() {
-    return this.ouncesRecord
+    return this.ouncesRecordarray.slice(0, 7);
   }
 }
 

@@ -39,8 +39,12 @@ class Sleep {
     return sleepDataOnSpecificDate.hoursSlept
   }
 
-  returnSleepQualityByUserOnSpecificDate() {
+  returnSleepQualityByUserOnSpecificDate(date) {
+    let sleepQualityOnSpecificDate = this.currentUserSleepData.find(user => {
+      return (user.date === date)
+    });
 
+    return sleepQualityOnSpecificDate.sleepQuality
   }
 
   calculateHoursSleptEachDayByUserOverSpecificWeek() {

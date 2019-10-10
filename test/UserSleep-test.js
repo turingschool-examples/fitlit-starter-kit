@@ -34,11 +34,11 @@ describe('UserSleep', () => {
   });
 
   it('should find a user\'s average hours slept per day', () => {
-    expect(userSleep.avgUserHoursSleptPerDay(1)).to.equal(8.1);
+    expect(userSleep.avgUserHoursSleptPerDay(1)).to.equal(8.07);
   });
 
   it('should find a user\'s average sleep quality of all time', () => {
-    expect(userSleep.avgUserSleepQualityDateAllTime(1, '2019/06/18')).to.equal(2.7);
+    expect(userSleep.avgUserSleepQualityDateAllTime(1, '2019/06/18')).to.equal(2.75);
   });
 
   it('should find a user\'s hours slept for a given date', () => {

@@ -6,8 +6,11 @@ class UsersSleepRepo {
   }
 
   avgUsersSleepQualityAllTime() {
-
+    let usersAvgHoursSleep = this.sleepData.reduce((sum, sleep) => {
+      return sum += sleep.hoursSlept
+    }, 0); return parseFloat((usersAvgHoursSleep  / this.sleepData.length).toFixed(2));
   }
+  
 //   usersSleepQualityGreaterThreeByWeek() {
 
 //   }

@@ -27,15 +27,13 @@ class UserSleep {
   avgUserHoursSleptPerDay() {
     let hoursSlept = this.userDailyHoursSlept.reduce((sum, day) => {
       return sum += day;
-    }, 0) / this.userDailyHoursSlept.length;
-    return Number(hoursSlept.toFixed(1));
+    }, 0); return parseFloat((hoursSlept / this.userDailyHoursSlept.length).toFixed(2));
   }
-
+  
   avgUserSleepQualityDateAllTime() {
     let sleepQuality = this.userDailySleepQual.reduce((sum, day) => {
       return sum += day;
-    }, 0) / this.userDailyHoursSlept.length;
-    return Number(sleepQuality.toFixed(1))
+    }, 0); return parseFloat((sleepQuality / this.userDailySleepQual.length).toFixed(2))
   }
 
   userSleepHoursByDate(date) {

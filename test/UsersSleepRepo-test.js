@@ -9,7 +9,7 @@ describe('UsersSleepRepo', () => {
 
   let usersSleepRepo;
   beforeEach( () => {
-    usersSleepRepo = new UsersSleepRepo(userData);
+    usersSleepRepo = new UsersSleepRepo(userData, sleepData);
   });
 
   it('should be a function', () => {
@@ -20,16 +20,16 @@ describe('UsersSleepRepo', () => {
     expect(usersSleepRepo).to.be.an.instanceof(UsersSleepRepo);
   });
 
-  it.skip('should find all user\'s average sleep quality', () => {
-    expect(UsersSleepRepo.avgUsersSleepQualityAllTime()).to.equal();
+  it('should find all user\'s average sleep quality', () => {
+    expect(usersSleepRepo.avgUsersSleepQualityAllTime()).to.equal(7.36);
   });
 
   it.skip('should find all user\'s average sleep quality graeter than 3 for a given week', () => {
-    expect(UsersSleepRepo.usersSleepQualityGreaterThreeByWeek()).to.equal();
+    expect(usersSleepRepo.usersSleepQualityGreaterThreeByWeek()).to.equal();
   });
 
   it.skip('should find the user\'s who slept the most number of hours for a given date', () => {
-    expect(UsersSleepRepo.usersMostHoursSleptByDate()).to.equal();
+    expect(usersSleepRepo.usersMostHoursSleptByDate()).to.equal();
   });
 
 

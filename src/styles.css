@@ -237,15 +237,15 @@ p {
 
 .card-daily-sleep {
   grid-area: daySleep;
-  background-color: deepskyblue;
+  background-color: #b47aff;
 }
 
 .card-weekly-sleep {
   grid-area: weekSleep;
-  background-color: steelblue;
+  background-color: #7a51b0;
 }
 
 .card-all-time-sleep {
   grid-area: allTimeSleep;
-  background-color: midnightblue;
+  background-color: #503573;
 }

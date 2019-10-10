@@ -31,9 +31,10 @@ class Hydration {
         return user.userID === id
       });
 
-      return weekHydrationData.map(day => {
+      let sevenDayData = weekHydrationData.map(day => {
         return day.numOunces
       });
+      return sevenDayData.slice(-7)
     }
 }
 

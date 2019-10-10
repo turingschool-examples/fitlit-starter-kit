@@ -1,15 +1,25 @@
-
-
-
-
-
 $(document).ready(function(){
+
+
+
+
+
 
 $("#login-page-button").click(displayUserPage);
 
-function displayUserPage() {
-  $("#main-login-page").remove();
-  $("body").html(`
+function displayErrorMessage() {
+  if ($("#error-message").length === 0) {
+    $("#login-page-input").after("<p id='error-message'>Please enter your email</p>");
+  }
+}
+
+function displayUserPage(event) {
+  if (!$("#login-page-input").val()) {
+    displayErrorMessage();
+    event.preventDefault();
+  } else {
+    $("#main-login-page").remove();
+    $("body").html(`
   <div class="body-content-container">
     <header>
       <section class="header-style header-hydration-style">
@@ -206,6 +216,7 @@ function displayUserPage() {
       </article>
     </main>
   </div>`)
+  }
 }
 
 });

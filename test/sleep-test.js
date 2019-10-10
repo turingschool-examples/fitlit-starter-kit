@@ -15,6 +15,10 @@ describe('sleep', function() {
   });
 
   it('should be able to calculate the average hours of sleep per night for a user when given their id', function() {
-    expect(sleep.calculateAvgSleep(sleep.userID, sleepData)).to.equal(7);
+    expect(sleep.calculateAvgSleep(sleep.userID, 'hoursSlept', sleepData)).to.equal(7.1);
+  });
+
+  it('should be able to calculate the average sleep quality of sleep per night for a user when given their id', function() {
+    expect(sleep.calculateAvgSleep(sleep.userID, 'sleepQuality', sleepData)).to.equal(2.85);
   });
 });

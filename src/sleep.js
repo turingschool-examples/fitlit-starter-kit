@@ -2,16 +2,16 @@ class Sleep {
   constructor(id) {
     this.userID = id;
   }
-  calculateAvgSleep(id, sleepData) {
-    let hoursSlept = 0;
+  calculateAvgSleep(id, key, sleepData) {
+    let sleep = 0;
     let days = 0;
     sleepData.forEach(function(elem) {
       if (elem.userID === id) {
-        hoursSlept += elem.hoursSlept;
+        sleep += elem[key];
         days++;
       }
     });
-    return Math.floor(hoursSlept / days);
+    return Math.round((sleep / days) * 100) / 100;
   }
 }
 

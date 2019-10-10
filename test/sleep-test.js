@@ -31,7 +31,15 @@ describe('sleep', function() {
   });
 
   it('should be able to calculate the average sleep quality for all users', function() {
-    expect(sleep.showAllUserSleepQual(sleepData)).to.equal(3.1);
+    expect(sleep.showAllUserSleepQual(sleepData)).to.equal(2.6);
+  });
+
+  it('should show sleep quality for any given week for a specific user', function() {
+    expect(sleep.findSleepWeek(10, '2019/06/15', 'sleepQuality', sleepData)).to.deep.equal([1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1]);
+  });
+
+  it('should show sleep amount for any given week for a specific user', function() {
+    expect(sleep.findSleepWeek(10, '2019/06/15', 'hoursSlept', sleepData)).to.deep.equal([4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5.0]);
   });
 
 });

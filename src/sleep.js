@@ -31,6 +31,19 @@ class Sleep {
     });
     return Math.round((sleepQualTotal / users) * 100) / 100;
   }
+  findSleepWeek(id, date, key, sleepData) {
+    let week = [];
+    let user = sleepData.filter(function(elem) {
+      return elem.userID === id;
+    });
+    let userIndex = user.findIndex(function(elem) {
+      return elem.date === date;
+    })
+    for (let i = userIndex; i < (userIndex + 7); i++) {
+      week.push(user[i][key]);
+    }
+    return week;
+  }
 }
 
 if (typeof module !== 'undefined') {

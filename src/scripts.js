@@ -61,7 +61,7 @@ function makeFriendHTML(user, userStorage) {
 }
 //
 function addHydrationInfo(id, hydrationInfo, dateString) {
-  hydrationToday.innerText = `You drank ${hydrationInfo.getHydrationByDate(id, dateString)} oz water today. Your average water intake is ${hydrationInfo.getTotalAverageHydration(id)} oz per day`;
+  hydrationToday.innerText = `You drank ${hydrationInfo.calculateDailyOunces(id, dateString)} oz water today. Your average water intake is ${hydrationInfo.calculateAverageOunces(id)} oz per day`;
   // hydrationThisWeek.innerText =
 }
 

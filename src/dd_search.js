@@ -6,7 +6,7 @@ $(document).ready(function() {
   $('.dropdown div p').on('click', function() {
     $('.dropdown header p').text($(this).text());
     $('.dropdown input').val($(this).text());
-    console.log($('.dropdown input').val());
+    $('.dropdown div').hide();
   });
 
   $('.search label').on('click', function() {

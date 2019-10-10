@@ -5,8 +5,19 @@
     <title>Activity Tracker</title>
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
   <body>
+    <main class="main-login-page" id="main-login-page">
+      <h1 class="login-page-header">Ready to get FitLit?!</h1>
+      <form class="login-page-form" id="login-page-form">
+        Welcome to FitLit!
+        <input type="text" placeholder="Enter email here:" class="login-page-input" id="login-page-input">
+        <input type="submit" class="login-page-button" id="login-page-button">
+      </form>
+    </main>
+<!--
+    <div class="body-content-container">
     <header>
       <section class="header-style header-hydration-style">
         <h1>Hydration</h1>
@@ -62,7 +73,7 @@
         <div class="aside-trend-div">Trend 2</div>
       </section>
     </aside>
-    <main>
+    <main class="main-user-stats">
       <article class="card-style card-daily-oz">
         <h2>Have you been drinkin'?</h2>
       </article>
@@ -104,43 +115,43 @@
       <article class="card-style card-weekly-activity">
         <h2>Previous Activity</h2>
         <section class="section-style">
-          <h3>day one</h3> 
+          <h3>day one</h3>
           <div>steps</div>
           <div>flights</div>
           <div>mins</div>
         </section>
         <section class="section-style">
-          <h3>day two</h3> 
+          <h3>day two</h3>
           <div>steps</div>
           <div>flights</div>
           <div>mins</div>
         </section>
         <section class="section-style">
-          <h3>day three</h3> 
+          <h3>day three</h3>
           <div>steps</div>
           <div>flights</div>
           <div>mins</div>
         </section>
         <section class="section-style">
-          <h3>day four</h3> 
+          <h3>day four</h3>
           <div>steps</div>
           <div>flights</div>
           <div>mins</div>
         </section>
         <section class="section-style">
-          <h3>day five</h3> 
+          <h3>day five</h3>
           <div>steps</div>
           <div>flights</div>
           <div>mins</div>
         </section>
         <section class="section-style">
-          <h3>day six</h3> 
+          <h3>day six</h3>
           <div>steps</div>
           <div>flights</div>
           <div>mins</div>
         </section>
         <section class="section-style">
-          <h3>day seven</h3> 
+          <h3>day seven</h3>
           <div>steps</div>
           <div>flights</div>
           <div>mins</div>
@@ -201,10 +212,13 @@
         </section>
       </article>
     </main>
+  </div> -->
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
+    <script type="text/javascript" src="./userRepo.js"></script>
+    <script type="text/javascript" src="./user.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>

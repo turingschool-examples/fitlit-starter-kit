@@ -8,16 +8,12 @@ $(document).ready(() => {
     const user = new User(currentPerson);   
     const firstName = currentPerson.name.split(' ');
     const hydration = new Hydration(hydrationData, currentPerson.id);
-<<<<<<< HEAD
-=======
     hydration.findCurrentUserHydrationData();
     console.log(hydration.returnDrinkAmtEachDayOverWeekByUser())
->>>>>>> master
 
 
     $('.date').text(currentDate);
     $('.welcome-user').text(firstName[0]);
-<<<<<<< HEAD
     $('.profile-name').text(currentPerson.name);
     $('.profile-address').text(currentPerson.address);
     $('.profile-email').text(currentPerson.email);
@@ -26,10 +22,6 @@ $(document).ready(() => {
 
     $('#myChart').text(hydration.calculateAvgDailyAmtDrankByUserIdAllTime())
           var myChart = new Chart($('#myWeekChart'), {
-=======
-    $('#myChart').text(hydration.calculateAvgDailyAmtDrankByUserIdAllTime())
-          var myChart = new Chart($('#myChart'), {
->>>>>>> master
               type: 'bar',
               data: {
                   labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6","Day 7"],

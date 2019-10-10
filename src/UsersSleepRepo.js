@@ -1,11 +1,13 @@
 class UsersSleepRepo {
-  constructor() {
+  constructor(userData, sleepData) {
+    this.userData = userData;
+    this.sleepData = sleepData
 
   }
 
-//   avgUsersSleepQualityAllTime() {
+  avgUsersSleepQualityAllTime() {
 
-//   }
+  }
 //   usersSleepQualityGreaterThreeByWeek() {
 
 //   }

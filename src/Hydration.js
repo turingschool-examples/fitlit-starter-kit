@@ -13,7 +13,7 @@ class Hydration {
     return findOuncesByDate.numOunces;
   }
   calculateWeeklyOunces() {
-    
+      
   }
 }
 

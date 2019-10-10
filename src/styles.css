@@ -49,8 +49,26 @@ h1 {
   font-weight: 300;
 }
 
-.testcard {
-  height: 200px;
-  width: 200px;
+.main--container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.card--container {
+  width: 80%;
+  height: 100%;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.card {
+  background-color: grey;
+}
+
+.hydration--data-chart {
+  height: 400px;
+  width: 400px;
 }
 

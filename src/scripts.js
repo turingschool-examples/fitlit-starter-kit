@@ -1,9 +1,12 @@
+
 const user = new User(userData);
 const users = new UserRepo(userData);
+const hydration = new Hydration(hydrationData);
 const mainContainer = document.querySelector('.main__container')
 const header = document.querySelector('header');
 const randomNum = Math.floor(Math.random() * 50 + 1);
 const randomUser = users.getSingleUserData(randomNum);
+
 
 
 header.insertAdjacentHTML('beforeend', `<h2 class='name--display'>Welcome, ${randomUser.name}</h2>
@@ -28,20 +31,21 @@ header.insertAdjacentHTML('beforeend', `<h2 class='name--display'>Welcome, ${ran
 `)
 
 // mainContainer.insertAdjacentHTML('afterbegin', ``)
+console.log(hydration.findAWeek(randomUser.id))
 
-var ctx = document.getElementById('myChart').getContext('2d');
+var ctx = document.getElementById('weekly--water').getContext('2d');
 var chart = new Chart(ctx, {
     // The type of chart we want to create
-    type: 'line',
+    type: 'bar',
 
     // The data for our dataset
     data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: hydration.findAWeek(randomUser.id).map(day => day.date),
         datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
+            label: 'Weekly Water Intake',
+            backgroundColor: '#fff',
             borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45]
+            data: hydration.findAWeek(randomUser.id).map(day => day.numOunces)
         }]
     },
 

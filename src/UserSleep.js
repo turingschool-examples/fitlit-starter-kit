@@ -48,7 +48,6 @@ class UserSleep {
 
   userDailySleepHoursByWeek() {
     return this.sleepObjs.slice(-7).map(sleep => sleep.hoursSlept);
-    // console.log(weeksData)
   }
 
   userDailySleepQualityByWeek() {

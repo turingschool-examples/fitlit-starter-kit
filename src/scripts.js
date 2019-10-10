@@ -5,13 +5,16 @@ $(document).ready(() => {
     userRepository.returnCurrentUser(randomId)
     const currentPerson = userRepository.currentUser
     console.log(currentPerson)
-    console.log(userRepository.returnCurrentUser())
     const user = new User(currentPerson);
     const firstName = currentPerson.name.split(' ');
+    const hydration = new Hydration(hydrationData, currentPerson.id);
+    console.log(hydration.calculateAvgDailyAmtDrankByUserIdAllTime(currentPerson.id))
+    // console.log(hydration)
 
 
     $('.date').text(currentDate);
     $('.welcome-user').text(firstName[0]);
+    $("#myChart")   
 
 
 })

@@ -13,16 +13,18 @@ class Sleep {
       return this.currentUserSleepData;
   }
 
-  calculateAvgHoursSleptPerDayByUserId() {
+  calculateAvgHoursSleptPerDayByUser() {
     let avgSleep = this.currentUserSleepData.reduce((acc, day) => {
       acc += day.hoursSlept;
+      console.log(acc);
       return acc
     }, 0)/this.currentUserSleepData.length;
 
+    return Math.round(avgSleep)
   }
 
   calculateAvgSleepQualityPerDayAllTimeByUserId() {
-
+    
   }
 
   returnHoursSleptByUserOnSpecificDate() {

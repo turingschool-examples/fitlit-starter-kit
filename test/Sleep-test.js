@@ -11,7 +11,7 @@ let sleep;
 describe('Sleep', () => {
 
     beforeEach( () => {
-        sleep = new Sleep(mockSleepData, 2);
+        sleep = new Sleep(mockSleepData, 1);
     });
 
     it('should return true', () => {
@@ -22,14 +22,19 @@ describe('Sleep', () => {
         expect(Sleep).to.be.a('function');
     });
 
-    // it('should have a userID', () => {
-    //     expect(hydration.userID).to.equal(2);
-    // });
-    //
-    // it('should have a date', () => {
-    //     hydration1 = new Hydration(mockHydrationData[0]);
-    //     expect(hydration1.date).to.equal("2019/06/15");
-    // });
+    it('should have a userId', () => {
+        expect(sleep.userID).to.equal(1);
+    });
+
+    it('should find all sleep data for a specific user', () => {
+        sleep.findCurrentUserSleepData();
+        expect(sleep.currentUserSleepData.length).to.equal(7);
+    });
+
+    it('should calculate a user\'s average daily hours slept', () => {
+        sleep.findCurrentUserSleepData();
+        expect(sleep.calculateAvgHoursSleptPerDayByUser()).to.equal(8);
+    });
 
 
 });

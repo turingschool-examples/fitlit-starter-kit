@@ -33,7 +33,12 @@ describe('Sleep', () => {
 
     it('should calculate a user\'s average daily hours slept', () => {
         sleep.findCurrentUserSleepData();
-        expect(sleep.calculateAvgHoursSleptPerDayByUser()).to.equal(8);
+        expect(sleep.calculateAvgHoursSleptPerDayByUser()).to.equal(8.06);
+    });
+
+    it('should calculate a user\'s average daily sleep quality', () => {
+        sleep.findCurrentUserSleepData();
+        expect(sleep.calculateAvgSleepQualityPerDayByUser()).to.equal(2.61);
     });
 
 

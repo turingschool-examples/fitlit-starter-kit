@@ -20,11 +20,17 @@ class Sleep {
       return acc
     }, 0)/this.currentUserSleepData.length;
 
-    return Math.round(avgSleep)
+    return parseFloat(avgSleep.toFixed(2))
   }
 
-  calculateAvgSleepQualityPerDayAllTimeByUserId() {
-    
+  calculateAvgSleepQualityPerDayByUser() {
+    let avgSleepQuality = this.currentUserSleepData.reduce((acc, day) => {
+      acc += day.sleepQuality;
+      console.log(acc);
+      return acc
+    }, 0)/this.currentUserSleepData.length;
+
+    return parseFloat(avgSleepQuality.toFixed(2))
   }
 
   returnHoursSleptByUserOnSpecificDate() {

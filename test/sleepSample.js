@@ -43,7 +43,7 @@ const sampleSleep = [
   },
   {
     "userID": 1,
-    "date": "2019/06/15",
+    "date": "2019/06/16",
     "hoursSlept": 8.1,
     "sleepQuality": 3.5
   },

@@ -48,11 +48,15 @@ class Sleep {
   }
 
   calculateHoursSleptEachDayByUserOverSpecificWeek() {
+    let sevenDaySleepData = this.currentUserSleepData.map(day => {
+      return day.hoursSlept
+    });
 
+    return sevenDaySleepData.slice(-7)
   }
 
   calculateAvgSleepQualityAllUsers() {
-
+    
   }
 
   findUsersWithAvgSleepQualityMoreThanThreeOverSpecificWeek() {

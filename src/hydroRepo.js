@@ -1,7 +1,11 @@
 class HydroRepo {
-  constructor(){
-
+  constructor(hydrationData){
+    this.hydrationData = hydrationData;
   }
+
+  getUserHydroData(id) {
+    return this.hydrationData.filter(data => data.userID === id);
+  } 
 }
 
 

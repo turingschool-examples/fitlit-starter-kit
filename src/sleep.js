@@ -51,10 +51,19 @@ class Sleep {
     let userIndex = sleepData.findIndex(function(elem) {
       return elem.date === week;
     });
-    for (let i = userIndex; i < (userIndex + 50 *7); i++) {
+    for (let i = userIndex; i < (userIndex + 50 * 7); i++) {
       userList.push({ 'userID': sleepData[i].userID, 'weeklySleep': sleepData[i].sleepQuality});
       }
-    console.log(userList);
+    let userSleepObj = function() {
+      return userList.reduce((acc, user) => {
+        if(!acc[user.userID]) {
+          acc[user.userID] = [];
+        }
+        acc[user.userID].push(user.weeklySleep);
+        return acc;
+      }, {});
+    };
+    console.log(userSleepObj());
     return userList;
   }
 

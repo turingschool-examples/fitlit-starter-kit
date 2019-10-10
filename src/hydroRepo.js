@@ -1,6 +1,6 @@
 class HydroRepo {
-  constructor(){
-
+  constructor(hydrationData){
+    this.hydrationData = hydrationData;
   }
 }
 

@@ -11,17 +11,20 @@ class UsersSleepRepo {
     }, 0); return parseFloat((usersAvgHoursSleep  / this.sleepData.length).toFixed(2));
   }
 
-//   usersSleepQualityGreaterThreeByWeek() {
-//find all users who's avg sleep is > 3 for 7 days. Should work for any week(dont hardcode days)
-//   }
+  usersSleepQualityGreaterThreeByWeek() {
+  //find all users who's avg sleep is > 3 for 7 days. Should work for any week(dont hardcode days)
+  }
 
-//   usersMostHoursSleptByDate(date) {
-// for a given date find the users who slept the most number of hours(one or more if they tied)
-//   }
+  usersMostHoursSleptByDate(date) {
+    // for a given date find the users who slept the most number of hours(one or more if they tied)
+    return this.sleepData.filter(sleep => date === sleep.date).sort((a, b) => a.hoursSlept - b.hoursSlept).pop().userID
+    // use userID from sleep to get name from user data??
 
-//   metric_of_our_pick()  {
+  }
 
-//   }
+  //   metric_of_our_pick()  {
+
+  //   }
   
 }
 

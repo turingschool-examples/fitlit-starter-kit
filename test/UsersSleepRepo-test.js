@@ -28,8 +28,8 @@ describe('UsersSleepRepo', () => {
     expect(usersSleepRepo.usersSleepQualityGreaterThreeByWeek()).to.equal();
   });
 
-  it.skip('should find the user\'s who slept the most number of hours for a given date', () => {
-    expect(usersSleepRepo.usersMostHoursSleptByDate()).to.equal();
+  it('should find the user\'s who slept the most number of hours for a given date', () => {
+    expect(usersSleepRepo.usersMostHoursSleptByDate('2019/06/18')).to.equal(2);
   });
 
 

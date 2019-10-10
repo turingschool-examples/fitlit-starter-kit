@@ -34,6 +34,16 @@ $(window).on('load', function () {
   $('.sleep_quality_day').text(sleep.findQualDay('2019/09/15'));
   $('.sleep_hours_avg').text(sleep.findAvgSleepAll());
   $('.sleep_quality_avg').text(sleep.findAvgQualAll());
+  $('.activity_date').text("2019/09/15");
+  $('.activity_steps_day').text(activity.stepGoalReached('2019/09/15'));
+  $('.activity_min_active_day').text(activity.minutesActiveGivenDay('2019/09/15'));
+  $('.activity_miles_walked_day').text(activity.milesWalked('2019/09/15'));
+  $('.div_activity_steps_other_users_p').text(activityRepository.numberofStepsGivenDate('2019/09/15'));
+  $('.div_activity_min_active_other_users_p').text(activityRepository.avgMinutesActiveGivenDate('2019/09/15'));
+  $('.div_activity_stairs_other_users_p').text(activityRepository.numberofStepsGivenDate('2019/09/15'));
+  $('.activity_min_active_week').text(activity.minActiveWeek('2019/09/15').join(' '));
+  $('.activity_steps_week').text(activity.stepsWeek('2019/09/15').join(' '));
+  $('.activity_stairs_week').text(activity.stairsWeek('2019/09/15').join(' '));
 })
 
 $( function() {
@@ -61,5 +71,5 @@ function makeSleep(data) {
 function makeActivity(data) {
   activityRepository = new ActivityRepository(data);
   activityRepository.findUserId(randomNum);
-  activity = new Activity(activityRepository.currentUser);
+  activity = new Activity(activityRepository.currentUser, user);
 }

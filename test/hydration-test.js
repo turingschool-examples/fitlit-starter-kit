@@ -24,5 +24,6 @@ describe('hydration', function() {
 
   it('should return an array of oz drank for a week when given a date', function() {
     expect(hydration.findOzByWeek(3, "2019/06/15", hydrationData)).to.deep.equal([37, 75, 47, 85, 42, 87, 94]);
-  })
+  });
+
 });

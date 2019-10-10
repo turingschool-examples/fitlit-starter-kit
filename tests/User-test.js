@@ -52,8 +52,8 @@ describe('User', function() {
   it('should have a default ouncesAverage of 0', function() {
     expect(user.ouncesAverage).to.equal(0);
   });
-  it('should have a default ouncesRecord of {}', function() {
-    expect(user.ouncesRecord).to.deep.equal({});
+  it('should have a default ouncesRecord of []', function() {
+    expect(user.ouncesRecord).to.deep.equal([]);
   });
   it('getFirstName should return the first name of the user', function () {
     expect(user.getFirstName()).to.equal('Luisa');

@@ -30,4 +30,6 @@ class Activity { // instance that's updated each time a user walks or climbs in 
   }
 }
 
-module.exports = Activity;
+if (typeof module !== 'undefined') {
+  module.exports = Activity;
+}

@@ -6,6 +6,7 @@
 
 
 const data = ('../data/users');
+const hydration = ('../data/hydration')
 
 var sidebarName = document.getElementById('sidebarName');
 var stepGoalCard = document.getElementById('stepGoalCard');
@@ -14,13 +15,19 @@ var userAddress = document.getElementById('userAddress');
 var userEmail = document.getElementById('userEmail');
 var userStridelength = document.getElementById('userStridelength');
 var friendList = document.getElementById('friendList');
+var hydrationToday = document.getElementById('hydrationToday');
+var hydrationThisWeek = document.getElementById('hydrationThisWeek');
 
 function startApp() {
   let userList = [];
   makeUsers(userList);
   let userRepo = new UserRepo(userList);
-  let userNow = getUserById(pickUser(), userRepo);
+  let hydrationRepo = new Hydration(hydrationData);
+  let today = "2019/06/15"
+  var userNowId = pickUser();
+  let userNow = getUserById(userNowId, userRepo);
   addInfoToSidebar(userNow, userRepo);
+  addHydrationInfo(userNowId, hydrationRepo, today);
 }
 
 function makeUsers(array) {
@@ -52,9 +59,10 @@ function addInfoToSidebar(user, userStorage) {
 function makeFriendHTML(user, userStorage) {
   return user.getFriendsNames(userStorage).map((friendName) => (`<li>${friendName}</li>`));
 }
-
-function addHydrationInfo(user) {
-  
+//
+function addHydrationInfo(id, hydrationInfo, dateString) {
+  hydrationToday.innerText = `You drank ${hydrationInfo.getHydrationByDate(id, dateString)} oz water today. Your average water intake is ${hydrationInfo.getTotalAverageHydration(id)} oz per day`;
+  // hydrationThisWeek.innerText =
 }
 
 startApp();

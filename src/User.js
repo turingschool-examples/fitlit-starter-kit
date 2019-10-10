@@ -16,7 +16,11 @@ class User {
   }
   updateHydration(date, amount) {
     this.ouncesRecord.unshift({[date]: amount});
-    this.ouncesAverage = Math.round((this.ouncesAverage + amount) / 2);
+    if(this.ouncesRecord.length) {
+      this.ouncesAverage = Math.round((amount + (this.ouncesAverage * (this.ouncesRecord.length - 1))) / this.ouncesRecord.length);
+    } else {
+      this.ouncesAverage = amount;
+    }
   }
   getWeeklyWater() {
     return this.ouncesRecordarray.slice(0, 7);

@@ -13,12 +13,12 @@ class Hydration {
     }, 0);
     return sumUserHydration/perDayUserHydration.length;
   }
-  calculateDailyOnces(id, date) {
+  calculateDailyOunces(id, date) {
     let findOuncesByDate = this.hydrationData.find((data) => id === data.userID && date === data.date);
     return findOuncesByDate.numOunces;
   }
   calculateWeeklyOunces() {
-    
+
   }
 }
 

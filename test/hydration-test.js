@@ -35,12 +35,12 @@ describe('Hydration', function() {
   it('should return the number of ounces a user drank on a specific day', function() {
     const userHydration = new Hydration(testHydrationData);
 
-    userHydration.calculateDailyOnces(2, "2019/06/15");
+    userHydration.calculateDailyOunces(2, "2019/06/15");
 
-    expect(userHydration.calculateDailyOnces(2, "2019/06/15")).to.eql(75)
+    expect(userHydration.calculateDailyOunces(2, "2019/06/15")).to.eql(75)
   });
 
-  it('should return a list of the past 7 days and how many ounces of water was drunk per day', function() {
+  it.skip('should return a list of the past 7 days and how many ounces of water was drunk per day', function() {
     const hydrationDataWeekTest = [{
       "userID": 1,
       "date": "2019/06/15",
@@ -88,7 +88,7 @@ describe('Hydration', function() {
     }];
     const userHydration = new Hydration(testHydrationData);
 
-    userHydration.calculateWeeklyOunces(1, );
+    userHydration.calculateWeeklyOunces();
 
     expect(userHydration.calculateWeeklyOunces()).to.eql();
   });

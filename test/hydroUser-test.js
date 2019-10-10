@@ -27,6 +27,10 @@ describe('hydroUser', () => {
   it('should have a single user\'s hydration data', () => {
     expect(hydroUser.hydrationData).to.equal(userHydroData);
   });
+  
+  it('should calculate avg oz consumed daily for all time', () => {
+    expect(hydroUser.calcAvgTotalOz()).to.equal(60);
+  });
 
 
 });

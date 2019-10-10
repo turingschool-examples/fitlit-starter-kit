@@ -1,11 +1,25 @@
 $(document).ready(function(){
+let user;
 
+$("#login-page-button").click(clickLoginButton);
 
+function instantiateUserData(usersData) {
+  let userEmail = $("#login-page-input").val();
+  let userRepo = new UserRepo(usersData);
+  let userInfo = userRepo.getUserData($("#login-page-input").val())
+  user = new User(userInfo);
+}
 
-
-
-
-$("#login-page-button").click(displayUserPage);
+function clickLoginButton(event) {
+  if (!$("#login-page-input").val()) {
+    displayErrorMessage();
+    event.preventDefault();
+  } else {
+    instantiateUserData(userData);
+    displayUserPage();
+    addUserFirstName();
+  }
+}
 
 function displayErrorMessage() {
   if ($("#error-message").length === 0) {
@@ -13,11 +27,11 @@ function displayErrorMessage() {
   }
 }
 
-function displayUserPage(event) {
-  if (!$("#login-page-input").val()) {
-    displayErrorMessage();
-    event.preventDefault();
-  } else {
+function addUserFirstName() {
+  $('#aside-user-name').html(`${user.getFirstName()}`);
+}
+
+function displayUserPage() {
     $("#main-login-page").remove();
     $("body").html(`
   <div class="body-content-container">
@@ -38,7 +52,7 @@ function displayUserPage(event) {
       </div>
       <div class="aside-user-name">
       <h2>GET LIT!</h2>
-      <h2>John</h2>
+      <h2 id="aside-user-name"></h2>
       </div>
       <section class="aside-style">
         <h3 class="aside-user-info-header">User Info</h3>
@@ -216,7 +230,6 @@ function displayUserPage(event) {
       </article>
     </main>
   </div>`)
-  }
 }
 
 });

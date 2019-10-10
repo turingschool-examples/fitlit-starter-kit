@@ -13,13 +13,14 @@ var headerText = document.getElementById('headerText');
 var userAddress = document.getElementById('userAddress');
 var userEmail = document.getElementById('userEmail');
 var userStridelength = document.getElementById('userStridelength');
+var friendList = document.getElementById('friendList');
 
 function startApp() {
   let userList = [];
   makeUsers(userList);
   let userRepo = new UserRepo(userList);
-  let userNow = getUserById(pickUser(), userList);
-  addInfoToSidebar(userNow)
+  let userNow = getUserById(pickUser(), userRepo);
+  addInfoToSidebar(userNow, userRepo);
 }
 
 function makeUsers(array) {
@@ -30,22 +31,31 @@ function makeUsers(array) {
 }
 
 function pickUser() {
-  // return array.sort(a, b) => (array[Math.floor(Math.random() * (a + 1))] - array[Math.floor(Math.random() * (b + 1))]);
   return Math.floor(Math.random() * 51);
 }
 
-function getUserById(id, array) {
-  return array.find((user) => (user.id === id));
+function getUserById(id, listRepo) {
+  // return array.find((user) => (user.id === id));
+  return listRepo.getDataFromID(id);
 };
 
-function addInfoToSidebar(user) {
+function addInfoToSidebar(user, userStorage) {
   sidebarName.innerText = user.name;
   headerText.innerText = `${user.getFirstName()}'s Activity Tracker`;
-  stepGoalCard.innerText = `Your daily step goal is ${user.dailyStepGoal}. The average daily step goal is`;
+  stepGoalCard.innerText = `Your daily step goal is ${user.dailyStepGoal}. The average daily step goal is ${userStorage.calculateAverageStepGoal()}`;
   userAddress.innerText = user.address;
   userEmail.innerText = user.email;
   userStridelength.innerText = `Your stridelength is ${user.strideLength} meters.`;
+  friendList.insertAdjacentHTML('afterBegin', makeFriendHTML(user, userStorage))
 };
+
+function makeFriendHTML(user, userStorage) {
+  return user.getFriendsNames(userStorage).map((friendName) => (`<li>${friendName}</li>`));
+}
+
+function addHydrationInfo(user) {
+  
+}
 
 startApp();
 

@@ -1,8 +1,26 @@
 $(document).ready(function(){
 let user;
 let userRepo;
+let hydroUser;
+let hydroRepo;
 
 $("#login-page-button").click(clickLoginButton);
+
+function clickLoginButton(event) {
+  if (!$("#login-page-input").val()) {
+    displayErrorMessage();
+    event.preventDefault();
+  } else {
+    instantiateUserData(userData);
+    instantiateHydroData(hydrationData);
+    displayUserPage();
+    addUserFirstName();
+    addUserInfo(user);
+    addStepComparison(user, userRepo);
+    addOzToday();
+    addWeeklyOzByDay();
+  }
+}
 
 function instantiateUserData(usersData) {
   let userEmail = $("#login-page-input").val();
@@ -11,17 +29,11 @@ function instantiateUserData(usersData) {
   user = new User(userInfo);
 }
 
-function clickLoginButton(event) {
-  if (!$("#login-page-input").val()) {
-    displayErrorMessage();
-    event.preventDefault();
-  } else {
-    instantiateUserData(userData);
-    displayUserPage();
-    addUserFirstName();
-    addUserInfo(user);
-    addStepComparison(user, userRepo);
-  }
+function instantiateHydroData(data) {
+  hydroRepo = new HydroRepo(data);
+  let hydroUserInfo = hydroRepo.getUserHydroData(user.id);
+  console.log(hydroUserInfo);
+  hydroUser = new HydroUser(hydroUserInfo);
 }
 
 function displayErrorMessage() {
@@ -40,7 +52,6 @@ function addStepComparison(user, userRepo) {
     <div class="aside-step-goal-style user-step-goal">${user.dailyStepGoal}</div>
     <h3 class="aside-step-goal-header">Average Step Goal</h3>
     <div class="aside-step-goal-style">${userRepo.calcAvgStepGoal()}</div>`);
-
 }
 
 function addUserInfo(user) {
@@ -53,8 +64,24 @@ function addUserInfo(user) {
         <h4>${property}</h4>
         <p class="aside-user-info-par">${user[property]}</p>
       </div>`);
-
   });
+}
+
+function addOzToday() {
+  $("#card-daily-oz-header").after(`
+  <p class="card-daily-oz-paragraph">${hydroUser.getOzByDate("2019/06/22")}</p>`);
+}
+
+function addWeeklyOzByDay() {
+ let weeklyUserOz =  hydroUser.getDailyOzPerWeek();
+  weeklyUserOz.forEach(day => {
+    $("#card-weekly-oz-header").after(`
+    <section class="section-style">
+      <h3>${day.date}</h3>
+      <p>${day.numOunces}</p>
+    </section>`);
+  })
+  
 }
 
 function displayUserPage() {
@@ -90,38 +117,10 @@ function displayUserPage() {
     </aside>
     <main class="main-user-stats">
       <article class="card-style card-daily-oz">
-        <h2>Have you been drinkin'?</h2>
+        <h2 id="card-daily-oz-header">Have you been drinkin'?</h2>
       </article>
       <article class="card-style card-weekly-oz">
-        <h2>Weekly Water Intake</h2>
-        <section class="section-style">
-          <h3>day one</h3>
-          <p>oz consumed</p>
-        </section>
-        <section class="section-style">
-            <h3>day two</h3>
-            <p>oz consumed</p>
-        </section>
-        <section class="section-style">
-            <h3>day three</h3>
-            <p>oz consumed</p>
-        </section>
-        <section class="section-style">
-            <h3>day four</h3>
-            <p>oz consumed</p>
-        </section>
-        <section class="section-style">
-            <h3>day five</h3>
-            <p>oz consumed</p>
-        </section>
-        <section class="section-style">
-            <h3>day six</h3>
-            <p>oz consumed</p>
-        </section>
-        <section class="section-style">
-            <h3>day seven</h3>
-            <p>oz consumed</p>
-        </section>
+        <h2 id="card-weekly-oz-header">Weekly Water Intake</h2>
       </article>
       <article class="card-style card-daily-activity">
         <h2>Today's Activity</h2>

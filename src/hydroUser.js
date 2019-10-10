@@ -12,6 +12,7 @@ class HydroUser {
   }
 
   getOzByDate(date) {
+    console.log(this.hydrationData);
     let userDateData = this.hydrationData.find(hydroData => {
       return hydroData.date === date;
     });
@@ -19,8 +20,7 @@ class HydroUser {
   }
 
   getDailyOzPerWeek() {
-   let week = this.hydrationData.slice(-7);
-   return week.map(day => day.numOunces);
+   return this.hydrationData.slice(-7);
   }
 }
 

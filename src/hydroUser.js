@@ -17,6 +17,11 @@ class HydroUser {
     });
     return userDateData.numOunces;
   }
+
+  getDailyOzPerWeek() {
+   let week = this.hydrationData.slice(-7);
+   return week.map(day => day.numOunces);
+  }
 }
 
 

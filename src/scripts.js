@@ -18,6 +18,7 @@ function clickLoginButton(event) {
     instantiateUserData(userData);
     displayUserPage();
     addUserFirstName();
+    addUserInfo(user);
   }
 }
 
@@ -29,6 +30,20 @@ function displayErrorMessage() {
 
 function addUserFirstName() {
   $('#aside-user-name').html(`${user.getFirstName()}`);
+}
+
+function addUserInfo(user) {
+  let userProperties = Object.keys(user);
+  userProperties.splice(0, 4);
+  let orderedUserProperties = userProperties.reverse();
+  orderedUserProperties.forEach(function(property, index) {
+    $("#aside-user-info-header").after(`
+      <div class="aside-user-info-div">
+        <h4>${property}</h4>
+        <p class="aside-user-info-par">${user[property]}</p>
+      </div>`);
+
+  });
 }
 
 function displayUserPage() {
@@ -55,27 +70,7 @@ function displayUserPage() {
       <h2 id="aside-user-name"></h2>
       </div>
       <section class="aside-style">
-        <h3 class="aside-user-info-header">User Info</h3>
-        <div class="aside-user-info-div">
-          <h4>Address</h4>
-          <p class="aside-user-info-par">asdasfdasda</p>
-        </div>
-        <div class="aside-user-info-div">
-          <h4>Email</h4>
-          <p class="aside-user-info-par">yahoo@gmail.com</p>
-        </div>
-        <div class="aside-user-info-div">
-          <h4>Stride Length</h4>
-          <p class="aside-user-info-par">1.25ft</p>
-        </div>
-        <div class="aside-user-info-div">
-          <h4>Daily Step Goal</h4>
-          <p class="aside-user-info-par">1 million</p>
-        </div>
-        <div class="aside-user-info-div">
-          <h4>Friends</h4>
-          <p class="aside-user-info-par">friend 1, friend 2</p>
-        </div>
+        <h3 class="aside-user-info-header" id="aside-user-info-header">User Info</h3>
         <button class="user-logout-button">Log Out</button>
       </section>
       <section class="aside-style">

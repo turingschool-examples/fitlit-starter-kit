@@ -46,13 +46,14 @@ class UserSleep {
     return sleepData.filter(item => item.userID === this.id).find(item => item.date === date).sleepQuality
   }
 
-  //   userDailySleepHoursByWeek() {
+  userDailySleepHoursByWeek() {
+    return this.sleepObjs.slice(-7).map(sleep => sleep.hoursSlept);
+    // console.log(weeksData)
+  }
 
-  //   }
-
-  //   userDailySleepQualityByWeek() {
-
-  //   }
+  userDailySleepQualityByWeek() {
+    return this.sleepObjs.slice(-7).map(sleep => sleep.sleepQuality);
+  }
 
 }
 

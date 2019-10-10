@@ -227,17 +227,17 @@ p {
 
 .card-daily-activity {
   grid-area: dayActivity;
-  background-color: deepskyblue;
+  background-color: #5fe1ab;
 }
 
 .card-weekly-activity {
   grid-area: weekActivity;
-  background-color: steelblue;
+  background-color: #358564;
 }
 
 .card-daily-sleep {
   grid-area: daySleep;
-  background-color: #b47aff;
+  background-color: #c08fff;
 }
 
 .card-weekly-sleep {

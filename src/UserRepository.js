@@ -78,7 +78,29 @@ class UserRepository {
   }
 
   findGoodSleepWeekUsers(date) {
+    const week = this.getWeekDates(date);
+    const sleepsQaulityByUser = this.sleepUsersData.reduce((sleepUsers, data) => {
+      if (week.includes(data.date)) {
+        const quality = data.sleepQuality / 7;
+        (!sleepUsers[data.userID -1]) ? sleepUsers[data.userID-1] = quality : sleepUsers[data.userID-1]+=quality;
+      }
+      return sleepUsers;
+    }, []);
+    const users = sleepsQaulityByUser.reduce((ids, user) => {
+      if (user >= 3) {
+        ids.push(sleepsQaulityByUser.indexOf(user));
+      }
+      return ids;
+    }, []);
+    return users;
+  }
 
+  findSleepingBeauty(date) {
+    let userSlept = this.sleepUsersData.filter((data) => data.date === date);
+    userSlept.sort((a, b) => (a.hoursSlept > b.hoursSlept) ? 1 : -1);
+    const biggestSleepNumber = userSlept[userSlept.length -1].hoursSlept;
+    const sleepingBeauties = userSlept.filter(beauty => beauty.hoursSlept === biggestSleepNumber);
+    return sleepingBeauties;
   }
 }
 
@@ -86,8 +108,6 @@ module.exports = UserRepository;
 
 // UserRepository Class:
 //   Methods:
-//     - findGoodSleepWeekUsers / takes date, find 7 days before for every user, for each user calculate average, find users with average over 3.
-//     - findSleepingBeauty / take date, sorts array of all sleep times, returns user with most for given day.
 //     - findAverageStairsClimbed / takes data and date, return average number of stairs climbed
 //     - findAverageStepsTaken / takes data and date, return average number of steps taken
 //     - findAverageMinutesActive / takes data and date, return average number of minutes active

@@ -12,7 +12,6 @@ $(document).ready(function() {
   $('.search label').on('click', function() {
     $('.content section header input').toggle();
     $('.content section header button').toggle();
-    $('.content section header h1').toggle();
     $('.dropdown').toggle();
   });
 });

@@ -10,8 +10,12 @@ $(document).ready(function() {
   });
 
   $('.search label').on('click', function() {
-    $('.content section header input').toggle();
-    $('.content section header button').toggle();
+    $('.search').children().toggle();
+    $('.dropdown').toggle();
+  });
+
+  $('.search button').on('click', function() {
+    $('.search').children().toggle();
     $('.dropdown').toggle();
   });
 });

@@ -1,6 +1,3 @@
-const User = require('../src/User');
-const UserRepository = require('../src/UserRepository');
-
 class Hydration {
   constructor(data, userRepository) {
     this.userId = data.userID;
@@ -16,4 +13,6 @@ class Hydration {
   }
 }
 
-module.exports = Hydration;
+if (typeof module !== 'undefined') {
+  module.exports = Hydration;
+}

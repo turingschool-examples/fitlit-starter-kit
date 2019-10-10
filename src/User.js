@@ -12,7 +12,7 @@ class User {
   }
   getFirstName() {
     var names = this.name.split(' ');
-    return names[0];
+    return names[0].toUpperCase();
   }
   updateHydration(date, amount) {
     this.ouncesRecord.unshift({[date]: amount});

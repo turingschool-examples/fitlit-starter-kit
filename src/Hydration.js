@@ -12,7 +12,7 @@ class Hydration {
     var hydrate = this;
     userRepo.users.find(function(user) {
       return user.id === hydrate.userId;
-    }).updateHydration(this.ounces);
+    }).updateHydration(this.date, this.ounces);
   }
 }
 

@@ -32,7 +32,12 @@ header {
   height: 15%;
 }
 
-#myChart {
+#myWeekChart {
+  background-color: yellow;
+  height: 20%;
+}
+
+#myDayChart {
   background-color: yellow;
   height: 20%;
 }

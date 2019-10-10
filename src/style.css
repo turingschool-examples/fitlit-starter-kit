@@ -44,4 +44,8 @@ section {
   margin: 20px;
   box-shadow: 1px 1px 6px #212b32;
   background-color: #ffffff6b;
-  }
+}
+
+span {
+  margin-left: 7px;
+}

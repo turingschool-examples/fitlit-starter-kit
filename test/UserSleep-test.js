@@ -42,11 +42,11 @@ describe('UserSleep', () => {
   });
 
   it('should find a user\'s hours slept for a given date', () => {
-    expect(userSleep.userSleepHoursByDate('2019/06/18')).to.equal(10.4);
+    expect(userSleep.userSleepHoursByDate(1, '2019/06/18')).to.equal(10.4);
   });
 
   it('should find a user\'s sleep quality for a given date', () => {
-    expect(userSleep.userSleepQualityByDate('2019/06/18')).to.equal(3.1);
+    expect(userSleep.userSleepQualityByDate(1, '2019/06/18')).to.equal(3.1);
   });
 
   it('should find a user\'s hours slept each day for a given week', () => {

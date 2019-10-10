@@ -6,7 +6,7 @@ class UserSleep {
   constructor(userData) {
     this.userData = userData;
     this.id = userData.id;
-    this.name = userData.name;
+    // this.name = userData.name;
     this.sleepObjs = this.filterSleepData();
     this.userDailyHoursSlept =  this.filteredUserHoursSleptDay();
     this.userDailySleepQual = this.filteredUserSleepQuality();
@@ -36,12 +36,12 @@ class UserSleep {
     }, 0); return parseFloat((sleepQuality / this.userDailySleepQual.length).toFixed(2))
   }
 
-  userSleepHoursByDate(date) {
-    return sleepData.filter(item => item.userID === this.id).find(item => item.date === date).hoursSlept
+  userSleepHoursByDate(id, date) {
+    return sleepData.filter(item => item.userID === id).find(item => item.date === date).hoursSlept
   }
 
-  userSleepQualityByDate(date) {
-    return sleepData.filter(item => item.userID === this.id).find(item => item.date === date).sleepQuality
+  userSleepQualityByDate(id, date) {
+    return sleepData.filter(item => item.userID === id).find(item => item.date === date).sleepQuality
   }
 
   userDailySleepHoursByWeek() {

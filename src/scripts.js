@@ -5,11 +5,13 @@ $(function() {
   
   const user = new User(userData[randomUser]);
   const usersRepo = new UsersRepo(userData);
-  //   const userSleep = new UserSleep();
+    const userSleep = new UserSleep(userData);
   //   const usersSleepRepo = new UsersSleepRepo();
   const userHydration = new UserHydration(userData[randomUser], hydrationData);
   //   const userActivity = new UserActivity();
   //   const usersActivityRepo = UsersActivityRepo();
+  let today = '2019/06/22'
+
 
   $('.span__currentUser').text(user.getUserFirstName())  
   $('.user__address').text(userData[randomUser].address);
@@ -19,6 +21,8 @@ $(function() {
   $('.user__friends').text(userData[randomUser].friends);
   $('.compare__user-steps-to-all').text(usersRepo.avgStepGoal())
   $('.user__dailyWater').text(userHydration.userOuncesToday())
+  $('.sleep__user-current-sleepHours').text(userSleep.userSleepHoursByDate(randomUser, today));
+  $('.sleep__user-current-sleepQuality').text(userSleep.userSleepQualityByDate(randomUser, today))
 
   const usersWeeklyWater = new Chart($('#weeklyUserDailyWater'), {
     type: 'bar',

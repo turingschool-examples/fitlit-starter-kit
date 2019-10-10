@@ -3,6 +3,7 @@ class UserActivity {
     this.userData = userData;
     this.activityData = activityData;
     this.filteredActivity = this.activityDataFilter();
+
   }
 
   activityDataFilter() {

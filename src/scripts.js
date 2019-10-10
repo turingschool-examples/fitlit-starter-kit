@@ -1,16 +1,14 @@
 $(function() {
   const randomUser = Math.floor(Math.random() * 50) + 1  
-  
-//   const Chart = require('chart.js');
-  
+    
   const user = new User(userData[randomUser]);
   const usersRepo = new UsersRepo(userData);
-    const userSleep = new UserSleep(userData);
+  const userSleep = new UserSleep(userData);
   //   const usersSleepRepo = new UsersSleepRepo();
   const userHydration = new UserHydration(userData[randomUser], hydrationData);
   //   const userActivity = new UserActivity();
   //   const usersActivityRepo = UsersActivityRepo();
-  let today = '2019/06/22'
+  let today = '2019/06/25'
 
 
   $('.span__currentUser').text(user.getUserFirstName())  
@@ -47,18 +45,80 @@ $(function() {
           'rgba(153, 102, 255, 1)',
           'rgba(255, 159, 64, 1)'
         ],
-        borderWidth: 1
+        borderWidth: 2
       }]
     },
     options: {
       scales: {
         yAxes: [{
           ticks: {
-            beginAtZero:true
+            beginAtZero: true
           }
         }]
       }
     }
   });
+
+  const hoursSleptChart = new Chart($('#weeklyHoursSleep'), {
+    type: 'line',
+    data: {
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      datasets: [{
+        label: 'Hours Slept This Week',
+        data: userSleep.userDailySleepHoursByWeek(),
+        backgroundColor: [
+          'black',
+          'black',
+          'black', 
+          'black', 
+          'black',
+          'black',
+          '#fc7d93'
+        ],
+        // borderWidth: 2
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+  const qualitySleepChart = new Chart($('#weeklyQualitySleep'), {
+    type: 'line',
+    data: {
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      datasets: [{
+        label: 'Quality Sleep This Week',
+        data: userSleep.userDailySleepQualityByWeek(),
+        backgroundColor: [
+          'black',
+          'black', 
+          'black',
+          'black', 
+          'black',
+          'black',
+          '#1F768A'
+        ],
+        // borderWidth: 2 
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+
 
 });

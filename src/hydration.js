@@ -7,7 +7,7 @@ class Hydration {
     let days = 0;
     hydrationData.forEach(function(elem) {
       if (elem.userID === id) {
-        ozDrank = ozDrank += elem.numOunces;
+        ozDrank += elem.numOunces;
         days++;
       }
     });

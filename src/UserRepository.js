@@ -11,37 +11,47 @@ class UserRepository {
       sleep: [],
       activity: []
     };
+    this.day = null;
   }
 
   findUserByName(name) {
     const user = this.usersData.find((user) => user.name === name);
     this.currentUserId = user.id;
-    this.currentUserInfo.bio = {
-      name: user.name,
-      address: user.address,
-      email: user.email,
-      strideLength: user.strideLength,
-      dailyStepGoal: user.dailyStepGoal};    
+    this.currentUserInfo.bio = user;
+    delete this.currentUserInfo.bio['id'];
     return user;
   }
 
-  createUser() {
-    //
+  findToday() {
+    const dates = this.sleepUsersData.reduce((allDates, data) => {
+      if (data.userID === 1) {
+        allDates.push(data.date);
+      }
+      return allDates;
+    }, []);
+    this.day = dates[dates.length - 1];
+    return dates[dates.length - 1];
   }
 
-  // getWeekDate(date) {
-  //   let dateGiven = date.split('/');
-  //   let weekDates = [dateGiven];
-  //   while weekDates.length === 7 {
-  //     if (dateGiven[3] > 0) {
-  //       dateGiven[3] -= 1;
-  //       weekDates.unshift(dateGiven.join('/'));
-  //     } else {
-
-  //     }
-  //   }
-  //   console.log(weekDates);
-  // }
+  getWeekDates(date) {
+    const dates = this.sleepUsersData.reduce((allDates, data) => {
+      if (data.userID === 1) {
+        allDates.push(data.date);
+      }
+      return allDates;
+    }, []);
+    let week = [];
+    let index = dates.indexOf(date);
+    while (week.length < 7) {
+      if (index > - 1) {
+        week.unshift(dates[index]);
+        index--;
+      } else {
+        break;
+      }
+    }
+    return week;
+  }
 
   updateCurrentUserInfo(type) {
     const userData =  this[`${type}UsersData`].filter((data) => data.userID === this.currentUserId);

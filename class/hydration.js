@@ -5,7 +5,7 @@ class Hydration {
     this.numOunces = hydrationData.numOunces;
   }
   findDailyHydration(date) {
-    
+    return this.numOunces;
   }
 }
 

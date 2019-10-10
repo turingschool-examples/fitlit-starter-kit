@@ -1,6 +1,8 @@
 const chai = require('chai');
 const expect = chai.expect;
 const Hydration = require('../src/Hydration');
+const UserRepo = require('../src/User-repo');
+const User = require('../src/User');
 
 // const User = require('../src/User');
 describe('Hydration', function() {
@@ -65,45 +67,38 @@ describe('Hydration', function() {
     },
     {
       "userID": 4,
-      "date": "2016/03/15",
+      "date": "2019/03/15",
       "numOunces": 35
-
     },
     {
       "userID": 4,
-      "date": "2015/09/20",
+      "date": "2019/09/20",
       "numOunces": 40
-
     },
     {
       "userID": 4,
-      "date": "2015/09/19",
+      "date": "2019/09/19",
       "numOunces": 30
-
     },
     {
       "userID": 4,
-      "date": "2015/09/18",
+      "date": "2019/09/18",
       "numOunces": 40
-
     },
     {
       "userID": 4,
-      "date": "2015/09/17",
+      "date": "2019/09/17",
       "numOunces": 40
-
     },
     {
       "userID": 4,
-      "date": "2015/09/16",
+      "date": "2019/09/16",
       "numOunces": 30
-
     },
     {
       "userID": 4,
-      "date": "2015/09/15",
+      "date": "2019/09/15",
       "numOunces": 30
-
     },]
 
     hydration = new Hydration(hydrationData);
@@ -124,6 +119,30 @@ describe('Hydration', function() {
     expect(hydration.calculateDailyOunces(4, "2019/04/15")).to.equal(36);
   });
 
+  it('should find water intake by day for first week', function() {
+    const user3 = new User({id: 3,
+          name: "The Rock",
+          address: "1236 Awesome Street, Denver CO 80301-1697",
+          email: "therock@hotmail.com",
+          strideLength: 10,
+          dailyStepGoal: 60000,
+          friends: [1, 2, 4]
+        });
+
+        const user4 = new User({id: 4,
+          name: "Rainbow Dash",
+          address: "1237 Equestria Street, Denver CO 80301-1697",
+          email: "rainbowD1@hotmail.com",
+          strideLength: 3.8,
+          dailyStepGoal: 7000,
+          friends: [1, 2, 3]
+        });
+    const users = [user3, user4];
+    const userRepo = new UserRepo(users);
+    console.log(hydration.calculateWeeklyOunces(userRepo, 4));
+    expect(hydration.calculateWeeklyOunces(userRepo, 4)[0]).to.eql('2019/09/20: 40');
+    expect(hydration.calculateWeeklyOunces(userRepo, 4)[6]).to.eql('2019/04/15: 36');
+  })
   //day of hydration should not include user 2 or user 1 on August 22
   //week of hydration should not include user 4 not during the week
 

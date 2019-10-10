@@ -23,7 +23,11 @@ describe('sleep', function() {
   });
 
   it('should return the number of hours slept on any given day for a specific user', function() {
-    expect(sleep.showHoursSlept(sleep.userID, "2019/06/16", sleepData)).to.equal(8.1);
+    expect(sleep.showSleep(sleep.userID, "2019/06/16", 'hoursSlept', sleepData)).to.equal(8.1);
   });
-  
+
+  it('should return the quality of sleep on any given day for a specific user', function() {
+    expect(sleep.showSleep(sleep.userID, "2019/06/16", 'sleepQuality', sleepData)).to.equal(3.5);
+  });
+
 });

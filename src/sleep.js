@@ -13,14 +13,14 @@ class Sleep {
     });
     return Math.round((sleep / days) * 100) / 100;
   }
-  showHoursSlept(id, date, sleepData) {
-    let hours;
+  showSleep(id, date, key, sleepData) {
+    let data;
     sleepData.forEach(function(elem) {
       if (elem.userID === id && elem.date === date) {
-        hours = elem.hoursSlept;
+        data = elem[key];
       }
     });
-    return hours;
+    return data;
   }
 }
 

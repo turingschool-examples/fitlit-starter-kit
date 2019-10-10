@@ -49,9 +49,6 @@ const sampleHydration = [
     "date": "2019/06/15",
     "numOunces": 500
   },
-
-
-
   {
     "userID": 3,
     "date": "2019/06/15",

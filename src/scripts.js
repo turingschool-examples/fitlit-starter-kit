@@ -62,20 +62,16 @@ function displayUserPage() {
     $("body").html(`
   <div class="body-content-container">
     <header>
-      <section class="header-style header-hydration-style">
-        <h1>Hydration</h1>
-      </section>
-      <section class="header-style header-activity-style">
-          <h1>Activity</h1>
-      </section>
-      <section class="header-style header-sleep-style">
-          <h1>Sleep</h1>
-      </section>
-    </header>
-    <aside>
       <div class="aside-fitlit-logo">
         <h1>Fit Lit</h1>
       </div>
+      <section class="header-section-categories">
+        <h1 class="header-style header-hydration-style">Hydration</h1>
+        <h1 class="header-style header-activity-style">Activity</h1>
+        <h1 class="header-style header-sleep-style">Sleep</h1>
+      </section>
+    </header>
+    <aside>
       <div class="aside-user-name">
       <h2>GET LIT!</h2>
       <h2 id="aside-user-name"></h2>

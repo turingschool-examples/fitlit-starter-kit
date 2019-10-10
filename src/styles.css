@@ -43,8 +43,8 @@ body {
   grid-template-areas:
     "aside header"
     "aside main";
-  grid-template-columns: 1fr 5fr;
-  grid-template-rows: 1fr 10fr;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: .5fr 10fr;
 }
 
 header {
@@ -52,17 +52,21 @@ header {
   border-radius: 5px;
   width: 99%;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   grid-area: header;
   background-color: #D1DCE9;
+}
+
+.header-section-categories {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 10px;
 }
 
 .header-style {
   border: 3px solid black;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 5px 20px;
   width: 175px;
   text-align: center;
 }
@@ -92,13 +96,13 @@ aside {
 }
 
 .aside-fitlit-logo {
-  margin: 25px auto;
+  margin: 15px auto;
   text-align: center;
 }
 
 .aside-user-name {
+  font-size: 150%;
   text-align: center;
-  border-top: 2px solid black;
   width: 90%;
   margin: auto;
   padding-top: 10px;

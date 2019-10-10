@@ -8,10 +8,11 @@ describe('hydroUser', () => {
 
   let hydroUser;
   let hydroRepo;
+  let userHydroData;
 
   beforeEach(() => {
     hydroRepo = new HydroRepo(hydrationSampleData);
-    let userHydroData = hydroRepo.getUserHydroData(1);
+    userHydroData = hydroRepo.getUserHydroData(1);
     hydroUser = new HydroUser(userHydroData);
   });
   
@@ -22,4 +23,10 @@ describe('hydroUser', () => {
   it('should be an instance of UserRepo', () => {
     expect(hydroUser).to.be.an.instanceOf(HydroUser);
   });
+
+  it('should have a single user\'s hydration data', () => {
+    expect(hydroUser.hydrationData).to.equal(userHydroData);
+  });
+
+
 });

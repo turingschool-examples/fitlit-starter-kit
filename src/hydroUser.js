@@ -1,6 +1,6 @@
 class HydroUser {
-  constructor(){
-
+  constructor(userHydroData){
+    this.hydrationData = userHydroData;
   }
 
 }

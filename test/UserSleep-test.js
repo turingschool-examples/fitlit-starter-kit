@@ -47,14 +47,14 @@ describe('UserSleep', () => {
     expect(userSleep.avgUserSleepQualityDateAllTime(1, '2019/06/18')).to.equal(2.7);
   });
 
-  it.skip('should find a user\'s hours slept for a given date', () => {
+  it('should find a user\'s hours slept for a given date', () => {
     const userSleep = new UserSleep(userData[0]);
-    expect(userSleep.userSleepHoursByDate(1, '2019/06/18')).to.equal(10.4);
+    expect(userSleep.userSleepHoursByDate('2019/06/18')).to.equal(10.4);
   });
 
-  it.skip('should find a user\'s sleep quality for a given date', () => {
+  it('should find a user\'s sleep quality for a given date', () => {
     const userSleep = new UserSleep(userData[0]);
-    expect(userSleep.userSleepQualityByDate()).to.equal();
+    expect(userSleep.userSleepQualityByDate('2019/06/18')).to.equal(3.1);
   });
 
   it.skip('should find a user\'s hours slept each day for a given week', () => {

@@ -8,8 +8,8 @@ class UserSleep {
     this.id = userData.id;
     this.name = userData.name;
     this.sleepObjs = this.filterSleepData();
-    this.hoursSleptDay =  this.filteredUserHoursSleptDay();
-    this.sleepQualityDay = this.filteredUserSleepQuality();
+    this.userDailyHoursSlept =  this.filteredUserHoursSleptDay();
+    this.userDailySleepQual = this.filteredUserSleepQuality();
   }
 
   filterSleepData() {
@@ -17,7 +17,7 @@ class UserSleep {
   }
 
   filteredUserHoursSleptDay() {
-   return this.sleepObjs.map(day => day.hoursSlept);
+    return this.sleepObjs.map(day => day.hoursSlept);
   }
   
   filteredUserSleepQuality() {
@@ -25,29 +25,26 @@ class UserSleep {
   }
 
   avgUserHoursSleptPerDay() {
-    let sleepHours = this.hoursSleptDay.reduce((sum, day) => {
-      sum += day;
-      return sum;
-    }, 0) / this.hoursSleptDay.length;
-    return Number(sleepHours.toFixed(1));
+    let hoursSlept = this.userDailyHoursSlept.reduce((sum, day) => {
+      return sum += day;
+    }, 0) / this.userDailyHoursSlept.length;
+    return Number(hoursSlept.toFixed(1));
   }
 
   avgUserSleepQualityDateAllTime() {
-    let totSleepQual = this.sleepQualityDay.reduce((sum, day) => {
-      sum += day;
-      return sum;
-    }, 0) / this.hoursSleptDay.length;
-    return Number(totSleepQual.toFixed(1))
+    let sleepQuality = this.userDailySleepQual.reduce((sum, day) => {
+      return sum += day;
+    }, 0) / this.userDailyHoursSlept.length;
+    return Number(sleepQuality.toFixed(1))
   }
 
+  userSleepHoursByDate(date) {
+    return sleepData.filter(item => item.userID === this.id).find(item => item.date === date).hoursSlept
+  }
 
-  //   userSleepHoursByDate() {
-
-  //   }
-
-  //   userSleepQualityByDate() {
-
-  //   }
+  userSleepQualityByDate(date) {
+    return sleepData.filter(item => item.userID === this.id).find(item => item.date === date).sleepQuality
+  }
 
   //   userDailySleepHoursByWeek() {
 

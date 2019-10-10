@@ -2,8 +2,12 @@ class Hydration {
     constructor(hydrationData, userId) {
       this.currentHydrationData = hydrationData;
       this.userID = userId;
-      this.date = hydrationData.date;
-      this.numOunces = hydrationData.numOunces;
+      this.currentUserHydrationData;
+    }
+
+    findCurrentUserHydrationData() {
+      this.currentUserHydrationData = this.currentHydrationData.filter((userInfo) => userInfo.userID === this.userID);
+      return this.currentUserHydrationData;
     }
 
     calculateAvgDailyAmtDrankByUserIdAllTime(id) {

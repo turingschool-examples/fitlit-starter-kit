@@ -2,15 +2,16 @@ const chai = require('chai');
 const expect = chai.expect;
 const User = require('../src/User');
 const mockUserData = require('../mock/mockUserData');
+const mockHydrationData = require('../mock/mockHydrationData');
 const Hydration = require('../src/Hydration');
-const hydrationData = require('../src/hydration');
 
-let user;
 
-describe('User', () => {
+let hydration;
+
+describe('Hydration', () => {
 
     beforeEach( () => {
-        user = new User(mockUserData[0]);
+        hydration = new Hydration(mockHydrationData, 2);
     });
 
     it('should return true', () => {
@@ -18,7 +19,33 @@ describe('User', () => {
     });
 
     it('should be a function', () => {
-        expect(User).to.be.a('function');
+        expect(Hydration).to.be.a('function');
+    });
+
+    it('should have a userID', () => {
+        expect(hydration.userID).to.equal(2);
+    });
+
+    it('should have a date', () => {
+        hydration1 = new Hydration(mockHydrationData[0]);
+        expect(hydration1.date).to.equal("2019/06/15");
+    });
+
+    it('should have a value for numOunces', () => {
+        hydration1 = new Hydration(mockHydrationData[0]);
+        expect(hydration1.numOunces).to.equal(37);
+    });
+
+    it('should calculate a user\'s average daily drink amt', () => {
+        expect(hydration.calculateAvgDailyAmtDrankByUserIdAllTime(1)).to.equal(65);
+    });
+
+    it('should return the amount a user drank on a specific day', () => {
+        expect(hydration.calculateAmtDrankByUserSpecificDate(1, "2019/06/15")).to.equal(37);
+    });
+
+    it('should return the daily amounts a user drank over a week', () => {
+        expect(hydration.returnDrinkAmtEachDayOverWeekByUser(1)).to.eql([37, 69, 96, 61, 91, 50, 50]);
     });
 
 });

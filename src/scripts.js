@@ -6,11 +6,12 @@ $(document).ready(() => {
     const currentPerson = userRepository.currentUser
     console.log(currentPerson)
     console.log(userRepository.returnCurrentUser())
-    // const user = new User(randomUser);
+    const user = new User(currentPerson);
+    const firstName = currentPerson.name.split(' ');
 
 
     $('.date').text(currentDate);
-    $('.welcome-user').text(currentPerson.name);
-    
+    $('.welcome-user').text(firstName[0]);
+
 
 })

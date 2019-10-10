@@ -1,11 +1,12 @@
 $(document).ready(function(){
 let user;
+let userRepo;
 
 $("#login-page-button").click(clickLoginButton);
 
 function instantiateUserData(usersData) {
   let userEmail = $("#login-page-input").val();
-  let userRepo = new UserRepo(usersData);
+  userRepo = new UserRepo(usersData);
   let userInfo = userRepo.getUserData($("#login-page-input").val())
   user = new User(userInfo);
 }
@@ -19,6 +20,7 @@ function clickLoginButton(event) {
     displayUserPage();
     addUserFirstName();
     addUserInfo(user);
+    addStepComparison(user, userRepo);
   }
 }
 
@@ -30,6 +32,15 @@ function displayErrorMessage() {
 
 function addUserFirstName() {
   $('#aside-user-name').html(`${user.getFirstName()}`);
+}
+
+function addStepComparison(user, userRepo) {
+  $("#aside-user-step-comparison").html(`
+    <h3 class="aside-step-goal-header">Your Step Goal</h3>
+    <div class="aside-step-goal-style user-step-goal">${user.dailyStepGoal}</div>
+    <h3 class="aside-step-goal-header">Average Step Goal</h3>
+    <div class="aside-step-goal-style">${userRepo.calcAvgStepGoal()}</div>`);
+
 }
 
 function addUserInfo(user) {
@@ -73,11 +84,7 @@ function displayUserPage() {
         <h3 class="aside-user-info-header" id="aside-user-info-header">User Info</h3>
         <button class="user-logout-button">Log Out</button>
       </section>
-      <section class="aside-style">
-        <h3 class="aside-step-goal-header">Your Step Goal</h3>
-        <div class="aside-step-goal-style user-step-goal">350</div>
-        <h3 class="aside-step-goal-header">Average Step Goal</h3>
-        <div class="aside-step-goal-style">200</div>
+      <section class="aside-style" id="aside-user-step-comparison">
       </section>
       <section class="aside-style">
         <h3>Trends</h3>

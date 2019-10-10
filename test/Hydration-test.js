@@ -32,15 +32,18 @@ describe('Hydration', () => {
     });
 
     it('should calculate a user\'s average daily drink amt', () => {
-        expect(hydration.calculateAvgDailyAmtDrankByUserIdAllTime(1)).to.equal(65);
+        hydration.findCurrentUserHydrationData();
+        expect(hydration.calculateAvgDailyAmtDrankByUserIdAllTime()).to.equal(72);
     });
 
     it('should return the amount a user drank on a specific day', () => {
-        expect(hydration.calculateAmtDrankByUserSpecificDate(1, "2019/06/15")).to.equal(37);
+        hydration.findCurrentUserHydrationData();
+        expect(hydration.calculateAmtDrankByUserSpecificDate("2019/06/15")).to.equal(75);
     });
 
     it('should return the daily amounts a user drank over a week', () => {
-        expect(hydration.returnDrinkAmtEachDayOverWeekByUser(1)).to.eql([37, 69, 96, 61, 91, 50, 50]);
+        hydration.findCurrentUserHydrationData();
+        expect(hydration.returnDrinkAmtEachDayOverWeekByUser()).to.eql([75, 91, 96, 70, 76, 71, 27]);
     });
 
 });

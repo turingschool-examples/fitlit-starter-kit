@@ -5,27 +5,35 @@
     <link rel="stylesheet" href="../css/index.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
     <title>Activity Tracker</title>
-
+​
   </head>
   <body>
+    <header class="login-header">
+      <form class="login" action="index.html" method="post">
+        <h1>choose user</h1>
+        <input type="text" class="first-name" name="first_name" value="Luisa" placeholder="First Name">
+        <input type="text" class="last-name" name="last_name" value="Hane" placeholder="Last Name">
+        <button type="button" name="button">Log In</button>
+      </form>
+    </header>
     <header class="page-header">
       <header>
         <div></div>
-        <h2>troy</h2>
+        <h2></h2>
         <p>log out</p>
       </header>
       <section class="bio-info">
         <header>
           <h3>bio info</h3>
         </header>
-        <!-- <main>
+        <main class="bio-info__content">
           <section class="info">
             <p class="title">name</p>
-            <p class="desc">Troy Smith</p>
+            <p class="desc name"></p>
             <p class="title">e-mail</p>
-            <p class="email">troysmanertertimb@mail.com</p>
+            <p class="email"></p>
             <p class="title">address</p>
-            <p class="desc">115 Oakland St.,<br>Grandview, TX<br>76050</p>
+            <p class="desc address"></p>
           </section>
           <section class="body">
             <p class="title">height</p>
@@ -33,23 +41,22 @@
             <p class="title">weight</p>
             <p class="desc">190lb</p>
             <p class="title">step length</p>
-            <p class="desc">4.5feet</p>
+            <p class="desc step"></p>
           </section>
-        </main> -->
+        </main>
       </section>
       <section class="steps-goal">
         <header>
           <h3>step goal</h3>
         </header>
         <main>
-          <p>12000</p>
-          <h4>Average Step Goal</h3>
-          <p>6700</p>
+          <p class="goal"></p>
+          <h4 class="average">Average Step Goal</h3>
+          <p class="average average-goal"></p>
         </main>
-        <!-- <footer><p>see average</p></footer> -->
-        <footer><p>Close</p></footer>
+        <footer><p>see average</p></footer>
       </section>
-      <section class="friends-section">
+      <section>
         <header>
           <h3>friends</h3>
         </header>
@@ -57,17 +64,79 @@
           <img src="" alt="">
           <h5>name</h5>
           <p>step goal: 11000</p>
-        </section>
+      </section>
+        <!-- <section>
+          <img src="" alt="">
+          <h5>name</h5>
+          <p>step goal: 11000</p>
+        </section> -->
       </section>
     </header>
-    <main class="content"></main>
+    <main class="content">
+      <section class="sleep-widget">
+        <header>
+          <h1>Sleep</h1>
+          <section class="dropdown">
+            <input type="hidden" value="today">
+            <header><p>Today</p></header>
+            <div>
+              <p>Today</p>
+              <p>Week</p>
+              <p>All time</p>
+            </div>
+          </section>
+          <section class="search">
+            <input id="search" type="text" placeholder="yyyy/mm/dd">
+            <label for="search"></label>
+            <button type="button" name="button"></button>
+          </section>
+        </header>
+        <main class="dayly-show">
+          <p class="section__number">12000</p>
+          <h2>Hours</h2>
+          <div class="stars">
+            <img src="../images/star-empty.svg" alt="">
+            <img src="../images/star-empty.svg" alt="">
+            <img src="../images/star-empty.svg" alt="">
+            <img src="../images/star-empty.svg" alt="">
+            <img src="../images/star-empty.svg" alt="">
+            <p>5.1</p>
+          </div>
+        </main>
+        <main class="weekly-show">
+          <div class="date-choosen">
+            <h3 class="date">1999/12/23</h3>
+          </div>
+          <p class="section__number">12000</p>
+          <h2>Hours</h2>
+          <div class="stars">
+            <img src="../images/star-empty.svg" alt="">
+            <img src="../images/star-empty.svg" alt="">
+            <img src="../images/star-empty.svg" alt="">
+            <img src="../images/star-empty.svg" alt="">
+            <img src="../images/star-empty.svg" alt="">
+            <p></p>
+          </div>
+          <footer>
+            <img id="1" src="../images/circle.svg" alt="">
+            <img id="2" src="../images/circle.svg" alt="">
+            <img id="3" src="../images/circle.svg" alt="">
+            <img id="4" src="../images/circle.svg" alt="">
+            <img id="5" src="../images/circle.svg" alt="">
+            <img id="6" src="../images/circle.svg" alt="">
+            <img id="7" src="../images/circle-clicked.svg" alt="">
+          </footer>
+        </main>
+      </section>
+    </main>
     <script type="text/javascript" src="../libs/jquery-3.4.1.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./dd_search.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
-    <script type="text/javascript" src="./user.js"></script>
-    <script type="text/javascript" src="./UserRepository.js"></script>
+    <script src="./UserRepository.js" charset="utf-8"></script>
+    <script src="./user.js" charset="utf-8"></script>
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>

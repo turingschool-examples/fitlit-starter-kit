@@ -51,12 +51,16 @@ class Sleep {
     let sevenDaySleepData = this.currentUserSleepData.map(day => {
       return day.hoursSlept
     });
-
     return sevenDaySleepData.slice(-7)
   }
 
   calculateAvgSleepQualityAllUsers() {
+    let avgHrsSlept = this.currentSleepData.reduce((acc, dataBlock) => {
+      acc += dataBlock.hoursSlept;
+      return acc
+    }, 0)/this.currentSleepData.length;
     
+    return parseFloat(avgHrsSlept.toFixed(2))
   }
 
   findUsersWithAvgSleepQualityMoreThanThreeOverSpecificWeek() {

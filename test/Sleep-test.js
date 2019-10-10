@@ -56,6 +56,10 @@ describe('Sleep', () => {
         expect(sleep.calculateHoursSleptEachDayByUserOverSpecificWeek()).to.eql([6.1, 4.1, 8, 10.4, 10.7, 9.3, 7.8]);
     });
 
+    it('should return avg hours slept for all users', () => {
+        expect(sleep.calculateAvgSleepQualityAllUsers()).to.equal(8.26);
+    });
+
 
 
 });

@@ -49,13 +49,13 @@ class Sleep {
   findBestSleepers(week, sleepData) {
     let userList = [];
     let userIndex = sleepData.findIndex(function(elem) {
-      return elem.date === date;
+      return elem.date === week;
     });
-    for (let i = userIndex; i < (userIndex + 7); i++) {
-      if (sleepData.findSleepWeek(userIndex[i].userID, week, 'sleepQuality', sleepData) > 3) {
-        week.push(userList[i].userID);
+    for (let i = userIndex; i < (userIndex + 50 *7); i++) {
+      userList.push({ 'userID': sleepData[i].userID, 'weeklySleep': sleepData[i].sleepQuality});
       }
-    }
+    console.log(userList);
+    return userList;
   }
 
   //

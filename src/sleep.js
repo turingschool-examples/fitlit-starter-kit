@@ -38,11 +38,24 @@ class Sleep {
     });
     let userIndex = user.findIndex(function(elem) {
       return elem.date === date;
-    })
+    });
     for (let i = userIndex; i < (userIndex + 7); i++) {
       week.push(user[i][key]);
     }
     return week;
+  }
+
+  // Not Finished
+  findGoodSleepers(week, sleepData) {
+    let userList = [];
+    let userIndex = sleepData.findIndex(function(elem) {
+      return elem.date === date;
+    });
+    for (let i = userIndex; i < (userIndex + 7); i++) {
+      if (sleepData.findSleepWeek(userIndex[i].userID, week, 'sleepQuality', sleepData) > 3) {
+        week.push(userList[i].userID);
+      }
+    }
   }
 }
 

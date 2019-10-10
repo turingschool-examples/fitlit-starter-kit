@@ -18,6 +18,12 @@ class User {
   tellAboutSleep(date, hours, quality) {
     console.log(date, hours, quality)
   }
+
+  findFriends(userRepo) {
+    const friends = userRepo.usersData.filter((user) => this.friends.includes(user.id));
+    console.log(friends);
+    return friends;
+  }
 }
 
 if (typeof module !== 'undefined') {

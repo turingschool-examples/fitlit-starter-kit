@@ -5,11 +5,11 @@
   padding: 0;
 }
 
-.main__container {
-  height: 100vh;
-  color: #fff;
-  font-size: 18px;
-  padding: 10px;
+body {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+
 }
 
 header {
@@ -51,9 +51,12 @@ h1 {
 
 .main--container {
   display: flex;
-  align-content: center;
-  justify-content: center;
-  width: 100%;
+  flex-direction: column;
+  background-color: #fff;
+  /* align-content: center; */
+  /* justify-content: center; */
+  width: 80%;
+
 }
 
 .card--container {
@@ -68,7 +71,17 @@ h1 {
 }
 
 .hydration--data-chart {
-  height: 400px;
-  width: 400px;
+  height: 300px;
+  width: 40%;
+  margin: 20px;
+  background: url('../images/water-background.jpg') center;
+  background-size: auto;
+  /* filter: brightness(60%); */
+}
+
+#weekly--water {
+  position: absolute;
+  /* z-index: 1; */
+  /* opacity: 30%; */
 }
 

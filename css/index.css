@@ -408,4 +408,148 @@ h4 {
   width: 10px;
 }
 
+.water-widget {
+  border-radius: 20px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  margin: 40px;
+  padding-bottom: 20px;
+  width: 32%;
+}
+
+.water-widget header {
+  align-items: flex-start;
+  display: flex;
+  position: relative;
+}
+
+.water-widget header h1 {
+  margin: 10px 15px;
+}
+
+.dropdown {
+  background-color: #fff;
+  border: 1px solid #21402E;
+  border-radius: 20px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  font-weight: 700;
+  min-width: 100px;
+  position: absolute;
+  top: 15px;
+  right: 20%;
+  width: fit-content;
+}
+
+.dropdown header p {
+  font-size: 18px;
+  margin: auto;
+  padding: 5px;
+  text-align: center;
+}
+
+.dropdown header,
+.dropdown div p {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.dropdown div {
+  display: none;
+}
+
+.dropdown div p {
+  border-top: 1px solid #21402E;
+  font-size: 14px;
+  margin: 0 15px;
+  padding: 10px 0;
+  text-align: right;
+}
+
+.search {
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #21402E;
+  border-radius: 20px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  margin: 12px 15px;
+  position: absolute;
+  top: 3px;
+  right: 0px;
+  height: 34px;
+  min-width: 34px;
+}
+
+.search input {
+  border: none;
+  display: none;
+  font-size: 18px;
+  margin: 5px;
+  text-align: right;
+}
+
+.search label {
+  cursor: pointer;
+}
+
+.search label,
+.search button {
+  background-image: url("../images/search.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  border-radius: 20px;
+  height: 30px;
+  width: 30px;
+}
+
+.search label {
+  background-image: url("../images/search.svg");
+}
+
+.search button {
+  border: none;
+  display: none;
+  background-image: url("../images/tick.svg");
+}
+
+.water-widget main {
+  text-align: center;
+}
+
+.weekly-show {
+  display: none;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.stars img {
+  margin-right: 8px;
+  width: 20px;
+}
+
+.stars p {
+  margin-left: 8px;
+}
+
+.weekly-show .date {
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.weekly-show footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+}
+
+.weekly-show footer img {
+  cursor: pointer;
+  margin-right: 5px;
+  width: 10px;
+}
+
 /*# sourceMappingURL=index.css.map */

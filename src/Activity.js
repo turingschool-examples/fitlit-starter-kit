@@ -12,7 +12,7 @@ class Activity {
     this.stepsRecord = [];
     this.stairsRecord = [];
     this.reachedStepGoal = false;
-    this.accomplishedDays = []; //will hold dates where they exceeded step goal
+    this.accomplishedDays = [];
     this.topClimbingDay = '';
   }
   walk() {

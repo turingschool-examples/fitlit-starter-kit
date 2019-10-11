@@ -52,6 +52,10 @@ describe('Activity', () => {
         activity.findCurrentUserActivityData();
         expect(activity.hasUserStepGoalBeenReachedOnSpecificDate("2019/06/15")).to.equal(false);
         expect(activity.hasUserStepGoalBeenReachedOnSpecificDate("2019/06/17")).to.equal(true);
+    });
 
+    it('should return all the days a user has exceeded their daily stepgoal', () => {
+        activity.findCurrentUserActivityData();
+        expect(activity.filterAllDatesUserCompletedStepGoal()).to.eql(["2019/06/17","2019/06/19","2019/06/20","2019/06/21"]);
     });
 });

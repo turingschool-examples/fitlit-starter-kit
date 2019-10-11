@@ -18,7 +18,6 @@ class UserRepository {
     const user = this.usersData.find((user) => user.name === name);
     this.currentUserId = user.id;
     this.currentUserInfo.bio = user;
-    delete this.currentUserInfo.bio['id'];
     return user;
   }
 
@@ -104,7 +103,7 @@ class UserRepository {
   }
 }
 
-module.exports = UserRepository;
+// module.exports = UserRepository;
 
 // UserRepository Class:
 //   Methods:

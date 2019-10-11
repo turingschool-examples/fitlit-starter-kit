@@ -2,10 +2,10 @@ const chai = require("chai");
 const expect = chai.expect;
 
 const UserRepository = require('../src/UserRepository');
-const users = require('../data/users');
-const hydration = require('../data/hydration');
-const sleep = require('../data/sleep');
-const activity = require('../data/activity');
+const usersData = require('../data/users');
+const hydrationData = require('../data/hydration');
+const sleepData = require('../data/sleep');
+const activityData = require('../data/activity');
 const data = {
   users: users,
   hydration: hydration,

@@ -57,7 +57,18 @@ class Activity{
     }
     
     filterAllDatesUserCompletedStepGoal() {
-        
+        // For a user, find all the days where they exceeded their step goal
+        let allDatesOverStepGoal = []
+        let userProfile = this.allUsersData.find(user => {
+            return user.id === this.userID
+        })
+        let userStepGoal = userProfile.dailyStepGoal;
+        this.currentUserActivityData.forEach(user => {
+            if (userProfile.id === user.userID && user.numSteps > userStepGoal) {
+                allDatesOverStepGoal.push(user.date)
+            }
+        })  
+        return allDatesOverStepGoal
     }
     
     findMostStairsClimbedForUserAllTime() {

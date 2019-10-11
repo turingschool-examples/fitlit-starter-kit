@@ -1,5 +1,3 @@
-const UserRepository = require('../src/UserRepository');
-
 class Activity {
   constructor(activity) {
     this.userId = activity.userID;
@@ -12,14 +10,8 @@ class Activity {
     this.stepsRecord = [];
     this.stairsRecord = [];
     this.reachedStepGoal = false;
-    this.accomplishedDays = []; //will hold dates where they exceeded step goal
+    this.accomplishedDays = [];
     this.topClimbingDay = '';
-  }
-  walk() {
-
-  }
-  climb() {
-
   }
   calculateMiles(userRepository) {
     let walkingUser = userRepository.users.find(user => {

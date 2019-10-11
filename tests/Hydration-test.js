@@ -42,7 +42,8 @@ describe('Hydration', function() {
         19
       ]
     })
-    userRepository = new UserRepository([user1, user2]);
+    userRepository = new UserRepository();
+    userRepository.users.push(user1, user2);
     hydrate1 = new Hydration({
         "userID": 1,
         "date": "2019/06/15",

@@ -51,7 +51,8 @@ describe('UserRepository', function() {
         33
       ]
     })
-    userRepository = new UserRepository([user1, user2, user3]);
+    userRepository = new UserRepository();
+    userRepository.users.push(user1, user2, user3);
   })
   it('should be a function', function() {
     expect(UserRepository).to.be.a('function');

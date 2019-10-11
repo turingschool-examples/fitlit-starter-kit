@@ -9,9 +9,7 @@ activityData.forEach(activity => {
   activity = new Activity(activity);
 })
 
-hydrationData.forEach(hydration => {
-  hydration = new Hydration(hydration);
-})
+
 
 // let userRepository = new UserRepository([userData]);
 
@@ -39,4 +37,6 @@ headerName.innerText = `${userRepository.users[userIndex].getFirstName()}'S `;
 
 stepsInfoUserStepGoal.innerText = `${userRepository.users[userIndex].dailyStepGoal}`;
 
-// hydrationUserOuncesToday.innerText =
+hydrationUserOuncesToday.innerText = hydrationData.find(hydration => {
+  return hydration.userID === userRepository.users[userIndex].id && hydration.date === todayDate;
+}).numOunces;

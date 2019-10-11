@@ -56,6 +56,6 @@ describe('User', function() {
     expect(user.ouncesRecord).to.deep.equal([]);
   });
   it('getFirstName should return the first name of the user', function () {
-    expect(user.getFirstName()).to.equal('Luisa');
+    expect(user.getFirstName()).to.equal('LUISA');
   });
 });

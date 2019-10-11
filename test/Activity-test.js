@@ -47,4 +47,11 @@ describe('Activity', () => {
         activity.findCurrentUserActivityData();
         expect(activity.calculateAvgMinutesActiveForUserOnSpecificWeek()).to.equal(156);
     });
+
+    it('should find if a user has reached their Daily Step Goal for a given date', () => {
+        activity.findCurrentUserActivityData();
+        expect(activity.hasUserStepGoalBeenReachedOnSpecificDate("2019/06/15")).to.equal(false);
+        expect(activity.hasUserStepGoalBeenReachedOnSpecificDate("2019/06/17")).to.equal(true);
+
+    });
 });

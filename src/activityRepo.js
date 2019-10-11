@@ -14,9 +14,18 @@ class ActivityRepo {
       }
       return acc;
     }, 0)
-    
     return Math.round(totalFlights / 50);
   };
+
+  calcAvgStepsTakenByDay(date) {
+    let totalSteps = this.activityData.reduce((acc, user) => {
+      if (user.date === date) {
+        acc += user.numSteps;
+      }
+      return acc
+    },0)
+    return Math.round(totalSteps / 50);
+  }
 }
 
 

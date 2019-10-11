@@ -33,4 +33,9 @@ describe('activityRepo', () => {
     console.log();
     expect(activityRepo.calcAvgStairsClimbedByDay("2019/06/15")).to.equal(24);
   });
+
+  it('should calculate avg steps for all users by date', () => {
+    console.log();
+    expect(activityRepo.calcAvgStepsTakenByDay("2019/06/15")).to.equal(8386);
+  });
 });

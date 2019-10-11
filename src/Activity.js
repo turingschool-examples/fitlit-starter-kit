@@ -43,7 +43,17 @@ class Activity{
     }
     
     hasUserStepGoalBeenReachedOnSpecificDate(date) {
-        
+        let currentUserByDate = this.currentUserActivityData.find(user => {
+            return user.date === date
+        })
+        let userStepGoal = this.allUsersData.find(user => {
+            return user.id === currentUserByDate.userID
+        })
+        if (currentUserByDate.numSteps > userStepGoal.dailyStepGoal) {
+            return true
+        } else {
+            return false
+        }
     }
     
     filterAllDatesUserCompletedStepGoal() {

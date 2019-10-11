@@ -56,36 +56,39 @@
         </main>
         <footer><p>see average</p></footer>
       </section>
-      <section>
+      <section class="friends-section">
         <header>
           <h3>friends</h3>
         </header>
         <section class="friend-names"></section>
       </section>
     </header>
-    <main class="content">
-        <section class="water-widget">
-            <header>
-              <h1>Hydration</h1>
-              <section class="dropdown">
-                <input type="hidden" value="today">
-                <header><p>Today</p></header>
-                <div>
-                  <p>Today</p>
-                  <p>Week</p>
-                </div>
-              </section>
-              <section class="search">
-                <input id="search" type="text" placeholder="yyyy/mm/dd">
-                <label for="search"></label>
-                <button type="button" name="button"></button>
-              </section>
-            </header>
-            <main class="dayly-show">
-              <p class="section__number current-hydro">83</p>
-              <h2>Ounces</h2>
-            </main>
+    <main class="content empty-board">
+      <p>Log in to see your board</p>
+    </main>
+    <main class="content board">
+      <section class="water-widget">
+        <header>
+          <h1>Hydration</h1>
+          <section class="dropdown">
+            <input type="hidden" value="today">
+            <header><p>Today</p></header>
+            <div>
+              <p>Today</p>
+              <p>Week</p>
+            </div>
           </section>
+          <section class="search">
+            <input id="search" type="text" placeholder="yyyy/mm/dd">
+            <label for="search"></label>
+            <button type="button" name="button"></button>
+          </section>
+        </header>
+        <main class="dayly-show">
+          <p class="section__number current-hydro">83</p>
+          <h2>Ounces</h2>
+        </main>
+      </section>
       <section class="sleep-widget">
         <header>
           <h1>Sleep</h1>
@@ -148,9 +151,9 @@
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
-    <script src="./Hydration.js" charset="utf-8"></script>
-    <script src="./UserRepository.js" charset="utf-8"></script>
-    <script src="./user.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./user.js"></script>
+    <script type="text/javascript" src="./UserRepository.js"></script>
+    <script type="text/javascript" src="./Sleep.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>

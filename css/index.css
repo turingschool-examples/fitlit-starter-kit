@@ -241,17 +241,21 @@ h4 {
   font-size: 20px;
 }
 
-.friends-section section img {
-  height: 50px;
-  width: 50px;
-}
-
-.friend-names {
-  font-size: 16px;
-}
-
-.friend-steps {
+.friend-names p {
   font-size: 14px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
+
+.friend-names h5 {
+  border-top: 1px solid #000;
+  font-size: 18px;
+  margin-right: 30px;
+  padding-left: 5px;
+  padding-top: 10px;
+}
+.friend-names h5:first-child {
+  border-top: none;
 }
 
 .content {
@@ -262,6 +266,23 @@ h4 {
   top: 0;
   right: 0;
   width: 80%;
+}
+
+.board {
+  display: none;
+}
+
+.empty-board {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.empty-board p {
+  color: #21402E;
+  font-size: 64px;
+  font-weight: 700;
+  opacity: 0.5;
 }
 
 .sleep-widget {

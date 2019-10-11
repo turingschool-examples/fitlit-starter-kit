@@ -2,10 +2,10 @@ const chai = require("chai");
 const expect = chai.expect;
 
 const UserRepository = require('../src/UserRepository');
-const users = require('../data/users');
-const hydration = require('../data/hydration');
-const sleep = require('../data/sleep');
-const activity = require('../data/activity');
+const usersData = require('../data/users');
+const hydrationData = require('../data/hydration');
+const sleepData = require('../data/sleep');
+const activityData = require('../data/activity');
 const data = {
   users: users,
   hydration: hydration,
@@ -37,7 +37,6 @@ beforeEach(() => {
 describe("UserRepository", () => {
   it("should be function", () => {
     expect(UserRepository).to.be.a('function');
-    userRepository.getWeekDate("2019/06/15");
   });
 
   it("should be an instance of UserRepository", () => {
@@ -134,4 +133,35 @@ describe("UserRepository", () => {
     expect(userRepository.getAllUserAverageQualtiy()).to.equal(2.98);
   });
 
+  it('should can find today', function () {
+    expect(userRepository.findToday()).to.equal("2019/09/22");
+  });
+
+  it('should keep choosen day', function () {
+    userRepository.findToday();
+    expect(userRepository.day).to.equal("2019/09/22");
+  });
+
+  it('should can find week', function () {
+    userRepository.findToday();
+    expect(userRepository.getWeekDates(userRepository.day)).to.deep.equal(["2019/09/16","2019/09/17","2019/09/18","2019/09/19","2019/09/20","2019/09/21","2019/09/22"]);
+  });
+
+  it('should can find people who sleep well this week', function () {
+    userRepository.findToday();
+    expect(userRepository.findGoodSleepWeekUsers(userRepository.day)).to.deep.equal([4,7,12,14,18,20,21,25,27,30,31,33,34,36,38,42,44,45,20,47,48,49]);
+  });
+
+  it('should can find person who slept most hours', function () {
+    userRepository.findToday();
+    expect(userRepository.findSleepingBeauty(userRepository.day)).to.deep.equal([
+      { userID: 7,
+        date: '2019/09/22',
+        hoursSlept: 10.9,
+        sleepQuality: 4.7 },
+      { userID: 20,
+        date: '2019/09/22',
+        hoursSlept: 10.9,
+        sleepQuality: 3.8 }]);
+  });
 });

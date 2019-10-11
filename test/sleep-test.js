@@ -2,6 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const Sleep = require('../src/sleep.js');
 const sleepData = require('../test/sleepSample.js');
+const sleepData2 = require('../test/sleepSample2.js');
 
 let sleep;
 
@@ -42,8 +43,8 @@ describe('sleep', function() {
     expect(sleep.findSleepWeek(10, '2019/06/15', 'hoursSlept', sleepData)).to.deep.equal([4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5.0]);
   });
 
-  it.skip('should return an array of user IDs for any users who had an average sleepQuality over 3 for the specified dates', function() {
-
+  it('should return an array of user IDs for any users who had an average sleepQuality over 3 for the specified dates', function() {
+    expect(sleep.findBestSleepers('2019/06/20', sleepData2)).to.equal();
   });
 
   it('should find the users who slept the most on any given day', function() {

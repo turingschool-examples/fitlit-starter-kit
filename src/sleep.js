@@ -70,8 +70,11 @@ class Sleep {
     });
     finalArr.forEach(elem => elem.data = Math.round((elem.data / 7) * 100) / 100);
     finalArr.sort((a, b) => b.data - a.data);
-    console.log(finalArr.slice(0, 5));
-    return finalArr.slice(0, 5);
+    let finalIndex = finalArr.findIndex(function(elem) {
+      return elem.data <= 3;
+    });
+    console.log(finalArr.slice(0, finalIndex));
+    return finalArr.slice(0, finalIndex);
   }
 
   //

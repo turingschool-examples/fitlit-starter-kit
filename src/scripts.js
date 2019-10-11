@@ -3,6 +3,7 @@ let user;
 let userRepo;
 let hydroUser;
 let hydroRepo;
+let sleepRepo;
 
 $("#login-page-button").click(clickLoginButton);
 
@@ -13,6 +14,7 @@ function clickLoginButton(event) {
   } else {
     instantiateUserData(userData);
     instantiateHydroData(hydrationData);
+    instantiateSleepData(sleepData);
     displayUserPage();
     addUserFirstName();
     addUserInfo(user);
@@ -32,8 +34,12 @@ function instantiateUserData(usersData) {
 function instantiateHydroData(data) {
   hydroRepo = new HydroRepo(data);
   let hydroUserInfo = hydroRepo.getUserHydroData(user.id);
-  console.log(hydroUserInfo);
   hydroUser = new HydroUser(hydroUserInfo);
+}
+
+function instantiateSleepData(data) {
+  sleepRepo = new SleepRepo(data);
+  sleepRepo.getGreatSleepersByweek("2019/08/05");
 }
 
 function displayErrorMessage() {
@@ -81,7 +87,7 @@ function addWeeklyOzByDay() {
       <p>${day.numOunces}</p>
     </section>`);
   })
-  
+
 }
 
 function displayUserPage() {

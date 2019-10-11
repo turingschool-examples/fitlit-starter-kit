@@ -34,9 +34,9 @@ describe('SleepRepo', () => {
     expect(sleepRepo.getAvgSleepQuality()).to.deep.equal(2.93);
   });
 
-  // it('should be able to find users who average sleep quality more than 3 in a week', () => {
-  //   expect(sleepRepo.getGreatSleepersByweek("2019/06/24")).to.equal();
-  // });
+  it('should be able to find users who average sleep quality more than 3 in a week', () => {
+    expect(sleepRepo.getGreatSleepersByweek("2019/06/24")).to.equal();
+  });
 
   it('should be able to find the users who slept the most number of hours in a day', () => {
     expect(sleepRepo.getMostSleepUserByDay("2019/06/15")).to.deep.equal([ { userID: 3,

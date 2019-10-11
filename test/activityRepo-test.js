@@ -28,4 +28,9 @@ describe('activityRepo', () => {
   it('should be able get activity data from specific user', () => {
     expect(activityRepo.getUserActivityData(1)).to.deep.equal(userActivityData);
   });
+
+  it('should calculate all users stairs climbed by date', () => {
+    console.log();
+    expect(activityRepo.calcAvgStairsClimbedByDay("2019/06/15")).to.equal(24);
+  });
 });

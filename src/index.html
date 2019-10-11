@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>FitLIT - Dashboard Activity Tracker</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600i&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <link href='https://fonts.googleapis.com/css?family=Nunito:300,400,600i&display=swap' rel='stylesheet'>
+    <link rel='stylesheet' href='styles.css'>
   </head>
   <body>
-    <header role="header">
-      <h1 class="header_h1">FitLIT</h1>
-      <p class="header_h1_p">Hello <span class="header_h1_span"></span>, welcome to your dashboard!</p>
+    <header role='header'>
+      <h1 class='header_h1'>FitLIT</h1>
+      <p class='header_h1_p'>Hello <span class='header_h1_span'></span>, welcome to your dashboard!</p>
     </header>
-    <main role="main">
-      <section class="section_user">
-        <h2 class="section_user_h2">USER SECTION</h2>
+    <main role='main'>
+      <section class='section_user'>
+        <h2 class='section_user_h2'>USER SECTION<span class='section_user_h2_span'><img src='icons/user-solid.svg' class='fas fa-user'></span>
+        </h2>
           <ul>
             <li>NAME
                 <p class='user_name'></p>
@@ -37,110 +38,111 @@
             </li>
           </ul>
       </section>
-      <section class="section_hydro">
-          <h2 class="section_hydro_h2">
+      <section class='section_hydro'>
+          <h2 class='section_hydro_h2'>
             HYDRO SECTION
-            <span class="section_hydro_h2_span"><img src="icons/tint-solid.svg" class="fas fa-tint"></span>
+            <span class='section_hydro_h2_span'><img src='icons/tint-solid.svg' class='fas fa-tint'></span>
           </h2>
-          <p>Date: <input type="text" id="datepicker_hydro"></p>
+          <p>Date: <input type='text' id='datepicker_hydro'></p>
           <ul>
             <li>OUNCES CONSUMED TODAY
-              <p class="hydro_day"></p>
+              <p class='hydro_day'></p>
             </li>
             <li>OUNCES CONSUMED THIS WEEK
-              <p class="hydro_week"></p>
+              <p class='hydro_week'></p>
             </li>
           </ul>
       </section>
-      <section class="section_sleep">
-          <h2 class="section_sleep_h2">
+      <section class='section_sleep'>
+          <h2 class='section_sleep_h2'>
             SLEEP SECTION
-            <span class="section_sleep_h2_span"><img src="icons/bed-solid.svg" class="fas fa-snooze"></span>
+            <span class='section_sleep_h2_span'><img src='icons/bed-solid.svg' class='fas fa-snooze'></span>
           </h2>
           <ul>
-            <li>HOURS SLEPT ON <span class="sleep_date"></span>
-              <p class="sleep_hours_day"></p>
+            <li>HOURS SLEPT ON <span class='sleep_date'></span>
+              <p class='sleep_hours_day'></p>
             </li>
-            <li> QUALITY OF SLEEP ON <span class="sleep_date"></span>
-              <p class="sleep_quality_day"></p>
+            <li> QUALITY OF SLEEP ON <span class='sleep_date'></span>
+              <p class='sleep_quality_day'></p>
             </li>
             <li> AVERAGE HOURS OF SLEEP
-              <p class="sleep_hours_avg"></p>
+              <p class='sleep_hours_avg'></p>
             </li>
             <li> AVERAGE QUALITY RATING
-              <p class="sleep_quality_avg"></p>
+              <p class='sleep_quality_avg'></p>
             </li>
           </ul>
       </section>
-      <section class="section_activity">
-          <h2 class="section_activity_h2">ACTIVITY SECTION
-              <span class="section_activity_h2_span"><img src="icons/running-solid.svg" class="fas fa-running"></span>
+      <section class='section_activity'>
+          <h2 class='section_activity_h2'>ACTIVITY SECTION
+              <span class='section_activity_h2_span'><img src='icons/running-solid.svg' class='fas fa-running'></span>
           </h2>
           <ul>
             <li>
-              NUMBER OF STEPS ON <span class="activity_date"></span>
-              <p class="activity_steps_day"></p>
+              NUMBER OF STEPS ON <span class='activity_date'></span>
+              <p class='activity_steps_day'></p>
             </li>
             <li>
               STEPS THIS WEEK
-              <p class="activity_steps_week"></p>
+              <p class='activity_steps_week'></p>
             </li>
             <li>
-              MINUTES ACTIVE ON <span class="activity_date"></span>
-              <p class="activity_min_active_day"></p>
+              MINUTES ACTIVE ON <span class='activity_date'></span>
+              <p class='activity_min_active_day'></p>
             </li>
             <li>
               MINUTES ACTIVE THIS WEEK 
-              <p class="activity_min_active_week"></p>
+              <p class='activity_min_active_week'></p>
             </li>
             <li>
-              MILES WALKED ON <span class="activity_date"></span>
-              <p class="activity_miles_walked_day"></p>
+              MILES WALKED ON <span class='activity_date'></span>
+              <p class='activity_miles_walked_day'></p>
             </li>
             <li>
               FLIGHTS OF STAIRS THIS WEEK
-              <p class="activity_stairs_week"></p>
+              <p class='activity_stairs_week'></p>
             </li>
           </ul>
       </section>
-      <section class="section_other_users">
-        <h2>OTHER USERS</h2>
-        <div class="div_steps_other_users">
-          <h3 class="div_steps_other_users_h3">Average Step Goal of All Users</h3>
-          <p class="div_steps_other_users_p">
+      <section class='section_other_users'>
+        <h2>OTHER USERS<span class='section_other_users_h2_span'><img src='icons/users-solid.svg' class='fas fa-users'></span>
+        </h2>
+        <div class='div_steps_other_users'>
+          <h3 class='div_steps_other_users_h3'>Average Step Goal of All Users</h3>
+          <p class='div_steps_other_users_p'>
           </p>
         </div>
-        <div class="div_activity_steps_other_users">
-          <h3 class="div_activity_steps_other_users_h3">Average Steps of All Users ON <span class="activity_date"></span></h3>
-          <p class="div_activity_steps_other_users_p">
+        <div class='div_activity_steps_other_users'>
+          <h3 class='div_activity_steps_other_users_h3'>Average Steps of All Users ON <span class='activity_date'></span></h3>
+          <p class='div_activity_steps_other_users_p'>
           </p>
         </div>
-        <div class="div_activity_min_active_other_users">
-          <h3 class="div_activity_min_active_other_users_h3">Average Minutes Active of All Users ON <span class="activity_date"></span></h3>
-          <p class="div_activity_min_active_other_users_p">
+        <div class='div_activity_min_active_other_users'>
+          <h3 class='div_activity_min_active_other_users_h3'>Average Minutes Active of All Users ON <span class='activity_date'></span></h3>
+          <p class='div_activity_min_active_other_users_p'>
           </p>
         </div>
-        <div class="div_activity_stairs_other_users">
-          <h3 class="div_activity_stairs_other_users_h3">Average Flights of Stairs of All Users ON <span class="activity_date"></span></h3>
-          <p class="div_activity_stairs_other_users_p">
+        <div class='div_activity_stairs_other_users'>
+          <h3 class='div_activity_stairs_other_users_h3'>Average Flights of Stairs of All Users ON <span class='activity_date'></span></h3>
+          <p class='div_activity_stairs_other_users_p'>
           </p>
         </div>
       </section>
     </main>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="../data/hydration.js"></script>
-    <script type="text/javascript" src="../data/sleep.js"></script>
-    <script type="text/javascript" src="../data/activity.js"></script>
-    <script type="text/javascript" src="../src/hydroRepository.js"></script>
-    <script type="text/javascript" src="../src/userRepository.js"></script>
-    <script type="text/javascript" src="../src/sleepRepository.js"></script>
-    <script type="text/javascript" src="../src/activityRepository.js"></script>
-    <script type="text/javascript" src="../src/user.js"></script>
-    <script type="text/javascript" src="../src/hydro.js"></script>
-    <script type="text/javascript" src="../src/sleep.js"></script>
-    <script type="text/javascript" src="../src/activity.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
+    <script src='https://code.jquery.com/jquery-1.12.4.js'></script>
+    <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
+    <script type='text/javascript' src='../data/users.js'></script>
+    <script type='text/javascript' src='../data/hydration.js'></script>
+    <script type='text/javascript' src='../data/sleep.js'></script>
+    <script type='text/javascript' src='../data/activity.js'></script>
+    <script type='text/javascript' src='../src/hydroRepository.js'></script>
+    <script type='text/javascript' src='../src/userRepository.js'></script>
+    <script type='text/javascript' src='../src/sleepRepository.js'></script>
+    <script type='text/javascript' src='../src/activityRepository.js'></script>
+    <script type='text/javascript' src='../src/user.js'></script>
+    <script type='text/javascript' src='../src/hydro.js'></script>
+    <script type='text/javascript' src='../src/sleep.js'></script>
+    <script type='text/javascript' src='../src/activity.js'></script>
+    <script type='text/javascript' src='./scripts.js'></script>
   </body>
 </html>

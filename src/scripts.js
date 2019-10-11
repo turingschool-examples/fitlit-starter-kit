@@ -9,8 +9,7 @@ let sleepRepository = undefined;
 let activityRepository = undefined;
 
 function getRandomNum() {
-    randomNum = Math.floor((Math.random() * 50) + 1);
-
+  randomNum = Math.floor((Math.random() * 50) + 1);
 }
 
 $(window).on('load', function () {
@@ -47,8 +46,8 @@ $(window).on('load', function () {
 })
 
 $( function() {
-  $( "#datepicker_hydro" ).datepicker();
-} );
+  $('#datepicker_hydro').datepicker();
+});
 
 function makeUsers(data) {
   userRepository = new UserRepository(data);
@@ -57,9 +56,9 @@ function makeUsers(data) {
 }
 
 function makeHydro(data) {
-    hydroRepository = new HydroRepository(data);
-    hydroRepository.findUserId(randomNum);
-    hydro = new Hydro(hydroRepository.currentUser);
+  hydroRepository = new HydroRepository(data);
+  hydroRepository.findUserId(randomNum);
+  hydro = new Hydro(hydroRepository.currentUser);
 }
 
 function makeSleep(data) {

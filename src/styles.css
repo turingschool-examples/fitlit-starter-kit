@@ -1,19 +1,14 @@
-/* Color Palette */
-/* light blue = #04B8E5
-/* navy - #222E50 */
-/* off-white - #EFEFEF */
-/* gray - #C8C8C8 */
-/* red - #DD343C */
-
 *,
 *::after,
 *::before {
 	box-sizing: border-box;
 }
+
 body {
     background-image: linear-gradient(45deg, rgb(60, 220, 246) 0%, rgb(60, 220, 246) 23%,rgb(66, 89, 246) 23%, rgb(66, 89, 246) 25%,rgb(59, 253, 246) 25%, rgb(59, 253, 246) 34%,rgb(62, 187, 246) 34%, rgb(62, 187, 246) 64%,rgb(65, 122, 246) 64%, rgb(65, 122, 246) 74%,rgb(63, 155, 246) 74%, rgb(63, 155, 246) 100%)
 
 }
+
 header {
    width: 100%;
    margin: 0 auto;
@@ -27,6 +22,7 @@ main{
     grid-template-rows: 1fr 1fr;
     grid-gap: 20px; 
 }
+
 section {
     border: 10px solid;
     border-color: #222E50;
@@ -50,6 +46,7 @@ h2 {
 h3 {
     font-family: 'Nunito', sans-serif;
 }
+
 p {
     font-family: 'Nunito', sans-serif;
 }
@@ -59,9 +56,7 @@ p {
     color: #EFEFEF;
     font-size: 50px;
     font-weight: 600;
-
 }
-
 
 ul {
     text-align: left;
@@ -96,15 +91,12 @@ div {
     text-align: center;
 }
 
-
-
 .fas {
     display: inline-block;
     width: 10%;
     height: 10%;
-    margin-left: 50px;
+    margin-left: 60px;
     margin-bottom: -3px;
-
 }
 
 .fa-tint {
@@ -116,4 +108,20 @@ div {
     width: 7%;
     height: 7%;
     margin-left: 30px;
+}
+
+.fa-user {
+    width: 6%;
+    height: 6%;
+    margin-left: 80px;
+}
+
+.fa-users {
+    width: 2%;
+    height: 2%;
+
+}
+
+#ui-datepicker-div {
+    display: none;
 }

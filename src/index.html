@@ -13,7 +13,7 @@
         <h1>choose user</h1>
         <input type="text" class="first-name" name="first_name" value="Luisa" placeholder="First Name">
         <input type="text" class="last-name" name="last_name" value="Hane" placeholder="Last Name">
-        <button type="button" name="button">Log In</button>
+        <button class="log-in" type="button" name="button">Log In</button>
       </form>
     </header>
     <header class="page-header">
@@ -64,6 +64,28 @@
       </section>
     </header>
     <main class="content">
+        <section class="water-widget">
+            <header>
+              <h1>Hydration</h1>
+              <section class="dropdown">
+                <input type="hidden" value="today">
+                <header><p>Today</p></header>
+                <div>
+                  <p>Today</p>
+                  <p>Week</p>
+                </div>
+              </section>
+              <section class="search">
+                <input id="search" type="text" placeholder="yyyy/mm/dd">
+                <label for="search"></label>
+                <button type="button" name="button"></button>
+              </section>
+            </header>
+            <main class="dayly-show">
+              <p class="section__number current-hydro">83</p>
+              <h2>Ounces</h2>
+            </main>
+          </section>
       <section class="sleep-widget">
         <header>
           <h1>Sleep</h1>
@@ -126,6 +148,7 @@
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
+    <script src="./Hydration.js" charset="utf-8"></script>
     <script src="./UserRepository.js" charset="utf-8"></script>
     <script src="./user.js" charset="utf-8"></script>
     <script type="text/javascript" src="./scripts.js"></script>

@@ -62,14 +62,19 @@ class Sleep {
         }
         acc[user.userID].push(user.weeklySleep);
         return acc;
-      }, {});
-      for (let i = 0; i < userSleepObj.length; i++) {
-        finalArr.push({'userID': Object.keys(userSleepObj[i]), 'values': userSleepObj[i][i + 1]});
-      }
+      }, [])
     };
-    console.log(finalArr);
-    console.log(userSleepObj());
-    return userList;
+    let averageQual =       userSleepObj().forEach(function(elem, i) {
+      return finalArr.push({'userID': i,  'data':     elem.reduce((acc, val) => acc + val, 0)
+      });
+    });
+    finalArr.forEach(elem => elem.data = Math.round((elem.data / 7) * 100) / 100);
+    finalArr.sort((a, b) => b.data - a.data);
+    let finalIndex = finalArr.findIndex(function(elem) {
+      return elem.data <= 3;
+    });
+    console.log(finalArr.slice(0, finalIndex));
+    return finalArr.slice(0, finalIndex);
   }
 
   //

@@ -1,4 +1,6 @@
-class Activity { // instance that's updated each time a user walks or climbs in a given day (will reset each day)
+const UserRepository = require('../src/UserRepository');
+
+class Activity {
   constructor(activity) {
     this.userId = activity.userID;
     this.date = activity.date;
@@ -19,8 +21,11 @@ class Activity { // instance that's updated each time a user walks or climbs in 
   climb() {
 
   }
-  calculateMiles() {
-
+  calculateMiles(userRepository) {
+    let walkingUser = userRepository.users.find(user => {
+      return user.id === this.userId;
+    });
+    return Math.round(this.steps * walkingUser.strideLength / 5280);
   }
   findAccomplishedDays() {
 

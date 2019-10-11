@@ -1,4 +1,11 @@
+userData.forEach(user => {
+  user = new User(user);
+});
+
+let userRepository = new UserRepository([userData]);
+
 var headerName = document.querySelector('#header-name');
+
 
 var user = new User({
   'id': 1,

@@ -38,4 +38,9 @@ describe('activityRepo', () => {
     console.log();
     expect(activityRepo.calcAvgStepsTakenByDay("2019/06/15")).to.equal(8386);
   });
+
+  it('should calculate avg minutes active for all users by date', () => {
+    console.log();
+    expect(activityRepo.calcMinsActiveByDay("2019/06/15")).to.equal(156);
+  });
 });

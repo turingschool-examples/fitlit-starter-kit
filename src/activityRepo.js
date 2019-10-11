@@ -22,9 +22,19 @@ class ActivityRepo {
       if (user.date === date) {
         acc += user.numSteps;
       }
-      return acc
+      return acc;
     },0)
     return Math.round(totalSteps / 50);
+  }
+
+  calcMinsActiveByDay(date) {
+    let totalMins = this.activityData.reduce((acc, user) => {
+      if (user.date === date) {
+        acc += user.minutesActive;
+      }
+      return acc;
+    },0)
+    return Math.round(totalMins / 50);
   }
 }
 

@@ -71,7 +71,6 @@ class Sleep {
     let finalIndex = finalArr.findIndex(function(elem) {
       return elem.data <= 3;
     });
-    console.log(finalArr.slice(0, finalIndex));
     return finalArr.slice(0, finalIndex);
   }
 

@@ -10,7 +10,7 @@ describe('hydroRepo', () => {
   let userHydrationData = hydrationSampleData.filter(data => data.userID === id); 
 
   beforeEach(() => {
-  hydroRepo = new HydroRepo(hydrationSampleData);
+    hydroRepo = new HydroRepo(hydrationSampleData);
   });
 
   it('should be a function', () => {

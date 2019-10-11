@@ -32,7 +32,7 @@ describe('sleep', function() {
   });
 
   it('should be able to calculate the average sleep quality for all users', function() {
-    expect(sleep.showAllUserSleepQual(sleepData)).to.equal(2.6);
+    expect(sleep.showAllUserSleep('sleepQuality', sleepData)).to.equal(2.6);
   });
 
   it('should show sleep quality for any given week for a specific user', function() {
@@ -44,10 +44,29 @@ describe('sleep', function() {
   });
 
   it('should return an array of user IDs for any users who had an average sleepQuality over 3 for the specified dates', function() {
-    expect(sleep.findBestSleepers('2019/06/20', sleepData2)).to.equal();
+    expect(sleep.findBestSleepers('2019/06/20', sleepData2)).to.deep.equal([ { userID: 48, data: 3.97 },
+      { userID: 37, data: 3.86 },
+      { userID: 44, data: 3.8 },
+      { userID: 43, data: 3.74 },
+      { userID: 17, data: 3.66 },
+      { userID: 12, data: 3.51 },
+      { userID: 7, data: 3.46 },
+      { userID: 32, data: 3.43 },
+      { userID: 18, data: 3.39 },
+      { userID: 19, data: 3.39 },
+      { userID: 6, data: 3.3 },
+      { userID: 36, data: 3.29 },
+      { userID: 49, data: 3.21 },
+      { userID: 20, data: 3.2 },
+      { userID: 8, data: 3.1 },
+      { userID: 23, data: 3.03 } ]);
   });
 
   it('should find the users who slept the most on any given day', function() {
     expect(sleep.findSleepiestUsers('2019/06/15', sleepData)).to.deep.equal([3, 6, 9, 2, 1])
+  });
+
+  it('should be able to calculate the average hours slept for all users', function() {
+    expect(sleep.showAllUserSleep('hoursSlept', sleepData)).to.equal(6.06);
   });
 });

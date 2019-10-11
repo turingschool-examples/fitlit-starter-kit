@@ -22,14 +22,14 @@ class Sleep {
     });
     return data;
   }
-  showAllUserSleepQual(sleepData) {
-    let sleepQualTotal = 0;
+  showAllUserSleep(key, sleepData) {
+    let sleepKeyTotal = 0;
     let users = 0;
     sleepData.forEach(function(elem) {
-      sleepQualTotal += elem.sleepQuality;
+      sleepKeyTotal += elem[key];
       users++;
     });
-    return Math.round((sleepQualTotal / users) * 100) / 100;
+    return Math.round((sleepKeyTotal / users) * 100) / 100;
   }
   findSleepWeek(id, date, key, sleepData) {
     let week = [];
@@ -44,8 +44,6 @@ class Sleep {
     }
     return week;
   }
-
-  // Not Finished
   findBestSleepers(week, sleepData) {
     let userList = [];
     let finalArr = [];
@@ -55,7 +53,7 @@ class Sleep {
     for (let i = userIndex; i < (userIndex + 50 * 7); i++) {
       userList.push({ 'userID': sleepData[i].userID, 'weeklySleep': sleepData[i].sleepQuality});
       }
-    let userSleepObj = function() {
+    let userSleepData = function() {
       return userList.reduce((acc, user) => {
         if(!acc[user.userID]) {
           acc[user.userID] = [];
@@ -64,7 +62,7 @@ class Sleep {
         return acc;
       }, [])
     };
-    let averageQual =       userSleepObj().forEach(function(elem, i) {
+    let averageQual = userSleepData().forEach(function(elem, i) {
       return finalArr.push({'userID': i,  'data':     elem.reduce((acc, val) => acc + val, 0)
       });
     });
@@ -76,8 +74,6 @@ class Sleep {
     console.log(finalArr.slice(0, finalIndex));
     return finalArr.slice(0, finalIndex);
   }
-
-  //
 
   findSleepiestUsers(date, sleepData) {
     let userList = [];

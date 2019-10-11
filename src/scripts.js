@@ -16,7 +16,6 @@ $(document).ready(function() {
     user = new User(currentUser);
     $('.login-header, .page-header, .empty-board, .board').fadeToggle(100);
     fillUserInfo();
-    fillSleepWidget();
     getFriends(user.findFriends(userRepository));
   });
 
@@ -41,8 +40,8 @@ $(document).ready(function() {
 
   function getFriends(friends) {
     friends.forEach(friend => {
-      $('.friend-names').append(`<img src="" alt="">
-      <h5>Name: ${friend.name}</h5>
+      $('.friend-names').append(`
+      <h5>${friend.name}</h5>
       <p>step goal: ${friend.dailyStepGoal}</p>`);
     })
   }

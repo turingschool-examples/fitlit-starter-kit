@@ -17,6 +17,7 @@ $(document).ready(function() {
     $('.login-header, .page-header, .empty-board, .board').fadeToggle(100);
     fillUserInfo();
     getFriends(user.findFriends(userRepository));
+    showHydration()
   });
 
   $('.bio-info').on('click', function () {
@@ -44,5 +45,12 @@ $(document).ready(function() {
       <h5>${friend.name}</h5>
       <p>step goal: ${friend.dailyStepGoal}</p>`);
     })
+  }
+
+  function showHydration() {
+    const currentHydration = hydrationData.find(hydro => {
+      return hydro.userID === userRepository.currentUserId
+    })
+    $('.current-hydro').text(currentHydration.numOunces)
   }
 });

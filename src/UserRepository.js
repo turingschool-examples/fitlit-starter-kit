@@ -1,6 +1,6 @@
 class UserRepository {
-  constructor(data) {
-    this.users = data;
+  constructor() {
+    this.users = [];
   }
   getUser(id) {
     return this.users.find(function(user) {

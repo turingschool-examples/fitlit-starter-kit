@@ -48,6 +48,7 @@ class Sleep {
   // Not Finished
   findBestSleepers(week, sleepData) {
     let userList = [];
+    let finalArr = [];
     let userIndex = sleepData.findIndex(function(elem) {
       return elem.date === week;
     });
@@ -62,7 +63,11 @@ class Sleep {
         acc[user.userID].push(user.weeklySleep);
         return acc;
       }, {});
+      for (let i = 0; i < userSleepObj.length; i++) {
+        finalArr.push({'userID': Object.keys(userSleepObj[i]), 'values': userSleepObj[i][i + 1]});
+      }
     };
+    console.log(finalArr);
     console.log(userSleepObj());
     return userList;
   }

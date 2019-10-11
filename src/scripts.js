@@ -53,4 +53,4 @@ $(document).ready(function() {
     })
     $('.current-hydro').text(currentHydration.numOunces)
   }
-})
+});

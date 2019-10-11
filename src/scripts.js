@@ -1,4 +1,3 @@
-
 const data = {
   users: userData,
   hydration: hydrationData,
@@ -7,6 +6,7 @@ const data = {
 }
 let userRepository = new UserRepository(data);
 let user;
+
 $(document).ready(function() {
   $('.login button').on('click', function() {
     const nameGiven = `${$('.first-name').val()} ${$('.last-name').val()}`;
@@ -14,10 +14,11 @@ $(document).ready(function() {
     user = new User(currentUser);
     $('.login-header').fadeOut(100);
     $('.page-header').fadeIn(100);
-    console.log(user.name);
     fillUserInfo();
     getFriends(user.findFriends(userRepository));
+    showHydration()
   });
+
   $('.bio-info').on('click', function () {
     $('.bio-info main').fadeToggle();
   });
@@ -38,7 +39,6 @@ $(document).ready(function() {
   //   }, 2000);
   // });
   function fillUserInfo() {
-    console.log(user);
     $('.page-header header h2').text(user.getFirstName());
     $('.info .name').text(user.name);
     $('.info .email').text(user.email);
@@ -53,6 +53,13 @@ function getFriends(friends) {
   friends.forEach(friend => {
     $('.friend-names').append(`<img src="" alt="">
     <h5>Name: ${friend.name}</h5>
-    <p>step goal: ${friend.dailyStepGoal}</p>`);
+    <p>Step Goal: ${friend.dailyStepGoal}</p>`);
   })
+}
+
+function showHydration() {
+  const currentHydration = hydrationData.find(hydro => {
+    return hydro.userID === userRepository.currentUserId
+  })
+  $('.current-hydro').text(currentHydration.numOunces)
 }

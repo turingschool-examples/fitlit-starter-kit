@@ -27,7 +27,7 @@ function startApp() {
   var userNowId = pickUser();
   let userNow = getUserById(userNowId, userRepo);
   addInfoToSidebar(userNow, userRepo);
-  addHydrationInfo(userNowId, hydrationRepo, today);
+  addHydrationInfo(userNowId, hydrationRepo, today, userRepo);
 }
 
 function makeUsers(array) {
@@ -46,6 +46,7 @@ function getUserById(id, listRepo) {
   return listRepo.getDataFromID(id);
 };
 
+
 function addInfoToSidebar(user, userStorage) {
   sidebarName.innerText = user.name;
   headerText.innerText = `${user.getFirstName()}'s Activity Tracker`;
@@ -57,12 +58,16 @@ function addInfoToSidebar(user, userStorage) {
 };
 
 function makeFriendHTML(user, userStorage) {
-  return user.getFriendsNames(userStorage).map((friendName) => (`<li>${friendName}</li>`));
+  return user.getFriendsNames(userStorage).map(friendName => `<li>${friendName}</li>`).join('');
 }
 //
-function addHydrationInfo(id, hydrationInfo, dateString) {
+function addHydrationInfo(id, hydrationInfo, dateString, userStorage) {
   hydrationToday.innerText = `You drank ${hydrationInfo.calculateDailyOunces(id, dateString)} oz water today. Your average water intake is ${hydrationInfo.calculateAverageOunces(id)} oz per day`;
-  // hydrationThisWeek.innerText =
+  hydrationThisWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(id, hydrationInfo, userStorage));
+}
+
+function makeHydrationHTML(id, hydrationInfo, userStorage) {
+  return hydrationInfo.calculateWeeklyOunces(userStorage, id).map(drinkData => `<li>On ${drinkData}oz water</li>`).join('');
 }
 
 startApp();

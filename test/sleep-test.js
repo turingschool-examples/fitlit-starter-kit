@@ -2,9 +2,10 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Sleep = require('../src/Sleep');
+const UserRepo = require('../src/User-repo');
 const User = require('../src/User');
 
-describe.only('Sleep' function() {
+describe('Sleep', function() {
     let sleepData;
     let sleep;
 
@@ -141,36 +142,37 @@ describe.only('Sleep' function() {
         "date": "2019/06/15",
         "hoursSlept": 9,
         "sleepQuality": 3.1
-      }];
+      },];
 
     sleep = new Sleep(sleepData);
-  })
+  });
+
   it('should take in a list of data', function() {
-    expect(sleep.sleepData[1].userID).to.equal(1);
+    expect(sleep.sleepData[1].userID).to.equal(2);
     expect(sleep.sleepData[3].hoursSlept).to.equal(5.4);
-    expect(sleep.sleepData[6].sleepQuality).to.equal(2.6);
+    expect(sleep.sleepData[6].sleepQuality).to.equal(3);
     expect(sleep.sleepData[7].date).to.equal('2018/07/23');
   });
 
   it('should find the average sleep hours per day for a user', function() {
-    expect(calculateAverageSleep(3)).to.equal(3);
+    expect(sleep.calculateAverageSleep(3)).to.equal(3);
   });
 
   it('should find the average sleep quality per day for a user', function() {
-    expect(calculateAverageSleepQuality(3)).to.equal(2);
+    expect(sleep.calculateAverageSleepQuality(3)).to.equal(2);
   });
 
   it('should find the sleep hours for a user on a specified date', function() {
-    expect(sleep.calculateDailySleep(2, "2019/06/15")).to.equal(7);
+    expect(sleep.calculateDailySleep(2, "2017/06/15")).to.equal(7);
     expect(sleep.calculateDailySleep(4, "2019/06/21")).to.equal(6.1);
   });
 
   it('should find the sleep quality for a user on a specified date', function() {
-    expect(sleep.calculateDailySleepQuality(2, "2019/06/15")).to.equal(3.5);
-    expect(sleep.calculateDailySleepQuality(4, "2019/06/21")).to.equal(4.7);
+    expect(sleep.calculateDailySleepQuality(2, "2017/06/15")).to.equal(4.7);
+    expect(sleep.calculateDailySleepQuality(4, "2019/06/21")).to.equal(3.5);
   });
 
-  it('should find water intake by day for its week', function() {
+  it('should find sleep by day for its week', function() {
     const user3 = new User({id: 3,
           name: "The Rock",
           address: "1236 Awesome Street, Denver CO 80301-1697",
@@ -190,8 +192,10 @@ describe.only('Sleep' function() {
         });
     const users = [user3, user4];
     const userRepo = new UserRepo(users);
-    console.log(sleep.calculateWeekSleep('2019/06/18', 4, userRepo));
+    console.log(userRepo.makeSortedUserArray(4, sleepData))
+    console.log(sleep.calculateWeekSleep('2017/06/15', 4, userRepo));
     expect(sleep.calculateWeekSleep('2019/06/18', 4, userRepo)[0]).to.eql('2019/06/18: 7.9');
-    expect(sleep.calculateWeekSleep('2019/06/18', 4, userRepo)[6]).to.eql('2019/04/15: 36');
+    expect(sleep.calculateWeekSleep('2019/06/18', 4, userRepo)[6]).to.eql('2017/06/15: 5.4');
   })
-})
+
+});

@@ -1,8 +1,3 @@
-const data = require('../data/sleep');
-const sleepData = data.sleepData;
-const scripts = require('./scripts');
-
-const User = require('../src/User');
 
 class Sleep {
   constructor(sleepData) {
@@ -22,11 +17,12 @@ class Sleep {
   }
   calculateDailySleep(id, date) {
     let findSleepByDate = this.sleepData.find((data) => id === data.userID && date === data.date);
-    return findOuncesByDate.hoursSlept;
+    console.log(findSleepByDate);
+    return findSleepByDate.hoursSlept;
   }
   calculateDailySleepQuality(id, date) {
     let findSleepQualityByDate = this.sleepData.find((data) => id === data.userID && date === data.date);
-    return findOuncesByDate.sleepQuality;
+    return findSleepQualityByDate.sleepQuality;
   }
   calculateWeekSleep(date, id, userRepo) {
     return userRepo.getWeekFromDate(date, id, this.sleepData).map((data) => `${data.date}: ${data.hoursSlept}`);

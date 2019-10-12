@@ -65,22 +65,61 @@ class Sleep {
     return parseFloat(avgHrsSlept.toFixed(2))
   }
 
-//   findUsersWithAvgSleepQualityMoreThanThreeOverSpecificWeek(date) {
-//
-//     calcSleepQualityforSpecificWeek(date)
-//       sleepData.sort((a, b) => {
-//         return a.userID - b.userID
-//       });
-//       sleepData.sort((a, b) => {
-//         return a.date - b.date
-//       });
-//
-//
-// // Sort by ID then by date
-// // PseudoCode: OK. Make an array of all users average sleep quality for X week (7 dates)
-// // Figure out a way by using just day one to get the next six days from the seed
-// // Part two seems easier
-//   }
+  findUsersWithAvgSleepQualityMoreThanThreeOverFinalWeek() {
+    let allUserSleepDataForFinalWeek = this.currentSleepData.slice(-350);
+    let finalWeekObject = allUserSleepDataForFinalWeek.reduce((acc, userBlock) => {
+      if (!acc[userBlock.userID]) {
+        acc[userBlock.userID] = []
+      }
+      return acc
+    }, {});
+
+    let keysForFinalWeekObject = Object.keys(finalWeekObject);
+    let keysObject = keysForFinalWeekObject.reduce((acc, num) => {
+      if (!acc[num]) {
+        acc[num] = parseInt(num)
+      }
+      return acc
+    }, {});
+
+    allUserSleepDataForFinalWeek.forEach(element => {
+      if (element.userID === keysObject[element.userID]) {
+        finalWeekObject[element.userID].push(element.sleepQuality)
+      }
+    });
+
+    console.log(finalWeekObject);
+    let finalObjectValues = Object.values(finalWeekObject);
+    console.log(finalObjectValues);
+    let averages = finalObjectValues.map(element => {
+      return (element[0] + element[1] + element[2] + element[3] + element[4] + element[5] + element[6]) / 7
+    });
+
+    console.log(averages);
+    averages.forEach(avg => {
+      finalWeekObject[averages.indexOf(avg) + 1] = parseFloat(avg.toFixed(2))
+    });
+
+    console.log(finalWeekObject);
+    let finishedObjectKeys = Object.keys(finalWeekObject);
+    let bestSleeperIds = finishedObjectKeys.filter(key => {
+      return finalWeekObject[key] > 3
+    });
+
+    console.log(bestSleeperIds);
+    let parsedBestSleeperIds = bestSleeperIds.map(id => {
+      return parseInt(id)
+    });
+
+    console.log(parsedBestSleeperIds);
+    return this.userDataForSleep.reduce((acc, userBlock) => {
+      if (parsedBestSleeperIds.includes(userBlock.id)) {
+         acc.push(userBlock.name)
+      }
+
+      return acc
+    }, []);
+  }
 
   findUsersSleptMostHoursIdentifiedByDate(date) {
     let allSleepDataOnSpecificDay = this.currentSleepData.filter(userBlock => {
@@ -92,7 +131,7 @@ class Sleep {
       return acc
     }, []);
 
-    var theMostHoursSlept =  Math.max(...hoursSleptForAllOnSpecificDay);
+    let theMostHoursSlept =  Math.max(...hoursSleptForAllOnSpecificDay);
 
     let deepestSleepers = allSleepDataOnSpecificDay.filter(userBlock => {
       return userBlock.hoursSlept === theMostHoursSlept
@@ -117,7 +156,6 @@ class Sleep {
     });
 
     let bestSleepQuality =  Math.max(...sleepQualities);
-
     let blockWithBestQualitySleep = this.currentUserSleepData.find(userBlock => {
       return userBlock.sleepQuality === bestSleepQuality
     });
@@ -125,7 +163,6 @@ class Sleep {
     return blockWithBestQualitySleep.date
   }
 }
-
 
 if (typeof module !== 'undefined') {
     module.exports = Sleep;

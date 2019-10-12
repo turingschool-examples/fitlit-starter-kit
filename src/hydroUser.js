@@ -19,7 +19,7 @@ class HydroUser {
   }
 
   getDailyOzPerWeek() {
-   return this.hydrationData.slice(-7);
+    return this.hydrationData.slice(-8);
   }
 }
 

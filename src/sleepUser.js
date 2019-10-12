@@ -21,16 +21,11 @@ class SleepUser {
     }, 0)
   }
 
-  getDailySleepByWeek(date, property) {
+  getDailySleepByWeek(date) {
     let dataDate = this.sleepData.map(data => data.date);
     let dateIndex = dataDate.lastIndexOf(date);
     let weekData = this.sleepData.slice(dateIndex - 7, dateIndex + 1);
-    let weekHoursSlept = weekData.map(day => {
-      day = { ...day,};
-      delete day[property];
-      return day;
-    })
-    return weekHoursSlept;
+    return weekData;
   }
 
   getAvgHoursSleepByWeek(date, property) {

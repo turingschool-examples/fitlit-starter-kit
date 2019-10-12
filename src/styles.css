@@ -18,6 +18,7 @@
 body {
   font-family: 'Titillium Web', sans-serif;
   width: 100%;
+  background-color: #EBECF0;
 }
 
 .main-login-page {
@@ -45,7 +46,8 @@ body {
     "aside main";
   grid-template-columns: 1fr 4fr;
   grid-template-rows: .5fr 10fr;
-  height: 1200px;
+  /* height: 1200px; */
+  height: 100vh;
 }
 
 header {
@@ -94,7 +96,8 @@ aside {
   width: 97%;
   margin: 0 auto;
   background-color: #D1DCE9;
-  height: 1200px;
+  /* height: 1200px; */
+  height: 100%;
 }
 
 .aside-fitlit-logo {
@@ -168,6 +171,11 @@ li {
   margin: auto;
 }
 
+.aside-user-info-div {
+  height: 83%;
+  overflow: auto;
+}
+
 .aside-trend-div {
   border: 2px solid black;
   border-radius: 5px;
@@ -178,7 +186,8 @@ li {
 }
 
 .main-user-stats {
-  height: 1060px;
+  /* height: 1060px; */
+  height: 100%;
   overflow: auto;
 }
 
@@ -192,7 +201,6 @@ li {
     "weekOz weekActivity allTimeSleep";
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
-  background-color: #EBECF0;
   padding: .70%;
 }
 

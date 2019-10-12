@@ -23,6 +23,8 @@ function clickLoginButton(event) {
     addOzToday();
     addWeeklyOzByDay();
     addSleepDataforDay();
+    addWeeklySleepDataByDay();
+    addAllTimeSleepAvg();
   }
 }
 
@@ -107,16 +109,31 @@ function addSleepDataforDay() {
 }
 
 function addWeeklySleepDataByDay() {
+  let weeklyUserSleepHours = sleepUser.getDailySleepByWeek('2019/06/22');
+  weeklyUserSleepHours.forEach(day => {
+    $("#card-weekly-sleep-header").after(`
+      <section class="section-style">
+        <h3>${day.date}</h3>
+        <section class="sleep-weekly-data-section">
+          <div>Hours Slept: ${day.hoursSlept}</div>
+          <div>Quality of Sleep: ${day.sleepQuality}</div>
+        </section>
+      </section>`)
+    })
+}
 
-
- // let weeklyUserOz =  hydroUser.getDailyOzPerWeek();
- //  weeklyUserOz.forEach(day => {
- //    $("#card-weekly-oz-header").after(`
- //    <section class="section-style">
- //      <h3>${day.date}</h3>
- //      <p>${day.numOunces}</p>
- //    </section>`);
- //  })
+function addAllTimeSleepAvg() {
+  let allTimeAvgHoursSlept = sleepUser.calcAvgSleepPerDay('hoursSlept');
+  let allTimeAvgSleepQuality = sleepUser.calcAvgSleepPerDay('sleepQuality');
+  $("#card-sleep-all-time-avg").after(`
+    <section class="section-style">
+      <h3>Total Average Hours Slept/Night</h3>
+      <p>${allTimeAvgHoursSlept}</p>
+    </section>
+    <section class="section-style">
+      <h3>Total Average Sleep Quality/Night</h3>
+      <p>${allTimeAvgSleepQuality}</p>
+    </section>`);
 }
 
 
@@ -139,17 +156,19 @@ function displayUserPage() {
       <h2>GET LIT!</h2>
       <h2 id="aside-user-name"></h2>
       </div>
-      <section class="aside-style">
-        <h3 class="aside-user-info-header" id="aside-user-info-header">User Info</h3>
-        <button class="user-logout-button">Log Out</button>
-      </section>
-      <section class="aside-style" id="aside-user-step-comparison">
-      </section>
-      <section class="aside-style">
-        <h3>Trends</h3>
-        <div class="aside-trend-div">Trend 1</div>
-        <div class="aside-trend-div">Trend 2</div>
-      </section>
+      <div class="aside-user-info-div">
+        <section class="aside-style">
+          <h3 class="aside-user-info-header" id="aside-user-info-header">User Info</h3>
+          <button class="user-logout-button">Log Out</button>
+        </section>
+        <section class="aside-style" id="aside-user-step-comparison">
+        </section>
+        <section class="aside-style">
+          <h3>Trends</h3>
+          <div class="aside-trend-div">Trend 1</div>
+          <div class="aside-trend-div">Trend 2</div>
+        </section>
+      </div>
     </aside>
     <main class="main-user-stats">
       <div class="main-user-stats-div">
@@ -226,67 +245,10 @@ function displayUserPage() {
           <h2 id="card-sleep-daily-data">Previous Night's Sleep Stats</h2>
         </article>
         <article class="card-style card-weekly-sleep">
-          <h2>Seven Days of Sleep</h2>
-          <section class="section-style">
-            <h3>day one</h3>
-            <section class="sleep-weekly-data-section">
-              <div>hours slept</div>
-              <div>quality of sleep</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day two</h3>
-            <section class="sleep-weekly-data-section">
-              <div>hours slept</div>
-              <div>quality of sleep</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day three</h3>
-            <section class="sleep-weekly-data-section">
-              <div>hours slept</div>
-              <div>quality of sleep</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day four</h3>
-            <section class="sleep-weekly-data-section">
-              <div>hours slept</div>
-              <div>quality of sleep</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day five</h3>
-            <section class="sleep-weekly-data-section">
-              <div>hours slept</div>
-              <div>quality of sleep</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day six</h3>
-            <section class="sleep-weekly-data-section">
-              <div>hours slept</div>
-              <div>quality of sleep</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day seven</h3>
-            <section class="sleep-weekly-data-section">
-              <div>hours slept</div>
-              <div>quality of sleep</div>
-            </section>
-          </section>
+          <h2 id="card-weekly-sleep-header">Seven Days of Sleep</h2>
         </article>
         <article class="card-style card-all-time-sleep">
-          <h2>All Time Sleep Stats</h2>
-          <section class="section-style">
-          <h3>all time avg hours slept</h3>
-          <div>stats here</div>
-          </section>
-          <section class="section-style">
-            <h3>all time avg sleep quality</h3>
-            <div>stats here</div>
-          </section>
+          <h2 id="card-sleep-all-time-avg">All Time Sleep Stats</h2>
         </article>
       </div>
     </main>

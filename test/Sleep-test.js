@@ -2,6 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const User = require('../src/User');
 const mockUserData = require('../mock/mockUserData');
+const mockUserData2 = require('../mock/mockUserData2');
 const mockSleepData = require('../mock/mockSleepData');
 const Sleep = require('../src/Sleep');
 
@@ -60,6 +61,8 @@ describe('Sleep', () => {
         expect(sleep.calculateAvgSleepQualityAllUsers()).to.equal(8.26);
     });
 
-
-
+    it('should return the deepest sleepers for a specific date', () => {
+      sleep1 = new Sleep(mockSleepData, 1, mockUserData2);
+        expect(sleep1.findUsersSleptMostHoursIdentifiedByDate("2019/06/15")).to.eql(["Herminia Witting"]);
+    });
 });

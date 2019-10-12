@@ -1,10 +1,11 @@
+const User = require('../src/User');
+
 class Sleep {
-  constructor(sleepData, userId) {
+  constructor(sleepData, userId, userData) {
     this.currentSleepData = sleepData;
     this.userID = userId;
     this.currentUserSleepData;
-    // this.hoursSlept;
-    // this.sleepQuality;
+    this.userDataForSleep = userData
   }
 
   findCurrentUserSleepData() {
@@ -32,16 +33,16 @@ class Sleep {
   }
 
   returnHoursSleptByUserOnSpecificDate(date) {
-    let sleepDataOnSpecificDate = this.currentUserSleepData.find(user => {
-      return (user.date === date)
+    let sleepDataOnSpecificDate = this.currentUserSleepData.find(userBlock => {
+      return (userBlock.date === date)
     });
 
     return sleepDataOnSpecificDate.hoursSlept
   }
 
   returnSleepQualityByUserOnSpecificDate(date) {
-    let sleepQualityOnSpecificDate = this.currentUserSleepData.find(user => {
-      return (user.date === date)
+    let sleepQualityOnSpecificDate = this.currentUserSleepData.find(userBlock => {
+      return (userBlock.date === date)
     });
 
     return sleepQualityOnSpecificDate.sleepQuality
@@ -51,6 +52,7 @@ class Sleep {
     let sevenDaySleepData = this.currentUserSleepData.map(day => {
       return day.hoursSlept
     });
+
     return sevenDaySleepData.slice(-7)
   }
 
@@ -59,16 +61,54 @@ class Sleep {
       acc += dataBlock.hoursSlept;
       return acc
     }, 0)/this.currentSleepData.length;
-    
+
     return parseFloat(avgHrsSlept.toFixed(2))
   }
 
-  findUsersWithAvgSleepQualityMoreThanThreeOverSpecificWeek() {
+//   findUsersWithAvgSleepQualityMoreThanThreeOverSpecificWeek(date) {
+//
+//     calcSleepQualityforSpecificWeek(date)
+//       sleepData.sort((a, b) => {
+//         return a.userID - b.userID
+//       });
+//       sleepData.sort((a, b) => {
+//         return a.date - b.date
+//       });
+//
+//
+// // Sort by ID then by date
+// // PseudoCode: OK. Make an array of all users average sleep quality for X week (7 dates)
+// // Figure out a way by using just day one to get the next six days from the seed
+// // Part two seems easier
+//   }
 
-  }
+  findUsersSleptMostHoursIdentifiedByDate(date) {
+    let allSleepDataOnSpecificDay = this.currentSleepData.filter(userBlock => {
+      return userBlock.date === date
+    });
 
-  findUsersSleptMostHoursIdentifiedByDate() {
+    let hoursSleptForAllOnSpecificDay = allSleepDataOnSpecificDay.reduce((acc, userBlock) => {
+      acc.push(userBlock.hoursSlept);
+      return acc
+    }, []);
 
+    var theMostHoursSlept =  Math.max(...hoursSleptForAllOnSpecificDay);
+
+    let deepestSleepers = allSleepDataOnSpecificDay.filter(userBlock => {
+      return userBlock.hoursSlept === theMostHoursSlept
+    });
+
+    let idsForDeepestSleepers = deepestSleepers.reduce((acc, userBlock) => {
+      acc.push(userBlock.userID);
+      return acc
+    }, []);
+
+    return this.userDataForSleep.reduce((acc, userBlock) => {
+      if (idsForDeepestSleepers.includes(userBlock.id)) {
+         acc.push(userBlock.name)
+      }
+      return acc
+    }, []);
   }
 
   findDateUserSleptBest() {

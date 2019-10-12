@@ -6,6 +6,7 @@ const User = require('../src/User');
 
 describe('User', function() {
     let user;
+    let user2;
     beforeEach(() => {
       user = new User({
         'id': 1,
@@ -77,4 +78,23 @@ describe('User', function() {
     ]
     expect(user.addDailyOunces("2019/06/15")).to.equal(2);
   });
+  describe('updateSleep', function() {
+    beforeEach(() => {
+      user.updateSleep("2019/06/15", 7, 4.7);
+      user.updateSleep("2019/07/14", 6, 4);
+      user.updateSleep("2019/08/04", 8, 5.4);
+    })
+    it('should update user\'s hours of sleep record', function() {
+      expect(user.sleepHoursRecord).to.deep.equal([{"2019/08/04": 8}, {"2019/07/14": 6}, {"2019/06/15": 7}]);
+    });
+    it('should update user\'s quality of sleep record', function() {
+      expect(user.sleepQualityRecord.length).to.equal(3);
+    });
+    it('should update user\'s average hours of sleep', function() {
+      expect(user.hoursSleptAverage).to.equal(7);
+    });
+    it('should update user\'s average quality of sleep', function() {
+      expect(user.sleepQualityAverage).to.equal(4.7);
+    });
+  })
 });

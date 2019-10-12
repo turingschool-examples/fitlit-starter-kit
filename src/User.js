@@ -35,6 +35,20 @@ class User {
       return sum
     }, 0)
   }
+  updateSleep(date, hours, quality) {
+    this.sleepHoursRecord.unshift({[date]: hours});
+    this.sleepQualityRecord.unshift({[date]: quality});
+    if(this.sleepHoursRecord.length) {
+      this.hoursSleptAverage = (hours + (this.hoursSleptAverage * (this.sleepHoursRecord.length - 1))) / this.sleepHoursRecord.length;
+    } else {
+      this.hoursSleptAverage = hours;
+    }
+    if(this.sleepQualityRecord.length) {
+      this.sleepQualityAverage = (quality + (this.sleepQualityAverage * (this.sleepQualityRecord.length - 1))) / this.sleepQualityRecord.length;
+    } else {
+      this.sleepQualityAverage = quality;
+    }
+  }
 }
 
 if (typeof module !== 'undefined') {

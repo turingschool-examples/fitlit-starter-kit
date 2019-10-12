@@ -197,15 +197,15 @@ h4 {
   background-image: url(../images/steps-goback.png);
 }
 
-#steps-info-button {
+.steps-info-button {
   background-image: url(../images/steps-info.png);
 }
 
-#steps-friends-button {
+.steps-friends-button {
   background-image: url(../images/steps-friends.png);
 }
 
-#steps-calendar-button {
+.steps-calendar-button {
   background-image: url(../images/steps-calendar.png);
 }
 
@@ -213,15 +213,15 @@ h4 {
   background-image: url(../images/hydration-goback.png);
 }
 
-#hydration-info-button {
+.hydration-info-button {
   background-image: url(../images/hydration-info.png);
 }
 
-#hydration-friends-button {
+.hydration-friends-button {
   background-image: url(../images/hydration-friends.png);
 }
 
-#hydration-calendar-button {
+.hydration-calendar-button {
   background-image: url(../images/hydration-calendar.png);
 }
 
@@ -229,15 +229,15 @@ h4 {
   background-image: url(../images/stairs-goback.png);
 }
 
-#stairs-info-button {
+.stairs-info-button {
   background-image: url(../images/stairs-info.png);
 }
 
-#stairs-friends-button {
+.stairs-friends-button {
   background-image: url(../images/stairs-friends.png);
 }
 
-#stairs-calendar-button {
+.stairs-calendar-button {
   background-image: url(../images/stairs-calendar.png);
 }
 
@@ -245,15 +245,15 @@ h4 {
   background-image: url(../images/sleep-goback.png);
 }
 
-#sleep-info-button {
+.sleep-info-button {
   background-image: url(../images/sleep-info.png);
 }
 
-#sleep-friends-button {
+.sleep-friends-button {
   background-image: url(../images/sleep-friends.png);
 }
 
-#sleep-calendar-button {
+.sleep-calendar-button {
   background-image: url(../images/sleep-calendar.png);
 }
 

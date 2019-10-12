@@ -30,20 +30,6 @@ let stepsFriendAverageStepGoal = document.querySelector('#steps-friend-average-s
 let hydrationUserOuncesToday = document.querySelector('#hydration-user-ounces-today');
 let dailyOz = document.querySelectorAll('.daily-oz');
 
-//BUTTONS
-let stepsInfoButton = document.querySelector('#steps-info-button');
-let stepsFriendsButton = document.querySelector('#steps-friends-button');
-let stepsCalendarButton = document.querySelector('#steps-calendar-button');
-let hydrationInfoButton = document.querySelector('#hydration-info-button');
-let hydrationFriendsButton = document.querySelector('#hydration-friends-button');
-let hydrationCalendarButton = document.querySelector('#hydration-calendar-button');
-let stairsInfoButton = document.querySelector('#stairs-info-button');
-let stairsFriendsButton = document.querySelector('#stairs-friends-button');
-let stairsCalendarButton = document.querySelector('#stairs-calendar-button');
-let sleepInfoButton = document.querySelector('#sleep-info-button');
-let sleepFriendsButton = document.querySelector('#sleep-friends-button');
-let sleepCalendarButton = document.querySelector('#sleep-calendar-button');
-
 // CARDS
 let stepsMainCard = document.querySelector('#steps-main-card');
 let stepsInfoCard = document.querySelector('#steps-info-card');
@@ -61,85 +47,55 @@ let sleepMainCard = document.querySelector('#sleep-main-card');
 let sleepInfoCard = document.querySelector('#sleep-info-card');
 let sleepFriendsCard = document.querySelector('#sleep-friends-card');
 let sleepCalendarCard = document.querySelector('#sleep-calendar-card');
+let mainPage = document.querySelector('main');
 
 // EVENT LISTENERS
-stepsInfoButton.addEventListener('click', showStepsInfo);
-stepsFriendsButton.addEventListener('click', showStepsFriends);
-stepsCalendarButton.addEventListener('click', showStepsCalendar);
-hydrationInfoButton.addEventListener('click', showHydrationInfo);
-hydrationFriendsButton.addEventListener('click', showHydrationFriends);
-hydrationCalendarButton.addEventListener('click', showHydrationCalendar);
-stairsInfoButton.addEventListener('click', showStairsInfo);
-stairsFriendsButton.addEventListener('click', showStairsFriends);
-stairsCalendarButton.addEventListener('click', showStairsCalendar);
-sleepInfoButton.addEventListener('click', showSleepInfo);
-sleepFriendsButton.addEventListener('click', showSleepFriends);
-sleepCalendarButton.addEventListener('click', showSleepCalendar);
+mainPage.addEventListener('click', showInfo);
 
-// FLIPPING CARDS FUNCTIONS
-function showStepsInfo() {
-  stepsMainCard.classList.add('hide');
-  stepsInfoCard.classList.remove('hide');
+//FLIP CARD CLEAN
+function showInfo() {
+  if (event.target.classList.contains('steps-info-button')) {
+    flipCard(stepsMainCard, stepsInfoCard);
+  }
+  if (event.target.classList.contains('steps-friends-button')) {
+    flipCard(stepsMainCard, stepsFriendsCard);
+  }
+  if (event.target.classList.contains('steps-calendar-button')) {
+    flipCard(stepsMainCard, stepsCalendarCard);
+  }
+  if (event.target.classList.contains('hydration-info-button')) {
+    flipCard(hydrationMainCard, hydrationInfoCard);
+  }
+  if (event.target.classList.contains('hydration-friends-button')) {
+    flipCard(hydrationMainCard, hydrationFriendsCard);
+  }
+  if (event.target.classList.contains('hydration-calendar-button')) {
+    flipCard(hydrationMainCard, hydrationCalendarCard);
+  }
+  if (event.target.classList.contains('stairs-info-button')) {
+    flipCard(stairsMainCard, stairsInfoCard);
+  }
+  if (event.target.classList.contains('stairs-friends-button')) {
+    flipCard(stairsMainCard, stairsFriendsCard);
+  }
+  if (event.target.classList.contains('stairs-calendar-button')) {
+    flipCard(stairsMainCard, stairsCalendarCard);
+  }
+  if (event.target.classList.contains('sleep-info-button')) {
+    flipCard(sleepMainCard, sleepInfoCard);
+  }
+  if (event.target.classList.contains('sleep-friends-button')) {
+    flipCard(sleepMainCard, sleepFriendsCard);
+  }
+  if (event.target.classList.contains('sleep-calendar-button')) {
+    flipCard(sleepMainCard, sleepCalendarCard);
+  }
 }
 
-function showStepsFriends() {
-  stepsMainCard.classList.add('hide');
-  stepsFriendsCard.classList.remove('hide');
+function flipCard(cardToHide, cardToShow) {
+  cardToHide.classList.add('hide');
+  cardToShow.classList.remove('hide');
 }
-
-function showStepsCalendar() {
-  stepsMainCard.classList.add('hide');
-  stepsCalendarCard.classList.remove('hide');
-}
-
-function showHydrationInfo() {
-  hydrationMainCard.classList.add('hide');
-  hydrationInfoCard.classList.remove('hide');
-}
-
-function showHydrationFriends() {
-  hydrationMainCard.classList.add('hide');
-  hydrationFriendsCard.classList.remove('hide');
-}
-
-function showHydrationCalendar() {
-  hydrationMainCard.classList.add('hide');
-  hydrationCalendarCard.classList.remove('hide');
-}
-
-function showStairsInfo() {
-  stairsMainCard.classList.add('hide');
-  stairsInfoCard.classList.remove('hide');
-}
-
-function showStairsFriends() {
-  stairsMainCard.classList.add('hide');
-  stairsFriendsCard.classList.remove('hide');
-}
-
-function showStairsCalendar() {
-  stairsMainCard.classList.add('hide');
-  stairsCalendarCard.classList.remove('hide');
-}
-
-function showSleepInfo() {
-  sleepMainCard.classList.add('hide');
-  sleepInfoCard.classList.remove('hide');
-}
-
-function showSleepFriends() {
-  sleepMainCard.classList.add('hide');
-  sleepFriendsCard.classList.remove('hide');
-}
-
-function showSleepCalendar() {
-  sleepMainCard.classList.add('hide');
-  sleepCalendarCard.classList.remove('hide');
-}
-
-
-
-
 
 // DATA MANIPULATION
 stepsUserStepsToday.innerText = activityData.find(activity => {

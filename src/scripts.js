@@ -23,9 +23,10 @@ function startApp() {
   makeUsers(userList);
   let userRepo = new UserRepo(userList);
   let hydrationRepo = new Hydration(hydrationData);
-  let today = "2019/09/22"
   var userNowId = pickUser();
   let userNow = getUserById(userNowId, userRepo);
+  let today = makeToday(userRepo, userNowId, hydrationData);
+  let randomHistory = makeRandomDate(userRepo, userNowId, hydrationData);
   addInfoToSidebar(userNow, userRepo);
   addHydrationInfo(userNowId, hydrationRepo, today, userRepo);
 }
@@ -60,7 +61,19 @@ function addInfoToSidebar(user, userStorage) {
 function makeFriendHTML(user, userStorage) {
   return user.getFriendsNames(userStorage).map(friendName => `<li>${friendName}</li>`).join('');
 }
-//
+
+function makeToday(userStorage, id, dataSet) {
+  var sortedArray = userStorage.makeSortedUserArray(id, dataSet);
+  console.log(sortedArray)
+  return sortedArray[0].date;
+}
+
+function makeRandomDate(userStorage, id, dataSet) {
+  var sortedArray = userStorage.makeSortedUserArray(id, dataSet);
+  return sortedArray[Math.floor(Math.random() * sortedArray.length + 1)].date
+
+}
+
 function addHydrationInfo(id, hydrationInfo, dateString, userStorage) {
   hydrationToday.innerText = `You drank ${hydrationInfo.calculateDailyOunces(id, dateString)} oz water today. Your average water intake is ${hydrationInfo.calculateAverageOunces(id)} oz per day`;
   hydrationThisWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(id, hydrationInfo, userStorage));

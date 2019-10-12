@@ -5,6 +5,8 @@ let hydroUser;
 let hydroRepo;
 let sleepRepo;
 let sleepUser;
+let activityRepo;
+let activityUser;
 
 $("#login-page-button").click(clickLoginButton);
 
@@ -16,6 +18,7 @@ function clickLoginButton(event) {
     instantiateUserData(userData);
     instantiateHydroData(hydrationData);
     instantiateSleepData(sleepData);
+    instantiateActivityData(activityData);
     displayUserPage();
     addUserFirstName();
     addUserInfo(user);
@@ -45,6 +48,12 @@ function instantiateSleepData(data) {
   sleepRepo = new SleepRepo(data);
   let userSleepData = sleepRepo.getUserSleepData(user.id);
   sleepUser = new SleepUser(userSleepData);
+}
+
+function instantiateActivityData(data) {
+  activityRepo = new ActivityRepo(data);
+  let userActivityData = activityRepo.getUserActivityData(user.id);
+  activityUser = new ActivityUser(userActivityData);
 }
 
 function displayErrorMessage() {
@@ -136,7 +145,6 @@ function addAllTimeSleepAvg() {
     </section>`);
 }
 
-
 function displayUserPage() {
     $("#main-login-page").remove();
     $("body").html(`
@@ -179,7 +187,7 @@ function displayUserPage() {
           <h2 id="card-weekly-oz-header">Weekly Water Intake</h2>
         </article>
         <article class="card-style card-daily-activity">
-          <h2>Today's Activity</h2>
+          <h2 id="daily-activity-header">Today's Activity</h2>
           <section class="section-style">daily info compared to friends</section>
         </article>
         <article class="card-style card-weekly-activity">

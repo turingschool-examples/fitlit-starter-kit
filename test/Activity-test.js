@@ -68,4 +68,9 @@ describe('Activity', () => {
         activity.findCurrentUserActivityData();
         expect(activity.calculateAvgStairsClimbedOnSpecificDateAllUsers("2019/06/15")).to.equal(19.7);
     });
+
+    it('should find based on date the average number of steps taken for all users', () => {
+        activity.findCurrentUserActivityData();
+        expect(activity.calculateAvgStepsTakenOnSpecificDateAllUsers("2019/06/15")).to.equal(5091);
+    });
 });

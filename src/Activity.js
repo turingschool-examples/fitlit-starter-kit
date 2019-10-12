@@ -57,7 +57,6 @@ class Activity{
     }
     
     filterAllDatesUserCompletedStepGoal() {
-        // For a user, find all the days where they exceeded their step goal
         let allDatesOverStepGoal = []
         let userProfile = this.allUsersData.find(user => {
             return user.id === this.userID

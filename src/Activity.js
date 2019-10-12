@@ -77,12 +77,16 @@ class Activity{
         return mostStairsCLimbed
     }
     
-    findUsersWithAvgSleepQualityMoreThanThreeOverSpecificWeek() {
-        
-    }
-    
-    calculateAvgStairsClimbedOnSpecificDateAllUsers() {
-        
+    calculateAvgStairsClimbedOnSpecificDateAllUsers(date) {
+        let alllUsersOnDate = this.currentActivityData.filter(user => {
+            return user.date === date;
+        })
+        let avgStairsClimbedAllUsers = alllUsersOnDate.reduce((acc, currentElement) => {
+            acc += currentElement.flightsOfStairs;
+            return acc
+        }, 0)
+        let average = avgStairsClimbedAllUsers / alllUsersOnDate.length;
+        return parseFloat(average.toFixed(1))
     }
     
     calculateAvgStepsTakenAllOnSpecificDateAllUsers() {

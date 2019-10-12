@@ -12,7 +12,7 @@ class Hydration {
     let findOuncesByDate = this.hydrationData.find((data) => id === data.userID && date === data.date);
     return findOuncesByDate.numOunces;
   }
-  calculateWeeklyOunces(userRepo, id) {
+  calculateFirstWeekOunces(userRepo, id) {
     return userRepo.getFirstWeek(id, this.hydrationData).map((data) => `${data.date}: ${data.numOunces}`);
   }
 }

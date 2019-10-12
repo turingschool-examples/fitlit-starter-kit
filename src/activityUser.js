@@ -56,6 +56,15 @@ class ActivityUser {
     return stairRecord;
   }
 
+  getMinutesActiveRecord() {
+    let minutesRecord = this.activityData.reduce((acc, day) => {
+      if (day.minutesActive > acc) {
+        acc = day.minutesActive;
+      }
+      return acc;
+    },0)
+    return minutesRecord;
+  }
 }
 
 if (typeof module !== 'undefined') {

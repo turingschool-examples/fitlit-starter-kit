@@ -83,4 +83,8 @@ describe('activityUser', () => {
     expect(activityUser.getStairClimbingRecord()).to.equal(49);
   });  
 
+  it('should find their all time minutes active record', () => {
+    expect(activityUser.getMinutesActiveRecord()).to.equal(296);
+  });  
+
 });

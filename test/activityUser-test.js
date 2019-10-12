@@ -46,4 +46,13 @@ describe('activityUser', () => {
   it('should get minutes active for user on a given day', () => {
     expect(activityUser.getMinutesActiveByDay("2019/06/15")).to.equal(140);
   });
+
+  it('should calculate avg minutes active per week', () => {
+    expect(activityUser.calcAvgMinutesByWeek("2019/07/03")).to.equal(117);
+  });
+
+  it('should calculate if the user reached their step goal on a given day', () => {
+
+    expect(activityUser.evalReachStepGoal("2019/07/03", user.dailyStepGoal)).to.equal(false);
+  });
 });

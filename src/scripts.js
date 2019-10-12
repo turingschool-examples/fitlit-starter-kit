@@ -8,24 +8,18 @@ $( document ).ready( () => {
 $('.main__sleep').html(`${sleepData[0].date} <br> Hours Slept: ${sleepData[0].hoursSlept} hours<br>
     Sleep Quality: ${sleepData[0].sleepQuality}`);
 
-$('.main__hydration').html(`Hydration: ${hydrationData[0].numOunces} oz`);
+$('.main__hydration').html(`<div>
+  <p>Hydration: ${hydrationData[0].numOunces} oz</p></div>`);
 
-$('.main__activity').html(`Steps: ${activityData[0].numSteps} <br>
+$('.main__activity').html(`<div><p>Steps: ${activityData[0].numSteps} <br>
   Mins Active: ${activityData[0].minutesActive} <br>
-  Flishts Stairs: ${activityData[0].flightsOfStairs}`);
+  Flishts Stairs: ${activityData[0].flightsOfStairs} </p></div>`);
 
 // $('.main__friends').html(`${}`)
 
 }); // end jquery
 
-// activityData = [
-//   {
-//     "userID": 1,
-//     "date": "2019/06/15",
-//     "numSteps": 3577,
-//     "minutesActive": 140,
-//     "flightsOfStairs": 16
-//   }
+
 
 
 

@@ -65,4 +65,9 @@ describe('Sleep', () => {
       sleep1 = new Sleep(mockSleepData, 1, mockUserData2);
         expect(sleep1.findUsersSleptMostHoursIdentifiedByDate("2019/06/15")).to.eql(["Herminia Witting"]);
     });
+
+    it('should return the date the current user slept the best', () => {
+        sleep.findCurrentUserSleepData(); 
+        expect(sleep.findDateUserSleptBest()).to.equal("2019/06/21");
+    });
 });

@@ -112,7 +112,17 @@ class Sleep {
   }
 
   findDateUserSleptBest() {
+    let sleepQualities = this.currentUserSleepData.map(userBlock => {
+      return userBlock.sleepQuality
+    });
 
+    let bestSleepQuality =  Math.max(...sleepQualities);
+
+    let blockWithBestQualitySleep = this.currentUserSleepData.find(userBlock => {
+      return userBlock.sleepQuality === bestSleepQuality
+    });
+
+    return blockWithBestQualitySleep.date
   }
 }
 

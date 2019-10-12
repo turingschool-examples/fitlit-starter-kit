@@ -36,6 +36,12 @@ header h2 {
   font-style: italic;
 }
 
+span {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin: 0 7px 0 7px;
+}
+
 main {
   background-color: #FFFFFF;
   background-image: url('../img/field.gif');
@@ -56,18 +62,39 @@ p {
   display: inline;
 }
 
-section {
-  background-color: #ffffff6b;
-  border-radius: 5px;
-  border: 1px solid;
-  box-shadow: 1px 1px 6px #212b32;
-  margin: 20px;
-  padding: 10px;
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
 }
 
-span {
-  font-size: 1.5em;
-  font-weight: 700;
-  margin: 0 7px 0 7px;
+.grid-item {
+  background-color: #ffffff6b;
+  border: 1px solid;
+  border-radius: 10px;
+  box-shadow: 1px 1px 6px #212b32;
+  float: left;
+  height: max-content;
+  grid-auto-rows: auto; 
+  margin: 20px;
+  padding: 15px;
+}
+
+.grid-item:hover {
+  border-color: hsla(0, 0%, 100%, 0.5);
+  cursor: move;
+  }
+
+.grid-item.is-dragging,
+.grid-item.is-positioning-post-drag {
+    background: #EA0;
+    z-index: 2;
+}
+
+.packery-drop-placeholder {
+outline: 3px dashed hsla(0, 0%, 0%, 0.5);
+outline-offset: -6px;
+-webkit-transition: -webkit-transform 0.2s;
+        transition: transform 0.2s;
 }
 

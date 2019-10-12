@@ -18,30 +18,37 @@
         <p>Friends:<span class="user__friends"></span></p>
     </header>
     <main class="main__grid">
-      <section class="section__hydration">
+      <section class="section__hydration grid-item draggable">
         <h2>Hydration</h2>
           <p>Your Water Consumed Today:<span class="user__dailyWater"></span></p>
         <canvas id="weeklyUserDailyWater" width="400" height="400"></canvas>
       </section>
-      <section class="section__sleep">
+      <section class="section__sleep grid-item draggable">
         <h2>Sleep</h2>
           <p>Your Current Hours Slept:<span class="sleep__user-current-sleepHours"></span></p>
           <p>Your Current Sleep Quality:<span class="sleep__user-current-sleepQuality"></span></p>
+      </section>    
+      <section class="grid-item draggable"> 
+        <p>Hours Slept This Week</p>   
           <canvas id="weeklyHoursSleep" width="400" height="400"></canvas>
+      </section> 
+      <section class="grid-item draggable"> 
+        <p>Sleep Quality This Week</p> 
           <canvas id="weeklyQualitySleep" width="400" height="400"></canvas>
       </section>
-      <section class="section__activity">
+      <section class="section__activity grid-item draggable">
         <h2>Activity</h2>
       </section>
-      <section class="section__compare">
+      <section class="section__compare grid-item draggable">
         <h2>Comparison</h2>
           <p>Your Step Goal:<span class="user__step"></span></p>
           <p>Average of All Users Step Goal:<span class="compare__user-steps-to-all"></span></p>
-          
       </section>
     </main>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="path/to/your/jquery.min.js"><\/script>')</script>
+    <script src="https://unpkg.com/packery@2/dist/packery.pkgd.js"></script>
+    <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>

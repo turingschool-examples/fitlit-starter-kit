@@ -19,7 +19,7 @@
     <main>
       <h4>Welcome, <span class='user-name'>[insert name]</span>!</h4>
       <div id="panel-container">
-        <section class="container" id="user-info">
+        <section id="user-info">
           <img id="large-prof-pic" src="images/profpic.png" alt="Default profile photo"/>
           <p>
               <strong>Address:</strong> <span class="address"></span>
@@ -36,7 +36,7 @@
             </p>
           </p>
         </section>
-        <section class="container" id="friend-list">
+        <section id="friend-list">
           <p class="box-label">
             Friends
           </p>
@@ -127,11 +127,24 @@
           <span id="lrg-sleep-wrap">
             <span class="sleep-wrapper">
               <h1 id="hours-slept"></h1>
-              <h3 id="sleep-label">Hours</h3>
+              <h3 class="sleep-label">Hours</h3>
             </span>
             <span class="sleep-wrapper">
               <h1 id="sleep-quality"></h1>
-              <h3 id="sleep-label">Quality<h3>
+              <h3 class="sleep-label">Quality<h3>
+            </span>
+        </span>
+        </section>
+        <section class="sleep">
+          <h3>Your sleep last week:</h3>
+          <span id="lrg-sleep-wrap">
+            <span class="sleep-wrapper">
+              <h1 id="hours-slept-week"></h1>
+              <h3 class="sleep-label">Average Hours</h3>
+            </span>
+            <span class="sleep-wrapper">
+              <h1 id="sleep-quality-week"></h1>
+              <h3 class="sleep-label">Average Quality<h3>
             </span>
         </span>
         </section>

@@ -57,10 +57,6 @@ main {
   width: 100%;
 }
 
-.container {
-  margin: 20px;
-}
-
 #user-info {
   background-color: #FFFFFF;
   border: 2px solid #33658A;
@@ -81,9 +77,12 @@ h4 {
 
 #panel-container {
   display: grid;
+  grid-column-gap: 40px;
+  grid-row-gap: 20px;
   grid-template-columns: 1fr 1fr;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
   width: 80%;
 }
 
@@ -163,13 +162,11 @@ h4 {
   background: #FFFFFF;
   border: 2px solid #F6AE2D;
   border-radius: 2px;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
-  width: 93%;
+  width: 100%;
 }
 
-.hydration-today, #hours-slept, #sleep-quality {
+.hydration-today, #hours-slept, #sleep-quality, #hours-slept-week, #sleep-quality-week {
   color: #33658A;
   font-size: 2.5rem;
   padding-left: 0px;
@@ -198,7 +195,7 @@ h3 {
   margin-top: 20px;
 }
 
-#sleep-label {
-  font-size: 2rem;
+.sleep-label {
+  font-size: 1.7rem;
   text-decoration: underline;
 }

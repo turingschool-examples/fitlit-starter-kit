@@ -1,15 +1,21 @@
 class ActivityUser {
-  constructor(userActivityData, userData){
+  constructor(userActivityData){
     this.activityData = userActivityData;
-    this.userData = userData;
   }
 
-  calcMilesByDay(date) {
+  calcMilesByDay(date, userStrideLength) {
     let userDateData = this.activityData.find(activityData => {
       return activityData.date === date;
     })
-    let feetWalked = userDateData.numSteps * this.userData.strideLength;
+    let feetWalked = userDateData.numSteps * userStrideLength;
     return Math.round(feetWalked / 5280);
+  }
+
+  getMinutesActiveByDay(date) {
+    let userDateData = this.activityData.find(activityData => {
+      return activityData.date === date;
+    })
+    return userDateData.minutesActive;
   }
 }
 

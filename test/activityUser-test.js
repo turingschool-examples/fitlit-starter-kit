@@ -24,7 +24,7 @@ describe('activityUser', () => {
     user = new User(userData);
     activityRepo = new ActivityRepo(activitySampleData);
     userActivityData = activityRepo.getUserActivityData(1);
-    activityUser = new ActivityUser(userActivityData, userData);
+    activityUser = new ActivityUser(userActivityData);
   });
 
   it('should be a function', () => {
@@ -40,6 +40,10 @@ describe('activityUser', () => {
   });
 
   it('should know how many miles user walked on a given day', () => {
-    expect(activityUser.calcMilesByDay("2019/06/15")).to.equal(3);
+    expect(activityUser.calcMilesByDay("2019/06/15", user.strideLength)).to.equal(3);
+  });
+
+  it('should get minutes active for user on a given day', () => {
+    expect(activityUser.getMinutesActiveByDay("2019/06/15")).to.equal(140);
   });
 });

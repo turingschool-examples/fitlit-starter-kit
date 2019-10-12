@@ -10,7 +10,7 @@ describe('hydroRepo', () => {
   let userHydrationData = hydrationSampleData.filter(data => data.userID === id); 
 
   beforeEach(() => {
-  hydroRepo = new HydroRepo(hydrationSampleData);
+    hydroRepo = new HydroRepo(hydrationSampleData);
   });
 
   it('should be a function', () => {
@@ -22,7 +22,7 @@ describe('hydroRepo', () => {
   });
 
   it('should have hydration data', () => {
-    expect(hydroRepo.hydrationData).to.equal(hydrationSampleData);
+    expect(hydroRepo.hydrationData).to.deep.equal(hydrationSampleData);
   });
 
   it('should be able get hydro data from specific user', () => {

@@ -1,4 +1,5 @@
 let userRepository = new UserRepository();
+let 
 
 userData.forEach(user => {
   user = new User(user);
@@ -12,6 +13,7 @@ activityData.forEach(activity => {
 hydrationData.forEach(hydration => {
   hydration = new Hydration(hydration, userRepository);
 })
+
 
 // let userRepository = new UserRepository([userData]);
 
@@ -30,6 +32,7 @@ let stepsCalendarTotalStepsWeekly = document.querySelector('#steps-calendar-tota
 let stepsFriendAverageStepGoal = document.querySelector('#steps-friend-average-step-goal');
 let hydrationUserOuncesToday = document.querySelector('#hydration-user-ounces-today');
 let dailyOz = document.querySelectorAll('.daily-oz');
+let hydrationInfoGlassesToday = document.querySelector('#hydration-info-glasses-today');
 
 
 stepsUserStepsToday.innerText = activityData.find(activity => {
@@ -58,5 +61,9 @@ for (var i = 0; i < dailyOz.length; i++) {
   dailyOz[i].innerText = user.addDailyOunces(Object.keys(sortedHydrationDataByDate[i])[0])
 }
 
-stepsInfoUserStepGoal.innerText = `${userRepository.users[userIndex].dailyStepGoal}`;
-stepsFriendAverageStepGoal.innerText = `${userRepository.calculateAverageStepGoal()}`
+stepsInfoUserStepGoal.innerText = `${user.dailyStepGoal}`;
+stepsFriendAverageStepGoal.innerText = `${userRepository.calculateAverageStepGoal()}`;
+
+hydrationInfoGlassesToday.innerText = hydrationData.find(hydration => {
+  return hydration.userID === user.id && hydration.date === todayDate;
+}).numOunces / 8;

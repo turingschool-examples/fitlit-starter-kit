@@ -21,7 +21,20 @@ $('#day-7').text(`Day 7: ${hydration.findOzByWeek(3, '2019/06/22', hydrationData
 //Our user class uses a property of `id` and our other classes use userID. Should consider changing if it doesn't break anything else.
 $('#hours-slept').text(sleep.showSleep(sleep.userID, '2019/06/22', 'hoursSlept', sleepData));
 $('#sleep-quality').text(sleep.showSleep(sleep.userID, '2019/06/22', 'sleepQuality', sleepData));
-// $('#hours-slept-week').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'hoursSelpt', sleepData));
-// $('#sleep-quality-week').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'sleepQuality', sleepData));
 $('#hours-slept-all').text(sleep.calculateAvgSleep(sleep.userID, 'hoursSlept', sleepData));
 $('#sleep-quality-all').text(sleep.calculateAvgSleep(sleep.userID, 'sleepQuality', sleepData));
+
+$('#hours-1').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'hoursSlept', sleepData)[0]);
+$('#quality-1').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'sleepQuality', sleepData)[0]);
+$('#hours-2').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'hoursSlept', sleepData)[1]);
+$('#quality-2').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'sleepQuality', sleepData)[1]);
+$('#hours-3').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'hoursSlept', sleepData)[2]);
+$('#quality-3').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'sleepQuality', sleepData)[2]);
+$('#hours-4').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'hoursSlept', sleepData)[3]);
+$('#quality-4').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'sleepQuality', sleepData)[3]);
+$('#hours-5').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'hoursSlept', sleepData)[4]);
+$('#quality-5').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'sleepQuality', sleepData)[4]);
+$('#hours-6').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'hoursSlept', sleepData)[5]);
+$('#quality-6').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'sleepQuality', sleepData)[5]);
+$('#hours-7').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'hoursSlept', sleepData)[6]);
+$('#quality-7').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'sleepQuality', sleepData)[6]);

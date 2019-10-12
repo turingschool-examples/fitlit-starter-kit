@@ -14,31 +14,32 @@ class UserRepo {
     }, 0);
     return totalStepGoal/this.users.length;
   };
-  // getWeekFromDate(dateString) {
-  //   var firstDay = new Date(dateString);
-  //   console.log('firstDay:', firstDay);
-  //   var weekList = [new Date(dateString)];
-  //   for (var i = 0; i < 6; i++) {
-  //     weekList.push(new Date(firstDay.setDate(firstDay.getDate() + 1)));
-  //   }
-  //   return weekList;
-  // };
+  makeSortedUserArray(id, dataSet) {
+    let selectedID = dataSet.filter((data) => id === data.userID);
+    let sortedByDate = selectedID.sort((a, b) => new Date(b.date) - new Date(a.date));
+    return sortedByDate;
+  }
   getToday(id, dataSet) {
-    let selectedID = dataSet.filter((data) => id === data.userID);
-    let sortedByDate = selectedID.sort((a, b) => new Date(b.date) - new Date(a.date));
-    return sortedByDate[0].date;
-  }
+    // let selectedID = dataSet.filter((data) => id === data.userID);
+    // let sortedByDate = selectedID.sort((a, b) => new Date(b.date) - new Date(a.date));
+    return this.makeSortedUserArray(id, dataSet)[0].date;
+    // return sortedByDate[0].date;
+  };
   getFirstWeek(id, dataSet) {
-    let selectedID = dataSet.filter((data) => id === data.userID);
-    let sortedByDate = selectedID.sort((a, b) => new Date(b.date) - new Date(a.date));
-    return sortedByDate.slice(0, 7);
-  }
+    // let selectedID = dataSet.filter((data) => id === data.userID);
+    // let sortedByDate = selectedID.sort((a, b) => new Date(b.date) - new Date(a.date));
+    return this.makeSortedUserArray(id, dataSet).slice(0, 7);
+    // return sortedByDate.slice(0, 7);
+  };
   getWeekFromDate(date, id, dataSet) {
-    let selectedID = dataSet.filter((data) => id === data.userID);
-    let sortedByDate = selectedID.sort((a, b) => new Date(b.date) - new Date(a.date));
-    let dateIndex = sortedByDate.indexOf(sortedByDate.find((sortedItem)=>(sortedItem.date === date)));
-    return sortedByDate.slice(dateIndex, dateIndex + 7);
-  }
+    // let selectedID = dataSet.filter((data) => id === data.userID);
+    // let sortedByDate = selectedID.sort((a, b) => new Date(b.date) - new Date(a.date));
+    let dateIndex = this.makeSortedUserArray(id, dataSet).indexOf(this.makeSortedUserArray(id, dataSet).find((sortedItem)=>(sortedItem.date === date)));
+    return this.makeSortedUserArray(id, dataSet).slice(dateIndex, dateIndex + 7);
+
+    // let dateIndex = sortedByDate.indexOf(sortedByDate.find((sortedItem)=>(sortedItem.date === date)));
+    // return sortedByDate.slice(dateIndex, dateIndex + 7);
+  };
 }
 
 

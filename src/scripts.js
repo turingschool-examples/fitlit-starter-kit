@@ -67,7 +67,7 @@ function addHydrationInfo(id, hydrationInfo, dateString, userStorage) {
 }
 
 function makeHydrationHTML(id, hydrationInfo, userStorage) {
-  return hydrationInfo.calculateWeeklyOunces(userStorage, id).map(drinkData => `<li>On ${drinkData}oz water</li>`).join('');
+  return hydrationInfo.calculateFirstWeekOunces(userStorage, id).map(drinkData => `<li>On ${drinkData}oz water</li>`).join('');
 }
 
 startApp();

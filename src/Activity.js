@@ -77,25 +77,52 @@ class Activity{
         return mostStairsCLimbed
     }
     
-    findUsersWithAvgSleepQualityMoreThanThreeOverSpecificWeek() {
-        
+    calculateAvgStairsClimbedOnSpecificDateAllUsers(date) {
+        let alllUsersOnDate = this.currentActivityData.filter(user => {
+            return user.date === date;
+        })
+        let avgStairsClimbedAllUsers = alllUsersOnDate.reduce((acc, currentElement) => {
+            acc += currentElement.flightsOfStairs;
+            return acc
+        }, 0)
+        let average = avgStairsClimbedAllUsers / alllUsersOnDate.length;
+        return parseFloat(average.toFixed(1))
     }
     
-    calculateAvgStairsClimbedOnSpecificDateAllUsers() {
-        
+    calculateAvgStepsTakenOnSpecificDateAllUsers(date) {
+        let alllUsersOnDate = this.currentActivityData.filter(user => {
+            return user.date === date;
+        })
+        let avgStepsTakenAllUsers = alllUsersOnDate.reduce((acc, currentElement) => {
+            acc += currentElement.numSteps;
+            return acc
+        }, 0)
+
+        let average = avgStepsTakenAllUsers / alllUsersOnDate.length;
+        return parseFloat(average.toFixed(1))
     }
     
-    calculateAvgStepsTakenAllOnSpecificDateAllUsers() {
-        
-    }
-    
-    calculateAvgMinutesActiveOnSpecificDateAllUsers() {
-        
+    calculateAvgMinutesActiveOnSpecificDateAllUsers(date) {
+        let alllUsersOnDate = this.currentActivityData.filter(user => {
+            return user.date === date;
+        })
+        let avgMinutesActiveAllUsers = alllUsersOnDate.reduce((acc, currentElement) => {
+            acc += currentElement.minutesActive;
+            return acc
+        }, 0)
+
+        let average = avgMinutesActiveAllUsers / alllUsersOnDate.length;
+        return parseFloat(average.toFixed(0))
     }
     
     findMostActiveDateForUser() {
-        
+        let sortedUserMinutes = this.currentActivityData.sort((a, b) => {
+            return b.minutesActive - a.minutesActive
+        })
+        let mostActiveDate = sortedUserMinutes.shift()
+        return mostActiveDate.date
     } 
+    
 }
 
 if (typeof module !== 'undefined') {

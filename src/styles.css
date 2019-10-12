@@ -186,7 +186,7 @@ h3 {
   text-decoration: underline;
 }
 
-#lrg-sleep-wrap {
+.lrg-sleep-wrap {
   display: flex;
   justify-content: space-around;
 }
@@ -198,4 +198,28 @@ h3 {
 .sleep-label {
   font-size: 1.7rem;
   text-decoration: underline;
+}
+
+#lrg-sleep-wrap-2 {
+  margin-top: 60px;
+}
+
+table {
+  border: 2px solid #F26419;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: 80%;
+ }
+
+th, td {
+  border: 1px solid black;
+  padding: 2px;
+}
+
+.main-tbl-head {
+  background-color: #86BBD8;
+}
+
+.tbl-day {
+  background-color: #CDCDCD;
 }

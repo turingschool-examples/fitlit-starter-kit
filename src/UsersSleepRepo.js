@@ -1,25 +1,39 @@
 class UsersSleepRepo {
-  constructor(userData, sleepData) {
-    this.userData = userData;
-    this.sleepData = sleepData
-
+  constructor(sleepData) {
+    this.sleepData = sleepData;
+    this.allUserIds = this.getAllUserIDs()
   }
 
+
+  
   avgUsersSleepQualityAllTime() {
     let usersAvgHoursSleep = this.sleepData.reduce((sum, sleep) => {
       return sum += sleep.hoursSlept
     }, 0); return parseFloat((usersAvgHoursSleep  / this.sleepData.length).toFixed(2));
   }
 
-  usersSleepQualityGreaterThreeByWeek() {
-  //find all users who's avg sleep is > 3 for 7 days. Should work for any week(dont hardcode days)
+  getAllUserIDs() {
+    return this.sleepData.map(sleepObj => sleepObj.userID).filter((id, index, array) => array.indexOf(id) === index);
+  }
+
+  usersSleepQualityGreaterThreeByWeek(startDate) {
+    return this.getAllUserIDs().reduce((arr, userId) => {
+      let userData = this.sleepData.filter(user =>
+        user.userID === userId)
+      let DateIndex = userData.findIndex(day => day.date === startDate)
+      let weeksData = userData.slice(DateIndex - 7);
+      let weekAvg = weeksData.reduce((sum, day) => {
+        return sum += day.sleepQuality
+      }, 0) / weeksData.length
+      if (weekAvg >= 3) {
+        arr.push(userId)
+      }
+      return arr
+    }, [])
   }
 
   usersMostHoursSleptByDate(date) {
-    // for a given date find the users who slept the most number of hours(one or more if they tied)
     return this.sleepData.filter(sleep => date === sleep.date).sort((a, b) => a.hoursSlept - b.hoursSlept).pop().userID
-    // use userID from sleep to get name from user data??
-
   }
 
   //   metric_of_our_pick()  {

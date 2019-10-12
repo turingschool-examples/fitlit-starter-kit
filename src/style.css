@@ -45,37 +45,33 @@ nav {
 }
 
 .main__body--right {
-	width: 47%;
+	width: 46%;
 	height: 95%;
 	float: right;
-	padding: 15px;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	/*border: 2px solid orange;*/
 }
 
 .main__body--left {
-	width: 47%;
-	height: 95%;
-	float: left;
-	padding: 15px;
-	display: inline-block;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	margin: 0 auto;
-	/*border: 2px solid red;*/
+	float: left;
+  height: 95%;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  margin-left: 1rem;
+	width: 49%;
 }
 
 .section {
-	width: 90%;
-	height: 40%;
-	border: 1px white solid;
-	margin: 3% 0;
-	padding: 2%;
 	background: #474b4f;
+	border: 1px white solid;
+  height: 40%;
+  margin: 3% 0;
+  padding: .5rem;
+	width: 90%;
 }
 
 .main__user:hover {
@@ -101,3 +97,6 @@ nav {
 	color: #86c232;
 	box-shadow: 2px 2px 3px #888888;
 }
+@media (min-width: )
+
+/* @media (max-width: 30em) { ... } */

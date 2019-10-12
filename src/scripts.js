@@ -49,3 +49,5 @@ $('#frnd4').text(userRepo.findUser(user.friends[3]).name);
 $('#frnd4-step').text(userRepo.findUser(user.friends[3]).dailyStepGoal);
 $('#frnd5').text(userRepo.findUser(user.friends[4]).name);
 $('#frnd5-step').text(userRepo.findUser(user.friends[4]).dailyStepGoal);
+
+console.log(userRepo.findUser(user.friends[4]).name);

@@ -33,15 +33,20 @@ class SleepUser {
     return weekHoursSlept;
   }
 
-  getAvgHoursSleepByWeek(date) {
+  getAvgHoursSleepByWeek(date, property) {
     let dataDate = this.sleepData.map(data => data.date);
+    let avgPropertyNames = `avg${property}`;
     let dateIndex = dataDate.lastIndexOf(date);
     let weekData = this.sleepData.slice(dateIndex - 7, dateIndex + 1);
     let avgWeekHoursSlept = weekData.reduce((acc, day) => {
-      acc.AvgHoursSlept += day.hoursSlept;
+      if(!acc[avgPropertyNames]) {
+        acc[avgPropertyNames] = 0;
+      }
+      acc[avgPropertyNames] += day[property];
       return acc;
-    }, {date: `${weekData[0].date} - ${weekData[7].date}`, AvgHoursSlept: 0})
-    avgWeekHoursSlept.AvgHoursSlept = avgWeekHoursSlept.AvgHoursSlept / 8;
+    }, {date: `${weekData[0].date} - ${weekData[7].date}`})
+    avgWeekHoursSlept[avgPropertyNames] = avgWeekHoursSlept[avgPropertyNames] / 8;
+    console.log(avgWeekHoursSlept);
     return avgWeekHoursSlept;
   }
 

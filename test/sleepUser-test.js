@@ -67,8 +67,13 @@ describe('SleepUser', () => {
   });
 
   it('should get average hours slept for a user over the course of any given week', () => {
-    expect(sleepUser.getAvgHoursSleepByWeek("2019/06/24")).to.deep.equal(
-      { date: '2019/06/17 - 2019/06/24', AvgHoursSlept: 8.625 });
+    expect(sleepUser.getAvgHoursSleepByWeek("2019/06/24", 'hoursSlept')).to.deep.equal(
+      { date: '2019/06/17 - 2019/06/24', avghoursSlept: 8.625 });
+  });
+
+  it('should get average quality sleep for a user over the course of any given week', () => {
+    expect(sleepUser.getAvgHoursSleepByWeek("2019/06/24", 'sleepQuality')).to.deep.equal(
+      { date: '2019/06/17 - 2019/06/24', avgsleepQuality: 2.2625 });
   });
 
 });

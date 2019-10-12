@@ -58,4 +58,9 @@ describe('Activity', () => {
         activity.findCurrentUserActivityData();
         expect(activity.filterAllDatesUserCompletedStepGoal()).to.eql(["2019/06/17","2019/06/19","2019/06/20","2019/06/21"]);
     });
+
+    it('should find a users all time stair climbing record output', () => {
+        activity.findCurrentUserActivityData();
+        expect(activity.findMostStairsClimbedForUserAllTime()).to.equal(44);
+    });
 });

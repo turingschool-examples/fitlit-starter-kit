@@ -71,7 +71,10 @@ class Activity{
     }
     
     findMostStairsClimbedForUserAllTime() {
+        let stairsClimbed = this.currentUserActivityData.map(user => user.flightsOfStairs)
         
+        let mostStairsCLimbed = Math.max(...stairsClimbed)
+        return mostStairsCLimbed
     }
     
     findUsersWithAvgSleepQualityMoreThanThreeOverSpecificWeek() {

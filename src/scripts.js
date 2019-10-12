@@ -33,3 +33,4 @@ stepsUserStepsToday.innerText = activityData.find(activity => {
 headerName.innerText = `${userRepository.users[userIndex].getFirstName()}'S `;
 
 stepsInfoUserStepGoal.innerText = `${userRepository.users[userIndex].dailyStepGoal}`;
+stepsFriendAverageStepGoal.innerText = `${userRepository.calculateAverageStepGoal()}`

@@ -5,7 +5,6 @@ class SleepRepo {
 
   getUserSleepData(id) {
     return this.sleepData.filter(object => object.userID === id);
-    //use find!!!!
   }
 
   getAvgSleepQuality() {
@@ -18,9 +17,10 @@ class SleepRepo {
   }
 
   getGreatSleepersByweek(weekDate) {
-    let dataDate = this.sleepData.map(data => data.date);
+    let sleepInfo = this.sleepData;
+    let dataDate = sleepInfo.map(data => data.date);
     let dateIndex = dataDate.lastIndexOf(weekDate);
-    let weekData = this.sleepData.slice(dateIndex - 349, dateIndex + 1);
+    let weekData = sleepInfo.slice(dateIndex - 349, dateIndex + 1);
     let weeklyUsers = weekData.filter(day => day.date === weekDate);
     let usersWithAvg = weeklyUsers.map(userWeek => {
       let userAvgQuality = weekData.reduce((acc, day) => {
@@ -29,13 +29,12 @@ class SleepRepo {
         }
         return acc;
       }, 0);
-      userWeek.avgSleepQuality = Math.round((userAvgQuality / 7) * 100) / 100;
+      userWeek = { ...userWeek, avgSleepQuality: Math.round((userAvgQuality / 7) * 100) / 100 }
       delete userWeek.date;
       delete userWeek.hoursSlept;
       delete userWeek.sleepQuality;
       return userWeek;
     });
-    console.log(usersWithAvg.filter(user => user.avgSleepQuality > 3));
     return usersWithAvg.filter(user => user.avgSleepQuality > 3);
   }
 

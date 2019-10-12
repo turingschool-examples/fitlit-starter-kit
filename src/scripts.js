@@ -4,6 +4,7 @@ let userRepo;
 let hydroUser;
 let hydroRepo;
 let sleepRepo;
+let sleepUser;
 
 $("#login-page-button").click(clickLoginButton);
 
@@ -39,7 +40,8 @@ function instantiateHydroData(data) {
 
 function instantiateSleepData(data) {
   sleepRepo = new SleepRepo(data);
-  sleepRepo.getGreatSleepersByweek("2019/08/05");
+  let userSleepData = sleepRepo.getUserSleepData(user.id);
+  sleepUser = new SleepUser(userSleepData);
 }
 
 function displayErrorMessage() {

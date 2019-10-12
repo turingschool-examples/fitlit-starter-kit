@@ -143,9 +143,15 @@ h4 {
   border-top: 2px solid #F6AE2D;
 }
 
+.score-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
 .friend-score {
   color: #33658A;
   font-size: 1.6rem;
+  margin-right: 100px;
   margin-top: -10px;
 }
 

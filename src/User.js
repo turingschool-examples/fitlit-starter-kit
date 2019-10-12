@@ -22,8 +22,14 @@ class User {
       this.ouncesAverage = amount;
     }
   }
-  getWeeklyWater() {
-    return this.ouncesRecordarray.slice(0, 7);
+  addDailyOunces(date) {
+    return this.ouncesRecord.reduce((sum, record) => {
+      let amount = record[date];
+      if (amount) {
+        sum += amount
+      }
+      return sum
+    }, 0)
   }
 }
 

@@ -46,6 +46,16 @@ class ActivityUser {
     return datesExceededGoal;
   }
 
+  getStairClimbingRecord() {
+    let stairRecord = this.activityData.reduce((acc, day) => {
+      if (day.flightsOfStairs > acc) {
+        acc = day.flightsOfStairs;
+      }
+      return acc;
+    },0)
+    return stairRecord;
+  }
+
 }
 
 if (typeof module !== 'undefined') {

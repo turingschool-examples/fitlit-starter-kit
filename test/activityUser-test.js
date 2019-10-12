@@ -79,4 +79,8 @@ describe('activityUser', () => {
     '2019/08/17' ]);
   });
 
+  it('should find their all time stair climbing record', () => {
+    expect(activityUser.getStairClimbingRecord()).to.equal(49);
+  });  
+
 });

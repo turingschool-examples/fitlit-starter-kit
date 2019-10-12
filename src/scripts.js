@@ -23,7 +23,7 @@ function startApp() {
   makeUsers(userList);
   let userRepo = new UserRepo(userList);
   let hydrationRepo = new Hydration(hydrationData);
-  let today = "2019/06/15"
+  let today = "2019/09/22"
   var userNowId = pickUser();
   let userNow = getUserById(userNowId, userRepo);
   addInfoToSidebar(userNow, userRepo);

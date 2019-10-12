@@ -23,10 +23,21 @@ class UserRepo {
   //   }
   //   return weekList;
   // };
+  getToday(id, dataSet) {
+    let selectedID = dataSet.filter((data) => id === data.userID);
+    let sortedByDate = selectedID.sort((a, b) => new Date(b.date) - new Date(a.date));
+    return sortedByDate[0].date;
+  }
   getFirstWeek(id, dataSet) {
     let selectedID = dataSet.filter((data) => id === data.userID);
     let sortedByDate = selectedID.sort((a, b) => new Date(b.date) - new Date(a.date));
     return sortedByDate.slice(0, 7);
+  }
+  getWeekFromDate(date, id, dataSet) {
+    let selectedID = dataSet.filter((data) => id === data.userID);
+    let sortedByDate = selectedID.sort((a, b) => new Date(b.date) - new Date(a.date));
+    let dateIndex = sortedByDate.indexOf(sortedByDate.find((sortedItem)=>(sortedItem.date === date)));
+    return sortedByDate.slice(dateIndex, dateIndex + 7);
   }
 }
 

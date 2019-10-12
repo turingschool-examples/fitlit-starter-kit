@@ -18,6 +18,7 @@
 body {
   font-family: 'Titillium Web', sans-serif;
   width: 100%;
+  background-color: #EBECF0;
 }
 
 .main-login-page {
@@ -45,6 +46,7 @@ body {
     "aside main";
   grid-template-columns: 1fr 4fr;
   grid-template-rows: .5fr 10fr;
+  height: 100vh;
 }
 
 header {
@@ -93,6 +95,7 @@ aside {
   width: 97%;
   margin: 0 auto;
   background-color: #D1DCE9;
+  height: 100%;
 }
 
 .aside-fitlit-logo {
@@ -166,6 +169,11 @@ li {
   margin: auto;
 }
 
+.aside-user-info-div {
+  height: 83%;
+  overflow: auto;
+}
+
 .aside-trend-div {
   border: 2px solid black;
   border-radius: 5px;
@@ -176,16 +184,20 @@ li {
 }
 
 .main-user-stats {
+  height: 100%;
+  overflow: auto;
+}
+
+.main-user-stats-div {
   grid-area: main;
   display: grid;
   grid-template-areas:
     "dayOz dayActivity daySleep"
-    "weekOz dayActivity weekSleep"
+    "weekOz weekActivity weekSleep"
     "weekOz weekActivity weekSleep"
     "weekOz weekActivity allTimeSleep";
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
-  background-color: #EBECF0;
   padding: .70%;
 }
 
@@ -201,7 +213,17 @@ li {
   padding: 1%;
   background-color: aliceblue;
   color: cornflowerblue;
-  height: 10%;
+  text-align: center;
+}
+
+.activity-weekly-data-section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sleep-weekly-data-section {
+  display: flex;
+  justify-content: space-around;
 }
 
 h2 {

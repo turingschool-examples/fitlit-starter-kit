@@ -38,3 +38,14 @@ $('#hours-6').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'hoursSlept',
 $('#quality-6').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'sleepQuality', sleepData)[5]);
 $('#hours-7').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'hoursSlept', sleepData)[6]);
 $('#quality-7').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'sleepQuality', sleepData)[6]);
+
+$('#frnd1').text(userRepo.findUser(user.friends[0]).name);
+$('#frnd1-step').text(userRepo.findUser(user.friends[0]).dailyStepGoal);
+$('#frnd2').text(userRepo.findUser(user.friends[1]).name);
+$('#frnd2-step').text(userRepo.findUser(user.friends[1]).dailyStepGoal);
+$('#frnd3').text(userRepo.findUser(user.friends[2]).name);
+$('#frnd3-step').text(userRepo.findUser(user.friends[2]).dailyStepGoal);
+$('#frnd4').text(userRepo.findUser(user.friends[3]).name);
+$('#frnd4-step').text(userRepo.findUser(user.friends[3]).dailyStepGoal);
+$('#frnd5').text(userRepo.findUser(user.friends[4]).name);
+$('#frnd5-step').text(userRepo.findUser(user.friends[4]).dailyStepGoal);

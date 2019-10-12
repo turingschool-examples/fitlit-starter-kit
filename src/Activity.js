@@ -116,7 +116,11 @@ class Activity{
     }
     
     findMostActiveDateForUser() {
-        
+        let sortedUserMinutes = this.currentActivityData.sort((a, b) => {
+            return b.minutesActive - a.minutesActive
+        })
+        let mostActiveDate = sortedUserMinutes.shift()
+        return mostActiveDate.date
     } 
     
 }

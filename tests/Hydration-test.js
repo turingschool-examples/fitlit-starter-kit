@@ -75,7 +75,7 @@ describe('Hydration', function() {
   it('should have an amount of ounces drank', function() {
     expect(hydrate3.ounces).to.equal(91);
   });
-  describe('updateHydration', function () {
+  describe('drink', function () {
     it('should update the average number of ounces over all time', function() {
       expect(user2.ouncesAverage).to.equal(83);
     })
@@ -84,7 +84,4 @@ describe('Hydration', function() {
       expect(user2.ouncesRecord.length).to.equal(2)
     })
   });
-  it('should have a method that return the last weeks water', function() {
-
-  })
 });

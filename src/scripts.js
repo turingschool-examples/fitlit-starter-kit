@@ -1,6 +1,7 @@
 const userRepo = new UserRepo(userData);
 const user = new User(userData[12]);
-const hydration = new Hydration(user.userID)
+const hydration = new Hydration(user.userID);
+const sleep = new Sleep(user.id);
 
 $('.user-name').text(user.returnFirstName());
 $('.address').text(user.address);
@@ -16,3 +17,7 @@ $('#day-4').text(`Day 4: ${hydration.findOzByWeek(3, '2019/06/22', hydrationData
 $('#day-5').text(`Day 5: ${hydration.findOzByWeek(3, '2019/06/22', hydrationData)[4]}`);
 $('#day-6').text(`Day 6: ${hydration.findOzByWeek(3, '2019/06/22', hydrationData)[5]}`);
 $('#day-7').text(`Day 7: ${hydration.findOzByWeek(3, '2019/06/22', hydrationData)[6]}`);
+
+//Our user class uses a property of `id` and our other classes use userID. Should consider changing if it doesn't break anything else.
+$('#hours-slept').text(sleep.showSleep(sleep.userID, '2019/06/22', 'hoursSlept', sleepData));
+$('#sleep-quality').text(sleep.showSleep(sleep.userID, '2019/06/22', 'sleepQuality', sleepData));

@@ -159,7 +159,7 @@ h4 {
   padding: 10px;
 }
 
-.hydration {
+.hydration, .sleep {
   background: #FFFFFF;
   border: 2px solid #F6AE2D;
   border-radius: 2px;
@@ -169,7 +169,7 @@ h4 {
   width: 93%;
 }
 
-.hydration-today {
+.hydration-today, #hours-slept, #sleep-quality {
   color: #33658A;
   font-size: 2.5rem;
   padding-left: 0px;
@@ -186,5 +186,19 @@ h3 {
 
 .hydration-day {
   padding: 3px;
+  text-decoration: underline;
+}
+
+#lrg-sleep-wrap {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sleep-wrapper {
+  margin-top: 20px;
+}
+
+#sleep-label {
+  font-size: 2rem;
   text-decoration: underline;
 }

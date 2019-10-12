@@ -23,4 +23,8 @@ describe('activityUser', () => {
   it('should be an instance of UserActivity', () => {
     expect(activityUser).to.be.an.instanceOf(ActivityUser);
   });
+
+  it('should have a single user\'s activity data', () => {
+    expect(activityUser.activityData).to.deep.equal(userActivityData);
+  });
 });

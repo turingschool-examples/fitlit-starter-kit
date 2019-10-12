@@ -73,4 +73,10 @@ describe('Activity', () => {
         activity.findCurrentUserActivityData();
         expect(activity.calculateAvgStepsTakenOnSpecificDateAllUsers("2019/06/15")).to.equal(5091);
     });
+
+
+    it('should find based on date the average number of minutes active for all users', () => {
+        activity.findCurrentUserActivityData();
+        expect(activity.calculateAvgMinutesActiveOnSpecificDateAllUsers("2019/06/15")).to.equal(131);
+    });
 });

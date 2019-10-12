@@ -17,13 +17,19 @@ header {
   background-color: #ffffff6b;
   box-shadow: 3px 3px 10px black;
   grid-area: header;
+  padding-bottom: 10px;
   text-align: center;
 }
 
 h1 {
   color: #630c0c;
   font-size: 4em;
+  /* font-style: bold; */
   margin-bottom: 10px;
+}
+
+div {
+  /* text-align: inherit; */
 }
 
 header h2 {
@@ -58,8 +64,14 @@ main {
   width: 90%;
 }
 
+h2 {
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+
 p {
-  display: inline;
+  font-size: 1.5em;
+  margin-bottom: 5px;
 }
 
 .grid:after {

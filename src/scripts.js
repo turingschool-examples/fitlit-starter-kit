@@ -49,8 +49,6 @@ $(function() {
   $('.user__friends').text(userData[randomUser].friends);
   $('.compare__user-steps-to-all').text(usersRepo.avgStepGoal())
   $('.user__dailyWater').text(userHydration.userOuncesToday())
-  $('.sleep__user-current-sleepHours').text(userSleep.userSleepHoursByDate(randomUser, today));
-  $('.sleep__user-current-sleepQuality').text(userSleep.userSleepQualityByDate(randomUser, today));
 
   const usersWeeklyWater = new Chart($('#weeklyUserDailyWater'), {
     type: 'bar',
@@ -67,6 +65,31 @@ $(function() {
           'rgb(85, 112, 1, 0.7)',
           'rgb(57, 112, 1, 0.7)',
           'rgb(112, 28, 1, 0.7)'
+        ],
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+  const comparedHoursSleep = new Chart($('#currentHoursSleep'), {
+    type: 'bar',
+    data: {
+      labels: ["Today\'s Hours Sleep", "Today\'s Sleep Quality"],
+      datasets: [{
+        label: 'Water Consumed Per',
+        data: [userSleep.userSleepHoursByDate(randomUser, today), userSleep.userSleepQualityByDate(randomUser, today)],
+        backgroundColor: [
+          'rgb(112, 56, 1, 0.7)',
+          'rgb(112, 84, 1, 0.7)',
+          'rgb(112, 111, 1, 0.7)'
         ],
       }]
     },

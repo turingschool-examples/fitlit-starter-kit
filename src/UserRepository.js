@@ -42,9 +42,7 @@ class UserRepository {
   calculateAverageDailyWater(date) {
     let todaysDrinkers = this.users.filter(user => {
       return user.addDailyOunces(date) > 0;
-      // Can find each users ounces for a date in user.ouncesRecord (an array of date/ounce objects), so the return here would be the return of calling find on user.ouncesRecord where record[date] is not undefined (there are ounces present)
-    })
-
+    });
     let sumDrankOnDate = todaysDrinkers.reduce((sum, drinker) => {
       return sum += drinker.addDailyOunces(date);
     }, 0)

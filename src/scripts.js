@@ -1,5 +1,4 @@
 let userRepository = new UserRepository();
-let 
 
 userData.forEach(user => {
   user = new User(user);
@@ -33,6 +32,7 @@ let stepsFriendAverageStepGoal = document.querySelector('#steps-friend-average-s
 let hydrationUserOuncesToday = document.querySelector('#hydration-user-ounces-today');
 let dailyOz = document.querySelectorAll('.daily-oz');
 let hydrationInfoGlassesToday = document.querySelector('#hydration-info-glasses-today');
+let hydrationFriendOuncesToday = document.querySelector('#hydration-friend-ounces-today');
 
 
 stepsUserStepsToday.innerText = activityData.find(activity => {
@@ -67,3 +67,5 @@ stepsFriendAverageStepGoal.innerText = `${userRepository.calculateAverageStepGoa
 hydrationInfoGlassesToday.innerText = hydrationData.find(hydration => {
   return hydration.userID === user.id && hydration.date === todayDate;
 }).numOunces / 8;
+
+hydrationFriendOuncesToday.innerText = userRepository.calculateAverageDailyWater(todayDate);

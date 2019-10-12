@@ -44,7 +44,7 @@ header {
 #nav-button {
   display: inline;
   float: right;
-  background-image: url(navbutton.png);
+  background-image: url(../images/navbutton.png);
   background-position: center;
   background-size: 5.4vw;
   height: 5.4vw;
@@ -94,33 +94,33 @@ main {
 
 .info-button {
   display: inline;
-  background-image: url(i.png);
-  background-position: center;
-  background-size: 3.4vw;
   height: 3.4vw;
   width: 3.4vw;
   margin-left: 1vw;
+  background-position: center;
+  background-size: 3.4vw;
+  border: none;
 }
 
 .friends-button {
   display: inline;
-  background-image: url(friend.png);
-  background-position: center;
-  background-size: 3.4vw;
   height: 3.4vw;
   width: 3.4vw;
   margin-right: 1vw;
+  background-position: center;
+  background-size: 3.4vw;
+  border: none;
 }
 
 .calendar-button {
   display: inline;
   float: right;
-  background-image: url(calendar.png);
-  background-position: center;
-  background-size: 3.4vw;
   height: 3.4vw;
   width: 3.4vw;
   margin-right: 1vw;
+  background-position: center;
+  background-size: 3.4vw;
+  border: none;
 }
 
 #steps-card-container {
@@ -175,6 +175,8 @@ h4 {
   font-size: 2vw;
   background-color: #F5634B;
   border: none;
+  background-position: center;
+  background-size: 3.4vw;
 }
 
 .hydration-weekly-label {
@@ -190,6 +192,70 @@ h4 {
   display: flex;
   justify-content: center;
   margin-bottom: .2vw;
+}
+
+.steps-go-back-button {
+  background-image: url(../images/steps-goback.png);
+}
+
+#steps-info-button {
+  background-image: url(../images/steps-info.png);
+}
+
+#steps-friends-button {
+  background-image: url(../images/steps-friends.png);
+}
+
+#steps-calendar-button {
+  background-image: url(../images/steps-calendar.png);
+}
+
+.hydration-go-back-button {
+  background-image: url(../images/hydration-goback.png);
+}
+
+#hydration-info-button {
+  background-image: url(../images/hydration-info.png);
+}
+
+#hydration-friends-button {
+  background-image: url(../images/hydration-friends.png);
+}
+
+#hydration-calendar-button {
+  background-image: url(../images/hydration-calendar.png);
+}
+
+.stairs-go-back-button {
+  background-image: url(../images/stairs-goback.png);
+}
+
+#stairs-info-button {
+  background-image: url(../images/stairs-info.png);
+}
+
+#stairs-friends-button {
+  background-image: url(../images/stairs-friends.png);
+}
+
+#stairs-calendar-button {
+  background-image: url(../images/stairs-calendar.png);
+}
+
+.sleep-go-back-button {
+  background-image: url(../images/sleep-goback.png);
+}
+
+#sleep-info-button {
+  background-image: url(../images/sleep-info.png);
+}
+
+#sleep-friends-button {
+  background-image: url(../images/sleep-friends.png);
+}
+
+#sleep-calendar-button {
+  background-image: url(../images/sleep-calendar.png);
 }
 
 /* HIDE CARDS */

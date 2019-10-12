@@ -57,6 +57,10 @@ let sortedHydrationDataByDate = user.ouncesRecord.sort((a, b) => {
 //   dailyOzOnDOM.innerText =
 // })
 
+
 for (var i = 0; i < dailyOz.length; i++) {
   dailyOz[i].innerText = user.addDailyOunces(Object.keys(sortedHydrationDataByDate[i])[0])
 }
+
+stepsInfoUserStepGoal.innerText = `${userRepository.users[userIndex].dailyStepGoal}`;
+stepsFriendAverageStepGoal.innerText = `${userRepository.calculateAverageStepGoal()}`

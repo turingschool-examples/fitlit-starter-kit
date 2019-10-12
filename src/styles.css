@@ -46,7 +46,6 @@ body {
     "aside main";
   grid-template-columns: 1fr 4fr;
   grid-template-rows: .5fr 10fr;
-  /* height: 1200px; */
   height: 100vh;
 }
 
@@ -96,7 +95,6 @@ aside {
   width: 97%;
   margin: 0 auto;
   background-color: #D1DCE9;
-  /* height: 1200px; */
   height: 100%;
 }
 
@@ -186,7 +184,6 @@ li {
 }
 
 .main-user-stats {
-  /* height: 1060px; */
   height: 100%;
   overflow: auto;
 }

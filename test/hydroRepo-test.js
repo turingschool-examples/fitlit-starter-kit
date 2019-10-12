@@ -22,7 +22,7 @@ describe('hydroRepo', () => {
   });
 
   it('should have hydration data', () => {
-    expect(hydroRepo.hydrationData).to.equal(hydrationSampleData);
+    expect(hydroRepo.hydrationData).to.deep.equal(hydrationSampleData);
   });
 
   it('should be able get hydro data from specific user', () => {

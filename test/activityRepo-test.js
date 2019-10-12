@@ -22,7 +22,7 @@ describe('activityRepo', () => {
   });
 
   it('should have activity data', () => {
-    expect(activityRepo.activityData).to.equal(activitySampleData);
+    expect(activityRepo.activityData).to.deep.equal(activitySampleData);
   });
 
   it('should be able get activity data from specific user', () => {

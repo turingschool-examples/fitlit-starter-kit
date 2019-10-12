@@ -1,3 +1,4 @@
+// INTANTIATING
 let userRepository = new UserRepository();
 
 userData.forEach(user => {
@@ -13,11 +14,9 @@ hydrationData.forEach(hydration => {
   hydration = new Hydration(hydration, userRepository);
 })
 
-// let userRepository = new UserRepository([userData]);
-
+// DATA TO CHANGE ON DOM
 let user = userRepository.users[0];
 let todayDate = "2019/09/22"
-
 let headerName = document.querySelector('#header-name');
 let stepsUserStepsToday = document.querySelector('#steps-user-steps-today');
 let stepsInfoActiveMinutesToday = document.querySelector('#steps-info-active-minutes-today');
@@ -31,7 +30,86 @@ let stepsFriendAverageStepGoal = document.querySelector('#steps-friend-average-s
 let hydrationUserOuncesToday = document.querySelector('#hydration-user-ounces-today');
 let dailyOz = document.querySelectorAll('.daily-oz');
 
+// CARDS
+let stepsMainCard = document.querySelector('#steps-main-card');
+let stepsInfoCard = document.querySelector('#steps-info-card');
+let stepsFriendsCard = document.querySelector('#steps-friends-card');
+let stepsCalendarCard = document.querySelector('#steps-calendar-card');
+let hydrationMainCard = document.querySelector('#hydration-main-card');
+let hydrationInfoCard = document.querySelector('#hydration-info-card');
+let hydrationFriendsCard = document.querySelector('#hydration-friends-card');
+let hydrationCalendarCard = document.querySelector('#hydration-calendar-card');
+let stairsMainCard = document.querySelector('#stairs-main-card');
+let stairsInfoCard = document.querySelector('#stairs-info-card');
+let stairsFriendsCard = document.querySelector('#stairs-friends-card');
+let stairsCalendarCard = document.querySelector('#stairs-calendar-card');
+let sleepMainCard = document.querySelector('#sleep-main-card');
+let sleepInfoCard = document.querySelector('#sleep-info-card');
+let sleepFriendsCard = document.querySelector('#sleep-friends-card');
+let sleepCalendarCard = document.querySelector('#sleep-calendar-card');
+let mainPage = document.querySelector('main');
 
+// EVENT LISTENERS
+mainPage.addEventListener('click', showInfo);
+
+//FLIPPING CARDS
+function showInfo() {
+  if (event.target.classList.contains('steps-info-button')) {
+    flipCard(stepsMainCard, stepsInfoCard);
+  }
+  if (event.target.classList.contains('steps-friends-button')) {
+    flipCard(stepsMainCard, stepsFriendsCard);
+  }
+  if (event.target.classList.contains('steps-calendar-button')) {
+    flipCard(stepsMainCard, stepsCalendarCard);
+  }
+  if (event.target.classList.contains('hydration-info-button')) {
+    flipCard(hydrationMainCard, hydrationInfoCard);
+  }
+  if (event.target.classList.contains('hydration-friends-button')) {
+    flipCard(hydrationMainCard, hydrationFriendsCard);
+  }
+  if (event.target.classList.contains('hydration-calendar-button')) {
+    flipCard(hydrationMainCard, hydrationCalendarCard);
+  }
+  if (event.target.classList.contains('stairs-info-button')) {
+    flipCard(stairsMainCard, stairsInfoCard);
+  }
+  if (event.target.classList.contains('stairs-friends-button')) {
+    flipCard(stairsMainCard, stairsFriendsCard);
+  }
+  if (event.target.classList.contains('stairs-calendar-button')) {
+    flipCard(stairsMainCard, stairsCalendarCard);
+  }
+  if (event.target.classList.contains('sleep-info-button')) {
+    flipCard(sleepMainCard, sleepInfoCard);
+  }
+  if (event.target.classList.contains('sleep-friends-button')) {
+    flipCard(sleepMainCard, sleepFriendsCard);
+  }
+  if (event.target.classList.contains('sleep-calendar-button')) {
+    flipCard(sleepMainCard, sleepCalendarCard);
+  }
+  if (event.target.classList.contains('steps-go-back-button')) {
+    flipCard(event.target.parentNode, stepsMainCard);
+  }
+  if (event.target.classList.contains('hydration-go-back-button')) {
+    flipCard(event.target.parentNode, hydrationMainCard);
+  }
+  if (event.target.classList.contains('stairs-go-back-button')) {
+    flipCard(event.target.parentNode, stairsMainCard);
+  }
+  if (event.target.classList.contains('sleep-go-back-button')) {
+    flipCard(event.target.parentNode, sleepMainCard);
+  }
+}
+
+function flipCard(cardToHide, cardToShow) {
+  cardToHide.classList.add('hide');
+  cardToShow.classList.remove('hide');
+}
+
+// DATA MANIPULATION
 stepsUserStepsToday.innerText = activityData.find(activity => {
   return activity.userID === user.id && activity.date === todayDate;
 }).numSteps;
@@ -62,5 +140,5 @@ for (var i = 0; i < dailyOz.length; i++) {
   dailyOz[i].innerText = user.addDailyOunces(Object.keys(sortedHydrationDataByDate[i])[0])
 }
 
-stepsInfoUserStepGoal.innerText = `${userRepository.users[userIndex].dailyStepGoal}`;
+stepsInfoUserStepGoal.innerText = `${user.dailyStepGoal}`;
 stepsFriendAverageStepGoal.innerText = `${userRepository.calculateAverageStepGoal()}`

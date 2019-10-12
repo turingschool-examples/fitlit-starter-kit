@@ -63,4 +63,9 @@ describe('Activity', () => {
         activity.findCurrentUserActivityData();
         expect(activity.findMostStairsClimbedForUserAllTime()).to.equal(44);
     });
+
+    it('should find based on date the average number of stairs all users climbed', () => {
+        activity.findCurrentUserActivityData();
+        expect(activity.calculateAvgStairsClimbedOnSpecificDateAllUsers("2019/06/15")).to.equal(19.7);
+    });
 });

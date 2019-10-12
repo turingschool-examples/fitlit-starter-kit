@@ -11,7 +11,9 @@ class Hydration {
       return user.id === hydrate.userId;
     }).updateHydration(this.date, this.ounces);
   }
-  
+  calculateDailyGlasses() {
+    return Math.floor(this.ounces/8);
+  }
 
 }
 

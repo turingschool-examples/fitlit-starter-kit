@@ -52,11 +52,7 @@ let sortedHydrationDataByDate = user.ouncesRecord.sort((a, b) => {
     return 1;
   }
   return 0;
-})
-// Array.from(dailyOz).forEach(dailyOzOnDOM => {
-//   dailyOzOnDOM.innerText =
-// })
-
+});
 
 for (var i = 0; i < dailyOz.length; i++) {
   dailyOz[i].innerText = user.addDailyOunces(Object.keys(sortedHydrationDataByDate[i])[0])

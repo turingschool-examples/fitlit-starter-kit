@@ -54,6 +54,18 @@ describe('User', function() {
   it('should have a default ouncesRecord of []', function() {
     expect(user.ouncesRecord).to.deep.equal([]);
   });
+  it('should have a default hoursSleptAverage of 0', function() {
+    expect(user.hoursSleptAverage).to.equal(0);
+  });
+  it('should have a default sleepQualityAverage of 0', function() {
+    expect(user.sleepQualityAverage).to.equal(0);
+  });
+  it('should have a default sleepHoursRecord', function() {
+    expect(user.sleepHoursRecord).to.deep.equal([]);
+  });
+  it('should have a default sleepQualityRecord of []', function() {
+    expect(user.sleepQualityRecord).to.deep.equal([]);
+  });
   it('getFirstName should return the first name of the user', function () {
     expect(user.getFirstName()).to.equal('LUISA');
   });

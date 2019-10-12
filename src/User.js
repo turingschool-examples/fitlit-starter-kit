@@ -9,6 +9,10 @@ class User {
     this.friends = userData.friends;
     this.ouncesAverage = 0;
     this.ouncesRecord = [];
+    this.hoursSleptAverage = 0;
+    this.sleepQualityAverage = 0;
+    this.sleepHoursRecord = [];
+    this.sleepQualityRecord = []
   }
   getFirstName() {
     var names = this.name.split(' ');

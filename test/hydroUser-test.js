@@ -15,7 +15,7 @@ describe('hydroUser', () => {
     userHydroData = hydroRepo.getUserHydroData(1);
     hydroUser = new HydroUser(userHydroData);
   });
-  
+
   it('should be a function', () => {
     expect(HydroUser).to.be.a('function');
   });
@@ -27,7 +27,7 @@ describe('hydroUser', () => {
   it('should have a single user\'s hydration data', () => {
     expect(hydroUser.hydrationData).to.equal(userHydroData);
   });
-  
+
   it('should calculate avg oz consumed daily for all time', () => {
     expect(hydroUser.calcAvgTotalOz()).to.equal(60);
   });
@@ -37,7 +37,6 @@ describe('hydroUser', () => {
   });
 
   it('should get fluid oz consumed per day by week', () => {
-    console.log(userHydroData);
     expect(hydroUser.getDailyOzPerWeek()).to.deep.equal([{ userID: 1, date: '2019/06/17', numOunces: 96 },
     { userID: 1, date: '2019/06/18', numOunces: 61 },
     { userID: 1, date: '2019/06/19', numOunces: 91 },

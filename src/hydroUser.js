@@ -12,7 +12,6 @@ class HydroUser {
   }
 
   getOzByDate(date) {
-    console.log(this.hydrationData);
     let userDateData = this.hydrationData.find(hydroData => {
       return hydroData.date === date;
     });

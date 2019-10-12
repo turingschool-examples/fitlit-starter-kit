@@ -45,19 +45,19 @@ describe('Sleep', function() {
       "date": "2019/06/15",
       "hoursSlept": 6.1,
       "sleepQuality": 2.2
-    });
+    }, userRepository);
     sleep2 = new Sleep({
       "userID": 2,
       "date": "2019/06/25",
       "hoursSlept": 7.3,
       "sleepQuality": 3.2
-    });
+    }, userRepository);
     sleep3 = new Sleep({
       "userID": 1,
       "date": "2019/07/17",
       "hoursSlept": 9.3,
       "sleepQuality": 1.4
-    });
+    }, userRepository);
   });
   it('should be a function', function() {
     expect(Sleep).to.be.a('function');
@@ -77,4 +77,18 @@ describe('Sleep', function() {
   it('should hold sleep quality', function() {
     expect(sleep3.sleepQuality).to.equal(1.4);;
   });
+  describe('sleep', function() {
+    it('should update user\'s slept hours record', function() {
+      expect(user1.sleepHoursRecord.length).to.equal(2);;
+    });
+    it('should update user\'s slept hours record', function() {
+      expect(user2.sleepQualityRecord.length).to.equal(1);;
+    });
+    it('should update user\'s slept hours average', function() {
+      expect(user1.hoursSleptAverage).to.equal(7.7);;
+    });
+    it('should update user\'s sleep quality average', function() {
+      expect(user1.sleepQualityAverage).to.equal(1.8);;
+    });
+  })
 });

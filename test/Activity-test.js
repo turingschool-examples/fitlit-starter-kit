@@ -79,4 +79,9 @@ describe('Activity', () => {
         activity.findCurrentUserActivityData();
         expect(activity.calculateAvgMinutesActiveOnSpecificDateAllUsers("2019/06/15")).to.equal(131);
     });
+
+    it('should find the date a user has been most active', () => {
+        activity.findCurrentUserActivityData();
+        expect(activity.findMostActiveDateForUser()).to.equal("2019/06/19");
+    });
 });

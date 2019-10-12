@@ -22,6 +22,7 @@ function clickLoginButton(event) {
     addStepComparison(user, userRepo);
     addOzToday();
     addWeeklyOzByDay();
+    addSleepDataforDay();
   }
 }
 
@@ -89,8 +90,35 @@ function addWeeklyOzByDay() {
       <p>${day.numOunces}</p>
     </section>`);
   })
-
 }
+
+function addSleepDataforDay() {
+  let hoursSleptOnDay = sleepUser.getSleepDataDay('2019/06/22', 'hoursSlept');
+  let sleepQualityOnDay = sleepUser.getSleepDataDay('2019/06/22', 'sleepQuality');
+  $("#card-sleep-daily-data").after(`
+    <section class="section-style">
+      <h3>Hours Slept Last Night</h3>
+      <p>${hoursSleptOnDay}</p>
+    </section>
+    <section class="section-style">
+      <h3>Sleep Quality Last Night</h3>
+      <p>${sleepQualityOnDay}</p>
+    </section>`)
+}
+
+function addWeeklySleepDataByDay() {
+
+
+ // let weeklyUserOz =  hydroUser.getDailyOzPerWeek();
+ //  weeklyUserOz.forEach(day => {
+ //    $("#card-weekly-oz-header").after(`
+ //    <section class="section-style">
+ //      <h3>${day.date}</h3>
+ //      <p>${day.numOunces}</p>
+ //    </section>`);
+ //  })
+}
+
 
 function displayUserPage() {
     $("#main-login-page").remove();
@@ -124,115 +152,143 @@ function displayUserPage() {
       </section>
     </aside>
     <main class="main-user-stats">
-      <article class="card-style card-daily-oz">
-        <h2 id="card-daily-oz-header">Have you been drinkin'?</h2>
-      </article>
-      <article class="card-style card-weekly-oz">
-        <h2 id="card-weekly-oz-header">Weekly Water Intake</h2>
-      </article>
-      <article class="card-style card-daily-activity">
-        <h2>Today's Activity</h2>
-        <section class="section-style">daily info compared to friends</section>
-      </article>
-      <article class="card-style card-weekly-activity">
-        <h2>Previous Activity</h2>
-        <section class="section-style">
-          <h3>day one</h3>
-          <div>steps</div>
-          <div>flights</div>
-          <div>mins</div>
-        </section>
-        <section class="section-style">
-          <h3>day two</h3>
-          <div>steps</div>
-          <div>flights</div>
-          <div>mins</div>
-        </section>
-        <section class="section-style">
-          <h3>day three</h3>
-          <div>steps</div>
-          <div>flights</div>
-          <div>mins</div>
-        </section>
-        <section class="section-style">
-          <h3>day four</h3>
-          <div>steps</div>
-          <div>flights</div>
-          <div>mins</div>
-        </section>
-        <section class="section-style">
-          <h3>day five</h3>
-          <div>steps</div>
-          <div>flights</div>
-          <div>mins</div>
-        </section>
-        <section class="section-style">
-          <h3>day six</h3>
-          <div>steps</div>
-          <div>flights</div>
-          <div>mins</div>
-        </section>
-        <section class="section-style">
-          <h3>day seven</h3>
-          <div>steps</div>
-          <div>flights</div>
-          <div>mins</div>
-        </section>
-      </article>
-      <article class="card-style card-daily-sleep">
-        <h2>Previous Night's Sleep Stats</h2>
-        <section class="section-style">daily hours slept</section>
-        <section class="section-style">daily quality of sleep</section>
-      </article>
-      <article class="card-style card-weekly-sleep">
-        <h2>Seven Days of Sleep</h2>
-        <section class="section-style">
-          <h3>day one</h3>
-          <div>hours slept</div>
-          <div>quality of sleep</div>
-        </section>
-        <section class="section-style">
-          <h3>day two</h3>
-          <div>hours slept</div>
-          <div>quality of sleep</div>
-        </section>
-        <section class="section-style">
-          <h3>day three</h3>
-          <div>hours slept</div>
-          <div>quality of sleep</div>
-        </section>
-        <section class="section-style">
-          <h3>day four</h3>
-          <div>hours slept</div>
-          <div>quality of sleep</div>
-        </section>
-        <section class="section-style">
-          <h3>day five</h3>
-          <div>hours slept</div>
-          <div>quality of sleep</div>
-        </section>
-        <section class="section-style">
-          <h3>day six</h3>
-          <div>hours slept</div>
-          <div>quality of sleep</div>
-        </section>
-        <section class="section-style">
-          <h3>day seven</h3>
-          <div>hours slept</div>
-          <div>quality of sleep</div>
-        </section>
-      </article>
-      <article class="card-style card-all-time-sleep">
-        <h2>All Time Sleep Stats</h2>
-        <section class="section-style">
-        <h3>all time avg hours slept</h3>
-        <div>stats here</div>
-        </section>
-        <section class="section-style">
-          <h3>all time avg sleep quality</h3>
+      <div class="main-user-stats-div">
+        <article class="card-style card-daily-oz">
+          <h2 id="card-daily-oz-header">Have you been drinkin'?</h2>
+        </article>
+        <article class="card-style card-weekly-oz">
+          <h2 id="card-weekly-oz-header">Weekly Water Intake</h2>
+        </article>
+        <article class="card-style card-daily-activity">
+          <h2>Today's Activity</h2>
+          <section class="section-style">daily info compared to friends</section>
+        </article>
+        <article class="card-style card-weekly-activity">
+          <h2>Previous Activity</h2>
+          <section class="section-style">
+            <h3>day one</h3>
+            <section class="activity-weekly-data-section">
+              <div>steps</div>
+              <div>flights</div>
+              <div>mins</div>
+            </section>
+          </section>
+          <section class="section-style">
+            <h3>day two</h3>
+            <section class="activity-weekly-data-section">
+              <div>steps</div>
+              <div>flights</div>
+              <div>mins</div>
+            </section>
+          </section>
+          <section class="section-style">
+            <h3>day three</h3>
+            <section class="activity-weekly-data-section">
+              <div>steps</div>
+              <div>flights</div>
+              <div>mins</div>
+            </section>
+          </section>
+          <section class="section-style">
+            <h3>day four</h3>
+            <section class="activity-weekly-data-section">
+              <div>steps</div>
+              <div>flights</div>
+              <div>mins</div>
+            </section>
+          </section>
+          <section class="section-style">
+            <h3>day five</h3>
+            <section class="activity-weekly-data-section">
+              <div>steps</div>
+              <div>flights</div>
+              <div>mins</div>
+            </section>
+          </section>
+          <section class="section-style">
+            <h3>day six</h3>
+            <section class="activity-weekly-data-section">
+              <div>steps</div>
+              <div>flights</div>
+              <div>mins</div>
+            </section>
+          </section>
+          <section class="section-style">
+            <h3>day seven</h3>
+            <section class="activity-weekly-data-section">
+              <div>steps</div>
+              <div>flights</div>
+              <div>mins</div>
+            </section>
+          </section>
+        </article>
+        <article class="card-style card-daily-sleep">
+          <h2 id="card-sleep-daily-data">Previous Night's Sleep Stats</h2>
+        </article>
+        <article class="card-style card-weekly-sleep">
+          <h2>Seven Days of Sleep</h2>
+          <section class="section-style">
+            <h3>day one</h3>
+            <section class="sleep-weekly-data-section">
+              <div>hours slept</div>
+              <div>quality of sleep</div>
+            </section>
+          </section>
+          <section class="section-style">
+            <h3>day two</h3>
+            <section class="sleep-weekly-data-section">
+              <div>hours slept</div>
+              <div>quality of sleep</div>
+            </section>
+          </section>
+          <section class="section-style">
+            <h3>day three</h3>
+            <section class="sleep-weekly-data-section">
+              <div>hours slept</div>
+              <div>quality of sleep</div>
+            </section>
+          </section>
+          <section class="section-style">
+            <h3>day four</h3>
+            <section class="sleep-weekly-data-section">
+              <div>hours slept</div>
+              <div>quality of sleep</div>
+            </section>
+          </section>
+          <section class="section-style">
+            <h3>day five</h3>
+            <section class="sleep-weekly-data-section">
+              <div>hours slept</div>
+              <div>quality of sleep</div>
+            </section>
+          </section>
+          <section class="section-style">
+            <h3>day six</h3>
+            <section class="sleep-weekly-data-section">
+              <div>hours slept</div>
+              <div>quality of sleep</div>
+            </section>
+          </section>
+          <section class="section-style">
+            <h3>day seven</h3>
+            <section class="sleep-weekly-data-section">
+              <div>hours slept</div>
+              <div>quality of sleep</div>
+            </section>
+          </section>
+        </article>
+        <article class="card-style card-all-time-sleep">
+          <h2>All Time Sleep Stats</h2>
+          <section class="section-style">
+          <h3>all time avg hours slept</h3>
           <div>stats here</div>
-        </section>
-      </article>
+          </section>
+          <section class="section-style">
+            <h3>all time avg sleep quality</h3>
+            <div>stats here</div>
+          </section>
+        </article>
+      </div>
     </main>
   </div>`)
 }

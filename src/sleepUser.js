@@ -46,7 +46,6 @@ class SleepUser {
       return acc;
     }, {date: `${weekData[0].date} - ${weekData[7].date}`})
     avgWeekHoursSlept[avgPropertyNames] = avgWeekHoursSlept[avgPropertyNames] / 8;
-    console.log(avgWeekHoursSlept);
     return avgWeekHoursSlept;
   }
 

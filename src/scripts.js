@@ -9,9 +9,13 @@ activityData.forEach(activity => {
   activity = new Activity(activity);
 })
 
+hydrationData.forEach(hydration => {
+  hydration = new Hydration(hydration, userRepository);
+})
+
 // let userRepository = new UserRepository([userData]);
 
-let userIndex = 0;
+let user = userRepository.users[0];
 let todayDate = "2019/09/22"
 
 let headerName = document.querySelector('#header-name');
@@ -24,13 +28,39 @@ let stepsInfoUserStepGoal = document.querySelector('#steps-info-user-step-goal')
 let stepsCalendarTotalActiveMinutesWeekly = document.querySelector('#steps-calendar-total-active-minutes-weekly');
 let stepsCalendarTotalStepsWeekly = document.querySelector('#steps-calendar-total-steps-weekly');
 let stepsFriendAverageStepGoal = document.querySelector('#steps-friend-average-step-goal');
+let hydrationUserOuncesToday = document.querySelector('#hydration-user-ounces-today');
+let dailyOz = document.querySelectorAll('.daily-oz');
 
 
 stepsUserStepsToday.innerText = activityData.find(activity => {
-  return activity.userID === userRepository.users[userIndex].id && activity.date === todayDate;
+  return activity.userID === user.id && activity.date === todayDate;
 }).numSteps;
 
-headerName.innerText = `${userRepository.users[userIndex].getFirstName()}'S `;
+headerName.innerText = `${user.getFirstName()}'S `;
+
+stepsInfoUserStepGoal.innerText = `${user.dailyStepGoal}`;
+
+hydrationUserOuncesToday.innerText = hydrationData.find(hydration => {
+  return hydration.userID === user.id && hydration.date === todayDate;
+}).numOunces;
+
+let sortedHydrationDataByDate = user.ouncesRecord.sort((a, b) => {
+  if (Object.keys(a)[0] > Object.keys(b)[0]) { //sorts by descending
+    return -1;
+  }
+  if (Object.keys(a)[0] < Object.keys(b)[0]) {
+    return 1;
+  }
+  return 0;
+})
+// Array.from(dailyOz).forEach(dailyOzOnDOM => {
+//   dailyOzOnDOM.innerText =
+// })
+
+
+for (var i = 0; i < dailyOz.length; i++) {
+  dailyOz[i].innerText = user.addDailyOunces(Object.keys(sortedHydrationDataByDate[i])[0])
+}
 
 stepsInfoUserStepGoal.innerText = `${userRepository.users[userIndex].dailyStepGoal}`;
 stepsFriendAverageStepGoal.innerText = `${userRepository.calculateAverageStepGoal()}`

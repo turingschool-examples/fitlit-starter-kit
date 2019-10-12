@@ -4,7 +4,6 @@ const expect = chai.expect;
 const User = require('../src/User');
 
 
-
 describe('User', function() {
     let user;
     beforeEach(() => {
@@ -57,5 +56,13 @@ describe('User', function() {
   });
   it('getFirstName should return the first name of the user', function () {
     expect(user.getFirstName()).to.equal('LUISA');
+  });
+  it('should have a method that shows the last week of water', function() {
+    user.ouncesRecord = [
+      {"2019/06/15": 1},
+      {"2019/06/15": 1},
+      {"2019/06/16": 4}
+    ]
+    expect(user.addDailyOunces("2019/06/15")).to.equal(2);
   });
 });

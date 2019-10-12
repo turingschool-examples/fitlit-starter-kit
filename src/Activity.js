@@ -89,8 +89,17 @@ class Activity{
         return parseFloat(average.toFixed(1))
     }
     
-    calculateAvgStepsTakenAllOnSpecificDateAllUsers() {
-        
+    calculateAvgStepsTakenOnSpecificDateAllUsers(date) {
+        let alllUsersOnDate = this.currentActivityData.filter(user => {
+            return user.date === date;
+        })
+        let avgStepsTakenAllUsers = alllUsersOnDate.reduce((acc, currentElement) => {
+            acc += currentElement.numSteps;
+            return acc
+        }, 0)
+
+        let average = avgStepsTakenAllUsers / alllUsersOnDate.length;
+        return parseFloat(average.toFixed(1))
     }
     
     calculateAvgMinutesActiveOnSpecificDateAllUsers() {

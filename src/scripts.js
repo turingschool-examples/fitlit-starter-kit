@@ -21,3 +21,7 @@ $('#day-7').text(`Day 7: ${hydration.findOzByWeek(3, '2019/06/22', hydrationData
 //Our user class uses a property of `id` and our other classes use userID. Should consider changing if it doesn't break anything else.
 $('#hours-slept').text(sleep.showSleep(sleep.userID, '2019/06/22', 'hoursSlept', sleepData));
 $('#sleep-quality').text(sleep.showSleep(sleep.userID, '2019/06/22', 'sleepQuality', sleepData));
+// $('#hours-slept-week').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'hoursSelpt', sleepData));
+// $('#sleep-quality-week').text(sleep.findSleepWeek(sleep.userID, '2019/06/22', 'sleepQuality', sleepData));
+$('#hours-slept-all').text(sleep.calculateAvgSleep(sleep.userID, 'hoursSlept', sleepData));
+$('#sleep-quality-all').text(sleep.calculateAvgSleep(sleep.userID, 'sleepQuality', sleepData));

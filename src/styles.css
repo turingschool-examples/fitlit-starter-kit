@@ -166,7 +166,7 @@ h4 {
   width: 100%;
 }
 
-.hydration-today, #hours-slept, #sleep-quality, #hours-slept-week, #sleep-quality-week {
+.hydration-today, #hours-slept, #sleep-quality, #hours-slept-all, #sleep-quality-all {
   color: #33658A;
   font-size: 2.5rem;
   padding-left: 0px;

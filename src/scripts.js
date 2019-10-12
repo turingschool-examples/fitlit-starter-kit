@@ -6,8 +6,9 @@ const mainContainer = document.querySelector('.main__container')
 const header = document.querySelector('header');
 const randomNum = Math.floor(Math.random() * 50 + 1);
 const randomUser = users.getSingleUserData(randomNum);
+const sleep = new Sleep(sleepData);
 
-
+console.log(sleep)
 
 header.insertAdjacentHTML('beforeend', `<h2 class='name--display'>Welcome, ${randomUser.name}</h2>
     <div class='contact--info'>
@@ -31,13 +32,12 @@ header.insertAdjacentHTML('beforeend', `<h2 class='name--display'>Welcome, ${ran
 `)
 
 // mainContainer.insertAdjacentHTML('afterbegin', ``)
-console.log(hydration.findAWeek(randomUser.id))
+// console.log(hydration.findAWeek(randomUser.id))
 
 var ctx = document.getElementById('weekly--water').getContext('2d');
 var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'bar',
-
     // The data for our dataset
     data: {
         labels: hydration.findAWeek(randomUser.id).map(day => day.date),

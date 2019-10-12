@@ -1,10 +1,10 @@
 class Hydration {
-  constructor(userData) {
-    this.userData = userData;
+  constructor(userHydrationData) {
+    this.userHydrationData = userHydrationData;
 
   }
   findUser(id) {
-    return this.userData.filter(user => user.userID === id)
+    return this.userHydrationData.filter(user => user.userID === id)
   }
   calculateAvgWaterIntake(id) {
     let singleUser = this.findUser(id)
@@ -15,7 +15,7 @@ class Hydration {
     return +(totalOz.toFixed(0))
   }
   calculateDailyIntake(date, id) {
-    let singleDay = this.userData.find(day => day.date === date && day.userID === id)
+    let singleDay = this.userHydrationData.find(day => day.date === date && day.userID === id)
     return singleDay.numOunces
   }
   findAWeek(id) {

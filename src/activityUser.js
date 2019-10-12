@@ -39,6 +39,13 @@ class ActivityUser {
       return false;
     }
   }
+
+  getDaysBeatStepGoal(userStepGoal) {
+    let exceededGoal = this.activityData.filter(day => day.numSteps > userStepGoal)
+    let datesExceededGoal = exceededGoal.map(day => day.date)
+    return datesExceededGoal;
+  }
+
 }
 
 if (typeof module !== 'undefined') {

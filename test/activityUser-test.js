@@ -52,7 +52,31 @@ describe('activityUser', () => {
   });
 
   it('should calculate if the user reached their step goal on a given day', () => {
-
     expect(activityUser.evalReachStepGoal("2019/07/03", user.dailyStepGoal)).to.equal(false);
   });
+
+  it('should find all days user step goal was exceeded', () => {
+    expect(activityUser.getDaysBeatStepGoal(user.dailyStepGoal)).to.deep.equal([ '2019/06/17',
+    '2019/06/20',
+    '2019/06/22',
+    '2019/06/23',
+    '2019/06/28',
+    '2019/06/30',
+    '2019/07/05',
+    '2019/07/07',
+    '2019/07/08',
+    '2019/07/09',
+    '2019/07/14',
+    '2019/07/20',
+    '2019/07/21',
+    '2019/07/22',
+    '2019/07/26',
+    '2019/07/31',
+    '2019/08/01',
+    '2019/08/08',
+    '2019/08/10',
+    '2019/08/15',
+    '2019/08/17' ]);
+  });
+
 });

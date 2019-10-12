@@ -52,7 +52,7 @@ let mainPage = document.querySelector('main');
 // EVENT LISTENERS
 mainPage.addEventListener('click', showInfo);
 
-//FLIP CARD CLEAN
+//FLIPPING CARDS
 function showInfo() {
   if (event.target.classList.contains('steps-info-button')) {
     flipCard(stepsMainCard, stepsInfoCard);
@@ -89,6 +89,18 @@ function showInfo() {
   }
   if (event.target.classList.contains('sleep-calendar-button')) {
     flipCard(sleepMainCard, sleepCalendarCard);
+  }
+  if (event.target.classList.contains('steps-go-back-button')) {
+    flipCard(event.target.parentNode, stepsMainCard);
+  }
+  if (event.target.classList.contains('hydration-go-back-button')) {
+    flipCard(event.target.parentNode, hydrationMainCard);
+  }
+  if (event.target.classList.contains('stairs-go-back-button')) {
+    flipCard(event.target.parentNode, stairsMainCard);
+  }
+  if (event.target.classList.contains('sleep-go-back-button')) {
+    flipCard(event.target.parentNode, sleepMainCard);
   }
 }
 

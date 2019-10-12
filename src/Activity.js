@@ -102,13 +102,23 @@ class Activity{
         return parseFloat(average.toFixed(1))
     }
     
-    calculateAvgMinutesActiveOnSpecificDateAllUsers() {
-        
+    calculateAvgMinutesActiveOnSpecificDateAllUsers(date) {
+        let alllUsersOnDate = this.currentActivityData.filter(user => {
+            return user.date === date;
+        })
+        let avgMinutesActiveAllUsers = alllUsersOnDate.reduce((acc, currentElement) => {
+            acc += currentElement.minutesActive;
+            return acc
+        }, 0)
+
+        let average = avgMinutesActiveAllUsers / alllUsersOnDate.length;
+        return parseFloat(average.toFixed(0))
     }
     
     findMostActiveDateForUser() {
         
     } 
+    
 }
 
 if (typeof module !== 'undefined') {

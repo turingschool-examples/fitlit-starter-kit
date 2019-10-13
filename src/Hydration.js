@@ -1,8 +1,8 @@
 class Hydration {
-  constructor({ userID, date, numOunces }) {
-    this.userId = userID;
-    this.date = date;
-    this.numOunces = numOunces;
+  constructor(userRepo) {
+    this.userId = userRepo.currentUserId;
+    this.date = userRepo.day;
+    this.numOunces = null;
   }
 
   calcAvgFluidConsumption(id, hydrationData) {
@@ -17,8 +17,10 @@ class Hydration {
     return (totalOunces / userOunces.length);
   }
 
-  findDayFluid(id, date) {
-    // takes Id and date, return fluids drank.
+  findDayFluid(hydrationData) {
+    this.numOunces = hydrationData.find(hydro => {
+      return hydro.userID === this.userId && hydro.date === this.date;
+    })
   }
 
   findWeeksFluid() {

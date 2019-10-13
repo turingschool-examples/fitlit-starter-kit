@@ -40,10 +40,10 @@ class Activity {
     }
     
     matchGoal(date, data) {
-      let user = data.filter(elem => {
+      let user = data.find(elem => {
         return elem.userID === this.userID && elem.date === date;
       })
-      if (user[0].numSteps >= this.stepGoal) {
+      if (user.numSteps >= this.stepGoal) {
         return true;
       } else {
         return false;

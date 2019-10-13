@@ -36,6 +36,7 @@ class Sleep {
     let user = sleepData.filter(function(elem) {
       return elem.userID === id;
     });
+    
     let userIndex = user.findIndex(function(elem) {
       return elem.date === date;
     });

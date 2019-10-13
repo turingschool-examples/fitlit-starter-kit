@@ -22,5 +22,8 @@ describe('Activity', function(){
   it('should return user\'s minutes active', function() {
     expect(activity.returnMinutesActive(activityData, "2019/06/15")).to.equal(138);
   });
-  
+  it('should return a weekly average of minutes active for 1 user', function() {
+    expect(activity.returnWeekAvg(activityData, '2019/06/15')).to.equal(125);
+    // console.log(activityData)
+  })
 });

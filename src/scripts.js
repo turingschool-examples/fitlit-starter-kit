@@ -44,6 +44,7 @@ let sleepInfoQualityAverageAlltime = document.querySelector('#sleep-info-quality
 let sleepCalendarHoursAverageWeekly = document.querySelector('#sleep-calendar-hours-average-weekly');
 let sleepCalendarQualityAverageWeekly = document.querySelector('#sleep-calendar-quality-average-weekly');
 let sleepFriendLongestSleeper = document.querySelector('#sleep-friend-longest-sleeper');
+let sleepFriendWorstSleeper = document.querySelector('#sleep-friend-worst-sleeper');
 
 
 
@@ -181,6 +182,13 @@ hydrationFriendOuncesToday.innerText = userRepository.calculateAverageDailyWater
 sleepFriendLongestSleeper.innerText = userRepository.users.find(user => {
   return user.id === userRepository.getLongestSleepers(todayDate)
 }).getFirstName();
+
+sleepFriendWorstSleeper.innerText = userRepository.users.find(user => {
+  return user.id === userRepository.getWorstSleepers(todayDate)
+}).getFirstName();
+
+
+
 
 
 console.log(userRepository.getLongestSleepers(todayDate));

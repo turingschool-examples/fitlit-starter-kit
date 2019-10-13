@@ -52,10 +52,12 @@ class UserRepository {
     }, 0)
     return Math.floor(sumDrankOnDate / todaysDrinkers.length);
   }
+  findBestSleepers(date) {
+    return this.users.filter(user => {
+      return user.calculateAverageQualityThisWeek(date) > 3;
+    })
+  }
 }
-
-// number of users that drank on that date and the total ounces consumed on that date
-// addDailyOunces gives a user's daily ounces on that date
 
 if (typeof module !== 'undefined') {
   module.exports = UserRepository;

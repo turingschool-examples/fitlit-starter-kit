@@ -30,6 +30,7 @@ function clickLoginButton(event) {
     addAllTimeSleepAvg();
     addMilesForLatestDay();
     addMinutesActiveByDay();
+    addNumStepsForLatestDay();
   }
 }
 
@@ -148,11 +149,11 @@ function addAllTimeSleepAvg() {
 }
 
 function addMilesForLatestDay() {
-  let todaysSteps = activityUser.calcMilesByDay('2019/09/22', user.strideLength);
+  let todaysMiles = activityUser.calcMilesByDay('2019/09/22', user.strideLength);
   $("#daily-activity-header").after(`
   <section class="section-style">
   <h3>Miles Walked</h3>
-  <p>${todaysSteps}</p>
+  <p>${todaysMiles}</p>
 </section>`)
 }
 
@@ -165,8 +166,13 @@ $("#daily-activity-header").after(`
 </section>`)
 }
 
-function () {
-
+function addNumStepsForLatestDay() {
+let todaysSteps = activityUser.getNumStepsByDay('2019/09/22');
+$("#daily-activity-header").after(`
+<section class="section-style">
+<h3>Today's Steps</h3>
+<p>${todaysSteps}</p>
+</section>`)
 }
 
 function displayUserPage() {

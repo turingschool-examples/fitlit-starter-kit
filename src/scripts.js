@@ -43,6 +43,7 @@ let sleepInfoHoursAverageAlltime = document.querySelector('#sleep-info-hours-ave
 let sleepInfoQualityAverageAlltime = document.querySelector('#sleep-info-quality-average-alltime');
 let sleepCalendarHoursAverageWeekly = document.querySelector('#sleep-calendar-hours-average-weekly');
 let sleepCalendarQualityAverageWeekly = document.querySelector('#sleep-calendar-quality-average-weekly');
+let sleepFriendBestSleepers = document.querySelector('#sleep-friend-best-sleepers');
 
 
 
@@ -176,3 +177,8 @@ hydrationInfoGlassesToday.innerText = hydrationData.find(hydration => {
   return hydration.userID === user.id && hydration.date === todayDate;
 }).numOunces / 8;
 hydrationFriendOuncesToday.innerText = userRepository.calculateAverageDailyWater(todayDate);
+
+sleepFriendBestSleepers.innerText = userRepository.findBestSleepers(todayDate).map(sleeper => {
+  console.log(sleeper);
+  return sleeper.getFirstName();
+}).shift();

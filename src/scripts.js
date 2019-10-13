@@ -29,17 +29,6 @@ $(function() {
     let draggie = new Draggabilly( gridItem );
     $grid.packery( 'bindDraggabillyEvents', draggie );
   });
-
-  function orderItems() {
-    var itemElems = $grid.packery('getItemElements');
-    $( itemElems ).each( function( i, itemElem ) {
-      $( itemElem ).text( i + 1 );
-    });
-  }
-  
-  $grid.on( 'layoutComplete', orderItems );
-  $grid.on( 'dragItemPositioned', orderItems );
-  
  
   $('.span__currentUser').text(user.getUserFirstName())  
   $('.user__address').text(userData[randomUser].address);
@@ -84,7 +73,7 @@ $(function() {
     data: {
       labels: ["Today\'s Hours Sleep", "Today\'s Sleep Quality"],
       datasets: [{
-        label: 'Water Consumed Per',
+        label: 'Today\'s Sleep Numbers',
         data: [userSleep.userSleepHoursByDate(randomUser, today), userSleep.userSleepQualityByDate(randomUser, today)],
         backgroundColor: [
           'rgb(112, 56, 1, 0.7)',
@@ -162,6 +151,30 @@ $(function() {
     }
   });
 
+  const alltimeAvgSleepNums = new Chart($('#alltimeAvgSleep'), {
+    type: 'bar',
+    data: {
+      labels: ["Alltime Average Hours Slept", "Alltime Average Sleep Quality"],
+      datasets: [{
+        label: 'Alltime Average Sleep Numebrs',
+        data: [userSleep.avgUserHoursSleptPerDay(randomUser), userSleep.avgUserSleepQualityDateAllTime(randomUser)],
+        backgroundColor: [
+          'rgb(112, 28, 1, 0.7)',
+          'rgb(112, 56, 1, 0.7)',
+          'rgb(112, 28, 1, 0.7)'
+        ],
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
 
 
 });

@@ -33,6 +33,7 @@ function clickLoginButton(event) {
     addMilesForLatestDay();
     addMinutesActiveByDay();
     addNumStepsForLatestDay();
+    addWeeklyActivityDataByDay();
   }
 }
 
@@ -199,7 +200,21 @@ function addAllUsersActivityAverages() {
       <div>Flights: ${avgFlights}</div>
     </section>
   </section>`)
+}
 
+function addWeeklyActivityDataByDay() {
+  let weeklyUserActivityHours = activityUser.getDailyActivityByWeek('2019/06/22');
+  weeklyUserActivityHours.forEach(day => {
+    $("#weekly-activity-header").after(`
+      <section class="section-style">
+        <h3>${day.date}</h3>
+        <section class="sleep-weekly-data-section">
+          <div>Steps: ${day.numSteps}</div>
+          <div>Minutes: ${day.minutesActive}</div>
+          <div>Flights: ${day.flightsOfStairs}</div>
+        </section>
+      </section>`)
+    })
 }
 
 function displayUserPage() {
@@ -247,63 +262,7 @@ function displayUserPage() {
           <h2 id="daily-activity-header">Today's Activity</h2>
         </article>
         <article class="card-style card-weekly-activity">
-          <h2>This Week's Activity</h2>
-          <section class="section-style">
-            <h3>day one</h3>
-            <section class="activity-weekly-data-section">
-              <div>steps</div>
-              <div>flights</div>
-              <div>mins</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day two</h3>
-            <section class="activity-weekly-data-section">
-              <div>steps</div>
-              <div>flights</div>
-              <div>mins</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day three</h3>
-            <section class="activity-weekly-data-section">
-              <div>steps</div>
-              <div>flights</div>
-              <div>mins</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day four</h3>
-            <section class="activity-weekly-data-section">
-              <div>steps</div>
-              <div>flights</div>
-              <div>mins</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day five</h3>
-            <section class="activity-weekly-data-section">
-              <div>steps</div>
-              <div>flights</div>
-              <div>mins</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day six</h3>
-            <section class="activity-weekly-data-section">
-              <div>steps</div>
-              <div>flights</div>
-              <div>mins</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day seven</h3>
-            <section class="activity-weekly-data-section">
-              <div>steps</div>
-              <div>flights</div>
-              <div>mins</div>
-            </section>
-          </section>
+          <h2 id="weekly-activity-header">This Week's Activity</h2>
         </article>
         <article class="card-style card-daily-sleep">
           <h2 id="card-sleep-daily-data">Previous Night's Sleep Stats</h2>

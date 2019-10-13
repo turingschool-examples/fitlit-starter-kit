@@ -28,6 +28,7 @@ function clickLoginButton(event) {
     addSleepDataforDay();
     addWeeklySleepDataByDay();
     addAllTimeSleepAvg();
+    addFlightsOfStairsForLatestDay();
     addMilesForLatestDay();
     addMinutesActiveByDay();
     addNumStepsForLatestDay();
@@ -154,25 +155,34 @@ function addMilesForLatestDay() {
   <section class="section-style">
   <h3>Miles Walked</h3>
   <p>${todaysMiles}</p>
-</section>`)
+  </section>`)
 }
 
 function addMinutesActiveByDay() {
-let todaysMinutes = activityUser.getMinutesActiveByDay('2019/09/22');
-$("#daily-activity-header").after(`
-<section class="section-style">
-<h3>Minutes Active</h3>
-<p>${todaysMinutes}</p>
-</section>`)
+  let todaysMinutes = activityUser.getMinutesActiveByDay('2019/09/22');
+  $("#daily-activity-header").after(`
+  <section class="section-style">
+  <h3>Minutes Active</h3>
+  <p>${todaysMinutes}</p>
+  </section>`)
 }
 
 function addNumStepsForLatestDay() {
-let todaysSteps = activityUser.getNumStepsByDay('2019/09/22');
-$("#daily-activity-header").after(`
-<section class="section-style">
-<h3>Today's Steps</h3>
-<p>${todaysSteps}</p>
-</section>`)
+  let todaysSteps = activityUser.getNumStepsByDay('2019/09/22');
+  $("#daily-activity-header").after(`
+  <section class="section-style">
+  <h3>Today's Steps</h3>
+  <p>${todaysSteps}</p>
+  </section>`)
+}
+
+function addFlightsOfStairsForLatestDay() {
+  let todaysFlights = activityUser.getFlightsClimbedByDay('2019/09/22');
+  $("#daily-activity-header").after(`
+  <section class="section-style">
+  <h3>Today's Flights Climbed</h3>
+  <p>${todaysFlights}</p>
+  </section>`)
 }
 
 function displayUserPage() {

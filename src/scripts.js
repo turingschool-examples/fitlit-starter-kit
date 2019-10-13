@@ -1,14 +1,19 @@
 // INTANTIATING
 let userRepository = new UserRepository();
 
+let activityInstances = activityData.map(activity => {
+  return new Activity(activity);
+})
+
 userData.forEach(user => {
+  let userActivityData = activityInstances.filter(activity => {
+    return activity.userId === user.id
+  })
   user = new User(user);
+  user.activityData = userActivityData;
   userRepository.users.push(user)
 });
 
-activityData.forEach(activity => {
-  activity = new Activity(activity);
-})
 
 hydrationData.forEach(hydration => {
   hydration = new Hydration(hydration, userRepository);

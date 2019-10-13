@@ -8,6 +8,12 @@ const User = require('../src/User');
 describe('Sleep', function() {
     let sleepData;
     let sleep;
+    let user1;
+    let user2;
+    let user3;
+    let user4;
+    let users;
+    let userRepo;
 
   beforeEach(function () {
     sleepData = [
@@ -145,6 +151,43 @@ describe('Sleep', function() {
       },];
 
     sleep = new Sleep(sleepData);
+    user1 = new User({id: 1,
+      name: "Alex Roth",
+      address: "1234 Turing Street, Denver CO 80301-1697",
+      email: "alex.roth1@hotmail.com",
+      strideLength: 4.3,
+      dailyStepGoal: 10000,
+      friends: [2, 3, 4]
+    });
+    user2 = new User({id: 2,
+      name: "Allie McCarthy",
+      address: "1235 Turing Street, Denver CO 80301-1697",
+      email: "allie.mcc1@hotmail.com",
+      strideLength: 3.3,
+      dailyStepGoal: 9000,
+      friends: [1, 3, 4]
+    });
+    user3 = new User({
+      id: 3,
+      name: "The Rock",
+      address: "1236 Awesome Street, Denver CO 80301-1697",
+      email: "therock@hotmail.com",
+      strideLength: 10,
+      dailyStepGoal: 60000,
+      friends: [1, 2, 4]
+    });
+
+user4 = new User({
+      id: 4,
+      name: "Rainbow Dash",
+      address: "1237 Equestria Street, Denver CO 80301-1697",
+      email: "rainbowD1@hotmail.com",
+      strideLength: 3.8,
+      dailyStepGoal: 7000,
+      friends: [1, 2, 3]
+    });
+    users = [user1, user2, user3, user4];
+    userRepo = new UserRepo(users);
   });
 
   it('should take in a list of data', function() {
@@ -172,30 +215,21 @@ describe('Sleep', function() {
     expect(sleep.calculateDailySleepQuality(4, "2019/06/21")).to.equal(3.5);
   });
 
-  it('should find sleep by day for its week', function() {
-    const user3 = new User({id: 3,
-          name: "The Rock",
-          address: "1236 Awesome Street, Denver CO 80301-1697",
-          email: "therock@hotmail.com",
-          strideLength: 10,
-          dailyStepGoal: 60000,
-          friends: [1, 2, 4]
-        });
+  it('should find sleep by day for that days week', function() {
 
-        const user4 = new User({id: 4,
-          name: "Rainbow Dash",
-          address: "1237 Equestria Street, Denver CO 80301-1697",
-          email: "rainbowD1@hotmail.com",
-          strideLength: 3.8,
-          dailyStepGoal: 7000,
-          friends: [1, 2, 3]
-        });
-    const users = [user3, user4];
-    const userRepo = new UserRepo(users);
-    console.log(userRepo.makeSortedUserArray(4, sleepData))
-    console.log(sleep.calculateWeekSleep('2017/06/15', 4, userRepo));
     expect(sleep.calculateWeekSleep('2019/06/18', 4, userRepo)[0]).to.eql('2019/06/18: 7.9');
     expect(sleep.calculateWeekSleep('2019/06/18', 4, userRepo)[6]).to.eql('2017/06/15: 5.4');
   })
 
+  it('should find sleep quality by day for that days week', function() {
+
+    expect(sleep.calculateWeekSleepQuality('2019/06/18', 4, userRepo)[0]).to.eql('2019/06/18: 1.6');
+    expect(sleep.calculateWeekSleepQuality('2019/06/18', 4, userRepo)[6]).to.eql('2017/06/15: 3');
+  })
+  it('should determine the best quality sleeper for a week', function() {
+    expect(sleep.determineBestSleeper("2019/06/21", userRepo)).to.eql("Rainbow Dash");
+  })
+  it ('should return all users if best quality sleep is a tie', function() {
+    expect(sleep.determineBestSleeper("2019/06/21", userRepo)).to.eql("Rainbow Dash");
+  })
 });

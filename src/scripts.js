@@ -6,7 +6,8 @@
 
 
 const data = ('../data/users');
-const hydration = ('../data/hydration')
+const hydration = ('../data/hydration');
+const sleep = ('..data/sleep');
 
 var sidebarName = document.getElementById('sidebarName');
 var stepGoalCard = document.getElementById('stepGoalCard');
@@ -17,18 +18,24 @@ var userStridelength = document.getElementById('userStridelength');
 var friendList = document.getElementById('friendList');
 var hydrationToday = document.getElementById('hydrationToday');
 var hydrationThisWeek = document.getElementById('hydrationThisWeek');
+var hydrationEarlierWeek = document.getElementById('hydrationEarlierWeek');
+var sleepToday = document.getElementById('sleepToday');
+var sleepThisWeek = document.getElementById('sleepThisWeek');
+var sleepEarlierWeek = document.getElementById('sleepEarlierWeek');
 
 function startApp() {
   let userList = [];
   makeUsers(userList);
   let userRepo = new UserRepo(userList);
   let hydrationRepo = new Hydration(hydrationData);
+  let sleepRepo = new Sleep(sleepData);
   var userNowId = pickUser();
   let userNow = getUserById(userNowId, userRepo);
   let today = makeToday(userRepo, userNowId, hydrationData);
   let randomHistory = makeRandomDate(userRepo, userNowId, hydrationData);
   addInfoToSidebar(userNow, userRepo);
-  addHydrationInfo(userNowId, hydrationRepo, today, userRepo);
+  addHydrationInfo(userNowId, hydrationRepo, today, userRepo, randomHistory);
+  addSleepInfo(userNowId, sleepRepo, today, userRepo, randomHistory);
 }
 
 function makeUsers(array) {
@@ -74,13 +81,28 @@ function makeRandomDate(userStorage, id, dataSet) {
 
 }
 
-function addHydrationInfo(id, hydrationInfo, dateString, userStorage) {
+function addHydrationInfo(id, hydrationInfo, dateString, userStorage, laterDateString) {
   hydrationToday.innerText = `You drank ${hydrationInfo.calculateDailyOunces(id, dateString)} oz water today. Your average water intake is ${hydrationInfo.calculateAverageOunces(id)} oz per day`;
-  hydrationThisWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(id, hydrationInfo, userStorage));
+  hydrationThisWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(id, hydrationInfo, userStorage,  hydrationInfo.calculateFirstWeekOunces(userStorage, id)));
+  hydrationEarlierWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(id, hydrationInfo, userStorage, hydrationInfo.calculateRandomWeekOunces(laterDateString, id, userStorage)));
 }
 
-function makeHydrationHTML(id, hydrationInfo, userStorage) {
-  return hydrationInfo.calculateFirstWeekOunces(userStorage, id).map(drinkData => `<li>On ${drinkData}oz water</li>`).join('');
+function makeHydrationHTML(id, hydrationInfo, userStorage, method) {
+  return method.map(drinkData => `<li>On ${drinkData}oz water</li>`).join('');
+}
+
+function addSleepInfo(id, sleepInfo, dateString, userStorage, laterDateString) {
+  sleepToday.innerText = `You slept ${sleepInfo.calculateDailySleep(id, dateString)} hours today. Your average night's sleep is ${sleepInfo.calculateAverageSleep(id)} oz per day. Your sleep quality was ${sleepInfo.calculateDailySleepQuality(id, dateString)}.Your sleep quality was ${sleepInfo.calculateDailySleepQuality(id, dateString)}. The average user's sleep quality is ${sleepInfo.calculateAllUserSleepQuality()}.`;
+  sleepThisWeek.insertAdjacentHTML('afterBegin', makeSleepHTML(id, sleepInfo, userStorage, sleepInfo.calculateWeekSleep(dateString, id, userStorage)));
+  sleepEarlierWeek.insertAdjacentHTML('afterBegin', makeSleepHTML(id, sleepInfo, userStorage, sleepInfo.calculateWeekSleep(laterDateString, id, userStorage)));
+}
+
+function makeSleepHTML(id, sleepInfo, userStorage, method) {
+  return method.map(sleepData => `<li>On ${sleepData}hours of sleep</li>`).join('');
+}
+
+function makeSleepQualityHTML(id, sleepInfo, userStorage, method) {
+  return method.map(sleepQualityData => `<li>On ${sleepQualityData}/5 quality of sleep</li>`).join('');
 }
 
 startApp();

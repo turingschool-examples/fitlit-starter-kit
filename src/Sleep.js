@@ -17,7 +17,6 @@ class Sleep {
   }
   calculateDailySleep(id, date) {
     let findSleepByDate = this.sleepData.find((data) => id === data.userID && date === data.date);
-    console.log(findSleepByDate);
     return findSleepByDate.hoursSlept;
   }
   calculateDailySleepQuality(id, date) {
@@ -29,6 +28,23 @@ class Sleep {
   }
   calculateWeekSleepQuality(date, id, userRepo) {
     return userRepo.getWeekFromDate(date, id, this.sleepData).map((data) => `${data.date}: ${data.sleepQuality}`);
+  }
+  calculateAllUserSleepQuality() {
+    var totalSleepQuality = this.sleepData.reduce(function(sumSoFar, dataItem) {
+      sumSoFar += dataItem.sleepQuality;
+      return sumSoFar;
+    }, 0)
+    return totalSleepQuality/sleepData.length
+  }
+  determineBestSleeper(date, userRepo) {
+
+    let sortedFullArray = this.sleepData.sort((a, b) => new Date(b.date) - new Date(a.date));
+    let dateIndex = sortedFullArray.indexOf(sortedFullArray.find((sortedItem)=>(sortedItem.date === date)));
+    let weekArray = sortedFullArray.slice(dateIndex, dateIndex + 7);
+    console.log(weekArray.sort((a, b) => (b.sleepQuality - a.sleepQuality)));
+    let bestSleeperId = weekArray.sort((a, b) => (b.sleepQuality - a.sleepQuality))[0].userID;
+    console.log(bestSleeperId);
+    return userRepo.getDataFromID(bestSleeperId).name;
   }
 }
 

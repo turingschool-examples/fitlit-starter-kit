@@ -26,4 +26,8 @@ describe('Activity', function(){
     expect(activity.returnWeekAvg(activityData, '2019/06/15')).to.equal(125);
     // console.log(activityData)
   })
+  it('should return true when user has reached their step goal for a day', function() {
+    expect(activity.matchGoal('2019/06/15', activityData)).to.equal(false);
+    
+  })
 });

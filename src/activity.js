@@ -33,15 +33,21 @@ class Activity {
         week.push(user[i]);
       }
       let total = week.reduce((acc, curVal) => {
-        // console.log(curVal['minutesActive']);
-        
         acc += curVal['minutesActive'];
-        console.log(acc);
-        
-        
         return acc;
       }, 0)
       return (total / 7)
+    }
+    
+    matchGoal(date, data) {
+      let user = data.filter(elem => {
+        return elem.userID === this.userID && elem.date === date;
+      })
+      if (user[0].numSteps >= this.stepGoal) {
+        return true;
+      } else {
+        return false;
+      }
     }
 
 

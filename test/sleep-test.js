@@ -148,7 +148,49 @@ describe('Sleep', function() {
         "date": "2019/06/15",
         "hoursSlept": 9,
         "sleepQuality": 3.1
-      },];
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/21",
+        "hoursSlept": 6.1,
+        "sleepQuality": 3.5
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/20",
+        "hoursSlept": 4.7,
+        "sleepQuality": 4
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/19",
+        "hoursSlept": 10.1,
+        "sleepQuality": 3.3
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/18",
+        "hoursSlept": 7.9,
+        "sleepQuality": 3.6
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/17",
+        "hoursSlept": 5.9,
+        "sleepQuality": 3.6
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/16",
+        "hoursSlept": 9.6,
+        "sleepQuality": 4
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/15",
+        "hoursSlept": 9,
+        "sleepQuality": 3.1
+      }];
 
     sleep = new Sleep(sleepData);
     user1 = new User({id: 1,
@@ -226,10 +268,10 @@ user4 = new User({
     expect(sleep.calculateWeekSleepQuality('2019/06/18', 4, userRepo)[0]).to.eql('2019/06/18: 1.6');
     expect(sleep.calculateWeekSleepQuality('2019/06/18', 4, userRepo)[6]).to.eql('2017/06/15: 3');
   })
-  it('should determine the best quality sleeper for a week', function() {
-    expect(sleep.determineBestSleeper("2019/06/21", userRepo)).to.eql("Rainbow Dash");
+  it('should determine the best quality sleepers for a week', function() {
+    expect(sleep.determineBestSleepers("2019/06/21", userRepo)).to.eql(["Allie McCarthy"]);
   })
-  it ('should return all users if best quality sleep is a tie', function() {
-    expect(sleep.determineBestSleeper("2019/06/21", userRepo)).to.eql("Rainbow Dash");
-  })
+  // it ('should return all users if best quality sleep is a tie', function() {
+  //   expect(sleep.determineBestSleepers("2019/06/21", userRepo)).to.eql("Rainbow Dash");
+  // })
 });

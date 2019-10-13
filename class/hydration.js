@@ -18,7 +18,6 @@ class Hydration {
   	return dailyData.numOunces;
   }
 
-// week (7 days) - return the amount for each day
   findWeeklyHydration(id) {
   	let findUserData = this.hydrationData.filter(element => element.userID === id);
   	let weeklyData = findUserData.slice((findUserData.length - 7), findUserData.length)

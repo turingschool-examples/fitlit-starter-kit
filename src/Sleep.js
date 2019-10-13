@@ -121,6 +121,68 @@ class Sleep {
     }, []);
   }
 
+  findUsersWithAvgSleepQualityMoreThanThreeOverSpecificWeek(date) {
+    let indexForUserOneAtSpecificDate = this.currentSleepData.findIndex(userBlock => {
+      return (userBlock.userID === 1 && userBlock.date === date)
+    });
+    console.log(indexForUserOneAtSpecificDate);
+
+    let allUserSleepDataForSpecificWeek = this.currentSleepData.slice(indexForUserOneAtSpecificDate, (indexForUserOneAtSpecificDate + 349));
+    console.log(allUserSleepDataForSpecificWeek);
+    let finalWeekObject = allUserSleepDataForSpecificWeek.reduce((acc, userBlock) => {
+      if (!acc[userBlock.userID]) {
+        acc[userBlock.userID] = []
+      }
+      return acc
+    }, {});
+
+    let keysForFinalWeekObject = Object.keys(finalWeekObject);
+    let keysObject = keysForFinalWeekObject.reduce((acc, num) => {
+      if (!acc[num]) {
+        acc[num] = parseInt(num)
+      }
+      return acc
+    }, {});
+
+    allUserSleepDataForSpecificWeek.forEach(element => {
+      if (element.userID === keysObject[element.userID]) {
+        finalWeekObject[element.userID].push(element.sleepQuality)
+      }
+    });
+
+    console.log(finalWeekObject);
+    let finalObjectValues = Object.values(finalWeekObject);
+    console.log(finalObjectValues);
+    let averages = finalObjectValues.map(element => {
+      return (element[0] + element[1] + element[2] + element[3] + element[4] + element[5] + element[6]) / 7
+    });
+
+    console.log(averages);
+    averages.forEach(avg => {
+      finalWeekObject[averages.indexOf(avg) + 1] = parseFloat(avg.toFixed(2))
+    });
+
+    console.log(finalWeekObject);
+    let finishedObjectKeys = Object.keys(finalWeekObject);
+    let bestSleeperIds = finishedObjectKeys.filter(key => {
+      return finalWeekObject[key] > 3
+    });
+
+    console.log(bestSleeperIds);
+    let parsedBestSleeperIds = bestSleeperIds.map(id => {
+      return parseInt(id)
+    });
+
+    console.log(parsedBestSleeperIds);
+    return this.userDataForSleep.reduce((acc, userBlock) => {
+      if (parsedBestSleeperIds.includes(userBlock.id)) {
+         acc.push(userBlock.name)
+      }
+
+      return acc
+    }, []);
+  }
+
   findUsersSleptMostHoursIdentifiedByDate(date) {
     let allSleepDataOnSpecificDay = this.currentSleepData.filter(userBlock => {
       return userBlock.date === date

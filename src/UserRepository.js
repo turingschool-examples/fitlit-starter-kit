@@ -8,15 +8,6 @@ class UserRepository {
       return user.id === id;
     })
   }
-  getBestSleepers() {
-
-  }
-  getLongestSleepers() {
-
-  }
-  getWorstSleepers() {
-
-  }
   calculateAverageStepGoal() {
     let goals = this.users.map(function(user) {
       return user.dailyStepGoal;
@@ -52,10 +43,26 @@ class UserRepository {
     }, 0)
     return Math.floor(sumDrankOnDate / todaysDrinkers.length);
   }
+  findBestSleepers(date) {
+    return this.users.filter(user => {
+      return user.calculateAverageQualityThisWeek(date) > 3;
+    })
+  }
+  getLongestSleepers(date) {
+    return sleepData.filter(sleep => {
+      return sleep.date === date;
+    }).sort((a, b) => {
+      return b.hoursSlept - a.hoursSlept;
+    })[0].userID;
+  }
+  getWorstSleepers(date) {
+    return sleepData.filter(sleep => {
+      return sleep.date === date;
+    }).sort((a, b) => {
+      return a.hoursSlept - b.hoursSlept;
+    })[0].userID;
+  }
 }
-
-// number of users that drank on that date and the total ounces consumed on that date
-// addDailyOunces gives a user's daily ounces on that date
 
 if (typeof module !== 'undefined') {
   module.exports = UserRepository;

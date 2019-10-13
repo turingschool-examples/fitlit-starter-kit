@@ -1,4 +1,4 @@
-class User {
+ class User {
   constructor(userData) {
     this.id = userData.id;
     this.name = userData.name;
@@ -67,7 +67,7 @@ class User {
   calculateAverageQualityThisWeek(todayDate) {
     return (this.sleepQualityRecord.reduce((sum, sleepAct) => {
       let index = this.sleepQualityRecord.indexOf(this.sleepQualityRecord.find(sleep => sleep.date === todayDate));
-      if(index <= this.sleepQualityRecord.indexOf(sleepAct) && user.sleepQualityRecord.indexOf(sleepAct) <= (index + 6)) {
+      if(index <= this.sleepQualityRecord.indexOf(sleepAct) && this.sleepQualityRecord.indexOf(sleepAct) <= (index + 6)) {
         sum += sleepAct.quality;
       }
       return sum;

@@ -43,6 +43,9 @@ let sleepInfoHoursAverageAlltime = document.querySelector('#sleep-info-hours-ave
 let sleepInfoQualityAverageAlltime = document.querySelector('#sleep-info-quality-average-alltime');
 let sleepCalendarHoursAverageWeekly = document.querySelector('#sleep-calendar-hours-average-weekly');
 let sleepCalendarQualityAverageWeekly = document.querySelector('#sleep-calendar-quality-average-weekly');
+let sleepFriendLongestSleeper = document.querySelector('#sleep-friend-longest-sleeper');
+let sleepFriendWorstSleeper = document.querySelector('#sleep-friend-worst-sleeper');
+let sleepInfoQualityToday = document.querySelector('#sleep-info-quality-today');
 
 
 
@@ -176,3 +179,21 @@ hydrationInfoGlassesToday.innerText = hydrationData.find(hydration => {
   return hydration.userID === user.id && hydration.date === todayDate;
 }).numOunces / 8;
 hydrationFriendOuncesToday.innerText = userRepository.calculateAverageDailyWater(todayDate);
+
+sleepFriendLongestSleeper.innerText = userRepository.users.find(user => {
+  return user.id === userRepository.getLongestSleepers(todayDate)
+}).getFirstName();
+
+sleepFriendWorstSleeper.innerText = userRepository.users.find(user => {
+  return user.id === userRepository.getWorstSleepers(todayDate)
+}).getFirstName();
+
+sleepInfoQualityToday.innerText = sleepData.find(sleep => {
+  return sleep.userID === user.id && sleep.date === todayDate;
+}).sleepQuality;
+
+
+
+
+
+console.log(userRepository.getLongestSleepers(todayDate));

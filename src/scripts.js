@@ -36,6 +36,11 @@ let dailyOz = document.querySelectorAll('.daily-oz');
 let sleepUserHoursToday = document.querySelector('#sleep-user-hours-today');
 let sleepInfoHoursAverageAlltime = document.querySelector('#sleep-info-hours-average-alltime');
 let sleepInfoQualityAverageAlltime = document.querySelector('#sleep-info-quality-average-alltime');
+let sleepCalendarHoursAverageWeekly = document.querySelector('#sleep-calendar-hours-average-weekly');
+let sleepCalendarQualityAverageWeekly = document.querySelector('#sleep-calendar-quality-average-weekly');
+
+
+
 
 // CARDS
 let stepsMainCard = document.querySelector('#steps-main-card');
@@ -158,19 +163,5 @@ sleepUserHoursToday.innerText = sleepData.find(sleep => {
 sleepInfoHoursAverageAlltime.innerText = user.hoursSleptAverage;
 sleepInfoQualityAverageAlltime.innerText = user.sleepQualityAverage;
 
-
-let averageHoursSleptThisWeek = (user.sleepHoursRecord.reduce((sum, sleepAct) => {
-  let index = user.sleepHoursRecord.indexOf(user.sleepHoursRecord.find(sleep => sleep.date === todayDate));
-  if(index <= user.sleepHoursRecord.indexOf(sleepAct) && user.sleepHoursRecord.indexOf(sleepAct) <= (index + 6)) {
-    sum += sleepAct.hours;
-  }
-  return sum;
-}, 0) / 7).toFixed(1);
-
-let averageSleepQualityThisWeek = (user.sleepQualityRecord.reduce((sum, sleepAct) => {
-  let index = user.sleepQualityRecord.indexOf(user.sleepQualityRecord.find(sleep => sleep.date === todayDate));
-  if(index <= user.sleepQualityRecord.indexOf(sleepAct) && user.sleepQualityRecord.indexOf(sleepAct) <= (index + 6)) {
-    sum += sleepAct.quality;
-  }
-  return sum;
-}, 0) / 7).toFixed(1);
+sleepCalendarHoursAverageWeekly.innerText = user.calculateAverageHoursThisWeek(todayDate);
+sleepCalendarQualityAverageWeekly.innerText = user.calculateAverageQualityThisWeek(todayDate);

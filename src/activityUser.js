@@ -3,6 +3,13 @@ class ActivityUser {
     this.activityData = userActivityData;
   }
 
+  getNumStepsByDay(date) {
+    let userDateData = this.activityData.find(activityData => {
+      return activityData.date === date;
+    })
+    return userDateData.numSteps;
+  }
+
   calcMilesByDay(date, userStrideLength) {
     let userDateData = this.activityData.find(activityData => {
       return activityData.date === date;

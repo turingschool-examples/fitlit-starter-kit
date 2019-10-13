@@ -28,7 +28,7 @@ function clickLoginButton(event) {
     addSleepDataforDay();
     addWeeklySleepDataByDay();
     addAllTimeSleepAvg();
-    addMilesforLatestDay();
+    addMilesForLatestDay();
     addMinutesActiveByDay();
   }
 }
@@ -147,7 +147,7 @@ function addAllTimeSleepAvg() {
     </section>`);
 }
 
-function addMilesforLatestDay() {
+function addMilesForLatestDay() {
   let todaysSteps = activityUser.calcMilesByDay('2019/09/22', user.strideLength);
   $("#daily-activity-header").after(`
   <section class="section-style">
@@ -163,6 +163,10 @@ $("#daily-activity-header").after(`
 <h3>Minutes Active</h3>
 <p>${todaysMinutes}</p>
 </section>`)
+}
+
+function () {
+
 }
 
 function displayUserPage() {
@@ -211,7 +215,7 @@ function displayUserPage() {
           <section class="section-style">daily info compared to friends</section>
         </article>
         <article class="card-style card-weekly-activity">
-          <h2>Previous Activity</h2>
+          <h2>This Week's Activity</h2>
           <section class="section-style">
             <h3>day one</h3>
             <section class="activity-weekly-data-section">

@@ -87,4 +87,8 @@ describe('activityUser', () => {
     expect(activityUser.getMinutesActiveRecord()).to.equal(296);
   });  
 
+  it('should find number of steps for a given day', () => {
+    expect(activityUser.getNumStepsByDay("2019/06/15")).to.equal(3577);
+  });  
+
 });

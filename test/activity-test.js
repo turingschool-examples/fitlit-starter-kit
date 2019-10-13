@@ -47,4 +47,8 @@ describe('Activity', function(){
       expect(activity.checkUserAvgs('2019/06/15', 'numSteps', activityData)).to.equal(6026.6);
     })
   });
+
+  it('should count all time miles for a specific user', function() {
+    expect(activity.userAllTimeMiles(activityData)).to.equal(36.97);
+  })
 });

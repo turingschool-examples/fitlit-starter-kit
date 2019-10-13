@@ -11,6 +11,7 @@ class Activity {
            return elem
          };
       });
+      
       return Math.round(((matchedElem.numSteps * this.strideLength) / 5280) * 100) / 100;
     }
 
@@ -76,11 +77,16 @@ class Activity {
       })
       .map(elem => keyValues.push(elem[key]))
       let total = keyValues.reduce((acc, cur) => acc += cur)
-      console.log(total / keyValues.length);
-      
       return (total / keyValues.length)
     }
-
+    userAllTimeMiles(data) {
+      let user = data.filter(elem => elem.userID === this.userID)
+      let total = user.reduce((acc, cur) => {
+        acc += cur.numSteps;
+        return acc
+      }, 0)
+      return Math.round(((total * this.strideLength) / 5280) * 100) / 100;
+    }
 
 
 

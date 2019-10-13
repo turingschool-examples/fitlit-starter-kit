@@ -28,6 +28,7 @@ function clickLoginButton(event) {
     addSleepDataforDay();
     addWeeklySleepDataByDay();
     addAllTimeSleepAvg();
+    addAllUsersActivityAverages();
     addFlightsOfStairsForLatestDay();
     addMilesForLatestDay();
     addMinutesActiveByDay();
@@ -185,6 +186,23 @@ function addFlightsOfStairsForLatestDay() {
   </section>`)
 }
 
+function addAllUsersActivityAverages() {
+  let avgFlights = activityRepo.calcAvgStairsClimbedByDay('2019/09/22');
+  let avgSteps = activityRepo.calcAvgStepsTakenByDay('2019/09/22');
+  let avgMins = activityRepo.calcMinsActiveByDay('2019/09/22');
+  $("#daily-activity-header").after(`
+  <section class="section-style">
+    <h3>Average User Activity</h3>
+    <section class="activity-all-users-data-section">
+      <div>Steps: ${avgSteps}</div>
+      <div>Minutes: ${avgMins}</div>
+      <div>Flights: ${avgFlights}</div>
+    </section>
+  </section>`)
+
+  // <section class="section-style">daily info compared to friends</section>
+}
+
 function displayUserPage() {
     $("#main-login-page").remove();
     $("body").html(`
@@ -228,7 +246,6 @@ function displayUserPage() {
         </article>
         <article class="card-style card-daily-activity">
           <h2 id="daily-activity-header">Today's Activity</h2>
-          <section class="section-style">daily info compared to friends</section>
         </article>
         <article class="card-style card-weekly-activity">
           <h2>This Week's Activity</h2>

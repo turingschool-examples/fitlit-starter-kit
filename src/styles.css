@@ -226,6 +226,11 @@ li {
   justify-content: space-around;
 }
 
+.activity-all-users-data-section {
+  display: flex;
+  justify-content: space-around;
+}
+
 h2 {
   text-align: center;
   font-size: larger;

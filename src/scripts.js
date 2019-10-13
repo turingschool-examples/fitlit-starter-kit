@@ -45,6 +45,7 @@ let sleepCalendarHoursAverageWeekly = document.querySelector('#sleep-calendar-ho
 let sleepCalendarQualityAverageWeekly = document.querySelector('#sleep-calendar-quality-average-weekly');
 let sleepFriendLongestSleeper = document.querySelector('#sleep-friend-longest-sleeper');
 let sleepFriendWorstSleeper = document.querySelector('#sleep-friend-worst-sleeper');
+let sleepInfoQualityToday = document.querySelector('#sleep-info-quality-today');
 
 
 
@@ -186,6 +187,10 @@ sleepFriendLongestSleeper.innerText = userRepository.users.find(user => {
 sleepFriendWorstSleeper.innerText = userRepository.users.find(user => {
   return user.id === userRepository.getWorstSleepers(todayDate)
 }).getFirstName();
+
+sleepInfoQualityToday.innerText = sleepData.find(sleep => {
+  return sleep.userID === user.id && sleep.date === todayDate;
+}).sleepQuality;
 
 
 

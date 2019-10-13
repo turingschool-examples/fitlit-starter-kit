@@ -28,6 +28,7 @@ function clickLoginButton(event) {
     addSleepDataforDay();
     addWeeklySleepDataByDay();
     addAllTimeSleepAvg();
+    addNumStepsLatestDay();
   }
 }
 
@@ -143,6 +144,16 @@ function addAllTimeSleepAvg() {
       <h3>Total Average Sleep Quality/Night</h3>
       <p>${allTimeAvgSleepQuality}</p>
     </section>`);
+}
+
+function addNumStepsLatestDay() {
+  let todaysSteps = activityUser.calcMilesByDay('2019/09/22', user.strideLength);
+  console.log(todaysSteps);
+  $("#daily-activity-header").after(`
+  <section class="section-style">
+  <h3>Miles Walked</h3>
+  <p>${todaysSteps}</p>
+</section>`)
 }
 
 function displayUserPage() {

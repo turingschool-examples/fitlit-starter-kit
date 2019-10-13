@@ -14,6 +14,8 @@ hydrationData.forEach(hydration => {
   hydration = new Hydration(hydration, userRepository);
 })
 
+// let userRepository = new UserRepository([userData]);
+
 // DATA TO CHANGE ON DOM
 let user = userRepository.users[0];
 let todayDate = "2019/09/22"
@@ -29,6 +31,8 @@ let stepsCalendarTotalStepsWeekly = document.querySelector('#steps-calendar-tota
 let stepsFriendAverageStepGoal = document.querySelector('#steps-friend-average-step-goal');
 let hydrationUserOuncesToday = document.querySelector('#hydration-user-ounces-today');
 let dailyOz = document.querySelectorAll('.daily-oz');
+let hydrationInfoGlassesToday = document.querySelector('#hydration-info-glasses-today');
+let hydrationFriendOuncesToday = document.querySelector('#hydration-friend-ounces-today');
 
 // CARDS
 let stepsMainCard = document.querySelector('#steps-main-card');
@@ -130,15 +134,17 @@ let sortedHydrationDataByDate = user.ouncesRecord.sort((a, b) => {
     return 1;
   }
   return 0;
-})
-// Array.from(dailyOz).forEach(dailyOzOnDOM => {
-//   dailyOzOnDOM.innerText =
-// })
-
+});
 
 for (var i = 0; i < dailyOz.length; i++) {
   dailyOz[i].innerText = user.addDailyOunces(Object.keys(sortedHydrationDataByDate[i])[0])
 }
 
 stepsInfoUserStepGoal.innerText = `${user.dailyStepGoal}`;
-stepsFriendAverageStepGoal.innerText = `${userRepository.calculateAverageStepGoal()}`
+stepsFriendAverageStepGoal.innerText = `${userRepository.calculateAverageStepGoal()}`;
+
+hydrationInfoGlassesToday.innerText = hydrationData.find(hydration => {
+  return hydration.userID === user.id && hydration.date === todayDate;
+}).numOunces / 8;
+hydrationFriendOuncesToday.innerText = userRepository.calculateAverageDailyWater(todayDate);
+

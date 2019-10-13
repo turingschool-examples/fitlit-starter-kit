@@ -36,7 +36,7 @@ class Activity {
         acc += curVal['minutesActive'];
         return acc;
       }, 0)
-      return (total / 7)
+      return (total / 7);
     }
     
     matchGoal(date, data) {
@@ -58,8 +58,9 @@ class Activity {
       week.map(elem => {
         bestDays.push(elem.date);
       })
-      return bestDays
+      return bestDays;
     }
+
     checkRecord(data) {
       let user = data.filter(elem => {
         return elem.userID === this.userID
@@ -67,6 +68,20 @@ class Activity {
       let recordDay = user.sort((a, b) => b.flightsOfStairs - a.flightsOfStairs);
       return recordDay[0].date;
     }
+
+    checkUserAvgs(date, key, data) {
+      let keyValues = [];
+      let numsToAvg = data.filter(elem => {
+        return elem.date === date;
+      })
+      .map(elem => keyValues.push(elem[key]))
+      let total = keyValues.reduce((acc, cur) => acc += cur)
+      console.log(total / keyValues.length);
+      
+      return (total / keyValues.length)
+    }
+
+
 
 
 

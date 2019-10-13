@@ -5,10 +5,16 @@ class Hydration {
     this.numOunces = numOunces;
   }
 
-  // let { userID, date, numOunces } = data;
-
-  calcAvgFluidConsumption(id) {
-    // take all similar Id's as array, calculates average per day for one user for all time.
+  calcAvgFluidConsumption(id, hydrationData) {
+    const userOunces = hydrationData.reduce((acc, indHydro) => {
+      if (indHydro.userID === id) {
+        acc.push(indHydro.numOunces);
+      }
+      return acc;
+    }, []);
+    let totalOunces = 0;
+    userOunces.forEach(dayOunces => totalOunces += dayOunces);
+    return (totalOunces / userOunces.length);
   }
 
   findDayFluid(id, date) {
@@ -21,7 +27,7 @@ class Hydration {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = User;
+  module.exports = Hydration;
 }
 
 

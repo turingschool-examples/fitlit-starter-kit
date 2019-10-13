@@ -6,9 +6,13 @@ userData.forEach(user => {
   userRepository.users.push(user)
 });
 
+let activities = [];
+
 activityData.forEach(activity => {
   activity = new Activity(activity);
+  activities.push(activity);
 })
+
 
 hydrationData.forEach(hydration => {
   hydration = new Hydration(hydration, userRepository);
@@ -37,7 +41,6 @@ let stepsCalendarTotalStepsWeekly = document.querySelector('#steps-calendar-tota
 let stepsFriendAverageStepGoal = document.querySelector('#steps-friend-average-step-goal');
 let hydrationUserOuncesToday = document.querySelector('#hydration-user-ounces-today');
 let dailyOz = document.querySelectorAll('.daily-oz');
-
 let sleepUserHoursToday = document.querySelector('#sleep-user-hours-today');
 let sleepInfoHoursAverageAlltime = document.querySelector('#sleep-info-hours-average-alltime');
 let sleepInfoQualityAverageAlltime = document.querySelector('#sleep-info-quality-average-alltime');
@@ -192,8 +195,6 @@ sleepInfoQualityToday.innerText = sleepData.find(sleep => {
   return sleep.userID === user.id && sleep.date === todayDate;
 }).sleepQuality;
 
-
-
-
-
-console.log(userRepository.getLongestSleepers(todayDate));
+stepsInfoMilesWalkedToday.innerText = activities.find(activity => {
+   return (activity.date === todayDate && activity.userId === user.id)
+}).calculateMiles(userRepository);

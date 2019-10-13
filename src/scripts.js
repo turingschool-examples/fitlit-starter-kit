@@ -9,6 +9,7 @@ const userRepository = new UserRepository(data);
 userRepository.findToday();
 let user;
 let sleep;
+let hydration;
 
 $(document).ready(function() {
 
@@ -51,10 +52,10 @@ $(document).ready(function() {
   }
 
   function showHydration() {
-    const currentHydration = hydrationData.find(hydro => {
-      return hydro.userID === userRepository.currentUserId
-    })
-    $('.current-hydro').text(currentHydration.numOunces)
+    hydration = new Hydration(userRepository);
+    hydration.findDayFluid(userRepository.hydrationUsersData)
+    console.log(hydration);
+    $('.current-hydro').text(hydration.numOunces.numOunces)
   }
 
   function showSleep() {

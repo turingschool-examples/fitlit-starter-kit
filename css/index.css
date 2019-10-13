@@ -31,7 +31,7 @@ h4 {
 
 .section__number {
   color: #468E43;
-  font-size: 68px;
+  font-size: 64px;
   font-weight: 700;
 }
 
@@ -80,7 +80,7 @@ h4 {
 
 .page-header > header {
   display: flex;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   position: relative;
 }
 
@@ -288,9 +288,9 @@ h4 {
 .sleep-widget {
   border-radius: 20px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-  margin: 40px;
+  margin: 20px;
   padding-bottom: 20px;
-  width: 25%;
+  width: 26%;
 }
 
 .sleep-widget header {
@@ -312,7 +312,7 @@ h4 {
   min-width: 120px;
   position: absolute;
   top: 15px;
-  right: 20%;
+  right: 18%;
   width: fit-content;
 }
 
@@ -393,10 +393,6 @@ h4 {
   text-align: center;
 }
 
-.weekly-show {
-  display: none;
-}
-
 .stars {
   display: flex;
   justify-content: center;
@@ -412,20 +408,22 @@ h4 {
   margin-left: 8px;
 }
 
-.weekly-show .date {
+.sleep-widget .date {
+  display: none;
   font-weight: 400;
   margin-top: 10px;
 }
 
-.weekly-show footer {
-  display: flex;
+.sleep-widget footer {
+  display: none;
   justify-content: center;
-  padding-top: 25px;
+  padding-top: 20px;
 }
 
-.weekly-show footer img {
+.sleep-widget footer img {
   cursor: pointer;
-  margin-right: 5px;
+  display: inline;
+  margin-right: 2px;
   width: 10px;
 }
 
@@ -456,7 +454,7 @@ h4 {
   min-width: 120px;
   position: absolute;
   top: 15px;
-  right: 20%;
+  right: 18%;
   width: fit-content;
 }
 
@@ -571,6 +569,27 @@ h4 {
   cursor: pointer;
   margin-right: 5px;
   width: 10px;
+}
+
+.today-widget {
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 10px 15px;
+  width: 26%;
+}
+
+.today-widget h1 {
+  margin-right: 25px;
+}
+
+.month {
+  color: #468E43;
+  font-size: 34px;
+  font-weight: 300;
 }
 
 /*# sourceMappingURL=index.css.map */

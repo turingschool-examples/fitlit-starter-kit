@@ -8,15 +8,6 @@ class UserRepository {
       return user.id === id;
     })
   }
-  getBestSleepers() {
-
-  }
-  getLongestSleepers() {
-
-  }
-  getWorstSleepers() {
-
-  }
   calculateAverageStepGoal() {
     let goals = this.users.map(function(user) {
       return user.dailyStepGoal;
@@ -56,6 +47,13 @@ class UserRepository {
     return this.users.filter(user => {
       return user.calculateAverageQualityThisWeek(date) > 3;
     })
+  }
+  getLongestSleepers(date) {
+    return sleepData.filter(sleep => {
+      return sleep.date === date;
+    }).sort((a, b) => {
+      return b.hoursSlept - a.hoursSlept;
+    })[0].userID;
   }
 }
 

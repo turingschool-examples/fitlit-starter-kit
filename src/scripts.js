@@ -179,6 +179,8 @@ hydrationInfoGlassesToday.innerText = hydrationData.find(hydration => {
 hydrationFriendOuncesToday.innerText = userRepository.calculateAverageDailyWater(todayDate);
 
 sleepFriendBestSleepers.innerText = userRepository.findBestSleepers(todayDate).map(sleeper => {
-  console.log(sleeper);
   return sleeper.getFirstName();
 }).shift();
+
+
+console.log(userRepository.getLongestSleepers(todayDate));

@@ -28,7 +28,7 @@ function clickLoginButton(event) {
     addSleepDataforDay();
     addWeeklySleepDataByDay();
     addAllTimeSleepAvg();
-    addNumStepsLatestDay();
+    addNumStepsforLatestDay();
   }
 }
 
@@ -146,7 +146,7 @@ function addAllTimeSleepAvg() {
     </section>`);
 }
 
-function addNumStepsLatestDay() {
+function addNumStepsforLatestDay() {
   let todaysSteps = activityUser.calcMilesByDay('2019/09/22', user.strideLength);
   console.log(todaysSteps);
   $("#daily-activity-header").after(`

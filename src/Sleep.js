@@ -1,20 +1,47 @@
 class Sleep {
   constructor(userRepo) {
     this.userID = userRepo.currentUserId;
-    this.date = userRepo.day || null;
+    this.date = userRepo.day;
     this.hoursSlept = null;
     this.sleepQuality = null;
   }
 
-  updateInfo(userRepo) {
-    if (this.date) {
-      const sleep = userRepo.sleepUsersData.find(data => data.userID === this.userID && data.date === this.date);
-      this.hoursSlept = sleep.hoursSlept;
-      this.sleepQuality = sleep.sleepQuality;
+  changeDate(userRepo, day) {
+    if (!day) {
+      this.date = userRepo.day;
+      this.updateInfo(userRepo);
+    } else if (day === 'All day') {
+      this.date = userRepo.day;
+      this.hoursSlept = this.calculateDayAverageInfo(userRepo, 'hours');
+      this.sleepQuality = this.calculateDayAverageInfo(userRepo, 'quality');
+    } else {
+      this.date = day;
+      this.updateInfo(userRepo);
     }
   }
 
-  getWeekFullInfo(userRepo, info) {
+  updateInfo(userRepo) {
+    const sleep = userRepo.sleepUsersData.find(data => data.userID === this.userID && data.date === this.date);
+    if (sleep) {
+      this.hoursSlept = sleep.hoursSlept;
+      this.sleepQuality = sleep.sleepQuality;
+    } else {
+      this.hoursSlept = 0;
+      this.sleepQuality = 0;
+    }
+  }
+
+  splitQuality(quality) {
+    if (quality) {
+      const parts = quality.toString().split('.').map((part) => parseInt(part));
+      return parts;
+    } else {
+      const parts = this.sleepQuality.toString().split('.').map((part) => parseInt(part));
+      return parts;
+    }
+  }
+
+  getWeekFullInfo(userRepo) {
     const week = userRepo.getWeekDates(this.date);
     return userRepo.sleepUsersData.filter((data) => data.userID === this.userID && week.includes(data.date))
   }

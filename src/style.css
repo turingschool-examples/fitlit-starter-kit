@@ -103,7 +103,7 @@ h2 ~ p {
   border-color: hsla(0, 0%, 100%, 0.5);
   cursor: move;
   transform: scale(0.9);
-  transition: all .1s ease-in-out;
+  transition: all .5s ease-in-out;
   }
 
 .grid-item.is-dragging,

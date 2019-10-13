@@ -34,13 +34,12 @@ $(function() {
   $('.user__address').text(userData[randomUser].address);
   $('.user__email').text(userData[randomUser].email);
   $('.user__stride').text(userData[randomUser].strideLength);
-  $('.user__step').text(userData[randomUser].dailyStepGoal);
+  // $('.user__step').text(userData[randomUser].dailyStepGoal);
   $('.user__friends').text(userData[randomUser].friends);
-  $('.compare__user-steps-to-all').text(usersRepo.avgStepGoal())
   $('.user__dailyWater').text(userHydration.userOuncesToday())
 
   const usersWeeklyWater = new Chart($('#weeklyUserDailyWater'), {
-    type: 'bar',
+    type: 'horizontalBar',
     data: {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
@@ -176,5 +175,29 @@ $(function() {
     }
   });
 
+  const stepGoalComparison = new Chart($('#stepGoalCompared'), {
+    type: 'bar',
+    data: {
+      labels: ['Your Step Goal', 'Average of Users Step Goal'],
+      datasets: [{
+        label: 'Step Goal Comparison',
+        data: [userData[randomUser].dailyStepGoal, usersRepo.avgStepGoal()],
+        backgroundColor: [
+          'rgb(112, 56, 1, 0.7)',
+          'rgb(57, 112, 1, 0.7)',
+          'rgb(57, 112, 1, 0.7)'
+        ],
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
 
 });

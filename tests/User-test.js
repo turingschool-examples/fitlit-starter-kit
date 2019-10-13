@@ -84,17 +84,18 @@ describe('User', function() {
       user.updateSleep("2019/07/14", 6, 4);
       user.updateSleep("2019/08/04", 8, 5.4);
     })
-    it('should update user\'s hours of sleep record', function() {
-      expect(user.sleepHoursRecord).to.deep.equal([{"2019/08/04": 8}, {"2019/07/14": 6}, {"2019/06/15": 7}]);
-    });
     it('should update user\'s quality of sleep record', function() {
       expect(user.sleepQualityRecord.length).to.equal(3);
     });
     it('should update user\'s average hours of sleep', function() {
-      expect(user.hoursSleptAverage).to.equal(7);
+      expect(user.hoursSleptAverage).to.equal('7.0');
     });
     it('should update user\'s average quality of sleep', function() {
-      expect(user.sleepQualityAverage).to.equal(4.7);
+      expect(user.sleepQualityAverage).to.equal('4.7');
     });
   })
+  it('calculateAverageHoursThisWeek should calculate average sleep hours for week before given date', function() {
+    user.sleepHoursRecord = [{date: "2019/09/22", hours: 9.6}, {date: "2019/09/21", hours: 8.2}, {date: "2019/09/20", hours: 9.9}, {date: "2019/09/19", hours: 4.2}, {date: "2019/09/18", hours: 9.5}, {date: "2019/09/17", hours: 7.8}, {date: "2019/09/16", hours: 10.2}, {date: "2019/09/15", hours: 5.7}, {date: "2019/09/14", hours: 8.8}, {date: "2019/09/13", hours: 4.6}, {date: "2019/09/12", hours: 5.3}];
+    expect(user.calculateAverageHoursThisWeek('2019/09/21')).to.equal('7.9');
+  });
 });

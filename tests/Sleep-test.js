@@ -85,10 +85,10 @@ describe('Sleep', function() {
       expect(user2.sleepQualityRecord.length).to.equal(1);;
     });
     it('should update user\'s slept hours average', function() {
-      expect(user1.hoursSleptAverage).to.equal(7.7);;
+      expect(user1.hoursSleptAverage).to.equal('7.7');;
     });
     it('should update user\'s sleep quality average', function() {
-      expect(user1.sleepQualityAverage).to.equal(1.8);;
+      expect(user1.sleepQualityAverage).to.equal('1.8');;
     });
   })
 });

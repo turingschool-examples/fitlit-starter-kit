@@ -82,6 +82,7 @@ describe("UserRepository", () => {
     const name = "Jarvis Considine";
     userRepository.findUserByName(name);
     expect(userRepository.currentUserInfo.bio).to.deep.equal({
+      "id": 2,
       "name": "Jarvis Considine",
       "address": "30086 Kathryn Port, Ciceroland NE 07273",
       "email": "Dimitri.Bechtelar11@gmail.com",

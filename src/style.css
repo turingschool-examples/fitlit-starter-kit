@@ -84,7 +84,6 @@ h2 ~ p {
   clear: both;
 }
 
-
 .grid-item {
   background-color: #ffffff6b;
   border: 1px solid;
@@ -103,6 +102,8 @@ h2 ~ p {
 .grid-item:hover {
   border-color: hsla(0, 0%, 100%, 0.5);
   cursor: move;
+  transform: scale(0.9);
+  transition: all .1s ease-in-out;
   }
 
 .grid-item.is-dragging,

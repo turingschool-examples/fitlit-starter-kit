@@ -198,3 +198,7 @@ sleepInfoQualityToday.innerText = sleepData.find(sleep => {
 stepsInfoMilesWalkedToday.innerText = activities.find(activity => {
    return (activity.date === todayDate && activity.userId === user.id)
 }).calculateMiles(userRepository);
+
+stepsInfoActiveMinutesToday.innerText = activityData.find(activity => {
+  return activity.userID === user.id && activity.date === todayDate;
+}).minutesActive;

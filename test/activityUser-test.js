@@ -91,4 +91,8 @@ describe('activityUser', () => {
     expect(activityUser.getNumStepsByDay("2019/06/15")).to.equal(3577);
   });  
 
+  it('should find flights of stairs climbed for a given day', () => {
+    expect(activityUser.getFlightsClimbedByDay("2019/06/15")).to.equal(16);
+  });
+
 });

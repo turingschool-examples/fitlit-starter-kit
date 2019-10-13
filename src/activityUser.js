@@ -25,6 +25,13 @@ class ActivityUser {
     return userDateData.minutesActive;
   }
 
+getFlightsClimbedByDay(date) {
+  let userDateData = this.activityData.find(activityData => {
+    return activityData.date === date;
+  })
+  return userDateData.flightsOfStairs;
+}
+
   calcAvgMinutesByWeek(date) {
     let dataDate = this.activityData.map(data => data.date);
     let dateIndex = dataDate.lastIndexOf(date);

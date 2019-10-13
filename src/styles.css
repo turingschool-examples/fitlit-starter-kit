@@ -216,16 +216,8 @@ li {
   text-align: center;
 }
 
-.activity-weekly-data-section {
-  display: flex;
-  justify-content: space-around;
-}
-
-.sleep-weekly-data-section {
-  display: flex;
-  justify-content: space-around;
-}
-
+.activity-weekly-data-section,
+.sleep-weekly-data-section,
 .activity-all-users-data-section {
   display: flex;
   justify-content: space-around;

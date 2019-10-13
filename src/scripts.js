@@ -200,7 +200,6 @@ function addAllUsersActivityAverages() {
     </section>
   </section>`)
 
-  // <section class="section-style">daily info compared to friends</section>
 }
 
 function displayUserPage() {

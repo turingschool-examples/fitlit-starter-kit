@@ -66,11 +66,15 @@ main {
   text-align: center;
 }
 
+#step-goals {
+  margin-top: 40px;
+}
+
 h4 {
   color: #86BBD8;
   display: block;
   font-size: 1.8rem;
-  margin-left: 12%;
+  margin-left: 10%;
   margin-right: auto;
   margin-top: 50px;
 }
@@ -131,6 +135,7 @@ h4 {
   display: inline;
   font-size: 1.4rem;
   margin-left: 10px;
+  margin-right: auto;
   margin-top: 5px;
 }
 
@@ -138,10 +143,15 @@ h4 {
   border-top: 2px solid #F6AE2D;
 }
 
+.score-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
 .friend-score {
   color: #33658A;
   font-size: 1.6rem;
-  margin-left: 90px;
+  margin-right: 100px;
   margin-top: -10px;
 }
 

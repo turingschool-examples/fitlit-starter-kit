@@ -20,7 +20,7 @@ describe('UserActivity Test', function() {
     expect(UserActivity).to.be.a('function');
   });
 
-  it('should be an instance of UserHydration', function() {
+  it('should be an instance of user activity', function() {
     expect(userActivity).to.be.an.instanceof(UserActivity);
   });
 
@@ -42,7 +42,7 @@ describe('UserActivity Test', function() {
   });
 
   it('should return user stepgoal met by date', function() {
-    expect(userActivity.userStepGoalMetAllTime()).to.deep.equal(  ["2019/06/17", "2019/06/20", "2019/06/22", "2019/06/23"]);
+    expect(userActivity.userStepGoalMetAllTime()).to.deep.equal(["2019/06/17", "2019/06/20", "2019/06/22", "2019/06/23"]);
   });
 
   it('should return user stair highscore', function() {
@@ -52,7 +52,6 @@ describe('UserActivity Test', function() {
   it('should return all users average for one date and metric (numsteps)', function() {
     expect(userActivity.usersActivityAvgByDate('numSteps')).to.equal(8726.4);
   });
-
 
   it('should return all users average for one date and metric (minutesActive)', function() {
     expect(userActivity.usersActivityAvgByDate('minutesActive')).to.equal(162.5);

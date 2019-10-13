@@ -3,7 +3,6 @@ class UserActivity {
     this.userData = userData;
     this.activityData = activityData;
     this.filteredActivity = this.activityDataFilter();
-
   }
 
   activityDataFilter() {
@@ -20,7 +19,6 @@ class UserActivity {
 
   userMinutesActiveByDate() {
     let minutesActive = this.filteredActivity.slice(-1)
-
     return minutesActive[0].minutesActive
   }
 
@@ -30,16 +28,13 @@ class UserActivity {
     let avg = this.filteredActivity.reduce((avg, activityUserArray) => {
       return avg += activityUserArray.minutesActive;
     }, 0)
-
     return parseFloat((avg / activityWeek.length).toFixed(2));
-
   }
 
   userStepGoalMetByDate(date) {
     let dailySteps = this.filteredActivity.find(activityObject => {
       return activityObject.date === date;
     })
-
     return dailySteps.numSteps > this.userData.dailyStepGoal
   }
 
@@ -49,9 +44,9 @@ class UserActivity {
         return activityObject.userID === this.userData.id;
       }
     })
-    let stepGoalMet = activityDataFilter.reduce((acc,activityObject) => {
+    let stepGoalMet = activityDataFilter.reduce((acc, activityObject) => {
       return acc.concat(activityObject.date)
-    },[])
+    }, [])
     return stepGoalMet
   }
 
@@ -61,10 +56,10 @@ class UserActivity {
       return activityObject.userID === this.userData.id;
     })
 
-    activityDataFilter.sort((a,b) => {return b.flightsOfStairs - a.flightsOfStairs})
+    activityDataFilter.sort((a, b) => {
+      return b.flightsOfStairs - a.flightsOfStairs})
 
     return activityDataFilter[0].flightsOfStairs
-
   }
 
   // example usersActivityAvgByDate('2019/06/15', 'minutesActive')
@@ -76,7 +71,7 @@ class UserActivity {
 
     let usersGoalMet = usersActivity.reduce((acc, activityObject) => {
       return acc += activityObject[goal]
-    },0)
+    }, 0)
     return (usersGoalMet / usersActivity.length)
   }
 }

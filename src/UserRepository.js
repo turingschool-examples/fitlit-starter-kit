@@ -1,6 +1,7 @@
 class UserRepository {
   constructor() {
     this.users = [];
+
   }
   getUser(id) {
     return this.users.find(function(user) {
@@ -42,10 +43,19 @@ class UserRepository {
   calculateAverageMinutesActive() {
 
   }
-  calculateAverageDailyWater() {
-
+  calculateAverageDailyWater(date) {
+    let todaysDrinkers = this.users.filter(user => {
+      return user.addDailyOunces(date) > 0;
+    });
+    let sumDrankOnDate = todaysDrinkers.reduce((sum, drinker) => {
+      return sum += drinker.addDailyOunces(date);
+    }, 0)
+    return Math.floor(sumDrankOnDate / todaysDrinkers.length);
   }
 }
+
+// number of users that drank on that date and the total ounces consumed on that date
+// addDailyOunces gives a user's daily ounces on that date
 
 if (typeof module !== 'undefined') {
   module.exports = UserRepository;

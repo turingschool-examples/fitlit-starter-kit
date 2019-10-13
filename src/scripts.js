@@ -14,9 +14,13 @@ hydrationData.forEach(hydration => {
   hydration = new Hydration(hydration, userRepository);
 })
 
+
 sleepData.forEach(sleep => {
   sleep = new Sleep(sleep, userRepository);
 })
+
+// let userRepository = new UserRepository([userData]);
+
 
 // DATA TO CHANGE ON DOM
 let user = userRepository.users[0];
@@ -33,6 +37,7 @@ let stepsCalendarTotalStepsWeekly = document.querySelector('#steps-calendar-tota
 let stepsFriendAverageStepGoal = document.querySelector('#steps-friend-average-step-goal');
 let hydrationUserOuncesToday = document.querySelector('#hydration-user-ounces-today');
 let dailyOz = document.querySelectorAll('.daily-oz');
+
 let sleepUserHoursToday = document.querySelector('#sleep-user-hours-today');
 let sleepInfoHoursAverageAlltime = document.querySelector('#sleep-info-hours-average-alltime');
 let sleepInfoQualityAverageAlltime = document.querySelector('#sleep-info-quality-average-alltime');
@@ -40,6 +45,10 @@ let sleepCalendarHoursAverageWeekly = document.querySelector('#sleep-calendar-ho
 let sleepCalendarQualityAverageWeekly = document.querySelector('#sleep-calendar-quality-average-weekly');
 
 
+
+
+let hydrationInfoGlassesToday = document.querySelector('#hydration-info-glasses-today');
+let hydrationFriendOuncesToday = document.querySelector('#hydration-friend-ounces-today');
 
 
 // CARDS
@@ -142,11 +151,7 @@ let sortedHydrationDataByDate = user.ouncesRecord.sort((a, b) => {
     return 1;
   }
   return 0;
-})
-// Array.from(dailyOz).forEach(dailyOzOnDOM => {
-//   dailyOzOnDOM.innerText =
-// })
-
+});
 
 for (var i = 0; i < dailyOz.length; i++) {
   dailyOz[i].innerText = user.addDailyOunces(Object.keys(sortedHydrationDataByDate[i])[0])
@@ -154,7 +159,6 @@ for (var i = 0; i < dailyOz.length; i++) {
 
 stepsInfoUserStepGoal.innerText = `${user.dailyStepGoal}`;
 
-stepsFriendAverageStepGoal.innerText = `${userRepository.calculateAverageStepGoal()}`
 
 sleepUserHoursToday.innerText = sleepData.find(sleep => {
   return sleep.userID === user.id && sleep.date === todayDate;
@@ -165,3 +169,10 @@ sleepInfoQualityAverageAlltime.innerText = user.sleepQualityAverage;
 
 sleepCalendarHoursAverageWeekly.innerText = user.calculateAverageHoursThisWeek(todayDate);
 sleepCalendarQualityAverageWeekly.innerText = user.calculateAverageQualityThisWeek(todayDate);
+
+stepsFriendAverageStepGoal.innerText = `${userRepository.calculateAverageStepGoal()}`;
+
+hydrationInfoGlassesToday.innerText = hydrationData.find(hydration => {
+  return hydration.userID === user.id && hydration.date === todayDate;
+}).numOunces / 8;
+hydrationFriendOuncesToday.innerText = userRepository.calculateAverageDailyWater(todayDate);

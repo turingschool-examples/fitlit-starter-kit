@@ -70,10 +70,30 @@ describe('UserRepository', function() {
   it('calculateAverageStepGoal should return average step goal for all users', function() {
     expect(userRepository.calculateAverageStepGoal()).to.equal(10000);
   })
+
   it('calculateAverageSleepQuality should return average sleep quality for all users', function() {
     user1.sleepQualityAverage = 3.3;
     user2.sleepQualityAverage = 5;
     user3.sleepQualityAverage = 1;
     expect(userRepository.calculateAverageSleepQuality()).to.equal(3.1);
   });
+
+  it('should have a method that calculates friends average ounces of water', function() {
+    user1.ouncesRecord = [
+      {"2019/06/15": 1},
+      {"2019/06/15": 1},
+      {"2019/06/16": 5}
+    ]
+    user2.ouncesRecord = [
+      {"2019/06/15": 1},
+      {"2019/06/15": 1},
+      {"2019/06/16": 8}
+    ]
+    user3.ouncesRecord = [
+      {"2019/06/15": 1},
+      {"2019/06/15": 1},
+      {"2019/06/16": 4}
+    ]
+    expect(userRepository.calculateAverageDailyWater("2019/06/16")).to.equal(5)
+  })
 });

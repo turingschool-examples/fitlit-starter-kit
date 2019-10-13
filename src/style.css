@@ -61,12 +61,12 @@ main {
   grid-template-columns: 1fr 1fr;
   height: max-content;
   margin: auto;
-  /* width: auto; */
 }
 
 h2 {
   font-size: 2em;
   margin-bottom: 5px;
+  text-align: center;
 }
 
 h2 ~ p {
@@ -117,5 +117,9 @@ outline: 3px dashed hsla(0, 0%, 0%, 0.5);
 outline-offset: -6px;
 -webkit-transition: -webkit-transform 0.2s;
         transition: transform 0.2s;
+}
+
+.section__sleep--step-feedback {
+  font-style: italic;
 }
 

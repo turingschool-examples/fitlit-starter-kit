@@ -30,13 +30,13 @@ $(function() {
     $grid.packery( 'bindDraggabillyEvents', draggie );
   });
  
-  $('.span__currentUser').text(user.getUserFirstName())  
+  $('.span__currentUser').text(user.getUserFirstName());  
   $('.user__address').text(userData[randomUser].address);
   $('.user__email').text(userData[randomUser].email);
   $('.user__stride').text(userData[randomUser].strideLength);
-  // $('.user__step').text(userData[randomUser].dailyStepGoal);
   $('.user__friends').text(userData[randomUser].friends);
-  $('.user__dailyWater').text(userHydration.userOuncesToday())
+  $('.user__dailyWater').text(userHydration.userOuncesToday());
+  $('.section__sleep--step-feedback').text(userSleep.giveUserSleepFeedback(randomUser, '2019/06/15'));
 
   const usersWeeklyWater = new Chart($('#weeklyUserDailyWater'), {
     type: 'horizontalBar',
@@ -45,15 +45,7 @@ $(function() {
       datasets: [{
         label: 'Water Consumed Per',
         data: userHydration.userOuncesByWeek(),
-        backgroundColor: [
-          'rgb(112, 28, 1, 0.7)',
-          'rgb(112, 56, 1, 0.7)',
-          'rgb(112, 84, 1, 0.7)',
-          'rgb(112, 111, 1, 0.7)',
-          'rgb(85, 112, 1, 0.7)',
-          'rgb(57, 112, 1, 0.7)',
-          'rgb(112, 28, 1, 0.7)'
-        ],
+        backgroundColor: ['rgb(112, 28, 1, 0.7)', 'rgb(112, 56, 1, 0.7)', 'rgb(112, 84, 1, 0.7)', 'rgb(112, 111, 1, 0.7)', 'rgb(85, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(112, 28, 1, 0.7)'],
       }]
     },
     options: {
@@ -74,11 +66,7 @@ $(function() {
       datasets: [{
         label: 'Today\'s Sleep Numbers',
         data: [userSleep.userSleepHoursByDate(randomUser, today), userSleep.userSleepQualityByDate(randomUser, today)],
-        backgroundColor: [
-          'rgb(112, 56, 1, 0.7)',
-          'rgb(112, 84, 1, 0.7)',
-          'rgb(112, 111, 1, 0.7)'
-        ],
+        backgroundColor: ['rgb(112, 56, 1, 0.7)', 'rgb(112, 84, 1, 0.7)', 'rgb(112, 111, 1, 0.7)'],
       }]
     },
     options: {
@@ -99,15 +87,7 @@ $(function() {
       datasets: [{
         label: 'Hours Slept This Week',
         data: userSleep.userDailySleepHoursByWeek(),
-        backgroundColor: [
-          'rgb(112, 84, 1, 0.7)',
-          'rgb(112, 84, 1, 0.7)',
-          'rgb(112, 84, 1, 0.7)', 
-          'rgb(112, 84, 1, 0.7)', 
-          'rgb(112, 84, 1, 0.7)',
-          'rgb(112, 84, 1, 0.7)',
-          'rgb(112, 84, 1, 0.7)'
-        ],
+        backgroundColor: ['rgb(112, 84, 1, 0.7)', 'rgb(112, 84, 1, 0.7)', 'rgb(112, 84, 1, 0.7)', 'rgb(112, 84, 1, 0.7)', 'rgb(112, 84, 1, 0.7)', 'rgb(112, 84, 1, 0.7)', 'rgb(112, 84, 1, 0.7)'],
       }]
     },
     options: {
@@ -128,15 +108,7 @@ $(function() {
       datasets: [{
         label: 'Quality Sleep This Week',
         data: userSleep.userDailySleepQualityByWeek(),
-        backgroundColor: [
-          'rgb(85, 112, 1, 0.7)',
-          'rgb(85, 112, 1, 0.7)', 
-          'rgb(85, 112, 1, 0.7)',
-          'rgb(85, 112, 1, 0.7)', 
-          'rgb(85, 112, 1, 0.7)',
-          'rgb(85, 112, 1, 0.7)',
-          'rgb(85, 112, 1, 0.7)'
-        ],
+        backgroundColor: ['rgb(85, 112, 1, 0.7)', 'rgb(85, 112, 1, 0.7)', 'rgb(85, 112, 1, 0.7)', 'rgb(85, 112, 1, 0.7)', 'rgb(85, 112, 1, 0.7)', 'rgb(85, 112, 1, 0.7)', 'rgb(85, 112, 1, 0.7)'],
       }]
     },
     options: {
@@ -157,11 +129,7 @@ $(function() {
       datasets: [{
         label: 'Alltime Average Sleep Numebrs',
         data: [userSleep.avgUserHoursSleptPerDay(randomUser), userSleep.avgUserSleepQualityDateAllTime(randomUser)],
-        backgroundColor: [
-          'rgb(112, 28, 1, 0.7)',
-          'rgb(112, 56, 1, 0.7)',
-          'rgb(112, 28, 1, 0.7)'
-        ],
+        backgroundColor: ['rgb(112, 28, 1, 0.7)', 'rgb(112, 56, 1, 0.7)', 'rgb(112, 28, 1, 0.7)'],
       }]
     },
     options: {
@@ -182,11 +150,7 @@ $(function() {
       datasets: [{
         label: 'Step Goal Comparison',
         data: [userData[randomUser].dailyStepGoal, usersRepo.avgStepGoal()],
-        backgroundColor: [
-          'rgb(112, 56, 1, 0.7)',
-          'rgb(57, 112, 1, 0.7)',
-          'rgb(57, 112, 1, 0.7)'
-        ],
+        backgroundColor: ['rgb(112, 56, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)'],
       }]
     },
     options: {

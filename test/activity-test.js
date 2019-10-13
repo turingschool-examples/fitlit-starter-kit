@@ -30,4 +30,12 @@ describe('Activity', function(){
     expect(activity.matchGoal('2019/06/15', activityData)).to.equal(false);
     
   })
+
+  it('should return all days where step goal was achieved', function() {
+    expect(activity.checkBestDays(activityData)).to.deep.equal([ '2019/06/17', '2019/06/18', '2019/06/19' ]);
+  })
+
+  it('should return user\'s stair climbing record', function() {
+    expect(activity.checkRecord(activityData)).to.equal('2019/06/18')
+  })
 });

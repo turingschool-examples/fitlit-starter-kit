@@ -50,6 +50,24 @@ class Activity {
       }
     }
 
+    checkBestDays(data) {
+      let bestDays = [];
+      let week = data.filter(elem => {
+        return elem.userID === this.userID && elem.numSteps >= this.stepGoal;
+      })
+      week.map(elem => {
+        bestDays.push(elem.date);
+      })
+      return bestDays
+    }
+    checkRecord(data) {
+      let user = data.filter(elem => {
+        return elem.userID === this.userID
+      })
+      let recordDay = user.sort((a, b) => b.flightsOfStairs - a.flightsOfStairs);
+      return recordDay[0].date;
+    }
+
 
 
 

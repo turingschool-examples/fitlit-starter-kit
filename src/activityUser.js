@@ -43,6 +43,13 @@ class ActivityUser {
     return Math.round(sum / 8);
   }
 
+  getDailyActivityByWeek(date) {
+    let dataDate = this.activityData.map(data => data.date);
+    let dateIndex = dataDate.lastIndexOf(date);
+    let weekData = this.activityData.slice(dateIndex - 7, dateIndex + 1);
+    return weekData;
+  }
+
   evalReachStepGoal(date, userStepGoal) {
     let userDateData = this.activityData.find(activityData => {
       return activityData.date === date;

@@ -21,6 +21,7 @@ class Hydration {
     this.numOunces = hydrationData.find(hydro => {
       return hydro.userID === this.userId && hydro.date === this.date;
     }).numOunces;
+    return this.numOunces;
   }
 
   findWeeksFluid(hydrationData) {

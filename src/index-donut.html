@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Circle Chart</title>
+    <meta name="viewport" content="width=device-width">
+    <style>
+        section{
+            position:relative;
+        }
+        #main .chart{
+            width:0;
+            height:0;
+            position: relative;
+            border: 100px solid #86c232;
+            border-radius: 50%;
+        }
+        #main .cover-under50{
+            position:absolute;
+            z-index: 10;
+            border: 20px solid rgba(199,199,199,0.8);
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            left:-100px;
+            top:-100px;
+            -webkit-clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+            clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+            transform: rotate(180deg);
+        }
+        #main .cover-over50{
+            position:absolute;
+            z-index: 30;
+            border: 20px solid rgba(199,199,199,0.8);
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            left:-100px;
+            top:-100px;
+            -webkit-clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+            clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+            transform: rotate(0deg);
+        }
+        #main .fill-over50{
+            position:absolute;
+            z-index: 20;
+            border: 20px solid #86c232;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            left:-100px;
+            top:-100px;
+            -webkit-clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+            clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+            transform: rotate(0deg); /* -180deg to 0deg for 50% to 100%*/
+        }
+        #main .info{
+            width: 160px;
+            height: 160px;
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            z-index: 60;
+            font-size: 3rem;
+            line-height: 10rem;
+            font-family: sans-serif;
+            text-align: center;
+            top: -80px;
+            left: -80px;
+        }
+        #main .info::after{
+            content: '%';
+        }
+
+
+        #alt{
+            margin-top: 4rem;
+        }
+        #alt .chart{
+            width:0;
+            height:0;
+            position: relative;
+            border: 100px solid #86c232;
+            border-radius: 50%;
+        }
+        #alt .cover-under50{
+            position:absolute;
+            z-index: 10;
+            border: 20px solid #999;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            top: 0;
+            left: 200px;
+            -webkit-clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+            clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+            transform: rotate(-180deg);
+        }
+        #alt .cover-over50{
+            position:absolute;
+            z-index: 30;
+            border: 20px solid #999;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            top: 0;
+            left: 400px;
+            -webkit-clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+            clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+            transform: rotate(0deg);
+        }
+        #alt .fill-over50{
+           position:absolute;
+            z-index: 20;
+            border: 20px solid #86c232;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            top: 0;
+            left: 600px;
+            -webkit-clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+            clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+            transform: rotate(0deg); /* -180deg to 0deg for 50% to 100%*/
+        }
+    </style>
+</head>
+<body>
+    <h1>Circle Chart</h1>
+    <section id="main">
+        <div class="chart">
+            <div class="cover-under50"></div>
+            <div class="cover-over50"></div>
+            <div class="fill-over50"></div>
+            <div class="info">22</div>
+        </div>
+        <p>No support for this in IE or Edge yet because of lack of support for the CSS clip-path property.</p>
+    </section>
+
+    <section id="alt">
+        <div class="chart"></div>
+        <div class="cover-under50"></div>
+        <div class="cover-over50"></div>
+        <div class="fill-over50"></div>
+    </section>
+    <script>
+        let info;
+
+        document.addEventListener('DOMContentLoaded', ev=>{
+            info = document.querySelector('#main .info');
+            doRotations();
+            let timmy = setInterval(function(){
+                let num = parseInt(info.textContent) + 1;
+                num = (num>100)?0:num;
+                info.textContent = num;
+                doRotations();
+            }, 500)
+        });
+
+        function doRotations(){
+            let coverOver = document.querySelector('#main .cover-over50');
+            let coverUnder = document.querySelector('#main .cover-under50');
+            let fillOver = document.querySelector('#main .fill-over50');
+            let infoNum = parseInt(info.textContent);
+            let pct = (infoNum - 50) * 360 / 100;
+            //get the percentage of 360 degrees
+            console.log('num', infoNum, pct, 'deg');
+            if(infoNum > 50){
+                coverOver.style.zIndex = 20;
+                fillOver.style.zIndex = 30;
+                //blue on right on top
+                fillOver.style.transform = 'rotate(180deg)';
+                coverUnder.style.transform = 'rotate(180deg)';
+                //move a grey under the purple
+                coverOver.style.transform = `rotate(${pct}deg)`;
+            }else{
+                coverOver.style.zIndex = 30;
+                fillOver.style.zIndex = 20;
+                //blue on left under grey
+                coverOver.style.transform = 'rotate(0deg)';
+                fillOver.style.transform = 'rotate(0deg)';
+                //rotate a grey to reveal bottom-most purple
+                coverUnder.style.transform = `rotate(${pct}deg)`;
+            }
+
+            //extra code for the demo in the alt section
+            let altCOver = document.querySelector('#alt .cover-over50');
+            let altCUnder = document.querySelector('#alt .cover-under50');
+            let altFOver = document.querySelector('#alt .fill-over50');
+            altCOver.style.transform = coverOver.style.transform;
+            altCUnder.style.transform = coverUnder.style.transform;
+            altFOver.style.transform = fillOver.style.transform;
+        }
+
+    </script>
+</body>
+</html>

@@ -134,6 +134,13 @@ aside {
   background-color: #EAECEE;
 }
 
+.hidden {
+  display: none;
+}
+
+.step-challenge-background {
+}
+
 .aside-user-info-par {
   padding: 5px;
 }

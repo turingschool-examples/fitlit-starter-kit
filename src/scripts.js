@@ -10,6 +10,9 @@ let activityUser;
 
 $("#login-page-button").click(clickLoginButton);
 $("body").on("click", "#aside-step-challenge", addFriendsTotalStepsByWeek);
+$("body").on("click", "#aside-step-challenge", function() {
+  $("#step-challenge-background").toggleClass("hidden");
+});
 
 function clickLoginButton(event) {
   if (!$("#login-page-input").val()) {
@@ -86,7 +89,7 @@ function addFriendsTotalStepsByWeek() {
     let friends = instantiateFriendsUser();
     let friendsActivity = instantiateFriendsActivity();
     $("#aside-step-challenge").after(`
-      <div>
+      <div class="step-challenge-background hidden" id="step-challenge-background">
         <section id="friend-weekly-steps-section">
         </section
       </div>`)

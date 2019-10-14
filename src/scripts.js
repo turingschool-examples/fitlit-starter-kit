@@ -154,6 +154,7 @@ $(document).ready(function() {
         $('.compare-block, .compare').hide();
       }
       if ($widgetType === 'water') {
+        $(this).closest('.widget').find('.date').text(hydration.date);
         showHydration();
       }
     }
@@ -206,6 +207,10 @@ $(document).ready(function() {
       if ($widgetType === 'sleep') {
         sleep.changeDate(userRepository, $dayEntered);
         updateSleep();
+      };
+      if ($widgetType === 'water') {
+        hydration.date = $dayEntered;
+        $('.current-hydro').text(hydration.findDayFluid(userRepository.hydrationUsersData));
       };
     }
     $(this).siblings('input').val('');

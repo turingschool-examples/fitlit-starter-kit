@@ -316,6 +316,10 @@ h4 {
   margin: 10px 15px;
 }
 
+.sleep-widget main {
+  text-align: center;
+}
+
 .stars {
   display: flex;
   justify-content: center;
@@ -371,36 +375,24 @@ h4 {
   text-align: center;
 }
 
-.stars {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
+.weekly-show {
+  display: none;
 }
 
-.stars img {
-  margin-right: 8px;
-  width: 20px;
-}
-
-.stars p {
-  margin-left: 8px;
-}
-
-.sleep-widget .date {
+.water-widget .date {
   display: none;
   font-weight: 400;
   margin-top: 10px;
 }
 
-.sleep-widget footer {
+.water-widget footer {
   display: none;
   justify-content: center;
   padding-top: 20px;
 }
 
-.sleep-widget footer img {
+.water-widget footer img {
   cursor: pointer;
-  display: inline;
   margin-right: 2px;
   width: 10px;
 }
@@ -409,6 +401,10 @@ h4 {
   align-items: center;
   border-radius: 20px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 10px 10px 40px;
+  padding: 10px 15px;
 }
 
 .month {
@@ -557,4 +553,5 @@ h4 {
   display: none;
   background-image: url("../images/tick.svg");
 }
+
 /*# sourceMappingURL=index.css.map */

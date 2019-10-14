@@ -218,6 +218,7 @@ stepsFriendStepsAverageToday.innerText = userRepository.calculateAverageSteps(to
 
 stairsFriendFlightsAverageToday.innerText = (userRepository.calculateAverageStairs(todayDate) / 12).toFixed(1);
 
+stepsCalendarTotalActiveMinutesWeekly.innerText = user.calculateAverageMinutesActiveThisWeek(todayDate);
 
 
 // console.log(user.calculateAverageStairs(date));

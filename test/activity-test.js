@@ -125,4 +125,51 @@ beforeEach(() => {
         expect(miles).to.equal(4);
       });
     });
+    describe("getAverageForSevenDays method", () => {
+      it("should show average number of steps for week", () => {
+        activity.getAverageForSevenDays(userRepo);
+        expect(activity.numSteps).to.equal(6299);
+      });
+
+      it("should show average active minutes for week", () => {
+        activity.getAverageForSevenDays(userRepo);
+        expect(activity.minutesActive).to.equal(158);
+      });
+
+      it("should show average flights of stairs for week", () => {
+        activity.getAverageForSevenDays(userRepo);
+        expect(activity.flightsOfStairs).to.equal(10);
+      });
+
+      it("should count miles for week", () => {
+        activity.getAverageForSevenDays(userRepo);
+        const miles = activity.findMiles(user.strideLength);
+        expect(miles).to.equal(5);
+      });
+
+      it("should show average number of steps for any week", () => {
+        activity.changeDate(userRepo, user, '2019/07/12');
+        activity.getAverageForSevenDays(userRepo);
+        expect(activity.numSteps).to.equal(6759);
+      });
+
+      it("should show average active minutes for any week", () => {
+        activity.changeDate(userRepo, user, '2019/07/12');
+        activity.getAverageForSevenDays(userRepo);
+        expect(activity.minutesActive).to.equal(222);
+      });
+
+      it("should show average flights of stairs for chosen day", () => {
+        activity.changeDate(userRepo, user, '2019/07/12');
+        activity.getAverageForSevenDays(userRepo);
+        expect(activity.flightsOfStairs).to.equal(20);
+      });
+
+      it("should count miles for chosen day", () => {
+        activity.changeDate(userRepo, user, '2019/07/12');
+        activity.getAverageForSevenDays(userRepo);
+        const miles = activity.findMiles(user.strideLength);
+        expect(miles).to.equal(5);
+      });
+    });
   });

@@ -102,4 +102,8 @@ describe('User', function() {
     user.activityData = [{flightsOfStairs: 10}, {flightsOfStairs: 15}, {flightsOfStairs: 17}]
     expect(user.findClimbingRecord()).to.equal(17)
   });
+  it('should have a method that calculates daily calories burned', function() {
+    user.activityData = [{date: "2019/09/16", minutesActive: 78}, {date: "2019/09/17", minutesActive: 100}, {date: "2019/09/17", minutesActive: 20}];
+    expect(user.calculateDailyCalories("2019/09/17")).to.equal(912)
+  });
 });

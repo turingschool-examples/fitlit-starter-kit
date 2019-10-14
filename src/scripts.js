@@ -9,6 +9,7 @@ let activityRepo;
 let activityUser;
 
 $("#login-page-button").click(clickLoginButton);
+$("body").on("click", "#aside-step-challenge", addFriendsTotalStepsByWeek);
 
 function clickLoginButton(event) {
   if (!$("#login-page-input").val()) {
@@ -34,7 +35,6 @@ function clickLoginButton(event) {
     addMinutesActiveByDay();
     addNumStepsForLatestDay();
     addWeeklyActivityDataByDay();
-    instantiateFriends();
   }
 }
 
@@ -63,19 +63,52 @@ function instantiateActivityData(data) {
   activityUser = new ActivityUser(userActivityData);
 }
 
-function instantiateFriends() {
-  let friendsInfo = getFriends();
+function instantiateFriendsUser() {
+  let friendsInfo = getFriendsInfo(user);
   return friendsInfo.map((friendInfo) => {
     let friend = new User(friendInfo);
     return friend;
   })
 }
 
-function getFriends() {
-  return user.friends.map(friend => {
+function instantiateFriendsActivity() {
+  let friendsInfo = getFriendsInfo(user);
+  return friendsInfo.map((friendInfo) => {
+    let friendActivityInfo = activityRepo.getUserActivityData(friendInfo.id);
+    let friendActivity = new ActivityUser(friendActivityInfo);
+    return friendActivity;
+  });
+}
+
+function addFriendsTotalStepsByWeek() {
+  console.log($("#friend-weekly-steps-section").length);
+  if ($("#friend-weekly-steps-section").length === 0) {
+    let friends = instantiateFriendsUser();
+    let friendsActivity = instantiateFriendsActivity();
+    $("#aside-step-challenge").after(`
+      <div>
+        <section id="friend-weekly-steps-section">
+        </section
+      </div>`)
+    friendsActivity.forEach((friend, index) => {
+      let totalfriendStepsByWeek = friend.calcTotalStepsByWeek('2019/09/22');
+      let friendFirstName = friends[index].getFirstName();
+      $("#friend-weekly-steps-section").after(`
+            <div>
+              <h3>${friendFirstName}</h3>
+              <p>${totalfriendStepsByWeek}</p>
+            </div>`);
+    });
+  }
+}
+
+
+function getFriendsInfo(user) {
+  let friendInfo = user.friends.map(friend => {
     let friendInfo = userRepo.getFriendData(friend);
     return friendInfo;
   });
+  return friendInfo;
 }
 
 function displayErrorMessage() {
@@ -260,8 +293,7 @@ function displayUserPage() {
         <section class="aside-style" id="aside-user-step-comparison">
         </section>
         <section class="aside-style">
-          <h3>Trends</h3>
-          <div class="aside-trend-div">Trend 1</div>
+          <div class="aside-trend-div" id="aside-step-challenge">Trend 1</div>
           <div class="aside-trend-div">Trend 2</div>
         </section>
       </div>

@@ -120,9 +120,7 @@ $(document).ready(function() {
   function updateHydrationWeekDay(target, index) {
     const $weekInfo = hydration.findWeeksFluid(userRepository.hydrationUsersData);
     $(target).closest('.widget').find('.date').text($weekInfo[index].date);
-    $(target).closest('.widget').find('.section__number').text($weekInfo[index].hoursSlept);
-    const $quality = sleep.splitQuality($qualities[index]);
-    setQuality($quality);
+    $(target).closest('.widget').find('.section__number').text($weekInfo[index].numOunces);
   }
 
   // DROPDOWN MENU SCRIPTS

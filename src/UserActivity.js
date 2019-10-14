@@ -16,7 +16,14 @@ class UserActivity {
     return activityDataFilter
   }
 
+  userStepsByDate(id, date) {
+    return activityData.find(user => id === user.userID && date === user.date).numSteps;
+  }
+
   userMilesByDate() {
+    // let milesByDate = this.filteredActivity.find(user => date === user.date).numSteps;
+    // return parseFloat(((milesByDate * this.userData.strideLength) / 5280).toFixed(2))
+    
     let milesByDate = this.filteredActivity.slice(-1)
     return parseFloat(((milesByDate[0].numSteps * this.userData.strideLength) / 5280).toFixed(2))
   }

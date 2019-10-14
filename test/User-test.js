@@ -5,14 +5,12 @@ const User = require('../src/User');
 const UsersRepo = require('../src/UsersRepo');
 const userData = require('../subset_data/users-subset');
 
-
-
-beforeEach(function() {
-  usersRepo = new UsersRepo(userData);
-});
-
-
 describe('User Test', function() {
+  let usersRepo;
+
+  beforeEach(function() {
+    usersRepo = new UsersRepo(userData);
+  });
 
   it('should be a function', function() {
     expect(User).to.be.a('function');

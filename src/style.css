@@ -5,18 +5,18 @@
 
 body {
   background-color: #8ca3b3;
-  display: grid;
+  /* display: grid; */
   height: 100vh;
-  grid-auto-rows: 1fr 10fr;
-  grid-template-areas: "header"
-  "main";
+  /* grid-auto-rows: 1fr 10fr; */
+  /* grid-template-areas: "header" */
+  /* "main"; */
   margin: 0;
 }
 
 header {
   background-color: #ffffff6b;
   box-shadow: 3px 3px 10px black;
-  grid-area: header;
+  /* grid-area: header; */
   padding-bottom: 10px;
   margin-bottom: 10px;
   text-align: center;
@@ -94,12 +94,11 @@ h2 ~ p {
   border-radius: 10px;
   box-shadow: 1px 1px 6px #212b32;
   float: left;
-  justify-content: space-around;
   height: max-content;
-  grid-auto-rows: auto; 
+  grid-auto-rows: auto;
   margin: 20px;
   padding: 15px;
-  width: 45%;
+  width: 43%;
 }
 
 .grid-item:hover {

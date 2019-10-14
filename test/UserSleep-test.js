@@ -3,7 +3,6 @@ const expect = chai.expect;
 
 const UserSleep = require('../src/UserSleep');
 const userData = require('../subset_data/users-subset');
-// const sleepData = require('../subset_data/sleep-subset');
 
 describe('UserSleep', () => {
 
@@ -22,15 +21,15 @@ describe('UserSleep', () => {
   });
 
   it('should find a user by their id', () => {
-    expect(userSleep.filterSleepData(1)).to.be.a('array')
+    expect(userSleep.filterSleepData(1)).to.be.a('array');
   });
 
   it('should find all the user\'s hours slept', () => {
-    expect(userSleep.filteredUserHoursSleptDay(1)).to.be.a('array')
+    expect(userSleep.filteredUserHoursSleptDay(1)).to.be.a('array');
   });
 
   it('should find all the user\'s quality sleep', () => {
-    expect(userSleep.filteredUserSleepQuality(1)).to.be.a('array')
+    expect(userSleep.filteredUserSleepQuality(1)).to.be.a('array');
   });
 
   it('should find a user\'s average hours slept per day', () => {
@@ -60,8 +59,8 @@ describe('UserSleep', () => {
   describe('giveUserSleepFeedback', () => {
     it('should tell the user how far away from getting 8 hours of sleep for a specific date', () => {
       expect(userSleep.giveUserSleepFeedback(1, '2019/06/15')).to.equal('You were 1.9 hours away from sleeping a full 8 hours.');
+      
     });
-    
     it('should tell the user how much over 8 hours of sleep they got for a specific date', () => {
       expect(userSleep.giveUserSleepFeedback(3, "2019/06/15")).to.equal('You slept 2.8 hours over the recommended 8.');
     });

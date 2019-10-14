@@ -37,8 +37,9 @@ $(function() {
   $('.user__step').text(userData[randomUser].dailyStepGoal);
   $('.user__dailyWater').text(userHydration.userOuncesToday());
   $('.section__sleep--step-feedback').text(userSleep.giveUserSleepFeedback(randomUser, '2019/06/15'));
-  $('.activity__current--step').text(userActivity.activityDataFilter());
-  $('.activity__steps--miles').text(userActivity.userMilesByDate(randomUser, today))
+  $('.activity__current--step').text(userActivity.userStepsByDate(randomUser, today));
+  // $('.activity__minutes--active').text(userActivity.userMinutesActiveByDate(randomUser, today))
+  // $('.activity__steps--miles').text(userActivity.userMilesByDate(randomUser));
 
   const usersWeeklyWater = new Chart($('#weeklyUserDailyWater'), {
     type: 'horizontalBar',

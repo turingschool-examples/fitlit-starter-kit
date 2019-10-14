@@ -23,8 +23,12 @@ describe('UserActivity', () => {
     expect(userActivity).to.be.an.instanceof(UserActivity);
   });
 
+  it('shoud be able to tell how many steps were taken on a specific day', () =>{
+    expect(userActivity.userStepsByDate(1, '2019/06/15')).to.equal(3577);
+  });
+
   it('should return user steps in miles for one specific date', () => {
-    expect(userActivity.userMilesByDate()).to.equal(11.34);
+    expect(userActivity.userMilesByDate('2019/06/15')).to.equal(11.34);
   });
 
   it('should return user minutes active for one specific date', () => {

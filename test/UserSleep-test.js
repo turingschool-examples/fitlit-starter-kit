@@ -58,9 +58,12 @@ describe('UserSleep', () => {
   });
   
   describe('giveUserSleepFeedback', () => {
-    it('should tell the user how close to getting 8 hours of sleep for a specific date', () => {
-      expect(userSleep.giveUserSleepFeedback(1, '2019/06/15')).to.equal('You must be tired, you were 1.9 hours away from sleeping a full 8 hours.');
-      expect(userSleep.giveUserSleepFeedback(3, "2019/06/15")).to.equal('You must be feeling good, you slept 2.8 hours over the recommended 8.');
+    it('should tell the user how far away from getting 8 hours of sleep for a specific date', () => {
+      expect(userSleep.giveUserSleepFeedback(1, '2019/06/15')).to.equal('You were 1.9 hours away from sleeping a full 8 hours.');
+    });
+    
+    it('should tell the user how much over 8 hours of sleep they got for a specific date', () => {
+      expect(userSleep.giveUserSleepFeedback(3, "2019/06/15")).to.equal('You slept 2.8 hours over the recommended 8.');
     });
   });
 

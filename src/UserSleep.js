@@ -56,10 +56,10 @@ class UserSleep {
     let userSleepToday = sleepData.find(user => id === user.userID && date === user.date).hoursSlept;
     if (userSleepToday >= 8) {
       let goodSleep = parseFloat(userSleepToday - 8).toFixed(1)
-      return `You must be feeling good, you slept ${goodSleep} hours over the recommended 8.`
+      return `You slept ${goodSleep} hours over the recommended 8.`
     } else {
       let badSleep = parseFloat(8 - userSleepToday).toFixed(1)
-      return `You must be tired, you were ${badSleep} hours away from sleeping a full 8 hours.`
+      return `You were ${badSleep} hours away from sleeping a full 8 hours.`
     }
   }
 

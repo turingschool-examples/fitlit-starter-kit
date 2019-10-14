@@ -1,16 +1,8 @@
 // INTANTIATING
 let userRepository = new UserRepository();
 
-// let activityInstances = activityData.map(activity => {
-//   return new Activity(activity, userRepository);
-// })
-//
 userData.forEach(user => {
-  // let userActivityData = activityInstances.filter(activity => {
-  //   return activity.userId === user.id
-  // })
   user = new User(user);
-  // user.activityData = userActivityData;
   userRepository.users.push(user)
 });
 
@@ -19,7 +11,7 @@ let activities = [];
 activityData.forEach(activity => {
   activity = new Activity(activity, userRepository);
   activities.push(activity);
-})
+});
 
 hydrationData.forEach(hydration => {
   hydration = new Hydration(hydration, userRepository);
@@ -210,4 +202,4 @@ stepsInfoActiveMinutesToday.innerText = activityData.find(activity => {
 }).minutesActive;
 
 
-console.log(user.calculateAverageMinutesActiveThisWeek(todayDate));
+// console.log(user.calculateAverageStairs(date));

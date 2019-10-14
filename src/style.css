@@ -26,32 +26,31 @@ nav {
 	background-color: #222629;
 	color: #ffffff;
 	text-align: center;
-	border: 1px solid green;
 }
 
 .friend__section--container {
 	grid-area: friend;
-	background-color: blue;
+	background-color: #86c232;
 	color: #ffffff;
-	/*text-align: center;*/
-	border: 1px solid blue;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
 }
 
 .main__section--container {
 	grid-area: main;
-	background: orange;
+	background: #c5c6c7;
 	font-size: 18px;
-	border: 1px solid orange;
 }
 
 .sub__section--container {
 	grid-area: sub;
-	background: yellow;
+	background: #6b6e70;
 	font-size: 18px;
-	border: 1px solid yellow;
-	/*display: grid;
+	display: flex;
 	flex-direction: row;
-	justify-content: space-around;*/
+	justify-content: space-around;
 }
 
 .nav__h1 {
@@ -80,17 +79,17 @@ nav {
 	width: 49%;
 }
 
-.main__hydration--section {
-	width: 20%;
-	height: 40%;
-	display: inline-block;
-	border: 1px white solid;
-	margin: 3% 0;
-	padding: 2%;
-	background: #474b4f;
+.main__sub--section {
+	width: 28%;
+  height: 75%;
+  display: inline-block;
+  border: 1px white solid;
+  margin: 1%;
+  padding: 1%;
+  background: #474b4f;
 }
 
-.main__activity--section {
+/*.main__activity--section {
 	width: 20%;
 	height: 40%;
 	display: inline-block;
@@ -98,9 +97,9 @@ nav {
 	margin: 3% 0;
 	padding: 2%;
 	background: #474b4f;
-}
+}*/
 
-.main__sleep--section {
+/*.main__sleep--section {
 	width: 20%;
 	height: 40%;
 	display: inline-block;
@@ -108,7 +107,7 @@ nav {
 	margin: 3% 0;
 	padding: 2%;
 	background: #474b4f;
-}
+}*/
 
 .main__user {
 	height: 75%;
@@ -117,10 +116,6 @@ nav {
 	padding: 2%;
 	background: #474b4f;
 	border: 1px white solid;
-  height: 40%;
-  margin: 3% 0;
-  padding: .5rem;
-	width: 90%;
 }
 
 .main__user:hover {
@@ -152,20 +147,33 @@ nav {
 	color: #ee7d30;
 	box-shadow: 2px 2px 3px #476972;
 }
+
 .main__hydration {
 	color: #56c0dc;
 }
+
 .main__hydration span{
 	font-weight: 900;
 	font-size: 5rem;
 }
+
 .main__activity {
 	color: #ee7d30;
 }
+
 .main__sleep {
 	color: #a06cf7;
 }
+
 .main__user {
 	color: #86c232;
 	box-shadow: 2px 2px 3px black;
+}
+
+.friend__image--section {
+	border-radius: 50%;
+	width: 170px;
+	height: 170px;
+	border: 1px solid white;
+	background: #474b4f;
 }

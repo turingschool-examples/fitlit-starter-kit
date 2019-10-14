@@ -21,7 +21,7 @@ class UserRepository {
       }
       return allDates;
     }, []);
-    this.day = dates[dates.length - 1];
+    this.day = dates[dates.length - 1] || '2019/09/22';
     return dates[dates.length - 1];
   }
 

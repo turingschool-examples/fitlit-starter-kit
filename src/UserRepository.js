@@ -28,8 +28,20 @@ class UserRepository {
   calculateAverageSteps() {
 
   }
-  calculateAverageStairs() {
-
+  calculateAverageStairs(date) {
+    let allUsersStairsCount = this.users.map(user => {
+      return user.activityData.filter(activity => {
+        // console.log(activity);
+        return activity.date === date;
+      });
+    })
+    let sumOfStairs = allUsersStairsCount.reduce((stairsSum, activityCollection) => {
+      activityCollection.forEach(activity => {
+        stairsSum += activity.flightsOfStairs
+      })
+      return stairsSum;
+    }, 0);
+    return Math.round(sumOfStairs / allUsersStairsCount.length);
   }
   calculateAverageMinutesActive() {
 

@@ -101,5 +101,5 @@ describe('User', function() {
   it('should have a method that return the highest climbing record', function() {
     user.activityData = [{flightsOfStairs: 10}, {flightsOfStairs: 15}, {flightsOfStairs: 17}]
     expect(user.findClimbingRecord()).to.equal(17)
-  })
+  });
 });

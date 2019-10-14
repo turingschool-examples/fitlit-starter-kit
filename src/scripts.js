@@ -1,32 +1,21 @@
 // INTANTIATING
 let userRepository = new UserRepository();
 
-let activityInstances = activityData.map(activity => {
-  return new Activity(activity);
-})
-
 userData.forEach(user => {
-  let userActivityData = activityInstances.filter(activity => {
-    return activity.userId === user.id
-  })
   user = new User(user);
-  user.activityData = userActivityData;
   userRepository.users.push(user)
 });
 
 let activities = [];
 
 activityData.forEach(activity => {
-  activity = new Activity(activity);
+  activity = new Activity(activity, userRepository);
   activities.push(activity);
-})
-
-
+});
 
 hydrationData.forEach(hydration => {
   hydration = new Hydration(hydration, userRepository);
 })
-
 
 sleepData.forEach(sleep => {
   sleep = new Sleep(sleep, userRepository);
@@ -211,3 +200,6 @@ stepsInfoMilesWalkedToday.innerText = activities.find(activity => {
 stepsInfoActiveMinutesToday.innerText = activityData.find(activity => {
   return activity.userID === user.id && activity.date === todayDate;
 }).minutesActive;
+
+
+// console.log(user.calculateAverageStairs(date));

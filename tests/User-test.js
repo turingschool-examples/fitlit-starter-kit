@@ -6,7 +6,6 @@ const User = require('../src/User');
 
 describe('User', function() {
     let user;
-    let user2;
     beforeEach(() => {
       user = new User({
         'id': 1,
@@ -67,6 +66,12 @@ describe('User', function() {
   it('should have a default sleepQualityRecord of []', function() {
     expect(user.sleepQualityRecord).to.deep.equal([]);
   });
+  it('should have a default activityRecord of []', function() {
+    expect(user.activityRecord).to.deep.equal([]);
+  });
+  it('should have a default value of [] for accomplishedDays', function() {
+    expect(user.accomplishedDays).to.deep.equal([]);;
+  });
   it('getFirstName should return the first name of the user', function () {
     expect(user.getFirstName()).to.equal('LUISA');
   });
@@ -99,11 +104,32 @@ describe('User', function() {
     expect(user.calculateAverageHoursThisWeek('2019/09/21')).to.equal('7.9');
   });
   it('should have a method that return the highest climbing record', function() {
-    user.activityData = [{flightsOfStairs: 10}, {flightsOfStairs: 15}, {flightsOfStairs: 17}]
+    user.activityRecord = [{flightsOfStairs: 10}, {flightsOfStairs: 15}, {flightsOfStairs: 17}]
     expect(user.findClimbingRecord()).to.equal(17)
   });
   it('should have a method that calculates daily calories burned', function() {
-    user.activityData = [{date: "2019/09/16", minutesActive: 78}, {date: "2019/09/17", minutesActive: 100}, {date: "2019/09/17", minutesActive: 20}];
+    user.activityRecord = [{date: "2019/09/16", activityRecord: 78}, {date: "2019/09/17", minutesActive: 100}, {date: "2019/09/17", minutesActive: 20}];
     expect(user.calculateDailyCalories("2019/09/17")).to.equal(912)
   });
+  it('calculateAverageMinutesActiveThisWeek should calculate the average minutes active', function() {
+    user.activityRecord = [{date: "2019/09/18", minutesActive: 78}, {date: "2019/09/17", minutesActive: 100}, {date: "2019/09/16", minutesActive: 20}, {date: "2019/09/15", minutesActive: 21}, {date: "2019/09/14", minutesActive: 35}, {date: "2019/09/13", minutesActive: 37}, {date: "2019/06/12", minutesActive: 42}, {date: "2019/09/11", minutesActive: 18}, {date: "2019/09/10", minutesActive: 16}, {date: "2019/09/09", minutesActive: 81}];
+    expect(user.calculateAverageMinutesActiveThisWeek("2019/09/17")).to.equal('39.0')
+  });
+  it('updateAccomplishedDays should create an array of good days', function() {
+    user.updateActivities({
+      "userID": 1,
+      "date": "2019/06/15",
+      "numSteps": 3684,
+      "minutesActive": 140,
+      "flightsOfStairs": 16
+    });
+    user.updateActivities({
+      "userID": 1,
+      "date": "2019/06/15",
+      "numSteps": 14684,
+      "minutesActive": 140,
+      "flightsOfStairs": 16
+    });
+    expect(user.accomplishedDays.length).to.equal(1);
+  })
 });

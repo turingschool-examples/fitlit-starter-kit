@@ -84,7 +84,4 @@ describe('Hydration', function() {
       expect(user2.ouncesRecord.length).to.equal(2)
     })
   });
-  it('should have a method that calculates number of glasses', function() {
-    expect(hydrate1.calculateDailyGlasses()).to.equal(4)
-  })
 });

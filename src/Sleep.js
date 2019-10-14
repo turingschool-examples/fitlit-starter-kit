@@ -53,6 +53,7 @@ class Sleep {
       }
       return objectSoFar;
     }, {})
+    console.log('user sleep object', userSleepObject);
     // let bestSleeperId = weekArray.sort((a, b) => (b.sleepQuality - a.sleepQuality))[0].userID;
     // console.log(bestSleeperId);
     // return userRepo.getDataFromID(bestSleeperId).name;
@@ -92,23 +93,54 @@ class Sleep {
         return sumSoFar;
       }, 0)/userSleepObject[b].length)
     })
-    console.log(sleepRank);
+    console.log("this is sleepRank", sleepRank);
 
-    return sleepRank.filter(function(sleeper) {
-      userSleepObject[sleeper].reduce(function(sumSoFar, sleepQualityValue){
+    let sleepRankWithData = sleepRank.map(function(sleeper){
+      sleeper = {[sleeper]: userSleepObject[sleeper].reduce(function(sumSoFar, sleepQualityValue){
         sumSoFar += sleepQualityValue
         return sumSoFar;
-      }, 0)/userSleepObject[sleeper].length = userSleepObject[sleeper[sleepRank[0]]].reduce(function(sumSoFar, sleepQualityValue){
-        sumSoFar += sleepQualityValue
-        return sumSoFar;
-      }, 0)/userSleepObject[sleeper[sleepRank[0]].length
+      }, 0)/userSleepObject[sleeper].length}
+      return sleeper;
     })
+
+    console.log('this is sleep rank with data', sleepRankWithData);
+
+
+    var bestSleepers = sleepRankWithData.filter(function(element){
+      console.log("ELEMENT KEY", element[Object.keys(element)]);
+      console.log("bEST ONE", parseInt(Object.values(sleepRankWithData[0]).join('')));
+      console.log("bEST ONE 2", Object.values(sleepRankWithData[0])[0]);
+      return element[Object.keys(element)] === Object.values(sleepRankWithData[0])[0]
+
+      // element[Object.keys(element)] === parseInt(Object.values(sleepRankWithData[0]).join('')
+    })
+
+    var bestSleeperIds = bestSleepers.map(function(bestSleeper) {
+      return (Object.keys(bestSleeper));
+    })
+
+    return bestSleeperIds.map(function(sleepNumber) {
+      console.log('HELOOOOO', sleepNumber)
+      console.log('BONJOUR', userRepo.getDataFromID(parseInt(sleepNumber)).name)
+      return userRepo.getDataFromID(parseInt(sleepNumber)).name;
+    })
+
+    // return sleepRank.filter(function(sleeper) { console.log("sleeper", sleeper);
+    //   userSleepObject[sleeper].reduce(
+    //     function(sumSoFar, sleepQualityValue) {
+    //       sumSoFar += sleepQualityValue
+    //       return sumSoFar;
+    //     },
+    //     0
+    //   ) / userSleepObject[sleeper].length === userSleepObject[sleepRank[0]].reduce(
+    //     function(sumSoFar, sleepQualityValue) {
+    //       sumSoFar += sleepQualityValue
+    //       return sumSoFar;
+    //     },
+    //     0
+    //   ) / userSleepObject[sleepRank[0]].length
+    // })
   }
-
-
-
-
-
 }
 
 if (typeof module !== 'undefined') {

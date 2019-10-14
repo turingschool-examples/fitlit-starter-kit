@@ -11,16 +11,7 @@ $( document ).ready( () => {
 
 $('.main__user').html(`${userData[randomFitLitUser].name} <br>
     ${userData[randomFitLitUser].email} <br>
-    Friends: <a href='#' >${userData[randomFitLitUser].friends}</a>
-      <div class='card'>
-        <div class='donut-chart chart2'>
-          <div class='slice one'></div>
-          <div class='slice two'></div>
-          <div class='chart-center'>
-            <span></span>
-          </div>
-        </div>
-      </div>`);
+    Friends: <a href='#' >${userData[randomFitLitUser].friends}</a>`);
 $('.main__sleep').html(`${sleepData[randomFitLitUser].date} <br> Hours Slept: ${sleepData[randomFitLitUser].hoursSlept} hours<br>
     Sleep Quality: ${sleepData[randomFitLitUser].sleepQuality}`);
 

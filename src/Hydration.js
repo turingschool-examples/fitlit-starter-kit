@@ -23,8 +23,12 @@ class Hydration {
     })
   }
 
-  findWeeksFluid() {
-    // gets array of last 7 days starting with a date, and then subtracting 7, and returns drink amounts for each day element as a collective array.
+  findWeeksFluid(hydrationData) {
+    let userWater = hydrationData.filter(hydro => hydro.userID === this.userId);
+    let lastDay = userWater.find(hydro => hydro.date === this.date);
+    let lastDayIndex = userWater.indexOf(lastDay);
+    let weekWater = userWater.slice(lastDayIndex - 6, lastDayIndex + 1);
+    return weekWater;
   }
 }
 

@@ -54,6 +54,7 @@ $(document).ready(function() {
   function showHydration() {
     hydration = new Hydration(userRepository);
     hydration.findDayFluid(userRepository.hydrationUsersData)
+    hydration.findWeeksFluid(userRepository.hydrationUsersData);
     console.log(hydration);
     $('.current-hydro').text(hydration.numOunces.numOunces)
   }

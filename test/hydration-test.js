@@ -2,6 +2,8 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Hydration = require('../src/Hydration');
+const UserRepository = require('../src/UserRepository');
+
 
 describe.only('Hydration', function() {
   const mockData = {
@@ -88,4 +90,6 @@ describe.only('Hydration', function() {
 
     expect(hydrationThree.calcAvgFluidConsumption(1, mockData.hydration)).to.equal(36);
   })
+
+  
 })

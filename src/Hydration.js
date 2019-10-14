@@ -1,27 +1,39 @@
 class Hydration {
-  constructor({ userID, date, numOunces }) {
-    this.userId = userID;
-    this.date = date;
-    this.numOunces = numOunces;
+  constructor(userRepo) {
+    this.userId = userRepo.currentUserId;
+    this.date = userRepo.day;
+    this.numOunces = null;
   }
 
-  // let { userID, date, numOunces } = data;
-
-  calcAvgFluidConsumption(id) {
-    // take all similar Id's as array, calculates average per day for one user for all time.
+  calcAvgFluidConsumption(hydrationData) {
+    const userOunces = hydrationData.reduce((acc, indHydro) => {
+      if (indHydro.userID === this.userId) {
+        acc.push(indHydro.numOunces);
+      }
+      return acc;
+    }, []);
+    let totalOunces = 0;
+    userOunces.forEach(dayOunces => totalOunces += dayOunces);
+    return (totalOunces / userOunces.length);
   }
 
-  findDayFluid(id, date) {
-    // takes Id and date, return fluids drank.
+  findDayFluid(hydrationData) {
+    this.numOunces = hydrationData.find(hydro => {
+      return hydro.userID === this.userId && hydro.date === this.date;
+    }).numOunces;
   }
 
-  findWeeksFluid() {
-    // gets array of last 7 days starting with a date, and then subtracting 7, and returns drink amounts for each day element as a collective array.
+  findWeeksFluid(hydrationData) {
+    let userWater = hydrationData.filter(hydro => hydro.userID === this.userId);
+    let lastDay = userWater.find(hydro => hydro.date === this.date);
+    let lastDayIndex = userWater.indexOf(lastDay);
+    let weekWater = userWater.slice(lastDayIndex - 6, lastDayIndex + 1);
+    return weekWater;
   }
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = User;
+  module.exports = Hydration;
 }
 
 

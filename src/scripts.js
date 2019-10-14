@@ -9,6 +9,7 @@ const userRepository = new UserRepository(data);
 userRepository.findToday();
 let user;
 let sleep;
+let hydration;
 
 $(document).ready(function() {
 
@@ -51,10 +52,11 @@ $(document).ready(function() {
   }
 
   function showHydration() {
-    const currentHydration = hydrationData.find(hydro => {
-      return hydro.userID === userRepository.currentUserId
-    })
-    $('.current-hydro').text(currentHydration.numOunces)
+    hydration = new Hydration(userRepository);
+    console.log({hydration}, 'HREEEEE');
+    hydration.findDayFluid(userRepository.hydrationUsersData)
+    hydration.findWeeksFluid(userRepository.hydrationUsersData);
+    $('.current-hydro').text(hydration.numOunces);
   }
 
   function showSleep() {
@@ -103,6 +105,7 @@ $(document).ready(function() {
     const $dayIndex = parseInt($(this).attr('data-index'));
     $(this).attr('src', '../images/circle-clicked.svg').siblings().attr('src', '../images/circle.svg');
     if ($widgetType === 'sleep') updateWeekDay(this, $dayIndex);
+    if ($widgetType === 'water') updateHydrationWeekDay(this, $dayIndex);
   });
 
   function updateWeekDay(target, index) {
@@ -112,6 +115,12 @@ $(document).ready(function() {
     $(target).closest('.widget').find('.section__number').text($weekInfo[index].hoursSlept);
     const $quality = sleep.splitQuality($qualities[index]);
     setQuality($quality);
+  }
+
+  function updateHydrationWeekDay(target, index) {
+    const $weekInfo = hydration.findWeeksFluid(userRepository.hydrationUsersData);
+    $(target).closest('.widget').find('.date').text($weekInfo[index].date);
+    $(target).closest('.widget').find('.section__number').text($weekInfo[index].numOunces);
   }
 
   // DROPDOWN MENU SCRIPTS
@@ -129,10 +138,13 @@ $(document).ready(function() {
 
     if ($dayEntered === 'Week') {
       $(this).closest('.widget').find('.date, footer').show();
+      if ($widgetType === 'sleep') {
       $(this).closest('.widget').find('.date').text(sleep.date);
       sleep.updateInfo(userRepository);
-      updateSleep();
-    }
+      updateSleep()} else if ($widgetType === 'water') {
+        showHydration();
+      }
+    } 
 
     if ($dayEntered === 'Today') {
       $(this).closest('.widget').find('.date, footer').hide();
@@ -147,7 +159,10 @@ $(document).ready(function() {
       if ($widgetType === 'sleep') {
         sleep.changeDate(userRepository, 'All day');
         updateSleep();
-      };
+      } else if ($widgetType === 'water') {
+        let allAvg = hydration.calcAvgFluidConsumption(userRepository.hydrationUsersData);
+        $('.current-hydro').text(allAvg);
+      }
     }
   });
 

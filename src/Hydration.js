@@ -7,7 +7,7 @@ class Hydration {
 
   calcAvgFluidConsumption(hydrationData) {
     const userOunces = hydrationData.reduce((acc, indHydro) => {
-      if (indHydro.currentUserId === this.userId) {
+      if (indHydro.userID === this.userId) {
         acc.push(indHydro.numOunces);
       }
       return acc;
@@ -19,13 +19,13 @@ class Hydration {
 
   findDayFluid(hydrationData) {
     this.numOunces = hydrationData.find(hydro => {
-      return hydro.currentUserId === this.userId && hydro.day === this.date;
+      return hydro.userID === this.userId && hydro.date === this.date;
     }).numOunces;
   }
 
   findWeeksFluid(hydrationData) {
-    let userWater = hydrationData.filter(hydro => hydro.currentUserId === this.userId);
-    let lastDay = userWater.find(hydro => hydro.day === this.date);
+    let userWater = hydrationData.filter(hydro => hydro.userID === this.userId);
+    let lastDay = userWater.find(hydro => hydro.date === this.date);
     let lastDayIndex = userWater.indexOf(lastDay);
     let weekWater = userWater.slice(lastDayIndex - 6, lastDayIndex + 1);
     return weekWater;

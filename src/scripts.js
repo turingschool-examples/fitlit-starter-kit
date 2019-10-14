@@ -53,10 +53,10 @@ $(document).ready(function() {
 
   function showHydration() {
     hydration = new Hydration(userRepository);
+    console.log({hydration}, 'HREEEEE');
     hydration.findDayFluid(userRepository.hydrationUsersData)
     hydration.findWeeksFluid(userRepository.hydrationUsersData);
-    console.log(hydration);
-    $('.current-hydro').text(hydration.numOunces.numOunces)
+    $('.current-hydro').text(hydration.numOunces);
   }
 
   function showSleep() {

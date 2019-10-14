@@ -195,37 +195,37 @@ describe('Sleep', function() {
       {
         "userID": 5,
         "date": "2019/06/21",
-        "hoursSlept": 6.1,
+        "hoursSlept": 9,
         "sleepQuality": 4
       },
       {
         "userID": 5,
         "date": "2019/06/20",
-        "hoursSlept": 4.7,
+        "hoursSlept": 8,
         "sleepQuality": 4
       },
       {
         "userID": 5,
         "date": "2019/06/19",
-        "hoursSlept": 10.1,
+        "hoursSlept": 10,
         "sleepQuality": 4
       },
       {
         "userID": 5,
         "date": "2019/06/18",
-        "hoursSlept": 7.9,
+        "hoursSlept": 9,
         "sleepQuality": 4
       },
       {
         "userID": 5,
         "date": "2019/06/17",
-        "hoursSlept": 5.9,
+        "hoursSlept": 8,
         "sleepQuality": 4
       },
       {
         "userID": 5,
         "date": "2019/06/16",
-        "hoursSlept": 9.6,
+        "hoursSlept": 10,
         "sleepQuality": 4
       },
       {
@@ -329,10 +329,9 @@ describe('Sleep', function() {
   })
   it ('should return person with best quality sleep for the week', function() {
 
-
     expect(sleep.determineSleepWinner("2019/06/21", userRepo)).to.eql(["Bugs Bunny"]);
   })
-  it ('should return all users if best quality sleep is a tie', function() {
+  it ('should return all qualifying users if best quality sleep is a tie', function() {
     sleepData = sleepData.push({
       "userID": 6,
       "date": "2019/06/15",
@@ -352,5 +351,31 @@ describe('Sleep', function() {
     userRepo = new UserRepo(users);
 
     expect(sleep.determineSleepWinner("2019/06/21", userRepo)).to.eql(["Bugs Bunny", "Richmond"]);
+  })
+
+  it ('should return person with longest sleep for the day', function() {
+
+    expect(sleep.determineSleepHoursWinner('2019/06/21', userRepo)).to.eql(["Bugs Bunny"]);
+  })
+  it ('should return all qualifying users if longest sleep is a tie', function() {
+    sleepData = sleepData.push({
+      "userID": 6,
+      "date": "2019/06/21",
+      "hoursSlept": 9,
+      "sleepQuality": 4
+    })
+    let user6 = new User({
+      id: 6,
+      name: "Richmond",
+      address: "1234 Looney Street, Denver CO 80301-1697",
+      email: "BugsB1@hotmail.com",
+      strideLength: 3.8,
+      dailyStepGoal: 7000,
+      friends: [1, 2, 3]
+    });
+    users = [user1, user2, user3, user4, user5, user6];
+    userRepo = new UserRepo(users);
+
+    expect(sleep.determineSleepHoursWinner('2019/06/21', userRepo)).to.eql(["Bugs Bunny", "Richmond"]);
   })
 });

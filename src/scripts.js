@@ -92,7 +92,7 @@ function makeHydrationHTML(id, hydrationInfo, userStorage, method) {
 }
 
 function addSleepInfo(id, sleepInfo, dateString, userStorage, laterDateString) {
-  sleepToday.innerText = `You slept ${sleepInfo.calculateDailySleep(id, dateString)} hours today. Your average night's sleep is ${sleepInfo.calculateAverageSleep(id)} oz per day. Your sleep quality was ${sleepInfo.calculateDailySleepQuality(id, dateString)}.Your sleep quality was ${sleepInfo.calculateDailySleepQuality(id, dateString)}. The average user's sleep quality is ${sleepInfo.calculateAllUserSleepQuality()}.`;
+  sleepToday.innerText = `You slept ${sleepInfo.calculateDailySleep(id, dateString)} hours today. Your average night's sleep is ${sleepInfo.calculateAverageSleep(id)} oz per day. Your sleep quality was ${sleepInfo.calculateDailySleepQuality(id, dateString)}.Your average sleep quality is ${sleepInfo.calculateAverageSleepQuality(id)}. The average user's sleep quality is ${sleepInfo.calculateAllUserSleepQuality()}.`;
   sleepThisWeek.insertAdjacentHTML('afterBegin', makeSleepHTML(id, sleepInfo, userStorage, sleepInfo.calculateWeekSleep(dateString, id, userStorage)));
   sleepEarlierWeek.insertAdjacentHTML('afterBegin', makeSleepHTML(id, sleepInfo, userStorage, sleepInfo.calculateWeekSleep(laterDateString, id, userStorage)));
 }

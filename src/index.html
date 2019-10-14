@@ -34,7 +34,7 @@
                 <p class='user_step_goal'></p>
             </li>
             <li>FRIENDS
-
+              <p class='user_friends'></p>
             </li>
           </ul>
       </section>
@@ -50,6 +50,9 @@
             </li>
             <li>OUNCES CONSUMED THIS WEEK
               <p class='hydro_week'></p>
+              <div class='div_hydro_week'>
+              <canvas id="myChartHydro" width="170" height="200"></canvas>
+              </div>
             </li>
           </ul>
       </section>
@@ -85,6 +88,9 @@
             <li>
               STEPS THIS WEEK
               <p class='activity_steps_week'></p>
+              <div class='div_hydro_week'>
+                <canvas id="myChartStepsWeek" width="170" height="200"></canvas>
+                </div>
             </li>
             <li>
               MINUTES ACTIVE ON <span class='activity_date'></span>
@@ -131,6 +137,7 @@
     </main>
     <script src='https://code.jquery.com/jquery-1.12.4.js'></script>
     <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js'></script>
     <script type='text/javascript' src='../data/users.js'></script>
     <script type='text/javascript' src='../data/hydration.js'></script>
     <script type='text/javascript' src='../data/sleep.js'></script>

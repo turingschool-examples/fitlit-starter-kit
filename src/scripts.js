@@ -194,4 +194,30 @@ let friendsActivityLastWeek = friends.map(e => userActivity.userStepsByWeek(e));
     }
   });
 
+  const userVsAllUsersActivity = new Chart($('#allActivityComparedToUsers'), {
+    type: 'horizontalBar',
+    data: {
+      labels: ['Your Steps', 'Users Steps', 'Your Min Active', 'Users Min Active', 'Your Stairs Climbed', 'Users Stairs Climbed'],
+      datasets: [{
+        label: 'Your vs. All Users Activity',
+        data: [userActivity.userStepsByDate(randomUser, today), userActivity.usersActivityAvgByDate('numSteps'), userActivity.userMinutesActiveByDate(randomUser, today), userActivity.usersActivityAvgByDate('minutesActive'), userActivity.userStepsByDate(randomUser, today), userActivity.usersActivityAvgByDate('flightsOfStairs')],
+        backgroundColor: ['rgb(112, 28, 1, 0.7)', 'rgb(112, 56, 1, 0.7)', 'rgb(112, 84, 1, 0.7)', 'rgb(112, 111, 1, 0.7)', 'rgb(85, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(112, 28, 1, 0.7)'],
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+
+
+
+
+
 });

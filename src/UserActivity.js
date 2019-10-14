@@ -36,7 +36,6 @@ class UserActivity {
   }
 
   userStepsByWeek(id) {
-
     let activityDataFilter = this.activityData.filter(activityObject => {
       return activityObject.userID === id;
     })
@@ -49,7 +48,6 @@ class UserActivity {
 
     return parseInt((average / activityWeek.length));
   }
-
 
   userStepGoalMetByDate(date) {
     let dailySteps = this.filteredActivity.find(activityObject => {
@@ -82,7 +80,6 @@ class UserActivity {
   }
 
   usersActivityAvgByDate(goal) {
-
     let usersActivity = this.activityData.filter(activityObject => {
       return activityObject.date === '2019/06/22';
     })

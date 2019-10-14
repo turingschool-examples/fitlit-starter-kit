@@ -128,4 +128,9 @@ describe('UserRepository', function() {
     user2.activityData = [{date: "2019/09/16", numSteps: 9820}, {date: "2019/09/17", numSteps: 234}];
     expect(userRepository.calculateAverageSteps("2019/09/17")).to.equal(778);
   })
+  it('should have a method that calculates average number of active minutes for users', function() {
+    user1.activityData = [{date: "2019/09/17", minutesActive: 100}, {date: "2019/09/17", minutesActive: 20}];
+    user2.activityData = [{date: "2019/09/16", minutesActive: 78}, {date: "2019/09/17", minutesActive: 12}];
+    expect(userRepository.calculateAverageMinutesActive("2019/09/17")).to.equal(44);
+  })
 });

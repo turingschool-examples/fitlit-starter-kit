@@ -25,14 +25,47 @@ class UserRepository {
     }, 0);
     return totalSleepQuality / this.users.length;
   }
-  calculateAverageSteps() {
-
+  calculateAverageSteps(date) {
+    let allUsersStepsCount = this.users.map(user => {
+      return user.activityData.filter(activity => {
+        return activity.date === date;
+      });
+    })
+    let sumOfSteps = allUsersStepsCount.reduce((stepsSum, activityCollection) => {
+      activityCollection.forEach(activity => {
+        stepsSum += activity.numSteps
+      })
+      return stepsSum;
+    }, 0);
+    return Math.round(sumOfSteps / allUsersStepsCount.length);
   }
-  calculateAverageStairs() {
-
+  calculateAverageStairs(date) {
+    let allUsersStairsCount = this.users.map(user => {
+      return user.activityData.filter(activity => {
+        return activity.date === date;
+      });
+    })
+    let sumOfStairs = allUsersStairsCount.reduce((stairsSum, activityCollection) => {
+      activityCollection.forEach(activity => {
+        stairsSum += activity.flightsOfStairs
+      })
+      return stairsSum;
+    }, 0);
+    return Math.round(sumOfStairs / allUsersStairsCount.length);
   }
-  calculateAverageMinutesActive() {
-
+  calculateAverageMinutesActive(date) {
+    let allUsersMinutesActiveCount = this.users.map(user => {
+      return user.activityData.filter(activity => {
+        return activity.date === date;
+      });
+    })
+    let sumOfMinutesActive = allUsersMinutesActiveCount.reduce((minutesActiveSum, activityCollection) => {
+      activityCollection.forEach(activity => {
+        minutesActiveSum += activity.minutesActive
+      })
+      return minutesActiveSum;
+    }, 0);
+    return Math.round(sumOfMinutesActive / allUsersMinutesActiveCount.length);
   }
   calculateAverageDailyWater(date) {
     let todaysDrinkers = this.users.filter(user => {

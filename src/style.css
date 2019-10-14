@@ -14,10 +14,10 @@ body {
 	display: grid;
   grid-template-areas:
   "header header"
-  "main main"
-  "main main";
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 15% 42% 43%;
+  "sub friend"
+  "main friend";
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 15% 20% 65%;
   color: white;
 }
 
@@ -26,6 +26,32 @@ nav {
 	background-color: #222629;
 	color: #ffffff;
 	text-align: center;
+	border: 1px solid green;
+}
+
+.friend__section--container {
+	grid-area: friend;
+	background-color: blue;
+	color: #ffffff;
+	/*text-align: center;*/
+	border: 1px solid blue;
+}
+
+.main__section--container {
+	grid-area: main;
+	background: orange;
+	font-size: 18px;
+	border: 1px solid orange;
+}
+
+.sub__section--container {
+	grid-area: sub;
+	background: yellow;
+	font-size: 18px;
+	border: 1px solid yellow;
+	/*display: grid;
+	flex-direction: row;
+	justify-content: space-around;*/
 }
 
 .nav__h1 {
@@ -38,23 +64,12 @@ nav {
 	line-height: .5;
 }
 
-.main__section--container {
-	grid-area: main;
-	background: #6b6e70;
-	font-size: 18px;
-}
-
-.main__body--right {
-	width: 46%;
+.main__body {
+	width: 75%;
 	height: 95%;
-	float: right;
-	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-
-.main__body--left {
+	float: left;
+	padding: 15px;
+	display: inline-block;
 	display: flex;
 	float: left;
   height: 95%;
@@ -65,7 +80,41 @@ nav {
 	width: 49%;
 }
 
-.section {
+.main__hydration--section {
+	width: 20%;
+	height: 40%;
+	display: inline-block;
+	border: 1px white solid;
+	margin: 3% 0;
+	padding: 2%;
+	background: #474b4f;
+}
+
+.main__activity--section {
+	width: 20%;
+	height: 40%;
+	display: inline-block;
+	border: 1px white solid;
+	margin: 3% 0;
+	padding: 2%;
+	background: #474b4f;
+}
+
+.main__sleep--section {
+	width: 20%;
+	height: 40%;
+	display: inline-block;
+	border: 1px white solid;
+	margin: 3% 0;
+	padding: 2%;
+	background: #474b4f;
+}
+
+.main__user {
+	height: 75%;
+	border: 1px white solid;
+	margin: 3% 0;
+	padding: 2%;
 	background: #474b4f;
 	border: 1px white solid;
   height: 40%;
@@ -77,7 +126,7 @@ nav {
 .main__user:hover {
 	border: 2px solid #86c232;
 	color: #86c232;
-	box-shadow: 2px 2px 3px #888888;
+	box-shadow: 2px 2px 3px black;
 }
 
 .main__hydration:hover {
@@ -90,6 +139,12 @@ nav {
 	border: 2px solid #a06cf7;
 	color: #a06cf7;
 	box-shadow: 2px 2px 3px #888888;
+}
+
+.main__sleep:hover {
+	border: 2px solid #86c232;
+	color: #86c232;
+	box-shadow: 2px 2px 3px black;
 }
 
 .main__activity:hover {
@@ -112,5 +167,5 @@ nav {
 }
 .main__user {
 	color: #86c232;
+	box-shadow: 2px 2px 3px black;
 }
-/* @media (min-width: ) */

@@ -33,19 +33,9 @@ $('.main__activity').html(`<div><p>Steps: ${activityData[randomFitLitUser].numSt
 
 // $('.main__friends').html(`${}`)
 
-
-
 }); // end jquery
-
 
 // https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path
 // clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 
 
-
-
-
-// var mainUser = document.querySelector('.main__user');
-// var mainHydration = document.querySelector('.main__hydration');
-// var mainSleep = document.querySelector('.main__sleep');
-// var mainActivity = document.querySelector('.main__activity');

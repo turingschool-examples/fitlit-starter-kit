@@ -110,3 +110,6 @@ const hydrationDataTest = [
     "numOunces": 67
   }
 ]
+
+module.exports = hydrationDataTest;
+

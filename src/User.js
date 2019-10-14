@@ -101,6 +101,24 @@
         sum += activity.minutesActive;
       }
       return sum;
+    }, 0) / 7).toFixed(0);
+  }
+  calculateAverageStepsThisWeek(todayDate) {
+    return (this.activityRecord.reduce((sum, activity) => {
+      let index = this.activityRecord.indexOf(this.activityRecord.find(activity => activity.date === todayDate));
+      if(index <= this.activityRecord.indexOf(activity) && this.activityRecord.indexOf(activity) <= (index + 6)) {
+        sum += activity.steps;
+      }
+      return sum;
+    }, 0) / 7).toFixed(0);
+  }
+  calculateAverageFlightsThisWeek(todayDate) {
+    return (this.activityRecord.reduce((sum, activity) => {
+      let index = this.activityRecord.indexOf(this.activityRecord.find(activity => activity.date === todayDate));
+      if(index <= this.activityRecord.indexOf(activity) && this.activityRecord.indexOf(activity) <= (index + 6)) {
+        sum += activity.flightsOfStairs;
+      }
+      return sum;
     }, 0) / 7).toFixed(1);
   }
 }

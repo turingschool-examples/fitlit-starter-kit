@@ -50,6 +50,8 @@ let sleepInfoQualityToday = document.querySelector('#sleep-info-quality-today');
 let stairsUserStairsToday = document.querySelector('#stairs-user-stairs-today');
 let stairsInfoFlightsToday = document.querySelector('#stairs-info-flights-today');
 let stairsFriendFlightsAverageToday = document.querySelector('#stairs-friend-flights-average-today');
+let stairsCalendarFlightsAverageWeekly = document.querySelector('#stairs-calendar-flights-average-weekly');
+let stairsCalendarStairsAverageWeekly = document.querySelector('#stairs-calendar-stairs-average-weekly');
 
 
 
@@ -218,6 +220,10 @@ stepsFriendStepsAverageToday.innerText = userRepository.calculateAverageSteps(to
 
 stairsFriendFlightsAverageToday.innerText = (userRepository.calculateAverageStairs(todayDate) / 12).toFixed(1);
 
+stepsCalendarTotalActiveMinutesWeekly.innerText = user.calculateAverageMinutesActiveThisWeek(todayDate);
 
+stepsCalendarTotalStepsWeekly.innerText = user.calculateAverageStepsThisWeek(todayDate);
 
-// console.log(user.calculateAverageStairs(date));
+stairsCalendarFlightsAverageWeekly.innerText = user.calculateAverageFlightsThisWeek(todayDate);
+
+stairsCalendarStairsAverageWeekly.innerText = (user.calculateAverageFlightsThisWeek(todayDate) * 12).toFixed(0);

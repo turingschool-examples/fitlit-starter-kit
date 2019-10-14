@@ -2,15 +2,37 @@ const chai = require("chai");
 const expect = chai.expect;
 
 const UserRepository = require('../src/UserRepository');
-const userData = require('../data/users');
-const hydrationData = require('../data/hydration');
 const sleepData = require('../data/sleep');
-const activityData = require('../data/activity');
 const data = {
-  users: userData,
-  hydration: hydrationData,
+  users: [{
+    "id": 1,
+    "name": "Luisa Hane",
+    "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+    "email": "Diana.Hayes1@hotmail.com",
+    "strideLength": 4.3,
+    "dailyStepGoal": 10000,
+    "friends": [
+      16,
+      4,
+      8
+    ]
+  }, {
+      "id": 2,
+      "name": "Jarvis Considine",
+      "address": "30086 Kathryn Port, Ciceroland NE 07273",
+      "email": "Dimitri.Bechtelar11@gmail.com",
+      "strideLength": 4.5,
+      "dailyStepGoal": 5000,
+      "friends": [
+        9,
+        18,
+        24,
+        19
+      ]
+    }],
+  hydration: [],
   sleep: sleepData,
-  activity: activityData
+  activity: []
 };
 
 let userRepository, user;
@@ -70,7 +92,7 @@ describe("UserRepository", () => {
   });
 
   it('should calculate average step goal', function () {
-    expect(userRepository.calculateAverageStepGoal()).to.equal(6700);
+    expect(userRepository.calculateAverageStepGoal()).to.equal(7500);
   });
 
   it('should calculate average all user\'s sleep quality', function () {

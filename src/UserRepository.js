@@ -16,7 +16,7 @@ class UserRepository {
 
   findToday() {
     const dates = this.sleepUsersData.reduce((allDates, data) => {
-      if (data.userID === 1) {
+      if (data.userID === 2) {
         allDates.push(data.date);
       }
       return allDates;
@@ -27,7 +27,7 @@ class UserRepository {
 
   getWeekDates(date) {
     const dates = this.sleepUsersData.reduce((allDates, data) => {
-      if (data.userID === 1) {
+      if (data.userID === 2) {
         allDates.push(data.date);
       }
       return allDates;

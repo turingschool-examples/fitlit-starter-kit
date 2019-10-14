@@ -3,20 +3,31 @@ const expect = chai.expect;
 
 const UserRepository = require('../src/UserRepository');
 const Sleep = require('../src/Sleep');
-const usersData = require('../data/users');
-const hydrationData = require('../data/hydration');
 const sleepData = require('../data/sleep');
-const activityData = require('../data/activity');
-const data = {
-  users: usersData,
-  hydration: hydrationData,
-  sleep: sleepData,
-  activity: activityData
-};
 
-let sleep, userRepo, user, userInfo;
+let sleep, userRepo, user, userInfo, userSleepData, data;
 
 beforeEach(() => {
+  userSleepData = sleepData.filter(data => data.userID === 2);
+  data = {
+    users: [{
+        "id": 2,
+        "name": "Jarvis Considine",
+        "address": "30086 Kathryn Port, Ciceroland NE 07273",
+        "email": "Dimitri.Bechtelar11@gmail.com",
+        "strideLength": 4.5,
+        "dailyStepGoal": 5000,
+        "friends": [
+          9,
+          18,
+          24,
+          19
+        ]
+      }],
+    hydration: [],
+    sleep: userSleepData,
+    activity: []
+  };
   userRepo = new UserRepository(data);
   userRepo.findUserByName('Jarvis Considine');
   userRepo.findToday();

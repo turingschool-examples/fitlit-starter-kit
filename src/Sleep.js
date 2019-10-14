@@ -55,10 +55,12 @@ class Sleep {
     }, 0)/this.currentSleepData.length;
     return parseFloat(avgHrsSlept.toFixed(2))
   }
+
   findUsersWithAvgSleepQualityMoreThanThreeOverSpecificWeek(date) {
     let indexForUserOneAtSpecificDate = this.currentSleepData.findIndex(userBlock => {
       return (userBlock.userID === 1 && userBlock.date === date)
     });
+
     let allUserSleepDataForSpecificWeek = this.currentSleepData.slice(indexForUserOneAtSpecificDate, (indexForUserOneAtSpecificDate + 349));
     let finalWeekObject = allUserSleepDataForSpecificWeek.reduce((acc, userBlock) => {
       if (!acc[userBlock.userID]) {
@@ -66,6 +68,7 @@ class Sleep {
       }
       return acc
     }, {});
+
     let keysForFinalWeekObject = Object.keys(finalWeekObject);
     let keysObject = keysForFinalWeekObject.reduce((acc, num) => {
       if (!acc[num]) {
@@ -85,10 +88,12 @@ class Sleep {
     averages.forEach(avg => {
       finalWeekObject[averages.indexOf(avg) + 1] = parseFloat(avg.toFixed(2))
     });
+
     let finishedObjectKeys = Object.keys(finalWeekObject);
     let bestSleeperIds = finishedObjectKeys.filter(key => {
       return finalWeekObject[key] > 3
     });
+
     let parsedBestSleeperIds = bestSleeperIds.map(id => {
       return parseInt(id)
     });
@@ -99,6 +104,7 @@ class Sleep {
       return acc
     }, []);
   }
+
   findUsersSleptMostHoursIdentifiedByDate(date) {
     let allSleepDataOnSpecificDay = this.currentSleepData.filter(userBlock => {
       return userBlock.date === date
@@ -107,7 +113,7 @@ class Sleep {
       acc.push(userBlock.hoursSlept);
       return acc
     }, []);
-    let theMostHoursSlept =  Math.max(...hoursSleptForAllOnSpecificDay);
+    let theMostHoursSlept =  Math.max(...hoursSleptForAllOnSpecificDay)
     let deepestSleepers = allSleepDataOnSpecificDay.filter(userBlock => {
       return userBlock.hoursSlept === theMostHoursSlept
     });

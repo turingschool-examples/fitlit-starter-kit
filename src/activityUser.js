@@ -45,7 +45,6 @@ class ActivityUser {
 
   calcTotalStepsByWeek(date) {
     let dataDate = this.activityData.map(data => data.date);
-    console.log(this.activityData);
     let dateIndex = dataDate.lastIndexOf(date);
     let weekData = this.activityData.slice(dateIndex - 7, dateIndex + 1);
     return weekData.reduce((acc, day) => {

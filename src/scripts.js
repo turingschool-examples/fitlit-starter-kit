@@ -34,6 +34,7 @@ function clickLoginButton(event) {
     addMinutesActiveByDay();
     addNumStepsForLatestDay();
     addWeeklyActivityDataByDay();
+    instantiateFriends();
   }
 }
 
@@ -60,6 +61,21 @@ function instantiateActivityData(data) {
   activityRepo = new ActivityRepo(data);
   let userActivityData = activityRepo.getUserActivityData(user.id);
   activityUser = new ActivityUser(userActivityData);
+}
+
+function instantiateFriends() {
+  let friendsInfo = getFriends();
+  return friendsInfo.map((friendInfo) => {
+    let friend = new User(friendInfo);
+    return friend;
+  })
+}
+
+function getFriends() {
+  return user.friends.map(friend => {
+    let friendInfo = userRepo.getFriendData(friend);
+    return friendInfo;
+  });
 }
 
 function displayErrorMessage() {

@@ -82,9 +82,6 @@ describe('Activity', function() {
   it('should have a default value of null for reached step goal', function() {
     expect(activity2.reachedStepGoal).to.equal(null);;
   });
-  // it('should have a default value of [] for accomplishedDays', function() {
-  //   expect(activity2.accomplishedDays).to.deep.equal([]);;
-  // });
   it('should have a method that calculate miles walked', function() {
     expect(activity1.calculateMiles(userRepository)).to.equal('3.0');
   });

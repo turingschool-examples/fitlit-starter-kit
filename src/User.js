@@ -14,6 +14,7 @@
     this.sleepHoursRecord = [];
     this.sleepQualityRecord = [];
     this.activityRecord = [];
+    this.accomplishedDays = [];
   }
   getFirstName() {
     var names = this.name.split(' ');
@@ -76,6 +77,9 @@
   }
   updateActivities(activity) {
     this.activityRecord.unshift(activity);
+    if (activity.numSteps >= this.dailyStepGoal) {
+      this.accomplishedDays.unshift(activity.date);
+    }
   }
   findClimbingRecord() {
     return this.activityRecord.sort((a, b) => {

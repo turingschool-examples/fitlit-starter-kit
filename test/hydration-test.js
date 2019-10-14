@@ -9,18 +9,43 @@ describe.only('Hydration', function() {
   const mockData = {
     users: [],
     hydration: [{
-      "userID": 1,
-      "date": "2019/04/15",
+      "currentUserId": 1,
+      "day": "2019/04/15",
       "numOunces": 37
     }, 
     {
-      "userID": 1,
-      "date": "2019/06/15",
+      "currentUserId": 1,
+      "day": "2019/06/10",
       "numOunces": 36
     },
     {
-      "userID": 1,
-      "date": "2019/05/15",
+      "currentUserId": 1,
+      "day": "2019/06/11",
+      "numOunces": 36
+    },
+    {
+      "currentUserId": 1,
+      "day": "2019/06/12",
+      "numOunces": 36
+    },
+    {
+      "currentUserId": 1,
+      "day": "2019/06/13",
+      "numOunces": 36
+    },
+    {
+      "currentUserId": 1,
+      "day": "2019/06/14",
+      "numOunces": 36
+    },
+    {
+      "currentUserId": 1,
+      "day": "2019/06/15",
+      "numOunces": 36
+    },
+    {
+      "currentUserId": 1,
+      "day": "2019/07/15",
       "numOunces": 35
     }]
   };
@@ -30,9 +55,9 @@ describe.only('Hydration', function() {
   })
 
   it('should be an instance of Hydration', function() {
-    const hydration = new Hydration ({
-      "userID": 1,
-      "date": "2019/06/15",
+    const hydration = new Hydration({
+      "currentUserId": 1,
+      "day": "2019/06/15",
       "numOunces": 37
     });
 
@@ -40,19 +65,19 @@ describe.only('Hydration', function() {
   })
 
   it('should store a user ID', function() {
-    const hydration = new Hydration ({
-      "userID": 1,
-      "date": "2019/06/15",
+    const hydration = new Hydration({
+      "currentUserId": 1,
+      "day": "2019/06/15",
       "numOunces": 37
     });
 
     expect(hydration.userId).to.equal(1);
   })
 
-  it('should store a date', function() {
-    const hydration = new Hydration ({
-      "userID": 1,
-      "date": "2019/06/15",
+  it('should store a day', function() {
+    const hydration = new Hydration({
+      "currentUserId": 1,
+      "day": "2019/06/15",
       "numOunces": 37
     });
 
@@ -61,35 +86,44 @@ describe.only('Hydration', function() {
 
   it('should store an ounce amount for the day', function() {
     const hydration = new Hydration ({
-      "userID": 1,
-      "date": "2019/06/15",
+      "currentUserId": 1,
+      "day": "2019/06/15",
       "numOunces": 37
     });
 
-    expect(hydration.numOunces).to.equal(37);
+    hydration.findDayFluid(mockData.hydration);
+    expect(hydration.numOunces).to.equal(36);
   })
 
   it('should calculate a persons average fluids over time', function() {
     new Hydration({
-      "userID": 1,
-      "date": "2019/04/15",
+      "currentUserId": 1,
+      "day": "2019/04/15",
       "numOunces": 37
     });
 
     new Hydration({
-      "userID": 1,
-      "date": "2019/06/15",
+      "currentUserId": 1,
+      "day": "2019/06/15",
       "numOunces": 36
     });
 
     const hydrationThree = new Hydration({
-      "userID": 1,
-      "date": "2019/05/15",
+      "currentUserId": 1,
+      "day": "2019/05/15",
       "numOunces": 35
     });
 
-    expect(hydrationThree.calcAvgFluidConsumption(1, mockData.hydration)).to.equal(36);
+    expect(hydrationThree.calcAvgFluidConsumption(mockData.hydration)).to.equal(36);
   })
 
-  
+  it('should show last 7 days of fluid consumption', function() {
+    const hydrationThree = new Hydration({
+      "currentUserId": 1,
+      "day": "2019/06/15",
+      "numOunces": 35
+    });
+
+    expect(hydrationThree.findWeeksFluid(mockData.hydration)).to.have.lengthOf(7);
+  })
 })

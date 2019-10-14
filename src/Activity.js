@@ -10,39 +10,38 @@ class Activity {
 
   changeDate(userRepo, user, date) {
     if (!date) {
-      this.updateInfo(activeData, this.date);
+      this.updateInfo(userRepo.activityUsersData, this.date);
     } else if (date === 'All days') {
       this.getAverageForSevenDays(week);
     } else {
       this.date = date;
-      this.updateInfo(activeData, date);
+      this.updateInfo(userRepo.activityUsersData, date);
     }
-
     this.findMiles(user.stepLength);
   }
 
   updateInfo(activeData) {
-    const dayData = activeData.find(data => data.userID === this.date && data.date === this.date);
+    const dayData = activeData.find(data => data.userID === this.userID && data.date === this.date);
     if (dayData) {
       this.numSteps = dayData.numSteps;
       this.minutesActive = dayData.minutesActive;
-      this.flightsOfStairs= dayDate.flightsOfStairs;
+      this.flightsOfStairs= dayData.flightsOfStairs;
     } else {
       this.numSteps = 0;
       this.minutesActive = 0;
       this.flightsOfStairs= 0;
     }
-
   }
 
   findMiles(stepLength) {
-    const miles = this.numSteps * stepLength / 5280
+    const miles = this.numSteps * stepLength / 5280;
     return parseInt(miles);
   }
 
   getWeekInformation(userRepo) {
     const week = userRepo.getWeekDates(this.date);
     const weekInfo = userRepo.activityUsersData.filter(data => data.userID === this.userID && week.includes(data.date));
+    return weekInfo;
   }
 
   getAverageForSevenDays(userRepo) {
@@ -52,9 +51,9 @@ class Activity {
       avr.flightsOfStairs += data.flightsOfStairs / 7;
       return avr;
     }, {numSteps: 0, minutesActive: 0, flightsOfStairs:0});
-    this.numSteps = average.numSteps;
-    this.minutesActive = average.minutesActive;
-    this.flightsOfStairs = average.flightsOfStairs;
+    this.numSteps = parseInt(average.numSteps);
+    this.minutesActive = parseInt(average.minutesActive);
+    this.flightsOfStairs = parseInt(average.flightsOfStairs);
   }
 
   checkStepGoal(user) {
@@ -64,8 +63,9 @@ class Activity {
     return this.goalComplete;
   }
 
-  findGoalCompletedDays(activeData, user) {
-    return activeData.filter(data => data.numSteps >=  user.dailyStepGoal).map(data => data.date);
+  findGoalCompletedDays(userRepo, user) {
+    const week = userRepo.getWeekDates(this.date);
+    return userRepo.activityUsersData.filter(data => data.numSteps >= user.dailyStepGoal && week.includes(data.date)).map(data => data.date);
   }
 
   findStairRecord(activeData) {
@@ -75,6 +75,7 @@ class Activity {
       }
       return highest;
     }, 0);
+    return stairRecord;
   }
 }
 

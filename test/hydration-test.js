@@ -5,13 +5,13 @@ const Hydration = require('../src/Hydration');
 const UserRepository = require('../src/UserRepository');
 
 
-describe.only('Hydration', function() {
+describe('Hydration', function() {
   const mockData = {
     hydration: [{
       "userID": 1,
       "date": "2019/04/15",
       "numOunces": 37
-    }, 
+    },
     {
       "userID": 1,
       "date": "2019/06/10",

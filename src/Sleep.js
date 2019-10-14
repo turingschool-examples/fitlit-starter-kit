@@ -43,7 +43,6 @@ class Sleep {
 
   getWeekFullInfo(userRepo) {
     const week = userRepo.getWeekDates(this.date);
-    console.log(week);
     return userRepo.sleepUsersData.filter((data) => data.userID === this.userID && week.includes(data.date));
   }
 
@@ -57,7 +56,6 @@ class Sleep {
   }
 
   calculateDayAverageInfo(userRepo, info) {
-    console.log();
     switch (info) {
       case 'hours':
         return Math.round(this.getWeekFullInfo(userRepo, info).reduce((sum, data) => {

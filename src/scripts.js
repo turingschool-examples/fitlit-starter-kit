@@ -220,5 +220,4 @@ stairsFriendFlightsAverageToday.innerText = (userRepository.calculateAverageStai
 
 stepsCalendarTotalActiveMinutesWeekly.innerText = user.calculateAverageMinutesActiveThisWeek(todayDate);
 
-
-// console.log(user.calculateAverageStairs(date));
+stepsCalendarTotalStepsWeekly.innerText = user.calculateAverageStepsThisWeek(todayDate);

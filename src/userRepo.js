@@ -7,6 +7,10 @@ class UserRepo {
     return this.usersData.find(userData => userData.email === email);
   }
 
+  getFriendData(id) {
+    return this.usersData.find(userData => userData.id === id);
+  }
+  
   calcAvgStepGoal() {
     let totalStepGoals = this.usersData.reduce((acc, user) => {
       acc += user.dailyStepGoal;

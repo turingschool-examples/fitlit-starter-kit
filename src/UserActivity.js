@@ -31,6 +31,22 @@ class UserActivity {
     return parseFloat((avg / activityWeek.length).toFixed(2));
   }
 
+  userStepsByWeek(id) {
+
+    let activityDataFilter = this.activityData.filter(activityObject => {
+      return activityObject.userID === id;
+    })
+
+    let activityWeek = activityDataFilter.slice(-7).map(activityObject => activityObject.numSteps)
+
+    let average = activityWeek.reduce((avg, activityUserArray) => {
+      return avg += activityUserArray;
+    }, 0)
+
+    return parseInt((average / activityWeek.length));
+  }
+
+
   userStepGoalMetByDate(date) {
     let dailySteps = this.filteredActivity.find(activityObject => {
       return activityObject.date === date;

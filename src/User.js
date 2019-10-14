@@ -12,6 +12,10 @@ class User {
   getUserFirstName() {
     return this.name.split(' ')[0]
   }
+
+  getFriends() {
+    return this.friends
+  }
 }
 
 

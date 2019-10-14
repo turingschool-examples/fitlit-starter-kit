@@ -1,12 +1,12 @@
 $(function() {
-  const randomUser = Math.floor(Math.random() * 50) + 1  
-    
+  const randomUser = Math.floor(Math.random() * 50) + 1
+
   const user = new User(userData[randomUser]);
   const usersRepo = new UsersRepo(userData);
   const userSleep = new UserSleep(userData[randomUser]);
   //   const usersSleepRepo = new UsersSleepRepo(sleepData);
   const userHydration = new UserHydration(userData[randomUser], hydrationData);
-  //   const userActivity = new UserActivity(activityData);
+  const userActivity = new UserActivity(userData[randomUser], activityData);
   //   const usersActivityRepo = UsersActivityRepo(activityData);
   let today = '2019/06/25';
 
@@ -16,21 +16,21 @@ $(function() {
     // rowHeight: 40,
     gutter: 7,
   });
-  
+
   let $draggable = $('.draggable').draggabilly({
   });
-  
+
   let $grid1 = $('.grid').packery({
     itemSelector: '.grid-item',
     columnWidth: 100
   });
-  
+
   $grid.find('.grid-item').each( function( i, gridItem ) {
     let draggie = new Draggabilly( gridItem );
     $grid.packery( 'bindDraggabillyEvents', draggie );
   });
- 
-  $('.span__currentUser').text(user.getUserFirstName());  
+
+  $('.span__currentUser').text(user.getUserFirstName());
   $('.user__address').text(userData[randomUser].address);
   $('.user__email').text(userData[randomUser].email);
   $('.user__stride').text(userData[randomUser].strideLength);
@@ -151,6 +151,33 @@ $(function() {
         label: 'Step Goal Comparison',
         data: [userData[randomUser].dailyStepGoal, usersRepo.avgStepGoal()],
         backgroundColor: ['rgb(112, 56, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)'],
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+const friends = user.getFriends();
+
+friends.unshift(userData[randomUser].id);
+
+let friendsActivityLastWeek = friends.map(e => userActivity.userStepsByWeek(e));
+
+  const stepGoalFriends = new Chart($('#stepGoalFriends'), {
+    type: 'bar',
+    data: {
+      labels: ['Your Step Goal', 'Friends', 'Friends', 'Friends', 'Friends'],
+      datasets: [{
+        label: 'Step Goal Weekly Average',
+        data: friendsActivityLastWeek,
+        backgroundColor: ['rgb(112, 56, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)'],
       }]
     },
     options: {

@@ -167,6 +167,9 @@ $(document).ready(function() {
       if ($widgetType === 'activity') {
         $('.compare').text('compare with others').show();
       }
+      if ($widgetType === 'water') {
+        showHydration();
+      }
     }
 
     if ($dayEntered === 'All time') {

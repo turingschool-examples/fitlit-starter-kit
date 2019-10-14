@@ -9,6 +9,7 @@
   </head>
   <body>
     <nav>
+      <h1>Activity Tracker</h1>
       <p class = "profile-name"></p>
       <p class = "profile-address"></p>
       <p class = "profile-email"></p>
@@ -23,15 +24,26 @@
       </div>
     </nav>
     <main>
-      <header>
-        <h1>Activity Tracker</h1>
-        <span class = "date">Put Date Here</span>
-      </header>
-      <section>
-          <canvas id="myWeekChart" width="100" height="100"></canvas>
+      <section class="hydration-container">
+          <ul class="hydration-data">
+              <li class="hydration1"></li>
+              <li class="hydration2"></li>
+              <li class="hydration3"></li>
       </section>
-      <section>
-          <canvas id="myDayChart" width="100" height="100"></canvas>
+      <section class="sleep-container">
+         <ul class="sleep-data">
+          <li class="sleep1"></li>
+          <li class="sleep2"></li>
+          <li class="sleep3"></li>
+          <li class="sleep4"></li>
+          <li class="sleep5"></li>
+          <li class="sleep6"></li>  
+      </section>
+      <section class="activity-container">
+          <ul class="activity-data">
+              <li class="activity1"></li>
+              <li class="activity2"></li>
+              <li class="activity3"></li>
       </section>
     </main>
 
@@ -44,6 +56,8 @@
     <script type="text/javascript" src="./UserRepository.js"></script>
     <script type="text/javascript" src="./User.js"></script>
     <script type="text/javascript" src="./Hydration.js"></script>
+    <script type="text/javascript" src="./Sleep.js"></script>
+
 
 
 

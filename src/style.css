@@ -1,14 +1,13 @@
 body {
   display: grid;
   font-size: 20px;
-  height: 120vh;
+  height: 145vh;
   grid-template-areas:
   "nav main main"
   "nav main main"
   "nav main main";
   grid-template-columns: .5fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  /* grid-template-rows: 10% 42% 43%; */
+  grid-template-rows: .5fr 1fr 1fr;
   margin: 0 auto;
 }
 
@@ -27,17 +26,21 @@ main {
   grid-area: main;
 }
 
-header {
-  background-color: green;
-  height: 15%;
+.sleep-data {
+  background-color: white;
+  height: 200px;
+  width: auto;
 }
-
+/* 
 #myWeekChart {
   background-color: yellow;
-  height: 20%;
+  /* font-size: 100px !important;
+  height: 500px !important;
+  width: auto !important; */
 }
 
 #myDayChart {
-  background-color: yellow;
-  height: 20%;
-}
+  background-color: orange;
+  height: 500px !important;
+  width: auto !important;
+} */

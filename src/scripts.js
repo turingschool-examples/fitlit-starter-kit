@@ -32,8 +32,8 @@ let stepsUserStepsToday = document.querySelector('#steps-user-steps-today');
 let stepsInfoActiveMinutesToday = document.querySelector('#steps-info-active-minutes-today');
 let stepsInfoMilesWalkedToday = document.querySelector('#steps-info-miles-walked-today');
 let stepsInfoUserStepGoal = document.querySelector('#steps-info-user-step-goal');
-// var stepsFriendActiveMinutesAverageToday = document.querySelector('#steps-friend-active-minutes-average-today');
-// var stepsFriendStepsAverageToday = document.querySelector('#steps-friend-steps-average-today');
+var stepsFriendActiveMinutesAverageToday = document.querySelector('#steps-friend-active-minutes-average-today');
+var stepsFriendStepsAverageToday = document.querySelector('#steps-friend-steps-average-today');
 let stepsCalendarTotalActiveMinutesWeekly = document.querySelector('#steps-calendar-total-active-minutes-weekly');
 let stepsCalendarTotalStepsWeekly = document.querySelector('#steps-calendar-total-steps-weekly');
 let stepsFriendAverageStepGoal = document.querySelector('#steps-friend-average-step-goal');
@@ -47,6 +47,9 @@ let sleepCalendarQualityAverageWeekly = document.querySelector('#sleep-calendar-
 let sleepFriendLongestSleeper = document.querySelector('#sleep-friend-longest-sleeper');
 let sleepFriendWorstSleeper = document.querySelector('#sleep-friend-worst-sleeper');
 let sleepInfoQualityToday = document.querySelector('#sleep-info-quality-today');
+let stairsUserStairsToday = document.querySelector('#stairs-user-stairs-today');
+let stairsInfoFlightsToday = document.querySelector('#stairs-info-flights-today');
+let stairsFriendFlightsAverageToday = document.querySelector('#stairs-friend-flights-average-today');
 
 
 
@@ -200,6 +203,21 @@ stepsInfoMilesWalkedToday.innerText = activities.find(activity => {
 stepsInfoActiveMinutesToday.innerText = activityData.find(activity => {
   return activity.userID === user.id && activity.date === todayDate;
 }).minutesActive;
+
+stairsUserStairsToday.innerText = activityData.find(activity => {
+  return activity.userID === user.id && activity.date === todayDate;
+}).flightsOfStairs * 12;
+
+stairsInfoFlightsToday.innerText = activityData.find(activity => {
+  return activity.userID === user.id && activity.date === todayDate;
+}).flightsOfStairs;
+
+stepsFriendActiveMinutesAverageToday.innerText = userRepository.calculateAverageMinutesActive(todayDate);
+
+stepsFriendStepsAverageToday.innerText = userRepository.calculateAverageSteps(todayDate);
+
+stairsFriendFlightsAverageToday.innerText = (userRepository.calculateAverageStairs(todayDate) / 12).toFixed(1);
+
 
 
 // console.log(user.calculateAverageStairs(date));

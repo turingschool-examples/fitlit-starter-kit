@@ -27,9 +27,14 @@ $(document).ready(function() {
     $('.bio-info main').fadeToggle();
   });
 
+  $('.compare').on('click', function() {
+    $('.compare-block').fadeToggle();
+    $(this).text($(this).text() === 'compare with others' ? 'close' : 'compare with others');
+  });
+
   $('.steps-goal footer p').on('click', function() {
     $('.steps-goal .average').fadeToggle();
-    $(this).text($(this).text() == 'see average' ? 'close' : 'see average');
+    $(this).text($(this).text() === 'see average' ? 'close' : 'see average');
   });
 
   function fillUserInfo() {
@@ -129,9 +134,15 @@ $(document).ready(function() {
 
     if ($dayEntered === 'Week') {
       $(this).closest('.widget').find('.date, footer').show();
-      $(this).closest('.widget').find('.date').text(sleep.date);
-      sleep.updateInfo(userRepository);
-      updateSleep();
+
+      if ($widgetType === 'sleep') {
+        $(this).closest('.widget').find('.date').text(sleep.date);
+        sleep.updateInfo(userRepository);
+        updateSleep();
+      }
+      if ($widgetType === 'activity') {
+        $('.compare-block, .compare').hide();
+      }
     }
 
     if ($dayEntered === 'Today') {
@@ -140,6 +151,9 @@ $(document).ready(function() {
         sleep.changeDate(userRepository);
         updateSleep();
       };
+      if ($widgetType === 'activity') {
+        $('.compare').text('compare with others').show();
+      }
     }
 
     if ($dayEntered === 'All time') {
@@ -167,11 +181,13 @@ $(document).ready(function() {
     if ($dateVal.test($dayEntered)) {
       $dropdown.children('header').children('p').text($dayEntered);
       $dropdown.children('input').text($dayEntered);
-
+      $('.compare-block').hide();
+      $('.compare').text('compare with others').show();
       if ($widgetType === 'sleep') {
         sleep.changeDate(userRepository, $dayEntered);
         updateSleep();
       };
     }
+    $(this).siblings('input').val('');
   });
 });

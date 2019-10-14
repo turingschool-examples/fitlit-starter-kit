@@ -68,6 +68,7 @@ beforeEach(() => {
     it("should have goal completed track false by default", () => {
       expect(activity.goalComplete).to.equal(false);
     });
+
     describe("updateInfo method", () => {
       it("should show number of steps for today", () => {
         activity.updateInfo(userRepo.activityUsersData);
@@ -100,6 +101,28 @@ beforeEach(() => {
         activity.date = '1999/11/11'
         activity.updateInfo(userRepo.activityUsersData);
         expect(activity.flightsOfStairs).to.equal(0);
+      });
+    });
+    describe("changeDate method", () => {
+      it("should show number of steps for chosen day", () => {
+        activity.changeDate(userRepo, user, '2019/07/12');
+        expect(activity.numSteps).to.equal(5418);
+      });
+
+      it("should show active minutes for chosen day", () => {
+        activity.changeDate(userRepo, user, '2019/07/12');
+        expect(activity.minutesActive).to.equal(206);
+      });
+
+      it("should show flights of stairs for chosen day", () => {
+        activity.changeDate(userRepo, user, '2019/07/12');
+        expect(activity.flightsOfStairs).to.equal(14);
+      });
+
+      it("should count miles for chosen day", () => {
+        activity.changeDate(userRepo, user, '2019/07/12');
+        const miles = activity.findMiles(user.strideLength);
+        expect(miles).to.equal(4);
       });
     });
   });

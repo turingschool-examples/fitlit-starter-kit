@@ -47,6 +47,8 @@ let sleepCalendarQualityAverageWeekly = document.querySelector('#sleep-calendar-
 let sleepFriendLongestSleeper = document.querySelector('#sleep-friend-longest-sleeper');
 let sleepFriendWorstSleeper = document.querySelector('#sleep-friend-worst-sleeper');
 let sleepInfoQualityToday = document.querySelector('#sleep-info-quality-today');
+let stairsUserStairsToday = document.querySelector('#stairs-user-stairs-today');
+let stairsInfoFlightsToday = document.querySelector('#stairs-info-flights-today');
 
 
 
@@ -201,5 +203,12 @@ stepsInfoActiveMinutesToday.innerText = activityData.find(activity => {
   return activity.userID === user.id && activity.date === todayDate;
 }).minutesActive;
 
+stairsUserStairsToday.innerText = activityData.find(activity => {
+  return activity.userID === user.id && activity.date === todayDate;
+}).flightsOfStairs * 12;
+
+stairsInfoFlightsToday.innerText = activityData.find(activity => {
+  return activity.userID === user.id && activity.date === todayDate;
+}).flightsOfStairs
 
 // console.log(user.calculateAverageStairs(date));

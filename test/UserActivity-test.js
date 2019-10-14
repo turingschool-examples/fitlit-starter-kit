@@ -7,14 +7,13 @@ const UserActivity = require('../src/UserActivity');
 const userData = require('../subset_data/users-subset');
 const activityData = require('../subset_data/activity-subset');
 
-
-beforeEach(() => {
-  usersRepo = new UsersRepo(userData);
-  userActivity = new UserActivity(usersRepo.getUserById(1), activityData);
-});
-
-
-describe('UserActivity Test', () => {
+describe('UserActivity', () => {
+  let usersRepo, userActivity;
+  
+  beforeEach( () => {
+    usersRepo = new UsersRepo(userData);
+    userActivity = new UserActivity(usersRepo.getUserById(1), activityData);
+  });
 
   it('should be a function', () => {
     expect(UserActivity).to.be.a('function');

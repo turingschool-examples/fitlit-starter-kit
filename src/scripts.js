@@ -4,16 +4,15 @@ $(function() {
   const user = new User(userData[randomUser]);
   const usersRepo = new UsersRepo(userData);
   const userSleep = new UserSleep(userData[randomUser]);
-  //   const usersSleepRepo = new UsersSleepRepo(sleepData);
   const userHydration = new UserHydration(userData[randomUser], hydrationData);
-  //   const userActivity = new UserActivity(activityData);
-  //   const usersActivityRepo = UsersActivityRepo(activityData);
+  const userActivity = new UserActivity(activityData);
+
   let today = '2019/06/25';
 
   let $grid = $('.grid').packery({
     itemSelector: '.grid-item',
     columnWidth: 100,
-    // rowHeight: 40,
+    rowHeight: 40,
     gutter: 7,
   });
   
@@ -36,9 +35,10 @@ $(function() {
   $('.user__email').text(userData[randomUser].email);
   $('.user__stride').text(userData[randomUser].strideLength);
   $('.user__step').text(userData[randomUser].dailyStepGoal);
-  // $('.user__friends').text(userData[randomUser].friends);
   $('.user__dailyWater').text(userHydration.userOuncesToday());
   $('.section__sleep--step-feedback').text(userSleep.giveUserSleepFeedback(randomUser, '2019/06/15'));
+  $('.activity__current--step').text(userActivity.activityDataFilter());
+  $('.activity__steps--miles').text(userActivity.userMilesByDate(randomUser, today))
 
   const usersWeeklyWater = new Chart($('#weeklyUserDailyWater'), {
     type: 'horizontalBar',

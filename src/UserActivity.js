@@ -1,3 +1,7 @@
+if (typeof module !== "undefined") {
+  activityData = require('../subset_data/activity-subset');
+}
+
 class UserActivity {
   constructor(userData, activityData) {
     this.userData = userData;
@@ -6,7 +10,7 @@ class UserActivity {
   }
 
   activityDataFilter() {
-    let activityDataFilter = this.activityData.filter(activityObject => {
+    let activityDataFilter = activityData.filter(activityObject => {
       return activityObject.userID === this.userData.id;
     })
     return activityDataFilter

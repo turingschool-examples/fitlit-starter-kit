@@ -5,6 +5,7 @@ const UserRepository = require('../src/UserRepository');
 const User = require('../src/user');
 const Activity = require('../src/Activity');
 const activityData = require('../data/activity');
+const sleepData = require('../data/sleep');
 
 let activity, userRepo, user, userActivityData, data;
 
@@ -26,7 +27,7 @@ beforeEach(() => {
         ]
       }],
     hydration: [],
-    sleep: [],
+    sleep: sleepData,
     activity: userActivityData
   };
   userRepo = new UserRepository(data);
@@ -66,5 +67,39 @@ beforeEach(() => {
 
     it("should have goal completed track false by default", () => {
       expect(activity.goalComplete).to.equal(false);
+    });
+    describe("updateInfo method", () => {
+      it("should show number of steps for today", () => {
+        activity.updateInfo(userRepo.activityUsersData);
+        expect(activity.numSteps).to.equal(9050);
+      });
+
+      it("should show active minutes for today", () => {
+        activity.updateInfo(userRepo.activityUsersData);
+        expect(activity.minutesActive).to.equal(25);
+      });
+
+      it("should show flights of stairs for today", () => {
+        activity.updateInfo(userRepo.activityUsersData);
+        expect(activity.flightsOfStairs).to.equal(0);
+      });
+
+      it("should show no number of steps if date is not in database", () => {
+        activity.date = '1999/11/11'
+        activity.updateInfo(userRepo.activityUsersData);
+        expect(activity.numSteps).to.equal(0);
+      });
+
+      it("should show no active minutes if date is not in database", () => {
+        activity.date = '1999/11/11'
+        activity.updateInfo(userRepo.activityUsersData);
+        expect(activity.minutesActive).to.equal(0);
+      });
+
+      it("should show no flights of stairs if date is not in database", () => {
+        activity.date = '1999/11/11'
+        activity.updateInfo(userRepo.activityUsersData);
+        expect(activity.flightsOfStairs).to.equal(0);
+      });
     });
   });

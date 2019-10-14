@@ -97,6 +97,6 @@ describe('Activity', function() {
     expect(activity2.topClimbingDay).to.equal('');;
   });
   it('should have a method that calculate miles walked', function() {
-    expect(activity1.calculateMiles(userRepository)).to.equal(3);
+    expect(activity1.calculateMiles(userRepository)).to.equal('3.0');
   });
 });

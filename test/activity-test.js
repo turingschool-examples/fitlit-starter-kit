@@ -103,6 +103,13 @@ beforeEach(() => {
         expect(activity.flightsOfStairs).to.equal(0);
       });
     });
+
+    it("should count miles", () => {
+      activity.updateInfo(userRepo.activityUsersData);
+      const miles = activity.findMiles(user.strideLength);
+      expect(miles).to.equal(7);
+    });
+
     describe("changeDate method", () => {
       it("should show number of steps for chosen day", () => {
         activity.changeDate(userRepo, user, '2019/07/12');
@@ -125,6 +132,47 @@ beforeEach(() => {
         expect(miles).to.equal(4);
       });
     });
+
+    it("should show all activity info for week", () => {
+      const info = activity.getWeekInformation(userRepo);
+      expect(info).to.deep.equal([
+        { userID: 2,
+          date: '2019/09/16',
+          numSteps: 7322,
+          minutesActive: 164,
+          flightsOfStairs: 21 },
+        { userID: 2,
+          date: '2019/09/17',
+          numSteps: 2813,
+          minutesActive: 277,
+          flightsOfStairs: 2 },
+        { userID: 2,
+          date: '2019/09/18',
+          numSteps: 8664,
+          minutesActive: 142,
+          flightsOfStairs: 3 },
+        { userID: 2,
+          date: '2019/09/19',
+          numSteps: 5773,
+          minutesActive: 181,
+          flightsOfStairs: 3 },
+        { userID: 2,
+          date: '2019/09/20',
+          numSteps: 2969,
+          minutesActive: 273,
+          flightsOfStairs: 6 },
+        { userID: 2,
+          date: '2019/09/21',
+          numSteps: 7505,
+          minutesActive: 48,
+          flightsOfStairs: 40 },
+        { userID: 2,
+          date: '2019/09/22',
+          numSteps: 9050,
+          minutesActive: 25,
+          flightsOfStairs: 0 } ]);
+    });
+
     describe("getAverageForSevenDays method", () => {
       it("should show average number of steps for week", () => {
         activity.getAverageForSevenDays(userRepo);
@@ -171,5 +219,22 @@ beforeEach(() => {
         const miles = activity.findMiles(user.strideLength);
         expect(miles).to.equal(5);
       });
+    });
+
+    it("should check compliting of steps goal", () => {
+      activity.changeDate(userRepo, user, '2019/06/17');
+      activity.checkStepGoal(user);
+      expect(activity.goalComplete).to.equal(true);
+    });
+
+    it("should find all days with complited steps goal", () => {
+      activity.changeDate(userRepo, user, '2019/06/17');
+      const info =  activity.findGoalCompletedDays(userRepo, user);
+      expect(info).to.deep.equal(['2019/06/17']);
+    });
+
+    it("should find the highest number of flights", () => {
+      const flight = activity.findStairRecord(userRepo.activityUsersData);
+      expect(flight).to.equal(50);
     });
   });

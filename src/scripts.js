@@ -10,6 +10,7 @@ userRepository.findToday();
 let user;
 let sleep;
 let hydration;
+let activity;
 
 $(document).ready(function() {
 
@@ -18,7 +19,7 @@ $(document).ready(function() {
     const currentUser = userRepository.findUserByName(nameGiven);
     user = new User(currentUser);
     $('.login-header, .page-header, .empty-board').fadeToggle(100);
-    $('.board').css('display', 'flex')
+    $('.board').css('display', 'flex');
     fillUserInfo();
     getFriends(user.findFriends(userRepository));
     showHydration();
@@ -59,7 +60,6 @@ $(document).ready(function() {
 
   function showHydration() {
     hydration = new Hydration(userRepository);
-    console.log({hydration}, 'HREEEEE');
     hydration.findDayFluid(userRepository.hydrationUsersData)
     hydration.findWeeksFluid(userRepository.hydrationUsersData);
     $('.current-hydro').text(hydration.numOunces);
@@ -178,7 +178,7 @@ $(document).ready(function() {
       if ($widgetType === 'sleep') {
         sleep.changeDate(userRepository, 'All day');
         updateSleep();
-      } 
+      }
       if ($widgetType === 'water') {
         let allAvg = hydration.calcAvgFluidConsumption(userRepository.hydrationUsersData);
         $('.current-hydro').text(allAvg);

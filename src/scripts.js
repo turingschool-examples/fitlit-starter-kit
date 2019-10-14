@@ -49,6 +49,7 @@ let sleepFriendWorstSleeper = document.querySelector('#sleep-friend-worst-sleepe
 let sleepInfoQualityToday = document.querySelector('#sleep-info-quality-today');
 let stairsUserStairsToday = document.querySelector('#stairs-user-stairs-today');
 let stairsInfoFlightsToday = document.querySelector('#stairs-info-flights-today');
+let stairsFriendFlightsAverageToday = document.querySelector('#stairs-friend-flights-average-today');
 
 
 
@@ -212,5 +213,11 @@ stairsInfoFlightsToday.innerText = activityData.find(activity => {
 }).flightsOfStairs;
 
 stepsFriendActiveMinutesAverageToday.innerText = userRepository.calculateAverageMinutesActive(todayDate);
+
+stepsFriendStepsAverageToday.innerText = userRepository.calculateAverageSteps(todayDate);
+
+stairsFriendFlightsAverageToday.innerText = (userRepository.calculateAverageStairs(todayDate) / 12).toFixed(1);
+
+
 
 // console.log(user.calculateAverageStairs(date));

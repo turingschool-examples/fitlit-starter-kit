@@ -30,6 +30,7 @@ class UserRepository {
         return activity.date === date;
       });
     })
+    // debugger;
     let sumOfSteps = allUsersStepsCount.reduce((stepsSum, activityCollection) => {
       activityCollection.forEach(activity => {
         stepsSum += activity.numSteps

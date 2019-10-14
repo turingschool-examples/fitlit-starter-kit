@@ -98,4 +98,12 @@ describe('User', function() {
     user.sleepHoursRecord = [{date: "2019/09/22", hours: 9.6}, {date: "2019/09/21", hours: 8.2}, {date: "2019/09/20", hours: 9.9}, {date: "2019/09/19", hours: 4.2}, {date: "2019/09/18", hours: 9.5}, {date: "2019/09/17", hours: 7.8}, {date: "2019/09/16", hours: 10.2}, {date: "2019/09/15", hours: 5.7}, {date: "2019/09/14", hours: 8.8}, {date: "2019/09/13", hours: 4.6}, {date: "2019/09/12", hours: 5.3}];
     expect(user.calculateAverageHoursThisWeek('2019/09/21')).to.equal('7.9');
   });
+  it('should have a method that return the highest climbing record', function() {
+    user.activityData = [{flightsOfStairs: 10}, {flightsOfStairs: 15}, {flightsOfStairs: 17}]
+    expect(user.findClimbingRecord()).to.equal(17)
+  });
+  it('should have a method that calculates daily calories burned', function() {
+    user.activityData = [{date: "2019/09/16", minutesActive: 78}, {date: "2019/09/17", minutesActive: 100}, {date: "2019/09/17", minutesActive: 20}];
+    expect(user.calculateDailyCalories("2019/09/17")).to.equal(912)
+  });
 });

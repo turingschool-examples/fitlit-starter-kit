@@ -25,13 +25,23 @@ class UserRepository {
     }, 0);
     return totalSleepQuality / this.users.length;
   }
-  calculateAverageSteps() {
-
+  calculateAverageSteps(date) {
+    let allUsersStepsCount = this.users.map(user => {
+      return user.activityData.filter(activity => {
+        return activity.date === date;
+      });
+    })
+    let sumOfSteps = allUsersStepsCount.reduce((stepsSum, activityCollection) => {
+      activityCollection.forEach(activity => {
+        stepsSum += activity.numSteps
+      })
+      return stepsSum;
+    }, 0);
+    return Math.round(sumOfSteps / allUsersStepsCount.length);
   }
   calculateAverageStairs(date) {
     let allUsersStairsCount = this.users.map(user => {
       return user.activityData.filter(activity => {
-        // console.log(activity);
         return activity.date === date;
       });
     })

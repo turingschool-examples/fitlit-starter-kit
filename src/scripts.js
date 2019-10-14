@@ -16,7 +16,8 @@ $(document).ready(function() {
     const nameGiven = `${$('.first-name').val()} ${$('.last-name').val()}`;
     const currentUser = userRepository.findUserByName(nameGiven);
     user = new User(currentUser);
-    $('.login-header, .page-header, .empty-board, .board').fadeToggle(100);
+    $('.login-header, .page-header, .empty-board').fadeToggle(100);
+    $('.board').css('display', 'flex')
     fillUserInfo();
     getFriends(user.findFriends(userRepository));
     showHydration();

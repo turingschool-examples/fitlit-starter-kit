@@ -29,15 +29,14 @@ h4 {
   font-size: 18px;
 }
 
-.section__number,
-.section__number--small {
+.section__number {
   color: #468E43;
   font-size: 64px;
   font-weight: 700;
 }
 
-.section__number--small {
-  font-size: 54px;
+.small {
+  font-size: 44px;
 }
 
 .date {
@@ -280,6 +279,11 @@ h4 {
 
 .board {
   display: none;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.board > section {
+  width: 30%;
 }
 
 .empty-board {
@@ -298,9 +302,8 @@ h4 {
 .sleep-widget {
   border-radius: 20px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-  margin: 20px;
+  margin: 10px 10px 10px 40px;
   padding-bottom: 20px;
-  width: 26%;
 }
 
 .sleep-widget header {
@@ -354,9 +357,8 @@ h4 {
 .water-widget {
   border-radius: 20px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-  margin: 40px;
+  margin: 10px 10px 10px 40px;
   padding-bottom: 20px;
-  width: 32%;
 }
 
 .water-widget header {
@@ -415,25 +417,20 @@ h4 {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: space-between;
-  margin: 20px;
+  margin: 40px 10px 10px 40px;
   padding: 10px 15px;
-  width: 26%;
-}
-
-.today-widget h1 {
-  margin-right: 25px;
 }
 
 .month {
   color: #468E43;
   font-size: 34px;
-  font-weight: 300;
+  font-weight: 700;
 }
 
 .activity-widget {
   border-radius: 20px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-  margin: 20px;
+  margin: 40px 10px 10px;
   padding-bottom: 20px;
   width: 30%;
 }
@@ -448,12 +445,6 @@ h4 {
 .activity-widget main {
   text-align: center;
 }
-.activity-widget main div {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 2fr 1fr;
-  margin: 0 0 15px;
-}
 .activity-widget footer {
   display: none;
 }
@@ -462,6 +453,13 @@ h4 {
   display: inline;
   margin-right: 2px;
   width: 10px;
+}
+
+.additional {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 2fr 1fr;
+  margin: 0 0 15px;
 }
 
 .compare {
@@ -478,7 +476,7 @@ h4 {
 .compare-block {
   display: none;
 }
-.compare-block h3 {
+.compare-block > h3 {
   border-top: 1px solid #21402E;
   margin: 0 50px;
   padding-top: 15px;

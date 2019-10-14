@@ -58,13 +58,13 @@ describe('Sleep', () => {
         expect(sleep.calculateHoursSleptEachDayByUserOverSpecificWeek()).to.eql([6.1, 4.1, 8, 10.4, 10.7, 9.3, 7.8]);
     });
 
-    it('should return avg hours slept for all users', () => {
-        expect(sleep.calculateAvgSleepQualityAllUsers()).to.equal(8.26);
+    it('should return the daily amounts a user slept over a week', () => {
+        sleep.findCurrentUserSleepData();
+        expect(sleep.calculateEachDaysSleepQualityForUserOverSpecificWeek()).to.eql([ 2.2, 3.8, 2.6, 3.1, 1.2, 1.2, 4.2]);
     });
 
-    it('should return users with avg sleep quality over 3 for the last week', () => {
-      sleep1 = new Sleep(mockSleepData, 1, mockUserData2);
-        expect(sleep1.findUsersWithAvgSleepQualityMoreThanThreeOverFinalWeek()).to.eql(["Jarvis Considine", "Herminia Witting"]);
+    it('should return avg hours slept for all users', () => {
+        expect(sleep.calculateAvgSleepQualityAllUsers()).to.equal(8.26);
     });
 
     it('should return users with avg sleep quality over 3 for a specific week', () => {

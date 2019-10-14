@@ -7,10 +7,10 @@ const hydrationData = require('../data/hydration');
 const sleepData = require('../data/sleep');
 const activityData = require('../data/activity');
 const data = {
-  users: users,
-  hydration: hydration,
-  sleep: sleep,
-  activity: activity
+  users: usersData,
+  hydration: hydrationData,
+  sleep: sleepData,
+  activity: activityData
 };
 
 let userRepository, user;

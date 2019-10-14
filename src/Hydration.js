@@ -5,9 +5,9 @@ class Hydration {
     this.numOunces = null;
   }
 
-  calcAvgFluidConsumption(id, hydrationData) {
+  calcAvgFluidConsumption(hydrationData) {
     const userOunces = hydrationData.reduce((acc, indHydro) => {
-      if (indHydro.userID === id) {
+      if (indHydro.userID === this.userId) {
         acc.push(indHydro.numOunces);
       }
       return acc;

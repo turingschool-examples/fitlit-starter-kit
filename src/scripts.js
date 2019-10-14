@@ -18,36 +18,62 @@ $(window).on('load', function () {
   makeHydro(hydrationData);
   makeSleep(sleepData);
   makeActivity(activityData);
-
-  $('.header_h1_span').text(`${user.returnFirstName()}`);
-  $('.user_name').text(`${user.name.join(' ')}`);
-  $('.user_email').text(`${user.email}`);
-  $('.user_address').text(`${user.address}`);
-  $('.user_stride_length').text(`${user.strideLength}`);
-  $('.user_step_goal').text(`${user.dailyStepGoal}`);
-  $('.div_steps_other_users_p').text(`${userRepository.calculateAverageStepGoal()}`);
-  $('.hydro_day').text(hydro.findFluidDate('2019/09/15'));
-  $('.hydro_week').text(hydro.findFluidWeek('2019/09/15').join(' '));
-  $('.sleep_date').text('2019/09/15');
-  $('.sleep_hours_day').text(sleep.findHoursDay('2019/09/15'));
-  $('.sleep_quality_day').text(sleep.findQualDay('2019/09/15'));
-  $('.sleep_hours_avg').text(sleep.findAvgSleepAll());
-  $('.sleep_quality_avg').text(sleep.findAvgQualAll());
-  $('.activity_date').text("2019/09/15");
-  $('.activity_steps_day').text(activity.stepGoalReached('2019/09/15'));
-  $('.activity_min_active_day').text(activity.minutesActiveGivenDay('2019/09/15'));
-  $('.activity_miles_walked_day').text(activity.milesWalked('2019/09/15'));
-  $('.div_activity_steps_other_users_p').text(activityRepository.numberofStepsGivenDate('2019/09/15'));
-  $('.div_activity_min_active_other_users_p').text(activityRepository.avgMinutesActiveGivenDate('2019/09/15'));
-  $('.div_activity_stairs_other_users_p').text(activityRepository.numberofStepsGivenDate('2019/09/15'));
-  $('.activity_min_active_week').text(activity.minActiveWeek('2019/09/15').join(' '));
-  $('.activity_steps_week').text(activity.stepsWeek('2019/09/15').join(' '));
-  $('.activity_stairs_week').text(activity.stairsWeek('2019/09/15').join(' '));
-})
-
-$( function() {
-  $('#datepicker_hydro').datepicker();
+  eventHandler();
 });
+
+$('.datepicker_button').on('click', function() {
+  let date = $('#datepicker').val()
+  console.log(date)
+  $('.hydro_day').text(hydro.findFluidDate(date));
+  $('.hydro_week').text(hydro.findFluidWeek(date).join(' '));
+  $('.sleep_date').text(date);
+  $('.sleep_hours_day').text(sleep.findHoursDay(date));
+  $('.sleep_quality_day').text(sleep.findQualDay(date));
+  $('.activity_date').text(date);
+  $('.activity_steps_day').text(activity.stepGoalReached(date));
+  $('.activity_min_active_day').text(activity.minutesActiveGivenDay(date));
+  $('.activity_miles_walked_day').text(activity.milesWalked(date));
+  $('.div_activity_steps_other_users_p').text(activityRepository.numberofStepsGivenDate(date));
+  $('.div_activity_min_active_other_users_p').text(activityRepository.avgMinutesActiveGivenDate(date));
+  $('.div_activity_stairs_other_users_p').text(activityRepository.numberofStepsGivenDate(date));
+  $('.activity_min_active_week').text(activity.minActiveWeek(date).join(' '));
+  $('.activity_steps_week').text(activity.stepsWeek(date).join(' '));
+  $('.activity_stairs_week').text(activity.stairsWeek(date).join(' '));
+
+});
+
+
+$(function () {
+  $('#datepicker').datepicker({ dateFormat: 'yy/mm/dd' });
+});
+
+
+  function eventHandler() {
+    $('.header_h1_span').text(`${user.returnFirstName()}`);
+    $('.user_name').text(`${user.name.join(' ')}`);
+    $('.user_email').text(`${user.email}`);
+    $('.user_address').text(`${user.address}`);
+    $('.user_stride_length').text(`${user.strideLength}`);
+    $('.user_step_goal').text(`${user.dailyStepGoal}`);
+    $('.div_steps_other_users_p').text(`${userRepository.calculateAverageStepGoal()}`);
+    $('.hydro_day').text(hydro.findFluidDate('2019/09/15'));
+    $('.hydro_week').text(hydro.findFluidWeek('2019/09/15').join(' '));
+    $('.sleep_date').text('2019/09/15');
+    $('.sleep_hours_day').text(sleep.findHoursDay('2019/09/15'));
+    $('.sleep_quality_day').text(sleep.findQualDay('2019/09/15'));
+    $('.sleep_hours_avg').text(sleep.findAvgSleepAll());
+    $('.sleep_quality_avg').text(sleep.findAvgQualAll());
+    $('.activity_date').text("2019/09/15");
+    $('.activity_steps_day').text(activity.stepGoalReached('2019/09/15'));
+    $('.activity_min_active_day').text(activity.minutesActiveGivenDay('2019/09/15'));
+    $('.activity_miles_walked_day').text(activity.milesWalked('2019/09/15'));
+    $('.div_activity_steps_other_users_p').text(activityRepository.numberofStepsGivenDate('2019/09/15'));
+    $('.div_activity_min_active_other_users_p').text(activityRepository.avgMinutesActiveGivenDate('2019/09/15'));
+    $('.div_activity_stairs_other_users_p').text(activityRepository.numberofStepsGivenDate('2019/09/15'));
+    $('.activity_min_active_week').text(activity.minActiveWeek('2019/09/15').join(' '));
+    $('.activity_steps_week').text(activity.stepsWeek('2019/09/15').join(' '));
+    $('.activity_stairs_week').text(activity.stairsWeek('2019/09/15').join(' '));
+  }
 
 function makeUsers(data) {
   userRepository = new UserRepository(data);

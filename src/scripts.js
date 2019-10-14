@@ -17,7 +17,8 @@ $(document).ready(function() {
     const nameGiven = `${$('.first-name').val()} ${$('.last-name').val()}`;
     const currentUser = userRepository.findUserByName(nameGiven);
     user = new User(currentUser);
-    $('.login-header, .page-header, .empty-board, .board').fadeToggle(100);
+    $('.login-header, .page-header, .empty-board').fadeToggle(100);
+    $('.board').css('display', 'flex')
     fillUserInfo();
     getFriends(user.findFriends(userRepository));
     showHydration();
@@ -28,9 +29,14 @@ $(document).ready(function() {
     $('.bio-info main').fadeToggle();
   });
 
+  $('.compare').on('click', function() {
+    $('.compare-block').fadeToggle();
+    $(this).text($(this).text() === 'compare with others' ? 'close' : 'compare with others');
+  });
+
   $('.steps-goal footer p').on('click', function() {
     $('.steps-goal .average').fadeToggle();
-    $(this).text($(this).text() == 'see average' ? 'close' : 'see average');
+    $(this).text($(this).text() === 'see average' ? 'close' : 'see average');
   });
 
   function fillUserInfo() {
@@ -138,13 +144,19 @@ $(document).ready(function() {
 
     if ($dayEntered === 'Week') {
       $(this).closest('.widget').find('.date, footer').show();
+
       if ($widgetType === 'sleep') {
-      $(this).closest('.widget').find('.date').text(sleep.date);
-      sleep.updateInfo(userRepository);
-      updateSleep()} else if ($widgetType === 'water') {
+        $(this).closest('.widget').find('.date').text(sleep.date);
+        sleep.updateInfo(userRepository);
+        updateSleep();
+      }
+      if ($widgetType === 'activity') {
+        $('.compare-block, .compare').hide();
+      }
+      if ($widgetType === 'water') {
         showHydration();
       }
-    } 
+    }
 
     if ($dayEntered === 'Today') {
       $(this).closest('.widget').find('.date, footer').hide();
@@ -152,6 +164,9 @@ $(document).ready(function() {
         sleep.changeDate(userRepository);
         updateSleep();
       };
+      if ($widgetType === 'activity') {
+        $('.compare').text('compare with others').show();
+      }
     }
 
     if ($dayEntered === 'All time') {
@@ -159,7 +174,8 @@ $(document).ready(function() {
       if ($widgetType === 'sleep') {
         sleep.changeDate(userRepository, 'All day');
         updateSleep();
-      } else if ($widgetType === 'water') {
+      } 
+      if ($widgetType === 'water') {
         let allAvg = hydration.calcAvgFluidConsumption(userRepository.hydrationUsersData);
         $('.current-hydro').text(allAvg);
       }
@@ -182,11 +198,13 @@ $(document).ready(function() {
     if ($dateVal.test($dayEntered)) {
       $dropdown.children('header').children('p').text($dayEntered);
       $dropdown.children('input').text($dayEntered);
-
+      $('.compare-block').hide();
+      $('.compare').text('compare with others').show();
       if ($widgetType === 'sleep') {
         sleep.changeDate(userRepository, $dayEntered);
         updateSleep();
       };
     }
+    $(this).siblings('input').val('');
   });
 });

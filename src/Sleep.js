@@ -65,9 +65,15 @@ class Sleep {
     return parseFloat(avgHrsSlept.toFixed(2))
   }
 
-  findUsersWithAvgSleepQualityMoreThanThreeOverFinalWeek() {
-    let allUserSleepDataForFinalWeek = this.currentSleepData.slice(-350);
-    let finalWeekObject = allUserSleepDataForFinalWeek.reduce((acc, userBlock) => {
+  findUsersWithAvgSleepQualityMoreThanThreeOverSpecificWeek(date) {
+    let indexForUserOneAtSpecificDate = this.currentSleepData.findIndex(userBlock => {
+      return (userBlock.userID === 1 && userBlock.date === date)
+    });
+    console.log(indexForUserOneAtSpecificDate);
+
+    let allUserSleepDataForSpecificWeek = this.currentSleepData.slice(indexForUserOneAtSpecificDate, (indexForUserOneAtSpecificDate + 349));
+    console.log(allUserSleepDataForSpecificWeek);
+    let finalWeekObject = allUserSleepDataForSpecificWeek.reduce((acc, userBlock) => {
       if (!acc[userBlock.userID]) {
         acc[userBlock.userID] = []
       }
@@ -82,7 +88,7 @@ class Sleep {
       return acc
     }, {});
 
-    allUserSleepDataForFinalWeek.forEach(element => {
+    allUserSleepDataForSpecificWeek.forEach(element => {
       if (element.userID === keysObject[element.userID]) {
         finalWeekObject[element.userID].push(element.sleepQuality)
       }

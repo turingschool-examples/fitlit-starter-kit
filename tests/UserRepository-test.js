@@ -117,5 +117,20 @@ describe('UserRepository', function() {
       "sleepQuality": 1.4
     }, userRepository);
     expect(userRepository.findBestSleepers("2019/06/16")).to.deep.equal([user1, user2]);
+  });
+  it('should have a method that calculates average number of stairs for users', function() {
+    user1.activityData = [{date: "2019/09/17", flightsOfStairs: 10}, {date: "2019/09/17", flightsOfStairs: 15}];
+    user2.activityData = [{date: "2019/09/16", flightsOfStairs: 8}, {date: "2019/09/17", flightsOfStairs: 4}];
+    expect(userRepository.calculateAverageStairs("2019/09/17")).to.equal(10);
+  })
+  it('should have a method that calculates average number of steps for users', function() {
+    user1.activityData = [{date: "2019/09/17", numSteps: 100}, {date: "2019/09/17", numSteps: 2000}];
+    user2.activityData = [{date: "2019/09/16", numSteps: 9820}, {date: "2019/09/17", numSteps: 234}];
+    expect(userRepository.calculateAverageSteps("2019/09/17")).to.equal(778);
+  })
+  it('should have a method that calculates average number of active minutes for users', function() {
+    user1.activityData = [{date: "2019/09/17", minutesActive: 100}, {date: "2019/09/17", minutesActive: 20}];
+    user2.activityData = [{date: "2019/09/16", minutesActive: 78}, {date: "2019/09/17", minutesActive: 12}];
+    expect(userRepository.calculateAverageMinutesActive("2019/09/17")).to.equal(44);
   })
 });

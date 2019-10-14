@@ -12,7 +12,8 @@
     this.hoursSleptAverage = 0;
     this.sleepQualityAverage = 0;
     this.sleepHoursRecord = [];
-    this.sleepQualityRecord = []
+    this.sleepQualityRecord = [];
+    this.activityData = [];
   }
   getFirstName() {
     var names = this.name.split(' ');
@@ -72,6 +73,19 @@
       }
       return sum;
     }, 0) / 7).toFixed(1);
+  }
+  findClimbingRecord() {
+    return this.activityData.sort((a, b) => {
+      return b.flightsOfStairs - a.flightsOfStairs;
+    })[0].flightsOfStairs;
+  }
+  calculateDailyCalories(date) {
+    let totalMinutes = this.activityData.filter(activity => {
+      return activity.date === date
+    }).reduce((sumMinutes, activity) => {
+      return sumMinutes += activity.minutesActive
+    }, 0);
+    return Math.round(totalMinutes * 7.6);
   }
 }
 

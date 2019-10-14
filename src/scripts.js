@@ -30,11 +30,13 @@ $(function() {
     $grid.packery( 'bindDraggabillyEvents', draggie );
   });
  
+  $('.user__fullName').text(userData[randomUser].name)
   $('.span__currentUser').text(user.getUserFirstName());  
   $('.user__address').text(userData[randomUser].address);
   $('.user__email').text(userData[randomUser].email);
   $('.user__stride').text(userData[randomUser].strideLength);
-  $('.user__friends').text(userData[randomUser].friends);
+  $('.user__step').text(userData[randomUser].dailyStepGoal);
+  // $('.user__friends').text(userData[randomUser].friends);
   $('.user__dailyWater').text(userHydration.userOuncesToday());
   $('.section__sleep--step-feedback').text(userSleep.giveUserSleepFeedback(randomUser, '2019/06/15'));
 

@@ -1,11 +1,11 @@
 $(function() {
-  const randomUser = Math.floor(Math.random() * 50) + 1  
-    
+  const randomUser = Math.floor(Math.random() * 50) + 1
+
   const user = new User(userData[randomUser]);
   const usersRepo = new UsersRepo(userData);
   const userSleep = new UserSleep(userData[randomUser]);
   const userHydration = new UserHydration(userData[randomUser], hydrationData);
-  const userActivity = new UserActivity(activityData);
+  const userActivity = new UserActivity(userData[randomUser], activityData);
 
   let today = '2019/06/25';
 
@@ -15,31 +15,31 @@ $(function() {
     rowHeight: 40,
     gutter: 7,
   });
-  
+
   let $draggable = $('.draggable').draggabilly({
   });
-  
+
   let $grid1 = $('.grid').packery({
     itemSelector: '.grid-item',
     columnWidth: 100
   });
-  
+
   $grid.find('.grid-item').each( function( i, gridItem ) {
     let draggie = new Draggabilly( gridItem );
     $grid.packery( 'bindDraggabillyEvents', draggie );
   });
  
   $('.user__fullName').text(userData[randomUser].name)
-  $('.span__currentUser').text(user.getUserFirstName());  
+  $('.span__currentUser').text(user.getUserFirstName());
   $('.user__address').text(userData[randomUser].address);
   $('.user__email').text(userData[randomUser].email);
   $('.user__stride').text(userData[randomUser].strideLength);
   $('.user__step').text(userData[randomUser].dailyStepGoal);
   $('.user__dailyWater').text(userHydration.userOuncesToday());
-  $('.section__sleep--step-feedback').text(userSleep.giveUserSleepFeedback(randomUser, '2019/06/15'));
+  $('.section__sleep--step-feedback').text(userSleep.giveUserSleepFeedback(randomUser, today));
   $('.activity__current--step').text(userActivity.userStepsByDate(randomUser, today));
-  // $('.activity__minutes--active').text(userActivity.userMinutesActiveByDate(randomUser, today))
-  // $('.activity__steps--miles').text(userActivity.userMilesByDate(randomUser));
+  $('.activity__minutes--active').text(userActivity.userMinutesActiveByDate(randomUser, today))
+  $('.activity__steps--miles').text(userActivity.userMilesByDate(randomUser, today));
 
   const usersWeeklyWater = new Chart($('#weeklyUserDailyWater'), {
     type: 'horizontalBar',
@@ -154,6 +154,33 @@ $(function() {
         label: 'Step Goal Comparison',
         data: [userData[randomUser].dailyStepGoal, usersRepo.avgStepGoal()],
         backgroundColor: ['rgb(112, 56, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)'],
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+const friends = user.getFriends();
+
+friends.unshift(userData[randomUser].id);
+
+let friendsActivityLastWeek = friends.map(e => userActivity.userStepsByWeek(e));
+
+  const stepGoalFriends = new Chart($('#stepGoalFriends'), {
+    type: 'bar',
+    data: {
+      labels: ['Your Step Goal', 'Friends', 'Friends', 'Friends', 'Friends'],
+      datasets: [{
+        label: 'Step Goal Weekly Average',
+        data: friendsActivityLastWeek,
+        backgroundColor: ['rgb(112, 56, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)'],
       }]
     },
     options: {

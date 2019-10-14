@@ -1,7 +1,3 @@
-if (typeof module !== "undefined") {
-  activityData = require('../subset_data/activity-subset');
-}
-
 class UserActivity {
   constructor(userData, activityData) {
     this.userData = userData;
@@ -10,20 +6,17 @@ class UserActivity {
   }
 
   activityDataFilter() {
-    let activityDataFilter = activityData.filter(activityObject => {
+    let activityDataFilter = this.activityData.filter(activityObject => {
       return activityObject.userID === this.userData.id;
     })
     return activityDataFilter
   }
 
   userStepsByDate(id, date) {
-    return activityData.find(user => id === user.userID && date === user.date).numSteps;
+    return this.activityData.find(user => id === user.userID && date === user.date).numSteps;
   }
 
   userMilesByDate() {
-    // let milesByDate = this.filteredActivity.find(user => date === user.date).numSteps;
-    // return parseFloat(((milesByDate * this.userData.strideLength) / 5280).toFixed(2))
-    
     let milesByDate = this.filteredActivity.slice(-1)
     return parseFloat(((milesByDate[0].numSteps * this.userData.strideLength) / 5280).toFixed(2))
   }
@@ -41,6 +34,22 @@ class UserActivity {
     }, 0)
     return parseFloat((avg / activityWeek.length).toFixed(2));
   }
+
+  userStepsByWeek(id) {
+
+    let activityDataFilter = this.activityData.filter(activityObject => {
+      return activityObject.userID === id;
+    })
+
+    let activityWeek = activityDataFilter.slice(-7).map(activityObject => activityObject.numSteps)
+
+    let average = activityWeek.reduce((avg, activityUserArray) => {
+      return avg += activityUserArray;
+    }, 0)
+
+    return parseInt((average / activityWeek.length));
+  }
+
 
   userStepGoalMetByDate(date) {
     let dailySteps = this.filteredActivity.find(activityObject => {
@@ -62,7 +71,6 @@ class UserActivity {
   }
 
   userStairClimbedAllTime() {
-    //  For a user, find their all-time stair climbing record
     let activityDataFilter = this.activityData.filter(activityObject => {
       return activityObject.userID === this.userData.id;
     })
@@ -73,7 +81,6 @@ class UserActivity {
     return activityDataFilter[0].flightsOfStairs
   }
 
-  // example usersActivityAvgByDate('2019/06/15', 'minutesActive')
   usersActivityAvgByDate(goal) {
 
     let usersActivity = this.activityData.filter(activityObject => {

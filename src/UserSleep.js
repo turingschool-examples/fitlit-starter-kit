@@ -6,7 +6,6 @@ class UserSleep {
   constructor(userData) {
     this.userData = userData;
     this.id = userData.id;
-    // this.name = userData.name;
     this.sleepObjs = this.filterSleepData();
     this.userDailyHoursSlept =  this.filteredUserHoursSleptDay();
     this.userDailySleepQual = this.filteredUserSleepQuality();

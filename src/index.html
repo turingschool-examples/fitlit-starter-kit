@@ -48,9 +48,9 @@
             <li>OUNCES CONSUMED TODAY
               <p class='hydro_day'></p>
             </li>
-            <li>OUNCES CONSUMED THIS WEEK
+            <li>
               <p class='hydro_week'></p>
-              <div class='div_hydro_week'>
+              <div class='div_chart'>
               <canvas id="myChartHydro" width="170" height="200"></canvas>
               </div>
             </li>
@@ -82,31 +82,35 @@
           </h2>
           <ul>
             <li>
-              NUMBER OF STEPS ON <span class='activity_date'></span>
+              <div>
               <p class='activity_steps_day'></p>
-            </li>
-            <li>
-              STEPS THIS WEEK
-              <p class='activity_steps_week'></p>
-              <div class='div_hydro_week'>
-                <canvas id="myChartStepsWeek" width="170" height="200"></canvas>
-                </div>
+              </div>
             </li>
             <li>
               MINUTES ACTIVE ON <span class='activity_date'></span>
               <p class='activity_min_active_day'></p>
             </li>
             <li>
-              MINUTES ACTIVE THIS WEEK 
-              <p class='activity_min_active_week'></p>
-            </li>
-            <li>
               MILES WALKED ON <span class='activity_date'></span>
               <p class='activity_miles_walked_day'></p>
             </li>
+            <li> 
+              <p class='activity_steps_week'></p>
+              <div class='div_chart'>
+                <canvas id="myChartStepsWeek" width="170" height="200"></canvas>
+                </div>
+            </li>
             <li>
-              FLIGHTS OF STAIRS THIS WEEK
+              <p class='activity_min_active_week'></p>
+              <div class='div_chart'>
+                <canvas id="myChartMinActiveWeek" width="170" height="200"></canvas>
+                </div>
+            </li>
+            <li>
               <p class='activity_stairs_week'></p>
+              <div class='div_chart'>
+                <canvas id="myChartStairsWeek" width="170" height="200"></canvas>
+                </div>
             </li>
           </ul>
       </section>

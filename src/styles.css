@@ -19,7 +19,7 @@ header {
 main{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-gap: 20px; 
 }
 
@@ -61,20 +61,24 @@ p {
 ul {
     text-align: left;
     list-style-type: none;
+    /* margin: none;
+    text-decoration: none; */
+    padding: 0;
 }
 
 li {
     font-family: 'Nunito', sans-serif;
     display: inline-block;
     margin: 20px;
+    /* margin-left: -15px; */
 }
 
 .section_other_users {
+    display: flex;
     grid-column-start: 1;
     grid-column-end: 5;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    justify-content: space-around;
+    height: 700px;
 }
 
 .section_other_users, h2 {
@@ -86,7 +90,7 @@ div {
     display: inline-block;
     border: 5px solid;
     border-color: #222E50;
-    margin: 20px;
+    margin: auto;
     padding: 20px;
     text-align: center;
 }
@@ -126,6 +130,6 @@ div {
     display: none;
 }
 
-.div_hydro_week {
-    margin-left: -15px;
+.div_chart{
+    margin-left: 20px;
 }

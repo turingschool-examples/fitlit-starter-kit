@@ -5,19 +5,12 @@ class UserRepository {
     this.sleepUsersData = data.sleep || null;
     this.activityUsersData = data.activity || null;
     this.currentUserId = null;
-    this.currentUserInfo = {
-      bio: {},
-      hydration: [],
-      sleep: [],
-      activity: []
-    };
     this.day = null;
   }
 
   findUserByName(name) {
     const user = this.usersData.find((user) => user.name === name);
     this.currentUserId = user.id;
-    this.currentUserInfo.bio = user;
     return user;
   }
 
@@ -50,15 +43,6 @@ class UserRepository {
       }
     }
     return week;
-  }
-
-  updateCurrentUserInfo(type) {
-    const userData =  this[`${type}UsersData`].filter((data) => data.userID === this.currentUserId);
-    userData.map((data) => {
-      delete data['userID'];
-      return data;
-    });
-    this.currentUserInfo[type] = userData;
   }
 
   calculateAverageStepGoal() {

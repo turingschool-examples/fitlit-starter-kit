@@ -11,7 +11,16 @@ $( document ).ready( () => {
 
 $('.main__user').html(`${userData[randomFitLitUser].name} <br>
     ${userData[randomFitLitUser].email} <br>
-    Friends: ${userData[randomFitLitUser].friends}`);
+    Friends: <a href='#' >${userData[randomFitLitUser].friends}</a>
+      <div class='card'>
+        <div class='donut-chart chart2'>
+          <div class='slice one'></div>
+          <div class='slice two'></div>
+          <div class='chart-center'>
+            <span></span>
+          </div>
+        </div>
+      </div>`);
 $('.main__sleep').html(`${sleepData[randomFitLitUser].date} <br> Hours Slept: ${sleepData[randomFitLitUser].hoursSlept} hours<br>
     Sleep Quality: ${sleepData[randomFitLitUser].sleepQuality}`);
 
@@ -28,6 +37,9 @@ $('.main__activity').html(`<div><p>Steps: ${activityData[randomFitLitUser].numSt
 
 }); // end jquery
 
+
+// https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path
+// clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 
 
 

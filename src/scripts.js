@@ -8,11 +8,24 @@ $( document ).ready( () => {
     console.log(randomFitLitUser)
   }
   getRandomId(1, 50);
+// classes instageated
 
+let userDataClass = {};
+
+function instgateClasses(user, randomID) {
+    userDataClass = new User(user[randomID]
+  );
+  console.log(userDataClass)
+};
+
+instgateClasses(userData[randomFitLitUser]);
+
+
+// sending data to the DOM
 $('.main__user').html(`${userData[randomFitLitUser].name} <br>
     ${userData[randomFitLitUser].email} <br>
     Friends: <a href='#' >${userData[randomFitLitUser].friends}</a>`);
-$('.main__sleep').html(`${sleepData[randomFitLitUser].date} <br> Hours Slept: ${sleepData[randomFitLitUser].hoursSlept} hours<br>
+$('.main__sleep').html(`<p>Sleep:</p>${sleepData[randomFitLitUser].date} <br> Hours Slept: ${sleepData[randomFitLitUser].hoursSlept} hours<br>
     Sleep Quality: ${sleepData[randomFitLitUser].sleepQuality}`);
 
 $('.main__hydration').html(`<div>
@@ -20,13 +33,13 @@ $('.main__hydration').html(`<div>
 
 $('.main__activity').html(`<div><p>Steps: ${activityData[randomFitLitUser].numSteps} <br>
   Mins Active: ${activityData[randomFitLitUser].minutesActive} <br>
-  Flishts Stairs: ${activityData[randomFitLitUser].flightsOfStairs} </p></div>`);
+  Flights Stairs: ${activityData[randomFitLitUser].flightsOfStairs} </p></div>`);
 
-// $('.main__friends').html(`${}`)
+  // console.log(randomFitLitUser)
+
+// $('.friend-1').html(`${}`)
 
 }); // end jquery
 
 // https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path
 // clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-
-

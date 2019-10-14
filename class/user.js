@@ -12,7 +12,14 @@ class User {
 findUsersFirstName() {
 	return this.name.split(' ')[0];
 }
+findFriendById() {
+  console.log(this.friends);
+  // this.friends
+}
 
 }
 
 module.exports = User;
+
+
+//find friend by id

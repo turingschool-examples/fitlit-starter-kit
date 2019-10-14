@@ -5,6 +5,8 @@ let hydroUser;
 let hydroRepo;
 let sleepRepo;
 let sleepUser;
+let activityRepo;
+let activityUser;
 
 $("#login-page-button").click(clickLoginButton);
 
@@ -16,6 +18,7 @@ function clickLoginButton(event) {
     instantiateUserData(userData);
     instantiateHydroData(hydrationData);
     instantiateSleepData(sleepData);
+    instantiateActivityData(activityData);
     displayUserPage();
     addUserFirstName();
     addUserInfo(user);
@@ -25,6 +28,12 @@ function clickLoginButton(event) {
     addSleepDataforDay();
     addWeeklySleepDataByDay();
     addAllTimeSleepAvg();
+    addAllUsersActivityAverages();
+    addFlightsOfStairsForLatestDay();
+    addMilesForLatestDay();
+    addMinutesActiveByDay();
+    addNumStepsForLatestDay();
+    addWeeklyActivityDataByDay();
   }
 }
 
@@ -45,6 +54,12 @@ function instantiateSleepData(data) {
   sleepRepo = new SleepRepo(data);
   let userSleepData = sleepRepo.getUserSleepData(user.id);
   sleepUser = new SleepUser(userSleepData);
+}
+
+function instantiateActivityData(data) {
+  activityRepo = new ActivityRepo(data);
+  let userActivityData = activityRepo.getUserActivityData(user.id);
+  activityUser = new ActivityUser(userActivityData);
 }
 
 function displayErrorMessage() {
@@ -136,6 +151,71 @@ function addAllTimeSleepAvg() {
     </section>`);
 }
 
+function addMilesForLatestDay() {
+  let todaysMiles = activityUser.calcMilesByDay('2019/09/22', user.strideLength);
+  $("#daily-activity-header").after(`
+  <section class="section-style">
+  <h3>Miles Walked</h3>
+  <p>${todaysMiles}</p>
+  </section>`)
+}
+
+function addMinutesActiveByDay() {
+  let todaysMinutes = activityUser.getMinutesActiveByDay('2019/09/22');
+  $("#daily-activity-header").after(`
+  <section class="section-style">
+  <h3>Minutes Active</h3>
+  <p>${todaysMinutes}</p>
+  </section>`)
+}
+
+function addNumStepsForLatestDay() {
+  let todaysSteps = activityUser.getNumStepsByDay('2019/09/22');
+  $("#daily-activity-header").after(`
+  <section class="section-style">
+  <h3>Today's Steps</h3>
+  <p>${todaysSteps}</p>
+  </section>`)
+}
+
+function addFlightsOfStairsForLatestDay() {
+  let todaysFlights = activityUser.getFlightsClimbedByDay('2019/09/22');
+  $("#daily-activity-header").after(`
+  <section class="section-style">
+  <h3>Today's Flights Climbed</h3>
+  <p>${todaysFlights}</p>
+  </section>`)
+}
+
+function addAllUsersActivityAverages() {
+  let avgFlights = activityRepo.calcAvgStairsClimbedByDay('2019/09/22');
+  let avgSteps = activityRepo.calcAvgStepsTakenByDay('2019/09/22');
+  let avgMins = activityRepo.calcMinsActiveByDay('2019/09/22');
+  $("#daily-activity-header").after(`
+  <section class="section-style">
+    <h3>Average User Activity</h3>
+    <section class="activity-all-users-data-section">
+      <div>Steps: ${avgSteps}</div>
+      <div>Minutes: ${avgMins}</div>
+      <div>Flights: ${avgFlights}</div>
+    </section>
+  </section>`)
+}
+
+function addWeeklyActivityDataByDay() {
+  let weeklyUserActivityHours = activityUser.getDailyActivityByWeek('2019/06/22');
+  weeklyUserActivityHours.forEach(day => {
+    $("#weekly-activity-header").after(`
+      <section class="section-style">
+        <h3>${day.date}</h3>
+        <section class="sleep-weekly-data-section">
+          <div>Steps: ${day.numSteps}</div>
+          <div>Minutes: ${day.minutesActive}</div>
+          <div>Flights: ${day.flightsOfStairs}</div>
+        </section>
+      </section>`)
+    })
+}
 
 function displayUserPage() {
     $("#main-login-page").remove();
@@ -179,67 +259,10 @@ function displayUserPage() {
           <h2 id="card-weekly-oz-header">Weekly Water Intake</h2>
         </article>
         <article class="card-style card-daily-activity">
-          <h2>Today's Activity</h2>
-          <section class="section-style">daily info compared to friends</section>
+          <h2 id="daily-activity-header">Today's Activity</h2>
         </article>
         <article class="card-style card-weekly-activity">
-          <h2>Previous Activity</h2>
-          <section class="section-style">
-            <h3>day one</h3>
-            <section class="activity-weekly-data-section">
-              <div>steps</div>
-              <div>flights</div>
-              <div>mins</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day two</h3>
-            <section class="activity-weekly-data-section">
-              <div>steps</div>
-              <div>flights</div>
-              <div>mins</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day three</h3>
-            <section class="activity-weekly-data-section">
-              <div>steps</div>
-              <div>flights</div>
-              <div>mins</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day four</h3>
-            <section class="activity-weekly-data-section">
-              <div>steps</div>
-              <div>flights</div>
-              <div>mins</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day five</h3>
-            <section class="activity-weekly-data-section">
-              <div>steps</div>
-              <div>flights</div>
-              <div>mins</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day six</h3>
-            <section class="activity-weekly-data-section">
-              <div>steps</div>
-              <div>flights</div>
-              <div>mins</div>
-            </section>
-          </section>
-          <section class="section-style">
-            <h3>day seven</h3>
-            <section class="activity-weekly-data-section">
-              <div>steps</div>
-              <div>flights</div>
-              <div>mins</div>
-            </section>
-          </section>
+          <h2 id="weekly-activity-header">This Week's Activity</h2>
         </article>
         <article class="card-style card-daily-sleep">
           <h2 id="card-sleep-daily-data">Previous Night's Sleep Stats</h2>

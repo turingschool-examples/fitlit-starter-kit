@@ -87,4 +87,55 @@ describe('activityUser', () => {
     expect(activityUser.getMinutesActiveRecord()).to.equal(296);
   });  
 
+  it('should find number of steps for a given day', () => {
+    expect(activityUser.getNumStepsByDay("2019/06/15")).to.equal(3577);
+  });  
+
+  it('should find flights of stairs climbed for a given day', () => {
+    expect(activityUser.getFlightsClimbedByDay("2019/06/15")).to.equal(16);
+  });
+
+  it('should get weekly activity data', () => {
+    expect(activityUser.getDailyActivityByWeek("2019/07/22")).to.deep.equal([{ userID: 1,
+      date: '2019/07/15',
+      numSteps: 4861,
+      minutesActive: 54,
+      flightsOfStairs: 49 },
+    { userID: 1,
+      date: '2019/07/16',
+      numSteps: 3917,
+      minutesActive: 188,
+      flightsOfStairs: 7 },
+    { userID: 1,
+      date: '2019/07/17',
+      numSteps: 8162,
+      minutesActive: 258,
+      flightsOfStairs: 8 },
+    { userID: 1,
+      date: '2019/07/18',
+      numSteps: 6920,
+      minutesActive: 190,
+      flightsOfStairs: 44 },
+    { userID: 1,
+      date: '2019/07/19',
+      numSteps: 4634,
+      minutesActive: 30,
+      flightsOfStairs: 12 },
+    { userID: 1,
+      date: '2019/07/20',
+      numSteps: 12434,
+      minutesActive: 211,
+      flightsOfStairs: 48 },
+    { userID: 1,
+      date: '2019/07/21',
+      numSteps: 12821,
+      minutesActive: 281,
+      flightsOfStairs: 28 },
+    { userID: 1,
+      date: '2019/07/22',
+      numSteps: 14625,
+      minutesActive: 268,
+      flightsOfStairs: 46 }]);
+  });
+
 });

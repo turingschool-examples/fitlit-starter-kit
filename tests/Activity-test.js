@@ -29,7 +29,7 @@ describe('Activity', function() {
       "address": "30086 Kathryn Port, Ciceroland NE 07273",
       "email": "Dimitri.Bechtelar11@gmail.com",
       "strideLength": 4.5,
-      "dailyStepGoal": 5000,
+      "dailyStepGoal": 2000,
       "friends": [
         9,
         18,
@@ -45,14 +45,14 @@ describe('Activity', function() {
       "numSteps": 3684,
       "minutesActive": 140,
       "flightsOfStairs": 16
-    });
+    }, userRepository);
     activity2 = new Activity({
       "userID": 2,
       "date": "2019/06/20",
       "numSteps": 2856,
       "minutesActive": 280,
       "flightsOfStairs": 22
-    });
+    }, userRepository);
   });
   it('should be a function', function() {
     expect(Activity).to.be.a('function');
@@ -78,25 +78,24 @@ describe('Activity', function() {
   it('should have a default value of 0 for miles walked', function() {
     expect(activity2.milesWalked).to.equal(0);;
   });
-  it('should have a default value of [] for minutes active record', function() {
-    expect(activity2.minutesActiveRecord).to.deep.equal([]);;
+
+  it('should have a default value of null for reached step goal', function() {
+    expect(activity2.reachedStepGoal).to.equal(null);;
   });
-  it('should have a default value of [] for steps record', function() {
-    expect(activity2.stepsRecord).to.deep.equal([]);;
-  });
-  it('should have a default value of [] for stairs record', function() {
-    expect(activity2.stairsRecord).to.deep.equal([]);;
-  });
-  it('should have a default value of false for reached step goal', function() {
-    expect(activity2.reachedStepGoal).to.equal(false);;
-  });
-  it('should have a default value of [] for accomplishedDays', function() {
-    expect(activity2.accomplishedDays).to.deep.equal([]);;
-  });
-  it('should have a default value of an empty string for top climbing days', function() {
-    expect(activity2.topClimbingDay).to.equal('');;
-  });
+  // it('should have a default value of [] for accomplishedDays', function() {
+  //   expect(activity2.accomplishedDays).to.deep.equal([]);;
+  // });
   it('should have a method that calculate miles walked', function() {
     expect(activity1.calculateMiles(userRepository)).to.equal('3.0');
+  });
+  describe('compareStepGoal', function() {
+    it('should return false if goal isn\'t met', function() {
+      activity1.compareStepGoal(userRepository);
+      expect(activity1.reachedStepGoal).to.equal(false);
+    });
+    it('should return true if goal is met', function() {
+      activity2.compareStepGoal(userRepository);
+      expect(activity2.reachedStepGoal).to.equal(true);
+    });
   });
 });

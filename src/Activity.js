@@ -6,6 +6,7 @@ class Activity {
     this.minutesActive = data.minutesActive;
     this.flightsOfStairs = data.flightsOfStairs;
     this.milesWalked = 0;
+    this.reachedStepGoal = null;
     this.doActivity(userRepository);
   }
   doActivity(userRepo) {
@@ -19,6 +20,12 @@ class Activity {
       return user.id === this.userId;
     });
     return Math.round(this.steps * walkingUser.strideLength / 5280).toFixed(1);
+  }
+  compareStepGoal(userRepository) {
+    let userStepGoal = userRepository.users.find(user => {
+      return user.id === this.userId;
+    }).dailyStepGoal;
+    this.reachedStepGoal = this.steps >= userStepGoal;
   }
   findAccomplishedDays() {
 

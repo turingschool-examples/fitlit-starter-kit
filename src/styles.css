@@ -125,3 +125,7 @@ div {
 #ui-datepicker-div {
     display: none;
 }
+
+.div_hydro_week {
+    margin-left: -15px;
+}

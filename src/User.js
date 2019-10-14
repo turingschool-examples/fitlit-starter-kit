@@ -121,6 +121,9 @@
       return sum;
     }, 0) / 7).toFixed(1);
   }
+  findTrendingDays() {
+    
+  }
 }
 
 if (typeof module !== 'undefined') {

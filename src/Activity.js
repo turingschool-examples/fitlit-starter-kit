@@ -69,13 +69,17 @@ class Activity {
   }
 
   findStairRecord(activeData) {
-    const stairRecord = activeData.filter(data => data.userID === this.userID).reduce((highest, data) {
+    const stairRecord = activeData.filter(data => data.userID === this.userID).reduce((highest, data) => {
       if (data.flightsOfStairs > highest) {
         highest = data.flightsOfStairs;
       }
       return highest;
     }, 0);
   }
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = Activity;
 }
 
 // Activity: Contains information about activity

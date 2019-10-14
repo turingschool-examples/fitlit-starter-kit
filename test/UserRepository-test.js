@@ -2,15 +2,37 @@ const chai = require("chai");
 const expect = chai.expect;
 
 const UserRepository = require('../src/UserRepository');
-const usersData = require('../data/users');
-const hydrationData = require('../data/hydration');
 const sleepData = require('../data/sleep');
-const activityData = require('../data/activity');
 const data = {
-  users: users,
-  hydration: hydration,
-  sleep: sleep,
-  activity: activity
+  users: [{
+    "id": 1,
+    "name": "Luisa Hane",
+    "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+    "email": "Diana.Hayes1@hotmail.com",
+    "strideLength": 4.3,
+    "dailyStepGoal": 10000,
+    "friends": [
+      16,
+      4,
+      8
+    ]
+  }, {
+      "id": 2,
+      "name": "Jarvis Considine",
+      "address": "30086 Kathryn Port, Ciceroland NE 07273",
+      "email": "Dimitri.Bechtelar11@gmail.com",
+      "strideLength": 4.5,
+      "dailyStepGoal": 5000,
+      "friends": [
+        9,
+        18,
+        24,
+        19
+      ]
+    }],
+  hydration: [],
+  sleep: sleepData,
+  activity: []
 };
 
 let userRepository, user;
@@ -63,71 +85,14 @@ describe("UserRepository", () => {
     expect(userRepository.currentUserId).to.equal(2);
   });
 
-  it('should keep current user information', function () {
-    expect(userRepository.currentUserInfo).to.deep.equal({
-      bio: {},
-      hydration: [],
-      sleep: [],
-      activity: []
-    });
-  });
-
   it('should find user when name given', function () {
     const name = "Jarvis Considine";
     userRepository.findUserByName(name);
     expect(userRepository.currentUserId).to.equal(2);
   });
 
-  it('should update current user bio when user is found', function () {
-    const name = "Jarvis Considine";
-    userRepository.findUserByName(name);
-    expect(userRepository.currentUserInfo.bio).to.deep.equal({
-      "id": 2,
-      "name": "Jarvis Considine",
-      "address": "30086 Kathryn Port, Ciceroland NE 07273",
-      "email": "Dimitri.Bechtelar11@gmail.com",
-      "strideLength": 4.5,
-      "dailyStepGoal": 5000,
-      "friends": [
-        9,
-        18,
-        24,
-        19
-      ]
-    });
-  });
-
-  describe("updateCurrentUserInfo method", () => {
-    it('should update user hydration information', function () {
-      userRepository.updateCurrentUserInfo('hydration');
-      expect(userRepository.currentUserInfo.hydration[0]).to.deep.equal({
-        "date": "2019/06/15",
-        "numOunces": 75
-      });
-    });
-
-    it('should update user sleep information', function () {
-      userRepository.updateCurrentUserInfo('sleep');
-      expect(userRepository.currentUserInfo.sleep[0]).to.deep.equal({
-        "date": "2019/06/15",
-        "hoursSlept": 7,
-        "sleepQuality": 4.7
-      });
-    });
-
-    it('should update user activity information', function () {
-      userRepository.updateCurrentUserInfo('activity');
-      expect(userRepository.currentUserInfo.activity[0]).to.deep.equal({
-        "date": "2019/06/15",
-        "numSteps": 4294,
-        "minutesActive": 138,
-        "flightsOfStairs": 10
-      });
-    });
-  });
-
   it('should calculate average step goal', function () {
-    expect(userRepository.calculateAverageStepGoal()).to.equal(6700);
+    expect(userRepository.calculateAverageStepGoal()).to.equal(7500);
   });
 
   it('should calculate average all user\'s sleep quality', function () {

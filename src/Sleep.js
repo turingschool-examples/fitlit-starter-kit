@@ -43,19 +43,21 @@ class Sleep {
 
   getWeekFullInfo(userRepo) {
     const week = userRepo.getWeekDates(this.date);
-    return userRepo.sleepUsersData.filter((data) => data.userID === this.userID && week.includes(data.date))
+    console.log(week);
+    return userRepo.sleepUsersData.filter((data) => data.userID === this.userID && week.includes(data.date));
   }
 
   getWeeklyInfo(userRepo, info) {
     switch (info) {
       case 'hours':
-        return this.getWeekFullInfo(userRepo, info).map(data => data.hoursSlept);
+        return this.getWeekFullInfo(userRepo).map(data => data.hoursSlept);
       case 'quality':
-        return this.getWeekFullInfo(userRepo, info).map(data => data.sleepQuality);
+        return this.getWeekFullInfo(userRepo).map(data => data.sleepQuality);
     }
   }
 
   calculateDayAverageInfo(userRepo, info) {
+    console.log();
     switch (info) {
       case 'hours':
         return Math.round(this.getWeekFullInfo(userRepo, info).reduce((sum, data) => {

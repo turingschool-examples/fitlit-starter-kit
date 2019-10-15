@@ -79,9 +79,18 @@ class UserRepository {
     return sleepingBeauties;
   }
 
-  findAverageActivityValue(dataset, info) {
-    const average = dataset.reduce((avr, data) => {
-      avr += data[info] / dataset.length;
+  findAverageActivityValue(info) {
+    const average = this.activityUsersData.reduce((avr, data, i, a) => {
+      avr += data[info] / a.length;
+      return avr;
+    }, 0);
+    return parseInt(average);
+  }
+
+  findAverageActivityValueForToday(info) {
+    const dataset = this.activityUsersData.filter((data => data.date === this.day));
+    const average = dataset.reduce((avr, data, i, a) => {
+      avr += data[info] / a.length;
       return avr;
     }, 0);
     return parseInt(average);

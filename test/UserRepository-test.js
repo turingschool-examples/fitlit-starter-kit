@@ -129,21 +129,20 @@ describe("UserRepository", () => {
   });
 
   it('should calculate average stairs climbed for all users', function () {
-    expect(userRepository.findAverageActivityValue(userRepository.activityUsersData, 'flightsOfStairs')).to.equal(24);
+    expect(userRepository.findAverageActivityValue('flightsOfStairs')).to.equal(24);
   });
 
   it('should calculate average steps taken for all users', function () {
-    expect(userRepository.findAverageActivityValue(userRepository.activityUsersData, 'numSteps')).to.equal(8459);
+    expect(userRepository.findAverageActivityValue('numSteps')).to.equal(8459);
   });
 
   it('should calculate average active minutes for all users', function () {
-    expect(userRepository.findAverageActivityValue(userRepository.activityUsersData, 'minutesActive')).to.equal(161);
+    expect(userRepository.findAverageActivityValue('minutesActive')).to.equal(161);
   });
 
   it('should find user who have the highest steps number', function () {
     userRepository.day = '2019/09/22';
     const forrest = userRepository.findForestGumpOfDay(userRepository.activityUsersData);
-    console.log(forrest);
     expect(forrest).to.equal(43);
   });
 });

@@ -462,10 +462,15 @@ h4 {
 .compare-block {
   display: none;
 }
-.compare-block > h3 {
+.compare-block > h2 {
   border-top: 1px solid #21402E;
-  margin: 0 50px;
-  padding-top: 15px;
+  margin: auto;
+  padding: 15px 20px 0;
+  width: fit-content;
+}
+.compare-block .tiny {
+  font-size: 40px;
+  padding: 10px 0 0;
 }
 
 .dropdown {

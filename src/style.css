@@ -1,7 +1,7 @@
 body {
   display: grid;
   font-size: 26px;
-  height: 120vh;
+  height: 100vh;
   grid-template-areas:
   "nav main main"
   "nav main main"
@@ -12,55 +12,152 @@ body {
 }
 
 nav {
-  background-color: red;
+  background-color: #404040;
+  color: white;
   grid-area: nav;
 }
 
-.btn-container {
+.nav-text {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  }
+  justify-content: center;
+  font-size: 20px;
+  height: 50%;
+}
+
+h1 {
+  color: #708062;
+  font-size: 30px;
+}
+
+.profile-data {
+  color: #BFBFBF;
+  margin-left: -30px;
+}
+
+.profile-text {
+  color: #708062;
+  margin-bottom: -10px;
+}
+
+.average-stepGoal {
+  color: #BFBFBF;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.btn-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 20px;
+  height: 40%;
+}
+
+.activity-btn {
+  background-color: #BFBFBF;
+  color: #404040;
+}
+
+.sleep-btn {
+  background-color: #BFBFBF;
+  color: #404040;
+}
+
+.hydration-btn {
+  color: #404040;
+}
+
+button {
+  background-color: #BFBFBF;
+  font-size: 25px;
+  height: 35px;
+  width: 80%;
+}
 
 main {
-  background-color: blue;
+  align-items: center;
+  background-color: white;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url("../images/Healthy_Lifestyle.png");
+  background-blend-mode: saturation;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
   grid-area: main;
 }
 
+/* .profile-container {
+  color: white;
+  font-size: 20px;
+  height: 200px;
+} */
+
+header {
+  align-items: center;
+  background-color: #767A73;
+  border: 2px solid #708062;
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  height: 40px;
+}
+
+ul {
+  list-style: none;
+}
+
+section ul {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .hydration-container {
-  background-color: yellow;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url("../images/hydration_img.jpg");
+  background-blend-mode: /* OPTIMIZE:  */;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: white;
   display: none;
+  height: 70%;
+  width: 80%;
+}
+
+.hydration-text {
+  margin: 0;
 }
 
 .sleep-container {
-  background-color: orange;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url("../images/sleep_img.png");
+  background-blend-mode: /* OPTIMIZE:  */;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: white;
   display: none;
+  height: 70%;
+  width: 80%;
+}
 
+.sleep-text {
+  margin: 0;
 }
 
 .activity-container {
-  background-color: pink;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url("../images/active_img.jpg");
+  background-blend-mode: /* OPTIMIZE:  */;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: white;
   display: none;
+  height: 70%;
+  width: 80%;
 }
 
-
-
-
-
-
-
-
-
-
-
-/* #myWeekChart {
-  background-color: yellow;
-  font-size: 100px !important;
-  height: 500px !important;
-  width: auto !important;
+.activity-text {
+  margin: 0;
 }
-
- #myDayChart {
-  background-color: orange;
-  height: 500px !important;
-  width: auto !important;
-} */

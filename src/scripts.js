@@ -83,6 +83,8 @@ let sleepInfoCard = document.querySelector('#sleep-info-card');
 let sleepFriendsCard = document.querySelector('#sleep-friends-card');
 let sleepCalendarCard = document.querySelector('#sleep-calendar-card');
 let mainPage = document.querySelector('main');
+let stepsTrendingButton = document.querySelector('.steps-trending-button');
+let stairsTrendingButton = document.querySelector('.stairs-trending-button');
 
 // EVENT LISTENERS
 mainPage.addEventListener('click', showInfo);
@@ -239,4 +241,13 @@ stairsCalendarFlightsAverageWeekly.innerText = user.calculateAverageFlightsThisW
 
 stairsCalendarStairsAverageWeekly.innerText = (user.calculateAverageFlightsThisWeek(todayDate) * 12).toFixed(0);
 
-trendingStepsPhraseContainer.innerHTML = `<p class='trend-line'>${user.trendingDays[0]}</p>`;
+stepsTrendingButton.addEventListener('click', function() {
+  user.findTrendingStepDays();
+  trendingStepsPhraseContainer.innerHTML = `<p class='trend-line'>${user.trendingStepDays[0]}</p>`;
+});
+
+stairsTrendingButton.addEventListener('click', function() {
+  user.findTrendingStairsDays();
+  console.log(user.trendingStairsDays);
+  trendingStairsPhraseContainer.innerHTML = `<p class='trend-line'>${user.trendingStairsDays[0]}</p>`;
+});

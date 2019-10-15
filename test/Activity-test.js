@@ -4,7 +4,7 @@ const activityTestData = require('../subData.js/activitySubData');
 const userData = require('../subData.js/usersSubData');
 
 
-describe.only('Activity', () => {
+describe('Activity', () => {
   let activity;
 
   beforeEach(() => {

@@ -86,6 +86,12 @@ class Sleep {
    return matchingDate.filter(person => person.hoursSlept === mostHours);
   }
 
+  findBestSleepQualityNight(id) {
+    let num = Math.max(...this.findUser(id).map(day => day.sleepQuality))
+    console.log(num)
+    return this.findUser(id).filter(day => day.sleepQuality === num)
+  }
+
 }
 
 if (typeof module !== "undefined") {

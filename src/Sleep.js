@@ -37,121 +37,47 @@ class Sleep {
     return totalSleepQuality/sleepData.length
   }
   determineBestSleepers(date, userRepo) {
-    let chosenWeekData = this.sleepData.filter(function(dataItem) {
-      return (new Date(date)).setDate((new Date(date)).getDate() - 7) <= new Date(dataItem.date) && new Date(dataItem.date) <= new Date(date)
-    })
+    let timeline = userRepo.chooseWeekDataForAllUsers(this.sleepData, date);
+    let userSleepObject = userRepo.isolateUsernameAndRelevantData(this.sleepData, date, 'sleepQuality', timeline);
 
-    let userSleepObject = chosenWeekData.reduce(function(objectSoFar, dataSet) {
-      if (!objectSoFar[dataSet.userID]) {
-        objectSoFar[dataSet.userID] = [dataSet.sleepQuality]
-      } else {
-        objectSoFar[dataSet.userID].push(dataSet.sleepQuality)
-      }
-      return objectSoFar;
-    }, {})
-
-    let goodSleepers = Object.keys(userSleepObject).filter(function(key) {
+    return Object.keys(userSleepObject).filter(function(key) {
       return (userSleepObject[key].reduce(function(sumSoFar, sleepQualityValue){
         sumSoFar += sleepQualityValue
         return sumSoFar;
       }, 0)/userSleepObject[key].length) > 3
-    })
-
-    return goodSleepers.map(function(sleeper){
+    }).map(function(sleeper){
       return userRepo.getDataFromID(parseInt(sleeper)).name;
     })
   }
-  determineSleepWinner (date, userRepo) {
-    let chosenWeekData = this.sleepData.filter(function(dataItem) {
-      return (new Date(date)).setDate((new Date(date)).getDate() - 7) <= new Date(dataItem.date) && new Date(dataItem.date) <= new Date(date)
+  determineSleepWinnerForWeek(date, userRepo) {
+    let timeline = userRepo.chooseWeekDataForAllUsers(this.sleepData, date);
+    let sleepRankWithData = userRepo.combineRankedUserIDsAndAveragedData(this.sleepData, date, 'sleepQuality', timeline);
+
+    return this.getWinnerNamesFromList(sleepRankWithData, userRepo);
+  }
+  determineSleepHoursWinnerForDay(date, userRepo) {
+    let timeline = userRepo.chooseDayDataForAllUsers(this.sleepData, date);
+    let sleepRankWithData = userRepo.combineRankedUserIDsAndAveragedData(this.sleepData, date, 'hoursSlept', timeline);
+
+    return this.getWinnerNamesFromList(sleepRankWithData, userRepo);
+  }
+  getWinnerNamesFromList(sortedArray, userRepo) {
+    let bestSleepers = sortedArray.filter(function(element){
+      return element[Object.keys(element)] === Object.values(sortedArray[0])[0]
     });
 
-    let userSleepObject = chosenWeekData.reduce(function(objectSoFar, dataSet) {
-      if (!objectSoFar[dataSet.userID]) {
-        objectSoFar[dataSet.userID] = [dataSet.sleepQuality]
-      } else {
-        objectSoFar[dataSet.userID].push(dataSet.sleepQuality)
-      }
-      return objectSoFar;
-    }, {});
-
-    let sleepRank = Object.keys(userSleepObject).sort(function(b, a) {
-      return (userSleepObject[a].reduce(function(sumSoFar, sleepQualityValue){
-        sumSoFar += sleepQualityValue
-        return sumSoFar;
-      }, 0)/userSleepObject[a].length) - (userSleepObject[b].reduce(function(sumSoFar, sleepQualityValue){
-        sumSoFar += sleepQualityValue
-        return sumSoFar;
-      }, 0)/userSleepObject[b].length)
-    });
-
-    let sleepRankWithData = sleepRank.map(function(sleeper){
-      sleeper = {[sleeper]: userSleepObject[sleeper].reduce(function(sumSoFar, sleepQualityValue){
-        sumSoFar += sleepQualityValue
-        return sumSoFar;
-      }, 0)/userSleepObject[sleeper].length}
-      return sleeper;
-    });
-
-    var bestSleepers = sleepRankWithData.filter(function(element){
-      return element[Object.keys(element)] === Object.values(sleepRankWithData[0])[0]
-    });
-
-    var bestSleeperIds = bestSleepers.map(function(bestSleeper) {
+    let bestSleeperIds = bestSleepers.map(function(bestSleeper) {
       return (Object.keys(bestSleeper));
-    })
+    });
 
     return bestSleeperIds.map(function(sleepNumber) {
       return userRepo.getDataFromID(parseInt(sleepNumber)).name;
     });
   }
-  determineSleepHoursWinner(date, userRepo) {
-    let chosenDayData = this.sleepData.filter(function(dataItem) {
-      return dataItem.date === date
-    });
-
-    let userSleepObject = chosenDayData.reduce(function(objectSoFar, dataSet) {
-      if (!objectSoFar[dataSet.userID]) {
-        objectSoFar[dataSet.userID] = [dataSet.hoursSlept]
-      } else {
-        objectSoFar[dataSet.userID].push(dataSet.hoursSlept)
-      }
-      return objectSoFar;
-    }, {});
-
-    let sleepRank = Object.keys(userSleepObject).sort(function(b, a) {
-      return (userSleepObject[a].reduce(function(sumSoFar, sleepQualityValue){
-        sumSoFar += sleepQualityValue
-        return sumSoFar;
-      }, 0)/userSleepObject[a].length) - (userSleepObject[b].reduce(function(sumSoFar, sleepQualityValue){
-        sumSoFar += sleepQualityValue
-        return sumSoFar;
-      }, 0)/userSleepObject[b].length)
-    });
-
-    let sleepRankWithData = sleepRank.map(function(sleeper){
-      sleeper = {[sleeper]: userSleepObject[sleeper].reduce(function(sumSoFar, sleepQualityValue){
-        sumSoFar += sleepQualityValue
-        return sumSoFar;
-      }, 0)/userSleepObject[sleeper].length}
-      return sleeper;
-    });
-
-    var bestSleepers = sleepRankWithData.filter(function(element){
-      return element[Object.keys(element)] === Object.values(sleepRankWithData[0])[0]
-    });
-
-    var bestSleeperIds = bestSleepers.map(function(bestSleeper) {
-      return (Object.keys(bestSleeper));
-    })
-
-    return bestSleeperIds.map(function(sleepNumber) {
-      return userRepo.getDataFromID(parseInt(sleepNumber)).name;
-    });
-  }
-
-
 }
+
+
+
 
 if (typeof module !== 'undefined') {
   module.exports = Sleep;

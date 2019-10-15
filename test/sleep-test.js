@@ -329,7 +329,7 @@ describe('Sleep', function() {
   })
   it ('should return person with best quality sleep for the week', function() {
 
-    expect(sleep.determineSleepWinner("2019/06/21", userRepo)).to.eql(["Bugs Bunny"]);
+    expect(sleep.determineSleepWinnerForWeek("2019/06/21", userRepo)).to.eql(["Bugs Bunny"]);
   })
   it ('should return all qualifying users if best quality sleep is a tie', function() {
     sleepData = sleepData.push({
@@ -350,12 +350,12 @@ describe('Sleep', function() {
     users = [user1, user2, user3, user4, user5, user6];
     userRepo = new UserRepo(users);
 
-    expect(sleep.determineSleepWinner("2019/06/21", userRepo)).to.eql(["Bugs Bunny", "Richmond"]);
+    expect(sleep.determineSleepWinnerForWeek("2019/06/21", userRepo)).to.eql(["Bugs Bunny", "Richmond"]);
   })
 
   it ('should return person with longest sleep for the day', function() {
 
-    expect(sleep.determineSleepHoursWinner('2019/06/21', userRepo)).to.eql(["Bugs Bunny"]);
+    expect(sleep.determineSleepHoursWinnerForDay('2019/06/21', userRepo)).to.eql(["Bugs Bunny"]);
   })
   it ('should return all qualifying users if longest sleep is a tie', function() {
     sleepData = sleepData.push({
@@ -376,6 +376,7 @@ describe('Sleep', function() {
     users = [user1, user2, user3, user4, user5, user6];
     userRepo = new UserRepo(users);
 
-    expect(sleep.determineSleepHoursWinner('2019/06/21', userRepo)).to.eql(["Bugs Bunny", "Richmond"]);
+    expect(sleep.determineSleepHoursWinnerForDay('2019/06/21', userRepo)).to.eql(["Bugs Bunny", "Richmond"]);
   })
+  //make this test fail when user is NOT best in week
 });

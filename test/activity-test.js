@@ -115,7 +115,7 @@ beforeEach(() => {
 
     describe("changeDate method", () => {
       beforeEach(()=>{
-        activity.changeDate(userRepo, user, '2019/07/12');
+        activity.changeDate(userRepo, '2019/07/12');
       });
 
       it("should show number of steps for chosen day", () => {
@@ -201,7 +201,7 @@ beforeEach(() => {
 
       describe("getAverageForSevenDays method for any week", () =>{
         beforeEach(()=>{
-          activity.changeDate(userRepo, user, '2019/07/12');
+          activity.changeDate(userRepo, '2019/07/12');
           activity.getAverageForSevenDays(userRepo);
         });
 
@@ -225,13 +225,13 @@ beforeEach(() => {
     });
 
     it("should check compliting of steps goal", () => {
-      activity.changeDate(userRepo, user, '2019/06/17');
+      activity.changeDate(userRepo, '2019/06/17');
       activity.checkStepGoal(user);
       expect(activity.goalComplete).to.equal(true);
     });
 
     it("should find all days with complited steps goal", () => {
-      activity.changeDate(userRepo, user, '2019/06/17');
+      activity.changeDate(userRepo, '2019/06/17');
       const info =  activity.findGoalCompletedDays(userRepo, user);
       expect(info).to.deep.equal(['2019/06/17']);
     });

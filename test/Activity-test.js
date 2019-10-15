@@ -32,7 +32,12 @@ describe('Activity', () => {
         activity.findCurrentUserActivityData();
         expect(activity.currentUserActivityData.length).to.equal(7);
     });
-    
+
+    it('should find number of steps for a user on a given day', () => {
+        activity.findCurrentUserActivityData();
+        expect(activity.returnNumberOfStepsForUserOnSpecificDate("2019/06/15")).to.equal(4294);
+    });
+
     it('should find for a specific day the return for miles a user has walked', () => {
         activity.findCurrentUserActivityData();
         expect(activity.calculateMilesUserWalkedOnSpecificDate("2019/06/15")).to.equal(3.66);

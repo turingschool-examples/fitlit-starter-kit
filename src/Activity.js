@@ -14,6 +14,15 @@ class Activity{
         userInfo.userID === this.userID);
         return this.currentUserActivityData;
     }
+
+    returnNumberOfStepsForUserOnSpecificDate(date) {
+      let stepTotalForDay = this.currentUserActivityData.find(userBlock => {
+        return userBlock.date === "2019/06/15"
+      })
+
+      return stepTotalForDay.numSteps
+    }
+
     calculateMilesUserWalkedOnSpecificDate(date) {
         console.log(this.currentActivityData)
         console.log(this.currentUserActivityData)
@@ -30,16 +39,16 @@ class Activity{
         let mileStrideLength = 5280 / userStrideLength;
         let milesWalked = numSteps / mileStrideLength;
         return parseFloat(milesWalked.toFixed(2));
-        
+
     }
-    
+
     returnMinutesActiveByUserOnSpecificDate(date) {
         let userDate = this.currentUserActivityData.find(user => {
             return user.date === date;
         })
         return userDate.minutesActive;
     }
-    
+
     calculateAvgMinutesActiveForUserOnSpecificWeek() {
         let userSevenDaysActive = this.currentUserActivityData.slice(-7)
         let minutesActiveSevenDayAverage = userSevenDaysActive.reduce((acc, currentElement) => {
@@ -48,7 +57,7 @@ class Activity{
         }, 0)/userSevenDaysActive.length
         return Math.round(minutesActiveSevenDayAverage);
     }
-    
+
     hasUserStepGoalBeenReachedOnSpecificDate(date) {
         let currentUserByDate = this.currentUserActivityData.find(user => {
             return user.date === date
@@ -62,7 +71,7 @@ class Activity{
             return false
         }
     }
-    
+
     filterAllDatesUserCompletedStepGoal() {
         let allDatesOverStepGoal = []
         let userProfile = this.allUsersData.find(user => {
@@ -73,17 +82,17 @@ class Activity{
             if (userProfile.id === user.userID && user.numSteps > userStepGoal) {
                 allDatesOverStepGoal.push(user.date)
             }
-        })  
+        })
         return allDatesOverStepGoal
     }
-    
+
     findMostStairsClimbedForUserAllTime() {
         let stairsClimbed = this.currentUserActivityData.map(user => user.flightsOfStairs)
-        
+
         let mostStairsCLimbed = Math.max(...stairsClimbed)
         return mostStairsCLimbed
     }
-    
+
     calculateAvgStairsClimbedOnSpecificDateAllUsers(date) {
         let alllUsersOnDate = this.currentActivityData.filter(user => {
             return user.date === date;
@@ -95,7 +104,7 @@ class Activity{
         let average = avgStairsClimbedAllUsers / alllUsersOnDate.length;
         return parseFloat(average.toFixed(1))
     }
-    
+
     calculateAvgStepsTakenOnSpecificDateAllUsers(date) {
         let alllUsersOnDate = this.currentActivityData.filter(user => {
             return user.date === date;
@@ -108,7 +117,7 @@ class Activity{
         let average = avgStepsTakenAllUsers / alllUsersOnDate.length;
         return parseFloat(average.toFixed(1))
     }
-    
+
     calculateAvgMinutesActiveOnSpecificDateAllUsers(date) {
         let alllUsersOnDate = this.currentActivityData.filter(user => {
             return user.date === date;
@@ -121,15 +130,15 @@ class Activity{
         let average = avgMinutesActiveAllUsers / alllUsersOnDate.length;
         return parseFloat(average.toFixed(0))
     }
-    
+
     findMostActiveDateForUser() {
         let sortedUserMinutes = this.currentActivityData.sort((a, b) => {
             return b.minutesActive - a.minutesActive
         })
         let mostActiveDate = sortedUserMinutes.shift()
         return mostActiveDate.date
-    } 
-    
+    }
+
 }
 
 if (typeof module !== 'undefined') {

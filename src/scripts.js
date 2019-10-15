@@ -1,6 +1,6 @@
 $( document ).ready( () => {
 
-  
+
 $('.main__user').html(`${userDataClass.name} <br>
     ${userDataClass.email} <br>
     Friends: <a href='#' >${userDataClass.friends}</a>`);
@@ -14,9 +14,18 @@ $('.main__activity').html(`<div><p>Steps: ${activityData[randomFitLitUser].numSt
   Mins Active: ${activityData[randomFitLitUser].minutesActive} <br>
   Flights Stairs: ${activityData[randomFitLitUser].flightsOfStairs} </p></div>`);
 
+  $('.friend-1').html(`<div>${intFriend1.name} <br>
+    <p>Stride Length: ${intFriend1.strideLength}</p></div>`);
+
+  $('.friend-2').html(`<div>${intFriend2.name} <br>
+    <p>Stride Length: ${intFriend2.strideLength}</p></div>`);
+
+  $('.friend-3').html(`<div>${intFriend3.name} <br>
+    <p>Strinde Length: ${intFriend3.strideLength}</p></div>`);
+
+
   // console.log(randomFitLitUser)
 
-// $('.friend-1').html(`${}`)
 
 }); // end jquery
 

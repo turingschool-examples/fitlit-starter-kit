@@ -1,12 +1,13 @@
 class Hydration {
   constructor(hydrationData) {
     this.hydrationData = hydrationData;
+    this.numOunces = hydrationData.numOunces
   }
 
   findDailyHydrationAverage(id) {
   	let findUserData = this.hydrationData.filter(element => element.userID === id);
   	let sum =  findUserData.reduce(function (accumulator, currentValue) {
-  		accumulator += currentValue.numOunces; 
+  		accumulator += currentValue.numOunces;
     return accumulator;
 }, 0)
   	return Math.round(sum / findUserData.length);
@@ -34,7 +35,7 @@ class Hydration {
 
 }
 
-module.exports = Hydration;
+// module.exports = Hydration;
 
 
 // npm test test/hydration-test.js

@@ -19,7 +19,7 @@ findFriendById() {
 
 }
 
-module.exports = User;
+// module.exports = User;
 
 
 //find friend by id

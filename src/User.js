@@ -131,7 +131,7 @@
       if (this.activityRecord[i + 1] && this.activityRecord[i].steps > this.activityRecord[i + 1].steps) {
         positiveDays.unshift(this.activityRecord[i].date);
       } else if (positiveDays.length > 2) {
-        this.trendingStepDays.push(`You had a ${positiveDays.length} day streak from ${positiveDays[0]} - ${positiveDays[positiveDays.length - 1]}!`);
+        this.trendingStepDays.push(`Your most recent positive step streak was ${positiveDays[0]} - ${positiveDays[positiveDays.length - 1]}!`);
         positiveDays = [];
       }
     }
@@ -142,7 +142,7 @@
       if (this.activityRecord[i + 1] && this.activityRecord[i].flightsOfStairs > this.activityRecord[i + 1].flightsOfStairs) {
         positiveDays.unshift(this.activityRecord[i].date);
       } else if (positiveDays.length > 2) {
-        this.trendingStairsDays.push(`You had a ${positiveDays.length} day streak from ${positiveDays[0]} - ${positiveDays[positiveDays.length - 1]}!`);
+        this.trendingStairsDays.push(`Your most  positive climbing streak was ${positiveDays[0]} - ${positiveDays[positiveDays.length - 1]}!`);
         positiveDays = [];
       }
     }

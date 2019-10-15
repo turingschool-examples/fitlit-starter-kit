@@ -1,5 +1,3 @@
-// const userData = require('../subData.js/usersSubData');
-// const user = require('./User');
 
 class  UserRepo {
   constructor(userData) {

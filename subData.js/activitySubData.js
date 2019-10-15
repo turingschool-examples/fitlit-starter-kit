@@ -377,5 +377,8 @@ const activityTestData = [
     "minutesActive": 123,
     "flightsOfStairs": 2
   }
-
 ]
+
+if (typeof module !== 'undefined') {
+  module.exports = activityTestData;
+}

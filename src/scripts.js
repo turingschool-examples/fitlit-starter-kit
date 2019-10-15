@@ -90,7 +90,7 @@ function addFriendsTotalStepsByWeek() {
     let friendsActivity = instantiateFriendsActivity();
     $("#aside-step-challenge").after(`
       <div class="step-challenge-background hidden" id="step-challenge-background">
-        <section class="step-challenge-section section-style" id="friend-weekly-steps-section">
+        <section class="section-style step-challenge-section" id="friend-weekly-steps-section">
         </section
       </div>`)
     friendsActivity.forEach((friend, index) => {
@@ -296,8 +296,8 @@ function displayUserPage() {
         <section class="aside-style" id="aside-user-step-comparison">
         </section>
         <section class="aside-style">
-          <div class="aside-trend-div" id="aside-step-challenge">Trend 1</div>
-          <div class="aside-trend-div">Trend 2</div>
+          <button class="aside-trend-button" id="aside-step-challenge">Step Challenge</button>
+          <button class="aside-trend-button">Step Trend</button>
         </section>
       </div>
     </aside>

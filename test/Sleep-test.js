@@ -2,7 +2,7 @@ const expect = require('chai').expect;
 const Sleep = require('../src/Sleep');
 const sleepTestData = require('../subData.js/sleepSubData')
 
-describe.only('Sleep', () => {
+describe('Sleep', () => {
   let sleep;
 
   beforeEach(() => {
@@ -98,10 +98,4 @@ describe.only('Sleep', () => {
       "sleepQuality": 1
     }]);
   })
-
-
-
-
-
-
 })

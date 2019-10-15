@@ -5,7 +5,7 @@ $(document).ready(() => {
     userRepository.returnCurrentUser(randomId)
     const currentPerson = userRepository.currentUser
     console.log(currentPerson)
-    const user = new User(currentPerson);   
+    const user = new User(currentPerson);
     const firstName = currentPerson.name.split(' ');
     const hydration = new Hydration(hydrationData, currentPerson.id);
     const sleep = new Sleep(sleepData, currentPerson.id, userData)
@@ -18,8 +18,8 @@ $(document).ready(() => {
     console.log(hydration.calculateAmtDrankByUserSpecificDate(currentDate))
     // console.log(sleep.returnHoursSleptByUserOnSpecificDate(currentDate)
     // console.log(calculateMilesUserWalkedOnSpecificDate(currentDate))
-    
-    
+
+
 
 
     $('.date').text(currentDate);
@@ -28,38 +28,51 @@ $(document).ready(() => {
     $('.profile-address').text(currentPerson.address);
     $('.profile-email').text(currentPerson.email);
     $('.average-stepGoal').text(`Your Daily Step Goal was ${currentPerson.dailyStepGoal}, while everyone else was at ${userRepository.calculateAvgStepGoalAllUsers()}`);
-    $('.sleep1').text(`Your was hours slept each day over past week was${sleep.calculateHoursSleptEachDayByUserOverSpecificWeek()}`);
-    $('.hydration1').text(`Your water intake today was ${hydration.calculateAmtDrankByUserSpecificDate(currentDate)} oz of water`);
-    $('.hydration2').text(`Your water intake over the last week was ${hydration.returnDrinkAmtEachDayOverWeekByUser()} oz of water`);
-    $('.sleep2').text(`Your hours slept today ${sleep.returnHoursSleptByUserOnSpecificDate(currentDate)}`);
-    $('.sleep3').text(`Your sleep quality today ${sleep.returnSleepQualityByUserOnSpecificDate(currentDate)}`);
-    $('.sleep4').text(`Your sleep quality over the last week was ${sleep.calculateEachDaysSleepQualityForUserOverSpecificWeek()}`);
-    $('.sleep5').text(`Your all time average sleep quality was ${sleep.calculateAvgSleepQualityPerDayByUser()}`);
-    $('.sleep6').text(`Your all time average of hours slept has been ${sleep.calculateAvgHoursSleptPerDayByUser()}`);
-    $('.activity1').text(`Your distance traveled in miles based on your stepcount for the latest day was ${activity.calculateMilesUserWalkedOnSpecificDate(currentDate)}`);
+    $('.hydration1').text(`Your water intake for the past day: ${hydration.calculateAmtDrankByUserSpecificDate(currentDate)} oz`);
+    $('.hydration2').text(`Your water intake over each day of the last week: ${hydration.returnDrinkAmtEachDayOverWeekByUser().join(', ')} (oz)`);
+    $('.sleep1').text(`Time spent sleeping for each night of the past week: ${sleep.calculateHoursSleptEachDayByUserOverSpecificWeek().join(', ')} (hours)`);
+    $('.sleep2').text(`Your hours slept for the past day: ${sleep.returnHoursSleptByUserOnSpecificDate(currentDate)}`);
+    $('.sleep3').text(`Your sleep quality today: ${sleep.returnSleepQualityByUserOnSpecificDate(currentDate)}`);
+    $('.sleep4').text(`Your sleep quality over each night of the last week: ${sleep.calculateEachDaysSleepQualityForUserOverSpecificWeek().join(', ')} (hours)`);
+    $('.sleep5').text(`Your average sleep quality: ${sleep.calculateAvgSleepQualityPerDayByUser()}`);
+    $('.sleep6').text(`Your average hours of sleep per night: ${sleep.calculateAvgHoursSleptPerDayByUser()}`);
+    $('.activity1').text(`Your number of steps traveled for the latest day: ${activity.returnNumberOfStepsForUserOnSpecificDate(currentDate)}`);
+    $('.activity2').text(`The average number of steps completed by other users on the same date: ${activity.calculateAvgStepsTakenOnSpecificDateAllUsers(currentDate)}`);
+    $('.activity3').text(`Your total activity for the latest day: ${activity.returnMinutesActiveByUserOnSpecificDate(currentDate)} minutes`);
+    $('.activity4').text(`The average activity for other users on the same date: ${activity.calculateAvgMinutesActiveOnSpecificDateAllUsers(currentDate)} minutes`);
+    $('.activity5').text(`Your total flights of stairs climbed for the latest day: ${activity.returnNumberOfStairsClimbedForUserOnSpecificDate(currentDate)}`);
+    $('.activity6').text(`The average number of flights of stairs climbed for other users on the same date: ${activity.calculateAvgStairsClimbedOnSpecificDateAllUsers(currentDate)}`);
+    $('.activity7').text(`Your total distance walked based on your stepcount for the latest day: ${activity.calculateMilesUserWalkedOnSpecificDate(currentDate)} miles`);
+    $('.activity8').text(`Over the last week, you have averaged ${activity.calculateAvgMinutesActiveForUserOnSpecificWeek()} minutes of activity, ${activity.calculateAvgFlightsOfStairsClimbedForUserOnSpecificWeek()} flights of stairs, and ${activity.calculateAvgStepsTakenByUserOnSpecificWeek()} steps.`);
 
 
 
 
-    
-
-    
 
 
 
 
 
 
-    $(".sleep-btn").click(function () {
+
+
+
+
+
+
+    $(".sleep-btn").on('click', function() {
+      $(".sleep-container").toggle()
     });
 
-    $(".hydration-btn").click(function () {
+    $(".hydration-btn").on('click', function() {
+      $(".hydration-container").toggle()
     });
 
-    $(".activity-btn").click(function () {
+    $(".activity-btn").on('click', function() {
+      $(".activity-container").toggle()
     });
 
-    $(".profile-btn").click(function () {
+    $(".profile-btn").on('click', function() {
     });
 
 
@@ -70,7 +83,7 @@ $(document).ready(() => {
     //           data: {
     //               labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6","Day 7"],
     //               datasets: [{
-    //                   label: 'Daily Amount Water For Week', 
+    //                   label: 'Daily Amount Water For Week',
     //                   data: hydration.returnDrinkAmtEachDayOverWeekByUser(),
     //                   backgroundColor: [
     //                       'rgba(255, 99, 132, 0.2)',
@@ -102,7 +115,7 @@ $(document).ready(() => {
     //               }
     //           }
     //       });
-    
+
     //     //   $('#myChart').text(hydration.calculateAvgDailyAmtDrankByUserIdAllTime(currentPerson.id))
     // var myChart = new Chart($('#myDayChart'), {
     //     // myChart.height(500);
@@ -141,5 +154,5 @@ $(document).ready(() => {
     //               }
     //           }
     //       });
-        
+
 })

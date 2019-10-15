@@ -1,7 +1,7 @@
 body {
   display: grid;
-  font-size: 20px;
-  height: 145vh;
+  font-size: 26px;
+  height: 120vh;
   grid-template-areas:
   "nav main main"
   "nav main main"
@@ -18,7 +18,7 @@ nav {
 
 .btn-container {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   }
 
 main {
@@ -26,20 +26,40 @@ main {
   grid-area: main;
 }
 
-.sleep-data {
-  background-color: white;
-  height: 200px;
-  width: auto;
-}
-/* 
-#myWeekChart {
+.hydration-container {
   background-color: yellow;
-  /* font-size: 100px !important;
-  height: 500px !important;
-  width: auto !important; */
+  display: none;
 }
 
-#myDayChart {
+.sleep-container {
+  background-color: orange;
+  display: none;
+
+}
+
+.activity-container {
+  background-color: pink;
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* #myWeekChart {
+  background-color: yellow;
+  font-size: 100px !important;
+  height: 500px !important;
+  width: auto !important;
+}
+
+ #myDayChart {
   background-color: orange;
   height: 500px !important;
   width: auto !important;

@@ -32,20 +32,40 @@ describe('Activity', () => {
         activity.findCurrentUserActivityData();
         expect(activity.currentUserActivityData.length).to.equal(7);
     });
-    
+
+    it('should find number of steps for a user on a given day', () => {
+        activity.findCurrentUserActivityData();
+        expect(activity.returnNumberOfStepsForUserOnSpecificDate("2019/06/15")).to.equal(4294);
+    });
+
+    it('should find flights of stairs climbed for a user on a given day', () => {
+        activity.findCurrentUserActivityData();
+        expect(activity.returnNumberOfStairsClimbedForUserOnSpecificDate("2019/06/15")).to.equal(10);
+    });
+
     it('should find for a specific day the return for miles a user has walked', () => {
         activity.findCurrentUserActivityData();
         expect(activity.calculateMilesUserWalkedOnSpecificDate("2019/06/15")).to.equal(3.66);
     });
 
-    it('should find for a specific day the activity level for a certain user', () => {
+    it('should find minutes active for a user on a specific date', () => {
         activity.findCurrentUserActivityData();
         expect(activity.returnMinutesActiveByUserOnSpecificDate("2019/06/15")).to.equal(138);
     });
 
-    it('should find for a specific day the activity level for a certain user', () => {
+    it('should find the avg minutes active for a user over a week', () => {
         activity.findCurrentUserActivityData();
         expect(activity.calculateAvgMinutesActiveForUserOnSpecificWeek()).to.equal(156);
+    });
+
+    it('should find the user\'s avg steps for a week', () => {
+        activity.findCurrentUserActivityData();
+        expect(activity.calculateAvgStepsTakenByUserOnSpecificWeek()).to.equal(7865);
+    });
+
+    it('should find the user\'s stairs climbed over a week', () => {
+        activity.findCurrentUserActivityData();
+        expect(activity.calculateAvgFlightsOfStairsClimbedForUserOnSpecificWeek()).to.equal(23);
     });
 
     it('should find if a user has reached their Daily Step Goal for a given date', () => {

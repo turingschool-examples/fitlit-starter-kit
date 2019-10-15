@@ -9,31 +9,34 @@
   </head>
   <body>
     <nav>
-      <h1>Training Time</h1>
-      <p class = "average-stepGoal"></p>
-      <h1>Welcome <span class = 'welcome-user'></span></h1>
+      <div class="nav-text">
+        <h1>Welcome <span class='welcome-user'></span></h1>
+        <p class="average-stepGoal"></p>
+        <p class="profile-text">Account Information</p>
+        <ul class="profile-data">
+          <li class="profile-name"></li>
+          <li class="profile-address"></li>
+          <li class="profile-email"></li>
+      </div>
       <div class="btn-container">
-        <button class="profile-btn" type="button" name="button">View Profile</button>
         <button class="activity-btn" type="button" name="button">View Activity</button>
         <button class="sleep-btn" type="button" name="button">View Sleep</button>
         <button class="hydration-btn" type="button" name="button">View Hydration</button>
       </div>
     </nav>
     <main>
-        <section class="profile-container">
-            <ul class="profile-data">
-              <li class="profile-name"></li>
-              <li class="profile-address"></li>
-              <li class="profile-email"></li>
-          </section>
       <section class="hydration-container">
+        <header class="hydration-header">
+          <p class="hydration-text">Fluid Intake Tracking</p>
+        </header>
         <ul class="hydration-data">
-            <div class="hydro-box" style="height:50%;width:50%">
-                <canvas id="hydro-container" ></canvas>
           <li class="hydration1"></li>
           <li class="hydration2"></li>
       </section>
       <section class="sleep-container">
+        <header class="sleep-header">
+          <p class="sleep-text">Sleep Tracking</p>
+        </header>
         <ul class="sleep-data">
           <li class="sleep1"></li>
           <li class="sleep2"></li>
@@ -43,6 +46,9 @@
           <li class="sleep6"></li>
       </section>
       <section class="activity-container">
+        <header class="activity-header">
+          <p class="activity-text">Fitness Tracking</p>
+        </header>
         <ul class="activity-data">
           <li class="activity1"></li>
           <li class="activity2"></li>

@@ -9,10 +9,7 @@
   </head>
   <body>
     <nav>
-      <h1>Activity Tracker</h1>
-      <p class = "profile-name"></p>
-      <p class = "profile-address"></p>
-      <p class = "profile-email"></p>
+      <h1>Training Time</h1>
       <p class = "average-stepGoal"></p>
       <h1>Welcome <span class = 'welcome-user'></span></h1>
       <div class="btn-container">
@@ -23,8 +20,16 @@
       </div>
     </nav>
     <main>
+        <section class="profile-container">
+            <ul class="profile-data">
+              <li class="profile-name"></li>
+              <li class="profile-address"></li>
+              <li class="profile-email"></li>
+          </section>
       <section class="hydration-container">
         <ul class="hydration-data">
+            <div class="hydro-box" style="height:50%;width:50%">
+                <canvas id="hydro-container" ></canvas>
           <li class="hydration1"></li>
           <li class="hydration2"></li>
       </section>

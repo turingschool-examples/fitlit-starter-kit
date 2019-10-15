@@ -30,14 +30,12 @@ class UserRepository {
         return activity.date === date;
       });
     })
-    console.log(allUsersStepsCount);
     let sumOfSteps = allUsersStepsCount.reduce((stepsSum, activityCollection) => {
       activityCollection.forEach(activity => {
-        stepsSum += activity.steps
+        stepsSum += activity.numSteps
       })
       return stepsSum;
     }, 0);
-    console.log(sumOfSteps);
     return Math.round(sumOfSteps / allUsersStepsCount.length);
   }
   calculateAverageStairs(date) {

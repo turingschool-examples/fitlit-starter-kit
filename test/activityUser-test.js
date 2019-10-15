@@ -81,15 +81,15 @@ describe('activityUser', () => {
 
   it('should find their all time stair climbing record', () => {
     expect(activityUser.getStairClimbingRecord()).to.equal(49);
-  });  
+  });
 
   it('should find their all time minutes active record', () => {
     expect(activityUser.getMinutesActiveRecord()).to.equal(296);
-  });  
+  });
 
   it('should find number of steps for a given day', () => {
     expect(activityUser.getNumStepsByDay("2019/06/15")).to.equal(3577);
-  });  
+  });
 
   it('should find flights of stairs climbed for a given day', () => {
     expect(activityUser.getFlightsClimbedByDay("2019/06/15")).to.equal(16);
@@ -136,6 +136,10 @@ describe('activityUser', () => {
       numSteps: 14625,
       minutesActive: 268,
       flightsOfStairs: 46 }]);
+  });
+
+  it('should find the total step count for any given week', () => {
+    expect(activityUser.calcTotalStepsByWeek("2019/06/24")).to.equal(79818);
   });
 
 });

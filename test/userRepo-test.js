@@ -29,9 +29,23 @@ describe('UserRepo', () => {
   });
 
   it('should be able to calculate all users average steps', () => {
-    expect(userRepo.calcAvgStepGoal()).to.equal(6400);
+    expect(userRepo.calcAvgStepGoal()).to.equal(6200);
   });
 
-
+  it('should be able to find the user their friends', () => {
+    expect(userRepo.getFriendData(9)).to.deep.equal({
+      "id": 9,
+      "name": "Myron Schmitt",
+      "address": "85251 Martina Fields, West Aletha MD 00163-5315",
+      "email": "Gerard_Langosh22@hotmail.com",
+      "strideLength": 3.8,
+      "dailyStepGoal": 6000,
+      "friends": [
+        16,
+        26,
+        17
+      ]
+    });
+  });
 
 });

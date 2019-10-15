@@ -69,6 +69,72 @@ const usersSampleData = [
       33,
       10
     ]
+  },
+  {
+    "id": 6,
+    "name": "Jerrold Bogisich",
+    "address": "8283 Carroll Harbor, Borerfort CT 69020-3448",
+    "email": "Mercedes_Zboncak53@yahoo.com",
+    "strideLength": 3.7,
+    "dailyStepGoal": 11000,
+    "friends": [
+      11,
+      48,
+      15
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Breanne Fay",
+    "address": "834 Retta Knoll, Stantonland MA 71627-4121",
+    "email": "Dashawn28@gmail.com",
+    "strideLength": 2.9,
+    "dailyStepGoal": 8000,
+    "friends": [
+      12,
+      27,
+      22,
+      30
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Laney Abshire",
+    "address": "86416 Koch Inlet, North Kaciefurt MA 80635",
+    "email": "Janice_Nitzsche2@yahoo.com",
+    "strideLength": 2.8,
+    "dailyStepGoal": 2000,
+    "friends": [
+      11,
+      41,
+      23,
+      49
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Myron Schmitt",
+    "address": "85251 Martina Fields, West Aletha MD 00163-5315",
+    "email": "Gerard_Langosh22@hotmail.com",
+    "strideLength": 3.8,
+    "dailyStepGoal": 6000,
+    "friends": [
+      16,
+      26,
+      17
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Roslyn Bernhard",
+    "address": "22859 Sean Meadow, Lake Dorthyfort MA 89560",
+    "email": "Hillary83@gmail.com",
+    "strideLength": 4.1,
+    "dailyStepGoal": 3000,
+    "friends": [
+      40,
+      33
+    ]
   }];
 
   if (typeof module !== 'undefined') {

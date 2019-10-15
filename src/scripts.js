@@ -184,6 +184,7 @@ $(document).ready(function() {
   });
 
   $('.dropdown div p').on('click', function() {
+    $('.alert').text('');
     $(this).parent().siblings('header').children('p').text($(this).text());
     $(this).parent().siblings('input').val($(this).text());
     $(this).parent().hide();

@@ -244,6 +244,10 @@ class Activity {
             return `Your friend3 was the highest this week!`;
         }     
     }
+
+    increasingStepsFor3OrMoreDays() {
+        return this.currentUserActivityData
+    }
 }
 
 

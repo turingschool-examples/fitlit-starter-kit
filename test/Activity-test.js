@@ -58,6 +58,16 @@ describe('Activity', () => {
         expect(activity.calculateAvgMinutesActiveForUserOnSpecificWeek()).to.equal(156);
     });
 
+    it('should find for a specific day the activity level for a certain user', () => {
+        activity.findCurrentUserActivityData();
+        expect(activity.calculateAvgStepsTakenByUserOnSpecificWeek()).to.equal(7865);
+    });
+
+    it('should find for a specific day the activity level for a certain user', () => {
+        activity.findCurrentUserActivityData();
+        expect(activity.calculateAvgFlightsOfStairsClimbedForUserOnSpecificWeek()).to.equal(23);
+    });
+
     it('should find if a user has reached their Daily Step Goal for a given date', () => {
         activity.findCurrentUserActivityData();
         expect(activity.hasUserStepGoalBeenReachedOnSpecificDate("2019/06/15")).to.equal(false);

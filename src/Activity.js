@@ -66,6 +66,24 @@ class Activity{
         return Math.round(minutesActiveSevenDayAverage);
     }
 
+    calculateAvgStepsTakenByUserOnSpecificWeek() {
+        let userSevenDaysSteps = this.currentUserActivityData.slice(-7)
+        let stepsTakenSevenDayAverage = userSevenDaysSteps.reduce((acc, currentElement) => {
+            acc+=currentElement.numSteps
+            return acc
+        }, 0)/userSevenDaysSteps.length
+        return Math.round(stepsTakenSevenDayAverage);
+    }
+
+    calculateAvgFlightsOfStairsClimbedForUserOnSpecificWeek() {
+        let userSevenDaysStairs = this.currentUserActivityData.slice(-7)
+        let stairsClimbedSevenDayAverage = userSevenDaysStairs.reduce((acc, currentElement) => {
+            acc+=currentElement.flightsOfStairs
+            return acc
+        }, 0)/userSevenDaysStairs.length
+        return Math.round(stairsClimbedSevenDayAverage);
+    }
+
     hasUserStepGoalBeenReachedOnSpecificDate(date) {
         let currentUserByDate = this.currentUserActivityData.find(user => {
             return user.date === date

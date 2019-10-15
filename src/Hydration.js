@@ -1,7 +1,7 @@
 class Hydration {
-  constructor(userRepo) {
+  constructor(userRepo, date = userRepo.day) {
     this.userId = userRepo.currentUserId;
-    this.date = userRepo.day;
+    this.date = date;
     this.numOunces = null;
   }
 

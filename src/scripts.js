@@ -13,11 +13,12 @@ let hydration;
 let activity;
 
 $(document).ready(function() {
-
+  
   $('.login button').on('click', function() {
     const nameGiven = `${$('.first-name').val()} ${$('.last-name').val()}`;
     const currentUser = userRepository.findUserByName(nameGiven);
     user = new User(currentUser);
+    hydration = new Hydration(userRepository);
     $('.login-header, .page-header, .empty-board').fadeToggle(100);
     $('.board').css('display', 'flex');
     fillUserInfo();
@@ -59,7 +60,6 @@ $(document).ready(function() {
   }
 
   function showHydration() {
-    hydration = new Hydration(userRepository);
     hydration.findDayFluid(userRepository.hydrationUsersData)
     hydration.findWeeksFluid(userRepository.hydrationUsersData);
     $('.current-hydro').text(hydration.numOunces);
@@ -210,6 +210,7 @@ $(document).ready(function() {
       };
       if ($widgetType === 'water') {
         hydration.date = $dayEntered;
+        $('.hydro-date').text($dayEntered);
         $('.current-hydro').text(hydration.findDayFluid(userRepository.hydrationUsersData));
       };
     }

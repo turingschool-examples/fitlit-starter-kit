@@ -15,7 +15,8 @@
     this.sleepQualityRecord = [];
     this.activityRecord = [];
     this.accomplishedDays = [];
-    this.trendingDays = [];
+    this.trendingStepDays = [];
+    this.trendingStairsDays = [];
   }
   getFirstName() {
     var names = this.name.split(' ');
@@ -81,6 +82,8 @@
     if (activity.numSteps >= this.dailyStepGoal) {
       this.accomplishedDays.unshift(activity.date);
     }
+    this.findTrendingStepDays();
+    this.findTrendingStairsDays();
   }
   findClimbingRecord() {
     return this.activityRecord.sort((a, b) => {
@@ -122,13 +125,24 @@
       return sum;
     }, 0) / 7).toFixed(1);
   }
-  findTrendingDays() {
+  findTrendingStepDays() {
     var positiveDays = [];
     for (var i = 0; i < this.activityRecord.length; i++) {
       if (this.activityRecord[i + 1] && this.activityRecord[i].steps > this.activityRecord[i + 1].steps) {
         positiveDays.unshift(this.activityRecord[i].date);
       } else if (positiveDays.length > 2) {
-        this.trendingDays.push(`You had a ${positiveDays.length} day streak from ${positiveDays[0]} - ${positiveDays[positiveDays.length - 1]}!`);
+        this.trendingStepDays.push(`You had a ${positiveDays.length} day streak from ${positiveDays[0]} - ${positiveDays[positiveDays.length - 1]}!`);
+        positiveDays = [];
+      }
+    }
+  }
+  findTrendingStairsDays() {
+    var positiveDays = [];
+    for (var i = 0; i < this.activityRecord.length; i++) {
+      if (this.activityRecord[i + 1] && this.activityRecord[i].flightsOfStairs > this.activityRecord[i + 1].flightsOfStairs) {
+        positiveDays.unshift(this.activityRecord[i].date);
+      } else if (positiveDays.length > 2) {
+        this.trendingStairsDays.push(`You had a ${positiveDays.length} day streak from ${positiveDays[0]} - ${positiveDays[positiveDays.length - 1]}!`);
         positiveDays = [];
       }
     }

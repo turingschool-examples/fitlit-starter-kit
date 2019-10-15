@@ -274,9 +274,6 @@ function displayUserPage() {
     $("body").html(`
   <div class="body-content-container">
     <header>
-      <div class="aside-fitlit-logo">
-        <h1>Fit Lit</h1>
-      </div>
       <section class="header-section-categories">
         <h1 class="header-style header-hydration-style">Hydration</h1>
         <h1 class="header-style header-activity-style">Activity</h1>
@@ -285,7 +282,7 @@ function displayUserPage() {
     </header>
     <aside>
       <div class="aside-user-name">
-      <h2>GET LIT!</h2>
+      <h2>Fit Lit</h2>
       <h2 id="aside-user-name"></h2>
       </div>
       <div class="aside-user-info-div">

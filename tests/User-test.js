@@ -164,6 +164,6 @@ describe('User', function() {
       {"date": "2019/06/19", "flightsOfStairs": 2},
       {"date": "2019/06/18", "flightsOfStairs": 1}];
       user.findTrendingStairsDays()
-    expect(user.trendingStairsDays).to.deep.equal(['Your most  positive climbing streak was 2019/06/26 - 2019/06/29!', 'Your most  positive climbing streak was 2019/06/19 - 2019/06/24!']);;
+    expect(user.trendingStairsDays).to.deep.equal(['Your most recent positive climbing streak was 2019/06/26 - 2019/06/29!', 'Your most recent positive climbing streak was 2019/06/19 - 2019/06/24!']);;
   });
 });

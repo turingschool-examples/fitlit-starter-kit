@@ -60,16 +60,19 @@ $(document).ready(() => {
 
 
 
-    $(".sleep-btn").click(function () {
+    $(".sleep-btn").on('click', function() {
+      $(".sleep-container").toggle()
     });
 
-    $(".hydration-btn").click(function () {
+    $(".hydration-btn").on('click', function() {
+      $(".hydration-container").toggle()
     });
 
-    $(".activity-btn").click(function () {
+    $(".activity-btn").on('click', function() {
+      $(".activity-container").toggle()
     });
 
-    $(".profile-btn").click(function () {
+    $(".profile-btn").on('click', function() {
     });
 
 

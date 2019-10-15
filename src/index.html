@@ -8,55 +8,134 @@
   </head>
   <body>
     <h1 id="headerText">Activity Tracker</h1>
-    <section class="main-sidebar-body">
-    <section class="body-sidebar-sidebarContainer">
-      <h2 class="sidebar-header-name" id="sidebarName">Name Name</h2>
-      <div class="sidebar-header-line"></div>
-      <img src="./images/The Rock.jpg"class="sidebar-header-userImage"></img>
-      <div class="sidebar-header-line"></div>
-      <p class="sidebar-header-userInfo" id="userAddress"></p>
-      <div class="sidebar-header-line"></div>
-      <p class="sidebar-header-userInfo" id="userEmail"></p>
-      <div class="sidebar-header-line"></div>
-      <p class="sidebar-header-userInfo" id="userStridelength"></p>
-      <div class="sidebar-header-line"></div>
-      <section class="sidebar-body-friendContainer">
-        <section class="sidebar-friendContainer-listItems">
-          <ul id="friendList">
-            <!-- friend list goes here -->
-        </ul>
+    <section class="main">
+      <section class="main-sidebar-body">
+      <section class="body-sidebar-sidebarContainer">
+        <h2 class="sidebar-header-name" id="sidebarName">Name Name</h2>
+        <div class="sidebar-header-line"></div>
+        <img src="./images/The Rock.jpg"class="sidebar-header-userImage"></img>
+        <div class="sidebar-header-line"></div>
+        <p class="sidebar-header-userInfo" id="userAddress"></p>
+        <div class="sidebar-header-line"></div>
+        <p class="sidebar-header-userInfo" id="userEmail"></p>
+        <div class="sidebar-header-line"></div>
+        <p class="sidebar-header-userInfo" id="userStridelength"></p>
+        <div class="sidebar-header-line"></div>
+        <p class="sidebar-header-userInfo" id="stepGoalCard"></p>
+        <p class="sidebar-header-userInfo" id="avStepGoalCard"><p>
+        <div class="sidebar-header-line"></div>
+        <section class="sidebar-body-friendContainer">
+          <p class="sidebar-header-userInfo">Friends</p>
+          <section class="sidebar-friendContainer-listItems">
+            <ul class="card-vertical-list" id="friendList">
+              <!-- friend list goes here -->
+          </ul>
+          </section>
         </section>
       </section>
     </section>
     <section class="body-main-infoContainter">
-      <section class="infoContainer-cardContainer-card" id="stepGoalCard"></section>
-      <section class="infoContainer-cardContainer-card">
-        <p id="hydrationToday"></p>
+      <section class="main-column-hydration">
+        <section class="infoContainer-cardContainer-card-horizontal">
+          <div class="card-today-hydration">
+            <p id="hydrationToday"></p>
+          </div>
+          <div class="card-today-hydration">
+            <p id="hydrationAverage"></p>
+          </div>
+        </section>
+        <section class="infoContainer-cardContainer-card-vertical">
+          <div class="card-history-hydration">
+            <p class="thisWeek">Water intake: this week</p>
+            <ul class="card-vertical-list" id="hydrationThisWeek">
+              <!-- Hydration week list goes here -->
+            </ul>
+          </div>
+          <div class="card-history-hydration">
+            <p class="historicalWeek"></p>
+            <ul class="card-vertical-list" id="hydrationEarlierWeek">
+              <!-- Hydration week list goes here -->
+            </ul>
+          </div>
+        </section>
       </section>
-      <section class="infoContainer-cardContainer-card">
-        <ul id="hydrationThisWeek">
-          <!-- Hydration week list goes here -->
-        </ul>
+      <section class="main-column-activity">
+        <section class="infoContainer-cardContainer-card-horizontal">
+          <div class="card-today-activity">
+            <p id="activtyToday">PLACEHOLDER</p>
+          </div>
+          <div class="card-today-activity">
+            <p id="activtyToday2">PLACEHOLDER</p>
+          </div>
+        </section>
+        <section class="infoContainer-cardContainer-card-vertical">
+          <div class="card-history-activity">
+            <p class="thisWeek">Acitivity: this week</p>
+            <ul class="card-vertical-list" id="activityThisWeek">
+              <!-- Activity week list goes here -->
+            </ul>
+          </div>
+          <div class="card-history-activity">
+            <p class="historicalWeek"></p>
+            <ul class="card-vertical-list" id="activityEarlierWeek">
+              <!-- Activity week list goes here -->
+            </ul>
+          </div>
+        </section>
       </section>
-      <section class="infoContainer-cardContainer-card">
-        <ul id="hydrationEarlierWeek">
-          <!-- Hydration week list goes here -->
-        </ul>
-      </section>
-      <section class="infoContainer-cardContainer-card">
-        <p id="sleepToday"></p>
-      </section>
-      <section class="infoContainer-cardContainer-card">
-        <ul id="sleepThisWeek">
-          <!-- Hydration week list goes here -->
-        </ul>
-      </section>
-      <section class="infoContainer-cardContainer-card">
-        <ul id="sleepEarlierWeek">
-          <!-- Hydration week list goes here -->
-        </ul>
+      <section class="main-column-sleep">
+        <section class="infoContainer-cardContainer-card-horizontal">
+          <div class="card-today-sleep">
+            <p id="sleepToday"></p>
+          </div>
+          <div class="card-today-sleep">
+            <p id="sleepQualityToday"></p>
+          </div>
+          <div class="card-today-sleep">
+            <p id="avUserSleepQuality"></p>
+          </div>
+        </section>
+        <section class="infoContainer-cardContainer-card-vertical">
+          <div class="card-history-sleep">
+            <p class="thisWeek">This Week</p>
+            <ul class="card-vertical-list" id="sleepThisWeek">
+              <!-- Sleep week list goes here -->
+            </ul>
+          </div>
+          <div class="card-history-sleep">
+            <p class="historicalWeek"></p>
+            <ul class="card-vertical-list" id="sleepEarlierWeek">
+              <!-- Sleep week list goes here -->
+            </ul>
+          </div>
+        </section>
       </section>
     </section>
+    <section class="main-sidebar-body">
+      <section class="main-sidebar-body">
+      <section class="body-sidebar-sidebarContainer">
+        <h2 class="sidebar-header-name" id="sidebarName">Name Name</h2>
+        <div class="sidebar-header-line"></div>
+        <img src="./images/The Rock.jpg"class="sidebar-header-userImage"></img>
+        <div class="sidebar-header-line"></div>
+        <p class="sidebar-header-userInfo" id="userAddress"></p>
+        <div class="sidebar-header-line"></div>
+        <p class="sidebar-header-userInfo" id="userEmail"></p>
+        <div class="sidebar-header-line"></div>
+        <p class="sidebar-header-userInfo" id="userStridelength"></p>
+        <div class="sidebar-header-line"></div>
+        <p class="sidebar-header-userInfo" id="stepGoalCard"></p>
+        <p class="sidebar-header-userInfo" id="avStepGoalCard"><p>
+        <section class="sidebar-body-friendContainer">
+          <section class="sidebar-friendContainer-listItems">
+            <ul id="friendList">
+              <!-- friend list goes here -->
+            </ul>
+          </section>
+        </section>
+      </section>
+    </section>
+  </section>
   </section>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="User.js"></script>

@@ -18,7 +18,7 @@ nav {
 
 .btn-container {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   }
 
 main {
@@ -31,7 +31,7 @@ main {
   height: 200px;
   width: auto;
 }
-/* 
+/*
 #myWeekChart {
   background-color: yellow;
   /* font-size: 100px !important;
@@ -39,8 +39,8 @@ main {
   width: auto !important; */
 }
 
-#myDayChart {
+/* #myDayChart {
   background-color: orange;
   height: 500px !important;
   width: auto !important;
-} */
+} */ */

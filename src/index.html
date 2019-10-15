@@ -12,28 +12,22 @@
   <main class='main--container'>
     <header>
     <h1>FitLit</h1>
-    <!-- <h2 class='name--display'>Welcome, ${randomUser.name}</h2>
-    <div class='contact--info'>
-      <div class='address--wrapper'>
-        <label>Address: </label>
-        <p class='user__address'>${randomUser.address}</p>
-      </div>
-      <div class='email--wrapper'>
-        <label>Email: </label>
-        <p class='user__email'>${randomUser.email}</p>
-      </div>
-      <label>Stride Length: ${randomUser.strideLength}</label>
-      <label>Daily Step Goal: ${randomUser.dailyStepGoal}</label>
-    </div> -->
   </header>
+  <div class="under-header--main">
     <section class="card--container">
+      <div class="hydration--widget">
+        <h3 class="widget--header">Daily Fluid Intake</h3>
+        <p class="widget--informer">Today you drank...</p>
+        <p class="widget--variable">'7.8'oz</p>
+      </div>
       <div class='hydration--data-chart card'>
         <canvas id="weekly--water"></canvas>
       </div>
-      <div class='hydration--data-chart card'>
-        <p>second card</p>
+      <div class='sleep--data-chart card'>
+        <canvas id="weekly--sleep"></canvas>
       </div>
     </section>
+    </div>
   </main>
 
 
@@ -64,6 +58,7 @@
   <script type="text/javascript" src="../data/hydration.js"></script>
   <script type="text/javascript" src="./Hydration.js"></script>
   <script type="text/javascript" src="../data/sleep.js"></script>
+  <script type="text/javascript" src="./Sleep.js"></script>
   <script type="text/javascript" src="../data/activity.js"></script>
   <script type="text/javascript" src="./scripts.js"></script>
 </body>

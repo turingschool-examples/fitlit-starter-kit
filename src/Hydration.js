@@ -14,7 +14,7 @@ class Hydration {
     }, []);
     let totalOunces = 0;
     userOunces.forEach(dayOunces => totalOunces += dayOunces);
-    return (totalOunces / userOunces.length);
+    return Math.round(totalOunces / userOunces.length);
   }
 
   findDayFluid(hydrationData) {

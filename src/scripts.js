@@ -187,6 +187,7 @@ $(document).ready(function() {
   });
 
   $('.search label').on('click', function() {
+    $('.alert').text('');
     $(this).parent().children().toggle();
     $(this).parent().siblings('.dropdown').toggle();
   });
@@ -194,12 +195,16 @@ $(document).ready(function() {
   $('.search button').on('click', function() {
     const $widgetType = $(this).closest('.widget').attr('data-type');
     const $dayEntered = $(this).siblings('input').val();
-    const $dateVal = /^\d{1,4}\/\d{1,2}\/\d{1,2}$/
+    const $dateVal = /^\d{4}\/\d{2}\/\d{2}$/;
     const $dropdown = $(this).parent().siblings('.dropdown');
     $(this).parent().children().toggle();
     $dropdown.toggle();
     $(this).closest('.widget').find('.date, footer').hide();
-    if ($dateVal.test($dayEntered)) {
+    const validDate = userRepository.hydrationUsersData.find(data => {
+      return data.date === $dayEntered;
+    });
+    if ($dateVal.test($dayEntered) && validDate) {
+      console.log('VALID')
       $dropdown.children('header').children('p').text($dayEntered);
       $dropdown.children('input').text($dayEntered);
       $('.compare-block').hide();
@@ -213,6 +218,9 @@ $(document).ready(function() {
         $('.hydro-date').text($dayEntered);
         $('.current-hydro').text(hydration.findDayFluid(userRepository.hydrationUsersData));
       };
+    } else {
+      console.log('INVALID')
+      $(this).closest('.widget').find('.alert').text('Enter a valid date!').css('color', '#af4040');
     }
     $(this).siblings('input').val('');
   });

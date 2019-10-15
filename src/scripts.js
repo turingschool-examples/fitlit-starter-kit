@@ -2,6 +2,7 @@ $(document).ready(() => {
     currentDate = "2019/09/16"
     const userRepository = new UserRepository(userData);
     const randomId = Math.ceil(Math.random() * 50 - 1);
+    console.log(randomId)
     userRepository.returnCurrentUser(randomId)
     const currentPerson = userRepository.currentUser
     const currentPersonFriends = userRepository.returnCurrentUserFriends()
@@ -23,9 +24,15 @@ $(document).ready(() => {
     const friend1Data = userData.find(user => {
         return friend1EntireData[0].userID === user.id
     })
+    const friend2Data = userData.find(user => {
+        return friend2EntireData[1].userID === user.id
+    })
+    // const friend3Data = userData.find(user => {
+    //     return friend3EntireData[2].userID === user.id
+    // })
     const friend1Name = friend1Data.name;
-    const friend2Name = friend1Data.name;
-const friend3Name = friend1Data.name;
+    const friend2Name = friend2Data.name;
+// const friend3Name = friend3Data.name;
     
     
     const friend2WeekData = activity.friend2StepCountForWeek()
@@ -34,6 +41,7 @@ const friend3Name = friend1Data.name;
     console.log(userStepCountDataForWeek)
     console.log(activity.findHighestStepCount())
     const highestWeekStepsDisplay = activity.findHighestStepCount()
+    console.log(activity.increasingStepsFor3OrMoreDays())
 
 
 
@@ -60,8 +68,8 @@ const friend3Name = friend1Data.name;
     $('.activity7').text(`Your total distance walked based on your stepcount for the latest day: ${activity.calculateMilesUserWalkedOnSpecificDate(currentDate)} miles`);
     $('.activity8').text(`Over the last week, you have averaged ${activity.calculateAvgMinutesActiveForUserOnSpecificWeek()} minutes of activity, ${activity.calculateAvgFlightsOfStairsClimbedForUserOnSpecificWeek()} flights of stairs, and ${activity.calculateAvgStepsTakenByUserOnSpecificWeek()} steps.`);
     $('.friend1').text(`${friend1Name} took ${friend1WeekData} steps this week!`)
-    $('.friend2').text(`Your friend took ${friend2WeekData} steps this week!`)
-    $('.friend3').text(`Your friend took ${friend3WeekData} steps this week!`)
+    $('.friend2').text(`${friend2Name} took ${friend2WeekData} steps this week!`)
+    // $('.friend3').text(`${friend3Name} took ${friend3WeekData} steps this week!`)
     $(".currentUserActivity").text(`You took ${userStepCountDataForWeek} steps this week!`)
     $(".winnerActivity").text(highestWeekStepsDisplay)
 

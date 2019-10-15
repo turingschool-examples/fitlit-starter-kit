@@ -274,6 +274,12 @@ h4 {
   background-image: url(../images/stairs-trending.png);
 }
 
+.trend-line {
+  width: 20vw;
+  font-size: 2vw;
+  text-align: center;
+}
+
 /* HIDE CARDS */
 .hide {
   display: none;

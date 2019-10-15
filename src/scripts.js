@@ -53,6 +53,9 @@ let stairsFriendFlightsAverageToday = document.querySelector('#stairs-friend-fli
 let stairsCalendarFlightsAverageWeekly = document.querySelector('#stairs-calendar-flights-average-weekly');
 let stairsCalendarStairsAverageWeekly = document.querySelector('#stairs-calendar-stairs-average-weekly');
 
+let trendingStepsPhraseContainer = document.querySelector('.trending-steps-phrase-container');
+let trendingStairsPhraseContainer = document.querySelector('.trending-stairs-phrase-container');
+
 
 
 
@@ -235,3 +238,5 @@ stepsCalendarTotalStepsWeekly.innerText = user.calculateAverageStepsThisWeek(tod
 stairsCalendarFlightsAverageWeekly.innerText = user.calculateAverageFlightsThisWeek(todayDate);
 
 stairsCalendarStairsAverageWeekly.innerText = (user.calculateAverageFlightsThisWeek(todayDate) * 12).toFixed(0);
+
+trendingStepsPhraseContainer.innerHTML = `<p class='trend-line'>${user.trendingDays[0]}</p>`;

@@ -81,6 +81,7 @@
     if (activity.numSteps >= this.dailyStepGoal) {
       this.accomplishedDays.unshift(activity.date);
     }
+    this.findTrendingStepDays();
   }
   findClimbingRecord() {
     return this.activityRecord.sort((a, b) => {
@@ -122,7 +123,7 @@
       return sum;
     }, 0) / 7).toFixed(1);
   }
-  findTrendingDays() {
+  findTrendingStepDays() {
     var positiveDays = [];
     for (var i = 0; i < this.activityRecord.length; i++) {
       if (this.activityRecord[i + 1] && this.activityRecord[i].steps > this.activityRecord[i + 1].steps) {

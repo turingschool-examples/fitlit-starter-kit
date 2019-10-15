@@ -4,20 +4,17 @@ $(document).ready(() => {
     const randomId = Math.ceil(Math.random() * 50 - 1);
     userRepository.returnCurrentUser(randomId)
     const currentPerson = userRepository.currentUser
+    const currentPersonFriends = userRepository.returnCurrentUserFriends()
+    console.log(currentPersonFriends)
     console.log(currentPerson)
     const user = new User(currentPerson);
     const firstName = currentPerson.name.split(' ');
     const hydration = new Hydration(hydrationData, currentPerson.id);
+    hydration.findCurrentUserHydrationData()
     const sleep = new Sleep(sleepData, currentPerson.id, userData)
+    sleep.findCurrentUserSleepData()
     const activity = new Activity(activityData, currentPerson.id, userData)
-    console.log(activity)
     activity.findCurrentUserActivityData()
-    console.log(hydration.findCurrentUserHydrationData());
-    console.log(sleep.findCurrentUserSleepData())
-    console.log(sleep.calculateHoursSleptEachDayByUserOverSpecificWeek())
-    console.log(hydration.calculateAmtDrankByUserSpecificDate(currentDate))
-    // console.log(sleep.returnHoursSleptByUserOnSpecificDate(currentDate)
-    // console.log(calculateMilesUserWalkedOnSpecificDate(currentDate))
 
 
 

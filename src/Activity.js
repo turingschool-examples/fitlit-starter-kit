@@ -29,14 +29,9 @@ class Activity {
     }
 
     calculateMilesUserWalkedOnSpecificDate(date) {
-        console.log(this.currentActivityData)
-        console.log(this.currentUserActivityData)
-        console.log(this.userID)
       let userDateActivity = this.currentUserActivityData.find(user => {
         return user.date === date
     })
-
-      console.log(userDateActivity)
       let numSteps = userDateActivity.numSteps;
       let userInfo = this.allUsersData.find(user => {
         return user.id == userDateActivity.userID

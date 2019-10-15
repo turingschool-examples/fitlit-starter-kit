@@ -15,14 +15,7 @@ class UserRepository {
   }
 
   findToday() {
-    const dates = this.sleepUsersData.reduce((allDates, data) => {
-      if (data.userID === 2) {
-        allDates.push(data.date);
-      }
-      return allDates;
-    }, []);
-    this.day = dates[dates.length - 1] || '2019/09/22';
-    return dates[dates.length - 1];
+    this.day = '2019/09/22';
   }
 
   getWeekDates(date) {

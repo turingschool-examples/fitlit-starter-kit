@@ -56,15 +56,16 @@ class Sleep {
   }
 
   calculateDayAverageInfo(userRepo, info) {
+    const dataset = userRepo.sleepUsersData.filter(data => data.userID === this.userID);
     switch (info) {
       case 'hours':
-        return Math.round(this.getWeekFullInfo(userRepo, info).reduce((sum, data) => {
-          const num = data.hoursSlept / 7;
+        return Math.round(dataset.reduce((sum, data) => {
+          const num = data.hoursSlept / dataset.length;
           return sum+=num;
         }, 0) * 10) / 10;
       case 'quality':
-        return Math.round(this.getWeekFullInfo(userRepo, info).reduce((sum, data) => {
-          const num = data.sleepQuality / 7;
+        return Math.round(dataset.reduce((sum, data) => {
+          const num = data.sleepQuality / dataset.length;
           return sum+=num;
         }, 0) * 10) / 10;
     }

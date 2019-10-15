@@ -100,10 +100,6 @@ describe("UserRepository", () => {
     expect(userRepository.getAllUserAverageQualtiy()).to.equal(2.98);
   });
 
-  it('should can find today', function () {
-    expect(userRepository.findToday()).to.equal("2019/09/22");
-  });
-
   it('should keep choosen day', function () {
     userRepository.findToday();
     expect(userRepository.day).to.equal("2019/09/22");

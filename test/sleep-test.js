@@ -136,10 +136,10 @@ describe("Sleep", () => {
   })
 
   it("should get day average sleep hours for week", () => {
-    expect(sleep.calculateDayAverageInfo(userRepo, 'hours')).to.equal(7.7);
+    expect(sleep.calculateDayAverageInfo(userRepo, 'hours')).to.equal(7.4);
   });
 
   it("should get day average sleep quality for week", () => {
-    expect(sleep.calculateDayAverageInfo(userRepo, 'quality')).to.equal(2.9);
+    expect(sleep.calculateDayAverageInfo(userRepo, 'quality')).to.equal(3);
   });
 });

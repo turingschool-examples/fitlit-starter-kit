@@ -64,6 +64,7 @@ let hydrationFriendOuncesToday = document.querySelector('#hydration-friend-ounce
 let stepsMainCard = document.querySelector('#steps-main-card');
 let stepsInfoCard = document.querySelector('#steps-info-card');
 let stepsFriendsCard = document.querySelector('#steps-friends-card');
+let stepsTrendingCard = document.querySelector('#steps-trending-card');
 let stepsCalendarCard = document.querySelector('#steps-calendar-card');
 let hydrationMainCard = document.querySelector('#hydration-main-card');
 let hydrationInfoCard = document.querySelector('#hydration-info-card');
@@ -72,6 +73,7 @@ let hydrationCalendarCard = document.querySelector('#hydration-calendar-card');
 let stairsMainCard = document.querySelector('#stairs-main-card');
 let stairsInfoCard = document.querySelector('#stairs-info-card');
 let stairsFriendsCard = document.querySelector('#stairs-friends-card');
+let stairsTrendingCard = document.querySelector('#stairs-trending-card');
 let stairsCalendarCard = document.querySelector('#stairs-calendar-card');
 let sleepMainCard = document.querySelector('#sleep-main-card');
 let sleepInfoCard = document.querySelector('#sleep-info-card');
@@ -90,6 +92,9 @@ function showInfo() {
   if (event.target.classList.contains('steps-friends-button')) {
     flipCard(stepsMainCard, stepsFriendsCard);
   }
+  if (event.target.classList.contains('steps-trending-button')) {
+    flipCard(stepsMainCard, stepsTrendingCard);
+  }
   if (event.target.classList.contains('steps-calendar-button')) {
     flipCard(stepsMainCard, stepsCalendarCard);
   }
@@ -107,6 +112,9 @@ function showInfo() {
   }
   if (event.target.classList.contains('stairs-friends-button')) {
     flipCard(stairsMainCard, stairsFriendsCard);
+  }
+  if (event.target.classList.contains('stairs-trending-button')) {
+    flipCard(stairsMainCard, stairsTrendingCard);
   }
   if (event.target.classList.contains('stairs-calendar-button')) {
     flipCard(stairsMainCard, stairsCalendarCard);

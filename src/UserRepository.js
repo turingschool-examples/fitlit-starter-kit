@@ -10,6 +10,11 @@ class UserRepository{
         })
     }
 
+    returnCurrentUserFriends() {
+        this.currentUserFriends = this.currentUser.friends;
+        return this.currentUserFriends;
+        }
+
     calculateAvgStepGoalAllUsers() {
         let stepGoal = this.userData.reduce((acc,user) => {
             acc += user.dailyStepGoal

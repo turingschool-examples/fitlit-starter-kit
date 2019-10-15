@@ -115,7 +115,7 @@ beforeEach(() => {
 
     describe("changeDate method", () => {
       beforeEach(()=>{
-        activity.changeDate(userRepo, user, '2019/07/12');
+        activity.changeDate(userRepo, '2019/07/12');
       });
 
       it("should show number of steps for chosen day", () => {
@@ -198,42 +198,23 @@ beforeEach(() => {
           expect(miles).to.equal(5);
         });
       });
-
-      describe("getAverageForSevenDays method for any week", () =>{
-        beforeEach(()=>{
-          activity.changeDate(userRepo, user, '2019/07/12');
-          activity.getAverageForSevenDays(userRepo);
-        });
-
-        it("should show average number of steps for any week", () => {
-          expect(activity.numSteps).to.equal(6759);
-        });
-
-        it("should show average active minutes for any week", () => {
-          expect(activity.minutesActive).to.equal(222);
-        });
-
-        it("should show average flights of stairs for chosen day", () => {
-          expect(activity.flightsOfStairs).to.equal(20);
-        });
-
-        it("should count miles for chosen day", () => {
-          const miles = activity.findMiles(user.strideLength);
-          expect(miles).to.equal(5);
-        });
-      });
     });
 
     it("should check compliting of steps goal", () => {
-      activity.changeDate(userRepo, user, '2019/06/17');
+      activity.changeDate(userRepo, '2019/06/17');
       activity.checkStepGoal(user);
       expect(activity.goalComplete).to.equal(true);
     });
 
     it("should find all days with complited steps goal", () => {
-      activity.changeDate(userRepo, user, '2019/06/17');
+      activity.changeDate(userRepo);
       const info =  activity.findGoalCompletedDays(userRepo, user);
-      expect(info).to.deep.equal(['2019/06/17']);
+      expect(info).to.deep.equal(
+        [ '2019/09/16',
+          '2019/09/18',
+          '2019/09/19',
+          '2019/09/21',
+          '2019/09/22' ]);
     });
 
     it("should find the highest number of flights", () => {

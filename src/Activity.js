@@ -8,16 +8,17 @@ class Activity {
     this.goalComplete = false;
   }
 
-  changeDate(userRepo, user, date) {
+  changeDate(userRepo, date) {
     if (!date) {
-      this.updateInfo(userRepo.activityUsersData, this.date);
+      this.date = userRepo.day;
+      this.updateInfo(userRepo.activityUsersData);
     } else if (date === 'All days') {
-      this.getAverageForSevenDays(week);
+      this.time = '';
+      this.getAverageForSevenDays(userRepo);
     } else {
       this.date = date;
-      this.updateInfo(userRepo.activityUsersData, date);
+      this.updateInfo(userRepo.activityUsersData);
     }
-    this.findMiles(user.stepLength);
   }
 
   updateInfo(activeData) {
@@ -39,7 +40,7 @@ class Activity {
   }
 
   getWeekInformation(userRepo) {
-    const week = userRepo.getWeekDates(this.date);
+    const week = userRepo.getWeekDates(userRepo.day);
     const weekInfo = userRepo.activityUsersData.filter(data => data.userID === this.userID && week.includes(data.date));
     return weekInfo;
   }
@@ -64,7 +65,7 @@ class Activity {
   }
 
   findGoalCompletedDays(userRepo, user) {
-    const week = userRepo.getWeekDates(this.date);
+    const week = userRepo.getWeekDates(userRepo.day);
     return userRepo.activityUsersData.filter(data => data.numSteps >= user.dailyStepGoal && week.includes(data.date)).map(data => data.date);
   }
 

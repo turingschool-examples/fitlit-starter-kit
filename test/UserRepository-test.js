@@ -3,6 +3,7 @@ const expect = chai.expect;
 
 const UserRepository = require('../src/UserRepository');
 const sleepData = require('../data/sleep');
+const activityData = require('../data/activity');
 const data = {
   users: [{
     "id": 1,
@@ -32,7 +33,7 @@ const data = {
     }],
   hydration: [],
   sleep: sleepData,
-  activity: []
+  activity: activityData
 };
 
 let userRepository, user;
@@ -129,5 +130,24 @@ describe("UserRepository", () => {
         date: '2019/09/22',
         hoursSlept: 10.9,
         sleepQuality: 3.8 }]);
+  });
+
+  it('should calculate average stairs climbed for all users', function () {
+    expect(userRepository.findAverageActivityValue(userRepository.activityUsersData, 'flightsOfStairs')).to.equal(24);
+  });
+
+  it('should calculate average steps taken for all users', function () {
+    expect(userRepository.findAverageActivityValue(userRepository.activityUsersData, 'numSteps')).to.equal(8459);
+  });
+
+  it('should calculate average active minutes for all users', function () {
+    expect(userRepository.findAverageActivityValue(userRepository.activityUsersData, 'minutesActive')).to.equal(161);
+  });
+
+  it('should find user who have the highest steps number', function () {
+    userRepository.day = '2019/09/22';
+    const forrest = userRepository.findForestGumpOfDay(userRepository.activityUsersData);
+    console.log(forrest);
+    expect(forrest).to.equal(43);
   });
 });

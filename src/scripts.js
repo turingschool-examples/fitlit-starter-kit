@@ -25,6 +25,7 @@ $(document).ready(function() {
     getFriends(user.findFriends(userRepository));
     showHydration();
     showSleep();
+    showActivity();
   });
 
   $('.bio-info').on('click', function () {
@@ -105,14 +106,40 @@ $(document).ready(function() {
     }
   }
 
+  function showActivity() {
+    activity = new Activity(userRepository);
+    activity.changeDate(userRepository);
+    updateActivity();
+  }
+
+  function updateActivity() {
+    let $steps = activity.numSteps;
+    let $minutes = activity.minutesActive;
+    let $flights = activity.flightsOfStairs;
+    let $miles = activity.findMiles(user.strideLength);
+    $('.activity-widget').find('.steps').text($steps);
+    $('.activity-widget').find('.mins').text($minutes);
+    $('.activity-widget').find('.flights').text($flights);
+    $('.activity-widget').find('.miles').text($miles);
+  }
+
   // WEEK DAYS SWITCHER
   $('.dayly-show footer img').on('click', function() {
     const $widgetType = $(this).closest('.widget').attr('data-type');
     const $dayIndex = parseInt($(this).attr('data-index'));
     $(this).attr('src', '../images/circle-clicked.svg').siblings().attr('src', '../images/circle.svg');
     if ($widgetType === 'sleep') updateWeekDay(this, $dayIndex);
+    if ($widgetType === 'activity') updateActiveWeekDay(this, $dayIndex);
     if ($widgetType === 'water') updateHydrationWeekDay(this, $dayIndex);
   });
+
+  function updateActiveWeekDay(target, index) {
+    const $weekDays = userRepository.getWeekDates(activity.date);
+    $(target).closest('.widget').find('.date').text($weekDays[index]);
+    activity.changeDate(userRepository, $weekDays[index]);
+    activity.findMiles(user.strideLength);
+    updateActivity();
+  }
 
   function updateWeekDay(target, index) {
     const $weekInfo = sleep.getWeekFullInfo(userRepository);
@@ -152,6 +179,9 @@ $(document).ready(function() {
       }
       if ($widgetType === 'activity') {
         $('.compare-block, .compare').hide();
+        $(this).closest('.widget').find('.date').text(activity.date);
+        activity.updateInfo(userRepository.activityUsersData)
+        updateActivity();
       }
       if ($widgetType === 'water') {
         $(this).closest('.widget').find('.date').text(hydration.date);
@@ -167,7 +197,10 @@ $(document).ready(function() {
       };
       if ($widgetType === 'activity') {
         $('.compare').text('compare with others').show();
+        activity.changeDate(userRepository);
+        updateActivity();
       }
+
       if ($widgetType === 'water') {
         showHydration();
       }
@@ -178,6 +211,10 @@ $(document).ready(function() {
       if ($widgetType === 'sleep') {
         sleep.changeDate(userRepository, 'All day');
         updateSleep();
+      }
+      if ($widgetType === 'activity') {
+        activity.changeDate(userRepository, 'All days');
+        updateActivity();
       }
       if ($widgetType === 'water') {
         let allAvg = hydration.calcAvgFluidConsumption(userRepository.hydrationUsersData);
@@ -212,6 +249,10 @@ $(document).ready(function() {
       if ($widgetType === 'sleep') {
         sleep.changeDate(userRepository, $dayEntered);
         updateSleep();
+      };
+      if ($widgetType === 'activity') {
+        activity.changeDate(userRepository, $dayEntered);
+        updateActivity();
       };
       if ($widgetType === 'water') {
         hydration.date = $dayEntered;

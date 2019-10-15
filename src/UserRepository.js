@@ -85,17 +85,25 @@ class UserRepository {
     const sleepingBeauties = userSlept.filter(beauty => beauty.hoursSlept === biggestSleepNumber);
     return sleepingBeauties;
   }
+
+  findAverageActivityValue(dataset, info) {
+    const average = dataset.reduce((avr, data) => {
+      avr += data[info] / dataset.length;
+      return avr;
+    }, 0);
+    return parseInt(average);
+  }
+
+  findForestGumpOfDay(dataset) {
+    return dataset.filter(data => data.date === this.day).reduce((forrest, data) => {
+      if (data.numSteps > forrest.numSteps) {
+        forrest = data;
+      }
+      return forrest;
+    }, {numSteps: 0}).userID;
+  }
 }
 
 if (typeof module !== 'undefined') {
   module.exports = UserRepository;
 }
-
-// module.exports = UserRepository;
-
-// UserRepository Class:
-//   Methods:
-//     - findAverageStairsClimbed / takes data and date, return average number of stairs climbed
-//     - findAverageStepsTaken / takes data and date, return average number of steps taken
-//     - findAverageMinutesActive / takes data and date, return average number of minutes active
-//     - findForestGumpOfDay / takes date, return user with most steps taken

@@ -1,7 +1,7 @@
 
-const sleepData = require('../subData.js/sleepSubData');
-const userData = require('../subData.js/usersSubData');
-const user = require('./User');
+// const sleepData = require('../subData.js/sleepSubData');
+// const userData = require('../subData.js/usersSubData');
+// const user = require('./User');
 
 class Sleep {
   constructor(id, sleepData) {
@@ -13,6 +13,11 @@ class Sleep {
     return this.sleepData.filter(user => user.userID === id)
   }
 
+  findAWeek(id) {
+    let user = this.findUser(id)
+    return user.slice(-7);
+  }
+  
   findAvgHoursSlept(id) {
     let singleUserInfo = this.findUser(id)
     let avgHours = singleUserInfo.reduce((acc, hours) => {
@@ -49,7 +54,7 @@ class Sleep {
     });
     let weekly = singleUser.slice(latestDay - 6, latestDay +1)
     return weekly
-    }
+  }
 
   findHoursSleptForWeek(id, date) {
     let weekly = this.findAnyWeek(id, date);
@@ -72,7 +77,7 @@ class Sleep {
       acc += quality.sleepQuality
       return acc
     }, 0)
-    return +((totalQual/this.sleepData.length).toFixed(2))
+    return +((totalQual / this.sleepData.length).toFixed(2))
   }
 
   // findAvgOverThree() {

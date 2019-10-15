@@ -31,17 +31,29 @@ describe('UserActivity', () => {
     expect(userActivity.userMilesByDate('2019/06/15')).to.equal(11.34);
   });
 
+  it('should return user step count for one week', () => {
+    expect(userActivity.userStepCountByWeek()).to.eql([14329, 4419, 8429, 14478, 6760, 10289, 13928]);
+  });
+
   it('should return user minutes active for one specific date', () => {
     expect(userActivity.userMinutesActiveByDate('2019/06/15')).to.equal(218);
   });
 
   it('should return user minutes active for one week', () => {
-    expect(userActivity.userMinutesActiveByWeek()).to.deep.equal(219.29);
+    expect(userActivity.userMinutesActiveByWeek()).to.eql([168, 165, 275, 140, 135, 119, 218]);
+  });
+
+  it('should return the average number of minutes active for a week', () => {
+    expect(userActivity.userWeeklyMinutesActiveAverage()).to.equal(219.29);
   });
 
   it('should return user stepgoal met for one specific date', () => {
     expect(userActivity.userStepGoalMetByDate('2019/06/15')).to.equal(false);
     expect(userActivity.userStepGoalMetByDate('2019/06/17')).to.equal(true);
+  });
+
+  it('should return user stairs climbed for one week', () => {
+    expect(userActivity.userStairsClimbedByWeek()).to.eql([18, 33, 2, 12, 6, 6, 21]);
   });
 
   it('should return user stepgoal met by date', () => {

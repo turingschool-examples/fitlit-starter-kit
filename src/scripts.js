@@ -195,7 +195,91 @@ let friendsActivityLastWeek = friends.map(e => userActivity.userStepsByWeek(e));
     }
   });
 
-  //display this on the dom
-let threeDays = userActivity.userThreeDaySteps()
-threeDays.map(e => e.date)
+  const userVsAllUsersActivity = new Chart($('#allActivityComparedToUsers'), {
+    type: 'horizontalBar',
+    data: {
+      labels: ['Your Steps', 'Users Steps', 'Your Min Active', 'Users Min Active', 'Your Stairs Climbed', 'Users Stairs Climbed'],
+      datasets: [{
+        label: 'Your vs. All Users Activity',
+        data: [userActivity.userStepsByDate(randomUser, today), userActivity.usersActivityAvgByDate('numSteps'), userActivity.userMinutesActiveByDate(randomUser, today), userActivity.usersActivityAvgByDate('minutesActive'), userActivity.userStepsByDate(randomUser, today), userActivity.usersActivityAvgByDate('flightsOfStairs')],
+        backgroundColor: ['rgb(112, 28, 1, 0.7)', 'rgb(112, 56, 1, 0.7)', 'rgb(112, 84, 1, 0.7)', 'rgb(112, 111, 1, 0.7)', 'rgb(85, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(112, 28, 1, 0.7)'],
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+  const usersWeeklyStepCount = new Chart($('#weeklyStepCount'), {
+    type: 'bar',
+    data: {
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      datasets: [{
+        label: 'Weekly View of Step Count',
+        data: userActivity.userStepCountByWeek(randomUser),
+        backgroundColor: ['rgb(112, 28, 1, 0.7)', 'rgb(112, 56, 1, 0.7)', 'rgb(112, 84, 1, 0.7)', 'rgb(112, 111, 1, 0.7)', 'rgb(85, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(112, 28, 1, 0.7)'],
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+  const usersWeeklyMinutesActive = new Chart($('#weeklyMinutesActive'), {
+    type: 'bar',
+    data: {
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      datasets: [{
+        label: 'Weekly View of Minutes Active',
+        data: userActivity.userMinutesActiveByWeek(randomUser),
+        backgroundColor: ['rgb(112, 28, 1, 0.7)', 'rgb(112, 56, 1, 0.7)', 'rgb(112, 84, 1, 0.7)', 'rgb(112, 111, 1, 0.7)', 'rgb(85, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(112, 28, 1, 0.7)'],
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+  const usersWeeklyStairClimbed = new Chart($('#weeklyStairsClimbed'), {
+    type: 'bar',
+    data: {
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      datasets: [{
+        label: 'Weekly View of Stairs Climbed',
+        data: userActivity.userStairsClimbedByWeek(randomUser),
+        backgroundColor: ['rgb(112, 28, 1, 0.7)', 'rgb(112, 56, 1, 0.7)', 'rgb(112, 84, 1, 0.7)', 'rgb(112, 111, 1, 0.7)', 'rgb(85, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(112, 28, 1, 0.7)'],
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+  //dispaly on dom
+  let threeDays = userActivity.userThreeDaySteps()
+  threeDays.map(e => e.date)
 });

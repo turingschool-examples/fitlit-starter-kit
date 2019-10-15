@@ -142,4 +142,8 @@ describe('activityUser', () => {
     expect(activityUser.calcTotalStepsByWeek("2019/06/24")).to.equal(79818);
   });
 
+  it('should find increasing steps for three days or more', () => {
+    expect(activityUser.getStepIncreaseTrend().to.equal())
+  });
+
 });

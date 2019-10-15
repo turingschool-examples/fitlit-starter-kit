@@ -38,11 +38,15 @@ function clickLoginButton(event) {
     addMinutesActiveByDay();
     addNumStepsForLatestDay();
     addWeeklyActivityDataByDay();
+    test();
   }
 }
 
+function test() {
+  activityUser.getStepIncreaseTrend();
+}
+
 function instantiateUserData(usersData) {
-  let userEmail = $("#login-page-input").val();
   userRepo = new UserRepo(usersData);
   let userInfo = userRepo.getUserData($("#login-page-input").val())
   user = new User(userInfo);

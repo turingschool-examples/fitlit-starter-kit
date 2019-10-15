@@ -96,6 +96,25 @@ class ActivityUser {
     },0)
     return minutesRecord;
   }
+
+  getStepIncreaseTrend() {
+    let trends = this.activityData.filter((day, index) => {
+      if (index > 1) {
+        // console.log(index - 2)
+        if (this.activityData[index - 2].numSteps < this.activityData[index - 1].numSteps < day.numSteps || 
+          this.activityData[index - 1].numSteps < day.numSteps < this.activityData[index + 1].numSteps ||
+          day.numSteps < this.activityData[index + 1].numSteps < this.activityData[index + 2].numSteps) {
+            console.log(this.activityData[index - 2].numSteps)
+            return true;
+        } else {
+          return false
+        }
+      } else {
+        return false;
+      }
+    })
+    console.log(trends);
+  }
 }
 
 if (typeof module !== 'undefined') {

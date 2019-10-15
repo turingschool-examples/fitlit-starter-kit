@@ -468,9 +468,20 @@ h4 {
   padding: 15px 20px 0;
   width: fit-content;
 }
-.compare-block .tiny {
+.compare-block .additional {
+  align-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  margin-top: 20px;
+}
+.compare-block .additional .tiny {
+  justify-self: end;
   font-size: 40px;
-  padding: 10px 0 0;
+  padding: 0 10px 0;
+}
+.compare-block .additional h3 {
+  justify-self: start;
+  margin-left: 20px;
 }
 
 .dropdown {

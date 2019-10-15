@@ -13,7 +13,7 @@ let hydration;
 let activity;
 
 $(document).ready(function() {
-  
+
   $('.login button').on('click', function() {
     const nameGiven = `${$('.first-name').val()} ${$('.last-name').val()}`;
     const currentUser = userRepository.findUserByName(nameGiven);
@@ -28,6 +28,10 @@ $(document).ready(function() {
     showActivity();
   });
 
+  $('.log-out').on('click', function() {
+    location.reload();
+  })
+
   $('.bio-info').on('click', function () {
     $('.bio-info main').fadeToggle();
   });
@@ -35,7 +39,25 @@ $(document).ready(function() {
   $('.compare').on('click', function() {
     $('.compare-block').fadeToggle();
     $(this).text($(this).text() === 'compare with others' ? 'close' : 'compare with others');
+    let $steps, $flights, $mins;
+    if ($(this).parents('.widget').find('header .dropdown input').val() === 'Today') {
+      $steps = userRepository.findAverageActivityValueForToday('numSteps');
+      $flights = userRepository.findAverageActivityValueForToday('flightsOfStairs');
+      $mins = userRepository.findAverageActivityValueForToday('minutesActive');
+    }
+    if ($(this).parents('.widget').find('header .dropdown input').val() === 'All time') {
+      $steps = userRepository.findAverageActivityValue('numSteps');
+      $flights = userRepository.findAverageActivityValue('flightsOfStairs');
+      $mins = userRepository.findAverageActivityValue('minutesActive');
+    }
+    updateAllUserActivity($steps, $flights, $mins);
   });
+
+  function updateAllUserActivity(steps, flights, mins) {
+    $('.compare-block .steps').text(steps);
+    $('.compare-block .flights').text(flights);
+    $('.compare-block .mins').text(mins);
+  }
 
   $('.steps-goal footer p').on('click', function() {
     $('.steps-goal .average').fadeToggle();
@@ -214,6 +236,8 @@ $(document).ready(function() {
         updateSleep();
       }
       if ($widgetType === 'activity') {
+        $('.compare-block').hide();
+        $('.compare').text('compare with others').show();
         activity.changeDate(userRepository, 'All days');
         updateActivity();
       }
@@ -242,11 +266,9 @@ $(document).ready(function() {
       return data.date === $dayEntered;
     });
     if ($dateVal.test($dayEntered) && validDate) {
-      console.log('VALID')
       $dropdown.children('header').children('p').text($dayEntered);
       $dropdown.children('input').text($dayEntered);
-      $('.compare-block').hide();
-      $('.compare').text('compare with others').show();
+      $('.compare-block, .compare').hide();
       if ($widgetType === 'sleep') {
         sleep.changeDate(userRepository, $dayEntered);
         updateSleep();
@@ -261,7 +283,6 @@ $(document).ready(function() {
         $('.current-hydro').text(hydration.findDayFluid(userRepository.hydrationUsersData));
       };
     } else {
-      console.log('INVALID')
       $(this).closest('.widget').find('.alert').text('Enter a valid date!').css('color', '#af4040');
     }
     $(this).siblings('input').val('');

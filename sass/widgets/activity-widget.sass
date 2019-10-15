@@ -42,9 +42,19 @@
     margin: auto
     padding: 15px 20px 0
     width: fit-content
-  .tiny
-    font-size: 40px
-    padding: 0 10px 0
+  .additional
+    align-items: center
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: repeat(3, 1fr)
+    margin-top: 20px
+    .tiny
+      justify-self: end
+      font-size: 40px
+      padding: 0 10px 0
+    h3
+      justify-self: start
+      margin-left: 20px
+
 
 @import '../elements/dropdown'
 @import '../elements/search'

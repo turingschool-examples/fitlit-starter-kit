@@ -15,14 +15,7 @@ class UserRepository {
   }
 
   findToday() {
-    const dates = this.sleepUsersData.reduce((allDates, data) => {
-      if (data.userID === 2) {
-        allDates.push(data.date);
-      }
-      return allDates;
-    }, []);
-    this.day = dates[dates.length - 1] || '2019/09/22';
-    return dates[dates.length - 1];
+    this.day = '2019/09/22';
   }
 
   getWeekDates(date) {
@@ -86,9 +79,18 @@ class UserRepository {
     return sleepingBeauties;
   }
 
-  findAverageActivityValue(dataset, info) {
-    const average = dataset.reduce((avr, data) => {
-      avr += data[info] / dataset.length;
+  findAverageActivityValue(info) {
+    const average = this.activityUsersData.reduce((avr, data, i, a) => {
+      avr += data[info] / a.length;
+      return avr;
+    }, 0);
+    return parseInt(average);
+  }
+
+  findAverageActivityValueForToday(info) {
+    const dataset = this.activityUsersData.filter((data => data.date === this.day));
+    const average = dataset.reduce((avr, data, i, a) => {
+      avr += data[info] / a.length;
       return avr;
     }, 0);
     return parseInt(average);

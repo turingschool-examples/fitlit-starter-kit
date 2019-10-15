@@ -100,9 +100,7 @@ describe("UserRepository", () => {
     expect(userRepository.getAllUserAverageQualtiy()).to.equal(2.98);
   });
 
-  it('should can find today', function() {
-    expect(userRepository.findToday()).to.equal("2019/09/22");
-  });
+
 
   it('should keep choosen day', function() {
     userRepository.findToday();
@@ -132,22 +130,21 @@ describe("UserRepository", () => {
         sleepQuality: 3.8 }]);
   });
 
-  it('should calculate average stairs climbed for all users', function() {
-    expect(userRepository.findAverageActivityValue(userRepository.activityUsersData, 'flightsOfStairs')).to.equal(24);
+  it('should calculate average stairs climbed for all users', function () {
+    expect(userRepository.findAverageActivityValue('flightsOfStairs')).to.equal(24);
   });
 
-  it('should calculate average steps taken for all users', function() {
-    expect(userRepository.findAverageActivityValue(userRepository.activityUsersData, 'numSteps')).to.equal(8459);
+  it('should calculate average steps taken for all users', function () {
+    expect(userRepository.findAverageActivityValue('numSteps')).to.equal(8459);
   });
 
-  it('should calculate average active minutes for all users', function() {
-    expect(userRepository.findAverageActivityValue(userRepository.activityUsersData, 'minutesActive')).to.equal(161);
+  it('should calculate average active minutes for all users', function () {
+    expect(userRepository.findAverageActivityValue('minutesActive')).to.equal(161);
   });
 
   it('should find user who have the highest steps number', function() {
     userRepository.day = '2019/09/22';
     const forrest = userRepository.findForestGumpOfDay(userRepository.activityUsersData);
-    console.log(forrest);
     expect(forrest).to.equal(43);
   });
 });

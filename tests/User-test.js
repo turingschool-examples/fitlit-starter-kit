@@ -134,20 +134,19 @@ describe('User', function() {
   })
   it('findTrendingDays should find 3+ days with positive trend', function() {
     user.activityRecord = [{
-      "date": "2019/06/20",
-      "steps": 3}, {"date": "2019/06/29",
-      "steps": 2}, {"date": "2019/06/28",
-      "steps": 1}, {"date": "2019/06/27",
-      "steps": 4}, {"date": "2019/06/26",
-      "steps": 3}, {"date": "2019/06/25",
-      "steps": 1}, {"date": "2019/06/24",
-      "steps": 2}, {"date": "2019/06/23",
-      "steps": 11}, {"date": "2019/06/22",
-      "steps": 10}, {"date": "2019/06/21",
-      "steps": 9}, {"date": "2019/06/20",
-      "steps": 8}, {"date": "2019/06/19",
-      "steps": 11}, {"date": "2019/06/18",
-      "steps": 10}];
-    expect(user.findTrendingDays()).to.deep.equal(['You had a 4 day streak from 2019/06/19 - 2019/06/22!', 'You had a 3 day streak from 2019/06/24 - 2019/06/26!', 'You had a 3 day streak from 2019/06/27 - 2019/06/29!']);;
+      "date": "2019/06/29", "steps": 2},
+      {"date": "2019/06/28", "steps": 1},
+      {"date": "2019/06/27", "steps": 4},
+      {"date": "2019/06/26", "steps": 3},
+      {"date": "2019/06/25", "steps": 1},
+      {"date": "2019/06/24", "steps": 12},
+      {"date": "2019/06/23", "steps": 11},
+      {"date": "2019/06/22", "steps": 10},
+      {"date": "2019/06/21", "steps": 9},
+      {"date": "2019/06/20", "steps": 8},
+      {"date": "2019/06/19", "steps": 11},
+      {"date": "2019/06/18", "steps": 10}];
+      user.findTrendingDays()
+    expect(user.trendingDays).to.deep.equal(['You had a 3 day streak from 2019/06/26 - 2019/06/29!', 'You had a 4 day streak from 2019/06/21 - 2019/06/24!']);;
   });
 });

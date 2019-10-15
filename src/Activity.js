@@ -23,6 +23,14 @@ class Activity{
       return stepTotalForDay.numSteps
     }
 
+    returnNumberOfStairsClimbedForUserOnSpecificDate(date) {
+      let stairsClimbedForDay = this.currentUserActivityData.find(userBlock => {
+        return userBlock.date === "2019/06/15"
+      })
+
+      return stairsClimbedForDay.flightsOfStairs
+    }
+
     calculateMilesUserWalkedOnSpecificDate(date) {
         console.log(this.currentActivityData)
         console.log(this.currentUserActivityData)

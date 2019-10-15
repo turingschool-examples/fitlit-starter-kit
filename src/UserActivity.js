@@ -21,18 +21,24 @@ class UserActivity {
     return parseFloat(((milesByDate[0].numSteps * this.userData.strideLength) / 5280).toFixed(2))
   }
 
+  userStepCountByWeek() {
+    return this.filteredActivity.slice(-7).map(activity => activity.numSteps)
+  };
+
   userMinutesActiveByDate() {
     let minutesActive = this.filteredActivity.slice(-1)
     return minutesActive[0].minutesActive
   }
 
   userMinutesActiveByWeek() {
-    let activityWeek = this.filteredActivity.slice(-7).map(activityObject => activityObject.minutesActive)
+    return this.filteredActivity.slice(-7).map(activityObject => activityObject.minutesActive)
+  }
 
+  userWeeklyMinutesActiveAverage() { 
     let avg = this.filteredActivity.reduce((avg, activityUserArray) => {
       return avg += activityUserArray.minutesActive;
     }, 0)
-    return parseFloat((avg / activityWeek.length).toFixed(2));
+    return parseFloat((avg / this.userMinutesActiveByWeek().length).toFixed(2));
   }
 
   userStepsByWeek(id) {
@@ -40,13 +46,11 @@ class UserActivity {
       return activityObject.userID === id;
     })
 
-    let activityWeek = activityDataFilter.slice(-7).map(activityObject => activityObject.numSteps)
-
-    let average = activityWeek.reduce((avg, activityUserArray) => {
+    let average = this.userStepCountByWeek().reduce((avg, activityUserArray) => {
       return avg += activityUserArray;
     }, 0)
 
-    return parseInt((average / activityWeek.length));
+    return parseInt((average / this.userStepCountByWeek().length));
   }
 
   userStepGoalMetByDate(date) {
@@ -54,6 +58,10 @@ class UserActivity {
       return activityObject.date === date;
     })
     return dailySteps.numSteps > this.userData.dailyStepGoal
+  }
+
+  userStairsClimbedByWeek() {
+    return this.filteredActivity.slice(-7).map(activityObject => activityObject.flightsOfStairs)
   }
 
   userStepGoalMetAllTime() {

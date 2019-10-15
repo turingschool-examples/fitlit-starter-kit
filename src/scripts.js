@@ -221,7 +221,7 @@ let friendsActivityLastWeek = friends.map(e => userActivity.userStepsByWeek(e));
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: 'Weekly View of Step Count',
-        data: userActivity,
+        data: userActivity.userStepCountByWeek(randomUser),
         backgroundColor: ['rgb(112, 28, 1, 0.7)', 'rgb(112, 56, 1, 0.7)', 'rgb(112, 84, 1, 0.7)', 'rgb(112, 111, 1, 0.7)', 'rgb(85, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(112, 28, 1, 0.7)'],
       }]
     },
@@ -242,7 +242,7 @@ let friendsActivityLastWeek = friends.map(e => userActivity.userStepsByWeek(e));
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: 'Weekly View of Minutes Active',
-        data: userActivity,
+        data: userActivity.userMinutesActiveByWeek(randomUser),
         backgroundColor: ['rgb(112, 28, 1, 0.7)', 'rgb(112, 56, 1, 0.7)', 'rgb(112, 84, 1, 0.7)', 'rgb(112, 111, 1, 0.7)', 'rgb(85, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(112, 28, 1, 0.7)'],
       }]
     },
@@ -263,7 +263,7 @@ let friendsActivityLastWeek = friends.map(e => userActivity.userStepsByWeek(e));
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [{
         label: 'Weekly View of Stairs Climbed',
-        data: userActivity,
+        data: userActivity.userStairsClimbedByWeek(randomUser),
         backgroundColor: ['rgb(112, 28, 1, 0.7)', 'rgb(112, 56, 1, 0.7)', 'rgb(112, 84, 1, 0.7)', 'rgb(112, 111, 1, 0.7)', 'rgb(85, 112, 1, 0.7)', 'rgb(57, 112, 1, 0.7)', 'rgb(112, 28, 1, 0.7)'],
       }]
     },

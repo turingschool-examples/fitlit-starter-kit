@@ -15,6 +15,7 @@
     this.sleepQualityRecord = [];
     this.activityRecord = [];
     this.accomplishedDays = [];
+    this.trendingDays = [];
   }
   getFirstName() {
     var names = this.name.split(' ');
@@ -120,6 +121,17 @@
       }
       return sum;
     }, 0) / 7).toFixed(1);
+  }
+  findTrendingDays() {
+    var positiveDays = [];
+    for (var i = 0; i < this.activityRecord.length; i++) {
+      if (this.activityRecord[i + 1] && this.activityRecord[i].steps > this.activityRecord[i + 1].steps) {
+        positiveDays.unshift(this.activityRecord[i].date);
+      } else if (positiveDays.length > 2) {
+        this.trendingDays.push(`You had a ${positiveDays.length} day streak from ${positiveDays[0]} - ${positiveDays[positiveDays.length - 1]}!`);
+        positiveDays = [];
+      }
+    }
   }
 }
 

@@ -9,11 +9,15 @@ $(document).ready(() => {
     const firstName = currentPerson.name.split(' ');
     const hydration = new Hydration(hydrationData, currentPerson.id);
     const sleep = new Sleep(sleepData, currentPerson.id, userData)
+    const activity = new Activity(activityData, currentPerson.id, userData)
+    console.log(activity)
+    activity.findCurrentUserActivityData()
     console.log(hydration.findCurrentUserHydrationData());
     console.log(sleep.findCurrentUserSleepData())
     console.log(sleep.calculateHoursSleptEachDayByUserOverSpecificWeek())
     console.log(hydration.calculateAmtDrankByUserSpecificDate(currentDate))
     // console.log(sleep.returnHoursSleptByUserOnSpecificDate(currentDate)
+    // console.log(calculateMilesUserWalkedOnSpecificDate(currentDate))
     
     
 
@@ -29,6 +33,15 @@ $(document).ready(() => {
     $('.hydration2').text(`Your water intake over the last week was ${hydration.returnDrinkAmtEachDayOverWeekByUser()} oz of water`);
     $('.sleep2').text(`Your hours slept today ${sleep.returnHoursSleptByUserOnSpecificDate(currentDate)}`);
     $('.sleep3').text(`Your sleep quality today ${sleep.returnSleepQualityByUserOnSpecificDate(currentDate)}`);
+    $('.sleep4').text(`Your sleep quality over the last week was ${sleep.calculateEachDaysSleepQualityForUserOverSpecificWeek()}`);
+    $('.sleep5').text(`Your all time average sleep quality was ${sleep.calculateAvgSleepQualityPerDayByUser()}`);
+    $('.sleep6').text(`Your all time average of hours slept has been ${sleep.calculateAvgHoursSleptPerDayByUser()}`);
+    $('.activity1').text(`Your distance traveled in miles based on your stepcount for the latest day was ${activity.calculateMilesUserWalkedOnSpecificDate(currentDate)}`);
+
+
+
+
+    
 
     
 

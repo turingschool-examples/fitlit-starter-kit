@@ -293,3 +293,10 @@ p {
   width: 50%;
   margin: 150px auto;
 }
+
+.step-trend-section {
+  display: flex;
+  width: 80%;
+  margin: 75px auto;
+  height: 80%;
+}

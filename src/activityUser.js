@@ -118,7 +118,6 @@ class ActivityUser {
   }
 }
 
-
 if (typeof module !== 'undefined') {
   module.exports = ActivityUser;
 }

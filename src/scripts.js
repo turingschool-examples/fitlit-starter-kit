@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
 let user;
 let userRepo;
 let hydroUser;
@@ -12,6 +12,10 @@ $("#login-page-button").click(clickLoginButton);
 $("body").on("click", "#aside-step-challenge", addFriendsTotalStepsByWeek);
 $("body").on("click", "#aside-step-challenge", function() {
   $("#step-challenge-background").toggleClass("hidden");
+});
+$("body").on("click", "#aside-step-trend", addStepTrend);
+$("body").on("click", "#aside-step-trend", function() {
+  $("#step-trend-background").toggleClass("hidden");
 });
 
 function clickLoginButton(event) {
@@ -38,12 +42,7 @@ function clickLoginButton(event) {
     addMinutesActiveByDay();
     addNumStepsForLatestDay();
     addWeeklyActivityDataByDay();
-    test();
   }
-}
-
-function test() {
-  activityUser.getStepIncreaseTrend();
 }
 
 function instantiateUserData(usersData) {
@@ -88,7 +87,6 @@ function instantiateFriendsActivity() {
 }
 
 function addFriendsTotalStepsByWeek() {
-  console.log($("#friend-weekly-steps-section").length);
   if ($("#friend-weekly-steps-section").length === 0) {
     let friends = instantiateFriendsUser();
     let friendsActivity = instantiateFriendsActivity();
@@ -96,7 +94,7 @@ function addFriendsTotalStepsByWeek() {
       <div class="step-challenge-background hidden" id="step-challenge-background">
         <section class="section-style step-challenge-section" id="friend-weekly-steps-section">
         </section
-      </div>`)
+      </div>`);
     friendsActivity.forEach((friend, index) => {
       let totalfriendStepsByWeek = friend.calcTotalStepsByWeek('2019/09/22');
       let friendFirstName = friends[index].getFirstName();
@@ -106,6 +104,34 @@ function addFriendsTotalStepsByWeek() {
               <p>${totalfriendStepsByWeek}</p>
             </div>`);
     });
+  }
+}
+
+function addStepTrend() {
+  if ($("#step-trend-section").length === 0) {
+    let userStepTrend = activityUser.getStepIncreaseTrend();
+    $("#aside-step-trend").after(`
+      <div class="step-challenge-background hidden" id="step-trend-background">
+        <section class="section-style step-trend-section" id="step-trend-section">
+        </section
+      </div>`);
+    let num = 0;
+    userStepTrend.forEach((trend, index) => {
+      if(index === 0 || trend.numSteps < userStepTrend[index - 1].numSteps) {
+        num = 0;
+        $("#step-trend-section").append(`
+        <div id="${index}">
+          <h3>${trend.date}</h3>
+          <p>${trend.numSteps}</p>
+        </div>`);
+        num += 1
+      } else {
+        $(`#${index - num}`).append(`
+        <h3>${trend.date}</h3>
+        <p>${trend.numSteps}</p>`);
+        num += 1;
+      }
+    })
   }
 }
 
@@ -298,7 +324,7 @@ function displayUserPage() {
         </section>
         <section class="aside-style">
           <button class="aside-trend-button" id="aside-step-challenge">Step Challenge</button>
-          <button class="aside-trend-button">Step Trend</button>
+          <button class="aside-trend-button" id="aside-step-trend">Step Trend</button>
         </section>
       </div>
     </aside>

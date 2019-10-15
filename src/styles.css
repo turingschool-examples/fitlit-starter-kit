@@ -1,5 +1,5 @@
 * {
-  color: #fff;
+  /* color: #000; */
   font-family: 'Nanum Gothic', sans-serif;
   margin: 0;
   padding: 0;
@@ -13,7 +13,7 @@ body {
 
 header {
   background: linear-gradient(45deg, #CB79DD, #2eafff);
-  border-bottom: solid 2px rebeccapurple;
+  border-bottom: solid 2px #000;
   padding: 15px;
   display: flex;
   width: 100%;
@@ -44,7 +44,8 @@ h1 {
   text-align: left;
   margin-top: 5px;
   padding-left: 10px;
-  font-size: 1.1em;
+  font-size: 1em;
+  color: #000;
 }
 
 .info--wrapper {
@@ -56,7 +57,7 @@ h1 {
 .contact--label {
   padding-right: 20px;
   font-weight: 700;
-  color: pink;
+  color:#000;
 }
 
 .user--info {
@@ -95,42 +96,56 @@ h1 {
 }
 
 .hydration--data-chart {
-  height: 30%;
+  height: 35%;
   width: 40%;
   margin: 20px;
   background-color: rgb(138, 146, 150);
   background-size: auto;
+  border: solid 4px rgb(73, 196, 104);
+  border-radius: 20px;
   /* filter: brightness(60%); */
 }
 
 .hydration--widget {
-  width: 25%;
+  width: 20%;
   height: 20%;
   padding: 2%;
   margin: 2%;
-  border: solid 4px rgb(238, 170, 254);
-  background-color: #79c6f5;
+  border: solid 4px #79c6f5;
+  border-radius: 20px;
+  background-color: #000;
+  text-align: center;
+  font-size: 1.3em;
+  color: #79c6f5;
+}
+
+.widget--variable {
+  color: #79c6f5;
+  font-size: 2em;
+  font-weight: 700;
+
 }
 
 .sleep--data-chart {
   height: 40%;
   width: 40%;
   margin: 20px;
-  background-color: rgb(90, 240, 127);
+  background-color: rgb(73, 196, 104);
   background-size: auto;
+  border-radius: 20px;
   border: solid 4px #79c6f5;
 }
 
 .img-user-icon {
   display: flex;
   align-self: flex-start;
-  width: 12%;
-  border-radius: 59%;
+  width: 7%;
+  border-radius: 75%;
 }
 
 .user-icon {
-  width: 100%;
-  height: 100%;
-  border-radius: 58%;
+  width: 90%;
+  height: 90%;
+  border-radius: 100px;
 }
 

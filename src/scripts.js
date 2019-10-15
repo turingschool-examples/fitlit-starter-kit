@@ -11,7 +11,7 @@ const header = document.querySelector('header');
 header.insertAdjacentHTML('beforeend', `<h2 class='name--display'>Welcome, ${randomUser.name}</h2>
   <div class="contact-container">
     <div class='img-user-icon'>
-      <img class="user-icon" src="../images/user-icon-2.png">
+      <img class="user-icon" src="../images/user-icon-final.png">
     </div>
     <div class='contact--info'>
       <div class='info--wrapper'>

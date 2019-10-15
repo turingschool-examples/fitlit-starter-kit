@@ -1,46 +1,67 @@
 class Activity {
-    constructor(activityData,userId, allUsersData) {
+    constructor(activityData, userId, allUsersData) {
         this.currentActivityData = activityData;
         this.userID = userId;
         this.currentUserActivityData;
         this.allUsersData = allUsersData
+        this.friend1;
+        this.friend2;
+        this.friend3;
+    }
+
+    findFriend1ActivityData(idArray) {
+        this.friend1 = this.currentActivityData.filter((userInfo) =>
+            idArray[0] === userInfo.userID);
+        return this.friend1;
+    }
+
+    findFriend2ActivityData(idArray) {
+        this.friend2 = this.currentActivityData.filter((userInfo) =>
+            idArray[1] === userInfo.userID);
+        return this.friend2;
+    }
+
+    findFriend3ActivityData(idArray) {
+        this.friend3 = this.currentActivityData.filter((userInfo) =>
+            idArray[2] === userInfo.userID);
+        return this.friend3;
     }
 
     findCurrentUserActivityData() {
         this.currentUserActivityData = this.currentActivityData.filter((userInfo) =>
-        userInfo.userID === this.userID);
+            userInfo.userID === this.userID);
         return this.currentUserActivityData;
     }
 
     returnNumberOfStepsForUserOnSpecificDate(date) {
-      let stepTotalForDay = this.currentUserActivityData.find(userBlock => {
-        return userBlock.date === "2019/06/15"
-      })
+        let stepTotalForDay = this.currentUserActivityData.find(userBlock => {
+            return userBlock.date === "2019/06/15"
+        })
 
-      return stepTotalForDay.numSteps
+        return stepTotalForDay.numSteps
     }
 
     returnNumberOfStairsClimbedForUserOnSpecificDate(date) {
-      let stairsClimbedForDay = this.currentUserActivityData.find(userBlock => {
-        return userBlock.date === "2019/06/15"
-      })
+        let stairsClimbedForDay = this.currentUserActivityData.find(userBlock => {
+            return userBlock.date === "2019/06/15"
+        })
 
-      return stairsClimbedForDay.flightsOfStairs
+        return stairsClimbedForDay.flightsOfStairs
     }
 
     calculateMilesUserWalkedOnSpecificDate(date) {
-      let userDateActivity = this.currentUserActivityData.find(user => {
-        return user.date === date
-    })
-      let numSteps = userDateActivity.numSteps;
-      let userInfo = this.allUsersData.find(user => {
-        return user.id == userDateActivity.userID
-      })
+        let userDateActivity = this.currentUserActivityData.find(user => {
+            return user.date === date
+        })
+        let numSteps = userDateActivity.numSteps;
+        let userInfo = this.allUsersData.find(user => {
+            return user.id == userDateActivity.userID
+        })
 
-      let userStrideLength = userInfo.strideLength;
-      let mileStrideLength = 5280 / userStrideLength;
-      let milesWalked = numSteps / mileStrideLength;
-      return parseFloat(milesWalked.toFixed(2));
+        let userStrideLength = userInfo.strideLength;
+        let mileStrideLength = 5280 / userStrideLength;
+        let milesWalked = numSteps / mileStrideLength;
+        return parseFloat(milesWalked.toFixed(2));
     }
 
     returnMinutesActiveByUserOnSpecificDate(date) {
@@ -54,9 +75,9 @@ class Activity {
     calculateAvgMinutesActiveForUserOnSpecificWeek() {
         let userSevenDaysActive = this.currentUserActivityData.slice(-7)
         let minutesActiveSevenDayAverage = userSevenDaysActive.reduce((acc, currentElement) => {
-            acc+=currentElement.minutesActive
+            acc += currentElement.minutesActive
             return acc
-        }, 0)/userSevenDaysActive.length
+        }, 0) / userSevenDaysActive.length
 
         return Math.round(minutesActiveSevenDayAverage);
     }
@@ -64,9 +85,9 @@ class Activity {
     calculateAvgStepsTakenByUserOnSpecificWeek() {
         let userSevenDaysSteps = this.currentUserActivityData.slice(-7)
         let stepsTakenSevenDayAverage = userSevenDaysSteps.reduce((acc, currentElement) => {
-            acc+=currentElement.numSteps
+            acc += currentElement.numSteps
             return acc
-        }, 0)/userSevenDaysSteps.length
+        }, 0) / userSevenDaysSteps.length
 
         return Math.round(stepsTakenSevenDayAverage);
     }
@@ -74,12 +95,13 @@ class Activity {
     calculateAvgFlightsOfStairsClimbedForUserOnSpecificWeek() {
         let userSevenDaysStairs = this.currentUserActivityData.slice(-7)
         let stairsClimbedSevenDayAverage = userSevenDaysStairs.reduce((acc, currentElement) => {
-            acc+=currentElement.flightsOfStairs
+            acc += currentElement.flightsOfStairs
             return acc
-        }, 0)/userSevenDaysStairs.length
+        }, 0) / userSevenDaysStairs.length
 
         return Math.round(stairsClimbedSevenDayAverage);
     }
+
 
     hasUserStepGoalBeenReachedOnSpecificDate(date) {
         let currentUserByDate = this.currentUserActivityData.find(user => {
@@ -169,7 +191,61 @@ class Activity {
         let mostActiveDate = sortedUserMinutes.shift()
         return mostActiveDate.date
     }
-  }
+
+    userStepCountForWeek() {
+        let userWeeklyActivityData = this.currentUserActivityData.slice(-7);
+        let userNumStepsForWeek = userWeeklyActivityData.reduce((acc, currentElement) => {
+            acc += currentElement.numSteps
+            return acc
+        }, 0)
+        return userNumStepsForWeek
+    }
+
+    friendsStepCountForWeek() {
+        let friendWeekArray = this.friend1.slice(-7);
+        let totalFriendSteps = friendWeekArray.reduce((acc, currentElement) => {
+            acc += currentElement.numSteps;
+            return acc
+        }, 0)
+        return totalFriendSteps;
+    }
+
+    friend2StepCountForWeek() {
+        let friendWeekArray = this.friend2.slice(-7);
+        let totalFriendSteps = friendWeekArray.reduce((acc, currentElement) => {
+            acc += currentElement.numSteps;
+            return acc
+        }, 0)
+        return totalFriendSteps;
+    }
+
+    friend3StepCountForWeek() {
+        let friendWeekArray = this.friend3.slice(-7);
+        let totalFriendSteps = friendWeekArray.reduce((acc, currentElement) => {
+            acc += currentElement.numSteps;
+            return acc
+        }, 0)
+        return totalFriendSteps;
+    }
+
+    findHighestStepCount() {
+        let friend1 = this.friendsStepCountForWeek();
+        let friend2 = this.friend2StepCountForWeek();
+        let friend3 = this.friend3StepCountForWeek();
+        let user = this.userStepCountForWeek();
+
+        if (Math.max(friend1, friend2, friend3, user) === user) {
+            return `You were highest this week!`;
+        } else if (Math.max(friend1, friend2, friend3, user) === friend1) {
+            return `Your friend1 was the highest this week!`;
+        } else if (Math.max(friend1, friend2, friend3, user) === friend2) {
+            return `Your friend2 was the highest this week!`;
+        } else if (Math.max(friend1, friend2, friend3, user) === friend3) {
+            return `Your friend3 was the highest this week!`;
+        }     
+    }
+}
+
 
 if (typeof module !== 'undefined') {
     module.exports = Activity;

@@ -257,6 +257,23 @@ h4 {
   background-image: url(../images/sleep-calendar.png);
 }
 
+.trending-button {
+  margin-left: 1vw;
+  background-position: center;
+  background-size: 3.4vw;
+  height: 3.4vw;
+  width: 3.4vw;
+  border: none;
+}
+
+.steps-trending-button {
+  background-image: url(../images/steps-trending.png);
+}
+
+.stairs-trending-button {
+  background-image: url(../images/stairs-trending.png);
+}
+
 /* HIDE CARDS */
 .hide {
   display: none;

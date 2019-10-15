@@ -4,6 +4,7 @@ const User = require('../src/User');
 const mockUserData = require('../mock/mockUserData');
 const mockUserData2 = require('../mock/mockUserData2');
 const mockSleepData = require('../mock/mockSleepData');
+const sleepData = require('../data/sleep');
 const Sleep = require('../src/Sleep');
 
 
@@ -57,8 +58,28 @@ describe('Sleep', () => {
         expect(sleep.calculateHoursSleptEachDayByUserOverSpecificWeek()).to.eql([6.1, 4.1, 8, 10.4, 10.7, 9.3, 7.8]);
     });
 
+    it('should return the daily amounts a user slept over a week', () => {
+        sleep.findCurrentUserSleepData();
+        expect(sleep.calculateEachDaysSleepQualityForUserOverSpecificWeek()).to.eql([ 2.2, 3.8, 2.6, 3.1, 1.2, 1.2, 4.2]);
+    });
+
     it('should return avg hours slept for all users', () => {
         expect(sleep.calculateAvgSleepQualityAllUsers()).to.equal(8.26);
+    });
+
+    it('should return users with avg sleep quality over 3 for a specific week', () => {
+      sleep2 = new Sleep(sleepData, 1, mockUserData2);
+        expect(sleep2.findUsersWithAvgSleepQualityMoreThanThreeOverSpecificWeek("2019/09/15")).to.eql([
+          "Mae Connelly", "Erick Schaden", "Dannie Berge", "Tom Schmeler", "Ezequiel Feest",
+          "Alexandrea Wehner", "Maria Kemmer", "Greta Corkery", "Bertrand Yundt", "Clay Pfannerstill",
+          "Kenyatta Boyle", "Jennie O'Hara", "Jasper Stracke", "Herbert Douglas"
+       ]);
+       expect(sleep2.findUsersWithAvgSleepQualityMoreThanThreeOverSpecificWeek("2019/07/17")).to.eql([
+         "Luisa Hane", "Mae Connelly", "Erick Schaden", "Jerrold Bogisich", "Breanne Fay", "Roslyn Bernhard",
+         "Dannie Berge", "Otis Kuhic", "Ezequiel Feest", "Jade Walter", "Dan Hodkiewicz", "Ora O'Connell",
+         "Maria Kemmer", "Karli Rodriguez", "Colten Trantow", "Lindsay Ruecker", "Nico Bechtelar",
+         "Erling Anderson", "Kaitlyn Weber", "Ernestine Heathcote", "Cora Rice", "Vincenzo Hayes", "Jevon Koss"
+      ]);
     });
 
     it('should return the deepest sleepers for a specific date', () => {
@@ -67,7 +88,7 @@ describe('Sleep', () => {
     });
 
     it('should return the date the current user slept the best', () => {
-        sleep.findCurrentUserSleepData(); 
+        sleep.findCurrentUserSleepData();
         expect(sleep.findDateUserSleptBest()).to.equal("2019/06/21");
     });
 });

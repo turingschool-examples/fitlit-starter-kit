@@ -132,7 +132,7 @@ describe('User', function() {
     });
     expect(user.accomplishedDays.length).to.equal(1);
   })
-  it('findTrendingDays should find 3+ days with positive trend', function() {
+  it('findTrendingStepDays should find 3+ days with positive trend', function() {
     user.activityRecord = [{
       "date": "2019/06/29", "steps": 2},
       {"date": "2019/06/28", "steps": 1},
@@ -146,7 +146,24 @@ describe('User', function() {
       {"date": "2019/06/20", "steps": 8},
       {"date": "2019/06/19", "steps": 11},
       {"date": "2019/06/18", "steps": 10}];
-      user.findTrendingDays()
-    expect(user.trendingDays).to.deep.equal(['You had a 3 day streak from 2019/06/26 - 2019/06/29!', 'You had a 4 day streak from 2019/06/21 - 2019/06/24!']);;
+      user.findTrendingStepDays()
+    expect(user.trendingStepDays).to.deep.equal(['You had a 3 day streak from 2019/06/26 - 2019/06/29!', 'You had a 4 day streak from 2019/06/21 - 2019/06/24!']);;
+  });
+  it('findTrendingStairsDays should find 3+ days with positive trend', function() {
+    user.activityRecord = [{
+      "date": "2019/06/29", "flightsOfStairs": 4},
+      {"date": "2019/06/28", "flightsOfStairs": 1},
+      {"date": "2019/06/27", "flightsOfStairs": 16},
+      {"date": "2019/06/26", "flightsOfStairs": 15},
+      {"date": "2019/06/25", "flightsOfStairs": 1},
+      {"date": "2019/06/24", "flightsOfStairs": 9},
+      {"date": "2019/06/23", "flightsOfStairs": 3},
+      {"date": "2019/06/22", "flightsOfStairs": 10},
+      {"date": "2019/06/21", "flightsOfStairs": 4},
+      {"date": "2019/06/20", "flightsOfStairs": 3},
+      {"date": "2019/06/19", "flightsOfStairs": 2},
+      {"date": "2019/06/18", "flightsOfStairs": 1}];
+      user.findTrendingStairsDays()
+    expect(user.trendingStairsDays).to.deep.equal(['You had a 3 day streak from 2019/06/26 - 2019/06/29!', 'You had a 5 day streak from 2019/06/19 - 2019/06/24!']);;
   });
 });

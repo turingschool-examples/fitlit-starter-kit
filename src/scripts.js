@@ -28,7 +28,7 @@ $(function() {
     let draggie = new Draggabilly( gridItem );
     $grid.packery( 'bindDraggabillyEvents', draggie );
   });
- 
+
   $('.user__fullName').text(userData[randomUser].name)
   $('.span__currentUser').text(user.getUserFirstName());
   $('.user__address').text(userData[randomUser].address);
@@ -167,6 +167,7 @@ $(function() {
     }
   });
 
+
 const friends = user.getFriends();
 
 friends.unshift(userData[randomUser].id);
@@ -194,4 +195,7 @@ let friendsActivityLastWeek = friends.map(e => userActivity.userStepsByWeek(e));
     }
   });
 
+  //display this on the dom
+let threeDays = userActivity.userThreeDaySteps()
+threeDays.map(e => e.date)
 });

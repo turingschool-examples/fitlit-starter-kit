@@ -92,6 +92,25 @@ class UserActivity {
     }, 0)
     return (usersGoalMet / usersActivity.length)
   }
+
+  userThreeDaySteps() {
+    var steps = 0;
+    var counter = 0;
+    let activityDataFilter = this.filteredActivity.filter(activityObject => {
+      if (steps < activityObject.numSteps) {
+        counter += 1;
+      } else {
+        counter = 0;
+      }
+
+      if (counter === 3) {
+        counter = 0;
+        return activityObject.userID === this.userData.id;
+      }
+        steps = activityObject.numSteps
+    })
+  return activityDataFilter
+  }
 }
 
 

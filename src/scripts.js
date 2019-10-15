@@ -90,13 +90,13 @@ function addFriendsTotalStepsByWeek() {
     let friendsActivity = instantiateFriendsActivity();
     $("#aside-step-challenge").after(`
       <div class="step-challenge-background hidden" id="step-challenge-background">
-        <section id="friend-weekly-steps-section">
+        <section class="step-challenge-section section-style" id="friend-weekly-steps-section">
         </section
       </div>`)
     friendsActivity.forEach((friend, index) => {
       let totalfriendStepsByWeek = friend.calcTotalStepsByWeek('2019/09/22');
       let friendFirstName = friends[index].getFirstName();
-      $("#friend-weekly-steps-section").after(`
+      $("#friend-weekly-steps-section").append(`
             <div>
               <h3>${friendFirstName}</h3>
               <p>${totalfriendStepsByWeek}</p>

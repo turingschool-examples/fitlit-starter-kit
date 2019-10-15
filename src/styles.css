@@ -139,6 +139,18 @@ aside {
 }
 
 .step-challenge-background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  width: 80%;
+  background-color: #00000080;
+}
+
+.step-challenge-section {
+  width: 50%;
+  margin: auto;
 }
 
 .aside-user-info-par {

@@ -19,6 +19,7 @@ Testing was a key component in this project.  Tests were written for all functio
 ## User Information
 
 ## Authors
-Trisha Langlois 
+[Trisha Langlois](https://github.com/trishalanglois)
+
 [Kayla Wood](https://github.com/kaylaewood)
 

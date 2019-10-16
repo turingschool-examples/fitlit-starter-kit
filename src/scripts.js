@@ -317,7 +317,7 @@ function addOzToday() {
 }
 
 function addWeeklyOzByDay() {
- let weeklyUserOz =  hydroUser.getDailyOzPerWeek();
+ let weeklyUserOz =  hydroUser.getDailyOzPerWeek(date);
   weeklyUserOz.forEach(day => {
     $("#card-weekly-oz-header").after(`
     <section class="section-style">

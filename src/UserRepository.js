@@ -32,7 +32,7 @@ class UserRepository {
     })
     let sumOfSteps = allUsersStepsCount.reduce((stepsSum, activityCollection) => {
       activityCollection.forEach(activity => {
-        stepsSum += activity.numSteps
+        stepsSum += activity.steps
       })
       return stepsSum;
     }, 0);

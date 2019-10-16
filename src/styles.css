@@ -350,7 +350,16 @@ p {
 .step-trend-section {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   width: 80%;
   margin: 75px auto;
   height: 80%;
+  overflow: auto;
 }
+
+.step-trend-div {
+  background-color: lightgrey;
+  margin: 10px;
+  width: 20%;
+}
+

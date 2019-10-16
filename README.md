@@ -1,5 +1,5 @@
 # FitLit - The Best Fitness Tracker You've Never Heard Of
-#### Contributors: John Rodgers Adams and Scott Ertmer
+### Contributors: John Rodgers Adams and Scott Ertmer
 
 #### A Mod 2 paired project intended to develop skills around:
 * Implementing ES6 classes

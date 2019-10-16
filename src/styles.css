@@ -92,7 +92,7 @@ aside {
   grid-area: aside;
   border-radius: 5px;
   width: 97%;
-  margin: 0 auto;
+  margin: 0 10px;
   background-color: #EBECF0;
   height: 100%;
 }
@@ -106,8 +106,7 @@ aside {
   font-size: 150%;
   text-align: center;
   width: 90%;
-  margin: auto;
-  padding-top: 10px;
+  margin: 15px auto;
 }
 
 .aside-style {
@@ -116,6 +115,7 @@ aside {
   border-radius: 5px;
   width: 90%;
   margin: 25px auto;
+  padding: 5px;
 }
 
 .aside-user-info-header {
@@ -185,6 +185,7 @@ li {
 }
 
 .aside-user-info-container {
+  border-radius: 5px;
   height: 83%;
   overflow: auto;
   background-color: #FAE68B;

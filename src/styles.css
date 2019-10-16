@@ -17,6 +17,11 @@ header {
   height: 9vw;
 }
 
+button:active {
+  border: none;
+  outline: none;
+}
+
 #profile-button {
   background-image: url(../images/profile.png);
   background-position: center;

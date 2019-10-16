@@ -1,15 +1,13 @@
 # FitLit Starter Kit
 
+* by Austen Dunn [github account](https://github.com/Dunn-Austen)
+* by Foster Taylor [github account](https://github.com/foster55f)
 
-This is a collaboration from:
-* Austen Dunn [github account](https://github.com/Dunn-Austen)
-* Foster Taylor [github account](https://github.com/foster55f)
-
-This project is an exercise style application focused on displaying user information in regards to their daily/weekly activity, hydration, and sleep habits.  Users have been randomly selected from datasets.
+This project was a workout style application giving detailed information about a users hydration, activity, and sleep data.
 
 ## Our Goals
-- Improve knowledge
-- Use classes and OOP to build a data driven application about exercise
+- Improve ability to work with OOP
+- build a data driven application about exercise
 - Implement dry code
 - Implement Test Driven Development
 - Build an application that would be useful and informative to a user

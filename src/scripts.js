@@ -5,6 +5,8 @@ const data = {
   activity: activityData
 }
 
+
+
 const userRepository = new UserRepository(data);
 userRepository.findToday();
 let user;
@@ -18,6 +20,7 @@ $(document).ready(function() {
   $('.login button').on('click', function() {
     $('.login-header, .page-header, .empty-board').fadeToggle(100);
     $('.board').css('display', 'flex');
+    $('.statistic').show();
     createUser();
     fillUserInfo();
     getFriends();
@@ -25,6 +28,7 @@ $(document).ready(function() {
     showHydration();
     showSleep();
     showActivity();
+    activity.findHighestStreak(userRepository);
   });
 
   // LOG OUT FUNCTIONALLITY
@@ -341,4 +345,26 @@ $(document).ready(function() {
         break;
     }
   }
+
+  $('.statistic>header').on('click', function() {
+    $(this).hide();
+    $('.statistic').css('height', '100%');
+    $('.statistic main').show();
+    updateStreaks();
+  });
+
+  function updateStreaks() {
+    const $streakHighest = activity.findHighestStreak(userRepository);
+    const $allStreaks = activity.findStreaks(userRepository);
+    $('.streak-number').text($streakHighest);
+    $allStreaks.forEach(streak => {
+      $('.statistic footer').append(`<p class='tiny'>${streak.streak} days in row</p><p>${streak.period}</p>`);
+    });
+  }
+
+  $('.closer-stats').on('click', function () {
+    $('.statistic header').show();
+    $('.statistic').css('height', '7%');
+    $('.statistic main').hide();
+  });
 });

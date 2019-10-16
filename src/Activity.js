@@ -100,6 +100,39 @@ class Activity {
     }, 0);
     return stairRecord;
   }
+
+  findDaysWithIncreasingSteps(userRepo) {
+    const dataset = userRepo.activityUsersData.filter(data => data.userID === this.userID);
+    let counter = 0;
+    const days = dataset.reduce((days, data) => {
+      if (!days[counter]) {
+        days[counter] = [data];
+      } else if (data.numSteps > days[counter][days[counter].length - 1].numSteps) {
+        days[counter].push(data);
+      } else {
+        counter ++;
+        days[counter] =[data];
+      }
+      return days;
+    }, []).filter(days => days.length > 3);
+    return days;
+  }
+
+  findStreaks(userRepo) {
+    const dayGroups = this.findDaysWithIncreasingSteps(userRepo);
+    const streaks = dayGroups.reduce((rows, group) => {
+      const length = group.length
+      const row = {period: `${group[0].date} - ${group[length - 1].date}`, streak: length };
+      rows.push(row);
+      return rows.sort((a,b) => (a.streak > b.streak) ? 1 : -1);
+    }, [ ]);
+    return streaks;
+  }
+
+  findHighestStreak(userRepo) {
+    const streaks = this.findStreaks(userRepo);
+    return streaks[streaks.length - 1].streak;
+  }
 }
 
 if (typeof module !== 'undefined') {

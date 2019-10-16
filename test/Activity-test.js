@@ -12,7 +12,7 @@ let activity
 describe('Activity', () => {
 
     beforeEach( () => {
-        activity = new Activity(mockActivityData,2,mockCurrentUserActivityData);
+        activity = new Activity(mockActivityData, 2, mockCurrentUserActivityData);
     });
 
     it('should return true', () => {
@@ -34,7 +34,8 @@ describe('Activity', () => {
 
     it('should find number of steps for a user on a given day', () => {
         activity.findCurrentUserActivityData();
-        expect(activity.returnNumberOfStepsForUserOnSpecificDate("2019/06/15")).to.equal(4294);
+        expect(activity.returnNumberOfStepsForUserOnSpecificDate("2019/06/15"))
+        .to.equal(4294);
     });
 
     it('should find flights of stairs climbed for a user on a given day', () => {

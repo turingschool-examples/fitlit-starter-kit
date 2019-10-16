@@ -9,14 +9,15 @@ class Sleep {
   findCurrentUserSleepData() {
     this.currentUserSleepData = this.currentSleepData.filter((userInfo) =>
       userInfo.userID === this.userID);
-      return this.currentUserSleepData;
+
+    return this.currentUserSleepData;
   }
 
   calculateAvgHoursSleptPerDayByUser() {
     let avgSleep = this.currentUserSleepData.reduce((acc, day) => {
       acc += day.hoursSlept;
       return acc
-    }, 0)/this.currentUserSleepData.length;
+    }, 0) / this.currentUserSleepData.length;
 
     return parseFloat(avgSleep.toFixed(2))
   }
@@ -25,7 +26,7 @@ class Sleep {
     let avgSleepQuality = this.currentUserSleepData.reduce((acc, day) => {
       acc += day.sleepQuality;
       return acc
-    }, 0)/this.currentUserSleepData.length;
+    }, 0) / this.currentUserSleepData.length;
 
     return parseFloat(avgSleepQuality.toFixed(2))
   }
@@ -66,7 +67,7 @@ class Sleep {
     let avgHrsSlept = this.currentSleepData.reduce((acc, dataBlock) => {
       acc += dataBlock.hoursSlept;
       return acc
-    }, 0)/this.currentSleepData.length;
+    }, 0) / this.currentSleepData.length;
 
     return parseFloat(avgHrsSlept.toFixed(2))
   }
@@ -151,7 +152,7 @@ class Sleep {
       if (idsForDeepestSleepers.includes(userBlock.id)) {
          acc.push(userBlock.name)
       }
-      
+
       return acc
     }, []);
   }
@@ -171,4 +172,4 @@ class Sleep {
 }
 if (typeof module !== 'undefined') {
     module.exports = Sleep;
-};
+}

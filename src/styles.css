@@ -23,20 +23,62 @@ body {
 
 .main-login-page {
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, .3)), url("../images/login-background.jpg");
+  background-size: cover;
 }
 
 .login-page-header {
   font-size: 250%;
-  margin: 150px;
+  margin: 75px;
 }
 
 .login-page-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 50%;
+  justify-content: space-around;
+}
+
+.login-paragraph {
+  font-size: 125%;
+  width: 70%;
+  text-align: center;
+}
+
+.login-page-input {
+  margin: 25px;
+  padding: 5px;
+  width: 40%;
+}
+
+.login-page-button {
+  width: 20%;
+  background-color: #A0A1A8;
+  cursor: pointer;
+  font-size: 125%;
+  padding: 5px;
+  border-radius: 5px;
+  outline: 0;
+}
+
+.login-page-button:hover {
+  background-color: #777981;
+  width: 30%;
+}
+
+.login-page-button:active {
+  background-color: lightgrey;
+  box-shadow: 0 3px black;
+  transform: translateY(3px);
+}
+
+.error-message {
+  color: red;
 }
 
 .body-content-container {

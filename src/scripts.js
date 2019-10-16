@@ -132,10 +132,9 @@ function logout() {
     <main class="main-login-page" id="main-login-page">
       <h1 class="login-page-header">Ready to get FitLit?!</h1>
       <form class="login-page-form" id="login-page-form">
-        Welcome to FitLit!
-        <input type="text" placeholder="Enter email here:" class="login-page-input" id="login-page-input">
+        <p class="login-paragraph">Login: <input type="text" placeholder="Enter email here:" class="login-page-input" id="login-page-input"></p>
+        <p class="login-paragraph">Date: <input class="login-page-input" type="text" id="datepicker" placeholder="Choose a date:"></p>
         <input type="button" value="Log In" class="login-page-button" id="login-page-button">
-        <p>Date: <input type="text" id="datepicker"></p>
       </form>
     </main>
   `);
@@ -262,7 +261,7 @@ function addStepTrend() {
 
 function displayErrorMessage() {
   if ($("#error-message").length === 0 && !$("#login-page-input").val()) {
-    $("#login-page-input").after("<p id='error-message'>Please enter your email</p>");
+    $("#login-page-input").after("<p id='error-message' class='error-message'>Please enter your email</p>");
   } else if ($("#error-message").length > 0 && $("#login-page-input").val()) {
     $("#error-message").remove();
   }
@@ -270,7 +269,7 @@ function displayErrorMessage() {
 
 function displayNoDateMessage() {
   if ($("#no-date-error-message").length === 0 && !$("#datepicker").val()) {
-    $("#login-page-input").after("<p id='no-date-error-message'>Please select a date</p>");
+    $("#datepicker").after("<p id='no-date-error-message' class='error-message'>Please select a date</p>");
   } else if($("#no-date-error-message").length > 0 && $("#datepicker").val()) {
     $("#no-date-error-message").remove();
   }

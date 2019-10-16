@@ -225,6 +225,7 @@ li {
 }
 
 .aside-user-info-container {
+  margin-top: 35px;
   border-radius: 5px;
   height: 91vh;
   overflow: auto;
@@ -269,7 +270,7 @@ li {
     "null activityMetric allTimeSleep";
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  padding: 0 .70%;
+  padding: 8px;
 }
 
 .card-style {
@@ -317,20 +318,50 @@ p {
   margin: 2%;
 }
 
-.card-daily{
+.card-daily {
   height: 38vh;
-  margin: 0 5%;
+  margin: 4% 5%;
   overflow: hidden;
+  -webkit-transform: perspective(1px) translateZ(0);
+   transform: perspective(1px) translateZ(0);
+   -webkit-transition-duration: 0.4s;
+   transition-duration: 0.4s;
+   -webkit-transition-property: transform;
+   transition-property: transform;
+}
+
+.card-daily:hover {
+  transform: scale(1.1);
 }
 
 .card-weekly {
   height: 38vh;
   overflow: hidden;
+  -webkit-transform: perspective(1px) translateZ(0);
+   transform: perspective(1px) translateZ(0);
+   -webkit-transition-duration: 0.3s;
+   transition-duration: 0.3s;
+   -webkit-transition-property: transform;
+   transition-property: transform;
+}
+
+.card-weekly:hover {
+  transform: scale(1.1);
 }
 
 .card-metric {
   height: 38vh;
   overflow: hidden;
+  -webkit-transform: perspective(1px) translateZ(0);
+   transform: perspective(1px) translateZ(0);
+   -webkit-transition-duration: 0.3s;
+   transition-duration: 0.3s;
+   -webkit-transition-property: transform;
+   transition-property: transform;
+}
+
+.card-metric:hover {
+  transform: scale(1.1);
 }
 
 .card-daily-oz {
@@ -381,6 +412,7 @@ p {
   height: 100vh;
   width: 80%;
   background-color: #00000090;
+  z-index: 100;
 }
 
 .users-total-steps-div {
@@ -393,12 +425,33 @@ p {
   background-color: lightgrey;
   border-radius: 5px;
   padding: 10px;
-  width: 15%;
+  width: 18%;
 }
 
 .step-challenge-section {
   width: 50%;
   margin: 150px auto;
+}
+
+.delete-button {
+  background-color: #F1C40F;
+  border-radius: 10%;
+  margin-left: 80%;
+  padding: 2px;
+  width: 15%;
+  font-size: 110%;
+  outline: 0;
+}
+
+.delete-button:hover {
+  background-color: #D4AC0D;
+  width: 17%;
+}
+
+.delete-button:active {
+  background-color: #B7950B;
+  box-shadow: 0 3px #9A7D0A;
+  transform: translateY(3px);
 }
 
 .step-trend-section {

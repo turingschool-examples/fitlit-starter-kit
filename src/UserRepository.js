@@ -18,6 +18,12 @@ class UserRepository {
     this.day = '2019/09/22';
   }
 
+  validateDate(day) {
+    return this.hydrationUsersData.find(data => {
+      return data.date === day;
+    });
+  }
+
   getWeekDates(date) {
     const dates = this.sleepUsersData.reduce((allDates, data) => {
       if (data.userID === 2) {

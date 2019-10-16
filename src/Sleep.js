@@ -10,7 +10,7 @@ class Sleep {
     if (!day) {
       this.date = userRepo.day;
       this.updateInfo(userRepo);
-    } else if (day === 'All day') {
+    } else if (day === 'All time') {
       this.date = userRepo.day;
       this.hoursSlept = this.calculateDayAverageInfo(userRepo, 'hours');
       this.sleepQuality = this.calculateDayAverageInfo(userRepo, 'quality');

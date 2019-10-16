@@ -450,7 +450,7 @@ function displayUserPage() {
     </header>
     <aside>
       <div class="aside-user-name">
-      <h2 class="user-name" id="aside-user-name"></h2>
+      <h3 class="user-name" id="aside-user-name"></h3>
       </div>
       <div class="aside-user-info-container">
         <section class="aside-style">

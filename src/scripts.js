@@ -166,8 +166,6 @@ stepsUserStepsToday.innerText = activityData.find(activity => {
 
 headerName.innerText = `${user.getFirstName()}'S `;
 
-stepsInfoUserStepGoal.innerText = `${user.dailyStepGoal}`;
-
 hydrationUserOuncesToday.innerText = hydrationData.find(hydration => {
   return hydration.userID === user.id && hydration.date === todayDate;
 }).numOunces;
@@ -185,9 +183,6 @@ let sortedHydrationDataByDate = user.ouncesRecord.sort((a, b) => {
 for (var i = 0; i < dailyOz.length; i++) {
   dailyOz[i].innerText = user.addDailyOunces(Object.keys(sortedHydrationDataByDate[i])[0])
 }
-
-stepsInfoUserStepGoal.innerText = `${user.dailyStepGoal}`;
-
 
 sleepUserHoursToday.innerText = sleepData.find(sleep => {
   return sleep.userID === user.id && sleep.date === todayDate;

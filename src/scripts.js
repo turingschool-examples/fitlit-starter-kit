@@ -78,7 +78,6 @@ let stepsCalendarTotalStepsWeekly = document.querySelector('#steps-calendar-tota
 let stepsFriendAverageStepGoal = document.querySelector('#steps-friend-average-step-goal');
 let stepsInfoActiveMinutesToday = document.querySelector('#steps-info-active-minutes-today');
 let stepsInfoMilesWalkedToday = document.querySelector('#steps-info-miles-walked-today');
-let stepsInfoUserStepGoal = document.querySelector('#steps-info-user-step-goal');
 let stepsFriendActiveMinutesAverageToday = document.querySelector('#steps-friend-active-minutes-average-today');
 let stepsFriendStepsAverageToday = document.querySelector('#steps-friend-steps-average-today');
 let stepsTrendingButton = document.querySelector('.steps-trending-button');
@@ -95,11 +94,11 @@ stepsTrendingButton.addEventListener('click', updateTrendingStepDays());
 function flipCard(cardToHide, cardToShow) {
   cardToHide.classList.add('hide');
   cardToShow.classList.remove('hide');
-};
+}
 
 function showDropdown() {
   userInfoDropdown.classList.toggle('hide');
-};
+}
 
 function showInfo() {
   if (event.target.classList.contains('steps-info-button')) {
@@ -156,21 +155,21 @@ function showInfo() {
   if (event.target.classList.contains('sleep-go-back-button')) {
     flipCard(event.target.parentNode, sleepMainCard);
   }
-};
+}
 
 function updateTrendingStairsDays() {
   user.findTrendingStairsDays();
   trendingStairsPhraseContainer.innerHTML = `<p class='trend-line'>${user.trendingStairsDays[0]}</p>`;
-};
+}
 
 function updateTrendingStepDays() {
   user.findTrendingStepDays();
   trendingStepsPhraseContainer.innerHTML = `<p class='trend-line'>${user.trendingStepDays[0]}</p>`;
-};
+}
 
 for (var i = 0; i < dailyOz.length; i++) {
   dailyOz[i].innerText = user.addDailyOunces(Object.keys(sortedHydrationDataByDate[i])[0])
-};
+}
 
 dropdownGoal.innerText = `DAILY STEP GOAL | ${user.dailyStepGoal}`;
 
@@ -205,7 +204,7 @@ sleepFriendWorstSleeper.innerText = userRepository.users.find(user => {
 sleepInfoHoursAverageAlltime.innerText = user.hoursSleptAverage;
 
 stepsInfoMilesWalkedToday.innerText = user.activityRecord.find(activity => {
-   return (activity.date === todayDate && activity.userId === user.id)
+  return (activity.date === todayDate && activity.userId === user.id)
 }).calculateMiles(userRepository);
 
 sleepInfoQualityAverageAlltime.innerText = user.sleepQualityAverage;
@@ -238,7 +237,6 @@ stairsCalendarStairsAverageWeekly.innerText = (user.calculateAverageFlightsThisW
 
 stairsTrendingButton.addEventListener('click', function() {
   user.findTrendingStairsDays();
-  console.log(user.trendingStairsDays);
   trendingStairsPhraseContainer.innerHTML = `<p class='trend-line'>${user.trendingStairsDays[0]}</p>`;
 });
 

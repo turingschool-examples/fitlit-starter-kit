@@ -21,6 +21,7 @@ $(document).ready(function() {
     createUser();
     fillUserInfo();
     getFriends();
+    setChallengeWidget();
     showHydration();
     showSleep();
     showActivity();
@@ -97,6 +98,27 @@ $(document).ready(function() {
       <h5>${friend.name}</h5>
       <p>step goal: ${friend.dailyStepGoal}</p>`);
     })
+  }
+
+  // function showStepComp() {
+  //   activity = new Activity(userRepository);
+  //   activity.getWeekTotal(userRepository.activityData, );
+  // }
+
+  function setChallengeWidget() {
+    const $challengeFriends = user.findFriends(userRepository);
+    let activityNew = new Activity(userRepository);
+    let friendOneAmount = activityNew.getWeekTotal(userRepository.activityUsersData, $challengeFriends[0].id);
+    let friendTwoAmount = activityNew.getWeekTotal(userRepository.activityUsersData, $challengeFriends[1].id);
+    let youChallengerAmount = activityNew.getWeekTotal(userRepository.activityUsersData, user.id);
+    let winner = activityNew.findStepWinner(youChallengerAmount, $challengeFriends[0].name, friendOneAmount, $challengeFriends[1].name, friendTwoAmount)
+    $('.friend1-challenge').text($challengeFriends[0].name);
+    $('.friend2-challenge').text($challengeFriends[1].name);
+    $('.friend1-challenge-steps').text(friendOneAmount);
+    $('.friend2-challenge-steps').text(friendTwoAmount);
+    $('.you-challenge-steps').text(youChallengerAmount);
+    $('.step-winner').text(winner);
+
   }
 
   function showHydration() {
@@ -284,7 +306,8 @@ $(document).ready(function() {
     const $dayEntered = $(this).siblings('input').val();
     const $dropdown = $(this).parent().siblings('.dropdown');
     $(this).parent().children().toggle();
-    $dropdown.hide();
+    $dropdown.toggle();
+    $dropdown.children('div').hide();
     $(this).closest('.widget').find('.date, footer').hide();
     if (userRepository.validateDate($dayEntered)) {
       showInfoForChosenDate($dayEntered, $widgetType, $dropdown);

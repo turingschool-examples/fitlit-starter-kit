@@ -289,7 +289,25 @@ p {
   background-color: #00000080;
 }
 
+.users-total-steps-div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .step-challenge-section {
   width: 50%;
   margin: 150px auto;
+}
+
+.step-trend-section {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 75px auto;
+  height: 80%;
+}
+
+.step-trend-div {
+
 }

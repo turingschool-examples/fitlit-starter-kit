@@ -99,21 +99,21 @@ class ActivityUser {
 
   getStepIncreaseTrend() {
     let trends = this.activityData.filter((day, index) => {
-      if (index > 1) {
-        // console.log(index - 2)
-        if (this.activityData[index - 2].numSteps < this.activityData[index - 1].numSteps < day.numSteps || 
-          this.activityData[index - 1].numSteps < day.numSteps < this.activityData[index + 1].numSteps ||
-          day.numSteps < this.activityData[index + 1].numSteps < this.activityData[index + 2].numSteps) {
-            console.log(this.activityData[index - 2].numSteps)
-            return true;
-        } else {
-          return false
+        if (index > 1 && this.activityData[index - 2].numSteps < this.activityData[index - 1].numSteps &&
+          this.activityData[index - 1].numSteps < day.numSteps) {
+          return true;
         }
-      } else {
+        if (index > 0 && index < this.activityData.length - 1 && this.activityData[index - 1].numSteps < day.numSteps &&
+          day.numSteps < this.activityData[index + 1].numSteps) {
+          return true
+        }
+        if (index < this.activityData.length - 2 && day.numSteps < this.activityData[index + 1].numSteps &&
+          this.activityData[index + 1].numSteps < this.activityData[index + 2].numSteps) {
+          return true;
+        }
         return false;
-      }
-    })
-    console.log(trends);
+      });
+    return trends;
   }
 }
 

@@ -47,4 +47,8 @@ describe('hydroUser', () => {
   { userID: 1, date: '2019/06/23', numOunces: 39 } ]);
   });
 
+  it('should find the total step count for any given week', () => {
+    expect(hydroUser.calcTotalDrankByWeek("2019/06/23")).to.equal(499);
+  });
+
 });

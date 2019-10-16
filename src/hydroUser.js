@@ -21,8 +21,17 @@ class HydroUser {
   getDailyOzPerWeek() {
     return this.hydrationData.slice(-8);
   }
-}
 
+  calcTotalDrankByWeek(date) {
+    let dataDate = this.hydrationData.map(data => data.date);
+    let dateIndex = dataDate.lastIndexOf(date);
+    let weekData = this.hydrationData.slice(dateIndex - 7, dateIndex + 1);
+    return weekData.reduce((acc, day) => {
+      acc += day.numOunces;
+      return acc;
+    },0);
+  }
+}
 
 if (typeof module !== 'undefined') {
   module.exports = HydroUser;

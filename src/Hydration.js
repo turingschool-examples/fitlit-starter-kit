@@ -36,15 +36,3 @@ class Hydration {
 if (typeof module !== 'undefined') {
   module.exports = Hydration;
 }
-
-
-
-// function showHydration() {
-//   console.log(hydrationData, "this is hydro")
-//   const currentHydration = hydrationData.find(hydro => {
-//     console.log(hydro.userID, user.id, hydro.userID === user.id)
-//     return hydro.userID === user.id
-//   })
-//   console.log(currentHydration);
-//   $('.current-hydro').text('POOOOOOOOOOP')
-// }

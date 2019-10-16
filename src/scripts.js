@@ -135,3 +135,20 @@ var sleepChart = new Chart ( sleepInfo, {
   options: {}
 });
 
+var compareDailyActivity = document.getElementById('compare-daily-activity').getContext('2d');
+var activityComparison = new Chart(compareDailyActivity, {
+  type: 'bar',
+  data: {
+    labels: ['Your Steps', 'Group Steps', 'Your Stairs', 'Group Stairs', 'Your Minutes Active', 'Group Minutes Active', ],
+    datasets: [{
+      label: 'Steps, Minutes, & Stairs',
+      backgroundColor: 'pink',
+      borderColor: 'pink',
+      data: [randomUser.numSteps,],
+    }]
+  },
+  options: {}
+});
+
+console.log(randomUser )
+

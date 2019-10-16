@@ -10,6 +10,7 @@ const header = document.querySelector('header');
 const widgets = document.querySelector('.daily-widget-container');
 const stepComparison = document.querySelector('.average-step-comparison')
 const todaysDate = grabDate();
+// const stairsComparison = document.querySelector('.compare-daily-stairs');
 
 
 
@@ -135,20 +136,139 @@ var sleepChart = new Chart ( sleepInfo, {
   options: {}
 });
 
-var compareDailyActivity = document.getElementById('compare-daily-activity').getContext('2d');
-var activityComparison = new Chart(compareDailyActivity, {
+
+function getUsersDailyMetric(id, date, metric) {
+  let user = activityData.find(user => user.userID === id && user.date === date)
+  return user[metric]
+}
+
+// getUsersDailyMetric(randomUser.id, todaysDate, 'numSteps')
+
+function getAvgGroupMetrics(date, metric) {
+  let allData = activityData.reduce((acc, user) => {
+    if(user.userID !== randomUser.id && user.date === date) {
+      acc += user[metric]
+    }
+    return acc
+  }, 0)
+  return +((allData / userData.length - 1).toFixed())
+}
+
+getAvgGroupMetrics(todaysDate, 'flightsOfStairs')
+
+const compareDailySteps = document.getElementById('compare-daily-steps').getContext('2d');
+let compareSteps = new Chart(compareDailySteps, {
   type: 'bar',
   data: {
-    labels: ['Your Steps', 'Group Steps', 'Your Stairs', 'Group Stairs', 'Your Minutes Active', 'Group Minutes Active', ],
+    labels: ['Your Steps', 'Group Steps'],
     datasets: [{
-      label: 'Steps, Minutes, & Stairs',
-      backgroundColor: 'pink',
+      label: 'Compare Your Steps',
+      backgroundColor: ['pink', 'purple'],
       borderColor: 'pink',
-      data: [randomUser.numSteps,],
+      data: [getUsersDailyMetric(randomUser.id, todaysDate, 'numSteps'), getAvgGroupMetrics(todaysDate, 'numSteps')]
     }]
   },
-  options: {}
-});
+  options: {
+    scales: {
+    yAxes: [{
+      ticks: {
+        beginAtZero: true
+      }
+    }]
+  }
+}}
+);
 
-console.log(randomUser )
 
+const compareDailyStairs = document.getElementById('compare-daily-stairs').getContext('2d');
+let stairsComparisonChart = new Chart(compareDailyStairs, {
+  type: 'bar',
+  data: {
+    labels: ['Your Stairs', 'Group Stairs'],
+    datasets: [{
+      label: 'Compare Flights Of Stairs Climbed',
+      backgroundColor: ['lime', 'blue'],
+      borderColor: 'pink',
+      data: [getUsersDailyMetric(randomUser.id, todaysDate, 'flightsOfStairs'), getAvgGroupMetrics(todaysDate, 'flightsOfStairs')]
+    }]
+  },
+  options: {
+    scales: {
+    yAxes: [{
+      ticks: {
+        beginAtZero: true
+      }
+    }]
+  }
+}}
+);
+
+const compareDailyMinutes = document.getElementById('compare-daily-minutes').getContext('2d');
+let activeMinutesComparisonChart = new Chart(compareDailyMinutes, {
+  type: 'bar',
+  data: {
+    labels: ['Your Min Active', 'Group Min Active'],
+    datasets: [{
+      label: 'Compare Minutes Active',
+      backgroundColor: ['orange', 'gray'],
+      borderColor: 'pink',
+      data: [getUsersDailyMetric(randomUser.id, todaysDate, 'minutesActive'), getAvgGroupMetrics(todaysDate, 'minutesActive')]
+    }]
+  },
+  options: {
+    scales: {
+    yAxes: [{
+      ticks: {
+        beginAtZero: true
+      }
+    }]
+  }
+}}
+);
+
+
+const displayWeeklyWaterIntake = document.getElementById('weekly-water-intake').getContext('2d');
+let weeklyWaterIntake = new Chart(displayWeeklyWaterIntake, {
+  type: 'line',
+  data: {
+    labels: hydration.findAWeek(randomUser.id).map(day => day.date),
+    datasets: [{
+      label: 'Your Water Intake For The Week',
+      backgroundColor: ['orange', 'gray'],
+      borderColor: 'pink',
+      data: hydration.getWeeklyOunces(randomUser.id)
+    }]
+  },
+  options: {
+    scales: {
+    yAxes: [{
+      ticks: {
+        beginAtZero: true
+      }
+    }]
+  }
+}}
+);
+
+const displayWeeklySleepInfo = document.getElementById('weekly-sleep-info').getContext('2d');
+let weeklySleepInfo = new Chart(displayWeeklySleepInfo, {
+  type: 'line',
+  data: {
+    labels: sleep.findAnyWeek(randomUser.id, todaysDate).map( day => day.date),
+    datasets: [{
+      label: 'Sleep Tracker',
+      backgroundColor: ['green', 'rebeccaPurple'],
+      borderColor: 'rebeccaPurple',
+      data: sleep.findHoursSleptForWeek(randomUser.id, todaysDate).map( day => day.hoursSlept)
+    }]
+  },
+  options: {
+    scales: {
+    yAxes: [{
+      ticks: {
+        beginAtZero: true
+      }
+    }]
+  }
+}}
+);

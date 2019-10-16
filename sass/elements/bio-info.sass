@@ -1,43 +1,41 @@
-.bio-info header h3
-  cursor: pointer
-
-.bio-info main
-  display: none
-  font-size: 16px
-
-.bio-info main .info
-  grid-row-gap: 7px
-  margin-top: 20px
-  display: grid
-  grid-template-areas: 'title desc' 'title desc' 'title desc'
+/* ***BIO INFO BLOCK STYLES*** */
+.bio-info
+  header
+    h3
+      cursor: pointer
+  main
+    display: none
+    font-size: 16px
+    .info
+      grid-row-gap: 7px
+      margin-top: 20px
+      display: grid
+      grid-template-areas: 'title desc' 'title desc' 'title desc'
+      .email
+        word-wrap: break-word
+        margin-left: 7px
+        max-width: 150px
+      .desc
+        margin-left: 7px
+        max-width: 150px
+    .body
+      align-items: flex-end
+      display: flex
+      flex-wrap: wrap
+      margin-top: 25px
+      padding-bottom: 5px
+      .title
+        margin:
+          right: 6px
+          bottom: 10px
+      .desc
+        margin:
+          right: 12px
+          bottom: 10px
+        text-align: right
 
 .title
   font-size: 18px
   font-weight: 700
   text-transform: capitalize
   margin-bottom: 5px
-
-.email
-  word-wrap: break-word
-  margin-left: 7px
-  max-width: 150px
-
-.bio-info main .info .desc
-  margin-left: 7px
-  max-width: 150px
-
-.bio-info main .body
-  align-items: flex-end
-  display: flex
-  flex-wrap: wrap
-  margin-top: 25px
-  padding-bottom: 5px
-
-.bio-info main .body .title
-  margin-right: 6px
-  margin-bottom: 10px
-
-.bio-info main .body .desc
-  margin-right: 12px
-  margin-bottom: 10px
-  text-align: right

@@ -1,18 +1,6 @@
-.login
-  align-items: center
-  display: flex
-  flex-direction: column
-  position: absolute
-  top: 30%
-  left: 20px
+/* *** LOGIN STYLES *** */
 
-.login h1
-  text-transform: uppercase
-  color: #fff
-  margin-bottom: 20px
-
-.login input,
-.login button
+%style-login-shared
   border: none
   border-radius: 30px
   box-shadow: $white-shadow
@@ -22,10 +10,24 @@
   padding: 5px
   width: 100%
 
-.login button
-  background-color: $section-color
-  cursor: pointer
-  margin-top: 10px
-  width: 80%
-  &:hover
-    background-color: $hover-color
+.login
+  align-items: center
+  display: flex
+  flex-direction: column
+  position: absolute
+  top: 30%
+  left: 20px
+  h1
+    text-transform: uppercase
+    color: #fff
+    margin-bottom: 20px
+  input
+    @extend %style-login-shared
+  button
+    @extend %style-login-shared
+    background-color: $section-color
+    cursor: pointer
+    margin-top: 10px
+    width: 80%
+    &:hover
+      background-color: $hover-color

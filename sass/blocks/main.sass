@@ -1,3 +1,4 @@
+/* *** BOARD STYLES *** */
 .content
   background-color: #fff
   border-radius: 40px
@@ -11,6 +12,7 @@
   display: none
   flex-direction: column
   flex-wrap: wrap
+  padding: 20px
   &>section
     width: 30%
 
@@ -18,13 +20,10 @@
   align-items: center
   display: flex
   justify-content: space-around
+  &>p
+    color: $background-color
+    font-size: 64px
+    font-weight: 700
+    opacity: 0.5
 
-.empty-board p
-  color: $background-color
-  font-size: 64px
-  font-weight: 700
-  opacity: 0.5
-
-@import '../elements/sleep-block'
-@import '../elements/water-info'
-@import '../elements/today-widget'
+@import './widgets'

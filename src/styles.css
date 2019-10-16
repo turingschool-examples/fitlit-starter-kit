@@ -111,10 +111,15 @@ h1 {
 .daily-widget-container {
   display: flex;
   flex-direction: row;
-  height: 20%;
+  height: 18%;
   width: 80%;
   justify-content: center;
   align-self: center;
+}
+
+.widget-card-container {
+  width: 100%;
+  height: 100%;
 }
 
 .hydration--widget {
@@ -201,7 +206,7 @@ h1 {
   flex-direction: row;
   justify-content: space-between;
   font-size: 100%;
-}
+ }
 
 .img-user-icon {
   display: flex;
@@ -214,5 +219,39 @@ h1 {
   width: 90%;
   height: 90%;
   border-radius: 100px;
+}
+
+.average-step-comparison {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 30%;
+  height: 30%;
+  padding: 1% 2% 1% 2%;
+  margin: 2%;
+  border: solid 4px pink;
+  border-radius: 20px;
+  background-color: #000;
+  text-align: center;
+  font-size: 100%;
+  color: pink;
+}
+
+.user-avg-steps, 
+.world-avg-steps {
+ width: 50%
+}
+
+.line-divider {
+  border: solid 1px pink;
+  width: 0%;
+  height: 90%;
+  align-self: baseline;
+  margin-top: 4.3%;
+}
+
+#compare-daily-activity {
+  background-color: #000;
+  color: green;
 }
 

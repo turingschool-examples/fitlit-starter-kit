@@ -56,27 +56,28 @@ describe('activityUser', () => {
   });
 
   it('should find all days user step goal was exceeded', () => {
-    expect(activityUser.getDaysBeatStepGoal(user.dailyStepGoal)).to.deep.equal([ '2019/06/17',
-    '2019/06/20',
-    '2019/06/22',
-    '2019/06/23',
-    '2019/06/28',
-    '2019/06/30',
-    '2019/07/05',
-    '2019/07/07',
-    '2019/07/08',
-    '2019/07/09',
-    '2019/07/14',
-    '2019/07/20',
-    '2019/07/21',
-    '2019/07/22',
-    '2019/07/26',
-    '2019/07/31',
-    '2019/08/01',
-    '2019/08/08',
-    '2019/08/10',
-    '2019/08/15',
-    '2019/08/17' ]);
+    expect(activityUser.getDaysBeatStepGoal(user.dailyStepGoal)).to.deep.equal(
+      ['2019/06/17',
+        '2019/06/20',
+        '2019/06/22',
+        '2019/06/23',
+        '2019/06/28',
+        '2019/06/30',
+        '2019/07/05',
+        '2019/07/07',
+        '2019/07/08',
+        '2019/07/09',
+        '2019/07/14',
+        '2019/07/20',
+        '2019/07/21',
+        '2019/07/22',
+        '2019/07/26',
+        '2019/07/31',
+        '2019/08/01',
+        '2019/08/08',
+        '2019/08/10',
+        '2019/08/15',
+        '2019/08/17']);
   });
 
   it('should find their all time stair climbing record', () => {
@@ -96,46 +97,62 @@ describe('activityUser', () => {
   });
 
   it('should get weekly activity data', () => {
-    expect(activityUser.getDailyActivityByWeek("2019/07/22")).to.deep.equal([{ userID: 1,
+    expect(activityUser.getDailyActivityByWeek("2019/07/22")).to.deep.equal([{
+      userID: 1,
       date: '2019/07/15',
       numSteps: 4861,
       minutesActive: 54,
-      flightsOfStairs: 49 },
-    { userID: 1,
+      flightsOfStairs: 49
+    },
+    {
+      userID: 1,
       date: '2019/07/16',
       numSteps: 3917,
       minutesActive: 188,
-      flightsOfStairs: 7 },
-    { userID: 1,
+      flightsOfStairs: 7
+    },
+    {
+      userID: 1,
       date: '2019/07/17',
       numSteps: 8162,
       minutesActive: 258,
-      flightsOfStairs: 8 },
-    { userID: 1,
+      flightsOfStairs: 8
+    },
+    {
+      userID: 1,
       date: '2019/07/18',
       numSteps: 6920,
       minutesActive: 190,
-      flightsOfStairs: 44 },
-    { userID: 1,
+      flightsOfStairs: 44
+    },
+    {
+      userID: 1,
       date: '2019/07/19',
       numSteps: 4634,
       minutesActive: 30,
-      flightsOfStairs: 12 },
-    { userID: 1,
+      flightsOfStairs: 12
+    },
+    {
+      userID: 1,
       date: '2019/07/20',
       numSteps: 12434,
       minutesActive: 211,
-      flightsOfStairs: 48 },
-    { userID: 1,
+      flightsOfStairs: 48
+    },
+    {
+      userID: 1,
       date: '2019/07/21',
       numSteps: 12821,
       minutesActive: 281,
-      flightsOfStairs: 28 },
-    { userID: 1,
+      flightsOfStairs: 28
+    },
+    {
+      userID: 1,
       date: '2019/07/22',
       numSteps: 14625,
       minutesActive: 268,
-      flightsOfStairs: 46 }]);
+      flightsOfStairs: 46
+    }]);
   });
 
   it('should find the total step count for any given week', () => {
@@ -143,131 +160,181 @@ describe('activityUser', () => {
   });
 
   it('should find increasing steps for three days or more', () => {
-    expect(activityUser.getStepIncreaseTrend()).to.deep.equal([ { userID: 1,
-    date: '2019/06/15',
-    numSteps: 3577,
-    minutesActive: 140,
-    flightsOfStairs: 16 },
-  { userID: 1,
-    date: '2019/06/16',
-    numSteps: 6637,
-    minutesActive: 175,
-    flightsOfStairs: 36 },
-  { userID: 1,
-    date: '2019/06/17',
-    numSteps: 14329,
-    minutesActive: 168,
-    flightsOfStairs: 18 },
-  { userID: 1,
-    date: '2019/06/18',
-    numSteps: 4419,
-    minutesActive: 165,
-    flightsOfStairs: 33 },
-  { userID: 1,
-    date: '2019/06/19',
-    numSteps: 8429,
-    minutesActive: 275,
-    flightsOfStairs: 2 },
-  { userID: 1,
-    date: '2019/06/20',
-    numSteps: 14478,
-    minutesActive: 140,
-    flightsOfStairs: 12 },
-  { userID: 1,
-    date: '2019/06/21',
-    numSteps: 6760,
-    minutesActive: 135,
-    flightsOfStairs: 6 },
-  { userID: 1,
-    date: '2019/06/22',
-    numSteps: 10289,
-    minutesActive: 119,
-    flightsOfStairs: 6 },
-  { userID: 1,
-    date: '2019/06/23',
-    numSteps: 13928,
-    minutesActive: 218,
-    flightsOfStairs: 21 },
-  { userID: 1,
-    date: '2019/07/06',
-    numSteps: 4882,
-    minutesActive: 261,
-    flightsOfStairs: 34 },
-  { userID: 1,
-    date: '2019/07/07',
-    numSteps: 10809,
-    minutesActive: 184,
-    flightsOfStairs: 12 },
-  { userID: 1,
-    date: '2019/07/08',
-    numSteps: 12093,
-    minutesActive: 296,
-    flightsOfStairs: 38 },
-  { userID: 1,
-    date: '2019/07/19',
-    numSteps: 4634,
-    minutesActive: 30,
-    flightsOfStairs: 12 },
-  { userID: 1,
-    date: '2019/07/20',
-    numSteps: 12434,
-    minutesActive: 211,
-    flightsOfStairs: 48 },
-  { userID: 1,
-    date: '2019/07/21',
-    numSteps: 12821,
-    minutesActive: 281,
-    flightsOfStairs: 28 },
-  { userID: 1,
-    date: '2019/07/22',
-    numSteps: 14625,
-    minutesActive: 268,
-    flightsOfStairs: 46 },
-  { userID: 1,
-    date: '2019/07/24',
-    numSteps: 4885,
-    minutesActive: 27,
-    flightsOfStairs: 36 },
-  { userID: 1,
-    date: '2019/07/25',
-    numSteps: 9299,
-    minutesActive: 158,
-    flightsOfStairs: 15 },
-  { userID: 1,
-    date: '2019/07/26',
-    numSteps: 13461,
-    minutesActive: 80,
-    flightsOfStairs: 20 },
-  { userID: 1,
-    date: '2019/07/29',
-    numSteps: 2218,
-    minutesActive: 93,
-    flightsOfStairs: 33 },
-  { userID: 1,
-    date: '2019/07/30',
-    numSteps: 7151,
-    minutesActive: 75,
-    flightsOfStairs: 16 },
-  { userID: 1,
-    date: '2019/07/31',
-    numSteps: 10966,
-    minutesActive: 213,
-    flightsOfStairs: 24 },
-  { userID: 1,
-    date: '2019/08/04',
-    numSteps: 2099,
-    minutesActive: 175,
-    flightsOfStairs: 44 },
-  { userID: 1,
-    date: '2019/08/05',
-    numSteps: 3323,
-    minutesActive: 156,
-    flightsOfStairs: 18 },
-  { userID: 1,
-    date: '2019/08/06',
-    numSteps: 4676,
-    minutesActive: 280,
-    flightsOfStairs: 10 } ])
+    expect(activityUser.getStepIncreaseTrend()).to.deep.equal([{
+      userID: 1,
+      date: '2019/06/15',
+      numSteps: 3577,
+      minutesActive: 140,
+      flightsOfStairs: 16
+    },
+    {
+      userID: 1,
+      date: '2019/06/16',
+      numSteps: 6637,
+      minutesActive: 175,
+      flightsOfStairs: 36
+    },
+    {
+      userID: 1,
+      date: '2019/06/17',
+      numSteps: 14329,
+      minutesActive: 168,
+      flightsOfStairs: 18
+    },
+    {
+      userID: 1,
+      date: '2019/06/18',
+      numSteps: 4419,
+      minutesActive: 165,
+      flightsOfStairs: 33
+    },
+    {
+      userID: 1,
+      date: '2019/06/19',
+      numSteps: 8429,
+      minutesActive: 275,
+      flightsOfStairs: 2
+    },
+    {
+      userID: 1,
+      date: '2019/06/20',
+      numSteps: 14478,
+      minutesActive: 140,
+      flightsOfStairs: 12
+    },
+    {
+      userID: 1,
+      date: '2019/06/21',
+      numSteps: 6760,
+      minutesActive: 135,
+      flightsOfStairs: 6
+    },
+    {
+      userID: 1,
+      date: '2019/06/22',
+      numSteps: 10289,
+      minutesActive: 119,
+      flightsOfStairs: 6
+    },
+    {
+      userID: 1,
+      date: '2019/06/23',
+      numSteps: 13928,
+      minutesActive: 218,
+      flightsOfStairs: 21
+    },
+    {
+      userID: 1,
+      date: '2019/07/06',
+      numSteps: 4882,
+      minutesActive: 261,
+      flightsOfStairs: 34
+    },
+    {
+      userID: 1,
+      date: '2019/07/07',
+      numSteps: 10809,
+      minutesActive: 184,
+      flightsOfStairs: 12
+    },
+    {
+      userID: 1,
+      date: '2019/07/08',
+      numSteps: 12093,
+      minutesActive: 296,
+      flightsOfStairs: 38
+    },
+    {
+      userID: 1,
+      date: '2019/07/19',
+      numSteps: 4634,
+      minutesActive: 30,
+      flightsOfStairs: 12
+    },
+    {
+      userID: 1,
+      date: '2019/07/20',
+      numSteps: 12434,
+      minutesActive: 211,
+      flightsOfStairs: 48
+    },
+    {
+      userID: 1,
+      date: '2019/07/21',
+      numSteps: 12821,
+      minutesActive: 281,
+      flightsOfStairs: 28
+    },
+    {
+      userID: 1,
+      date: '2019/07/22',
+      numSteps: 14625,
+      minutesActive: 268,
+      flightsOfStairs: 46
+    },
+    {
+      userID: 1,
+      date: '2019/07/24',
+      numSteps: 4885,
+      minutesActive: 27,
+      flightsOfStairs: 36
+    },
+    {
+      userID: 1,
+      date: '2019/07/25',
+      numSteps: 9299,
+      minutesActive: 158,
+      flightsOfStairs: 15
+    },
+    {
+      userID: 1,
+      date: '2019/07/26',
+      numSteps: 13461,
+      minutesActive: 80,
+      flightsOfStairs: 20
+    },
+    {
+      userID: 1,
+      date: '2019/07/29',
+      numSteps: 2218,
+      minutesActive: 93,
+      flightsOfStairs: 33
+    },
+    {
+      userID: 1,
+      date: '2019/07/30',
+      numSteps: 7151,
+      minutesActive: 75,
+      flightsOfStairs: 16
+    },
+    {
+      userID: 1,
+      date: '2019/07/31',
+      numSteps: 10966,
+      minutesActive: 213,
+      flightsOfStairs: 24
+    },
+    {
+      userID: 1,
+      date: '2019/08/04',
+      numSteps: 2099,
+      minutesActive: 175,
+      flightsOfStairs: 44
+    },
+    {
+      userID: 1,
+      date: '2019/08/05',
+      numSteps: 3323,
+      minutesActive: 156,
+      flightsOfStairs: 18
+    },
+    {
+      userID: 1,
+      date: '2019/08/06',
+      numSteps: 4676,
+      minutesActive: 280,
+      flightsOfStairs: 10
+    }])
   });
 
 });

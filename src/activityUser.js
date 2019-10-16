@@ -1,5 +1,5 @@
 class ActivityUser {
-  constructor(userActivityData){
+  constructor(userActivityData) {
     this.activityData = userActivityData;
   }
 
@@ -36,10 +36,10 @@ class ActivityUser {
     let dataDate = this.activityData.map(data => data.date);
     let dateIndex = dataDate.lastIndexOf(date);
     let weekData = this.activityData.slice(dateIndex - 7, dateIndex + 1);
-    let sum =  weekData.reduce((acc, day) => {
+    let sum = weekData.reduce((acc, day) => {
       acc += day.minutesActive;
       return acc;
-    },0)
+    }, 0)
     return Math.round(sum / 8);
   }
 
@@ -50,7 +50,7 @@ class ActivityUser {
     return weekData.reduce((acc, day) => {
       acc += day.numSteps;
       return acc;
-    },0);
+    }, 0);
   }
 
   getDailyActivityByWeek(date) {
@@ -83,7 +83,7 @@ class ActivityUser {
         acc = day.flightsOfStairs;
       }
       return acc;
-    },0)
+    }, 0)
     return stairRecord;
   }
 
@@ -93,26 +93,26 @@ class ActivityUser {
         acc = day.minutesActive;
       }
       return acc;
-    },0)
+    }, 0)
     return minutesRecord;
   }
 
   getStepIncreaseTrend() {
     let trends = this.activityData.filter((day, index) => {
-        if (index > 1 && this.activityData[index - 2].numSteps < this.activityData[index - 1].numSteps &&
-          this.activityData[index - 1].numSteps < day.numSteps) {
-          return true;
-        }
-        if (index > 0 && index < this.activityData.length - 1 && this.activityData[index - 1].numSteps < day.numSteps &&
-          day.numSteps < this.activityData[index + 1].numSteps) {
-          return true
-        }
-        if (index < this.activityData.length - 2 && day.numSteps < this.activityData[index + 1].numSteps &&
-          this.activityData[index + 1].numSteps < this.activityData[index + 2].numSteps) {
-          return true;
-        }
-        return false;
-      });
+      if (index > 1 && this.activityData[index - 2].numSteps < this.activityData[index - 1].numSteps &&
+        this.activityData[index - 1].numSteps < day.numSteps) {
+        return true;
+      }
+      if (index > 0 && index < this.activityData.length - 1 && this.activityData[index - 1].numSteps < day.numSteps &&
+        day.numSteps < this.activityData[index + 1].numSteps) {
+        return true
+      }
+      if (index < this.activityData.length - 2 && day.numSteps < this.activityData[index + 1].numSteps &&
+        this.activityData[index + 1].numSteps < this.activityData[index + 2].numSteps) {
+        return true;
+      }
+      return false;
+    });
     return trends;
   }
 }

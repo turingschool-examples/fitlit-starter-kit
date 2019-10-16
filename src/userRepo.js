@@ -1,5 +1,5 @@
 class UserRepo {
-  constructor(usersData){
+  constructor(usersData) {
     this.usersData = usersData;
   }
 

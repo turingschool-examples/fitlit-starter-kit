@@ -37,14 +37,15 @@ describe('hydroUser', () => {
   });
 
   it('should get fluid oz consumed per day by week', () => {
-    expect(hydroUser.getDailyOzPerWeek('2019/06/23')).to.deep.equal([{ userID: 1, date: '2019/06/16', numOunces: 69 },
-    { userID: 1, date: '2019/06/17', numOunces: 96 },
-    { userID: 1, date: '2019/06/18', numOunces: 61 },
-    { userID: 1, date: '2019/06/19', numOunces: 91 },
-    { userID: 1, date: '2019/06/20', numOunces: 50 },
-    { userID: 1, date: '2019/06/21', numOunces: 50 },
-    { userID: 1, date: '2019/06/22', numOunces: 43 },
-    { userID: 1, date: '2019/06/23', numOunces: 39 }]);
+    expect(hydroUser.getDailyOzPerWeek('2019/06/23')).to.deep.equal(
+      [{ userID: 1, date: '2019/06/16', numOunces: 69 },
+        { userID: 1, date: '2019/06/17', numOunces: 96 },
+        { userID: 1, date: '2019/06/18', numOunces: 61 },
+        { userID: 1, date: '2019/06/19', numOunces: 91 },
+        { userID: 1, date: '2019/06/20', numOunces: 50 },
+        { userID: 1, date: '2019/06/21', numOunces: 50 },
+        { userID: 1, date: '2019/06/22', numOunces: 43 },
+        { userID: 1, date: '2019/06/23', numOunces: 39 }]);
   });
 
   it('should find the total step count for any given week', () => {

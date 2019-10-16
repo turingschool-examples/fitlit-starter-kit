@@ -15,7 +15,7 @@ class UserRepository {
       sum += goal;
       return sum;
     }, 0);
-    return total/this.users.length;
+    return total / this.users.length;
   }
   calculateAverageSleepQuality() {
     let totalSleepQuality = this.users.reduce((sum, user) => {

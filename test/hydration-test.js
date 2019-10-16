@@ -95,4 +95,10 @@ describe('Hydration', function() {
 
     expect(hydration.findWeeksFluid(mockData.hydration)).to.have.lengthOf(7);
   })
+
+  it("should show highest number of ounces", () => {
+    const hydration = new Hydration(mockUserRepo);
+    const ounces = hydration.findHighestFluid(mockData.hydration);
+    expect(ounces).to.equal(37);
+  })
 })

@@ -221,4 +221,26 @@ beforeEach(() => {
       const flight = activity.findStairRecord(userRepo.activityUsersData);
       expect(flight).to.equal(40);
     });
+
+    describe('findHighestValue', () => {
+      it("should show highest number of steps", () => {
+        const steps = activity.findHighestValue(userRepo, user, 'numSteps');
+        expect(steps).to.equal(10872);
+      });
+
+      it("should show highest number of active minutes", () => {
+        const mins = activity.findHighestValue(userRepo, user, 'minutesActive');
+        expect(mins).to.equal(277);
+      });
+
+      it("should show highest number of flights", () => {
+        const flights = activity.findHighestValue(userRepo, user, 'flightsOfStairs');
+        expect(flights).to.equal(40);
+      });
+
+      it("should show highest number of miles", () => {
+        const miles = activity.findHighestValue(userRepo, user, 'flightsOfStairs');
+        expect(miles).to.equal(40);
+      });
+    });
   });

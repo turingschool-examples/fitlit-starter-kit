@@ -101,6 +101,11 @@ describe("Sleep", () => {
       it("should update sleep quality", () => {
         expect(sleep.sleepQuality).to.equal(3.8);
       });
+
+      it("should show highest number of sleep hours", () => {
+        const hours = sleep.findHighestSleep(userRepo);
+        expect(hours).to.equal(10.7);
+      });
     });
 
     describe('if date is not found in database', () => {

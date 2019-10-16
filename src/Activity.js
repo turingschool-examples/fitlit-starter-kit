@@ -11,18 +11,18 @@ class Activity {
   changeDate(userRepo, date) {
     if (!date) {
       this.date = userRepo.day;
-      this.updateInfo(userRepo.activityUsersData);
-    } else if (date === 'All days') {
+      this.updateInfo(userRepo);
+    } else if (date === 'All time') {
       this.time = '';
       this.getAverageForSevenDays(userRepo);
     } else {
       this.date = date;
-      this.updateInfo(userRepo.activityUsersData);
+      this.updateInfo(userRepo);
     }
   }
 
-  updateInfo(activeData) {
-    const dayData = activeData.find(data => data.userID === this.userID && data.date === this.date);
+  updateInfo(userRepo) {
+    const dayData = userRepo.activityUsersData.find(data => data.userID === this.userID && data.date === this.date);
     if (dayData) {
       this.numSteps = dayData.numSteps;
       this.minutesActive = dayData.minutesActive;
@@ -34,8 +34,8 @@ class Activity {
     }
   }
 
-  findMiles(stepLength) {
-    const miles = this.numSteps * stepLength / 5280;
+  findMiles(user) {
+    const miles = this.numSteps * user.strideLength / 5280;
     return parseInt(miles);
   }
 

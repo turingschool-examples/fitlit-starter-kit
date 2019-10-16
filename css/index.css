@@ -466,13 +466,13 @@ h4 {
 }
 
 #width {
-  width: 43%;
+  width: 24%;
 }
 
 .step-challenge-widget {
   border-radius: 20px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-  margin: 40px 10px 10px;
+  margin: 10px 10px 10px;
   padding-bottom: 20px;
 }
 .step-challenge-widget header {
@@ -485,6 +485,9 @@ h4 {
 }
 .step-challenge-widget main {
   text-align: center;
+}
+.step-challenge-widget main h2 {
+  margin: 0 0 10px 0;
 }
 .step-challenge-widget footer {
   display: none;
@@ -504,15 +507,18 @@ h4 {
 
 .step-winner {
   color: #468E43;
-  font-size: 30px;
+  font-size: 29px;
   font-weight: 700;
 }
 
-.additional {
-  display: grid;
+.step-contestants {
+  display: block;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 2fr 1fr;
   margin: 0 0 15px;
+}
+.step-contestants h3 {
+  margin: 0 0 10px 0;
 }
 
 .compare {
@@ -526,6 +532,7 @@ h4 {
   background-color: #E5F1E4;
 }
 
+/* *** DROPDOWN MENU *** */
 .dropdown {
   background-color: #fff;
   border: 1px solid #21402E;
@@ -538,30 +545,37 @@ h4 {
   right: 18%;
   width: fit-content;
 }
-
+.dropdown header {
+  cursor: pointer;
+  font-size: 16px;
+}
 .dropdown header p {
   font-size: 18px;
   margin: auto;
   padding: 5px;
   text-align: center;
 }
-
-.dropdown header,
-.dropdown div p {
-  cursor: pointer;
-  font-size: 16px;
-}
-
 .dropdown div {
   display: none;
 }
-
 .dropdown div p {
+  cursor: pointer;
+  font-size: 16px;
   border-top: 1px solid #21402E;
   font-size: 14px;
   margin: 0 15px;
   padding: 10px 0;
   text-align: right;
+}
+
+/* *** SEARCH DATE STYLES *** */
+.search label, .search button {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  border-radius: 20px;
+  height: 30px;
+  width: 30px;
 }
 
 .search {
@@ -578,7 +592,6 @@ h4 {
   height: 34px;
   min-width: 34px;
 }
-
 .search input {
   border: none;
   display: none;
@@ -586,30 +599,15 @@ h4 {
   margin: 5px;
   text-align: right;
 }
-
 .search label {
+  background-image: url("../images/search.svg");
   cursor: pointer;
 }
-
-.search label,
-.search button {
-  background-image: url("../images/search.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 50%;
-  border-radius: 20px;
-  height: 30px;
-  width: 30px;
-}
-
-.search label {
-  background-image: url("../images/search.svg");
-}
-
 .search button {
   border: none;
   display: none;
   background-image: url("../images/tick.svg");
+}
 
 .achievements {
   border-radius: 20px;

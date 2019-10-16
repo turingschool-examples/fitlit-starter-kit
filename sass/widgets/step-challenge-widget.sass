@@ -1,10 +1,10 @@
 #width
-  width: 43%
+  width: 24%
 
 .step-challenge-widget
   border-radius: 20px
   box-shadow: $black-shadow
-  margin: 40px 10px 10px
+  margin: 10px 10px 10px
   padding-bottom: 20px
   header
     align-items: flex-start
@@ -14,6 +14,8 @@
       margin: 10px 15px
   main
     text-align: center
+    h2
+      margin: 0 0 10px 0
   footer
     display: none
     img
@@ -29,14 +31,16 @@
 
 .step-winner
   color: #468E43
-  font-size: 30px
+  font-size: 29px
   font-weight: 700
 
-.additional
-  display: grid
+.step-contestants
+  display: block
   grid-template-columns: repeat(3, 1fr)
   grid-template-rows: 2fr 1fr
   margin: 0 0 15px
+  h3
+    margin: 0 0 10px 0
 
 .compare
   border-radius: 20px
@@ -46,27 +50,6 @@
   width: fit-content
   &:hover
     background-color: $hover-color
-
-// .compare-block
-//   display: none
-//   &>h2
-//     border-top: 1px solid $background-color
-//     margin: auto
-//     padding: 15px 20px 0
-//     width: fit-content
-//   .additional
-//     align-items: center
-//     grid-template-columns: repeat(2, 1fr)
-//     grid-template-rows: repeat(3, 1fr)
-//     margin-top: 20px
-//     .tiny
-//       justify-self: end
-//       font-size: 40px
-//       padding: 0 10px 0
-//     h3
-//       justify-self: start
-//       margin-left: 20px
-
 
 @import '../elements/dropdown'
 @import '../elements/search'

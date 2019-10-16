@@ -1,3 +1,3 @@
 # FitLit Starter Kit
 
-![2019-10-16 09 56 45](https://user-images.githubusercontent.com/50148342/66937179-3d415680-effc-11e9-805c-aab84918d875.gif)
+![2019-10-16 14 12 51](https://user-images.githubusercontent.com/50148342/66955485-aab2ae80-f01f-11e9-942b-7deb92a9c0ff.gif)

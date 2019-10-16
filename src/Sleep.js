@@ -70,6 +70,16 @@ class Sleep {
         }, 0) * 10) / 10;
     }
   }
+
+  findHighestSleep(userRepo) {
+    let dataset = userRepo.sleepUsersData.filter(data => data.userID === this.userID);
+    return dataset.reduce((num, data) => {
+      if (data.hoursSlept > num) {
+        num = data.hoursSlept
+      }
+      return num;
+    }, 0);
+  }
 }
 
 if (typeof module !== 'undefined') {

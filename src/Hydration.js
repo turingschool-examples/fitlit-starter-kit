@@ -31,6 +31,15 @@ class Hydration {
     let weekWater = userWater.slice(lastDayIndex - 6, lastDayIndex + 1);
     return weekWater;
   }
+  findHighestFluid(hydrodata) {
+    let dataset = hydrodata.filter(hydro => hydro.userID === this.userId);
+    return dataset.reduce((num, data) => {
+      if (data.numOunces > num) {
+        num = data.numOunces
+      }
+      return num;
+    }, 0);
+  }
 }
 
 if (typeof module !== 'undefined') {

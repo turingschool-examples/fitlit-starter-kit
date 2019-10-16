@@ -7,6 +7,9 @@
 * Using object and array prototype methods to perform data manipulation
 * Developing UX and UI that is intuitive and clear.
 
+## Abstract
+FitLit is a fitness tracking application, capable of managing and displaying data for a multitude of users. Each time a user log's in, the application instantiates all of objects necessary to fetch, manipulate and display that user's information.
+
 ## Setup
 To use this application:
 

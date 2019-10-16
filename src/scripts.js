@@ -29,6 +29,9 @@ $(function() {
     $grid.packery( 'bindDraggabillyEvents', draggie );
   });
 
+  let threeDays = userActivity.userThreeDaySteps()
+  threeDays.forEach(e => $('.wins').append(`<p>${e.date}<span>&#129409;</span></p>`))
+
   $('.user__fullName').text(userData[randomUser].name)
   $('.span__currentUser').text(user.getUserFirstName());
   $('.user__address').text(userData[randomUser].address);
@@ -280,6 +283,5 @@ let friendsActivityLastWeek = friends.map(e => userActivity.userStepsByWeek(e));
   });
 
   //dispaly on dom
-  let threeDays = userActivity.userThreeDaySteps()
-  threeDays.map(e => e.date)
+
 });

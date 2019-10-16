@@ -85,11 +85,18 @@ let sleepCalendarCard = document.querySelector('#sleep-calendar-card');
 let mainPage = document.querySelector('main');
 let stepsTrendingButton = document.querySelector('.steps-trending-button');
 let stairsTrendingButton = document.querySelector('.stairs-trending-button');
+let navButton = document.querySelector('#nav-button');
+let userInfoDropdown = document.querySelector('#user-info-dropdown');
 
 // EVENT LISTENERS
 mainPage.addEventListener('click', showInfo);
+navButton.addEventListener('click', showDropdown);
 
 //FLIPPING CARDS
+function showDropdown() {
+  userInfoDropdown.classList.toggle('hide');
+};
+
 function showInfo() {
   if (event.target.classList.contains('steps-info-button')) {
     flipCard(stepsMainCard, stepsInfoCard);

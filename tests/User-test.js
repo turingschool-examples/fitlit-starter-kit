@@ -60,7 +60,7 @@ describe('User', function() {
   it('should have a default sleepQualityAverage of 0', function() {
     expect(user.sleepQualityAverage).to.equal(0);
   });
-  it('should have a default sleepHoursRecord', function() {
+  it('should have a default sleepHoursRecord of []', function() {
     expect(user.sleepHoursRecord).to.deep.equal([]);
   });
   it('should have a default sleepQualityRecord of []', function() {
@@ -75,7 +75,7 @@ describe('User', function() {
   it('getFirstName should return the first name of the user', function () {
     expect(user.getFirstName()).to.equal('LUISA');
   });
-  it('should have a method that shows the last week of water', function() {
+  it('addDailyOunces should show the last week of water', function() {
     user.ouncesRecord = [
       {"2019/06/15": 1},
       {"2019/06/15": 1},

@@ -10,7 +10,6 @@
 box-sizing: border-box;
 margin: 0;
 padding: 0;
-/* border: 1px solid red; */
 }
 
 body {
@@ -29,6 +28,17 @@ h2 {
   letter-spacing: .1em;
 }
 
+p {
+  text-align: right;
+  word-break: keep-all;
+  width: 9vw;
+  letter-spacing: .2vw;
+  font-size: 1.2vw;
+  margin-right: 1vw;
+  font-weight: 600;
+  padding-top: 2vw;
+}
+
 h3 {
   display: inline;
   font-size: 3vw;
@@ -39,6 +49,7 @@ h3 {
 
 header {
   text-align: center;
+  height: 9vw;
 }
 
 #nav-button {
@@ -54,12 +65,36 @@ header {
   margin-top: 1vw;
 }
 
+#user-info-dropdown {
+  position: relative;
+  background-color: #1F1F1F;
+  color: white;
+  text-align: center;
+  margin-left: 80%;
+  margin-top: -1.4%;
+  z-index: 100;
+}
+
+.dropdown-p {
+  text-align: center;
+  width: 100%;
+  font-size: 1vw;
+  z-index: 30000000000;
+  padding-top: 0;
+  padding-bottom: 1vw;
+  font-weight: 300;
+}
+
+h5 {
+  font-size: 1.5vw;
+  padding-bottom: 1vw;
+}
+
 h1 {
   color: #fff;
   display: inline;
   font-size: 5.4vw;
   letter-spacing: .2em;
-
 }
 
 main {
@@ -152,17 +187,6 @@ main {
   display: flex;
   justify-content: center;
   margin-bottom: 2vw;
-}
-
-p {
-  text-align: right;
-  word-break: keep-all;
-  width: 9vw;
-  letter-spacing: .2vw;
-  font-size: 1.2vw;
-  margin-right: 1vw;
-  font-weight: 600;
-  padding-top: 2vw;
 }
 
 h4 {

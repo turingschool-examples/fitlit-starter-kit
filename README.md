@@ -20,5 +20,5 @@ Testing was a key component in this project.  Tests were written for all functio
 
 ## Authors
 Trisha Langlois 
-!Kayla Wood (https://github.com/kaylaewood)
+![Kayla Wood] (https://github.com/kaylaewood)
 

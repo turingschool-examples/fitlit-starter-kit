@@ -27,12 +27,6 @@ class Activity {
     }).dailyStepGoal;
     this.reachedStepGoal = this.steps >= userStepGoal;
   }
-  findAccomplishedDays() {
-
-  }
-  updateTopClimbingDay() {
-
-  }
 }
 
 if (typeof module !== 'undefined') {

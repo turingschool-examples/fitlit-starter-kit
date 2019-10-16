@@ -3,7 +3,7 @@ const expect = chai.expect;
 
 const UserRepository = require('../src/UserRepository');
 const Sleep = require('../src/Sleep');
-const sleepData = require('../data/sleep');
+const sleepData = require('../data/sleep-mock-data');
 
 let sleep, userRepo, user, userInfo, userSleepData, data;
 
@@ -91,13 +91,13 @@ describe("Sleep", () => {
     });
 
     it("should update sleep hours for given date", () => {
-      sleep.changeDate(userRepo, '2019/07/01');
-      expect(sleep.hoursSlept).to.equal(9);
+      sleep.changeDate(userRepo, '2019/09/18');
+      expect(sleep.hoursSlept).to.equal(4.8);
     });
 
     it("should update sleep quality for given date", () => {
-      sleep.changeDate(userRepo, '2019/07/01');
-      expect(sleep.sleepQuality).to.equal(4.7);
+      sleep.changeDate(userRepo, '2019/09/18');
+      expect(sleep.sleepQuality).to.equal(3.8);
     });
 
     it("should show no sleep hours if date is not found in database", () => {
@@ -123,23 +123,23 @@ describe("Sleep", () => {
     });
 
     it("should get sleep hours for any week", () => {
-      sleep.changeDate(userRepo, '2019/07/21');
+      sleep.changeDate(userRepo, '2019/09/21');
       const weekHours = sleep.getWeeklyInfo(userRepo, 'hours');
-      expect(weekHours).to.deep.equal([9.3, 8.7, 5.2, 5.1, 6.8, 4.7, 9.5]);
+      expect(weekHours).to.deep.equal([10.7, 7.4, 9.5, 4.8, 10.6, 8.5, 8.2]);
     });
 
     it("should get sleep quality for any week", () => {
-      sleep.changeDate(userRepo, '2019/07/21');
+      sleep.changeDate(userRepo, '2019/09/21');
       const weekQuality = sleep.getWeeklyInfo(userRepo, 'quality');
-      expect(weekQuality).to.deep.equal([4.6, 2.2, 2.1, 1.4, 3.1, 3.6, 5]);
+      expect(weekQuality).to.deep.equal([3.3, 2.7, 1.7, 3.8, 1.6, 4.3, 1.9]);
     });
   })
 
   it("should get day average sleep hours for week", () => {
-    expect(sleep.calculateDayAverageInfo(userRepo, 'hours')).to.equal(7.4);
+    expect(sleep.calculateDayAverageInfo(userRepo, 'hours')).to.equal(8.3);
   });
 
   it("should get day average sleep quality for week", () => {
-    expect(sleep.calculateDayAverageInfo(userRepo, 'quality')).to.equal(3);
+    expect(sleep.calculateDayAverageInfo(userRepo, 'quality')).to.equal(2.7);
   });
 });

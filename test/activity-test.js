@@ -4,8 +4,8 @@ const expect = chai.expect;
 const UserRepository = require('../src/UserRepository');
 const User = require('../src/user');
 const Activity = require('../src/Activity');
-const activityData = require('../data/activity');
-const sleepData = require('../data/sleep');
+const activityData = require('../data/activity-mock-data');
+const sleepData = require('../data/sleep-mock-data');
 
 let activity, userRepo, user, userActivityData, data;
 
@@ -115,19 +115,19 @@ beforeEach(() => {
 
     describe("changeDate method", () => {
       beforeEach(()=>{
-        activity.changeDate(userRepo, '2019/07/12');
+        activity.changeDate(userRepo, '2019/09/19');
       });
 
       it("should show number of steps for chosen day", () => {
-        expect(activity.numSteps).to.equal(5418);
+        expect(activity.numSteps).to.equal(5773);
       });
 
       it("should show active minutes for chosen day", () => {
-        expect(activity.minutesActive).to.equal(206);
+        expect(activity.minutesActive).to.equal(181);
       });
 
       it("should show flights of stairs for chosen day", () => {
-        expect(activity.flightsOfStairs).to.equal(14);
+        expect(activity.flightsOfStairs).to.equal(3);
       });
 
       it("should count miles for chosen day", () => {
@@ -201,7 +201,7 @@ beforeEach(() => {
     });
 
     it("should check compliting of steps goal", () => {
-      activity.changeDate(userRepo, '2019/06/17');
+      activity.changeDate(userRepo, '2019/09/19');
       activity.checkStepGoal(user);
       expect(activity.goalComplete).to.equal(true);
     });
@@ -219,6 +219,6 @@ beforeEach(() => {
 
     it("should find the highest number of flights", () => {
       const flight = activity.findStairRecord(userRepo.activityUsersData);
-      expect(flight).to.equal(50);
+      expect(flight).to.equal(40);
     });
   });

@@ -1,5 +1,5 @@
 class ActivityRepo {
-  constructor(activityData){
+  constructor(activityData) {
     this.activityData = activityData;
   }
 
@@ -15,7 +15,7 @@ class ActivityRepo {
       return acc;
     }, 0)
     return Math.round(totalFlights / 50);
-  };
+  }
 
   calcAvgStepsTakenByDay(date) {
     let totalSteps = this.activityData.reduce((acc, user) => {
@@ -23,7 +23,7 @@ class ActivityRepo {
         acc += user.numSteps;
       }
       return acc;
-    },0)
+    }, 0)
     return Math.round(totalSteps / 50);
   }
 
@@ -33,7 +33,7 @@ class ActivityRepo {
         acc += user.minutesActive;
       }
       return acc;
-    },0)
+    }, 0)
     return Math.round(totalMins / 50);
   }
 }

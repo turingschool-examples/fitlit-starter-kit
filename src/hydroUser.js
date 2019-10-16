@@ -1,14 +1,14 @@
 class HydroUser {
-  constructor(userHydroData){
+  constructor(userHydroData) {
     this.hydrationData = userHydroData;
   }
 
   calcAvgTotalOz() {
-   let sum = this.hydrationData.reduce((acc, data) => {
+    let sum = this.hydrationData.reduce((acc, data) => {
       acc += data.numOunces;
       return acc;
-   },0)
-   return Math.round(sum / this.hydrationData.length)
+    }, 0)
+    return Math.round(sum / this.hydrationData.length)
   }
 
   getOzByDate(date) {
@@ -32,7 +32,7 @@ class HydroUser {
     return weekData.reduce((acc, day) => {
       acc += day.numOunces;
       return acc;
-    },0);
+    }, 0);
   }
 }
 

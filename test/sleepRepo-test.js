@@ -36,7 +36,7 @@ describe('SleepRepo', () => {
 
   it('should be able to find users who average sleep quality more than 3 in a week', () => {
     expect(sleepRepo.getGreatSleepersByweek("2019/06/24")).to.deep.equal(
-        [{ userID: 2, avgSleepQuality: 3.16 },
+      [{ userID: 2, avgSleepQuality: 3.16 },
         { userID: 6, avgSleepQuality: 3.17 },
         { userID: 7, avgSleepQuality: 3.47 },
         { userID: 8, avgSleepQuality: 3.23 },

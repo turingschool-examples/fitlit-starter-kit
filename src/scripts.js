@@ -33,6 +33,7 @@ function clickLoginButton(event) {
     instantiateHydroData(hydrationData);
     instantiateSleepData(sleepData);
     instantiateActivityData(activityData);
+    instantiateFriendsUser();
     displayUserPage();
     addUserFirstName();
     addUserInfo(user);
@@ -77,15 +78,25 @@ function instantiateActivityData(data) {
 
 function instantiateFriendsUser() {
   let friendsInfo = getFriendsInfo(user);
-  return friendsInfo.map((friendInfo) => {
+  let instantiatedFriends = friendsInfo.map((friendInfo) => {
     let friend = new User(friendInfo);
     return friend;
-  })
+  });
+  userFriends = instantiatedFriends;
+  user.friends = userFriends;
+  return instantiatedFriends;
+}
+
+function getFriendsInfo(user) {
+  let friendInfo = user.friends.map(friend => {
+    let friendInfo = userRepo.getFriendData(friend);
+    return friendInfo;
+  });
+  return friendInfo;
 }
 
 function instantiateFriendsActivity() {
-  let friendsInfo = getFriendsInfo(user);
-  return friendsInfo.map((friendInfo) => {
+  return user.friends.map((friendInfo) => {
     let friendActivityInfo = activityRepo.getUserActivityData(friendInfo.id);
     let friendActivity = new ActivityUser(friendActivityInfo);
     return friendActivity;
@@ -93,8 +104,7 @@ function instantiateFriendsActivity() {
 }
 
 function instantiateFriendsHydro() {
-  let friendsInfo = getFriendsInfo(user);
-  return friendsInfo.map((friendInfo) => {
+  return user.friends.map((friendInfo) => {
     let friendHydroInfo = hydroRepo.getUserHydroData(friendInfo.id);
     let friendHydro = new HydroUser(friendHydroInfo);
     return friendHydro;
@@ -117,7 +127,6 @@ function logout() {
 
 function addFriendsTotalDrankByWeek() {
   if ($("#friend-weekly-drink-section").length === 0) {
-    userFriends = instantiateFriendsUser();
     let everyone = userFriends.concat(user);
     let friendsHydro = instantiateFriendsHydro();
     let allHydro = friendsHydro.concat(hydroUser);
@@ -153,7 +162,6 @@ function addFriendsTotalDrankByWeek() {
 
 function addFriendsTotalStepsByWeek() {
   if ($("#friend-weekly-steps-section").length === 0) {
-    userFriends = instantiateFriendsUser();
     let everyone = userFriends.concat(user);
     let friendsActivity = instantiateFriendsActivity();
     let allActivity = friendsActivity.concat(activityUser);
@@ -213,15 +221,6 @@ function addStepTrend() {
       }
     })
   }
-}
-
-
-function getFriendsInfo(user) {
-  let friendInfo = user.friends.map(friend => {
-    let friendInfo = userRepo.getFriendData(friend);
-    return friendInfo;
-  });
-  return friendInfo;
 }
 
 function displayErrorMessage() {

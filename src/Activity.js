@@ -245,21 +245,15 @@ class Activity {
       return `You were highest this week!`;
 
     } else if (Math.max(friend1, friend2, friend3, user) === friend1) {
-      return `Your friend1 was the highest this week!`;
+      return `Your friend was the highest this week!`;
 
     } else if (Math.max(friend1, friend2, friend3, user) === friend2) {
-      return `Your friend2 was the highest this week!`;
+      return `Your friend was the highest this week!`;
 
     } else if (Math.max(friend1, friend2, friend3, user) === friend3) {
-      return `Your friend3 was the highest this week!`
+      return `Your friend was the highest this week!`
     }
   }
-
-  increasingStepsFor3OrMoreDays() {
-    return this.currentUserActivityData
-  }
-}
-
 
 if (typeof module !== 'undefined') {
     module.exports = Activity;

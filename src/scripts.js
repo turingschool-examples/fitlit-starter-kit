@@ -9,7 +9,8 @@ let activityRepo;
 let activityUser;
 let userFriends;
 
-$("#login-page-button").click(clickLoginButton);
+$("body").on("click", "#login-page-button", clickLoginButton);
+$("body").on("click", "#user-logout-button", logout);
 $("body").on("click", "#aside-step-challenge", addFriendsTotalStepsByWeek);
 $("body").on("click", "#aside-step-challenge", function() {
   $("#step-challenge-background").toggleClass("hidden");
@@ -98,6 +99,20 @@ function instantiateFriendsHydro() {
     let friendHydro = new HydroUser(friendHydroInfo);
     return friendHydro;
   });
+}
+
+function logout() {
+  $("#body-content-containe").remove();
+  $("body").html(`
+    <main class="main-login-page" id="main-login-page">
+      <h1 class="login-page-header">Ready to get FitLit?!</h1>
+      <form class="login-page-form" id="login-page-form">
+        Welcome to FitLit!
+        <input type="text" placeholder="Enter email here:" class="login-page-input" id="login-page-input">
+        <input type="button" value="Log In" class="login-page-button" id="login-page-button">
+      </form>
+    </main>
+  `);
 }
 
 function addFriendsTotalDrankByWeek() {
@@ -367,7 +382,7 @@ function addWeeklyActivityDataByDay() {
 function displayUserPage() {
     $("#main-login-page").remove();
     $("body").html(`
-  <div class="body-content-container">
+  <div class="body-content-container" id="body-content-container">
     <header>
       <section class="header-section-categories">
         <h1 class="header-style header-hydration-style">Hydration</h1>
@@ -383,7 +398,7 @@ function displayUserPage() {
       <div class="aside-user-info-div">
         <section class="aside-style">
           <h3 class="aside-user-info-header" id="aside-user-info-header">User Info</h3>
-          <button class="user-logout-button">Log Out</button>
+          <button class="user-logout-button" id="user-logout-button">Log Out</button>
         </section>
         <section class="aside-style" id="aside-user-step-comparison">
         </section>

@@ -450,7 +450,7 @@ function displayUserPage() {
       <h2>Fit Lit</h2>
       <h2 id="aside-user-name"></h2>
       </div>
-      <div class="aside-user-info-div">
+      <div class="aside-user-info-container">
         <section class="aside-style">
           <h3 class="aside-user-info-header" id="aside-user-info-header">User Info</h3>
           <button class="user-logout-button" id="user-logout-button">Log Out</button>

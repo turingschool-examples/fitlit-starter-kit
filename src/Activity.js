@@ -45,6 +45,28 @@ class Activity {
     return weekInfo;
   }
 
+  getWeekTotal(userRepo, id) {
+    let currentPersonsActivity = userRepo.filter(data => data.userID === id);
+    console.log(currentPersonsActivity);
+    let weekTotal = currentPersonsActivity.slice(((currentPersonsActivity.length - 1) - 6), ((currentPersonsActivity.length - 1) + 1));
+    let total = weekTotal.reduce((acc, day) => {
+      acc += day.numSteps
+      return acc;
+    }, 0)
+    return total;
+  }
+
+  findStepWinner(youAmount, playerOneName, playerOneAmount, playerTwoName, playerTwoAmount) {
+    if (youAmount >  playerOneAmount && playerTwoAmount) {
+      return 'You have the most steps!'
+    }
+    if (playerOneAmount >  youAmount && playerTwoAmount) {
+      return `${playerOneName} has the most steps!`
+    }
+    if (playerTwoAmount >  playerOneAmount && youAmount) {
+      return `${playerTwoName} has the most steps!`    }
+  }
+
   getAverageForSevenDays(userRepo) {
     const average = this.getWeekInformation(userRepo).reduce((avr, data) => {
       avr.numSteps += data.numSteps / 7;

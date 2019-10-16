@@ -8,7 +8,15 @@ let sleepUser;
 let activityRepo;
 let activityUser;
 let userFriends;
+let date;
 
+$("body").delegate("#datepicker", "focusin", function () {
+  $(this).datepicker({
+      dateFormat: "yy/mm/dd",
+      minDate: new Date(2019, 05, 15),
+      maxDate: new Date(2019, 08, 22),
+    });
+});
 $("body").on("click", "#login-page-button", clickLoginButton);
 $("body").on("click", "#user-logout-button", logout);
 $("body").on("click", "#aside-step-challenge", addFriendsTotalStepsByWeek);
@@ -25,10 +33,12 @@ $("body").on("click", "#aside-drink-challenge", function() {
 });
 
 function clickLoginButton(event) {
-  if (!$("#login-page-input").val()) {
+  if (!$("#login-page-input").val() || !$("#datepicker").val()) {
     displayErrorMessage();
+    displayNoDateMessage();
     event.preventDefault();
   } else {
+    getDate()
     instantiateUserData(userData);
     instantiateHydroData(hydrationData);
     instantiateSleepData(sleepData);
@@ -37,6 +47,7 @@ function clickLoginButton(event) {
     displayUserPage();
     addUserFirstName();
     addUserInfo(user);
+    addUserFriendsName();
     addStepComparison(user, userRepo);
     addOzToday();
     addWeeklyOzByDay();
@@ -111,6 +122,11 @@ function instantiateFriendsHydro() {
   });
 }
 
+function getDate() {
+  date = $("#datepicker").val();
+  console.log(date);
+}
+
 function logout() {
   $("#body-content-containe").remove();
   $("body").html(`
@@ -120,6 +136,7 @@ function logout() {
         Welcome to FitLit!
         <input type="text" placeholder="Enter email here:" class="login-page-input" id="login-page-input">
         <input type="button" value="Log In" class="login-page-button" id="login-page-button">
+        <p>Date: <input type="text" id="datepicker"></p>
       </form>
     </main>
   `);
@@ -138,7 +155,7 @@ function addFriendsTotalDrankByWeek() {
         </section
       </div>`);
     let friendsTotalDrinks = allHydro.map((friend, index) => {
-      let totalfriendDrinksByWeek = friend.calcTotalDrankByWeek('2019/09/22');
+      let totalfriendDrinksByWeek = friend.calcTotalDrankByWeek(date);
       let friendFirstName = everyone[index].getFirstName();
       $("#users-total-drinks-div").append(`
             <div>
@@ -150,10 +167,11 @@ function addFriendsTotalDrankByWeek() {
         name: friendFirstName
         };
       });
+      let weekPrior = getWeekPriorDate();
       friendsTotalDrinks.sort((a, b) => b.totalDrinks - a.totalDrinks);
       $("#friend-weekly-drink-section").prepend(`
             <div>
-              <h3>2019/09/15 - 2019/09/22</h3>
+              <h3>${weekPrior} - ${date}</h3>
               <h3>#1 Winner!!</h3>
               <h3>${friendsTotalDrinks[0].name}</h3>
             </div>`);
@@ -173,7 +191,7 @@ function addFriendsTotalStepsByWeek() {
         </section
       </div>`);
     let friendsTotalSteps = allActivity.map((friend, index) => {
-      let totalfriendStepsByWeek = friend.calcTotalStepsByWeek('2019/09/22');
+      let totalfriendStepsByWeek = friend.calcTotalStepsByWeek(date);
       let friendFirstName = everyone[index].getFirstName();
       $("#users-total-steps-div").append(`
             <div>
@@ -185,13 +203,30 @@ function addFriendsTotalStepsByWeek() {
         name: friendFirstName
         };
       });
+      let weekPrior = getWeekPriorDate();
       friendsTotalSteps.sort((a, b) => b.totalSteps - a.totalSteps);
       $("#friend-weekly-steps-section").prepend(`
             <div>
-              <h3>2019/09/15 - 2019/09/22</h3>
+              <h3>${weekPrior} - ${date}</h3>
               <h3>#1 Winner!!</h3>
               <h3>${friendsTotalSteps[0].name}</h3>
             </div>`);
+  }
+}
+
+function getWeekPriorDate() {
+  let newDay = date.split('/');
+  if(newDay[2] < 7) {
+    newDay[1] = newDay[1] - 1;
+    newDay[2] = (newDay[2] - 7) + 30;
+    return newDay.join('/');
+  } else {
+  newDay = newDay[2] - 7;
+  let weekBefore = date.split('/')
+  weekBefore.pop()
+  weekBefore.splice(2, 0, newDay)
+  let week = weekBefore.join('/')
+  return week;
   }
 }
 
@@ -224,8 +259,18 @@ function addStepTrend() {
 }
 
 function displayErrorMessage() {
-  if ($("#error-message").length === 0) {
+  if ($("#error-message").length === 0 && !$("#login-page-input").val()) {
     $("#login-page-input").after("<p id='error-message'>Please enter your email</p>");
+  } else if ($("#error-message").length > 0 && $("#login-page-input").val()) {
+    $("#error-message").remove();
+  }
+}
+
+function displayNoDateMessage() {
+  if ($("#no-date-error-message").length === 0 && !$("#datepicker").val()) {
+    $("#login-page-input").after("<p id='no-date-error-message'>Please select a date</p>");
+  } else if($("#no-date-error-message").length > 0 && $("#datepicker").val()) {
+    $("#no-date-error-message").remove();
   }
 }
 
@@ -241,9 +286,21 @@ function addStepComparison(user, userRepo) {
     <div class="aside-step-goal-style">${userRepo.calcAvgStepGoal()}</div>`);
 }
 
+function addUserFriendsName() {
+  $("#user-logout-button").before(`
+    <div class="aside-user-info-div">
+      <h4 id="aside-user-friends-div">friends</h4>
+    </div>`);
+  user.friends.forEach(friend => {
+    $("#aside-user-friends-div").after(`
+        <p class="aside-user-info-par">${friend.name}</p>`);
+  });
+}
+
 function addUserInfo(user) {
   let userProperties = Object.keys(user);
   userProperties.splice(0, 4);
+  userProperties.pop();
   let orderedUserProperties = userProperties.reverse();
   orderedUserProperties.forEach(function(property, index) {
     $("#aside-user-info-header").after(`
@@ -256,7 +313,7 @@ function addUserInfo(user) {
 
 function addOzToday() {
   $("#card-daily-oz-header").after(`
-  <p class="card-daily-oz-paragraph">${hydroUser.getOzByDate("2019/06/22")}</p>`);
+  <p class="card-daily-oz-paragraph">${hydroUser.getOzByDate(date)}</p>`);
 }
 
 function addWeeklyOzByDay() {
@@ -271,8 +328,8 @@ function addWeeklyOzByDay() {
 }
 
 function addSleepDataforDay() {
-  let hoursSleptOnDay = sleepUser.getSleepDataDay('2019/06/22', 'hoursSlept');
-  let sleepQualityOnDay = sleepUser.getSleepDataDay('2019/06/22', 'sleepQuality');
+  let hoursSleptOnDay = sleepUser.getSleepDataDay(date, 'hoursSlept');
+  let sleepQualityOnDay = sleepUser.getSleepDataDay(date, 'sleepQuality');
   $("#card-sleep-daily-data").after(`
     <section class="section-style">
       <h3>Hours Slept Last Night</h3>
@@ -285,7 +342,7 @@ function addSleepDataforDay() {
 }
 
 function addWeeklySleepDataByDay() {
-  let weeklyUserSleepHours = sleepUser.getDailySleepByWeek('2019/06/22');
+  let weeklyUserSleepHours = sleepUser.getDailySleepByWeek(date);
   weeklyUserSleepHours.forEach(day => {
     $("#card-weekly-sleep-header").after(`
       <section class="section-style">
@@ -313,7 +370,7 @@ function addAllTimeSleepAvg() {
 }
 
 function addMilesForLatestDay() {
-  let todaysMiles = activityUser.calcMilesByDay('2019/09/22', user.strideLength);
+  let todaysMiles = activityUser.calcMilesByDay(date, user.strideLength);
   $("#daily-activity-header").after(`
   <section class="section-style">
   <h3>Miles Walked</h3>
@@ -322,7 +379,7 @@ function addMilesForLatestDay() {
 }
 
 function addMinutesActiveByDay() {
-  let todaysMinutes = activityUser.getMinutesActiveByDay('2019/09/22');
+  let todaysMinutes = activityUser.getMinutesActiveByDay(date);
   $("#daily-activity-header").after(`
   <section class="section-style">
   <h3>Minutes Active</h3>
@@ -331,7 +388,7 @@ function addMinutesActiveByDay() {
 }
 
 function addNumStepsForLatestDay() {
-  let todaysSteps = activityUser.getNumStepsByDay('2019/09/22');
+  let todaysSteps = activityUser.getNumStepsByDay(date);
   $("#daily-activity-header").after(`
   <section class="section-style">
   <h3>Today's Steps</h3>
@@ -340,7 +397,7 @@ function addNumStepsForLatestDay() {
 }
 
 function addFlightsOfStairsForLatestDay() {
-  let todaysFlights = activityUser.getFlightsClimbedByDay('2019/09/22');
+  let todaysFlights = activityUser.getFlightsClimbedByDay(date);
   $("#daily-activity-header").after(`
   <section class="section-style">
   <h3>Today's Flights Climbed</h3>
@@ -349,9 +406,9 @@ function addFlightsOfStairsForLatestDay() {
 }
 
 function addAllUsersActivityAverages() {
-  let avgFlights = activityRepo.calcAvgStairsClimbedByDay('2019/09/22');
-  let avgSteps = activityRepo.calcAvgStepsTakenByDay('2019/09/22');
-  let avgMins = activityRepo.calcMinsActiveByDay('2019/09/22');
+  let avgFlights = activityRepo.calcAvgStairsClimbedByDay(date);
+  let avgSteps = activityRepo.calcAvgStepsTakenByDay(date);
+  let avgMins = activityRepo.calcMinsActiveByDay(date);
   $("#daily-activity-header").after(`
   <section class="section-style">
     <h3>Average User Activity</h3>
@@ -364,7 +421,7 @@ function addAllUsersActivityAverages() {
 }
 
 function addWeeklyActivityDataByDay() {
-  let weeklyUserActivityHours = activityUser.getDailyActivityByWeek('2019/06/22');
+  let weeklyUserActivityHours = activityUser.getDailyActivityByWeek(date);
   weeklyUserActivityHours.forEach(day => {
     $("#weekly-activity-header").after(`
       <section class="section-style">

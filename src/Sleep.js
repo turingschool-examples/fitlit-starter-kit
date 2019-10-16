@@ -5,7 +5,7 @@ class Sleep {
     this.currentUserSleepData;
     this.userDataForSleep = userData
   }
-  
+
   findCurrentUserSleepData() {
     this.currentUserSleepData = this.currentSleepData.filter((userInfo) =>
       userInfo.userID === this.userID);
@@ -34,6 +34,7 @@ class Sleep {
     let sleepDataOnSpecificDate = this.currentUserSleepData.find(userBlock => {
       return (userBlock.date === date)
     });
+
     return sleepDataOnSpecificDate.hoursSlept
   }
 
@@ -80,6 +81,7 @@ class Sleep {
       if (!acc[userBlock.userID]) {
         acc[userBlock.userID] = []
       }
+
       return acc
     }, {});
 
@@ -88,6 +90,7 @@ class Sleep {
       if (!acc[num]) {
         acc[num] = parseInt(num)
       }
+
       return acc
     }, {});
 
@@ -119,6 +122,7 @@ class Sleep {
       if (parsedBestSleeperIds.includes(userBlock.id)) {
          acc.push(userBlock.name)
       }
+
       return acc
     }, []);
   }
@@ -147,6 +151,7 @@ class Sleep {
       if (idsForDeepestSleepers.includes(userBlock.id)) {
          acc.push(userBlock.name)
       }
+      
       return acc
     }, []);
   }

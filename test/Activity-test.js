@@ -6,7 +6,6 @@ const User = require('../src/User');
 const mockActivityData = require('../mock/mockActivityData');
 const mockCurrentUserActivityData = require('../mock/mockCurrentUserActivity.js');
 
-
 let user;
 let activity
 
@@ -93,7 +92,6 @@ describe('Activity', () => {
         activity.findCurrentUserActivityData();
         expect(activity.calculateAvgStepsTakenOnSpecificDateAllUsers("2019/06/15")).to.equal(5091);
     });
-
 
     it('should find based on date the average number of minutes active for all users', () => {
         activity.findCurrentUserActivityData();

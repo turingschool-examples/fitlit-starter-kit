@@ -159,6 +159,11 @@ section {
   width: 80%;
 }
 
+.best-sleepers {
+  color: #BFBFBF;
+  font-size: 16px;
+}
+
 header {
   align-items: center;
   background-color: #767A73;
@@ -207,6 +212,10 @@ section ul {
   }
 
   section ul {
+    font-size: 12px;
+  }
+
+  .best-sleepers {
     font-size: 12px;
   }
 }

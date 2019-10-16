@@ -13,6 +13,7 @@ Technically, this project incorporated designing the architecture of the project
 Testing was a key component in this project.  Tests were written for all functions associated with classes and data manipulation or aggregation.
 
 ## Home Screen
+![View of our home screen](https://i.imgur.com/MlOFp1c.png)
 
 ## More Information
 

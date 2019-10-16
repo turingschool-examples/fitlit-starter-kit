@@ -312,7 +312,7 @@ function addUserInfo(user) {
 
 function addOzToday() {
   $("#card-daily-oz-header").after(`
-  <p class="card-daily-oz-paragraph">${hydroUser.getOzByDate(date)}</p>`);
+  <section class="card-daily-oz-paragraph section-style">${hydroUser.getOzByDate(date)} ounces today</section>`);
 }
 
 function addWeeklyOzByDay() {
@@ -466,22 +466,22 @@ function displayUserPage() {
     </aside>
     <main class="main-user-stats">
       <div class="main-user-stats-div">
-        <article class="card-style card-daily-oz">
+        <article class="card-style card-daily card-daily-oz">
           <h2 id="card-daily-oz-header">Have you been drinkin'?</h2>
         </article>
-        <article class="card-style card-weekly-oz">
+        <article class="card-style card-weekly card-weekly-oz">
           <h2 id="card-weekly-oz-header">Weekly Water Intake</h2>
         </article>
-        <article class="card-style card-daily-activity">
+        <article class="card-style card-daily card-daily-activity">
           <h2 id="daily-activity-header">Today's Activity</h2>
         </article>
-        <article class="card-style card-weekly-activity">
+        <article class="card-style card-weekly card-weekly-activity">
           <h2 id="weekly-activity-header">This Week's Activity</h2>
         </article>
-        <article class="card-style card-daily-sleep">
+        <article class="card-style card-daily card-daily-sleep">
           <h2 id="card-sleep-daily-data">Previous Night's Sleep Stats</h2>
         </article>
-        <article class="card-style card-weekly-sleep">
+        <article class="card-style card-weekly card-weekly-sleep">
           <h2 id="card-weekly-sleep-header">Seven Days of Sleep</h2>
         </article>
         <article class="card-style card-all-time-sleep">

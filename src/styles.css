@@ -61,7 +61,7 @@ header {
   display: flex;
   justify-content: space-around;
   width: 100%;
-  margin: 20px 0px 2.5px;
+  margin: 15px 0px 15px;
 }
 
 .header-style {
@@ -196,10 +196,9 @@ li {
   grid-template-areas:
     "dayOz dayActivity daySleep"
     "weekOz weekActivity weekSleep"
-    "weekOz weekActivity weekSleep"
-    "weekOz weekActivity allTimeSleep";
+    "null activityMetric allTimeSleep";
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   padding: .70%;
 }
 
@@ -238,6 +237,16 @@ h3{
 
 p {
   margin: 2%;
+}
+
+.card-daily{
+  height: 98%;
+  overflow: auto;
+}
+
+.card-weekly {
+  height: 98%;
+  overflow: auto;
 }
 
 .card-daily-oz {

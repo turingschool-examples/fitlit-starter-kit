@@ -55,7 +55,7 @@ let stairsCalendarStairsAverageWeekly = document.querySelector('#stairs-calendar
 
 let trendingStepsPhraseContainer = document.querySelector('.trending-steps-phrase-container');
 let trendingStairsPhraseContainer = document.querySelector('.trending-stairs-phrase-container');
-
+let dropdownFriendsStepsContainer = document.querySelector('#dropdown-friends-steps-container');
 
 
 
@@ -260,11 +260,13 @@ let dropdownGoal = document.querySelector('#dropdown-goal');
 let dropdownFriends = document.querySelector('#dropdown-friends');
 
 dropdownName.innerText = user.name.toUpperCase();
-dropdownEmail.innerText = `Email | ${user.email}`;
-dropdownGoal.innerText = `Daily Step Goal | ${user.dailyStepGoal}`;
+dropdownEmail.innerText = `EMAIL | ${user.email}`;
+dropdownGoal.innerText = `DAILY STEP GOAL | ${user.dailyStepGoal}`;
 
-user.findFriendsNames(userRepository.users);
+user.findFriendsTotalStepsForWeek(userRepository.users, todayDate);
 
-user.friendsNames.forEach(friend => {
-  dropdownFriends.innerText += ` ${friend} |`
+user.friendsActivityRecords.forEach(friend => {
+  dropdownFriendsStepsContainer.innerHTML += `
+  <p class='dropdown-p friend-steps'>${friend.firstName} | Total Steps This Week | ${friend.totalWeeklySteps}</p>
+  `;
 });

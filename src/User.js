@@ -169,6 +169,7 @@
       this.friendsActivityRecords.push(
         {
           'id': matchedFriend.id,
+          'firstName': matchedFriend.name.toUpperCase().split(' ')[0],
           'totalWeeklySteps': matchedFriend.totalStepsThisWeek
         })
     })

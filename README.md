@@ -13,13 +13,17 @@ Technically, this project incorporated designing the architecture of the project
 Testing was a key component in this project.  Tests were written for all functions associated with classes and data manipulation or aggregation.
 
 ## Home Screen
+The user will see this as their main view when they load the page.
 ![View of our home screen](https://i.imgur.com/MlOFp1c.png)
 
 ## More Information
+The user can click on the buttons on the card to get more information, both about their own stats and stats aggregated from all users.
 ![Click on the buttons to view more information](https://i.imgur.com/OccjPvL.png)
 
 
 ## User Information
+The user can also click on the profile icon in the upper right hand corner to see some additional profile information and stats from their friends.
+![Click the user icon to see profile information](https://i.imgur.com/GZF13DW.png)
 
 ## Authors
 [Trisha Langlois](https://github.com/trishalanglois)

@@ -351,6 +351,13 @@ $(document).ready(function() {
     $('.statistic').css('height', '100%');
     $('.statistic main').show();
     updateStreaks();
+    updateHighest();
+  });
+
+  $('.closer-stats').on('click', function () {
+    $('.statistic header').show();
+    $('.statistic').css('height', '7%');
+    $('.statistic main').hide();
   });
 
   function updateStreaks() {
@@ -362,9 +369,29 @@ $(document).ready(function() {
     });
   }
 
-  $('.closer-stats').on('click', function () {
-    $('.statistic header').show();
-    $('.statistic').css('height', '7%');
-    $('.statistic main').hide();
-  });
+  function updateHighest() {
+    updateHighestActivity();
+    updateHighestWater();
+    updateHighestSleep();
+  }
+
+  function updateHighestActivity() {
+    const $steps = activity.findHighestValue(userRepository, user, 'numSteps');
+    const $miles = activity.findHighestValue(userRepository, user, 'miles');
+    const $mins = activity.findHighestValue(userRepository, user, 'minutesActive');
+    const $flights = activity.findHighestValue(userRepository, user, 'flightsOfStairs');
+    $('.highest .activity .steps-number').text($steps);
+    $('.highest .activity .miles-number').text($miles);
+    $('.highest .activity .mins-number').text($mins);
+    $('.highest .activity .flights-number').text($flights);
+  }
+
+  function updateHighestWater() {
+    const $water = hydration.findHighestFluid(userRepository.hydrationUsersData);
+    $('.highest .water .water-number').text($water);
+  }
+  function updateHighestSleep() {
+    const $sleep = sleep.findHighestSleep(userRepository);
+    $('.highest .sleep .sleep-number').text($sleep);
+  }
 });

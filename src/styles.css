@@ -198,13 +198,13 @@ li {
     "weekOz weekActivity weekSleep"
     "null activityMetric allTimeSleep";
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 2fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   padding: .70%;
 }
 
 .card-style {
   border-radius: 5px;
-  margin: 2%;
+  margin: 2% 5%;
   color: white;
 }
 
@@ -240,12 +240,17 @@ p {
 }
 
 .card-daily{
-  height: 98%;
+  height: 38vh;
   overflow: auto;
 }
 
 .card-weekly {
-  height: 98%;
+  height: 38vh;
+  overflow: auto;
+}
+
+.card-metric {
+  height: 38vh;
   overflow: auto;
 }
 

@@ -487,7 +487,7 @@ function displayUserPage() {
         <article class="card-style card-weekly card-weekly-sleep">
           <h2 id="card-weekly-sleep-header">Seven Days of Sleep</h2>
         </article>
-        <article class="card-style card-all-time-sleep">
+        <article class="card-style card-metric card-all-time-sleep">
           <h2 id="card-sleep-all-time-avg">All Time Sleep Stats</h2>
         </article>
       </div>

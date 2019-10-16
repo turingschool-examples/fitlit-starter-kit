@@ -124,7 +124,6 @@ function instantiateFriendsHydro() {
 
 function getDate() {
   date = $("#datepicker").val();
-  console.log(date);
 }
 
 function logout() {

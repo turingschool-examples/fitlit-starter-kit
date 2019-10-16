@@ -168,7 +168,7 @@ h4 {
   padding: 10px;
 }
 
-.hydration, .sleep {
+.hydration, .sleep, .activity {
   background: #FFFFFF;
   border: 2px solid #F6AE2D;
   border-radius: 2px;
@@ -179,6 +179,12 @@ h4 {
 .hydration-today, #hours-slept, #sleep-quality, #hours-slept-all, #sleep-quality-all {
   color: #33658A;
   font-size: 2.5rem;
+  padding-left: 0px;
+}
+
+#miles-walked-today, #mins-active-today, #steps-today {
+  color: #33658A;
+  font-size: 2.1rem;
   padding-left: 0px;
 }
 
@@ -198,17 +204,21 @@ h3 {
   text-decoration: underline;
 }
 
-.lrg-sleep-wrap {
+.lrg-sleep-wrap, .lrg-activity-wrap {
   display: flex;
   justify-content: space-around;
 }
 
-.sleep-wrapper {
+.sleep-wrapper, .activity-wapper {
   margin-top: 20px;
 }
 
 .sleep-label {
   font-size: 1.7rem;
+  text-decoration: underline;
+}
+.activity-label {
+  font-size: 1.3rem;
   text-decoration: underline;
 }
 
@@ -219,6 +229,8 @@ h3 {
 table {
   border: 2px solid #F26419;
   margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
   width: 80%;
  }
 
@@ -227,10 +239,14 @@ th, td {
   padding: 2px;
 }
 
-.main-tbl-head {
+.main-tbl-head, .tbl-activity {
   background-color: #86BBD8;
 }
 
-.tbl-day {
+.tbl-day, .table-activity-2 {
   background-color: #CDCDCD;
+}
+
+#mins-active-week, #steps-week, #miles-walked-week {
+  padding-left: 0px;
 }

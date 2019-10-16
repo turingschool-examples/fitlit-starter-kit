@@ -19,7 +19,7 @@ describe('Activity', function() {
     expect(activity.returnUserMiles(activityData, "2019/06/16")).to.equal(2.24);
   });
   it('should return user\'s minutes active', function() {
-    expect(activity.returnMinutesActive(activityData, "2019/06/15")).to.equal(138);
+    expect(activity.prevDayActivity(activityData, "2019/06/15", 'minutesActive')).to.equal(138);
   });
   it('should return a weekly average of minutes active for 1 user', function() {
     expect(activity.returnWeekAvg(activityData, '2019/06/15')).to.equal(125);
@@ -36,7 +36,7 @@ describe('Activity', function() {
 
   describe('Activity user avgs', function() {
 
-  
+
     it('should check avg minutes active', function() {
       expect(activity.checkUserAvgs('2019/06/15', 'minutesActive', activityData)).to.equal(144.2);
     });
@@ -51,4 +51,22 @@ describe('Activity', function() {
   it('should count all time miles for a specific user', function() {
     expect(activity.userAllTimeMiles(activityData)).to.equal(36.97);
   })
+
+  describe('User week for different keys', function() {
+
+
+    it('should return a weekly view of steps', function() {
+      expect(activity.returnWeekStats('2019/06/15', activityData, "numSteps")).to.deep.equal([4294, 2634, 9256, 12982, 7288, 4294, 2634]);
+    });
+
+    it('should return a weekly view of flightsOfStairs', function(){
+    expect(activity.returnWeekStats('2019/06/15', activityData, "flightsOfStairs")).to.deep.equal([10, 5, 2, 46, 28, 10, 5]);
+    });
+
+    it('should return a weekly view of minutesActive', function(){
+      expect(activity.returnWeekStats('2019/06/15', activityData, "minutesActive")).to.deep.equal([138, 107, 108, 231, 46, 138, 107]);
+      });
+    
+  });
 });
+

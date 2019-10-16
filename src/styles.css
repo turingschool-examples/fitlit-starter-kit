@@ -178,7 +178,7 @@ li {
 
 .user-step-goal {
   border-bottom: 2px solid black;
-  width: 90%;
+  width: 91%;
   margin: auto;
 }
 
@@ -195,10 +195,11 @@ li {
   margin: 10px auto;
   font-size: 140%;
   background-color: #2471A3;
-  /* outline: 0; */
+  outline: 0;
   cursor: pointer;
   padding: 2px;
-  color: #FFFFFF
+  color: #FFFFFF;
+  padding: 5px;
 }
 
 .aside-trend-button:hover  {

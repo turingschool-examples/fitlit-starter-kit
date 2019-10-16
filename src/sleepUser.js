@@ -28,7 +28,7 @@ class SleepUser {
     return weekData;
   }
 
-  getAvgHoursSleepByWeek(date, property) {
+  getAvgHoursByWeek(date, property) {
     let dataDate = this.sleepData.map(data => data.date);
     let avgPropertyNames = `avg${property}`;
     let dateIndex = dataDate.lastIndexOf(date);

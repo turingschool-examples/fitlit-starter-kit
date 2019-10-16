@@ -39,9 +39,11 @@ nav {
 }
 
 .main__section--container {
-	grid-area: main;
-	background: #c5c6c7;
-	font-size: 18px;
+	background: url(../images/yoga-sunrise-background.png);
+  grid-area: main;
+  font-size: 18px;
+  background-repeat: no-repeat;
+  background-size: 100vw;
 }
 
 .sub__section--container {
@@ -127,20 +129,20 @@ nav {
 .main__hydration:hover {
 	border: 2px solid #56c0dc;
 	color: #56c0dc;
-	box-shadow: 2px 2px 3px #888888;
+	box-shadow: 2px 2px 3px #476972;
 }
 
 .main__sleep:hover {
 	border: 2px solid #a06cf7;
 	color: #a06cf7;
-	box-shadow: 2px 2px 3px #888888;
+	box-shadow: 2px 2px 3px #476972;
 }
 
-.main__sleep:hover {
+/* .main__sleep:hover {
 	border: 2px solid #86c232;
 	color: #86c232;
 	box-shadow: 2px 2px 3px black;
-}
+} */
 
 .main__activity:hover {
 	border: 2px solid #ee7d30;
@@ -176,4 +178,11 @@ nav {
 	height: 170px;
 	border: 1px solid white;
 	background: #474b4f;
+}
+
+.friends {
+	display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3.4rem;
 }

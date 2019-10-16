@@ -18,12 +18,6 @@ describe('Activity', function() {
     })
   });
 
-// for a date get miles walked by a user
-// baised on their strideLength
-// userdata[0].strideLength
-
-// steps * strideLength / 5280
-
   it('should For a specific day (specified by a date), return the miles a user has walked based on their number of steps (use their strideLength to help calculate this)', function () {
     activityData.milesWalked();
     expect(activityData.milesWalked()).to.deep.equal(2)

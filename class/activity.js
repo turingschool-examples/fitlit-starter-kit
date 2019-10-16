@@ -12,13 +12,6 @@ class Activity {
   }
 }
 
-module.exports = Activity;
-
-
-// var theSteps = userDataClass.strideLength * activityData[0].numSteps / 5280
-// undefined
-// Math.round(theSteps)
-// 2
-
-
-// let findUserData = this.hydrationData.filter(element => element.userID === id);
+if (typeof module !== 'undefined') {
+  module.exports = Activity;
+}

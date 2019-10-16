@@ -1,7 +1,8 @@
 class Hydration {
   constructor(hydrationData) {
     this.hydrationData = hydrationData;
-    this.numOunces = hydrationData.numOunces
+    this.numOunces = hydrationData.numOunces;
+    this.weeklyAverageHydo = 0;
   }
 
   findDailyHydrationAverage(id) {
@@ -20,12 +21,16 @@ class Hydration {
   }
 
   findWeeklyHydration(id) {
-  	let findUserData = this.hydrationData.filter(element => element.userID === id);
+  	let findUserData = hydrationData.filter(element => element.userID === id);
   	let weeklyData = findUserData.slice((findUserData.length - 7), findUserData.length)
-  	return weeklyData.map((element) => {
-        return element.numOunces
-      })
+  	var total =  weeklyData.reduce( (acc, val) => {
+        acc += val.numOunces;
+      return acc;
+    }, 0) / 7;
+    this.weeklyAverageHydo = Math.round(total);
+    return this.weeklyAverageHydo;
  }
+
 
  	printDailyHydration(id) {
     return this.findWeeklyHydration(id).map(day => {
@@ -35,7 +40,8 @@ class Hydration {
 
 }
 
-// module.exports = Hydration;
-
+if (typeof module !== 'undefined') {
+  module.exports = Hydration;
+}
 
 // npm test test/hydration-test.js

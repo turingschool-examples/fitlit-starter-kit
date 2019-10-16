@@ -12,14 +12,12 @@ class User {
 findUsersFirstName() {
 	return this.name.split(' ')[0];
 }
+
 findFriendById() {
   console.log(this.friends);
-  // this.friends
+  }
 }
 
+if (typeof module !== 'undefined') {
+  module.exports = User;
 }
-
-// module.exports = User;
-
-
-//find friend by id

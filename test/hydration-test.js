@@ -15,7 +15,7 @@ describe('Hydration', function() {
     const hydrationData = new Hydration(HydrationDataTest);
     expect(hydrationData.findDailyHydrationAverage(1)).to.equal(59)
   });
- 
+
   it('should find the average fluid ounces consumed per day from a userID', function() {
     const hydrationData = new Hydration(HydrationDataTest);
     expect(hydrationData.findHydrationByDate('2019/06/15', 1)).to.equal(37)
@@ -23,8 +23,6 @@ describe('Hydration', function() {
 
   it('should return amount drank per day by week', function() {
     const hydrationData = new Hydration(HydrationDataTest);
-    expect(hydrationData.printDailyHydration(1)).to.deep.equal([91, 50, 50, 43, 39, 61, 51]);
+    expect(hydrationData.findWeeklyHydration(1)).to.deep.equal([91, 50, 50, 43, 39, 61, 51]);
   });
-
-
 });

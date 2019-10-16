@@ -33,16 +33,11 @@ let intFriend2 = userData[friendNum2];
 let friendNum3 = randomUser.friends[2];
 let intFriend3 = userData[friendNum3];
 
-// function makeFriends(one) {
-//   friend1 = new User(one);
-// }
-// makeFriends(intFriend1);
-
 function makeHydrationClass(hydroClass) {
 hydrationDataClass = new Hydration(hydroClass)
-console.log(hydrationDataClass)
 }
+makeHydrationClass(randomHydrationClass)
+hydrationDataClass.findWeeklyHydration(randomHydrationClass.userID);
 
-makeHydrationClass(randomHydrationClass);
 
 // sending data to the DOM

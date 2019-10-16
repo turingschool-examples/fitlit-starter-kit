@@ -12,4 +12,7 @@ class UserRepository {
     return this.dailyStepGoalAverage;
 }
 }
-// module.exports = UserRepository;
+
+if (typeof module !== 'undefined') {
+  module.exports = UserRepository;
+}

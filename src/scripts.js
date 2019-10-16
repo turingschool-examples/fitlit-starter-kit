@@ -1,14 +1,18 @@
 $( document ).ready( () => {
 
-
-$('.main__user').html(`${userDataClass.name} <br>
-    ${userDataClass.email} <br>
-    Friends: <a href='#' >${userDataClass.friends}</a>`);
+$('.main__user').html(`<h2>${userDataClass.name} </h2>
+    Address: ${userDataClass.address} <br>
+    Email: ${userDataClass.email} <br>
+    Daily Step Goal: ${userDataClass.dailyStepGoal} steps <br>
+    Stride Length: ${userDataClass.strideLength} <br>
+    Friends: ${userDataClass.friends} `);
 $('.main__sleep').html(`<p>Sleep:</p>${sleepData[randomFitLitUser].date} <br> Hours Slept: ${sleepData[randomFitLitUser].hoursSlept} hours<br>
     Sleep Quality: ${sleepData[randomFitLitUser].sleepQuality}`);
 
 $('.main__hydration').html(`<div>
-  <p>Hydration: ${hydrationDataClass.numOunces} oz</p></div>`);
+  <p>Date: ${hydrationDataClass.hydrationData.date} <br>
+  Hydration: ${hydrationDataClass.hydrationData.numOunces} oz <br>
+  Weekly Average: ${hydrationDataClass.weeklyAverageHydo} oz</p></div>`);
 
 $('.main__activity').html(`<div><p>Steps: ${activityData[randomFitLitUser].numSteps} <br>
   Mins Active: ${activityData[randomFitLitUser].minutesActive} <br>
@@ -23,11 +27,4 @@ $('.main__activity').html(`<div><p>Steps: ${activityData[randomFitLitUser].numSt
   $('.friend-3').html(`<div class='friends'>${intFriend3.name} <br>
     <p>Strinde Length: ${intFriend3.strideLength}</p></div>`);
 
-
-  // console.log(randomFitLitUser)
-
-
 }); // end jquery
-
-// https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path
-// clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);

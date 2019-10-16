@@ -1,6 +1,5 @@
 body {
   display: grid;
-  font-size: 26px;
   height: 100vh;
   grid-template-areas:
   "nav main main"
@@ -172,10 +171,39 @@ section ul {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+  font-size: 26px;
   height: 80%;
   justify-content: space-around;
+  margin-left: -20px;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 1050px) {
 
+  section ul {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 775px) {
+
+  header {
+    font-size: 20px;
+  }
+
+  section ul {
+    font-size: 15px;
+    margin-left: -30px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  header {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  section ul {
+    font-size: 12px;
+  }
 }

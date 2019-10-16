@@ -162,9 +162,15 @@
       return sum;
     }, 0));
   }
-  findFriendsTotalStepsForWeek(users) {
-    this.friends.forEach(friend => {
-      this.friendsNames.push(users.find(user => user.id === friend).getFirstName());
+  findFriendsTotalStepsForWeek(users, date) {
+    return this.friends.map(friend => {
+      let matchedFriend = users.find(user => user.id === friend);
+      matchedFriend.calculateTotalStepsThisWeek(date);
+      this.friendsActivityRecords.push(
+        {
+          'id': matchedFriend.id,
+          'totalWeeklySteps': matchedFriend.totalStepsThisWeek
+        })
     })
   }
 }

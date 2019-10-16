@@ -176,7 +176,7 @@
     this.calculateTotalStepsThisWeek(date);
     this.friendsActivityRecords.push(        {
               'id': this.id,
-              'firstName': 'YOU ARE HERE',
+              'firstName': 'YOU',
               'totalWeeklySteps': this.totalStepsThisWeek
             });
     this.friendsActivityRecords = this.friendsActivityRecords.sort((a, b) => b.totalWeeklySteps - a.totalWeeklySteps);

@@ -23,11 +23,9 @@ user.findFriendsNames(userRepository.users);
 
 let dailyOz = document.querySelectorAll('.daily-oz');
 let dropdownEmail = document.querySelector('#dropdown-email');
-let dropdownFriends = document.querySelector('#dropdown-friends');
 let dropdownFriendsStepsContainer = document.querySelector('#dropdown-friends-steps-container');
 let dropdownGoal = document.querySelector('#dropdown-goal');
 let dropdownName = document.querySelector('#dropdown-name');
-let friendsStepsParagraphs = document.querySelectorAll('.friends-steps');
 let headerName = document.querySelector('#header-name');
 let hydrationCalendarCard = document.querySelector('#hydration-calendar-card');
 let hydrationFriendOuncesToday = document.querySelector('#hydration-friend-ounces-today');
@@ -180,18 +178,6 @@ dropdownEmail.innerText = `EMAIL | ${user.email}`;
 
 dropdownName.innerText = user.name.toUpperCase();
 
-friendsStepsParagraphs.forEach(paragraph => {
-  if (friendsStepsParagraphs[0] === paragraph) {
-    paragraph.classList.add('green-text');
-  }
-  if (friendsStepsParagraphs[friendsStepsParagraphs.length - 1] === paragraph) {
-    paragraph.classList.add('red-text');
-  }
-  if (paragraph.innerText.includes('YOU ARE HERE')) {
-    paragraph.classList.add('yellow-text');
-  }
-});
-
 headerName.innerText = `${user.getFirstName()}'S `;
 
 hydrationUserOuncesToday.innerText = hydrationData.find(hydration => {
@@ -287,6 +273,16 @@ user.friendsActivityRecords.forEach(friend => {
   `;
 });
 
-user.friendsNames.forEach(friend => {
-  dropdownFriends.innerText += ` ${friend} |`
+let friendsStepsParagraphs = document.querySelectorAll('.friends-steps');
+
+friendsStepsParagraphs.forEach(paragraph => {
+  if (friendsStepsParagraphs[0] === paragraph) {
+    paragraph.classList.add('green-text');
+  }
+  if (friendsStepsParagraphs[friendsStepsParagraphs.length - 1] === paragraph) {
+    paragraph.classList.add('red-text');
+  }
+  if (paragraph.innerText.includes('YOU')) {
+    paragraph.classList.add('yellow-text');
+  }
 });

@@ -16,7 +16,7 @@ Testing was a key component in this project.  Tests were written for all functio
 ![View of our home screen](https://i.imgur.com/MlOFp1c.png)
 
 ## More Information
-![Click on the buttons to view more information](https://i.imgur.com/OccjPvL.png(373 kB)
+![Click on the buttons to view more information](https://i.imgur.com/OccjPvL.png)
 
 
 ## User Information

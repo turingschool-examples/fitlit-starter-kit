@@ -128,6 +128,7 @@ aside {
   background-color: #EAECEE;
 }
 
+
 .hidden {
   display: none;
 }
@@ -340,8 +341,4 @@ p {
   width: 80%;
   margin: 75px auto;
   height: 80%;
-}
-
-.step-trend-div {
-
 }

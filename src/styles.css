@@ -17,6 +17,11 @@ header {
   height: 9vw;
 }
 
+button:active {
+  border: none;
+  outline: none;
+}
+
 #profile-button {
   background-image: url(../images/profile.png);
   background-position: center;
@@ -33,7 +38,7 @@ header {
 #user-info-dropdown {
   background-color: #1F1F1F;
   color: white;
-  margin-left: 70%;
+  margin-left: 60%;
   margin-top: -1.2%;
   position: relative;
   text-align: center;
@@ -295,7 +300,19 @@ main {
   background-image: url(../images/stairs-trending.png);
 }
 
-/* HIDE CARDS */
+/* CHANGING CLASSES */
 .hide {
   display: none;
+}
+
+.green-text {
+  color: green;
+}
+
+.red-text {
+  color: red;
+}
+
+.yellow-text {
+  color: yellow;
 }

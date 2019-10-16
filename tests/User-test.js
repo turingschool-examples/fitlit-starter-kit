@@ -202,4 +202,77 @@ describe('User', function() {
     user.findFriendsNames(users);
     expect(user.friendsNames).to.deep.equal(['BEN', 'JOHN', 'NICK']);
   });
+  it('calculateTotalStepsThisWeek should add users steps for week', function() {
+    user.activityRecord = [{
+      "date": "2019/06/29", "steps": 2},
+      {"date": "2019/06/28", "steps": 1},
+      {"date": "2019/06/27", "steps": 4},
+      {"date": "2019/06/26", "steps": 3},
+      {"date": "2019/06/25", "steps": 1},
+      {"date": "2019/06/24", "steps": 12},
+      {"date": "2019/06/23", "steps": 11},
+      {"date": "2019/06/22", "steps": 10},
+      {"date": "2019/06/21", "steps": 9},
+      {"date": "2019/06/20", "steps": 8},
+      {"date": "2019/06/19", "steps": 11},
+      {"date": "2019/06/18", "steps": 10}];
+      user.calculateTotalStepsThisWeek('2019/06/29');
+    expect(user.totalStepsThisWeek).to.equal(34);;
+  });
+  it('findFriendsTotalStepsForWeek should find friends\' total steps', function() {
+    let user2 = new User({
+      'id': 16,
+      'name': 'Ben Nist',
+    })
+    let user3 = new User({
+      'id': 4,
+      'name': 'John Firth',
+    })
+    let user4 = new User({
+      'id': 8,
+      'name': 'Nick Adams',
+    })
+    user2.activityRecord = [{
+      "date": "2019/06/29", "steps": 25},
+      {"date": "2019/06/28", "steps": 1},
+      {"date": "2019/06/27", "steps": 43},
+      {"date": "2019/06/26", "steps": 35},
+      {"date": "2019/06/25", "steps": 1},
+      {"date": "2019/06/24", "steps": 132},
+      {"date": "2019/06/23", "steps": 11},
+      {"date": "2019/06/22", "steps": 1025},
+      {"date": "2019/06/21", "steps": 9},
+      {"date": "2019/06/20", "steps": 85},
+      {"date": "2019/06/19", "steps": 11},
+      {"date": "2019/06/18", "steps": 10}];
+    user3.activityRecord = [{
+      "date": "2019/06/29", "steps": 2},
+      {"date": "2019/06/28", "steps": 21},
+      {"date": "2019/06/27", "steps": 24},
+      {"date": "2019/06/26", "steps": 23},
+      {"date": "2019/06/25", "steps": 31},
+      {"date": "2019/06/24", "steps": 512},
+      {"date": "2019/06/23", "steps": 121},
+      {"date": "2019/06/22", "steps": 120},
+      {"date": "2019/06/21", "steps": 92},
+      {"date": "2019/06/20", "steps": 82},
+      {"date": "2019/06/19", "steps": 141},
+      {"date": "2019/06/18", "steps": 10}];
+    user4.activityRecord = [{
+      "date": "2019/06/29", "steps": 2},
+      {"date": "2019/06/28", "steps": 1},
+      {"date": "2019/06/27", "steps": 4},
+      {"date": "2019/06/26", "steps": 3},
+      {"date": "2019/06/25", "steps": 1},
+      {"date": "2019/06/24", "steps": 12},
+      {"date": "2019/06/23", "steps": 11},
+      {"date": "2019/06/22", "steps": 10},
+      {"date": "2019/06/21", "steps": 9},
+      {"date": "2019/06/20", "steps": 8},
+      {"date": "2019/06/19", "steps": 11},
+      {"date": "2019/06/18", "steps": 10}];
+    let users = [user2, user3, user4];
+    user.findFriendsTotalStepsForWeek(users, '2019/06/29');
+    expect(user.friendsActivityRecords).to.deep.equal([{"id": 4, "totalWeeklySteps": 734}, {"id": 16, "totalWeeklySteps": 248}, {"id": 8, "totalWeeklySteps": 34}]);
+  });
 });

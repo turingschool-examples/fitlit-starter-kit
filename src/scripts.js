@@ -48,6 +48,29 @@ let sleepUserHoursToday = document.querySelector('#sleep-user-hours-today');
 let stairsCalendarCard = document.querySelector('#stairs-calendar-card');
 let stairsCalendarFlightsAverageWeekly = document.querySelector('#stairs-calendar-flights-average-weekly');
 let stairsCalendarStairsAverageWeekly = document.querySelector('#stairs-calendar-stairs-average-weekly');
+
+let trendingStepsPhraseContainer = document.querySelector('.trending-steps-phrase-container');
+let trendingStairsPhraseContainer = document.querySelector('.trending-stairs-phrase-container');
+let dropdownFriendsStepsContainer = document.querySelector('#dropdown-friends-steps-container');
+
+
+
+let hydrationInfoGlassesToday = document.querySelector('#hydration-info-glasses-today');
+let hydrationFriendOuncesToday = document.querySelector('#hydration-friend-ounces-today');
+
+
+// CARDS
+let stepsMainCard = document.querySelector('#steps-main-card');
+let stepsInfoCard = document.querySelector('#steps-info-card');
+let stepsFriendsCard = document.querySelector('#steps-friends-card');
+let stepsTrendingCard = document.querySelector('#steps-trending-card');
+let stepsCalendarCard = document.querySelector('#steps-calendar-card');
+let hydrationMainCard = document.querySelector('#hydration-main-card');
+let hydrationInfoCard = document.querySelector('#hydration-info-card');
+let hydrationFriendsCard = document.querySelector('#hydration-friends-card');
+let hydrationCalendarCard = document.querySelector('#hydration-calendar-card');
+let stairsMainCard = document.querySelector('#stairs-main-card');
+let stairsInfoCard = document.querySelector('#stairs-info-card');
 let stairsFriendFlightsAverageToday = document.querySelector('#stairs-friend-flights-average-today');
 let stairsFriendsCard = document.querySelector('#stairs-friends-card');
 let stairsInfoCard = document.querySelector('#stairs-info-card');
@@ -211,6 +234,52 @@ stairsUserStairsToday.innerText = activityData.find(activity => {
 }).flightsOfStairs * 12;
 stepsCalendarTotalActiveMinutesWeekly.innerText = user.calculateAverageMinutesActiveThisWeek(todayDate);
 stepsCalendarTotalStepsWeekly.innerText = user.calculateAverageStepsThisWeek(todayDate);
+
+stairsCalendarFlightsAverageWeekly.innerText = user.calculateAverageFlightsThisWeek(todayDate);
+
+stairsCalendarStairsAverageWeekly.innerText = (user.calculateAverageFlightsThisWeek(todayDate) * 12).toFixed(0);
+
+stepsTrendingButton.addEventListener('click', function() {
+  user.findTrendingStepDays();
+  trendingStepsPhraseContainer.innerHTML = `<p class='trend-line'>${user.trendingStepDays[0]}</p>`;
+});
+
+stairsTrendingButton.addEventListener('click', function() {
+  user.findTrendingStairsDays();
+  console.log(user.trendingStairsDays);
+  trendingStairsPhraseContainer.innerHTML = `<p class='trend-line'>${user.trendingStairsDays[0]}</p>`;
+});
+
+let dropdownName = document.querySelector('#dropdown-name');
+let dropdownEmail = document.querySelector('#dropdown-email');
+let dropdownGoal = document.querySelector('#dropdown-goal');
+let dropdownFriends = document.querySelector('#dropdown-friends');
+
+dropdownName.innerText = user.name.toUpperCase();
+dropdownEmail.innerText = `EMAIL | ${user.email}`;
+dropdownGoal.innerText = `DAILY STEP GOAL | ${user.dailyStepGoal}`;
+
+user.findFriendsTotalStepsForWeek(userRepository.users, todayDate);
+
+user.friendsActivityRecords.forEach(friend => {
+  dropdownFriendsStepsContainer.innerHTML += `
+  <p class='dropdown-p friends-steps'>${friend.firstName} |  ${friend.totalWeeklySteps}</p>
+  `;
+});
+
+friendsStepsParagraphs = document.querySelectorAll('.friends-steps');
+
+friendsStepsParagraphs.forEach(paragraph => {
+  if (friendsStepsParagraphs[0] === paragraph) {
+    paragraph.classList.add('green-text');
+  }
+  if (friendsStepsParagraphs[friendsStepsParagraphs.length - 1] === paragraph) {
+    paragraph.classList.add('red-text');
+  }
+  if (paragraph.innerText.includes('YOU ARE HERE')) {
+    paragraph.classList.add('yellow-text');
+  }
+
 stepsFriendActiveMinutesAverageToday.innerText = userRepository.calculateAverageMinutesActive(todayDate);
 stepsFriendAverageStepGoal.innerText = `${userRepository.calculateAverageStepGoal()}`;
 stepsFriendStepsAverageToday.innerText = userRepository.calculateAverageSteps(todayDate);

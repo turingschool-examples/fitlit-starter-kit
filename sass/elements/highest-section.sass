@@ -1,0 +1,24 @@
+.highest
+  &>main
+    display: grid
+    grid-template-areas: "activity activity" "water sleep"
+    grid-row-gap: 20px
+    .activity
+      border-bottom: 1px solid $background-color
+      grid-area: activity
+      display: flex
+      margin:
+        left: 20px
+        right: 20px
+      overflow-y: scroll
+      text-align: center
+      h3
+        position: fixed
+        left: 56%
+      .box
+        margin: 20px
+        padding: 20px
+    .water
+      grid-area: water
+    .sleep
+      grid-area: sleep

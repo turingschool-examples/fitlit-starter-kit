@@ -163,7 +163,7 @@
     }, 0));
   }
   findFriendsTotalStepsForWeek(users, date) {
-    return this.friends.map(friend => {
+    this.friends.map(friend => {
       let matchedFriend = users.find(user => user.id === friend);
       matchedFriend.calculateTotalStepsThisWeek(date);
       this.friendsActivityRecords.push(
@@ -172,6 +172,7 @@
           'totalWeeklySteps': matchedFriend.totalStepsThisWeek
         })
     })
+    this.friendsActivityRecords = this.friendsActivityRecords.sort((a, b) => b.totalWeeklySteps - a.totalWeeklySteps);
   }
 }
 

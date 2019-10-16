@@ -273,6 +273,6 @@ describe('User', function() {
       {"date": "2019/06/18", "steps": 10}];
     let users = [user2, user3, user4];
     user.findFriendsTotalStepsForWeek(users, '2019/06/29');
-    expect(user.friendsActivityRecords).to.deep.equal([{"id": 16, "totalWeeklySteps": 248}, {"id": 4, "totalWeeklySteps": 734}, {"id": 8, "totalWeeklySteps": 34}]);
+    expect(user.friendsActivityRecords).to.deep.equal([{"id": 4, "totalWeeklySteps": 734}, {"id": 16, "totalWeeklySteps": 248}, {"id": 8, "totalWeeklySteps": 34}]);
   });
 });

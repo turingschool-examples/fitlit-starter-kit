@@ -254,6 +254,7 @@ class Activity {
       return `Your friend was the highest this week!`
     }
   }
+}
 
 if (typeof module !== 'undefined') {
     module.exports = Activity;

@@ -1,62 +1,56 @@
-// *** LEFT MENU STYLES ***
+/* *** LEFT MENU STYLES *** */
 @import '../elements/login-header'
 
 .page-header
   display: none
   grid-area: header
   padding: 20px
-
-.page-header>header
-  display: flex
-  margin-bottom: 40px
-  position: relative
-
-.page-header>header>div
-  background-color: $numbers-color
-  background-image: url('../images/kitty.svg')
-  background-position: center
-  background-repeat: no-repeat
-  background-size: 70%
-  border-radius: 60px
-  box-shadow: $black-shadow
-  height: 120px
-  width: 120px
-
-.page-header>header>h2
-  align-self: flex-end
-  background-color: $section-color
-  border-radius: 20px
-  padding: 0.2em 2em
-  position: absolute
-  text-transform: uppercase
-  left: 90px
-  bottom: 20px
-  z-index: -1
-
-.page-header>header>p
-  align-self: flex-end
-  color: #fff
-  cursor: pointer
-  opacity: 0.4
-  position: absolute
-  bottom: -5px
-  right: 15px
-  &:hover
-    opacity: 1
-
-.page-header>section
-  background-color: $section-color
-  box-shadow: $white-shadow
-  border-radius: 25px
-  display: flex
-  flex-direction: column
-  padding: 10px
-  margin-bottom: 20px
-  max-width: 250px
-
-.page-header>section>header>h3
-  text-align: center
-  text-transform: uppercase
+  &>header
+    display: flex
+    margin-bottom: 40px
+    position: relative
+    &>div
+      background-color: $numbers-color
+      background-image: url('../images/kitty.svg')
+      background-position: center
+      background-repeat: no-repeat
+      background-size: 70%
+      border-radius: 60px
+      box-shadow: $black-shadow
+      height: 120px
+      width: 120px
+    &>h2
+      align-self: flex-end
+      background-color: $section-color
+      border-radius: 20px
+      padding: 0.2em 2em
+      position: absolute
+      text-transform: uppercase
+      left: 90px
+      bottom: 20px
+      z-index: -1
+    &>p
+      align-self: flex-end
+      color: #fff
+      cursor: pointer
+      opacity: 0.4
+      position: absolute
+      bottom: -5px
+      right: 15px
+      &:hover
+        opacity: 1
+  &>section
+    background-color: $section-color
+    box-shadow: $white-shadow
+    border-radius: 25px
+    display: flex
+    flex-direction: column
+    padding: 10px
+    margin-bottom: 20px
+    max-width: 250px
+    &>header>h3
+      text-align: center
+      text-transform: uppercase
 
 @import '../elements/bio-info'
 @import '../elements/steps-goal'

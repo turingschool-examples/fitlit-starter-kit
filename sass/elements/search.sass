@@ -1,3 +1,13 @@
+/* *** SEARCH DATE STYLES *** */
+
+%style-search-shared
+  background-position: center
+  background-repeat: no-repeat
+  background-size: 50%
+  border-radius: 20px
+  height: 30px
+  width: 30px
+
 .search
   align-items: center
   background-color: #fff
@@ -11,31 +21,18 @@
   right: 0px
   height: 34px
   min-width: 34px
-
-.search input
-  border: none
-  display: none
-  font-size: 18px
-  margin: 5px
-  text-align: right
-
-.search label
-  cursor: pointer
-
-.search label,
-.search button
-  background-image: url('../images/search.svg')
-  background-position: center
-  background-repeat: no-repeat
-  background-size: 50%
-  border-radius: 20px
-  height: 30px
-  width: 30px
-
-.search label
-  background-image: url('../images/search.svg')
-
-.search button
-  border: none
-  display: none
-  background-image: url('../images/tick.svg')
+  input
+    border: none
+    display: none
+    font-size: 18px
+    margin: 5px
+    text-align: right
+  label
+    @extend %style-search-shared
+    background-image: url('../images/search.svg')
+    cursor: pointer
+  button
+    @extend %style-search-shared
+    border: none
+    display: none
+    background-image: url('../images/tick.svg')

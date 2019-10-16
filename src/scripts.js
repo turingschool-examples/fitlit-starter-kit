@@ -284,7 +284,8 @@ $(document).ready(function() {
     const $dayEntered = $(this).siblings('input').val();
     const $dropdown = $(this).parent().siblings('.dropdown');
     $(this).parent().children().toggle();
-    $dropdown.hide();
+    $dropdown.toggle();
+    $dropdown.children('div').hide();
     $(this).closest('.widget').find('.date, footer').hide();
     if (userRepository.validateDate($dayEntered)) {
       showInfoForChosenDate($dayEntered, $widgetType, $dropdown);

@@ -312,7 +312,10 @@ function addUserInfo(user) {
 
 function addOzToday() {
   $("#card-daily-oz-header").after(`
-  <section class="card-daily-oz-paragraph section-style">${hydroUser.getOzByDate(date)} ounces today</section>`);
+  <section class="card-daily-oz-paragraph section-style">
+    <h3>Ounces Consumed Today</h3>  
+    <p>${hydroUser.getOzByDate(date)}</p>
+  </section>`);
 }
 
 function addWeeklyOzByDay() {

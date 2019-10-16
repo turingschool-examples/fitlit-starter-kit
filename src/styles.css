@@ -198,7 +198,7 @@ li {
     "weekOz weekActivity weekSleep"
     "null activityMetric allTimeSleep";
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 2fr 2fr 1fr;
   padding: .70%;
 }
 

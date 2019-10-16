@@ -53,6 +53,7 @@ $(document).ready(() => {
     $('.average-stepGoal').text(`Your Daily Step Goal: ${currentPerson.dailyStepGoal} (Average All Users: ${userRepository.calculateAvgStepGoalAllUsers()})`);
     $('.hydration1').text(`Your water intake for the day has been: ${hydration.calculateAmtDrankByUserSpecificDate(currentDate)} oz`);
     $('.hydration2').text(`Your water intake over each day of the last week: ${hydration.returnDrinkAmtEachDayOverWeekByUser().join(', ')} (oz)`);
+    $('.hydration3').text(`Your average daily water intake: ${hydration.calculateAvgDailyAmtDrankByUserIdAllTime()} (oz)`);
     $('.sleep1').text(`Time spent sleeping for each night of the past week: ${sleep.calculateHoursSleptEachDayByUserOverSpecificWeek().join(', ')} (hours)`);
     $('.sleep2').text(`Your hours slept for the past day: ${sleep.returnHoursSleptByUserOnSpecificDate(currentDate)}`);
     $('.sleep3').text(`Your sleep quality today: ${sleep.returnSleepQualityByUserOnSpecificDate(currentDate)}`);
@@ -72,6 +73,7 @@ $(document).ready(() => {
     // $('.friend3').text(`${friend3Name} took ${friend3WeekData} steps this week!`)
     $(".currentUserActivity").text(`You took ${userStepCountDataForWeek} steps this week!`)
     $(".winnerActivity").text(highestWeekStepsDisplay)
+    $(".best-sleepers").text(`Best sleepers (past week): ${sleep.findUsersWithAvgSleepQualityMoreThanThreeOverSpecificWeek(currentDate).join(', ')}`)
 
 
 

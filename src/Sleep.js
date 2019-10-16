@@ -5,6 +5,7 @@ class Sleep {
     this.currentUserSleepData;
     this.userDataForSleep = userData
   }
+  
   findCurrentUserSleepData() {
     this.currentUserSleepData = this.currentSleepData.filter((userInfo) =>
       userInfo.userID === this.userID);
@@ -159,7 +160,7 @@ class Sleep {
     let blockWithBestQualitySleep = this.currentUserSleepData.find(userBlock => {
       return userBlock.sleepQuality === bestSleepQuality
     });
-    
+
     return blockWithBestQualitySleep.date
   }
 }

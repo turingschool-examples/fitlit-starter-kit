@@ -17,7 +17,6 @@ ul {
 /* Left-side page styling */
 nav {
   background-color: #404040;
-  border-right: 1px solid black;
   color: white;
   grid-area: nav;
 }
@@ -81,6 +80,10 @@ button {
   font-size: 25px;
   height: 35px;
   width: 80%;
+}
+
+button:hover {
+  background-color: white;
 }
 
 /* Right-side page styling */

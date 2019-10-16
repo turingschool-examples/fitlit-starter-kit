@@ -50,19 +50,18 @@ body {
 }
 
 header {
-  border: 2px solid #5D6D7E;
   border-radius: 5px;
   width: 99%;
   margin: 0 auto;
   grid-area: header;
-  background-color: #D1DCE9;
+  background-color: #EBECF0;
 }
 
 .header-section-categories {
   display: flex;
   justify-content: space-around;
   width: 100%;
-  margin: 10px;
+  margin: 20px 0px 2.5px;
 }
 
 .header-style {
@@ -243,27 +242,27 @@ p {
 
 .card-daily-oz {
   grid-area: dayOz;
-  background-color: #90CAF9;
+  background-color: #42A5F5;
 }
 
 .card-weekly-oz {
   grid-area: weekOz;
-  background-color: #2196F3;
+  background-color: #1E88E5;
 }
 
 .card-daily-activity {
   grid-area: dayActivity;
-  background-color: #80CBC4;
+  background-color: #26A69A;
 }
 
 .card-weekly-activity {
   grid-area: weekActivity;
-  background-color: #009688;
+  background-color: #00897B;
 }
 
 .card-daily-sleep {
   grid-area: daySleep;
-  background-color: #B39DDB;
+  background-color: #7E57C2;
 }
 
 .card-weekly-sleep {

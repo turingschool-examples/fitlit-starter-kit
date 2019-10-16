@@ -11,8 +11,6 @@ class Hydration {
       return user.id === hydrate.userId;
     }).updateHydration(this.date, this.ounces);
   }
-  
-
 }
 
 if (typeof module !== 'undefined') {

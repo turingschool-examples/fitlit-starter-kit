@@ -110,7 +110,7 @@ describe('User', function() {
     expect(user.calculateAverageHoursThisWeek('2019/09/21')).to.equal('7.9');
   });
   it('calculateAverageQualityThisWeek should calculate average quality of sleep for week before a given date', function() {
-    user.sleepQualityRecord = [{date: "2019/09/22", sleepQuality: 9.6}, {date: "2019/09/21", sleepQuality: 8.2}, {date: "2019/09/20", sleepQuality: 9.9}, {date: "2019/09/19", sleepQuality: 4.2}, {date: "2019/09/18", sleepQuality: 9.5}, {date: "2019/09/17", sleepQuality: 7.8}, {date: "2019/09/16", sleepQuality: 10.2}, {date: "2019/09/15", sleepQuality: 5.7}, {date: "2019/09/14", sleepQuality: 8.8}, {date: "2019/09/13", sleepQuality: 4.6}, {date: "2019/09/12", sleepQuality: 5.3}];
+    user.sleepQualityRecord = [{date: "2019/09/22", quality: 9.6}, {date: "2019/09/21", quality: 8.2}, {date: "2019/09/20", quality: 9.9}, {date: "2019/09/19", quality: 4.2}, {date: "2019/09/18", quality: 9.5}, {date: "2019/09/17", quality: 7.8}, {date: "2019/09/16", quality: 10.2}, {date: "2019/09/15", quality: 5.7}, {date: "2019/09/14", quality: 8.8}, {date: "2019/09/13", quality: 4.6}, {date: "2019/09/12", quality: 5.3}];
     expect(user.calculateAverageQualityThisWeek('2019/09/22')).to.equal('8.5')
   });
   it('should have a method that return the highest climbing record', function() {
@@ -183,6 +183,23 @@ describe('User', function() {
       {"date": "2019/06/19", "flightsOfStairs": 2},
       {"date": "2019/06/18", "flightsOfStairs": 1}];
       user.findTrendingStairsDays()
-    expect(user.trendingStairsDays).to.deep.equal(['Your most recent positive climbing streak was 2019/06/26 - 2019/06/29!', 'Your most recent positive climbing streak was 2019/06/19 - 2019/06/24!']);;
+    expect(user.trendingStairsDays).to.deep.equal(['Your most recent positive climbing streak was 2019/06/26 - 2019/06/29!', 'Your most recent positive climbing streak was 2019/06/19 - 2019/06/24!']);
+  });
+  it('findFriendsNames should find the first names of friends', function() {
+    let user2 = new User({
+      'id': 16,
+      'name': 'Ben Nist',
+    })
+    let user3 = new User({
+      'id': 4,
+      'name': 'John Firth',
+    })
+    let user4 = new User({
+      'id': 8,
+      'name': 'Nick Adams',
+    })
+    let users = [user2, user3, user4];
+    user.findFriendsNames(users);
+    expect(user.friendsNames).to.deep.equal(['BEN', 'JOHN', 'NICK']);
   });
 });

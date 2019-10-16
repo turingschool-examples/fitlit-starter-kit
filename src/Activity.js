@@ -56,14 +56,13 @@ class Activity {
   }
 
   findStepWinner(youAmount, playerOneName, playerOneAmount, playerTwoName, playerTwoAmount) {
-    if (youAmount >  playerOneAmount && playerTwoAmount) {
+    if (youAmount >  playerOneAmount && youAmount > playerTwoAmount) {
       return 'You have the most steps!'
-    }
-    if (playerOneAmount >  youAmount && playerTwoAmount) {
+    } else if (playerOneAmount > youAmount && playerOneAmount > playerTwoAmount) {
       return `${playerOneName} has the most steps!`
+    } else if (playerTwoAmount > playerOneAmount && playerTwoAmount > youAmount) {
+      return `${playerTwoName} has the most steps!`
     }
-    if (playerTwoAmount >  playerOneAmount && youAmount) {
-      return `${playerTwoName} has the most steps!`    }
   }
 
   getAverageForSevenDays(userRepo) {

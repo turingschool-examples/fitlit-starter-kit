@@ -353,6 +353,11 @@ p {
   background-color: #00897B;
 }
 
+.card-metric-activity{
+  grid-area: activityMetric;
+  background-color: #00695C;
+}
+
 .card-daily-sleep {
   grid-area: daySleep;
   background-color: #7E57C2;

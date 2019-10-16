@@ -10,16 +10,36 @@
 
 <body>
   <main class='main--container'>
-    <header>
+  <header>
     <h1>FitLit</h1>
   </header>
   <div class="under-header--main">
-    <section class="card--container">
-      <div class="hydration--widget">
-        <h3 class="widget--header">Daily Fluid Intake</h3>
-        <p class="widget--informer">Today you drank...</p>
-        <p class="widget--variable">'7.8'oz</p>
+    <section class="daily-widget-container">
+      <!-- <div class="hydration--widget card">
+        <h3 class="widget-hydration-header">Daily Fluid Intake</h3>
+        <p class="widget--informer">Today you drank</p>
+        <img class="water-bottle-icon"src="../images/water_bottle-icon.svg">
+        <p class="widget--variable hydration--variable">7.8 oz</p>
       </div>
+      <div class="sleep--widget card">
+        <h3 class="widget-sleep-header">Last Night's Sleep</h3>
+        <p class="widget--informer">Last night you slept</p>
+        <p class="widget--variable sleep--variable">7.5 hrs</p>
+        <img class="bed-icon" src="../images/single-bed-icon.svg">
+        <p class="widget--informer">Your Sleep Quality: 3.7</p>
+      </div>
+      <div class="activity--widget card">
+        <h3 class="widget-activity-header">Steps</h3>
+        <p class="widget--informer">Your steps</p>
+        <p class="widget--variable activity--variable">3,000 steps</p>
+        <img class="step-icon" src="../images/activity-icon.svg">
+        <div class="activity-details">
+          <p class="widget-activity-informer">Miles: 7.8</p>
+          <p class="widget-activity-informer">Active minutes: 120 min</p>
+        </div>
+      </div> -->
+    </section>
+            <section class="card--container">
       <div class='hydration--data-chart card'>
         <canvas id="weekly--water"></canvas>
       </div>
@@ -60,6 +80,7 @@
   <script type="text/javascript" src="../data/sleep.js"></script>
   <script type="text/javascript" src="./Sleep.js"></script>
   <script type="text/javascript" src="../data/activity.js"></script>
+  <script type="text/javascript" src="./Activity.js"></script>
   <script type="text/javascript" src="./scripts.js"></script>
 </body>
 

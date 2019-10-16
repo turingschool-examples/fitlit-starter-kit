@@ -258,3 +258,18 @@ stairsTrendingButton.addEventListener('click', function() {
   console.log(user.trendingStairsDays);
   trendingStairsPhraseContainer.innerHTML = `<p class='trend-line'>${user.trendingStairsDays[0]}</p>`;
 });
+
+let dropdownName = document.querySelector('#dropdown-name');
+let dropdownEmail = document.querySelector('#dropdown-email');
+let dropdownGoal = document.querySelector('#dropdown-goal');
+let dropdownFriends = document.querySelector('#dropdown-friends');
+
+dropdownName.innerText = user.name.toUpperCase();
+dropdownEmail.innerText = `Email | ${user.email}`;
+dropdownGoal.innerText = `Daily Step Goal | ${user.dailyStepGoal}`;
+
+user.findFriendsNames(userRepository.users);
+
+user.friendsNames.forEach(friend => {
+  dropdownFriends.innerText += ` ${friend} |`
+});

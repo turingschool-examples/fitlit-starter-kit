@@ -34,10 +34,23 @@ class Activity {
   }
   showcaseWinner(user, date, userRepo) {
     let namedList = this.showChallengeListAndWinner(user, date, userRepo);
-
     return this.showChallengeListAndWinner(user, date, userRepo).shift()
   }
+  getStepStreak(userRepo, id) {
+    let data = this.activityData;
+    let sortedUserArray = (userRepo.makeSortedUserArray(id, data)).reverse();
+    let streaks =  sortedUserArray.filter(function(element, index) {
+      if (index >= 2) {
+      return (sortedUserArray[index-2].numSteps < sortedUserArray[index-1].numSteps && sortedUserArray[index-1].numSteps < sortedUserArray[index].numSteps)
+      // return element.numSteps === sortedUserArray[index].numSteps
+      }
+    });
+    return streaks.map(function(streak) {
+      return streak.date;
+    })
+  }
 }
+
 
 if (typeof module !== 'undefined') {
   module.exports = Activity;

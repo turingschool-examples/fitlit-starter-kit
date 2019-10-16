@@ -16,7 +16,8 @@ class UserRepo {
     return totalStepGoal/this.users.length;
   };
   makeSortedUserArray(id, dataSet) {
-    let selectedID = dataSet.filter((data) => id === data.userID);
+    // let selectedID = dataSet.filter((data) => id === data.userID);
+    let selectedID = this.getDataFromUserID(id, dataSet)
     let sortedByDate = selectedID.sort((a, b) => new Date(b.date) - new Date(a.date));
     return sortedByDate;
   }

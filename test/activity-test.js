@@ -101,6 +101,27 @@ describe('Activty', function(){
         "numSteps": 9256,
         "minutesActive": 108,
         "flightsOfStairs": 2
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/16",
+        "numSteps": 3578,
+        "minutesActive": 140,
+        "flightsOfStairs": 16
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/17",
+        "numSteps": 3579,
+        "minutesActive": 140,
+        "flightsOfStairs": 16
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/18",
+        "numSteps": 3580,
+        "minutesActive": 140,
+        "flightsOfStairs": 16
       }];
 
       activity = new Activity(activityData);
@@ -169,6 +190,27 @@ describe('Activty', function(){
       "flightsOfStairs": 33
     },
     {
+      "userID": 1,
+      "date": "2019/06/16",
+      "numSteps": 3578,
+      "minutesActive": 140,
+      "flightsOfStairs": 16
+    },
+    {
+      "userID": 1,
+      "date": "2019/06/17",
+      "numSteps": 3579,
+      "minutesActive": 140,
+      "flightsOfStairs": 16
+    },
+    {
+      "userID": 1,
+      "date": "2019/06/18",
+      "numSteps": 3580,
+      "minutesActive": 140,
+      "flightsOfStairs": 16
+    },
+    {
       "userID": 2,
       "date": "2019/06/14",
       "numSteps": 4294,
@@ -202,5 +244,8 @@ describe('Activty', function(){
     expect(activity.showChallengeListAndWinner(user4, "2019/06/15", userRepo)).to.eql([
       'Allie McCarthy: 9552', 'Alex Roth: 7475.5'])
 
+  });
+  it('should show a 3-day increasing streak for a users step count', function() {
+    expect(activity.getStepStreak(userRepo, 1)).to.eql(['2019/06/17', '2019/06/18'])
   });
 });

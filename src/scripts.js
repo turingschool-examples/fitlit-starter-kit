@@ -1,7 +1,7 @@
 $(document).ready(() => {
     currentDate = "2019/09/16"
     const userRepository = new UserRepository(userData);
-    const randomId = Math.ceil(Math.random() * 50 - 1);
+    const randomId = Math.ceil(Math.random() * 50 - 1 + 1);
     console.log(randomId)
     userRepository.returnCurrentUser(randomId)
     const currentPerson = userRepository.currentUser

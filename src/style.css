@@ -11,8 +11,14 @@ body {
   margin: 0 auto;
 }
 
+ul {
+  list-style: none;
+}
+
+/* Left-side page styling */
 nav {
   background-color: #404040;
+  border-right: 1px solid black;
   color: white;
   grid-area: nav;
 }
@@ -21,14 +27,15 @@ nav {
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   font-size: 20px;
   height: 50%;
+  justify-content: center;
 }
 
 h1 {
   color: #708062;
   font-size: 30px;
+  text-align: center;
 }
 
 .profile-data {
@@ -51,9 +58,9 @@ h1 {
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 40%;
   justify-content: space-around;
   margin-top: 20px;
-  height: 40%;
 }
 
 .activity-btn {
@@ -77,6 +84,7 @@ button {
   width: 80%;
 }
 
+/* Right-side page styling */
 main {
   align-items: center;
   background-color: white;
@@ -89,32 +97,8 @@ main {
   grid-area: main;
 }
 
-/* .profile-container {
-  color: white;
-  font-size: 20px;
-  height: 200px;
-} */
-
-header {
-  align-items: center;
-  background-color: #767A73;
-  border: 2px solid #708062;
-  color: white;
-  display: flex;
-  justify-content: center;
-  font-size: 30px;
-  height: 40px;
-}
-
-ul {
-  list-style: none;
-}
-
-section ul {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+section {
+  box-shadow: 10px 10px 8px #404040;
 }
 
 .hydration-container {
@@ -171,4 +155,27 @@ section ul {
   display: none;
   height: 70%;
   width: 80%;
+}
+
+header {
+  align-items: center;
+  background-color: #767A73;
+  border-bottom: 2px solid #404040;
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  height: 40px;
+}
+
+section ul {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  justify-content: space-around;
+}
+
+@media (max-width: 550px) {
+
 }

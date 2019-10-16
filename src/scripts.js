@@ -86,24 +86,51 @@ function instantiateFriendsActivity() {
   });
 }
 
+//function that adds the name of the person with most total Steps
+// pass friends and friendsActivity into function as arguments
+// use map on friendsactivity
+// run calcTotalStepsByWeek on each and create new object with that as a property/value
+// sort through the outpud of map for total Steps
+// display index 0 name
+
+function getWinnerSteps(friends, friendsActivity) {
+  friendsActivity.map()
+}
+
+
 function addFriendsTotalStepsByWeek() {
   if ($("#friend-weekly-steps-section").length === 0) {
     let friends = instantiateFriendsUser();
+    let everyone = friends.concat(user);
     let friendsActivity = instantiateFriendsActivity();
+    let allActivity = friendsActivity.concat(activityUser);
     $("#aside-step-challenge").after(`
       <div class="step-challenge-background hidden" id="step-challenge-background">
         <section class="section-style step-challenge-section" id="friend-weekly-steps-section">
+          <div class="users-total-steps-div" id="users-total-steps-div">
+          </div>
         </section
       </div>`);
-    friendsActivity.forEach((friend, index) => {
+    let friendsTotalSteps = allActivity.map((friend, index) => {
       let totalfriendStepsByWeek = friend.calcTotalStepsByWeek('2019/09/22');
-      let friendFirstName = friends[index].getFirstName();
-      $("#friend-weekly-steps-section").append(`
+      let friendFirstName = everyone[index].getFirstName();
+      $("#users-total-steps-div").append(`
             <div>
               <h3>${friendFirstName}</h3>
               <p>${totalfriendStepsByWeek}</p>
             </div>`);
-    });
+      return {
+        totalSteps: totalfriendStepsByWeek,
+        name: friendFirstName
+        };
+      });
+      friendsTotalSteps.sort((a, b) => b.totalSteps - a.totalSteps);
+      console.log()
+      $("#friend-weekly-steps-section").prepend(`
+            <div>
+              <h3>#1 Winner!!</h3>
+              <h3>${friendsTotalSteps[0].name}</h3>
+            </div>`);
   }
 }
 
@@ -120,7 +147,7 @@ function addStepTrend() {
       if(index === 0 || trend.numSteps < userStepTrend[index - 1].numSteps) {
         num = 0;
         $("#step-trend-section").append(`
-        <div id="${index}">
+        <div class="step-trend-div" id="${index}">
           <h3>${trend.date}</h3>
           <p>${trend.numSteps}</p>
         </div>`);

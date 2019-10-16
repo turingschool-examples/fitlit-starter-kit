@@ -113,7 +113,6 @@ class ActivityUser {
         }
         return false;
       });
-    console.log(trends);
     return trends;
   }
 }

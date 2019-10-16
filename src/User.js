@@ -6,6 +6,7 @@
     this.email = userData.email;
     this.strideLength = userData.strideLength;
     this.dailyStepGoal = userData.dailyStepGoal;
+    this.totalStepsThisWeek = 0;
     this.friends = userData.friends;
     this.ouncesAverage = 0;
     this.ouncesRecord = [];
@@ -18,6 +19,7 @@
     this.trendingStepDays = [];
     this.trendingStairsDays = [];
     this.friendsNames = [];
+    this.friendsActivityRecords = []
   }
   getFirstName() {
     var names = this.name.split(' ');
@@ -147,6 +149,20 @@
     }
   }
   findFriendsNames(users) {
+    this.friends.forEach(friend => {
+      this.friendsNames.push(users.find(user => user.id === friend).getFirstName());
+    })
+  }
+  calculateTotalStepsThisWeek(todayDate) {
+    this.totalStepsThisWeek = (this.activityRecord.reduce((sum, activity) => {
+      let index = this.activityRecord.indexOf(this.activityRecord.find(activity => activity.date === todayDate));
+      if(index <= this.activityRecord.indexOf(activity) && this.activityRecord.indexOf(activity) <= (index + 6)) {
+        sum += activity.steps;
+      }
+      return sum;
+    }, 0));
+  }
+  findFriendsTotalStepsForWeek(users) {
     this.friends.forEach(friend => {
       this.friendsNames.push(users.find(user => user.id === friend).getFirstName());
     })

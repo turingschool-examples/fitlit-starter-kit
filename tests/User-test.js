@@ -202,4 +202,21 @@ describe('User', function() {
     user.findFriendsNames(users);
     expect(user.friendsNames).to.deep.equal(['BEN', 'JOHN', 'NICK']);
   });
+  it('calculateTotalStepsThisWeek should add users steps for week', function() {
+    user.activityRecord = [{
+      "date": "2019/06/29", "steps": 2},
+      {"date": "2019/06/28", "steps": 1},
+      {"date": "2019/06/27", "steps": 4},
+      {"date": "2019/06/26", "steps": 3},
+      {"date": "2019/06/25", "steps": 1},
+      {"date": "2019/06/24", "steps": 12},
+      {"date": "2019/06/23", "steps": 11},
+      {"date": "2019/06/22", "steps": 10},
+      {"date": "2019/06/21", "steps": 9},
+      {"date": "2019/06/20", "steps": 8},
+      {"date": "2019/06/19", "steps": 11},
+      {"date": "2019/06/18", "steps": 10}];
+      user.calculateTotalStepsThisWeek('2019/06/29');
+    expect(user.totalStepsThisWeek).to.equal(34);;
+  });
 });

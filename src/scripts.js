@@ -80,18 +80,21 @@ $(document).ready(() => {
         $(".sleep-container").toggle()
         $(".hydration-container").hide()
         $(".activity-container").hide()
+        $(".friends-container").hide()
     });
 
     $(".hydration-btn").on('click', function() {
         $(".hydration-container").toggle()
         $(".activity-container").hide()
         $(".sleep-container").hide()
+        $(".friends-container").hide()
     });
 
     $(".activity-btn").on('click', function() {
         $(".activity-container").toggle()
         $(".hydration-container").hide()
         $(".sleep-container").hide()
+        $(".friends-container").hide()
     });
 
     $(".profile-btn").on('click', function () {
@@ -100,6 +103,9 @@ $(document).ready(() => {
 
     $(".friends-btn").on('click', function () {
         $(".friends-container").toggle()
+        $(".hydration-container").hide()
+        $(".activity-container").hide()
+        $(".sleep-container").hide()
     });
 
 });

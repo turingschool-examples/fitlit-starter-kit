@@ -2,12 +2,9 @@ $(document).ready(() => {
     currentDate = "2019/09/16"
     const userRepository = new UserRepository(userData);
     const randomId = Math.ceil(Math.random() * 50 - 1 + 1);
-    console.log(randomId)
     userRepository.returnCurrentUser(randomId)
     const currentPerson = userRepository.currentUser
     const currentPersonFriends = userRepository.returnCurrentUserFriends()
-    console.log(currentPersonFriends)
-    console.log(currentPerson)
     const user = new User(currentPerson);
     const firstName = currentPerson.name.split(' ');
     const hydration = new Hydration(hydrationData, currentPerson.id);
@@ -20,30 +17,18 @@ $(document).ready(() => {
     const friend2EntireData = activity.findFriend2ActivityData(currentPersonFriends);
     const friend3EntireData = activity.findFriend3ActivityData(currentPersonFriends);
     const friend1WeekData = activity.friendsStepCountForWeek()
-    console.log(friend1EntireData[0].userID)
     const friend1Data = userData.find(user => {
         return friend1EntireData[0].userID === user.id
     })
     const friend2Data = userData.find(user => {
         return friend2EntireData[1].userID === user.id
     })
-    // const friend3Data = userData.find(user => {
-    //     return friend3EntireData[2].userID === user.id
-    // })
     const friend1Name = friend1Data.name;
     const friend2Name = friend2Data.name;
-// const friend3Name = friend3Data.name;
-
-
     const friend2WeekData = activity.friend2StepCountForWeek()
-    const friend3WeekData = activity.friend3StepCountForWeek()
     const userStepCountDataForWeek = activity.userStepCountForWeek()
-    console.log(userStepCountDataForWeek)
-    console.log(activity.findHighestStepCount())
     const highestWeekStepsDisplay = activity.findHighestStepCount()
-    console.log(activity.increasingStepsFor3OrMoreDays())
-
-
+    activity.increasingStepsFor3OrMoreDays()
 
     $('.date').text(currentDate);
     $('.welcome-user').text(firstName[0]);
@@ -70,44 +55,35 @@ $(document).ready(() => {
     $('.activity8').text(`Over the last week, you have averaged ${activity.calculateAvgMinutesActiveForUserOnSpecificWeek()} minutes of activity, ${activity.calculateAvgFlightsOfStairsClimbedForUserOnSpecificWeek()} flights of stairs, and ${activity.calculateAvgStepsTakenByUserOnSpecificWeek()} steps.`);
     $('.friend1').text(`${friend1Name} took ${friend1WeekData} steps this week!`)
     $('.friend2').text(`${friend2Name} took ${friend2WeekData} steps this week!`)
-    // $('.friend3').text(`${friend3Name} took ${friend3WeekData} steps this week!`)
     $(".currentUserActivity").text(`You took ${userStepCountDataForWeek} steps this week!`)
     $(".winnerActivity").text(highestWeekStepsDisplay)
     $(".best-sleepers").text(`Best sleepers (past week): ${sleep.findUsersWithAvgSleepQualityMoreThanThreeOverSpecificWeek(currentDate).join(', ')}`)
-
-
-
-
-    $(".sleep-btn").on('click', function() {
+    
+    $(".sleep-btn").on('click', function () {
         $(".sleep-container").toggle()
         $(".hydration-container").hide()
         $(".activity-container").hide()
         $(".friends-container").hide()
     });
-
     $(".hydration-btn").on('click', function() {
         $(".hydration-container").toggle()
         $(".activity-container").hide()
         $(".sleep-container").hide()
         $(".friends-container").hide()
     });
-
     $(".activity-btn").on('click', function() {
         $(".activity-container").toggle()
         $(".hydration-container").hide()
         $(".sleep-container").hide()
         $(".friends-container").hide()
     });
-
     $(".profile-btn").on('click', function () {
         $(".profile-container").toggle()
     });
-
     $(".friends-btn").on('click', function () {
         $(".friends-container").toggle()
         $(".hydration-container").hide()
         $(".activity-container").hide()
         $(".sleep-container").hide()
     });
-
 });

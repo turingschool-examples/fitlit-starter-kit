@@ -176,6 +176,19 @@ beforeEach(() => {
           flightsOfStairs: 0 } ]);
     });
 
+    describe("Step Challenge Widget", () => {
+      beforeEach(()=>{
+        activity = new Activity(userRepo);
+      });
+      it("getWeekTotal should return sum steps of last 7 days", () => {
+        expect(activity.getWeekTotal(userRepo.activityUsersData, 2)).to.equal(44096);
+      })
+
+      it("finStepWinner should show player with most steps", () => {
+        expect(activity.findStepWinner(3, 'Bob', 4, 'Noah', 1)).to.equal('Bob has the most steps!')
+      })
+    })
+
     describe("getAverageForSevenDays method", () => {
       describe("getAverageForSevenDays method for current week", () =>{
         beforeEach(()=>{

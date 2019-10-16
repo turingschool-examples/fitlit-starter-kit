@@ -267,7 +267,7 @@ user.findFriendsTotalStepsForWeek(userRepository.users, todayDate);
 
 user.friendsActivityRecords.forEach(friend => {
   dropdownFriendsStepsContainer.innerHTML += `
-  <p class='dropdown-p friends-steps'>${friend.firstName} | Total Steps This Week | ${friend.totalWeeklySteps}</p>
+  <p class='dropdown-p friends-steps'>${friend.firstName} |  ${friend.totalWeeklySteps}</p>
   `;
 });
 
@@ -277,10 +277,10 @@ friendsStepsParagraphs.forEach(paragraph => {
   if (friendsStepsParagraphs[0] === paragraph) {
     paragraph.classList.add('green-text');
   }
-});
-
-friendsStepsParagraphs.forEach(paragraph => {
   if (friendsStepsParagraphs[friendsStepsParagraphs.length - 1] === paragraph) {
     paragraph.classList.add('red-text');
+  }
+  if (paragraph.innerText.includes('YOU ARE HERE')) {
+    paragraph.classList.add('yellow-text');
   }
 });

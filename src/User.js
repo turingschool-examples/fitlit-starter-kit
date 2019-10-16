@@ -173,6 +173,12 @@
           'totalWeeklySteps': matchedFriend.totalStepsThisWeek
         })
     })
+    this.calculateTotalStepsThisWeek(date);
+    this.friendsActivityRecords.push(        {
+              'id': this.id,
+              'firstName': 'YOU ARE HERE',
+              'totalWeeklySteps': this.totalStepsThisWeek
+            });
     this.friendsActivityRecords = this.friendsActivityRecords.sort((a, b) => b.totalWeeklySteps - a.totalWeeklySteps);
   }
 }

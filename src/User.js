@@ -17,6 +17,7 @@
     this.accomplishedDays = [];
     this.trendingStepDays = [];
     this.trendingStairsDays = [];
+    this.friendsNames = [];
   }
   getFirstName() {
     var names = this.name.split(' ');
@@ -144,6 +145,11 @@
         positiveDays = [];
       }
     }
+  }
+  findFriendsNames(users) {
+    this.friends.forEach(friend => {
+      this.friendsNames.push(users.find(user => user.id === friend).getFirstName());
+    })
   }
 }
 

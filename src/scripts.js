@@ -85,11 +85,18 @@ let sleepCalendarCard = document.querySelector('#sleep-calendar-card');
 let mainPage = document.querySelector('main');
 let stepsTrendingButton = document.querySelector('.steps-trending-button');
 let stairsTrendingButton = document.querySelector('.stairs-trending-button');
+let profileButton = document.querySelector('#profile-button');
+let userInfoDropdown = document.querySelector('#user-info-dropdown');
 
 // EVENT LISTENERS
 mainPage.addEventListener('click', showInfo);
+profileButton.addEventListener('click', showDropdown);
 
 //FLIPPING CARDS
+function showDropdown() {
+  userInfoDropdown.classList.toggle('hide');
+};
+
 function showInfo() {
   if (event.target.classList.contains('steps-info-button')) {
     flipCard(stepsMainCard, stepsInfoCard);
@@ -250,4 +257,19 @@ stairsTrendingButton.addEventListener('click', function() {
   user.findTrendingStairsDays();
   console.log(user.trendingStairsDays);
   trendingStairsPhraseContainer.innerHTML = `<p class='trend-line'>${user.trendingStairsDays[0]}</p>`;
+});
+
+let dropdownName = document.querySelector('#dropdown-name');
+let dropdownEmail = document.querySelector('#dropdown-email');
+let dropdownGoal = document.querySelector('#dropdown-goal');
+let dropdownFriends = document.querySelector('#dropdown-friends');
+
+dropdownName.innerText = user.name.toUpperCase();
+dropdownEmail.innerText = `Email | ${user.email}`;
+dropdownGoal.innerText = `Daily Step Goal | ${user.dailyStepGoal}`;
+
+user.findFriendsNames(userRepository.users);
+
+user.friendsNames.forEach(friend => {
+  dropdownFriends.innerText += ` ${friend} |`
 });

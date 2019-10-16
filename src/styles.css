@@ -50,42 +50,38 @@ body {
 }
 
 header {
-  border: 2px solid #5D6D7E;
   border-radius: 5px;
   width: 99%;
   margin: 0 auto;
   grid-area: header;
-  background-color: #D1DCE9;
+  background-color: #EBECF0;
 }
 
 .header-section-categories {
   display: flex;
   justify-content: space-around;
   width: 100%;
-  margin: 10px;
+  margin: 15px 0px 15px;
 }
 
 .header-style {
-  border: 3px solid black;
   border-radius: 5px;
   padding: 5px 20px;
   width: 175px;
   text-align: center;
+  color: #FFFFFF;
 }
 
 .header-hydration-style {
-  background-color: #F7DC6F;
-  border-color: #D4AC0D;
+  background-color: #2196F3;
 }
 
 .header-activity-style {
-  background-color: #76D7C4;
-  border-color: #148F77;
+  background-color: #009688;
 }
 
 .header-sleep-style {
-  background-color: #85C1E9;
-  border-color: #2874A6;
+  background-color: #673AB7;
 }
 
 aside {
@@ -200,16 +196,15 @@ li {
   grid-template-areas:
     "dayOz dayActivity daySleep"
     "weekOz weekActivity weekSleep"
-    "weekOz weekActivity weekSleep"
-    "weekOz weekActivity allTimeSleep";
+    "null activityMetric allTimeSleep";
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   padding: .70%;
 }
 
 .card-style {
   border-radius: 5px;
-  margin: 2%;
+  margin: 2% 5%;
   color: white;
 }
 
@@ -244,39 +239,54 @@ p {
   margin: 2%;
 }
 
+.card-daily{
+  height: 38vh;
+  overflow: auto;
+}
+
+.card-weekly {
+  height: 38vh;
+  overflow: auto;
+}
+
+.card-metric {
+  height: 38vh;
+  overflow: auto;
+}
+
 .card-daily-oz {
   grid-area: dayOz;
-  background-color: deepskyblue;
+  background-color: #42A5F5;
 }
 
 .card-weekly-oz {
   grid-area: weekOz;
-  background-color: steelblue;
+  background-color: #1E88E5;
 }
 
 .card-daily-activity {
   grid-area: dayActivity;
-  background-color: #5fe1ab;
+  background-color: #26A69A;
 }
 
 .card-weekly-activity {
   grid-area: weekActivity;
-  background-color: #358564;
+  background-color: #00897B;
 }
 
 .card-daily-sleep {
   grid-area: daySleep;
-  background-color: #c08fff;
+  background-color: #7E57C2;
 }
 
 .card-weekly-sleep {
   grid-area: weekSleep;
-  background-color: #7a51b0;
+  background-color: #673AB7;
 }
 
 .card-all-time-sleep {
   grid-area: allTimeSleep;
-  background-color: #503573;
+  background-color: #4527A0;
 }
 
 .step-challenge-background {

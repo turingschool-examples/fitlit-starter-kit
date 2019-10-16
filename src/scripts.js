@@ -60,6 +60,7 @@ function clickLoginButton(event) {
     addMinutesActiveByDay();
     addNumStepsForLatestDay();
     addWeeklyActivityDataByDay();
+    addAllTimeMinsActiveRecord();
   }
 }
 
@@ -438,6 +439,15 @@ function addWeeklyActivityDataByDay() {
     })
 }
 
+function addAllTimeMinsActiveRecord() {
+  let minsActiveRecord = activityUser.getMinutesActiveRecord();
+  $("#card-metric-activity-div").append(`
+  <section class="section-style">
+    <h3>Personal Best</h3>
+    <p>${minsActiveRecord} Minutes Active</p>
+  </section>`)
+}
+
 function displayUserPage() {
     $("#main-login-page").remove();
     $("body").html(`
@@ -484,6 +494,10 @@ function displayUserPage() {
         <article class="card-style card-weekly card-weekly-activity">
           <h2 id="weekly-activity-header">This Week's Activity</h2>
           <div class="scroll-div" id="card-weekly-activity-div"></div>
+        </article>
+        <article class="card-style card-metric card-metric-activity">
+          <h2 id="metric-activity-header">All Time Activity Record</h2>
+          <div class="scroll-div" id="card-metric-activity-div"></div>
         </article>
         <article class="card-style card-daily card-daily-sleep">
           <h2 id="card-sleep-daily-data">Previous Night's Sleep Stats</h2>

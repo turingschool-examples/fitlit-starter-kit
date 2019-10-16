@@ -469,7 +469,7 @@ function displayUserPage() {
     <main class="main-user-stats">
       <div class="main-user-stats-div">
         <article class="card-style card-daily card-daily-oz">
-          <h2 id="card-daily-oz-header">Have you been drinkin'?</h2>
+          <h2 id="card-daily-oz-header">Today's Hydration</h2>
         </article>
         <article class="card-style card-weekly card-weekly-oz">
           <h2 id="card-weekly-oz-header">Weekly Water Intake</h2>

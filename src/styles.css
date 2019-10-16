@@ -61,13 +61,13 @@ header {
   display: flex;
   justify-content: space-around;
   width: 100%;
-  margin: 15px 0px 1px;
+  margin: 15px 0px .5px;
 }
 
 .header-style {
   border-radius: 5px;
   padding: 5px 20px;
-  width: 175px;
+  width: 15%;
   text-align: center;
   color: #FFFFFF;
 }
@@ -144,7 +144,7 @@ li {
 }
 
 .user-logout-button {
-  background-color: black;
+  background-color: #E74C3C;
   color: white;
   width: 65%;
   padding: 5px;
@@ -156,13 +156,12 @@ li {
 }
 
 .user-logout-button:hover {
-  background-color: darkgrey;
-  width: 70%;
+  background-color: #B03A2E;
 }
 
 .user-logout-button:active {
-  background-color: darkgrey;
-  box-shadow: 0 3px black;
+  background-color: #78281F;
+  box-shadow: 0 3px #641E16;
   transform: translateY(3px);
 }
 

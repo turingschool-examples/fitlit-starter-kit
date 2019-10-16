@@ -132,10 +132,9 @@ function logout() {
     <main class="main-login-page" id="main-login-page">
       <h1 class="login-page-header">Ready to get FitLit?!</h1>
       <form class="login-page-form" id="login-page-form">
-        Welcome to FitLit!
-        <input type="text" placeholder="Enter email here:" class="login-page-input" id="login-page-input">
+        <p class="login-paragraph">Login: <input type="text" placeholder="Enter email here:" class="login-page-input" id="login-page-input"></p>
+        <p class="login-paragraph">Date: <input class="login-page-input" type="text" id="datepicker" placeholder="Choose a date:"></p>
         <input type="button" value="Log In" class="login-page-button" id="login-page-button">
-        <p>Date: <input type="text" id="datepicker"></p>
       </form>
     </main>
   `);
@@ -157,9 +156,9 @@ function addFriendsTotalDrankByWeek() {
       let totalfriendDrinksByWeek = friend.calcTotalDrankByWeek(date);
       let friendFirstName = everyone[index].getFirstName();
       $("#users-total-drinks-div").append(`
-            <div>
+            <div class="drank-challenge-div">
               <h3>${friendFirstName}</h3>
-              <p>${totalfriendDrinksByWeek}</p>
+              <p>${totalfriendDrinksByWeek} oz</p>
             </div>`);
       return {
         totalDrinks: totalfriendDrinksByWeek,
@@ -170,9 +169,9 @@ function addFriendsTotalDrankByWeek() {
       friendsTotalDrinks.sort((a, b) => b.totalDrinks - a.totalDrinks);
       $("#friend-weekly-drink-section").prepend(`
             <div>
+              <h3>Which Friend drank the most this week?!</h3>
               <h3>${weekPrior} - ${date}</h3>
-              <h3>#1 Winner!!</h3>
-              <h3>${friendsTotalDrinks[0].name}</h3>
+              <h3>${friendsTotalDrinks[0].name} is the most hydrated!!</h3>
             </div>`);
   }
 }
@@ -193,9 +192,9 @@ function addFriendsTotalStepsByWeek() {
       let totalfriendStepsByWeek = friend.calcTotalStepsByWeek(date);
       let friendFirstName = everyone[index].getFirstName();
       $("#users-total-steps-div").append(`
-            <div>
+            <div class="drank-challenge-div">
               <h3>${friendFirstName}</h3>
-              <p>${totalfriendStepsByWeek}</p>
+              <p>${totalfriendStepsByWeek} steps</p>
             </div>`);
       return {
         totalSteps: totalfriendStepsByWeek,
@@ -206,9 +205,9 @@ function addFriendsTotalStepsByWeek() {
       friendsTotalSteps.sort((a, b) => b.totalSteps - a.totalSteps);
       $("#friend-weekly-steps-section").prepend(`
             <div>
+              <h3>Which Friend walked the most this week?!</h3>
               <h3>${weekPrior} - ${date}</h3>
-              <h3>#1 Winner!!</h3>
-              <h3>${friendsTotalSteps[0].name}</h3>
+              <h3>${friendsTotalSteps[0].name} is the MOST FitLit!!</h3>
             </div>`);
   }
 }
@@ -235,13 +234,15 @@ function addStepTrend() {
     $("#aside-step-trend").after(`
       <div class="step-challenge-background hidden" id="step-trend-background">
         <section class="section-style step-trend-section" id="step-trend-section">
+          <h3>Trending Up On Steps Taken In A Day</h3>
+          <div class="step-trend-container" id="step-trend-div"></div>
         </section
       </div>`);
     let num = 0;
     userStepTrend.forEach((trend, index) => {
       if(index === 0 || trend.numSteps < userStepTrend[index - 1].numSteps) {
         num = 0;
-        $("#step-trend-section").append(`
+        $("#step-trend-div").append(`
         <div class="step-trend-div" id="${index}">
           <h3>TRENDING</h3>
           <h5>${trend.date}</h5>
@@ -260,7 +261,7 @@ function addStepTrend() {
 
 function displayErrorMessage() {
   if ($("#error-message").length === 0 && !$("#login-page-input").val()) {
-    $("#login-page-input").after("<p id='error-message'>Please enter your email</p>");
+    $("#login-page-input").after("<p id='error-message' class='error-message'>Please enter your email</p>");
   } else if ($("#error-message").length > 0 && $("#login-page-input").val()) {
     $("#error-message").remove();
   }
@@ -268,7 +269,7 @@ function displayErrorMessage() {
 
 function displayNoDateMessage() {
   if ($("#no-date-error-message").length === 0 && !$("#datepicker").val()) {
-    $("#login-page-input").after("<p id='no-date-error-message'>Please select a date</p>");
+    $("#datepicker").after("<p id='no-date-error-message' class='error-message'>Please select a date</p>");
   } else if($("#no-date-error-message").length > 0 && $("#datepicker").val()) {
     $("#no-date-error-message").remove();
   }
@@ -361,14 +362,26 @@ function addWeeklySleepDataByDay() {
 function addAllTimeSleepAvg() {
   let allTimeAvgHoursSlept = sleepUser.calcAvgSleepPerDay('hoursSlept');
   let allTimeAvgSleepQuality = sleepUser.calcAvgSleepPerDay('sleepQuality');
+  let avgHoursSleptByWeek = sleepUser.getAvgHoursByWeek(date, 'hoursSlept');
+  let avgSleepQualityByWeek = sleepUser.getAvgHoursByWeek(date, 'sleepQuality');
   $("#card-alltime-sleep-div").append(`
     <section class="section-style">
       <h3>Total Average Hours Slept/Night</h3>
       <p>${allTimeAvgHoursSlept}</p>
     </section>
     <section class="section-style">
+      <h3>Average Hours Slept/Week</h3>
+      <h5>${avgHoursSleptByWeek.date}</h5>
+      <p>${avgHoursSleptByWeek.avghoursSlept}</p>
+    </section>
+    <section class="section-style">
       <h3>Total Average Sleep Quality/Night</h3>
       <p>${allTimeAvgSleepQuality}</p>
+    </section>
+    <section class="section-style">
+      <h3>Average Sleep Quality/Week</h3>
+      <h5>${avgSleepQualityByWeek.date}</h5>
+      <p>${avgSleepQualityByWeek.avgsleepQuality}</p>
     </section>`);
 }
 

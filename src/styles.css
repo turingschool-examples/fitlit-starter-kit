@@ -23,20 +23,62 @@ body {
 
 .main-login-page {
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, .3)), url("../images/login-background.jpg");
+  background-size: cover;
 }
 
 .login-page-header {
   font-size: 250%;
-  margin: 150px;
+  margin: 75px;
 }
 
 .login-page-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 50%;
+  justify-content: space-around;
+}
+
+.login-paragraph {
+  font-size: 125%;
+  width: 70%;
+  text-align: center;
+}
+
+.login-page-input {
+  margin: 25px;
+  padding: 5px;
+  width: 40%;
+}
+
+.login-page-button {
+  width: 20%;
+  background-color: #A0A1A8;
+  cursor: pointer;
+  font-size: 125%;
+  padding: 5px;
+  border-radius: 5px;
+  outline: 0;
+}
+
+.login-page-button:hover {
+  background-color: #777981;
+  width: 30%;
+}
+
+.login-page-button:active {
+  background-color: lightgrey;
+  box-shadow: 0 3px black;
+  transform: translateY(3px);
+}
+
+.error-message {
+  color: red;
 }
 
 .body-content-container {
@@ -253,7 +295,7 @@ li {
 }
 
 .scroll-div {
- height: 90%;
+ height: 85%;
  overflow: auto;
 }
 
@@ -333,7 +375,7 @@ p {
   right: 0;
   height: 100vh;
   width: 80%;
-  background-color: #00000080;
+  background-color: #00000090;
 }
 
 .users-total-steps-div {
@@ -342,17 +384,28 @@ p {
   align-items: center;
 }
 
+.drank-challenge-div {
+  background-color: lightgrey;
+  border-radius: 5px;
+  padding: 10px;
+  width: 15%;
+}
+
 .step-challenge-section {
   width: 50%;
   margin: 150px auto;
 }
 
 .step-trend-section {
+  width: 80%;
+  margin: 75px auto;
+  height: 70%;
+}
+
+.step-trend-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  width: 80%;
-  margin: 75px auto;
   height: 80%;
   overflow: auto;
 }
@@ -362,4 +415,3 @@ p {
   margin: 10px;
   width: 20%;
 }
-

@@ -22,3 +22,6 @@ To use this application:
 #### WITNESS THE LITNESS
 
 <img width="1440" alt="FitLit" src="https://user-images.githubusercontent.com/49926352/66957898-5231e000-f024-11e9-9556-87011c690393.png">
+
+![2019-10-16 17 10 28](https://user-images.githubusercontent.com/49926352/66965748-05f09b00-f038-11e9-99a0-0e86227f5455.gif)
+

@@ -17,18 +17,19 @@ $("body").delegate("#datepicker", "focusin", function () {
       maxDate: new Date(2019, 08, 22),
     });
 });
+
 $("body").on("click", "#login-page-button", clickLoginButton);
 $("body").on("click", "#user-logout-button", logout);
 $("body").on("click", "#aside-step-challenge", addFriendsTotalStepsByWeek);
-$("body").on("click", "#aside-step-challenge", function() {
+$("body").on("click", "#aside-step-challenge, #challenge-delete-button-step", function() {
   $("#step-challenge-background").toggleClass("hidden");
 });
 $("body").on("click", "#aside-step-trend", addStepTrend);
-$("body").on("click", "#aside-step-trend", function() {
+$("body").on("click", "#aside-step-trend, #challenge-delete-button-trend", function() {
   $("#step-trend-background").toggleClass("hidden");
 });
 $("body").on("click", "#aside-drink-challenge", addFriendsTotalDrankByWeek);
-$("body").on("click", "#aside-drink-challenge", function() {
+$("body").on("click", "#aside-drink-challenge, #challenge-delete-button-drink", function() {
   $("#drink-challenge-background").toggleClass("hidden");
 });
 
@@ -127,6 +128,10 @@ function getDate() {
   date = $("#datepicker").val();
 }
 
+function closePopUp() {
+  $("#")
+}
+
 function logout() {
   $("#body-content-containe").remove();
   $("body").html(`
@@ -149,6 +154,7 @@ function addFriendsTotalDrankByWeek() {
     $("#aside-drink-challenge").after(`
       <div class="step-challenge-background hidden" id="drink-challenge-background">
         <section class="section-style step-challenge-section" id="friend-weekly-drink-section">
+        <button class="delete-button" id="challenge-delete-button-drink">close</button>
           <div class="users-total-steps-div" id="users-total-drinks-div">
           </div>
         </section
@@ -168,7 +174,7 @@ function addFriendsTotalDrankByWeek() {
       });
       let weekPrior = getWeekPriorDate();
       friendsTotalDrinks.sort((a, b) => b.totalDrinks - a.totalDrinks);
-      $("#friend-weekly-drink-section").prepend(`
+      $("#challenge-delete-button-drink").after(`
             <div>
               <h3>Which Friend drank the most this week?!</h3>
               <h3>${weekPrior} - ${date}</h3>
@@ -185,6 +191,7 @@ function addFriendsTotalStepsByWeek() {
     $("#aside-step-challenge").after(`
       <div class="step-challenge-background hidden" id="step-challenge-background">
         <section class="section-style step-challenge-section" id="friend-weekly-steps-section">
+          <button class="delete-button" id="challenge-delete-button-step">close</button>
           <div class="users-total-steps-div" id="users-total-steps-div">
           </div>
         </section
@@ -204,7 +211,7 @@ function addFriendsTotalStepsByWeek() {
       });
       let weekPrior = getWeekPriorDate();
       friendsTotalSteps.sort((a, b) => b.totalSteps - a.totalSteps);
-      $("#friend-weekly-steps-section").prepend(`
+      $("#challenge-delete-button-step").after(`
             <div>
               <h3>Which Friend walked the most this week?!</h3>
               <h3>${weekPrior} - ${date}</h3>
@@ -235,6 +242,7 @@ function addStepTrend() {
     $("#aside-step-trend").after(`
       <div class="step-challenge-background hidden" id="step-trend-background">
         <section class="section-style step-trend-section" id="step-trend-section">
+        <button class="delete-button" id="challenge-delete-button-trend">close</button>
           <h3>Trending Up On Steps Taken In A Day</h3>
           <div class="step-trend-container" id="step-trend-div"></div>
         </section

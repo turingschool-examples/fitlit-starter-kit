@@ -18,6 +18,12 @@ class UserRepository {
     this.day = '2019/09/22';
   }
 
+  validateDate(day) {
+    return this.sleepUsersData.find(data => {
+      return data.date === day;
+    });
+  }
+
   getWeekDates(date) {
     const dates = this.sleepUsersData.reduce((allDates, data) => {
       if (data.userID === 2) {
@@ -50,25 +56,30 @@ class UserRepository {
       sum+=data.sleepQuality;
       return sum;
     }, 0) / this.sleepUsersData.length;
-    return Math.round((average)*100)/100;
+    return Math.round((average)*10)/10;
   }
 
   findGoodSleepWeekUsers(date) {
     const week = this.getWeekDates(date);
-    const sleepsQaulityByUser = this.sleepUsersData.reduce((sleepUsers, data) => {
-      if (week.includes(data.date)) {
-        const quality = data.sleepQuality / 7;
-        (!sleepUsers[data.userID -1]) ? sleepUsers[data.userID-1] = quality : sleepUsers[data.userID-1]+=quality;
-      }
-      return sleepUsers;
-    }, []);
+    const sleepsQaulityByUser = this.findAverageSleepQualityForAll(week);
     const users = sleepsQaulityByUser.reduce((ids, user) => {
       if (user >= 3) {
-        ids.push(sleepsQaulityByUser.indexOf(user));
+        const personID = sleepsQaulityByUser.indexOf(user) + 1;
+        ids.push(personID);
       }
       return ids;
     }, []);
     return users;
+  }
+
+  findAverageSleepQualityForAll(week) {
+    return this.sleepUsersData.reduce((sleepQualities, data) => {
+      if (week.includes(data.date)) {
+        const quality = data.sleepQuality / 7;
+        (!sleepQualities[data.userID -1]) ? sleepQualities[data.userID-1] = quality : sleepQualities[data.userID-1]+=quality;
+      }
+      return sleepQualities;
+    }, []);
   }
 
   findSleepingBeauty(date) {

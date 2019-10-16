@@ -72,7 +72,7 @@ beforeEach(() => {
     describe("updateInfo method", () => {
       describe("updateInfo method if date isn't given", () => {
         beforeEach(()=>{
-          activity.updateInfo(userRepo.activityUsersData);
+          activity.updateInfo(userRepo);
         });
         it("should show number of steps for today", () => {
           expect(activity.numSteps).to.equal(9050);
@@ -90,7 +90,7 @@ beforeEach(() => {
       describe("updateInfo method if given date is not in database", () => {
         beforeEach(()=>{
           activity.date = '1999/11/11'
-          activity.updateInfo(userRepo.activityUsersData);
+          activity.updateInfo(userRepo);
         });
 
         it("should show no number of steps if date is not in database", () => {
@@ -108,8 +108,8 @@ beforeEach(() => {
     });
 
     it("should count miles", () => {
-      activity.updateInfo(userRepo.activityUsersData);
-      const miles = activity.findMiles(user.strideLength);
+      activity.updateInfo(userRepo);
+      const miles = activity.findMiles(user);
       expect(miles).to.equal(7);
     });
 
@@ -131,7 +131,7 @@ beforeEach(() => {
       });
 
       it("should count miles for chosen day", () => {
-        const miles = activity.findMiles(user.strideLength);
+        const miles = activity.findMiles(user);
         expect(miles).to.equal(4);
       });
     });
@@ -194,7 +194,7 @@ beforeEach(() => {
         });
 
         it("should count miles for week", () => {
-          const miles = activity.findMiles(user.strideLength);
+          const miles = activity.findMiles(user);
           expect(miles).to.equal(5);
         });
       });

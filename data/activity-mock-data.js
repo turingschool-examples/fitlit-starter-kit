@@ -14,14 +14,6 @@ const activityData = [
     "flightsOfStairs": 2
   },
   {
-    "userID": 3,
-    "date": "2019/09/14",
-    "numSteps": 10691,
-    "minutesActive": 245,
-    "flightsOfStairs": 1
-  },
-
-  {
     "userID": 1,
     "date": "2019/09/15",
     "numSteps": 10028,
@@ -35,14 +27,6 @@ const activityData = [
     "minutesActive": 152,
     "flightsOfStairs": 25
   },
-  {
-    "userID": 3,
-    "date": "2019/09/15",
-    "numSteps": 11998,
-    "minutesActive": 24,
-    "flightsOfStairs": 49
-  },
-
   {
     "userID": 1,
     "date": "2019/09/16",
@@ -58,14 +42,6 @@ const activityData = [
     "flightsOfStairs": 21
   },
   {
-    "userID": 3,
-    "date": "2019/09/16",
-    "numSteps": 13195,
-    "minutesActive": 144,
-    "flightsOfStairs": 40
-  },
-
-  {
     "userID": 1,
     "date": "2019/09/17",
     "numSteps": 4901,
@@ -79,14 +55,6 @@ const activityData = [
     "minutesActive": 277,
     "flightsOfStairs": 2
   },
-  {
-    "userID": 3,
-    "date": "2019/09/17",
-    "numSteps": 4993,
-    "minutesActive": 191,
-    "flightsOfStairs": 43
-  },
-
   {
     "userID": 1,
     "date": "2019/09/18",
@@ -102,14 +70,6 @@ const activityData = [
     "flightsOfStairs": 3
   },
   {
-    "userID": 3,
-    "date": "2019/09/18",
-    "numSteps": 12102,
-    "minutesActive": 270,
-    "flightsOfStairs": 6
-  },
-
-  {
     "userID": 1,
     "date": "2019/09/19",
     "numSteps": 12083,
@@ -123,14 +83,6 @@ const activityData = [
     "minutesActive": 181,
     "flightsOfStairs": 3
   },
-  {
-    "userID": 3,
-    "date": "2019/09/19",
-    "numSteps": 8901,
-    "minutesActive": 50,
-    "flightsOfStairs": 6
-  },
-
   {
     "userID": 1,
     "date": "2019/09/20",
@@ -146,14 +98,6 @@ const activityData = [
     "flightsOfStairs": 6
   },
   {
-    "userID": 3,
-    "date": "2019/09/20",
-    "numSteps": 9383,
-    "minutesActive": 271,
-    "flightsOfStairs": 4
-  },
-
-  {
     "userID": 1,
     "date": "2019/09/21",
     "numSteps": 5711,
@@ -168,14 +112,6 @@ const activityData = [
     "flightsOfStairs": 40
   },
   {
-    "userID": 3,
-    "date": "2019/09/21",
-    "numSteps": 8855,
-    "minutesActive": 235,
-    "flightsOfStairs": 17
-  },
-
-  {
     "userID": 1,
     "date": "2019/09/22",
     "numSteps": 8072,
@@ -188,14 +124,7 @@ const activityData = [
     "numSteps": 9050,
     "minutesActive": 25,
     "flightsOfStairs": 0
-  },
-  {
-    "userID": 3,
-    "date": "2019/09/22",
-    "numSteps": 4831,
-    "minutesActive": 144,
-    "flightsOfStairs": 21
-  },
+  }
 ];
 
 if (typeof module !== 'undefined') {

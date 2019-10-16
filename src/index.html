@@ -114,21 +114,22 @@
     <section class="main-sidebar-body">
       <section class="main-sidebar-body">
       <section class="body-sidebar-sidebarContainer">
-        <h2 class="sidebar-header-name" id="sidebarName">Name Name</h2>
+        <h2 class="sidebar-header-name" id="sidebarName">FRIENDLY STEP CHALLENGE!</h2>
         <div class="sidebar-header-line"></div>
-        <img src="./images/The Rock.jpg"class="sidebar-header-userImage"></img>
+        <img src="./images/person walking on path.jpg"class="sidebar-header-userImage"></img>
         <div class="sidebar-header-line"></div>
-        <p class="sidebar-header-userInfo" id="userAddress"></p>
-        <div class="sidebar-header-line"></div>
-        <p class="sidebar-header-userInfo" id="userEmail"></p>
-        <div class="sidebar-header-line"></div>
-        <p class="sidebar-header-userInfo" id="userStridelength"></p>
+        <p class="sidebar-header-userInfo" id="bigWinner"></p>
         <div class="sidebar-header-line"></div>
         <p class="sidebar-header-userInfo" id="stepGoalCard"></p>
         <p class="sidebar-header-userInfo" id="avStepGoalCard"><p>
         <section class="sidebar-body-friendContainer">
           <section class="sidebar-friendContainer-listItems">
-            <ul id="friendList">
+            <p class="thisWeek">Rank this week</p>
+            <ul class="card-vertical-list" id="friendChallengeListToday">
+              <!-- friend list goes here -->
+            </ul>
+            <p class="historicalWeek">- Historical Rank</p>
+            <ul class="card-vertical-list" id="friendChallengeListHistory">
               <!-- friend list goes here -->
             </ul>
           </section>
@@ -137,6 +138,8 @@
     </section>
   </section>
   </section>
+    <script type="text/javascript" src="Activity.js"></script>
+    <script type="text/javascript" src="../data/activity.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="User.js"></script>
     <script type="text/javascript" src="User-repo.js"></script>
@@ -145,7 +148,6 @@
     <script type="text/javascript" src="Sleep.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
-    <script type="text/javascript" src="../data/activity.js"></script>
 
   </body>
 </html>

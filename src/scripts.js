@@ -7,7 +7,8 @@
 
 const data = ('../data/users');
 const hydration = ('../data/hydration');
-const sleep = ('..data/sleep');
+const sleep = ('../data/sleep');
+const activity = ('../data/activity');
 
 var sidebarName = document.getElementById('sidebarName');
 var stepGoalCard = document.getElementById('stepGoalCard');
@@ -26,6 +27,9 @@ var sleepQualityToday = document.getElementById('sleepQualityToday');
 var avUserSleepQuality = document.getElementById('avUserSleepQuality');
 var sleepThisWeek = document.getElementById('sleepThisWeek');
 var sleepEarlierWeek = document.getElementById('sleepEarlierWeek');
+var friendChallengeListToday = document.getElementById('friendChallengeListToday');
+var friendChallengeListHistory = document.getElementById('friendChallengeListHistory');
+var bigWinner = document.getElementById('bigWinner');
 
 function startApp() {
   let userList = [];
@@ -33,15 +37,19 @@ function startApp() {
   let userRepo = new UserRepo(userList);
   let hydrationRepo = new Hydration(hydrationData);
   let sleepRepo = new Sleep(sleepData);
+  let activityRepo = new Activity(activityData);
   var userNowId = pickUser();
   let userNow = getUserById(userNowId, userRepo);
+  console.log(userNow);
+  // let user = new User(data);
   let today = makeToday(userRepo, userNowId, hydrationData);
   let randomHistory = makeRandomDate(userRepo, userNowId, hydrationData);
   console.log(historicalWeek);
-  historicalWeek.forEach(instance => instance.insertAdjacentHTML('afterBegin', `Water intake: week of ${randomHistory}`));
+  historicalWeek.forEach(instance => instance.insertAdjacentHTML('afterBegin', `Week of ${randomHistory}`));
   addInfoToSidebar(userNow, userRepo);
   addHydrationInfo(userNowId, hydrationRepo, today, userRepo, randomHistory);
   addSleepInfo(userNowId, sleepRepo, today, userRepo, randomHistory);
+  addFriendGameInfo(userNowId, activityRepo, userRepo, today, randomHistory, userNow);
 }
 
 function makeUsers(array) {
@@ -88,7 +96,7 @@ function makeRandomDate(userStorage, id, dataSet) {
 }
 
 function addHydrationInfo(id, hydrationInfo, dateString, userStorage, laterDateString) {
-  // hydrationToday.innerText = `You drank <span class="number">${hydrationInfo.calculateDailyOunces(id, dateString)}</span> oz water today.`;
+  hydrationToday.innerText = `You drank <span class="number">${hydrationInfo.calculateDailyOunces(id, dateString)}</span> oz water today.`;
   hydrationToday.insertAdjacentHTML('afterBegin', `<p>You drank</p><p><span class="number">${hydrationInfo.calculateDailyOunces(id, dateString)}</span></p> <p>oz water today.</p>`);
   hydrationAverage.insertAdjacentHTML('afterBegin', `<p>Your average water intake is</p> <p><span class="number">${hydrationInfo.calculateAverageOunces(id)}</span></p> <p>oz per day.</p>`)
   hydrationThisWeek.insertAdjacentHTML('afterBegin', makeHydrationHTML(id, hydrationInfo, userStorage,  hydrationInfo.calculateFirstWeekOunces(userStorage, id)));
@@ -113,6 +121,18 @@ function makeSleepHTML(id, sleepInfo, userStorage, method) {
 
 function makeSleepQualityHTML(id, sleepInfo, userStorage, method) {
   return method.map(sleepQualityData => `<li class="historical-list-listItem">On ${sleepQualityData}/5 quality of sleep</li>`).join('');
+}
+
+function addFriendGameInfo(id, activityInfo, userStorage, dateString, laterDateString, user) {
+  friendChallengeListToday.insertAdjacentHTML("afterBegin", makeFriendChallengeHTML(id, activityInfo, userStorage,      activityInfo.showChallengeListAndWinner(user, dateString, userStorage)));
+
+  // activityInfo.showChallengeListAndWinner(user, dateString, userStorage);
+  friendChallengeListHistory.insertAdjacentHTML("afterBegin", makeFriendChallengeHTML(id, activityInfo, userStorage, activityInfo.showChallengeListAndWinner(user, dateString, userStorage)));
+  bigWinner.insertAdjacentHTML('afterBegin', `THIS WEEK'S WINNER! ${activityInfo.showcaseWinner(user, dateString, userStorage)}`)
+}
+
+function makeFriendChallengeHTML(id, activityInfo, userStorage, method) {
+  return method.map(friendChallengeData => `<li class="historical-list-listItem">Your friend ${friendChallengeData} average steps.<li>`).join('');
 }
 
 startApp();

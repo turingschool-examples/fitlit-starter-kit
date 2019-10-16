@@ -6,6 +6,9 @@ class UserRepo {
   getDataFromID(id) {
     return this.users.find((user) => id === user.id);
   };
+  getDataFromUserID(id, dataSet) {
+    return dataSet.filter((userData) => id === userData.userID);
+  };
   calculateAverageStepGoal() {
     var totalStepGoal = this.users.reduce((sumSoFar, data) => {
       return sumSoFar = sumSoFar + data.dailyStepGoal;
@@ -53,7 +56,7 @@ class UserRepo {
       return (sortedObjectKeys[a].reduce(function(sumSoFar, sleepQualityValue){
         sumSoFar += sleepQualityValue
         return sumSoFar;
-      }, 0)/sortedObjectKeys[a].length) - (sortedObjectKeys[b].reduce(function(sumSoFar, sleepQualityValue){
+      }, 0)/sortedObjectKeys[a].length) - (sortedObjectKeys[b].reduce(function(sumSoFar, sleepQualityValue) {
         sumSoFar += sleepQualityValue
         return sumSoFar;
       }, 0)/sortedObjectKeys[b].length)
@@ -62,11 +65,14 @@ class UserRepo {
   combineRankedUserIDsAndAveragedData(dataSet, date, relevantData, listFromMethod) {
     let sortedObjectKeys = this.isolateUsernameAndRelevantData(dataSet, date, relevantData, listFromMethod)
     let rankedUsersAndAverages = this.rankUserIDsbyRelevantDataValue(dataSet, date, relevantData, listFromMethod)
-    return rankedUsersAndAverages.map(function(rankedUser){
-      rankedUser = {[rankedUser]: sortedObjectKeys[rankedUser].reduce(function(sumSoFar, sleepQualityValue){
-        sumSoFar += sleepQualityValue
-        return sumSoFar;
-      }, 0)/sortedObjectKeys[rankedUser].length}
+    return rankedUsersAndAverages.map(function(rankedUser) {
+      rankedUser = {
+        [rankedUser]: sortedObjectKeys[rankedUser].reduce(
+          function(sumSoFar, sleepQualityValue) {
+            sumSoFar += sleepQualityValue
+            return sumSoFar;
+          }, 0) / sortedObjectKeys[rankedUser].length
+        };
       return rankedUser;
     });
   }

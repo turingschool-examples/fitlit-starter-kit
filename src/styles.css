@@ -152,11 +152,13 @@ li {
   outline: none;
   margin-bottom: 10px;
   cursor: pointer;
-  font-size: 100%;
+  font-size: 140%;
+  width: 95%;
 }
 
 .user-logout-button:hover {
   background-color: #B03A2E;
+  width: 98%
 }
 
 .user-logout-button:active {
@@ -192,20 +194,21 @@ li {
   width: 95%;
   margin: 10px auto;
   font-size: 140%;
-  background-color: #EAECEE;
-  outline: 0;
+  background-color: #2471A3;
+  /* outline: 0; */
   cursor: pointer;
   padding: 2px;
+  color: #FFFFFF
 }
 
 .aside-trend-button:hover  {
-  background-color: darkgrey;
+  background-color: #1F618D;
   width: 98%;
 }
 
 .aside-trend-button:active {
-  background-color: darkgrey;
-  box-shadow: 0 3px black;
+  background-color: #1A5276;
+  box-shadow: 0 3px #154360;
   transform: translateY(3px);
 }
 

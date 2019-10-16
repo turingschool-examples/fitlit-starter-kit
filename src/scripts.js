@@ -243,14 +243,15 @@ function addStepTrend() {
         num = 0;
         $("#step-trend-section").append(`
         <div class="step-trend-div" id="${index}">
-          <h3>${trend.date}</h3>
-          <p>${trend.numSteps}</p>
+          <h3>TRENDING</h3>
+          <h5>${trend.date}</h5>
+          <p>Steps: ${trend.numSteps}</p>
         </div>`);
         num += 1
       } else {
         $(`#${index - num}`).append(`
-        <h3>${trend.date}</h3>
-        <p>${trend.numSteps}</p>`);
+        <h5>${trend.date}</h5>
+        <p>Steps: ${trend.numSteps}</p>`);
         num += 1;
       }
     })
@@ -313,7 +314,7 @@ function addUserInfo(user) {
 function addOzToday() {
   $("#card-daily-oz-header").after(`
   <section class="card-daily-oz-paragraph section-style">
-    <h3>Ounces Consumed Today</h3>  
+    <h3>Ounces Consumed Today</h3>
     <p>${hydroUser.getOzByDate(date)}</p>
   </section>`);
 }

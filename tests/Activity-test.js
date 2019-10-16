@@ -61,25 +61,25 @@ describe('Activity', function() {
     expect(activity1).to.be.an.instanceof(Activity);
   });
   it('should hold a userId', function() {
-    expect(activity2.userId).to.equal(2);;
+    expect(activity2.userId).to.equal(2);
   });
   it('should hold a date', function() {
-    expect(activity1.date).to.equal("2019/06/15");;
+    expect(activity1.date).to.equal("2019/06/15");
   });
   it('should hold number of steps', function() {
-    expect(activity1.steps).to.equal(3684);;
+    expect(activity1.steps).to.equal(3684);
   });
   it('should hold minutes active', function() {
-    expect(activity2.minutesActive).to.equal(280);;
+    expect(activity2.minutesActive).to.equal(280);
   });
   it('should hold flights of stairs', function() {
-    expect(activity2.flightsOfStairs).to.equal(22);;
+    expect(activity2.flightsOfStairs).to.equal(22);
   });
   it('should have a default value of 0 for miles walked', function() {
-    expect(activity2.milesWalked).to.equal(0);;
+    expect(activity2.milesWalked).to.equal(0);
   });
   it('should have a default value of null for reached step goal', function() {
-    expect(activity2.reachedStepGoal).to.equal(null);;
+    expect(activity2.reachedStepGoal).to.equal(null);
   });
   it('doActivity should add activities to user record', function() {
     expect(user1.activityRecord.length).to.equal(1);

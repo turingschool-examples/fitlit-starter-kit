@@ -33,8 +33,8 @@ $(document).ready(() => {
     const friend1Name = friend1Data.name;
     const friend2Name = friend2Data.name;
 // const friend3Name = friend3Data.name;
-    
-    
+
+
     const friend2WeekData = activity.friend2StepCountForWeek()
     const friend3WeekData = activity.friend3StepCountForWeek()
     const userStepCountDataForWeek = activity.userStepCountForWeek()
@@ -50,7 +50,7 @@ $(document).ready(() => {
     $('.profile-name').text(currentPerson.name);
     $('.profile-address').text(currentPerson.address);
     $('.profile-email').text(currentPerson.email);
-    $('.average-stepGoal').text(`Your Daily Step Goal was ${currentPerson.dailyStepGoal}, while everyone else was at ${userRepository.calculateAvgStepGoalAllUsers()}`);
+    $('.average-stepGoal').text(`Your Daily Step Goal: ${currentPerson.dailyStepGoal} (Average All Users: ${userRepository.calculateAvgStepGoalAllUsers()})`);
     $('.hydration1').text(`Your water intake for the day has been: ${hydration.calculateAmtDrankByUserSpecificDate(currentDate)} oz`);
     $('.hydration2').text(`Your water intake over each day of the last week: ${hydration.returnDrinkAmtEachDayOverWeekByUser().join(', ')} (oz)`);
     $('.sleep1').text(`Time spent sleeping for each night of the past week: ${sleep.calculateHoursSleptEachDayByUserOverSpecificWeek().join(', ')} (hours)`);
@@ -99,7 +99,7 @@ $(document).ready(() => {
     });
 
     $(".friends-btn").on('click', function () {
-        $(".friends-container").toggle() 
+        $(".friends-container").toggle()
     });
 
 });

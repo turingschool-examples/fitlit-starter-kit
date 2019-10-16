@@ -161,3 +161,14 @@ section ul {
 .activity-text {
   margin: 0;
 }
+
+.friends-container {
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url("../images/compete_img.png");
+  background-blend-mode: /* OPTIMIZE:  */;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: white;
+  display: none;
+  height: 70%;
+  width: 80%;
+}

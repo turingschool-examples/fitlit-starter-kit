@@ -67,7 +67,7 @@ header {
 .header-style {
   border-radius: 5px;
   padding: 5px 20px;
-  width: 175px;
+  width: 15%;
   text-align: center;
   color: #FFFFFF;
 }
@@ -107,10 +107,10 @@ aside {
 
 .aside-style {
   text-align: center;
-  background-color: white;
+  background-color: #F1C40F;
   border-radius: 5px;
   width: 90%;
-  margin: 25px auto;
+  margin: 5px auto;
   padding: 5px;
 }
 
@@ -128,6 +128,7 @@ aside {
   background-color: #EAECEE;
 }
 
+
 .hidden {
   display: none;
 }
@@ -143,7 +144,7 @@ li {
 }
 
 .user-logout-button {
-  background-color: black;
+  background-color: #E74C3C;
   color: white;
   width: 65%;
   padding: 5px;
@@ -151,17 +152,18 @@ li {
   outline: none;
   margin-bottom: 10px;
   cursor: pointer;
-  font-size: 100%;
+  font-size: 140%;
+  width: 95%;
 }
 
 .user-logout-button:hover {
-  background-color: darkgrey;
-  width: 70%;
+  background-color: #B03A2E;
+  width: 98%
 }
 
 .user-logout-button:active {
-  background-color: darkgrey;
-  box-shadow: 0 3px black;
+  background-color: #78281F;
+  box-shadow: 0 3px #641E16;
   transform: translateY(3px);
 }
 
@@ -176,15 +178,15 @@ li {
 
 .user-step-goal {
   border-bottom: 2px solid black;
-  width: 90%;
+  width: 91%;
   margin: auto;
 }
 
 .aside-user-info-container {
   border-radius: 5px;
-  height: 83%;
+  height: 91vh;
   overflow: auto;
-  background-color: #FAE68B;
+  background-color: #EBECF0;
 }
 
 .aside-trend-button {
@@ -192,20 +194,22 @@ li {
   width: 95%;
   margin: 10px auto;
   font-size: 140%;
-  background-color: #EAECEE;
+  background-color: #2471A3;
   outline: 0;
   cursor: pointer;
   padding: 2px;
+  color: #FFFFFF;
+  padding: 5px;
 }
 
 .aside-trend-button:hover  {
-  background-color: darkgrey;
+  background-color: #1F618D;
   width: 98%;
 }
 
 .aside-trend-button:active {
-  background-color: darkgrey;
-  box-shadow: 0 3px black;
+  background-color: #1A5276;
+  box-shadow: 0 3px #154360;
   transform: translateY(3px);
 }
 
@@ -223,7 +227,7 @@ li {
     "null activityMetric allTimeSleep";
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  padding: .70%;
+  padding: 0 .70%;
 }
 
 .card-style {
@@ -248,12 +252,20 @@ li {
   justify-content: space-around;
 }
 
+.scroll-div {
+ height: 90%;
+ overflow: auto;
+}
+
 h2 {
   text-align: center;
   font-size: larger;
   margin: 2%;
 }
 
+.user-name {
+  margin:
+}
 h3{
   margin: 2%;
   text-align: center;
@@ -265,17 +277,18 @@ p {
 
 .card-daily{
   height: 38vh;
-  overflow: auto;
+  margin: 0 5%;
+  overflow: hidden;
 }
 
 .card-weekly {
   height: 38vh;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .card-metric {
   height: 38vh;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .card-daily-oz {
@@ -340,8 +353,4 @@ p {
   width: 80%;
   margin: 75px auto;
   height: 80%;
-}
-
-.step-trend-div {
-
 }

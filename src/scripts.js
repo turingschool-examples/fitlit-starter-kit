@@ -311,7 +311,7 @@ function addUserInfo(user) {
 }
 
 function addOzToday() {
-  $("#card-daily-oz-header").after(`
+  $("#card-daily-oz-div").html(`
   <section class="card-daily-oz-paragraph section-style">
     <h3>Ounces Consumed Today</h3>  
     <p>${hydroUser.getOzByDate(date)}</p>
@@ -321,7 +321,7 @@ function addOzToday() {
 function addWeeklyOzByDay() {
  let weeklyUserOz =  hydroUser.getDailyOzPerWeek(date);
   weeklyUserOz.forEach(day => {
-    $("#card-weekly-oz-header").after(`
+    $("#card-weekly-oz-div").append(`
     <section class="section-style">
       <h3>${day.date}</h3>
       <p>${day.numOunces}</p>
@@ -332,7 +332,7 @@ function addWeeklyOzByDay() {
 function addSleepDataforDay() {
   let hoursSleptOnDay = sleepUser.getSleepDataDay(date, 'hoursSlept');
   let sleepQualityOnDay = sleepUser.getSleepDataDay(date, 'sleepQuality');
-  $("#card-sleep-daily-data").after(`
+  $("#card-daily-sleep-div").append(`
     <section class="section-style">
       <h3>Hours Slept Last Night</h3>
       <p>${hoursSleptOnDay}</p>
@@ -346,7 +346,7 @@ function addSleepDataforDay() {
 function addWeeklySleepDataByDay() {
   let weeklyUserSleepHours = sleepUser.getDailySleepByWeek(date);
   weeklyUserSleepHours.forEach(day => {
-    $("#card-weekly-sleep-header").after(`
+    $("#card-weekly-sleep-div").append(`
       <section class="section-style">
         <h3>${day.date}</h3>
         <section class="sleep-weekly-data-section">
@@ -360,7 +360,7 @@ function addWeeklySleepDataByDay() {
 function addAllTimeSleepAvg() {
   let allTimeAvgHoursSlept = sleepUser.calcAvgSleepPerDay('hoursSlept');
   let allTimeAvgSleepQuality = sleepUser.calcAvgSleepPerDay('sleepQuality');
-  $("#card-sleep-all-time-avg").after(`
+  $("#card-alltime-sleep-div").append(`
     <section class="section-style">
       <h3>Total Average Hours Slept/Night</h3>
       <p>${allTimeAvgHoursSlept}</p>
@@ -373,7 +373,7 @@ function addAllTimeSleepAvg() {
 
 function addMilesForLatestDay() {
   let todaysMiles = activityUser.calcMilesByDay(date, user.strideLength);
-  $("#daily-activity-header").after(`
+  $("#card-daily-activity-div").append(`
   <section class="section-style">
   <h3>Miles Walked</h3>
   <p>${todaysMiles}</p>
@@ -382,7 +382,7 @@ function addMilesForLatestDay() {
 
 function addMinutesActiveByDay() {
   let todaysMinutes = activityUser.getMinutesActiveByDay(date);
-  $("#daily-activity-header").after(`
+  $("#card-daily-activity-div").append(`
   <section class="section-style">
   <h3>Minutes Active</h3>
   <p>${todaysMinutes}</p>
@@ -391,7 +391,7 @@ function addMinutesActiveByDay() {
 
 function addNumStepsForLatestDay() {
   let todaysSteps = activityUser.getNumStepsByDay(date);
-  $("#daily-activity-header").after(`
+  $("#card-daily-activity-div").append(`
   <section class="section-style">
   <h3>Today's Steps</h3>
   <p>${todaysSteps}</p>
@@ -400,7 +400,7 @@ function addNumStepsForLatestDay() {
 
 function addFlightsOfStairsForLatestDay() {
   let todaysFlights = activityUser.getFlightsClimbedByDay(date);
-  $("#daily-activity-header").after(`
+  $("#card-daily-activity-div").append(`
   <section class="section-style">
   <h3>Today's Flights Climbed</h3>
   <p>${todaysFlights}</p>
@@ -411,7 +411,7 @@ function addAllUsersActivityAverages() {
   let avgFlights = activityRepo.calcAvgStairsClimbedByDay(date);
   let avgSteps = activityRepo.calcAvgStepsTakenByDay(date);
   let avgMins = activityRepo.calcMinsActiveByDay(date);
-  $("#daily-activity-header").after(`
+  $("#card-daily-activity-div").append(`
   <section class="section-style">
     <h3>Average User Activity</h3>
     <section class="activity-all-users-data-section">
@@ -425,7 +425,7 @@ function addAllUsersActivityAverages() {
 function addWeeklyActivityDataByDay() {
   let weeklyUserActivityHours = activityUser.getDailyActivityByWeek(date);
   weeklyUserActivityHours.forEach(day => {
-    $("#weekly-activity-header").after(`
+    $("#card-weekly-activity-div").append(`
       <section class="section-style">
         <h3>${day.date}</h3>
         <section class="sleep-weekly-data-section">
@@ -450,8 +450,7 @@ function displayUserPage() {
     </header>
     <aside>
       <div class="aside-user-name">
-      <h2>Fit Lit</h2>
-      <h2 id="aside-user-name"></h2>
+      <h3 class="user-name" id="aside-user-name"></h3>
       </div>
       <div class="aside-user-info-container">
         <section class="aside-style">
@@ -470,25 +469,32 @@ function displayUserPage() {
     <main class="main-user-stats">
       <div class="main-user-stats-div">
         <article class="card-style card-daily card-daily-oz">
-          <h2 id="card-daily-oz-header">Have you been drinkin'?</h2>
+          <h2 id="card-daily-oz-header">Today's Hydration</h2>
+          <div class="scroll-div" id="card-daily-oz-div"></div>
         </article>
         <article class="card-style card-weekly card-weekly-oz">
           <h2 id="card-weekly-oz-header">Weekly Water Intake</h2>
+          <div class="scroll-div" id="card-weekly-oz-div"></div>
         </article>
         <article class="card-style card-daily card-daily-activity">
           <h2 id="daily-activity-header">Today's Activity</h2>
+          <div class="scroll-div" id="card-daily-activity-div"></div>
         </article>
         <article class="card-style card-weekly card-weekly-activity">
           <h2 id="weekly-activity-header">This Week's Activity</h2>
+          <div class="scroll-div" id="card-weekly-activity-div"></div>
         </article>
         <article class="card-style card-daily card-daily-sleep">
           <h2 id="card-sleep-daily-data">Previous Night's Sleep Stats</h2>
+          <div class="scroll-div" id="card-daily-sleep-div"></div>
         </article>
         <article class="card-style card-weekly card-weekly-sleep">
           <h2 id="card-weekly-sleep-header">Seven Days of Sleep</h2>
+          <div class="scroll-div" id="card-weekly-sleep-div"></div>
         </article>
         <article class="card-style card-metric card-all-time-sleep">
           <h2 id="card-sleep-all-time-avg">All Time Sleep Stats</h2>
+          <div class="scroll-div" id="card-alltime-sleep-div"></div>
         </article>
       </div>
     </main>

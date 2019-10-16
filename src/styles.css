@@ -7,75 +7,71 @@ padding: 0;
 }
 
 body {
-  font-family: 'Oswald', sans-serif;
   background-color: #1F1F1F;
+  font-family: 'Oswald', sans-serif;
 }
 
-p,
-h3 {
-  font-family: 'Work Sans', sans-serif;
-}
-
-h2 {
-  font-size: 7vw;
-  /* font-weight: lighter; */
-  letter-spacing: .1em;
-}
-
-p {
-  text-align: right;
-  word-break: keep-all;
-  width: 9vw;
-  letter-spacing: .2vw;
-  font-size: 1.2vw;
-  margin-right: 1vw;
-  font-weight: 600;
-  padding-top: 2vw;
-}
-
-h3 {
-  display: inline;
-  font-size: 3vw;
-  font-weight: 700;
-  letter-spacing: .2em;
-
-}
-
+/* HEADER */
 header {
   text-align: center;
   height: 9vw;
 }
 
 #profile-button {
-  display: inline;
-  float: right;
   background-image: url(../images/profile.png);
   background-position: center;
   background-size: 5.6vw;
-  height: 5.6vw;
-  width: 5.6vw;
-  margin-right: .5vw;
   border: none;
+  display: inline;
+  float: right;
+  height: 5.6vw;
+  margin-right: .5vw;
   margin-top: 1.6vw;
+  width: 5.6vw;
 }
 
 #user-info-dropdown {
-  position: relative;
   background-color: #1F1F1F;
   color: white;
-  text-align: center;
   margin-left: 70%;
   margin-top: -1.2%;
+  position: relative;
+  text-align: center;
   z-index: 100;
 }
 
 .dropdown-p {
+  font-size: 1.2vw;
+  font-weight: 300;
+  padding-bottom: 1vw;
+  padding-top: 0;
   text-align: center;
   width: 100%;
-  font-size: 1.2vw;
-  padding-top: 0;
-  padding-bottom: 1vw;
-  font-weight: 300;
+}
+
+/* TEXT ELEMENTS */
+h1 {
+  color: #fff;
+  display: inline;
+  font-size: 5.4vw;
+  letter-spacing: .2em;
+}
+
+h2 {
+  font-size: 7vw;
+  letter-spacing: .1em;
+}
+
+h3 {
+  display: inline;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 3vw;
+  font-weight: 700;
+  letter-spacing: .2em;
+}
+
+h4 {
+  font-size: 6vw;
 }
 
 h5 {
@@ -84,96 +80,68 @@ h5 {
   text-align: center;
 }
 
-h1 {
-  color: #fff;
-  display: inline;
-  font-size: 5.4vw;
-  letter-spacing: .2em;
+p {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.2vw;
+  font-weight: 600;
+  letter-spacing: .2vw;
+  margin-right: 1vw;
+  padding-top: 2vw;
+  text-align: right;
+  width: 9vw;
+  word-break: keep-all;
 }
 
+/* MAIN */
 main {
   display: grid;
   grid-template-areas:
-    'steps hydration'
-    'stairs sleep';
+  'steps hydration'
+  'stairs sleep';
   height: 100%;
 }
 
 .main-card {
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
   flex-direction: column;
   height: 20vw;
-
+  justify-content: center;
 }
 
 .main-card-top-row {
-  width: 100%;
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  /* margin-top: 1vw; */
+  width: 100%;
 }
 
 .main-card-bottom-row {
-  width: 100%;
   text-align: center;
-}
-
-.info-button {
-  display: inline;
-  height: 3.4vw;
-  width: 3.4vw;
-  margin-left: 1vw;
-  background-position: center;
-  background-size: 3.4vw;
-  border: none;
-}
-
-.friends-button {
-  display: inline;
-  height: 3.4vw;
-  width: 3.4vw;
-  margin-right: 1vw;
-  background-position: center;
-  background-size: 3.4vw;
-  border: none;
-}
-
-.calendar-button {
-  display: inline;
-  float: right;
-  height: 3.4vw;
-  width: 3.4vw;
-  margin-right: 1vw;
-  background-position: center;
-  background-size: 3.4vw;
-  border: none;
+  width: 100%;
 }
 
 #steps-card-container {
-  grid-area: steps;
   background-color: #F5634B;
+  grid-area: steps;
   margin: .5vw;
 }
 
 #hydration-card-container {
-  grid-area: hydration;
   background-color: #54C6BE;
+  grid-area: hydration;
   margin: .5vw;
 }
 
 #stairs-card-container {
-  grid-area: stairs;
   background-color: #8975B2;
+  grid-area: stairs;
   margin: .5vw;
-
 }
 
 #sleep-card-container {
-  grid-area: sleep;
   background-color: #FBD089;
+  grid-area: sleep;
   margin: .5vw;
 }
 
@@ -181,19 +149,6 @@ main {
   display: flex;
   justify-content: center;
   margin-bottom: 2vw;
-}
-
-h4 {
-  font-size: 6vw;
-}
-
-.go-back-button {
-  margin-left: 1vw;
-  background-position: center;
-  background-size: 3.4vw;
-  height: 3.4vw;
-  width: 3.4vw;
-  border: none;
 }
 
 .hydration-weekly-label {
@@ -209,6 +164,62 @@ h4 {
   display: flex;
   justify-content: center;
   margin-bottom: .2vw;
+}
+
+.trend-line {
+  font-size: 2vw;
+  text-align: center;
+  width: 20vw;
+}
+
+/* BUTTONS */
+.info-button {
+  background-position: center;
+  background-size: 3.4vw;
+  border: none;
+  display: inline;
+  height: 3.4vw;
+  margin-left: 1vw;
+  width: 3.4vw;
+}
+
+.friends-button {
+  background-position: center;
+  background-size: 3.4vw;
+  border: none;
+  display: inline;
+  height: 3.4vw;
+  margin-right: 1vw;
+  width: 3.4vw;
+}
+
+.calendar-button {
+  background-position: center;
+  background-size: 3.4vw;
+  border: none;
+  display: inline;
+  float: right;
+  height: 3.4vw;
+  margin-right: 1vw;
+  width: 3.4vw;
+}
+
+.trending-button {
+  background-position: center;
+  background-size: 3.4vw;
+  border: none;
+  height: 3.4vw;
+  margin-left: 1vw;
+  width: 3.4vw;
+}
+
+.go-back-button {
+  background-position: center;
+  background-size: 3.4vw;
+  border: none;
+  height: 3.4vw;
+  margin-left: 1vw;
+  width: 3.4vw;
 }
 
 .steps-go-back-button {
@@ -275,14 +286,6 @@ h4 {
   background-image: url(../images/sleep-calendar.png);
 }
 
-.trending-button {
-  margin-left: 1vw;
-  background-position: center;
-  background-size: 3.4vw;
-  height: 3.4vw;
-  width: 3.4vw;
-  border: none;
-}
 
 .steps-trending-button {
   background-image: url(../images/steps-trending.png);
@@ -290,12 +293,6 @@ h4 {
 
 .stairs-trending-button {
   background-image: url(../images/stairs-trending.png);
-}
-
-.trend-line {
-  width: 20vw;
-  font-size: 2vw;
-  text-align: center;
 }
 
 /* HIDE CARDS */

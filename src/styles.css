@@ -300,7 +300,15 @@ main {
   background-image: url(../images/stairs-trending.png);
 }
 
-/* HIDE CARDS */
+/* CHANGING CLASSES */
 .hide {
   display: none;
+}
+
+.green-text {
+  color: green;
+}
+
+.red-text {
+  color: red;
 }

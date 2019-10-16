@@ -251,6 +251,11 @@ li {
   justify-content: space-around;
 }
 
+.scroll-div {
+ height: 90%;
+ overflow: auto;
+}
+
 h2 {
   text-align: center;
   font-size: larger;
@@ -271,18 +276,18 @@ p {
 
 .card-daily{
   height: 38vh;
-  overflow: auto;
   margin: 0 5%;
+  overflow: hidden;
 }
 
 .card-weekly {
   height: 38vh;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .card-metric {
   height: 38vh;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .card-daily-oz {

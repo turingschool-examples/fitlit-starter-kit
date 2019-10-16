@@ -53,10 +53,10 @@ class Sleep {
     });
     for (let i = userIndex; i < (userIndex + 50 * 7); i++) {
       userList.push({ 'userID': sleepData[i].userID, 'weeklySleep': sleepData[i].sleepQuality});
-      }
+    }
     let userSleepData = function() {
       return userList.reduce((acc, user) => {
-        if(!acc[user.userID]) {
+        if (!acc[user.userID]) {
           acc[user.userID] = [];
         }
         acc[user.userID].push(user.weeklySleep);
@@ -64,7 +64,8 @@ class Sleep {
       }, [])
     };
     let averageQual = userSleepData().forEach(function(elem, i) {
-      return finalArr.push({'userID': i,  'data':     elem.reduce((acc, val) => acc + val, 0)
+      return finalArr.push(
+        {'userID': i, 'data': elem.reduce((acc, val) => acc + val, 0)
       });
     });
     finalArr.forEach(elem => elem.data = Math.round((elem.data / 7) * 100) / 100);

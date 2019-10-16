@@ -8,7 +8,7 @@ const userData = require('../test/sampleUsers.js');
 let user = new User(userData[1]);
 let activity;
 
-describe('Activity', function(){
+describe('Activity', function() {
   beforeEach(() => {
     activity = new Activity(user);
   });

@@ -84,7 +84,7 @@ const sampleHydration = [
     "date": "2019/06/21",
     "numOunces": 94
   }];
-
-  if (typeof module !== 'undefined') {
-    module.exports = sampleHydration;
-  }
+  
+if (typeof module !== 'undefined') {
+  module.exports = sampleHydration;
+}

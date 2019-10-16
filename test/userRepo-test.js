@@ -5,12 +5,12 @@ const userData = require('../test/sampleUsers');
 
 let userRepo;
 
-describe('userRepo', function(){
+describe('userRepo', function() {
   beforeEach(() => {
     userRepo = new UserRepo(userData);
   });
 
-  it('should be an instance of userRepo', function(){
+  it('should be an instance of userRepo', function() {
     expect(userRepo).to.be.an.instanceOf(UserRepo);
   });
 

@@ -7,6 +7,7 @@ let sleepRepo;
 let sleepUser;
 let activityRepo;
 let activityUser;
+let userFriends;
 
 $("#login-page-button").click(clickLoginButton);
 $("body").on("click", "#aside-step-challenge", addFriendsTotalStepsByWeek);
@@ -16,6 +17,10 @@ $("body").on("click", "#aside-step-challenge", function() {
 $("body").on("click", "#aside-step-trend", addStepTrend);
 $("body").on("click", "#aside-step-trend", function() {
   $("#step-trend-background").toggleClass("hidden");
+});
+$("body").on("click", "#aside-drink-challenge", addFriendsTotalDrankByWeek);
+$("body").on("click", "#aside-drink-challenge", function() {
+  $("#drink-challenge-background").toggleClass("hidden");
 });
 
 function clickLoginButton(event) {
@@ -86,22 +91,55 @@ function instantiateFriendsActivity() {
   });
 }
 
-//function that adds the name of the person with most total Steps
-// pass friends and friendsActivity into function as arguments
-// use map on friendsactivity
-// run calcTotalStepsByWeek on each and create new object with that as a property/value
-// sort through the outpud of map for total Steps
-// display index 0 name
-
-function getWinnerSteps(friends, friendsActivity) {
-  friendsActivity.map()
+function instantiateFriendsHydro() {
+  let friendsInfo = getFriendsInfo(user);
+  return friendsInfo.map((friendInfo) => {
+    let friendHydroInfo = hydroRepo.getUserHydroData(friendInfo.id);
+    let friendHydro = new HydroUser(friendHydroInfo);
+    return friendHydro;
+  });
 }
 
+function addFriendsTotalDrankByWeek() {
+  if ($("#friend-weekly-drink-section").length === 0) {
+    userFriends = instantiateFriendsUser();
+    let everyone = userFriends.concat(user);
+    let friendsHydro = instantiateFriendsHydro();
+    let allHydro = friendsHydro.concat(hydroUser);
+    $("#aside-drink-challenge").after(`
+      <div class="step-challenge-background hidden" id="drink-challenge-background">
+        <section class="section-style step-challenge-section" id="friend-weekly-drink-section">
+          <div class="users-total-steps-div" id="users-total-drinks-div">
+          </div>
+        </section
+      </div>`);
+    let friendsTotalDrinks = allHydro.map((friend, index) => {
+      let totalfriendDrinksByWeek = friend.calcTotalDrankByWeek('2019/09/22');
+      let friendFirstName = everyone[index].getFirstName();
+      $("#users-total-drinks-div").append(`
+            <div>
+              <h3>${friendFirstName}</h3>
+              <p>${totalfriendDrinksByWeek}</p>
+            </div>`);
+      return {
+        totalDrinks: totalfriendDrinksByWeek,
+        name: friendFirstName
+        };
+      });
+      friendsTotalDrinks.sort((a, b) => b.totalDrinks - a.totalDrinks);
+      $("#friend-weekly-drink-section").prepend(`
+            <div>
+              <h3>2019/09/15 - 2019/09/22</h3>
+              <h3>#1 Winner!!</h3>
+              <h3>${friendsTotalDrinks[0].name}</h3>
+            </div>`);
+  }
+}
 
 function addFriendsTotalStepsByWeek() {
   if ($("#friend-weekly-steps-section").length === 0) {
-    let friends = instantiateFriendsUser();
-    let everyone = friends.concat(user);
+    userFriends = instantiateFriendsUser();
+    let everyone = userFriends.concat(user);
     let friendsActivity = instantiateFriendsActivity();
     let allActivity = friendsActivity.concat(activityUser);
     $("#aside-step-challenge").after(`
@@ -125,9 +163,9 @@ function addFriendsTotalStepsByWeek() {
         };
       });
       friendsTotalSteps.sort((a, b) => b.totalSteps - a.totalSteps);
-      console.log()
       $("#friend-weekly-steps-section").prepend(`
             <div>
+              <h3>2019/09/15 - 2019/09/22</h3>
               <h3>#1 Winner!!</h3>
               <h3>${friendsTotalSteps[0].name}</h3>
             </div>`);
@@ -351,6 +389,7 @@ function displayUserPage() {
         </section>
         <section class="aside-style">
           <button class="aside-trend-button" id="aside-step-challenge">Step Challenge</button>
+          <button class="aside-trend-button" id="aside-drink-challenge">Drink Challenge</button>
           <button class="aside-trend-button" id="aside-step-trend">Step Trend</button>
         </section>
       </div>

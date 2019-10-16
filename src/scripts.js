@@ -10,6 +10,8 @@ const header = document.querySelector('header');
 const widgets = document.querySelector('.daily-widget-container');
 const stepComparison = document.querySelector('.average-step-comparison')
 const todaysDate = grabDate();
+const sleepQualContainer = document.querySelector('.sleep-qual-container')
+const hoursSleptContainer = document.querySelector('.hours-slept-container')
 // const stairsComparison = document.querySelector('.compare-daily-stairs');
 
 
@@ -77,6 +79,17 @@ stepComparison.insertAdjacentHTML('afterbegin', `<div class="user-avg-steps">
         <p>Overall Average Step Goal</p>
         <p>${findOverallStepGoals()}</p>
         </div>`)
+
+
+sleepQualContainer.insertAdjacentHTML('afterbegin', ` <div class="avg-sleep-qual">
+<h3>Average Sleep Quality</h3>
+<p>${sleep.findAvgSleepQuality(randomUser.id)}</p>
+</div>`)
+
+hoursSleptContainer.insertAdjacentHTML('afterbegin', `<div class="avg-hours-slept">
+<h3>Average Hours Slept</h3>
+  <p>${sleep.findAvgHoursSlept(randomUser.id)}</p>
+</div>`)
 
 
 function grabDate() {
@@ -162,7 +175,7 @@ let compareSteps = new Chart(compareDailySteps, {
   data: {
     labels: ['Your Steps', 'Group Steps'],
     datasets: [{
-      label: 'Compare Your Steps',
+      label: 'Compare Today\'s Steps',
       backgroundColor: ['pink', 'purple'],
       borderColor: 'pink',
       data: [getUsersDailyMetric(randomUser.id, todaysDate, 'numSteps'), getAvgGroupMetrics(todaysDate, 'numSteps')]
@@ -186,7 +199,7 @@ let stairsComparisonChart = new Chart(compareDailyStairs, {
   data: {
     labels: ['Your Stairs', 'Group Stairs'],
     datasets: [{
-      label: 'Compare Flights Of Stairs Climbed',
+      label: 'Compare Today\'s Stairs Climbed',
       backgroundColor: ['lime', 'blue'],
       borderColor: 'pink',
       data: [getUsersDailyMetric(randomUser.id, todaysDate, 'flightsOfStairs'), getAvgGroupMetrics(todaysDate, 'flightsOfStairs')]
@@ -209,7 +222,7 @@ let activeMinutesComparisonChart = new Chart(compareDailyMinutes, {
   data: {
     labels: ['Your Min Active', 'Group Min Active'],
     datasets: [{
-      label: 'Compare Minutes Active',
+      label: 'Compare Today\'s Minutes Active',
       backgroundColor: ['orange', 'gray'],
       borderColor: 'pink',
       data: [getUsersDailyMetric(randomUser.id, todaysDate, 'minutesActive'), getAvgGroupMetrics(todaysDate, 'minutesActive')]
@@ -256,10 +269,79 @@ let weeklySleepInfo = new Chart(displayWeeklySleepInfo, {
   data: {
     labels: sleep.findAnyWeek(randomUser.id, todaysDate).map( day => day.date),
     datasets: [{
-      label: 'Sleep Tracker',
+      label: 'Track Your Sleep',
       backgroundColor: ['green', 'rebeccaPurple'],
       borderColor: 'rebeccaPurple',
       data: sleep.findHoursSleptForWeek(randomUser.id, todaysDate).map( day => day.hoursSlept)
+    }]
+  },
+  options: {
+    scales: {
+    yAxes: [{
+      ticks: {
+        beginAtZero: true
+      }
+    }]
+  }
+}}
+);
+
+const displayWeeklyStepTracker = document.getElementById('weekly-step-tracker').getContext('2d');
+let weeklyStepInfo= new Chart(displayWeeklyStepTracker, {
+  type: 'line',
+  data: {
+    labels: activity.findAWeek(randomUser.id, todaysDate).map( day => day.date),
+    datasets: [{
+      label: 'Track Your Steps',
+      backgroundColor: ['green', 'rebeccaPurple'],
+      borderColor: 'rebeccaPurple',
+      data: activity.findAWeek(randomUser.id, todaysDate).map( day => day.numSteps)
+    }]
+  },
+  options: {
+    scales: {
+    yAxes: [{
+      ticks: {
+        beginAtZero: true
+      }
+    }]
+  }
+}}
+);
+
+const displayWeeklyStairTracker = document.getElementById('weekly-stairs-tracker').getContext('2d');
+let weeklyStairInfo = new Chart(displayWeeklyStairTracker, {
+  type: 'line',
+  data: {
+    labels: activity.findAWeek(randomUser.id, todaysDate).map( day => day.date),
+    datasets: [{
+      label: 'Track Flights Of Stairs Climbed',
+      backgroundColor: ['green', 'rebeccaPurple'],
+      borderColor: 'rebeccaPurple',
+      data: activity.findAWeek(randomUser.id, todaysDate).map( day => day.flightsOfStairs)
+    }]
+  },
+  options: {
+    scales: {
+    yAxes: [{
+      ticks: {
+        beginAtZero: true
+      }
+    }]
+  }
+}}
+);
+
+const displayWeeklyMinutesActive = document.getElementById('weekly-minutes-tracker').getContext('2d');
+let weeklyMinActive = new Chart(displayWeeklyMinutesActive, {
+  type: 'line',
+  data: {
+    labels: activity.findAWeek(randomUser.id, todaysDate).map( day => day.date),
+    datasets: [{
+      label: 'Track Minutes Active',
+      backgroundColor: ['green', 'rebeccaPurple'],
+      borderColor: 'rebeccaPurple',
+      data: activity.findAWeek(randomUser.id, todaysDate).map( day => day.minutesActive)
     }]
   },
   options: {

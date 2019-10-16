@@ -261,3 +261,11 @@ h1 {
   color: green;
 }
 
+.avg-sleep-qual {
+  color: #fff;
+}
+
+.avg-sleep-qual > h3 {
+  color: #8a79f5;
+}
+

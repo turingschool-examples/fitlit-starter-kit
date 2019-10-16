@@ -28,7 +28,6 @@ $(document).ready(() => {
     const friend2WeekData = activity.friend2StepCountForWeek()
     const userStepCountDataForWeek = activity.userStepCountForWeek()
     const highestWeekStepsDisplay = activity.findHighestStepCount()
-    activity.increasingStepsFor3OrMoreDays()
 
     $('.date').text(currentDate);
     $('.welcome-user').text(firstName[0]);

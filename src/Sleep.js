@@ -61,12 +61,12 @@ class Sleep {
       case 'hours':
         return Math.round(dataset.reduce((sum, data) => {
           const num = data.hoursSlept / dataset.length;
-          return sum+=num;
+          return sum += num;
         }, 0) * 10) / 10;
       case 'quality':
         return Math.round(dataset.reduce((sum, data) => {
           const num = data.sleepQuality / dataset.length;
-          return sum+=num;
+          return sum += num;
         }, 0) * 10) / 10;
     }
   }

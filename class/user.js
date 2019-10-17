@@ -9,15 +9,11 @@ class User {
     this.friends = userData.friends;
   }
 
-findUsersFirstName() {
-	return this.name.split(' ')[0];
-}
-
-findFriendById() {
-  console.log(this.friends);
+  findUsersFirstName() {
+	  return this.name.split(' ')[0];
   }
+
 }
 
-if (typeof module !== 'undefined') {
-  module.exports = User;
-}
+module.exports = User;
+

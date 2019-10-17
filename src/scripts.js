@@ -28,6 +28,9 @@ $(document).ready(() => {
     const friend2WeekData = activity.friend2StepCountForWeek()
     const userStepCountDataForWeek = activity.userStepCountForWeek()
     const highestWeekStepsDisplay = activity.findHighestStepCount()
+    activity.findDateClimbedOver50Stairs()
+    activity.increasedSteps3OrMoreDays()
+
 
     $('.date').text(currentDate);
     $('.welcome-user').text(firstName[0]);
@@ -52,6 +55,10 @@ $(document).ready(() => {
     $('.activity6').text(`The average number of flights of stairs climbed for other users on the same date: ${activity.calculateAvgStairsClimbedOnSpecificDateAllUsers(currentDate)}`);
     $('.activity7').text(`Your total distance walked based on your stepcount for the latest day: ${activity.calculateMilesUserWalkedOnSpecificDate(currentDate)} miles`);
     $('.activity8').text(`Over the last week, you have averaged ${activity.calculateAvgMinutesActiveForUserOnSpecificWeek()} minutes of activity, ${activity.calculateAvgFlightsOfStairsClimbedForUserOnSpecificWeek()} flights of stairs, and ${activity.calculateAvgStepsTakenByUserOnSpecificWeek()} steps.`);
+    $('.activity9').text(activity.findDateClimbedOver50Stairs());
+    $('.activity10').text(`Here are the dates where you had increasing steps for 3 or more days ${activity.increasedSteps3OrMoreDays()}`);
+
+
     $('.friend1').text(`${friend1Name} took ${friend1WeekData} steps this week!`)
     $('.friend2').text(`${friend2Name} took ${friend2WeekData} steps this week!`)
     $(".currentUserActivity").text(`You took ${userStepCountDataForWeek} steps this week!`)

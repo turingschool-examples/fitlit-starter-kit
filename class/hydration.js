@@ -21,27 +21,23 @@ class Hydration {
   }
 
   findWeeklyHydration(id) {
-  	let findUserData = hydrationData.filter(element => element.userID === id);
+  	let findUserData = this.hydrationData.filter(element => element.userID === id);
   	let weeklyData = findUserData.slice((findUserData.length - 7), findUserData.length)
-  	var total =  weeklyData.reduce( (acc, val) => {
+  	return weeklyData.reduce( (acc, val) => {
         acc += val.numOunces;
+        console.log(acc)
       return acc;
-    }, 0) / 7;
-    this.weeklyAverageHydo = Math.round(total);
-    return this.weeklyAverageHydo;
+    }, 0);
  }
-
 
  	printDailyHydration(id) {
     return this.findWeeklyHydration(id).map(day => {
-      return day
+      return day;
     })
   }
 
 }
 
-if (typeof module !== 'undefined') {
   module.exports = Hydration;
-}
 
-// npm test test/hydration-test.js
+

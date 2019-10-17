@@ -60,7 +60,7 @@ widgets.insertAdjacentHTML('afterbegin', `<div class="hydration--widget">
         <p class="widget--informer">Your Sleep Quality: ${sleep.findSleepQuality(randomUser.id, todaysDate)}</p>
       </div>
       <div class="activity--widget">
-        <h3 class="widget-activity-header">Steps</h3>
+        <h3 class="widget-activity-header">Daily Activity Tracker</h3>
         <p class="widget--informer">Your steps</p>
         <p class="widget--variable activity--variable">${activity.findSingleDayInfo(randomUser.id, todaysDate).numSteps}</p>
         <img class="step-icon" src="../images/activity-icon.svg">
@@ -85,12 +85,12 @@ stepComparison.insertAdjacentHTML('afterbegin', `<div class="user-avg-steps">
 
 sleepQualContainer.insertAdjacentHTML('afterbegin', ` <div class="avg-sleep-qual">
 <h3>Average Sleep Quality</h3>
-<p>${sleep.findAvgSleepQuality(randomUser.id)}</p>
+  <p class="sleep-qual">${sleep.findAvgSleepQuality(randomUser.id)}</p>
 </div>`)
 
 hoursSleptContainer.insertAdjacentHTML('afterbegin', `<div class="avg-hours-slept">
 <h3>Average Hours Slept</h3>
-  <p>${sleep.findAvgHoursSlept(randomUser.id)}</p>
+  <p class="hours-slept">${sleep.findAvgHoursSlept(randomUser.id)}</p>
 </div>`)
 
 
@@ -136,7 +136,8 @@ var chart = new Chart(ctx, {
   options: {
     legend: {
       labels: {
-        fontColor: '#FFF'
+        fontColor: '#FFF',
+        fontSize: 20
       }
     },
     scales: {
@@ -170,7 +171,8 @@ var sleepChart = new Chart(sleepInfo, {
   options: {
     legend: {
       labels: {
-        fontColor: '#FFF'
+        fontColor: '#FFF',
+        fontSize: 20
       }
     },
     scales: {
@@ -225,6 +227,7 @@ let compareSteps = new Chart(compareDailySteps, {
     legend: {
       labels: {
         fontColor: '#FFF',
+        fontSize: 20
       }
     },
     scales: {
@@ -254,7 +257,7 @@ let stairsComparisonChart = new Chart(compareDailyStairs, {
     datasets: [{
       label: 'Compare Today\'s Stairs Climbed',
       backgroundColor: ['#49C468', '#FFF'],
-      borderColor: 'pink',
+      borderColor: '#49C468',
       data: [getUsersDailyMetric(randomUser.id, todaysDate, 'flightsOfStairs'), getAvgGroupMetrics(todaysDate, 'flightsOfStairs')]
     }]
   },
@@ -262,6 +265,7 @@ let stairsComparisonChart = new Chart(compareDailyStairs, {
     legend: {
       labels: {
         fontColor: '#FFF',
+        fontSize: 20
       }
     },
     scales: {
@@ -298,6 +302,7 @@ let activeMinutesComparisonChart = new Chart(compareDailyMinutes, {
     legend: {
       labels: {
         fontColor: '#FFF',
+        fontSize: 20
       }
     },
     scales: {
@@ -335,6 +340,7 @@ let weeklyWaterIntake = new Chart(displayWeeklyWaterIntake, {
     legend: {
       labels: {
         fontColor: '#FFF',
+        fontSize: 20
       }
     },
     scales: {
@@ -371,6 +377,7 @@ let weeklySleepInfo = new Chart(displayWeeklySleepInfo, {
     legend: {
       labels: {
         fontColor: '#FFF',
+        fontSize: 20
       }
     },
     scales: {
@@ -398,18 +405,30 @@ let weeklyStepInfo = new Chart(displayWeeklyStepTracker, {
     labels: activity.findAWeek(randomUser.id, todaysDate).map(day => day.date),
     datasets: [{
       label: 'Track Your Steps',
-      backgroundColor: ['green', 'rebeccaPurple'],
-      borderColor: 'rebeccaPurple',
+      backgroundColor: '#000',
+      borderColor: '#49C468',
       data: activity.findAWeek(randomUser.id, todaysDate).map(day => day.numSteps)
     }]
   },
   options: {
-    responsive: true,
+    legend: {
+      labels: {
+        fontColor: '#FFF',
+        fontSize: 20
+      }
+    },
     scales: {
       yAxes: [{
         ticks: {
-          beginAtZero: true
-        }
+          beginAtZero: true,
+          fontColor: '#FFF',
+        },
+      }],
+      xAxes: [{
+        barPercentage: 0.4,
+        ticks: {
+          fontColor: '#FFF'
+        },
       }]
     }
   }
@@ -418,23 +437,35 @@ let weeklyStepInfo = new Chart(displayWeeklyStepTracker, {
 
 const displayWeeklyStairTracker = document.getElementById('weekly-stairs-tracker').getContext('2d');
 let weeklyStairInfo = new Chart(displayWeeklyStairTracker, {
-  type: 'line',
+  type: 'bar',
   data: {
     labels: activity.findAWeek(randomUser.id, todaysDate).map(day => day.date),
     datasets: [{
       label: 'Track Flights Of Stairs Climbed',
-      backgroundColor: ['green', 'rebeccaPurple'],
-      borderColor: 'rebeccaPurple',
+      backgroundColor: '#49C468',
+      borderColor: '#49C468',
       data: activity.findAWeek(randomUser.id, todaysDate).map(day => day.flightsOfStairs)
     }]
   },
   options: {
-    responsive: true,
+    legend: {
+      labels: {
+        fontColor: '#FFF',
+        fontSize: 20
+      }
+    },
     scales: {
       yAxes: [{
         ticks: {
-          beginAtZero: true
-        }
+          beginAtZero: true,
+          fontColor: '#FFF',
+        },
+      }],
+      xAxes: [{
+        barPercentage: 0.4,
+        ticks: {
+          fontColor: '#FFF'
+        },
       }]
     }
   }
@@ -448,21 +479,32 @@ let weeklyMinActive = new Chart(displayWeeklyMinutesActive, {
     labels: activity.findAWeek(randomUser.id, todaysDate).map(day => day.date),
     datasets: [{
       label: 'Track Minutes Active',
-      backgroundColor: ['green', 'rebeccaPurple'],
-      borderColor: 'rebeccaPurple',
+      backgroundColor: '#000',
+      borderColor: '#49C468',
       data: activity.findAWeek(randomUser.id, todaysDate).map(day => day.minutesActive)
     }]
   },
   options: {
-    responsive: true,
-    // maintainAspectRatio: false,
+    legend: {
+      labels: {
+        fontColor: '#FFF',
+        fontSize: 20
+      }
+    },
     scales: {
       yAxes: [{
         ticks: {
-          beginAtZero: true
-        }
+          beginAtZero: true,
+          fontColor: '#FFF',
+        },
+      }],
+      xAxes: [{
+        barPercentage: 0.4,
+        ticks: {
+          fontColor: '#FFF'
+        },
       }]
     }
   }
-}
+} 
 );

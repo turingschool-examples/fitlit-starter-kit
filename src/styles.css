@@ -1,5 +1,4 @@
 * {
-  /* color: #000; */
   font-family: 'Nanum Gothic', sans-serif;
   margin: 0;
   padding: 0;
@@ -22,22 +21,23 @@ header {
 }
 
 h1 {
-  /* background: linear-gradient(45deg, #CB79DD, #2eafff); */
   text-align: center;
-  font-size: 3em;
-  font-weight: 700;
+  font-size: 3.3em;
+  font-weight: 800;
   width: 100%;
-  z-index: 1;
+  
 }
 
 .name--display{
   text-align: left;
   padding: 15px;
+  margin-left: 115px;
+  margin-bottom: -15px;
 }
 
 .contact-container {
   display: flex;
-  justify-content: baseline;
+  align-items: center;
 }
 
 .contact--info {
@@ -46,6 +46,7 @@ h1 {
   padding-left: 10px;
   font-size: 1em;
   color: #000;
+  margin-left: 20px;
 }
 
 .info--wrapper {
@@ -85,7 +86,6 @@ h1 {
 }
 
 .card--container {
-  border: 1px solid #000;
   width: 90%;
   display: flex;
   flex-direction: row;
@@ -98,11 +98,11 @@ h1 {
 }
 
 .card {
-  /* background-color: rgb(138, 146, 150); */
   background-color: #000;
   width: 45%;
   height: 30%;
   border-radius: 20px;
+  margin-bottom: 25px;
 }
 
 .hydration--data-chart {
@@ -112,8 +112,6 @@ h1 {
   background-size: auto;
   border: solid 4px #79c6f5;
   padding: 5px;
-  /* border-radius: 20px; */
-  /* filter: brightness(60%); */
 }
 
 .daily-widget-container {
@@ -123,7 +121,6 @@ h1 {
   width: 80%;
   justify-content: space-between;
   align-self: center;
-  border: 1px solid #000;
   margin-top: 1%;
 }
 
@@ -135,13 +132,13 @@ h1 {
 .hydration--widget {
   width: 30%;
   height: 100%;
-  /* padding: 1% 2% 4% 2%; */
   border: solid 4px #79c6f5;
   border-radius: 20px;
   background-color: #000;
   text-align: center;
   font-size: 1.1em;
   color: #79c6f5;
+  padding-top: 1%;
 }
 
 .hydration--variable {
@@ -167,13 +164,13 @@ h1 {
 .sleep--widget {
   width: 30%;
   height: 100%;
-  /* padding: 1% 2% 4% 2%; */
   border: solid 4px #8a79f5;
   border-radius: 20px;
   background-color: #000;
   text-align: center;
   font-size: 100%;
   color: #8a79f5;
+  padding-top: 1%;
 }
 .bed-icon {
   width: 95px;
@@ -184,23 +181,21 @@ h1 {
   height: 16%;
   width: 40%;
   padding: 5px;
-  /* margin: 20px; */
   background-color: #000;
   background-size: auto;
-  /* border-radius: 20px; */
   border: solid 4px #8A79f5;
 }
 
 .activity--widget {
   width: 30%;
   height: 100%;
-  /* padding: 1% 2% 4% 2%; */
-  border: solid 4px rgb(73, 196, 104);
+  border: solid 4px #49C468;
   border-radius: 20px;
   background-color: #000;
   text-align: center;
   font-size: 100%;
-  color: rgb(73, 196, 104);
+  color: #49C468;
+  padding-top: 1%;
 }
 
 .step-icon {
@@ -212,7 +207,7 @@ h1 {
 .activity-details {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   font-size: 100%;
  }
 
@@ -224,7 +219,7 @@ h1 {
 }
 
 .user-icon {
-  width: 90%;
+  width: 120%;
   height: 90%;
   border-radius: 100px;
 }
@@ -233,7 +228,7 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 30%;
+  width: 80%;
   height: 10%;
   padding: 1% 2% 1% 2%;
   margin: 2%;
@@ -267,7 +262,7 @@ h1 {
   width: 0%;
   height: 90%;
   align-self: baseline;
-  margin-top: 4.3%;
+  margin-top: 1%;
 }
 
 #compare-daily-activity {
@@ -286,7 +281,7 @@ h1 {
 .compare-daily-stairs,
 .compare-daily-steps {
   height: 12%;
-  width: 36%;
+  width: 30%;
   border: 4px solid #49C468;
 }
 
@@ -304,12 +299,45 @@ h1 {
   width: 40%;
 }
 
-.avg-sleep-qual {
-  color: #fff;
+.hours-slept-container,
+.sleep-qual-container {
+  width: 20%;
+  height: 15%;
+  background-color: #000;
+  border-radius: 20px;
+  border: 4px solid #8A79F5;
+  text-align: center;
 }
 
+.hours-slept {
+  margin-top: 20%;
+  color: #fff;
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+.sleep-qual {
+  color: #fff;
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-top: 20%;
+}
+
+.avg-hours-slept,
 .avg-sleep-qual > h3 {
+  margin-top: 10%;
+  padding: 2%;
   color: #8a79f5;
+}
+
+
+.weekly-minutes-tracker,
+.weekly-stairs-tracker,
+.weekly-step-tracker {
+  padding: 5px;
+  border: 4px solid #49C468;
+  height: 16%;
+  width: 40%;
 }
 
 

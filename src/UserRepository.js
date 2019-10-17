@@ -46,17 +46,17 @@ class UserRepository {
 
   calculateAverageStepGoal() {
     return this.usersData.reduce((sum, data) => {
-      sum+=data.dailyStepGoal;
+      sum += data.dailyStepGoal;
       return sum;
     }, 0) / this.usersData.length;
   }
 
   getAllUserAverageQualtiy() {
     const average = this.sleepUsersData.reduce((sum, data) => {
-      sum+=data.sleepQuality;
+      sum += data.sleepQuality;
       return sum;
     }, 0) / this.sleepUsersData.length;
-    return Math.round((average)*10)/10;
+    return Math.round((average) * 10) / 10;
   }
 
   findGoodSleepWeekUsers(date) {
@@ -76,7 +76,7 @@ class UserRepository {
     return this.sleepUsersData.reduce((sleepQualities, data) => {
       if (week.includes(data.date)) {
         const quality = data.sleepQuality / 7;
-        (!sleepQualities[data.userID -1]) ? sleepQualities[data.userID-1] = quality : sleepQualities[data.userID-1]+=quality;
+        (!sleepQualities[data.userID - 1]) ? sleepQualities[data.userID - 1] = quality : sleepQualities[data.userID - 1]+=quality;
       }
       return sleepQualities;
     }, []);
@@ -85,7 +85,7 @@ class UserRepository {
   findSleepingBeauty(date) {
     let userSlept = this.sleepUsersData.filter((data) => data.date === date);
     userSlept.sort((a, b) => (a.hoursSlept > b.hoursSlept) ? 1 : -1);
-    const biggestSleepNumber = userSlept[userSlept.length -1].hoursSlept;
+    const biggestSleepNumber = userSlept[userSlept.length - 1].hoursSlept;
     const sleepingBeauties = userSlept.filter(beauty => beauty.hoursSlept === biggestSleepNumber);
     return sleepingBeauties;
   }

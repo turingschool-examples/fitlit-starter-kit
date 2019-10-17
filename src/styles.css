@@ -27,13 +27,22 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, .3)), url("../images/login-background.jpg");
-  background-size: cover;
+  /* background: linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, .3)), url("../images/login-background-screenshot.png"); */
+  /* background-size: cover; */
+}
+
+.login-background {
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0.5) blur(8px);
 }
 
 .login-page-header {
   font-size: 250%;
   margin: 75px;
+  color: #FFFFFF;
 }
 
 .login-page-form {
@@ -48,6 +57,7 @@ body {
   font-size: 125%;
   width: 70%;
   text-align: center;
+  color: #FFFFFF;
 }
 
 .login-page-input {
@@ -56,9 +66,18 @@ body {
   width: 40%;
 }
 
+.login-form-and-header-container{
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10%;
+}
+
 .login-page-button {
-  width: 20%;
-  background-color: #A0A1A8;
+  width: 40%;
+  background-color: #F1C40F;
   cursor: pointer;
   font-size: 125%;
   padding: 5px;
@@ -67,13 +86,13 @@ body {
 }
 
 .login-page-button:hover {
-  background-color: #777981;
-  width: 30%;
+  background-color: #D4AC0D;
+  width: 42%;
 }
 
 .login-page-button:active {
-  background-color: lightgrey;
-  box-shadow: 0 3px black;
+  background-color: #B7950B;
+  box-shadow: 0 3px #9A7D0A;
   transform: translateY(3px);
 }
 

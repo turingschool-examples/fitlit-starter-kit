@@ -136,12 +136,15 @@ function logout() {
   $("#body-content-containe").remove();
   $("body").html(`
     <main class="main-login-page" id="main-login-page">
-      <h1 class="login-page-header">Ready to get FitLit?!</h1>
-      <form class="login-page-form" id="login-page-form">
-        <p class="login-paragraph">Login: <input type="text" placeholder="Enter email here:" class="login-page-input" id="login-page-input"></p>
-        <p class="login-paragraph">Date: <input class="login-page-input" type="text" id="datepicker" placeholder="Choose a date:"></p>
-        <input type="button" value="Log In" class="login-page-button" id="login-page-button">
-      </form>
+      <img class="login-background" alt="Blurred screenshot of the application" src="../images/login-background-screenshot.png">
+      <div class="login-form-and-header-container">
+        <h1 class="login-page-header">Ready to get FitLit?!</h1>
+        <form class="login-page-form" id="login-page-form">
+          <p class="login-paragraph">Login: <input type="text" placeholder="Enter email here:" class="login-page-input" id="login-page-input"></p>
+          <p class="login-paragraph">Date: <input class="login-page-input" type="text" id="datepicker" placeholder="Choose a date:"></p>
+          <input type="button" value="Log In" class="login-page-button" id="login-page-button">
+        </form>
+      </div>
     </main>
   `);
 }

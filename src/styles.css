@@ -22,7 +22,7 @@ header {
 }
 
 h1 {
-  background: linear-gradient(45deg, #CB79DD, #2eafff);
+  /* background: linear-gradient(45deg, #CB79DD, #2eafff); */
   text-align: center;
   font-size: 3em;
   font-weight: 700;
@@ -73,6 +73,7 @@ h1 {
   background-repeat: no-repeat;
   min-height: 100%;
   background-size: cover;
+  overflow: auto;
 }
 
 .under-header--main {
@@ -84,15 +85,16 @@ h1 {
 }
 
 .card--container {
-  width: 80%;
-  height: 100%;
+  border: 1px solid #000;
+  width: 90%;
   display: flex;
   flex-direction: row;
   flex-flow: row wrap;
-  /* flex-direction: column; */
   align-items: center;
-  /* align-self: center; */
-  justify-content: space-around;
+  align-self: center;
+  margin-top: 3%;
+  justify-content: space-evenly;
+  overflow: auto;
 }
 
 .card {
@@ -104,12 +106,12 @@ h1 {
 }
 
 .hydration--data-chart {
-  height: 35%;
+  height: 16%;
   width: 40%;
-  margin: 20px;
   background-color: #000;
   background-size: auto;
-  border: solid 4px rgb(73, 196, 104);
+  border: solid 4px #79c6f5;
+  padding: 5px;
   /* border-radius: 20px; */
   /* filter: brightness(60%); */
 }
@@ -117,10 +119,12 @@ h1 {
 .daily-widget-container {
   display: flex;
   flex-direction: row;
-  height: 18%;
+  height: 10%;
   width: 80%;
-  justify-content: center;
+  justify-content: space-between;
   align-self: center;
+  border: 1px solid #000;
+  margin-top: 1%;
 }
 
 .widget-card-container {
@@ -131,8 +135,7 @@ h1 {
 .hydration--widget {
   width: 30%;
   height: 100%;
-  padding: 1% 2% 4% 2%;
-  margin: 2%;
+  /* padding: 1% 2% 4% 2%; */
   border: solid 4px #79c6f5;
   border-radius: 20px;
   background-color: #000;
@@ -164,10 +167,9 @@ h1 {
 .sleep--widget {
   width: 30%;
   height: 100%;
-  padding: 1% 2% 4% 2%;
-  margin: 2%;
+  /* padding: 1% 2% 4% 2%; */
   border: solid 4px #8a79f5;
-  /* border-radius: 20px; */
+  border-radius: 20px;
   background-color: #000;
   text-align: center;
   font-size: 100%;
@@ -179,22 +181,22 @@ h1 {
 }
 
 .sleep--data-chart {
-  height: 40%;
+  height: 16%;
   width: 40%;
-  margin: 20px;
+  padding: 5px;
+  /* margin: 20px; */
   background-color: #000;
   background-size: auto;
   /* border-radius: 20px; */
-  border: solid 4px #79c6f5;
+  border: solid 4px #8A79f5;
 }
 
 .activity--widget {
   width: 30%;
   height: 100%;
-  padding: 1% 2% 4% 2%;
-  margin: 2%;
+  /* padding: 1% 2% 4% 2%; */
   border: solid 4px rgb(73, 196, 104);
-  /* border-radius: 20px; */
+  border-radius: 20px;
   background-color: #000;
   text-align: center;
   font-size: 100%;
@@ -232,24 +234,36 @@ h1 {
   flex-direction: row;
   justify-content: space-around;
   width: 30%;
-  height: 30%;
+  height: 10%;
   padding: 1% 2% 1% 2%;
   margin: 2%;
-  border: solid 4px pink;
-  /* border-radius: 20px; */
+  border: solid 4px #49C468;
   background-color: #000;
   text-align: center;
   font-size: 100%;
-  color: pink;
+  color: #49C468;
 }
+
 
 .user-avg-steps, 
 .world-avg-steps {
- width: 50%
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.user-avg-steps > p,
+.world-avg-steps > p {
+  font-size: 130%;
+}
+
+#comparison-number {
+  font-size: 170%;
 }
 
 .line-divider {
-  border: solid 1px pink;
+  border: solid 1px #49C468;
   width: 0%;
   height: 90%;
   align-self: baseline;
@@ -261,6 +275,35 @@ h1 {
   color: green;
 }
 
+#compare-daily-minutes,
+#compare-daily-stairs,
+#compare-daily-steps {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.compare-daily-minutes,
+.compare-daily-stairs,
+.compare-daily-steps {
+  height: 12%;
+  width: 36%;
+  border: 4px solid #49C468;
+}
+
+.weekly-water-intake {
+  padding: 5px;
+  border: 4px solid #79c6f5;
+  height: 16%;
+  width: 40%;
+}
+
+.weekly-sleep-info {
+  padding: 5px;
+  border: 4px solid #8A79F5;
+  height: 16%;
+  width: 40%;
+}
+
 .avg-sleep-qual {
   color: #fff;
 }
@@ -268,4 +311,5 @@ h1 {
 .avg-sleep-qual > h3 {
   color: #8a79f5;
 }
+
 

@@ -13,6 +13,11 @@ findUsersFirstName() {
 	return this.name.split(' ')[0];
 }
 
+findFriendById() {
+  console.log(this.friends);
+  }
 }
 
-module.exports = User;
+if (typeof module !== 'undefined') {
+  module.exports = User;
+}

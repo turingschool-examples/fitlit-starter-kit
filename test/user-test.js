@@ -24,6 +24,7 @@ describe('User', function() {
 
   it('should represents a single User', function() {
     expect(userData.name).to.equal('Luisa Hane');
+
   });
 
   it('should have a parameter to take in a userData object', function() {
@@ -59,7 +60,8 @@ describe('User', function() {
   });
 
   it('should return users name only', function() {
-    expect(userData.findUsersFirstName()).to.equal('Luisa') 
+    userData.findFriendById()
+    expect(userData.findUsersFirstName()).to.equal('Luisa')
   })
 
 });

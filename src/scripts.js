@@ -1,32 +1,30 @@
 $( document ).ready( () => {
 
-  var randomFitLitUser = '';
-  function getRandomId(min = 1, max = 50 ) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    randomFitLitUser = (Math.floor(Math.random() * max - min + 1) + min);
-    console.log(randomFitLitUser)
-  }
-  getRandomId(1, 50);
-
-$('.main__user').html(`${userData[randomFitLitUser].name} <br>
-    ${userData[randomFitLitUser].email} <br>
-    Friends: <a href='#' >${userData[randomFitLitUser].friends}</a>`);
-$('.main__sleep').html(`${sleepData[randomFitLitUser].date} <br> Hours Slept: ${sleepData[randomFitLitUser].hoursSlept} hours<br>
+$('.main__user').html(`<h2>${userDataClass.name} </h2>
+    Address: ${userDataClass.address} <br>
+    Email: ${userDataClass.email} <br>
+    Daily Step Goal: ${userDataClass.dailyStepGoal} steps <br>
+    Stride Length: ${userDataClass.strideLength} <br>
+    Friends: ${userDataClass.friends} `);
+$('.main__sleep').html(`<p>Sleep:</p>${sleepData[randomFitLitUser].date} <br> Hours Slept: ${sleepData[randomFitLitUser].hoursSlept} hours<br>
     Sleep Quality: ${sleepData[randomFitLitUser].sleepQuality}`);
 
 $('.main__hydration').html(`<div>
-  <p>Hydration: ${hydrationData[randomFitLitUser].numOunces} oz</p></div>`);
+  <p>Date: ${hydrationDataClass.hydrationData.date} <br>
+  Hydration: ${hydrationDataClass.hydrationData.numOunces} oz <br>
+  Weekly Average: ${hydrationDataClass.weeklyAverageHydo} oz</p></div>`);
 
 $('.main__activity').html(`<div><p>Steps: ${activityData[randomFitLitUser].numSteps} <br>
   Mins Active: ${activityData[randomFitLitUser].minutesActive} <br>
-  Flishts Stairs: ${activityData[randomFitLitUser].flightsOfStairs} </p></div>`);
+  Flights Stairs: ${activityData[randomFitLitUser].flightsOfStairs} </p></div>`);
 
-// $('.main__friends').html(`${}`)
+  $('.friend-1').html(`<div class='friends'>${intFriend1.name} <br>
+    <p>Stride Length: ${intFriend1.strideLength}</p></div>`);
+
+  $('.friend-2').html(`<div class='friends'>${intFriend2.name} <br>
+    <p>Stride Length: ${intFriend2.strideLength}</p></div>`);
+
+  $('.friend-3').html(`<div class='friends'>${intFriend3.name} <br>
+    <p>Strinde Length: ${intFriend3.strideLength}</p></div>`);
 
 }); // end jquery
-
-// https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path
-// clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-
-

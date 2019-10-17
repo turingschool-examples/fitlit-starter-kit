@@ -5,8 +5,6 @@ const data = {
   activity: activityData
 }
 
-
-
 const userRepository = new UserRepository(data);
 userRepository.findToday();
 let user;
@@ -55,7 +53,7 @@ $(document).ready(function() {
   }
 
   $('.compare').on('click', function() {
-    $value = $(this).parents('.widget').find('header .dropdown input').val();
+    let $value = $(this).parents('.widget').find('header .dropdown input').val();
     $('.compare-block').fadeToggle();
     $(this).text($(this).text() === 'compare with others' ? 'close' : 'compare with others');
     const $data = getActivityInfo($value)
@@ -104,11 +102,6 @@ $(document).ready(function() {
     })
   }
 
-  // function showStepComp() {
-  //   activity = new Activity(userRepository);
-  //   activity.getWeekTotal(userRepository.activityData, );
-  // }
-
   function setChallengeWidget() {
     const $challengeFriends = user.findFriends(userRepository);
     let activityNew = new Activity(userRepository);
@@ -122,7 +115,6 @@ $(document).ready(function() {
     $('.friend2-challenge-steps').text(friendTwoAmount);
     $('.you-challenge-steps').text(youChallengerAmount);
     $('.step-winner').text(winner);
-
   }
 
   function showHydration() {
@@ -153,9 +145,15 @@ $(document).ready(function() {
     $star.attr('src', '../images/star-full.svg');
     $star.prevAll().attr('src', '../images/star-full.svg');
     $star.siblings('p').text(quality.join('.'));
-    if (quality[1] < 5) { changeStar($star, 'halfless'); }
-    if (quality[1] > 5) { changeStar($star, 'halfmore'); }
-    if (quality[1] === 5) { changeStar($star, 'half'); }
+    if (quality[1] < 5) { 
+      changeStar($star, 'halfless');
+    }
+    if (quality[1] > 5) { 
+      changeStar($star, 'halfmore');
+    }
+    if (quality[1] === 5) { 
+      changeStar($star, 'half');
+    }
   }
 
   function changeStar(star, style) {
@@ -182,9 +180,15 @@ $(document).ready(function() {
     const $widgetType = $(this).closest('.widget').attr('data-type');
     const $dayIndex = parseInt($(this).attr('data-index'));
     $(this).attr('src', '../images/circle-clicked.svg').siblings().attr('src', '../images/circle.svg');
-    if ($widgetType === 'sleep') { updateSleepWeekDay(this, $dayIndex); }
-    if ($widgetType === 'activity') { updateActiveWeekDay(this, $dayIndex); }
-    if ($widgetType === 'water') { updateHydrationWeekDay(this, $dayIndex); }
+    if ($widgetType === 'sleep') {
+      updateSleepWeekDay(this, $dayIndex);
+    }
+    if ($widgetType === 'activity') {
+      updateActiveWeekDay(this, $dayIndex);
+    }
+    if ($widgetType === 'water') {
+      updateHydrationWeekDay(this, $dayIndex);
+    }
   });
 
   function updateSleepWeekDay(target, index) {
@@ -340,7 +344,7 @@ $(document).ready(function() {
         break;
       case 'water':
         hydration.date = day;
-        $dayFluid = hydration.findDayFluid(userRepository.hydrationUsersData)
+        let $dayFluid = hydration.findDayFluid(userRepository.hydrationUsersData)
         $('.current-hydro').text($dayFluid);
         break;
     }

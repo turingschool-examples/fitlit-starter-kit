@@ -254,6 +254,34 @@ class Activity {
       return `Your friend was the highest this week!`
     }
   }
+    increasedSteps3OrMoreDays() {
+        return this.currentUserActivityData.reduce((acc, currentElement, index) => {
+            if (index + 2 < this.currentUserActivityData.length) {
+                const todaySteps = currentElement.numSteps;
+                const tomorrowSteps = this.currentUserActivityData[index + 1].numSteps
+                const nextSteps = this.currentUserActivityData[index+2].numSteps
+                if (todaySteps < tomorrowSteps && tomorrowSteps< nextSteps) {
+                    acc.push(currentElement.date)
+                }
+            }
+                return acc
+            }, [])
+    }
+    
+    
+    findDateClimbedOver50Stairs() {
+        let over50FlightStairs =  this.currentUserActivityData.filter(user => {
+            return user.flightsOfStairs >= 50
+        })
+        let stairDate = over50FlightStairs.map(user => {
+            return user.date
+        })
+        if (stairDate.length > 0) {
+            return `You climbed over 50 flights of stairs on ${stairDate}`
+        } else {
+            return `You have never climbed 50 flights of stairs`
+        }
+    }
 }
 
 if (typeof module !== 'undefined') {

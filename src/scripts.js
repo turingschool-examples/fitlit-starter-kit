@@ -56,7 +56,7 @@ $(document).ready(() => {
     $('.activity7').text(`Your total distance walked based on your stepcount for the latest day: ${activity.calculateMilesUserWalkedOnSpecificDate(currentDate)} miles`);
     $('.activity8').text(`Over the last week, you have averaged ${activity.calculateAvgMinutesActiveForUserOnSpecificWeek()} minutes of activity, ${activity.calculateAvgFlightsOfStairsClimbedForUserOnSpecificWeek()} flights of stairs, and ${activity.calculateAvgStepsTakenByUserOnSpecificWeek()} steps.`);
     $('.activity9').text(activity.findDateClimbedOver50Stairs());
-    $('.activity10').text(`Here are the dates where you had increasing steps for 3 or more days ${activity.increasedSteps3OrMoreDays()}`);
+    $('.activity10').text(`Dates where you had increasing steps for 3+ consecutive days: ${activity.increasedSteps3OrMoreDays().join(', ')}`);
 
 
     $('.friend1').text(`${friend1Name} took ${friend1WeekData} steps this week!`)
@@ -64,7 +64,7 @@ $(document).ready(() => {
     $(".currentUserActivity").text(`You took ${userStepCountDataForWeek} steps this week!`)
     $(".winnerActivity").text(highestWeekStepsDisplay)
     $(".best-sleepers").text(`Best sleepers (past week): ${sleep.findUsersWithAvgSleepQualityMoreThanThreeOverSpecificWeek(currentDate).join(', ')}`)
-    
+
     $(".sleep-btn").on('click', function () {
         $(".sleep-container").toggle()
         $(".hydration-container").hide()

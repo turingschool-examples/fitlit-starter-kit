@@ -101,6 +101,7 @@ main {
 
 section {
   box-shadow: 10px 10px 8px #404040;
+
 }
 
 .hydration-container {
@@ -110,7 +111,7 @@ section {
   background-size: 100% 100%;
   color: white;
   display: none;
-  height: 70%;
+  height: 80%;
   width: 80%;
 }
 
@@ -125,7 +126,7 @@ section {
   background-size: 100% 100%;
   color: white;
   display: none;
-  height: 70%;
+  height: 80%;
   width: 80%;
 }
 
@@ -140,12 +141,17 @@ section {
   background-size: 100% 100%;
   color: white;
   display: none;
-  height: 70%;
+  height: 80%;
   width: 80%;
 }
 
 .activity-text {
   margin: 0;
+}
+
+.activity10 {
+  color: #BFBFBF;
+  font-size: 16px;
 }
 
 .friends-container {
@@ -155,7 +161,7 @@ section {
   background-size: 100% 100%;
   color: white;
   display: none;
-  height: 70%;
+  height: 80%;
   width: 80%;
 }
 
@@ -185,6 +191,20 @@ section ul {
   margin-left: -20px;
 }
 
+@media (max-width: 1170px) {
+
+  h1 {
+    margin-bottom: -10px;
+  }
+}
+
+@media (max-width: 1130px) {
+
+  .view {
+    display: none;
+  }
+}
+
 @media (max-width: 1050px) {
 
   section ul {
@@ -206,16 +226,24 @@ section ul {
 
 @media (max-width: 600px) {
 
-  header {
-    font-size: 15px;
-    text-align: center;
+  body {
+    display: grid;
+    height: 160vh;
+    grid-template-areas:
+    "nav"
+    "main";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 0 auto;
   }
 
-  section ul {
-    font-size: 12px;
+  .view {
+    display: inline-block;
   }
 
-  .best-sleepers {
-    font-size: 12px;
+@media (max-width: 280px) {
+
+  body {
+    height: 180vh;
   }
 }

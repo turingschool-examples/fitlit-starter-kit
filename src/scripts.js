@@ -18,25 +18,25 @@ const hoursSleptContainer = document.querySelector('.hours-slept-container')
 
 
 header.insertAdjacentHTML('beforeend', `<h2 class='name--display'>Welcome, ${randomUser.name}</h2>
-  <div class="contact-container">
+  <div class='contact-container'>
     <div class='img-user-icon'>
-      <img class="user-icon" src="../images/user-icon-final.png">
+      <img class='user-icon' src='../images/user-icon-final.png'>
     </div>
     <div class='contact--info'>
       <div class='info--wrapper'>
-        <label class="contact--label">Address: </label>
-        <p class="user--info">${randomUser.address}</p>
+        <label class='contact--label'>Address: </label>
+        <p class='user--info'>${randomUser.address}</p>
       </div>
       <div class='info--wrapper'>
-        <label class="contact--label">Email: </label>
+        <label class='contact--label'>Email: </label>
         <p class='user--info'>${randomUser.email}</p>
       </div>
       <div class='info--wrapper'>
-        <label class="contact--label">Stride Length: </label> 
+        <label class='contact--label'>Stride Length: </label> 
         <p class='user--info'>${randomUser.strideLength} ft.</p>
       </div>
       <div class='info--wrapper'>
-        <label class="contact--label">Daily Step Goal: </label>
+        <label class='contact--label'>Daily Step Goal: </label>
         <p class='user--info'>${randomUser.dailyStepGoal} steps</p>
       </div>
     </div> 
@@ -44,53 +44,53 @@ header.insertAdjacentHTML('beforeend', `<h2 class='name--display'>Welcome, ${ran
 `)
 
 
-widgets.insertAdjacentHTML('afterbegin', `<div class="hydration--widget">
-        <div class="widget-card-container">
-        <h3 class="widget-hydration-header">Daily Fluid Intake</h3>
-        <p class="widget--informer">Today you drank</p>
-        <img class="water-bottle-icon"src="../images/water_bottle-icon.svg">
-        <p class="widget--variable hydration--variable">${hydration.calculateDailyIntake(todaysDate, randomUser.id)}oz</p>
+widgets.insertAdjacentHTML('afterbegin', `<div class='hydration--widget'>
+        <div class='widget-card-container'>
+        <h3 class='widget-hydration-header'>Daily Fluid Intake</h3>
+        <p class='widget--informer'>Today you drank</p>
+        <img class='water-bottle-icon'src='../images/water_bottle-icon.svg'>
+        <p class='widget--variable hydration--variable'>${hydration.calculateDailyIntake(todaysDate, randomUser.id)}oz</p>
         </div>
         </div>
-      <div class="sleep--widget">
-        <h3 class="widget-sleep-header">Last Night's Sleep</h3>
-        <p class="widget--informer">Last night you slept</p>
-        <pclass="widget--variable sleep--variable">${sleep.findHoursSlept(randomUser.id, todaysDate)}hrs</p>
-        <img class="bed-icon" src="../images/single-bed-icon.svg">
-        <p class="widget--informer">Your Sleep Quality: ${sleep.findSleepQuality(randomUser.id, todaysDate)}</p>
+      <div class='sleep--widget'>
+        <h3 class='widget-sleep-header'>Last Night's Sleep</h3>
+        <p class='widget--informer'>Last night you slept</p>
+        <pclass='widget--variable sleep--variable'>${sleep.findHoursSlept(randomUser.id, todaysDate)}hrs</p>
+        <img class='bed-icon' src='../images/single-bed-icon.svg'>
+        <p class='widget--informer'>Your Sleep Quality: ${sleep.findSleepQuality(randomUser.id, todaysDate)}</p>
       </div>
-      <div class="activity--widget">
-        <h3 class="widget-activity-header">Daily Activity Tracker</h3>
-        <p class="widget--informer">Your steps</p>
-        <p class="widget--variable activity--variable">${activity.findSingleDayInfo(randomUser.id, todaysDate).numSteps}</p>
-        <img class="step-icon" src="../images/activity-icon.svg">
-        <div class="activity-details">
-          <p class="widget-activity-informer">Miles: ${grabDailyMiles(randomUser.id, todaysDate)}</p>
-          <p class="widget-activity-informer">Active minutes: ${grabActiveMinutes(randomUser.id, todaysDate)} min</p>
+      <div class='activity--widget'>
+        <h3 class='widget-activity-header'>Daily Activity Tracker</h3>
+        <p class='widget--informer'>Your steps</p>
+        <p class='widget--variable activity--variable'>${activity.findSingleDayInfo(randomUser.id, todaysDate).numSteps}</p>
+        <img class='step-icon' src='../images/activity-icon.svg'>
+        <div class='activity-details'>
+          <p class='widget-activity-informer'>Miles: ${grabDailyMiles(randomUser.id, todaysDate)}</p>
+          <p class='widget-activity-informer'>Active minutes: ${grabActiveMinutes(randomUser.id, todaysDate)} min</p>
         </div>
       </div>`)
 
-stepComparison.insertAdjacentHTML('afterbegin', `<div class="user-avg-steps">
+stepComparison.insertAdjacentHTML('afterbegin', `<div class='user-avg-steps'>
           <p>Your Step Goal:</p>
-          <p id="comparison-number">${randomUser.dailyStepGoal}</p>
+          <p id='comparison-number'>${randomUser.dailyStepGoal}</p>
           <p>steps</p>
         </div>
-        <div class="line-divider"></div>
-        <div class="world-avg-steps">
+        <div class='line-divider'></div>
+        <div class='world-avg-steps'>
         <p>Overall Average Step Goal:</p>
-        <p id="comparison-number">${findOverallStepGoals()}</p>
+        <p id='comparison-number'>${findOverallStepGoals()}</p>
         <p>steps</p>
         </div>`)
 
 
-sleepQualContainer.insertAdjacentHTML('afterbegin', ` <div class="avg-sleep-qual">
+sleepQualContainer.insertAdjacentHTML('afterbegin', ` <div class='avg-sleep-qual'>
 <h3>Average Sleep Quality</h3>
-  <p class="sleep-qual">${sleep.findAvgSleepQuality(randomUser.id)}</p>
+  <p class='sleep-qual'>${sleep.findAvgSleepQuality(randomUser.id)}</p>
 </div>`)
 
-hoursSleptContainer.insertAdjacentHTML('afterbegin', `<div class="avg-hours-slept">
+hoursSleptContainer.insertAdjacentHTML('afterbegin', `<div class='avg-hours-slept'>
 <h3>Average Hours Slept</h3>
-  <p class="hours-slept">${sleep.findAvgHoursSlept(randomUser.id)}</p>
+  <p class='hours-slept'>${sleep.findAvgHoursSlept(randomUser.id)}</p>
 </div>`)
 
 

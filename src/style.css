@@ -25,7 +25,7 @@
 }
 
 .main_body-section {
-	height: 70vh;
+	height: 72vh;
 	width: 100%;
 	background: #5a5560;
 	color: #9d8d8f;
@@ -41,13 +41,16 @@ footer {
 
 .js_data-section {
 	padding: 1%;
-	width: 325px;
-	height: 125px;
+	width: 280px;
+	height: 140px;
 	background: #9D8D8F;
 	font-size: 20px;
 	margin: 2%;
 	color: #faed26;
 	font-family: 'Allerta Stencil', sans-serif;
 	display: inline-block;
+}
 
+.user-info {
+	font-size: 14px;
 }

@@ -1,16 +1,14 @@
 const chai = require('chai');
 const expect = chai.expect;
 
+const User = require("../src/User")
+const userData = require("../data/users")
+
 describe('User', () => {
 
-  let user;
-  beforeEach(() => {
-    let userID = 0;
-    user = new User(userData)
-  });
-
   it('should be a function', () => {
-    expect(User).to.be.a('function');
+  	let user = new User(userData)
+    expect(user.findName('Hunter')).to.equal('Hunter')
   });
 
 });

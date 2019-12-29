@@ -1,5 +1,3 @@
-console.log('user class')
-
 class User {
 	constructor(data) {
 		console.log(data)
@@ -9,6 +7,10 @@ class User {
     this.email = data.email,
     this.friends = data.friends,
     this.dailyStepGoal = data.dailyStepGoal
+	}
+
+	findName() {
+		return this.name
 	}
 
 }

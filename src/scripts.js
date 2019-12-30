@@ -8,19 +8,33 @@
 let jsUserName = document.querySelector('.js_user-name');
 let jsUserEmail = document.querySelector('.js_user-email');
 let jsUserGoal = document.querySelector('.js_user-goal');
+let jsStepsAverage = document.querySelector('.js_steps-average');
 
+console.log(userData)
 
-let user = new User(userData);
-
+// let user = new User(userData);
+// let userRepo = new UserRepository(userData, )
+// let userRepo
 
 const startTracker = () => {
   let randomUserId = Math.floor(Math.random() * (userData.length - 1 + 1)) + 1;
-    let currentUser = userData.filter(player => player.id === randomUserId)
 
-    jsUserName.innerText = currentUser[0].name
-    jsUserEmail.innerText = currentUser[0].email
-    jsUserGoal.innerText = `Daily step goal = ${currentUser[0].dailyStepGoal}`
+  let user = userData.filter(player => player.id === randomUserId)
+  let currentUser = user[0]
+  // let userRepo = UserRepository()
+  // console.log(userData)
+  let userRepo = new UserRepository(userData, activityData)
+  console.log(userRepo)
+  // userRepo.locateUserById(randomUserId)
+  jsUserName.innerText = currentUser.name
+  jsUserEmail.innerText = currentUser.email
+  jsUserGoal.innerText = `Daily step goal = ${currentUser.dailyStepGoal}`
+  jsStepsAverage.innerText = userRepo.averageStepGoal()
+}
 
+const getUserById = () => {
+	let repo = new UserRepository(userData)
+  repo.locateUserById()
 }
 
 

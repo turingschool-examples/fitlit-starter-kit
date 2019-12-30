@@ -10,7 +10,7 @@ class User {
 	}
 
 	findName() {
-		return this.name
+		// return this.name
 	}
 
 }

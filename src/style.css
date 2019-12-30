@@ -54,3 +54,8 @@ footer {
 .user-info {
 	font-size: 14px;
 }
+
+.js_user-name {
+	font-size: 24px;
+	font-weight: bold;
+}

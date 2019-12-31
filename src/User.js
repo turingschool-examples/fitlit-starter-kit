@@ -1,6 +1,5 @@
 class User {
 	constructor(data) {
-		console.log(data)
     this.id = data.id,
     this.name = data.name,
     this.address = data.address,
@@ -10,10 +9,11 @@ class User {
 	}
 
 	findName() {
-		// return this.name
+		return this.name
 	}
 
 }
+
 
 if (typeof module !== 'undefined') {
   module.exports = User;

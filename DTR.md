@@ -1,5 +1,5 @@
 # DTR: Define the Relationship 
-#### *(Karl Nielsen, Lane Hunter, Ryan Bahan)*
+#### *(Chris Postma, Greg Grimes, Ryan Bahan)*
 
 ### Guiding Questions to Define The Relationship:
 

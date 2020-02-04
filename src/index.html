@@ -1,16 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Activity Tracker</title>
-  </head>
-  <body>
-    <h1>Activity Tracker</h1>
 
-    <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="../data/hydration.js"></script>
-    <script type="text/javascript" src="../data/sleep.js"></script>
-    <script type="text/javascript" src="../data/activity.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
-  </body>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+  <meta http-equiv="content-type" content="text/php; charset=utf-8" />
+  <title>Fit Tracker!</title>
+</head>
+
+<body>
+  <header>
+    <h1>Fit Tracker</h1>
+    <h2>Welcome: <span id='userName'>Karen</span></h2>
+    <h3>Your Score: <span id='userScore'>2321</span></h3>
+  </header>
+  <nav>
+    <ul class="link-container">
+      <li class="navLink active">Sleep</li>
+      <li class="navLink">Activity</li>
+      <li class="navLink">Hydration</li>
+    </ul>
+  </nav>
+  <main>
+    <section>
+      <article class="card activity">
+        <h4>Activity</h4>
+        <p>Number of Steps: <span id='numOfSteps'>2634</span></p>
+        <p>Active Minutes: <span id='minutesActive'>2634</span></p>
+        <p># of flights of Stairs: <span id='flightsOfStairs'>2634</span></p>
+      </article>
+      <article class="card hydration">
+        <h4>Hydration</h4>
+
+        <p>Ounces Drunk: <span id='numOunces'>2634</span></p>
+      </article>
+      <article class="card sleep">
+        <h4>Sleep</h4>
+        <p>Hours of Sleep: <span id='hoursSlept'>2634</span></p>
+        <p>Quality of Sleep: <span id='sleepQuality'>2634</span></p>
+      </article>
+    </section>
+
+    <aside>
+
+      <article class="card friends">
+        Friend 1 Name + Friend Score
+      </article>
+      <article class="card friends">
+        Friend 2 Name + Friend Score
+      </article>
+      <article class="card friends">
+        Friend 3 Name + Friend Score
+      </article>
+    </aside>
+
+  </main>
+  <script type="text/javascript" src="./Activity.js"></script>
+  <script type="text/javascript" src="./Sleep.js"></script>
+  <script type="text/javascript" src="./Hydration.js"></script>
+  <script type="text/javascript" src="./User.js"></script>
+  <script type="text/javascript" src="./UserRepository.js"></script>
+  <script type="text/javascript" src="./scripts.js"></script>
+</body>
+
 </html>

@@ -1,0 +1,106 @@
+/* General Layout */
+* {
+  box-sizing: border-box;
+  color: #F8B195;
+  margin: 0;
+}
+
+body {
+  background-color: #355C7D;
+  font-family: 'Open Sans', sans-serif;
+}
+
+header {
+  background-color: #F67280;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2em;
+  font-weight: 700;
+}
+
+nav {
+  background-color: #C06C84;
+}
+
+.link-container {
+  display: flex;
+  justify-content: space-around;
+  width: 62%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  flex-grow: 1;
+  text-align: center;
+  display: inline-block;
+  font-size: 1.25em;
+  cursor: default;
+}
+
+.active {
+  background-color: #6C5B7B;
+}
+h4{
+  font-size: 1.5rem;
+}
+
+span{
+  color:#6C5B7B
+}
+
+/* Main portion of Site */
+main {
+  background-color: #6C5B7B;
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  height: 40em;
+  justify-content: space-around;
+  padding-top: 3rem;
+}
+
+section{
+  display:flex;
+  flex-direction: row;
+  flex-grow: 2;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
+aside{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+
+.card{
+  align-items: center;
+  background: grey;
+  border-radius: .2rem;
+  border: #355C7D solid .1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 #355C7D;
+  height:20rem;
+  padding:.5rem;
+  width: 16rem;
+}
+.friends{
+  height:3rem;
+  margin: .5rem;
+
+}
+
+.activity {
+
+}
+
+.hydration {
+
+}
+
+.sleep {
+
+}

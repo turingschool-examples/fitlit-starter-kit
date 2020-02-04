@@ -1,4 +1,4 @@
-# FitLit Starter Kit
+# FitLit
 ## Abstract
 This is the first Pair project from Mod2 at Turing School of Software and Design. This program focuses on using Object-oriented programming (OOP) to perform data manipulation and test-driven development (TDD) to implement a robust testing suite. We were given data from an activity tracker that represents many users over many days. Think of something like Fitbit. The program allows users to see their latest activity data, goals, and milestones.
 

@@ -1,6 +1,6 @@
 class UserReopsitory {
   constructor(data) {
-    this.userData = data.users;
+    this.data = data;
   }
 }
 

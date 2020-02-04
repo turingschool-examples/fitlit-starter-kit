@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const userData = data.testData;
-const User = require('./test/users.js');
+const User = require('../src/users.js');
 
 describe('User', function() {
   beforeEach(function() {

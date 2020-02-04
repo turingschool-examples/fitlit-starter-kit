@@ -1,4 +1,4 @@
-activityData.class Activity {
+class Activity {
   constructor(activityData) {
     this.userID = activityData.userId,
     this.date = activityData.date,

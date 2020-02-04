@@ -7,7 +7,6 @@ describe('User', function() {
 
   beforeEach(function() {
     user = new User(1, 'Luisa Hane', '15195 Nakia Tunnel, Erdmanport VA 19901-1697', 'Diana.Hayes1@hotmail.com', 4.3, 10000, [16, 4, 8]);
-
   });
 
   it('should be a function', function() {
@@ -17,5 +16,37 @@ describe('User', function() {
   it('should be an instance of User', function() {
     expect(user).to.be.an.instanceof(User);
   });
+
+  it('should have an id', function() {
+    expect(user.id).to.equal(1);
+  });
+
+  it('should have a name', function() {
+    expect(user.name).to.equal('Luisa Hane');
+  });
+
+  it('should have an address', function() {
+    expect(user.address).to.equal('15195 Nakia Tunnel, Erdmanport VA 19901-1697');
+  });
+
+  it('should have an email', function() {
+    expect(user.email).to.equal('Diana.Hayes1@hotmail.com');
+  });
+
+  it('should have a stride length', function() {
+    expect(user.strideLength).to.equal(4.3);
+  });
+
+  it('should have a daily step goal', function() {
+    expect(user.dailyStepGoal).to.equal(10000);
+  });
+
+  it('should have friends', function() {
+    expect(user.friends).to.deep.equal([16, 4, 8]);
+  });
+
+  it('should return a users first name only', function() {
+    expect(user.getUsersFirstName()).to.equal('Luisa');
+  })
 
 })

@@ -25,14 +25,17 @@ describe('User', function() {
   });
 
   it('should except an array of user objects', function() {
-    expect(userRepository.data[0]).to.equal(user1);
-    expect(userRepository.data[1]).to.equal(user2);
-    expect(userRepository.data[2]).to.equal(user3);
+    expect(userRepository.userData[0]).to.equal(user1);
+    expect(userRepository.userData[1]).to.equal(user2);
+    expect(userRepository.userData[2]).to.equal(user3);
   });
 
   it('should return a user\'s data given its id', function() {
-    userRepository.getUserData(1);
+    expect(userRepository.getUserData(1)).to.equal(user1)
+  });
 
-  })
+  it('should return the average step goal amongst all users', function() {
+    expect(userRepository.getAvgStepGoal()).to.equal(6667);
+  });
 
 })

@@ -28,6 +28,6 @@ const testData = [
   }
 ];
 
-module.exports = [
+module.exports = {
   testData
-]
+}

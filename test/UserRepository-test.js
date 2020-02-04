@@ -1,10 +1,8 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const userData = require('./data/users.js');
-const activityData = require('./data/activity.js');
-const hydrationData = require('./data/hydration.js');
-const sleepData = require('./data/sleep.js');
+const data = require('./data/users.js');
+const userData = data.testData;
 
 const UserRepository = require('../src/UserRepository.js');
 
@@ -14,28 +12,19 @@ describe('UserRepository', function() {
     userRepo = new UserRepository(userData);
   });
 
-  it('should have an array of data', function() {
+  it.skip('should have an array of data', function() {
 
     expect(userRepo.data).to.be.an.instanceof(Array);
   });
 
-  it('should take in an array of data when instantiated', function() {
+  it.skip('should take in an array of data when instantiated', function() {
 
     expect(userRepo.data).to.deep.equal(userData);
   });
 
-  it('can find a user\'s data', function() {
-    let user11 = {
-      "id": 11,
-      "name": "Khalid Williams",
-      "address": "420 Snap Way, Metropolis KS 04038-3499",
-      "email": "khalid.williams@outlook.com",
-      "strideLength": 5.2,
-      "dailyStepGoal": 6000,
-      "friends": [1]
-    };
+  it.skip('can find a user\'s data', function() {
 
-    expect(userRepo.getUserData(11)).to.equal(user11);
+    expect(userRepo.getUserData(11)).to.equal(userData[1]);
   });
 
   it('can calculate the average step goal among all users', function() {

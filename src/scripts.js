@@ -7,7 +7,15 @@ let flightsOfStairs = document.getElementById('flightsOfStairs');
 let numOunces = document.getElementById('numOunces');
 let hoursSlept = document.getElementById('hoursSlept');
 let sleepQuality = document.getElementById('sleepQuality');
+let userRepo;
+let curUser;
+let user;
 
+function instatiate(){
+  userRepo = new UserRepository(userData);
+  let id = Math.floor(Math.random() * userData.length);
+  user = new User(userRepo.findUserByID(id));
+}
 
 function activeLink(event) {
   if (event.target.classList.contains('navLink')) {
@@ -18,5 +26,4 @@ function activeLink(event) {
 }
 
 linksParent.addEventListener('click', activeLink);
-
-console.log("Hello World");
+window.onload = instatiate();

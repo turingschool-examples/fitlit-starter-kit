@@ -1,14 +1,12 @@
 let linksParent = document.querySelector('.link-container');
 let userName = document.getElementById('userName');
-let userScore =document.getElementById('userScore');
-let numOfSteps =document.getElementById('numOfSteps');
-let minutesActive =document.getElementById('minutesActive');
-let flightsOfStairs =document.getElementById('flightsOfStairs');
-let numOunces =document.getElementById('numOunces');
-let hoursSlept =document.getElementById('hoursSlept');
-let sleepQuality =document.getElementById('sleepQuality');
-
-
+let userScore = document.getElementById('userScore');
+let numOfSteps = document.getElementById('numOfSteps');
+let minutesActive = document.getElementById('minutesActive');
+let flightsOfStairs = document.getElementById('flightsOfStairs');
+let numOunces = document.getElementById('numOunces');
+let hoursSlept = document.getElementById('hoursSlept');
+let sleepQuality = document.getElementById('sleepQuality');
 
 
 function activeLink(event) {

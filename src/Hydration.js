@@ -1,10 +1,9 @@
 class Hydration {
   constructor(hydrationData) {
     this.hydrationData = hydrationData;
-
-    this.userID = userID;
-    this.date = date;
-    this.numOunces = numOunces;
+    // this.userID = userID;
+    // this.date = date;
+    // this.numOunces = numOunces;
   }
 
   calculateAvgHydration() {

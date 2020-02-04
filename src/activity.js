@@ -1,10 +1,10 @@
-class Activity {
+activityData.class Activity {
   constructor(activityData) {
-    this.userID = userId,
-    this.date = date,
-    this.numSteps = numSteps,
-    this.minutesActive = minutesActive,
-    this.flightsOfStairs = flightsOfStairs,
+    this.userID = activityData.userId,
+    this.date = activityData.date,
+    this.numSteps = activityData.numSteps,
+    this.minutesActive = activityData.minutesActive,
+    this.flightsOfStairs = activityData.flightsOfStairs,
   }
 
   calculateMilesWalked() {
@@ -20,6 +20,6 @@ class Activity {
   }
 
   calculateElevationClimbed() {
-    
+
   }
 }

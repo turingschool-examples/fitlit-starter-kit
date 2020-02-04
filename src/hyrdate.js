@@ -1,8 +1,8 @@
 class Hydration {
   constructor(hydrationData) {
-    this.userId = userID,
-    this.date = date,
-    this.numOunces = numOunces,
+    this.userId = hydrationData.userID,
+    this.date = hydrationData.date,
+    this.numOunces = hydrationData.numOunces,
   }
 
   calculateAverageDailyConsumption() {

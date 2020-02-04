@@ -1,6 +1,6 @@
 class UserRepository {
   constructor(data) {
-    this.users = user
+    this.users = data
   }
 
   returnUserData() {
@@ -30,4 +30,8 @@ class UserRepository {
   calculateAverageActiveMinutes() {
 
   }
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = UserRepository;
 }

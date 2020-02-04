@@ -1,19 +1,20 @@
 class UserRepo {
-  constructor(users) {
-    this.users = users;
+  constructor(data) {
+    this.data = data;
+    this.users = [];
+
   }
 
-  findUserId() {
-    users.find(user => {
+  getUserData(id) {
+    return users.find(user => {
       return user.id;
     })
   }
 
-  calculateAvgStepGoal() {
+  getAvgStepGoal() {
 
   }
 }
-
 
 if (typeof module !== 'undefined') {
   module.exports = UserRepo;

@@ -40,4 +40,8 @@ describe('User', function() {
   it('should have some friends', function(){
     expect(user.friends).to.equal([1, 111])
   })
+
+  it('should be able to return a first', function(){
+    expect(user.returnFirstName()).to.equal('Hannah')
+  })
 })

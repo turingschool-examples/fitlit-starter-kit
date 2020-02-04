@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #323A45;
+  height: 850px;
+}
+
+main {
+  border: 2px solid violet;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas:
+  "one two three"
+  "four five six"
+  "seven eight nine";
+  grid-template-columns: 2fr 2fr 2fr;
+  grid-template-rows: 2fr 2fr 2fr;
+  height: 100%;
+  margin: 0 10%;
+  padding: 1%;
+}
+
+header {
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10%;
+  padding: 1%;
+}
+
+.left-header {
+  border: 2px solid orange;
+  display: flex;
+  justify-content: space-between;
+}
+
+h1 {
+  padding: 0 1%;
+}
+
+.one {
+  background: #FFFFFF;
+  grid-area: one;
+  border-radius: 1%;
+  padding: 1%;
+}
+.two {
+  background: #FFFFFF;
+  grid-area: two;
+  border-radius: 1%;
+  padding: 1%;
+}
+
+.three {
+  background: #FFFFFF;
+  grid-area: three;
+  border-radius: 1%;
+  padding: 1%;;
+}
+
+.four {
+  background: #FFFFFF;
+  grid-area: four;
+  border-radius: 1%;
+  padding: 1%;
+
+}
+
+.five {
+  background: #FFFFFF;
+  grid-area: five;
+  border-radius: 1%;
+  padding: 1%;
+}
+
+.six {
+  background: #FFFFFF;
+  grid-area: six;
+  border-radius: 1%;
+  padding: 1%;
+}
+
+.seven {
+  background: #FFFFFF;
+  grid-area: seven;
+  border-radius: 1%;
+  padding: 1%;;
+}
+
+.eight {
+  background: #FFFFFF;
+  grid-area: eight;
+  border-radius: 1%;
+  padding: 1%;;
+}
+
+.nine {
+  background: #FFFFFF;
+  grid-area: nine;
+  border-radius: 1%;
+  padding: 1%;
+}
+/*  */

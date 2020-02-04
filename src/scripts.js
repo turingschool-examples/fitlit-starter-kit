@@ -1,5 +1,4 @@
 let linksParent = document.querySelector('.link-container');
-let userName = document.getElementById('userName');
 let userScore = document.getElementById('userScore');
 let numOfSteps = document.getElementById('numOfSteps');
 let minutesActive = document.getElementById('minutesActive');
@@ -7,14 +6,27 @@ let flightsOfStairs = document.getElementById('flightsOfStairs');
 let numOunces = document.getElementById('numOunces');
 let hoursSlept = document.getElementById('hoursSlept');
 let sleepQuality = document.getElementById('sleepQuality');
+let userInfo = document.querySelectorAll('.userInfo');
 let userRepo;
 let curUser;
 let user;
 
-function instatiate(){
+
+function windowLoadHandler() {
+  instatiateUser();
+  displayUserInfo();
+}
+
+function instatiateUser() {
   userRepo = new UserRepository(userData);
   let id = Math.floor(Math.random() * userData.length);
   user = new User(userRepo.findUserByID(id));
+}
+
+function displayUserInfo() {
+  userInfo.forEach(function(element){
+    element.innerText = user[element.id];
+  });
 }
 
 function activeLink(event) {
@@ -26,4 +38,4 @@ function activeLink(event) {
 }
 
 linksParent.addEventListener('click', activeLink);
-window.onload = instatiate();
+window.onload = windowLoadHandler();

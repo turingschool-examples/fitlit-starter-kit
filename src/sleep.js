@@ -1,4 +1,4 @@
-sleepData.class Sleep {
+class Sleep {
   constructor(sleepData) {
     this.userID = sleepData.userId,
     this.date = sleepData.date,

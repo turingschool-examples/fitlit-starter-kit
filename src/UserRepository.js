@@ -1,19 +1,22 @@
 class UserRepository {
-  constructor(data) {
-    this.data = data;
+  constructor(userData) {
+    this.userData = userData;
     this.users = [];
   }
 
   getUserData(id) {
     // GRAB THE DATA FROM THE USER OBJECT IN THE USERS ARRAY WITH A MATCHING ID
-    this.users.find(user => {
-      console.log('hey')
-    })
+    return this.userData.find(user => user.id === id);
   }
 
   getAvgStepGoal() {
     // GO THROUGH ALL USERS AND PULL THEIR STEP GOALS VALUE AND ADD THEM ALL TOGETHER, THEN DIVIDE THAT TOTAL BY THE NUMBER OF USERS
     // MAY CREATE A LOCAL ARRAY TO STORE ^ INSIDE
+    let sumOfStepGoals = 0;
+    this.userData.forEach(user => {
+      sumOfStepGoals += user.dailyStepGoal;
+    })
+    return Math.round(sumOfStepGoals / this.userData.length);
   }
 
   getAvgSleepQuality() {

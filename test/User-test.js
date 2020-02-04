@@ -6,7 +6,7 @@ describe('User', function() {
   let user;
 
   beforeEach(function() {
-    user = new User(1, 'Luisa Hane', '15195 Nakia Tunnel, Erdmanport VA 19901-1697', 'Diana.Hayes1@hotmail.com', 4.3, 10000, [16, 4, 8]);
+    user = new User({id:1, name: 'Luisa Hane', address: '15195 Nakia Tunnel, Erdmanport VA 19901-1697', email: 'Diana.Hayes1@hotmail.com', sstrideLength: 4.3, dailtStepGoal: 10000, friends: [16, 4, 8]});
   });
 
   it('should be a function', function() {

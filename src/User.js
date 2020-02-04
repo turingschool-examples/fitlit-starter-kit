@@ -1,12 +1,12 @@
 class User {
-  constructor(id, name, address, email, strideLength, dailyStepGoal, friends) {
-    this.id = id;
-    this.name = name;
-    this.address = address;
-    this.email = email;
-    this.strideLength = strideLength;
-    this.dailyStepGoal = dailyStepGoal;
-    this.friends = friends;
+  constructor(userDataObj) {
+    this.id = userDataObj.id;
+    this.name = userDataObj.name;
+    this.address = userDataObj.address;
+    this.email = userDataObj.email;
+    this.strideLength = userDataObj.strideLength;
+    this.dailyStepGoal = userDataObj.dailyStepGoal;
+    this.friends = userDataObj.friends;
     this.hydrationToDate = ['Hydration objects'];
     this.activityToDate = ['Activity objects'];
     this.sleepToDate = ['Sleep objects'];

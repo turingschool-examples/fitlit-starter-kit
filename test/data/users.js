@@ -27,3 +27,7 @@ const testData = [
     "friends": []
   }
 ];
+
+module.exports = [
+  testData
+]

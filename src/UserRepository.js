@@ -8,7 +8,6 @@ class UserRepository {
     // GRAB THE DATA FROM THE USER OBJECT IN THE USERS ARRAY WITH A MATCHING ID
     this.users.find(user => {
       console.log('hey')
-      }
     })
   }
 

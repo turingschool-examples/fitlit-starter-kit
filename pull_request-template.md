@@ -11,7 +11,7 @@
 
 ### Files modified:
 #### src directory
-  - [ ] Aactivity.js
+  - [ ] Activity.js
   - [ ] Hydration.js
   - [ ] Sleep.js
   - [ ] User.js

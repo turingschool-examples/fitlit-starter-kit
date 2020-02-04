@@ -50,6 +50,9 @@ describe('User', function() {
     expect(user.friends).to.deep.equal([9,18,24,19]);
   });
 
+  it('should be able to return the user\'s first name', function() {
+    expect(user.returnUserFirstName()).to.equal('Jarvis');
+  });
 });
 
 

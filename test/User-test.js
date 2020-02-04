@@ -18,4 +18,8 @@ describe('User', function() {
     expect(user).to.be.an.instanceof(User);
   });
 
+  it('should return a users first name only', function() {
+    expect(user.getUsersFirstName()).to.equal('Luisa');
+  })
+
 })

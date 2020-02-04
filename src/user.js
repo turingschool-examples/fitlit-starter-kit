@@ -1,12 +1,12 @@
 class User {
   constructor(userData) {
-    this.id = user.id,
-    this.name = user.name,
-    this.address = user.address,
-    this.email = user.email,
-    this.strideLength = user.strideLength,
-    this.dailyStepGoal = user.dailyStepGoal,
-    this.friends = user.friends
+    this.id = userData.id,
+    this.name = userData.name,
+    this.address = userData.address,
+    this.email = userData.email,
+    this.strideLength = userData.strideLength,
+    this.dailyStepGoal = userData.dailyStepGoal,
+    this.friends = userData.friends
   }
 
   returnFirstName() {
@@ -22,6 +22,6 @@ class User {
   }
 
   returnBestStairDay() {
-    
+
   }
 }

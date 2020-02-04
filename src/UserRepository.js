@@ -23,6 +23,7 @@ class UserRepository {
   }
 
   findWorstQualitySleepers(startDate) {
+// We added this method
 // Potentially, time permitting, we could give these people sleep suggestions/docs in their areas
   }
 

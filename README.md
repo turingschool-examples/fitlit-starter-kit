@@ -8,8 +8,11 @@ This is the first Pair project from Mod2 at Turing School of Software and Design
 
 ## In Action
 ![gif of application](link to our gif)
+
 ![gif of application](link to our gif)
+
 ![gif of application](link to our gif)
+
 ![gif of application](link to our gif)
 
 ## Setup

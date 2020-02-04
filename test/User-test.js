@@ -7,7 +7,6 @@ describe('User', function() {
 
   beforeEach(function() {
     user = new User(1, 'Luisa Hane', '15195 Nakia Tunnel, Erdmanport VA 19901-1697', 'Diana.Hayes1@hotmail.com', 4.3, 10000, [16, 4, 8]);
-
   });
 
   it('should be a function', function() {

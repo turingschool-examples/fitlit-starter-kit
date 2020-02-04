@@ -16,6 +16,7 @@
   - [ ] Sleep.js
   - [ ] User.js
   - [ ] UserRepository.js
+  - [ ] script.js
   - [ ] index.html
   - [ ] main.css
 #### test directory

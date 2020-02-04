@@ -12,11 +12,13 @@ class UserRepository {
   getAvgStepGoal() {
     // GO THROUGH ALL USERS AND PULL THEIR STEP GOALS VALUE AND ADD THEM ALL TOGETHER, THEN DIVIDE THAT TOTAL BY THE NUMBER OF USERS
     // MAY CREATE A LOCAL ARRAY TO STORE ^ INSIDE
-    let sumOfStepGoals = 0;
+    let sum = 0;
+    let total = this.userData.length;
+    
     this.userData.forEach(user => {
-      sumOfStepGoals += user.dailyStepGoal;
+      sum += user.dailyStepGoal;
     })
-    return Math.round(sumOfStepGoals / this.userData.length);
+    return Math.round(sum / total);
   }
 
   getAvgSleepQuality() {

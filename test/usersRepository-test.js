@@ -6,15 +6,15 @@ const UsersRepository = require('../src/UsersRepository');
 describe('UsersRepository', function() {
 
   it('should be a function', function() {
-    const userRepository = new UsersRepository();
+    const usersRepository = new UsersRepository();
 
     expect(UsersRepository).to.be.a('function');
   });
 
   it('should be an instance of UsersRepository', function() {
-    const userRepository = new UsersRepository();
+    const usersRepository = new UsersRepository();
 
-    expect(userRepository).to.be.an.instanceof(UsersRepository);
+    expect(usersRepository).to.be.an.instanceof(UsersRepository);
   });
 
 });

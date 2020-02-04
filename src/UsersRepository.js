@@ -1,5 +1,5 @@
-class UserRepository {
-  constructor()   {
+class UsersRepository {
+  constructor() {
     this.id;
   }
 
@@ -38,5 +38,5 @@ class UserRepository {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = UserRepository;
+  module.exports = UsersRepository;
 }

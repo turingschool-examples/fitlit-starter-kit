@@ -35,10 +35,20 @@ main {
   height: 80%;
   border: .1em solid black;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+
 }
 
 .column-header {
   text-decoration: underline;
   margin-top: 1em;
+}
+
+.info-box {
+  border: .1em solid black;
+  height: 10em;
+  width: 90%;
+  margin-bottom: 1em;
 }

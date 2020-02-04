@@ -28,6 +28,10 @@ const testData = [
   }
 ];
 
-module.exports = {
-  testData
-}
+// module.exports = {
+//   testData
+// }
+
+if (typeof module !== 'undefined') {
+   module.exports = testData;
+  }

@@ -8,10 +8,8 @@ class UserRepository {
   }
 
   calcAverageStepGoal() {
-    
+
   }
-
-
 
 
 }

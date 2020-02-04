@@ -7,8 +7,6 @@ class HydrationRepository {
 
   }
 
-
-
 }
 
 if (typeof module !== 'undefined') {

@@ -10,13 +10,8 @@ constructor(userInfo) {
 }
 
   returnUserFirstName() {
-    
+
   }
-
-
-
-
-
 
 }
 

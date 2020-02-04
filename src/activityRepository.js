@@ -10,6 +10,7 @@ class ActivityRepository {
   getAllAvgActivityByDate(activity, date) {
 
   }
+  
 
 }
 

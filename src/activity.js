@@ -33,6 +33,7 @@ class Activity {
   getMilesWalkedByWeek() {
 
   }
+  
 
 }
 

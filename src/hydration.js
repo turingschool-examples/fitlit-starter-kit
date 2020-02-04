@@ -12,10 +12,8 @@ class Hydration {
   }
 
   getWeeklyHydration() {
-    
+
   }
-
-
 
 }
 

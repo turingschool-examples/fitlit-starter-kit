@@ -1,13 +1,24 @@
 class Hydration {
-  constructor(data) {
-    this.data = data;
+  constructor(hydrationData) {
+    this.hydrationData = hydrationData;
+
+    this.userID = userID;
+    this.date = date;
+    this.numOunces = numOunces;
   }
 
-  getUserData(id) {
-    return users.find(user => {
-      return user.id;
-    });
+  calculateAvgHydration() {
+    // USE THE USER.hydrationToDate TO CALCULATE THE AVG FLUID OZ PER DAY OF ALL TIME
   }
+
+  findDailyHydration() {
+    // GO THROUGH THE USER.hydrationToDate ARRAY TO FIND THE OBJECT WITH MATCHING DATE
+  }
+
+  findWeeklyHydration() {
+    // USE THE USER.hydrationToDate TO CALCULATE THE AVG FLUID OZ PER DAY OF THE LAST SEVEN DAYS
+  }
+
 }
 
 

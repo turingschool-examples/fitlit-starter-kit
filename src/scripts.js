@@ -7,6 +7,7 @@ let numOunces = document.getElementById('numOunces');
 let hoursSlept = document.getElementById('hoursSlept');
 let sleepQuality = document.getElementById('sleepQuality');
 let userInfo = document.querySelectorAll('.userInfo');
+let friendsContainerEl = document.querySelector('.friends-container');
 let userRepo;
 let curUser;
 let user;
@@ -15,6 +16,7 @@ let user;
 function windowLoadHandler() {
   instatiateUser();
   displayUserInfo();
+  displayFriends();
 }
 
 function instatiateUser() {
@@ -24,10 +26,27 @@ function instatiateUser() {
 }
 
 function displayUserInfo() {
-  userInfo.forEach(function(element){
-    element.innerText = user[element.id];
+  userInfo.forEach(function(domElement) {
+    if (domElement.id === 'name') {
+      domElement.innerText = user.getFirstName();
+    } else {
+      domElement.innerText = user[domElement.id];
+    }
   });
 }
+
+function displayFriends() {
+  user.friends.forEach(function(friendId) {
+    let friendCardHTML = `
+    <article class="card friends">
+     <p>${userRepo.findUserByID(friendId).name} </p>
+     <p>DailyStepGoal: ${userRepo.findUserByID(friendId).dailyStepGoal} </p>
+    </article>
+    `
+    friendsContainerEl.insertAdjacentHTML('beforeend', friendCardHTML);
+  });
+}
+
 
 function activeLink(event) {
   if (event.target.classList.contains('navLink')) {

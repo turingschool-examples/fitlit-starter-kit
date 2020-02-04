@@ -1,16 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
     <title>Activity Tracker</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-
-    <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="../data/hydration.js"></script>
-    <script type="text/javascript" src="../data/sleep.js"></script>
-    <script type="text/javascript" src="../data/activity.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
+    <nav>
+      <h3>Current Date here</h3>
+      <h1>UserName here</h1>
+      <h3>menu here</h3>
+    </nav>
+    <main>
+      <section class="hyrdation columns">
+        <h3 class="column-header">Hydration</h3>
+      </section>
+      <section class="sleep columns">
+        <h3 class="column-header">Sleep</h3>
+      </section>
+      <section class="activity columns">
+        <h3 class="column-header">Activity</h3>
+      </section >
+    </main>
   </body>
+  <script type="text/javascript" src="../data/users.js"></script>
+  <script type="text/javascript" src="../data/hydration.js"></script>
+  <script type="text/javascript" src="../data/sleep.js"></script>
+  <script type="text/javascript" src="../data/activity.js"></script>
+  <script type="text/javascript" src="./scripts.js"></script>
 </html>

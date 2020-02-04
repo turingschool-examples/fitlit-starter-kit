@@ -46,6 +46,10 @@ h4{
   font-size: 1.5rem;
 }
 
+span{
+  color:#6C5B7B
+}
+
 /* Main portion of Site */
 main {
   background-color: #6C5B7B;
@@ -85,6 +89,7 @@ aside{
 }
 .friends{
   height:3rem;
+  margin: .5rem;
 
 }
 

@@ -27,7 +27,7 @@ describe('UserRepository', function() {
     expect(userRepo.getUserData(11)).to.equal(userData[1]);
   });
 
-  it('can calculate the average step goal among all users', function() {
+  it.skip('can calculate the average step goal among all users', function() {
 
     expect(userRepo.getStepGoalAverage()).to.equal(6000)
   });

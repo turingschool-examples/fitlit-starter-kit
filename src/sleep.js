@@ -1,9 +1,9 @@
 class Sleep {
   constructor(sleepData) {
-    this.userID = userId,
-    this.date = date,
-    this.hoursSlept = hoursSlept,
-    this.sleepQuality = sleepQuality
+    this.userID = sleepData.userId,
+    this.date = sleepData.date,
+    this.hoursSlept = sleepData.hoursSlept,
+    this.sleepQuality = sleepData.sleepQuality
   }
 
   calculateSleepAverage() {
@@ -35,6 +35,10 @@ class Sleep {
   }
 
   calculateWeeklyQualitySleepChange() {
-    
+
   }
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = Sleep;
 }

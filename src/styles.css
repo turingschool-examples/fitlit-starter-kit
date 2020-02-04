@@ -1,0 +1,53 @@
+body {
+  display: grid;
+  margin: 0px;
+}
+
+main {
+  color: white;
+  display: grid;
+  margin: 0px;
+}
+
+.main__page {
+  background: linear-gradient(rgb(253, 245, 255, .6), rgba(253, 245, 255, .6)),
+  url(https://image.shutterstock.com/image-vector/hand-holding-dumbbell-neon-sign-260nw-1190938459.jpg);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+
+}
+
+header {
+  background-color: #9932CC;
+  border-bottom: solid 4px rgb(255, 255, 255);
+  color: white;
+  font-size: 1.4em;
+  opacity: .7;
+  text-align: center;
+}
+
+section {
+  background-color: #ccb232;
+  border: solid 6px rgb(32, 11, 43);
+  cursor: pointer;
+  float: left;
+  font-size: 1.8em;
+  margin: 15px;
+  opacity: .9;
+  padding: 10px;
+  text-align: center;
+  width: 330px;
+}
+
+.water__img {
+  height: 100px;
+  margin-bottom: 35px;
+  width: 85px;
+}
+
+.waterbottle__img {
+  height: 100px;
+  margin-bottom: 35px;
+  width: 55px;
+}

@@ -4,7 +4,7 @@ class Activity {
     this.date = activityData.date,
     this.numSteps = activityData.numSteps,
     this.minutesActive = activityData.minutesActive,
-    this.flightsOfStairs = activityData.flightsOfStairs,
+    this.flightsOfStairs = activityData.flightsOfStairs
   }
 
   calculateMilesWalked() {

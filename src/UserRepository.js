@@ -14,7 +14,7 @@ class UserRepository {
     // MAY CREATE A LOCAL ARRAY TO STORE ^ INSIDE
     let sum = 0;
     let total = this.userData.length;
-    
+
     this.userData.forEach(user => {
       sum += user.dailyStepGoal;
     })

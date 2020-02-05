@@ -5,20 +5,6 @@ const User = require('../src/User');
 
 describe('User', function() {
   it('should be a function', function() {
-   //  let user = {
-   //   "id": 4,
-   //   "name": "Mae Connelly",
-   //   "address": "28926 Schinner Islands, Turnermouth NE 23720-3230",
-   //   "email": "Marcos_Pollich@hotmail.com",
-   //   "strideLength": 3.1,
-   //   "dailyStepGoal": 4000,
-   //   "friends": [
-   //     48,
-   //     7,
-   //     44,
-   //     8
-   //   ]
-   // }
     expect(User).to.be.a('function');
   });
 
@@ -58,6 +44,5 @@ describe('User', function() {
      }
     const user = new User(user1);
     expect(user.returnUserFirstName()).to.equal("Mae");
-
   });
 });

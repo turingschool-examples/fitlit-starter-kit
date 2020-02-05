@@ -1,0 +1,9 @@
+body {
+  background-color: #5CDB95;
+}
+.profile-section {
+  background-color: #EDFDE1;
+  height: 25em;
+  width: 33%;
+  border: 3px solid #379683;
+}

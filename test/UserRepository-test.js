@@ -27,14 +27,47 @@ describe("UserRepository", function() {
     expect(userRepository.getAvgStepGoal()).to.equal(6500);
   });
 
-  it("should set a current user", function() {
-    const state = { currentUser: null };
-    const randomId = userRepository.getRandomUserId(1, 4);
-    const selectedUser = userRepository.getUserData(randomId);
-    state.currentUser = new User(selectedUser);
-    expect(state.currentUser).to.be.an.instanceof(User);
-    expect(state.currentUser.getFirstName()).to.equal("Luisa");
-  });
+  // it("should return multiple objects from an array of ids", function() {
+  //   expect(userRepository.getGroupData([2, 3, 4])).to.deep.equal([
+  //     {
+  //       id: 2,
+  //       name: "Mae Connelly",
+  //       address: "28926 Schinner Islands, Turnermouth NE 23720-3230",
+  //       email: "Marcos_Pollich@hotmail.com",
+  //       strideLength: 3.1,
+  //       dailyStepGoal: 4000,
+  //       friends: [48, 7, 44, 8]
+  //     },
+  //     {
+  //       id: 3,
+  //       name: "Laney Abshire",
+  //       address: "86416 Koch Inlet, North Kaciefurt MA 80635",
+  //       email: "Janice_Nitzsche2@yahoo.com",
+  //       strideLength: 2.8,
+  //       dailyStepGoal: 2000,
+  //       friends: [11, 41, 23, 49]
+  //     },
+  //     {
+  //       id: 4,
+  //       name: "Garnett Cruickshank",
+  //       address: "992 Zita Mall, North Tremainemouth MA 19312-3532",
+  //       email: "Laverna47@hotmail.com",
+  //       strideLength: 3.9,
+  //       dailyStepGoal: 10000,
+  //       friends: [25, 31, 3, 16]
+  //     }
+  //   ]);
+  // });
 
-  it("should instantiate the user's friend array as instances of ", function() {});
+  it("should create objects for friends", function() {
+    expect(userRepository.getUserData(1)).to.deep.equal({
+      id: 2,
+      name: "Mae Connelly",
+      address: "28926 Schinner Islands, Turnermouth NE 23720-3230",
+      email: "Marcos_Pollich@hotmail.com",
+      strideLength: 3.1,
+      dailyStepGoal: 4000,
+      friends: [48, 7, 44, 8]
+    });
+  });
 });

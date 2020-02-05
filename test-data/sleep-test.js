@@ -84,3 +84,5 @@ const sleepDataTest = [
     sleepQuality: 3.9
   }
 ];
+
+module.exports = sleepDataTest;

@@ -3,16 +3,16 @@ const expect = chai.expect;
 
 const data = require('./data/users.js');
 const userData = data.testData;
-const User = require('../src/users.js');
+const User = require('../src/User.js');
 
 describe('User', function() {
   let user;
   beforeEach(function() {
-    const user = new User(userData[0]);
+    user = new User(userData[0]);
   });
 
   it('should be a function', function() {
-    expect(user).to.be.a('function');
+    expect(User).to.be.a('function');
   });
 
   it('should be an instance of User', function() {
@@ -31,7 +31,7 @@ describe('User', function() {
     expect(user.address).to.equal('1234 Fake Street, Townsville PR 00000-0000')
   })
 
-  it.skip('should have a stride length' function() {
+  it.skip('should have a stride length', function() {
     expect(user.strideLength).to.equal(3.7)
   })
 

@@ -4,11 +4,11 @@ class Hydration {
   }
 
   getTotalDailyHydrationAvg(userId) {
-    
+
   }
 
-  getDailyHydration() {
-
+  getDailyHydration(userId, date) {
+    
   }
 
   getWeeklyHydration() {

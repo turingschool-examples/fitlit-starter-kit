@@ -70,3 +70,5 @@ const hydrationDataTest = [
     numOunces: 98
   }
 ];
+
+module.exports = hydrationDataTest;

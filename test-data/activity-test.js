@@ -98,3 +98,5 @@ const activityDataTest = [
     flightsOfStairs: 32
   }
 ];
+
+module.exports = activityDataTest;

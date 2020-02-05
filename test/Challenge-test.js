@@ -6,30 +6,30 @@ const UserRepository = require('../src/classes/UserRepository');
 const userDataTest = require("../test-data/users-test");
 
 describe("Challenge", function() {
-  let userRepository;
-  let user;
-  let challenge;
+  // let userRepository;
+  // let user;
+  // let challenge;
+  //
+  // before("Set globals", function() {
+  //   userRepository = new UserRepository(userDataTest);
+  //   user = new User(userRepository.getUserData(1));
+  //   challenge = new Challenge();
+  //
+  //   challenge.getUsers(user);
+  // })
 
-  before("Set globals", function() {
-    userRepository = new UserRepository(userDataTest);
-    user = new User(userRepository.getUserData(1));
-    challenge = new Challenge();
-
-    challenge.getUsers(user);
-  })
-
-  it("should be an instance of Challenge", function() {
+  it.skip("should be an instance of Challenge", function() {
     expect(challenge).to.be.an.instanceof(Challenge);
   });
 
-  it("should be able to log trends, a goal, its current users, and their ranking",
+  it.skip("should be able to log trends, a goal, its current users, and their ranking",
       function() {
         expect(challenge.trends).to.equal(null);
         expect(challenge.leaderboard).to.equal(null);
         expect(challenge.challengeGoal).to.equal(5000);
         expect(challenge.users).to.be.an.instanceof(Array);
     });
-  it("Should be able to users for the challenge", function() {
+  it.skip("Should be able to users for the challenge", function() {
     expect(challenge.users).to.be.an.instanceof(Array);
     expect(challenge.users[0]).to.equal(user);
     expect(challenge.users[1]).to.equal(user.friends[0]);

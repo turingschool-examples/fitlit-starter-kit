@@ -8,9 +8,14 @@ class UsersRepository {
 
   }
 
-  calculateAverageStepGoal() {
-    //use reduce to add array of step goals together and divide by length
-    //of the array
+  calculateAverageStepGoal(userData) {
+   let totalSteps = userData.reduce((acc, data) => {
+     acc += data.dailyStepGoal;
+     return acc;
+   }, 0);
+   let averageSteps = Math.trunc(totalSteps / userData.length);
+   return averageSteps;
+
   }
 
   findAllUserAverageStairsClimbedForSpecificDate() {

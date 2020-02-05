@@ -23,10 +23,9 @@ class UserRepository {
   }
 
   getGroupData(members) {
-    let friends = members.map(memberId => {
+    return members.map(memberId => {
       return this.userData.find(user => user.id === memberId);
     });
-    return friends;
   }
 }
 

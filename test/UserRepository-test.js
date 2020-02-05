@@ -12,22 +12,21 @@ describe('UserRepository', function() {
     userRepo = new UserRepository(userData);
   });
 
-  it.skip('should have an array of data', function() {
+  it('should have an array of data', function() {
 
     expect(userRepo.data).to.be.an.instanceof(Array);
   });
 
-  it.skip('should take in an array of data when instantiated', function() {
-
+  it('should take in an array of data when instantiated', function() {
     expect(userRepo.data).to.deep.equal(userData);
   });
 
-  it.skip('can find a user\'s data', function() {
+  it('can find a user\'s data', function() {
 
     expect(userRepo.getUserData(11)).to.equal(userData[1]);
   });
 
-  it.skip('can calculate the average step goal among all users', function() {
+  it('can calculate the average step goal among all users', function() {
 
     expect(userRepo.getStepGoalAverage()).to.equal(6000)
   });

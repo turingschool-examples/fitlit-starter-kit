@@ -1,7 +1,20 @@
 class UserRepository {
-  constructor() {
-
+  constructor(userData) {
+    this.data = userData;
+  }
+  getUserData(id) {
+    let userInfo = this.data.find(user => {
+      return user.id === id;
+    })
+    return userInfo;
+  }
+  getStepGoalAverage() {
+    return Math.floor(this.data.reduce(
+      ((acc, user) => acc + user.dailyStepGoal), 0) / this.data.length);
   }
 }
 
-module.exports = UserRepository;
+
+if (typeof module !== 'undefined') {
+  module.exports = UserRepository;
+}

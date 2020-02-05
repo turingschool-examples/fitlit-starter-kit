@@ -4,9 +4,9 @@ class UserRepository {
   }
 
   getUserData(id) {
-    let user = this.userData.find(user => user.id === id);
-    user.friends = this.getGroupData(user.friends);
-    return user;
+    let selectedUser = this.userData.find(user => user.id === id);
+    selectedUser.friends = this.getGroupData(selectedUser.friends);
+    return selectedUser;
   }
 
   getAvgStepGoal() {
@@ -23,9 +23,10 @@ class UserRepository {
   }
 
   getGroupData(members) {
-    return members.map(memberId => {
+    let friends = members.map(memberId => {
       return this.userData.find(user => user.id === memberId);
     });
+    return friends;
   }
 }
 

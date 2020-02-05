@@ -8,11 +8,11 @@ class UserRepository {
     return user;
   }
 
-  calculateAverageStepGoal() {
+  calculateAverageStepGoal(userSteps) {
     let stepTotal = this.data.reduce((acc, step) => {
       return acc += step.dailyStepGoal;
     }, 0);
-    return stepTotal / (this.data.length);
+    return Math.round(userSteps / (stepTotal / (this.data.length)) * 100);
   }
 }
 

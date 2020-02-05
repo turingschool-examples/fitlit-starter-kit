@@ -8,6 +8,7 @@ let hoursSlept = document.getElementById('hoursSlept');
 let sleepQuality = document.getElementById('sleepQuality');
 let userInfo = document.querySelectorAll('.userInfo');
 let friendsContainerEl = document.querySelector('.friends-container');
+let averageStepContainer = document.querySelector('.averageStepContainer');
 let userRepo;
 let curUser;
 let user;
@@ -17,6 +18,7 @@ function windowLoadHandler() {
   instatiateUser();
   displayUserInfo();
   displayFriends();
+  displayAverageSteps();
 }
 
 function instatiateUser() {
@@ -45,6 +47,16 @@ function displayFriends() {
     `
     friendsContainerEl.insertAdjacentHTML('beforeend', friendCardHTML);
   });
+}
+
+function displayAverageSteps() {
+  let averageStepsHTML = `
+  <article class="averageScore">
+    <p>Your average steps compared with others:</p>
+    <p>${userRepo.calculateAverageStepGoal(user.dailyStepGoal)}%</p>
+  </article>
+  `
+  averageStepContainer.insertAdjacentHTML('beforeend', averageStepsHTML);
 }
 
 

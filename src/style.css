@@ -12,9 +12,11 @@ body {
 
 header {
   background-color: #F67280;
+  display: flex;
   font-family: 'Roboto', sans-serif;
   font-size: 2em;
   font-weight: 700;
+  justify-content: space-between;
 }
 
 nav {

@@ -1,10 +1,16 @@
 class UsersRepository {
-  constructor() {
-    this.id;
+  constructor(id) {
+    this.id = id;
   }
 
-  getUserDataById() {
+  getUserDataById(userData) {
+     return userData.find(data => data.id === this.id)
 
+  }
+
+  calculateAverageStepGoal() {
+    //use reduce to add array of step goals together and divide by length
+    //of the array
   }
 
   findAllUserAverageStairsClimbedForSpecificDate() {

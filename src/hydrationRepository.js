@@ -1,14 +1,20 @@
 class HydrationRepository {
   constructor(hydrationData) {
     this.hydrationData = hydrationData;
+    this.hydrationUser;
   }
 
-  getUserById() {
-
+  getUserById(userId) {
+    this.hydrationUser = this.hydrationData.find(user => user.userID === userId);
+    return this.hydrationUser;
   }
+
+  // getTotalDailyHydrationAvg() {
+  //   let dailyHydration = this.hydrationData.filter(user => user.userID )
+  // }
 
 }
 
 if (typeof module !== 'undefined') {
   module.exports = HydrationRepository;
-}
+};

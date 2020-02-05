@@ -4,10 +4,8 @@ class UserRepository {
   }
   getUserData(id) {
     let userInfo = this.data.find(user => {
-      if (user.id === id) {
-        return user;
-      }
-    });
+      return user.id === id;
+    })
     return userInfo;
   }
   getStepGoalAverage() {

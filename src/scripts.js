@@ -5,19 +5,31 @@ const user = new User(userRepository.getUserData(randomUser));
 
 function populateUserInfo() {
   document.getElementById("user-name").innerText = user.returnUserFirstName();
-  // document.getElementById('current-date').innerText = populateCurrentDate();
+  document.getElementById('user-address').innerText = user.address;
+  document.getElementById('user-email').innerText = user.email;
+  document.getElementById('user-stride').innerText = user.strideLength;
+  document.getElementById('user-step-goal').innerText = user.dailyStepGoal;
+  document.getElementById('user-friends').innerText = user.findFriendsNames(userData);
 }
 
+// function getFriendsNames() {
+//   user.friends.forEach(friend => {
+//     userRepository.getUserData(friend);
+//     console.log(friend);
+//   });
+
+
+
+// getFriendsNames();
 populateUserInfo();
 
 
 function populateCurrentDate() {
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var mm = String(today.getMonth() + 1).padStart(2, '0');
   var yyyy = today.getFullYear();
   today = mm + '/' + dd + '/' + yyyy;
-  // document.write(today);
   document.getElementById('current-date').innerText = today;
 }
 

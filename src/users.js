@@ -7,6 +7,7 @@ constructor(userInfo) {
   this.strideLength = userInfo.strideLength;
   this.dailyStepGoal = userInfo.dailyStepGoal;
   this.friends = userInfo.friends;
+  this.friendNames;
 }
 
   returnUserFirstName() {
@@ -14,6 +15,21 @@ constructor(userInfo) {
     return firstName[0];
   }
 
+  findFriendsNames(userData) {
+    this.friendNames = [];
+    this.friends.map(friend => {
+      console.log(userData);
+      console.log(friend);
+    
+      userData.forEach(person => {
+        console.log(person);
+        if(person.id === friend) {
+          this.friendNames.push(person.name.split(' ')[0]);
+        }
+      })
+    })
+    return this.friendNames;
+  }
 }
 
 if (typeof module !== 'undefined') {

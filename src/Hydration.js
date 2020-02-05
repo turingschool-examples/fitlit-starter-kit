@@ -4,6 +4,14 @@ class Hydration {
     this.date = sleepData.date;
     this.numOunces = sleepData.numOunces;
   }
+
+  fluidConsumedByDate() {
+
+  }
+
+  fluidConsumededWeekly () {
+
+  }
 }
 
 if(typeof module !== 'undefined') {

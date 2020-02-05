@@ -21,12 +21,12 @@ describe('UserRepository', function() {
     expect(userRepo.data).to.deep.equal(userData);
   });
 
-  it.skip('can find a user\'s data', function() {
+  it('can find a user\'s data', function() {
 
     expect(userRepo.getUserData(11)).to.equal(userData[1]);
   });
 
-  it.skip('can calculate the average step goal among all users', function() {
+  it('can calculate the average step goal among all users', function() {
 
     expect(userRepo.getStepGoalAverage()).to.equal(6000)
   });

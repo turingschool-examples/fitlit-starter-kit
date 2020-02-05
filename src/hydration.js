@@ -8,7 +8,7 @@ class Hydration {
   }
 
   getDailyHydration(userId, date) {
-    
+
   }
 
   getWeeklyHydration() {
@@ -19,4 +19,4 @@ class Hydration {
 
 if (typeof module !== 'undefined') {
   module.exports = Hydration;
-}
+};

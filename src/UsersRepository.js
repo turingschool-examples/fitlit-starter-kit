@@ -4,8 +4,7 @@ class UsersRepository {
   }
 
   getUserDataById(userData) {
-     return userData.find(data => data.id === this.id)
-
+    return userData.find(data => data.id === this.id)
   }
 
   calculateAverageStepGoal(userData) {
@@ -13,9 +12,9 @@ class UsersRepository {
      acc += data.dailyStepGoal;
      return acc;
    }, 0);
+
    let averageSteps = Math.trunc(totalSteps / userData.length);
    return averageSteps;
-
   }
 
   findAllUserAverageStairsClimbedForSpecificDate() {

@@ -11,7 +11,15 @@ class Hydration {
     return sum / averageFluids.length
   }
 
-  
+  getFluidConsumedDay(userID, date) {
+    let fluidsConsumed = this.hydrationData.filter(data => data.userID === userID)
+    return fluidsConsumed.find(fluids => fluids.date === date).numOunces;
+  }
+ 
+  getFluidConsumedSevenDay() {
+    
+  }
+
 }
 
 if (typeof module !== 'undefined') {

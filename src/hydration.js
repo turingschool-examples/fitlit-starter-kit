@@ -3,8 +3,8 @@ class Hydration {
     this.hydrationInfo = hydrationInfo;
   }
 
-  getTotalDailyHydrationAvg() {
-
+  getTotalDailyHydrationAvg(userId) {
+    
   }
 
   getDailyHydration() {

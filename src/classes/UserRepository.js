@@ -4,7 +4,7 @@ class UserRepository {
   }
 
   getUserData(id) {
-    let selectedUser = this.userData.find(user => user.id === id);
+    let selectedUser = { ...this.userData.find(user => user.id === id) };
     selectedUser.friends = this.getGroupData(selectedUser.friends);
     return selectedUser;
   }

@@ -1,2 +1,7 @@
 const randomUser = Math.ceil(Math.random() * 50);
-const userRepo = new UserRepo(userData);
+const userRepository = new UserRepository(userData);
+const user = new User(userRepository.getUserData(randomUser));
+
+function userHandler() {
+  
+}

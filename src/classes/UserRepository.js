@@ -1,12 +1,18 @@
+const User = require("../classes/User");
 class UserRepository {
   constructor(userData) {
     this.userData = userData;
+    this.users = [];
+  }
+
+  instantiateUsers() {
+    this.userData.forEach(person => {
+      this.users.push(new User(person));
+    });
   }
 
   getUserData(id) {
-    let selectedUser = { ...this.userData.find(user => user.id === id) };
-    selectedUser.friends = this.getGroupData(selectedUser.friends);
-    return selectedUser;
+    return this.users.find(user => user.id === id);
   }
 
   getAvgStepGoal() {
@@ -20,12 +26,6 @@ class UserRepository {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
-  }
-
-  getGroupData(members) {
-    return members.map(memberId => {
-      return this.userData.find(user => user.id === memberId);
-    });
   }
 }
 

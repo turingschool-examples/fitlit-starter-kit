@@ -1,4 +1,4 @@
-class UserReopsitory {
+class UserRepository {
   constructor(data) {
     this.data = data;
   }
@@ -10,5 +10,5 @@ class UserReopsitory {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = UserReopsitory;
+  module.exports = UserRepository;
 }

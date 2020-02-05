@@ -69,6 +69,7 @@ section{
   justify-content: space-around;
 
 }
+
 aside{
   display:flex;
   flex-direction: column;
@@ -88,9 +89,8 @@ aside{
   width: 16rem;
 }
 .friends{
-  height:3rem;
+  height:4rem;
   margin: .5rem;
-
 }
 
 .activity {

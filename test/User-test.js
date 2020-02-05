@@ -48,4 +48,7 @@ describe('User', () => {
   it('should have a list of friends', () => {
     expect(user.friends).to.equal(userData[0].friends);
   })
+  it('should return the first name', () => {
+    expect(user.returnUserName()).to.deep.equal('Luisa');
+  })
 })

@@ -12,13 +12,12 @@ describe('UserRepository', function() {
     userRepo = new UserRepository(userData);
   });
 
-  it.skip('should have an array of data', function() {
+  it('should have an array of data', function() {
 
     expect(userRepo.data).to.be.an.instanceof(Array);
   });
 
-  it.skip('should take in an array of data when instantiated', function() {
-
+  it('should take in an array of data when instantiated', function() {
     expect(userRepo.data).to.deep.equal(userData);
   });
 

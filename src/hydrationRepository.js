@@ -5,7 +5,7 @@ class HydrationRepository {
   }
 
   getUserById(userId) {
-    this.hydrationUser = this.hydrationData.find(user => user.userID === userId);
+    this.hydrationUser = this.hydrationData.filter(user => user.userID === userId);
     return this.hydrationUser;
   }
 

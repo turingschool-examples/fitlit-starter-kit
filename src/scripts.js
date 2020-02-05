@@ -12,17 +12,7 @@ function populateUserInfo() {
   document.getElementById('user-friends').innerText = user.findFriendsNames(userData);
 }
 
-// function getFriendsNames() {
-//   user.friends.forEach(friend => {
-//     userRepository.getUserData(friend);
-//     console.log(friend);
-//   });
-
-
-
-// getFriendsNames();
 populateUserInfo();
-
 
 function populateCurrentDate() {
   var today = new Date();
@@ -32,6 +22,13 @@ function populateCurrentDate() {
   today = mm + '/' + dd + '/' + yyyy;
   document.getElementById('current-date').innerText = today;
 }
+
+function calcStepPercentage() {
+  document.getElementById('step-goal-comparison').innerText = user.dailyStepGoal;
+  document.getElementById('all-user-step-goal').innerText = userRepository.calcAverageStepGoal();
+}
+
+calcStepPercentage();
 
 populateCurrentDate();
 

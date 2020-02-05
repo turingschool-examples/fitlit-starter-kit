@@ -9,15 +9,8 @@ class UserRepository {
     return userInfo;
   }
   getStepGoalAverage() {
-    let stepGoals = [];
-    this.data.forEach(user => {
-      stepGoals.push(user.dailyStepGoal)
-    });
-    let stepGoalAverage = stepGoals.reduce((acc, num) => {
-      acc += num / stepGoals.length;
-      return acc;
-    }, 0);
-    return stepGoalAverage
+    return Math.floor(this.data.reduce(
+      ((acc, user) => acc + user.dailyStepGoal), 0) / this.data.length);
   }
 }
 

@@ -3,10 +3,107 @@
   <head>
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
+    <link href="./styles.css" rel="stylesheet">
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-
+    <nav>
+      <div class="fitlit-nav-logo">
+        <h1>FitLit</h1>
+      </div>
+      <div class="user-profile">
+        <p>Welcome, user name!</p>
+        <img src="https://via.placeholder.com/75" alt="">
+      </div>
+    </nav>
+    <div class="app-container">
+      <main>
+        <section class="latest-activity small-card">
+          <h2>Latest Activity</h2>
+          <div class="hydration-data-today">
+            <p>Hydration Data</p>
+          </div>
+          <div class="sleep-data-today">
+            <p>Sleep Data</p>
+          </div>
+          <div class="activity-data-today">
+            <p>Activity Data</p>
+          </div>
+        </section>
+        <section class="this-week large-card">
+          <h2>This Week</h2>
+          <div class="hydration-data-this-week">
+            <p>Hydration Data</p>
+          </div>
+          <div class="sleep-data-this-week">
+            <p>Sleep Data</p>
+          </div>
+          <div class="activity-data-this-week">
+            <p>Activity Data</p>
+          </div>
+        </section>
+        <section class="all-time small-card">
+          <h2>All-time</h2>
+          <div class="hydration-data-all-time">
+            <p>Hydration Data</p>
+          </div>
+          <div class="sleep-data-all-time">
+            <p>Sleep Data</p>
+          </div>
+          <div class="activity-data-all-time">
+            <p>Activity Data</p>
+          </div>
+        </section>
+        <section class="challenge-goals small-card">
+          <h2>Challenge Goals</h2>
+          <div class="hydration-data-challenge">
+            <p>Hydration Data</p>
+          </div>
+          <div class="sleep-data-challenge">
+            <p>Sleep Data</p>
+          </div>
+          <div class="activity-data-challenge">
+            <p>Activity Data</p>
+          </div>
+        </section>
+        <section class="fitness-goals small-card">
+          <h2>Fitness Goals</h2>
+          <div class="hydration-goals">
+            <p>Hydration Data</p>
+          </div>
+          <div class="sleep-goals">
+            <p>Sleep Data</p>
+          </div>
+          <div class="activity-goals">
+            <p>Activity Data</p>
+          </div>
+        </section>
+      </main>
+      <aside class="friends-and-settings">
+        <section class="friends">
+          <h2>Friends</h2>
+          <div class="friends">
+            <p>Friend A</p>
+          </div>
+          <div class="friends">
+            <p>Friend A</p>
+          </div>
+          <div class="friends">
+            <p>Friend A</p>
+          </div>
+          <div class="friends">
+            <p>Friend A</p>
+          </div>
+        </section>
+        <section class="resources">
+          <h2>Resources</h2>
+          <p>Your Resources</p>
+        </section>
+        <section class="settings">
+          <h2>Settings</h2>
+          <p>Your Settings</p>
+        </section>
+      </aside>
+    </div>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>

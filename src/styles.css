@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+nav {
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fitlit-nav-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1%;
+}
+
+.user-profile {
+  display: flex;
+}
+
+.user-profile > * {
+  margin: 5%;
+}
+
+.app-container {
+  border: solid 1px black;
+  height: 90%;
+  display: flex;
+}
+
+main {
+  border: solid 1px black;
+  flex-grow: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+aside {
+  border: solid 1px black;
+  flex-grow: 1;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.small-card {
+  border: solid 1px black;
+  margin: 5%;
+  padding: 5%;
+}
+
+.large-card {
+  border: solid 1px black;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  margin: 2.5%;
+  padding: 2.5%;
+}
+
+.friends {
+  border: solid 1px black;
+}
+
+.resources {
+  border: solid 1px black;
+}
+
+.settings {
+  border: solid 1px black;
+}

@@ -1,7 +1,6 @@
 const chai = require("chai");
 const { expect } = chai;
 const UserRepository = require("../src/classes/UserRepository");
-const User = require("../src/classes/User");
 const userDataTest = require("../test-data/users-test");
 
 describe("UserRepository", function() {
@@ -21,17 +20,15 @@ describe("UserRepository", function() {
     expect(userRepository.userData).to.deep.equal(userDataTest);
   });
 
-// BROKEN
-  // it("should return a user's data given an id", function() {
-  //   console.log(userRepository.getUserData(1));
-  //   // expect(userRepository.getUserData(1)).to.equal(user);
-  // });
+  it("should return a user's data given an id", function() {
+    expect(userRepository.getUserData(1)).to.deep.equal(testUser);
+  });
 
   it("should return the average step goal for all users", function() {
     expect(userRepository.getAvgStepGoal()).to.equal(6500);
   });
 
-  it.skip("should return multiple objects from an array of ids", function() {
+  it("should return multiple objects from an array of ids", function() {
     expect(userRepository.getGroupData([2, 3, 4])).to.deep.equal([
       {
         id: 2,

@@ -1,11 +1,53 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Activity Tracker</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
-    <h1>Activity Tracker</h1>
+    <header class="header">
+      <h1>FitLit</h1>
+      <h2>Welcome <span id="span__user--name--js"></span>!</h2>
+      <h3>Today's Date: <span id="span__current--date"></span></h3>
+    </header>
+    <main class="main__page">
+
+      <div class="div__user--info">
+        <section class="section__user--info" id="section__user--info--js">
+          <h4 class="h4__box--header">Account Info</h4>
+          <p class="p__user">Address: <span id="span__user--address--js"></span></p>
+          <p class="p__user">Email: <span id="span__user--email--js"></span></p>
+          <p class="p__user">Stride Length: <span id="span__user--stride--js"></span></p>
+          <p class="p__user">Daily Step Goal:</p>
+          <p class="p__user">Friends: <span id="span__user--friends--js"></span></p>
+        </section>
+      </div>
+
+      <div class="div__hydration">
+       <section class="" id="">
+         <h4>Todays Water: <span id="span__todays--water"><p class="" id="hydration__today"></p></span></h4>
+         <img class="water__img" src="../Images/drop.png">
+       </section>
+       <section class="" id="">
+         <h4 class="" id="">Week's Water: </h4>
+           <img class="waterbottle__img" src="../Images/water-bottle.png">
+       </section>
+     </div>
+
+     <div class="div__sleep">
+    </div>
+
+    <div class="div__activity">
+    </div>
+
+  </main>
+    <script type="text/javascript" src="./activityRepository.js"></script>
+      <script type="text/javascript" src="./activity.js"></script>
+      <script type="text/javascript" src="./sleepRepository.js"></script>
+      <script type="text/javascript" src="./sleep.js"></script>
+      <script type="text/javascript" src="./hydrationRepository.js"></script>
+      <script type="text/javascript" src="./hydration.js"></script>
+      <script type="text/javascript" src="./users.js"></script>
+      <script type="text/javascript" src="./userRepository.js"></script>
 
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>

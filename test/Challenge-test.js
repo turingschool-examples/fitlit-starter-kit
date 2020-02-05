@@ -22,12 +22,12 @@ describe("Challenge", function() {
     expect(challenge).to.be.an.instanceof(Challenge);
   });
 
-  it.skip("should be able to log trends, a goal, its current users, and their ranking",
+  it("should be able to log trends, a goal, its current users, and their ranking",
       function() {
         expect(challenge.trends).to.equal(null);
         expect(challenge.leaderboard).to.equal(null);
         expect(challenge.challengeGoal).to.equal(5000);
-        expect(challenge.users).to.equal(null);
+        expect(challenge.users).to.be.an.instanceof(Array);
     });
   it("Should be able to users for the challenge", function() {
     expect(challenge.users).to.be.an.instanceof(Array);

@@ -6,28 +6,23 @@ class Database {
   constructor() {
     this.hydrationData = hydrationDataTest;
     this.activityData = activityDataTest;
-    this.sleepData = sleepDataTest
+    this.sleepData = sleepDataTest;
   }
 
   filterUser(userId) {
-
     const userData = {
       hydrationData: null,
       activityData: null,
-      sleepData: null,
+      sleepData: null
     };
 
-    for(const property in this) {
+    for (const property in this) {
       const dataset = this[property];
       const userDataInstance = dataset.filter(data => data.userID === userId);
       userData[property] = userDataInstance;
-    };
+    }
 
     return userData;
-  }
-  
-  getAllTimeTotal() {
-
   }
 }
 

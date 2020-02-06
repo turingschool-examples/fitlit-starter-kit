@@ -13,8 +13,7 @@ class UsersRepository {
      return acc;
    }, 0);
 
-   let averageSteps = Math.trunc(totalSteps / userData.length);
-   return averageSteps;
+   return Math.trunc(totalSteps / userData.length);
   }
 
   findAllUserAverageStairsClimbedForSpecificDate() {

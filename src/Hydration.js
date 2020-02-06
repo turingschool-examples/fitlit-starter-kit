@@ -1,30 +1,33 @@
 class Hydration {
-  constructor(id) {
-    this.userID = id;
+  constructor(usersRepository) {
+    this.userID = usersRepository.id;
     this.date;
     this.numOunces;
   }
 
   calculateAverageFluidIntakeForUser(hydrationDatas) {
-    let userOunceIntakes= [];
-    let test = hydrationDatas.filter(hydrationData => {
+    let userOunceIntakes = [];
+
+    hydrationDatas.filter(hydrationData => {
       if(hydrationData.userID === this.userID) {
         userOunceIntakes.push(hydrationData.numOunces)
       }
     })
+
     let totalOunces = userOunceIntakes.reduce((acc, ounce) => {
         acc += ounce;
         return acc;
     }, 0)
-    let ounceAverage = Math.trunc(totalOunces / userOunceIntakes.length);
 
-    return ounceAverage;
+    return Math.trunc(totalOunces / userOunceIntakes.length);
   }
 
   calculateFluidIntakeForDay() {
+
   }
 
   calculateTotalIntakeForWeek() {
+
   }
 
 }

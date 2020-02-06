@@ -9,7 +9,7 @@ class UserRepo {
 
   averageStepsAllUsers() {
     return this.data.reduce((acc, users) => {
-    (acc += users.dailyStepGoal)
+    acc += users.dailyStepGoal;
     return Math.round(acc / this.data.length);
     }, 0)
   }

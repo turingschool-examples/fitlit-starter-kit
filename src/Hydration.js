@@ -5,7 +5,7 @@ class Hydration {
     this.numOunces;
   }
 
-  calculateAverageFluidIntakeForUser(hydrationDatas) {
+  calculateAverageFluidIntakeForUser = (hydrationDatas) => {
     let userOunceIntakes = [];
 
     hydrationDatas.filter(hydrationData => {

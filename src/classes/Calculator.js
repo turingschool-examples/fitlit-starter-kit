@@ -11,8 +11,11 @@ class Calculator {
 
   }
 
-  getUserAllTimeTotal(category, date, metric) {
-
+  getUserAllTimeAvg(category, metric) {
+    return category.reduce((average, items) => {
+      average += items[metric] / category.length;
+      return Math.round(average * 100) / 100;
+    }, 0)
   }
 }
 

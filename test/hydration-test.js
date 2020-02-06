@@ -48,45 +48,48 @@ describe('User', function() {
     hydrationData = [
       {
         "userID": 1,
-        "date": "2019/06/15",
+        "date": "2019/06/16",
         "numOunces": 37
       },
       {
         "userID": 1,
-        "date": "2019/07/16",
+        "date": "2019/07/17",
         "numOunces": 75
       },
       {
         "userID": 1,
-        "date": "2019/06/17",
+        "date": "2019/06/18",
         "numOunces": 42
       },
       {
         "userID": 1,
-        "date": "2019/07/18",
+        "date": "2019/07/19",
         "numOunces": 10
       },
       {
         "userID": 1,
-        "date": "2019/06/19",
+        "date": "2019/06/20",
         "numOunces": 31
       },
       {
         "userID": 1,
-        "date": "2019/07/20",
+        "date": "2019/07/21",
         "numOunces": 58
       },
       {
         "userID": 1,
-        "date": "2019/07/21",
-        "numOunces": 64
+        "date": "2019/09/22",
+        "numOunces": 68
       },
       {
         "userID": 3,
         "date": "2019/06/17",
         "numOunces": 47
       }
-    ]
-    expect(hydration.getFluidConsumedSevenDay()).to.deep.equal([37, 75, 42, 10, 31, 58, 64, 47]);
+    ];
+    hydration = new Hydration(hydrationData);
+  
+    
+    expect(hydration.getPrevDaysHydration(1, "2019/07/21")).to.deep.equal([37, 75, 42, 10, 31, 58, 68]);
   });
 });

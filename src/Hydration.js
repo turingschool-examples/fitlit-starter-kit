@@ -4,22 +4,23 @@ class Hydration {
   }
 
   calculateAverageFluidsConsumed(userID) {
-   let averageFluids = this.hydrationData.filter(data => data.userID === userID)
-   let sum =  averageFluids.reduce((acc, fluids) => {
+   let currentUser = this.hydrationData.filter(data => data.userID === userID);
+   let sum =  currentUser.reduce((acc, fluids) => {
       return acc += fluids.numOunces;
     }, 0) 
-    return sum / averageFluids.length
+    return sum / currentUser.length;
   }
 
   getFluidConsumedDay(userID, date) {
-    let fluidsConsumed = this.hydrationData.filter(data => data.userID === userID)
-    return fluidsConsumed.find(fluids => fluids.date === date).numOunces;
+    let currentUser = this.hydrationData.filter(data => data.userID === userID);
+    return currentUser.find(fluids => fluids.date === date).numOunces;
   }
  
-  getFluidConsumedSevenDay() {
-    
-  }
-
+  getPrevDaysHydration(userID) {
+    let currentUser = this.hydrationData.filter(data => data.userID === userID);
+    let lastWeek = currentUser.slice(-7);
+      return lastWeek.map(day => day.numOunces)
+   }
 }
 
 if (typeof module !== 'undefined') {

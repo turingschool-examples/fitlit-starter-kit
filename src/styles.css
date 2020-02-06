@@ -77,3 +77,14 @@ aside {
 .settings {
   border: solid 1px black;
 }
+
+.widget-block {
+  display: flex;
+  border: solid 1px black;
+  margin: 7.5% 0;
+}
+
+.fas,
+.far {
+  font-size: 2rem;
+}

@@ -14,7 +14,6 @@ const state = {
     dailyStepGoal: 10000,
     friends: [2, 3, 4]
   },
-
   currentUserData: {
     hydrationData: [
       { userID: 1, date: "2019/06/15", numOunces: 37 },
@@ -29,7 +28,6 @@ const state = {
       {
         userID: 1,
         date: "2019/06/15",
-
         numSteps: 3577,
         minutesActive: 140,
         flightsOfStairs: 16
@@ -125,7 +123,7 @@ describe("Calculator", function() {
     expect(calculator).to.be.an.instanceof(Calculator);
   });
 
-  describe("Helpers", function() {
+  describe("Calculator-Helpers", function() {
     it("should convert a string into a date object", function() {
       expect(calculator.stringToDate("2019/06/17")).to.deep.equal(
         new Date("2019", "05", "17")
@@ -153,7 +151,7 @@ describe("Calculator", function() {
     });
   });
 
-  describe("Hydration", function() {
+  describe("Calculator-Data", function() {
     it("should get the user's total ounces for a given date", function() {
       expect(
         calculator.getUserDayTotal(
@@ -202,6 +200,10 @@ describe("Calculator", function() {
           "numOunces"
         ).metrics[6]
       ).to.equal(94);
+    });
+
+    it("should return the miles a user traversed for a given date", function() {
+      expect(calculator.stepsToMiles(state, "2019/06/15")).to.equal(2.91);
     });
   });
 });

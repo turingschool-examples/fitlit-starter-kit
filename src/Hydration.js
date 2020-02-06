@@ -29,10 +29,20 @@ class Hydration {
     return userHydrationData.numOunces;
   }
 
-  calculateTotalIntakeForWeek() {
+  calculateDailyIntakeForWeek = (hydrationDatas, dateRange) => {
+    let userWeekIntake = [];
+    let userHydrationData = hydrationDatas.filter(hydrationData => hydrationData.userID === this.userID);
+    dateRange.forEach(date => {
+      userHydrationData.map(data => {
+        if(date === data.date) {
+          userWeekIntake.push({date: data.date, intake: data.numOunces})
+        }
+      })
+    })
 
+    return userWeekIntake;
   }
-
+  
 }
 
 if (typeof module !== 'undefined') {

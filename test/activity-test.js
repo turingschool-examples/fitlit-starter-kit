@@ -1,9 +1,9 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const Activity = require('../src/Acticity')
+const Activity = require('../src/Activity')
 
-describe('User', function() {
+describe('Activity', function() {
 
   let activity, activityData;
 
@@ -17,15 +17,15 @@ describe('User', function() {
       "flightsOfStairs": 16
     },
     {
-      "userID": 2,
-      "date": "2019/06/15",
+      "userID": 1,
+      "date": "2019/06/16",
       "numSteps": 4294,
       "minutesActive": 138,
       "flightsOfStairs": 10
     },
     {
       "userID": 3,
-      "date": "2019/06/15",
+      "date": "2019/06/17",
       "numSteps": 7402,
       "minutesActive": 116,
       "flightsOfStairs": 33
@@ -39,6 +39,10 @@ describe('User', function() {
   });
 
   it('should be an instance of acitivty', function() {
-    expect(activity).to.be.an.instanceof(Hydration);
+    expect(activity).to.be.an.instanceof(Activity);
+  });
+
+  it('should calculate miles walked today', function() {
+    expect(activity.calculateMilesToday(1, "2019/06/15", 4.3)).to.equal(2.91);
   });
 });

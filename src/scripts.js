@@ -11,16 +11,17 @@ const stepComparison = document.querySelector('.step-goal-comparison')
 
 function populateUserInfo(id) {
   let user = new User(userRepo.getUserData(id))
-  userName.innerHTML = user.name;
-  userAddress.innerHTML = user.address;
-  userEmail.innerHTML = user.email;
-  userStride.innerHTML = user.strideLength;
-  userStepGoal.innerHTML = user.dailyStepGoal;
-  userGoalAverage.innerHTML = userRepo.getStepGoalAverage();
-  stepComparison.innerHTML = `Your goal is ${Math.floor((user.dailyStepGoal / userRepo.getStepGoalAverage()) * 100 - 100)}%
-    under/over the average step goal of all users`
-  user.getUserFriendNames()
-  friendsList.innerHTML = user.friendsNames;
+  userName.innerText = user.name;
+  userAddress.innerText = user.address;
+  userEmail.innerText = user.email;
+  userStride.innerText = user.strideLength;
+  userStepGoal.innerText = user.dailyStepGoal;
+  userGoalAverage.innerText = userRepo.getStepGoalAverage();
+  stepComparison.innerText  = (user.dailyStepGoal > userRepo.getStepGoalAverage()) ? 
+  `You're step goal is ${user.dailyStepGoal - userRepo.getStepGoalAverage()} steps above the average` :
+    `You're step goal is ${userRepo.getStepGoalAverage() - user.dailyStepGoal} steps below the average`
+  friendsList.innerHTML = friendsList.innerHTML = user.friends.map
+  (friendID => userRepo.getUserData(friendID).name)
 }
 
 populateUserInfo(41);

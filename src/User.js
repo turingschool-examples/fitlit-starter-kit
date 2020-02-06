@@ -6,23 +6,11 @@ class User {
     this.email = userData.email
     this.strideLength = userData.strideLength;
     this.dailyStepGoal = userData.dailyStepGoal;
-    this.friends = userData.friends
-    this.friendsNames = []
+    this.friends = userData.friends;
   }
 
   getFirstName() {
     return this.name.split(' ')[0];
-  }
-
-  getUserFriendNames() {
-    let userIds = userData.filter(user => {
-      return user.id
-    })
-    userIds.forEach((i) => {
-      if(this.friends.includes(i.id)) {
-        this.friendsNames.push(i.name)
-      }
-    })
   }
 }
 

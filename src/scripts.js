@@ -2,7 +2,8 @@
   // Global state object
   const state = {
     currentUser: null,
-    currentUserData: null
+    currentUserData: null,
+    currentDay: null
   };
 
   // Instantiate UserRepository, User instances

@@ -8,6 +8,7 @@ class Database {
     this.activityData = activityDataTest;
     this.sleepData = sleepDataTest
   }
+
   filterUser(userId) {
 
     const userData = {
@@ -23,6 +24,10 @@ class Database {
     };
 
     return userData;
+  }
+  
+  getAllTimeTotal() {
+
   }
 }
 

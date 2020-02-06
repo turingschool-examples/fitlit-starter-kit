@@ -17,11 +17,11 @@ function populateUserInfo(id) {
   userStride.innerText = user.strideLength;
   userStepGoal.innerText = user.dailyStepGoal;
   userGoalAverage.innerText = userRepo.getStepGoalAverage();
-  stepComparison.innerText  = (user.dailyStepGoal > userRepo.getStepGoalAverage()) ? 
+  stepComparison.innerText  = (user.dailyStepGoal > userRepo.getStepGoalAverage()) ?
   `You're step goal is ${user.dailyStepGoal - userRepo.getStepGoalAverage()} steps above the average` :
     `You're step goal is ${userRepo.getStepGoalAverage() - user.dailyStepGoal} steps below the average`
   friendsList.innerHTML = friendsList.innerHTML = user.friends.map
   (friendID => userRepo.getUserData(friendID).name)
 }
 
-populateUserInfo(41);
+populateUserInfo(42);

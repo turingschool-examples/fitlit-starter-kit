@@ -6,7 +6,7 @@ const hydrationData = data.hydrationData;
 
 const Hydration = require('../src/Hydration.js');
 
-describe('UserRepository', function() {
+describe('Hydration', function() {
   let hydration;
   beforeEach(function() {
     hydration = new Hydration(hydrationData);

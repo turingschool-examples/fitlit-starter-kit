@@ -9,6 +9,7 @@ describe('Sleep', function() {
   let sleep;
   beforeEach(function() {
     sleep = new Sleep(sleepData);
+    sleep.getUserData(1)
   });
 
   it('should be a function', function() {
@@ -24,8 +25,15 @@ describe('Sleep', function() {
     expect(sleep.getUserData(1)).to.deep.equal(userData);
   })
 
-  it.skip('can calculate average hours slept per day', function() {
-    console.log(sleep.getUserData())
-    expect(sleep.calculateAverageHours()).to.equal('xxxxx')
+  it('can calculate average hours slept per day', function() {
+    expect(sleep.calculateAverageHours(111)).to.equal(8)
+  })
+
+  it('can calculate average sleep quality', function() {
+    expect(sleep.calculateAverageQuality(1)).to.equal(4)
+  })
+
+  it('can find data on exact date', function() {
+    expect(sleep.getDayHours(1, "2020/02/03")).to.equal(9.1)
   })
 })

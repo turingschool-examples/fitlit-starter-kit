@@ -131,5 +131,10 @@ describe('Calculator', function() {
     it("should get the user's total ounces for a given date" , function() {
       expect(calculator.getUserDayTotal(state.currentUserData.hydrationData, '2019/06/17', "numOunces")).to.equal(47);
     })
+
+    it("should get the user's overall average hydration" , function() {
+
+      expect(calculator.getUserAllTimeAvg(state.currentUserData.hydrationData, "numOunces")).to.equal(66.71);
+    })
   })
 })

@@ -35,7 +35,7 @@ describe('Hydration', function() {
     hydration = new Hydration(usersRepository);
 
   })
-  
+
   it('should be a function', function() {
     expect(Hydration).to.be.a('function');
   });
@@ -46,6 +46,10 @@ describe('Hydration', function() {
 
   it('should return the average fluid ounces intake for a user for all time', function() {
     expect(hydration.calculateAverageFluidIntakeForUser(hydrationData)).to.equal(53);
+  })
+
+  it('should return fluid intake for a selected date', function() {
+    expect(hydration.calculateFluidIntakeForDay(hydrationData, '2019/06/16')).to.equal(69);
   })
 
 });

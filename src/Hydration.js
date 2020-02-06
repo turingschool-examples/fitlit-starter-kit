@@ -22,8 +22,11 @@ class Hydration {
     return Math.trunc(totalOunces / userOunceIntakes.length);
   }
 
-  calculateFluidIntakeForDay() {
+  calculateFluidIntakeForDay = (hydrationDatas, date) => {
+    let userHydrationData = hydrationDatas.filter(hydrationData => hydrationData.userID === this.userID)
+    .find(hydrationData => hydrationData.date === date);
 
+    return userHydrationData.numOunces;
   }
 
   calculateTotalIntakeForWeek() {

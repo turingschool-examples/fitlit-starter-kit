@@ -5,13 +5,15 @@ class Hydration {
     this.numOunces = hydrationData.numOunces;
   }
 
-  fluidConsumedByDate() {
+  // fluidConsumedByDate(date) {
+  //   if(this.date === date) {
+  //     return this.numOunces;
+  //   }
+  // }
 
-  }
-
-  fluidConsumededWeekly () {
-
-  }
+//   fluidConsumededWeekly (date) {
+//     console.log()
+//   }
 }
 
 if(typeof module !== 'undefined') {

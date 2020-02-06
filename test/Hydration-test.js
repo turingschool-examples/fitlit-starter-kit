@@ -25,16 +25,15 @@ describe('Hydration default properties', () => {
   })
 
   it('it should have a unique ID', () => {
-    expect(hydrationData[0].userID).to.equal(hydrationData[0].userID);
+    expect(hydrationData[0].userID).to.equal(1);
   })
 
   it('it should have a date', () => {
-    expect(hydrationData[0].date).to.equal(hydrationData[0].date);
+    expect(hydrationData[0].date).to.equal("2019/06/15");
   })
 
-
   it('it should have a number of ounces consumed', () => {
-    expect(hydrationData[0].numOunces).to.equal(hydrationData[0].numOunces);
+    expect(hydrationData[0].numOunces).to.equal(37);
   })
 
   it.skip('it should show fluid consumed by date', () => {

@@ -116,6 +116,11 @@ describe('Sleep', function() {
     it('should be able to return an array of the previous 7 days sleepQuality', function() {
       expect(sleep.getPrevDaysSleepQuality(1,"2019/06/17")).to.deep.equal([4.7,4.7,4.7,4.7,4.7,4.7,4.7])
     });
+
+    it('should be able to calculate the average sleep across all users',function(){
+      expect(sleep.calcAverageSleepQuality()).to.equal(4.4875);
+    });
+
   });
 
 });

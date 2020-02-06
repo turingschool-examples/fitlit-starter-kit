@@ -3,13 +3,17 @@ const expect = chai.expect;
 
 const Hydration = require('../src/Hydration');
 const hydrationData = require('../data/hydration');
+const User = require('../src/User');
+const userData = require('../data/user-test-data');
 
 let hydration;
+let user;
 
 describe('Hydration default properties', () => {
 
   beforeEach(() => {
-    hydration = new Hydration(hydrationData[0]);
+    user = new User(userData[0]);
+    hydration = new Hydration(hydrationData, user.ID);
   })
 
   it('it should be a function', () => {
@@ -21,15 +25,16 @@ describe('Hydration default properties', () => {
   })
 
   it('it should have a unique ID', () => {
-    expect(hydration.userID).to.equal(hydrationData[0].userID);
+    expect(hydrationData[0].userID).to.equal(hydrationData[0].userID);
   })
 
   it('it should have a date', () => {
-    expect(hydration.date).to.equal(hydrationData[0].date);
+    expect(hydrationData[0].date).to.equal(hydrationData[0].date);
   })
 
-  it('it should have a date', () => {
-    expect(hydration.numOnces).to.equal(hydrationData[0].numOnces);
+
+  it('it should have a number of ounces consumed', () => {
+    expect(hydrationData[0].numOunces).to.equal(hydrationData[0].numOunces);
   })
 
   it.skip('it should show fluid consumed by date', () => {

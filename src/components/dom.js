@@ -5,7 +5,7 @@ const dom = {
   // friends: this.main.querySelector(),
   // goals: this.main.querySelector(),
   latestActivity: document.querySelector(".latest-activity"),
-  // latestWeek: this.main.querySelector(),
+  latestWeek: document.querySelector(".latest-week"),
   // reportCard: this.main.querySelector(),
   settings: document.querySelector(".settings"),
   // welcome: this.main.querySelector(),

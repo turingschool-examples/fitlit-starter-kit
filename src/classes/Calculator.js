@@ -15,18 +15,18 @@ class Calculator {
   }
 
   getUserWeekTotal(category, date, metric) {
-    let beginWeekDay = this.modifyDays(this.stringToDate(date), -6);
+    let beginWeekDay = this.modifyDate(this.stringToDate(date), -6);
     const endWeekDay = this.stringToDate(date);
     const week = [];
     const metricData = [];
 
     while (beginWeekDay <= endWeekDay) {
       week.push(beginWeekDay);
-      beginWeekDay = this.modifyDays(beginWeekDay, 1);
+      beginWeekDay = this.modifyDate(beginWeekDay, 1);
     }
 
     week.forEach(day => {
-      const currentDay = this.formatDate(day);
+      const currentDay = this.dateToString(day);
       metricData.push(this.getUserDayTotal(category, currentDay, metric));
     });
 
@@ -39,7 +39,7 @@ class Calculator {
     return new Date(year, month - 1, day);
   }
 
-  formatDate(date) {
+  dateToString(date) {
     // this method converts a date object to a string for use in getUserWeekTotal() method. That method requires a string date.
     const year = date.getFullYear();
     let month = `${date.getMonth() + 1}`;
@@ -55,7 +55,7 @@ class Calculator {
     return [year, month, day].join("/");
   }
 
-  modifyDays(date, days) {
+  modifyDate(date, days) {
     // this method creates a new date that is in the future or past based on number of days passed to its days parameter
     const copy = new Date(Number(date));
     copy.setDate(date.getDate() + days);

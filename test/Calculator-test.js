@@ -1,5 +1,6 @@
 const chai = require("chai");
 const { expect } = chai;
+chai.use(require("chai-datetime"));
 const Calculator = require("../src/classes/Calculator");
 const userDataTest = require("../test-data/users-test");
 
@@ -144,14 +145,61 @@ describe("Calculator", function() {
       ).to.equal(66.71);
     });
 
-    it("should return a metric for each day over the past seven days inclusive", function() {
+    it("should convert a string into a date object", function() {
+      expect(calculator.stringToDate("2019/06/17")).to.deep.equal(
+        new Date("2019", "05", "17")
+      );
+    });
+
+    it("should convert a date object into a string", function() {
+      expect(calculator.dateToString(new Date("2019", "05", "17"))).to.equal(
+        "2019/06/17"
+      );
+    });
+
+    it("should modify a date object", function() {
+      const sunday = new Date("2019", "05", "23");
+      const monday = new Date("2019", "05", "24");
+      expect(calculator.modifyDate(sunday, 1)).to.equalDate(monday);
+      expect(calculator.modifyDate(monday, -1)).to.equalDate(sunday);
+    });
+
+    it("should return a week day by name", function() {
+      const sunday = new Date("2019", "05", "23");
+      const monday = new Date("2019", "05", "24");
+      expect(calculator.getWeekDay(sunday)).to.equal("Sunday");
+      expect(calculator.getWeekDay(monday)).to.equal("Monday");
+    });
+
+    it("should return an object with an array of dates and an array of metrics for each day over the past seven days inclusive", function() {
       expect(
         calculator.getUserWeekTotal(
           state.currentUserData.hydrationData,
           "2019/06/21",
           "numOunces"
-        )
-      );
+        ).dates.length
+      ).to.equal(7);
+      expect(
+        calculator.getUserWeekTotal(
+          state.currentUserData.hydrationData,
+          "2019/06/21",
+          "numOunces"
+        ).metrics.length
+      ).to.equal(7);
+      expect(
+        calculator.getUserWeekTotal(
+          state.currentUserData.hydrationData,
+          "2019/06/21",
+          "numOunces"
+        ).metrics[0]
+      ).to.equal(37);
+      expect(
+        calculator.getUserWeekTotal(
+          state.currentUserData.hydrationData,
+          "2019/06/21",
+          "numOunces"
+        ).metrics[6]
+      ).to.equal(94);
     });
   });
 });

@@ -53,6 +53,25 @@ class Sleep {
     }, 0);
     return totalSleepQuality / this.sleepData.length;
   }
+
+  findAllGreatSleepers(startDate){
+    let startDateParsed = new Date(startDate);
+    let endDateParsed = new Date(startDate);
+    endDateParsed.setDate(startDateParsed.getDate()-7);
+    let usersSleepPastWeek = this.sleepData.filter(function(sleedDayData){
+      let day = new Date(sleedDayData.date);
+      if(day <= startDateParsed && day >=endDateParsed && sleedDayData.sleepQuality>3){
+        return true;
+      }
+    });
+    return usersSleepPastWeek;
+  }
+  findLongestSleepers(startDate){
+    let dailyUsers = this.sleepData.filter((element)=>element.date = startDate);
+    let longestSleeper = dailyUsers.sort((a,b)=> b.hoursSlept - a.hoursSlept);
+    return longestSleeper.filter((element)=> longestSleeper[0].hoursSlept === element.hoursSlept)
+
+  }
 }
 
 if (typeof module !== 'undefined') {

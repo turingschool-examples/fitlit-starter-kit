@@ -23,6 +23,7 @@ function instatiateUser() {
   userRepo = new UserRepository(userData);
   let id = Math.floor(Math.random() * userData.length);
   user = new User(userRepo.findUserByID(id));
+
 }
 
 function displayUserInfo() {

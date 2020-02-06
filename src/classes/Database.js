@@ -1,12 +1,8 @@
-const hydrationDataTest = require("../../test-data/hydration-test.js");
-const activityDataTest = require("../../test-data/activity-test.js");
-const sleepDataTest = require("../../test-data/sleep-test");
-
 class Database {
-  constructor() {
-    this.hydrationData = hydrationDataTest;
-    this.activityData = activityDataTest;
-    this.sleepData = sleepDataTest;
+  constructor(hydrationData, activityData, sleepData) {
+    this.hydrationData = hydrationData;
+    this.activityData = activityData;
+    this.sleepData = sleepData;
   }
 
   filterUser(userId) {

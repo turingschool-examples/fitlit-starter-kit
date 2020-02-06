@@ -1,4 +1,6 @@
-const User = require("../classes/User");
+if (typeof module !== "undefined") {
+  const User = require("../classes/User");
+}
 class UserRepository {
   constructor(userData) {
     this.userData = userData;

@@ -14,12 +14,12 @@
 
   // Instantiate database to hold all Hydration, Sleep, Activity data
   // Set state.currentUserData to the data of the currentUser
-  const database = new Database();
+  const database = new Database(hydrationData, activityData, sleepData);
   state.currentUserData = database.filterUser(state.currentUser.id);
 
   // Start invoking render method
 
   // Settings widget
-  const settingsHtmlString = settings.generateHtmlString();
+  const settingsHtmlString = settings.generateHtmlString(state.currentUser);
   dom.render(dom.settings, settingsHtmlString);
 })();

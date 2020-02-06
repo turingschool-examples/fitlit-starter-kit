@@ -45,4 +45,8 @@ describe('Activity', function() {
   it('should calculate miles walked today', function() {
     expect(activity.calculateMilesToday(1, "2019/06/15", 4.3)).to.equal(2.91);
   });
+
+  it('should calculate miles walked today', function() {
+    expect(activity.getMinutesActive(1, "2019/06/16")).to.equal(138);
+  });
 });

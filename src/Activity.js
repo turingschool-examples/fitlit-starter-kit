@@ -8,6 +8,11 @@ class Activity {
     let distance = currentUser.find(stride => stride.date === date).numSteps * strideLength;
     return Number((distance / 5280).toFixed(2));
  }
+
+  getMinutesActive(userID, date) {
+    let currentUser = this.activityData.filter(data => data.userID === userID);
+    return currentUser.find(minute => minute.date === date).minutesActive;
+  }
 }
 
 if (typeof module !== 'undefined') {

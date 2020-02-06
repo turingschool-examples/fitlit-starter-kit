@@ -47,6 +47,12 @@ class Sleep {
     });
     return userSleepDaysData;
   }
+  calcAverageSleepQuality(){
+    let totalSleepQuality = this.sleepData.reduce(function(total, curVal) {
+      return total + curVal.sleepQuality;
+    }, 0);
+    return totalSleepQuality / this.sleepData.length;
+  }
 }
 
 if (typeof module !== 'undefined') {

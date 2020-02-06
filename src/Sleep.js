@@ -25,7 +25,28 @@ class Sleep {
     return filteredSleepQuality.find(day => day.date ===date).sleepQuality;
   }
 
+  getPrevDaysSleepHrs(userID,startDate){
+    let userSleepDaysData = this.getPreviousDaysData(userID,startDate);
+    return userSleepDaysData.map(dailyUserSleep => dailyUserSleep.hoursSlept);
+  }
 
+  getPrevDaysSleepQuality(userID,startDate){
+    let userSleepDaysData = this.getPreviousDaysData(userID,startDate);
+    return userSleepDaysData.map(dailyUserSleep => dailyUserSleep.sleepQuality);
+  }
+  getPreviousDaysData(userID,startDate){
+    let startDateParsed = new Date(startDate);
+    let endDateParsed = new Date(startDate);
+    endDateParsed.setDate(startDateParsed.getDate()-7);
+    let userSleepData = this.sleepData.filter(userEntry => userEntry.userID === userID);
+    let userSleepDaysData = userSleepData.filter(function(sleedDayData){
+      let day = new Date(sleedDayData.date);
+      if(day <= startDateParsed && day >=endDateParsed){
+        return true;
+      }
+    });
+    return userSleepDaysData;
+  }
 }
 
 if (typeof module !== 'undefined') {

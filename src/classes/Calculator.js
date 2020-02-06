@@ -34,13 +34,13 @@ class Calculator {
   }
 
   stringToDate(string) {
-    // This makes three variables corresponding to the array returned by string.split('/') using array destructuring.
+    // This makes three variables corresponding to the array returned by string.split('/') using array destructuring and then instantiates and returns a new date object.
     const [year, month, day] = string.split("/");
     return new Date(year, month - 1, day);
   }
 
   dateToString(date) {
-    // this method converts a date object to a string for use in getUserWeekTotal() method. That method requires a string date.
+    // This method converts a date object to a string for use in getUserWeekTotal() method. That method requires a string date.
     const year = date.getFullYear();
     let month = `${date.getMonth() + 1}`;
     let day = `${date.getDate()}`;
@@ -56,7 +56,7 @@ class Calculator {
   }
 
   modifyDate(date, days) {
-    // this method creates a new date that is in the future or past based on number of days passed to its days parameter
+    // This method creates a new date that is in the future or past based on number of days passed to its days parameter and returns the new date as a copy. Does not mutate the argument.
     const copy = new Date(Number(date));
     copy.setDate(date.getDate() + days);
     return copy;

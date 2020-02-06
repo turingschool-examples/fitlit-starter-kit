@@ -1,8 +1,7 @@
 class Hydration {
-  constructor(hydrationData) {
-    this.userID = hydrationData.userID;
-    this.date = hydrationData.date;
-    this.numOunces = hydrationData.numOunces;
+  constructor(hydrationData, userID) {
+    this.hydrationData = hydrationData;
+    this.userID = this.userID;
   }
 
   // fluidConsumedByDate(date) {
@@ -14,6 +13,10 @@ class Hydration {
 //   fluidConsumededWeekly (date) {
 //     console.log()
 //   }
+
+  // fluidConsumedALlTime(){
+  //
+  // }
 }
 
 if(typeof module !== 'undefined') {

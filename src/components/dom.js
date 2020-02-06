@@ -4,7 +4,7 @@ const dom = {
   // challenges: this.main.querySelector(),
   // friends: this.main.querySelector(),
   // goals: this.main.querySelector(),
-  // latestActivity: this.main.querySelector(),
+  latestActivity: document.querySelector(".latest-activity"),
   // latestWeek: this.main.querySelector(),
   // reportCard: this.main.querySelector(),
   settings: document.querySelector(".settings"),
@@ -15,10 +15,7 @@ const dom = {
     return renderer.content;
   },
   render(targetNode, htmlString) {
-    console.log(targetNode);
     const fragment = this.stringToFragment(htmlString);
-    console.log(htmlString);
-    console.log(fragment);
     targetNode.appendChild(fragment);
   }
 };

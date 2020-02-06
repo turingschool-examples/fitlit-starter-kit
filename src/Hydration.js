@@ -1,6 +1,6 @@
 class Hydration {
-  constructor(id) {
-    this.userID = id;
+  constructor(usersRepository) {
+    this.userID = usersRepository.id;
     this.date;
     this.numOunces;
   }
@@ -13,7 +13,7 @@ class Hydration {
         userOunceIntakes.push(hydrationData.numOunces)
       }
     })
-    
+
     let totalOunces = userOunceIntakes.reduce((acc, ounce) => {
         acc += ounce;
         return acc;
@@ -23,9 +23,11 @@ class Hydration {
   }
 
   calculateFluidIntakeForDay() {
+
   }
 
   calculateTotalIntakeForWeek() {
+
   }
 
 }

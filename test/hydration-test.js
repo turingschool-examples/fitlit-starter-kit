@@ -5,21 +5,12 @@ const Hydration = require('../src/Hydration');
 const UsersRepository = require('../src/UsersRepository');
 
 describe('Hydration', function() {
+  let hydrationData;
+  let usersRepository;
+  let hydration;
 
-  it('should be a function', function() {
-    const hydration = new Hydration();
-
-    expect(Hydration).to.be.a('function');
-  });
-
-  it('should be an instance of Hydration', function() {
-    const hydration = new Hydration();
-
-    expect(hydration).to.be.an.instanceof(Hydration);
-  });
-
-  it('should return the average fluid ounces intake for a user for all time', function() {
-    const hydrationData = [{
+  beforeEach(function() {
+    hydrationData = [{
         "userID": 1,
         "date": "2019/06/15",
         "numOunces": 37
@@ -40,9 +31,20 @@ describe('Hydration', function() {
       }
     ]
 
-    const usersRepository = new UsersRepository(1);
-    const hydration = new Hydration(usersRepository.id);
+    usersRepository = new UsersRepository(1);
+    hydration = new Hydration(usersRepository);
 
+  })
+  
+  it('should be a function', function() {
+    expect(Hydration).to.be.a('function');
+  });
+
+  it('should be an instance of Hydration', function() {
+    expect(hydration).to.be.an.instanceof(Hydration);
+  });
+
+  it('should return the average fluid ounces intake for a user for all time', function() {
     expect(hydration.calculateAverageFluidIntakeForUser(hydrationData)).to.equal(53);
   })
 

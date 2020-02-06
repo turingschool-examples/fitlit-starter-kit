@@ -125,26 +125,7 @@ describe("Calculator", function() {
     expect(calculator).to.be.an.instanceof(Calculator);
   });
 
-  describe("Hydration", function() {
-    it("should get the user's total ounces for a given date", function() {
-      expect(
-        calculator.getUserDayTotal(
-          state.currentUserData.hydrationData,
-          "2019/06/17",
-          "numOunces"
-        )
-      ).to.equal(47);
-    });
-
-    it("should get the user's overall average hydration", function() {
-      expect(
-        calculator.getUserAllTimeAvg(
-          state.currentUserData.hydrationData,
-          "numOunces"
-        )
-      ).to.equal(66.71);
-    });
-
+  describe("Helpers", function() {
     it("should convert a string into a date object", function() {
       expect(calculator.stringToDate("2019/06/17")).to.deep.equal(
         new Date("2019", "05", "17")
@@ -169,6 +150,27 @@ describe("Calculator", function() {
       const monday = new Date("2019", "05", "24");
       expect(calculator.getWeekDay(sunday)).to.equal("Sunday");
       expect(calculator.getWeekDay(monday)).to.equal("Monday");
+    });
+  });
+
+  describe("Hydration", function() {
+    it("should get the user's total ounces for a given date", function() {
+      expect(
+        calculator.getUserDayTotal(
+          state.currentUserData.hydrationData,
+          "2019/06/17",
+          "numOunces"
+        )
+      ).to.equal(47);
+    });
+
+    it("should get the user's overall average hydration", function() {
+      expect(
+        calculator.getUserAllTimeAvg(
+          state.currentUserData.hydrationData,
+          "numOunces"
+        )
+      ).to.equal(66.71);
     });
 
     it("should return an object with an array of dates and an array of metrics for each day over the past seven days inclusive", function() {

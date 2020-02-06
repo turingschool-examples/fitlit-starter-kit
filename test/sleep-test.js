@@ -110,17 +110,70 @@ describe('Sleep', function() {
       sleep = new Sleep(sleepData);
     });
     it('should be able to return an array of the previous 7 days sleep', function() {
-      expect(sleep.getPrevDaysSleepHrs(1,"2019/06/17")).to.deep.equal([3,3,3,3,3,3,3])
+      expect(sleep.getPrevDaysSleepHrs(1, "2019/06/17")).to.deep.equal([3, 3, 3, 3, 3, 3, 3])
     });
 
     it('should be able to return an array of the previous 7 days sleepQuality', function() {
-      expect(sleep.getPrevDaysSleepQuality(1,"2019/06/17")).to.deep.equal([4.7,4.7,4.7,4.7,4.7,4.7,4.7])
+      expect(sleep.getPrevDaysSleepQuality(1, "2019/06/17")).to.deep.equal([4.7, 4.7, 4.7, 4.7, 4.7, 4.7, 4.7])
     });
 
-    it('should be able to calculate the average sleep across all users',function(){
+    it('should be able to calculate the average sleep across all users', function() {
       expect(sleep.calcAverageSleepQuality()).to.equal(4.4875);
     });
 
+    it('should be able to find all the good sleepers last week', function() {
+      expect(sleep.findAllGreatSleepers("2019/06/17")).to.deep.equal(
+        [{
+            "userID": 1,
+            "date": "2019/06/11",
+            "hoursSlept": 3,
+            "sleepQuality": 4.7
+          },
+          {
+            "userID": 1,
+            "date": "2019/06/12",
+            "hoursSlept": 3,
+            "sleepQuality": 4.7
+          },
+          {
+            "userID": 1,
+            "date": "2019/06/13",
+            "hoursSlept": 3,
+            "sleepQuality": 4.7
+          }, {
+            "userID": 1,
+            "date": "2019/06/14",
+            "hoursSlept": 3,
+            "sleepQuality": 4.7
+          }, {
+            "userID": 1,
+            "date": "2019/06/15",
+            "hoursSlept": 3,
+            "sleepQuality": 4.7
+          }, {
+            "userID": 1,
+            "date": "2019/06/16",
+            "hoursSlept": 3,
+            "sleepQuality": 4.7
+          }, {
+            "userID": 1,
+            "date": "2019/06/17",
+            "hoursSlept": 3,
+            "sleepQuality": 4.7
+          }
+        ]
+      );
+    });
+
+
+    it('should be able to find the longestSleeper',function(){
+      expect(sleep.findLongestSleepers("2019/06/15")).to.deep.equal([{
+              "userID": 4,
+              "date": "2019/06/15",
+              "hoursSlept": 5.4,
+              "sleepQuality": 3
+            }]);
+    })
   });
 
 });

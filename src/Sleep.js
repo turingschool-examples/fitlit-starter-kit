@@ -4,72 +4,72 @@ class Sleep {
   }
   calcAvgSleepHrTotalDays(userID) {
     let filteredSleep = this.sleepData.filter(userEntry => userEntry.userID === userID);
-    let sum = filteredSleep.reduce(function(total, curVal) {
-      return total + curVal.hoursSlept;
+    let totalSleep = filteredSleep.reduce(function(runningTotal, curVal) {
+      return runningTotal + curVal.hoursSlept;
     }, 0);
-    return sum / filteredSleep.length;
+    return totalSleep / filteredSleep.length;
   }
   calcAvgSleepQualityTotalDays(userID) {
     let filteredSleepQuality = this.sleepData.filter(userEntry => userEntry.userID === userID);
-    let sum = filteredSleepQuality.reduce(function(total, curVal) {
-      return total + curVal.sleepQuality;
+    let totalQuality = filteredSleepQuality.reduce(function(runningTotal, curVal) {
+      return runningTotal + curVal.sleepQuality;
     }, 0);
-    return sum / filteredSleepQuality.length;
+    return totalQuality / filteredSleepQuality.length;
   }
-  getDailySleep(userID,date){
-        let filteredSleep = this.sleepData.filter(userEntry => userEntry.userID === userID);
-        return filteredSleep.find(day => day.date ===date).hoursSlept;
+  getDailySleep(userID, date) {
+    let filteredSleep = this.sleepData.filter(userEntry => userEntry.userID === userID);
+    return filteredSleep.find(day => day.date === date).hoursSlept;
   }
-  getDailySleepQuality(userID,date){
+  getDailySleepQuality(userID, date) {
     let filteredSleepQuality = this.sleepData.filter(userEntry => userEntry.userID === userID);
-    return filteredSleepQuality.find(day => day.date ===date).sleepQuality;
+    return filteredSleepQuality.find(day => day.date === date).sleepQuality;
   }
 
-  getPrevDaysSleepHrs(userID,startDate){
-    let userSleepDaysData = this.getPreviousDaysData(userID,startDate);
+  getPrevDaysSleepHrs(userID, startDate) {
+    let userSleepDaysData = this.getPreviousDaysData(userID, startDate);
     return userSleepDaysData.map(dailyUserSleep => dailyUserSleep.hoursSlept);
   }
 
-  getPrevDaysSleepQuality(userID,startDate){
-    let userSleepDaysData = this.getPreviousDaysData(userID,startDate);
+  getPrevDaysSleepQuality(userID, startDate) {
+    let userSleepDaysData = this.getPreviousDaysData(userID, startDate);
     return userSleepDaysData.map(dailyUserSleep => dailyUserSleep.sleepQuality);
   }
-  getPreviousDaysData(userID,startDate){
+  getPreviousDaysData(userID, startDate) {
     let startDateParsed = new Date(startDate);
     let endDateParsed = new Date(startDate);
-    endDateParsed.setDate(startDateParsed.getDate()-7);
+    endDateParsed.setDate(startDateParsed.getDate() - 7);
     let userSleepData = this.sleepData.filter(userEntry => userEntry.userID === userID);
-    let userSleepDaysData = userSleepData.filter(function(sleedDayData){
+    let userSleepDaysData = userSleepData.filter(function(sleedDayData) {
       let day = new Date(sleedDayData.date);
-      if(day <= startDateParsed && day >=endDateParsed){
+      if (day <= startDateParsed && day >= endDateParsed) {
         return true;
       }
     });
     return userSleepDaysData;
   }
-  calcAverageSleepQuality(){
+  calcAverageSleepQuality() {
     let totalSleepQuality = this.sleepData.reduce(function(total, curVal) {
       return total + curVal.sleepQuality;
     }, 0);
     return totalSleepQuality / this.sleepData.length;
   }
 
-  findAllGreatSleepers(startDate){
+  findAllGreatSleepers(startDate) {
     let startDateParsed = new Date(startDate);
     let endDateParsed = new Date(startDate);
-    endDateParsed.setDate(startDateParsed.getDate()-7);
-    let usersSleepPastWeek = this.sleepData.filter(function(sleedDayData){
+    endDateParsed.setDate(startDateParsed.getDate() - 7);
+    let usersSleepPastWeek = this.sleepData.filter(function(sleedDayData) {
       let day = new Date(sleedDayData.date);
-      if(day <= startDateParsed && day >=endDateParsed && sleedDayData.sleepQuality>3){
+      if (day <= startDateParsed && day >= endDateParsed && sleedDayData.sleepQuality > 3) {
         return true;
       }
     });
     return usersSleepPastWeek;
   }
-  findLongestSleepers(startDate){
-    let dailyUsers = this.sleepData.filter((element)=>element.date = startDate);
-    let longestSleeper = dailyUsers.sort((a,b)=> b.hoursSlept - a.hoursSlept);
-    return longestSleeper.filter((element)=> longestSleeper[0].hoursSlept === element.hoursSlept)
+  findLongestSleepers(startDate) {
+    let dailyUsers = this.sleepData.filter((element) => element.date = startDate);
+    let longestSleeper = dailyUsers.sort((a, b) => b.hoursSlept - a.hoursSlept);
+    return longestSleeper.filter((element) => longestSleeper[0].hoursSlept === element.hoursSlept)
 
   }
 }

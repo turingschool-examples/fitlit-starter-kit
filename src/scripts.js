@@ -17,10 +17,6 @@
   const database = new Database(hydrationData, activityData, sleepData);
   state.currentUserData = database.filterUser(state.currentUser.id);
 
-  const calculator = new Calculator(state.currentUser.id);
-
-  console.log(calculator);
-
   // Start invoking render method
 
   // Settings widget
@@ -28,6 +24,6 @@
   dom.render(dom.settings, settingsHtmlString);
 
   // Latest Activity widget
-  const latestActivityHtmlString = latestActivity.generateHtmlString();
+  const latestActivityHtmlString = latestActivity.generateHtmlString(state.currentUser.id, state);
   dom.render(dom.latestActivity, latestActivityHtmlString);
 })();

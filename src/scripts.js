@@ -7,9 +7,7 @@ window.onload = loadHandler;
 function loadHandler() {
   loadUser()
   loadAllUsers()
-  console.log(allUsers)
   displayUserInfo()
-  console.log(allUsers.averageStepsAllUsers());
 }
 
 function loadUser() {
@@ -26,7 +24,7 @@ function displayUserInfo() {
   <h1>Welcome to Activity Tracker!</h1>
   <h2 class = 'user-name'>Hello! ${currentUser.returnUserName()}</h2>
   <h2 class = 'user-step-goal'>Step Goal: ${currentUser.dailyStepGoal}</h2>
-  <h2 class = 'users-step-average'>All Users Step Average: ${allUsers.averageStepsAllUsers()}</h2>
+  <h2 class = 'users-step-average'>All Users Step Goal Average: ${allUsers.averageStepsAllUsers()}</h2>
   <h2 class = 'user-stride-length'>Stride Length:${currentUser.strideLength}</h2>`
 }
 

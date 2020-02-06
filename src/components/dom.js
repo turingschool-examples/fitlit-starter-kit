@@ -9,7 +9,13 @@ const dom = {
   reportCard: this.main.querySelector(),
   settings: this.main.querySelector(),
   welcome: this.main.querySelector(),
-  render(targetNode, htmlFragment) {
-    this[targetNode].appendChild(htmlFragment);
+  stringToFragment(string) {
+    let renderer = document.createElement("template");
+    renderer.innerHTML = string;
+    return renderer.content;
+  },
+  render(targetNode, htmlString) {
+    const fragment = this.stringToFragment(htmlString);
+    this[targetNode].appendChild(fragment);
   }
 };

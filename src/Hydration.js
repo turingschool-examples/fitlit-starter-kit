@@ -17,8 +17,8 @@ class Hydration {
   // fluidConsumedALlTime(){
   //
   // }
-}
+// }
 
-if(typeof module !== 'undefined') {
+if (typeof module !== 'undefined') {
   module.exports = Hydration;
 };

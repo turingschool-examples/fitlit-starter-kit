@@ -12,6 +12,16 @@ const latestActivity = {
 
     const userHydration = calculator.getUserDayTotal(state.currentUserData.hydrationData, "2019/06/15", "numOunces");
 
+    const userAllTimeSteps = calculator.getUserAllTimeAvg(state.currentUserData.activityData, "numSteps");
+    const userAllTimeActive = calculator.getUserAllTimeAvg(state.currentUserData.activityData, "minutesActive");
+    const userAllTimeMiles = calculator.stepsToMiles(state, "2019/06/15");
+    const userAllTimeFloorsClimbed = calculator.getUserAllTimeAvg(state.currentUserData.activityData, "flightsOfStairs");
+
+    const overallSleep = calculator.getUserAllTimeAvg(state.currentUserData.sleepData, "hoursSlept");
+    const overallSleepQuality = calculator.getUserAllTimeAvg(state.currentUserData.sleepData, "sleepQuality");
+
+    const overallHydration = calculator.getUserAllTimeAvg(state.currentUserData.hydrationData, "numOunces");
+
     return `<h2>Latest Activity</h2>
               <div class="activity-data-today-1 widget-block red">
                 <i class="fas fa-shoe-prints"></i>
@@ -36,23 +46,23 @@ const latestActivity = {
               <h2 class="middle-label">Your Daily Average</h2>
               <div class="activity-data-today-average-1 widget-block-small">
                 <i class="fas fa-shoe-prints"></i>
-                <p class="user-daily-steps-js">10.5K</p>
+                <p class="user-daily-steps-js">${userAllTimeSteps}</p>
                 <i class="fas fa-walking"></i>
-                <p class="average-daily-active-time-js">10.5K</p>
+                <p class="average-daily-active-time-js">${userAllTimeActive}</p>
               </div>
               <div class="activity-data-today-average-2 widget-block-small">
                 <i class="fas fa-ruler"></i>
                 <p class="user-daily-miles-js">5.2m</p>
                 <i class="far fa-building"></i>
-                <p class="average-daily-floors-js">2</p>
+                <p class="average-daily-floors-js">${userAllTimeFloorsClimbed}</p>
               </div>
               <div class="sleep-data-today-average widget-block-small">
                 <i class="fas fa-bed"></i>
-                <p class="user-daily-sleep-js">8.2hrs</p>
+                <p class="user-daily-sleep-js">${overallSleep}</p>
                 <i class="far fa-thumbs-up"></i>
-                <p class="average-daily-sleep-quality-js">3</p>
+                <p class="average-daily-sleep-quality-js">${overallSleepQuality}</p>
                 <i class="fas fa-mug-hot"></i>
-                <p class="average-daily-hydration-js">55oz</p>
+                <p class="average-daily-hydration-js">${overallHydration}oz</p>
               </div>`;
   }
 };

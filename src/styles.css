@@ -82,6 +82,36 @@ p {
   padding: 2.5%;
 }
 
+.latest-week__article {
+  display: flex;
+  flex-direction: column;
+}
+
+.latest-week__hydration {
+  background: var(--blue);
+}
+
+.latest-week__sleep {
+  background: var(--yellow);
+}
+
+.latest-week__activity {
+  background: var(--light-red);
+}
+
+.latest-week__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.latest-week__wrapper-activity {
+  display: flex;
+}
+
+.latest-week__wrapper-sleep {
+  display: flex;
+}
+
 .light-red {
   background-color: var(--light-red);
 }

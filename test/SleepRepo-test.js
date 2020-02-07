@@ -20,4 +20,8 @@ describe('User Repo', () => {
   it('should be an instance of the user repo', () => {
     expect(sleepRepo).to.be.an.instanceof(SleepRepo);
   })
+
+  it('should be return all users average sleep quality', () => {
+    expect(sleepRepo.averageSleepQuality()).to.equal(3);
+  })
 });

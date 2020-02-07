@@ -8,10 +8,12 @@ class UserRepo {
   }
 
   averageStepsAllUsers() {
-    return this.data.reduce((acc, users) => {
+    let averageAll = this.data.reduce((acc, users) => {
     acc += users.dailyStepGoal;
-    return Math.round(acc / this.data.length);
+    return acc
     }, 0)
+    console.log(averageAll / this.data.length)
+    return Math.round(averageAll / this.data.length);
   }
 }
 

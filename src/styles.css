@@ -1,69 +1,36 @@
+/* ---------- Base styles ---------- */
+:root {
+  --red: #ff8585;
+  --light-red: rgba(255, 133, 133, 0.36);
+  --blue: #98fffb;
+  --yellow: #ffff7b;
+}
+
 * {
   margin: 0;
+  outline: none;
   padding: 0;
   box-sizing: border-box;
 }
 
+aside {
+  border: solid 1px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 5%;
+  width: 20%;
+}
+
 h2 {
-  font-family: 'PT Sans Narrow', sans-serif;
+  font-family: "PT Sans Narrow", sans-serif;
   font-size: 15px;
-
 }
 
-.middle-label {
-  margin: 7.5% 0;
-}
-
-p {
-  font-family: 'Noto Sans', sans-serif;
-}
-
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
-}
-
-nav {
-  height: 7.5%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.red {
-  background-color: #FF8585;
-}
-
-.light-red {
-  background-color: rgba(255, 133, 133, 0.36);
-}
-
- .blue {
-   background-color: #98FFFB;
- }
-
- .yellow {
-   background-color: #FFFF7B;
- }
-
-.fitlit-nav-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1%;
-}
-
-.user-profile {
-  display: flex;
-}
-
-.user-profile > * {
-  margin: 5%;
-}
-
-.app-container {
-  border: solid 1px black;
-  height: 92.5%;
-  display: flex;
 }
 
 main {
@@ -74,34 +41,57 @@ main {
   grid-auto-rows: 50%;
 }
 
-aside {
-  border: solid 1px black;
-  width: 20%;
-  padding: 5%;
+nav {
+  height: 7.5%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
-.small-card {
-  border: solid 1px rgba(0,0,0,0.25);
-  margin: 5%;
-  padding: 5%;
-  overflow: scroll;
-  border-radius: 2.5%;
+p {
+  font-family: "Noto Sans", sans-serif;
 }
 
-.large-card {
-  border: solid 1px rgba(0,0,0,0.25);
-  grid-column-start: 2;
-  grid-column-end: 4;
-  margin: 2.5%;
-  padding: 2.5%;
-  border-radius: 2.5%;
+/* ---------- BEM ---------- */
+.app-container {
+  border: solid 1px black;
+  height: 92.5%;
+  display: flex;
+}
+
+.blue {
+  background-color: var(--blue);
+}
+
+.fitlit-nav-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1%;
 }
 
 .friends {
   border: solid 1px black;
+}
+
+.large-card {
+  border: solid 1px rgba(0, 0, 0, 0.25);
+  border-radius: 2.5%;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  margin: 2.5%;
+  padding: 2.5%;
+}
+
+.light-red {
+  background-color: var(--light-red);
+}
+
+.middle-label {
+  margin: 7.5% 0;
+}
+
+.red {
+  background-color: var(--red);
 }
 
 .resources {
@@ -112,11 +102,27 @@ aside {
   border: solid 1px black;
 }
 
-.widget-block {
+.small-card {
+  border: solid 1px rgba(0, 0, 0, 0.25);
+  border-radius: 2.5%;
+  margin: 5%;
+  overflow: scroll;
+  padding: 5%;
+}
+
+.user-profile {
   display: flex;
-  margin: 5% 0;
+}
+
+.user-profile > * {
+  margin: 5%;
+}
+
+.widget-block {
   border-radius: 5%;
+  display: flex;
   justify-content: space-around;
+  margin: 5% 0;
   padding: 2.5% 5%;
 }
 
@@ -127,9 +133,9 @@ aside {
 
 .widget-block-small {
   display: flex;
+  font-size: 15px;
   justify-content: center;
   padding: 2% 5%;
-  font-size: 15px;
 }
 
 .widget-block-small > * {
@@ -140,3 +146,11 @@ aside {
 .widget-block-small far {
   font-size: 1rem;
 }
+
+.yellow {
+  background-color: var(--yellow);
+}
+
+/* ---------- Active states ---------- */
+
+/* ---------- Media queries ---------- */

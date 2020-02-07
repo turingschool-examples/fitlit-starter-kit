@@ -20,6 +20,12 @@ class Database {
 
     return userData;
   }
+
+  getCurrentDay(currentUserData) {
+    return currentUserData.hydrationData[
+      currentUserData.hydrationData.length - 1
+    ].date;
+  }
 }
 
 if (typeof module !== "undefined") {

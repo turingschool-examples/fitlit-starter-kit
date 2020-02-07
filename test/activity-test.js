@@ -50,8 +50,8 @@ describe('Activity', function() {
     expect(activity.getMinutesActive(1, "2019/06/16")).to.equal(138);
   });
 
-  it('should show the fluids consumed in the past 7 days', function() {
-    hydrationData = [
+  it('should show the minutes active in the past 7 days', function() {
+    activityData = [
       {
         "userID": 1,
         "date": "2019/09/16",
@@ -109,9 +109,13 @@ describe('Activity', function() {
         "flightsOfStairs": 23
       }
     ];
-    hydration = new Hydration(hydrationData);
+    activity = new Activity(activityData);
   
     
-    expect(hydration.calculateActiveAverage(1, "2019/09/22")).to.deep.equal(118.28);
+    expect(activity.getPrevDaysActive(1, "2019/09/22")).to.deep.equal([140,134, 56, 164, 120, 124, 90]); 
+  });
+
+  it('should be able to calculate the average minutes active from the past 7 days', function() {
+    expect(activity.calculateActiveAverage()).to.equal(118.28);
   });
 });

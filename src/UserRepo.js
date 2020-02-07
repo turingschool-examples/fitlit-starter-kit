@@ -12,7 +12,6 @@ class UserRepo {
     acc += users.dailyStepGoal;
     return acc
     }, 0)
-    console.log(Math.round(averageAll / this.data.length))
     return Math.round(averageAll / this.data.length);
   }
 }

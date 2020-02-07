@@ -35,4 +35,8 @@
   // Latest week widget
   const latestWeekHtmlString = latestWeek.generateHtmlString(state);
   dom.render(dom.latestWeek, latestWeekHtmlString);
+
+  // Welcome name widget
+  const welcomeHtmlString = welcome.generateHtmlString(state);
+  dom.render(dom.welcome, welcomeHtmlString);
 })();

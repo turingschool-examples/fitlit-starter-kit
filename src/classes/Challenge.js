@@ -13,8 +13,8 @@ class Challenge {
   }
   getUsersSteps(Calculator, data) {
     this.users.forEach(user => {
-      const calculator = new Calculator(1);
-      const userSteps = calculator.getUserWeekTotal(data, "2019/06/21", "numSteps");
+      let calculator = new Calculator(user);
+      let userSteps = calculator.getUserWeekTotal(data, "2019/06/21", "numSteps");
       this.stepCounts.push(userSteps)
     })
   };

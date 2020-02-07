@@ -47,14 +47,13 @@ describe("Challenge", function() {
   });
 
   it("Should be able to get step counts for each user", function() {
-    const test = calculatorA.getUserWeekTotal(activityDataTest, "2019/06/21", "numSteps");
-    console.log(test);
-
+    const test = calculatorB.getUserWeekTotal(activityDataTest, "2019/06/21", "numSteps");
+    // console.log(test);
+    //
     expect(challenge.stepCounts[0]).to.deep.equal(
       calculatorA.getUserWeekTotal(activityDataTest, "2019/06/21", "numSteps")
-      // calculatorB.getUserWeekTotal(database.activityData, "2019/06/15", "numSteps"),
-      // calculatorC.getUserWeekTotal(database.activityData, "2019/06/15", "numSteps"),
-      // calculatorD.getUserWeekTotal(database.activityData, "2019/06/15", "numSteps")
     );
+
+    expect(challenge.stepCounts[3]).to.deep.equal(test);
   });
 });

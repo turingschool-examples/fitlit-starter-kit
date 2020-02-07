@@ -8,7 +8,7 @@ const dom = {
   latestWeek: document.querySelector(".latest-week"),
   // reportCard: this.main.querySelector(),
   settings: document.querySelector(".settings"),
-  // welcome: this.main.querySelector(),
+  welcome: document.querySelector(".user-profile"),
   stringToFragment(string) {
     let renderer = document.createElement("template");
     renderer.innerHTML = string;

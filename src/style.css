@@ -1,7 +1,8 @@
 body {
   background-color: #5CDB95;
 }
-.profile-section {
+.profile-section,
+.hydration-section {
   background-color: #EDFDE1;
   height: 25em;
   width: 33%;

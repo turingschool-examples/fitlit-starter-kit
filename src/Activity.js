@@ -28,7 +28,14 @@ class Activity {
     return userActiveDaysData.map(data => data.minutesActive);
   }
 
-
+  calculateActiveAverage(userID, startDate) {
+    let prevMinutesActive = this.getPrevDaysActive(userID, startDate);
+    let totalActiveMinutes = prevMinutesActive.reduce((total, curVal) => {
+      total += curVal;
+      return total
+    }, 0);
+    return Number((totalActiveMinutes / prevMinutesActive.length).toFixed(2));
+  }
 }
 
 if (typeof module !== 'undefined') {

@@ -116,6 +116,66 @@ describe('Activity', function() {
   });
 
   it('should be able to calculate the average minutes active from the past 7 days', function() {
-    expect(activity.calculateActiveAverage()).to.equal(118.28);
+    activityData = [
+      {
+        "userID": 1,
+        "date": "2019/09/16",
+        "numSteps": 3577,
+        "minutesActive": 140,
+        "flightsOfStairs": 16
+      },
+      {
+        "userID": 1,
+        "date": "2019/09/17",
+        "numSteps": 2456,
+        "minutesActive": 134,
+        "flightsOfStairs": 23
+      },
+      {
+        "userID": 1,
+        "date": "2019/09/18",
+        "numSteps": 5342,
+        "minutesActive": 56,
+        "flightsOfStairs": 45
+      },
+      {
+        "userID": 1,
+        "date": "2019/09/19",
+        "numSteps": 4237,
+        "minutesActive": 164,
+        "flightsOfStairs": 38
+      },
+      {
+        "userID": 1,
+        "date": "2019/09/20",
+        "numSteps": 6783,
+        "minutesActive": 120,
+        "flightsOfStairs": 78
+      },
+      {
+        "userID": 1,
+        "date": "2019/09/21",
+        "numSteps": 3769,
+        "minutesActive": 124,
+        "flightsOfStairs": 26
+      },
+      {
+        "userID": 1,
+        "date": "2019/09/22",
+        "numSteps": 2975,
+        "minutesActive": 90,
+        "flightsOfStairs": 33
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/17",
+        "numSteps": 3455,
+        "minutesActive": 50,
+        "flightsOfStairs": 23
+      }
+    ];
+    activity = new Activity(activityData);
+
+    expect(activity.calculateActiveAverage(1, "2019/09/22")).to.equal(118.29);
   });
 });

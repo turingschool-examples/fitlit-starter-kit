@@ -33,9 +33,7 @@ describe("Challenge", function() {
 
   it("should be able to log trends, a goal, its current users, and their ranking",
       function() {
-        expect(challenge.trends).to.equal(null);
-        expect(challenge.leaderboard).to.equal(null);
-        expect(challenge.challengeGoal).to.equal(5000);
+        expect(challenge.challengeGoal).to.equal(50000);
         expect(challenge.users).to.be.an.instanceof(Array);
     });
   it("Should be able to get users for the challenge", function() {
@@ -48,8 +46,8 @@ describe("Challenge", function() {
 
   it("Should be able to get step counts for each user", function() {
     const test = calculatorB.getUserWeekTotal(activityDataTest, "2019/06/21", "numSteps");
-    // console.log(test);
-    //
+    console.log(challenge);
+
     expect(challenge.stepCounts[0]).to.deep.equal(
       calculatorA.getUserWeekTotal(activityDataTest, "2019/06/21", "numSteps")
     );

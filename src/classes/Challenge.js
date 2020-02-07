@@ -1,9 +1,7 @@
 class Challenge {
   constructor(currentUser) {
-    this.current
     this.trends = null,
-    this.leaderboard = null,
-    this.challengeGoal = 5000,
+    this.challengeGoal = 50000,
     this.users = [];
     this.stepCounts = [];
   }
@@ -15,12 +13,12 @@ class Challenge {
     this.users.forEach(user => {
       let calculator = new Calculator(user);
       let userSteps = calculator.getUserWeekTotal(data, "2019/06/21", "numSteps");
+      userSteps.metrics = calculator.calculateTotal(userSteps);
       this.stepCounts.push(userSteps)
-    })
+    });
+    
+    this.stepCounts.sort((a,b) => b-a);
   };
-  // getLeaderboard() {
-  //
-  // };
 };
 
 if(typeof module !== 'undefined'){

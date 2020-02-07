@@ -2,33 +2,24 @@ class Challenge {
   constructor(currentUser) {
     this.trends = null,
     this.challengeGoal = 50000,
-    this.users = [];
-    this.stepCounts = [];
+    this.userIDs = [];
+    this.userData = [];
   }
   getUsers(currentUser) {
-    this.users.push(...currentUser.friends);
-    this.users.unshift(currentUser.id)
+    this.userIDs.push(...currentUser.friends);
+    this.userIDs.unshift(currentUser.id)
   }
-  getUsersSteps(Calculator, data) {
-    this.users.forEach(user => {
+  getUsersSteps(Calculator, data, userRepo) {
+    this.userIDs.forEach(user => {
       let calculator = new Calculator(user);
       let userSteps = calculator.getUserWeekTotal(data, "2019/06/21", "numSteps");
       userSteps.id = user;
+      userSteps.name = userRepo.find(person => person.id === user).name;
       userSteps.metrics = calculator.calculateTotal(userSteps);
-      this.stepCounts.push(userSteps)
+      this.userData.push(userSteps)
     });
 
-    this.stepCounts.sort((a, b) => b.metrics - a.metrics);
-  };
-
-  getFriendNames(repo) {
-    return repo.users.reduce((names, user) => {
-      if (this.stepCounts
-        .find(challengeUser => challengeUser.id === user.id)) {
-        names.push(user.getFirstName());
-        return names;
-      }
-    }, []);
+    this.userData.sort((a, b) => b.metrics - a.metrics);
   };
 };
 

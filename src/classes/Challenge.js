@@ -13,11 +13,12 @@ class Challenge {
     this.users.forEach(user => {
       let calculator = new Calculator(user);
       let userSteps = calculator.getUserWeekTotal(data, "2019/06/21", "numSteps");
+      userSteps.id = user;
       userSteps.metrics = calculator.calculateTotal(userSteps);
       this.stepCounts.push(userSteps)
     });
-    
-    this.stepCounts.sort((a,b) => b-a);
+
+    this.stepCounts.sort((a, b) => b.metrics - a.metrics);
   };
 };
 

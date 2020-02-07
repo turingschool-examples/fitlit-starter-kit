@@ -5,16 +5,18 @@ class Challenge {
     this.leaderboard = null,
     this.challengeGoal = 5000,
     this.users = [];
-    this.stepcounts = [];
+    this.stepCounts = [];
   }
   getUsers(currentUser) {
     this.users.push(...currentUser.friends);
     this.users.unshift(currentUser.id)
   }
   getUsersSteps(Calculator, data) {
-    // const calculatorA = new Calculator(1);
-    // const userA = calculatorA.getUserWeekTotal(data, "2019/06/15", "numSteps");
-    // console.log(userA);
+    this.users.forEach(user => {
+      const calculator = new Calculator(1);
+      const userSteps = calculator.getUserWeekTotal(data, "2019/06/21", "numSteps");
+      this.stepCounts.push(userSteps)
+    })
   };
   // getLeaderboard() {
   //

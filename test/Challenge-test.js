@@ -13,11 +13,13 @@ describe("Challenge", function() {
   let user;
   let challenge;
   let calculatorA;
+  let calculatorB;
   let database;
 
   before("Set globals", function() {
     database = new Database();
     calculatorA = new Calculator(1);
+    calculatorB = new Calculator(4);
     userRepository = new UserRepository(userDataTest);
     userRepository.instantiateUsers(User);
     user = new User(userRepository.getUserData(1));
@@ -47,11 +49,11 @@ describe("Challenge", function() {
   });
 
   it("Should be able to get step counts for each user", function() {
-    const test = calculatorA.getUserWeekTotal(activityDataTest, "2019/06/15", "numSteps");
+    const test = calculatorA.getUserWeekTotal(activityDataTest, "2019/06/21", "numSteps");
     console.log(test);
 
     expect(challenge.stepCounts[0]).to.equal([
-      calculatorA.getUserWeekTotal(database.activityData, "2019/06/15", "numSteps"),
+      calculatorA.getUserWeekTotal(database.activityData, "2019/06/21", "numSteps"),
       // calculatorB.getUserWeekTotal(database.activityData, "2019/06/15", "numSteps"),
       // calculatorC.getUserWeekTotal(database.activityData, "2019/06/15", "numSteps"),
       // calculatorD.getUserWeekTotal(database.activityData, "2019/06/15", "numSteps")

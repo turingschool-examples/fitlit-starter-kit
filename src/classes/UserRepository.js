@@ -1,13 +1,10 @@
-if (typeof module !== "undefined") {
-  const User = require("../classes/User");
-}
 class UserRepository {
   constructor(userData) {
     this.userData = userData;
     this.users = [];
   }
 
-  instantiateUsers() {
+  instantiateUsers(User) {
     this.userData.forEach(person => {
       this.users.push(new User(person));
     });

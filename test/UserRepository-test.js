@@ -10,7 +10,7 @@ describe("UserRepository", function() {
 
   before("instantiate UserRepository", function() {
     userRepository = new UserRepository(userDataTest);
-    userRepository.instantiateUsers();
+    userRepository.instantiateUsers(User);
     mockUser = userRepository.users[0];
   });
 

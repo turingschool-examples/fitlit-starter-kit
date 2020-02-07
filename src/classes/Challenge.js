@@ -20,7 +20,18 @@ class Challenge {
 
     this.stepCounts.sort((a, b) => b.metrics - a.metrics);
   };
+
+  getFriendNames(repo) {
+    return repo.users.reduce((names, user) => {
+      if (this.stepCounts
+        .find(challengeUser => challengeUser.id === user.id)) {
+        names.push(user.getFirstName());
+        return names;
+      }
+    }, []);
+  };
 };
+
 
 if(typeof module !== 'undefined'){
   module.exports = Challenge;

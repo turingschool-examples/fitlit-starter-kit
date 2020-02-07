@@ -30,7 +30,11 @@ class Calculator {
       metricData.push(this.getUserDayTotal(category, currentDay, metric));
     });
 
-    return { dates: week, metrics: metricData };
+    const weekData = { dates: week, metrics: metricData }
+
+    console.log(weekData);
+
+    return weekData;
   }
 
   stepsToMiles(state, date) {

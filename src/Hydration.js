@@ -1,7 +1,7 @@
 class Hydration {
   constructor(hydrationData, userID) {
     this.hydrationData = hydrationData;
-    this.userID = this.userID;
+    this.userID = userID;
   }
 
   fluidConsumedByDate(date) {
@@ -11,17 +11,18 @@ class Hydration {
      return fluid.numOunces;
   }
 
-  // fluidConsumededWeekly (date) {
-  //
-  // }
+  fluidConsumededWeekly(id) {
+    return this.hydrationData.slice(-7).map(day => day.numOunces);
+  }
 
   fluidConsumedALlTime(id){
-    return this.hydrationData.reduce((acc, all) => {
+     let allTime = this.hydrationData.reduce((acc, all) => {
       if(all.userID === id) {
         acc += all.numOunces;
       }
     return acc
     }, 0)
+    return allTime;
   }
 }
 

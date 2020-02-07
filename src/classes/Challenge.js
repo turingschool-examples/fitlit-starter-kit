@@ -1,19 +1,23 @@
 class Challenge {
-  constructor() {
+  constructor(currentUser) {
     this.trends = null,
-    this.leaderboard = null,
-    this.challengeGoal = 5000,
+    this.challengeGoal = 50000,
     this.users = [];
+    this.stepCounts = [];
   }
   getUsers(currentUser) {
     this.users.push(...currentUser.friends);
-    this.users.unshift(currentUser)
+    this.users.unshift(currentUser.id)
   }
-  getTrends() {
-
-  };
-  getLeaderboard() {
-
+  getUsersSteps(Calculator, data) {
+    this.users.forEach(user => {
+      let calculator = new Calculator(user);
+      let userSteps = calculator.getUserWeekTotal(data, "2019/06/21", "numSteps");
+      userSteps.metrics = calculator.calculateTotal(userSteps);
+      this.stepCounts.push(userSteps)
+    });
+    
+    this.stepCounts.sort((a,b) => b-a);
   };
 };
 

@@ -4,7 +4,7 @@ class Calculator {
   }
 
   getUserDayTotal(category, date, metric) {
-    return category.find(day => day.date === date)[metric];
+    return category.find(day => day.date === date && day.userID === this.currentDataId)[metric];
   }
 
   getUserAllTimeAvg(category, metric) {
@@ -30,8 +30,14 @@ class Calculator {
       metricData.push(this.getUserDayTotal(category, currentDay, metric));
     });
 
-    return { dates: week, metrics: metricData };
+    const weekData = { dates: week, metrics: metricData };
+
+    return weekData;
   }
+
+  calculateTotal(data) {
+    return data.metrics.reduce((a,b) => {a += b; return a}, 0);
+  };
 
   stepsToMiles(state, date) {
     const MILE = 5280;

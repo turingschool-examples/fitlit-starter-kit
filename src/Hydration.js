@@ -1,8 +1,6 @@
 class Hydration {
   constructor(usersRepository) {
     this.userID = usersRepository.id;
-    this.date;
-    this.numOunces;
   }
 
   calculateAverageFluidIntakeForUser = (hydrationDatas) => {
@@ -42,7 +40,7 @@ class Hydration {
 
     return userWeekIntake;
   }
-  
+
 }
 
 if (typeof module !== 'undefined') {

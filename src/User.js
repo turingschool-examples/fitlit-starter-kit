@@ -14,7 +14,6 @@ class User {
     return firstName[0];
   }
 
-//   returnUser
  }
 
 if (typeof module !== 'undefined') {

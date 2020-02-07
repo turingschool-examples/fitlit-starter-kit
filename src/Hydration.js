@@ -17,9 +17,6 @@ class Hydration {
   }
  
   getPrevDaysHydration(userID, startDate) {
-    // let currentUser = this.hydrationData.filter(data => data.userID === userID);
-    // let lastWeek = currentUser.slice(-7);
-    //   return lastWeek.map(day => day.numOunces)
     let startDateParsed = new Date(startDate);
     let endDateParsed = new Date(startDate);
     endDateParsed.setDate(startDateParsed.getDate() - 7);

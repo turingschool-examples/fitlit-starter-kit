@@ -1,6 +1,6 @@
 class Activity {
-  constructor() {
-    this.userID;
+  constructor(usersRepository) {
+    this.userID = usersRepository.id;
     this.date;
     this.numSteps;
     this.minutesActive;

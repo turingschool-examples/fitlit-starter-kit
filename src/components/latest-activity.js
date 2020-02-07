@@ -1,26 +1,67 @@
 const latestActivity = {
-
   generateHtmlString(id, state) {
     const calculator = new Calculator(id);
-    const userDailySteps = calculator.getUserDayTotal(state.currentUserData.activityData, "2019/06/15", "numSteps");
-    const userActiveTime = calculator.getUserDayTotal(state.currentUserData.activityData, "2019/06/15", "minutesActive");
-    const userMiles = calculator.stepsToMiles(state, "2019/06/15");
-    const userFloorsClimbed = calculator.getUserDayTotal(state.currentUserData.activityData, "2019/06/15", "flightsOfStairs");
+    const userDailySteps = calculator.getUserDayTotal(
+      state.currentUserData.activityData,
+      state.currentDay,
+      "numSteps"
+    );
+    const userActiveTime = calculator.getUserDayTotal(
+      state.currentUserData.activityData,
+      state.currentDay,
+      "minutesActive"
+    );
+    const userMiles = calculator.stepsToMiles(state, state.currentDay);
+    const userFloorsClimbed = calculator.getUserDayTotal(
+      state.currentUserData.activityData,
+      state.currentDay,
+      "flightsOfStairs"
+    );
 
-    const userSleep = calculator.getUserDayTotal(state.currentUserData.sleepData, "2019/06/15", "hoursSlept");
-    const userSleepQuality = calculator.getUserDayTotal(state.currentUserData.sleepData, "2019/06/15", "sleepQuality");
+    const userSleep = calculator.getUserDayTotal(
+      state.currentUserData.sleepData,
+      state.currentDay,
+      "hoursSlept"
+    );
+    const userSleepQuality = calculator.getUserDayTotal(
+      state.currentUserData.sleepData,
+      state.currentDay,
+      "sleepQuality"
+    );
 
-    const userHydration = calculator.getUserDayTotal(state.currentUserData.hydrationData, "2019/06/15", "numOunces");
+    const userHydration = calculator.getUserDayTotal(
+      state.currentUserData.hydrationData,
+      state.currentDay,
+      "numOunces"
+    );
 
-    const userAllTimeSteps = calculator.getUserAllTimeAvg(state.currentUserData.activityData, "numSteps");
-    const userAllTimeActive = calculator.getUserAllTimeAvg(state.currentUserData.activityData, "minutesActive");
-    const userAllTimeMiles = calculator.stepsToMiles(state, "2019/06/15");
-    const userAllTimeFloorsClimbed = calculator.getUserAllTimeAvg(state.currentUserData.activityData, "flightsOfStairs");
+    const userAllTimeSteps = calculator.getUserAllTimeAvg(
+      state.currentUserData.activityData,
+      "numSteps"
+    );
+    const userAllTimeActive = calculator.getUserAllTimeAvg(
+      state.currentUserData.activityData,
+      "minutesActive"
+    );
+    const userAllTimeMiles = calculator.stepsToMiles(state, state.currentDay);
+    const userAllTimeFloorsClimbed = calculator.getUserAllTimeAvg(
+      state.currentUserData.activityData,
+      "flightsOfStairs"
+    );
 
-    const overallSleep = calculator.getUserAllTimeAvg(state.currentUserData.sleepData, "hoursSlept");
-    const overallSleepQuality = calculator.getUserAllTimeAvg(state.currentUserData.sleepData, "sleepQuality");
+    const overallSleep = calculator.getUserAllTimeAvg(
+      state.currentUserData.sleepData,
+      "hoursSlept"
+    );
+    const overallSleepQuality = calculator.getUserAllTimeAvg(
+      state.currentUserData.sleepData,
+      "sleepQuality"
+    );
 
-    const overallHydration = calculator.getUserAllTimeAvg(state.currentUserData.hydrationData, "numOunces");
+    const overallHydration = calculator.getUserAllTimeAvg(
+      state.currentUserData.hydrationData,
+      "numOunces"
+    );
 
     return `<h2>Latest Activity</h2>
               <div class="activity-data-today-1 widget-block red">

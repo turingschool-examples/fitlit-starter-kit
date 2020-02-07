@@ -9,7 +9,7 @@
   // Instantiate UserRepository, User instances
   // Set state.currentUser to the current userId
   const userRepository = new UserRepository(userData);
-  userRepository.instantiateUsers();
+  userRepository.instantiateUsers(User);
   const randomId = userRepository.getRandomUserId();
   state.currentUser = userRepository.getUserData(randomId);
 
@@ -17,14 +17,22 @@
   // Set state.currentUserData to the data of the currentUser
   const database = new Database(hydrationData, activityData, sleepData);
   state.currentUserData = database.filterUser(state.currentUser.id);
+  state.currentDay = database.getCurrentDay(state.currentUserData);
 
   // Start invoking render method
-
+  // Please use state.currentDay for calculator date calls
   // Settings widget
   const settingsHtmlString = settings.generateHtmlString(state.currentUser);
   dom.render(dom.settings, settingsHtmlString);
 
   // Latest Activity widget
-  const latestActivityHtmlString = latestActivity.generateHtmlString(state.currentUser.id, state);
+  const latestActivityHtmlString = latestActivity.generateHtmlString(
+    state.currentUser.id,
+    state
+  );
   dom.render(dom.latestActivity, latestActivityHtmlString);
+
+  // Latest week widget
+  const latestWeekHtmlString = latestWeek.generateHtmlString(state);
+  dom.render(dom.latestWeek, latestWeekHtmlString);
 })();

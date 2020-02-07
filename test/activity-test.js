@@ -99,4 +99,15 @@ describe('Activity', function() {
   it('should be able to calculate the average minutes active from the past 7 days', function() {
     expect(activity.calculateActiveAverage(1, "2019/09/22")).to.equal(118.29);
   });
+
+  describe('check reached goal', function() {
+    
+    it('should say if your goal is reached', function() {
+      expect(activity.checkReachedStepGoal()).to.equal('Horray! :D You have reached your step goal for the day');
+    });
+    
+    it('should say if your goal is not reached', function() {
+      expect(activity.checkReachedStepGoal()).to.equal('Boo! :( You have not reached your step goal for the day');
+    });
+  });
 });

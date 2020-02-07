@@ -6,7 +6,6 @@ const UserRepository = require('../src/classes/UserRepository');
 const Calculator = require('../src/classes/Calculator');
 const userDataTest = require("../test-data/users-test");
 const activityDataTest = require("../test-data/activity-test");
-const Database = require("../src/classes/Database");
 
 describe("Challenge", function() {
   let userRepository;
@@ -17,7 +16,6 @@ describe("Challenge", function() {
   let database;
 
   before("Set globals", function() {
-    database = new Database();
     calculatorA = new Calculator(1);
     calculatorB = new Calculator(4);
     userRepository = new UserRepository(userDataTest);
@@ -26,7 +24,7 @@ describe("Challenge", function() {
     challenge = new Challenge();
 
     challenge.getUsers(user);
-    // challenge.getUsersSteps(Calculator, activityDataTest);
+    challenge.getUsersSteps(Calculator, activityDataTest);
   })
 
   it("should be an instance of Challenge", function() {
@@ -52,11 +50,11 @@ describe("Challenge", function() {
     const test = calculatorA.getUserWeekTotal(activityDataTest, "2019/06/21", "numSteps");
     console.log(test);
 
-    expect(challenge.stepCounts[0]).to.equal([
-      calculatorA.getUserWeekTotal(database.activityData, "2019/06/21", "numSteps"),
+    expect(challenge.stepCounts[0]).to.deep.equal(
+      calculatorA.getUserWeekTotal(activityDataTest, "2019/06/21", "numSteps")
       // calculatorB.getUserWeekTotal(database.activityData, "2019/06/15", "numSteps"),
       // calculatorC.getUserWeekTotal(database.activityData, "2019/06/15", "numSteps"),
       // calculatorD.getUserWeekTotal(database.activityData, "2019/06/15", "numSteps")
-    ]);
+    );
   });
 });

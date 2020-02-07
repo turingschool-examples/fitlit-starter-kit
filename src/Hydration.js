@@ -21,7 +21,7 @@ class Hydration {
     let endDateParsed = new Date(startDate);
     endDateParsed.setDate(startDateParsed.getDate() - 7);
     let userHydrationData = this.hydrationData.filter(userEntry => userEntry.userID === userID);
-    let userHydrationDaysData = userHydrationData.filter(function(hydrationDayData) {
+    let userHydrationDaysData = userHydrationData.filter((hydrationDayData) => {
       let day = new Date(hydrationDayData.date);
       if (day <= startDateParsed && day >= endDateParsed) {
         return true;

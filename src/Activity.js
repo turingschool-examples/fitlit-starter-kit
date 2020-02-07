@@ -19,7 +19,7 @@ class Activity {
     let endDateParsed = new Date(startDate);
     endDateParsed.setDate(startDateParsed.getDate() - 7);
     let userActiveData = this.activityData.filter(userEntry => userEntry.userID === userID);
-    let userActiveDaysData = userActiveData.filter(function(activeDayData) {
+    let userActiveDaysData = userActiveData.filter((activeDayData) => {
       let day = new Date(activeDayData.date);
       if (day <= startDateParsed && day >= endDateParsed) {
         return true;
@@ -36,8 +36,16 @@ class Activity {
     }, 0);
     return Number((totalActiveMinutes / prevMinutesActive.length).toFixed(2));
   }
+
+  checkReachedStepGoal() {
+    
+  }
 }
 
 if (typeof module !== 'undefined') {
   module.exports = Activity;
 }
+
+// need to check steps that day
+// compare to their goal step 
+// return you didnt make youre goal today or you did 

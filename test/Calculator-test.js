@@ -123,7 +123,7 @@ describe("Calculator", function() {
     expect(calculator).to.be.an.instanceof(Calculator);
   });
 
-  describe("Calculator-Helpers", function() {
+  describe("Calculator-Utility", function() {
     it("should convert a string into a date object", function() {
       expect(calculator.stringToDate("2019/06/17")).to.deep.equal(
         new Date("2019", "05", "17")
@@ -151,8 +151,17 @@ describe("Calculator", function() {
     });
   });
 
-  describe("Calculator-Data", function() {
-    it("should get the user's total ounces for a given date", function() {
+  describe("Calculator-Hydration", function() {
+    it("should return user average ounces", function() {
+      expect(
+        calculator.getUserAllTimeAvg(
+          state.currentUserData.hydrationData,
+          "numOunces"
+        )
+      ).to.equal(66.71);
+    });
+
+    it("should return user ounces by date", function() {
       expect(
         calculator.getUserDayTotal(
           state.currentUserData.hydrationData,
@@ -162,16 +171,7 @@ describe("Calculator", function() {
       ).to.equal(47);
     });
 
-    it("should get the user's overall average hydration", function() {
-      expect(
-        calculator.getUserAllTimeAvg(
-          state.currentUserData.hydrationData,
-          "numOunces"
-        )
-      ).to.equal(66.71);
-    });
-
-    it("should return an object with an array of dates and an array of metrics for each day over the past seven days inclusive", function() {
+    it("should return ounces per day over the past seven days inclusive", function() {
       expect(
         calculator.getUserWeekTotal(
           state.currentUserData.hydrationData,
@@ -201,7 +201,29 @@ describe("Calculator", function() {
         ).metrics[6]
       ).to.equal(94);
     });
+  });
 
+  describe("Calculator-Sleep", function() {
+    it("should return user average hours slept", function() {});
+
+    it("should return user average sleep quality", function() {});
+
+    it("should return user hours slept by date", function() {});
+
+    it("should return user sleep quality by date", function() {});
+
+    it("should return hours slept per day over the past seven days inclusive", function() {});
+
+    it("should return sleep quality per day over the past seven days inclusive", function() {});
+
+    it("should return all user average sleep quality", function() {});
+
+    it("should return all users with sleep quality > 3 over the past seven days inclusive", function() {});
+
+    it("should return user(s) with greatest hours slept by date", function() {});
+  });
+
+  describe("Calculator-Activity", function() {
     it("should return the miles a user traversed for a given date", function() {
       expect(calculator.stepsToMiles(state, "2019/06/15")).to.equal(2.91);
     });

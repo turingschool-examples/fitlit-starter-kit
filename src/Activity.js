@@ -51,7 +51,3 @@ class Activity {
 if (typeof module !== 'undefined') {
   module.exports = Activity;
 }
-
-// need to check steps that day
-// compare to their goal step 
-// return you didnt make youre goal today or you did 

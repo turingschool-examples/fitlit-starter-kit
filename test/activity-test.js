@@ -2,10 +2,12 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Activity = require('../src/Activity')
+const User = require('../src/User');
+const UserRepository = require('../src/UserRepository');
 
 describe('Activity', function() {
 
-  let activity, activityData;
+  let activity, activityData, userRepo, user;
 
   beforeEach(() => {
     activityData = [
@@ -68,12 +70,30 @@ describe('Activity', function() {
     {
       "userID": 1,
       "date":"2019/06/16",
-      "numSteps": 3455,
+      "numSteps": 10000,
       "minutesActive": 130,
       "flightsOfStairs": 23
     }
   ]
+
+  userData = 
+    {
+      'id': 1,
+      'name': 'Luisa Hane',
+      'address': '15195 Nakia Tunnel, Erdmanport VA 19901-1697',
+      'email': 'Diana.Hayes1@hotmail.com',
+      'strideLength': 4.3,
+      'dailyStepGoal': 10000,
+      'friends': [
+        16,
+        4,
+        8
+      ]
+    };
+
   activity = new Activity(activityData);
+  userRepo = new UserRepository(userData);
+  user = new User(userData);
 });
 
   it('should be a function', function() {
@@ -103,11 +123,11 @@ describe('Activity', function() {
   describe('check reached goal', function() {
     
     it('should say if your goal is reached', function() {
-      expect(activity.checkReachedStepGoal()).to.equal('Horray! :D You have reached your step goal for the day');
+      expect(activity.checkReachedStepGoal(user, "2019/06/16")).to.equal(true);
     });
     
     it('should say if your goal is not reached', function() {
-      expect(activity.checkReachedStepGoal()).to.equal('Boo! :( You have not reached your step goal for the day');
+      expect(activity.checkReachedStepGoal(user, "2019/09/16")).to.equal(false);
     });
   });
 });

@@ -10,6 +10,7 @@ let currentUserDate = document.querySelector('.current-date');
 let userOunceIntakeOnDay = document.querySelector('.fluid-ounces-consumed-on-day');
 let userWeeklyOunceIntake = document.querySelector('.fluid-ounces-one-week');
 let totalStepsOfCurrentDay = document.querySelector('.total-steps-current-day');
+let flightsOfStairsOfCurrentDay = document.querySelector('.flights-of-stairs-current-day');
 let minutesActiveOfCurrentDay = document.querySelector('.minutes-active-current-day');
 let milesWalkedOfCurrentDay = document.querySelector('.miles-walked-current-day');
 
@@ -40,6 +41,7 @@ window.onload = function() {
   // activity section
   let currentUserActivityData = activity.findUserActivityDataByDate(currentDate, activityData);
   totalStepsOfCurrentDay.innerText = currentUserActivityData.numSteps;
+  flightsOfStairsOfCurrentDay.innerText = currentUserActivityData.flightsOfStairs;
   minutesActiveOfCurrentDay.innerText = activity.findMinutesActiveByDay(currentDate, activityData);
   milesWalkedOfCurrentDay.innerText = activity.findMilesWalkedByDay(userInfo, currentDate, activityData);
 }

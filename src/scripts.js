@@ -10,10 +10,10 @@ const userGoalAverage = document.querySelector('.step-goal-average');
 const friendsList = document.querySelector('.friends-list');
 const stepComparison = document.querySelector('.step-goal-comparison')
 const dayHydrationBox = document.querySelector('.hydration-day')
-const weekHydradtionBox = document.querySelector('.hydration-week')
+const weekHydrationBox = document.querySelector('.hydration-week')
 
-function populateUserInfo() {
-  let user = new User(userRepo.getUserData(42));
+function populateUserInfo(id) {
+  let user = new User(userRepo.getUserData(id));
   userName.innerText = user.name;
   userAddress.innerText = user.address;
   userEmail.innerText = user.email;
@@ -28,9 +28,9 @@ function populateUserInfo() {
 
 function populateHydrationInfo(id, date) {
   dayHydrationBox.innerHTML = hydration.getDay(id, date);
-  let weekObj = hydration.getWeek(id, date);
-  weekHydradtionBox.innerHTML = weekObj.map(obj => obj.numOunces)
+  let weekData = hydration.getWeek(id, date);
+  weekHydrationBox.innerHTML = weekData.map(obj => obj.numOunces)
 }
 
-populateUserInfo();
+populateUserInfo(42);
 populateHydrationInfo(42, "2019/08/02");

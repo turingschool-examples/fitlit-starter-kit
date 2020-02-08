@@ -204,4 +204,8 @@ describe('Activity', function() {
     ]);
   })
 
+  it('should find all time total of flights of stairs taken', function() {
+    expect(activity.calculateAllTimeTotalFlightsOfStairsTaken(activityData)).to.equal('129 Stairs');
+  })
+
 });

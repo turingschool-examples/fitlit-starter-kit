@@ -70,8 +70,14 @@ class Activity {
     return highestStairClimb
   }
 
-  calculateAllTimeStepsTaken() {
+  calculateAllTimeTotalFlightsOfStairsTaken(activityData) {
+    let findAllUserActivityData = activityData.filter(data => this.userID === data.userID)
+    .reduce((acc, data) =>{
+      acc += data["flightsOfStairs"];
+      return acc
+    },0)
 
+    return `${findAllUserActivityData} Stairs`
   }
 
 }

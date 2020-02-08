@@ -48,32 +48,32 @@ describe('User', function() {
     hydrationData = [
       {
         "userID": 1,
-        "date": "2019/06/16",
+        "date": "2019/09/16",
         "numOunces": 37
       },
       {
         "userID": 1,
-        "date": "2019/07/17",
+        "date": "2019/09/17",
         "numOunces": 75
       },
       {
         "userID": 1,
-        "date": "2019/06/18",
+        "date": "2019/09/18",
         "numOunces": 42
       },
       {
         "userID": 1,
-        "date": "2019/07/19",
+        "date": "2019/09/19",
         "numOunces": 10
       },
       {
         "userID": 1,
-        "date": "2019/06/20",
+        "date": "2019/09/20",
         "numOunces": 31
       },
       {
         "userID": 1,
-        "date": "2019/07/21",
+        "date": "2019/09/21",
         "numOunces": 58
       },
       {
@@ -90,6 +90,6 @@ describe('User', function() {
     hydration = new Hydration(hydrationData);
   
     
-    expect(hydration.getPrevDaysHydration(1, "2019/07/21")).to.deep.equal([37, 75, 42, 10, 31, 58, 68]);
+    expect(hydration.getPrevDaysHydration(1, "2019/09/22")).to.deep.equal([37, 75, 42, 10, 31, 58, 68]);
   });
 });

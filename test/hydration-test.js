@@ -154,9 +154,7 @@ describe('Hydration', function() {
         "date": "2019/06/24",
         "numOunces": 33
       }]
-
     const userDateRange = ["2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"];
-
     expect(hydration.calculateDailyIntakeForWeek(hydrationData1, userDateRange)).to.deep.equal([{date: "2019/06/16", intake: 69}, {date: "2019/06/17", intake: 96}, {date: "2019/06/18", intake: 61}, {date: "2019/06/19", intake: 91}, {date: "2019/06/20", intake: 50}, {date: "2019/06/21", intake: 50}, {date: "2019/06/22", intake: 43}]);
   })
 

@@ -76,6 +76,28 @@ class Sleep {
     return userWeekSleepQuality;
   }
 
+  findAverageSleepQualityForAllUsers(sleepDatas) {
+    let allUserTotal = sleepDatas.reduce((acc, data) => {
+      acc += data.sleepQuality;
+      return acc;
+    }, 0)
+    let averageSleepQualityOverall = allUserTotal/sleepDatas.length;
+    return parseFloat(averageSleepQualityOverall.toFixed(2));
+  }
+
+  findAllUserSleepQualityOverThree(sleepDatas) {
+    // let allUserSleepQualityoverThree = sleepDatas.filter(data => data.sleepQuality > 3)
+
+  }
+
+  findUsersMostSleepTimeByDay() {
+
+  }
+
+  findUserHighestSleepAverage() {
+  // find user with the highest sleep average overall //
+  }
+
 }
 
 if (typeof module !== 'undefined') {

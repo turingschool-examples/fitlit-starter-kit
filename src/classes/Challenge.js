@@ -21,6 +21,14 @@ class Challenge {
 
     this.userData.sort((a, b) => b.metrics - a.metrics);
   };
+
+  getLeaderboardPercentages() {
+    const steps = this.userData.map(person => {
+      const percentage = (person.metrics * 100 / this.userData[0].metrics).toFixed(0);
+      return percentage});
+      
+    return steps;
+  };
 };
 
 

@@ -18,7 +18,7 @@ class Hydration {
   getWeek(id, date) {
     let endDate = this.getUserData(id).findIndex(object => object.date === date);
     return endDate - 6 >= 0 ?
-      this.getUserData(id).slice(endDate - 6, endDate + 1):
+      this.getUserData(id).slice(endDate - 6, endDate + 1) :
       this.getUserData(id).slice(0, endDate + 1);
   }
 }

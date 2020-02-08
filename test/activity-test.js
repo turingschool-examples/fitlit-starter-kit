@@ -189,5 +189,13 @@ describe('Activity', function() {
   it('should have message that step goal is acheived', function() {
     expect(activity.determineStepGoalStatusForDay(userData, "2019/06/20", activityData)).to.equal('Step goal acheived!');
   })
-  
+
+  it('should list all days where users exceed steps goals', function() {
+    expect(activity.findDaysExceedingStepGoal(userData, activityData)).to.deep.equal([
+      { date: '2019/06/17', numberOfSteps: 14329 },
+      { date: '2019/06/20', numberOfSteps: 14478 },
+      { date: '2019/06/22', numberOfSteps: 10289 }
+    ])
+  })
+
 });

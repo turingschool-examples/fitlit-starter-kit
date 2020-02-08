@@ -46,7 +46,15 @@ class Activity {
     }
   }
 
-  findDaysExceedingStepGoal() {
+  findDaysExceedingStepGoal(userData, activityData) {
+    let findAllUserActivityData = activityData.filter(data => data.userID === this.userID)
+    .filter(data => userData["dailyStepGoal"] <= data["numSteps"])
+    .map(data => {
+      return {date: data["date"],
+        numberOfSteps: data["numSteps"]}
+    })
+
+    return findAllUserActivityData
   }
 
   findAllTimeStairClimb() {
@@ -54,6 +62,7 @@ class Activity {
   }
 
   calculateAllTimeStepsTaken() {
+
   }
 
 }

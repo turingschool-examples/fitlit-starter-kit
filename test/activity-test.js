@@ -73,10 +73,24 @@ describe('Activity', function() {
       "numSteps": 10000,
       "minutesActive": 130,
       "flightsOfStairs": 23
+    },
+    {
+      "userID": 2,
+      "date":"2019/06/16",
+      "numSteps": 10000,
+      "minutesActive": 130,
+      "flightsOfStairs": 23
+    },
+    {
+      "userID": 3,
+      "date":"2019/06/16",
+      "numSteps": 10000,
+      "minutesActive": 130,
+      "flightsOfStairs": 23
     }
   ]
 
-  userData = 
+  userData =
     {
       'id': 1,
       'name': 'Luisa Hane',
@@ -113,7 +127,7 @@ describe('Activity', function() {
   });
 
   it('should show the minutes active in the past 7 days', function() {
-    expect(activity.getPrevDaysActive(1, "2019/09/22")).to.deep.equal([140,134, 56, 164, 120, 124, 90]); 
+    expect(activity.getPrevDaysActive(1, "2019/09/22")).to.deep.equal([140,134, 56, 164, 120, 124, 90]);
   });
 
   it('should be able to calculate the average minutes active from the past 7 days', function() {
@@ -121,13 +135,25 @@ describe('Activity', function() {
   });
 
   describe('check reached goal', function() {
-    
+
     it('should say if your goal is reached', function() {
       expect(activity.checkReachedStepGoal(user, "2019/06/16")).to.equal(true);
     });
-    
+
     it('should say if your goal is not reached', function() {
       expect(activity.checkReachedStepGoal(user, "2019/09/16")).to.equal(false);
+    });
+  });
+
+  describe('calculate Averages per day',function(){
+    it('should calculate Average Stairs climbed', function() {
+      expect(activity.calculateUsersAverageStairs("2019/06/16")).to.equal(23);
+    });
+    it('should calculate Average steps taken', function() {
+      expect(activity.calculateUsersAverageSteps("2019/06/16")).to.equal(10000);
+    });
+    it('should calculate Average Activity Time', function() {
+      expect(activity.calculateUsersAverageActivityTime("2019/06/16")).to.equal(130);
     });
   });
 });

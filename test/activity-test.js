@@ -88,4 +88,7 @@ describe('Activity', function() {
     expect(activity.findMilesWalkedByDay(activity.userID, userData, "2019/06/16", activityData)).to.equal("5.4 Miles");
   })
 
+  it('should find user\'s minutes active based on day', function() {
+    expect(activity.findMinutesActiveByDay(activity.userID, "2019/06/16", activityData)).to.equal(175);
+  })
 });

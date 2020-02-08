@@ -1,8 +1,10 @@
 /* ---------- Base styles ---------- */
 :root {
-  --red: #ff8585;
-  --light-red: rgba(255, 133, 133, 0.36);
   --blue: #98fffb;
+  --border-radius: 6px;
+  --box-shadow: 0px 1px 2px 1.5px rgba(0, 0, 0, 0.2);
+  --light-red: rgba(255, 133, 133, 0.36);
+  --red: #ff8585;
   --yellow: #ffff7b;
 }
 
@@ -22,7 +24,7 @@ aside {
 }
 
 h1 {
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
   font-weight: 400;
 }
 
@@ -78,8 +80,8 @@ p {
 }
 
 .large-card {
-  border-radius: 2.5%;
-  box-shadow: 0px 1px 2px 1.5px rgba(0, 0, 0, .2);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
   cursor: grab;
   grid-column-start: 2;
   grid-column-end: 4;
@@ -87,21 +89,41 @@ p {
   padding: 2.5%;
 }
 
+.latest-week {
+}
+
 .latest-week__article {
   display: flex;
   flex-direction: column;
 }
 
-.latest-week__hydration {
-  background: var(--blue);
+.latest-week__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
-.latest-week__sleep {
-  background: var(--yellow);
+.latest-week__suffix {
+  margin-left: 10px;
 }
 
-.latest-week__activity {
-  background: var(--light-red);
+.latest-week__title {
+  text-align: center;
+}
+
+.latest-week__title-main {
+  margin-bottom: 2%;
+  text-align: left;
+}
+
+.latest-week__type {
+  display: flex;
+  padding: 2px 0;
+}
+
+.latest-week__type-date {
+  display: flex;
+  width: 26px;
 }
 
 .latest-week__wrapper {
@@ -109,12 +131,29 @@ p {
   justify-content: space-between;
 }
 
-.latest-week__wrapper-activity {
+.latest-week__wrapper-activity,
+.latest-week__wrapper-hydration,
+.latest-week__wrapper-sleep {
+  border-radius: var(--border-radius);
   display: flex;
+  flex-direction: column;
+  margin: 0.2rem;
+  padding: 0.6rem;
+}
+
+.latest-week__wrapper-activity {
+  background: var(--light-red);
+  width: 50%;
+}
+
+.latest-week__wrapper-hydration {
+  background: var(--blue);
+  width: 20%;
 }
 
 .latest-week__wrapper-sleep {
-  display: flex;
+  background: var(--yellow);
+  width: 30%;
 }
 
 .light-red {
@@ -138,9 +177,8 @@ p {
 }
 
 .small-card {
-  /* border: solid 1px rgba(0, 0, 0, 0.25); */
-  border-radius: 2.5%;
-  box-shadow: 0px 1px 2px 1.5px rgba(0, 0, 0, .2);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
   cursor: grab;
   margin: 5%;
   overflow: scroll;
@@ -156,7 +194,7 @@ p {
 }
 
 .widget-block {
-  border-radius: 5%;
+  border-radius: var(--border-radius);
   display: flex;
   justify-content: space-around;
   margin: 5% 0;

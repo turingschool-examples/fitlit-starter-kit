@@ -37,8 +37,14 @@ class Activity {
     return Number((totalActiveMinutes / prevMinutesActive.length).toFixed(2));
   }
 
-  checkReachedStepGoal() {
-    
+  checkReachedStepGoal(userData, date) {
+    let currentUser = this.activityData.filter(data => data.userID === userData.id);
+    let steps = currentUser.find(step => step.date === date)
+      if(userData.dailyStepGoal > steps.numSteps) {
+        return false
+      } else {
+        return true
+      }
   }
 }
 

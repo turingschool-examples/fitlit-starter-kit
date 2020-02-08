@@ -215,5 +215,9 @@ describe('Activity', function() {
   it('should find average number of steps of all users base on a date', function() {
     expect(activity.findAllUserAverageStepsTakeForSpecificDate("2019/06/19", activityData)).to.equal('9144 Steps');
   })
-  
+
+  it('should find average minutes active of all users base on a date', function() {
+    expect(activity.findAllUserAverageMinutesActiveForSpecificDate("2019/06/19", activityData)).to.equal('259 Minutes Active');
+  })
+
 });

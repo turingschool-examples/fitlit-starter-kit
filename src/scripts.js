@@ -7,15 +7,18 @@ let userStepGoal = document.querySelector('.daily-step-goal');
 let allUsersAvgStepGoal = document.querySelector('.all-users-step-goal-average');
 let userAverageOunceIntakeAllTime = document.querySelector('.average-fluid-ounces-all-time');
 let currentUserDate = document.querySelector('.current-date');
-
 let userOunceIntakeOnDay = document.querySelector('.fluid-ounces-consumed-on-day');
 let userWeeklyOunceIntake = document.querySelector('.fluid-ounces-one-week');
+let totalStepsOfCurrentDay = document.querySelector('.total-steps-current-day');
+let minutesActiveOfCurrentDay = document.querySelector('.minutes-active-current-day');
+
 
 window.onload = function() {
   const usersRepository = new UsersRepository(getRandomNumber());
   const userInfo = usersRepository.getUserDataById(userData);
   const user = new User(userInfo);
   const hydration = new Hydration(usersRepository);
+  const activity = new Activity(usersRepository);
   const userDateRange = ["2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"];
   const currentDate = '2019/06/22';
 
@@ -32,6 +35,11 @@ window.onload = function() {
 
   let userIntakeForWeek = hydration.calculateDailyIntakeForWeek(hydrationData, userDateRange);
   userWeeklyOunceIntake.innerHTML = hydrationWeek(userIntakeForWeek);
+
+  // activity section
+  let currentUserActivityData = activity.findUserActivityDataByDate(currentDate, activityData);
+  totalStepsOfCurrentDay.innerText = currentUserActivityData.numSteps;
+  minutesActiveOfCurrentDay.innerText = activity.findMinutesActiveByDay(currentDate, activityData);
 }
 
 function hydrationWeek(userWeekIntake) {

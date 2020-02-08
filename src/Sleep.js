@@ -46,12 +46,10 @@ class Sleep {
   }
 
   getAverageQualityOfUsers() {
-    const average = this.sleepData.reduce((acc, object) => {
-      return acc += object.sleepQuality / this.sleepData.length;
-    }, 0 )
-    return average.toFixed(2)
+    const total = this.sleepData.reduce((acc, object) =>  acc + object.sleepQuality, 0);
+    return (total / this.sleepData.length).toFixed(2);
   }
-
+  
   findGoodSleepers(date) {
     let goodSleepers = [];
     let ids = [];

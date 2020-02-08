@@ -40,6 +40,90 @@ describe('Activity', function() {
         "numSteps": 4112,
         "minutesActive": 220,
         "flightsOfStairs": 37
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/17",
+        "numSteps": 14329,
+        "minutesActive": 168,
+        "flightsOfStairs": 18
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/17",
+        "numSteps": 13750,
+        "minutesActive": 65,
+        "flightsOfStairs": 4
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/18",
+        "numSteps": 4419,
+        "minutesActive": 165,
+        "flightsOfStairs": 33
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/18",
+        "numSteps": 4662,
+        "minutesActive": 181,
+        "flightsOfStairs": 31
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/19",
+        "numSteps": 8429,
+        "minutesActive": 275,
+        "flightsOfStairs": 2
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/19",
+        "numSteps": 9858,
+        "minutesActive": 243,
+        "flightsOfStairs": 44
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/20",
+        "numSteps": 14478,
+        "minutesActive": 140,
+        "flightsOfStairs": 12
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/20",
+        "numSteps": 8153,
+        "minutesActive": 74,
+        "flightsOfStairs": 10
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/21",
+        "numSteps": 6760,
+        "minutesActive": 135,
+        "flightsOfStairs": 6
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/21",
+        "numSteps": 10225,
+        "minutesActive": 174,
+        "flightsOfStairs": 26
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/22",
+        "numSteps": 10289,
+        "minutesActive": 119,
+        "flightsOfStairs": 6
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/22",
+        "numSteps": 3605,
+        "minutesActive": 124,
+        "flightsOfStairs": 31
       }];
 
     userDataSetSample = [
@@ -85,10 +169,16 @@ describe('Activity', function() {
   });
 
   it('should find user\'s miles walked based by day', function() {
-    expect(activity.findMilesWalkedByDay(activity.userID, userData, "2019/06/16", activityData)).to.equal("5.4 Miles");
-  })
+    expect(activity.findMilesWalkedByDay(userData, "2019/06/16", activityData)).to.equal("5.4 Miles");
+  });
 
   it('should find user\'s minutes active based on day', function() {
-    expect(activity.findMinutesActiveByDay(activity.userID, "2019/06/16", activityData)).to.equal(175);
-  })
+    expect(activity.findMinutesActiveByDay("2019/06/16", activityData)).to.equal(175);
+  });
+
+  it('should find user\'s average minutes active based on a 7 week period', function() {
+    const userDateRange = ["2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"];
+
+    expect(activity.findMinutesActiveByWeek(userDateRange, activityData)).to.equal('168.1 minutes')
+  });
 });

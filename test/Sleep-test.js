@@ -20,7 +20,7 @@ describe('Sleep', function() {
   });
 
   it('Can calculate average hours slept per day', function() {
-    expect(sleep.calculateAverageHours(111)).to.equal(8);
+    expect(sleep.calculateAverageHours(111)).to.equal(7.1);
   })
 
   it('Can calculate average sleep quality', function() {

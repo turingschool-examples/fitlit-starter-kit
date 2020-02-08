@@ -46,9 +46,9 @@ window.onload = function() {
   flightsOfStairsOfCurrentDay.innerText = currentUserActivityData.flightsOfStairs;
   minutesActiveOfCurrentDay.innerText = activity.findMinutesActiveByDay(currentDate, activityData);
   milesWalkedOfCurrentDay.innerText = activity.findMilesWalkedByDay(userInfo, currentDate, activityData);
-  allUserAverageStepsOfCurrentDay.innerText = activity.findAllUserAverageStepsTakeForSpecificDate(currentDate, activityData);
-  allUserAverageMinutesActiveOfCurrentDay.innerText = activity.findAllUserAverageMinutesActiveForSpecificDate(currentDate, activityData);
-  allUserAverageFlightStairsOfCurrentDay.innerText = activity.findAllUserAverageStairsClimbedForSpecificDate(currentDate, activityData);
+  allUserAverageStepsOfCurrentDay.innerText = `Average Steps Taken: ${activity.findAllUserAverageStepsTakeForSpecificDate(currentDate, activityData)}`;
+  allUserAverageMinutesActiveOfCurrentDay.innerText = `Average Minutes Active: ${activity.findAllUserAverageMinutesActiveForSpecificDate(currentDate, activityData)}`;
+  allUserAverageFlightStairsOfCurrentDay.innerText = `Average Flight of Stairs Climb: ${activity.findAllUserAverageStairsClimbedForSpecificDate(currentDate, activityData)}`;
 }
 
 function hydrationWeek(userWeekIntake) {

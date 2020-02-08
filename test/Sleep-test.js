@@ -57,8 +57,18 @@ describe('Sleep', function() {
   })
 
   it('should be able to find users with high quality sleep', function() {
-    let weekData = sleepData.slice(0, 7);
-    let filteredData = weekData.map(day => day.sleepQuality);
     expect(sleep.findGoodSleepers('2020/02/08')).to.deep.equal([1]);
+  })
+
+  it('can find a single longest sleeper', function() {
+    expect(sleep.findLongestSleeper('2020/02/02')).to.deep.equal([1])
+  })
+
+  it('can find multiple longest sleepers', function() {
+    expect(sleep.findLongestSleeper('2020/02/07')).to.deep.equal([1, 111])
+  })
+
+  it('Should be able to find day with msot sleep', function() {
+    expect(sleep.findMostSleepHours(1, '2020/02/08')).to.equal(10.3)
   })
 })

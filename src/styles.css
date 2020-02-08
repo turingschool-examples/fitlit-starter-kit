@@ -21,6 +21,11 @@ aside {
   width: 20%;
 }
 
+h1 {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
+}
+
 h2 {
   font-family: "PT Sans Narrow", sans-serif;
   font-size: 15px;
@@ -43,6 +48,8 @@ nav {
   height: 7.5%;
   display: flex;
   justify-content: space-between;
+  padding-left: 1%;
+  padding-top: 1.5%;
 }
 
 p {

@@ -16,18 +16,6 @@ class UsersRepository {
    return Math.trunc(totalSteps / userData.length);
   }
 
-  findAllUserAverageStairsClimbedForSpecificDate() {
-
-  }
-
-  findAllUserStepsTakeForSpecificDate() {
-
-  }
-
-  findAllUserMinutesActiveForSpecificDate() {
-
-  }
-
   findAverageSleepQualityForAllUsers() {
 
   }

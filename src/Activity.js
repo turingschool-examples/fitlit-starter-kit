@@ -74,10 +74,29 @@ class Activity {
     let findAllUserActivityData = activityData.filter(data => this.userID === data.userID)
     .reduce((acc, data) =>{
       acc += data["flightsOfStairs"];
-      return acc
+      return acc;
     },0)
 
     return `${findAllUserActivityData} Stairs`
+  }
+
+  findAllUserAverageStairsClimbedForSpecificDate(date, activityData) {
+    let findAllUserDataByDate = activityData.filter(data => data.date === date);
+    
+    let usersAverageStairsClimbByDate = findAllUserDataByDate.reduce((acc, data) => {
+      acc += data["flightsOfStairs"]
+      return acc;
+    },0)/findAllUserDataByDate.length;
+
+    return `${usersAverageStairsClimbByDate} Stairs`
+  }
+
+  findAllUserStepsTakeForSpecificDate() {
+
+  }
+
+  findAllUserMinutesActiveForSpecificDate() {
+
   }
 
 }

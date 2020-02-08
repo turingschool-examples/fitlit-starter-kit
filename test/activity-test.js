@@ -208,4 +208,8 @@ describe('Activity', function() {
     expect(activity.calculateAllTimeTotalFlightsOfStairsTaken(activityData)).to.equal('129 Stairs');
   })
 
+  it('should find average of stairs climb of all users base on a date', function() {
+    expect(activity.findAllUserAverageStairsClimbedForSpecificDate("2019/06/19", activityData)).to.equal('23 Stairs');
+  })
+
 });

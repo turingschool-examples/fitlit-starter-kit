@@ -49,29 +49,10 @@ class Sleep {
     const total = this.sleepData.reduce((acc, object) =>  acc + object.sleepQuality, 0);
     return (total / this.sleepData.length).toFixed(2);
   }
-  
+
   findGoodSleepers(date) {
-    let goodSleepers = [];
-    let ids = [];
-    this.sleepData.forEach(obj => {
-      if (!ids.includes(obj.userID)) {
-        ids.push(obj.userID);
-      }
-    });
-    ids.forEach(id => {
-      let endDate = this.getUserData(id).findIndex(object => object.date === date);
-      let filteredData = this.getUserData(id).map(day => day.sleepQuality);
-      let weeklyNumbers = endDate - 6 >= 0 ?
-        filteredData.slice(endDate - 6, endDate + 1) :
-        filteredData.slice(0, endDate + 1);
-      let average = weeklyNumbers.reduce((acc, num) => {
-        return (acc += num / weeklyNumbers.length);
-      }, 0)
-      if (average >= 3) {
-        goodSleepers.push(id);
-      }
-    });
-    return goodSleepers;
+    let userIDs = [...new Set(this.sleepData.map(object => object.userID))];
+    return userIDs.filter(user => this.getQualityByWeek(user, date) >= 3);
   }
 
   findLongestSleeper(date) {

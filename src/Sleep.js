@@ -51,7 +51,8 @@ class Sleep {
   findGoodSleepers(date) {
     let userIDs = [...new Set(this.sleepData.map(object => object.userID))];
     return userIDs.filter(ID =>
-      this.getQualityByWeek(ID, date).reduce((a, c) => a + c, 0) / 7 >= 3);
+      this.getQualityByWeek(ID, date).reduce((a, c) =>
+        a + c, 0) / this.getQualityByWeek(ID, date).length >= 3);
   }
 
   findLongestSleeper(date) {

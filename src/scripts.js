@@ -11,6 +11,7 @@ let userOunceIntakeOnDay = document.querySelector('.fluid-ounces-consumed-on-day
 let userWeeklyOunceIntake = document.querySelector('.fluid-ounces-one-week');
 let totalStepsOfCurrentDay = document.querySelector('.total-steps-current-day');
 let minutesActiveOfCurrentDay = document.querySelector('.minutes-active-current-day');
+let milesWalkedOfCurrentDay = document.querySelector('.miles-walked-current-day');
 
 
 window.onload = function() {
@@ -40,6 +41,7 @@ window.onload = function() {
   let currentUserActivityData = activity.findUserActivityDataByDate(currentDate, activityData);
   totalStepsOfCurrentDay.innerText = currentUserActivityData.numSteps;
   minutesActiveOfCurrentDay.innerText = activity.findMinutesActiveByDay(currentDate, activityData);
+  milesWalkedOfCurrentDay.innerText = activity.findMilesWalkedByDay(userInfo, currentDate, activityData);
 }
 
 function hydrationWeek(userWeekIntake) {

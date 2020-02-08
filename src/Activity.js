@@ -7,8 +7,9 @@ class Activity {
     this.flightsOfStairs;
   }
 
-  findMilesWalkedByDay(userData) {
-    let milesWalked = ((userData.dailyStepGoal * userData.strideLength)/5280).toFixed(1);
+  findMilesWalkedByDay(id, userData, date, activityData) {
+    let currentData = activityData.find(data => data.userID === id && data.date === date);
+    let milesWalked = ((currentData["numSteps"] * userData["strideLength"])/5280).toFixed(1);
     return `${milesWalked} Miles`
   }
 

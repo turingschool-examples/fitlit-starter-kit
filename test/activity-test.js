@@ -5,12 +5,44 @@ const Activity = require('../src/Activity');
 const UsersRepository = require('../src/UsersRepository');
 
 describe('Activity', function() {
+  let activityData;
+  let userDataSetSample;
   let userRepository;
   let activity;
   let userData;
 
   beforeEach(function() {
-    const userDataSet = [
+    activityData = [
+     {
+        "userID": 1,
+        "date": "2019/06/15",
+        "numSteps": 3577,
+        "minutesActive": 140,
+        "flightsOfStairs": 16
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/15",
+        "numSteps": 4294,
+        "minutesActive": 138,
+        "flightsOfStairs": 10
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/16",
+        "numSteps": 6637,
+        "minutesActive": 175,
+        "flightsOfStairs": 36
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/16",
+        "numSteps": 4112,
+        "minutesActive": 220,
+        "flightsOfStairs": 37
+      }];
+
+    userDataSetSample = [
       {
         "id": 1,
         "name": "Luisa Hane",
@@ -37,24 +69,10 @@ describe('Activity', function() {
           24,
           19
         ]
-      },
-      {
-        "id": 3,
-        "name": "Herminia Witting",
-        "address": "85823 Bosco Fork, East Oscarstad MI 85126-5660",
-        "email": "Elwin.Tromp@yahoo.com",
-        "strideLength": 4.4,
-        "dailyStepGoal": 5000,
-        "friends": [
-          19,
-          11,
-          42,
-          33
-        ]
-      }]
+      }];
 
     userRepository = new UsersRepository(1);
-    userData = userRepository.getUserDataById(userDataSet);
+    userData = userRepository.getUserDataById(userDataSetSample);
     activity = new Activity(userRepository);
   })
 
@@ -67,7 +85,7 @@ describe('Activity', function() {
   });
 
   it('should find user\'s miles walked based by day', function() {
-    expect(activity.findMilesWalkedByDay(userData)).to.equal("8.1 Miles");
+    expect(activity.findMilesWalkedByDay(activity.userID, userData, "2019/06/16", activityData)).to.equal("5.4 Miles");
   })
 
 });

@@ -321,5 +321,113 @@ describe("Calculator", function() {
     it("should return the miles a user traversed for a given date", function() {
       expect(calculator.stepsToMiles(state, "2019/06/15")).to.equal(2.91);
     });
+
+    it("should return user flights by date", function() {
+      expect(
+        calculator.getUserDayTotal(
+          state.currentUserData.activityData,
+          "2019/06/18",
+          "flightsOfStairs"
+        )
+      ).to.equal(32);
+    });
+
+    it("should return user steps by date", function() {
+      expect(
+        calculator.getUserDayTotal(
+          state.currentUserData.activityData,
+          "2019/06/18",
+          "numSteps"
+        )
+      ).to.equal(3486);
+    });
+
+    it("should return user minutes by date", function() {
+      expect(
+        calculator.getUserDayTotal(
+          state.currentUserData.activityData,
+          "2019/06/18",
+          "minutesActive"
+        )
+      ).to.equal(114);
+    });
+
+    it("should return minutes active per day over the past seven days inclusive", function() {
+      expect(
+        calculator.getUserWeekTotal(
+          state.currentUserData.activityData,
+          "2019/06/21",
+          "minutesActive"
+        ).dates.length
+      ).to.equal(7);
+      expect(
+        calculator.getUserWeekTotal(
+          state.currentUserData.activityData,
+          "2019/06/21",
+          "minutesActive"
+        ).metrics.length
+      ).to.equal(7);
+      expect(
+        calculator.getUserWeekTotal(
+          state.currentUserData.activityData,
+          "2019/06/21",
+          "minutesActive"
+        ).metrics[0]
+      ).to.equal(140);
+      expect(
+        calculator.getUserWeekTotal(
+          state.currentUserData.activityData,
+          "2019/06/21",
+          "minutesActive"
+        ).metrics[6]
+      ).to.equal(107);
+    });
+
+    it("should return a boolean if step goal met by date", function() {
+      expect(calculator.stepGoalMet(state, "2019/06/15")).to.equal(false);
+      expect(calculator.stepGoalMet(state, "2019/06/20")).to.equal(true);
+    });
+
+    it("should return all days user exceeded step goal", function() {
+      expect(calculator.getDaysStepGoalMet(state)).to.deep.equal([
+        "2019/06/19",
+        "2019/06/20"
+      ]);
+    });
+
+    it("should return user highest number of flights all time", function() {
+      expect(
+        calculator.getUserAllTimeMax(
+          state.currentUserData.activityData,
+          "flightsOfStairs"
+        )
+      ).to.equal(33);
+    });
+
+    it("should return all user average flights by date", function() {
+      expect(
+        calculator.getAllUserAllTimeAvg(
+          "activityData",
+          database,
+          "flightsOfStairs"
+        )
+      ).to.equal(23.07);
+    });
+
+    it("should return all user average steps by date", function() {
+      expect(
+        calculator.getAllUserAllTimeAvg("activityData", database, "numSteps")
+      ).to.equal(4397.76);
+    });
+
+    it("should return all user average minutes by date", function() {
+      expect(
+        calculator.getAllUserAllTimeAvg(
+          "activityData",
+          database,
+          "minutesActive"
+        )
+      ).to.equal(87.08);
+    });
   });
 });

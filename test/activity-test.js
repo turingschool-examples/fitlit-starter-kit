@@ -198,4 +198,10 @@ describe('Activity', function() {
     ])
   })
 
+  it('should find the user day that have the highest stairs climb all time', function() {
+    expect(activity.findAllTimeStairClimb(activityData)).to.deep.equal([
+      { date: '2019/06/16', numberOfSteps: 36 }
+    ]);
+  })
+
 });

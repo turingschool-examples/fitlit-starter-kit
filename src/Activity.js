@@ -1,10 +1,6 @@
 class Activity {
   constructor(usersRepository) {
     this.userID = usersRepository.id;
-    this.date;
-    this.numSteps;
-    this.minutesActive;
-    this.flightsOfStairs;
   }
 
   findMilesWalkedByDay(userData, date, activityData) {

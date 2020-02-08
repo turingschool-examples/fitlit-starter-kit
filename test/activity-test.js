@@ -168,6 +168,16 @@ describe('Activity', function() {
     expect(activity).to.be.an.instanceof(Activity);
   });
 
+  it('should return user\'s activity data by specific date', function() {
+    expect(activity.findUserActivityDataByDate("2019/06/18", activityData)).to.deep.equal(
+      { userID: 1,
+        date: '2019/06/18',
+        numSteps: 4419,
+        minutesActive: 165,
+        flightsOfStairs: 33
+      })
+  })
+
   it('should find user\'s miles walked based by day', function() {
     expect(activity.findMilesWalkedByDay(userData, "2019/06/16", activityData)).to.equal("5.4 Miles");
   });

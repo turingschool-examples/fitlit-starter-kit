@@ -128,4 +128,8 @@ describe("Database", function() {
   it("should return the current day", function() {
     expect(database.getCurrentDay(userOneDatabaseInfo)).to.equal("2019/06/21");
   });
+
+  it.skip("should return all users with sleep quality > 3 over the past seven days inclusive", function() {});
+
+  it.skip("should return user(s) with greatest hours slept by date", function() {});
 });

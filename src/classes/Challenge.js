@@ -23,11 +23,17 @@ class Challenge {
   };
 
   getLeaderboardPercentages() {
-    const steps = this.userData.map(person => {
-      const percentage = (person.metrics * 100 / this.userData[0].metrics).toFixed(0);
-      return percentage});
-      
-    return steps;
+    let dataImport = this.userData;
+
+    let leaderboard = dataImport.reduce((arr, data) => {
+      let values = [];
+      values.push(data.name);
+      values.push((data.metrics * 100 / dataImport[0].metrics).toFixed(0));
+      arr.push(values);
+      return arr
+    },[])
+
+    return leaderboard;
   };
 };
 

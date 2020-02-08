@@ -46,8 +46,6 @@
   const welcomeHtmlString = welcome.generateHtmlString(state);
   dom.render(dom.welcome, welcomeHtmlString);
 
-  console.log(challengeState);
-
   // Challenge widget
   const challengeHtmlString = challenge.generateHtmlString(challengeState);
   dom.render(dom.challenges, challengeHtmlString);

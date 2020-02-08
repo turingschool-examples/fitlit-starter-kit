@@ -36,6 +36,7 @@ describe("Challenge", function() {
         expect(challenge.challengeGoal).to.equal(50000);
         expect(challenge.userIDs).to.be.an.instanceof(Array);
     });
+
   it("Should be able to get users for the challenge", function() {
     expect(challenge.userIDs).to.be.an.instanceof(Array);
     expect(challenge.userIDs[0]).to.equal(user.id);
@@ -49,7 +50,7 @@ describe("Challenge", function() {
     expect(names).to.deep.equal([ 'Luisa', 'Mae', 'Laney', 'Garnett' ]);
   });
 
-  it("Should be able to get the total step counts for each user", function() {
-    console.log(challenge);
+  it("Should be able to get the percentage values for the leaderboard", function() {
+    console.log(challenge.getLeaderboardPercentages());
   });
 });

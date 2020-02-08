@@ -52,7 +52,7 @@ describe('Sleep', function() {
   })
 
   it('Should be able to find users with high quality sleep', function() {
-    expect(sleep.findGoodSleepers('2020/02/08')).to.deep.equal([1]);
+    expect(sleep.findGoodSleepers('2020/02/02')).to.deep.equal([1]);
   })
 
   it('Can find a single longest sleeper', function() {

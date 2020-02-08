@@ -46,6 +46,27 @@ class Activity {
         return true
       }
   }
+
+  calculateUsersAverageStairs(date){
+    let dailyActivity = this.activityData.filter(data => data.date === date);
+    return dailyActivity.reduce((acc,user) => {
+      return acc += user.flightsOfStairs;
+    },0) / dailyActivity.length;
+  }
+
+  calculateUsersAverageSteps(date){
+    let dailyActivity = this.activityData.filter(data => data.date === date);
+    return dailyActivity.reduce((acc,user) => {
+      return acc += user.numSteps;
+    },0) / dailyActivity.length;
+  }
+
+  calculateUsersAverageActivityTime(date){
+    let dailyActivity = this.activityData.filter(data => data.date === date);
+    return dailyActivity.reduce((acc,user) => {
+      return acc += user.minutesActive;
+    },0) / dailyActivity.length;
+  }
 }
 
 if (typeof module !== 'undefined') {

@@ -1,7 +1,7 @@
 const dom = {
   main: document.querySelector("main"),
   // allTime: this.main.querySelector(),
-  // challenges: this.main.querySelector(),
+  challenges: document.querySelector('.challenge-goals'),
   // friends: this.main.querySelector(),
   // goals: this.main.querySelector(),
   latestActivity: document.querySelector(".latest-activity"),

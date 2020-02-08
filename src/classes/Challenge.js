@@ -9,7 +9,7 @@ class Challenge {
     this.userIDs.push(...currentUser.friends);
     this.userIDs.unshift(currentUser.id)
   }
-  getUsersSteps(Calculator, data, userRepo) {
+  getUsersData(Calculator, data, userRepo) {
     this.userIDs.forEach(user => {
       let calculator = new Calculator(user);
       let userSteps = calculator.getUserWeekTotal(data, "2019/06/21", "numSteps");

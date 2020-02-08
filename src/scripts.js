@@ -39,4 +39,8 @@
   // Welcome name widget
   const welcomeHtmlString = welcome.generateHtmlString(state);
   dom.render(dom.welcome, welcomeHtmlString);
+
+  // Challenge widget
+  const challengeHtmlString = challenge.generateHtmlString(state);
+  dom.render(dom.challenges, challengeHtmlString);
 })();

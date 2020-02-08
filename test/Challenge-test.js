@@ -24,7 +24,7 @@ describe("Challenge", function() {
     challenge = new Challenge();
 
     challenge.getUsers(user);
-    challenge.getUsersSteps(Calculator, activityDataTest, userDataTest);
+    challenge.getUsersData(Calculator, activityDataTest, userDataTest);
   })
 
   it("should be an instance of Challenge", function() {
@@ -49,6 +49,7 @@ describe("Challenge", function() {
     expect(names).to.deep.equal([ 'Luisa', 'Mae', 'Laney', 'Garnett' ]);
   });
 
-  it.skip("Should be able to get the total step counts for each user", function() {
+  it("Should be able to get the total step counts for each user", function() {
+    console.log(challenge);
   });
 });

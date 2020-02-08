@@ -7,9 +7,16 @@ const latestWeek = {
     let htmlString = "";
 
     dates.forEach((date, i) => {
-      let dateString = `${date.toString().split(" ", 1)}:`;
+      let dateString = `${date
+        .toString()
+        .split(" ", 1)
+        .join("")
+        .charAt(0)}:`;
+
       htmlString += `
-        <p>${renderDate ? dateString : ""} ${metrics[i]}${suffix}</p>`;
+        <p class="latest-week__type"><span class="latest-week__type-date">${
+          renderDate ? dateString : ""
+        }</span> <span>${metrics[i]}${suffix}</span></p>`;
     });
 
     return htmlString;
@@ -48,35 +55,40 @@ const latestWeek = {
     );
 
     return `
-      <h2>This Week</h2>
+      <h2 class="latest-week__title-main">This Week</h2>
       <div class="latest-week__wrapper">
-        <article class="latest-week__article latest-week__hydration">
-          <h2>Water</h2>
-          ${this.renderRows(hydrationOunces, "oz")}
-        </article>
+        <div class="latest-week__wrapper-hydration">
+          <h2 class="latest-week__title">Hydration</h2>
+          <div class="latest-week__content">
+            <article class="latest-week__article latest-week__hydration">
+              ${this.renderRows(hydrationOunces, "oz")}
+            </article>
+          </div>
+        </div>
         <div class="latest-week__wrapper-sleep">
-          <article class="latest-week__article latest-week__sleep">
-            <h2>Hours</h2>
-            ${this.renderRows(sleepHours, "hrs")}
-          </article>
-          <article class="latest-week__article latest-week__sleep">
-            <h2>Quality</h2>
-            ${this.renderRows(sleepQuality, "", false)}
-          </article>
+          <h2 class="latest-week__title">Sleep hours @ quality</h2>
+          <div class="latest-week__content">
+            <article class="latest-week__article latest-week__sleep">
+              ${this.renderRows(sleepHours, "hrs")}
+            </article>
+            <article class="latest-week__article latest-week__sleep">
+              ${this.renderRows(sleepQuality, "", false)}
+            </article>
+          </div>
         </div>
         <div class="latest-week__wrapper-activity">
-          <article class="latest-week__article latest-week__activity">
-            <h2>Steps</h2>
-              ${this.renderRows(activitySteps, "")}
-          </article>
-          <article class="latest-week__article latest-week__activity">
-            <h2>Flights</h2>
-              ${this.renderRows(activityFlights, "", false)}
-          </article>
-          <article class="latest-week__article latest-week__activity">
-            <h2>Minutes</h2>
-              ${this.renderRows(activityMinutes, "", false)}
-          </article>
+          <h2 class="latest-week__title">Steps / flights / minutes active</h2>
+            <div class="latest-week__content">
+              <article class="latest-week__article latest-week__activity">
+                ${this.renderRows(activitySteps, "")}
+              </article>
+              <article class="latest-week__article latest-week__activity">
+                ${this.renderRows(activityFlights, "", false)}
+              </article>
+              <article class="latest-week__article latest-week__activity">
+                ${this.renderRows(activityMinutes, "min", false)}
+            </article>
+          </div>
         </div>
       </div>
     `;

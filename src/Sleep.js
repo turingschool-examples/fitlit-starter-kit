@@ -15,9 +15,8 @@ class Sleep {
   }
 
   calculateAverageQuality(id) {
-    return this.getUserData(id).reduce((acc, object) => {
-      return Math.round(acc += object.sleepQuality / this.getUserData(id).length);
-    }, 0);
+      let totalHours = this.getUserData(id).reduce((acc, object) => acc += object.sleepQuality, 0);
+      return +(totalHours / this.getUserData(id).length).toFixed(1);
   }
 
   getDayHours(id, date) {

@@ -13,7 +13,9 @@ let totalStepsOfCurrentDay = document.querySelector('.total-steps-current-day');
 let flightsOfStairsOfCurrentDay = document.querySelector('.flights-of-stairs-current-day');
 let minutesActiveOfCurrentDay = document.querySelector('.minutes-active-current-day');
 let milesWalkedOfCurrentDay = document.querySelector('.miles-walked-current-day');
-
+let allUserAverageStepsOfCurrentDay = document.querySelector('.all-user-average-steps-by-date')
+let allUserAverageMinutesActiveOfCurrentDay = document.querySelector('.all-user-average-minutes-active-by-date')
+let allUserAverageFlightStairsOfCurrentDay = document.querySelector('.all-user-average-flight-of-stairs-by-date')
 
 window.onload = function() {
   const usersRepository = new UsersRepository(getRandomNumber());
@@ -44,6 +46,9 @@ window.onload = function() {
   flightsOfStairsOfCurrentDay.innerText = currentUserActivityData.flightsOfStairs;
   minutesActiveOfCurrentDay.innerText = activity.findMinutesActiveByDay(currentDate, activityData);
   milesWalkedOfCurrentDay.innerText = activity.findMilesWalkedByDay(userInfo, currentDate, activityData);
+  allUserAverageStepsOfCurrentDay.innerText = activity.findAllUserAverageStepsTakeForSpecificDate(currentDate, activityData);
+  allUserAverageMinutesActiveOfCurrentDay.innerText = activity.findAllUserAverageMinutesActiveForSpecificDate(currentDate, activityData);
+  allUserAverageFlightStairsOfCurrentDay.innerText = activity.findAllUserAverageStairsClimbedForSpecificDate(currentDate, activityData);
 }
 
 function hydrationWeek(userWeekIntake) {

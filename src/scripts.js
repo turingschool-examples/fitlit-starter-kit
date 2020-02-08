@@ -1,5 +1,6 @@
 let userRepo = new UserRepository(userData);
 let hydration = new Hydration(hydrationData);
+let sleep = new Sleep(sleepData)
 
 const userName = document.querySelector('.user-name');
 const userAddress = document.querySelector('.user-address');
@@ -12,8 +13,10 @@ const stepComparison = document.querySelector('.step-goal-comparison');
 const dayHydrationBox = document.querySelector('.hydration-day');
 const weekHydrationBox = document.querySelector('.hydration-week');
 const daySleepBox = document.querySelector('.sleep-day');
-const weekSleepBox = document.querySelector('.sleep-week');
-const overallSleepBox = document.querySelector('.sleep-overall')
+const weekSleepHoursBox = document.querySelector('.sleep-hours-week');
+const weekSleepQualityBox = document.querySelector('.sleep-quality-week');
+const overallSleepHoursBox = document.querySelector('.sleep-hours-all-time');
+const overallSleepQualityBox = document.querySelector('.sleep-quality-all-time')
 
 
 function populateUserInfo(id) {
@@ -36,9 +39,14 @@ function populateHydrationInfo(id, date) {
   weekHydrationBox.innerHTML = weekData.map(obj => obj.numOunces)
 }
 
-function populateSleepInfo() {
-
+function populateSleepInfo(id, date) {
+  daySleepBox.innerHTML = sleep.getDayHours(id, date);
+  weekSleepHoursBox.innerText = sleep.getHoursByWeek(id, date);
+  weekSleepQualityBox.innerText = sleep.getQualityByWeek(id, date);
+  overallSleepHoursBox.innerText = sleep.calculateAverageHours(id);
+  overallSleepQualityBox.innerText = sleep.calculateAverageQuality(id)
 }
 
 populateUserInfo(42);
-populateHydrationInfo(42, "2019/08/02");
+populateHydrationInfo(42, '2019/08/02');
+populateSleepInfo(42, '2019/08/02');

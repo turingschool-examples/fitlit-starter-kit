@@ -13,7 +13,7 @@ let userRepo;
 let curUser;
 let user;
 let hydration;
-let date = "2019/06/15";
+let date = "2019/06/22";
 
 
 function windowLoadHandler() {
@@ -21,7 +21,8 @@ function windowLoadHandler() {
   displayUserInfo();
   displayFriends();
   displayAverageSteps();
-  displayOuncesDrankToday()
+  displayOuncesDrankToday();
+  displayLastWeekSleep();
 }
 
 function instatiateUser() {
@@ -29,6 +30,7 @@ function instatiateUser() {
   let id = Math.floor(Math.random() * userData.length);
   user = new User(userRepo.findUserByID(id));
   hydration = new Hydration(hydrationData);
+  sleep = new Sleep(sleepData);
 }
 
 function displayUserInfo() {
@@ -83,43 +85,50 @@ function activeLink(event) {
 }
 
 // Charts
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
+function displayLastWeekSleep() {
+  var ctx = document.getElementById('sleepPastWeek').getContext('2d');
+  var sleepDays = sleep.getPrevDaysSleepHrs(user.id,date);
+  console.log(sleepDays);
+  let sleepDayLables = sleepDays.map(day => day = day.date);
+  console.log(sleepDayLables)
+  var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
+      labels: sleepDayLables,
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
     },
     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
     }
-});
+  });
+}
+
 
 // End Chart Info
 

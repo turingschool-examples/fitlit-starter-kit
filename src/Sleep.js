@@ -41,7 +41,7 @@ class Sleep {
     let userSleepData = this.sleepData.filter(userEntry => userEntry.userID === userID);
     let userSleepDaysData = userSleepData.filter(function(sleedDayData) {
       let day = new Date(sleedDayData.date);
-      if (day <= startDateParsed && day >= endDateParsed) {
+      if (day < startDateParsed && day >= endDateParsed) {
         return true;
       }
     });

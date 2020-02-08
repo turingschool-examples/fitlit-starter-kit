@@ -181,4 +181,13 @@ describe('Activity', function() {
 
     expect(activity.findMinutesActiveByWeek(userDateRange, activityData)).to.equal('168.1 minutes')
   });
+
+  it('should have message that step goal is not acheived', function() {
+    expect(activity.determineStepGoalStatusForDay(userData, "2019/06/15", activityData)).to.equal('Step goal not acheived');
+  })
+
+  it('should have message that step goal is acheived', function() {
+    expect(activity.determineStepGoalStatusForDay(userData, "2019/06/20", activityData)).to.equal('Step goal acheived!');
+  })
+  
 });

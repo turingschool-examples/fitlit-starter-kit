@@ -37,7 +37,13 @@ class Activity {
     return `${averageMinutesForWeek} minutes`
   }
 
-  determineStepGoalStatusForDay() {
+  determineStepGoalStatusForDay(userData, day, activityData) {
+    let activityDaySummary = activityData.find(data => data.userID === this.userID && data.date === day);
+    if(userData["dailyStepGoal"] > activityDaySummary["numSteps"]) {
+      return 'Step goal not acheived'
+    } else if (userData["dailyStepGoal"] <= activityDaySummary["numSteps"]) {
+      return 'Step goal acheived!'
+    }
   }
 
   findDaysExceedingStepGoal() {

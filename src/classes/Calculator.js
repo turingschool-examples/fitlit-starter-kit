@@ -16,9 +16,25 @@ class Calculator {
     }, 0);
   }
 
-  getAllUserAllTimeAvg(dataset, database, metric) {
-    // Takes in a dataset string (e.g. 'sleepData', 'hydrationData', 'activityData'), database (i.e. it needs all the data, therefore the entire database is passed in), and a metric (e.g. 'hoursSlept') because it needs to search all users' data, not just the current user.
-    return database[dataset].reduce((average, datapoint) => {
+  getUserAllTimeMax(category, metric) {
+    const metricValues = category.map(date => {
+      return date[metric];
+    });
+
+    return Math.max(...metricValues);
+  }
+
+  getAllUserAllTimeAvg(dataset, database, metric, date = null) {
+    // Takes in a dataset string (e.g. 'sleepData', 'hydrationData', 'activityData'), database (i.e. it needs all the data, therefore the entire database is passed in), and a metric (e.g. 'hoursSlept') because it needs to search all users' data, not just the current user. If a date is passed in, will filter the database by date and average from that value.
+    let dataToAverage = database[dataset];
+
+    if (date) {
+      dataToAverage = database[dataset].filter(datapoint => {
+        return datapoint.date === date;
+      });
+    }
+
+    return dataToAverage.reduce((average, datapoint) => {
       const avg = (average += datapoint[metric] / database[dataset].length);
       return Math.round(avg * 100) / 100;
     }, 0);
@@ -63,6 +79,27 @@ class Calculator {
     const userDistance = userSteps * userStrideLength;
     const userMiles = Math.round((userDistance / MILE) * 100) / 100;
     return userMiles;
+  }
+
+  stepGoalMet(state, date) {
+    const stepGoal = state.currentUser.dailyStepGoal;
+    const stepsOnDate = this.getUserDayTotal(
+      state.currentUserData.activityData,
+      date,
+      "numSteps"
+    );
+
+    return stepsOnDate > stepGoal;
+  }
+
+  getDaysStepGoalMet(state) {
+    return state.currentUserData.activityData
+      .filter(day => {
+        return this.stepGoalMet(state, day.date);
+      })
+      .map(dayGoalMet => {
+        return dayGoalMet.date;
+      });
   }
 
   stringToDate(string) {

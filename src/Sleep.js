@@ -56,16 +56,10 @@ class Sleep {
   }
 
   findLongestSleeper(date) {
-    let longestSleepers = []
-    let dayData = this.sleepData.filter(day => day.date === date);
-    let sortedData = dayData.sort((hoursHigh, hoursLow) => hoursHigh - hoursLow)
-    longestSleepers.push(sortedData[0].userID)
-    sortedData.forEach(user => {
-      if (user.hoursSlept === sortedData[0].hoursSlept && user !==sortedData[0]) {
-        longestSleepers.push(user.userID);
-      }
-    })
-    return longestSleepers
+    let userIDs = [...new Set(this.sleepData.map(object => object.userID))];
+    userIDs.sort((a, b) => this.getDayHours(a, date) - this.getDayHours(b, date));
+    return userIDs.filter(ID =>
+      this.getDayHours(ID, date) === this.getDayHours(userIDs[userIDs.length - 1], date))
   }
 
   findMostSleepHours(id, date) {

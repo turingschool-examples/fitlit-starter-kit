@@ -19,11 +19,14 @@
   state.currentUserData = database.filterUser(state.currentUser.id);
   state.currentDay = database.getCurrentDay(state.currentUserData);
 
-
   // Instantiate a new state of challenge to get data for the current user and their friends
   const challengeState = new Challenge(state.currentUser);
   challengeState.getUsers(state.currentUser);
-  challengeState.getUsersData(Calculator, database.activityData, userRepository.users)
+  challengeState.getUsersData(
+    Calculator,
+    database.activityData,
+    userRepository.users
+  );
 
   // Start invoking render method
   // Please use state.currentDay for calculator date calls

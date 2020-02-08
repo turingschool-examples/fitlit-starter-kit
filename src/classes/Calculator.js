@@ -4,13 +4,23 @@ class Calculator {
   }
 
   getUserDayTotal(category, date, metric) {
-    return category.find(day => day.date === date && day.userID === this.currentDataId)[metric];
+    return category.find(
+      day => day.date === date && day.userID === this.currentDataId
+    )[metric];
   }
 
   getUserAllTimeAvg(category, metric) {
     return category.reduce((average, items) => {
       average += items[metric] / category.length;
       return Math.round(average * 100) / 100;
+    }, 0);
+  }
+
+  getAllUserAllTimeAvg(dataset, database, metric) {
+    // Takes in a dataset string (e.g. 'sleepData', 'hydrationData', 'activityData'), database (i.e. it needs all the data, therefore the entire database is passed in), and a metric (e.g. 'hoursSlept') because it needs to search all users' data, not just the current user.
+    return database[dataset].reduce((average, datapoint) => {
+      const avg = (average += datapoint[metric] / database[dataset].length);
+      return Math.round(avg * 100) / 100;
     }, 0);
   }
 
@@ -36,8 +46,11 @@ class Calculator {
   }
 
   calculateTotal(data) {
-    return data.metrics.reduce((a,b) => {a += b; return a}, 0);
-  };
+    return data.metrics.reduce((a, b) => {
+      a += b;
+      return a;
+    }, 0);
+  }
 
   stepsToMiles(state, date) {
     const MILE = 5280;

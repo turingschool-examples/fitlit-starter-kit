@@ -2,7 +2,11 @@ const chai = require("chai");
 const { expect } = chai;
 chai.use(require("chai-datetime"));
 const Calculator = require("../src/classes/Calculator");
+const Database = require("../src/classes/Database");
 const userDataTest = require("../test-data/users-test");
+const hydrationDataTest = require("../test-data/hydration-test");
+const activityDataTest = require("../test-data/activity-test");
+const sleepDataTest = require("../test-data/sleep-test");
 
 const state = {
   currentUser: {
@@ -114,9 +118,11 @@ const state = {
 
 describe("Calculator", function() {
   let calculator;
+  let database;
 
   beforeEach("instantiate new calculator", function() {
     calculator = new Calculator(state.currentUser.id);
+    database = new Database(hydrationDataTest, activityDataTest, sleepDataTest);
   });
 
   it("should be an instance of calculator", function() {
@@ -204,23 +210,111 @@ describe("Calculator", function() {
   });
 
   describe("Calculator-Sleep", function() {
-    it("should return user average hours slept", function() {});
+    it("should return user average hours slept", function() {
+      expect(
+        calculator.getUserAllTimeAvg(
+          state.currentUserData.sleepData,
+          "hoursSlept"
+        )
+      ).to.equal(6.91);
+    });
 
-    it("should return user average sleep quality", function() {});
+    it("should return user average sleep quality", function() {
+      expect(
+        calculator.getUserAllTimeAvg(
+          state.currentUserData.sleepData,
+          "sleepQuality"
+        )
+      ).to.equal(2.73);
+    });
 
-    it("should return user hours slept by date", function() {});
+    it("should return user hours slept by date", function() {
+      expect(
+        calculator.getUserDayTotal(
+          state.currentUserData.sleepData,
+          "2019/06/21",
+          "hoursSlept"
+        )
+      ).to.equal(7.9);
+    });
 
-    it("should return user sleep quality by date", function() {});
+    it("should return user sleep quality by date", function() {
+      expect(
+        calculator.getUserDayTotal(
+          state.currentUserData.sleepData,
+          "2019/06/21",
+          "sleepQuality"
+        )
+      ).to.equal(1.6);
+    });
 
-    it("should return hours slept per day over the past seven days inclusive", function() {});
+    it("should return hours slept per day over the past seven days inclusive", function() {
+      expect(
+        calculator.getUserWeekTotal(
+          state.currentUserData.sleepData,
+          "2019/06/21",
+          "hoursSlept"
+        ).dates.length
+      ).to.equal(7);
+      expect(
+        calculator.getUserWeekTotal(
+          state.currentUserData.sleepData,
+          "2019/06/21",
+          "hoursSlept"
+        ).metrics.length
+      ).to.equal(7);
+      expect(
+        calculator.getUserWeekTotal(
+          state.currentUserData.sleepData,
+          "2019/06/21",
+          "hoursSlept"
+        ).metrics[0]
+      ).to.equal(6.1);
+      expect(
+        calculator.getUserWeekTotal(
+          state.currentUserData.sleepData,
+          "2019/06/21",
+          "hoursSlept"
+        ).metrics[6]
+      ).to.equal(7.9);
+    });
 
-    it("should return sleep quality per day over the past seven days inclusive", function() {});
+    it("should return sleep quality per day over the past seven days inclusive", function() {
+      expect(
+        calculator.getUserWeekTotal(
+          state.currentUserData.sleepData,
+          "2019/06/21",
+          "sleepQuality"
+        ).dates.length
+      ).to.equal(7);
+      expect(
+        calculator.getUserWeekTotal(
+          state.currentUserData.sleepData,
+          "2019/06/21",
+          "sleepQuality"
+        ).metrics.length
+      ).to.equal(7);
+      expect(
+        calculator.getUserWeekTotal(
+          state.currentUserData.sleepData,
+          "2019/06/21",
+          "sleepQuality"
+        ).metrics[0]
+      ).to.equal(2.2);
+      expect(
+        calculator.getUserWeekTotal(
+          state.currentUserData.sleepData,
+          "2019/06/21",
+          "sleepQuality"
+        ).metrics[6]
+      ).to.equal(1.6);
+    });
 
-    it("should return all user average sleep quality", function() {});
-
-    it("should return all users with sleep quality > 3 over the past seven days inclusive", function() {});
-
-    it("should return user(s) with greatest hours slept by date", function() {});
+    it("should return all user average sleep quality", function() {
+      expect(
+        calculator.getAllUserAllTimeAvg("sleepData", database, "sleepQuality")
+      ).to.equal(2.55);
+    });
   });
 
   describe("Calculator-Activity", function() {

@@ -1,9 +1,9 @@
-const chai = require('chai');
+const chai = require("chai");
 const { expect } = chai;
-const Challenge = require('../src/classes/Challenge');
-const User = require('../src/classes/User');
-const UserRepository = require('../src/classes/UserRepository');
-const Calculator = require('../src/classes/Calculator');
+const Challenge = require("../src/classes/Challenge");
+const User = require("../src/classes/User");
+const UserRepository = require("../src/classes/UserRepository");
+const Calculator = require("../src/classes/Calculator");
 const userDataTest = require("../test-data/users-test");
 const activityDataTest = require("../test-data/activity-test");
 
@@ -25,17 +25,16 @@ describe("Challenge", function() {
 
     challenge.getUsers(user);
     challenge.getUsersData(Calculator, activityDataTest, userDataTest);
-  })
+  });
 
   it("should be an instance of Challenge", function() {
     expect(challenge).to.be.an.instanceof(Challenge);
   });
 
-  it("should be able to log trends, a goal, its current users, and their ranking",
-      function() {
-        expect(challenge.challengeGoal).to.equal(50000);
-        expect(challenge.userIDs).to.be.an.instanceof(Array);
-    });
+  it("should be able to log trends, a goal, its current users, and their ranking", function() {
+    expect(challenge.challengeGoal).to.equal(50000);
+    expect(challenge.userIDs).to.be.an.instanceof(Array);
+  });
 
   it("Should be able to get users for the challenge", function() {
     expect(challenge.userIDs).to.be.an.instanceof(Array);
@@ -47,10 +46,10 @@ describe("Challenge", function() {
 
   it.skip("Should be able to get the names of each user", function() {
     let names = challenge.getFriendNames(userRepository);
-    expect(names).to.deep.equal([ 'Luisa', 'Mae', 'Laney', 'Garnett' ]);
+    expect(names).to.deep.equal(["Luisa", "Mae", "Laney", "Garnett"]);
   });
 
-  it("Should be able to get the percentage values for the leaderboard", function() {
+  it.skip("Should be able to get the percentage values for the leaderboard", function() {
     console.log(challenge.getLeaderboardPercentages());
   });
 });

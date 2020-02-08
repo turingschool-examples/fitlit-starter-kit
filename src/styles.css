@@ -156,6 +156,15 @@ p {
   padding: 2.5% 5%;
 }
 
+.widget-block-challenge-bar {
+  border-radius: 5%;
+  display: flex;
+  justify-content: space-around;
+  margin: 5% 0;
+  padding: 2.5%;
+  width: 0;
+}
+
 .widget-block fas,
 .widget-block far {
   font-size: 1.5rem;

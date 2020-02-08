@@ -4,7 +4,8 @@ body {
 }
 .profile-section,
 .hydration-section,
-.activity-section {
+.activity-section,
+.sleep-section {
   background-color: #EDFDE1;
   height: 100%;
   width: 33%;

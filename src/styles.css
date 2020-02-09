@@ -210,8 +210,9 @@ p {
 .user-profile__name {
   align-items: center;
   display: flex;
-  padding-right: 1rem;
   font-style: italic;
+  padding-right: 1rem;
+  text-transform: uppercase;
 }
 
 .widget-block {

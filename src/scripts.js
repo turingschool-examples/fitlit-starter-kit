@@ -63,4 +63,8 @@
   // Friends widget
   const friendsHtmlString = friends.generateHtmlString(state, userRepository);
   dom.render(dom.friends, friendsHtmlString);
+
+  // All-time widget
+  const allTimeHtmlString = allTime.generateHtmlString(state);
+  dom.render(dom.allTime, allTimeHtmlString);
 })();

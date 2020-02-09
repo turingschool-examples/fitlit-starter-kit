@@ -1,6 +1,6 @@
 const dom = {
   main: document.querySelector("main"),
-  // allTime: this.main.querySelector(),
+  allTime: document.querySelector(".all-time"),
   challenges: document.querySelector(".challenge-goals"),
   friends: document.querySelector(".friends"),
   // goals: this.main.querySelector(),

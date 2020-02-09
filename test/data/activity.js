@@ -135,15 +135,19 @@ const activityData = [
   {
     "userID": 111,
     "date": "2020/02/07",
-    "numSteps": 7765,
+    "numSteps": 10005,
     "minutesActive": 58,
     "flightsOfStairs": 2
   },
   {
     "userID": 111,
     "date": "2020/02/08",
-    "numSteps": 8200,
+    "numSteps": 10326,
     "minutesActive": 135,
     "flightsOfStairs": 2
   }
 ];
+
+module.exports = {
+  activityData
+}

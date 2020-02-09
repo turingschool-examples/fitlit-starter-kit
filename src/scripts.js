@@ -1,4 +1,5 @@
 let userNameDisplay = document.querySelector('.nav-bar');
+console.log(userNameDisplay);
 let currentUser;
 let allUsers;
 
@@ -27,7 +28,7 @@ function displayUserInfo() {
   <h2 class = 'user-name'>Hello ${currentUser.returnUserName()}!</h2>
   <h2 class = 'user-step-goal'>Check Out Your Current Daily Step Goal: ${currentUser.dailyStepGoal}</h2>
   <h2 class = 'users-step-average'>All Users Step Average: ${allUsers.averageStepsAllUsers()}</h2>
-  <h2 class = 'user-stride-length'>Here is your Current Stride Length:${currentUser.strideLength}</h2>`
+  <h2 class = 'user-stride-length'>Here is your Current Stride Length:${currentUser.strideLength}</h2>`;
 }
 
 function shuffleUser(array) {

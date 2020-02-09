@@ -36,11 +36,11 @@ describe('Hydration default properties', () => {
     expect(hydrationData[0].numOunces).to.equal(37);
   })
 
-  it.skip('it should show fluid consumed by date', () => {
+  it('it should show fluid consumed by date', () => {
     expect(hydration.fluidConsumedByDate("2019/06/15")).to.equal(37);
   })
 
-  it.skip('it should have a date', () => {
-    expect(hydration.fluidConsumededWeekly("2019/06/15")).to.equal(37);
-  })
+  // it('it should have a date', () => {
+  //   expect(hydration.fluidConsumededWeekly("2019/06/15")).to.equal(37);
+  // })
 })

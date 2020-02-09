@@ -10,7 +10,7 @@ let user;
 describe('User', () => {
 
   beforeEach(() => {
-    user = new User(userData[0]);
+    user = new User(userData[0], []);
   })
 
   it('should be a function', () => {

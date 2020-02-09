@@ -24,12 +24,14 @@ img {
     /* width: 7%; */
 }
 
-
 .nav-bar {
     display: flex;
     flex-direction: row;
     width: 100%;
-    background-color: #ffffff;
+    background-color: #12EAEA;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 0 2px 0px black;
 }
 .user-name {
     margin: 10px;
@@ -39,6 +41,24 @@ img {
     background-color: white;
     box-shadow: 0 0 2px 0px black;
 }
+
+.user-step-info {
+    background-color: #12EAEA;
+    box-shadow: 0 0 2px 0px black;
+}
+
+.user-step-goal {
+    padding: 10px;
+}
+
+.users-step-average {
+    padding: 10px;
+}
+
+.user-stride-length {
+    padding: 10px;
+}
+
 .user-stats {
     background-color: white;
     margin: 10px;
@@ -52,7 +72,8 @@ h3 {
 }
 .check-friends{
     align-self: center;
-    padding: 60px;
+    /* padding: 60px; */
+    height: fit-content;
 }
 
 .friends-list {
@@ -60,7 +81,9 @@ h3 {
     justify-content: flex-end;
     margin: 10px;
     padding: 10px;
-    width: 50%;
+    width: 30%;
+    height: fit-content;
+
 }
 
 .friend-info {

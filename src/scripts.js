@@ -54,6 +54,13 @@
   dom.render(dom.challenges, challengeHtmlString);
 
   // Community widget
-  const communityHtmlString = community.generateHtmlString(state.currentUser.id, state);
+  const communityHtmlString = community.generateHtmlString(
+    state.currentUser.id,
+    state
+  );
   dom.render(dom.community, communityHtmlString);
+
+  // Friends widget
+  const friendsHtmlString = friends.generateHtmlString(state, userRepository);
+  dom.render(dom.friends, friendsHtmlString);
 })();

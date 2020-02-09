@@ -23,6 +23,11 @@ class Activity {
     return +(feetWalked / 5280).toFixed(1);
   }
 
+  getMilesByWeek(id, date, userRepo) {
+    return this.getWeek(id, date).map(obj =>
+      this.getMilesByDay(id, obj.date, userRepo));
+  }
+
   getMinutesByDay(id, date) {
     return this.getDay(id, date).minutesActive;
   }

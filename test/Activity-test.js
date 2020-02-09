@@ -28,6 +28,10 @@ describe('Activity', function() {
     expect(activity.getMilesByDay(1, '2020/02/02', userRepo)).to.equal(2.3);
   });
 
+  it('Should be able to return miles walked each day in a week', function(){
+    expect(activity.getMilesByWeek(1, '2020/02/08', userRepo)).to.deep.equal([2.3, 2.6, 7.7, 6.8, 5.3, 7, 4.1]);
+  });
+
   it('Should be able to return minutes active for a given day', function() {
     expect(activity.getMinutesByDay(1, '2020/02/02')).to.equal(14);
   });

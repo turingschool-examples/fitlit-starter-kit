@@ -24,12 +24,13 @@ img {
     /* width: 7%; */
 }
 
-
 .nav-bar {
     display: flex;
     flex-direction: row;
     width: 100%;
     background-color: #ffffff;
+    margin: 10px;
+    padding: 10px;
 }
 .user-name {
     margin: 10px;
@@ -52,7 +53,8 @@ h3 {
 }
 .check-friends{
     align-self: center;
-    padding: 60px;
+    /* padding: 60px; */
+    height: fit-content;
 }
 
 .friends-list {
@@ -60,7 +62,9 @@ h3 {
     justify-content: flex-end;
     margin: 10px;
     padding: 10px;
-    width: 50%;
+    width: 30%;
+    height: fit-content;
+
 }
 
 .friend-info {

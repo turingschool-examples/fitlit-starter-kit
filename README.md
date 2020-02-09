@@ -1,9 +1,9 @@
 # FitLit
 
-1. <a href="#abstract">Abstract</a>
-2. <a href="#technology">Technology</a>
-3. <a href="#installation">Installation</a>
-4. <a href="#deployment">Deployment</a>
+1. [Abstract](#abstract)
+2. [Technology](#technology)
+3. [Installation](#installation)
+4. [Deployment](#deployment)
 
 TODO: Add screenshots here
 
@@ -25,6 +25,6 @@ A fitness tracking dashboard displaying metrics from a large data set. Metrics i
 3. Install dependencies via `npm install`
 4. Open index.html a browser
 
-### 4. View deployment
+### 4. Deployment
 
 Link to be added...

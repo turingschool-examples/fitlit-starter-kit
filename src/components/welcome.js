@@ -2,8 +2,8 @@ const welcome = {
   generateHtmlString(state) {
     let name = state.currentUser.getFirstName();
     return `
-      <p class="user-profile__name">Welcome, ${name}!</p>
-      <img src="https://via.placeholder.com/75" alt="">
+      <h3 class="user-profile__name">${name}</h3>
+      <img class="user-profile__image" src="https://via.placeholder.com/75" alt="">
     `;
   }
 };

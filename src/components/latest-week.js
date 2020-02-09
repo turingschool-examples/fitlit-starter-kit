@@ -69,7 +69,7 @@ const latestWeek = {
           <h2 class="latest-week__title">Sleep hours @ quality</h2>
           <div class="latest-week__content">
             <article class="latest-week__article latest-week__sleep">
-              ${this.renderRows(sleepHours, "hrs")}
+              ${this.renderRows(sleepHours, "h")}
             </article>
             <article class="latest-week__article latest-week__sleep">
               ${this.renderRows(sleepQuality, "", false)}
@@ -86,7 +86,7 @@ const latestWeek = {
                 ${this.renderRows(activityFlights, "", false)}
               </article>
               <article class="latest-week__article latest-week__activity">
-                ${this.renderRows(activityMinutes, "min", false)}
+                ${this.renderRows(activityMinutes, "m", false)}
             </article>
           </div>
         </div>

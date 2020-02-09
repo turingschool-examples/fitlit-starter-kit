@@ -15,8 +15,8 @@ class Sleep {
   }
 
   calculateAverageQuality(id) {
-      let totalHours = this.getUserData(id).reduce((acc, object) => acc += object.sleepQuality, 0);
-      return +(totalHours / this.getUserData(id).length).toFixed(1);
+    let totalHours = this.getUserData(id).reduce((acc, object) => acc += object.sleepQuality, 0);
+    return +(totalHours / this.getUserData(id).length).toFixed(1);
   }
 
   getDayHours(id, date) {
@@ -68,11 +68,6 @@ class Sleep {
     return sortedData[0]
   }
 }
-
-
-
-
-
 
 if (typeof module !== 'undefined') {
   module.exports = Sleep;

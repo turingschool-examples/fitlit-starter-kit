@@ -430,4 +430,15 @@ describe("Calculator", function() {
       ).to.equal(87.08);
     });
   });
+
+  describe("Calculator-Trends", function() {
+    it("should return an array of arrays containing dates when steps increased day to day three days or more in a row", function() {
+      expect(
+        calculator.getTrend(state.currentUserData.activityData, "numSteps")
+      ).to.deep.equal([
+        ["2019/06/15", "2019/06/16", "2019/06/17"],
+        ["2019/06/18", "2019/06/19", "2019/06/20"]
+      ]);
+    });
+  });
 });

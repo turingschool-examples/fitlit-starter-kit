@@ -28,9 +28,10 @@ img {
     display: flex;
     flex-direction: row;
     width: 100%;
-    background-color: #ffffff;
+    background-color: #12EAEA;
     margin: 10px;
     padding: 10px;
+    box-shadow: 0 0 2px 0px black;
 }
 .user-name {
     margin: 10px;
@@ -40,6 +41,24 @@ img {
     background-color: white;
     box-shadow: 0 0 2px 0px black;
 }
+
+.user-step-info {
+    background-color: #12EAEA;
+    box-shadow: 0 0 2px 0px black;
+}
+
+.user-step-goal {
+    padding: 10px;
+}
+
+.users-step-average {
+    padding: 10px;
+}
+
+.user-stride-length {
+    padding: 10px;
+}
+
 .user-stats {
     background-color: white;
     margin: 10px;

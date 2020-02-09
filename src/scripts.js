@@ -25,9 +25,12 @@ function displayUserInfo() {
   userNameDisplay.innerHTML = `
   <h1>Welcome to Activity Tracker!</h1>
   <h2 class = 'user-name'>Hello ${currentUser.returnUserName()}!</h2>
-  <h2 class = 'user-step-goal'>Check Out Your Current Daily Step Goal: ${currentUser.dailyStepGoal}</h2>
-  <h2 class = 'users-step-average'>All Users Step Average: ${allUsers.averageStepsAllUsers()}</h2>
-  <h2 class = 'user-stride-length'>Here is your Current Stride Length:${currentUser.strideLength}</h2>`
+
+  <div class = 'user-step-info'>
+  <h4 class = 'user-step-goal'>Check Out Your Current Daily Step Goal: ${currentUser.dailyStepGoal}</h2>
+  <h4 class = 'user-stride-length'>Here is your Current Stride Length:${currentUser.strideLength}</h2>
+  <h4 class = 'users-step-average'>All Users Step Average: ${allUsers.averageStepsAllUsers()}</h2>
+  </div>`
 }
 
 function shuffleUser(array) {

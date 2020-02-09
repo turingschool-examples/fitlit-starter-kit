@@ -1,4 +1,4 @@
-const latestActivity = {
+const community = {
   generateHtmlString(id, state) {
     const calculator = new Calculator(id);
     const userDailySteps = calculator.getUserDayTotal(
@@ -63,26 +63,57 @@ const latestActivity = {
       "numOunces"
     );
 
-    return `<h2>Latest Activity</h2>
-              <div class="activity-data-today-1 widget-block red">
-                <i class="fas fa-shoe-prints"></i>
-                <p class="user-daily-steps-js">${userDailySteps}</p>
-                <i class="fas fa-walking"></i>
-                <p class="user-daily-active-time-js">${userActiveTime}</p>
-              </div>
-              <div class="light-red activity-data-today-2 widget-block">
-                <i class="fas fa-ruler"></i>
-                <p class="user-daily-miles">${userMiles}</p>
-                <i class="far fa-building"></i>
-                <p class="user-daily-floors-js">${userFloorsClimbed}</p>
-              </div>
-              <div class="sleep-data-today widget-block blue">
-                <i class="fas fa-bed"></i>
-                <p class="user-daily-sleep-js">${userSleep}</p>
-                <i class="far fa-thumbs-up"></i>
-                <p class="user-daily-sleep-quality-js">${userSleepQuality}</p>
-                <i class="fas fa-mug-hot"></i>
-                <p class="user-daily-hydration-js">${userHydration}oz</p>
-              </div>`;
+    return `<h2 class="community-label">Community Daily Average</h2>
+    <div class="widget-block-small red">
+      <i class="fas fa-shoe-prints"></i>
+      <p class="overall-steps-average-js">10.5K</p>
+    </div>
+    <br>
+    <div class="widget-block-small red">
+      <i class="fas fa-walking"></i>
+      <p class="overall-active-time-js">10.5K</p>
+    </div>
+    <br>
+    <div class="widget-block-small light-red">
+      <i class="fas fa-ruler"></i>
+      <p class="user-daily-miles-js">5.2m</p>
+    </div>
+    <br>
+    <div class="widget-block-small light-red">
+      <i class="far fa-building"></i>
+      <p class="average-daily-floors-js">2</p>
+    </div>
+    <br>
+    <div class="widget-block-small blue">
+      <i class="fas fa-bed"></i>
+      <p class="overall-sleep-js">8.2hrs</p>
+      <i class="far fa-thumbs-up"></i>
+      <p class="overall-sleep-quality-js">3</p>
+    </div>
+    <br>
+    <div class="widget-block-small yellow">
+      <i class="fas fa-mug-hot"></i>
+      <p class="overall-hydration-js">55oz</p>
+    </div>`;
   }
 };
+
+
+// <h2 class="middle-label">Community Daily Average</h2>
+// <div class="sleep-data-community-average widget-block-small">
+//   <i class="fas fa-bed"></i>
+//   <p class="overall-sleep-js">8.2hrs</p>
+//   <i class="far fa-thumbs-up"></i>
+//   <p class="overall-sleep-quality-js">3</p>
+//   <i class="fas fa-mug-hot"></i>
+//   <p class="overall-hydration-js">55oz</p>
+// </div>
+//
+// <div class="sleep-data-today-average widget-block-small">
+//   <i class="fas fa-bed"></i>
+//   <p class="user-daily-sleep-js">${overallSleep}</p>
+//   <i class="far fa-thumbs-up"></i>
+//   <p class="average-daily-sleep-quality-js">${overallSleepQuality}</p>
+//   <i class="fas fa-mug-hot"></i>
+//   <p class="average-daily-hydration-js">${overallHydration}oz</p>
+// </div>

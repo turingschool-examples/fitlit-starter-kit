@@ -52,4 +52,8 @@
   // Challenge widget
   const challengeHtmlString = challenge.generateHtmlString(challengeState);
   dom.render(dom.challenges, challengeHtmlString);
+
+  // Community widget
+  const communityHtmlString = community.generateHtmlString(state.currentUser.id, state);
+  dom.render(dom.community, communityHtmlString);
 })();

@@ -68,6 +68,10 @@ p {
   background-color: var(--blue);
 }
 
+.community-label {
+  margin-bottom: 5%;
+}
+
 .fitlit-nav-logo {
   display: flex;
   justify-content: center;
@@ -218,8 +222,7 @@ p {
 .widget-block-small {
   display: flex;
   font-size: 15px;
-  justify-content: center;
-  padding: 2% 5%;
+  padding: 1% 5%;
 }
 
 .widget-block-small > * {

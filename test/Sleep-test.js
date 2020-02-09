@@ -8,7 +8,7 @@ const userData = require('../data/user-test-data');
 
 let sleep;
 let user;
-
+console.log('beans', sleepData)
 describe('Sleep default properties', () => {
 
   beforeEach(() => {
@@ -20,10 +20,11 @@ describe('Sleep default properties', () => {
     expect(Sleep).to.be.a('function');
   })
 
-  it('it should be an instance of hydration', () => {
+  it('it should be an instance of sleep', () => {
     expect(sleep).to.be.an.instanceof(Sleep);
   })
 
+  
   it('it should have a unique ID', () => {
     expect(sleepData[0].userID).to.equal(1);
   })

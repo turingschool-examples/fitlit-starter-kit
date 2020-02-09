@@ -71,4 +71,8 @@ const sleepData = [
     "hoursSlept": 8,
     "sleepQuality": 3.4
   }
-]
+];
+
+if(typeof module !== 'undefined') {
+  module.exports = sleepData;
+};

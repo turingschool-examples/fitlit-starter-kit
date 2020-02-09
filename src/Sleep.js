@@ -3,6 +3,7 @@ class Sleep {
     this.sleepData = sleepData;
     this.userID = this.userID;
   }
+  
 }
 
 

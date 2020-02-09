@@ -10,6 +10,7 @@ describe('Activity', function() {
   let userRepository;
   let activity;
   let userData;
+  let userDateRange;
 
   beforeEach(function() {
     activityData = [
@@ -155,6 +156,8 @@ describe('Activity', function() {
         ]
       }];
 
+    userDateRange = ["2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"];
+
     userRepository = new UsersRepository(1);
     userData = userRepository.getUserDataById(userDataSetSample);
     activity = new Activity(userRepository);
@@ -168,6 +171,16 @@ describe('Activity', function() {
     expect(activity).to.be.an.instanceof(Activity);
   });
 
+  it('should return user\'s activity data by specific date', function() {
+    expect(activity.findUserActivityDataByDate("2019/06/18", activityData)).to.deep.equal(
+      { userID: 1,
+        date: '2019/06/18',
+        numSteps: 4419,
+        minutesActive: 165,
+        flightsOfStairs: 33
+      })
+  })
+
   it('should find user\'s miles walked based by day', function() {
     expect(activity.findMilesWalkedByDay(userData, "2019/06/16", activityData)).to.equal("5.4 Miles");
   });
@@ -177,9 +190,7 @@ describe('Activity', function() {
   });
 
   it('should find user\'s average minutes active based on a 7 week period', function() {
-    const userDateRange = ["2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"];
-
-    expect(activity.findMinutesActiveByWeek(userDateRange, activityData)).to.equal('168.1 minutes')
+    expect(activity.findAverageMinutesActiveByWeek(userDateRange, activityData)).to.equal('168.1 minutes')
   });
 
   it('should have message that step goal is not acheived', function() {
@@ -218,6 +229,60 @@ describe('Activity', function() {
 
   it('should find average minutes active of all users base on a date', function() {
     expect(activity.findAllUserAverageMinutesActiveForSpecificDate("2019/06/19", activityData)).to.equal('259 Minutes Active');
+  })
+
+  it('should return user\'s day activity data for each day in a week', function() {
+    expect(activity.findUserDailyActivityDataForWeek(userDateRange, activityData)).to.deep.equal([
+      {
+        userID: 1,
+        date: '2019/06/16',
+        numSteps: 6637,
+        minutesActive: 175,
+        flightsOfStairs: 36
+      },
+      {
+        userID: 1,
+        date: '2019/06/17',
+        numSteps: 14329,
+        minutesActive: 168,
+        flightsOfStairs: 18
+      },
+      {
+        userID: 1,
+        date: '2019/06/18',
+        numSteps: 4419,
+        minutesActive: 165,
+        flightsOfStairs: 33
+      },
+      {
+        userID: 1,
+        date: '2019/06/19',
+        numSteps: 8429,
+        minutesActive: 275,
+        flightsOfStairs: 2
+      },
+      {
+        userID: 1,
+        date: '2019/06/20',
+        numSteps: 14478,
+        minutesActive: 140,
+        flightsOfStairs: 12
+      },
+      {
+        userID: 1,
+        date: '2019/06/21',
+        numSteps: 6760,
+        minutesActive: 135,
+        flightsOfStairs: 6
+      },
+      {
+        userID: 1,
+        date: '2019/06/22',
+        numSteps: 10289,
+        minutesActive: 119,
+        flightsOfStairs: 6
+      }
+    ]);
   })
 
 });

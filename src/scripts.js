@@ -7,15 +7,23 @@ let userStepGoal = document.querySelector('.daily-step-goal');
 let allUsersAvgStepGoal = document.querySelector('.all-users-step-goal-average');
 let userAverageOunceIntakeAllTime = document.querySelector('.average-fluid-ounces-all-time');
 let currentUserDate = document.querySelector('.current-date');
-
 let userOunceIntakeOnDay = document.querySelector('.fluid-ounces-consumed-on-day');
 let userWeeklyOunceIntake = document.querySelector('.fluid-ounces-one-week');
+let totalStepsOfCurrentDay = document.querySelector('.total-steps-current-day');
+let flightsOfStairsOfCurrentDay = document.querySelector('.flights-of-stairs-current-day');
+let minutesActiveOfCurrentDay = document.querySelector('.minutes-active-current-day');
+let milesWalkedOfCurrentDay = document.querySelector('.miles-walked-current-day');
+let allUserAverageStepsOfCurrentDay = document.querySelector('.all-user-average-steps-by-date');
+let allUserAverageMinutesActiveOfCurrentDay = document.querySelector('.all-user-average-minutes-active-by-date');
+let allUserAverageFlightStairsOfCurrentDay = document.querySelector('.all-user-average-flight-of-stairs-by-date');
+let userWeeklyActivityInfo = document.querySelector('.weekly-activity-info');
 
 window.onload = function() {
   const usersRepository = new UsersRepository(getRandomNumber());
   const userInfo = usersRepository.getUserDataById(userData);
   const user = new User(userInfo);
   const hydration = new Hydration(usersRepository);
+  const activity = new Activity(usersRepository);
   const userDateRange = ["2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"];
   const currentDate = '2019/06/22';
 
@@ -26,18 +34,43 @@ window.onload = function() {
   userStrideLength.innerText = `Stride Length: ${user.strideLength}`;
   userStepGoal.innerText = `Your Daily Step Goal: ${user.dailyStepGoal}`;
   allUsersAvgStepGoal.innerText = `Average User's Step Goal: ${usersRepository.calculateAverageStepGoal(userData)}`;
+
+  // hydration section
   userAverageOunceIntakeAllTime.innerText = `Average Fluid Ounce Intake: ${hydration.calculateAverageFluidIntakeForUser(hydrationData)}`;
   currentUserDate.innerText = `Today's Date: ${currentDate}`;
   userOunceIntakeOnDay.innerText = `Today's Fluid Intake: ${hydration.calculateFluidIntakeForDay(hydrationData, currentDate)}`;
 
   let userIntakeForWeek = hydration.calculateDailyIntakeForWeek(hydrationData, userDateRange);
   userWeeklyOunceIntake.innerHTML = hydrationWeek(userIntakeForWeek);
+
+  // activity section
+  let currentUserActivityData = activity.findUserActivityDataByDate(currentDate, activityData);
+  totalStepsOfCurrentDay.innerText = currentUserActivityData.numSteps;
+  flightsOfStairsOfCurrentDay.innerText = currentUserActivityData.flightsOfStairs;
+  minutesActiveOfCurrentDay.innerText = activity.findMinutesActiveByDay(currentDate, activityData);
+  milesWalkedOfCurrentDay.innerText = activity.findMilesWalkedByDay(userInfo, currentDate, activityData);
+  allUserAverageStepsOfCurrentDay.innerText = `Average Steps Taken: ${activity.findAllUserAverageStepsTakeForSpecificDate(currentDate, activityData)}`;
+  allUserAverageMinutesActiveOfCurrentDay.innerText = `Average Minutes Active: ${activity.findAllUserAverageMinutesActiveForSpecificDate(currentDate, activityData)}`;
+  allUserAverageFlightStairsOfCurrentDay.innerText = `Average Flight of Stairs Climb: ${activity.findAllUserAverageStairsClimbedForSpecificDate(currentDate, activityData)}`;
+
+  let currentWeekUserActivityData = activity.findUserDailyActivityDataForWeek(userDateRange, activityData);
+  userWeeklyActivityInfo.innerHTML = activityWeek(currentWeekUserActivityData);
 }
 
 function hydrationWeek(userWeekIntake) {
   return userWeekIntake.reduce((acc, el) => {
     acc += `<div>Date: ${el.date}</div>
             <div>Intake: ${el.intake}</div>`
+    return acc;
+  }, ``)
+}
+
+function activityWeek(currentWeekUserActivityData) {
+  return currentWeekUserActivityData.reduce((acc, el) => {
+    acc += `<div>Date: ${el.date}</div>
+            <div>Number of Steps: ${el.numSteps}</div>
+            <div>Minutes Active: ${el.minutesActive}</div>
+            <div>Flights of Stairs: ${el.flightsOfStairs}</div>`
     return acc;
   }, ``)
 }

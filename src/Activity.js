@@ -1,10 +1,11 @@
 class Activity {
   constructor(usersRepository) {
     this.userID = usersRepository.id;
-    this.date;
-    this.numSteps;
-    this.minutesActive;
-    this.flightsOfStairs;
+  }
+
+  findUserActivityDataByDate(date, activityData) {
+    let currentUserActivityData = activityData.find(data => data.userID === this.userID && data.date === date);
+    return currentUserActivityData;
   }
 
   findMilesWalkedByDay(userData, date, activityData) {
@@ -18,7 +19,7 @@ class Activity {
     return currentData["minutesActive"]
   }
 
-  findMinutesActiveByWeek(dateRange, activityData) {
+  findAverageMinutesActiveByWeek(dateRange, activityData) {
     let userWeekMinutesActive = [];
     let userActivityData = activityData.filter(activity => activity.userID === this.userID);
     dateRange.forEach(date => {
@@ -110,6 +111,20 @@ class Activity {
     let estimateAverage = usersAverageMinutesActiveDate.toFixed(0);
 
     return `${estimateAverage} Minutes Active`
+  }
+
+  findUserDailyActivityDataForWeek(dateRange, activityData) {
+    let userWeekActivityData = []
+    let currentUserActivityData = activityData.filter(data => this.userID === data.userID);
+    dateRange.forEach(date => {
+      currentUserActivityData.map(data => {
+        if(date === data.date) {
+          userWeekActivityData.push(data)
+        }
+      })
+    })
+
+    return userWeekActivityData;
   }
 
 }

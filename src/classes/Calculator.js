@@ -68,13 +68,20 @@ class Calculator {
     }, 0);
   }
 
-  stepsToMiles(state, date) {
+  stepsToMiles(state, date, providedUserSteps = null) {
     const MILE = 5280;
-    const userSteps = this.getUserDayTotal(
-      state.currentUserData.activityData,
-      date,
-      "numSteps"
-    );
+    let userSteps;
+
+    if (providedUserSteps) {
+      userSteps = providedUserSteps;
+    } else {
+      userSteps = this.getUserDayTotal(
+        state.currentUserData.activityData,
+        date,
+        "numSteps"
+      );
+    }
+
     const userStrideLength = state.currentUser.strideLength;
     const userDistance = userSteps * userStrideLength;
     const userMiles = Math.round((userDistance / MILE) * 100) / 100;

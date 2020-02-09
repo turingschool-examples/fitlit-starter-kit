@@ -5,11 +5,7 @@ const latestWeek = {
     let htmlString = "";
 
     dates.forEach((date, i) => {
-      let dateString = `${date
-        .toString()
-        .split(" ", 1)
-        .join("")
-        .charAt(0)}:`;
+      let dateString = `${date.toString().charAt(0)}:`;
 
       htmlString += `
         <p class="latest-week__type"><span class="latest-week__type-date">${

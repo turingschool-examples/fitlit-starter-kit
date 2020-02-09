@@ -25,19 +25,15 @@ function loadAllUsers() {
 function displayUserInfo() {
   userNameDisplay.innerHTML = `
   <h1>Welcome to Activity Tracker!</h1>
+  <div class = 'user-greeting'>
   <h2 class = 'user-name'>Hello ${currentUser.returnUserName()}!</h2>
-<<<<<<< HEAD
-  <h2 class = 'user-step-goal'>Check Out Your Current Daily Step Goal: ${currentUser.dailyStepGoal}</h2>
-  <h2 class = 'users-step-average'>All Users Step Average: ${allUsers.averageStepsAllUsers()}</h2>
-  <h2 class = 'user-stride-length'>Here is your Current Stride Length:${currentUser.strideLength}</h2>`;
-=======
-
+  <img class = 'user-name' src="../data/assets/icons8-user-50.png" alt="">
+  </div>
   <div class = 'user-step-info'>
   <h4 class = 'user-step-goal'>Check Out Your Current Daily Step Goal: ${currentUser.dailyStepGoal}</h2>
   <h4 class = 'user-stride-length'>Here is your Current Stride Length:${currentUser.strideLength}</h2>
   <h4 class = 'users-step-average'>All Users Step Average: ${allUsers.averageStepsAllUsers()}</h2>
   </div>`
->>>>>>> css
 }
 
 function shuffleUser(array) {

@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Mada', sans-serif;
-    background-color: #BCE7FD;
     width: 100%;
 }
 
@@ -21,7 +20,7 @@ h1 {
 }
 
 img {
-    /* width: 7%; */
+    width: auto;
 }
 
 .nav-bar {
@@ -33,7 +32,7 @@ img {
     padding: 10px;
     box-shadow: 0 0 2px 0px black;
 }
-.user-name {
+.user-greeting {
     margin: 10px;
     padding: 10px;
     text-align: center;
@@ -43,8 +42,9 @@ img {
 }
 
 .user-step-info {
-    background-color: #12EAEA;
+    background-color: #BCE7FD;    
     box-shadow: 0 0 2px 0px black;
+    display: inline;
 }
 
 .user-step-goal {
@@ -60,7 +60,7 @@ img {
 }
 
 .user-stats {
-    background-color: white;
+    /* background-color: white; */
     margin: 10px;
     padding: 10px;
     width: 30%;

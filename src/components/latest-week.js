@@ -1,6 +1,4 @@
 const latestWeek = {
-  // TODO requires minutes to hours method
-  // TODO requires substantial formatting
   renderRows(rows, suffix, renderDate = true) {
     let dates = rows.dates;
     let metrics = rows.metrics;

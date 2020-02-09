@@ -9,10 +9,10 @@ class Calculator {
     )[metric];
   }
 
-  getUserAllTimeAvg(category, metric) {
+  getUserAllTimeAvg(category, metric, decimalPlacement = 100) {
     return category.reduce((average, items) => {
       average += items[metric] / category.length;
-      return Math.round(average * 100) / 100;
+      return Math.round(average * decimalPlacement) / decimalPlacement;
     }, 0);
   }
 
@@ -24,7 +24,13 @@ class Calculator {
     return Math.max(...metricValues);
   }
 
-  getAllUserAllTimeAvg(dataset, database, metric, date = null) {
+  getAllUserAllTimeAvg(
+    dataset,
+    database,
+    metric,
+    date = null,
+    decimalPlacement = 100
+  ) {
     // Takes in a dataset string (e.g. 'sleepData', 'hydrationData', 'activityData'), database (i.e. it needs all the data, therefore the entire database is passed in), and a metric (e.g. 'hoursSlept') because it needs to search all users' data, not just the current user. If a date is passed in, will filter the database by date and average from that value.
     let dataToAverage = database[dataset];
 
@@ -36,7 +42,7 @@ class Calculator {
 
     return dataToAverage.reduce((average, datapoint) => {
       const avg = (average += datapoint[metric] / database[dataset].length);
-      return Math.round(avg * 100) / 100;
+      return Math.round(avg * decimalPlacement) / decimalPlacement;
     }, 0);
   }
 
@@ -94,7 +100,7 @@ class Calculator {
     }, 0);
   }
 
-  stepsToMiles(state, date, providedUserSteps = null) {
+  stepsToMiles(state, date, providedUserSteps = null, decimalPlacement = 100) {
     const MILE = 5280;
     let userSteps;
 
@@ -110,7 +116,8 @@ class Calculator {
 
     const userStrideLength = state.currentUser.strideLength;
     const userDistance = userSteps * userStrideLength;
-    const userMiles = Math.round((userDistance / MILE) * 100) / 100;
+    const userMiles =
+      Math.round((userDistance / MILE) * decimalPlacement) / decimalPlacement;
     return userMiles;
   }
 

@@ -26,7 +26,7 @@ function displayUserInfo() {
   userNameDisplay.innerHTML = `
   <h1>Welcome to Activity Tracker!</h1>
   <div class = 'user-greeting'>
-  <h2 class = 'user-name'>Hello ${currentUser.returnUserName()}!</h2>
+  <h2 class = 'user-name' >Hello ${currentUser.returnUserName()}!</h2>
   <img class = 'user-name' src="../data/assets/icons8-user-50.png" alt="">
   </div>
   <div class = 'user-step-info'>

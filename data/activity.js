@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 const activityData = [
   {
     "userID": 1,

@@ -6,7 +6,7 @@ class Hydration {
 
   fluidConsumedByDate(date) {
     const fluid = this.hydrationData.find(data => {
-       return data.date === date;
+      return data.date === date;
     })
      return fluid.numOunces;
   }
@@ -28,4 +28,4 @@ class Hydration {
 
 if(typeof module !== 'undefined') {
   module.exports = Hydration;
-};
+}

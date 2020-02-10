@@ -77,4 +77,8 @@ describe('Activity', function() {
     let streakDays = activityData.slice(19);
     expect(activity.getStepsTrend(111)).to.deep.equal(streakDays);
   });
+
+  it('Should be able to return an array of ids ordered by steps taken in a week', function() {
+    expect(activity.challengeFriends(1, '2020/02/08', userRepo)).to.deep.equal([11, 1, 111]);
+  });
 });

@@ -87,6 +87,12 @@ class Activity {
         obj.date === sortedData[index1][index2].date));
     return streaks.map(streak => streak[2]);
   }
+
+  challengeFriends(id, date, userRepo) {
+    let contestants = userRepo.getUserData(id).friends.concat(id);
+    return contestants.sort((a, b) =>
+      this.getStepsByWeek(b, date) - this.getStepsByWeek(a, date));
+  }
 }
 
 if (typeof module !== 'undefined') {

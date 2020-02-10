@@ -50,6 +50,7 @@ const reportCard = {
             </section>`;
 
   },
+
   getGrades: function() {
     let grades = [];
     grades.push(this.calculateStepsGrade(),
@@ -63,90 +64,90 @@ const reportCard = {
 
   calculateStepsGrade: function() {
     let dS = userDailySteps;
-    if(dS >= ){
+    if(dS >= 12000){
 
-    } if else() {
+    } else if(9000 <= dS < 12000) {
 
-    } if else() {
+    } else if(6500 <= dS < 9000) {
 
-    } if else() {
+    } else if(4000 <= dS < 6500) {
 
-    } if else() {
+    } else if(dS < 4000) {
 
     }
   },
 
   calculateFlightsGrade: function() {
-    let dS = userDailySteps;
-    if(dS >= ){
+    let f = userFloorsClimbed;
+    if(35 < f < 51){
 
-    } if else() {
+    } else if(20 < f < 36) {
 
-    } if else() {
+    } else if(7 < f < 21) {
 
-    } if else() {
+    } else if(1 < f < 8) {
 
-    } if else() {
+    } else if(f < 2) {
 
     }
   },
 
   calculateMinutesActiveGrade: function() {
-    let dS = userDailySteps;
-    if(dS >= ){
+    let mA = userActiveTime;
+    if(mA > 200){
 
-    } if else() {
+    } else if(130 < mA < 201) {
 
-    } if else() {
+    } else if(80 < mA < 132) {
 
-    } if else() {
+    } else if(45 < mA < 81) {
 
-    } if else() {
+    } else if(mA < 46) {
 
     }
   },
 
   calculateSleepQualGrade: function() {
-    let dS = userDailySteps;
-    if(dS >= ){
+    let sQ = userSleepQuality;
+    if(sQ >= 4 ){
 
-    } if else() {
+    } else if(3 <= sQ <= 3.9) {
 
-    } if else() {
+    } else if(2 <= sQ <= 2.9) {
 
-    } if else() {
+    } else if(1.5 <= sQ <= 1.9) {
 
-    } if else() {
+    } else if(1 <= sQ <= 1.4) {
 
     }
   },
 
   calculateSleepLengthGrade: function() {
-    let dS = userDailySteps;
-    if(dS >= ){
+    let sL = userSleep;
+    if(sL >= 8 ){
 
-    } if else() {
+    } else if( 7 <= sL < 8) {
 
-    } if else() {
+    } else if(6 <= sL < 7) {
 
-    } if else() {
+    } else if(5 <= sL < 6) {
 
-    } if else() {
+    } else if(sL < 5) {
 
     }
   },
 
   calculateHydrationGrade: function() {
-    let dS = userDailySteps;
-    if(dS >= ){
+    let h = userHydration;
+    if(h > 80){
 
-    } if else() {
+    } else if(65 < h < 81) {
 
-    } if else() {
+    } else if(50 < h < 66) {
 
-    } if else() {
+    } else if(35 < h < 51) {
 
-    } if else() {
+    } else if(h < 36) {
 
     }
   },

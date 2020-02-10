@@ -68,4 +68,9 @@ describe('Activity', function() {
   it('Should find the average minutes active among all users for a given date', function() {
     expect(activity.getAverageMinutesByDay('2020/02/02')).to.equal(169);
   });
+
+  it('Should find days where the steps were increasing for three days', function() {
+    let streakDays = activityData.slice(19);
+    expect(activity.getStepsTrend(111)).to.deep.equal(streakDays);
+  });
 });

@@ -7,12 +7,11 @@ class Sleep {
   }
 
   calculateAverageSleepTimeOverall(sleepDatas) {
-    let userSleepHours = [];
-    sleepDatas.filter(sleepData => {
-      if(sleepData.userID === this.userID) {
-        userSleepHours.push(sleepData.hoursSlept)
-      }
-    })
+    let userSleepHours;
+    userSleepHours = sleepDatas.filter(sleepData =>
+      sleepData.userID === this.userID).map(
+        sleepData => sleepData.hoursSlept
+      )
     let totalSleep = userSleepHours.reduce((acc, sleep) => {
         acc += sleep;
         return acc;
@@ -100,8 +99,32 @@ class Sleep {
       return longestSleeper[0].userID;
   }
 
-  findUserHighestSleepAverage() {
+  static findUserHighestSleepAverage(sleepDatas) {
   // find user with the highest sleep average overall //
+  let hoursByID = sleepDatas.reduce((acc, sleepData) => {
+    let id = sleepData.userID;
+    if(acc[id] === undefined) {
+      acc[id] = [0/*count*/, 0/*sleephours*/];
+    }
+    acc[id][1] += sleepData.hoursSlept; //total sleep hours for user
+    acc[id][0]++ //total observastions
+    return acc;
+  }, {});
+   for(let id in hoursByID) {
+     hoursByID[id][1] /= hoursByID[id][0] // replacing the acc hours slept with itself divided by the count
+   }
+    let idMax;
+    let averageMax = 0;
+    for(let id in hoursByID) {
+     let average = hoursByID[id][1];
+     if(average > averageMax) {
+       averageMax = average;
+       idMax = id;
+     }
+    }
+    return +idMax;
+
+
   }
 
 }

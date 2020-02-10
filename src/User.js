@@ -24,8 +24,8 @@ class User {
       })
     })
     return friendList.map(friend => {
-      return ({name: friend.name, stepGoal: friend.dailyStepGoal})
-    })
+      return {name: friend.name, stepGoal: friend.dailyStepGoal}
+  })
   }
 }
 

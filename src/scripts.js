@@ -6,6 +6,7 @@ let currentUser;
 let allUsers;
 let allHydration;
 
+
 window.onload = loadHandler;
 
 function loadHandler() {
@@ -48,12 +49,13 @@ function displayPersonalInfo() {
 }
 
 function displayFriends() {
-  console.log(currentUser.findFriendsNames(userData))
-
-  friendDisplay.innerHTML = `
-  <h2>Personal Info</h2>
-  <h3>Friends: ${currentUser.findFriendsNames(userData)}</h3>
-  `
+  let homies = currentUser.findFriendsNames(userData);
+  console.log(homies)
+  homies.forEach(homie => {
+  friendDisplay.innerHTML +=`
+  <h3>Name: ${homie.name}</h3>
+  <h3>steps: ${homie.stepGoal}</h3>  `
+  })
 }
 
 function displayHydrationInfo() {

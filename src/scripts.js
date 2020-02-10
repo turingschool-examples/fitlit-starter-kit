@@ -33,11 +33,13 @@ function loadHydrationData() {
 
 function displayUserInfo() {
   userNameDisplay.innerHTML = `
-  <h2>Welcome to Activity Tracker!</h2>
-  <h3 class = 'user-name'>Hello! ${currentUser.returnUserName()}</h3>
-  <h3 class = 'user-step-goal'>Step Goal: ${currentUser.dailyStepGoal}</h3>
-  <h3 class = 'users-step-average'>All Users Step Goal Average: ${allUsers.averageStepsAllUsers()}</h3>
-  <h3 class = 'user-stride-length'>Stride Length: ${currentUser.strideLength}</h3>`
+  <h1>Welcome to Activity Tracker!</h1>
+  <h2 class = 'user-name'>Hello ${currentUser.returnUserName()}!</h2>
+  <div class = 'user-step-info'>
+  <h4 class = 'user-step-goal'>Check Out Your Current Daily Step Goal: ${currentUser.dailyStepGoal}</h4>
+  <h4 class = 'user-stride-length'>Here is your Current Stride Length:${currentUser.strideLength}</h4>
+  <h4 class = 'users-step-average'>All Users Step Average: ${allUsers.averageStepsAllUsers()}</h4>
+  </div>`
 }
 
 function displayPersonalInfo() {
@@ -52,7 +54,7 @@ function displayFriends() {
   console.log(homies)
   homies.forEach(homie => {
   friendDisplay.innerHTML +=`
-  <h3>Name: ${homie.name}</h3>
+  <h3>Name: ${(homie.name.split(' ')[0])}</h3>
   <h3>steps: ${homie.stepGoal}</h3>  `
   })
 }

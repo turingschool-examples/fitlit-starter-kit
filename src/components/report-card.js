@@ -44,8 +44,9 @@ const reportCard = {
     );
 
     const dailyGrades = getGrades();
+    dailyGrades.overallGrade = calculateOverallGrade()
 
-    return `<h2>Report Card: </h2>
+    return `<h2>Report Card: ${dailyGrades.overallGrade}</h2>
             <h2>Your Daily Average</h2>
             <section>
               <div class="steps"><i class="fas fa-shoe-prints"></i>&nbsp;&nbsp;${userDailySteps}&nbsp;&nbsp;${dailyGrades.stepsGrade.grade}</div>
@@ -63,7 +64,7 @@ const reportCard = {
         minutesActiveGrade: calculateMinutesActiveGrade(),
         sleepQualGrade: calculateSleepQualGrade(),
         sleepLengthGrade: calculateSleepLengthGrade(),
-        hydrationGrade: calculateHydrationGrade()
+        hydrationGrade: calculateHydrationGrade(),
       };
       return grades;
     };
@@ -156,6 +157,20 @@ const reportCard = {
       } else if(h < 36) {
         return fScore;
       }
+    };
+
+    function calculateOverallGrade() {
+      let score = (dailyGrades.stepsGrade.score +
+      dailyGrades.flightsGrade.score +
+      dailyGrades.minutesActiveGrade.score +
+      dailyGrades.sleepQualGrade.score +
+      dailyGrades.sleepLengthGrade.score +
+      dailyGrades.hydrationGrade.score)/6
+      if(score >= 1 && score < 2){return "F"}
+      else if(score >= 2 && score < 3){return "D"}
+      else if(score >= 3 && score < 4){return "C"}
+      else if(score >= 4 && score < 4.5){return "B"}
+      else if(score >= 4.5 && score < 5){return "A"}
     };
   }
 }

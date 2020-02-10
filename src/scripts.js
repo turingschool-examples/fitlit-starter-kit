@@ -10,7 +10,7 @@ const userStepGoal = document.querySelector('.user-step-goal');
 const userGoalAverage = document.querySelector('.step-goal-average');
 const friendsList = document.querySelector('.friends-list');
 const stepComparison = document.querySelector('.step-goal-comparison');
-const dayHydrationBox = document.querySelector('.hydration-day');
+const dayHydrationBox = document.querySelector('.h-day-info');
 const weekHydrationBox = document.querySelector('.hydration-week');
 const daySleepBox = document.querySelector('.sleep-day');
 const weekSleepHoursBox = document.querySelector('.sleep-hours-week');
@@ -22,19 +22,19 @@ const overallSleepQualityBox = document.querySelector('.sleep-quality-all-time')
 function populateUserInfo(id) {
   let user = new User(userRepo.getUserData(id));
   userName.innerText = user.name;
-  userAddress.innerText = user.address;
-  userEmail.innerText = user.email;
-  userStride.innerText = user.strideLength;
-  userStepGoal.innerText = user.dailyStepGoal;
-  userGoalAverage.innerText = userRepo.getStepGoalAverage();
-  stepComparison.innerText  = (user.dailyStepGoal > userRepo.getStepGoalAverage()) ? 
-    `You're step goal is ${user.dailyStepGoal - userRepo.getStepGoalAverage()} steps above the average` :
-    `You're step goal is ${userRepo.getStepGoalAverage() - user.dailyStepGoal} steps below the average`
+  userAddress.innerText = `Address: ${user.address}`;
+  userEmail.innerText = `Email: ${user.email}`;
+  userStride.innerText = `Stride Length: ${user.strideLength}`;
+  userStepGoal.innerText = `Daily Step Goal: ${user.dailyStepGoal}`;
+  userGoalAverage.innerText = `Average Step Goal: ${userRepo.getStepGoalAverage()}`;
+  stepComparison.innerText  = (user.dailyStepGoal > userRepo.getStepGoalAverage()) ?
+    `Goal Comparison: You're step goal is ${user.dailyStepGoal - userRepo.getStepGoalAverage()} steps above the average` :
+    `Goal Comparison: You're step goal is ${userRepo.getStepGoalAverage() - user.dailyStepGoal} steps below the average`
   friendsList.innerHTML = friendsList.innerHTML = user.friends.map(friendID => userRepo.getUserData(friendID).name)
 }
 
 function populateHydrationInfo(id, date) {
-  dayHydrationBox.innerHTML = hydration.getDay(id, date);
+  dayHydrationBox.innerHTML = `${hydration.getDay(id, date)} oz.`;
   let weekData = hydration.getWeek(id, date);
   weekHydrationBox.innerHTML = weekData.map(obj => obj.numOunces)
 }

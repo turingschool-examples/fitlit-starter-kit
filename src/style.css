@@ -2,9 +2,10 @@ body {
   background-color: #5CDB95;
 }
 .profile-section,
-.hydration-section {
+.hydration-section,
+.sleep-section {
   background-color: #EDFDE1;
-  height: 25em;
+  height: 35em;
   width: 33%;
   border: 3px solid #379683;
 }

@@ -1,6 +1,11 @@
 let userNameDisplay = document.querySelector('.nav-bar');
+let hydrationDisplay = document.querySelector('.hydration-section');
+let personalDisplay = document.querySelector('.personal-info');
+let friendDisplay = document.querySelector('.friends-list')
 let currentUser;
 let allUsers;
+let allHydration;
+
 
 window.onload = loadHandler;
 
@@ -8,6 +13,10 @@ function loadHandler() {
   loadUser()
   loadAllUsers()
   displayUserInfo()
+  displayFriends()
+  displayPersonalInfo()
+  loadHydrationData()
+  displayHydrationInfo()
 }
 
 function loadUser() {
@@ -19,13 +28,42 @@ function loadAllUsers() {
   allUsers = new UserRepo(userData);
 }
 
+function loadHydrationData() {
+  allHydration = new Hydration(hydrationData, currentUser.id)
+}
+
 function displayUserInfo() {
   userNameDisplay.innerHTML = `
-  <h1>Welcome to Activity Tracker!</h1>
-  <h2 class = 'user-name'>Hello! ${currentUser.returnUserName()}</h2>
-  <h2 class = 'user-step-goal'>Step Goal: ${currentUser.dailyStepGoal}</h2>
-  <h2 class = 'users-step-average'>All Users Step Goal Average: ${allUsers.averageStepsAllUsers()}</h2>
-  <h2 class = 'user-stride-length'>Stride Length:${currentUser.strideLength}</h2>`
+  <h2>Welcome to Activity Tracker!</h2>
+  <h3 class = 'user-name'>Hello! ${currentUser.returnUserName()}</h3>
+  <h3 class = 'user-step-goal'>Step Goal: ${currentUser.dailyStepGoal}</h3>
+  <h3 class = 'users-step-average'>All Users Step Goal Average: ${allUsers.averageStepsAllUsers()}</h3>
+  <h3 class = 'user-stride-length'>Stride Length: ${currentUser.strideLength}</h3>`
+}
+
+function displayPersonalInfo() {
+  personalDisplay.innerHTML = `
+  <h2>Personal Info</h2>
+  <h3>Email: ${currentUser.email}</h3>
+  <h3>Address: ${currentUser.address}</h3>  `
+}
+
+function displayFriends() {
+  let homies = currentUser.findFriendsNames(userData);
+  console.log(homies)
+  homies.forEach(homie => {
+  friendDisplay.innerHTML +=`
+  <h3>Name: ${homie.name}</h3>
+  <h3>steps: ${homie.stepGoal}</h3>  `
+  })
+}
+
+function displayHydrationInfo() {
+ hydrationDisplay.innerHTML = `
+ <h2>Hydration Data</h2>
+ <h3>-Average Fluid Consumed All Time: ${allHydration.fluidConsumedALlTime(currentUser.id)}</h3>
+ <h3>-Fluid consumed today: ${allHydration.fluidConsumedByDate("2019/06/16")}</h3>
+ <h3>-Fluid consumed over a week: ${allHydration.fluidConsumededWeekly(currentUser.id)}</h3>`
 }
 
 function shuffleUser(array) {

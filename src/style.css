@@ -3,9 +3,20 @@ body {
 }
 .profile-section,
 .hydration-section,
-.sleep-section {
+.sleep-section,
+.activity-section {
   background-color: #EDFDE1;
   height: 35em;
   width: 33%;
-  border: 3px solid #379683;
+  border: 3px solid black;
+}
+
+.profile-section{
+  height: 15em;
+}
+.activity-section {
+  height: 70em;
+}
+.hydration-section {
+  height: 28em;
 }

@@ -24,6 +24,10 @@ describe('Activity', function() {
     expect(activity).to.be.an.instanceof(Activity);
   });
 
+  it('Should be able to return the number of steps in a week', function() {
+    expect(activity.getStepsByWeek(1, '2020/02/08')).to.equal(51116);
+  });
+
   it('Should be able to return miles walked for a given day', function(){
     expect(activity.getMilesByDay(1, '2020/02/02', userRepo)).to.equal(2.3);
   });

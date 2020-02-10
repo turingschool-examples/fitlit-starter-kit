@@ -19,7 +19,7 @@ class Activity {
   }
 
   getStepsByWeek(id, date) {
-    this.getWeek(id, date).reduce((acc, obj) => acc + obj.numSteps, 0)
+    return this.getWeek(id, date).reduce((acc, obj) => acc + obj.numSteps, 0);
   }
 
   getMilesByDay(id, date, userRepo) {

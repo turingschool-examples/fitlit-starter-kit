@@ -35,7 +35,7 @@ describe('Sleep default properties', () => {
   it('it should have the average number of hours slept', () => {
     expect(sleep.avgHoursSlept()).to.equal('7.92');
   })
-  
+
   it('it should have the average sleep quality', () => {
     expect(sleep.avgSleepQuality()).to.equal('2.66');
   })
@@ -59,7 +59,4 @@ describe('Sleep default properties', () => {
     expect(qualityWeek).to.be.an('array');
     expect(qualityWeek.length).to.equal(7);
   })
-
-
 })
-

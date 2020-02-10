@@ -38,6 +38,7 @@ function displayUserInfo() {
   <h2 class = 'user-name' >Hello ${currentUser.returnUserName()}!</h2>
   <img class = 'user-name' src="../data/assets/icons8-user-50.png" alt="">
   </div>
+
   <div class = 'user-step-info'>
   <h4 class = 'user-step-goal'>Check Out Your Current Daily Step Goal: ${currentUser.dailyStepGoal}</h2>
   <h4 class = 'user-stride-length'>Here is your Current Stride Length:${currentUser.strideLength}</h2>
@@ -57,7 +58,7 @@ function displayFriends() {
   console.log(homies)
   homies.forEach(homie => {
   friendDisplay.innerHTML +=`
-  <h3>Name: ${homie.name}</h3>
+  <h3>Name: ${(homie.name.split(' ')[0])}</h3>
   <h3>steps: ${homie.stepGoal}</h3>  `
   })
 }

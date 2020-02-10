@@ -6,19 +6,7 @@ class Hydration {
 
   fluidConsumedByDate(date) {
     const fluid = this.hydrationData.find(data => {
-<<<<<<< HEAD
       return data.date === date;
-        console.log(data.numOunces)
-    })
-     return fluid.numOunces;
-  }
-
-  fluidConsumedALlTime(id) {
-    return this.hydrationData.reduce((acc, all) => {
-      if(all.userID === id) {
-        console.log('made it')
-=======
-       return data.date === date;
     })
      return fluid.numOunces;
   }
@@ -30,15 +18,11 @@ class Hydration {
   fluidConsumedALlTime(id){
      let allTime = this.hydrationData.reduce((acc, all) => {
       if(all.userID === id) {
->>>>>>> 20fc9273d733fc8ca785e0b1c8d197ae42d345e7
         acc += all.numOunces;
       }
     return acc
     }, 0)
-<<<<<<< HEAD
-=======
     return allTime;
->>>>>>> 20fc9273d733fc8ca785e0b1c8d197ae42d345e7
   }
 }
 

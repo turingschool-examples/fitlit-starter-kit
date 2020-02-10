@@ -24,6 +24,10 @@ describe('Activity', function() {
     expect(activity).to.be.an.instanceof(Activity);
   });
 
+  it('Should be able to return the number of steps in a week', function() {
+    expect(activity.getStepsByWeek(1, '2020/02/08')).to.equal(51116);
+  });
+
   it('Should be able to return miles walked for a given day', function(){
     expect(activity.getMilesByDay(1, '2020/02/02', userRepo)).to.equal(2.3);
   });
@@ -67,5 +71,19 @@ describe('Activity', function() {
 
   it('Should find the average minutes active among all users for a given date', function() {
     expect(activity.getAverageMinutesByDay('2020/02/02')).to.equal(169);
+  });
+
+  it('Should find days where the steps were increasing for three days', function() {
+    let streakDays = activityData.slice(19);
+    expect(activity.getStepsTrend(111)).to.deep.equal(streakDays);
+  });
+
+  it('Should find days where minutes active were increasing for three days', function() {
+    let streakDays = [activityData[18]];
+    expect(activity.getMinutesTrend(111)).to.deep.equal(streakDays);
+  });
+
+  it('Should be able to return an array of ids ordered by steps taken in a week', function() {
+    expect(activity.challengeFriends(1, '2020/02/08', userRepo)).to.deep.equal([11, 1, 111]);
   });
 });

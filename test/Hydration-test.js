@@ -48,5 +48,12 @@ describe('Hydration default properties', () => {
   it('it should have a date', () => {
     expect(hydration.fluidConsumedALlTime(1)).to.equal(5831);
   })
+<<<<<<< HEAD
 >>>>>>> 20fc9273d733fc8ca785e0b1c8d197ae42d345e7
+=======
+
+  it('it should have a date', () => {
+    expect(hydration.fluidConsumededWeekly()).to.deep.equal([ 97, 65, 25, 22, 90, 81, 87 ]);
+  })
+>>>>>>> 2492d32dd738f5a615b4216e1a10397f1e28e0d7
 })

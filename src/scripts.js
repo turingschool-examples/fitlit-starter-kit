@@ -6,7 +6,6 @@ let currentUser;
 let allUsers;
 let allHydration;
 
-
 window.onload = loadHandler;
 
 function loadHandler() {

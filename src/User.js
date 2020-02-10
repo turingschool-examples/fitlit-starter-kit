@@ -14,7 +14,20 @@ class User {
     return firstName[0];
   }
 
- }
+  findFriendsNames(userData) {
+    let friendList = [];
+    this.friends.filter(friend => {
+      userData.forEach(person => {
+        if(person.id === friend) {
+          friendList.push(person);
+        }
+      })
+    })
+    return friendList.map(friend => {
+      return {name: friend.name, stepGoal: friend.dailyStepGoal}
+  })
+  }
+}
 
 if (typeof module !== 'undefined') {
   module.exports = User;

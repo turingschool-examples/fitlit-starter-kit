@@ -6,7 +6,7 @@ const testData = [
     "email": "HannahHudson@turing.io",
     "strideLength": 3.7,
     "dailyStepGoal": 2000,
-    "friends": [1, 111]
+    "friends": [11, 111]
   },
   {
     "id": 11,
@@ -33,4 +33,3 @@ const testData = [
 module.exports = {
   testData
 }
-

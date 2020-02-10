@@ -85,13 +85,19 @@ class Sleep {
     return parseFloat(averageSleepQualityOverall.toFixed(2));
   }
 
-  findAllUserSleepQualityOverThree(sleepDatas) {
-    // let allUserSleepQualityoverThree = sleepDatas.filter(data => data.sleepQuality > 3)
+  findAllUserSleepQualityOverThree(sleepDatas, userDatas, dateRange) {
+    // let highUserSleepQualities = [];
+    // let sleepers = userDatas.filter(data => data.id === sleepDatas.userID);
+    // console.log(sleepers);
+
+
 
   }
 
-  findUsersMostSleepTimeByDay() {
-
+  findUsersMostSleepTimeByDay(sleepDatas, date) {
+      let sleepDate = sleepDatas.filter(data => data.date === date);
+      let longestSleeper = sleepDate.sort((a, b) => b.hoursSlept - a.hoursSlept);
+      return longestSleeper[0].userID;
   }
 
   findUserHighestSleepAverage() {

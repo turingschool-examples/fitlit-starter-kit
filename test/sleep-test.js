@@ -440,8 +440,39 @@ describe('Sleep', function() {
         "hoursSlept": 10.8,
         "sleepQuality": 1
       }]
+    const userData = [{
+      "id": 1,
+      "name": "Luisa Hane",
+      "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+      "email": "Diana.Hayes1@hotmail.com",
+      "strideLength": 4.3,
+      "dailyStepGoal": 10000,
+      "friends": [
+        16,
+        4,
+        8
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Jarvis Considine",
+      "address": "30086 Kathryn Port, Ciceroland NE 07273",
+      "email": "Dimitri.Bechtelar11@gmail.com",
+      "strideLength": 4.5,
+      "dailyStepGoal": 5000,
+      "friends": [
+        9,
+        18,
+        24,
+        19
+      ]
+    }]
+    // console.log(userData);
     const userDateRange = ["2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"];
-    expect(findAllUserSleepQualityOverThree(sleepData1)).to.equal.("Jarvis Considine");
-  })
+    expect(sleep.findAllUserSleepQualityOverThree(sleepData1, userData, userDateRange)).to.equal("Jarvis Considine");
+  });
+  it('should find the user with the highest sleep time on a given date', function() {
+      expect(sleep.findUsersMostSleepTimeByDay(sleepData, '2019/06/15')).to.equal(2);
+    });
 
 });

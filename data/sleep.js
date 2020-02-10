@@ -30000,3 +30000,7 @@ const sleepData = [
     "sleepQuality": 4.6
   }
 ];
+
+if (typeof module !== 'undefined') {
+  module.exports = sleepData;
+}

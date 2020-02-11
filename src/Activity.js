@@ -15,8 +15,8 @@ class Activity {
     return `${milesWalked} Miles`
   }
 
-  findMinutesActiveByDay(date, activityData) {
-    let currentData = activityData.find(data => data.userID === this.userID && data.date === date);
+  findMinutesActiveByDay(date) {
+    let currentData = this.usersActivityData.find(data => data.userID === this.userID && data.date === date);
     return currentData["minutesActive"]
   }
 

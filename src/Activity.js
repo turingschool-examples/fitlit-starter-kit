@@ -59,8 +59,8 @@ class Activity {
     return findAllUserActivityData
   }
 
-  findAllTimeStairClimb(activityData) {
-    let findAllUserActivityData = activityData.filter(data => this.userID === data.userID)
+  findAllTimeStairClimb() {
+    let findAllUserActivityData = this.usersActivityData.filter(data => this.userID === data.userID)
     .sort((a,b) => b.flightsOfStairs - a.flightsOfStairs);
     let highestStairClimb = findAllUserActivityData.filter(data => data["flightsOfStairs"] === findAllUserActivityData[0].flightsOfStairs)
     .map(data => {

@@ -1,55 +1,62 @@
 class Sleep {
-  constructor(usersRepository) {
+  constructor(usersRepository, sleepDataSet) {
     this.userID = usersRepository.id;
-    this.date;
-    this.hoursSlept;
-    this.sleepQuality;
+    this.usersSleepData = sleepDataSet;
   }
 
-  calculateAverageSleepTimeOverall(sleepDatas) {
-    let userSleepHours;
-    userSleepHours = sleepDatas.filter(sleepData =>
-      sleepData.userID === this.userID).map(
-        sleepData => sleepData.hoursSlept
-      )
+  calculateAverageSleepTimeOverall() {
+    let userSleepHours = this.usersSleepData.filter(sleepData =>
+      sleepData.userID === this.userID)
+      .map(sleepData => sleepData.hoursSlept)
+
     let totalSleep = userSleepHours.reduce((acc, sleep) => {
         acc += sleep;
         return acc;
     }, 0)
+
     let averageSleepHours = totalSleep / userSleepHours.length;
+
     return parseFloat(averageSleepHours.toFixed(1));
   }
 
-  calculateAverageSleepQualityOverall(sleepDatas) {
+  calculateAverageSleepQualityOverall() {
     let userSleepQuality = [];
-    sleepDatas.filter(sleepData => {
+
+    this.usersSleepData.filter(sleepData => {
       if(sleepData.userID === this.userID) {
         userSleepQuality.push(sleepData.sleepQuality)
       }
     })
+
     let totalSleepQuality = userSleepQuality.reduce((acc, sleep) => {
         acc += sleep;
         return acc;
     }, 0)
+
     let averageSleepQuality = totalSleepQuality / userSleepQuality.length;
+
     return parseFloat(averageSleepQuality.toFixed(1));
   }
 
-  findSleepTimeByDate(sleepDatas, date) {
-    let userSleepData = sleepDatas.filter(sleepData => sleepData.userID ===
-    this.userID).find(sleepData => sleepData.date === date);
+  findSleepTimeByDate(date) {
+    let userSleepData = this.usersSleepData.filter(sleepData => sleepData.userID ===
+    this.userID)
+    .find(sleepData => sleepData.date === date);
+
     return userSleepData.hoursSlept;
   }
 
-  findSleepQualityByDate(sleepDatas, date){
-    let userSleepData = sleepDatas.filter(sleepData => sleepData.userID ===
-    this.userID).find(sleepData => sleepData.date === date);
+  findSleepQualityByDate(date){
+    let userSleepData = this.usersSleepData.filter(sleepData => sleepData.userID ===
+    this.userID)
+    .find(sleepData => sleepData.date === date);
+
     return userSleepData.sleepQuality;
   }
 
-  findAverageSleepHourByWeek(sleepDatas, dateRange) {
+  findAverageSleepHourByWeek(dateRange) {
     let userWeekSleep = [];
-    let userSleepData = sleepDatas.filter(sleepData => sleepData.userID === this.userID);
+    let userSleepData = this.usersSleepData.filter(sleepData => sleepData.userID === this.userID);
     dateRange.forEach(date => {
       userSleepData.map(data => {
         if(date === data.date) {
@@ -61,9 +68,9 @@ class Sleep {
     return userWeekSleep;
   }
 
-  findAverageSleepQualityByWeek(sleepDatas, dateRange) {
+  findAverageSleepQualityByWeek(dateRange) {
     let userWeekSleepQuality = [];
-    let userSleepData = sleepDatas.filter(sleepData => sleepData.userID === this.userID);
+    let userSleepData = this.usersSleepData.filter(sleepData => sleepData.userID === this.userID);
     dateRange.forEach(date => {
       userSleepData.map(data => {
         if(date === data.date) {
@@ -75,12 +82,12 @@ class Sleep {
     return userWeekSleepQuality;
   }
 
-  findAverageSleepQualityForAllUsers(sleepDatas) {
-    let allUserTotal = sleepDatas.reduce((acc, data) => {
+  findAverageSleepQualityForAllUsers() {
+    let allUserTotal = this.usersSleepData.reduce((acc, data) => {
       acc += data.sleepQuality;
       return acc;
     }, 0)
-    let averageSleepQualityOverall = allUserTotal/sleepDatas.length;
+    let averageSleepQualityOverall = allUserTotal/this.usersSleepData.length;
     return parseFloat(averageSleepQualityOverall.toFixed(2));
   }
 
@@ -93,25 +100,24 @@ class Sleep {
 
   }
 
-  findUsersMostSleepTimeByDay(sleepDatas, date) {
-      let sleepDate = sleepDatas.filter(data => data.date === date);
+  findUsersMostSleepTimeByDay(date) {
+      let sleepDate = this.usersSleepData.filter(data => data.date === date);
       let longestSleeper = sleepDate.sort((a, b) => b.hoursSlept - a.hoursSlept);
       return longestSleeper[0].userID;
   }
 
-  static findUserHighestSleepAverage(sleepDatas) {
-  // find user with the highest sleep average overall //
-  let hoursByID = sleepDatas.reduce((acc, sleepData) => {
+  findUserHighestSleepAverage() {
+  let hoursByID = this.usersSleepData.reduce((acc, sleepData) => {
     let id = sleepData.userID;
     if(acc[id] === undefined) {
-      acc[id] = [0/*count*/, 0/*sleephours*/];
+      acc[id] = [0, 0];
     }
-    acc[id][1] += sleepData.hoursSlept; //total sleep hours for user
-    acc[id][0]++ //total observastions
+    acc[id][1] += sleepData.hoursSlept;
+    acc[id][0]++
     return acc;
   }, {});
    for(let id in hoursByID) {
-     hoursByID[id][1] /= hoursByID[id][0] // replacing the acc hours slept with itself divided by the count
+     hoursByID[id][1] /= hoursByID[id][0]
    }
     let idMax;
     let averageMax = 0;
@@ -124,9 +130,7 @@ class Sleep {
     }
     return +idMax;
 
-
   }
-
 }
 
 if (typeof module !== 'undefined') {

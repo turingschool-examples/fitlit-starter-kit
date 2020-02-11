@@ -13,8 +13,6 @@ let weeklySleepHours = document.querySelector('.sleep-hours-for-week');
 let weeklySleepQuality = document.querySelector('.sleep-quality-for-week');
 let averageSleepHours = document.querySelector('.average-sleep-hours');
 let averageSleepQuality = document.querySelector('.average-sleep-quality');
-
-
 let userOunceIntakeOnDay = document.querySelector('.fluid-ounces-consumed-on-day');
 let userWeeklyOunceIntake = document.querySelector('.fluid-ounces-one-week');
 let totalStepsOfCurrentDay = document.querySelector('.total-steps-current-day');
@@ -30,7 +28,7 @@ window.onload = function() {
   const usersRepository = new UsersRepository(getRandomNumber());
   const userInfo = usersRepository.getUserDataById(userData);
   const user = new User(userInfo);
-  const sleep = new Sleep(usersRepository);
+  const sleep = new Sleep(usersRepository, sleepData);
   const hydration = new Hydration(usersRepository);
   const activity = new Activity(usersRepository, activityData);
   const userDateRange = ["2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"];
@@ -49,13 +47,13 @@ window.onload = function() {
   currentUserDate.innerText = `Today's Date: ${currentDate}`;
   userOunceIntakeOnDay.innerText = `Today's Fluid Intake: ${hydration.calculateFluidIntakeForDay(hydrationData, currentDate)}`;
 
-  hoursSlept.innerText = `Hours Slept Today: ${sleep.findSleepTimeByDate(sleepData, currentDate)}`;
-  qualitySlept.innerText = `Quality of Sleep Today: ${sleep.findSleepQualityByDate(sleepData, currentDate)}`;
-  averageSleepHours.innerText = `Your Average Overall Hours Slept: ${sleep.calculateAverageSleepTimeOverall(sleepData)}`;
-  averageSleepQuality.innerText = `Your Average Overall Sleep Quality: ${sleep.calculateAverageSleepQualityOverall(sleepData)}`;
-  let userWeeklySleepHours = sleep.findAverageSleepHourByWeek(sleepData, userDateRange);
+  hoursSlept.innerText = `Hours Slept Today: ${sleep.findSleepTimeByDate(currentDate)}`;
+  qualitySlept.innerText = `Quality of Sleep Today: ${sleep.findSleepQualityByDate(currentDate)}`;
+  averageSleepHours.innerText = `Your Average Overall Hours Slept: ${sleep.calculateAverageSleepTimeOverall()}`;
+  averageSleepQuality.innerText = `Your Average Overall Sleep Quality: ${sleep.calculateAverageSleepQualityOverall()}`;
+  let userWeeklySleepHours = sleep.findAverageSleepHourByWeek(userDateRange);
   weeklySleepHours.innerHTML = sleepWeekHours(userWeeklySleepHours);
-  let userWeeklySleepQuality = sleep.findAverageSleepQualityByWeek(sleepData, userDateRange);
+  let userWeeklySleepQuality = sleep.findAverageSleepQualityByWeek(userDateRange);
   weeklySleepQuality.innerHTML = sleepWeekQuality(userWeeklySleepQuality);
 
 
@@ -90,7 +88,6 @@ function sleepWeekQuality(userWeekSleepQuality) {
   return userWeekSleepQuality.reduce((acc, el) => {
     acc += `<div>Date: ${el.date}</div>
             <div>Quality of Sleep: ${el.sleepQuality}</div>`
-    // console.log(userWeekSleep);
     return acc;
   }, ``)
 }

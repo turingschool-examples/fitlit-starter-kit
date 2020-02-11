@@ -58,7 +58,7 @@ main {
   justify-content: space-around;
   align-items: center;
   border: .1em solid black;
-  margin-top: 1em;
+  margin-top: 5em;
   border-radius: 1em;
   background: rgb(221,255,0);
   background: linear-gradient(90deg, rgba(221,255,0,1) 0%, rgba(158,167,34,1) 0%, rgba(204,191,58,1) 40%, rgba(213,213,35,1) 100%);

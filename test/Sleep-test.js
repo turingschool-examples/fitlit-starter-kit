@@ -35,6 +35,11 @@ describe('Sleep', function() {
     expect(sleep.getDayQuality(1, '2020/02/03')).to.equal(2.7);
   })
 
+  it('should be able to return a week of data objects', function() {
+    let weekData = sleepData.slice(7, 14);
+    expect(sleep.getWeekData(11, "2020/02/08")).to.deep.equal(weekData);
+  });
+
   it('Should be able to find sleep hr values by week', function() {
     let weekData = sleepData.slice(0, 7);
     let filteredData = weekData.map(day => day.hoursSlept);

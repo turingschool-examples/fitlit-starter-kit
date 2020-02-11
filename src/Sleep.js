@@ -27,6 +27,13 @@ class Sleep {
     return this.getUserData(id).find(day => day.date === date).sleepQuality;
   }
 
+  getWeekData(id, date) {
+    let endDate = this.getUserData(id).findIndex(object => object.date === date);
+    return endDate - 6 >= 0 ?
+      this.getUserData(id).slice(endDate - 6, endDate + 1) :
+      this.getUserData(id).slice(0, endDate + 1);
+  }
+
   getHoursByWeek(id, date) {
     let endDate = this.getUserData(id).findIndex(object => object.date === date);
     let filteredData = this.getUserData(id).map(day => day.hoursSlept);

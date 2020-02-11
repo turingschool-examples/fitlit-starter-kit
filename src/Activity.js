@@ -9,8 +9,8 @@ class Activity {
     return currentUserActivityData;
   }
 
-  findMilesWalkedByDay(userData, date, activityData) {
-    let currentData = activityData.find(data => data.userID == this.userID && data.date === date);
+  findMilesWalkedByDay(userData, date) {
+    let currentData = this.usersActivityData.find(data => data.userID == this.userID && data.date === date);
     let milesWalked = ((currentData["numSteps"] * userData["strideLength"])/5280).toFixed(1);
     return `${milesWalked} Miles`
   }

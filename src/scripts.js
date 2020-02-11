@@ -8,6 +8,7 @@ let allUsersAvgStepGoal = document.querySelector('.all-users-step-goal-average')
 let userAverageOunceIntakeAllTime = document.querySelector('.average-fluid-ounces-all-time');
 let currentUserDate = document.querySelector('.current-date');
 let hoursSlept = document.querySelector('.hours-slept-day');
+let qualitySlept = document.querySelector('.quality-slept-day');
 let weeklySleepHours = document.querySelector('.sleep-hours-for-week');
 let weeklySleepQuality = document.querySelector('.sleep-quality-for-week');
 let averageSleepHours = document.querySelector('.average-sleep-hours');
@@ -49,8 +50,13 @@ window.onload = function() {
   userOunceIntakeOnDay.innerText = `Today's Fluid Intake: ${hydration.calculateFluidIntakeForDay(hydrationData, currentDate)}`;
 
   hoursSlept.innerText = `Hours Slept Today: ${sleep.findSleepTimeByDate(sleepData, currentDate)}`;
+  qualitySlept.innerText = `Quality of Sleep Today: ${sleep.findSleepQualityByDate(sleepData, currentDate)}`;
+  averageSleepHours.innerText = `Your Average Overall Hours Slept: ${sleep.calculateAverageSleepTimeOverall(sleepData)}`;
+  averageSleepQuality.innerText = `Your Average Overall Sleep Quality: ${sleep.calculateAverageSleepQualityOverall(sleepData)}`;
   let userWeeklySleepHours = sleep.findAverageSleepHourByWeek(sleepData, userDateRange);
   weeklySleepHours.innerHTML = sleepWeekHours(userWeeklySleepHours);
+  let userWeeklySleepQuality = sleep.findAverageSleepQualityByWeek(sleepData, userDateRange);
+  weeklySleepQuality.innerHTML = sleepWeekQuality(userWeeklySleepQuality);
 
 
   let userIntakeForWeek = hydration.calculateDailyIntakeForWeek(hydrationData, userDateRange);
@@ -76,6 +82,15 @@ function sleepWeekHours(userWeekSleep) {
     acc += `<div>Date: ${el.date}</div>
             <div>Hours of Sleep: ${el.sleepHours}</div>`
     console.log(userWeekSleep);
+    return acc;
+  }, ``)
+}
+
+function sleepWeekQuality(userWeekSleepQuality) {
+  return userWeekSleepQuality.reduce((acc, el) => {
+    acc += `<div>Date: ${el.date}</div>
+            <div>Quality of Sleep: ${el.sleepQuality}</div>`
+    // console.log(userWeekSleep);
     return acc;
   }, ``)
 }

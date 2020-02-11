@@ -2,7 +2,7 @@ const chai = require("chai");
 const expect = chai.expect;
 
 const ActivityRepo = require('../src/ActivityRepo');
-const allActivityData = require('../data/activity');
+const allActivityData = require('../data/activity-test-data');
 
 let activityData;
 

@@ -301,8 +301,7 @@ describe('Activity', function() {
     userData1 = userRepository1.getUserDataById(userDataSetSample);
     let userFriends = userData1.friends;
     activity1 = new Activity(userRepository1, activityData);
-    console.log(activity.totalStepCount(1, userDateRange));
-    expect(activity.findUserFriendsStepTotal(userFriends)).to.deep.equal([{ name: 'Luisa Hane', stepTotal: 65341 },
+    expect(activity.findUserFriendsStepTotal(userFriends, userDataSetSample, userDateRange)).to.deep.equal([{ name: 'Luisa Hane', stepTotal: 65341 },
   { name: 'Jarvis Considine', stepTotal: 54365 }])
 });
 

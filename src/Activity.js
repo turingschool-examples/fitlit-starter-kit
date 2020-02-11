@@ -140,8 +140,17 @@ class Activity {
     }, 0)
   }
 
-  findUserFriendsStepTotal(friends) {
-      
+  getUserName(id, userDataSet) {
+    return userDataSet.find(data => data.id === id).name
+  }
+
+  findUserFriendsStepTotal(friends, userDataSet, dateRange) {
+    let friendsTotalInfo = friends.reduce((acc, id) => {
+      acc.push({name: this.getUserName(id, userDataSet),
+      stepTotal: this.totalStepCount(id, dateRange)})
+      return acc;
+    }, [])
+    return friendsTotalInfo.sort((a, b) => b.stepTotal - a.stepTotal);
   }
 
 }

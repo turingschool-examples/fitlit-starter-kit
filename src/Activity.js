@@ -102,8 +102,8 @@ class Activity {
     return `${estimateAverage} Steps`
   }
 
-  findAllUserAverageMinutesActiveForSpecificDate(date, activityData) {
-    let findAllUserDataByDate = activityData.filter(data => data.date === date);
+  findAllUserAverageMinutesActiveForSpecificDate(date) {
+    let findAllUserDataByDate = this.usersActivityData.filter(data => data.date === date);
     let usersAverageMinutesActiveDate = findAllUserDataByDate.reduce((acc, data) => {
       acc += data["minutesActive"]
       return acc;

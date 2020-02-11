@@ -30,7 +30,7 @@ window.onload = function() {
   const user = new User(userInfo);
   const sleep = new Sleep(usersRepository, sleepData);
   const hydration = new Hydration(usersRepository);
-  const activity = new Activity(usersRepository);
+  const activity = new Activity(usersRepository, activityData);
   const userDateRange = ["2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"];
   const currentDate = '2019/06/22';
 
@@ -61,16 +61,16 @@ window.onload = function() {
   userWeeklyOunceIntake.innerHTML = hydrationWeek(userIntakeForWeek);
 
   // activity section
-  let currentUserActivityData = activity.findUserActivityDataByDate(currentDate, activityData);
+  let currentUserActivityData = activity.findUserActivityDataByDate(currentDate);
   totalStepsOfCurrentDay.innerText = currentUserActivityData.numSteps;
   flightsOfStairsOfCurrentDay.innerText = currentUserActivityData.flightsOfStairs;
-  minutesActiveOfCurrentDay.innerText = activity.findMinutesActiveByDay(currentDate, activityData);
-  milesWalkedOfCurrentDay.innerText = activity.findMilesWalkedByDay(userInfo, currentDate, activityData);
-  allUserAverageStepsOfCurrentDay.innerText = `Average Steps Taken: ${activity.findAllUserAverageStepsTakeForSpecificDate(currentDate, activityData)}`;
-  allUserAverageMinutesActiveOfCurrentDay.innerText = `Average Minutes Active: ${activity.findAllUserAverageMinutesActiveForSpecificDate(currentDate, activityData)}`;
-  allUserAverageFlightStairsOfCurrentDay.innerText = `Average Flight of Stairs Climb: ${activity.findAllUserAverageStairsClimbedForSpecificDate(currentDate, activityData)}`;
+  minutesActiveOfCurrentDay.innerText = activity.findMinutesActiveByDay(currentDate);
+  milesWalkedOfCurrentDay.innerText = activity.findMilesWalkedByDay(userInfo, currentDate);
+  allUserAverageStepsOfCurrentDay.innerText = `Average Steps Taken: ${activity.findAllUserAverageStepsTakeForSpecificDate(currentDate)}`;
+  allUserAverageMinutesActiveOfCurrentDay.innerText = `Average Minutes Active: ${activity.findAllUserAverageMinutesActiveForSpecificDate(currentDate)}`;
+  allUserAverageFlightStairsOfCurrentDay.innerText = `Average Flight of Stairs Climb: ${activity.findAllUserAverageStairsClimbedForSpecificDate(currentDate)}`;
 
-  let currentWeekUserActivityData = activity.findUserDailyActivityDataForWeek(userDateRange, activityData);
+  let currentWeekUserActivityData = activity.findUserDailyActivityDataForWeek(userDateRange);
   userWeeklyActivityInfo.innerHTML = activityWeek(currentWeekUserActivityData);
 
 }

@@ -1,12 +1,13 @@
 class Hydration {
-  constructor(usersRepository) {
+  constructor(usersRepository, hydrationDataSet) {
     this.userID = usersRepository.id;
+    this.userHydrationData = hydrationDataSet;
   }
 
-  calculateAverageFluidIntakeForUser = (hydrationDatas) => {
+  calculateAverageFluidIntakeForUser = () => {
     let userOunceIntakes = [];
 
-    hydrationDatas.filter(hydrationData => {
+    this.userHydrationData.filter(hydrationData => {
       if(hydrationData.userID === this.userID) {
         userOunceIntakes.push(hydrationData.numOunces)
       }
@@ -20,16 +21,15 @@ class Hydration {
     return Math.trunc(totalOunces / userOunceIntakes.length);
   }
 
-  calculateFluidIntakeForDay = (hydrationDatas, date) => {
-    let userHydrationData = hydrationDatas.filter(hydrationData => hydrationData.userID === this.userID)
+  calculateFluidIntakeForDay = (date) => {
+    let userHydrationData = this.userHydrationData.filter(hydrationData => hydrationData.userID === this.userID)
     .find(hydrationData => hydrationData.date === date);
-
     return userHydrationData.numOunces;
   }
 
-  calculateDailyIntakeForWeek = (hydrationDatas, dateRange) => {
+  calculateDailyIntakeForWeek = (dateRange) => {
     let userWeekIntake = [];
-    let userHydrationData = hydrationDatas.filter(hydrationData => hydrationData.userID === this.userID);
+    let userHydrationData = this.userHydrationData.filter(hydrationData => hydrationData.userID === this.userID);
     dateRange.forEach(date => {
       userHydrationData.map(data => {
         if(date === data.date) {

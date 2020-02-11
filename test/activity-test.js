@@ -154,6 +154,18 @@ describe('Activity', function() {
           24,
           19
         ]
+      },
+      {
+        "id": 3,
+        "name": "Herminia Witting",
+        "address": "85823 Bosco Fork, East Oscarstad MI 85126-5660",
+        "email": "Elwin.Tromp@yahoo.com",
+        "strideLength": 4.4,
+        "dailyStepGoal": 5000,
+        "friends": [
+          1,
+          2
+        ]
       }];
 
     userDateRange = ["2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"];
@@ -284,5 +296,14 @@ describe('Activity', function() {
       }
     ]);
   })
+  it('should return friend list step count summar', function() {
+    userRepository1 = new UsersRepository(3);
+    userData1 = userRepository1.getUserDataById(userDataSetSample);
+    let userFriends = userData1.friends;
+    activity1 = new Activity(userRepository1, activityData);
+    console.log(activity.totalStepCount(1, userDateRange));
+    expect(activity.findUserFriendsStepTotal(userFriends)).to.deep.equal([{ name: 'Luisa Hane', stepTotal: 65341 },
+  { name: 'Jarvis Considine', stepTotal: 54365 }])
+});
 
 });

@@ -127,6 +127,32 @@ class Activity {
     return userWeekActivityData;
   }
 
+  totalStepCount(id, dateRange) {
+    let usersTotalSteps = [];
+    dateRange.forEach(date => {
+      let userDayActivity = this.usersActivityData.find(data => data.userID === id &&
+        data.date === date);
+        usersTotalSteps.push(userDayActivity["numSteps"])
+    })
+    return  usersTotalSteps.reduce((acc, steps) => {
+      acc += steps;
+      return acc
+    }, 0)
+  }
+
+  getUserName(id, userDataSet) {
+    return userDataSet.find(data => data.id === id).name
+  }
+
+  findUserFriendsStepTotal(friends, userDataSet, dateRange) {
+    let friendsTotalInfo = friends.reduce((acc, id) => {
+      acc.push({name: this.getUserName(id, userDataSet),
+      stepTotal: this.totalStepCount(id, dateRange)})
+      return acc;
+    }, [])
+    return friendsTotalInfo.sort((a, b) => b.stepTotal - a.stepTotal);
+  }
+
 }
 
 if (typeof module !== 'undefined') {

@@ -1,10 +1,11 @@
 class Activity {
-  constructor(usersRepository) {
+  constructor(usersRepository, activityDataSet) {
     this.userID = usersRepository.id;
+    this.usersActivityData = activityDataSet;
   }
 
-  findUserActivityDataByDate(date, activityData) {
-    let currentUserActivityData = activityData.find(data => data.userID === this.userID && data.date === date);
+  findUserActivityDataByDate(date) {
+    let currentUserActivityData = this.usersActivityData.find(data => data.userID === this.userID && data.date === date);
     return currentUserActivityData;
   }
 

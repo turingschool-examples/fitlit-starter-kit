@@ -160,7 +160,7 @@ describe('Activity', function() {
 
     userRepository = new UsersRepository(1);
     userData = userRepository.getUserDataById(userDataSetSample);
-    activity = new Activity(userRepository);
+    activity = new Activity(userRepository, activityData);
   })
 
   it('should be a function', function() {

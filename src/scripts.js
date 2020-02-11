@@ -3,6 +3,7 @@ let hydrationDisplay = document.querySelector('.hydration-section');
 let personalDisplay = document.querySelector('.personal-info');
 let friendDisplay = document.querySelector('.friends-list');
 let userSleepDisplay = document.querySelector('.user-sleep-data')
+let allUsersSleepDisplay = document.querySelector('.all-user-sleep')
 let allSleep;
 let currentUser;
 let allUsers;
@@ -20,6 +21,8 @@ function loadHandler() {
   displayHydrationInfo()
   loadSleepData()
   displayUserSleepInfo()
+  loadAllSleepData()
+  displayAllUsersSleepInfo()
 }
 
 function loadUser() {
@@ -37,6 +40,10 @@ function loadHydrationData() {
 
 function loadSleepData() {
   allSleep = new Sleep(sleepData, currentUser.id)
+}
+
+function loadAllSleepData() {
+  allUserSleepData = new SleepRepo(sleepData)
 }
 
 function displayUserInfo() {
@@ -63,7 +70,6 @@ function displayPersonalInfo() {
 
 function displayFriends() {
   let homies = currentUser.findFriendsNames(userData);
-  console.log(homies)
   homies.forEach(homie => {
   friendDisplay.innerHTML +=`
   <div class ='friend-card'>
@@ -83,12 +89,22 @@ function displayHydrationInfo() {
 }
 
 function displayUserSleepInfo() {
-  console.log(allSleep)
   userSleepDisplay.innerHTML = `
   <h3>Hours Slept Today: ${allSleep.hoursSlept("2019/06/15")}</h3>
-  <h3>Average Hours Slept: ${allSleep.avgHoursSlept()}</h3>
+  <h3>Average Hours Slept: ${allSleep.avgHoursSlept("2019/06/15")}</h3>
   <h3>User sleep quality for the week: ${allSleep.qualitySleptWeekOf("2019/06/15")}</h3>
   <h3>User Sleep hours for the week: ${allSleep.hoursSleptWeekOf("2019/06/15")}</h3>  `
+}
+
+function displayAllUsersSleepInfo() {
+  let highest = allUserSleepData.usersWithMostSleep("2019/06/15");
+  console.log(highest)
+  // console.log(allSleep.usersWithMostSleep())
+  allUsersSleepDisplay.innerHTML = `
+  <p>All time average sleep quality: ${allUserSleepData.averageSleepQuality()}</p>
+  <!-- <P>All time number of hours slept: 5.5</p> -->
+  <p>All Time User Highest Hours Slept: ${highest.hoursSlept}</P>
+  `
 }
 
 function shuffleUser(array) {

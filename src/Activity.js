@@ -1,27 +1,28 @@
 class Activity {
-  constructor(usersRepository) {
+  constructor(usersRepository, activityDataSet) {
     this.userID = usersRepository.id;
+    this.usersActivityData = activityDataSet;
   }
 
-  findUserActivityDataByDate(date, activityData) {
-    let currentUserActivityData = activityData.find(data => data.userID === this.userID && data.date === date);
+  findUserActivityDataByDate(date) {
+    let currentUserActivityData = this.usersActivityData.find(data => data.userID === this.userID && data.date === date);
     return currentUserActivityData;
   }
 
-  findMilesWalkedByDay(userData, date, activityData) {
-    let currentData = activityData.find(data => data.userID == this.userID && data.date === date);
+  findMilesWalkedByDay(userData, date) {
+    let currentData = this.usersActivityData.find(data => data.userID == this.userID && data.date === date);
     let milesWalked = ((currentData["numSteps"] * userData["strideLength"])/5280).toFixed(1);
     return `${milesWalked} Miles`
   }
 
-  findMinutesActiveByDay(date, activityData) {
-    let currentData = activityData.find(data => data.userID === this.userID && data.date === date);
+  findMinutesActiveByDay(date) {
+    let currentData = this.usersActivityData.find(data => data.userID === this.userID && data.date === date);
     return currentData["minutesActive"]
   }
 
-  findAverageMinutesActiveByWeek(dateRange, activityData) {
+  findAverageMinutesActiveByWeek(dateRange) {
     let userWeekMinutesActive = [];
-    let userActivityData = activityData.filter(activity => activity.userID === this.userID);
+    let userActivityData = this.usersActivityData.filter(activity => activity.userID === this.userID);
     dateRange.forEach(date => {
       userActivityData.map(data => {
         if(date === data.date) {
@@ -38,8 +39,8 @@ class Activity {
     return `${averageMinutesForWeek} minutes`
   }
 
-  determineStepGoalStatusForDay(userData, day, activityData) {
-    let activityDaySummary = activityData.find(data => data.userID === this.userID && data.date === day);
+  determineStepGoalStatusForDay(userData, day) {
+    let activityDaySummary = this.usersActivityData.find(data => data.userID === this.userID && data.date === day);
     if(userData["dailyStepGoal"] > activityDaySummary["numSteps"]) {
       return 'Step goal not acheived'
     } else if (userData["dailyStepGoal"] <= activityDaySummary["numSteps"]) {
@@ -47,8 +48,8 @@ class Activity {
     }
   }
 
-  findDaysExceedingStepGoal(userData, activityData) {
-    let findAllUserActivityData = activityData.filter(data => data.userID === this.userID)
+  findDaysExceedingStepGoal(userData) {
+    let findAllUserActivityData = this.usersActivityData.filter(data => data.userID === this.userID)
     .filter(data => userData["dailyStepGoal"] <= data["numSteps"])
     .map(data => {
       return {date: data["date"],
@@ -58,20 +59,19 @@ class Activity {
     return findAllUserActivityData
   }
 
-  findAllTimeStairClimb(activityData) {
-    let findAllUserActivityData = activityData.filter(data => this.userID === data.userID)
+  findAllTimeStairClimb() {
+    let findAllUserActivityData = this.usersActivityData.filter(data => this.userID === data.userID)
     .sort((a,b) => b.flightsOfStairs - a.flightsOfStairs);
     let highestStairClimb = findAllUserActivityData.filter(data => data["flightsOfStairs"] === findAllUserActivityData[0].flightsOfStairs)
     .map(data => {
       return {date: data["date"],
         numberOfSteps: data["flightsOfStairs"]}
     })
-
     return highestStairClimb
   }
 
-  calculateAllTimeTotalFlightsOfStairsTaken(activityData) {
-    let findAllUserActivityData = activityData.filter(data => this.userID === data.userID)
+  calculateAllTimeTotalFlightsOfStairsTaken() {
+    let findAllUserActivityData = this.usersActivityData.filter(data => this.userID === data.userID)
     .reduce((acc, data) =>{
       acc += data["flightsOfStairs"];
       return acc;
@@ -80,8 +80,8 @@ class Activity {
     return `${findAllUserActivityData} Stairs`
   }
 
-  findAllUserAverageStairsClimbedForSpecificDate(date, activityData) {
-    let findAllUserDataByDate = activityData.filter(data => data.date === date);
+    findAllUserAverageStairsClimbedForSpecificDate(date) {
+    let findAllUserDataByDate = this.usersActivityData.filter(data => data.date === date);
     let usersAverageStairsClimbByDate = findAllUserDataByDate.reduce((acc, data) => {
       acc += data["flightsOfStairs"]
       return acc;
@@ -91,8 +91,8 @@ class Activity {
     return `${estimateAverage} Stairs`
   }
 
-  findAllUserAverageStepsTakeForSpecificDate(date, activityData) {
-    let findAllUserDataByDate = activityData.filter(data => data.date === date);
+  findAllUserAverageStepsTakeForSpecificDate(date) {
+    let findAllUserDataByDate = this.usersActivityData.filter(data => data.date === date);
     let usersAverageStepsByDate = findAllUserDataByDate.reduce((acc, data) => {
       acc += data["numSteps"]
       return acc;
@@ -102,8 +102,8 @@ class Activity {
     return `${estimateAverage} Steps`
   }
 
-  findAllUserAverageMinutesActiveForSpecificDate(date, activityData) {
-    let findAllUserDataByDate = activityData.filter(data => data.date === date);
+  findAllUserAverageMinutesActiveForSpecificDate(date) {
+    let findAllUserDataByDate = this.usersActivityData.filter(data => data.date === date);
     let usersAverageMinutesActiveDate = findAllUserDataByDate.reduce((acc, data) => {
       acc += data["minutesActive"]
       return acc;
@@ -113,9 +113,9 @@ class Activity {
     return `${estimateAverage} Minutes Active`
   }
 
-  findUserDailyActivityDataForWeek(dateRange, activityData) {
+  findUserDailyActivityDataForWeek(dateRange) {
     let userWeekActivityData = []
-    let currentUserActivityData = activityData.filter(data => this.userID === data.userID);
+    let currentUserActivityData = this.usersActivityData.filter(data => this.userID === data.userID);
     dateRange.forEach(date => {
       currentUserActivityData.map(data => {
         if(date === data.date) {

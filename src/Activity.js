@@ -67,7 +67,6 @@ class Activity {
       return {date: data["date"],
         numberOfSteps: data["flightsOfStairs"]}
     })
-
     return highestStairClimb
   }
 

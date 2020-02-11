@@ -89,6 +89,6 @@ function populateSleepInfo(id, date) {
   overallSleepQualityBox.innerText = `Your average sleep quality per day is graded at ${sleep.calculateAverageQuality(id)}`
 }
 
-populateUserInfo(27, '2019/07/25');
-populateHydrationInfo(27, '2019/07/25');
-populateSleepInfo(27, '2019/07/25');
+populateUserInfo(34, '2019/07/25');
+populateHydrationInfo(34, '2019/07/25');
+populateSleepInfo(34, '2019/07/25');

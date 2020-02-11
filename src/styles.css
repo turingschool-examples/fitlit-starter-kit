@@ -35,6 +35,7 @@ h4 {
   width: fit-content;
   text-decoration: underline;
   margin-top: .5em;
+  margin-bottom: 1em;
 }
 
 p {
@@ -137,7 +138,6 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-top: 1em;
 }
 
 .sleep-hours-week,

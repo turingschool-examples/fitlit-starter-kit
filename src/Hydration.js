@@ -11,7 +11,7 @@ class Hydration {
      return fluid.numOunces;
   }
 
-  fluidConsumededWeekly(weekStart, id) {
+  fluidConsumededWeekly(weekStart) {
     weekStart = new Date(weekStart)
     let weekEnd = this.addDays(weekStart, 6);
 
@@ -21,9 +21,9 @@ class Hydration {
     });
 
     let fluidConsumedOverTheWeek = this.hydrationData.filter(fluid => {
-      return fluid.userID === id;
+      return fluid.numOunces;
     })
-    console.log(fluidConsumedOverTheWeek)
+    // console.log(fluidConsumedOverTheWeek)
     // return fluidConsumedOverTheWeek
   }
 

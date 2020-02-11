@@ -4,6 +4,8 @@ let personalDisplay = document.querySelector('.personal-info');
 let friendDisplay = document.querySelector('.friends-list');
 let userSleepDisplay = document.querySelector('.user-sleep-data')
 let allUsersSleepDisplay = document.querySelector('.all-user-sleep')
+let allUsersActivityDisplay = document.querySelector('.all-user-calculatiuons')
+let allActivity;
 let allSleep;
 let currentUser;
 let allUsers;
@@ -23,6 +25,8 @@ function loadHandler() {
   displayUserSleepInfo()
   loadAllSleepData()
   displayAllUsersSleepInfo()
+  loadAllAvctivityData()
+  displayAllUserActivityInfo()
 }
 
 function loadUser() {
@@ -44,6 +48,10 @@ function loadSleepData() {
 
 function loadAllSleepData() {
   allUserSleepData = new SleepRepo(sleepData)
+}
+
+function loadAllAvctivityData() {
+  allUserActivityData = new ActivityRepo(activityData);
 }
 
 function displayUserInfo() {
@@ -85,28 +93,33 @@ function displayHydrationInfo() {
  <h2>Hydration Data</h2>
  <h3>-Average Fluid Consumed All Time: ${allHydration.fluidConsumedALlTime(currentUser.id)}</h3>
  <h3>-Fluid consumed today: ${allHydration.fluidConsumedByDate("2019/06/16")}</h3>
- <h3>-Fluid consumed over a week: ${allHydration.fluidConsumededWeekly(currentUser.id)}</h3>`
+ <h3>-Fluid consumed over a week: ${allHydration.fluidConsumededWeekly()}</h3>`
 }
 
 function displayUserSleepInfo() {
   userSleepDisplay.innerHTML = `
-  <h3>Hours Slept Today: ${allSleep.hoursSlept("2019/06/15")}</h3>
-  <h3>Average Hours Slept: ${allSleep.avgHoursSlept("2019/06/15")}</h3>
-  <h3>User sleep quality for the week: ${allSleep.qualitySleptWeekOf("2019/06/15")}</h3>
-  <h3>User Sleep hours for the week: ${allSleep.hoursSleptWeekOf("2019/06/15")}</h3>  `
+  <h3>-Hours Slept Today: ${allSleep.hoursSlept("2019/06/15")}</h3>
+  <h3>-Average Hours Slept: ${allSleep.avgHoursSlept("2019/06/15")}</h3>
+  <h3>-User sleep quality for the week: ${allSleep.qualitySleptWeekOf("2019/06/15")}</h3>
+  <h3>-User Sleep hours for the week: ${allSleep.hoursSleptWeekOf("2019/06/15")}</h3>  `
 }
 
 function displayAllUsersSleepInfo() {
   let highestSleep = allUserSleepData.usersWithMostSleep("2019/06/15");
   let highestSleepQuality = allUserSleepData.usersWithHigestSleepQuality("2019/06/15");
 
-  console.log(highestSleep, highestSleepQuality)
-  // console.log(allSleep.usersWithMostSleep())
   allUsersSleepDisplay.innerHTML = `
-  <p>All time average sleep quality: ${allUserSleepData.averageSleepQuality()}</p>
-  <!-- <P>All time number of hours slept: 5.5</p> -->
-  <p>All Time User Highest Hours Slept: ${highestSleep.hoursSlept}</P>
-  <p>All Time User Highest Hours Slept: ${highestSleepQuality.sleepQuality}</P>
+  <h3>-All time average sleep quality: ${allUserSleepData.averageSleepQuality()}</h3>
+  <h3>-All Time User Highest Hours Slept: ${highestSleep.hoursSlept}</h3>
+  <h3>-All Time User Highest Sleep Quality: ${highestSleepQuality.sleepQuality}</h3>
+  `
+}
+
+function displayAllUserActivityInfo() {
+  allUsersActivityDisplay.innerHTML = `
+  <h3>-All Users Minutes Average: ${allUserActivityData.allUserStairsClimbedByDate("2019/06/15")}</h3>
+  <h3>-All Users Average Steps Taken: ${allUserActivityData.averageStepsTakenByDate("2019/06/15")}</h3>
+  <h3>-All Users Average Stairs Climbed: ${allUserActivityData.averageMinutesActiveByDate("2019/06/15")}</h3>
   `
 }
 

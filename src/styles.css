@@ -123,11 +123,25 @@ main {
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
   background: rgb(255,255,255);
   background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgb(255, 253, 253) 0%, rgb(224, 224, 224) 0%, rgba(197, 197, 197, 0.758) 0%);
   border: .1em solid black;
-  height: 10em;
+  height: 12em;
   width: 90%;
   margin-bottom: 1em;
   border-radius: 1em;
+}
+
+.sleep-week-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 1em;
+}
+
+.sleep-hours-week,
+.sleep-quality-week {
+  width: fit-content;
+  margin: 0;
 }

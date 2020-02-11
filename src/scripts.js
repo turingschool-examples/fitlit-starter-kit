@@ -11,20 +11,20 @@ const userGoalAverage = document.querySelector('.step-goal-average');
 const friendsList = document.querySelector('.friends-list');
 const stepComparison = document.querySelector('.step-goal-comparison');
 const dayHydrationBox = document.querySelector('.h-day-info');
-const sleepHrCurrentDay = document.querySelector('.sleep-hours-current-day')
-const sleepHrDay6 = document.querySelector('.S-Hr-6')
-const sleepHrDay5 = document.querySelector('.S-Hr-5')
-const sleepHrDay4 = document.querySelector('.S-Hr-4')
-const sleepHrDay3 = document.querySelector('.S-Hr-3')
-const sleepHrDay2 = document.querySelector('.S-Hr-2')
-const sleepHrDay1 = document.querySelector('.S-Hr-1')
-const sleepQualCurrentDay = document.querySelector('.sleep-hours-current-day')
-const sleepQualDay6 = document.querySelector('.S-Qual-6')
-const sleepQualDay5 = document.querySelector('.S-Qual-5')
-const sleepQualDay4 = document.querySelector('.S-Qual-4')
-const sleepQualDay3 = document.querySelector('.S-Qual-3')
-const sleepQualDay2 = document.querySelector('.S-Qual-2')
-const sleepQualDay1 = document.querySelector('.S-Qual-1')
+const sleepHrCurrentDay = document.querySelector('.sleep-hours-current-day');
+const sleepHrDay6 = document.querySelector('.S-Hr-6');
+const sleepHrDay5 = document.querySelector('.S-Hr-5');
+const sleepHrDay4 = document.querySelector('.S-Hr-4');
+const sleepHrDay3 = document.querySelector('.S-Hr-3');
+const sleepHrDay2 = document.querySelector('.S-Hr-2');
+const sleepHrDay1 = document.querySelector('.S-Hr-1');
+const sleepQualCurrentDay = document.querySelector('.sleep-quality-current-day');
+const sleepQualDay6 = document.querySelector('.S-Qual-6');
+const sleepQualDay5 = document.querySelector('.S-Qual-5');
+const sleepQualDay4 = document.querySelector('.S-Qual-4');
+const sleepQualDay3 = document.querySelector('.S-Qual-3');
+const sleepQualDay2 = document.querySelector('.S-Qual-2');
+const sleepQualDay1 = document.querySelector('.S-Qual-1');
 const overallSleepHoursBox = document.querySelector('.sleep-hours-all-time');
 const overallSleepQualityBox = document.querySelector('.sleep-quality-all-time');
 const currentDate = document.querySelector('.current-date');
@@ -48,7 +48,7 @@ function populateUserInfo(id, date) {
   userGoalAverage.innerHTML = `<span>Average Step Goal:</span> ${userRepo.getStepGoalAverage()}`;
   stepComparison.innerHTML  = (user.dailyStepGoal > userRepo.getStepGoalAverage()) ?
     `<span>Goal Comparison:</span> You're step goal is ${user.dailyStepGoal - userRepo.getStepGoalAverage()} steps above the average` :
-    `<span>Goal Comparison:</span> You're step goal is ${userRepo.getStepGoalAverage() - user.dailyStepGoal} steps below the average`
+    `<span>Goal Comparison:</span> You're step goal is ${userRepo.getStepGoalAverage() - user.dailyStepGoal} steps below the average`;
   friendsList.innerHTML = friendsList.innerHTML = user.friends.map(friendID => userRepo.getUserData(friendID).name);
   currentDate.innerText = date;
 
@@ -57,22 +57,34 @@ function populateUserInfo(id, date) {
 function populateHydrationInfo(id, date) {
   dayHydrationBox.innerHTML = `${hydration.getDay(id, date)} oz. of water consumed`;
   let weekDataObjs = hydration.getWeek(id, date);
-  let weekNumbers = weekDataObjs.map(obj => obj.numOunces)
-  hydrationCurrentDay.innerHTML = `<span>${weekDataObjs[6].date}:</span> ${weekNumbers[6]} oz.`
-  hydrationDay6.innerHTML = `<span>${weekDataObjs[5].date}:</span> ${weekNumbers[5]} oz.`
-  hydrationDay5.innerHTML = `<span>${weekDataObjs[4].date}:</span> ${weekNumbers[4]} oz.`
-  hydrationDay4.innerHTML = `<span>${weekDataObjs[3].date}:</span> ${weekNumbers[3]} oz.`
-  hydrationDay3.innerHTML = `<span>${weekDataObjs[2].date}:</span> ${weekNumbers[2]} oz.`
-  hydrationDay2.innerHTML = `<span>${weekDataObjs[1].date}:</span> ${weekNumbers[1]} oz.`
-  hydrationDay1.innerHTML = `<span>${weekDataObjs[0].date}:</span> ${weekNumbers[0]} oz.`
+  let weekNumbers = weekDataObjs.map(obj => obj.numOunces);
+  hydrationCurrentDay.innerHTML = `<span>${weekDataObjs[6].date}:</span> ${weekNumbers[6]} oz.`;
+  hydrationDay6.innerHTML = `<span>${weekDataObjs[5].date}:</span> ${weekNumbers[5]} oz.`;
+  hydrationDay5.innerHTML = `<span>${weekDataObjs[4].date}:</span> ${weekNumbers[4]} oz.`;
+  hydrationDay4.innerHTML = `<span>${weekDataObjs[3].date}:</span> ${weekNumbers[3]} oz.`;
+  hydrationDay3.innerHTML = `<span>${weekDataObjs[2].date}:</span> ${weekNumbers[2]} oz.`;
+  hydrationDay2.innerHTML = `<span>${weekDataObjs[1].date}:</span> ${weekNumbers[1]} oz.`;
+  hydrationDay1.innerHTML = `<span>${weekDataObjs[0].date}:</span> ${weekNumbers[0]} oz.`;
 }
 
 function populateSleepInfo(id, date) {
-  let weekDataObjects = sleep.getWeekData(id, date);
+  let weekDataObjs = sleep.getWeekData(id, date);
   daySleepHours.innerText = `You slept ${sleep.getDayHours(id, date)} hours`;
   daySleepQuality.innerText = `Your sleep quality was graded at ${sleep.getDayQuality(id, date)}`
-  weekSleepHoursBox.innerText = 
-  weekSleepQualityBox.innerText = sleep.getQualityByWeek(id, date);
+  sleepHrCurrentDay.innerHTML = `<span>${weekDataObjs[6].date}</span>: ${weekDataObjs[6].hoursSlept} hours`;
+  sleepHrDay6.innerHTML = `<span>${weekDataObjs[5].date}</span>: ${weekDataObjs[5].hoursSlept} hours`;
+  sleepHrDay5.innerHTML = `<span>${weekDataObjs[4].date}</span>: ${weekDataObjs[4].hoursSlept} hours`;
+  sleepHrDay4.innerHTML = `<span>${weekDataObjs[3].date}</span>: ${weekDataObjs[3].hoursSlept} hours`;
+  sleepHrDay3.innerHTML = `<span>${weekDataObjs[2].date}</span>: ${weekDataObjs[2].hoursSlept} hours`;
+  sleepHrDay2.innerHTML = `<span>${weekDataObjs[1].date}</span>: ${weekDataObjs[1].hoursSlept} hours`;
+  sleepHrDay1.innerHTML = `<span>${weekDataObjs[0].date}</span>: ${weekDataObjs[0].hoursSlept} hours`;
+  sleepQualCurrentDay.innerHTML = `${weekDataObjs[6].sleepQuality} quality grade`;
+  sleepQualDay6.innerHTML = `${weekDataObjs[5].sleepQuality} quality grade`;
+  sleepQualDay5.innerHTML = `${weekDataObjs[4].sleepQuality} quality grade`;
+  sleepQualDay4.innerHTML = `${weekDataObjs[3].sleepQuality} quality grade`;
+  sleepQualDay3.innerHTML = `${weekDataObjs[2].sleepQuality} quality grade`;
+  sleepQualDay2.innerHTML = `${weekDataObjs[1].sleepQuality} quality grade`;
+  sleepQualDay1.innerHTML = `${weekDataObjs[0].sleepQuality} quality grade`;
   overallSleepHoursBox.innerText = `Your average hours slept per day is ${sleep.calculateAverageHours(id)} hours`;
   overallSleepQualityBox.innerText = `Your average sleep quality per day is graded at ${sleep.calculateAverageQuality(id)}`
 }

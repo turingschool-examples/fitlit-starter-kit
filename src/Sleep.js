@@ -87,17 +87,53 @@ class Sleep {
       acc += data.sleepQuality;
       return acc;
     }, 0)
+
     let averageSleepQualityOverall = allUserTotal/this.usersSleepData.length;
+
     return parseFloat(averageSleepQualityOverall.toFixed(2));
   }
 
-  findAllUserSleepQualityOverThree(sleepDatas, userDatas, dateRange) {
-    // let highUserSleepQualities = [];
-    // let sleepers = userDatas.filter(data => data.id === sleepDatas.userID);
-    // console.log(sleepers);
+  findAllUserSleepQualityOverThree(userDatas, dateRange) {
+    let usersAverageSleepQualityData = [];
+    let usersDataID = userDatas.map(data => {
+      return data.id;
+    })
 
+    usersDataID.forEach(userID => {
+      usersAverageSleepQualityData.push(
+      {name: this.userInfoName(userID, userDatas),
+      usersAverageSleepQuality: this.userSleepQualityAverage(userID, dateRange)})
+      })
 
+    let usersAverageGreaterThanThree = usersAverageSleepQualityData.filter(data => data.usersAverageSleepQuality > 3);
 
+    return usersAverageGreaterThanThree;
+  }
+
+  userInfoName(id, userDataSet) {
+    let userInfo = userDataSet.find(data => data.id === id);
+    return userInfo["name"];
+  }
+
+  userSleepQualityAverage(id, dateRange) {
+    let userWeekSleepQuality = [];
+    let sleepData = this.usersSleepData.filter(sleepData => sleepData.userID === id);
+    dateRange.forEach(date => {
+      sleepData.map(data => {
+        if(date === data.date) {
+          userWeekSleepQuality.push({date: data.date, sleepQuality: data.sleepQuality})
+        }
+      })
+    })
+
+    let userSleepQualityTotal = userWeekSleepQuality.reduce((acc, data) => {
+      acc += data["sleepQuality"]
+      return acc;
+    },0)
+
+    let averageSleepQuality = (userSleepQualityTotal/dateRange.length).toFixed(1);
+
+    return averageSleepQuality;
   }
 
   findUsersMostSleepTimeByDay(date) {

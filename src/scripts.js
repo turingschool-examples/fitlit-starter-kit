@@ -97,13 +97,16 @@ function displayUserSleepInfo() {
 }
 
 function displayAllUsersSleepInfo() {
-  let highest = allUserSleepData.usersWithMostSleep("2019/06/15");
-  console.log(highest)
+  let highestSleep = allUserSleepData.usersWithMostSleep("2019/06/15");
+  let highestSleepQuality = allUserSleepData.usersWithHigestSleepQuality("2019/06/15");
+
+  console.log(highestSleep, highestSleepQuality)
   // console.log(allSleep.usersWithMostSleep())
   allUsersSleepDisplay.innerHTML = `
   <p>All time average sleep quality: ${allUserSleepData.averageSleepQuality()}</p>
   <!-- <P>All time number of hours slept: 5.5</p> -->
-  <p>All Time User Highest Hours Slept: ${highest.hoursSlept}</P>
+  <p>All Time User Highest Hours Slept: ${highestSleep.hoursSlept}</P>
+  <p>All Time User Highest Hours Slept: ${highestSleepQuality.sleepQuality}</P>
   `
 }
 

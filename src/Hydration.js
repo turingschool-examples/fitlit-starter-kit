@@ -11,8 +11,20 @@ class Hydration {
      return fluid.numOunces;
   }
 
-  fluidConsumededWeekly(id) {
-    return this.hydrationData.slice(-7).map(day => day.numOunces);
+  fluidConsumededWeekly(weekStart, id) {
+    weekStart = new Date(weekStart)
+    let weekEnd = this.addDays(weekStart, 6);
+
+    let data = this.hydrationData.filter(function(obj) {
+      var date = new Date(obj.date);
+      return date >= weekStart && date <= weekEnd;
+    });
+
+    let fluidConsumedOverTheWeek = this.hydrationData.filter(fluid => {
+      return fluid.userID === id;
+    })
+    console.log(fluidConsumedOverTheWeek)
+    // return fluidConsumedOverTheWeek
   }
 
   fluidConsumedALlTime(id){
@@ -23,6 +35,12 @@ class Hydration {
     return acc
     }, 0)
     return allTime;
+  }
+
+  addDays(date, daysToAdd) {
+    var newDate = new Date(date.valueOf());
+    newDate.setDate(newDate.getDate() + daysToAdd);
+    return newDate;
   }
 }
 

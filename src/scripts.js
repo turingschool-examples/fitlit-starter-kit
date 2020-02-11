@@ -16,27 +16,46 @@ const daySleepBox = document.querySelector('.sleep-day');
 const weekSleepHoursBox = document.querySelector('.sleep-hours-week');
 const weekSleepQualityBox = document.querySelector('.sleep-quality-week');
 const overallSleepHoursBox = document.querySelector('.sleep-hours-all-time');
-const overallSleepQualityBox = document.querySelector('.sleep-quality-all-time')
+const overallSleepQualityBox = document.querySelector('.sleep-quality-all-time');
+const currentDate = document.querySelector('.current-date');
+const hydrationCurrentDay = document.querySelector('.hydration-current-day');
+const hydrationDay6 = document.querySelector('.H-day-6');
+const hydrationDay5 = document.querySelector('.H-day-5');
+const hydrationDay4 = document.querySelector('.H-day-4');
+const hydrationDay3 = document.querySelector('.H-day-3');
+const hydrationDay2 = document.querySelector('.H-day-2');
+const hydrationDay1 = document.querySelector('.H-day-1');
 
 
-function populateUserInfo(id) {
+
+function populateUserInfo(id, date) {
   let user = new User(userRepo.getUserData(id));
   userName.innerText = user.name;
-  userAddress.innerText = `Address: ${user.address}`;
-  userEmail.innerText = `Email: ${user.email}`;
-  userStride.innerText = `Stride Length: ${user.strideLength}`;
-  userStepGoal.innerText = `Daily Step Goal: ${user.dailyStepGoal}`;
-  userGoalAverage.innerText = `Average Step Goal: ${userRepo.getStepGoalAverage()}`;
-  stepComparison.innerText  = (user.dailyStepGoal > userRepo.getStepGoalAverage()) ?
-    `Goal Comparison: You're step goal is ${user.dailyStepGoal - userRepo.getStepGoalAverage()} steps above the average` :
-    `Goal Comparison: You're step goal is ${userRepo.getStepGoalAverage() - user.dailyStepGoal} steps below the average`
-  friendsList.innerHTML = friendsList.innerHTML = user.friends.map(friendID => userRepo.getUserData(friendID).name)
+  userAddress.innerHTML = `<span>Address:</span> ${user.address}`;
+  userEmail.innerHTML = `<span>Email:</span> ${user.email}`;
+  userStride.innerHTML = `<span>Stride Length:</span> ${user.strideLength}`;
+  userStepGoal.innerHTML = `<span>Daily Step Goal:</span> ${user.dailyStepGoal}`;
+  userGoalAverage.innerHTML = `<span>Average Step Goal:</span> ${userRepo.getStepGoalAverage()}`;
+  stepComparison.innerHTML  = (user.dailyStepGoal > userRepo.getStepGoalAverage()) ?
+    `<span>Goal Comparison:</span> You're step goal is ${user.dailyStepGoal - userRepo.getStepGoalAverage()} steps above the average` :
+    `<span>Goal Comparison:</span> You're step goal is ${userRepo.getStepGoalAverage() - user.dailyStepGoal} steps below the average`
+  friendsList.innerHTML = friendsList.innerHTML = user.friends.map(friendID => userRepo.getUserData(friendID).name);
+  currentDate.innerText = date;
+
 }
 
 function populateHydrationInfo(id, date) {
   dayHydrationBox.innerHTML = `${hydration.getDay(id, date)} oz.`;
-  let weekData = hydration.getWeek(id, date);
-  weekHydrationBox.innerHTML = weekData.map(obj => obj.numOunces)
+  let weekDataObjs = hydration.getWeek(id, date);
+  console.log(weekDataObjs)
+  weekNumbers = weekDataObjs.map(obj => obj.numOunces)
+  hydrationCurrentDay.innerHTML = `<span>${weekDataObjs[6].date}:</span> ${weekNumbers[6]} oz.`
+  hydrationDay6.innerHTML = `<span>${weekDataObjs[5].date}:</span> ${weekNumbers[5]} oz.`
+  hydrationDay5.innerHTML = `<span>${weekDataObjs[4].date}:</span> ${weekNumbers[4]} oz.`
+  hydrationDay4.innerHTML = `<span>${weekDataObjs[3].date}:</span> ${weekNumbers[3]} oz.`
+  hydrationDay3.innerHTML = `<span>${weekDataObjs[2].date}:</span> ${weekNumbers[2]} oz.`
+  hydrationDay2.innerHTML = `<span>${weekDataObjs[1].date}:</span> ${weekNumbers[1]} oz.`
+  hydrationDay1.innerHTML = `<span>${weekDataObjs[0].date}:</span> ${weekNumbers[0]} oz.`
 }
 
 function populateSleepInfo(id, date) {
@@ -47,6 +66,6 @@ function populateSleepInfo(id, date) {
   overallSleepQualityBox.innerText = sleep.calculateAverageQuality(id)
 }
 
-populateUserInfo(42);
+populateUserInfo(42, '2019/08/02');
 populateHydrationInfo(42, '2019/08/02');
 populateSleepInfo(42, '2019/08/02');

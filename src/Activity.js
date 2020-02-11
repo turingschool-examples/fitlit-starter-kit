@@ -80,11 +80,14 @@ class Activity {
   getStepsTrend(id) {
     let groupedData = this.getUserData(id).map((obj, index, array) =>
       array.slice(index - 2, index + 1)).slice(2);
+
     let sortedData = JSON.parse(JSON.stringify(groupedData)).map(group =>
       group.sort((a, b) => a.numSteps - b.numSteps));
+
     let streaks = groupedData.filter((group, index1) =>
       group.every((obj, index2) =>
         obj.date === sortedData[index1][index2].date));
+        
     return streaks.map(streak => streak[2]);
   }
 

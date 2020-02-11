@@ -12,6 +12,12 @@ nav {
   justify-content: space-around;
   align-content: center;
   align-items: center;
+  background: rgb(221,255,0);
+  background: linear-gradient(90deg, rgba(221,255,0,1) 0%, rgba(158,167,34,1) 0%, rgba(204,191,58,1) 0%, rgba(80,128,145,1) 0%);
+}
+
+span {
+  font-weight: bold;
 }
 
 h1 {
@@ -36,15 +42,13 @@ p {
   height: fit-content;
 }
 
-body {
-  background-image: url("./background.jpg");
-}
-
 main {
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+  background: rgb(240, 240, 240);
+  height: 130%;
 }
 /* info card */
 .user-info-card {
@@ -54,7 +58,7 @@ main {
   justify-content: space-around;
   align-items: center;
   border: .1em solid black;
-  margin-top: 5em;
+  margin-top: 1em;
   border-radius: 1em;
   background: rgb(221,255,0);
   background: linear-gradient(90deg, rgba(221,255,0,1) 0%, rgba(158,167,34,1) 0%, rgba(204,191,58,1) 40%, rgba(213,213,35,1) 100%);
@@ -73,6 +77,8 @@ main {
   border: .1em solid black;
   margin: .1em;
   border-radius: 1em;
+  background: rgb(255,255,255);
+  background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgb(255, 253, 253) 0%, rgb(224, 224, 224) 0%, rgba(197, 197, 197, 0.758) 0%);
 }
 
 /* info columns */

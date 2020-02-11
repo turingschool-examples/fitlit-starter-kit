@@ -31,7 +31,7 @@ window.onload = function() {
   const userInfo = usersRepository.getUserDataById(userData);
   const user = new User(userInfo);
   const sleep = new Sleep(usersRepository);
-  const hydration = new Hydration(usersRepository);
+  const hydration = new Hydration(usersRepository, hydrationData);
   const activity = new Activity(usersRepository, activityData);
   const userDateRange = ["2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"];
   const currentDate = '2019/06/22';
@@ -45,9 +45,9 @@ window.onload = function() {
   allUsersAvgStepGoal.innerText = `Average User's Step Goal: ${usersRepository.calculateAverageStepGoal(userData)}`;
 
   // hydration section
-  userAverageOunceIntakeAllTime.innerText = `Average Fluid Ounce Intake: ${hydration.calculateAverageFluidIntakeForUser(hydrationData)}`;
+  userAverageOunceIntakeAllTime.innerText = `Average Fluid Ounce Intake: ${hydration.calculateAverageFluidIntakeForUser()}`;
   currentUserDate.innerText = `Today's Date: ${currentDate}`;
-  userOunceIntakeOnDay.innerText = `Today's Fluid Intake: ${hydration.calculateFluidIntakeForDay(hydrationData, currentDate)}`;
+  userOunceIntakeOnDay.innerText = `Today's Fluid Intake: ${hydration.calculateFluidIntakeForDay(currentDate)}`;
 
   hoursSlept.innerText = `Hours Slept Today: ${sleep.findSleepTimeByDate(sleepData, currentDate)}`;
   qualitySlept.innerText = `Quality of Sleep Today: ${sleep.findSleepQualityByDate(sleepData, currentDate)}`;
@@ -59,7 +59,7 @@ window.onload = function() {
   weeklySleepQuality.innerHTML = sleepWeekQuality(userWeeklySleepQuality);
 
 
-  let userIntakeForWeek = hydration.calculateDailyIntakeForWeek(hydrationData, userDateRange);
+  let userIntakeForWeek = hydration.calculateDailyIntakeForWeek(userDateRange);
   userWeeklyOunceIntake.innerHTML = hydrationWeek(userIntakeForWeek);
 
   // activity section

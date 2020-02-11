@@ -113,9 +113,9 @@ class Activity {
     return `${estimateAverage} Minutes Active`
   }
 
-  findUserDailyActivityDataForWeek(dateRange, activityData) {
+  findUserDailyActivityDataForWeek(dateRange) {
     let userWeekActivityData = []
-    let currentUserActivityData = activityData.filter(data => this.userID === data.userID);
+    let currentUserActivityData = this.usersActivityData.filter(data => this.userID === data.userID);
     dateRange.forEach(date => {
       currentUserActivityData.map(data => {
         if(date === data.date) {

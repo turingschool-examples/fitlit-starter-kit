@@ -7,6 +7,7 @@ const UsersRepository = require('../src/UsersRepository');
 describe('Sleep', function() {
   let sleepData;
   let sleepData1;
+  let userData;
   let userDateRange;
   let usersRepository1;
   let sleep;
@@ -158,7 +159,36 @@ describe('Sleep', function() {
           "date": "2019/06/24",
           "hoursSlept": 10.8,
           "sleepQuality": 1
-        }]
+        }];
+
+      userData = [
+        {
+          "id": 1,
+          "name": "Luisa Hane",
+          "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+          "email": "Diana.Hayes1@hotmail.com",
+          "strideLength": 4.3,
+          "dailyStepGoal": 10000,
+          "friends": [
+            16,
+            4,
+            8
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Jarvis Considine",
+          "address": "30086 Kathryn Port, Ciceroland NE 07273",
+          "email": "Dimitri.Bechtelar11@gmail.com",
+          "strideLength": 4.5,
+          "dailyStepGoal": 5000,
+          "friends": [
+            9,
+            18,
+            24,
+            19
+          ]
+        }];
 
       userDateRange = ["2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"];
 
@@ -206,7 +236,9 @@ describe('Sleep', function() {
   });
 
   it('should find all users who average sleep quality greater than 3 for a week', function() {
-    expect(sleep.findAllUserSleepQualityOverThree(sleepData1, userData, userDateRange)).to.equal("Jarvis Considine");
+    sleep = new Sleep(usersRepository1, sleepData1);
+
+    expect(sleep.findAllUserSleepQualityOverThree(userData, userDateRange)).to.deep.equal([{name: 'Jarvis Considine', usersAverageSleepQuality: '3.3'}]);
   });
 
   it('should find the user with the highest sleep time on a given date', function() {

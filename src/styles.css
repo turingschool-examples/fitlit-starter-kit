@@ -6,17 +6,18 @@
     width: 100%;
 }
 
-html {
-    height: 100%;
-    display: flex;
+body {
+background-color: black;
 }
-h1 {
+
+.heading {
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     padding: 10px;
     text-align: center;
-    background-color: #DB2763;
+    background-color: #B2F77D;
     box-shadow: 0 0 2px 0px black;
+    border: 2px solid #414141;
 }
 
 img {
@@ -27,24 +28,28 @@ img {
     display: flex;
     flex-direction: row;
     width: 100%;
-    background-color: #12EAEA;
+    background-color: #414141;
     margin: 10px;
     padding: 10px;
     box-shadow: 0 0 2px 0px black;
+    border: 2px solid #414141;
 }
 .user-greeting {
     margin: 10px;
     padding: 10px;
+    color: #B2F77D;
     text-align: center;
     width: 30%;
-    background-color: white;
+    background-color: black;
     box-shadow: 0 0 2px 0px black;
+    border: 2px solid #414141;
 }
 
 .user-step-info {
-    background-color: #BCE7FD;
-    box-shadow: 0 0 2px 0px black;
+    background-color: #B2F77D;
+    box-shadow: 0 0 4px 0px black;
     display: inline;
+    border: 2px solid #414141;
 }
 
 .user-step-goal {
@@ -67,14 +72,21 @@ img {
     align-items: center;
 }
 
-h3 {
-    background-color: white;
+.personal-info {
+  color: #B2F77D;
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
+  height: fit-content;
+  background-color: #5D5D5D;
+  border: 2px solid #414141;
 }
+
+
 .check-friends{
     align-self: center;
-    /* padding: 60px; */
     height: fit-content;
-}
+  }
 
 .friends-list {
     display: flex;
@@ -83,6 +95,8 @@ h3 {
     padding: 10px;
     width: 100%;
     height: fit-content;
+    background-color: #5D5D5D;
+    border: 2px solid #414141;
 }
 
 .friend-card {
@@ -90,11 +104,20 @@ h3 {
   border-radius: 4px;
   margin: 10px;
   text-align:center;
-  /* background-color: #12EAEA; */
+  background-color: #B2F77D;
 }
 
 .friend-info {
     margin: 10px;
     padding: 10px;
-    /* display: inline; */
+    display: inline;
+}
+
+.section-title {
+  color:#B2F77D;
+}
+
+.actvity-section, .hydration-section, .step-calculations, .all-user-calculatiuons, .user-sleep-data, .all-user-sleep{
+  background-color: #5D5D5D;
+  border: 2px solid #414141;
 }

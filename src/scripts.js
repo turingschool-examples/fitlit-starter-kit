@@ -56,7 +56,7 @@ function loadAllAvctivityData() {
 
 function displayUserInfo() {
   userNameDisplay.innerHTML = `
-  <h1>Welcome to Activity Tracker!</h1>
+  <h1 class = 'heading'>Welcome to Activity Tracker!</h1>
   <div class = 'user-greeting'>
   <h2 class = 'user-name' >Hello ${currentUser.returnUserName()}!</h2>
   <img class = 'user-name' src="../data/assets/icons8-user-50.png" alt="">
@@ -90,7 +90,6 @@ function displayFriends() {
 
 function displayHydrationInfo() {
  hydrationDisplay.innerHTML = `
- <h2>Hydration Data</h2>
  <h3>-Average Fluid Consumed All Time: ${allHydration.fluidConsumedALlTime(currentUser.id)}</h3>
  <h3>-Fluid consumed today: ${allHydration.fluidConsumedByDate("2019/06/16")}</h3>
  <h3>-Fluid consumed over a week: ${allHydration.fluidConsumededWeekly()}</h3>`

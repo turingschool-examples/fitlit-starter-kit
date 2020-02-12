@@ -1,14 +1,42 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  padding-top: .5%;
+}
+
 body {
-  background-color: #5CDB95;
+  /* background-color: #5CDB95; */
+  background-color: white;
+}
+main {
+  background-color: white;
+  /* opacity: .5; */
+  display: flex;
+  flex-wrap: wrap;
 }
 .profile-section,
 .hydration-section,
 .sleep-section,
 .activity-section {
-  background-color: #EDFDE1;
+  color: #002b66;
+  background-color: #5CDB95;
+  font-family: 'Noto Sans KR', sans-serif;
+  opacity: .9;
   height: 35em;
   width: 33%;
-  border: 3px solid black;
+  /* border: 1px solid black; */
+  border-radius: 10%;
+  padding-left: 1em;
+  margin: 2em;
+}
+
+header {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 5em;
+  margin-left: .3em;
+  background-color: white;
+  color: #5CDB95;
 }
 
 .profile-section{

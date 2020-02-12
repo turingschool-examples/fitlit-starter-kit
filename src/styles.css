@@ -117,7 +117,19 @@ img {
   color:#B2F77D;
 }
 
-.actvity-section, .hydration-section, .step-calculations, .all-user-calculatiuons, .user-sleep-data, .all-user-sleep{
+ .hydration-section, .step-calculations, .all-user-calculatiuons, .user-sleep-data, .all-user-sleep{
   background-color: #5D5D5D;
   border: 2px solid #414141;
+  margin: 10px;
+}
+
+.activity-section {
+  background-color: black;
+}
+
+.sleep-section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 10px;
 }

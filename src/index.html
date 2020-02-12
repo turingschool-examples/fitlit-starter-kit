@@ -7,10 +7,13 @@
     <title>Activity Tracker</title>
   </head>
   <body>
-    <header>Fit<b>Lit</b></header>
+    <header>Fit<b>Lit</b>
+      <h1 class="display-name"></h1>
+    </header>
     <main>
       <section class="profile-section">
-       <h1 class="display-name"></h1>
+       <!-- <h1 class="display-name"></h1> -->
+       <h2>Profile</h2>
        <section class="profile-info">
          <div class="full-name"></div>
          <div class="address"></div>
@@ -20,26 +23,30 @@
          <div class="all-users-step-goal-average"></div>
        </section>
       </section>
-      <section class="hydration-section">
-        <h2>Hydration</h2>
+      <section class="daily-hydration-section">
+        <h2>Today's Hydration</h2>
         <div class="current-date"></div>
         <div class="average-fluid-ounces-all-time"></div>
         <div class="fluid-ounces-consumed-on-day"></div>
-        <h2>Weekly Hydration Intake</h2>
+      </section>
+      <section class="daily-sleep-section">
+        <h2>Today's Sleep</h2>
+        <div class="hours-slept-day"></div>
+        <div class="quality-slept-day"></div>
+        <div class="average-sleep-hours"></div>
+        <div class="average-sleep-quality"></div>
+      </section>
+      <section class="weekly-sleep-section">
+        <h2>Weekly Sleep Stats</h2>
+        <h3>Sleep Hours</h3>
+        <div class="sleep-hours-for-week"></div>
+        <h3>Sleep Quality</h3>
+        <div class="sleep-quality-for-week"></div>
+     </section>
+      <section class="weekly-hydration-section">
+        <h2>Weekly Hydration Stats</h2>
         <div class="fluid-ounces-one-week"></div>
      </section>
-     <section class="sleep-section">
-       <h2>Sleep</h2>
-       <div class="hours-slept-day"></div>
-       <div class="quality-slept-day"></div>
-       <h3>Weekly Sleep Hours</h3>
-       <div class="sleep-hours-for-week"></div>
-       <h3>Weekly Sleep Quality</h3>
-       <div class="sleep-quality-for-week"></div>
-       <h3>All Time Sleep Stats</h3>
-       <div class="average-sleep-hours"></div>
-       <div class="average-sleep-quality"></div>
-    </section>
      <section class="activity-section">
        <h2>Activity</h2>
        <h3>Today's Summary</h3>

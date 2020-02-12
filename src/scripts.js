@@ -34,7 +34,7 @@ window.onload = function() {
   const userDateRange = ["2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"];
   const currentDate = '2019/06/22';
 
-  welcomeDisplay.innerText = `Welcome, ${user.returnUserFirstName()}`;
+  welcomeDisplay.innerText = `Welcome, ${user.returnUserFirstName()}!`;
   userFullName.innerText = `Full Name: ${user.name}`;
   userAddress.innerText = `Address: ${user.address}`;
   userEmail.innerText = `Email: ${user.email}`;
@@ -43,9 +43,9 @@ window.onload = function() {
   allUsersAvgStepGoal.innerText = `Average User's Step Goal: ${usersRepository.calculateAverageStepGoal(userData)}`;
 
   // hydration section
-  userAverageOunceIntakeAllTime.innerText = `Average Fluid Ounce Intake: ${hydration.calculateAverageFluidIntakeForUser()}`;
+  userAverageOunceIntakeAllTime.innerText = `Your Average fl oz Intake: ${hydration.calculateAverageFluidIntakeForUser()}`;
   currentUserDate.innerText = `Today's Date: ${currentDate}`;
-  userOunceIntakeOnDay.innerText = `Today's Fluid Intake: ${hydration.calculateFluidIntakeForDay(currentDate)}`;
+  userOunceIntakeOnDay.innerText = `Today's fl oz Intake: ${hydration.calculateFluidIntakeForDay(currentDate)}`;
 
   hoursSlept.innerText = `Hours Slept Today: ${sleep.findSleepTimeByDate(currentDate)}`;
   qualitySlept.innerText = `Quality of Sleep Today: ${sleep.findSleepQualityByDate(currentDate)}`;

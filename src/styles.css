@@ -121,6 +121,8 @@ img {
   background-color: #5D5D5D;
   border: 2px solid #414141;
   margin: 10px;
+  color: white;
+  font-size: 1em;
 }
 
 .activity-section {
@@ -132,4 +134,8 @@ img {
   flex-direction: row;
   width: 100%;
   margin: 10px;
+}
+
+ {
+  color: white;
 }

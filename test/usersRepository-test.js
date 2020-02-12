@@ -82,27 +82,27 @@ describe('UsersRepository', function() {
 
   it('should return user\'s name by corresponding ID', function() {
     expect(usersRepository.getUserDataById(userData).name).to
-    .equal("Luisa Hane");
+      .equal("Luisa Hane");
   });
 
   it('should return user\'s address by corresponding ID', function() {
     expect(usersRepository.getUserDataById(userData).address).to
-    .equal("15195 Nakia Tunnel, Erdmanport VA 19901-1697");
+      .equal("15195 Nakia Tunnel, Erdmanport VA 19901-1697");
   });
 
   it('should return user\'s email by corresponding ID', function() {
     expect(usersRepository.getUserDataById(userData).email).to
-    .equal("Diana.Hayes1@hotmail.com");
+      .equal("Diana.Hayes1@hotmail.com");
   });
 
   it('should return user\'s stride length by corresponding ID', function() {
     expect(usersRepository.getUserDataById(userData).strideLength).to
-    .equal(4.3);
+      .equal(4.3);
   });
 
   it('should return user\'s daily step goal by corresponding ID', function() {
     expect(usersRepository.getUserDataById(userData).dailyStepGoal).to
-    .equal(10000);
+      .equal(10000);
   });
 
   it('should return user\'s friends IDs by corresponding ID', function() {
@@ -113,7 +113,7 @@ describe('UsersRepository', function() {
     ]);
   });
 
-  it('should calculate average step goals of all users', function(){
+  it('should calculate average step goals of all users', function() {
     expect(usersRepository.calculateAverageStepGoal(userData)).to.equal(6666);
   });
 

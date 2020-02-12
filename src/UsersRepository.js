@@ -8,12 +8,12 @@ class UsersRepository {
   }
 
   calculateAverageStepGoal(userData) {
-   let totalSteps = userData.reduce((acc, data) => {
-     acc += data.dailyStepGoal;
-     return acc;
-   }, 0);
+    let totalSteps = userData.reduce((acc, data) => {
+      acc += data.dailyStepGoal;
+      return acc;
+    }, 0);
 
-   return Math.trunc(totalSteps / userData.length);
+    return Math.trunc(totalSteps / userData.length);
   }
 }
 

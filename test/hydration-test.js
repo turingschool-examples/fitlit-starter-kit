@@ -11,24 +11,24 @@ describe('Hydration', function() {
 
   beforeEach(function() {
     hydrationData = [{
-        "userID": 1,
-        "date": "2019/06/15",
-        "numOunces": 37
-      },
-      {
-        "userID": 2,
-        "date": "2019/06/15",
-        "numOunces": 75
-      },
-      {"userID": 1,
-        "date": "2019/06/16",
-        "numOunces": 69
-      },
-      {
-        "userID": 2,
-        "date": "2019/06/16",
-        "numOunces": 91
-      }
+      "userID": 1,
+      "date": "2019/06/15",
+      "numOunces": 37
+    },
+    {
+      "userID": 2,
+      "date": "2019/06/15",
+      "numOunces": 75
+    },
+    {"userID": 1,
+      "date": "2019/06/16",
+      "numOunces": 69
+    },
+    {
+      "userID": 2,
+      "date": "2019/06/16",
+      "numOunces": 91
+    }
     ]
 
     usersRepository = new UsersRepository(1);
@@ -45,10 +45,10 @@ describe('Hydration', function() {
   });
 
   it('should return the average fluid ounces intake for a user for all time',
-  function() {
-    expect(hydration.calculateAverageFluidIntakeForUser(hydrationData)).to
-    .equal(53);
-  })
+    function() {
+      expect(hydration.calculateAverageFluidIntakeForUser(hydrationData)).to
+        .equal(53);
+    })
 
   it('should return fluid intake for a selected date', function() {
     expect(hydration.calculateFluidIntakeForDay('2019/06/16')).to.equal(69);
@@ -158,18 +158,19 @@ describe('Hydration', function() {
       }
     ]
 
+    const userDateRange = ["2019/06/16", "2019/06/17", "2019/06/18",
+      "2019/06/19", "2019/06/20", "2019/06/21", "2019/06/22"];
+
     hydration = new Hydration(usersRepository, hydrationData1);
-    const userDateRange = ["2019/06/16","2019/06/17","2019/06/18","2019/06/19",
-    "2019/06/20","2019/06/21","2019/06/22"];
 
     expect(hydration.calculateDailyIntakeForWeek(userDateRange)).to.deep.equal(
-    [{date: "2019/06/16", intake: 69},
-    {date: "2019/06/17", intake: 96},
-    {date: "2019/06/18", intake: 61},
-    {date: "2019/06/19", intake: 91},
-    {date: "2019/06/20", intake: 50},
-    {date: "2019/06/21", intake: 50},
-    {date: "2019/06/22", intake: 43}]);
+      [{date: "2019/06/16", intake: 69},
+        {date: "2019/06/17", intake: 96},
+        {date: "2019/06/18", intake: 61},
+        {date: "2019/06/19", intake: 91},
+        {date: "2019/06/20", intake: 50},
+        {date: "2019/06/21", intake: 50},
+        {date: "2019/06/22", intake: 43}]);
   });
 
 });

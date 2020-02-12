@@ -18,11 +18,11 @@ describe('User', function() {
       "strideLength": 3.1,
       "dailyStepGoal": 4000,
       "friends": [
-       48,
-       7,
-       44,
-       8
-     ]
+        48,
+        7,
+        44,
+        8
+      ]
     }
 
     userData = [
@@ -88,11 +88,11 @@ describe('User', function() {
   it('should return different user\'s first name',
     function() {
 
-    const usersRepository = new UsersRepository(2);
-    const userInfo = usersRepository.getUserDataById(userData);
-    const user = new User(userInfo);
+      const usersRepository = new UsersRepository(2);
+      const userInfo = usersRepository.getUserDataById(userData);
+      const user = new User(userInfo);
 
-    expect(user.returnUserFirstName()).to.equal('Jarvis');
-  });
-  
+      expect(user.returnUserFirstName()).to.equal('Jarvis');
+    });
+
 });

@@ -4,14 +4,17 @@ class Hydration {
     this.userID = userID;
   }
 
-  fluidConsumedByDate(date) {
-    const fluid = this.hydrationData.find(data => {
+  fluidConsumedByDate(date, userID) {
+    let theFluid = this.hydrationData.filter(data => {
       return data.date === date;
     })
-     return fluid.numOunces;
+    let filteredUser = theFluid.find(user => {
+      return user.userID === userID
+    });
+    return filteredUser.numOunces;
   }
 
-  fluidConsumededWeekly(weekStart) {
+  fluidConsumededWeekly(weekStart, id) {
     weekStart = new Date(weekStart)
     let weekEnd = this.addDays(weekStart, 6);
 
@@ -21,9 +24,13 @@ class Hydration {
     });
 
     let fluidConsumedOverTheWeek = this.hydrationData.filter(fluid => {
-      return fluid.numOunces;
+      return fluid.userID === id;
     })
-    // console.log(fluidConsumedOverTheWeek)
+     return fluidConsumedOverTheWeek.filter(day => {
+       // console.log(weekStart)
+       // console.log(day.date === weekStart);
+      return day.date === "2019/06/15";
+    })
     // return fluidConsumedOverTheWeek
   }
 

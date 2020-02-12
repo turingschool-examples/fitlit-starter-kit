@@ -89,12 +89,10 @@ function displayFriends() {
 }
 
 function displayHydrationInfo() {
-  let weekOfHyradtion = allHydration.fluidConsumededWeekly("2019/06/16", currentUser.id);
-  // console.log(weekOfHyradtion.numOunces)
  hydrationDisplay.innerHTML = `
  <h3>-Average Fluid Consumed All Time: ${allHydration.fluidConsumedALlTime(currentUser.id)}</h3>
  <h3>-Fluid consumed today: ${allHydration.fluidConsumedByDate("2019/06/16", currentUser.id)}</h3>
- <h3>-Fluid consumed over a week: ${weekOfHyradtion.numOunces}</h3>`
+ <h3>-Fluid consumed over a week: ${allHydration.fluidConsumededWeekly(currentUser.id, "2019/06/22")}</h3>`
 }
 
 function displayUserSleepInfo() {

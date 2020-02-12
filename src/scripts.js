@@ -1,6 +1,7 @@
 let userRepo = new UserRepository(userData);
 let hydration = new Hydration(hydrationData);
-let sleep = new Sleep(sleepData)
+let sleep = new Sleep(sleepData);
+let activity = new Activity(activityData);
 
 const userName = document.querySelector('.user-name');
 const userAddress = document.querySelector('.user-address');
@@ -37,6 +38,7 @@ const hydrationDay2 = document.querySelector('.H-day-2');
 const hydrationDay1 = document.querySelector('.H-day-1');
 const daySleepHours = document.querySelector('.current-sleep-hours');
 const daySleepQuality = document.querySelector('.current-sleep-quality');
+const actvityDay = document.querySelector('.activity-day')
 
 function populateUserInfo(id, date) {
   let user = new User(userRepo.getUserData(id));
@@ -89,6 +91,11 @@ function populateSleepInfo(id, date) {
   overallSleepQualityBox.innerText = `Your average sleep quality per day is graded at ${sleep.calculateAverageQuality(id)}`
 }
 
-populateUserInfo(34, '2019/07/25');
-populateHydrationInfo(34, '2019/07/25');
-populateSleepInfo(34, '2019/07/25');
+function test(id, date) {
+  actvityDay.innerHTML = activity.getAverageMinutesByWeek(id, date)
+}
+
+populateUserInfo(46, '2019/07/25');
+populateHydrationInfo(46, '2019/07/25');
+populateSleepInfo(46, '2019/07/25');
+test(46, '2019/07/25');

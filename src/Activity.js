@@ -87,7 +87,6 @@ class Activity {
     let streaks = groupedData.filter((group, index1) =>
       group.every((obj, index2) =>
         obj.date === sortedData[index1][index2].date));
-        
     return streaks.map(streak => streak[2]);
   }
 

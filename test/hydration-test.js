@@ -44,8 +44,10 @@ describe('Hydration', function() {
     expect(hydration).to.be.an.instanceof(Hydration);
   });
 
-  it('should return the average fluid ounces intake for a user for all time', function() {
-    expect(hydration.calculateAverageFluidIntakeForUser(hydrationData)).to.equal(53);
+  it('should return the average fluid ounces intake for a user for all time',
+  function() {
+    expect(hydration.calculateAverageFluidIntakeForUser(hydrationData)).to
+    .equal(53);
   })
 
   it('should return fluid intake for a selected date', function() {
@@ -153,10 +155,21 @@ describe('Hydration', function() {
         "userID": 2,
         "date": "2019/06/24",
         "numOunces": 33
-      }]
+      }
+    ]
+
     hydration = new Hydration(usersRepository, hydrationData1);
-    const userDateRange = ["2019/06/16","2019/06/17","2019/06/18","2019/06/19","2019/06/20","2019/06/21","2019/06/22"];
-    expect(hydration.calculateDailyIntakeForWeek(userDateRange)).to.deep.equal([{date: "2019/06/16", intake: 69}, {date: "2019/06/17", intake: 96}, {date: "2019/06/18", intake: 61}, {date: "2019/06/19", intake: 91}, {date: "2019/06/20", intake: 50}, {date: "2019/06/21", intake: 50}, {date: "2019/06/22", intake: 43}]);
-  })
+    const userDateRange = ["2019/06/16","2019/06/17","2019/06/18","2019/06/19",
+    "2019/06/20","2019/06/21","2019/06/22"];
+
+    expect(hydration.calculateDailyIntakeForWeek(userDateRange)).to.deep.equal(
+    [{date: "2019/06/16", intake: 69},
+    {date: "2019/06/17", intake: 96},
+    {date: "2019/06/18", intake: 61},
+    {date: "2019/06/19", intake: 91},
+    {date: "2019/06/20", intake: 50},
+    {date: "2019/06/21", intake: 50},
+    {date: "2019/06/22", intake: 43}]);
+  });
 
 });

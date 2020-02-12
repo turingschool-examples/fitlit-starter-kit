@@ -4,12 +4,12 @@ class Hydration {
     this.userHydrationData = hydrationDataSet;
   }
 
-  calculateAverageFluidIntakeForUser = () => {
+  calculateAverageFluidIntakeForUser() {
     let userOunceIntakes = [];
 
     this.userHydrationData.filter(hydrationData => {
       if(hydrationData.userID === this.userID) {
-        userOunceIntakes.push(hydrationData.numOunces)
+        userOunceIntakes.push(hydrationData.numOunces);
       }
     })
 
@@ -21,19 +21,23 @@ class Hydration {
     return Math.trunc(totalOunces / userOunceIntakes.length);
   }
 
-  calculateFluidIntakeForDay = (date) => {
-    let userHydrationData = this.userHydrationData.filter(hydrationData => hydrationData.userID === this.userID)
+  calculateFluidIntakeForDay(date) {
+    let userHydrationData = this.userHydrationData.filter(hydrationData =>
+      hydrationData.userID === this.userID)
     .find(hydrationData => hydrationData.date === date);
+
     return userHydrationData.numOunces;
   }
 
-  calculateDailyIntakeForWeek = (dateRange) => {
+  calculateDailyIntakeForWeek(dateRange) {
     let userWeekIntake = [];
-    let userHydrationData = this.userHydrationData.filter(hydrationData => hydrationData.userID === this.userID);
+    let userHydrationData = this.userHydrationData.filter(hydrationData =>
+      hydrationData.userID === this.userID);
+      
     dateRange.forEach(date => {
       userHydrationData.map(data => {
         if(date === data.date) {
-          userWeekIntake.push({date: data.date, intake: data.numOunces})
+          userWeekIntake.push({date: data.date, intake: data.numOunces});
         }
       })
     })

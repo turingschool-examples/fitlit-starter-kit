@@ -3,11 +3,11 @@ class UsersRepository {
     this.id = id;
   }
 
-  getUserDataById = (userData) => {
+  getUserDataById(userData) {
     return userData.find(data => data.id === this.id);
   }
 
-  calculateAverageStepGoal = (userData) => {
+  calculateAverageStepGoal(userData) {
    let totalSteps = userData.reduce((acc, data) => {
      acc += data.dailyStepGoal;
      return acc;

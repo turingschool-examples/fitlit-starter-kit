@@ -1,34 +1,28 @@
-#### Goals and Expectations for the Project (What does each group member hope to get out of this project?
+#### Goals and Expectations for the Project (What does each group member hope to get out of this project?)
 
- * Collie - refactoring someone else's code, employing new technologies: Sass & spies.  PLAN.  Do some front loading. 
+ * Horacio - Better at working with classes, and trying to solidify classes working with each other.  
 
- * Karl - Clear communication - Whatever we figure it out - text/slack - figure out what we're working on.  Check in every day, what we are planning on doing that day.  Stand-ups everyday.  Love to pair program at times too - having a solid balance of paired/solo.  Want to have a solid understanding of fetch - will support Collie/Melissa to have a foundation of that.  
-
- * Melissa - Clear communication on I'm a slower programmer.  Speak your anxieties on what we are getting anxious about.  
+ * Melissa - Planning out a project, clearly understand each step before starting to code.  Speak your anxieties on what we are getting anxious about.  
 
 
 #### What do we want to achieve as a team? How will we know that we're successful?):
 
-If each of us get our hands on each of the aspects of project, we all get our hands on different areas of the project. 
-
+Hands on practice with working with datasets.  Learning is the most important piece - leveling up understanding. 
 
 #### Team strengths & collaboration styles (consider discussing your Pairin qualities here):
 
-* Karl - super detailed orientated. Psuedo-coding - talkimg through in people talk before robot talk. Making sure to take poms. 
-* Collie - taking a step back, before solving a problem, and consider the best ways to solve it. Psudeo-coding 
-* Melissa - Pom patrol. DRY code.  I'm good at getting everyone's input and moving forward effectively. 
+* Horacio - Flexiable on scheduling, easy to work with, prefer to work together.  
+* Melissa - Pom patrol. DRY code.  I'm good at getting everyone's input and moving forward effectively. Would rather front load the work.  
 
 #### How we can use our strengths to overcome obstacles:
 
-* Karl - making plans and sticking to them and knowing when to ask for help. Detail orientated. 
-* Collie - keeping on track, making sure we aren't going down a path of code that is confusing, and using that as an identifer to redirect. 
+* Horacio - I don't know mind working late if needed. 
 * Melissa - decision making, struggle/to ask for help.  
 
 #### Schedule Expectations (When are we available to work together and individually? What constraints do we have?):
 
-* Collie - Cutoff 6:30pm for interactive work with team.  Open to dedicate on weekend day - prefer Sunday.  few hours on other day. 
-* Karl - Cutoff 7pm, has time for pebbles/rock.  4-5 M, Tue/Thurs, 5-6pm Wed. Friday 4pm.  ideally work Sat 12-6, Sun off. balancing partner time. 
-* Melissa - time off to eat, time to review next days lesson plan, JS Fun, mentor time. 
+* Horacio - Meeting on Mondays 7-8
+* Melissa - time off to eat/Sunshine, time to review next days lesson plan, JS Fun, mentor time Tues 3:30 - 4:30.  Thursday/Friday
 
 #### Communication Expectations (How and often will we communicate? How do we keep lines of communication open?
 
@@ -37,8 +31,8 @@ If each of us get our hands on each of the aspects of project, we all get our ha
 
 #### Abilities & Growth Expectations (Technical strengths and areas for desired improvement):
 
-Mentioned above.
-* Karl - dynamic codesets. 
+* Horacio - DRY 
+* Melissa - growth in visualing code, being able to process the bigger picture.  
 
 
 #### Workload Expectations (What features do we each want to work on?):
@@ -51,9 +45,7 @@ project board, assign tasks.
 
 #### Expectations for giving and receiving feedback:
 
- * Collie - clear, concise, compassionate
-
- * Karl - clarity, understanding how my actions are impacting people, had challenge connecting worktime.  being available. Agreeing on worktime. 
+ * Horacio - pretty direct, give me direct feedback. 
 
  * Melissa - needs realtime feedback, needs someone to let me know when I'm digging my heels in.
 
@@ -63,6 +55,6 @@ GitHub projects
 
 #### Day 1 Agenda:
 
-Complete our DTR, start project board, start readme.  
+Complete our DTR, start project board, start readme. 
 
 #### Additional Notes:

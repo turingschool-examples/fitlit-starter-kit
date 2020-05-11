@@ -1,6 +1,6 @@
 class UserRepository {
-  constructor() {
-    
+  constructor(data) {
+    this.userDate = data
   }
 }
 

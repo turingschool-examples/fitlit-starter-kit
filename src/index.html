@@ -3,96 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <title>Activity Tracker</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
     <h1>Welcome Melissa!</h1>
   </header>
   <main>
-    <section>
+    <section class="category-parents">
       <h4>User Info</h4>
-      <section>
+      <section class="user-info">
         <p>Display all user information</p>
       </section>
-      <section>
-        <section>
+      <section class="user-info">
+        <section class="user-steps">
           <p>Display number of steps compared to all users for today(9-22-19)
           </p>
         </section>
-        <section>
+        <section class="user-minutes">
           <p>Display number of minutes active compared to all users for today(9-22-19)
           </p>
         </section>
-        <section>
+        <section class="user-flights">
           <p>Display number of flights of stairs compared to all users for today(9-22-19)
           </p>
         </section>
       </section>
     </section>
-    <section>
+    <section class="category-parents">
       <h4>Hydration</h4>
       <section class="hydration-data">
-        <section>
+        <section class="hydration-today">
           <p>How much water user consumed today(9-22-19</p>
         </section>
-        <section>
+        <section class="hydration-week">
           <p>Display how much water consumed last week</p>
         </section>
       </section>
     </section>
-    <section>
+    <section class="category-parents">
       <h4>Sleep</h4>
       <section class="sleep-data">
-        <section>
+        <section class="sleep-today">
           <p>Sleep data for today(9-22-19), Hours slept, Quality of sleep
           </p>
         </section>
-        <section>
+        <section class="sleep-week">
           <p>Sleep data for last week, Hours slept, Quality of sleep
           </p>
         </section>
-        <section>
+        <section class="sleep-all-time">
           <p>All time average sleep quality, All time average number of hours slept
           </p>
         </section>
       </section>
     </section>
-    <section>
+    <section class="category-parents">
       <h4>Activity</h4>
       <section class="step-data">
-        <section>
+        <section class="steps-average">
           <p>User step goal compared to step goal of all average users
           </p>
         </section>
-        <section>
+        <section class="steps-today">
           <p>Number of steps for today</p>
         </section>
-        <section>
+        <section class="steps-weekly">
           <p>Weekly step count</p>
         </section>
       </section>
       <section class="active-minutes">
-        <section>
+        <section class="active-minutes-today">
           <p>Display the num of minutes active for today</p>
         </section>
-        <section>
+        <section class="active-minutes-weekly">
           <p>Weekly minutes active</p>
         </section>
       </section>
       <section class="walking">
-        <section>
+        <section class="mile-distance-today">
           <p>Distance in miles for today</p>
         </section>
       </section>
-      <section class="flight-data">
+      <section class="flight-data-weekly">
         <p>Weekly flights of stairs</p>
       </section>
     </section>
   </main>
-  <script type="text/javascript" src="../data/users.js"></script>
-  <script type="text/javascript" src="../data/hydration.js"></script>
-  <script type="text/javascript" src="../data/sleep.js"></script>
-  <script type="text/javascript" src="../data/activity.js"></script>
+  <script type="text/javascript" src="../data/usersData.js"></script>
+  <script type="text/javascript" src="../data/hydrationData.js"></script>
+  <script type="text/javascript" src="../data/sleepData.js"></script>
+  <script type="text/javascript" src="../data/activityData.js"></script>
   <script type="text/javascript" src="./scripts.js"></script>
 </body>
 

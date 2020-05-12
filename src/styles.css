@@ -1,0 +1,147 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  background-color:lightgray;
+}
+
+header { 
+  border: 2px solid black;
+  margin-bottom: 10px;
+}
+
+h1 {
+  padding: 10px;
+}
+main {
+  border: 2px solid black;
+  display: flex;
+}
+
+.category-parents {
+  border: 2px solid orange;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  margin: 8px;
+}
+
+h4 {
+  text-align: center;
+}
+
+.user-info {
+  border: 2px solid greenyellow;
+  padding:6px;
+}
+
+.user-steps {
+  border: 2px solid greenyellow;
+  margin-bottom: 6px;
+}
+
+.user-minutes {
+  border: 2px solid greenyellow;
+  margin-bottom: 6px;
+}
+
+.user-flights {
+  border: 2px solid greenyellow;
+  margin-bottom: 6px;
+}
+
+.hydration-data {
+  border: 2px solid blue;
+  padding:6px;
+}
+
+.hydration-today {
+  border: 2px solid blue;
+  margin-bottom: 6px;
+}
+
+.hydration-week {
+  border: 2px solid blue;
+}
+
+.sleep-data {
+  border: 2px solid black;
+  padding:6px;
+}
+
+.sleep-today {
+  border: 2px solid black;
+  padding:6px;
+  margin-bottom: 6px;
+}
+
+.sleep-week {
+  border: 2px solid black;
+  padding:6px;
+  margin-bottom: 6px;
+}
+
+.sleep-all-time {
+  border: 2px solid black;
+  padding:6px;
+}
+
+.step-data {
+  border: 2px solid red;
+  padding:6px;
+  margin-bottom: 6px;
+}
+
+.steps-average {
+  border: 2px solid red;
+  padding:6px;
+  margin-bottom: 6px;
+}
+
+.steps-today {
+  border: 2px solid red;
+  padding:6px;
+  margin-bottom: 6px;
+}
+
+.steps-weekly {
+  border: 2px solid red;
+  padding:6px;
+  margin-bottom: 6px;
+}
+
+.active-minutes {
+  border: 2px solid red;
+  padding:6px;
+  margin-bottom: 6px;
+}
+
+.active-minutes-today {
+  border: 2px solid red;
+  padding:6px;
+  margin-bottom: 6px;
+}
+
+.active-minutes-weekly {
+  border: 2px solid red;
+  padding:6px;
+  margin-bottom: 6px;
+}
+
+.walking {
+  border: 2px solid red;
+  padding:6px;
+  margin-bottom: 6px;
+}
+
+.mile-distance-today {
+  border: 2px solid red;
+  padding:6px;
+  margin-bottom: 6px;
+}
+
+.flight-data-weekly {
+  border: 2px solid red;
+  padding:6px;
+  margin-bottom: 6px;
+}

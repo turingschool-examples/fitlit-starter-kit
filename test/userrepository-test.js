@@ -7,6 +7,7 @@ let user1
 let user2
 let user3
 let userRepository
+<<<<<<< HEAD
 let userData
 
 beforeEach(function() {
@@ -57,6 +58,14 @@ beforeEach(function() {
   user2 = new User(userData[1])
   user3 = new User(userData[2])
   userRepository = new UserRepository(userData)
+=======
+
+beforeEach(function() {
+  user1 = new User()
+  user2 = new User()
+  user3 = new User()
+  userRepository = new UserRepository([user1, user2, user3])
+>>>>>>> origin
 })
 
 describe('UserRepository', function() {
@@ -65,6 +74,7 @@ describe('UserRepository', function() {
     expect(UserRepository).to.be.a('function')
   })
   it('should take in user data', function() {
+<<<<<<< HEAD
     expect(userRepository.userData).to.equal(userData)
   })
   it('should be able to return a specific users data', function() {
@@ -76,4 +86,9 @@ describe('UserRepository', function() {
   it('should be able to get the average step goal for all users', function() {
     expect(userRepository.getAverageStepGoal()).to.equal(6667)
   })
+=======
+    expect(userRepository).to.equal([])
+  })
+  it('should be able to ')
+>>>>>>> origin
 })

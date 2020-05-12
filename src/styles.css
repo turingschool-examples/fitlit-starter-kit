@@ -1,0 +1,60 @@
+body {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  align-items: center;
+  background-color: #b8bec5;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 20%;
+}
+
+.users {
+  background-color: #8f3c3c;
+  height: 20vh;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.hydration {
+  background-color: #465786;
+  height: 20vh;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.sleep {
+  background-color: #604668;
+  height: 20vh;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.activity {
+  background-color: #4e7550;
+  height: 20vh;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.scripts {
+  display: none;
+}

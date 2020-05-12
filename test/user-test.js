@@ -1,11 +1,11 @@
 const chai = require('chai')
 const expect = chai.expect
-const Sleep = require('../src/Sleep')
+const User = require('../src/User')
 
 
-describe('Sleep', function() {
+describe('User', function() {
 
   it('should be an function', function() {
-    expect(Sleep).to.be.a('function')
+    expect(User).to.be.a('function')
   });
 })

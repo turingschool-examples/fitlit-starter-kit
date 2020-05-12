@@ -48,6 +48,12 @@ describe('User', () => {
 		expect(user.friends).to.deep.equal([16, 4, 8]);
 	})
 
+	// it('should require an argument to create a new User', () => {
+	// 	let badUser = new User();
+	// 	// SAD PATH HERE
+	// 	expect(badUser).to.throw(TypeError);
+	// })
+
 	it('should return users first name when findName is invoked', () => {
 		const foundName = user.findName();
 

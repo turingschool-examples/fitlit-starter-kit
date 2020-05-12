@@ -1,9 +1,10 @@
-class User {
+class ActivityRepo {
   constructor() {
 
   }
+
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = User;
+  module.exports = ActivityRepo;
 }

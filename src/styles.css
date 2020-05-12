@@ -12,7 +12,16 @@ body {
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
-  margin-top: 20%;
+}
+
+.greeting {
+  background-color: #461000;
+  height: 20vh;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
 }
 
 .users {

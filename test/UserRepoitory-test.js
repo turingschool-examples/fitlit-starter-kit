@@ -2,36 +2,36 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const UserRepository = require('../src/UserRepository');
+const randomUser = require('../data/users');
 
-describe('UserRepository', function() {
+describe('UserRepository', () => {
 
-    it('should be a function', function() {
-        const userRepository = new UserRepository();
+    let userRepo;
+
+    beforeEach(() => {
+        userRepo = new UserRepository()
+    })
+
+    it('should be a function', () => {
         expect(UserRepository).to.be.a('function');
     })
 
-    it('should be an instance of UserRepository', function() {
-        const userRepository = new UserRepository();
-        expect(userRepository).to.be.an.instanceof(UserRepository);
+    it('should be an instance of UserRepository', () => {
+        expect(userRepo).to.be.an.instanceof(UserRepository);
       });
 
-    it('should have data from the user', function(){
-        const userData = new UserRepository();
-        expect(userData).to.equal(userData);
+    it('should have data from the user', () => {
+        expect(userRepo.data).to.equal(randomUser);
     })
 
-    it('should be able to get data by the user id', function() {
-        const userData = new UserRepository();
-
-        let getData = userData.getDataById()
-        expect(userData).to.equal(userData)
+    it('should be able to get data by the user id', () => {
+        let getData = userRepo.getDataById()
+        expect(getData).to.equal()
     })
 
-    it('should be able to get average step goal for user', function() {
-        const userData = new UserRepository();
-
-        let getSteps = userData.getAverageStepGoal()
-        expect(getSteps).to.equal(userData)
+    it('should be able to get average step goal for user', () => {
+        let getSteps = userRepo.fetchAverageStepGoal()
+        expect(getSteps).to.equal(randomUser)
 
     })
 });

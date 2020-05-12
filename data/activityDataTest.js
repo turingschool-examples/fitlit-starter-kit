@@ -64,46 +64,25 @@ const activityDataTest = [
   },
   {
    "userID": 1,
-   "date": "2019/09/18",
+   "date": "2019/09/19",
    "numSteps": 3577,
    "minutesActive": 140,
    "flightsOfStairs": 16
   },
   {
    "userID": 2,
-   "date": "2019/09/18",
+   "date": "2019/09/19",
    "numSteps": 4294,
    "minutesActive": 138,
    "flightsOfStairs": 10
   },
   {
     "userID": 3,
-    "date": "2019/09/18",
+    "date": "2019/09/19",
     "numSteps": 7402,
     "minutesActive": 116,
     "flightsOfStairs": 33
-  },
-    {
-      "userID": 1,
-      "date": "2019/09/19",
-      "numSteps": 3577,
-      "minutesActive": 140,
-      "flightsOfStairs": 16
-    },
-    {
-      "userID": 2,
-      "date": "2019/09/19",
-      "numSteps": 4294,
-      "minutesActive": 138,
-      "flightsOfStairs": 10
-    },
-    {
-      "userID": 3,
-      "date": "2019/09/19",
-      "numSteps": 7402,
-      "minutesActive": 116,
-      "flightsOfStairs": 33
-    },
+  }, 
     {
       "userID": 1,
       "date": "2019/09/20",
@@ -166,6 +145,9 @@ const activityDataTest = [
       "numSteps": 8015,
       "minutesActive": 106,
       "flightsOfStairs": 37
-      }
-
+    }
 ]
+
+if (typeof module !== 'undefined') {
+  module.exports = activityDataTest;
+}

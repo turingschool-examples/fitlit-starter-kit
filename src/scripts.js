@@ -18,7 +18,7 @@ function makeUser() {
 function showInfoCard() {
   users.innerHTML = `<p>User: ${user.name}</p>
                      <p>Address: ${user.address}</p>
-                     <p>Email: ${user.email}</p>                     
+                     <p>Email: ${user.email}</p>
                      <p>Stride Length: ${user.strideLength}</p>
                      <p>Daily Step Goal: ${user.dailyStepGoal}</p>
                      <p>Friends: ${user.userFriends}</p>

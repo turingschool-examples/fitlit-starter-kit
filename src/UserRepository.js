@@ -4,11 +4,7 @@ class UserRepository {
   }
 
   getUserByID(userID) {
-    if((typeof userID) === 'number') {
       return this.userData.find(user => user.id === userID)
-    } else {
-      return 'Invalid Argument'
-    }
   }
 
   getAverageStepGoal() {

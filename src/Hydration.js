@@ -1,5 +1,18 @@
 class Hydration {
-  constructor() {
+  constructor(hydrationData, user) {
+    this.hydrationData = hydrationData;
+    this.currentUser = user;
+  }
+
+  getAverageDailyOunces() {
+
+  }
+
+  getOuncesForSpecificDay(date) {
+
+  }
+
+  getWeekOfFluidOunces(date) {
 
   }
 }

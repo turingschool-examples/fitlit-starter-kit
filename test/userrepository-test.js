@@ -3,9 +3,6 @@ const expect = chai.expect
 const UserRepository = require('../src/UserRepository')
 const User = require('../src/User')
 
-let user1
-let user2
-let user3
 let userRepository
 let userData
 
@@ -53,9 +50,6 @@ beforeEach(function() {
       ]
     }
   ]
-  user1 = new User(userData[0])
-  user2 = new User(userData[1])
-  user3 = new User(userData[2])
   userRepository = new UserRepository(userData)
 })
 
@@ -71,7 +65,7 @@ describe('UserRepository', function() {
     expect(userRepository.getUserByID(2)).to.equal(userData[1])
   })
   it('should be able to return a specific users data', function() {
-    expect(userRepository.getUserByID()).to.equal('Invalid Argument')
+    expect(userRepository.getUserByID('')).to.equal(undefined)
   })
   it('should be able to get the average step goal for all users', function() {
     expect(userRepository.getAverageStepGoal()).to.equal(6667)

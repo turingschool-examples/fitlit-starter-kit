@@ -3,9 +3,19 @@ class UserRepository {
         this.data = data;
     }
 
-getDataById() {
-
+getDataById(id) {
+    return this.data.find(user => user.id === id);
 }
+
+fetchAverageStepGoal() {
+    let average = this.data.reduce((acc, user) => {
+        acc += user.dailyStepGoal
+        return acc;
+    }, 0)
+    return (average / this.data.length)
+  }
 }
 
-module.exports = UserRepository;
+if (typeof module !== 'undefined') {
+    module.exports = UserRepository;
+  }

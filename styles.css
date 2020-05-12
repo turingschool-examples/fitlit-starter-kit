@@ -1,0 +1,79 @@
+body {
+    background-color: blue;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 20vh);
+  grid-template-areas:
+    "hydration-column sleep-column activity-column";
+}
+
+.header {
+    display: flex;
+    background-color: white;
+    grid-row: 1;
+    grid-column: 1 / 4;
+    text-align: center;
+}
+
+#left {
+    text-align: left;
+    align-self: flex-start;
+}
+
+#right {
+    text-align: right;
+    align-self: flex-end;
+}
+.hydration-column {
+    display: flex;
+    flex-direction: column;
+    background-color: #F28482;
+    grid-area: "hydration-column";
+    text-align: center;
+    border: 5px solid #E3D081;
+    height: 80vh;
+    overflow: scroll;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sleep-column {
+    display: flex;
+    flex-direction: column;
+    background-color: #F28482;
+    grid-area: "sleep-column";
+    text-align: center;
+    border: 5px solid #E3D081;
+    height: 80vh;
+    overflow: scroll;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .activity-column {
+    display: flex;
+    flex-direction: column;
+    background-color: #F28482;
+    grid-area: "activity-column";
+    text-align: center;
+    border: 5px solid #E3D081;
+    height: 80vh;
+    overflow: scroll;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .box{
+    height: 30%;
+    width: 70%;
+    background-color: black;
+    margin: 5%;
+  }
+

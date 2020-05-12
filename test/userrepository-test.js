@@ -7,12 +7,56 @@ let user1
 let user2
 let user3
 let userRepository
+let userData
 
 beforeEach(function() {
-  user1 = new User()
-  user2 = new User()
-  user3 = new User()
-  userRepository = new UserRepository([user1, user2, user3])
+  userData = [
+    {
+      "id": 1,
+      "name": "Luisa Hane",
+      "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+      "email": "Diana.Hayes1@hotmail.com",
+      "strideLength": 4.3,
+      "dailyStepGoal": 10000,
+      "friends": [
+        16,
+        4,
+        8
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Jarvis Considine",
+      "address": "30086 Kathryn Port, Ciceroland NE 07273",
+      "email": "Dimitri.Bechtelar11@gmail.com",
+      "strideLength": 4.5,
+      "dailyStepGoal": 5000,
+      "friends": [
+        9,
+        18,
+        24,
+        19
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Herminia Witting",
+      "address": "85823 Bosco Fork, East Oscarstad MI 85126-5660",
+      "email": "Elwin.Tromp@yahoo.com",
+      "strideLength": 4.4,
+      "dailyStepGoal": 5000,
+      "friends": [
+        19,
+        11,
+        42,
+        33
+      ]
+    }
+  ]
+  user1 = new User(userData[0])
+  user2 = new User(userData[1])
+  user3 = new User(userData[2])
+  userRepository = new UserRepository(userData)
 })
 
 describe('UserRepository', function() {
@@ -21,7 +65,12 @@ describe('UserRepository', function() {
     expect(UserRepository).to.be.a('function')
   })
   it('should take in user data', function() {
-    expect(userRepository).to.equal([])
+    expect(userRepository.userData).to.equal(userData)
   })
-  it('should be able to ')
+  it('should be able to return a specific users data', function() {
+    expect(userRepository.getUserByID(2)).to.equal(userData[1])
+  })
+  it('should be able to get the average step goal for all users', function() {
+    expect(userRepository.getAverageStepGoal()).to.equal(6667)
+  })
 })

@@ -70,6 +70,9 @@ describe('UserRepository', function() {
   it('should be able to return a specific users data', function() {
     expect(userRepository.getUserByID(2)).to.equal(userData[1])
   })
+  it('should be able to return a specific users data', function() {
+    expect(userRepository.getUserByID()).to.equal('Invalid Argument')
+  })
   it('should be able to get the average step goal for all users', function() {
     expect(userRepository.getAverageStepGoal()).to.equal(6667)
   })

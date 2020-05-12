@@ -1,4 +1,5 @@
 const chai = require('chai');
+var assert = require('chai').assert;
 const expect = chai.expect;
 
 const User = require('../src/User-class');
@@ -48,11 +49,51 @@ describe('User', () => {
 		expect(user.friends).to.deep.equal([16, 4, 8]);
 	})
 
-	// it('should require an argument to create a new User', () => {
-	// 	let badUser = new User();
-	// 	// SAD PATH HERE
-	// 	expect(badUser).to.throw(TypeError);
-	// })
+	it('should require an argument to create a new User', () => {
+		expect(() => { new User() }).to.not.throw(Error);
+	})
+
+	it('if no argument given for new User, id property is undefined', () => {
+		let badUser = new User();
+
+		expect(badUser.id).to.equal(undefined);
+	})
+
+	it('if no argument given for new User, name property is undefined', () => {
+		let badUser = new User();
+
+		expect(badUser.name).to.equal(undefined);
+	})
+
+	it('if no argument given for new User, address property is undefined', () => {
+		let badUser = new User();
+
+		expect(badUser.address).to.equal(undefined);
+	})
+
+	it('if no argument given for new User, email property is undefined', () => {
+		let badUser = new User();
+
+		expect(badUser.email).to.equal(undefined);
+	})
+
+	it('if no argument given for new User, strideLength property is undefined', () => {
+		let badUser = new User();
+
+		expect(badUser.strideLength).to.equal(undefined);
+	})
+
+	it('if no argument given for new User, dailyStepGoal property is undefined', () => {
+		let badUser = new User();
+
+		expect(badUser.dailyStepGoal).to.equal(undefined);
+	})
+
+	it('if no argument given for new User, friends property is undefined', () => {
+		let badUser = new User();
+
+		expect(badUser.friends).to.equal(undefined);
+	})
 
 	it('should return users first name when findName is invoked', () => {
 		const foundName = user.findName();

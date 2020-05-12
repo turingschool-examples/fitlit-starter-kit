@@ -8,7 +8,6 @@ body {
 
 .content {
   display: flex;
-  flex-direction: row;display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
@@ -26,14 +25,20 @@ body {
 
 .users {
   background-color: #8f3c3c;
-  height: 100vh;
-  width: 50%;
+  height: 50vh;
+  width: auto;
   display: flex;
-  justify-content: center;
+  overflow-x: scroll;
   align-items: center;
   font-size: 30px;
-  flex-wrap: wrap;
+
   flex-direction: column;
+}
+
+.step-goal {
+  background-color: #604668;
+  height: 20vh;
+  width: 20%;
 }
 
 .hydration {

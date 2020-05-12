@@ -1,8 +1,12 @@
-var greeting = document.querySelector('.greeting')
-var users = document.querySelector('.users')
-var hydration = document.querySelector('.hydration')
-var sleep = document.querySelector('.sleep')
-var activity = document.querySelector('.activity')
+const greeting = document.querySelector('.greeting')
+const users = document.querySelector('.users')
+const hydration = document.querySelector('.hydration')
+const sleep = document.querySelector('.sleep')
+const activity = document.querySelector('.activity')
+const stepGoal = document.querySelector('.step-goal')
+var userRepo = new UserRepository(userData);
+
+
 
 function makeUser() {
   let randomUser = Math.floor(Math.random() * userData.length)
@@ -27,13 +31,20 @@ function showFirstName() {
 }
 
 function compareStepGoal() {
-  users.innerHTML = `<section class="step-goal"> Step Goal </section>`
+  let average = user.dailyStepGoal / userRepo.getAverageStepGoal()
+  let averagePercent = (average * 100).toFixed(2)
+  console.log(user.dailyStepGoal)
+  stepGoal.innerHTML =
+                      `<p>${user.getFirstName()}'s goal is  ${user.dailyStepGoal} steps per day, and the average is  ${userRepo.getAverageStepGoal()} steps per day.
+                          ${user.getFirstName()}'s goal is ${averagePercent}% of the average
+                      </p>`
 }
 
 
 makeUser()
 showInfoCard()
 showFirstName()
+compareStepGoal()
 
 
 

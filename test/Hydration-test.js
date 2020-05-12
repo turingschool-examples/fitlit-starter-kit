@@ -32,5 +32,11 @@ describe('Hydration', () => {
     expect(hydration.numOunces).to.equal(37);
   })
 
+  it('should be able to find how many ounces a user consumed for a specific day', () => {
+    expect(hydration.getDailyWater()).to.equal(37);
+  })
 
+  it('should be able to find how many ounces a user consumed for a specific day with an argument passed', () => {
+    expect(hydration.getDailyWater('test')).to.equal(37);
+  })
 })

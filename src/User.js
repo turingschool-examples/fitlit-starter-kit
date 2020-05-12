@@ -4,4 +4,6 @@ class User {
   }
 }
 
-export default User
+if (typeof module !== 'undefined') {
+  module.exports = User;
+}

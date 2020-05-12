@@ -4,4 +4,6 @@ class Hydration {
   }
 }
 
-export default Hydration
+if (typeof module !== 'undefined') {
+  module.exports = Hydration;
+}

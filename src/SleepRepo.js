@@ -2,4 +2,6 @@ class SleepRepo {
 
 }
 
-export default SleepRepo
+if (typeof module !== 'undefined') {
+  module.exports = SleepRepo;
+}

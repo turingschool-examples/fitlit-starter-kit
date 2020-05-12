@@ -1,5 +1,7 @@
-import { expect } from 'chai'
-import SleepRepo from '../src/SleepRepo';
+const chai = require('chai');
+const expect = chai.expect;
+
+const SleepRepo = require('../src/SleepRepo');
 
 describe('Sleep Repository', () => {
 

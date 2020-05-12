@@ -4,4 +4,6 @@ class Sleep {
   }
 }
 
-export default Sleep
+if (typeof module !== 'undefined') {
+  module.exports = Sleep;
+}

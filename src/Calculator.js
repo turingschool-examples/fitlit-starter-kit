@@ -2,4 +2,6 @@ class Calculator {
 
 }
 
-export default Calculator
+if (typeof module !== 'undefined') {
+  module.exports = Calculator;
+}

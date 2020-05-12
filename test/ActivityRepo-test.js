@@ -1,5 +1,7 @@
-import { expect } from 'chai'
-import ActivityRepo from '../src/ActivityRepo';
+const chai = require('chai');
+const expect = chai.expect;
+
+const ActivityRepo = require('../src/ActivityRepo');
 
 describe('Activity Repository', () => {
   

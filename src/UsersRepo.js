@@ -4,4 +4,6 @@ class UsersRepo {
   }
 }
 
-export default UsersRepo
+if (typeof module !== 'undefined') {
+  module.exports = UsersRepo;
+}

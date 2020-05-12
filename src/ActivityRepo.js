@@ -5,4 +5,6 @@ class ActivityRepo {
 
 }
 
-export default ActivityRepo
+if (typeof module !== 'undefined') {
+  module.exports = ActivityRepo;
+}

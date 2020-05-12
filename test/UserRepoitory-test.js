@@ -26,4 +26,12 @@ describe('UserRepository', function() {
         let getData = userData.getDataById()
         expect(userData).to.equal(userData)
     })
+
+    it('should be able to get average step goal for user', function() {
+        const userData = new UserRepository();
+
+        let getSteps = userData.getAverageStepGoal()
+        expect(getSteps).to.equal(userData)
+
+    })
 });

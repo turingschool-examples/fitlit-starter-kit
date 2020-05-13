@@ -30,4 +30,7 @@ describe('User', function() {
     expect(user.address).to.equal(userDataTest.address);
   });
 
+  it('should have a user email address', function() {
+    expect(user.email).to.equal(userDataTest.email);
+  });
 })

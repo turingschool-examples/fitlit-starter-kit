@@ -21,4 +21,9 @@ describe('User', function() {
   it('should have a user id', function() {
     expect(user.id).to.equal(userDataTest.id);
   });
+
+  it('should have a user name', function() {
+    expect(user.name).to.equal(userDataTest.name);
+  });
+
 })

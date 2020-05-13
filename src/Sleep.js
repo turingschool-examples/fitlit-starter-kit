@@ -46,8 +46,16 @@ class Sleep {
     } else {
       return undefined
     }
+  } 
+  
+  getWeekOfHoursSlept(date) {
+    let userSleepData = this.getUserSleepData()
+    let todaysSleep = userSleepData.find(sleep => sleep.date === date)
+    let startIndex = userSleepData.indexOf(todaysSleep)
+    for (var i = 0; i < 7; i++) {
+      return (userSleepData[startIndex + i])
+    }
   }  
-
 }
 
   if (typeof module !== 'undefined') {

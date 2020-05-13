@@ -5,14 +5,14 @@ const sleep = document.querySelector('.sleep')
 const activity = document.querySelector('.activity')
 const stepGoal = document.querySelector('.step-goal')
 var userRepo = new UserRepository(userData);
+var todaysDate = '2019/08/02'
 
 
 
 function makeUser() {
   let randomUser = Math.floor(Math.random() * userData.length)
-
   user = new User(userData[randomUser])
-
+  makeHydration(user)
 }
 
 function showInfoCard() {
@@ -38,6 +38,29 @@ function compareStepGoal() {
                           ${user.getFirstName()}'s goal is ${averagePercent}% of the average
                       </p>`
 }
+
+function makeHydration(user) {
+  let newHydration = new Hydration(hydrationData, user)
+  showHydrationCard(newHydration)
+}
+
+function showHydrationCard(newHydration) {
+  let weeksHydroData = newHydration.getWeekOfFluidOunces(todaysDate)
+  hydration.innerHTML = `
+                         <p>Hydration Average: ${newHydration.getAverageDailyOunces()}oz</p>
+                         <p>Todays Hydration: ${newHydration.getOuncesForSpecificDay(todaysDate)}oz</p>
+                         <p>Yesterday's Hydration: ${weeksHydroData[0]}</p>
+                         <p>2 days days ago: ${weeksHydroData[1]}oz</p>
+                         <p>3 days ago: ${weeksHydroData[2]}oz</p>
+                         <p>4 days ago: ${weeksHydroData[3]}oz</p>
+                         <p>5 days ago: ${weeksHydroData[4]}oz</p>
+                         <p>6 days ago: ${weeksHydroData[5]}oz</p>
+                         <p>7 days ago: ${weeksHydroData[6]}oz</p>
+                         `
+}
+
+
+
 
 
 makeUser()

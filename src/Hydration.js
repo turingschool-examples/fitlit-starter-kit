@@ -29,12 +29,14 @@ class Hydration {
   }
 
   getWeekOfFluidOunces(date) {
-    let userHydroData = this.getUserHydrationData()
-    let todaysH2O = userHydroData.find(hydration => hydration.date === date)
-    let startIndex = userHydroData.indexOf(todaysH2O)
-    for (var i = 0; i < 7; i++) {
-      return (userHydroData[startIndex + i])
+    const weeksHydroData = []
+    const userHydroData = this.getUserHydrationData()
+    const todaysH2O = userHydroData.find(hydration => hydration.date === date)
+    const startIndex = userHydroData.indexOf(todaysH2O)
+    for (var i = 1; i < 8; i++) {
+      weeksHydroData.push(userHydroData[startIndex + i])
     }
+    return weeksHydroData
   }
 }
 

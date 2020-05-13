@@ -1,8 +1,19 @@
+
+// Variables
 let user;
+
+// QuerySelectors
 const displayUserInfo = document.querySelector('.display-user-info');
-window.onload = createRandomUser(), displayUserData()
+const displayUserFirstName = document.querySelector('#welcome-message');
+
+// Events
+window.onload = createRandomUser(), displayUserData(), displayFirstName()
 
 
+// Functions
+function displayFirstName() {
+    displayUserFirstName.innerHTML = `<h1>Welcome ${user.displayFirstNameOnly()}!</h1>`
+}
 
 function createRandomUser() {
   let randomUser = Math.floor(Math.random() * userData.length)

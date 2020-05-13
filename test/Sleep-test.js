@@ -141,13 +141,16 @@ describe('sleep', function() {
   it('should be able to get a users sleep quality on a specific day', function() {
     expect(sleep.getQualityForSpecificDay('2019/06/16')).to.equal(3.8)
   })
-  it('should be able to get a week of hours slept info', function() {
-    expect(sleep.getWeekOfHoursSlept('2019/06/15')).to.deep.equal(
+  it('should be able to get a week of hours sleep data', function() {
+    expect(sleep.getWeekOfSleepData('2019/06/15')).to.deep.equal(
       { userID: 1, date: '2019/06/15', hoursSlept: 6.1, sleepQuality: 2.2 },
       { userID: 1, date: '2019/06/16', hoursSlept: 4.1, sleepQuality: 3.8 },
       { userID: 1, date: '2019/06/17', hoursSlept: 8, sleepQuality: 2.6 },
       undefined, undefined, undefined, undefined
     )
+  })
+  it('should be able to get total hours slept in a week for one user', function() {
+    console.log(sleep.getWeekofHoursSlept())
   })
      
 

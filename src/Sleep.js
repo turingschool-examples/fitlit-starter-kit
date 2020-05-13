@@ -48,14 +48,24 @@ class Sleep {
     }
   } 
   
-  getWeekOfHoursSlept(date) {
+  getWeekOfSleepData(date) {
     let userSleepData = this.getUserSleepData()
     let todaysSleep = userSleepData.find(sleep => sleep.date === date)
     let startIndex = userSleepData.indexOf(todaysSleep)
     for (var i = 0; i < 7; i++) {
       return (userSleepData[startIndex + i])
     }
-  }  
+  }
+  
+  getWeekofHoursSlept() {
+    let userSleepData = this.getUserSleepData()
+    let sleepCounter = 0
+    for (var i = 0; i < userSleepData.length; i++) {
+      sleepCounter += this.hoursSlept
+    }
+    return sleepCounter
+
+  }
 }
 
   if (typeof module !== 'undefined') {

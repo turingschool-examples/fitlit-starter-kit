@@ -67,14 +67,34 @@ describe('User Repository', () => {
     expect(usersRepo.allUsers).to.deep.equal([user1, user2, user3, user4])
   });
 
-  // it('should take in an only an array of users', () => {
-  //   usersRepo = new UsersRepo({user})
-  //   expect(usersRepo.)
-  // });
+  it('should instantiate users and put them in the allUsers array', () => {
+    usersRepo = new UsersRepo([user1, user2, user3, user4])
 
-  it('should take return a user, given an id', () => {
+    usersRepo.createUsers()
+    expect(usersRepo.allUsers.length).to.equal(4)
+  })
+
+  it('should have users with methods', () => {
+    usersRepo = new UsersRepo([user1, user2, user3, user4])
+
+    usersRepo.createUsers()
+    expect(usersRepo.allUsers2[0].getName()).to.equal('Luisa')
+  })
+
+  // it('should throw an error if no usersData is passed as an argument', () => {
+  //   usersRepo = new UsersRepo([user1, user2, user3, user4])
+
+  //   expect(() => { new UsersRepo() }).to.throw(Error);
+  // })
+
+  it('should return a user, given an id', () => {
     usersRepo = new UsersRepo([user1, user2, user3, user4])
     expect(usersRepo.getUser(2)).to.deep.equal(user2)
+  });
+
+  it('should return a user, given an id only', () => {
+    usersRepo = new UsersRepo([user1, user2, user3, user4])
+    expect(usersRepo.getUser('2')).to.deep.equal('You must pass a number')
   });
 
   it('should find the average step goal of all users', () => {

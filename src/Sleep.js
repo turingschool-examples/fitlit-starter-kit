@@ -14,7 +14,7 @@ class Sleep {
       acc += userData.hoursSlept
       return acc
     }, 0)
-    return Math.round(userAverage / userSleepData.length)
+    return userAverage / userSleepData.length
   }
 }
 

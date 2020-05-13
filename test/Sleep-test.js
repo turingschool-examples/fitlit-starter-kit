@@ -105,6 +105,8 @@ describe('sleep', function() {
   it('should be able to get a users sleep data', function() {
     expect(sleep.getUserSleepData()).to.deep.equal([sleepData[0], sleepData[4]])
   })
-  
+  it('should be able to get users average daily sleep', function() {
+    expect(sleep.getAverageDailySleep()).to.equal(5.1)
+  })
 
 })

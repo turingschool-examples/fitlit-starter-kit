@@ -1,4 +1,4 @@
-const userData = [
+const userDataTest = [
     {
       "id": 1,
       "name": "Luisa Hane",
@@ -35,7 +35,6 @@ const userData = [
       ]
     }
 ]
-s
 if (typeof module !== 'undefined') {
-  module.exports = usersDataTest;
+  module.exports = userDataTest;
 }

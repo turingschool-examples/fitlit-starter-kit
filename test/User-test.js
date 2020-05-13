@@ -10,6 +10,11 @@ describe('User', function() {
   beforeEach(() => {
     user = new User(userDataTest)
   })
+  it('should be a function', function() {
+    expect(User).to.be.a('function');
+  });
 
-
+  it('should be an instance of user', function() {
+    expect(user).to.be.an.instanceof(User);
+  });
 })

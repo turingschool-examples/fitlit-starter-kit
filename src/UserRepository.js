@@ -8,12 +8,11 @@ getDataById(id) {
 }
 
 fetchAverageStepGoal() {
-    return Math.round(this.data.reduce((total, user) => total += user.dailyStepGoal, 0) / this.data.length)
-    // let average = this.data.reduce((acc, user) => {
-    //     acc += user.dailyStepGoal
-    //     return acc;
-    // }, 0)
-    // return Math.round(average / this.data.length)
+    let average = this.data.reduce((acc, user) => {
+        acc += user.dailyStepGoal
+        return acc;
+    }, 0)
+    return Math.round(average / this.data.length)
   }
 }
 

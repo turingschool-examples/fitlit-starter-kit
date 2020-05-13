@@ -18,7 +18,7 @@ function makeUser() {
 function showInfoCard() {
   users.innerHTML = `<p>User: ${user.name}</p>
                      <p>Address: ${user.address}</p>
-                     <p>Email: ${user.email}</p>                     
+                     <p>Email: ${user.email}</p>
                      <p>Stride Length: ${user.strideLength}</p>
                      <p>Daily Step Goal: ${user.dailyStepGoal}</p>
                      <p>Friends: ${user.userFriends}</p>
@@ -33,7 +33,6 @@ function showFirstName() {
 function compareStepGoal() {
   let average = user.dailyStepGoal / userRepo.getAverageStepGoal()
   let averagePercent = (average * 100).toFixed(2)
-  console.log(user.dailyStepGoal)
   stepGoal.innerHTML =
                       `<p>${user.getFirstName()}'s goal is  ${user.dailyStepGoal} steps per day, and the average is  ${userRepo.getAverageStepGoal()} steps per day.
                           ${user.getFirstName()}'s goal is ${averagePercent}% of the average

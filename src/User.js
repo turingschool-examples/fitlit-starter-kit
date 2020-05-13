@@ -9,6 +9,9 @@ class User {
     this.friends = []
   }
 
+  displayFirstNameOnly() {
+    return firstName = this.name.split(" ")
+  }
 }
 
 if (typeof module !== 'undefined') {

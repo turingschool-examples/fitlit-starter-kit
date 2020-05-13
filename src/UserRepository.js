@@ -4,6 +4,10 @@ class UserRepository {
     this.users = []
   }
 
+  getUserDataById(id) {
+    return this.userData.find(user => user.id === id)
+  }
+  
   calculateAverageStepGoalForAllUsers() {
     const totalDailyStepGoal = this.userData.reduce((acc, data) => {
       return acc += data.dailyStepGoal

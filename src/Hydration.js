@@ -1,5 +1,6 @@
 class Hydration {
   constructor(hydrationData) {
+    //if(hydrationData === undefined) throw 'Cannot construct';
     this.userID = hydrationData.userID;
     this.date = hydrationData.date;
     this.numOunces = hydrationData.numOunces;

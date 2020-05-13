@@ -20,6 +20,10 @@ describe('Hydration', () => {
     expect(hydration).to.be.an.instanceOf(Hydration);
   })
 
+  it('should throw an error if no hydrationData is passed as an argument', () => {
+    expect(() => { new Hydration() }).to.throw(Error);
+  })
+
   it('should have an id', () => {
     expect(hydration.userID).to.equal(1);
   })

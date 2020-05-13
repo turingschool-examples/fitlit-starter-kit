@@ -38,4 +38,8 @@ describe('User', function() {
     expect(user.strideLength).to.equal(userDataTest.strideLength);
   });
 
+  it('should have a user daily step goal', function() {
+    expect(user.dailyStepGoal).to.equal(userDataTest.dailyStepGoal);
+  });
+
 })

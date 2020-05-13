@@ -26,6 +26,10 @@ describe('User', () => {
     expect(user).to.be.an.instanceOf(User);
   })
 
+  it('should throw an error if no userData is passed as an argument', () => {
+    expect(() => { new User() }).to.throw(Error);
+  })
+
   it('should have an id', () => {
     expect(user.id).to.equal(1);
   })

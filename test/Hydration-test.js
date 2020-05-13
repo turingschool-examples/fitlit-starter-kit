@@ -101,4 +101,15 @@ describe('Hydration', function() {
   it('should be able to get a how many ounces a user consumed on a specific day', function() {
     expect(hydration.getOuncesForSpecificDay('2019/06/15')).to.equal(37)
   })
+  it('should return undefined if argument is NaN', function() {
+    expect(hydration.getOuncesForSpecificDay('')).to.equal(undefined)
+  })
+  it('should be able to get a week of hydration info', function() {
+    expect(hydration.getWeekOfFluidOunces('2019/06/15')).to.deep.equal(
+      { userID: 1, date: '2019/06/15', numOunces: 37 },
+      { userID: 1, date: '2019/06/16', numOunces: 69 },
+      { userID: 1, date: '2019/06/17', numOunces: 96 },
+      undefined, undefined, undefined, undefined
+    )
+  })
 })

@@ -1,5 +1,6 @@
 class Hydration {
   constructor(hydrationData, user) {
+    // if(hydrationData && user)
     this.hydrationData = hydrationData;
     this.currentUser = user;
   }
@@ -19,12 +20,21 @@ class Hydration {
 
   getOuncesForSpecificDay(date) {
     let userHydroData = this.getUserHydrationData()
+    if (date) {
     let todaysH2O = userHydroData.find(hydration => hydration.date === date)
     return todaysH2O.numOunces
+  } else {
+    return undefined
+  }
   }
 
   getWeekOfFluidOunces(date) {
-
+    let userHydroData = this.getUserHydrationData()
+    let todaysH2O = userHydroData.find(hydration => hydration.date === date)
+    let startIndex = userHydroData.indexOf(todaysH2O)
+    for (var i = 0; i < 7; i++) {
+      return (userHydroData[startIndex + i])
+    }
   }
 }
 

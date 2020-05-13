@@ -53,7 +53,31 @@ let sleepData = [
       "date": "2019/06/16",
       "hoursSlept": 8.3,
       "sleepQuality": 4.5
-  },
+    },
+    {
+      "userID": 1,
+      "date": "2019/06/17",
+      "hoursSlept": 8,
+      "sleepQuality": 2.6
+    },
+    {
+      "userID": 2,
+      "date": "2019/06/17",
+      "hoursSlept": 5.7,
+      "sleepQuality": 3
+    },
+    {
+      "userID": 3,
+      "date": "2019/06/17",
+      "hoursSlept": 5.3,
+      "sleepQuality": 4.9
+    },
+    {
+      "userID": 4,
+      "date": "2019/06/17",
+      "hoursSlept": 5.7,
+      "sleepQuality": 1.1
+    }
 ]
 
 let userData = [
@@ -103,10 +127,20 @@ describe('sleep', function() {
     expect(sleep.currentUser).to.deep.equal(user1)
   })
   it('should be able to get a users sleep data', function() {
-    expect(sleep.getUserSleepData()).to.deep.equal([sleepData[0], sleepData[4]])
+    expect(sleep.getUserSleepData()).to.deep.equal([sleepData[0], sleepData[4], sleepData[8]])
   })
   it('should be able to get users average daily sleep', function() {
-    expect(sleep.getAverageDailySleep()).to.equal(5.1)
+    expect(sleep.getAverageDailySleep()).to.equal(6.07)
   })
+  it('should be able to get users average daily sleep quality', function() {
+    expect(sleep.getAverageSleepQuality()).to.equal(2.87)
+  })
+  it('should be able to get a how many hours a user slept on a specific day', function() {
+    expect(sleep.getSleepForSpecificDay('2019/06/16')).to.equal(4.1)
+  }) 
+  it('should be able to get a users sleep quality on a specific day', function() {
+    expect(sleep.getQualityForSpecificDay('2019/06/16')).to.equal(3.8)
+  })
+     
 
 })

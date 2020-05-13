@@ -98,4 +98,7 @@ describe('Hydration', function() {
   it('should be able to get users average daily ounces', function() {
     expect(hydration.getAverageDailyOunces()).to.equal(67)
   })
+  it('should be able to get a how many ounces a user consumed on a specific day', function() {
+    expect(hydration.getOuncesForSpecificDay('2019/06/15')).to.equal(37)
+  })
 })

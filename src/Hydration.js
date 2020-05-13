@@ -18,7 +18,9 @@ class Hydration {
   }
 
   getOuncesForSpecificDay(date) {
-
+    let userHydroData = this.getUserHydrationData()
+    let todaysH2O = userHydroData.find(hydration => hydration.date === date)
+    return todaysH2O.numOunces
   }
 
   getWeekOfFluidOunces(date) {

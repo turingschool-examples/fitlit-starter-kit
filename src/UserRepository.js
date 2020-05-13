@@ -1,4 +1,4 @@
-class DataRepository {
+class UserRepository {
   constructor(userData) {
     this.userData = userData
     this.users = []
@@ -15,5 +15,5 @@ class DataRepository {
    
 
 if (typeof module !== 'undefined') {
-  module.exports = DataRepository;
+  module.exports = UserRepository;
 }

@@ -1,7 +1,7 @@
 
 // Variables
 let user;
-let dataRepository = new DataRepository(userData)
+let userRepository = new UserRepository(userData)
 // QuerySelectors
 const displayUserInfo = document.querySelector('.display-user-info');
 const displayUserFirstName = document.querySelector('#welcome-message');
@@ -35,6 +35,6 @@ function displayUserData() {
 function displayTotalUserStepAverages() {
   displayUserStepAverages.innerHTML = `
   <p>Daily Step Goal: ${user.dailyStepGoal}</p>
-  <p>Total User Average Step Goal: ${dataRepository.calculateAverageStepGoal()}</p>
+  <p>Total User Average Step Goal: ${userRepository.calculateAverageStepGoal()}</p>
   `
 }

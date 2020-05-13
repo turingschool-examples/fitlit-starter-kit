@@ -1,1 +1,1 @@
-console.log("Hello World");
+const displayUserInfo = document.querySelector('.display-user-info');

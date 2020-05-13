@@ -1,22 +1,19 @@
 class DataRepository {
-    constructor(userData) {
-        this.userData = userData
-        this.users = []
-    }
+  constructor(userData) {
+    this.userData = userData
+    this.users = []
+  }
 
-    calculateAverageStepGoal() {
-// take the total / userData.length
+  calculateAverageStepGoal() {
     const totalDailyStepGoal = this.userData.reduce((acc, data) => {
-        acc += data.dailyStepGoal
-    return acc
+      return acc += data.dailyStepGoal
     }, 0)
-    return Math.round(totalDailyStepGoal/this.userData.length)
-    }
-
+    return Math.round(totalDailyStepGoal / this.userData.length)
+  }
 }
 
    
 
 if (typeof module !== 'undefined') {
-    module.exports = DataRepository;
-  }
+  module.exports = DataRepository;
+}

@@ -14,7 +14,7 @@
     "comma-spacing": ["warn", { "before": false, "after": true }],
     "curly": "error",
     "semi-spacing": ["error", { "before": false, "after": true }],
-    "indent": ["warn", 2],
+    // "indent": ["warn", 2],
     "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
     "keyword-spacing": ["error", { "before": true, "after": true }],
     "linebreak-style": ["error", "unix"],

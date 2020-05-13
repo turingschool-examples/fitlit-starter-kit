@@ -46,4 +46,20 @@ describe('User', function() {
     expect(user.friends).to.equal(userDataTest.friends);
   });
 
+  it('should display the users first name', function() {
+    user = new User({
+      "id": 1,
+      "name": "Luisa Hane",
+      "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+      "email": "Diana.Hayes1@hotmail.com",
+      "strideLength": 4.3,
+      "dailyStepGoal": 10000,
+      "friends": [
+        2,
+        3
+      ]
+    })
+    expect(user.displayFirstNameOnly()).to.equal('Luisa');
+  });
+
 })

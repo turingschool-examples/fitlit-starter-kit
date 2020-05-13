@@ -33,4 +33,9 @@ describe('User', function() {
   it('should have a user email address', function() {
     expect(user.email).to.equal(userDataTest.email);
   });
+
+  it('should have a user stride length', function() {
+    expect(user.strideLength).to.equal(userDataTest.strideLength);
+  });
+
 })

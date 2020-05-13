@@ -35000,7 +35000,3 @@ const activityData = [
     "flightsOfStairs": 14
   }
 ];
-
-if (typeof module !== 'undefined') {
-  module.exports = activityData;
-}

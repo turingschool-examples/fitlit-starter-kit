@@ -1,82 +1,42 @@
-# FitLit Starter Kit
+# FitLit
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+## Abstract
 
-## Setup
+  Joe and Charles built this kick-ass app that can take the health data that you willingly (we assume) handed over, and turn it into positive or negative feedback (whichever we decide is better for you) in the form of widgets. Who doesn't love widjets? iPhone designers.
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `open src/index.html` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-1. Make sure both members of your team are collaborators on the forked repo.
+### Contributors:
+  - Joe Haefling (GitHub: [Josephhaefling](https://github.com/Josephhaefling))
+  - Charles Wefso (GitHub: [CWefso](https://github.com/cwefso))
 
-## Testing
+### Learning Goals
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
+  - Implimenting TDD.
+  - Working with prototype methods.
+  - Develop better practices for making commits and project workflow.
+  - More stuff that we'll add in later.
+  - HTML/CSS exposure and practice.
+  - Writing DRY code.
 
-## Linting Your Code
+## Install Instructions
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
+  - Clone down this repo
+  - cd into that directory
+  - npm install
+  - open index.html
 
-Your linter will look only at the JavaScript files you have within the `src` and the `test` directories.
+### Image/GIF of application
 
-## Data Model
+## Project Overview
 
-**Users**
+  In this project we worked together to develop an application that could take data from an array of objects and display it in a meaningful way on a user interface.
 
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
 
-**Activity**
+## Technologies Used
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
+  - JavaScript
+  - Mocha/Chai
+  - HTML/CSS
 
-**Hydration**
+## Systems/Practices
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
-
-**Sleep**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+  - git/Version Control

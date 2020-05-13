@@ -1,18 +1,51 @@
 class Hydration {
-  constructor(hydrationData) {
-    this.userID = hydrationData.userID;
-    this.date = hydrationData.date;
-    this.numOunces = hydrationData.numOunces;
+  constructor(id, hydrationData) {
+    this.userHydration = this.getUserHydration(id, hydrationData);
   }
 
-  getDailyWater() {
-    return this.numOunces;
+  // getUserHydration(id) {
+  //   this.userHydration = this.allHydrationData.filter(hydration => {
+  //     return hydration.userID === id;
+  //   })
+  // }
+
+  getUserHydration(id, hydrationData) {
+    return hydrationData.filter(hydration => {
+      return hydration.userID === id;
+    })
+  }
+
+  getDailyWater(date) {
+    let dailyHydration = this.userHydration.filter(hydration => {
+      return hydration.date === date;
+    })
+    
+    return dailyHydration.reduce((acc, hydration) => {
+      acc += hydration.numOunces;
+      return acc;
+    }, 0)
+  }
+
+  getWeeklyWater(date) {
+    let hydrationDate = this.userHydration.find(hydration => {
+      return hydration.date === date
+    })
+
+    let firstDate = this.userHydration.indexOf(hydrationDate);
+    return this.userHydration
+      .slice(firstDate, firstDate+7)
+      .map(hydration => hydration.numOunces);
+  }
+
+  getAvgWater() {
+    let avg = this.userHydration.reduce((acc, hydration) => {
+      return acc += hydration.numOunces / this.userHydration.length
+    }, 0)
+
+    return Math.ceil(avg);
   }
 }
 
 if (typeof module !== 'undefined') {
   module.exports = Hydration;
 }
-
-// For a user, how many fluid ounces of water consumed each day over the course of a week (7 days) - return the amount for each day
-//DO WE WANT THIS TO BE AN INSTANCE OF HYDRATION OR A USER'S HYDRATION?

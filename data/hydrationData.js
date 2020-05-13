@@ -25000,7 +25000,3 @@ const hydrationData = [
     "numOunces": 87
   }
 ];
-
-if (typeof module !== 'undefined') {
-  module.exports = hydrationData;
-}

@@ -4,8 +4,17 @@ class Hydration {
     this.currentUser = user;
   }
 
-  getAverageDailyOunces() {
+  getUserHydrationData() {
+    return this.hydrationData.filter(hydration => hydration.userID === this.currentUser.id)
+  }
 
+  getAverageDailyOunces() {
+    let userHydroData = this.getUserHydrationData()
+    let userAverage = userHydroData.reduce((acc, userData) => {
+      acc += userData.numOunces
+      return acc
+    }, 0)
+    return Math.round(userAverage / userHydroData.length)
   }
 
   getOuncesForSpecificDay(date) {

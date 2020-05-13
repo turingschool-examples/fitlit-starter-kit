@@ -42,4 +42,8 @@ describe('User', function() {
     expect(user.dailyStepGoal).to.equal(userDataTest.dailyStepGoal);
   });
 
+  it('should have a user list of friends', function() {
+    expect(user.friends).to.equal(userDataTest.friends);
+  });
+
 })

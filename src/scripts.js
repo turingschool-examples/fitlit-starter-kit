@@ -13,7 +13,7 @@ window.onload = createRandomUser(), displayUserData(), displayFirstName(), displ
 
 // Functions
 function displayFirstName() {
-    displayUserFirstName.innerHTML = `<h1>Welcome ${user.displayFirstNameOnly()}!</h1>`
+  displayUserFirstName.innerHTML = `<h1>Welcome ${user.displayFirstNameOnly()}!</h1>`
 }
 
 function createRandomUser() {
@@ -35,6 +35,6 @@ function displayUserData() {
 function displayTotalUserStepAverages() {
   displayUserStepAverages.innerHTML = `
   <p>Daily Step Goal: ${user.dailyStepGoal}</p>
-  <p>Total User Average Step Goal: ${userRepository.calculateAverageStepGoal()}</p>
+  <p>Total User Average Step Goal: ${userRepository.calculateAverageStepGoalForAllUsers()}</p>
   `
 }

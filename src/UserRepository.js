@@ -4,7 +4,7 @@ class UserRepository {
     this.users = []
   }
 
-  calculateAverageStepGoal() {
+  calculateAverageStepGoalForAllUsers() {
     const totalDailyStepGoal = this.userData.reduce((acc, data) => {
       return acc += data.dailyStepGoal
     }, 0)

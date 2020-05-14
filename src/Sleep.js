@@ -1,5 +1,5 @@
 class Sleep {
-  constructor() {
+  constructor(sleepData) {
 
   }
 }

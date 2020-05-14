@@ -49,12 +49,14 @@ class Sleep {
   } 
   
   getWeekOfSleepData(date) {
+    let sleeps = []
     let userSleepData = this.getUserSleepData()
     let todaysSleep = userSleepData.find(sleep => sleep.date === date)
     let startIndex = userSleepData.indexOf(todaysSleep)
-    for (var i = 0; i < 7; i++) {
-      return (userSleepData[startIndex + i])
+    for (let i = 0; i < 7; i++) {
+      sleeps.push(userSleepData[startIndex + i])
     }
+    return sleeps
   }
   
   getWeekofHoursSlept() {

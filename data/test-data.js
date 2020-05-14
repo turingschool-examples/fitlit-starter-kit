@@ -32,7 +32,7 @@ const userSampleData = [
     "dailyStepGoal": 4000,
     "friends": [48, 7, 44, 8]
   }
-]
+];
 
 const hydrationSampleData = [
   {
@@ -88,7 +88,7 @@ const hydrationSampleData = [
     "date": "2019/06/22",
     "numOunces": 4
   }
-]
+];
 
 const sleepSampleData = [
   {
@@ -157,7 +157,7 @@ const sleepSampleData = [
     "hoursSlept": 10.1,
     "sleepQuality": 1.8
   }
-]
+];
 
 const activitySampleData = [
   {
@@ -239,9 +239,12 @@ const activitySampleData = [
     "minutesActive": 27,
     "flightsOfStairs": 14
   },
-]
+];
 
-module.exports = userSampleData;
-module.exports = hydrationSampleData;
-module.exports = sleepSampleData;
-module.exports = activitySampleData;
+module.exports = {
+  userSampleData: userSampleData,
+  hydrationSampleData: hydrationSampleData,
+  sleepSampleData: sleepSampleData,
+  activitySampleData: activitySampleData
+}
+

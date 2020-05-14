@@ -182,5 +182,9 @@ describe('Hydration', () => {
   it('should return a specific user average Hydration Data for all time even when an argument is passed', () => {
     expect(hydration.getAvgWater('test')).to.equal(37);
   })
+
+  it('should return a date', () => {
+    expect(hydration.checkDate('2019/06/15')).to.equal('2019/06/15');
+  })
 })
 

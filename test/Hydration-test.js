@@ -127,6 +127,14 @@ describe('Hydration', () => {
     expect(hydration).to.be.an.instanceOf(Hydration);
   })
 
+  it('should throw an error if no arguments is passed as an argument', () => {
+    expect(() => { new Hydration() }).to.throw(Error);
+  })
+
+  it('should throw an error if an invalid id is passed as an argument', () => {
+    expect(() => { new Hydration(500, hydrationDate) }).to.throw(Error);
+  })
+
   it('should return user Hydration Data', () => {
     expect(hydrationData.length).to.equal(13);
   })
@@ -139,8 +147,16 @@ describe('Hydration', () => {
     expect(hydration.userHydration.length).to.equal(10);
   })
 
-  it('should return a specific user Hydration Data', () => {
+  it('should return a specific user Hydration Data for a specific date', () => {
     expect(hydration.getDailyWater('2019/06/24')).to.equal(45);
+  })
+
+  it('should only take a date as an argument', () => {
+    expect(hydration.getDailyWater('test')).to.equal('You must pass a valid date');
+  })
+
+  it('should only take a date in the correct format as an argument', () => {
+    expect(hydration.getDailyWater('2019-06-24')).to.equal('You must pass a valid date');
   })
 
   it('should return a specific user Hydration Data over 7 days', () => {
@@ -151,14 +167,20 @@ describe('Hydration', () => {
     expect(hydration.getWeeklyWater('2019/06/20')).to.deep.equal([42, 46, 33, 20, 45]);
   })
 
+  it('should only take a date as an argument', () => {
+    expect(hydration.getWeeklyWater('test')).to.equal('You must pass a valid date');
+  })
+
+  it('should only take a date in the correct format as an argument', () => {
+    expect(hydration.getWeeklyWater('2019-06-20')).to.equal('You must pass a valid date');
+  })
+
   it('should return a specific user average Hydration Data for all time', () => {
     expect(hydration.getAvgWater()).to.equal(37);
   })
+
+  it('should return a specific user average Hydration Data for all time even when an argument is passed', () => {
+    expect(hydration.getAvgWater('test')).to.equal(37);
+  })
 })
 
-//TEST
-// look into throw for arrays
-// need specific parameter for methods that need it
-// needs to be valid id
-// needs to be valid date
-// method should run even if an argument is given

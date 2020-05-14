@@ -149,9 +149,13 @@ describe('sleep', function() {
       undefined, undefined, undefined, undefined
     )
   })
-  it('should be able to get total hours slept in a week for one user', function() {
-    expect(sleep.getWeekofHoursSlept('2019/06/15')).to.deep.equal(18.2)
+  it('should be able to get total hours slept for each day in a week for one user', function() {
+    expect(sleep.getWeekofHoursSlept('2019/06/15')).to.deep.equal([6.1, 4.1, 8])
   })
+  it('should be able to get quality of sleep for each day in a week for one user', function() {
+    expect(sleep.getWeekofSleepQuality('2019/06/15')).to.deep.equal([2.2, 3.8, 2.6])
+  })
+
      
 
 })

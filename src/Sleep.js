@@ -59,14 +59,24 @@ class Sleep {
   
   getWeekofHoursSlept() {
     let userSleepData = this.getUserSleepData()
-    let sleepCounter = 0
-    Array.from(userSleepData).forEach((night) => {
-      sleepCounter += night.hoursSlept
+    let sleeps = []
+    userSleepData.forEach((night) => {
+      sleeps.push(night.hoursSlept)
     })
-    return sleepCounter
+    return sleeps
+  }
+
+
+  getWeekofSleepQuality() {
+    let userSleepData = this.getUserSleepData()
+    let sleeps = []
+    userSleepData.forEach((night) => {
+      sleeps.push(night.sleepQuality)
+    })
+    return sleeps
   }
 }
 
-  if (typeof module !== 'undefined') {
-    module.exports = Sleep;
-  }
+if (typeof module !== 'undefined') {
+  module.exports = Sleep;
+}

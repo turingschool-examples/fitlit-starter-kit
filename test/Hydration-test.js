@@ -104,7 +104,7 @@ describe('Hydration', function() {
   it('should return undefined if argument is NaN', function() {
     expect(hydration.getOuncesForSpecificDay('')).to.equal(undefined)
   })
-  it('should be able to get a week of hydration info', function() {
+  it.skip('should be able to get a week of hydration info', function() {
     expect(hydration.getWeekOfFluidOunces('2019/06/15')).to.deep.equal(
       { userID: 1, date: '2019/06/15', numOunces: 37 },
       { userID: 1, date: '2019/06/16', numOunces: 69 },

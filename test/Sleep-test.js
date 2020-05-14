@@ -2,116 +2,121 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Sleep = require('../src/Sleep');
+const sleepSampleData = require('../sample-data/sleep-sample')
 
 describe('Sleep', () => {
-  let sleep1;
-  let sleep2;
-  let sleep3;
-  let sleep4;
-  let sleep5;
-  let sleep6;
-  let sleep7;
-  let sleep8;
-  let sleep9;
-  let sleep10;
-  let sleep11;
-  let sleep12;
-  let sleep13;
+  let sleep1, sleep2, sleep3, sleep4,
+    sleep5, sleep6, sleep7, sleep8, sleep9, 
+    sleep10, sleep11, sleep12, sleep13;
 
   let sleepData;
   let sleep;
 
   beforeEach(() => {
-    sleep1 = {
-      "userID": 1,
-      "date": "2019/06/15",
-      "hoursSlept": 6.1,
-      "sleepQuality": 2.2
-    }
+    sleep1 = sleepSampleData[0];
+    sleep2 = sleepSampleData[1];
+    sleep3 = sleepSampleData[2];
+    sleep4 = sleepSampleData[3];
+    sleep5 = sleepSampleData[4];
+    sleep6 = sleepSampleData[5];
+    sleep7 = sleepSampleData[6];
+    sleep8 = sleepSampleData[7];
+    sleep9 = sleepSampleData[8];
+    sleep10 = sleepSampleData[9];
+    sleep11 = sleepSampleData[10];
+    sleep12 = sleepSampleData[11];
+    sleep13 = sleepSampleData[12];
 
-    sleep2 = {
-      "userID": 1,
-      "date": "2019/06/16",
-      "hoursSlept": 7,
-      "sleepQuality": 4.7
-    }
+    // sleep1 = {
+    //   "userID": 1,
+    //   "date": "2019/06/15",
+    //   "hoursSlept": 6.1,
+    //   "sleepQuality": 2.2
+    // }
 
-    sleep3 = {
-      "userID": 1,
-      "date": "2019/06/17",
-      "hoursSlept": 10.8,
-      "sleepQuality": 4.7
-    }
+    // sleep2 = {
+    //   "userID": 1,
+    //   "date": "2019/06/16",
+    //   "hoursSlept": 7,
+    //   "sleepQuality": 4.7
+    // }
 
-    sleep4 = {
-      "userID": 1,
-      "date": "2019/06/18",
-      "hoursSlept": 5.4,
-      "sleepQuality": 3
-    }
+    // sleep3 = {
+    //   "userID": 1,
+    //   "date": "2019/06/17",
+    //   "hoursSlept": 10.8,
+    //   "sleepQuality": 4.7
+    // }
 
-    sleep5 = {
-      "userID": 1,
-      "date": "2019/06/19",
-      "hoursSlept": 4.1,
-      "sleepQuality": 3.6
-    }
+    // sleep4 = {
+    //   "userID": 1,
+    //   "date": "2019/06/18",
+    //   "hoursSlept": 5.4,
+    //   "sleepQuality": 3
+    // }
 
-    sleep6 = {
-      "userID": 1,
-      "date": "2019/06/20",
-      "hoursSlept": 9.6,
-      "sleepQuality": 2.9
-    }
+    // sleep5 = {
+    //   "userID": 1,
+    //   "date": "2019/06/19",
+    //   "hoursSlept": 4.1,
+    //   "sleepQuality": 3.6
+    // }
 
-    sleep7 = {
-      "userID": 1,
-      "date": "2019/06/21",
-      "hoursSlept": 5.1,
-      "sleepQuality": 2.6
-    }
+    // sleep6 = {
+    //   "userID": 1,
+    //   "date": "2019/06/20",
+    //   "hoursSlept": 9.6,
+    //   "sleepQuality": 2.9
+    // }
 
-    sleep8 = {
-      "userID": 1,
-      "date": "2019/06/22",
-      "hoursSlept": 8.1,
-      "sleepQuality": 3.5
-    }
+    // sleep7 = {
+    //   "userID": 1,
+    //   "date": "2019/06/21",
+    //   "hoursSlept": 5.1,
+    //   "sleepQuality": 2.6
+    // }
 
-    sleep9 = {
-      "userID": 1,
-      "date": "2019/06/23",
-      "hoursSlept": 8.9,
-      "sleepQuality": 2.2
-    }
+    // sleep8 = {
+    //   "userID": 1,
+    //   "date": "2019/06/22",
+    //   "hoursSlept": 8.1,
+    //   "sleepQuality": 3.5
+    // }
 
-    sleep10 = {
-      "userID": 1,
-      "date": "2019/06/24",
-      "hoursSlept": 4.4,
-      "sleepQuality": 1.6
-    }
+    // sleep9 = {
+    //   "userID": 1,
+    //   "date": "2019/06/23",
+    //   "hoursSlept": 8.9,
+    //   "sleepQuality": 2.2
+    // }
 
-    sleep11 = {
-      "userID": 2,
-      "date": "2019/06/24",
-      "hoursSlept": 4.9,
-      "sleepQuality": 3.9
-    }
+    // sleep10 = {
+    //   "userID": 1,
+    //   "date": "2019/06/24",
+    //   "hoursSlept": 4.4,
+    //   "sleepQuality": 1.6
+    // }
 
-    sleep12 = {
-      "userID": 2,
-      "date": "2019/06/23",
-      "hoursSlept": 8,
-      "sleepQuality": 3.4
-    }
+    // sleep11 = {
+    //   "userID": 2,
+    //   "date": "2019/06/24",
+    //   "hoursSlept": 4.9,
+    //   "sleepQuality": 3.9
+    // }
 
-    sleep13 = {
-      "userID": 2,
-      "date": "2019/06/22",
-      "hoursSlept": 10.1,
-      "sleepQuality": 1.8
-    }
+    // sleep12 = {
+    //   "userID": 2,
+    //   "date": "2019/06/23",
+    //   "hoursSlept": 8,
+    //   "sleepQuality": 3.4
+    // }
+
+    // sleep13 = {
+    //   "userID": 2,
+    //   "date": "2019/06/22",
+    //   "hoursSlept": 10.1,
+    //   "sleepQuality": 1.8
+    // }
     
     sleepData = [
       sleep1,
@@ -150,6 +155,7 @@ describe('Sleep', () => {
   })
 
   it('should return hours slept for a given day', () => {
+    console.log(sleep1)
     expect(sleep.getDailySleepHours("2019/06/23")).to.equal(8.9)
   })
 

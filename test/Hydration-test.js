@@ -139,10 +139,6 @@ describe('Hydration', () => {
     expect(hydrationData.length).to.equal(13);
   })
 
-  it('should return user Hydration Data', () => {
-    expect(hydration.userHydration.length).to.equal(10);
-  })
-
   it('should return a specific user Hydration Data', () => {
     expect(hydration.userHydration.length).to.equal(10);
   })

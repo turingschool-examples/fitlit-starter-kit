@@ -155,6 +155,9 @@ describe('sleep', function() {
   it('should be able to get quality of sleep for each day in a week for one user', function() {
     expect(sleep.getWeekofSleepQuality('2019/06/15')).to.deep.equal([2.2, 3.8, 2.6])
   })
+  it('should be able to get all users average daily sleep quality', function() {
+    expect(sleep.getAllUsersAverageSleepQuality()).to.deep.equal(3.48)
+  })
 
      
 

@@ -75,6 +75,17 @@ class Sleep {
     })
     return sleeps
   }
+
+
+  getAllUsersAverageSleepQuality() {
+    let userSleepData = this.sleepData
+    let qualityAverage = userSleepData.reduce((acc, userData) => {
+      acc += userData.sleepQuality
+      return acc
+    }, 0)
+    let average = (qualityAverage / userSleepData.length).toFixed(2)
+    return parseFloat(average)
+  }
 }
 
 if (typeof module !== 'undefined') {

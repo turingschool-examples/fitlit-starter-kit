@@ -1,16 +1,14 @@
 const User = require('../src/User')
 
 class UsersRepo {
-  constructor(users) {
-    this.allUsers = users
-    this.allUsers2 = []
+  constructor(usersData) {
+    this.allUsers = this.createUsers(usersData)
+    // this.allUsers2 = []
   }
 
-  createUsers() {
-    this.allUsers.forEach(user => {
-      let newUser = new User(user)
-      this.allUsers2.push(newUser)
-    })
+  createUsers(users) {
+    console.log('users', users)
+    return users.map(user => new User(user))
   }
 
   getUser(id) {

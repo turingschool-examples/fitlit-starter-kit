@@ -58,27 +58,29 @@ describe('User Repository', () => {
   });
   
   it('should be an instance of UsersRepo', () => {
-    usersRepo = new UsersRepo([user1, user2, user3, user4])
+    let userData = [user1, user2, user3, user4]
+    usersRepo = new UsersRepo(userData)    
     expect(usersRepo).to.be.an.instanceOf(UsersRepo)
   });
 
   it('should take in an array of users', () => {
-    usersRepo = new UsersRepo([user1, user2, user3, user4])
+    let userData = [user1, user2, user3, user4]
+    usersRepo = new UsersRepo(userData)    
     expect(usersRepo.allUsers).to.deep.equal([user1, user2, user3, user4])
   });
 
   it('should instantiate users and put them in the allUsers array', () => {
-    usersRepo = new UsersRepo([user1, user2, user3, user4])
+    let userData = [user1, user2, user3, user4]
+    usersRepo = new UsersRepo(userData)
 
-    usersRepo.createUsers()
     expect(usersRepo.allUsers.length).to.equal(4)
   })
 
   it('should have users with methods', () => {
-    usersRepo = new UsersRepo([user1, user2, user3, user4])
+    let userData = [user1, user2, user3, user4]
+    usersRepo = new UsersRepo(userData)
 
-    usersRepo.createUsers()
-    expect(usersRepo.allUsers2[0].getName()).to.equal('Luisa')
+    expect(usersRepo.allUsers[0].getName()).to.equal('Luisa')
   })
 
   // it('should throw an error if no usersData is passed as an argument', () => {
@@ -88,17 +90,20 @@ describe('User Repository', () => {
   // })
 
   it('should return a user, given an id', () => {
-    usersRepo = new UsersRepo([user1, user2, user3, user4])
+    let userData = [user1, user2, user3, user4]
+    usersRepo = new UsersRepo(userData)
     expect(usersRepo.getUser(2)).to.deep.equal(user2)
   });
 
   it('should return a user, given an id only', () => {
-    usersRepo = new UsersRepo([user1, user2, user3, user4])
+    let userData = [user1, user2, user3, user4]
+    usersRepo = new UsersRepo(userData)    
     expect(usersRepo.getUser('2')).to.deep.equal('You must pass a number')
   });
 
   it('should find the average step goal of all users', () => {
-    usersRepo = new UsersRepo([user1, user2, user3, user4])
+    let userData = [user1, user2, user3, user4]
+    usersRepo = new UsersRepo(userData)
     expect(usersRepo.getAvgStepGoal()).to.deep.equal(6000)
   });
   

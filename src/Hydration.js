@@ -13,7 +13,7 @@ class Hydration {
     let newDate = this.checkDate(date);
     if (date === newDate) {
       let dailyHydration = this.userHydration.filter(hydration => {
-        return hydration.date === date;
+      return hydration.date === date;
       })
       
       return dailyHydration.reduce((acc, hydration) => {
@@ -26,7 +26,7 @@ class Hydration {
   getWeeklyWater(date) {
     let newDate = this.checkDate(date);
     if (date === newDate) {
-    let hydrationDate = this.userHydration.find(hydration => {
+      let hydrationDate = this.userHydration.find(hydration => {
       return hydration.date === date
     })
 

@@ -43,7 +43,9 @@ h1 {
 .greeting {
   background-color: #242423;
   color: #fff;
-  grid-area: 1 / 12 / 3 / 15;
+  font-size: 24px;
+  grid-area: 1 / 6 / 3 / 21;
+  text-align: center;
 }
 
 .users {
@@ -65,16 +67,16 @@ h1 {
 }
 
 .hydration {
-  grid-area: 3 / 6 / 10 / 9;
+  grid-area: 3 / 6 / 11 / 9;
   background-color: #242423;
   /* border-radius: 5px; */
   /* box-shadow: 0px 0px 10px -4px #fff; */
   color: #fff;
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 12px;
   flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .hydration-average {
@@ -83,7 +85,7 @@ h1 {
   text-align: center;
   box-shadow: 0px 0px 10px -5px #fff;
   width: 90%;
-  margin-bottom: 10%;
+  /* margin-bottom: 10%; */
 }
 
 .todays-hydration {
@@ -92,7 +94,7 @@ h1 {
   text-align: center;
   box-shadow: 0px 0px 10px -5px #fff;
   width: 90%;
-  margin-bottom: 10%;
+  /* margin-bottom: 10%; */
 }
 
 .weekly-hydration {
@@ -105,7 +107,7 @@ h1 {
 
 
 .sleep {
-  grid-area: 3 / 10 / 10 / 13;
+  grid-area: 3 / 10 / 11 / 13;
   /* border-radius: 5px; */
   background-color: #242423;
   color: #fff;
@@ -117,7 +119,7 @@ h1 {
 }
 
 .activity {
-  grid-area: 3 / 14 / 10 / 21;
+  grid-area: 3 / 14 / 11 / 21;
   /* border-radius: 5px; */
   background-color: #242423;
   /* box-shadow: 0px 0px 10px -4px #fff; */

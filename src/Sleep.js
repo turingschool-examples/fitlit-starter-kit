@@ -71,11 +71,13 @@ class Sleep {
   }
 
 
-  getWeekofSleepQuality() {
-    let userSleepData = this.getUserSleepData()
+  getWeekofSleepQuality(date) {
+    let userSleepData = this.getWeekOfSleepData(date)
     let sleeps = []
     userSleepData.forEach((night) => {
-      sleeps.push(night.sleepQuality)
+       if(night !== undefined) {
+          sleeps.push(night.sleepQuality)
+       }
     })
     return sleeps
   }

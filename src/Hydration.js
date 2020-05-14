@@ -38,6 +38,15 @@ class Hydration {
     }
     return hydro
   }
+
+  getWeekofFluidOz() {
+    let userHydroData = this.getUserHydrationData()
+    let oz = []
+    userHydroData.forEach((day) => {
+      oz.push(day.numOunces)
+    })
+    return oz
+  }
 }
 
 if (typeof module !== 'undefined') {

@@ -146,7 +146,7 @@ describe('Sleep', () => {
   })
 
   it('should return Sleep Data for a specific user', () => {
-    expect(userSleep.length).to.equal(10)
+    expect(sleep.userSleep.length).to.equal(10)
   })
 
   it('should return hours slept for a given day', () => {
@@ -166,10 +166,18 @@ describe('Sleep', () => {
   })
 
   it('should return specific sleep hours over 7 days', () => {
-    expect(sleep.getWeeklySleepHours("2019/06/15")).to.equal([6.1, 7, 10.8, 5.4, 4.1, 9.6, 5.1])
+    expect(sleep.getWeeklySleepHours("2019/06/15")).to.deep.equal([6.1, 7, 10.8, 5.4, 4.1, 9.6, 5.1])
   })
 
   it('should return specific sleep quality over 7 days', () => {
-    expect(sleep.getWeeklySleepQual("2019/06/15")).to.equal([2.2, 4.7, 4.7, 3, 3.6, 2.9, 2.6])
+    expect(sleep.getWeeklySleepQual("2019/06/15")).to.deep.equal([2.2, 4.7, 4.7, 3, 3.6, 2.9, 2.6])
   })
+
+  // it('should return specific sleep hours over 7 days', () => {
+  //   expect(sleep.getWeeklySleepProp("2019/06/15", 'hoursSlept')).to.deep.equal([6.1, 7, 10.8, 5.4, 4.1, 9.6, 5.1])
+  // })
+
+  // it('should return specific sleep quality over 7 days', () => {
+  //   expect(sleep.getWeeklySleepProp("2019/06/15", 'sleepQuality')).to.deep.equal([2.2, 4.7, 4.7, 3, 3.6, 2.9, 2.6])
+  // })
 })

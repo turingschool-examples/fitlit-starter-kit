@@ -139,10 +139,6 @@ describe('Hydration', () => {
     expect(hydrationData.length).to.equal(13);
   })
 
-  it('should return user Hydration Data', () => {
-    expect(hydration.userHydration.length).to.equal(10);
-  })
-
   it('should return a specific user Hydration Data', () => {
     expect(hydration.userHydration.length).to.equal(10);
   })
@@ -181,6 +177,10 @@ describe('Hydration', () => {
 
   it('should return a specific user average Hydration Data for all time even when an argument is passed', () => {
     expect(hydration.getAvgWater('test')).to.equal(37);
+  })
+
+  it('should return a date', () => {
+    expect(hydration.checkDate('2019/06/15')).to.equal('2019/06/15');
   })
 })
 

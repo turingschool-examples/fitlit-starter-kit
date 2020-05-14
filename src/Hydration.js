@@ -10,12 +10,8 @@ class Hydration {
   }
 
   getDailyWater(date) {
-    let checkDate = new Date(date);
-    let newCheckDate = checkDate.getFullYear() +"/"+ 
-      ("0" + (checkDate.getMonth() + 1)).slice(-2) +"/"+ 
-      checkDate.getDate();
-
-    if (date === newCheckDate) {
+    let newDate = this.checkDate(date);
+    if (date === newDate) {
       let dailyHydration = this.userHydration.filter(hydration => {
         return hydration.date === date;
       })
@@ -28,12 +24,8 @@ class Hydration {
   }
 
   getWeeklyWater(date) {
-    let checkDate = new Date(date);
-    let newCheckDate = checkDate.getFullYear() +"/"+ 
-      ("0" + (checkDate.getMonth() + 1)).slice(-2) +"/"+ 
-      checkDate.getDate();
-
-    if (date === newCheckDate) {
+    let newDate = this.checkDate(date);
+    if (date === newDate) {
     let hydrationDate = this.userHydration.find(hydration => {
       return hydration.date === date
     })
@@ -51,6 +43,14 @@ class Hydration {
     }, 0)
 
     return Math.ceil(avg);
+  }
+
+  checkDate(date) {
+    let isDate = new Date(date);
+    let newIsDate = isDate.getFullYear() +"/"+ 
+      ("0" + (isDate.getMonth() + 1)).slice(-2) +"/"+ 
+      ("0" + isDate.getDate()).slice(-2);
+    return newIsDate;
   }
 }
 

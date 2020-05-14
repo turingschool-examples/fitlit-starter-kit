@@ -142,16 +142,23 @@ describe('sleep', function() {
     expect(sleep.getQualityForSpecificDay('2019/06/16')).to.equal(3.8)
   })
   it('should be able to get a week of hours sleep data', function() {
-    expect(sleep.getWeekOfSleepData('2019/06/15')).to.deep.equal(
+    expect(sleep.getWeekOfSleepData('2019/06/15')).to.deep.equal([
       { userID: 1, date: '2019/06/15', hoursSlept: 6.1, sleepQuality: 2.2 },
       { userID: 1, date: '2019/06/16', hoursSlept: 4.1, sleepQuality: 3.8 },
       { userID: 1, date: '2019/06/17', hoursSlept: 8, sleepQuality: 2.6 },
-      undefined, undefined, undefined, undefined
+      undefined, undefined, undefined, undefined]
     )
   })
-  it('should be able to get total hours slept in a week for one user', function() {
-    console.log(sleep.getWeekofHoursSlept())
+  it('should be able to get total hours slept for each day in a week for one user', function() {
+    expect(sleep.getWeekofHoursSlept('2019/06/15')).to.deep.equal([6.1, 4.1, 8])
   })
+  it('should be able to get quality of sleep for each day in a week for one user', function() {
+    expect(sleep.getWeekofSleepQuality('2019/06/15')).to.deep.equal([2.2, 3.8, 2.6])
+  })
+  it('should be able to get all users average daily sleep quality', function() {
+    expect(sleep.getAllUsersAverageSleepQuality()).to.deep.equal(3.48)
+  })
+
      
 
 })

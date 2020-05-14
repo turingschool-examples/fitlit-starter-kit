@@ -21,22 +21,22 @@ class Hydration {
   getOuncesForSpecificDay(date) {
     let userHydroData = this.getUserHydrationData()
     if (date) {
-    let todaysH2O = userHydroData.find(hydration => hydration.date === date)
-    return todaysH2O.numOunces
-  } else {
-    return undefined
-  }
+      let todaysH2O = userHydroData.find(hydration => hydration.date === date)
+      return todaysH2O.numOunces
+    } else {
+      return undefined
+    }
   }
 
-  getWeekOfFluidOunces(date) {
-    const weeksHydroData = []
+  getWeekOfHydroData(date) {
+    let hydro = []
     const userHydroData = this.getUserHydrationData()
     const todaysH2O = userHydroData.find(hydration => hydration.date === date)
     const startIndex = userHydroData.indexOf(todaysH2O)
-    for (var i = 1; i < 8; i++) {
-      weeksHydroData.push(userHydroData[startIndex + i])
+    for (let i = 0; i < 7; i++) {
+      hydro.push(userHydroData[startIndex + i])
     }
-    return weeksHydroData
+    return hydro
   }
 }
 

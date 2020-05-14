@@ -49,25 +49,47 @@ class Sleep {
   } 
   
   getWeekOfSleepData(date) {
+    let sleeps = []
     let userSleepData = this.getUserSleepData()
     let todaysSleep = userSleepData.find(sleep => sleep.date === date)
     let startIndex = userSleepData.indexOf(todaysSleep)
-    for (var i = 0; i < 7; i++) {
-      return (userSleepData[startIndex + i])
+    for (let i = 0; i < 7; i++) {
+      sleeps.push(userSleepData[startIndex + i])
     }
+    return sleeps
   }
   
   getWeekofHoursSlept() {
     let userSleepData = this.getUserSleepData()
-    let sleepCounter = 0
-    for (var i = 0; i < userSleepData.length; i++) {
-      sleepCounter += this.hoursSlept
-    }
-    return sleepCounter
+    let sleeps = []
+    userSleepData.forEach((night) => {
+      sleeps.push(night.hoursSlept)
+    })
+    return sleeps
+  }
 
+
+  getWeekofSleepQuality() {
+    let userSleepData = this.getUserSleepData()
+    let sleeps = []
+    userSleepData.forEach((night) => {
+      sleeps.push(night.sleepQuality)
+    })
+    return sleeps
+  }
+
+
+  getAllUsersAverageSleepQuality() {
+    let userSleepData = this.sleepData
+    let qualityAverage = userSleepData.reduce((acc, userData) => {
+      acc += userData.sleepQuality
+      return acc
+    }, 0)
+    let average = (qualityAverage / userSleepData.length).toFixed(2)
+    return parseFloat(average)
   }
 }
 
-  if (typeof module !== 'undefined') {
-    module.exports = Sleep;
-  }
+if (typeof module !== 'undefined') {
+  module.exports = Sleep;
+}

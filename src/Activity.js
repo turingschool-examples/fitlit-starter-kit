@@ -8,11 +8,32 @@ class Activity {
     return this.activityData.filter(activity => activity.userID === this.currentUser.id)
   }
 
+  getUserActivityToday(date) {
+    const userActivityData = this.getUserActivityData()
+    return userActivityData.find(activity => activity.date === date)
+  }
+
   getMilesWalkedToday(date) {
-    let userActivityData = this.getUserActivityData()
-    let todaysActivity = userActivityData.find(activity => activity.date === date)
-    let totalStepDistance = Math.round(todaysActivity.numSteps * this.currentUser.strideLength)
+    const todaysActivity = this.getUserActivityToday(date)
+    const totalStepDistance = Math.round(todaysActivity.numSteps * this.currentUser.strideLength)
     return (totalStepDistance / 5280).toFixed(1)
+  }
+
+  getUserActivityMinutes(date) {
+    const todaysActivity = this.getUserActivityToday(date)
+    return todaysActivity.minutesActive
+  }
+
+  getWeekActiveMinutesAverage(date) {
+    let weeksActivity = []
+    const userActivityData = this.getUserActivityData()
+    const todaysActivity = this.getUserActivityToday(date)
+    const startIndex = userActivityData.indexOf(todaysActivity)
+    for (let i = 0; i < 7 ; i++) {
+      weeksActivity.push(userActivityData[startIndex - i])
+    }
+    console.log(weeksActivity);
+    return weeksActivity
   }
 }
 

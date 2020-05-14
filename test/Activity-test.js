@@ -126,7 +126,16 @@ describe('Activity', function() {
   it('should get activity data for a specific user', function() {
     expect(activity.getUserActivityData()).to.deep.equal([activityData[0], activityData[3], activityData[6]])
   })
+  it('should get a users activity data for a specific day', function() {
+    expect(activity.getUserActivityToday('2019/06/15')).to.deep.equal(activityData[0])
+  })
   it('should return how many miles a user has walked on a specific day', function() {
     expect(activity.getMilesWalkedToday('2019/06/15')).to.equal('2.9')
+  })
+  it('should return how many minutes the user was active', function() {
+    expect(activity.getUserActivityMinutes('2019/06/16')).to.equal(175)
+  })
+  it.only('should return how many minutes the user was active for a given week', function() {
+    expect(activity.getWeekActiveMinutesAverage('2019/06/17')).to.deep.equal([activityData[6], activityData[3], activityData[0], undefined, undefined, undefined, undefined])
   })
 })

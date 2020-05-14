@@ -60,11 +60,10 @@ class Sleep {
   getWeekofHoursSlept() {
     let userSleepData = this.getUserSleepData()
     let sleepCounter = 0
-    for (var i = 0; i < userSleepData.length; i++) {
-      sleepCounter += this.hoursSlept
-    }
+    Array.from(userSleepData).forEach((night) => {
+      sleepCounter += night.hoursSlept
+    })
     return sleepCounter
-
   }
 }
 

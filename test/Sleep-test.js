@@ -150,7 +150,7 @@ describe('sleep', function() {
     )
   })
   it('should be able to get total hours slept in a week for one user', function() {
-    console.log(sleep.getWeekofHoursSlept())
+    expect(sleep.getWeekofHoursSlept('2019/06/15')).to.deep.equal(18.2)
   })
      
 

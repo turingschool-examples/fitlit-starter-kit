@@ -83,9 +83,8 @@ describe('Activity', () => {
     expect(activity.userActivity.length).to.equal(10);
   })
 
-  it.skip('should be an empty array if invalid id is passed as an argument', () => {
-    activity2 = new Activity(500, activityData, userData)
-    expect(activity2).to.deep.equal({ userActivity: [] });
+  it('should throw an error if an invalid id is passed as an argument', () => {
+    expect(() => { new Activity(500, activityData, userData) }).to.throw(Error);
   })
 
   it('should return how many miles a user has walked for a given day', () => {

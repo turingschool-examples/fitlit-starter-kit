@@ -3,7 +3,7 @@ const sleepSampleData = [
     "userID": 1,
     "date": "2019/06/15",
     "hoursSlept": 6.1,
-    "sleepQuality": 2.2
+    "sleepQuality": 5
   }, {
     "userID": 1,
     "date": "2019/06/16",
@@ -51,20 +51,155 @@ const sleepSampleData = [
     "sleepQuality": 1.6
   }, {
     "userID": 2,
-    "date": "2019/06/24",
+    "date": "2019/06/15",
+    "hoursSlept": 6.1,
+    "sleepQuality": 5
+  }, {
+    "userID": 2,
+    "date": "2019/06/16",
+    "hoursSlept": 7,
+    "sleepQuality": 4.7
+  }, {
+    "userID": 2,
+    "date": "2019/06/17",
+    "hoursSlept": 9.8,
+    "sleepQuality": 3.7
+  }, {
+    "userID": 2,
+    "date": "2019/06/18",
+    "hoursSlept": 6.4,
+    "sleepQuality": 2
+  }, {
+    "userID": 2,
+    "date": "2019/06/19",
     "hoursSlept": 4.9,
+    "sleepQuality": 4.6
+  }, {
+    "userID": 2,
+    "date": "2019/06/20",
+    "hoursSlept": 9,
+    "sleepQuality": 5
+  }, {
+    "userID": 2,
+    "date": "2019/06/21",
+    "hoursSlept": 5,
+    "sleepQuality": 3.5
+  }, {
+    "userID": 2,
+    "date": "2019/06/22",
+    "hoursSlept": 10,
     "sleepQuality": 3.9
   }, {
     "userID": 2,
     "date": "2019/06/23",
     "hoursSlept": 8,
-    "sleepQuality": 3.4
+    "sleepQuality": 2.9
   }, {
     "userID": 2,
+    "date": "2019/06/24",
+    "hoursSlept": 4.9,
+    "sleepQuality": 4
+  },   {
+    "userID": 3,
+    "date": "2019/06/15",
+    "hoursSlept": 4.1,
+    "sleepQuality": 2
+  }, {
+    "userID": 3,
+    "date": "2019/06/16",
+    "hoursSlept": 7,
+    "sleepQuality": 2
+  }, {
+    "userID": 3,
+    "date": "2019/06/17",
+    "hoursSlept": 11,
+    "sleepQuality": 2.4
+  }, {
+    "userID": 3,
+    "date": "2019/06/18",
+    "hoursSlept": 5,
+    "sleepQuality": 2.1
+  }, {
+    "userID": 3,
+    "date": "2019/06/19",
+    "hoursSlept": 10.3,
+    "sleepQuality": 2.9
+  }, {
+    "userID": 3,
+    "date": "2019/06/20",
+    "hoursSlept": 9,
+    "sleepQuality": 2.5
+  }, {
+    "userID": 3,
+    "date": "2019/06/21",
+    "hoursSlept": 6.1,
+    "sleepQuality": 3.1
+  }, {
+    "userID": 3,
     "date": "2019/06/22",
+    "hoursSlept": 8,
+    "sleepQuality": 1.4
+  }, {
+    "userID": 3,
+    "date": "2019/06/23",
+    "hoursSlept": 9,
+    "sleepQuality": 1.2
+  }, {
+    "userID": 3,
+    "date": "2019/06/24",
+    "hoursSlept": 4,
+    "sleepQuality": 3
+  },   {
+    "userID": 4,
+    "date": "2019/06/15",
+    "hoursSlept": 6,
+    "sleepQuality": 2.1
+  }, {
+    "userID": 4,
+    "date": "2019/06/16",
+    "hoursSlept": 5,
+    "sleepQuality": 2.7
+  }, {
+    "userID": 4,
+    "date": "2019/06/17",
+    "hoursSlept": 9.8,
+    "sleepQuality": 4
+  }, {
+    "userID": 4,
+    "date": "2019/06/18",
+    "hoursSlept": 6.8,
+    "sleepQuality": 3.4
+  }, {
+    "userID": 4,
+    "date": "2019/06/19",
+    "hoursSlept": 7.5,
+    "sleepQuality": 4.3
+  }, {
+    "userID": 4,
+    "date": "2019/06/20",
     "hoursSlept": 10.1,
-    "sleepQuality": 1.8
-  }
+    "sleepQuality": 4.1
+  }, {
+    "userID": 4,
+    "date": "2019/06/21",
+    "hoursSlept": 11,
+    "sleepQuality": 4.6
+  }, {
+    "userID": 4,
+    "date": "2019/06/22",
+    "hoursSlept": 8,
+    "sleepQuality": 3.5
+  }, {
+    "userID": 4,
+    "date": "2019/06/23",
+    "hoursSlept": 8.1,
+    "sleepQuality": 4.3
+  }, {
+    "userID": 4,
+    "date": "2019/06/24",
+    "hoursSlept": 3.4,
+    "sleepQuality": 1.5
+  }, 
 ];
 
 module.exports = sleepSampleData

@@ -62,12 +62,12 @@ class Sleep {
     if (date !== newDate) {
       return 'You must pass a valid date'
     } else {
-    let sleepDate = this.userSleep.find(sleep => sleep.date === date)
-    let firstDate = this.userSleep.indexOf(sleepDate);
+      let sleepDate = this.userSleep.find(sleep => sleep.date === date);
+      let firstDate = this.userSleep.indexOf(sleepDate);
     
-    return this.userSleep
-      .slice(firstDate, firstDate + 7)
-      .map(sleep => sleep.hoursSlept);
+      return this.userSleep
+        .slice(firstDate, firstDate + 7)
+        .map(sleep => sleep.hoursSlept);
     }
   }
 
@@ -76,12 +76,12 @@ class Sleep {
     if (date !== newDate) {
       return 'You must pass a valid date'
     } else {
-    let sleepDate = this.userSleep.find(sleep => sleep.date === date)
-    let firstDate = this.userSleep.indexOf(sleepDate);
-    
-    return this.userSleep
-      .slice(firstDate, firstDate + 7)
-      .map(sleep => sleep.sleepQuality);
+      let sleepDate = this.userSleep.find(sleep => sleep.date === date)
+      let firstDate = this.userSleep.indexOf(sleepDate);
+      
+      return this.userSleep
+        .slice(firstDate, firstDate + 7)
+        .map(sleep => sleep.sleepQuality);
     }
   }
 

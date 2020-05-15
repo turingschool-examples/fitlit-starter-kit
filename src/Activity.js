@@ -1,37 +1,60 @@
-const User = require('../src/User');
+//const User = require('../src/User');
 
 class Activity {
-  constructor(id, activityData) {
-    this.userActivity = this.getUserActivity(id, activityData);
+  constructor(id, activityData, userData) {
+    this.user = this.getUser(id, userData);
+    this.userActivity = this.getUserActivity(activityData);
   }
 
-  getUserActivity(id, activityData) {
+  getUserActivity(activityData) {
     return activityData.filter(activity => {
-      return activity.userID === id;
+      return activity.userID === this.user.id;
+    })
+  }
+
+  getUser(id, userData) {
+    return userData.find(user => {
+      return user.id === id;
     })
   }
 
   getMilesWalked(date) {
-    let user = new User();
-    //console.log(user);
+    let strideLength = this.user.strideLength;
+    let newDate = this.checkDate(date);
+    if (date !== newDate) {
+      return 'You must pass a valid date';
+    } else {
+      let stepDate = this.userActivity.filter(activity => {
+        return activity.date === date;
+      })
+
+      let dailySteps = stepDate.reduce((acc, activity) => {
+        acc += activity.numSteps;
+        return acc;
+      }, 0)
+
+      return Math.ceil((dailySteps * strideLength) / 5280);
+    }
   }
 
   getMinutesActive(date) {
     let newDate = this.checkDate(date);
-    if (date === newDate) {
+    if (date !== newDate) {
+      return 'You must pass a valid date';
+    } else {
       let dailyActivity = this.userActivity.filter(activity => activity.date === date);
       
       return dailyActivity.reduce((acc, active) => {
         return acc += active.minutesActive;
       }, 0)
-    } else {
-      return 'You must pass a valid date';
     }
   }
 
   getWeeklyAvgMinutesActive(date) {
     let newDate = this.checkDate(date);
-    if (date === newDate) {
+    if (date !== newDate) {
+      return 'You must pass a valid date';
+    } else {
       let activityDate = this.userActivity.find(activity => {
         return activity.date === date;
       })
@@ -46,9 +69,33 @@ class Activity {
       }, 0)
       
       return Math.ceil(avg);  
-    } else {
-      return 'You must pass a valid date'
     }
+  }
+
+  reachStepGoal(date) {
+    let stepGoal = this.user.dailyStepGoal;
+    let newDate = this.checkDate(date);
+    if (date !== newDate) {
+      return 'You must pass a valid date';
+    } else {
+      let activityDate = this.userActivity.filter(activity => {
+        return activity.date === date;
+      })
+
+      let stepGoalDate = activityDate.reduce((acc, active) => {
+        return acc += active.minutesActive;
+      }, 0)
+
+      return stepGoalDate >= stepGoal ? 'Congrats! You reached your step goal!' 
+        : 'Step goal not reached for today.';
+    }
+  }
+
+  exceedStepGoal() {
+    let stepGoal = this.user.dailyStepGoal;
+    return this.userActivity.filter(activity => {
+      return activity.numSteps > stepGoal;
+    }).map(activity => activity.date);   
   }
 
   getMaxStairsClimbed() {
@@ -69,12 +116,3 @@ class Activity {
 if (typeof module !== 'undefined') {
   module.exports = Activity;
 }
-
-//stride.length = 4.3
-// 3577
-//4.3*3577 / 5280
-// For a specific day (specified by a date), return the miles a user has walked based on their number of steps (use their strideLength to help calculate this)
-
-// For a user, did they reach their step goal for a given day (specified by a date)?
-
-// For a user, find all the days where they exceeded their step goal

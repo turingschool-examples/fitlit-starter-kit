@@ -2,103 +2,31 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Hydration = require('../src/Hydration');
+const hydrationSampleData = require('../sample-data/hydration-sample')
 
-let hydration1;
-let hydration2;
-let hydration3;
-let hydration4;
-let hydration5;
-let hydration6;
-let hydration7;
-let hydration8;
-let hydration9;
-let hydration10;
-let hydration11;
-let hydration12;
-let hydration13;
+let hydration1, hydration2, hydration3,hydration4,
+  hydration5, hydration6, hydration7, hydration8,
+  hydration9, hydration10, hydration11, hydration12,
+  hydration13;
 
 let hydrationData;
 let hydration;
 
 describe('Hydration', () => {
   beforeEach(() => {
-    hydration1 = {
-      "userID": 1,
-      "date": "2019/06/15",
-      "numOunces": 37
-    }
-
-    hydration2 = {
-      "userID": 1,
-      "date": "2019/06/16",
-      "numOunces": 40
-    }
-
-    hydration3 = {
-      "userID": 1,
-      "date": "2019/06/17",
-      "numOunces": 30
-    }
-
-    hydration4 = {
-      "userID": 1,
-      "date": "2019/06/18",
-      "numOunces": 47
-    }
-
-    hydration5 = {
-      "userID": 1,
-      "date": "2019/06/19",
-      "numOunces": 27
-    }
-
-    hydration6 = {
-      "userID": 1,
-      "date": "2019/06/20",
-      "numOunces": 42
-    }
-
-    hydration7 = {
-      "userID": 1,
-      "date": "2019/06/21",
-      "numOunces": 46
-    }
-
-    hydration8 = {
-      "userID": 1,
-      "date": "2019/06/22",
-      "numOunces": 33
-    }
-
-    hydration9 = {
-      "userID": 1,
-      "date": "2019/06/23",
-      "numOunces": 20
-    }
-
-    hydration10 = {
-      "userID": 1,
-      "date": "2019/06/24",
-      "numOunces": 45
-    }
-
-    hydration11 = {
-      "userID": 2,
-      "date": "2019/06/24",
-      "numOunces": 3
-    }
-
-    hydration12 = {
-      "userID": 2,
-      "date": "2019/06/23",
-      "numOunces": 2
-    }
-
-    hydration13 = {
-      "userID": 2,
-      "date": "2019/06/22",
-      "numOunces": 4
-    }
+    hydration1 = hydrationSampleData[0];
+    hydration2 = hydrationSampleData[1];
+    hydration3 = hydrationSampleData[2];
+    hydration4 = hydrationSampleData[3];
+    hydration5 = hydrationSampleData[4];
+    hydration6 = hydrationSampleData[5];
+    hydration7 = hydrationSampleData[6];
+    hydration8 = hydrationSampleData[7];
+    hydration9 = hydrationSampleData[8];
+    hydration10 = hydrationSampleData[9];
+    hydration11 = hydrationSampleData[10];
+    hydration12 = hydrationSampleData[11];
+    hydration13 = hydrationSampleData[12];
 
     hydrationData = [
       hydration1,

@@ -73,8 +73,6 @@ class Activity {
       return activity.date === date;
     })
 
-    console.log(activityDate);
-
     let stepGoalDate = activityDate.reduce((acc, active) => {
       return acc += active.minutesActive;
     }, 0)
@@ -84,6 +82,13 @@ class Activity {
     } else {
       return 'Step goal not reached for today.';
     }
+  }
+
+  exceedStepGoal() {
+    let stepGoal = this.user.dailyStepGoal;
+    return this.userActivity.filter(activity => {
+      return activity.numSteps > stepGoal
+    }).map(activity => activity.date);   
   }
 
   getMaxStairsClimbed() {

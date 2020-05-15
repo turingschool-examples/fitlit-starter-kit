@@ -93,7 +93,7 @@ describe('Activity', () => {
   })
 
   it('should only take a date as an argument', () => {
-    expect(activity.getMinutesActive('test')).to.equal('You must pass a valid date');
+    expect(activity.getWeeklyAvgMinutesActive('test')).to.equal('You must pass a valid date');
   })
 
   it('should only take a date in the correct format as an argument', () => {

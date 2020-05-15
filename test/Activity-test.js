@@ -135,7 +135,22 @@ describe('Activity', function() {
   it('should return how many minutes the user was active', function() {
     expect(activity.getUserActivityMinutes('2019/06/16')).to.equal(175)
   })
-  it.only('should return how many minutes the user was active for a given week', function() {
+  it('should return how many minutes the user was active for a given week', function() {
     expect(activity.getWeekActiveMinutesAverage('2019/06/17')).to.deep.equal([activityData[6], activityData[3], activityData[0], undefined, undefined, undefined, undefined])
+  })
+  it('should return true if the user has reached their step goal for the day', function() {
+    expect(activity.getWasStepGoalAchieved('2019/06/17')).to.equal(true)
+  })
+  it('should return false if the user has not reached their step goal for the day', function() {
+    expect(activity.getWasStepGoalAchieved('2019/06/16')).to.equal(false)
+  })
+  it('should return all days that the user exceded their step goal', function() {
+    expect(activity.getAllDaysStepGoalWasExceeded()).to.deep.equal([activityData[6]])
+  })
+  it('a user should be able to see their all-time stair climbing record', function() {
+    expect(activity.getStairClimbRecord()).to.equal(36)
+  })
+  it('it should return the average number of stairs for all users for a specific date', function() {
+    expect(activity.getAverageStairsForAll('2019/06/15')).to.equal(20)
   })
 })

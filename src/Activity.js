@@ -35,6 +35,32 @@ class Activity {
     console.log(weeksActivity);
     return weeksActivity
   }
+
+  getWasStepGoalAchieved(date) {
+    let todaysActivity = this.getUserActivityToday(date)
+    console.log(todaysActivity);
+    return this.currentUser.dailyStepGoal <= todaysActivity.numSteps ? true : false
+  }
+
+  getAllDaysStepGoalWasExceeded() {
+    const userActivityData = this.getUserActivityData()
+    return userActivityData.filter(data => data.numSteps > this.currentUser.dailyStepGoal)
+  }
+
+  getStairClimbRecord() {
+    const userActivityData = this.getUserActivityData()
+    const sortedActivities = userActivityData.sort((a, b) => b.flightsOfStairs - a.flightsOfStairs)
+    return sortedActivities[0].flightsOfStairs
+  }
+
+  getAverageStairsForAll(date) {
+    const todaysActivity = this.activityData.filter(data => data.date === date)
+    const allUserStairs = todaysActivity.reduce((acc, activity) => {
+      acc += activity.flightsOfStairs
+      return acc
+    }, 0)
+    return Math.round(allUserStairs / todaysActivity.length);
+  }
 }
 
 if (typeof module !== 'undefined') {

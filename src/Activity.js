@@ -1,19 +1,35 @@
-const User = require('../src/User');
+//const User = require('../src/User');
 
 class Activity {
-  constructor(id, activityData) {
-    this.userActivity = this.getUserActivity(id, activityData);
+  constructor(id, activityData, userData) {
+    this.user = this.getUser(id, userData);
+    this.userActivity = this.getUserActivity(activityData);
   }
 
-  getUserActivity(id, activityData) {
+  getUserActivity(activityData) {
     return activityData.filter(activity => {
-      return activity.userID === id;
+      return activity.userID === this.user.id;
+    })
+  }
+
+  getUser(id, userData) {
+    return userData.find(user => {
+      return user.id === id;
     })
   }
 
   getMilesWalked(date) {
-    let user = new User();
-    //console.log(user);
+    let strideLength = this.user.strideLength;
+    let stepDay = this.userActivity.filter(activity => {
+      return activity.date === date;
+    })
+
+    let dailySteps = stepDay.reduce((acc, activity) => {
+      acc += activity.numSteps;
+      return acc;
+    }, 0)
+
+    return Math.ceil((dailySteps * strideLength) / 5280);
   }
 
   getMinutesActive(date) {

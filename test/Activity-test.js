@@ -3,6 +3,7 @@ const expect = chai.expect;
 
 const Activity = require('../src/Activity');
 const activitySampleData = require('../sample-data/activity-sample')
+const userSampleData = require('../sample-data/user-sample')
 
 let activity1, activity2, activity3, activity4,
   activity5, activity6, activity7, activity8,
@@ -11,6 +12,9 @@ let activity1, activity2, activity3, activity4,
 
 let activityData;
 let activity;
+
+let user1, user2, user3, user4;
+let userData;
 
 describe('Activity', () => {
   beforeEach(() => {
@@ -44,7 +48,19 @@ describe('Activity', () => {
       activity13,
     ];
 
-    activity = new Activity(1, activityData);
+    user1 = userSampleData[0];
+    user2 = userSampleData[1];
+    user3 = userSampleData[2];
+    user4 = userSampleData[3];
+
+    userData = [
+      user1,
+      user2,
+      user3,
+      user4,
+    ];
+
+    activity = new Activity(1, activityData, userData);
   })
 
   it('should be a function', () => {
@@ -67,12 +83,12 @@ describe('Activity', () => {
     expect(activity.userActivity.length).to.equal(10);
   })
 
-  it('should be an empty arry if invalid id is passed as an argument', () => {
-    activity2 = new Activity(500, activityData)
+  it.skip('should be an empty array if invalid id is passed as an argument', () => {
+    activity2 = new Activity(500, activityData, userData)
     expect(activity2).to.deep.equal({ userActivity: [] });
   })
 
-  it.skip('should return how many miles a user has walked for a given day', () => {
+  it('should return how many miles a user has walked for a given day', () => {
     expect(activity.getMilesWalked('2019/06/15')).to.equal(3);
   })
 

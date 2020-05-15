@@ -20,11 +20,11 @@ class Activity {
 
   getMilesWalked(date) {
     let strideLength = this.user.strideLength;
-    let stepDay = this.userActivity.filter(activity => {
+    let stepDate = this.userActivity.filter(activity => {
       return activity.date === date;
     })
 
-    let dailySteps = stepDay.reduce((acc, activity) => {
+    let dailySteps = stepDate.reduce((acc, activity) => {
       acc += activity.numSteps;
       return acc;
     }, 0)
@@ -64,6 +64,25 @@ class Activity {
       return Math.ceil(avg);  
     } else {
       return 'You must pass a valid date'
+    }
+  }
+
+  reachStepGoal(date) {
+    let stepGoal = this.user.dailyStepGoal;
+    let activityDate = this.userActivity.filter(activity => {
+      return activity.date === date;
+    })
+
+    console.log(activityDate);
+
+    let stepGoalDate = activityDate.reduce((acc, active) => {
+      return acc += active.minutesActive;
+    }, 0)
+
+    if (stepGoalDate >= stepGoal) {
+      return 'Congrats! You reached your step goal!';
+    } else {
+      return 'Step goal not reached for today.';
     }
   }
 

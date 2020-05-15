@@ -116,11 +116,11 @@ describe('Activity', () => {
     expect(activity.getWeeklyAvgMinutesActive('2019-06-15')).to.equal('You must pass a valid date');
   })
 
-  it.skip('should return whether or not a user reached a step goal', () => {
-    expect(activity.reachStepGoal('2019/06/15')).to.equal('Did not meet step goal');
+  it('should return whether or not a user reached a step goal on a specific day', () => {
+    expect(activity.reachStepGoal('2019/06/15')).to.equal('Step goal not reached for today.');
   })
 
-  it.skip('should return whether or not a user exceeded a step goal', () => {
+  it('should return all the days a user exceeded their step goal', () => {
     expect(activity.exceedStepGoal()).to.deep.equal(["2019/06/19", "2019/06/20", "2019/06/22"]);
   })
 

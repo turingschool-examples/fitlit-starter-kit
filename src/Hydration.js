@@ -13,28 +13,32 @@ class Hydration {
     let newDate = this.checkDate(date);
     if (date === newDate) {
       let dailyHydration = this.userHydration.filter(hydration => {
-        return hydration.date === date;
+      return hydration.date === date;
       })
       
       return dailyHydration.reduce((acc, hydration) => {
         acc += hydration.numOunces;
         return acc;
       }, 0)
-    } else { return 'You must pass a valid date'}
+    } else { 
+      return 'You must pass a valid date'
+    }
   }
 
   getWeeklyWater(date) {
     let newDate = this.checkDate(date);
     if (date === newDate) {
-    let hydrationDate = this.userHydration.find(hydration => {
-      return hydration.date === date
-    })
+      let hydrationDate = this.userHydration.find(hydration => {
+        return hydration.date === date
+      })
 
-    let firstDate = this.userHydration.indexOf(hydrationDate);
-    return this.userHydration
-      .slice(firstDate, firstDate+7)
-      .map(hydration => hydration.numOunces);
-    } else { return 'You must pass a valid date'}
+      let firstDate = this.userHydration.indexOf(hydrationDate);
+      return this.userHydration
+        .slice(firstDate, firstDate + 7)
+        .map(hydration => hydration.numOunces);
+    } else { 
+      return 'You must pass a valid date'
+    }
   }
 
   getAvgWater() {
@@ -47,8 +51,8 @@ class Hydration {
 
   checkDate(date) {
     let isDate = new Date(date);
-    let newIsDate = isDate.getFullYear() +"/"+ 
-      ("0" + (isDate.getMonth() + 1)).slice(-2) +"/"+ 
+    let newIsDate = isDate.getFullYear() + "/" + 
+      ("0" + (isDate.getMonth() + 1)).slice(-2) + "/" + 
       ("0" + isDate.getDate()).slice(-2);
     return newIsDate;
   }

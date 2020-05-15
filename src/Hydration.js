@@ -11,7 +11,9 @@ class Hydration {
 
   getDailyWater(date) {
     let newDate = this.checkDate(date);
-    if (date === newDate) {
+    if (date !== newDate) {
+      return 'You must pass a valid date'
+    } else {
       let dailyHydration = this.userHydration.filter(hydration => {
       return hydration.date === date;
       })
@@ -20,14 +22,14 @@ class Hydration {
         acc += hydration.numOunces;
         return acc;
       }, 0)
-    } else { 
-      return 'You must pass a valid date'
-    }
+    } 
   }
 
   getWeeklyWater(date) {
     let newDate = this.checkDate(date);
-    if (date === newDate) {
+    if (date !== newDate) {
+      return 'You must pass a valid date'
+    } else {
       let hydrationDate = this.userHydration.find(hydration => {
         return hydration.date === date
       })
@@ -36,8 +38,6 @@ class Hydration {
       return this.userHydration
         .slice(firstDate, firstDate + 7)
         .map(hydration => hydration.numOunces);
-    } else { 
-      return 'You must pass a valid date'
     }
   }
 

@@ -4,7 +4,7 @@ const expect = chai.expect;
 const Hydration = require('../src/Hydration');
 const hydrationSampleData = require('../sample-data/hydration-sample')
 
-let hydration1, hydration2, hydration3,hydration4,
+let hydration1, hydration2, hydration3, hydration4,
   hydration5, hydration6, hydration7, hydration8,
   hydration9, hydration10, hydration11, hydration12,
   hydration13;

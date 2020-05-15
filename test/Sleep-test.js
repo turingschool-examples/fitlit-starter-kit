@@ -50,7 +50,8 @@ describe('Sleep', () => {
   })
 
   it('should throw an error if an invalid id is passed as an argument', () => {
-    expect(() => { new Sleep(500, sleepData) }).to.throw(Error);
+    sleep2 = new Sleep(500, sleepData)
+    expect(sleep2).to.deep.equal({ userSleep: [] });
   })
 
   it('should return user Sleep data', () => {

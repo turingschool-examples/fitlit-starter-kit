@@ -44,7 +44,7 @@ class Sleep {
     let firstDate = this.userSleep.indexOf(sleepDate);
     
     return this.userSleep
-      .slice(firstDate, firstDate+7)
+      .slice(firstDate, firstDate + 7)
       .map(sleep => sleep.hoursSlept);
   }
 
@@ -53,7 +53,7 @@ class Sleep {
     let firstDate = this.userSleep.indexOf(sleepDate);
     
     return this.userSleep
-      .slice(firstDate, firstDate+7)
+      .slice(firstDate, firstDate + 7)
       .map(sleep => sleep.sleepQuality);
   }
 

@@ -145,7 +145,6 @@ describe('Sleep', () => {
     expect(sleep).to.be.an.instanceOf(Sleep)
   })
 
-//
   it('should return user Sleep data', () => {
     expect(sleepData.length).to.equal(13)
   })

@@ -105,7 +105,7 @@ describe('Activity', () => {
   })
 
   it.skip('should return whether or not a user exceeded a step goal', () => {
-    expect(activity.exceedStepGoal()).to.deep.equal(["2019/06/19","2019/06/20", "2019/06/22"]);
+    expect(activity.exceedStepGoal()).to.deep.equal(["2019/06/19", "2019/06/20", "2019/06/22"]);
   })
 
   it('should return a user all-time stair climbing record', () => {

@@ -59,8 +59,9 @@ describe('Hydration', () => {
     expect(() => { new Hydration() }).to.throw(Error);
   })
 
-  it('should throw an error if an invalid id is passed as an argument', () => {
-    expect(() => { new Hydration(500, hydrationDate) }).to.throw(Error);
+  it('should be an empty arry if invalid id is passed as an argument', () => {
+    hydration2 = new Hydration(500, hydrationData)
+    expect(hydration2).to.deep.equal({ userHydration: [] });
   })
 
   it('should return user Hydration Data', () => {

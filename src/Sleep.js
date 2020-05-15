@@ -94,14 +94,14 @@ class Sleep {
   }
 
 
-  getBestSleepers(date) {
-    let sleepData = this.getWeekOfSleepData(date)
-    let sleepHoursTotal = sleepData.reduce((acc, data) => {
-      acc += data.hoursSlept
-      return acc
-    }, 0)
-    return Math.round(sleepHoursTotal / 7)
-  }
+  // getBestSleepers(date) {
+  //   let sleepData = this.getWeekOfSleepData(date)
+  //   let sleepHoursTotal = sleepData.reduce((acc, data) => {
+  //     acc += data.hoursSlept
+  //     return acc
+  //   }, 0)
+  //   return Math.round(sleepHoursTotal / 7)
+  // }
 
 }
 

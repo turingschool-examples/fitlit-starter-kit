@@ -5,7 +5,7 @@ class Sleep {
   }
 
   getUserSleepData() {
-    return this.sleepData.filter(sleep => sleep.userID === this.currentUser.id)
+    return this.sleepData.filter (sleep => sleep.userID === this.currentUser.id)
   }
 
   getAverageDailySleep() {
@@ -92,7 +92,19 @@ class Sleep {
     let average = (qualityAverage / userSleepData.length).toFixed(2)
     return parseFloat(average)
   }
+
+
+  getBestSleepers(date) {
+    let sleepData = this.getWeekOfSleepData(date)
+    let sleepHoursTotal = sleepData.reduce((acc, data) => {
+      acc += data.hoursSlept
+      return acc
+    }, 0)
+    return Math.round(sleepHoursTotal / 7)
+  }
+
 }
+
 
 if (typeof module !== 'undefined') {
   module.exports = Sleep;

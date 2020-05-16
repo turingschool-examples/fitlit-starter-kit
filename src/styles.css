@@ -42,3 +42,8 @@ main {
   height: 30%;
   width: 90%;
 }
+
+.chart-container {
+  height: 100%;
+  width: 50%;
+}

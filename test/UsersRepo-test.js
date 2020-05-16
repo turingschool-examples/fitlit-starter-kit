@@ -35,9 +35,9 @@ describe('User Repository', () => {
     expect(usersRepo.allUsers.length).to.equal(4)
   })
 
-  it('should have users with methods', () => {
-    expect(usersRepo.allUsers[0].getName()).to.equal('Luisa')
-  })
+  // it('should have users with methods', () => {
+  //   expect(usersRepo.allUsers[0].getName()).to.equal('Luisa')
+  // })
 
   // it('should throw an error if no usersData is passed as an argument', () => {
   //   expect(() => { new UsersRepo() }).to.throw(Error);

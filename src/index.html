@@ -2,6 +2,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="./styles.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>  
     <title>FitLit</title>
 </head>
 <body>
@@ -20,8 +22,13 @@
     </section>
     <section class="habit-column">
       <h1>Sleep</h1>
-      <article class="box"></article>
-      <article class="box"></article>
+      <article class="box">
+      </article>
+      <article class="box">
+        <div class="chart-container">
+          <canvas id="myChart"></canvas>
+        </div> 
+      </article>
       <article class="box"></article>
     </section>
     <section class="habit-column">
@@ -31,6 +38,17 @@
       <article class="box"></article>
     </section>
   </main>
-
 </body>
+<script type="text/javascript" src="../data/users.js"></script>
+<script type="text/javascript" src="../data/sleep.js"></script>
+<script type="text/javascript" src="../data/hydration.js"></script>
+<script type="text/javascript" src="../data/activity.js"></script>
+<script type="text/javascript" src="../src/User.js"></script>
+<script type="text/javascript" src="../src/UsersRepo.js"></script>
+<script type="text/javascript" src="../src/Sleep.js"></script>
+<script type="text/javascript" src="../src/SleepRepo.js"></script>
+<script type="text/javascript" src="../src/Hydration.js"></script>
+<script type="text/javascript" src="../src/Activity.js"></script>
+<script type="text/javascript" src="../src/ActivityRepo.js"></script>
+<script type="text/javascript" src="../src/scripts.js"></script>
 </html>

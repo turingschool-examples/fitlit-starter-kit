@@ -10,34 +10,52 @@ var todaysDate = '2019/09/22'
 
 
 function makeUser() {
-  let randomUser = Math.floor(Math.random() * userData.length)
-  user = new User(userData[randomUser])
-  makeHydration(user)
+  const randomUser = Math.floor(Math.random() * userData.length)
+  const user = new User(userData[randomUser])
+  displayUserInfo(user)
 }
 
-function showInfoCard() {
-  users.innerHTML = `<p>User: ${user.name}</p>
+function showInfoCard(user) {
+  users.innerHTML = `<section class='info-card'>
+                     <p>User: ${user.name}</p>
                      <p>Address: ${user.address}</p>
                      <p>Email: ${user.email}</p>
                      <p>Stride Length: ${user.strideLength}</p>
                      <p>Daily Step Goal: ${user.dailyStepGoal}</p>
-                     <p>Friends: ${user.userFriends}</p>
+                     <section class='friends-names'>Your friends:</section>
                      <p>ID: ${user.id}</p>
+                     </section>
                      `;
 }
 
-function showFirstName() {
+function createFriendsList(user) {
+  const friendsNames = document.querySelector('.friends-names')
+  const friendsList = user.userFriends.map(friends => userRepo.getUserByID(friends))
+  friendsList.forEach(friend => friendsNames.insertAdjacentHTML('beforeEnd', `<p>${friend.name.split(' ')[0]}</p>`))
+}
+
+function showFirstName(user) {
   greeting.innerHTML = `<p>Welcome ${user.getFirstName()}</p>`
 }
 
-function compareStepGoal() {
+function compareStepGoal(user) {
   let average = user.dailyStepGoal / userRepo.getAverageStepGoal()
   let averagePercent = (average * 100).toFixed(2)
   stepGoal.innerHTML =
-                      `<p>${user.getFirstName()}'s goal is  ${user.dailyStepGoal} steps per day, and the average is  ${userRepo.getAverageStepGoal()} steps per day.
-                          ${user.getFirstName()}'s goal is ${averagePercent}% of the average
-                      </p>`
+  `<section class='step-goal'>
+  <p>${user.getFirstName()}'s goal is  ${user.dailyStepGoal} steps per day, and the average is  ${userRepo.getAverageStepGoal()} steps per day.
+  ${user.getFirstName()}'s goal is ${averagePercent}% of the average
+  </p>
+  </section>`
 }
+function displayUserInfo(user) {
+  showFirstName(user)
+  showInfoCard(user)
+  createFriendsList(user)
+  compareStepGoal(user)
+  makeHydration(user)
+}
+
 
 function makeHydration(user) {
   let newHydration = new Hydration(hydrationData, user)
@@ -45,7 +63,7 @@ function makeHydration(user) {
 }
 
 function showHydrationCard(newHydration) {
-  let weeksHydroData = newHydration.getWeekOfFluidOunces(todaysDate)
+  let weeksHydroData = newHydration.getWeekOfHydroData(todaysDate)
   hydration.innerHTML = `
                          <p>Hydration Average: ${newHydration.getAverageDailyOunces()}oz</p>
                          <p>Todays Hydration: ${newHydration.getOuncesForSpecificDay(todaysDate)}oz</p>
@@ -64,9 +82,9 @@ function showHydrationCard(newHydration) {
 
 
 makeUser()
-showInfoCard()
-showFirstName()
-compareStepGoal()
+// showInfoCard()
+// showFirstName()
+// compareStepGoal()
 
 
 

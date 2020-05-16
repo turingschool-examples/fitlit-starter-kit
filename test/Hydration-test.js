@@ -113,4 +113,7 @@ describe('Hydration', function() {
       undefined, undefined, undefined, undefined
     ])
   })
+  it('should be able to get total fluid ounces for each day in a week for one user', function() {
+    expect(hydration.getWeekofFluidOz('2019/06/15')).to.deep.equal([37, 69, 96])
+  })
 })

@@ -1,7 +1,7 @@
 class Sleep {
   constructor(sleepData, user) {
     this.sleepData = sleepData;
-    this.currentUser = user
+    this.currentUser = user;
     
   }
 
@@ -125,11 +125,9 @@ class Sleep {
   }
 
   getBestSleepers(date) {
-    const bestSleepers = []
     const userSleepData = this.getAllUsersWeekOfSleepData(date)
     const sortedData = this.sortSleeps(userSleepData)
     const keys = Object.keys(sortedData)
-    const sleepEntries = []
     const objData = keys.map(key => {
       const obj = {}
       let sleepSum = sortedData[key].entries.reduce((acc, entry) => {
@@ -144,6 +142,14 @@ class Sleep {
     const sortedQuality = objData.sort((a, b) => b.sleepAverage - a.sleepAverage)
     return sortedQuality.slice(0, 3) 
   }
+
+  getTopSleeper(date) {
+    const todaysSleepInfo = this.sleepData.filter(sleep => sleep.date === date)
+    const sortedHours = todaysSleepInfo.sort((a, b) => b.hoursSlept - a.hoursSlept)
+    console.log(sortedHours[0].userID)
+    return sortedHours[0].userID
+  }
+
 }
 
 

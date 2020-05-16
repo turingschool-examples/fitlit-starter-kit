@@ -308,6 +308,9 @@ describe('sleep', function() {
       { userID: 1, sleepAverage: 2.61 }
     ])
   })
+  it('should be able to get top sleeper for a day', function() {
+    expect(sleep.getTopSleeper('2019/06/15')).to.deep.equal(3)
+  })
 
 
 

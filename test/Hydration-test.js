@@ -105,10 +105,10 @@ describe('Hydration', function() {
     expect(hydration.getOuncesForSpecificDay('')).to.equal(undefined)
   })
   it('should be able to get a week of hydration info', function() {
-    expect(hydration.getWeekOfHydroData('2019/06/15')).to.deep.equal([
-      { userID: 1, date: '2019/06/15', numOunces: 37 },
-      { userID: 1, date: '2019/06/16', numOunces: 69 },
+    expect(hydration.getWeekOfHydroData('2019/06/17')).to.deep.equal([
       { userID: 1, date: '2019/06/17', numOunces: 96 },
+      { userID: 1, date: '2019/06/16', numOunces: 69 },
+      { userID: 1, date: '2019/06/15', numOunces: 37 },
       undefined, undefined, undefined, undefined
     ])
   })

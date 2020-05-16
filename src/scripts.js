@@ -5,7 +5,7 @@ const sleep = document.querySelector('.sleep')
 const activity = document.querySelector('.activity')
 const stepGoal = document.querySelector('.step-goal')
 var userRepo = new UserRepository(userData);
-var todaysDate = '2019/09/22'
+var todaysDate = '2019/08/22'
 
 
 
@@ -13,6 +13,7 @@ function makeUser() {
   const randomUser = Math.floor(Math.random() * userData.length)
   const user = new User(userData[randomUser])
   displayUserInfo(user)
+  makeHydration(user)
 }
 
 function showInfoCard(user) {
@@ -38,24 +39,28 @@ function showFirstName(user) {
   greeting.innerHTML = `<p>Welcome ${user.getFirstName()}</p>`
 }
 
-function compareStepGoal(user) {
-  let average = user.dailyStepGoal / userRepo.getAverageStepGoal()
-  let averagePercent = (average * 100).toFixed(2)
+function createStepGoal(user) {
   stepGoal.innerHTML =
   `<section class='step-goal'>
   <p>${user.getFirstName()}'s goal is  ${user.dailyStepGoal} steps per day, and the average is  ${userRepo.getAverageStepGoal()} steps per day.
-  ${user.getFirstName()}'s goal is ${averagePercent}% of the average
-  </p>
+  <p class="ahead-or-behind"></p>
   </section>`
 }
+
+function compareStepGoal(user) {
+  const difference = userRepo.getAverageStepGoal() - user.dailyStepGoal
+  const absoluteValue = Math.abs(difference)
+  const aheadOrBehind = document.querySelector('.ahead-or-behind')
+  difference > 0 ?  aheadOrBehind.innerText = `Your goal is ${absoluteValue} steps greater than the average!` : aheadOrBehind.innerText = `Your goal is ${absoluteValue} steps less than the average!`
+}
+
 function displayUserInfo(user) {
   showFirstName(user)
   showInfoCard(user)
   createFriendsList(user)
+  createStepGoal(user)
   compareStepGoal(user)
-  makeHydration(user)
 }
-
 
 function makeHydration(user) {
   let newHydration = new Hydration(hydrationData, user)
@@ -67,13 +72,13 @@ function showHydrationCard(newHydration) {
   hydration.innerHTML = `
                          <p>Hydration Average: ${newHydration.getAverageDailyOunces()}oz</p>
                          <p>Todays Hydration: ${newHydration.getOuncesForSpecificDay(todaysDate)}oz</p>
-                         <p>Yesterday's Hydration: ${weeksHydroData[0]}</p>
-                         <p>2 days days ago: ${weeksHydroData[1]}oz</p>
-                         <p>3 days ago: ${weeksHydroData[2]}oz</p>
-                         <p>4 days ago: ${weeksHydroData[3]}oz</p>
-                         <p>5 days ago: ${weeksHydroData[4]}oz</p>
-                         <p>6 days ago: ${weeksHydroData[5]}oz</p>
-                         <p>7 days ago: ${weeksHydroData[6]}oz</p>
+                         <p>Yesterday's Hydration: ${weeksHydroData[0].numOunces}oz</p>
+                         <p>2 days days ago: ${weeksHydroData[1].numOunces}oz</p>
+                         <p>3 days ago: ${weeksHydroData[2].numOunces}oz</p>
+                         <p>4 days ago: ${weeksHydroData[3].numOunces}oz</p>
+                         <p>5 days ago: ${weeksHydroData[4].numOunces}oz</p>
+                         <p>6 days ago: ${weeksHydroData[5].numOunces}oz</p>
+                         <p>7 days ago: ${weeksHydroData[6].numOunces}oz</p>
                          `
 }
 

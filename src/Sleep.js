@@ -93,17 +93,47 @@ class Sleep {
     return parseFloat(average)
   }
 
+  sortSleeps() {
+    let userSleepData = this.sleepData
+    return userSleepData.reduce((acc, entry) => {
+    const userProfile = acc.find(profile => {
+      return profile.userID === entry.userID
+    })
+    const newEntry = {date: entry.date, hoursSlept: entry.hoursSlept, sleepQuality: entry.sleepQuality}
+  
+    if (userProfile) {
+      userProfile.entries.push(newEntry)
+    } else {
+      const newUserProfile = {userID: entry.userID, entries: [newEntry]}
+      acc.push(newUserProfile)
+    }
+  
+    return acc
+    }, [])
+  }
 
-  // getBestSleepers(date) {
-  //   let sleepData = this.getWeekOfSleepData(date)
-  //   let sleepHoursTotal = sleepData.reduce((acc, data) => {
-  //     acc += data.hoursSlept
-  //     return acc
-  //   }, 0)
-  //   return Math.round(sleepHoursTotal / 7)
-  // }
 
-}
+  // sortSleeps() method:
+  // take in sleepData array
+  // creates a new array of objects (different length) from sleepData array
+  // in the objects object keys = userIDs
+  // key values are an array of the objects containing that userID
+
+    }
+
+  //getBestSleepers()
+  //sets empty bestSleepers array
+  //takes in a week of sleepData(date)
+  //sleepData.sortSleep()
+  //with sorted array ->
+    //forEach user ->
+      //getAverageDailySleep
+      //if avg hrs slept is >= 3 ->
+        //push userID to bestSleepersArray
+  //return bestSleepers
+
+
+
 
 
 if (typeof module !== 'undefined') {

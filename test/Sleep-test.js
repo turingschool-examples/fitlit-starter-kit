@@ -176,6 +176,15 @@ let sleepData = [
     },
 ]
 
+let sortedSleepers = 
+[{"userID":1,"entries":[{"date":"2019/06/15","hoursSlept":6.1,"sleepQuality":2.2},{"date":"2019/06/16","hoursSlept":4.1,"sleepQuality":3.8},{"date":"2019/06/17","hoursSlept":8,"sleepQuality":2.6},{"date":"2019/06/18","hoursSlept":10.4,"sleepQuality":3.1},{"date":"2019/06/19","hoursSlept":10.7,"sleepQuality":1.2},{"date":"2019/06/20","hoursSlept":9.3,"sleepQuality":1.2},{"date":"2019/06/21","hoursSlept":7.8,"sleepQuality":4.2}]},
+ {"userID":2,"entries":[{"date":"2019/06/15","hoursSlept":7,"sleepQuality":4.7},{"date":"2019/06/16","hoursSlept":7.5,"sleepQuality":3.8},{"date":"2019/06/17","hoursSlept":5.7,"sleepQuality":3},{"date":"2019/06/18","hoursSlept":10.8,"sleepQuality":3.2},{"date":"2019/06/19","hoursSlept":9.6,"sleepQuality":2.5},{"date":"2019/06/20","hoursSlept":10.1,"sleepQuality":2.4},{"date":"2019/06/21","hoursSlept":4.3,"sleepQuality":4.8}]},
+ {"userID":3,"entries":[{"date":"2019/06/15","hoursSlept":10.8,"sleepQuality":4.7},{"date":"2019/06/16","hoursSlept":10.7,"sleepQuality":3.4},{"date":"2019/06/17","hoursSlept":5.3,"sleepQuality":4.9},{"date":"2019/06/18","hoursSlept":9.8,"sleepQuality":2.6},{"date":"2019/06/19","hoursSlept":7.2,"sleepQuality":3.4},{"date":"2019/06/20","hoursSlept":9.4,"sleepQuality":1.2},{"date":"2019/06/21","hoursSlept":8.9,"sleepQuality":3.7}]},
+ {"userID":4,"entries":[{"date":"2019/06/15","hoursSlept":5.4,"sleepQuality":3},{"date":"2019/06/16","hoursSlept":8.3,"sleepQuality":4.5},{"date":"2019/06/17","hoursSlept":5.7,"sleepQuality":1.1},{"date":"2019/06/18","hoursSlept":5.9,"sleepQuality":2.5},{"date":"2019/06/19","hoursSlept":5.2,"sleepQuality":2.3},{"date":"2019/06/20","hoursSlept":8.3,"sleepQuality":1.9},{"date":"2019/06/21","hoursSlept":10.6,"sleepQuality":2.7}]}
+]
+
+
+
 let userData = [
   {
     "id": 1,
@@ -289,10 +298,9 @@ describe('sleep', function() {
   it('should be able to get all users average daily sleep quality', function() {
     expect(sleep1.getAllUsersAverageSleepQuality()).to.deep.equal(3.02)
   })
-  // it('should be able to get best sleepers', function() {
-  //   expect(sleep.getBestSleepers('2019/06/21')).to.deep.equal(8)
-  // })
+  it('should be able to get sorted sleepers', function() {
+    expect(sleep.sortSleeps()).to.deep.equal(sortedSleepers)
+  })
 
-     
-
+  
 })

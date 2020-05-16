@@ -80,12 +80,36 @@ describe('Activity Repository', () => {
     expect(activityRepo.calculateAvgStairs('2019/06/15')).to.equal(27);
   })
 
+  it('should only take a date as an argument', () => {
+    expect(activityRepo.calculateAvgStairs('test')).to.equal('You must pass a valid date');
+  })
+
+  it('should only take a date in the correct format as an argument', () => {
+    expect(activityRepo.calculateAvgStairs('2019-06-15')).to.equal('You must pass a valid date');
+  })
+
   it('should return the average number of steps taken for all users on a specific date', () => {
     expect(activityRepo.calculateAvgSteps('2019/06/15')).to.equal(6530);
   })
 
+  it('should only take a date as an argument', () => {
+    expect(activityRepo.calculateAvgSteps('test')).to.equal('You must pass a valid date');
+  })
+
+  it('should only take a date in the correct format as an argument', () => {
+    expect(activityRepo.calculateAvgSteps('2019-06-15')).to.equal('You must pass a valid date');
+  })
+
   it('should return the average number of minutes active for all users on a specific date', () => {
     expect(activityRepo.calculateAvgMinActive('2019/06/15')).to.equal(98);
+  })
+
+  it('should only take a date as an argument', () => {
+    expect(activityRepo.calculateAvgMinActive('test')).to.equal('You must pass a valid date');
+  })
+
+  it('should only take a date in the correct format as an argument', () => {
+    expect(activityRepo.calculateAvgMinActive('2019-06-15')).to.equal('You must pass a valid date');
   })
 
   it('should return the user with the highest number of minutes active out of all users on a specific date', () => {
@@ -122,5 +146,17 @@ describe('Activity Repository', () => {
         "flightsOfStairs": 10
       }
     ]);
+  })
+
+  it('should only take a date as an argument', () => {
+    expect(activityRepo.calculateMaxMinActive('test')).to.equal('You must pass a valid date');
+  })
+
+  it('should only take a date in the correct format as an argument', () => {
+    expect(activityRepo.calculateMaxMinActive('2019-06-15')).to.equal('You must pass a valid date');
+  })
+
+  it('should return a date', () => {
+    expect(activityRepo.checkDate('2019/06/15')).to.equal('2019/06/15');
   })
 })

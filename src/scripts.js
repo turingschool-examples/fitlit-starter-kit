@@ -5,7 +5,7 @@ const sleep = document.querySelector('.sleep')
 const activity = document.querySelector('.activity')
 const stepGoal = document.querySelector('.step-goal')
 var userRepo = new UserRepository(userData);
-var todaysDate = '2019/08/02'
+var todaysDate = '2019/09/22'
 
 
 

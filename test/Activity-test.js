@@ -103,7 +103,7 @@ let userData = [
 
 beforeEach(function() {
   user1 = new User(userData[0])
-  activity = new Activity(activityData, user1)
+  activity = new Activity(activityData, user1, userData)
 })
 
 
@@ -125,6 +125,9 @@ describe('Activity', function() {
   })
   it('should get activity data for a specific user', function() {
     expect(activity.getUserActivityData()).to.deep.equal([activityData[0], activityData[3], activityData[6]])
+  })
+  it('it should get todays activity', function() {
+    expect(activity.getTodaysActivity('2019/06/15')).to.deep.equal([activityData[0], activityData[1], activityData[2]])
   })
   it('should get a users activity data for a specific day', function() {
     expect(activity.getUserActivityToday('2019/06/15')).to.deep.equal(activityData[0])
@@ -151,6 +154,12 @@ describe('Activity', function() {
     expect(activity.getStairClimbRecord()).to.equal(36)
   })
   it('it should return the average number of stairs for all users for a specific date', function() {
-    expect(activity.getAverageStairsForAll('2019/06/15')).to.equal(20)
+    expect(activity.getAveragesForAll('2019/06/15', 'flightsOfStairs')).to.equal(20)
+  })
+  it('it should return the average number of steps for all users for a specific date', function() {
+    expect(activity.getAveragesForAll('2019/06/15', 'numSteps')).to.equal(5091)
+  })
+  it('it should return the average minutes active for all users for a specific date', function() {
+    expect(activity.getAveragesForAll('2019/06/15', 'minutesActive')).to.equal(131)
   })
 })

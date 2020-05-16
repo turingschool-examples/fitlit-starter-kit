@@ -1,16 +1,23 @@
 class Activity {
-  constructor(activityData, user) {
+  constructor(activityData, user, userRepo) {
     this.activityData = activityData || null;
+    //fix currentUser
     this.currentUser = user || 'gerenic user';
+    this.userRepo = userRepo;
   }
 
-  getUserActivityData() {
-    return this.activityData.filter(activity => activity.userID === this.currentUser.id)
+  getUserActivityData(activityInfo) {
+    let activityData = activityInfo || this.activityData
+    return activityData.filter(activity => activity.userID === this.currentUser.id)
+  }
+
+  getTodaysActivity(date) {
+    return this.activityData.filter(data => data.date === date)
   }
 
   getUserActivityToday(date) {
-    const userActivityData = this.getUserActivityData()
-    return userActivityData.find(activity => activity.date === date)
+    const todaysActivity = this.getTodaysActivity(date)
+    return this.getUserActivityData(todaysActivity)[0]
   }
 
   getMilesWalkedToday(date) {
@@ -32,13 +39,11 @@ class Activity {
     for (let i = 0; i < 7 ; i++) {
       weeksActivity.push(userActivityData[startIndex - i])
     }
-    console.log(weeksActivity);
     return weeksActivity
   }
 
   getWasStepGoalAchieved(date) {
     let todaysActivity = this.getUserActivityToday(date)
-    console.log(todaysActivity);
     return this.currentUser.dailyStepGoal <= todaysActivity.numSteps ? true : false
   }
 
@@ -53,10 +58,10 @@ class Activity {
     return sortedActivities[0].flightsOfStairs
   }
 
-  getAverageStairsForAll(date) {
+  getAveragesForAll(date, activityType) {
     const todaysActivity = this.activityData.filter(data => data.date === date)
     const allUserStairs = todaysActivity.reduce((acc, activity) => {
-      acc += activity.flightsOfStairs
+      acc += activity[activityType]
       return acc
     }, 0)
     return Math.round(allUserStairs / todaysActivity.length);

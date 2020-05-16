@@ -248,7 +248,7 @@ describe('sleep', function() {
   beforeEach(function() {
     user1 = new User(userData[0])
     user2 = new User(userData[1])
-    sleep = new Sleep(sleepData)
+    sleep = new Sleep(sleepData, userData)
     sleep1 = new Sleep(sleepData, user1)
     sleep2 = new Sleep(sleepData, user2)
   })
@@ -279,7 +279,7 @@ describe('sleep', function() {
     expect(sleep1.getQualityForSpecificDay('2019/06/16')).to.equal(3.8)
   })
   it('should be able to get a week of hours sleep data', function() {
-    expect(sleep1.getWeekOfSleepData('2019/06/15')).to.deep.equal([
+    expect(sleep1.getOneUserWeekOfSleepData('2019/06/15', sleepData)).to.deep.equal([
       { userID: 1, date: '2019/06/15', hoursSlept: 6.1, sleepQuality: 2.2 },
       { userID: 1, date: '2019/06/16', hoursSlept: 4.1, sleepQuality: 3.8 },
       { userID: 1, date: '2019/06/17', hoursSlept: 8, sleepQuality: 2.6 },
@@ -301,6 +301,15 @@ describe('sleep', function() {
   it('should be able to get sorted sleepers', function() {
     expect(sleep.sortSleeps()).to.deep.equal(sortedSleepers)
   })
+  it('should be able to get best sleepers', function() {
+    expect(sleep.getBestSleepers('2019/06/15')).to.deep.equal([
+      { userID: 2, sleepAverage: 3.49 },
+      { userID: 3, sleepAverage: 3.41 },
+      { userID: 1, sleepAverage: 2.61 }
+    ])
+  })
+
+
 
   
 })

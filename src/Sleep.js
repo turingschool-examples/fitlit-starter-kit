@@ -1,7 +1,8 @@
 class Sleep {
   constructor(sleepData, user) {
     this.sleepData = sleepData;
-    this.currentUser = user;
+    this.currentUser = user
+    
   }
 
   getUserSleepData() {
@@ -48,7 +49,7 @@ class Sleep {
     }
   } 
   
-  getWeekOfSleepData(date) {
+  getOneUserWeekOfSleepData(date) {
     let sleeps = []
     let userSleepData = this.getUserSleepData()
     let todaysSleep = userSleepData.find(sleep => sleep.date === date)
@@ -60,7 +61,7 @@ class Sleep {
   }
   
   getWeekofHoursSlept(date) {
-    let userSleepData = this.getWeekOfSleepData(date)
+    let userSleepData = this.getOneUserWeekOfSleepData(date)
     let sleeps = []
     userSleepData.forEach((night) => {
        if(night !== undefined) {
@@ -72,7 +73,7 @@ class Sleep {
 
 
   getWeekofSleepQuality(date) {
-    let userSleepData = this.getWeekOfSleepData(date)
+    let userSleepData = this.getOneUserWeekOfSleepData(date)
     let sleeps = []
     userSleepData.forEach((night) => {
        if(night !== undefined) {
@@ -112,26 +113,38 @@ class Sleep {
     }, [])
   }
 
-
-  // sortSleeps() method:
-  // take in sleepData array
-  // creates a new array of objects (different length) from sleepData array
-  // in the objects object keys = userIDs
-  // key values are an array of the objects containing that userID
-
+  getAllUsersWeekOfSleepData(date) {
+    let sleeps = []
+    let userSleepData = this.sleepData
+    let todaysSleep = userSleepData.find(sleep => sleep.date === date)
+    let startIndex = userSleepData.indexOf(todaysSleep)
+    for (let i = 0; i < 7; i++) {
+      sleeps.push(userSleepData[startIndex + i])
     }
+    return sleeps
+  }
 
-  //getBestSleepers()
-  //sets empty bestSleepers array
-  //takes in a week of sleepData(date)
-  //sleepData.sortSleep()
-  //with sorted array ->
-    //forEach user ->
-      //getAverageDailySleep
-      //if avg hrs slept is >= 3 ->
-        //push userID to bestSleepersArray
-  //return bestSleepers
-
+  getBestSleepers(date) {
+    const bestSleepers = []
+    const userSleepData = this.getAllUsersWeekOfSleepData(date)
+    const sortedData = this.sortSleeps(userSleepData)
+    const keys = Object.keys(sortedData)
+    const sleepEntries = []
+    const objData = keys.map(key => {
+      const obj = {}
+      let sleepSum = sortedData[key].entries.reduce((acc, entry) => {
+        acc += entry.sleepQuality
+        return acc
+      }, 0)
+      let average = (sleepSum / 7).toFixed(2)
+      obj.userID = sortedData[key].userID
+      obj.sleepAverage = parseFloat(average)
+      return obj
+    })
+    const sortedQuality = objData.sort((a, b) => b.sleepAverage - a.sleepAverage)
+    return sortedQuality.slice(0, 3) 
+  }
+}
 
 
 

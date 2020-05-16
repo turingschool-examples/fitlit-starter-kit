@@ -6,78 +6,78 @@ const User = require('../src/User')
 let sleep
 let user1
 let sleepData = [
-    {
-      "userID": 1,
-      "date": "2019/06/15",
-      "hoursSlept": 6.1,
-      "sleepQuality": 2.2
-    },
-    {
-      "userID": 2,
-      "date": "2019/06/15",
-      "hoursSlept": 7,
-      "sleepQuality": 4.7
-    },
-    {
-      "userID": 3,
-      "date": "2019/06/15",
-      "hoursSlept": 10.8,
-      "sleepQuality": 4.7
-    },
-    {
-      "userID": 4,
-      "date": "2019/06/15",
-      "hoursSlept": 5.4,
-      "sleepQuality": 3
-    },
-    {
-      "userID": 1,
-      "date": "2019/06/16",
-      "hoursSlept": 4.1,
-      "sleepQuality": 3.8
-    },
-    {
-      "userID": 2,
-      "date": "2019/06/16",
-      "hoursSlept": 7.5,
-      "sleepQuality": 3.8
-    },
-    {
-      "userID": 3,
-      "date": "2019/06/16",
-      "hoursSlept": 10.7,
-      "sleepQuality": 3.4
-    },
-    {
-      "userID": 4,
-      "date": "2019/06/16",
-      "hoursSlept": 8.3,
-      "sleepQuality": 4.5
-    },
-    {
-      "userID": 1,
-      "date": "2019/06/17",
-      "hoursSlept": 8,
-      "sleepQuality": 2.6
-    },
-    {
-      "userID": 2,
-      "date": "2019/06/17",
-      "hoursSlept": 5.7,
-      "sleepQuality": 3
-    },
-    {
-      "userID": 3,
-      "date": "2019/06/17",
-      "hoursSlept": 5.3,
-      "sleepQuality": 4.9
-    },
-    {
-      "userID": 4,
-      "date": "2019/06/17",
-      "hoursSlept": 5.7,
-      "sleepQuality": 1.1
-    }
+  {
+    "userID": 1,
+    "date": "2019/06/15",
+    "hoursSlept": 6.1,
+    "sleepQuality": 2.2
+  },
+  {
+    "userID": 2,
+    "date": "2019/06/15",
+    "hoursSlept": 7,
+    "sleepQuality": 4.7
+  },
+  {
+    "userID": 3,
+    "date": "2019/06/15",
+    "hoursSlept": 10.8,
+    "sleepQuality": 4.7
+  },
+  {
+    "userID": 4,
+    "date": "2019/06/15",
+    "hoursSlept": 5.4,
+    "sleepQuality": 3
+  },
+  {
+    "userID": 1,
+    "date": "2019/06/16",
+    "hoursSlept": 4.1,
+    "sleepQuality": 3.8
+  },
+  {
+    "userID": 2,
+    "date": "2019/06/16",
+    "hoursSlept": 7.5,
+    "sleepQuality": 3.8
+  },
+  {
+    "userID": 3,
+    "date": "2019/06/16",
+    "hoursSlept": 10.7,
+    "sleepQuality": 3.4
+  },
+  {
+    "userID": 4,
+    "date": "2019/06/16",
+    "hoursSlept": 8.3,
+    "sleepQuality": 4.5
+  },
+  {
+    "userID": 1,
+    "date": "2019/06/17",
+    "hoursSlept": 8,
+    "sleepQuality": 2.6
+  },
+  {
+    "userID": 2,
+    "date": "2019/06/17",
+    "hoursSlept": 5.7,
+    "sleepQuality": 3
+  },
+  {
+    "userID": 3,
+    "date": "2019/06/17",
+    "hoursSlept": 5.3,
+    "sleepQuality": 4.9
+  },
+  {
+    "userID": 4,
+    "date": "2019/06/17",
+    "hoursSlept": 5.7,
+    "sleepQuality": 1.1
+  }
 ]
 
 let userData = [
@@ -137,7 +137,7 @@ describe('sleep', function() {
   })
   it('should be able to get a how many hours a user slept on a specific day', function() {
     expect(sleep.getSleepForSpecificDay('2019/06/16')).to.equal(4.1)
-  }) 
+  })
   it('should be able to get a users sleep quality on a specific day', function() {
     expect(sleep.getQualityForSpecificDay('2019/06/16')).to.equal(3.8)
   })
@@ -159,6 +159,6 @@ describe('sleep', function() {
     expect(sleep.getAllUsersAverageSleepQuality()).to.deep.equal(3.48)
   })
 
-     
+
 
 })

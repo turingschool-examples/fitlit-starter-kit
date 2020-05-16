@@ -69,7 +69,7 @@ const activitySampleData = [
     "userID": 2,
     "date": "2019/06/16",
     "numSteps": 9256,
-    "minutesActive": 108,
+    "minutesActive": 204,
     "flightsOfStairs": 2
   }, {
     "userID": 2,
@@ -129,7 +129,7 @@ const activitySampleData = [
     "userID": 3,
     "date": "2019/06/16",
     "numSteps": 12304,
-    "minutesActive": 152,
+    "minutesActive": 204,
     "flightsOfStairs": 8
   }, {
     "userID": 3,

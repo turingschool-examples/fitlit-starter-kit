@@ -77,14 +77,50 @@ describe('Activity Repository', () => {
   })
 
   it('should return the average number of stairs climbed for all users on a specific date', () => {
-    expect(activityRepo.calculateStairsClimbed).to.equal(34);
+    expect(activityRepo.calculateAvgStairs('2019/06/15')).to.equal(27);
   })
 
   it('should return the average number of steps taken for all users on a specific date', () => {
-    expect(activityRepo.calculateStairsClimbed).to.equal(34);
+    expect(activityRepo.calculateAvgSteps('2019/06/15')).to.equal(6530);
   })
 
   it('should return the average number of minutes active for all users on a specific date', () => {
-    expect(activityRepo.calculateStairsClimbed).to.equal(34);
+    expect(activityRepo.calculateAvgMinActive('2019/06/15')).to.equal(98);
+  })
+
+  it('should return the user with the highest number of minutes active out of all users on a specific date', () => {
+    expect(activityRepo.calculateMaxMinActive('2019/06/15')).to.deep.equal([
+      {
+        "userID": 1,
+        "date": "2019/06/15",
+        "numSteps": 3577,
+        "minutesActive": 140,
+        "flightsOfStairs": 16
+      }
+    ]);
+  })
+
+  it('should return the users with the highest number of minutes active out of all users on a specific date if there are multiple', () => {
+    expect(activityRepo.calculateMaxMinActive('2019/06/16')).to.deep.equal([
+      {
+        "userID": 2,
+        "date": "2019/06/16",
+        "numSteps": 9256,
+        "minutesActive": 204,
+        "flightsOfStairs": 2
+      }, {
+        "userID": 3,
+        "date": "2019/06/16",
+        "numSteps": 12304,
+        "minutesActive": 204,
+        "flightsOfStairs": 8
+      }, {
+        "userID": 4,
+        "date": "2019/06/16",
+        "numSteps": 10689,
+        "minutesActive": 204,
+        "flightsOfStairs": 10
+      }
+    ]);
   })
 })

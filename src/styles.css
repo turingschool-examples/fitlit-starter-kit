@@ -22,18 +22,20 @@ h1 {
   background-color: #242423;
   border-bottom: 1px solid #333533;
   color: #fff;
-  height: 5%;
+  height: 11%;
   margin: 0;
   text-align: center;
 }
 
 .content {
+  all: unset;
   background-color: #242423;
+  min-height: 89vh;
   display: grid;
   grid-area: 3 / 1 / 10 / 10;
   grid-template-columns: repeat(20, 5%);
   grid-template-rows: repeat(10, 10%);
-  min-height: 85%;
+  height: 89vh;
 }
 
 .box-text {
@@ -54,10 +56,13 @@ h1 {
   color: #fff;
   display: flex;
   flex-direction: column;
-  font-size: 18px;
+  font-size: 12px;
   grid-area: 1 / 1 / 20 / 5;
   overflow-x: scroll;
   text-align: center;
+}
+.welcome {
+  font-size: 18px;
 }
 
 .step-goal {
@@ -69,13 +74,11 @@ h1 {
 .hydration {
   align-items: center;
   background-color: #242423;
-  /* border-radius: 5px; */
-  /* box-shadow: 0px 0px 10px -4px #fff; */
   color: #fff;
   display: flex;
   flex-direction: column;
-  font-size: 12px;
-  grid-area: 2 / 6 / 11 / 9;
+  font-size: 6px;
+  grid-area: 1 / 6 / 11 / 9;
   justify-content: space-evenly;
 }
 
@@ -86,7 +89,6 @@ h1 {
   height: 30%;
   text-align: center;
   width: 90%;
-  /* margin-bottom: 10%; */
 }
 
 .todays-hydration {
@@ -96,7 +98,6 @@ h1 {
   height: 30%;
   text-align: center;
   width: 90%;
-  /* margin-bottom: 10%; */
 }
 
 .weekly-hydration {
@@ -120,13 +121,12 @@ h1 {
   /* box-shadow: 0px 0px 10px -4px #fff; */
   display: flex;
   font-size: 30px;
-  grid-area: 2 / 10 / 11 / 13;
+  grid-area: 1 / 10 / 11 / 13;
   justify-content: center;
 }
 
 .activity {
   align-items: center;
-  /* border-radius: 5px; */
   background-color: #242423;
   border: 1px solid #FFE066;
   border-radius: 5px;
@@ -135,7 +135,7 @@ h1 {
   color: #fff;
   display: flex;
   font-size: 30px;
-  grid-area: 2 / 14 / 11 / 20;
+  grid-area: 1 / 14 / 11 / 20;
   justify-content: center;
 }
 

@@ -4,20 +4,20 @@ const hydration = document.querySelector('.hydration')
 const sleep = document.querySelector('.sleep')
 const activity = document.querySelector('.activity')
 const stepGoal = document.querySelector('.step-goal')
-// var userRepo = new UserRepository(userData);
+var userRepo = new UserRepository(userData);
 var todaysDate = '2019/09/22'
 
 
 
 function makeUser() {
   let randomUser = Math.floor(Math.random() * userData.length)
-  const user = new User(userData[randomUser])
+  user = new User(userData[randomUser])
   makeHydration(user)
 }
 
 function showInfoCard() {
   users.innerHTML = `<section class="userInfo">
-                     <p>User: ${user.name}</p>
+                     <p class="welcome">Welcome Back ${user.name.split(' ')[0]}!</p>
                      <p>Address: ${user.address}</p>
                      <p>Email: ${user.email}</p>
                      <p>Stride Length: ${user.strideLength}</p>
@@ -28,9 +28,9 @@ function showInfoCard() {
                      `
 }
 
-function showFirstName() {
-  greeting.innerHTML = `<p>Welcome ${user.getFirstName()}</p>`
-}
+// function showFirstName() {
+//   greeting.innerHTML = `<p>Welcome ${user.getFirstName()}</p>`
+// }
 
 function compareStepGoal() {
   let average = user.dailyStepGoal / userRepo.getAverageStepGoal()

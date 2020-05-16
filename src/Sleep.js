@@ -146,14 +146,16 @@ class Sleep {
   getTopSleeper(date) {
     const todaysSleepInfo = this.sleepData.filter(sleep => sleep.date === date)
     const sortedHours = todaysSleepInfo.sort((a, b) => b.hoursSlept - a.hoursSlept)
-    console.log(sortedHours[0].userID)
+    return sortedHours[0].userID
+  }
+
+  getWorstSleeper(date) {
+    const todaysSleepInfo = this.sleepData.filter(sleep => sleep.date === date)
+    const sortedHours = todaysSleepInfo.sort((a, b) => a.hoursSlept - b.hoursSlept)
     return sortedHours[0].userID
   }
 
 }
-
-
-
 
 if (typeof module !== 'undefined') {
   module.exports = Sleep;

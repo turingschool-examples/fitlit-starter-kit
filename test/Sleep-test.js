@@ -311,6 +311,9 @@ describe('sleep', function() {
   it('should be able to get top sleeper for a day', function() {
     expect(sleep.getTopSleeper('2019/06/15')).to.deep.equal(3)
   })
+  it('should be able to get top sleeper for a day', function() {
+    expect(sleep.getWorstSleeper('2019/06/15')).to.deep.equal(4)
+  })
 
 
 

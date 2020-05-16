@@ -15,12 +15,11 @@ const currentUser = new User(userData[0]);
 const currentDate = "2019/09/22";
 
 const sleep = new Sleep(currentUser.id, sleepData);
-console.log(sleep);
 const sleepRepo = new SleepRepo(sleepData);
 const usersRepo = new UsersRepo(userData);
 const hydration = new Hydration(currentUser.id, hydrationData);
 const activity = new Activity(currentUser.id, activityData, userData);
-const activityRepo =new ActivityRepo(activityData);
+const activityRepo = new ActivityRepo(activityData);
 
 let weekSleepHours = sleep.getWeeklySleepHours("2019/06/15");
 console.log(weekSleepHours);
@@ -29,54 +28,112 @@ var ctx = document.getElementById("myChart").getContext("2d");
 
 
 var myChart = new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: ["Day 1", " ", " ", " ", " ", " ", "Day 7"],
-      datasets: [
-        {
-          label: "Weekly Sleep Hours",
-          data: weekSleepHours,
-          fill: false,
-          backgroundColor: [
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-          ],
-          borderColor: [
-            "rgba(153, 102, 255, 1)",
-            "rgba(153, 102, 255, 1)",
-            "rgba(153, 102, 255, 1)",
-            "rgba(153, 102, 255, 1)",
-            "rgba(153, 102, 255, 1)",
-            "rgba(153, 102, 255, 1)",
-            "rgba(153, 102, 255, 1)",
-          ],
-          borderWidth: 1
+  type: "line",
+  data: {
+    labels: ["Day 1", " ", " ", " ", " ", " ", "Day 7"],
+    datasets: [{
+      label: "Weekly Sleep Hours",
+      data: weekSleepHours,
+      fill: false,
+      backgroundColor: [
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+      ],
+      borderColor: [
+        "rgba(153, 102, 255, 1)",
+        "rgba(153, 102, 255, 1)",
+        "rgba(153, 102, 255, 1)",
+        "rgba(153, 102, 255, 1)",
+        "rgba(153, 102, 255, 1)",
+        "rgba(153, 102, 255, 1)",
+        "rgba(153, 102, 255, 1)",
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
         }
-      ]
+      }]
     },
-    options: {
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true
-            }
-          }
-        ]
-      },
-      maintainAspectRatio: false,
-      responsive: true,
-      legend: {
-        display: false
-      },
-      title: {
-        display: true,
-        text: "Weekly Sleep Hours",
-      }
+    maintainAspectRatio: false,
+    responsive: true,
+    legend: {
+      display: false
+    },
+    title: {
+      display: true,
+      text: "Weekly Sleep Hours",
     }
-  });
+  }
+});
+
+const weekOuncesDrank = hydration.getWeeklyWater('2019/06/15')
+
+const weekHydration = document.getElementById("week-hydration").getContext("2d");
+
+const weekHydrationChart = new Chart(weekHydration, {
+  type: "line",
+  data: {
+    labels: ["Day 1", " ", " ", " ", " ", " ", "Day 7"],
+    datasets: [{
+      label: "Weekly Hydration",
+      data: weekOuncesDrank,
+      fill: false,
+      backgroundColor: [
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+      ],
+      borderColor: [
+        "rgba(153, 102, 255, 1)",
+        "rgba(153, 102, 255, 1)",
+        "rgba(153, 102, 255, 1)",
+        "rgba(153, 102, 255, 1)",
+        "rgba(153, 102, 255, 1)",
+        "rgba(153, 102, 255, 1)",
+        "rgba(153, 102, 255, 1)",
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    },
+    maintainAspectRatio: false,
+    responsive: true,
+    legend: {
+      display: false
+    },
+    title: {
+      display: true,
+      text: "Weekly Ounces Drank",
+    }
+  }
+});
+
+const todayHydration = document.getElementById("today-hydration")
+
+const displayHydrationForDay = (date) => {
+  let hydrationForDay = hydration.getDailyWater(date)
+  todayHydration.innerHTML = `You drank ${hydrationForDay} ounces on ${date}`
+}
+
+displayHydrationForDay('2019/06/15')

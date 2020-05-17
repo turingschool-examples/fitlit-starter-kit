@@ -34,7 +34,7 @@ class Hydration {
     const todaysH2O = userHydroData.find(hydration => hydration.date === date)
     const startIndex = userHydroData.indexOf(todaysH2O)
     for (let i = 0; i < 7; i++) {
-      hydro.push(userHydroData[startIndex + i])
+      hydro.push(userHydroData[startIndex - i])
     }
     return hydro
   }

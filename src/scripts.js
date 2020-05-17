@@ -13,6 +13,7 @@ function makeUser() {
   let randomUser = Math.floor(Math.random() * userData.length)
   user = new User(userData[randomUser])
   makeHydration(user)
+  makeSleep(user)
 }
 
 function showInfoCard() {
@@ -51,9 +52,9 @@ function makeHydration(user) {
 function showHydrationCard(newHydration) {
   let weeksHydroData = newHydration.getWeekOfHydroData(todaysDate)
   hydration.innerHTML = `
-    <section class="hydration-average"><p>Hydration Average: ${newHydration.getAverageDailyOunces()}oz</p></section>
-    <section class="todays-hydration"><p>Todays Hydration: ${newHydration.getOuncesForSpecificDay(todaysDate)}oz</p></section>
-    <section class="weekly-hydration">
+    <section class="hydration-data"><p>Hydration Average: ${newHydration.getAverageDailyOunces()}oz</p></section>
+    <section class="hydration-data"><p>Todays Hydration: ${newHydration.getOuncesForSpecificDay(todaysDate)}oz</p></section>
+    <section class="hydration-data">
     <p class="box-text">Yesterday's Hydration: ${weeksHydroData[0]}</p>
     <p class="box-text">2 days ago: ${weeksHydroData[1]}oz</p>
     <p class="box-text">3 days ago: ${weeksHydroData[2]}oz</p>
@@ -65,6 +66,32 @@ function showHydrationCard(newHydration) {
                          `
 }
 
+function makeSleep(user) {
+  let newSleep = new Sleep(sleepData, user)
+  showSleepCard(newSleep)
+}
+
+function showSleepCard(newSleep) {
+  let weeksSleepData = newSleep.getOneUserWeekOfSleepData(todaysDate)
+  sleep.innerHTML = `
+  <section class="sleep-data"><p>Hours Slept Average: ${newSleep.getAverageDailySleep()} hours</p>
+                              <p>Sleep Quality Average: ${newSleep.getAverageSleepQuality()}</p>
+  </section>
+  <section class="sleep-data"><p>Todays Hours Slept: ${newSleep.getSleepForSpecificDay(todaysDate)}</p>
+                              <p>Todays Sleep Quality: ${newSleep.getQualityForSpecificDay(todaysDate)}</p>
+  </section>
+  <section class="sleep-data">
+  <p class="box-text">Yesterday's Sleep: ${weeksSleepData[0]}</p>
+  <p class="box-text">2 days ago: ${weeksSleepData[1]}</p>
+  <p class="box-text">3 days ago: ${weeksSleepData[2]}</p>
+  <p class="box-text">4 days ago: ${weeksSleepData[3]}</p>
+  <p class="box-text">5 days ago: ${weeksSleepData[4]}</p>
+  <p class="box-text">6 days ago: ${weeksSleepData[5]}</p>
+  <p class="box-text">7 days ago: ${weeksSleepData[6]}</p>
+  </section>
+  `
+  console.log(weeksSleepData)
+}
 
 
 
@@ -81,3 +108,6 @@ compareStepGoal()
 // Display their first name somewhere prominently on the page to welcome them
 // For a specific user, display how their step goal compares to the average step
 //  goal amongst all users (this display should not be hard-coded)
+
+
+

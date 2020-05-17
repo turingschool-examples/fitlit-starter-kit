@@ -234,6 +234,9 @@ describe('Activity', function() {
   it('should return all days that the user exceded their step goal', function() {
     expect(activity.getAllDaysStepGoalWasExceeded()).to.deep.equal([activityData[6]])
   })
+  it('should return all days that the user exceded their step goal', function() {
+    expect(activity.getAllDaysStepGoalWasNotExceeded()).to.deep.equal([activityData[6]])
+  })
   it('a user should be able to see their all-time stair climbing record', function() {
     expect(activity.getStairClimbRecord()).to.equal(36)
   })

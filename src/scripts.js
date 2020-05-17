@@ -81,13 +81,13 @@ function showSleepCard(newSleep) {
                               <p>Todays Sleep Quality: ${newSleep.getQualityForSpecificDay(todaysDate)}</p>
   </section>
   <section class="sleep-data">
-  <p class="box-text">Yesterday's Sleep: ${weeksSleepData[0]}</p>
-  <p class="box-text">2 days ago: ${weeksSleepData[1]}</p>
-  <p class="box-text">3 days ago: ${weeksSleepData[2]}</p>
-  <p class="box-text">4 days ago: ${weeksSleepData[3]}</p>
-  <p class="box-text">5 days ago: ${weeksSleepData[4]}</p>
-  <p class="box-text">6 days ago: ${weeksSleepData[5]}</p>
-  <p class="box-text">7 days ago: ${weeksSleepData[6]}</p>
+  <p class="box-text">Yesterday's Sleep: Hours Slept: ${weeksSleepData[0].hoursSlept} Sleep Quality ${weeksSleepData[0].sleepQuality}</p>
+  <p class="box-text">2 days ago: Hours Slept: ${weeksSleepData[1]}</p>
+  <p class="box-text">3 days ago: Hours Slept: ${weeksSleepData[2]}</p>
+  <p class="box-text">4 days ago: Hours Slept: ${weeksSleepData[3]}</p>
+  <p class="box-text">5 days ago: Hours Slept: ${weeksSleepData[4]}</p>
+  <p class="box-text">6 days ago: Hours Slept: ${weeksSleepData[5]}</p>
+  <p class="box-text">7 days ago: Hours Slept: ${weeksSleepData[6]}</p>
   </section>
   `
   console.log(weeksSleepData)

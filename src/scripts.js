@@ -5,7 +5,7 @@ const sleep = document.querySelector('.sleep')
 const activity = document.querySelector('.activity')
 const stepGoal = document.querySelector('.step-goal')
 var userRepo = new UserRepository(userData);
-var todaysDate = '2019/08/22'
+var todaysDate = '2019/09/22'
 
 
 
@@ -14,6 +14,7 @@ function makeUser() {
   const user = new User(userData[randomUser])
   displayUserInfo(user)
   makeHydration(user)
+  makeSleep(user)
 }
 
 function showInfoCard(user) {
@@ -69,19 +70,43 @@ function makeHydration(user) {
 
 function showHydrationCard(newHydration) {
   let weeksHydroData = newHydration.getWeekOfHydroData(todaysDate)
+  console.log(weeksHydroData)
   hydration.innerHTML = `
-                         <p>Hydration Average: ${newHydration.getAverageDailyOunces()}oz</p>
-                         <p>Todays Hydration: ${newHydration.getOuncesForSpecificDay(todaysDate)}oz</p>
-                         <p>Yesterday's Hydration: ${weeksHydroData[0].numOunces}oz</p>
-                         <p>2 days days ago: ${weeksHydroData[1].numOunces}oz</p>
-                         <p>3 days ago: ${weeksHydroData[2].numOunces}oz</p>
-                         <p>4 days ago: ${weeksHydroData[3].numOunces}oz</p>
-                         <p>5 days ago: ${weeksHydroData[4].numOunces}oz</p>
-                         <p>6 days ago: ${weeksHydroData[5].numOunces}oz</p>
-                         <p>7 days ago: ${weeksHydroData[6].numOunces}oz</p>
+    <section class="hydration-data"><p>Hydration Average: ${newHydration.getAverageDailyOunces()} oz</p></section>
+    <section class="weekly-hydration"><p>Todays Hydration: ${newHydration.getOuncesForSpecificDay(todaysDate)} oz</p></section>
+    <section class="hydration-data">
+    <p class="box-text">Yesterday's Hydration: ${weeksHydroData[0].numOunces} oz</p>
+    <p class="box-text">2 days ago: ${weeksHydroData[1]}oz</p>
+    <p class="box-text">3 days ago: ${weeksHydroData[2]}oz</p>
+    <p class="box-text">4 days ago: ${weeksHydroData[3]}oz</p>
+    <p class="box-text">5 days ago: ${weeksHydroData[4]}oz</p>
+    <p class="box-text">6 days ago: ${weeksHydroData[5]}oz</p>
+    <p class="box-text">7 days ago: ${weeksHydroData[6]}oz</p>
+    </section>
                          `
 }
 
+function makeSleep(user) {
+  let newSleep = new Sleep(sleepData, user)
+  showSleepCard(newSleep)
+}
+
+function showSleepCard(newSleep) {
+  let weeksSleepData = newSleep.getOneUserWeekOfSleepData('2019/06/16')
+  sleep.innerHTML = `
+  <section class="sleep-data"><p>Hours Slept Average: ${newSleep.getAverageDailySleep()} hours</p><p>Sleep Quality Average: ${newSleep.getAverageSleepQuality()}</p></section>
+  <section class="sleep-data"><p>Todays Hours Slept: ${newSleep.getSleepForSpecificDay(todaysDate)}</p><p>Todays Sleep Quality: ${newSleep.getQualityForSpecificDay(todaysDate)}</p></section>
+  <section class="sleep-data">
+  <p class="box-text">Yesterday's Sleep: Hours Slept: ${weeksSleepData[0].hoursSlept} Sleep Quality ${weeksSleepData[0].sleepQuality}</p>
+  <p class="box-text">${weeksSleepData[1].date}: Hours Slept: ${weeksSleepData[1].hoursSlept} Sleep Quality ${weeksSleepData[1].sleepQuality}
+  <p class="box-text">${weeksSleepData[2].date}: Hours Slept: ${weeksSleepData[2].hoursSlept} Sleep Quality ${weeksSleepData[2].sleepQuality}
+  <p class="box-text">${weeksSleepData[3].date}: Hours Slept: ${weeksSleepData[3].hoursSlept} Sleep Quality ${weeksSleepData[3].sleepQuality}
+  <p class="box-text">${weeksSleepData[4].date}: Hours Slept: ${weeksSleepData[4].hoursSlept} Sleep Quality ${weeksSleepData[4].sleepQuality}
+  <p class="box-text">${weeksSleepData[5].date}: Hours Slept: ${weeksSleepData[5].hoursSlept} Sleep Quality ${weeksSleepData[5].sleepQuality}
+  <p class="box-text">${weeksSleepData[6].date}: Hours Slept: ${weeksSleepData[6].hoursSlept} Sleep Quality ${weeksSleepData[6].sleepQuality}
+  </section>
+  `
+}
 
 
 

@@ -2,49 +2,48 @@
 <html>
   <head>
     <meta charset="UTF-8">
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Activity Tracker</title>
   </head>
   <body>
     <h1>Activity Tracker</h1>
-
-    <section class="greeting">
-    </section>
-
     <section class="content">
+      <section class="greeting">
+      </section>
 
       <section class="user">
-      <script type="text/javascript" src="../src/user.js"></script>
       </section>
 
-      <section class="user-repo">
-      <script type="text/javascript" src="../src/UserRepository.js"></script>
+      <!-- <section class="user-repo"> -->
+      <!-- </section> -->
+
+      <section class="users">
+        <p>Users</p>
+        <section class="step-goal">
+        </section>
       </section>
-
-        <section class="users">
-          <p>Users</p>
-          <script type="text/javascript" src="../data/users.js"></script>
-        </section>
-        <section class="hydration">
-          <p>Hydration</p>
-          <script type="text/javascript" src="../data/hydration.js"></script>
-        </section>
-        <section class="sleep">
-          <p>Sleep</p>
-          <script type="text/javascript" src="../data/sleep.js"></script>
-        </section>
-        <section class="activity">
-          <p>Activity</p>
-          <script type="text/javascript" src="../data/activity.js"></script>
-        </section>
+      <section class="hydration">
+        <p>Hydration</p>
+      </section>
+      <section class="sleep">
+        <p>Sleep</p>
+      </section>
+      <section class="activity">
+        <p>Activity</p>
+      </section>
     </section>
-
-    <section class="step-goal">
-    </section>
-
     <section class="scripts">
+      <script type="text/javascript" src="../src/UserRepository.js"></script>
+      <script type="text/javascript" src="../data/users.js"></script>
+      <script type="text/javascript" src="../src/user.js"></script>
+      <script type="text/javascript" src="../data/hydration.js"></script>
       <script type="text/javascript" src="./Hydration.js"></script>
+      <script type="text/javascript" src="../data/sleep.js"></script>
+      <script type="text/javascript" src="./Sleep.js"></script>
+      <script type="text/javascript" src="../data/activity.js"></script>
+      <script type="text/javascript" src="./Activity.js"></script>
       <script type="text/javascript" src="./scripts.js"></script>
     </section>
   </body>
-</html>
+  </html>

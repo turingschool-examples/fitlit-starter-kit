@@ -30,7 +30,8 @@ let hydrationData = [
     "userID": 3,
     "date": "2019/06/16",
     "numOunces": 99
-  },{
+  },
+  {
     "userID": 1,
     "date": "2019/06/17",
     "numOunces": 96
@@ -111,5 +112,8 @@ describe('Hydration', function() {
       { userID: 1, date: '2019/06/15', numOunces: 37 },
       undefined, undefined, undefined, undefined
     ])
+  })
+  it('should be able to get total fluid ounces for each day in a week for one user', function() {
+    expect(hydration.getWeekofFluidOz('2019/06/15')).to.deep.equal([37, 69, 96])
   })
 })

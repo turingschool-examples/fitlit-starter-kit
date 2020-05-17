@@ -227,6 +227,15 @@ h1 {
   width: 90%;
 }
 
+.activity-compare {
+  border: 1px solid #FFE066;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px -5px #fff;
+  height: auto;
+  text-align: center;
+  width: 90%;
+}
+
 .scripts {
   display: none;
 }

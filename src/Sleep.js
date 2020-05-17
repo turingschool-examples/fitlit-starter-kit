@@ -54,8 +54,8 @@ class Sleep {
     let userSleepData = this.getUserSleepData()
     let todaysSleep = userSleepData.find(sleep => sleep.date === date)
     let startIndex = userSleepData.indexOf(todaysSleep)
-    for (let i = 0; i < 7; i++) {
-      sleeps.push(userSleepData[startIndex + i])
+    for (let i = 0; i < 8; i++) {
+      sleeps.push(userSleepData[startIndex - i])
     }
     return sleeps
   }
@@ -118,7 +118,7 @@ class Sleep {
     let userSleepData = this.sleepData
     let todaysSleep = userSleepData.find(sleep => sleep.date === date)
     let startIndex = userSleepData.indexOf(todaysSleep)
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 8; i++) {
       sleeps.push(userSleepData[startIndex + i])
     }
     return sleeps

@@ -3,11 +3,8 @@ const users = document.querySelector('.users')
 const hydration = document.querySelector('.hydration')
 const sleep = document.querySelector('.sleep')
 const activity = document.querySelector('.activity')
-const stepGoal = document.querySelector('.step-goal')
 var userRepo = new UserRepository(userData);
 var todaysDate = '2019/09/22'
-
-
 
 function makeUser() {
   const randomUser = Math.floor(Math.random() * userData.length)
@@ -18,8 +15,8 @@ function makeUser() {
 }
 
 function showInfoCard(user) {
-  users.innerHTML = `<section class='info-card'>
-                     <p>User: ${user.name}</p>
+  users.innerHTML = `<section class="userInfo">
+                     <p class="welcome">Welcome Back ${user.name.split(' ')[0]}!</p>
                      <p>Address: ${user.address}</p>
                      <p>Email: ${user.email}</p>
                      <p>Stride Length: ${user.strideLength}</p>
@@ -27,8 +24,11 @@ function showInfoCard(user) {
                      <section class='friends-names'>Your friends:</section>
                      <p>ID: ${user.id}</p>
                      </section>
-                     `;
+                     <section class='step-goal'>
+                     </section>
+                     `
 }
+
 
 function createFriendsList(user) {
   const friendsNames = document.querySelector('.friends-names')
@@ -36,16 +36,11 @@ function createFriendsList(user) {
   friendsList.forEach(friend => friendsNames.insertAdjacentHTML('beforeEnd', `<p>${friend.name.split(' ')[0]}</p>`))
 }
 
-function showFirstName(user) {
-  greeting.innerHTML = `<p>Welcome ${user.getFirstName()}</p>`
-}
-
 function createStepGoal(user) {
+  const stepGoal = document.querySelector('.step-goal')
   stepGoal.innerHTML =
-  `<section class='step-goal'>
-  <p>${user.getFirstName()}'s goal is  ${user.dailyStepGoal} steps per day, and the average is  ${userRepo.getAverageStepGoal()} steps per day.
-  <p class="ahead-or-behind"></p>
-  </section>`
+  `<p>${user.getFirstName()}'s goal is  ${user.dailyStepGoal} steps per day, and the average is  ${userRepo.getAverageStepGoal()} steps per day.
+  <p class="ahead-or-behind"></p>`
 }
 
 function compareStepGoal(user) {
@@ -56,7 +51,6 @@ function compareStepGoal(user) {
 }
 
 function displayUserInfo(user) {
-  showFirstName(user)
   showInfoCard(user)
   createFriendsList(user)
   createStepGoal(user)
@@ -64,26 +58,25 @@ function displayUserInfo(user) {
 }
 
 function makeHydration(user) {
-  let newHydration = new Hydration(hydrationData, user)
+  const newHydration = new Hydration(hydrationData, user)
   showHydrationCard(newHydration)
 }
 
 function showHydrationCard(newHydration) {
   let weeksHydroData = newHydration.getWeekOfHydroData(todaysDate)
-  console.log(weeksHydroData)
   hydration.innerHTML = `
-    <section class="hydration-data"><p>Hydration Average: ${newHydration.getAverageDailyOunces()} oz</p></section>
-    <section class="weekly-hydration"><p>Todays Hydration: ${newHydration.getOuncesForSpecificDay(todaysDate)} oz</p></section>
-    <section class="hydration-data">
-    <p class="box-text">Yesterday's Hydration: ${weeksHydroData[0].numOunces} oz</p>
-    <p class="box-text">2 days ago: ${weeksHydroData[1]}oz</p>
-    <p class="box-text">3 days ago: ${weeksHydroData[2]}oz</p>
-    <p class="box-text">4 days ago: ${weeksHydroData[3]}oz</p>
-    <p class="box-text">5 days ago: ${weeksHydroData[4]}oz</p>
-    <p class="box-text">6 days ago: ${weeksHydroData[5]}oz</p>
-    <p class="box-text">7 days ago: ${weeksHydroData[6]}oz</p>
-    </section>
-                         `
+       <section class="hydration-data"><p>Hydration Average: ${newHydration.getAverageDailyOunces()} oz</p></section>
+       <section class="weekly-hydration"><p>Todays Hydration: ${newHydration.getOuncesForSpecificDay(todaysDate)} oz</p></section>
+       <section class="hydration-data">
+       <p class="box-text">Yesterday's Hydration: ${weeksHydroData[0].numOunces} oz</p>
+       <p class="box-text">2 days ago: ${weeksHydroData[1]}oz</p>
+       <p class="box-text">3 days ago: ${weeksHydroData[2]}oz</p>
+       <p class="box-text">4 days ago: ${weeksHydroData[3]}oz</p>
+       <p class="box-text">5 days ago: ${weeksHydroData[4]}oz</p>
+       <p class="box-text">6 days ago: ${weeksHydroData[5]}oz</p>
+       <p class="box-text">7 days ago: ${weeksHydroData[6]}oz</p>
+       </section>
+       `
 }
 
 function makeSleep(user) {
@@ -107,6 +100,8 @@ function showSleepCard(newSleep) {
   </section>
   `
 }
+
+
 
 
 

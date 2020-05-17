@@ -45,7 +45,6 @@ class Activity {
     for (let i = 0; i < 7 ; i++) {
       weeksActivity.push(userActivityData[startIndex - i])
     }
-    console.log(weeksActivity);
     return weeksActivity
   }
 
@@ -58,6 +57,11 @@ class Activity {
   getAllDaysStepGoalWasExceeded() {
     const userActivityData = this.getUserActivityData()
     return userActivityData.filter(data => data.numSteps > this.currentUser.dailyStepGoal)
+  }
+
+  getAllDaysStepGoalWasNotExceeded() {
+    const userActivityData = this.getUserActivityData()
+    return userActivityData.filter(data => data.numSteps < this.currentUser.dailyStepGoal)
   }
 
   getStairClimbRecord() {

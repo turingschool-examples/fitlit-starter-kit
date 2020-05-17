@@ -2,7 +2,7 @@ class Hydration {
   constructor(hydrationData, user) {
     // if(hydrationData && user)
     this.hydrationData = hydrationData;
-    this.currentUser = user;
+    this.currentUser = user || {id: 0, name: 'no user'};
   }
 
   getUserHydrationData() {

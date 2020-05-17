@@ -30,7 +30,8 @@ let hydrationData = [
     "userID": 3,
     "date": "2019/06/16",
     "numOunces": 99
-  },{
+  },
+  {
     "userID": 1,
     "date": "2019/06/17",
     "numOunces": 96

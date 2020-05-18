@@ -117,7 +117,6 @@ function showActivityCard(newActivity) {
   <p>You walked: ${newActivity.getUserActivityToday(todaysDate).numSteps} steps today. The average was ${newActivity.getAveragesForAll(todaysDate, 'numSteps')}</p>
   <p>You climbed: ${newActivity.getUserActivityToday(todaysDate).flightsOfStairs} flights of stairs today. The average was ${newActivity.getAveragesForAll(todaysDate, 'flightsOfStairs')}</p>
   <p>You had: ${newActivity.getUserActivityToday(todaysDate).minutesActive} minutes active today. The average was ${newActivity.getAveragesForAll(todaysDate, 'minutesActive')}</p>
-  <p>You had: ${newActivity.getUserActivityToday(todaysDate).minutesActive} minutes active today. The average was ${newActivity.getAveragesForAll(todaysDate, 'minutesActive')}</p>
   </section>
   <section class="activity-data">
   <p class="box-text">Yesterday's Activity: Steps: ${weeksActivityData[1].numSteps} Minutes Active: ${weeksActivityData[1].minutesActive} Flights Of Stairs: ${weeksActivityData[1].flightsOfStairs}</p>

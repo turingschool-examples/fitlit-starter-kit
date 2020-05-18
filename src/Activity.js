@@ -80,6 +80,17 @@ class Activity {
     return Math.round(allUserStairs / todaysActivity.length);
   }
 
+  getOneUserWeekOfActivityData(date) {
+    let activity = []
+    let userActivityData = this.getUserActivityData()
+    let todaysActivity = userActivityData.find(activity=> activity.date === date)
+    let startIndex = userActivityData.indexOf(todaysActivity)
+    for (let i = 0; i < 8; i++) {
+      activity.push(userActivityData[startIndex - i])
+    }
+    return activity
+  }
+
 }
 
 if (typeof module !== 'undefined') {

@@ -108,7 +108,7 @@ function makeActivity(user) {
 }
 
 function showActivityCard(newActivity) {
-  let weeksActivityData = newActivity.getTodaysActivity(todaysDate)
+  let weeksActivityData = newActivity.getOneUserWeekOfActivityData(todaysDate)
   activity.innerHTML = `
   <section class="activity-miles"><p>Today's Miles Walked: ${newActivity.getMilesWalkedToday(todaysDate)} miles</p></section>
   <section class="activity-minutes"><p>Today's Active Minutes: ${newActivity.getUserActivityMinutes(todaysDate)}</p></section>
@@ -119,11 +119,17 @@ function showActivityCard(newActivity) {
   <p>You had: ${newActivity.getUserActivityToday(todaysDate).minutesActive} minutes active today. The average was ${newActivity.getAveragesForAll(todaysDate, 'minutesActive')}</p>
   <p>You had: ${newActivity.getUserActivityToday(todaysDate).minutesActive} minutes active today. The average was ${newActivity.getAveragesForAll(todaysDate, 'minutesActive')}</p>
   </section>
-  <section class="activity-data"><p>Week of Activity Data</p>
+  <section class="activity-data">
+  <p class="box-text">Yesterday's Activity: Steps: ${weeksActivityData[1].numSteps} Minutes Active: ${weeksActivityData[1].minutesActive} Flights Of Stairs: ${weeksActivityData[1].flightsOfStairs}</p>
+  <p class="box-text">${weeksActivityData[2].date}: Steps: ${weeksActivityData[2].numSteps} Minutes Active: ${weeksActivityData[2].minutesActive} Flights Of Stairs: ${weeksActivityData[2].flightsOfStairs}</p>
+  <p class="box-text">${weeksActivityData[3].date}: Steps: ${weeksActivityData[3].numSteps} Minutes Active: ${weeksActivityData[3].minutesActive} Flights Of Stairs: ${weeksActivityData[3].flightsOfStairs}</p>
+  <p class="box-text">${weeksActivityData[4].date}: Steps: ${weeksActivityData[4].numSteps} Minutes Active: ${weeksActivityData[4].minutesActive} Flights Of Stairs: ${weeksActivityData[4].flightsOfStairs}</p>
+  <p class="box-text">${weeksActivityData[5].date}: Steps: ${weeksActivityData[5].numSteps} Minutes Active: ${weeksActivityData[5].minutesActive} Flights Of Stairs: ${weeksActivityData[5].flightsOfStairs}</p>
+  <p class="box-text">${weeksActivityData[6].date}: Steps: ${weeksActivityData[6].numSteps} Minutes Active: ${weeksActivityData[6].minutesActive} Flights Of Stairs: ${weeksActivityData[6].flightsOfStairs}</p>
+  <p class="box-text">${weeksActivityData[7].date}: Steps: ${weeksActivityData[7].numSteps} Minutes Active: ${weeksActivityData[7].minutesActive} Flights Of Stairs: ${weeksActivityData[7].flightsOfStairs}</p>
   </section>
   `
 }
-
 
 
 

@@ -1,8 +1,7 @@
 class Sleep {
   constructor(sleepData, user) {
     this.sleepData = sleepData;
-    this.currentUser = user;
-    
+    this.currentUser = user || {id: 0, name: 'no user'};
   }
 
   getUserSleepData() {
@@ -101,14 +100,12 @@ class Sleep {
       return profile.userID === entry.userID
     })
     const newEntry = {date: entry.date, hoursSlept: entry.hoursSlept, sleepQuality: entry.sleepQuality}
-  
     if (userProfile) {
       userProfile.entries.push(newEntry)
     } else {
       const newUserProfile = {userID: entry.userID, entries: [newEntry]}
       acc.push(newUserProfile)
     }
-  
     return acc
     }, [])
   }

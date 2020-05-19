@@ -17,7 +17,7 @@ function makeUser() {
 
 function showInfoCard(user) {
   users.innerHTML = `<section class="user-info">
-                     <p class="welcome">Welcome Back ${user.name.split(' ')[0]}!</p>
+                     <p class="welcome">Welcome Back ${user.getFirstName()}!</p>
                      <p>Address: ${user.address}</p>
                      <p>Email: ${user.email}</p>
                      <p>Stride Length: ${user.strideLength}</p>
@@ -104,10 +104,10 @@ function showSleepCard(newSleep) {
 
 function makeActivity(user) {
   let newActivity = new Activity(activityData, user)
-  showActivityCard(newActivity)
+  showActivityCard(newActivity, user)
 }
 
-function showActivityCard(newActivity) {
+function showActivityCard(newActivity, user) {
   let weeksActivityData = newActivity.getOneUserWeekOfActivityData(todaysDate)
   activity.innerHTML = `
   <section class="activity-miles"><p>Today's Miles Walked: ${newActivity.getMilesWalkedToday(todaysDate)} miles</p></section>
@@ -128,6 +128,7 @@ function showActivityCard(newActivity) {
   <p class="box-text">${weeksActivityData[7].date}: Steps: ${weeksActivityData[7].numSteps} Minutes Active: ${weeksActivityData[7].minutesActive} Flights Of Stairs: ${weeksActivityData[7].flightsOfStairs}</p>
   </section>
   `
+  newActivity.getFriendsData(user, todaysDate)
 }
 
 
@@ -135,14 +136,5 @@ function showActivityCard(newActivity) {
 
 
 makeUser()
-// showInfoCard()
-// showFirstName()
-// compareStepGoal()
 
 
-
-
-// Create an info card on the dashboard with all of user’s info on the page
-// Display their first name somewhere prominently on the page to welcome them
-// For a specific user, display how their step goal compares to the average step
-//  goal amongst all users (this display should not be hard-coded)

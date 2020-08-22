@@ -5,13 +5,20 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha",
-    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
+    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'",
+    "homepage": "http://BlakeDonn.github.io/fitlit-starter-kit",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "respository": {
+    "url": "git+https://github.com/USERNAME/REPONAME.git"
   },
   "author": "Turing School of Software and Design",
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
+    "gh-pages": "^3.1.0",
     "mocha": "^7.1.2"
   },
   "dependencies": {}

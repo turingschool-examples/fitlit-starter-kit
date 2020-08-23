@@ -48,7 +48,7 @@ describe("User", () => {
             },
 
     userRepository = new UserRepository([user1,user2,user3]);
-    user = new User();
+    user = new User(userRepository.userData[0]);
   });
 
   it("should be a function", () => {
@@ -56,11 +56,16 @@ describe("User", () => {
   });
 
   it("should instance of User", () => {
-    let user = new User;
     expect(user).to.be.an.instanceOf(User)
-  })
+  });
 
+  it("should store a user data", () => {
+    expect(user.userData).to.be.equal(userRepository.userData[0])
+  });
 
+  it("should returns a user first name only", () => {
+    expect(user.returnFristName()).to.be.equal("Luisa")
+  });
 })
 
 

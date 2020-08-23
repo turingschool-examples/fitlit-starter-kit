@@ -38,6 +38,3 @@ describe("User", () => {
     expect(user.returnFristName()).to.be.equal("Luisa")
   });
 })
-
-
-//

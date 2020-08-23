@@ -4,7 +4,7 @@ const DailyHydration = require("../src/Daily-Hydration")
 
 
 describe("DailyHydration", () => {
-  let day1, day2, day3;
+  let user1Day1, user1Day2, user1Day3;
   let dailyHydration;
   beforeEach(() => {
     day1 = {
@@ -17,11 +17,7 @@ describe("DailyHydration", () => {
                 "date": "2019/06/16",
                 "numOunces": 69
               },
-    day3 =   {
-                "userID": 1,
-                "date": "2019/06/17",
-                "numOunces": 96
-              },
+
     dailyHydration = new DailyHydration(day1);
   });
 
@@ -37,11 +33,11 @@ describe("DailyHydration", () => {
     expect(dailyHydration.userHydration).to.be.equal(day1);
   });
 
-  it("should be able to return oz of water for a specific day", () => {
-    expect(dailyHydration.returnDailyOz()).to.be.equal(37);
-  });
-
-  it("should be able to return oz of water for another specific day", () => {
-    expect(dailyHydration.returnDailyOz()).to.be.equal(37);
-  });
+  // it("should be able to return oz of water for a specific day", () => {
+  //   expect(dailyHydration.returnDailyOz()).to.be.equal(37);
+  // });
+  //
+  // it("should be able to return oz of water for another specific day", () => {
+  //   expect(dailyHydration.returnDailyOz()).to.be.equal(69);
+  // });
 });

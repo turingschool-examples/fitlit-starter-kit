@@ -4,7 +4,8 @@ const UserRepository = require("../src/UserRepository")
 
 describe("UserRepository", () => {
   let user1, user2, user3;
-  beforeEach(function() => {
+  let userRepository
+  beforeEach((done) => {
     user1 =  {
                 "id": 1,
                 "name": "Luisa Hane",
@@ -46,7 +47,9 @@ describe("UserRepository", () => {
                 33
               ]
             },
-  })
+    userRepository = new UserRepository([user1,user2,user3]);
+    done();
+  });
 
   it("should be a function", () => {
     expect(UserRepository).to.be.a("function")
@@ -56,5 +59,12 @@ describe("UserRepository", () => {
     expect(userRepository).to.be.an.instanceOf(UserRepository)
   });
 
-  
+  it("should store user data", () => {
+    expect(userRepository.userData[0]).to.deep.equal(user1)
+  });
+
+  it("should return a user given an id", () => {
+    expect(userRepository.returnUserData(user1.id)).to.be.equal(user1)
+  });
+
 })

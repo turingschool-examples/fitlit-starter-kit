@@ -48,5 +48,13 @@ describe("UserRepository", () => {
             },
   })
 
+  it("should be a function", () => {
+    expect(UserRepository).to.be.a("function")
+  });
 
+  it("should be an instance of UserRepository", () => {
+    expect(userRepository).to.be.an.instanceOf(UserRepository)
+  });
+
+  
 })

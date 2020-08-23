@@ -5,7 +5,7 @@ const UserRepository = require("../src/UserRepository")
 describe("UserRepository", () => {
   let user1, user2, user3;
   let userRepository
-  beforeEach((done) => {
+  beforeEach(() => {
     user1 =  {
                 "id": 1,
                 "name": "Luisa Hane",
@@ -48,7 +48,6 @@ describe("UserRepository", () => {
               ]
             },
     userRepository = new UserRepository([user1,user2,user3]);
-    done();
   });
 
   it("should be a function", () => {

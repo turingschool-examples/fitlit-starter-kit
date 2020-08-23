@@ -67,4 +67,7 @@ describe("UserRepository", () => {
     expect(userRepository.returnUserData(user1.id)).to.be.equal(user1)
   });
 
+  it("should average step goal amongst all users", () => {
+    expect(Math.round(userRepository.getAvgStepGoal())).to.be.equal(6667)
+  });
 })

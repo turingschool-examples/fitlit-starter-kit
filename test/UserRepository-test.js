@@ -4,7 +4,7 @@ const UserRepository = require("../src/UserRepository")
 
 describe("UserRepository", () => {
   let user1, user2, user3;
-  let userRepository
+  let userRepository;
   beforeEach(() => {
     user1 =  {
                 "id": 1,

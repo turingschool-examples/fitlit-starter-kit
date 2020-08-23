@@ -4,7 +4,8 @@ const User = require("../src/User")
 const UserRepository = require("../src/UserRepository")
 
 describe("User", () => {
-  beforeEach(() =>{
+  let user1;
+  beforeEach(() => {
     user1 =  {
                 "id": 1,
                 "name": "Luisa Hane",
@@ -18,7 +19,7 @@ describe("User", () => {
                   8
                 ]
               },
-    userRepository = new UserRepository([user1,user2,user3]);
+    userRepository = new UserRepository([user1]);
     user = new User(userRepository.userData[0]);
   });
 

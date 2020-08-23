@@ -5,7 +5,6 @@ class User {
 
   returnFristName(){
     const firstName = this.userData.name.split(" ");
-    console.log(firstName);
     return firstName[0];
   }
 }

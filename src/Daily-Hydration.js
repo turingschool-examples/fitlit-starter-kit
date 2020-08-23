@@ -1,6 +1,11 @@
 class DailyHydration {
-  constructor() {
-
+  constructor(userHydration) {
+    this.userHydration = userHydration;
+  }
+  returnDailyOz(){
+    return this.userHydration.find(dailyHydration =>{
+      
+    })
   }
 }
 

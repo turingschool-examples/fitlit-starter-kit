@@ -148,6 +148,10 @@ describe('UserRepo', () => {
     expect(userRepo.users).to.deep.equal(userData)
   });
 
+  it('should be able to search the users by ID number', () => {
+    expect(userRepo.searchUsersByID(3)).to.equal(userData[2])
+  })
+
 
 
 

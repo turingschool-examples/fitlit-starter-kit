@@ -13,9 +13,10 @@ class HydrationRepository {
     }, 0)
     return Math.round(allTimeOunces / this.userHydration.length);
   }
-//   dailyHydration(hydrationData, id) {
-//     this.userHydration = hydrationData.filter(dailyHydration => dailyHydration.userID === id);
-// }
+  dayOunces(dateSelected) {
+    return this.userHydration.find(day => day.date === dateSelected).numOunces;
+  }
+
 }
 if (typeof module !== 'undefined') {
   module.exports = HydrationRepository;

@@ -3,7 +3,7 @@ const expect = chai.expect;
 const HydrationRepository = require("../src/HydrationRepository")
 
 describe("HydrationRepository", () => {
-  let sampleHydrationData, hydrationRepository, filterUser1, filterUser2
+  let sampleHydrationData, hydrationRepository, filterUser1, filterUser2, user1Data;
   beforeEach(() => {
     sampleHydrationData = [ {
       "userID": 1,
@@ -47,6 +47,7 @@ describe("HydrationRepository", () => {
       sampleHydrationData[5]
     ]
     hydrationRepository = new HydrationRepository();
+    user1Data = hydrationRepository.userHydrationData(sampleHydrationData, 1);
   });
 
   it("should be a function", () => {
@@ -58,19 +59,20 @@ describe("HydrationRepository", () => {
   });
 
   it("should store user hydration data", () => {
-    hydrationRepository.userHydrationData(sampleHydrationData, 1);
     expect(hydrationRepository.userHydration).to.be.deep.equal(filterUser1);
   });
 
   it("should store another users data", () => {
-    hydrationRepository.userHydrationData(sampleHydrationData, 2);
+    user2Data = hydrationRepository.userHydrationData(sampleHydrationData, 2);
     expect(hydrationRepository.userHydration).to.be.deep.equal(filterUser2);
   });
 
   it("should return average all-time ounces per a user", () =>{
-    hydrationRepository.userHydrationData(sampleHydrationData, 1);
     expect(hydrationRepository.averageAllTimeOunces()).to.be.equal(67)
   });
 
+  it("should should return average daily ounces per a user", () =>{
+      
+  })
 });
 

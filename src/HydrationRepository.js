@@ -5,9 +5,14 @@ class HydrationRepository {
   userHydrationData(hydrationData, id) {
     this.userHydration = hydrationData.filter(dailyHydration => dailyHydration.userID === id);
     return this.userHydration;
-}
-// averageAllTimeOunces() {
-// }
+  }
+  averageAllTimeOunces() {
+    let allTimeOunces = this.userHydration.reduce((ounces, day) =>{
+      ounces += day.numOunces;
+      return ounces 
+    }, 0)
+    return Math.round(allTimeOunces / this.userHydration.length);
+  }
 //   dailyHydration(hydrationData, id) {
 //     this.userHydration = hydrationData.filter(dailyHydration => dailyHydration.userID === id);
 // }

@@ -4,8 +4,7 @@ class User {
   }
 
   returnFristName(){
-    const firstName = this.userData.name.split(" ");
-    return firstName[0];
+    return this.userData.name.split(" ")[0];
   }
 }
 

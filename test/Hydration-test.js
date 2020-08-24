@@ -1,12 +1,9 @@
 const chai = require("chai");
 const expect = chai.expect;
-const AllTimeHydration = require("../src/All-Time-Hydration")
+const Hydration = require("../src/Hydration")
 
-describe("AllTimeHydration", () => {
-  let sampleHydrationData
-  let allTimeHydration;
-  let filterUser1
-  let filterUser2
+describe("Hydration", () => {
+  let sampleHydrationData, hydration, filterUser1, filterUser2
   beforeEach(() => {
     sampleHydrationData = [ {
                               "userID": 1,
@@ -49,28 +46,24 @@ describe("AllTimeHydration", () => {
                     sampleHydrationData[4],
                     sampleHydrationData[5]
                   ]
-    allTimeHydration = new AllTimeHydration();
+    hydration = new Hydration();
   });
 
   it("should be a function", () => {
-    expect(AllTimeHydration).to.be.a("function")
+    expect(Hydration).to.be.a("function")
   });
 
   it("should be an instance of DailyHydration", () => {
-    expect(allTimeHydration).to.be.an.instanceof(AllTimeHydration)
+    expect(hydration).to.be.an.instanceof(Hydration)
   });
 
-  // it("should have access to hydration data", () => {
-  //   expect(sampleHydrationData.length).to.be.equal(6)
-  // });
-
   it("should return ounces consumed per day for all time", () => {
-    expect(allTimeHydration.returnAllTimeHydration(
+    expect(hydration.returnAllTimeHydration(
       sampleHydrationData, 1)).to.be.deep.equal(filterUser1);
   });
 
   it("should return ounces consumed for another user", () => {
-    expect(allTimeHydration.returnAllTimeHydration(
+    expect(hydration.returnAllTimeHydration(
       sampleHydrationData, 2)).to.be.deep.equal(filterUser2);
   });
 });

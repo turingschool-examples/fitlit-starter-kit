@@ -1,4 +1,4 @@
-class AllTimeHydration {
+class Hydration {
   constructor() {
 
   }
@@ -9,5 +9,5 @@ class AllTimeHydration {
 
 
 if (typeof module !== 'undefined') {
-  module.exports = AllTimeHydration;
+  module.exports = Hydration;
 }

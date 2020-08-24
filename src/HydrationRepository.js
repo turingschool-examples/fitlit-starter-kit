@@ -16,6 +16,11 @@ class HydrationRepository {
   dayOunces(dateSelected) {
     return this.userHydration.find(day => day.date === dateSelected).numOunces;
   }
+  dailyOuncesPerGivenWeek(startDate) {         
+    let startingDate = this.userHydration.find(day => day.date === startDate);
+    let firstDay = this.userHydration.indexOf(startingDate);
+    return this.userHydration.slice(firstDay, firstDay + 7).map(day => day.numOunces)
+  }
 
 }
 if (typeof module !== 'undefined') {

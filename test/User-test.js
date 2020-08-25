@@ -17,6 +17,14 @@ describe('UserRepository', () => {
   });
 
   it('should take in a single user data', () => {
-    expect(user.userData).to.deep.equal([userSamples[0]]);
+    expect(user.userData).to.deep.equal(userSamples[0]);
+  });
+
+  it('should have proper key/values for user data', () => {
+    expect(user.userData.id).to.equal(userSamples[0].id);
+  });
+
+  it('should return users first name only', () => {
+    expect(user.returnFirstName()).to.equal('Luisa');
   });
 });

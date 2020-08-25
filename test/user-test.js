@@ -172,4 +172,8 @@ describe('User', () => {
     expect(user.friends).to.deep.equal([19, 11, 42, 33]);
   })
 
+  it('should return the user\'s first name', () => {
+    expect(user.getFirstName()).to.equal('Herminia');
+  })
+
 })

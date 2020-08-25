@@ -6,7 +6,7 @@ class UserRepository {
   returnUserData(userID) {
     return this.data.filter(datum => {
       if (datum.id === userID) {
-        return datum
+        return datum;
       }
     })
   }

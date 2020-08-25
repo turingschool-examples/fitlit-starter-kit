@@ -1,6 +1,7 @@
 class Sleep {
   constructor() {}
   userSleepData(sleepData, id) {
+    console.log(id)
     this.userSleep = sleepData.filter(dailySleep => dailySleep.userID === id);
     return this.userSleep;
   }
@@ -19,8 +20,8 @@ class Sleep {
     let firstDay = this.userSleep.indexOf(startingDate);
     return this.userSleep.slice(firstDay, firstDay + 7).map(day => day.hoursSlept)
   }
-  dailySleepQualityForWeek(startDate) {
-    let startingDate = this.userSleep.find(day => day.date === startDate)
+  dailySleepQualityForWeek(startDate, id) {
+    let startingDate = this.userSleep.find(day => day.date === startDate && day.userID === id)
     let firstDay = this.userSleep.indexOf(startingDate)
     return this.userSleep.slice(firstDay, firstDay + 7).map(day => day.sleepQuality)
   }
@@ -31,8 +32,22 @@ class Sleep {
     }, 0)
     return Math.round(average / allUserData.length * 10) / 10;
   }
-
+  sleepQualityAboveThree(date, userData) {
+    let qualityAboveThree = [];
+    userData.forEach(user => {
+      let allQuality = dailySleepQualityForWeek(startDate, user.userId)
+      let combinedQuality = allQuality.reduce((quality, day) =>{
+        quality += day
+      }, 0)
+      averageQuality = combinedQuality / allQuality.length
+      quality > 3 ? qualityAboveThree.push(user) : null;
+    })
+    return qualityAboveThree
+  }
 }
+
+
+
 if (typeof module !== 'undefined') {
   module.exports = Sleep;
 }

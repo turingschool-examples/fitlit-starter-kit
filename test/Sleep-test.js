@@ -163,7 +163,7 @@ describe("Sleep", () => {
   });
 
   it("should return daily sleep quality over 7 day period", () => {
-    expect(sleep.dailySleepQualityForWeek("2019/06/15")).to.deep.equal(sleepQuality)
+    expect(sleep.dailySleepQualityForWeek("2019/06/15", 2)).to.deep.equal(sleepQuality)
   })
 
   it("should return average sleep quality for all users", () => {

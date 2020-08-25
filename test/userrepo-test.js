@@ -152,6 +152,10 @@ describe('UserRepo', () => {
     expect(userRepo.searchUsersByID(3)).to.equal(userData[2])
   })
 
+  it('should return the average step goal of all users', () => {
+    expect(userRepo.calculateAverageStepGoals()).to.equal(7111)
+  })
+
 
 
 

@@ -182,7 +182,11 @@ describe("Sleep", () => {
 
   it("should return users that average sleep quality above 3", () => {
     sleep.userSleep = sampleSleepData;
-    expect(sleep.sleepQualityAboveThree("2019/06/15", sampleSleepData)).to.deep.equal(10)
+    expect(sleep.sleepQualityAboveThree("2019/06/15", sampleSleepData)).to.deep.equal([2])
+  })
+
+  it("should find the user who slept the most for a specified day", () =>{
+    expect(sleep.userWhoSleptTheMost("2019/06/15", sampleSleepData)).to.deep.equal(7)
   })
 
 });

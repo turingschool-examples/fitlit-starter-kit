@@ -1,3 +1,7 @@
 # Dependency directories
 node_modules/
-package-lock.json
+package-lock.json/
+data/activity.js/
+data/hydration.js/
+data/sleep.js/
+data/users.js/

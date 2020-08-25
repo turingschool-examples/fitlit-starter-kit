@@ -41,3 +41,5 @@ const userSampleData = [
     ]
   }
 ];
+
+module.exports = userSampleData;

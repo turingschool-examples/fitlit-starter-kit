@@ -13,12 +13,14 @@ function displayUserData() {
     return info.name
   })
 
+  const greeting = document.querySelector('.greeting');
   const userName = document.querySelector('.user-name');
   const userAddress = document.querySelector('.user-address');
   const userStrideLength = document.querySelector('.user-stride-length');
   const userDailyStepGoal = document.querySelector('.user-daily-step-goal');
   const userFriends = document.querySelector('.user-friends');
 
+  greeting.innerText = `Welcome ${user.getFirstName()}!`
   userName.innerText = user.name
   userAddress.innerText = user.address
   userStrideLength.innerText = user.strideLength

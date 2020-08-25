@@ -53,4 +53,4 @@ const sleepSampleData = [
     "hoursSlept": 4.6,
     "sleepQuality": 3.3
   }
-]
+];

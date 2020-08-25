@@ -18,4 +18,7 @@ describe('UserRepository', () => {
     expect(repo.data).to.equal(userSamples);
   });
 
+  it('should havea method to return user data', () => {
+    expect(repo.returnUserData(1)).to.deep.equal([userSamples[0]]);
+  });
 });

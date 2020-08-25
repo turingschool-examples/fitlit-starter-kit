@@ -3,9 +3,9 @@ const expect = chai.expect;
 const Sleep = require("../src/Sleep")
 
 describe("Sleep", () => {
-  let sleep, sampleSleepData, filterUser1, filterUser2, user1Data, weeklyData;
+  let sleep, sampleSleepData, filterUser1, filterUser2, user1Data, weeklyData, multipleUserData;
   beforeEach(() => {
-    sampleSleepData =  
+    sampleSleepData =
     [
       {
         "userID": 1,
@@ -66,7 +66,31 @@ describe("Sleep", () => {
         "date": "2019/06/17",
         "hoursSlept": 5.7,
         "sleepQuality": 3
-      },         
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/18",
+        "hoursSlept": 10.8,
+        "sleepQuality": 3.2
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/19",
+        "hoursSlept": 9.6,
+        "sleepQuality": 2.5
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/20",
+        "hoursSlept": 10.1,
+        "sleepQuality": 2.4
+      },
+      {
+        "userID": 2,
+        "date": "2019/06/21",
+        "hoursSlept": 4.3,
+        "sleepQuality": 4.8
+      },
     ]
     filterUser1 = [
       sampleSleepData[0],
@@ -80,9 +104,13 @@ describe("Sleep", () => {
     filterUser2 = [
       sampleSleepData[7],
       sampleSleepData[8],
-      sampleSleepData[9]
+      sampleSleepData[9],
+      sampleSleepData[10],
+      sampleSleepData[11],
+      sampleSleepData[12],
+      sampleSleepData[13],
     ]
-    weeklyData = [
+    hoursSlept = [
       sampleSleepData[0].hoursSlept,
       sampleSleepData[1].hoursSlept,
       sampleSleepData[2].hoursSlept,
@@ -91,7 +119,17 @@ describe("Sleep", () => {
       sampleSleepData[5].hoursSlept,
       sampleSleepData[6].hoursSlept
     ]
+    sleepQuality = [
+      sampleSleepData[0].sleepQuality,
+      sampleSleepData[1].sleepQuality,
+      sampleSleepData[2].sleepQuality,
+      sampleSleepData[3].sleepQuality,
+      sampleSleepData[4].sleepQuality,
+      sampleSleepData[5].sleepQuality,
+      sampleSleepData[6].sleepQuality
+    ]
     sleep = new Sleep();
+    multipleUserData = [].concat(filterUser1, filterUser2)
     user1Data = sleep.userSleepData(sampleSleepData, 1);
   });
   it("should be a function", () => {
@@ -121,7 +159,19 @@ describe("Sleep", () => {
   });
 
   it("should return daily sleep over 7 day period", () => {
-    expect(sleep.dailySleepPerGivenWeek("2019/06/15")).to.deep.equal(weeklyData)
+    expect(sleep.dailySleepHoursForWeek("2019/06/15")).to.deep.equal(hoursSlept)
   });
+
+  it("should return daily sleep quality over 7 day period", () => {
+    expect(sleep.dailySleepQualityForWeek("2019/06/15")).to.deep.equal(sleepQuality)
+  })
+
+  it("should return average sleep quality for all users", () => {
+    expect(sleep.averageSleepQualityForAllUsers(multipleUserData)).to.be.equal(3.1)
+  })
+
+  // it("should return users that average sleep quality above 3", () => {
+  //   expect(sleep.sleepQualityAboveThree("2019/06/15")).to.deep.equal()
+  // })
 
 });

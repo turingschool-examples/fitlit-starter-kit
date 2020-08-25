@@ -128,6 +128,15 @@ describe("Sleep", () => {
       sampleSleepData[5].sleepQuality,
       sampleSleepData[6].sleepQuality
     ]
+    sleepQuality = [
+      sampleSleepData[7].sleepQuality,
+      sampleSleepData[8].sleepQuality,
+      sampleSleepData[9].sleepQuality,
+      sampleSleepData[10].sleepQuality,
+      sampleSleepData[11].sleepQuality,
+      sampleSleepData[12].sleepQuality,
+      sampleSleepData[13].sleepQuality
+    ]
     sleep = new Sleep();
     multipleUserData = [].concat(filterUser1, filterUser2)
     user1Data = sleep.userSleepData(sampleSleepData, 1);
@@ -163,15 +172,17 @@ describe("Sleep", () => {
   });
 
   it("should return daily sleep quality over 7 day period", () => {
-    expect(sleep.dailySleepQualityForWeek("2019/06/15", 2)).to.deep.equal(sleepQuality)
+    sleep.userSleep = sampleSleepData;
+    expect(sleep.dailySleepQualityForWeek("2019/06/15",  2)).to.deep.equal(sleepQuality)
   })
 
   it("should return average sleep quality for all users", () => {
     expect(sleep.averageSleepQualityForAllUsers(multipleUserData)).to.be.equal(3.1)
   })
 
-  // it("should return users that average sleep quality above 3", () => {
-  //   expect(sleep.sleepQualityAboveThree("2019/06/15")).to.deep.equal()
-  // })
+  it("should return users that average sleep quality above 3", () => {
+    sleep.userSleep = sampleSleepData;
+    expect(sleep.sleepQualityAboveThree("2019/06/15", sampleSleepData)).to.deep.equal(10)
+  })
 
 });

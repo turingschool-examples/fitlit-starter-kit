@@ -144,5 +144,32 @@ describe('User', () => {
     expect(user).to.be.an.instanceof(User);
   });
 
+  it('should have a unique ID number', () => {
+    expect(user.id).to.equal(3)
+  })
+
+  it('should have a unique name', () => {
+    expect(user.name).to.equal('Herminia Witting')
+  })
+
+  it('should have a unique address', () => {
+    expect(user.address).to.equal('85823 Bosco Fork, East Oscarstad MI 85126-5660')
+  })
+
+  it('should have a unique email', () => {
+    expect(user.email).to.equal('Elwin.Tromp@yahoo.com')
+  })
+
+  it('should have a unique stride length', () => {
+    expect(user.strideLength).to.equal(4.4)
+  })
+
+  it('should have a unique daily step goal', () => {
+    expect(user.dailyStepGoal).to.equal(5000)
+  })
+
+  it('should have a friend list', () => {
+    expect(user.friends).to.deep.equal([19, 11, 42, 33]);
+  })
 
 })

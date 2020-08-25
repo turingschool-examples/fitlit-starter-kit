@@ -1,6 +1,5 @@
 console.log("Hello World");
 
-const greeting = document.querySelector('.greeting');
 const userCard = document.querySelector('.user-card');
 
 window.addEventListener('load', displayUserData);
@@ -19,6 +18,7 @@ function displayUserData() {
   const userStrideLength = document.querySelector('.user-stride-length');
   const userDailyStepGoal = document.querySelector('.user-daily-step-goal');
   const userFriends = document.querySelector('.user-friends');
+  const stepData = document.querySelector('.step-data');
 
   greeting.innerText = `Welcome ${user.getFirstName()}!`
   userName.innerText = user.name
@@ -26,6 +26,7 @@ function displayUserData() {
   userStrideLength.innerText = user.strideLength
   userDailyStepGoal.innerText = user.dailyStepGoal
   userFriends.innerText = friendList
+  stepData.innerText = `Your Step Goal: ${user.dailyStepGoal}, Average Step Goal: ${userRepo.calculateAverageStepGoals()}`
 }
 
 

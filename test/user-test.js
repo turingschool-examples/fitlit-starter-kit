@@ -7,7 +7,7 @@ const User = require('../src/User');
 describe('User', () => {
   let userData;
   let user;
-  beforeEach(() =. {
+  beforeEach(() => {
     userData = [
       {
         "id": 1,
@@ -136,7 +136,9 @@ describe('User', () => {
     user = new User(userData[2]);
   });
 
-
+  it('should be a function', () => {
+    expect(User).to.be.a('function');
+  });
 
 
 

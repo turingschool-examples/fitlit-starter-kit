@@ -140,7 +140,9 @@ describe('User', () => {
     expect(User).to.be.a('function');
   });
 
-
+  it('should instantiate a class of User', () => {
+    expect(user).to.be.an.instanceof(User);
+  });
 
 
 })

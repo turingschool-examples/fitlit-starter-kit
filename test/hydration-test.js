@@ -96,7 +96,10 @@ describe('HydrationRepo', () => {
 
   it('should calculate average all water ever imbibed by specific user', () => {
     expect(hydrationRepo.findUserAvgDailyHydration(1)).to.equal(23);
+  })
 
+  it('should return daily hyration stat by the day', () => {
+    expect(hydrationRepo.findDailyHydration(1, '2019/06/15')).to.equal(5);
   })
 
 

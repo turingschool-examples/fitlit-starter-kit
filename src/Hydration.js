@@ -12,6 +12,16 @@ class HydrationRepo {
     }, 0)
     return singleUserTotalOz / singleUserEntries.length
   }
+  findDailyHydration(userID, date) {
+    const singleUserEntries = this.hydroData.filter(userEntry => {
+      return userID === userEntry.userID
+    });
+    const singleDayHydration = singleUserEntries.find(day => {
+      date === day
+      return day
+    })
+    return singleDayHydration.numOunces
+  }
 }
 
 

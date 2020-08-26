@@ -79,7 +79,7 @@ describe("HydrationRepository", () => {
       sampleHydrationData[5].numOunces,
       sampleHydrationData[6].numOunces
     ]
-    hydrationRepository = new HydrationRepository();
+    hydrationRepository = new HydrationRepository(sampleHydrationData);
     user1Data = hydrationRepository.userHydrationData(sampleHydrationData, 1);
   });
 
@@ -92,16 +92,16 @@ describe("HydrationRepository", () => {
   });
 
   it("should store user hydration data", () => {
-    expect(hydrationRepository.userHydration).to.be.deep.equal(filterUser1);
+    expect(hydrationRepository.userHydrationData(1)).to.be.deep.equal(filterUser1);
   });
 
   it("should store another users data", () => {
     user2Data = hydrationRepository.userHydrationData(sampleHydrationData, 2);
-    expect(hydrationRepository.userHydration).to.be.deep.equal(filterUser2);
+    expect(hydrationRepository.userHydrationData(2)).to.be.deep.equal(filterUser2);
   });
 
   it("should return average all-time ounces per a user", () =>{
-    expect(hydrationRepository.averageAllTimeOunces()).to.be.equal(65)
+    expect(hydrationRepository.averageAllTimeOunces(1)).to.be.equal(65)
   });
 
   it("should should return ounces for a specified day", () =>{
@@ -113,4 +113,3 @@ describe("HydrationRepository", () => {
   });
 
 });
-

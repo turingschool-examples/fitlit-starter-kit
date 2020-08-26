@@ -44,17 +44,17 @@ describe('HydrationRepo', () => {
       },
       {
         "userID": 1,
-        "date": "2019/09/15",
+        "date": "2019/06/22",
         "numOunces": 35
       },
       {
         "userID": 1,
-        "date": "2019/02/15",
+        "date": "2019/06/23",
         "numOunces": 40
       },
       {
         "userID": 1,
-        "date": "2019/10/15",
+        "date": "2019/06/24",
         "numOunces": 45
       },
       {
@@ -101,7 +101,43 @@ describe('HydrationRepo', () => {
   it('should return daily hyration stat by the day', () => {
     expect(hydrationRepo.findDailyHydration(1, '2019/06/15')).to.equal(5);
   })
-
+  it('should return a full week\'s worth of hydration data from starting date onwards', () => {
+    expect(hydrationRepo.findWeeklyHydration(1, '2019/06/23')).to.deep.equal([{
+          "userID": 1,
+          "date": "2019/06/17",
+          "numOunces": 10
+        },
+        {
+          "userID": 1,
+          "date": "2019/06/18",
+          "numOunces": 15
+        },
+        {
+          "userID": 1,
+          "date": "2019/06/19",
+          "numOunces": 20
+        },
+        {
+          "userID": 1,
+          "date": "2019/06/20",
+          "numOunces": 25
+        },
+        {
+          "userID": 1,
+          "date": "2019/06/21",
+          "numOunces": 30
+        },
+        {
+          "userID": 1,
+          "date": "2019/06/22",
+          "numOunces": 35
+        },
+        {
+          "userID": 1,
+          "date": "2019/06/23",
+          "numOunces": 40
+        }])
+  })
 
 
 

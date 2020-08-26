@@ -1,12 +1,11 @@
 console.log("Hello World");
 
-const userCard = document.querySelector('.user-card');
+const user = new User(userData[33])
+const userRepo = new UserRepo(userData)
 
 window.addEventListener('load', displayUserData);
 
 function displayUserData() {
-  const user = new User(userData[33])
-  const userRepo = new UserRepo(userData)
   const friendList = user.friends.map(friend => {
   const info = userRepo.searchUsersByID(friend)
     return info.name

@@ -13,10 +13,11 @@ class Sleep {
     return Math.round((allTimeSleep / getUserData.length) * 10) / 10
   }
   daySleep(dateSelected, id) {
-    return this.sleepSet.find(day => day.date === dateSelected && day.userID === id).hoursSlept;
+    let dayData = this.sleepSet.find(day => day.date === dateSelected && day.userID === id);
+    return dayData
   }
-  weeklySleepProperties(startDate, id, property) {
-    let startingDate = this.sleepSet.find(day => day.date === startDate && day.userID === id);
+  weeklySleepProperties(dateSelected, id, property) {
+    let startingDate = this.daySleep(dateSelected, id);
     let firstDay = this.sleepSet.indexOf(startingDate);
     return this.sleepSet.slice(firstDay, firstDay + 7).map(day => day[property])
   }

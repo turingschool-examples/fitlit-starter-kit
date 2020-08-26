@@ -53,7 +53,7 @@ describe("Hydration", () => {
     expect(Hydration).to.be.a("function")
   });
 
-  it("should be an instance of DailyHydration", () => {
+  it("should be an instance of Hydration", () => {
     expect(hydration).to.be.an.instanceof(Hydration)
   });
 

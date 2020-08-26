@@ -9,6 +9,7 @@ class HydrationRepository {
 
   }
   averageAllTimeOunces(id) {
+    //change getUserData
     let getUserData = this.userHydrationData(id)
     let allTimeOunces = getUserData.reduce((ounces, day) =>{
       ounces += day.numOunces;

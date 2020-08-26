@@ -5,10 +5,11 @@ class Sleep {
   userSleepData(id) {
     return this.sleepSet.filter(dailySleep => dailySleep.userID === id);
   }
-  averageAllTimeSleep(id) {
+  averageAllTimeSleep(id, property) {
+    //change getUserData name
     let getUserData = this.userSleepData(id)
     let allTimeSleep = getUserData.reduce((sleep, day) =>{
-      return sleep += day.sleepQuality;
+      return sleep += day[property];
     }, 0)
     return Math.round((allTimeSleep / getUserData.length) * 10) / 10
   }
@@ -40,7 +41,20 @@ class Sleep {
     })
     return qualityAboveThree
   }
+  userWhoSleptTheMost(targetDate){
+    let sleepDataPerDay = this.sleepSet.filter(user => user.date === targetDate);
+    let topSleeper = sleepDataPerDay.sort((a, b) => b.hoursSlept - a.hoursSlept);
+    return topSleeper[0].userID;
+  }
+  userWhoSleptTheLeast(targetDate){
+    let sleepDataPerDay = this.sleepSet.filter(user => user.date === targetDate);
+    let topSleeper = sleepDataPerDay.sort((a, b) => a.hoursSlept - b.hoursSlept);
+    return topSleeper[0].userID;
+  }
+
 }
 if (typeof module !== 'undefined') {
   module.exports = Sleep;
 }
+
+//stop

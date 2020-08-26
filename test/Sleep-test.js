@@ -160,7 +160,7 @@ describe("Sleep", () => {
   });
 
   it("should should return sleep for a specified day", () =>{
-    expect(sleep.daySleep("2019/06/16", 1)).to.equal(4.1)
+    expect(sleep.daySleep("2019/06/16", 1).hoursSlept).to.equal(4.1)
   });
 
   it("should return daily sleep over 7 day period", () => {

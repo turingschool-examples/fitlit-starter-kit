@@ -4,17 +4,13 @@ class HydrationRepo {
   }
   findUserAvgDailyHydration(userID) {
     const singleUserEntries = this.hydroData.filter(userEntry => {
-        return userID === userEntry.userID
+      return userID === userEntry.userID
     });
-    const singleUserHydrationData = singleUserEntries.map(userData => {
-      return userData.numOunces
-    });
-    const totalSingleUserHydrationData = singleUserHydrationData.reduce((sum, num) => {
-      sum += num;
-      return sum
-    }, 0);
-    const avgUserHydrationData = totalSingleUserHydrationData / singleUserHydrationData.length
-    return avgUserHydrationData
+    const singleUserTotalOz = singleUserEntries.reduce((singleUserTotal, data) => {
+      singleUserTotal += data.numOunces
+      return singleUserTotal
+    }, 0)
+    return singleUserTotalOz / singleUserEntries.length
   }
 }
 

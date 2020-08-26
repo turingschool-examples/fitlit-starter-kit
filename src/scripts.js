@@ -2,6 +2,7 @@ console.log("Hello World");
 
 const user = new User(userData[33])
 const userRepo = new UserRepo(userData)
+const hydrationRepo = new HydrationRepo(hydrationData)
 
 window.addEventListener('load', displayUserData);
 
@@ -28,5 +29,12 @@ function displayUserData() {
   stepData.innerText = `Your Step Goal: ${user.dailyStepGoal}, Average Step Goal: ${userRepo.calculateAverageStepGoals()}`
 }
 
+function displayHydrationData() {
+  const hydrationTodayData = document.querySelector('.hydration-today-data');
+  const hydrationWeekData = document.querySelector('.hydration-week-data');
+
+  hydrationTodayData.innerText = hydrationRepo.findDailyHydration(user.id, '2019/09/21');
+  hydrationWeekData.innerText = hydrationRepo.findWeeklyHydration(user.id, '2019/09/21');
+}
 
 

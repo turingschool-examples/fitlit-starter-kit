@@ -3,9 +3,7 @@ class HydrationRepo {
     this.hydroData = hydroData;
   }
   findUserAvgDailyHydration(userID) {
-    const singleUserEntries = this.hydroData.filter(userEntry => {
-      return userID === userEntry.userID
-    });
+    const singleUserEntries = this.findDataByID(userID)
     const singleUserTotalOz = singleUserEntries.reduce((singleUserTotal, data) => {
       singleUserTotal += data.numOunces
       return singleUserTotal
@@ -13,9 +11,9 @@ class HydrationRepo {
     return singleUserTotalOz / singleUserEntries.length
   }
   findDailyHydration(userID, date) {
-
-    const singleDayHydration = this.hydroData.find(userEntry => {
-      return userID === userEntry.userID && date === userEntry.date
+    const singleUserEntries = this.findDataByID(userID)
+    const singleDayHydration = singleUserEntries.find(userEntry => {
+      return date === userEntry.date
     })
     return singleDayHydration.numOunces
   }
@@ -23,6 +21,7 @@ class HydrationRepo {
     const singleUserEntries = this.hydroData.filter(userEntry => {
       return userID === userEntry.userID
     });
+    return singleUserEntries
   }
 }
 

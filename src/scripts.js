@@ -4,7 +4,7 @@ const user = new User(userData[33])
 const userRepo = new UserRepo(userData)
 const hydrationRepo = new HydrationRepo(hydrationData)
 
-window.addEventListener('load', displayUserData);
+window.addEventListener('load', updateDisplay);
 
 function displayUserData() {
   const friendList = user.friends.map(friend => {
@@ -20,6 +20,7 @@ function displayUserData() {
   const userFriends = document.querySelector('.user-friends');
   const stepData = document.querySelector('.step-data');
 
+  //can you loop thru these too? 
   greeting.innerText = `Welcome ${user.getFirstName()}!`
   userName.innerText = user.name
   userAddress.innerText = user.address
@@ -33,8 +34,17 @@ function displayHydrationData() {
   const hydrationTodayData = document.querySelector('.hydration-today-data');
   const hydrationWeekData = document.querySelector('.hydration-week-data');
 
-  hydrationTodayData.innerText = hydrationRepo.findDailyHydration(user.id, '2019/09/21');
-  hydrationWeekData.innerText = hydrationRepo.findWeeklyHydration(user.id, '2019/09/21');
+  const weeklyData = hydrationRepo.findWeeklyHydration(user.id, '2019/09/21')
+
+  hydrationTodayData.innerText = `Ounces Drank Today: ${hydrationRepo.findDailyHydration(user.id, '2019/09/21')}`;
+  weeklyData.forEach((data) => {
+    hydrationWeekData.innerText += ` ${data.date}: ${data.numOunces} ounces `
+  })
+}
+
+function updateDisplay() {
+  displayUserData()
+  displayHydrationData()
 }
 
 

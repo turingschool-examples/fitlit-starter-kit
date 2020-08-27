@@ -1,14 +1,13 @@
 class HydrationRepository {
   constructor(hydrationSet) {
     this.hydrationSet = hydrationSet
-    console.log("HYD", hydrationSet)
-    // this.userHydration;
   }
   userHydrationData(id) {
     return this.hydrationSet.filter(dailyHydration => dailyHydration.userID === id);
 
   }
   averageAllTimeOunces(id) {
+    //change getUserData
     let getUserData = this.userHydrationData(id)
     let allTimeOunces = getUserData.reduce((ounces, day) =>{
       ounces += day.numOunces;

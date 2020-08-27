@@ -138,6 +138,8 @@ describe("Sleep", () => {
       sampleSleepData[13].sleepQuality
     ]
     sleep = new Sleep(sampleSleepData);
+    //maybe move to test sample file
+    //look at using map to simplify
   });
   it("should be a function", () => {
     expect(Sleep).to.be.a("function")
@@ -147,20 +149,28 @@ describe("Sleep", () => {
     expect(sleep).to.be.an.instanceof(Sleep)
   });
 
-  it("should return users average number of hours slept per day", () => {
+  it("should be able to filter sleep data per user", () => {
     expect(sleep.userSleepData(1)).to.be.deep.equal(filterUser1);
   });
 
-  it("should return another users average number of hours slept per day", () => {
+  it("should return another users sleep data", () => {
     expect(sleep.userSleepData(2)).to.be.deep.equal(filterUser2);
   });
 
   it("should return average all-time daily sleep for a user", () =>{
-    expect(sleep.averageAllTimeSleep(1)).to.be.equal(2.6)
+    expect(sleep.averageAllTimeSleep(1, 'sleepQuality')).to.be.equal(2.6)
+  });
+
+  it("should return users average number of hours slept per day", () => {
+    expect(sleep.averageAllTimeSleep(1, 'hoursSlept')).to.be.deep.equal(8.1);
   });
 
   it("should should return sleep for a specified day", () =>{
-    expect(sleep.daySleep("2019/06/16", 1)).to.equal(4.1)
+    expect(sleep.daySleep("2019/06/16", 1).hoursSlept).to.equal(4.1)
+  });
+
+  it("should should return sleep for a specified day", () =>{
+    expect(sleep.daySleep("2019/06/16", 1).sleepQuality).to.equal(3.8)
   });
 
   it("should return daily sleep over 7 day period", () => {
@@ -181,8 +191,11 @@ describe("Sleep", () => {
     expect(sleep.sleepQualityAboveThree("2019/06/15")).to.deep.equal([2])
   })
 
-  // it("should find the user who slept the most for a specified day", () =>{
-  //   expect(sleep.userWhoSleptTheMost("2019/06/15", sampleSleepData)).to.deep.equal(7)
-  // })
+  it("should find the user who slept the most for a specified day", () =>{
+    expect(sleep.userWhoSleptTheMost("2019/06/15", sampleSleepData)).to.equal(2)
+  })
 
+  it("should find the user who slept the least for a specified day", () =>{
+    expect(sleep.userWhoSleptTheLeast("2019/06/15", sampleSleepData)).to.equal(1)
+  })
 });

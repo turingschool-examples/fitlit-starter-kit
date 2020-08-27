@@ -68,5 +68,7 @@ describe("UserRepository", () => {
 
   it("should average step goal amongst all users", () => {
     expect(Math.round(userRepository.getAvgStepGoal())).to.be.equal(6667)
+    //look at adding to the methos
+    //sad path test
   });
 })

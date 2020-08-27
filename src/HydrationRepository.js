@@ -1,8 +1,6 @@
 class HydrationRepository {
   constructor(hydrationSet) {
     this.hydrationSet = hydrationSet
-    console.log("HYD", hydrationSet)
-    // this.userHydration;
   }
   userHydrationData(id) {
     return this.hydrationSet.filter(dailyHydration => dailyHydration.userID === id);

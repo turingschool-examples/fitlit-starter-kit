@@ -1,9 +1,9 @@
 const chai = require("chai");
 const expect = chai.expect;
-const Activity = require("../src/Sleep")
+const Activity = require("../src/Activity")
 
 describe("Activity", () => {
-  let activity,
+  let activity, sampleActivtyData;
   beforeEach(() => {
     sampleActivtyData =
 
@@ -112,13 +112,13 @@ describe("Activity", () => {
     expect(Activity).to.be.a("function");
   });
 
-  it("should be an instance of Activity" => {
+  it("should be an instance of Activity", () => {
     expect(activity).to.be.an.instanceof(Activity);
   });
 
-  it("should be" => {
-    expect().to.be.equal();
+  it("should return the miles a user has walked",() => {
+    expect(activity.walkedMilesPerDay("day",1)).to.be.equal();
   });
-})
+});
 
 //stop

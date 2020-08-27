@@ -145,6 +145,18 @@ describe("Activity", () => {
     expect(activity.findStairRecord(1)).to.be.equal(36);
   });
 
+  it("should find users average stairs climbed, steps taken, minutes active, for specific date",() => {
+    expect(activity.findDayActivity("2019/06/17", 1)).to.be.deep.equal({
+      "numSteps": 14040,
+      "minutesActive": 117,
+      "flightsOfStairs": 11
+    });
+  });
+
+  it("should return if a user achieved step goal for the week ",() => {
+    expect(activity.weeklyStepGoal("2019/06/15", 1, 'numSteps')).to.be.equal(false);
+  });
+
 });
 
 //stop

@@ -141,6 +141,10 @@ describe("Activity", () => {
     expect(activity.daysStepGoalAchieved(1)).to.be.deep.equal(["2019/06/17", "2019/06/20"]);
   });
 
+  it("should find a users all-time stair climbing record ",() => {
+    expect(activity.findStairRecord(1)).to.be.equal(36);
+  });
+
 });
 
 //stop

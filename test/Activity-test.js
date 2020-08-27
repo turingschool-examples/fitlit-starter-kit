@@ -128,7 +128,19 @@ describe("Activity", () => {
   it("should return average minutes active for a specific week",() => {
     expect(activity.averageWeeklyMinutes("2019/06/15", 1, 'minutesActive')).to.be.equal(171.1);
   });
+
+  it("should check if user reached step goal for specific day",() => {
+    expect(activity.stepGoalAchieved("2019/06/15", 1)).to.be.equal(false);
+  });
   
+  it("should check if user reached step goal for specific day",() => {
+    expect(activity.stepGoalAchieved("2019/06/20", 1)).to.be.equal(true);
+  });
+
+  it("should find all days where they reach step goal ",() => {
+    expect(activity.daysStepGoalAchieved(1)).to.be.deep.equal(["2019/06/17", "2019/06/20"]);
+  });
+
 });
 
 //stop

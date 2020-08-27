@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const activityData = require('../testdata/activity-test-data');
+const activityData = require('./testdata/activity-test-data');
 const ActivityRepo = require('../src/ActivityRepo');
 
 describe('ActivityRepo', () => {
@@ -16,6 +16,10 @@ describe('ActivityRepo', () => {
 
   it('should instantiate a class of Hydration', () => {
     expect(activityRepo).to.be.an.instanceof(ActivityRepo);
+  });
+
+  it('should store an array of activity logs', () => {
+    expect(activityRepo.activityData).to.deep.equal(activityData);
   });
 
 });

@@ -120,6 +120,15 @@ describe("Activity", () => {
   it("should return the miles a user has walked",() => {
     expect(activity.walkedMilesPerDay("2019/06/15", 1)).to.be.equal(2.9);
   });
+
+  it("should return minutes active for specific day",() => {
+    expect(activity.minutesActivePerDay("2019/06/16", 1)).to.be.equal(175);
+  });
+
+  it("should return average minutes active for a specific week",() => {
+    expect(activity.averageWeeklyMinutes("2019/06/15", 1, 'minutesActive')).to.be.equal(171.1);
+  });
+  
 });
 
 //stop

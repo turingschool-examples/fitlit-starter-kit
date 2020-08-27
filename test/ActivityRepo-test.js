@@ -22,4 +22,8 @@ describe('ActivityRepo', () => {
     expect(activityRepo.activityData).to.deep.equal(activityData);
   });
 
+  it('should calculate how many miles a user has walked on a given date', () => {
+    expect(activityRepo.calculateMilesWalked(DATE)).to.equal(#);
+  });
+
 });

@@ -8,9 +8,13 @@ class ActivityRepo {
   }
 
   getUserEntries(user) {
-    return this.activityData.filter(userEntry => {
-      return user.id === userEntry.userID
+    return this.activityData.filter(entry => {
+      return user.id === entry.userID
     });
+  }
+
+  getEntriesforDate(date) {
+    return this.activityData.filter(entry => entry.date === date)
   }
 
   calculateMilesWalked(user, date) {
@@ -57,6 +61,14 @@ class ActivityRepo {
     const entries = this.getUserEntries(user)
     entries.sort((entryA, entryB) => entryB.flightsOfStairs - entryA.flightsOfStairs)
     return entries[0]
+  }
+
+  calculateAllUsersAverage(date, activity) {
+    const entries = this.getEntriesforDate(date)
+    const total = entries.reduce((stairs, entry) => {
+      return stairs += entry[activity]
+    }, 0)
+    return parseFloat((total / entries.length).toFixed(0))
   }
 }
 

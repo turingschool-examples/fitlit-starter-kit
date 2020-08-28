@@ -50,4 +50,8 @@ describe('ActivityRepo', () => {
   it('should return a user\'s all-time stair climbing record', () => {
     expect(activityRepo.getClimbingRecord(dannie)).to.deep.equal(activityData[4]);
   });
+
+  it('should get the average number of stairs climbed by all users on a given date', () => {
+    expect(activityRepo.calculateAllUsersAverage('2019/08/08', 'flightsOfStairs')).to.equal(29);
+  });
 });

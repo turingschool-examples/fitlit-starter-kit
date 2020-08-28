@@ -4,6 +4,7 @@ const expect = chai.expect;
 // import UserRepo from '../src/UserRepo';
 const UserRepo = require('../src/UserRepo');
 const userData = require('./testdata/user-test-data');
+const activityData = require('./testdata/activity-test-data');
 
 describe('UserRepo', () => {
   let userRepo;
@@ -25,9 +26,9 @@ describe('UserRepo', () => {
 
   it('should be able to search the users by ID number', () => {
     expect(userRepo.searchUsersByID(3)).to.equal(userData[2])
-  })
+  });
 
   it('should return the average step goal of all users', () => {
     expect(userRepo.calculateAverageStepGoals()).to.equal(7111)
-  })
+  });
 });

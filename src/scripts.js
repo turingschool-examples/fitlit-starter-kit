@@ -8,6 +8,8 @@ window.addEventListener('load', onLoad);
 function onLoad() {
   chooseRandomUser();
   displayUserInfo();
+  compareUsersSteps();
+
 }
 
 function chooseRandomUser() {
@@ -35,15 +37,18 @@ function displayUserInfo() {
   userStepGoal.innerHTML += `${user.userData.dailyStepGoal}`
   let userFriends = document.querySelector('.user-friends')
   userAddress.innerHTML += `${user.userData.friends}`
-  console.log(user.userData.friends)
 }
 
 
-// <h3 class="user-address">Address:</h3>
-// <h3 class="user-email">Email:</h3>
-// <h3 class="user-stride">Stride:</h3>
-// <h3 class="user-step-goal">Steps:</h3>
-// <h3 class="user-friends">Friends:</h3>
+function compareUsersSteps() {
+  userRepository = new UserRepository(userData)
+  console.log(userRepository)
+  let displayUserStepGoal = document.querySelector('.display-single-user-step-goal')
+  displayUserStepGoal.innerHTML += `${user.userData.dailyStepGoal}`
+  let allUserStepGoal = document.querySelector('.display-all-user-step-goal')
+  allUserStepGoal.innerHTML += `${userRepository.getAvgStepGoal()}`
+}
+
 
 
 // Create an info card on the dashboard with all of user’s info on the page--want it to display name, address, email, strideLength & stepgoal, friends

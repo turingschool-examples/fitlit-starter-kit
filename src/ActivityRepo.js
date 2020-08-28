@@ -39,12 +39,12 @@ class ActivityRepo {
 
   findIfStepGoalMet(user, date) {
     const activityEntry = this.getActivityEntry(user, date)
-    if (user.dailyStepGoal <= activityEntry.numSteps) {
-      return true
-    } else {
-      return false
-    }
-    
+    // if (user.dailyStepGoal <= activityEntry.numSteps) {
+    //   return true
+    // } else {
+    //   return false
+    // }
+    return user.dailyStepGoal <= activityEntry.numSteps ? true : false
 
   }
 }

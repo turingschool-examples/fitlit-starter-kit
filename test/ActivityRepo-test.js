@@ -44,28 +44,7 @@ describe('ActivityRepo', () => {
   });
 
   it('should return all dates a user exceeded their step goal', () => {
-    expect(activityRepo.getDatesGoalWasMet(dannie)).to.deep.equal([ 
-      {
-      "userID": 11,
-      "date": "2019/08/13",
-      "numSteps": 9420,
-      "minutesActive": 227,
-      "flightsOfStairs": 31
-    },
-    {
-      "userID": 11,
-      "date": "2019/08/17",
-      "numSteps": 11192,
-      "minutesActive": 182,
-      "flightsOfStairs": 35
-    },
-    {
-      "userID": 11,
-      "date": "2019/09/10",
-      "numSteps": 12024,
-      "minutesActive": 295,
-      "flightsOfStairs": 6
-    }])
-  })
+    expect(activityRepo.getDatesGoalWasMet(dannie)).to.deep.equal([activityData[5], activityData[7], activityData[8]]);
+  });
 
 });

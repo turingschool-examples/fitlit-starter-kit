@@ -7,6 +7,12 @@ class ActivityRepo {
     return this.activityData.find(entry => entry.date === date && entry.userID === user.id)
   }
 
+  getUserEntries(user) {
+    return this.activityData.filter(userEntry => {
+      return user.id === userEntry.userID
+    });
+  }
+
   calculateMilesWalked(user, date) {
     const activityEntry = this.getActivityEntry(user, date)
     const milesWalked = (user.strideLength * activityEntry.numSteps) / 5280
@@ -17,12 +23,6 @@ class ActivityRepo {
   findMinutesActive(user, date) {
     const activityEntry = this.getActivityEntry(user, date)
     return activityEntry.minutesActive
-  }
-  
-  getUserEntries(user) {
-    return this.activityData.filter(userEntry => {
-      return user.id === userEntry.userID
-    });
   }
 
   calculateAvgMinutesForWeek(user, endDate) {
@@ -45,7 +45,12 @@ class ActivityRepo {
     //   return false
     // }
     return user.dailyStepGoal <= activityEntry.numSteps ? true : false
+  }
 
+  getDatesGoalWasMet(user) {
+    const entries = this.getUserEntries(user)
+    const datesGoalMet = entries.filter(entry => user.dailyStepGoal <= entry.numSteps)
+    return datesGoalMet
   }
 }
 

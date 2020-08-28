@@ -54,4 +54,8 @@ describe('ActivityRepo', () => {
   it('should get the average number of stairs climbed by all users on a given date', () => {
     expect(activityRepo.calculateAllUsersAverage('2019/08/08', 'flightsOfStairs')).to.equal(29);
   });
+  
+  it('should get the average number of steps taken by all users on a given date', () => {
+    expect(activityRepo.calculateAllUsersAverage('2019/08/08', 'numSteps')).to.equal(7618);
+  });
 });

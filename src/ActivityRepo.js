@@ -17,6 +17,14 @@ class ActivityRepo {
     return this.activityData.filter(entry => entry.date === date)
   }
 
+  // getEntriesSubset(key, value) {
+  //   return thisActivityData.filter(entry => entry[key] === value)
+  // }
+
+  // editDecimals(number, decimal) {
+  //   return parseFloat(number).toFixed(decimal)
+  // }
+
   calculateMilesWalked(user, date) {
     const activityEntry = this.getActivityEntry(user, date)
     const milesWalked = (user.strideLength * activityEntry.numSteps) / 5280

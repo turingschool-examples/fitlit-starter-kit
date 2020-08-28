@@ -16,8 +16,18 @@ class SleepRepo {
       total += data.hoursSlept
       return total
     }, 0)
-    return totalSleep / entries.length 
+    return totalSleep / entries.length
   }
+
+  findNightlySleep(userID, date) {
+    const entries = this.findDataByID(userID)
+    const singleNightSleep = entries.find(userEntry => {
+      return date === userEntry.date
+    })
+    return singleNightSleep.hoursSlept
+  }
+
+
 }
 
 

@@ -38,4 +38,9 @@ describe('ActivityRepo', () => {
     expect(activityRepo.calculateAvgMinutesForWeek(dannie, '2019/08/14')).to.equal(168);
   });
 
+  it('should determine if a user reached their step goal for a given date', () => {
+    expect(activityRepo.findIfStepGoalMet(dannie, '2019/08/10')).to.be.false
+    expect(activityRepo.findIfStepGoalMet(dannie, '2019/08/13')).to.be.true
+  });
+
 });

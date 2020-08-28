@@ -36,6 +36,17 @@ class ActivityRepo {
     }, 0)
     return parseFloat((totalMinutes / 7).toFixed(0))
   }
+
+  findIfStepGoalMet(user, date) {
+    const activityEntry = this.getActivityEntry(user, date)
+    if (user.dailyStepGoal <= activityEntry.numSteps) {
+      return true
+    } else {
+      return false
+    }
+    
+
+  }
 }
 
 if (typeof module !== 'undefined') {

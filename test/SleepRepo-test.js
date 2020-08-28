@@ -11,61 +11,61 @@ describe.only('Sleep', () => {
       {
         "userID": 1,
         "date": "2019/06/15",
-        "hoursSlept": 6.1,
+        "hoursSlept": 5,
         "sleepQuality": 2.2
       },
       {
         "userID": 1,
         "date": "2019/06/16",
-        "hoursSlept": 6.1,
+        "hoursSlept": 5,
         "sleepQuality": 2.2
       },
       {
         "userID": 1,
         "date": "2019/06/17",
-        "hoursSlept": 6.1,
+        "hoursSlept": 5,
         "sleepQuality": 2.2
       },
       {
         "userID": 1,
         "date": "2019/06/18",
-        "hoursSlept": 6.1,
+        "hoursSlept": 5,
         "sleepQuality": 2.2
       },
       {
         "userID": 1,
         "date": "2019/06/19",
-        "hoursSlept": 6.1,
+        "hoursSlept": 5,
         "sleepQuality": 2.2
       },
       {
         "userID": 1,
         "date": "2019/06/20",
-        "hoursSlept": 6.1,
+        "hoursSlept": 5,
         "sleepQuality": 2.2
       },
       {
         "userID": 1,
         "date": "2019/06/21",
-        "hoursSlept": 6.1,
+        "hoursSlept": 5,
         "sleepQuality": 2.2
       },
       {
         "userID": 1,
         "date": "2019/06/22",
-        "hoursSlept": 6.1,
+        "hoursSlept": 5,
         "sleepQuality": 2.2
       },
       {
         "userID": 1,
         "date": "2019/06/23",
-        "hoursSlept": 6.1,
+        "hoursSlept": 5,
         "sleepQuality": 2.2
       },
       {
         "userID": 1,
         "date": "2019/06/24",
-        "hoursSlept": 6.1,
+        "hoursSlept": 5,
         "sleepQuality": 2.2
       },
       {
@@ -120,5 +120,10 @@ describe.only('Sleep', () => {
 
   it('should instantiate a class of SleepRepo', () => {
     expect(sleepRepo).to.be.an.instanceof(SleepRepo);
+  })
+
+  it('should calculate average all time slept for a specific user', () => {
+    expect(sleepRepo.calculateAvgSleep(1)).to.equal(5);
+
   })
 })

@@ -27,6 +27,13 @@ class SleepRepo {
     return singleNightSleep.hoursSlept
   }
 
+  findNightlySleepQuality(userID, date) {
+    const entries = this.findDataByID(userID)
+    const singleNightSleep = entries.find(userEntry => {
+      return date === userEntry.date
+    })
+    return singleNightSleep.sleepQuality
+  }
 
 }
 

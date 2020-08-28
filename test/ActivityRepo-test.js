@@ -31,7 +31,11 @@ describe('ActivityRepo', () => {
   });
 
   it('should return how many minutes a user spent being active on a given date', () => {
-    expect(activityRepo.findMinutesActive(dannie, '2019/08/13')).to.equal;(227);
+    expect(activityRepo.findMinutesActive(dannie, '2019/08/13')).to.equal(227);
+  });
+
+  it('should return the average minutes a day a user was active for a given week', () => {
+    expect(activityRepo.calculateAvgMinutesForWeek(dannie, '2019/08/14')).to.equal(168);
   });
 
 });

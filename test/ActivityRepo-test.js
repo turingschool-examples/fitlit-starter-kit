@@ -50,5 +50,4 @@ describe('ActivityRepo', () => {
   it('should return a user\'s all-time stair climbing record', () => {
     expect(activityRepo.getClimbingRecord(dannie)).to.deep.equal(activityData[4]);
   });
-
 });

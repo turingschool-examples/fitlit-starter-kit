@@ -124,6 +124,13 @@ describe.only('Sleep', () => {
 
   it('should calculate average all time slept for a specific user', () => {
     expect(sleepRepo.calculateAvgSleep(1)).to.equal(5);
-
   })
-})
+
+  it('should return nightly sleep by date', () => {
+    expect(sleepRepo.findNightlySleep(1, '2019/06/15')).to.equal(5);
+  })
+
+
+
+
+});

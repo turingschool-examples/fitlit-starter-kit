@@ -1,6 +1,6 @@
-const UserRepository = require("./UserRepository")
-const userData = require("../data/users")
-const userRepository = new UserRepository([userData[0],userData[1]]);
+// const UserRepository = require("./UserRepository")
+// const userData = require("../data/users")
+// const userRepository = new UserRepository([userData[0],userData[1]]);
 
 class Activity {
   constructor(activitySet) {
@@ -52,9 +52,9 @@ class Activity {
       allData.flightsOfStairs += userDay.flightsOfStairs
       return allData
     }, {numSteps: 0, minutesActive: 0, flightsOfStairs: 0})
-    dayData.numSteps = Math.round(dayData.numSteps / allUsers.length) 
-    dayData.minutesActive = Math.round(dayData.minutesActive / allUsers.length) 
-    dayData.flightsOfStairs = Math.round(dayData.flightsOfStairs / allUsers.length) 
+    dayData.numSteps = Math.round(dayData.numSteps / allUsers.length)
+    dayData.minutesActive = Math.round(dayData.minutesActive / allUsers.length)
+    dayData.flightsOfStairs = Math.round(dayData.flightsOfStairs / allUsers.length)
     return dayData
   }
   weeklyStepGoal(date, id, property) {

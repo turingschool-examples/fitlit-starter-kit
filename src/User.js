@@ -1,6 +1,8 @@
 class User {
   constructor(userData) {
     this.userData = userData;
+    // console.log("USER", userData)
+    //gives back the first user object
   }
 
   returnFristName(){

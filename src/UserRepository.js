@@ -1,7 +1,9 @@
-const {userData} = require("../data/users")
+// const {userData} = require("../data/users")
 class UserRepository {
   constructor(userData) {
     this.userData = userData;
+    // console.log('2', userData)
+    //gives back an array of three user objects
   }
   returnUserData(id){
     return this.userData.find(user => user.id === id);

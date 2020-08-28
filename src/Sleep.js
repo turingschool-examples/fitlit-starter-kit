@@ -39,7 +39,9 @@ class Sleep {
       let averageQuality = this.averageSleepQuality(allQuality, id);
       averageQuality > 3 ? qualityAboveThree.push(id) : null;
     })
+    console.log(qualityAboveThree)
     return qualityAboveThree
+
   }
   userWhoSleptTheMost(targetDate){
     let sleepDataPerDay = this.sleepSet.filter(user => user.date === targetDate);

@@ -2,12 +2,16 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const activityData = require('./testdata/activity-test-data');
+const userData = require('./testdata/user-test-data');
 const ActivityRepo = require('../src/ActivityRepo');
+const User = require('../src/User');
 
 describe('ActivityRepo', () => {
   let activityRepo;
+  let dannie;
   beforeEach(() => {
     activityRepo = new ActivityRepo(activityData);
+    dannie = new User(userData[6])
   });
 
   it('should be a function', () => {
@@ -23,7 +27,7 @@ describe('ActivityRepo', () => {
   });
 
   it('should calculate how many miles a user has walked on a given date', () => {
-    expect(activityRepo.calculateMilesWalked(DATE)).to.equal(#);
+    expect(activityRepo.calculateMilesWalked(dannie, '2019/08/10')).to.equal(4.39);
   });
 
 });

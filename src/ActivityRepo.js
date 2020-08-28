@@ -52,6 +52,12 @@ class ActivityRepo {
     const datesGoalMet = entries.filter(entry => user.dailyStepGoal <= entry.numSteps)
     return datesGoalMet
   }
+
+  getClimbingRecord(user) {
+    const entries = this.getUserEntries(user)
+    entries.sort((entryA, entryB) => entryB.flightsOfStairs - entryA.flightsOfStairs)
+    return entries[0]
+  }
 }
 
 if (typeof module !== 'undefined') {

@@ -130,6 +130,10 @@ describe.only('Sleep', () => {
     expect(sleepRepo.findNightlySleep(1, '2019/06/15')).to.equal(5);
   })
 
+  it('should return nightly sleep quality by date', () => {
+    expect(sleepRepo.findNightlySleepQuality(1, '2019/06/15')).to.equal(2.2);
+  })
+
 
 
 

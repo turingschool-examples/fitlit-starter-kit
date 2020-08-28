@@ -30,4 +30,8 @@ describe('ActivityRepo', () => {
     expect(activityRepo.calculateMilesWalked(dannie, '2019/08/10')).to.equal(4.39);
   });
 
+  it('should return how many minutes a user spent being active on a given date', () => {
+    expect(activityRepo.findMinutesActive(dannie, '2019/08/13')).to.equal;(227);
+  });
+
 });

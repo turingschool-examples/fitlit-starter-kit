@@ -2,15 +2,20 @@ class ActivityRepo {
   constructor(data) {
     this.activityData = data
   }
-
+  
+  getActivityEntry(user, date) {
+    return this.activityData.find(entry => entry.date === date && entry.userID === user.id)
+  }
   calculateMilesWalked(user, date) {
-    const activityEntry = this.activityData.find(entry => entry.date === date && entry.userID === user.id)
+    const activityEntry = this.getActivityEntry(user, date)
     const milesWalked = (user.strideLength * activityEntry.numSteps) / 5280
 
     return parseFloat(milesWalked.toFixed(2))
-    // find activity entry by date and user.id
-    // user.strideLength * activity.numSteps
-    // divide by 5280
+  }
+
+  findMinutesActive(user, date) {
+    const activityEntry = this.getActivityEntry(user, date)
+    return activityEntry.minutesActive
   }
 }
 

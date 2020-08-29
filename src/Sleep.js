@@ -40,6 +40,7 @@ class Sleep {
       averageQuality > 3 ? qualityAboveThree.push(id) : null;
     })
     return qualityAboveThree
+
   }
   userWhoSleptTheMost(targetDate){
     let sleepDataPerDay = this.sleepSet.filter(user => user.date === targetDate);
@@ -56,5 +57,3 @@ class Sleep {
 if (typeof module !== 'undefined') {
   module.exports = Sleep;
 }
-
-//stop

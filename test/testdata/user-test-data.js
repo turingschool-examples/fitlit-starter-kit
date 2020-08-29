@@ -124,4 +124,4 @@ const userData = [
   },
 ]
 
-//module.exports and import into test file
+module.exports = userData;

@@ -2,7 +2,6 @@
 
 
 
-
 window.addEventListener('load', onLoad);
 
 function onLoad() {
@@ -10,7 +9,8 @@ function onLoad() {
   displayUserInfo();
   compareUsersSteps();
   displayFriendList();
-
+  displayWaterConsumption();
+  dispalyWeeklyConsumption();
 }
 
 function chooseRandomUser() {
@@ -56,6 +56,22 @@ function displayFriendList() {
   friendList.insertAdjacentHTML('afterBegin', this.makeFriendList(this.user, this.userRepo))
 }
 
+function displayWaterConsumption() {
+  hydrationRepository = new HydrationRepository(hydrationData);
+  let waterConsumption = document.querySelector('.user-hydration-card')
+  waterConsumption.innerHTML +=
+    `<h2>Hydration Data For The Day</h2>
+    <p> Today's water consumption:
+    ${hydrationRepository.dayOunces("2019/06/15", user.userData.id)}oz</p>`
+}
+
+function dispalyWeeklyConsumption() {
+  let waterConsumption = document.querySelector('.weekly-hydration-card')
+  waterConsumption.innerHTML +=
+    `<h2>Hydration Data For The Week</h2>
+    <p> Weekly water consumption:
+    ${hydrationRepository.dailyOuncesPerGivenWeek("2019/06/15", user.userData.id)}oz</p>`
+}
 
 
 

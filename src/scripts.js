@@ -20,23 +20,16 @@ function chooseRandomUser() {
   greeting.innerHTML = `Welcome, ${user.returnFristName()}!`
 }
 
-
-
 function displayUserInfo() {
-  // let infoCard = document.querySelector('.user-info-card')
-  // console.log(infoCard)
-  // infoCard.innerHTML =
-  // console.log(user)
-  let userAddress = document.querySelector('.user-address')
-  userAddress.innerHTML += `${user.userData.address}`
-  let userEmail = document.querySelector('.user-email')
-  userEmail.innerHTML += `${user.userData.email}`
-  let userStride = document.querySelector('.user-stride')
-  userStride.innerHTML += `${user.userData.strideLength}`
-  let userStepGoal = document.querySelector('.user-step-goal')
-  userStepGoal.innerHTML += `${user.userData.dailyStepGoal}`
-  let userFriends = document.querySelector('.user-friends')
-  userAddress.innerHTML += `${user.userData.friends}`
+  let infoCard = document.querySelector('.user-info-card')
+  infoCard.innerHTML +=
+    `<h2>INFO</h2>
+    <p>Name: ${user.userData.name}</p>
+    <p>Address: ${user.userData.address}</p>
+    <p>Email: ${user.userData.email}</p>
+    <p>Stride: ${user.userData.strideLength} feet.</p>
+    <p>Steps: ${user.userData.dailyStepGoal} steps per day.</p>
+    <p>Friends: ${user.userData.friends}</p>`
 }
 
 

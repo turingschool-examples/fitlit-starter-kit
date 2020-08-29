@@ -19,8 +19,8 @@ class HydrationRepository {
     console.log(id)
     return this.hydrationSet.find(day => day.date === dateSelected && day.userID === id).numOunces;
   }
-  dailyOuncesPerGivenWeek(startDate) {
-    let startingDate = this.hydrationSet.find(day => day.date === startDate);
+  dailyOuncesPerGivenWeek(startDate, id) {
+    let startingDate = this.hydrationSet.find(day => day.date === startDate && day.userID === id);
     let firstDay = this.hydrationSet.indexOf(startingDate);
     return this.hydrationSet.slice(firstDay, firstDay + 7).map(day => day.numOunces)
   }

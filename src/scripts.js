@@ -36,11 +36,15 @@ function displayUserInfo() {
 function compareUsersSteps() {
   userRepository = new UserRepository(userData)
   console.log(userRepository)
-  let displayUserStepGoal = document.querySelector('.display-single-user-step-goal')
-  displayUserStepGoal.innerHTML += `${user.userData.dailyStepGoal}`
-  let allUserStepGoal = document.querySelector('.display-all-user-step-goal')
-  allUserStepGoal.innerHTML += `${userRepository.getAvgStepGoal()}`
+  let userComparisons = document.querySelector('.compare-user-steps')
+  userComparisons.innerHTML +=
+    `<h2>STEPS</h2>
+    <p>Your daily step goal is: ${user.userData.dailyStepGoal}</p>
+    <p>All users daily step goal is: ${userRepository.getAvgStepGoal()}</p>`
 }
+
+
+
 
 
 

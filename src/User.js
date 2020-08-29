@@ -8,6 +8,8 @@ class User {
   returnFristName(){
     return this.userData.name.split(" ")[0];
   }
+
+  
 }
 
 

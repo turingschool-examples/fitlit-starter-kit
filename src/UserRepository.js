@@ -13,6 +13,13 @@ class UserRepository {
       return allAvgSteps += user.dailyStepGoal/this.userData.length
     },0);
   }
+  returnFriendFullName(users) {
+    console.log(users)
+    console.log(this.userData.friends)
+    let test = users.map(friendId => this.returnUserData(friendId).name);
+    console.log(test)
+    return test
+  }
 }
 
 if (typeof module !== 'undefined') {

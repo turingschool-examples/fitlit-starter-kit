@@ -9,6 +9,7 @@ function onLoad() {
   chooseRandomUser();
   displayUserInfo();
   compareUsersSteps();
+  displayFriendList();
 
 }
 
@@ -27,9 +28,9 @@ function displayUserInfo() {
     <p>Name: ${user.userData.name}</p>
     <p>Address: ${user.userData.address}</p>
     <p>Email: ${user.userData.email}</p>
-    <p>Stride: ${user.userData.strideLength} feet.</p>
-    <p>Steps: ${user.userData.dailyStepGoal} steps per day.</p>
-    <p>Friends: ${user.userData.friends}</p>`
+    <p>Stride: ${user.userData.strideLength} feet</p>
+    <p>Steps: ${user.userData.dailyStepGoal} steps per day</p>
+    <p class="friend-names">Friends: ${user.userData.friends}</p>`
 }
 
 
@@ -42,6 +43,23 @@ function compareUsersSteps() {
     <p>Your daily step goal is: ${user.userData.dailyStepGoal}</p>
     <p>All users daily step goal is: ${userRepository.getAvgStepGoal()}</p>`
 }
+
+
+function makeFriendList() {
+  let userFriends = userRepository.returnFriendFullName(user.userData.friends)
+  console.log("HELLO", userFriends)
+  return userFriends.map(friendName => `<p class="friend-names">${friendName}</p>`)
+}
+
+function displayFriendList() {
+  let friendList = document.querySelector('.friend-names')
+  friendList.insertAdjacentHTML('afterBegin', this.makeFriendList(this.user, this.userRepo))
+}
+
+
+
+
+
 
 
 

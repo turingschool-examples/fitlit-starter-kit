@@ -39,7 +39,6 @@ class Sleep {
       let averageQuality = this.averageSleepQuality(allQuality, id);
       averageQuality > 3 ? qualityAboveThree.push(id) : null;
     })
-    console.log(qualityAboveThree)
     return qualityAboveThree
 
   }
@@ -58,5 +57,3 @@ class Sleep {
 if (typeof module !== 'undefined') {
   module.exports = Sleep;
 }
-
-//stop

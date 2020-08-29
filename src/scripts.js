@@ -11,6 +11,9 @@ function onLoad() {
   displayFriendList();
   displayWaterConsumption();
   dispalyWeeklyConsumption();
+  displayDailySleep();
+  displayWeeklySleep();
+  allTimeSleep();
 }
 
 function chooseRandomUser() {
@@ -70,12 +73,47 @@ function dispalyWeeklyConsumption() {
   waterConsumption.innerHTML +=
     `<h2>Hydration Data For The Week</h2>
     <p> Weekly water consumption:
-    ${hydrationRepository.dailyOuncesPerGivenWeek("2019/06/15", user.userData.id)}oz</p>`
+    ${hydrationRepository.dailyOuncesPerGivenWeek("2019/06/15", user.userData.id)}oz
+    </p>`
 }
 
+function displayDailySleep() {
+  sleep = new Sleep(sleepData)
+  let sleepProperties = document.querySelector('.day-sleep-card')
+  sleepProperties.innerHTML +=
+  `<h2>Sleep Data For The Day</h2>
+  <p> Today's sleep data:
+  Hours Slept ${sleep.daySleep("2019/06/15", user.userData.id).hoursSlept}
+  Sleep Quality ${sleep.daySleep("2019/06/15", user.userData.id).sleepQuality}
+  </p>
+  `
+}
 
+function displayWeeklySleep() {
+  let sleepWeekly = document.querySelector('.week-sleep-card')
+  sleepWeekly.innerHTML +=
+  `<h2>Sleep Data For The Week</h2>
+  <p> Weekly sleep data:
+  Weekly Hours Slept
+  ${sleep.weeklySleepProperties("2019/06/15", user.userData.id, "hoursSlept")}
+  Weekly Sleep Quality
+  ${sleep.weeklySleepProperties("2019/06/15", user.userData.id, "sleepQuality")}
+  </p>
+  `
+}
 
-
+function allTimeSleep() {
+  let sleepAllTime = document.querySelector('.all-time-sleep-card')
+  sleepAllTime.innerHTML +=
+  `<h2>Sleep Data For All Time</h2>
+  <p> All time sleep data:
+  All time Average Hours Slept
+  ${sleep.averageAllTimeSleep(user.userData.id, "hoursSlept")}
+  All time Average Sleep Quality
+  ${sleep.averageAllTimeSleep(user.userData.id, "sleepQuality")}
+  </p>
+  `
+}
 
 
 

@@ -11,3 +11,12 @@
 .weekly-hydration-card{
   border: 1px solid Blue;
 }
+.day-sleep-card{
+  border: 1px solid Brown;
+}
+.week-sleep-card{
+  border: 1px solid Brown;
+}
+.all-time-sleep-card{
+  border: 1px solid Brown;
+}

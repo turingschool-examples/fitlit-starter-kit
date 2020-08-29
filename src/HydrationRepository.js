@@ -15,8 +15,9 @@ class HydrationRepository {
     }, 0)
     return Math.round(allTimeOunces / getUserData.length);
   }
-  dayOunces(dateSelected) {
-    return this.hydrationSet.find(day => day.date === dateSelected).numOunces;
+  dayOunces(dateSelected, id) {
+    console.log(id)
+    return this.hydrationSet.find(day => day.date === dateSelected && day.userID === id).numOunces;
   }
   dailyOuncesPerGivenWeek(startDate) {
     let startingDate = this.hydrationSet.find(day => day.date === startDate);

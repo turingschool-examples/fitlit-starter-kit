@@ -130,6 +130,35 @@ class SleepRepo {
     return topSleeperNames
   }
 
+  namesOfSleepiestPeople(date, userData) {
+    const sleepiestPeople = this.sleepiestPeople(date, userData)
+    const sleepiestPeopleNames = sleepiestPeople.map(sleeper => {
+      const nameOfUser = userData.find(user => {
+        return sleeper.userID === user.id
+      })
+      return nameOfUser.name
+    })
+    return sleepiestPeopleNames
+  }
+
+  sleepiestPeople(date, userData) {
+    const sleepByDate = this.findDailySleepForAll(date);
+    sleepByDate.sort((entryA, entryB) => {
+      return entryB.hoursSlept - entryA.hoursSlept
+    })
+    const sleepiestPeople = sleepByDate.filter(user => {
+      return sleepByDate[0].hoursSlept === user.hoursSlept
+    })
+    return sleepiestPeople
+  }
+
+  findDailySleepForAll(date) {
+    const sleptDate = this.sleepData.filter(entry => {
+      return date === entry.date
+    })
+    return sleptDate
+  }
+
 
 };
 

@@ -1,116 +1,14 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const activityData = require('./testdata/activity-test-data');
+const sleepData = require('./testdata/sleep-test-data');
+const userData = require('./testdata/user-test-data');
+
 const SleepRepo = require('../src/SleepRepo');
-// const Sleep = require('../src/Sleep');
+const User = require('../src/User');
 describe.only('Sleep', () => {
   let sleepRepo;
   beforeEach(() => {
-    const sleepData = [
-      {
-        "userID": 1,
-        "date": "2019/06/15",
-        "hoursSlept": 5,
-        "sleepQuality": 2.2
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/16",
-        "hoursSlept": 5,
-        "sleepQuality": 2.2
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/17",
-        "hoursSlept": 5,
-        "sleepQuality": 2.2
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/18",
-        "hoursSlept": 5,
-        "sleepQuality": 2.2
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/19",
-        "hoursSlept": 5,
-        "sleepQuality": 2.2
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/20",
-        "hoursSlept": 5,
-        "sleepQuality": 2.2
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/21",
-        "hoursSlept": 5,
-        "sleepQuality": 2.2
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/22",
-        "hoursSlept": 5,
-        "sleepQuality": 2.2
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/23",
-        "hoursSlept": 5,
-        "sleepQuality": 2.2
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/24",
-        "hoursSlept": 5,
-        "sleepQuality": 2.2
-      },
-      {
-        "userID": 27,
-        "date": "2019/06/15",
-        "hoursSlept": 5,
-        "sleepQuality": 3.4
-      },
-      {
-        "userID": 28,
-        "date": "2019/06/15",
-        "hoursSlept": 6.4,
-        "sleepQuality": 2.6
-      },
-      {
-        "userID": 29,
-        "date": "2019/06/15",
-        "hoursSlept": 6.9,
-        "sleepQuality": 3.5
-      },
-      {
-        "userID": 8,
-        "date": "2019/06/16",
-        "hoursSlept": 6.8,
-        "sleepQuality": 3
-      },
-      {
-        "userID": 9,
-        "date": "2019/06/16",
-        "hoursSlept": 9.1,
-        "sleepQuality": 1.2
-      },
-      {
-        "userID": 10,
-        "date": "2019/06/16",
-        "hoursSlept": 8,
-        "sleepQuality": 4.4
-      },
-      {
-        "userID": 11,
-        "date": "2019/06/16",
-        "hoursSlept": 8.2,
-        "sleepQuality": 2
-      },
-    ]
     sleepRepo = new SleepRepo(sleepData)
   });
 
@@ -134,6 +32,62 @@ describe.only('Sleep', () => {
     expect(sleepRepo.findNightlySleepQuality(1, '2019/06/15')).to.equal(2.2);
   })
 
+  it('should return a full week\'s worth of sleep hours from starting date onwards', () => {
+    expect(sleepRepo.findWeekOfSleep(1, '2019/06/23')).to.deep.equal(
+      [
+        {
+          "userID": 1,
+          "date": "2019/06/17",
+          "hoursSlept": 5,
+          "sleepQuality": 2.2
+        },
+        {
+          "userID": 1,
+          "date": "2019/06/18",
+          "hoursSlept": 5,
+          "sleepQuality": 2.2
+        },
+        {
+          "userID": 1,
+          "date": "2019/06/19",
+          "hoursSlept": 5,
+          "sleepQuality": 2.2
+        },
+        {
+          "userID": 1,
+          "date": "2019/06/20",
+          "hoursSlept": 5,
+          "sleepQuality": 2.2
+        },
+        {
+          "userID": 1,
+          "date": "2019/06/21",
+          "hoursSlept": 5,
+          "sleepQuality": 2.2
+        },
+        {
+          "userID": 1,
+          "date": "2019/06/22",
+          "hoursSlept": 5,
+          "sleepQuality": 2.2
+        },
+        {
+          "userID": 1,
+          "date": "2019/06/23",
+          "hoursSlept": 5,
+          "sleepQuality": 2.2
+        },
+      ]
+    )
+  })
+
+  it('should calculate average of sleep quality for all users', () => {
+    expect(sleepRepo.avgSleepQualityForAll(sleepData)).to.equal(2.8);
+  })
+
+  it('should give back all users whose sleep quality avg is above 3', () => {
+    expect(sleepRepo.namesOfBestSleepers('2019/06/23', userData)).to.deep.equal(["Garnett Cruickshank"]);
+  })
 
 
 

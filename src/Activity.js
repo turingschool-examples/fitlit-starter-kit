@@ -1,7 +1,7 @@
-const UserRepository = require("./UserRepository")
-const userData = require("../data/users")
-const userRepository = new UserRepository([userData[0],userData[1]]);
-const activityData = require("../data/activity")
+// const UserRepository = require("./UserRepository")
+// const userData = require("../data/users")
+// const userRepository = new UserRepository([userData[0],userData[1]]);
+// const activityData = require("../data/activity")
 
 class Activity {
   constructor(activitySet) {

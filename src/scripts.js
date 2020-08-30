@@ -21,10 +21,9 @@ function onLoad() {
 
 function chooseRandomUser() {
   const randomUser = Math.floor(Math.random() * userData.length)
-  console.log(randomUser)
   user = new User(userData[randomUser])
   let greeting = document.querySelector('.user-profile-display')
-  greeting.innerHTML = `Welcome, ${user.returnFristName()}!`
+  greeting.innerHTML = `Welcome, ${user.returnFirstName()}!`
 }
 
 function displayUserInfo() {
@@ -42,7 +41,6 @@ function displayUserInfo() {
 
 function compareUsersSteps() {
   userRepository = new UserRepository(userData)
-  console.log(userRepository)
   let userComparisons = document.querySelector('.compare-user-steps')
   userComparisons.innerHTML +=
     `<h2>STEPS</h2>
@@ -53,7 +51,6 @@ function compareUsersSteps() {
 
 function makeFriendList() {
   let userFriends = userRepository.returnFriendFullName(user.userData.friends)
-  console.log("HELLO", userFriends)
   return userFriends.map(friendName => `<p class="friend-names">${friendName}</p>`)
 }
 
@@ -165,7 +162,6 @@ function compareDayActivity() {
 }
 
 function hydrationGraph(hydrationData) {
-console.log(hydrationData)
   var chart = new CanvasJS.Chart("chartContainer", {
     title:{
       text: "Your Weekly Hydration Data in Ounces"

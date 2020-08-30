@@ -1,20 +1,4 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssnormalize/cssnormalize-min.css">
@@ -37,12 +21,28 @@
     <script type="text/javascript">
 
     </script>
-  </head>
-  <body>
 
-    <h1>Activity Tracker</h1>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+
+  </head>
+  <body class="layout">
+
+    <h1 class="title">Activity Tracker</h1>
     <h2 class="user-profile-display">Welcome!</h2>
     <section class="weekly-hydration-card">
+
+
+
+      <div class="carousel" data-flickity>
+          <div class="carousel-cell"id="chartContainer" style="height: 300px; width: 100%;"></div>
+          <div class="carousel-cell"id="chartContainer" style="height: 300px; width: 100%;"></div>
+          <div class="carousel-cell"id="chartContainer" style="height: 300px; width: 100%;"></div>
+          <div class="carousel-cell"id="chartContainer" style="height: 300px; width: 100%;"></div>
+      </div>
+
+
       <div id="chartContainer" style="height: 300px; width: 100%;"></div>
     </section>
     <section class="user-info-card">

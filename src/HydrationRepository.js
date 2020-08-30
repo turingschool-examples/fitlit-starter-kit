@@ -19,13 +19,20 @@ class HydrationRepository {
     console.log(id)
     return this.hydrationSet.find(day => day.date === dateSelected && day.userID === id).numOunces;
   }
-  dailyOuncesPerGivenWeek(startDate, id) {
-    let startingDate = this.hydrationSet.find(day => day.date === startDate && day.userID === id);
+  dailyDateForWeek(startDate, id) {
+    let allUserHydrationData = this.userHydrationData(id);
+    let startingDate = this.hydrationSet.find(day => day.date === startDate);
     let firstDay = this.hydrationSet.indexOf(startingDate);
-    return this.hydrationSet.slice(firstDay, firstDay + 7).map(day => day.numOunces)
+    return allUserHydrationData.slice(firstDay, firstDay + 7).map(day => day.date)
   }
-
+  dailyOuncesPerGivenWeek(startDate, id) {
+    let allUserHydrationData = this.userHydrationData(id);
+    let startingDate = this.hydrationSet.find(day => day.date === startDate);
+    let firstDay = this.hydrationSet.indexOf(startingDate);
+    return allUserHydrationData.slice(firstDay, firstDay + 7).map(day => day.numOunces)
+  }
 }
+
 if (typeof module !== 'undefined') {
   module.exports = HydrationRepository;
 }

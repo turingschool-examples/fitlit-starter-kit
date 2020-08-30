@@ -21,5 +21,8 @@
     "gh-pages": "^3.1.0",
     "mocha": "^7.1.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "chart.js": "^2.9.3",
+    "moment": "^2.27.0"
+  }
 }

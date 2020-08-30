@@ -1,5 +1,17 @@
+body {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+h1 {
+  grid-column-start: 2;
+  justify-self: center;
+}
+
 .user-info-card {
   border: 1px solid black;
+  grid-column-start: 3;
+  text-align: center;
 }
 
 .compare-user-steps {
@@ -28,4 +40,9 @@
 }
 .comparison-activity-card{
   border: 1px solid Green;
+}
+
+.user-profile-display{
+  display: grid;
+  justify-self: center;
 }

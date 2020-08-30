@@ -1,6 +1,7 @@
-// const UserRepository = require("./UserRepository")
-// const userData = require("../data/users")
-// const userRepository = new UserRepository([userData[0],userData[1]]);
+const UserRepository = require("./UserRepository")
+const userData = require("../data/users")
+const userRepository = new UserRepository([userData[0],userData[1]]);
+const activityData = require("../data/activity")
 
 class Activity {
   constructor(activitySet) {
@@ -52,15 +53,28 @@ class Activity {
       allData.flightsOfStairs += userDay.flightsOfStairs
       return allData
     }, {numSteps: 0, minutesActive: 0, flightsOfStairs: 0})
-    dayData.numSteps = Math.round(dayData.numSteps / allUsers.length)
-    dayData.minutesActive = Math.round(dayData.minutesActive / allUsers.length)
-    dayData.flightsOfStairs = Math.round(dayData.flightsOfStairs / allUsers.length)
+    Object.keys(dayData).forEach(key => dayData[key] = Math.round(dayData[key] / allUsers.length))
     return dayData
   }
   weeklyStepGoal(date, id, property) {
     let weeklyAverage = this.averageWeeklyMinutes(date, id, property)
     return weeklyAverage >= this.getUserData(id).dailyStepGoal
   }
+  consecutiveDays(id) {
+    let perUser = this.activitySet.filter(user => user.userID === id)
+    let consecDays = [];
+    perUser.forEach((day, i) => {
+      if (i === 0 || i >= perUser.length - 2) {
+        return 
+      }
+      if (day.numSteps > perUser[i - 1].numSteps && 
+        day.numSteps < perUser[i + 1].numSteps &&
+        day.numSteps < perUser[i + 2].numSteps) {
+        consecDays.push(perUser[i + 2].date )
+      }
+    })
+    return consecDays;
+}
 }
 if (typeof module !== 'undefined') {
   module.exports = Activity;

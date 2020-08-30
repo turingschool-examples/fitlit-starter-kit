@@ -172,7 +172,7 @@ let sleepData = [
   {
     "userID": 2,
     "date": "2019/06/23",
-    "hoursSlept": 6.4,
+    "hoursSlept": 6.8,
     "sleepQuality": 2.6
   },
   {

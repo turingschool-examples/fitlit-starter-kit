@@ -73,11 +73,9 @@ function displayWaterConsumption() {
 
 function dispalyWeeklyConsumption() {
   let waterConsumption = document.querySelector('.weekly-hydration-card')
-  waterConsumption.innerHTML +=
-    `<h2>Hydration Data For The Week</h2>
-    <p> Weekly water consumption:
-    ${hydrationRepository.dailyOuncesPerGivenWeek("2019/06/15", user.userData.id)}oz
-    </p>`
+  let date = hydrationRepository.dailyDateForWeek("2019/06/15", user.userData.id)
+  let ounces = hydrationRepository.dailyOuncesPerGivenWeek("2019/06/15", user.userData.id)
+  hydrationGraph(date, ounces);
 }
 
 function displayDailySleep() {
@@ -168,8 +166,32 @@ function compareDayActivity() {
   `
 }
 
-// Create an info card on the dashboard with all of user’s info on the page--want it to display name, address, email, strideLength & stepgoal, friends
+function hydrationGraph(date, ounces) {
 
-// Display their first name somewhere prominently on the page to welcome them
+  var chart = new CanvasJS.Chart("chartContainer", {
+    title:{
+      text: "Your Weekly Hydration Data in Ounces"
+    },
+    data: [
+    {
+      // Change type to "doughnut", "line", "splineArea", etc.
+      type: "column",
+      dataPoints: [
+        { label: date[0],  y: ounces[0] },
+        { label: date[1],  y: ounces[1] },
+        { label: date[2],  y: ounces[2] },
+        { label: date[3],  y: ounces[3] },
+        { label: date[4],  y: ounces[4] },
+        { label: date[5],  y: ounces[5] },
+        { label: date[6],  y: ounces[6] }
+      ]
 
-// For a specific user, display how their step goal compares to the average step goal amongst all users (this display should not be hard-coded)
+    // date.forEach((day, index) => {
+    //   data.dataPoints.push({ label: date[index],  y: ounces[index] },)
+    // })
+  }
+    ]
+  });
+  chart.render();
+  // console.log(chart)
+}

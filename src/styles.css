@@ -20,3 +20,12 @@
 .all-time-sleep-card{
   border: 1px solid Brown;
 }
+.day-activity-card{
+  border: 1px solid Green;
+}
+.weekly-activity-card{
+  border: 1px solid Green;
+}
+.comparison-activity-card{
+  border: 1px solid Green;
+}

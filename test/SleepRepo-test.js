@@ -89,6 +89,11 @@ describe.only('Sleep', () => {
     expect(sleepRepo.namesOfBestSleepers('2019/06/23', userData)).to.deep.equal(["Garnett Cruickshank"]);
   })
 
+  it('should name all of the people who slept the longest on any given day', () => {
+    console.log(sleepRepo.namesOfSleepiestPeople('2019/06/23', userData))
+    expect(sleepRepo.namesOfSleepiestPeople('2019/06/23', userData)).to.deep.equal(["Jarvis Considine", "Laney Abshire"])
+  })
+
 
 
 });

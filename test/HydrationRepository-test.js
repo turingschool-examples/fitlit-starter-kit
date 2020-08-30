@@ -2,7 +2,7 @@ const chai = require("chai");
 const expect = chai.expect;
 const HydrationRepository = require("../src/HydrationRepository")
 
-describe.only("HydrationRepository", () => {
+describe("HydrationRepository", () => {
   let sampleHydrationData, hydrationRepository, filterUser1, filterUser2, weeklyData;
   beforeEach(() => {
     sampleHydrationData = [ {

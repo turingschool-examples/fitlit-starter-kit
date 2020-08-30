@@ -2,8 +2,8 @@ const chai = require("chai");
 const expect = chai.expect;
 const Sleep = require("../src/Sleep")
 
-describe("Sleep", () => {
-  let sleep, sampleSleepData, filterUser1, filterUser2, user1Data, weeklyData, multipleUserData;
+describe.only("Sleep", () => {
+  let sleep, sampleSleepData, filterUser1, filterUser2;
   beforeEach(() => {
     sampleSleepData =
     [
@@ -92,54 +92,10 @@ describe("Sleep", () => {
         "sleepQuality": 4.8
       },
     ]
-    filterUser1 = [
-      sampleSleepData[0],
-      sampleSleepData[1],
-      sampleSleepData[2],
-      sampleSleepData[3],
-      sampleSleepData[4],
-      sampleSleepData[5],
-      sampleSleepData[6],
-    ]
-    filterUser2 = [
-      sampleSleepData[7],
-      sampleSleepData[8],
-      sampleSleepData[9],
-      sampleSleepData[10],
-      sampleSleepData[11],
-      sampleSleepData[12],
-      sampleSleepData[13],
-    ]
-    hoursSlept = [
-      sampleSleepData[0].hoursSlept,
-      sampleSleepData[1].hoursSlept,
-      sampleSleepData[2].hoursSlept,
-      sampleSleepData[3].hoursSlept,
-      sampleSleepData[4].hoursSlept,
-      sampleSleepData[5].hoursSlept,
-      sampleSleepData[6].hoursSlept
-    ]
-    sleepQuality = [
-      sampleSleepData[0].sleepQuality,
-      sampleSleepData[1].sleepQuality,
-      sampleSleepData[2].sleepQuality,
-      sampleSleepData[3].sleepQuality,
-      sampleSleepData[4].sleepQuality,
-      sampleSleepData[5].sleepQuality,
-      sampleSleepData[6].sleepQuality
-    ]
-    sleepQuality = [
-      sampleSleepData[7].sleepQuality,
-      sampleSleepData[8].sleepQuality,
-      sampleSleepData[9].sleepQuality,
-      sampleSleepData[10].sleepQuality,
-      sampleSleepData[11].sleepQuality,
-      sampleSleepData[12].sleepQuality,
-      sampleSleepData[13].sleepQuality
-    ]
+    filterUser1 = sampleSleepData.slice(0, 7)
+    filterUser2 = sampleSleepData.slice(7, 14)
     sleep = new Sleep(sampleSleepData);
-    //maybe move to test sample file
-    //look at using map to simplify
+    
   });
   it("should be a function", () => {
     expect(Sleep).to.be.a("function")
@@ -174,12 +130,12 @@ describe("Sleep", () => {
   });
 
   it("should return daily sleep over 7 day period", () => {
-    expect(sleep.weeklySleepProperties("2019/06/15", 1, 'hoursSlept')).to.deep.equal(hoursSlept)
+    expect(sleep.weeklySleepProperties("2019/06/15", 1, 'hoursSlept')).to.deep.equal(filterUser1.map(day => day.hoursSlept))
   });
 
   it("should return daily sleep quality over 7 day period", () => {
     sleep.userSleep = sampleSleepData;
-    expect(sleep.weeklySleepProperties("2019/06/15",  2, 'sleepQuality')).to.deep.equal(sleepQuality)
+    expect(sleep.weeklySleepProperties("2019/06/15",  2, 'sleepQuality')).to.deep.equal(filterUser2.map(day => day.sleepQuality))
   })
 
   it("should return average sleep quality for all users", () => {

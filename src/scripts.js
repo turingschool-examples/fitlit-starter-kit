@@ -91,9 +91,9 @@ function displayWeeklySleep() {
   `<h2>Sleep Data For The Week</h2>
   <p> Weekly sleep data:
     Weekly Hours Slept
-    ${sleep.weeklySleepProperties("2019/06/15", user.userData.id, "hoursSlept")}
+    ${sleep.weeklySleepProperties("2019/06/15", user.userData.id)[0].hoursSlept}
     Weekly Sleep Quality
-    ${sleep.weeklySleepProperties("2019/06/15", user.userData.id, "sleepQuality")}
+    ${sleep.weeklySleepProperties("2019/06/15", user.userData.id,)[0].sleepQuality}
   </p>
   `
 }
@@ -133,11 +133,11 @@ function displayWeeklyActivity() {
   `<h2>Activity Data For The Week</h2>
   <p> Weekly Activity Data:
     Weekly step data
-    ${activity.weeklyActivityProperties("2019/06/15", user.userData.id, 'numSteps')}
+    ${activity.weeklyActivityProperties("2019/06/15", user.userData.id).map(x => x.numSteps)}
     Weekly mintues active data
-    ${activity.weeklyActivityProperties("2019/06/15", user.userData.id, 'minutesActive')}
+    ${activity.weeklyActivityProperties("2019/06/15", user.userData.id).map(x => x.minutesActive)}
     Weekly flights of stairs climbed data
-    ${activity.weeklyActivityProperties("2019/06/15", user.userData.id, 'flightsOfStairs')}
+    ${activity.weeklyActivityProperties("2019/06/15", user.userData.id).map(x => x.flightsOfStairs)}
   </p>
   `
 }
@@ -162,6 +162,7 @@ function compareDayActivity() {
 }
 
 function hydrationGraph(hydrationData) {
+  let dataPoint = hydrationData.map(x => ({label: x.date, y: x.ounces,}))
   var chart = new CanvasJS.Chart("chartContainer", {
     title:{
       text: "Your Weekly Hydration Data in Ounces"
@@ -170,15 +171,7 @@ function hydrationGraph(hydrationData) {
       {
       // Change type to "doughnut", "line", "splineArea", etc.
         type: "column",
-        dataPoints: [
-          { label: hydrationData[0].date,  y: hydrationData[0].ounces },
-          { label: hydrationData[1].date,  y: hydrationData[1].ounces },
-          { label: hydrationData[2].date,  y: hydrationData[2].ounces },
-          { label: hydrationData[3].date,  y: hydrationData[3].ounces },
-          { label: hydrationData[4].date,  y: hydrationData[4].ounces },
-          { label: hydrationData[5].date,  y: hydrationData[5].ounces },
-          { label: hydrationData[6].date,  y: hydrationData[6].ounces }
-        ]
+        dataPoints: dataPoint
       }
     ]
   });

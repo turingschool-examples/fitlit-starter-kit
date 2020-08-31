@@ -88,21 +88,8 @@ function displayDailySleep() {
 function displayWeeklySleep() {
   let sleepWeekly = sleep.weeklySleepProperties("2019/06/15", user.userData.id)
   sleepGraph(sleepWeekly)
+  sleepAmountGraph(sleepWeekly)
 }
-
-// function displayWeeklySleep() {
-//   let sleepWeekly = document.querySelector('.week-sleep-card')
-//   sleepWeekly.innerHTML +=
-//   `<h2>Sleep Data For The Week</h2>
-//   <p> Weekly sleep data:
-//     Weekly Hours Slept
-//     ${sleep.weeklySleepProperties("2019/06/15", user.userData.id, "hoursSlept")}
-//     Weekly Sleep Quality
-//     ${sleep.weeklySleepProperties("2019/06/15", user.userData.id, "sleepQuality")}
-//   </p>
-//   `
-//   sleepGraph(sleepWeekly)
-// }
 
 function allTimeSleep() {
   let sleepAllTime = document.querySelector('.all-time-sleep-card')
@@ -212,4 +199,29 @@ function sleepGraph(sleepData) {
     ]
   });
   sleepQualityChart.render();
+}
+
+function sleepAmountGraph() {
+  let sleepAmountChart = new CanvasJS.Chart('sleepChartAmountContainer', {
+    title: {
+      text: "Your Weekly Sleep in Hours"
+    },
+    data: [
+      {
+        type: "column",
+        dataPoints: [
+          { label: sleepData[0].date, y: sleepData[0].hoursSlept },
+          { label: sleepData[1].date, y: sleepData[1].hoursSlept },
+          { label: sleepData[2].date, y: sleepData[2].hoursSlept },
+          { label: sleepData[3].date, y: sleepData[3].hoursSlept },
+          { label: sleepData[4].date, y: sleepData[4].hoursSlept },
+          { label: sleepData[5].date, y: sleepData[5].hoursSlept },
+          { label: sleepData[6].date, y: sleepData[6].hoursSlept },
+          { label: sleepData[7].date, y: sleepData[7].hoursSlept }
+
+        ]
+      }
+    ]
+  })
+  sleepAmountChart.render();
 }

@@ -66,4 +66,6 @@ describe('ActivityRepo', () => {
   it('should find names of users who met all users average step goal on a given date', () => {
     expect(activityRepo.getUsersWhoMetStepGoal('2019/08/08', 'numSteps', userData)).to.deep.equal(['Dan Hodkiewicz', 'Wilburn Collins', 'Alexandrea Wehner', 'Maria Kemmer', 'Kristin Cruickshank', 'Greta Corkery'])
   })
+
+
 });

@@ -29,8 +29,7 @@ class Sleep {
   }
   sleepQualityAboveThree(date) {
     let qualityAboveThree = [];
-    let uniqueIds = [];
-    this.sleepSet.forEach(user => !uniqueIds.includes(user.userID) ? uniqueIds.push(user.userID) : null)
+    let uniqueIds = Array.from(new Set(this.sleepSet.map(user => user.userID)))
     uniqueIds.forEach(id => {
       let usersSleepQuality = this.weeklySleepProperties(date, id).map(daySleep => daySleep.sleepQuality);
       let totalQuality = usersSleepQuality.reduce((quality, currentQuality ) =>{

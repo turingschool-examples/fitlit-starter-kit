@@ -20,8 +20,8 @@ function onLoad() {
 }
 
 function chooseRandomUser() {
-  const randomUser = Math.floor(Math.random() * userData.length)
-  user = new User(userData[randomUser])
+  const randomUserId = Math.floor(Math.random() * userData.length)
+  user = new User(userData[randomUserId])
   let greeting = document.querySelector('.user-profile-display')
   greeting.innerHTML = `Welcome, ${user.returnFirstName()}!`
 }
@@ -86,17 +86,23 @@ function displayDailySleep() {
 }
 
 function displayWeeklySleep() {
-  let sleepWeekly = document.querySelector('.week-sleep-card')
-  sleepWeekly.innerHTML +=
-  `<h2>Sleep Data For The Week</h2>
-  <p> Weekly sleep data:
-    Weekly Hours Slept
-    ${sleep.weeklySleepProperties("2019/06/15", user.userData.id, "hoursSlept")}
-    Weekly Sleep Quality
-    ${sleep.weeklySleepProperties("2019/06/15", user.userData.id, "sleepQuality")}
-  </p>
-  `
+  let sleepWeekly = sleep.weeklySleepProperties("2019/06/15", user.userData.id)
+  sleepGraph(sleepWeekly)
 }
+
+// function displayWeeklySleep() {
+//   let sleepWeekly = document.querySelector('.week-sleep-card')
+//   sleepWeekly.innerHTML +=
+//   `<h2>Sleep Data For The Week</h2>
+//   <p> Weekly sleep data:
+//     Weekly Hours Slept
+//     ${sleep.weeklySleepProperties("2019/06/15", user.userData.id, "hoursSlept")}
+//     Weekly Sleep Quality
+//     ${sleep.weeklySleepProperties("2019/06/15", user.userData.id, "sleepQuality")}
+//   </p>
+//   `
+//   sleepGraph(sleepWeekly)
+// }
 
 function allTimeSleep() {
   let sleepAllTime = document.querySelector('.all-time-sleep-card')
@@ -162,7 +168,7 @@ function compareDayActivity() {
 }
 
 function hydrationGraph(hydrationData) {
-  var chart = new CanvasJS.Chart("chartContainer", {
+  let hydrationChart = new CanvasJS.Chart("chartContainer", {
     title:{
       text: "Your Weekly Hydration Data in Ounces"
     },
@@ -182,5 +188,28 @@ function hydrationGraph(hydrationData) {
       }
     ]
   });
-  chart.render();
+  hydrationChart.render();
+}
+
+function sleepGraph(sleepData) {
+  let sleepQualityChart = new CanvasJS.Chart("sleepChartContainer", {
+    title:{
+      text: "Your Weekly Sleep Quality Data"
+    },
+    data:[
+      {
+        type: "column",
+        dataPoints: [
+          { label: sleepData[0].date, y: sleepData[0].sleepQuality },
+          { label: sleepData[1].date, y: sleepData[1].sleepQuality },
+          { label: sleepData[2].date, y: sleepData[2].sleepQuality },
+          { label: sleepData[3].date, y: sleepData[3].sleepQuality },
+          { label: sleepData[4].date, y: sleepData[4].sleepQuality },
+          { label: sleepData[5].date, y: sleepData[5].sleepQuality },
+          { label: sleepData[6].date, y: sleepData[6].sleepQuality  }
+        ]
+      }
+    ]
+  });
+  sleepQualityChart.render();
 }

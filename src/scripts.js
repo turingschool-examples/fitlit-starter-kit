@@ -142,20 +142,22 @@ function compareDayActivity() {
   `<h2>Activity Data For The Day Compared To All Users</h2>
   <p> Daily Activity Data Comparison:
     Average step data compared to all users
-    Your Average ${activity.averageWeeklyMinutes("2019/06/15", user.userData.id, "numSteps")}
+    Your Average ${activity.getDayData("2019/06/15", user.userData.id).numSteps}
     All Users Average ${activityFindAllUsers.numSteps}</br>
     Average mintues active data compared to all users
-    Your Average ${activity.averageWeeklyMinutes("2019/06/15", user.userData.id, "minutesActive")}
+    Your Average ${activity.getDayData("2019/06/15", user.userData.id).minutesActive}
     All Users Average ${activityFindAllUsers.minutesActive}</br>
     Average flights of stairs climbed data compared to all users
-    Your Average ${activity.averageWeeklyMinutes("2019/06/15", user.userData.id, "flightsOfStairs")}
+    Your Average ${activity.getDayData("2019/06/15", user.userData.id).flightsOfStairs}
     All Users Average ${activityFindAllUsers.flightsOfStairs}
   </p>
   `
 }
 
+
+
 function hydrationGraph(hydrationData) {
-  console.log(hydrationData)
+  let dataPoint = hydrationData.map(x => ({label: x.date, y: x.ounces,}))
   let hydrationChart = new CanvasJS.Chart("chartContainer", {
     title:{
       text: "Your Weekly Hydration Data in Ounces"
@@ -164,15 +166,7 @@ function hydrationGraph(hydrationData) {
       {
       // Change type to "doughnut", "line", "splineArea", etc.
         type: "column",
-        dataPoints: [
-          { label: hydrationData[0].date,  y: hydrationData[0].ounces },
-          { label: hydrationData[1].date,  y: hydrationData[1].ounces },
-          { label: hydrationData[2].date,  y: hydrationData[2].ounces },
-          { label: hydrationData[3].date,  y: hydrationData[3].ounces },
-          { label: hydrationData[4].date,  y: hydrationData[4].ounces },
-          { label: hydrationData[5].date,  y: hydrationData[5].ounces },
-          { label: hydrationData[6].date,  y: hydrationData[6].ounces }
-        ]
+        dataPoints: dataPoint
       }
     ]
   });

@@ -2,7 +2,7 @@ const chai = require("chai");
 const expect = chai.expect;
 const Sleep = require("../src/Sleep")
 
-describe.only("Sleep", () => {
+describe("Sleep", () => {
   let sleep, sampleSleepData, filterUser1, filterUser2;
   beforeEach(() => {
     sampleSleepData =
@@ -130,12 +130,12 @@ describe.only("Sleep", () => {
   });
 
   it("should return daily sleep over 7 day period", () => {
-    expect(sleep.weeklySleepProperties("2019/06/15", 1, 'hoursSlept')).to.deep.equal(filterUser1.map(day => day.hoursSlept))
+    expect(sleep.weeklySleepProperties("2019/06/15", 1).map(daySleep => daySleep.hoursSlept)).to.deep.equal(filterUser1.map(day => day.hoursSlept))
   });
 
   it("should return daily sleep quality over 7 day period", () => {
     sleep.userSleep = sampleSleepData;
-    expect(sleep.weeklySleepProperties("2019/06/15",  2, 'sleepQuality')).to.deep.equal(filterUser2.map(day => day.sleepQuality))
+    expect(sleep.weeklySleepProperties("2019/06/15",  2).map(daySleep => daySleep.sleepQuality)).to.deep.equal(filterUser2.map(day => day.sleepQuality))
   })
 
   it("should return average sleep quality for all users", () => {

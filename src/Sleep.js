@@ -18,6 +18,14 @@ class Sleep {
   }
   weeklySleepProperties(dateSelected, id,) {
     let startingDate = this.daySleep(dateSelected, id);
+<<<<<<< HEAD
+    let firstDay = this.sleepSet.indexOf(startingDate);
+    return this.sleepSet.slice(firstDay, firstDay + 7).map(day => ({hoursSlept: day.hoursSlept,  sleepQuality: day.sleepQuality}))
+  }
+  averageSleepQuality() {
+    let average = this.sleepSet.reduce((quality, user) => {
+      return quality += user.sleepQuality;
+=======
     let firstDay = this.userSleepData(id).indexOf(startingDate);
     return this.userSleepData(id).slice(firstDay, firstDay + 7).map(day => ({date: day.date, hoursSlept: day.hoursSlept,  sleepQuality: day.sleepQuality}))
   }
@@ -27,17 +35,21 @@ class Sleep {
     let userHolder = id || null;
     let average = dataToAverage.reduce((quality, user) => {
       return quality += userHolder ? user : user.sleepQuality;
+>>>>>>> main
     }, 0)
-    return Math.round(average / dataToAverage.length * 10) / 10;
+    return Math.round(average / this.sleepSet.length * 10) / 10;
   }
   sleepQualityAboveThree(date) {
     let qualityAboveThree = [];
-    let uniqueIds = [];
-    this.sleepSet.forEach(user => !uniqueIds.includes(user.userID) ? uniqueIds.push(user.userID) : null)
+    let uniqueIds = Array.from(new Set(this.sleepSet.map(user => user.userID)))
     uniqueIds.forEach(id => {
-      let allQuality = this.weeklySleepProperties(date, id, 'sleepQuality');
-      let averageQuality = this.averageSleepQuality(allQuality, id);
-      averageQuality > 3 ? qualityAboveThree.push(id) : null;
+      let usersSleepQuality = this.weeklySleepProperties(date, id).map(daySleep => daySleep.sleepQuality);
+      let totalQuality = usersSleepQuality.reduce((quality, currentQuality ) =>{
+        return quality += currentQuality 
+      });
+      if (totalQuality / 7 > 3) {
+        qualityAboveThree.push(id)
+      }
     })
     return qualityAboveThree
   }

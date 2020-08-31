@@ -7,18 +7,18 @@ describe("User", () => {
   let user1;
   beforeEach(() => {
     user1 =  {
-                "id": 1,
-                "name": "Luisa Hane",
-                "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-                "email": "Diana.Hayes1@hotmail.com",
-                "strideLength": 4.3,
-                "dailyStepGoal": 10000,
-                "friends": [
-                  16,
-                  4,
-                  8
-                ]
-              },
+      "id": 1,
+      "name": "Luisa Hane",
+      "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+      "email": "Diana.Hayes1@hotmail.com",
+      "strideLength": 4.3,
+      "dailyStepGoal": 10000,
+      "friends": [
+        16,
+        4,
+        8
+      ]
+    },
     userRepository = new UserRepository([user1]);
     user = new User(userRepository.userData[0]);
   });

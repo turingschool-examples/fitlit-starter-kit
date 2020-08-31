@@ -10,7 +10,7 @@ function onLoad() {
   compareUsersSteps();
   displayFriendList();
   displayWaterConsumption();
-  dispalyWeeklyConsumption();
+  displayWeeklyConsumption();
   displayDailySleep();
   displayWeeklySleep();
   allTimeSleep();
@@ -21,10 +21,9 @@ function onLoad() {
 
 function chooseRandomUser() {
   const randomUser = Math.floor(Math.random() * userData.length)
-  console.log(randomUser)
   user = new User(userData[randomUser])
   let greeting = document.querySelector('.user-profile-display')
-  greeting.innerHTML = `Welcome, ${user.returnFristName()}!`
+  greeting.innerHTML = `Welcome, ${user.returnFirstName()}!`
 }
 
 function displayUserInfo() {
@@ -42,7 +41,6 @@ function displayUserInfo() {
 
 function compareUsersSteps() {
   userRepository = new UserRepository(userData)
-  console.log(userRepository)
   let userComparisons = document.querySelector('.compare-user-steps')
   userComparisons.innerHTML +=
     `<h2>STEPS</h2>
@@ -53,7 +51,6 @@ function compareUsersSteps() {
 
 function makeFriendList() {
   let userFriends = userRepository.returnFriendFullName(user.userData.friends)
-  console.log("HELLO", userFriends)
   return userFriends.map(friendName => `<p class="friend-names">${friendName}</p>`)
 }
 
@@ -71,11 +68,9 @@ function displayWaterConsumption() {
     ${hydrationRepository.dayOunces("2019/06/15", user.userData.id)}oz</p>`
 }
 
-function dispalyWeeklyConsumption() {
-  let waterConsumption = document.querySelector('.weekly-hydration-card')
-  let date = hydrationRepository.dailyDateForWeek("2019/06/15", user.userData.id)
-  let ounces = hydrationRepository.dailyOuncesPerGivenWeek("2019/06/15", user.userData.id)
-  hydrationGraph(date, ounces);
+function displayWeeklyConsumption() {
+  let userHydrationData = hydrationRepository.dailyOuncesPerGivenWeek("2019/06/15", user.userData.id)
+  hydrationGraph(userHydrationData);
 }
 
 function displayDailySleep() {
@@ -166,32 +161,26 @@ function compareDayActivity() {
   `
 }
 
-function hydrationGraph(date, ounces) {
-
+function hydrationGraph(hydrationData) {
   var chart = new CanvasJS.Chart("chartContainer", {
     title:{
       text: "Your Weekly Hydration Data in Ounces"
     },
     data: [
-    {
+      {
       // Change type to "doughnut", "line", "splineArea", etc.
-      type: "column",
-      dataPoints: [
-        { label: date[0],  y: ounces[0] },
-        { label: date[1],  y: ounces[1] },
-        { label: date[2],  y: ounces[2] },
-        { label: date[3],  y: ounces[3] },
-        { label: date[4],  y: ounces[4] },
-        { label: date[5],  y: ounces[5] },
-        { label: date[6],  y: ounces[6] }
-      ]
-
-    // date.forEach((day, index) => {
-    //   data.dataPoints.push({ label: date[index],  y: ounces[index] },)
-    // })
-  }
+        type: "column",
+        dataPoints: [
+          { label: hydrationData[0].date,  y: hydrationData[0].ounces },
+          { label: hydrationData[1].date,  y: hydrationData[1].ounces },
+          { label: hydrationData[2].date,  y: hydrationData[2].ounces },
+          { label: hydrationData[3].date,  y: hydrationData[3].ounces },
+          { label: hydrationData[4].date,  y: hydrationData[4].ounces },
+          { label: hydrationData[5].date,  y: hydrationData[5].ounces },
+          { label: hydrationData[6].date,  y: hydrationData[6].ounces }
+        ]
+      }
     ]
   });
   chart.render();
-  // console.log(chart)
 }

@@ -4,35 +4,25 @@ class HydrationRepository {
   }
   userHydrationData(id) {
     return this.hydrationSet.filter(dailyHydration => dailyHydration.userID === id);
-
   }
   averageAllTimeOunces(id) {
-    //change getUserData
-    let getUserData = this.userHydrationData(id)
-    let allTimeOunces = getUserData.reduce((ounces, day) =>{
+    let userHydration = this.userHydrationData(id)
+    let allTimeOunces = userHydration.reduce((ounces, day) =>{
       ounces += day.numOunces;
       return ounces
     }, 0)
-    return Math.round(allTimeOunces / getUserData.length);
+    return Math.round(allTimeOunces / userHydration.length);
   }
   dayOunces(dateSelected, id) {
-    console.log(id)
     return this.hydrationSet.find(day => day.date === dateSelected && day.userID === id).numOunces;
-  }
-  dailyDateForWeek(startDate, id) {
-    let allUserHydrationData = this.userHydrationData(id);
-    let startingDate = this.hydrationSet.find(day => day.date === startDate);
-    let firstDay = this.hydrationSet.indexOf(startingDate);
-    return allUserHydrationData.slice(firstDay, firstDay + 7).map(day => day.date)
   }
   dailyOuncesPerGivenWeek(startDate, id) {
     let allUserHydrationData = this.userHydrationData(id);
     let startingDate = this.hydrationSet.find(day => day.date === startDate);
     let firstDay = this.hydrationSet.indexOf(startingDate);
-    return allUserHydrationData.slice(firstDay, firstDay + 7).map(day => day.numOunces)
+    return allUserHydrationData.slice(firstDay, firstDay + 7).map(day => ({date: day.date, ounces: day.numOunces}))
   }
 }
-
 if (typeof module !== 'undefined') {
   module.exports = HydrationRepository;
 }

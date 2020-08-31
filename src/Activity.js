@@ -13,15 +13,11 @@ class Activity {
   getUserData(id) {
     return userRepository.returnUserData(id);
   }
-  // weeklyActivityProperties(dateSelected, id, property) {
-  //   let startingDate = this.getDayData(dateSelected, id);
-  //   let firstDay = this.activitySet.indexOf(startingDate);
-  //   return this.activitySet.slice(firstDay, firstDay + 7).map(day => day[property])
-  // }
   weeklyActivityProperties(dateSelected, id,) {
     let startingDate = this.getDayData(dateSelected, id);
-    let firstDay = this.activitySet.indexOf(startingDate);
-    return this.activitySet.slice(firstDay, firstDay + 7).map(day => ({date: day.date, stepCount: day.numSteps,  flightsOfStairsClimbed: day.flightsOfStairs, minutesActive: day.minutesActive}))
+    let userActivity = this.activitySet.filter(dailySleep => dailySleep.userID === id)
+    let firstDay = userActivity.indexOf(startingDate);
+    return userActivity.slice(firstDay, firstDay + 7).map(day => ({date: day.date, stepCount: day.numSteps,  flightsOfStairsClimbed: day.flightsOfStairs, minutesActive: day.minutesActive}))
   }
   walkedMilesPerDay(dateSelected, id) {
     let dayData = this.getDayData(dateSelected, id)

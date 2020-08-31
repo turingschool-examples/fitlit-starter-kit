@@ -1,6 +1,3 @@
-const ActivityRepo = require("./ActivityRepo");
-const SleepRepo = require("./SleepRepo");
-
 console.log("Hello World");
 
 const user = new User(userData[33])
@@ -52,7 +49,25 @@ function displayActivityData() {
 }
 
 function displaySleepData() {
+  const hoursTodayData = document.querySelector('.hours-today-data');
+  const qualityTodayData = document.querySelector('.quality-today-data');
+  const hoursWeekData = document.querySelector('.quality-today-data');
+  const qualityWeekData = document.querySelector('.quality-week-data');
+  const hoursAllTimeData = document.querySelector('.hours-all-time-data');
+  const qualityAllTimeData = document.querySelector('.quality-all-time-data');
 
+  const hoursSleptWeekly = sleepRepo.findWeekOfSleep(user.id, '2019/09/21');
+
+  hoursTodayData.innerText = `Hours Slept Today: ${sleepRepo.findNightlySleep(user.id, '2019/09/21')}`;
+  qualityTodayData.innerText = `Sleep Quality Today: ${sleepRepo.findNightlySleepQuality(user.id, '2019/09/21')}`;
+  hoursSleptWeekly.forEach(night => {
+    hoursWeekData.innerText += ` ${night.date}: ${night.hoursSlept}`
+  })
+  hoursSleptWeekly.forEach(night => {
+    qualityWeekData.innerText += ` ${night.date}: ${night.sleepQuality}`
+  })
+  hoursAllTimeData.innerText += `Average Hours Slept: ${sleepRepo.calculateAvgSleep(user.id)}`;
+  qualityAllTimeData.innerText += `Average Sleep Quality: ${sleepRepo.findAvgTotalSleepQuality(user.id)}`
 }
 
 function updateDisplay() {

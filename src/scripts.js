@@ -91,9 +91,9 @@ function displayWeeklySleep() {
   `<h2>Sleep Data For The Week</h2>
   <p> Weekly sleep data:
     Weekly Hours Slept
-    ${sleep.weeklySleepProperties("2019/06/15", user.userData.id)[0].hoursSlept}
+    ${sleep.weeklySleepProperties("2019/06/15", user.userData.id).map(daySleep => daySleep.hoursSlept)}
     Weekly Sleep Quality
-    ${sleep.weeklySleepProperties("2019/06/15", user.userData.id,)[0].sleepQuality}
+    ${sleep.weeklySleepProperties("2019/06/15", user.userData.id,).map(daySleep => daySleep.hoursSlept)}
   </p>
   `
 }
@@ -149,13 +149,13 @@ function compareDayActivity() {
   `<h2>Activity Data For The Day Compared To All Users</h2>
   <p> Daily Activity Data Comparison:
     Average step data compared to all users
-    Your Average ${activity.averageWeeklyMinutes("2019/06/15", user.userData.id, "numSteps")}
+    Your Average ${activity.getDayData("2019/06/15", user.userData.id).numSteps}
     All Users Average ${activityFindAllUsers.numSteps}</br>
     Average mintues active data compared to all users
-    Your Average ${activity.averageWeeklyMinutes("2019/06/15", user.userData.id, "minutesActive")}
+    Your Average ${activity.getDayData("2019/06/15", user.userData.id).minutesActive}
     All Users Average ${activityFindAllUsers.minutesActive}</br>
     Average flights of stairs climbed data compared to all users
-    Your Average ${activity.averageWeeklyMinutes("2019/06/15", user.userData.id, "flightsOfStairs")}
+    Your Average ${activity.getDayData("2019/06/15", user.userData.id).flightsOfStairs}
     All Users Average ${activityFindAllUsers.flightsOfStairs}
   </p>
   `

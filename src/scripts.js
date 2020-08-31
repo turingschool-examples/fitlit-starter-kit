@@ -1,8 +1,13 @@
+const ActivityRepo = require("./ActivityRepo");
+const SleepRepo = require("./SleepRepo");
+
 console.log("Hello World");
 
 const user = new User(userData[33])
 const userRepo = new UserRepo(userData)
 const hydrationRepo = new HydrationRepo(hydrationData)
+const activityRepo = new ActivityRepo(activityData)
+const sleepRepo = new SleepRepo(sleepData)
 
 window.addEventListener('load', updateDisplay);
 
@@ -42,9 +47,19 @@ function displayHydrationData() {
   })
 }
 
+function displayActivityData() {
+  
+}
+
+function displaySleepData() {
+
+}
+
 function updateDisplay() {
   displayUserData()
   displayHydrationData()
+  displayActivityData()
+  displaySleepData()
 }
 
 

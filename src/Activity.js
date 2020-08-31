@@ -16,7 +16,7 @@ class Activity {
   weeklyActivityProperties(dateSelected, id) {
     let startingDate = this.getDayData(dateSelected, id);
     let firstDay = this.activitySet.indexOf(startingDate);
-    return this.activitySet.slice(firstDay, firstDay + 7).map(day => ({numSteps: day.numSteps,  minutesActive: day.minutesActive, flightsOfStairs: day.flightsOfStairs}))
+    return this.activitySet.slice(firstDay, firstDay + 7).map(day => day)
   }
   walkedMilesPerDay(dateSelected, id) {
     let dayData = this.getDayData(dateSelected, id)
@@ -26,10 +26,8 @@ class Activity {
   minutesActivePerDay(dateSelected, id) {
     return this.getDayData(dateSelected, id).minutesActive;
   }
-  averageWeeklyMinutes(dateSelected, id,) {
-    let weeklyActivity = this.weeklyActivityProperties(dateSelected, id).map((dayActivity) => {
-    return dayActivity.minutesActive
-  })
+  averageAverageProperty(dateSelected, id, property) {
+    let weeklyActivity = this.weeklyActivityProperties(dateSelected, id, property)
     return Math.round((weeklyActivity.reduce((allMinutes, minute) => allMinutes + minute, 0) / 7) * 10) / 10;
   }
   stepGoalAchieved(dateSelected, id) {
@@ -59,24 +57,25 @@ class Activity {
     return dayData
   }
   weeklyStepGoal(date, id, property) {
-    let weeklyAverage = this.averageWeeklyMinutes(date, id, property)
+    let weeklyAverage = this.averageAverageProperty(date, id, property)
     return weeklyAverage >= this.getUserData(id).dailyStepGoal
   }
   consecutiveDays(id) {
-    let perUser = this.activitySet.filter(user => user.userID === id)
+    let perUser = this.activitySet.filter(user => user.userID === id);
     let consecDays = [];
     perUser.forEach((day, i) => {
-      if (i < 2 || i >= perUser.length - 2) {
+      if (i === 0 || i >= perUser.length - 2) {
         return 
       }
       if (day.numSteps > perUser[i - 1].numSteps && 
-        perUser[i - 1].numSteps > perUser[i - 2].numSteps) {
+      perUser[i - 1].numSteps > perUser[i - 2].numSteps) {
         consecDays.push(day.date)
-      }
-    })
+    }
     return consecDays;
+})
 }
 }
 if (typeof module !== 'undefined') {
   module.exports = Activity;
 }
+

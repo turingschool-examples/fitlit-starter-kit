@@ -2,7 +2,7 @@ const chai = require("chai");
 const expect = chai.expect;
 const Activity = require("../src/Activity")
 
-describe.skip("Activity", () => {
+describe.only("Activity", () => {
   let activity, sampleActivtyData;
   beforeEach(() => {
     sampleActivtyData =
@@ -155,6 +155,10 @@ describe.skip("Activity", () => {
 
   it("should return if a user achieved step goal for the week ",() => {
     expect(activity.weeklyStepGoal("2019/06/15", 1, 'numSteps')).to.be.equal(false);
+  });
+
+  it("should return if a user achieved step goal for the week ",() => {
+    expect(activity.consecutiveDays(1)).to.deep.equal(["2019/06/17"]);
   });
 
 });

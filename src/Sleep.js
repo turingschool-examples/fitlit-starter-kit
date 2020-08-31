@@ -19,9 +19,9 @@ class Sleep {
   weeklySleepProperties(dateSelected, id,) {
     let startingDate = this.daySleep(dateSelected, id);
     let firstDay = this.sleepSet.indexOf(startingDate);
-    return this.sleepSet.slice(firstDay, firstDay + 7).map(day => ({hoursSlept: day.hoursSlept,  sleepQuality: day.sleepQuality}))
+    return this.sleepSet.slice(firstDay, firstDay + 7).map(day => ({date: day.date, hoursSlept: day.hoursSlept,  sleepQuality: day.sleepQuality}))
   }
-  
+
   averageSleepQuality(allQuality, id) {
     let dataToAverage = id ? allQuality : this.sleepSet;
     let userHolder = id || null;

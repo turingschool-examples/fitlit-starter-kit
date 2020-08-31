@@ -87,6 +87,7 @@ function displayDailySleep() {
 
 function displayWeeklySleep() {
   let sleepWeekly = sleep.weeklySleepProperties("2019/06/15", user.userData.id)
+  console.log(sleepWeekly)
   sleepGraph(sleepWeekly)
   sleepAmountGraph(sleepWeekly)
 }
@@ -120,19 +121,14 @@ function displayDayActivity() {
   `
 }
 
+// function displayWeeklySleep() {
+//   let sleepWeekly = sleep.weeklySleepProperties("2019/06/15", user.userData.id)
+//   sleepGraph(sleepWeekly)
+//   sleepAmountGraph(sleepWeekly)
+// }
 function displayWeeklyActivity() {
-  let weeklyActivity = document.querySelector('.weekly-activity-card')
-  weeklyActivity.innerHTML +=
-  `<h2>Activity Data For The Week</h2>
-  <p> Weekly Activity Data:
-    Weekly step data
-    ${activity.weeklyActivityProperties("2019/06/15", user.userData.id, 'numSteps')}
-    Weekly mintues active data
-    ${activity.weeklyActivityProperties("2019/06/15", user.userData.id, 'minutesActive')}
-    Weekly flights of stairs climbed data
-    ${activity.weeklyActivityProperties("2019/06/15", user.userData.id, 'flightsOfStairs')}
-  </p>
-  `
+  let weeklyActivity = activity.weeklyActivityProperties("2019/06/15", user.userData.id)
+  weeklyStepCountGraph(weeklyActivity)
 }
 
 function compareDayActivity() {
@@ -155,6 +151,7 @@ function compareDayActivity() {
 }
 
 function hydrationGraph(hydrationData) {
+  console.log(hydrationData)
   let hydrationChart = new CanvasJS.Chart("chartContainer", {
     title:{
       text: "Your Weekly Hydration Data in Ounces"
@@ -179,6 +176,7 @@ function hydrationGraph(hydrationData) {
 }
 
 function sleepGraph(sleepData) {
+  console.log(sleepData)
   let sleepQualityChart = new CanvasJS.Chart("sleepChartContainer", {
     title:{
       text: "Your Weekly Sleep Quality Data"
@@ -201,7 +199,7 @@ function sleepGraph(sleepData) {
   sleepQualityChart.render();
 }
 
-function sleepAmountGraph() {
+function sleepAmountGraph(sleepData) {
   let sleepAmountChart = new CanvasJS.Chart('sleepChartAmountContainer', {
     title: {
       text: "Your Weekly Sleep in Hours"
@@ -217,11 +215,34 @@ function sleepAmountGraph() {
           { label: sleepData[4].date, y: sleepData[4].hoursSlept },
           { label: sleepData[5].date, y: sleepData[5].hoursSlept },
           { label: sleepData[6].date, y: sleepData[6].hoursSlept },
-          { label: sleepData[7].date, y: sleepData[7].hoursSlept }
-
         ]
       }
     ]
   })
   sleepAmountChart.render();
 }
+
+function weeklyStepCountGraph(activityData) {
+  let stepCountChart = new CanvasJS.Chart('stepCountWeeklyChart', {
+    title: {
+      text: "Your Weekly Step Count Data"
+    },
+    data: [
+      {
+        type: "column",
+        dataPoints: [
+          { label: activityData[0].date, y: activityData[0].numSteps },
+          { label: activityData[1].date, y: activityData[1].numSteps },
+          { label: activityData[2].date, y: activityData[2].numSteps },
+          { label: activityData[3].date, y: activityData[3].numSteps },
+          { label: activityData[4].date, y: activityData[4].numSteps },
+          { label: activityData[5].date, y: activityData[5].numSteps },
+          { label: activityData[6].date, y: activityData[6].numSteps },
+        ]
+      }
+    ]
+  })
+  stepCountChart.render();
+}
+
+//For a user, a weekly view of their step count, flights of stairs climbed, and minutes active

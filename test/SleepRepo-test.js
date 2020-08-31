@@ -6,7 +6,7 @@ const userData = require('./testdata/user-test-data');
 
 const SleepRepo = require('../src/SleepRepo');
 const User = require('../src/User');
-describe.only('Sleep', () => {
+describe('Sleep', () => {
   let sleepRepo;
   beforeEach(() => {
     sleepRepo = new SleepRepo(sleepData)

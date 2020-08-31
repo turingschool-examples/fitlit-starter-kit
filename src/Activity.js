@@ -61,16 +61,16 @@ class Activity {
     return weeklyAverage >= this.getUserData(id).dailyStepGoal
   }
   consecutiveDays(id) {
+    console.log(this.acivitySet)
     let perUser = this.activitySet.filter(user => user.userID === id)
     let consecDays = [];
     perUser.forEach((day, i) => {
-      if (i === 0 || i >= perUser.length - 2) {
+      if (i < 2 || i >= perUser.length - 2) {
         return 
       }
       if (day.numSteps > perUser[i - 1].numSteps && 
-        day.numSteps < perUser[i + 1].numSteps &&
-        day.numSteps < perUser[i + 2].numSteps) {
-        consecDays.push(perUser[i + 2].date )
+        perUser[i - 1].numSteps > perUser[i - 2].numSteps) {
+        consecDays.push(day.date)
       }
     })
     return consecDays;

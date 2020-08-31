@@ -128,7 +128,11 @@ function displayDayActivity() {
 // }
 function displayWeeklyActivity() {
   let weeklyActivity = activity.weeklyActivityProperties("2019/06/15", user.userData.id)
+  console.log(weeklyActivity)
   weeklyStepCountGraph(weeklyActivity)
+  weeklyStairFlightsClimbed(weeklyActivity)
+  weeklyMinutesActive(weeklyActivity)
+
 }
 
 function compareDayActivity() {
@@ -223,6 +227,7 @@ function sleepAmountGraph(sleepData) {
 }
 
 function weeklyStepCountGraph(activityData) {
+  let dataPoint = activityData.map(data => ({label: data.date, y: data.stepCount}))
   let stepCountChart = new CanvasJS.Chart('stepCountWeeklyChart', {
     title: {
       text: "Your Weekly Step Count Data"
@@ -230,19 +235,43 @@ function weeklyStepCountGraph(activityData) {
     data: [
       {
         type: "column",
-        dataPoints: [
-          { label: activityData[0].date, y: activityData[0].numSteps },
-          { label: activityData[1].date, y: activityData[1].numSteps },
-          { label: activityData[2].date, y: activityData[2].numSteps },
-          { label: activityData[3].date, y: activityData[3].numSteps },
-          { label: activityData[4].date, y: activityData[4].numSteps },
-          { label: activityData[5].date, y: activityData[5].numSteps },
-          { label: activityData[6].date, y: activityData[6].numSteps },
-        ]
+        dataPoints: dataPoint
       }
     ]
   })
   stepCountChart.render();
+}
+
+function weeklyStairFlightsClimbed(activityData) {
+  let dataPoint = activityData.map(data => ({label: data.date, y: data.flightsOfStairsClimbed}))
+  let flightsClimbedChart = new CanvasJS.Chart('flightsClimbedChart', {
+    title: {
+      text: "Your Weekly Flights of Stairs Climbed"
+    },
+    data: [
+      {
+        type: "column",
+        dataPoints: dataPoint
+      }
+    ]
+  })
+  flightsClimbedChart.render();
+}
+
+function weeklyMinutesActive(activityData) {
+  let dataPoint = activityData.map(data => ({label: data.date, y: data.minutesActive}))
+  let minutesActiveChart = new CanvasJS.Chart('minutesActiveChart', {
+    title: {
+      text: "Your Weekly Minutes Active"
+    },
+    data: [
+      {
+        type: "column",
+        dataPoints: dataPoint
+      }
+    ]
+  })
+  minutesActiveChart.render()
 }
 
 //For a user, a weekly view of their step count, flights of stairs climbed, and minutes active

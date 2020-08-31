@@ -13,10 +13,10 @@ class Activity {
   getUserData(id) {
     return userRepository.returnUserData(id);
   }
-  weeklyActivityProperties(dateSelected, id, property) {
+  weeklyActivityProperties(dateSelected, id) {
     let startingDate = this.getDayData(dateSelected, id);
     let firstDay = this.activitySet.indexOf(startingDate);
-    return this.activitySet.slice(firstDay, firstDay + 7).map(day => day[property])
+    return this.activitySet.slice(firstDay, firstDay + 7).map(day => ({numSteps: day.numSteps,  minutesActive: day.minutesActive, flightsOfStairs: day.flightsOfStairs}))
   }
   walkedMilesPerDay(dateSelected, id) {
     let dayData = this.getDayData(dateSelected, id)
@@ -26,8 +26,10 @@ class Activity {
   minutesActivePerDay(dateSelected, id) {
     return this.getDayData(dateSelected, id).minutesActive;
   }
-  averageWeeklyMinutes(dateSelected, id, property) {
-    let weeklyActivity = this.weeklyActivityProperties(dateSelected, id, property)
+  averageWeeklyMinutes(dateSelected, id,) {
+    let weeklyActivity = this.weeklyActivityProperties(dateSelected, id).map((dayActivity) => {
+    return dayActivity.minutesActive
+  })
     return Math.round((weeklyActivity.reduce((allMinutes, minute) => allMinutes + minute, 0) / 7) * 10) / 10;
   }
   stepGoalAchieved(dateSelected, id) {
@@ -61,7 +63,6 @@ class Activity {
     return weeklyAverage >= this.getUserData(id).dailyStepGoal
   }
   consecutiveDays(id) {
-    console.log(this.acivitySet)
     let perUser = this.activitySet.filter(user => user.userID === id)
     let consecDays = [];
     perUser.forEach((day, i) => {

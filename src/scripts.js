@@ -20,8 +20,8 @@ function onLoad() {
 }
 
 function chooseRandomUser() {
-  const randomUser = Math.floor(Math.random() * userData.length)
-  user = new User(userData[randomUser])
+  const randomUserId = Math.floor(Math.random() * userData.length)
+  user = new User(userData[randomUserId])
   let greeting = document.querySelector('.user-profile-display')
   greeting.innerHTML = `Welcome, ${user.returnFirstName()}!`
 }
@@ -86,16 +86,10 @@ function displayDailySleep() {
 }
 
 function displayWeeklySleep() {
-  let sleepWeekly = document.querySelector('.week-sleep-card')
-  sleepWeekly.innerHTML +=
-  `<h2>Sleep Data For The Week</h2>
-  <p> Weekly sleep data:
-    Weekly Hours Slept
-    ${sleep.weeklySleepProperties("2019/06/15", user.userData.id).map(daySleep => daySleep.hoursSlept)}
-    Weekly Sleep Quality
-    ${sleep.weeklySleepProperties("2019/06/15", user.userData.id,).map(daySleep => daySleep.hoursSlept)}
-  </p>
-  `
+  let sleepWeekly = sleep.weeklySleepProperties("2019/06/15", user.userData.id)
+  console.log(sleepWeekly)
+  sleepGraph(sleepWeekly)
+  sleepAmountGraph(sleepWeekly)
 }
 
 function allTimeSleep() {
@@ -127,19 +121,18 @@ function displayDayActivity() {
   `
 }
 
+// function displayWeeklySleep() {
+//   let sleepWeekly = sleep.weeklySleepProperties("2019/06/15", user.userData.id)
+//   sleepGraph(sleepWeekly)
+//   sleepAmountGraph(sleepWeekly)
+// }
 function displayWeeklyActivity() {
-  let weeklyActivity = document.querySelector('.weekly-activity-card')
-  weeklyActivity.innerHTML +=
-  `<h2>Activity Data For The Week</h2>
-  <p> Weekly Activity Data:
-    Weekly step data
-    ${activity.weeklyActivityProperties("2019/06/15", user.userData.id).map(x => x.numSteps)}
-    Weekly mintues active data
-    ${activity.weeklyActivityProperties("2019/06/15", user.userData.id).map(x => x.minutesActive)}
-    Weekly flights of stairs climbed data
-    ${activity.weeklyActivityProperties("2019/06/15", user.userData.id).map(x => x.flightsOfStairs)}
-  </p>
-  `
+  let weeklyActivity = activity.weeklyActivityProperties("2019/06/15", user.userData.id)
+  console.log(weeklyActivity)
+  weeklyStepCountGraph(weeklyActivity)
+  weeklyStairFlightsClimbed(weeklyActivity)
+  weeklyMinutesActive(weeklyActivity)
+
 }
 
 function compareDayActivity() {
@@ -161,9 +154,11 @@ function compareDayActivity() {
   `
 }
 
+
+
 function hydrationGraph(hydrationData) {
   let dataPoint = hydrationData.map(x => ({label: x.date, y: x.ounces,}))
-  var chart = new CanvasJS.Chart("chartContainer", {
+  let hydrationChart = new CanvasJS.Chart("chartContainer", {
     title:{
       text: "Your Weekly Hydration Data in Ounces"
     },
@@ -175,5 +170,102 @@ function hydrationGraph(hydrationData) {
       }
     ]
   });
-  chart.render();
+  hydrationChart.render();
 }
+
+function sleepGraph(sleepData) {
+  console.log(sleepData)
+  let sleepQualityChart = new CanvasJS.Chart("sleepChartContainer", {
+    title:{
+      text: "Your Weekly Sleep Quality Data"
+    },
+    data:[
+      {
+        type: "column",
+        dataPoints: [
+          { label: sleepData[0].date, y: sleepData[0].sleepQuality },
+          { label: sleepData[1].date, y: sleepData[1].sleepQuality },
+          { label: sleepData[2].date, y: sleepData[2].sleepQuality },
+          { label: sleepData[3].date, y: sleepData[3].sleepQuality },
+          { label: sleepData[4].date, y: sleepData[4].sleepQuality },
+          { label: sleepData[5].date, y: sleepData[5].sleepQuality },
+          { label: sleepData[6].date, y: sleepData[6].sleepQuality  }
+        ]
+      }
+    ]
+  });
+  sleepQualityChart.render();
+}
+
+function sleepAmountGraph(sleepData) {
+  let sleepAmountChart = new CanvasJS.Chart('sleepChartAmountContainer', {
+    title: {
+      text: "Your Weekly Sleep in Hours"
+    },
+    data: [
+      {
+        type: "column",
+        dataPoints: [
+          { label: sleepData[0].date, y: sleepData[0].hoursSlept },
+          { label: sleepData[1].date, y: sleepData[1].hoursSlept },
+          { label: sleepData[2].date, y: sleepData[2].hoursSlept },
+          { label: sleepData[3].date, y: sleepData[3].hoursSlept },
+          { label: sleepData[4].date, y: sleepData[4].hoursSlept },
+          { label: sleepData[5].date, y: sleepData[5].hoursSlept },
+          { label: sleepData[6].date, y: sleepData[6].hoursSlept },
+        ]
+      }
+    ]
+  })
+  sleepAmountChart.render();
+}
+
+function weeklyStepCountGraph(activityData) {
+  let dataPoint = activityData.map(data => ({label: data.date, y: data.stepCount}))
+  let stepCountChart = new CanvasJS.Chart('stepCountWeeklyChart', {
+    title: {
+      text: "Your Weekly Step Count Data"
+    },
+    data: [
+      {
+        type: "column",
+        dataPoints: dataPoint
+      }
+    ]
+  })
+  stepCountChart.render();
+}
+
+function weeklyStairFlightsClimbed(activityData) {
+  let dataPoint = activityData.map(data => ({label: data.date, y: data.flightsOfStairsClimbed}))
+  let flightsClimbedChart = new CanvasJS.Chart('flightsClimbedChart', {
+    title: {
+      text: "Your Weekly Flights of Stairs Climbed"
+    },
+    data: [
+      {
+        type: "column",
+        dataPoints: dataPoint
+      }
+    ]
+  })
+  flightsClimbedChart.render();
+}
+
+function weeklyMinutesActive(activityData) {
+  let dataPoint = activityData.map(data => ({label: data.date, y: data.minutesActive}))
+  let minutesActiveChart = new CanvasJS.Chart('minutesActiveChart', {
+    title: {
+      text: "Your Weekly Minutes Active"
+    },
+    data: [
+      {
+        type: "column",
+        dataPoints: dataPoint
+      }
+    ]
+  })
+  minutesActiveChart.render()
+}
+
+//For a user, a weekly view of their step count, flights of stairs climbed, and minutes active

@@ -13,10 +13,18 @@ class Activity {
   getUserData(id) {
     return userRepository.returnUserData(id);
   }
+<<<<<<< HEAD
   weeklyActivityProperties(dateSelected, id) {
     let startingDate = this.getDayData(dateSelected, id);
     let firstDay = this.activitySet.indexOf(startingDate);
     return this.activitySet.slice(firstDay, firstDay + 7).map(day => day)
+=======
+  weeklyActivityProperties(dateSelected, id,) {
+    let startingDate = this.getDayData(dateSelected, id);
+    let userActivity = this.activitySet.filter(dailySleep => dailySleep.userID === id)
+    let firstDay = userActivity.indexOf(startingDate);
+    return userActivity.slice(firstDay, firstDay + 7).map(day => ({date: day.date, stepCount: day.numSteps,  flightsOfStairsClimbed: day.flightsOfStairs, minutesActive: day.minutesActive}))
+>>>>>>> main
   }
   walkedMilesPerDay(dateSelected, id) {
     let dayData = this.getDayData(dateSelected, id)
@@ -65,12 +73,21 @@ class Activity {
     let consecDays = [];
     perUser.forEach((day, i) => {
       if (i === 0 || i >= perUser.length - 2) {
-        return 
+        return
       }
+<<<<<<< HEAD
       if (day.numSteps > perUser[i - 1].numSteps && 
       perUser[i - 1].numSteps > perUser[i - 2].numSteps) {
         consecDays.push(day.date)
     }
+=======
+      if (day.numSteps > perUser[i - 1].numSteps &&
+        day.numSteps < perUser[i + 1].numSteps &&
+        day.numSteps < perUser[i + 2].numSteps) {
+        consecDays.push(perUser[i + 2].date )
+      }
+    })
+>>>>>>> main
     return consecDays;
 })
 }

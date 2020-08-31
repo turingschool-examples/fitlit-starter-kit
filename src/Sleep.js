@@ -18,12 +18,24 @@ class Sleep {
   }
   weeklySleepProperties(dateSelected, id,) {
     let startingDate = this.daySleep(dateSelected, id);
+<<<<<<< HEAD
     let firstDay = this.sleepSet.indexOf(startingDate);
     return this.sleepSet.slice(firstDay, firstDay + 7).map(day => ({hoursSlept: day.hoursSlept,  sleepQuality: day.sleepQuality}))
   }
   averageSleepQuality() {
     let average = this.sleepSet.reduce((quality, user) => {
       return quality += user.sleepQuality;
+=======
+    let firstDay = this.userSleepData(id).indexOf(startingDate);
+    return this.userSleepData(id).slice(firstDay, firstDay + 7).map(day => ({date: day.date, hoursSlept: day.hoursSlept,  sleepQuality: day.sleepQuality}))
+  }
+
+  averageSleepQuality(allQuality, id) {
+    let dataToAverage = id ? allQuality : this.sleepSet;
+    let userHolder = id || null;
+    let average = dataToAverage.reduce((quality, user) => {
+      return quality += userHolder ? user : user.sleepQuality;
+>>>>>>> main
     }, 0)
     return Math.round(average / this.sleepSet.length * 10) / 10;
   }

@@ -6,7 +6,7 @@ const userData = require('./testdata/user-test-data');
 
 const SleepRepo = require('../src/SleepRepo');
 const User = require('../src/User');
-describe.only('Sleep', () => {
+describe('Sleep', () => {
   let sleepRepo;
   beforeEach(() => {
     sleepRepo = new SleepRepo(sleepData)
@@ -94,7 +94,7 @@ describe.only('Sleep', () => {
   })
 
   it('should name all of the people who slept the least on any given day', () => {
-    console.log(sleepRepo.namesOfLeastRestedPeople('2019/06/23', userData))
+    expect(sleepRepo.namesOfLeastRestedPeople('2019/06/23', userData))
   })
 
 

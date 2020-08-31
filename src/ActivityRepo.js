@@ -13,7 +13,7 @@ class ActivityRepo {
     });
   }
 
-  getEntriesforDate(date) {
+  getEntriesForDate(date) {
     return this.activityData.filter(entry => entry.date === date)
   }
 
@@ -72,12 +72,38 @@ class ActivityRepo {
   }
 
   calculateAllUsersAverage(date, activity) {
-    const entries = this.getEntriesforDate(date)
+    const entries = this.getEntriesForDate(date)
     const total = entries.reduce((stairs, entry) => {
       return stairs += entry[activity]
     }, 0)
     return parseFloat((total / entries.length).toFixed(0))
   }
+
+  getUsersWhoMetStepGoal(date, activity, userData) {
+    const entries = this.getEntriesForDate(date)
+    const allUsersAverage = this.calculateAllUsersAverage(date, activity)
+    const entriesGoalMet = entries.filter(entry => {
+      return entry.numSteps >= allUsersAverage
+    })
+    const goalMeeters = entriesGoalMet.map(entry => {
+      const nameOfUser = userData.find(user => {
+        return user.id === entry.userID
+      })
+      return nameOfUser
+    })
+    const goalMeetersNames = goalMeeters.map(goalee => goalee.name)
+    return goalMeetersNames
+  }
+
+  // const tiredPeopleNames = tiredPeople.map(sleeper => {
+  //   const nameOfUser = userData.find(user => {
+  //     return sleeper.userID === user.id
+  //   })
+  //   return nameOfUser.name
+  // })
+
+  //iterate through entries and match userID in entry to userID in userData array
+    // if userData[user].stepGoal < steps taken for the day, return the user's name
 }
 
 if (typeof module !== 'undefined') {

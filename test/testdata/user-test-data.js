@@ -122,6 +122,125 @@ const userData = [
       16
     ]
   },
+  {
+    "id": 18,
+    "name": "Dan Hodkiewicz",
+    "address": "735 Johnnie Crest, New Madisyn IN 51116-6094",
+    "email": "Gertrude12@gmail.com",
+    "strideLength": 2.9,
+    "dailyStepGoal": 2000,
+    "friends": [
+      33,
+      37
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Wilburn Collins",
+    "address": "543 Keeling Road, Schummside ID 47123-6269",
+    "email": "Blake27@gmail.com",
+    "strideLength": 3.3,
+    "dailyStepGoal": 8000,
+    "friends": [
+      30,
+      43,
+      22,
+      39
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Ora O'Connell",
+    "address": "79585 Tania Ports, North Lillie MI 38947-4029",
+    "email": "Audreanne.Gulgowski6@yahoo.com",
+    "strideLength": 3.4,
+    "dailyStepGoal": 8000,
+    "friends": [
+      2,
+      12,
+      11,
+      33
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Alexandrea Wehner",
+    "address": "314 Richmond Islands, Brekkefort WI 71702-6994",
+    "email": "Americo_Hammes31@gmail.com",
+    "strideLength": 3,
+    "dailyStepGoal": 9000,
+    "friends": [
+      29,
+      19
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Maria Kemmer",
+    "address": "3416 Zoey Cliff, West Eda PA 17789-2282",
+    "email": "Nya25@yahoo.com",
+    "strideLength": 4.2,
+    "dailyStepGoal": 2000,
+    "friends": [
+      40,
+      44,
+      14
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Karli Rodriguez",
+    "address": "52618 Conroy Burgs, Wiegandhaven NC 32787",
+    "email": "Marge.Farrell25@yahoo.com",
+    "strideLength": 3.2,
+    "dailyStepGoal": 7000,
+    "friends": [
+      28,
+      31,
+      14
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Kristin Cruickshank",
+    "address": "806 Raynor Port, Kilbackbury OK 11077",
+    "email": "Waylon_Zulauf@hotmail.com",
+    "strideLength": 3.3,
+    "dailyStepGoal": 4000,
+    "friends": [
+      17,
+      16,
+      45,
+      12
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Isobel Schmeler",
+    "address": "5592 Donnelly Trail, Scottieport SC 35511",
+    "email": "Name79@yahoo.com",
+    "strideLength": 3.3,
+    "dailyStepGoal": 4000,
+    "friends": [
+      37,
+      31,
+      43
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Greta Corkery",
+    "address": "99020 Botsford Knoll, Lake Cecil ID 44141",
+    "email": "Virgil28@hotmail.com",
+    "strideLength": 3,
+    "dailyStepGoal": 12000,
+    "friends": [
+      10,
+      34,
+      8,
+      43
+    ]
+  }
 ]
 
 

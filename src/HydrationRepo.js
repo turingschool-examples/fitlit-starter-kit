@@ -24,8 +24,7 @@ class HydrationRepo {
       return singleEntry.date
     }).indexOf(endDate);
     const startingIndex = endingIndex - 5
-    console.log(entries.splice(startingIndex - 1, endingIndex - 1))
-    return entries.splice(startingIndex - 1, endingIndex - 1)
+    return entries.slice(startingIndex - 1, endingIndex + 1)
   }
 
   findAvgDailyHydration(userID) {

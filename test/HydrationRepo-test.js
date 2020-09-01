@@ -2,88 +2,13 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const HydrationRepo = require('../src/HydrationRepo');
+const hydroData = require('./testdata/hydration-test-data');
+const userData = require('./testdata/user-test-data');
 
 describe('HydrationRepo', () => {
   let hydrationRepo;
   beforeEach(() => {
-    const hydrationData = [
-      {
-        "userID": 1,
-        "date": "2019/06/15",
-        "numOunces": 5
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/16",
-        "numOunces": 5
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/17",
-        "numOunces": 10
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/18",
-        "numOunces": 15
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/19",
-        "numOunces": 20
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/20",
-        "numOunces": 25
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/21",
-        "numOunces": 30
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/22",
-        "numOunces": 35
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/23",
-        "numOunces": 40
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/24",
-        "numOunces": 45
-      },
-      {
-        "userID": 42,
-        "date": "2019/06/15",
-        "numOunces": 48
-      },
-      {
-        "userID": 43,
-        "date": "2019/06/15",
-        "numOunces": 47
-      },
-      {
-        "userID": 44,
-        "date": "2019/06/15",
-        "numOunces": 44
-      },
-      {
-        "userID": 45,
-        "date": "2019/06/15",
-        "numOunces": 24
-      },
-      {
-        "userID": 46,
-        "date": "2019/06/15",
-        "numOunces": 89
-      }
-    ]
-    hydrationRepo = new HydrationRepo(hydrationData);
+    hydrationRepo = new HydrationRepo(hydroData);
   });
 
   it('should be a function', () => {
@@ -138,7 +63,9 @@ describe('HydrationRepo', () => {
           "numOunces": 40
         }])
   })
-
+  it('should return the user name who drank the most water on a given date', () => {
+    expect(hydrationRepo.getMostHydratedUser('2019/06/15', userData)).to.equal('Vincenzo Hayes')
+  })
 
 
 

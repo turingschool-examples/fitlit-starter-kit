@@ -97,6 +97,8 @@ describe('Sleep', () => {
     expect(sleepRepo.namesOfLeastRestedPeople('2019/06/23', userData))
   })
 
-
+  it('should find the user with best sleep quality for a given date', () => {
+    expect(sleepRepo.getBestSleptUser('2019/06/23', userData)).to.equal('Garnett Cruickshank')
+  })
 
 });

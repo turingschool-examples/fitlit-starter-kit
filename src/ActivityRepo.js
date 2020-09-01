@@ -100,6 +100,13 @@ class ActivityRepo {
     return goalMeetersNames
   }
 
+  getUserWithMostSteps(date, data) {
+    const entries = this.getEntriesForDate(date)
+    const sortedUsers = entries.sort((entryA, entryB) => entryB.numSteps - entryA.numSteps)
+    const userWithMostSteps = sortedUsers[0]
+    const userInfo = data.find(user => user.id === sortedUsers[0].userID)
+    return userInfo.name
+  }
 }
 
 if (typeof module !== 'undefined') {

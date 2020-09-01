@@ -6,8 +6,8 @@ window.addEventListener('load', onLoad);
 
 function onLoad() {
   chooseRandomUser();
-  displayUserInfo();
   compareUsersSteps();
+  displayUserInfo();
   displayFriendList();
   displayWaterConsumption();
   displayWeeklyConsumption();
@@ -17,6 +17,7 @@ function onLoad() {
   displayDayActivity();
   displayWeeklyActivity();
   compareDayActivity();
+  stepDoughnutGraph();
 }
 
 function chooseRandomUser() {
@@ -29,34 +30,36 @@ function chooseRandomUser() {
 function displayUserInfo() {
   let infoCard = document.querySelector('.user-info-card')
   infoCard.innerHTML +=
-    `<h2>INFO</h2>
-    <p>Name: ${user.userData.name}</p>
-    <p>Address: ${user.userData.address}</p>
-    <p>Email: ${user.userData.email}</p>
-    <p>Stride: ${user.userData.strideLength} feet</p>
-    <p>Steps: ${user.userData.dailyStepGoal} steps per day</p>
-    <p class="friend-names">Friends: ${user.userData.friends}</p>`
+    `<p class="user-name">${user.userData.name}</p>
+    <p class="user-address">${user.userData.address}</p>
+    <p class="user-email">${user.userData.email}</p>
+    <p class="stride-length">Your stride length is : ${user.userData.strideLength} feet</p>
+    `
 }
 
+// <p class="friend-names">Friends: ${user.userData.friends}</p>
 
 function compareUsersSteps() {
   userRepository = new UserRepository(userData)
+  activity = new Activity(activityData);
+  console.log("D", activity.getDayData("2019/06/15", user.userData.id).numSteps)
   let userComparisons = document.querySelector('.compare-user-steps')
   userComparisons.innerHTML +=
-    `<h2>STEPS</h2>
-    <p>Your daily step goal is: ${user.userData.dailyStepGoal}</p>
-    <p>All users daily step goal is: ${userRepository.getAvgStepGoal()}</p>`
+    `<p class="your-daily-step-count">Your daily step count is: ${activity.getDayData("2019/06/15", user.userData.id).numSteps}</p>
+    <p class="your-daily-step-goal">Your daily step goal is: ${user.userData.dailyStepGoal}</p>
+    `
 }
 
 
 function makeFriendList() {
   let userFriends = userRepository.returnFriendFullName(user.userData.friends)
-  return userFriends.map(friendName => `<p class="friend-names">${friendName}</p>`)
+  console.log("X", userFriends.map(friendName => `<p class="friend-names">${friendName}</p>`))
+  return userFriends.map(friendName => `<p class="friend-names">${friendName}</p>`).join(" ")
 }
 
 function displayFriendList() {
-  let friendList = document.querySelector('.friend-names')
-  friendList.insertAdjacentHTML('afterBegin', this.makeFriendList(this.user, this.userRepo))
+  let friendList = document.querySelector('.stride-length')
+  friendList.insertAdjacentHTML('beforeEnd', this.makeFriendList())
 }
 
 function displayWaterConsumption() {
@@ -297,4 +300,28 @@ function weeklyMinutesActive(activityData) {
   minutesActiveChart.render()
 }
 
-//For a user, a weekly view of their step count, flights of stairs climbed, and minutes active
+function stepDoughnutGraph() {
+  var chart = new CanvasJS.Chart("doughnutChart",{
+  backgroundColor: "#1D222E",
+    title:{
+      text: "Steps Walked vs Step Goal",
+      fontColor: "#EBECF0"
+    },
+    data: [
+    {
+     indexLabelFontColor: "#EBECF0",
+     type: "doughnut",
+     dataPoints: [
+     // {  y: 100, indexLabel: "Steps Walked" },
+     // {  y: 35.0, indexLabel: "StepGoal" },
+     // { label: sleepData[0].date, y: sleepData[0].sleepQuality },
+
+     {  y: activity.getDayData("2019/06/15", user.userData.id).numSteps, indexLabel: "Steps Walked", color: "#9CBB58"},
+     {  y: user.userData.dailyStepGoal, indexLabel: "StepGoal", color: "#23BFAA"}
+     ]
+   },
+   ]
+ });
+
+  chart.render();
+}

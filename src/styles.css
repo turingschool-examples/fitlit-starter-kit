@@ -92,6 +92,7 @@
   height: 30px;
   border-radius: 2px;
   background: #333;
+
 }
 .flickity-prev-next-button:hover {
   background: #F90;
@@ -106,7 +107,9 @@
 /* position outside */
 .flickity-prev-next-button.previous {
   left: -50px;
+  background-color: #4AACC5;
 }
 .flickity-prev-next-button.next {
   right: -80px;
+  background-color: #4AACC5;
 }

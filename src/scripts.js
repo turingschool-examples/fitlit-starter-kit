@@ -121,11 +121,6 @@ function displayDayActivity() {
   `
 }
 
-// function displayWeeklySleep() {
-//   let sleepWeekly = sleep.weeklySleepProperties("2019/06/15", user.userData.id)
-//   sleepGraph(sleepWeekly)
-//   sleepAmountGraph(sleepWeekly)
-// }
 function displayWeeklyActivity() {
   let weeklyActivity = activity.weeklyActivityProperties("2019/06/15", user.userData.id)
   console.log(weeklyActivity)
@@ -159,8 +154,16 @@ function compareDayActivity() {
 function hydrationGraph(hydrationData) {
   let dataPoint = hydrationData.map(x => ({label: x.date, y: x.ounces,}))
   let hydrationChart = new CanvasJS.Chart("chartContainer", {
+    backgroundColor: "#1D222E",
     title:{
-      text: "Your Weekly Hydration Data in Ounces"
+      text: "Your Weekly Hydration Data in Ounces",
+      fontColor: "#EBECF0",
+    },
+    axisX:{
+        labelFontColor: "#EBECF0"
+      },
+    axisY:{
+        labelFontColor: "#EBECF0"
     },
     data: [
       {
@@ -175,22 +178,23 @@ function hydrationGraph(hydrationData) {
 
 function sleepGraph(sleepData) {
   console.log(sleepData)
+  let dataPoint = sleepData.map(x => ({label: x.date, y: x.sleepQuality}))
   let sleepQualityChart = new CanvasJS.Chart("sleepChartContainer", {
+    backgroundColor: "#1D222E",
     title:{
-      text: "Your Weekly Sleep Quality Data"
+      text: "Your Weekly Sleep Quality Data",
+      fontColor: "#EBECF0"
+    },
+    axisX:{
+      labelFontColor: "#EBECF0"
+    },
+    axisY:{
+      labelFontColor: "#EBECF0"
     },
     data:[
       {
         type: "column",
-        dataPoints: [
-          { label: sleepData[0].date, y: sleepData[0].sleepQuality },
-          { label: sleepData[1].date, y: sleepData[1].sleepQuality },
-          { label: sleepData[2].date, y: sleepData[2].sleepQuality },
-          { label: sleepData[3].date, y: sleepData[3].sleepQuality },
-          { label: sleepData[4].date, y: sleepData[4].sleepQuality },
-          { label: sleepData[5].date, y: sleepData[5].sleepQuality },
-          { label: sleepData[6].date, y: sleepData[6].sleepQuality  }
-        ]
+        dataPoints: dataPoint
       }
     ]
   });

@@ -1,0 +1,15 @@
+.header-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 2px solid black;
+
+}
+.header-text {
+  flex-direction: column;
+}
+
+.buttonimg {
+  height: 25px;
+  width: 25px;
+}

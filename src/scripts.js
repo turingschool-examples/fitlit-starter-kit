@@ -228,8 +228,16 @@ function sleepAmountGraph(sleepData) {
 function weeklyStepCountGraph(activityData) {
   let dataPoint = activityData.map(data => ({label: data.date, y: data.stepCount}))
   let stepCountChart = new CanvasJS.Chart('stepCountWeeklyChart', {
+    backgroundColor: "#1D222E",
     title: {
-      text: "Your Weekly Step Count Data"
+      text: "Your Weekly Step Count Data",
+      fontColor: "#EBECF0"
+    },
+    axisX: {
+      labelFontColor: "#EBECF0"
+    },
+    axisY: {
+      labelFontColor: "#EBECF0"
     },
     data: [
       {

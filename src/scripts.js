@@ -50,20 +50,28 @@ function displayActivityData() {
   const milesTodayData = document.querySelector('.miles-today-data');
   const stepsWeekData = document.querySelector('.steps-week-data');
   const minutesWeekData = document.querySelector('.minutes-week-data');
-  const milesWeekData = document.querySelector('.miles-week-data');
+  const stairsWeekData = document.querySelector('.stairs-week-data');
   const stepsComparisonData = document.querySelector('.steps-comparison-data');
   const minutesComparisonData = document.querySelector('.minutes-comparison-data');
   const stairsComparisonData = document.querySelector('.stairsComparisonData');
 
-  const weeklyActiveMinutes = activityRepo.calculateAvgMinutesForWeek(user, '2019/09/21')
+  const weekActive = activityRepo.getWeekOfData(user, '2019/09/21')
 
   stepsTodayData.innerText += `Steps Today: ${activityRepo.getActivityEntry(user, '2019/09/21').numSteps}`
   minutesTodayData.innerText += `Minutes Today: ${activityRepo.findMinutesActive(user, '2019/09/21')}`
   milesTodayData.innerText += `Miles Today: ${activityRepo.calculateMilesWalked(user, '2019/09/21')}`
 
-  stepsWeekData.innerText += 'hi'
-  weeklyActiveMinutes.forEach(entry => {
+  minutesWeekData.innerText += 'Minutes Active This Week'
+  stepsWeekData.innerText += 'Steps Taken This Week'
+  stairsWeekData.innerText += 'Flights of Stairs Climbed This Week'
+  weekActive.forEach(entry => {
     minutesWeekData.innerText += ` ${entry.date}: ${entry.minutesActive} `
+  })
+  weekActive.forEach(entry => {
+    stepsWeekData.innerText += ` ${entry.date}: ${entry.numSteps} `
+  })
+  weekActive.forEach(entry => {
+    stairsWeekData.innerText += ` ${entry.date}: ${entry.flightsOfStairs} `
   })
 }
 

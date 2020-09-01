@@ -34,6 +34,10 @@ describe('ActivityRepo', () => {
     expect(activityRepo.findMinutesActive(dannie, '2019/08/13')).to.equal(227);
   });
 
+  it('should find a user\'s data for a given week', () => {
+    expect(activityRepo.getWeekOfData(dannie, '2019/08/14')).to.deep.equal([activityData[0], activityData[1], activityData[2], activityData[3], activityData[4], activityData[5], activityData[6]])
+  })
+
   it('should return the average minutes a day a user was active for a given week', () => {
     expect(activityRepo.calculateAvgMinutesForWeek(dannie, '2019/08/14')).to.equal(168);
   });
@@ -66,6 +70,4 @@ describe('ActivityRepo', () => {
   it('should find names of users who met all users average step goal on a given date', () => {
     expect(activityRepo.getUsersWhoMetStepGoal('2019/08/08', 'numSteps', userData)).to.deep.equal(['Dan Hodkiewicz', 'Wilburn Collins', 'Alexandrea Wehner', 'Maria Kemmer', 'Kristin Cruickshank', 'Greta Corkery'])
   })
-
-
 });

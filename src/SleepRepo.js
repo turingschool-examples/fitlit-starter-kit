@@ -146,10 +146,10 @@ class SleepRepo {
     sleepByDate.sort((entryA, entryB) => {
       return entryB.hoursSlept - entryA.hoursSlept
     })
-    const sleepiestPeople = sleepByDate.filter(user => {
+    const restedPeople = sleepByDate.filter(user => {
       return sleepByDate[0].hoursSlept === user.hoursSlept
     })
-    return sleepiestPeople
+    return restedPeople
   }
 
   findDailySleepForAll(date) {

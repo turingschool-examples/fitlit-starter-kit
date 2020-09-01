@@ -22,7 +22,7 @@ function displayUserData() {
   const userFriends = document.querySelector('.user-friends');
   const stepData = document.querySelector('.step-data');
 
-  //can you loop thru these too? 
+  //can you loop thru these too?
   greeting.innerText = `Welcome ${user.getFirstName()}!`
   userName.innerText = user.name
   userAddress.innerText = user.address
@@ -53,7 +53,7 @@ function displayActivityData() {
   const stairsWeekData = document.querySelector('.stairs-week-data');
   const stepsComparisonData = document.querySelector('.steps-comparison-data');
   const minutesComparisonData = document.querySelector('.minutes-comparison-data');
-  const stairsComparisonData = document.querySelector('.stairsComparisonData');
+  const stairsComparisonData = document.querySelector('.stairs-comparison-data');
 
   const weekActive = activityRepo.getWeekOfData(user, '2019/09/21')
 
@@ -73,12 +73,16 @@ function displayActivityData() {
   weekActive.forEach(entry => {
     stairsWeekData.innerText += ` ${entry.date}: ${entry.flightsOfStairs} `
   })
-}
+
+  stepsComparisonData.innerText = `Average Steps Taken ${activityRepo.calculateAllUsersAverage('2019/09/21', 'numSteps')}`
+  minutesComparisonData.innerText = `Average Minutes Active: ${activityRepo.calculateAllUsersAverage('2019/09/21', 'minutesActive')}`
+  stairsComparisonData.innerText = `Average Stairs Climbed: ${activityRepo.calculateAllUsersAverage('2019/09/21', 'numSteps')}`
+};
 
 function displaySleepData() {
   const hoursTodayData = document.querySelector('.hours-today-data');
   const qualityTodayData = document.querySelector('.quality-today-data');
-  const hoursWeekData = document.querySelector('.quality-today-data');
+  const hoursWeekData = document.querySelector('.hours-week-data');
   const qualityWeekData = document.querySelector('.quality-week-data');
   const hoursAllTimeData = document.querySelector('.hours-all-time-data');
   const qualityAllTimeData = document.querySelector('.quality-all-time-data');
@@ -103,5 +107,3 @@ function updateDisplay() {
   displayActivityData()
   displaySleepData()
 }
-
-

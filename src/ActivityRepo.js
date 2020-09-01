@@ -37,13 +37,18 @@ class ActivityRepo {
     return activityEntry.minutesActive
   }
 
-  calculateAvgMinutesForWeek(user, endDate) {
+  getWeekOfData(user, endDate) {
     const entries = this.getUserEntries(user)
     const endingIndex = entries.map(endingEntry => {
       return endingEntry.date
     }).indexOf(endDate);
-    const weekData = (entries.slice(endingIndex - 6, endingIndex + 1))
-    const totalMinutes = weekData.reduce((totalMin, day) => {
+    const weekOfData = (entries.slice(endingIndex - 6, endingIndex + 1))
+    return weekOfData
+  }
+
+  calculateAvgMinutesForWeek(user, endDate) {
+    const weekOfData = this.getWeekOfData(user, endDate)
+    const totalMinutes = weekOfData.reduce((totalMin, day) => {
       return totalMin += day.minutesActive
     }, 0)
     return parseFloat((totalMinutes / 7).toFixed(0))
@@ -95,15 +100,6 @@ class ActivityRepo {
     return goalMeetersNames
   }
 
-  // const tiredPeopleNames = tiredPeople.map(sleeper => {
-  //   const nameOfUser = userData.find(user => {
-  //     return sleeper.userID === user.id
-  //   })
-  //   return nameOfUser.name
-  // })
-
-  //iterate through entries and match userID in entry to userID in userData array
-    // if userData[user].stepGoal < steps taken for the day, return the user's name
 }
 
 if (typeof module !== 'undefined') {

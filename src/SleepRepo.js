@@ -36,7 +36,7 @@ class SleepRepo {
       total += data.hoursSlept
       return total
     }, 0)
-    return totalSleep / entries.length
+    return parseFloat((totalSleep / entries.length).toFixed(1))
   }
 
   findNightlySleepQuality(userID, date) {

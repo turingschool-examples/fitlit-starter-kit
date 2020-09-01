@@ -36,17 +36,17 @@ const hydroData = [
   },
   {
     "userID": 1,
-    "date": "2019/09/15",
+    "date": "2019/06/22",
     "numOunces": 35
   },
   {
     "userID": 1,
-    "date": "2019/02/15",
+    "date": "2019/06/23",
     "numOunces": 40
   },
   {
     "userID": 1,
-    "date": "2019/10/15",
+    "date": "2019/06/24",
     "numOunces": 45
   },
   {
@@ -74,4 +74,6 @@ const hydroData = [
     "date": "2019/06/15",
     "numOunces": 89
   }
-];
+]
+
+module.exports = hydroData;

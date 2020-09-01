@@ -240,6 +240,19 @@ const userData = [
       8,
       43
     ]
+  },
+  {
+    "id": 46,
+    "name": "Vincenzo Hayes",
+    "address": "03146 Bella Ferry, Port Royceberg NE 64057-4380",
+    "email": "Carlo.Walker@hotmail.com",
+    "strideLength": 3.6,
+    "dailyStepGoal": 4000,
+    "friends": [
+      10,
+      29,
+      44
+    ]
   }
 ]
 

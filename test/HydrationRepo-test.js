@@ -3,6 +3,7 @@ const expect = chai.expect;
 
 const HydrationRepo = require('../src/HydrationRepo');
 const hydroData = require('./testdata/hydration-test-data');
+const userData = require('./testdata/user-test-data');
 
 describe('HydrationRepo', () => {
   let hydrationRepo;
@@ -62,7 +63,9 @@ describe('HydrationRepo', () => {
           "numOunces": 40
         }])
   })
-
+  it('should return the user name who drank the most water on a given date', () => {
+    expect(hydrationRepo.getMostHydratedUser('2019/06/15', userData)).to.equal('Vincenzo Hayes')
+  })
 
 
 

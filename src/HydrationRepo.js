@@ -35,6 +35,26 @@ class HydrationRepo {
     }, 0)
     return totalOz / entries.length
   }
+
+  getEntriesForDate(date) {
+    return this.hydroData.filter(entry => entry.date === date)
+  }
+
+  getMostHydratedUser(date, data) {
+    const entries = this.getEntriesForDate(date)
+    const sortedHydraters = entries.sort((entryA, entryB) => entryB.numOunces - entryA.numOunces)
+    const mostHydratedUser = sortedHydraters[0]
+    const userInfo = data.find(user => user.id === mostHydratedUser.userID)
+    console.log(mostHydratedUser, data)
+    return userInfo.name
+  }
+  getBestSleptUser(date, userData) {
+    const entries = this.findDailySleepForAll(date)
+    const sortedSleepers = entries.sort((entryA, entryB) => entryB.sleepQuality - entryA.sleepQuality)
+    const bestSleeper = sortedSleepers[0]
+    const bestSleeperName = userData.find(user => user.id === bestSleeper.userID)
+    return bestSleeperName.name
+  }
 }
 
 

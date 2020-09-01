@@ -202,22 +202,23 @@ function sleepGraph(sleepData) {
 }
 
 function sleepAmountGraph(sleepData) {
+  let dataPoint = sleepData.map(x => ({label: x.date, y: x.hoursSlept}))
   let sleepAmountChart = new CanvasJS.Chart('sleepChartAmountContainer', {
+    backgroundColor: "#1D222E",
     title: {
-      text: "Your Weekly Sleep in Hours"
+      text: "Your Weekly Sleep in Hours",
+      fontColor: "#EBECF0"
+    },
+    axisX: {
+      labelFontColor: "#EBECF0"
+    },
+    axisY: {
+      labelFontColor: "#EBECF0"
     },
     data: [
       {
         type: "column",
-        dataPoints: [
-          { label: sleepData[0].date, y: sleepData[0].hoursSlept },
-          { label: sleepData[1].date, y: sleepData[1].hoursSlept },
-          { label: sleepData[2].date, y: sleepData[2].hoursSlept },
-          { label: sleepData[3].date, y: sleepData[3].hoursSlept },
-          { label: sleepData[4].date, y: sleepData[4].hoursSlept },
-          { label: sleepData[5].date, y: sleepData[5].hoursSlept },
-          { label: sleepData[6].date, y: sleepData[6].hoursSlept },
-        ]
+        dataPoints: dataPoint
       }
     ]
   })

@@ -100,6 +100,21 @@ class ActivityRepo {
     return goalMeetersNames
   }
 
+  getUserWithMostSteps(date, data) {
+    const entries = this.getEntriesForDate(date)
+    const sortedUsers = entries.sort((entryA, entryB) => entryB.numSteps - entryA.numSteps)
+    const userWithMostSteps = sortedUsers[0]
+    const userInfo = data.find(user => user.id === sortedUsers[0].userID)
+    return userInfo.name
+  }
+
+  getBestSleptUser(date, userData) {
+    const entries = this.findDailySleepForAll(date)
+    const sortedSleepers = entries.sort((entryA, entryB) => entryB.sleepQuality - entryA.sleepQuality)
+    const bestSleeper = sortedSleepers[0]
+    const bestSleeperName = userData.find(user => user.id === bestSleeper.userID)
+    return bestSleeperName.name
+  }
 }
 
 if (typeof module !== 'undefined') {

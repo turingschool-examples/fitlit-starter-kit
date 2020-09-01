@@ -181,6 +181,14 @@ class SleepRepo {
     return sleepiestPeople
   }
 
+  //find user with best sleep quality for given date
+  getBestSleptUser(date, userData) {
+    const entries = this.findDailySleepForAll(date)
+    const sortedSleepers = entries.sort((entryA, entryB) => entryB.sleepQuality - entryA.sleepQuality)
+    const bestSleeper = sortedSleepers[0]
+    const bestSleeperName = userData.find(user => user.id === bestSleeper.userID)
+    return bestSleeperName.name
+  }
 
 };
 

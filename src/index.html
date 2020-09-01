@@ -14,52 +14,95 @@
         <h1>Activity Tracker</h1>
         <h2 class="greeting"></h2>
       </section>
-      <button>
-        <img class="buttonimg" src="https://64.media.tumblr.com/9cf7fd891fd37b9b952d7d4bf06e7730/026d9c047af31da2-b5/s540x810/109cf45b7e54ec72c6002a563e44f9c2b2b2d934.png">
-      </button>
+      <section class="dropdown">
+        <button class="dropbtn"></button>
+        <section class="dropdown-content">
+          <p class="user-name"></p>
+          <p class="user-address"></p>
+          <p class="user-email"></p>
+          <p class="user-friends"></p>
+        </section>
+      </section>
     </header>
-    <section class="user-card">
-      <p class="user-name"></p>
-      <p class="user-address"></p>
-      <p class="user-email"></p>
-      <p class="user-stride-length"></p>
-      <p class="user-daily-step-goal"></p>
-      <p class="user-friends"></p>
-      <p class="step-data"></p>
-    </section>
-    <section class="hydration-today">
-      <p class="hydration-today-data"></p>
-    </section>
-    <section class="hydration-week">
-      <p class="hydration-week-data"></p>
-    </section>
-    <section class="activity-today">
-      <p class="steps-today-data"></p>
-      <p class="minutes-today-data"></p>
-      <p class="miles-today-data"></p>
-    </section>
-    <section class="activity-week">
-      <p class="steps-week-data"></p>
-      <p class="minutes-week-data"></p>
-      <p class="stairs-week-data"></p>
-    </section>
-    <section class="activity-comparison">
-      <p class="steps-comparison-data"></p>
-      <p class="minutes-comparison-data"></p>
-      <p class="stairs-comparison-data"></p>
-    </section>
-    <section class="sleep-today">
-      <p class="hours-today-data"></p>
-      <p class="quality-today-data"></p>
-    </section>
-    <section class="sleep-week">
-      <p class="hours-week-data"></p>
-      <p class="quality-week-data"></p>
-    </section>
-    <section class="sleep-all-time">
-      <p class="hours-all-time-data"></p>
-      <p class="quality-all-time-data"></p>
-    </section>
+
+
+
+    <main>
+      <aside class="sidebar">
+        <h2>Leaderboard</h2>
+        <h4 class="most-steps category">Most Steps Taken</h4>
+        <h4 class="most-drank category">Most Water Drank</h4>
+        <h4 class="best-sleep category">Best Sleep</h4>
+        <section class="activity-comparison">
+          <p class="steps-comparison-data"></p>
+          <p class="minutes-comparison-data"></p>
+          <p class="stairs-comparison-data"></p>
+        </section>
+      </aside>
+
+
+
+
+      <section class="user-card">
+        <p class="user-name"></p>
+        <p class="user-address"></p>
+        <p class="user-email"></p>
+        <p class="user-stride-length"></p>
+        <p class="user-daily-step-goal"></p>
+        <p class="user-friends"></p>
+        <p class="step-data"></p>
+      </section>
+
+      <section class="all-user-stats">
+
+        <section class="user-today-stats">
+          <h4 class="daily-data-title">Your Day At A Glance</h4>
+          <section class="data-widgets">
+            <section class="today hydration">
+              <p class="hydration-today-data"></p>
+            </section>
+            <section class="today sleep">
+              <p class="hours-today-data"></p>
+              <p class="quality-today-data"></p>
+            </section>
+            <section class="today activity">
+              <p class="steps-today-data"></p>
+              <p class="minutes-today-data"></p>
+              <p class="miles-today-data"></p>
+            </section>
+          </section>
+        </section>
+
+
+
+        <section class="weekly-stats">
+
+          <section class="hydration-week">
+            <p class="hydration-week-data"></p>
+          </section>
+
+
+          <section class="activity-week">
+            <p class="steps-week-data"></p>
+            <p class="minutes-week-data"></p>
+            <p class="stairs-week-data"></p>
+          </section>
+
+          <section class="sleep-week">
+            <p class="hours-week-data"></p>
+            <p class="quality-week-data"></p>
+              <section class="sleep-all-time">
+                <p class="hours-all-time-data"></p>
+                <p class="quality-all-time-data"></p>
+              </section>
+          </section>
+
+        </section>
+
+
+
+      </section>
+    </main>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>

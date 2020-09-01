@@ -252,8 +252,16 @@ function weeklyStepCountGraph(activityData) {
 function weeklyStairFlightsClimbed(activityData) {
   let dataPoint = activityData.map(data => ({label: data.date, y: data.flightsOfStairsClimbed}))
   let flightsClimbedChart = new CanvasJS.Chart('flightsClimbedChart', {
+    backgroundColor: "#1D222E",
     title: {
-      text: "Your Weekly Flights of Stairs Climbed"
+      text: "Your Weekly Flights of Stairs Climbed",
+      fontColor: "#EBECF0"
+    },
+    axisX: {
+      labelFontColor: "#EBECF0"
+    },
+    axisY: {
+      labelFontColor: "#EBECF0"
     },
     data: [
       {
@@ -268,8 +276,16 @@ function weeklyStairFlightsClimbed(activityData) {
 function weeklyMinutesActive(activityData) {
   let dataPoint = activityData.map(data => ({label: data.date, y: data.minutesActive}))
   let minutesActiveChart = new CanvasJS.Chart('minutesActiveChart', {
+    backgroundColor: "#1D222E",
     title: {
-      text: "Your Weekly Minutes Active"
+      text: "Your Weekly Minutes Active",
+      fontColor: "#EBECF0"
+    },
+    axisX: {
+      labelFontColor: "#EBECF0"
+    },
+    axisY: {
+      labelFontColor: "#EBECF0"
     },
     data: [
       {

@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Shrikhand' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <title>Activity Tracker</title>
   </head>
   <body>
@@ -76,25 +78,50 @@
 
 
         <section class="weekly-stats">
+          <section class="date-display week">
+            <p>this is where the dates for the week selected will go. </p>
+          </section>
 
-          <section class="hydration-week">
+          <section class="hydration-week week">
             <p class="hydration-week-data"></p>
           </section>
 
 
-          <section class="activity-week">
-            <p class="steps-week-data"></p>
-            <p class="minutes-week-data"></p>
-            <p class="stairs-week-data"></p>
+          <section class="activity-week week">
+            <article class="steps page">
+              <p class="steps-week-data "></p>
+            </article>
+            <article class="minutes page">
+              <p class="minutes-week-data hidden"></p>
+            </article>
+            <article class="stairs page">
+              <p class="stairs-week-data hidden"></p>
+            </article>
+            <section class="button-section">
+              <button class="activitybutt">steps</button>
+              <button class="activitybutt">active time</button>
+              <button class="activitybutt">stairs</button>
+            </section>
           </section>
 
-          <section class="sleep-week">
-            <p class="hours-week-data"></p>
-            <p class="quality-week-data"></p>
-              <section class="sleep-all-time">
+          <section class="sleep-week week">
+            <article class="hours page">
+              <p class="hours-week-data"></p>
+            </article>
+            <article class="quality page">
+              <p class="quality-week-data hidden"></p>
+            </article>
+            <article class="average page">
+              <section class="sleep-all-time hidden">
                 <p class="hours-all-time-data"></p>
                 <p class="quality-all-time-data"></p>
               </section>
+            </article>
+            <section class="button-section">
+              <button class="hoursbutt">hours</button>
+              <button class="qualitybutt">quality</button>
+              <button class="averagebutt">average</button>
+            </section>
           </section>
 
         </section>

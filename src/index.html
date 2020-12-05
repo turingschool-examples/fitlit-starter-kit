@@ -13,18 +13,21 @@
         <h1>User Name</h1>
         <h2>Message</h2>
         <h3>Date</h3>
-        <img src="user-img" alt="">
+        <img src="../assets/health.svg" alt="" class="heart-icon">
       </header>
       <section class="daily-stats">
         <article class="daily-data">
 
-          <section class="activity">
+          <section class="activity current-stats">
+            <img src="../assets/exercise.svg" alt="" class="exercise-icon icon">
             <p>daily activity</p>
           </section>
-          <section class="sleep">
+          <section class="sleep current-stats">
+            <img src="../assets/exercise.svg" alt="" class="exercise-icon icon">
             <p>your sleep</p>
           </section>
-          <section class="hydration">
+          <section class="hydration current-stats">
+            <img src="../assets/exercise.svg" alt="" class="exercise-icon icon">
             <p>drank</p>
           </section>
         </article>
@@ -35,7 +38,7 @@
       </section>
     </main>
 
-  <aside>
+  <aside class="hidden">
     <button class="home">home</button>
     <button class="steps">steps</button>
     <button class="hydration">hydration</button>
@@ -54,4 +57,4 @@
     <script type="text/javascript" src="./userRepo.js"></script>
     <script type="text/javascript" src="./userSleep.js"></script>
   </body>
-</html> 
+</html>

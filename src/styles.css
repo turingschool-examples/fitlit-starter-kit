@@ -1,13 +1,87 @@
-/* 
+/*
 COLORS
 yellow: #F0CB30
 orange: #FA6A3C
 purple: #C667E0
 blue: #65A4F7
-green: #61ED90 
+green: #61ED90
 */
 
-/* 
-font-family: 'Shadows Into Light', cursive; 
+/*
+font-family: 'Shadows Into Light', cursive;
 font-family: 'Raleway', sans-serif;
 */
+* {
+  border: solid 1px green;
+}
+header {
+  border: solid 1px cyan;
+  background-color: grey;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.heart-icon {
+  border-radius: 50%;
+  border: solid 2px black;
+  position: absolute;
+  right: 50px;
+  top: 100px;
+  width: 50px;
+  height: 50px;
+}
+
+body {
+  /* background-color: black; */
+  display:flex;
+  flex-direction: column;
+  color: black;
+}
+
+h1 {
+  font-family: 'Shadows Into Light', cursive;
+}
+
+.daily-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
+.current-stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: solid 3px red;
+  width: 200px;
+  height: 100px;
+  position: relative;
+}
+
+.graph {
+  width: 80%;
+  height: 400px;
+  border: solid 2px blue;
+  margin: auto;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 100px;
+  position: absolute;
+  right: 0;
+}
+
+.hidden {
+  display: none;
+}

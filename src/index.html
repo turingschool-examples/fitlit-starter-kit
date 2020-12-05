@@ -1,26 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <title>Activity Tracker</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
+    <main>
+      <header>
+        <h1>Activity Tracker</h1>
+        <h1>User Name</h1>
+        <h2>Message</h2>
+        <h3>Date</h3>
+        <img src="user-img" alt="">
+      </header>
+      <section class="daily-stats">
+        <article class="daily-data">
 
+          <section class="activity">
+            <p>daily activity</p>
+          </section>
+          <section class="sleep">
+            <p>your sleep</p>
+          </section>
+          <section class="hydration">
+            <p>drank</p>
+          </section>
+        </article>
+      </section>
+
+      <section class="graph">
+
+      </section>
+    </main>
+
+  <aside>
+    <button class="home">home</button>
+    <button class="steps">steps</button>
+    <button class="hydration">hydration</button>
+    <button class="sleep">sleep</button>
+    <button class="my-data">my data</button>
+  </aside>
+
+    <script type="text/javascript" src="../data/users.js"></script>
+    <script type="text/javascript" src="../data/hydration.js"></script>
+    <script type="text/javascript" src="../data/sleep.js"></script>
+    <script type="text/javascript" src="../data/activity.js"></script>
+    <script type="text/javascript" src="./scripts.js"></script>
+    <script type="text/javascript" src="./user.js"></script>
+    <script type="text/javascript" src="./userActivity.js"></script>
+    <script type="text/javascript" src="./userHydration.js"></script>
+    <script type="text/javascript" src="./userRepo.js"></script>
+    <script type="text/javascript" src="./userSleep.js"></script>
   </body>
-  <script type="text/javascript" src="../data/users.js"></script>
-  <script type="text/javascript" src="../data/hydration.js"></script>
-  <script type="text/javascript" src="../data/sleep.js"></script>
-  <script type="text/javascript" src="../data/activity.js"></script>
-  <script type="text/javascript" src="./scripts.js"></script>
-  <script type="text/javascript" src="./user.js"></script>
-  <script type="text/javascript" src="./userActivity.js"></script>
-  <script type="text/javascript" src="./userHydration.js"></script>
-  <script type="text/javascript" src="./userRepo.js"></script>
-  <script type="text/javascript" src="./userSleep.js"></script>
-  <script type="text/javascript" src="./styles.css"></script>
-</html>
+</html> 

@@ -1,5 +1,5 @@
 class UserRepository {
-  constructor(data) { // It should have a parameter to take in user data
+  constructor(data) {
     this.data = data;
   }
 
@@ -7,9 +7,13 @@ class UserRepository {
     return this.data.find(user => user.id === userId);
   }
 
-  calculateAverageStepGoal() { // The average step goal amongst all users
-    // userData.dailyStepGoal.reduce(acc, sum) => return acc + sum / userData.length;
+  calculateAverageStepGoal() {
+    const totalStepGoal = this.data.reduce((acc, user) => {
+      return acc + user.dailyStepGoal;
+    }, 0);
+    return Math.floor(totalStepGoal / this.data.length);
   }
+
 }
 
 

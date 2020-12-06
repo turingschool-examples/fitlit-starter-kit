@@ -38,8 +38,8 @@ describe('UserRepository', () => {
     });
   })
 
-  it.skip('should calculate the average step goal amongst all users', () => {
-    expect(allUserData.calculateAverageStepGoal()).to.equal();
+  it('should calculate the average step goal amongst all users', () => {
+    expect(allUserData.calculateAverageStepGoal()).to.equal(7973);
   })
 
 })

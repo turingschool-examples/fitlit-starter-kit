@@ -21,7 +21,7 @@ describe('UserRepository', () => {
 
   it('should hold all User objects', () => {
     expect(allUserData.data).to.deep.equal(userTestData);
-  })
+  }) // connect to User class??
 
   it('should return a users data given their user ID', () => {
     expect(allUserData.returnUserData(1)).to.deep.equal({

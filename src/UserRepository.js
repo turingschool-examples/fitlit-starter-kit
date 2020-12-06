@@ -3,8 +3,8 @@ class UserRepository {
     this.data = data;
   }
 
-  returnUserData() {
-    
+  returnUserData(userId) {
+    return this.data.find(user => user.id === userId);
   }
 
   calculateAverageStepGoal() { // The average step goal amongst all users

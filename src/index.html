@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     <title>Activity Tracker</title>
   </head>
   <body>
@@ -13,37 +14,39 @@
         <h1>User Name</h1>
         <h2>Message</h2>
         <h3>Date</h3>
-        <img src="../assets/health.svg" alt="" class="heart-icon">
+        <i class="far fa-heart heart-icon"></i>
       </header>
       <section class="daily-stats">
+        <h2>Daily Stats</h2>
         <article class="daily-data">
 
           <section class="activity current-stats">
-            <img src="../assets/exercise.svg" alt="" class="exercise-icon icon">
+            <i class="fas fa-running icon"></i>
             <p>daily activity</p>
           </section>
           <section class="sleep current-stats">
-            <img src="../assets/exercise.svg" alt="" class="exercise-icon icon">
+            <i class="fas fa-bed icon"></i>
             <p>your sleep</p>
           </section>
           <section class="hydration current-stats">
-            <img src="../assets/exercise.svg" alt="" class="exercise-icon icon">
+            <i class="fas fa-tint icon"></i>
             <p>drank</p>
           </section>
         </article>
       </section>
 
       <section class="graph">
-
+        <h2>My Activity</h2>
+        <i class="fas fa-chart-area"></i>
       </section>
     </main>
 
   <aside class="hidden">
-    <button class="home">home</button>
-    <button class="steps">steps</button>
-    <button class="hydration">hydration</button>
-    <button class="sleep">sleep</button>
-    <button class="my-data">my data</button>
+    <button class="home-button">home</button>
+    <button class="steps-button">steps</button>
+    <button class="hydration-button">hydration</button>
+    <button class="sleep-button">sleep</button>
+    <button class="my-data-button">my data</button>
   </aside>
 
     <script type="text/javascript" src="../data/users.js"></script>

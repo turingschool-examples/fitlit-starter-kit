@@ -16,20 +16,24 @@ font-family: 'Raleway', sans-serif;
 }
 header {
   border: solid 1px cyan;
-  background-color: grey;
+  border-radius: 5px;
+  background-color: #6D71E3;
+  height: 250px;
 }
 
 .icon {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 20px;
+  left: 1px;
+  border-radius: 5px;
 }
 
 .heart-icon {
+  color: #C667E0;
   border-radius: 50%;
-  border: solid 2px black;
+  border: solid 2px #C667E0;
   position: absolute;
   right: 50px;
   top: 100px;
@@ -38,10 +42,11 @@ header {
 }
 
 body {
-  /* background-color: black; */
+  background-color: #202029;
   display:flex;
   flex-direction: column;
-  color: black;
+  color: white;
+  font-family: 'Raleway', sans-serif;
 }
 
 h1 {
@@ -54,15 +59,32 @@ h1 {
   justify-content: space-around;
 }
 
-
 .current-stats {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  border: solid 3px red;
+  justify-content: flex-end;
+  align-items: center;
+  /* border: solid 3px red; */
   width: 200px;
   height: 100px;
   position: relative;
+  border-radius: 5px;
+  background-color: #202261;
+}
+
+.fa-running {
+  color: #FA6A3C;
+  font-size: 48px;
+}
+
+.fa-tint {
+  color: #61ED90;
+  font-size: 48px;
+}
+
+.fa-bed  {
+  color: #F0CB30;
+  font-size: 48px;
 }
 
 .graph {
@@ -70,6 +92,23 @@ h1 {
   height: 400px;
   border: solid 2px blue;
   margin: auto;
+  /* text-align: center; */
+}
+
+.fa-chart-area {
+  color: #C667E0;
+  font-size: 250px;
+  margin-top: 50px;
+}
+
+button {
+  font-family: 'Raleway', sans-serif;
+  background-color: #65A4F7;
+  border-radius: 5px;
+  padding: 6px;
+  margin-top: 45px;
+  color: white;
+  font-size: 18px;
 }
 
 aside {
@@ -78,10 +117,13 @@ aside {
   justify-content: flex-start;
   align-items: center;
   max-width: 100px;
+  height: 57%;
   position: absolute;
   right: 0;
+  background-color: #202261;
+  border-radius: 5px;
 }
 
 .hidden {
-  display: none;
+  /* display: none; */
 }

@@ -1,6 +1,6 @@
 class UserRepository {
   constructor(data) { // It should have a parameter to take in user data
-    // this.data = data; ????
+    this.data = data;
   }
 
   returnUserData(user.id) { // Given a user’s ID, what is their user data?

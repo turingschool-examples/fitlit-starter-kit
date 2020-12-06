@@ -51,8 +51,8 @@ describe('User', () => {
     expect(user1.friends).to.deep.equal([2, 3]);
   })
 
-  it.skip('should return a users first name', () => {
-    expect(user.returnFirstName()).to.equal('');
+  it('should return a users first name', () => {
+    expect(user2.returnFirstName()).to.equal('Tashia');
   })
 
 })

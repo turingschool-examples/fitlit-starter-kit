@@ -11,16 +11,48 @@ green: #61ED90
 font-family: 'Shadows Into Light', cursive;
 font-family: 'Raleway', sans-serif;
 */
+
 * {
-  /* border: solid 1px green; */
+  /* border: 1px solid green; */
+}
+
+body {
+  /* border: 1px solid yellow; */
+  background-color: #202029;
+  display:flex;
+  flex-direction: column;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+}
+
+.admin-area {
+  /* border: 1px solid white; */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* width: 10%; */
+}
+
+.admin-icon {
+  background-color: #65A4F7;
+  border-radius: 5px;
+  width: auto;
+  max-width: 70px;
+}
+
+.admin-text {
+  margin-bottom: 1%;
+  text-align: center;
 }
 
 header {
   width: 80%;
-  margin: auto;
+  /* margin: auto; */
   border-radius: 5px;
   background-color: #6D71E3;
   height: auto;
+  margin-left: 10%;
+  margin-top: 2%;
 }
 
 .icon {
@@ -30,12 +62,6 @@ header {
   border-radius: 5px;
 }
 
-.name-and-menu {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
 h1 {
   font-family: 'Shadows Into Light', cursive;
   font-size: 350%;
@@ -43,25 +69,6 @@ h1 {
   width: 80%;
   margin-bottom: 0;
   margin-top: 0;
-}
-
-.clipboard-icon {
-  background-color: #202261;
-  height: 8%;
-  width: 8%;
-  max-height: 70px;
-  max-width: 70px;
-  border-radius: 5px;
-  margin-bottom: 0;
-  margin-top: 0;
-}
-
-body {
-  background-color: #202029;
-  display:flex;
-  flex-direction: column;
-  color: white;
-  font-family: 'Raleway', sans-serif;
 }
 
 .user-info-text {
@@ -90,6 +97,7 @@ body {
 h2 {
   padding-top: 2%;
   padding-bottom: 1%;
+  font-size: 200%;
 }
 
 .current-stats {
@@ -115,7 +123,7 @@ h2 {
 }
 
 .exercise-icon {
-  background-color: #FA6A3C;
+  background-color: #C667E0;
 }
 
 .water-icon {
@@ -124,6 +132,10 @@ h2 {
 
 .sleep-icon  {
   background-color: #F0CB30;
+}
+
+.minutes-icon {
+  background-color: #FA6A3C;
 }
 
 .graph {
@@ -140,29 +152,6 @@ h2 {
   margin-top: 50px;
 }
 
-button {
-  font-family: 'Raleway', sans-serif;
-  background-color: #65A4F7;
-  border-radius: 5px;
-  padding: 6px;
-  margin-top: 45px;
-  color: white;
-  font-size: 18px;
-}
-
-aside {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  max-width: 100px;
-  height: 57%;
-  position: absolute;
-  right: 0;
-  background-color: #202261;
-  border-radius: 5px;
-}
-
 .hidden {
-  display: none;
+  /* display: none; */
 }

@@ -9,43 +9,43 @@ describe('User', () => {
     user = new User(userData);
   })
 
-  it('should be a function', () => {
+  it.skip('should be a function', () => {
     expect(User).to.be.a('function');
   })
 
-  it('should be an instance of User', () => {
+  it.skip('should be an instance of User', () => {
     expect(user).to.be.an.instanceof(User);
   })
 
-  it('should have an id', () => {
+  it.skip('should have an id', () => {
     expect(user.id).to.equal();
   })
 
-  it('should have a name', () => {
+  it.skip('should have a name', () => {
     expect(user.name).to.equal();
   })
 
-  it('should have an address', () => {
+  it.skip('should have an address', () => {
     expect(user.address).to.equal();
   })
 
-  it('should have an email', () => {
+  it.skip('should have an email', () => {
     expect(user.email).to.equal();
   })
 
-  it('should have a stride length', () => {
+  it.skip('should have a stride length', () => {
     expect(user.strideLength).to.equal();
   })
 
-  it('should have a daily step goal', () => {
+  it.skip('should have a daily step goal', () => {
     expect(user.dailyStepGoal).to.equal();
   })
 
-  it('should have some friends', () => {
+  it.skip('should have some friends', () => {
     expect(user.friends).to.deep.equal();
   })
 
-  it('should return a users first name', () => {
+  it.skip('should return a users first name', () => {
     expect(user.returnFirstName()).to.equal('');
   })
 

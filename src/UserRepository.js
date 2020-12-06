@@ -3,8 +3,8 @@ class UserRepository {
     this.data = data;
   }
 
-  returnUserData(user.id) { // Given a user’s ID, what is their user data?
-    // user.find(user.id => user)
+  returnUserData() {
+    
   }
 
   calculateAverageStepGoal() { // The average step goal amongst all users
@@ -23,3 +23,7 @@ class UserRepository {
 //   const card = new Card(cardIndex.id, cardIndex.question, cardIndex.answers, cardIndex.correctAnswer);
 //   return card;
 // });
+
+if (typeof module !== 'undefined') {
+  module.exports = UserRepository;
+}

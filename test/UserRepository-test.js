@@ -1,12 +1,14 @@
 const chai = require('chai');
 const expect = chai.expect;
+const testData = require('../data/test-data');
+const userTestData = testData.testUsers;
 const UserRepository = require('../src/UserRepository');
-// need to input or link testing data that we're going to create
+
 describe('UserRepository', () => {
-  let allData;
+  let allUserData;
 
   beforeEach(() => {
-    allData = new UserRepository(data);
+    allUserData = new UserRepository(userTestData);
   })
 
   it('should be a function', () => {
@@ -14,15 +16,30 @@ describe('UserRepository', () => {
   })
 
   it('should be an instance of User', () => {
-    expect(allData).to.be.an.instanceof(UserRepository);
+    expect(allUserData).to.be.an.instanceof(UserRepository);
+  })
+
+  it('should hold all User objects', () => {
+    expect(allUserData.data).to.deep.equal(userTestData);
   })
 
   it('should return a users data given their user ID', () => {
-    expect(allData.returnUserData(id)).to.equal();
+    expect(allUserData.returnUserData(1)).to.deep.equal({
+      id: 1,
+      name: "Cole Fiscus",
+      address: "7362 Gonzaga Blvd, Spokane WA 19982",
+      email: "gonzagasucks@hotmail.com",
+      strideLength: 5.8,
+      dailyStepGoal: 400,
+      friends: [
+        2,
+        3
+      ]
+    });
   })
 
-  it('should calculate the average step goal amongst all users', () => {
-    expect(allData.calculateAverageStepGoal()).to.equal();
+  it.skip('should calculate the average step goal amongst all users', () => {
+    expect(allUserData.calculateAverageStepGoal()).to.equal();
   })
 
 })

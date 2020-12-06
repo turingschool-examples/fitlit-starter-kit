@@ -18,3 +18,7 @@ class User {
 
 // Each user holds on to the user properties from the data file
 // const user = new User(userData[5]) // comes from returnUserData method in UserRepository class
+
+if (typeof module !== 'undefined') {
+  module.exports = User;
+}

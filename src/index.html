@@ -10,27 +10,37 @@
   <body>
     <main>
       <header>
-        <h1>Activity Tracker</h1>
-        <h1>User Name</h1>
-        <h2>Message</h2>
-        <h3>Date</h3>
-        <i class="far fa-heart heart-icon"></i>
+        <div class="name-and-menu">
+          <h1>User Name</h1>
+          <img src="../assets/clipboard.svg" class="clipboard-icon">
+        </div>
+        <div class="user-info-text">
+          <p class="user-info">Address</p>
+          <p class="user-info">Email</p>
+          <p class="user-info">Date</p>
+        </div>
       </header>
       <section class="daily-stats">
         <h2>Daily Stats</h2>
         <article class="daily-data">
 
           <section class="activity current-stats">
-            <i class="fas fa-running icon"></i>
-            <p>daily activity</p>
+            <div class="daily-stat-icons">
+              <img src="../assets/person.svg" class="exercise-icon icon">
+              <p class="stats-text">daily activity</p>
+            </div>
           </section>
           <section class="sleep current-stats">
-            <i class="fas fa-bed icon"></i>
-            <p>your sleep</p>
+            <div class="daily-stat-icons">
+              <img src="../assets/sleep.svg" class="sleep-icon icon">
+              <p class="stats-text">your sleep</p>
+            </div>
           </section>
           <section class="hydration current-stats">
-            <i class="fas fa-tint icon"></i>
-            <p>drank</p>
+            <div class="daily-stat-icons">
+              <img src="../assets/water.svg" class="water-icon icon">
+              <p class="stats-text">drank</p>
+            </div>
           </section>
         </article>
       </section>

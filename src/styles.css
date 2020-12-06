@@ -12,33 +12,48 @@ font-family: 'Shadows Into Light', cursive;
 font-family: 'Raleway', sans-serif;
 */
 * {
-  border: solid 1px green;
+  /* border: solid 1px green; */
 }
+
 header {
-  border: solid 1px cyan;
+  width: 80%;
+  margin: auto;
   border-radius: 5px;
   background-color: #6D71E3;
-  height: 250px;
+  height: auto;
 }
 
 .icon {
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  top: 20px;
-  left: 1px;
+  width: 25%;
+  height: 50%;
+  position: relative;
   border-radius: 5px;
 }
 
-.heart-icon {
-  color: #C667E0;
-  border-radius: 50%;
-  border: solid 2px #C667E0;
-  position: absolute;
-  right: 50px;
-  top: 100px;
-  width: 50px;
-  height: 50px;
+.name-and-menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+h1 {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 350%;
+  margin-left: 2%;
+  width: 80%;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.clipboard-icon {
+  background-color: #202261;
+  height: 8%;
+  width: 8%;
+  max-height: 70px;
+  max-width: 70px;
+  border-radius: 5px;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 body {
@@ -49,8 +64,12 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
-h1 {
-  font-family: 'Shadows Into Light', cursive;
+.user-info-text {
+  padding-bottom: 3%;
+}
+
+.user-info {
+  margin-left: 5%;
 }
 
 .daily-data {
@@ -59,40 +78,60 @@ h1 {
   justify-content: space-around;
 }
 
+.daily-stats {
+  width: 80%;
+  margin: auto;
+  background-color: #202261;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 3%;
+}
+
+h2 {
+  padding-top: 2%;
+  padding-bottom: 1%;
+}
+
 .current-stats {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-around;
   align-items: center;
-  /* border: solid 3px red; */
   width: 200px;
   height: 100px;
   position: relative;
   border-radius: 5px;
   background-color: #202261;
+  padding-bottom: 2%;
 }
 
-.fa-running {
-  color: #FA6A3C;
-  font-size: 48px;
+.daily-stat-icons {
+  justify-content: center;
+  margin: auto;
 }
 
-.fa-tint {
-  color: #61ED90;
-  font-size: 48px;
+.stats-text {
+  text-align: center;
 }
 
-.fa-bed  {
-  color: #F0CB30;
-  font-size: 48px;
+.exercise-icon {
+  background-color: #FA6A3C;
+}
+
+.water-icon {
+  background-color: #61ED90;
+}
+
+.sleep-icon  {
+  background-color: #F0CB30;
 }
 
 .graph {
   width: 80%;
   height: 400px;
-  border: solid 2px blue;
+  /* border: solid 2px blue; */
   margin: auto;
-  /* text-align: center; */
+  text-align: center;
 }
 
 .fa-chart-area {
@@ -125,5 +164,5 @@ aside {
 }
 
 .hidden {
-  /* display: none; */
+  display: none;
 }

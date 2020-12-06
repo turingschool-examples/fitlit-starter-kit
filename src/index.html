@@ -1,57 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="./styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Shadows+Into+Light&display=swap" rel="stylesheet">
-    <title>Activity Tracker</title>
-  </head>
-  <body>
-    <main>
-      <header>
-        <h1>Activity Tracker</h1>
-        <h1>User Name</h1>
-        <h2>Message</h2>
-        <h3>Date</h3>
-        <img src="user-img" alt="">
-      </header>
-      <section class="daily-stats">
-        <article class="daily-data">
 
-          <section class="activity">
-            <p>daily activity</p>
-          </section>
-          <section class="sleep">
-            <p>your sleep</p>
-          </section>
-          <section class="hydration">
-            <p>drank</p>
-          </section>
-        </article>
-      </section>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="./styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+  <title>Activity Tracker</title>
+</head>
 
-      <section class="graph">
+<body>
+  <main>
+  <section class="admin-area">
+    <header>
+      <h1>User Name</h1>
+      <div class="user-info-text">
+        <p class="user-info">Address</p>
+        <p class="user-info">Email</p>
+        <p class="user-info">Date</p>
+      </div>
+    </header>
+      <span>
+        <p class="admin-text">Admin</p>
+        <img src="../assets/admin.svg" class="admin-icon">
+      </span>
+    </section>
+    <section class="daily-stats">
+      <h2>Daily Stats</h2>
+      <article class="daily-data">
 
-      </section>
-    </main>
+        <section class="steps current-stats">
+          <div class="daily-stat-icons">
+            <img src="../assets/person.svg" class="exercise-icon icon">
+            <p class="stats-text">steps</p>
+          </div>
+        </section>
 
-  <aside>
-    <button class="home">home</button>
-    <button class="steps">steps</button>
-    <button class="hydration">hydration</button>
-    <button class="sleep">sleep</button>
-    <button class="my-data">my data</button>
-  </aside>
+        <section class="minutes current-stats">
+          <div class="daily-stat-icons">
+            <img src="../assets/minutes.svg" class="minutes-icon icon">
+            <p class="stats-text">minutes</p>
+          </div>
+        </section>
 
-    <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="../data/hydration.js"></script>
-    <script type="text/javascript" src="../data/sleep.js"></script>
-    <script type="text/javascript" src="../data/activity.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
-    <script type="text/javascript" src="./user.js"></script>
-    <script type="text/javascript" src="./userActivity.js"></script>
-    <script type="text/javascript" src="./userHydration.js"></script>
-    <script type="text/javascript" src="./userRepo.js"></script>
-    <script type="text/javascript" src="./userSleep.js"></script>
-  </body>
-</html> 
+
+        <section class="sleep current-stats">
+          <div class="daily-stat-icons">
+            <img src="../assets/sleep.svg" class="sleep-icon icon">
+            <p class="stats-text">sleep</p>
+          </div>
+        </section>
+        <section class="hydration current-stats">
+          <div class="daily-stat-icons">
+            <img src="../assets/water.svg" class="water-icon icon">
+            <p class="stats-text">water</p>
+          </div>
+        </section>
+      </article>
+    </section>
+
+    <section class="graph">
+      <h2>My Activity</h2>
+      <i class="fas fa-chart-area"></i>
+    </section>
+  </main>
+
+  <script type="text/javascript" src="../data/users.js"></script>
+  <script type="text/javascript" src="../data/hydration.js"></script>
+  <script type="text/javascript" src="../data/sleep.js"></script>
+  <script type="text/javascript" src="../data/activity.js"></script>
+  <script type="text/javascript" src="./scripts.js"></script>
+  <script type="text/javascript" src="./user.js"></script>
+  <script type="text/javascript" src="./userActivity.js"></script>
+  <script type="text/javascript" src="./userHydration.js"></script>
+  <script type="text/javascript" src="./userRepo.js"></script>
+  <script type="text/javascript" src="./userSleep.js"></script>
+</body>
+
+</html>

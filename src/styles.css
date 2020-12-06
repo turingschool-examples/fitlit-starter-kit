@@ -1,13 +1,157 @@
-/* 
+/*
 COLORS
 yellow: #F0CB30
 orange: #FA6A3C
 purple: #C667E0
 blue: #65A4F7
-green: #61ED90 
+green: #61ED90
 */
 
-/* 
-font-family: 'Shadows Into Light', cursive; 
+/*
+font-family: 'Shadows Into Light', cursive;
 font-family: 'Raleway', sans-serif;
 */
+
+* {
+  /* border: 1px solid green; */
+}
+
+body {
+  /* border: 1px solid yellow; */
+  background-color: #202029;
+  display:flex;
+  flex-direction: column;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+}
+
+.admin-area {
+  /* border: 1px solid white; */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* width: 10%; */
+}
+
+.admin-icon {
+  background-color: #65A4F7;
+  border-radius: 5px;
+  width: auto;
+  max-width: 70px;
+}
+
+.admin-text {
+  margin-bottom: 1%;
+  text-align: center;
+}
+
+header {
+  width: 80%;
+  /* margin: auto; */
+  border-radius: 5px;
+  background-color: #6D71E3;
+  height: auto;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+
+.icon {
+  width: 25%;
+  height: 50%;
+  position: relative;
+  border-radius: 5px;
+}
+
+h1 {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 350%;
+  margin-left: 2%;
+  width: 80%;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.user-info-text {
+  padding-bottom: 3%;
+}
+
+.user-info {
+  margin-left: 5%;
+}
+
+.daily-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.daily-stats {
+  width: 80%;
+  margin: auto;
+  background-color: #202261;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 3%;
+}
+
+h2 {
+  padding-top: 2%;
+  padding-bottom: 1%;
+  font-size: 200%;
+}
+
+.current-stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 200px;
+  height: 100px;
+  position: relative;
+  border-radius: 5px;
+  background-color: #202261;
+  padding-bottom: 2%;
+}
+
+.daily-stat-icons {
+  justify-content: center;
+  margin: auto;
+}
+
+.stats-text {
+  text-align: center;
+}
+
+.exercise-icon {
+  background-color: #C667E0;
+}
+
+.water-icon {
+  background-color: #61ED90;
+}
+
+.sleep-icon  {
+  background-color: #F0CB30;
+}
+
+.minutes-icon {
+  background-color: #FA6A3C;
+}
+
+.graph {
+  width: 80%;
+  height: 400px;
+  /* border: solid 2px blue; */
+  margin: auto;
+  text-align: center;
+}
+
+.fa-chart-area {
+  color: #C667E0;
+  font-size: 250px;
+  margin-top: 50px;
+}
+
+.hidden {
+  /* display: none; */
+}

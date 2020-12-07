@@ -1,13 +1,13 @@
 const chai = require('chai');
 const expect = chai.expect;
-const userData = require('../data/user.js')
+const userData = require('../data/users.js')
 const UserRepository = require('../src/UserRepository');
 const User = require('../src/User');
 
 describe('UserRespository', function() {
   let userRepository;
 
-  beforeEach(function()) {
+  beforeEach(function() {
     userRepository = new UserRepository(userData);
     user1 = new User({
         "id": 1,
@@ -29,12 +29,12 @@ describe('UserRespository', function() {
   });
 
   it('should be an instance of UserRepository', function() {
-    expect(userRepository)to.be.an.instanceof(UserRepository);
+    expect(userRepository).to.be.an.instanceof(UserRepository);
   });
 
   it('should hold all User objects', function() {
-    expect(userRepository.users.length)to.equal(50);
-    expect(userRepository.users[0])to.be.an.instanceof(User);
+    expect(userRepository.users.length).to.equal(50);
+    expect(userRepository.users[0]).to.be.an.instanceof(User);
   });
 
   it('should return a user data given an id', function() {

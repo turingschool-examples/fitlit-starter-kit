@@ -43,6 +43,9 @@ describe('CommunityActivity', function() {
     expect(communityActivity).to.be.an.instanceof(CommunityActivity)
   })
 
+  it('should return community average steps taken on a specific date', function() {
+    expect(communityActivity.findStepsAverage("2019/06/15")).to.equal(21034)
+  });
 
   it('should return community average minutes active on a specific date', function() {
     expect(communityActivity.findActiveMinuteAverage("2019/06/15")).to.equal(145)

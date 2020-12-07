@@ -1,3 +1,15 @@
-html {
+html,
+body {
+  height: 100%;
+  font-family: "Open Sans", sans-serif;
+  color: #82311A;
+  margin: 0;
+}
 
+.user-info-card {
+  border: 1px solid blue;
+}
+
+.step-goal-comparison {
+  border: 1px solid blue;
 }

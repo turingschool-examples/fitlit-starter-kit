@@ -2,13 +2,12 @@
 const chai = require('chai')
 const expect = chai.expect
 const User = require('../src/User')
-const testUserData = require('./test-data')
 
 describe('User', () => {
   let user
 
   beforeEach(() => {
-    user = new User('Testy User')
+    user = new User(1, 'Testy User')
   })
 
   it('should be a function', () => {

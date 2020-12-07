@@ -41,5 +41,8 @@ describe('UserRespository', function() {
     expect(userRepository.getUserData(1)).to.deeply.equal(user1)
   });
 
+  it('should return average step goal amongst all users', function() {
+    expect(userRepository.findAverageStepGoal()).to.equal(6700)
+  })
 
 });

@@ -6,4 +6,8 @@ class UserRepository {
     this.users = data.map(user => new User(user))
   }
 
+  getUserData(id) {
+    return this.users.filter(user => user.userID === id)[0]
+  }
+
 module.exports = UserRepository;

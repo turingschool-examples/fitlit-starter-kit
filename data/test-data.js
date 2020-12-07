@@ -1,5 +1,5 @@
 const testUsers = [
-  {
+ {
     "id": 1,
     "name": "Cole Fiscus",
     "address": "7362 Gonzaga Blvd, Spokane WA 19982",

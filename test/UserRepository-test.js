@@ -2,13 +2,18 @@ const chai = require('chai');
 const expect = chai.expect;
 const testData = require('../data/test-data');
 const userTestData = testData.testUsers;
+const User = require('../src/User');
 const UserRepository = require('../src/UserRepository');
 
 describe('UserRepository', () => {
-  let allUserData;
+  let users, userRepository;
 
   beforeEach(() => {
-    allUserData = new UserRepository(userTestData);
+    users = userTestData.map(userData => {
+      const user = new User(userData);
+      return user;
+    });
+    userRepository = new UserRepository(users);
   })
 
   it('should be a function', () => {
@@ -16,15 +21,15 @@ describe('UserRepository', () => {
   })
 
   it('should be an instance of User', () => {
-    expect(allUserData).to.be.an.instanceof(UserRepository);
+    expect(userRepository).to.be.an.instanceof(UserRepository);
   })
 
   it('should hold all User objects', () => {
-    expect(allUserData.data).to.deep.equal(userTestData);
-  }) // connect to User class??
+    expect(userRepository.data[0]).to.deep.equal(users[0]);
+  })
 
   it('should return a users data given their user ID', () => {
-    expect(allUserData.returnUserData(1)).to.deep.equal({
+    expect(userRepository.returnUserData(1)).to.deep.equal({
       id: 1,
       name: "Cole Fiscus",
       address: "7362 Gonzaga Blvd, Spokane WA 19982",
@@ -39,7 +44,7 @@ describe('UserRepository', () => {
   })
 
   it('should calculate the average step goal amongst all users', () => {
-    expect(allUserData.calculateAverageStepGoal()).to.equal(7973);
+    expect(userRepository.calculateAverageStepGoal()).to.equal(7973);
   })
 
 })

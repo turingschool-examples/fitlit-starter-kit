@@ -2,6 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const userData = require('../data/user.js')
 const UserRepository = require('../src/UserRepository');
+const User = require('../src/User');
 
 describe('UserRespository', function() {
   let userRepository;
@@ -36,7 +37,9 @@ describe('UserRespository', function() {
     expect(userRepository.users[0])to.be.an.instanceof(User);
   });
 
-
+  it('should return a user data given an id', function() {
+    expect(userRepository.getUserData(1)).to.deeply.equal(user1)
+  });
 
 
 });

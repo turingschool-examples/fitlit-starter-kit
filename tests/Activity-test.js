@@ -15,3 +15,16 @@ describe('Activity', function() {
       "flightsOfStairs": 16
     });
   });
+
+  it('should hold activity properties', function() {
+    expect(activity.userID).to.equal(1)
+    expect(activity.date).to.equal('2019/06/15')
+    expect(activity.numSteps).to.equal(3577)
+    expect(activity.minutesActive.to.equal(140)
+    expect(activity.flightOfStairs).to.equal(16)
+    expect(activity.isSuccessfulStepGoal).to.equal(false)
+  })
+
+
+
+});

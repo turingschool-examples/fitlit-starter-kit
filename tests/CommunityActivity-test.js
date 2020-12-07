@@ -43,6 +43,10 @@ describe('CommunityActivity', function() {
     expect(communityActivity).to.be.an.instanceof(CommunityActivity)
   })
 
+  it('should return community average stairs climbed on a specific date', function() {
+    expect(communityActivity.findStairAverage("2019/06/15")).to.equal(21)
+  });
+
   it('should return community average steps taken on a specific date', function() {
     expect(communityActivity.findStepsAverage("2019/06/15")).to.equal(21034)
   });

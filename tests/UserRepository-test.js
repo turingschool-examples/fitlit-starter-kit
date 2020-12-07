@@ -31,6 +31,10 @@ describe('UserRespository', function() {
     expect(userRepository)to.be.an.instanceof(UserRepository);
   });
 
+  it('should hold all User objects', function() {
+    expect(userRepository.users.length)to.equal(50);
+    expect(userRepository.users[0])to.be.an.instanceof(User);
+  });
 
 
 

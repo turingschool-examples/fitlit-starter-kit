@@ -34,7 +34,12 @@ const showProfile = () => {
   `
 }
 
-
+//loads a display of the user's step goal
+//also loads display of community step goal
+const showStepGoalComparison = () => {
+  userStepGoal.insertAdjacentHTML('beforeend', `<p>${user.dailyStepGoal}</p>`)
+  communityStepGoal.insertAdjacentHTML('beforeend', `<p>${community.findAverageStepGoal()}</p>`)
+}
 
 //displays userFriends by first name, could also add images?
 const showFriends = () => {

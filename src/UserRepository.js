@@ -1,6 +1,14 @@
 class UserRepository {
   constructor(data) {
     this.data = data;
+    this.users = [];
+  }
+
+  createUserInstances() {
+    this.data.forEach(userData => {
+      const user = new User(userData);
+      this.users.push(user);
+    }
   }
 
   returnUserData(userId) {

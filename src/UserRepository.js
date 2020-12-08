@@ -1,5 +1,5 @@
-const User = require('./User')
-const userData = require('../data/users.js')
+// const User = require('./User')
+// const userData = require('../data/users.js')
 
 class UserRepository {
   constructor(data = []) {
@@ -25,4 +25,4 @@ class UserRepository {
   }
 }
 
-module.exports = UserRepository;
+// module.exports = UserRepository;

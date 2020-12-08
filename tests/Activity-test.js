@@ -15,19 +15,31 @@ describe('Activity', function() {
     });
   });
 
-  it('should hold activity properties', function() {
+  it('should hold userId property', function() {
     expect(activity.userID).to.equal(1)
+  });
+
+  it('should hold date property', function() {
     expect(activity.date).to.equal('2019/06/15')
+  });
+
+  it('should hold number of steps property', function() {
     expect(activity.numSteps).to.equal(3577)
+  });
+
+  it('should hold minutes active property', function() {
     expect(activity.minutesActive).to.equal(140)
-    expect(activity.flightOfStairs).to.equal(16)
-    expect(activity.isSuccessfulStepGoal).to.equal(false)
+  });
+
+  it('should hold flights of stairs climbed property', function() {
+    expect(activity.stairsClimbed).to.equal(16)
+  });
+
+  it('should verify if step goal has been met', function() {
+    expect(activity.verifyIfStepGoal()).to.equal(false)
   })
 
   it('should return miles user has walked based on steps', function() {
     expect(activity.getStepMiles().to.equal(2.91))
   })
-
-
-
 });

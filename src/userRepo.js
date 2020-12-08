@@ -6,14 +6,8 @@ class UserRepo {
     this.users = users;
   }
 
-  createUsers(user) {
-    this.users.push(user)
-    return this.users // returns users
-  }
-
   getUserData(id) { 
-    this.createUsers(user)
-    return this.users[id - 1]
+    return this.users[id]
   }
 
   calculateAvgSteps() {

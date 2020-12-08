@@ -11,7 +11,6 @@ class User {
   }
 
   getFirstName(id) {
-    console.log(userData[1].name)
     return userData[id].name.split(' ')[0]
   }
 

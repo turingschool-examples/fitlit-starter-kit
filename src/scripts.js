@@ -1,15 +1,24 @@
 'use strict'
-const id = 1 // this determines which users.js object to display
+const id = 0 // this determines which users.js object to display. 1 = 2
 const user = new User()
-const userRepo = new UserRepo()
+let users = userData.map(user => user)
 
-let users = userData.map(user => {
-  user = new User(user.id, user.name, user.address, user.email, user.strideLength, user.dailyStepGoal)
-  return user
-})
+const userRepo = new UserRepo(users) // needs to take in array of users
+
 
 let userFirstName = document.querySelector('.user-first-name')
+let userAddress = document.querySelector('.user-address')
+let userEmail = document.querySelector('.user-email')
+let userStepCompare = document.querySelector('.user-step-compare')
 
 window.addEventListener('load', () => {
-  userFirstName.innerText = `${user.getFirstName(id)}`
+  displayFirstName(id)
+  displayInfoCard(id)
 })
+
+const displayFirstName = id => userFirstName.innerText = `Welcome, ${user.getFirstName(id)}`
+const displayInfoCard = id => {
+  userAddress.innerText = `${userRepo.getUserData(id).address}`
+  userEmail.innerText = `${userRepo.getUserData(id).email}`
+  userStepCompare.innerText = `Your step goal is ${users[id].dailyStepGoal}, and the average is ${userRepo.calculateAvgSteps()}`
+}

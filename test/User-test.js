@@ -20,6 +20,7 @@ describe('User', () => {
         4
       ]
     };
-
+    
+    user = new User(data);
   });    
 });

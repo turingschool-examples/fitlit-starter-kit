@@ -3,14 +3,40 @@
   <head>
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-
+    <section class='data-section'>
+      <h1>USER PROFILE</h1>
+      <div class='data'>User Data</div>
+    </section>
+    <section class='data-section'>
+      <div class='day-week-view'>
+        <button>Day</button>
+        <button>Week</button>
+      </div>
+      <div class='user-data'>Steps</div>
+      <div class='user-data'>Miles</div>
+      <div class='user-data'>Floors Walked</div>
+    </section>
+    <section class='data-section'>
+      <div class='day-week-view'>
+        <button>Day</button>
+        <button>Week</button>
+      </div>
+      <div class='data'>Hydration Data</div>
+    </section>
+    <section class='data-section'>
+      <div class='day-week-view'>
+        <button>Day</button>
+        <button>Week</button>
+      </div>
+      <div class='data'>Sleep Data</div>
+    </section>
+    <script src='./styles.css'></script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>

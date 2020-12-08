@@ -1,5 +1,5 @@
 'use strict'
-const user = require('../src/user')
+// const user = require('../src/user') // use this for testing
 
 class UserRepo {
   constructor(users) {

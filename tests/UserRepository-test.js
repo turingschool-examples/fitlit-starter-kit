@@ -4,7 +4,7 @@ const UserRepository = require('../src/UserRepository');
 const User = require('../src/User');
 
 describe('UserRespository', function() {
-  let userRepository, user1;
+  let userRepository, user1, user2;
 
   beforeEach(function() {
     userRepository = new UserRepository([
@@ -91,23 +91,37 @@ describe('UserRespository', function() {
           8
         ]
       });
-  });
-
-  it('should be a function', function() {
-    expect(UserRepository).to.be.a('function');
-  });
-
-  it('should be an instance of UserRepository', function() {
-    expect(userRepository).to.be.an.instanceof(UserRepository);
+    user2 = new User({
+      "id": 2,
+      "name": "Jarvis Considine",
+      "address": "30086 Kathryn Port, Ciceroland NE 07273",
+      "email": "Dimitri.Bechtelar11@gmail.com",
+      "strideLength": 4.5,
+      "dailyStepGoal": 5000,
+      "friends": [
+        9,
+        18,
+        24,
+        19
+      ]
+    });
   });
 
   it('should hold all User objects', function() {
     expect(userRepository.users.length).to.equal(5);
     expect(userRepository.users[0]).to.be.an.instanceof(User);
+    expect(userRepository.users[1]).to.be.an.instanceof(User);
   });
 
   it('should return a user data given an id', function() {
-    expect(userRepository.getUserData(1)).to.deep.equal(user1)
+    const userIdToMatch = 1
+    const secondUserIdToMatch = 2
+
+    const userMatch = userRepository.getUserData(userIdToMatch)
+    const secondUserMatch = userRepository.getUserData(secondUserIdToMatch)
+
+    expect(userMatch).to.deep.equal(user1)
+    expect(secondUserMatch).to.deep.equal(user2)
   });
 
   it('should return average step goal amongst all users', function() {

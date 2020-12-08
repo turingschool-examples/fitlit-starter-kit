@@ -8,8 +8,8 @@ describe('User', () => {
   let users;
 
   beforeEach(() => {
-    users = userTestData.map(userData => {
-      const user = new User(userData);
+    users = userTestData.map(userObject => {
+      const user = new User(userObject);
       return user;
     });
   })

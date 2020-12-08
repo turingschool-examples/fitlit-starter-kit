@@ -9,8 +9,8 @@ describe('UserRepository', () => {
   let users, userRepository;
 
   beforeEach(() => {
-    users = userTestData.map(userData => {
-      const user = new User(userData);
+    users = userTestData.map(userObject => {
+      const user = new User(userObject);
       return user;
     });
     userRepository = new UserRepository(users);
@@ -25,7 +25,7 @@ describe('UserRepository', () => {
   })
 
   it('should hold all User objects', () => {
-    expect(userRepository.data[0]).to.deep.equal(users[0]);
+    expect(userRepository.userInstanceData[0]).to.deep.equal(users[0]);
   })
 
   it('should return a users data given their user ID', () => {

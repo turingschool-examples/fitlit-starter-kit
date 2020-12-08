@@ -1,0 +1,34 @@
+html,
+body {
+  height: 100%;
+  font-family: "Open Sans", sans-serif;
+  color: #000000;
+}
+
+.section-wrapper {
+    border: 1px solid blue;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    margin-top: 10px;
+  }
+
+.app-name {
+  border: 1px solid blue;
+}
+
+.user-greeting {
+  border: 1px solid blue;
+}
+
+.user-info-card {
+  border: 1px solid blue;
+}
+
+.daily-leaderboard {
+  border: 1px solid blue;
+}
+
+/* .fitness-categories {
+  margin-top: 10px;
+} */

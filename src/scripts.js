@@ -1,7 +1,7 @@
 'use strict'
-const id = 1 // this determines which users.js object to display.
-const user = new User(userData, id)
-let users = userData.map(user => user)
+ // this determines which users.js object to display.
+// const user = new User(userData, id)
+// let users = userData.map(user => user)
 
 const userRepo = new UserRepo(users) // needs to take in array of users
 
@@ -17,7 +17,7 @@ window.addEventListener('load', () => {
 
 const displayFirstName = id => userFirstName.innerText = `Welcome, ${user.getFirstName(id)}`
 const displayInfoCard = id => {
-  userAddress.innerText = `${userRepo.getUserData(id).address}`
-  userEmail.innerText = `${userRepo.getUserData(id).email}`
+  userAddress.innerText = `${userRepo.getAUser(id).address}`;
+  userEmail.innerText = `${userRepo.getAUser(id).email}`;
   userStepCompare.innerText = `Your step goal is ${users[id - 1].dailyStepGoal}, and the average is ${userRepo.calculateAvgSteps()}`
 }

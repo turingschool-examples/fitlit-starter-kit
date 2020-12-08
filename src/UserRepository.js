@@ -1,25 +1,17 @@
 class UserRepository {
-  constructor(data) {
-    this.data = data;
-    this.users = [];
-  }
-
-  createUserInstances() {
-    this.data.forEach(userData => {
-      const user = new User(userData);
-      this.users.push(user);
-    }
+  constructor(userInstanceData) {
+    this.userInstanceData = userInstanceData;
   }
 
   returnUserData(userId) {
-    return this.data.find(user => user.id === userId);
+    return this.userInstanceData.find(user => user.id === userId);
   }
 
   calculateAverageStepGoal() {
-    const totalStepGoal = this.data.reduce((acc, user) => {
-      return acc + user.dailyStepGoal;
+    const totalStepGoal = this.userInstanceData.reduce((totalSteps, user) => {
+      return totalSteps + user.dailyStepGoal;
     }, 0);
-    return Math.floor(totalStepGoal / this.data.length);
+    return Math.floor(totalStepGoal / this.userInstanceData.length);
   }
 
 }

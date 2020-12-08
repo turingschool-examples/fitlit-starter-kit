@@ -22,3 +22,8 @@ const greetUser = (user) => {
   userMain.innerHTML = `<h2>Welcome ${userFirstName}`
 }
 
+//we can add other calls to this onlaod function
+function loadPage() {
+  createCommunity()
+  greetUser(user)
+}

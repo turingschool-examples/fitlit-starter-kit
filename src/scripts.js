@@ -6,3 +6,5 @@ const friends = document.querySelector('.friends')
 let community = null
 let user = null
 
+window.addEventListener('load', loadPage)
+

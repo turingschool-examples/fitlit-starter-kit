@@ -4,7 +4,7 @@ const friends = document.querySelector('.friends')
 
 //since multiple classes will need these, global
 let community = null
-let user = null
+let user = nul
 
 window.addEventListener('load', loadPage)
 
@@ -19,7 +19,7 @@ const createCommunity = () => {
 //could be refactored to one line if stil readible
 const greetUser = () => {
   const userFirstName = user.getFirstName()
-  userMain.insertAdjacentHTML('afterbegin', `<h2>Welcome ${userFirstName}</h2>`)
+  userMain.insertAdjacentHTML('afterbegin', `<h2>Welcome ${userFirstName}!</h2>`)
 }
 
 //sets up the user userProfile

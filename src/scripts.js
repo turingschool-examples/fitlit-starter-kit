@@ -15,3 +15,10 @@ const createCommunity = () => {
   user = community.users[0]
 }
 
+//populates the greeting
+//could be refactored to one line if stil readible
+const greetUser = (user) => {
+  const userFirstName = user.getFirstName()
+  userMain.innerHTML = `<h2>Welcome ${userFirstName}`
+}
+

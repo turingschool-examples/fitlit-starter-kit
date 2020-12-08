@@ -59,6 +59,6 @@ describe('UserRepo', () => {
       }
     ]
 
-    
+    userRepo = new Userrepo(dataset);
   });
 });

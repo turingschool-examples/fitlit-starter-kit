@@ -1,19 +1,13 @@
 'use strict'
-const user = require('../src/user')
+// const user = require('../src/user') // use this for testing
 
 class UserRepo {
   constructor(users) {
     this.users = users;
   }
 
-  createUsers(user) {
-    this.users.push(user)
-    return this.users // returns users
-  }
-
   getUserData(id) { 
-    this.createUsers(user)
-    return this.users[id - 1]
+    return this.users[id]
   }
 
   calculateAvgSteps() {

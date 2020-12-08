@@ -1,16 +1,17 @@
 'use strict'
+
 class User {
   constructor(id, name, address, email, strideLength, dailyStepGoal) {
-    this.id = id;
-    this.name = name;
-    this.address = address;
-    this.email = email;
-    this.strideLength = strideLength;
-    this.dailyStepGoal = dailyStepGoal;
+    this.id = userData[id - 1];
+    this.name = userData.name;
+    this.address = userData.address;
+    this.email = userData.email;
+    this.strideLength = userData.strideLength;
+    this.dailyStepGoal = userData.dailyStepGoal;
   }
 
-  getFirstName() {
-    return this.name.split(' ')[0]
+  getFirstName(id) {
+    return userData[id].name.split(' ')[0]
   }
 
 }

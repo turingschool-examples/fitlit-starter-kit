@@ -11,7 +11,7 @@ class User {
   }
 
 
-  getFirstName() {
+  getFirstName(id) {
     return this.name.split(' ')[0]
   }
 

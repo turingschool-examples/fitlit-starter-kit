@@ -1,24 +1,23 @@
 'use strict'
 
 class UserRepo {
-  constructor(users) {
-    this.users = users;
+  constructor(userData) {
+    this.users = userData;
   }
 
-  getUserData(id) { 
-    return this.users[id - 1]
+  getAUser(id) {
+    return this.users.find(user => user.id == id);
   }
 
   calculateAvgSteps() {
     let stepGoals = this.users.map((user) => {
       return user.dailyStepGoal
     })
-    let divisor = stepGoals.length
     let totalAvgSteps = stepGoals.reduce((avgSteps, value) => {
       let totalSteps = avgSteps += value
       return totalSteps
     }, 0)
-    return totalAvgSteps = totalAvgSteps / divisor
+    return (totalAvgSteps = totalAvgSteps / stepGoals.length);
   }
 
 }

@@ -9,8 +9,8 @@ describe('UserRepository', () => {
   let users, userRepository;
 
   beforeEach(() => {
-    users = userTestData.map(userData => {
-      const user = new User(userData);
+    users = userTestData.map(userObject => {
+      const user = new User(userObject);
       return user;
     });
     userRepository = new UserRepository(users);

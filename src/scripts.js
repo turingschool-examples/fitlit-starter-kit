@@ -20,6 +20,14 @@ const createCommunity = () => {
 const greetUser = (user) => {
   const userFirstName = user.getFirstName()
   userMain.innerHTML = `<h2>Welcome ${userFirstName}`
+//displays userFriends by first name, could also add images?
+const showFriends = () => {
+  const friendDisplay = user.friends.map(friend => {
+    const friendName = community.getUserData(friend).getFirstName()
+    return `<div>${friendName}</div>`
+  })
+
+  friends.innerHTML += friendDisplay.join(' ')
 }
 
 //we can add other calls to this onlaod function

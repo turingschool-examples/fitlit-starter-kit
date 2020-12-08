@@ -1,10 +1,12 @@
 const userMain = document.querySelector('.userMain')
 const userProfile = document.querySelector('.userProfile')
 const friends = document.querySelector('.friends')
+const userStepGoal = document.querySelector('.userStepGoal')
+const communityStepGoal = document.querySelector('.communityStepGoal')
 
 //since multiple classes will need these, global
 let community = null
-let user = nul
+let user = null
 
 window.addEventListener('load', loadPage)
 
@@ -32,6 +34,8 @@ const showProfile = () => {
   `
 }
 
+
+
 //displays userFriends by first name, could also add images?
 const showFriends = () => {
   const friendDisplay = user.friends.map(friend => {
@@ -47,5 +51,6 @@ function loadPage() {
   createCommunity()
   greetUser()
   showProfile()
+  showStepGoalComparison()
   showFriends()
 }

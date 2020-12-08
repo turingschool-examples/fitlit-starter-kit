@@ -28,12 +28,12 @@ const greetUser = () => {
 //we could make some of this hidden unless clicked?
 //could also add a picture <img src=...> ?
 const showProfile = () => {
-  userProfile.innerHTML = `Name: ${user.name}<br>
+  userProfile.insertAdjacentHTML('beforeend', `Name: ${user.name}<br>
   Address: ${user.address}<br>
   Email: ${user.email}<br>
   Stride Length: ${user.strideLength} ft<br>
   FitFriends: ${user.friends.length}
-  `
+  `)
 }
 
 //loads a display of the user's step goal

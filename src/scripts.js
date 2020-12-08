@@ -30,7 +30,9 @@ const greetUser = () => {
 const showProfile = () => {
   userProfile.innerHTML = `Name: ${user.name}<br>
   Address: ${user.address}<br>
-  Email: ${user.email}
+  Email: ${user.email}<br>
+  Stride Length: ${user.strideLength} ft<br>
+  FitFriends: ${user.friends.length}
   `
 }
 

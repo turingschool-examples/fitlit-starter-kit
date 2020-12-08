@@ -17,7 +17,6 @@ const createCommunity = () => {
 
 //populates the greeting
 //could be refactored to one line if stil readible
-const greetUser = (user) => {
 const greetUser = () => {
   const userFirstName = user.getFirstName()
   userMain.insertAdjacentHTML('afterbegin', `<h2>Welcome ${userFirstName}</h2>`)
@@ -46,5 +45,7 @@ const showFriends = () => {
 //we can add other calls to this onlaod function
 function loadPage() {
   createCommunity()
-  greetUser(user)
+  greetUser()
+  showProfile()
+  showFriends()
 }

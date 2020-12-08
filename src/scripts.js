@@ -20,6 +20,17 @@ const createCommunity = () => {
 const greetUser = (user) => {
   const userFirstName = user.getFirstName()
   userMain.innerHTML = `<h2>Welcome ${userFirstName}`
+
+//sets up the user userProfile
+//we could make some of this hidden unless clicked?
+//could also add a picture <img src=...> ?
+const showProfile = () => {
+  userProfile.innerHTML = `Name: ${user.name}<br>
+  Address: ${user.address}<br>
+  Email: ${user.email}
+  `
+}
+
 //displays userFriends by first name, could also add images?
 const showFriends = () => {
   const friendDisplay = user.friends.map(friend => {

@@ -4,7 +4,7 @@ const CommunityActivity = require('../src/CommunityActivity');
 const Activity = require('../src/Activity');
 
 describe('CommunityActivity', function() {
-  let communityActivity, activity;
+  let communityActivity, activity1, activity2;
 
   beforeEach(function() {
     communityActivity = new CommunityActivity([
@@ -51,6 +51,13 @@ describe('CommunityActivity', function() {
       "minutesActive": 140,
       "flightsOfStairs": 16
      });
+     activity2 = new Activity({
+       "userID": 2,
+       "date": "2019/06/15",
+       "numSteps": 4294,
+       "minutesActive": 138,
+       "flightsOfStairs": 10
+     })
   });
 
   it('should be a function', function() {
@@ -64,6 +71,7 @@ describe('CommunityActivity', function() {
   if('should hold Activity objects for all users', function() {
     expect(communityActivity.activities.length).to.equal(5)
     expect(communityActivity.activities[0]).to.deep.equal(activity)
+    expect(communityActivity.activities[1]).to.deep.equal(activity2)
   })
 
   it('should return community average stairs climbed on a specific date', function() {

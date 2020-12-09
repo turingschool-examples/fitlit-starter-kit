@@ -8,19 +8,20 @@ class SleepRepository {
    }
 
    calculateUserAverageHoursSleptAllTime(id) {
-     // const allUserHydration = this.returnHydrationData(id);
-     // const userTotalOzAllTime = allUserHydration.reduce((totalOz, water) => {
-     //   return totalOz + water.numOunces;
-     // }, 0);
-     // return Math.floor(userTotalOzAllTime / allUserHydration.length);
+     const allUserSleep = this.returnSleepData(id);
+     const userTotalHoursSleptAllTime = allUserSleep.reduce((totalHours, sleep) => {
+       return totalHours + sleep.hoursSlept;
+     }, 0);
+     const userAverageNightlyHoursSlept = userTotalHoursSleptAllTime / allUserSleep.length;
+     return Math.round(userAverageNightlyHoursSlept * 10) / 10;
    }
 
    calculateUserAverageSleepQualityAllTime(id) {
-     // const allUserHydration = this.returnHydrationData(id);
-     // const userTotalOzAllTime = allUserHydration.reduce((totalOz, water) => {
+     // const allUserSleep = this.returnSleepData(id);
+     // const userTotalOzAllTime = allUserSleep.reduce((totalOz, water) => {
      //   return totalOz + water.numOunces;
      // }, 0);
-     // return Math.floor(userTotalOzAllTime / allUserHydration.length);
+     // return Math.floor(userTotalOzAllTime / allUserSleep.length);
    }
 
    returnSleepHoursByDate(id, date) {

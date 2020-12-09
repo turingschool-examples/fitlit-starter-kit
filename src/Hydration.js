@@ -1,11 +1,11 @@
 class Hydration {
-  constructor(hydrationData) {
-    this.userID = hydrationData.userID;
-    this.date = hydrationData.date;
-    this.numOunces = hydrationData.numOunces;
+  constructor(hydrationForUser) {
+    this.userID = hydrationForUser.userID;
+    this.date = hydrationForUser.date;
+    this.numOunces = hydrationForUser.numOunces;
   }
-  calculateAvgPerDay() {
-  
+  calculateAvgPerDay(hydrationStats) {
+    const numOuncesData = hydrationStats.filter(water => water.numOunces);
   }
 }
 module.exports = Hydration;

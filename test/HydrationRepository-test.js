@@ -41,8 +41,10 @@ describe('HydrationRepository', () => {
     expect(hydrationRepository.calculateAverageDailyOuncesAllTime(2)).to.deep.equal(49);
   })
 
-  // For a user, how many fluid ounces they consumed for a specific day (identified by a date)
-
+  it('should return a users fluid ounces consumed for a specific day', () => {
+    expect(hydrationRepository.returnOuncesByDate(1, "2019/06/18")).to.deep.equal(85);
+    expect(hydrationRepository.returnOuncesByDate(2, "2019/06/16")).to.deep.equal(22);
+  })
 
   // For a user, how many fluid ounces of water consumed each day over the course of a week (7 days) - return the amount for each day
 

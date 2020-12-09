@@ -15,11 +15,13 @@ class HydrationRepository {
      return Math.floor(userTotalOzAllTime / allUserHydration.length);
    }
 
-   returnOuncesByDate(date) {
-
+   returnOuncesByDate(id, date) {
+     const allUserHydration = this.returnHydrationData(id);
+     const ozByDate = allUserHydration.find(water => water.date === date);
+     return ozByDate.numOunces;
    }
 
-   returnOuncesByWeek(date) {
+   returnOuncesByWeek(id, date) {
 
    }
 

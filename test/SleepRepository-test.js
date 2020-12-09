@@ -43,7 +43,7 @@ describe('SleepRepository', () => {
 
   it('should return a users average number of hours slept per day', () => {
     expect(sleepRepository.calculateUserAverageHoursSleptAllTime(1)).to.equal(7.9);
-    expect(sleepRepository.calculateUserAverageHoursSleptAllTime(2)).to.deep.equal(5.9);
+    expect(sleepRepository.calculateUserAverageHoursSleptAllTime(2)).to.deep.equal(6.4);
   })
 
   it('should return a users average sleep quality per day over all time', () => {
@@ -118,10 +118,11 @@ describe('SleepRepository', () => {
   });
 
   it.skip('should return users who average sleep quality more than 3 for a week', () => {
-    expect(sleepRepository.calculateUsersWithSleepQualityGreaterThan3()).to.equal()
+    expect(sleepRepository.calculateUsersWithSleepQualityGreaterThan3()).to.equal();
   });
 
-  it.skip('should return users who slept the most number of hours on given day', () => {
-    expect(sleepRepository.returnUsersWhoSleptMostOnDate()).to.equal()
+  it('should return users who slept the most number of hours on given day', () => {
+    expect(sleepRepository.returnUsersWhoSleptMostOnDate("2019/06/19")).to.deep.equal([1]);
+    expect(sleepRepository.returnUsersWhoSleptMostOnDate("2019/06/15")).to.deep.equal([1, 2]);
   });
 })

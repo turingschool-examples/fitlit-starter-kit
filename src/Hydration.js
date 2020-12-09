@@ -4,5 +4,8 @@ class Hydration {
     this.date = hydrationData.date;
     this.numOunces = hydrationData.numOunces;
   }
+  calculateAvgPerDay() {
+  
+  }
 }
 module.exports = Hydration;

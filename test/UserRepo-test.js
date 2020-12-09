@@ -59,7 +59,7 @@ describe('UserRepo', () => {
       }
     ]
 
-    userRepo = new Userrepo(dataset);
+    userRepo = new UserRepo(dataset);
   });
 
   it.skip('should store instances of User in a data prop', () => {    

@@ -3,5 +3,5 @@ class UserRepo {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = someClassName;
+  module.exports = UserRepo;
 }

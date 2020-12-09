@@ -17,11 +17,12 @@ class SleepRepository {
    }
 
    calculateUserAverageSleepQualityAllTime(id) {
-     // const allUserSleep = this.returnSleepData(id);
-     // const userTotalOzAllTime = allUserSleep.reduce((totalOz, water) => {
-     //   return totalOz + water.numOunces;
-     // }, 0);
-     // return Math.floor(userTotalOzAllTime / allUserSleep.length);
+     const allUserSleep = this.returnSleepData(id);
+     const userTotalSleepQualityAllTime = allUserSleep.reduce((totalSleepQuality, sleep) => {
+       return totalSleepQuality + sleep.sleepQuality;
+     }, 0);
+     const userAverageNightlySleepQuality = userTotalSleepQualityAllTime / allUserSleep.length;
+     return Math.round(userAverageNightlySleepQuality * 10) / 10;
    }
 
    returnSleepHoursByDate(id, date) {

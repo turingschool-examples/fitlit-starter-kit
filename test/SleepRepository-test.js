@@ -63,7 +63,7 @@ describe('SleepRepository', () => {
     expect(sleepRepository.returnSleepHoursByDate(2, "2019/06/16")).to.equal(5.2);
   })
 
-  it.skip('should return a users sleep quality for a specific day', () => {
+  it('should return a users sleep quality for a specific day', () => {
     expect(sleepRepository.returnSleepQualityByDate(1, "2019/06/18")).to.equal(1.6);
     expect(sleepRepository.returnSleepQualityByDate(2, "2019/06/16")).to.equal(2);
   })

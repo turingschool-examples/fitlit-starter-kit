@@ -32,9 +32,9 @@ class SleepRepository {
    }
 
    returnSleepQualityByDate(id, date) {
-     // const allUserSleep = this.returnSleepData(id);
-     // const ozByDate = allUserSleep.find(sleep => sleep.date === date);
-     // return ozByDate.sleepQuality;
+     const allUserSleep = this.returnSleepData(id);
+     const ozByDate = allUserSleep.find(sleep => sleep.date === date);
+     return ozByDate.sleepQuality;
    }
 
    returnNightlyHoursSleptByWeek(id, date) {

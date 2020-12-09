@@ -22,7 +22,8 @@ class HydrationRepository {
    }
 
    returnOuncesByWeek(id, date) {
-
+     const allUserHydration = this.returnHydrationData(id);
+     const ozByWeek = allUserHydration.
    }
 
  }

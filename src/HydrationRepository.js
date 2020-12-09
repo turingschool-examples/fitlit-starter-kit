@@ -1,10 +1,10 @@
 class HydrationRepository {
-   constructor(data) {
-     this.data = data;
+   constructor(hydrationInstanceData) {
+     this.hydrationInstanceData = hydrationInstanceData;
    }
 
-   returnUserData(userID) {
-     // returns array of objects that match user ID.
+   returnHydrationData(id) {
+     return this.hydrationInstanceData.filter(hydration => hydration.userID === id);
    }
 
    calculateAverageDailyOuncesAllTime() {

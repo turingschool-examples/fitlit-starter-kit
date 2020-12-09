@@ -6,45 +6,36 @@ const Hydration = require('../src/Hydration');
 const HydrationRepository = require('../src/HydrationRepository');
 
 describe('HydrationRepository', () => {
-  // let users, userRepository;
+  let hydrationData, hydrationRepository;
 
   beforeEach(() => {
-    // users = userTestData.map(userObject => {
-    //   const user = new User(userObject);
-    //   return user;
-    // });
-    // userRepository = new UserRepository(users);
+    hydrationData = hydrationTestDataArray.map(hydrationObject => {
+      const hydration = new Hydration(hydrationObject);
+      return hydration;
+    });
+    hydrationRepository = new HydrationRepository(hydrationData);
   })
 
   it('should be a function', () => {
     expect(HydrationRepository).to.be.a('function');
   })
 
-  // it('should be an instance of User', () => {
-  //   expect(userRepository).to.be.an.instanceof(UserRepository);
-  // })
-  //
-  // it('should hold all User objects', () => {
-  //   expect(userRepository.userInstanceData[0]).to.deep.equal(users[0]);
-  // })
-  //
-  // it('should return a users data given their user ID', () => {
-  //   expect(userRepository.returnUserData(1)).to.deep.equal({
-  //     id: 1,
-  //     name: "Cole Fiscus",
-  //     address: "7362 Gonzaga Blvd, Spokane WA 19982",
-  //     email: "gonzagasucks@hotmail.com",
-  //     strideLength: 5.8,
-  //     dailyStepGoal: 400,
-  //     friends: [
-  //       2,
-  //       3
-  //     ]
-  //   });
-  // })
-  //
-  // it('should calculate the average step goal amongst all users', () => {
-  //   expect(userRepository.calculateAverageStepGoal()).to.equal(7973);
-  // })
+  it('should be an instance of HydrationRepository', () => {
+    expect(hydrationRepository).to.be.an.instanceof(HydrationRepository);
+  })
+
+  it('should hold all Hydration objects', () => {
+    expect(hydrationRepository.hydrationInstanceData[0]).to.deep.equal(hydrationData[0]);
+  })
+
+  it('should return a users hydration data given their user ID', () => {
+    function returnHydrationTestData(id) {
+      return hydrationTestDataArray.filter(hydration => hydration.userID === id);
+    }
+    expect(hydrationRepository.returnHydrationData(1)).to.deep.equal(returnHydrationTestData(1));
+    expect(hydrationRepository.returnHydrationData(2)).to.deep.equal(returnHydrationTestData(2));
+  })
+
+  
 
 })

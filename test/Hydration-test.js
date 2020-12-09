@@ -39,8 +39,8 @@ describe('Hydration', () => {
   })
 
   it('should have an id', () => {
-    expect(hydrationData[0].id).to.equal(1);
-    expect(hydrationData[10].id).to.equal(2);
+    expect(hydrationData[0].userID).to.equal(1);
+    expect(hydrationData[10].userID).to.equal(2);
   })
 
   it('should have a date', () => {

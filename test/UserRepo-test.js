@@ -23,7 +23,7 @@ describe('UserRepo', () => {
       },
       {
         "id": 2,
-        "name": "Eric Campbell"
+        "name": "Eric Campbell",
         "address": "123 SomeOther St, Denver CO, 66666",
         "email": "mainlyetcetera@gmail.com",
         "strideLength": 2.3,
@@ -60,5 +60,12 @@ describe('UserRepo', () => {
     ]
 
     userRepo = new Userrepo(dataset);
+  });
+
+  it.skip('should store instances of User in a data prop', () => {    
+    expect(userRepo.data).to.be.an('array');
+    expect(userRepo.data.length).to.equal(4);
+    expect(userRepo.data[0]).to.be.an.instanceof(User);
+    expect(userRepo.data[3]).to.be.an.instanceof(User);
   });
 });

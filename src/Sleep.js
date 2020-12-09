@@ -7,11 +7,11 @@ class Sleep {
    }
 
    returnHoursSlept() {
-     return sleepData.hoursSlept;
+     return this.hoursSlept;
    }
 
    returnSleepQuality() {
-     return sleepData.sleepQuality;
+     return this.sleepQuality;
    }
 
  }

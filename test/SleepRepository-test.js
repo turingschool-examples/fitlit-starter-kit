@@ -114,7 +114,7 @@ describe('SleepRepository', () => {
   })
 
   it('should return the average sleep quality for all users', () => {
-    
+    expect(sleepRepository.calculateAllUsersAverageSleepQualityAllTime().to.equal(3.1))
   });
 
   it('should return the average sleep quality for all users', () => {

@@ -49,7 +49,7 @@ class SleepRepository {
      // const allUserHydration = this.returnHydrationData(id);
    }
 
-   calculateAllUsersAverageSleepQualityAllTime(id) {
+   calculateAllUsersAverageSleepQualityAllTime() {
      // const allUserHydration = this.returnHydrationData(id);
      // const userTotalOzAllTime = allUserHydration.reduce((totalOz, water) => {
      //   return totalOz + water.numOunces;

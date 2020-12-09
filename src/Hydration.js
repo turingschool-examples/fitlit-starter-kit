@@ -1,19 +1,14 @@
 class Hydration {
-   constructor(hydrationObjects) {
-     this.hydrationObjects = hydrationObjects;
+   constructor(hydrationData) {
+     this.id = hydrationData.userID;
+     this.date = hydrationData.date;
+     this.numOunces = hydrationData.numOunces;
    }
 
-   calculateAverageDailyOuncesAllTime() {
-
+   returnNumOunces() {
+     return this.numOunces;
    }
 
-   returnOuncesByDate(date) {
-
-   }
-
-   returnOuncesByWeek(date) {
-
-   }
  }
 
  if (typeof module !== 'undefined') {

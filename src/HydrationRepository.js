@@ -7,6 +7,18 @@ class HydrationRepository {
      // returns array of objects that match user ID.
    }
 
+   calculateAverageDailyOuncesAllTime() {
+
+   }
+
+   returnOuncesByDate(date) {
+
+   }
+
+   returnOuncesByWeek(date) {
+
+   }
+
  }
 
  if (typeof module !== 'undefined') {

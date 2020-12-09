@@ -9,6 +9,7 @@ describe('Hydration', () => {
     hydration4, hydration5, hydration6,
     hydration7, hydration8, hydration9,
     hydration10, hydration11;
+  let hydrations stats = [];
   // let user1, user2;
 
   beforeEach(() => {
@@ -77,6 +78,10 @@ describe('Hydration', () => {
       "date": "2019/12/02",
       "numOunces": 100
     });
+    hydrationStats = [
+      hydration1, hydration2, hydration3, hydration4, hydration5,
+      hydration6, hydration7, hydration8, hydration9
+    ];
   })
 
   it('should have a userID property', () => {
@@ -97,7 +102,6 @@ describe('Hydration', () => {
   it('should be able to calculate the average fluid ounces consumed per day for all time for the given userID', () => {
     //.filter userID
     //.reduce add all numbers and divide by the length to get the average
-    //this may need to go in another class User? 
   })
   it('should be able to calculate how many fluid ounces were consumed on a given day', () => {
     //.find date and return numOunces

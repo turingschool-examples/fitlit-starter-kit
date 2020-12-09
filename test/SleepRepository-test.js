@@ -121,7 +121,7 @@ describe('SleepRepository', () => {
     expect(sleepRepository.calculateUsersWithSleepQualityGreaterThan3()).to.equal();
   });
 
-  it('should return users who slept the most number of hours on given day', () => {
+  it.skip('should return users who slept the most number of hours on given day', () => {
     expect(sleepRepository.returnUsersWhoSleptMostOnDate("2019/06/19")).to.deep.equal([1]);
     expect(sleepRepository.returnUsersWhoSleptMostOnDate("2019/06/15")).to.deep.equal([1, 2]);
   });

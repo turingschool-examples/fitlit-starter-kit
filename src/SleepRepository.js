@@ -61,8 +61,11 @@ class SleepRepository {
 
    }
 
-   returnUsersWhoSleptMostOnDate() {
-
+   returnUsersWhoSleptMostOnDate(date) {
+     // const dateSleepObjects = this.sleepInstanceData.filter(sleep => {
+     //  return sleep.date === date);
+     // }
+     // dateSleepObjects.
    }
 
  }

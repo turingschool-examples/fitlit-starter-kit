@@ -26,15 +26,15 @@ class SleepRepository {
    }
 
    returnSleepHoursByDate(id, date) {
-     // const allUserHydration = this.returnHydrationData(id);
-     // const ozByDate = allUserHydration.find(water => water.date === date);
-     // return ozByDate.numOunces;
+     const allUserSleep = this.returnSleepData(id);
+     const hoursSleptByDate = allUserSleep.find(sleep => sleep.date === date);
+     return hoursSleptByDate.hoursSlept;
    }
 
    returnSleepQualityByDate(id, date) {
-     // const allUserHydration = this.returnHydrationData(id);
-     // const ozByDate = allUserHydration.find(water => water.date === date);
-     // return ozByDate.numOunces;
+     // const allUserSleep = this.returnSleepData(id);
+     // const ozByDate = allUserSleep.find(sleep => sleep.date === date);
+     // return ozByDate.sleepQuality;
    }
 
    returnNightlyHoursSleptByWeek(id, date) {

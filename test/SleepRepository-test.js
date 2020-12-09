@@ -38,10 +38,10 @@ describe('SleepRepository', () => {
 
   // For a user (identified by their userID), the average number of hours slept per day
   // For a user, their average sleep quality per day over all time
-
-
   // For a user, how many hours they slept for a specific day (identified by a date)
   // For a user, their sleep quality for a specific day (identified by a date)
+
+
   // For a user, how many hours slept each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
   // For a user, their sleep quality each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
   // For all users, the average sleep quality
@@ -49,13 +49,23 @@ describe('SleepRepository', () => {
   // For a given day (identified by the date), find the users who slept the most number of hours (one or more if they tied)
 
   it('should return a users average number of hours slept per day', () => {
-    expect(sleepRepository.calculateUserAverageHoursSleptAllTime(1)).to.deep.equal(7.9);
+    expect(sleepRepository.calculateUserAverageHoursSleptAllTime(1)).to.equal(7.9);
     expect(sleepRepository.calculateUserAverageHoursSleptAllTime(2)).to.deep.equal(5.9);
   })
 
   it('should return a users average sleep quality per day over all time', () => {
-    expect(sleepRepository.calculateUserAverageSleepQualityAllTime(1)).to.deep.equal(3.5);
-    expect(sleepRepository.calculateUserAverageSleepQualityAllTime(2)).to.deep.equal(2.6);
+    expect(sleepRepository.calculateUserAverageSleepQualityAllTime(1)).to.equal(3.5);
+    expect(sleepRepository.calculateUserAverageSleepQualityAllTime(2)).to.equal(2.6);
+  })
+
+  it('should return a users hours they slept for a specific day', () => {
+    expect(sleepRepository.returnSleepHoursByDate(1, "2019/06/18")).to.equal(5);
+    expect(sleepRepository.returnSleepHoursByDate(2, "2019/06/16")).to.equal(5.2);
+  })
+
+  it.skip('should return a users sleep quality for a specific day', () => {
+    expect(sleepRepository.returnSleepQualityByDate(1, "2019/06/18")).to.equal(1.6);
+    expect(sleepRepository.returnSleepQualityByDate(2, "2019/06/16")).to.equal(2);
   })
 
   it.skip('should return a users oz of water consumed each day over the course of a week', () => {

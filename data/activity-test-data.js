@@ -113,6 +113,6 @@ const testActivity = [{
 
 if (typeof module !== 'undefined') {
   module.exports = {
-    testActivity;
+    testActivity
   }
 }

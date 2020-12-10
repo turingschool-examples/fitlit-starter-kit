@@ -26,7 +26,7 @@ describe('DisplayCalculator', () => {
     {"userID": 15, "date": "2019/03/01", "numOunces": 70},
     {"userID": 15, "date": "2019/03/02", "numOunces": 82},
     {"userID": 15, "date": "2019/03/03", "numOunces": 25},
-    {"userID": 20, "date": "2019/12/02", "numOunces": 100}
+    {"userID": 20, "date": "2019/12/26", "numOunces": 100}
     ];
   })
   it('should be able to calculate the average fluid ounces consumed per day for all time for the given userID', () => {
@@ -35,10 +35,15 @@ describe('DisplayCalculator', () => {
   })
   it('should be able to calculate how many fluid ounces were consumed on a given day', () => {
     expect(displayCalculator.calculateTotalWaterPerDay(hydrationStats, 2, "2019/04/22")).to.equal(75);
-    expect(displayCalculator.calculateTotalWaterPerDay(hydrationStats, 20, "2019/12/02")).to.equal(100);
+    expect(displayCalculator.calculateTotalWaterPerDay(hydrationStats, 20, "2019/12/26")).to.equal(100);
   })
   it('should be able to calculate how many fluid ounces were consumed each day over the course of 7days and return the amount', () => {
     //.find date and add 1 to each day? to create a new array? or sort?
+    //what if the year runs out or dates run into next month?
     //add numOunces and divide by 7
+    //.getDate()? ++
+    expect(displayCalculator.calculateTotalWeek("2019/04/17")).to.deep.equal([45, 23, 80, 49, 88, 75, 31]);
+    expect(displayCalculator.calculateTotalWeek("2019/02/25")).to.deep.equal([]);
+    expect(displayCalculator.calculateTotalWeek("2019/12/26")).to.deep.equal([]);
   })
 })

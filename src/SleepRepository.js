@@ -1,75 +1,81 @@
 class SleepRepository {
-   constructor(sleepInstanceData) {
-     this.sleepInstanceData = sleepInstanceData;
-   }
+  constructor(sleepInstanceData) {
+    this.sleepInstanceData = sleepInstanceData;
+  }
 
-   returnSleepData(id) {
-     return this.sleepInstanceData.filter(sleep => sleep.userID === id);
-   }
+  getSleepData(id) {
+    return this.sleepInstanceData.filter(sleep => sleep.userID === id);
+  }
 
-   calculateUserAverageHoursSleptAllTime(id) {
-     const allUserSleep = this.returnSleepData(id);
-     const userTotalHoursSleptAllTime = allUserSleep.reduce((totalHours, sleep) => {
-       return totalHours + sleep.hoursSlept;
-     }, 0);
-     const userAverageNightlyHoursSlept = userTotalHoursSleptAllTime / allUserSleep.length;
-     return Math.round(userAverageNightlyHoursSlept * 10) / 10;
-   }
+  getUserAvgHoursSleptAllTime(id) {
+    const allUserSleep = this.getSleepData(id);
+    const userTotalHoursSleptAllTime = allUserSleep.reduce((totalHours, sleep) => {
+      return totalHours + sleep.hoursSlept;
+    }, 0);
+    const userAvgNightlyHoursSlept = userTotalHoursSleptAllTime / allUserSleep.length;
+    return Math.round(userAvgNightlyHoursSlept * 10) / 10;
+  }
 
-   calculateUserAverageSleepQualityAllTime(id) {
-     const allUserSleep = this.returnSleepData(id);
-     const userTotalSleepQualityAllTime = allUserSleep.reduce((totalSleepQuality, sleep) => {
-       return totalSleepQuality + sleep.sleepQuality;
-     }, 0);
-     const userAverageNightlySleepQuality = userTotalSleepQualityAllTime / allUserSleep.length;
-     return Math.round(userAverageNightlySleepQuality * 10) / 10;
-   }
+  getUserAvgSleepQualityAllTime(id) {
+    const allUserSleep = this.getSleepData(id);
+    const userTotalSleepQualityAllTime = allUserSleep.reduce((totalSleepQuality, sleep) => {
+      return totalSleepQuality + sleep.sleepQuality;
+    }, 0);
+    const userAvgNightlySleepQuality = userTotalSleepQualityAllTime / allUserSleep.length;
+    return Math.round(userAvgNightlySleepQuality * 10) / 10;
+  }
 
-   returnSleepHoursByDate(id, date) {
-     const allUserSleep = this.returnSleepData(id);
-     const hoursSleptByDate = allUserSleep.find(sleep => sleep.date === date);
-     return hoursSleptByDate.hoursSlept;
-   }
+  getSleepHoursByDate(id, date) {
+    const allUserSleep = this.getSleepData(id);
+    const hoursSleptByDate = allUserSleep.find(sleep => sleep.date === date);
+    return hoursSleptByDate.hoursSlept;
+  }
 
-   returnSleepQualityByDate(id, date) {
-     const allUserSleep = this.returnSleepData(id);
-     const ozByDate = allUserSleep.find(sleep => sleep.date === date);
-     return ozByDate.sleepQuality;
-   }
+  getSleepQualityByDate(id, date) {
+    const allUserSleep = this.getSleepData(id);
+    const ozByDate = allUserSleep.find(sleep => sleep.date === date);
+    return ozByDate.sleepQuality;
+  }
 
-   returnNightlyHoursSleptByWeek(id, date) {
-     // const allUserHydration = this.returnHydrationData(id);
-   }
+  getSleepDataByWeek(id, date) {
+    const allUserSleep = this.getSleepData(id);
+    const sleepDates = allUserSleep.map(sleep => sleep.date);
+    const indexOfMatchingSleepDate = sleepDates.indexOf(date);
+    return allUserSleep.slice(indexOfMatchingSleepDate - 6, indexOfMatchingSleepDate + 1);
+  }
 
-   returnNightlySleepQualityByWeek(id, date) {
-     // const allUserHydration = this.returnHydrationData(id);
-   }
+  getAllUsersAvgSleepQualityAllTime() {
+    const userTotalSleepQualityAllTime = this.sleepInstanceData.reduce((totalSleepQuality, sleep) => {
+      return totalSleepQuality + sleep.sleepQuality;
+    }, 0);
+    const averageTotalSleepQuality = userTotalSleepQualityAllTime / this.sleepInstanceData.length;
+    return Math.round(averageTotalSleepQuality * 10) / 10;
+  }
 
-   returnNightlySleepQualityByWeek(id, date) {
-     // const allUserHydration = this.returnHydrationData(id);
-   }
+  // Find all users who average a sleep quality greater than 3 for a given week (7 days) - you should be able to calculate this for any week, not just the latest week
+  getSleepQualityOver3(date) {
+    // input: array of all sleep objects
+    // output: array of ids of users who had sleep quality avg > 3 for a given week
+    // 1. 
+  }
 
-   calculateAllUsersAverageSleepQualityAllTime() {
-     const userTotalSleepQualityAllTime = this.sleepInstanceData.reduce((totalSleepQuality, sleep) => {
-       return totalSleepQuality + sleep.sleepQuality;
-     }, 0);
-     const averageTotalSleepQuality = userTotalSleepQualityAllTime / this.sleepInstanceData.length;
-     return Math.round(averageTotalSleepQuality * 10) / 10;
-   }
+  getSleptMostOnDate(date) {
+    const ids = [];
+    const dateSleepObjects = this.sleepInstanceData.filter(sleep => {
+      return sleep.date === date;
+    })
+    const allHoursSlept = dateSleepObjects.map(sleep => sleep.hoursSlept);
+    const max = Math.max(...allHoursSlept);
+    dateSleepObjects.forEach(sleep => {
+      if (sleep.hoursSlept === max) {
+        ids.push(sleep.userID);
+      }
+    })
+    return ids;
+  }
 
-   calculateUsersWithSleepQualityGreaterThan3() {
+}
 
-   }
-
-   returnUsersWhoSleptMostOnDate(date) {
-     // const dateSleepObjects = this.sleepInstanceData.filter(sleep => {
-     //  return sleep.date === date);
-     // }
-     // dateSleepObjects.
-   }
-
- }
-
- if (typeof module !== 'undefined') {
-   module.exports = SleepRepository;
- }
+if (typeof module !== 'undefined') {
+  module.exports = SleepRepository;
+}

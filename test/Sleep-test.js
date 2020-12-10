@@ -1,12 +1,8 @@
 const chai = require('chai');
 const expect = chai.expect;
-const testData = require('../data/user-test-data');
-const userTestData = testData.testUsers;
 const sleepTestDataFile = require('../data/sleep-test-data');
 const sleepTestDataArray = sleepTestDataFile.testSleep;
 const Sleep = require('../src/Sleep');
-const User = require('../src/User');
-
 describe('Sleep', () => {
   let sleepData;
 

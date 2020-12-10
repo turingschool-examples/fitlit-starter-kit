@@ -33,13 +33,18 @@ describe('Activity', () => {
   })
 
   it('should have number of steps', () => {
-    expect(sleepData[0].numSteps).to.equal(4.4);
-    expect(sleepData[10].numSteps).to.equal(4.3);
+    expect(activityData[0].numSteps).to.equal(3577);
+    expect(activityData[10].numSteps).to.equal(7864);
   })
 
   it('should have minutes active', () => {
-    expect(sleepData[0].sleepQuality).to.equal(4.4);
-    expect(sleepData[10].sleepQuality).to.equal(4.3);
+    expect(activityData[0].minutesActive).to.equal(140);
+    expect(activityData[10].minutesActive).to.equal(151);
+  })
+
+  it('should have flights of stairs', () => {
+    expect(activityData[0].flightsOfStairs).to.equal(16);
+    expect(activityData[10].flightsOfStairs).to.equal(28);
   })
 
 })

@@ -138,12 +138,14 @@ h2 {
   background-color: #FA6A3C;
 }
 
-.graph {
+.activity-stats {
   width: 80%;
   height: 400px;
-  /* border: solid 2px blue; */
+  border: solid 2px #ffffff;
   margin: auto;
   text-align: center;
+  border-radius: 5px;
+  margin-top: 4%;
 }
 
 .fa-chart-area {
@@ -152,6 +154,19 @@ h2 {
   margin-top: 50px;
 }
 
+.water-data {
+  margin: auto;
+  /* border: 1px solid cyan; */
+}
+
+.weekly-water {
+  /* writing-mode: vertical-rl; */
+  /* display: inline; */
+  /* border: 1px solid yellow; */
+}
+
+
+
 .hidden {
-  /* display: none; */
+  display: none;
 }

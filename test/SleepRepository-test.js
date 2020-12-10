@@ -83,7 +83,7 @@ describe('SleepRepository', () => {
   })
 
   it.skip('should get users who average sleep quality > 3 for a week', () => {
-    expect(sleepRepository.getSleepQualityOver3("2019/06/22")).to.deep.equal([]);
+    expect(sleepRepository.getSleepQualityOver3("2019/06/22")).to.deep.equal(['TBD']);
   })
 
   it('should get users who slept the most on given day', () => {

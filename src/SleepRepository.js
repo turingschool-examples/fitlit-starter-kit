@@ -53,11 +53,18 @@ class SleepRepository {
   }
 
   // Find all users who average a sleep quality greater than 3 for a given week (7 days) - you should be able to calculate this for any week, not just the latest week
-  getSleepQualityOver3(date) {
-    // input: array of all sleep objects
-    // output: array of ids of users who had sleep quality avg > 3 for a given week
-    // 1. 
-  }
+  // getSleepQualityOver3(date) {
+  // input: array of all sleep objects
+  // output: array of ids of users who had sleep quality avg > 3 for a given week
+  // 1. get this.sleepInstanceData for week
+  // const sleepDates = this.sleepInstanceData.map(sleep => sleep.date);
+  //   console.log("sleepDates", sleepDates)
+  // const indexOfMatchingSleepDate = sleepDates.indexOf(date);
+  //   console.log("indexOfMatchingSleepDate", indexOfMatchingSleepDate)
+  // const week = this.sleepInstanceData.slice(indexOfMatchingSleepDate - 6, indexOfMatchingSleepDate + 1);
+  //   console.log("week", week)
+  // 2.
+  // }
 
   getSleptMostOnDate(date) {
     const ids = [];

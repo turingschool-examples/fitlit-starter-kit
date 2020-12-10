@@ -1,6 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
-const testData = require('../data/test-data');
+const testData = require('../data/user-test-data');
 const userTestData = testData.testUsers;
 const User = require('../src/User');
 const UserRepository = require('../src/UserRepository');
@@ -20,7 +20,7 @@ describe('UserRepository', () => {
     expect(UserRepository).to.be.a('function');
   })
 
-  it('should be an instance of User', () => {
+  it('should be an instance of UserRepository', () => {
     expect(userRepository).to.be.an.instanceof(UserRepository);
   })
 

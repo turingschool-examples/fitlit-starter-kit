@@ -1,15 +1,15 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const DisplayCalculator = require('../src/DisplayCalculator');
+const CommunityHydration = require('../src/CommunityHydration');
 
-describe('DisplayCalculator', () => {
-  let displayCalculator;
-  let hydrationStats;
+describe('CommunityHydration', () => {
+  let communityhydration;
+  let hydrations;
 
   beforeEach(() => {
-    displayCalculator = new DisplayCalculator;
-    hydrationStats = [
+    communityhydration = new DisplayCalculator;
+    hydrations = [
     {"userID": 2, "date": "2019/04/15", "numOunces": 28},
     {"userID": 2, "date": "2019/04/16", "numOunces": 40},
     {"userID": 2, "date": "2019/04/17", "numOunces": 45},
@@ -30,20 +30,20 @@ describe('DisplayCalculator', () => {
     ];
   })
   it('should be able to calculate the average fluid ounces consumed per day for all time for the given userID', () => {
-    expect(displayCalculator.calculateAvgWaterPerDay(2, hydrationStats)).to.equal(51);
-    expect(displayCalculator.calculateAvgWaterPerDay(15, hydrationStats)).to.equal(56);
+    expect(communityhydration.calculateAvgWaterPerDay(2, hydrations)).to.equal(51);
+    expect(communityhydration.calculateAvgWaterPerDay(15, hydrations)).to.equal(56);
   })
   it('should be able to calculate how many fluid ounces were consumed on a given day', () => {
-    expect(displayCalculator.calculateTotalWaterPerDay(hydrationStats, 2, "2019/04/22")).to.equal(75);
-    expect(displayCalculator.calculateTotalWaterPerDay(hydrationStats, 20, "2019/12/26")).to.equal(100);
+    expect(communityhydration.calculateTotalWaterPerDay(hydrations, 2, "2019/04/22")).to.equal(75);
+    expect(communityhydration.calculateTotalWaterPerDay(hydrations, 20, "2019/12/26")).to.equal(100);
   })
   it('should be able to calculate how many fluid ounces were consumed each day over the course of 7days and return the amount', () => {
     //.find date and add 1 to each day? to create a new array? or sort?
     //what if the year runs out or dates run into next month?
     //add numOunces and divide by 7
     //.getDate()? ++
-    expect(displayCalculator.calculateTotalWeek("2019/04/17")).to.deep.equal([45, 23, 80, 49, 88, 75, 31]);
-    expect(displayCalculator.calculateTotalWeek("2019/02/25")).to.deep.equal([]);
-    expect(displayCalculator.calculateTotalWeek("2019/12/26")).to.deep.equal([]);
+    expect(communityhydration.calculateTotalWeek("2019/04/17")).to.deep.equal([45, 23, 80, 49, 88, 75, 31]);
+    expect(communityhydration.calculateTotalWeek("2019/02/25")).to.deep.equal([10, 100, 45, 60, 70, 82, 25]);
+    expect(communityhydration.calculateTotalWeek("2019/12/26")).to.deep.equal([]);
   })
 })

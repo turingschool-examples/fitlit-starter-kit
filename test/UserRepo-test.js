@@ -75,5 +75,7 @@ describe('UserRepo', () => {
     expect(userRepo.data[0].name).to.equal('Brian Forbes');
   });
 
-  it.skip('')
+  it.skip('should be able calculate average step goal among all users', () => {
+    expect(userRepo.userStepGoalAverage()).to.equal(7501.25);
+  });
 });

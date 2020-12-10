@@ -1,3 +1,9 @@
+if (typeof module !== 'undefined') {
+  var User = require('./User');
+  var UserRepository = require('./UserRepository');
+  var userData = require('../data/user-test-data');
+}
+
 // ~~~~~ QUERY SELECTORS ~~~~~
 const userNameGreeting = document.querySelector(".user-greeting");
 const userInfoCard = document.querySelector(".user-info-card");

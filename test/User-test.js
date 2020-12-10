@@ -35,6 +35,6 @@ describe('User', () => {
   });
 
   it.skip(`should have a way to return the user's name`, () => {
-    expect(user.provideUserName()).to.equal('Brian');
+    expect(user.provideUsersFirstName()).to.equal('Brian');
   });
 });

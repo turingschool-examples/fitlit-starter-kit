@@ -24,20 +24,21 @@ describe('User', () => {
     user = new User(data);
   });
 
-  it('should be able to take in user data object as an argument', () =>{
+  it.skip('should be able to take in user data object as an argument', () =>{
+    expect(user).to.deep.equal(data);
+  });
+
+  it.skip('should have every property acquired from data argument', () => {
     expect(user.id).to.equal(1);
+    expect(user.name).to.equal('Brian Forbes');
+    expect(user.address).to.equal('123 Blah St, Denver CO, 66666');
+    expect(user.email).to.equal('stuffandthings@gmail.com');
+    expect(user.strideLength).to.equal(2.4);
+    expect(user.dailyStepGoal).to.equal(10000);
     expect(user.friends).to.deep.equal([2, 3, 4]);
   });
 
-  it('each user should have a name', () => {
-    expect(user.name).to.equal('Brian Forbes');
-  });
-
-  it('each user should have an address', () => {
-    expect(user.address).to.equal('123 Blah St, Denver CO, 66666');
-  });
-
-  it(`should have a way to return the user's name`, () => {
-    expect(provideUserName()).to.equal('Brian Forbes');
+  it.skip(`should have a way to return the user's name`, () => {
+    expect(user.provideUserName()).to.equal('Brian Forbes');
   });
 });

@@ -19,13 +19,15 @@ let sixDayWater = document.querySelector(".six-day-water");
 let todayConsumption = document.querySelector(".today-consumption");
 let userDropdown = document.querySelector(".user-dropdown")
 let namesList = document.querySelector(".names-list")
+let adminSelector = document.querySelector(".admin-selector")
 
-const userRepo = new UserRepo(userData); // needs to take in array of users
-const currentUser = new User(userRepo.getAUser(1)); // user object
+let userRepo = new UserRepo(userData); // needs to take in array of users
+let currentUser = new User(userRepo.getAUser(21)); // user object
 const userHydration = new UserHydration(hydrationData);
 
-window.addEventListener('load', () => {
-  const currentID = currentUser.id; // sets the ID to a variable to use as an argument
+window.addEventListener('load', (event) => {
+  event.preventDefault()
+  let currentID = currentUser.id; // sets the ID to a variable to use as an argument
   displayFirstName(currentID);
   displayInfoCard(currentID);
   mapUserNames()
@@ -33,15 +35,29 @@ window.addEventListener('load', () => {
   return currentID; // returning ID out to use it later
 })
 
-waterButton.addEventListener('click', () => {
+waterButton.addEventListener('click', (event) => {
+  event.preventDefault()
   displayHydrationActivity();
 })
 
-const displayFirstName = (currentID) => {
-  userFirstName.innerText = `Welcome, ${currentUser.getFirstName(currentID)}`;
+adminSelector.addEventListener('click', (event) => {
+  event.preventDefault()
+  let currentID = getCurrentUser().id
+  currentUser = new User(userRepo.getAUser(currentID))
+  displayFirstName()
+  displayInfoCard(currentID)
+  return currentID
+})
+
+function getCurrentUser() { // returns users.js object
+  return userData.find(user => user.name === namesList.value)
+}
+
+function displayFirstName() {
+  userFirstName.innerText = `Welcome, ${currentUser.getFirstName()}`;
 };
 
-const displayInfoCard = (currentID) => {
+let displayInfoCard = () => {
   userAddress.innerText = `${currentUser.address}`;
   userEmail.innerText = `${currentUser.email}`;
   userStepCompare.innerText = `Your step goal is ${
@@ -49,7 +65,7 @@ const displayInfoCard = (currentID) => {
   }, and the average is ${userRepo.calculateAvgSteps()}`;
 };
 
-const displayHydrationActivity = () => {
+let displayHydrationActivity = () => {
   // hide(chartIcon);
   show(hydrationStatsDisplay);
   getHydrationData(todayConsumption, 0, "2019/07/15", 1);
@@ -62,9 +78,9 @@ const displayHydrationActivity = () => {
   getHydrationData(sixDayWater, 6, "2019/07/15", 1);
 }
 
-const getHydrationData = (placement, index, startDate, id) => {
+let getHydrationData = (placement, index, startDate, currentID) => {
   placement.innerText = `${
-    userHydration.calculateWaterPerWeek("2019/07/15", 1)[index]
+    userHydration.calculateWaterPerWeek("2019/07/15", currentID)[index]
   }`;
 };
 
@@ -77,6 +93,11 @@ const hide = (element) => {
 }
 
 const mapUserNames = () => {
+  userData.sort((a, b) => { // this should work with a.name - b.name tho?
+    if (a.name < b.name) {
+      return -1
+    } 
+  })
   let listOfNames = userData.reduce((total, value) => {
     total.push(value.name)
     return total;
@@ -85,9 +106,9 @@ const mapUserNames = () => {
 }
 
 function fillDropdown() {
-  var names = mapUserNames();
+  let names = mapUserNames();
   names.forEach(function (name) {
-    var opt = document.createElement('option');
+    let opt = document.createElement('option');
     opt.innerHTML = name;
     opt.value = name;
     namesList.appendChild(opt);

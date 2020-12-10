@@ -30,11 +30,12 @@ describe('DisplayCalculator', () => {
     ];
   })
   it('should be able to calculate the average fluid ounces consumed per day for all time for the given userID', () => {
-    expect(displayCalculator.calculateAvgPerDay(2, hydrationStats)).to.equal(51);
-    expect(displayCalculator.calculateAvgPerDay(15, hydrationStats)).to.equal(56);
+    expect(displayCalculator.calculateAvgWaterPerDay(2, hydrationStats)).to.equal(51);
+    expect(displayCalculator.calculateAvgWaterPerDay(15, hydrationStats)).to.equal(56);
   })
   it('should be able to calculate how many fluid ounces were consumed on a given day', () => {
-    //.find date and return numOunces
+    expect(displayCalculator.calculateTotalWaterPerDay(hydrationStats, 2, "2019/04/22")).to.equal(75);
+    expect(displayCalculator.calculateTotalWaterPerDay(hydrationStats, 20, "2019/12/02")).to.equal(100);
   })
   it('should be able to calculate how many fluid ounces were consumed each day over the course of 7days and return the amount', () => {
     //.find date and add 1 to each day? to create a new array? or sort?

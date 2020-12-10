@@ -1,5 +1,9 @@
+const User = require('./User');
+
 class UserRepo {
-  constructor() {}
+  constructor(dataset) {    
+    this.data = dataset.map(userData => new User(userData));
+  }    
 }
 
 if (typeof module !== 'undefined') {

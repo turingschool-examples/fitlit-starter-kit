@@ -1,6 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
+const User = require('../src/User');
 const UserRepo = require('../src/UserRepo');
 
 describe('UserRepo', () => {
@@ -62,7 +63,7 @@ describe('UserRepo', () => {
     userRepo = new UserRepo(dataset);
   });
 
-  it.skip('should store instances of User in a data prop', () => {
+  it('should store instances of User in a data prop', () => {
     expect(userRepo.data).to.be.an('array');
     expect(userRepo.data.length).to.equal(4);
     expect(userRepo.data[0]).to.be.an.instanceof(User);

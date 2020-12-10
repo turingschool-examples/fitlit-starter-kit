@@ -70,9 +70,9 @@ describe('UserRepo', () => {
     expect(userRepo.data[3]).to.be.an.instanceof(User);
   });
 
-  it.skip('should have a way to return a users data when given a user id', () => {
+  it('should have a way to return a users data when given a user id', () => {
     expect(userRepo.returnUserData(1)).to.deep.equal(userRepo.data[0]);
-    //if this does not work, add a funtion call on this line
+    
     expect(userRepo.data[0].name).to.equal('Brian Forbes');
   });
 

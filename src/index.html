@@ -3,29 +3,62 @@
   <head>
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-
-    <div class="userMain">
-
+    <h1>FITLIT</h1>
+    <section class="userMain">
       <div class="userProfile">
         <h2>Your Profile</h2>
       </div>
-
-      <div class="userStepGoal">
-        <h3>Your Daily Step Goal</h3>
+      <div class="user-container">
+        <div class="user-all-time-sleep-stats">
+          <h3>Your All-Time Sleep Stats</h3>
+        </div>
+        <div class="userStepGoal">
+          <h3>Your Daily Step Goal</h3>
+        </div>
+        <div class="communityStepGoal">
+          <h3>Community Average Step Goal</h3>
+        </div>
       </div>
+    </section>
 
-      <div class="communityStepGoal">
-        <h3>Community Average Step Goal</h3>
+    <section class="fitness-categories">
+      <div class="water">
+        <h2>Water</h2>
+        <p>hydration stats</p>
+        <p>You drank 32 OZ today!</p>
       </div>
-
-    </div>
-
-    <div class="friends">
+      <div class="activity">
+        <h2>Activity</h2>
+        <div class="activity-container">
+          <div class="steps">
+          </div>
+          <div class="active-minutes">
+          </div>
+          <div class="stairs">
+          </div>
+        </div>
+      </div>
+      <div class="sleep">
+        <h2>Sleep</h2>
+        <div class="sleep-container">
+          <div class="sleep-hours">
+          </div>
+          <div class="sleep-quality">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="graph">
+      <h2>Graph</h2>
+    </graph>
+    <section class="friends">
       <h2>Friends</h2>
-    </div>
+    </section>
 
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>

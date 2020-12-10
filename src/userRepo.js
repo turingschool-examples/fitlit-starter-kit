@@ -6,7 +6,7 @@ class UserRepo {
   }
 
   getAUser(id) {
-    return this.users.find(user => user.id == id);
+    return this.users.find(user => user.id === id);
   }
 
   calculateAvgSteps() {

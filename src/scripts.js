@@ -17,6 +17,8 @@ let fourDayWater = document.querySelector(".four-day-water");
 let fiveDayWater = document.querySelector(".five-day-water");
 let sixDayWater = document.querySelector(".six-day-water");
 let todayConsumption = document.querySelector(".today-consumption");
+let userDropdown = document.querySelector(".user-dropdown")
+let namesList = document.querySelector(".names-list")
 
 const userRepo = new UserRepo(userData); // needs to take in array of users
 const currentUser = new User(userRepo.getAUser(1)); // user object
@@ -26,6 +28,8 @@ window.addEventListener('load', () => {
   const currentID = currentUser.id; // sets the ID to a variable to use as an argument
   displayFirstName(currentID);
   displayInfoCard(currentID);
+  mapUserNames()
+  fillDropdown()
   return currentID; // returning ID out to use it later
 })
 
@@ -64,14 +68,28 @@ const getHydrationData = (placement, index, startDate, id) => {
   }`;
 };
 
-//Psudocode:
-// parameter - position (today water)
-
-
 const show = (element) => {
   element.classList.remove('hidden')
 }
 
 const hide = (element) => {
   element.classList.add('hidden')
+}
+
+const mapUserNames = () => {
+  let listOfNames = userData.reduce((total, value) => {
+    total.push(value.name)
+    return total;
+  }, [])
+  return listOfNames
+}
+
+function fillDropdown() {
+  var names = mapUserNames();
+  names.forEach(function (name) {
+    var opt = document.createElement('option');
+    opt.innerHTML = name;
+    opt.value = name;
+    namesList.appendChild(opt);
+  });
 }

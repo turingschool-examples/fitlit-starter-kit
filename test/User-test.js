@@ -24,10 +24,6 @@ describe('User', () => {
     user = new User(data);
   });
 
-  it.skip('should be able to take in user data object as an argument', () =>{
-    expect(user).to.deep.equal(data);
-  });
-
   it.skip('should have every property acquired from data argument', () => {
     expect(user.id).to.equal(1);
     expect(user.name).to.equal('Brian Forbes');

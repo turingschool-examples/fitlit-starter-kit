@@ -7,7 +7,7 @@ class DisplayCalculator {
   }
   calculateTotalWaterPerDay(hydrationStats, userID, date) {
     const userWater = hydrationStats.filter(water => water.userID === userID);
-    const waterOnDay = userWater.find(waterDrank => (waterDrank.date == date));
+    const waterOnDay = userWater.find(waterDrank => (waterDrank.date === date));
     return waterOnDay.numOunces;
   }
 }

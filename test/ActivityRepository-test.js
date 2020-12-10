@@ -3,8 +3,9 @@ const expect = chai.expect;
 const testData = require('../data/user-test-data');
 const userTestData = testData.testUsers;
 const activityTestDataFile = require('../data/activity-test-data');
-const activityTestDataArray = activityTestDataFile.testSleep;
+const activityTestDataArray = activityTestDataFile.testActivity;
 const Activity = require('../src/Activity');
+const ActivityRepository = require('../src/ActivityRepository');
 const User = require('../src/User');
 
 describe('Activity', () => {
@@ -22,6 +23,12 @@ describe('Activity', () => {
     expect(ActivityRepository).to.be.a('function');
   })
 
-  it('should be an instance of Hydration', () => {
-    expect(sleepData[0]).to.be.an.instanceof(ActivityRepository);
+  it('should be an instance of ActivityRepository', () => {
+    expect(activityRepository).to.be.an.instanceof(ActivityRepository);
   })
+
+  it('should hold all Activity objects', () => {
+    expect(activityRepository.activityInstanceData[0]).to.deep.equal(activityData[0]);
+  })
+
+})

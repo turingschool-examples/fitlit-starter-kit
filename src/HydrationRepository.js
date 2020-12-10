@@ -23,9 +23,11 @@ class HydrationRepository {
 
    returnOuncesByWeek(id, date) {
      const allUserHydration = this.returnHydrationData(id);
-     const dateArray = date.split('/') // STRINGS IN AN ARRAY
-     console.log(dateArray)
-     console.log(dateArray[2] + 1)
+     const hydrationDates = allUserHydration.map(hydration => hydration.date)
+     const indexOfMatchingHydrationDate = hydrationDates.indexOf(date)
+
+     return allUserHydration.slice(indexOfMatchingHydrationDate - 6, indexOfMatchingHydrationDate);
+
      // const ozByWeek = allUserHydration.
      // we have an array of hydration objects for 1 user id
      // we want an object w/ key of date and value of oz for that date

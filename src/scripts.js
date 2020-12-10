@@ -50,7 +50,7 @@ function displayHydrationInfo(user, date) {
   const pastWeekHydrationObjects = hydrationRepository.returnOuncesByWeek(5, date)
   hydrationSection.innerHTML = `
     <h2>HYDRATION!</h2>
-    <p>Water consumed today: ounces</p>
+    <p>Water consumed today: ${hydrationRepository.returnOuncesByDate(5, "2019/06/24")} ounces</p>
     <p>Water consumed the past week:</p>
     <p>${pastWeekHydrationObjects[0].date}: ${pastWeekHydrationObjects[0].numOunces} ounces</p>
     <p>${pastWeekHydrationObjects[1].date}: ${pastWeekHydrationObjects[1].numOunces} ounces</p>

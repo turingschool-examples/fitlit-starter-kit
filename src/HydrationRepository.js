@@ -23,16 +23,9 @@ class HydrationRepository {
 
    returnOuncesByWeek(id, date) {
      const allUserHydration = this.returnHydrationData(id);
-     const hydrationDates = allUserHydration.map(hydration => hydration.date)
-     const indexOfMatchingHydrationDate = hydrationDates.indexOf(date)
-
-     return allUserHydration.slice(indexOfMatchingHydrationDate - 6, indexOfMatchingHydrationDate);
-
-     // const ozByWeek = allUserHydration.
-     // we have an array of hydration objects for 1 user id
-     // we want an object w/ key of date and value of oz for that date
-     // given one date, how do we make the key (Date) increase 7 times (6 times?)
-     // date is a string, we need to .split("/") to make it an array so we can just increase the last number
+     const hydrationDates = allUserHydration.map(hydration => hydration.date);
+     const indexOfMatchingHydrationDate = hydrationDates.indexOf(date);
+     return allUserHydration.slice(indexOfMatchingHydrationDate - 6, indexOfMatchingHydrationDate + 1);
    }
 
  }

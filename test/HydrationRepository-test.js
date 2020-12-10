@@ -48,7 +48,7 @@ describe('HydrationRepository', () => {
 
   // For a user, how many fluid ounces of water consumed each day over the course of a week (7 days) - return the amount for each day
   it('should return a users hydration data for a given week', () => {
-    expect(hydrationRepository.returnOuncesByWeek(1, "2019/06/15")).to.deep.equal([
+    expect(hydrationRepository.returnOuncesByWeek(1, "2019/06/21")).to.deep.equal([
         {"userID": 1, "date": "2019/06/15", "numOunces": 27},
         {"userID": 1, "date": "2019/06/16", "numOunces": 75},
         {"userID": 1, "date": "2019/06/17", "numOunces": 47},
@@ -57,7 +57,7 @@ describe('HydrationRepository', () => {
         {"userID": 1, "date": "2019/06/20", "numOunces": 87},
         {"userID": 1, "date": "2019/06/21", "numOunces": 94}
       ]);
-    expect(hydrationRepository.returnOuncesByWeek(2, "2019/06/16")).to.deep.equal([
+    expect(hydrationRepository.returnOuncesByWeek(2, "2019/06/22")).to.deep.equal([
         {"userID": 2, "date": "2019/06/16", "numOunces": 22},
         {"userID": 2, "date": "2019/06/17", "numOunces": 67},
         {"userID": 2, "date": "2019/06/18", "numOunces": 62},

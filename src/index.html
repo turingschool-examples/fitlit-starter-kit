@@ -10,6 +10,13 @@
 </head>
 
 <body>
+  <form>
+    <label for="names">Choose a user</label>
+    <select name="names-list" class="names-list" id="names"></select>
+    <label for="date">Choose a Date</label>
+    <input type="date" class="date-picker" id="date" value="2019-06-15" min="2019-06-15" max="2019-09-22">
+    <button type="submit" class="admin-selector">View Data</button>
+  </form>
   <main>
   <section class="admin-area">
     <header>
@@ -69,13 +76,13 @@
             <p class="today-consumption"></p>
           <table class="water-data">
             <tr>
-              <td class="today-water"></td>
-              <td class="yesterday-water"></td>
-              <td class="two-day-water"></td>
-              <td class="three-day-water"></td>
-              <td class="four-day-water"></td>
-              <td class="five-day-water"></td>
-              <td class="six-day-water"></td>
+              <td class="water today-water"></td>
+              <td class="water yesterday-water"></td>
+              <td class="water two-day-water"></td>
+              <td class="water three-day-water"></td>
+              <td class="water four-day-water"></td>
+              <td class="water five-day-water"></td>
+              <td class="water six-day-water"></td>
             </tr>
             <tr>
               <th class="weekly-water">Today</th>

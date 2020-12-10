@@ -1,16 +1,16 @@
 class Hydration {
-   constructor(hydrationData) {
-     this.userID = hydrationData.userID;
-     this.date = hydrationData.date;
-     this.numOunces = hydrationData.numOunces;
-   }
+  constructor(hydrationData) {
+    this.userID = hydrationData.userID;
+    this.date = hydrationData.date;
+    this.numOunces = hydrationData.numOunces;
+  }
 
-   returnNumOunces() {
-     return this.numOunces;
-   }
+  returnNumOunces() {
+    return this.numOunces;
+  }
 
- }
+}
 
- if (typeof module !== 'undefined') {
-   module.exports = Hydration;
- }
+if (typeof module !== 'undefined') {
+  module.exports = Hydration;
+}

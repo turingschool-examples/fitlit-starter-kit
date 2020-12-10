@@ -1,14 +1,10 @@
 const chai = require('chai');
 const expect = chai.expect;
-const testData = require('../data/user-test-data');
-const userTestData = testData.testUsers;
 const hydrationTestDataFile = require('../data/hydration-test-data');
 const hydrationTestDataArray = hydrationTestDataFile.testHydration;
 const Hydration = require('../src/Hydration');
-const User = require('../src/User');
 
 describe('Hydration', () => {
-  // let users, hydrationObjects1, hydrationObjects2, hydration1, hydration2;
   let hydrationData;
 
   beforeEach(() => {
@@ -16,18 +12,6 @@ describe('Hydration', () => {
       const hydration = new Hydration(hydrationObject);
       return hydration;
     });
-    // users = userTestData.map(userObject => {
-    //   const user = new User(userObject);
-    //   return user;
-    // });
-    // hydrationObjects1 = hydrationTestDataArray.filter(hydrationObject => {
-    //   hydrationObject.id === users[0].id; // is this working?
-    // });
-    // hydration1 = new Hydration(hydrationObjects1);
-    // hydrationObjects2 = hydrationTestDataArray.filter(hydrationObject => {
-    //   hydrationObject.id === users[1].id;
-    // });
-    // hydration2 = new Hydration(hydrationObjects2);
   })
 
   it('should be a function', () => {
@@ -57,12 +41,5 @@ describe('Hydration', () => {
     expect(hydrationData[0].returnNumOunces()).to.equal(27);
     expect(hydrationData[10].returnNumOunces()).to.equal(67);
   })
-
-  // it.skip('should contain an array of hydration objects with the same id', () => {
-  //   // RETURNING EMPTY ARRAYS
-  //   console.log(hydration1.hydrationObjects)
-  //   console.log(hydrationObjects1)
-  //   expect(hydration1.hydrationObjects).to.equal(hydrationObjects1);
-  // })
 
 })

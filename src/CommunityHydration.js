@@ -1,4 +1,8 @@
-class DisplayCalculator {
+class CommunityHydration {
+  constructor(data = []) {
+    this.hydrations = data.map(user => new Hydration(user))
+  }
+
   calculateAvgWaterPerDay(userID, hydrationStats) {
     const numOuncesData = hydrationStats.filter(water => (water.userID === userID));
     const waterConsumed = numOuncesData.map(water => water.numOunces);

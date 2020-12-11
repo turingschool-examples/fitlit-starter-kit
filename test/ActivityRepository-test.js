@@ -33,7 +33,13 @@ describe('Activity', () => {
     expect(activityRepository.activityInstanceData[0]).to.deep.equal(activityData[0]);
   })
 
-
+  it('should return a users activity data given their user ID', () => {
+    function returnActivityTestData(id) {
+      return activityTestDataArray.filter(activity => activity.userID === id);
+    }
+    expect(activityRepository.returnActivityData(1)).to.deep.equal(returnActivityTestData(1));
+    expect(activityRepository.returnActivityData(2)).to.deep.equal(returnActivityTestData(2));
+  })
 
   it('should return miles walked on date', () => {
     expect(activityRepository.returnMilesWalked(user1, "2019/06/15")).to.equal(3.9);

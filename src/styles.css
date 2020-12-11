@@ -48,6 +48,9 @@ button {
 }
 
 .data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   margin-bottom: 6%;
   border: solid black;
   border-radius: 10px;

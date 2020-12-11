@@ -33,12 +33,27 @@ describe('Activity', () => {
 
   it('should return miles walked on date', () => {
     expect(activityRepository.returnMilesWalked(1, "2019/06/15")).to.equal(3.9);
-    expect(activityRepository.returnMilesWalked(2, "2019/06/15")).to.equal(1.0);
+    expect(activityRepository.returnMilesWalked(2, "2019/06/16")).to.equal(1.1);
   })
 
   it('should return minutes active on date', () => {
-    expect(activityRepository.returnMinutesActive(1, "2019/06/15")).to.equal(3.9);
-    expect(activityRepository.returnMinutesActive(2, "2019/06/15")).to.equal(1.0);
+    expect(activityRepository.returnMinutesActive(1, "2019/06/15")).to.equal(140);
+    expect(activityRepository.returnMinutesActive(2, "2019/06/15")).to.equal(112);
+  })
+
+  it('should return average daily active minutes over a week', () => {
+    expect(activityRepository.calculateWeeklyAverageMinutesActive(1, "2019/06/15")).to.equal(159);
+    expect(activityRepository.calculateWeeklyAverageMinutesActive(2, "2019/06/16")).to.equal(153);
+  })
+
+  it('should say if a user met their step goal on date', () => {
+    expect(activityRepository.determineStepGoalAchieved(1, "2019/06/15")).to.equal(true);
+    expect(activityRepository.determineStepGoalAchieved(2, "2019/06/16")).to.equal(false);
+  })
+
+  it('should return all days where step goal was exceeded', () => {
+    expect(activityRepository.findDaysWithExceededStepGoal()).to.equal();
+    expect(activityRepository.findDaysWithExceededStepGoal()).to.equal();
   })
 
 })

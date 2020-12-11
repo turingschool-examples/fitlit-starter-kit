@@ -33,22 +33,20 @@ class UserSleep {
     return (totalAvgSleepQual = totalAvgSleepQual / allSleepQual.sleepData.length);
   }
 
-  calculateSleepPerWeek(startDate, id) {
-    const sleepHours = this.mapUserSleep(id);
-    const findIndex = sleepHours.findIndex((day) => {
-      return day.date === startDate;
-    });
-    const sleepPerWeek = sleepHours.reduce((total, value) => {
+  calculateSleepItemPerWeek(startDate, id, keyName) {
+    const sleepList = this.mapUserSleep(id);
+    const findIndex = sleepList.findIndex(day => day.date === startDate);
+    const sleepItemPerWeek = sleepList.reduce((total, value) => {
       if (!total[findIndex]) {
-        total.push(value.hoursSlept);
+        total.push(value[keyName]);
       } else {
-        total.push(value.hoursSlept);
+        total.push(value[keyName]);
       }
       return total;
     }, []);
-
-    return sleepPerWeek.splice([findIndex], 7);
+    return sleepItemPerWeek.splice([findIndex], 7);
   }
+
 }
 
 

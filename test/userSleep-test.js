@@ -102,8 +102,11 @@ describe("UserSleep", () => {
   });
 
   it("should return number of hours slept each day for a user for a week", () => {
-    expect(userSleep.calculateSleepPerWeek("2019/06/15", 1,)).to.deep.equal([6.1, 7.3, 7, 7.8, 8, 5.1, 5.1]);
+    expect(userSleep.calculateSleepItemPerWeek("2019/06/15", 1, 'hoursSlept')).to.deep.equal([6.1, 7.3, 7, 7.8, 8, 5.1, 5.1]);
   });
 
+ it("should return sleep quality for each day for a user for a week", () => {
+    expect(userSleep.calculateSleepItemPerWeek("2019/06/15", 1, 'sleepQuality')).to.deep.equal([2.2, 3.8, 3, 1.5, 1.3, 3.7, 3.7]);
+  });
 
 });

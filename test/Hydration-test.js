@@ -5,7 +5,7 @@ const Hydration = require('../src/Hydration');
 const HydrationRepo = require('../src/HydrationRepo');
 
 describe('Hydration', () => {
-  
+  let hydrationData, oneData;
 
   beforeEach(() => {
     hydrationData = [
@@ -412,11 +412,17 @@ describe('Hydration', () => {
     ];
 
 
-    const oneData = new Hydration('2019/09/18', 2);
+    oneData = new Hydration('2019/09/18', 2);
     // {
     //   "userID": 2,
     //   "date": "2019/09/18",
     //   "numOunces": 67
     // }
+  });
+
+  it.skip('should have an appropriate constructor', () => {
+    expect(oneData.id).to.equal(2);
+    expect(oneData.date).to.equal('2019/09/18');
+    expect(oneData.numOunces).to.equal(67);
   });
 });

@@ -8,8 +8,9 @@ class ActivityRepository {
    }
 
    returnMilesWalked(user, date) {
-     return (user.strideLength * this.activityInstanceData.numSteps) / 5280;
-     // For a specific day (specified by a date), return the miles a user has walked based on their number of steps (use their strideLength to help calculate this)
+     const allUserActivity = this.returnActivityData(user.id);
+     const userActivityDate = allUserActivity.find(activity => activity.date === date)
+     return Number(((user.strideLength * userActivityDate.numSteps) / 5280).toFixed(1));
    }
 
    returnMinutesActive() {

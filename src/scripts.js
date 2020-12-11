@@ -93,6 +93,7 @@ const hide = (element) => {
   element.classList.add('hidden')
 }
 
+// why didn't we use map instead of reduce?
 const mapUserNames = () => {
   userData.sort((a, b) => { // this should work with a.name - b.name tho?
     if (a.name < b.name) {

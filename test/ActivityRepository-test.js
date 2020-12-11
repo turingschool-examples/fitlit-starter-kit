@@ -52,8 +52,18 @@ describe('Activity', () => {
   })
 
   it('should return all days where step goal was exceeded', () => {
-    expect(activityRepository.findDaysWithExceededStepGoal()).to.equal();
-    expect(activityRepository.findDaysWithExceededStepGoal()).to.equal();
+    expect(activityRepository.findDaysWithExceededStepGoal(1)).to.equal(["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21", "2019/06/22"]);
+    expect(activityRepository.findDaysWithExceededStepGoal(2)).to.equal(["2019/06/19", "2019/06/22"]);
+  })
+
+  it('should return high for flights of stairs', () => {
+    expect(activityRepository.findFlightsOfStairsRecord(1)).to.equal(33);
+    expect(activityRepository.findFlightsOfStairsRecord(2)).to.equal(40);
+  })
+
+  it('should return all users combined average stairs climbed, steps, and minutes active on date', () => {
+    expect(activityRepository.calculateAllUsersActivityAveragesOnDay("2019/06/15")).to.equal([{numSteps: 4082}, {minutesActive: 152}, {flightsOfStairs: 17}]);
+    expect(activityRepository.calculateAllUsersActivityAveragesOnDay("2019/06/16")).to.equal([{numSteps: 4591}, {minutesActive: 125}, {flightsOfStairs: 15}]);
   })
 
 })

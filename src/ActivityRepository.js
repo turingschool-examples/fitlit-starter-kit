@@ -9,15 +9,18 @@ class ActivityRepository {
 
    returnMilesWalked(user, date) {
      const allUserActivity = this.returnActivityData(user.id);
-     const userActivityDate = allUserActivity.find(activity => activity.date === date)
+     const userActivityDate = allUserActivity.find(activity => activity.date === date);
      return Number(((user.strideLength * userActivityDate.numSteps) / 5280).toFixed(1));
    }
 
-   returnMinutesActive() {
-     // For a user, (identified by their userID) how many minutes were they active for a given day (specified by a date)?
+   returnMinutesActive(id, date) {
+     const allUserActivity = this.returnActivityData(id);
+     const userActivityDate = allUserActivity.find(activity => activity.date === date)
+     return userActivityDate.minutesActive;
    }
 
    calculateWeeklyAverageMinutesActive() {
+     
      // For a user, how many minutes active did they average for a given week (7 days)?
    }
 

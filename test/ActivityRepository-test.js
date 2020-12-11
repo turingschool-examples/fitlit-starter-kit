@@ -46,9 +46,9 @@ describe('Activity', () => {
     expect(activityRepository.returnMilesWalked(user2, "2019/06/16")).to.equal(1.1);
   })
 
-  it.skip('should return minutes active on date', () => {
+  it('should return minutes active on date', () => {
     expect(activityRepository.returnMinutesActive(1, "2019/06/15")).to.equal(140);
-    expect(activityRepository.returnMinutesActive(2, "2019/06/15")).to.equal(112);
+    expect(activityRepository.returnMinutesActive(2, "2019/06/16")).to.equal(112);
   })
 
   it.skip('should return average daily active minutes over a week', () => {

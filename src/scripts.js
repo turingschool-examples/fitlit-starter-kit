@@ -1,1 +1,1 @@
-console.log("Hello World");
+const currentUser = new User(userData[0]);

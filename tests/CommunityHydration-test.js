@@ -25,7 +25,13 @@ describe('CommunityHydration', function() {
       {"userID": 15, "date": "2019/03/01", "numOunces": 70},
       {"userID": 15, "date": "2019/03/02", "numOunces": 82},
       {"userID": 15, "date": "2019/03/03", "numOunces": 25},
-      {"userID": 20, "date": "2019/12/26", "numOunces": 100}
+      {"userID": 20, "date": "2019/12/26", "numOunces": 100},
+      {"userID": 20, "date": "2019/12/27", "numOunces": 102},
+      {"userID": 20, "date": "2019/12/28", "numOunces": 98},
+      {"userID": 20, "date": "2019/12/29", "numOunces": 100},
+      {"userID": 20, "date": "2019/12/30", "numOunces": 106},
+      {"userID": 20, "date": "2019/12/31", "numOunces": 94},
+      {"userID": 20, "date": "2020/01/01", "numOunces": 100}
     ]);
   });
 
@@ -38,12 +44,8 @@ describe('CommunityHydration', function() {
     expect(communityHydration.calculateTotalWaterPerDay(20, "2019/12/26")).to.equal(100);
   })
   it('should be able to calculate how many fluid ounces were consumed each day over the course of 7days and return the amount', () => {
-    //.find date and add 1 to each day? to create a new array? or sort?
-    //what if the year runs out or dates run into next month?
-    //add numOunces and divide by 7
-    //.getDate()? ++
-    expect(communityHydration.calculateTotalWeek("2019/04/17")).to.deep.equal([45, 23, 80, 49, 88, 75, 31]);
-    expect(communityHydration.calculateTotalWeek("2019/02/25")).to.deep.equal([10, 100, 45, 60, 70, 82, 25]);
-    expect(communityHydration.calculateTotalWeek("2019/12/26")).to.deep.equal([]);
+    expect(communityHydration.calculateTotalWeek(2, "2019/04/17")).to.deep.equal([45, 23, 80, 49, 88, 75, 31]);
+    expect(communityHydration.calculateTotalWeek(15, "2019/02/25")).to.deep.equal([10, 100, 45, 60, 70, 82, 25]);
+    expect(communityHydration.calculateTotalWeek(20, "2019/12/26")).to.deep.equal([100, 102, 98, 100, 106, 94, 100]);
   })
 })

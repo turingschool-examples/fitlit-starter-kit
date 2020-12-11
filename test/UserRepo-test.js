@@ -1,6 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
+const User = require('../src/User');
 const UserRepo = require('../src/UserRepo');
 
 describe('UserRepo', () => {
@@ -62,20 +63,20 @@ describe('UserRepo', () => {
     userRepo = new UserRepo(dataset);
   });
 
-  it.skip('should store instances of User in a data prop', () => {
+  it('should store instances of User in a data prop', () => {
     expect(userRepo.data).to.be.an('array');
     expect(userRepo.data.length).to.equal(4);
     expect(userRepo.data[0]).to.be.an.instanceof(User);
     expect(userRepo.data[3]).to.be.an.instanceof(User);
   });
 
-  it.skip('should have a way to return a users data when given a user id', () => {
+  it('should have a way to return a users data when given a user id', () => {
     expect(userRepo.returnUserData(1)).to.deep.equal(userRepo.data[0]);
-    //if this does not work, add a funtion call on this line
+    
     expect(userRepo.data[0].name).to.equal('Brian Forbes');
   });
 
-  it.skip('should be able calculate average step goal among all users', () => {
+  it('should be able calculate average step goal among all users', () => {
     expect(userRepo.userStepGoalAverage()).to.equal(7501.25);
   });
 });

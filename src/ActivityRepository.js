@@ -53,10 +53,25 @@ class ActivityRepository {
   }
 
   getAllUsersActivityAvgOnDay(date) {
-    // For all users, what is the average number of:
-    // stairs climbed for a specified date
-    // steps taken for a specific date
-    // minutes active for a specific date
+    const allUserActivityByDate = this.activityInstanceData.filter(activity => activity.date === date);
+    const allUserTotalSteps = allUserActivityByDate.reduce((totalSteps, activity) => {
+      return activity.numSteps + totalSteps;
+    }, 0)
+    const allUserAvgSteps = allUserTotalSteps / allUserActivityByDate.length;
+    const allUserTotalMins = allUserActivityByDate.reduce((totalMins, activity) => {
+      return activity.minutesActive + totalMins;
+    }, 0)
+    const allUserAvgMinsActive = allUserTotalMins / allUserActivityByDate.length;
+    const allUserTotalStairs = allUserActivityByDate.reduce((totalStairs, activity) => {
+      return activity.flightsOfStairs + totalStairs;
+    }, 0)
+    const allUserAvgStairs = allUserTotalStairs / allUserActivityByDate.length;
+    const allAverages = {
+      numSteps: Math.round(allUserAvgSteps),
+      minutesActive: Math.round(allUserAvgMinsActive),
+      flightsOfStairs: Math.round(allUserAvgStairs)
+    }
+    return allAverages;
   }
 
 }

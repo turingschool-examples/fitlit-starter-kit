@@ -10,7 +10,8 @@
 // ~~~~~ QUERY SELECTORS ~~~~~
 const userNameGreeting = document.querySelector('.user-greeting');
 const userInfoCard = document.querySelector('.user-info-card');
-const hydrationSection = document.querySelector('.hydration')
+const hydrationSection = document.querySelector('.hydration');
+const sleepSection = document.querySelector('.sleep');
 
 // ~~~~~ EVENT LISTENERS ~~~~~
 window.onload = start;
@@ -28,11 +29,18 @@ const hydrationObjects = hydrationData.map(hydrationObject => {
 });
 const hydrationRepository = new HydrationRepository(hydrationObjects);
 
+const sleepObjects = sleepData.map(sleepObject => {
+  const sleep = new Sleep(sleepObject);
+  return sleep;
+});
+const sleepRepository = new SleepRepository(sleepData);
+
 // ~~~~~ FUNCTIONS ~~~~~
 function start() {
   userNameGreeting.innerText = `Hello, ${users[5].returnFirstName()}`;
   displayUserInfoCard(users[5]);
   displayHydrationInfo(users[5], "2019/06/24")
+  displaySleepInfo(users[5], "2019/06/24")
 }
 
 function displayUserInfoCard(user) {
@@ -59,4 +67,11 @@ function displayHydrationInfo(user, date) {
     <p>${pastWeekHydrationObjects[4].date}: ${pastWeekHydrationObjects[4].numOunces} ounces</p>
     <p>${pastWeekHydrationObjects[5].date}: ${pastWeekHydrationObjects[5].numOunces} ounces</p>
     <p>${pastWeekHydrationObjects[6].date}: ${pastWeekHydrationObjects[6].numOunces} ounces</p>`;
+}
+
+function displaySleepInfo(user, date) {
+  sleepSection.innerHTML = `
+    <h2>SLEEP!</h2>
+    <p>All-time average sleep quality: ${sleepRepository.getUserAvgSleepQualityAllTime(5)}</p>
+    <p>All-time average hours slept: ${sleepRepository.getUserAvgHoursSleptAllTime(5)}</p>`;
 }

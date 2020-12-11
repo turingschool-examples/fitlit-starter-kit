@@ -4,13 +4,11 @@ const chai = require('chai')
 const expect = chai.expect
 
 const UserHydration = require("../src/userHydration");
-// const User = require("../src/user");
-//may need userRepo here
 
 describe("UserHydration", () => {
-  let userHydrationData1,
+  let hydrationData,
+    userHydrationData1,
     userHydrationData2,
-    hydrationData,
     userHydrationData3,
     userHydrationData4,
     userHydrationData5,
@@ -25,57 +23,57 @@ describe("UserHydration", () => {
       date: "2019/06/12",
       numOunces: 38,
     }),
-      (userHydrationData2 = {
-        userID: 1,
-        date: "2019/06/13",
-        numOunces: 60,
-      }),
-      (userHydrationData3 = {
-        userID: 1,
-        date: "2019/06/14",
-        numOunces: 40,
-      }),
-      (userHydrationData4 = {
-        userID: 1,
-        date: "2019/06/15",
-        numOunces: 50,
-      }),
-      (userHydrationData5 = {
-        userID: 1,
-        date: "2019/06/16",
-        numOunces: 51,
-      }),
-      (userHydrationData6 = {
-        userID: 1,
-        date: "2019/06/17",
-        numOunces: 65,
-      }),
-      (userHydrationData7 = {
-        userID: 1,
-        date: "2019/06/18",
-        numOunces: 60,
-      }),
-      (userHydrationData8 = {
-        userID: 1,
-        date: "2019/06/19",
-        numOunces: 60,
-      }),
-      (user2HydrationData = {
-          userID: 2,
-          date: '2019/06/20',
-          numOunces: 20,
-      }),
-      (hydrationData = new UserHydration([
-        userHydrationData1,
-        userHydrationData2,
-        userHydrationData3,
-        userHydrationData4,
-        userHydrationData5,
-        userHydrationData6,
-        userHydrationData7,
-        userHydrationData8,
-        user2HydrationData
-      ]));
+    (userHydrationData2 = {
+      userID: 1,
+      date: "2019/06/13",
+      numOunces: 60,
+    }),
+    (userHydrationData3 = {
+      userID: 1,
+      date: "2019/06/14",
+      numOunces: 40,
+    }),
+    (userHydrationData4 = {
+      userID: 1,
+      date: "2019/06/15",
+      numOunces: 50,
+    }),
+    (userHydrationData5 = {
+      userID: 1,
+      date: "2019/06/16",
+      numOunces: 51,
+    }),
+    (userHydrationData6 = {
+      userID: 1,
+      date: "2019/06/17",
+      numOunces: 65,
+    }),
+    (userHydrationData7 = {
+      userID: 1,
+      date: "2019/06/18",
+      numOunces: 60,
+    }),
+    (userHydrationData8 = {
+      userID: 1,
+      date: "2019/06/19",
+      numOunces: 60,
+    }),
+    (user2HydrationData = {
+      userID: 2,
+      date: '2019/06/20',
+      numOunces: 20,
+    }),
+    (hydrationData = new UserHydration([
+      userHydrationData1,
+      userHydrationData2,
+      userHydrationData3,
+      userHydrationData4,
+      userHydrationData5,
+      userHydrationData6,
+      userHydrationData7,
+      userHydrationData8,
+      user2HydrationData
+    ]));
   });
 
   it("should be a function", () => {

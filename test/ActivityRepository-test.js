@@ -56,9 +56,9 @@ describe('Activity', () => {
     expect(activityRepository.calculateWeeklyAverageMinutesActive(2, "2019/06/22")).to.equal(153);
   })
 
-  it.skip('should say if a user met their step goal on date', () => {
-    expect(activityRepository.determineStepGoalAchieved(1, "2019/06/15")).to.equal(true);
-    expect(activityRepository.determineStepGoalAchieved(2, "2019/06/16")).to.equal(false);
+  it('should say if a user met their step goal on date', () => {
+    expect(activityRepository.determineStepGoalAchieved(user1, "2019/06/15")).to.equal(true);
+    expect(activityRepository.determineStepGoalAchieved(user2, "2019/06/16")).to.equal(false);
   })
 
   it.skip('should return all days where step goal was exceeded', () => {

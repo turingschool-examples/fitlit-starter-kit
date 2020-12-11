@@ -28,7 +28,10 @@ class ActivityRepository {
      return Math.round((totalUserActiveMinutes / 7));
    }
 
-   determineStepGoalAchieved() {
+   determineStepGoalAchieved(user, date) {
+     const allUserActivity = this.returnActivityData(user.id);
+     const userActivityDate = allUserActivity.find(activity => activity.date === date);
+     return (user.dailyStepGoal <= userActivityDate.numSteps);
      // For a user, did they reach their step goal for a given day (specified by a date)?
    }
 

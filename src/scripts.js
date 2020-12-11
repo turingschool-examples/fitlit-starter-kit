@@ -73,6 +73,8 @@ function displaySleepInfo(user, date) {
   const pastWeekSleepObjects = sleepRepository.getSleepDataByWeek(5, date);
   sleepSection.innerHTML = `
     <h2>SLEEP!</h2>
+    <p>Hours slept last night: ${sleepRepository.getSleepHoursByDate(5, "2019/09/22")}</p>
+    <p>Sleep quality last night: ${sleepRepository.getSleepQualityByDate(5, "2019/09/22")}</p>
     <p>All-time average sleep quality: ${sleepRepository.getUserAvgSleepQualityAllTime(5)}</p>
     <p>All-time average hours slept: ${sleepRepository.getUserAvgHoursSleptAllTime(5)}</p>
     <p>Sleep stats for the week:</p>

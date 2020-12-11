@@ -51,9 +51,9 @@ describe('Activity', () => {
     expect(activityRepository.returnMinutesActive(2, "2019/06/16")).to.equal(112);
   })
 
-  it.skip('should return average daily active minutes over a week', () => {
-    expect(activityRepository.calculateWeeklyAverageMinutesActive(1, "2019/06/15")).to.equal(159);
-    expect(activityRepository.calculateWeeklyAverageMinutesActive(2, "2019/06/16")).to.equal(153);
+  it('should return average daily active minutes over a week', () => {
+    expect(activityRepository.calculateWeeklyAverageMinutesActive(1, "2019/06/21")).to.equal(159);
+    expect(activityRepository.calculateWeeklyAverageMinutesActive(2, "2019/06/22")).to.equal(153);
   })
 
   it.skip('should say if a user met their step goal on date', () => {

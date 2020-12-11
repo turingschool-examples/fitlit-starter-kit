@@ -15,13 +15,17 @@ class ActivityRepository {
 
    returnMinutesActive(id, date) {
      const allUserActivity = this.returnActivityData(id);
-     const userActivityDate = allUserActivity.find(activity => activity.date === date)
+     const userActivityDate = allUserActivity.find(activity => activity.date === date);
      return userActivityDate.minutesActive;
    }
 
-   calculateWeeklyAverageMinutesActive() {
-     
-     // For a user, how many minutes active did they average for a given week (7 days)?
+   calculateWeeklyAverageMinutesActive(id, date) {
+     const allUserActivity = this.returnActivityData(id);
+     const activityDates = allUserActivity.map(activity => activity.date);
+     const indexOfMatchingActivityDate = activityDates.indexOf(date);
+     const weekOfUserActivity =  allUserActivity.slice(indexOfMatchingActivityDate - 6, indexOfMatchingActivityDate + 1);
+     const totalUserActiveMinutes = weekOfUserActivity.reduce((totalMinutes, activity) => totalMinutes + activity.minutesActive, 0)
+     return Math.round((totalUserActiveMinutes / 7));
    }
 
    determineStepGoalAchieved() {

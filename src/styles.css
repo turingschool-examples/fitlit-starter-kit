@@ -22,6 +22,15 @@ body {
   width: 95%;
 }
 
+h1 {
+  text-align: center;
+  margin: 0%;
+  padding-top: .2em;
+  height: 28%;
+  width: 43%;
+  font-size: 300%;
+}
+
 .day-week-view {
   display: flex;
   border: solid black;

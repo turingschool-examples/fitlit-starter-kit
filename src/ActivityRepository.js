@@ -13,10 +13,22 @@ class ActivityRepository {
     return Number(((user.strideLength * userActivityDate.numSteps) / 5280).toFixed(1));
   }
 
+  returnStepsTaken(id, date) {
+    const allUserActivity = this.returnActivityData(id);
+    const userActivityDate = allUserActivity.find(activity => activity.date === date);
+    return userActivityDate.numSteps;
+  }
+
   returnMinutesActive(id, date) {
     const allUserActivity = this.returnActivityData(id);
     const userActivityDate = allUserActivity.find(activity => activity.date === date);
     return userActivityDate.minutesActive;
+  }
+
+  returnStairs(id, date) {
+    const allUserActivity = this.returnActivityData(id);
+    const userActivityDate = allUserActivity.find(activity => activity.date === date);
+    return userActivityDate.flightsOfStairs;
   }
 
   calculateWeeklyAverageMinutesActive(id, date) {

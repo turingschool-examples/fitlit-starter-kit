@@ -29,8 +29,7 @@ let chosenDate = "2019/07/16" // default date
 const userHydration = new UserHydration(hydrationData);
 const userSleep = new UserSleep(sleepData)
 
-window.addEventListener('load', (event) => {
-  event.preventDefault()
+window.addEventListener('load', () => {
   let chosenUserID = currentUser.id; // sets the ID to a variable to use as an argument
   displayFirstName(chosenUserID);
   displayInfoCard(chosenUserID);
@@ -39,13 +38,11 @@ window.addEventListener('load', (event) => {
   return chosenUserID; // returning ID out to use it later
 })
 
-waterButton.addEventListener('click', (event) => {
-  event.preventDefault()
+waterButton.addEventListener('click', () => {
   displayHydrationActivity();
 })
 
-sleepButton.addEventListener('click', (event) => {
-  event.preventDefault()
+sleepButton.addEventListener('click', () => {
   displaySleepActivity()
 })
 

@@ -133,9 +133,13 @@ function displayExerciseActivity() {
 
 
 function getActivityData(placement, chosenDate, currentUser) {
-  placement.innerText = `${
-    userActivity.calculateActiveMinutes(chosenDate, currentUser)
-  } minutes, and ${userActivity.calculateMilesWalked(userRepo, currentUser, chosenDate).toFixed(2)} miles`;
+  placement.innerText = `${userActivity.calculateActiveMinutes(
+    chosenDate,
+    currentUser
+  )} minutes, ${userActivity
+    .calculateMilesWalked(userRepo, currentUser, chosenDate)
+    .toFixed(2)} miles, and
+  ${userActivity.calculateNumSteps(chosenDate, currentUser)} steps`;
 }
 
 

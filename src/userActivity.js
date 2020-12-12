@@ -26,9 +26,14 @@ class UserActivity {
 
   calculateActiveMinutes(date, id) {
     this.mapUserActivity(id); //array of one users all activity
-    return this.mapUserActivity(id).find(
-      (day) => day.date === date
-    ).minutesActive;
+    return this.mapUserActivity(id).find((day) => day.date === date)
+      .minutesActive;
+  }
+
+  calculateNumSteps(date, id) {
+    this.mapUserActivity(id); //array of one users all activity
+    return this.mapUserActivity(id).find((day) => day.date === date)
+      .numSteps;
   }
 
   calculateAvgMinWeek(startDate, id) {

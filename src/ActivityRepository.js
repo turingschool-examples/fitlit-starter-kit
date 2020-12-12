@@ -7,27 +7,28 @@ class ActivityRepository {
     return this.activityInstanceData.filter(activity => activity.userID === id);
   }
 
-  returnMilesWalked(user, date) {
+  filterByIdAndDate(user, date) {
     const allUserActivity = this.returnActivityData(user.id);
-    const userActivityDate = allUserActivity.find(activity => activity.date === date);
+    return allUserActivity.find(activity => activity.date === date);
+  }
+
+  returnMilesWalked(user, date) {
+    const userActivityDate = this.filterByIdAndDate(user, date);
     return Number(((user.strideLength * userActivityDate.numSteps) / 5280).toFixed(1));
   }
 
-  returnStepsTaken(id, date) {
-    const allUserActivity = this.returnActivityData(id);
-    const userActivityDate = allUserActivity.find(activity => activity.date === date);
+  returnStepsTaken(user, date) {
+    const userActivityDate = this.filterByIdAndDate(user, date);
     return userActivityDate.numSteps;
   }
 
-  returnMinutesActive(id, date) {
-    const allUserActivity = this.returnActivityData(id);
-    const userActivityDate = allUserActivity.find(activity => activity.date === date);
+  returnMinutesActive(user, date) {
+    const userActivityDate = this.filterByIdAndDate(user, date);
     return userActivityDate.minutesActive;
   }
 
-  returnStairs(id, date) {
-    const allUserActivity = this.returnActivityData(id);
-    const userActivityDate = allUserActivity.find(activity => activity.date === date);
+  returnStairs(user, date) {
+    const userActivityDate = this.filterByIdAndDate(user, date);
     return userActivityDate.flightsOfStairs;
   }
 

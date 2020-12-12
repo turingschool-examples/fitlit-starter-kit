@@ -47,18 +47,18 @@ describe('Activity', () => {
   })
 
   it('should return minutes active on date', () => {
-    expect(activityRepository.returnMinutesActive(1, "2019/06/15")).to.equal(140);
-    expect(activityRepository.returnMinutesActive(2, "2019/06/16")).to.equal(112);
+    expect(activityRepository.returnMinutesActive(user1, "2019/06/15")).to.equal(140);
+    expect(activityRepository.returnMinutesActive(user2, "2019/06/16")).to.equal(112);
   })
 
   it('should return steps taken on date', () => {
-    expect(activityRepository.returnStepsTaken(1, "2019/06/15")).to.equal(3577);
-    expect(activityRepository.returnStepsTaken(2, "2019/06/16")).to.equal(4887);
+    expect(activityRepository.returnStepsTaken(user1, "2019/06/15")).to.equal(3577);
+    expect(activityRepository.returnStepsTaken(user2, "2019/06/16")).to.equal(4887);
   })
 
   it('should return flights of stairs on date', () => {
-    expect(activityRepository.returnStairs(1, "2019/06/15")).to.equal(16);
-    expect(activityRepository.returnStairs(2, "2019/06/16")).to.equal(19);
+    expect(activityRepository.returnStairs(user1, "2019/06/15")).to.equal(16);
+    expect(activityRepository.returnStairs(user2, "2019/06/16")).to.equal(19);
   })
 
   it('should return average daily active minutes over a week', () => {

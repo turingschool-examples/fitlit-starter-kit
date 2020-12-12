@@ -102,8 +102,8 @@ function displayActivityInfo(user, date) {
   // const pastWeekActivityObjects = activityRepository.getActivityDataByWeek(5, date);
   activitySection.innerHTML = `
     <h2>ACTIVITY!</h2>
-    <p>Steps taken today: ${activityRepository.returnStepsTaken(user.id, date)}</p>
-    <p>Minutes active today: ${activityRepository.returnMinutesActive(user.id, date)}</p>
+    <p>Steps taken today: ${activityRepository.returnStepsTaken(user, date)}</p>
+    <p>Minutes active today: ${activityRepository.returnMinutesActive(user, date)}</p>
     <p>Distance walked today: ${activityRepository.returnMilesWalked(user, date)} miles</p>
 
     `;

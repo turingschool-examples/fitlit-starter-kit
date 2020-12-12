@@ -139,13 +139,17 @@ describe("UserActivity", () => {
 
     it("should return the miles a user has walked", () => {
         expect(
-            userActivity.calculateMilesWalked(userRepo, user1, "2019/06/12")
+            userActivity.calculateMilesWalked(userRepo, 1, "2019/06/12")
         ).to.equal(2.9130871212121208);
     });
 
     it("should return a user's active minutes for a day", () => {
         expect(userActivity.calculateActiveMinutes("2019/06/12", 1)).to.equal(70);
     });
+
+     it("should return a user's steps for a day", () => {
+       expect(userActivity.calculateNumSteps("2019/06/12", 1)).to.equal(3577);
+     });
 
     it("should return a user's average number of minutes for a week", () => {
         expect(userActivity.calculateAvgMinWeek("2019/06/12", 1)).to.equal(

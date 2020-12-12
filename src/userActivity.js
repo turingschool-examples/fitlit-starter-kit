@@ -34,7 +34,7 @@ class UserActivity {
     this.mapUserActivity(id); //array of one users all activity
     return this.mapUserActivity(id).find((day) => day.date === date)
       .numSteps;
-  }
+  } //do not have a test for this one
 
   calculateAvgMinWeek(startDate, id) {
     const activityItems = this.mapUserActivity(id);

@@ -32,6 +32,13 @@ class ActivityRepository {
     return userActivityDate.flightsOfStairs;
   }
 
+  getActivityDataByWeek(id, date) {
+    const allUserActivity = this.returnActivityData(id);
+    const activityDates = allUserActivity.map(activity => activity.date);
+    const indexOfMatchingActivityDate = activityDates.indexOf(date);
+    return allUserActivity.slice(indexOfMatchingActivityDate - 6, indexOfMatchingActivityDate + 1);
+  }
+
   calculateWeeklyAverageMinutesActive(id, date) {
     const allUserActivity = this.returnActivityData(id);
     const activityDates = allUserActivity.map(activity => activity.date);

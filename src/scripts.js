@@ -97,17 +97,23 @@ function displaySleepInfo(user, date) {
 }
 
 function displayActivityInfo(user, date) {
-  // How their number of steps, minutes active, and flights of stairs climbed compares to all users for the latest day
-  // For a user, a weekly view of their step count, flights of stairs climbed, and minutes active
-  // const pastWeekActivityObjects = activityRepository.getActivityDataByWeek(5, date);
+  const pastWeekActivityObjects = activityRepository.getActivityDataByWeek(user.id, date);
   activitySection.innerHTML = `
     <h2>ACTIVITY!</h2>
     <p>Steps taken today: ${activityRepository.returnStepsTaken(user, date)}</p>
     <p>Minutes active today: ${activityRepository.returnMinutesActive(user, date)}</p>
     <p>Distance walked today: ${activityRepository.returnMilesWalked(user, date)} miles</p>
     <p>Flights of stairs climbed today: ${activityRepository.returnStairs(user, date)}</p>
-    <p>All users steps taken today: ${activityRepository.returnStepsTaken(user, date)}</p>
-    <p>All users minutes active today: ${activityRepository.returnMinutesActive(user, date)}</p>
-    <p>All users flights of stairs climbed today: ${activityRepository.returnStairs(user, date)}</p>
+    <p>All users steps taken today: ${activityRepository.getAllUserAvgSteps(date)}</p>
+    <p>All users minutes active today: ${activityRepository.getAllUserTotalMins(date)}</p>
+    <p>All users flights of stairs climbed today: ${activityRepository.getAllUserTotalStairs(date)}</p>
+    <p>Activity stats for the week:</p>
+    <p>${pastWeekActivityObjects[0].date}: ${pastWeekActivityObjects[0].numSteps} steps taken, ${pastWeekActivityObjects[0].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
+    <p>${pastWeekActivityObjects[1].date}: ${pastWeekActivityObjects[1].numSteps} steps taken, ${pastWeekActivityObjects[1].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
+    <p>${pastWeekActivityObjects[2].date}: ${pastWeekActivityObjects[2].numSteps} steps taken, ${pastWeekActivityObjects[2].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
+    <p>${pastWeekActivityObjects[3].date}: ${pastWeekActivityObjects[3].numSteps} steps taken, ${pastWeekActivityObjects[3].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
+    <p>${pastWeekActivityObjects[4].date}: ${pastWeekActivityObjects[4].numSteps} steps taken, ${pastWeekActivityObjects[4].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
+    <p>${pastWeekActivityObjects[5].date}: ${pastWeekActivityObjects[5].numSteps} steps taken, ${pastWeekActivityObjects[5].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
+    <p>${pastWeekActivityObjects[6].date}: ${pastWeekActivityObjects[6].numSteps} steps taken, ${pastWeekActivityObjects[6].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
     `;
 }

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 class UserSleep {
   constructor(sleepData) {
     this.sleepData = sleepData
@@ -34,17 +35,18 @@ class UserSleep {
         let totalHours = (avgHours += value);
         return totalHours;
       }, 0);
-    return (totalAvgHours = totalAvgHours / allHoursSlept.sleepData.length);
+    return (totalAvgHours = totalAvgHours / this.mapUserSleep(id).length);
   }
 
   calculateAvgSleepQual(allSleepQual, id) {
     let totalAvgSleepQual = this.mapUserSleep(id)
-      .map(totalQuality => totalQuality.sleepQuality)
-      .reduce((avgQuality, value) => {
-        let totalQuality = (avgQuality += value);
-        return totalQuality;
+    .map(totalQuality => totalQuality.sleepQuality)
+    .reduce((avgQuality, value) => {
+      let totalQuality = (avgQuality += value);
+      return totalQuality;
       }, 0);
-    return (totalAvgSleepQual = totalAvgSleepQual / allSleepQual.sleepData.length);
+      console.log(this.mapAllUserSleepQuality(id))
+    return (totalAvgSleepQual = totalAvgSleepQual / this.mapUserSleep(id).length);
   }
 
   calculateAllAvgSleepQual(allSleepQual) {

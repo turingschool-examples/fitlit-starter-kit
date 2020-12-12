@@ -15,11 +15,13 @@ class UserHydration {
   }
 
   calculateAvgWater(allNumOunces, id) {
-    let totalAvgWater = this.mapUserWater(id).map(totalWater => totalWater.numOunces).reduce((avgWater, value) => {
+    let totalAvgWater = this.mapUserWater(id)
+    .map(totalWater => totalWater.numOunces)
+    .reduce((avgWater, value) => {
       let totalWater = (avgWater += value);
       return totalWater;
     }, 0);
-    return (totalAvgWater = totalAvgWater / allNumOunces.length);
+    return (totalAvgWater = totalAvgWater / allNumOunces.length) * 100;
   }
 
   getUserWaterConsumption(id) {

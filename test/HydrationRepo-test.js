@@ -412,4 +412,23 @@ describe('HydrationRepo', () => {
 
     hydRepo = new HydrationRepo(hydrationData);
   });
+
+  it.skip('should be able to calculate user\'s avg fluid oz consumed for all time', () => {
+    const avg = hydRepo.calculateAvgOz(34);
+
+    expect(avg).to.be.equal(83.5);
+  });
 });
+
+/*
+{
+  "userID": 34,
+  "date": "2019/09/17",
+  "numOunces": 69
+},
+{
+  "userID": 34,
+  "date": "2019/09/18",
+  "numOunces": 98
+},
+*/

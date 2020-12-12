@@ -5,6 +5,7 @@ const userStepGoal = document.querySelector('.user-step-goal')
 const communityStepGoal = document.querySelector('.community-step-goal')
 const water = document.querySelector('.water');
 const waterStats = document.querySelector('.water-stats');
+const graph = document.querySelector('.graph');
 //since multiple classes will need these, global
 let community = null
 let user = null
@@ -19,7 +20,7 @@ const createCommunity = () => {
   community = new UserRepository(userData)
   user = community.users[0]
   communityHydration = new CommunityHydration(hydrationData)
-  hydration = communityHydration.hydrations[0]
+  hydration = communityHydration.hydrations[0]//?
 }
 
 //GREETING:
@@ -55,12 +56,24 @@ const showStepGoalComparison = () => {
 //ADD TODAY's HYDRATION STATS:
 const showHydrationStats = () => {
   waterStats.insertAdjacentHTML('beforeend',
-  `<p class="water-stats">Water consumed today: ${communityHydration.calculateTotalWaterOnDay(hydration.userID, "2019/09/20")}</p>
-  `)
+    `<p class="water-stats">Water consumed today: ${communityHydration.calculateTotalWaterOnDay(hydration.userID, "2019/09/20")} OZ</p>
+    `)
 }
 
 //ADD WEEKLY HYDRATION STATS:
-
+const showHydrationStatsWeek = () => {
+  graph.insertAdjacentHTML('beforeend',
+    `<article class="water-stats-week">Water consumed over the week of ${startDate}-${endDate}:
+      <p>Day 1: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[0]} OZ</p>
+      <p>Day 2: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[1]} OZ</p>
+      <p>Day 3: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[2]} OZ</p>
+      <p>Day 4: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[3]} OZ</p>
+      <p>Day 5: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[4]} OZ</p>
+      <p>Day 6: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[5]} OZ</p>
+      <p>Day 7: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[6]} OZ</p>
+    </article>
+    `)
+}
 //ADD ACTIVITY STATS:
 
 //ADD SLEEP STATS:

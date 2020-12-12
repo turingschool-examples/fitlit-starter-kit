@@ -40,7 +40,7 @@ describe('CommunityHydration', function() {
   })
   it('should be able to calculate how many fluid ounces were consumed on a given day', () => {
     expect(communityHydration.calculateTotalWaterOnDay(2, "2019/04/22")).to.equal(75);
-    expect(communityHydration.calculateTotalWaterDay(20, "2019/12/26")).to.equal(100);
+    expect(communityHydration.calculateTotalWaterOnDay(20, "2019/12/26")).to.equal(100);
   })
   it('should be able to calculate how many fluid ounces were consumed each day over the course of 7days and return the amount', () => {
     expect(communityHydration.calculateTotalWeek(2, "2019/04/17", "2019/04/23")).to.deep.equal([45, 23, 80, 49, 88, 75, 31]);

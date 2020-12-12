@@ -1,8 +1,8 @@
-const userMain = document.querySelector('.userMain')
-const userProfile = document.querySelector('.userProfile')
+const userMain = document.querySelector('.user-main')
+const userProfile = document.querySelector('.user-profile')
 const friends = document.querySelector('.friends')
-const userStepGoal = document.querySelector('.userStepGoal')
-const communityStepGoal = document.querySelector('.communityStepGoal')
+const userStepGoal = document.querySelector('.user-step-goal')
+const communityStepGoal = document.querySelector('.community-step-goal')
 const waterDisplay = document.querySelector('.water');
 //since multiple classes will need these, global
 let community = null

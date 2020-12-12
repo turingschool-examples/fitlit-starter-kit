@@ -19,7 +19,7 @@ const createCommunity = () => {
   community = new UserRepository(userData)
   user = community.users[0]
   communityHydration = new CommunityHydration(hydrationData)
-  hydration = communityHydration[0].userID
+  hydration = communityHydration.hydrations[0]
 }
 
 //GREETING:
@@ -52,12 +52,15 @@ const showStepGoalComparison = () => {
   communityStepGoal.insertAdjacentHTML('beforeend', `<p>${community.findAverageStepGoal()}</p>`)
 }
 
-//ADD HYDRATION STATS:
+//ADD TODAY's HYDRATION STATS:
 const showHydrationStats = () => {
   waterStats.insertAdjacentHTML('beforeend',
-  `<p class="water-stats">Water consumed today: ${communityHydration.calculateTotalWaterOnDay(hydration, "2019/09/20")}</p>
+  `<p class="water-stats">Water consumed today: ${communityHydration.calculateTotalWaterOnDay(hydration.userID, "2019/09/20")}</p>
   `)
 }
+
+//ADD WEEKLY HYDRATION STATS:
+
 //ADD ACTIVITY STATS:
 
 //ADD SLEEP STATS:

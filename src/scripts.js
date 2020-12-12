@@ -3,7 +3,7 @@ const userProfile = document.querySelector('.userProfile')
 const friends = document.querySelector('.friends')
 const userStepGoal = document.querySelector('.userStepGoal')
 const communityStepGoal = document.querySelector('.communityStepGoal')
-
+const waterDisplay = document.querySelector('.water');
 //since multiple classes will need these, global
 let community = null
 let user = null

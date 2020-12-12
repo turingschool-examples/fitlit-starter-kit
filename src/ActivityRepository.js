@@ -65,26 +65,28 @@ class ActivityRepository {
     return max;
   }
 
-  getAllUsersActivityAvgOnDay(date) {
+  getAllUserAvgSteps(date) {
     const allUserActivityByDate = this.activityInstanceData.filter(activity => activity.date === date);
     const allUserTotalSteps = allUserActivityByDate.reduce((totalSteps, activity) => {
       return activity.numSteps + totalSteps;
     }, 0)
-    const allUserAvgSteps = allUserTotalSteps / allUserActivityByDate.length;
+    return Math.round(allUserTotalSteps / allUserActivityByDate.length);
+  }
+
+  getAllUserTotalMins(date) {
+    const allUserActivityByDate = this.activityInstanceData.filter(activity => activity.date === date);
     const allUserTotalMins = allUserActivityByDate.reduce((totalMins, activity) => {
       return activity.minutesActive + totalMins;
     }, 0)
-    const allUserAvgMinsActive = allUserTotalMins / allUserActivityByDate.length;
+    return Math.round(allUserTotalMins / allUserActivityByDate.length);
+  }
+
+  getAllUserTotalStairs(date) {
+    const allUserActivityByDate = this.activityInstanceData.filter(activity => activity.date === date);
     const allUserTotalStairs = allUserActivityByDate.reduce((totalStairs, activity) => {
       return activity.flightsOfStairs + totalStairs;
     }, 0)
-    const allUserAvgStairs = allUserTotalStairs / allUserActivityByDate.length;
-    const allAverages = {
-      numSteps: Math.round(allUserAvgSteps),
-      minutesActive: Math.round(allUserAvgMinsActive),
-      flightsOfStairs: Math.round(allUserAvgStairs)
-    }
-    return allAverages;
+    return Math.round(allUserTotalStairs / allUserActivityByDate.length);
   }
 
 }

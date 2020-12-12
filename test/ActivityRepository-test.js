@@ -91,9 +91,19 @@ describe('Activity', () => {
     expect(activityRepository.findFlightsOfStairsRecord(2)).to.equal(40);
   })
 
-  it('should return all users combined average stairs climbed, steps, and minutes active on date', () => {
-    expect(activityRepository.getAllUsersActivityAvgOnDay("2019/06/15")).to.deep.equal({numSteps: 4082, minutesActive: 152, flightsOfStairs: 17});
-    expect(activityRepository.getAllUsersActivityAvgOnDay("2019/06/16")).to.deep.equal({numSteps: 4591, minutesActive: 125, flightsOfStairs: 15});
+  it('should return all user avg steps for a given date', () => {
+    expect(activityRepository.getAllUserAvgSteps("2019/06/15")).to.deep.equal(4082);
+    expect(activityRepository.getAllUserAvgSteps("2019/06/16")).to.deep.equal(4591);
+  })
+
+  it('should return all user avg mins for a given date', () => {
+    expect(activityRepository.getAllUserTotalMins("2019/06/15")).to.deep.equal(152);
+    expect(activityRepository.getAllUserTotalMins("2019/06/16")).to.deep.equal(125);
+  })
+
+  it('should return all user avg stairs for a given date', () => {
+    expect(activityRepository.getAllUserTotalStairs("2019/06/15")).to.deep.equal(17);
+    expect(activityRepository.getAllUserTotalStairs("2019/06/16")).to.deep.equal(15);
   })
 
 })

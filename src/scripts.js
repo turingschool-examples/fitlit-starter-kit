@@ -105,6 +105,9 @@ function displayActivityInfo(user, date) {
     <p>Steps taken today: ${activityRepository.returnStepsTaken(user, date)}</p>
     <p>Minutes active today: ${activityRepository.returnMinutesActive(user, date)}</p>
     <p>Distance walked today: ${activityRepository.returnMilesWalked(user, date)} miles</p>
-
+    <p>Flights of stairs climbed today: ${activityRepository.returnStairs(user, date)}</p>
+    <p>All users steps taken today: ${activityRepository.returnStepsTaken(user, date)}</p>
+    <p>All users minutes active today: ${activityRepository.returnMinutesActive(user, date)}</p>
+    <p>All users flights of stairs climbed today: ${activityRepository.returnStairs(user, date)}</p>
     `;
 }

@@ -143,15 +143,13 @@ describe("UserActivity", () => {
     ).to.equal(2.9130871212121208);
   });
 
-  it.skip("should return a user's average sleep quality for all time", () => {
-    expect(userSleep.calculateAvgSleepQual(userSleep.sleepData, 1)).to.equal(
-      2.8625
-    );
+  it("should return a user's active minutes for a day", () => {
+    expect(userActivity.calculateActiveMinutes("2019/06/12", 1)).to.equal(70);
   });
 
-  it.skip("should return the number of hours a user slept for a day", () => {
-    expect(userSleep.getOneDayOfData("2019/06/15", 1, "hoursSlept")).to.equal(
-      6.1
+  it("should return a user's average number of minutes for a week", () => {
+    expect(userActivity.calculateAvgMinWeek("2019/06/12", 1)).to.equal(
+      91.14285714285714
     );
   });
 

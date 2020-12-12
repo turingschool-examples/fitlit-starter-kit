@@ -176,10 +176,9 @@ describe("UserActivity", () => {
       userActivity.getStairRecord(1)).to.equal(20);
   });
 
-  it.skip("should return all users' average sleep quality", () => {
-    expect(userSleepAll.calculateAllAvgSleepQual(userSleepAll)).to.equal(
-      3.122222222222222
-    );
+  it("should return all users' average stairs climbed for a day", () => {
+    expect(userActivityAll.calculateAllAvgStairs(userActivityAll)).to.equal(
+      14);
   });
 
   it.skip("should return all users' who sleep well", () => {

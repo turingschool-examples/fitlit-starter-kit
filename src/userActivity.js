@@ -65,7 +65,17 @@ class UserActivity {
   }
 
   getStairRecord(id) {
-    return this.activityData.map(item => item.flightsOfStairs).sort((a,b) => b - a)[0]
+    return this.activityData
+      .map((item) => item.flightsOfStairs)
+      .sort((a, b) => b - a)[0];
+  }
+  calculateAllAvgStairs(allStairs) {
+    let mapAllStairs = this.activityData.map(item => item.flightsOfStairs)
+    let totalAllAvgStairs = mapAllStairs.reduce((total, value) => {
+      total += value
+      return total;
+    }, 0)
+    return (totalAllAvgStairs / mapAllStairs.length)
   }
 }
 

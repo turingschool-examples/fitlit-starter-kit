@@ -1,5 +1,4 @@
 html {
-  display: grid;
   height: 100%;
   width: 100%;
 }
@@ -8,7 +7,6 @@ body {
   font-family: fantasy;
   display: grid;
   grid-template: repeat(2, 1fr) / repeat(2, 1fr);
-
   height: 100%;
   width: 100%;
 }
@@ -22,6 +20,15 @@ body {
   border-radius: 10px;
   height: 95%;
   width: 95%;
+}
+
+h1 {
+  text-align: center;
+  margin: 0%;
+  padding-top: .2em;
+  height: 28%;
+  width: 43%;
+  font-size: 300%;
 }
 
 .day-week-view {
@@ -48,6 +55,9 @@ button {
 }
 
 .data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   margin-bottom: 6%;
   border: solid black;
   border-radius: 10px;

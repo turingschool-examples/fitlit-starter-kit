@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 'use strict'
 
 const chai = require('chai')
@@ -105,11 +106,11 @@ describe("UserSleep", () => {
   });
 
   it("should return average number of hours slept per day for one user", () => {
-    expect(userSleep.calculateAvgHoursSlept(userSleep, 1)).to.equal(6.437500000000001)
+    expect(userSleep.calculateAvgHoursSlept(userSleep.sleepData, 1)).to.equal(6.437500000000001)
   });
 
-  it("should return a user\'s average sleep quality for all time", () => {
-    expect(userSleep.calculateAvgSleepQual(userSleep, 1)).to.equal(2.8625);
+  it("should return a user's average sleep quality for all time", () => {
+    expect(userSleep.calculateAvgSleepQual(userSleep.sleepData, 1)).to.equal(2.8625);
   });
 
   it("should return the number of hours a user slept for a day", () => {
@@ -128,11 +129,11 @@ describe("UserSleep", () => {
     expect(userSleep.calculateSleepItemPerWeek("2019/06/15", 1, 'sleepQuality')).to.deep.equal([2.2, 3.8, 3, 1.5, 1.3, 3.7, 3.7]);
   });
 
-  it("should return all users\' average sleep quality", () => {
+  it("should return all users' average sleep quality", () => {
     expect(userSleepAll.calculateAllAvgSleepQual(userSleepAll)).to.equal(3.122222222222222)
   });
 
-  it("should return all users\' who sleep well", () => {
+  it("should return all users' who sleep well", () => {
     expect(userSleepAll.findGoodSleepers(userSleep)).to.deep.equal([1, 2])
   });
 

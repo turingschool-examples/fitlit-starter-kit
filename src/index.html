@@ -52,7 +52,7 @@
         </section>
 
 
-        <section class="sleep current-stats">
+        <section class="sleep-button current-stats">
           <div class="daily-stat-icons">
             <img src="../assets/sleep.svg" class="sleep-icon icon">
             <p class="stats-text">sleep</p>
@@ -71,9 +71,36 @@
       <h2>My Activity</h2>
       <!-- <i class="fas fa-chart-area chart-icon"></i> -->
       <article class="display-stats">
+        <div class="sleep-stats hidden">
+          <h2>Today's Sleep</h2>
+          <p class="today-sleep"></p>
+          <div class="avg-sleep-stats">
+
+          </div>
+          <table class="sleep-data">
+            <tr>
+              <td class="sleep today-sleep"></td>
+              <td class="sleep yesterday-sleep"></td>
+              <td class="sleep two-day-sleep"></td>
+              <td class="sleep three-day-sleep"></td>
+              <td class="sleep four-day-sleep"></td>
+              <td class="sleep five-day-sleep"></td>
+              <td class="sleep six-day-sleep"></td>
+            </tr>
+            <tr>
+              <th class="weekly-sleep">Today</th>
+              <th class="weekly-sleep">Yesterday</th>
+              <th class="weekly-sleep">2 Days Ago</th>
+              <th class="weekly-sleep">3 Days Ago</th>
+              <th class="weekly-sleep">4 Days Ago</th>
+              <th class="weekly-sleep">5 Days Ago</th>
+              <th class="weekly-sleep">6 Days Ago</th>
+            </tr>
+            </table>
+        </div>
         <div class="hydration-stats hidden">
           <h2>Today's Consumption</h2>
-            <p class="today-consumption"></p>
+          <p class="today-consumption"></p>
           <table class="water-data">
             <tr>
               <td class="water today-water"></td>

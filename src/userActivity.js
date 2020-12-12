@@ -55,7 +55,12 @@ class UserActivity {
     let findActivityByDate = this.activityData.find((day) => day.date === date);
     let currentUser = userRepo.getAUser(user.id);
     let userSteps = findActivityByDate.numSteps;
-    return userSteps > currentUser.dailyStepGoal
+    return userSteps > currentUser.dailyStepGoal;
+  }
+
+  getDaysStepsSuccess(userRepo, user) {
+    return this.activityData.filter(item => item.numSteps > user.dailyStepGoal)
+    .map(item => item.date)
   }
 }
 

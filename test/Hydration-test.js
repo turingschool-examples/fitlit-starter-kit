@@ -425,4 +425,10 @@ describe('Hydration', () => {
     expect(oneData.date).to.equal('2019/09/18');
     expect(oneData.numOunces).to.equal(67);
   });
+
+  it.skip('should return ounces consumed on given day', () => {
+    const ounces = oneData.returnOuncesToday();
+
+    expect(ounces).to.equal(67);
+  });
 });

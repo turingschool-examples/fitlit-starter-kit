@@ -44,13 +44,6 @@
           </div>
         </section>
 
-        <section class="minutes current-stats">
-          <div class="daily-stat-icons">
-            <img src="../assets/minutes.svg" class="minutes-icon icon">
-            <p class="stats-text">minutes</p>
-          </div>
-        </section>
-
 
         <section class="sleep-button current-stats">
           <div class="daily-stat-icons">
@@ -67,10 +60,37 @@
       </article>
     </section>
 
-    <section class="activity-stats">
+    <section class="user-stats">
       <h2>My Activity</h2>
       <!-- <i class="fas fa-chart-area chart-icon"></i> -->
       <article class="display-stats">
+        <div class="activity-stats">
+          <h2>Today's Activity</h2>
+          <p class="today-activity"></p>
+          <div class="avg-activity-stats">
+
+          </div>
+          <table class="activity-data">
+            <tr>
+              <td class="activity today-activity"></td>
+              <td class="activity yesterday-activity"></td>
+              <td class="activity two-day-activity"></td>
+              <td class="activity three-day-activity"></td>
+              <td class="activity four-day-activity"></td>
+              <td class="activity five-day-activity"></td>
+              <td class="activity six-day-activity"></td>
+            </tr>
+            <tr>
+              <th class="weekly-activity">Today</th>
+              <th class="weekly-activity">Yesterday</th>
+              <th class="weekly-activity">2 Days Ago</th>
+              <th class="weekly-activity">3 Days Ago</th>
+              <th class="weekly-activity">4 Days Ago</th>
+              <th class="weekly-activity">5 Days Ago</th>
+              <th class="weekly-activity">6 Days Ago</th>
+            </tr>
+            </table>
+        </div>
         <div class="sleep-stats hidden">
           <h2>Today's Sleep</h2>
           <p class="today-sleep"></p>

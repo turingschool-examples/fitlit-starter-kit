@@ -1,21 +1,22 @@
 'use strict'
 
-// const UserSleep = require("./userSleep")
-
 const userFirstName = document.querySelector('.user-first-name')
 const userAddress = document.querySelector('.user-address')
 const userEmail = document.querySelector('.user-email')
 const userStepCompare = document.querySelector('.user-step-compare')
 const waterButton = document.querySelector(".water-icon");
-const sleepButton = document.querySelector(".sleep-icon")
-const chartIcon = document.querySelector(".chart-icon");
+const sleepButton = document.querySelector(".sleep-icon");
+const activityButton = document.querySelector(".exercise-icon");
 const displayStatsArea = document.querySelector(".display-stats")
 const hydrationStatsDisplay = document.querySelector(".hydration-stats");
 const sleepStatsDisplay = document.querySelector(".sleep-stats")
+const activityStatsDisplay = document.querySelector(".activity-stats");
 const allWaterDisplays = document.querySelectorAll(".water"); // returns a node list
 const allSleepDisplays = document.querySelectorAll(".sleep"); // returns a node list
+const allActivityDisplays = document.querySelectorAll('.activity'); // returns a node list
 // const todayConsumption = document.querySelector(".today-consumption");
 const todaySleep = document.querySelector(".today-sleep")
+const todayActivity = document.querySelector(".today-activity")
 const avgSleepStats = document.querySelector(".avg-sleep-stats")
 const todayConsumption = document.querySelector(".today-consumption")
 const userDropdown = document.querySelector(".user-dropdown")
@@ -24,10 +25,11 @@ const datePicker = document.querySelector(".date-picker")
 const adminSelector = document.querySelector(".admin-selector")
 
 const userRepo = new UserRepo(userData); // needs to take in array of users
-let currentUser = new User(userRepo.getAUser(21)); // user object
-let chosenDate = "2019/07/16" // default date
+let currentUser = new User(userRepo.getAUser(25)); // user object
+let chosenDate = "2019/06/15" // default date
 const userHydration = new UserHydration(hydrationData);
 const userSleep = new UserSleep(sleepData)
+const userActivity = new UserActivity(activityData);
 
 window.addEventListener('load', () => {
   let chosenUserID = currentUser.id; // sets the ID to a variable to use as an argument
@@ -35,6 +37,12 @@ window.addEventListener('load', () => {
   displayInfoCard(chosenUserID);
   mapUserNames()
   fillDropdown()
+  hide(todaySleep);
+  hide(sleepStatsDisplay);
+  hide(todayConsumption);
+  hide(hydrationStatsDisplay);
+  hide(todayActivity);
+  hide(activityStatsDisplay);
   return chosenUserID; // returning ID out to use it later
 })
 
@@ -44,6 +52,10 @@ waterButton.addEventListener('click', () => {
 
 sleepButton.addEventListener('click', () => {
   displaySleepActivity()
+})
+
+activityButton.addEventListener('click', () => {
+  displayExerciseActivity();
 })
 
 adminSelector.addEventListener('click', (event) => {
@@ -103,6 +115,27 @@ function displaySleepActivity() {
   })
   getSleepData(avgSleepStats, 0, chosenDate, currentUser.id)
 } 
+
+function displayExerciseActivity() {
+  show(activityStatsDisplay);
+  show(displayStatsArea);
+  show(todayActivity);
+  hide(todaySleep);
+  hide(sleepStatsDisplay);
+  hide(todayConsumption);
+  hide(hydrationStatsDisplay);
+  getActivityData(todayActivity, chosenDate, currentUser.id);
+  };
+
+function getActivityData(placement, chosenDate, currentUser) {
+  console.log('pls', chosenDate)
+  console.log('help', currentUser);
+  placement.innerText = `${
+    userActivity.calculateActiveMinutes(chosenDate, currentUser)
+  } minutes`;
+  // getAvgSleepData(avgSleepStats);
+}
+
 
 function getAvgSleepData(placement) {
   let displaySleepQual = userSleep.calculateAvgSleepQual(sleepData, currentUser.id).toFixed(2)

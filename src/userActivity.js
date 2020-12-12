@@ -26,8 +26,9 @@ class UserActivity {
 
   calculateActiveMinutes(date, id) {
     this.mapUserActivity(id); //array of one users all activity
-    let findActivityByDate = this.activityData.find((day) => day.date === date);
-    return findActivityByDate.minutesActive;
+    return this.mapUserActivity(id).find(
+      (day) => day.date === date
+    ).minutesActive;
   }
 
   calculateAvgMinWeek(startDate, id) {

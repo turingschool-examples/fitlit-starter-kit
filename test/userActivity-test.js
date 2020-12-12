@@ -92,7 +92,7 @@ describe("UserActivity", () => {
         address: "123 Main St, Hometown CO 80123-1234",
         email: "my.email.address@hotmail.com",
         strideLength: 4.3,
-        dailyStepGoal: 12340,
+        dailyStepGoal: 3000,
       })),
       (user2 = new User({
         id: 2,
@@ -153,10 +153,11 @@ describe("UserActivity", () => {
     );
   });
 
-  it.skip("should return the sleep quality for a user for a day", () => {
-    expect(userSleep.getOneDayOfData("2019/06/15", 1, "sleepQuality")).to.equal(
-      2.2
-    );
+  it("should return if a user reached their step goal for a day", () => {
+    expect(userActivity.isStepGoalReached(userRepo, user1, "2019/06/12")).to
+      .be.true;
+    expect(userActivity.isStepGoalReached(userRepo, user1, "2019/06/13")).to
+      .be.false;
   });
 
   it.skip("should return number of hours slept each day for a user for a week", () => {

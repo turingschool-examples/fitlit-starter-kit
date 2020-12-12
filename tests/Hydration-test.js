@@ -2,7 +2,6 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Hydration = require('../src/Hydration');
-// const User = require('../src/User');
 
 describe('Hydration', () => {
   let hydration1, hydration10, hydration17;

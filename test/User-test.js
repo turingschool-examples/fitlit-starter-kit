@@ -1,15 +1,15 @@
 const chai = require('chai');
 const expect = chai.expect;
 const testData = require('../data/user-test-data');
-const userTestData = testData.testUsers;
+const testUserData = testData.testUserData;
 const User = require('../src/User');
 
 describe('User', () => {
   let users;
 
   beforeEach(() => {
-    users = userTestData.map(userObject => {
-      const user = new User(userObject);
+    users = testUserData.map(userData => {
+      const user = new User(userData);
       return user;
     });
   })
@@ -51,7 +51,7 @@ describe('User', () => {
   })
 
   it('should return a users first name', () => {
-    expect(users[1].returnFirstName()).to.equal('Tashia');
+    expect(users[1].getFirstName()).to.equal('Tashia');
   })
 
 })

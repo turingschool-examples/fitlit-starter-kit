@@ -1,21 +1,21 @@
-class UserRepository {
-  constructor(userInstanceData) {
-    this.userInstanceData = userInstanceData;
+class UserRepo {
+  constructor(users) {
+    this.users = users;
   }
 
-  returnUserData(userId) {
-    return this.userInstanceData.find(user => user.id === userId);
+  getUserData(userId) {
+    return this.users.find(user => user.id === userId);
   }
 
-  calculateAverageStepGoal() {
-    const totalStepGoal = this.userInstanceData.reduce((totalSteps, user) => {
+  getAllUserAvgStepGoal() {
+    const totalStepGoal = this.users.reduce((totalSteps, user) => {
       return totalSteps + user.dailyStepGoal;
     }, 0);
-    return Math.floor(totalStepGoal / this.userInstanceData.length);
+    return Math.floor(totalStepGoal / this.users.length);
   }
 
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = UserRepository;
+  module.exports = UserRepo;
 }

@@ -1,4 +1,5 @@
-const currentUser = new User(userData[0]);
+const currentUserRepo = new UserRepo(userData);
+const currentUser = new User(currentUserRepo.data[0]);
 const firstNameDisplay = document.querySelector('.first-name-section');
 const fullNameDisplay = document.querySelector('.full-name');
 const addressDisplay = document.querySelector('.address');
@@ -6,11 +7,8 @@ const emailDisplay = document.querySelector('.email');
 const strideLengthDisplay = document.querySelector('.stride');
 const dailyStepGoal = document.querySelector('.daily-step-goal');
 const friendsList = document.querySelector('.friends');
+const averageStepGoal = document.querySelector('.average-step-goal');
 
-
-// const displayUsersFirstName = () => {
-//   firstNameDisplay.innerText = `Hello ${currentUser.provideUsersFirstName()}!`
-// }
 
 const displayAllUserData = () => {
   firstNameDisplay.innerText = `Hello ${currentUser.provideUsersFirstName()}!`
@@ -19,6 +17,7 @@ const displayAllUserData = () => {
   emailDisplay.innerText += `${currentUser.email}`;
   strideLengthDisplay.innerText += `${currentUser.strideLength}`;
   dailyStepGoal.innerText += `${currentUser.dailyStepGoal}`;
+  averageStepGoal.innerText += `        ${currentUserRepo.userStepGoalAverage()}.`;
   displayFriendsByName();
 };
 

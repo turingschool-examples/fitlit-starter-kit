@@ -1,4 +1,4 @@
-const Hydration = require('../src/Hydration');
+// const Hydration = require('../src/Hydration');
 
 class CommunityHydration {
   constructor(data = []) {
@@ -12,7 +12,7 @@ class CommunityHydration {
     return avgWaterConsumed;
   }
 
-  calculateTotalWaterPerDay(userID, date) {
+  calculateTotalWaterOnDay(userID, date) {
     const userWater = this.hydrations.find(water => water.userID === userID && water.date === date);
     return userWater.numOunces;
   }
@@ -43,4 +43,4 @@ class CommunityHydration {
     return weekWaterTotals;
   }
 }
-module.exports = CommunityHydration;
+// module.exports = CommunityHydration;

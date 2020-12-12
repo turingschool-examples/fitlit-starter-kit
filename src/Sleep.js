@@ -6,14 +6,6 @@ class Sleep {
     this.sleepQuality = sleepData.sleepQuality;
   }
 
-  returnHoursSlept() {
-    return this.hoursSlept;
-  }
-
-  returnSleepQuality() {
-    return this.sleepQuality;
-  }
-
 }
 
 if (typeof module !== 'undefined') {

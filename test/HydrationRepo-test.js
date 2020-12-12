@@ -3763,7 +3763,7 @@ describe('HydrationRepo', () => {
     repo = new HydrationRepo(data);
   });
 
-  it('should be able to calculate user\'s avg fluid oz consumed for all time', () => {
+  it.skip('should be able to calculate user\'s avg fluid oz consumed for all time', () => {
     const avg = repo.calculateAvgOz(34);
     console.log(user42ozAvg);
 

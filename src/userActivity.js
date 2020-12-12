@@ -69,20 +69,37 @@ class UserActivity {
       .map((item) => item.flightsOfStairs)
       .sort((a, b) => b - a)[0];
   }
-  calculateAllAvgStairs() {
-    let mapAllStairs = this.activityData.map((item) => item.flightsOfStairs);
+  calculateAllAvgStairs(date) {
+    let findActivityByDate = this.activityData.filter(
+      (day) => day.date === date
+    );
+    let mapAllStairs = findActivityByDate.map((item) => item.flightsOfStairs);
     let totalAllAvgStairs = mapAllStairs.reduce((total, value) => {
       return (total += value);
     }, 0);
     return totalAllAvgStairs / mapAllStairs.length;
   }
 
-  calculateAllAvgSteps() {
-    let mapAllSteps = this.activityData.map(item => item.numSteps);
+  calculateAllAvgSteps(date) {
+    let findActivityByDate = this.activityData.filter(
+      (day) => day.date === date
+    );
+    let mapAllSteps = findActivityByDate.map((item) => item.numSteps);
     let totalAllAvgSteps = mapAllSteps.reduce((total, value) => {
-      return total += value;
-   },0)
-   return totalAllAvgSteps / mapAllSteps.length
+      return (total += value);
+    }, 0);
+    return totalAllAvgSteps / mapAllSteps.length;
+  }
+
+  calculateAllAvgMin(date) {
+    let findActivityByDate = this.activityData.filter(
+      (day) => day.date === date
+    );
+    let mapAllMinutes = findActivityByDate.map((item) => item.minutesActive);
+    let totalAllAvgMin = mapAllMinutes.reduce((total, value) => {
+      return (total += value);
+    }, 0);
+    return totalAllAvgMin / mapAllMinutes.length;
   }
 }
 

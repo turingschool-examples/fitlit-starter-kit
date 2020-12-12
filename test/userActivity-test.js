@@ -181,8 +181,10 @@ describe("UserActivity", () => {
       14);
   });
 
-  it.skip("should return all users' who sleep well", () => {
-    expect(userSleepAll.findGoodSleepers(userSleep)).to.deep.equal([1, 2]);
+  it("should return all users' average steps taken for a day", () => {
+    expect(userActivityAll.calculateAllAvgSteps(userActivityAll)).to.equal(
+      4365.555555555556
+    );
   });
 
   it.skip("should return the user or users who slept the most on a day", () => {

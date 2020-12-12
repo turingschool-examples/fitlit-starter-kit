@@ -69,13 +69,20 @@ class UserActivity {
       .map((item) => item.flightsOfStairs)
       .sort((a, b) => b - a)[0];
   }
-  calculateAllAvgStairs(allStairs) {
-    let mapAllStairs = this.activityData.map(item => item.flightsOfStairs)
+  calculateAllAvgStairs() {
+    let mapAllStairs = this.activityData.map((item) => item.flightsOfStairs);
     let totalAllAvgStairs = mapAllStairs.reduce((total, value) => {
-      total += value
-      return total;
-    }, 0)
-    return (totalAllAvgStairs / mapAllStairs.length)
+      return (total += value);
+    }, 0);
+    return totalAllAvgStairs / mapAllStairs.length;
+  }
+
+  calculateAllAvgSteps() {
+    let mapAllSteps = this.activityData.map(item => item.numSteps);
+    let totalAllAvgSteps = mapAllSteps.reduce((total, value) => {
+      return total += value;
+   },0)
+   return totalAllAvgSteps / mapAllSteps.length
   }
 }
 

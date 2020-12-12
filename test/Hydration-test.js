@@ -1,15 +1,15 @@
 const chai = require('chai');
 const expect = chai.expect;
-const hydrationTestDataFile = require('../data/hydration-test-data');
-const hydrationTestDataArray = hydrationTestDataFile.testHydration;
+const testData = require('../data/hydration-test-data');
+const testHydrationData = testData.testHydrationData;
 const Hydration = require('../src/Hydration');
 
 describe('Hydration', () => {
   let hydrationData;
 
   beforeEach(() => {
-    hydrationData = hydrationTestDataArray.map(hydrationObject => {
-      const hydration = new Hydration(hydrationObject);
+    hydrationData = testHydrationData.map(hydrationObj => {
+      const hydration = new Hydration(hydrationObj);
       return hydration;
     });
   })
@@ -38,8 +38,8 @@ describe('Hydration', () => {
   })
 
   it('should return a number of oz', () => {
-    expect(hydrationData[0].returnNumOunces()).to.equal(27);
-    expect(hydrationData[10].returnNumOunces()).to.equal(67);
+    expect(hydrationData[0].getNumOunces()).to.equal(27);
+    expect(hydrationData[10].getNumOunces()).to.equal(67);
   })
 
 })

@@ -5,7 +5,7 @@ class Hydration {
     this.numOunces = hydrationData.numOunces;
   }
 
-  returnNumOunces() {
+  getNumOunces() {
     return this.numOunces;
   }
 

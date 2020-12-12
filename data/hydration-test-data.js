@@ -1,4 +1,4 @@
-const testHydration = [{
+const testHydrationData = [{
     "userID": 1,
     "date": "2019/06/15",
     "numOunces": 27
@@ -82,6 +82,6 @@ const testHydration = [{
 
 if (typeof module !== 'undefined') {
   module.exports = {
-    testHydration
+    testHydrationData
   }
 }

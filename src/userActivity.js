@@ -59,8 +59,13 @@ class UserActivity {
   }
 
   getDaysStepsSuccess(userRepo, user) {
-    return this.activityData.filter(item => item.numSteps > user.dailyStepGoal)
-    .map(item => item.date)
+    return this.activityData
+      .filter((item) => item.numSteps > user.dailyStepGoal)
+      .map((item) => item.date);
+  }
+
+  getStairRecord(id) {
+    return this.activityData.map(item => item.flightsOfStairs).sort((a,b) => b - a)[0]
   }
 }
 

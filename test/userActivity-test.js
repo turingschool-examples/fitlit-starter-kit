@@ -171,10 +171,9 @@ describe("UserActivity", () => {
     ]);
   });
 
-  it.skip("should return sleep quality for each day for a user for a week", () => {
+  it("should return a user's all time stair climbing record", () => {
     expect(
-      userSleep.calculateSleepItemPerWeek("2019/06/15", 1, "sleepQuality")
-    ).to.deep.equal([2.2, 3.8, 3, 1.5, 1.3, 3.7, 3.7]);
+      userActivity.getStairRecord(1)).to.equal(20);
   });
 
   it.skip("should return all users' average sleep quality", () => {

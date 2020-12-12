@@ -25,7 +25,7 @@ const datePicker = document.querySelector(".date-picker")
 const adminSelector = document.querySelector(".admin-selector")
 
 const userRepo = new UserRepo(userData); // needs to take in array of users
-let currentUser = new User(userRepo.getAUser(25)); // user object
+let currentUser = new User(userRepo.getAUser(21)); // user object
 let chosenDate = "2019/06/15" // default date
 const userHydration = new UserHydration(hydrationData);
 const userSleep = new UserSleep(sleepData)
@@ -101,6 +101,8 @@ function displayHydrationActivity() {
   allWaterDisplays.forEach((cell, index) => {
     getHydrationData(cell, index, chosenDate, currentUser.id)
   })
+  hide(activityStatsDisplay);
+  hide(todayActivity);
 }
 
 function displaySleepActivity() {
@@ -114,6 +116,8 @@ function displaySleepActivity() {
     getSleepData(cell, index, chosenDate, currentUser.id)
   })
   getSleepData(avgSleepStats, 0, chosenDate, currentUser.id)
+  hide(activityStatsDisplay);
+  hide(todayActivity);
 } 
 
 function displayExerciseActivity() {
@@ -127,13 +131,11 @@ function displayExerciseActivity() {
   getActivityData(todayActivity, chosenDate, currentUser.id);
   };
 
+
 function getActivityData(placement, chosenDate, currentUser) {
-  console.log('pls', chosenDate)
-  console.log('help', currentUser);
   placement.innerText = `${
     userActivity.calculateActiveMinutes(chosenDate, currentUser)
-  } minutes`;
-  // getAvgSleepData(avgSleepStats);
+  } minutes, and ${userActivity.calculateMilesWalked(userRepo, currentUser, chosenDate).toFixed(2)} miles`;
 }
 
 

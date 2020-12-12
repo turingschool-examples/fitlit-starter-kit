@@ -17,7 +17,7 @@ class UserActivity {
 
   calculateMilesWalked(userRepo, user, date) {
     let findActivityByDate = this.activityData.find((day) => day.date === date);
-    let currentUser = userRepo.getAUser(user.id);
+    let currentUser = userRepo.getAUser(user);
     let userStride = currentUser.strideLength;
     let userSteps = findActivityByDate.numSteps;
     let miles = (userStride * userSteps) / 5280;

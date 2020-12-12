@@ -17,17 +17,30 @@ class CommunityHydration {
     return userWater.numOunces;
   }
 
+  convertDateString(date) {
+    return parseInt(date.split('/').join(''));
+  }
+
   calculateTotalWeek(userID, startDate, endDate){
+    const weekWaterTotals = [];
+    const startDateNumber = this.convertDateString(startDate);
+    const endDateNumber = this.convertDateString(endDate);
     const userWater = this.hydrations.filter(water => water.userID === userID)
-    const userWaterDateConversion = userWater.map(hydration => {
-      parseInt(hydration.date.split('/').join(''))
-    const waterWithinWeek = this.hydration.filter( water.date >=  startDate && water.date <= endDate);
-
-    //.find date and add 1 to each day? to create a new array? or sort?
-    //what if the year runs out or dates run into next month?
-    //.getDate()? ++
-    //.slice() date
-
-    // calculateTotalWeekTrial(20, 20191226, 20191231)
+    const userWaterStrings = userWater.map(hydration => {
+      const waterStrings = this.convertDateString(hydration.date);
+      return waterStrings;
+    })
+    const waterWithinWeek = userWaterStrings.filter(waterDate => waterDate >= startDateNumber && waterDate <= endDateNumber);
+    const waterWithinWeekSorted = waterWithinWeek.sort((startDateNumber, endDateNumber) => startDateNumber - endDateNumber);
+    const waterWeek = waterWithinWeekSorted.forEach(element => {
+      const waterWeekFiltered = this.hydrations.filter(water => {
+        let dateString = this.convertDateString(water.date)
+        if(dateString === element){
+          weekWaterTotals.push(water.numOunces);
+        }
+       })
+    })
+    return weekWaterTotals;
   }
 }
+module.exports = CommunityHydration;

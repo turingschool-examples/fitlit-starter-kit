@@ -23,6 +23,11 @@ const userDropdown = document.querySelector(".user-dropdown")
 const namesList = document.querySelector(".names-list")
 const datePicker = document.querySelector(".date-picker")
 const adminSelector = document.querySelector(".admin-selector")
+const compareStairs = document.querySelector(".stairs-compare");
+const compareSteps = document.querySelector(".steps-compare");
+const compareMinutes = document.querySelector(".minutes-compare");
+const compareMiles = document.querySelector(".miles-compare");
+
 
 const userRepo = new UserRepo(userData); // needs to take in array of users
 let currentUser = new User(userRepo.getAUser(21)); // user object
@@ -128,19 +133,52 @@ function displayExerciseActivity() {
   hide(sleepStatsDisplay);
   hide(todayConsumption);
   hide(hydrationStatsDisplay);
-  getActivityData(todayActivity, chosenDate, currentUser.id);
+  displayMilesWalked(todayActivity, chosenDate, currentUser.id);
+  displayUserSuccess();
   };
 
 
-function getActivityData(placement, chosenDate, currentUser) {
-  placement.innerText = `${userActivity.calculateActiveMinutes(
-    chosenDate,
-    currentUser
-  )} minutes, ${userActivity
+function displayMilesWalked(placement, chosenDate, currentUser) {
+  placement.innerText = `You walked ${userActivity
     .calculateMilesWalked(userRepo, currentUser, chosenDate)
-    .toFixed(2)} miles, and
-  ${userActivity.calculateNumSteps(chosenDate, currentUser)} steps`;
+    .toFixed(2)} miles today`;
 }
+
+function displayUserSuccess() {
+   let singleStair = userActivity.calculateStairsClimbed(
+     chosenDate,
+     currentUser.id
+   );
+   let allStairs = userActivity.calculateAllAvgStairs(chosenDate);
+    if (userActivity.isUserAboveAvg(singleStair, allStairs)) {
+      compareStairs.innerText = `Your ${singleStair} stairs climbed is higher than the user average of ${allStairs}`;
+    } else {
+      compareStairs.innerText = `Your ${singleStair} stairs climbed is lower than the user average of ${allStairs}`;
+    }
+
+    let singleStep = userActivity.calculateNumSteps(
+      chosenDate,
+      currentUser.id
+    );
+    let allSteps = userActivity.calculateAllAvgSteps(chosenDate);
+    if (userActivity.isUserAboveAvg(singleStep, allSteps)) {
+      compareSteps.innerText = `Your ${singleStep} step count is higher than the user average of ${allSteps}`;
+    } else {
+      compareSteps.innerText = `Your ${singleStep} step count is lower than the user average of ${allSteps}`;
+    }
+
+     let singleMinute = userActivity.calculateActiveMinutes(
+       chosenDate,
+       currentUser.id
+     );
+     let allMinutes = userActivity.calculateAllAvgMin(chosenDate);
+     if (userActivity.isUserAboveAvg(singleMinute, allMinutes)) {
+       compareMinutes.innerText = `Your active minute count of ${singleMinute} is higher than the user average of ${allMinutes}`;
+     } else { 
+       compareMinutes.innerText = `Your active minute count of ${singleMinute} is lower than the user average of ${allMinutes}`;
+     }
+  }
+    
 
 
 function getAvgSleepData(placement) {

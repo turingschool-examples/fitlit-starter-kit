@@ -34,7 +34,14 @@ class UserActivity {
     this.mapUserActivity(id); //array of one users all activity
     return this.mapUserActivity(id).find((day) => day.date === date)
       .numSteps;
-  } //do not have a test for this one
+  } 
+
+  calculateStairsClimbed(date, id) {
+    this.mapUserActivity(id); //array of one users all activity
+    return this.mapUserActivity(id).find((day) => day.date === date)
+      .flightsOfStairs;
+  } // dont have a test for this one
+
 
   calculateAvgMinWeek(startDate, id) {
     const activityItems = this.mapUserActivity(id);
@@ -106,6 +113,12 @@ class UserActivity {
       return (total += value);
     }, 0);
     return totalAllAvgMin / mapAllMinutes.length;
+  }
+
+  
+
+  isUserAboveAvg(user, average) {
+      return user > average
   }
 }
 

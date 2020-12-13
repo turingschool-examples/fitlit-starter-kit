@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const userMain = document.querySelector('.user-main')
 const userProfile = document.querySelector('.user-profile')
 const friends = document.querySelector('.friends')
@@ -6,11 +7,17 @@ const communityStepGoal = document.querySelector('.community-step-goal')
 const water = document.querySelector('.water');
 const graph = document.querySelector('.graph');
 const graphTitle = document.querySelector('.title-graph');
+const steps = document.querySelector('.steps');
+const activeMinutes = document.querySelector('.active-minutes')
+const stairs = document.querySelector('.stairs')
+
 //since multiple classes will need these, global
 let community = null
 let user = null
 let communityHydration = null;
 let hydration = null;
+let communityActivity = null;
+let activity = null;
 
 window.addEventListener('load', loadPage)
 
@@ -21,6 +28,8 @@ const createCommunity = () => {
   user = community.users[0]
   communityHydration = new CommunityHydration(hydrationData)
   hydration = communityHydration.hydrations[0]
+  communityActivity = new CommunityActivity(activityData)
+  activity = communityActivity.activities[0]
 }
 
 //GREETING:
@@ -75,6 +84,17 @@ const showHydrationStatsWeek = (startDate, endDate) => {
     `)
 }
 //ADD ACTIVITY STATS:
+const showIfUserMetStepGoal = () => {
+  if (activity.verififyIfStepGoal(user)) {
+    steps.innerHTML = '<p>You have met your Daily Step Goal!</p>'
+  } else {
+    steps.innerHTML = '<p>Keep working toward your Daily Step Goal.</p>'
+  }
+}
+
+const showUserStepsInMiles = () => {
+  steps.insertAdjacentHTML('beforeend', `You've stepped ${activity.getStepMiles(user)} miles today.`)
+}
 
 //ADD SLEEP STATS:
 
@@ -92,13 +112,15 @@ const showFriends = () => {
   friends.innerHTML += friendDisplay.join(' ')
 }
 
-//we can add other calls to this onlaod function
+//we can add other calls to this onload function
 function loadPage() {
   createCommunity()
   greetUser()
   showProfile()
   showStepGoalComparison()
   showHydrationStats()
-  showHydrationStatsWeek("2019/09/14","2019/09/20")
+  showHydrationStatsWeek("2019/09/14", "2019/09/20")
   showFriends()
+  showIfUserMetStepGoal()
+  showUserStepsInMiles()
 }

@@ -11,8 +11,15 @@ class HydrationRepo {
     return Math.round(totalHydration / filtered.length);
   }
 
-  returnWaterConsumed(userId, dates) {    
-    
+  returnWaterConsumed(userId, date) {        
+    const allUserData = this.data.filter(userData => userData.id === userId);
+    const start = allUserData.findIndex(element => element.date === date);    
+    const waterConsumed = [];
+    for (let i = start; i < start + 7; i++) {
+      waterConsumed.push(allUserData[i].numOunces);
+    }
+
+    return waterConsumed;
   }
 }
 

@@ -4,7 +4,7 @@ const expect = chai.expect;
 const Sleep = require('../src/Sleep');
 // const SleepRepo = require('../src/SleepRepo');
 
-describe('Hydration', () => {
+describe('Sleep', () => {
   let sleepData, instanceData;
 
   beforeEach(() => {
@@ -30,7 +30,7 @@ describe('Hydration', () => {
   });
 
   it.skip('should have a way to return sleep quality for specific date', () => {
-    expect(instantData.returnSleepQuality()).to.equal(2.5);
+    expect(instanceData.returnSleepQuality()).to.equal(2.5);
   });
 
 });

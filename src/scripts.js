@@ -4,9 +4,11 @@ const userFirstName = document.querySelector('.user-first-name')
 const userAddress = document.querySelector('.user-address')
 const userEmail = document.querySelector('.user-email')
 const userStepCompare = document.querySelector('.user-step-compare')
+
 const waterButton = document.querySelector(".water-icon");
 const sleepButton = document.querySelector(".sleep-icon");
 const activityButton = document.querySelector(".exercise-icon");
+
 const displayStatsArea = document.querySelector(".display-stats")
 const hydrationStatsDisplay = document.querySelector(".hydration-stats");
 const sleepStatsDisplay = document.querySelector(".sleep-stats")
@@ -14,7 +16,6 @@ const activityStatsDisplay = document.querySelector(".activity-stats");
 const allWaterDisplays = document.querySelectorAll(".water"); // returns a node list
 const allSleepDisplays = document.querySelectorAll(".sleep"); // returns a node list
 const allActivityDisplays = document.querySelectorAll('.activity'); // returns a node list
-// const todayConsumption = document.querySelector(".today-consumption");
 const todaySleep = document.querySelector(".today-sleep")
 const todayActivity = document.querySelector(".today-activity")
 const avgSleepStats = document.querySelector(".avg-sleep-stats")
@@ -42,12 +43,7 @@ window.addEventListener('load', () => {
   displayInfoCard(chosenUserID);
   mapUserNames()
   fillDropdown()
-  hide(todaySleep);
-  hide(sleepStatsDisplay);
-  hide(todayConsumption);
-  hide(hydrationStatsDisplay);
-  hide(todayActivity);
-  hide(activityStatsDisplay);
+  activityStatsDisplay.classList.toggle('hidden');
   return chosenUserID; // returning ID out to use it later
 })
 
@@ -70,7 +66,9 @@ adminSelector.addEventListener('click', (event) => {
   displayFirstName() // show user first name
   displayInfoCard() // show user info
   setChosenDate() // set date from date in calendar
-  displayStatsArea.classList.add('hidden')
+  clearDisplay(hydrationStatsDisplay);
+  clearDisplay(activityStatsDisplay);
+  clearDisplay(sleepStatsDisplay);
   return currentUser
 })
 
@@ -96,43 +94,31 @@ function displayInfoCard() {
 }
 
 function displayHydrationActivity() {
-  // hide(chartIcon);
-  show(hydrationStatsDisplay);
-  show(displayStatsArea)
-  show(todayConsumption)
-  hide(todaySleep)
-  hide(sleepStatsDisplay)
+  clearDisplay(sleepStatsDisplay);
+  clearDisplay(activityStatsDisplay);
+  toggleElement(hydrationStatsDisplay)  
   getHydrationData(todayConsumption, 0, chosenDate, currentUser.id);
   allWaterDisplays.forEach((cell, index) => {
     getHydrationData(cell, index, chosenDate, currentUser.id)
   })
-  hide(activityStatsDisplay);
-  hide(todayActivity);
+  console.log('hi')
 }
 
 function displaySleepActivity() {
-  show(sleepStatsDisplay)
-  show(displayStatsArea)
-  show(todaySleep)
-  hide(todayConsumption)
-  hide(hydrationStatsDisplay)
+  clearDisplay(hydrationStatsDisplay);
+  clearDisplay(activityStatsDisplay);
+  toggleElement(sleepStatsDisplay);
   getSleepData(todaySleep, 0, chosenDate, currentUser.id)
   allSleepDisplays.forEach((cell, index) => {
     getSleepData(cell, index, chosenDate, currentUser.id)
   })
   getSleepData(avgSleepStats, 0, chosenDate, currentUser.id)
-  hide(activityStatsDisplay);
-  hide(todayActivity);
 } 
 
 function displayExerciseActivity() {
-  show(activityStatsDisplay);
-  show(displayStatsArea);
-  show(todayActivity);
-  hide(todaySleep);
-  hide(sleepStatsDisplay);
-  hide(todayConsumption);
-  hide(hydrationStatsDisplay);
+  clearDisplay(hydrationStatsDisplay);
+  clearDisplay(sleepStatsDisplay);
+  toggleElement(activityStatsDisplay);
   displayMilesWalked(todayActivity, chosenDate, currentUser.id);
   displayUserSuccess();
   };
@@ -178,9 +164,9 @@ function displayUserSuccess() {
        compareMinutes.innerText = `Your active minute count of ${singleMinute} is lower than the user average of ${allMinutes}`;
      }
   }
+
+
     
-
-
 function getAvgSleepData(placement) {
   let displaySleepQual = userSleep.calculateAvgSleepQual(sleepData, currentUser.id).toFixed(2)
   let displaySleepHours = userSleep.calculateAvgHoursSlept(sleepData, currentUser.id).toFixed(2)
@@ -202,25 +188,20 @@ function getHydrationData(placement, index, chosenDate, currentUser) {
   } ounces`;
 }
 
-function show(element) {
-  element.classList.remove('hidden')
+function toggleElement(element) {
+  element.classList.toggle('hidden')
 }
 
-function hide(element) {
-  element.classList.add('hidden')
+function clearDisplay(element) {
+  element.classList.add('hidden');
 }
 
-// why didn't we use map instead of reduce?
 const mapUserNames = () => {
-  userData.sort((a, b) => { // this should work with a.name - b.name tho?
+  const listOfNames = userData.sort((a, b) => { 
     if (a.name < b.name) {
       return -1
     }
-  })
-  let listOfNames = userData.reduce((total, value) => {
-    total.push(value.name)
-    return total;
-  }, [])
+  }).map(user => user.name)
   return listOfNames
 }
 

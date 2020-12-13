@@ -8,81 +8,13 @@ describe('Hydration', () => {
   let sleepData, instanceData;
 
   beforeEach(() => {
-    sleepData = [
-      {
+    sleepData = {
         "userID": 1,
         "date": "2019/06/15",
         "hoursSlept": 6.6,
         "sleepQuality": 2.5
-      },
-      {
-        "userID": 2,
-        "date": "2019/06/15",
-        "hoursSlept": 7,
-        "sleepQuality": 3
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/16",
-        "hoursSlept": 6.1,
-        "sleepQuality": 2.2
-      },
-      {
-        "userID": 2,
-        "date": "2019/06/16",
-        "hoursSlept": 6.3,
-        "sleepQuality": 2.3
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/17",
-        "hoursSlept": 7,
-        "sleepQuality": 3
-      },
-      {
-        "userID": 2,
-        "date": "2019/06/17",
-        "hoursSlept": 6.1,
-        "sleepQuality": 2.2
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/18",
-        "hoursSlept": 6.6,
-        "sleepQuality": 2.5
-      },
-      {
-        "userID": 2,
-        "date": "2019/06/18",
-        "hoursSlept": 7,
-        "sleepQuality": 3
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/19",
-        "hoursSlept": 7,
-        "sleepQuality": 3
-      },
-      {
-        "userID": 2,
-        "date": "2019/06/19",
-        "hoursSlept": 6.1,
-        "sleepQuality": 2.2
-      },
-      {
-        "userID": 1,
-        "date": "2019/06/20",
-        "hoursSlept": 6.6,
-        "sleepQuality": 2.5
-      },
-      {
-        "userID": 2,
-        "date": "2019/06/20",
-        "hoursSlept": 7,
-        "sleepQuality": 3
-      },
-    ];
-    instanceData = new Sleep(sleepData[0]);
+      };
+    instanceData = new Sleep(sleepData);
 
   });
 
@@ -98,7 +30,7 @@ describe('Hydration', () => {
   });
 
   it.skip('should have a way to return sleep quality for specific date', () => {
-    expect(instantData.)
+    expect(instantData.returnSleepQuality()).to.equal(2.5);
   });
 
 });

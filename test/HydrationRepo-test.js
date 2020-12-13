@@ -3764,8 +3764,7 @@ describe('HydrationRepo', () => {
   });
 
   it.skip('should be able to calculate user\'s avg fluid oz consumed for all time', () => {
-    const avg = repo.calculateAvgOz(34); // change to have all time in name
-    console.log(user42ozAvg);
+    const avg = repo.calculateAvgOzOverTime(34); // change to have all time in name    
 
     expect(avg).to.be.equal(83.5);
   });

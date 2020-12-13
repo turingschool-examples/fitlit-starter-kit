@@ -3769,10 +3769,10 @@ describe('HydrationRepo', () => {
     expect(repo.data[5]).to.be.an.instanceof(Hydration);
   });
 
-  it.skip('should be able to calculate user\'s avg fluid oz consumed for all time', () => {
-    const avg = repo.calculateAvgOzOverTime(34); // change to have all time in name    
+  it('should be able to calculate user\'s avg fluid oz consumed for all time', () => {
+    const avg = repo.calculateAvgOzOverTime(34);
 
-    expect(avg).to.be.equal(83.5);
+    expect(avg).to.be.equal(54);
   });
   
   it.skip('should be able to return fluid oz of water consumed each day for a given week for a given user', () => {    

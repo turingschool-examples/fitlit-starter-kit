@@ -2,6 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const HydrationRepo = require('../src/HydrationRepo');
+const Hydration = require('../src/Hydration');
 
 describe('HydrationRepo', () => {
   let data, repo;
@@ -3761,6 +3762,11 @@ describe('HydrationRepo', () => {
     ];
 
     repo = new HydrationRepo(data);
+  });
+
+  it.skip('should contain Hydration instances', () => {
+    expect(repo.data[0]).to.be.an.instanceof(Hydration);
+    expect(repo.data[5]).to.be.an.instanceof(Hydration);
   });
 
   it.skip('should be able to calculate user\'s avg fluid oz consumed for all time', () => {

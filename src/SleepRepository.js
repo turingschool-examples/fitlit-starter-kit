@@ -57,7 +57,11 @@ class SleepRepo {
     const userSleep = this.getSleepById(id);
     const sleepDates = userSleep.map(sleep => sleep.date);
     const indexOfDate = sleepDates.indexOf(date);
-    return userSleep.slice(indexOfDate - 6, indexOfDate + 1);
+    const sleepByDate = userSleep.slice(indexOfDate - 6, indexOfDate + 1);
+    return sleepByDate.reduce((obj, sleep) => {
+      obj[sleep.date] = sleep.sleepQuality;
+      return obj;
+    }, {})
   }
 
   getAllUsersAvgSleepQualityAllTime() {

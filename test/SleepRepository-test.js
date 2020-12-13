@@ -157,6 +157,17 @@ describe('SleepRepo', () => {
       "2019/06/21": 9.5});
   })
 
+  it('should get a users sleep data for a given week', () => {
+    expect(sleepRepo.getSleepQualityByWeek(1, "2019/06/21")).to.deep.equal({
+      "2019/06/15": 4.4,
+      "2019/06/16": 3.2,
+      "2019/06/17": 3,
+      "2019/06/18": 1.6,
+      "2019/06/19": 3.2,
+      "2019/06/20": 4.9,
+      "2019/06/21": 3.3});
+  })
+
   it('should get the avg sleep quality for all users', () => {
     expect(sleepRepo.getAllUsersAvgSleepQualityAllTime()).to.equal(3.0);
   })

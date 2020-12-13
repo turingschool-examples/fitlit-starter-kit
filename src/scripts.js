@@ -4,8 +4,8 @@ const friends = document.querySelector('.friends')
 const userStepGoal = document.querySelector('.user-step-goal')
 const communityStepGoal = document.querySelector('.community-step-goal')
 const water = document.querySelector('.water');
-const waterStats = document.querySelector('.water-stats');
 const graph = document.querySelector('.graph');
+const graphTitle = document.querySelector('.title-graph');
 //since multiple classes will need these, global
 let community = null
 let user = null
@@ -20,7 +20,7 @@ const createCommunity = () => {
   community = new UserRepository(userData)
   user = community.users[0]
   communityHydration = new CommunityHydration(hydrationData)
-  hydration = communityHydration.hydrations[0]//?
+  hydration = communityHydration.hydrations[0]
 }
 
 //GREETING:
@@ -55,14 +55,14 @@ const showStepGoalComparison = () => {
 
 //ADD TODAY's HYDRATION STATS:
 const showHydrationStats = () => {
-  waterStats.insertAdjacentHTML('beforeend',
+  water.insertAdjacentHTML('beforeend',
     `<p class="water-stats">Water consumed today: ${communityHydration.calculateTotalWaterOnDay(hydration.userID, "2019/09/20")} OZ</p>
     `)
 }
 
 //ADD WEEKLY HYDRATION STATS:
-const showHydrationStatsWeek = () => {
-  graph.insertAdjacentHTML('beforeend',
+const showHydrationStatsWeek = (startDate, endDate) => {
+  graphTitle.insertAdjacentHTML('afterend',
     `<article class="water-stats-week">Water consumed over the week of ${startDate}-${endDate}:
       <p>Day 1: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[0]} OZ</p>
       <p>Day 2: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[1]} OZ</p>
@@ -99,5 +99,6 @@ function loadPage() {
   showProfile()
   showStepGoalComparison()
   showHydrationStats()
+  showHydrationStatsWeek("2019/09/14","2019/09/20")
   showFriends()
 }

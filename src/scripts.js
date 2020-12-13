@@ -108,7 +108,6 @@ function displayHydrationInfo(user, date) {
 }
 
 function displaySleepInfo(user, date) {
-  // const pastWeekSleep = sleepRepo.getSleepDataByWeek(user.id, date);
   sleepStats.innerHTML = `
     <h2>Sleep</h2>
     <div class="widget">
@@ -119,66 +118,46 @@ function displaySleepInfo(user, date) {
       <p>All-time average sleep quality: ${sleepRepo.getUserAvgSleepQualityAllTime(user.id)}</p>
       <p>All-time average hours slept: ${sleepRepo.getUserAvgHrsSleptAllTime(user.id)}</p>
     </div>`;
-    displaySleepChart();
-    // <div class="widget">
-    //   <p>Your sleep stats by week</p>
-    //   <p>${pastWeekSleep[0].date}: ${pastWeekSleep[0].hoursSlept} | ${pastWeekSleep[0].sleepQuality}</p>
-    //   <p>${pastWeekSleep[1].date}: ${pastWeekSleep[1].hoursSlept} | ${pastWeekSleep[1].sleepQuality}</p>
-    //   <p>${pastWeekSleep[2].date}: ${pastWeekSleep[2].hoursSlept} | ${pastWeekSleep[2].sleepQuality}</p>
-    //   <p>${pastWeekSleep[3].date}: ${pastWeekSleep[3].hoursSlept} | ${pastWeekSleep[3].sleepQuality}</p>
-    //   <p>${pastWeekSleep[4].date}: ${pastWeekSleep[4].hoursSlept} | ${pastWeekSleep[4].sleepQuality}</p>
-    //   <p>${pastWeekSleep[5].date}: ${pastWeekSleep[5].hoursSlept} | ${pastWeekSleep[5].sleepQuality}</p>
-    //   <p>${pastWeekSleep[6].date}: ${pastWeekSleep[6].hoursSlept} | ${pastWeekSleep[6].sleepQuality}</p>
-    // </div>`;
+  displaySleepChart();
 }
-// debugger;
-// let pastWeekSleep = sleepRepo.getSleepDataByWeek(1, "2019/09/22");
+
 function displaySleepChart() {
   let weekSleepChart = new Chart(sleepHoursWeek, {
-    // pastWeekSleep: sleepRepo.getSleepDataByWeek(currentUser, "2019/09/22"),
-    // The type of chart we want to create
     type: 'line',
-    // The data for our dataset
     data: {
-        // labels: [pastWeekSleep[0].date, pastWeekSleep[1].date, pastWeekSleep[2].date, pastWeekSleep[3].date, pastWeekSleep[4].date, pastWeekSleep[5].date, pastWeekSleep[6].date],
-        // labels: sleepRepo.getDatesOfWeek("2019/09/22"),
-        // labels: Object.keys(sleepRepo.getSleepDataByWeek(currentUser.id, "2019/09/22")),
-        labels: Object.keys(sleepRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22")),
-        datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            fill: false,
-            // data: [pastWeekSleep[0].hoursSlept, pastWeekSleep[1].hoursSlept, pastWeekSleep[2].hoursSlept, pastWeekSleep[3].hoursSlept, pastWeekSleep[4].hoursSlept, pastWeekSleep[5].hoursSlept, pastWeekSleep[6].hoursSlept]
-            // data: Object.values(hydrationRepo.retrieveWeekHydration(activeUser.id, "2019/09/22"))
-            data: Object.values(sleepRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22"))
-        }, {
-          label: 'My Second dataset',
-          backgroundColor: 'black',
-          fill: false,
-          // borderColor: 'rgb(255, 99, 132)',
-          // data: [pastWeekSleep[0].sleepQuality, pastWeekSleep[1].sleepQuality, pastWeekSleep[2].sleepQuality, pastWeekSleep[3].sleepQuality, pastWeekSleep[4].sleepQuality, pastWeekSleep[5].sleepQuality, pastWeekSleep[6].sleepQuality]
-          data: Object.values(sleepRepo.getSleepQualityByWeek(currentUser.id, "2019/09/22"))
-        }]
+      labels: Object.keys(sleepRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22")),
+      datasets: [{
+        label: 'Hours Slept',
+        backgroundColor: '#536DFE',
+        borderColor: '#536DFE',
+        fill: false,
+        data: Object.values(sleepRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22"))
+      }, {
+        label: 'Sleep Quality',
+        backgroundColor: '#303f9f',
+        borderColor: '#303f9f',
+        fill: false,
+        data: Object.values(sleepRepo.getSleepQualityByWeek(currentUser.id, "2019/09/22"))
+      }]
     },
     options: {
       // maintainAspectRatio: false,
       title: {
         display: true,
-        text: "Your week\'s Sleep information",
+        text: "Your sleep stats for the week:",
         fontSize: 16,
-        fontColor: "rgb(0, 0, 0)"
+        fontColor: "#303f9f"
       },
       legend: {
         // display: false
         labels: {
-          fontColor: "rgb(0, 0, 0)"
+          fontColor: "#303f9f"
         },
       },
       scales: {
         yAxes: [{
           ticks: {
-            fontColor: "rgb(0, 0, 0)",
+            fontColor: "#303f9f",
             beginAtZero: true
           },
           display: true,
@@ -186,19 +165,19 @@ function displaySleepChart() {
             display: true,
             labelString: "Value",
             fontStyle: 'bold',
-            fontColor: "rgb(0, 0, 0)"
+            fontColor: "#303f9f"
           }
         }],
         xAxes: [{
           ticks: {
-            fontColor: "rgb(0, 0, 0)",
+            fontColor: "#303f9f",
           },
           display: true,
           scaleLabel: {
             display: true,
             labelString: "Date",
             fontStyle: 'bold',
-            fontColor: "rgb(0, 0, 0)"
+            fontColor: "#303f9f"
           }
         }]
       }
@@ -211,18 +190,18 @@ function displayActivityInfo(user, date) {
   activitySection.innerHTML = `
     <h2>Activity</h2>
     <div class="widget">
-      <p>Steps taken today: ${activityRepo.returnStepsTaken(user, date)}</p>
-      <p>Minutes active today: ${activityRepo.returnMinutesActive(user, date)}</p>
-      <p>Distance walked today: ${activityRepo.returnMilesWalked(user, date)} miles</p>
-      <p>Flights of stairs climbed today: ${activityRepo.returnStairs(user, date)}</p>
+      <p>Steps taken today: ${activityRepo.getStepsTaken(user, date)}</p>
+      <p>Minutes active today: ${activityRepo.getMinsActive(user, date)}</p>
+      <p>Distance walked today: ${activityRepo.getMilesWalked(user, date)} miles</p>
+      <p>Flights of stairs climbed today: ${activityRepo.getStairs(user, date)}</p>
     </div>
     <div class="widget">
-      <p>All users steps taken today: ${activityRepo.getAllUserAvgSteps(date)}</p>
-      <p>All users minutes active today: ${activityRepo.getAllUserTotalMins(date)}</p>
-      <p>All users flights of stairs climbed today: ${activityRepo.getAllUserTotalStairs(date)}</p>
+      <p>All users steps taken today: ${activityRepo.getAllUsersAvgStepsByDate(date)}</p>
+      <p>All users minutes active today: ${activityRepo.getAllUsersAvgMinsByDate(date)}</p>
+      <p>All users flights of stairs climbed today: ${activityRepo.getAllUsersAvgStairsByDate(date)}</p>
     </div>
     <div class="widget">
-      <p>You activity stats by week:</p>
+      <p>Your activity stats by week:</p>
       <p>${pastWeekActivityObjects[0].date}: ${pastWeekActivityObjects[0].numSteps} steps taken, ${pastWeekActivityObjects[0].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
       <p>${pastWeekActivityObjects[1].date}: ${pastWeekActivityObjects[1].numSteps} steps taken, ${pastWeekActivityObjects[1].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
       <p>${pastWeekActivityObjects[2].date}: ${pastWeekActivityObjects[2].numSteps} steps taken, ${pastWeekActivityObjects[2].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>

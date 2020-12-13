@@ -44,15 +44,15 @@ body {
 }
 
 .hydration .widget {
-  border: 3px solid blue;
+  border: 3px solid #00B0FF;
 }
 
 .sleep .widget {
-  border: 3px solid darkblue;
+  border: 3px solid #536DFE;
 }
 
 .activity .widget {
-  border: 3px solid red;
+  border: 3px solid #F50057;
 }
 
 .widget .number {
@@ -65,5 +65,5 @@ body {
 }
 
 .tbody {
-  
+
 }

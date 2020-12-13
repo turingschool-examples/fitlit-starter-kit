@@ -1,6 +1,4 @@
 // const User = require('./User')
-// const userData = require('../data/users.js')
-
 class UserRepository {
   constructor(data = []) {
     this.users = data.map(user => new User(user))
@@ -11,10 +9,7 @@ class UserRepository {
   }
 
   findAverageStepGoal() {
-    const allUserStepGoals = this.users.reduce((dailyStepGoals, user) => {
-      dailyStepGoals.push(user.dailyStepGoal)
-      return dailyStepGoals
-    }, [])
+    const allUserStepGoals = this.users.map(user => user.dailyStepGoal)
 
     const totalSteps = allUserStepGoals.reduce((totalSteps, userStepGoal) => {
       totalSteps += userStepGoal

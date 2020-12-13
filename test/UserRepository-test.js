@@ -41,7 +41,12 @@ describe('UserRepo', () => {
   })
 
   it('should calculate the average step goal amongst all users', () => {
-    expect(userRepo.getAllUserAvgStepGoal()).to.equal(7973);
+    expect(userRepo.getAllUserAvgStepGoal()).to.equal('7,973');
+  })
+
+  it('should return a users friend names', () => {
+    expect(userRepo.getUserFriendNames(1)).to.equal('Tashia Davis <br> Kayla Skannah');
+    expect(userRepo.getUserFriendNames(2)).to.equal('Cole Fiscus <br> Kayla Skannah');
   })
 
 })

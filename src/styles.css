@@ -1,14 +1,15 @@
 html,
 body {
   height: 120%;
-  font-family: 'Electrolize', sans-serif;
+  /* font-family: 'Electrolize', sans-serif; */
+  font-family: "Open Sans", sans-serif;
   color: #000000;
 }
 
-h1, h2 {
+/* h1, h2 {
   font-family: 'Rock Salt', cursive;
   font-stretch: extra-expanded;
-}
+} */
 
 .section-wrapper {
     display: grid;
@@ -29,7 +30,7 @@ h1, h2 {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border: 5px double white;
+  /* border: 5px double white; */
   height: 120%;
 }
 
@@ -38,7 +39,7 @@ h1, h2 {
   font-size: x-large;
 }
 
-.user-info-card {
+/* .user-info-card {
   background-color: #65B2FC;
 }
 
@@ -52,15 +53,40 @@ h1, h2 {
 
 .activity {
   background-color: #F58E20;
-}
+} */
 
 .widget {
   width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 3px solid white;
   border-radius: 10px/30px;
+}
+
+.user .widget {
+  border: 3px solid black;
+}
+
+.hydration .widget {
+  border: 3px solid blue;
+}
+
+.sleep .widget {
+  border: 3px solid darkblue;
+}
+
+.activity .widget {
+  border: 3px solid red;
+}
+
+.widget .number {
+  font-size: 2em;
+  margin: 5%;
+}
+
+.widget .description {
+  margin-bottom: 5%;
+  margin-top: 0;
 }
 
 .hydration,

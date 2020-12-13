@@ -5,10 +5,6 @@ class Hydration {
     this.numOunces = hydrationData.numOunces;
   }
 
-  getNumOunces() {
-    return this.numOunces;
-  }
-
 }
 
 if (typeof module !== 'undefined') {

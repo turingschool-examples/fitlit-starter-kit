@@ -37,9 +37,4 @@ describe('Hydration', () => {
     expect(hydrationData[10].numOunces).to.equal(67);
   })
 
-  it('should return a number of oz', () => {
-    expect(hydrationData[0].getNumOunces()).to.equal(27);
-    expect(hydrationData[10].getNumOunces()).to.equal(67);
-  })
-
 })

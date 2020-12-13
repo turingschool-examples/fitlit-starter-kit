@@ -1,12 +1,3 @@
-// if (typeof module !== 'undefined') {
-//   var User = require('./User');
-//   var UserRepository = require('./UserRepository');
-//   var userData = require('../data/users');
-//   var Hydration = require('./Hydration');
-//   var HydrationRepository = require('./HydrationRepository')
-//   var hydrationData = require('../data/hydration')
-// }
-
 // ~~~~~ QUERY SELECTORS ~~~~~
 const userNameGreeting = document.querySelector('.user-greeting');
 const userInfoCard = document.querySelector('.user-info-card');
@@ -18,29 +9,29 @@ const activitySection = document.querySelector('.activity');
 window.onload = start;
 
 // ~~~~~ GLOBAL VARIABLES ~~~~~
-const users = userData.map(userObject => {
-  const user = new User(userObject);
+const users = userData.map(userObj => {
+  const user = new User(userObj);
   return user;
 });
-const userRepository = new UserRepository(users);
+const userRepo = new UserRepo(users);
 
-const hydrationObjects = hydrationData.map(hydrationObject => {
-  const hydration = new Hydration(hydrationObject);
+const allHydration = hydrationData.map(hydrationObj => {
+  const hydration = new Hydration(hydrationObj);
   return hydration;
 });
-const hydrationRepository = new HydrationRepository(hydrationObjects);
+const hydrationRepo = new HydrationRepo(allHydration);
 
-const sleepObjects = sleepData.map(sleepObject => {
-  const sleep = new Sleep(sleepObject);
+const allSleep = sleepData.map(sleepObj => {
+  const sleep = new Sleep(sleepObj);
   return sleep;
 });
-const sleepRepository = new SleepRepository(sleepObjects);
+const sleepRepo = new SleepRepo(allSleep);
 
-const activityObjects = activityData.map(activityObject => {
-  const activity = new Activity(activityObject);
+const allActivity = activityData.map(activityObj => {
+  const activity = new Activity(activityObj);
   return activity;
 });
-const activityRepository = new ActivityRepository(activityObjects);
+const activityRepo = new ActivityRepo(allActivity);
 
 // ~~~~~ FUNCTIONS ~~~~~
 function start() {
@@ -54,55 +45,73 @@ function start() {
 function displayUserInfoCard(user) {
   userInfoCard.innerHTML = `
     <div class="app-name-and-greeting">
-      <h1>FitLit !</h1>
-      <h2>Hello, ${user.returnFirstName()}!</h2>
+      <h1>My Fitness Data</h1>
+      <h2>Hello, ${user.getFirstName()}!</h2>
     </div>
-    <div class="widget">
-      <p>User ID: ${user.id}</p>
-      <p>Name: ${user.name}</p>
-      <p>Email: ${user.email}</p>
+    <div class="user widget">
+      <div class="infosection">
+        <p><b>Your User ID:</b></p>
+        <p>${user.id}</p>
+      </div>
+      <div class="infosection">
+        <p><b>Your Name:</b></p>
+        <p>${user.name}</p>
+      </div>
+      <div class="infosection">
+        <p><b>Your Email:</b></p>
+        <p>${user.email}</p>
+      </div>
     </div>
-    <div class="widget">
-      <p>Friends: ${user.friends}</p>
+    <div class="user widget">
+      <p><b>Your Friends:</b></p>
+      <p>${userRepo.getUserFriendNames(user.id)}</p>
     </div>
-    <div class="widget">
-      <p>Stride length: ${user.strideLength}</p>
-      <p>Daily Step Goal: ${user.dailyStepGoal}</p>
-      <p>Avg User Step Goal: ${userRepository.calculateAverageStepGoal()}</p>
+    <div class="user widget">
+      <p class="number">${user.strideLength} ft</p>
+      <p class="description">your stride length</p>
+      <p class="number">${user.getFormattedStepGoal()} steps</p>
+      <p class="description">your daily step goal</p>
+      <p class="number">${userRepo.getAllUserAvgStepGoal()}</p>
+      <p class="description">avg user step goal</p>
     </div>`;
 }
 
 function displayHydrationInfo(user, date) {
-  const pastWeekHydrationObjects = hydrationRepository.returnOuncesByWeek(user.id, date);
+  const pastWeekHydration = hydrationRepo.getUserOzByWeek(user.id, date);
   // pastWeekHydrationObjects.forEach(hydration => hydration.date = moment(hydration.date, "MMM-DD")
   hydrationSection.innerHTML = `
-    <h2>HYDRATION!</h2>
-    <div class="widget">
-      <p>Water consumed today: ${hydrationRepository.returnOuncesByDate(user.id, date)} ounces</p>
+    <h2>Hydration</h2>
+    <div class="hydration widget">
+      <p class="number">${hydrationRepo.getUserOzByDate(user.id, date)} oz</p>
+      <p class="description">water drank today</p>
     </div>
-    <div class="widget">
-      <p>Water consumed the past week:</p>
-      <p>${pastWeekHydrationObjects[0].date}: ${pastWeekHydrationObjects[0].numOunces} ounces</p>
-      <p>${pastWeekHydrationObjects[1].date}: ${pastWeekHydrationObjects[1].numOunces} ounces</p>
-      <p>${pastWeekHydrationObjects[2].date}: ${pastWeekHydrationObjects[2].numOunces} ounces</p>
-      <p>${pastWeekHydrationObjects[3].date}: ${pastWeekHydrationObjects[3].numOunces} ounces</p>
-      <p>${pastWeekHydrationObjects[4].date}: ${pastWeekHydrationObjects[4].numOunces} ounces</p>
-      <p>${pastWeekHydrationObjects[5].date}: ${pastWeekHydrationObjects[5].numOunces} ounces</p>
-      <p>${pastWeekHydrationObjects[6].date}: ${pastWeekHydrationObjects[6].numOunces} ounces</p>
+    <div class="hydration widget">
+      <p class="number">${hydrationRepo.getUserAvgDailyOzAllTime(user.id)} oz/day</p>
+      <p class="description">average water drank</p>
+    </div>
+    <div class="hydration widget">
+      <p>Water drank by week:</p>
+      <p>${pastWeekHydration[0].date}: ${pastWeekHydration[0].numOunces} oz</p>
+      <p>${pastWeekHydration[1].date}: ${pastWeekHydration[1].numOunces} oz</p>
+      <p>${pastWeekHydration[2].date}: ${pastWeekHydration[2].numOunces} oz</p>
+      <p>${pastWeekHydration[3].date}: ${pastWeekHydration[3].numOunces} oz</p>
+      <p>${pastWeekHydration[4].date}: ${pastWeekHydration[4].numOunces} oz</p>
+      <p>${pastWeekHydration[5].date}: ${pastWeekHydration[5].numOunces} oz</p>
+      <p>${pastWeekHydration[6].date}: ${pastWeekHydration[6].numOunces} oz</p>
     </div>`;
 }
 
 function displaySleepInfo(user, date) {
-  const pastWeekSleepObjects = sleepRepository.getSleepDataByWeek(user.id, date);
+  const pastWeekSleepObjects = sleepRepo.getSleepDataByWeek(user.id, date);
   sleepSection.innerHTML = `
-    <h2>SLEEP!</h2>
+    <h2>Sleep</h2>
     <div class="widget">
-      <p>Hours slept last night: ${sleepRepository.getSleepHoursByDate(user.id, date)}</p>
-      <p>Sleep quality last night: ${sleepRepository.getSleepQualityByDate(user.id, date)}</p>
+      <p>Hours slept last night: ${sleepRepo.getSleepHoursByDate(user.id, date)}</p>
+      <p>Sleep quality last night: ${sleepRepo.getSleepQualityByDate(user.id, date)}</p>
     </div>
     <div class="widget">
-      <p>All-time average sleep quality: ${sleepRepository.getUserAvgSleepQualityAllTime(user.id)}</p>
-      <p>All-time average hours slept: ${sleepRepository.getUserAvgHoursSleptAllTime(user.id)}</p>
+      <p>All-time average sleep quality: ${sleepRepo.getUserAvgSleepQualityAllTime(user.id)}</p>
+      <p>All-time average hours slept: ${sleepRepo.getUserAvgHoursSleptAllTime(user.id)}</p>
     </div>
     <div class="widget">
     <p>Sleep stats for the week:</p>
@@ -117,19 +126,19 @@ function displaySleepInfo(user, date) {
 }
 
 function displayActivityInfo(user, date) {
-  const pastWeekActivityObjects = activityRepository.getActivityDataByWeek(user.id, date);
+  const pastWeekActivityObjects = activityRepo.getActivityDataByWeek(user.id, date);
   activitySection.innerHTML = `
-    <h2>ACTIVITY!</h2>
+    <h2>Activity</h2>
     <div class="widget">
-      <p>Steps taken today: ${activityRepository.returnStepsTaken(user, date)}</p>
-      <p>Minutes active today: ${activityRepository.returnMinutesActive(user, date)}</p>
-      <p>Distance walked today: ${activityRepository.returnMilesWalked(user, date)} miles</p>
-      <p>Flights of stairs climbed today: ${activityRepository.returnStairs(user, date)}</p>
+      <p>Steps taken today: ${activityRepo.returnStepsTaken(user, date)}</p>
+      <p>Minutes active today: ${activityRepo.returnMinutesActive(user, date)}</p>
+      <p>Distance walked today: ${activityRepo.returnMilesWalked(user, date)} miles</p>
+      <p>Flights of stairs climbed today: ${activityRepo.returnStairs(user, date)}</p>
     </div>
     <div class="widget">
-      <p>All users steps taken today: ${activityRepository.getAllUserAvgSteps(date)}</p>
-      <p>All users minutes active today: ${activityRepository.getAllUserTotalMins(date)}</p>
-      <p>All users flights of stairs climbed today: ${activityRepository.getAllUserTotalStairs(date)}</p>
+      <p>All users steps taken today: ${activityRepo.getAllUserAvgSteps(date)}</p>
+      <p>All users minutes active today: ${activityRepo.getAllUserTotalMins(date)}</p>
+      <p>All users flights of stairs climbed today: ${activityRepo.getAllUserTotalStairs(date)}</p>
     </div>
     <div class="widget">
     <p>Activity stats for the week:</p>

@@ -14,6 +14,10 @@ class User {
     return names[0];
   }
 
+  getFormattedStepGoal() {
+    return this.dailyStepGoal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
 }
 
 if (typeof module !== 'undefined') {

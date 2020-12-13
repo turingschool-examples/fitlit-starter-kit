@@ -51,7 +51,14 @@ describe('User', () => {
   })
 
   it('should return a users first name', () => {
+    expect(users[0].getFirstName()).to.equal('Cole');
     expect(users[1].getFirstName()).to.equal('Tashia');
+  })
+
+  it('should return a users formatted daily step goal', () => {
+    expect(users[0].getFormattedStepGoal()).to.equal('400');
+    expect(users[1].getFormattedStepGoal()).to.equal('15,000');
+    expect(users[2].getFormattedStepGoal()).to.equal('8,520');
   })
 
 })

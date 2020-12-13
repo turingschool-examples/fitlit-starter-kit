@@ -31,9 +31,11 @@ const compareMinutes = document.querySelector(".minutes-compare");
 const compareMiles = document.querySelector(".miles-compare");
 
 
-const userRepo = new UserRepo(userData, sleepData); // needs to take in array of users
+const userRepo = new UserRepo(userData, sleepData, hydrationData); // needs to take in array of users
 // userRepo takes in all data sets
-let currentUser = new User(userRepo.getAUser(21), userRepo.filterSleepData(21)); // user object
+let currentUser = new User(userRepo.getAUser(21), 
+  userRepo.filterSleepData(21), 
+  userRepo.filterHydrationData(21)); // user object
 // currentUser takes in an id number
 let chosenDate = "2019/06/15" // default date
 const userHydration = new UserHydration(hydrationData);

@@ -2,10 +2,11 @@
 'use strict'
 
 class UserRepo { // all users, all data, all the time
-  constructor(userData, sleepData) {
+  constructor(userData, sleepData, hydrationData) {
     this.users = userData;
     // this.activityData
-    this.sleepData = sleepData
+    this.sleepData = sleepData;
+    this.hydrationData = hydrationData;
   }
   
   getAverage(fullList) {
@@ -19,6 +20,11 @@ class UserRepo { // all users, all data, all the time
   }
   // this holds all users data - calculate averages in this file
   // and anything that works on all users
+
+  filterHydrationData(id) { // make one of these for water/activity
+    return this.hydrationData.filter(hydrationItem => hydrationItem.userID === id);
+  } // returns an array of sleep data for the user passed in
+  
 
   filterSleepData(id) { // make one of these for water/activity
     return this.sleepData.filter(sleepItem => sleepItem.userID === id);

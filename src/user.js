@@ -1,16 +1,17 @@
 'use strict'
 
 class User {
-  constructor(singleUserData, singleUserSleepData) {
+  constructor(singleUserData, singleUserSleepData, singleUserHydrationData) {
     this.id = singleUserData.id;
     this.name = singleUserData.name;
     this.address = singleUserData.address;
     this.email = singleUserData.email;
     this.strideLength = singleUserData.strideLength;
     this.dailyStepGoal = singleUserData.dailyStepGoal;
-    this.userSleep = new UserSleep(singleUserSleepData)
+    this.userSleep = new UserSleep(singleUserSleepData);
+    this.userHydration = new UserHydration(singleUserHydrationData);
 // this.userActivity =
-// this.userHydration = 
+
   }
 
   getFirstName() {

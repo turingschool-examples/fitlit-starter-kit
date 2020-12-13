@@ -1,5 +1,5 @@
 // ~~~~~ QUERY SELECTORS ~~~~~
-const userNameGreeting = document.querySelector('.user-greeting');
+const header = document.querySelector('.header');
 const userInfoCard = document.querySelector('.user-info-card');
 const hydrationSection = document.querySelector('.hydration');
 const sleepSection = document.querySelector('.sleep');
@@ -43,11 +43,11 @@ function start() {
 }
 
 function displayUserInfoCard(user) {
+  header.innerHTML = `
+    <h1>My Fitness Data</h1>
+    <h2>Hello, ${user.getFirstName()}!</h2>
+  `
   userInfoCard.innerHTML = `
-    <div class="app-name-and-greeting">
-      <h1>My Fitness Data</h1>
-      <h2>Hello, ${user.getFirstName()}!</h2>
-    </div>
     <div class="user widget">
       <div class="infosection">
         <p><b>Your User ID:</b></p>
@@ -61,8 +61,6 @@ function displayUserInfoCard(user) {
         <p><b>Your Email:</b></p>
         <p>${user.email}</p>
       </div>
-    </div>
-    <div class="user widget">
       <p><b>Your Friends:</b></p>
       <p>${userRepo.getUserFriendNames(user.id)}</p>
     </div>
@@ -90,7 +88,7 @@ function displayHydrationInfo(user, date) {
       <p class="description">average water drank</p>
     </div>
     <div class="hydration widget">
-      <p>Water drank by week:</p>
+      <p>Your hydration stats by week:</p>
       <p>${pastWeekHydration[0].date}: ${pastWeekHydration[0].numOunces} oz</p>
       <p>${pastWeekHydration[1].date}: ${pastWeekHydration[1].numOunces} oz</p>
       <p>${pastWeekHydration[2].date}: ${pastWeekHydration[2].numOunces} oz</p>
@@ -102,26 +100,42 @@ function displayHydrationInfo(user, date) {
 }
 
 function displaySleepInfo(user, date) {
-  const pastWeekSleepObjects = sleepRepo.getSleepDataByWeek(user.id, date);
+  const pastWeekSleep = sleepRepo.getSleepDataByWeek(user.id, date);
   sleepSection.innerHTML = `
     <h2>Sleep</h2>
     <div class="widget">
-      <p>Hours slept last night: ${sleepRepo.getSleepHoursByDate(user.id, date)}</p>
-      <p>Sleep quality last night: ${sleepRepo.getSleepQualityByDate(user.id, date)}</p>
+      <p>Hours slept last night: ${sleepRepo.getUserSleepHrsByDate(user.id, date)}</p>
+      <p>Sleep quality last night: ${sleepRepo.getUserSleepQualityByDate(user.id, date)}</p>
     </div>
     <div class="widget">
       <p>All-time average sleep quality: ${sleepRepo.getUserAvgSleepQualityAllTime(user.id)}</p>
-      <p>All-time average hours slept: ${sleepRepo.getUserAvgHoursSleptAllTime(user.id)}</p>
+      <p>All-time average hours slept: ${sleepRepo.getUserAvgHrsSleptAllTime(user.id)}</p>
     </div>
     <div class="widget">
-    <p>Sleep stats for the week:</p>
-    <p>${pastWeekSleepObjects[0].date}: ${pastWeekSleepObjects[0].hoursSlept} hours slept, ${pastWeekSleepObjects[0].sleepQuality} sleep quality</p>
-    <p>${pastWeekSleepObjects[1].date}: ${pastWeekSleepObjects[1].hoursSlept} hours slept, ${pastWeekSleepObjects[1].sleepQuality} sleep quality</p>
-    <p>${pastWeekSleepObjects[2].date}: ${pastWeekSleepObjects[2].hoursSlept} hours slept, ${pastWeekSleepObjects[2].sleepQuality} sleep quality</p>
-    <p>${pastWeekSleepObjects[3].date}: ${pastWeekSleepObjects[3].hoursSlept} hours slept, ${pastWeekSleepObjects[3].sleepQuality} sleep quality</p>
-    <p>${pastWeekSleepObjects[4].date}: ${pastWeekSleepObjects[4].hoursSlept} hours slept, ${pastWeekSleepObjects[4].sleepQuality} sleep quality</p>
-    <p>${pastWeekSleepObjects[5].date}: ${pastWeekSleepObjects[5].hoursSlept} hours slept, ${pastWeekSleepObjects[5].sleepQuality} sleep quality</p>
-    <p>${pastWeekSleepObjects[6].date}: ${pastWeekSleepObjects[6].hoursSlept} hours slept, ${pastWeekSleepObjects[6].sleepQuality} sleep quality</p>
+      <p>Your sleep stats by week</p>
+      <table>
+          <thead>
+              <tr>
+                  <th>Date</th>
+                  <th>Hours Slept</th>
+                  <th>Quality</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>${pastWeekSleep[0].date}</td>
+                  <td>${pastWeekSleep[0].hoursSlept}</td>
+                  <td>${pastWeekSleep[0].sleepQuality}</td>
+              </tr>
+          </tbody>
+      </table>
+      <p>${pastWeekSleep[0].date}: ${pastWeekSleep[0].hoursSlept} | ${pastWeekSleep[0].sleepQuality}</p>
+      <p>${pastWeekSleep[1].date}: ${pastWeekSleep[1].hoursSlept} | ${pastWeekSleep[1].sleepQuality}</p>
+      <p>${pastWeekSleep[2].date}: ${pastWeekSleep[2].hoursSlept} | ${pastWeekSleep[2].sleepQuality}</p>
+      <p>${pastWeekSleep[3].date}: ${pastWeekSleep[3].hoursSlept} | ${pastWeekSleep[3].sleepQuality}</p>
+      <p>${pastWeekSleep[4].date}: ${pastWeekSleep[4].hoursSlept} | ${pastWeekSleep[4].sleepQuality}</p>
+      <p>${pastWeekSleep[5].date}: ${pastWeekSleep[5].hoursSlept} | ${pastWeekSleep[5].sleepQuality}</p>
+      <p>${pastWeekSleep[6].date}: ${pastWeekSleep[6].hoursSlept} | ${pastWeekSleep[6].sleepQuality}</p>
     </div>`;
 }
 
@@ -141,13 +155,13 @@ function displayActivityInfo(user, date) {
       <p>All users flights of stairs climbed today: ${activityRepo.getAllUserTotalStairs(date)}</p>
     </div>
     <div class="widget">
-    <p>Activity stats for the week:</p>
-    <p>${pastWeekActivityObjects[0].date}: ${pastWeekActivityObjects[0].numSteps} steps taken, ${pastWeekActivityObjects[0].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
-    <p>${pastWeekActivityObjects[1].date}: ${pastWeekActivityObjects[1].numSteps} steps taken, ${pastWeekActivityObjects[1].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
-    <p>${pastWeekActivityObjects[2].date}: ${pastWeekActivityObjects[2].numSteps} steps taken, ${pastWeekActivityObjects[2].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
-    <p>${pastWeekActivityObjects[3].date}: ${pastWeekActivityObjects[3].numSteps} steps taken, ${pastWeekActivityObjects[3].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
-    <p>${pastWeekActivityObjects[4].date}: ${pastWeekActivityObjects[4].numSteps} steps taken, ${pastWeekActivityObjects[4].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
-    <p>${pastWeekActivityObjects[5].date}: ${pastWeekActivityObjects[5].numSteps} steps taken, ${pastWeekActivityObjects[5].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
-    <p>${pastWeekActivityObjects[6].date}: ${pastWeekActivityObjects[6].numSteps} steps taken, ${pastWeekActivityObjects[6].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
+      <p>You activity stats by week:</p>
+      <p>${pastWeekActivityObjects[0].date}: ${pastWeekActivityObjects[0].numSteps} steps taken, ${pastWeekActivityObjects[0].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
+      <p>${pastWeekActivityObjects[1].date}: ${pastWeekActivityObjects[1].numSteps} steps taken, ${pastWeekActivityObjects[1].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
+      <p>${pastWeekActivityObjects[2].date}: ${pastWeekActivityObjects[2].numSteps} steps taken, ${pastWeekActivityObjects[2].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
+      <p>${pastWeekActivityObjects[3].date}: ${pastWeekActivityObjects[3].numSteps} steps taken, ${pastWeekActivityObjects[3].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
+      <p>${pastWeekActivityObjects[4].date}: ${pastWeekActivityObjects[4].numSteps} steps taken, ${pastWeekActivityObjects[4].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
+      <p>${pastWeekActivityObjects[5].date}: ${pastWeekActivityObjects[5].numSteps} steps taken, ${pastWeekActivityObjects[5].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
+      <p>${pastWeekActivityObjects[6].date}: ${pastWeekActivityObjects[6].numSteps} steps taken, ${pastWeekActivityObjects[6].minutesActive} minutes active, ${pastWeekActivityObjects[0].flightsOfStairs} flights of stairs climbed</p>
     </div>`;
 }

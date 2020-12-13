@@ -1,15 +1,9 @@
 html,
 body {
   height: 120%;
-  /* font-family: 'Electrolize', sans-serif; */
   font-family: "Open Sans", sans-serif;
   color: #000000;
 }
-
-/* h1, h2 {
-  font-family: 'Rock Salt', cursive;
-  font-stretch: extra-expanded;
-} */
 
 .section-wrapper {
     display: grid;
@@ -17,20 +11,10 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 
-/* .app-name {
-  border: 1px solid blue;
-}
-
-.user-greeting {
-  border: 1px solid blue;
-} */
-
 .category {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
-  /* border: 5px double white; */
   height: 120%;
 }
 
@@ -39,21 +23,10 @@ body {
   font-size: x-large;
 }
 
-/* .user-info-card {
-  background-color: #65B2FC;
+.user-info-card {
+  display: flex;
+  align-items: left;
 }
-
-.hydration {
-  background-color: #67E68F;
-}
-
-.sleep {
-  background-color: #FCF865;
-}
-
-.activity {
-  background-color: #F58E20;
-} */
 
 .widget {
   width: 90%;
@@ -61,9 +34,12 @@ body {
   flex-direction: column;
   align-items: center;
   border-radius: 10px/30px;
+  margin: 5%;
 }
 
-.user .widget {
+.user, .widget {
+  align-items: flex-start;
+  padding-left: 5%;
   border: 3px solid black;
 }
 
@@ -81,7 +57,6 @@ body {
 
 .widget .number {
   font-size: 2em;
-  margin: 5%;
 }
 
 .widget .description {
@@ -89,16 +64,6 @@ body {
   margin-top: 0;
 }
 
-.hydration,
-.sleep,
-.activity {
-  /* padding-top: 50%; */
+.tbody {
+  
 }
-
-/* .daily-leaderboard {
-  border: 1px solid blue;
-} */
-
-/* .fitness-categories {
-  margin-top: 10px;
-} */

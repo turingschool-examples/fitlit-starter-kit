@@ -6,6 +6,7 @@ const userInfoCard = document.querySelector('.user-info-card');
 const hydrationSection = document.querySelector('.hydration');
 const sleepSection = document.querySelector('.sleep');
 const activitySection = document.querySelector('.activity');
+const sleepHoursWeek = document.querySelector('.sleep-hours-week-chart');
 
 // ~~~~~ EVENT LISTENERS ~~~~~
 window.onload = start;
@@ -34,14 +35,19 @@ const allActivity = activityData.map(activityObj => {
   return activity;
 });
 const activityRepo = new ActivityRepo(allActivity);
+let currentUser;
 
 // ~~~~~ FUNCTIONS ~~~~~
 function start() {
-  // userNameGreeting.innerText = `Hello, ${users[5].returnFirstName()}`;
-  displayUserInfoCard(users[5]);
-  displayHydrationInfo(users[5], "2019/06/24");
-  displaySleepInfo(users[5], "2019/06/24");
-  displayActivityInfo(users[5], "2019/06/24");
+  getRandomUser();
+  displayUserInfoCard(currentUser);
+  displayHydrationInfo(currentUser, "2019/09/22");
+  // displaySleepInfo(users[5], "2019/09/22");
+  displayActivityInfo(currentUser, "2019/09/22");
+}
+
+function getRandomUser() {
+  currentUser = users[Math.floor(Math.random() * users.length)];
 }
 
 function displayUserInfoCard(user) {
@@ -101,45 +107,101 @@ function displayHydrationInfo(user, date) {
     </div>`;
 }
 
-function displaySleepInfo(user, date) {
-  const pastWeekSleep = sleepRepo.getSleepDataByWeek(user.id, date);
-  sleepSection.innerHTML = `
-    <h2>Sleep</h2>
-    <div class="widget">
-      <p>Hours slept last night: ${sleepRepo.getUserSleepHrsByDate(user.id, date)}</p>
-      <p>Sleep quality last night: ${sleepRepo.getUserSleepQualityByDate(user.id, date)}</p>
-    </div>
-    <div class="widget">
-      <p>All-time average sleep quality: ${sleepRepo.getUserAvgSleepQualityAllTime(user.id)}</p>
-      <p>All-time average hours slept: ${sleepRepo.getUserAvgHrsSleptAllTime(user.id)}</p>
-    </div>
-    <div class="widget">
-      <p>Your sleep stats by week</p>
-      <table>
-          <thead>
-              <tr>
-                  <th>Date</th>
-                  <th>Hours Slept</th>
-                  <th>Quality</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>${pastWeekSleep[0].date}</td>
-                  <td>${pastWeekSleep[0].hoursSlept}</td>
-                  <td>${pastWeekSleep[0].sleepQuality}</td>
-              </tr>
-          </tbody>
-      </table>
-      <p>${pastWeekSleep[0].date}: ${pastWeekSleep[0].hoursSlept} | ${pastWeekSleep[0].sleepQuality}</p>
-      <p>${pastWeekSleep[1].date}: ${pastWeekSleep[1].hoursSlept} | ${pastWeekSleep[1].sleepQuality}</p>
-      <p>${pastWeekSleep[2].date}: ${pastWeekSleep[2].hoursSlept} | ${pastWeekSleep[2].sleepQuality}</p>
-      <p>${pastWeekSleep[3].date}: ${pastWeekSleep[3].hoursSlept} | ${pastWeekSleep[3].sleepQuality}</p>
-      <p>${pastWeekSleep[4].date}: ${pastWeekSleep[4].hoursSlept} | ${pastWeekSleep[4].sleepQuality}</p>
-      <p>${pastWeekSleep[5].date}: ${pastWeekSleep[5].hoursSlept} | ${pastWeekSleep[5].sleepQuality}</p>
-      <p>${pastWeekSleep[6].date}: ${pastWeekSleep[6].hoursSlept} | ${pastWeekSleep[6].sleepQuality}</p>
-    </div>`;
-}
+// function displaySleepInfo(user, date) {
+//   const pastWeekSleep = sleepRepo.getSleepDataByWeek(user.id, date);
+//   sleepSection.innerHTML = `
+//     <h2>Sleep</h2>
+//     <div class="widget">
+//       <p>Hours slept last night: ${sleepRepo.getUserSleepHrsByDate(user.id, date)}</p>
+//       <p>Sleep quality last night: ${sleepRepo.getUserSleepQualityByDate(user.id, date)}</p>
+//     </div>
+//     <div class="widget">
+//       <p>All-time average sleep quality: ${sleepRepo.getUserAvgSleepQualityAllTime(user.id)}</p>
+//       <p>All-time average hours slept: ${sleepRepo.getUserAvgHrsSleptAllTime(user.id)}</p>
+//     </div>
+//     <div class="widget">
+//       <p>Your sleep stats by week</p>
+//       <p>${pastWeekSleep[0].date}: ${pastWeekSleep[0].hoursSlept} | ${pastWeekSleep[0].sleepQuality}</p>
+//       <p>${pastWeekSleep[1].date}: ${pastWeekSleep[1].hoursSlept} | ${pastWeekSleep[1].sleepQuality}</p>
+//       <p>${pastWeekSleep[2].date}: ${pastWeekSleep[2].hoursSlept} | ${pastWeekSleep[2].sleepQuality}</p>
+//       <p>${pastWeekSleep[3].date}: ${pastWeekSleep[3].hoursSlept} | ${pastWeekSleep[3].sleepQuality}</p>
+//       <p>${pastWeekSleep[4].date}: ${pastWeekSleep[4].hoursSlept} | ${pastWeekSleep[4].sleepQuality}</p>
+//       <p>${pastWeekSleep[5].date}: ${pastWeekSleep[5].hoursSlept} | ${pastWeekSleep[5].sleepQuality}</p>
+//       <p>${pastWeekSleep[6].date}: ${pastWeekSleep[6].hoursSlept} | ${pastWeekSleep[6].sleepQuality}</p>
+//     </div>`;
+// }
+debugger;
+let pastWeekSleep = sleepRepo.getSleepDataByWeek(1, "2019/09/22");
+let weekSleepChart = new Chart(sleepHoursWeek, {
+  // pastWeekSleep: sleepRepo.getSleepDataByWeek(currentUser, "2019/09/22"),
+  // The type of chart we want to create
+  type: 'line',
+  // The data for our dataset
+  data: {
+      // labels: [pastWeekSleep[0].date, pastWeekSleep[1].date, pastWeekSleep[2].date, pastWeekSleep[3].date, pastWeekSleep[4].date, pastWeekSleep[5].date, pastWeekSleep[6].date],
+      labels: sleepRepo.getDatesOfWeek("2019/09/22"),
+      // labels: Object.keys(sleepRepo.getSleepDataByWeek(currentUser.id, "2019/09/22")),
+      // keys of which method?
+      datasets: [{
+          label: 'My First dataset',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          fill: false,
+          data: [pastWeekSleep[0].hoursSlept, pastWeekSleep[1].hoursSlept, pastWeekSleep[2].hoursSlept, pastWeekSleep[3].hoursSlept, pastWeekSleep[4].hoursSlept, pastWeekSleep[5].hoursSlept, pastWeekSleep[6].hoursSlept]
+          // data: Object.values(hydrationRepo.retrieveWeekHydration(activeUser.id, "2019/09/22"))
+          // Object.values({date: hours, date: hours}
+      }, {
+        label: 'My Second dataset',
+        backgroundColor: 'black',
+        fill: false,
+        // borderColor: 'rgb(255, 99, 132)',
+        data: [pastWeekSleep[0].sleepQuality, pastWeekSleep[1].sleepQuality, pastWeekSleep[2].sleepQuality, pastWeekSleep[3].sleepQuality, pastWeekSleep[4].sleepQuality, pastWeekSleep[5].sleepQuality, pastWeekSleep[6].sleepQuality]
+        // data: Object.values({date: quality, date: quality})
+      }]
+  },
+  options: {
+    // maintainAspectRatio: false,
+    title: {
+      display: true,
+      text: "Your week\'s Sleep information",
+      fontSize: 16,
+      fontColor: "rgb(0, 0, 0)"
+    },
+    legend: {
+      // display: false
+      labels: {
+        fontColor: "rgb(0, 0, 0)"
+      },
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+          beginAtZero: true
+        },
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: "Value",
+          fontStyle: 'bold',
+          fontColor: "rgb(0, 0, 0)"
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+        },
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: "Date",
+          fontStyle: 'bold',
+          fontColor: "rgb(0, 0, 0)"
+        }
+      }]
+    }
+  }
+});
 
 function displayActivityInfo(user, date) {
   const pastWeekActivityObjects = activityRepo.getActivityDataByWeek(user.id, date);

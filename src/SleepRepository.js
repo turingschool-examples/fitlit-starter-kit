@@ -35,7 +35,25 @@ class SleepRepo {
     return sleepQualityByDate.sleepQuality;
   }
 
-  getSleepDataByWeek(id, date) {
+  // getSleepDataByWeek(id, date) {
+  //   const userSleep = this.getSleepById(id);
+  //   const sleepDates = userSleep.map(sleep => sleep.date);
+  //   const indexOfDate = sleepDates.indexOf(date);
+  //   return userSleep.slice(indexOfDate - 6, indexOfDate + 1);
+  // }
+
+  getSleepHoursByWeek(id, date) {
+    const userSleep = this.getSleepById(id);
+    const sleepDates = userSleep.map(sleep => sleep.date);
+    const indexOfDate = sleepDates.indexOf(date);
+    const sleepByDate = userSleep.slice(indexOfDate - 6, indexOfDate + 1);
+    return sleepByDate.reduce((obj, sleep) => {
+      obj[sleep.date] = sleep.hoursSlept;
+      return obj;
+    }, {})
+  }
+
+  getSleepQualityByWeek(id, date) {
     const userSleep = this.getSleepById(id);
     const sleepDates = userSleep.map(sleep => sleep.date);
     const indexOfDate = sleepDates.indexOf(date);

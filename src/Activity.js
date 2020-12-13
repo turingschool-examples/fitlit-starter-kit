@@ -4,7 +4,7 @@ class Activity {
     this.date = data.date;
     this.numSteps = data.numSteps;
     this.minutesActive = data.minutesActive;
-    this.flightsofStairs = data.flightsOfStairs
+    this.stairsClimbed = data.flightsOfStairs
   }
 
   verifyIfStepGoal(user) {
@@ -13,12 +13,9 @@ class Activity {
 
   getStepMiles(user) {
     const distanceInFeet = user.strideLength * this.numSteps
-    5280 / distanceInFeet
+    return Math.round((distanceInFeet / 5280) * 100) / 100
   }
 
-
 }
-
-
 
 module.exports =  Activity;

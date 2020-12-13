@@ -17,8 +17,8 @@ describe('Activity', function() {
 
     activity2 = new Activity({
         "userID": 2,
-        "date": "2019/06/15",
-        "numSteps": 4294,
+        "date": "2019/06/14",
+        "numSteps": 5294,
         "minutesActive": 138,
         "flightsOfStairs": 10
     })
@@ -56,30 +56,36 @@ describe('Activity', function() {
 
   it('should hold userId property', function() {
     expect(activity.userID).to.equal(1)
+    expect(activity2.userID).to.equal(2)
   });
 
   it('should hold date property', function() {
     expect(activity.date).to.equal('2019/06/15')
+    expect(activity2.date).to.equal('2019/06/14')
   });
 
   it('should hold number of steps property', function() {
     expect(activity.numSteps).to.equal(3577)
+    expect(activity2.numSteps).to.equal(5294)
   });
 
   it('should hold minutes active property', function() {
     expect(activity.minutesActive).to.equal(140)
+    expect(activity2.minutesActive).to.equal(138)
   });
 
   it('should hold flights of stairs climbed property', function() {
     expect(activity.stairsClimbed).to.equal(16)
+    expect(activity2.stairsClimbed).to.equal(10)
   });
 
   it('should verify if step goal has been met', function() {
     expect(activity.verifyIfStepGoal(user)).to.equal(false)
-    expect(activity.verifyIfStepGoal(user2)).to.equal(true)
+    expect(activity2.verifyIfStepGoal(user2)).to.equal(true)
   })
 
   it('should return miles user has walked based on steps', function() {
-    expect(activity.getStepMiles().to.equal(2.91))
+    expect(activity.getStepMiles(user)).to.equal(2.91)
+    expect(activity2.getStepMiles(user2)).to.equal(4.51)
   })
 });

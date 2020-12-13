@@ -93,4 +93,12 @@ describe('Hydration', () => {
     expect(instanceData.sleepQuality).to.equal(2.5);
   });
 
+  it.skip('should have a way to return hours slept for specific date', () => {
+    expect(instanceData.returnHoursSlept()).to.equal(6.6);
+  });
+
+  it.skip('should have a way to return sleep quality for specific date', () => {
+    expect(instantData.)
+  });
+
 });

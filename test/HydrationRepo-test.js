@@ -3769,6 +3769,14 @@ describe('HydrationRepo', () => {
     expect(repo.data[5]).to.be.an.instanceof(Hydration);
   });
 
+  it('should be able to filter all data to one user\'s data', () => {
+    const filtered = repo.filterUserData(34);
+    const isAllOne = repo.userData.every(oneDaysData => oneDaysData.id === 34);
+
+    expect(isAllOne).to.equal(true);
+  });
+  
+
   it('should be able to calculate user\'s avg fluid oz consumed for all time', () => {
     const avg = repo.calculateAvgOzOverTime(34);
 

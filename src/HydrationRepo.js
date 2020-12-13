@@ -10,6 +10,10 @@ class HydrationRepo {
     const totalHydration = filtered.reduce((total, oneDaysData) => oneDaysData.numOunces + total, 0);
     return Math.round(totalHydration / filtered.length);
   }
+
+  returnWaterConsumed(userId, dates) {    
+    
+  }
 }
 
 if (typeof module !== 'undefined') {

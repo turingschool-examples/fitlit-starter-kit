@@ -3764,7 +3764,7 @@ describe('HydrationRepo', () => {
     repo = new HydrationRepo(data);
   });
 
-  it.skip('should contain Hydration instances', () => {
+  it('should contain Hydration instances', () => {
     expect(repo.data[0]).to.be.an.instanceof(Hydration);
     expect(repo.data[5]).to.be.an.instanceof(Hydration);
   });

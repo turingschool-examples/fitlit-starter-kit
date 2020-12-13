@@ -1,5 +1,6 @@
 class Activity {
   constructor(data) {
+    
     this.userID = data.userID;
     this.date = data.date;
     this.numSteps = data.numSteps;

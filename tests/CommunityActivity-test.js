@@ -332,15 +332,15 @@ describe('CommunityActivity', function() {
   });
 
   it('should return an Activity for a specific day', function() {
-    expect(communityActivity.findUserActivityByDate("2019/06/15", user)).to.equal(activity)
-    expect(communityActivity.findUserActivityByDate("2019/09/22", user2)).to.equal(activity2)
+    expect(communityActivity.findUserActivityByDate("2019/06/15", user)).to.deep.equal(activity)
+    expect(communityActivity.findUserActivityByDate("2019/09/22", user2)).to.deep.equal(activity2)
   });
 
   it('should tell how many miles a user has walked based on steps for a given date', function() {
-    expect(communityActivity.findUserStepsMiles("2019/06/15", user)).to.equal(3.66)
+    expect(communityActivity.findUserStepMiles("2019/06/15", user)).to.equal(3.66)
     expect(communityActivity.findUserStepMiles("2019/06/16", user)).to.equal(3.5)
-    expect(communityActivity.findUserStepyMiles("2019/09/21", user2)).to.equal(2.69)
-    expect(communityActivity.findUserStepyMiles("2019/09/22", user2)).to.equal(1.77)
+    expect(communityActivity.findUserStepMiles("2019/09/21", user2)).to.equal(2.69)
+    expect(communityActivity.findUserStepMiles("2019/09/22", user2)).to.equal(1.77)
   });
 
   it('should tell if a user has met their step goal for a given date', function() {
@@ -352,7 +352,7 @@ describe('CommunityActivity', function() {
 
   it('should be able to tell how many minutes a user was active for a given date', function() {
     expect(communityActivity.findUserActivityMinutes("2019/06/15", user)).to.equal(138)
-    expect(communityActivity.findUserActivityMinutes("2019/06/16", user)).to.equal(138)
+    expect(communityActivity.findUserActivityMinutes("2019/06/16", user)).to.equal(220)
     expect(communityActivity.findUserActivityMinutes("2019/09/21", user2)).to.equal(272)
     expect(communityActivity.findUserActivityMinutes("2019/09/22", user2)).to.equal(237)
   });
@@ -375,6 +375,11 @@ describe('CommunityActivity', function() {
     expect(communityActivity.findRecordStairs(user2)).to.equal(48)
   });
 
+  it('should return week active minutes average for any user', function() {
+    expect(communityActivity.findWeekActiveMinutesAverage("2019/06/15", "2019/06/21", user)).to.equal(156)
+    expect(communityActivity.findWeekActiveMinutesAverage("2019/06/17", "2019/06/23", user)).to.equal(143)
+  })
+
   it('should return community average stairs climbed on a specific date', function() {
     expect(communityActivity2.findCommunityAverage("2019/06/15", 'stairsClimbed')).to.equal(21)
     expect(communityActivity3.findCommunityAverage("2019/09/02", 'stairsClimbed')).to.equal(29)
@@ -382,11 +387,11 @@ describe('CommunityActivity', function() {
 
   it('should return community average steps taken on a specific date', function() {
     expect(communityActivity2.findCommunityAverage("2019/06/15", 'numSteps')).to.equal(6027)
-    expect(communityActivity3.findCommunityAverage("2019/09/02", 'numSteps')).to.equal(7868)
+    expect(communityActivity3.findCommunityAverage("2019/09/02", 'numSteps')).to.equal(7869)
   });
 
   it('should return community average minutes active on a specific date', function() {
-    expect(communityActivity2.findCommunityAverage("2019/06/15", 'minutesActive')).to.equal(145)
+    expect(communityActivity2.findCommunityAverage("2019/06/15", 'minutesActive')).to.equal(144)
     expect(communityActivity3.findCommunityAverage("2019/09/02", 'minutesActive')).to.equal(219)
   });
 

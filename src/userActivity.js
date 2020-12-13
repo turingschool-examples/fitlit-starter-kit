@@ -17,7 +17,7 @@ class UserActivity {
 
   calculateMilesWalked(userRepo, user, date) {
     let findActivityByDate = this.activityData.find((day) => day.date === date);
-    let currentUser = userRepo.getAUser(user.id);
+    let currentUser = userRepo.getAUser(user);
     let userStride = currentUser.strideLength;
     let userSteps = findActivityByDate.numSteps;
     let miles = (userStride * userSteps) / 5280;
@@ -26,9 +26,22 @@ class UserActivity {
 
   calculateActiveMinutes(date, id) {
     this.mapUserActivity(id); //array of one users all activity
-    let findActivityByDate = this.activityData.find((day) => day.date === date);
-    return findActivityByDate.minutesActive;
+    return this.mapUserActivity(id).find((day) => day.date === date)
+      .minutesActive;
   }
+
+  calculateNumSteps(date, id) {
+    this.mapUserActivity(id); //array of one users all activity
+    return this.mapUserActivity(id).find((day) => day.date === date)
+      .numSteps;
+  } 
+
+  calculateStairsClimbed(date, id) {
+    this.mapUserActivity(id); //array of one users all activity
+    return this.mapUserActivity(id).find((day) => day.date === date)
+      .flightsOfStairs;
+  } // dont have a test for this one
+
 
   calculateAvgMinWeek(startDate, id) {
     const activityItems = this.mapUserActivity(id);
@@ -100,6 +113,12 @@ class UserActivity {
       return (total += value);
     }, 0);
     return totalAllAvgMin / mapAllMinutes.length;
+  }
+
+  
+
+  isUserAboveAvg(user, average) {
+      return user > average
   }
 }
 

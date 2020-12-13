@@ -45,7 +45,6 @@ class UserSleep {
       let totalQuality = (avgQuality += value);
       return totalQuality;
       }, 0);
-      console.log(this.mapAllUserSleepQuality(id))
     return (totalAvgSleepQual = totalAvgSleepQual / this.mapUserSleep(id).length);
   }
 

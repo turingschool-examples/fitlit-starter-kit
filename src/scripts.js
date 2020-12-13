@@ -44,7 +44,7 @@ const activityRepository = new ActivityRepository(activityObjects);
 
 // ~~~~~ FUNCTIONS ~~~~~
 function start() {
-  userNameGreeting.innerText = `Hello, ${users[5].returnFirstName()}`;
+  // userNameGreeting.innerText = `Hello, ${users[5].returnFirstName()}`;
   displayUserInfoCard(users[5]);
   displayHydrationInfo(users[5], "2019/06/24");
   displaySleepInfo(users[5], "2019/06/24");
@@ -53,6 +53,8 @@ function start() {
 
 function displayUserInfoCard(user) {
   userInfoCard.innerHTML = `
+    <h1 class="app-name">FitLit</h1>
+    <h2 class="user-greeting">Hello, ${user.returnFirstName()}</h2>
     <p>User ID: ${user.id}</p>
     <p>Name: ${user.name}</p>
     <p>Email: ${user.email}</p>
@@ -64,6 +66,7 @@ function displayUserInfoCard(user) {
 
 function displayHydrationInfo(user, date) {
   const pastWeekHydrationObjects = hydrationRepository.returnOuncesByWeek(user.id, date);
+  // pastWeekHydrationObjects.forEach(hydration => hydration.date = moment(hydration.date, "MMM-DD")
   hydrationSection.innerHTML = `
     <h2>HYDRATION!</h2>
     <p>Water consumed today: ${hydrationRepository.returnOuncesByDate(user.id, date)} ounces</p>

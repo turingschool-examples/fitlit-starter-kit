@@ -1,8 +1,12 @@
 html,
 body {
   height: 100%;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Electrolize', sans-serif;
   color: #000000;
+}
+
+h1, h2 {
+  font-family: 'Rock Salt', cursive;
 }
 
 .section-wrapper {
@@ -13,21 +17,26 @@ body {
     margin-top: 10px;
   }
 
-.app-name {
+/* .app-name {
   border: 1px solid blue;
 }
 
 .user-greeting {
   border: 1px solid blue;
-}
+} */
 
-.user-info-card {
+.widget {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   border: 1px solid blue;
 }
 
-.daily-leaderboard {
+
+
+/* .daily-leaderboard {
   border: 1px solid blue;
-}
+} */
 
 /* .fitness-categories {
   margin-top: 10px;

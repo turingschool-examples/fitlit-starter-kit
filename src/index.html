@@ -3,36 +3,69 @@
   <head>
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-
-    <div class="userMain">
-
-      <div class="userProfile">
+    <h1>FITLIT</h1>
+    <section class="user-main">
+      <article class="user-profile">
         <h2>Your Profile</h2>
-      </div>
+      </article>
+      <div class="user-container">
+        <article class="user-all-time-sleep-stats">
+          <h3>Your All-Time Sleep Stats</h3>
+        </article>
+        <article class="user-step-goal">
+          <h3>Your Daily Step Goal</h3>
+        </article>
+        <article class="community-step-goal">
+          <h3>Community Average Step Goal</h3>
+        </article>
+      </article>
+    </section>
 
-      <div class="userStepGoal">
-        <h3>Your Daily Step Goal</h3>
-      </div>
-
-      <div class="communityStepGoal">
-        <h3>Community Average Step Goal</h3>
-      </div>
-
-    </div>
-
-    <div class="friends">
+    <section class="fitness-categories">
+      <article class="water">
+        <h2>Water</h2>
+      </article>
+      <article class="activity">
+        <h2>Activity</h2>
+        <div class="activity-container">
+          <p class="steps">
+          </p>
+          <p class="active-minutes">
+          </p>
+          <p class="stairs">
+          </p>
+        </div>
+      </article>
+      <article class="sleep">
+        <h2>Sleep</h2>
+        <div class="sleep-container">
+          <p class="sleep-hours">
+          </p>
+          <p class="sleep-quality">
+          </p>
+        </div>
+      </article>
+    </section>
+    <section class="graph">
+      <h2 class="title-graph">Graph</h2>
+    </graph>
+    <section class="friends">
       <h2>Friends</h2>
-    </div>
+    </section>
 
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
     <script type="text/javascript" src="../src/User.js"></script>
+    <script type="text/javascript" src="../src/Hydration.js"></script>
     <script type="text/javascript" src="../src/UserRepository.js"></script>
+    <script type="text/javascript" src="../src/CommunityHydration.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>

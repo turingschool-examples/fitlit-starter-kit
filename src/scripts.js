@@ -1,3 +1,5 @@
+// import moment from "moment";
+
 // ~~~~~ QUERY SELECTORS ~~~~~
 const header = document.querySelector('.header');
 const userInfoCard = document.querySelector('.user-info-card');

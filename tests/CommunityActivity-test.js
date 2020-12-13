@@ -368,6 +368,7 @@ describe('CommunityActivity', function() {
 
     expect(communityActivity.daysExceedingStepGoal(user)[0]).to.deep.equal(activity3)
     expect(communityActivity.daysExceedingStepGoal(user2).length).to.equal(9)
+    expect(communityActivity2.daysExceedingStepGoal(user)).to.deep.equal([])
   });
 
   it('should find the all-time stair climbing record for any user', function() {
@@ -375,9 +376,23 @@ describe('CommunityActivity', function() {
     expect(communityActivity.findRecordStairs(user2)).to.equal(48)
   });
 
-  it('should return week active minutes average for any user', function() {
-    expect(communityActivity.findWeekActiveMinutesAverage("2019/06/15", "2019/06/21", user)).to.equal(156)
-    expect(communityActivity.findWeekActiveMinutesAverage("2019/06/17", "2019/06/23", user)).to.equal(143)
+  it('should return week of activities for any user', function() {
+    const weekOfActivitiesAtIndex0 = new Activity({
+      userID: 2,
+      date: '2019/06/17',
+      numSteps: 13750,
+      minutesActive: 65,
+      flightsOfStairs: 4
+    });
+
+    expect(communityActivity.findWeekActivities("2019/06/15", "2019/06/21", user).length).to.equal(7)
+    expect(communityActivity.findWeekActivities("2019/06/17", "2019/06/23", user)[0]).to.deep.equal(weekOfActivitiesAtIndex0)
+  })
+
+  it('should be able to access any specific activity from a week of activities for any user', function() {
+    expect(communityActivity.findWeekActivities("2019/06/15", "2019/06/21", user)[1].numSteps).to.equal(4112)
+    expect(communityActivity.findWeekActivities("2019/06/17", "2019/06/23", user)[0].minutesActive).to.equal(65)
+    expect(communityActivity.findWeekActivities("2019/06/17", "2019/06/23", user)[6].stairsClimbed).to.equal(0)
   })
 
   it('should return community average stairs climbed on a specific date', function() {

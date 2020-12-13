@@ -50,7 +50,6 @@ class CommunityActivity {
     const startNum = this.dateToNumber(startDate)
     const endNum = this.dateToNumber(endDate)
     const userActivities = this.findAllUserActivities(user)
-
     return userActivities.filter(activity => {
       const activityDateNum = this.dateToNumber(activity.date)
       return activityDateNum >= startNum && activityDateNum <= endNum
@@ -59,7 +58,6 @@ class CommunityActivity {
 
   findWeekActiveMinutesAverage(startDate, endDate, user) {
     const weekActivities = this.findWeekActivities(startDate, endDate, user)
-
     const totalMinutes = weekActivities.reduce((minutesTotal, activity) => minutesTotal + activity.minutesActive, 0)
 
     return Math.round(totalMinutes / weekActivities.length)

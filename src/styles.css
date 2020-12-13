@@ -1,6 +1,6 @@
 html,
 body {
-  height: 100%;
+  height: 120%;
   font-family: 'Electrolize', sans-serif;
   color: #000000;
 }
@@ -10,11 +10,10 @@ h1, h2 {
 }
 
 .section-wrapper {
-    border: 1px solid blue;
     display: grid;
-    grid-gap: 1rem;
+    grid-gap: 1.5rem;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    margin-top: 10px;
+    margin: 10px;
   }
 
 /* .app-name {
@@ -25,14 +24,49 @@ h1, h2 {
   border: 1px solid blue;
 } */
 
-.widget {
+.category {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   border: 1px solid blue;
+  height: 120%;
 }
 
+.app-name-and-greeting {
+  text-align: center;
+  font-size: larger;
+}
 
+.user-info-card {
+  background-color: #65B2FC;
+}
+
+.hydration {
+  background-color: #67E68F;
+}
+
+.sleep {
+  background-color: #FCF865;
+}
+
+.activity {
+  background-color: #F58E20;
+}
+
+.widget {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.hydration,
+.sleep,
+.activity {
+  /* padding-top: 50%; */
+}
 
 /* .daily-leaderboard {
   border: 1px solid blue;

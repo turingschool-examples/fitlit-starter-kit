@@ -19,13 +19,13 @@ describe('Hydration', () => {
 
   });
 
-  it('should have an appropriate constructor', () => {
+  it.skip('should have an appropriate constructor', () => {
     expect(oneData.id).to.equal(1);
     expect(oneData.date).to.equal('2019/06/15');
     expect(oneData.numOunces).to.equal(69);
   });
 
-  it('should return ounces consumed on given day', () => {
+  it.skip('should return ounces consumed on given day', () => {
     const ounces = oneData.returnOuncesToday();
 
     expect(ounces).to.equal(69);

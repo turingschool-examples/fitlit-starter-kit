@@ -150,11 +150,37 @@ describe('SleepRepo', () => {
     expect(sleepRepo.getAllUsersAvgSleepQualityAllTime()).to.equal(3.0);
   })
 
-  it.skip('should get users who avg sleep quality > 3 for a week', () => {
-    expect(sleepRepo.getSleepQualityOver3("2019/06/22")).to.deep.equal(['TBD']);
+  it('should return a week of dates given an initial date', () => {
+    expect(sleepRepo.getDatesOfWeek("2019/06/21")).to.deep.equal([
+      '2019/06/15',
+      '2019/06/16',
+      '2019/06/17',
+      '2019/06/18',
+      '2019/06/19',
+      '2019/06/20',
+      '2019/06/21'
+    ]);
+    expect(sleepRepo.getDatesOfWeek("2019/06/22")).to.deep.equal([
+      '2019/06/16',
+      '2019/06/17',
+      '2019/06/18',
+      '2019/06/19',
+      '2019/06/20',
+      '2019/06/21',
+      '2019/06/22'
+    ]);
   })
 
-  it('should get users who slept the most on given day', () => {
+  it('should return an array of all unique ids', () => {
+    expect(sleepRepo.getUniqueIds()).to.deep.equal([1, 2]);
+  })
+
+  it('should find users who avg sleep quality > 3 for a week', () => {
+    expect(sleepRepo.getSleepQualityOver3("2019/06/21")).to.deep.equal([1]);
+    expect(sleepRepo.getSleepQualityOver3("2019/06/22")).to.deep.equal([1]);
+  })
+
+  it('should find users who slept the most on given day', () => {
     expect(sleepRepo.getSleptMostOnDate("2019/06/19")).to.deep.equal([1]);
     expect(sleepRepo.getSleptMostOnDate("2019/06/15")).to.deep.equal([1, 2]);
   })

@@ -49,23 +49,48 @@ class SleepRepo {
     return Number((totalQuality / this.allSleep.length).toFixed(1));
   }
 
-  // Find all users who average a sleep quality greater than 3 for a given week
-  // (7 days) - you should be able to calculate this for any week,
-  // not just the latest week
-  // getSleepQualityOver3(date) {
-  // input: array of all sleep objects
-  // output: array of ids of users who had sleep quality avg > 3
-  // for a given week
-  // 1. get this.allSleep for week
-  // const sleepDates = this.allSleep.map(sleep => sleep.date);
-  //   console.log("sleepDates", sleepDates)
-  // const indexOfMatchingSleepDate = sleepDates.indexOf(date);
-  //   console.log("indexOfMatchingSleepDate", indexOfMatchingSleepDate)
-  // const week = this.allSleep.slice(indexOfMatchingSleepDate - 6,
-  // indexOfMatchingSleepDate + 1);
-  //   console.log("week", week)
-  // 2.
-  // }
+  getDatesOfWeek(date) {
+    const allSleepDates = this.allSleep.map(sleep => sleep.date);
+    const indexOfDate = allSleepDates.indexOf(date);
+    const sleepForWeek = this.allSleep.slice(indexOfDate - 6, indexOfDate + 1);
+    return sleepForWeek.map(sleep => sleep.date);
+  }
+
+  getUniqueIds() {
+    const uniqueIds = [];
+    this.allSleep.forEach(sleep => {
+      if (!uniqueIds.includes(sleep.userID)) {
+        uniqueIds.push(sleep.userID);
+      }
+    });
+    return uniqueIds;
+  }
+
+  getSleepQualityOver3(date) {
+    const idsWithQualityOver3 = [];
+    const weekDates = this.getDatesOfWeek(date);
+    const uniqueIds = this.getUniqueIds();
+
+    uniqueIds.forEach(id => {
+      const userSleep = this.getSleepById(id);
+      const userQualityForWeek = [];
+      userSleep.forEach(sleep => {
+        weekDates.forEach(date => {
+          if (sleep.date === date) {
+            userQualityForWeek.push(sleep.sleepQuality);
+          }
+        })
+      })
+      const totalQuality = userQualityForWeek.reduce((total, quality) => {
+        return total + quality;
+      })
+      if ((totalQuality / 7) > 3) {
+        idsWithQualityOver3.push(id);
+      }
+    })
+
+    return idsWithQualityOver3;
+  }
 
   getSleptMostOnDate(date) {
     const ids = [];

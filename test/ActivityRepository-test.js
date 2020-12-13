@@ -196,8 +196,20 @@ describe('Activity', () => {
   })
 
   it('should get all days where step goal was exceeded', () => {
-    expect(activityRepo.findDatesExceededStepGoal(user1)).to.deep.equal(["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21", "2019/06/22"]);
-    expect(activityRepo.findDatesExceededStepGoal(user2)).to.deep.equal(["2019/06/19", "2019/06/22"]);
+    expect(activityRepo.findDatesExceededStepGoal(user1)).to.deep.equal([
+      "2019/06/15",
+      "2019/06/16",
+      "2019/06/17",
+      "2019/06/18",
+      "2019/06/19",
+      "2019/06/20",
+      "2019/06/21",
+      "2019/06/22"
+    ]);
+    expect(activityRepo.findDatesExceededStepGoal(user2)).to.deep.equal([
+      "2019/06/19",
+      "2019/06/22"
+    ]);
   })
 
   it('should get user record for flights of stairs climbed', () => {

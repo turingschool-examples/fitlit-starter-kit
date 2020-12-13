@@ -8,14 +8,13 @@ describe('Hydration', () => {
   let hydrationData, oneData;
 
   beforeEach(() => {
-    hydrationData = [
-      {
+    hydrationData = {
         "userID": 1,
         "date": "2019/06/15",
         "numOunces": 69
-      }
-    ];
-    oneData = new Hydration(hydrationData[0]);
+      };
+
+    oneData = new Hydration(hydrationData);
 
   });
 

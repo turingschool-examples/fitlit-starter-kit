@@ -27,7 +27,11 @@ class HydrationRepo {
     return waterConsumed;
   }
 
-  
+  returnAvgWaterConsumed(userId, date) {
+    const waterConsumed = this.returnWaterConsumed(userId, date);
+    const totalWaterConsumed = waterConsumed.reduce((total, oz) => total + oz, 0);
+    return Math.floor(totalWaterConsumed / 7);
+  }
 }
 
 if (typeof module !== 'undefined') {

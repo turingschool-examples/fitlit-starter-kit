@@ -3796,10 +3796,10 @@ describe('HydrationRepo', () => {
     expect(moreWaterConsumed).to.deep.equal(newOzConsumed);
   });
 
-  it.skip('should be able to calculate avg oz of water consumed in a week, rounding down', () => {
+  it('should be able to calculate avg oz of water consumed in a week, rounding down', () => {
     const startingDate = '2019/06/22';        
-    const avgOzConsumed = repo.returnAvgWaterConsumed(34, startingDate);
+    const avgOzConsumed = repo.returnAvgWaterConsumed(42, startingDate);
 
-    expect(avgOzConsumed).to.equal(56);
+    expect(avgOzConsumed).to.equal(66);
   });
 });

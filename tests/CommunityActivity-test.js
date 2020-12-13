@@ -387,13 +387,19 @@ describe('CommunityActivity', function() {
 
     expect(communityActivity.findWeekActivities("2019/06/15", "2019/06/21", user).length).to.equal(7)
     expect(communityActivity.findWeekActivities("2019/06/17", "2019/06/23", user)[0]).to.deep.equal(weekOfActivitiesAtIndex0)
-  })
+  });
 
   it('should be able to access any specific activity from a week of activities for any user', function() {
     expect(communityActivity.findWeekActivities("2019/06/15", "2019/06/21", user)[1].numSteps).to.equal(4112)
     expect(communityActivity.findWeekActivities("2019/06/17", "2019/06/23", user)[0].minutesActive).to.equal(65)
-    expect(communityActivity.findWeekActivities("2019/06/17", "2019/06/23", user)[6].stairsClimbed).to.equal(0)
-  })
+    expect(communityActivity.findWeekActivities("2019/09/16", "2019/09/22", user2)[6].stairsClimbed).to.equal(14)
+  });
+
+  it('should be able to return a weekly average of active minutes for any user', function() {
+    expect(communityActivity.findWeekActiveMinutesAverage("2019/06/15", "2019/06/21", user)).to.equal(156)
+    expect(communityActivity.findWeekActiveMinutesAverage("2019/06/17", "2019/06/23", user)).to.equal(143)
+    expect(communityActivity.findWeekActiveMinutesAverage("2019/09/16", "2019/09/22", user2)).to.equal(202)
+  });
 
   it('should return community average stairs climbed on a specific date', function() {
     expect(communityActivity2.findCommunityAverage("2019/06/15", 'stairsClimbed')).to.equal(21)

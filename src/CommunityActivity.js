@@ -1,5 +1,7 @@
-const Activity = require('./activity')
+/* eslint-disable max-len */
+// const Activity = require('./activity')
 
+// eslint-disable-next-line no-unused-vars
 class CommunityActivity {
   constructor(activity) {
     this.activities = activity.map(activity => new Activity(activity))
@@ -27,7 +29,6 @@ class CommunityActivity {
   findUserActivityMinutes(date, user) {
     const activity = this.findUserActivityByDate(date, user)
     return activity.minutesActive
-
   }
 
   daysExceedingStepGoal(user) {
@@ -45,21 +46,24 @@ class CommunityActivity {
     return parseInt(date.split('/').join(''))
   }
 
-  findWeekActiveMinutesAverage(startDate, endDate, user) {
+  findWeekActivities(startDate, endDate, user) {
     const startNum = this.dateToNumber(startDate)
     const endNum = this.dateToNumber(endDate)
-
     const userActivities = this.findAllUserActivities(user)
 
-    const activitiesDuringThisTimePeriod = userActivities.filter(activity => {
+    return userActivities.filter(activity => {
       const activityDateNum = this.dateToNumber(activity.date)
       return activityDateNum >= startNum && activityDateNum <= endNum
     })
+  }
 
-    const totalMinutes = activitiesDuringThisTimePeriod.reduce((minutesTotal, activity) => minutesTotal + activity.minutesActive, 0)
+  findWeekActiveMinutesAverage(startDate, endDate, user) {
+    const weekActivities = this.findWeekActivities(startDate, endDate, user)
 
-    return Math.round(totalMinutes / activitiesDuringThisTimePeriod.length)
-}
+    const totalMinutes = weekActivities.reduce((minutesTotal, activity) => minutesTotal + activity.minutesActive, 0)
+
+    return Math.round(totalMinutes / weekActivities.length)
+  }
 
   findCommunityAverage(date, fitnessType) {
     const allActivitesForDate = this.activities.filter(activity => activity.date === date)
@@ -71,4 +75,4 @@ class CommunityActivity {
 
 
 
-module.exports = CommunityActivity
+// module.exports = CommunityActivity

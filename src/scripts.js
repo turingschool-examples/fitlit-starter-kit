@@ -11,13 +11,14 @@ const steps = document.querySelector('.steps');
 const activeMinutes = document.querySelector('.active-minutes')
 const stairs = document.querySelector('.stairs')
 
-//since multiple classes will need these, global
-let community = null
-let user = null
+//since multiple methods will need these, global
+let community = null;
+let user = null;
 let communityHydration = null;
 let hydration = null;
 let communityActivity = null;
 let activity = null;
+let today = "2019/09/22";
 
 window.addEventListener('load', loadPage)
 
@@ -65,7 +66,7 @@ const showStepGoalComparison = () => {
 //ADD TODAY's HYDRATION STATS:
 const showHydrationStats = () => {
   water.insertAdjacentHTML('beforeend',
-    `<p class="water-stats">Water consumed today: ${communityHydration.calculateTotalWaterOnDay(hydration.userID, "2019/09/20")} OZ</p>
+    `<p class="water-stats">Water consumed today: ${communityHydration.calculateTotalWaterOnDay(hydration.userID, today)} OZ</p>
     `)
 }
 
@@ -85,16 +86,102 @@ const showHydrationStatsWeek = (startDate, endDate) => {
 }
 //ADD ACTIVITY STATS:
 const showIfUserMetStepGoal = () => {
-  if (activity.verififyIfStepGoal(user)) {
-    steps.innerHTML = '<p>You have met your Daily Step Goal!</p>'
+  if (activity.verifyIfStepGoal(user)) {
+    steps.innerHTML = '<p>You\'ve met your Daily Step Goal!</p>'
   } else {
     steps.innerHTML = '<p>Keep working toward your Daily Step Goal.</p>'
   }
 }
 
 const showUserStepsInMiles = () => {
-  steps.insertAdjacentHTML('beforeend', `You've stepped ${activity.getStepMiles(user)} miles today.`)
+  steps.insertAdjacentHTML('beforeend', `<p>Miles: ${activity.getStepMiles(user)}</p>`)
 }
+
+const showStepsToday = () => {
+  steps.insertAdjacentHTML('beforeend', `<p>Steps: ${activity.numSteps}</p>`)
+}
+
+const showCommunityStepsToday = () => {
+  steps.insertAdjacentHTML('beforeend', `<p>Community Average Steps: ${communityActivity.findCommunityAverage(today, 'numSteps')}</p>`)
+}
+
+const showNumberOfDaysExceedingStepGoal = () => {
+  steps.insertAdjacentHTML('beforeend', `<p>Days Step Goal Has Been Met: ${communityActivity.daysExceedingStepGoal(user).length}</p>`)
+}
+
+const showMinutesActiveToday = () => {
+  activeMinutes.insertAdjacentHTML('beforeend', `<p>Minutes Active: ${activity.minutesActive}</p>`)
+}
+
+const showCommunityActiveMinutesToday = () => {
+  activeMinutes.insertAdjacentHTML('beforeend', `<p>Community Average Minutes Active: ${communityActivity.findCommunityAverage(today, 'minutesActive')}</p>`)
+}
+
+const showUserActiveMinutesWeekAverage = () => {
+  activeMinutes.insertAdjacentHTML('beforeend', `<p>Weekly Average Minutes Active: ${communityActivity.findWeekActiveMinutesAverage("2019/09/16", "2019/09/22", user)}</p>`)
+}
+
+const showCommunityStairsToday = () => {
+  stairs.insertAdjacentHTML('beforeend', `<p>Community Average Stairs Climbed: ${communityActivity.findCommunityAverage(today, 'stairsClimbed')}</p>`)
+}
+
+const showUserStairRecord = () => {
+  stairs.insertAdjacentHTML('beforeend', `<p>Your Record Stairs Climbed: ${communityActivity.findRecordStairs(user)}</p>`)
+}
+
+const showStepStatsWeek = (startDate, endDate) => {
+  let weekActivities = communityActivity.findWeekActivities(startDate, endDate, user)
+
+  let activitiesDisplay = weekActivities.reduce((display, activity) => {
+    display += `<p>${activity.date}: ${activity.numSteps} steps</p>`
+    return display
+  }, '') 
+
+  graphTitle.insertAdjacentHTML('afterend',
+    `<article class="steps-stats-week">Steps taken over the week of ${startDate}-${endDate}:` + activitiesDisplay + '</article>')
+}
+
+const showMinutesActiveStatsWeek = (startDate, endDate) => {
+  let weekActivities = communityActivity.findWeekActivities(startDate, endDate, user)
+
+  let activitiesDisplay = weekActivities.reduce((display, activity) => {
+    display += `<p>${activity.date}: ${activity.minutesActive} minutes active</p>`
+    return display
+  }, '') 
+
+  graphTitle.insertAdjacentHTML('afterend',
+    `<article class="minutes-active-stats-week">Minutes Active over the week of ${startDate}-${endDate}:` + activitiesDisplay + '</article>')
+}
+
+const showStairsStatsWeek = (startDate, endDate) => {
+  let weekActivities = communityActivity.findWeekActivities(startDate, endDate, user)
+
+  let activitiesDisplay = weekActivities.reduce((display, activity) => {
+    display += `<p>${activity.date}: ${activity.stairsClimbed} stairs climbed</p>`
+    return display
+  }, '') 
+
+  graphTitle.insertAdjacentHTML('afterend',
+    `<article class="stairs-stats-week">Stairs Climbed over the week of ${startDate}-${endDate}:` + activitiesDisplay + '</article>')
+}
+
+
+const showActivityStats = () => {
+  showIfUserMetStepGoal()
+  showNumberOfDaysExceedingStepGoal()
+  showStepsToday()
+  showUserStepsInMiles()
+  showCommunityStepsToday()
+  showMinutesActiveToday()
+  showCommunityActiveMinutesToday()
+  showUserActiveMinutesWeekAverage()
+  showCommunityStairsToday()
+  showUserStairRecord()
+  showStepStatsWeek("2019/09/16", "2019/09/22")
+  showMinutesActiveStatsWeek("2019/09/16", "2019/09/22")
+  showStairsStatsWeek("2019/09/16", "2019/09/22")
+}
+
 
 //ADD SLEEP STATS:
 
@@ -119,8 +206,7 @@ function loadPage() {
   showProfile()
   showStepGoalComparison()
   showHydrationStats()
-  showHydrationStatsWeek("2019/09/14", "2019/09/20")
+  showHydrationStatsWeek("2019/09/16", "2019/09/22")
   showFriends()
-  showIfUserMetStepGoal()
-  showUserStepsInMiles()
+  showActivityStats()
 }

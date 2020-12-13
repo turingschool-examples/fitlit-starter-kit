@@ -1,6 +1,7 @@
+// eslint-disable-next-line no-unused-vars
 class Activity {
   constructor(data) {
-    
+
     this.userID = data.userID;
     this.date = data.date;
     this.numSteps = data.numSteps;
@@ -19,4 +20,4 @@ class Activity {
 
 }
 
-module.exports =  Activity;
+// module.exports =  Activity;

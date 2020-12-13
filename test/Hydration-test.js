@@ -10,8 +10,8 @@ describe('Hydration', () => {
   beforeEach(() => {
     hydrationData = [
       {
-        "userID": 34,
-        "date": "2019/09/17",
+        "userID": 1,
+        "date": "2019/06/15",
         "numOunces": 69
       }
     ];
@@ -19,13 +19,13 @@ describe('Hydration', () => {
 
   });
 
-  it.skip('should have an appropriate constructor', () => {
-    expect(oneData.id).to.equal(34);
-    expect(oneData.date).to.equal('2019/09/17');
+  it('should have an appropriate constructor', () => {
+    expect(oneData.id).to.equal(1);
+    expect(oneData.date).to.equal('2019/06/15');
     expect(oneData.numOunces).to.equal(69);
   });
 
-  it.skip('should return ounces consumed on given day', () => {
+  it('should return ounces consumed on given day', () => {
     const ounces = oneData.returnOuncesToday();
 
     expect(ounces).to.equal(69);

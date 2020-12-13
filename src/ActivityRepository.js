@@ -1,103 +1,108 @@
-class ActivityRepository {
-  constructor(activityInstanceData) {
-    this.activityInstanceData = activityInstanceData;
+class ActivityRepo {
+  constructor(allActivity) {
+    this.allActivity = allActivity;
   }
 
-  returnActivityData(id) {
-    return this.activityInstanceData.filter(activity => activity.userID === id);
+  getActivitiesById(id) {
+    return this.allActivity.filter(activity => activity.userID === id);
+  }
+
+  getActivitiesByDate(date) {
+    return this.allActivity.filter(activity => activity.date === date);
   }
 
   filterByIdAndDate(user, date) {
-    const allUserActivity = this.returnActivityData(user.id);
+    const allUserActivity = this.getActivitiesById(user.id);
     return allUserActivity.find(activity => activity.date === date);
   }
 
-  returnMilesWalked(user, date) {
-    const userActivityDate = this.filterByIdAndDate(user, date);
-    return Number(((user.strideLength * userActivityDate.numSteps) / 5280).toFixed(1));
+  getMilesWalked(user, date) {
+    const activityByDate = this.filterByIdAndDate(user, date);
+    const distance = user.strideLength * activityByDate.numSteps;
+    return Number((distance / 5280).toFixed(1));
   }
 
-  returnStepsTaken(user, date) {
-    const userActivityDate = this.filterByIdAndDate(user, date);
-    return userActivityDate.numSteps;
+  getStepsTaken(user, date) {
+    const activityByDate = this.filterByIdAndDate(user, date);
+    return activityByDate.numSteps;
   }
 
-  returnMinutesActive(user, date) {
-    const userActivityDate = this.filterByIdAndDate(user, date);
-    return userActivityDate.minutesActive;
+  getMinsActive(user, date) {
+    const activityByDate = this.filterByIdAndDate(user, date);
+    return activityByDate.minutesActive;
   }
 
-  returnStairs(user, date) {
-    const userActivityDate = this.filterByIdAndDate(user, date);
-    return userActivityDate.flightsOfStairs;
+  getStairs(user, date) {
+    const activityByDate = this.filterByIdAndDate(user, date);
+    return activityByDate.flightsOfStairs;
   }
 
   getActivityDataByWeek(id, date) {
-    const allUserActivity = this.returnActivityData(id);
-    const activityDates = allUserActivity.map(activity => activity.date);
-    const indexOfMatchingActivityDate = activityDates.indexOf(date);
-    return allUserActivity.slice(indexOfMatchingActivityDate - 6, indexOfMatchingActivityDate + 1);
+    const userActivity = this.getActivitiesById(id);
+    const activityDates = userActivity.map(activity => activity.date);
+    const indexOfDate = activityDates.indexOf(date);
+    return userActivity.slice(indexOfDate - 6, indexOfDate + 1);
   }
 
-  calculateWeeklyAverageMinutesActive(id, date) {
-    const allUserActivity = this.returnActivityData(id);
-    const activityDates = allUserActivity.map(activity => activity.date);
-    const indexOfMatchingActivityDate = activityDates.indexOf(date);
-    const weekOfUserActivity =  allUserActivity.slice(indexOfMatchingActivityDate - 6, indexOfMatchingActivityDate + 1);
-    const totalUserActiveMinutes = weekOfUserActivity.reduce((totalMinutes, activity) => totalMinutes + activity.minutesActive, 0)
-    return Math.round((totalUserActiveMinutes / 7));
+  getAvgMinsActiveByWeek(id, date) {
+    const week = this.getActivityDataByWeek(id, date);
+    const totalMins = week.reduce((total, activity) => {
+      return total + activity.minutesActive;
+    }, 0)
+    return Math.round((totalMins / 7));
   }
 
-  determineStepGoalAchieved(user, date) {
-    const allUserActivity = this.returnActivityData(user.id);
-    const userActivityDate = allUserActivity.find(activity => activity.date === date);
-    return (user.dailyStepGoal <= userActivityDate.numSteps);
+  getStepGoalAchieved(user, date) {
+    const userActivities = this.getActivitiesById(user.id);
+    const activitiesByDate = userActivities.find(activity => {
+      return activity.date === date;
+    });
+    return (user.dailyStepGoal <= activitiesByDate.numSteps);
   }
 
-  findDaysExceededStepGoal(user) {
-    const daysExceededStepGoal = [];
-    const allUserActivity = this.returnActivityData(user.id);
-    allUserActivity.forEach(activity => {
+  findDatesExceededStepGoal(user) {
+    const dates = [];
+    const userActivities = this.getActivitiesById(user.id);
+    userActivities.forEach(activity => {
       if (activity.numSteps >= user.dailyStepGoal) {
-        daysExceededStepGoal.push(activity.date);
+        dates.push(activity.date);
       }
-    })
-    return daysExceededStepGoal;
+    });
+    return dates;
   }
 
   findFlightsOfStairsRecord(id) {
-    const allUserActivity = this.returnActivityData(id);
-    const allFlightsOfStairs = allUserActivity.map(activity => activity.flightsOfStairs);
-    const max = Math.max(...allFlightsOfStairs);
-    return max;
+    const userActivity = this.getActivitiesById(id);
+    const stairs = userActivity.map(activity => activity.flightsOfStairs);
+    return Math.max(...stairs);
   }
 
-  getAllUserAvgSteps(date) {
-    const allUserActivityByDate = this.activityInstanceData.filter(activity => activity.date === date);
-    const allUserTotalSteps = allUserActivityByDate.reduce((totalSteps, activity) => {
-      return activity.numSteps + totalSteps;
+  getAllUsersAvgStepsByDate(date) {
+    const activitiesOnDate = this.getActivitiesByDate(date);
+    const totalSteps = activitiesOnDate.reduce((total, activity) => {
+      return total + activity.numSteps;
     }, 0)
-    return Math.round(allUserTotalSteps / allUserActivityByDate.length);
+    return Math.round(totalSteps / activitiesOnDate.length);
   }
 
-  getAllUserTotalMins(date) {
-    const allUserActivityByDate = this.activityInstanceData.filter(activity => activity.date === date);
-    const allUserTotalMins = allUserActivityByDate.reduce((totalMins, activity) => {
-      return activity.minutesActive + totalMins;
+  getAllUsersAvgMinsByDate(date) {
+    const activitiesOnDate = this.getActivitiesByDate(date);
+    const totalMins = activitiesOnDate.reduce((total, activity) => {
+      return total + activity.minutesActive;
     }, 0)
-    return Math.round(allUserTotalMins / allUserActivityByDate.length);
+    return Math.round(totalMins / activitiesOnDate.length);
   }
 
-  getAllUserTotalStairs(date) {
-    const allUserActivityByDate = this.activityInstanceData.filter(activity => activity.date === date);
-    const allUserTotalStairs = allUserActivityByDate.reduce((totalStairs, activity) => {
-      return activity.flightsOfStairs + totalStairs;
+  getAllUsersAvgStairsByDate(date) {
+    const activitiesOnDate = this.getActivitiesByDate(date);
+    const totalStairs = activitiesOnDate.reduce((total, activity) => {
+      return total + activity.flightsOfStairs;
     }, 0)
-    return Math.round(allUserTotalStairs / allUserActivityByDate.length);
+    return Math.round(totalStairs / activitiesOnDate.length);
   }
 
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = ActivityRepository;
+  module.exports = ActivityRepo;
 }

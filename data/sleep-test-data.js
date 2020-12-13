@@ -1,4 +1,4 @@
-const testSleep = [{
+const testSleepData = [{
     "userID": 1,
     "date": "2019/06/15",
     "hoursSlept": 8,
@@ -98,6 +98,6 @@ const testSleep = [{
 
 if (typeof module !== 'undefined') {
   module.exports = {
-    testSleep
+    testSleepData
   }
 }

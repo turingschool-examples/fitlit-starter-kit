@@ -1,4 +1,4 @@
-const testActivity = [{
+const testActivityData = [{
   "userID": 1,
   "date": "2019/06/15",
   "numSteps": 3577,
@@ -113,6 +113,6 @@ const testActivity = [{
 
 if (typeof module !== 'undefined') {
   module.exports = {
-    testActivity
+    testActivityData
   }
 }

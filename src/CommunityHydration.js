@@ -1,4 +1,7 @@
-// const Hydration = require('../src/Hydration');
+const chai = require('chai');
+const expect = chai.expect;
+
+const Hydration = require('../src/Hydration');
 
 class CommunityHydration {
   constructor(data = []) {
@@ -9,7 +12,7 @@ class CommunityHydration {
     const userWater = this.hydrations.filter(water => (water.userID === userID));
     const waterConsumed = userWater.map(water => water.numOunces);
     const avgWaterConsumed = (waterConsumed.reduce((a, b) => a + b, 0)) / waterConsumed.length;
-    return avgWaterConsumed;
+    return avgWaterConsumed;//refactor to truncate long decimals 
   }
 
   calculateTotalWaterOnDay(userID, date) {
@@ -21,7 +24,7 @@ class CommunityHydration {
     return parseInt(date.split('/').join(''));
   }
 
-  calculateTotalWeek(userID, startDate, endDate){
+  calculateTotalWeek(userID, startDate, endDate){//refactor to truncate long decimal numbers
     const weekWaterTotals = [];
     const startDateNumber = this.convertDateString(startDate);
     const endDateNumber = this.convertDateString(endDate);
@@ -43,4 +46,4 @@ class CommunityHydration {
     return weekWaterTotals;
   }
 }
-// module.exports = CommunityHydration;
+module.exports = CommunityHydration;

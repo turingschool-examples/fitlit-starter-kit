@@ -17,4 +17,12 @@ describe('Activity', () => {
 
     activity = new Activity(data);
   });
+
+  it.skip('should have an appropriate constructor', () => {
+    expect(activity.id).to.equal(data.userID);
+    expect(activity.date).to.equal(data.date);
+    expect(activity.steps).to.equal(data.numSteps);
+    expect(activitiy.minActive).to.equal(data.minutesActive);
+    expect(activity.flightsOfStairs).to.equal(data.flightsOfStairs);
+  });
 });

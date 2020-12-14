@@ -120,7 +120,7 @@ describe('SleepRepo', () => {
       "userID": 1,
       "date": "2019/06/24",
       "hoursSlept": 6.2,
-      "sleepQuality": 2.2
+      "sleepQuality": 2.3
       },
       {
       "userID": 2,
@@ -130,7 +130,17 @@ describe('SleepRepo', () => {
       }
     ];
 
-    sleepRepo = new SleepRepo(repoData) 
+    sleepRepo = new SleepRepo(repoData)
   });
+
+    it.skip('should have a way to calculate an average number of hours slept per day given a user ID', () => {
+      expect(sleepRepo.returnAverageHoursSleptPerDay(1)).to.deep.equal(6.47);
+    });
+
+    it.skip('shouldn have a way to return the average sleep quality over all time given a user ID', () => {
+      expect(sleepRepo.returnOverallAverageSleepQuality(1)).to.deep.equal(2.4);
+    })
+
+
 
 });

@@ -146,8 +146,10 @@ describe('SleepRepo', () => {
     });
 
     it.skip('should be able to return sleep quality for each day over the course of a week given a user and starting date', () {
-      expect(sleepRepo.returnWeekOfDailySleepQuality)
+      expect(sleepRepo.returnWeekOfDailySleepQuality(1, "2019/06/15")).to.deep.equal([2, 2.2, 2.3, 2.5, 2.6, 2.9, 3.2]);
     });
+
+    
 
 
   });

@@ -36,14 +36,14 @@ body {
 .user-info-card {
   text-align: left;
   display: flex;
-  justify-content: space-between;
-  align-items: stretch;
+  /* justify-content: space-between; */
+  /* align-items: stretch; */
 }
 
-.user-stats {
+/* .user-stats {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .user, .widget {
   align-items: flex-start;
@@ -58,6 +58,11 @@ body {
     grid-column-gap: 2rem;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
+
+.icon {
+  height: 30%;
+  width: 30%;
+}
 
 .category {
   margin: 5%;

@@ -1,130 +1,87 @@
-// const User = require("./user");
-// const userRepo = require("./userRepo");
+/* eslint-disable max-len */
+'use strict'
 
 class UserActivity {
-  constructor(activityData) {
-    this.activityData = activityData;
+  constructor(activityData, strideLength, dailyStepGoal) {
+    this.userActivityData = activityData;
+    this.strideLength = strideLength;
+    this.dailyStepGoal = dailyStepGoal
   }
 
-  mapUserActivity(id) {
-    return this.activityData.reduce((total, value) => {
-      if (value.userID === id) {
-        total.push(value);
+  getOneDayOfData(date, keyName) {
+    return this.userActivityData.find((day) => day.date === date)[keyName]
+  }
+
+  getWeekOfData(startDate, keyName) { // test this
+    const findIndex = this.userActivityData.findIndex((day) => day.date === startDate);
+    return this.userActivityData.reduce((total, value) => {
+      if (!total[findIndex]) {
+        total.push(value[keyName]);
+      } else {
+        total.push(value[keyName]);
       }
       return total;
-    }, []);
+    }, []).splice([findIndex], 7);
   }
 
-  calculateMilesWalked(userRepo, user, date) {
-    let findActivityByDate = this.activityData.find((day) => day.date === date);
-    let currentUser = userRepo.getAUser(user);
-    let userStride = currentUser.strideLength;
-    let userSteps = findActivityByDate.numSteps;
-    let miles = (userStride * userSteps) / 5280;
-    return miles;
-  }
-
-  calculateActiveMinutes(date, id) {
-    this.mapUserActivity(id); //array of one users all activity
-    return this.mapUserActivity(id).find((day) => day.date === date)
-      .minutesActive;
-  }
-
-  calculateNumSteps(date, id) {
-    this.mapUserActivity(id); //array of one users all activity
-    return this.mapUserActivity(id).find((day) => day.date === date)
-      .numSteps;
-  } 
-
-  calculateStairsClimbed(date, id) {
-    this.mapUserActivity(id); //array of one users all activity
-    return this.mapUserActivity(id).find((day) => day.date === date)
-      .flightsOfStairs;
-  } // dont have a test for this one
-
-
-  calculateAvgMinWeek(startDate, id) {
-    const activityItems = this.mapUserActivity(id);
-    const findIndex = activityItems.findIndex((day) => day.date === startDate);
-    const activityItemPerWeek = activityItems
-      .reduce((total, value) => {
-        if (!total[findIndex]) {
-          total.push(value.minutesActive);
-        } else {
-          total.push(value.minutesActive);
-        }
-        return total;
-      }, [])
-      .splice([findIndex], 7);
-
+  calculateAvgMinWeek(startDate) {
+    const findIndex = this.userActivityData.findIndex((day) => day.date === startDate);
+    const activityItemPerWeek = this.userActivityData.reduce((total, value) => {
+      if (!total[findIndex]) {
+        total.push(value.minutesActive);
+      } else {
+        total.push(value.minutesActive);
+      }
+      return total;
+    }, []).splice([findIndex], 7);
     let totalMinutes = activityItemPerWeek.reduce((total, value) => {
       total += value;
       return total;
     }, 0);
     return totalMinutes / 7;
   }
-
-  isStepGoalReached(userRepo, user, date) {
-    let findActivityByDate = this.activityData.find((day) => day.date === date);
-    let currentUser = userRepo.getAUser(user.id);
-    let userSteps = findActivityByDate.numSteps;
-    return userSteps > currentUser.dailyStepGoal;
-  }
-
-  getDaysStepsSuccess(userRepo, user) {
-    return this.activityData
-      .filter((item) => item.numSteps > user.dailyStepGoal)
-      .map((item) => item.date);
-  }
-
-  getStairRecord(id) {
-    return this.activityData
+  
+  getStairRecord() {
+    return this.userActivityData
       .map((item) => item.flightsOfStairs)
       .sort((a, b) => b - a)[0];
   }
-  calculateAllAvgStairs(date) {
-    let findActivityByDate = this.activityData.filter(
-      (day) => day.date === date
-    );
-    let mapAllStairs = findActivityByDate.map((item) => item.flightsOfStairs);
-    let totalAllAvgStairs = mapAllStairs.reduce((total, value) => {
-      return (total += value);
-    }, 0);
-    return totalAllAvgStairs / mapAllStairs.length;
-  }
-
-  calculateAllAvgSteps(date) {
-    let findActivityByDate = this.activityData.filter(
-      (day) => day.date === date
-    );
-    let mapAllSteps = findActivityByDate.map((item) => item.numSteps);
-    let totalAllAvgSteps = mapAllSteps.reduce((total, value) => {
-      return (total += value);
-    }, 0);
-    return totalAllAvgSteps / mapAllSteps.length;
-  }
-
-  calculateAllAvgMin(date) {
-    let findActivityByDate = this.activityData.filter(
-      (day) => day.date === date
-    );
-    let mapAllMinutes = findActivityByDate.map((item) => item.minutesActive);
-    let totalAllAvgMin = mapAllMinutes.reduce((total, value) => {
-      return (total += value);
-    }, 0);
-    return totalAllAvgMin / mapAllMinutes.length;
-  }
-
   
-
-  isUserAboveAvg(user, average) {
-      return user > average
+  isUserAboveAvg(userItem, averageAll) {
+    return userItem > averageAll
   }
+
+  calculateActivityItemPerWeek(startDate, keyName) { // test this newb
+    const findIndex = this.userActivityData.findIndex(day => day.date === startDate);
+    const activityItemPerWeek = this.userActivityData.reduce((total, value) => {
+      if (!total[findIndex]) {
+        total.push(value[keyName]);
+      } else {
+        total.push(value[keyName]);
+      }
+      return total;
+    }, []);
+    return activityItemPerWeek.splice([findIndex], 7);
+  }
+  
+  isStepGoalReached(date) { // test this
+    let findActivityByDate = this.userActivityData.find((day) => day.date === date).numSteps;
+    // let userSteps = findActivityByDate.numSteps;
+    return findActivityByDate > this.dailyStepGoal;
+  }
+
+  getDaysStepsSuccess() { // test this
+    return this.userActivityData.filter((item) => item.numSteps > this.dailyStepGoal).map((item) => item.date);
+  }
+
+  calculateMilesWalked(date) { // test this
+    let userSteps = this.userActivityData.find((day) => day.date === date).numSteps;
+    let userStride = this.strideLength;
+    let miles = (userStride * userSteps) / 5280;
+    return miles;
+  }
+
 }
-
-
-
-
 
 if (typeof module !== 'undefined') {
   module.exports = UserActivity;

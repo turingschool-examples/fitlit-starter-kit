@@ -1,7 +1,8 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const Sleep = ('../src/Sleep');
+const Sleep = require('../src/Sleep');
+
 describe('Sleep', () => {
   let sleep1, sleep2, sleep3;
 
@@ -32,5 +33,4 @@ describe('Sleep', () => {
     expect(sleep2.sleepQuality).to.equal(3.6);
     expect(sleep3.sleepQuality).to.equal(1.2);
   })
-
 })

@@ -142,14 +142,16 @@ describe('SleepRepo', () => {
     });
 
     it.skip('should be able to return hours slept each day over the course of a week given a user and starting date', () => {
-      expect(sleepRepo.returnWeekOfDailyHoursSlept(1, "2019/06/15")).to.deep.equal([6, 6.2, 6.4, 6.6, 6.8, 7.1, 7.4]);
+      expect(sleepRepo.returnWeekOfDailyHoursSlept(1, "2019/06/21")).to.deep.equal([6, 6.2, 6.4, 6.6, 6.8, 7.1, 7.4]);
     });
 
     it.skip('should be able to return sleep quality for each day over the course of a week given a user and starting date', () {
-      expect(sleepRepo.returnWeekOfDailySleepQuality(1, "2019/06/15")).to.deep.equal([2, 2.2, 2.3, 2.5, 2.6, 2.9, 3.2]);
+      expect(sleepRepo.returnWeekOfDailySleepQuality(1, "2019/06/21")).to.deep.equal([2, 2.2, 2.3, 2.5, 2.6, 2.9, 3.2]);
     });
 
-    
+    it.skip('should have a way to return the average sleep quality for a user given their user ID', () => {
+      expect(sleepRepo.userAverageSleepQuality(1)).to.equal(2.4)
+    });
 
 
   });

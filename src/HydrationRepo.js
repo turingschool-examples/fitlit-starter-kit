@@ -18,9 +18,9 @@ class HydrationRepo {
 
   returnWaterConsumed(userId, date) {        
     this.filterUserData(userId);
-    const start = this.userData.findIndex(element => element.date === date);    
+    const end = this.userData.findIndex(element => element.date === date);    
     const waterConsumed = [];
-    for (let i = start; i < start + 7; i++) {
+    for (let i = end - 7; i < end; i++) {
       waterConsumed.push(this.userData[i].numOunces);
     }
 
@@ -30,7 +30,7 @@ class HydrationRepo {
   returnAvgWaterConsumed(userId, date) {
     const waterConsumed = this.returnWaterConsumed(userId, date);
     const totalWaterConsumed = waterConsumed.reduce((total, oz) => total + oz, 0);
-    return Math.floor(totalWaterConsumed / 7);
+    return Math.floor(totalWaterConsumed / waterConsumed.length);
   }
 }
 

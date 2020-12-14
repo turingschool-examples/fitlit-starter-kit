@@ -3783,12 +3783,12 @@ describe('HydrationRepo', () => {
   });
   
   it('should be able to return fluid oz of water consumed each day for a given week for a given user', () => {    
-    const startDate = '2019/06/15';
-    const waterConsumed = repo.returnWaterConsumed(34, startDate);
+    const endDate = '2019/06/22';
+    const waterConsumed = repo.returnWaterConsumed(34, endDate);
     const ozConsumed = [22, 76, 34, 36, 91, 54, 81];    
 
-    const otherStartDate = '2019/06/22';
-    const moreWaterConsumed = repo.returnWaterConsumed(42, otherStartDate);
+    const otherEndDate = '2019/06/29';
+    const moreWaterConsumed = repo.returnWaterConsumed(42, otherEndDate);
     const newOzConsumed = [99, 40, 90, 52, 67, 27, 90];
 
     expect(waterConsumed).to.deep.equal(ozConsumed);
@@ -3796,7 +3796,7 @@ describe('HydrationRepo', () => {
   });
 
   it('should be able to calculate avg oz of water consumed in a week, rounding down', () => {
-    const startingDate = '2019/06/22';        
+    const startingDate = '2019/06/29';        
     const avgOzConsumed = repo.returnAvgWaterConsumed(42, startingDate);
 
     expect(avgOzConsumed).to.equal(66);

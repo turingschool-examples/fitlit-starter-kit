@@ -83,73 +83,77 @@ function displayUserInfoCard(user) {
 function displayHydrationInfo(user, date) {
   hydrationStats.innerHTML = `
     <div class="hydration widget">
-      <p class="number">${hydrationRepo.getUserOzByDate(user.id, date)} oz</p>
-      <p class="description">water drank today</p>
+      <h3>Today</h3>
+      <div class="stats">
+        <div class="stat">
+          <p class="number">${hydrationRepo.getUserOzByDate(user.id, date)}</p>
+          <p class="description">oz drank</p>
+        </div>
+      </div>
     </div>
     <div class="hydration widget">
-      <p class="number">${hydrationRepo.getUserAvgDailyOzAllTime(user.id)} oz/day</p>
-      <p class="description">avg water drank</p>
+      <h3>All-Time</h3>
+      <div class="stats">
+        <div class="stat">
+          <p class="number">${hydrationRepo.getUserAvgDailyOzAllTime(user.id)}</p>
+          <p class="description">avg oz drank per day</p>
+        </div>
+      </div>
     </div>`;
   displayHydrationChart();
 }
 
 function displayHydrationChart() {
   let weekHydrationChart = new Chart(hydrationWeekChart, {
-    type: 'line',
+    type: 'bar',
     data: {
       labels: Object.keys(sleepRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22")),
       datasets: [{
-        label: 'Hours Slept',
-        backgroundColor: '#536DFE',
-        borderColor: '#536DFE',
+        label: 'Oz Drank',
+        backgroundColor: '#00B0FF',
+        borderColor: '#00B0FF',
         fill: false,
         data: Object.values(sleepRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22"))
-      }, {
-        label: 'Sleep Quality',
-        backgroundColor: '#303f9f',
-        borderColor: '#303f9f',
-        fill: false,
-        data: Object.values(sleepRepo.getSleepQualityByWeek(currentUser.id, "2019/09/22"))
       }]
     },
     options: {
       // maintainAspectRatio: false,
       title: {
         display: true,
-        text: "Your sleep stats for the week:",
+        text: "Your hydration stats for the week:",
         fontSize: 16,
-        fontColor: "#303f9f"
+        fontColor: "#0070A3"
       },
       legend: {
-        // display: false
+        display: false,
         labels: {
-          fontColor: "#303f9f"
+          fontColor: "#0070A3"
         },
       },
       scales: {
         yAxes: [{
           ticks: {
-            fontColor: "#303f9f",
+            fontColor: "#0070A3",
             beginAtZero: true
           },
           display: true,
           scaleLabel: {
             display: true,
-            labelString: "Value",
+            labelString: "Oz",
             fontStyle: 'bold',
-            fontColor: "#303f9f"
+            fontColor: "#0070A3"
           }
         }],
         xAxes: [{
           ticks: {
-            fontColor: "#303f9f",
+            fontColor: "#0070A3",
           },
           display: true,
           scaleLabel: {
             display: true,
             labelString: "Date",
             fontStyle: 'bold',
-            fontColor: "#303f9f"
+            fontColor: "#0070A3"
           }
         }]
       }
@@ -274,15 +278,21 @@ function displayActivityChart() {
     data: {
       labels: Object.keys(sleepRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22")),
       datasets: [{
-        label: 'Hours Slept',
-        backgroundColor: '#536DFE',
-        borderColor: '#536DFE',
+        label: 'Slep Count',
+        backgroundColor: '#FF4081',
+        borderColor: '#FF4081',
         fill: false,
         data: Object.values(sleepRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22"))
       }, {
-        label: 'Sleep Quality',
-        backgroundColor: '#303f9f',
-        borderColor: '#303f9f',
+        label: 'Flights of Stairs Climbed',
+        backgroundColor: '#F50057',
+        borderColor: '#F50057',
+        fill: false,
+        data: Object.values(sleepRepo.getSleepQualityByWeek(currentUser.id, "2019/09/22"))
+      }, {
+        label: 'minutesActive',
+        backgroundColor: '#C51162',
+        borderColor: '#C51162',
         fill: false,
         data: Object.values(sleepRepo.getSleepQualityByWeek(currentUser.id, "2019/09/22"))
       }]
@@ -291,20 +301,20 @@ function displayActivityChart() {
       // maintainAspectRatio: false,
       title: {
         display: true,
-        text: "Your sleep stats for the week:",
+        text: "Your activity stats for the week:",
         fontSize: 16,
-        fontColor: "#303f9f"
+        fontColor: "#C51162"
       },
       legend: {
         // display: false
         labels: {
-          fontColor: "#303f9f"
+          fontColor: "#C51162"
         },
       },
       scales: {
         yAxes: [{
           ticks: {
-            fontColor: "#303f9f",
+            fontColor: "#C51162",
             beginAtZero: true
           },
           display: true,
@@ -312,19 +322,19 @@ function displayActivityChart() {
             display: true,
             labelString: "Value",
             fontStyle: 'bold',
-            fontColor: "#303f9f"
+            fontColor: "#C51162"
           }
         }],
         xAxes: [{
           ticks: {
-            fontColor: "#303f9f",
+            fontColor: "#C51162",
           },
           display: true,
           scaleLabel: {
             display: true,
             labelString: "Date",
             fontStyle: 'bold',
-            fontColor: "#303f9f"
+            fontColor: "#C51162"
           }
         }]
       }

@@ -185,7 +185,7 @@ function displaySleepInfo(user, date) {
         </div>
         <div class="stat">
           <p class="number">${sleepRepo.getUserAvgSleepQualityAllTime(user.id)}</p>
-          <p class="description">avg quality</p>
+          <p class="description">avg sleep quality</p>
         </div>
       </div>
     </div>`;
@@ -287,7 +287,7 @@ function displayActivityChart() {
     data: {
       labels: Object.keys(sleepRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22")),
       datasets: [{
-        label: 'Slep Count',
+        label: 'Step Count',
         backgroundColor: '#FF4081',
         borderColor: '#FF4081',
         fill: false,
@@ -299,7 +299,7 @@ function displayActivityChart() {
         fill: false,
         data: Object.values(sleepRepo.getSleepQualityByWeek(currentUser.id, "2019/09/22"))
       }, {
-        label: 'minutesActive',
+        label: 'Minutes Active',
         backgroundColor: '#C51162',
         borderColor: '#C51162',
         fill: false,

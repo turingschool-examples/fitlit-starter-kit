@@ -3774,8 +3774,7 @@ describe('HydrationRepo', () => {
     const isAllOne = repo.userData.every(oneDaysData => oneDaysData.id === 34);
 
     expect(isAllOne).to.equal(true);
-  });
-  
+  });  
 
   it('should be able to calculate user\'s avg fluid oz consumed for all time', () => {
     const avg = repo.calculateAvgOzOverTime(34);

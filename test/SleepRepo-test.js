@@ -197,7 +197,7 @@ describe('SleepRepo', () => {
       expect(sleepRepo.returnAverageHoursSleptPerDay(1)).to.deep.equal(6.470000000000001);
     });
 
-    it.skip('should have a way to return the average sleep quality over all time given a user ID', () => {
+    it('should have a way to return the average sleep quality over all time given a user ID', () => {
       expect(sleepRepo.returnOverallAverageSleepQuality(1)).to.deep.equal(2.4);
     });
 

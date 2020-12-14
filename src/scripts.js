@@ -5,7 +5,6 @@ const userFirstName = document.querySelector('.user-first-name')
 const userAddress = document.querySelector('.user-address')
 const userEmail = document.querySelector('.user-email')
 const userStepCompare = document.querySelector('.user-step-compare')
-
 const waterButton = document.querySelector(".water-icon");
 const sleepButton = document.querySelector(".sleep-icon");
 const activityButton = document.querySelector(".exercise-icon");
@@ -19,6 +18,7 @@ const allSleepDisplays = document.querySelectorAll(".sleep"); // returns a node 
 const allActivityDisplays = document.querySelectorAll('.activity'); // returns a node list
 const todaySleep = document.querySelector(".today-sleep")
 const todayActivity = document.querySelector(".today-activity")
+const avgActivityStats = document.querySelector(".avg-activity-stats")
 const avgSleepStats = document.querySelector(".avg-sleep-stats")
 const todayConsumption = document.querySelector(".today-consumption")
 const userDropdown = document.querySelector(".user-dropdown")
@@ -30,7 +30,8 @@ const compareSteps = document.querySelector(".steps-compare");
 const compareMinutes = document.querySelector(".minutes-compare");
 const compareMiles = document.querySelector(".miles-compare");
 
-const userRepo = new UserRepo(userData, 
+const userRepo = new UserRepo(
+  userData, 
   sleepData, 
   hydrationData, 
   activityData);
@@ -96,9 +97,9 @@ function displayFirstName() {
 function displayInfoCard() {
   userAddress.innerText = `${currentUser.address}`;
   userEmail.innerText = `${currentUser.email}`;
-  // userStepCompare.innerText = `Your step goal is ${
-  // currentUser.dailyStepGoal
-  // }, and the average is ${userRepo.calculateAvgSteps()}`;
+  userStepCompare.innerText = `Your step goal is ${
+    currentUser.userActivity.dailyStepGoal
+  }, and the average is ${userRepo.getAllUserAvgActivityItem(chosenDate, 'numSteps')}`;
 }
 
 function displayHydrationActivity() {
@@ -126,30 +127,37 @@ function displayExerciseActivity() {
   clearDisplay(hydrationStatsDisplay);
   clearDisplay(sleepStatsDisplay);
   toggleElement(activityStatsDisplay);
-  // displayMilesWalked(todayActivity, chosenDate, currentUser.id);
-  // this one is borked
-  displayUserSuccess();
+  allActivityDisplays.forEach((cell, index) => {
+    getStepData(cell, index)
+  })
+  getStepData(avgActivityStats, 0)
+  displayMilesWalked(todayActivity)
+  displayUserStairsSuccess()
+  displayUserMinutesSuccess()
+  displayUserStepSuccess()
 }
 
-// this one is borked
-// function displayMilesWalked(placement) {
-//   placement.innerText = `You walked ${currentUser
-//     .calculateMilesWalked(chosenDate)
-//     .toFixed(2)} miles today`;
-// }
+function displayMilesWalked(placement) {
+  placement.innerText = `You walked ${currentUser.userActivity
+    .calculateMilesWalked(chosenDate)
+    .toFixed(2)} miles today`;
+}
 
-function displayUserSuccess() {
+function displayUserStairsSuccess() { 
   let singleStair = currentUser.userActivity.getOneDayOfData(
     chosenDate,
     'flightsOfStairs'
   );
   let allStairs = userRepo.getAllUserAvgActivityItem(chosenDate, 'flightsOfStairs');
   if (currentUser.userActivity.isUserAboveAvg(singleStair, allStairs)) {
+    console.log(compareStairs)
     compareStairs.innerText = `Your ${singleStair} stairs climbed is higher than the user average of ${allStairs}`;
   } else {
     compareStairs.innerText = `Your ${singleStair} stairs climbed is lower than the user average of ${allStairs}`;
   }
+}
 
+function displayUserStepSuccess() {
   let singleStep = currentUser.userActivity.getOneDayOfData(
     chosenDate,
     'numSteps'
@@ -160,7 +168,9 @@ function displayUserSuccess() {
   } else {
     compareSteps.innerText = `Your ${singleStep} step count is lower than the user average of ${allSteps}`;
   }
+}
 
+function displayUserMinutesSuccess() {
   let singleMinute = currentUser.userActivity.getOneDayOfData(
     chosenDate,
     'minutesActive'
@@ -173,17 +183,16 @@ function displayUserSuccess() {
   }
 }
 
-// fixed
 function getAvgSleepData(placement) {
   let displaySleepQual = currentUser.userSleep.calculateAvgSleepItem('sleepQuality').toFixed(2)
   let displaySleepHours = currentUser.userSleep.calculateAvgSleepItem('hoursSlept').toFixed(2)
-  placement.innerText = `all-time average hours: ${displaySleepHours}, all-time average quality: ${displaySleepQual}`
+  placement.innerText = `all-time average hours: ${displaySleepHours}, \n all-time average quality: ${displaySleepQual}`
 }
 
 function getSleepData(placement, index) {
   placement.innerText = `${
     currentUser.userSleep.calculateSleepItemPerWeek(chosenDate, 'hoursSlept')[index]
-  } hours, quality: ${
+  } hours, \n quality: ${
     currentUser.userSleep.calculateSleepItemPerWeek(chosenDate, 'sleepQuality')[index]
   }`;
   getAvgSleepData(avgSleepStats)
@@ -191,8 +200,18 @@ function getSleepData(placement, index) {
 
 function getHydrationData(placement, index) {
   placement.innerText = `${
-    userHydration.calculateWaterPerWeek(chosenDate, currentUser)[index]
+    currentUser.userHydration.calculateWaterPerWeek(chosenDate, currentUser)[index]
   } ounces`;
+}
+
+function getStepData(placement, index) {
+  placement.innerText = `${
+    currentUser.userActivity.getWeekOfData(chosenDate, 'numSteps')[index]
+  } steps, ${
+    currentUser.userActivity.getWeekOfData(chosenDate, 'flightsOfStairs')[index]
+  } flights of stairs, and ${
+    currentUser.userActivity.getWeekOfData(chosenDate, 'minutesActive')[index]
+  } active minutes`;
 }
 
 function toggleElement(element) {

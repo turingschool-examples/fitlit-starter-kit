@@ -2,12 +2,26 @@
 'use strict'
 
 class UserActivity {
-  constructor(activityData) {
+  constructor(activityData, strideLength, dailyStepGoal) {
     this.userActivityData = activityData;
+    this.strideLength = strideLength;
+    this.dailyStepGoal = dailyStepGoal
   }
 
   getOneDayOfData(date, keyName) {
     return this.userActivityData.find((day) => day.date === date)[keyName]
+  }
+
+  getWeekOfData(startDate, keyName) { // test this
+    const findIndex = this.userActivityData.findIndex((day) => day.date === startDate);
+    return this.userActivityData.reduce((total, value) => {
+      if (!total[findIndex]) {
+        total.push(value[keyName]);
+      } else {
+        total.push(value[keyName]);
+      }
+      return total;
+    }, []).splice([findIndex], 7);
   }
 
   calculateAvgMinWeek(startDate) {
@@ -28,7 +42,7 @@ class UserActivity {
   }
   
   getStairRecord() {
-    return this.activityData
+    return this.userActivityData
       .map((item) => item.flightsOfStairs)
       .sort((a, b) => b - a)[0];
   }
@@ -38,8 +52,8 @@ class UserActivity {
   }
 
   calculateActivityItemPerWeek(startDate, keyName) { // test this newb
-    const findIndex = this.activityData.findIndex(day => day.date === startDate);
-    const activityItemPerWeek = this.activityData.reduce((total, value) => {
+    const findIndex = this.userActivityData.findIndex(day => day.date === startDate);
+    const activityItemPerWeek = this.userActivityData.reduce((total, value) => {
       if (!total[findIndex]) {
         total.push(value[keyName]);
       } else {
@@ -50,18 +64,23 @@ class UserActivity {
     return activityItemPerWeek.splice([findIndex], 7);
   }
   
-  // bork bork
-  // isStepGoalReached(userRepo, user, date) {
-  //   let findActivityByDate = this.activityData.find((day) => day.date === date);
-  //   let currentUser = userRepo.getAUser(user.id);
-  //   let userSteps = findActivityByDate.numSteps;
-  //   return userSteps > currentUser.dailyStepGoal;
-  // }
-  // getDaysStepsSuccess(userRepo, user) {
-  //   return this.activityData
-  //     .filter((item) => item.numSteps > user.dailyStepGoal)
-  //     .map((item) => item.date);
-  // }
+  isStepGoalReached(date) { // test this
+    let findActivityByDate = this.userActivityData.find((day) => day.date === date).numSteps;
+    // let userSteps = findActivityByDate.numSteps;
+    return findActivityByDate > this.dailyStepGoal;
+  }
+
+  getDaysStepsSuccess() { // test this
+    return this.userActivityData.filter((item) => item.numSteps > this.dailyStepGoal).map((item) => item.date);
+  }
+
+  calculateMilesWalked(date) { // test this
+    let userSteps = this.userActivityData.find((day) => day.date === date).numSteps;
+    let userStride = this.strideLength;
+    let miles = (userStride * userSteps) / 5280;
+    return miles;
+  }
+
 }
 
 if (typeof module !== 'undefined') {

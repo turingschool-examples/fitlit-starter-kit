@@ -69,17 +69,6 @@ class UserRepo { // all users, all data, all the time
     }, [])
   }
 
-  // calculateAvgSteps() {
-  //   let stepGoals = this.users.map((user) => {
-  //     return user.dailyStepGoal
-  //   })
-  //   let totalAvgSteps = stepGoals.reduce((avgSteps, value) => {
-  //     let totalSteps = avgSteps += value
-  //     return totalSteps
-  //   }, 0)
-  //   return (totalAvgSteps = totalAvgSteps / stepGoals.length);
-  // }
-
 }
 if (typeof module !== 'undefined') {
   module.exports = UserRepo;

@@ -9,17 +9,24 @@
 </head>
 
 <body>
-  <section class="header"></section>
-  <section class="user-info-card"></section>
-  <div class="section-wrapper">
-    <section class="hydration category"></section>
-    <section class="sleep category">
-      <div class="sleep-number-stats">
-
-      </div>
-      <canvas class="sleep-hours-week-chart" width="1" height="1"></canvas>
+  <header>
+    <h1>My Fitness Data</h1>
+  </header>
+  <section class="user-info-card">
+  </section>
+  <div class="health-categories">
+    <section class="hydration category">
+      <div class="hydration-stats"></div>
+      <canvas class="hydration-week-chart" width="1" height="1"></canvas>
     </section>
-    <section class="activity category"></section>
+    <section class="sleep category">
+      <div class="sleep-stats"></div>
+      <canvas class="sleep-week-chart" width="1" height="1"></canvas>
+    </section>
+    <section class="activity category">
+      <div class="activity-stats"></div>
+      <canvas class="activity-week-chart" width="1" height="1"></canvas>
+    </section>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>

@@ -3,31 +3,10 @@ body {
   height: 120%;
   font-family: "Open Sans", sans-serif;
   color: #000000;
-}
-
-.section-wrapper {
-    display: grid;
-    grid-gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  }
-
-.category {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 120%;
-}
-
-.app-name-and-greeting {
   text-align: center;
-  font-size: x-large;
 }
 
-.user-info-card {
-  display: flex;
-  align-items: left;
-}
-
+/* WIDGET */
 .widget {
   width: 90%;
   display: flex;
@@ -37,10 +16,46 @@ body {
   margin: 5%;
 }
 
+.widget .number {
+  font-size: 2em;
+  margin-top: 5%;
+  margin-bottom: 0;
+}
+
+.widget .description {
+  margin-top: 0;
+  margin-bottom: 5%;
+}
+
+/* USER */
+.user-info-card {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.user-stats {
+  display: flex;
+  flex-direction: column;
+}
+
 .user, .widget {
   align-items: flex-start;
   padding-left: 5%;
+  padding-right: 5%;
   border: 3px solid black;
+}
+
+/* HEALTH CATEGORIES OVERALL */
+.health-categories {
+    display: grid;
+    grid-column-gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+.category {
+  margin: 5%;
 }
 
 .hydration .widget {
@@ -53,17 +68,4 @@ body {
 
 .activity .widget {
   border: 3px solid #F50057;
-}
-
-.widget .number {
-  font-size: 2em;
-}
-
-.widget .description {
-  margin-bottom: 5%;
-  margin-top: 0;
-}
-
-.tbody {
-
 }

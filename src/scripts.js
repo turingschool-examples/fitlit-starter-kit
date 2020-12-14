@@ -1,9 +1,5 @@
-// import moment from "moment";
 // ~~~~~ QUERY SELECTORS ~~~~~
 const userInfoCard = document.querySelector('.user-info-card');
-// const hydrationSection = document.querySelector('.hydration');
-// const sleepSection = document.querySelector('.sleep');
-// const activitySection = document.querySelector('.activity');
 const hydrationStats = document.querySelector('.hydration-stats');
 const hydrationWeekChart = document.querySelector('.hydration-week-chart');
 const sleepStats = document.querySelector('.sleep-stats');
@@ -85,16 +81,14 @@ function displayUserInfoCard(user) {
 }
 
 function displayHydrationInfo(user, date) {
-  // const pastWeekHydration = hydrationRepo.getUserOzByWeek(user.id, date);
   hydrationStats.innerHTML = `
-    <h2>Hydration</h2>
     <div class="hydration widget">
       <p class="number">${hydrationRepo.getUserOzByDate(user.id, date)} oz</p>
       <p class="description">water drank today</p>
     </div>
     <div class="hydration widget">
       <p class="number">${hydrationRepo.getUserAvgDailyOzAllTime(user.id)} oz/day</p>
-      <p class="description">average water drank</p>
+      <p class="description">avg water drank</p>
     </div>`;
   displayHydrationChart();
 }
@@ -165,14 +159,31 @@ function displayHydrationChart() {
 
 function displaySleepInfo(user, date) {
   sleepStats.innerHTML = `
-    <h2>Sleep</h2>
     <div class="widget">
-      <p>Hours slept last night: ${sleepRepo.getUserSleepHrsByDate(user.id, date)}</p>
-      <p>Sleep quality last night: ${sleepRepo.getUserSleepQualityByDate(user.id, date)}</p>
+      <h3>Last Night</h3>
+      <div class="stats">
+        <div class="stat">
+          <p class="number">${sleepRepo.getUserSleepHrsByDate(user.id, date)}</p>
+          <p class="description">hours slept</p>
+        </div>
+        <div class="stat">
+          <p class="number">${sleepRepo.getUserSleepQualityByDate(user.id, date)}</p>
+          <p class="description">sleep quality</p>
+        </div>
+      </div>
     </div>
     <div class="widget">
-      <p>All-time average sleep quality: ${sleepRepo.getUserAvgSleepQualityAllTime(user.id)}</p>
-      <p>All-time average hours slept: ${sleepRepo.getUserAvgHrsSleptAllTime(user.id)}</p>
+      <h3>All-Time</h3>
+      <div class="stats">
+        <div class="stat">
+          <p class="number">${sleepRepo.getUserAvgHrsSleptAllTime(user.id)}</p>
+          <p class="description">avg hours slept</p>
+        </div>
+        <div class="stat">
+          <p class="number">${sleepRepo.getUserAvgSleepQualityAllTime(user.id)}</p>
+          <p class="description">avg quality</p>
+        </div>
+      </div>
     </div>`;
   displaySleepChart();
 }
@@ -243,7 +254,6 @@ function displaySleepChart() {
 
 function displayActivityInfo(user, date) {
   activityStats.innerHTML = `
-    <h2>Activity</h2>
     <div class="widget">
       <p>Steps taken today: ${activityRepo.getStepsTaken(user, date)}</p>
       <p>Minutes active today: ${activityRepo.getMinsActive(user, date)}</p>

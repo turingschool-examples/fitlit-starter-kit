@@ -5,12 +5,12 @@ class SleepRepo {
     this.data = data.map(userData => new Sleep(userData));
   }
   returnAverageHoursSleptPerDay(userID) {
-    const currentUserData = this.data.filter(data => data.userID == userID);
+    const currentUserData = this.data.filter(data => data.id === userID);
+    console.log(currentUserData);
     const totalHoursSlept = currentUserData.reduce((acc, cur) => {
       return acc + cur.hoursSlept;
     }, 0);
-    console.log(this.data[0]);
-    const avgHoursSlept = totalHoursSlept / this.data.length;
+    const avgHoursSlept = totalHoursSlept / currentUserData.length;
     return avgHoursSlept;
   }
 }

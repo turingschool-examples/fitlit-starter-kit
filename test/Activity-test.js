@@ -25,4 +25,10 @@ describe('Activity', () => {
     expect(activitiy.minActive).to.equal(data.minutesActive);
     expect(activity.flightsOfStairs).to.equal(data.flightsOfStairs);
   });
+
+  it.skip('should return minutes active', () => {
+    const minutes = activity.returnMinutes();
+
+    expect(minutes).to.equal(data.minutesActive);
+  });
 });

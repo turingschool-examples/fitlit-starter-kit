@@ -52,7 +52,7 @@ function getRandomUser() {
 function displayUserInfoCard(user) {
   userInfoCard.innerHTML = `
     <div class="user widget">
-      <h2>Welcome, ${user.getFirstName()}!</h2>
+      <h2>Hello, ${user.getFirstName()}.</h2>
       <div class="infosection">
         <p><b>Your User ID:</b><br>${user.id}</p>
       </div>
@@ -258,17 +258,26 @@ function displaySleepChart() {
 
 function displayActivityInfo(user, date) {
   activityStats.innerHTML = `
-    <div class="widget">
-      <p>Steps taken today: ${activityRepo.getStepsTaken(user, date)}</p>
-      <p>Minutes active today: ${activityRepo.getMinsActive(user, date)}</p>
-      <p>Distance walked today: ${activityRepo.getMilesWalked(user, date)} miles</p>
-      <p>Flights of stairs climbed today: ${activityRepo.getStairs(user, date)}</p>
-    </div>
-    <div class="widget">
-      <p>All users steps taken today: ${activityRepo.getAllUsersAvgStepsByDate(date)}</p>
-      <p>All users minutes active today: ${activityRepo.getAllUsersAvgMinsByDate(date)}</p>
-      <p>All users flights of stairs climbed today: ${activityRepo.getAllUsersAvgStairsByDate(date)}</p>
+    <div class="activity widget">
+      <h3>Today</h3>
+      <div class="stats">
+        <div class="stat">
+          <p class="number">${activityRepo.getMilesWalked(user, date)}</p>
+          <p class="description">miles walked</p>
+        </div>
+      </div>
     </div>`;
+  // activityStats.innerHTML = `
+  //   <div class="widget">
+  //     <p>Steps taken today: ${activityRepo.getStepsTaken(user, date)}</p>
+  //     <p>Minutes active today: ${activityRepo.getMinsActive(user, date)}</p>
+  //     <p>Flights of stairs climbed today: ${activityRepo.getStairs(user, date)}</p>
+  //   </div>
+  //   <div class="widget">
+  //     <p>All users steps taken today: ${activityRepo.getAllUsersAvgStepsByDate(date)}</p>
+  //     <p>All users minutes active today: ${activityRepo.getAllUsersAvgMinsByDate(date)}</p>
+  //     <p>All users flights of stairs climbed today: ${activityRepo.getAllUsersAvgStairsByDate(date)}</p>
+  //   </div>`;
   displayActivityChart();
 }
 

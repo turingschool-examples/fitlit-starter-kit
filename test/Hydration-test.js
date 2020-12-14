@@ -14,7 +14,6 @@ describe('Hydration', () => {
       };
 
     oneData = new Hydration(hydrationData);
-
   });
 
   it.skip('should have an appropriate constructor', () => {

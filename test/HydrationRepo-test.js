@@ -2,6 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const HydrationRepo = require('../src/HydrationRepo');
+const Hydration = require('../src/Hydration');
 
 describe('HydrationRepo', () => {
   let data, repo;
@@ -3763,24 +3764,41 @@ describe('HydrationRepo', () => {
     repo = new HydrationRepo(data);
   });
 
-  it.skip('should be able to calculate user\'s avg fluid oz consumed for all time', () => {
-    const avg = repo.calculateAvgOzOverTime(34); // change to have all time in name    
+  it('should contain Hydration instances', () => {
+    expect(repo.data[0]).to.be.an.instanceof(Hydration);
+    expect(repo.data[5]).to.be.an.instanceof(Hydration);
+  });
 
-    expect(avg).to.be.equal(83.5);
+  it('should be able to filter all data to one user\'s data', () => {
+    const filtered = repo.filterUserData(34);
+    const isAllOne = repo.userData.every(oneDaysData => oneDaysData.id === 34);
+
+    expect(isAllOne).to.equal(true);
+  });  
+
+  it('should be able to calculate user\'s avg fluid oz consumed for all time', () => {
+    const avg = repo.calculateAvgOzOverTime(34);
+
+    expect(avg).to.be.equal(54);
   });
   
-  it.skip('should be able to return fluid oz of water consumed each day for a given week for a given user', () => {    
-    const startingDate = '2019/06/15';
-    const waterConsumed = repo.returnWaterConsumed(34, startingDate);
-    const ozConsumed = [22, 76, 34, 36, 91, 54, 81];
+  it('should be able to return fluid oz of water consumed each day for a given week for a given user', () => {    
+    const endDate = '2019/06/22';
+    const waterConsumed = repo.returnWaterConsumed(34, endDate);
+    const ozConsumed = [22, 76, 34, 36, 91, 54, 81];    
 
-    expect(waterConsumed).to.be.deep.equal(ozConsumed);
+    const otherEndDate = '2019/06/29';
+    const moreWaterConsumed = repo.returnWaterConsumed(42, otherEndDate);
+    const newOzConsumed = [99, 40, 90, 52, 67, 27, 90];
+
+    expect(waterConsumed).to.deep.equal(ozConsumed);
+    expect(moreWaterConsumed).to.deep.equal(newOzConsumed);
   });
 
-  it.skip('should be able to calculate avg oz of water consumed in a week, rounding down', () => {
-    const startingDate = '2019/06/15';        
-    const avgOzConsumed = repo.returnAvgWaterConsumed(34, startingDate);
+  it('should be able to calculate avg oz of water consumed in a week, rounding down', () => {
+    const startingDate = '2019/06/29';        
+    const avgOzConsumed = repo.returnAvgWaterConsumed(42, startingDate);
 
-    expect(avgOzConsumed).to.equal(Math.round(56));
+    expect(avgOzConsumed).to.equal(66);
   });
 });

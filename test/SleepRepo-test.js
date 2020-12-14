@@ -193,7 +193,7 @@ describe('SleepRepo', () => {
     sleepRepo = new SleepRepo(repoData)
   });
 
-    it.skip('should have a way to calculate an average number of hours slept per day given a user ID', () => {
+    it('should have a way to calculate an average number of hours slept per day given a user ID', () => {
       expect(sleepRepo.returnAverageHoursSleptPerDay(1)).to.deep.equal(6.470000000000001);
     });
 

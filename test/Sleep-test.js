@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Sleep = require('../src/Sleep');
-// const SleepRepo = require('../src/SleepRepo');
+const SleepRepo = require('../src/SleepRepo');
 
 describe('Hydration', () => {
   let sleepData, instanceData;

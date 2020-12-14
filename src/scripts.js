@@ -30,16 +30,16 @@ const compareSteps = document.querySelector(".steps-compare");
 const compareMinutes = document.querySelector(".minutes-compare");
 const compareMiles = document.querySelector(".miles-compare");
 
-
-const userRepo = new UserRepo(userData, sleepData, hydrationData); // needs to take in array of users
-// userRepo takes in all data sets
-let currentUser = new User(userRepo.getAUser(21), 
+const userRepo = new UserRepo(userData, 
+  sleepData, 
+  hydrationData, 
+  activityData);
+let currentUser = new User(
+  userRepo.getAUser(21), 
   userRepo.filterSleepData(21), 
-  userRepo.filterHydrationData(21)); // user object
-// currentUser takes in an id number
+  userRepo.filterHydrationData(21),
+  userRepo.filterActivityData(21)); // user object
 let chosenDate = "2019/06/15" // default date
-const userHydration = new UserHydration(hydrationData);
-const userActivity = new UserActivity(activityData);
 
 window.addEventListener('load', () => {
   let chosenUserID = currentUser.id; // sets the ID to a variable to use as an argument
@@ -66,9 +66,11 @@ activityButton.addEventListener('click', () => {
 adminSelector.addEventListener('click', (event) => {
   event.preventDefault()
   let chosenUserID = getChosenUserData().id // set ID from name in dropdown
-  currentUser = new User(userRepo.getAUser(chosenUserID), userRepo.filterSleepData(chosenUserID)) // create user object
-  // this currentUser instantiation should look like the one above, but with
-  // chosenUserID passed in
+  currentUser = new User(
+    userRepo.getAUser(chosenUserID),
+    userRepo.filterSleepData(chosenUserID),
+    userRepo.filterHydrationData(chosenUserID),
+    userRepo.filterActivityData(chosenUserID))
   displayFirstName() // show user first name
   displayInfoCard() // show user info
   setChosenDate() // set date from date in calendar
@@ -95,7 +97,7 @@ function displayInfoCard() {
   userAddress.innerText = `${currentUser.address}`;
   userEmail.innerText = `${currentUser.email}`;
   // userStepCompare.innerText = `Your step goal is ${
-    // currentUser.dailyStepGoal
+  // currentUser.dailyStepGoal
   // }, and the average is ${userRepo.calculateAvgSteps()}`;
 }
 
@@ -124,45 +126,47 @@ function displayExerciseActivity() {
   clearDisplay(hydrationStatsDisplay);
   clearDisplay(sleepStatsDisplay);
   toggleElement(activityStatsDisplay);
-  displayMilesWalked(todayActivity, chosenDate, currentUser.id);
+  // displayMilesWalked(todayActivity, chosenDate, currentUser.id);
+  // this one is borked
   displayUserSuccess();
 }
 
-function displayMilesWalked(placement, chosenDate, currentUser) {
-  placement.innerText = `You walked ${userActivity
-    .calculateMilesWalked(userRepo, currentUser, chosenDate)
-    .toFixed(2)} miles today`;
-}
+// this one is borked
+// function displayMilesWalked(placement) {
+//   placement.innerText = `You walked ${currentUser
+//     .calculateMilesWalked(chosenDate)
+//     .toFixed(2)} miles today`;
+// }
 
 function displayUserSuccess() {
-  let singleStair = userActivity.calculateStairsClimbed(
+  let singleStair = currentUser.userActivity.getOneDayOfData(
     chosenDate,
-    currentUser.id
+    'flightsOfStairs'
   );
-  let allStairs = userActivity.calculateAllAvgStairs(chosenDate);
-  if (userActivity.isUserAboveAvg(singleStair, allStairs)) {
+  let allStairs = userRepo.getAllUserAvgActivityItem(chosenDate, 'flightsOfStairs');
+  if (currentUser.userActivity.isUserAboveAvg(singleStair, allStairs)) {
     compareStairs.innerText = `Your ${singleStair} stairs climbed is higher than the user average of ${allStairs}`;
   } else {
     compareStairs.innerText = `Your ${singleStair} stairs climbed is lower than the user average of ${allStairs}`;
   }
 
-  let singleStep = userActivity.calculateNumSteps(
+  let singleStep = currentUser.userActivity.getOneDayOfData(
     chosenDate,
-    currentUser.id
+    'numSteps'
   );
-  let allSteps = userActivity.calculateAllAvgSteps(chosenDate);
-  if (userActivity.isUserAboveAvg(singleStep, allSteps)) {
+  let allSteps = userRepo.getAllUserAvgActivityItem(chosenDate, 'numSteps');
+  if (currentUser.userActivity.isUserAboveAvg(singleStep, allSteps)) {
     compareSteps.innerText = `Your ${singleStep} step count is higher than the user average of ${allSteps}`;
   } else {
     compareSteps.innerText = `Your ${singleStep} step count is lower than the user average of ${allSteps}`;
   }
 
-  let singleMinute = userActivity.calculateActiveMinutes(
+  let singleMinute = currentUser.userActivity.getOneDayOfData(
     chosenDate,
-    currentUser.id
+    'minutesActive'
   );
-  let allMinutes = userActivity.calculateAllAvgMin(chosenDate);
-  if (userActivity.isUserAboveAvg(singleMinute, allMinutes)) {
+  let allMinutes = userRepo.getAllUserAvgActivityItem(chosenDate, 'minutesActive');
+  if (currentUser.userActivity.isUserAboveAvg(singleMinute, allMinutes)) {
     compareMinutes.innerText = `Your active minute count of ${singleMinute} is higher than the user average of ${allMinutes}`;
   } else { 
     compareMinutes.innerText = `Your active minute count of ${singleMinute} is lower than the user average of ${allMinutes}`;
@@ -176,7 +180,6 @@ function getAvgSleepData(placement) {
   placement.innerText = `all-time average hours: ${displaySleepHours}, all-time average quality: ${displaySleepQual}`
 }
 
-// fixed
 function getSleepData(placement, index) {
   placement.innerText = `${
     currentUser.userSleep.calculateSleepItemPerWeek(chosenDate, 'hoursSlept')[index]
@@ -186,7 +189,7 @@ function getSleepData(placement, index) {
   getAvgSleepData(avgSleepStats)
 }
 
-function getHydrationData(placement, index, chosenDate, currentUser) {
+function getHydrationData(placement, index) {
   placement.innerText = `${
     userHydration.calculateWaterPerWeek(chosenDate, currentUser)[index]
   } ounces`;

@@ -2,9 +2,9 @@
 'use strict'
 
 class UserRepo { // all users, all data, all the time
-  constructor(userData, sleepData, hydrationData) {
+  constructor(userData, sleepData, hydrationData, activityData) {
     this.users = userData;
-    // this.activityData
+    this.activityData = activityData;
     this.sleepData = sleepData;
     this.hydrationData = hydrationData;
   }
@@ -15,21 +15,31 @@ class UserRepo { // all users, all data, all the time
     }, 0) / this.sleepData.length
   }
   
+  getAllUserAvgActivityItem(date, keyName) {
+    let dayOfActivityData = this.activityData.filter(day => day.date === date)
+    let listOfActivityItems = dayOfActivityData.map(item => item[keyName])
+    let totalOfActivityItem = listOfActivityItems.reduce((total, value) => {
+      return (total += value);
+    }, 0) 
+    return totalOfActivityItem / listOfActivityItems.length
+  }
+  
   getAUser(id) {
     return this.users.find(user => user.id === id);
   }
-  // this holds all users data - calculate averages in this file
-  // and anything that works on all users
 
-  filterHydrationData(id) { // make one of these for water/activity
+  filterHydrationData(id) { 
     return this.hydrationData.filter(hydrationItem => hydrationItem.userID === id);
-  } // returns an array of sleep data for the user passed in
+  } 
   
-
-  filterSleepData(id) { // make one of these for water/activity
+  filterSleepData(id) { 
     return this.sleepData.filter(sleepItem => sleepItem.userID === id);
-  } // returns an array of sleep data for the user passed in
-  
+  }
+
+  filterActivityData(id) {
+    return this.activityData.filter(activityItem => activityItem.userID === id); 
+  }
+
   getAllUserAvgSleepQuality(keyName) { // all users sleep quality
     let fullList = this.sleepData.map((sleepItem) => sleepItem[keyName])
     return this.getAverage(fullList)

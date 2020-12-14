@@ -194,10 +194,10 @@ describe('SleepRepo', () => {
   });
 
     it.skip('should have a way to calculate an average number of hours slept per day given a user ID', () => {
-      expect(sleepRepo.returnAverageHoursSleptPerDay(1)).to.deep.equal(6.47);
+      expect(sleepRepo.returnAverageHoursSleptPerDay(1)).to.deep.equal(6.470000000000001);
     });
 
-    it.skip('shouldn have a way to return the average sleep quality over all time given a user ID', () => {
+    it.skip('should have a way to return the average sleep quality over all time given a user ID', () => {
       expect(sleepRepo.returnOverallAverageSleepQuality(1)).to.deep.equal(2.4);
     });
 
@@ -205,12 +205,8 @@ describe('SleepRepo', () => {
       expect(sleepRepo.returnWeekOfDailyHoursSlept(1, "2019/06/21")).to.deep.equal([6, 6.2, 6.4, 6.6, 6.8, 7.1, 7.4]);
     });
 
-    it.skip('should be able to return sleep quality for each day over the course of a week given a user and end date', () {
+    it.skip('should be able to return sleep quality for each day over the course of a week given a user and end date', () => {
       expect(sleepRepo.returnWeekOfDailySleepQuality(1, "2019/06/21")).to.deep.equal([2, 2.2, 2.3, 2.5, 2.6, 2.9, 3.2]);
-    });
-
-    it.skip('should have a way to return the average sleep quality for a user given their user ID', () => {
-      expect(sleepRepo.userAverageSleepQuality(1)).to.equal(2.4)
     });
 
     it.skip('should be able to return all users with average sleep quality 3 or greater for a week when given an end date', () => {
@@ -221,5 +217,8 @@ describe('SleepRepo', () => {
       expect(sleepRepo.returnLongestSleeper("2019/06/15")).to.equal(3);
     });
 
+    it.skip('should be able to return average sleep quality amongst all users', () => {
+      expect(sleepRepo.returnAverageSleepQualityForAllUsers()).to.equal(2.6999999999999997);
+    });
 
   });

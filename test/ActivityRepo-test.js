@@ -349,38 +349,34 @@ describe('ActivityRepo', () => {
     expect(activityRepo.averages).to.be.an('array');
 
     const date1 = '2019/09/15';
-    activityRepo.calculateAverages('2019/09/15');
+    activityRepo.calculateDailyAverages(date1);
 
-    expect(activityRepo.averages[date1]).to.deep.equal({
-      date: '2019/09/15',
+    expect(activityRepo.dailyAverages[date1]).to.deep.equal({      
       stairs: 132,
       steps: 6070,
       minutesActive: 234
     });
 
     const date2 = '2019/09/16';
-    activityRepo.calculateAverages('2019/09/16');
+    activityRepo.calculateDailyAverages(date2);
 
-    expect(activityRepo.averages[date2]).to.deep.equal({
-      date: '2019/09/16',
+    expect(activityRepo.dailyAverages[date2]).to.deep.equal({      
       stairs: 21,
       steps: 7757,
       minutesActive: 176
     });
 
-    expect(activityRepo.averages).to.deep.equal([
-      {
-        date: '2019/09/15',
+    expect(activityRepo.dailyAverages).to.deep.equal({
+      '2019/09/15': {        
         stairs: 132,
         steps: 6070,
         minutesActive: 234
       },
-      {
-        date: '2019/09/16',
+      '2019/09/16': {        
         stairs: 21,
         steps: 7757,
         minutesActive: 176
       }
-    ]);
-  });
+    });
+  });  
 });

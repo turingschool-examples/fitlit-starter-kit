@@ -47,6 +47,15 @@ class SleepRepo {
     return weekOfDailySleepQualityData;
   }
 
+  returnAverageSleepQualityForAllUsers() {
+    const allSleepQuality = this.data.reduce((acc, cur) => {
+      return acc + cur.sleepQuality;
+    }, 0);
+    const avgSleepQualityForAllUsers = allSleepQuality / this.data.length;
+    return avgSleepQualityForAllUsers;
+  }
+
+
 
 }
 

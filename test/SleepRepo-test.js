@@ -214,10 +214,10 @@ describe('SleepRepo', () => {
     });
 
     it.skip('for a given date, should be able to find the user(s) who slept the most number of hours (one or more if they tied)', () => {
-      expect(sleepRepo.returnLongestSleeper("2019/06/15")).to.equal(3);
+      expect(sleepRepo.returnLongestSleepers("2019/06/15")).to.equal(3);
     });
 
-    it.skip('should be able to return average sleep quality amongst all users', () => {
+    it('should be able to return average sleep quality amongst all users', () => {
       expect(sleepRepo.returnAverageSleepQualityForAllUsers()).to.equal(2.6999999999999997);
     });
 

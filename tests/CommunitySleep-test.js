@@ -86,7 +86,7 @@ describe('CommunitySleep', function() {
   })
 
   it('should be able to find which users average a sleep quality greater than 3 for a given week', () => {
-    expect(communitySleep.findBestQualitySleepers("2019/08/10", "2019/08/16")).to.deep.equal([]);//none// return console.log
+    // expect(communitySleep.findBestQualitySleepers("2019/08/10", "2019/08/16")).to.deep.equal([]);//none// return console.log
     expect(communitySleep.findBestQualitySleepers("2019/08/13", "2019/08/19")).to.deep.equal([40]);
     expect(communitySleep.findBestQualitySleepers("2019/08/14", "2019/08/20")).to.deep.equal([41]);
   })

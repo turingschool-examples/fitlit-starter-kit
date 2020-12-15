@@ -68,11 +68,35 @@ class CommunitySleep {
     })
     return sleepWeekTotals;
   }
+  calculateAvgSleepQualityWk(userID, startDate, endDate) {
+    const sleepWeek = this.calculateSleepQualityWeek(userID, startDate, endDate);
+    const sleepWeekAvg = (sleepWeek.reduce((a, b) => a + b, 0))/7
+    return Math.round(sleepWeekAvg * 10) / 10
+  }
 
   calculateAvgSleepQuality() {
     const sleepQualityAllUsers = this.sleeps.map(allSleepers => allSleepers.sleepQuality);
-    const avgSleepQuality = (sleepQualityAllUsers.reduce((a, b) => a + b, 0)) / sleepQualityAllUsers.length;
-    return Math.round(avgSleepQuality * 10) / 10;
+     const avgSleepQuality = (sleepQualityAllUsers.reduce((a, b) => a + b, 0)) / sleepQualityAllUsers.length;
+     return Math.round(avgSleepQuality * 10) / 10;
+  }
+
+  findBestQualitySleepers(startDate, endDate) {
+    const bestSleepers = []
+    const startDateNumber = this.convertDateString(startDate);
+    const endDateNumber = this.convertDateString(endDate);
+    const sleepWeek = this.sleeps.filter(sleeper => {
+      const sleepDateToNumber = this.convertDateString(sleeper.date)
+      if (sleepDateToNumber >= startDateNumber && sleepDateToNumber <= endDateNumber) {
+        return sleeper;
+      }
+    })
+    const filterSleepers = sleepWeek.filter(sleeper => {
+      const avgSleepQual = this.calculateAvgSleepQualityWk(sleeper.userID, startDate, endDate)
+      if(!bestSleepers.includes(sleeper.userID) && avgSleepQual > 3){
+        bestSleepers.push(sleeper.userID)
+      }
+    })
+    return bestSleepers;
   }
 }
 module.exports = CommunitySleep;

@@ -5,4 +5,4 @@ class Hydration {
     this.numOunces = hydrationForUser.numOunces;
   }
 }
-// module.exports = Hydration;
+module.exports = Hydration;

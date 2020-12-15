@@ -53,7 +53,7 @@ function displayUserInfoCard(user) {
   userInfoCard.innerHTML = `
     <section class="user-info-card widget">
       <h2 class="welcome">Hello,<br>${user.getFirstName()}.</h2>
-      <aside class="user-stats">
+      <section class="user-stats">
         <section class="user widget">
           <p class="number">${user.strideLength} ft</p>
           <p class="description">your stride length</p>
@@ -66,13 +66,13 @@ function displayUserInfoCard(user) {
           <p class="number">${userRepo.getAllUserAvgStepGoal()}</p>
           <p class="description">avg user step goal</p>
         </section>
-      </aside>
-      <section class="info">
+      </section>
+      <aside class="info">
         <p class="infosection"><b>Your User ID:</b><br>${user.id}</p>
         <p class="infosection"><b>Your Name:</b><br>${user.name}</p>
         <p class="infosection"><b>Your Email:</b><br>${user.email}</p>
         <p class="infosection"><b>Your Friends:</b><br>${userRepo.getUserFriendNames(user.id)}</p>
-      </section>
+      </aside>
     </section>`;
 }
 

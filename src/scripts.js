@@ -1,5 +1,5 @@
 // ~~~~~ QUERY SELECTORS ~~~~~
-const userInfoCard = document.querySelector('.user-info-card');
+const userInfoCard = document.querySelector('.user');
 const hydrationStats = document.querySelector('.hydration-stats');
 const hydrationWeekChart = document.querySelector('.hydration-week-chart');
 const sleepStats = document.querySelector('.sleep-stats');
@@ -51,33 +51,27 @@ function getRandomUser() {
 
 function displayUserInfoCard(user) {
   userInfoCard.innerHTML = `
-    <div class="user widget">
+    <section class="user-info-card widget">
       <h2>Hello, ${user.getFirstName()}.</h2>
-      <div class="infosection">
-        <p><b>Your User ID:</b><br>${user.id}</p>
-      </div>
-      <div class="infosection">
-        <p><b>Your Name:</b><br>${user.name}</p>
-      </div>
-      <div class="infosection">
-        <p><b>Your Email:</b><br>${user.email}</p>
-      </div>
-      <p><b>Your Friends:</b><br>${userRepo.getUserFriendNames(user.id)}</p>
-    </div>
-    <div class="user-stats">
-      <div class="user widget">
+      <p class="infosection"><b>Your User ID:</b><br>${user.id}</p>
+      <p class="infosection"><b>Your Name:</b><br>${user.name}</p>
+      <p class="infosection"><b>Your Email:</b><br>${user.email}</p>
+      <p class="infosection"><b>Your Friends:</b><br>${userRepo.getUserFriendNames(user.id)}</p>
+    </section>
+    <aside class="user-stats">
+      <section class="user widget">
         <p class="number">${user.strideLength} ft</p>
         <p class="description">your stride length</p>
-      </div>
-      <div class="user widget">
+      </section>
+      <section class="user widget">
         <p class="number">${user.getFormattedStepGoal()} steps</p>
         <p class="description">your daily step goal</p>
-      </div>
-      <div class="user widget">
+      </section>
+      <section class="user widget">
         <p class="number">${userRepo.getAllUserAvgStepGoal()}</p>
         <p class="description">avg user step goal</p>
-      </div>
-    </div>`;
+      </section>
+    </aside>`;
 }
 
 function displayHydrationInfo(user, date) {
@@ -163,7 +157,7 @@ function displayHydrationChart() {
 
 function displaySleepInfo(user, date) {
   sleepStats.innerHTML = `
-    <div class="widget">
+    <div class="sleep widget">
       <h3>Last Night</h3>
       <div class="stats">
         <div class="stat">
@@ -176,7 +170,7 @@ function displaySleepInfo(user, date) {
         </div>
       </div>
     </div>
-    <div class="widget">
+    <div class="sleep widget">
       <h3>All-Time</h3>
       <div class="stats">
         <div class="stat">

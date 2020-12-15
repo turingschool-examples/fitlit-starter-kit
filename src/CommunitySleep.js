@@ -1,9 +1,17 @@
+const chai = require('chai');
+const expect = chai.expect;
+
 const Sleep = require('../src/Sleep')
 
 class CommunitySleep {
-  constructor(sleep) {
-    this.sleeps = sleep.map(sleepForUser => new Sleep(sleepForUser))
+  constructor(data = []) {
+    this.sleeps = data.map(sleepForUser => new Sleep(sleepForUser))
   }
+
+  convertDateString(date) {
+    return parseInt(date.split('/').join(''));
+  }
+
   calculateAvgSleepHrsPerDay(userID) {
     const userSleep = this.sleeps.filter(sleeper => (sleeper.userID === userID));
     const amountSlept = userSleep.map(sleeper => sleeper.hoursSlept);
@@ -24,8 +32,29 @@ class CommunitySleep {
     const sleepQuality = this.sleeps.find(sleeper => sleeper.userID === userID && sleeper.date === date);
     return sleepQuality.sleepQuality;
   }
-  calculateSleepWeek(userID, startDate, endDate) {
-    
+  calculateSleepTimeWeek(userID, startDate, endDate) {
+    const sleepWeekTotals = [];
+    const startDateNumber = this.convertDateString(startDate);
+    const endDateNumber = this.convertDateString(endDate);
+    const userSleep = this.sleeps.filter(sleeper => sleeper.userID === userID);
+    const userSleepStrings = userSleep.map(sleeper => {
+      const sleepStrings = this.convertDateString(sleeper.date);
+      return sleepStrings;
+    })
+    const sleepHrsForWeek = userSleepStrings.filter(sleepDate => sleepDate >= startDateNumber && sleepDate <= endDateNumber);
+    console.log(sleepHrsForWeek);
+    const sleepWeek = sleepHrsForWeek.forEach(element => {
+      const sleepWeekFiltered = this.sleeps.filter(sleeper => {
+        let dateString = this.convertDateString(sleeper.date)
+        // console.log(dateString)
+        if(dateString === element) {
+          console.log(element)
+          sleepWeekTotals.push(sleeper.hoursSlept);
+        }
+      })
+    })
+    console.log(sleepWeekTotals);
+    return sleepWeekTotals;
   }
 }
 module.exports = CommunitySleep;

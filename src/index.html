@@ -23,26 +23,21 @@
 
       
       <article class="steps">
-          
+        <h2>Steps</h2>
       </article>
 
-    </section>
-
-    <section class="fitness-categories">
       <article class="water">
         <h2>Water</h2>
       </article>
-      <article class="activity">
-        <h2>Activity</h2>
-        <div class="activity-container">
-          <p class="steps">
-          </p>
-          <p class="active-minutes">
-          </p>
-          <p class="stairs">
-          </p>
-        </div>
+
+      <article class="stairs">
+        <h2>Stairs</h2>
       </article>
+
+      <article class="active-minutes">
+        <h2>Active Minutes</h2>
+      </article>
+
       <article class="sleep">
         <h2>Sleep</h2>
         <div class="sleep-container">
@@ -57,16 +52,34 @@
       </article>
     </section>
 
+    <article class="date-select">
+      <label for="start">Show stats for date:</label>
+      <input type="date" id="today" name="today"
+        value="2019-09-22"
+        min="2019-06-15" max="2019-09-16">
+      <h2>Dates for Graph</h2>
+      <label for="start">Start date:</label>
+      <input type="date" id="start" name="week-start"
+        value="2019-09-16"
+        min="2019-06-15" max="2019-09-16">
+      <label for="end">End date:</label>
+      <input type="date" id="end" name="week-end"
+        value="2019-09-22"
+        min="2019-09-21" max="2019-09-22">
+    </article>
+
     <section class="graph">
-
-      <canvas id="chart" width="800" height="400"></canvas>
-      
-
       <h2 class="title-graph">Graph</h2>
+      <canvas id="stepChart" width="800" height="400"></canvas>
+      <canvas id="waterChart" width="800" height="400"></canvas>
+      <canvas id="stairsChart" width="800" height="400"></canvas>
+      <canvas id="activeMinutesChart" width="800" height="400"></canvas>
+      <canvas id="sleepChart" width="800" height="400"></canvas>
+      <canvas id="friendChart" width="800" height="400"></canvas>
     </graph>
+
     <section class="friends">
       <h2>Friends</h2>
-      <canvas id="friendChart" width="800" height="400"></canvas>
     </section>
 
     <script type="text/javascript" src="../data/users.js"></script>

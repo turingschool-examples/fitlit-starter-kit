@@ -40,12 +40,10 @@ p {
   border: solid black;
 }
 
-.fitness-categories {
+.date-select {
   border: solid black;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  
+  padding: 3%;
+  align-content: center;
 }
 
 .friends {

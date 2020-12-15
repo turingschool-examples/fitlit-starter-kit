@@ -7,24 +7,25 @@
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>FITLIT</h1>
+    <header>
+      <h1>FITLIT</h1>
+    </header>
+
     <section class="user-main">
+
       <article class="user-profile">
         <h2>Your Profile</h2>
       </article>
-      <div class="user-container">
-        <article class="user-all-time-sleep-stats">
-          <h3>Your All-Time Sleep Stats</h3>
-        </article>
-        <article class="user-step-goal">
-          <h3>Your Daily Step Goal</h3>
-        </article>
-        <article class="community-step-goal">
-          <h3>Community Average Step Goal</h3>
-        </article>
+
+      
+      <article class="steps">
+          
       </article>
+
     </section>
 
     <section class="fitness-categories">
@@ -45,6 +46,9 @@
       <article class="sleep">
         <h2>Sleep</h2>
         <div class="sleep-container">
+          <article class="user-all-time-sleep-stats">
+            <h3>Your All-Time Sleep Stats</h3>
+          </article>
           <p class="sleep-hours">
           </p>
           <p class="sleep-quality">
@@ -62,6 +66,7 @@
     </graph>
     <section class="friends">
       <h2>Friends</h2>
+      <canvas id="friendChart" width="800" height="400"></canvas>
     </section>
 
     <script type="text/javascript" src="../data/users.js"></script>

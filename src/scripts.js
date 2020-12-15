@@ -2,12 +2,10 @@
 const userMain = document.querySelector('.user-main')
 const userProfile = document.querySelector('.user-profile')
 const friends = document.querySelector('.friends')
-const userStepGoal = document.querySelector('.user-step-goal')
-const communityStepGoal = document.querySelector('.community-step-goal')
+const steps = document.querySelector('.steps')
 const water = document.querySelector('.water');
 const graph = document.querySelector('.graph');
 const graphTitle = document.querySelector('.title-graph');
-const steps = document.querySelector('.steps');
 const activeMinutes = document.querySelector('.active-minutes')
 const stairs = document.querySelector('.stairs')
 const chartCanvas = document.getElementById('chart').getContext('2d')
@@ -78,17 +76,12 @@ const createCommunity = () => {
 }
 
 //GREETING:
-//populates the greeting
-//could be refactored to one line if stil readible
 const greetUser = () => {
   const userFirstName = user.getFirstName()
-  userMain.insertAdjacentHTML('afterbegin', `<h2>Welcome ${userFirstName}!</h2>`)
+  userMain.insertAdjacentHTML('afterbegin', `<h2 class="greeting">Welcome ${userFirstName}!</h2>`)
 }
 
 //USER DATA:
-//sets up the user userProfile
-//we could make some of this hidden unless clicked?
-//could also add a picture <img src=...> ?
 const showProfile = () => {
   userProfile.insertAdjacentHTML('beforeend', `Name: ${user.name}<br>
   Address: ${user.address}<br>
@@ -105,8 +98,16 @@ const showProfile = () => {
 //loads a display of the user's step goal
 //also loads display of community step goal
 const showStepGoalComparison = () => {
-  userStepGoal.insertAdjacentHTML('beforeend', `<p>${user.dailyStepGoal}</p>`)
-  communityStepGoal.insertAdjacentHTML('beforeend', `<p>${community.findAverageStepGoal()}</p>`)
+  steps.innerHTML = 
+  `<h2>Steps</h2>
+  <article class="user-step-goal">
+    <h3>Your Daily Step Goal</h3>
+      <p>${community.findAverageStepGoal()}</p>
+  </article>
+  <article class="community-step-goal">
+    <h3>Community Average Step Goal</h3>
+      <p>${user.dailyStepGoal}</p>
+  </article>`
 }
 
 //ADD TODAY's HYDRATION STATS:

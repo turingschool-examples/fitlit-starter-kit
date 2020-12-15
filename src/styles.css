@@ -1,21 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  border-radius: 20px;
+}
+
 body,html {
-  background-color: gray;
   display: flex;
   border-width: thin;
   flex-direction: column;
+  font-family: 'Fredoka One', cursive;
 }
 
 h1 {
-  font-family: 'Fredoka One', cursive;
-  display: flex;
-  justify-content: center;
-  border: solid black;
+  background-image: linear-gradient(to left, #fcdd2d, #d413f2, #0745ff, #7c07f9, #d413f2, #fcdd2d);  
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 10vh;
+  -webkit-text-stroke: 2px black;
+
 }
 
 h2 {
-  border: solid black;
+  color:  #d413f2;
   display: flex;
   justify-content: center;
+  padding: 3vh;
 }
 
 h3 {
@@ -36,14 +45,34 @@ p {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  
 }
 
 .friends {
   border: solid black;
 }
 
+header {
+  display: flex;
+  justify-content: center;
+  padding: 3vh;
+}
+
+.greeting {
+  color: #7c07f9;
+}
+
 .sleep {
   border: solid black;
+}
+
+.steps {
+  border: solid black;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh;
 }
 
 .user-container {
@@ -57,13 +86,18 @@ p {
   flex-direction: column;
   align-items: center;
   border: solid black;
+  padding: 5px;
+  margin: 5px;
+  background-color: rgb(195, 194, 194);
 }
 
 .user-profile {
   border: solid black;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 5vh;
 }
 
 .water {

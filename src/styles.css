@@ -36,8 +36,13 @@ p {
   justify-content: center;
 }
 
-.activity {
+.active-minutes {
   border: solid black;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh;
 }
 
 .date-select {
@@ -48,6 +53,15 @@ p {
 
 .friends {
   border: solid black;
+}
+
+.greeting {
+  border: solid black;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh;
 }
 
 header {
@@ -62,6 +76,31 @@ header {
 
 .sleep {
   border: solid black;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh;
+}
+
+.stairs {
+  border: solid black;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh;
+}
+
+.stats {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  border: solid black;
+  padding: 5px;
+  margin: 5px;
+  background-color: rgb(195, 194, 194);
+  justify-content: space-around;
 }
 
 .steps {
@@ -73,12 +112,6 @@ header {
   padding: 5vh;
 }
 
-.user-container {
-  border: solid black;
-  display: flex;
-  flex-direction: row;
-}
-
 .user-main {
   display: flex;
   flex-direction: column;
@@ -87,7 +120,9 @@ header {
   padding: 5px;
   margin: 5px;
   background-color: rgb(195, 194, 194);
+  justify-content: space-around;
 }
+
 
 .user-profile {
   border: solid black;
@@ -100,4 +135,9 @@ header {
 
 .water {
   border: solid black;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh;
 }

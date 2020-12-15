@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 const userMain = document.querySelector('.user-main')
+const greeting = document.querySelector('.greeting')
 const userProfile = document.querySelector('.user-profile')
 
 const friends = document.querySelector('.friends')
@@ -31,7 +32,7 @@ window.addEventListener('load', loadPage)
 //GREETING:
 const greetUser = () => {
   const userFirstName = user.getFirstName()
-  userMain.insertAdjacentHTML('afterbegin', `<h2 class="greeting">Welcome ${userFirstName}!</h2>`)
+  greeting.insertAdjacentHTML('afterbegin', `<h2 class="greeting">Welcome ${userFirstName}!</h2>`)
 }
 
 //USER DATA:
@@ -51,7 +52,7 @@ const showProfile = () => {
 //DISPLAY STEPS DATA
 
 const showStepGoalComparison = () => {
-  steps.innerHTML += 
+  steps.insertAdjacentHTML('beforeend',
   `<h2>Steps</h2>
   <article class="user-step-goal">
     <h3>Your Daily Step Goal</h3>
@@ -60,7 +61,7 @@ const showStepGoalComparison = () => {
   <article class="community-step-goal">
     <h3>Community Average Step Goal</h3>
       <p>${user.dailyStepGoal}</p>
-  </article>`
+  </article>`)
 }
 
 const showIfUserMetStepGoal = () => {
@@ -180,7 +181,7 @@ const showActivitiesChartWhateverWeek = (startDate, endDate) => {
 
   console.log(getData(weekActivities, 'stairsClimbed'))
   
-  chartIt(getData(weekActivities, 'stairsClimbed'), getData(weekActivities, 'minutesActive'), getData(weekActivities, 'numSteps'), waterCanvas))
+  chartIt(getData(weekActivities, 'stairsClimbed'), getData(weekActivities, 'minutesActive'), getData(weekActivities, 'numSteps'), waterCanvas)
 }
 
 const showActivityStats = () => {

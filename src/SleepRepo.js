@@ -34,7 +34,21 @@ class SleepRepo {
     }
     return weekOfDailySleepData;
     }
+
+  returnWeekOfDailySleepQuality(id, date) {
+    const currentUserData = this.data.filter(userData => userData.id === id);
+    const weekOfDailySleepQualityData = [];
+    const endOfWeek = currentUserData.find(userData => userData.date === date);
+    const indexOfEndDate = currentUserData.indexOf(endOfWeek);
+    for (let i = indexOfEndDate; i >= indexOfEndDate - 6; i--)
+    {
+    weekOfDailySleepQualityData.push(currentUserData[i].sleepQuality);
+    }
+    return weekOfDailySleepQualityData;
   }
+
+
+}
 
 if (typeof module !== 'undefined') {
   module.exports = SleepRepo;

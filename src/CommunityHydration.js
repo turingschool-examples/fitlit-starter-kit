@@ -12,7 +12,7 @@ class CommunityHydration {
     const userWater = this.hydrations.filter(water => (water.userID === userID));
     const waterConsumed = userWater.map(water => water.numOunces);
     const avgWaterConsumed = (waterConsumed.reduce((a, b) => a + b, 0)) / waterConsumed.length;
-    return avgWaterConsumed;//refactor to truncate long decimals 
+    return avgWaterConsumed;//refactor to truncate long decimals
   }
 
   calculateTotalWaterOnDay(userID, date) {
@@ -34,8 +34,7 @@ class CommunityHydration {
       return waterStrings;
     })
     const waterWithinWeek = userWaterStrings.filter(waterDate => waterDate >= startDateNumber && waterDate <= endDateNumber);
-    const waterWithinWeekSorted = waterWithinWeek.sort((startDateNumber, endDateNumber) => startDateNumber - endDateNumber);
-    const waterWeek = waterWithinWeekSorted.forEach(element => {
+    const waterWeek = waterWithinWeek.forEach(element => {
       const waterWeekFiltered = this.hydrations.filter(water => {
         let dateString = this.convertDateString(water.date)
         if(dateString === element){

@@ -85,6 +85,22 @@ class ActivityRepo {
     }, {});
   }
 
+  getMinsActiveByWeek(id, date) {
+    const userWeekActivity = this.getActivityDataByWeek(id, date);
+    return userWeekActivity.reduce((dailySteps, obj) => {
+      dailySteps[obj.date] = obj.minutesActive;
+      return dailySteps;
+    }, {});
+  }
+
+  getFlightsClimbedByWeek(id, date) {
+    const userWeekActivity = this.getActivityDataByWeek(id, date);
+    return userWeekActivity.reduce((dailySteps, obj) => {
+      dailySteps[obj.date] = obj.flightsOfStairs;
+      return dailySteps;
+    }, {});
+  }
+
   getAllUsersAvgStepsByDate(date) {
     const activitiesOnDate = this.getActivitiesByDate(date);
     const totalSteps = activitiesOnDate.reduce((total, activity) => {

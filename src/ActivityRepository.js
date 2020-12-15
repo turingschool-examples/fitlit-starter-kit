@@ -78,14 +78,11 @@ class ActivityRepo {
   }
 
   getStepsTakenByWeek(id, date) {
-    const userActivity = this.getActivitiesById(id);
-    const activityDates = userActivity.map(activity => activity.date);
-    const indexOfDate = activityDates.indexOf(date);
-    const activityByDate = userActivity.slice(indexOfDate - 6, indexOfDate + 1);
-    return activityByDate.reduce((obj, activity) => {
-      obj[activity.date] = activity.numSteps;
-      return obj;
-    }, {})
+    const userWeekActivity = this.getActivityDataByWeek(id, date);
+    return userWeekActivity.reduce((dailySteps, obj) => {
+      dailySteps[obj.date] = obj.numSteps;
+      return dailySteps;
+    }, {});
   }
 
   getAllUsersAvgStepsByDate(date) {

@@ -63,7 +63,7 @@ function displayUserInfoCard(user) {
           <p class="description">your daily step goal</p>
         </section>
         <section class="user widget">
-          <p class="number">${userRepo.getAllUserAvgStepGoal()}</p>
+          <p class="number">${userRepo.getAllUserAvgStepGoal()} steps</p>
           <p class="description">avg user step goal</p>
         </section>
       </section>

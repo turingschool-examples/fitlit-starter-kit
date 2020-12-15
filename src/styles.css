@@ -42,7 +42,6 @@ h2.welcome {
 .user {
   display: flex;
   justify-content: space-around;
-  align-items: center;
   margin-bottom: 2%;
 }
 
@@ -68,7 +67,6 @@ h2.welcome {
   padding-left: 15%;
   padding-top: 5%;
   padding-right: 15%;
-  width: 100%;
 }
 
 /* HEALTH CATEGORIES OVERALL */
@@ -105,4 +103,61 @@ h2.welcome {
 .activity {
   background-color: #F50057;
   color: white;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1025px) {
+  h2.welcome {
+    font-size: 2.5em;
+  }
+  .user-info-card {
+    flex-direction: column;
+  }
+  .user-stats {
+    flex-direction: row;
+  }
+  .info {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .infosection {
+    margin: 5%;
+    font-size: large;
+  }
+  .health-categories {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    height: 100vh;
+    }
+}
+
+@media screen and (max-width: 550px) {
+  h1,
+  .user-stats,
+  .info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .widget {
+    margin: 3% 0;
+  }
+  .health-categories {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hydration-week-chart {
+    width: 2;
+  }
+  .icon {
+    width: 25%;
+    margin-top: 5%;
+  }
+  .hydration-week-chart,
+  .sleep-week-chart {
+    margin-bottom: 20%;
+  }
 }

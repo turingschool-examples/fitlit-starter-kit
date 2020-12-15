@@ -12,6 +12,10 @@ class CommunitySleep {
     return parseInt(date.split('/').join(''));
   }
 
+  findUserSleepData(user) {
+    const userSleep = this.sleeps.filter(sleeper => sleeper.userID === user.userID);
+  }
+
   calculateAvgSleepHrsPerDay(userID) {
     const userSleep = this.sleeps.filter(sleeper => (sleeper.userID === userID));
     const amountSlept = userSleep.map(sleeper => sleeper.hoursSlept);
@@ -36,7 +40,7 @@ class CommunitySleep {
     const sleepWeekTotals = [];
     const startDateNumber = this.convertDateString(startDate);
     const endDateNumber = this.convertDateString(endDate);
-    const userSleep = this.sleeps.filter(sleeper => sleeper.userID === userID);
+    const userSleep = this.findUserSleepData(userID);
     const userSleepStrings = userSleep.map(sleeper => {
       const sleepStrings = this.convertDateString(sleeper.date);
       return sleepStrings;
@@ -48,7 +52,7 @@ class CommunitySleep {
         let dateString = this.convertDateString(sleeper.date)
         // console.log(dateString)
         if(dateString === element) {
-          console.log(element)
+          // console.log(element)
           sleepWeekTotals.push(sleeper.hoursSlept);
         }
       })

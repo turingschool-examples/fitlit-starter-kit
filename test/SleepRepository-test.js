@@ -56,7 +56,7 @@ describe('SleepRepo', () => {
     expect(sleepRepo.getUserSleepQualityByDate(2, "2019/06/16")).to.equal(2);
   })
 
-  it('should get a users sleep data for a given week', () => {
+  it('should get a users sleep hours for a given week', () => {
     expect(sleepRepo.getSleepHoursByWeek(1, "2019/06/21")).to.deep.equal({
       "2019/06/15": 8,
       "2019/06/16": 7,
@@ -67,7 +67,7 @@ describe('SleepRepo', () => {
       "2019/06/21": 9.5});
   })
 
-  it('should get a users sleep data for a given week', () => {
+  it('should get a users sleep quality for a given week', () => {
     expect(sleepRepo.getSleepQualityByWeek(1, "2019/06/21")).to.deep.equal({
       "2019/06/15": 4.4,
       "2019/06/16": 3.2,

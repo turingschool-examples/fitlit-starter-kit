@@ -103,13 +103,13 @@ function displayHydrationChart() {
   let weekHydrationChart = new Chart(hydrationWeekChart, {
     type: 'bar',
     data: {
-      labels: Object.keys(sleepRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22")),
+      labels: Object.keys(hydrationRepo.getUserOzByWeek(currentUser.id, "2019/09/22")),
       datasets: [{
         label: 'Oz Drank',
         backgroundColor: '#00B0FF',
         borderColor: '#00B0FF',
         fill: false,
-        data: Object.values(sleepRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22"))
+        data: Object.values(hydrationRepo.getUserOzByWeek(currentUser.id, "2019/09/22"))
       }]
     },
     options: {

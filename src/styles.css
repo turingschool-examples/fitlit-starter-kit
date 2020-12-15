@@ -4,6 +4,7 @@ body {
   color: #000000;
   margin: 2%;
   background-color: #e5e5e5;
+  height: 100vh;
 }
 
 h2.welcome {
@@ -12,6 +13,10 @@ h2.welcome {
 
 .line-break {
   border: 0.05em solid black;
+}
+
+canvas {
+  margin-bottom: 10%
 }
 
 /* WIDGET */
@@ -130,10 +135,13 @@ h2.welcome {
     display: grid;
     grid-template-columns: repeat(2, minmax(150px, 1fr));
     height: 100vh;
-    }
+  }
+  /* canvas {
+    margin-bottom: 10%
+  } */
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 580px) {
   h1,
   .user-stats,
   .info {

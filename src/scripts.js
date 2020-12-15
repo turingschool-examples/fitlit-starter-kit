@@ -6,7 +6,7 @@ const sleepStats = document.querySelector('.sleep-stats');
 const sleepWeekChart = document.querySelector('.sleep-week-chart');
 const activityStats = document.querySelector('.activity-stats');
 const activityWeekChart = document.querySelector('.activity-steps-chart');
-const activityWeekMinsChart = document.querySelector('.activity-mins-chart')
+const activityWeekMinsChart = document.querySelector('.activity-mins-chart');
 
 // ~~~~~ EVENT LISTENERS ~~~~~
 window.onload = start;
@@ -256,7 +256,7 @@ function displaySleepChart() {
 function displayActivityInfo(user, date) {
   activityStats.innerHTML = `
     <div class="activity widget">
-      <h3>Today</h3>
+      <h3>Today - Your Stats</h3>
       <div class="stats">
         <div class="stat">
           <p class="number">${activityRepo.getMilesWalked(user, date)}</p>
@@ -274,6 +274,25 @@ function displayActivityInfo(user, date) {
         </div>
         <div class="stat">
           <p class="number">${activityRepo.getStairs(user, date)}</p>
+          <p class="description">flights of stairs</p>
+        </div>
+      </div>
+    </div>
+    <div class="activity widget">
+      <h3>Today - All User Average Stats</h3>
+      <div class="stats">
+        <div class="stat">
+          <p class="number">${activityRepo.getAllUsersAvgMinsByDate(date)}</p>
+          <p class="description">mins active</p>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <p class="number">${activityRepo.getAllUsersAvgStepsByDate(date)}</p>
+          <p class="description">steps</p>
+        </div>
+        <div class="stat">
+          <p class="number">${activityRepo.getAllUsersAvgStairsByDate(date)}</p>
           <p class="description">flights of stairs</p>
         </div>
       </div>

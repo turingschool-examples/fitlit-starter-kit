@@ -185,7 +185,7 @@ describe('ActivityRepository', () => {
     ]);
   })
 
-  it('should get a users steps taken for a given week', () => {
+  it('should get a users daily steps taken for a given week', () => {
     expect(activityRepo.getStepsTakenByWeek(1, "2019/06/21")).to.deep.equal({
       "2019/06/15": 3577,
       "2019/06/16": 4294,
@@ -196,7 +196,7 @@ describe('ActivityRepository', () => {
       "2019/06/21": 2634});
   })
 
-  it('should get a users minutes active for a given week', () => {
+  it('should get a users daily minutes active for a given week', () => {
     expect(activityRepo.getMinsActiveByWeek(1, "2019/06/21")).to.deep.equal({
       "2019/06/15": 140,
       "2019/06/16": 138,
@@ -205,6 +205,17 @@ describe('ActivityRepository', () => {
       "2019/06/19": 213,
       "2019/06/20": 287,
       "2019/06/21": 107});
+  })
+
+  it('should get a users daily flights climbed for a given week', () => {
+    expect(activityRepo.getFlightsClimbedByWeek(1, "2019/06/21")).to.deep.equal({
+      "2019/06/15": 16,
+      "2019/06/16": 10,
+      "2019/06/17": 33,
+      "2019/06/18": 32,
+      "2019/06/19": 13,
+      "2019/06/20": 18,
+      "2019/06/21": 5});
   })
 
   it('should get average daily active minutes over a week', () => {

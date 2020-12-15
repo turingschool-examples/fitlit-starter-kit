@@ -17,7 +17,7 @@ class User {
     this.dailyStepGoal = singleUserData.dailyStepGoal;
     this.userSleep = new UserSleep(singleUserSleepData);
     this.userHydration = new UserHydration(singleUserHydrationData);
-    this.userActivity = new UserActivity(singleUserActivityData, this.strideLength, this.dailyStepGoal); // ooooooo
+    this.userActivity = new UserActivity(singleUserActivityData, this.strideLength, this.dailyStepGoal);
   }
 
   getFirstName() {

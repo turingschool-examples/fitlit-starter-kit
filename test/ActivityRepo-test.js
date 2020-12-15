@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const UserRepo = require('../src/UserRepo');
-const ActivityRepo = require('../src/AcvitityRepo');
+const ActivityRepo = require('../src/ActivityRepo');
 
 describe('ActivityRepo', () => {
   let userDataset, userRepo, dataset, activityRepo;
@@ -3216,5 +3216,11 @@ describe('ActivityRepo', () => {
     ];
 
     activityRepo = new ActivityRepo(dataset);
-  });  
+  });
+
+  it.skip('should return the miles walked by a user based on steps', () => {    
+    const miles = activityRepo.calculateMiles(3, '2019/09/21');
+
+    expect(miles).to.equal(4.36);
+  });
 });

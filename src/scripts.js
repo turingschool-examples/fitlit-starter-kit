@@ -281,28 +281,28 @@ function displayActivityInfo(user, date) {
 }
 
 function displayActivityChart() {
-  let weekHydrationChart = new Chart(activityWeekChart, {
+  let weekActivityChart = new Chart(activityWeekChart, {
     type: 'line',
     data: {
-      labels: Object.keys(sleepRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22")),
+      labels: Object.keys(activityRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22")),
       datasets: [{
         label: 'Step Count',
         backgroundColor: '#FF4081',
         borderColor: '#FF4081',
         fill: false,
-        data: Object.values(sleepRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22"))
+        data: Object.values(activityRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22"))
       }, {
         label: 'Flights of Stairs Climbed',
         backgroundColor: '#F50057',
         borderColor: '#F50057',
         fill: false,
-        data: Object.values(sleepRepo.getSleepQualityByWeek(currentUser.id, "2019/09/22"))
+        data: Object.values(activityRepo.getSleepQualityByWeek(currentUser.id, "2019/09/22"))
       }, {
         label: 'Minutes Active',
         backgroundColor: '#C51162',
         borderColor: '#C51162',
         fill: false,
-        data: Object.values(sleepRepo.getSleepQualityByWeek(currentUser.id, "2019/09/22"))
+        data: Object.values(activityRepo.getSleepQualityByWeek(currentUser.id, "2019/09/22"))
       }]
     },
     options: {

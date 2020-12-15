@@ -8,7 +8,7 @@ const Activity = require('../src/Activity');
 const ActivityRepo = require('../src/ActivityRepository');
 const User = require('../src/User');
 
-describe('Activity', () => {
+describe('ActivityRepository', () => {
   let user1, user2, allActivity, activityRepo;
 
   beforeEach(() => {
@@ -183,6 +183,17 @@ describe('Activity', () => {
       "flightsOfStairs": 40
     }
     ]);
+  })
+
+  it('should get a users steps taken for a given week', () => {
+    expect(activityRepo.getStepsTakenByWeek(1, "2019/06/21")).to.deep.equal({
+      "2019/06/15": 3577,
+      "2019/06/16": 4294,
+      "2019/06/17": 7402,
+      "2019/06/18": 3486,
+      "2019/06/19": 11374,
+      "2019/06/20": 14810,
+      "2019/06/21": 2634});
   })
 
   it('should get average daily active minutes over a week', () => {

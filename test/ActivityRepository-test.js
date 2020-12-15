@@ -196,6 +196,17 @@ describe('ActivityRepository', () => {
       "2019/06/21": 2634});
   })
 
+  it('should get a users minutes active for a given week', () => {
+    expect(activityRepo.getMinsActiveByWeek(1, "2019/06/21")).to.deep.equal({
+      "2019/06/15": 140,
+      "2019/06/16": 138,
+      "2019/06/17": 116,
+      "2019/06/18": 114,
+      "2019/06/19": 213,
+      "2019/06/20": 287,
+      "2019/06/21": 107});
+  })
+
   it('should get average daily active minutes over a week', () => {
     expect(activityRepo.getAvgMinsActiveByWeek(1, "2019/06/21")).to.equal(159);
     expect(activityRepo.getAvgMinsActiveByWeek(2, "2019/06/22")).to.equal(153);

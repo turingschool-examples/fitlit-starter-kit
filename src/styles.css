@@ -43,7 +43,7 @@ h2.welcome {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }
 
 .user-info-card {

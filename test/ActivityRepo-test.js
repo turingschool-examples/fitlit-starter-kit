@@ -257,8 +257,8 @@ describe('ActivityRepo', () => {
         "date": "2019/09/20",
         "numSteps": 12646,
         "minutesActive": 170,
-      },      
         "flightsOfStairs": 18
+      },      
       {
         "userID": 11,
         "date": "2019/09/21",
@@ -346,7 +346,7 @@ describe('ActivityRepo', () => {
   });
 
   it.skip('should save avg stairs, steps, minutes for a date for all users', () => {
-    expect(activityRepo.averages).to.be.an('array');
+    expect(activityRepo.averages).to.be.an('object');
 
     const date1 = '2019/09/15';
     activityRepo.calculateDailyAverages(date1);
@@ -378,5 +378,19 @@ describe('ActivityRepo', () => {
         minutesActive: 176
       }
     });
-  });  
+  });
+
+  it.skip('should save avg stairs, steps, minutes for a week for all users', () => {
+    const endDate = '2019/09/22';
+    activityRepo.calculateWeeklyAverages(endDate);
+    // the expectation is calling calculateDailyAverages 7 times to properly generate the data
+
+    expect(activityRepo.weeklyAverages).to.be.an('object');
+    expect(activityRepo.weeklyAverages[endDate]).to.be.an('object');
+    expect(activityRepo.weeklyAverages[endDate]).to.deep.equal({
+      stairs: 40,
+      steps: 7057,
+      minutesActive: 177
+    });
+  });
 });

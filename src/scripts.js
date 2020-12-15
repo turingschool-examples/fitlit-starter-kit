@@ -99,7 +99,10 @@ function displayInfoCard() {
   userEmail.innerText = `${currentUser.email}`;
   userStepCompare.innerText = `Your step goal is ${
     currentUser.userActivity.dailyStepGoal
-  }, and the average is ${userRepo.getAllUserAvgActivityItem(chosenDate, 'numSteps')}`;
+  }, and the average is ${userRepo.getAllUserAvgItem
+    (userRepo.activityData,
+      chosenDate, 
+      "numSteps")}`;
 }
 
 function displayHydrationActivity() {
@@ -148,7 +151,11 @@ function displayUserStairsSuccess() {
     chosenDate,
     'flightsOfStairs'
   );
-  let allStairs = userRepo.getAllUserAvgActivityItem(chosenDate, 'flightsOfStairs');
+  let allStairs = userRepo.getAllUserAvgItem(
+    userRepo.activityData,
+    chosenDate,
+    'flightsOfStairs'
+  )
   if (currentUser.userActivity.isUserAboveAvg(singleStair, allStairs)) {
     console.log(compareStairs)
     compareStairs.innerText = `Your ${singleStair} stairs climbed is higher than the user average of ${allStairs}`;
@@ -162,7 +169,11 @@ function displayUserStepSuccess() {
     chosenDate,
     'numSteps'
   );
-  let allSteps = userRepo.getAllUserAvgActivityItem(chosenDate, 'numSteps');
+  let allSteps = userRepo.getAllUserAvgItem(
+    userRepo.activityData,
+    chosenDate,
+    "numSteps"
+  );
   if (currentUser.userActivity.isUserAboveAvg(singleStep, allSteps)) {
     compareSteps.innerText = `Your ${singleStep} step count is higher than the user average of ${allSteps}`;
   } else {
@@ -175,7 +186,10 @@ function displayUserMinutesSuccess() {
     chosenDate,
     'minutesActive'
   );
-  let allMinutes = userRepo.getAllUserAvgActivityItem(chosenDate, 'minutesActive');
+  let allMinutes = userRepo.getAllUserAvgItem(
+    userRepo.activityData,
+    chosenDate, 
+    "minutesActive");
   if (currentUser.userActivity.isUserAboveAvg(singleMinute, allMinutes)) {
     compareMinutes.innerText = `Your active minute count of ${singleMinute} is higher than the user average of ${allMinutes}`;
   } else { 

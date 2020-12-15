@@ -1,27 +1,33 @@
 /* eslint-disable max-len */
 'use strict'
+const UserSleep = require("../src/userSleep");
+const UserHydration = require("../src/userHydration");
 
 class UserRepo { // all users, all data, all the time
   constructor(userData, sleepData, hydrationData, activityData) {
     this.users = userData;
-    this.activityData = activityData;
     this.sleepData = sleepData;
     this.hydrationData = hydrationData;
+    this.activityData = activityData;
   }
   
-  getAverage(fullList) {
-    return fullList.reduce((total, value) => {
-      return total += value
-    }, 0) / this.sleepData.length
-  }
+  // // getAverage(fullList) {
+  //   console.log(fullList)
+  //   let totalAvg = fullList.reduce((total, value) => {
+  //     console.log('value', value)
+  //     return total += value
+  //   }, 0) 
+  //   console.log(totalAvg)
+  //   return totalAvg / fullList.length
+  //   }
   
-  getAllUserAvgActivityItem(date, keyName) {
-    let dayOfActivityData = this.activityData.filter(day => day.date === date)
-    let listOfActivityItems = dayOfActivityData.map(item => item[keyName])
-    let totalOfActivityItem = listOfActivityItems.reduce((total, value) => {
+  getAllUserAvgItem(fullList, date, keyName) {
+    let dayOfItemData = fullList.filter(day => day.date === date)
+    let listOfItems = dayOfItemData.map(item => item[keyName])
+    let totalItem = listOfItems.reduce((total, value) => {
       return (total += value);
     }, 0) 
-    return totalOfActivityItem / listOfActivityItems.length
+    return totalItem / listOfItems.length
   }
   
   getAUser(id) {

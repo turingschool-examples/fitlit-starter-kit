@@ -2,6 +2,9 @@
 const chai = require('chai')
 const expect = chai.expect
 const User = require('../src/User')
+const UserSleep = require("../src/UserSleep");
+const UserHydration = require("../src/UserHydration");
+const UserActivity = require("../src/UserActivity");
 
 describe('User', () => {
   let user

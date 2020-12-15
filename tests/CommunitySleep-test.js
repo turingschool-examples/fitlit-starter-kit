@@ -47,14 +47,14 @@ describe('CommunitySleep', function() {
 
   it('should be able to calculate the average number of hours slept per day for the given user ID', () => {
     expect(communitySleep.calculateAvgSleepHrsPerDay(39)).to.equal(6.0);
-    expect(communitySleep.calculateAvgSleepHrsPerDay(40)).to.equal(6.1);//rounded to 1 decimal place
-    expect(communitySleep.calculateAvgSleepHrsPerDay(41)).to.equal(7.0);//rounded down
+    expect(communitySleep.calculateAvgSleepHrsPerDay(40)).to.equal(6.1);
+    expect(communitySleep.calculateAvgSleepHrsPerDay(41)).to.equal(7.0);
   });
 
   it('should be able to calculate the average sleep quality per day over all time for the given user ID', () => {
-    expect(communitySleep.calculateAvgSleepQualPerDay(39)).to.equal(2.3);//rounded down
-    expect(communitySleep.calculateAvgSleepQualPerDay(40)).to.equal(2.7);//rounded up
-    expect(communitySleep.calculateAvgSleepQualPerDay(41)).to.equal(2.8);//rounded down
+    expect(communitySleep.calculateAvgSleepQualPerDay(39)).to.equal(2.3);
+    expect(communitySleep.calculateAvgSleepQualPerDay(40)).to.equal(2.7);
+    expect(communitySleep.calculateAvgSleepQualPerDay(41)).to.equal(2.8);
   });
 
   it('should be able to return how many hours a user slept on a specific day, identified by a date', () => {

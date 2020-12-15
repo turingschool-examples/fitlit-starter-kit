@@ -289,8 +289,8 @@ function displayActivityStepsChart() {
       labels: Object.keys(activityRepo.getStepsTakenByWeek(currentUser.id, "2019/09/22")),
       datasets: [{
         label: 'Step Count',
-        backgroundColor: '#FF4081',
-        borderColor: '#FF4081',
+        backgroundColor: '#F50057',
+        borderColor: '#F50057',
         fill: false,
         data: Object.values(activityRepo.getStepsTakenByWeek(currentUser.id, "2019/09/22"))
       }],
@@ -347,14 +347,14 @@ function displayActivityMinsAndFlightsChart() {
       labels: Object.keys(activityRepo.getFlightsClimbedByWeek(currentUser.id, "2019/09/22")),
       datasets: [{
         label: 'Flights of Stairs Climbed',
-        backgroundColor: '#F50057',
-        borderColor: '#F50057',
+        backgroundColor: '#FF80AB',
+        borderColor: '#FF80AB',
         fill: false,
         data: Object.values(activityRepo.getFlightsClimbedByWeek(currentUser.id, "2019/09/22"))
       }, {
         label: 'Minutes Active',
-        backgroundColor: '#C51162',
-        borderColor: '#C51162',
+        backgroundColor: '#F50057',
+        borderColor: '#F50057',
         fill: false,
         data: Object.values(activityRepo.getMinsActiveByWeek(currentUser.id, "2019/09/22"))
       }]

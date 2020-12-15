@@ -10,7 +10,7 @@ describe('ActivityRepo', () => {
   beforeEach(() => {
     userDataset = [
       {
-        "id": 1,
+        "id": 11,
         "name": "Brian Forbes",
         "address": "123 Blah St, Denver CO, 66666",
         "email": "stuffandthings@gmail.com",
@@ -23,7 +23,7 @@ describe('ActivityRepo', () => {
         ]
       },
       {
-        "id": 2,
+        "id": 22,
         "name": "Eric Campbell",
         "address": "123 SomeOther St, Denver CO, 66666",
         "email": "mainlyetcetera@gmail.com",
@@ -35,7 +35,7 @@ describe('ActivityRepo', () => {
         ]
       },
       {
-        "id": 3,
+        "id": 33,
         "name": "David Whitaker",
         "address": "124 Random Lane, Denver CO, 66666",
         "email": "damwhitmaybeidontknow@gmail.com",
@@ -47,7 +47,7 @@ describe('ActivityRepo', () => {
         ]
       },
       {
-        "id": 4,
+        "id": 44,
         "name": "Travis Rollins",
         "address": "234 Very Random Street, Denver CO, 66666",
         "email": "laskdjfaslkdj@gmail.com",
@@ -3223,4 +3223,12 @@ describe('ActivityRepo', () => {
 
     expect(miles).to.equal(4.36);
   });
+
+  it.skip('should return avg minutes active for a given week', () => {
+    const endDate = '09/21/2019';
+    const avgMinutes = activityRepo.calculateMinutesActive(33, endDate);
+
+    expect(avgMinutes).to.equal(6424);
+  });
+
 });

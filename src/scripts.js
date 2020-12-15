@@ -10,6 +10,7 @@ const graphTitle = document.querySelector('.title-graph');
 const steps = document.querySelector('.steps');
 const activeMinutes = document.querySelector('.active-minutes')
 const stairs = document.querySelector('.stairs')
+const chartCanvas = document.getElementById('chart').getContext('2d')
 
 //since multiple methods will need these, global
 let community = null;
@@ -21,6 +22,49 @@ let activity = null;
 let today = "2019/09/22";
 
 window.addEventListener('load', loadPage)
+
+function chartIt(dataOne, dataTwo, dataThree) {
+  const data = dataOne
+  const data2 = dataTwo
+  const data3 = dataThree
+  const chart = new Chart(chartCanvas, {
+    type: 'line',
+    data: {
+      labels: data.xs,
+      datasets: [{
+        label: `Your ${data.fitnessType.split(/(?=[A-Z])/).join(' ')} for the week of ${data.startDate} - ${data.endDate}`,
+        data: data.ys,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }, 
+      {
+        label: `Your ${data2.fitnessType.split(/(?=[A-Z])/).join(' ')} for the week of ${data2.startDate} - ${data2.endDate}`,
+        data: data2.ys,
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      },
+      {
+        label: `Your ${data3.fitnessType.split(/(?=[A-Z])/).join(' ')} for the week of ${data3.startDate} - ${data3.endDate}`,
+        data: data3.ys,
+        backgroundColor: 'rgba(255, 206, 86, 0.2)',
+        borderColor: 'rgba(255, 206, 86, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+};
 
 //this could just be done on lines 5 and 6,
 //but if we want to ever load from local storage...
@@ -56,6 +100,8 @@ const showProfile = () => {
 
 //ADD ALL-TIME SLEEP STATS:
 
+
+
 //loads a display of the user's step goal
 //also loads display of community step goal
 const showStepGoalComparison = () => {
@@ -84,6 +130,18 @@ const showHydrationStatsWeek = (startDate, endDate) => {
     </article>
     `)
 }
+
+//GRAPH:
+function getData(weekOfUserDataObjects, fitnessType) {
+  return {
+    fitnessType: fitnessType,
+    startDate: weekOfUserDataObjects[0].date,
+    endDate: weekOfUserDataObjects[weekOfUserDataObjects.length -1].date,
+    xs: weekOfUserDataObjects.map(object => object.date),
+    ys: weekOfUserDataObjects.map(object => object[fitnessType]) 
+  }
+}
+
 //ADD ACTIVITY STATS:
 const showIfUserMetStepGoal = () => {
   if (activity.verifyIfStepGoal(user)) {
@@ -163,6 +221,11 @@ const showStairsStatsWeek = (startDate, endDate) => {
 
   graphTitle.insertAdjacentHTML('afterend',
     `<article class="stairs-stats-week">Stairs Climbed over the week of ${startDate}-${endDate}:` + activitiesDisplay + '</article>')
+
+
+  console.log(getData(weekActivities, 'stairsClimbed'))
+  
+  chartIt(getData(weekActivities, 'stairsClimbed'), getData(weekActivities, 'minutesActive'), getData(weekActivities, 'numSteps'))
 }
 
 
@@ -185,7 +248,7 @@ const showActivityStats = () => {
 
 //ADD SLEEP STATS:
 
-//GRAPH:
+
 
 //FRIENDS:
 

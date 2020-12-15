@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   </head>
   <body>
     <h1>FITLIT</h1>
@@ -51,7 +52,12 @@
         </div>
       </article>
     </section>
+
     <section class="graph">
+
+      <canvas id="chart" width="800" height="400"></canvas>
+      
+
       <h2 class="title-graph">Graph</h2>
     </graph>
     <section class="friends">

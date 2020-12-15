@@ -69,8 +69,10 @@ class CommunitySleep {
     return sleepWeekTotals;
   }
 
-  calculateAvgSleepQuality() {//for all users 
-
+  calculateAvgSleepQuality() {
+    const sleepQualityAllUsers = this.sleeps.map(allSleepers => allSleepers.sleepQuality);
+    const avgSleepQuality = (sleepQualityAllUsers.reduce((a, b) => a + b, 0)) / sleepQualityAllUsers.length;
+    return Math.round(avgSleepQuality * 10) / 10;
   }
 }
 module.exports = CommunitySleep;

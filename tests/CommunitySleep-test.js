@@ -70,9 +70,9 @@ describe('CommunitySleep', function() {
   });
 
   it('should be able to calculate how many hours slept each day over the course of 7 days, for a single user', () => {
-    expect(communitySleep.calculateSleepWeek(39, "2019/08/11", "2019/08/17").to.deep.equal([4.2, 5.5, 4.8, 4.8, 7.5, 6.8, 8.2]));
-    expect(communitySleep.calculateSleepWeek(40, "2019/08/10", "2019/08/16").to.deep.equal([4.1, 4.8, 3.4, 9.2, 6.0, 6.8, 9.3]));
-    expect(communitySleep.calculateSleepWeek(41, "2019/08/14", "2019/08/20").to.deep.equal([4.8, 8.1, 6.8, 6.7, 9.2, 4.0, 6.8]));
+    expect(communitySleep.calculateSleepTimeWeek(39, "2019/08/11", "2019/08/17").to.deep.equal([4.2, 5.5, 4.8, 4.8, 7.5, 6.8, 8.2]));
+    expect(communitySleep.calculateSleepTimeWeek(40, "2019/08/10", "2019/08/16").to.deep.equal([4.1, 4.8, 3.4, 9.2, 6.0, 6.8, 9.3]));
+    expect(communitySleep.calculateSleepTimeWeek(41, "2019/08/14", "2019/08/20").to.deep.equal([4.8, 8.1, 6.8, 6.7, 9.2, 4.0, 6.8]));
   });
 
   it('should be able to calculate the sleep quality over the course of 7 days on any given week, for a single user', () => {

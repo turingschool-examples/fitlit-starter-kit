@@ -73,11 +73,11 @@ describe('Activity', () => {
     userRepo = new UserRepo(dataset);
   });
 
-  it.skip('should have an appropriate constructor', () => {
+  it('should have an appropriate constructor', () => {
     expect(activity.id).to.equal(data.userID);
     expect(activity.date).to.equal(data.date);
     expect(activity.steps).to.equal(data.numSteps);
-    expect(activitiy.minActive).to.equal(data.minutesActive);
+    expect(activity.minActive).to.equal(data.minutesActive);
     expect(activity.flightsOfStairs).to.equal(data.flightsOfStairs);
   });
 

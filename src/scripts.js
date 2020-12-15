@@ -5,7 +5,8 @@ const hydrationWeekChart = document.querySelector('.hydration-week-chart');
 const sleepStats = document.querySelector('.sleep-stats');
 const sleepWeekChart = document.querySelector('.sleep-week-chart');
 const activityStats = document.querySelector('.activity-stats');
-const activityWeekChart = document.querySelector('.activity-week-chart');
+const activityWeekChart = document.querySelector('.activity-steps-chart');
+const activityWeekMinsChart = document.querySelector('.activity-mins-chart')
 
 // ~~~~~ EVENT LISTENERS ~~~~~
 window.onload = start;
@@ -277,39 +278,92 @@ function displayActivityInfo(user, date) {
         </div>
       </div>
     </div>`;
-  displayActivityChart();
+  displayActivityStepsChart();
+  displayActivityMinsAndFlightsChart();
 }
 
-function displayActivityChart() {
+function displayActivityStepsChart() {
   let weekActivityChart = new Chart(activityWeekChart, {
-    type: 'line',
+    type: 'bar',
     data: {
-      labels: Object.keys(activityRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22")),
+      labels: Object.keys(activityRepo.getStepsTakenByWeek(currentUser.id, "2019/09/22")),
       datasets: [{
         label: 'Step Count',
         backgroundColor: '#FF4081',
         borderColor: '#FF4081',
         fill: false,
-        data: Object.values(activityRepo.getSleepHoursByWeek(currentUser.id, "2019/09/22"))
-      }, {
-        label: 'Flights of Stairs Climbed',
-        backgroundColor: '#F50057',
-        borderColor: '#F50057',
-        fill: false,
-        data: Object.values(activityRepo.getSleepQualityByWeek(currentUser.id, "2019/09/22"))
-      }, {
-        label: 'Minutes Active',
-        backgroundColor: '#C51162',
-        borderColor: '#C51162',
-        fill: false,
-        data: Object.values(activityRepo.getSleepQualityByWeek(currentUser.id, "2019/09/22"))
-      }]
+        data: Object.values(activityRepo.getStepsTakenByWeek(currentUser.id, "2019/09/22"))
+      }],
     },
     options: {
       // maintainAspectRatio: false,
       title: {
         display: true,
-        text: "Your activity stats for the week:",
+        text: "Your activity stats for the week",
+        fontSize: 16,
+        fontColor: "#C51162"
+      },
+      legend: {
+        // display: false
+        labels: {
+          fontColor: "#C51162"
+        },
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            fontColor: "#C51162",
+            beginAtZero: true
+          },
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: "Value",
+            fontStyle: 'bold',
+            fontColor: "#C51162"
+          }
+        }],
+        xAxes: [{
+          ticks: {
+            fontColor: "#C51162",
+          },
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: "Date",
+            fontStyle: 'bold',
+            fontColor: "#C51162"
+          }
+        }]
+      }
+    }
+  });
+}
+
+function displayActivityMinsAndFlightsChart() {
+  let weekActivityChart = new Chart(activityWeekMinsChart, {
+    type: 'line',
+    data: {
+      labels: Object.keys(activityRepo.getFlightsClimbedByWeek(currentUser.id, "2019/09/22")),
+      datasets: [{
+        label: 'Flights of Stairs Climbed',
+        backgroundColor: '#F50057',
+        borderColor: '#F50057',
+        fill: false,
+        data: Object.values(activityRepo.getFlightsClimbedByWeek(currentUser.id, "2019/09/22"))
+      }, {
+        label: 'Minutes Active',
+        backgroundColor: '#C51162',
+        borderColor: '#C51162',
+        fill: false,
+        data: Object.values(activityRepo.getMinsActiveByWeek(currentUser.id, "2019/09/22"))
+      }]
+    },
+    options: {
+      // maintainAspectRatio: false,
+      title: {
+        display: false,
+        text: "",
         fontSize: 16,
         fontColor: "#C51162"
       },

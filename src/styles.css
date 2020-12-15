@@ -2,8 +2,17 @@ html,
 body {
   font-family: "Open Sans", sans-serif;
   color: #000000;
-  text-align: center;
+  /* text-align: center; */
   margin: 2%;
+  background-color: #e5e5e5;
+}
+
+h2.welcome {
+  font-size: 3.5em;
+}
+
+.line-break {
+  border: 0.05em solid black;
 }
 
 /* WIDGET */
@@ -11,10 +20,10 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  border: 3px solid black;
+  /* border: 3px solid; */
   border-radius: 10px/30px;
   margin: 3%;
-  padding: 3%;
+  /* padding: 3%; */
 }
 
 .widget .number {
@@ -34,14 +43,16 @@ body {
 
 /* USER */
 .user {
-  text-align: center;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 3%;
 }
 
 .user-info-card {
+  display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 80%;
   margin: 0;
@@ -53,26 +64,48 @@ body {
   justify-content: center;
 }
 
+.user.widget {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding-left: 15%;
+  padding-top: 5%;
+  padding-right: 15%;
+  padding-bottom: 5%;
+  width: 100%;
+}
+
 /* HEALTH CATEGORIES OVERALL */
 .health-categories {
     display: grid;
     grid-column-gap: 4rem;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     margin-top: 4%;
+    text-align: center;
   }
+
+/* .category {
+  background-color: #e5e5e5;
+} */
 
 .icon {
   width: 30%;
 }
 
 .hydration {
-  border: 3px solid #00B0FF;
+  /* border: 3px solid #00B0FF; */
+  background-color: #00B0FF;
+  color: white;
 }
 
 .sleep {
-  border: 3px solid #536DFE;
+  /* border: 3px solid #536DFE; */
+  background-color: #536DFE;
+  color: white;
 }
 
 .activity {
-  border: 3px solid #F50057;
+  /* border: 3px solid #F50057; */
+  background-color: #F50057;
+  color: white;
 }

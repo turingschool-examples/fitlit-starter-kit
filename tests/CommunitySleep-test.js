@@ -82,7 +82,7 @@ describe('CommunitySleep', function() {
   })
 
   it('should be able to calculate the average sleep quality for all users', () => {
-    expect(communitySleep.calculateAvgSleepQuality().to.equal(2.6));//rounded down
+    expect(communitySleep.calculateAvgSleepQuality()).to.equal(2.6);
   })
 
   it('should be able to find which users average a sleep quality greater than 3 for a given week', () => {
@@ -90,6 +90,7 @@ describe('CommunitySleep', function() {
     expect(communitySleep.findBestQualitySleepers("2019/08/13", "2019/08/19")).to.deep.equal([40]);
     expect(communitySleep.findBestQualitySleepers("2019/08/14", "2019/08/20")).to.deep.equal([41]);
   })
+
   it('should be able to find the users who slept the most number of hours for a given date (can be more than 1)', () => {
     expect(communitySleep.findMostHrsSleepers("2019/08/11")).to.deep.equal([41]);
     expect(communitySleep.findMostHrsSleepers("2019/08/17")).to.deep.equal([39]);

@@ -3,8 +3,12 @@ class Activity {
     this.id = dataPiece.userID;
     this.date = dataPiece.date;
     this.steps = dataPiece.numSteps;
-    this.minActive = dataPiece.minutesActive;
+    this.minutes = dataPiece.minutesActive;
     this.flightsOfStairs = dataPiece.flightsOfStairs;
+  }
+
+  returnMinutes() {
+    return this.minutes;
   }
 }
 

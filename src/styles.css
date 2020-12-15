@@ -46,7 +46,7 @@ h2.welcome {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 3%;
+  margin-bottom: 5%;
 }
 
 .user-info-card {
@@ -88,8 +88,17 @@ h2.welcome {
   background-color: #e5e5e5;
 } */
 
+.icon-box {
+  width: auto;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .icon {
-  width: 30%;
+  width: 50%;
+  /* align-self: center; */
 }
 
 .hydration {

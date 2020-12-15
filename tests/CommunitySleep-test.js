@@ -70,15 +70,15 @@ describe('CommunitySleep', function() {
   });
 
   it('should be able to calculate how many hours slept each day over the course of 7 days, for a single user', () => {
-    expect(communitySleep.calculateSleepTimeWeek(39, "2019/08/11", "2019/08/17").to.deep.equal([4.2, 5.5, 4.8, 4.8, 7.5, 6.8, 8.2]));
-    expect(communitySleep.calculateSleepTimeWeek(40, "2019/08/10", "2019/08/16").to.deep.equal([4.1, 4.8, 3.4, 9.2, 6.0, 6.8, 9.3]));
-    expect(communitySleep.calculateSleepTimeWeek(41, "2019/08/14", "2019/08/20").to.deep.equal([4.8, 8.1, 6.8, 6.7, 9.2, 4.0, 6.8]));
+    expect(communitySleep.calculateSleepTimeWeek(39, "2019/08/11", "2019/08/17")).to.deep.equal([4.2, 5.5, 4.8, 4.8, 7.5, 6.8, 8.2]);
+    expect(communitySleep.calculateSleepTimeWeek(40, "2019/08/10", "2019/08/16")).to.deep.equal([4.1, 4.8, 3.4, 9.2, 6.0, 6.8, 9.3]);
+    expect(communitySleep.calculateSleepTimeWeek(41, "2019/08/14", "2019/08/20")).to.deep.equal([4.8, 8.1, 6.8, 6.7, 9.2, 4.0, 6.8]);
   });
 
   it('should be able to calculate the sleep quality over the course of 7 days on any given week, for a single user', () => {
-    expect(communitySleep.calculateSleepQualityWeek(39, "2019/08/10", "2019/08/16").to.deep.equal([1.4, 2.3, 3.3, 1.0, 1.4, 1.4, 1.8]));
-    expect(communitySleep.calculateSleepQualityWeek(40, "2019/08/12", "2019/08/18").to.deep.equal([1.4, 3.3, 1.4, 3.8, 3.8, 3.4, 3.3]));
-    expect(communitySleep.calculateSleepQualityWeek(41, "2019/08/14", "2019/08/20").to.deep.equal([2.2, 2.5, 2.9, 4.3, 2.6, 3.8, 3.8]));
+    expect(communitySleep.calculateSleepQualityWeek(39, "2019/08/10", "2019/08/16")).to.deep.equal([1.4, 2.3, 3.3, 1.0, 1.4, 1.4, 1.8]);
+    expect(communitySleep.calculateSleepQualityWeek(40, "2019/08/12", "2019/08/18")).to.deep.equal([1.4, 3.3, 1.4, 3.8, 3.8, 3.4, 3.3]);
+    expect(communitySleep.calculateSleepQualityWeek(41, "2019/08/14", "2019/08/20")).to.deep.equal([2.2, 2.5, 2.9, 4.3, 2.6, 3.8, 3.8]);
   })
 
   it('should be able to calculate the average sleep quality for all users', () => {
@@ -86,13 +86,13 @@ describe('CommunitySleep', function() {
   })
 
   it('should be able to find which users average a sleep quality greater than 3 for a given week', () => {
-    expect(communitySleep.findBestQualitySleepers("2019/08/10", "2019/08/16").to.deep.equal([]));//none// return console.log
-    expect(communitySleep.findBestQualitySleepers("2019/08/13", "2019/08/19").to.deep.equal([40]));
-    expect(communitySleep.findBestQualitySleepers("2019/08/14", "2019/08/20").to.deep.equal([41]));
+    expect(communitySleep.findBestQualitySleepers("2019/08/10", "2019/08/16")).to.deep.equal([]);//none// return console.log
+    expect(communitySleep.findBestQualitySleepers("2019/08/13", "2019/08/19")).to.deep.equal([40]);
+    expect(communitySleep.findBestQualitySleepers("2019/08/14", "2019/08/20")).to.deep.equal([41]);
   })
   it('should be able to find the users who slept the most number of hours for a given date (can be more than 1)', () => {
-    expect(communitySleep.findMostHrsSleepers("2019/08/11").to.deep.equal([41]));
-    expect(communitySleep.findMostHrsSleepers("2019/08/17").to.deep.equal([39]));
-    expect(communitySleep.findMostHrsSleepers("2019/08/20").to.deep.equal([40, 41]));
+    expect(communitySleep.findMostHrsSleepers("2019/08/11")).to.deep.equal([41]);
+    expect(communitySleep.findMostHrsSleepers("2019/08/17")).to.deep.equal([39]);
+    expect(communitySleep.findMostHrsSleepers("2019/08/20")).to.deep.equal([40, 41]);
   })
 })

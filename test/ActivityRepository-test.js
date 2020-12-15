@@ -72,8 +72,8 @@ describe('Activity', () => {
   })
 
   it('should get a users steps taken on a given date', () => {
-    expect(activityRepo.getStepsTaken(user1, "2019/06/15")).to.equal(3577);
-    expect(activityRepo.getStepsTaken(user2, "2019/06/16")).to.equal(4887);
+    expect(activityRepo.getStepsTaken(user1, "2019/06/15")).to.equal('3,577');
+    expect(activityRepo.getStepsTaken(user2, "2019/06/16")).to.equal('4,887');
   })
 
   it('should get a users flights of stairs on a given date', () => {

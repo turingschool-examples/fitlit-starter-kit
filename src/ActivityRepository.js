@@ -24,7 +24,7 @@ class ActivityRepo {
 
   getStepsTaken(user, date) {
     const activityByDate = this.filterByIdAndDate(user, date);
-    return activityByDate.numSteps;
+    return activityByDate.numSteps.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   getMinsActive(user, date) {

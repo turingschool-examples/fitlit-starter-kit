@@ -261,19 +261,22 @@ function displayActivityInfo(user, date) {
           <p class="number">${activityRepo.getMilesWalked(user, date)}</p>
           <p class="description">miles walked</p>
         </div>
+        <div class="stat">
+          <p class="number">${activityRepo.getMinsActive(user, date)}</p>
+          <p class="description">mins active</p>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <p class="number">${activityRepo.getStepsTaken(user, date)}</p>
+          <p class="description">steps</p>
+        </div>
+        <div class="stat">
+          <p class="number">${activityRepo.getStairs(user, date)}</p>
+          <p class="description">flights of stairs</p>
+        </div>
       </div>
     </div>`;
-  // activityStats.innerHTML = `
-  //   <div class="widget">
-  //     <p>Steps taken today: ${activityRepo.getStepsTaken(user, date)}</p>
-  //     <p>Minutes active today: ${activityRepo.getMinsActive(user, date)}</p>
-  //     <p>Flights of stairs climbed today: ${activityRepo.getStairs(user, date)}</p>
-  //   </div>
-  //   <div class="widget">
-  //     <p>All users steps taken today: ${activityRepo.getAllUsersAvgStepsByDate(date)}</p>
-  //     <p>All users minutes active today: ${activityRepo.getAllUsersAvgMinsByDate(date)}</p>
-  //     <p>All users flights of stairs climbed today: ${activityRepo.getAllUsersAvgStairsByDate(date)}</p>
-  //   </div>`;
   displayActivityChart();
 }
 

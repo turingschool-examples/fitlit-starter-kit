@@ -56,7 +56,7 @@ class CommunitySleep {
   }
 
   calculateAvgSleepQualityWk(userID, startDate, endDate) {
-    const something = this.calculateSleepStatsWeek(userID, startDate, endDate);
+    const sleepWeek = this.calculateSleepStatsWeek(userID, startDate, endDate);
     const sleepQualityTotals = something.map(sleeper => sleeper.sleepQuality)
     const sleepWeekAvg = (sleepQualityTotals.reduce((a, b) => a + b, 0))/7
     return Math.round(sleepWeekAvg * 10) / 10

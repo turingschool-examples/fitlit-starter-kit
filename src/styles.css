@@ -15,10 +15,6 @@ h2.welcome {
   border: 0.05em solid black;
 }
 
-canvas {
-  margin-bottom: 10%
-}
-
 /* WIDGET */
 .widget {
   width: 100%;
@@ -95,6 +91,10 @@ canvas {
   width: 50%;
 }
 
+canvas {
+  margin-bottom: 10%
+}
+
 .hydration {
   background-color: #00B0FF;
   color: white;
@@ -136,9 +136,6 @@ canvas {
     grid-template-columns: repeat(2, minmax(150px, 1fr));
     height: 100vh;
   }
-  /* canvas {
-    margin-bottom: 10%
-  } */
 }
 
 @media screen and (max-width: 580px) {

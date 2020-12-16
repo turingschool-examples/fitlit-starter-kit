@@ -5,8 +5,8 @@ const hydrationWeekChart = document.querySelector('.hydration-week-chart');
 const sleepStats = document.querySelector('.sleep-stats');
 const sleepWeekChart = document.querySelector('.sleep-week-chart');
 const activityStats = document.querySelector('.activity-stats');
-const activityWeekChart = document.querySelector('.activity-steps-chart');
-const activityWeekMinsChart = document.querySelector('.activity-mins-chart');
+const activityStepsChart = document.querySelector('.activity-steps-chart');
+const activityMinsFlightsChart = document.querySelector('.activity-mins-flights-chart');
 
 // ~~~~~ EVENT LISTENERS ~~~~~
 window.onload = start;
@@ -79,24 +79,24 @@ function displayUserInfoCard(user) {
 
 function displayHydrationInfo(user, date) {
   hydrationStats.innerHTML = `
-    <div class="hydration widget">
+    <section class="hydration widget">
       <h3>Today</h3>
-      <div class="stats">
+      <section class="stats">
         <div class="stat">
           <p class="number">${hydrationRepo.getUserOzByDate(user.id, date)}</p>
           <p class="description">oz drank</p>
         </div>
-      </div>
-    </div>
-    <div class="hydration widget">
+      </section>
+    </section>
+    <section class="hydration widget">
       <h3>All-Time</h3>
-      <div class="stats">
+      <section class="stats">
         <div class="stat">
           <p class="number">${hydrationRepo.getUserAvgDailyOzAllTime(user.id)}</p>
           <p class="description">avg oz drank per day</p>
         </div>
-      </div>
-    </div>`;
+      </section>
+    </section>`;
   displayHydrationChart();
 }
 
@@ -160,9 +160,9 @@ function displayHydrationChart() {
 
 function displaySleepInfo(user, date) {
   sleepStats.innerHTML = `
-    <div class="sleep widget">
+    <section class="sleep widget">
       <h3>Last Night</h3>
-      <div class="stats">
+      <section class="stats">
         <div class="stat">
           <p class="number">${sleepRepo.getUserSleepHrsByDate(user.id, date)}</p>
           <p class="description">hours slept</p>
@@ -171,11 +171,11 @@ function displaySleepInfo(user, date) {
           <p class="number">${sleepRepo.getUserSleepQualityByDate(user.id, date)}</p>
           <p class="description">sleep quality</p>
         </div>
-      </div>
-    </div>
-    <div class="sleep widget">
+      </section>
+    </section>
+    <section class="sleep widget">
       <h3>All-Time</h3>
-      <div class="stats">
+      <section class="stats">
         <div class="stat">
           <p class="number">${sleepRepo.getUserAvgHrsSleptAllTime(user.id)}</p>
           <p class="description">avg hours slept</p>
@@ -184,8 +184,8 @@ function displaySleepInfo(user, date) {
           <p class="number">${sleepRepo.getUserAvgSleepQualityAllTime(user.id)}</p>
           <p class="description">avg sleep quality</p>
         </div>
-      </div>
-    </div>`;
+      </section>
+    </section>`;
   displaySleepChart();
 }
 
@@ -255,9 +255,9 @@ function displaySleepChart() {
 
 function displayActivityInfo(user, date) {
   activityStats.innerHTML = `
-    <div class="activity widget">
+    <section class="activity widget">
       <h3>Today - Your Stats</h3>
-      <div class="stats">
+      <section class="stats">
         <div class="stat">
           <p class="number">${activityRepo.getMilesWalked(user, date)}</p>
           <p class="description">miles walked</p>
@@ -266,8 +266,8 @@ function displayActivityInfo(user, date) {
           <p class="number">${activityRepo.getMinsActive(user, date)}</p>
           <p class="description">mins active</p>
         </div>
-      </div>
-      <div class="stats">
+      </section>
+      <section class="stats">
         <div class="stat">
           <p class="number">${activityRepo.getStepsTaken(user, date)}</p>
           <p class="description">steps</p>
@@ -276,17 +276,17 @@ function displayActivityInfo(user, date) {
           <p class="number">${activityRepo.getStairs(user, date)}</p>
           <p class="description">flights of stairs</p>
         </div>
-      </div>
-    </div>
-    <div class="activity widget">
+      </section>
+    </section>
+    <section class="activity widget">
       <h3>Today - All User Average Stats</h3>
-      <div class="stats">
+      <section class="stats">
         <div class="stat">
           <p class="number">${activityRepo.getAllUsersAvgMinsByDate(date)}</p>
           <p class="description">mins active</p>
         </div>
-      </div>
-      <div class="stats">
+      </section>
+      <section class="stats">
         <div class="stat">
           <p class="number">${activityRepo.getAllUsersAvgStepsByDate(date)}</p>
           <p class="description">steps</p>
@@ -295,14 +295,14 @@ function displayActivityInfo(user, date) {
           <p class="number">${activityRepo.getAllUsersAvgStairsByDate(date)}</p>
           <p class="description">flights of stairs</p>
         </div>
-      </div>
-    </div>`;
+      </section>
+    </section>`;
   displayActivityStepsChart();
   displayActivityMinsAndFlightsChart();
 }
 
 function displayActivityStepsChart() {
-  let weekActivityChart = new Chart(activityWeekChart, {
+  let weekActivityChart = new Chart(activityStepsChart, {
     type: 'bar',
     data: {
       labels: Object.keys(activityRepo.getStepsTakenByWeek(currentUser.id, "2019/09/22")),
@@ -360,7 +360,7 @@ function displayActivityStepsChart() {
 }
 
 function displayActivityMinsAndFlightsChart() {
-  let weekActivityChart = new Chart(activityWeekMinsChart, {
+  let weekActivityChart = new Chart(activityMinsFlightsChart, {
     type: 'line',
     data: {
       labels: Object.keys(activityRepo.getFlightsClimbedByWeek(currentUser.id, "2019/09/22")),

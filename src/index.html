@@ -14,36 +14,37 @@
   <header>
     <h1>My Fitness Data</h1>
   </header>
-  <main class="user">
+  <main>
+    <section class="user"></section>
+    <div class="line-break"></div>
+    <section class="health-categories">
+      <section class="category">
+        <div class="icon-box">
+          <img class="icon" src="../images/hydration-icon.svg" alt="drinking water icon">
+        </div>
+        <h2>Hydration</h2>
+        <section class="hydration-stats"></section>
+        <canvas class="hydration-week-chart" width="1" height="1"></canvas>
+      </section>
+      <section class="category">
+        <div class="icon-box">
+          <img class="icon" src="../images/sleep-icon.svg" alt="sleep icon">
+        </div>
+        <h2>Sleep</h2>
+        <section class="sleep-stats"></section>
+        <canvas class="sleep-week-chart" width="1" height="1"></canvas>
+      </section>
+      <section class="category">
+        <div class="icon-box">
+          <img class="icon" src="../images/activity-icon.svg" alt="fitness icon">
+        </div>
+        <h2>Activity</h2>
+        <section class="activity-stats"></section>
+        <canvas class="activity-steps-chart" width="1" height="1"></canvas>
+        <canvas class="activity-mins-flights-chart" width="1" height="1"></canvas>
+      </section>
+    </section>
   </main>
-  <div class="line-break"></div>
-  <section class="health-categories">
-    <section class="category">
-      <div class="icon-box">
-        <img class="icon" src="../images/hydration-icon.svg" alt="drinking water icon">
-      </div>
-      <h2>Hydration</h2>
-      <section class="hydration-stats"></section>
-      <canvas class="hydration-week-chart" width="1" height="1"></canvas>
-    </section>
-    <section class="category">
-      <div class="icon-box">
-        <img class="icon" src="../images/sleep-icon.svg" alt="sleep icon">
-      </div>
-      <h2>Sleep</h2>
-      <div class="sleep-stats"></div>
-      <canvas class="sleep-week-chart" width="1" height="1"></canvas>
-    </section>
-    <section class="category">
-      <div class="icon-box">
-        <img class="icon" src="../images/activity-icon.svg" alt="fitness icon">
-      </div>
-      <h2>Activity</h2>
-      <div class="activity-stats"></div>
-      <canvas class="activity-steps-chart" width="1" height="1"></canvas>
-      <canvas class="activity-mins-chart" width="1" height="1"></canvas>
-    </section>
-  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script type="text/javascript" src="../data/users.js"></script>

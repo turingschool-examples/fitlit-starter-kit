@@ -97,6 +97,8 @@ describe("UserSleep", () => {
     ])
   })
 
+  //sad path testing - look into this more.. how can a user eff this up. mock user messing us
+
   it("should be a function", () => {
     expect(UserSleep).to.be.a("function");
   });

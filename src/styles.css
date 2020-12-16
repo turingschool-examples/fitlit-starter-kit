@@ -8,7 +8,6 @@ green: #61ED90
 */
 
 /*
-font-family: 'Shadows Into Light', cursive;
 font-family: 'Raleway', sans-serif;
 */
 
@@ -172,3 +171,10 @@ table {
 .hidden {
   display: none;
 }
+
+/* 
+if we have time, mobile and tablet experience. focus on that over small details
+could add a hover over the button, change pointer
+don't forget meta tag when do you responsive - actually recognized what screen you are in
+maybe think of some sort of consistent order
+*/

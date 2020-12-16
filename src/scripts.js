@@ -29,6 +29,12 @@ const compareStairs = document.querySelector(".stairs-compare");
 const compareSteps = document.querySelector(".steps-compare");
 const compareMinutes = document.querySelector(".minutes-compare");
 const compareMiles = document.querySelector(".miles-compare");
+//think about getting querySelectors local when we can
+// using it more than once - global, click or load
+// if only using once make it local
+// low hanging fruit
+// use more event delegation (event.target, node siblings, parents) or declare it locally. 
+// declaring QS locally - easiest 
 
 const userRepo = new UserRepo(
   userData, 
@@ -99,7 +105,10 @@ function displayInfoCard() {
   userEmail.innerText = `${currentUser.email}`;
   userStepCompare.innerText = `Your step goal is ${
     currentUser.userActivity.dailyStepGoal
-  }, and the average is ${userRepo.getAllUserAvgActivityItem(chosenDate, 'numSteps')}`;
+  }, and the average is ${userRepo.getAllUserAvgItem
+    (userRepo.activityData,
+      chosenDate, 
+      "numSteps")}`;
 }
 
 function displayHydrationActivity() {
@@ -143,12 +152,18 @@ function displayMilesWalked(placement) {
     .toFixed(2)} miles today`;
 }
 
+//try and squish these together
+
 function displayUserStairsSuccess() { 
   let singleStair = currentUser.userActivity.getOneDayOfData(
     chosenDate,
     'flightsOfStairs'
   );
-  let allStairs = userRepo.getAllUserAvgActivityItem(chosenDate, 'flightsOfStairs');
+  let allStairs = userRepo.getAllUserAvgItem(
+    userRepo.activityData,
+    chosenDate,
+    'flightsOfStairs'
+  )
   if (currentUser.userActivity.isUserAboveAvg(singleStair, allStairs)) {
     console.log(compareStairs)
     compareStairs.innerText = `Your ${singleStair} stairs climbed is higher than the user average of ${allStairs}`;
@@ -162,7 +177,11 @@ function displayUserStepSuccess() {
     chosenDate,
     'numSteps'
   );
-  let allSteps = userRepo.getAllUserAvgActivityItem(chosenDate, 'numSteps');
+  let allSteps = userRepo.getAllUserAvgItem(
+    userRepo.activityData,
+    chosenDate,
+    "numSteps"
+  );
   if (currentUser.userActivity.isUserAboveAvg(singleStep, allSteps)) {
     compareSteps.innerText = `Your ${singleStep} step count is higher than the user average of ${allSteps}`;
   } else {
@@ -175,7 +194,10 @@ function displayUserMinutesSuccess() {
     chosenDate,
     'minutesActive'
   );
-  let allMinutes = userRepo.getAllUserAvgActivityItem(chosenDate, 'minutesActive');
+  let allMinutes = userRepo.getAllUserAvgItem(
+    userRepo.activityData,
+    chosenDate, 
+    "minutesActive");
   if (currentUser.userActivity.isUserAboveAvg(singleMinute, allMinutes)) {
     compareMinutes.innerText = `Your active minute count of ${singleMinute} is higher than the user average of ${allMinutes}`;
   } else { 
@@ -218,6 +240,7 @@ function toggleElement(element) {
   element.classList.toggle('hidden')
 }
 
+// clear everything
 function clearDisplay(element) {
   element.classList.add('hidden');
 }

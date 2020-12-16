@@ -7,18 +7,18 @@ class HydrationRepo {
   }
 
   filterUserData(userId) {
-    this.userData = this.data.filter(oneDataPiece => oneDataPiece.id === userId);    
+    this.userData = this.data.filter(oneDataPiece => oneDataPiece.id === userId);
   }
 
-  calculateAvgOzOverTime(userId) {    
+  calculateAvgOzOverTime(userId) {
     this.filterUserData(userId);
     const totalHydration = this.userData.reduce((total, oneDaysData) => oneDaysData.numOunces + total, 0);
     return Math.round(totalHydration / this.userData.length);
   }
 
-  returnWaterConsumed(userId, date) {        
+  returnWaterConsumed(userId, date) {
     this.filterUserData(userId);
-    const end = this.userData.findIndex(element => element.date === date);    
+    const end = this.userData.findIndex(element => element.date === date);
     const waterConsumed = [];
     for (let i = end - 7; i < end; i++) {
       waterConsumed.push(this.userData[i].numOunces);

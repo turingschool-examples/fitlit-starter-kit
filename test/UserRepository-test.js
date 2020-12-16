@@ -26,6 +26,8 @@ describe('UserRepo', () => {
 
   it('should hold all User objects', () => {
     expect(userRepo.users[0]).to.deep.equal(users[0]);
+    expect(userRepo.users[1]).to.deep.equal(users[1]);
+    expect(userRepo.users[2]).to.deep.equal(users[2]);
   })
 
   it('should return a users data given their user ID', () => {

@@ -11,29 +11,29 @@ class ActivityRepo {
     return this.allActivity.filter(activity => activity.date === date);
   }
 
-  filterByIdAndDate(user, date) {
+  getActivityByIdAndDate(user, date) {
     const allUserActivity = this.getActivitiesById(user.id);
     return allUserActivity.find(activity => activity.date === date);
   }
 
   getMilesWalked(user, date) {
-    const activityByDate = this.filterByIdAndDate(user, date);
+    const activityByDate = this.getActivityByIdAndDate(user, date);
     const distance = user.strideLength * activityByDate.numSteps;
     return Number((distance / 5280).toFixed(1));
   }
 
   getStepsTaken(user, date) {
-    const activityByDate = this.filterByIdAndDate(user, date);
+    const activityByDate = this.getActivityByIdAndDate(user, date);
     return activityByDate.numSteps.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   getMinsActive(user, date) {
-    const activityByDate = this.filterByIdAndDate(user, date);
+    const activityByDate = this.getActivityByIdAndDate(user, date);
     return activityByDate.minutesActive;
   }
 
   getStairs(user, date) {
-    const activityByDate = this.filterByIdAndDate(user, date);
+    const activityByDate = this.getActivityByIdAndDate(user, date);
     return activityByDate.flightsOfStairs;
   }
 
@@ -48,7 +48,7 @@ class ActivityRepo {
     const week = this.getActivityDataByWeek(id, date);
     const totalMins = week.reduce((total, activity) => {
       return total + activity.minutesActive;
-    }, 0)
+    }, 0);
     return Math.round((totalMins / 7));
   }
 
@@ -62,7 +62,7 @@ class ActivityRepo {
       return `Congrats! You reached your step goal for today.`;
     } else {
       return `Only ${difference} steps left for you to reach your daily step goal.`;
-    };
+    }
   }
 
   findDatesExceededStepGoal(user) {
@@ -111,7 +111,8 @@ class ActivityRepo {
     const totalSteps = activitiesOnDate.reduce((total, activity) => {
       return total + activity.numSteps;
     }, 0)
-    return Math.round(totalSteps / activitiesOnDate.length);
+    const allUserAvgSteps = Math.round(totalSteps / activitiesOnDate.length);
+    return allUserAvgSteps.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   getAllUsersAvgMinsByDate(date) {

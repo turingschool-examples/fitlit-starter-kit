@@ -31,6 +31,8 @@ describe('ActivityRepository', () => {
 
   it('should hold all Activity objects', () => {
     expect(activityRepo.allActivity[0]).to.deep.equal(allActivity[0]);
+    expect(activityRepo.allActivity[1]).to.deep.equal(allActivity[1]);
+    expect(activityRepo.allActivity[2]).to.deep.equal(allActivity[2]);
   })
 
   it('should get a users activity data given their user ID', () => {
@@ -57,8 +59,8 @@ describe('ActivityRepository', () => {
       return allUserActivity.find(activity => activity.date === date);
     }
 
-    expect(activityRepo.filterByIdAndDate(user1, "2019/06/15")).to.deep.equal(getTestData(1, "2019/06/15"));
-    expect(activityRepo.filterByIdAndDate(user2, "2019/06/16")).to.deep.equal(getTestData(2, "2019/06/16"));
+    expect(activityRepo.getActivityByIdAndDate(user1, "2019/06/15")).to.deep.equal(getTestData(1, "2019/06/15"));
+    expect(activityRepo.getActivityByIdAndDate(user2, "2019/06/16")).to.deep.equal(getTestData(2, "2019/06/16"));
   })
 
   it('should get a users miles walked on a given date', () => {
@@ -66,14 +68,14 @@ describe('ActivityRepository', () => {
     expect(activityRepo.getMilesWalked(user2, "2019/06/16")).to.equal(1.1);
   })
 
-  it('should get a users minutes active on a given date', () => {
-    expect(activityRepo.getMinsActive(user1, "2019/06/15")).to.equal(140);
-    expect(activityRepo.getMinsActive(user2, "2019/06/16")).to.equal(112);
-  })
-
   it('should get a users steps taken on a given date', () => {
     expect(activityRepo.getStepsTaken(user1, "2019/06/15")).to.equal('3,577');
     expect(activityRepo.getStepsTaken(user2, "2019/06/16")).to.equal('4,887');
+  })
+
+  it('should get a users minutes active on a given date', () => {
+    expect(activityRepo.getMinsActive(user1, "2019/06/15")).to.equal(140);
+    expect(activityRepo.getMinsActive(user2, "2019/06/16")).to.equal(112);
   })
 
   it('should get a users flights of stairs on a given date', () => {
@@ -185,6 +187,38 @@ describe('ActivityRepository', () => {
     ]);
   })
 
+  it('should get average daily active minutes over a week', () => {
+    expect(activityRepo.getAvgMinsActiveByWeek(1, "2019/06/21")).to.equal(159);
+    expect(activityRepo.getAvgMinsActiveByWeek(2, "2019/06/22")).to.equal(153);
+  })
+
+  it('should say if a user met their step goal on date', () => {
+    expect(activityRepo.getStepGoalAchieved(user1, "2019/06/15")).to.equal('Congrats! You reached your step goal for today.');
+    expect(activityRepo.getStepGoalAchieved(user2, "2019/06/16")).to.equal('Only 10,113 steps left for you to reach your daily step goal.');
+  })
+
+  it('should get all days where step goal was exceeded', () => {
+    expect(activityRepo.findDatesExceededStepGoal(user1)).to.deep.equal([
+      "2019/06/15",
+      "2019/06/16",
+      "2019/06/17",
+      "2019/06/18",
+      "2019/06/19",
+      "2019/06/20",
+      "2019/06/21",
+      "2019/06/22"
+    ]);
+    expect(activityRepo.findDatesExceededStepGoal(user2)).to.deep.equal([
+      "2019/06/19",
+      "2019/06/22"
+    ]);
+  })
+
+  it('should get user record for flights of stairs climbed', () => {
+    expect(activityRepo.findFlightsOfStairsRecord(1)).to.equal(33);
+    expect(activityRepo.findFlightsOfStairsRecord(2)).to.equal(40);
+  })
+
   it('should get a users daily steps taken for a given week', () => {
     expect(activityRepo.getStepsTakenByWeek(1, "2019/06/21")).to.deep.equal({
       "2019/06/15": 3577,
@@ -218,51 +252,19 @@ describe('ActivityRepository', () => {
       "2019/06/21": 5});
   })
 
-  it('should get average daily active minutes over a week', () => {
-    expect(activityRepo.getAvgMinsActiveByWeek(1, "2019/06/21")).to.equal(159);
-    expect(activityRepo.getAvgMinsActiveByWeek(2, "2019/06/22")).to.equal(153);
-  })
-
-  it('should say if a user met their step goal on date', () => {
-    expect(activityRepo.getStepGoalAchieved(user1, "2019/06/15")).to.equal('Congrats! You reached your step goal for today.');
-    expect(activityRepo.getStepGoalAchieved(user2, "2019/06/16")).to.equal('Only 10,113 steps left for you to reach your daily step goal.');
-  })
-
-  it('should get all days where step goal was exceeded', () => {
-    expect(activityRepo.findDatesExceededStepGoal(user1)).to.deep.equal([
-      "2019/06/15",
-      "2019/06/16",
-      "2019/06/17",
-      "2019/06/18",
-      "2019/06/19",
-      "2019/06/20",
-      "2019/06/21",
-      "2019/06/22"
-    ]);
-    expect(activityRepo.findDatesExceededStepGoal(user2)).to.deep.equal([
-      "2019/06/19",
-      "2019/06/22"
-    ]);
-  })
-
-  it('should get user record for flights of stairs climbed', () => {
-    expect(activityRepo.findFlightsOfStairsRecord(1)).to.equal(33);
-    expect(activityRepo.findFlightsOfStairsRecord(2)).to.equal(40);
-  })
-
   it('should get all user avg steps for a given date', () => {
-    expect(activityRepo.getAllUsersAvgStepsByDate("2019/06/15")).to.deep.equal(4082);
-    expect(activityRepo.getAllUsersAvgStepsByDate("2019/06/16")).to.deep.equal(4591);
+    expect(activityRepo.getAllUsersAvgStepsByDate("2019/06/15")).to.equal('4,082');
+    expect(activityRepo.getAllUsersAvgStepsByDate("2019/06/16")).to.equal('4,591');
   })
 
   it('should get all user avg mins for a given date', () => {
-    expect(activityRepo.getAllUsersAvgMinsByDate("2019/06/15")).to.deep.equal(152);
-    expect(activityRepo.getAllUsersAvgMinsByDate("2019/06/16")).to.deep.equal(125);
+    expect(activityRepo.getAllUsersAvgMinsByDate("2019/06/15")).to.equal(152);
+    expect(activityRepo.getAllUsersAvgMinsByDate("2019/06/16")).to.equal(125);
   })
 
   it('should get all user avg stairs for a given date', () => {
-    expect(activityRepo.getAllUsersAvgStairsByDate("2019/06/15")).to.deep.equal(17);
-    expect(activityRepo.getAllUsersAvgStairsByDate("2019/06/16")).to.deep.equal(15);
+    expect(activityRepo.getAllUsersAvgStairsByDate("2019/06/15")).to.equal(17);
+    expect(activityRepo.getAllUsersAvgStairsByDate("2019/06/16")).to.equal(15);
   })
 
 })

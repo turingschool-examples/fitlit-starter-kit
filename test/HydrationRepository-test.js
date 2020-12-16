@@ -26,6 +26,8 @@ describe('HydrationRepo', () => {
 
   it('should hold all Hydration objects', () => {
     expect(hydrationRepo.allHydration[0]).to.deep.equal(allHydration[0]);
+    expect(hydrationRepo.allHydration[1]).to.deep.equal(allHydration[1]);
+    expect(hydrationRepo.allHydration[2]).to.deep.equal(allHydration[2]);
   })
 
   it('should return a users hydration data given their user ID', () => {
@@ -37,13 +39,13 @@ describe('HydrationRepo', () => {
   })
 
   it('should return a users avg oz consumed per day for all time', () => {
-    expect(hydrationRepo.getUserAvgDailyOzAllTime(1)).to.deep.equal(67);
-    expect(hydrationRepo.getUserAvgDailyOzAllTime(2)).to.deep.equal(49);
+    expect(hydrationRepo.getUserAvgDailyOzAllTime(1)).to.equal(67);
+    expect(hydrationRepo.getUserAvgDailyOzAllTime(2)).to.equal(49);
   })
 
   it('should return a users oz consumed for a specific day', () => {
-    expect(hydrationRepo.getUserOzByDate(1, "2019/06/18")).to.deep.equal(85);
-    expect(hydrationRepo.getUserOzByDate(2, "2019/06/16")).to.deep.equal(22);
+    expect(hydrationRepo.getUserOzByDate(1, "2019/06/18")).to.equal(85);
+    expect(hydrationRepo.getUserOzByDate(2, "2019/06/16")).to.equal(22);
   })
 
   it('should get a users oz drank for a given week', () => {

@@ -81,14 +81,14 @@ h2.welcome {
 
 .icon-box {
   width: auto;
-  height: 20%;
+  height: 12%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .icon {
-  width: 50%;
+  width: 40%;
 }
 
 canvas {
@@ -118,6 +118,11 @@ canvas {
   .user-stats {
     flex-direction: row;
   }
+  .user.widget {
+    padding-left: 10%;
+    padding-right: 10%;
+    margin: 2%;
+  }
   .info {
     flex-direction: column;
     align-items: center;
@@ -127,10 +132,16 @@ canvas {
     margin: 5%;
     font-size: large;
   }
+  .line-break {
+    margin-bottom: 8%;
+  }
   .health-categories {
     display: grid;
     grid-template-columns: repeat(2, minmax(150px, 1fr));
     height: 100vh;
+  }
+  canvas {
+    padding-bottom: 0;
   }
 }
 

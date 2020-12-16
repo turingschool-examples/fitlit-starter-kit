@@ -40,7 +40,7 @@ let currentUser;
 // ~~~~~ FUNCTIONS ~~~~~
 function start() {
   getRandomUser();
-  displayUserInfoCard(currentUser);
+  displayUserInfoCard(currentUser, "2019/09/22");
   displayHydrationInfo(currentUser, "2019/09/22");
   displaySleepInfo(currentUser, "2019/09/22");
   displayActivityInfo(currentUser, "2019/09/22");
@@ -50,10 +50,13 @@ function getRandomUser() {
   currentUser = users[Math.floor(Math.random() * users.length)];
 }
 
-function displayUserInfoCard(user) {
+function displayUserInfoCard(user, date) {
   userInfoCard.innerHTML = `
     <section class="user-info-card">
-      <h2 class="welcome">Hello,<br>${user.getFirstName()}.</h2>
+      <section class="welcome">
+        <h2 class="welcome">Hello,<br>${user.getFirstName()}.</h2>
+        <h3>${activityRepo.getStepGoalAchieved(user, date)}</h3>
+      </section>
       <section class="user-stats">
         <section class="user widget">
           <p class="number">${user.strideLength} ft</p>

@@ -57,7 +57,12 @@ class ActivityRepo {
     const activitiesByDate = userActivities.find(activity => {
       return activity.date === date;
     });
-    return (user.dailyStepGoal <= activitiesByDate.numSteps);
+    const difference = (user.dailyStepGoal - activitiesByDate.numSteps).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    if (user.dailyStepGoal <= activitiesByDate.numSteps) {
+      return `Congrats! You reached your step goal for today.`;
+    } else {
+      return `Only ${difference} steps left for you to reach your daily step goal.`;
+    };
   }
 
   findDatesExceededStepGoal(user) {

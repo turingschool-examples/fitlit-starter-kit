@@ -224,8 +224,8 @@ describe('ActivityRepository', () => {
   })
 
   it('should say if a user met their step goal on date', () => {
-    expect(activityRepo.getStepGoalAchieved(user1, "2019/06/15")).to.equal(true);
-    expect(activityRepo.getStepGoalAchieved(user2, "2019/06/16")).to.equal(false);
+    expect(activityRepo.getStepGoalAchieved(user1, "2019/06/15")).to.equal('Congrats! You reached your step goal for today.');
+    expect(activityRepo.getStepGoalAchieved(user2, "2019/06/16")).to.equal('Only 10,113 steps left for you to reach your daily step goal.');
   })
 
   it('should get all days where step goal was exceeded', () => {

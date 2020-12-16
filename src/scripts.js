@@ -20,7 +20,8 @@ const stepCanvas = document.getElementById('stepChart').getContext('2d')
 const waterCanvas = document.getElementById('waterChart').getContext('2d')
 const stairsCanvas = document.getElementById('waterChart').getContext('2d')
 const activeMinutesCanvas = document.getElementById('waterChart').getContext('2d')
-const friendsCanvas = document.getElementById('waterChart').getContext('2d')
+const sleepCanvas = document.getElementById('sleepChart').getContext('2d')
+const friendCanvas = document.getElementById('waterChart').getContext('2d')
 
 //since multiple methods will need these, global
 let community = new UserRepository(userData);
@@ -36,8 +37,8 @@ let endDate = '2019/09/22'
 
 window.addEventListener('load', loadPage);
 todayDateSelector.addEventListener("change", function() {today = this.value.split('-').join('/')});
-startDateSelector.addEventListener("change", function() {startDate = this.value});
-endDateSelector.addEventListener("change", function() {endDate = this.value});
+startDateSelector.addEventListener("change", function() {startDate = this.value.split('-').join('/')});
+endDateSelector.addEventListener("change", function() {endDate = this.value.split('-').join('/')});
 
 
 //GRAPH:
@@ -253,7 +254,7 @@ const showMinutesActiveStatsWeek = (startDate, endDate) => {
 const showActivitiesChartWhateverWeek = (startDate, endDate) => {
   let weekActivities = communityActivity.findWeekActivities(startDate, endDate, user)
 
-  chartIt(stairsCanvas, getData(weekActivities, 'stairsClimbed'), getData(weekActivities, 'minutesActive'))
+  // chartIt(stairsCanvas, getData(weekActivities, 'stairsClimbed'), getData(weekActivities, 'minutesActive'))
 }
 
 const showActivityStats = () => {
@@ -267,9 +268,9 @@ const showActivityStats = () => {
   showUserActiveMinutesWeekAverage()
   showCommunityStairsToday()
   showUserStairRecord()
-  showStepStatsWeek("2019/09/16", "2019/09/22")
-  showMinutesActiveStatsWeek("2019/09/16", "2019/09/22")
-  showActivitiesChartWhateverWeek("2019/09/16", "2019/09/22")
+  // showStepStatsWeek("2019/09/16", "2019/09/22")
+  // showMinutesActiveStatsWeek("2019/09/16", "2019/09/22")
+  // showActivitiesChartWhateverWeek("2019/09/16", "2019/09/22")
 }
 
 
@@ -290,6 +291,187 @@ const showFriends = () => {
 }
 
 
+
+//All Hard-coded Charts
+
+const chartsDisplay = () => {
+//grab data
+let weekActivities = communityActivity.findWeekActivities(startDate, endDate, user)
+const weekDates = weekActivities.map(object => object.date)
+const makeYs = (number) => new Array(weekActivities.length).fill(number)
+//STEPS
+  const stepChart = new Chart(stepCanvas, {
+    type: 'line',
+    data: {
+      labels: weekDates,
+      datasets: [{
+        label: `Your Steps`,
+        data: weekActivities.map(object => object.numSteps),
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }, 
+      {
+        label: `Your Step Goal`,
+        data: makeYs(user.dailyStepGoal),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      },
+      {
+        label: `Community Average Step Goal`,
+        data: makeYs(community.findAverageStepGoal()),
+        backgroundColor: 'rgba(255, 10, 235, 0.2)',
+        borderColor: 'rgba(255, 10, 235, 1)',
+        borderWidth: 1
+      },
+      {
+        label: `Community Average Steps`,
+        data: makeYs(communityActivity.findCommunityAverage(today, 'numSteps')),
+        backgroundColor: 'rgba(0, 162, 235, 0.2)',
+        borderColor: 'rgba(0, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    }
+  });
+  //STAIRS
+  const stairsChart = new Chart(stairsCanvas, {
+    type: 'line',
+    data: {
+      labels: weekDates,
+      datasets: [{
+        label: 'Your Stairs Climbed',
+        data: weekActivities.map(object => object.stairsClimbed),
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }, 
+      {
+        label: 'Your Record Stairs Climbed',
+        data: makeYs(communityActivity.findRecordStairs(user)),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      },
+      {
+        label: 'Community Average Stairs Climbed',
+        data: makeYs(communityActivity.findRecordStairs(user)),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    }
+  });
+  //ACTIVE MINUTES
+  const activeMinutesChart = new Chart(activeMinutesCanvas, {
+    type: 'line',
+    data: {
+      labels: weekDates,
+      datasets: [{
+        label: 'Your Active Minutes',
+        data: weekActivities.map(object => object.minutesActive),
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }, 
+      {
+        label: 'Community Average Active Minutes',
+        data: makeYs(communityActivity.findCommunityAverage(today, 'minutesActive')),
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    }
+  });
+  //WATER
+  const waterChart = new Chart(waterCanvas, {
+    type: 'line',
+    data: {
+      labels: weekDates,
+      datasets: {
+        label: 'Your Total Ounces Consumed',
+        data: makeYs(communityActivity.findRecordStairs(user)),
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }, 
+    }
+  });
+  //SLEEP
+  const sleepChart = new Chart(sleepCanvas, {
+    type: 'line',
+    data: {
+      labels: weekDates,
+      datasets: [{
+        label: `Your Hours Slept`,
+        data: makeYs(communityActivity.findRecordStairs(user)),
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }, 
+      {
+        label: `Your Sleep Quality`,
+        data: makeYs(communityActivity.findRecordStairs(user)),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      },
+      {
+        label: `Your All-Time Average Sleep Quality`,
+        data: makeYs(communityActivity.findRecordStairs(user)),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    }
+  });
+  //FRIENDS
+  const findFriendSteps = (friend) => {
+    friendData = community.getUserData(friend)
+    friendWeek = communityActivity.findWeekActivities(startDate, endDate, friendData)
+    return friendWeek.map(object => object.numSteps)
+  }
+
+  const getFriendName = (friend) => {
+    return community.getUserData(friend).getFirstName()
+  }
+  const friendChart = new Chart(friendCanvas, {
+    type: 'line',
+    data: {
+      labels: weekDates,
+      datasets: [{
+        label: `Your Steps`,
+        data: weekActivities.map(object => object.numSteps),
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }, 
+      {
+        label: `${getFriendName(user.friends[0])}'s Steps`,
+        data: findFriendSteps(user.friends[0]),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }, 
+      {
+        label: `${getFriendName(user.friends[1])}'s Steps`,
+        data: findFriendSteps(user.friends[1]),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }, 
+      {
+        label: `${getFriendName(user.friends[2])}'s Steps`,
+        data: findFriendSteps(user.friends[2]),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    }
+});
+}
+
+
+
 //we can add other calls to this onload function
 function loadPage() {
   greetUser()
@@ -300,4 +482,5 @@ function loadPage() {
   // showWaterChartWhateverWeek("2019/09/16", "2019/09/22")
   showFriends()
   showActivityStats()
+  chartsDisplay()
 }

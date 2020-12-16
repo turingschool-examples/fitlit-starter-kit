@@ -98,5 +98,17 @@ class CommunitySleep {
     })
     return bestSleepers;
   }
+  findMostHrsSleepers(date) {
+    const sleepers = [];
+    const sleepHours = [];
+    this.sleeps.forEach(sleeper => {
+      sleepHours.push(this.findHrsSleptOnDay(sleeper.userID, date))
+      const longestSleep = Math.max(...sleepHours);
+      if(longestSleep === sleeper.hoursSlept && date === sleeper.date) {
+        sleepers.push(sleeper.userID);
+      }
+    })
+    return sleepers;
+  }
 }
 module.exports = CommunitySleep;

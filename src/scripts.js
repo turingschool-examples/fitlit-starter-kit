@@ -72,15 +72,16 @@ const showHydrationStats = () => {
 
 //ADD WEEKLY HYDRATION STATS:
 const showHydrationStatsWeek = (startDate, endDate) => {
+  console.log(communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate))
   graphTitle.insertAdjacentHTML('afterend',
     `<article class="water-stats-week">Water consumed over the week of ${startDate}-${endDate}:
-      <p>Day 1: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[0]} OZ</p>
-      <p>Day 2: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[1]} OZ</p>
-      <p>Day 3: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[2]} OZ</p>
-      <p>Day 4: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[3]} OZ</p>
-      <p>Day 5: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[4]} OZ</p>
-      <p>Day 6: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[5]} OZ</p>
-      <p>Day 7: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[6]} OZ</p>
+      <p>Day 1: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[0].numOunces} OZ</p>
+      <p>Day 2: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[1].numOunces} OZ</p>
+      <p>Day 3: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[2].numOunces} OZ</p>
+      <p>Day 4: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[3].numOunces} OZ</p>
+      <p>Day 5: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[4].numOunces} OZ</p>
+      <p>Day 6: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[5].numOunces} OZ</p>
+      <p>Day 7: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[6].numOunces} OZ</p>
     </article>
     `)
 }
@@ -135,7 +136,7 @@ const showStepStatsWeek = (startDate, endDate) => {
   let activitiesDisplay = weekActivities.reduce((display, activity) => {
     display += `<p>${activity.date}: ${activity.numSteps} steps</p>`
     return display
-  }, '') 
+  }, '')
 
   graphTitle.insertAdjacentHTML('afterend',
     `<article class="steps-stats-week">Steps taken over the week of ${startDate}-${endDate}:` + activitiesDisplay + '</article>')
@@ -147,7 +148,7 @@ const showMinutesActiveStatsWeek = (startDate, endDate) => {
   let activitiesDisplay = weekActivities.reduce((display, activity) => {
     display += `<p>${activity.date}: ${activity.minutesActive} minutes active</p>`
     return display
-  }, '') 
+  }, '')
 
   graphTitle.insertAdjacentHTML('afterend',
     `<article class="minutes-active-stats-week">Minutes Active over the week of ${startDate}-${endDate}:` + activitiesDisplay + '</article>')
@@ -159,7 +160,7 @@ const showStairsStatsWeek = (startDate, endDate) => {
   let activitiesDisplay = weekActivities.reduce((display, activity) => {
     display += `<p>${activity.date}: ${activity.stairsClimbed} stairs climbed</p>`
     return display
-  }, '') 
+  }, '')
 
   graphTitle.insertAdjacentHTML('afterend',
     `<article class="stairs-stats-week">Stairs Climbed over the week of ${startDate}-${endDate}:` + activitiesDisplay + '</article>')

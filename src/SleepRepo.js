@@ -5,8 +5,8 @@ class SleepRepo {
     this.data = data.map(userData => new Sleep(userData));
   }
 
-  returnAvgData(userID, propertyName) {
-    const filteredData = this.data.filter(data => data.id === userID);
+  returnAvgData(id, propertyName) {
+    const filteredData = this.data.filter(data => data.id === id);
     const total = filteredData.reduce((total, data) => {
       return total + data[propertyName];
     }, 0);
@@ -15,36 +15,29 @@ class SleepRepo {
     return average;
   }
 
-  returnAverageHoursSleptPerDay(userID) {    
-    return this.returnAvgData(userID, 'hoursSlept');
+  returnAverageHoursSleptPerDay(id) {    
+    return this.returnAvgData(id, 'hoursSlept');
   }
 
-  returnOverallAverageSleepQuality(userID) {    
-    return this.returnAvgData(userID, 'sleepQuality');
+  returnOverallAverageSleepQuality(id) {    
+    return this.returnAvgData(id, 'sleepQuality');
   }
 
-  returnWeekOfDailyHoursSlept(id, date) {
+  returnWeeklyData(id, date, propertyName) {
     const currentUserData = this.data.filter(userData => userData.id === id);
-    const weekOfDailySleepData = [];
-    const endOfWeek = currentUserData.find(userData => userData.date === date);
-    const indexOfEndDate = currentUserData.indexOf(endOfWeek);
-    for (let i = indexOfEndDate; i >= indexOfEndDate - 6; i--) {
-      weekOfDailySleepData.push(currentUserData[i].hoursSlept);
-    }
-
-    return weekOfDailySleepData;
+    const indexOfEndDate = currentUserData.findIndex(userData => userData.date === date);
+    const weekData = currentUserData.slice(0, indexOfEndDate + 1);
+    const weekOfDailyDataNeeded = [];
+    weekData.forEach(userData => weekOfDailyDataNeeded.push(userData[propertyName]));
+    return weekOfDailyDataNeeded;
   }
 
-  returnWeekOfDailySleepQuality(id, date) {
-    const currentUserData = this.data.filter(userData => userData.id === id);
-    const weekOfDailySleepQualityData = [];
-    const endOfWeek = currentUserData.find(userData => userData.date === date);
-    const indexOfEndDate = currentUserData.indexOf(endOfWeek);
-    for (let i = indexOfEndDate; i >= indexOfEndDate - 6; i--) {
-      weekOfDailySleepQualityData.push(currentUserData[i].sleepQuality);
-    }
+  returnWeekOfDailyHoursSlept(id, date) {  
+    return this.returnWeeklyData(id, date, 'hoursSlept');
+  }
 
-    return weekOfDailySleepQualityData;
+  returnWeekOfDailySleepQuality(id, date) {    
+    return this.returnWeeklyData(id, date, 'sleepQuality');
   }
 
   returnAverageSleepQualityForAllUsers() {

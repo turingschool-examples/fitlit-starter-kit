@@ -201,12 +201,12 @@ describe('SleepRepo', () => {
       expect(sleepRepo.returnOverallAverageSleepQuality(1)).to.deep.equal(2.5);
     });
 
-    it('should be able to return hours slept each day over the course of a week given a user and end date', () => {
-      expect(sleepRepo.returnWeekOfDailyHoursSlept(1, "2019/06/21")).to.deep.equal([7.4, 7.1, 6.8, 6.6, 6.4, 6.2, 6]);
+    it('should be able to return hours slept each day over the course of a week given a user and end date', () => {      
+      expect(sleepRepo.returnWeekOfDailyHoursSlept(1, "2019/06/21")).to.deep.equal([6, 6.2, 6.4, 6.6, 6.8, 7.1, 7.4]);
     });
 
     it('should be able to return sleep quality for each day over the course of a week given a user and end date', () => {
-      expect(sleepRepo.returnWeekOfDailySleepQuality(1, "2019/06/21")).to.deep.equal([3.2, 2.9, 2.6, 2.5, 2.3, 2.2, 2]);
+      expect(sleepRepo.returnWeekOfDailySleepQuality(1, "2019/06/21")).to.deep.equal([2, 2.2, 2.3, 2.5, 2.6, 2.9, 3.2]);
     });
 
     it('should be able to return all users with average sleep quality 3 or greater for a week when given an end date', () => {

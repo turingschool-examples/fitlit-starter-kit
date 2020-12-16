@@ -17,9 +17,9 @@ describe('ActivityRepo', () => {
         "strideLength": 2.4,
         "dailyStepGoal": 10000,
         "friends": [
-          2,
-          3,
-          4
+          22,
+          33,
+          44
         ]
       },
       {
@@ -30,8 +30,8 @@ describe('ActivityRepo', () => {
         "strideLength": 2.3,
         "dailyStepGoal": 5,
         "friends": [
-          1,
-          3
+          11,
+          33
         ]
       },
       {
@@ -42,8 +42,8 @@ describe('ActivityRepo', () => {
         "strideLength": 2.6,
         "dailyStepGoal": 10000,
         "friends": [
-          1,
-          4
+          11,
+          44
         ]
       },
       {
@@ -54,8 +54,8 @@ describe('ActivityRepo', () => {
         "strideLength": 2.1,
         "dailyStepGoal": 10000,
         "friends": [
-          1,
-          3
+          11,
+          33
         ]
       }
     ]
@@ -317,16 +317,20 @@ describe('ActivityRepo', () => {
       }      
     ];
 
-    activityRepo = new ActivityRepo(dataset);
+    activityRepo = new ActivityRepo(dataset, userDataset);
   });
 
-  it.skip('should return the miles walked by a user based on steps', () => {    
-    const miles = activityRepo.calculateMiles(3, '2019/09/21');
+  it('should return the miles walked by a user based on steps', () => {    
+    const miles1 = activityRepo.calculateMiles(33, '2019/09/21');
 
-    expect(miles).to.equal(4.36);
+    expect(miles1).to.equal(2);
+
+    const miles2 = activityRepo.calculateMiles(11, '2019/09/22');
+
+    expect(miles2).to.equal(4.23);    
   });
 
-  it.skip('should return avg minutes active for a given week', () => {
+  it('should return avg minutes active for a given week', () => {
     const endDate = '09/21/2019';
     const avgMinutes = activityRepo.calculateMinutesActive(33, endDate);
 

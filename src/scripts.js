@@ -95,7 +95,6 @@ const showSleepStatsWeek = (startDate, endDate) => {
   `)
 }
 
-
 //ADD TODAY's HYDRATION STATS:
 const showHydrationStats = () => {
   water.insertAdjacentHTML('beforeend',
@@ -248,15 +247,14 @@ const showFriends = () => {
   friends.innerHTML += friendDisplay.join(' ')
 }
 
-  const findFriendSteps = (friend) => {
-    friendData = community.getUserData(friend)
-    friendWeek = communityActivity.findWeekActivities(startDate, endDate, friendData)
-    return friendWeek.map(object => object.numSteps)
-  }
-
-  const getFriendName = (friend) => {
-    return community.getUserData(friend).getFirstName()
-  }
+const findFriendSteps = (friend) => {
+  friendData = community.getUserData(friend)
+  friendWeek = communityActivity.findWeekActivities(startDate, endDate, friendData)
+  return friendWeek.map(object => object.numSteps)
+}
+const getFriendName = (friend) => {
+  return community.getUserData(friend).getFirstName()
+}
 
 
 //we can add other calls to this onload function
@@ -265,7 +263,7 @@ function loadPage() {
   showProfile()
   showStepGoalComparison()
   showHydrationStats()
-  showHydrationStatsWeek("2019/09/16", "2019/09/22")
+  showHydrationStatsWeek(startDate, endDate)
   showFriends()
   showActivityStats()
   showSleepStats()

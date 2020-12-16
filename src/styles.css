@@ -70,6 +70,10 @@ h2.welcome {
   padding-right: 15%;
 }
 
+.info {
+  margin-left: 5%;
+}
+
 /* HEALTH CATEGORIES OVERALL */
 .health-categories {
     display: grid;
@@ -127,6 +131,7 @@ canvas {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-left: 0;
   }
   .infosection {
     margin: 5%;
@@ -140,9 +145,6 @@ canvas {
     grid-template-columns: repeat(2, minmax(150px, 1fr));
     height: 100vh;
   }
-  canvas {
-    padding-bottom: 0;
-  }
 }
 
 @media screen and (max-width: 580px) {
@@ -152,6 +154,7 @@ canvas {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-left: 0;
   }
   .widget {
     margin: 3% 0;
@@ -167,9 +170,5 @@ canvas {
   .icon {
     width: 25%;
     margin-top: 3%;
-  }
-  .hydration-week-chart,
-  .sleep-week-chart {
-    margin-bottom: 20%;
   }
 }

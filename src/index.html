@@ -18,20 +18,19 @@
     <button type="submit" class="admin-selector">View Data</button>
   </form>
   <main>
-  <section class="admin-area">
+  <section>
     <header>
       <h1 class="user-first-name">User Name</h1>
       <div class="user-info-text">
         <p class="user-info user-address">Address</p>
         <p class="user-info user-email">Email</p>
         <p class="user-info user-step-compare">Steps</p>
-        <!-- <p class="user-info date">Date</p> -->
       </div>
     </header>
-      <span>
+      <!-- <span>
         <p class="admin-text">Admin</p>
         <img src="../assets/admin.svg" class="admin-icon">
-      </span>
+      </span> -->
     </section>
     <section class="daily-stats">
       <h2>View Daily Stats</h2>
@@ -63,7 +62,7 @@
     <section class="user-stats">
       <!-- <h2>My Activity</h2> -->
       <article class="display-stats">
-        <div class="activity-stats">
+        <div class="activity-stats reset">
           <h2>Today's Activity</h2>
           <p class="today-activity"></p>
           <div class="avg-activity-stats"></div>          
@@ -91,7 +90,7 @@
             </tr>
           </table>
         </div>
-        <div class="sleep-stats hidden">
+        <div class="sleep-stats reset hidden">
           <h2>Today's Sleep</h2>
           <p class="today-sleep"></p>
           <div class="avg-sleep-stats">
@@ -117,7 +116,7 @@
             </tr>
             </table>
         </div>
-        <div class="hydration-stats hidden">
+        <div class="hydration-stats reset hidden">
           <h2>Today's Water Consumption</h2>
           <p class="today-consumption"></p>
           <table class="water-data table">
@@ -153,7 +152,7 @@
   <script type="text/javascript" src="./userActivity.js"></script>
   <script type="text/javascript" src="./userHydration.js"></script>
   <script type="text/javascript" src="./userSleep.js"></script>
-  <script type="text/javascript" src="./moment.js"></script>
+  <!-- <script type="text/javascript" src="./moment.js"></script> -->
   <script type="text/javascript" src="./scripts.js"></script>
 </body>
 

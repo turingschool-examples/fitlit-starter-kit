@@ -1,11 +1,10 @@
 /* eslint-disable max-len */
 'use strict'
-const UserSleep = require("./userSleep");
-const UserHydration = require("./userHydration");
-const User = require("./user");
+// const UserSleep = require("./userSleep");
+// const UserHydration = require("./userHydration");
+// const User = require("./user");
 
 class UserRepo {
-  // all users, all data, all the time
   constructor(userData, sleepData, hydrationData, activityData) {
     this.users = userData;
     this.sleepData = sleepData;
@@ -86,7 +85,6 @@ class UserRepo {
   }
 
   findLongSleepers(date) {
-    // call these in separate methods? filter and sort could be reused
     let todaysSleep = this.sleepData.filter((item) => item.date === date);
     let bestSleeper = todaysSleep.sort((a, b) => b.hoursSlept - a.hoursSlept);
     return todaysSleep.reduce((total, value) => {
@@ -100,6 +98,7 @@ class UserRepo {
     }, []);
   }
 }
+
 if (typeof module !== 'undefined') {
   module.exports = UserRepo;
 }

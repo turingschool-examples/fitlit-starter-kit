@@ -31,6 +31,8 @@ describe('ActivityRepository', () => {
 
   it('should hold all Activity objects', () => {
     expect(activityRepo.allActivity[0]).to.deep.equal(allActivity[0]);
+    expect(activityRepo.allActivity[1]).to.deep.equal(allActivity[1]);
+    expect(activityRepo.allActivity[2]).to.deep.equal(allActivity[2]);
   })
 
   it('should get a users activity data given their user ID', () => {

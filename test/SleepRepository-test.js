@@ -26,6 +26,8 @@ describe('SleepRepo', () => {
 
   it('should hold all Sleep objects', () => {
     expect(sleepRepo.allSleep[0]).to.deep.equal(allSleep[0]);
+    expect(sleepRepo.allSleep[1]).to.deep.equal(allSleep[1]);
+    expect(sleepRepo.allSleep[2]).to.deep.equal(allSleep[2]);
   })
 
   it('should get a users sleep data given their user ID', () => {

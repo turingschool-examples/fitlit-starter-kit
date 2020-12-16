@@ -7,7 +7,10 @@ const friends = document.querySelector('.friends')
 const steps = document.querySelector('.steps')
 const water = document.querySelector('.water');
 const activeMinutes = document.querySelector('.active-minutes')
-const stairs = document.querySelector('.stairs')
+const stairs = document.querySelector('.stairs');
+const userLatestSleep = document.querySelector('.user-latest-sleep-stats')
+const sleepHours = document.querySelector('.sleep-hours')
+const sleepQuality = document.querySelector('.sleep-quality')
 
 const todayDateSelector = document.getElementById("today")
 const startDateSelector = document.getElementById("start")
@@ -48,8 +51,31 @@ const getData = (weekOfUserDataObjects, fitnessType)  => {
     startDate: weekOfUserDataObjects[0].date,
     endDate: weekOfUserDataObjects[weekOfUserDataObjects.length -1].date,
     xs: weekOfUserDataObjects.map(object => object.date),
-    ys: weekOfUserDataObjects.map(object => object[fitnessType]) 
+    ys: weekOfUserDataObjects.map(object => object[fitnessType])
   }
+let community = null;
+let user = null;
+let communityHydration = null;
+let hydration = null;
+let communityActivity = null;
+let activity = null;
+let communitySleep = null;
+let sleep = null;
+let today = "2019/09/22";
+let yesterday = "2019/09/21"; //added this, but is there a better way to calculate off of "today"? -C
+window.addEventListener('load', loadPage)
+
+//this could just be done on lines 5 and 6,
+//but if we want to ever load from local storage...
+const createCommunity = () => {
+  community = new UserRepository(userData)
+  user = community.users[0]
+  communityHydration = new CommunityHydration(hydrationData)
+  hydration = communityHydration.hydrations[0]
+  communityActivity = new CommunityActivity(activityData)
+  activity = communityActivity.activities[0]
+  communitySleep = new CommunitySleep(sleepData)
+  sleep = communitySleep.sleeps[0]
 }
 
 const chartIt = (whatCanvas, dataOne, dataTwo) => {
@@ -65,7 +91,7 @@ const chartIt = (whatCanvas, dataOne, dataTwo) => {
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
-      }, 
+      },
       {
         label: `Your ${data2.fitnessType.split(/(?=[A-Z])/).join(' ')} for the week of ${data2.startDate} - ${data2.endDate}`,
         data: data2.ys,
@@ -102,11 +128,44 @@ const showProfile = () => {
   `)
 }
 
-//ADD ALL-TIME SLEEP STATS:
+//ADD TODAY SLEEP STATS:
+const showLatestSleepStatsUser = () => {
+  userLatestSleep.insertAdjacentHTML('beforeend', `
+    <p class="sleep-quantity-last-night">You slept ${communitySleep.findHrsSleptOnDay(sleep.userID, yesterday)} hrs</p>
+    <p class="sleep-quality-last-night">Your sleep quality score: ${communitySleep.findSleepQualityOnDay(sleep.userID, yesterday)}</p>
+    `)
+}
 
 
 
 //DISPLAY STEPS DATA
+//loads a display of the user's step goal
+//also loads display of community step goal
+
+//ADD ALL-TIME SLEEP STATS:
+//sleep dada for latest day: hours slept and quality of sleep
+const showAllSleepQuantity = () => {
+  sleepHours.insertAdjacentHTML('afterbegin', `You average ${communitySleep.calculateAvgSleepHrsPerDay(sleep.userID)} hrs/day`)
+}
+
+const showAllSleepQuality = () => {
+  sleepQuality.insertAdjacentHTML('afterbegin', `You average a score of ${communitySleep.calculateAvgSleepQualPerDay(sleep.userID)} /day`)
+}
+//ADD WEEK SLEEP STATS:
+//hours slept and quality of sleep
+const showSleepStatsWeek = (startDate, endDate) => {
+  graphTitle.insertAdjacentHTML('afterend', `
+    <article class="sleep-stats-week">Hours slept over the week of ${startDate}-${endDate}:
+     <p>Day 1: ${communitySleep.calculateSleepStatsWeek(sleep.userID, startDate, endDate)[0].hoursSlept} HRS</p>
+     <p>Day 2: ${communitySleep.calculateSleepStatsWeek(sleep.userID, startDate, endDate)[1].hoursSlept} HRS</p>
+     <p>Day 3: ${communitySleep.calculateSleepStatsWeek(sleep.userID, startDate, endDate)[2].hoursSlept} HRS</p>
+     <p>Day 4: ${communitySleep.calculateSleepStatsWeek(sleep.userID, startDate, endDate)[3].hoursSlept} HRS</p>
+     <p>Day 5: ${communitySleep.calculateSleepStatsWeek(sleep.userID, startDate, endDate)[4].hoursSlept} HRS</p>
+     <p>Day 6: ${communitySleep.calculateSleepStatsWeek(sleep.userID, startDate, endDate)[5].hoursSlept} HRS</p>
+     <p>Day 7: ${communitySleep.calculateSleepStatsWeek(sleep.userID, startDate, endDate)[6].hoursSlept} HRS</p>
+    </article>
+  `)
+}
 
 const showStepGoalComparison = () => {
   steps.insertAdjacentHTML('beforeend',
@@ -123,7 +182,7 @@ const showStepGoalComparison = () => {
 
 const displayStepChart = () => {
   let weekActivities = communityActivity.findWeekActivities(startDate, endDate, user)
-  
+
   chartIt(stepsCanvas, getData(weekActivities, 'numSteps'))
 
   // const stepChart = new Chart(stepCanvas, {
@@ -151,6 +210,21 @@ const displayStepChart = () => {
 
 
 
+//ADD WEEKLY HYDRATION STATS:
+const showHydrationStatsWeek = (startDate, endDate) => {
+  graphTitle.insertAdjacentHTML('afterend', `
+    <article class="water-stats-week">Water consumed over the week of ${startDate}-${endDate}:
+     <p>Day 1: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[0].numOunces} OZ</p>
+     <p>Day 2: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[1].numOunces} OZ</p>
+     <p>Day 3: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[2].numOunces} OZ</p>
+     <p>Day 4: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[3].numOunces} OZ</p>
+     <p>Day 5: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[4].numOunces} OZ</p>
+     <p>Day 6: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[5].numOunces} OZ</p>
+     <p>Day 7: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[6].numOunces} OZ</p>
+    </article>
+  `)
+}
+//ADD ACTIVITY STATS:
 const showIfUserMetStepGoal = () => {
   if (activity.verifyIfStepGoal(user)) {
     steps.innerHTML = '<p>You\'ve met your Daily Step Goal!</p>'
@@ -233,7 +307,7 @@ const showStepStatsWeek = (startDate, endDate) => {
   let activitiesDisplay = weekActivities.reduce((display, activity) => {
     display += `<p>${activity.date}: ${activity.numSteps} steps</p>`
     return display
-  }, '') 
+  }, '')
 
   graphTitle.insertAdjacentHTML('afterend',
     `<article class="steps-stats-week">Steps taken over the week of ${startDate}-${endDate}:` + activitiesDisplay + '</article>')
@@ -245,7 +319,7 @@ const showMinutesActiveStatsWeek = (startDate, endDate) => {
   let activitiesDisplay = weekActivities.reduce((display, activity) => {
     display += `<p>${activity.date}: ${activity.minutesActive} minutes active</p>`
     return display
-  }, '') 
+  }, '')
 
   graphTitle.insertAdjacentHTML('afterend',
     `<article class="minutes-active-stats-week">Minutes Active over the week of ${startDate}-${endDate}:` + activitiesDisplay + '</article>')
@@ -255,6 +329,22 @@ const showActivitiesChartWhateverWeek = (startDate, endDate) => {
   let weekActivities = communityActivity.findWeekActivities(startDate, endDate, user)
 
   // chartIt(stairsCanvas, getData(weekActivities, 'stairsClimbed'), getData(weekActivities, 'minutesActive'))
+}
+
+  let activitiesDisplay = weekActivities.reduce((display, activity) => {
+    display += `<p>${activity.date}: ${activity.stairsClimbed} stairs climbed</p>`
+    return display
+  }, '')
+
+  graphTitle.insertAdjacentHTML('afterend',
+    `<article class="stairs-stats-week">Stairs Climbed over the week of ${startDate}-${endDate}:` + activitiesDisplay + '</article>')
+}
+
+const showSleepStats = () => {
+  showLatestSleepStatsUser();
+  showAllSleepQuantity();
+  showAllSleepQuality();
+  showSleepStatsWeek("2019/09/16", "2019/09/22");
 }
 
 const showActivityStats = () => {
@@ -277,6 +367,7 @@ const showActivityStats = () => {
 //ADD SLEEP STATS:
 
 
+//GRAPH:
 
 //FRIENDS:
 
@@ -310,7 +401,7 @@ const makeYs = (number) => new Array(weekActivities.length).fill(number)
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
-      }, 
+      },
       {
         label: `Your Step Goal`,
         data: makeYs(user.dailyStepGoal),
@@ -345,7 +436,7 @@ const makeYs = (number) => new Array(weekActivities.length).fill(number)
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
-      }, 
+      },
       {
         label: 'Your Record Stairs Climbed',
         data: makeYs(communityActivity.findRecordStairs(user)),
@@ -373,7 +464,7 @@ const makeYs = (number) => new Array(weekActivities.length).fill(number)
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
-      }, 
+      },
       {
         label: 'Community Average Active Minutes',
         data: makeYs(communityActivity.findCommunityAverage(today, 'minutesActive')),
@@ -393,7 +484,7 @@ const makeYs = (number) => new Array(weekActivities.length).fill(number)
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
-      }, 
+      },
     }
   });
   //SLEEP
@@ -407,7 +498,7 @@ const makeYs = (number) => new Array(weekActivities.length).fill(number)
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
-      }, 
+      },
       {
         label: `Your Sleep Quality`,
         data: makeYs(communityActivity.findRecordStairs(user)),
@@ -444,21 +535,21 @@ const makeYs = (number) => new Array(weekActivities.length).fill(number)
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
-      }, 
+      },
       {
         label: `${getFriendName(user.friends[0])}'s Steps`,
         data: findFriendSteps(user.friends[0]),
         backgroundColor: 'rgba(54, 162, 235, 0.2)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1
-      }, 
+      },
       {
         label: `${getFriendName(user.friends[1])}'s Steps`,
         data: findFriendSteps(user.friends[1]),
         backgroundColor: 'rgba(54, 162, 235, 0.2)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1
-      }, 
+      },
       {
         label: `${getFriendName(user.friends[2])}'s Steps`,
         data: findFriendSteps(user.friends[2]),
@@ -483,4 +574,5 @@ function loadPage() {
   showFriends()
   showActivityStats()
   chartsDisplay()
+  showSleepStats()
 }

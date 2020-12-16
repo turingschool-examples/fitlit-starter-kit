@@ -73,10 +73,8 @@ class CommunitySleep {
     const startDateNumber = this.convertDateString(startDate);
     const endDateNumber = this.convertDateString(endDate);
     const sleepWeek = this.sleeps.filter(sleeper => {
-      const sleepDateToNumber = this.convertDateString(sleeper.date)
-      if (sleepDateToNumber >= startDateNumber && sleepDateToNumber <= endDateNumber) {
-        return sleeper;
-      }
+      const sleepDateAsNumber = this.convertDateString(sleeper.date)
+      return sleepDateAsNumber >= startDateNumber && sleepDateToNumber <= endDateNumber
     })
     const filterSleepers = sleepWeek.filter(sleeper => {
       const avgSleepQual = this.calculateAvgSleepQualityWk(sleeper.userID, startDate, endDate)

@@ -88,16 +88,13 @@ class UserActivity {
   }
 
   isStepGoalReached(date) {
-    // test this
     let findActivityByDate = this.userActivityData.find(
       (day) => day.date === date
     ).numSteps;
-    // let userSteps = findActivityByDate.numSteps;
     return findActivityByDate > this.dailyStepGoal;
   }
 
   getDaysStepsSuccess() {
-    // test this
     return this.userActivityData
       .filter((item) => item.numSteps > this.dailyStepGoal)
       .map((item) => item.date);

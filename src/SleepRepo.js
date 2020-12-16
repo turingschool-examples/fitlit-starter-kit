@@ -61,30 +61,24 @@ class SleepRepo {
     return userIDsOfHeaviestSleepers;
   }
 
-  returnUsersWithSleepQualityThreeOrGreater(date) {
-    // input: endDate; global array of objects of sleep data
-    // output: array of user ids (num) whose avg sleep quality of 3 or greater
-    // methods: slice, reduce, forEach, toFixed, parseFloat, new Set(array)
-
-    // create copy of array of just the week using slice
-    // iterate through whole array, find smallest and largest user ids
-    // find index of largest user on end date
-    // find index of smallest user on beginning date (7 * # of user ids subtracted from index)
-    // create copy between these two indices
-
-    // iterate through copy array
-      // check current user's avg sleep quality -> get total sleep quality through iteration and divide # elements
-        // if avg sleep quality >= 3 && user id not yet in newArr
-          // add user id to newArr
-    // return newArr
+  prepareWeekData(date) {
     const leastAndGreatest = { least: this.data[0].id, greatest: this.data[this.data.length - 1].id };
     const startingDateDigits = parseInt(date.slice(-2)) - 6;
     const startingDate = date.slice(0, 8) + startingDateDigits;    
     const lastIndex = this.data.findIndex(data => data.id === leastAndGreatest.greatest && data.date === date);
     const firstIndex = this.data.findIndex(data => data.id === leastAndGreatest.least && data.date === startingDate);
     const targetWeek = this.data.slice(firstIndex, lastIndex + 1);
-    return targetWeek.reduce((usersWhoSleptGreat, data) => {      
-      const totalSleepQuality = targetWeek.reduce((quality, newData) => {
+    return {
+      week: targetWeek,
+      greatest: leastAndGreatest.greatest
+    }
+  }
+
+  returnUsersWithSleepQualityThreeOrGreater(date) {    
+    const targetWeekData = this.prepareWeekData(date);
+    const week = targetWeekData.week;
+    return week.reduce((usersWhoSleptGreat, data) => {      
+      const totalSleepQuality = week.reduce((quality, newData) => {
         if (data.id === newData.id) {
           quality += newData.sleepQuality;        
         }
@@ -92,7 +86,7 @@ class SleepRepo {
         return quality;
       }, 0);      
       
-      const avgSleepQuality = totalSleepQuality / (targetWeek.length / leastAndGreatest.greatest);      
+      const avgSleepQuality = totalSleepQuality / (week.length / targetWeekData.greatest);      
       if (avgSleepQuality >= 3 && !usersWhoSleptGreat.includes(data.id)) {
         usersWhoSleptGreat.push(data.id);
       }

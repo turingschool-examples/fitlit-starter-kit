@@ -9,6 +9,8 @@ body,html {
   background-image: url(file:///Users/connie/fitlit/assets/background-image.svg);
   background-size: cover;
   overflow: hidden;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -131,5 +133,19 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 5vh;
+  padding: 1vh;
+}
+
+/* images: */
+img {
+  height: 10em;
+  fill: white;
+}
+svg {
+  /* height: 3em; */
+  fill: white;
+}
+
+svg: hover {
+  fill: pink;
 }

@@ -114,7 +114,6 @@ function displayHydrationChart() {
       }]
     },
     options: {
-      // maintainAspectRatio: false,
       title: {
         display: true,
         text: "Your hydration stats for the week:",
@@ -209,7 +208,6 @@ function displaySleepChart() {
       }]
     },
     options: {
-      // maintainAspectRatio: false,
       title: {
         display: true,
         text: "Your sleep stats for the week:",
@@ -217,7 +215,6 @@ function displaySleepChart() {
         fontColor: "#303f9f"
       },
       legend: {
-        // display: false
         labels: {
           fontColor: "#303f9f"
         },
@@ -315,7 +312,6 @@ function displayActivityStepsChart() {
       }],
     },
     options: {
-      // maintainAspectRatio: false,
       title: {
         display: true,
         text: "Your activity stats for the week",
@@ -323,7 +319,6 @@ function displayActivityStepsChart() {
         fontColor: "#C51162"
       },
       legend: {
-        // display: false
         labels: {
           fontColor: "#C51162"
         },
@@ -379,7 +374,6 @@ function displayActivityMinsAndFlightsChart() {
       }]
     },
     options: {
-      // maintainAspectRatio: false,
       title: {
         display: false,
         text: "",
@@ -387,7 +381,6 @@ function displayActivityMinsAndFlightsChart() {
         fontColor: "#C51162"
       },
       legend: {
-        // display: false
         labels: {
           fontColor: "#C51162"
         },

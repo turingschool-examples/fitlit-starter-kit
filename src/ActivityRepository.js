@@ -48,7 +48,7 @@ class ActivityRepo {
     const week = this.getActivityDataByWeek(id, date);
     const totalMins = week.reduce((total, activity) => {
       return total + activity.minutesActive;
-    }, 0)
+    }, 0);
     return Math.round((totalMins / 7));
   }
 
@@ -62,7 +62,7 @@ class ActivityRepo {
       return `Congrats! You reached your step goal for today.`;
     } else {
       return `Only ${difference} steps left for you to reach your daily step goal.`;
-    };
+    }
   }
 
   findDatesExceededStepGoal(user) {

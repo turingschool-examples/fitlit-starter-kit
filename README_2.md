@@ -20,7 +20,14 @@ Alternatively, click the following link to be sent to the app's deployed site: [
 ---
 ### How to Use
 
-Upon opening, Fitlit will load a random individual's data. The dashboard of the app will showcase the user's data in 4 sections. Up top is the user info card that will display personal information about the user as well as their step goal, how that goal compares to all users, and whether or not they have reached their step goal for that day. Below are three categorized sections including Hydration, Sleep, and Activity. In their respective columns, each category will show a user's data relative to that category. Featured are both widgets that will have a simple number + label design as well as graphs that will show a more detailed view of the user's weekly habits. To view another user and see how the data sections will change accordingly, simply refresh the page.
+Upon opening, Fitlit will load a random individual's data. The dashboard of the app will showcase the user's data in 4 sections. Up top is the user info card that will display personal information about the user as well as their step goal, how that goal compares to all users, and whether or not they have reached their step goal for that day. Below are three categorized sections including Hydration, Sleep, and Activity. In their respective columns, each category will show a user's data relative to that category. Featured are both widgets that will have a simple number + label design as well as graphs that will show a more detailed view of the user's weekly habits. To view another user and see how the data sections will change accordingly, simply refresh the page. The application should also be responsive so as to accommodate smaller screen sizes.
+
+Here is how the page should appear:
+
+<table><tr>
+<td><img width="634" alt="Fitlit User Info Card" src="https://github.com/tashiad/fitlit/blob/README/README-images/Fitlit_1.png?raw=true"></td>
+<td><img width="634" alt="Fitlit User Info Card" src="https://github.com/tashiad/fitlit/blob/README/README-images/Fitlit_2.png?raw=true"></td>
+</tr></table>
 
 ---
 ### Wins & Challenges

@@ -253,18 +253,18 @@ describe('ActivityRepository', () => {
   })
 
   it('should get all user avg steps for a given date', () => {
-    expect(activityRepo.getAllUsersAvgStepsByDate("2019/06/15")).to.deep.equal(4082);
-    expect(activityRepo.getAllUsersAvgStepsByDate("2019/06/16")).to.deep.equal(4591);
+    expect(activityRepo.getAllUsersAvgStepsByDate("2019/06/15")).to.equal(4082);
+    expect(activityRepo.getAllUsersAvgStepsByDate("2019/06/16")).to.equal(4591);
   })
 
   it('should get all user avg mins for a given date', () => {
-    expect(activityRepo.getAllUsersAvgMinsByDate("2019/06/15")).to.deep.equal(152);
-    expect(activityRepo.getAllUsersAvgMinsByDate("2019/06/16")).to.deep.equal(125);
+    expect(activityRepo.getAllUsersAvgMinsByDate("2019/06/15")).to.equal(152);
+    expect(activityRepo.getAllUsersAvgMinsByDate("2019/06/16")).to.equal(125);
   })
 
   it('should get all user avg stairs for a given date', () => {
-    expect(activityRepo.getAllUsersAvgStairsByDate("2019/06/15")).to.deep.equal(17);
-    expect(activityRepo.getAllUsersAvgStairsByDate("2019/06/16")).to.deep.equal(15);
+    expect(activityRepo.getAllUsersAvgStairsByDate("2019/06/15")).to.equal(17);
+    expect(activityRepo.getAllUsersAvgStairsByDate("2019/06/16")).to.equal(15);
   })
 
 })

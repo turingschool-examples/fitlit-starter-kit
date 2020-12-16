@@ -52,7 +52,7 @@ function getRandomUser() {
 
 function displayUserInfoCard(user) {
   userInfoCard.innerHTML = `
-    <section class="user-info-card widget">
+    <section class="user-info-card">
       <h2 class="welcome">Hello,<br>${user.getFirstName()}.</h2>
       <section class="user-stats">
         <section class="user widget">

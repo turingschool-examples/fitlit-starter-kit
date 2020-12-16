@@ -87,12 +87,27 @@ describe('Activity', () => {
     expect(minutes).to.equal(data.minutesActive);
   });
 
-  it.skip('should return whether step goal was reached', () => {    
-    const user = userRepo.data.find(user => user.id === activity.id);
-    const goal = user.dailyStepGoal;
-    const didHitGoal = activity.checkStepGoal();
+  it('should return whether step goal was reached', () => {    
+    const user1 = userRepo.data.find(user => user.id === activity.id);
+    const goal1 = user1.dailyStepGoal;
+    const didHitGoal1 = activity.checkStepGoal(goal1);
 
-    expect(activity.steps).to.be.at.least(user.datilyStepGoal);
-    expect(didHitGoal).to.equal(true);    
+    expect(activity.steps).to.be.at.most(goal1);
+    expect(didHitGoal1).to.equal(false);    
+
+    const newData = data = {
+      "userID": 2,
+      "date": "2019/06/15",
+      "numSteps": 11002,
+      "minutesActive": 124,
+      "flightsOfStairs": 6
+    };
+    const newActivity = new Activity(newData);
+    const user2 = userRepo.data.find(user => user.id === newActivity.id);
+    const goal2 = user2.dailyStepGoal;
+    const didHitGoal2 = newActivity.checkStepGoal(goal2);
+
+    expect(newActivity.steps).to.be.at.least(goal2);
+    expect(didHitGoal2).to.equal(true);
   });
 });

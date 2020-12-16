@@ -10,6 +10,10 @@ class Activity {
   returnMinutes() {
     return this.minutes;
   }
+
+  checkStepGoal(goal) {
+    return this.steps >= goal ? true : false;
+  }
 }
 
 if (typeof module !== 'undefined') {

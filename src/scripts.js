@@ -9,7 +9,8 @@ const graph = document.querySelector('.graph');
 const graphTitle = document.querySelector('.title-graph');
 const steps = document.querySelector('.steps');
 const activeMinutes = document.querySelector('.active-minutes')
-const stairs = document.querySelector('.stairs')
+const stairs = document.querySelector('.stairs');
+const userAllTimeSleep = document.querySelector('.user-all-time-sleep-stats')
 
 //since multiple methods will need these, global
 let community = null;
@@ -18,8 +19,10 @@ let communityHydration = null;
 let hydration = null;
 let communityActivity = null;
 let activity = null;
+let communitySleep = null;
+let sleep = null;
 let today = "2019/09/22";
-
+let yesterday = "2019/09/21"; //added this, but is there a better way to calculate off of "today"? -C
 window.addEventListener('load', loadPage)
 
 //this could just be done on lines 5 and 6,
@@ -31,6 +34,8 @@ const createCommunity = () => {
   hydration = communityHydration.hydrations[0]
   communityActivity = new CommunityActivity(activityData)
   activity = communityActivity.activities[0]
+  communitySleep = new CommunitySleep(sleepData)
+  sleep = communitySleep.sleeps[0]
 }
 
 //GREETING:
@@ -55,9 +60,23 @@ const showProfile = () => {
 }
 
 //ADD ALL-TIME SLEEP STATS:
+//show all-time average sleep quality
+//show all-time average number of hours slept
+const showAllTimeSleepQualityUser = () => {
+  userAllTimeSleep.insertAdjacentHTML('beforeend',
+    `<p class="sleep-stats">Last Night:</p>
+    <p class="sleep-quality-last-night">Your sleep quality score: ${communitySleep.calculateSleepQualityOnDay(sleep.userID, yesterday)}</p>`)
+}
 
 //loads a display of the user's step goal
 //also loads display of community step goal
+
+//ADD TODAY SLEEP STATS:
+//sleep dada for latest day: hours slept and quality of sleep
+
+//ADD WEEK SLEEP STATS:
+//hours slept and quality of sleep
+
 const showStepGoalComparison = () => {
   userStepGoal.insertAdjacentHTML('beforeend', `<p>${user.dailyStepGoal}</p>`)
   communityStepGoal.insertAdjacentHTML('beforeend', `<p>${community.findAverageStepGoal()}</p>`)
@@ -184,8 +203,6 @@ const showActivityStats = () => {
 }
 
 
-//ADD SLEEP STATS:
-
 //GRAPH:
 
 //FRIENDS:
@@ -210,4 +227,5 @@ function loadPage() {
   showHydrationStatsWeek("2019/09/16", "2019/09/22")
   showFriends()
   showActivityStats()
+  showAllTimeSleepQualityUser();
 }

@@ -1,7 +1,7 @@
-const chai = require('chai');
-const expect = chai.expect;
-
-const Hydration = require('../src/Hydration');
+// const chai = require('chai');
+// const expect = chai.expect;
+//
+// const Hydration = require('../src/Hydration');
 
 class CommunityHydration {
   constructor(data = []) {
@@ -43,4 +43,4 @@ class CommunityHydration {
     return weekWaterTotals;
   }
 }
-module.exports = CommunityHydration;
+// module.exports = CommunityHydration;

@@ -1,11 +1,11 @@
-const chai = require('chai');
-const expect = chai.expect;
-
-const Sleep = require('../src/Sleep')
+// const chai = require('chai');
+// const expect = chai.expect;
+//
+// const Sleep = require('../src/Sleep')
 
 class CommunitySleep {
   constructor(data = []) {
-    this.sleeps = data.map(sleepForUser => new Sleep(sleepForUser))
+    this.sleeps = data.map(sleep => new Sleep(sleep))
   }
 
   convertDateString(date) {
@@ -111,4 +111,4 @@ class CommunitySleep {
     return sleepers;
   }
 }
-module.exports = CommunitySleep;
+// module.exports = CommunitySleep;

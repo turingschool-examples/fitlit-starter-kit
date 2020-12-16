@@ -6,4 +6,4 @@ class Sleep {
     this.sleepQuality = sleepForUser.sleepQuality;
   }
 }
-module.exports = Sleep;
+// module.exports = Sleep;

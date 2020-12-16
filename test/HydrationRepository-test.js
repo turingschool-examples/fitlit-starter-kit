@@ -26,6 +26,8 @@ describe('HydrationRepo', () => {
 
   it('should hold all Hydration objects', () => {
     expect(hydrationRepo.allHydration[0]).to.deep.equal(allHydration[0]);
+    expect(hydrationRepo.allHydration[1]).to.deep.equal(allHydration[1]);
+    expect(hydrationRepo.allHydration[2]).to.deep.equal(allHydration[2]);
   })
 
   it('should return a users hydration data given their user ID', () => {

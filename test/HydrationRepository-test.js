@@ -1,69 +1,60 @@
 const chai = require('chai');
 const expect = chai.expect;
-const hydrationTestDataFile = require('../data/hydration-test-data');
-const hydrationTestDataArray = hydrationTestDataFile.testHydration;
+const testData = require('../data/hydration-test-data');
+const testHydrationData = testData.testHydrationData;
 const Hydration = require('../src/Hydration');
-const HydrationRepository = require('../src/HydrationRepository');
+const HydrationRepo = require('../src/HydrationRepository');
 
-describe('HydrationRepository', () => {
-  let hydrationData, hydrationRepository;
+describe('HydrationRepo', () => {
+  let allHydration, hydrationRepo;
 
   beforeEach(() => {
-    hydrationData = hydrationTestDataArray.map(hydrationObject => {
-      const hydration = new Hydration(hydrationObject);
+    allHydration = testHydrationData.map(hydrationData => {
+      const hydration = new Hydration(hydrationData);
       return hydration;
     });
-    hydrationRepository = new HydrationRepository(hydrationData);
+    hydrationRepo = new HydrationRepo(allHydration);
   })
 
   it('should be a function', () => {
-    expect(HydrationRepository).to.be.a('function');
+    expect(HydrationRepo).to.be.a('function');
   })
 
-  it('should be an instance of HydrationRepository', () => {
-    expect(hydrationRepository).to.be.an.instanceof(HydrationRepository);
+  it('should be an instance of HydrationRepo', () => {
+    expect(hydrationRepo).to.be.an.instanceof(HydrationRepo);
   })
 
   it('should hold all Hydration objects', () => {
-    expect(hydrationRepository.hydrationInstanceData[0]).to.deep.equal(hydrationData[0]);
+    expect(hydrationRepo.allHydration[0]).to.deep.equal(allHydration[0]);
   })
 
   it('should return a users hydration data given their user ID', () => {
-    function returnHydrationTestData(id) {
-      return hydrationTestDataArray.filter(hydration => hydration.userID === id);
+    function testWaterById(id) {
+      return testHydrationData.filter(hydration => hydration.userID === id);
     }
-    expect(hydrationRepository.returnHydrationData(1)).to.deep.equal(returnHydrationTestData(1));
-    expect(hydrationRepository.returnHydrationData(2)).to.deep.equal(returnHydrationTestData(2));
+    expect(hydrationRepo.getHydrationById(1)).to.deep.equal(testWaterById(1));
+    expect(hydrationRepo.getHydrationById(2)).to.deep.equal(testWaterById(2));
   })
 
-  it('should return a users average oz consumed per day for all time', () => {
-    expect(hydrationRepository.calculateAverageDailyOuncesAllTime(1)).to.deep.equal(67);
-    expect(hydrationRepository.calculateAverageDailyOuncesAllTime(2)).to.deep.equal(49);
+  it('should return a users avg oz consumed per day for all time', () => {
+    expect(hydrationRepo.getUserAvgDailyOzAllTime(1)).to.deep.equal(67);
+    expect(hydrationRepo.getUserAvgDailyOzAllTime(2)).to.deep.equal(49);
   })
 
   it('should return a users oz consumed for a specific day', () => {
-    expect(hydrationRepository.returnOuncesByDate(1, "2019/06/18")).to.deep.equal(85);
-    expect(hydrationRepository.returnOuncesByDate(2, "2019/06/16")).to.deep.equal(22);
+    expect(hydrationRepo.getUserOzByDate(1, "2019/06/18")).to.deep.equal(85);
+    expect(hydrationRepo.getUserOzByDate(2, "2019/06/16")).to.deep.equal(22);
   })
 
-  it('should return a users hydration data for a given week', () => {
-    expect(hydrationRepository.returnOuncesByWeek(1, "2019/06/21")).to.deep.equal([
-      {"userID": 1, "date": "2019/06/15", "numOunces": 27},
-      {"userID": 1, "date": "2019/06/16", "numOunces": 75},
-      {"userID": 1, "date": "2019/06/17", "numOunces": 47},
-      {"userID": 1, "date": "2019/06/18", "numOunces": 85},
-      {"userID": 1, "date": "2019/06/19", "numOunces": 42},
-      {"userID": 1, "date": "2019/06/20", "numOunces": 87},
-      {"userID": 1, "date": "2019/06/21", "numOunces": 94}
-    ]);
-    expect(hydrationRepository.returnOuncesByWeek(2, "2019/06/22")).to.deep.equal([
-      {"userID": 2, "date": "2019/06/16", "numOunces": 22},
-      {"userID": 2, "date": "2019/06/17", "numOunces": 67},
-      {"userID": 2, "date": "2019/06/18", "numOunces": 62},
-      {"userID": 2, "date": "2019/06/19", "numOunces": 78},
-      {"userID": 2, "date": "2019/06/20", "numOunces": 1},
-      {"userID": 2, "date": "2019/06/21", "numOunces": 90},
-      {"userID": 2, "date": "2019/06/22", "numOunces": 28}
-    ]);
+  it('should get a users oz drank for a given week', () => {
+    expect(hydrationRepo.getUserOzByWeek(1, "2019/06/21")).to.deep.equal({
+      "2019/06/15": 27,
+      "2019/06/16": 75,
+      "2019/06/17": 47,
+      "2019/06/18": 85,
+      "2019/06/19": 42,
+      "2019/06/20": 87,
+      "2019/06/21": 94});
   })
+
 })

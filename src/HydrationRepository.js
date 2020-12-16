@@ -1,35 +1,39 @@
-class HydrationRepository {
-  constructor(hydrationInstanceData) {
-    this.hydrationInstanceData = hydrationInstanceData;
+class HydrationRepo {
+  constructor(allHydration) {
+    this.allHydration = allHydration;
   }
 
-  returnHydrationData(id) {
-    return this.hydrationInstanceData.filter(hydration => hydration.userID === id);
+  getHydrationById(id) {
+    return this.allHydration.filter(hydration => hydration.userID === id);
   }
 
-  calculateAverageDailyOuncesAllTime(id) {
-    const allUserHydration = this.returnHydrationData(id);
-    const userTotalOzAllTime = allUserHydration.reduce((totalOz, water) => {
+  getUserAvgDailyOzAllTime(id) {
+    const userHydration = this.getHydrationById(id);
+    const userOzAllTime = userHydration.reduce((totalOz, water) => {
       return totalOz + water.numOunces;
     }, 0);
-    return Math.floor(userTotalOzAllTime / allUserHydration.length);
+    return Math.floor(userOzAllTime / userHydration.length);
   }
 
-  returnOuncesByDate(id, date) {
-    const allUserHydration = this.returnHydrationData(id);
-    const ozByDate = allUserHydration.find(water => water.date === date);
+  getUserOzByDate(id, date) {
+    const userHydration = this.getHydrationById(id);
+    const ozByDate = userHydration.find(water => water.date === date);
     return ozByDate.numOunces;
   }
 
-  returnOuncesByWeek(id, date) {
-    const allUserHydration = this.returnHydrationData(id);
-    const hydrationDates = allUserHydration.map(hydration => hydration.date);
-    const indexOfMatchingHydrationDate = hydrationDates.indexOf(date);
-    return allUserHydration.slice(indexOfMatchingHydrationDate - 6, indexOfMatchingHydrationDate + 1);
+  getUserOzByWeek(id, date) {
+    const userHydration = this.getHydrationById(id);
+    const hydrationDates = userHydration.map(hydration => hydration.date);
+    const indexOfDate = hydrationDates.indexOf(date);
+    const hydrationByDate = userHydration.slice(indexOfDate - 6, indexOfDate + 1);
+    return hydrationByDate.reduce((obj, hydration) => {
+      obj[hydration.date] = hydration.numOunces;
+      return obj;
+    }, {})
   }
 
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = HydrationRepository;
+  module.exports = HydrationRepo;
 }

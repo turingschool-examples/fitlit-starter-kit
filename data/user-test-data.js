@@ -1,5 +1,4 @@
-const testUsers = [
- {
+const testUserData = [{
     "id": 1,
     "name": "Cole Fiscus",
     "address": "7362 Gonzaga Blvd, Spokane WA 19982",
@@ -39,6 +38,6 @@ const testUsers = [
 
 if (typeof module !== 'undefined') {
   module.exports = {
-    testUsers
+    testUserData
   }
 }

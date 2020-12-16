@@ -3,26 +3,50 @@
 
 <head>
   <meta charset="UTF-8">
+  <html lang="en-US">
   <title>FitLit</title>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="./styles.css">
 </head>
 
 <body>
-  <h1 class="app-name">FitLit</h1>
-  <h2 class="user-greeting">Hello, Skannah</h2>
-  <div class="section-wrapper">
-    <section class="user-info-card"></section>
-    <section class="daily-leaderboard">
-      <p>This is filler text for the future leaderboard</p>
+  <header>
+    <h1>My Fitness Data</h1>
+  </header>
+  <main>
+    <section class="user"></section>
+    <div class="line-break"></div>
+    <section class="health-categories">
+      <section class="category">
+        <div class="icon-box">
+          <img class="icon" src="../images/hydration-icon.svg" alt="drinking water icon">
+        </div>
+        <h2>Hydration</h2>
+        <section class="hydration-stats"></section>
+        <canvas class="hydration-week-chart" width="1" height="1"></canvas>
+      </section>
+      <section class="category">
+        <div class="icon-box">
+          <img class="icon" src="../images/sleep-icon.svg" alt="sleep icon">
+        </div>
+        <h2>Sleep</h2>
+        <section class="sleep-stats"></section>
+        <canvas class="sleep-week-chart" width="1" height="1"></canvas>
+      </section>
+      <section class="category">
+        <div class="icon-box">
+          <img class="icon" src="../images/activity-icon.svg" alt="fitness icon">
+        </div>
+        <h2>Activity</h2>
+        <section class="activity-stats"></section>
+        <canvas class="activity-steps-chart" width="1" height="1"></canvas>
+        <canvas class="activity-mins-flights-chart" width="1" height="1"></canvas>
+      </section>
     </section>
-  </div>
-  <div class="section-wrapper">
-    <section class="hydration fitness-categories"></section>
-    <section class="sleep fitness-categories"></section>
-    <section class="activity fitness-categories"></section>
-  </div>
+  </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script type="text/javascript" src="../data/users.js"></script>
   <script type="text/javascript" src="../data/hydration.js"></script>
   <script type="text/javascript" src="../data/sleep.js"></script>

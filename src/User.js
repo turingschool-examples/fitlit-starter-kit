@@ -9,9 +9,13 @@ class User {
     this.friends = userData.friends;
   }
 
-  returnFirstName() {
+  getFirstName() {
     const names = this.name.split(' ');
     return names[0];
+  }
+
+  getFormattedStepGoal() {
+    return this.dailyStepGoal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
 }

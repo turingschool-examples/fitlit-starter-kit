@@ -113,7 +113,6 @@ class ActivityRepo {
     }, 0)
     const allUserAvgSteps = Math.round(totalSteps / activitiesOnDate.length);
     return allUserAvgSteps.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
   }
 
   getAllUsersAvgMinsByDate(date) {

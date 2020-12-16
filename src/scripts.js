@@ -9,6 +9,10 @@ const water = document.querySelector('.water');
 const activeMinutes = document.querySelector('.active-minutes')
 const stairs = document.querySelector('.stairs')
 
+const todayDateSelector = document.getElementById("today")
+const startDateSelector = document.getElementById("start")
+const endDateSelector = document.getElementById("end")
+
 const graph = document.querySelector('.graph');
 const graphTitle = document.querySelector('.title-graph');
 
@@ -25,9 +29,61 @@ let communityHydration = new CommunityHydration(hydrationData);
 let hydration = communityHydration.hydrations[0];
 let communityActivity = new CommunityActivity(activityData);
 let activity = communityActivity.activities[0];
-let today = "2019/09/22";
+let today = '2019/09/22'
+let startDate = '2019/09/16'
+let endDate = '2019/09/22'
 
-window.addEventListener('load', loadPage)
+
+window.addEventListener('load', loadPage);
+todayDateSelector.addEventListener("change", function() {today = this.value.split('-').join('/')});
+startDateSelector.addEventListener("change", function() {startDate = this.value});
+endDateSelector.addEventListener("change", function() {endDate = this.value});
+
+
+//GRAPH:
+const getData = (weekOfUserDataObjects, fitnessType)  => {
+  return {
+    fitnessType: fitnessType,
+    startDate: weekOfUserDataObjects[0].date,
+    endDate: weekOfUserDataObjects[weekOfUserDataObjects.length -1].date,
+    xs: weekOfUserDataObjects.map(object => object.date),
+    ys: weekOfUserDataObjects.map(object => object[fitnessType]) 
+  }
+}
+
+const chartIt = (whatCanvas, dataOne, dataTwo) => {
+  const data = dataOne
+  const data2 = dataTwo
+  const chart = new Chart(whatCanvas, {
+    type: 'line',
+    data: {
+      labels: data.xs,
+      datasets: [{
+        label: `Your ${data.fitnessType}`,
+        data: data.ys,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }, 
+      {
+        label: `Your ${data2.fitnessType.split(/(?=[A-Z])/).join(' ')} for the week of ${data2.startDate} - ${data2.endDate}`,
+        data: data2.ys,
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+};
 
 //GREETING:
 const greetUser = () => {
@@ -63,6 +119,36 @@ const showStepGoalComparison = () => {
       <p>${user.dailyStepGoal}</p>
   </article>`)
 }
+
+const displayStepChart = () => {
+  let weekActivities = communityActivity.findWeekActivities(startDate, endDate, user)
+  
+  chartIt(stepsCanvas, getData(weekActivities, 'numSteps'))
+
+  // const stepChart = new Chart(stepCanvas, {
+  //   type: 'line',
+  //   data: {
+  //     labels: data.xs,
+  //     datasets: [{
+  //       label: 'Number of Steps',
+  //       data: data.ys,
+  //       backgroundColor: 'rgba(255, 99, 132, 0.2)',
+  //       borderColor: 'rgba(255, 99, 132, 1)',
+  //       borderWidth: 1
+  //       },
+  //       {
+  //         label: 'Number of Steps',
+  //         data: data.ys,
+  //         backgroundColor: 'rgba(255, 99, 132, 0.2)',
+  //         borderColor: 'rgba(255, 99, 132, 1)',
+  //         borderWidth: 1
+  //         },
+
+  //     ]
+  //   }
+}
+
+
 
 const showIfUserMetStepGoal = () => {
   if (activity.verifyIfStepGoal(user)) {
@@ -111,24 +197,12 @@ const showHydrationStatsWeek = (startDate, endDate) => {
     `)
 }
 
-const showWaterChartWhateverWeek = (startDate, endDate) => {
-  let weekWaterActivities = communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)
-
-  console.log(getData('water', weekWaterActivities))
-  
-  // chartIt(getData(weekActivities, 'stairsClimbed'), getData(weekActivities, 'minutesActive'), getData(weekActivities, 'numSteps'))
-}
-
-//GRAPH:
-function getData(weekOfUserDataObjects, fitnessType) {
-  return {
-    fitnessType: fitnessType,
-    startDate: weekOfUserDataObjects[0].date,
-    endDate: weekOfUserDataObjects[weekOfUserDataObjects.length -1].date,
-    xs: weekOfUserDataObjects.map(object => object.date),
-    ys: weekOfUserDataObjects.map(object => object[fitnessType]) 
-  }
-}
+// const showWaterChartWhateverWeek = (startDate, endDate) => {
+//   const weekWaterActivities = communityHydration.calculateTotalWeek(hydration.userID,"2019/09/16", "2019/09/22")
+//   // getData(weekWater, numOunces)
+//   // chartIt(waterChart, weekWater)
+//   console.log('water', weekWaterActivities)
+// }
 
 //ADD ACTIVITY STATS:
 
@@ -179,9 +253,7 @@ const showMinutesActiveStatsWeek = (startDate, endDate) => {
 const showActivitiesChartWhateverWeek = (startDate, endDate) => {
   let weekActivities = communityActivity.findWeekActivities(startDate, endDate, user)
 
-  console.log(getData(weekActivities, 'stairsClimbed'))
-  
-  chartIt(getData(weekActivities, 'stairsClimbed'), getData(weekActivities, 'minutesActive'), getData(weekActivities, 'numSteps'), waterCanvas)
+  chartIt(stairsCanvas, getData(weekActivities, 'stairsClimbed'), getData(weekActivities, 'minutesActive'))
 }
 
 const showActivityStats = () => {
@@ -218,50 +290,6 @@ const showFriends = () => {
 }
 
 
-//show charts 
-function chartIt(dataOne, dataTwo, dataThree, whatCanvas) {
-  const data = dataOne
-  const data2 = dataTwo
-  const data3 = dataThree
-  const chart = new Chart(whatCanvas, {
-    type: 'line',
-    data: {
-      labels: data.xs,
-      datasets: [{
-        label: `Your ${data.fitnessType.split(/(?=[A-Z])/).join(' ')} for the week of ${data.startDate} - ${data.endDate}`,
-        data: data.ys,
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 1
-      }, 
-      {
-        label: `Your ${data2.fitnessType.split(/(?=[A-Z])/).join(' ')} for the week of ${data2.startDate} - ${data2.endDate}`,
-        data: data2.ys,
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1
-      },
-      {
-        label: `Your ${data3.fitnessType.split(/(?=[A-Z])/).join(' ')} for the week of ${data3.startDate} - ${data3.endDate}`,
-        data: data3.ys,
-        backgroundColor: 'rgba(255, 206, 86, 0.2)',
-        borderColor: 'rgba(255, 206, 86, 1)',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      }
-    }
-  });
-};
-
-
 //we can add other calls to this onload function
 function loadPage() {
   greetUser()
@@ -269,6 +297,7 @@ function loadPage() {
   showStepGoalComparison()
   showHydrationStats()
   showHydrationStatsWeek("2019/09/16", "2019/09/22")
+  // showWaterChartWhateverWeek("2019/09/16", "2019/09/22")
   showFriends()
   showActivityStats()
 }

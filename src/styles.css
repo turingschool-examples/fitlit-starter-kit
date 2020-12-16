@@ -89,7 +89,7 @@ h2.welcome {
 
 .icon-box {
   width: auto;
-  height: 12%;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;

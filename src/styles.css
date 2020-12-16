@@ -1,24 +1,15 @@
 body,html {
   background-color: gray;
+  font-family: 'ABeeZee', sans-serif;
   display: flex;
   border-width: thin;
   flex-direction: column;
 }
 
-h1 {
+h1, h2, h3 {
   font-family: 'Fredoka One', cursive;
   display: flex;
   justify-content: center;
-  border: solid black;
-}
-
-h2 {
-  border: solid black;
-  display: flex;
-  justify-content: center;
-}
-
-h3 {
   border: solid black;
 }
 

@@ -13,7 +13,6 @@ class UserActivity {
   }
 
   getWeekOfData(startDate, keyName) {
-    // test this
     const findIndex = this.userActivityData.findIndex(
       (day) => day.date === startDate
     );
@@ -29,21 +28,8 @@ class UserActivity {
       .splice([findIndex], 7);
   }
 
-  // getAverage(fullList) {
-  //   // test this one
-  //   return (
-  //     fullList.reduce((total, value) => {
-  //       return (total += value);
-  //     }, 0) / this.userHydrationData.length
-  //   );
-  // }
-
   calculateAvgMinWeek(startDate) {
-    // look into splitting these up or putting them into single reduce
-    // use get average
-    const findIndex = this.userActivityData.findIndex(
-      (day) => day.date === startDate
-    );
+    const findIndex = this.userActivityData.findIndex((day) => day.date === startDate);
     const activityItemPerWeek = this.userActivityData
       .reduce((total, value) => {
         if (!total[findIndex]) {
@@ -71,40 +57,20 @@ class UserActivity {
     return userItem > averageAll;
   }
 
-  calculateActivityItemPerWeek(startDate, keyName) {
-    // test this newb
-    const findIndex = this.userActivityData.findIndex(
-      (day) => day.date === startDate
-    );
-    const activityItemPerWeek = this.userActivityData.reduce((total, value) => {
-      if (!total[findIndex]) {
-        total.push(value[keyName]);
-      } else {
-        total.push(value[keyName]);
-      }
-      return total;
-    }, []);
-    return activityItemPerWeek.splice([findIndex], 7);
-  }
-
   isStepGoalReached(date) {
-    // test this
     let findActivityByDate = this.userActivityData.find(
       (day) => day.date === date
     ).numSteps;
-    // let userSteps = findActivityByDate.numSteps;
     return findActivityByDate > this.dailyStepGoal;
   }
 
   getDaysStepsSuccess() {
-    // test this
     return this.userActivityData
       .filter((item) => item.numSteps > this.dailyStepGoal)
       .map((item) => item.date);
   }
 
   calculateMilesWalked(date) {
-    // test this
     let userSteps = this.userActivityData.find((day) => day.date === date)
       .numSteps;
     let userStride = this.strideLength;

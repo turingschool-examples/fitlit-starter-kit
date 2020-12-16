@@ -83,20 +83,19 @@ describe("UserHydration", () => {
   it("should be an instance of User", () => {
     expect(hydrationData).to.be.an.instanceof(UserHydration);
   });
+  
+  it("should return total fluid ounces consumed for a day", () => {
+    expect(hydrationData.getOneDayOfData("2019/06/12", 'numOunces')).to.equal(38);
+  });
 
   it("should return average fluid ounces per day all time per user", () => {
-    // const allNumOunces = hydrationData.getUserWaterConsumption(1);
     expect(hydrationData.getAverage([38, 60, 40, 50, 51, 65, 60, 60])).to.equal(
       47.111111111111114
     );
   });
 
-  it("should return total fluid ounces consumed for a day", () => {
-    expect(hydrationData.getOneDayOfData("2019/06/12", 'numOunces')).to.equal(38);
-  });
-
   it("should return an array of numOunces for a given user for a given week", () => {
-    expect(hydrationData.calculateWaterPerWeek("2019/06/12")).to.deep.equal([
+    expect(hydrationData.calculateWaterPerWeek("2019/06/19")).to.deep.equal([
       38,
       60,
       40,

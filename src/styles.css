@@ -5,13 +5,15 @@
 }
 
 article {
+  margin: 1%;
   opacity: 0.9;
 }
 body,html {
-  font-family: 'Righteous', cursive;
-  font-size: 1.2em;
   background-image: url(file:///Users/connie/fitlit/assets/background-image.svg);
   background-size: cover;
+  font-family: 'Righteous', cursive;
+  font-size: 1.4em;
+  -webkit-text-stroke: 2px black;
   height: 100%;
   width: 100%;
   display: flex;
@@ -52,19 +54,23 @@ p {
   flex-direction: column;
   align-items: center;
   padding: 1vh;
+  width: 20%;
 }
 
 .date-select {
-  padding: 3%;
+  padding: 1%;
   align-content: center;
   background-color: rgba(0, 0, 0, 0.9);
   display: flex;
   flex-direction: column;
+  align-items: center;
   color: white;
+  margin: 2%;
+  margin-top: 0;
 }
 
 .friends {
-  border: solid black;
+  background-color: rgba(29, 157, 171, 0.5);
 }
 
 .graph {
@@ -86,6 +92,10 @@ header {
   padding-bottom: 0;
 }
 
+input {
+  font-size: 1.5em;
+  margin-bottom: 0.5%;
+}
 /* .hidden {
   move element far far away
 } */
@@ -97,6 +107,7 @@ header {
   flex-direction: column;
   align-items: center;
   padding: 1vh;
+  width: 20%;
 }
 
 .stairs {
@@ -106,6 +117,7 @@ header {
   flex-direction: column;
   align-items: center;
   padding: 1vh;
+  width: 20%;
 }
 
 .stats {
@@ -119,9 +131,9 @@ header {
 }
 
 .steps {
-  background-color: #222222;
-  color: #F3EBE1;
-  border-radius: 50%;
+  background-color: white;
+  color: black;
+  -webkit-text-stroke: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -150,19 +162,22 @@ header {
 
 .water {
   background-color: #222222;
-  color: #F3EBE1;
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 20%;
   padding: 1vh;
 }
 
 .wrapper-top {
   display: flex;
+  align-items: center;
 }
 
 /* images: */
 img {
+  width: 100%;
   height: 10em;
   fill: white;
 }

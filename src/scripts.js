@@ -93,7 +93,7 @@ function getChosenUserData() {
 }
 
 function displayFirstName() {
-  userFirstName.innerText = `Welcome, ${currentUser.getFirstName()}`;
+  userFirstName.innerText = `${currentUser.getFirstName()}`;
 }
 
 function displayInfoCard() {
@@ -161,8 +161,10 @@ function displayUserStairsSuccess() {
   let allStairs = allUsersData(userRepo.activityData, 'flightsOfStairs')
   if (currentUser.userActivity.isUserAboveAvg(singleStair, allStairs)) {
     compareStairs.innerText = `Your ${singleStair} stairs climbed is higher than the user average of ${allStairs}`;
+    compareStairs.classList.add('success')
   } else {
     compareStairs.innerText = `Your ${singleStair} stairs climbed is lower than the user average of ${allStairs}`;
+    compareStairs.classList.remove('success')
   }
 }
 
@@ -172,8 +174,10 @@ function displayUserStepSuccess() {
   let allSteps = allUsersData(userRepo.activityData, "numSteps")
   if (currentUser.userActivity.isUserAboveAvg(singleStep, allSteps)) {
     compareSteps.innerText = `Your ${singleStep} step count is higher than the user average of ${allSteps}`;
+    compareSteps.classList.add('success')
   } else {
     compareSteps.innerText = `Your ${singleStep} step count is lower than the user average of ${allSteps}`;
+    compareSteps.classList.remove('success')
   }
 }
 
@@ -183,8 +187,10 @@ function displayUserMinutesSuccess() {
   let allMinutes = allUsersData(userRepo.activityData, 'minutesActive')
   if (currentUser.userActivity.isUserAboveAvg(singleMinute, allMinutes)) {
     compareMinutes.innerText = `Your active minute count of ${singleMinute} is higher than the user average of ${allMinutes}`;
+    compareMinutes.classList.add('success')
   } else { 
     compareMinutes.innerText = `Your active minute count of ${singleMinute} is lower than the user average of ${allMinutes}`;
+    compareMinutes.classList.remove('success')
   }
 }
 

@@ -28,41 +28,13 @@ form {
   margin: auto;
 }
 
-/* .admin-area {
-  /* border: 1px solid white; */
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* align-items: flex-start; */
-  /* width: 10%; */
-/* } */
-
-/* .admin-icon { */
-  /* background-color: #65A4F7; */
-  /* border-radius: 5px; */
-  /* width: auto; */
-  /* max-width: 70px; */
-/* } */
-
-/* .admin-text { */
-  /* margin-bottom: 1%; */
-  /* text-align: center; */
-/* } */
-
 header {
   width: 80%;
-  /* margin: auto; */
   border-radius: 5px;
   background-color: #6D71E3;
   height: auto;
   margin-left: 10%;
   margin-top: 2%;
-}
-
-.icon {
-  width: 25%;
-  height: 50%;
-  position: relative;
-  border-radius: 5px;
 }
 
 h1 {
@@ -116,6 +88,18 @@ h2 {
   padding-bottom: 2%;
 }
 
+.icon {
+  width: 40%;
+  /* height: 50%; */
+  position: relative;
+  border-radius: 5px;
+}
+
+.icon:hover {
+  border: 2px solid #C667E0;
+  cursor: pointer;
+}
+
 .daily-stat-icons {
   justify-content: center;
   margin: auto;
@@ -123,6 +107,7 @@ h2 {
 
 .stats-text {
   text-align: center;
+  margin-top: 1%;
 }
 
 .exercise-icon {
@@ -137,8 +122,14 @@ h2 {
   background-color: #F0CB30;
 }
 
-table {
-  margin: auto;
+.weekly-activity,
+.weekly-sleep,
+.weekly-water {
+  color: darkgray
+}
+
+.success {
+  background-color: #202261 
 }
 
 .user-stats {
@@ -147,6 +138,10 @@ table {
   text-align: center;
   border-radius: 5px;
   margin-top: 4%;
+}
+
+table {
+  margin: auto;
 }
 
 .table {

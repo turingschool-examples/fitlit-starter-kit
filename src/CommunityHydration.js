@@ -20,7 +20,7 @@ class CommunityHydration {
     const userWater = this.hydrations.filter(water => (water.userID === userID));
     const waterConsumed = userWater.map(water => water.numOunces);
     const avgWaterConsumed = (waterConsumed.reduce((a, b) => a + b, 0)) / waterConsumed.length;
-    return avgWaterConsumed;//refactor to truncate long decimals
+    return Math.round(avgWaterConsumed * 10) / 10
   }
 
   calculateTotalWaterOnDay(userID, date) {

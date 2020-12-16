@@ -219,8 +219,6 @@ describe('SleepRepo', () => {
     });
 
     it('should be able to return average sleep quality amongst all users', () => {
-      expect(sleepRepo.returnAverageSleepQualityForAllUsers()).to.equal(2.86);
-      // I would like to see this tapered of to two decimal places: 2.77
-        // 2.86 after I adjusted data slightly
+      expect(sleepRepo.returnAverageSleepQualityForAllUsers()).to.equal(2.86);      
     });    
   });

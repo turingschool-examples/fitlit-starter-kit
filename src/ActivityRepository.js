@@ -11,29 +11,29 @@ class ActivityRepo {
     return this.allActivity.filter(activity => activity.date === date);
   }
 
-  filterByIdAndDate(user, date) {
+  getActivityByIdAndDate(user, date) {
     const allUserActivity = this.getActivitiesById(user.id);
     return allUserActivity.find(activity => activity.date === date);
   }
 
   getMilesWalked(user, date) {
-    const activityByDate = this.filterByIdAndDate(user, date);
+    const activityByDate = this.getActivityByIdAndDate(user, date);
     const distance = user.strideLength * activityByDate.numSteps;
     return Number((distance / 5280).toFixed(1));
   }
 
   getStepsTaken(user, date) {
-    const activityByDate = this.filterByIdAndDate(user, date);
+    const activityByDate = this.getActivityByIdAndDate(user, date);
     return activityByDate.numSteps.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   getMinsActive(user, date) {
-    const activityByDate = this.filterByIdAndDate(user, date);
+    const activityByDate = this.getActivityByIdAndDate(user, date);
     return activityByDate.minutesActive;
   }
 
   getStairs(user, date) {
-    const activityByDate = this.filterByIdAndDate(user, date);
+    const activityByDate = this.getActivityByIdAndDate(user, date);
     return activityByDate.flightsOfStairs;
   }
 

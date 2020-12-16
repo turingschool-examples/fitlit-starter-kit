@@ -59,8 +59,8 @@ describe('ActivityRepository', () => {
       return allUserActivity.find(activity => activity.date === date);
     }
 
-    expect(activityRepo.filterByIdAndDate(user1, "2019/06/15")).to.deep.equal(getTestData(1, "2019/06/15"));
-    expect(activityRepo.filterByIdAndDate(user2, "2019/06/16")).to.deep.equal(getTestData(2, "2019/06/16"));
+    expect(activityRepo.getActivityByIdAndDate(user1, "2019/06/15")).to.deep.equal(getTestData(1, "2019/06/15"));
+    expect(activityRepo.getActivityByIdAndDate(user2, "2019/06/16")).to.deep.equal(getTestData(2, "2019/06/16"));
   })
 
   it('should get a users miles walked on a given date', () => {

@@ -1,42 +1,29 @@
-/* eslint-disable max-len */
 'use strict'
 
 const userFirstName = document.querySelector('.user-first-name')
 const userAddress = document.querySelector('.user-address')
 const userEmail = document.querySelector('.user-email')
 const userStepCompare = document.querySelector('.user-step-compare')
-const waterButton = document.querySelector(".water-icon");
-const sleepButton = document.querySelector(".sleep-icon");
-const activityButton = document.querySelector(".exercise-icon");
 
-const hydrationStatsDisplay = document.querySelector(".hydration-stats");
-const allWaterDisplays = document.querySelectorAll(".water"); // returns a node list
+const viewUserButton = document.querySelector(".admin-selector")
+const namesList = document.querySelector(".names-list")
+const activityButton = document.querySelector(".exercise-icon");
+const sleepButton = document.querySelector(".sleep-icon");
+const waterButton = document.querySelector(".water-icon");
+
+const allStatsDisplays = document.querySelectorAll('.reset')
+
+const allWaterDisplays = document.querySelectorAll(".water");
 const todayConsumption = document.querySelector(".today-consumption")
 
-const sleepStatsDisplay = document.querySelector(".sleep-stats")
-const allSleepDisplays = document.querySelectorAll(".sleep"); // returns a node list
+const allSleepDisplays = document.querySelectorAll(".sleep");
 const todaySleep = document.querySelector(".today-sleep")
 const avgSleepStats = document.querySelector(".avg-sleep-stats")
 
+const allActivityDisplays = document.querySelectorAll('.activity');
 const activityStatsDisplay = document.querySelector(".activity-stats");
-const allActivityDisplays = document.querySelectorAll('.activity'); // returns a node list
 const todayActivity = document.querySelector(".today-activity")
 const avgActivityStats = document.querySelector(".avg-activity-stats")
-
-const namesList = document.querySelector(".names-list")
-const adminSelector = document.querySelector(".admin-selector")
-
-
-// const displayStatsArea = document.querySelector(".display-stats")
-// const userDropdown = document.querySelector(".user-dropdown")
-// const compareMiles = document.querySelector(".miles-compare");
-
-// think about getting querySelectors local when we can
-// using it more than once - global, click or load
-// if only using once make it local
-// low hanging fruit
-// use more event delegation (event.target, node siblings, parents) or declare it locally. 
-// declaring QS locally - easiest 
 
 const userRepo = new UserRepo(
   userData, 
@@ -47,17 +34,17 @@ let currentUser = new User(
   userRepo.getAUser(21), 
   userRepo.filterSleepData(21), 
   userRepo.filterHydrationData(21),
-  userRepo.filterActivityData(21)); // user object
-let chosenDate = "2019/06/15" // default date
+  userRepo.filterActivityData(21));
+let chosenDate = "2019/06/15"
 
 window.addEventListener('load', () => {
-  let chosenUserID = currentUser.id; // sets the ID to a variable to use as an argument
+  let chosenUserID = currentUser.id; 
   displayFirstName(chosenUserID);
   displayInfoCard(chosenUserID);
   mapUserNames()
   fillDropdown()
   activityStatsDisplay.classList.toggle('hidden');
-  return chosenUserID; // returning ID out to use it later
+  return chosenUserID; 
 })
 
 waterButton.addEventListener('click', () => {
@@ -72,30 +59,36 @@ activityButton.addEventListener('click', () => {
   displayExerciseActivity();
 })
 
-adminSelector.addEventListener('click', (event) => {
+viewUserButton.addEventListener('click', (event) => {
   event.preventDefault()
-  let chosenUserID = getChosenUserData().id // set ID from name in dropdown
+  let chosenUserID = getChosenUserData().id 
   currentUser = new User(
     userRepo.getAUser(chosenUserID),
     userRepo.filterSleepData(chosenUserID),
     userRepo.filterHydrationData(chosenUserID),
     userRepo.filterActivityData(chosenUserID))
-  displayFirstName() // show user first name
-  displayInfoCard() // show user info
-  setChosenDate() // set date from date in calendar
-  clearDisplay(hydrationStatsDisplay);
-  clearDisplay(activityStatsDisplay);
-  clearDisplay(sleepStatsDisplay);
+  displayFirstName() 
+  displayInfoCard() 
+  setChosenDate() 
+  clearDisplays()
   return currentUser
 })
 
-function setChosenDate() { // returns chosen date
+function toggleElement(element) {
+  element.classList.toggle('hidden')
+}
+
+function clearDisplays() {
+  allStatsDisplays.forEach(item => item.classList.add('hidden'))
+}
+
+function setChosenDate() { 
   const datePicker = document.querySelector(".date-picker")
   chosenDate = datePicker.value.split('-').join('/')
   return chosenDate
 }
 
-function getChosenUserData() { // returns users.js object
+function getChosenUserData() { 
   return userData.find(user => user.name === namesList.value)
 }
 
@@ -115,8 +108,8 @@ function displayInfoCard() {
 }
 
 function displayHydrationActivity() {
-  clearDisplay(sleepStatsDisplay);
-  clearDisplay(activityStatsDisplay);
+  const hydrationStatsDisplay = document.querySelector(".hydration-stats");
+  clearDisplays()
   toggleElement(hydrationStatsDisplay)  
   getHydrationData(todayConsumption, 0, chosenDate, currentUser.id);
   allWaterDisplays.forEach((cell, index) => {
@@ -125,8 +118,8 @@ function displayHydrationActivity() {
 }
 
 function displaySleepActivity() {
-  clearDisplay(hydrationStatsDisplay);
-  clearDisplay(activityStatsDisplay);
+  const sleepStatsDisplay = document.querySelector(".sleep-stats")
+  clearDisplays()
   toggleElement(sleepStatsDisplay);
   getSleepData(todaySleep, 0, chosenDate, currentUser)
   allSleepDisplays.forEach((cell, index) => {
@@ -136,8 +129,7 @@ function displaySleepActivity() {
 } 
 
 function displayExerciseActivity() {
-  clearDisplay(hydrationStatsDisplay);
-  clearDisplay(sleepStatsDisplay);
+  clearDisplays()
   toggleElement(activityStatsDisplay);
   allActivityDisplays.forEach((cell, index) => {
     getStepData(cell, index)
@@ -155,19 +147,18 @@ function displayMilesWalked(placement) {
     .toFixed(2)} miles today`;
 }
 
-//try and squish these together
+function singleUserData(keyName) {
+  return currentUser.userActivity.getOneDayOfData(chosenDate, keyName);
+}
+
+function allUsersData(fullList, keyName) {
+  return userRepo.getAllUserAvgItem(fullList, chosenDate, keyName)
+}
 
 function displayUserStairsSuccess() { 
   const compareStairs = document.querySelector(".stairs-compare");
-  let singleStair = currentUser.userActivity.getOneDayOfData(
-    chosenDate,
-    'flightsOfStairs'
-  );
-  let allStairs = userRepo.getAllUserAvgItem(
-    userRepo.activityData,
-    chosenDate,
-    'flightsOfStairs'
-  )
+  let singleStair = singleUserData('flightsOfStairs')
+  let allStairs = allUsersData(userRepo.activityData, 'flightsOfStairs')
   if (currentUser.userActivity.isUserAboveAvg(singleStair, allStairs)) {
     compareStairs.innerText = `Your ${singleStair} stairs climbed is higher than the user average of ${allStairs}`;
   } else {
@@ -177,15 +168,8 @@ function displayUserStairsSuccess() {
 
 function displayUserStepSuccess() {
   const compareSteps = document.querySelector(".steps-compare");
-  let singleStep = currentUser.userActivity.getOneDayOfData(
-    chosenDate,
-    'numSteps'
-  );
-  let allSteps = userRepo.getAllUserAvgItem(
-    userRepo.activityData,
-    chosenDate,
-    "numSteps"
-  );
+  let singleStep = singleUserData('numSteps')
+  let allSteps = allUsersData(userRepo.activityData, "numSteps")
   if (currentUser.userActivity.isUserAboveAvg(singleStep, allSteps)) {
     compareSteps.innerText = `Your ${singleStep} step count is higher than the user average of ${allSteps}`;
   } else {
@@ -195,14 +179,8 @@ function displayUserStepSuccess() {
 
 function displayUserMinutesSuccess() {
   const compareMinutes = document.querySelector(".minutes-compare");
-  let singleMinute = currentUser.userActivity.getOneDayOfData(
-    chosenDate,
-    'minutesActive'
-  );
-  let allMinutes = userRepo.getAllUserAvgItem(
-    userRepo.activityData,
-    chosenDate, 
-    "minutesActive");
+  let singleMinute = singleUserData('minutesActive')
+  let allMinutes = allUsersData(userRepo.activityData, 'minutesActive')
   if (currentUser.userActivity.isUserAboveAvg(singleMinute, allMinutes)) {
     compareMinutes.innerText = `Your active minute count of ${singleMinute} is higher than the user average of ${allMinutes}`;
   } else { 
@@ -210,7 +188,7 @@ function displayUserMinutesSuccess() {
   }
 }
 
-function getAvgSleepData(placement) {
+function displayAvgSleepData(placement) {
   let displaySleepQual = currentUser.userSleep.calculateAvgSleepItem('sleepQuality').toFixed(2)
   let displaySleepHours = currentUser.userSleep.calculateAvgSleepItem('hoursSlept').toFixed(2)
   placement.innerText = `all-time average hours: ${displaySleepHours}, \n all-time average quality: ${displaySleepQual}`
@@ -222,7 +200,7 @@ function getSleepData(placement, index) {
   } hours, \n quality: ${
     currentUser.userSleep.calculateSleepItemPerWeek(chosenDate, 'sleepQuality')[index]
   }`;
-  getAvgSleepData(avgSleepStats)
+  displayAvgSleepData(avgSleepStats)
 }
 
 function getHydrationData(placement, index) {
@@ -239,15 +217,6 @@ function getStepData(placement, index) {
   } flights of stairs, and ${
     currentUser.userActivity.getWeekOfData(chosenDate, 'minutesActive')[index]
   } active minutes`;
-}
-
-function toggleElement(element) {
-  element.classList.toggle('hidden')
-}
-
-// clear everything
-function clearDisplay(element) {
-  element.classList.add('hidden');
 }
 
 const mapUserNames = () => {

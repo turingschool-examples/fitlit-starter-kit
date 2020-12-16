@@ -15,6 +15,8 @@ class UserHydration {
     }, 0) / this.userHydrationData.length
   }
 
+ 
+
   calculateWaterPerWeek(startDate) {
     let findIndex = this.userHydrationData.findIndex((day) => {
       return day.date === startDate;
@@ -26,7 +28,8 @@ class UserHydration {
         total.push(value.numOunces);
       }
       return total;
-    }, []).splice([findIndex], 7);
+      //count number of users - get that number * 7
+    }, []).splice([findIndex], 7); //need to take 7 things before it
   } 
 }
 

@@ -29,6 +29,12 @@ const compareStairs = document.querySelector(".stairs-compare");
 const compareSteps = document.querySelector(".steps-compare");
 const compareMinutes = document.querySelector(".minutes-compare");
 const compareMiles = document.querySelector(".miles-compare");
+//think about getting querySelectors local when we can
+// using it more than once - global, click or load
+// if only using once make it local
+// low hanging fruit
+// use more event delegation (event.target, node siblings, parents) or declare it locally. 
+// declaring QS locally - easiest 
 
 const userRepo = new UserRepo(
   userData, 
@@ -146,6 +152,8 @@ function displayMilesWalked(placement) {
     .toFixed(2)} miles today`;
 }
 
+//try and squish these together
+
 function displayUserStairsSuccess() { 
   let singleStair = currentUser.userActivity.getOneDayOfData(
     chosenDate,
@@ -232,6 +240,7 @@ function toggleElement(element) {
   element.classList.toggle('hidden')
 }
 
+// clear everything
 function clearDisplay(element) {
   element.classList.add('hidden');
 }

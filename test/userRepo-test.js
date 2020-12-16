@@ -116,53 +116,17 @@ describe('UserRepo', () => {
         hoursSlept: 6.1,
         sleepQuality: 2.2,
       }),
-      (userSleep2 = {
-        userID: 1,
-        date: "2019/06/16",
-        hoursSlept: 10.5,
-        sleepQuality: 3.8,
-      }),
-      (userSleep3 = {
-        userID: 1,
-        date: "2019/06/17",
-        hoursSlept: 7,
-        sleepQuality: 3,
-      }),
-      (userSleep4 = {
-        userID: 1,
-        date: "2019/06/18",
-        hoursSlept: 7.8,
-        sleepQuality: 1.5,
-      }),
-      (userSleep5 = {
-        userID: 1,
-        date: "2019/06/19",
-        hoursSlept: 8,
-        sleepQuality: 1.3,
-      }),
-      (userSleep6 = {
-        userID: 1,
-        date: "2019/06/20",
-        hoursSlept: 5.1,
-        sleepQuality: 3.7,
-      }),
-      (userSleep7 = {
-        userID: 1,
-        date: "2019/06/21",
-        hoursSlept: 5.1,
-        sleepQuality: 3.7,
-      }),
-      (userSleep8 = {
-        userID: 1,
-        date: "2019/06/22",
-        hoursSlept: 5.1,
-        sleepQuality: 3.7,
-      }),
       (user2Sleep1 = {
         userID: 2,
         date: "2019/06/15",
         hoursSlept: 10.2,
         sleepQuality: 5.2,
+      }),
+      (userSleep2 = {
+        userID: 1,
+        date: "2019/06/16",
+        hoursSlept: 10.5,
+        sleepQuality: 3.8,
       }),
       (user2Sleep2 = {
         userID: 2,
@@ -170,11 +134,23 @@ describe('UserRepo', () => {
         hoursSlept: 10.5,
         sleepQuality: 3.2,
       }),
+      (userSleep3 = {
+        userID: 1,
+        date: "2019/06/17",
+        hoursSlept: 7,
+        sleepQuality: 3,
+      }),
       (user2Sleep3 = {
         userID: 2,
         date: "2019/06/17",
         hoursSlept: 10.2,
         sleepQuality: 3.9,
+      }),
+      (userSleep4 = {
+        userID: 1,
+        date: "2019/06/18",
+        hoursSlept: 7.8,
+        sleepQuality: 1.5,
       }),
       (user2Sleep4 = {
         userID: 2,
@@ -182,11 +158,23 @@ describe('UserRepo', () => {
         hoursSlept: 10.2,
         sleepQuality: 2.2,
       }),
+      (userSleep5 = {
+        userID: 1,
+        date: "2019/06/19",
+        hoursSlept: 8,
+        sleepQuality: 1.3,
+      }),
       (user2Sleep5 = {
         userID: 2,
         date: "2019/06/19",
         hoursSlept: 10.2,
         sleepQuality: 3.8,
+      }),
+      (userSleep6 = {
+        userID: 1,
+        date: "2019/06/20",
+        hoursSlept: 5.1,
+        sleepQuality: 3.7,
       }),
       (user2Sleep6 = {
         userID: 2,
@@ -194,11 +182,23 @@ describe('UserRepo', () => {
         hoursSlept: 10.2,
         sleepQuality: 4.0,
       }),
+      (userSleep7 = {
+        userID: 1,
+        date: "2019/06/21",
+        hoursSlept: 5.1,
+        sleepQuality: 3.7,
+      }),
       (user2Sleep7 = {
         userID: 2,
         date: "2019/06/21",
         hoursSlept: 10.2,
         sleepQuality: 3,
+      }),
+      (userSleep8 = {
+        userID: 1,
+        date: "2019/06/22",
+        hoursSlept: 5.1,
+        sleepQuality: 3.7,
       }),
       (user2Sleep8 = {
         userID: 2,
@@ -322,20 +322,20 @@ describe('UserRepo', () => {
         [user1, user2],
         [
           userSleep1,
-          userSleep2,
-          userSleep3,
-          userSleep4,
-          userSleep5,
-          userSleep6,
-          userSleep7,
-          userSleep8,
           user2Sleep1,
+          userSleep2,
           user2Sleep2,
+          userSleep3,
           user2Sleep3,
+          userSleep4,
           user2Sleep4,
+          userSleep5,
           user2Sleep5,
+          userSleep6,
           user2Sleep6,
+          userSleep7,
           user2Sleep7,
+          userSleep8,
           user2Sleep8,
         ],
         [
@@ -360,14 +360,46 @@ describe('UserRepo', () => {
           userActivity8,
         ]
       )),
-      (user1 = new User({
-        id: 1,
-        name: "Testy User",
-        address: "123 Main St, Hometown CO 80123-1234",
-        email: "my.email.address@hotmail.com",
-        strideLength: 4.3,
-        dailyStepGoal: 12340,
-      })),
+      (user1 = new User(
+        {
+          id: 1,
+          name: "Testy User",
+          address: "123 Main St, Hometown CO 80123-1234",
+          email: "my.email.address@hotmail.com",
+          strideLength: 4.3,
+          dailyStepGoal: 12340,
+        },
+        [
+          userSleep1,
+          userSleep2,
+          userSleep3,
+          userSleep4,
+          userSleep5,
+          userSleep6,
+          userSleep7,
+          userSleep8,
+        ],
+        [
+          userHydrationData1,
+          userHydrationData2,
+          userHydrationData3,
+          userHydrationData4,
+          userHydrationData5,
+          userHydrationData6,
+          userHydrationData7,
+          userHydrationData8,
+        ],
+        [
+          userActivity1,
+          userActivity2,
+          userActivity3,
+          userActivity4,
+          userActivity5,
+          userActivity6,
+          userActivity7,
+          userActivity8,
+        ]
+      )),
       (user2 = new User({
         id: 2,
         name: "Great Person",
@@ -456,15 +488,162 @@ describe('UserRepo', () => {
       userActivity: {
         dailyStepGoal: 12340,
         strideLength: 4.3,
-        userActivityData: undefined,
-      },
-      userHydration: {
-        userHydrationData: undefined
+        userActivityData: [
+          {
+            userID: 1,
+            date: "2019/06/12",
+            numSteps: 3577,
+            minutesActive: 70,
+            flightsOfStairs: 16,
+          },
+          {
+            userID: 1,
+            date: "2019/06/13",
+            numSteps: 2500,
+            minutesActive: 60,
+            flightsOfStairs: 14,
+          },
+          {
+            userID: 1,
+            date: "2019/06/14",
+            numSteps: 4004,
+            minutesActive: 200,
+            flightsOfStairs: 12,
+          },
+          {
+            userID: 1,
+            date: "2019/06/15",
+            numSteps: 6900,
+            minutesActive: 85,
+            flightsOfStairs: 20,
+          },
+          {
+            userID: 1,
+            date: "2019/06/16",
+            numSteps: 4200,
+            minutesActive: 69,
+            flightsOfStairs: 15,
+          },
+          {
+            userID: 1,
+            date: "2019/06/17",
+            numSteps: 7070,
+            minutesActive: 85,
+            flightsOfStairs: 13,
+          },
+          {
+            userID: 1,
+            date: "2019/06/18",
+            numSteps: 6969,
+            minutesActive: 69,
+            flightsOfStairs: 17,
+          },
+          {
+            userID: 1,
+            date: "2019/06/19",
+            numSteps: 2030,
+            minutesActive: 100,
+            flightsOfStairs: 9,
+          },
+        ],
       },
       userSleep: {
-        userSleepData: undefined
+        userSleepData: [
+          {
+            userID: 1,
+            date: "2019/06/15",
+            hoursSlept: 6.1,
+            sleepQuality: 2.2,
+          },
+          {
+            userID: 1,
+            date: "2019/06/16",
+            hoursSlept: 10.5,
+            sleepQuality: 3.8,
+          },
+          {
+            userID: 1,
+            date: "2019/06/17",
+            hoursSlept: 7,
+            sleepQuality: 3,
+          },
+          {
+            userID: 1,
+            date: "2019/06/18",
+            hoursSlept: 7.8,
+            sleepQuality: 1.5,
+          },
+          {
+            userID: 1,
+            date: "2019/06/19",
+            hoursSlept: 8,
+            sleepQuality: 1.3,
+          },
+          {
+            userID: 1,
+            date: "2019/06/20",
+            hoursSlept: 5.1,
+            sleepQuality: 3.7,
+          },
+          {
+            userID: 1,
+            date: "2019/06/21",
+            hoursSlept: 5.1,
+            sleepQuality: 3.7,
+          },
+          {
+            userID: 1,
+            date: "2019/06/22",
+            hoursSlept: 5.1,
+            sleepQuality: 3.7,
+          },
+        ],
       },
-    })
+      userHydration: {
+        userHydrationData: [
+          {
+            userID: 1,
+            date: "2019/06/12",
+            numOunces: 38,
+          },
+          {
+            userID: 1,
+            date: "2019/06/13",
+            numOunces: 60,
+          },
+          {
+            userID: 1,
+            date: "2019/06/14",
+            numOunces: 40,
+          },
+          {
+            userID: 1,
+            date: "2019/06/15",
+            numOunces: 50,
+          },
+          {
+            userID: 1,
+            date: "2019/06/16",
+            numOunces: 51,
+          },
+          {
+            userID: 1,
+            date: "2019/06/17",
+            numOunces: 65,
+          },
+          {
+            userID: 1,
+            date: "2019/06/18",
+            numOunces: 60,
+          },
+          {
+            userID: 1,
+            date: "2019/06/19",
+            numOunces: 60,
+          },
+        ],
+      },
+    });
   });
 
   it("should return a hydration data for all data for one user", () => {
@@ -628,13 +807,12 @@ describe('UserRepo', () => {
     ]);
   });
 
-   it.skip("should return all sleepers with a sleepQuality over 3 for a given week", () => {
-     userRepo.findSleepDataWeek('2019/06/15');
-     expect(userRepo.findGoodSleepers('2019/06/15')).to.deep.equal([2]);
-   });
+  it("should return all sleepers with a sleepQuality over 3 for a given week", () => {
+    expect(userRepo.findGoodSleepers('2019/06/15')).to.deep.equal([2]);
+  });
 
-   it("should return user(s) who slept the most number of hours for a given day", () => {
-     expect(userRepo.findLongSleepers('2019/06/15')).to.deep.equal([2])
-     expect(userRepo.findLongSleepers("2019/06/16")).to.deep.equal([1,2]);
-   })
+  it("should return user(s) who slept the most number of hours for a given day", () => {
+    expect(userRepo.findLongSleepers('2019/06/15')).to.deep.equal([2])
+    expect(userRepo.findLongSleepers("2019/06/16")).to.deep.equal([1, 2]);
+  })
 })

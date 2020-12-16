@@ -5,22 +5,22 @@ class SleepRepo {
     this.data = data.map(userData => new Sleep(userData));
   }
 
-  returnAverageHoursSleptPerDay(userID) {
-    const currentUserData = this.data.filter(data => data.id === userID);
-    const totalHoursSlept = currentUserData.reduce((acc, cur) => {
-      return acc + cur.hoursSlept;
+  returnAvgData(userID, propertyName) {
+    const filteredData = this.data.filter(data => data.id === userID);
+    const total = filteredData.reduce((total, data) => {
+      return total + data[propertyName];
     }, 0);
-    const avgHoursSlept = totalHoursSlept / currentUserData.length;
-    return avgHoursSlept;
+
+    const average = total / filteredData.length;
+    return average;
   }
 
-  returnOverallAverageSleepQuality(userID) {
-    const currentUserData = this.data.filter(data => data.id === userID);
-    const totalSleepQuality = currentUserData.reduce((acc, cur) => {
-      return acc + cur.sleepQuality;
-    }, 0);
-    const avgSleepQuality = totalSleepQuality / currentUserData.length
-    return avgSleepQuality;
+  returnAverageHoursSleptPerDay(userID) {    
+    return this.returnAvgData(userID, 'hoursSlept');
+  }
+
+  returnOverallAverageSleepQuality(userID) {    
+    return this.returnAvgData(userID, 'sleepQuality');
   }
 
   returnWeekOfDailyHoursSlept(id, date) {

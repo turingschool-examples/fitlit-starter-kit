@@ -126,12 +126,16 @@ describe("UserActivity", () => {
     expect(userActivity).to.be.an.instanceof(UserActivity);
   });
 
-  it("should return a user's active minutes for a day", () => {
+  it("should return a user's active items for a day", () => {
     expect(userActivity.getOneDayOfData("2019/06/12", 'minutesActive')).to.equal(70);
+    expect(userActivity.getOneDayOfData("2019/06/12", 'numSteps')).to.equal(3577);
+    expect(userActivity.getOneDayOfData("2019/06/12", 'flightsOfStairs')).to.equal(16);
   });
 
-  it("should return a user's steps for a day", () => {
-    expect(userActivity.getOneDayOfData("2019/06/12", 'numSteps')).to.equal(3577);
+  it("should return a user's active items for a week", () => {
+    expect(userActivity.getWeekOfData("2019/06/12", 'minutesActive')).to.deep.equal([ 70, 60, 200, 85, 69, 85, 69 ]);
+    expect(userActivity.getWeekOfData("2019/06/12", 'numSteps')).to.deep.equal([ 3577, 2500, 4004, 6900, 4200, 7070, 6969 ]);
+    expect(userActivity.getWeekOfData("2019/06/12", 'flightsOfStairs')).to.deep.equal([ 16, 14, 12, 20, 15, 13, 17 ]);
   });
 
   it("should return a user's average number of minutes for a week", () => {
@@ -139,7 +143,20 @@ describe("UserActivity", () => {
       91.14285714285714
     );
   });
+  
+    it("should return a user's all time stair climbing record", () => {
+      expect(
+        userActivity.getStairRecord(1)).to.equal(20);
+    });
 
+  it("should return if a user is above average", () => {
+    const userItem1 = 70
+    const userItem2 = 68
+    const averageAll = 69
+    expect(userActivity.isUserAboveAvg(userItem1, averageAll)).to.be.true;
+    expect(userActivity.isUserAboveAvg(userItem2, averageAll)).to.be.false;
+  });  
+  
   it("should return if a user reached their step goal for a day", () => {
     expect(userActivity.isStepGoalReached("2019/06/12")).to.be.true;
     expect(userActivity.isStepGoalReached("2019/06/13")).to.be.false;
@@ -156,12 +173,7 @@ describe("UserActivity", () => {
     ]);
   });
 
-  it("should return a user's all time stair climbing record", () => {
-    expect(
-      userActivity.getStairRecord(1)).to.equal(20);
-  });
-
   it("should calculate a user's miles walked for a day", () => {
-    expect(userActivity.calculateMilesWalked("2019/06/12")).to.equal(2.9130871212121208);
+    expect(userActivity.("2019/06/12")).to.equal(2.9130871212121208);
   });
 });

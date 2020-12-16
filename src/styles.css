@@ -24,25 +24,29 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
-.admin-area {
+form {
+  margin: auto;
+}
+
+/* .admin-area {
   /* border: 1px solid white; */
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: flex-start; */
   /* width: 10%; */
-}
+/* } */
 
-.admin-icon {
-  background-color: #65A4F7;
-  border-radius: 5px;
-  width: auto;
-  max-width: 70px;
-}
+/* .admin-icon { */
+  /* background-color: #65A4F7; */
+  /* border-radius: 5px; */
+  /* width: auto; */
+  /* max-width: 70px; */
+/* } */
 
-.admin-text {
-  margin-bottom: 1%;
-  text-align: center;
-}
+/* .admin-text { */
+  /* margin-bottom: 1%; */
+  /* text-align: center; */
+/* } */
 
 header {
   width: 80%;
@@ -159,14 +163,6 @@ table {
   margin: auto;
   /* border: 1px solid cyan; */
 }
-
-.weekly-water {
-  /* writing-mode: vertical-rl; */
-  /* display: inline; */
-  /* border: 1px solid yellow; */
-}
-
-
 
 .hidden {
   display: none;

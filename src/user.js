@@ -1,7 +1,7 @@
 'use strict'
-const UserSleep = require("../src/UserSleep");
-const UserHydration = require("../src/UserHydration");
-const UserActivity = require("../src/UserActivity");
+// const UserSleep = require("../src/UserSleep");
+// const UserHydration = require("../src/UserHydration");
+// const UserActivity = require("../src/UserActivity");
 
 
 class User {
@@ -17,7 +17,10 @@ class User {
     this.dailyStepGoal = singleUserData.dailyStepGoal;
     this.userSleep = new UserSleep(singleUserSleepData);
     this.userHydration = new UserHydration(singleUserHydrationData);
-    this.userActivity = new UserActivity(singleUserActivityData, this.strideLength, this.dailyStepGoal);
+    this.userActivity = new UserActivity(
+      singleUserActivityData, 
+      this.strideLength, 
+      this.dailyStepGoal);
   }
 
   getFirstName() {

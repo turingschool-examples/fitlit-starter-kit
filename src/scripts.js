@@ -9,27 +9,29 @@ const waterButton = document.querySelector(".water-icon");
 const sleepButton = document.querySelector(".sleep-icon");
 const activityButton = document.querySelector(".exercise-icon");
 
-const displayStatsArea = document.querySelector(".display-stats")
 const hydrationStatsDisplay = document.querySelector(".hydration-stats");
-const sleepStatsDisplay = document.querySelector(".sleep-stats")
-const activityStatsDisplay = document.querySelector(".activity-stats");
 const allWaterDisplays = document.querySelectorAll(".water"); // returns a node list
+const todayConsumption = document.querySelector(".today-consumption")
+
+const sleepStatsDisplay = document.querySelector(".sleep-stats")
 const allSleepDisplays = document.querySelectorAll(".sleep"); // returns a node list
-const allActivityDisplays = document.querySelectorAll('.activity'); // returns a node list
 const todaySleep = document.querySelector(".today-sleep")
+const avgSleepStats = document.querySelector(".avg-sleep-stats")
+
+const activityStatsDisplay = document.querySelector(".activity-stats");
+const allActivityDisplays = document.querySelectorAll('.activity'); // returns a node list
 const todayActivity = document.querySelector(".today-activity")
 const avgActivityStats = document.querySelector(".avg-activity-stats")
-const avgSleepStats = document.querySelector(".avg-sleep-stats")
-const todayConsumption = document.querySelector(".today-consumption")
-const userDropdown = document.querySelector(".user-dropdown")
+
 const namesList = document.querySelector(".names-list")
-const datePicker = document.querySelector(".date-picker")
 const adminSelector = document.querySelector(".admin-selector")
-const compareStairs = document.querySelector(".stairs-compare");
-const compareSteps = document.querySelector(".steps-compare");
-const compareMinutes = document.querySelector(".minutes-compare");
-const compareMiles = document.querySelector(".miles-compare");
-//think about getting querySelectors local when we can
+
+
+// const displayStatsArea = document.querySelector(".display-stats")
+// const userDropdown = document.querySelector(".user-dropdown")
+// const compareMiles = document.querySelector(".miles-compare");
+
+// think about getting querySelectors local when we can
 // using it more than once - global, click or load
 // if only using once make it local
 // low hanging fruit
@@ -88,6 +90,7 @@ adminSelector.addEventListener('click', (event) => {
 })
 
 function setChosenDate() { // returns chosen date
+  const datePicker = document.querySelector(".date-picker")
   chosenDate = datePicker.value.split('-').join('/')
   return chosenDate
 }
@@ -105,10 +108,10 @@ function displayInfoCard() {
   userEmail.innerText = `${currentUser.email}`;
   userStepCompare.innerText = `Your step goal is ${
     currentUser.userActivity.dailyStepGoal
-  }, and the average is ${userRepo.getAllUserAvgItem
-    (userRepo.activityData,
-      chosenDate, 
-      "numSteps")}`;
+  }, and the average is ${userRepo.getAllUserAvgItem(
+    userRepo.activityData,
+    chosenDate, 
+    "numSteps")}`;
 }
 
 function displayHydrationActivity() {
@@ -155,6 +158,7 @@ function displayMilesWalked(placement) {
 //try and squish these together
 
 function displayUserStairsSuccess() { 
+  const compareStairs = document.querySelector(".stairs-compare");
   let singleStair = currentUser.userActivity.getOneDayOfData(
     chosenDate,
     'flightsOfStairs'
@@ -165,7 +169,6 @@ function displayUserStairsSuccess() {
     'flightsOfStairs'
   )
   if (currentUser.userActivity.isUserAboveAvg(singleStair, allStairs)) {
-    console.log(compareStairs)
     compareStairs.innerText = `Your ${singleStair} stairs climbed is higher than the user average of ${allStairs}`;
   } else {
     compareStairs.innerText = `Your ${singleStair} stairs climbed is lower than the user average of ${allStairs}`;
@@ -173,6 +176,7 @@ function displayUserStairsSuccess() {
 }
 
 function displayUserStepSuccess() {
+  const compareSteps = document.querySelector(".steps-compare");
   let singleStep = currentUser.userActivity.getOneDayOfData(
     chosenDate,
     'numSteps'
@@ -190,6 +194,7 @@ function displayUserStepSuccess() {
 }
 
 function displayUserMinutesSuccess() {
+  const compareMinutes = document.querySelector(".minutes-compare");
   let singleMinute = currentUser.userActivity.getOneDayOfData(
     chosenDate,
     'minutesActive'

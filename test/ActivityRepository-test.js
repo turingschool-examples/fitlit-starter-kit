@@ -253,8 +253,8 @@ describe('ActivityRepository', () => {
   })
 
   it('should get all user avg steps for a given date', () => {
-    expect(activityRepo.getAllUsersAvgStepsByDate("2019/06/15")).to.equal(4082);
-    expect(activityRepo.getAllUsersAvgStepsByDate("2019/06/16")).to.equal(4591);
+    expect(activityRepo.getAllUsersAvgStepsByDate("2019/06/15")).to.equal('4,082');
+    expect(activityRepo.getAllUsersAvgStepsByDate("2019/06/16")).to.equal('4,591');
   })
 
   it('should get all user avg mins for a given date', () => {

@@ -111,7 +111,9 @@ class ActivityRepo {
     const totalSteps = activitiesOnDate.reduce((total, activity) => {
       return total + activity.numSteps;
     }, 0)
-    return Math.round(totalSteps / activitiesOnDate.length);
+    const allUserAvgSteps = Math.round(totalSteps / activitiesOnDate.length);
+    return allUserAvgSteps.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
   }
 
   getAllUsersAvgMinsByDate(date) {

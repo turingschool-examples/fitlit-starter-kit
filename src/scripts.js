@@ -10,7 +10,7 @@ const graphTitle = document.querySelector('.title-graph');
 const steps = document.querySelector('.steps');
 const activeMinutes = document.querySelector('.active-minutes')
 const stairs = document.querySelector('.stairs');
-const userAllTimeSleep = document.querySelector('.user-all-time-sleep-stats')
+const userLatestSleep = document.querySelector('.user-all-time-sleep-stats')
 
 //since multiple methods will need these, global
 let community = null;
@@ -59,13 +59,12 @@ const showProfile = () => {
   `)
 }
 
-//ADD ALL-TIME SLEEP STATS:
-//show all-time average sleep quality
-//show all-time average number of hours slept
-const showAllTimeSleepQualityUser = () => {
-  userAllTimeSleep.insertAdjacentHTML('beforeend',
+//ADD TODAY SLEEP STATS:
+const showLatestSleepStatsUser = () => {
+  userLatestSleep.insertAdjacentHTML('beforeend',
     `<p class="sleep-stats">Last Night:</p>
-    <p class="sleep-quality-last-night">Your sleep quality score: ${communitySleep.calculateSleepQualityOnDay(sleep.userID, yesterday)}</p>`)
+    <p class="sleep-quality-last-night">Your sleep quality score: ${communitySleep.findSleepQualityOnDay(sleep.userID, yesterday)}</p>
+    <p class="sleep-quantity-last-night">You slept ${communitySleep.findHrsSleptOnDay(sleep.userID, yesterday)} hrs</p>`)
 }
 
 //loads a display of the user's step goal
@@ -227,5 +226,5 @@ function loadPage() {
   showHydrationStatsWeek("2019/09/16", "2019/09/22")
   showFriends()
   showActivityStats()
-  showAllTimeSleepQualityUser();
+  showLatestSleepStatsUser();
 }

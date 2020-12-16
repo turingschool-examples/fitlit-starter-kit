@@ -10,7 +10,9 @@ const graphTitle = document.querySelector('.title-graph');
 const steps = document.querySelector('.steps');
 const activeMinutes = document.querySelector('.active-minutes')
 const stairs = document.querySelector('.stairs');
-const userLatestSleep = document.querySelector('.user-all-time-sleep-stats')
+const userLatestSleep = document.querySelector('.user-latest-sleep-stats')
+const sleepHours = document.querySelector('.sleep-hours')
+const sleepQuality = document.querySelector('.sleep-quality')
 
 //since multiple methods will need these, global
 let community = null;
@@ -61,18 +63,24 @@ const showProfile = () => {
 
 //ADD TODAY SLEEP STATS:
 const showLatestSleepStatsUser = () => {
-  userLatestSleep.insertAdjacentHTML('beforeend',
-    `<p class="sleep-stats">Last Night:</p>
+  userLatestSleep.insertAdjacentHTML('beforeend', `
+    <p class="sleep-quantity-last-night">You slept ${communitySleep.findHrsSleptOnDay(sleep.userID, yesterday)} hrs</p>
     <p class="sleep-quality-last-night">Your sleep quality score: ${communitySleep.findSleepQualityOnDay(sleep.userID, yesterday)}</p>
-    <p class="sleep-quantity-last-night">You slept ${communitySleep.findHrsSleptOnDay(sleep.userID, yesterday)} hrs</p>`)
+    `)
 }
 
 //loads a display of the user's step goal
 //also loads display of community step goal
 
-//ADD TODAY SLEEP STATS:
+//ADD ALL-TIME SLEEP STATS:
 //sleep dada for latest day: hours slept and quality of sleep
+const showAllSleepQuantity = () => {
+  sleepHours.insertAdjacentHTML('afterbegin', `You average ${communitySleep.calculateAvgSleepHrsPerDay(sleep.userID)} hrs/day`)
+}
 
+const showAllSleepQuality = () => {
+  sleepQuality.insertAdjacentHTML('afterbegin', `You average a score of ${communitySleep.calculateAvgSleepQualPerDay(sleep.userID)} /day`)
+}
 //ADD WEEK SLEEP STATS:
 //hours slept and quality of sleep
 
@@ -90,7 +98,6 @@ const showHydrationStats = () => {
 
 //ADD WEEKLY HYDRATION STATS:
 const showHydrationStatsWeek = (startDate, endDate) => {
-  console.log(communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate))
   graphTitle.insertAdjacentHTML('afterend',
     `<article class="water-stats-week">Water consumed over the week of ${startDate}-${endDate}:
       <p>Day 1: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[0].numOunces} OZ</p>
@@ -184,6 +191,11 @@ const showStairsStatsWeek = (startDate, endDate) => {
     `<article class="stairs-stats-week">Stairs Climbed over the week of ${startDate}-${endDate}:` + activitiesDisplay + '</article>')
 }
 
+const showSleepStats = () => {
+  showLatestSleepStatsUser();
+  showAllSleepQuantity();
+  showAllSleepQuality();
+}
 
 const showActivityStats = () => {
   showIfUserMetStepGoal()
@@ -226,5 +238,5 @@ function loadPage() {
   showHydrationStatsWeek("2019/09/16", "2019/09/22")
   showFriends()
   showActivityStats()
-  showLatestSleepStatsUser();
+  showSleepStats()
 }

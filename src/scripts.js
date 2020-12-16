@@ -8,7 +8,7 @@ const strideLengthDisplay = document.querySelector('.stride');
 const dailyStepGoal = document.querySelector('.daily-step-goal');
 const friendsList = document.querySelector('.friends');
 const averageStepGoal = document.querySelector('.average-step-goal');
-
+const waterConsumed = document.querySelector('.water-consumed');
 
 const displayAllUserData = () => {
   firstNameDisplay.innerText = `Hello ${currentUser.provideUsersFirstName()}!`
@@ -19,6 +19,7 @@ const displayAllUserData = () => {
   dailyStepGoal.innerText += `${currentUser.dailyStepGoal}`;
   averageStepGoal.innerText += `        ${currentUserRepo.userStepGoalAverage()}.`;
   displayFriendsByName();
+  waterConsumed.innerText = `Water consumed today was `
 };
 
 function displayFriendsByName() {

@@ -5,7 +5,15 @@ const Hydration = require('../src/Hydration');
 
 class CommunityHydration {
   constructor(data = []) {
-    this.hydrations = data.map(user => new Hydration(user))
+    this.hydrations = data.map(hydration => new Hydration(hydration))
+  }
+  convertDateString(date) {
+    return parseInt(date.split('/').join(''));
+  }
+
+  findUserWaterData(userID) {
+      const userWater = this.hydrations.filter(water => water.userID === userID)
+      return userWater;
   }
 
   calculateAvgWaterPerDay(userID) {
@@ -20,27 +28,17 @@ class CommunityHydration {
     return userWater.numOunces;
   }
 
-  convertDateString(date) {
-    return parseInt(date.split('/').join(''));
-  }
-
   calculateTotalWeek(userID, startDate, endDate){//refactor to truncate long decimal numbers
     const weekWaterTotals = [];
     const startDateNumber = this.convertDateString(startDate);
     const endDateNumber = this.convertDateString(endDate);
-    const userWater = this.hydrations.filter(water => water.userID === userID)
-    const userWaterStrings = userWater.map(hydration => {
-      const waterStrings = this.convertDateString(hydration.date);
-      return waterStrings;
-    })
-    const waterWithinWeek = userWaterStrings.filter(waterDate => waterDate >= startDateNumber && waterDate <= endDateNumber);
-    const waterWeek = waterWithinWeek.forEach(element => {
-      const waterWeekFiltered = this.hydrations.filter(water => {
-        let dateString = this.convertDateString(water.date)
-        if(dateString === element){
-          weekWaterTotals.push(water.numOunces);
-        }
-       })
+    const userWater = this.findUserWaterData(userID);
+
+    const waterDates = userWater.filter(water => {
+      const waterDateToNumber = this.convertDateString(water.date)
+      if(waterDateToNumber >= startDateNumber && waterDateToNumber <= endDateNumber) {
+        weekWaterTotals.push(water);
+      }
     })
     return weekWaterTotals;
   }

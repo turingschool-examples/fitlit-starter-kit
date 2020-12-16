@@ -20,7 +20,7 @@ Alternatively, click the following link to be sent to the app's deployed site: [
 ---
 ### How to Use
 
-Upon opening, Fitlit will load a random individual's data. However, the user of the application can use the dropdown menu to select a specific person to see their activity. 
+Upon opening, Fitlit will load a random individual's data. The dashboard of the app will showcase the user's data in 4 sections. Up top is the user info card that will display personal information about the user as well as their step goal, how that goal compares to all users, and whether or not they have reached their step goal for that day. Below are three categorized sections including Hydration, Sleep, and Activity. In their respective columns, each category will show a user's data relative to that category. Featured are both widgets that will have a simple number + label design as well as graphs that will show a more detailed view of the user's weekly habits. To view another user and see how the data sections will change accordingly, simply refresh the page.
 
 ---
 ### Wins & Challenges
@@ -29,13 +29,19 @@ Upon opening, Fitlit will load a random individual's data. However, the user of 
   - We think our testing suite is effective and efficient, testing all properties, methods, and helper methods of our class files.
   - We believe we've done a good job of separating manipulating data sets (Class files) and manipulating the DOM (scripts.js).
   - Our Git workflow was also efficient, working on different branches at the same time, merging branches before merging to main, utilizing Github Issues and linking those to our project board.
+  - We think the responsiveness of the user interface has worked well and shows the data effectively.
 
 **Challenges**
   - We needed to learn how to use Moment.js effectively before we were able to incorporate into our application.
   - Possibly the biggest design challenge was deciding how to showcase the data effectively, especially as the amount of data for each category was unequal.
   - The SleepRepository method that is finding users with a sleep quality higher than 3 was a challenge to figure out.
+  - We had difficulties working with Chart.js for some of the Activity methods, still unsure what the problem was.
   
 ---
 ### Future Iterations
 
-...
+For future iterations we hope to include more user interaction - initially we hoped for some kind of dropdown menu to be able to directly select the user that was being shown on the page, as well as some kind of calendar functionality that would allow for selection of a different date period other than the 7 most recent days. 
+
+We also hope to incorporate some kind of leaderboard for the different kinds of data alongside the user info card. This way a user could more easily identify how they compare to other users across multiple stats.
+
+Lastly, for now, we would also like to use more charts for activity to showcase the data differently as well as make more use of the white space that occurs thanks to activity being a longer section in general than the other categories.

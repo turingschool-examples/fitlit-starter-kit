@@ -83,6 +83,19 @@ const showAllSleepQuality = () => {
 }
 //ADD WEEK SLEEP STATS:
 //hours slept and quality of sleep
+const showSleepStatsWeek = (startDate, endDate) => {
+  graphTitle.insertAdjacentHTML('afterend', `
+    <article class="sleep-stats-week">Hours slept over the week of ${startDate}-${endDate}:
+     <p>Day 1: ${communitySleep.calculateSleepStatsWeek(sleep.userID, startDate, endDate)[0].hoursSlept} HRS</p>
+     <p>Day 2: ${communitySleep.calculateSleepStatsWeek(sleep.userID, startDate, endDate)[1].hoursSlept} HRS</p>
+     <p>Day 3: ${communitySleep.calculateSleepStatsWeek(sleep.userID, startDate, endDate)[2].hoursSlept} HRS</p>
+     <p>Day 4: ${communitySleep.calculateSleepStatsWeek(sleep.userID, startDate, endDate)[3].hoursSlept} HRS</p>
+     <p>Day 5: ${communitySleep.calculateSleepStatsWeek(sleep.userID, startDate, endDate)[4].hoursSlept} HRS</p>
+     <p>Day 6: ${communitySleep.calculateSleepStatsWeek(sleep.userID, startDate, endDate)[5].hoursSlept} HRS</p>
+     <p>Day 7: ${communitySleep.calculateSleepStatsWeek(sleep.userID, startDate, endDate)[6].hoursSlept} HRS</p>
+    </article>
+  `)
+}
 
 const showStepGoalComparison = () => {
   userStepGoal.insertAdjacentHTML('beforeend', `<p>${user.dailyStepGoal}</p>`)
@@ -98,17 +111,17 @@ const showHydrationStats = () => {
 
 //ADD WEEKLY HYDRATION STATS:
 const showHydrationStatsWeek = (startDate, endDate) => {
-  graphTitle.insertAdjacentHTML('afterend',
-    `<article class="water-stats-week">Water consumed over the week of ${startDate}-${endDate}:
-      <p>Day 1: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[0].numOunces} OZ</p>
-      <p>Day 2: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[1].numOunces} OZ</p>
-      <p>Day 3: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[2].numOunces} OZ</p>
-      <p>Day 4: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[3].numOunces} OZ</p>
-      <p>Day 5: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[4].numOunces} OZ</p>
-      <p>Day 6: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[5].numOunces} OZ</p>
-      <p>Day 7: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[6].numOunces} OZ</p>
+  graphTitle.insertAdjacentHTML('afterend', `
+    <article class="water-stats-week">Water consumed over the week of ${startDate}-${endDate}:
+     <p>Day 1: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[0].numOunces} OZ</p>
+     <p>Day 2: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[1].numOunces} OZ</p>
+     <p>Day 3: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[2].numOunces} OZ</p>
+     <p>Day 4: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[3].numOunces} OZ</p>
+     <p>Day 5: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[4].numOunces} OZ</p>
+     <p>Day 6: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[5].numOunces} OZ</p>
+     <p>Day 7: ${communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)[6].numOunces} OZ</p>
     </article>
-    `)
+  `)
 }
 //ADD ACTIVITY STATS:
 const showIfUserMetStepGoal = () => {
@@ -195,6 +208,7 @@ const showSleepStats = () => {
   showLatestSleepStatsUser();
   showAllSleepQuantity();
   showAllSleepQuality();
+  showSleepStatsWeek("2019/09/16", "2019/09/22");
 }
 
 const showActivityStats = () => {

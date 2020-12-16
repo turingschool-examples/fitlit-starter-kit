@@ -51,7 +51,7 @@ class SleepRepo {
     const allSleepQuality = this.data.reduce((acc, cur) => {
       return acc + cur.sleepQuality;
     }, 0);
-    const avgSleepQualityForAllUsers = allSleepQuality / this.data.length;
+    const avgSleepQualityForAllUsers = parseFloat((allSleepQuality / this.data.length).toFixed(2));
     return avgSleepQualityForAllUsers;
   }
 
@@ -69,33 +69,6 @@ class SleepRepo {
   }
 
   returnUsersWithSleepQualityThreeOrGreater(date) {
-    // const totalUserIDs = this.data.map(user => user.id);
-    // const allUserIDs = totalUserIDs.filter((user, index) => {
-    //   return totalUserIDs.indexOf(user) === index;
-    // });
-
-    // const arrayOfSleepDataPerUser = allUserIDs.map(id => this.data.filter(sleep => sleep.id === id));
-    // const arrayOfDates = arrayOfSleepDataPerUser[0].map(sleep => sleep.date);
-    // const indexOfEndDate = arrayOfDates.indexOf(date);
-    // const weekOfUserSleepQuality = arrayOfSleepDataPerUser.map(array => array.slice(indexOfEndDate - 6, indexOfEndDate + 1));
-    // const eachUsersTotalSleepQuality = weekOfUserSleepQuality.map(array => array.reduce((acc, cur) => {
-    //   return acc + cur.sleepQuality;
-    // }, 0));
-
-    // const avgSleepQualityPerUser = eachUsersTotalSleepQuality.map(total => total / weekOfUserSleepQuality[0].length);
-    // const sleepQualityThreeOrMore = avgSleepQualityPerUser.filter((sleep) => sleep > 3);
-    // const users3AndAbove = [];
-    // for (let i = 0; i < avgSleepQualityPerUser.length; i++) {
-    //   for (let j = 0; j < sleepQualityThreeOrMore.length; j++) {
-    //     if (sleepQualityThreeOrMore[j] === avgSleepQualityPerUser[i]) {
-    //       const userID = i + 1;
-    //       users3AndAbove.push(userID);
-    //     }
-    //   }
-    // }
-
-    // return users3AndAbove;
-
     // input: endDate; global array of objects of sleep data
     // output: array of user ids (num) whose avg sleep quality of 3 or greater
     // methods: slice, reduce, forEach, toFixed, parseFloat, new Set(array)

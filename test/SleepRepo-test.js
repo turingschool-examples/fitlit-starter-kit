@@ -209,7 +209,7 @@ describe('SleepRepo', () => {
       expect(sleepRepo.returnWeekOfDailySleepQuality(1, "2019/06/21")).to.deep.equal([3.2, 2.9, 2.6, 2.5, 2.3, 2.2, 2]);
     });
 
-    it.only('should be able to return all users with average sleep quality 3 or greater for a week when given an end date', () => {
+    it('should be able to return all users with average sleep quality 3 or greater for a week when given an end date', () => {
       expect(sleepRepo.returnUsersWithSleepQualityThreeOrGreater("2019/06/24")).to.deep.equal([2, 3]);
     });
 
@@ -219,8 +219,8 @@ describe('SleepRepo', () => {
     });
 
     it('should be able to return average sleep quality amongst all users', () => {
-      expect(sleepRepo.returnAverageSleepQualityForAllUsers()).to.equal(2.769999999999999);
+      expect(sleepRepo.returnAverageSleepQualityForAllUsers()).to.equal(2.86);
       // I would like to see this tapered of to two decimal places: 2.77
-    });
-    // I would like to see no space here as there is no statement
+        // 2.86 after I adjusted data slightly
+    });    
   });

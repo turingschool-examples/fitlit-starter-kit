@@ -92,22 +92,19 @@ h2.welcome {
 }
 
 canvas {
-  margin-bottom: 10%
+  padding-bottom: 10%;
 }
 
 .hydration {
   background-color: #00B0FF;
-  color: white;
 }
 
 .sleep {
   background-color: #536DFE;
-  color: white;
 }
 
 .activity {
   background-color: #F50057;
-  color: white;
 }
 
 /* MEDIA QUERIES */

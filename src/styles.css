@@ -1,15 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  border-radius: 20px;
+}
+
 body,html {
-  background-color: gray;
-  font-family: 'ABeeZee', sans-serif;
   display: flex;
   border-width: thin;
   flex-direction: column;
+  font-family: 'Fredoka One', cursive;
 }
 
-h1, h2, h3 {
-  font-family: 'Fredoka One', cursive;
+h1 {
+  background-image: linear-gradient(to left, #fcdd2d, #d413f2, #0745ff, #7c07f9, #d413f2, #fcdd2d);  
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 10vh;
+  -webkit-text-stroke: 2px black;
+
+}
+
+h2 {
+  color:  #d413f2;
   display: flex;
   justify-content: center;
+  padding: 3vh;
+}
+
+h3 {
   border: solid black;
 }
 
@@ -18,29 +36,80 @@ p {
   justify-content: center;
 }
 
-.activity {
+.active-minutes {
   border: solid black;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh;
 }
 
-.fitness-categories {
+.date-select {
   border: solid black;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  padding: 3%;
+  align-content: center;
 }
 
 .friends {
   border: solid black;
 }
 
-.sleep {
+.greeting {
   border: solid black;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh;
 }
 
-.user-container {
-  border: solid black;
+header {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  padding: 3vh;
+}
+
+.greeting {
+  color: #7c07f9;
+}
+
+.sleep {
+  border: solid black;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh;
+}
+
+.stairs {
+  border: solid black;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh;
+}
+
+.stats {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  border: solid black;
+  padding: 5px;
+  margin: 5px;
+  background-color: rgb(195, 194, 194);
+  justify-content: space-around;
+}
+
+.steps {
+  border: solid black;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh;
 }
 
 .user-main {
@@ -48,15 +117,27 @@ p {
   flex-direction: column;
   align-items: center;
   border: solid black;
+  padding: 5px;
+  margin: 5px;
+  background-color: rgb(195, 194, 194);
+  justify-content: space-around;
 }
+
 
 .user-profile {
   border: solid black;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 5vh;
 }
 
 .water {
   border: solid black;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh;
 }

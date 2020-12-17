@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
@@ -10,8 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>FITLIT</h1>
+    <header>
+      <h1>FITLIT</h1>
+    </header>
     <section class="user-main">
+      <article class="greeting">
+      </article>
       <article class="user-profile">
         <h2>Your Profile</h2>
       </article>
@@ -27,25 +32,30 @@
         </article>
       </article>
     </section>
+    <section class="stats">
+      
+      <article class="steps">
+        <h2>Steps</h2>
+      </article>
 
-    <section class="fitness-categories">
       <article class="water">
         <h2>Water</h2>
       </article>
-      <article class="activity">
-        <h2>Activity</h2>
-        <div class="activity-container">
-          <p class="steps">
-          </p>
-          <p class="active-minutes">
-          </p>
-          <p class="stairs">
-          </p>
-        </div>
+
+      <article class="stairs">
+        <h2>Stairs</h2>
       </article>
+
+      <article class="active-minutes">
+        <h2>Active Minutes</h2>
+      </article>
+
       <article class="sleep">
         <h2>Sleep</h2>
         <div class="sleep-container">
+          <article class="user-all-time-sleep-stats">
+            <h3>Your All-Time Sleep Stats</h3>
+          </article>
           <p class="sleep-hours">
           </p>
           <p class="sleep-quality">
@@ -53,11 +63,36 @@
         </div>
       </article>
     </section>
+
+    <article class="date-select">
+      <label for="start">Show stats for date:</label>
+      <input type="date" id="today" name="today"
+        value="2019-09-22"
+        min="2019-06-15" max="2019-09-16">
+      <h2>Dates for Graph</h2>
+      <label for="start">Start date:</label>
+      <input type="date" id="start" name="week-start"
+        value="2019-09-16"
+        min="2019-06-15" max="2019-09-16">
+      <label for="end">End date:</label>
+      <input type="date" id="end" name="week-end"
+        value="2019-09-22"
+        min="2019-06-21" max="2019-09-22">
+    </article>
+
     <section class="graph">
       <h2 class="title-graph">Graph</h2>
+      <canvas id="stepChart" width="800" height="400"></canvas>
+      <canvas id="waterChart" width="800" height="400"></canvas>
+      <canvas id="stairsChart" width="800" height="400"></canvas>
+      <canvas id="activeMinutesChart" width="800" height="400"></canvas>
+      <canvas id="sleepChart" width="800" height="400"></canvas>
+      
     </graph>
+
     <section class="friends">
       <h2>Friends</h2>
+      <canvas id="friendChart" width="800" height="400"></canvas>
     </section>
 
     <script type="text/javascript" src="../data/users.js"></script>

@@ -405,9 +405,7 @@ describe('ActivityRepo', () => {
     expect(avgMinutes).to.equal(187);
   });
 
-
-
-  it.skip('should return all days a user exceeded their step goal', () => {
+  it('should return all days a user exceeded their step goal', () => {
     const daysExceededGoal = activityRepo.calculateDaysExceededGoal(33);
 
     expect(daysExceededGoal).to.deep.equal(['2019/09/19', '2019/09/22']);

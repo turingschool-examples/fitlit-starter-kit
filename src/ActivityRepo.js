@@ -109,21 +109,12 @@ class ActivityRepo {
     const weekOfActivity = this.activityData.filter(day => week.includes(day.date));
     const theirWeek = weekOfActivity.filter(day => day.userID === id);
     const minutes = theirWeek.map(day => day.minutesActive);
-    return Math.round(minutes.reduce((total, day) => total + day, 0) / 7);
-    
+    return Math.round(minutes.reduce((total, day) => total + day, 0) / 7);    
+  }
 
-    // find their minutes active for the week of the end date for the user
-    // taking in id and end date
-    // putting out avg minutes active (num)
-
-    // generate week dates
-    // filter activity data to match those dates
-    // filter that data to just be users
-    // reduce (or forEach) through that data to generate total
-    // div total by 7 (it's a week)
-    // return total
-
-
+  calculateDaysExceededGoal(id) {
+    const goal = this.userData.find(user => user.id === id).dailyStepGoal;
+    return this.activityData.filter(data => data.numSteps >= goal && data.userID === id).map(data => data.date);    
   }
 }
 

@@ -1,11 +1,10 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const UserRepo = require('../src/UserRepo');
 const ActivityRepo = require('../src/ActivityRepo');
 
 describe('ActivityRepo', () => {
-  let userDataset, userRepo, dataset, activityRepo;
+  let userDataset, dataset, activityRepo;
 
   beforeEach(() => {
     userDataset = [
@@ -59,40 +58,8 @@ describe('ActivityRepo', () => {
         ]
       }
     ]
-
-    userRepo = new UserRepo(userDataset);
-
-    dataset = [
-      {
-        "date": "2019/08/28"
-      },     
-      {
-        "date": "2019/08/29"
-      },     
-      {
-        "date": "2019/08/30"
-      },     
-      {
-        "date": "2019/08/31"
-      },     
-      {
-        "date": "2019/09/01"
-      },     
-      {
-        "date": "2019/09/02"
-      },     
-      {
-        "date": "2019/09/03"
-      },  
-      {
-        "date": "2019/09/04"
-      },
-      {
-        "date": "2019/09/05"
-      },
-      {
-        "date": "2019/09/06"
-      },   
+    
+    dataset = [   
       {
         "userID": 11,
         "date": "2019/09/14",

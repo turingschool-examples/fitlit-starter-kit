@@ -23,7 +23,7 @@ function hydrationWeekView(id, date) {
 }
 
 function hydrationDayView() {
-  waterConsumed.innerText = `Water Consumed Today:     ${currentHydration.numOunces} ounces!`;
+  waterConsumed.innerText = `Water Consumed Today -     ${currentHydration.numOunces} ounces!`;
 }
 
 const displayAllUserData = () => {
@@ -34,7 +34,7 @@ const displayAllUserData = () => {
   strideLengthDisplay.innerText += `${currentUser.strideLength}`;
   dailyStepGoal.innerText += `${currentUser.dailyStepGoal}`;
   averageStepGoal.innerText += `        ${currentUserRepo.userStepGoalAverage()}.`;
-  waterConsumed.innerText = `Water Consumed Today:     ${currentHydration.numOunces} ounces!`;
+  waterConsumed.innerText = `Water Consumed Today -   ${currentHydration.numOunces} ounces!`;
   displayFriendsByName();
 };
 

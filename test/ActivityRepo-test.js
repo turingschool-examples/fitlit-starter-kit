@@ -411,7 +411,7 @@ describe('ActivityRepo', () => {
     expect(daysExceededGoal).to.deep.equal(['2019/09/19', '2019/09/22']);
   });
 
-  it.skip('should return user\'s all-time stair-climbing record', () => {
+  it('should return user\'s all-time stair-climbing record', () => {
     const record = activityRepo.calculateStairRecord(22);
 
     expect(record).to.equal(47);

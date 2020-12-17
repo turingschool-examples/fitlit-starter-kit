@@ -116,6 +116,16 @@ class ActivityRepo {
     const goal = this.userData.find(user => user.id === id).dailyStepGoal;
     return this.activityData.filter(data => data.numSteps >= goal && data.userID === id).map(data => data.date);    
   }
+
+  calculateStairRecord(id) {
+    return this.activityData.reduce((record, data) => {
+      if (data.flightsOfStairs > record && data.userID === id) {
+        record = data.flightsOfStairs;
+      }
+
+      return record;
+    }, 0);
+  }
 }
 
 if (typeof module !== 'undefined') {

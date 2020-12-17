@@ -59,6 +59,7 @@ sleepButton.addEventListener('click', () => {
 
 activityButton.addEventListener('click', () => {
   displayExerciseActivity();
+  displayActivityChart();
 })
 
 viewUserButton.addEventListener('click', (event) => {
@@ -295,7 +296,7 @@ function displaySleepChart() {
       ],
       datasets: [
         {
-          label: "Sleep Data",
+          label: "Sleep Quality",
           backgroundColor: "#F0CB30",
           borderColor: "#F0CB30",
           data: currentUser.userSleep.calculateSleepItemPerWeek(
@@ -304,12 +305,63 @@ function displaySleepChart() {
           ),
         },
         {
-          label: "Sleep Data",
+          label: "Hours Slept",
           backgroundColor: "#C667E0",
           borderColor: "#C667E0",
           data: currentUser.userSleep.calculateSleepItemPerWeek(
             chosenDate,
             "hoursSlept"
+          ),
+        },
+      ],
+    },
+    options: {
+      events: [],
+    },
+  });
+}
+
+function displayActivityChart() {
+  let stepsNumber = currentUser.userActivity.getWeekOfData(
+    chosenDate,
+    "numSteps"
+  ).map(item => item/40)
+  let ctx = document.getElementById("activityChart").getContext("2d");
+  let chart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: [
+        "Start Date",
+        "Next Day",
+        "2 Days Later",
+        "3 Days Later",
+        "4 Days Later",
+        "5 Days Later",
+        "6 Days Later",
+      ],
+      datasets: [
+        {
+          label: "Steps (scaled down by 40%)",
+          backgroundColor: "#FA6A3C",
+          borderColor: "##FA6A3C",
+          data: stepsNumber,
+        },
+        {
+          label: "Flights of Stairs Climbed",
+          backgroundColor: "#65A4F7",
+          borderColor: "##65A4F7",
+          data: currentUser.userActivity.getWeekOfData(
+            chosenDate,
+            "flightsOfStairs"
+          ),
+        },
+        {
+          label: "Active Minutes",
+          backgroundColor: "#C667E0",
+          borderColor: "#C667E0",
+          data: currentUser.userActivity.getWeekOfData(
+            chosenDate,
+            "minutesActive"
           ),
         },
       ],

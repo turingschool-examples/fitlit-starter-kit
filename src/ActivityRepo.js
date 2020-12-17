@@ -88,12 +88,13 @@ class ActivityRepo {
   }
 
   findWeekAndUser(id, endDate) {
-    // const user = this.userData.find(data => data.id === id);
-    // const dates = this.findWeekDates(endDate);
-    // return {
-    //   user: user,
-    //   dates: dates
-    // }
+    const user = this.userData.find(data => data.id === id);
+    const week = this.findWeekDates(endDate);
+    console.log(week);
+    return {
+      user: user,
+      week: week
+    }
     
     // find each date 
     // find each date's data (findWeekDates(endDate))

@@ -376,7 +376,7 @@ describe('ActivityRepo', () => {
     ]);    
   });
 
-  it('should return a user and week', () => {
+  it('should return a user and week given an end date', () => {
     const user = {
       "id": 22,
       "name": "Eric Campbell",
@@ -390,9 +390,9 @@ describe('ActivityRepo', () => {
       ]
     };
 
-    const week = ['2019/09/14', '2019/09/15', '2019/09/16', '2019/09/17', '2019/09/18', '2019/09/19', '2019/09/20', '2019/09/21'];
+    const week = ['2019/09/15', '2019/09/16', '2019/09/17', '2019/09/18', '2019/09/19', '2019/09/20', '2019/09/21'];
 
-    expect(activityRepo.findWeekAndUser(user.id, week)).to.deep.equal({
+    expect(activityRepo.findWeekAndUser(user.id, '2019/09/21')).to.deep.equal({
       user: user,
       week: week
     });

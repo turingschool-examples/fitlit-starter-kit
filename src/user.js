@@ -3,7 +3,6 @@
 // const UserHydration = require("../src/UserHydration");
 // const UserActivity = require("../src/UserActivity");
 
-
 class User {
   constructor(singleUserData, 
     singleUserSleepData,

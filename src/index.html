@@ -1,159 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="./styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Shadows+Into+Light&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-  <title>Activity Tracker</title>
-</head>
-
-<body>
-  <form>
-    <label for="names">Choose a user</label>
-    <select name="names-list" class="names-list" id="names"></select>
-    <label for="date">Choose a Date</label>
-    <input type="date" class="date-picker" id="date" value="2019-06-15" min="2019-06-15" max="2019-09-22">
-    <button type="submit" class="admin-selector">View Data</button>
-  </form>
-  <main>
-  <section>
-    <header>
-      <h1 class="user-first-name">User Name</h1>
-      <div class="user-info-text">
-        <p class="user-info user-address">Address</p>
-        <p class="user-info user-email">Email</p>
-        <p class="user-info user-step-compare">Steps</p>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <title>Activity Tracker</title>
+  </head>
+  <body>
+    <form>
+      <div class="chooser">
+        <label for="names">Choose a user</label>
+        <select name="names-list" class="names-list" id="names"></select>
       </div>
-    </header>
-      <!-- <span>
-        <p class="admin-text">Admin</p>
-        <img src="../assets/admin.svg" class="admin-icon">
-      </span> -->
-    </section>
-    <section class="daily-stats">
-      <h2>View Daily Stats</h2>
-      <article class="daily-data">
-
-        <section class="steps current-stats">
-          <div class="daily-stat-icons">
-            <img src="../assets/person.svg" class="exercise-icon icon">
-            <p class="stats-text">steps</p>
-          </div>
-        </section>
-
-
-        <section class="sleep-button current-stats">
-          <div class="daily-stat-icons">
-            <img src="../assets/sleep.svg" class="sleep-icon icon">
-            <p class="stats-text">sleep</p>
-          </div>
-        </section>
-        <section class="hydration current-stats">
-          <div class="daily-stat-icons">
-            <img src="../assets/water.svg" class="water-icon icon">
-            <p class="stats-text">water</p>
-          </div>
-        </section>
-      </article>
-    </section>
-
-    <section class="user-stats">
-      <!-- <h2>My Activity</h2> -->
-      <article class="display-stats">
-        <div class="activity-stats reset">
-          <h2>Today's Activity</h2>
-          <p class="today-activity"></p>
-          <div class="avg-activity-stats"></div>          
-          <p class="stairs-compare"></p>  
-          <p class="steps-compare"></p>
-          <p class="minutes-compare"></p>
-          <table class="activity-data table">
-            <tr>
-              <td class="activity today-activity"></td>
-              <td class="activity yesterday-activity"></td>
-              <td class="activity two-day-activity"></td>
-              <td class="activity three-day-activity"></td>
-              <td class="activity four-day-activity"></td>
-              <td class="activity five-day-activity"></td>
-              <td class="activity six-day-activity"></td>
-            </tr>
-            <tr>
-              <th class="weekly-activity">Today</th>
-              <th class="weekly-activity">Yesterday</th>
-              <th class="weekly-activity">2 Days Ago</th>
-              <th class="weekly-activity">3 Days Ago</th>
-              <th class="weekly-activity">4 Days Ago</th>
-              <th class="weekly-activity">5 Days Ago</th>
-              <th class="weekly-activity">6 Days Ago</th>
-            </tr>
-          </table>
+      <div class="chooser">
+        <label for="date">Choose a start date</label>
+        <input type="date" class="date-picker" id="date" value="2019-06-15" min="2019-06-15" max="2019-09-22">
+      </div>
+      <button type="submit" class="admin-selector">View data</button>
+    </form>
+    <main>
+      <header>
+        <h1 class="user-first-name">User name</h1>
+        <div class="user-info-text">
+          <p class="user-info user-address">Address</p>
+          <p class="user-info user-email">Email</p>
+          <p class="user-info user-step-compare">Steps</p>
         </div>
-        <div class="sleep-stats reset hidden">
-          <h2>Today's Sleep</h2>
-          <p class="today-sleep"></p>
-          <div class="avg-sleep-stats">
-          </div>
-          <table class="sleep-data table">
-            <tr>
-              <td class="sleep today-sleep"></td>
-              <td class="sleep yesterday-sleep"></td>
-              <td class="sleep two-day-sleep"></td>
-              <td class="sleep three-day-sleep"></td>
-              <td class="sleep four-day-sleep"></td>
-              <td class="sleep five-day-sleep"></td>
-              <td class="sleep six-day-sleep"></td>
-            </tr>
-            <tr>
-              <th class="weekly-sleep">Today</th>
-              <th class="weekly-sleep">Yesterday</th>
-              <th class="weekly-sleep">2 Days Ago</th>
-              <th class="weekly-sleep">3 Days Ago</th>
-              <th class="weekly-sleep">4 Days Ago</th>
-              <th class="weekly-sleep">5 Days Ago</th>
-              <th class="weekly-sleep">6 Days Ago</th>
-            </tr>
+      </header>
+      <section class="daily-stats">
+        <h2>View Daily Stats</h2>
+        <article class="daily-data">
+          <section class="steps current-stats">
+            <div class="daily-stat-icons">
+              <img src="../assets/person.svg" class="exercise-icon icon" alt="icon of person exercising">
+              <p class="stats-text">steps</p>
+            </div>
+          </section>
+          <section class="sleep-button current-stats">
+            <div class="daily-stat-icons">
+              <img src="../assets/sleep.svg" class="sleep-icon icon" alt="icon of person sleeping">
+              <p class="stats-text">sleep</p>
+            </div>
+          </section>
+          <section class="hydration current-stats">
+            <div class="daily-stat-icons">
+              <img src="../assets/water.svg" class="water-icon icon" alt="icon of water droplet">
+              <p class="stats-text">water</p>
+            </div>
+          </section>
+        </article>
+      </section>
+      <section class="user-stats">
+          <div class="activity-stats reset">
+            <h2>Today's Activity</h2>
+            <p class="today-activity"></p>
+            <p class="avg-activity-stats"></p>          
+            <p class="stairs-compare"></p>  
+            <p class="steps-compare"></p>
+            <p class="minutes-compare"></p>
+            <table class="activity-data table">
+              <tr>
+                <th class="weekly-activity">Start date</th>
+                <td class="activity today-activity"></td>
+              </tr>
+              <tr>
+                <th class="weekly-activity">Next day</th>
+                <td class="activity yesterday-activity"></td>
+              </tr>       
+              <tr>
+                <th class="weekly-activity">2 days later</th>
+                <td class="activity two-day-activity"></td>
+              </tr>
+              <tr>
+                <th class="weekly-activity">3 days later</th>
+                <td class="activity three-day-activity"></td>
+              </tr>
+              <tr>
+                <th class="weekly-activity">4 days later</th>
+                <td class="activity four-day-activity"></td>
+              </tr>
+              <tr>
+                <th class="weekly-activity">5 days later</th>
+                <td class="activity five-day-activity"></td>
+              </tr>
+              <tr>
+                <th class="weekly-activity">6 days later</th>
+                <td class="activity six-day-activity"></td>
+              </tr>
             </table>
-        </div>
-        <div class="hydration-stats reset hidden">
-          <h2>Today's Water Consumption</h2>
-          <p class="today-consumption"></p>
-          <table class="water-data table">
-            <tr>
-              <td class="water today-water"></td>
-              <td class="water yesterday-water"></td>
-              <td class="water two-day-water"></td>
-              <td class="water three-day-water"></td>
-              <td class="water four-day-water"></td>
-              <td class="water five-day-water"></td>
-              <td class="water six-day-water"></td>
-            </tr>
-            <tr>
-              <th class="weekly-water">Today</th>
-              <th class="weekly-water">Yesterday</th>
-              <th class="weekly-water">2 Days Ago</th>
-              <th class="weekly-water">3 Days Ago</th>
-              <th class="weekly-water">4 Days Ago</th>
-              <th class="weekly-water">5 Days Ago</th>
-              <th class="weekly-water">6 Days Ago</th>
-            </tr>
-        </div>
-      </article>
-    </section>
-  </main>
-
-  <script type="text/javascript" src="../data/users.js"></script>
-  <script type="text/javascript" src="./user.js"></script>
-  <script type="text/javascript" src="./userRepo.js"></script>
-  <script type="text/javascript" src="../data/hydration.js"></script>
-  <script type="text/javascript" src="../data/sleep.js"></script>
-  <script type="text/javascript" src="../data/activity.js"></script>
-  <script type="text/javascript" src="./userActivity.js"></script>
-  <script type="text/javascript" src="./userHydration.js"></script>
-  <script type="text/javascript" src="./userSleep.js"></script>
-  <!-- <script type="text/javascript" src="./moment.js"></script> -->
-  <script type="text/javascript" src="./scripts.js"></script>
-</body>
-
+          </div>
+          <div class="sleep-stats reset hidden">
+            <h2>Today's Sleep</h2>
+            <p class="today-sleep"></p>
+            <p class="avg-sleep-stats"></p>
+            <table class="sleep-data table">
+              <tr>
+                <th class="weekly-sleep">Start date</th>
+                <td class="sleep today-sleep"></td>
+              </tr>
+              <tr>
+                <th class="weekly-sleep">Next day</th>
+                <td class="sleep yesterday-sleep"></td>
+              </tr>
+              <tr>
+                <th class="weekly-sleep">2 days later</th>
+                <td class="sleep two-day-sleep"></td>
+              </tr>
+              <tr>
+                <th class="weekly-sleep">3 days later</th>
+                <td class="sleep three-day-sleep"></td>
+              </tr>
+              <tr>
+                <th class="weekly-sleep">4 days later</th>
+                <td class="sleep four-day-sleep"></td>
+              </tr>
+              <tr>
+                <th class="weekly-sleep">5 days later</th>
+                <td class="sleep five-day-sleep"></td>
+              </tr>
+              <tr>
+                <th class="weekly-sleep">6 days later</th>
+                <td class="sleep six-day-sleep"></td>
+              </tr>
+            </table>
+          </div>
+          <div class="hydration-stats reset hidden">
+            <h2>Today's Water Consumption</h2>
+            <p class="today-consumption"></p>
+            <table class="water-data table">
+              <tr>
+                <th class="weekly-water">Start date</th>
+                <td class="water today-water"></td>
+              </tr>
+              <tr>
+                <th class="weekly-water">Next day</th>
+                <td class="water yesterday-water"></td>
+              </tr>
+              <tr>
+                <th class="weekly-water">2 days later</th>
+                <td class="water two-day-water"></td>
+              </tr>
+              <tr>
+                <th class="weekly-water">3 days later</th>
+                <td class="water three-day-water"></td>
+              </tr>
+              <tr>
+                <th class="weekly-water">4 days later</th>
+                <td class="water four-day-water"></td>
+              </tr>
+              <tr>
+                <th class="weekly-water">5 days later</th>
+                <td class="water five-day-water"></td>
+              </tr>
+              <tr>
+                <th class="weekly-water">6 days later</th>
+                <td class="water six-day-water"></td>
+              </tr>
+            </table>
+          </div>
+      </section>
+    </main>
+    <script type="text/javascript" src="../data/users.js"></script>
+    <script type="text/javascript" src="./user.js"></script>
+    <script type="text/javascript" src="./userRepo.js"></script>
+    <script type="text/javascript" src="../data/hydration.js"></script>
+    <script type="text/javascript" src="../data/sleep.js"></script>
+    <script type="text/javascript" src="../data/activity.js"></script>
+    <script type="text/javascript" src="./userActivity.js"></script>
+    <script type="text/javascript" src="./userHydration.js"></script>
+    <script type="text/javascript" src="./userSleep.js"></script>
+    <script type="text/javascript" src="./scripts.js"></script>
+  </body>
 </html>

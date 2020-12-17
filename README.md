@@ -13,6 +13,16 @@
 
 ## What is this project?
 
+### This project `FitLit` is a practice repo to accomplish the following:
+- write multiple classes which communicate with each other through html scripts
+- write robust test suites for each class
+  - check for happy and sad paths in tests
+  - maintain ability to test while having implementation files connected to DOM
+- cleanly separate data model and DOM
+- display multiple formats worth of data to DOM
+  - data for a user, a day, a week, etc.
+- make page responsive so can display to both mobile and desktop views
+
 ---
 
 ## What does this project do?

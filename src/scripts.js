@@ -38,7 +38,7 @@ const greetAndShowProfile = () => {
 //HELPER FUNCTION FOR WEEKSTAT DISPLAY
 const displayStatsForWeek = (week, fitnessType, displayArea) => {
   const display = week.map(day => `<p>${day.date}: ${day[fitnessType]}</p>`).join('')
-  displayArea.innerHTML = `<h2>Display of ${fitnessType}:</h2><p>${display}</p>`
+  displayArea.innerHTML = `<article class="week-display"><h2 >Display of ${fitnessType}:</h2><p>${display}</p></article>`
 }
 
 //DISPLAY WEEK STATS
@@ -47,7 +47,7 @@ const displayWeekStats = () => {
   displayStatsForWeek(weekActivities, 'numSteps', document.querySelector('.week-steps'))
   displayStatsForWeek(weekWater, 'numOunces', document.querySelector('.week-water'))
   displayStatsForWeek(weekSleep, 'hoursSlept', document.querySelector('.week-sleep-hours'))
-  displayStatsForWeek(weekSleep, 'numSteps', document.querySelector('.week-sleep-quality'))
+  displayStatsForWeek(weekSleep, 'sleepQuality', document.querySelector('.week-sleep-quality'))
 }
 
 //DISPLAY HYDRATION STATS:

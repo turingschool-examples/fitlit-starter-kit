@@ -25,7 +25,7 @@ document.getElementById("end").addEventListener("change", function() {endDate = 
 
 //GREETING & PROFILE:
 const greetAndShowProfile = () => {
-  document.querySelector('.greeting-input').innerText =  `Welcome ${user.getFirstName()}!`
+  document.querySelector('.greeting-input').innerText =  `Welcome, ${user.getFirstName()}!`
   document.querySelector('.user-name').innerText =  `Name: ${user.name}`
   document.querySelector('.user-address').innerText = `Address: ${user.address}`
   document.querySelector('.user-email').innerText = `Email: ${user.email}`
@@ -37,8 +37,13 @@ const greetAndShowProfile = () => {
 
 //HELPER FUNCTION FOR WEEKSTAT DISPLAY
 const displayStatsForWeek = (week, fitnessType, displayArea) => {
-  const display = week.map(day => `<p>${day.date}: ${day[fitnessType]}</p>`).join('')
-  displayArea.innerHTML = `<article class="week-display"><h2 >Display of ${fitnessType}:</h2><p>${display}</p></article>`
+  const display = week.map(day => `<p class="week-display-text">${day.date}: ${day[fitnessType]}</p>`).join('')
+  displayArea.innerHTML = `
+    <article class="week-display">
+      <h2 class="week-display-title"> Display of ${fitnessType}: </h2>
+      <p>${display}</p>
+    </article>
+  `
 }
 
 //DISPLAY WEEK STATS
@@ -59,9 +64,9 @@ const showHydrationStats = () => {
 const showIfUserMetStepGoal = () => {
   const goalDisplay = document.querySelector('.user-met-step-goal-today')
   if (activity.verifyIfStepGoal(user)) {
-    goalDisplay.innerHTML = '<p>You\'ve met your Daily Step Goal!</p>'
+    goalDisplay.innerHTML = '<p class="title">You\'ve met your Daily Step Goal!</p>'
   } else {
-    goalDisplay.innerHTML = '<p>Keep working toward your Daily Step Goal.</p>'
+    goalDisplay.innerHTML = '<p class="title">Keep working toward your Daily Step Goal.</p>'
   }
 }
 
@@ -69,10 +74,10 @@ const showStepStats = () => {
   showIfUserMetStepGoal()
   document.querySelector('.user-step-goal-input').innerText = `${user.dailyStepGoal}`
   document.querySelector('.community-step-goal-input').innerText = `${community.findAverageStepGoal()}`
-  document.querySelector('.user-step-miles').innerHTML = `Miles: ${activity.getStepMiles(user)}`
-  document.querySelector('.user-steps-today').innerHTML = `Steps: ${activity.numSteps}`
-  document.querySelector('.user-days-exceeding-goal').innerHTML = `Community Average Steps: ${communityActivity.findCommunityAverage(today, 'numSteps')}`
-  document.querySelector('.community-steps-today').innerHTML = `Days Step Goal Has Been Met: ${communityActivity.daysExceedingStepGoal(user).length}`
+  document.querySelector('.user-step-miles').innerHTML = `<p class="subtitle">Miles:</p> <p>${activity.getStepMiles(user)}</p>`
+  document.querySelector('.user-steps-today').innerHTML = `<p class="subtitle">Steps:</p> <p>${activity.numSteps}</p>`
+  document.querySelector('.user-days-exceeding-goal').innerHTML = `<p class="subtitle">Community Average Steps:</p> <p>${communityActivity.findCommunityAverage(today, 'numSteps')}</p>`
+  document.querySelector('.community-steps-today').innerHTML = `<p class="subtitle">Days Step Goal Has Been Met:</p> <p>${communityActivity.daysExceedingStepGoal(user).length}</p>`
 }
 
 //DISPLAY ACTIVITY STATS:
@@ -91,7 +96,7 @@ const showStairsStats = () => {
 //DISPLAY SLEEP STATS
 const showSleepStats = () => {
   document.querySelector('.sleep-quantity-last-night').innerText = `You slept ${communitySleep.findHrsSleptOnDay(user.userID, today)} hrs`
-  document.querySelector('.sleep-quality-last-night').innerText = `Your sleep quality score: ${communitySleep.findSleepQualityOnDay(user.userID, today)}`
+  document.querySelector('.sleep-quality-last-night').innerText = `Sleep Quality Score: ${communitySleep.findSleepQualityOnDay(user.userID, today)}`
   document.querySelector('.sleep-average-hours-input').innerText = `You average ${communitySleep.calculateAvgSleepHrsPerDay(user.userID)} hrs/day`
   document.querySelector('.sleep-average-quality-input').innerText = `You average a score of ${communitySleep.calculateAvgSleepQualPerDay(user.userID)}/day`
 }

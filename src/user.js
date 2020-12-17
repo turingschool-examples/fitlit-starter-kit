@@ -1,7 +1,7 @@
 'use strict'
-const UserSleep = require("../src/UserSleep")
-const UserHydration = require("../src/UserHydration")
-const UserActivity = require("../src/UserActivity")
+// const UserSleep = require("../src/UserSleep")
+// const UserHydration = require("../src/UserHydration")
+// const UserActivity = require("../src/UserActivity")
 
 class User {
   constructor(singleUserData,

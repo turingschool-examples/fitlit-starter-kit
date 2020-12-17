@@ -218,8 +218,8 @@ function getSleepData(placement, index) {
     currentUser.userSleep.calculateSleepItemPerWeek(chosenDate, 'hoursSlept')[index]
   } hours, 
     quality: ${
-    currentUser.userSleep.calculateSleepItemPerWeek(chosenDate, 'sleepQuality')[index]
-  }`
+  currentUser.userSleep.calculateSleepItemPerWeek(chosenDate, 'sleepQuality')[index]
+}`
   displayAvgSleepData(avgSleepStats)
 }
 
@@ -234,11 +234,11 @@ function getStepData(placement, index) {
     currentUser.userActivity.getWeekOfData(chosenDate, 'numSteps')[index]
   } steps,
     ${
-    currentUser.userActivity.getWeekOfData(chosenDate, 'flightsOfStairs')[index]
-  } flights of stairs,
+  currentUser.userActivity.getWeekOfData(chosenDate, 'flightsOfStairs')[index]
+} flights of stairs,
     ${
-    currentUser.userActivity.getWeekOfData(chosenDate, 'minutesActive')[index]
-  } active minutes`
+  currentUser.userActivity.getWeekOfData(chosenDate, 'minutesActive')[index]
+} active minutes`
 }
 
 const mapUserNames = () => {
@@ -307,23 +307,23 @@ function displaySleepChart() {
         '6 Days Later',
       ],
       datasets: [{
-          label: 'Sleep Quality',
-          backgroundColor: '#F0CB30',
-          borderColor: '#F0CB30',
-          data: currentUser.userSleep.calculateSleepItemPerWeek(
-            chosenDate,
-            'sleepQuality'
-          ),
-        },
-        {
-          label: 'Hours Slept',
-          backgroundColor: '#C667E0',
-          borderColor: '#C667E0',
-          data: currentUser.userSleep.calculateSleepItemPerWeek(
-            chosenDate,
-            'hoursSlept'
-          ),
-        },
+        label: 'Sleep Quality',
+        backgroundColor: '#F0CB30',
+        borderColor: '#F0CB30',
+        data: currentUser.userSleep.calculateSleepItemPerWeek(
+          chosenDate,
+          'sleepQuality'
+        ),
+      },
+      {
+        label: 'Hours Slept',
+        backgroundColor: '#C667E0',
+        borderColor: '#C667E0',
+        data: currentUser.userSleep.calculateSleepItemPerWeek(
+          chosenDate,
+          'hoursSlept'
+        ),
+      },
       ],
     },
     options: {
@@ -354,26 +354,26 @@ function displayActivityChart() {
         '6 Days Later',
       ],
       datasets: [{
-          label: 'Steps',
-          backgroundColor: '#FA6A3C',
-          data: stepsNumber,
-        },
-        {
-          label: 'Stairs',
-          backgroundColor: '#65A4F7',
-          data: currentUser.userActivity.getWeekOfData(
-            chosenDate,
-            'flightsOfStairs'
-          ),
-        },
-        {
-          label: 'Minutes',
-          backgroundColor: '#C667E0',
-          data: currentUser.userActivity.getWeekOfData(
-            chosenDate,
-            'minutesActive'
-          ),
-        },
+        label: 'Steps',
+        backgroundColor: '#FA6A3C',
+        data: stepsNumber,
+      },
+      {
+        label: 'Stairs',
+        backgroundColor: '#65A4F7',
+        data: currentUser.userActivity.getWeekOfData(
+          chosenDate,
+          'flightsOfStairs'
+        ),
+      },
+      {
+        label: 'Minutes',
+        backgroundColor: '#C667E0',
+        data: currentUser.userActivity.getWeekOfData(
+          chosenDate,
+          'minutesActive'
+        ),
+      },
       ],
     },
     options: {

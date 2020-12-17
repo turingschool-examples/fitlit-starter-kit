@@ -1,7 +1,7 @@
 'use strict'
-const UserSleep = require('./userSleep')
-const UserHydration = require('./userHydration')
-const User = require('./user')
+// const UserSleep = require('./userSleep')
+// const UserHydration = require('./userHydration')
+// const User = require('./user')
 
 class UserRepo {
   constructor(userData, sleepData, hydrationData, activityData) {

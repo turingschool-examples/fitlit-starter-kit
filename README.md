@@ -11,7 +11,7 @@ If you just want to click around within our site, this will get you started.
 clone down this project
 npm install
 npm install chart.js
-open index.html | or (click here)[https://elsafluss.github.io/fitlit-starter-kit/src/index.html]
+open index.html | or copy https://elsafluss.github.io/fitlit-starter-kit/src/index.html into your browser
 ```
 You'll need to install both `npm` and `chartjs` in order to use the site.
 
@@ -25,6 +25,8 @@ What can you do here?
 * Choose any user and any date (within range), and display that user's activity data.
 * Change between activity, sleep, and hydration stats.
 
+![FitLit in action](https://media.giphy.com/media/j3GCkTvZk8mrTtFYzq/giphy.gif)
+
 ## Contributing
 
 If you want to update our project so that it uses D3 instead of chartjs, go for it! Fork this repo and use a feature branch! Let us know what you're working on; we'd love to learn D3 too!
@@ -34,6 +36,7 @@ If you want to update our project so that it uses D3 instead of chartjs, go for 
 - Project homepage: https://elsafluss.github.io/fitlit-starter-kit/src/index.html
 - Repository: https://github.com/elsafluss/fitlit-starter-kit
 - Issue tracker: https://github.com/elsafluss/fitlit-starter-kit/issues
+- ChartJS: https://www.chartjs.org/
 
 ## Creators
 

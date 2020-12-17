@@ -5,53 +5,46 @@ class SleepRepo {
     this.data = data.map(userData => new Sleep(userData));
   }
 
-  returnAverageHoursSleptPerDay(userID) {
-    const currentUserData = this.data.filter(data => data.id === userID);
-    const totalHoursSlept = currentUserData.reduce((acc, cur) => {
-      return acc + cur.hoursSlept;
+  returnAvgData(id, propertyName) {
+    const filteredData = this.data.filter(data => data.id === id);
+    const total = filteredData.reduce((total, data) => {
+      return total + data[propertyName];
     }, 0);
-    const avgHoursSlept = totalHoursSlept / currentUserData.length;
-    return avgHoursSlept;
+
+    const average = total / filteredData.length;
+    return average;
   }
 
-  returnOverallAverageSleepQuality(userID) {
-    const currentUserData = this.data.filter(data => data.id === userID);
-    const totalSleepQuality = currentUserData.reduce((acc, cur) => {
-      return acc + cur.sleepQuality;
-    }, 0);
-    const avgSleepQuality = totalSleepQuality / currentUserData.length
-    return avgSleepQuality;
+  returnAverageHoursSleptPerDay(id) {    
+    return this.returnAvgData(id, 'hoursSlept');
   }
 
-  returnWeekOfDailyHoursSlept(id, date) {
-    const currentUserData = this.data.filter(userData => userData.id === id);
-    const weekOfDailySleepData = [];
-    const endOfWeek = currentUserData.find(userData => userData.date === date);
-    const indexOfEndDate = currentUserData.indexOf(endOfWeek);
-    for (let i = indexOfEndDate; i >= indexOfEndDate - 6; i--)
-    {
-    weekOfDailySleepData.push(currentUserData[i].hoursSlept);
-    }
-    return weekOfDailySleepData;
-    }
+  returnOverallAverageSleepQuality(id) {    
+    return this.returnAvgData(id, 'sleepQuality');
+  }
 
-  returnWeekOfDailySleepQuality(id, date) {
+  returnWeeklyData(id, date, propertyName) {
     const currentUserData = this.data.filter(userData => userData.id === id);
-    const weekOfDailySleepQualityData = [];
-    const endOfWeek = currentUserData.find(userData => userData.date === date);
-    const indexOfEndDate = currentUserData.indexOf(endOfWeek);
-    for (let i = indexOfEndDate; i >= indexOfEndDate - 6; i--)
-    {
-    weekOfDailySleepQualityData.push(currentUserData[i].sleepQuality);
-    }
-    return weekOfDailySleepQualityData;
+    const indexOfEndDate = currentUserData.findIndex(userData => userData.date === date);
+    const weekData = currentUserData.slice(0, indexOfEndDate + 1);
+    const weekOfDailyDataNeeded = [];
+    weekData.forEach(userData => weekOfDailyDataNeeded.push(userData[propertyName]));
+    return weekOfDailyDataNeeded;
+  }
+
+  returnWeekOfDailyHoursSlept(id, date) {  
+    return this.returnWeeklyData(id, date, 'hoursSlept');
+  }
+
+  returnWeekOfDailySleepQuality(id, date) {    
+    return this.returnWeeklyData(id, date, 'sleepQuality');
   }
 
   returnAverageSleepQualityForAllUsers() {
     const allSleepQuality = this.data.reduce((acc, cur) => {
       return acc + cur.sleepQuality;
     }, 0);
-    const avgSleepQualityForAllUsers = allSleepQuality / this.data.length;
+    const avgSleepQualityForAllUsers = parseFloat((allSleepQuality / this.data.length).toFixed(2));
     return avgSleepQualityForAllUsers;
   }
 
@@ -60,40 +53,48 @@ class SleepRepo {
     const hoursSleptRankedHighToLow = hoursSleptThisDay.sort((a, b) => {
       return b.hoursSlept - a.hoursSlept;
     });
+
     const heaviestSleepers = hoursSleptRankedHighToLow.filter(heavy =>
       heavy.hoursSlept === hoursSleptRankedHighToLow[0].hoursSlept);
+
     const userIDsOfHeaviestSleepers = heaviestSleepers.map(id => id.id);
-      return userIDsOfHeaviestSleepers;
+    return userIDsOfHeaviestSleepers;
   }
 
-  returnUserWithSleepQualityThreeOrGreater(date) {
-    const totalUserIDs = this.data.map(user => user.id);
-    const allUserIDs = totalUserIDs.filter((user, index) =>
-    {
-    return totalUserIDs.indexOf(user) === index;
-  });
-    const arrayOfSleepDataPerUser = allUserIDs.map(id => this.data.filter(sleep => sleep.id === id));
-    const arrayOfDates = arrayOfSleepDataPerUser[0].map(sleep => sleep.date);
-    const indexOfEndDate = arrayOfDates.indexOf(date);
-    const weekOfUserSleepQuality = arrayOfSleepDataPerUser.map(array => array.slice(indexOfEndDate - 6, indexOfEndDate + 1));
-    const eachUsersTotalSleepQuality = weekOfUserSleepQuality.map(array => array.reduce((acc, cur) =>
-    {
-    return acc + cur.sleepQuality;
-  }, 0));
-    const avgSleepQualityPerUser = eachUsersTotalSleepQuality.map(total => total / weekOfUserSleepQuality[0].length);
-    const sleepQualityThreeOrMore = avgSleepQualityPerUser.filter((sleep) => sleep > 3);
-    const users3AndAbove = [];
-    for (let i = 0; i < avgSleepQualityPerUser.length; i++) {
-      for (let j = 0; j < sleepQualityThreeOrMore.length; j++) {
-        if (sleepQualityThreeOrMore[j] === avgSleepQualityPerUser[i]) {
-          const userID = i + 1;
-          users3AndAbove.push(userID);
-        }
-      }
+  prepareWeekData(date) {
+    const leastAndGreatest = { least: this.data[0].id, greatest: this.data[this.data.length - 1].id };
+    const startingDateDigits = parseInt(date.slice(-2)) - 6;
+    const startingDate = date.slice(0, 8) + startingDateDigits;    
+    const lastIndex = this.data.findIndex(data => data.id === leastAndGreatest.greatest && data.date === date);
+    const firstIndex = this.data.findIndex(data => data.id === leastAndGreatest.least && data.date === startingDate);
+    const targetWeek = this.data.slice(firstIndex, lastIndex + 1);
+    return {
+      week: targetWeek,
+      greatest: leastAndGreatest.greatest
     }
-    return users3AndAbove;
   }
-  };
+
+  returnUsersWithSleepQualityThreeOrGreater(date) {    
+    const targetWeekData = this.prepareWeekData(date);
+    const week = targetWeekData.week;
+    return week.reduce((usersWhoSleptGreat, data) => {      
+      const totalSleepQuality = week.reduce((quality, newData) => {
+        if (data.id === newData.id) {
+          quality += newData.sleepQuality;        
+        }
+
+        return quality;
+      }, 0);      
+      
+      const avgSleepQuality = totalSleepQuality / (week.length / targetWeekData.greatest);      
+      if (avgSleepQuality >= 3 && !usersWhoSleptGreat.includes(data.id)) {
+        usersWhoSleptGreat.push(data.id);
+      }
+
+      return usersWhoSleptGreat;
+    }, []);
+  }
+};
 
 
 if (typeof module !== 'undefined') {

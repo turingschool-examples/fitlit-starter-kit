@@ -24,7 +24,7 @@ describe('User', () => {
     user = new User(data);
   });
 
-  it.skip('should have every property acquired from data argument', () => {
+  it('should have every property acquired from data argument', () => {
     expect(user.id).to.equal(1);
     expect(user.name).to.equal('Brian Forbes');
     expect(user.address).to.equal('123 Blah St, Denver CO, 66666');
@@ -34,7 +34,7 @@ describe('User', () => {
     expect(user.friends).to.deep.equal([2, 3, 4]);
   });
 
-  it.skip(`should have a way to return the user's name`, () => {
+  it(`should have a way to return the user's name`, () => {
     expect(user.provideUsersFirstName()).to.equal('Brian');
   });
 });

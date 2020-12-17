@@ -1,11 +1,10 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const UserRepo = require('../src/UserRepo');
 const ActivityRepo = require('../src/ActivityRepo');
 
 describe('ActivityRepo', () => {
-  let userDataset, userRepo, dataset, activityRepo;
+  let userDataset, dataset, activityRepo;
 
   beforeEach(() => {
     userDataset = [
@@ -17,9 +16,9 @@ describe('ActivityRepo', () => {
         "strideLength": 2.4,
         "dailyStepGoal": 10000,
         "friends": [
-          2,
-          3,
-          4
+          22,
+          33,
+          44
         ]
       },
       {
@@ -30,8 +29,8 @@ describe('ActivityRepo', () => {
         "strideLength": 2.3,
         "dailyStepGoal": 5,
         "friends": [
-          1,
-          3
+          11,
+          33
         ]
       },
       {
@@ -42,8 +41,8 @@ describe('ActivityRepo', () => {
         "strideLength": 2.6,
         "dailyStepGoal": 10000,
         "friends": [
-          1,
-          4
+          11,
+          44
         ]
       },
       {
@@ -54,15 +53,13 @@ describe('ActivityRepo', () => {
         "strideLength": 2.1,
         "dailyStepGoal": 10000,
         "friends": [
-          1,
-          3
+          11,
+          33
         ]
       }
     ]
-
-    userRepo = new UserRepo(userDataset);
-
-    dataset = [      
+    
+    dataset = [   
       {
         "userID": 11,
         "date": "2019/09/14",
@@ -317,42 +314,84 @@ describe('ActivityRepo', () => {
       }      
     ];
 
-    activityRepo = new ActivityRepo(dataset);
+    activityRepo = new ActivityRepo(dataset, userDataset);
   });
 
-  it.skip('should return the miles walked by a user based on steps', () => {    
-    const miles = activityRepo.calculateMiles(3, '2019/09/21');
+  it('should return the miles walked by a user based on steps', () => {    
+    const miles1 = activityRepo.calculateMiles(33, '2019/09/21');
 
-    expect(miles).to.equal(4.36);
+    expect(miles1).to.equal(2);
+
+    const miles2 = activityRepo.calculateMiles(11, '2019/09/22');
+
+    expect(miles2).to.equal(4.23);    
   });
 
-  it.skip('should return avg minutes active for a given week', () => {
-    const endDate = '09/21/2019';
-    const avgMinutes = activityRepo.calculateMinutesActive(33, endDate);
+  it('should be able to generate a properly-formatted week', () => {    
+    const week = activityRepo.findWeekDates('2019/09/01');
 
-    expect(avgMinutes).to.equal(6424);
+    expect(week).to.be.an('array');
+    expect(week).to.have.a.lengthOf(7);
+    expect(week).to.deep.equal([
+      '2019/08/26',
+      '2019/08/27',
+      '2019/08/28',
+      '2019/08/29',
+      '2019/08/30',
+      '2019/08/31',
+      '2019/09/01'
+    ]);    
   });
 
-  it.skip('should return all days a user exceeded their step goal', () => {
+  it('should return a user and week given an end date', () => {
+    const user = {
+      "id": 22,
+      "name": "Eric Campbell",
+      "address": "123 SomeOther St, Denver CO, 66666",
+      "email": "mainlyetcetera@gmail.com",
+      "strideLength": 2.3,
+      "dailyStepGoal": 5,
+      "friends": [
+        11,
+        33
+      ]
+    };
+
+    const week = ['2019/09/15', '2019/09/16', '2019/09/17', '2019/09/18', '2019/09/19', '2019/09/20', '2019/09/21'];
+
+    expect(activityRepo.findWeekAndUser(user.id, '2019/09/21')).to.deep.equal({
+      user: user,
+      week: week
+    });
+  }); 
+
+  it('should return avg minutes active for a given week', () => {
+    const endDate = '2019/09/21';    
+    const avgMinutes = activityRepo.calculateAvgMinutesActive(33, endDate);
+
+    expect(avgMinutes).to.equal(187);
+  });
+
+  it('should return all days a user exceeded their step goal', () => {
     const daysExceededGoal = activityRepo.calculateDaysExceededGoal(33);
 
     expect(daysExceededGoal).to.deep.equal(['2019/09/19', '2019/09/22']);
   });
 
-  it.skip('should return user\'s all-time stair-climbing record', () => {
+  it('should return user\'s all-time stair-climbing record', () => {
     const record = activityRepo.calculateStairRecord(22);
 
     expect(record).to.equal(47);
   });
 
-  it.skip('should save avg stairs, steps, minutes for a date for all users', () => {
-    expect(activityRepo.averages).to.be.an('object');
+  it('should save avg stairs, steps, minutes for a date for all users', () => {
+    expect(activityRepo.dailyAverages).to.be.an('object');
 
     const date1 = '2019/09/15';
     activityRepo.calculateDailyAverages(date1);
 
     expect(activityRepo.dailyAverages[date1]).to.deep.equal({      
-      stairs: 132,
+      stairs: 33,
       steps: 6070,
       minutesActive: 234
     });
@@ -368,7 +407,7 @@ describe('ActivityRepo', () => {
 
     expect(activityRepo.dailyAverages).to.deep.equal({
       '2019/09/15': {        
-        stairs: 132,
+        stairs: 33,
         steps: 6070,
         minutesActive: 234
       },
@@ -380,15 +419,15 @@ describe('ActivityRepo', () => {
     });
   });
 
-  it.skip('should save avg stairs, steps, minutes for a week for all users', () => {
-    const endDate = '2019/09/22';
+  it('should save avg stairs, steps, minutes for a week for all users', () => {
+    const endDate = '2019/09/21';
     activityRepo.calculateWeeklyAverages(endDate);
     // the expectation is calling calculateDailyAverages 7 times to properly generate the data
 
     expect(activityRepo.weeklyAverages).to.be.an('object');
     expect(activityRepo.weeklyAverages[endDate]).to.be.an('object');
     expect(activityRepo.weeklyAverages[endDate]).to.deep.equal({
-      stairs: 40,
+      stairs: 26,
       steps: 7057,
       minutesActive: 177
     });

@@ -21,7 +21,7 @@ class HydrationRepo {
     const end = this.userData.findIndex(element => element.date === date);
     const waterConsumed = [];
     for (let i = end - 7; i < end; i++) {
-      waterConsumed.push(this.userData[i].numOunces);
+      waterConsumed.push(`${this.userData[i].numOunces} oz`);
     }
 
     return waterConsumed;

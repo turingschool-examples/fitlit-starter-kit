@@ -49,7 +49,7 @@ window.addEventListener('load', () => {
 
 waterButton.addEventListener('click', () => {
   displayHydrationActivity();
-  currentUser.userHydration.getAverage(hydrationData);
+  displayHydrationChart();
 })
 
 sleepButton.addEventListener('click', () => {
@@ -247,3 +247,38 @@ function fillDropdown() {
     namesList.appendChild(opt);
   });
 }
+
+  function displayHydrationChart() {
+    let ctx = document.getElementById("hydrationChart").getContext("2d");
+    let chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: "bar",
+
+      // The data for our dataset
+      data: {
+        labels: [
+          "Start Date",
+          "Next Day",
+          "2 Days Later",
+          "3 Days Later",
+          "4 Days Later",
+          "5 Days Later",
+          "6 Days Later",
+        ],
+        datasets: [
+          {
+            label: "Hydration Data",
+            backgroundColor: "#61ED90",
+            borderColor: "#61ED90",
+            data: currentUser.userHydration.calculateWaterPerWeek(
+              chosenDate,
+              currentUser
+            )
+          },
+        ],
+      },
+
+      // Configuration options go here
+      options: {},
+    })
+  }

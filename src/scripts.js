@@ -62,14 +62,14 @@ const chartIt = (whatCanvas, dataOne, dataTwo) => {
       datasets: [{
         label: `Your ${data.fitnessType}`,
         data: data.ys,
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
       },
       {
         label: `Your ${data2.fitnessType.split(/(?=[A-Z])/).join(' ')} for the week of ${data2.startDate} - ${data2.endDate}`,
         data: data2.ys,
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1
       }]
@@ -307,28 +307,28 @@ const makeYs = (number) => new Array(weekActivities.length).fill(number)
       datasets: [{
         label: `Your Steps`,
         data: weekActivities.map(object => object.numSteps),
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
       },
       {
         label: `Your Step Goal`,
         data: makeYs(user.dailyStepGoal),
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1
       },
       {
         label: `Community Average Step Goal`,
         data: makeYs(community.findAverageStepGoal()),
-        backgroundColor: 'rgba(255, 10, 235, 0.2)',
+        backgroundColor: 'rgba(255, 10, 235, 0.5)',
         borderColor: 'rgba(255, 10, 235, 1)',
         borderWidth: 1
       },
       {
         label: `Community Average Steps`,
         data: makeYs(communityActivity.findCommunityAverage(today, 'numSteps')),
-        backgroundColor: 'rgba(0, 162, 235, 0.2)',
+        backgroundColor: 'rgba(0, 162, 235, 0.5)',
         borderColor: 'rgba(0, 162, 235, 1)',
         borderWidth: 1
       }]
@@ -342,21 +342,21 @@ const makeYs = (number) => new Array(weekActivities.length).fill(number)
       datasets: [{
         label: 'Your Stairs Climbed',
         data: weekActivities.map(object => object.stairsClimbed),
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
       },
       {
         label: 'Your Record Stairs Climbed',
         data: makeYs(communityActivity.findRecordStairs(user)),
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1
       },
       {
         label: 'Community Average Stairs Climbed',
         data: makeYs(communityActivity.findRecordStairs(user)),
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1
       }]
@@ -370,7 +370,7 @@ const makeYs = (number) => new Array(weekActivities.length).fill(number)
       datasets: [{
         label: 'Your Active Minutes',
         data: weekActivities.map(object => object.minutesActive),
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
       },
@@ -390,7 +390,7 @@ const makeYs = (number) => new Array(weekActivities.length).fill(number)
       datasets: {
         label: 'Your Total Ounces Consumed',
         data: makeYs(communityActivity.findRecordStairs(user)),
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
       },
@@ -404,21 +404,21 @@ const makeYs = (number) => new Array(weekActivities.length).fill(number)
       datasets: [{
         label: `Your Hours Slept`,
         data: makeYs(communityActivity.findRecordStairs(user)),
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
       },
       {
         label: `Your Sleep Quality`,
         data: makeYs(communityActivity.findRecordStairs(user)),
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1
       },
       {
         label: `Your All-Time Average Sleep Quality`,
         data: makeYs(communityActivity.findRecordStairs(user)),
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1
       }]
@@ -441,28 +441,28 @@ const makeYs = (number) => new Array(weekActivities.length).fill(number)
       datasets: [{
         label: `Your Steps`,
         data: weekActivities.map(object => object.numSteps),
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1
       },
       {
         label: `${getFriendName(user.friends[0])}'s Steps`,
         data: findFriendSteps(user.friends[0]),
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1
       },
       {
         label: `${getFriendName(user.friends[1])}'s Steps`,
         data: findFriendSteps(user.friends[1]),
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1
       },
       {
         label: `${getFriendName(user.friends[2])}'s Steps`,
         data: findFriendSteps(user.friends[2]),
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1
       }]

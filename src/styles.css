@@ -74,7 +74,8 @@ p {
 }
 
 .graph {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(255, 255, 255, 0.9);
+  margin: 2%;
 }
 .greeting {
   color: #6df1d8;

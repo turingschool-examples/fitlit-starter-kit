@@ -11,7 +11,7 @@ If you just want to click around within our site, this will get you started.
 clone down this project
 npm install
 npm install chart.js
-open index.html | or [click here](https://elsafluss.github.io/fitlit-starter-kit/src/index.html)
+open index.html | or (click here)[https://elsafluss.github.io/fitlit-starter-kit/src/index.html]
 ```
 You'll need to install both `npm` and `chartjs` in order to use the site.
 

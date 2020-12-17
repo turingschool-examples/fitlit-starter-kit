@@ -57,7 +57,7 @@ const displayWeekStats = () => {
 
 //DISPLAY HYDRATION STATS:
 const showHydrationStats = () => {
-  document.querySelector('.water-stats').innerText = `Water consumed today: ${communityHydration.calculateTotalWaterOnDay(user.userID, today)} OZ`
+  document.querySelector('.water-stats').innerHTML = `<p class="subtitle">Water consumed today:</p> <p>${communityHydration.calculateTotalWaterOnDay(user.userID, today)} OZ<p>`
 }
 
 //DISPLAY STEPS STATS:
@@ -82,22 +82,22 @@ const showStepStats = () => {
 
 //DISPLAY ACTIVITY STATS:
 const showMinutesActiveStats = () => {
-  document.querySelector('.user-minutes-active').innerText = `Minutes Active: ${activity.minutesActive}`
-  document.querySelector('.user-week-average-minutes-active').innerText = `Community Average Minutes Active: ${communityActivity.findCommunityAverage(today, 'minutesActive')}`
-  document.querySelector('.community-average-minutes-active').innerText = `Weekly Average Minutes Active: ${communityActivity.findWeekActiveMinutesAverage(startDate, endDate, user)}`
+  document.querySelector('.user-minutes-active').innerHTML = `<p class="subtitle">Minutes Active:</p> <p>${activity.minutesActive}</p>`
+  document.querySelector('.user-week-average-minutes-active').innerHTML = `<p class="subtitle">Community Average Minutes Active:</p> <p>${communityActivity.findCommunityAverage(today, 'minutesActive')}</p>`
+  document.querySelector('.community-average-minutes-active').innerHTML = `<p class="subtitle">Weekly Average Minutes Active:</p> <p>${communityActivity.findWeekActiveMinutesAverage(startDate, endDate, user)}</p>`
 }
 
 //DISPLAY STAIRS STATS:
 const showStairsStats = () => {
-  document.querySelector('.community-average-stairs').innerText = `Community Average Stairs Climbed: ${communityActivity.findCommunityAverage(today, 'stairsClimbed')}`
-  document.querySelector('.user-record-stairs').innerText =  `Your Record Stairs Climbed: ${communityActivity.findRecordStairs(user)}`
+  document.querySelector('.community-average-stairs').innerHTML= `<p class="subtitle">Community Average Stairs Climbed:</p> <p>${communityActivity.findCommunityAverage(today, 'stairsClimbed')}</p>`
+  document.querySelector('.user-record-stairs').innerHTML =  `<p class="subtitle">Your Record Stairs Climbed:</p> <p>${communityActivity.findRecordStairs(user)}</p>`
 }
 
 //DISPLAY SLEEP STATS
 const showSleepStats = () => {
-  document.querySelector('.sleep-quantity-last-night').innerText = `You slept ${communitySleep.findHrsSleptOnDay(user.userID, today)} hrs`
+  document.querySelector('.sleep-quantity-last-night').innerHTML = `You slept ${communitySleep.findHrsSleptOnDay(user.userID, today)} hrs`
   document.querySelector('.sleep-quality-last-night').innerText = `Sleep Quality Score: ${communitySleep.findSleepQualityOnDay(user.userID, today)}`
-  document.querySelector('.sleep-average-hours-input').innerText = `You average ${communitySleep.calculateAvgSleepHrsPerDay(user.userID)} hrs/day`
+  document.querySelector('.sleep-average-hours-input').innerHTML = `<p class="subtitle">You average ${communitySleep.calculateAvgSleepHrsPerDay(user.userID)} hrs/day</p>`
   document.querySelector('.sleep-average-quality-input').innerText = `You average a score of ${communitySleep.calculateAvgSleepQualPerDay(user.userID)}/day`
 }
 

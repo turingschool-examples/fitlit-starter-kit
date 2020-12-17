@@ -18,8 +18,10 @@ const hydrationDayButton = document.querySelector('.hydration-day');
 const hydrationWeekButton = document.querySelector('.hydration-week');
 const sleepDurationDisplay = document.querySelector('.sleep-duration');
 const sleepQualityDisplay = document.querySelector('.sleep-quality');
+const sleepAvgDisplay = document.querySelector('.sleep-average')
 const sleepWeekButton = document.querySelector('.sleep-week');
 const sleepDayButton = document.querySelector('.sleep-day');
+const sleepAvgButton = document.querySelector('.sleep-avg');
 
 const hydrationWeekView = (id, date) => {
   waterConsumed.innerText = `Water Consumed This Past Week  ${currentHydrationRepo.returnWaterConsumed(id, date)}`;
@@ -37,6 +39,11 @@ const sleepWeekView = (id, date) => {
 const sleepDayView = () => {
   sleepDurationDisplay.innerText = `Hours Slept: ${currentSleep.returnHoursSlept()}`;
   sleepQualityDisplay.innerText = `Sleep Quality: ${currentSleep.returnSleepQuality()}`;
+}
+
+const displaySleepAverages = (id) => {
+  sleepDurationDisplay.innerText = `Average Hours Slept: ${currentSleepRepo.returnAverageHoursSleptPerDay(id)} hours`;
+  sleepQualityDisplay.innerText = `Average Sleep Quality: ${currentSleepRepo.returnOverallAverageSleepQuality(id)}`;
 }
 
 const displayAllUserData = () => {
@@ -59,6 +66,9 @@ function displayFriendsByName() {
   });
 };
 
+sleepAvgButton.addEventListener('click', function() {
+  displaySleepAverages(currentUser.id);
+})
 
 sleepDayButton.addEventListener('click', function() {
   sleepDayView();

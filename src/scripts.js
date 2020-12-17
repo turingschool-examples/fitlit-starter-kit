@@ -24,6 +24,7 @@ const allActivityDisplays = document.querySelectorAll('.activity');
 const activityStatsDisplay = document.querySelector(".activity-stats");
 const todayActivity = document.querySelector(".today-activity")
 const avgActivityStats = document.querySelector(".avg-activity-stats")
+const pieChartStat = document.querySelector('.pie-chart')
 
 const userRepo = new UserRepo(
   userData,
@@ -43,6 +44,8 @@ window.addEventListener('load', () => {
   displayInfoCard(chosenUserID);
   mapUserNames()
   fillDropdown()
+  pieChartStat.classList.remove("hidden");
+  displayStepGoal();
   activityStatsDisplay.classList.toggle('hidden');
   return chosenUserID;
 })
@@ -50,16 +53,20 @@ window.addEventListener('load', () => {
 waterButton.addEventListener('click', () => {
   displayHydrationActivity();
   displayHydrationChart();
+  pieChartStat.classList.add('hidden')
+
 })
 
 sleepButton.addEventListener('click', () => {
   displaySleepActivity()
   displaySleepChart();
+  pieChartStat.classList.add("hidden");
 })
 
 activityButton.addEventListener('click', () => {
   displayExerciseActivity();
   displayActivityChart();
+  pieChartStat.classList.add("hidden");
 })
 
 viewUserButton.addEventListener('click', (event) => {
@@ -73,6 +80,8 @@ viewUserButton.addEventListener('click', (event) => {
   displayFirstName()
   displayInfoCard()
   setChosenDate()
+  pieChartStat.classList.remove("hidden");  
+  displayStepGoal();
   clearDisplays()
   return currentUser
 })
@@ -107,7 +116,7 @@ function displayInfoCard() {
   }, and the average is ${userRepo.getAllUserAvgItem(
     userRepo.activityData,
     chosenDate, 
-    "numSteps")}`;
+    "numSteps").toFixed(0)}`;
 }
 
 function displayHydrationActivity() {
@@ -363,6 +372,30 @@ function displayActivityChart() {
             chosenDate,
             "minutesActive"
           ),
+        },
+      ],
+    },
+    options: {
+      events: [],
+    },
+  });
+}
+
+function displayStepGoal() {
+  let stepGoal = (currentUser.userActivity.dailyStepGoal - currentUser.userActivity.getOneDayOfData(chosenDate, "numSteps"))
+  let ctx = document.getElementById("stepsPie").getContext("2d");
+  let chart = new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: ["Step Goal", "Today's Steps"],
+      datasets: [
+        {
+          data: [
+            stepGoal,
+            currentUser.userActivity.getOneDayOfData(chosenDate, "numSteps"),
+          ],
+          backgroundColor: ["#C667E0", "#65A4F7"],
+          borderColor: ["#C667E0", "#65A4F7"],
         },
       ],
     },

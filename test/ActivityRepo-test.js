@@ -62,7 +62,37 @@ describe('ActivityRepo', () => {
 
     userRepo = new UserRepo(userDataset);
 
-    dataset = [      
+    dataset = [
+      {
+        "date": "2019/08/28"
+      },     
+      {
+        "date": "2019/08/29"
+      },     
+      {
+        "date": "2019/08/30"
+      },     
+      {
+        "date": "2019/08/31"
+      },     
+      {
+        "date": "2019/09/01"
+      },     
+      {
+        "date": "2019/09/02"
+      },     
+      {
+        "date": "2019/09/03"
+      },  
+      {
+        "date": "2019/09/04"
+      },
+      {
+        "date": "2019/09/05"
+      },
+      {
+        "date": "2019/09/06"
+      },   
       {
         "userID": 11,
         "date": "2019/09/14",
@@ -330,11 +360,29 @@ describe('ActivityRepo', () => {
     expect(miles2).to.equal(4.23);    
   });
 
-  it('should return avg minutes active for a given week', () => {
-    const endDate = '09/21/2019';
-    const avgMinutes = activityRepo.calculateMinutesActive(33, endDate);
+  it('should be able to generate a properly-formatted week', () => {    
+    const week = activityRepo.findWeekDates('2019/09/01');
 
-    expect(avgMinutes).to.equal(6424);
+    expect(week).to.be.an('array');
+    expect(week).to.have.a.lengthOf(7);
+    expect(week).to.deep.equal([
+      '2019/08/26',
+      '2019/08/27',
+      '2019/08/28',
+      '2019/08/29',
+      '2019/08/30',
+      '2019/08/31',
+      '2019/09/01'
+    ]);    
+  });
+
+  it.skip('should return avg minutes active for a given week', () => {
+    const endDate = '2019/09/05';
+    console.log(activityRepo.findWeekDates(endDate));
+    
+    // const avgMinutes = activityRepo.calculateMinutesActive(33, endDate);
+
+    // expect(avgMinutes).to.equal(6424);
   });
 
   it.skip('should return all days a user exceeded their step goal', () => {

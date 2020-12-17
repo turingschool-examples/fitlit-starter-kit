@@ -13,6 +13,89 @@ class ActivityRepo {
     }
   }
 
+  findWeekDates(endDate) {    
+    const lastTwo = endDate.slice(-2);
+    let diff;
+    if (parseInt(lastTwo) < 7) {
+      diff = 7 - parseInt(lastTwo);
+    }
+    
+    let dates = [endDate, endDate, endDate, endDate, endDate, endDate, endDate];    
+    let toRemove31 = diff - 1 || 0;
+    let toRemove30 = diff - 1 || 0;
+    let toRemove28 = diff - 1 || 0;
+    
+    const newDates = dates.reduce((acc, date, index) => {      
+      const toRemove = 6 - index;
+      const month = endDate.slice(5, 7);      
+      const has31 = [1, 3, 5, 7, 8, 10, 12];
+      const has30 = [4, 6, 9, 11];
+      const has28 = [2];
+      if (parseInt(date.slice(-2)) - toRemove <= 0 && has31.includes(parseInt(month) - 1)) {
+        let newMonth = parseInt(month) - 1;
+        let newDate = 31 - toRemove31;
+        if (newMonth.toString().length === 1) {
+          newMonth = `0${newMonth}`
+        }
+        
+        if (newDate.toString().length === 1) {
+          newDate = `0${newDate}`;
+        }
+        
+        date = `2019/${newMonth}/${newDate}`;        
+        toRemove31 -= 1;
+      } else if (parseInt(date.slice(-2)) - toRemove <= 0 && has30.includes(parseInt(month))) {
+        let newMonth = parseInt(month) - 1;
+        let newDate = 30 - toRemove30;
+        if (newMonth.toString().length === 1) {
+          newMonth = `0${newMonth}`
+        }
+        
+        if (newDate.toString().length === 1) {
+          newDate = `0${newDate}`;
+        }
+        
+        date = `2019/${newMonth}/${newDate}`;
+        toRemove30 -= 1;
+      } else if (parseInt(date.slice(-2)) - toRemove <= 0 && has28.includes(parseInt(month))) {
+        let newMonth = parseInt(month) - 1;
+        let newDate = 28 - toRemove28;
+        if (newMonth.toString().length === 1) {
+          newMonth = `0${newMonth}`
+        }
+        
+        if (newDate.toString().length === 1) {
+          newDate = `0${newDate}`;
+        }
+        
+        date = `2019/${newMonth}/${newDate}`;
+        toRemove28 -= 1;
+      } else {        
+        let newDate = parseInt(lastTwo) - toRemove;        
+        
+        if (newDate.toString().length === 1) {
+          newDate = `0${newDate}`;
+        }
+        
+        date = endDate.slice(0, 8) + newDate;
+      }
+
+      acc.push(date);
+      return acc;
+    }, []);
+
+    return newDates;
+  }
+
+  findWeekAndUser(id, endDate) {
+    // const user = this.userData.find(data => data.id === id);
+    
+    // find each date 
+    // find each date's data (findWeekDates(endDate))
+    // put all that data in one array
+    // return obj with user and array of dates' data
+  }
+
   calculateMiles(id, date) {    
     const allData = this.findDayAndUser(id, date);
     const stride = allData.user.strideLength;
@@ -21,9 +104,10 @@ class ActivityRepo {
     return formattedMiles;
   }
 
-  // calculateMinutesActive(id, endDate) {
-  //   const allData = this.findDayAndUser(id, endDate);
-  // }
+  calculateMinutesActive(id, endDate) {
+    this.findWeekDates(endDate);
+    // const allData = this.findDayAndUser(id, endDate);
+  }
 }
 
 if (typeof module !== 'undefined') {

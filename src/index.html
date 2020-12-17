@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Activity Tracker</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -50,6 +51,7 @@
 
       <article class="category steps">
         <h2 class="category-title">Steps</h2>
+        <img src="../assets/shoe.svg" alt="shoe as steps icon">
           <p class="user-step-miles"></p>
           <p class="user-steps-today"></p>
           <p class="user-met-step-goal-today"></p>
@@ -59,67 +61,73 @@
 
       <article class="category water">
         <h2 class="category-title">Water</h2>
-          <p class="water-stats subtitle"></p>
+        <img src="../assets/drops.svg" alt="water drop as hydration icon">
+          <p class="water-stats"></p>
       </article>
 
       <article class="category stairs">
         <h2 class="category-title">Stairs</h2>
-          <p class="community-average-stairs subtitle"></p>
-          <p class="user-record-stairs subtitle"></p>
+        <img src="../assets/success.svg" alt="staircase as stair icon">
+          <p class="community-average-stairs"></p>
+          <p class="user-record-stairs"></p>
       </article>
 
       <article class="category active-minutes">
         <h2 class="category-title">Active Minutes</h2>
+        <img src="../assets/heart-shape-with-beats-line.svg" alt="shape of heart with line as active icon">
           <p class="user-minutes-active"></p>
-          <p class="user-week-average-minutes-active subtitle"></p>
-          <p class="community-average-minutes-active subtitle"></p>
+          <p class="user-week-average-minutes-active"></p>
+          <p class="community-average-minutes-active"></p>
       </article>
 
       <article class="category sleep">
         <h2 class="category-title">Sleep</h2>
+        <img src="../assets/clock.svg" alt="pillow and clock as sleep icon">
         <div class="sleep-container">
           <article class="user-all-time-sleep-stats">
             <h3 class="sleep-title">Your All-Time Sleep Stats</h3>
           </article>
-            <p class="sleep-average-hours-input subtitle"></p>
-            <p class="sleep-average-quality-input subtitle"></p>
+            <p class="sleep-average-hours-input"></p>
+            <p class="sleep-average-quality-input"></p>
         </div>
       </article>
     </section>
 
     <article class="date-select">
-      <label for="start">Show stats for the day of:</label>
+      <label for="today">Show stats for the day of:</label>
       <input type="date" id="today" name="today"
         value="2019-09-22"
         min="2019-06-15" max="2019-09-16">
-      <h2>Dates for Graph</h2>
-      <label for="start">Start date:</label>
-      <input type="date" id="start" name="week-start"
-        value="2019-09-16"
-        min="2019-06-15" max="2019-09-16">
-      <label for="end">End date:</label>
-      <input type="date" id="end" name="week-end"
-        value="2019-09-22"
-        min="2019-06-21" max="2019-09-22">
+      <h2 class="date-title">Show stats for the week of:</h2>
+      <div class="wrapper-date-select">
+        <label for="start">Start date:</label>
+        <input type="date" id="start" name="week-start"
+          value="2019-09-16"
+          min="2019-06-15" max="2019-09-16">
+        <label for="end">End date:</label>
+        <input type="date" id="end" name="week-end"
+          value="2019-09-22"
+          min="2019-06-21" max="2019-09-22">
+      </div>
     </article>
 
     <section class="graph">
       <h2 class="title-graph">Graph</h2>
-      <canvas id="stepChart" width="800" height="400"></canvas>
-      <canvas id="waterChart" width="800" height="400"></canvas>
-      <canvas id="stairsChart" width="800" height="400"></canvas>
-      <canvas id="activeMinutesChart" width="800" height="400"></canvas>
-      <canvas id="sleepChart" width="800" height="400"></canvas>
+      <canvas id="stepChart" class=""width="800" height="400"></canvas>
+      <canvas id="waterChart" class="hidden" width="800" height="400"></canvas>
+      <canvas id="stairsChart" class="hidden" width="800" height="400"></canvas>
+      <canvas id="activeMinutesChart" class="hidden" width="800" height="400"></canvas>
+      <canvas id="sleepChart" class="hidden" width="800" height="400"></canvas>
     </graph>
 
 
     <section class="week-list-data">
       <h2 class="Week of Stats">
-        <p class="week-minutes-active"></p>
-        <p class="week-steps"></p>
-        <p class="week-water"></p>
-        <p class="week-sleep-hours"></p>
-        <p class="week-sleep-quality"></p>
+        <p class="week-minutes-active hidden"></p>
+        <p class="week-steps hidden"></p>
+        <p class="week-water hidden"></p>
+        <p class="week-sleep-hours hidden"></p>
+        <p class="week-sleep-quality hidden"></p>
     </section>
 
     <section class="friends">

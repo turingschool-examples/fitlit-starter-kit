@@ -13,7 +13,6 @@ body,html {
   background-size: cover;
   font-family: 'Righteous', cursive;
   font-size: 1.4em;
-  -webkit-text-stroke: 2px black;
   height: 100%;
   width: 100%;
   display: flex;
@@ -21,6 +20,13 @@ body,html {
 }
 
 /* text  */
+
+.date-title {
+  color: white;
+  font-family: 'Righteous', cursive;
+  font-size: 1.2em;
+  -webkit-text-stroke: 2px black;
+}
 
 h1 {
   background-image: linear-gradient(to left, #fcdd2d, #d413f2, #0745ff, #7c07f9, #d413f2, #fcdd2d);
@@ -51,6 +57,7 @@ h3 {
 p {
   display: flex;
   flex-direction: row;
+  font-size: 80%;
   justify-content: center;
 }
 
@@ -77,6 +84,10 @@ p {
   padding: 1vh;
   width: 16%;
 }
+.category-hover {
+
+}
+
 .category-title {
   font-size: 100%;
   width: 100%;
@@ -101,10 +112,6 @@ p {
   background-color: rgba(29, 157, 171, 0.5);
 }
 
-.graph {
-  background-color: rgba(255, 255, 255, 0.9);
-  margin: 2%;
-}
 .greeting {
   color: #6df1d8;
   -webkit-text-stroke: 2px black;
@@ -125,10 +132,6 @@ input {
   font-size: 1.5em;
   margin-bottom: 0.5%;
 }
-/* .hidden {
-  move element far far away
-} */
-
 
 .stats {
   display: flex;
@@ -172,6 +175,12 @@ input {
   padding-top: 1vh;
 }
 
+/* wrappers  */
+.wrapper-date-select {
+  display: flex;
+  flex-direction: column;
+}
+
 .wrapper-top {
   display: flex;
   align-items: center;
@@ -192,9 +201,19 @@ svg: hover {
   fill: pink;
 }
 
+/* graph */
+
+canvas {
+
+}
+
+.graph {
+  background-color: rgba(255, 255, 255, 0.9);
+  margin: 2%;
+}
+
 /* week display  */
 .week-list-data {
-  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -202,7 +221,6 @@ svg: hover {
 }
 
 .week-display {
-  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -215,4 +233,27 @@ svg: hover {
 
 .week-display-text {
   font-size: 0.5em;
+}
+/* hidden */
+.hidden {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+/* media queries */
+@media (max-width: 600px) {
+  .category {
+    flex-direction: column;
+    width: 90%;
+  }
+  p {
+    font-size: 1em;
+  }
+  .stats {
+    flex-direction: column;
+  }
+  .wrapper-top {
+    flex-direction: column;
+  }
 }

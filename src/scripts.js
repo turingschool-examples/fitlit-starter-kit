@@ -366,13 +366,13 @@ const waterChart = new Chart(waterCanvas, {
   type: 'bar',
   data: {
     labels: weekDates,
-    datasets: {
+    datasets: [{
       label: 'Your Total Ounces',
       data: mapWeek(weekWater, 'numOunces'),
       backgroundColor: 'rgba(255, 99, 132, 0.2)',
       borderColor: 'rgba(255, 99, 132, 1)',
       borderWidth: 1
-    }, 
+    }] 
   }
 });
 //SLEEP

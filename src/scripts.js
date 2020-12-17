@@ -24,52 +24,64 @@ const allActivityDisplays = document.querySelectorAll('.activity');
 const activityStatsDisplay = document.querySelector(".activity-stats");
 const todayActivity = document.querySelector(".today-activity")
 const avgActivityStats = document.querySelector(".avg-activity-stats")
+const pieChartStat = document.querySelector('.pie-chart')
 
 const userRepo = new UserRepo(
-  userData, 
-  sleepData, 
-  hydrationData, 
+  userData,
+  sleepData,
+  hydrationData,
   activityData);
 let currentUser = new User(
-  userRepo.getAUser(21), 
-  userRepo.filterSleepData(21), 
+  userRepo.getAUser(21),
+  userRepo.filterSleepData(21),
   userRepo.filterHydrationData(21),
   userRepo.filterActivityData(21));
 let chosenDate = "2019/06/15"
 
 window.addEventListener('load', () => {
-  let chosenUserID = currentUser.id; 
+  let chosenUserID = currentUser.id;
   displayFirstName(chosenUserID);
   displayInfoCard(chosenUserID);
   mapUserNames()
   fillDropdown()
+  pieChartStat.classList.remove("hidden");
+  displayStepGoal();
   activityStatsDisplay.classList.toggle('hidden');
-  return chosenUserID; 
+  return chosenUserID;
 })
 
 waterButton.addEventListener('click', () => {
   displayHydrationActivity();
+  displayHydrationChart();
+  pieChartStat.classList.add('hidden')
+
 })
 
 sleepButton.addEventListener('click', () => {
   displaySleepActivity()
+  displaySleepChart();
+  pieChartStat.classList.add("hidden");
 })
 
 activityButton.addEventListener('click', () => {
   displayExerciseActivity();
+  displayActivityChart();
+  pieChartStat.classList.add("hidden");
 })
 
 viewUserButton.addEventListener('click', (event) => {
   event.preventDefault()
-  let chosenUserID = getChosenUserData().id 
+  let chosenUserID = getChosenUserData().id
   currentUser = new User(
     userRepo.getAUser(chosenUserID),
     userRepo.filterSleepData(chosenUserID),
     userRepo.filterHydrationData(chosenUserID),
     userRepo.filterActivityData(chosenUserID))
-  displayFirstName() 
-  displayInfoCard() 
-  setChosenDate() 
+  displayFirstName()
+  displayInfoCard()
+  setChosenDate()
+  pieChartStat.classList.remove("hidden");  
+  displayStepGoal();
   clearDisplays()
   return currentUser
 })
@@ -82,13 +94,13 @@ function clearDisplays() {
   allStatsDisplays.forEach(item => item.classList.add('hidden'))
 }
 
-function setChosenDate() { 
+function setChosenDate() {
   const datePicker = document.querySelector(".date-picker")
   chosenDate = datePicker.value.split('-').join('/')
   return chosenDate
 }
 
-function getChosenUserData() { 
+function getChosenUserData() {
   return userData.find(user => user.name === namesList.value)
 }
 
@@ -104,13 +116,13 @@ function displayInfoCard() {
   }, and the average is ${userRepo.getAllUserAvgItem(
     userRepo.activityData,
     chosenDate, 
-    "numSteps")}`;
+    "numSteps").toFixed(0)}`;
 }
 
 function displayHydrationActivity() {
   const hydrationStatsDisplay = document.querySelector(".hydration-stats");
   clearDisplays()
-  toggleElement(hydrationStatsDisplay)  
+  toggleElement(hydrationStatsDisplay)
   getHydrationData(todayConsumption, 0, chosenDate, currentUser.id);
   allWaterDisplays.forEach((cell, index) => {
     getHydrationData(cell, index, chosenDate, currentUser.id)
@@ -126,7 +138,7 @@ function displaySleepActivity() {
     getSleepData(cell, index, chosenDate, currentUser)
   })
   getSleepData(avgSleepStats, 0, chosenDate, currentUser)
-} 
+}
 
 function displayExerciseActivity() {
   clearDisplays()
@@ -155,7 +167,7 @@ function allUsersData(fullList, keyName) {
   return userRepo.getAllUserAvgItem(fullList, chosenDate, keyName)
 }
 
-function displayUserStairsSuccess() { 
+function displayUserStairsSuccess() {
   const compareStairs = document.querySelector(".stairs-compare");
   let singleStair = singleUserData('flightsOfStairs')
   let allStairs = allUsersData(userRepo.activityData, 'flightsOfStairs')
@@ -188,7 +200,7 @@ function displayUserMinutesSuccess() {
   if (currentUser.userActivity.isUserAboveAvg(singleMinute, allMinutes)) {
     compareMinutes.innerText = `Your active minute count of ${singleMinute} is higher than the user average of ${allMinutes}`;
     compareMinutes.classList.add('success')
-  } else { 
+  } else {
     compareMinutes.innerText = `Your active minute count of ${singleMinute} is lower than the user average of ${allMinutes}`;
     compareMinutes.classList.remove('success')
   }
@@ -229,7 +241,7 @@ function getStepData(placement, index) {
 }
 
 const mapUserNames = () => {
-  const listOfNames = userData.sort((a, b) => { 
+  const listOfNames = userData.sort((a, b) => {
     if (a.name < b.name) {
       return -1
     }
@@ -244,5 +256,151 @@ function fillDropdown() {
     opt.innerHTML = name;
     opt.value = name;
     namesList.appendChild(opt);
+  });
+}
+
+function displayHydrationChart() {
+  let ctx = document.getElementById("hydrationChart").getContext("2d");
+  let chart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: [
+        "Start Date",
+        "Next Day",
+        "2 Days Later",
+        "3 Days Later",
+        "4 Days Later",
+        "5 Days Later",
+        "6 Days Later",
+      ],
+      datasets: [{
+        label: "Hydration Data",
+        backgroundColor: "#61ED90",
+        borderColor: "#61ED90",
+        data: currentUser.userHydration.calculateWaterPerWeek(
+          chosenDate,
+          currentUser
+        )
+      }, ],
+    },
+    options: {
+      events: []
+    },
+  })
+}
+
+function displaySleepChart() {
+  let ctx = document.getElementById("sleepChart").getContext("2d");
+  let chart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: [
+        "Start Date",
+        "Next Day",
+        "2 Days Later",
+        "3 Days Later",
+        "4 Days Later",
+        "5 Days Later",
+        "6 Days Later",
+      ],
+      datasets: [
+        {
+          label: "Sleep Quality",
+          backgroundColor: "#F0CB30",
+          borderColor: "#F0CB30",
+          data: currentUser.userSleep.calculateSleepItemPerWeek(
+            chosenDate,
+            "sleepQuality"
+          ),
+        },
+        {
+          label: "Hours Slept",
+          backgroundColor: "#C667E0",
+          borderColor: "#C667E0",
+          data: currentUser.userSleep.calculateSleepItemPerWeek(
+            chosenDate,
+            "hoursSlept"
+          ),
+        },
+      ],
+    },
+    options: {
+      events: [],
+    },
+  });
+}
+
+function displayActivityChart() {
+  let stepsNumber = currentUser.userActivity.getWeekOfData(
+    chosenDate,
+    "numSteps"
+  ).map(item => item/40)
+  let ctx = document.getElementById("activityChart").getContext("2d");
+  let chart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: [
+        "Start Date",
+        "Next Day",
+        "2 Days Later",
+        "3 Days Later",
+        "4 Days Later",
+        "5 Days Later",
+        "6 Days Later",
+      ],
+      datasets: [
+        {
+          label: "Steps (scaled down by 40%)",
+          backgroundColor: "#FA6A3C",
+          borderColor: "##FA6A3C",
+          data: stepsNumber,
+        },
+        {
+          label: "Flights of Stairs Climbed",
+          backgroundColor: "#65A4F7",
+          borderColor: "##65A4F7",
+          data: currentUser.userActivity.getWeekOfData(
+            chosenDate,
+            "flightsOfStairs"
+          ),
+        },
+        {
+          label: "Active Minutes",
+          backgroundColor: "#C667E0",
+          borderColor: "#C667E0",
+          data: currentUser.userActivity.getWeekOfData(
+            chosenDate,
+            "minutesActive"
+          ),
+        },
+      ],
+    },
+    options: {
+      events: [],
+    },
+  });
+}
+
+function displayStepGoal() {
+  let stepGoal = (currentUser.userActivity.dailyStepGoal - currentUser.userActivity.getOneDayOfData(chosenDate, "numSteps"))
+  let ctx = document.getElementById("stepsPie").getContext("2d");
+  let chart = new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: ["Step Goal", "Today's Steps"],
+      datasets: [
+        {
+          data: [
+            stepGoal,
+            currentUser.userActivity.getOneDayOfData(chosenDate, "numSteps"),
+          ],
+          backgroundColor: ["#C667E0", "#65A4F7"],
+          borderColor: ["#C667E0", "#65A4F7"],
+        },
+      ],
+    },
+    options: {
+      events: [],
+    },
   });
 }

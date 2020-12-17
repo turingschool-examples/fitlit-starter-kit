@@ -16,7 +16,7 @@
       </div>
       <div class="chooser">
         <label for="date">Choose a start date</label>
-        <input type="date" class="date-picker" id="date" value="2019-06-15" min="2019-06-15" max="2019-09-22">
+        <input type="date" class="date-picker" id="date" value="2019-06-15" min="2019-06-15" max="2019-09-15">
       </div>
       <button type="submit" class="admin-selector">View data</button>
     </form>
@@ -52,6 +52,9 @@
           </section>
         </article>
       </section>
+      <section class="steps-pie-chart pie-chart hidden">
+        <canvas id="stepsPie"></canvas>
+      </section>
       <section class="user-stats">
           <div class="activity-stats reset">
             <h2>Today's Activity</h2>
@@ -60,6 +63,7 @@
             <p class="stairs-compare"></p>  
             <p class="steps-compare"></p>
             <p class="minutes-compare"></p>
+            <canvas id="activityChart"></canvas>
             <table class="activity-data table">
               <tr>
                 <th class="weekly-activity">Start date</th>
@@ -95,6 +99,7 @@
             <h2>Today's Sleep</h2>
             <p class="today-sleep"></p>
             <p class="avg-sleep-stats"></p>
+            <canvas id="sleepChart"></canvas>
             <table class="sleep-data table">
               <tr>
                 <th class="weekly-sleep">Start date</th>
@@ -129,6 +134,7 @@
           <div class="hydration-stats reset hidden">
             <h2>Today's Water Consumption</h2>
             <p class="today-consumption"></p>
+              <canvas id="hydrationChart"></canvas>
             <table class="water-data table">
               <tr>
                 <th class="weekly-water">Start date</th>
@@ -163,6 +169,7 @@
       </section>
     </main>
     <script type="text/javascript" src="../data/users.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script type="text/javascript" src="./user.js"></script>
     <script type="text/javascript" src="./userRepo.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>

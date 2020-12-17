@@ -2,7 +2,7 @@
 
 class UserHydration {
   constructor(hydrationData) {
-    this.userHydrationData = hydrationData;
+    this.userHydrationData = hydrationData
   }
 
   getOneDayOfData(date, keyName) {
@@ -17,19 +17,19 @@ class UserHydration {
 
   calculateWaterPerWeek(startDate) {
     let findIndex = this.userHydrationData.findIndex((day) => {
-      return day.date === startDate;
-    });
+      return day.date === startDate
+    })
     return this.userHydrationData.reduce((total, value) => {
       if (!total[findIndex]) {
-        total.push(value.numOunces);
+        total.push(value.numOunces)
       } else {
-        total.push(value.numOunces);
+        total.push(value.numOunces)
       }
-      return total;
-    }, []).splice([findIndex], 7);
-  } 
+      return total
+    }, []).splice([findIndex], 7)
+  }
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = UserHydration;
+  module.exports = UserHydration
 }

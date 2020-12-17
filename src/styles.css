@@ -1,49 +1,47 @@
-/*
-COLORS
-yellow: #F0CB30
-orange: #FA6A3C
-purple: #C667E0
-blue: #65A4F7
-green: #61ED90
-*/
-
-/*
-font-family: 'Raleway', sans-serif;
-*/
-
-* {
-  /* border: 1px solid green; */
-}
-
 body {
-  /* border: 1px solid yellow; */
   background-color: #202029;
+  color: white;
   display:flex;
   flex-direction: column;
-  color: white;
   font-family: 'Raleway', sans-serif;
 }
 
+.chooser {
+  margin: auto;
+  padding: 5%;
+  width: 100%;
+}
+
 form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   margin: auto;
 }
 
 header {
-  width: 80%;
-  border-radius: 5px;
   background-color: #6D71E3;
+  border-radius: 5px;
   height: auto;
   margin-left: 10%;
   margin-top: 2%;
+  width: 80%;
 }
 
 h1 {
   font-family: 'Raleway', sans-serif;
   font-size: 350%;
-  margin-left: 2%;
-  width: 80%;
   margin-bottom: 0;
+  margin-left: 2%;
   margin-top: 0;
+  width: 80%;
+}
+
+h2 {
+  font-size: 200%;
+  margin-top: 2%;
+  padding-bottom: 1%;
+  padding-top: 2%;
 }
 
 .user-info-text {
@@ -54,45 +52,45 @@ h1 {
   margin-left: 5%;
 }
 
+.daily-stats {
+  background-color: #202261;
+  border-radius: 5px;
+  height: 100%;
+  margin: auto;
+  margin-bottom: 2%;
+  margin-top: 3%;
+  text-align: center;
+  width: 80%;
+}
+
 .daily-data {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.daily-stats {
-  width: 80%;
-  margin: auto;
+.current-stats {
+  align-items: center;
   background-color: #202261;
   border-radius: 5px;
-  text-align: center;
-  margin-top: 3%;
-}
-
-h2 {
-  padding-top: 2%;
-  padding-bottom: 1%;
-  font-size: 200%;
-}
-
-.current-stats {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
-  width: 200px;
   height: 100px;
+  width: 200px;
+  padding-bottom: 4%;
   position: relative;
-  border-radius: 5px;
-  background-color: #202261;
-  padding-bottom: 2%;
+}
+
+.daily-stat-icons {
+  margin: auto;
+  justify-content: center;
 }
 
 .icon {
-  width: 40%;
-  /* height: 50%; */
-  position: relative;
   border-radius: 5px;
+  position: relative;
+  width: 40%;
 }
 
 .icon:hover {
@@ -100,26 +98,21 @@ h2 {
   cursor: pointer;
 }
 
-.daily-stat-icons {
-  justify-content: center;
-  margin: auto;
-}
-
 .stats-text {
-  text-align: center;
   margin-top: 1%;
+  text-align: center;
 }
 
 .exercise-icon {
   background-color: #FA6A3C;
 }
 
-.water-icon {
-  background-color: #61ED90;
-}
-
 .sleep-icon  {
   background-color: #F0CB30;
+}
+
+.water-icon {
+  background-color: #61ED90;
 }
 
 .weekly-activity,
@@ -133,39 +126,85 @@ h2 {
 }
 
 .user-stats {
-  width: 80%;
-  margin: auto;
-  text-align: center;
   border-radius: 5px;
-  margin-top: 4%;
-}
-
-table {
   margin: auto;
+  margin-top: 4%;
+  text-align: center;
+  width: 80%;
 }
 
 .table {
-  margin-top: 5%;
-}
-
-.fa-chart-area {
-  color: #C667E0;
-  font-size: 250px;
-  margin-top: 50px;
-}
-
-.water-data {
+  font-size: 150%;
   margin: auto;
-  /* border: 1px solid cyan; */
+  margin-top: 5%;
+  table-layout: fixed;
+  width: 100%;
+}
+
+td,
+th {
+  border-bottom: 1px solid #65A4F7;
 }
 
 .hidden {
   display: none;
 }
 
-/* 
-if we have time, mobile and tablet experience. focus on that over small details
-could add a hover over the button, change pointer
-don't forget meta tag when do you responsive - actually recognized what screen you are in
-maybe think of some sort of consistent order
-*/
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1025px) {
+  form {
+    font-size: 100%;
+  }
+  
+  select,
+  input,
+  button {
+    font-size: 110%;
+  }
+
+  .user-info {
+    font-size: 150%;
+  }
+
+  p {
+    font-size: 160%;
+  }
+}
+
+/* iPads  ----------- */
+@media only screen and (min-device-width : 501px) and (max-device-width : 1024px) {
+  form {
+    font-size: 100%;
+  }
+
+  select,
+  input,
+  button {
+    font-size: 90%;
+  }
+
+  .user-info {
+    font-size: 150%;
+  }
+
+  p {
+    font-size: 150%;
+  }
+}
+
+/* Smartphones  ----------- */
+@media only screen and (max-width : 500px) {
+  form {
+    font-size: 75%;
+  }
+
+  select,
+  input, 
+  button {
+    font-size: 60%;
+  }
+
+  .user-info {
+    font-size: 90%;
+  }
+}

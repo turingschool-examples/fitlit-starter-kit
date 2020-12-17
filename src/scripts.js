@@ -218,9 +218,9 @@ function getHydrationData(placement, index) {
 function getStepData(placement, index) {
   placement.innerText = `${
     currentUser.userActivity.getWeekOfData(chosenDate, 'numSteps')[index]
-  } steps, ${
+  } steps, \n ${
     currentUser.userActivity.getWeekOfData(chosenDate, 'flightsOfStairs')[index]
-  } flights of stairs, and ${
+  } flights of stairs, \n ${
     currentUser.userActivity.getWeekOfData(chosenDate, 'minutesActive')[index]
   } active minutes`;
 }

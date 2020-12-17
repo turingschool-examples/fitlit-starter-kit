@@ -10,10 +10,14 @@
   </head>
   <body>
     <form>
-      <label for="names">Choose a user</label>
-      <select name="names-list" class="names-list" id="names"></select>
-      <label for="date">Choose a start date</label>
-      <input type="date" class="date-picker" id="date" value="2019-06-15" min="2019-06-15" max="2019-09-22">
+      <div class="chooser">
+        <label for="names">Choose a user</label>
+        <select name="names-list" class="names-list" id="names"></select>
+      </div>
+      <div class="chooser">
+        <label for="date">Choose a start date</label>
+        <input type="date" class="date-picker" id="date" value="2019-06-15" min="2019-06-15" max="2019-09-22">
+      </div>
       <button type="submit" class="admin-selector">View data</button>
     </form>
     <main>
@@ -57,23 +61,31 @@
             <p class="steps-compare"></p>
             <p class="minutes-compare"></p>
             <table class="activity-data table">
+              <th class="weekly-activity">Start date</th>
+              <td class="activity today-activity"></td>
               <tr>
-                <td class="activity today-activity"></td>
+                <th class="weekly-activity">Next day</th>
                 <td class="activity yesterday-activity"></td>
+              </tr>       
+              <tr>
+                <th class="weekly-activity">2 days later</th>
                 <td class="activity two-day-activity"></td>
-                <td class="activity three-day-activity"></td>
-                <td class="activity four-day-activity"></td>
-                <td class="activity five-day-activity"></td>
-                <td class="activity six-day-activity"></td>
               </tr>
               <tr>
-                <th class="weekly-activity">Start date</th>
-                <th class="weekly-activity">Next day</th>
-                <th class="weekly-activity">2 days later</th>
                 <th class="weekly-activity">3 days later</th>
+                <td class="activity three-day-activity"></td>
+              </tr>
+              <tr>
                 <th class="weekly-activity">4 days later</th>
+                <td class="activity four-day-activity"></td>
+              </tr>
+              <tr>
                 <th class="weekly-activity">5 days later</th>
+                <td class="activity five-day-activity"></td>
+              </tr>
+              <tr>
                 <th class="weekly-activity">6 days later</th>
+                <td class="activity six-day-activity"></td>
               </tr>
             </table>
           </div>
@@ -82,48 +94,64 @@
             <p class="today-sleep"></p>
             <p class="avg-sleep-stats"></p>
             <table class="sleep-data table">
-              <tr>
-                <td class="sleep today-sleep"></td>
-                <td class="sleep yesterday-sleep"></td>
-                <td class="sleep two-day-sleep"></td>
-                <td class="sleep three-day-sleep"></td>
-                <td class="sleep four-day-sleep"></td>
-                <td class="sleep five-day-sleep"></td>
-                <td class="sleep six-day-sleep"></td>
-              </tr>
-              <tr>
-                <th class="weekly-sleep">Start date</th>
-                <th class="weekly-sleep">Next day</th>
-                <th class="weekly-sleep">2 days later</th>
-                <th class="weekly-sleep">3 days later</th>
-                <th class="weekly-sleep">4 days later</th>
-                <th class="weekly-sleep">5 days later</th>
-                <th class="weekly-sleep">6 days later</th>
-              </tr>
+              <th class="weekly-sleep">Start date</th>
+              <td class="sleep today-sleep"></td>
+            <tr>
+              <th class="weekly-sleep">Next day</th>
+              <td class="sleep yesterday-sleep"></td>
+            </tr>
+            <tr>
+              <th class="weekly-sleep">2 days later</th>
+              <td class="sleep two-day-sleep"></td>
+            </tr>
+            <tr>
+              <th class="weekly-sleep">3 days later</th>
+              <td class="sleep three-day-sleep"></td>
+            </tr>
+            <tr>
+              <th class="weekly-sleep">4 days later</th>
+              <td class="sleep four-day-sleep"></td>
+            </tr>
+            <tr>
+              <th class="weekly-sleep">5 days later</th>
+              <td class="sleep five-day-sleep"></td>
+            </tr>
+            <tr>
+              <th class="weekly-sleep">6 days later</th>
+              <td class="sleep six-day-sleep"></td>
+            </tr>
               </table>
           </div>
           <div class="hydration-stats reset hidden">
             <h2>Today's Water Consumption</h2>
             <p class="today-consumption"></p>
             <table class="water-data table">
-              <tr>
-                <td class="water today-water"></td>
-                <td class="water yesterday-water"></td>
-                <td class="water two-day-water"></td>
-                <td class="water three-day-water"></td>
-                <td class="water four-day-water"></td>
-                <td class="water five-day-water"></td>
-                <td class="water six-day-water"></td>
-              </tr>
-              <tr>
-                <th class="weekly-water">Start date</th>
-                <th class="weekly-water">Next day</th>
-                <th class="weekly-water">2 days later</th>
-                <th class="weekly-water">3 days later</th>
-                <th class="weekly-water">4 days later</th>
-                <th class="weekly-water">5 days later</th>
-                <th class="weekly-water">6 days later</th>
-              </tr>
+              <th class="weekly-water">Start date</th>
+              <td class="water today-water"></td>
+            <tr>
+              <th class="weekly-water">Next day</th>
+              <td class="water yesterday-water"></td>
+            </tr>
+            <tr>
+              <th class="weekly-water">2 days later</th>
+              <td class="water two-day-water"></td>
+            </tr>
+            <tr>
+              <th class="weekly-water">3 days later</th>
+              <td class="water three-day-water"></td>
+            </tr>
+            <tr>
+              <th class="weekly-water">4 days later</th>
+              <td class="water four-day-water"></td>
+            </tr>
+            <tr>
+              <th class="weekly-water">5 days later</th>
+              <td class="water five-day-water"></td>
+            </tr>
+            <tr>
+              <th class="weekly-water">6 days later</th>
+              <td class="water six-day-water"></td>
+            </tr>
           </div>
       </section>
     </main>

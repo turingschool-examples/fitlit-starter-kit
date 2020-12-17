@@ -2,6 +2,8 @@ const currentUserRepo = new UserRepo(userData);
 const currentUser = new User(currentUserRepo.data[0]);
 const currentHydrationRepo = new HydrationRepo(hydrationData);
 const currentHydration = new Hydration(currentHydrationRepo.data[1700]);
+const currentSleepRepo = new SleepRepo(sleepData);
+const currentSleep = new Sleep(currentSleepRepo.data[1700]);
 const firstNameDisplay = document.querySelector('.first-name-section');
 const fullNameDisplay = document.querySelector('.full-name');
 const addressDisplay = document.querySelector('.address');
@@ -14,7 +16,8 @@ const waterConsumed = document.querySelector('.water-consumed');
 const hydrationHeading = document.querySelector('.hydration-data');
 const hydrationDay = document.querySelector('.hydration-day');
 const hydrationWeek = document.querySelector('.hydration-week');
-
+const sleepDuration = document.querySelector('.sleep-duration');
+const sleepQuality = document.querySelector('.sleep-quality');
 
 const hydrationWeekView = (id, date) => {
   waterConsumed.innerText = `Water Consumed this past week: ${currentHydrationRepo.returnWaterConsumed(id, date)}`;
@@ -33,6 +36,7 @@ const displayAllUserData = () => {
   dailyStepGoal.innerText += `${currentUser.dailyStepGoal}`;
   averageStepGoal.innerText += `        ${currentUserRepo.userStepGoalAverage()}.`;
   waterConsumed.innerText = `Water Consumed Today -   ${currentHydration.numOunces} ounces!`;
+  sleepDuration.innerText = `Hours Slept: ${currentSleep.returnHoursSlept()}`
   displayFriendsByName();
 };
 

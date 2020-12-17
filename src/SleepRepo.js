@@ -1,4 +1,4 @@
-const Sleep = require('../src/Sleep');
+// const Sleep = require('../src/Sleep');
 
 class SleepRepo {
   constructor(data) {
@@ -15,11 +15,11 @@ class SleepRepo {
     return average;
   }
 
-  returnAverageHoursSleptPerDay(id) {    
+  returnAverageHoursSleptPerDay(id) {
     return this.returnAvgData(id, 'hoursSlept');
   }
 
-  returnOverallAverageSleepQuality(id) {    
+  returnOverallAverageSleepQuality(id) {
     return this.returnAvgData(id, 'sleepQuality');
   }
 
@@ -32,11 +32,11 @@ class SleepRepo {
     return weekOfDailyDataNeeded;
   }
 
-  returnWeekOfDailyHoursSlept(id, date) {  
+  returnWeekOfDailyHoursSlept(id, date) {
     return this.returnWeeklyData(id, date, 'hoursSlept');
   }
 
-  returnWeekOfDailySleepQuality(id, date) {    
+  returnWeekOfDailySleepQuality(id, date) {
     return this.returnWeeklyData(id, date, 'sleepQuality');
   }
 
@@ -64,7 +64,7 @@ class SleepRepo {
   prepareWeekData(date) {
     const leastAndGreatest = { least: this.data[0].id, greatest: this.data[this.data.length - 1].id };
     const startingDateDigits = parseInt(date.slice(-2)) - 6;
-    const startingDate = date.slice(0, 8) + startingDateDigits;    
+    const startingDate = date.slice(0, 8) + startingDateDigits;
     const lastIndex = this.data.findIndex(data => data.id === leastAndGreatest.greatest && data.date === date);
     const firstIndex = this.data.findIndex(data => data.id === leastAndGreatest.least && data.date === startingDate);
     const targetWeek = this.data.slice(firstIndex, lastIndex + 1);
@@ -74,19 +74,19 @@ class SleepRepo {
     }
   }
 
-  returnUsersWithSleepQualityThreeOrGreater(date) {    
+  returnUsersWithSleepQualityThreeOrGreater(date) {
     const targetWeekData = this.prepareWeekData(date);
     const week = targetWeekData.week;
-    return week.reduce((usersWhoSleptGreat, data) => {      
+    return week.reduce((usersWhoSleptGreat, data) => {
       const totalSleepQuality = week.reduce((quality, newData) => {
         if (data.id === newData.id) {
-          quality += newData.sleepQuality;        
+          quality += newData.sleepQuality;
         }
 
         return quality;
-      }, 0);      
-      
-      const avgSleepQuality = totalSleepQuality / (week.length / targetWeekData.greatest);      
+      }, 0);
+
+      const avgSleepQuality = totalSleepQuality / (week.length / targetWeekData.greatest);
       if (avgSleepQuality >= 3 && !usersWhoSleptGreat.includes(data.id)) {
         usersWhoSleptGreat.push(data.id);
       }

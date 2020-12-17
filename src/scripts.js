@@ -96,13 +96,13 @@ const showSleepStats = () => {
   document.querySelector('.sleep-average-quality-input').innerText = `You average a score of ${communitySleep.calculateAvgSleepQualPerDay(user.userID)}/day`
 }
 
-//FRIENDS:
+//SHOW FRIENDS:
 const showFriends = () => {
   const friendsDisplay = user.friends.map(friend => `<div class="friend-name">${community.getUserData(friend).getFirstName()}</div>`)
   document.querySelector('.friends-names').innerHTML = `${friendsDisplay.join('')}`
 }
 
-//we can add other calls to this onload function
+//PAGE LOAD FUNCTION
 function loadPage() {
   greetAndShowProfile()
   displayWeekStats()

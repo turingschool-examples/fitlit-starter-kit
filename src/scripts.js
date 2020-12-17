@@ -2,7 +2,6 @@
 const userMain = document.querySelector('.user-main')
 const greeting = document.querySelector('.greeting')
 const userProfile = document.querySelector('.user-profile')
-
 const friends = document.querySelector('.friends')
 const steps = document.querySelector('.steps')
 const water = document.querySelector('.water');
@@ -11,20 +10,11 @@ const stairs = document.querySelector('.stairs');
 const userLatestSleep = document.querySelector('.user-latest-sleep-stats')
 const sleepHours = document.querySelector('.sleep-hours')
 const sleepQuality = document.querySelector('.sleep-quality')
-
 const todayDateSelector = document.getElementById("today")
 const startDateSelector = document.getElementById("start")
 const endDateSelector = document.getElementById("end")
-
 const graph = document.querySelector('.graph');
 const graphTitle = document.querySelector('.title-graph');
-
-const stepCanvas = document.getElementById('stepChart').getContext('2d')
-const waterCanvas = document.getElementById('waterChart').getContext('2d')
-const stairsCanvas = document.getElementById('waterChart').getContext('2d')
-const activeMinutesCanvas = document.getElementById('waterChart').getContext('2d')
-const sleepCanvas = document.getElementById('sleepChart').getContext('2d')
-const friendCanvas = document.getElementById('waterChart').getContext('2d')
 
 //since multiple methods will need these, global
 let community = new UserRepository(userData);
@@ -47,8 +37,7 @@ endDateSelector.addEventListener("change", function() {endDate = this.value.spli
 
 //GREETING:
 function greetUser() {
-  const userFirstName = user.getFirstName()
-  greeting.insertAdjacentHTML('afterbegin', `<h2 class="greeting">Welcome ${userFirstName}!</h2>`)
+  greeting.insertAdjacentHTML('afterbegin', `<h2 class="greeting">Welcome ${user.getFirstName()}!</h2>`)
 }
 
 //USER DATA:
@@ -63,7 +52,6 @@ const showProfile = () => {
 
 //ADD TODAY SLEEP STATS:
 const showLatestSleepStatsUser = () => {
-
   userLatestSleep.insertAdjacentHTML('beforeend', `
     <p class="sleep-quantity-last-night">You slept ${communitySleep.findHrsSleptOnDay(sleep.userID, today)} hrs</p>
     <p class="sleep-quality-last-night">Your sleep quality score: ${communitySleep.findSleepQualityOnDay(sleep.userID, today)}</p>
@@ -234,7 +222,7 @@ const showActivityStats = () => {
   showUserStairRecord()
   // showStepStatsWeek("2019/09/16", "2019/09/22")
   // showMinutesActiveStatsWeek("2019/09/16", "2019/09/22")
-  // showActivitiesChartWhateverWeek("2019/09/16", "2019/09/22")
+ 
 }
 
 //FRIENDS:
@@ -244,7 +232,7 @@ const showFriends = () => {
     return `<div>${friendName}</div>`
   })
 
-  friends.innerHTML += friendDisplay.join(' ')
+  friends.insertAdjacentHTML('afterbegin', friendDisplay.join(' '))
 }
 
 const findFriendSteps = (friend) => {
@@ -252,9 +240,8 @@ const findFriendSteps = (friend) => {
   friendWeek = communityActivity.findWeekActivities(startDate, endDate, friendData)
   return friendWeek.map(object => object.numSteps)
 }
-const getFriendName = (friend) => {
-  return community.getUserData(friend).getFirstName()
-}
+
+const getFriendName = (friend) => community.getUserData(friend).getFirstName()
 
 
 //we can add other calls to this onload function
@@ -268,3 +255,195 @@ function loadPage() {
   showActivityStats()
   showSleepStats()
 }
+
+const weekActivities = communityActivity.findWeekActivities(startDate, endDate, user)
+const weekSleep = communitySleep.calculateSleepStatsWeek(sleep.userID, startDate, endDate)
+const weekWater = communityHydration.calculateTotalWeek(hydration.userID, startDate, endDate)
+
+const mapWeek = (week, fitnessType) => week.map(day => day[fitnessType])
+const weekDates = weekActivities.map(day => day.date)
+const makeYs = (number) => new Array(weekActivities.length).fill(number)
+
+
+const stepCanvas = document.getElementById('stepChart').getContext('2d')
+const waterCanvas = document.getElementById('waterChart').getContext('2d')
+const stairsCanvas = document.getElementById('stairsChart').getContext('2d')
+const activeMinutesCanvas = document.getElementById('activeMinutesChart').getContext('2d')
+const sleepCanvas = document.getElementById('sleepChart').getContext('2d')
+const friendCanvas = document.getElementById('friendChart').getContext('2d')
+
+//STEPS
+const stepChart = new Chart(stepCanvas, {
+  type: 'bar',
+  data: {
+    labels: weekDates,
+    datasets: [{
+      label: `Your Steps`,
+      data: mapWeek(weekActivities, 'numSteps'),
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgba(255, 99, 132, 1)',
+      borderWidth: 1
+    }, 
+    {
+      type: 'line',
+      label: `Your Step Goal`,
+      data: makeYs(user.dailyStepGoal),
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1
+    },
+    {
+      type: 'line', 
+      label: `Community Average Step Goal`,
+      data: makeYs(community.findAverageStepGoal()),
+      backgroundColor: 'rgba(255, 10, 235, 0.2)',
+      borderColor: 'rgba(255, 10, 235, 1)',
+      borderWidth: 1
+    },
+    {
+      type: 'line', 
+      label: `Community Average Steps`,
+      data: makeYs(communityActivity.findCommunityAverage(today, 'numSteps')),
+      backgroundColor: 'rgba(0, 162, 235, 0.2)',
+      borderColor: 'rgba(0, 162, 235, 1)',
+      borderWidth: 1
+    }]
+  }
+});
+//STAIRS
+const stairsChart = new Chart(stairsCanvas, {
+  type: 'bar',
+  data: {
+    labels: weekDates,
+    datasets: [{
+      label: 'Your Stairs Climbed',
+      data: mapWeek(weekActivities, 'stairsClimbed'),
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgba(255, 99, 132, 1)',
+      borderWidth: 1
+    }, 
+    {
+      type: 'line', 
+      label: 'Your Record Stairs Climbed',
+      data: makeYs(communityActivity.findRecordStairs(user)),
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1
+    },
+    {
+      type: 'line', 
+      label: 'Community Average Stairs Climbed',
+      data: makeYs(communityActivity.findRecordStairs(user)),
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1
+    }]
+  }
+});
+//ACTIVE MINUTES
+const activeMinutesChart = new Chart(activeMinutesCanvas, {
+  type: 'bar',
+  data: {
+    labels: weekDates,
+    datasets: [{
+      label: 'Your Active Minutes',
+      data: mapWeek(weekActivities, 'minutesActive'),
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgba(255, 99, 132, 1)',
+      borderWidth: 1
+    }, 
+    {
+      type: 'line', 
+      label: 'Community Average Active Minutes',
+      data: makeYs(communityActivity.findCommunityAverage(today, 'minutesActive')),
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1
+    }]
+  }
+});
+//WATER
+const waterChart = new Chart(waterCanvas, {
+  type: 'bar',
+  data: {
+    labels: weekDates,
+    datasets: {
+      label: 'Your Total Ounces',
+      data: mapWeek(weekWater, 'numOunces'),
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgba(255, 99, 132, 1)',
+      borderWidth: 1
+    }, 
+  }
+});
+//SLEEP
+const sleepChart = new Chart(sleepCanvas, {
+  type: 'bar',
+  data: {
+    labels: weekDates,
+    datasets: [{
+      label: `Your Hours Slept`,
+      data: mapWeek(weekSleep, 'hoursSlept'),
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgba(255, 99, 132, 1)',
+      borderWidth: 1
+    }, 
+    {
+      label: `Your Sleep Quality`,
+      data: mapWeek(weekSleep, 'sleepQuality'),
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1
+    },
+    {
+      type: 'line', 
+      label: `Your All-Time Average Sleep Quality`,
+      data: makeYs(communitySleep.calculateAvgSleepQualPerDay(sleep.userID)),
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1
+    },
+    {
+      type: 'line', 
+      label: `Your All-Time Average Sleep Quality`,
+      data: makeYs(communitySleep.calculateAvgSleepHrsPerDay(sleep.userID)),
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1
+    }]
+  }
+});
+// FRIENDS
+const friendChart = new Chart(friendCanvas, {
+  type: 'line',
+  data: {
+    labels: weekDates,
+    datasets: [{
+      label: `Your Steps`,
+      data: mapWeek(weekActivities, 'numSteps'),
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgba(255, 99, 132, 1)',
+      borderWidth: 1
+    }, 
+    {
+      label: `${getFriendName(user.friends[0])}'s Steps`,
+      data: findFriendSteps(user.friends[0]),
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1
+    }, 
+    {
+      label: `${getFriendName(user.friends[1])}'s Steps`,
+      data: findFriendSteps(user.friends[1]),
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1
+    }, 
+    {
+      label: `${getFriendName(user.friends[2])}'s Steps`,
+      data: findFriendSteps(user.friends[2]),
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1
+    }]
+  }
+})

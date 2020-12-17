@@ -4,12 +4,10 @@
 
 ## Table of Contents
 
-- what is project
-- what does it do
-- how to install project
-- contributing
-  - send pr's and issues to ...
-- licensing
+- [what is project](#what-is-this-project)
+- [what does it do](#what-does-this-project-do)
+- [how to install project](#installation-instructions)
+- [contributors](#contributors)
 
 ---
 
@@ -26,3 +24,4 @@
 ---
 
 ## Contributors
+  - send pr's and issues to ...

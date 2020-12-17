@@ -15,14 +15,12 @@ const hydrationHeading = document.querySelector('.hydration-data');
 const hydrationDay = document.querySelector('.hydration-day');
 const hydrationWeek = document.querySelector('.hydration-week');
 
-hydrationWeek.addEventListener('click', hydrationWeekView(currentUser.id, currentHydration.date));
-hydrationDay.addEventListener('click', hydrationDayView());
 
-function hydrationWeekView(id, date) {
+const hydrationWeekView = (id, date) => {
   waterConsumed.innerText = `Water Consumed this past week: ${currentHydrationRepo.returnWaterConsumed(id, date)}`;
 }
 
-function hydrationDayView() {
+const hydrationDayView = () => {
   waterConsumed.innerText = `Water Consumed Today -     ${currentHydration.numOunces} ounces!`;
 }
 
@@ -43,3 +41,28 @@ function displayFriendsByName() {
   friendsList.innerText += ` ${userData[id - 1].name}. `;
   });
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+hydrationWeek.addEventListener('click', function() {
+  hydrationWeekView(currentUser.id, currentHydration.date);
+});
+hydrationDay.addEventListener('click', function() {
+  hydrationDayView();
+});

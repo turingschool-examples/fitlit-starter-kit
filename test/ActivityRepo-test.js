@@ -376,14 +376,36 @@ describe('ActivityRepo', () => {
     ]);    
   });
 
-  it.skip('should return avg minutes active for a given week', () => {
-    const endDate = '2019/09/05';
-    console.log(activityRepo.findWeekDates(endDate));
-    
-    // const avgMinutes = activityRepo.calculateMinutesActive(33, endDate);
+  it('should return a user and week', () => {
+    const user = {
+      "id": 22,
+      "name": "Eric Campbell",
+      "address": "123 SomeOther St, Denver CO, 66666",
+      "email": "mainlyetcetera@gmail.com",
+      "strideLength": 2.3,
+      "dailyStepGoal": 5,
+      "friends": [
+        11,
+        33
+      ]
+    };
 
-    // expect(avgMinutes).to.equal(6424);
+    const week = ['2019/09/14', '2019/09/15', '2019/09/16', '2019/09/17', '2019/09/18', '2019/09/19', '2019/09/20', '2019/09/21'];
+
+    expect(activityRepo.findWeekAndUser(user.id, week)).to.deep.equal({
+      user: user,
+      week: week
+    });
+  }); 
+
+  it.skip('should return avg minutes active for a given week', () => {
+    const endDate = '2019/09/21';    
+    const avgMinutes = activityRepo.calculateMinutesActive(33, endDate);
+
+    expect(avgMinutes).to.equal(187);
   });
+
+
 
   it.skip('should return all days a user exceeded their step goal', () => {
     const daysExceededGoal = activityRepo.calculateDaysExceededGoal(33);

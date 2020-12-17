@@ -251,10 +251,7 @@ function fillDropdown() {
   function displayHydrationChart() {
     let ctx = document.getElementById("hydrationChart").getContext("2d");
     let chart = new Chart(ctx, {
-      // The type of chart we want to create
       type: "bar",
-
-      // The data for our dataset
       data: {
         labels: [
           "Start Date",
@@ -273,12 +270,14 @@ function fillDropdown() {
             data: currentUser.userHydration.calculateWaterPerWeek(
               chosenDate,
               currentUser
-            )
-          },
-        ],
-      },
-
-      // Configuration options go here
-      options: {},
-    })
+              )
+            },
+          ],
+        },
+        
+        // Configuration options go here
+        options: {
+          events: []
+        },
+      })
   }

@@ -13,11 +13,11 @@ body {
 }
 
 button {
+  background-color: #6D71E3;
+  border-radius: 5px;
+  color: white;
   font-family: 'Raleway',
     sans-serif;
-  border-radius: 5px;
-  background-color: #6D71E3;
-  color: white;
   padding: 2%;
 }
 
@@ -156,8 +156,8 @@ th {
 }
 
 .disclaimer {
-  font-style: italic;
   font-size: 60%;
+  font-style: italic;
   margin-top: 0;
 }
 

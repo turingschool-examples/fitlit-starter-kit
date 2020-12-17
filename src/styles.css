@@ -26,12 +26,8 @@ body {
   width: 95%;
 }
 
-.full-name {
-  margin-top: 10%;
-}
-
 .friends {
-  margin-bottom: 10%;
+  margin-bottom: 5%;
 }
 
 h1 {
@@ -39,8 +35,8 @@ h1 {
   margin: 0%;
   padding-top: .2em;
   height: 28%;
-  width: 43%;
-  font-size: 300%;
+  width: 60%;
+  font-size: 250%;
 }
 
 .day-week-view {
@@ -81,11 +77,13 @@ button {
   margin-bottom: 6%;
   border: solid black;
   border-radius: 10px;
-  height: 70%;
+  height: 80%;
   width: 70%;
 }
 
 p {
+  margin: 1%;
+  margin-left: 3%;
   color: #FCE671;
 }
 
@@ -97,7 +95,7 @@ p {
   color: #FCE671;
   font-size: 130%;
   width: 70%;
-  height: 45%;
+  height: 55%;
   margin-top: 10%;
   border-radius: 10px;
   border: solid black;

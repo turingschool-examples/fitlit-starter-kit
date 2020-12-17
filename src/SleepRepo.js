@@ -26,7 +26,7 @@ class SleepRepo {
   returnWeeklyData(id, date, propertyName) {
     const currentUserData = this.data.filter(userData => userData.id === id);
     const indexOfEndDate = currentUserData.findIndex(userData => userData.date === date);
-    const weekData = currentUserData.slice(0, indexOfEndDate + 1);
+    const weekData = currentUserData.slice(indexOfEndDate - 6, indexOfEndDate + 1);
     const weekOfDailyDataNeeded = [];
     weekData.forEach(userData => weekOfDailyDataNeeded.push(userData[propertyName]));
     return weekOfDailyDataNeeded;

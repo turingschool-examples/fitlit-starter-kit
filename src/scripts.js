@@ -14,17 +14,29 @@ const friendsList = document.querySelector('.friends');
 const averageStepGoal = document.querySelector('.average-step-goal');
 const waterConsumed = document.querySelector('.water-consumed');
 const hydrationHeading = document.querySelector('.hydration-data');
-const hydrationDay = document.querySelector('.hydration-day');
-const hydrationWeek = document.querySelector('.hydration-week');
-const sleepDuration = document.querySelector('.sleep-duration');
-const sleepQuality = document.querySelector('.sleep-quality');
+const hydrationDayButton = document.querySelector('.hydration-day');
+const hydrationWeekButton = document.querySelector('.hydration-week');
+const sleepDurationDisplay = document.querySelector('.sleep-duration');
+const sleepQualityDisplay = document.querySelector('.sleep-quality');
+const sleepWeekButton = document.querySelector('.sleep-week');
+const sleepDayButton = document.querySelector('.sleep-day');
 
 const hydrationWeekView = (id, date) => {
-  waterConsumed.innerText = `Water Consumed this past week: ${currentHydrationRepo.returnWaterConsumed(id, date)}`;
+  waterConsumed.innerText = `Water Consumed This Past Week  ${currentHydrationRepo.returnWaterConsumed(id, date)}`;
 }
 
 const hydrationDayView = () => {
   waterConsumed.innerText = `Water Consumed Today -     ${currentHydration.numOunces} ounces!`;
+}
+
+const sleepWeekView = (id, date) => {
+  sleepDurationDisplay.innerText = `Daily Hours Slept: ${currentSleepRepo.returnWeekOfDailyHoursSlept(id, date)}`
+  sleepQualityDisplay.innerText = `Daily Sleep Quality: ${currentSleepRepo.returnWeekOfDailySleepQuality(id, date)}`
+}
+
+const sleepDayView = () => {
+  sleepDurationDisplay.innerText = `Hours Slept: ${currentSleep.returnHoursSlept()}`;
+  sleepQualityDisplay.innerText = `Sleep Quality: ${currentSleep.returnSleepQuality()}`;
 }
 
 const displayAllUserData = () => {
@@ -36,7 +48,8 @@ const displayAllUserData = () => {
   dailyStepGoal.innerText += `${currentUser.dailyStepGoal}`;
   averageStepGoal.innerText += `        ${currentUserRepo.userStepGoalAverage()}.`;
   waterConsumed.innerText = `Water Consumed Today -   ${currentHydration.numOunces} ounces!`;
-  sleepDuration.innerText = `Hours Slept: ${currentSleep.returnHoursSlept()}`
+  sleepDurationDisplay.innerText = `Hours Slept: ${currentSleep.returnHoursSlept()}`;
+  sleepQualityDisplay.innerText = `Sleep Quality: ${currentSleep.returnSleepQuality()}`;
   displayFriendsByName();
 };
 
@@ -47,26 +60,18 @@ function displayFriendsByName() {
 };
 
 
+sleepDayButton.addEventListener('click', function() {
+  sleepDayView();
+})
 
+sleepWeekButton.addEventListener('click', function() {
+  sleepWeekView(currentUser.id, currentSleep.date);
+})
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-hydrationWeek.addEventListener('click', function() {
+hydrationWeekButton.addEventListener('click', function() {
   hydrationWeekView(currentUser.id, currentHydration.date);
 });
-hydrationDay.addEventListener('click', function() {
+
+hydrationDayButton.addEventListener('click', function() {
   hydrationDayView();
 });

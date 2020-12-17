@@ -82,6 +82,16 @@ describe('Activity', () => {
   });
 
   it('should return minutes active', () => {
+    
+  it.skip('should have an appropriate constructor', () => {
+    expect(activity.id).to.equal(data.userID);
+    expect(activity.date).to.equal(data.date);
+    expect(activity.steps).to.equal(data.numSteps);
+    expect(activitiy.minActive).to.equal(data.minutesActive);
+    expect(activity.flightsOfStairs).to.equal(data.flightsOfStairs);
+  });
+
+  it.skip('should return minutes active', () => {
     const minutes = activity.returnMinutes();
 
     expect(minutes).to.equal(data.minutesActive);
@@ -109,5 +119,13 @@ describe('Activity', () => {
 
     expect(newActivity.steps).to.be.at.least(goal2);
     expect(didHitGoal2).to.equal(true);
+
+  it.skip('should return whether step goal was reached', () => {    
+    const user = userRepo.data.find(user => user.id === activity.id);
+    const goal = user.dailyStepGoal;
+    const didHitGoal = activity.checkStepGoal();
+
+    expect(activity.steps).to.be.at.least(user.datilyStepGoal);
+    expect(didHitGoal).to.equal(true);    
   });
 });

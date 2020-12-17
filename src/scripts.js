@@ -1,9 +1,9 @@
 const currentUserRepo = new UserRepo(userData);
-const currentUser = new User(currentUserRepo.data[0]);
+const currentUser = new User(currentUserRepo.data[49]);
 const currentHydrationRepo = new HydrationRepo(hydrationData);
-const currentHydration = new Hydration(currentHydrationRepo.data[1700]);
+const currentHydration = new Hydration(currentHydrationRepo.data[4999]);
 const currentSleepRepo = new SleepRepo(sleepData);
-const currentSleep = new Sleep(currentSleepRepo.data[1700]);
+const currentSleep = new Sleep(currentSleepRepo.data[4999]);
 const firstNameDisplay = document.querySelector('.first-name-section');
 const fullNameDisplay = document.querySelector('.full-name');
 const addressDisplay = document.querySelector('.address');
@@ -42,12 +42,15 @@ const sleepDayView = () => {
 }
 
 const displaySleepAverages = (id) => {
-  sleepDurationDisplay.innerText = `Average Hours Slept: ${currentSleepRepo.returnAverageHoursSleptPerDay(id)} hours`;
-  sleepQualityDisplay.innerText = `Average Sleep Quality: ${currentSleepRepo.returnOverallAverageSleepQuality(id)}`;
+  const truncatedSleepDurationAverage = parseFloat(currentSleepRepo.returnAverageHoursSleptPerDay(id).toFixed(2));
+  const truncatedSleepQualityAverage = parseFloat(currentSleepRepo.returnOverallAverageSleepQuality(id).toFixed(2));
+  sleepDurationDisplay.innerText = `Average Hours Slept: ${truncatedSleepDurationAverage} hours`;
+  sleepQualityDisplay.innerText = `Average Sleep Quality: ${truncatedSleepQualityAverage}`;
 }
 
 const displayAllUserData = () => {
-  firstNameDisplay.innerText = `Hello ${currentUser.provideUsersFirstName()}!`
+  if (  firstNameDisplay.innerText != `Hello ${currentUser.provideUsersFirstName()}!`) {
+  firstNameDisplay.innerText = `Hello ${currentUser.provideUsersFirstName()}!`;
   fullNameDisplay.innerText += `${currentUser.name}`;
   addressDisplay.innerText += `${currentUser.address}`;
   emailDisplay.innerText += `${currentUser.email}`;
@@ -58,6 +61,7 @@ const displayAllUserData = () => {
   sleepDurationDisplay.innerText = `Hours Slept: ${currentSleep.returnHoursSlept()}`;
   sleepQualityDisplay.innerText = `Sleep Quality: ${currentSleep.returnSleepQuality()}`;
   displayFriendsByName();
+}
 };
 
 function displayFriendsByName() {

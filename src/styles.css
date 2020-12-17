@@ -19,7 +19,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: #E8DCAE;
+  background: rgb(232,220,174);
+  background: linear-gradient(180deg, rgba(232,220,174,1) 18%, rgba(217,189,187,1) 52%, rgba(244,215,147,1) 98%);
   border: solid black;
   border-radius: 10px;
   height: 95%;

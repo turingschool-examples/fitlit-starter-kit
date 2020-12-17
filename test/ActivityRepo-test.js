@@ -417,14 +417,14 @@ describe('ActivityRepo', () => {
     expect(record).to.equal(47);
   });
 
-  it.skip('should save avg stairs, steps, minutes for a date for all users', () => {
-    expect(activityRepo.averages).to.be.an('object');
+  it('should save avg stairs, steps, minutes for a date for all users', () => {
+    expect(activityRepo.dailyAverages).to.be.an('object');
 
     const date1 = '2019/09/15';
     activityRepo.calculateDailyAverages(date1);
 
     expect(activityRepo.dailyAverages[date1]).to.deep.equal({      
-      stairs: 132,
+      stairs: 33,
       steps: 6070,
       minutesActive: 234
     });
@@ -440,7 +440,7 @@ describe('ActivityRepo', () => {
 
     expect(activityRepo.dailyAverages).to.deep.equal({
       '2019/09/15': {        
-        stairs: 132,
+        stairs: 33,
         steps: 6070,
         minutesActive: 234
       },
@@ -452,15 +452,15 @@ describe('ActivityRepo', () => {
     });
   });
 
-  it.skip('should save avg stairs, steps, minutes for a week for all users', () => {
-    const endDate = '2019/09/22';
+  it('should save avg stairs, steps, minutes for a week for all users', () => {
+    const endDate = '2019/09/21';
     activityRepo.calculateWeeklyAverages(endDate);
     // the expectation is calling calculateDailyAverages 7 times to properly generate the data
 
     expect(activityRepo.weeklyAverages).to.be.an('object');
     expect(activityRepo.weeklyAverages[endDate]).to.be.an('object');
     expect(activityRepo.weeklyAverages[endDate]).to.deep.equal({
-      stairs: 40,
+      stairs: 26,
       steps: 7057,
       minutesActive: 177
     });

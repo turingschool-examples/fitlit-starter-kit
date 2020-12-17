@@ -1,7 +1,9 @@
 class ActivityRepo {
   constructor(activityData, userDataset) {
     this.activityData = activityData;
-    this.userData = userDataset;    
+    this.userData = userDataset;
+    this.dailyAverages = {}; 
+    this.weeklyAverages = {};
   }
 
   findDayAndUser(id, date) {
@@ -126,37 +128,62 @@ class ActivityRepo {
       return record;
     }, 0);
   }
+
+  calculateDailyAverages(date) {
+    // get data for date
+    // record number of pieces of data here
+    // iterate through data, add up totals for stairs, steps, minutes
+    // divide each by # pieces data
+    // add to dailyAverages obj, key is date, value is obj holding averages
+
+    const dateData = this.activityData.filter(data => data.date === date);
+    const piecesOfData = dateData.length;
+    const totals = dateData.reduce((totals, data) => {
+      if (!totals.stairs && !totals.steps && !totals.minutesActive) {
+        totals.stairs = data.flightsOfStairs;
+        totals.steps = data.numSteps;
+        totals.minutesActive = data.minutesActive
+      } else {
+        totals.stairs += data.flightsOfStairs;
+        totals.steps += data.numSteps;
+        totals.minutesActive += data.minutesActive;
+      }
+
+      return totals;
+    }, {});
+
+    totals.stairs = Math.round(totals.stairs / piecesOfData);
+    totals.steps = Math.round(totals.steps / piecesOfData);
+    totals.minutesActive = Math.round(totals.minutesActive / piecesOfData);
+
+    this.dailyAverages[date] = totals;
+  }
+
+  calculateWeeklyAverages(endDate) {
+    const week = this.findWeekDates(endDate);
+    const weeklyTotals = week.reduce((weekData, date) => {
+      this.calculateDailyAverages(date);      
+      if (!weekData.stairs && !weekData.steps && !weekData.minutesActive) {
+        weekData.stairs = this.dailyAverages[date].stairs;
+        weekData.steps = this.dailyAverages[date].steps;
+        weekData.minutesActive = this.dailyAverages[date].minutesActive;
+      } else {
+        weekData.stairs += this.dailyAverages[date].stairs;
+        weekData.steps += this.dailyAverages[date].steps;
+        weekData.minutesActive += this.dailyAverages[date].minutesActive;
+      }
+
+      return weekData;
+    }, {});
+
+    weeklyTotals.stairs = Math.round(weeklyTotals.stairs / 7);
+    weeklyTotals.steps = Math.round(weeklyTotals.steps / 7);
+    weeklyTotals.minutesActive = Math.round(weeklyTotals.minutesActive / 7);
+
+    this.weeklyAverages[endDate] = weeklyTotals;
+  }
 }
 
 if (typeof module !== 'undefined') {
   module.exports = ActivityRepo;
 }
-
-/*
-miles divided by stride length = # steps / mile
-I can do steps * stride length to get total miles
-
-{
-  "userID": 33,
-  "date": "2019/09/21",
-  "numSteps": 4070,
-  "minutesActive": 168,
-  "flightsOfStairs": 3
-}
-
-{
-  "id": 33,
-  "name": "David Whitaker",
-  "address": "124 Random Lane, Denver CO, 66666",
-  "email": "damwhitmaybeidontknow@gmail.com",
-  "strideLength": 2.6,
-  "dailyStepGoal": 10000,
-  "friends": [
-    1,
-    4
-  ]
-}
-
-8855 (steps) * 2.6 (stride length) = 23023
-4.360 miles
-*/

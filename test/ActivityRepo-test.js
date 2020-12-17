@@ -398,9 +398,9 @@ describe('ActivityRepo', () => {
     });
   }); 
 
-  it.skip('should return avg minutes active for a given week', () => {
+  it('should return avg minutes active for a given week', () => {
     const endDate = '2019/09/21';    
-    const avgMinutes = activityRepo.calculateMinutesActive(33, endDate);
+    const avgMinutes = activityRepo.calculateAvgMinutesActive(33, endDate);
 
     expect(avgMinutes).to.equal(187);
   });

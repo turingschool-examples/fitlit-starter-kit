@@ -1,11 +1,11 @@
 class ActivityRepo {
   constructor(activityData, userDataset) {
-    this.actData = activityData;
+    this.activityData = activityData;
     this.userData = userDataset;    
   }
 
   findDayAndUser(id, date) {
-    const day = this.actData.find(data => data.userID === id && data.date === date);
+    const day = this.activityData.find(data => data.userID === id && data.date === date);
     const user = this.userData.find(data => data.id === id);
     return {
       day: day,
@@ -89,17 +89,11 @@ class ActivityRepo {
 
   findWeekAndUser(id, endDate) {
     const user = this.userData.find(data => data.id === id);
-    const week = this.findWeekDates(endDate);
-    console.log(week);
+    const week = this.findWeekDates(endDate);    
     return {
       user: user,
       week: week
-    }
-    
-    // find each date 
-    // find each date's data (findWeekDates(endDate))
-    // put all that data in one array
-    // return obj with user and array of dates' data
+    }    
   }
 
   calculateMiles(id, date) {    
@@ -110,9 +104,26 @@ class ActivityRepo {
     return formattedMiles;
   }
 
-  calculateMinutesActive(id, endDate) {
-    this.findWeekDates(endDate);
-    // const allData = this.findDayAndUser(id, endDate);
+  calculateAvgMinutesActive(id, endDate) {
+    const week = this.findWeekDates(endDate);
+    const weekOfActivity = this.activityData.filter(day => week.includes(day.date));
+    const theirWeek = weekOfActivity.filter(day => day.userID === id);
+    const minutes = theirWeek.map(day => day.minutesActive);
+    return Math.round(minutes.reduce((total, day) => total + day, 0) / 7);
+    
+
+    // find their minutes active for the week of the end date for the user
+    // taking in id and end date
+    // putting out avg minutes active (num)
+
+    // generate week dates
+    // filter activity data to match those dates
+    // filter that data to just be users
+    // reduce (or forEach) through that data to generate total
+    // div total by 7 (it's a week)
+    // return total
+
+
   }
 }
 

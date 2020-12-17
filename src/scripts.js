@@ -203,7 +203,8 @@ function displayAvgSleepData(placement) {
 function getSleepData(placement, index) {
   placement.innerText = `${
     currentUser.userSleep.calculateSleepItemPerWeek(chosenDate, 'hoursSlept')[index]
-  } hours, \n quality: ${
+  } hours, 
+    quality: ${
     currentUser.userSleep.calculateSleepItemPerWeek(chosenDate, 'sleepQuality')[index]
   }`;
   displayAvgSleepData(avgSleepStats)
@@ -218,9 +219,11 @@ function getHydrationData(placement, index) {
 function getStepData(placement, index) {
   placement.innerText = `${
     currentUser.userActivity.getWeekOfData(chosenDate, 'numSteps')[index]
-  } steps, \n ${
+  } steps,
+    ${
     currentUser.userActivity.getWeekOfData(chosenDate, 'flightsOfStairs')[index]
-  } flights of stairs, \n ${
+  } flights of stairs,
+    ${
     currentUser.userActivity.getWeekOfData(chosenDate, 'minutesActive')[index]
   } active minutes`;
 }

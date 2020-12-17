@@ -14,8 +14,8 @@ class UserRepo {
   }
 
   getAllUserAvgItem(fullList, date, keyName) {
-    let dayOfItemData = fullList.filter((day) => day.date === date);
-    let listOfItems = dayOfItemData.map((item) => item[keyName]);
+    let dayOfItemData = fullList.filter(day => day.date === date);
+    let listOfItems = dayOfItemData.map(item => item[keyName]);
     let totalItem = listOfItems.reduce((total, value) => {
       return (total += value);
     }, 0);
@@ -23,19 +23,19 @@ class UserRepo {
   }
 
   getAUser(id) {
-    return this.users.find((user) => user.id === id);
+    return this.users.find(user => user.id === id);
   }
 
   filterHydrationData(id) {
-    return this.hydrationData.filter((hydrationItem) => hydrationItem.userID === id);
+    return this.hydrationData.filter(hydrationItem => hydrationItem.userID === id);
   }
 
   filterSleepData(id) {
-    return this.sleepData.filter((sleepItem) => sleepItem.userID === id);
+    return this.sleepData.filter(sleepItem => sleepItem.userID === id);
   }
 
   filterActivityData(id) {
-    return this.activityData.filter((activityItem) => activityItem.userID === id);
+    return this.activityData.filter(activityItem => activityItem.userID === id);
   }
 
   getTotalNumUsers() {
@@ -43,12 +43,12 @@ class UserRepo {
   }
 
   calculateAvgSleepItem(keyName) {
-    let fullList = this.userSleepData.map((sleepItem) => sleepItem[keyName]);
+    let fullList = this.userSleepData.map(sleepItem => sleepItem[keyName]);
     return this.getAverage(fullList);
   }
 
   getIndex(startDate) {
-    let index = this.sleepData.findIndex((item) => item.date === startDate);
+    let index = this.sleepData.findIndex(item => item.date === startDate);
     return index;
   }
 
@@ -78,7 +78,7 @@ class UserRepo {
   }
 
   findLongSleepers(date) {
-    let todaysSleep = this.sleepData.filter((item) => item.date === date);
+    let todaysSleep = this.sleepData.filter(item => item.date === date);
     let bestSleeper = todaysSleep.sort((a, b) => b.hoursSlept - a.hoursSlept);
     return todaysSleep.reduce((total, value) => {
       if (

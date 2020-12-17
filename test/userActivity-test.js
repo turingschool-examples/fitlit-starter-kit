@@ -83,16 +83,14 @@ describe("UserActivity", () => {
       minutesActive: 90,
       flightsOfStairs: 10,
     }),
-    (user1 = new User(
-      {
-        id: 1,
-        name: "Testy User",
-        address: "123 Main St, Hometown CO 80123-1234",
-        email: "my.email.address@hotmail.com",
-        strideLength: 4.3,
-        dailyStepGoal: 3000,
-      }
-    )),
+    (user1 = new User({
+      id: 1,
+      name: "Testy User",
+      address: "123 Main St, Hometown CO 80123-1234",
+      email: "my.email.address@hotmail.com",
+      strideLength: 4.3,
+      dailyStepGoal: 3000,
+    })),
     (user2 = new User({
       id: 2,
       name: "Great Person",
@@ -102,16 +100,16 @@ describe("UserActivity", () => {
       dailyStepGoal: 15000,
     })),
     (userActivity = new UserActivity([
-      userActivity1,
-      userActivity2,
-      userActivity3,
-      userActivity4,
-      userActivity5,
-      userActivity6,
-      userActivity7,
-      userActivity8,
-    ], user1.strideLength,
-    user1.dailyStepGoal)),
+        userActivity1,
+        userActivity2,
+        userActivity3,
+        userActivity4,
+        userActivity5,
+        userActivity6,
+        userActivity7,
+        userActivity8,
+      ], user1.strideLength,
+      user1.dailyStepGoal)),
     (userRepo = new UserRepo([
       user1,
       user2
@@ -133,9 +131,9 @@ describe("UserActivity", () => {
   });
 
   it("should return a user's active items for a week", () => {
-    expect(userActivity.getWeekOfData("2019/06/12", 'minutesActive')).to.deep.equal([ 70, 60, 200, 85, 69, 85, 69 ]);
-    expect(userActivity.getWeekOfData("2019/06/12", 'numSteps')).to.deep.equal([ 3577, 2500, 4004, 6900, 4200, 7070, 6969 ]);
-    expect(userActivity.getWeekOfData("2019/06/12", 'flightsOfStairs')).to.deep.equal([ 16, 14, 12, 20, 15, 13, 17 ]);
+    expect(userActivity.getWeekOfData("2019/06/12", 'minutesActive')).to.deep.equal([70, 60, 200, 85, 69, 85, 69]);
+    expect(userActivity.getWeekOfData("2019/06/12", 'numSteps')).to.deep.equal([3577, 2500, 4004, 6900, 4200, 7070, 6969]);
+    expect(userActivity.getWeekOfData("2019/06/12", 'flightsOfStairs')).to.deep.equal([16, 14, 12, 20, 15, 13, 17]);
   });
 
   it("should return a user's average number of minutes for a week", () => {
@@ -143,11 +141,11 @@ describe("UserActivity", () => {
       91.14285714285714
     );
   });
-  
-    it("should return a user's all time stair climbing record", () => {
-      expect(
-        userActivity.getStairRecord(1)).to.equal(20);
-    });
+
+  it("should return a user's all time stair climbing record", () => {
+    expect(
+      userActivity.getStairRecord(1)).to.equal(20);
+  });
 
   it("should return if a user is above average", () => {
     const userItem1 = 70
@@ -155,8 +153,8 @@ describe("UserActivity", () => {
     const averageAll = 69
     expect(userActivity.isUserAboveAvg(userItem1, averageAll)).to.be.true;
     expect(userActivity.isUserAboveAvg(userItem2, averageAll)).to.be.false;
-  });  
-  
+  });
+
   it("should return if a user reached their step goal for a day", () => {
     expect(userActivity.isStepGoalReached("2019/06/12")).to.be.true;
     expect(userActivity.isStepGoalReached("2019/06/13")).to.be.false;
@@ -174,6 +172,6 @@ describe("UserActivity", () => {
   });
 
   it("should calculate a user's miles walked for a day", () => {
-    expect(userActivity.("2019/06/12")).to.equal(2.9130871212121208);
+    expect(userActivity.calculateMilesWalked("2019/06/12")).to.equal(2.9130871212121208);
   });
 });

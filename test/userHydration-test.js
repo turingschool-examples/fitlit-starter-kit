@@ -83,7 +83,7 @@ describe("UserHydration", () => {
   it("should be an instance of User", () => {
     expect(hydrationData).to.be.an.instanceof(UserHydration);
   });
-  
+
   it("should return total fluid ounces consumed for a day", () => {
     expect(hydrationData.getOneDayOfData("2019/06/12", 'numOunces')).to.equal(38);
   });

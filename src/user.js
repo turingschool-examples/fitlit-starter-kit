@@ -4,7 +4,7 @@
 // const UserActivity = require("../src/UserActivity");
 
 class User {
-  constructor(singleUserData, 
+  constructor(singleUserData,
     singleUserSleepData,
     singleUserHydrationData,
     singleUserActivityData) {
@@ -17,8 +17,8 @@ class User {
     this.userSleep = new UserSleep(singleUserSleepData);
     this.userHydration = new UserHydration(singleUserHydrationData);
     this.userActivity = new UserActivity(
-      singleUserActivityData, 
-      this.strideLength, 
+      singleUserActivityData,
+      this.strideLength,
       this.dailyStepGoal);
   }
 

@@ -5,7 +5,7 @@ class UserSleep {
   constructor(userSleepData) {
     this.userSleepData = userSleepData
   }
-  
+
   getOneDayOfData(date, keyName) {
     return this.userSleepData.find((day) => day.date === date)[keyName]
   }

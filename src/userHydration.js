@@ -27,7 +27,7 @@ class UserHydration {
       }
       return total;
     }, []).splice([findIndex], 7);
-  } 
+  }
 }
 
 if (typeof module !== 'undefined') {

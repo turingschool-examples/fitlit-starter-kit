@@ -9,92 +9,92 @@ const UserSleep = require("../src/userSleep");
 describe("UserSleep", () => {
   let userSleep,
     userSleepAll,
-    userSleep1, 
-    userSleep2, 
-    userSleep3, 
-    userSleep4, 
-    userSleep5, 
-    userSleep6, 
-    userSleep7, 
+    userSleep1,
+    userSleep2,
+    userSleep3,
+    userSleep4,
+    userSleep5,
+    userSleep6,
+    userSleep7,
     userSleep8,
     user2Sleep
 
   beforeEach(() => {
     userSleep1 = {
-      "userID": 1,
-      "date": "2019/06/15",
-      "hoursSlept": 6.1,
-      "sleepQuality": 2.2
-    },
-    userSleep2 = {
-      "userID": 1,
-      "date": "2019/06/16",
-      "hoursSlept": 7.3,
-      "sleepQuality": 3.8
-    },
-    userSleep3 = {
-      "userID": 1,
-      "date": "2019/06/17",
-      "hoursSlept": 7,
-      "sleepQuality": 3
-    },
-    userSleep4 = {
-      "userID": 1,
-      "date": "2019/06/18",
-      "hoursSlept": 7.8,
-      "sleepQuality": 1.5
-    },
-    userSleep5 = {
-      "userID": 1,
-      "date": "2019/06/19",
-      "hoursSlept": 8,
-      "sleepQuality": 1.3
-    },
-    userSleep6 = {
-      "userID": 1,
-      "date": "2019/06/20",
-      "hoursSlept": 5.1,
-      "sleepQuality": 3.7
-    },
-    userSleep7 = {
-      "userID": 1,
-      "date": "2019/06/21",
-      "hoursSlept": 5.1,
-      "sleepQuality": 3.7
-    },
-    userSleep8 = {
-      "userID": 1,
-      "date": "2019/06/22",
-      "hoursSlept": 5.1,
-      "sleepQuality": 3.7
-    },
-    user2Sleep = {
-      "userID": 2,
-      "date": "2019/06/15",
-      "hoursSlept": 10.2,
-      "sleepQuality": 5.2
-    },
-    userSleep = new UserSleep([
-      userSleep1, 
-      userSleep2, 
-      userSleep3, 
-      userSleep4, 
-      userSleep5, 
-      userSleep6, 
-      userSleep7, 
-      userSleep8,
-    ]),
-    userSleepAll = new UserSleep([
-      userSleep1, 
-      userSleep2, 
-      userSleep3, 
-      userSleep4, 
-      userSleep5, 
-      userSleep6, 
-      userSleep7, 
-      userSleep8,
-      user2Sleep
-    ])
+        "userID": 1,
+        "date": "2019/06/15",
+        "hoursSlept": 6.1,
+        "sleepQuality": 2.2
+      },
+      userSleep2 = {
+        "userID": 1,
+        "date": "2019/06/16",
+        "hoursSlept": 7.3,
+        "sleepQuality": 3.8
+      },
+      userSleep3 = {
+        "userID": 1,
+        "date": "2019/06/17",
+        "hoursSlept": 7,
+        "sleepQuality": 3
+      },
+      userSleep4 = {
+        "userID": 1,
+        "date": "2019/06/18",
+        "hoursSlept": 7.8,
+        "sleepQuality": 1.5
+      },
+      userSleep5 = {
+        "userID": 1,
+        "date": "2019/06/19",
+        "hoursSlept": 8,
+        "sleepQuality": 1.3
+      },
+      userSleep6 = {
+        "userID": 1,
+        "date": "2019/06/20",
+        "hoursSlept": 5.1,
+        "sleepQuality": 3.7
+      },
+      userSleep7 = {
+        "userID": 1,
+        "date": "2019/06/21",
+        "hoursSlept": 5.1,
+        "sleepQuality": 3.7
+      },
+      userSleep8 = {
+        "userID": 1,
+        "date": "2019/06/22",
+        "hoursSlept": 5.1,
+        "sleepQuality": 3.7
+      },
+      user2Sleep = {
+        "userID": 2,
+        "date": "2019/06/15",
+        "hoursSlept": 10.2,
+        "sleepQuality": 5.2
+      },
+      userSleep = new UserSleep([
+        userSleep1,
+        userSleep2,
+        userSleep3,
+        userSleep4,
+        userSleep5,
+        userSleep6,
+        userSleep7,
+        userSleep8,
+      ]),
+      userSleepAll = new UserSleep([
+        userSleep1,
+        userSleep2,
+        userSleep3,
+        userSleep4,
+        userSleep5,
+        userSleep6,
+        userSleep7,
+        userSleep8,
+        user2Sleep
+      ])
   })
 
   //sad path testing - look into this more.. how can a user eff this up. mock user messing us

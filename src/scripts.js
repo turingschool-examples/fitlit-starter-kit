@@ -80,7 +80,7 @@ viewUserButton.addEventListener('click', (event) => {
   displayFirstName()
   displayInfoCard()
   setChosenDate()
-  pieChartStat.classList.remove("hidden");  
+  pieChartStat.classList.remove("hidden");
   displayStepGoal();
   clearDisplays()
   return currentUser
@@ -280,13 +280,15 @@ function displayHydrationChart() {
         data: currentUser.userHydration.calculateWaterPerWeek(
           chosenDate,
           currentUser
-        )
+        ),
       }, ],
     },
     options: {
-      events: []
+      events: [],
+      maintainAspectRatio: false,
+      responsive: true,
     },
-  })
+  });
 }
 
 function displaySleepChart() {
@@ -303,8 +305,7 @@ function displaySleepChart() {
         "5 Days Later",
         "6 Days Later",
       ],
-      datasets: [
-        {
+      datasets: [{
           label: "Sleep Quality",
           backgroundColor: "#F0CB30",
           borderColor: "#F0CB30",
@@ -326,18 +327,21 @@ function displaySleepChart() {
     },
     options: {
       events: [],
+      maintainAspectRatio: false,
+      responsive: true,
     },
   });
 }
 
 function displayActivityChart() {
+  Chart.defaults.global.defaultFontColor = "white";
   let stepsNumber = currentUser.userActivity.getWeekOfData(
     chosenDate,
     "numSteps"
-  ).map(item => item/40)
+  ).map(item => item / 40)
   let ctx = document.getElementById("activityChart").getContext("2d");
   let chart = new Chart(ctx, {
-    type: "bar",
+    type: "horizontalBar",
     data: {
       labels: [
         "Start Date",
@@ -348,26 +352,22 @@ function displayActivityChart() {
         "5 Days Later",
         "6 Days Later",
       ],
-      datasets: [
-        {
-          label: "Steps (scaled down by 40%)",
+      datasets: [{
+          label: "Steps",
           backgroundColor: "#FA6A3C",
-          borderColor: "##FA6A3C",
           data: stepsNumber,
         },
         {
-          label: "Flights of Stairs Climbed",
+          label: "Stairs",
           backgroundColor: "#65A4F7",
-          borderColor: "##65A4F7",
           data: currentUser.userActivity.getWeekOfData(
             chosenDate,
             "flightsOfStairs"
           ),
         },
         {
-          label: "Active Minutes",
+          label: "Minutes",
           backgroundColor: "#C667E0",
-          borderColor: "#C667E0",
           data: currentUser.userActivity.getWeekOfData(
             chosenDate,
             "minutesActive"
@@ -377,6 +377,26 @@ function displayActivityChart() {
     },
     options: {
       events: [],
+      maintainAspectRatio: false,
+      responsive: true,
+      scales: {
+        xAxes: [{
+          stacked: true,
+        }, ],
+        yAxes: [{
+          stacked: true,
+          ticks: {
+
+          },
+        }],
+      },
+      legend: {
+        fullWidth: true,
+        boxWidth: 20,
+        labels: {
+          fontColor: "white",
+        },
+      },
     },
   });
 }
@@ -388,16 +408,14 @@ function displayStepGoal() {
     type: "pie",
     data: {
       labels: ["Step Goal", "Today's Steps"],
-      datasets: [
-        {
-          data: [
-            stepGoal,
-            currentUser.userActivity.getOneDayOfData(chosenDate, "numSteps"),
-          ],
-          backgroundColor: ["#C667E0", "#65A4F7"],
-          borderColor: ["#C667E0", "#65A4F7"],
-        },
-      ],
+      datasets: [{
+        data: [
+          stepGoal,
+          currentUser.userActivity.getOneDayOfData(chosenDate, "numSteps"),
+        ],
+        backgroundColor: ["#C667E0", "#65A4F7"],
+        borderColor: ["#C667E0", "#65A4F7"],
+      }, ],
     },
     options: {
       events: [],

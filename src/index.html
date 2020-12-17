@@ -16,19 +16,29 @@
     </header>
     <section class="user-main">
       <article class="greeting">
+        <h2 class="greeting-input"></h2>
       </article>
       <article class="user-profile">
         <h2>Your Profile</h2>
+          <p class="user-name"></p>
+          <p class="user-address"></p>
+          <p class="user-email"></p>
+          <p class="user-stride-length"></p>
+          <p class="user-friends-length"></p>
       </article>
       <div class="user-container">
         <article class="user-latest-sleep-stats">
           <h3>Last Night's Sleep Stats</h3>
+          <p class="sleep-quantity-last-night"></p>
+          <p class="sleep-quality-last-night"></p>
         </article>
         <article class="user-step-goal">
           <h3>Your Daily Step Goal</h3>
+            <p class="user-step-goal-input"></p>
         </article>
         <article class="community-step-goal">
           <h3>Community Average Step Goal</h3>
+          <p class="community-step-goal-input"></p>
         </article>
       </article>
     </section>
@@ -36,18 +46,29 @@
       
       <article class="steps">
         <h2>Steps</h2>
+          <p class="user-step-miles"></p>
+          <p class="user-steps-today"></p>
+          <p class="user-met-step-goal-today"></p>
+          <p class="user-days-exceeding-goal"></p>
+          <p class="community-steps-today"></p>
       </article>
 
       <article class="water">
         <h2>Water</h2>
+          <p class="water-stats"></p>
       </article>
 
       <article class="stairs">
         <h2>Stairs</h2>
+          <p class="community-average-stairs"></p>
+          <p class="user-record-stairs"></p>
       </article>
 
       <article class="active-minutes">
         <h2>Active Minutes</h2>
+          <p class="user-minutes-active"></p>
+          <p class="user-week-average-minutes-active"></p>
+          <p class="community-average-minutes-active"></p>
       </article>
 
       <article class="sleep">
@@ -56,10 +77,8 @@
           <article class="user-all-time-sleep-stats">
             <h3>Your All-Time Sleep Stats</h3>
           </article>
-          <p class="sleep-hours">
-          </p>
-          <p class="sleep-quality">
-          </p>
+            <p class="sleep-average-hours-input"></p>
+            <p class="sleep-average-quality-input"></p>
         </div>
       </article>
     </section>
@@ -87,11 +106,20 @@
       <canvas id="stairsChart" width="800" height="400"></canvas>
       <canvas id="activeMinutesChart" width="800" height="400"></canvas>
       <canvas id="sleepChart" width="800" height="400"></canvas>
-      
     </graph>
+
+    <section class="week-list-data">
+      <h2 class="Week of Stats">
+        <p class="week-minutes-active"></p>
+        <p class="week-steps"></p>
+        <p class="week-water"></p>
+        <p class="week-sleep-hours"></p>
+        <p class="week-sleep-quality"></p>
+    </section>
 
     <section class="friends">
       <h2>Friends</h2>
+        <p class="friends-names"></p>
       <canvas id="friendChart" width="800" height="400"></canvas>
     </section>
 

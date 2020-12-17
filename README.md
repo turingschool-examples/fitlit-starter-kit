@@ -27,6 +27,12 @@
 
 ## What does this project do?
 
+### This app should:
+- for a user:
+  - display their user, hydration, sleep, and activity data for the current day
+  - be able to switch any of the data breakdowns to a last week view instead
+  - be usable on both a mobile device and a desktop  
+
 ---
 
 ## Installation Instructions

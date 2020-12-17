@@ -49,6 +49,7 @@ window.addEventListener('load', () => {
 
 waterButton.addEventListener('click', () => {
   displayHydrationActivity();
+  currentUser.userHydration.getAverage(hydrationData);
 })
 
 sleepButton.addEventListener('click', () => {

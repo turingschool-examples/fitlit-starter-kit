@@ -9,11 +9,11 @@ article {
   opacity: 0.9;
 }
 body,html {
-  background-image: url(file:///Users/connie/fitlit/assets/background-image.svg);
+  background-image: url('../../assets/background-image.svg');
   background-size: cover;
   font-family: 'Righteous', cursive;
   font-size: 1.4em;
-  height: 100%;
+  height: 100%;59
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@ body,html {
 }
 
 h1 {
-  background-image: linear-gradient(to left, #fcdd2d, #d413f2, #0745ff, #7c07f9, #d413f2, #fcdd2d);
+  background-image: linear-gradient(to left, #fcdd2d, #d413f2, #0745ff, #7c07f9, #d413f2, #a19e8b);
   -webkit-background-clip: text;
   color: transparent;
   font-family: 'Fredoka One', cursive;

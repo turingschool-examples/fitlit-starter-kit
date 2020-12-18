@@ -255,7 +255,7 @@ canvas {
 }
 
 /* media queries */
-@media (max-width: 600px) {
+@media (max-width: 825px) {
   .category {
     flex-direction: column;
     height: 16%;

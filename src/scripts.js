@@ -4,6 +4,8 @@ const currentHydrationRepo = new HydrationRepo(hydrationData);
 const currentHydration = new Hydration(currentHydrationRepo.data[4999]);
 const currentSleepRepo = new SleepRepo(sleepData);
 const currentSleep = new Sleep(currentSleepRepo.data[4999]);
+const currentActivityRepo = new ActivityRepo(activityData, userData);
+const currentActivity = new Activity(currentActivityRepo.activityData[4999]);
 const firstNameDisplay = document.querySelector('.first-name-section');
 const fullNameDisplay = document.querySelector('.full-name');
 const addressDisplay = document.querySelector('.address');
@@ -22,13 +24,19 @@ const sleepAvgDisplay = document.querySelector('.sleep-average')
 const sleepWeekButton = document.querySelector('.sleep-week');
 const sleepDayButton = document.querySelector('.sleep-day');
 const sleepAvgButton = document.querySelector('.sleep-avg');
+const todaysSteps = document.querySelector('.steps');
+const todaysMilesTraveled = document.querySelector('.miles');
+const todaysActivityTime = document.querySelector('.activity');
+const activityDayButton = document.querySelector('.activity-day');
+const activityWeekButton = document.querySelector('.activity-week');
+const activityTrends = document.querySelector('.trends');
 
 const hydrationWeekView = (id, date) => {
-  waterConsumed.innerText = `Water Consumed This Past Week  ${currentHydrationRepo.returnWaterConsumed(id, date)}`;
+  waterConsumed.innerText = `Water Consumed This Past Week - ${currentHydrationRepo.returnWaterConsumed(id, date)}`;
 }
 
 const hydrationDayView = () => {
-  waterConsumed.innerText = `Water Consumed Today -     ${currentHydration.numOunces} ounces!`;
+  waterConsumed.innerText = `Water Consumed Today - ${currentHydration.numOunces} ounces!`;
 }
 
 const sleepWeekView = (id, date) => {
@@ -49,7 +57,10 @@ const displaySleepAverages = (id) => {
 }
 
 const displayAllUserData = () => {
-  if (firstNameDisplay.innerText !== `Hello ${currentUser.provideUsersFirstName()}!`) {
+  if ( firstNameDisplay.innerText != `Hello ${currentUser.provideUsersFirstName()}!`) {
+    todaysSteps.innerText = `Steps Today: ${currentActivity.steps}`;
+    todaysMilesTraveled.innerText = `Miles Traveled: ${currentActivityRepo.calculateMiles(currentUser.id, currentActivity.date)}`;
+    todaysActivityTime.innerText = `Today's Activity: ${currentActivity.returnMinutes()} minutes.`;
     firstNameDisplay.innerText = `Hello ${currentUser.provideUsersFirstName()}!`;
     fullNameDisplay.innerText += `${currentUser.name}`;
     addressDisplay.innerText += `${currentUser.address}`;
@@ -61,31 +72,44 @@ const displayAllUserData = () => {
     sleepDurationDisplay.innerText = `Hours Slept: ${currentSleep.returnHoursSlept()}`;
     sleepQualityDisplay.innerText = `Sleep Quality: ${currentSleep.returnSleepQuality()}`;
     displayFriendsByName();
-  }
-};
+    }
+  };
 
 function displayFriendsByName() {
   currentUser.friends.forEach(id => {
-    friendsList.innerText += ` ${userData[id - 1].name}. `;
+  friendsList.innerText += ` ${userData[id - 1].name}. `;
   });
 };
 
-sleepAvgButton.addEventListener('click', function() {
+sleepAvgButton.addEventListener('click', () => {
   displaySleepAverages(currentUser.id);
 })
 
-sleepDayButton.addEventListener('click', function() {
+sleepDayButton.addEventListener('click', () => {
   sleepDayView();
 })
 
-sleepWeekButton.addEventListener('click', function() {
+sleepWeekButton.addEventListener('click', () => {
   sleepWeekView(currentUser.id, currentSleep.date);
 })
 
-hydrationWeekButton.addEventListener('click', function() {
+hydrationWeekButton.addEventListener('click', () => {
   hydrationWeekView(currentUser.id, currentHydration.date);
 });
 
-hydrationDayButton.addEventListener('click', function() {
+hydrationDayButton.addEventListener('click', () => {
   hydrationDayView();
 });
+
+activityWeekButton.addEventListener('click', function () {
+  todaysActivityTime.innerText = `Average Activity: ${
+    currentActivityRepo.calculateAvgMinutesActive(currentUser.id, currentActivity.date)} minutes.`;
+  todaysSteps.innerText = `Average Steps: ${
+    currentActivityRepo.calculateAvgSteps(currentUser.id, currentActivity.date)}`;
+  todaysMilesTraveled.innerText = `Average Flights Climbed: ${
+    currentActivityRepo.calculateAvgStairs(currentUser.id, currentActivity.date)}`;
+});
+
+activityTrends.addEventListener('click', function () {
+
+})

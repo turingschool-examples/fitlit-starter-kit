@@ -1,7 +1,7 @@
-// const chai = require('chai');
-// const expect = chai.expect;
-//
-// const Sleep = require('../src/Sleep')
+const chai = require('chai');
+const expect = chai.expect;
+
+const Sleep = require('../src/Sleep')
 
 class CommunitySleep {
   constructor(data = []) {
@@ -98,4 +98,4 @@ class CommunitySleep {
     return sleepers;
   }
 }
-// module.exports = CommunitySleep;
+module.exports = CommunitySleep;

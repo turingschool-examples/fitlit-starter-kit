@@ -1,82 +1,63 @@
-# FitLit Starter Kit
+# FitLit
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+---
 
-## Setup
+## Table of Contents
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `open src/index.html` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-1. Make sure both members of your team are collaborators on the forked repo.
+- [what is project](#what-is-this-project)
+- [what does it do](#what-does-this-project-do)
+- [how to install project](#installation-instructions)
+- [contributors](#contributors)
 
-## Testing
+---
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
+## What is this project?
 
-## Linting Your Code
+### This project `FitLit` is a practice repo to accomplish the following:
+- write multiple classes which communicate with each other through html scripts
+- write robust test suites for each class
+  - check for happy and sad paths in tests
+  - maintain ability to test while having implementation files connected to DOM
+- cleanly separate data model and DOM
+- display multiple formats worth of data to DOM
+  - data for a user, a day, a week, etc.
+- make page responsive so can display to both mobile and desktop views
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
+---
 
-Your linter will look only at the JavaScript files you have within the `src` and the `test` directories.
+## What does this project do?
 
-## Data Model
+### This app should:
+- for a user:
+  - display their user, hydration, sleep, and activity data for the current day
+  - be able to switch any of the data breakdowns to a last week view instead
+  - be usable on both a mobile device and a desktop  
 
-**Users**
+---
 
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
+## Installation Instructions
 
-**Activity**
+- repo is found [here](https://github.com/mainlyetcetera/fitlit)
+- clone repo
+- `cd` into directory
+- run `npm install` to install dependencies
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
+---
 
-**Hydration**
+## Basic Use
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
+- run `npm lint` to make sure any proposed changes conform to the chosen linter
+- run `npm test` to run all tests
+- run `npm test test/<testFileName>` to run a specific test file
 
-**Sleep**
+- `src` directory contains all implementation
+- `test` directory contains all test suites
+- `data` contains all data for classes/tests to access
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+---
+
+## Contributors
+- *[Brian Forbes](https://github.com/Codeherder19)*
+- *[Eric Campbell](https://github.com/mainlyetcetera)*
+- *[Johnny Cassidy](https://github.com/pJanks)*
+- *[Joe Haefling](https://github.com/Josephhaefling)*

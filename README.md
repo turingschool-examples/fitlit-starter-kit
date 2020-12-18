@@ -37,7 +37,27 @@
 
 ## Installation Instructions
 
+- repo is found [here](https://github.com/mainlyetcetera/fitlit)
+- clone repo
+- `cd` into directory
+- run `npm install` to install dependencies
+
+---
+
+## Basic Use
+
+- run `npm lint` to make sure any proposed changes conform to the chosen linter
+- run `npm test` to run all tests
+- run `npm test test/<testFileName>` to run a specific test file
+
+- `src` directory contains all implementation
+- `test` directory contains all test suites
+- `data` contains all data for classes/tests to access
+
 ---
 
 ## Contributors
-  - send pr's and issues to ...
+- *[Brian Forbes](https://github.com/Codeherder19)*
+- *[Eric Campbell](https://github.com/mainlyetcetera)*
+- *[Johnny Cassidy](https://github.com/pJanks)*
+- *[Joe Haefling](https://github.com/Josephhaefling)*

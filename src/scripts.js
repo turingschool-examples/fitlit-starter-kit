@@ -30,6 +30,7 @@ const todaysActivityTime = document.querySelector('.activity');
 const activityDayButton = document.querySelector('.activity-day');
 const activityWeekButton = document.querySelector('.activity-week');
 const activityTrends = document.querySelector('.trends');
+const todaysDate = document.querySelector('.todays-date');
 
 const hydrationWeekView = (id, date) => {
   waterConsumed.innerText = `Water Consumed This Past Week - ${currentHydrationRepo.returnWaterConsumed(id, date)}`;
@@ -71,6 +72,7 @@ const displayAllUserData = () => {
     waterConsumed.innerText = `Water Consumed Today -   ${currentHydration.numOunces} ounces!`;
     sleepDurationDisplay.innerText = `Hours Slept: ${currentSleep.returnHoursSlept()}`;
     sleepQualityDisplay.innerText = `Sleep Quality: ${currentSleep.returnSleepQuality()}`;
+    todaysDate.innerText = `Today is ${currentActivity.date}`;
     displayFriendsByName();
     }
   };

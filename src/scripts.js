@@ -17,11 +17,33 @@ const weekActivities = communityActivity.findWeekActivities(startDate, endDate, 
 const weekSleep = communitySleep.calculateSleepStatsWeek(user.userID, startDate, endDate)
 const weekWater = communityHydration.calculateTotalWeek(user.userID, startDate, endDate)
 
+const activeMinCard = document.querySelector('#active-minutes');
+const activeMinCardInfo = document.querySelector('.active-minutes-category-content');
+const activeIcon = document.querySelector('.active-icon');
+const sleepCard = document.querySelector('#sleep-cat');
+const sleepCardInfo = document.querySelector('.sleep-category-content');
+const sleepIcon = document.querySelector('.sleep-icon');
+const stairsCard = document.querySelector('#stairs');
+const stairsCardInfo = document.querySelector('.stairs-category-content');
+const stairsIcon = document.querySelector('.stairs-icon');
+const stepsCard = document.querySelector('#steps');
+const stepsCardInfo = document.querySelector('.steps-category-content');
+const stepsIcon = document.querySelector('.steps-icon');
+const waterCard = document.querySelector('#water');
+const waterCardInfo = document.querySelector('.water-category-content');
+const waterIcon = document.querySelector('.water-icon');
+
 //EVENT LISTENERS
 window.addEventListener('load', loadPage);
+activeMinCard.addEventListener('click', displayCardInfo);
+sleepCard.addEventListener('click', displayCardInfo);
+stairsCard.addEventListener('click', displayCardInfo);
+stepsCard.addEventListener('click', displayCardInfo);
+waterCard.addEventListener('click', displayCardInfo);
 document.getElementById("today").addEventListener("change", function() {today = this.value.split('-').join('/')});
 document.getElementById("start").addEventListener("change", function() {startDate = this.value.split('-').join('/')});
 document.getElementById("end").addEventListener("change", function() {endDate = this.value.split('-').join('/')});
+
 
 //GREETING & PROFILE:
 const greetAndShowProfile = () => {
@@ -44,6 +66,29 @@ const displayStatsForWeek = (week, fitnessType, displayArea) => {
       <p>${display}</p>
     </article>
   `
+}
+
+//TOGGLE DISPLAY CARDS
+const toggleCategory = (category) => category.classList.toggle("hidden")
+
+//DISPLAY USER CARD INFO
+function displayCardInfo(event) {
+  if(event.target.closest('#active-minutes')) {
+    toggleCategory(activeMinCardInfo);
+    toggleCategory(activeIcon);
+  } else if(event.target.closest('#stairs')) {
+    toggleCategory(stairsCardInfo);
+    toggleCategory(stairsIcon);
+  } else if(event.target.closest('#steps')) {
+    toggleCategory(stepsCardInfo);
+    toggleCategory(stepsIcon);
+  } else if(event.target.closest('#water')) {
+    toggleCategory(waterCardInfo);
+    toggleCategory(waterIcon);
+  } else if(event.target.closest('#sleep-cat')){
+    toggleCategory(sleepCardInfo);
+    toggleCategory(sleepIcon);
+  }
 }
 
 //DISPLAY WEEK STATS

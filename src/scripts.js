@@ -366,28 +366,28 @@ const makeCharts = () => {
         label: `Your Steps`,
         data: mapWeek(weekActivities, 'numSteps'),
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
+        borderColor: '#d413f2',
         borderWidth: 1
       },
       {
         label: `${getFriendName(user.friends[0])}'s Steps`,
         data: mapWeek(friendWeeks[0], 'numSteps'),
         backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
+        borderColor: '#7c07f9',
         borderWidth: 1
       },
       {
         label: `${getFriendName(user.friends[1])}'s Steps`,
         data: mapWeek(friendWeeks[1], 'numSteps'),
         backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
+        borderColor: '#fcdd2d',
         borderWidth: 1
       },
       {
         label: `${getFriendName(user.friends[2])}'s Steps`,
         data: mapWeek(friendWeeks[2], 'numSteps'),
         backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
+        borderColor: '#0745ff',
         borderWidth: 1
       }]
     }

@@ -1,7 +1,7 @@
-const chai = require('chai');
-const expect = chai.expect;
+// const chai = require('chai');
+// const expect = chai.expect;
 
-const Sleep = require('../src/Sleep')
+// const Sleep = require('../src/Sleep')
 
 class CommunitySleep {
   constructor(data = []) {
@@ -48,7 +48,7 @@ class CommunitySleep {
     const userSleep = this.findUserSleepData(userID);
     const sleepDates = userSleep.filter(sleeper => {
       const sleepDateToNumber = this.convertDateString(sleeper.date)
-      if(sleepDateToNumber >= startDateNumber && sleepDateToNumber <= endDateNumber){
+      if (sleepDateToNumber >= startDateNumber && sleepDateToNumber <= endDateNumber) {
         sleepWeekTotals.push(sleeper);
       }
     })
@@ -59,13 +59,13 @@ class CommunitySleep {
   calculateAvgSleepQualityWk(userID, startDate, endDate) {
     const sleepWeek = this.calculateSleepStatsWeek(userID, startDate, endDate);
     const sleepQualityTotals = sleepWeek.map(sleeper => sleeper.sleepQuality)
-    const sleepWeekAvg = (sleepQualityTotals.reduce((a, b) => a + b, 0))/7
+    const sleepWeekAvg = (sleepQualityTotals.reduce((a, b) => a + b, 0)) / 7
     return Math.round(sleepWeekAvg * 10) / 10
   }
 
   calculateAvgSleepQuality() {
     const sleepQualityAllUsers = this.sleeps.map(allSleepers => allSleepers.sleepQuality);
-     const avgSleepQuality = (sleepQualityAllUsers.reduce((a, b) => a + b, 0)) / sleepQualityAllUsers.length;
+    const avgSleepQuality = (sleepQualityAllUsers.reduce((a, b) => a + b, 0)) / sleepQualityAllUsers.length;
      return Math.round(avgSleepQuality * 10) / 10;
   }
 
@@ -77,9 +77,9 @@ class CommunitySleep {
       const sleepDateAsNumber = this.convertDateString(sleeper.date)
       return sleepDateAsNumber >= startDateNumber && sleepDateAsNumber <= endDateNumber
     })
-    const filterSleepers = sleepWeek.filter(sleeper => {
+    sleepWeek.filter(sleeper => {
       const avgSleepQual = this.calculateAvgSleepQualityWk(sleeper.userID, startDate, endDate)
-      if(!bestSleepers.includes(sleeper.userID) && avgSleepQual > 3){
+      if (!bestSleepers.includes(sleeper.userID) && avgSleepQual > 3) {
         bestSleepers.push(sleeper.userID)
       }
     })
@@ -91,11 +91,11 @@ class CommunitySleep {
     this.sleeps.forEach(sleeper => {
       sleepHours.push(this.findHrsSleptOnDay(sleeper.userID, date))
       const longestSleep = Math.max(...sleepHours);
-      if(longestSleep === sleeper.hoursSlept && date === sleeper.date) {
+      if (longestSleep === sleeper.hoursSlept && date === sleeper.date) {
         sleepers.push(sleeper.userID);
       }
     })
     return sleepers;
   }
 }
-module.exports = CommunitySleep;
+// module.exports = CommunitySleep;

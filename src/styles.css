@@ -8,12 +8,13 @@ article {
   margin: 1%;
   opacity: 0.9;
 }
+
 body,html {
   background-image: url('../../assets/background-image.svg');
   background-size: cover;
   font-family: 'Righteous', cursive;
   font-size: 1.4em;
-  height: 100%;59
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;

@@ -47,9 +47,15 @@ sleepCard.addEventListener('click', displayCardInfo);
 stairsCard.addEventListener('click', displayCardInfo);
 stepsCard.addEventListener('click', displayCardInfo);
 waterCard.addEventListener('click', displayCardInfo);
-document.getElementById("today").addEventListener("change", function() {today = this.value.split('-').join('/')});
-document.getElementById("start").addEventListener("change", function() {startDate = this.value.split('-').join('/')});
-document.getElementById("end").addEventListener("change", function() {endDate = this.value.split('-').join('/')});
+document.getElementById("today").addEventListener("change", function() {
+  today = this.value.split('-').join('/')
+});
+document.getElementById("start").addEventListener("change", function() {
+  startDate = this.value.split('-').join('/')
+});
+document.getElementById("end").addEventListener("change", function() {
+  endDate = this.value.split('-').join('/')
+});
 
 
 //GREETING & PROFILE:
@@ -86,23 +92,23 @@ const toggleCharts = (canvas) => {
 
 //DISPLAY USER CARD INFO
 function displayCardInfo(event) {
-  if(event.target.closest('#active-minutes')) {
+  if (event.target.closest('#active-minutes')) {
     toggle(activeMinCardInfo);
     toggle(activeIcon);
     toggleCharts(activeMinutesCanvas) 
-  } else if(event.target.closest('#stairs')) {
+  } else if (event.target.closest('#stairs')) {
     toggle(stairsCardInfo);
     toggle(stairsIcon);
     toggleCharts(stairsCanvas)
-  } else if(event.target.closest('#steps')) {
+  } else if (event.target.closest('#steps')) {
     toggle(stepsCardInfo);
     toggle(stepsIcon);
     toggleCharts(stepCanvas)
-  } else if(event.target.closest('#water')) {
+  } else if (event.target.closest('#water')) {
     toggle(waterCardInfo);
     toggle(waterIcon);
     toggleCharts(waterCanvas)
-  } else if(event.target.closest('#sleep-cat')) {
+  } else if (event.target.closest('#sleep-cat')) {
     toggle(sleepCardInfo);
     toggle(sleepIcon);
     toggleCharts(sleepCanvas)

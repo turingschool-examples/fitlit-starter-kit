@@ -152,6 +152,26 @@ const showFriends = () => {
   document.querySelector('.friends-names').innerHTML = `${friendsDisplay.join('')}`
 }
 
+const friendWeeks = user.friends.map(friend => {
+  friendUser = community.getUserData(friend)
+  return communityActivity.findWeekActivities(startDate, endDate, friendUser)
+})
+
+const findStepFriendWinner = () => {
+  const weekTotalSteps = friendWeeks.map(week => {
+    return week.map(activity => activity.numSteps)
+  })
+  const weekTotals = weekTotalSteps.map(week => {
+    return week.reduce((weekSteps, stepsOnDay) => weekSteps + stepsOnDay, 0)
+  })
+  const mostSteps = Math.max(...weekTotals)
+  const index = weekTotals.indexOf(mostSteps)
+  const winningFriendID = friendWeeks[index][0].userID
+  const winningFriendName = community.getUserData(winningFriendID).getFirstName()
+  document.querySelector('.friends-winner').innerHTML = `${winningFriendName} is winning!`
+}
+
+
 //PAGE LOAD FUNCTION
 function loadPage() {
   greetAndShowProfile()
@@ -162,6 +182,7 @@ function loadPage() {
   showStairsStats()
   showSleepStats()
   showFriends()
+  findStepFriendWinner()
 }
 
 //GRAPH HELPER FUNCTIONS
@@ -170,12 +191,6 @@ const mapWeek = (week, fitnessType) => week.map(day => day[fitnessType])
 const weekDates = weekActivities.map(day => day.date)
 
 const makeYs = (number) => new Array(weekActivities.length).fill(number)
-
-const findFriendSteps = (friend) => {
-  friendData = community.getUserData(friend)
-  friendWeek = communityActivity.findWeekActivities(startDate, endDate, friendData)
-  return friendWeek.map(object => object.numSteps)
-}
 
 const getFriendName = (friend) => community.getUserData(friend).getFirstName()
 
@@ -338,21 +353,21 @@ const friendChart = new Chart(document.getElementById('friendChart').getContext(
     },
     {
       label: `${getFriendName(user.friends[0])}'s Steps`,
-      data: findFriendSteps(user.friends[0]),
+      data: mapWeek(friendWeeks[0], 'numSteps'),
       backgroundColor: 'rgba(54, 162, 235, 0.2)',
       borderColor: 'rgba(54, 162, 235, 1)',
       borderWidth: 1
     },
     {
       label: `${getFriendName(user.friends[1])}'s Steps`,
-      data: findFriendSteps(user.friends[1]),
+      data: mapWeek(friendWeeks[1], 'numSteps'),
       backgroundColor: 'rgba(54, 162, 235, 0.2)',
       borderColor: 'rgba(54, 162, 235, 1)',
       borderWidth: 1
     },
     {
       label: `${getFriendName(user.friends[2])}'s Steps`,
-      data: findFriendSteps(user.friends[2]),
+      data: mapWeek(friendWeeks[2], 'numSteps'),
       backgroundColor: 'rgba(54, 162, 235, 0.2)',
       borderColor: 'rgba(54, 162, 235, 1)',
       borderWidth: 1

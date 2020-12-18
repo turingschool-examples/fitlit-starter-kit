@@ -65,10 +65,14 @@ p {
   color: #d30cb8;
 }
 
+.sleep-quality-input {
+  font-size: 0.7em;
+}
+
 .sleep-title {
   color: white;
   width: 100%;
-  font-size: 1em;
+  font-size: 0.8em;
 }
 
 .title {
@@ -83,10 +87,10 @@ p {
   align-items: center;
   padding: 1vh;
   width: 16%;
-  height: 85%;
+  height: 90%;
 }
-.category-hover {
-
+.category:hover {
+  border: solid yellow 2px;
 }
 
 .category-title {
@@ -159,6 +163,7 @@ input {
   flex-direction: column;
   align-items: center;
   height: 100%;
+  max-width: 450px;
   padding: 1vh;
 }
 
@@ -178,6 +183,7 @@ input {
   flex-direction: column;
   align-items: flex-start;
   height: 100%;
+  max-width: 450px;
   padding: 3vh;
   padding-top: 1vh;
 }
@@ -260,6 +266,9 @@ canvas {
   }
   p {
     font-size: 1em;
+  }
+  .user-profile {
+    margin-bottom: 4%;
   }
   .wrapper-top {
     flex-direction: column;

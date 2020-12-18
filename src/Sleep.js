@@ -7,4 +7,4 @@ class Sleep {
   }
 }
 
-// module.exports = Sleep;
+module.exports = Sleep;

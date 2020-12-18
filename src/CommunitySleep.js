@@ -52,12 +52,13 @@ class CommunitySleep {
         sleepWeekTotals.push(sleeper);
       }
     })
+    console.log(sleepWeekTotals)
     return sleepWeekTotals;
   }
 
   calculateAvgSleepQualityWk(userID, startDate, endDate) {
     const sleepWeek = this.calculateSleepStatsWeek(userID, startDate, endDate);
-    const sleepQualityTotals = something.map(sleeper => sleeper.sleepQuality)
+    const sleepQualityTotals = sleepWeek.map(sleeper => sleeper.sleepQuality)
     const sleepWeekAvg = (sleepQualityTotals.reduce((a, b) => a + b, 0))/7
     return Math.round(sleepWeekAvg * 10) / 10
   }
@@ -74,7 +75,7 @@ class CommunitySleep {
     const endDateNumber = this.convertDateString(endDate);
     const sleepWeek = this.sleeps.filter(sleeper => {
       const sleepDateAsNumber = this.convertDateString(sleeper.date)
-      return sleepDateAsNumber >= startDateNumber && sleepDateToNumber <= endDateNumber
+      return sleepDateAsNumber >= startDateNumber && sleepDateAsNumber <= endDateNumber
     })
     const filterSleepers = sleepWeek.filter(sleeper => {
       const avgSleepQual = this.calculateAvgSleepQualityWk(sleeper.userID, startDate, endDate)

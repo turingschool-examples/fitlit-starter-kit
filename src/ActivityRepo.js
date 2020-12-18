@@ -106,12 +106,24 @@ class ActivityRepo {
     return formattedMiles;
   }
 
-  calculateAvgMinutesActive(id, endDate) {
+  calculateAvgData(id, endDate, type) {
     const week = this.findWeekDates(endDate);
     const weekOfActivity = this.activityData.filter(day => week.includes(day.date));
-    const theirWeek = weekOfActivity.filter(day => day.userID === id);
-    const minutes = theirWeek.map(day => day.minutesActive);
-    return Math.round(minutes.reduce((total, day) => total + day, 0) / 7);    
+    const userWeek = weekOfActivity.filter(day => day.userID === id);
+    const data = userWeek.map(day => day[type]);
+    return Math.round(data.reduce((total, day) => total + day, 0) / 7);
+  }
+
+  calculateAvgMinutesActive(id, endDate) {    
+    return this.calculateAvgData(id, endDate, 'minutesActive');
+  }  
+
+  calculateAvgSteps(id, endDate) {
+    return this.calculateAvgData(id, endDate, 'steps');
+  }
+
+  calculateAvgStairs(id, endDate) {
+    return this.calculateAvgData(id, endDate, 'stairs');
   }
 
   calculateDaysExceededGoal(id) {
@@ -129,13 +141,7 @@ class ActivityRepo {
     }, 0);
   }
 
-  calculateDailyAverages(date) {
-    // get data for date
-    // record number of pieces of data here
-    // iterate through data, add up totals for stairs, steps, minutes
-    // divide each by # pieces data
-    // add to dailyAverages obj, key is date, value is obj holding averages
-
+  calculateDailyAverages(date) {   
     const dateData = this.activityData.filter(data => data.date === date);
     const piecesOfData = dateData.length;
     const totals = dateData.reduce((totals, data) => {

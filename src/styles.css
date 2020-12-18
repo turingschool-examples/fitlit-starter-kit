@@ -19,6 +19,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  margin-bottom: 5%;
   background: rgb(232,220,174);
   background: linear-gradient(180deg, rgba(232,220,174,1) 18%, rgba(217,189,187,1) 52%, rgba(244,215,147,1) 98%);
   border: solid black;
@@ -98,6 +99,7 @@ p {
   width: 70%;
   height: 55%;
   margin-top: 10%;
+  margin-bottom: 2%;
   border-radius: 10px;
   border: solid black;
 
@@ -107,5 +109,13 @@ p {
   display: flex;
   flex-direction: column;
   margin-top: 10%;
+}
 
+@media screen and (max-width: 70em) {
+  body {
+    display: flex;
+    flex-direction: column;
+    height: 150%;
+    width: 75%;
+  }
 }

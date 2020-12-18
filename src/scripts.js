@@ -54,7 +54,6 @@ waterButton.addEventListener('click', () => {
   displayHydrationActivity()
   displayHydrationChart()
   pieChartStat.classList.add('hidden')
-
 })
 
 sleepButton.addEventListener('click', () => {
@@ -216,10 +215,9 @@ function displayAvgSleepData(placement) {
 function getSleepData(placement, index) {
   placement.innerText = `${
     currentUser.userSleep.calculateSleepItemPerWeek(chosenDate, 'hoursSlept')[index]
-  } hours, 
-    quality: ${
-  currentUser.userSleep.calculateSleepItemPerWeek(chosenDate, 'sleepQuality')[index]
-}`
+  } hours, quality: ${
+    currentUser.userSleep.calculateSleepItemPerWeek(chosenDate, 'sleepQuality')[index]
+  }`
   displayAvgSleepData(avgSleepStats)
 }
 
@@ -231,14 +229,9 @@ function getHydrationData(placement, index) {
 
 function getStepData(placement, index) {
   placement.innerText = `${
-    currentUser.userActivity.getWeekOfData(chosenDate, 'numSteps')[index]
-  } steps,
-    ${
-  currentUser.userActivity.getWeekOfData(chosenDate, 'flightsOfStairs')[index]
-} flights of stairs,
-    ${
-  currentUser.userActivity.getWeekOfData(chosenDate, 'minutesActive')[index]
-} active minutes`
+    currentUser.userActivity.getWeekOfData(chosenDate, 'numSteps')[index]} steps,
+    ${currentUser.userActivity.getWeekOfData(chosenDate, 'flightsOfStairs')[index]} flights of stairs,
+    ${currentUser.userActivity.getWeekOfData(chosenDate, 'minutesActive')[index]} active minutes`
 }
 
 const mapUserNames = () => {
@@ -282,7 +275,7 @@ function displayHydrationChart() {
           chosenDate,
           currentUser
         ),
-      }, ],
+      }],
     },
     options: {
       events: [],
@@ -313,7 +306,7 @@ function displaySleepChart() {
         data: currentUser.userSleep.calculateSleepItemPerWeek(
           chosenDate,
           'sleepQuality'
-        ),
+        )
       },
       {
         label: 'Hours Slept',
@@ -322,15 +315,15 @@ function displaySleepChart() {
         data: currentUser.userSleep.calculateSleepItemPerWeek(
           chosenDate,
           'hoursSlept'
-        ),
-      },
-      ],
+        )
+      }
+      ]
     },
     options: {
       events: [],
       maintainAspectRatio: false,
       responsive: true,
-    },
+    }
   })
 }
 
@@ -364,7 +357,7 @@ function displayActivityChart() {
         data: currentUser.userActivity.getWeekOfData(
           chosenDate,
           'flightsOfStairs'
-        ),
+        )
       },
       {
         label: 'Minutes',
@@ -372,24 +365,21 @@ function displayActivityChart() {
         data: currentUser.userActivity.getWeekOfData(
           chosenDate,
           'minutesActive'
-        ),
-      },
+        )
+      }
       ],
     },
     options: {
       events: [],
-      maintainAspectRatio: false,
+      maintainAspectRatio: true,
       responsive: true,
       scales: {
         xAxes: [{
           stacked: true,
-        }, ],
+        }],
         yAxes: [{
           stacked: true,
-          ticks: {
-
-          },
-        }],
+        }]
       },
       legend: {
         fullWidth: true,
@@ -403,7 +393,8 @@ function displayActivityChart() {
 }
 
 function displayStepGoal() {
-  let stepGoal = (currentUser.userActivity.dailyStepGoal - currentUser.userActivity.getOneDayOfData(chosenDate, 'numSteps'))
+  let stepGoal = (currentUser.userActivity.dailyStepGoal -
+    currentUser.userActivity.getOneDayOfData(chosenDate, 'numSteps'))
   let ctx = document.getElementById('stepsPie').getContext('2d')
   let chart = new Chart(ctx, {
     type: 'pie',

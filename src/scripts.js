@@ -32,6 +32,13 @@ const stepsIcon = document.querySelector('.steps-icon');
 const waterCard = document.querySelector('#water');
 const waterCardInfo = document.querySelector('.water-category-content');
 const waterIcon = document.querySelector('.water-icon');
+const stepCanvas = document.getElementById('stepChart');
+const waterCanvas = document.getElementById('waterChart')
+const stairsCanvas = document.getElementById('stairsChart')
+const activeMinutesCanvas = document.getElementById('activeMinutesChart')
+const sleepCanvas = document.getElementById('sleepChart')
+const friendsCanvas = document.getElementById('friendChart')
+
 
 //EVENT LISTENERS
 window.addEventListener('load', loadPage);
@@ -69,25 +76,36 @@ const displayStatsForWeek = (week, fitnessType, displayArea) => {
 }
 
 //TOGGLE DISPLAY CARDS
-const toggleCategory = (category) => category.classList.toggle("hidden")
+const toggle = (category) => category.classList.toggle("hidden");
+
+//TOGGLE CHARTS
+const toggleCharts = (canvas) => {
+  toggle(canvas)
+  toggle(stepCanvas) 
+}
 
 //DISPLAY USER CARD INFO
 function displayCardInfo(event) {
   if(event.target.closest('#active-minutes')) {
-    toggleCategory(activeMinCardInfo);
-    toggleCategory(activeIcon);
+    toggle(activeMinCardInfo);
+    toggle(activeIcon);
+    toggleCharts(activeMinutesCanvas) 
   } else if(event.target.closest('#stairs')) {
-    toggleCategory(stairsCardInfo);
-    toggleCategory(stairsIcon);
+    toggle(stairsCardInfo);
+    toggle(stairsIcon);
+    toggleCharts(stairsCanvas)
   } else if(event.target.closest('#steps')) {
-    toggleCategory(stepsCardInfo);
-    toggleCategory(stepsIcon);
+    toggle(stepsCardInfo);
+    toggle(stepsIcon);
+    toggleCharts(stepCanvas)
   } else if(event.target.closest('#water')) {
-    toggleCategory(waterCardInfo);
-    toggleCategory(waterIcon);
-  } else if(event.target.closest('#sleep-cat')){
-    toggleCategory(sleepCardInfo);
-    toggleCategory(sleepIcon);
+    toggle(waterCardInfo);
+    toggle(waterIcon);
+    toggleCharts(waterCanvas)
+  } else if(event.target.closest('#sleep-cat')) {
+    toggle(sleepCardInfo);
+    toggle(sleepIcon);
+    toggleCharts(sleepCanvas)
   }
 }
 
@@ -183,6 +201,7 @@ function loadPage() {
   showSleepStats()
   showFriends()
   findStepFriendWinner()
+  makeCharts()
 }
 
 //GRAPH HELPER FUNCTIONS
@@ -194,183 +213,183 @@ const makeYs = (number) => new Array(weekActivities.length).fill(number)
 
 const getFriendName = (friend) => community.getUserData(friend).getFirstName()
 
+
+const makeCharts = () => {
 //STEPS GRAPH
-const stepChart = new Chart(document.getElementById('stepChart').getContext('2d'), {
-  type: 'bar',
-  data: {
-    labels: weekDates,
-    datasets: [{
-      label: `Your Steps`,
-      data: mapWeek(weekActivities, 'numSteps'),
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 1)',
-      borderWidth: 1
-    },
-    {
-      type: 'line',
-      label: `Your Step Goal`,
-      data: makeYs(user.dailyStepGoal),
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-      borderColor: 'rgba(54, 162, 235, 1)',
-      borderWidth: 1
-    },
-    {
-      type: 'line',
-      label: `Community Average Step Goal`,
-      data: makeYs(community.findAverageStepGoal()),
-      backgroundColor: 'rgba(255, 10, 235, 0.2)',
-      borderColor: 'rgba(255, 10, 235, 1)',
-      borderWidth: 1
-    },
-    {
-      type: 'line',
-      label: `Community Average Steps`,
-      data: makeYs(communityActivity.findCommunityAverage(today, 'numSteps')),
-      backgroundColor: 'rgba(0, 162, 235, 0.2)',
-      borderColor: 'rgba(0, 162, 235, 1)',
-      borderWidth: 1
-    }]
-  }
-});
+  const stepChart = new Chart(stepCanvas.getContext('2d'), {
+    type: 'line',
+    data: {
+      labels: weekDates,
+      datasets: [{
+        label: `Your Steps`,
+        data: mapWeek(weekActivities, 'numSteps'),
+        backgroundColor: '#d413f2',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      },
+      {
+        type: 'line',
+        label: `Your Step Goal`,
+        data: makeYs(user.dailyStepGoal),
+        borderColor: '#0745ff',
+        borderWidth: 1
+      },
+      {
+        type: 'line',
+        label: `Community Average Step Goal`,
+        data: makeYs(community.findAverageStepGoal()),
+        borderColor: '#fcdd2d',
+        borderWidth: 1
+      },
+      {
+        type: 'line',
+        label: `Community Average Steps`,
+        data: makeYs(communityActivity.findCommunityAverage(today, 'numSteps')),
+        backgroundColor: '#7c07f9',
+        borderWidth: 1
+      }]
+    }
+  });
 
-//STAIRS GRAPH
-const stairsChart = new Chart(document.getElementById('stairsChart').getContext('2d'), {
-  type: 'bar',
-  data: {
-    labels: weekDates,
-    datasets: [{
-      label: 'Your Stairs Climbed',
-      data: mapWeek(weekActivities, 'stairsClimbed'),
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 1)',
-      borderWidth: 1
-    },
-    {
-      type: 'line',
-      label: 'Your Record Stairs Climbed',
-      data: makeYs(communityActivity.findRecordStairs(user)),
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-      borderColor: 'rgba(54, 162, 235, 1)',
-      borderWidth: 1
-    },
-    {
-      type: 'line',
-      label: 'Community Average Stairs Climbed',
-      data: makeYs(communityActivity.findRecordStairs(user)),
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-      borderColor: 'rgba(54, 162, 235, 1)',
-      borderWidth: 1
-    }]
-  }
-});
+  //STAIRS GRAPH
+  const stairsChart = new Chart(stairsCanvas.getContext('2d'), {
+    type: 'line',
+    data: {
+      labels: weekDates,
+      datasets: [{
+        label: 'Your Stairs Climbed',
+        data: mapWeek(weekActivities, 'stairsClimbed'),
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      },
+      {
+        type: 'line',
+        label: 'Your Record Stairs Climbed',
+        data: makeYs(communityActivity.findRecordStairs(user)),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      },
+      {
+        type: 'line',
+        label: 'Community Average Stairs Climbed',
+        data: makeYs(communityActivity.findRecordStairs(user)),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    }
+  });
 
-//ACTIVE MINUTES GRAPH
-const activeMinutesChart = new Chart(document.getElementById('activeMinutesChart').getContext('2d'), {
-  type: 'bar',
-  data: {
-    labels: weekDates,
-    datasets: [{
-      label: 'Your Active Minutes',
-      data: mapWeek(weekActivities, 'minutesActive'),
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 1)',
-      borderWidth: 1
-    },
-    {
-      type: 'line',
-      label: 'Community Average Active Minutes',
-      data: makeYs(communityActivity.findCommunityAverage(today, 'minutesActive')),
-      borderColor: 'rgba(54, 162, 235, 1)',
-      borderWidth: 1
-    }]
-  }
-});
+  //ACTIVE MINUTES GRAPH
+  const activeMinutesChart = new Chart(activeMinutesCanvas.getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: weekDates,
+      datasets: [{
+        label: 'Your Active Minutes',
+        data: mapWeek(weekActivities, 'minutesActive'),
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      },
+      {
+        type: 'line',
+        label: 'Community Average Active Minutes',
+        data: makeYs(communityActivity.findCommunityAverage(today, 'minutesActive')),
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    }
+  });
 
-//WATER GRAPH
-const waterChart = new Chart(document.getElementById('waterChart').getContext('2d'), {
-  type: 'bar',
-  data: {
-    labels: weekDates,
-    datasets: [{
-      label: 'Your Total Ounces',
-      data: mapWeek(weekWater, 'numOunces'),
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 1)',
-      borderWidth: 1
-    }]
-  }
-});
+  //WATER GRAPH
+  const waterChart = new Chart(waterCanvas.getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: weekDates,
+      datasets: [{
+        label: 'Your Total Ounces',
+        data: mapWeek(weekWater, 'numOunces'),
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }]
+    }
+  });
 
-//SLEEP GRAPH
-const sleepChart = new Chart(document.getElementById('sleepChart').getContext('2d'), {
-  type: 'bar',
-  data: {
-    labels: weekDates,
-    datasets: [{
-      label: `Your Hours Slept`,
-      data: mapWeek(weekSleep, 'hoursSlept'),
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 1)',
-      borderWidth: 1
-    },
-    {
-      label: `Your Sleep Quality`,
-      data: mapWeek(weekSleep, 'sleepQuality'),
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-      borderColor: 'rgba(54, 162, 235, 1)',
-      borderWidth: 1
-    },
-    {
-      type: 'line',
-      label: `Your All-Time Average Sleep Quality`,
-      data: makeYs(communitySleep.calculateAvgSleepQualPerDay(sleep.userID)),
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-      borderColor: 'rgba(54, 162, 235, 1)',
-      borderWidth: 1
-    },
-    {
-      type: 'line',
-      label: `Your All-Time Average Sleep Quality`,
-      data: makeYs(communitySleep.calculateAvgSleepHrsPerDay(sleep.userID)),
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-      borderColor: 'rgba(54, 162, 235, 1)',
-      borderWidth: 1
-    }]
-  }
-});
+  //SLEEP GRAPH
+  const sleepChart = new Chart(sleepCanvas.getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: weekDates,
+      datasets: [{
+        label: `Your Hours Slept`,
+        data: mapWeek(weekSleep, 'hoursSlept'),
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      },
+      {
+        label: `Your Sleep Quality`,
+        data: mapWeek(weekSleep, 'sleepQuality'),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      },
+      {
+        type: 'line',
+        label: `Your All-Time Average Sleep Quality`,
+        data: makeYs(communitySleep.calculateAvgSleepQualPerDay(sleep.userID)),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      },
+      {
+        type: 'line',
+        label: `Your All-Time Average Sleep Quality`,
+        data: makeYs(communitySleep.calculateAvgSleepHrsPerDay(sleep.userID)),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    }
+  });
 
-// FRIENDS GRAPH
-const friendChart = new Chart(document.getElementById('friendChart').getContext('2d'), {
-  type: 'line',
-  data: {
-    labels: weekDates,
-    datasets: [{
-      label: `Your Steps`,
-      data: mapWeek(weekActivities, 'numSteps'),
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 1)',
-      borderWidth: 1
-    },
-    {
-      label: `${getFriendName(user.friends[0])}'s Steps`,
-      data: mapWeek(friendWeeks[0], 'numSteps'),
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-      borderColor: 'rgba(54, 162, 235, 1)',
-      borderWidth: 1
-    },
-    {
-      label: `${getFriendName(user.friends[1])}'s Steps`,
-      data: mapWeek(friendWeeks[1], 'numSteps'),
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-      borderColor: 'rgba(54, 162, 235, 1)',
-      borderWidth: 1
-    },
-    {
-      label: `${getFriendName(user.friends[2])}'s Steps`,
-      data: mapWeek(friendWeeks[2], 'numSteps'),
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-      borderColor: 'rgba(54, 162, 235, 1)',
-      borderWidth: 1
-    }]
-  }
-})
+  // FRIENDS GRAPH
+  const friendChart = new Chart(friendsCanvas.getContext('2d'), {
+    type: 'line',
+    data: {
+      labels: weekDates,
+      datasets: [{
+        label: `Your Steps`,
+        data: mapWeek(weekActivities, 'numSteps'),
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      },
+      {
+        label: `${getFriendName(user.friends[0])}'s Steps`,
+        data: mapWeek(friendWeeks[0], 'numSteps'),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      },
+      {
+        label: `${getFriendName(user.friends[1])}'s Steps`,
+        data: mapWeek(friendWeeks[1], 'numSteps'),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      },
+      {
+        label: `${getFriendName(user.friends[2])}'s Steps`,
+        data: mapWeek(friendWeeks[2], 'numSteps'),
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    }
+  })
+}

@@ -49,10 +49,10 @@
     </section>
     <section class="stats">
 
-      <article class="category steps">
+      <article id="steps" class="category">
         <h2 class="category-title">Steps</h2>
-        <img src="../assets/shoe.svg" alt="shoe as steps icon">
-        <div class="category-content hidden">
+        <img class="steps-icon" src="../assets/shoe.svg" alt="shoe as steps icon">
+        <div class="steps-category-content hidden">
           <p class="user-step-miles"></p>
           <p class="user-steps-today"></p>
           <p class="user-met-step-goal-today"></p>
@@ -61,37 +61,37 @@
         </div>
       </article>
 
-      <article class="category water">
+      <article id="water" class="category">
         <h2 class="category-title">Water</h2>
-        <img src="../assets/drops.svg" alt="water drop as hydration icon">
-        <div class="category-content hidden">
+        <img class="water-icon" src="../assets/drops.svg" alt="water drop as hydration icon">
+        <div class="water-category-content hidden">
           <p class="water-stats"></p>
         </div>
       </article>
 
-      <article class="category stairs">
+      <article id="stairs" class="category">
         <h2 class="category-title">Stairs</h2>
-        <img src="../assets/success.svg" alt="staircase as stair icon">
-        <div class="category-content hidden">
+        <img class="stairs-icon" src="../assets/success.svg" alt="staircase as stair icon">
+        <div class="stairs-category-content hidden">
           <p class="community-average-stairs"></p>
           <p class="user-record-stairs"></p>
         </div>
       </article>
 
-      <article class="category active-minutes">
+      <article id="active-minutes" class="category">
         <h2 class="category-title">Active Minutes</h2>
-        <img src="../assets/heart-shape-with-beats-line.svg" alt="shape of heart with line as active icon">
-        <div class="category-content hidden">
+        <img class="active-icon" src="../assets/heart-shape-with-beats-line.svg" alt="shape of heart with line as active icon">
+        <div class="active-minutes-category-content hidden">
           <p class="user-minutes-active"></p>
           <p class="user-week-average-minutes-active"></p>
           <p class="community-average-minutes-active"></p>
         </div>
       </article>
 
-      <article class="category sleep">
+      <article id="sleep-cat" class="category">
         <h2 class="category-title">Sleep</h2>
-        <img src="../assets/clock.svg" alt="pillow and clock as sleep icon">
-        <div class="sleep-container category-content hidden">
+        <img class="sleep-icon" src="../assets/clock.svg" alt="pillow and clock as sleep icon">
+        <div class="sleep-container sleep-category-content hidden">
           <article class="user-all-time-sleep-stats">
             <h3 class="sleep-title">Your All-Time Sleep Stats</h3>
           </article>
@@ -121,7 +121,7 @@
 
     <section class="graph">
       <h2 class="title-graph">Graph</h2>
-      <canvas id="stepChart" class=""width="800" height="400"></canvas>
+      <canvas id="stepChart" class="" width="800" height="400"></canvas>
       <canvas id="waterChart" class="hidden" width="800" height="400"></canvas>
       <canvas id="stairsChart" class="hidden" width="800" height="400"></canvas>
       <canvas id="activeMinutesChart" class="hidden" width="800" height="400"></canvas>

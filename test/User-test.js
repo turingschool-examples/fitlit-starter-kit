@@ -30,13 +30,9 @@ describe('User', function() {
     expect(user3.id).to.equal(3);
   });
 
-  it.skip('should store a User name', function() {
+  it('should store a User name', function() {
     expect(user1.name).to.equal("Luisa Hane");
     expect(user2.name).to.equal("Jarvis Considine");
     expect(user3.name).to.equal("Herminia Witting");
   });  
-
-  it.skip('should store the correct answer', function() {
-    expect(card.correctAnswer).to.equal();
-  });
 });

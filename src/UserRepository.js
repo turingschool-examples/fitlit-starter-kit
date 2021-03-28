@@ -11,19 +11,29 @@ class UserRepository {
   }
 
   retrieveUserData(id) {
-    return this.userData[id];
+    return this.userData[id-1];
   }
 
   retrieveAvgStepGoal() {
-    //NOT FUNCTIONAL
-    // const stepGoalSum = this.userData.map()
+    const stepGoalArray = this.userData.map(user => user.stepGoal);
+    const stepGoalSum = stepGoalArray.reduce((sum, goal) => {
+      return sum + goal;
+    },);
+
+    this.avgStepGoal = Math.round(stepGoalSum / this.userData.length);
+
+    return this.avgStepGoal;
+  }
+
+  storeAllUserHydrationData(dataset) {
+
+  }
+
+  calculateDailyAvgWater(user, date) {
+
+  }
+
+  calculateWeeklyAvgWater(user, date) {
     
-    // this.userData.stepGoal.reduce((total, goal) => {
-    //   return total+ goal;
-    // },);
-
-    // this.avgStepGoal = stepGoalSum / this.userData.length;
-
-    // return this.avgStepGoal;
   }
 }

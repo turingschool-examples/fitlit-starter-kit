@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="styles.css">
       <link rel="preconnect" href="https://fonts.gstatic.com">
-      <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+      <!-- <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet"> -->
       <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto+Mono&display=swap" rel="stylesheet">
       <title>FitLit</title>
   </head>
@@ -12,56 +13,58 @@
     <header class="header">
       <h1 class="date">Date</h1>
       <h2 class="greeting">Welcome</h2>
-      <img class="calendar" src=/>
+      <img class="calendar" src="../assets/calendar.png">
     </header>
-    <main class="main">
-      <section class="daily-stats">
+    <div class="page">
+      <main class="main">
         <h2 class="stats">Today's Stats</h2>
-        <span class="steps">
-          <img class="steps-icon/>
-          <label class="steps-label">Steps</label>
-        </span>
-        <span class="water">
-          <img class="water-icon"/>
-          <label class="water-label">Oz.</label>
-        </span>
-        <span class="sleep">
-          <img class="sleep-icon" src=/>
-          <label class="sleep-label">Hours</label>
-        </span>
-      </section>
-      <section class="weekly-activity">
-        <div class="weekly-header">
-          <h3 class="weekly-chart-title">Weekly Achievements</h3>
-        </div>
-        <canvas></canvas>
-        <canvas>
-          <label class="user-bar">Your Totals</label>
-        </canvas>
-        <canvas>
-          <label class="all-bar">All Users' Totals</label>
-        </canvas>
-      </section>
-      <section class="weekly-water-sleep">
-        <span class="water-intake">
+        <section class="daily-stats">
+          <span class="steps">
+            <img class="steps-icon" src="../assets/running.png">
+            <label class="steps-label">Steps</label>
+          </span>
+          <span class="water">
+            <img class="water-icon" src="../assets/water-glass.png">
+            <label class="water-label">Oz.</label>
+          </span>
+          <span class="sleep">
+            <img class="sleep-icon" src="../assets/bed--v2.png">
+            <label class="sleep-label">Hours</label>
+          </span>
+        </section>
+        <section class="weekly-activity">
+          <div class="weekly-header">
+            <h3 class="weekly-chart-title">Weekly Achievements</h3>
+          </div>
           <canvas></canvas>
-          <label class="water-chart">Water Intake this Week</label>
-        </span>
-        <span class="sleep-data">
-          <canvas></canvas>
-          <label class="sleep-chart">Sleep this Week</label>
-        </span>
-        <span class="average-sleep-hours">
-          <p>All-Time Average Hours</p>
-        </span>
-        <span class="average-sleep-quality">
-          <p>All-Time Average Quality</p>
-        </span>
-      </section>
-    </main>
-    <aside class="user-info-section">
-      <p class="user-info">ID: Name: Address: Email: StrideLength: DailyStepGoal: Friends:</p>
-    </aside>
+          <canvas>
+            <label class="user-bar">Your Totals</label>
+          </canvas>
+          <canvas>
+            <label class="all-bar">All Users' Totals</label>
+          </canvas>
+        </section>
+        <section class="weekly-water-sleep">
+          <span class="water-intake">
+            <canvas></canvas>
+            <label class="water-chart">Water Intake this Week</label>
+          </span>
+          <span class="sleep-data">
+            <canvas></canvas>
+            <label class="sleep-chart">Sleep this Week</label>
+          </span>
+          <span class="average-sleep-hours">
+            <p>All-Time Average Hours</p>
+          </span>
+          <span class="average-sleep-quality">
+            <p>All-Time Average Quality</p>
+          </span>
+        </section>
+      </main>
+      <aside class="user-info-section">
+        <p class="user-info">ID: Name: Address: Email: StrideLength: DailyStepGoal: Friends:</p>
+      </aside>
+    </div>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>

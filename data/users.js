@@ -8,6 +8,7 @@ const userData = [
     "email": "Diana.Hayes1@hotmail.com",
     "strideLength": 4.3,
     "dailyStepGoal": 10000,
+    "numOunces": 96,
     "friends": [
       16,
       4,

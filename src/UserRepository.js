@@ -16,11 +16,14 @@ class UserRepository {
 
   retrieveAvgStepGoal() {
     //NOT FUNCTIONAL
-    const stepGoalSum = this.userData.stepGoal.reduce((sumGoal, goal) => {
-      return sumGoal + goal;
-    });
-    this.avgStepGoal = stepGoalSum / this.userData.length;
+    // const stepGoalSum = this.userData.map()
+    
+    // this.userData.stepGoal.reduce((total, goal) => {
+    //   return total+ goal;
+    // },);
 
-    return this.avgStepGoal;
+    // this.avgStepGoal = stepGoalSum / this.userData.length;
+
+    // return this.avgStepGoal;
   }
 }

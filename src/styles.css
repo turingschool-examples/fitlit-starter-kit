@@ -4,10 +4,14 @@ main {
   height: 100vh;
   width: 100vw;
   flex-direction: column;
-
+  justify-content: center;
 }
 
 article {
+  display: flex;
+  justify-content: center;
+  padding-left: 30px;
+
 
 }
 
@@ -20,7 +24,7 @@ body {
 button {
   display: flex;
   height: 15vh;
-  width: 20vw;
+  width: 25vw;
   justify-content: center;
   align-items: center;
 
@@ -32,17 +36,19 @@ h1 {
 
 header {
   display: flex;
-  height: 15vh;
+  height: 5vh;
   width: 90vw;
   border: 4px;
   border-color: red;
   justify-content: center;
+  padding-top: 5vh;
+  padding-left: 5vw;
 }
 
 nav {
   display: flex;
   height: 15vh;
-  width: 90vw;
+  width: 100vw;
   border: 4px;
   border-color: red;
   align-items: flex-end;
@@ -51,29 +57,55 @@ nav {
 
 section {
   display: flex;
-  height: 65vh;
+  height: 80vh;
   width: 90vw;
   border: 4px;
   border-color: red;
   justify-content: center;
 
+
+}
+
+.grid-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-left: 5vw;
+  align-items: center;
 }
 
 /*Home Page Styling*/
 .home-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 90vw;
+  height: 65vh;
 
 }
 
 .user-info {
-
+  grid-area: 1 / 1 / 7 / 4;
+  background-color: #C9FFF4;
+  border: 2px;
+  border-color: blue;
 
 }
 
 .picture {
+  grid-area: 1 / 4 / 4 / 7;
+  background-color: #C9DDFF;
+  border: 2px;
+  border-color: red;
 
 }
 
 .step-goal {
+  grid-area: 4 / 4 / 7 / 7;
+  background-color: #FEC9FF;
+  border: 2px;
+  border-color: green;
 
 }
 

@@ -34,5 +34,18 @@ describe('User', function() {
     expect(user1.name).to.equal("Luisa Hane");
     expect(user2.name).to.equal("Jarvis Considine");
     expect(user3.name).to.equal("Herminia Witting");
-  });  
+  });
+
+  it('should store a User address', function() {
+    expect(user1.address).to.equal("15195 Nakia Tunnel, Erdmanport VA 19901-1697");
+    expect(user2.address).to.equal("30086 Kathryn Port, Ciceroland NE 07273");
+    expect(user3.address).to.equal("85823 Bosco Fork, East Oscarstad MI 85126-5660");
+  });
+
+  it('should store a User email', function() {
+    expect(user1.email).to.equal("Diana.Hayes1@hotmail.com");
+    expect(user2.email).to.equal("Dimitri.Bechtelar11@gmail.com");
+    expect(user3.email).to.equal("Elwin.Tromp@yahoo.com");
+  });
+
 });

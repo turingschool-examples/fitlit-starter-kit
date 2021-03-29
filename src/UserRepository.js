@@ -1,5 +1,9 @@
 class UserRepository {
-  constructor(data) {
-    this.users = [{}];
+  constructor() {
+    this.users = [];
   }
-};
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = UserRepository;
+}

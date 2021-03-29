@@ -6,7 +6,9 @@ main {
   width: 100vw;
   flex-direction: column;
   justify-content: center;
-  background-color: #0F0F0F;
+  background-image: url("images/background.png");
+  background-size: cover;
+  font-family: sans-serif;
 }
 
 article {
@@ -30,7 +32,6 @@ button {
   justify-content: center;
   align-items: center;
   background-color: #282828;
-  font-color: white;
   outline: none;
 
 }
@@ -81,8 +82,8 @@ section {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-column-gap: 3vh;
+  grid-row-gap: 3vh;
   width: 80vw;
   height: 65vh;
 
@@ -91,12 +92,14 @@ section {
 .user-info {
   grid-area: 1 / 1 / 7 / 4;
   background-color: #383838;
+  border-radius: 20px;
 
 }
 
 .picture {
   grid-area: 1 / 4 / 4 / 7;
   background-color: #383838;
+  border-radius: 20px;
 
 
 }
@@ -104,7 +107,7 @@ section {
 .step-goal {
   grid-area: 4 / 4 / 7 / 7;
   background-color: #FFED3B;
-
+  border-radius: 20px;
 }
 
 /*Hydration Page*/
@@ -120,11 +123,13 @@ section {
 .daily-water {
   grid-area: 1 / 1 / 4 / 7;
   background-color: #383838;
+  border-radius: 20px;
 }
 
 .weekly-water {
   grid-area: 4 / 1 / 7 / 7;
   background-color: #383838;
+  border-radius: 20px;
 
 }
 
@@ -141,6 +146,7 @@ section {
 .daily-sleep {
   grid-area: 1 / 1 / 4 / 7;
   background-color: #383838;
+  border-radius: 20px;
 
 
 }
@@ -148,12 +154,14 @@ section {
 .weekly-sleep {
   grid-area: 4 / 1 / 7 / 4;
   background-color: #383838;
+  border-radius: 20px;
 
 }
 
 .quality-sleep {
   grid-area: 4 / 4 / 7 / 7;
   background-color: #FFED3B;
+  border-radius: 20px;
 
 
 }
@@ -170,17 +178,20 @@ section {
 .daily-steps {
   grid-area: 1 / 1 / 5 / 4;
   background-color: #383838;
+  border-radius: 20px;
 
 }
 
 .daily-activity {
   grid-area: 1 / 4 / 3 / 7;
   background-color: #FFED3B;
+  border-radius: 20px;
 }
 
 .weekly-steps {
   grid-area: 5 / 1 / 7 / 4;
   background-color: #383838;
+  border-radius: 20px;
 
 
 }
@@ -188,31 +199,37 @@ section {
 .compare-users {
   grid-area: 3 / 4 / 7 / 7;
   background-color: #383838;
+  border-radius: 20px;
+
 
 }
 
 /*Nav Bar*/
 .nav-bar {
   color: #E0E0E0;
+  outline: none;
+
 }
 
 .home-button {
-  color: #E0E0E0
-
+  color: #E0E0E0;
+  outline: none;
 }
 
 .hydration-button {
   color: #E0E0E0;
+  outline: none;
 
 }
 
 .sleep-button {
   color: #E0E0E0;
-
+  outline: none;
 }
 
 .activity-button {
   color: #E0E0E0;
+  outline: none;
 
 }
 

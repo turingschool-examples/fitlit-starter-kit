@@ -5,12 +5,14 @@
   html {
     /* display: grid;
     box-sizing: border-box; */
+    width: 100vw;
   }
 
   body {
     margin: 0;
     border: 0;
     font-family: "Roboto Mono";
+    /* width: 100vw; */
   }
 
   /* * {
@@ -88,11 +90,11 @@
   }
 
   /* Weekly Section */
-  canvas {
-    height: 2em;
-  }
   .weekly-activity {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .weekly-header {
@@ -103,6 +105,17 @@
 
   }
 
+  .weekly-line {
+    height: 5em;
+    width: 100%;
+    border: 2px solid black;
+  }
+
+  .weekly-bar {
+    height: 3em;
+    width: 100%;
+    border: 2px solid black;
+  }
   .user-bar,
   .all-bar {
 
@@ -110,12 +123,15 @@
 
   /* Activity Data Section  */
   .weekly-water-sleep {
-
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
   }
 
   .water-intake
   .sleep-data {
-
+    display: flex;
+    flex-direction: column;
   }
 
   .water-chart
@@ -123,6 +139,9 @@
 
   }
 
+  .averages-section {
+    display: flex;
+  }
   .average-sleep-hours,
   .average-sleep-quality {
 

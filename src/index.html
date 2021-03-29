@@ -36,11 +36,11 @@
           <div class="weekly-header">
             <h3 class="weekly-chart-title">Weekly Achievements</h3>
           </div>
-          <canvas></canvas>
-          <canvas>
+          <canvas class="weekly-line"></canvas>
+          <canvas class="weekly-bar">
             <label class="user-bar">Your Totals</label>
           </canvas>
-          <canvas>
+          <canvas class="weekly-bar">
             <label class="all-bar">All Users' Totals</label>
           </canvas>
         </section>
@@ -53,13 +53,15 @@
             <canvas></canvas>
             <label class="sleep-chart">Sleep this Week</label>
           </span>
+        </section>
+        <section class="averages-section">
           <span class="average-sleep-hours">
             <p>All-Time Average Hours</p>
           </span>
           <span class="average-sleep-quality">
             <p>All-Time Average Quality</p>
-          </span>
         </section>
+          </span>
       </main>
       <aside class="user-info-section">
         <p class="user-info">ID: Name: Address: Email: StrideLength: DailyStepGoal: Friends:</p>

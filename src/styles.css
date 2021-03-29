@@ -6,7 +6,7 @@ main {
   width: 100vw;
   flex-direction: column;
   justify-content: center;
-  background-image: url("images/background.png");
+  background-image: url("images/fitlit-background3.png");
   background-size: cover;
   font-family: sans-serif;
 }
@@ -45,7 +45,7 @@ header {
   display: flex;
   height: 5vh;
   width: 80vw;
-  justify-content: center;
+  justify-content: flex-end;
   padding-left: 10vw;
   padding-bottom: 5vh;
 }
@@ -115,8 +115,9 @@ section {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-column-gap: 3vh;
+  grid-row-gap: 3vh;
+  padding-bottom: 3vh;
 
 }
 
@@ -128,7 +129,7 @@ section {
 
 .weekly-water {
   grid-area: 4 / 1 / 7 / 7;
-  background-color: #383838;
+  background-color: #FFED3B;
   border-radius: 20px;
 
 }
@@ -138,8 +139,9 @@ section {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-column-gap: 3vh;
+  grid-row-gap: 3vh;
+  padding-bottom: 3vh;
 
 }
 
@@ -171,8 +173,9 @@ section {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-column-gap: 3vh;
+  grid-row-gap: 3vh;
+  padding-bottom: 3vh;
 }
 
 .daily-steps {

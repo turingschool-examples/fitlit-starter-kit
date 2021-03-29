@@ -25,15 +25,4 @@ class UserRepository {
     return this.avgStepGoal;
   }
 
-  storeAllUserHydrationData(dataset) {
-
-  }
-
-  calculateDailyAvgWater(user, date) {
-
-  }
-
-  calculateWeeklyAvgWater(user, date) {
-    
-  }
 }

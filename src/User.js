@@ -10,10 +10,13 @@ class User {
     this.totalStepsThisWeek = 0;
     this.friends = userData.friends;
   }
+
+  returnFirstName() {
+    let splitName = this.name.split(" ");
+    return splitName[0];
+  }
 }
 
 if (typeof module !== 'undefined') {
   module.exports = User;
 }
-
-

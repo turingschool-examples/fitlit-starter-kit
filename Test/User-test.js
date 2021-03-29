@@ -8,7 +8,7 @@ describe('User', () => {
   let user, userRepository;
   beforeEach(() => {
     userRepository = new UserRepository()
-    user = new User(userTestingData[0].id, userTestingData[0].name, userTestingData[0].address, userTestingData[0].email, userTestingData[0].strideLength, userTestingData[0].dailyStepGoal, userTestingData[0].friends)
+    user = new User(userTestingData[0])
   });
 
   it('should be a function', () => {
@@ -20,31 +20,35 @@ describe('User', () => {
   });
 
   it('should have an id', () => {
-    expect(userTestingData[0].id).to.equal(1);
+    expect(user.id).to.equal(1);
   });
 
   it('should have a name', () => {
-    expect(userTestingData[0].name).to.equal('Luisa Hane');
+    expect(user.name).to.equal('Luisa Hane');
   });
 
   it('should have an address', () => {
-    expect(userTestingData[0].address).to.equal('15195 Nakia Tunnel, Erdmanport VA 19901-1697');
+    expect(user.address).to.equal('15195 Nakia Tunnel, Erdmanport VA 19901-1697');
   });
 
   it('should have an email address', () => {
-    expect(userTestingData[0].email).to.equal('Diana.Hayes1@hotmail.com');
+    expect(user.email).to.equal('Diana.Hayes1@hotmail.com');
   });
 
   it('should have a stride length', () => {
-    expect(userTestingData[0].strideLength).to.equal(4.3);
+    expect(user.strideLength).to.equal(4.3);
   });
 
   it('should have a daily step goal', () => {
-    expect(userTestingData[0].dailyStepGoal).to.equal(10000);
+    expect(user.dailyStepGoal).to.equal(10000);
   });
 
   it('should have friends', () => {
-    expect(userTestingData[0].friends).to.deep.equal([16, 4, 8])
+    expect(user.friends).to.deep.equal([16, 4, 8])
   });
+
+  it('should be able to return the first name of the user', function() {
+    expect(user.returnFirstName()).to.equal('Luisa');
+  })
 
 });

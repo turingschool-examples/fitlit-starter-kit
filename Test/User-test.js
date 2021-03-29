@@ -8,7 +8,7 @@ describe('User', () => {
   let user, userRepository;
   beforeEach(() => {
     userRepository = new UserRepository()
-    user = new User(userTestingData[0].id, userTestingData[0].name, userTestingData[0].address, userTestingData[0].email, userTestingData[0].strideLength, userTestingData[0].dailyStepGoal, userTestingData[0].friends)
+    user = new User(userTestingData[0])
   });
 
   it('should be a function', () => {
@@ -46,5 +46,9 @@ describe('User', () => {
   it('should have friends', () => {
     expect(userTestingData[0].friends).to.deep.equal([16, 4, 8])
   });
+
+  it('should be able to return the first name of the user', function() {
+    expect(user.returnFirstName()).to.equal('Luisa');
+  })
 
 });

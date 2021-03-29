@@ -1,16 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-
+    <main class="main-page" id="mainPage">
+      <header class= "header-banner" id="headerBanner">
+        <h1 class="header-message">Welcome</h1>
+      </header>
+      <section class="grid-wrapper">
+        <section class="home-grid hidden" id="homeGrid">
+          <article class="user-info hidden" id="userInfo"></article>
+          <article class="picture hidden" id="picture"></article>
+          <article class="step-goal hidden" id="stepGoal"></article>
+        </section>
+        <section class="hydration-grid hidden" id="hydrationGrid">
+          <article class="daily-water hidden" id="dailyWater"></article>
+          <article class="weekly-water hidden" id="weeklyWater"><article>
+        </section>
+        <section class="sleep-grid" id="sleepGrid">
+          <article class="daily-sleep" id="dailySleep"></article>
+          <article class="weekly-sleep" id="weeklySleep"></article>
+          <article class="quality-sleep" id="qualitySleep"></article>
+        </section>
+        <section class="activity-grid hidden">
+          <article class="daily-steps" id="dailySteps"></article>
+          <article class="daily-activity" id="dailyActivity"></article>
+          <article class="weekly-steps" id="weeklySteps"></article>
+          <article class="compare-users" id="compareUsers"></article>
+        </section>
+      </section>
+      <nav class="nav-bar" id="navBar">
+        <button class="home-button" id="homeButton">Home</button>
+        <button class="hydration-button" id="hydrationButton">Hydration</button>
+        <button class="sleep-button" id="sleepButton">Sleep</button>
+        <button class="activity-button" id="activityButton">Activity</button>
+      </nav>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
     <script type="text/javascript" src="../data/activity.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
+  </main>
   </body>
 </html>

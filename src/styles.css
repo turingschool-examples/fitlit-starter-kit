@@ -1,0 +1,242 @@
+/* Element Selectors */
+html,
+main {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url("images/fitlit-background3.png");
+  background-size: cover;
+  font-family: sans-serif;
+}
+
+article {
+  display: flex;
+  justify-content: center;
+  padding-left: 30px;
+
+
+}
+
+body {
+  display: flex;
+  justify-content: center;
+
+}
+
+button {
+  display: flex;
+  height: 15vh;
+  width: 22.5vw;
+  justify-content: center;
+  align-items: center;
+  background-color: #282828;
+  outline: none;
+
+}
+
+h1 {
+  color: #E0E0E0;
+
+}
+
+header {
+  display: flex;
+  height: 5vh;
+  width: 80vw;
+  justify-content: flex-end;
+  padding-left: 10vw;
+  padding-bottom: 5vh;
+}
+
+nav {
+  display: flex;
+  height: 15vh;
+  width: 80vw;
+  align-items: flex-end;
+  justify-content: center;
+  padding-left: 10vw;
+  color: #FFED3B;
+
+}
+
+section {
+  display: flex;
+  height: 70vh;
+  width: 80vw;
+  justify-content: center;
+
+
+}
+
+.grid-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-left: 10vw;
+  align-items: center;
+}
+
+/*Home Page Styling*/
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 3vh;
+  grid-row-gap: 3vh;
+  width: 80vw;
+  height: 65vh;
+
+}
+
+.user-info {
+  grid-area: 1 / 1 / 7 / 4;
+  background-color: #383838;
+  border-radius: 20px;
+
+}
+
+.picture {
+  grid-area: 1 / 4 / 4 / 7;
+  background-color: #383838;
+  border-radius: 20px;
+
+
+}
+
+.step-goal {
+  grid-area: 4 / 4 / 7 / 7;
+  background-color: #FFED3B;
+  border-radius: 20px;
+}
+
+/*Hydration Page*/
+.hydration-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 3vh;
+  grid-row-gap: 3vh;
+  padding-bottom: 3vh;
+
+}
+
+.daily-water {
+  grid-area: 1 / 1 / 4 / 7;
+  background-color: #383838;
+  border-radius: 20px;
+}
+
+.weekly-water {
+  grid-area: 4 / 1 / 7 / 7;
+  background-color: #FFED3B;
+  border-radius: 20px;
+
+}
+
+/*Sleep Page*/
+.sleep-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 3vh;
+  grid-row-gap: 3vh;
+  padding-bottom: 3vh;
+
+}
+
+.daily-sleep {
+  grid-area: 1 / 1 / 4 / 7;
+  background-color: #383838;
+  border-radius: 20px;
+
+
+}
+
+.weekly-sleep {
+  grid-area: 4 / 1 / 7 / 4;
+  background-color: #383838;
+  border-radius: 20px;
+
+}
+
+.quality-sleep {
+  grid-area: 4 / 4 / 7 / 7;
+  background-color: #FFED3B;
+  border-radius: 20px;
+
+
+}
+
+/*Activity Page*/
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 3vh;
+  grid-row-gap: 3vh;
+  padding-bottom: 3vh;
+}
+
+.daily-steps {
+  grid-area: 1 / 1 / 5 / 4;
+  background-color: #383838;
+  border-radius: 20px;
+
+}
+
+.daily-activity {
+  grid-area: 1 / 4 / 3 / 7;
+  background-color: #FFED3B;
+  border-radius: 20px;
+}
+
+.weekly-steps {
+  grid-area: 5 / 1 / 7 / 4;
+  background-color: #383838;
+  border-radius: 20px;
+
+
+}
+
+.compare-users {
+  grid-area: 3 / 4 / 7 / 7;
+  background-color: #383838;
+  border-radius: 20px;
+
+
+}
+
+/*Nav Bar*/
+.nav-bar {
+  color: #E0E0E0;
+  outline: none;
+
+}
+
+.home-button {
+  color: #E0E0E0;
+  outline: none;
+}
+
+.hydration-button {
+  color: #E0E0E0;
+  outline: none;
+
+}
+
+.sleep-button {
+  color: #E0E0E0;
+  outline: none;
+}
+
+.activity-button {
+  color: #E0E0E0;
+  outline: none;
+
+}
+
+/*Hidden*/
+.hidden {
+  display: none!important;
+}

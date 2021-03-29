@@ -18,6 +18,10 @@ describe('User', () => {
     expect(userRepository).to.be.an.instanceof(UserRepository);
   });
 
+  it('should be able to take in and store userData', () => {
+    expect(userRepository.userData).to.deep.equal(userTestingData);
+  });
+
   it('should be able to create and store multiple users', () => {
     userRepository.createUsers(userTestingData);
     expect(userRepository.users).to.be.an('array').with.a.lengthOf(3);

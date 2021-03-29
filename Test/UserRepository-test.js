@@ -4,7 +4,7 @@ const User = require ('../src/User');
 const UserRepository = require ('../src/UserRepository');
 const userTestingData = require ('../Test/User-TestingData.js');
 
-describe('User', () => {
+describe('User Repo', () => {
   let user, userRepository;
   beforeEach(() => {
     userRepository = new UserRepository(userTestingData);

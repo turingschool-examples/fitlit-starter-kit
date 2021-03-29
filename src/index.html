@@ -1,12 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../src/css/styles.css">
     <title>Activity Tracker</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-
+  <header>
+    <h1><span id="header-title"></span>Activity Tracker</h1>
+    <button type='button' class='hide' name='button' id='userinfo-button' aria-label="See user profile"></button>
+    <section class='hide' id='user-info-page'>
+      <h5 id='userinfo-name'></h5>
+      <p class='userinfo-p' id='userinfo-email'></p>
+      <p class='userinfo-p' id='userinfo-goal'></p>
+      <br/>
+      <p class='userinfo-p' id='userinfo-friends'>total friends steps</p>
+      <div id='userinfo-friends-steps-container'></div>
+    </section>
+    <main>
+      <section class='card-container' id='activity-card-container'>
+        <section class='main-card' id='activity-main-card'>
+          <div class='main-card-top'>
+          </div>
+        </section>
+      </section>
+      <section class='card-container' id='sleep-card-container'>
+        <section class='main-card' id='sleep-main-card'>
+          <div class='main-card-middle-right'>
+          </div>
+        </section>
+      </section>
+      <section class='card-container' id='hydration-card-container'>
+        <section class='main-card' id='hydration-main-card'>
+          <div class='main-card-middle-left'>
+          </div>
+        </section>
+      </section>
+      <section class='card-container' id='stairs-card-container'>
+        <section class='main-card' id='stairs-main-card'>
+          <div class='main-card-bottom'>
+          </div>
+        </section>
+      </section>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>

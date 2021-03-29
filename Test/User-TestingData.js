@@ -101,3 +101,5 @@ const activityTestingData = [
     "minutesActive": 116,
     "flightsOfStairs": 33
   }]
+
+module.exports = userTestingData;

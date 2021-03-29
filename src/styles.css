@@ -1,35 +1,33 @@
 /* Mobile Styling */
 
-@media all and (min-width: 320px) {
+/* @media all and (min-width: 320px) { */
   /* All */
   html {
-    /* display: grid;
-    box-sizing: border-box; */
     width: 100vw;
+    max-width: 100%;
+    height: 100%;
+    overflow-x: hidden;
   }
 
   body {
     margin: 0;
     border: 0;
     font-family: "Roboto Mono";
-    /* width: 100vw; */
+    max-width: 100%;
+    height: 100%
   }
-
-  /* * {
-  border: red;
-  border-style: dashed;
-  } */
 
   .page {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 100%
   }
 
   /* Header Row */
   .header {
     display: flex;
     justify-content: space-between;
+    height: 5%;
   }
 
   .date {
@@ -50,7 +48,11 @@
 
   /* Main Section */
   .main {
-
+    height: 100%;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
   }
 
   /* Daily Section */
@@ -107,15 +109,16 @@
 
   .weekly-line {
     height: 5em;
-    width: 100%;
+    width: 95%;
     border: 2px solid black;
   }
 
   .weekly-bar {
     height: 3em;
-    width: 100%;
+    width: 95%;
     border: 2px solid black;
   }
+
   .user-bar,
   .all-bar {
 
@@ -125,13 +128,21 @@
   .weekly-water-sleep {
     display: flex;
     justify-content: space-between;
-    width: 100vw;
+    width: 95%;
+    height: 20%;
   }
 
-  .water-intake
+  .water-intake,
   .sleep-data {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .vert-bar {
+    height: 60%;
+    width: 60%;
   }
 
   .water-chart
@@ -141,21 +152,28 @@
 
   .averages-section {
     display: flex;
+    width: 95%;
+    height: 20%;
   }
   .average-sleep-hours,
   .average-sleep-quality {
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
   }
 
   /* User Data Section  */
   .user-info-section {
     background-color: green;
+    position: fixed;
+    bottom: 0;
   }
 
   .user-info {
 
   }
-}
+/* } */
 
 /* Desktop Styling */
 
@@ -254,7 +272,7 @@
 
   }
 
-  .water-intake
+  .water-intake,
   .sleep-data {
 
   }

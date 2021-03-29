@@ -28,4 +28,9 @@ describe('User', () => {
     expect(userRepository.returnUserData(1)).to.deep.equal(userRepository.userData[0]);
   });
 
+  it('should be able to return the average step goal for all users', () => {
+    userRepository.createUsers(userTestingData);
+    expect(userRepository.returnAverageStepGoal()).to.equal(7000);
+  });
+
 });

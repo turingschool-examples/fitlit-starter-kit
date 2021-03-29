@@ -32,7 +32,7 @@ const userTestingData = [
     "address": "85823 Bosco Fork, East Oscarstad MI 85126-5660",
     "email": "Elwin.Tromp@yahoo.com",
     "strideLength": 4.4,
-    "dailyStepGoal": 5000,
+    "dailyStepGoal": 6000,
     "friends": [
       19,
       11,

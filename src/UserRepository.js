@@ -29,7 +29,7 @@ class UserRepository {
       totalUserStepGoal = totalUserStepGoal + user.dailyStepGoal;
     });
     let averageStepGoal = totalUserStepGoal/this.users.length;
-    return averageStepGoal;
+    return Math.round(averageStepGoal);
   }
 
 }

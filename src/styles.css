@@ -1,10 +1,12 @@
 /* Element Selectors */
+html,
 main {
   display: flex;
   height: 100vh;
   width: 100vw;
   flex-direction: column;
   justify-content: center;
+  background-color: #0F0F0F;
 }
 
 article {
@@ -24,43 +26,44 @@ body {
 button {
   display: flex;
   height: 15vh;
-  width: 25vw;
+  width: 22.5vw;
   justify-content: center;
   align-items: center;
+  background-color: #282828;
+  font-color: white;
+  outline: none;
 
 }
 
 h1 {
+  color: #E0E0E0;
 
 }
 
 header {
   display: flex;
   height: 5vh;
-  width: 90vw;
-  border: 4px;
-  border-color: red;
+  width: 80vw;
   justify-content: center;
-  padding-top: 5vh;
-  padding-left: 5vw;
+  padding-left: 10vw;
+  padding-bottom: 5vh;
 }
 
 nav {
   display: flex;
   height: 15vh;
-  width: 100vw;
-  border: 4px;
-  border-color: red;
+  width: 80vw;
   align-items: flex-end;
   justify-content: center;
+  padding-left: 10vw;
+  color: #FFED3B;
+
 }
 
 section {
   display: flex;
-  height: 80vh;
-  width: 90vw;
-  border: 4px;
-  border-color: red;
+  height: 70vh;
+  width: 80vw;
   justify-content: center;
 
 
@@ -69,7 +72,7 @@ section {
 .grid-wrapper {
   display: flex;
   justify-content: center;
-  margin-left: 5vw;
+  margin-left: 10vw;
   align-items: center;
 }
 
@@ -80,104 +83,136 @@ section {
   grid-template-rows: repeat(6, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  width: 90vw;
+  width: 80vw;
   height: 65vh;
 
 }
 
 .user-info {
   grid-area: 1 / 1 / 7 / 4;
-  background-color: #C9FFF4;
-  border: 2px;
-  border-color: blue;
+  background-color: #383838;
 
 }
 
 .picture {
   grid-area: 1 / 4 / 4 / 7;
-  background-color: #C9DDFF;
-  border: 2px;
-  border-color: red;
+  background-color: #383838;
+
 
 }
 
 .step-goal {
   grid-area: 4 / 4 / 7 / 7;
-  background-color: #FEC9FF;
-  border: 2px;
-  border-color: green;
+  background-color: #FFED3B;
 
 }
 
 /*Hydration Page*/
 .hydration-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 
 }
 
 .daily-water {
-
+  grid-area: 1 / 1 / 4 / 7;
+  background-color: #383838;
 }
 
 .weekly-water {
+  grid-area: 4 / 1 / 7 / 7;
+  background-color: #383838;
 
 }
 
 /*Sleep Page*/
 .sleep-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 
 }
 
 .daily-sleep {
+  grid-area: 1 / 1 / 4 / 7;
+  background-color: #383838;
+
 
 }
 
 .weekly-sleep {
+  grid-area: 4 / 1 / 7 / 4;
+  background-color: #383838;
 
 }
 
 .quality-sleep {
+  grid-area: 4 / 4 / 7 / 7;
+  background-color: #FFED3B;
+
 
 }
 
 /*Activity Page*/
 .activity-grid {
-
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
 
 .daily-steps {
+  grid-area: 1 / 1 / 5 / 4;
+  background-color: #383838;
 
 }
 
 .daily-activity {
-
+  grid-area: 1 / 4 / 3 / 7;
+  background-color: #FFED3B;
 }
 
 .weekly-steps {
+  grid-area: 5 / 1 / 7 / 4;
+  background-color: #383838;
+
 
 }
 
 .compare-users {
+  grid-area: 3 / 4 / 7 / 7;
+  background-color: #383838;
 
 }
 
 /*Nav Bar*/
 .nav-bar {
-
+  color: #E0E0E0;
 }
 
 .home-button {
+  color: #E0E0E0
 
 }
 
 .hydration-button {
+  color: #E0E0E0;
 
 }
 
 .sleep-button {
+  color: #E0E0E0;
 
 }
 
 .activity-button {
+  color: #E0E0E0;
 
 }
 

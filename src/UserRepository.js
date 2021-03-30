@@ -1,6 +1,6 @@
-class UserRepository(data) {
-  constructor(){
-
+class UserRepository {
+  constructor(data) {
+    this.data = data;
   }
 
   determineUserData() {
@@ -8,8 +8,8 @@ class UserRepository(data) {
   }
 
   calculateAvgStepGoal() {
-    
+
   }
 }
 
-module.exports = UserRespository;
+module.exports = UserRepository;

@@ -5,7 +5,7 @@ class User {
     this.address = dataElem.address;
     this.email = dataElem.email;
     this.stride = dataElem.strideLength;
-    this.stepGoal  = dataElem.dailyStepGoal;
+    this.dailyStepGoal  = dataElem.dailyStepGoal;
     this.friends = dataElem.friends;
     this.hydrationData = [];
     this.sleepData = [];
@@ -85,6 +85,37 @@ class User {
   calculateSleepQualityByDate(date) {
     /* use find() to iterate through this.sleepData array,
     locate specific element by date, and return sleepQuality */
+  }
+
+  calculateDailyMilesWalked(date) {
+    /* identify element in this.activityData by date,
+    multiply numSteps by strideLength for distance in feet, 
+    convert to miles + remainder feet, and return */
+  }
+
+  retrieveAvgWeeklyMinutesActive(startDate) {
+    /* for each this.activityData element between 
+    startDate and startDate + 7, accumulate minutesActive, 
+    divide by this.activityData.length, and return */
+  }
+
+  evaluateStepGoalSuccess(date) {
+    /* identify element in this.activityData by date,
+    evaluate whether numSteps is >= dailyStepGoal, 
+    return Boolean */
+  }
+
+  identifyDatesExceedingStepGoal() {
+    /* filter() through activityData array and evaluate/identify 
+    dates where numSteps > this.dailyStepGoal */
+  }
+
+  retrieveMostFlightsClimbed() {
+    /* declare let maxFlights variable and assign value of
+    this.activityArray[0].flightsOfStairs, iterate through array and if 
+    this.activityArray[i].flightsOfStairs > maxFlights,
+    maxFlights = this.ActivityArray[i].flightsOfStairs, 
+    then return maxFlights */
   }
 
 }

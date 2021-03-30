@@ -44,6 +44,9 @@ header {
   z-index: 100;
 }
 
+ .hide {
+    display: none;
+  }
 
 
 /* MAIN */

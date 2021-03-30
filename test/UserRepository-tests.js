@@ -35,15 +35,15 @@ describe("UserRepository class", () => {
     });
     userRepo = new UserRepository([user1, user2, user3]);
   })
-  it.skip("Should have a parameter to take in user data", () => {
-    expect(userRepo).to.deep.equal([user1, user2, user3]);
+  it("Should have a parameter to take in user data", () => {
+    expect(userRepo.data).to.deep.equal([user1, user2, user3]);
   });
-  it.skip("Should have a method to determine user data given a user ID", () => {
+  it("Should have a method to determine user data given a user ID", () => {
     const dataById = userRepo.determineUserData(33);
     expect(dataById).to.deep.equal(user3);
   });
-  it.skip("Should determine the average step goal amongst all users", () => {
+  it("Should determine the average step goal amongst all users", () => {
     const avgStepGoal = userRepo.calculateAvgStepGoal();
-    expect(avgStepGoal).to.equal(17666.67);
+    expect(avgStepGoal).to.equal((5000 + 10000 + 8000) / 3);
   });
 });

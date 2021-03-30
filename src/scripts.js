@@ -1,11 +1,41 @@
-const User = require ('../src/User');
-const UserRepository = require ('../src/UserRepository');
+const userRepository = new UserRepository(userData);
+let currentUser;
 
-const userInfoButton = document.querySelector('#userinfo-button');
-const userInfoDropdown = document.querySelector('#user-info-page');
+const userInfoButton = document.getElementById('userinfoButton');
+const userInfoDropdown = document.getElementById('userInfoPage');
+const userEmail = document.getElementById('userinfoEmail');
+const userStepGoal = document.getElementById('userinfoGoal');
+const averageStepGoal = document.getElementById('averageStepGoal');
+
+window.addEventListener('load', displayUserInfo);
+userInfoButton.addEventListener('click', showDropdown);
+
+
+function displayUserInfo() {
+  userRepository.createUsers();
+  let randomIndex = getRandomIndex(userRepository.users);
+  currentUser = userRepository.users[randomIndex]
+  userEmail.innerText = "Email Address: " + currentUser.email;
+  userStepGoal.innerText = "Daily Step Goal: " + currentUser.dailyStepGoal;
+  averageStepGoal.innerText = calculateStepDifference();
+}
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function calculateStepDifference() {
+  let averageSteps = userRepository.returnAverageStepGoal();
+  let userSteps = currentUser.dailyStepGoal;
+  let stepDifferece = averageSteps - userSteps;
+  if (stepDifferece < 0) {
+    return `Your step goal is ${Math.abs(stepDifferece)} steps more than the global average`
+  } else if (stepDifferece > 0) {
+    return `Your step goal is ${stepDifferece} steps less than the global average`
+  } else {
+    return 'Your step goal is on par with the global average'
+  }
+}
 
 function showDropdown() {
   userInfoDropdown.classList.toggle('hide');
 }
-
-  userInfoButton.addEventListener('click', showDropdown);

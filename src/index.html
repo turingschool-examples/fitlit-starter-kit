@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='UTF-8'>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../src/css/styles.css">
-    <title>Activity Tracker</title>
-  </head>
-  <body>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../src/css/styles.css">
+  <title>Activity Tracker</title>
+</head>
+
+<body>
   <header>
-    <h1><span id="header-title"></span>Activity Tracker</h1>
-    <button type='button' class='hide' name='button' id='userinfo-button' aria-label="See user profile"></button>
-    <section class='hide' id='user-info-page'>
-      <h5 id='userinfo-name'></h5>
-      <p class='userinfo-p' id='userinfo-email'>USER EMAIL</p>
-      <p class='userinfo-p' id='userinfo-goal'>DAILY STEP GOAL: 6000</p>
-      <br/>
-      <p class='userinfo-p' id='userinfo-friends'>Total Friends Steps</p>
-      <div id='userinfo-friends-steps-container'>friend.firstName friend.totalWeeklySteps</div>
+    <h1><span id="headerTitle"></span>Activity Tracker</h1>
+    <button type='button' class='user-info-button' name='button' id='userinfoButton' aria-label="See user profile"></button>
+    <section class='hide user-info-page' id='userInfoPage'>
+      <h5 id='userinfoName'></h5>
+      <p class='userinfo-p' id='userinfoEmail'>USER EMAIL</p>
+      <p class='userinfo-p' id='userinfoGoal'>DAILY STEP GOAL: 6000</p>
+      <br />
+      <p class='userinfo-p' id='averageStepGoal'>Average Steps Globally</p>
+      <div id='userinfoFriendsStepsContainer'>friend.firstName friend.totalWeeklySteps</div>
     </section>
     <main>
-      <section class='card-container' id='activity-card-container'>
-        <section class='main-card' id='activity-main-card'>
+      <section class='card-container-activity' id='activityCardContainer'>
+        <section class='main-card' id='activityMainCard'>
           <div class='main-card-top'>
           </div>
         </section>
       </section>
-      <section class='card-container' id='sleep-card-container'>
-        <section class='main-card' id='sleep-main-card'>
+      <section class='card-container-sleep' id='sleepCardContainer'>
+        <section class='main-card' id='sleepMainCard'>
           <div class='main-card-middle-right'>
           </div>
         </section>
       </section>
-      <section class='card-container' id='hydration-card-container'>
-        <section class='main-card' id='hydration-main-card'>
+      <section class='card-container-hydration' id='hydrationCardContainer'>
+        <section class='main-card' id='hydrationMainCard'>
           <div class='main-card-middle-left'>
           </div>
         </section>
       </section>
-      <section class='card-container' id='stairs-card-container'>
-        <section class='main-card' id='stairs-main-card'>
+      <section class='card-container-stairs' id='stairsCardContainer'>
+        <section class='main-card' id='stairsMainCard'>
           <div class='main-card-bottom'>
           </div>
         </section>
       </section>
-    <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="../data/hydration.js"></script>
-    <script type="text/javascript" src="../data/sleep.js"></script>
-    <script type="text/javascript" src="../data/activity.js"></script>
+      <script type="text/javascript" src="../data/users.js"></script>
+      <script type="text/javascript" src="../data/hydration.js"></script>
+      <script type="text/javascript" src="../data/sleep.js"></script>
+      <script type="text/javascript" src="../data/activity.js"></script>
       <script type="text/javascript" src="../src/User.js"></script>
       <script type="text/javascript" src="../src/UserRepository.js"></script>
       <script type="text/javascript" src="./scripts.js"></script>
-  </body>
+</body>
+
 </html>

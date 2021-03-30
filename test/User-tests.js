@@ -28,16 +28,16 @@ describe("User class", () => {
         });
 
   });
-  it.skip("Should hold on to the user properties from the data file", () => {
+  it("Should hold on to the user properties from the data file", () => {
     expect(user1.id).to.equal(15);
     expect(user1.name).to.equal("Ezequiel Feest");
     expect(user1.address).to.equal("78801 Lauryn Plain, Lake Elinor MN 27856-9054");
     expect(user1.email).to.equal("Anthony_Toy@hotmail.com");
     expect(user1.strideLength).to.equal(4.4);
     expect(user1.dailyStepGoal).to.equal(5000);
-    expect(user1.friends).to.equal([10, 23, 35, 20, 5]);
+    expect(user1.friends).to.deep.equal([10, 23, 35, 20, 5]);
   });
-  it.skip("Should have a method that returns a user's first name only", () => {
+  it("Should have a method that returns a user's first name only", () => {
     const firstNameOnly = user1.firstName();
     expect(firstNameOnly).to.equal("Ezequiel");
   });

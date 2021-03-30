@@ -3,7 +3,7 @@ class UserRepository {
     this.data = data;
   }
 
-  determineUserData() {
+  determineUserData(id) {
 
   }
 

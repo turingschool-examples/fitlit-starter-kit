@@ -16,18 +16,7 @@ class UserRepository {
   retrieveUserData(id) {
     return this.userData[id-1];
   }
-
-  retrieveAllUserAvgStepGoal() {
-    const stepGoalArray = this.userData.map(user => user.stepGoal);
-    const stepGoalSum = stepGoalArray.reduce((sum, goal) => {
-      return sum + goal;
-    },);
-
-    this.avgStepGoal = Math.round(stepGoalSum / this.userData.length);
-
-    return this.avgStepGoal;
-  }
-
+  
   retrieveHydrationData(dataset) {
     /* filter through hydrationData dataset by ID and 
     populate User’s this.hydrationLog array */
@@ -42,6 +31,18 @@ class UserRepository {
     /* filter through activityData dataset by ID and 
     populate User’s this.activityLog array */
   }
+
+  retrieveAllUserAvgStepGoal() {
+    const stepGoalArray = this.userData.map(user => user.stepGoal);
+    const stepGoalSum = stepGoalArray.reduce((sum, goal) => {
+      return sum + goal;
+    },);
+
+    this.avgStepGoal = Math.round(stepGoalSum / this.userData.length);
+
+    return this.avgStepGoal;
+  }
+
 
   calculateAvgSleepQuality() {
     /* iterate through sleep.js dataset, 
@@ -91,3 +92,5 @@ class UserRepository {
   }
 
 }
+
+module.exports = UserRepository;

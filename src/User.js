@@ -5,10 +5,11 @@ class User {
     this.address = dataElem.address;
     this.email = dataElem.email;
     this.stride = dataElem.strideLength;
-    this.stepGoal  = dataElem.dailyStepGoal;
+    this.dailyStepGoal  = dataElem.dailyStepGoal;
     this.friends = dataElem.friends;
-    this.hydrationData = [];
-    this.avgDailyWater;
+    this.hydrationLog = [];
+    this.sleepLog = [];
+    this.activityLog = [];
   }
 
   returnFirstName() {
@@ -16,6 +17,101 @@ class User {
     const firstName = splitName[0];
     return firstName;
   }
+
+  retrieveHydrationData(dataset) {
+    /* filter through hydrationData dataset by ID and 
+    populate User’s this.hydrationLog array */
+  }
+
+  retrieveSleepData(dataset) {
+    /* filter through sleepData dataset by ID and 
+    populate User’s this.sleepLog array */
+  }
+
+  retrieveActivityData(dataset) {
+    /* filter through activityData dataset by ID and 
+    populate User’s this.activityLog array */
+  }
+
+  calculateAvgDailyWater() {
+    /* for each this.hydrationLog element, accumulate 
+    numOunces, divide by this.hydrationLog.length, and return */
+  }
+
+  calculateAvgWeeklyWater(startDate) {
+    /* for each this.hydrationLog element between startDate 
+    and startDate + 7, accumulate numOunces, divide by 
+    this.hydrationLog.length, and return */
+  }
+
+  retrieveNumOuncesByDate(date) {
+    /* use find() to iterate through this.hydrationLog array,
+    locate specific element by date, and return numOunces */
+  }
+
+  calculateAvgDailyHrsSlept() {
+    /* for each this.sleepLog element, accumulate 
+    hoursSlept, divide by this.sleepLog.length, and return */
+  }
+
+  calculateAvgWeeklyHrsSlept(startDate) {
+    /* for each this.sleepLog element between startDate 
+    and startDate + 7, accumulate hoursSlept, 
+    divide by this.sleepLog.length, and return */
+  }
+
+  calculateAvgDailySleepQuality() {
+    /* for each this.sleepLog element, accumulate 
+    sleepQuality, divide by this.sleepData.length, and return */
+  }
+
+  calculateAvgWeeklySleepQuality(startDate) {
+    /* for each this.sleepLog element between 
+    startDate and startDate + 7, accumulate sleepQuality, 
+    divide by this.sleepLog.length, and return */
+  }
+
+  calculateHrsSleptByDate(date) {
+    /* use find() to iterate through this.sleepLog array,
+    locate specific element by date, and return hoursSlept */
+  }
+
+  calculateSleepQualityByDate(date) {
+    /* use find() to iterate through this.sleepLog array,
+    locate specific element by date, and return sleepQuality */
+  }
+
+  calculateDailyMilesWalked(date) {
+    /* identify element in this.activityLog by date,
+    multiply numSteps by strideLength for distance in feet, 
+    convert to miles + remainder feet, and return */
+  }
+
+  retrieveAvgWeeklyMinutesActive(startDate) {
+    /* for each this.activityLog element between 
+    startDate and startDate + 7, accumulate minutesActive, 
+    divide by this.activityLog.length, and return */
+  }
+
+  evaluateStepGoalSuccess(date) {
+    /* identify element in this.activityLog by date,
+    evaluate whether numSteps is >= dailyStepGoal, 
+    return Boolean */
+  }
+
+  identifyDatesExceedingStepGoal() {
+    /* filter() through activityLog array and evaluate/identify 
+    dates where numSteps > this.dailyStepGoal */
+  }
+
+  retrieveMostFlightsClimbed() {
+    /* declare let maxFlights variable and assign value of
+    this.activityLog[0].flightsOfStairs, iterate through array and if 
+    this.activityLog[i].flightsOfStairs > maxFlights,
+    maxFlights = this.ActivityArray[i].flightsOfStairs, 
+    then return maxFlights */
+  }
+
 }
 
 module.exports = User;

@@ -1,8 +1,13 @@
 * {
   border: 1px solid thistle;
   background-color: #202124;
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Yatra One', cursive;
   color: #fefefe;
+}
+
+article,
+section {
+  font-family: 'Ubuntu', sans-serif;
 }
 
 

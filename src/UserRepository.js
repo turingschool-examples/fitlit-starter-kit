@@ -3,6 +3,9 @@ const User = require("./User");
 class UserRepository {
   constructor() {
     this.userData = [];
+    this.hydrationData = [];
+    this.sleepData = [];
+    this.activityData = [];
     this.avgStepGoal = 0;
   }
 
@@ -23,6 +26,21 @@ class UserRepository {
     this.avgStepGoal = Math.round(stepGoalSum / this.userData.length);
 
     return this.avgStepGoal;
+  }
+
+  retrieveHydrationData(dataset) {
+    /* filter through hydrationData dataset by ID and 
+    populate User’s this.hydrationLog array */
+  }
+
+  retrieveSleepData(dataset) {
+    /* filter through sleepData dataset by ID and 
+    populate User’s this.sleepLog array */
+  }
+
+  retrieveActivityData(dataset) {
+    /* filter through activityData dataset by ID and 
+    populate User’s this.activityLog array */
   }
 
   calculateAvgSleepQuality() {

@@ -7,30 +7,12 @@ class User {
     this.stride = dataElem.strideLength;
     this.dailyStepGoal  = dataElem.dailyStepGoal;
     this.friends = dataElem.friends;
-    this.hydrationLog = [];
-    this.sleepLog = [];
-    this.activityLog = [];
   }
 
   returnFirstName() {
     const splitName = this.name.split(' ');
     const firstName = splitName[0];
     return firstName;
-  }
-
-  retrieveHydrationData(dataset) {
-    /* filter through hydrationData dataset by ID and 
-    populate User’s this.hydrationLog array */
-  }
-
-  retrieveSleepData(dataset) {
-    /* filter through sleepData dataset by ID and 
-    populate User’s this.sleepLog array */
-  }
-
-  retrieveActivityData(dataset) {
-    /* filter through activityData dataset by ID and 
-    populate User’s this.activityLog array */
   }
 
   calculateAvgDailyWater() {

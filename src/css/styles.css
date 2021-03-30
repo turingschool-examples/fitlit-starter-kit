@@ -1,0 +1,109 @@
+
+*,
+*:after,
+*:before {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+* {
+border: 1px solid red;
+}
+
+body {
+  background-color: grey;
+  font-family: 'Oswald', sans-serif;
+}
+
+header {
+  justify-content: center;
+  text-align: center;
+  height: 9vw;
+}
+
+#userinfo-button{
+  background-position: center;
+  background-size: 5.6vw;
+  border: none;
+  display: inline;
+  float: right;
+  height: 5.6vw;
+  margin-right: .5vw;
+  margin-top: 1.6vw;
+  width: 5.6vw;
+}
+
+#user-info-page {
+  background-color: #1F1F1F;
+  color: white;
+  margin-left: 50%;
+  margin-top: -1.2%;
+  position: relative;
+  text-align: center;
+  z-index: 100;
+}
+
+
+
+/* MAIN */
+
+#activity-card-container {
+  background-color: #D93A69;
+  X: 3.5;
+  Y: 131;
+  Width: 368px;
+  Height: 156px;
+  margin: .5vw;
+}
+
+#hydration-card-container {
+  background-color: #4834FF;
+  X: 199;
+  Y: 308;
+  width: 168px;
+  height: 305px;
+  margin: .5vw;
+}
+
+#sleep-card-container {
+  background-color: #7A00FF;
+  X: 8;
+  Y: 308;
+  width: 168px;
+  height: 305px;
+  margin: .5vw;
+}
+
+#stairs-card-container {
+  background-color: #FDD03A;
+  X: 8;
+  Y: 633;
+  width: 359px;
+  height: 156px;
+  margin: .5vw;
+}
+
+h1 {
+  color: yellow;
+  display: inline;
+  font-size: 5.4vw;
+  letter-spacing: .2em;
+  padding-top: 50px;
+}
+
+ .userinfo-p {
+    font-size: 1em;
+    font-weight: 300;
+    padding-bottom: 1.2vw;
+    padding-top: 0;
+    text-align: center;
+    width: 100%;
+  }
+
+p {
+ font-size: 1.4vw;
+ font-weight: 600;
+ }
+
+

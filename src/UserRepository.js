@@ -1,4 +1,8 @@
 const User = require("./User");
+const HydrationEntry = require("./HydrationEntry");
+const SleepEntry = require("./SleepEntry");
+const ActivityEntry = require("./ActivityEntry");
+
 
 class UserRepository {
   constructor() {
@@ -18,18 +22,15 @@ class UserRepository {
   }
   
   retrieveHydrationData(dataset) {
-    /* filter through hydrationData dataset by ID and 
-    populate User’s this.hydrationLog array */
+    this.hydrationData = dataset.map(entry => new HydrationEntry(entry));
   }
 
   retrieveSleepData(dataset) {
-    /* filter through sleepData dataset by ID and 
-    populate User’s this.sleepLog array */
+    this.SleepData = dataset.map(entry => new SleepEntry(entry));
   }
 
   retrieveActivityData(dataset) {
-    /* filter through activityData dataset by ID and 
-    populate User’s this.activityLog array */
+    this.ActivityData = dataset.map(entry => new ActivityEntry(entry));
   }
 
   retrieveAllUserAvgStepGoal() {

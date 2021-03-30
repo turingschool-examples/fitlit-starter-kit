@@ -1,5 +1,5 @@
 class SleepEntry {
-    constructor() {
+    constructor(entry) {
         this.id = entry.userID
         this.date = entry.date
         this.hoursSlept = entry.hoursSlept

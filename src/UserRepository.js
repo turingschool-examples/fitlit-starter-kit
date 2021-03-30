@@ -10,31 +10,31 @@ class UserRepository {
     this.hydrationData = [];
     this.sleepData = [];
     this.activityData = [];
-    this.avgStepGoal = 0;
+    this.avgStepGoal = null;
   }
 
   populateUserData(dataset) {
     this.userData = dataset.map(user => new User(user));
+  }
+  
+  populateHydrationData(dataset) {
+    this.hydrationData = dataset.map(entry => new HydrationEntry(entry));
+  }
+
+  populateSleepData(dataset) {
+    this.sleepData = dataset.map(entry => new SleepEntry(entry));
+  }
+
+  populateActivityData(dataset) {
+    this.activityData = dataset.map(entry => new ActivityEntry(entry));
   }
 
   retrieveUserData(id) {
     return this.userData[id-1];
   }
   
-  retrieveHydrationData(dataset) {
-    this.hydrationData = dataset.map(entry => new HydrationEntry(entry));
-  }
-
-  retrieveSleepData(dataset) {
-    this.SleepData = dataset.map(entry => new SleepEntry(entry));
-  }
-
-  retrieveActivityData(dataset) {
-    this.ActivityData = dataset.map(entry => new ActivityEntry(entry));
-  }
-
-  retrieveAllUserAvgStepGoal() {
-    const stepGoalArray = this.userData.map(user => user.stepGoal);
+  retrieveAvgStepGoal() {
+    const stepGoalArray = this.userData.map(user => user.dailyStepGoal);
     const stepGoalSum = stepGoalArray.reduce((sum, goal) => {
       return sum + goal;
     },);
@@ -43,7 +43,6 @@ class UserRepository {
 
     return this.avgStepGoal;
   }
-
 
   calculateAvgSleepQuality() {
     /* iterate through sleep.js dataset, 

@@ -7,12 +7,9 @@ class User {
     this.stride = dataElem.strideLength;
     this.dailyStepGoal  = dataElem.dailyStepGoal;
     this.friends = dataElem.friends;
-    this.hydrationData = [];
-    this.sleepData = [];
-    this.activityData = [];
-    this.avgDailyWater = 0;
-    this.avgDailyHrsSlept = 0;
-    this.avgDailySleepQuality = 0;
+    this.hydrationLog = [];
+    this.sleepLog = [];
+    this.activityLog = [];
   }
 
   returnFirstName() {
@@ -23,97 +20,94 @@ class User {
 
   retrieveHydrationData(dataset) {
     /* filter through hydrationData dataset by ID and 
-    populate User’s this.hydrationData array */
+    populate User’s this.hydrationLog array */
   }
 
   retrieveSleepData(dataset) {
     /* filter through sleepData dataset by ID and 
-    populate User’s this.sleepData array */
+    populate User’s this.sleepLog array */
   }
 
   retrieveActivityData(dataset) {
     /* filter through activityData dataset by ID and 
-    populate User’s this.activityData array */
+    populate User’s this.activityLog array */
   }
 
   calculateAvgDailyWater() {
-    /* for each this.hydrationData element, accumulate 
-    numOunces, divide by this.hydrationData.length, 
-    return, and assign value to this.avgDailyWater */
+    /* for each this.hydrationLog element, accumulate 
+    numOunces, divide by this.hydrationLog.length, and return */
   }
 
   calculateAvgWeeklyWater(startDate) {
-    /* for each this.hydrationData element between startDate 
+    /* for each this.hydrationLog element between startDate 
     and startDate + 7, accumulate numOunces, divide by 
-    this.hydrationData.length, and return */
+    this.hydrationLog.length, and return */
   }
 
   retrieveNumOuncesByDate(date) {
-    /* use find() to iterate through this.hydrationData array,
+    /* use find() to iterate through this.hydrationLog array,
     locate specific element by date, and return numOunces */
   }
 
   calculateAvgDailyHrsSlept() {
-    /* for each this.sleepData element, accumulate 
-    hoursSlept, divide by this.sleepData.length, 
-    return and assign value to this.avgDailyHrsSlept */
+    /* for each this.sleepLog element, accumulate 
+    hoursSlept, divide by this.sleepLog.length, and return */
   }
 
   calculateAvgWeeklyHrsSlept(startDate) {
-    /* for each this.sleepData element between startDate 
+    /* for each this.sleepLog element between startDate 
     and startDate + 7, accumulate hoursSlept, 
-    divide by this.sleepData.length, and return */
+    divide by this.sleepLog.length, and return */
   }
 
   calculateAvgDailySleepQuality() {
-    /* for each this.sleepData element, accumulate 
-    sleepQuality, divide by this.sleepData.length, 
-    return and assign value to this.avgDailySleepQuality */
+    /* for each this.sleepLog element, accumulate 
+    sleepQuality, divide by this.sleepData.length, and return */
   }
 
   calculateAvgWeeklySleepQuality(startDate) {
-    /* for each this.sleepData element between 
+    /* for each this.sleepLog element between 
     startDate and startDate + 7, accumulate sleepQuality, 
-    divide by this.sleepData.length, and return */
+    divide by this.sleepLog.length, and return */
   }
 
   calculateHrsSleptByDate(date) {
-    /* use find() to iterate through this.sleepData array,
+    /* use find() to iterate through this.sleepLog array,
     locate specific element by date, and return hoursSlept */
   }
 
   calculateSleepQualityByDate(date) {
-    /* use find() to iterate through this.sleepData array,
+    /* use find() to iterate through this.sleepLog array,
     locate specific element by date, and return sleepQuality */
   }
 
   calculateDailyMilesWalked(date) {
-    /* identify element in this.activityData by date,
+    /* identify element in this.activityLog by date,
     multiply numSteps by strideLength for distance in feet, 
     convert to miles + remainder feet, and return */
   }
 
   retrieveAvgWeeklyMinutesActive(startDate) {
-    /* for each this.activityData element between 
+    /* for each this.activityLog element between 
     startDate and startDate + 7, accumulate minutesActive, 
-    divide by this.activityData.length, and return */
+    divide by this.activityLog.length, and return */
   }
 
   evaluateStepGoalSuccess(date) {
-    /* identify element in this.activityData by date,
+    /* identify element in this.activityLog by date,
     evaluate whether numSteps is >= dailyStepGoal, 
     return Boolean */
   }
 
   identifyDatesExceedingStepGoal() {
-    /* filter() through activityData array and evaluate/identify 
+    /* filter() through activityLog array and evaluate/identify 
     dates where numSteps > this.dailyStepGoal */
   }
 
   retrieveMostFlightsClimbed() {
     /* declare let maxFlights variable and assign value of
-    this.activityArray[0].flightsOfStairs, iterate through array and if 
-    this.activityArray[i].flightsOfStairs > maxFlights,
+    this.activityLog[0].flightsOfStairs, iterate through array and if 
+    this.activityLog[i].flightsOfStairs > maxFlights,
     maxFlights = this.ActivityArray[i].flightsOfStairs, 
     then return maxFlights */
   }

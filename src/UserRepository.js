@@ -1,4 +1,4 @@
-const User = require ('../src/User');
+
 
 class UserRepository {
   constructor(userData) {
@@ -7,17 +7,17 @@ class UserRepository {
   }
 
   createUsers() {
-    this.userData.forEach((userDataObject, i) => {
-      var user = new User(this.userData[i]);
-      this.users.push(user);
+    userRepository.userData.forEach((userDataObject, i) => {
+      var user = new User(userRepository.userData[i]);
+      userRepository.users.push(user);
     });
   }
 
   returnUserData(id) {
     let currentUserData;
-    this.userData.forEach((userDataObject, i) => {
-      if (this.userData[i].id === id) {
-        currentUserData = this.userData[i];
+    userRepository.userData.forEach((userDataObject, i) => {
+      if (userRepository.userData[i].id === id) {
+        currentUserData = userRepository.userData[i];
       }
     });
    return currentUserData;
@@ -25,10 +25,10 @@ class UserRepository {
 
   returnAverageStepGoal() {
     let totalUserStepGoal = 0;
-    this.users.forEach((user, i) => {
+    userRepository.users.forEach((user, i) => {
       totalUserStepGoal = totalUserStepGoal + user.dailyStepGoal;
     });
-    let averageStepGoal = totalUserStepGoal/this.users.length;
+    let averageStepGoal = totalUserStepGoal/userRepository.users.length;
     return Math.round(averageStepGoal);
   }
 

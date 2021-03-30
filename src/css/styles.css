@@ -1,0 +1,35 @@
+
+*,
+*:after,
+*:before {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+* {
+border: 1px solid red;
+}
+
+body {
+  background-color: #1F1F1F;
+  font-family: 'Oswald', sans-serif;
+}
+
+header {
+  justify-content: center;
+  text-align: center;
+  height: 9vw;
+}
+
+#userinfo-button{
+  background-position: center;
+  background-size: 5.6vw;
+  border: none;
+  display: inline;
+  float: right;
+  height: 5.6vw;
+  margin-right: .5vw;
+  margin-top: 1.6vw;
+  width: 5.6vw;
+}

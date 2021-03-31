@@ -1,5 +1,5 @@
 /* TO fix
- - linear gradient background stops short on short/wide screents
+
  */
 
 * {
@@ -22,6 +22,11 @@ body {
   /* background-size: 100%; */
   /* background-repeat: no-repeat; */
   background-attachment: fixed;
+}
+
+article,
+section {
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .display-area {
@@ -70,10 +75,6 @@ body {
   text-align: center;
 }
 
-article,
-section {
-  font-family: 'Ubuntu', sans-serif;
-}
 
 .hydration-card {
   display: flex;

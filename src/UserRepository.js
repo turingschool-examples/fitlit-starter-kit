@@ -13,6 +13,8 @@ class UserRepository {
     this.avgStepGoal = null;
   }
 
+  // dataset constructors & initial property assignment
+
   populateUserData(dataset) {
     this.userData = dataset.map(user => new User(user));
   }
@@ -47,20 +49,27 @@ class UserRepository {
   // hydrationData methods
 
    calculateAvgDailyWater() {
-    /* for each this.hydrationData element, accumulate 
-    numOunces, divide by this.hydrationLog.length, and return */
+    const dailyWater = this.hydrationData.map(entry => entry.numOunces);
+    const avgDailyWater = dailyWater.reduce((sumOz, numOz) => {
+      return sumOz + numOz;
+    });
+
+    return avgDailyWater;
   }
 
   calculateAvgWeeklyWater(startDate) {
     /* for each this.hydrationData element between startDate 
     and startDate + 7, accumulate numOunces, divide by 
     this.hydrationLog.length, and return */
+
+    
   }
 
   retrieveNumOuncesByDate(date) {
     /* use find() to iterate through this.hydrationLog array,
     locate specific element by date, and return numOunces */
   }
+
 
   // sleepData methods
 
@@ -85,6 +94,7 @@ class UserRepository {
     sleepData[i].hoursSlept > bestSleeper,
     bestSleeper = sleepData[i].id, then return bestSleeper */
   }
+
 
   // activityData methods
 
@@ -111,7 +121,6 @@ class UserRepository {
     and add minutes active from all users on a specific day, 
     and divide by the number of users */
   }
-
 }
 
 module.exports = UserRepository;

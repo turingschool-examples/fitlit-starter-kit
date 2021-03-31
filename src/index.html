@@ -3,8 +3,10 @@
 
 <head>
   <meta charset='UTF-8'>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="../src/css/styles.css">
   <title>Activity Tracker</title>
 </head>
 
@@ -12,7 +14,7 @@
   <header>
     <h1><span id="headerTitle"></span>Activity Tracker</h1>
     <h2><span id="userName"></span></h2>
-    <button type='button' class='user-info-button' name='button' id='userinfoButton' aria-label="See user profile"></button>
+    <button type='button' class='user-info-button' name='button' id='userinfoButton' aria-label="See user profile"> <i class="admin-icon far fa-user"></i></button>
     <section class='hide user-info-page' id='userInfoPage'>
       <h5 id='userinfoName'></h5>
       <p class='userinfo-p' id='userinfoEmail'>USER EMAIL</p>
@@ -21,28 +23,39 @@
       <p class='userinfo-p' id='averageStepGoal'>Average Steps Globally</p>
       <div id='userinfoFriendsStepsContainer'>friend.firstName friend.totalWeeklySteps</div>
     </section>
+  </header>
     <main>
       <section class='card-container-activity' id='activityCardContainer'>
         <section class='main-card' id='activityMainCard'>
           <div class='main-card-top'>
+            <h2 id='activityContainer'>Activity</h2>
           </div>
         </section>
       </section>
       <section class='card-container-sleep' id='sleepCardContainer'>
         <section class='main-card' id='sleepMainCard'>
           <div class='main-card-middle-right'>
+            <h2 id='sleepContainer'>Sleep</h2>
+            <h3> Hours slept last night:</h3>
+            <br/>
+            <h3> Sleep Quality:</h3>
           </div>
         </section>
       </section>
       <section class='card-container-hydration' id='hydrationCardContainer'>
         <section class='main-card' id='hydrationMainCard'>
           <div class='main-card-middle-left'>
+            <h2 id='hydrationContainer'>Hydration</h2>
+            <h3> Intake for today:</h3>
+            <br/>
+            <h3> Daily water intake:</h3>
           </div>
         </section>
       </section>
       <section class='card-container-stairs' id='stairsCardContainer'>
         <section class='main-card' id='stairsMainCard'>
           <div class='main-card-bottom'>
+            <h2 id='stepContainer'>Steps</h2>
           </div>
         </section>
       </section>
@@ -53,6 +66,6 @@
       <script type="text/javascript" src="../src/User.js"></script>
       <script type="text/javascript" src="../src/UserRepository.js"></script>
       <script type="text/javascript" src="./scripts.js"></script>
+    </main>
 </body>
-
 </html>

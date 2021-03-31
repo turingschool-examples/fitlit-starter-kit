@@ -2,7 +2,7 @@
 var headerBanner = document.querySelector('#headerBanner');
 var headerMessage = document.querySelector('#headerMessage');
 
-var homegrid = document.querySelector('#homeGrid');
+var homeGrid = document.querySelector('#homeGrid');
 var userInfo = document.querySelector('#userInfo');
 var picture = document.querySelector('#picture');
 var stepGoal = document.querySelector('#stepGoal');
@@ -14,7 +14,7 @@ var weeklyWater = document.querySelector('#weeklyWater');
 var sleepGrid = document.querySelector('#sleepGrid');
 var dailySleep = document.querySelector('#dailySleep');
 var weeklySleep = document.querySelector('#weeklySleep');
-var qualitySleep = document.querySelector('3qualitySleep');
+var qualitySleep = document.querySelector('#qualitySleep');
 
 var activityGrid  = document.querySelector('#activityGrid');
 var dailySteps = document.querySelector('#dailySteps');
@@ -30,8 +30,37 @@ var activityButton = document.querySelector('#activityButton');
 
 //variables
 
-
 //Event Listeners
-
+homeButton.addEventListener('click', viewHome);
+hydrationButton.addEventListener('click', viewHydration);
+sleepButton.addEventListener('click', viewSleep);
+activityButton.addEventListener('click', viewActivity);
 
 //Functions
+function viewHome() {
+  homeGrid.classList.remove('hidden');
+  hydrationGrid.classList.add('hidden');
+  sleepGrid.classList.add('hidden');
+  activityGrid.classList.add('hidden');
+};
+
+function viewHydration() {
+  homeGrid.classList.add('hidden');
+  hydrationGrid.classList.remove('hidden');
+  sleepGrid.classList.add('hidden');
+  activityGrid.classList.add('hidden');
+};
+
+function viewSleep() {
+  homeGrid.classList.add('hidden');
+  hydrationGrid.classList.add('hidden');
+  sleepGrid.classList.remove('hidden');
+  activityGrid.classList.add('hidden');
+};
+
+function viewActivity() {
+  homeGrid.classList.add('hidden');
+  hydrationGrid.classList.add('hidden');
+  sleepGrid.classList.add('hidden');
+  activityGrid.classList.remove('hidden');
+};

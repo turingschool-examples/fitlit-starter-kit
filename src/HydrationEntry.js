@@ -2,7 +2,7 @@ class HydrationEntry {
     constructor(entry) {
         this.id = entry.userID;
         this.date = entry.date;
-        this.numOz = entry.numOunces;
+        this.numOunces = entry.numOunces;
     }
 }
 

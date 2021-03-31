@@ -1,10 +1,103 @@
 * {
-  border: 1px solid thistle;
-  background-color: #202124;
-  font-family: 'Open Sans Condensed', sans-serif;
+  /* border: 1px solid thistle; */
+  font-family: 'Yatra One', cursive;
   color: #fefefe;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(#5dfeca, #f4737e);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.display-area {
+  margin: 4vw;
+  background: linear-gradient(#b3fee6, #f4a3aa);
+  border-radius: 25px;
+}
+
+.welcome-msg {
+  justify-content: center;
+  text-align: center;
+}
+
+.user-info-card {
+  /* border: 1px solid mediumslateblue; */
+  margin: 2vw;
+}
+
+.step-goals {
+  display: flex;
+  justify-content: center;
+}
+
+.step-goals,
+.user-details,
+.hydration-card,
+.sleep-card,
+.activity-card {
+  margin: 2vw 0 0 0;
+  border: 1px solid #f4737e;
+  border-radius: 25px;
+  background: linear-gradient(#5dfeca, #f4737e);
+}
+
+.step-goal {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid #5dfeca;
+  border-radius: 25px;
+}
+
+.user-details {
+  line-height: .9em;
+  text-align: center;
+}
+
+article,
+section {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.hydration-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 15vw;
+  border: 1px solid #679137;
+  margin: 2vw;
+  background: linear-gradient(#5dfeca, #6791e7);
+}
+
+.hydration-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #6791e7;
+  border-radius: 25px;
+}
+
+.sleep-card {
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: space-evenly;
+  border: 1px solid #1d0047;
+  margin: 2vw;
+  background: linear-gradient(#5dfeca, #1d0047);
+}
+
+.activity-card {
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: space-evenly;
+  border: 1px solid #b100ae;
+  margin: 2vw;
+  background: linear-gradient(#5dfeca, #b100ae);
+}
 
 /* 🎨 COLOR PALETTE
 >>> Accent Colors <<<

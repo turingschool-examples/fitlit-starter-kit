@@ -5,31 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap" rel="stylesheet">
-    <title></title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&family=Yatra+One&display=swap" rel="stylesheet">
+    <title>FitLit!</title>
   </head>
   <body>
     <main>
+      <section class="display-area">
       <h1 class="welcome-msg" id="welcomeMessage">Welcome, FirstName!</h1>
-      <article>
-        UserInfo Card
-        <section id="stepGoals">
+      <article class="user-info-card">
+        <!-- UserInfo Card -->
+        <section class="step-goals" id="stepGoals">
           Step goal compared to other users
         </section>
-        <section id="infoCard">
+        <section class="user-details" id="infoCard">
           User info: display user properties here
         </section>
       </article>
-      <article>
-        Hydration visuals
-        <section>
-          Today's hydration data
+      <article class="hydration-card">
+        <!-- Hydration visuals -->
+        <section class="hydration-data">
+          h2o today
         </section>
-        <section>
-          Last week's average hydration data
+        <section class="hydration-data">
+          h2o avg
         </section>
       </article>
-      <article>
+      <article class="sleep-card">
         Sleep visuals
         <section>
           Today's sleep data
@@ -47,7 +51,7 @@
             </section>
         </section>
       </article>
-      <article>
+      <article class="activity-card">
         Activity visuals
         <section>
           Today's steps
@@ -71,6 +75,7 @@
             </section>
         </section>
       </article>
+    </section>
     </main>
     <script type="text/javascript" src="./data/users.js"></script>
     <script type="text/javascript" src="./data/hydration.js"></script>

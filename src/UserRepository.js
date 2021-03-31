@@ -49,20 +49,49 @@ class UserRepository {
   // hydrationData methods
 
    calculateAvgDailyWater() {
-    const dailyWater = this.hydrationData.map(entry => entry.numOunces);
-    const avgDailyWater = dailyWater.reduce((sumOz, numOz) => {
+    const dailyOunces = this.hydrationData.map(entry => entry.numOunces);
+    const avgDailyWater = dailyOunces.reduce((sumOz, numOz) => {
       return sumOz + numOz;
     });
 
     return avgDailyWater;
   }
 
-  calculateAvgWeeklyWater(startDate) {
-    /* for each this.hydrationData element between startDate 
-    and startDate + 7, accumulate numOunces, divide by 
-    this.hydrationLog.length, and return */
+  calculateAvgWeeklyWater(id, startDate) {
+   
 
+    const userEntries = this.hydrationData.filter(entry => entry.id === id);
+
+    // const dates = [];
+
+    const splitDate = startDate.split('/');
+
+    const startYear = parseInt(splitDate[0]);
+    const startMonth = parseInt(splitDate[1]);
+    const startDay = parseInt(splitDate[2]);
+
+    const dates = [];
     
+    function getDates() {
+      for (let i = startDay; i < startDay + 7; i++) {
+        dates.push(`${startYear}/${startMonth}/${i}`);
+      }
+    }
+    getDates();
+
+    const weekEntries = userEntries.filter(entry => {
+      entry.date === dates[0] || dates[1] || dates[2] || dates[3] || dates[4] || dates[5] || dates[6]
+    });
+
+    console.log(weekEntries);
+
+
+    // const dailyOunces = entries.map(entry => entry.numOunces);
+
+    // const avgOunces = ouncesEachDate.reduce((sumOz, numOz) => {
+    //   return sumOz + numOz;
+    // });
+
   }
 
   retrieveNumOuncesByDate(date) {
@@ -122,5 +151,50 @@ class UserRepository {
     and divide by the number of users */
   }
 }
+
+
+/*
+  for each this.hydrationData element between startDate 
+    and startDate + 7, accumulate numOunces, divide by 
+    this.hydrationLog.length, and return */
+
+    // "date": [string YYYY/MM/DD]
+    // '2019/06/15'
+    // '2019/06/16'
+    // '2019/06/17'
+    // '2019/06/18'
+    // '2019/06/19'
+    // '2019/06/20'
+    // '2019/06/21'
+
+
+    // let years = [];
+    // let months = [];
+    // let days = [];
+
+
+// function getMonths() {
+    //   for (let i = 0; i < 7; i++) {
+    //     months.push(startMonth);
+    //   }
+    // }
+    // getMonths();
+
+    // function getYears() {
+    //   for (let i = 0; i < 7; i++) {
+    //     years.push(startYear);
+    //   }
+    // }
+    // getYears();
+
+    // function makeDates() {
+    //   for (let i = 0; i < 7; i++) {
+    //     dates.push(`${years[i]}/${months[i]}/${days[i]}`);
+    //   }
+    // }
+    // makeDates();
+
+    // console.log(dates);
+
 
 module.exports = UserRepository;

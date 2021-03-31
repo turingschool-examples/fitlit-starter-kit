@@ -1,5 +1,5 @@
 * {
-  border: 1px solid thistle;
+  /* border: 1px solid thistle; */
   font-family: 'Yatra One', cursive;
   color: #fefefe;
 }
@@ -7,13 +7,43 @@
 html,
 body {
   height: 100%;
-  background-size: cover;
+  margin: 0;
   background: linear-gradient(#5dfeca, #f4737e);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.display-area {
+  margin: 4vw;
+  background: linear-gradient(#b3fee6, #f4a3aa);
+  border-radius: 25px;
 }
 
 .welcome-msg {
   justify-content: center;
   text-align: center;
+}
+
+.user-info-card {
+  border: 1px solid mediumslateblue;
+  margin: 2vw;
+}
+
+.step-goals {
+  display: flex;
+  justify-content: center;
+  margin: 2vw 0 0 0;
+  border: 1px solid #fefefe;
+  border-radius: 25px;
+  background: linear-gradient(#5dfeca, #f4737e);
+}
+
+.user-step-goal,
+.avg-step-goal {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  /* border: 1px solid mediumorchid; */
 }
 
 article,

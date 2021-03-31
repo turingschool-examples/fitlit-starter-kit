@@ -1,0 +1,123 @@
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: grey;
+    font-family: 'Oswald', sans-serif;
+}
+
+header {
+    justify-content: center;
+    text-align: center;
+    height: 9vw;
+    margin-bottom: 25px;
+}
+
+main {
+    display: grid;
+    height: 100%;
+}
+
+.user-info-button{
+    background-position: center;
+    background-size: 6.6vw;
+    background-color: white;
+    border: none;
+    display: inline;
+    float: right;
+    height: 6.6vw;
+    margin-right: 3.5vw;
+    margin-top: -7.6vw;
+    width: 6.6vw;
+}
+
+.user-info-page {
+    background-color: #1F1F1F;
+    color: white;
+    margin-left: 50%;
+    margin-top: -1.2%;
+    position: relative;
+    text-align: center;
+    z-index: 100;
+}
+
+.hide {
+    display: none;
+}
+
+
+/* MAIN */
+
+.card-container-activity {
+    background-color: #E90304;
+    grid-column: 1 / 3;
+    grid-row: 1;
+    Width: 407px;
+    Height: 156px;
+    margin: .5vw;
+    border-radius: 5px;
+}
+
+.card-container-sleep {
+    background-color: #660C60;
+    grid-column: 1;
+    grid-row: 2 / 5;
+    width: 193px;
+    height: 305px;
+    margin: 1.5vw;
+    border-radius: 5px;
+}
+
+.card-container-hydration {
+    background-color: #2074BF;
+    grid-column: 2;
+    grid-row: 2 / 5;
+    width: 193px;
+    height: 305px;
+    margin: 1.5vw;
+    border-radius: 5px;
+}
+
+
+.card-container-stairs {
+    background-color: #C851AF;
+    grid-column: 1 / 3;
+    grid-row: 6;
+    Width: 407px;
+    height: 156px;
+    margin: .5vw;
+    border-radius: 5px;
+}
+
+h1 {
+    color: yellow;
+    display: inline;
+    font-size: 5.4vw;
+    letter-spacing: .2em;
+    padding-top: 50px;
+}
+
+.userinfo-p {
+    font-size: 1em;
+    font-weight: 300;
+    padding-bottom: 1.2vw;
+    padding-top: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.hover:hover,
+button:hover {
+    cursor: pointer;
+}
+
+p {
+    font-size: 1.4vw;
+    font-weight: 600;
+}

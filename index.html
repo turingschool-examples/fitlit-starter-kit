@@ -13,13 +13,13 @@
   </head>
   <body>
     <main>
-      <h1 class="welcome-msg">Welcome, FirstName!</h1>
+      <h1 class="welcome-msg" id="welcomeMessage">Welcome, FirstName!</h1>
       <article>
         UserInfo Card
-        <section>
+        <section id="stepGoals">
           Step goal compared to other users
         </section>
-        <section>
+        <section id="infoCard">
           User info: display user properties here
         </section>
       </article>
@@ -75,5 +75,12 @@
         </section>
       </article>
     </main>
+    <script type="text/javascript" src="./data/users.js"></script>
+    <script type="text/javascript" src="./data/hydration.js"></script>
+    <script type="text/javascript" src="./data/sleep.js"></script>
+    <script type="text/javascript" src="./data/activity.js"></script>
+    <script type="text/javascript" src="./src/User.js"></script>
+    <script type="text/javascript" src="./src/UserRepository.js"></script>
+    <script type="text/javascript" src="./src/scripts.js"></script>
   </body>
 </html>

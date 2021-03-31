@@ -6,6 +6,7 @@ const userInfoDropdown = document.getElementById('userInfoPage');
 const userEmail = document.getElementById('userinfoEmail');
 const userStepGoal = document.getElementById('userinfoGoal');
 const averageStepGoal = document.getElementById('averageStepGoal');
+const userNameDisplay = document.getElementById('userName');
 
 window.addEventListener('load', displayUserInfo);
 userInfoButton.addEventListener('click', showDropdown);
@@ -15,6 +16,7 @@ function displayUserInfo() {
   userRepository.createUsers();
   let randomIndex = getRandomIndex(userRepository.users);
   currentUser = userRepository.users[randomIndex]
+  userNameDisplay.innerText = `Welcome ${currentUser.returnFirstName()}`;
   userEmail.innerText = "Email Address: " + currentUser.email;
   userStepGoal.innerText = "Daily Step Goal: " + currentUser.dailyStepGoal;
   averageStepGoal.innerText = calculateStepDifference();

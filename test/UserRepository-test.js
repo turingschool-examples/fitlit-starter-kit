@@ -9,22 +9,18 @@ const activityData = require('./test-data/activity-data');
 
 
 describe('UserRepository', function() {
-  let userRepo, hydration, sleep, activity;
-a
+  let userRepo;
+
   beforeEach(() => {
     userRepo = new UserRepository();
-    userRepo.populateHydrationData(hydration);
-    userRepo.populateSleepData(sleep);
-    userRepo.populateActivityData(activity);
-  
+    userRepo.populateUserData(userData);
+    userRepo.populateHydrationData(hydrationData);
+    userRepo.populateSleepData(sleepData);
+    userRepo.populateActivityData(activityData);
   });
 
-  it.only("should be a function", function() {
-
-    userRepo.populateUserData(userData);
-    console.log(userData);
-
-    // expect(UserRepository).to.be.a('function');
+  it("should be a function", function() {
+    expect(UserRepository).to.be.a('function');
   });
   
   it("should be an instance of User", function() {
@@ -32,7 +28,7 @@ a
   });
 
   it("should store a userData array", function() {
-    expect(userRepo.userData).to.be.a('array');
+    expect(userRepo.userData).to.be.an('array');
   });
 
   it("should be able to store a User object", function() {
@@ -64,7 +60,7 @@ a
   });
 
   it("should be able to store an activityEntry instance", function() {
-    expect(userRepo.activityData[0]).to.deep.equal({ id: 1, date: '2019/06/15', numSteps: 3577, minutesActive: 140, flightsOfStairs: 1 });
+    expect(userRepo.activityData[0]).to.deep.equal({ id: 1, date: '2019/06/15', numSteps: 3577, minutesActive: 140, flightsOfStairs: 16 });
   });
 
   it("should have an average step goal property", function() {
@@ -80,10 +76,10 @@ a
   it("should calculate the average daily water intake for all users", function() {
     const avgDailyWater = userRepo.calculateAvgDailyWater();
 
-    expect(avgDailyWater).to.equal(159);
+    expect(avgDailyWater).to.equal(665);
   });
 
-  it("should calculate the average daily water intake for a user over the course of a week", function() {
+  it.skip("should calculate the average daily water intake for a user over the course of a week", function() {
     const avgWeeklyWater = userRepo.calculateAvgDailyWater();
     const startDate = 'YYYY/MM/DD';
 

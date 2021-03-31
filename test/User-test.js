@@ -55,9 +55,9 @@ describe('User', function() {
   });
 
   it("should store a User's daily step goal", function() {
-    expect(user1.stepGoal).to.equal(10000);
-    expect(user2.stepGoal).to.equal(5000);
-    expect(user3.stepGoal).to.equal(5000);
+    expect(user1.dailyStepGoal).to.equal(10000);
+    expect(user2.dailyStepGoal).to.equal(5000);
+    expect(user3.dailyStepGoal).to.equal(5000);
   });
 
   it("should store a User's friends", function() {
@@ -77,4 +77,8 @@ describe('User', function() {
   it("should be able to return a User's first name", function() {
     expect(user1.returnFirstName()).to.equal("Luisa");
   });
+
+  it("should do some other stuff", function() {
+  });
+
 });

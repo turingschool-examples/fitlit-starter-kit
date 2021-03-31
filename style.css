@@ -1,4 +1,4 @@
-/* TO fix
+/* TO FIX
 
  */
 
@@ -41,25 +41,27 @@ section {
   text-align: center;
 }
 
-.user-info-card {
-  /* border: 1px solid mediumslateblue; */
+/* .user-info-card {
+  border: 1px solid mediumslateblue;
   margin: 2vw;
-}
+} */
 
 .step-goals {
   display: flex;
   justify-content: center;
 }
 
+.user-info-card,
 .step-goals,
 .user-details,
 .hydration-card,
 .sleep-card,
 .activity-card {
-  margin: 2vw 0 0 0;
+  /* margin: 2vw 0 0 0; */
   border: 1px solid #f4737e;
   border-radius: 25px;
   background: linear-gradient(#5dfeca, #f4737e);
+   margin: 2vw;
 }
 
 .step-goal {
@@ -74,7 +76,6 @@ section {
   line-height: .9em;
   text-align: center;
 }
-
 
 .hydration-card {
   display: flex;

@@ -1,8 +1,19 @@
 * {
   border: 1px solid thistle;
-  background-color: #202124;
   font-family: 'Yatra One', cursive;
   color: #fefefe;
+}
+
+html,
+body {
+  height: 100%;
+  background-size: cover;
+  background: linear-gradient(#5dfeca, #f4737e);
+}
+
+.welcome-msg {
+  justify-content: center;
+  text-align: center;
 }
 
 article,

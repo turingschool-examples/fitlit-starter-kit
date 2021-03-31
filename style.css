@@ -1,3 +1,7 @@
+/* TO fix
+ - linear gradient background stops short on short/wide screents
+ */
+
 * {
   /* border: 1px solid thistle; */
   font-family: 'Yatra One', cursive;
@@ -8,13 +12,21 @@ html,
 body {
   height: 100%;
   margin: 0;
+  /* background: linear-gradient(#5dfeca, #f4737e); */
+  /* background-size: 100%;
+  background-repeat: no-repeat; */
+}
+
+body {
   background: linear-gradient(#5dfeca, #f4737e);
-  background-size: 100%;
-  background-repeat: no-repeat;
+  /* background-size: 100%; */
+  /* background-repeat: no-repeat; */
+  background-attachment: fixed;
 }
 
 .display-area {
   margin: 4vw;
+  padding: 1vw;
   background: linear-gradient(#b3fee6, #f4a3aa);
   border-radius: 25px;
 }

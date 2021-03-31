@@ -15,21 +15,7 @@ class User {
     return firstName;
   }
 
-  calculateAvgDailyWater() {
-    /* for each this.hydrationLog element, accumulate 
-    numOunces, divide by this.hydrationLog.length, and return */
-  }
-
-  calculateAvgWeeklyWater(startDate) {
-    /* for each this.hydrationLog element between startDate 
-    and startDate + 7, accumulate numOunces, divide by 
-    this.hydrationLog.length, and return */
-  }
-
-  retrieveNumOuncesByDate(date) {
-    /* use find() to iterate through this.hydrationLog array,
-    locate specific element by date, and return numOunces */
-  }
+  // sleepData (REFACTOR/MOVE TO `UserRepository.js`)
 
   calculateAvgDailyHrsSlept() {
     /* for each this.sleepLog element, accumulate 
@@ -62,6 +48,8 @@ class User {
     /* use find() to iterate through this.sleepLog array,
     locate specific element by date, and return sleepQuality */
   }
+
+  // activityData (REFACTOR/MOVE TO `UserRepository.js`)
 
   calculateDailyMilesWalked(date) {
     /* identify element in this.activityLog by date,

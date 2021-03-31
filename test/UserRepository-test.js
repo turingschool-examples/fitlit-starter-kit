@@ -74,12 +74,11 @@ describe('UserRepository', function() {
     expect(userRepo.avgStepGoal).to.equal(null);
   });
 
-  it.skip("should calculate the average daily step goal for all users", function() {
+  it("should calculate the average daily step goal for all users", function() {
+    userRepo.populateUserData(users);
     const avgStepGoal = userRepo.retrieveAvgStepGoal();
 
-    console.log(avgStepGoal);
-
-    // expect(avgStepGoal).to.equal(??);
+    expect(avgStepGoal).to.equal(6667);
   });
 
 

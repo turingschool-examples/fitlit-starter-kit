@@ -32,17 +32,37 @@ class UserRepository {
   retrieveUserData(id) {
     return this.userData[id-1];
   }
-  
+
   retrieveAvgStepGoal() {
     const stepGoalArray = this.userData.map(user => user.dailyStepGoal);
     const stepGoalSum = stepGoalArray.reduce((sum, goal) => {
       return sum + goal;
-    },);
+    });
 
     this.avgStepGoal = Math.round(stepGoalSum / this.userData.length);
 
     return this.avgStepGoal;
   }
+
+  // hydrationData methods
+
+   calculateAvgDailyWater() {
+    /* for each this.hydrationData element, accumulate 
+    numOunces, divide by this.hydrationLog.length, and return */
+  }
+
+  calculateAvgWeeklyWater(startDate) {
+    /* for each this.hydrationData element between startDate 
+    and startDate + 7, accumulate numOunces, divide by 
+    this.hydrationLog.length, and return */
+  }
+
+  retrieveNumOuncesByDate(date) {
+    /* use find() to iterate through this.hydrationLog array,
+    locate specific element by date, and return numOunces */
+  }
+
+  // sleepData methods
 
   calculateAvgSleepQuality() {
     /* iterate through sleep.js dataset, 
@@ -66,6 +86,8 @@ class UserRepository {
     bestSleeper = sleepData[i].id, then return bestSleeper */
   }
 
+  // activityData methods
+
   retrieveMinutesActive(id, date) {
     /* retrieve minuteActive property by provided user ID and date */
   }
@@ -81,8 +103,7 @@ class UserRepository {
     /* filter through the activity.js dataset to identify 
     all elements with provided date, accumulate value of 
     numSteps for each, divide by the number of elements 
-    within that date, return value 
-    */
+    within that date, return value */
   }
 
   calculateAvgMinutesActiveByDate(date) {

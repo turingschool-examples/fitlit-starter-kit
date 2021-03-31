@@ -32,8 +32,12 @@ body {
 .step-goals {
   display: flex;
   justify-content: center;
+}
+
+.step-goals,
+.user-details {
   margin: 2vw 0 0 0;
-  border: 1px solid #fefefe;
+  border: 1px solid #5dfeca;
   border-radius: 25px;
   background: linear-gradient(#5dfeca, #f4737e);
 }
@@ -44,6 +48,11 @@ body {
   justify-content: center;
   text-align: center;
   /* border: 1px solid mediumorchid; */
+}
+
+.user-details {
+  line-height: .9em;
+  text-align: center;
 }
 
 article,

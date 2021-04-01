@@ -2,7 +2,27 @@ const expect = require("chai").expect;
 
 const User = require("../src/User");
 
-// it should instantiate a new Hydration object for a user
+describe("Hydration class", () => {
+  let user1;
+
+  beforeEach(() => {
+      user1 = new User({
+        "id": 13,
+        "name": "River Song",
+        "address": "The Library Data Core",
+        "email": "RiverSings@universe.everywhere",
+        "strideLength": 5.3,
+        "dailyStepGoal": 55000,
+        "friends": [10, 11, 12, 13]
+      })
+  })
+
+  it("should instantiate a new Hydration object for a user", () => {
+    
+  })
+
+})
+
 
 // it should be able to identify user by id
 

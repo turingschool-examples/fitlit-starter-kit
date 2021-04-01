@@ -1,5 +1,7 @@
 const userRepository = new UserRepository(userData);
 let selectedDate;
+let startDate;
+let endDate;
 let currentUser;
 
 const userInfoButton = document.getElementById('userinfoButton');
@@ -21,6 +23,28 @@ const picker = datepicker(document.getElementById('date-picker'), {
   minDate: new Date(2019, 5, 15),
   maxDate: new Date(2019, 8, 22),
 })
+
+const start = datepicker(document.getElementById('dateRangePickerStart'), {
+  id: 'dateRangePicker',
+  startDate: new Date(2019, 8, 1),
+  minDate: new Date(2019, 5, 15),
+  maxDate: new Date(2019, 8, 22),
+});
+const end = datepicker(document.getElementById('dateRangePickerEnd'), {
+  id: 'dateRangePicker',
+  startDate: new Date(2019, 8, 1),
+  minDate: new Date(2019, 5, 15),
+  maxDate: new Date(2019, 8, 22),
+  onSelect: (instance, date) => {
+    let stringifiedRange = JSON.stringify(end.getRange());
+    let splitRange = stringifiedRange.split("\"");
+    let startRange = splitRange[3]
+    let endRange = splitRange[7]
+    startDate = startRange.substring(0,10).replaceAll('-', '/');
+    endDate = endRange.substring(0,10).replaceAll('-', '/');
+
+  }
+});
 
 window.addEventListener('load', displayUserInfo);
 userInfoButton.addEventListener('click', showDropdown);

@@ -26,7 +26,6 @@ class UserSleep {
   calcSleepOverWeek(date, property) {
     const day1 = dayjs(new Date(date));
     const day7 = dayjs(day1).add(dayjs.duration({"weeks" : 1}))
-
     const week = this.sleepData.reduce((specificWeek, dataPoint) => {
       if (dayjs(dataPoint.date).isBetween(day1, day7, null, "[]")) {
         const day = dataPoint.date;
@@ -36,10 +35,8 @@ class UserSleep {
       }
       return specificWeek
     }, [])
-    console.log(week)
-
+    return week
   }
-
 }
 
 

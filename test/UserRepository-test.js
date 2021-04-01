@@ -90,7 +90,7 @@ describe('UserRepository', function() {
   });
 
   it("should calculate the average daily water intake for a user over the course of a week", function() {
-    const avgWeeklyWater1 = userRepo.calculateAvgWeeklyWater(1, '2019/06/16');
+    const avgWeeklyWater1 = userRepo.calculateAvgWeeklyWater(1, '2019/06/15');
     // add 2 more method calls
 
     expect(avgWeeklyWater1).to.equal(66);

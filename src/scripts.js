@@ -1,9 +1,14 @@
 //querySelectors
+
 var headerBanner = document.querySelector('#headerBanner');
 var headerMessage = document.querySelector('#headerMessage');
 
 var homeGrid = document.querySelector('#homeGrid');
 var userInfo = document.querySelector('#userInfo');
+var name = document.querySelector('#name');
+var address = document.querySelector('#address');
+var email = document.querySelector('#email');
+var stride = document.querySelector('#stride');
 var picture = document.querySelector('#picture');
 var stepGoal = document.querySelector('#stepGoal');
 
@@ -28,15 +33,33 @@ var hydrationButton = document.querySelector('#hydrationButton');
 var sleepButton = document.querySelector('#sleepButton');
 var activityButton = document.querySelector('#activityButton');
 
+
 //variables
+//const usersData = require('../data/users.js');
+const userRepository = new UserRepository;
+
 
 //Event Listeners
 homeButton.addEventListener('click', viewHome);
 hydrationButton.addEventListener('click', viewHydration);
 sleepButton.addEventListener('click', viewSleep);
 activityButton.addEventListener('click', viewActivity);
+window.addEventListener('onload', loadPage);
+
 
 //Functions
+function loadPage() {
+  userRepository.populateUserData(userData);
+  userRepository.populateHydrationData(hydrationData);
+  userRepository.populateSleepData(sleepData);
+  userRepository.populateActivityData(activityData);
+  name.innerText = userName;
+  address.innerText = userAddress;
+  email.innerText = userEmail;
+  stride.innerText = userStride;
+}
+
+
 function viewHome() {
   homeGrid.classList.remove('hidden');
   hydrationGrid.classList.add('hidden');

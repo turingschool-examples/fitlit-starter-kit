@@ -36,16 +36,13 @@ section {
   border-radius: 25px;
 }
 
-.welcome-msg {
-  justify-content: center;
-  text-align: center;
-}
 
 /* .user-info-card {
   border: 1px solid mediumslateblue;
   margin: 2vw;
 } */
 
+.welcome-msg,
 .user-info-card,
 .step-goals,
 .user-details,
@@ -57,6 +54,13 @@ section {
   border: 1px solid #f4737e;
   border-radius: 25px;
   background: linear-gradient(#5dfeca, #f4737e);
+}
+
+.welcome-msg {
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(#b3fee6, #f4737e);
+  border: none;
 }
 
 .user-details {
@@ -116,6 +120,14 @@ section {
 @media screen and (max-width: 750px) {
   * {
     border: 1px solid magenta;
+  }
+
+  /* .desktop-area {
+    display: flex;
+  }
+
+  .activity-card {
+    flex-direction: column; */
   }
 }
 

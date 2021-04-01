@@ -34,9 +34,9 @@ describe("Hydration class", () => {
   })
 
   it("should take in an id", () => {
-    console.log("hydration >>>", hydration);
-    // console.log("id? ", testData.forEach((data) => userID));
-    expect(hydration.id).to.equal(1);
+    console.log("hydration1 >>>", hydration1);
+
+    expect(hydration1.id).to.equal(1);
   })
 
   // it("should have an array of hydration data objects", () => {

@@ -35,9 +35,10 @@ describe("Hydration class", () => {
     expect(hydration.hydrationData).to.equal(testData);
   })
 
-  // it("should be able to identify user by id", () => {
-  //
-  // })
+  it("should be able to identify user by id", () => {
+    let id = hydration.hydrationData[0].userID;
+    expect(id).to.equal(1);
+  })
 
 })
 

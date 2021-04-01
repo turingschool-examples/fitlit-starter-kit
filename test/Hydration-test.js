@@ -2,6 +2,7 @@ const expect = require("chai").expect;
 
 const Hydration = require("../src/Hydration");
 const User = require("../src/User");
+
 const hydrationData = [
   {
     "userID": 1,
@@ -24,7 +25,6 @@ const hydrationData = [
 describe("Hydration class", () => {
 
   let hydration;
-
   beforeEach(() => {
     hydration = new Hydration();
   })
@@ -33,12 +33,19 @@ describe("Hydration class", () => {
     expect(hydration).to.be.an.instanceOf(Hydration);
   })
 
+  it("should have an array of hydration data objects", () => {
+    expect(hydration.hydrationData).to.be.an.array.of("objects");
+  })
+
+  // it("should be able to identify user by id", () => {
+  //
+  // })
+
 })
 
 
-// it should be able to identify user by id
 
-// it should take in a user and a user repository as properties
+// it should take in a user and a user repository as properties -- should it?? hydration data includes an id, date, and numOunces
 
 // it should be able to select a specific date
 

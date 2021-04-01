@@ -20,6 +20,9 @@ describe('HydrationEntry', function() {
 
   it("should be an instance of HydrationEntry", function() {
     expect(entry1).to.be.an.instanceof(HydrationEntry);
+    expect(entry2).to.be.an.instanceof(HydrationEntry);
+    expect(entry3).to.be.an.instanceof(HydrationEntry);
+
   });
 
   it("should store a user's id", function() {

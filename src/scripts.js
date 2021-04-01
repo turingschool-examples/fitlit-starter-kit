@@ -12,6 +12,8 @@ var email = document.querySelector('#email');
 var stride = document.querySelector('#stride');
 var picture = document.querySelector('#picture');
 var stepGoal = document.querySelector('#stepGoal');
+var userStepGoal = document.querySelector('#userStepGoal');
+var avgStepGoal = document.querySelector('#avgStepGoal');
 
 var hydrationGrid = document.querySelector('#hydrationGrid');
 var dailyWater = document.querySelector('#dailyWater');
@@ -67,6 +69,12 @@ function loadPage() {
   address.innerText = currentUser.address;
   email.innerText = currentUser.email;
   stride.innerText = currentUser.stride;
+  const firstName = currentUser.returnFirstName();
+  headerMessage.innerText = ` Welcome ${firstName}`;
+  userStepGoal.innerText = `Your goal is ${currentUser.dailyStepGoal} steps`;
+  const allUserAvgStepGoal = userRepository.retrieveAvgStepGoal();
+  avgStepGoal.innerText = `The average user's goal is ${allUserAvgStepGoal}`;
+
 }
 
 

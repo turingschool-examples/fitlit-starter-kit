@@ -6,7 +6,7 @@ var headerMessage = document.querySelector('#headerMessage');
 
 var homeGrid = document.querySelector('#homeGrid');
 var userInfo = document.querySelector('#userInfo');
-var name = document.querySelector('#name');
+var userName = document.querySelector('#name');
 var address = document.querySelector('#address');
 var email = document.querySelector('#email');
 var stride = document.querySelector('#stride');
@@ -39,8 +39,10 @@ var activityButton = document.querySelector('#activityButton');
 //const User = require('../src/User');
 //const UserRepository = require('../src/UserRepository');
 //const usersData = require('../data/users.js');
-const userRepository = new UserRepository;
+let userRepository;
 let currentUser;
+
+
 
 
 //Event Listeners
@@ -54,13 +56,14 @@ window.addEventListener('load', loadPage);
 
 //Functions
 function loadPage() {
+  userRepository = new UserRepository;
   userRepository.populateUserData(userData);
   userRepository.populateHydrationData(hydrationData);
   userRepository.populateSleepData(sleepData);
   userRepository.populateActivityData(activityData);
   currentUser = userRepository.userData[0];
-  console.log(currentUser);
-  name.innerText = currentUser.name;
+  console.log(currentUser.name);
+  userName.innerText = currentUser.name;
   address.innerText = currentUser.address;
   email.innerText = currentUser.email;
   stride.innerText = currentUser.stride;

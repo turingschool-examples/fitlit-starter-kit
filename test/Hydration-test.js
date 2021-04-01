@@ -24,21 +24,29 @@ describe("Hydration class", () => {
 
   let hydration;
   beforeEach(() => {
-    hydration = new Hydration(testData);
+    hydration1 = new Hydration(1, testData);
+    hydration2 = new Hydration(2, testData);
   })
 
   it("should instantiate a new Hydration object for a user", () => {
-    expect(hydration).to.be.an.instanceOf(Hydration);
+    expect(hydration1).to.be.an.instanceOf(Hydration);
+    expect(hydration2).to.be.an.instanceOf(Hydration);
   })
 
-  it("should have an array of hydration data objects", () => {
-    expect(hydration.hydrationData).to.equal(testData);
+  it("should take in an id", () => {
+    console.log("hydration >>>", hydration);
+    // console.log("id? ", testData.forEach((data) => userID));
+    expect(hydration.id).to.equal(1);
   })
 
-  it("should be able to identify user by id", () => {
-    const id = hydration.hydrationData[0].userID;
-    expect(id).to.equal(1);
-  })
+  // it("should have an array of hydration data objects", () => {
+  //   expect(hydration.hydrationData).to.equal(testData);
+  // })
+
+  // it.skip("should be able to identify user by id", () => {
+  //   const id = hydration.hydrationData[0].userID;
+  //   expect(id).to.equal(1);
+  // })
 
   it("should have a method to calculate average fluid intake", () => {
     expect(hydration.calculateDailyWater).to.be.a("function");

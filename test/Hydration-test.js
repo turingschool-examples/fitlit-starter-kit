@@ -1,9 +1,7 @@
 const expect = require("chai").expect;
 
 const Hydration = require("../src/Hydration");
-const User = require("../src/User");
-
-const hydrationData = [
+const testData = [
   {
     "userID": 1,
     "date": "2019/06/15",
@@ -26,7 +24,7 @@ describe("Hydration class", () => {
 
   let hydration;
   beforeEach(() => {
-    hydration = new Hydration();
+    hydration = new Hydration(testData);
   })
 
   it("should instantiate a new Hydration object for a user", () => {
@@ -34,7 +32,7 @@ describe("Hydration class", () => {
   })
 
   it("should have an array of hydration data objects", () => {
-    expect(hydration.hydrationData).to.be.an.array.of("objects");
+    expect(hydration.hydrationData).to.equal(testData);
   })
 
   // it("should be able to identify user by id", () => {

@@ -1,53 +1,46 @@
+// global variables
 
-//querySelectors
-var mainPage = document.querySelector('#mainPage');
-var headerBanner = document.querySelector('#headerBanner');
-var headerMessage = document.querySelector('#headerMessage');
-
-var homeGrid = document.querySelector('#homeGrid');
-var userInfo = document.querySelector('#userInfo');
-var userName = document.querySelector('#name');
-var address = document.querySelector('#address');
-var email = document.querySelector('#email');
-var stride = document.querySelector('#stride');
-var picture = document.querySelector('#picture');
-var stepGoal = document.querySelector('#stepGoal');
-var userStepGoal = document.querySelector('#userStepGoal');
-var avgStepGoal = document.querySelector('#avgStepGoal');
-
-var hydrationGrid = document.querySelector('#hydrationGrid');
-var dailyWater = document.querySelector('#dailyWater');
-var weeklyWater = document.querySelector('#weeklyWater');
-
-var sleepGrid = document.querySelector('#sleepGrid');
-var dailySleep = document.querySelector('#dailySleep');
-var weeklySleep = document.querySelector('#weeklySleep');
-var qualitySleep = document.querySelector('#qualitySleep');
-
-var activityGrid  = document.querySelector('#activityGrid');
-var dailySteps = document.querySelector('#dailySteps');
-var dailyActivity = document.querySelector('#dailyActivity');
-var weeklySteps = document.querySelector('#weeklySteps');
-var compareUsers = document.querySelector('#compareUsers');
-
-var navBar = document.querySelector('#navBar');
-var homeButton = document.querySelector('#homeButton');
-var hydrationButton = document.querySelector('#hydrationButton');
-var sleepButton = document.querySelector('#sleepButton');
-var activityButton = document.querySelector('#activityButton');
-
-
-//variables
-//const User = require('../src/User');
-//const UserRepository = require('../src/UserRepository');
-//const usersData = require('../data/users.js');
 let userRepository;
 let currentUser;
+let dateToday = "2019/09/22";
 
+const mainPage = document.querySelector('#mainPage');
+const headerBanner = document.querySelector('#headerBanner');
+const headerMessage = document.querySelector('#headerMessage');
 
+const homeGrid = document.querySelector('#homeGrid');
+const userInfo = document.querySelector('#userInfo');
+const userName = document.querySelector('#name');
+const address = document.querySelector('#address');
+const email = document.querySelector('#email');
+const stride = document.querySelector('#stride');
+const picture = document.querySelector('#picture');
+const stepGoal = document.querySelector('#stepGoal');
+const userStepGoal = document.querySelector('#userStepGoal');
+const avgStepGoal = document.querySelector('#avgStepGoal');
 
+const hydrationGrid = document.querySelector('#hydrationGrid');
+const dailyWater = document.querySelector('#dailyWater');
+const weeklyWater = document.querySelector('#weeklyWater');
 
-//Event Listeners
+const sleepGrid = document.querySelector('#sleepGrid');
+const dailySleep = document.querySelector('#dailySleep');
+const weeklySleep = document.querySelector('#weeklySleep');
+const qualitySleep = document.querySelector('#qualitySleep');
+
+const activityGrid  = document.querySelector('#activityGrid');
+const dailySteps = document.querySelector('#dailySteps');
+const dailyActivity = document.querySelector('#dailyActivity');
+const weeklySteps = document.querySelector('#weeklySteps');
+const compareUsers = document.querySelector('#compareUsers');
+
+const navBar = document.querySelector('#navBar');
+const homeButton = document.querySelector('#homeButton');
+const hydrationButton = document.querySelector('#hydrationButton');
+const sleepButton = document.querySelector('#sleepButton');
+const activityButton = document.querySelector('#activityButton');
+
+// event listeners
 homeButton.addEventListener('click', viewHome);
 hydrationButton.addEventListener('click', viewHydration);
 sleepButton.addEventListener('click', viewSleep);
@@ -56,7 +49,7 @@ activityButton.addEventListener('click', viewActivity);
 window.addEventListener('load', loadPage);
 
 
-//Functions
+// data model functions
 function loadPage() {
   userRepository = new UserRepository;
   userRepository.populateUserData(userData);
@@ -69,12 +62,25 @@ function loadPage() {
   address.innerText = currentUser.address;
   email.innerText = currentUser.email;
   stride.innerText = currentUser.stride;
+  homeUserDisplay();
+}
+
+// DOM functions
+
+function homeUserDisplay() {
   const firstName = currentUser.returnFirstName();
   headerMessage.innerText = ` Welcome ${firstName}`;
   userStepGoal.innerText = `Your goal is ${currentUser.dailyStepGoal} steps`;
   const allUserAvgStepGoal = userRepository.retrieveAvgStepGoal();
   avgStepGoal.innerText = `The average user's goal is ${allUserAvgStepGoal}`;
+}
 
+function displayUserHydration() {
+  const dailyOz = userRepository.retrieveNumOuncesByDate(currentUser.id, dateToday);
+  dailyWater.innerText = `You've had ${dailyOz} ounces of water today!`;
+  let startDate = "2019/06/15";
+  const weeklyOz = userRepository.calculateAvgWeeklyWater(currentUser.id, startDate);
+  weeklyWater.innerText = `You've had ${weeklyOz} ounces of water on average during the week of ${startDate}`;
 }
 
 
@@ -90,6 +96,7 @@ function viewHydration() {
   hydrationGrid.classList.remove('hidden');
   sleepGrid.classList.add('hidden');
   activityGrid.classList.add('hidden');
+  displayUserHydration();
 };
 
 function viewSleep() {

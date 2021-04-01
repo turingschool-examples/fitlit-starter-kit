@@ -7,17 +7,17 @@ class UserRepository {
   }
 
   createUsers() {
-    userRepository.userData.forEach((userDataObject, i) => {
-      var user = new User(userRepository.userData[i]);
-      userRepository.users.push(user);
+    this.userData.forEach((userDataObject, i) => {
+      var user = new User(userDataObject);
+      this.users.push(user);
     });
   }
 
   returnUserData(id) {
     let currentUserData;
     userRepository.userData.forEach((userDataObject, i) => {
-      if (userRepository.userData[i].id === id) {
-        currentUserData = userRepository.userData[i];
+      if (userDataObject.id === id) {
+        currentUserData = userDataObject;
       }
     });
    return currentUserData;

@@ -45,11 +45,11 @@ function calculateStepDifference() {
   let userSteps = currentUser.dailyStepGoal;
   let stepDifferece = averageSteps - userSteps;
   if (stepDifferece < 0) {
-    return `Your step goal is ${Math.abs(stepDifferece)} steps more than the global average`
+    return `Your step goal is ${Math.abs(stepDifferece)} steps more than the average user`
   } else if (stepDifferece > 0) {
-    return `Your step goal is ${stepDifferece} steps less than the global average`
+    return `Your step goal is ${stepDifferece} steps less than the average user`
   } else {
-    return 'Your step goal is on par with the global average'
+    return 'Your step goal is on par with the average user'
   }
 }
 

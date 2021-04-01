@@ -12,7 +12,7 @@ class User {
   }
 
   returnFirstName() {
-    let splitName = currentUser.name.split(" ");
+    let splitName = this.name.split(" ");
     console.log(splitName)
     return splitName[0];
   }

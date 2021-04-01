@@ -1,4 +1,3 @@
-// import datePicker from 'date-picker-pkg'
 
 class Hydration {
   constructor(hydrationData, id) {
@@ -25,15 +24,22 @@ class Hydration {
   }
 
   calculateWeeklyOz(date) {
-    let indexOfCurrentDay = this.user.findIndex(day => day.date === date);
-    return this.user.slice(indexOfCurrentDay - 6, indexOfCurrentDay + 1)
+  let sortedWeeklyWater = this.user.sort((a, b) => {
+    return b.date - a.date;
+  })
+    let findStartingDate =
+        sortedWeeklyWater.findIndex(hydration => hydration.date === date);
+    let day1 = sortedWeeklyWater[findStartingDate + 6];
+    let day2 = sortedWeeklyWater[findStartingDate + 5];
+    let day3 = sortedWeeklyWater[findStartingDate + 4];
+    let day4 = sortedWeeklyWater[findStartingDate + 3];
+    let day5 = sortedWeeklyWater[findStartingDate + 2];
+    let day6 = sortedWeeklyWater[findStartingDate + 1];
+    let day7 = sortedWeeklyWater[findStartingDate]
+    return [day7, day6, day5, day4, day3, day2, day1];
   }
 }
 
-
-
-
-
-  if (typeof module !== 'undefined') {
+if (typeof module !== 'undefined') {
   module.exports = Hydration;
 }

@@ -45,7 +45,6 @@ homeButton.addEventListener('click', viewHome);
 hydrationButton.addEventListener('click', viewHydration);
 sleepButton.addEventListener('click', viewSleep);
 activityButton.addEventListener('click', viewActivity);
-//window.addEventListener('DOMContentLoaded', loadPage);
 window.addEventListener('load', loadPage);
 
 
@@ -69,7 +68,7 @@ function loadPage() {
 
 function homeUserDisplay() {
   const firstName = currentUser.returnFirstName();
-  headerMessage.innerText = ` Welcome ${firstName}`;
+  headerMessage.innerText = `Welcome ${firstName}`;
   userStepGoal.innerText = `Your goal is ${currentUser.dailyStepGoal} steps`;
   const allUserAvgStepGoal = userRepository.retrieveAvgStepGoal();
   avgStepGoal.innerText = `The average user's goal is ${allUserAvgStepGoal}`;
@@ -82,7 +81,6 @@ function displayUserHydration() {
   const weeklyOz = userRepository.calculateAvgWeeklyWater(currentUser.id, startDate);
   weeklyWater.innerText = `You've had ${weeklyOz} ounces of water on average during the week of ${startDate}`;
 }
-
 
 function viewHome() {
   homeGrid.classList.remove('hidden');

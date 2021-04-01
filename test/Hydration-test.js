@@ -39,6 +39,11 @@ describe("Hydration class", () => {
     let id = hydration.hydrationData[0].userID;
     expect(id).to.equal(1);
   })
+  // it should have a method to:
+  // calculate average fluid oz drank daily over all time
+  it("should have a method to calculate average fluid intake for a user", () => {
+    expect(hydration.calculateDailyWater).to.be.a("function");
+  })
 
 })
 
@@ -48,8 +53,6 @@ describe("Hydration class", () => {
 
 // it should be able to select a specific date
 
-// it should have a method to:
-  // calculate average fluid oz drank daily over all time
 
 // it should have a method to:
   // return how many oz were drank on a specific date

@@ -1,3 +1,8 @@
+const User = require('../src/User');
+const HydrationEntry = require('../src/HydrationEntry');
+const SleepEntry = require('../src/SleepEntry');
+const ActivityEntry = require('../src/ActivityEntry');
+
 class UserRepository {
   constructor() {
     this.userData = [];

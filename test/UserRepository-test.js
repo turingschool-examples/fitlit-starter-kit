@@ -7,7 +7,6 @@ const hydrationData = require('./test-data/hydration-data');
 const sleepData = require('./test-data/sleep-data');
 const activityData = require('./test-data/activity-data');
 
-
 describe('UserRepository', function() {
   let userRepo;
 
@@ -23,7 +22,7 @@ describe('UserRepository', function() {
     expect(UserRepository).to.be.a('function');
   });
   
-  it("should be an instance of User", function() {
+  it("should be an instance of UserRepository", function() {
     expect(userRepo).to.be.an.instanceof(UserRepository);
   });
 
@@ -91,9 +90,12 @@ describe('UserRepository', function() {
 
   it("should calculate the average daily water intake for a user over the course of a week", function() {
     const avgWeeklyWater1 = userRepo.calculateAvgWeeklyWater(1, '2019/06/15');
-    // add 2 more method calls
+    const avgWeeklyWater2 = userRepo.calculateAvgWeeklyWater(2, '2019/06/16');
+    const avgWeeklyWater3 = userRepo.calculateAvgWeeklyWater(3, '2019/06/17');
 
-    expect(avgWeeklyWater1).to.equal(66);
+    expect(avgWeeklyWater1).to.equal(65);
+    expect(avgWeeklyWater2).to.equal(70);
+    expect(avgWeeklyWater3).to.equal(51);
   });
 
 });

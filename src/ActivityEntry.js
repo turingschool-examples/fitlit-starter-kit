@@ -8,4 +8,6 @@ class ActivityEntry {
     }
 }
 
-module.exports = ActivityEntry;
+if (typeof module !== 'undefined') {
+  module.exports = ActivityEntry;
+}

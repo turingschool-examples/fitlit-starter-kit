@@ -6,4 +6,6 @@ class HydrationEntry {
     }
 }
 
-module.exports = HydrationEntry;
+if (typeof module !== 'undefined') {
+  module.exports = HydrationEntry;
+}

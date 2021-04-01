@@ -10,13 +10,17 @@ const averageStepGoal = document.getElementById('averageStepGoal');
 const userNameDisplay = document.getElementById('userName');
 const picker = datepicker(document.querySelector('#date-picker'), {
   onSelect: (instance, date) => {
-    let stringifiedDateAndTime = JSON.stringify(date);
-    let stringifiedDate = stringifiedDateAndTime.split('T')[0];
-    let formattedDate = stringifiedDate.replaceAll('-', '/');
-    selectedDate = formattedDate.substring(1);
-  }, startDate: new Date(2019, 5, 15),
-     minDate: new Date(2019, 5, 15),
-     maxDate: new Date(2019, 8, 22)
+    if (date) {
+      let stringifiedDateAndTime = JSON.stringify(date);
+      let stringifiedDate = stringifiedDateAndTime.split('T')[0];
+      let formattedDate = stringifiedDate.replaceAll('-', '/');
+      selectedDate = formattedDate.substring(1);
+      console.log(selectedDate);
+    }
+  },
+  startDate: new Date(2019, 5, 15),
+  minDate: new Date(2019, 5, 15),
+  maxDate: new Date(2019, 8, 22),
 })
 
 window.addEventListener('load', displayUserInfo);
@@ -32,6 +36,7 @@ function displayUserInfo() {
   userStepGoal.innerText = `Daily Step Goal: ${currentUser.dailyStepGoal}`;
   averageStepGoal.innerText = calculateStepDifference();
 }
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }

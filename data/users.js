@@ -677,3 +677,7 @@ const userData = [
     ]
   }
 ];
+
+if (typeof module !== 'undefined') {
+  module.exports = userData;
+}

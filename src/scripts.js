@@ -1,5 +1,6 @@
-//querySelectors
 
+//querySelectors
+var mainPage = document.querySelector('#mainPage');
 var headerBanner = document.querySelector('#headerBanner');
 var headerMessage = document.querySelector('#headerMessage');
 
@@ -35,8 +36,11 @@ var activityButton = document.querySelector('#activityButton');
 
 
 //variables
+//const User = require('../src/User');
+//const UserRepository = require('../src/UserRepository');
 //const usersData = require('../data/users.js');
 const userRepository = new UserRepository;
+let currentUser;
 
 
 //Event Listeners
@@ -44,7 +48,8 @@ homeButton.addEventListener('click', viewHome);
 hydrationButton.addEventListener('click', viewHydration);
 sleepButton.addEventListener('click', viewSleep);
 activityButton.addEventListener('click', viewActivity);
-window.addEventListener('onload', loadPage);
+//window.addEventListener('DOMContentLoaded', loadPage);
+window.addEventListener('load', loadPage);
 
 
 //Functions
@@ -53,10 +58,12 @@ function loadPage() {
   userRepository.populateHydrationData(hydrationData);
   userRepository.populateSleepData(sleepData);
   userRepository.populateActivityData(activityData);
-  name.innerText = userName;
-  address.innerText = userAddress;
-  email.innerText = userEmail;
-  stride.innerText = userStride;
+  currentUser = userRepository.userData[0];
+  console.log(currentUser);
+  name.innerText = currentUser.name;
+  address.innerText = currentUser.address;
+  email.innerText = currentUser.email;
+  stride.innerText = currentUser.stride;
 }
 
 

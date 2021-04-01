@@ -7,4 +7,6 @@ class SleepEntry {
     }
 }
 
-module.exports = SleepEntry;
+if (typeof module !== 'undefined') {
+  module.exports = SleepEntry;
+}

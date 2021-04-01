@@ -93,6 +93,7 @@ section {
   grid-area: 1 / 1 / 7 / 4;
   background-color: #383838;
   border-radius: 20px;
+  flex-direction: column;
 
 }
 
@@ -146,7 +147,7 @@ section {
 }
 
 .daily-sleep {
-  grid-area: 1 / 1 / 4 / 7;
+  grid-area: 4 / 1 / 7 / 4;
   background-color: #383838;
   border-radius: 20px;
 
@@ -154,13 +155,13 @@ section {
 }
 
 .weekly-sleep {
-  grid-area: 4 / 1 / 7 / 4;
+  grid-area: 1 / 1 / 4 / 7;
   background-color: #383838;
   border-radius: 20px;
 
 }
 
-.quality-sleep {
+.all-time-sleep {
   grid-area: 4 / 4 / 7 / 7;
   background-color: #FFED3B;
   border-radius: 20px;

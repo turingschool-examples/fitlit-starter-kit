@@ -1,24 +1,36 @@
 const expect = require("chai").expect;
 
+const Hydration = require("../src/Hydration");
 const User = require("../src/User");
+const hydrationData = [
+  {
+    "userID": 1,
+    "date": "2019/06/15",
+    "numOunces": 37
+  }, {
+    "userID": 2,
+    "date": "2019/06/15",
+    "numOunces": 66
+  }, {
+    "userID": 1,
+    "date": "2019/06/16",
+    "numOunces": 72
+  }, {
+    "userID": 2,
+    "date": "2019/06/16",
+    "numOunces": 84
+  }]
 
 describe("Hydration class", () => {
-  let user1;
+
+  let hydration;
 
   beforeEach(() => {
-      user1 = new User({
-        "id": 13,
-        "name": "River Song",
-        "address": "The Library Data Core",
-        "email": "RiverSings@universe.everywhere",
-        "strideLength": 5.3,
-        "dailyStepGoal": 55000,
-        "friends": [10, 11, 12, 13]
-      })
+    hydration = new Hydration();
   })
 
   it("should instantiate a new Hydration object for a user", () => {
-    
+    expect(hydration).to.be.an.instanceOf(Hydration);
   })
 
 })

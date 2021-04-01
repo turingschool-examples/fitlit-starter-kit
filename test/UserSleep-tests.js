@@ -30,7 +30,49 @@ describe("UserSleep", () => {
         "date": "2019/06/16",
         "hoursSlept": 10.7,
         "sleepQuality": 3.4
-      }
+      },
+      {
+        "userID": 3,
+        "date": "2019/07/04",
+        "hoursSlept": 5.3,
+        "sleepQuality": 4.1
+      },
+      {
+        "userID": 3,
+        "date": "2019/07/05",
+        "hoursSlept": 6.1,
+        "sleepQuality": 2.3
+      },
+      {
+        "userID": 3,
+        "date": "2019/07/06",
+        "hoursSlept": 8.1,
+        "sleepQuality": 2.8
+      },
+    {
+        "userID": 3,
+        "date": "2019/07/07",
+        "hoursSlept": 9.2,
+        "sleepQuality": 3.5
+      },
+      {
+        "userID": 3,
+        "date": "2019/07/08",
+        "hoursSlept": 5.8,
+        "sleepQuality": 3.1
+      },
+      {
+        "userID": 3,
+        "date": "2019/07/09",
+        "hoursSlept": 10.6,
+        "sleepQuality": 4.4
+      },
+      {
+        "userID": 3,
+        "date": "2019/07/10",
+        "hoursSlept": 7.3,
+        "sleepQuality": 4.5
+      },
     ];
     sleepyUser = new UserSleep(3, sleepData);
   });
@@ -46,11 +88,12 @@ describe("UserSleep", () => {
       });
   });
   it("Should calculate the average number of hours slept per day", () => {
-    const avgHoursSlept = sleepyUser.calculateAvgHoursSlept();
-    expect(avgHoursSlept).to.equal(10.75);
+    const avgHoursSlept = sleepyUser.calcAvgHoursSlept();
+    expect(avgHoursSlept).to.equal(8.21111111111111);
   });
-  it("Should calculate how many hours they slept for a specific day (identified by a date)", () => {
-
+  it.skip("Should calculate how many hours they slept for a specific day (identified by a date)", () => {
+    const hoursSleptOnDate = sleepyUser.calcHoursSleptByDate();
+    expect(hoursSleptOnDate).to.equal(10.7);
   });
   it.skip("Should calculate their sleep quality for a specific day (identified by a date)", () => {
 

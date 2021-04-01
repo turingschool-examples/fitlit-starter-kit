@@ -15,7 +15,6 @@ const picker = datepicker(document.querySelector('#date-picker'), {
       let stringifiedDate = stringifiedDateAndTime.split('T')[0];
       let formattedDate = stringifiedDate.replaceAll('-', '/');
       selectedDate = formattedDate.substring(1);
-      console.log(selectedDate);
     }
   },
   startDate: new Date(2019, 5, 15),

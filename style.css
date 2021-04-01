@@ -46,11 +46,6 @@ section {
   margin: 2vw;
 } */
 
-.step-goals {
-  display: flex;
-  justify-content: center;
-}
-
 .user-info-card,
 .step-goals,
 .user-details,
@@ -58,10 +53,20 @@ section {
 .sleep-card,
 .activity-card {
   /* margin: 2vw 0 0 0; */
+  margin: 2vw;
   border: 1px solid #f4737e;
   border-radius: 25px;
   background: linear-gradient(#5dfeca, #f4737e);
-   margin: 2vw;
+}
+
+.user-details {
+  line-height: .9em;
+  text-align: center;
+}
+
+.step-goals {
+  display: flex;
+  justify-content: center;
 }
 
 .step-goal {
@@ -70,11 +75,6 @@ section {
   text-align: center;
   border: 1px solid #5dfeca;
   border-radius: 25px;
-}
-
-.user-details {
-  line-height: .9em;
-  text-align: center;
 }
 
 .hydration-card {
@@ -111,6 +111,12 @@ section {
   border: 1px solid #b100ae;
   margin: 2vw;
   background: linear-gradient(#5dfeca, #b100ae);
+}
+
+@media screen and (max-width: 750px) {
+  * {
+    border: 1px solid magenta;
+  }
 }
 
 /* 🎨 COLOR PALETTE

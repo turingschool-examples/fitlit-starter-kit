@@ -91,15 +91,26 @@ describe("UserSleep", () => {
     const avgHoursSlept = sleepyUser.calcAvgHoursSlept();
     expect(avgHoursSlept).to.equal(8.21111111111111);
   });
-  it.skip("Should calculate how many hours they slept for a specific day (identified by a date)", () => {
-    const hoursSleptOnDate = sleepyUser.calcHoursSleptByDate();
-    expect(hoursSleptOnDate).to.equal(10.7);
+  it("Should calculate how many hours they slept for a specific day (identified by a date)", () => {
+    const hoursSleptOnDate = sleepyUser.calcSleepByDate("2019/07/04", "hoursSlept");
+    expect(hoursSleptOnDate).to.equal(5.3);
   });
-  it.skip("Should calculate their sleep quality for a specific day (identified by a date)", () => {
-
+  it("Should calculate their sleep quality for a specific day (identified by a date)", () => {
+    const hoursSleptOnDate = sleepyUser.calcSleepByDate("2019/07/04", "sleepQuality");
+    expect(hoursSleptOnDate).to.equal(4.1);
   });
-  it.skip("Should calculate how many hours they slept each day over the course of any week", () => {
-
+  it("Should calculate how many hours they slept each day over the course of any week", () => {
+    const sleepOverWeek = sleepyUser.calcSleepOverWeek("2019/07/04", "hoursSlept");
+    expect(sleepOverWeek).to.equal([
+  { '2019/07/04': 5.3 },
+  { '2019/07/05': 6.1 },
+  { '2019/07/06': 8.1 },
+  { '2019/07/07': 9.2 },
+  { '2019/07/08': 5.8 },
+  { '2019/07/09': 10.6 },
+  { '2019/07/10': 7.3 }
+]
+)
   });
   it.skip("Should calculate their sleep quality each day over the course of any week", () => {
 

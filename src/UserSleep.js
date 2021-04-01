@@ -1,3 +1,9 @@
+var dayjs = require("dayjs");
+var duration = require('dayjs/plugin/duration')
+dayjs.extend(duration);
+var isBetween = require('dayjs/plugin/isBetween')
+dayjs.extend(isBetween)
+
 class UserSleep {
   constructor(id, allSleepData) {
     this.id = id;
@@ -12,21 +18,28 @@ class UserSleep {
     return avgHoursSlept
   }
 
-  calcHoursSleptByDate() {
+  calcSleepByDate(date, property) {
+    const sleepDate = this.sleepData.find(dataPoint => dataPoint.date === date);
+    return sleepDate[property]
+  }
+
+  calcSleepOverWeek(date, property) {
+    const day1 = dayjs(new Date(date));
+    const day7 = dayjs(day1).add(dayjs.duration({"weeks" : 1}))
+
+    const week = this.sleepData.reduce((specificWeek, dataPoint) => {
+      if (dayjs(dataPoint.date).isBetween(day1, day7, null, "[]")) {
+        const day = dataPoint.date;
+        const sleepData = dataPoint[property];
+        const newData = {[day]: sleepData};
+        return [...specificWeek, newData]
+      }
+      return specificWeek
+    }, [])
+    console.log(week)
 
   }
 
-  calcSleepQualityOnDate() {
-
-  }
-
-  calcHoursSleptOverWeek() {
-
-  }
-
-  calcSleepQualityOverWeek() {
-
-  }
 }
 
 

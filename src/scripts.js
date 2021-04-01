@@ -8,7 +8,7 @@ const userEmail = document.getElementById('userinfoEmail');
 const userStepGoal = document.getElementById('userinfoGoal');
 const averageStepGoal = document.getElementById('averageStepGoal');
 const userNameDisplay = document.getElementById('userName');
-const picker = datepicker(document.querySelector('#date-picker'), {
+const picker = datepicker(document.getElementById('date-picker'), {
   onSelect: (instance, date) => {
     if (date) {
       let stringifiedDateAndTime = JSON.stringify(date);
@@ -17,7 +17,7 @@ const picker = datepicker(document.querySelector('#date-picker'), {
       selectedDate = formattedDate.substring(1);
     }
   },
-  startDate: new Date(2019, 5, 15),
+  startDate: new Date(2019, 8, 1),
   minDate: new Date(2019, 5, 15),
   maxDate: new Date(2019, 8, 22),
 })

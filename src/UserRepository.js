@@ -50,53 +50,31 @@ class UserRepository {
 
    calculateAvgDailyWater() {
     const dailyOunces = this.hydrationData.map(entry => entry.numOunces);
-    const avgDailyWater = dailyOunces.reduce((sumOz, numOz) => {
+    const totalOunces = dailyOunces.reduce((sumOz, numOz) => {
       return sumOz + numOz;
     });
+    const avgOunces = Math.round(totalOunces / this.hydrationData.length);
 
-    return avgDailyWater;
+    return avgOunces;
   }
 
+  retrieveNumOuncesByDate(id, date) {
+    const userLog = this.hydrationData.filter(entry => entry.id === id);
+    const entry = userLog.find(entry => entry.date === date)
+    return entry.numOunces;
+  }
+  
   calculateAvgWeeklyWater(id, startDate) {
-   
-
-    const userEntries = this.hydrationData.filter(entry => entry.id === id);
-
-    // const dates = [];
-
-    const splitDate = startDate.split('/');
-
-    const startYear = parseInt(splitDate[0]);
-    const startMonth = parseInt(splitDate[1]);
-    const startDay = parseInt(splitDate[2]);
-
-    const dates = [];
-    
-    function getDates() {
-      for (let i = startDay; i < startDay + 7; i++) {
-        dates.push(`${startYear}/${startMonth}/${i}`);
-      }
-    }
-    getDates();
-
-    const weekEntries = userEntries.filter(entry => {
-      entry.date === dates[0] || dates[1] || dates[2] || dates[3] || dates[4] || dates[5] || dates[6]
+    const userLog = this.hydrationData.filter(entry => entry.id === id);
+    const index = userLog.findIndex(entry => entry.date === startDate);
+    const weekLog = userLog.slice(index, index + 7);
+    const waterLog = weekLog.map(entry => entry.numOunces);
+    const totalOunces = waterLog.reduce((sumOz, numOz) => {
+      return sumOz + numOz;
     });
+    const avgOunces = Math.round(totalOunces / 7);
 
-    console.log(weekEntries);
-
-
-    // const dailyOunces = entries.map(entry => entry.numOunces);
-
-    // const avgOunces = ouncesEachDate.reduce((sumOz, numOz) => {
-    //   return sumOz + numOz;
-    // });
-
-  }
-
-  retrieveNumOuncesByDate(date) {
-    /* use find() to iterate through this.hydrationLog array,
-    locate specific element by date, and return numOunces */
+    return avgOunces;
   }
 
 
@@ -196,5 +174,27 @@ class UserRepository {
 
     // console.log(dates);
 
+        // // const dates = [];
+
+    // const splitDate = startDate.split('/');
+
+    // const startYear = parseInt(splitDate[0]);
+    // const startMonth = parseInt(splitDate[1]);
+    // const startDay = parseInt(splitDate[2]);
+
+    // const dates = [];
+    
+    // function getDates() {
+    //   for (let i = startDay; i < startDay + 7; i++) {
+    //     dates.push(`${startYear}/${startMonth}/${i}`);
+    //   }
+    // }
+    // getDates();
+
+    // const weekEntries = userEntries.filter(entry => {
+    //   entry.date === dates[0] || dates[1] || dates[2] || dates[3] || dates[4] || dates[5] || dates[6]
+    // });
+
+    // console.log(userEntries);
 
 module.exports = UserRepository;

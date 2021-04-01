@@ -76,14 +76,19 @@ describe('UserRepository', function() {
   it("should calculate the average daily water intake for all users", function() {
     const avgDailyWater = userRepo.calculateAvgDailyWater();
 
-    expect(avgDailyWater).to.equal(665);
+    expect(avgDailyWater).to.equal(61);
   });
 
-  it.only("should calculate the average daily water intake for a user over the course of a week", function() {
-    const avgWeeklyWater = userRepo.calculateAvgWeeklyWater(1, '2019/06/15');
+  it("should be able to retrieve the ounces drank by a user on a specific date", function() {
+    const numOunces = userRepo.retrieveNumOuncesByDate(2, '2019/06/16');
 
+    expect(numOunces).to.equal(91);
+  });
 
-    // expect(avgDailyWater).to.equal();
+  it("should calculate the average daily water intake for a user over the course of a week", function() {
+    const avgWeeklyWater = userRepo.calculateAvgWeeklyWater(1, '2019/06/16');
+    
+    expect(avgWeeklyWater).to.equal(66);
   });
 
 });

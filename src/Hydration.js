@@ -1,7 +1,7 @@
 class Hydration {
   constructor(id, data) {
     this.id = id;
-    this.hydrationData = data.filter(userData => userData.id === this.id);
+    this.hydrationData = data.filter(dataPoint => dataPoint.userID === this.id);
   }
 
   calculateDailyWater(id) {

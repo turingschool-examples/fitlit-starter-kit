@@ -1,4 +1,3 @@
-// import UserRepository from './UserRepository'
 class User {
   constructor(userData) {
     this.id = userData.id;
@@ -12,8 +11,7 @@ class User {
   }
 
   returnFirstName() {
-    let splitName = this.name.split(" ");
-    console.log(splitName)
+    const splitName = this.name.split(" ");
     return splitName[0];
   }
 }

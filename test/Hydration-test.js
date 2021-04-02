@@ -54,7 +54,7 @@ describe("Hydration class", () => {
   // calculate average fluid oz drank daily over all time
   it("should calculate average fluid intake by user", () => {
     console.log(hydration1.calculateDailyWater());
-    expect(hydration1.calculateDailyWater(1)).to.equal(55);
+    expect(hydration1.calculateDailyWater()).to.equal(55);
   })
 })
 // it should have a method to:

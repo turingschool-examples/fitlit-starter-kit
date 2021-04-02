@@ -39,26 +39,27 @@ describe("Hydration class", () => {
   })
 
   it("should store user hydration data", () => {
-    console.log("hydration1 data >>> ", hydration1.hydrationData[0]); // logs the obj on line 6!;  undefined; returning an empty array
+    // console.log("hydration1 data >>> ", hydration1.hydrationData[0]); // logs the obj on line 6!;  undefined; returning an empty array
     expect(hydration1.hydrationData[0]).to.deep.equal({
       "userID": 1,
       "date": "2019/06/15",
       "numOunces": 37
     });
-
+    expect(hydration2.hydrationData[1]).to.deep.equal({
+      "userID": 2,
+      "date": "2019/06/16",
+      "numOunces": 84
+    })
   })
-  // it("should have an array of hydration data objects", () => {
-  //   expect(hydration.hydrationData).to.equal(testData);
+
+  // it("should have a method to calculate average fluid intake", () => {
+  //
   // })
-
-  it.skip("should have a method to calculate average fluid intake", () => {
-    expect(hydration.calculateDailyWater).to.be.a("function");
-  })
   // calculate average fluid oz drank daily over all time
-  it.skip("should calculate average fluid intake by user", () => {
-    const id = hydration.hydrationData[0].userID;
+  it("should calculate average fluid intake by user", () => {
+    // const id = hydration.hydrationData[0].userID;
     // console.log("id >>>", id);
-    expect(hydration.calculateDailyWater(id)).to.equal(55);
+    expect(hydration.calculateDailyWater(1)).to.equal(55);
   })
 })
 // it should have a method to:

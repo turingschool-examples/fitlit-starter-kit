@@ -8,6 +8,7 @@ class AllUserSleep {
   constructor(sleepData) {
     this.sleepData = sleepData;
   }
+
   calcAvgSleepQuality() {
     const totalSleepQuality = this.sleepData.reduce((total, num) => {
       return total + num.sleepQuality
@@ -16,23 +17,46 @@ class AllUserSleep {
     return avgSleepQuality
   }
 
-  calcAboveAvgSleepQuality(date) {
+
+
+
+  retrieveAllUserDataByWeek(date) {
     const day1 = dayjs(new Date(date));
     const day7 = dayjs(day1).add(dayjs.duration({"weeks" : 1}))
-
-    //start with dates so you aren't making instances of users using ALL of the data--just use the data needed
     const dataForDates = this.sleepData.reduce((total, dataPoint) => {
       if (dayjs(dataPoint.date).isBetween(day1, day7, null, "[]")) {
         return [...total, dataPoint]
       }
       return total
     }, [])
-    //returns data containing relevant dates
-    // console.log(dataForDates)
+    return dataForDates
+    //returns data containing only relevant dates in week window
+  }
 
-    //need to create instances of users and then run calcSleepByDate(date, property) using "sleepQuality" as an argument to get data for each day. then use this data to calculate average sleep quality
+  retrieveUniqueUserIDs(weekData) {
+    const dataForWeek = weekData;
+    const uniqueUsers = dataForWeek.reduce((uniqueIDs, currentUser) => {
+      if (!uniqueIDs.includes(currentUser.userID)) {
+        return [...uniqueIDs, currentUser.userID]
+      }
+      return uniqueIDs
+    }, [])
+    return uniqueUsers
+    //uniqueUsers is an array of IDs (only one representing each user)
+  }
 
-    //return users who have a sleep quality > 3
+  calcAboveAvgSleepQuality(date) {
+    const dataForWeek = this.retrieveAllUserDataByWeek(date);
+    const userIDs = this.retrieveUniqueUserIDs(dataForWeek);
+    //currently have all data for the week and the unique user IDs
+
+
+    //create user instance for each unique ID
+    //calculate avgSleepQuality
+    //return avgSleepQuality
+    //if > 3, push user id into an array
+    //return array
+
   }
 
   calcMostSleep(date) {

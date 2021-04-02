@@ -5,10 +5,10 @@ class Hydration {
   }
 
   calculateDailyWater(id) {
+    // const totalOz = this.hydrationData.filter(dataPoint => this.hydrationData[dataPoint].numOunces);
+    // console.log("totalOz >>>", totalOz);
     console.log("hydrationData >>>", this.hydrationData);
 
-    // use .filter to search through by idea
-    // need to get the out first? probably.. think I need to add a method for this? the id will need to be reused
   }
 }
 

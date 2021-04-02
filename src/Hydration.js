@@ -5,10 +5,6 @@ class Hydration {
   }
 
   calculateDailyWater() {
-    // const totalOz = this.hydrationData.filter(dataPoint => {
-    //   let ozPerDay = dataPoint.numOunces;
-    //   console.log(ozPerDay);
-    // });
     const totalOzDrank = this.hydrationData.reduce((total, num) => {
       return total +num.numOunces;
     }, 0);

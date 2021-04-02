@@ -51,18 +51,25 @@ describe("Hydration class", () => {
     })
   })
 
-  // calculate average fluid oz drank daily over all time
   it("should calculate average fluid intake by user", () => {
-    console.log(hydration1.calculateDailyWater());
     expect(hydration1.calculateDailyWater()).to.equal(55);
+    expect(hydration2.calculateDailyWater()).to.equal(75);
   })
-})
-// it should have a method to:
+  // it should have a method to:
   // return how many oz were drank on a specific date
+  it("should return oz drank on a specific date", () => {
+    expect(hydration1.ozDrankOnDate("2019/06/15")).to.equal(37);
+    expect(hydration2.ozDrankOnDate("2019/06/16")).to.equal(84);
+  })
 
-// it should have a method to:
+  // it should have a method to:
   // return how many fluid oz were drank each day over a 1 week period
   // return the amount for each day
+  // it("should return oz drank for a specified week", () => {
+  //   expect()
+  // })
+})
+
 
 
 

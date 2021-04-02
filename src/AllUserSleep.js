@@ -9,16 +9,13 @@ class AllUserSleep {
     this.sleepData = sleepData;
   }
 
-  calcAvgSleepQuality() {
-    const totalSleepQuality = this.sleepData.reduce((total, num) => {
+  calcAvgSleepQuality(sleepData) {
+    const totalSleepQuality = sleepData.reduce((total, num) => {
       return total + num.sleepQuality
     }, 0)
-    const avgSleepQuality = totalSleepQuality / this.sleepData.length
+    const avgSleepQuality = totalSleepQuality / sleepData.length
     return avgSleepQuality
   }
-
-
-
 
   retrieveAllUserDataByWeek(date) {
     const day1 = dayjs(new Date(date));
@@ -48,15 +45,20 @@ class AllUserSleep {
   calcAboveAvgSleepQuality(date) {
     const dataForWeek = this.retrieveAllUserDataByWeek(date);
     const userIDs = this.retrieveUniqueUserIDs(dataForWeek);
-    //currently have all data for the week and the unique user IDs
 
+    //iterates through unique ids and then filters the data for the week to grab all of the data relevant to that unique id
+    const aboveAvgSleepers = userIDs.reduce((highSleepQualityUsers, currentUser) => {
+      const specificSleeperData = dataForWeek.filter(dataPoint => dataPoint.userID === currentUser)
+      //calculate average sleep quality
+      const avgSleepQuality = this.calcAvgSleepQuality(specificSleeperData)
 
-    //create user instance for each unique ID
-    //calculate avgSleepQuality
-    //return avgSleepQuality
-    //if > 3, push user id into an array
-    //return array
-
+      //stores the user id to an array if the sleep quality average was > 3
+      if (avgSleepQuality > 3) {
+        return [...highSleepQualityUsers, currentUser]
+      }
+      return highSleepQualityUsers
+    }, [])
+    return aboveAvgSleepers
   }
 
   calcMostSleep(date) {

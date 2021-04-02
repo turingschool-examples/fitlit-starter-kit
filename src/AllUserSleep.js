@@ -17,19 +17,21 @@ class AllUserSleep {
   }
 
   calcAboveAvgSleepQuality(date) {
-    // const day1 = dayjs(new Date(date));
-    // const day7 = dayjs(day1).add(dayjs.duration({"weeks" : 1}))
-    //
-    // const totalSleepQuality = this.sleepData.reduce((total, dataPoint) => {
-    //   if (dayjs(dataPoint.date).isBetween(day1, day7, null, "[]")) {
-    //     const sleepQuality = dataPoint.sleepQuality;
-    //     total + sleepQuality
-    //   }
-    //   return total
-    // }, 0)
-    // return totalSleepQuality
-    //determine specific weeks
-    //calculate average sleep quality for each user (create instances of users?)
+    const day1 = dayjs(new Date(date));
+    const day7 = dayjs(day1).add(dayjs.duration({"weeks" : 1}))
+
+    //start with dates so you aren't making instances of users using ALL of the data--just use the data needed
+    const dataForDates = this.sleepData.reduce((total, dataPoint) => {
+      if (dayjs(dataPoint.date).isBetween(day1, day7, null, "[]")) {
+        return [...total, dataPoint]
+      }
+      return total
+    }, [])
+    //returns data containing relevant dates
+    // console.log(dataForDates)
+
+    //need to create instances of users and then run calcSleepByDate(date, property) using "sleepQuality" as an argument to get data for each day. then use this data to calculate average sleep quality
+
     //return users who have a sleep quality > 3
   }
 

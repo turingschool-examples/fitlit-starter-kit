@@ -1,6 +1,6 @@
 class AllUserSleep {
-  constructor() {
-    
+  constructor(sleepData) {
+    this.sleepData = sleepData;
   }
 }
 

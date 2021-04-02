@@ -41,4 +41,11 @@ describe('Sleep', () => {
     expect(sleep2.calculateHoursSleptByDate("2019/06/16")).to.equal(7.5);
     expect(sleep2.calculateHoursSleptByDate("2019/06/18")).to.equal(10.8);
   });
+
+  it('should show sleep quality by date', () => {
+    expect(sleep2.calculateSleepQualityByDate("2019/06/20")).to.equal(2.4);
+    expect(sleep2.calculateSleepQualityByDate("2019/06/19")).to.equal(2.5);
+    expect(sleep1.calculateSleepQualityByDate("2019/06/21")).to.equal(4.2);
+    expect(sleep1.calculateSleepQualityByDate("2019/06/17")).to.equal(2.6);
+  });
 });

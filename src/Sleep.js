@@ -3,23 +3,34 @@ class Sleep {
     this.userSleepData = sleepData;
     this.id = id;
     this.userSleep = this.buildUserSleepData();
-    console.log(this.userSleep)
   }
 
   buildUserSleepData() {
-    // console.log(this.data, "1")
     return this.userSleepData.filter(user => user.userID === this.id);
   }
 
   calculateAverageHoursSlept() {
-    let totalSleep = this.userSleepData.reduce((sleepTotal, currentUser) => {
+    let totalSleep = this.userSleep.reduce((sleepTotal, currentUser) => {
       sleepTotal += currentUser.hoursSlept;
       return sleepTotal
     }, 0)
-    return Math.floor(totalSleep / this.userSleepData.length);
+    return (totalSleep / this.userSleep.length).toFixed(2);
   }
 
+  calculateAverageSleepQuality() {
+    let totalSleepQuality = this.userSleep.reduce((sleepQualityTotal, currentUser) => {
+      sleepQualityTotal += currentUser.sleepQuality;
+      return sleepQualityTotal
+    }, 0)
+    return (totalSleepQuality / this.userSleep.length).toFixed(2);
+  }
+
+  calculateHoursSleptByDate(date) {
+    let daySelected = this.userSleep.find(user => user.date === date);
+    return daySelected.hoursSlept;
+  }
 }
+
 
 if (typeof module !== 'undefined') {
   module.exports = Sleep;

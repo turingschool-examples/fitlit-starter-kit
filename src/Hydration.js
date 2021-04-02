@@ -1,10 +1,8 @@
-
 class Hydration {
   constructor(hydrationData, id) {
     this.data = hydrationData;
     this.id = id;
     this.user = this.buildUserHydrationData();
-
   }
 
   buildUserHydrationData() {
@@ -12,7 +10,7 @@ class Hydration {
   }
 
   calculateAverageOunces() {
-    let totalOz = this.user.reduce((ozTotal, currentUser) => {
+    const totalOz = this.user.reduce((ozTotal, currentUser) => {
       ozTotal += currentUser.numOunces;
       return ozTotal
     }, 0)
@@ -20,12 +18,11 @@ class Hydration {
   }
 
   calculateDailyOunces(date) {
-    let daySelected = this.user.find(day => day.date === date);
+    const daySelected = this.user.find(day => day.date === date);
     return daySelected.numOunces;
   }
 
   calculateWeeklyOz(startDate) {
-
     let findStartingDate;
     this.user.forEach((day, i) => {
       if (day.date === startDate) {
@@ -40,7 +37,6 @@ class Hydration {
     let day3 = this.user[findStartingDate + 2];
     let day2 = this.user[findStartingDate + 1];
     let day1 = this.user[findStartingDate]
-    console.log(day7);
     return [day7.numOunces, day6.numOunces, day5.numOunces, day4.numOunces, day3.numOunces, day2.numOunces, day1.numOunces];
   }
 }

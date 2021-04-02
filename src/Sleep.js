@@ -29,6 +29,13 @@ class Sleep {
     let daySelected = this.userSleep.find(user => user.date === date);
     return daySelected.hoursSlept;
   }
+
+  calculateSleepQualityByDate(date) {
+    let daySelected = this.userSleep.find(user => user.date === date);
+    return daySelected.sleepQuality;
+  }
+
+
 }
 
 

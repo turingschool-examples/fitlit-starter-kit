@@ -18,6 +18,46 @@ const testData = [
     "userID": 2,
     "date": "2019/06/16",
     "numOunces": 84
+  }, {
+    "userID": 1,
+    "date": "2019/06/17",
+    "numOunces": 73
+  }, {
+    "userID": 2,
+    "date": "2019/06/17",
+    "numOunces": 84
+  }, {
+    "userID": 1,
+    "date": "2019/06/18",
+    "numOunces": 73
+  }, {
+    "userID": 2,
+    "date": "2019/06/18",
+    "numOunces": 84
+  }, {
+    "userID": 1,
+    "date": "2019/06/19",
+    "numOunces": 73
+  }, {
+    "userID": 2,
+    "date": "2019/06/19",
+    "numOunces": 84
+  }, {
+    "userID": 1,
+    "date": "2019/06/20",
+    "numOunces": 73
+  }, {
+    "userID": 2,
+    "date": "2019/06/20",
+    "numOunces": 84
+  }, {
+    "userID": 1,
+    "date": "2019/06/21",
+    "numOunces": 73
+  }, {
+    "userID": 2,
+    "date": "2019/06/21",
+    "numOunces": 84
   }]
 
 describe("Hydration class", () => {
@@ -52,8 +92,8 @@ describe("Hydration class", () => {
   })
 
   it("should calculate average fluid intake by user", () => {
-    expect(hydration1.calculateDailyWater()).to.equal(55);
-    expect(hydration2.calculateDailyWater()).to.equal(75);
+    expect(hydration1.calculateDailyWater()).to.equal(67.85714285714286);
+    expect(hydration2.calculateDailyWater()).to.equal(81.42857142857143);
   })
 
   it("should return oz drank on a specific date", () => {
@@ -62,14 +102,17 @@ describe("Hydration class", () => {
   })
 
   // it should have a method to:
-  // return how many fluid oz were drank each day over a 1 week period
-  // return the amount for each day
+  it("should return how many fluid oz were drank each day over a 1 week period", () => {
+    expect(hydration1.dailyDrinkDuringWeek("2019/06/15")).to.deep.equal([
+      {"2019/06/15": 37}, {"2019/06/16": 73}, {"2019/06/17": 73}, {"2019/06/18": 73}, {"2019/06/19": 73}, {"2019/06/20": 73}, {"2019/06/21": 73}
+    ]);
+    expect(hydration2.dailyDrinkDuringWeek("2019/06/15")).to.deep.equal([
+      {"2019/06/15": 66}, {"2019/06/16": 84}, {"2019/06/17": 84}, {"2019/06/18": 84}, {"2019/06/19": 84}, {"2019/06/20": 84}, {"2019/06/21": 84}
+    ])
+  });
+
+
   // it("should return oz drank for a specified week", () => {
   //   expect()
   // })
 })
-
-
-
-
-  git st

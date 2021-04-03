@@ -24,6 +24,10 @@ class Hydration {
     const ozDrankOnDate = drinkDate.numOunces;
     return ozDrankOnDate;
   }
+
+  dailyDrinkDuringWeek(date) {
+
+  }
 }
 
 if (typeof module !== "undefined") {

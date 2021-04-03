@@ -95,7 +95,7 @@ function showDropdown() {
 function showHydrationData() {
   averageOunces.innerText = `Average Daily water intake: ${hydration.calculateAverageOunces()}`
   selectedDateHydration.innerText = `Intake for ${selectedDate}: ${hydration.calculateDailyOunces(selectedDate)} fl oz`
-  selectedWeekHydration.innerText = `Intake for Selected Week: ${hydration.calculateWeeklyOz(startDate)}`
+  selectedWeekHydration.innerText = `Intake for the week of ${startDate}: ${hydration.calculateWeeklyOz(startDate)}`
 }
 
 function showSleepData() {

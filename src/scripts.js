@@ -1,5 +1,6 @@
 const userRepository = new UserRepository(userData);
-const hydration = new Hydration(hydrationData, userRepository.currentUser.id)
+const hydration = new Hydration(hydrationData, userRepository.currentUser.id);
+const sleep = new Sleep(sleepData, userRepository.currentUser.id);
 let selectedDate = '2019/09/22';
 let startDate = '2019/09/16';
 let endDate = '2019/09/22';
@@ -15,6 +16,11 @@ const averageOunces = document.getElementById('averageOunces')
 const selectedDateHydration = document.getElementById('selectedDateHydration');
 const selectedWeekHydration = document.getElementById('selectedWeekHydration');
 const hoursSleptLastNight = document.getElementById('hoursSleptLastNight');
+const sleepQualityLastNight = document.getElementById('sleepQualityLastNight');
+const averageHoursSlept = document.getElementById('averageHoursSlept');
+const averageSleepQuality = document.getElementById('averageSleepQuality');
+const hoursSleptForSelectedWeek = document.getElementById('hoursSleptForSelectedWeek');
+const sleepQualityForSelectedWeek = document.getElementById('sleepQualityForSelectedWeek');
 const picker = datepicker(document.getElementById('date-picker'), {
   onSelect: (instance, date) => {
     if (date) {
@@ -23,6 +29,7 @@ const picker = datepicker(document.getElementById('date-picker'), {
       let formattedDate = stringifiedDate.replaceAll('-', '/');
       selectedDate = formattedDate.substring(1);
       showHydrationData();
+      showSleepData();
     }
   },
   startDate: new Date(2019, 8, 1),
@@ -49,6 +56,7 @@ const end = datepicker(document.getElementById('dateRangePickerEnd'), {
     startDate = startRange.substring(0, 10).replaceAll('-', '/');
     endDate = endRange.substring(0, 10).replaceAll('-', '/');
     showHydrationData();
+    showSleepData();
   }
 });
 
@@ -59,6 +67,7 @@ userInfoButton.addEventListener('click', showDropdown);
 
 function displayUserInfo() {
   showHydrationData();
+  showSleepData();
   userNameDisplay.innerText = `Welcome ${userRepository.currentUser.returnFirstName()}`;
   userEmail.innerText = `Email Address: ${userRepository.currentUser.email};`
   userStepGoal.innerText = `Daily Step Goal: ${userRepository.currentUser.dailyStepGoal}`;
@@ -89,6 +98,11 @@ function showHydrationData() {
   selectedWeekHydration.innerText = `Intake for Selected Week: ${hydration.calculateWeeklyOz(startDate)}`
 }
 
-// function showSleepData() {
-//   hoursSleptLastNight.innerText = `Hours slept last night: ${sleep.}`
-// }
+function showSleepData() {
+  averageHoursSlept.innerText = `Average Hours Slept: ${sleep.calculateAverageHoursSleptPerDay()}`
+  averageSleepQuality.innerText = `Average Sleep Quality: ${sleep.calculateAverageSleepQualityPerDay()}`
+  hoursSleptLastNight.innerText = `Hours slept on ${selectedDate}: ${sleep.calculateHoursSleptByDate(selectedDate)}`
+  sleepQualityLastNight.innerText = `Sleep Quality on ${selectedDate}: ${sleep.calculateSleepQualityByDate(selectedDate)}`
+  hoursSleptForSelectedWeek.innerText = `Hours Slept For The Week Of ${startDate}: ${sleep.generateHoursSleptByWeek(startDate)}`
+  sleepQualityForSelectedWeek.innerText = `Sleep Quality For The Week Of ${startDate}: ${sleep.generateSleepQualityByWeek(startDate)}`
+}

@@ -88,8 +88,12 @@ describe("UserSleep", () => {
       });
   });
   it("Should calculate the average number of hours slept per day", () => {
-    const avgHoursSlept = sleepyUser.calcAvgHoursSlept();
+    const avgHoursSlept = sleepyUser.calcAvgSleep("hoursSlept");
     expect(avgHoursSlept).to.equal(8.21111111111111);
+  });
+  it("Should calculate the average sleep quality per day over all time", () => {
+    const avgSleepQuality = sleepyUser.calcAvgSleep("sleepQuality")
+    expect(avgSleepQuality).to.equal(3.644444444444445);
   });
   it("Should calculate how many hours they slept for a specific day (identified by a date)", () => {
     const hoursSleptOnDate = sleepyUser.calcSleepByDate("2019/07/04", "hoursSlept");

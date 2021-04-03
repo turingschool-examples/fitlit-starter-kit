@@ -50,8 +50,12 @@ class Sleep {
     let day3 = this.userSleep[findStartingDate + 2];
     let day2 = this.userSleep[findStartingDate + 1];
     let day1 = this.userSleep[findStartingDate]
+    if (day7) {
     return [day7.hoursSlept, day6.hoursSlept, day5.hoursSlept, day4.hoursSlept,
       day3.hoursSlept, day2.hoursSlept, day1.hoursSlept];
+    } else {
+      return 'Please select a valid week'
+    }
   }
 
   generateSleepQualityByWeek(startDate) {
@@ -68,9 +72,13 @@ class Sleep {
     let day4 = this.userSleep[findStartingDate + 3];
     let day3 = this.userSleep[findStartingDate + 2];
     let day2 = this.userSleep[findStartingDate + 1];
-    let day1 = this.userSleep[findStartingDate]
+    let day1 = this.userSleep[findStartingDate];
+    if (day7) {
     return [day7.sleepQuality, day6.sleepQuality, day5.sleepQuality, day4.sleepQuality,
       day3.sleepQuality, day2.sleepQuality, day1.sleepQuality];
+    } else {
+      return 'Please select a valid week'
+    }
   }
 
   calculateAllUsersSleepQuality() {

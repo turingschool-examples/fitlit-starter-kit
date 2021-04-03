@@ -101,7 +101,6 @@ describe("Hydration class", () => {
     expect(hydration2.ozDrankOnDate("2019/06/16")).to.equal(84);
   })
 
-  // it should have a method to:
   it("should return how many fluid oz were drank each day over a 1 week period", () => {
     expect(hydration1.dailyDrinkDuringWeek("2019/06/15")).to.deep.equal([
       {"2019/06/15": 37}, {"2019/06/16": 73}, {"2019/06/17": 73}, {"2019/06/18": 73}, {"2019/06/19": 73}, {"2019/06/20": 73}, {"2019/06/21": 73}
@@ -109,10 +108,5 @@ describe("Hydration class", () => {
     expect(hydration2.dailyDrinkDuringWeek("2019/06/15")).to.deep.equal([
       {"2019/06/15": 66}, {"2019/06/16": 84}, {"2019/06/17": 84}, {"2019/06/18": 84}, {"2019/06/19": 84}, {"2019/06/20": 84}, {"2019/06/21": 84}
     ])
-  });
-
-
-  // it("should return oz drank for a specified week", () => {
-  //   expect()
-  // })
+  })
 })

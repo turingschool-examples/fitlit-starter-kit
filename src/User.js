@@ -5,7 +5,7 @@ class User {
     this.address = dataElem.address;
     this.email = dataElem.email;
     this.stride = dataElem.strideLength;
-    this.dailyStepGoal  = dataElem.dailyStepGoal;
+    this.dailyStepGoal = dataElem.dailyStepGoal;
     this.friends = dataElem.friends;
   }
 

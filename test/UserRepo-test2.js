@@ -98,7 +98,6 @@ describe('UserRepository', function() {
     expect(avgWeeklyWater3).to.equal(51);
   });
 
-
   it.only("should calculate the average daily hours slept by a user", function() {
     const avgDailyHrsSlept = userRepo.calculateAvgDailyHrsSlept();
 
@@ -130,4 +129,3 @@ describe('UserRepository', function() {
     // expect(bestSleeper.name).to.equal();
   });
 });
-

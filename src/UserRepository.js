@@ -2,15 +2,23 @@
 
 class UserRepository {
   constructor(userData) {
-    this.users = [];
     this.userData = userData;
+    this.users = this.createUsers();
+    this.currentUser = this.selectCurrentUser();
+  }
+
+  selectCurrentUser() {
+    const randomIndex = Math.floor(Math.random() * this.users.length);
+    return this.users[randomIndex];
   }
 
   createUsers() {
+    const createdUsers = [];
     this.userData.forEach((userDataObject, i) => {
       var user = new User(userDataObject);
-      this.users.push(user);
+      createdUsers.push(user);
     });
+    return createdUsers;
   }
 
   returnUserData(id) {

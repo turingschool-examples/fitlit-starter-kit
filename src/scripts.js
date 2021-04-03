@@ -110,3 +110,5 @@ function viewActivity() {
   sleepGrid.classList.add('hidden');
   activityGrid.classList.remove('hidden');
 };
+
+// NEW CODE

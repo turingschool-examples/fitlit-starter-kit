@@ -68,3 +68,5 @@ describe('User', function() {
     expect(user1.returnFirstName()).to.equal("Luisa");
   });
 });
+
+// NEW CODE

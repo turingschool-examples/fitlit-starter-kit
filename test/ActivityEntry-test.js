@@ -54,3 +54,5 @@ describe('ActivityEntry', function() {
     expect(entry3.flightsOfStairs).to.equal(5);
   });
 });
+
+// NEW CODE

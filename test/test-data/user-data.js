@@ -44,3 +44,5 @@ const users = [
 ];
 
 module.exports = users;
+
+// NEW CODE

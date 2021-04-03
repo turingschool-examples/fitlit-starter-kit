@@ -99,3 +99,5 @@ describe('UserRepository', function() {
   });
 
 });
+
+// NEW CODE

@@ -76,6 +76,73 @@ class UserRepository {
     return avgOunces;
   }
 
+// sleepData (REFACTOR/MOVE TO `UserRepository.js`)
+
+  calculateAvgDailyHrsSlept() {
+    console.log("LOGGGED");
+  }
+
+  calculateAvgWeeklyHrsSlept(startDate) {
+    /* for each this.sleepLog element between startDate
+    and startDate + 7, accumulate hoursSlept,
+    divide by this.sleepLog.length, and return */
+  }
+
+  calculateAvgDailySleepQuality() {
+    /* for each this.sleepLog element, accumulate
+    sleepQuality, divide by this.sleepData.length, and return */
+  }
+
+  calculateAvgWeeklySleepQuality(startDate) {
+    /* for each this.sleepLog element between
+    startDate and startDate + 7, accumulate sleepQuality,
+    divide by this.sleepLog.length, and return */
+  }
+
+  calculateHrsSleptByDate(id, date) {
+    const userLog = this.sleepData.filter(entry => entry.id === id);
+    const entry = userLog.find(entry => entry.date === date)
+    return entry.hoursSlept;
+  }
+
+  calculateSleepQualityByDate(id, date) {
+    const userLog = this.sleepData.filter(entry => entry.id === id);
+    const entry = userLog.find(entry => entry.date === date)
+    return entry.sleepQuality;
+  }
+
+  // activityData (REFACTOR/MOVE TO `UserRepository.js`)
+
+  calculateDailyMilesWalked(date) {
+    /* identify element in this.activityLog by date,
+    multiply numSteps by strideLength for distance in feet,
+    convert to miles + remainder feet, and return */
+  }
+
+  retrieveAvgWeeklyMinutesActive(startDate) {
+    /* for each this.activityLog element between
+    startDate and startDate + 7, accumulate minutesActive,
+    divide by this.activityLog.length, and return */
+  }
+
+  evaluateStepGoalSuccess(date) {
+    /* identify element in this.activityLog by date,
+    evaluate whether numSteps is >= dailyStepGoal,
+    return Boolean */
+  }
+
+  identifyDatesExceedingStepGoal() {
+    /* filter() through activityLog array and evaluate/identify
+    dates where numSteps > this.dailyStepGoal */
+  }
+
+  retrieveMostFlightsClimbed() {
+    /* declare let maxFlights variable and assign value of
+    this.activityLog[0].flightsOfStairs, iterate through array and if
+    this.activityLog[i].flightsOfStairs > maxFlights,
+    maxFlights = this.ActivityArray[i].flightsOfStairs,
+    then return maxFlights */
+  }
 
   // sleepData methods
 
@@ -92,15 +159,57 @@ class UserRepository {
     and return array */
   }
 
-  retrieveBestSleeper(date) {
-    /* use find() to identify first element in sleepData
-    array with same data as parameter, declare let bestSleeper
-    and assign value of that sleepData[n].id,
-    then iterate through array and if
-    sleepData[i].hoursSlept > bestSleeper,
-    bestSleeper = sleepData[i].id, then return bestSleeper */
+  identifyBestSleeper(date) {
+    let sleeper = this.sleepData[0];
+    this.sleepData.forEach(entry => {
+      if (entry.hoursSlept > sleeper.hoursSlept) {
+        sleeper = entry;
+      }
+    });
+    const bestSleepers = this.sleepData.filter(entry => 
+      entry.hoursSlept === sleeper.hoursSlept);
+
+    // let sleeperDate = sleeper.date;
+    // let sleeperName = this.userData[sleeper.id].name;
+    // let bestSleeper = { id: sleeper.id, name: sleeperName, date: sleeperDate };
+    // console.log(bestSleeper);
+
+    console.log(bestSleepers);
+    // return bestSleepers;
   }
 
+  // activityData (REFACTOR/MOVE TO `UserRepository.js`)
+
+  calculateDailyMilesWalked(date) {
+    /* identify element in this.activityLog by date,
+    multiply numSteps by strideLength for distance in feet,
+    convert to miles + remainder feet, and return */
+  }
+
+  retrieveAvgWeeklyMinutesActive(startDate) {
+    /* for each this.activityLog element between
+    startDate and startDate + 7, accumulate minutesActive,
+    divide by this.activityLog.length, and return */
+  }
+
+  evaluateStepGoalSuccess(date) {
+    /* identify element in this.activityLog by date,
+    evaluate whether numSteps is >= dailyStepGoal,
+    return Boolean */
+  }
+
+  identifyDatesExceedingStepGoal() {
+    /* filter() through activityLog array and evaluate/identify
+    dates where numSteps > this.dailyStepGoal */
+  }
+
+  retrieveMostFlightsClimbed() {
+    /* declare let maxFlights variable and assign value of
+    this.activityLog[0].flightsOfStairs, iterate through array and if
+    this.activityLog[i].flightsOfStairs > maxFlights,
+    maxFlights = this.ActivityArray[i].flightsOfStairs,
+    then return maxFlights */
+  }
 
   // activityData methods
 

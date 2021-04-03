@@ -79,8 +79,7 @@ class UserRepository {
 // sleepData (REFACTOR/MOVE TO `UserRepository.js`)
 
   calculateAvgDailyHrsSlept() {
-    /* for each this.sleepLog element, accumulate
-    hoursSlept, divide by this.sleepLog.length, and return */
+    console.log("LOGGGED");
   }
 
   calculateAvgWeeklyHrsSlept(startDate) {
@@ -100,14 +99,16 @@ class UserRepository {
     divide by this.sleepLog.length, and return */
   }
 
-  calculateHrsSleptByDate(date) {
-    /* use find() to iterate through this.sleepLog array,
-    locate specific element by date, and return hoursSlept */
+  calculateHrsSleptByDate(id, date) {
+    const userLog = this.sleepData.filter(entry => entry.id === id);
+    const entry = userLog.find(entry => entry.date === date)
+    return entry.hoursSlept;
   }
 
-  calculateSleepQualityByDate(date) {
-    /* use find() to iterate through this.sleepLog array,
-    locate specific element by date, and return sleepQuality */
+  calculateSleepQualityByDate(id, date) {
+    const userLog = this.sleepData.filter(entry => entry.id === id);
+    const entry = userLog.find(entry => entry.date === date)
+    return entry.sleepQuality;
   }
 
   // activityData (REFACTOR/MOVE TO `UserRepository.js`)
@@ -158,13 +159,23 @@ class UserRepository {
     and return array */
   }
 
-  retrieveBestSleeper(date) {
-    /* use find() to identify first element in sleepData
-    array with same data as parameter, declare let bestSleeper
-    and assign value of that sleepData[n].id,
-    then iterate through array and if
-    sleepData[i].hoursSlept > bestSleeper,
-    bestSleeper = sleepData[i].id, then return bestSleeper */
+  identifyBestSleeper(date) {
+    let sleeper = this.sleepData[0];
+    this.sleepData.forEach(entry => {
+      if (entry.hoursSlept > sleeper.hoursSlept) {
+        sleeper = entry;
+      }
+    });
+    const bestSleepers = this.sleepData.filter(entry => 
+      entry.hoursSlept === sleeper.hoursSlept);
+
+    // let sleeperDate = sleeper.date;
+    // let sleeperName = this.userData[sleeper.id].name;
+    // let bestSleeper = { id: sleeper.id, name: sleeperName, date: sleeperDate };
+    // console.log(bestSleeper);
+
+    console.log(bestSleepers);
+    // return bestSleepers;
   }
 
   // activityData (REFACTOR/MOVE TO `UserRepository.js`)

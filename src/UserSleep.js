@@ -10,12 +10,12 @@ class UserSleep {
     this.sleepData = allSleepData.filter(dataPoint => dataPoint.userID === this.id);
   }
 
-  calcAvgHoursSlept() {
-    const totalHoursSlept = this.sleepData.reduce((total, num) => {
-      return total + num.hoursSlept
+  calcAvgSleep(property) {
+    const total = this.sleepData.reduce((total, num) => {
+      return total + num[property]
     }, 0)
-    const avgHoursSlept = totalHoursSlept / this.sleepData.length
-    return avgHoursSlept
+    const avg = total / this.sleepData.length
+    return avg
   }
 
   calcSleepByDate(date, property) {

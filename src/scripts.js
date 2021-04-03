@@ -49,6 +49,7 @@ const end = datepicker(document.getElementById('dateRangePickerEnd'), {
   minDate: new Date(2019, 5, 15),
   maxDate: new Date(2019, 8, 22),
   onSelect: (instance, date) => {
+    if (date) {
     let stringifiedRange = JSON.stringify(end.getRange());
     let splitRange = stringifiedRange.split("\"");
     let startRange = splitRange[3]
@@ -57,6 +58,7 @@ const end = datepicker(document.getElementById('dateRangePickerEnd'), {
     endDate = endRange.substring(0, 10).replaceAll('-', '/');
     showHydrationData();
     showSleepData();
+   }
   }
 });
 

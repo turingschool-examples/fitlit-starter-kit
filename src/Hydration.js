@@ -36,8 +36,12 @@ class Hydration {
     let day4 = this.user[findStartingDate + 3];
     let day3 = this.user[findStartingDate + 2];
     let day2 = this.user[findStartingDate + 1];
-    let day1 = this.user[findStartingDate]
+    let day1 = this.user[findStartingDate];
+    if (day7) {
     return [day7.numOunces, day6.numOunces, day5.numOunces, day4.numOunces, day3.numOunces, day2.numOunces, day1.numOunces];
+  } else {
+    return "Please select a valid week"
+    }
   }
 }
 

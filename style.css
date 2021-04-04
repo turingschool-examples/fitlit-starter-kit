@@ -1,7 +1,3 @@
-/* TO FIX
-
- */
-
 * {
   /* border: 1px solid thistle; */
   font-family: 'Ubuntu', sans-serif;
@@ -89,7 +85,7 @@ body {
   /* flex-direction: row; */
   /* justify-content: space-evenly; */
   /* height: 15vw; */
-  border: 1px solid #679137;
+  border: 1px solid #6791e7;
   background: linear-gradient(#5dfeca, #6791e7);
 }
 

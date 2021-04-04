@@ -64,5 +64,17 @@ describe('Sleep', () => {
     expect(sleepAll.calculateAllUsersSleepQuality()).to.equal(3.2);
   });
 
+  it('should find the user with the most hours slept by date', () => {
+    expect(sleepAll.findUserWithMostHoursSlept("2019/06/21")).to.deep.equal(
+      { userID: 3, date: '2019/06/21', hoursSlept: 8.9, sleepQuality: 3.7 }
+    );
+    expect(sleepAll.findUserWithMostHoursSlept("2019/06/18")).to.deep.equal(
+      { userID: 2, date: '2019/06/18', hoursSlept: 10.8, sleepQuality: 3.2 }
+    );
+  });
+
+  it('should find all users with average sleep quality greater than 3 by week', () => {
+    expect(sleepAll.findAllUsersWithHighSleepQuality("2019/06/15")).to.deep.equal([3])
+  });
 
 });

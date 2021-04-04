@@ -64,13 +64,15 @@ section {
 }
 
 .user-details {
+  display: flex;
+  flex-direction: row;
   line-height: .9em;
   text-align: center;
 }
 
 .step-goals {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .step-goal {
@@ -128,6 +130,7 @@ section {
 
   .activity-card {
     flex-direction: column;
+    height: 93.5%;
   }
 }
 

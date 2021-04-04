@@ -130,7 +130,8 @@ section {
   border-radius: 25px;
 }
 
-.activity-card {
+.activity-card,
+.week-activity-card {
   display: flex;
   /* flex-direction: row; */
   justify-content: space-evenly;
@@ -140,6 +141,17 @@ section {
   background: linear-gradient(#5dfeca, #b100ae);
 }
 
+.activity-data,
+.week-activity-data {
+  display: flex;
+  justify-content: space-evenly;
+  /* justify-content: center; */
+  align-items: center;
+  border: 1px solid #b100ae;
+  border-radius: 25px;
+}
+
+/* 📱➡💻 MEDIA QUERIES */
 @media only screen and (min-width: 750px) {
   * {
     border: 1px solid magenta;

@@ -24,12 +24,12 @@ function welcomeUser() {
 
 function displayInfoCard() {
   infoCard.innerHTML = `
-    <!-- <p class="user-detail">Name: ${newUser.name}</p> -->
-    <!-- <p class="user-detail">Address: ${newUser.address}</p> -->
-    <!-- <p class="user-detail">Email: ${newUser.email}</p> -->
-    <p class="user-detail">Stride Length: ${newUser.strideLength}</p>
-    <p class="user-detail">Daily Step Goal: ${newUser.dailyStepGoal}</p>
-    <p class="user-detail">Friends: ${newUser.friends}</p>
+    <!-- <p class="user-detail card-flex">Name: ${newUser.name}</p> -->
+    <!-- <p class="user-detail card-flex">Address: ${newUser.address}</p> -->
+    <!-- <p class="user-detail card-flex">Email: ${newUser.email}</p> -->
+    <p class="user-detail card-flex">Stride Length: ${newUser.strideLength}</p>
+    <p class="user-detail card-flex">Daily Step Goal: ${newUser.dailyStepGoal}</p>
+    <p class="user-detail card-flex">Friends: ${newUser.friends}</p>
   `
 }
 

@@ -34,6 +34,7 @@ body {
   background: linear-gradient(#b3fee6, #f4737e);
 }
 
+ /* 📇 Set up style for display cards */
 .card-style
 /* .welcome-msg, */
 /* .user-info-card, */
@@ -49,17 +50,24 @@ body {
   background: linear-gradient(#5dfeca, #f4737e);
 }
 
-.step-goals,
+/* 🤸‍♀️ Set up flex styles for display cards */
+.card-flex {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* .step-goals,
 .user-details {
   display: flex;
   justify-content: space-evenly;
-}
+} */
 
 .step-goal,
 .user-detail {
-  display: flex;
-  justify-content: center;
-  text-align: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* text-align: center; */
   border: 1px solid #5dfeca;
   border-radius: 25px;
 }
@@ -77,27 +85,27 @@ body {
 /* } */
 
 .hydration-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  height: 15vw;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: space-evenly; */
+  /* height: 15vw; */
   border: 1px solid #679137;
-  margin: 2vw;
   background: linear-gradient(#5dfeca, #6791e7);
 }
 
 .hydration-data {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin: 2vw;
   border: 1px solid #6791e7;
   border-radius: 25px;
 }
 
 .sleep-card,
 .all-sleep-data-card {
-  display: flex;
-  justify-content: space-evenly;
+  /* display: flex; */
+  /* justify-content: space-evenly; */
   border: 1px solid #1d0047;
   border-radius: 25px;
   margin: 2vw;
@@ -106,14 +114,20 @@ body {
 
 .sleep-data,
 .all-sleep-data {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: space-evenly; */
+  /* align-items: center; */
   border: 1px solid #1d0047;
   border-radius: 25px;
 }
 
+.activity-card {
+  display: flex;
+  flex-direction: column;
+}
+
 .activity-card,
+.today-activity-card,
 .week-activity-card {
   display: flex;
   justify-content: space-evenly;
@@ -143,9 +157,10 @@ body {
     display: flex;
   }
 
-  .activity-card {
+  .today-activity-card,
+  .week-activity-card {
     flex-direction: column;
-    height: 93.5%;
+    /* height: 93.5%; */
   }
 }
 

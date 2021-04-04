@@ -49,12 +49,14 @@ body {
   background: linear-gradient(#5dfeca, #f4737e);
 }
 
-.step-goals {
+.step-goals,
+.user-details {
   display: flex;
   justify-content: space-evenly;
 }
 
-.step-goal {
+.step-goal,
+.user-detail {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -62,18 +64,17 @@ body {
   border-radius: 25px;
 }
 
-.user-details {
-  display: flex;
-  justify-content: space-evenly;
-  line-height: .9em;
-  text-align: center;
-}
-
-.user-detail {
+/* .user-detail {
   border: 1px solid #5dfeca;
   border-radius: 25px;
-}
+} */
 
+/* .user-details { */
+  /* display: flex; */
+  /* justify-content: space-evenly; */
+  /* line-height: .9em; */
+  /* text-align: center; */
+/* } */
 
 .hydration-card {
   display: flex;

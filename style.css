@@ -31,34 +31,22 @@ body {
 .welcome-msg {
   font-family: 'Yatra One', cursive;
   justify-content: center;
-  /* text-align: center; */
   background: linear-gradient(#b3fee6, #f4737e);
-  border: none;
 }
 
-.welcome-msg,
-.user-info-card,
-.step-goals,
-.user-details,
-.hydration-card,
-.sleep-card,
-.activity-card {
+.card-style
+/* .welcome-msg, */
+/* .user-info-card, */
+/* .step-goals, */
+/* .user-details, */
+/* .hydration-card, */
+/* .sleep-card, */
+/* .activity-card  */
+{
   margin: 2vw;
   border: 1px solid #f4737e;
   border-radius: 25px;
   background: linear-gradient(#5dfeca, #f4737e);
-}
-
-.user-details {
-  display: flex;
-  justify-content: space-evenly;
-  line-height: .9em;
-  text-align: center;
-}
-
-.user-detail {
-  border: 1px solid #5dfeca;
-  border-radius: 25px;
 }
 
 .step-goals {
@@ -73,6 +61,19 @@ body {
   border: 1px solid #5dfeca;
   border-radius: 25px;
 }
+
+.user-details {
+  display: flex;
+  justify-content: space-evenly;
+  line-height: .9em;
+  text-align: center;
+}
+
+.user-detail {
+  border: 1px solid #5dfeca;
+  border-radius: 25px;
+}
+
 
 .hydration-card {
   display: flex;

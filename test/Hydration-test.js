@@ -92,8 +92,8 @@ describe("Hydration class", () => {
   })
 
   it("should calculate average fluid intake by user", () => {
-    expect(hydration1.calculateDailyWater()).to.equal(67.85714285714286);
-    expect(hydration2.calculateDailyWater()).to.equal(81.42857142857143);
+    expect(hydration1.calcAvgDailyWater("numOunces")).to.equal(67.85714285714286);
+    expect(hydration2.calcAvgDailyWater("numOunces")).to.equal(81.42857142857143);
   })
 
   it("should return oz drank on a specific date", () => {

@@ -1,3 +1,4 @@
+var calcAverage = require("./helpers/calcAverage");
 var formatDataByDate = require("./helpers/formatDataByDate");
 var retrieveAllUserDataByWeek = require("./helpers/retrieveDataByWeek");
 
@@ -8,10 +9,7 @@ class UserSleep {
   }
 
   calcAvgSleep(property) {
-    const total = this.sleepData.reduce((total, num) => {
-      return total + num[property]
-    }, 0)
-    const avg = total / this.sleepData.length
+    const avg = calcAverage(this.sleepData, property);
     return avg
   }
 

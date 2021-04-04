@@ -1,3 +1,4 @@
+var calcAverage = require("./helpers/calcAverage");
 var retrieveAllUserDataByWeek = require("./helpers/retrieveDataByWeek");
 
 class AllUserSleep {
@@ -5,12 +6,9 @@ class AllUserSleep {
     this.sleepData = sleepData;
   }
 
-  calcAvgSleepQuality(sleepData) {
-    const totalSleepQuality = sleepData.reduce((total, num) => {
-      return total + num.sleepQuality
-    }, 0)
-    const avgSleepQuality = totalSleepQuality / sleepData.length
-    return avgSleepQuality
+  calcAvgSleepQuality(data, property) {
+    const avg = calcAverage(data, property)
+    return avg
   }
 
   retrieveUniqueUserIDs(weekData) {
@@ -33,7 +31,7 @@ class AllUserSleep {
     const aboveAvgSleepers = userIDs.reduce((highSleepQualityUsers, currentUser) => {
       const specificSleeperData = dataForWeek.filter(dataPoint => dataPoint.userID === currentUser)
       //calculate average sleep quality
-      const avgSleepQuality = this.calcAvgSleepQuality(specificSleeperData)
+      const avgSleepQuality = this.calcAvgSleepQuality(specificSleeperData, "sleepQuality")
 
       //stores the user id to an array if the sleep quality average was > 3
       if (avgSleepQuality > 3) {

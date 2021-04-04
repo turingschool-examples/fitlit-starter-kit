@@ -1,33 +1,14 @@
-var dayjs = require("dayjs");
-var duration = require('dayjs/plugin/duration')
-dayjs.extend(duration);
-var isBetween = require('dayjs/plugin/isBetween')
-dayjs.extend(isBetween)
+var calcAverage = require("./helpers/calcAverage");
+var retrieveAllUserDataByWeek = require("./helpers/retrieveDataByWeek");
 
 class AllUserSleep {
   constructor(sleepData) {
     this.sleepData = sleepData;
   }
 
-  calcAvgSleepQuality(sleepData) {
-    const totalSleepQuality = sleepData.reduce((total, num) => {
-      return total + num.sleepQuality
-    }, 0)
-    const avgSleepQuality = totalSleepQuality / sleepData.length
-    return avgSleepQuality
-  }
-
-  retrieveAllUserDataByWeek(date) {
-    const day1 = dayjs(new Date(date));
-    const day7 = dayjs(day1).add(dayjs.duration({"weeks" : 1}))
-    const dataForDates = this.sleepData.reduce((total, dataPoint) => {
-      if (dayjs(dataPoint.date).isBetween(day1, day7, null, "[]")) {
-        return [...total, dataPoint]
-      }
-      return total
-    }, [])
-    return dataForDates
-    //returns data containing only relevant dates in week window
+  calcAvgSleepQuality(data, property) {
+    const avg = calcAverage(data, property)
+    return avg
   }
 
   retrieveUniqueUserIDs(weekData) {
@@ -43,14 +24,14 @@ class AllUserSleep {
   }
 
   calcAboveAvgSleepQuality(date) {
-    const dataForWeek = this.retrieveAllUserDataByWeek(date);
+    const dataForWeek = retrieveAllUserDataByWeek(this.sleepData, date);
     const userIDs = this.retrieveUniqueUserIDs(dataForWeek);
 
     //iterates through unique ids and then filters the data for the week to grab all of the data relevant to that unique id
     const aboveAvgSleepers = userIDs.reduce((highSleepQualityUsers, currentUser) => {
       const specificSleeperData = dataForWeek.filter(dataPoint => dataPoint.userID === currentUser)
       //calculate average sleep quality
-      const avgSleepQuality = this.calcAvgSleepQuality(specificSleeperData)
+      const avgSleepQuality = this.calcAvgSleepQuality(specificSleeperData, "sleepQuality")
 
       //stores the user id to an array if the sleep quality average was > 3
       if (avgSleepQuality > 3) {
@@ -83,7 +64,6 @@ class AllUserSleep {
     return winners
   }
 }
-
 
 if (typeof module !== 'undefined') {
   module.exports = AllUserSleep;

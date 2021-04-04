@@ -1,8 +1,5 @@
-var dayjs = require("dayjs");
-var duration = require('dayjs/plugin/duration')
-dayjs.extend(duration);
-var isBetween = require('dayjs/plugin/isBetween')
-dayjs.extend(isBetween)
+var formatDataByDate = require("./helpers/formatDataByDate");
+var retrieveAllUserDataByWeek = require("./helpers/retrieveDataByWeek");
 
 class UserSleep {
   constructor(id, allSleepData) {
@@ -24,23 +21,11 @@ class UserSleep {
   }
 
   calcSleepOverWeek(date, property) {
-    const day1 = dayjs(new Date(date));
-    const day7 = dayjs(day1).add(dayjs.duration({"weeks" : 1}))
-
-    const week = this.sleepData.reduce((specificWeek, dataPoint) => {
-      if (dayjs(dataPoint.date).isBetween(day1, day7, null, "[]")) {
-        //null, "[]" means include end data points, so days 1-7 including 1 and 7 (not just 2-6)
-        const day = dataPoint.date;
-        const sleepData = dataPoint[property];
-        const newData = {[day]: sleepData};
-        return [...specificWeek, newData]
-      }
-      return specificWeek
-    }, [])
-    return week
+    const sleepData = retrieveAllUserDataByWeek(this.sleepData, date);
+    const formattedData = formatDataByDate(sleepData, property);
+    return formattedData
   }
 }
-
 
 if (typeof module !== 'undefined') {
   module.exports = UserSleep;

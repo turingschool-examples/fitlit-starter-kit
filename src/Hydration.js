@@ -1,3 +1,4 @@
+var retrieveAllUserDataByWeek = require("./helpers/retrieveDataByWeek");
 const dayjs = require("dayjs");
 const duration = require("dayjs/plugin/duration")
 dayjs.extend(duration);

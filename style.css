@@ -1,3 +1,4 @@
+/* 🪐 General styling rules */
 * {
   /* border: 1px solid thistle; */
   font-family: 'Ubuntu', sans-serif;
@@ -21,9 +22,7 @@ body {
   margin: 4vw;
   padding: 1vw;
   background: linear-gradient(#b3fee6, #f4a3aa);
-  /* border-radius: 25px; */
 }
-
 
  /* 📇 Template for display cards */
 .card-style {
@@ -31,6 +30,7 @@ body {
   border: 1px solid #f4737e;
   background: linear-gradient(#5dfeca, #f4737e);
 }
+
 .radness {
   border-radius: 25px;
 }
@@ -54,7 +54,6 @@ body {
 .step-goal,
 .user-detail {
   border: 1px solid #5dfeca;
-  /* border-radius: 25px; */
 }
 
 /* 💦 Hydration card */
@@ -66,14 +65,12 @@ body {
 .hydration-data {
   margin: 2vw;
   border: 1px solid #6791e7;
-  /* border-radius: 25px; */
 }
 
 /* 😴 Sleep card */
 .sleep-card,
 .all-sleep-data-card {
   border: 1px solid #1d0047;
-  /* border-radius: 25px; */
   margin: 2vw;
   background: linear-gradient(#5dfeca, #1d0047);
 }
@@ -81,7 +78,6 @@ body {
 .sleep-data,
 .all-sleep-data {
   border: 1px solid #1d0047;
-  /* border-radius: 25px; */
 }
 
 /* 🎯 Activity card */
@@ -89,7 +85,6 @@ body {
 .today-activity-card,
 .week-activity-card {
   border: 1px solid #b100ae;
-  /* border-radius: 25px; */
   margin: 2vw;
   background: linear-gradient(#5dfeca, #b100ae);
 }
@@ -101,7 +96,6 @@ body {
 .activity-data,
 .week-activity-data {
   border: 1px solid #b100ae;
-  /* border-radius: 25px; */
 }
 
 /* 📱➡💻 MEDIA QUERIES */
@@ -117,7 +111,6 @@ body {
   .today-activity-card,
   .week-activity-card {
     flex-direction: column;
-    /* height: 93.5%; */
   }
 }
 

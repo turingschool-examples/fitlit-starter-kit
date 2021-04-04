@@ -4,8 +4,10 @@
 
 * {
   /* border: 1px solid thistle; */
-  font-family: 'Yatra One', cursive;
+  font-family: 'Ubuntu', sans-serif;
+  /* font-family: 'Yatra One', cursive; */
   color: #fefefe;
+  text-align: center;
 }
 
 html,
@@ -24,10 +26,10 @@ body {
   background-attachment: fixed;
 }
 
-article,
+/* article,
 section {
   font-family: 'Ubuntu', sans-serif;
-}
+} */
 
 .display-area {
   margin: 4vw;
@@ -57,6 +59,7 @@ section {
 }
 
 .welcome-msg {
+  font-family: 'Yatra One', cursive;
   justify-content: center;
   text-align: center;
   background: linear-gradient(#b3fee6, #f4737e);
@@ -65,9 +68,15 @@ section {
 
 .user-details {
   display: flex;
-  flex-direction: row;
+  justify-content: space-evenly;
+  /* flex-direction: row; */
   line-height: .9em;
   text-align: center;
+}
+
+.user-detail {
+  border: 1px solid #5dfeca;
+  border-radius: 25px;
 }
 
 .step-goals {
@@ -101,7 +110,8 @@ section {
   border-radius: 25px;
 }
 
-.sleep-card {
+.sleep-card,
+.all-sleep-data-card {
   display: flex;
   /* flex-direction: row; */
   justify-content: space-evenly;
@@ -110,10 +120,21 @@ section {
   background: linear-gradient(#5dfeca, #1d0047);
 }
 
+.sleep-data,
+.all-sleep-data {
+  display: flex;
+  justify-content: space-evenly;
+  /* justify-content: center; */
+  align-items: center;
+  border: 1px solid #1d0047;
+  border-radius: 25px;
+}
+
 .activity-card {
   display: flex;
   /* flex-direction: row; */
   justify-content: space-evenly;
+  align-items: center;
   border: 1px solid #b100ae;
   margin: 2vw;
   background: linear-gradient(#5dfeca, #b100ae);

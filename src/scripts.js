@@ -24,12 +24,12 @@ function welcomeUser() {
 
 function displayInfoCard() {
   infoCard.innerHTML = `
-    <!-- <p>Name: ${newUser.name}</p> -->
-    <!-- <p>Address: ${newUser.address}</p> -->
-    <!-- <p>Email: ${newUser.email}</p> -->
-    <p>Stride Length: ${newUser.strideLength}</p>
-    <p>Daily Step Goal: ${newUser.dailyStepGoal}</p>
-    <p>Friends: ${newUser.friends}</p>
+    <!-- <p class="user-detail">Name: ${newUser.name}</p> -->
+    <!-- <p class="user-detail">Address: ${newUser.address}</p> -->
+    <!-- <p class="user-detail">Email: ${newUser.email}</p> -->
+    <p class="user-detail">Stride Length: ${newUser.strideLength}</p>
+    <p class="user-detail">Daily Step Goal: ${newUser.dailyStepGoal}</p>
+    <p class="user-detail">Friends: ${newUser.friends}</p>
   `
 }
 
@@ -40,3 +40,11 @@ function compareStepGoal() {
   `
   //display how user step goal compares to average step goal of all users
 }
+
+// function displayWaterToday() {
+//
+// }
+
+// function displayAvgWater() {
+//
+// }

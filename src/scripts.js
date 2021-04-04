@@ -24,19 +24,27 @@ function welcomeUser() {
 
 function displayInfoCard() {
   infoCard.innerHTML = `
-    <!-- <p>Name: ${newUser.name}</p> -->
-    <!-- <p>Address: ${newUser.address}</p> -->
-    <!-- <p>Email: ${newUser.email}</p> -->
-    <p>Stride Length: ${newUser.strideLength}</p>
-    <p>Daily Step Goal: ${newUser.dailyStepGoal}</p>
-    <p>Friends: ${newUser.friends}</p>
+    <!-- <p class="user-detail card-flex">Name: ${newUser.name}</p> -->
+    <!-- <p class="user-detail radness">Address: ${newUser.address}</p> -->
+    <!-- <p class="user-detail radness">Email: ${newUser.email}</p> -->
+    <p class="user-detail radness">Stride Length: ${newUser.strideLength}</p>
+    <p class="user-detail radness">Daily Step Goal: ${newUser.dailyStepGoal}</p>
+    <p class="user-detail radness">Friends: ${newUser.friends}</p>
   `
 }
 
 function compareStepGoal() {
   stepGoals.innerHTML = `
-    <p class="step-goal">Your Step Goal: ${newUser.dailyStepGoal}</p>
-    <p class="step-goal">Average Step Goal: ${newUserRepo.calculateAvgStepGoal()}</p>
+    <p class="step-goal radness">Your Step Goal: ${newUser.dailyStepGoal}</p>
+    <p class="step-goal radness">Average Step Goal: ${newUserRepo.calculateAvgStepGoal()}</p>
   `
   //display how user step goal compares to average step goal of all users
 }
+
+// function displayWaterToday() {
+//
+// }
+
+// function displayAvgWater() {
+//
+// }

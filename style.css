@@ -1,102 +1,117 @@
+/* 🪐 General styling rules */
 * {
   /* border: 1px solid thistle; */
-  font-family: 'Yatra One', cursive;
+  font-family: 'Ubuntu', sans-serif;
+  /* font-family: 'Yatra One', cursive; */
   color: #fefefe;
+  text-align: center;
 }
 
 html,
 body {
   height: 100%;
   margin: 0;
+}
+
+body {
   background: linear-gradient(#5dfeca, #f4737e);
-  background-size: 100%;
-  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .display-area {
   margin: 4vw;
+  padding: 1vw;
   background: linear-gradient(#b3fee6, #f4a3aa);
-  border-radius: 25px;
 }
 
-.welcome-msg {
-  justify-content: center;
-  text-align: center;
-}
-
-.user-info-card {
-  /* border: 1px solid mediumslateblue; */
+ /* 📇 Template for display cards */
+.card-style {
   margin: 2vw;
-}
-
-.step-goals {
-  display: flex;
-  justify-content: center;
-}
-
-.step-goals,
-.user-details,
-.hydration-card,
-.sleep-card,
-.activity-card {
-  margin: 2vw 0 0 0;
   border: 1px solid #f4737e;
-  border-radius: 25px;
   background: linear-gradient(#5dfeca, #f4737e);
 }
 
-.step-goal {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  border: 1px solid #5dfeca;
+.radness {
   border-radius: 25px;
 }
 
-.user-details {
-  line-height: .9em;
-  text-align: center;
-}
-
-article,
-section {
-  font-family: 'Ubuntu', sans-serif;
-}
-
-.hydration-card {
+/* 🤸‍♀️ Flex template for display cards */
+.card-flex {
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
-  height: 15vw;
-  border: 1px solid #679137;
-  margin: 2vw;
+  align-items: center;
+}
+
+/* 💄 Card styles */
+/* 🙏 Welcome banner */
+.welcome-msg {
+  font-family: 'Yatra One', cursive;
+  justify-content: center;
+  background: linear-gradient(#b3fee6, #f4737e);
+}
+
+/* 💁 User detail card */
+.step-goal,
+.user-detail {
+  border: 1px solid #5dfeca;
+}
+
+/* 💦 Hydration card */
+.hydration-card {
+  border: 1px solid #6791e7;
   background: linear-gradient(#5dfeca, #6791e7);
 }
 
 .hydration-data {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 2vw;
   border: 1px solid #6791e7;
-  border-radius: 25px;
 }
 
-.sleep-card {
-  display: flex;
-  /* flex-direction: row; */
-  justify-content: space-evenly;
+/* 😴 Sleep card */
+.sleep-card,
+.all-sleep-data-card {
   border: 1px solid #1d0047;
   margin: 2vw;
   background: linear-gradient(#5dfeca, #1d0047);
 }
 
-.activity-card {
-  display: flex;
-  /* flex-direction: row; */
-  justify-content: space-evenly;
+.sleep-data,
+.all-sleep-data {
+  border: 1px solid #1d0047;
+}
+
+/* 🎯 Activity card */
+.activity-card,
+.today-activity-card,
+.week-activity-card {
   border: 1px solid #b100ae;
   margin: 2vw;
   background: linear-gradient(#5dfeca, #b100ae);
+}
+
+.activity-card {
+  flex-direction: column;
+}
+
+.activity-data,
+.week-activity-data {
+  border: 1px solid #b100ae;
+}
+
+/* 📱➡💻 MEDIA QUERIES */
+@media only screen and (min-width: 750px) {
+  * {
+    /* border: 1px solid magenta; */
+  }
+
+  .desktop-area {
+    display: flex;
+  }
+
+  .today-activity-card,
+  .week-activity-card {
+    flex-direction: column;
+  }
 }
 
 /* 🎨 COLOR PALETTE

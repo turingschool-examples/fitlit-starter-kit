@@ -13,68 +13,76 @@
   </head>
   <body>
     <main>
-      <section class="display-area">
-      <h1 class="welcome-msg" id="welcomeMessage">Welcome, FirstName!</h1>
-      <article class="user-info-card">
-        <!-- UserInfo Card -->
-        <section class="step-goals" id="stepGoals">
-          Step goal compared to other users
-        </section>
-        <section class="user-details" id="infoCard">
-          User info: display user properties here
-        </section>
-      </article>
-      <article class="hydration-card">
-        <!-- Hydration visuals -->
-        <section class="hydration-data">
-          h2o today
-        </section>
-        <section class="hydration-data">
-          h2o avg
-        </section>
-      </article>
-      <article class="sleep-card">
-        Sleep visuals
-        <section>
-          Today's sleep data
-        </section>
-        <section>
-          Last week's average sleep data
-        </section>
-        <section>
-          All-time sleep data
-            <section>
-              Sleep quality over time
+      <section class="display-area radness">
+        <h1 class="welcome-msg card-style radness" id="welcomeMessage">Welcome, FirstName!</h1>
+        <div class="desktop-area">
+        <div class="desktop-left">
+        <article class="user-info-card card-style radness">
+          <!-- UserInfo Card -->
+          <section class="step-goals card-style radness card-flex" id="stepGoals">
+            Step goal compared to other users
+          </section>
+          <section class="user-details card-style radness card-flex" id="infoCard">
+            User properties will display here
+          </section>
+        </article>
+        <article class="hydration-card card-style radness card-flex">
+          <!-- Hydration visuals -->
+          <section class="hydration-data radness card-flex">
+            h2o today
+          </section>
+          <section class="hydration-data radness card-flex">
+            h2o avg
+          </section>
+        </article>
+        <article class="sleep-card card-style radness card-flex">
+          <!-- Sleep visuals -->
+          <section class="sleep-data radness card-flex">
+            Today's sleep data
+          </section>
+          <section class="sleep-data radness card-flex">
+            Last week's average sleep data
+          </section>
+          <section class="all-sleep-data-card radness card-flex">
+            <!-- All-time sleep data -->
+              <section class="sleep-data radness">
+                Sleep quality over time
+              </section>
+              <section class="sleep-data radness">
+                Average sleep hours over time
+              </section>
+          </section>
+        </article>
+      </div>
+      <div class="desktop-right">
+        <article class="activity-card card-style radness card-flex">
+          <!-- Activity visuals -->
+          <section class="today-activity-card radness card-flex">
+            <section class="activity-data radness card-flex">
+              Today's steps
             </section>
-            <section>
-              Average sleep hours over time
+            <section class="activity-data radness card-flex">
+              Today's active mins
             </section>
-        </section>
-      </article>
-      <article class="activity-card">
-        Activity visuals
-        <section>
-          Today's steps
-        </section>
-        <section>
-          Today's active minutes
-        </section>
-        <section>
-          Distance walked today
-        </section>
-        <section>
-          Weekly view of
-            <section>
+            <section class="activity-data radness card-flex">
+            Distance walked today
+          </section>
+          </section>
+          <section class="week-activity-card radness card-flex">
+            <!-- Weekly view of -->
+            <section class="week-activity-data radness card-flex">
               Step count
             </section>
-            <section>
-              Flights of stairs climbed
+            <section class="week-activity-data radness card-flex">
+              Stairs climbed
             </section>
-            <section>
-              Active minutes
+            <section class="week-activity-data radness card-flex">
+              Active mins
             </section>
-        </section>
-      </article>
+          </section>
+        </article>
+      </div>
+      </div>
     </section>
     </main>
     <script type="text/javascript" src="./data/users.js"></script>

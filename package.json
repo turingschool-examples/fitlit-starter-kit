@@ -15,6 +15,7 @@
     "mocha": "^7.1.2"
   },
   "dependencies": {
+    "chart.js": "^3.0.2",
     "dayjs": "^1.10.4"
   }
 }

@@ -1,6 +1,8 @@
-var calcAverage = require("./helpers/calcAverage");
-var formatDataByDate = require("./helpers/formatDataByDate");
-var retrieveAllUserDataByWeek = require("./helpers/retrieveDataByWeek");
+if (typeof module !== 'undefined') {
+  const calcAverage = require("./helpers/calcAverage");
+  const formatDataByDate = require("./helpers/formatDataByDate");
+  const retrieveAllUserDataByWeek = require("./helpers/retrieveDataByWeek");
+}
 
 class Hydration {
   constructor(id, data) {
@@ -11,6 +13,10 @@ class Hydration {
   calcAvgDailyWater(property) {
     const avg = calcAverage(this.hydrationData, property)
     return avg
+  }
+
+  mostRecentDayData() {
+    return this.hydrationData[this.hydrationData.length - 1];
   }
 
   ozDrankOnDate(date) {

@@ -1,9 +1,10 @@
 /* 🪐 General styling rules */
 * {
   /* border: 1px solid thistle; */
-  font-family: 'Ubuntu', sans-serif;
-  /* font-family: 'Yatra One', cursive; */
-  color: #fefefe;
+  /* font-family: 'Ubuntu', sans-serif; */
+  font-family: 'Yatra One', cursive;
+  color: #320031;
+  /* color: #fefefe; */
   text-align: center;
 }
 
@@ -14,6 +15,7 @@ body {
 }
 
 body {
+  /* background: linear-gradient(#rgb(93, 254, 202); rgb(244, 115, 126)); */
   background: linear-gradient(#5dfeca, #f4737e);
   background-attachment: fixed;
 }
@@ -47,13 +49,15 @@ body {
 .welcome-msg {
   font-family: 'Yatra One', cursive;
   justify-content: center;
-  background: linear-gradient(#b3fee6, #f4737e);
+  background: linear-gradient(#5dfeca, #f4737e);
 }
 
 /* 💁 User detail card */
 .step-goal,
 .user-detail {
   border: 1px solid #5dfeca;
+  /* background: linear-gradient(#5dfeca, #f4737e); */
+  background: linear-gradient(#dcfff4, #fbd3d5);
 }
 
 /* 💦 Hydration card */
@@ -65,6 +69,7 @@ body {
 .hydration-data {
   margin: 2vw;
   border: 1px solid #6791e7;
+  background: linear-gradient(#dcfff4, #a9c1f1);
 }
 
 /* 😴 Sleep card */
@@ -74,10 +79,15 @@ body {
   margin: 2vw;
   background: linear-gradient(#5dfeca, #1d0047);
 }
+.sleep-card {
+  flex-direction: column;
+}
 
 .sleep-data,
 .all-sleep-data {
   border: 1px solid #1d0047;
+  margin: 2vw;
+  background: linear-gradient(#dcfff4, #d0b0ff);
 }
 
 /* 🎯 Activity card */
@@ -96,6 +106,7 @@ body {
 .activity-data,
 .week-activity-data {
   border: 1px solid #b100ae;
+  background: linear-gradient(#dcfff4, #ffccfe);
 }
 
 /* 📱➡💻 MEDIA QUERIES */
@@ -116,16 +127,16 @@ body {
 
 /* 🎨 COLOR PALETTE
 >>> Accent Colors <<<
-👗 Minty green: #5dfeca;
+👗 Minty green: #5dfeca; LIGHTER SHADE: #dcfff4
 🍐 Pear green: #cef9ad;
-🍉 Melon: #f4737e;
+🍉 Melon: #f4737e; LIGHTER SHADE: #fbd3d5
 🌚 Dark gray: #202124;
 🐰 Light gray: #c2c8da;
 >>> Category Colors <<<
-💦 Hydration: #6791e7;
-🎯 Activity: #b100ae;
-😴 Sleep: #1d0047;
+💦 Hydration: #6791e7; LIGHTER SHADE: #a9c1f1
+😴 Sleep: #1d0047; LIGHTER SHADE: #d0b0ff
+🎯 Activity: #b100ae; LIGHTER SHADE: #ffccfe
 >>> Text Colors <<<
 💡 Light color: #fefefe;
-🕯 Dark color: #12002e;
+🕯 Dark color: ##320031;
 */

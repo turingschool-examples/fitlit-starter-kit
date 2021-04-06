@@ -9,6 +9,10 @@ const newUserHydration = new Hydration(1, hydrationData);
 const welcomeMessage = document.querySelector("#welcomeMessage");
 const dayHydrationDataDisplay = document.querySelector("#dayHydrationData");
 const weekHydrationDataDisplay = document.querySelector("#weekHydrationData");
+const daySleepDataDisplay = document.querySelector("#daySleepData");
+const weekSleepDataDisplay = document.querySelector("#weekSleepData");
+const avgSleepQualityDisplay = document.querySelector("#avgSleepQuality");
+const avgHoursSleptDisplay = document.querySelector("#avgHoursSlept");
 const infoCard = document.querySelector("#infoCard");
 const stepGoals = document.querySelector("#stepGoals");
 
@@ -71,26 +75,31 @@ function displayHydrationData(data) {
 function displaySleepData(data) {
   const todayDate = newUserSleep.mostRecentDayData();
   const todaySleepQuality = newUserSleep.calcByDate(todayDate.date, "sleepQuality");
-console.log("today's sleep quality", todaySleepQuality)
-  //display data for the returned date
   const todaySleepHours = newUserSleep.calcByDate(todayDate.date, "hoursSlept");
-  console.log("today's hours slept", todaySleepHours)
-  //display data for the returned date
-
-
-
+  daySleepDataDisplay.innerHTML = `
+    <p>
+    Last Night's Sleep Quality: ${todaySleepQuality}
+    Last Night's Hours Slept: ${todaySleepHours}
+    </p>
+  `
   const weekSleepQuality = newUserSleep.calcOverWeek(todayDate.date, "sleepQuality");
-  console.log("week's sleep quality", weekSleepQuality)
-  //display data for the returned week
   const weekSleepHours = newUserSleep.calcOverWeek(todayDate.date, "hoursSlept");
-  console.log("week's hours slept", weekSleepHours)
-  //display data for the returned week
-
-
+  weekSleepDataDisplay.innerHTML = `
+    <p>
+    Last Week's Sleep Quality: ${weekSleepQuality}
+    Last Week's Hours Slept: ${weekSleepHours}
+    </p>
+  `
   const avgSleepQuality = newUserSleep.calcAvgSleep("sleepQuality");
-console.log("average sleep quality", avgSleepQuality)
-  //display average sleep quality
+  avgSleepQualityDisplay.innerHTML = `
+    <p>
+    Average Sleep Quality: ${avgSleepQuality}
+    </p>
+  `
   const avgSleepHours = newUserSleep.calcAvgSleep("hoursSlept");
-  console.log("average sleep hours", avgSleepHours)
-  //display average hours slept
+  avgHoursSleptDisplay.innerHTML = `
+    <p>
+    Average Hours Slept: ${avgSleepHours}
+    </p>
+  `
 }

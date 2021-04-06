@@ -10,17 +10,21 @@ class UserSleep {
     this.sleepData = allSleepData.filter(dataPoint => dataPoint.userID === this.id);
   }
 
+  mostRecentDayData() {
+    return this.sleepData[this.sleepData.length - 1];
+  }
+
   calcAvgSleep(property) {
     const avg = calcAverage(this.sleepData, property);
     return avg
   }
 
-  calcSleepByDate(date, property) {
+  calcByDate(date, property) {
     const sleepDate = this.sleepData.find(dataPoint => dataPoint.date === date);
     return sleepDate[property]
   }
 
-  calcSleepOverWeek(date, property) {
+  calcOverWeek(date, property) {
     const sleepData = retrieveAllUserDataByWeek(this.sleepData, date);
     const formattedData = formatDataByDate(sleepData, property);
     return formattedData

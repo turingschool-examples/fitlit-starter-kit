@@ -50,14 +50,14 @@ function compareStepGoal() {
 
 function displayHydrationData(data) {
   const todayDate = newUserHydration.mostRecentDayData();
-  const todayHydration = newUserHydration.ozDrankOnDate(todayDate.date);
+  const todayHydration = newUserHydration.calcByDate(todayDate.date);
   dayHydrationDataDisplay.innerHTML = `
     <p>
     Today's Water Intake: ${todayHydration}
     </p>
   `
-  console.log("need to include helpers links in html script tags")
-  const weekHydration = newUserHydration.dailyDrinkDuringWeek(todayDate.date, "numOunces");
+
+  const weekHydration = newUserHydration.calcOverWeek(todayDate.date, "numOunces");
   console.log("this week's hydration data", weekHydration);
   //data is currently an array of objects
   //these can be broken up using object keys and object values to create an HTML table or implement chart js
@@ -70,17 +70,27 @@ function displayHydrationData(data) {
 
 function displaySleepData(data) {
   const todayDate = newUserSleep.mostRecentDayData();
-  const todaySleepQuality = newUserSleep.calcSleepByDate(todayDate, "sleepQuality");
+  const todaySleepQuality = newUserSleep.calcByDate(todayDate.date, "sleepQuality");
+console.log("today's sleep quality", todaySleepQuality)
+  //display data for the returned date
+  const todaySleepHours = newUserSleep.calcByDate(todayDate.date, "hoursSlept");
+  console.log("today's hours slept", todaySleepHours)
+  //display data for the returned date
 
-  //display data for the returned date
-  const todaySleepHours = newUserSleep.calcSleepByDate(todayDate, "hoursSlept");
-  //display data for the returned date
-  const weekSleepQuality = newUserSleep.calcSleepOverWeek(todayDate, "sleepQuality");
+
+
+  const weekSleepQuality = newUserSleep.calcOverWeek(todayDate.date, "sleepQuality");
+  console.log("week's sleep quality", weekSleepQuality)
   //display data for the returned week
-  const weekSleepHours = newUserSleep.calcSleepOverWeek(todayDate, "hoursSlept");
+  const weekSleepHours = newUserSleep.calcOverWeek(todayDate.date, "hoursSlept");
+  console.log("week's hours slept", weekSleepHours)
   //display data for the returned week
+
+
   const avgSleepQuality = newUserSleep.calcAvgSleep("sleepQuality");
+console.log("average sleep quality", avgSleepQuality)
   //display average sleep quality
   const avgSleepHours = newUserSleep.calcAvgSleep("hoursSlept");
+  console.log("average sleep hours", avgSleepHours)
   //display average hours slept
 }

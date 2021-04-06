@@ -55,8 +55,7 @@ function displayHydrationData(data) {
   Today's Water Intake: ${todayHydration}
   </p>
   `
-
-  //display data for the returned date
+  console.log("need to include helpers links in html script tags")
   const weekHydration = newUserHydration.dailyDrinkDuringWeek(todayDate, "numOunces");
   console.log("this week's hydration data", weekHydration);
   //display data for the returned week

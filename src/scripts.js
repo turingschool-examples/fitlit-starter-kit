@@ -29,7 +29,7 @@ function displayInfoCard() {
     <!-- <p class="user-detail radness">Email: ${newUser.email}</p> -->
     <p class="user-detail radness">Stride Length: ${newUser.strideLength}</p>
     <p class="user-detail radness">Daily Step Goal: ${newUser.dailyStepGoal}</p>
-    <p class="user-detail radness">Friends: ${newUser.friends}</p>
+    <!-- <p class="user-detail radness">Friends: ${newUser.friends}</p> -->
   `
 }
 

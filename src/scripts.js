@@ -7,6 +7,7 @@ const newUserHydration = new Hydration(1, hydrationData);
 
 /* *****Query Selectors***** */
 const welcomeMessage = document.querySelector("#welcomeMessage");
+const hydrationDataDisplay = document.querySelector("#hydrationData");
 const infoCard = document.querySelector("#infoCard");
 const stepGoals = document.querySelector("#stepGoals");
 
@@ -49,7 +50,11 @@ function compareStepGoal() {
 function displayHydrationData(data) {
   const todayDate = newUserHydration.mostRecentDayData();
   const todayHydration = newUserHydration.ozDrankOnDate(todayDate.date);
-
+  hydrationDataDisplay.innerHTML = `
+  <p>
+  Today's Water Intake: ${todayHydration}
+  </p>
+  `
 
   //display data for the returned date
   const weekHydration = newUserHydration.dailyDrinkDuringWeek(todayDate, "numOunces");
@@ -60,6 +65,7 @@ function displayHydrationData(data) {
 function displaySleepData(data) {
   const todayDate = newUserSleep.mostRecentDayData();
   const todaySleepQuality = newUserSleep.calcSleepByDate(todayDate, "sleepQuality");
+
   //display data for the returned date
   const todaySleepHours = newUserSleep.calcSleepByDate(todayDate, "hoursSlept");
   //display data for the returned date

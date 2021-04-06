@@ -97,16 +97,18 @@ describe("Hydration class", () => {
   })
 
   it("should return oz drank on a specific date", () => {
-    expect(hydration1.ozDrankOnDate("2019/06/15")).to.equal(37);
-    expect(hydration2.ozDrankOnDate("2019/06/16")).to.equal(84);
+    expect(hydration1.calcByDate("2019/06/15")).to.equal(37);
+    expect(hydration2.calcByDate("2019/06/16")).to.equal(84);
+    // expect(hydration2.calcByDate("2021/04/06")).to.equal("this should throw an error");
   })
 
   it("should return how many fluid oz were drank each day over a 1 week period", () => {
-    expect(hydration1.dailyDrinkDuringWeek("2019/06/15", "numOunces")).to.deep.equal([
+    expect(hydration1.calcOverWeek("2019/06/21", "numOunces")).to.deep.equal([
       {"2019/06/15": 37}, {"2019/06/16": 73}, {"2019/06/17": 73}, {"2019/06/18": 73}, {"2019/06/19": 73}, {"2019/06/20": 73}, {"2019/06/21": 73}
     ]);
-    expect(hydration2.dailyDrinkDuringWeek("2019/06/15", "numOunces")).to.deep.equal([
+    expect(hydration2.calcOverWeek("2019/06/21", "numOunces")).to.deep.equal([
       {"2019/06/15": 66}, {"2019/06/16": 84}, {"2019/06/17": 84}, {"2019/06/18": 84}, {"2019/06/19": 84}, {"2019/06/20": 84}, {"2019/06/21": 84}
-    ])
-  })
+    ]);
+  //   expect(hyration1.calcOverWeek("2019/06/15")).to.equal("another error");
+  });
 })

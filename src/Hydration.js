@@ -10,22 +10,22 @@ class Hydration {
     this.hydrationData = data.filter(dataPoint => dataPoint.userID === this.id);
   }
 
+  mostRecentDayData() {
+    return this.hydrationData[this.hydrationData.length - 1];
+  }
+
   calcAvgDailyWater(property) {
     const avg = calcAverage(this.hydrationData, property)
     return avg
   }
 
-  mostRecentDayData() {
-    return this.hydrationData[this.hydrationData.length - 1];
-  }
-
-  ozDrankOnDate(date) {
+  calcByDate(date) {
     const drinkDate = this.hydrationData.find(dataPoint => dataPoint.date === date);
     const ozDrankOnDate = drinkDate.numOunces;
     return ozDrankOnDate;
   }
 
-  dailyDrinkDuringWeek(date, property) {
+  calcOverWeek(date, property) {
     const hydrationData = retrieveAllUserDataByWeek(this.hydrationData, date);
     const formattedData = formatDataByDate(hydrationData, property);
     return formattedData

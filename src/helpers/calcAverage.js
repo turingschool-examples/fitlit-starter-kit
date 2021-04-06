@@ -6,4 +6,7 @@ const calcAverage = (data, property) => {
   return avg
 }
 
-module.exports = calcAverage;
+
+if (typeof module !== "undefined") {
+  module.exports = calcAverage;
+}

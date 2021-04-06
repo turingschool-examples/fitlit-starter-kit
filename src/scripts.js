@@ -1,5 +1,8 @@
 const newUserRepo = new UserRepository(userData);
 const newUser = new User(userData[0]);
+const newUserSleep = new UserSleep(1, sleepData);
+const newAllUserSleep = new AllUserSleep(sleepData);
+const newUserHydration = new Hydration(1, hydrationData);
 
 
 /* *****Query Selectors***** */
@@ -16,6 +19,8 @@ function displayUser() {
   welcomeUser();
   displayInfoCard();
   compareStepGoal();
+  displayHydrationData(hydrationData);
+  displaySleepData(sleepData);
 }
 
 function welcomeUser() {
@@ -41,10 +46,29 @@ function compareStepGoal() {
   //display how user step goal compares to average step goal of all users
 }
 
-// function displayWaterToday() {
-//
-// }
+function displayHydrationData(data) {
+  const todayDate = newUserHydration.mostRecentDayData();
+  const todayHydration = newUserHydration.ozDrankOnDate(todayDate.date);
 
-// function displayAvgWater() {
-//
-// }
+
+  //display data for the returned date
+  const weekHydration = newUserHydration.dailyDrinkDuringWeek(todayDate, "numOunces");
+  console.log("this week's hydration data", weekHydration);
+  //display data for the returned week
+}
+
+function displaySleepData(data) {
+  const todayDate = newUserSleep.mostRecentDayData();
+  const todaySleepQuality = newUserSleep.calcSleepByDate(todayDate, "sleepQuality");
+  //display data for the returned date
+  const todaySleepHours = newUserSleep.calcSleepByDate(todayDate, "hoursSlept");
+  //display data for the returned date
+  const weekSleepQuality = newUserSleep.calcSleepOverWeek(todayDate, "sleepQuality");
+  //display data for the returned week
+  const weekSleepHours = newUserSleep.calcSleepOverWeek(todayDate, "hoursSlept");
+  //display data for the returned week
+  const avgSleepQuality = newUserSleep.calcAvgSleep("sleepQuality");
+  //display average sleep quality
+  const avgSleepHours = newUserSleep.calcAvgSleep("hoursSlept");
+  //display average hours slept
+}

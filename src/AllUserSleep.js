@@ -1,5 +1,7 @@
-var calcAverage = require("./helpers/calcAverage");
-var retrieveAllUserDataByWeek = require("./helpers/retrieveDataByWeek");
+if (typeof module !== 'undefined') {
+  const calcAverage = require("./helpers/calcAverage");
+  const retrieveAllUserDataByWeek = require("./helpers/retrieveDataByWeek");
+}
 
 class AllUserSleep {
   constructor(sleepData) {

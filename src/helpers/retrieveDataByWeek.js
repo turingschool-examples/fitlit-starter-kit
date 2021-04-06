@@ -1,7 +1,7 @@
-var dayjs = require("dayjs");
-var duration = require('dayjs/plugin/duration')
+const dayjs = require("dayjs");
+const duration = require('dayjs/plugin/duration')
 dayjs.extend(duration);
-var isBetween = require('dayjs/plugin/isBetween')
+const isBetween = require('dayjs/plugin/isBetween')
 dayjs.extend(isBetween);
 
 const retrieveAllUserDataByWeek = (data, date) => {
@@ -17,5 +17,6 @@ const retrieveAllUserDataByWeek = (data, date) => {
 }
 
 
-
-module.exports = retrieveAllUserDataByWeek;
+if (typeof module !== "undefined") {
+  module.exports = retrieveAllUserDataByWeek;
+}

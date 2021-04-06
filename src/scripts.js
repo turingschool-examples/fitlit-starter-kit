@@ -3,7 +3,7 @@ const newUser = new User(userData[0]);
 const newUserSleep = new UserSleep(1, sleepData);
 const newAllUserSleep = new AllUserSleep(sleepData);
 const newUserHydration = new Hydration(1, hydrationData);
-var Chart = require("chart.js");
+
 
 /* *****Query Selectors***** */
 const welcomeMessage = document.querySelector("#welcomeMessage");
@@ -11,30 +11,17 @@ const dayHydrationDataDisplay = document.querySelector("#dayHydrationData");
 const weekHydrationDataDisplay = document.querySelector("#weekHydrationData");
 const infoCard = document.querySelector("#infoCard");
 const stepGoals = document.querySelector("#stepGoals");
-// const compStepGoalChart = document.getElementByID("compStepGoal");
+const stepDonut = document.querySelector("#stepDonut");
 
 /* *****Event Listeners***** */
 window.addEventListener("load", displayUser);
-
-/* *****Charts***** */
-// let stepChart = new Chart(compStepGoalChart, {
-//   type: "polarArea",
-//   data: {
-//     labels: ["Your step goal", "Avg user goal"],
-//     datasets: [{
-//       label: "Today's step comparison",
-//       data: [newUser.dailyStepGoal, newUserRepo.calculateAvgStepGoal()],
-//       backgroundColor: [#cef9ad, #202124],
-//       borderColor: [#cef9ad, #202124]
-//     }]
-//   }
-// })
 
 /* *****Functions***** */
 function displayUser() {
   welcomeUser();
   displayInfoCard();
   compareStepGoal();
+  renderStepDonut();
   displayHydrationData(hydrationData);
   displaySleepData(sleepData);
 }
@@ -55,13 +42,32 @@ function displayInfoCard() {
 }
 
 function compareStepGoal() {
-  // compStepGoal,innerHTML = stepChart;
   stepGoals.innerHTML = `
     <p class="step-goal radness">Your Step Goal: ${newUser.dailyStepGoal}</p>
     <p class="step-goal radness">Average Step Goal: ${newUserRepo.calculateAvgStepGoal()}</p>
   `
-  //display how user step goal compares to average step goal of all users
 }
+
+// 🧪 test function to render step goal chart
+function renderStepDonut() {
+  let stepData = [newUser.dailyStepGoal, newUserRepo.calculateAvgStepGoal()];
+  const donutData = {
+    labels: ["your steps", "avg user steps"],
+    datasets: [{
+      label: "daily step comparison",
+      data: stepData,
+      backgroundColor: ["#cef9ad", "#320031"],
+      hoverOffset: 4
+    }]
+  };
+  let stepDonutR = new Chart(stepDonut, {
+    type: "doughnut",
+    data: donutData,
+  });
+}
+
+
+//
 
 function displayHydrationData(data) {
   const todayDate = newUserHydration.mostRecentDayData();

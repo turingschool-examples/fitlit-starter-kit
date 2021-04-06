@@ -22,6 +22,7 @@
           <section class="step-goals card-style radness card-flex" id="stepGoals">
             <!-- Step goal compared to other users -->
           </section>
+          <canvas id="stepDonut" width="250" height="250"></canvas>
           <section class="user-details card-style radness card-flex" id="infoCard">
             <!-- User properties will display here -->
           </section>
@@ -92,6 +93,7 @@
       dayjs.extend(dayjs_plugin_duration);
       dayjs.extend(dayjs_plugin_isBetween);
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript" src="./data/users.js"></script>
     <script type="text/javascript" src="./data/hydration.js"></script>
     <script type="text/javascript" src="./data/sleep.js"></script>

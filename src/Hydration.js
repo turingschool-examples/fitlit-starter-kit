@@ -1,8 +1,8 @@
-if (typeof module !== 'undefined') {
+// if (typeof module !== 'undefined') {
   const calcAverage = require("./helpers/calcAverage");
   const formatDataByDate = require("./helpers/formatDataByDate");
   const retrieveAllUserDataByWeek = require("./helpers/retrieveDataByWeek");
-}
+// }
 
 class Hydration {
   constructor(id, data) {

@@ -7,7 +7,8 @@ const newUserHydration = new Hydration(1, hydrationData);
 
 /* *****Query Selectors***** */
 const welcomeMessage = document.querySelector("#welcomeMessage");
-const hydrationDataDisplay = document.querySelector("#hydrationData");
+const dayHydrationDataDisplay = document.querySelector("#dayHydrationData");
+const weekHydrationDataDisplay = document.querySelector("#weekHydrationData");
 const infoCard = document.querySelector("#infoCard");
 const stepGoals = document.querySelector("#stepGoals");
 
@@ -50,15 +51,21 @@ function compareStepGoal() {
 function displayHydrationData(data) {
   const todayDate = newUserHydration.mostRecentDayData();
   const todayHydration = newUserHydration.ozDrankOnDate(todayDate.date);
-  hydrationDataDisplay.innerHTML = `
-  <p>
-  Today's Water Intake: ${todayHydration}
-  </p>
+  dayHydrationDataDisplay.innerHTML = `
+    <p>
+    Today's Water Intake: ${todayHydration}
+    </p>
   `
   console.log("need to include helpers links in html script tags")
-  const weekHydration = newUserHydration.dailyDrinkDuringWeek(todayDate, "numOunces");
+  const weekHydration = newUserHydration.dailyDrinkDuringWeek(todayDate.date, "numOunces");
   console.log("this week's hydration data", weekHydration);
-  //display data for the returned week
+  //data is currently an array of objects
+  //these can be broken up using object keys and object values to create an HTML table or implement chart js
+  weekHydrationDataDisplay.innerHTML = `
+    <p>
+    Week's Water Intake: ${weekHydration}
+    </p>
+  `
 }
 
 function displaySleepData(data) {

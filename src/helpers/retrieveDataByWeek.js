@@ -7,10 +7,10 @@ if (typeof module !== 'undefined') {
 }
 
 const retrieveAllUserDataByWeek = (data, date) => {
-  const day1 = dayjs(new Date(date));
-  const day7 = dayjs(day1).add(dayjs.duration({"weeks" : 1}))
+  const day7 = dayjs(new Date(date));
+  const day1 = dayjs(day7).subtract(dayjs.duration({"days" : 6}))
   const dataForDates = data.reduce((total, dataPoint) => {
-    if (dayjs(dataPoint.date).isBetween(day1, day7, null, "[]")) {
+    if (dayjs(dataPoint.date).isBetween(day7, day1, null, "[]")) {
       return [...total, dataPoint]
     }
     return total

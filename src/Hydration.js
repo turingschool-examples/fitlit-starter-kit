@@ -21,9 +21,7 @@ class Hydration {
 
   ozDrankOnDate(date) {
     const drinkDate = this.hydrationData.find(dataPoint => dataPoint.date === date);
-    console.log(drinkDate)
     const ozDrankOnDate = drinkDate.numOunces;
-    console.log(ozDrankOnDate)
     return ozDrankOnDate;
   }
 

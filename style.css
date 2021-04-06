@@ -14,6 +14,7 @@ body {
 }
 
 body {
+  /* background: linear-gradient(#rgb(93, 254, 202); rgb(244, 115, 126)); */
   background: linear-gradient(#5dfeca, #f4737e);
   background-attachment: fixed;
 }
@@ -28,7 +29,7 @@ body {
 .card-style {
   margin: 2vw;
   border: 1px solid #f4737e;
-  background: linear-gradient(#5dfeca, #f4737e);
+  background: linear-gradient(#b3fee6, #f4737e);
 }
 
 .radness {
@@ -53,13 +54,13 @@ body {
 /* 💁 User detail card */
 .step-goal,
 .user-detail {
-  border: 1px solid #5dfeca;
+  border: 1px solid #b3fee6;
 }
 
 /* 💦 Hydration card */
 .hydration-card {
   border: 1px solid #6791e7;
-  background: linear-gradient(#5dfeca, #6791e7);
+  background: linear-gradient(#b3fee6, #6791e7);
 }
 
 .hydration-data {
@@ -72,7 +73,7 @@ body {
 .all-sleep-data-card {
   border: 1px solid #1d0047;
   margin: 2vw;
-  background: linear-gradient(#5dfeca, #1d0047);
+  background: linear-gradient(#b3fee6, #1d0047);
 }
 
 .sleep-data,
@@ -86,7 +87,7 @@ body {
 .week-activity-card {
   border: 1px solid #b100ae;
   margin: 2vw;
-  background: linear-gradient(#5dfeca, #b100ae);
+  background: linear-gradient(#b3fee6, #b100ae);
 }
 
 .activity-card {
@@ -116,9 +117,9 @@ body {
 
 /* 🎨 COLOR PALETTE
 >>> Accent Colors <<<
-👗 Minty green: #5dfeca;
+👗 Minty green: #5dfeca; LIGHTER SHADE: #b3fee6
 🍐 Pear green: #cef9ad;
-🍉 Melon: #f4737e;
+🍉 Melon: #f4737e; LIGHTER SHADE: #f4a3aa
 🌚 Dark gray: #202124;
 🐰 Light gray: #c2c8da;
 >>> Category Colors <<<

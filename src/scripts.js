@@ -1,15 +1,30 @@
 const newUserRepo = new UserRepository(userData);
 const newUser = new User(userData[0]);
+// var Chart = require("chart.js");
 
 
 /* *****Query Selectors***** */
 const welcomeMessage = document.querySelector("#welcomeMessage");
 const infoCard = document.querySelector("#infoCard");
 const stepGoals = document.querySelector("#stepGoals");
+// const compStepGoalChart = document.getElementByID("compStepGoal");
 
 /* *****Event Listeners***** */
 window.addEventListener("load", displayUser);
 
+/* *****Charts***** */
+// let stepChart = new Chart(compStepGoalChart, {
+//   type: "polarArea",
+//   data: {
+//     labels: ["Your step goal", "Avg user goal"],
+//     datasets: [{
+//       label: "Today's step comparison",
+//       data: [newUser.dailyStepGoal, newUserRepo.calculateAvgStepGoal()],
+//       backgroundColor: [#cef9ad, #202124],
+//       borderColor: [#cef9ad, #202124]
+//     }]
+//   }
+// })
 
 /* *****Functions***** */
 function displayUser() {
@@ -34,6 +49,7 @@ function displayInfoCard() {
 }
 
 function compareStepGoal() {
+  // compStepGoal,innerHTML = stepChart;
   stepGoals.innerHTML = `
     <p class="step-goal radness">Your Step Goal: ${newUser.dailyStepGoal}</p>
     <p class="step-goal radness">Average Step Goal: ${newUserRepo.calculateAvgStepGoal()}</p>

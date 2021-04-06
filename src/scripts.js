@@ -11,16 +11,17 @@ const dayHydrationDataDisplay = document.querySelector("#dayHydrationData");
 const weekHydrationDataDisplay = document.querySelector("#weekHydrationData");
 const infoCard = document.querySelector("#infoCard");
 const stepGoals = document.querySelector("#stepGoals");
+const stepDonut = document.querySelector("#stepDonut");
 
 /* *****Event Listeners***** */
 window.addEventListener("load", displayUser);
-
 
 /* *****Functions***** */
 function displayUser() {
   welcomeUser();
   displayInfoCard();
   compareStepGoal();
+  renderStepDonut();
   displayHydrationData(hydrationData);
   displaySleepData(sleepData);
 }
@@ -36,16 +37,34 @@ function displayInfoCard() {
     <!-- <p class="user-detail radness">Email: ${newUser.email}</p> -->
     <p class="user-detail radness">Stride Length: ${newUser.strideLength}</p>
     <p class="user-detail radness">Daily Step Goal: ${newUser.dailyStepGoal}</p>
-    <!-- <p class="user-detail radness">Friends: ${newUser.friends}</p> -->
+    <p class="user-detail radness">Friends: ${newUser.friends}</p>
   `
 }
 
 function compareStepGoal() {
   stepGoals.innerHTML = `
-    <p class="step-goal radness">Your Step Goal: ${newUser.dailyStepGoal}</p>
-    <p class="step-goal radness">Average Step Goal: ${newUserRepo.calculateAvgStepGoal()}</p>
+    <p class="step-goal radness">your step goal: ${newUser.dailyStepGoal}</p>
+    <p class="step-goal radness">avg user step goal: ${newUserRepo.calculateAvgStepGoal()}</p>
   `
-  //display how user step goal compares to average step goal of all users
+}
+
+// 🧪 test function to render step goal chart
+function renderStepDonut() {
+  let stepData = [newUser.dailyStepGoal, newUserRepo.calculateAvgStepGoal()];
+  const donutData = {
+    labels: ["your steps", "avg user steps"],
+    datasets: [{
+      label: "daily step comparison",
+      data: stepData,
+      backgroundColor: ["#f4737e", "#320031"],
+      borderColor: ["#f4737e", "#320031"],
+      hoverOffset: 4
+    }]
+  };
+  let stepDonutR = new Chart(stepDonut, {
+    type: "doughnut",
+    data: donutData,
+  });
 }
 
 function displayHydrationData(data) {
@@ -53,7 +72,7 @@ function displayHydrationData(data) {
   const todayHydration = newUserHydration.ozDrankOnDate(todayDate.date);
   dayHydrationDataDisplay.innerHTML = `
     <p>
-    Today's Water Intake: ${todayHydration}
+    Today you've had ${todayHydration} ounces of water!
     </p>
   `
   console.log("need to include helpers links in html script tags")
@@ -61,11 +80,18 @@ function displayHydrationData(data) {
   console.log("this week's hydration data", weekHydration);
   //data is currently an array of objects
   //these can be broken up using object keys and object values to create an HTML table or implement chart js
-  weekHydrationDataDisplay.innerHTML = `
-    <p>
-    Week's Water Intake: ${weekHydration}
-    </p>
-  `
+  // weekHydrationDataDisplay.innerHTML = `
+  //   <p>
+  //   Week's Water Intake: ${weekHydration}
+  //   </p>
+  // `
+  renderWeeklyHydrGraph(weekHydration);
+}
+
+
+// 🧪 test function to render water graph for weekly intake
+function renderWeeklyHydrGraph(hydrData) {
+
 }
 
 function displaySleepData(data) {

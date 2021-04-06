@@ -1,9 +1,14 @@
 const newUserRepo = new UserRepository(userData);
 const newUser = new User(userData[0]);
+const newUserSleep = new UserSleep(1, sleepData);
+const newAllUserSleep = new AllUserSleep(sleepData);
+const newUserHydration = new Hydration(1, hydrationData);
 
 
 /* *****Query Selectors***** */
 const welcomeMessage = document.querySelector("#welcomeMessage");
+const dayHydrationDataDisplay = document.querySelector("#dayHydrationData");
+const weekHydrationDataDisplay = document.querySelector("#weekHydrationData");
 const infoCard = document.querySelector("#infoCard");
 const stepGoals = document.querySelector("#stepGoals");
 
@@ -16,6 +21,8 @@ function displayUser() {
   welcomeUser();
   displayInfoCard();
   compareStepGoal();
+  displayHydrationData(hydrationData);
+  displaySleepData(sleepData);
 }
 
 function welcomeUser() {
@@ -41,10 +48,39 @@ function compareStepGoal() {
   //display how user step goal compares to average step goal of all users
 }
 
-// function displayWaterToday() {
-//
-// }
+function displayHydrationData(data) {
+  const todayDate = newUserHydration.mostRecentDayData();
+  const todayHydration = newUserHydration.ozDrankOnDate(todayDate.date);
+  dayHydrationDataDisplay.innerHTML = `
+    <p>
+    Today's Water Intake: ${todayHydration}
+    </p>
+  `
+  console.log("need to include helpers links in html script tags")
+  const weekHydration = newUserHydration.dailyDrinkDuringWeek(todayDate.date, "numOunces");
+  console.log("this week's hydration data", weekHydration);
+  //data is currently an array of objects
+  //these can be broken up using object keys and object values to create an HTML table or implement chart js
+  weekHydrationDataDisplay.innerHTML = `
+    <p>
+    Week's Water Intake: ${weekHydration}
+    </p>
+  `
+}
 
-// function displayAvgWater() {
-//
-// }
+function displaySleepData(data) {
+  const todayDate = newUserSleep.mostRecentDayData();
+  const todaySleepQuality = newUserSleep.calcSleepByDate(todayDate, "sleepQuality");
+
+  //display data for the returned date
+  const todaySleepHours = newUserSleep.calcSleepByDate(todayDate, "hoursSlept");
+  //display data for the returned date
+  const weekSleepQuality = newUserSleep.calcSleepOverWeek(todayDate, "sleepQuality");
+  //display data for the returned week
+  const weekSleepHours = newUserSleep.calcSleepOverWeek(todayDate, "hoursSlept");
+  //display data for the returned week
+  const avgSleepQuality = newUserSleep.calcAvgSleep("sleepQuality");
+  //display average sleep quality
+  const avgSleepHours = newUserSleep.calcAvgSleep("hoursSlept");
+  //display average hours slept
+}

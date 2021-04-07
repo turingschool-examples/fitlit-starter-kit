@@ -100,18 +100,17 @@ function renderWeeklyHydrGraph(hydrData) {
   const [ day7, day6, day5, day4, day3, day2, day1 ] = hydrData;
   const hydrOz = hydrData.flatMap(dataPoint => Object.values(dataPoint));
   const hydrDate = hydrData.flatMap(dataPoint => Object.keys(dataPoint));
-  const hydrColors = ["#2561dd", "#3b71e0", "#5181e4", "#6791e7", "#7da1ea", "#93b1ee", "#a9c1f1"];
+  // const hydrColors = ["#2561dd", "#3b71e0", "#5181e4", "#6791e7", "#7da1ea", "#93b1ee", "#a9c1f1"];
+  const hydrColors = ["#0047b3", "#0052cc", "#005ce6", "#0066ff", "#1a75ff", "#3385ff", "#4d94ff"];
   const graphData = {
     labels: hydrDate,
     datasets: [{
-      label: "daily ounces over for the last 7 days",
+      label: "daily ounces over the last 7 days",
       data: hydrOz,
       backgroundColor: hydrColors,
       borderColor: hydrColors,
     }]
   };
-  // console.log("graphData >>>", graphData);
-  console.log("the graph is rendering 🎉");
   let hydrGraphR = new Chart(hydrGraph, {
     type: "polarArea",
     data: graphData,

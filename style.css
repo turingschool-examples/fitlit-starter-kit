@@ -64,7 +64,7 @@ body {
 .hydration-card {
   flex-direction: column;
   border: 1px solid #6791e7;
-  background: linear-gradient(#5dfeca, #6791e7);
+  background: linear-gradient(#dcfff4, #5dfeca);
 }
 
 .hydration-data {

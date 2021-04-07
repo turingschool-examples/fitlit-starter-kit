@@ -1,4 +1,4 @@
-if (typeof module !== 'undefined') {
+if (typeof module !== "undefined") {
   const dayjs = require("dayjs");
   const duration = require('dayjs/plugin/duration')
   dayjs.extend(duration);

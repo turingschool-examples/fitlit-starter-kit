@@ -1,8 +1,14 @@
 const calcAverage = (data, property) => {
+  let numUndefined = 0;
   const total = data.reduce((total, dataPoint) => {
-    return total + dataPoint[property]
+    if (dataPoint[property] !== undefined) {
+      return total + dataPoint[property]
+    } else {
+      numUndefined += 1;
+      return total
+    }
   }, 0)
-  const avg = total / data.length
+  const avg = total / (data.length - numUndefined)
   return avg
 }
 

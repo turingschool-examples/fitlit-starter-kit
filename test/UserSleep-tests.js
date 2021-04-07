@@ -1,7 +1,6 @@
 const expect = require("chai").expect
 
 const UserSleep = require("../src/UserSleep");
-// const sleepData = require("../data/sleep");
 
 describe("UserSleep", () => {
   let sleepyUser, sleepData;
@@ -87,6 +86,10 @@ describe("UserSleep", () => {
         "sleepQuality": 4.7
       });
   });
+  it("should find the most recent day with data", () => {
+    const recentDayData = sleepyUser.mostRecentDayData();
+    expect(recentDayData).to.deep.equal({"userID": 3, "date": "2019/07/10", "hoursSlept": 7.3, "sleepQuality": 4.5});
+  });
   it("Should calculate the average number of hours slept per day", () => {
     const avgHoursSlept = sleepyUser.calcAvgSleep("hoursSlept");
     expect(avgHoursSlept).to.equal(8.21111111111111);
@@ -96,20 +99,25 @@ describe("UserSleep", () => {
     expect(avgSleepQuality).to.equal(3.644444444444445);
   });
   it("Should calculate how many hours they slept for a specific day (identified by a date)", () => {
-    const hoursSleptOnDate = sleepyUser.calcSleepByDate("2019/07/04", "hoursSlept");
-    expect(hoursSleptOnDate).to.equal(5.3);
+    const hoursSleptOnDate1 = sleepyUser.calcByDate("2019/07/04", "hoursSlept");
+    expect(hoursSleptOnDate1).to.equal(5.3);
+    const hoursSleptOnDate2 = sleepyUser.calcByDate("2021/04/06", "hoursSlept");
+    expect(hoursSleptOnDate2).to.equal(undefined);
   });
   it("Should calculate their sleep quality for a specific day (identified by a date)", () => {
-    const hoursSleptOnDate = sleepyUser.calcSleepByDate("2019/07/04", "sleepQuality");
+    const hoursSleptOnDate = sleepyUser.calcByDate("2019/07/04", "sleepQuality");
     expect(hoursSleptOnDate).to.equal(4.1);
   });
   it("Should calculate how many hours they slept each day over the course of any week", () => {
-    const sleepOverWeek = sleepyUser.calcSleepOverWeek("2019/07/04", "hoursSlept");
-    expect(sleepOverWeek).to.deep.equal([{ '2019/07/04': 5.3 }, { '2019/07/05': 6.1 }, { '2019/07/06': 8.1 }, { '2019/07/07': 9.2 }, { '2019/07/08': 5.8 }, { '2019/07/09': 10.6 }, { '2019/07/10': 7.3 }]);
+    const sleepOverWeek = sleepyUser.calcOverWeek("2019/07/10", "hoursSlept");
+    expect(sleepOverWeek).to.deep.equal([
+      { '2019/07/04': 5.3 }, { '2019/07/05': 6.1 }, { '2019/07/06': 8.1 }, { '2019/07/07': 9.2 }, { '2019/07/08': 5.8 }, { '2019/07/09': 10.6 }, { '2019/07/10': 7.3 }
+    ]);
   });
   it("Should calculate their sleep quality each day over the course of any week", () => {
-    const sleepQualityOverWeek = sleepyUser.calcSleepOverWeek("2019/07/04", "sleepQuality");
-    expect(sleepQualityOverWeek).to.deep.equal([{ '2019/07/04': 4.1 }, { '2019/07/05': 2.3 }, { '2019/07/06': 2.8 }, { '2019/07/07': 3.5 }, { '2019/07/08': 3.1 }, { '2019/07/09': 4.4 }, { '2019/07/10': 4.5 }]);
+    const sleepQualityOverWeek1 = sleepyUser.calcOverWeek("2019/07/10", "sleepQuality");
+    expect(sleepQualityOverWeek1).to.deep.equal([
+      { '2019/07/04': 4.1 }, { '2019/07/05': 2.3 }, { '2019/07/06': 2.8 }, { '2019/07/07': 3.5 }, { '2019/07/08': 3.1 }, { '2019/07/09': 4.4 }, { '2019/07/10': 4.5 }
+    ]);
   });
-  //test for missing days and weeks that cross over month line
 });

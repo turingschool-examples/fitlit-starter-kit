@@ -5,7 +5,6 @@ const AllUserSleep = require("../src/AllUserSleep");
 describe("AllUserSleep", () => {
   let sleepyUser1, sleepyUser2, sleepUser3, allSleepyUser
   beforeEach(() => {
-    //includes 3 users with a consecutive week's worth of data (including a user whose average sleep quality > 3 and a user whose average sleep qualtiy < 3)
     sleepData = [
       {
         "userID": 1,
@@ -150,6 +149,24 @@ describe("AllUserSleep", () => {
         "date": "2019/07/06",
         "hoursSlept": 8.1,
         "sleepQuality": 2.8
+      },
+      {
+        "userID": 1,
+        "date": "2019/07/07",
+        "hoursSlept": undefined,
+        "sleepQuality": undefined
+      },
+      {
+        "userID": 2,
+        "date": "2019/07/07",
+        "hoursSlept": undefined,
+        "sleepQuality": undefined
+      },
+      {
+        "userID": 3,
+        "date": "2019/07/07",
+        "hoursSlept": undefined,
+        "sleepQuality": undefined
       }];
     allUserSleep = new AllUserSleep(sleepData);
   });

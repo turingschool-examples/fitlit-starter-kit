@@ -1,10 +1,11 @@
-if (typeof module !== 'undefined') {
+if (typeof module !== "undefined") {
   const calcAverage = require("./helpers/calcAverage");
+  const dataForDay = require("./helpers/dataForDay");
   const formatDataByDate = require("./helpers/formatDataByDate");
   const retrieveAllUserDataByWeek = require("./helpers/retrieveDataByWeek");
 }
 
-class Hydration {
+class UserHydration {
   constructor(id, data) {
     this.id = id;
     this.hydrationData = data.filter(dataPoint => dataPoint.userID === this.id);
@@ -19,10 +20,9 @@ class Hydration {
     return avg
   }
 
-  calcByDate(date) {
-    const drinkDate = this.hydrationData.find(dataPoint => dataPoint.date === date);
-    const ozDrankOnDate = drinkDate.numOunces;
-    return ozDrankOnDate;
+  calcByDate(date, property) {
+    const dayData = dataForDay(this.hydrationData, date, property);
+    return dayData
   }
 
   calcOverWeek(date, property) {
@@ -33,5 +33,5 @@ class Hydration {
 }
 
 if (typeof module !== "undefined") {
-  module.exports = Hydration;
+  module.exports = UserHydration;
 }

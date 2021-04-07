@@ -2,7 +2,7 @@ const newUserRepo = new UserRepository(userData);
 const newUser = new User(userData[0]);
 const newUserSleep = new UserSleep(1, sleepData);
 const newAllUserSleep = new AllUserSleep(sleepData);
-const newUserHydration = new Hydration(1, hydrationData);
+const newUserHydration = new UserHydration(1, hydrationData);
 
 /* *****Query Selectors***** */
 const welcomeMessage = document.querySelector("#welcomeMessage");
@@ -73,7 +73,7 @@ function renderStepDonut() {
 
 function displayHydrationData(data) {
   const todayDate = newUserHydration.mostRecentDayData();
-  const todayHydration = newUserHydration.calcByDate(todayDate.date);
+  const todayHydration = newUserHydration.calcByDate(todayDate.date, "numOunces");
   dayHydrationDataDisplay.innerHTML = `
     <p>
     you've had ${todayHydration} ounces of water today!

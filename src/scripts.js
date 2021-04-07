@@ -32,7 +32,7 @@ function displayUser() {
 }
 
 function welcomeUser() {
-  welcomeMessage.innerText = `Welcome, ${newUser.firstName()}!`;
+  welcomeMessage.innerText = `Welcome to FitLit, ${newUser.firstName()}!`;
 }
 
 function displayInfoCard() {
@@ -40,16 +40,16 @@ function displayInfoCard() {
     <!-- <p class="user-detail radness">Name: ${newUser.name}</p> -->
     <!-- <p class="user-detail radness">Address: ${newUser.address}</p> -->
     <!-- <p class="user-detail radness">Email: ${newUser.email}</p> -->
-    <p class="user-detail radness">Stride Length: ${newUser.strideLength}</p>
-    <p class="user-detail radness">Daily Step Goal: ${newUser.dailyStepGoal}</p>
+    <p class="user-detail radness">stride length: ${newUser.strideLength}</p>
+    <!-- <p class="user-detail radness">Daily Step Goal: ${newUser.dailyStepGoal}</p> -->
     <!-- <p class="user-detail radness">Friends: ${newUser.friends}</p> -->
   `
 }
 
 function compareStepGoal() {
   stepGoals.innerHTML = `
-    <p class="step-goal radness">your step goal: ${newUser.dailyStepGoal}</p>
-    <p class="step-goal radness">avg user step goal: ${newUserRepo.calculateAvgStepGoal()}</p>
+    <p>your step goal: ${newUser.dailyStepGoal}</p>
+    <p>avg user step goal: ${newUserRepo.calculateAvgStepGoal()}</p>
   `
 }
 
@@ -79,28 +79,16 @@ function displayHydrationData(data) {
     <p>
     you've had ${todayHydration} ounces of water today!
     </p>
-  `
+  `;
 
   const weekHydration = newUserHydration.calcOverWeek(todayDate.date, "numOunces");
-
-  // console.log("this week's hydration data", weekHydration);
-  //data is currently an array of objects
-  //these can be broken up using object keys and object values to create an HTML table or implement chart js
-  // weekHydrationDataDisplay.innerHTML = `
-  //   <p>
-  //   Week's Water Intake: ${weekHydration}
-  //   </p>
-  // `
   renderWeeklyHydrGraph(weekHydration);
 }
 
-
-// 🧪 test function to render water graph for weekly intake
 function renderWeeklyHydrGraph(hydrData) {
   const [ day7, day6, day5, day4, day3, day2, day1 ] = hydrData;
   const hydrOz = hydrData.flatMap(dataPoint => Object.values(dataPoint));
   const hydrDate = hydrData.flatMap(dataPoint => Object.keys(dataPoint));
-  // const hydrColors = ["#2561dd", "#3b71e0", "#5181e4", "#6791e7", "#7da1ea", "#93b1ee", "#a9c1f1"];
   const hydrColors = ["#0047b3", "#0052cc", "#005ce6", "#0066ff", "#1a75ff", "#3385ff", "#4d94ff"];
   const graphData = {
     labels: hydrDate,
@@ -116,11 +104,6 @@ function renderWeeklyHydrGraph(hydrData) {
     data: graphData,
   });
 }
-
-
-
-
-
 
 function displaySleepData(data) {
   const todayDate = newUserSleep.mostRecentDayData();
@@ -151,5 +134,16 @@ function displaySleepData(data) {
     <p>
     Average Hours Slept: ${avgSleepHours}
     </p>
-  `
+  `;
+
+  renderSleepQualPie(todaySleepQuality, avgSleepQuality);
+}
+
+
+// display in id `daySleepDataDisplay`
+// 🧪 Test function to render daySleepDataPie
+function renderSleepQualPie(today, avg) {
+  // today is= const todaySleepQuality = newUserSleep.calcByDate(todayDate.date, "sleepQuality");
+  // avg is= const avgSleepQuality = newUserSleep.calcAvgSleep("sleepQuality");
+
 }

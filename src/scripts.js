@@ -41,7 +41,7 @@ function displayInfoCard() {
     <!-- <p class="user-detail radness">Name: ${newUser.name}</p> -->
     <!-- <p class="user-detail radness">Address: ${newUser.address}</p> -->
     <!-- <p class="user-detail radness">Email: ${newUser.email}</p> -->
-    <p class="user-detail radness">stride length: ${newUser.strideLength}</p>
+    <p class="user-detail radness">your stride length: ${newUser.strideLength}</p>
     <!-- <p class="user-detail radness">Daily Step Goal: ${newUser.dailyStepGoal}</p> -->
     <!-- <p class="user-detail radness">Friends: ${newUser.friends}</p> -->
   `;

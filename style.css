@@ -24,6 +24,7 @@ body {
   border-radius: 25px;
 }
 
+h4,
 p {
   margin: 0;
 }
@@ -34,7 +35,6 @@ canvas {
 }
 
 /* 💄 Card styles */
- /* 📇 Templates for display cards */
 .card-style {
   margin: 2vw;
   background: linear-gradient(#dcfff4, #5dfeca);
@@ -43,6 +43,7 @@ canvas {
 
 .card-flex {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
 }
@@ -50,17 +51,7 @@ canvas {
 .banner {
   background: linear-gradient(#5dfeca, #dcfff4);
   border-radius: 25px;
-}
-
-/* 💦 Hydration card */
-.hydration-card {
-  flex-direction: column;
-}
-
-.hydration-data {
-  margin: 2vw;
-  /* border: 1px solid #6791e7; */
-  /* background: linear-gradient(#dcfff4, #a9c1f1); */
+  width: 90%
 }
 
 /* 😴 Sleep card */

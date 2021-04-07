@@ -4,7 +4,6 @@ const newUserSleep = new UserSleep(1, sleepData);
 const newAllUserSleep = new AllUserSleep(sleepData);
 const newUserHydration = new Hydration(1, hydrationData);
 
-
 /* *****Query Selectors***** */
 const welcomeMessage = document.querySelector("#welcomeMessage");
 const dayHydrationDataDisplay = document.querySelector("#dayHydrationData");
@@ -18,6 +17,7 @@ const stepGoals = document.querySelector("#stepGoals");
 const stepDonut = document.querySelector("#stepDonut");
 const hydrGraph = document.querySelector("#hydrGraph");
 const sleepQualPie = document.querySelector("#sleepQualPie");
+const sleepHrsGraph = document.querySelector("#sleepHrsGraph");
 
 /* *****Event Listeners***** */
 window.addEventListener("load", displayUser);
@@ -116,26 +116,27 @@ function displaySleepData(data) {
   // `
   const weekSleepQuality = newUserSleep.calcOverWeek(todayDate.date, "sleepQuality");
   const weekSleepHours = newUserSleep.calcOverWeek(todayDate.date, "hoursSlept");
-  weekSleepDataDisplay.innerHTML = `
-    <p>
-    Last Week's Sleep Quality: ${weekSleepQuality}
-    Last Week's Hours Slept: ${weekSleepHours}
-    </p>
-  `
+  // weekSleepDataDisplay.innerHTML = `
+  //   <p>
+  //   Last Week's Sleep Quality: ${weekSleepQuality}
+  //   Last Week's Hours Slept: ${weekSleepHours}
+  //   </p>
+  // `
   const avgSleepQuality = newUserSleep.calcAvgSleep("sleepQuality");
-  avgSleepQualityDisplay.innerHTML = `
-    <p>
-    Average Sleep Quality: ${avgSleepQuality}
-    </p>
-  `
+  // avgSleepQualityDisplay.innerHTML = `
+  //   <p>
+  //   Average Sleep Quality: ${avgSleepQuality}
+  //   </p>
+  // `
   const avgSleepHours = newUserSleep.calcAvgSleep("hoursSlept");
-  avgHoursSleptDisplay.innerHTML = `
-    <p>
-    Average Hours Slept: ${avgSleepHours}
-    </p>
-  `;
+  // avgHoursSleptDisplay.innerHTML = `
+  //   <p>
+  //   Average Hours Slept: ${avgSleepHours}
+  //   </p>
+  // `;
 
   renderSleepQualPie(todaySleepQuality, avgSleepQuality);
+  renderSleepHrsGraph(todaySleepHours, avgSleepHours)
 }
 
 function renderSleepQualPie(today, avg) {
@@ -153,4 +154,8 @@ function renderSleepQualPie(today, avg) {
     type: "pie",
     data: pieData,
   });
+}
+//render in sleepHrsGraph
+function renderSleepHrsGraph(today, avg) {
+  const sleepHrsData
 }

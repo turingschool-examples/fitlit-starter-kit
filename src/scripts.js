@@ -97,18 +97,10 @@ function displayHydrationData(data) {
 
 // 🧪 test function to render water graph for weekly intake
 function renderWeeklyHydrGraph(hydrData) {
-  // console.log("hydrData >>>", hydrData);
-  // const hydrOz = hydrData.forEach(dataPoint => Object.values(hydrData)); did not work
-  // console.log("forEach? >>>", hydrData.forEach((hydrDate, i) => i.numOunces)); did not work
   const [ day7, day6, day5, day4, day3, day2, day1 ] = hydrData;
-  console.log("getting to line 103");
   const hydrOz = hydrData.flatMap(dataPoint => Object.values(dataPoint));
   const hydrDate = hydrData.flatMap(dataPoint => Object.keys(dataPoint));
   const hydrColors = ["#2561dd", "#3b71e0", "#5181e4", "#6791e7", "#7da1ea", "#93b1ee", "#a9c1f1"];
-  console.log("getting to line 105");
-  console.log("hydrOz >>>", hydrOz);
-  console.log("hydrDate >>>", hydrDate);
-  // console.log("day1.values >>> ", Object.values(day1));
   const graphData = {
     labels: hydrDate,
     datasets: [{

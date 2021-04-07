@@ -157,11 +157,22 @@ function renderSleepQualPie(today, avg) {
 }
 //render in sleepHrsGraph
 function renderSleepHrsGraph(week) {
-console.log(week);
   const sleepHrs = week.flatMap(dataPoint => Object.values(dataPoint));
   const sleepDate = week.flatMap(dataPoint => Object.keys(dataPoint));
-  
+  const labels = sleepDate;
 
-  const labels = "sleep hours over the last week";
-
+  const sleepHrsData = {
+    labels: labels,
+    datasets: [{
+      label: "last week's sleep hours",
+      data: sleepHrs,
+      fill: true,
+      borderColor: "#1d0047",
+      tension: 0.1
+    }]
+  };
+  const sleepHrsGraphR = new Chart(sleepHrsGraph, {
+    type: "line",
+    data: sleepHrsData,
+  });
 }

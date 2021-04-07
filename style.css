@@ -83,7 +83,8 @@ p {
 .all-sleep-data-card {
   /* border: 1px solid #1d0047; */
   margin: 2vw;
-  background: linear-gradient(#5dfeca, #1d0047);
+  background: linear-gradient(#dcfff4, #5dfeca);
+  /* background: linear-gradient(#5dfeca, #1d0047); */
 }
 .sleep-card {
   flex-direction: column;

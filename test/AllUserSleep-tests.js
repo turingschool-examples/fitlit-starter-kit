@@ -150,6 +150,24 @@ describe("AllUserSleep", () => {
         "date": "2019/07/06",
         "hoursSlept": 8.1,
         "sleepQuality": 2.8
+      },
+      {
+        "userID": 1,
+        "date": "2019/07/07",
+        "hoursSlept": undefined,
+        "sleepQuality": undefined
+      },
+      {
+        "userID": 2,
+        "date": "2019/07/07",
+        "hoursSlept": undefined,
+        "sleepQuality": undefined
+      },
+      {
+        "userID": 3,
+        "date": "2019/07/07",
+        "hoursSlept": undefined,
+        "sleepQuality": undefined
       }];
     allUserSleep = new AllUserSleep(sleepData);
   });

@@ -2,7 +2,7 @@ const newUserRepo = new UserRepository(userData);
 const newUser = new User(userData[0]);
 const newUserSleep = new UserSleep(1, sleepData);
 const newAllUserSleep = new AllUserSleep(sleepData);
-const newUserHydration = new Hydration(1, hydrationData);
+const newUserHydration = new UserHydration(1, hydrationData);
 
 
 /* *****Query Selectors***** */

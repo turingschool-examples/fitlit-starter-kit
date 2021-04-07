@@ -1,5 +1,6 @@
 // if (typeof module !== 'undefined') {
   const calcAverage = require("./helpers/calcAverage");
+  const dataForDay = require("./helpers/dataForDay");
   const formatDataByDate = require("./helpers/formatDataByDate");
   const retrieveAllUserDataByWeek = require("./helpers/retrieveDataByWeek");
 // }
@@ -20,8 +21,8 @@ class UserSleep {
   }
 
   calcByDate(date, property) {
-    const sleepDate = this.sleepData.find(dataPoint => dataPoint.date === date);
-    return sleepDate[property]
+    const dayData = dataForDay(this.sleepData, date, property);
+    return dayData
   }
 
   calcOverWeek(date, property) {

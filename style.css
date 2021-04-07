@@ -55,21 +55,22 @@ body {
 /* 💁 User detail card */
 .step-goal,
 .user-detail {
-  border: 1px solid #5dfeca;
+  /* border: 1px solid #5dfeca; */
   /* background: linear-gradient(#5dfeca, #f4737e); */
-  background: linear-gradient(#dcfff4, #fbd3d5);
+  /* background: linear-gradient(#dcfff4, #fbd3d5); */
 }
 
 /* 💦 Hydration card */
 .hydration-card {
+  flex-direction: column;
   border: 1px solid #6791e7;
   background: linear-gradient(#5dfeca, #6791e7);
 }
 
 .hydration-data {
   margin: 2vw;
-  border: 1px solid #6791e7;
-  background: linear-gradient(#dcfff4, #a9c1f1);
+  /* border: 1px solid #6791e7; */
+  /* background: linear-gradient(#dcfff4, #a9c1f1); */
 }
 
 /* 😴 Sleep card */

@@ -20,8 +20,6 @@ body {
 .display-area {
   margin: 4vw;
   padding: 1vw;
-  background: linear-gradient(#b3fee6, #f4a3aa);
-  border-radius: 25px;
 }
 
 h4,
@@ -51,7 +49,6 @@ canvas {
 .banner {
   background: linear-gradient(#5dfeca, #dcfff4);
   border-radius: 25px;
-  width: 90%
 }
 
 .activity-data,
@@ -65,17 +62,17 @@ canvas {
     /* border: 1px solid magenta; */
   }
 
+  .display-area {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+  }
+
   .desktop-area {
     display: flex;
     justify-content:space-evenly;
-  }
-
-  .card-style {
-    /* width: 45%; */
-  }
-
-  .card-flex {
-    flex-direction: column;
   }
 }
 

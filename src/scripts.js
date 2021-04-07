@@ -17,6 +17,7 @@ const infoCard = document.querySelector("#infoCard");
 const stepGoals = document.querySelector("#stepGoals");
 const stepDonut = document.querySelector("#stepDonut");
 const hydrGraph = document.querySelector("#hydrGraph");
+const sleepQualPie = document.querySelector("#sleepQualPie");
 
 /* *****Event Listeners***** */
 window.addEventListener("load", displayUser);
@@ -53,7 +54,6 @@ function compareStepGoal() {
   `
 }
 
-// 🧪 test function to render step goal chart
 function renderStepDonut() {
   const stepData = [newUser.dailyStepGoal, newUserRepo.calculateAvgStepGoal()];
   const donutData = {
@@ -108,12 +108,12 @@ function displaySleepData(data) {
   const todayDate = newUserSleep.mostRecentDayData();
   const todaySleepQuality = newUserSleep.calcByDate(todayDate.date, "sleepQuality");
   const todaySleepHours = newUserSleep.calcByDate(todayDate.date, "hoursSlept");
-  daySleepDataDisplay.innerHTML = `
-    <p>
-    Last Night's Sleep Quality: ${todaySleepQuality}
-    Last Night's Hours Slept: ${todaySleepHours}
-    </p>
-  `
+  // daySleepDataDisplay.innerHTML = `
+  //   <p>
+  //   Last Night's Sleep Quality: ${todaySleepQuality}
+  //   Last Night's Hours Slept: ${todaySleepHours}
+  //   </p>
+  // `
   const weekSleepQuality = newUserSleep.calcOverWeek(todayDate.date, "sleepQuality");
   const weekSleepHours = newUserSleep.calcOverWeek(todayDate.date, "hoursSlept");
   weekSleepDataDisplay.innerHTML = `
@@ -137,11 +137,8 @@ function displaySleepData(data) {
 
   renderSleepQualPie(todaySleepQuality, avgSleepQuality);
 }
-// display in id `daySleepDataDisplay`
-// 🧪 Test function to render daySleepDataPie
+
 function renderSleepQualPie(today, avg) {
-  console.log("today >>>", today);
-  console.log("average >>>", avg);
   const sleepQualData = [today, avg];
   const pieData = {
     labels: ["last night's sleep", "average night's sleep"],
@@ -152,7 +149,7 @@ function renderSleepQualPie(today, avg) {
       borderColor: ["#1d0047", "#d0b0ff"],
     }]
   };
-  const sleepQualPie = new Chart(daySleepDataDisplay, {
+  const sleepQualPieR = new Chart(sleepQualPie, {
     type: "pie",
     data: pieData,
   });

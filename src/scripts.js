@@ -143,6 +143,8 @@ function displaySleepData(data) {
 // display in id `daySleepDataDisplay`
 // 🧪 Test function to render daySleepDataPie
 function renderSleepQualPie(today, avg) {
+  console.log("today >>>", today);
+  console.log("average >>>", avg);
   // today is= const todaySleepQuality = newUserSleep.calcByDate(todayDate.date, "sleepQuality");
   // avg is= const avgSleepQuality = newUserSleep.calcAvgSleep("sleepQuality");
 

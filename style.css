@@ -1,10 +1,7 @@
 /* 🪐 General styling rules */
 * {
-  /* border: 1px solid thistle; */
-  /* font-family: 'Ubuntu', sans-serif; */
   font-family: 'Yatra One', cursive;
   color: #320031;
-  /* color: #fefefe; */
   text-align: center;
   text-shadow: 1px 1px 2px #fefefe;
 }
@@ -16,7 +13,6 @@ body {
 }
 
 body {
-  /* background: linear-gradient(#rgb(93, 254, 202); rgb(244, 115, 126)); */
   background: linear-gradient(#5dfeca, #f4737e);
   background-attachment: fixed;
 }
@@ -25,51 +21,40 @@ body {
   margin: 4vw;
   padding: 1vw;
   background: linear-gradient(#b3fee6, #f4a3aa);
+  border-radius: 25px;
 }
 
 p {
   margin: 0;
 }
 
- /* 📇 Template for display cards */
-.card-style {
+canvas {
+  width: 100%;
   margin: 2vw;
-  /* border: 1px solid #f4737e; */
-  background: linear-gradient(#5dfeca, #f4737e);
 }
 
-.radness {
+/* 💄 Card styles */
+ /* 📇 Templates for display cards */
+.card-style {
+  margin: 2vw;
+  background: linear-gradient(#dcfff4, #5dfeca);
   border-radius: 25px;
 }
 
-/* 🤸‍♀️ Flex template for display cards */
 .card-flex {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-/* 💄 Card styles */
-/* 🙏 Welcome banner */
-.welcome-msg {
-  font-family: 'Yatra One', cursive;
-  justify-content: center;
-  background: linear-gradient(#5dfeca, #f4737e);
-}
-
-/* 💁 User detail card */
-.step-goal,
-.user-detail {
-  /* border: 1px solid #5dfeca; */
-  /* background: linear-gradient(#5dfeca, #f4737e); */
-  /* background: linear-gradient(#dcfff4, #fbd3d5); */
+.banner {
+  background: linear-gradient(#5dfeca, #dcfff4);
+  border-radius: 25px;
 }
 
 /* 💦 Hydration card */
 .hydration-card {
   flex-direction: column;
-  /* border: 1px solid #6791e7; */
-  background: linear-gradient(#dcfff4, #5dfeca);
 }
 
 .hydration-data {

@@ -81,16 +81,6 @@ function displayHydrationData(data) {
   `;
 
   const weekHydration = newUserHydration.calcOverWeek(todayDate.date, "numOunces");
-<<<<<<< HEAD
-  //data is currently an array of objects
-  //these can be broken up using object keys and object values to create an HTML table or implement chart js
-  // weekHydrationDataDisplay.innerHTML = `
-  //   <p>
-  //   Week's Water Intake: ${weekHydration}
-  //   </p>
-  // `
-=======
->>>>>>> main
   renderWeeklyHydrGraph(weekHydration);
 }
 

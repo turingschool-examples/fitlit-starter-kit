@@ -85,7 +85,7 @@ function displayHydrationData(data) {
 }
 
 function renderWeeklyHydrGraph(hydrData) {
-  const [ day7, day6, day5, day4, day3, day2, day1 ] = hydrData;
+  // const [ day7, day6, day5, day4, day3, day2, day1 ] = hydrData;
   const hydrOz = hydrData.flatMap(dataPoint => Object.values(dataPoint));
   const hydrDate = hydrData.flatMap(dataPoint => Object.keys(dataPoint));
   const hydrColors = ["#0047b3", "#0052cc", "#005ce6", "#0066ff", "#1a75ff", "#3385ff", "#4d94ff"];
@@ -136,7 +136,7 @@ function displaySleepData(data) {
   // `;
 
   renderSleepQualPie(todaySleepQuality, avgSleepQuality);
-  renderSleepHrsGraph(todaySleepHours, avgSleepHours)
+  renderSleepHrsGraph(weekSleepHours)
 }
 
 function renderSleepQualPie(today, avg) {
@@ -156,6 +156,10 @@ function renderSleepQualPie(today, avg) {
   });
 }
 //render in sleepHrsGraph
-function renderSleepHrsGraph(today, avg) {
-  const sleepHrsData
+function renderSleepHrsGraph(week) {
+console.log(week);
+  const [ day7, day6, day5, day4, day3, day2, day1 ] = sleepData;
+
+  const labels = "sleep hours over the last week";
+
 }

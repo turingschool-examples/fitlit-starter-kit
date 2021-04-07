@@ -55,7 +55,7 @@ function compareStepGoal() {
 
 // 🧪 test function to render step goal chart
 function renderStepDonut() {
-  let stepData = [newUser.dailyStepGoal, newUserRepo.calculateAvgStepGoal()];
+  const stepData = [newUser.dailyStepGoal, newUserRepo.calculateAvgStepGoal()];
   const donutData = {
     labels: ["your steps", "avg user steps"],
     datasets: [{
@@ -63,10 +63,9 @@ function renderStepDonut() {
       data: stepData,
       backgroundColor: ["#f4737e", "#320031"],
       borderColor: ["#f4737e", "#320031"],
-      hoverOffset: 4
     }]
   };
-  let stepDonutR = new Chart(stepDonut, {
+  const stepDonutR = new Chart(stepDonut, {
     type: "doughnut",
     data: donutData,
   });
@@ -99,7 +98,7 @@ function renderWeeklyHydrGraph(hydrData) {
       borderColor: hydrColors,
     }]
   };
-  let hydrGraphR = new Chart(hydrGraph, {
+  const hydrGraphR = new Chart(hydrGraph, {
     type: "polarArea",
     data: graphData,
   });
@@ -138,14 +137,23 @@ function displaySleepData(data) {
 
   renderSleepQualPie(todaySleepQuality, avgSleepQuality);
 }
-
-
 // display in id `daySleepDataDisplay`
 // 🧪 Test function to render daySleepDataPie
 function renderSleepQualPie(today, avg) {
   console.log("today >>>", today);
   console.log("average >>>", avg);
-  // today is= const todaySleepQuality = newUserSleep.calcByDate(todayDate.date, "sleepQuality");
-  // avg is= const avgSleepQuality = newUserSleep.calcAvgSleep("sleepQuality");
-
+  const sleepQualData = [today, avg];
+  const pieData = {
+    labels: ["last night's sleep", "average night's sleep"],
+    datasets: [{
+      label: "sleep quality over time",
+      data: sleepQualData,
+      backgroundColor: ["#1d0047", "#d0b0ff"],
+      borderColor: ["#1d0047", "#d0b0ff"],
+    }]
+  };
+  const sleepQualPie = new Chart(daySleepDataDisplay, {
+    type: "pie",
+    data: pieData,
+  });
 }

@@ -16,6 +16,7 @@ const avgHoursSleptDisplay = document.querySelector("#avgHoursSlept");
 const infoCard = document.querySelector("#infoCard");
 const stepGoals = document.querySelector("#stepGoals");
 const stepDonut = document.querySelector("#stepDonut");
+const hydrGraph = document.querySelector("#hydrGraph");
 
 /* *****Event Listeners***** */
 window.addEventListener("load", displayUser);

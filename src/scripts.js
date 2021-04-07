@@ -4,7 +4,6 @@ const newUserSleep = new UserSleep(1, sleepData);
 const newAllUserSleep = new AllUserSleep(sleepData);
 const newUserHydration = new UserHydration(1, hydrationData);
 
-
 /* *****Query Selectors***** */
 const welcomeMessage = document.querySelector("#welcomeMessage");
 const dayHydrationDataDisplay = document.querySelector("#dayHydrationData");
@@ -16,6 +15,9 @@ const avgHoursSleptDisplay = document.querySelector("#avgHoursSlept");
 const infoCard = document.querySelector("#infoCard");
 const stepGoals = document.querySelector("#stepGoals");
 const stepDonut = document.querySelector("#stepDonut");
+const hydrGraph = document.querySelector("#hydrGraph");
+const sleepQualPie = document.querySelector("#sleepQualPie");
+const sleepHrsGraph = document.querySelector("#sleepHrsGraph");
 
 /* *****Event Listeners***** */
 window.addEventListener("load", displayUser);
@@ -31,30 +33,29 @@ function displayUser() {
 }
 
 function welcomeUser() {
-  welcomeMessage.innerText = `Welcome, ${newUser.firstName()}!`;
+  welcomeMessage.innerText = `Welcome to FitLit, ${newUser.firstName()}!`;
 }
 
 function displayInfoCard() {
   infoCard.innerHTML = `
-    <!-- <p class="user-detail card-flex">Name: ${newUser.name}</p> -->
+    <!-- <p class="user-detail radness">Name: ${newUser.name}</p> -->
     <!-- <p class="user-detail radness">Address: ${newUser.address}</p> -->
     <!-- <p class="user-detail radness">Email: ${newUser.email}</p> -->
-    <p class="user-detail radness">Stride Length: ${newUser.strideLength}</p>
-    <p class="user-detail radness">Daily Step Goal: ${newUser.dailyStepGoal}</p>
-    <p class="user-detail radness">Friends: ${newUser.friends}</p>
+    <p class="user-detail radness">stride length: ${newUser.strideLength}</p>
+    <!-- <p class="user-detail radness">Daily Step Goal: ${newUser.dailyStepGoal}</p> -->
+    <!-- <p class="user-detail radness">Friends: ${newUser.friends}</p> -->
   `
 }
 
 function compareStepGoal() {
   stepGoals.innerHTML = `
-    <p class="step-goal radness">your step goal: ${newUser.dailyStepGoal}</p>
-    <p class="step-goal radness">avg user step goal: ${newUserRepo.calculateAvgStepGoal()}</p>
+    <p>your step goal: ${newUser.dailyStepGoal}</p>
+    <p>avg user step goal: ${newUserRepo.calculateAvgStepGoal()}</p>
   `
 }
 
-// 🧪 test function to render step goal chart
 function renderStepDonut() {
-  let stepData = [newUser.dailyStepGoal, newUserRepo.calculateAvgStepGoal()];
+  const stepData = [newUser.dailyStepGoal, newUserRepo.calculateAvgStepGoal()];
   const donutData = {
     labels: ["your steps", "avg user steps"],
     datasets: [{
@@ -62,10 +63,9 @@ function renderStepDonut() {
       data: stepData,
       backgroundColor: ["#f4737e", "#320031"],
       borderColor: ["#f4737e", "#320031"],
-      hoverOffset: 4
     }]
   };
-  let stepDonutR = new Chart(stepDonut, {
+  const stepDonutR = new Chart(stepDonut, {
     type: "doughnut",
     data: donutData,
   });
@@ -76,11 +76,12 @@ function displayHydrationData(data) {
   const todayHydration = newUserHydration.calcByDate(todayDate.date, "numOunces");
   dayHydrationDataDisplay.innerHTML = `
     <p>
-    Today you've had ${todayHydration} ounces of water!
+    you've had ${todayHydration} ounces of water today!
     </p>
-  `
+  `;
 
   const weekHydration = newUserHydration.calcOverWeek(todayDate.date, "numOunces");
+<<<<<<< HEAD
   //data is currently an array of objects
   //these can be broken up using object keys and object values to create an HTML table or implement chart js
   // weekHydrationDataDisplay.innerHTML = `
@@ -88,43 +89,100 @@ function displayHydrationData(data) {
   //   Week's Water Intake: ${weekHydration}
   //   </p>
   // `
+=======
+>>>>>>> main
   renderWeeklyHydrGraph(weekHydration);
 }
 
-
-// 🧪 test function to render water graph for weekly intake
 function renderWeeklyHydrGraph(hydrData) {
-
+  // const [ day7, day6, day5, day4, day3, day2, day1 ] = hydrData;
+  const hydrOz = hydrData.flatMap(dataPoint => Object.values(dataPoint));
+  const hydrDate = hydrData.flatMap(dataPoint => Object.keys(dataPoint));
+  const hydrColors = ["#0047b3", "#0052cc", "#005ce6", "#0066ff", "#1a75ff", "#3385ff", "#4d94ff"];
+  const graphData = {
+    labels: hydrDate,
+    datasets: [{
+      label: "daily ounces over the last 7 days",
+      data: hydrOz,
+      backgroundColor: hydrColors,
+      borderColor: hydrColors,
+    }]
+  };
+  const hydrGraphR = new Chart(hydrGraph, {
+    type: "polarArea",
+    data: graphData,
+  });
 }
 
 function displaySleepData(data) {
   const todayDate = newUserSleep.mostRecentDayData();
   const todaySleepQuality = newUserSleep.calcByDate(todayDate.date, "sleepQuality");
   const todaySleepHours = newUserSleep.calcByDate(todayDate.date, "hoursSlept");
-  daySleepDataDisplay.innerHTML = `
-    <p>
-    Last Night's Sleep Quality: ${todaySleepQuality}
-    Last Night's Hours Slept: ${todaySleepHours}
-    </p>
-  `
+  // daySleepDataDisplay.innerHTML = `
+  //   <p>
+  //   Last Night's Sleep Quality: ${todaySleepQuality}
+  //   Last Night's Hours Slept: ${todaySleepHours}
+  //   </p>
+  // `
   const weekSleepQuality = newUserSleep.calcOverWeek(todayDate.date, "sleepQuality");
   const weekSleepHours = newUserSleep.calcOverWeek(todayDate.date, "hoursSlept");
-  weekSleepDataDisplay.innerHTML = `
-    <p>
-    Last Week's Sleep Quality: ${weekSleepQuality}
-    Last Week's Hours Slept: ${weekSleepHours}
-    </p>
-  `
+  // weekSleepDataDisplay.innerHTML = `
+  //   <p>
+  //   Last Week's Sleep Quality: ${weekSleepQuality}
+  //   Last Week's Hours Slept: ${weekSleepHours}
+  //   </p>
+  // `
   const avgSleepQuality = newUserSleep.calcAvgSleep("sleepQuality");
-  avgSleepQualityDisplay.innerHTML = `
-    <p>
-    Average Sleep Quality: ${avgSleepQuality}
-    </p>
-  `
+  // avgSleepQualityDisplay.innerHTML = `
+  //   <p>
+  //   Average Sleep Quality: ${avgSleepQuality}
+  //   </p>
+  // `
   const avgSleepHours = newUserSleep.calcAvgSleep("hoursSlept");
-  avgHoursSleptDisplay.innerHTML = `
-    <p>
-    Average Hours Slept: ${avgSleepHours}
-    </p>
-  `
+  // avgHoursSleptDisplay.innerHTML = `
+  //   <p>
+  //   Average Hours Slept: ${avgSleepHours}
+  //   </p>
+  // `;
+
+  renderSleepQualPie(todaySleepQuality, avgSleepQuality);
+  renderSleepHrsGraph(weekSleepHours)
+}
+
+function renderSleepQualPie(today, avg) {
+  const sleepQualData = [today, avg];
+  const pieData = {
+    labels: ["last night's sleep", "average night's sleep"],
+    datasets: [{
+      label: "sleep quality over time",
+      data: sleepQualData,
+      backgroundColor: ["#1d0047", "#d0b0ff"],
+      borderColor: ["#1d0047", "#d0b0ff"],
+    }]
+  };
+  const sleepQualPieR = new Chart(sleepQualPie, {
+    type: "pie",
+    data: pieData,
+  });
+}
+//render in sleepHrsGraph
+function renderSleepHrsGraph(week) {
+  const sleepHrs = week.flatMap(dataPoint => Object.values(dataPoint));
+  const sleepDate = week.flatMap(dataPoint => Object.keys(dataPoint));
+  const labels = sleepDate;
+
+  const sleepHrsData = {
+    labels: labels,
+    datasets: [{
+      label: "last week's sleep hours",
+      data: sleepHrs,
+      fill: true,
+      borderColor: "#1d0047",
+      tension: 0.1
+    }]
+  };
+  const sleepHrsGraphR = new Chart(sleepHrsGraph, {
+    type: "line",
+    data: sleepHrsData,
+  });
 }

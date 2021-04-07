@@ -6,6 +6,7 @@
   color: #320031;
   /* color: #fefefe; */
   text-align: center;
+  text-shadow: 1px 1px 2px #fefefe;
 }
 
 html,
@@ -26,10 +27,14 @@ body {
   background: linear-gradient(#b3fee6, #f4a3aa);
 }
 
+p {
+  margin: 0;
+}
+
  /* 📇 Template for display cards */
 .card-style {
   margin: 2vw;
-  border: 1px solid #f4737e;
+  /* border: 1px solid #f4737e; */
   background: linear-gradient(#5dfeca, #f4737e);
 }
 
@@ -55,29 +60,31 @@ body {
 /* 💁 User detail card */
 .step-goal,
 .user-detail {
-  border: 1px solid #5dfeca;
+  /* border: 1px solid #5dfeca; */
   /* background: linear-gradient(#5dfeca, #f4737e); */
-  background: linear-gradient(#dcfff4, #fbd3d5);
+  /* background: linear-gradient(#dcfff4, #fbd3d5); */
 }
 
 /* 💦 Hydration card */
 .hydration-card {
-  border: 1px solid #6791e7;
-  background: linear-gradient(#5dfeca, #6791e7);
+  flex-direction: column;
+  /* border: 1px solid #6791e7; */
+  background: linear-gradient(#dcfff4, #5dfeca);
 }
 
 .hydration-data {
   margin: 2vw;
-  border: 1px solid #6791e7;
-  background: linear-gradient(#dcfff4, #a9c1f1);
+  /* border: 1px solid #6791e7; */
+  /* background: linear-gradient(#dcfff4, #a9c1f1); */
 }
 
 /* 😴 Sleep card */
 .sleep-card,
 .all-sleep-data-card {
-  border: 1px solid #1d0047;
+  /* border: 1px solid #1d0047; */
   margin: 2vw;
-  background: linear-gradient(#5dfeca, #1d0047);
+  background: linear-gradient(#dcfff4, #5dfeca);
+  /* background: linear-gradient(#5dfeca, #1d0047); */
 }
 .sleep-card {
   flex-direction: column;
@@ -85,7 +92,7 @@ body {
 
 .sleep-data,
 .all-sleep-data {
-  border: 1px solid #1d0047;
+  /* border: 1px solid #1d0047; */
   margin: 2vw;
   background: linear-gradient(#dcfff4, #d0b0ff);
 }
@@ -94,7 +101,7 @@ body {
 .activity-card,
 .today-activity-card,
 .week-activity-card {
-  border: 1px solid #b100ae;
+  /* border: 1px solid #b100ae; */
   margin: 2vw;
   background: linear-gradient(#5dfeca, #b100ae);
 }
@@ -105,7 +112,7 @@ body {
 
 .activity-data,
 .week-activity-data {
-  border: 1px solid #b100ae;
+  /* border: 1px solid #b100ae; */
   background: linear-gradient(#dcfff4, #ffccfe);
 }
 

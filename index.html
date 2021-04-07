@@ -14,50 +14,56 @@
   <body>
     <main>
       <section class="display-area radness">
-        <h1 class="welcome-msg card-style radness" id="welcomeMessage">Welcome, FirstName!</h1>
+        <h1 class="welcome-msg card-style radness" id="welcomeMessage">Welcome to FitLit, FirstName!</h1>
         <div class="desktop-area">
         <div class="desktop-left">
         <article class="user-info-card card-style radness">
-          <!-- UserInfo Card -->
+          <p>step lit</p>
           <canvas id="stepDonut" width="100" height="100"></canvas>
-          <section class="step-goals card-style radness card-flex" id="stepGoals">
+          <section id="stepGoals">
             <!-- Step goal compared to other users -->
           </section>
-          <section class="user-details card-style radness card-flex" id="infoCard">
+          <section id="infoCard">
             <!-- User properties will display here -->
           </section>
         </article>
         <article class="hydration-card card-style radness card-flex">
-          <!-- Hydration visuals -->
+          <p>hydration lit</p>
           <section class="hydration-data radness card-flex" id="dayHydrationData">
-            h2o today
+            <!-- h2o today -->
           </section>
-          <section class="hydration-data radness card-flex" id="weekHydrationData">
+          <!-- <section class="hydration-data radness card-flex" id="weekHydrationData">
             h2o avg
-          </section>
+          </section> -->
+          <p>hydration for the week</p>
+          <canvas id="hydrGraph" width="100" height="100"></canvas>
         </article>
         <article class="sleep-card card-style radness card-flex">
-          <!-- Sleep visuals -->
-          <section class="sleep-data radness card-flex" id="daySleepData">
+          <p>sleep lit</p>
+          <!-- <section class="sleep-data radness card-flex" id="daySleepData">
             Today's sleep data
-          </section>
-          <section class="sleep-data radness card-flex" id="weekSleepData">
-            Last week's sleep data
-          </section>
-          <section class="all-sleep-data-card radness card-flex">
+          </section> -->
+          <p>sleep quality / 5★</p>
+          <canvas id="sleepQualPie" width="100" height="100"></canvas>
+          <p>hours of sleep for the week</p>
+          <canvas id="sleepHrsGraph" width="100" height="100"></canvas>
+          <!-- <section class="sleep-data radness card-flex" id="weekSleepData"> -->
+            <!-- Last week's sleep data -->
+          <!-- </section> -->
+          <!-- <section class="all-sleep-data-card radness card-flex"> -->
             <!-- All-time sleep data -->
-              <section class="sleep-data radness" id="avgSleepQuality">
-                Average sleep quality
-              </section>
-              <section class="sleep-data radness" id="avgHoursSlept">
-                Average sleep hours
-              </section>
-          </section>
+              <!-- <section class="sleep-data radness" id="avgSleepQuality"> -->
+                <!-- Average sleep quality -->
+              <!-- </section> -->
+              <!-- <section class="sleep-data radness" id="avgHoursSlept"> -->
+                <!-- Average sleep hours -->
+              <!-- </section> -->
+          <!-- </section> -->
         </article>
       </div>
       <div class="desktop-right">
         <article class="activity-card card-style radness card-flex">
-          <!-- Activity visuals -->
+          <p>activity lit</p>
           <section class="today-activity-card radness card-flex">
             <section class="activity-data radness card-flex">
               Today's steps

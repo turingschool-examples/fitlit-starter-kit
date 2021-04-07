@@ -67,10 +67,14 @@ canvas {
 
   .desktop-area {
     display: flex;
+    justify-content:space-evenly;
   }
 
-  .today-activity-card,
-  .week-activity-card {
+  .card-style {
+    /* width: 45%; */
+  }
+
+  .card-flex {
     flex-direction: column;
   }
 }

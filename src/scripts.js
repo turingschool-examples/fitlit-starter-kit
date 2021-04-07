@@ -73,7 +73,7 @@ function renderStepDonut() {
 
 function displayHydrationData(data) {
   const todayDate = newUserHydration.mostRecentDayData();
-  const todayHydration = newUserHydration.calcByDate(todayDate.date);
+  const todayHydration = newUserHydration.calcByDate(todayDate.date, "numOunces");
   dayHydrationDataDisplay.innerHTML = `
     <p>
     Today you've had ${todayHydration} ounces of water!

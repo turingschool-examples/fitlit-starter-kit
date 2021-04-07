@@ -1,10 +1,10 @@
-// if (typeof module !== 'undefined') {
+if (typeof module !== "undefined") {
   const dayjs = require("dayjs");
   const duration = require('dayjs/plugin/duration')
   dayjs.extend(duration);
   const isBetween = require('dayjs/plugin/isBetween')
   dayjs.extend(isBetween);
-// }
+}
 
 const retrieveAllUserDataByWeek = (data, date) => {
   const day7 = dayjs(new Date(date));

@@ -107,8 +107,5 @@ describe("Hydration class", () => {
     expect(thirstyUser2.calcOverWeek("2019/06/21", "numOunces")).to.deep.equal([
       {"2019/06/15": 66}, {"2019/06/16": 84}, {"2019/06/17": 84}, {"2019/06/18": 84}, {"2019/06/19": 84}, {"2019/06/20": 84}, {"2019/06/21": 84}
     ]);
-    // expect(hyration1.calcOverWeek("2019/06/14")).to.equal([
-    //   {"2019/06/08": undefined}, {"2019/06/09": undefined}, {"2019/06/10": undefined}, {"2019/06/11": undefined}, {"2019/06/12": undefined}, {"2019/06/13": undefined}, {"2019/06/14": undefined}
-    // ]);
   });
 })

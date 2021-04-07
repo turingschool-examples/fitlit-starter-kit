@@ -119,9 +119,5 @@ describe("UserSleep", () => {
     expect(sleepQualityOverWeek1).to.deep.equal([
       { '2019/07/04': 4.1 }, { '2019/07/05': 2.3 }, { '2019/07/06': 2.8 }, { '2019/07/07': 3.5 }, { '2019/07/08': 3.1 }, { '2019/07/09': 4.4 }, { '2019/07/10': 4.5 }
     ]);
-    // const sleepQualityOverWeek2 = sleepyUser.calcOverWeek("2019/06/16", "sleepQuality");
-    // expect(sleepQualityOverWeek2).to.deep.equal([
-    //   { '2019/06/10': undefined }, { '2019/06/11': undefined }, { '2019/06/12': undefined }, { '2019/06/13': undefined }, { '2019/06/14': undefined }, { '2019/06/15': 4.7 }, { '2019/06/16': 3.4 }
-    // ]);
   });
 });

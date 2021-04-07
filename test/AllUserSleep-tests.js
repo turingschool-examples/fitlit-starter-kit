@@ -5,7 +5,6 @@ const AllUserSleep = require("../src/AllUserSleep");
 describe("AllUserSleep", () => {
   let sleepyUser1, sleepyUser2, sleepUser3, allSleepyUser
   beforeEach(() => {
-    //includes 3 users with a consecutive week's worth of data (including a user whose average sleep quality > 3 and a user whose average sleep qualtiy < 3)
     sleepData = [
       {
         "userID": 1,

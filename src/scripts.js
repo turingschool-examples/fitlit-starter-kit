@@ -77,7 +77,7 @@ function displayHydrationData(data) {
   const todayHydration = newUserHydration.calcByDate(todayDate.date);
   dayHydrationDataDisplay.innerHTML = `
     <p>
-    Today you've had ${todayHydration} ounces of water!
+    you've had ${todayHydration} ounces of water today!
     </p>
   `
 
@@ -102,20 +102,24 @@ function renderWeeklyHydrGraph(hydrData) {
   // console.log("forEach? >>>", hydrData.forEach((hydrDate, i) => i.numOunces)); did not work
   const [ day7, day6, day5, day4, day3, day2, day1 ] = hydrData;
   console.log("getting to line 103");
-  const hydrOz = hydrData.map(dataPoint => Object.values(dataPoint));
+  const hydrOz = hydrData.flatMap(dataPoint => Object.values(dataPoint));
+  const hydrDate = hydrData.flatMap(dataPoint => Object.keys(dataPoint));
+  const hydrColors = ["#2561dd", "#3b71e0", "#5181e4", "#6791e7", "#7da1ea", "#93b1ee", "#a9c1f1"];
   console.log("getting to line 105");
-  // console.log("hydrOz >>>", hydrOz);
+  console.log("hydrOz >>>", hydrOz);
+  console.log("hydrDate >>>", hydrDate);
   // console.log("day1.values >>> ", Object.values(day1));
   const graphData = {
-    labels: [ "7 days ago", "6 days ago", "5 days ago", "4 days ago", "3 days ago", "yesterday", "today"],
+    labels: hydrDate,
     datasets: [{
       label: "daily ounces over for the last 7 days",
       data: hydrOz,
-      backgroundColor: ["#2561dd", "#3b71e0", "#5181e4", "#6791e7", "#7da1ea", "#93b1ee", "#a9c1f1"],
+      backgroundColor: hydrColors,
+      borderColor: hydrColors,
     }]
   };
   // console.log("graphData >>>", graphData);
-  console.log("the graph is not rendering");
+  console.log("the graph is rendering 🎉");
   let hydrGraphR = new Chart(hydrGraph, {
     type: "polarArea",
     data: graphData,

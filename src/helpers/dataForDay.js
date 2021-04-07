@@ -1,13 +1,13 @@
-const dataForDay = (data, date) => {
-  const daysData = this.data.find(dataPoint => dataPoint.date === date);
-  if (daysData !== undefined) {
-    return daysData.numOunces;
-  } else {
+const dataForDay = (data, date, dataPointProperty) => {
+  const daysData = data.find(dataPoint => dataPoint.date === date);
+  if (!daysData) {
     return undefined
+  } else {
+    return daysData[dataPointProperty];
   }
 }
 
 
 if (typeof module !== "undefined") {
-  module.exports = calcByDate;
+  module.exports = dataForDay;
 }

@@ -4,7 +4,6 @@ const newUserSleep = new UserSleep(1, sleepData);
 const newAllUserSleep = new AllUserSleep(sleepData);
 const newUserHydration = new Hydration(1, hydrationData);
 
-
 /* *****Query Selectors***** */
 const welcomeMessage = document.querySelector("#welcomeMessage");
 const dayHydrationDataDisplay = document.querySelector("#dayHydrationData");
@@ -18,6 +17,7 @@ const stepGoals = document.querySelector("#stepGoals");
 const stepDonut = document.querySelector("#stepDonut");
 const hydrGraph = document.querySelector("#hydrGraph");
 const sleepQualPie = document.querySelector("#sleepQualPie");
+const sleepHrsGraph = document.querySelector("#sleepHrsGraph");
 
 /* *****Event Listeners***** */
 window.addEventListener("load", displayUser);
@@ -85,7 +85,7 @@ function displayHydrationData(data) {
 }
 
 function renderWeeklyHydrGraph(hydrData) {
-  const [ day7, day6, day5, day4, day3, day2, day1 ] = hydrData;
+  // const [ day7, day6, day5, day4, day3, day2, day1 ] = hydrData;
   const hydrOz = hydrData.flatMap(dataPoint => Object.values(dataPoint));
   const hydrDate = hydrData.flatMap(dataPoint => Object.keys(dataPoint));
   const hydrColors = ["#0047b3", "#0052cc", "#005ce6", "#0066ff", "#1a75ff", "#3385ff", "#4d94ff"];
@@ -116,26 +116,27 @@ function displaySleepData(data) {
   // `
   const weekSleepQuality = newUserSleep.calcOverWeek(todayDate.date, "sleepQuality");
   const weekSleepHours = newUserSleep.calcOverWeek(todayDate.date, "hoursSlept");
-  weekSleepDataDisplay.innerHTML = `
-    <p>
-    Last Week's Sleep Quality: ${weekSleepQuality}
-    Last Week's Hours Slept: ${weekSleepHours}
-    </p>
-  `
+  // weekSleepDataDisplay.innerHTML = `
+  //   <p>
+  //   Last Week's Sleep Quality: ${weekSleepQuality}
+  //   Last Week's Hours Slept: ${weekSleepHours}
+  //   </p>
+  // `
   const avgSleepQuality = newUserSleep.calcAvgSleep("sleepQuality");
-  avgSleepQualityDisplay.innerHTML = `
-    <p>
-    Average Sleep Quality: ${avgSleepQuality}
-    </p>
-  `
+  // avgSleepQualityDisplay.innerHTML = `
+  //   <p>
+  //   Average Sleep Quality: ${avgSleepQuality}
+  //   </p>
+  // `
   const avgSleepHours = newUserSleep.calcAvgSleep("hoursSlept");
-  avgHoursSleptDisplay.innerHTML = `
-    <p>
-    Average Hours Slept: ${avgSleepHours}
-    </p>
-  `;
+  // avgHoursSleptDisplay.innerHTML = `
+  //   <p>
+  //   Average Hours Slept: ${avgSleepHours}
+  //   </p>
+  // `;
 
   renderSleepQualPie(todaySleepQuality, avgSleepQuality);
+  renderSleepHrsGraph(weekSleepHours)
 }
 
 function renderSleepQualPie(today, avg) {
@@ -152,5 +153,26 @@ function renderSleepQualPie(today, avg) {
   const sleepQualPieR = new Chart(sleepQualPie, {
     type: "pie",
     data: pieData,
+  });
+}
+//render in sleepHrsGraph
+function renderSleepHrsGraph(week) {
+  const sleepHrs = week.flatMap(dataPoint => Object.values(dataPoint));
+  const sleepDate = week.flatMap(dataPoint => Object.keys(dataPoint));
+  const labels = sleepDate;
+
+  const sleepHrsData = {
+    labels: labels,
+    datasets: [{
+      label: "last week's sleep hours",
+      data: sleepHrs,
+      fill: true,
+      borderColor: "#1d0047",
+      tension: 0.1
+    }]
+  };
+  const sleepHrsGraphR = new Chart(sleepHrsGraph, {
+    type: "line",
+    data: sleepHrsData,
   });
 }

@@ -54,41 +54,8 @@ canvas {
   width: 90%
 }
 
-/* 😴 Sleep card */
-.sleep-card,
-.all-sleep-data-card {
-  /* border: 1px solid #1d0047; */
-  margin: 2vw;
-  background: linear-gradient(#dcfff4, #5dfeca);
-  /* background: linear-gradient(#5dfeca, #1d0047); */
-}
-.sleep-card {
-  flex-direction: column;
-}
-
-.sleep-data,
-.all-sleep-data {
-  /* border: 1px solid #1d0047; */
-  margin: 2vw;
-  background: linear-gradient(#dcfff4, #d0b0ff);
-}
-
-/* 🎯 Activity card */
-.activity-card,
-.today-activity-card,
-.week-activity-card {
-  /* border: 1px solid #b100ae; */
-  margin: 2vw;
-  background: linear-gradient(#5dfeca, #b100ae);
-}
-
-.activity-card {
-  flex-direction: column;
-}
-
 .activity-data,
 .week-activity-data {
-  /* border: 1px solid #b100ae; */
   background: linear-gradient(#dcfff4, #ffccfe);
 }
 

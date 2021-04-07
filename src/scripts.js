@@ -158,7 +158,9 @@ function renderSleepQualPie(today, avg) {
 //render in sleepHrsGraph
 function renderSleepHrsGraph(week) {
 console.log(week);
-  const [ day7, day6, day5, day4, day3, day2, day1 ] = sleepData;
+  const sleepHrs = week.flatMap(dataPoint => Object.values(dataPoint));
+  const sleepDate = week.flatMap(dataPoint => Object.keys(dataPoint));
+  
 
   const labels = "sleep hours over the last week";
 

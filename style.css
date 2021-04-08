@@ -58,10 +58,6 @@ canvas {
 
 /* 📱➡💻 MEDIA QUERIES */
 @media only screen and (min-width: 750px) {
-  * {
-    /* border: 1px solid magenta; */
-  }
-
   .display-area {
     width: 100%;
     display: flex;
@@ -75,19 +71,3 @@ canvas {
     justify-content:space-evenly;
   }
 }
-
-/* 🎨 COLOR PALETTE
->>> Accent Colors <<<
-👗 Minty green: #5dfeca; LIGHTER SHADE: #dcfff4
-🍐 Pear green: #cef9ad;
-🍉 Melon: #f4737e; LIGHTER SHADE: #fbd3d5
-🌚 Dark gray: #202124;
-🐰 Light gray: #c2c8da;
->>> Category Colors <<<
-💦 Hydration: #6791e7; LIGHTER SHADE: #a9c1f1
-😴 Sleep: #1d0047; LIGHTER SHADE: #d0b0ff
-🎯 Activity: #b100ae; LIGHTER SHADE: #ffccfe
->>> Text Colors <<<
-💡 Light color: #fefefe;
-🕯 Dark color: #320031;
-*/

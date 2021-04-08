@@ -1,5 +1,7 @@
 # Fitlit
 
+![giphy](https://user-images.githubusercontent.com/63027000/113958315-183b3780-97de-11eb-9752-61b906b54b1d.gif)
+
 ## Table of Contents
 * [Description](#description)
 * [Installation](#installation)

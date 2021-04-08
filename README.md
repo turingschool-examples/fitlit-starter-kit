@@ -44,6 +44,19 @@ Given more time on this project, there are several things I would like to addres
 
 #### Nichele's Reflection:
 
+I had a few goals with this project. My desire was to continue developing an understanding of TDD and class structures within large applications, how they interact with one another, and how or why to use different JavaScript methods. I was also excited to be able to design a project from scratch. I'm very interested in design, as well as user experience and interaction, and found that this process was more challenging than expected.
+
+There is a lot to think about when it comes to design. I learned several things throughout this process:
+  * There is a lot to think about when it comes to what a user truly needs in an application, from both a usability and design perspective. This comes with challenges of its own as there is an endless variety of user needs and desired experiences.
+  * Accessibility is a big part of designing for websites and applications
+  * There is a lot to be said for simplicity in design
+  * implementing packages in a project can introduce unexpected challenges
+
+If I had more time to work on this project, I would like to adjust the design to be more flexible, easier to read, and fit better within the pages. I would approach the design with accessibility in mind first (mobile and accessible)!
+
+* 🚧 Note that there is currently a bug in the GH deployment that is preventing several of the charts from displaying properly. If you clone the repo to your machine and `open index.html` in the terminal, the app should work properly 
+
+
 ## Authors
 <table>
     <tr>

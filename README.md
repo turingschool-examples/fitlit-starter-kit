@@ -28,6 +28,8 @@ Responsibilities were divided between project team members with Riley being prim
 ### Deployed At
 * https://rmartin0717.github.io/fitlit/
 
+![Screen Shot 2021-04-07 at 8 19 37 PM (2)](https://user-images.githubusercontent.com/63027000/113958749-d8c11b00-97de-11eb-93f0-4fd66edf81fc.png)
+
 ## Installation
 1. Fork this repo
 2. Clone down to your machine

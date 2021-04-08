@@ -1,10 +1,7 @@
 /* 🪐 General styling rules */
 * {
-  /* border: 1px solid thistle; */
-  /* font-family: 'Ubuntu', sans-serif; */
   font-family: 'Yatra One', cursive;
   color: #320031;
-  /* color: #fefefe; */
   text-align: center;
   text-shadow: 1px 1px 2px #fefefe;
 }
@@ -16,7 +13,6 @@ body {
 }
 
 body {
-  /* background: linear-gradient(#rgb(93, 254, 202); rgb(244, 115, 126)); */
   background: linear-gradient(#5dfeca, #f4737e);
   background-attachment: fixed;
 }
@@ -24,126 +20,54 @@ body {
 .display-area {
   margin: 4vw;
   padding: 1vw;
-  background: linear-gradient(#b3fee6, #f4a3aa);
 }
 
+h4,
 p {
   margin: 0;
 }
 
- /* 📇 Template for display cards */
-.card-style {
+canvas {
+  width: 100%;
   margin: 2vw;
-  /* border: 1px solid #f4737e; */
-  background: linear-gradient(#5dfeca, #f4737e);
 }
 
-.radness {
+/* 💄 Card styles */
+.card-style {
+  margin: 2vw;
+  background: linear-gradient(#dcfff4, #5dfeca);
   border-radius: 25px;
 }
 
-/* 🤸‍♀️ Flex template for display cards */
 .card-flex {
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
 }
 
-/* 💄 Card styles */
-/* 🙏 Welcome banner */
-.welcome-msg {
-  font-family: 'Yatra One', cursive;
-  justify-content: center;
-  background: linear-gradient(#5dfeca, #f4737e);
-}
-
-/* 💁 User detail card */
-.step-goal,
-.user-detail {
-  /* border: 1px solid #5dfeca; */
-  /* background: linear-gradient(#5dfeca, #f4737e); */
-  /* background: linear-gradient(#dcfff4, #fbd3d5); */
-}
-
-/* 💦 Hydration card */
-.hydration-card {
-  flex-direction: column;
-  /* border: 1px solid #6791e7; */
-  background: linear-gradient(#dcfff4, #5dfeca);
-}
-
-.hydration-data {
-  margin: 2vw;
-  /* border: 1px solid #6791e7; */
-  /* background: linear-gradient(#dcfff4, #a9c1f1); */
-}
-
-/* 😴 Sleep card */
-.sleep-card,
-.all-sleep-data-card {
-  /* border: 1px solid #1d0047; */
-  margin: 2vw;
-  background: linear-gradient(#dcfff4, #5dfeca);
-  /* background: linear-gradient(#5dfeca, #1d0047); */
-}
-.sleep-card {
-  flex-direction: column;
-}
-
-.sleep-data,
-.all-sleep-data {
-  /* border: 1px solid #1d0047; */
-  margin: 2vw;
-  background: linear-gradient(#dcfff4, #d0b0ff);
-}
-
-/* 🎯 Activity card */
-.activity-card,
-.today-activity-card,
-.week-activity-card {
-  /* border: 1px solid #b100ae; */
-  margin: 2vw;
-  background: linear-gradient(#5dfeca, #b100ae);
-}
-
-.activity-card {
-  flex-direction: column;
+.banner {
+  background: linear-gradient(#5dfeca, #dcfff4);
+  border-radius: 25px;
 }
 
 .activity-data,
 .week-activity-data {
-  /* border: 1px solid #b100ae; */
   background: linear-gradient(#dcfff4, #ffccfe);
 }
 
 /* 📱➡💻 MEDIA QUERIES */
 @media only screen and (min-width: 750px) {
-  * {
-    /* border: 1px solid magenta; */
+  .display-area {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
   }
 
   .desktop-area {
     display: flex;
-  }
-
-  .today-activity-card,
-  .week-activity-card {
-    flex-direction: column;
+    justify-content:space-evenly;
   }
 }
-
-/* 🎨 COLOR PALETTE
->>> Accent Colors <<<
-👗 Minty green: #5dfeca; LIGHTER SHADE: #dcfff4
-🍐 Pear green: #cef9ad;
-🍉 Melon: #f4737e; LIGHTER SHADE: #fbd3d5
-🌚 Dark gray: #202124;
-🐰 Light gray: #c2c8da;
->>> Category Colors <<<
-💦 Hydration: #6791e7; LIGHTER SHADE: #a9c1f1
-😴 Sleep: #1d0047; LIGHTER SHADE: #d0b0ff
-🎯 Activity: #b100ae; LIGHTER SHADE: #ffccfe
->>> Text Colors <<<
-💡 Light color: #fefefe;
-🕯 Dark color: #320031;
-*/

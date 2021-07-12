@@ -54,7 +54,7 @@ beforeEach(() => {
 
   userRepository = new UserRepository(userData);
 
-})
+});
 
   it('should be a function', () => {
     expect(UserRepository).to.be.a('function');
@@ -82,6 +82,7 @@ beforeEach(() => {
   it('should return the average step goal amongst all users', () => {
     let avgSteps = userRepository.calculateAvgStepGoal();
 
+    expect(avgSteps).to.be.a('number');
     expect(avgSteps).to.equal(6667);
   });
 });

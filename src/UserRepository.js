@@ -5,7 +5,7 @@ class UserRepository {
 
   returnUserData(id) {
     return this.userData.find(user => user.id === id);
-  };
+  }
 
   calculateAvgStepGoal() {
     let avgStepGoal = this.userData.reduce((sum, user) => {

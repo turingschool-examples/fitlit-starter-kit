@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
 
 
-describe.only('User Repository', () => {
+describe('User Repository', () => {
 let user1, user2, user3;
 let userData;
 let userRepository;

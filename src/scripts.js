@@ -12,5 +12,6 @@ console.log('This is the JavaScript entry file - your code begins here.');
 // An example of how you tell webpack to use a JS file
 
 import userData from './data/users';
+import hydrationTestData from './data/hydration-test-data'
 import User from './User';
 import UserRepository from './UserRepository';

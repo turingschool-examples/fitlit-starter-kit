@@ -78,4 +78,10 @@ beforeEach(() => {
     expect(foundUser).to.equal(user3);
     expect(foundUser.name).to.equal('Herminia Witting');
   });
+
+  it('should return the average step goal amongst all users', () => {
+    let avgSteps = userRepository.calculateAvgStepGoal();
+
+    expect(avgSteps).to.equal(6667);
+  });
 });

@@ -48,4 +48,25 @@ describe.only('User', () => {
     expect(user.email).to.equal('Diana.Hayes1@hotmail.com');
   });
 
+  it('user should have a stride length', () => {
+    expect(user.strideLength).to.be.a('number');
+    expect(user.strideLength).to.equal(4.3);
+  });
+
+  it('user should have a daily step goal', () => {
+    expect(user.dailyStepGoal).to.be.a('number');
+    expect(user.dailyStepGoal).to.equal(10000);
+  });
+
+  it('user should be able to store ids of friends', () => {
+    expect(user.friends).to.be.an('array');
+    expect(user.friends).to.deep.equal([16, 4, 8]);
+  });
+
+  it('should be able to return the user\'s first name', () => {
+    let userFirstName = user.returnFirstName();
+    expect(userFirstName).to.be.a('string');
+    expect(userFirstName).to.equal('Luisa');
+  });
+
 });

@@ -24,4 +24,12 @@ describe.only('User', () => {
     expect(User).to.be.a('function');
   });
 
+  it('should be an instance of User', () => {
+    expect(user).to.be.an.instanceof(User);
+  });
+
+  it('user should have an id', () => {
+    expect(user.id).to.equal(1);
+  })
+
 });

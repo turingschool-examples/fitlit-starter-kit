@@ -2,7 +2,12 @@ import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
 
 describe('User Repository', () => {
-  it('should be a function', function () {
+  let userRepo;
+
+  beforeEach(() => {
+    userRepo = new UserRepository();
+  })
+  it('should be a function', () => {
     expect(UserRepository).to.be.a('function');
   });
 });

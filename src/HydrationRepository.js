@@ -5,7 +5,6 @@ class HydrationRepo {
 
   getHydrationById(id) {
     return this.hydrationData.filter(hydration => hydration.userID === id)
-
   }
 
   calculateAvgOuncesPerDay(id) {
@@ -16,6 +15,12 @@ class HydrationRepo {
     }, 0);
     let roundedOunces = Math.round(totalUserOunces / userHydrationData.length);
     return roundedOunces;
+  }
+
+  getOuncesByDate(id, date) {
+    let userHydrationData = this.getHydrationById(id);
+    let ouncesByDate = userHydrationData.find(hydration => hydration.date === date);
+    return ouncesByDate.numOunces;
   }
 }
 

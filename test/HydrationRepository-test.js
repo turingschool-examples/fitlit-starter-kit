@@ -38,4 +38,12 @@ describe('Hydration Repo', () => {
     expect(avgOunces).to.be.a('number');
     expect(avgOunces).to.equal(65);
   });
+
+  it('should be able to find how many ounces a user consumed on a specific date', () => {
+    let dailyOunces = hydrationRepo.getOuncesByDate(10,'2019/06/15');
+
+    expect(dailyOunces).to.be.a('number');
+    expect(dailyOunces).to.equal(75);
+
+  });
 });

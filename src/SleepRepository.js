@@ -7,30 +7,20 @@ class SleepRepo {
     return this.sleepData.filter(sleep => sleep.userID === id);
   }
 
-  calculateAvgHoursSleptPerDay(id) {
+  calculateAvgSleepStatPerDay(id, stat) {
     let userSleepData = this.getSleepById(id);
-    let totalUserHours = userSleepData.reduce((sum, sleep) => {
-      sum += sleep.hoursSlept;
+    let totalStatSum = userSleepData.reduce((sum, sleep) => {
+      sum += sleep[stat];
       return sum;
     }, 0);
-    let roundedHours = Math.round(totalUserHours / userSleepData.length);
-    return roundedHours;
+    let roundedStatNum = parseInt((totalStatSum / userSleepData.length).toFixed(1));
+    return roundedStatNum;
   }
 
-  calculateAvgSleepRatingPerDay(id) {
-    let userSleepData = this.getSleepById(id);
-    let totalUserRatings = userSleepData.reduce((sum, sleep) => {
-      sum += sleep.sleepQuality;
-      return sum;
-    }, 0);
-    let roundedRating = Math.round(totalUserRatings / userSleepData.length);
-    return roundedRating;
-  }
-
-  getHoursByDate(id, date) {
+  getSleepStatByDate(id, date, stat) {
     let userSleepData = this.getSleepById(id);
     let hoursByDate = userSleepData.find(sleep => sleep.date === date);
-    return hoursByDate.hoursSlept;
+    return hoursByDate[stat];
   }
 
 }

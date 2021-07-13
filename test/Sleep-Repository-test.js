@@ -39,26 +39,33 @@ describe('Sleep Repo', () => {
   })
 
   it('should be able to find average hours of sleep per day for any user', () => {
-    let avgHours = sleepRepo.calculateAvgHoursSleptPerDay(5);
+    let avgHours = sleepRepo.calculateAvgSleepStatPerDay(5, 'hoursSlept');
 
     expect(avgHours).to.be.a('number');
     expect(avgHours).to.equal(7);
   });
 
   it('should be able to find average rating of sleep quality per day for any user', () => {
-    let avgRating = sleepRepo.calculateAvgSleepRatingPerDay(5);
+    let avgRating = sleepRepo.calculateAvgSleepStatPerDay(5, 'sleepQuality');
 
     expect(avgRating).to.be.a('number');
     expect(avgRating).to.equal(3);
   });
 
   it('should be able to find how many hours a user has slept on a specific date', () => {
-    let dailyHours = sleepRepo.getHoursByDate(10,'2019/06/15');
+    let dailyHours = sleepRepo.getSleepStatByDate(10,'2019/06/15', 'hoursSlept');
 
     expect(dailyHours).to.be.a('number');
     expect(dailyHours).to.equal(4.4);
   });
 
-  
+  it('should be able to find how many hours a user has slept on a specific date', () => {
+    let dailyRating = sleepRepo.getSleepStatByDate(10,'2019/06/15', 'sleepQuality');
+
+    expect(dailyRating).to.be.a('number');
+    expect(dailyRating).to.equal(1.6);
+  });
+
+
 
 });

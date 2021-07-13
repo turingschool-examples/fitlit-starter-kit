@@ -7,15 +7,15 @@ class SleepRepo {
     return this.sleepData.filter(sleep => sleep.userID === id);
   }
 
-  // calculateAvgOuncesPerDay(id) {
-  //   let userHydrationData = this.getHydrationById(id);
-  //   let totalUserOunces = userHydrationData.reduce((sum, hydration) => {
-  //     sum += hydration.numOunces;
-  //     return sum;
-  //   }, 0);
-  //   let roundedOunces = Math.round(totalUserOunces / userHydrationData.length);
-  //   return roundedOunces;
-  // }
+  calculateAvgHoursSleptPerDay(id) {
+    let userSleepData = this.getSleepById(id);
+    let totalUserHours = userSleepData.reduce((sum, sleep) => {
+      sum += sleep.hoursSlept;
+      return sum;
+    }, 0);
+    let roundedHours = Math.round(totalUserHours / userSleepData.length);
+    return roundedHours;
+  }
 }
 
 export default SleepRepo;

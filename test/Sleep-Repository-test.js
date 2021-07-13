@@ -38,11 +38,11 @@ describe('Sleep Repo', () => {
     });
   })
 
-  // it('should be able to find average ounces consumed per day for any user', () => {
-  //   let avgOunces = hydrationRepo.calculateAvgOuncesPerDay(5);
-  //
-  //   expect(avgOunces).to.be.a('number');
-  //   expect(avgOunces).to.equal(66);
-  // });
+  it('should be able to find average hours of sleep per day for any user', () => {
+    let avgHours = sleepRepo.calculateAvgHoursSleptPerDay(5);
+
+    expect(avgHours).to.be.a('number');
+    expect(avgHours).to.equal(7);
+  });
 
 });

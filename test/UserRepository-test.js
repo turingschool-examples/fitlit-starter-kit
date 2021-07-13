@@ -68,4 +68,9 @@ describe('User Repository', () => {
       ]
     })
   })
+
+  it('should return the average step goal for all users', () => {
+    let repo = new UserRepository(userRepo);
+    expect(repo.getAverageStepGoal()).to.equal(6667)
+  })
 });

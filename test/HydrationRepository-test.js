@@ -33,6 +33,9 @@ describe('Hydration Repo', () => {
   })
 
   it('should be able to find average ounces consumed per day for any user', () => {
+    let avgOunces = hydrationRepo.calculateAvgOuncesPerDay(5);
 
+    expect(avgOunces).to.be.a('number');
+    expect(avgOunces).to.equal(65);
   });
 });

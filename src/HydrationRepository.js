@@ -22,6 +22,17 @@ class HydrationRepo {
     let ouncesByDate = userHydrationData.find(hydration => hydration.date === date);
     return ouncesByDate.numOunces;
   }
+
+  getOuncesByWeek(id, date) {
+    let userHydrationData = this.getHydrationById(id);
+    let hydrationDates = userHydrationData.map(hydration => hydration.date);
+    let indexOfDate = hydrationDates.indexOf(date);
+    let hydrationByDate = userHydrationData.slice(indexOfDate, indexOfDate + 7);
+    return hydrationByDate.reduce((obj, hydration) => {
+      obj[hydration.date] = hydration.numOunces;
+      return obj;
+    }, {});
+  }
 }
 
 export default HydrationRepo;

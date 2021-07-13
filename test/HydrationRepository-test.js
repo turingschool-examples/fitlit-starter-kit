@@ -36,7 +36,7 @@ describe('Hydration Repo', () => {
     let avgOunces = hydrationRepo.calculateAvgOuncesPerDay(5);
 
     expect(avgOunces).to.be.a('number');
-    expect(avgOunces).to.equal(65);
+    expect(avgOunces).to.equal(66);
   });
 
   it('should be able to find how many ounces a user consumed on a specific date', () => {
@@ -44,6 +44,20 @@ describe('Hydration Repo', () => {
 
     expect(dailyOunces).to.be.a('number');
     expect(dailyOunces).to.equal(75);
+  });
 
+  it('should return a user\'s ounces consumed for each day on a given week', () => {
+    let weeklyOunces = hydrationRepo.getOuncesByWeek(1,'2019/06/19');
+
+    expect(weeklyOunces).to.be.a('object');
+    expect(weeklyOunces).to.deep.equal({
+      '2019/06/19': 91,
+      '2019/06/20': 50,
+      '2019/06/21': 50,
+      '2019/06/22': 43,
+      '2019/06/23': 39,
+      '2019/06/24': 61,
+      '2019/06/25': 51
+    })
   });
 });

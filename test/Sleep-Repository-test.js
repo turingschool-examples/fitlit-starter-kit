@@ -52,4 +52,13 @@ describe('Sleep Repo', () => {
     expect(avgRating).to.equal(3);
   });
 
+  it('should be able to find how many hours a user has slept on a specific date', () => {
+    let dailyHours = sleepRepo.getHoursByDate(10,'2019/06/15');
+
+    expect(dailyHours).to.be.a('number');
+    expect(dailyHours).to.equal(4.4);
+  });
+
+  
+
 });

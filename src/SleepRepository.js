@@ -17,16 +17,21 @@ class SleepRepo {
     return roundedHours;
   }
 
-calculateAvgSleepRatingPerDay(id) {
-  let userSleepData = this.getSleepById(id);
-  let totalUserRatings = userSleepData.reduce((sum, sleep) => {
-    sum += sleep.sleepQuality;
-    return sum;
-  }, 0);
-  let roundedRating = Math.round(totalUserRatings / userSleepData.length);
-  console.log(roundedRating)
-  return roundedRating;
-}
+  calculateAvgSleepRatingPerDay(id) {
+    let userSleepData = this.getSleepById(id);
+    let totalUserRatings = userSleepData.reduce((sum, sleep) => {
+      sum += sleep.sleepQuality;
+      return sum;
+    }, 0);
+    let roundedRating = Math.round(totalUserRatings / userSleepData.length);
+    return roundedRating;
+  }
+
+  getHoursByDate(id, date) {
+    let userSleepData = this.getSleepById(id);
+    let hoursByDate = userSleepData.find(sleep => sleep.date === date);
+    return hoursByDate.hoursSlept;
+  }
 
 }
 

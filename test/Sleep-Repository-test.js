@@ -45,4 +45,11 @@ describe('Sleep Repo', () => {
     expect(avgHours).to.equal(7);
   });
 
+  it('should be able to find average rating of sleep quality per day for any user', () => {
+    let avgRating = sleepRepo.calculateAvgSleepRatingPerDay(5);
+
+    expect(avgRating).to.be.a('number');
+    expect(avgRating).to.equal(3);
+  });
+
 });

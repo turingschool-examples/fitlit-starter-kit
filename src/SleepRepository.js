@@ -16,6 +16,18 @@ class SleepRepo {
     let roundedHours = Math.round(totalUserHours / userSleepData.length);
     return roundedHours;
   }
+
+calculateAvgSleepRatingPerDay(id) {
+  let userSleepData = this.getSleepById(id);
+  let totalUserRatings = userSleepData.reduce((sum, sleep) => {
+    sum += sleep.sleepQuality;
+    return sum;
+  }, 0);
+  let roundedRating = Math.round(totalUserRatings / userSleepData.length);
+  console.log(roundedRating)
+  return roundedRating;
+}
+
 }
 
 export default SleepRepo;

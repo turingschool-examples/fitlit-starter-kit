@@ -15,5 +15,24 @@ describe('Hydration Repo', () => {
     expect(HydrationRepo).to.be.a('function');
   });
 
+  it('should be an instance of HydrationRepo', () => {
+    expect(hydrationRepo).to.be.an.instanceof(HydrationRepo);
+  });
 
+  it('should hold all hydration objects', () => {
+    expect(hydrationRepo.hydrationData[0]).to.be.a('object');
+    expect(hydrationRepo.hydrationData[0]).to.deep.equal({"userID":1,"date":"2019/06/15","numOunces":37});
+    expect(hydrationRepo.hydrationData[2].userID).to.equal(3);
+  });
+
+  it('should be able to find stats for a specific user', () => {
+    let userHydrationStats = hydrationRepo.getHydrationById(5);
+
+    expect(userHydrationStats).to.be.a('array');
+    expect(userHydrationStats[0]).to.deep.equal({ userID: 5, date: '2019/06/15', numOunces: 42 });
+  })
+
+  it('should be able to find average ounces consumed per day for any user', () => {
+
+  });
 });

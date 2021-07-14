@@ -103,13 +103,4 @@ describe('Sleep Repo', () => {
     expect(avgQuality).to.equal(3);
   });
 
-  it('test test', () => {
-    let avgQuality = sleepRepo.findUserIDs();
-    let getDate = sleepRepo.getDates('2019/06/15')
-
-    expect(avgQuality).to.be.a('array');
-    expect(getDate).to.be.an('object');
-    // expect(avgQuality).to.equal(3);
-  });
-
 });

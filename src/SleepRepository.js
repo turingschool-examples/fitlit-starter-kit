@@ -1,3 +1,5 @@
+const allSleepQualityAvg = [];
+
 class SleepRepo {
   constructor(sleepData) {
     this.sleepData = sleepData;
@@ -39,67 +41,41 @@ class SleepRepo {
       sum += sleep.sleepQuality;
       return sum;
     }, 0);
-    let roundedAvg = Math.round(avgQuality / this.sleepData.length)
+    let roundedAvg = Math.round(avgQuality / this.sleepData.length);
     return roundedAvg;
   }
 
-  findUserIDs() {
-    let result = this.sleepData.reduce((arr, sleep) => {
-      if (!arr.includes(sleep.userID)) {
-        arr.push(sleep.userID);
-      }
-      return arr;
-    }, [])
-    // console.log(result)
-    return result;
-  }
+  // **DO NOT NEED THESE METHODS AS THEY ARE NOT USED FOR DOM UPDATES**
 
+  // findUserIDs() {
+  //   let result = this.sleepData.reduce((arr, sleep) => {
+  //     if (!arr.includes(sleep.userID)) {
+  //       arr.push(sleep.userID);
+  //     }
+  //     return arr;
+  //   }, [])
+  //   return result;
+  // }
 
-  getDates(date) {
-    let sleepDates = this.sleepData.map(sleep => sleep.date);
-    let indexOfDate = sleepDates.indexOf(date);
-    let userLength = this.findUserIDs().length;
-    let sleepByDate = this.sleepData.slice(indexOfDate, indexOfDate + (7 * userLength));
-    let result = sleepByDate.reduce((obj, sleep) => {
-      if (!obj[sleep.userID]) {
-        obj[sleep.userID] = 0;
-      }
-      obj[sleep.userID] += (sleep.sleepQuality) / 7;
-      return obj;
-    }, {});
-    // let values = Object.values(result)
-    // // console.log(values)
-    // let keys = Object.keys(result)
-    // // console.log(keys)
-    // let entries = Object.entries(result)
-    // // console.log(entries)
-    // let test = entries.reduce((arr, entry) => {
-    //   // console.log(entry)
-    //   entry.map(e => {
-    //     if (e[1] >= 3) {
-    //       // console.log(e[0])
-    //       console.log(e[1])
-    //       arr.push(e)
-    //     }
-    //   })
-    //   return arr;
-    // }, [])
-    // // console.log(result)
-    // // console.log(test)
-    // return test;
-    console.log(result)
-    return result;
-
-  }
-
-  // test() {
-  //   let values = Object.values(getDates())
-  //   console.log(value)
-  //   let
+  // getDates(date, id) {
+  //   let sleepDates = this.sleepData.map(sleep => sleep.date); // array of all dates
+  //   let indexOfDate = sleepDates.indexOf(date); // index of date passed in as argument
+  //   let userLength = this.findUserIDs().length; // finding users array length
+  //   let sleepByDate = this.sleepData.slice(indexOfDate, indexOfDate + (7 * userLength)); // array of week dates for all users
+  //   let weekDates = sleepByDate.map(sleep => sleep.date)
+  //   let singleUserWeek = sleepByDate.filter(user => user.userID === id)
+  //   let avgQuality = singleUserWeek.reduce((sum, sleepObj) => {
+  //     sum += sleepObj.sleepQuality;
+  //     return sum;
+  //   }, 0) / 7;
+  //   let userSleepQualityAvg = { id: id, averageQuality: avgQuality };
+  //   allSleepQualityAvg.push(userSleepQualityAvg)
+  // }
+  //
+  // getSleepQualityOver3(id) {
+  //   return allSleepQualityAvg.filter(avg => avg.averageQuality > 3);
   // }
 
 }
-  //iterate over this.sleepData
-  //
 
 export default SleepRepo;

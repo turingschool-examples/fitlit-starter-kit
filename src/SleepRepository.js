@@ -33,6 +33,16 @@ class SleepRepo {
       return obj;
     }, {});
   }
+
+  getAvgSleepQualityForUsers() {
+    let avgQuality = this.sleepData.reduce((sum, sleep) => {
+      sum += sleep.sleepQuality;
+      return sum;
+    }, 0);
+    let roundedAvg = Math.round(avgQuality / this.sleepData.length)
+    return roundedAvg;
+  }
+
 }
 
 export default SleepRepo;

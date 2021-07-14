@@ -96,4 +96,11 @@ describe('Sleep Repo', () => {
     });
   });
 
+  it('should find the average sleep quality of all users', () => {
+    let avgQuality = sleepRepo.getAvgSleepQualityForUsers();
+
+    expect(avgQuality).to.be.a('number');
+    expect(avgQuality).to.equal(3);
+  });
+
 });

@@ -13,7 +13,7 @@ describe('Sleep', () => {
     expect(Sleep).to.be.a('function');
   });
 
-  it('should be an instance of hydration', () => {
+  it('should be an instance of sleep', () => {
     expect(sleepData[0]).to.be.an('object');
     expect(sleepData[0]).to.be.an.instanceof(Sleep);
   });

@@ -13,5 +13,26 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 import userData from './data/users';
 import hydrationTestData from './data/hydration-test-data'
+import { fetchAPIData } from './apiCalls'
 import User from './User';
 import UserRepository from './UserRepository';
+import Hydration from './Hydration';
+import HydrationRepo from './HydrationRepository';
+import Sleep from './Sleep';
+import SleepRepo from './SleepRepository';
+
+let user;
+window.addEventListener('load', function() {
+    // generateUser();
+})
+
+// function generateUser(userData) {
+//   userData.
+// }
+
+
+// function generateUser() {
+//   fetchAPIData()
+  // .then(data => user = new User(data.userData))
+// }
+// console.log(generateUser());

@@ -23,6 +23,16 @@ class SleepRepo {
     return hoursByDate[stat];
   }
 
+  getSleepStatsByWeek(id, date, stat) {
+    let userSleepData = this.getSleepById(id);
+    let sleepDates = userSleepData.map(sleep => sleep.date);
+    let indexOfDate = sleepDates.indexOf(date);
+    let sleepByDate = userSleepData.slice(indexOfDate, indexOfDate + 7);
+    return sleepByDate.reduce((obj, sleep) => {
+      obj[sleep.date] = sleep[stat];
+      return obj;
+    }, {});
+  }
 }
 
 export default SleepRepo;

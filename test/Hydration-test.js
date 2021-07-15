@@ -9,6 +9,7 @@ describe('Hydration', () => {
   it('should be a function', () => {
     expect(Hydration).to.be.a('function');
   });
+
   it('should be an instance of Hydration', () => {
     const data = [{
     userID: 1,
@@ -27,6 +28,21 @@ describe('Hydration', () => {
   }];
     const hydration = new Hydration(data);
     expect(hydration).to.be.an.instanceOf(Hydration);
+  });
+
+  it.only('should return a user with ID', () => {
+    const userWithID = [{
+      userID: 1,
+      date: "2019/06/15",
+      numOunces: 37
+    },
+    {
+      userID: 1,
+      date: "2019/06/15",
+      numOunces: 47
+    }];
+    const hydration = new Hydration(userWithID);
+    expect(hydration.findAUser(1)).to.equal(userWithID)
   });
 
   it('should return a user\'s average daily fluid consumption', () => {

@@ -4,7 +4,7 @@ class Hydration {
   }
 
 findAUser(id) {
-  return this.hydrationData.filter(aUser => aUser.user.id === id)
+  return this.hydrationData.filter(aUser => aUser.userID === id)
 }
   // findOneDayHydration() {
   //   return this.hydrationData.filter((data) => id === data.userID);
@@ -20,6 +20,10 @@ findByDate(dateSelected) {
 return this.hydrationData.find(data => data.date === dateSelected).numOunces;
 }
 
+selectWeek() {
+  let user = this.finduser(id)
+  return user.slice(-7);
+}
 findWeeklyOunces(weekSelected) {
 // needs  to be an array displaying 7 days of info
 }

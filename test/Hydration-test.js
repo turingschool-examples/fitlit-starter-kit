@@ -27,7 +27,8 @@ describe('Hydration', () => {
   }];
     const hydration = new Hydration(data);
     expect(hydration).to.be.an.instanceOf(Hydration);
-  })
+  });
+
   it('should return a user\'s average daily fluid consumption', () => {
     const data = [{
     userID: 1,
@@ -76,7 +77,15 @@ describe('Hydration', () => {
   }];
   const hydration = new Hydration(data);
   expect(hydration.calcAverageOunces(1)).to.equal(37);
-  })
+});
 
-  findOneDayHydration();
-})
+  it.only('should return how many fluid ounces a user consumed in a specific day', () => {
+    const data =  [{
+        userID: 3,
+        date: "2019/06/15",
+        numOunces: 47
+      }];
+    const hydration = new Hydration(data);
+    expect(hydration.findByDate('2019/06/15')).to.equal(47);
+  });
+});

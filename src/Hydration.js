@@ -1,25 +1,24 @@
 class Hydration {
-  constructor(hydrationData, id) {
+  constructor(hydrationData) {
     this.hydrationData = hydrationData;
-    this.id = id;
   }
 
   // findOneDayHydration() {
   //   return this.hydrationData.filter((data) => id === data.userID);
   // }
 
-calcAverageOunces(id) {
-  let perDayHydrationData = this.hydrationData.filter((data) => id === data.userID)
-  console.log("LOOOOOOOK", perDayHydrationData);
-  let perDay =
+// calcAverageOunces(id) {
+//   let perDayHydrationData = this.hydrationData.filter((data) => id === data.userID)
+//   console.log("LOOOOOOOK", perDayHydrationData);
+//   let perDay =
+// }
+
+findByDate(dateSelected) {
+return this.hydrationData.find(data => data.date === dateSelected).numOunces;
 }
 
-findByDate() {
-
-}
-
-findWeeklyOunces() {
-// needs  to be an array displaying 7 days of info  
+findWeeklyOunces(weekSelected) {
+// needs  to be an array displaying 7 days of info
 }
 }
   // Create classes and methods that can calculate:

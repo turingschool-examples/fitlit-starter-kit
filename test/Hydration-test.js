@@ -79,7 +79,7 @@ describe('Hydration', () => {
   expect(hydration.calcAverageOunces(1)).to.equal(37);
 });
 
-  it.only('should return how many fluid ounces a user consumed in a specific day', () => {
+  it('should return how many fluid ounces a user consumed in a specific day', () => {
     const data =  [{
         userID: 3,
         date: "2019/06/15",

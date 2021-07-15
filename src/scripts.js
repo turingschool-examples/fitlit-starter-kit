@@ -18,11 +18,22 @@ import Sleep from './Sleep';
 import SleepRepo from './SleepRepository';
 
 let user;
+let userRepo;
 
-window.addEventListener('load', generateUser)
+window.addEventListener('load', function() {
+  generateUser();
+  setUpUserRepo();
+})
 
-function generateUser() {
+const generateUser = () => {
   fetchAPIData('users')
   .then(data => user = new User(data.userData[Math.floor(Math.random() * data.userData.length)]))
   .then(data => console.log(user))
+}
+
+const setUpUserRepo = () => {
+  fetchAPIData('users')
+  .then(data => userRepo = new UserRepository(data.userData))
+  .then(data => userRepo = userRepo.userData)
+  .then(data => console.log(userRepo))
 }

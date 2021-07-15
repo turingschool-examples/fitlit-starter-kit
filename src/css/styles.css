@@ -1,5 +1,48 @@
+* {
+  font-family: 'Montserrat', 'sans-serif';
+  color: #ffffff;
+}
+
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
+  background-color: #161C23;
+  font-family:
+}
+
+h1 {
+  font-size: 20px;
+}
+
+header {
+  display: flex;
+  background-color: #3c3e3c;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-evenly;
   height: 100%;
+  flex-wrap: wrap;
+}
+
+.info-card {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #3c3e3c;
+  width: 22%;
+  height: 100%;
+}
+
+.sleep-section {
+  height: 25vh;
+}
+
+.hydration-section {
+  height: 25vh;
+}
+
+.user-profile-info {
+  display: flex;
+  justify-content: space-evenly;
 }

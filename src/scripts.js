@@ -28,6 +28,7 @@ window.addEventListener('load', function() {
   generateUser();
   setUpUserRepo();
   generateSleep();
+  setUpSleepRepo();
   generateHydration();
   setUpHydrationRepo();
 })
@@ -49,25 +50,24 @@ const generateSleep = () => {
   fetchAPIData('sleep')
   .then(data => sleep = new Sleep(data.sleepData[user.id - 1]))
   .then(data => console.log(sleep))
-}
+} 
 
-// const setUpSleepRepo = () => {
-//     fetchAPIData('sleep')
-//     .then(data => sleepRepo = new SleepRepo(data.sleepData))
-//     .then(console.log(sleepRepo));
-//     .then(data => sleepRepo = sleepRepo.sleepData)
-//     .then(data => console.log(sleepRepo))
-//   }
-//
+const setUpSleepRepo = () => {
+    fetchAPIData('sleep')
+    .then(data => sleepRepo = new SleepRepo(data.sleepData))
+    .then(data => sleepRepo = sleepRepo.sleepData)
+    .then(data => console.log(sleepRepo))
+  }
+
 const generateHydration = () => {
   fetchAPIData('hydration')
   .then(data => hydration = new Hydration(data.hydrationData[user.id - 1]))
   .then(data => console.log(hydration))
 }
-//
-// const setUpHydrationRepo = () => {
-//     fetchAPIData('hydration')
-//     .then(data => hydrationRepo = new HydrationRepo(data.hydrationData))
-//     .then(data => hydrationRepo = hydrationRepo.hydrationData)
-//     .then(data => console.log(hydrationRepo))
-//   }
+
+const setUpHydrationRepo = () => {
+    fetchAPIData('hydration')
+    .then(data => hydrationRepo = new HydrationRepo(data.hydrationData))
+    .then(data => hydrationRepo = hydrationRepo.hydrationData)
+    .then(data => console.log(hydrationRepo))
+  }

@@ -7,12 +7,8 @@ import './css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
-console.log('This is the JavaScript entry file - your code begins here.');
-
-// An example of how you tell webpack to use a JS file
-
-import userData from './data/users';
-import hydrationTestData from './data/hydration-test-data'
+// import userData from './data/users';
+// import hydrationTestData from './data/hydration-test-data'
 import { fetchAPIData } from './apiCalls'
 import User from './User';
 import UserRepository from './UserRepository';
@@ -22,17 +18,11 @@ import Sleep from './Sleep';
 import SleepRepo from './SleepRepository';
 
 let user;
-window.addEventListener('load', function() {
-    // generateUser();
-})
 
-// function generateUser(userData) {
-//   userData.
-// }
+window.addEventListener('load', generateUser)
 
-
-// function generateUser() {
-//   fetchAPIData()
-  // .then(data => user = new User(data.userData))
-// }
-// console.log(generateUser());
+function generateUser() {
+  fetchAPIData('users')
+  .then(data => user = new User(data.userData[Math.floor(Math.random() * data.userData.length)]))
+  .then(data => console.log(user))
+}

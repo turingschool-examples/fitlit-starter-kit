@@ -1,5 +1,31 @@
+* {
+  font-family: 'Montserrat', 'sans-serif';
+  color: #ffffff;
+}
+
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
-  height: 100%;
+  background-color: #161C23;
+  font-family:
+}
+
+h1 {
+  font-size: 20px;
+}
+
+header {
+  display: flex;
+  background-color: #3c3e3c;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.info-card {
+  background-color: #3c3e3c;
+  width: 30%;
+  height: 60%;
 }

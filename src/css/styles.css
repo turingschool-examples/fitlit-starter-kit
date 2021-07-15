@@ -22,10 +22,22 @@ header {
 .user-info {
   display: flex;
   justify-content: space-evenly;
+  height: 100%;
+  flex-wrap: wrap;
 }
 
 .info-card {
+  display: flex;
+  flex-wrap: wrap;
   background-color: #3c3e3c;
-  width: 30%;
-  height: 60%;
+  width: 22%;
+  height: 100%;
+}
+
+.sleep-section {
+  height: 25vh;
+}
+
+.hydration-section {
+  height: 25vh;
 }

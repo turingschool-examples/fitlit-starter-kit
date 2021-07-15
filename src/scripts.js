@@ -1,14 +1,9 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
-// import userData from './data/users';
-// import hydrationTestData from './data/hydration-test-data'
 import { fetchAPIData } from './apiCalls'
 import User from './User';
 import UserRepository from './UserRepository';
@@ -50,7 +45,7 @@ const generateSleep = () => {
   fetchAPIData('sleep')
   .then(data => sleep = new Sleep(data.sleepData[user.id - 1]))
   .then(data => console.log(sleep))
-} 
+}
 
 const setUpSleepRepo = () => {
     fetchAPIData('sleep')

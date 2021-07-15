@@ -1,7 +1,8 @@
 
 import { expect } from 'chai';
 import Hydration from '../src/Hydration';
-
+import User from '../src/User';
+import UserRepository from '../src/UserRepository';
 
 
 describe('Hydration', () => {
@@ -48,21 +49,21 @@ describe('Hydration', () => {
   date: "2019/06/16",
   numOunces: 37
 },
-{
-  userID: 2,
-  date: "2019/06/16",
-  numOunces: 75
-},
-{
-  userID: 3,
-  date: "2019/06/16",
-  numOunces: 47
-},
-{
-  userID: 1,
-  date: "2019/06/17",
-  numOunces: 37
+  {
+    userID: 2,
+    date: "2019/06/16",
+    numOunces: 75
   },
+  {
+    userID: 3,
+    date: "2019/06/16",
+    numOunces: 47
+  },
+  {
+    userID: 1,
+    date: "2019/06/17",
+    numOunces: 37
+    },
   {
   userID: 2,
   date: "2019/06/17",

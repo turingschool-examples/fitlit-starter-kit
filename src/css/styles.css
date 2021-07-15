@@ -41,3 +41,8 @@ header {
 .hydration-section {
   height: 25vh;
 }
+
+.user-profile-info {
+  display: flex;
+  justify-content: space-evenly;
+}

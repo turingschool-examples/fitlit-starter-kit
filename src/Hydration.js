@@ -4,16 +4,23 @@ class Hydration {
     this.id = id;
   }
 
-  findOneDayHydration() {
-    return this.hydrationData.filter(user => user.userID === this.id);
-    console.log("WHAT", findOneDayHydration())
-  }
+  // findOneDayHydration() {
+  //   return this.hydrationData.filter((data) => id === data.userID);
+  // }
 
-// calcAverageOunces(id) {
-//   let perDayHydrationData = this.hydrationData.filter((data) => id === data.userID)
-//   console.log("LOOOOOOOK", perDayHydrationData);
-//   let perDay =
-// }
+calcAverageOunces(id) {
+  let perDayHydrationData = this.hydrationData.filter((data) => id === data.userID)
+  console.log("LOOOOOOOK", perDayHydrationData);
+  let perDay =
+}
+
+findByDate() {
+
+}
+
+findWeeklyOunces() {
+// needs  to be an array displaying 7 days of info  
+}
 }
   // Create classes and methods that can calculate:
 
@@ -24,7 +31,6 @@ class Hydration {
 // (identified by a date)
 // For a user, how many fluid ounces of water consumed each day over the course
 // of a week (7 days) - return the amount for each day
-// You have to decide which classes should contain each method. Think about
-// whose responsibility it is to own the method.
+
 
 export default Hydration;

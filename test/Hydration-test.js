@@ -77,4 +77,6 @@ describe('Hydration', () => {
   const hydration = new Hydration(data);
   expect(hydration.calcAverageOunces(1)).to.equal(37);
   })
+
+  findOneDayHydration();
 })

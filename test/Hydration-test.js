@@ -133,7 +133,7 @@ it('should return 7 days', () => {
         numOunces: 75
       }]
     const hydration = new Hydration(week);
-    expect(hydration.selectWeek()).to.deep.equal(week)
+    expect(hydration.selectWeek(1)).to.deep.equal(week)
   });
 
   it('should return how many fluid ounces a user consumed in a specific day', () => {

@@ -13,7 +13,7 @@ import Sleep from './Sleep';
 import SleepRepo from './SleepRepository';
 
 
-const address = document.getElementById('address');
+// const address = document.getElementById('address');
 
 let user;
 let userRepo;
@@ -75,13 +75,16 @@ const setUpHydrationRepo = () => {
 // Display user info
   // replace innerText of all user profile info fields to reflect the current random user
  const displayUserProfile = (user) => {
-  address.innerText = `Address: ${user.address}`
-  address.innerText = `Address: ${user.address}`
-  address.innerText = `Address: ${user.address}`
+  strideLength.innerText = `Stride Length: ${user.strideLength}`
+  email.innerText = `Email: ${user.email}`
+  stepGoal.innerText = `Step Goal: ${user.dailyStepGoal}`
   address.innerText = `Address: ${user.address}`
 };
 //Display first name
   //Replace greeting inner text to reflect the first name of the user
     // use .returnFirstName() in user class
+const displayGreeting = (user) => {
+
+};
 //Display how the specific user's step goal compares to the average step goal amongst all Users
   //

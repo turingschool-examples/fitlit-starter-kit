@@ -45,7 +45,7 @@ describe('Hydration', () => {
     expect(hydration.findAUser(1)).to.deep.equal(userWithID)
   });
 
-  it.skip('should return a user\'s average daily fluid consumption', () => {
+  it('should return a user\'s average daily fluid consumption', () => {
     const data = [{
     userID: 1,
     date: "2019/06/15",
@@ -95,7 +95,7 @@ describe('Hydration', () => {
   expect(hydration.calcAverageOunces(1)).to.equal(37);
 });
 
-it('should return 7 days', () => {
+it.only('should return 7 days', () => {
     const week =
       [{
         userID: 1,
@@ -133,6 +133,7 @@ it('should return 7 days', () => {
         numOunces: 75
       }]
     const hydration = new Hydration(week);
+    hydration.findWeeklyOunces();
     expect(hydration.selectWeek(1)).to.deep.equal(week)
   });
 
@@ -145,4 +146,7 @@ it('should return 7 days', () => {
     const hydration = new Hydration(data);
     expect(hydration.findByDate('2019/06/15')).to.equal(47);
   });
+
+  it.skip('should ')
+
 });

@@ -26,8 +26,15 @@ selectWeek(id) {
 }
 
 findWeeklyOunces() {
+  this.selectWeek()
+  let displaySevenDays = []
+  console.log('HEREEEE', this.hydrationData.filter((day) => day.numOunces));
+  this.hydrationData.filter((day) => day.numOunces)
+  .forEach((day) => displaySevenDays.push(day.numOunces));
+  console.log('>>>>>>', displaySevenDays);
+  return displaySevenDays;
 
-// needs to be an array displaying 7 numbers
+// needs to be an array displaying 7 days of numOunces
 }
 }
   // Create classes and methods that can calculate:

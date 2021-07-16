@@ -3,7 +3,7 @@ import { sleepTestData } from '../src/data/sleep-test-data';
 import SleepRepo from '../src/SleepRepository';
 import Sleep from '../src/Sleep';
 
-describe('Sleep Repo', () => {
+describe.only('Sleep Repo', () => {
   let sleepRepo, sleepData;
 
   beforeEach(() => {
@@ -67,32 +67,32 @@ describe('Sleep Repo', () => {
   });
 
   it('should return a user\'s hours of sleep for each day in a given week', () => {
-    let weeklyHours = sleepRepo.getSleepStatsByWeek(1,'2019/06/19', 'hoursSlept');
+    let weeklyHours = sleepRepo.getSleepStatsByWeek(1,'2019/06/23', 'hoursSlept');
 
     expect(weeklyHours).to.be.a('object');
     expect(weeklyHours).to.deep.equal({
+      '2019/06/17': 8,
+      '2019/06/18': 10.4,
       '2019/06/19': 10.7,
       '2019/06/20': 9.3,
       '2019/06/21': 7.8,
       '2019/06/22': 7,
-      '2019/06/23': 7.8,
-      '2019/06/24': 8,
-      '2019/06/25': 5.1
+      '2019/06/23': 7.8
     });
   });
 
   it('should return a user\'s sleep quality for each day in a given week', () => {
-    let weeklyRatings = sleepRepo.getSleepStatsByWeek(1,'2019/06/19', 'sleepQuality');
+    let weeklyRatings = sleepRepo.getSleepStatsByWeek(1, '2019/06/23', 'sleepQuality');
 
     expect(weeklyRatings).to.be.a('object');
     expect(weeklyRatings).to.deep.equal({
+      '2019/06/17': 2.6,
+      '2019/06/18': 3.1,
       '2019/06/19': 1.2,
       '2019/06/20': 1.2,
       '2019/06/21': 4.2,
       '2019/06/22': 3,
-      '2019/06/23': 1.5,
-      '2019/06/24': 1.3,
-      '2019/06/25': 3.7
+      '2019/06/23': 1.5
     });
   });
 

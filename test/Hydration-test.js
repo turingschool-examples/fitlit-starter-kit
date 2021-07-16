@@ -95,7 +95,7 @@ describe('Hydration', () => {
   expect(hydration.calcAverageOunces(1)).to.equal(37);
 });
 
-it.only('should return 7 days', () => {
+it('should return 7 days', () => {
     const week =
       [{
         userID: 1,
@@ -133,7 +133,6 @@ it.only('should return 7 days', () => {
         numOunces: 75
       }]
     const hydration = new Hydration(week);
-    hydration.findWeeklyOunces();
     expect(hydration.selectWeek(1)).to.deep.equal(week)
   });
 
@@ -147,6 +146,44 @@ it.only('should return 7 days', () => {
     expect(hydration.findByDate('2019/06/15')).to.equal(47);
   });
 
-  it.skip('should ')
+  it('should return seven days worth of fluid ounces consumed', () => {
+    const data = [{
+      userID: 1,
+      date: "2019/06/14",
+      numOunces: 75
+      },
+      {
+      userID: 1,
+      date: "2019/06/15",
+      numOunces: 47
+      },
+      {
+      userID: 1,
+      date: "2019/06/16",
+      numOunces: 37
+      },
+      {
+      userID: 1,
+      date: "2019/06/17",
+      numOunces: 75
+      },
+      {
+      userID: 1,
+      date: "2019/06/18",
+      numOunces: 47
+      },
+      {
+      userID: 1,
+      date: "2019/06/19",
+      numOunces: 37
+      },
+      {
+      userID: 1,
+      date: "2019/06/20",
+      numOunces: 75
+    }]
+    const hydration = new Hydration(data);
+    expect(hydration.findWeeklyOunces()).to.deep.equal([75, 47, 37, 75, 47,37, 75]);
+  })
 
 });

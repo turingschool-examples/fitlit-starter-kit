@@ -29,48 +29,44 @@ window.addEventListener('load', function() {
   setUpSleepRepo();
   generateHydration();
   setUpHydrationRepo();
-  // displayStepGoals();
 })
 
 const generateUser = () => {
   fetchAPIData('users')
   .then(data => user = new User(data.userData[Math.floor(Math.random() * data.userData.length)]))
-  .then(data => console.log(user))
+  .then(data => console.log('userAPI', user))
   .then(data => displayUserProfile(user));
 }
 
 const setUpUserRepo = () => {
   fetchAPIData('users')
   .then(data => userRepo = new UserRepository(data.userData))
-  // .then(data => userRepo = userRepo.userData)
-  .then(data => console.log(userRepo))
+  .then(data => console.log('userRepo', userRepo))
   .then(data => displayStepGoals(userRepo, user))
 }
 
 const generateSleep = () => {
   fetchAPIData('sleep')
   .then(data => sleep = new Sleep(data.sleepData[user.id - 1]))
-  // .then(data => console.log(sleep))
+  .then(data => console.log('sleepAPI', sleep))
 }
 
 const setUpSleepRepo = () => {
     fetchAPIData('sleep')
     .then(data => sleepRepo = new SleepRepo(data.sleepData))
-    .then(data => sleepRepo = sleepRepo.sleepData)
-    // .then(data => console.log(sleepRepo))
+    .then(data => console.log('sleepRepo', sleepRepo))
   }
 
 const generateHydration = () => {
   fetchAPIData('hydration')
   .then(data => hydration = new Hydration(data.hydrationData[user.id - 1]))
-  // .then(data => console.log(hydration))
+  .then(data => console.log('hydrationAPI', hydration))
 }
 
 const setUpHydrationRepo = () => {
     fetchAPIData('hydration')
     .then(data => hydrationRepo = new HydrationRepo(data.hydrationData))
-    .then(data => hydrationRepo = hydrationRepo.hydrationData)
-    // .then(data => console.log(hydrationRepo))
+    .then(data => console.log('hydrationRepo', hydrationRepo))
   }
 
 // ON PAGE LOAD
@@ -94,7 +90,6 @@ const displayGreeting = (user) => {
   //
 const displayStepGoals = (userRepo, user) => {
   const userAvg = userRepo.calculateAvgStepGoal();
-  console.log(userAvg)
   stepGoal2.innerText = `Step Goal: ${user.dailyStepGoal}`
   avgSteps.innerText = `Average Steps for all users: ${userAvg}`;
 };

@@ -13,7 +13,7 @@ class UserRepository {
       return sum;
     }, 0);
 
-    let roundedAvg = Math.round(avgStepGoal /this.userData.length);
+    let roundedAvg = Math.round(avgStepGoal / this.userData.length);
     return roundedAvg;
   }
 };

@@ -3,7 +3,7 @@ import { sleepTestData } from '../src/data/sleep-test-data';
 import SleepRepo from '../src/SleepRepository';
 import Sleep from '../src/Sleep';
 
-describe('Sleep Repo', () => {
+describe.only('Sleep Repo', () => {
   let sleepRepo, sleepData;
 
   beforeEach(() => {
@@ -67,7 +67,7 @@ describe('Sleep Repo', () => {
   });
 
   it('should return a user\'s hours of sleep for each day in a given week', () => {
-    let weeklyHours = sleepRepo.getSleepStatsByWeek(1,'2019/06/19', 'hoursSlept');
+    let weeklyHours = sleepRepo.getSleepStatsByWeek(1,'2019/06/23', 'hoursSlept');
 
     expect(weeklyHours).to.be.a('object');
     expect(weeklyHours).to.deep.equal({

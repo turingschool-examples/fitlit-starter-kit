@@ -26,11 +26,10 @@ let currentDate;
 window.addEventListener('load', function() {
   generateUser();
   setUpUserRepo();
-  generateSleep();
-  setUpSleepRepo();
   generateHydration();
   setUpHydrationRepo();
-  // dailyHydration()
+  generateSleep();
+  setUpSleepRepo();
 })
 
 const generateUser = () => {
@@ -47,6 +46,21 @@ const setUpUserRepo = () => {
   .then(data => displayStepGoals(userRepo, user))
 }
 
+const generateHydration = () => {
+  fetchAPIData('hydration')
+  .then(data => hydration = new Hydration(data.hydrationData[user.id - 1]))
+  .then(data => console.log('hydrationAPI', hydration))
+}
+
+const setUpHydrationRepo = () => {
+  fetchAPIData('hydration')
+  .then(data => hydrationRepo = new HydrationRepo(data.hydrationData))
+  .then(data => console.log('hydrationRepo', hydrationRepo))
+  .then(data => findCurrentDate())
+  .then(data => findDailyHydration())
+  .then(data => displayHydration())
+}
+
 const generateSleep = () => {
   fetchAPIData('sleep')
   .then(data => sleep = new Sleep(data.sleepData[user.id - 1]))
@@ -59,18 +73,6 @@ const setUpSleepRepo = () => {
     .then(data => console.log('sleepRepo', sleepRepo))
   }
 
-const generateHydration = () => {
-  fetchAPIData('hydration')
-  .then(data => hydration = new Hydration(data.hydrationData[user.id - 1]))
-  .then(data => console.log('hydrationAPI', hydration))
-}
-
-const setUpHydrationRepo = () => {
-    fetchAPIData('hydration')
-    .then(data => hydrationRepo = new HydrationRepo(data.hydrationData))
-    .then(data => console.log('hydrationRepo', hydrationRepo))
-    .then(data => findCurrentDate());
-  }
 
 // ON PAGE LOAD
 // Display user info
@@ -91,7 +93,7 @@ const displayGreeting = (user) => {
 };
 //Display how the specific user's step goal compares to the average step goal amongst all Users
   //
-const displayStepGoals = (userRepo, user) => {
+const displayStepGoals = () => {
   const userAvg = userRepo.calculateAvgStepGoal();
   stepGoal2.innerText = `Step Goal: ${user.dailyStepGoal}`
   avgSteps.innerText = `Average Steps for all users: ${userAvg}`;
@@ -101,14 +103,15 @@ const displayStepGoals = (userRepo, user) => {
   //run through hydrationRepo & match the ID of the user & the date to the latest day
 
 const findCurrentDate = () => {
-  // if (user.id === id)
   currentDate = hydrationRepo.hydrationData.map(hydration => hydration.date).pop();
   console.log(currentDate);
   return currentDate
 };
 
-const dailyHydration = (id, date) => {
-  const currentDate = findCurrentDate();
-  console.log('hydration current date: ', currentDate);
-  return currentDate;
+const findDailyHydration = () => {
+  return hydrationRepo.getOuncesByDate(user.id, currentDate);
+}
+
+const displayHydration = () => {
+  dailyWater.innerText = `Daily water consumption ${findDailyHydration()} ounces`
 }

@@ -29,15 +29,11 @@ class SleepRepo {
     let userSleepData = this.getSleepById(id);
     let sleepDates = userSleepData.map(sleep => sleep.date);
     let indexOfDate = sleepDates.indexOf(date);
-    // let sleepByDate = userSleepData.slice(indexOfDate, indexOfDate + 7);
     let sleepByDate = userSleepData.slice(indexOfDate - 6, indexOfDate + 1)
-    // console.log('pickle', sleepByDate)
-    let result = sleepByDate.reduce((obj, sleep) => {
+    return sleepByDate.reduce((obj, sleep) => {
       obj[sleep.date] = sleep[stat];
       return obj;
     }, {});
-    // console.log('pickle', result)
-    return result;
   }
 
   getAvgSleepQualityForUsers() {

@@ -29,6 +29,7 @@ window.addEventListener('load', function() {
   setUpSleepRepo();
   generateHydration();
   setUpHydrationRepo();
+  // displayStepGoals();
 })
 
 const generateUser = () => {
@@ -42,7 +43,8 @@ const setUpUserRepo = () => {
   fetchAPIData('users')
   .then(data => userRepo = new UserRepository(data.userData))
   .then(data => userRepo = userRepo.userData)
-  .then(data => console.log(userRepo))
+  // .then(data => console.log(userRepo))
+  // .then(data => displayStepGoals(userRepo))
 }
 
 const generateSleep = () => {
@@ -90,3 +92,10 @@ const displayGreeting = (user) => {
 };
 //Display how the specific user's step goal compares to the average step goal amongst all Users
   //
+// const displayStepGoals = (userRepo) => {
+//   console.log(userRepo);
+//   const userAvg = userRepo.calculateAvgStepGoal();
+//   return userAvg
+  // stepGoal2.innerText = `Step Goal: ${user.dailyStepGoal}`
+  // avgSteps.innerText = `Average Steps for all users: ${userAvg}`;
+// };

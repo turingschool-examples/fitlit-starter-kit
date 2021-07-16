@@ -79,12 +79,14 @@ const setUpHydrationRepo = () => {
   email.innerText = `Email: ${user.email}`
   stepGoal.innerText = `Step Goal: ${user.dailyStepGoal}`
   address.innerText = `Address: ${user.address}`
+  displayGreeting(user);
 };
 //Display first name
   //Replace greeting inner text to reflect the first name of the user
     // use .returnFirstName() in user class
 const displayGreeting = (user) => {
-
+  const firstName = user.returnFirstName();
+  greeting.innerText = `Hello, ${firstName}!`;
 };
 //Display how the specific user's step goal compares to the average step goal amongst all Users
   //

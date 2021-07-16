@@ -12,6 +12,9 @@ import HydrationRepo from './HydrationRepository';
 import Sleep from './Sleep';
 import SleepRepo from './SleepRepository';
 
+
+const address = document.getElementById('address');
+
 let user;
 let userRepo;
 let hydration;
@@ -32,6 +35,7 @@ const generateUser = () => {
   fetchAPIData('users')
   .then(data => user = new User(data.userData[Math.floor(Math.random() * data.userData.length)]))
   .then(data => console.log(user))
+  .then(data => displayUserProfile(user));
 }
 
 const setUpUserRepo = () => {
@@ -66,3 +70,18 @@ const setUpHydrationRepo = () => {
     .then(data => hydrationRepo = hydrationRepo.hydrationData)
     .then(data => console.log(hydrationRepo))
   }
+
+// ON PAGE LOAD
+// Display user info
+  // replace innerText of all user profile info fields to reflect the current random user
+ const displayUserProfile = (user) => {
+  address.innerText = `Address: ${user.address}`
+  address.innerText = `Address: ${user.address}`
+  address.innerText = `Address: ${user.address}`
+  address.innerText = `Address: ${user.address}`
+};
+//Display first name
+  //Replace greeting inner text to reflect the first name of the user
+    // use .returnFirstName() in user class
+//Display how the specific user's step goal compares to the average step goal amongst all Users
+  //

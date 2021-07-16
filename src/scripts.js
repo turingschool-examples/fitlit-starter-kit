@@ -21,6 +21,7 @@ let hydration;
 let hydrationRepo;
 let sleep;
 let sleepRepo;
+let currentDate;
 
 window.addEventListener('load', function() {
   generateUser();
@@ -29,6 +30,7 @@ window.addEventListener('load', function() {
   setUpSleepRepo();
   generateHydration();
   setUpHydrationRepo();
+  // dailyHydration()
 })
 
 const generateUser = () => {
@@ -67,6 +69,7 @@ const setUpHydrationRepo = () => {
     fetchAPIData('hydration')
     .then(data => hydrationRepo = new HydrationRepo(data.hydrationData))
     .then(data => console.log('hydrationRepo', hydrationRepo))
+    .then(data => findCurrentDate());
   }
 
 // ON PAGE LOAD
@@ -93,3 +96,19 @@ const displayStepGoals = (userRepo, user) => {
   stepGoal2.innerText = `Step Goal: ${user.dailyStepGoal}`
   avgSteps.innerText = `Average Steps for all users: ${userAvg}`;
 };
+// display how much water consumed today
+  //locate the latest day
+  //run through hydrationRepo & match the ID of the user & the date to the latest day
+
+const findCurrentDate = () => {
+  // if (user.id === id)
+  currentDate = hydrationRepo.hydrationData.map(hydration => hydration.date).pop();
+  console.log(currentDate);
+  return currentDate
+};
+
+const dailyHydration = (id, date) => {
+  const currentDate = findCurrentDate();
+  console.log('hydration current date: ', currentDate);
+  return currentDate;
+}

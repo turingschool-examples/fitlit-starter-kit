@@ -71,6 +71,9 @@ const setUpSleepRepo = () => {
     fetchAPIData('sleep')
     .then(data => sleepRepo = new SleepRepo(data.sleepData))
     .then(data => console.log('sleepRepo', sleepRepo))
+    .then(data => findDailyHoursOfSleep())
+    .then(data => findDailySleepQuality())
+    .then(data => displayDailySleepStats())
   }
 
 
@@ -113,5 +116,25 @@ const findDailyHydration = () => {
 }
 
 const displayHydration = () => {
-  dailyWater.innerText = `Daily water consumption ${findDailyHydration()} ounces`
+  dailyWater.innerText = `Daily water consumption ${findDailyHydration()} oz`
 }
+// User sleep Data for the latest day
+const findDailyHoursOfSleep = () => {
+  const result = sleepRepo.getSleepStatByDate(user.id, currentDate, 'hoursSlept');
+  console.log(result);
+  return result
+}
+
+const findDailySleepQuality = () => {
+  const result = sleepRepo.getSleepStatByDate(user.id, currentDate, 'sleepQuality');
+  console.log(result);
+  return result
+}
+
+const displayDailySleepStats = () => {
+  dailySleep.innerText = `Hours Slept: ${findDailyHoursOfSleep()}, Sleep Quality: ${findDailySleepQuality()}`
+}
+// User sleep data over the course of the last week (weekly avg)
+  //
+// all-time avg sleep quality and all-time avg number of hours slept
+  //

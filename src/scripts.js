@@ -119,7 +119,7 @@ const findDailyHydration = () => {
 }
 
 const displayHydration = () => {
-  dailyWater.innerText = `Daily water consumption ${findDailyHydration()} oz`
+  dailyWater.innerText = `${findDailyHydration()}`
 }
 // User sleep Data for the latest day
 const findDailyHoursOfSleep = () => {
@@ -131,7 +131,8 @@ const findDailySleepQuality = () => {
 }
 
 const displayDailySleepStats = () => {
-  dailySleep.innerText = `Hours Slept: ${findDailyHoursOfSleep()}, Sleep Quality: ${findDailySleepQuality()}`
+  dailySleepHours.innerText = `${findDailyHoursOfSleep()}`
+  dailySleepQuality.innerText = `${findDailySleepQuality()}`
 }
 // User sleep data over the course of the last week (weekly avg)
   const findWeeklySleepAvg = () => {
@@ -155,8 +156,9 @@ const displayDailySleepStats = () => {
   }
 
   const displayWeeklySleepAvgs = () => {
-    weeklySleep.innerText = `Average Hours Slept this week: ${findWeeklySleepAvg()}, Average Sleep Quality this week: ${findWeeklySleepQualityAvg()}`
+    weeklySleepHours.innerText = `${findWeeklySleepAvg()}`
+    weeklySleepQuality.innerText = `${findWeeklySleepQualityAvg()}`
   }
-  
+
 // all-time avg sleep quality and all-time avg number of hours slept
   //

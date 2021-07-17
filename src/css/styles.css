@@ -46,3 +46,13 @@ header {
   display: flex;
   justify-content: space-evenly;
 }
+
+.stat {
+  display:flex;
+  flex-direction: column;
+}
+
+.adjacent-stats {
+  display:flex;
+  justify-content: space-around;
+}

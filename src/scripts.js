@@ -74,6 +74,7 @@ const setUpSleepRepo = () => {
     .then(data => findDailyHoursOfSleep())
     .then(data => findDailySleepQuality())
     .then(data => displayDailySleepStats())
+    .then(data => findWeeklySleepAvg())
   }
 
 
@@ -120,21 +121,36 @@ const displayHydration = () => {
 }
 // User sleep Data for the latest day
 const findDailyHoursOfSleep = () => {
-  const result = sleepRepo.getSleepStatByDate(user.id, currentDate, 'hoursSlept');
-  console.log(result);
-  return result
+  return sleepRepo.getSleepStatByDate(user.id, currentDate, 'hoursSlept');
 }
 
 const findDailySleepQuality = () => {
-  const result = sleepRepo.getSleepStatByDate(user.id, currentDate, 'sleepQuality');
-  console.log(result);
-  return result
+  return sleepRepo.getSleepStatByDate(user.id, currentDate, 'sleepQuality');
 }
 
 const displayDailySleepStats = () => {
   dailySleep.innerText = `Hours Slept: ${findDailyHoursOfSleep()}, Sleep Quality: ${findDailySleepQuality()}`
 }
 // User sleep data over the course of the last week (weekly avg)
+  const findWeeklySleepAvg = () => {
+    const sleepPerWeek = sleepRepo.getSleepStatsByWeek(user.id, currentDate, 'hoursSlept');
+    const weeklyHoursSlept = Object.values(sleepPerWeek).reduce((sum, hours) => {
+      sum += hours
+      return sum
+    }, 0)
+    const roundedAvgHoursSlept = (weeklyHoursSlept / 7).toFixed(1)
+    console.log(roundedAvg)
+    return roundedAvgHoursSlept
+  }
+
+  // const findWeeklySleepQuality = () => {
+  //   const result = sleepRepo.getSleepStatsByWeek(user.id, currentDate, 'sleepQuality');
+  //   console.log(result);
+  //   return result
+  // }
   //
+  // const displayWeeklySleepStats = () => {
+  //   dailySleep.innerText = `Weekly Hours Slept: ${findDailyHoursOfSleep()}, Sleep Quality: ${findDailySleepQuality()}`
+  // }
 // all-time avg sleep quality and all-time avg number of hours slept
   //

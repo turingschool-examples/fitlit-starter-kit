@@ -1,5 +1,38 @@
-body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
-  height: 100%;
+html {
+  height: 100vh;
 }
+
+main {
+  display: flex; 
+  justify-content: center;
+  justify-content: space-evenly;
+  height: 80vh;
+}
+
+* {
+  border: 2px solid green;
+}
+
+header {
+  display: flex; 
+  justify-content: center;
+  height: 20%;
+}
+
+section {
+  text-align: center;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80%;
+}
+
+h3 {
+  align-items: center;
+}
+
+
+

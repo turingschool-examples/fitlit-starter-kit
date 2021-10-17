@@ -16,20 +16,27 @@ import UserRepository from './UserRepository';
 import User from './User';
 
 const header = document.querySelector('.header')
+const activitySection = document.querySelector('.activity')
 
-window.addEventListener('load', loadUser);
-
-function loadUser() {
-  console.log('>>>>>>>')
+const loadUser = () => {
   const userRepository = new UserRepository(userData);
   const randomUser = Math.floor(Math.random() * userRepository.users.length);
   const user = new User(userRepository.users[randomUser]);
-  displayUserInfo(user)
+  displayUserInfo(user);
+  displayStepGoalComparison(user, userRepository);
 }
 
-function displayUserInfo(user) {
+const displayUserInfo = (user) => {
   header.innerHTML = `
     <h1>Welcome, ${user.displayFirstName()}</h1>
     <p>Name: ${user.name} Address: ${user.address} Email: ${user.email}</p>
   `
 }
+
+const displayStepGoalComparison = (currentUser, allUsers) => {
+  activitySection.innerHTML = `
+    <h2>Your daily step goal is ${currentUser.dailyStepGoal}, and the average for everyone is ${allUsers.calculateAvgStepGoal()}<h2>
+  `
+}
+
+window.addEventListener('load', loadUser);

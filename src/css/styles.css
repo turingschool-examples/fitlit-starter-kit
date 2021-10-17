@@ -3,7 +3,7 @@ html {
 }
 
 main {
-  display: flex; 
+  display: flex;
   justify-content: center;
   justify-content: space-evenly;
   height: 80vh;
@@ -13,10 +13,12 @@ main {
   border: 2px solid green;
 }
 
-header {
-  display: flex; 
+.header {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   height: 20%;
+  align-items: center;
 }
 
 section {
@@ -30,9 +32,6 @@ article {
   height: 80%;
 }
 
-h3 {
+h3, h1, p {
   align-items: center;
 }
-
-
-

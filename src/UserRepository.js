@@ -1,16 +1,20 @@
 class UserRepository {
-  constructor(user){
-    this.users = [];
-    this.users.push(user);
-  };
+  constructor(userData = []){
+    this.users = userData;
+  }
+
   showData(id){
     return this.users.find((user) => {return user.id === id})
-  };
+  }
+
   calculateAvgStepGoal(){
-  const goals = this.users.map((user) => {return user.dailyStepGoal});
-  const average = goals.reduce((a,b) => a+b, 0) / goals.length;
-  return average
-  };
-};
+    const average = this.users.reduce((avgGoal, user) => {
+      return avgGoal += user.dailyStepGoal / this.users.length
+    }, 0);
+
+    return Number(average.toFixed(2))
+  }
+
+}
 
 export default UserRepository;

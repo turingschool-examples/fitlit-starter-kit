@@ -1,7 +1,6 @@
 class UserRepository {
-  constructor(user){
-    this.users = [];
-    this.users.push(user);
+  constructor(userData = []){
+    this.users = userData;
   };
   showData(id){
     return this.users.find((user) => {return user.id === id})
@@ -9,7 +8,7 @@ class UserRepository {
   calculateAvgStepGoal(){
   const goals = this.users.map((user) => {return user.dailyStepGoal});
   const average = goals.reduce((a,b) => a+b, 0) / goals.length;
-  return average
+  return Number(average.toFixed(2))
   };
 };
 

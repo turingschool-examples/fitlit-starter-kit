@@ -2,12 +2,10 @@ import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
 import User from '../src/User';
 const userTestData = require('../src/data/users')
-// console.log('>>>>>>>>>>>>>>>', userTestData)
-
 
 describe('User Repository', () => {
-  // let userData, user, userRepository;
   let userRepository;
+  
   beforeEach(function(){
     userRepository = new UserRepository(userTestData);
   });
@@ -15,10 +13,6 @@ describe('User Repository', () => {
   it('should be a function', function () {
     expect(UserRepository).to.be.a('function');
   });
-
-  // it('should store user data',function () {
-  //   expect(userRepository.users[0]).to.be.an.instanceof(User);
-  // });
 
   it('should display user data based on user id', function () {
     expect(userRepository.showData(1)).to.deep.equal(userTestData[0]);
@@ -32,7 +26,6 @@ describe('User Repository', () => {
     const users = [user, user1, user2]
     userRepository = new UserRepository(users)
     expect(userRepository.calculateAvgStepGoal()).to.equal(6666.67);
-  })
-
+  });
 
 });

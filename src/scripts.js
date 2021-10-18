@@ -3,7 +3,7 @@
 
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
-// import userDeets from './fetch.js';
+import {userInfo, userDetails} from './fetch.js';
 
 //
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
@@ -20,7 +20,8 @@ const header = document.querySelector('#header')
 const activitySection = document.querySelector('#activity')
 
 const loadUser = () => {
-  const userRepository = new UserRepository(userData);
+  userInfo();
+  const userRepository = new UserRepository(userDetails);
   const randomUser = Math.floor(Math.random() * userRepository.users.length);
   const user = new User(userRepository.users[randomUser]);
   displayUserInfo(user);

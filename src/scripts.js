@@ -21,7 +21,7 @@ const fetchCall = () => {
 };
 
 const parseData = (data) => {
-  usersData = Object.values(data[0].userData);
+  usersData = data[0].userData;
   sleepData = data[1].sleepData;
   activityData = data[2].activityData;
   hydrationData = data[3].hydrationData;

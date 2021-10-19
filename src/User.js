@@ -1,12 +1,12 @@
 class User {
-  constructor(userData) {
-    this.id = userData.id;
-    this.name = userData.name;
-    this.address = userData.address;
-    this.email = userData.email;
-    this.strideLength = userData.strideLength;
-    this.dailyStepGoal = userData.dailyStepGoal;
-    this.friends = userData.friends;
+  constructor(userInfo) {
+    this.id = userInfo.id;
+    this.name = userInfo.name;
+    this.address = userInfo.address;
+    this.email = userInfo.email;
+    this.strideLength = userInfo.strideLength;
+    this.dailyStepGoal = userInfo.dailyStepGoal;
+    this.friends = userInfo.friends;
   }
 
   displayFirstName() {

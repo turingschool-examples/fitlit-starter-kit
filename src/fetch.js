@@ -1,11 +1,11 @@
-export const userInfo = () => {
-  return fetch('https://pacific-badlands-43237.herokuapp.com/api/v1/users') 
+export const userData = () => {
+  return fetch('https://pacific-badlands-43237.herokuapp.com/api/v1/users')
   .then(response => response.json())
   .then(data => data)
   .catch(err => console.log(err));
 }
 
-export const userSleepData = () => { 
+export const userSleepData = () => {
   return fetch('https://pacific-badlands-43237.herokuapp.com/api/v1/sleep')
   .then(response => response.json())
   .then(data => data)
@@ -19,11 +19,9 @@ export const userActivityData = () => {
   .catch(err => console.log(err));
 }
 
-export const userHydrationData = () => { 
+export const userHydrationData = () => {
   return fetch('https://pacific-badlands-43237.herokuapp.com/api/v1/hydration')
   .then(response => response.json())
   .then(data => data)
   .catch(err => console.log(err));
 }
-
-

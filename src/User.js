@@ -9,10 +9,18 @@ class User {
     this.friends = userData.friends;
   }
 
-  displayFirstName(){
+  displayFirstName() {
     const firstName = this.name.split(' ');
     return firstName[0];
   }
+
+  calculateAvgOunces(hydrationInfo) {
+    // const hydrationAverage = 
+  }
+
+
+  // want to use user ID as our input
+  // want to return the avg daily ounces consumed
 
 }
 

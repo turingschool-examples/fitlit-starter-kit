@@ -97,7 +97,6 @@ describe('User', () => {
 
     const user1 = new User(userData[0])
     const user2 = new User(userData[1])
-
     expect(user1.calculateAvgOunces(hydrationData)).to.equal(67.33)
     expect(user2.calculateAvgOunces(hydrationData)).to.equal(87.33)
   })

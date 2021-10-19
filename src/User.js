@@ -14,14 +14,13 @@ class User {
     return firstName[0];
   }
 
-  calculateAvgOunces(hydrationInfo) {
-    // const hydrationAverage = 
+  calculateAvgOunces(hydrationData) {
+    const currentUser = hydrationData.filter(element => {return element.userID === this.id})
+    const avg = (currentUser.reduce((avgOunces, userHyd) => {
+      return avgOunces + userHyd.numOunces;
+    }, 0)) / currentUser.length;
+    return Number(avg.toFixed(2))
   }
-
-
-  // want to use user ID as our input
-  // want to return the avg daily ounces consumed
-
 }
 
 module.exports = User;

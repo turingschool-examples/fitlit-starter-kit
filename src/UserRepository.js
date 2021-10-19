@@ -1,5 +1,5 @@
 class UserRepository {
-  constructor(userData = []){
+  constructor(userData){
     this.users = userData;
   }
 

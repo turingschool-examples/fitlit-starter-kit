@@ -28,19 +28,53 @@ class User {
     }).numOunces
   }
 
+  // findOuncesByWeek(hydrationData, date) {
+  //   const userEntries = hydrationData.filter(entry => {
+  //     return entry.userID === this.id
+  //   });
+  //   const firstEntry = userEntries.find(entry => {
+  //     return entry.date === date;
+  //   });
+  //   const index = userEntries.indexOf(firstEntry);
+  //   const ouncesPerDay = userEntries.slice(index, (index+7)).map( (entry) => {
+  //     return entry.numOunces
+  //   });
+  //   return ouncesPerDay;
+  // }
+
   findOuncesByWeek(hydrationData, date) {
-    const userEntries = hydrationData.filter(entry => {
-      return entry.userID === this.id
-    });
-    const firstEntry = userEntries.find(entry => {
-      return entry.date === date;
-    });
-    const index = userEntries.indexOf(firstEntry);
-    const ouncesPerDay = userEntries.slice(index, (index+7)).map( (entry) => {
-      return entry.numOunces
-    });
-    return ouncesPerDay;
+    return hydrationData.reduce((ouncesPerDay, entry) => {
+      if ((entry.userID === this.id) && (entry.date >= date) && (ouncesPerDay.length < 7)) {
+        ouncesPerDay.push(entry.numOunces)
+      }
+      return ouncesPerDay;
+    }, [])
+  };
+
+  findSleepQualityByDate(sleepData, date) {
+    return sleepData.find(entry => {
+      return (entry.userID === this.id && entry.date === date);
+    }).sleepQuality;
   }
+
+  findHoursSleptByWeek(sleepData, date) {
+    return sleepData.reduce((hoursPerDay, entry) => {
+      if ((entry.userID === this.id) && (entry.date >= date) && (hoursPerDay.length < 7)) {
+        hoursPerDay.push(entry.hoursSlept)
+      }
+      return hoursPerDay;
+    }, [])
+  };
+
+  findSleepQualityByWeek(sleepData, date) {
+    return sleepData.reduce((hoursPerDay, entry) => {
+      if ((entry.userID === this.id) && (entry.date >= date) && (hoursPerDay.length < 7)) {
+        hoursPerDay.push(entry.sleepQuality)
+      }
+      return hoursPerDay;
+    }, [])
+  };
+
 }
 
 module.exports = User;

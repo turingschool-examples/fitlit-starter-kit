@@ -15,6 +15,13 @@ class UserRepository {
     return Number(average.toFixed(2))
   }
 
+  calculateAvgSleepQuality(sleepData) {
+    const average = sleepData.reduce((avgSleepQuality, entry) => {
+      return avgSleepQuality += entry.sleepQuality / sleepData.length
+    }, 0);
+
+    return Number(average.toFixed(2))
+  }
 }
 
 export default UserRepository;

@@ -76,6 +76,31 @@ describe('User', () => {
       "numOunces":96
     },
     {
+      "userID": 1,
+      "date": "2019/06/18",
+      "numOunces": 37
+    },
+    {
+      "userID": 1,
+      "date": "2019/06/19",
+      "numOunces": 69
+    },
+    {
+      "userID": 1,
+      "date":"2019/06/20",
+      "numOunces":96
+    },
+    {
+      "userID": 1,
+      "date": "2019/06/21",
+      "numOunces": 69
+    },
+    {
+      "userID": 1,
+      "date":"2019/06/22",
+      "numOunces":96
+    },
+    {
       "userID": 2,
       "date": "2019/06/15",
       "numOunces": 75
@@ -96,12 +121,15 @@ describe('User', () => {
 
 })
   it('should calculate the average daily ounces consumed', function () {
-    expect(user1.calculateAvgOunces(hydrationData)).to.equal(67.33)
+    expect(user1.calculateAvgOunces(hydrationData)).to.equal(71.13)
     expect(user2.calculateAvgOunces(hydrationData)).to.equal(87.33)
   })
   it('should calculate fluid ounces consumed for a specific date', function () {
     expect(user1.findOuncesByDate(hydrationData,"2019/06/15")).to.equal(37)
     expect(user2.findOuncesByDate(hydrationData,"2019/06/15")).to.equal(75)
+  })
+  it('should return ounces consumed per day for selected week', function () {
+    expect(user1.findOuncesByWeek(hydrationData,"2019/06/16")).to.deep.equal([69,96,37,69,96,69,96])
   })
 
 });

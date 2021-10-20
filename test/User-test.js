@@ -39,10 +39,9 @@ describe('User', () => {
     const user = new User(userData)
     expect(user.displayFirstName()).to.equal('Luisa');
   });
-
-  it('should calculate the average daily ounces consumed', function () {
-    const userData = [
-    {
+  let userData, hydrationData, user1, user2;
+  beforeEach(function(){
+    userData = [{
       "id": 1,
       "name": "Luisa Hane",
       "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
@@ -59,10 +58,8 @@ describe('User', () => {
       "strideLength": 4.5,
       "dailyStepGoal": 5000,
       "friends": [9, 18, 24, 19]
-    }
-  ];
-
-    const hydrationData = [
+    }];
+    hydrationData = [
     {
       "userID": 1,
       "date": "2019/06/15",
@@ -76,6 +73,31 @@ describe('User', () => {
     {
       "userID": 1,
       "date":"2019/06/17",
+      "numOunces":96
+    },
+    {
+      "userID": 1,
+      "date": "2019/06/18",
+      "numOunces": 37
+    },
+    {
+      "userID": 1,
+      "date": "2019/06/19",
+      "numOunces": 69
+    },
+    {
+      "userID": 1,
+      "date":"2019/06/20",
+      "numOunces":96
+    },
+    {
+      "userID": 1,
+      "date": "2019/06/21",
+      "numOunces": 69
+    },
+    {
+      "userID": 1,
+      "date":"2019/06/22",
       "numOunces":96
     },
     {
@@ -94,11 +116,20 @@ describe('User', () => {
       "numOunces": 96
     }
   ];
+    user1 = new User(userData[0])
+    user2 = new User(userData[1])
 
-    const user1 = new User(userData[0])
-    const user2 = new User(userData[1])
-    expect(user1.calculateAvgOunces(hydrationData)).to.equal(67.33)
+})
+  it('should calculate the average daily ounces consumed', function () {
+    expect(user1.calculateAvgOunces(hydrationData)).to.equal(71.13)
     expect(user2.calculateAvgOunces(hydrationData)).to.equal(87.33)
+  })
+  it('should calculate fluid ounces consumed for a specific date', function () {
+    expect(user1.findOuncesByDate(hydrationData,"2019/06/15")).to.equal(37)
+    expect(user2.findOuncesByDate(hydrationData,"2019/06/15")).to.equal(75)
+  })
+  it('should return ounces consumed per day for selected week', function () {
+    expect(user1.findOuncesByWeek(hydrationData,"2019/06/16")).to.deep.equal([69,96,37,69,96,69,96])
   })
 
 });

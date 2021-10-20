@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
 import User from '../src/User';
+import Sleep from '../src/Sleep';
 
 describe('User Repository', () => {
   let userData, userRepository;
@@ -49,8 +50,4 @@ describe('User Repository', () => {
   it('should display average step goal amongst all users',function () {
     expect(userRepository.calculateAvgStepGoal()).to.equal(6666.67);
   });
-
-  it('should return the average sleep quality for all users', function() {
-    expect(sleep.calculateAvgSleepQuality()).to.equal(2.99)
-  })
 });

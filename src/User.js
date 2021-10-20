@@ -46,6 +46,33 @@ class User {
     }).sleepQuality;
   }
 
+  calculateAvgDailySleep(sleepData) {
+    const currentUser = sleepData.filter(element => {return element.userID === this.id})
+    const avg = (currentUser.reduce((avgDailySleep, userSleep) => {
+      return avgDailySleep + userSleep.hoursSlept;
+    }, 0)) / currentUser.length;
+    return Number(avg.toFixed(2))
+  }
+
+  calculateAvgSleepQuality(sleepData) {
+    const currentUser = sleepData.filter(element => {return element.userID === this.id})
+    const avg = (currentUser.reduce((avgSleepQuality, userSleep) => {
+      return avgSleepQuality + userSleep.sleepQuality;
+    }, 0)) / currentUser.length;
+    return Number(avg.toFixed(2))
+  }
+
+  findHoursSleptByDate(sleepData, date) {
+    return sleepData.find(entry => {
+      return (entry.userID === this.id && entry.date === date);
+    }).hoursSlept
+  }
+
+  findSleepQualityByDate(sleepData, date) {
+    return sleepData.find(entry => {
+      return (entry.userID === this.id && entry.date === date);
+    }).sleepQuality
+  }
   findHoursSleptByWeek(sleepData, date) {
     return sleepData.reduce((hoursPerDay, entry) => {
       if ((entry.userID === this.id) && (entry.date >= date) && (hoursPerDay.length < 7)) {

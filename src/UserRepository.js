@@ -15,9 +15,9 @@ class UserRepository {
     return Number(average.toFixed(2))
   }
 
-  calculateAvgSleepQuality() {
-    const average = this.sleepData.reduce((avgSleepQuality, entry) => {
-      return avgSleepQuality += entry.sleepQuality / this.sleepData.length
+  calculateAvgSleepQuality(sleepData) {
+    const average = sleepData.reduce((avgSleepQuality, entry) => {
+      return avgSleepQuality += entry.sleepQuality / sleepData.length
     }, 0);
 
     return Number(average.toFixed(2))

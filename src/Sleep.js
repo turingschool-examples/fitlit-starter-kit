@@ -3,5 +3,4 @@ class Sleep {
     this.sleepData = sleepData;
   }
 }
-
-module.exports = Sleep;
+export default Sleep;

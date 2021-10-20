@@ -50,4 +50,7 @@ describe('User Repository', () => {
     expect(userRepository.calculateAvgStepGoal()).to.equal(6666.67);
   });
 
+  it('should return the average sleep quality for all users', function() {
+    expect(sleep.calculateAvgSleepQuality()).to.equal(2.99)
+  })
 });

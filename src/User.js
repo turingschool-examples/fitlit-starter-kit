@@ -28,24 +28,13 @@ class User {
     }).numOunces
   }
 
-  // findOuncesByWeek(hydrationData, date) {
-  //   const userEntries = hydrationData.filter(entry => {
-  //     return entry.userID === this.id
-  //   });
-  //   const firstEntry = userEntries.find(entry => {
-  //     return entry.date === date;
-  //   });
-  //   const index = userEntries.indexOf(firstEntry);
-  //   const ouncesPerDay = userEntries.slice(index, (index+7)).map( (entry) => {
-  //     return entry.numOunces
-  //   });
-  //   return ouncesPerDay;
-  // }
-
   findOuncesByWeek(hydrationData, date) {
     return hydrationData.reduce((ouncesPerDay, entry) => {
-      if ((entry.userID === this.id) && (entry.date >= date) && (ouncesPerDay.length < 7)) {
-        ouncesPerDay.push(entry.numOunces)
+      if ((entry.userID === this.id) && (entry.date <= date)) {
+        ouncesPerDay.push(entry.numOunces);
+        if (ouncesPerDay.length > 7) {
+          ouncesPerDay.shift();
+        }
       }
       return ouncesPerDay;
     }, [])
@@ -74,7 +63,6 @@ class User {
       return hoursPerDay;
     }, [])
   };
-
 }
 
 module.exports = User;

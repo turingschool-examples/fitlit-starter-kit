@@ -129,7 +129,46 @@ describe('User', () => {
     expect(user2.findOuncesByDate(hydrationData,"2019/06/15")).to.equal(75)
   })
   it('should return ounces consumed per day for selected week', function () {
-    expect(user1.findOuncesByWeek(hydrationData,"2019/06/16")).to.deep.equal([69,96,37,69,96,69,96])
+    expect(user1.findOuncesByWeek(hydrationData,"2019/06/21")).to.deep.equal([37,69,96,37,69,96,69])
   })
+
+  it('should return sleep quality for a specific date', function() {
+    expect(user1.findSleepQualityByDate(sleepData, "2019/06/17")).to.equal(2.6);
+    expect(user2.findSleepQualityByDate(sleepData, "2019/06/16")).to.equal(3.1);
+  });
+
+  it('shoud return hours slept per day for selected week', function() {
+    expect(user1.findHoursSleptByWeek(sleepData, "2019/06/16")).to.deep.equal([34, 41, 33, 35, 44, 37, 40]);
+    expect(user1.findHoursSleptByWeek(sleepData, "2019/06/15")).to.deep.equal([37, 34, 41, 33, 35, 44, 37]);
+  });
+
+  it('shoud return sleep quality per day for selected week', function() {
+    expect(user1.findSleepQualityByWeek(sleepData, "2019/06/15")).to.deep.equal([3.8, 4.3, 2.6, 3.1, 1.8, 3.0, 2.2]);
+    expect(user1.findSleepQualityByWeek(sleepData, "2019/06/16")).to.deep.equal([4.3, 2.6, 3.1, 1.8, 3.0, 2.2, 2.9]);
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });

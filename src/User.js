@@ -77,7 +77,7 @@ class User {
   findHoursSleptByWeek(sleepInfo, date) {
     return sleepInfo.reduce((hoursPerDay, entry) => {
       if ((entry.userID === this.id) && (entry.date <= date)) {
-        hoursPerDay.push(entry.hoursSlept);
+        hoursPerDay.push(entry);
         if (hoursPerDay.length > 7) {
           hoursPerDay.shift();
         }

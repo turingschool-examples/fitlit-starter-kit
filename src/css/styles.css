@@ -85,3 +85,7 @@ article {
 h3, h1, p {
   align-items: center;
 }
+
+.sleep-chart {
+  border-radius: 15px;
+}

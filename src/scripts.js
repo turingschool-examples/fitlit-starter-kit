@@ -3,16 +3,35 @@ import './images/turing-logo.png'
 import './images/user.png'
 import UserRepository from './UserRepository';
 import User from './User';
+import Sleep from './Sleep';
+import Hydration from './Hydration';
 
 import {userData, userSleepData, userActivityData, userHydrationData} from './fetch.js';
 
 const header = document.querySelector('#header')
 const activitySection = document.querySelector('#activity')
+const sleepSection = document.querySelector('#sleep')
 
-let usersData, sleepData, activityData, hydrationData;
+let usersData, sleepEntries, activityData, hydrationData, sleepData;
 
-const loadUser = () => {
-  fetchCall();
+const allData = (info, sleep, activity, hydration) => {
+  const userRepository = new UserRepository(info);
+  const randomUser = Math.floor(Math.random() * userRepository.users.length);
+  const user = new User(userRepository.users[randomUser]);
+  const userSleepData = new Sleep(sleep);
+  sleepData = userSleepData.sleepData;
+  const hydrationData = new Hydration(hydration);
+  displayUserInfo(user);
+  displayStepGoalComparison(user, userRepository);
+  displaySleepDataToday(user, sleepData)
+};
+
+const parseData = (data) => {
+  usersData = data[0].userData;
+  sleepEntries = data[1].sleepData;
+  activityData = data[2].activityData;
+  hydrationData = data[3].hydrationData;
+  allData(usersData, sleepEntries, activityData, hydrationData)
 }
 
 const fetchCall = () => {
@@ -20,21 +39,9 @@ const fetchCall = () => {
     .then(data => parseData(data))
 };
 
-const parseData = (data) => {
-  usersData = data[0].userData;
-  sleepData = data[1].sleepData;
-  activityData = data[2].activityData;
-  hydrationData = data[3].hydrationData;
-  allData(usersData, sleepData, activityData, hydrationData)
+const loadUser = () => {
+  fetchCall();
 }
-
-const allData = (info, sleep, activity, hydration) => {
-  const userRepository = new UserRepository(info);
-  const randomUser = Math.floor(Math.random() * userRepository.users.length);
-  const user = new User(userRepository.users[randomUser]);
-  displayUserInfo(user);
-  displayStepGoalComparison(user, userRepository);
-};
 
 const displayUserInfo = (user) => {
   header.innerHTML = `
@@ -52,8 +59,36 @@ const displayUserInfo = (user) => {
 
 const displayStepGoalComparison = (currentUser, allUsers) => {
   activitySection.innerHTML = `
-    <h2 class='activity'>Your daily step goal is ${currentUser.dailyStepGoal}, and the average for everyone is ${allUsers.calculateAvgStepGoal()}<h2>
+    <h3 class='activity'>Your daily step goal is ${currentUser.dailyStepGoal}, and the average for everyone is ${allUsers.calculateAvgStepGoal()}</h3>
   `
 }
+
+const pullLatestDate = (dataset, user) => {
+  return dataset.reduce((latestDate, entry) => {
+    if (entry.userID === user.id && entry.date > latestDate) {
+      latestDate = entry.date;
+    }
+    return latestDate;
+  }, "")
+}
+
+const displaySleepDataToday = (currentUser, sleepSupport) => {
+  const date = pullLatestDate(sleepData, currentUser);
+  const quality = currentUser.findSleepQualityByDate(sleepData, date)
+  const hours = currentUser.findHoursSleptByDate(sleepData, date)
+  sleepSection.innerHTML = `
+    <h3 class='sleep'>Latest Sleep Data: You slept ${hours} hours with a quality of ${quality}.</h3>
+  `
+  displaySleepDataWeek(currentUser, sleepSupport);
+}
+
+const displaySleepDataWeek = (currentUser, sleepSupport) => {
+  const date = pullLatestDate(sleepSupport, currentUser);
+  const hours = currentUser.findHoursSleptByWeek(sleepSupport, date)
+  const quality = currentUser.findSleepQualityByWeek(sleepSupport, date)
+  // console.log('sleepSupport in 86>>>>',sleepSupport )
+  sleepSection.innerHTML += `<h3 class='sleep'>Weekly Sleep Data: You slept ${hours} hours with a quality of ${quality}.</h3>`
+}
+
 
 window.addEventListener('load', loadUser);

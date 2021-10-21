@@ -40,52 +40,59 @@ class User {
     }, [])
   };
 
-  findSleepQualityByDate(sleepData, date) {
-    return sleepData.find(entry => {
+  findSleepQualityByDate(sleepInfo, date) {
+    return sleepInfo.find(entry => {
       return (entry.userID === this.id && entry.date === date);
     }).sleepQuality;
   }
 
-  calculateAvgDailySleep(sleepData) {
-    const currentUser = sleepData.filter(element => {return element.userID === this.id})
+  calculateAvgDailySleep(sleepInfo) {
+    const currentUser = sleepInfo.filter(element => {return element.userID === this.id})
     const avg = (currentUser.reduce((avgDailySleep, userSleep) => {
       return avgDailySleep + userSleep.hoursSlept;
     }, 0)) / currentUser.length;
     return Number(avg.toFixed(2))
   }
 
-  calculateAvgSleepQuality(sleepData) {
-    const currentUser = sleepData.filter(element => {return element.userID === this.id})
+  calculateAvgSleepQuality(sleepInfo) {
+    const currentUser = sleepInfo.filter(element => {return element.userID === this.id})
     const avg = (currentUser.reduce((avgSleepQuality, userSleep) => {
       return avgSleepQuality + userSleep.sleepQuality;
     }, 0)) / currentUser.length;
     return Number(avg.toFixed(2))
   }
 
-  findHoursSleptByDate(sleepData, date) {
-    return sleepData.find(entry => {
+  findHoursSleptByDate(sleepInfo, date) {
+    return sleepInfo.find(entry => {
       return (entry.userID === this.id && entry.date === date);
     }).hoursSlept
   }
 
-  findSleepQualityByDate(sleepData, date) {
-    return sleepData.find(entry => {
+  findSleepQualityByDate(sleepInfo, date) {
+    return sleepInfo.find(entry => {
       return (entry.userID === this.id && entry.date === date);
     }).sleepQuality
   }
-  findHoursSleptByWeek(sleepData, date) {
-    return sleepData.reduce((hoursPerDay, entry) => {
-      if ((entry.userID === this.id) && (entry.date >= date) && (hoursPerDay.length < 7)) {
-        hoursPerDay.push(entry.hoursSlept)
+
+  findHoursSleptByWeek(sleepInfo, date) {
+    return sleepInfo.reduce((hoursPerDay, entry) => {
+      if ((entry.userID === this.id) && (entry.date <= date)) {
+        hoursPerDay.push(entry.hoursSlept);
+        if (hoursPerDay.length > 7) {
+          hoursPerDay.shift();
+        }
       }
       return hoursPerDay;
     }, [])
   };
 
-  findSleepQualityByWeek(sleepData, date) {
-    return sleepData.reduce((hoursPerDay, entry) => {
-      if ((entry.userID === this.id) && (entry.date >= date) && (hoursPerDay.length < 7)) {
-        hoursPerDay.push(entry.sleepQuality)
+  findSleepQualityByWeek(sleepInfo, date) {
+    return sleepInfo.reduce((hoursPerDay, entry) => {
+      if ((entry.userID === this.id) && (entry.date <= date)) {
+        hoursPerDay.push(entry.sleepQuality);
+        if (hoursPerDay.length > 7) {
+          hoursPerDay.shift();
+        }
       }
       return hoursPerDay;
     }, [])

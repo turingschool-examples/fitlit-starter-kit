@@ -234,14 +234,14 @@ describe('User', () => {
     expect(user2.findSleepQualityByDate(sleepData, "2019/06/16")).to.equal(3.1);
   });
 
-  it('shoud return hours slept per day for selected week', function() {
-    expect(user1.findHoursSleptByWeek(sleepData, "2019/06/16")).to.deep.equal([4, 1, 3, 5, 4, 7, 0]);
-    expect(user1.findHoursSleptByWeek(sleepData, "2019/06/15")).to.deep.equal([7, 4, 1, 3, 5, 4, 7]);
+  it('should return hours slept per day for selected week', function() {
+    expect(user1.findHoursSleptByWeek(sleepData, "2019/06/21")).to.deep.equal([7, 4, 1, 3, 5, 4, 7]);
+    expect(user1.findHoursSleptByWeek(sleepData, "2019/06/22")).to.deep.equal([4, 1, 3, 5, 4, 7, 0]);
   });
 
-  it('shoud return sleep quality per day for selected week', function() {
-    expect(user1.findSleepQualityByWeek(sleepData, "2019/06/15")).to.deep.equal([3.8, 4.3, 2.6, 3.1, 1.8, 3.0, 2.2]);
-    expect(user1.findSleepQualityByWeek(sleepData, "2019/06/16")).to.deep.equal([4.3, 2.6, 3.1, 1.8, 3.0, 2.2, 2.9]);
+  it('should return sleep quality per day for selected week', function() {
+    expect(user1.findSleepQualityByWeek(sleepData, "2019/06/21")).to.deep.equal([3.8, 4.3, 2.6, 3.1, 1.8, 3.0, 2.2]);
+    expect(user1.findSleepQualityByWeek(sleepData, "2019/06/22")).to.deep.equal([4.3, 2.6, 3.1, 1.8, 3.0, 2.2, 2.9]);
   });
 
   it('should return the average sleep quality for all users', function() {

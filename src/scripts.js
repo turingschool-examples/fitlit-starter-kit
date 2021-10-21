@@ -24,6 +24,7 @@ const allData = (info, sleep, activity, hydration) => {
   displayUserInfo(user);
   displayStepGoalComparison(user, userRepository);
   displaySleepDataToday(user, sleepData)
+  displayAvgSleepQuality(user, sleepData)
 };
 
 const parseData = (data) => {
@@ -86,8 +87,13 @@ const displaySleepDataWeek = (currentUser, sleepSupport) => {
   const date = pullLatestDate(sleepSupport, currentUser);
   const hours = currentUser.findHoursSleptByWeek(sleepSupport, date)
   const quality = currentUser.findSleepQualityByWeek(sleepSupport, date)
-  // console.log('sleepSupport in 86>>>>',sleepSupport )
   sleepSection.innerHTML += `<h3 class='sleep'>Weekly Sleep Data: You slept ${hours} hours with a quality of ${quality}.</h3>`
+}
+
+const displayAvgSleepQuality = (currentUser, sleepSupport) => {
+  const hours = currentUser.calculateAvgDailySleep(sleepSupport);
+  const quality = currentUser.calculateAvgSleepQuality(sleepSupport);
+  sleepSection.innerHTML += `<h3 class='sleep'>Average Sleep Data: You have slept ${hours} hours with a quality of ${quality} on average.</h3>`
 }
 
 

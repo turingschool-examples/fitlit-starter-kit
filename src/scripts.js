@@ -12,7 +12,8 @@ import {userData, userSleepData, userActivityData, userHydrationData} from './fe
 const header = document.querySelector('#header')
 const activitySection = document.querySelector('#activity')
 const sleepSection = document.querySelector('#sleep')
-const sleepChart = document.querySelector('#sleepChart')
+const sleepChart = document.querySelector('#sleepChartWeek')
+const sleepChartAvg = document.querySelector('#sleepChartAvg')
 
 let usersData, sleepEntries, activityData, hydrationData, sleepData;
 
@@ -79,9 +80,6 @@ const displaySleepDataToday = (currentUser, sleepSupport) => {
   const date = pullLatestDate(sleepData, currentUser);
   const quality = currentUser.findSleepQualityByDate(sleepData, date)
   const hours = currentUser.findHoursSleptByDate(sleepData, date)
-  // sleepSection.innerHTML = `
-  //   <h3 class='sleep'>Latest Sleep Data: You slept ${hours} hours with a quality of ${quality}.</h3>
-  // `
   displaySleepDataWeek(currentUser, sleepSupport);
 }
 
@@ -89,7 +87,10 @@ const displaySleepDataWeek = (currentUser, sleepSupport) => {
   const date = pullLatestDate(sleepSupport, currentUser);
   const userSleep = currentUser.findHoursSleptByWeek(sleepSupport, date)
   const quality = currentUser.findSleepQualityByWeek(sleepSupport, date)
+  const userAvgHoursSlept = currentUser.calculateAvgDailySleep(sleepSupport)
+  const userAvgQualitySleep = currentUser.calculateAvgSleepQuality(sleepSupport)
   displaySleepChart(userSleep)
+  displaySleepChartAvg(userSleep, userAvgHoursSlept, userAvgQualitySleep)
 }
 
 const displayAvgSleepQuality = (currentUser, sleepSupport) => {
@@ -114,8 +115,51 @@ const displaySleepChart = (userSleep) => {
         borderColor: '#60b46d'
       }],
     },
+    options:{
+      plugins:{
+        title:{
+          display: true,
+          text: 'Weekly Summary',
+          font: {
+            size: 20
+        }
+        }
+      }
+    }
   })
   sleepChart.innerHTML = sleepChartSection;
+}
+
+const displaySleepChartAvg = (userSleep, userAvgHoursSlept, userAvgQualitySleep) => {
+  const sleepChartSectionAvg = new Chart(sleepChartAvg, {
+    type: 'bar',
+    data: {
+      labels: [`${userSleep[6].date}`, 'Overall Average'],
+      datasets: [{
+        label: 'Hours Slept',
+        data: [`${userSleep[6].hoursSlept}`, `${userAvgHoursSlept}`],
+        backgroundColor: '#b46096', 
+        borderColor: '#b46096'
+      }, {
+        label: 'Sleep Quality',
+        data: [`${userSleep[6].sleepQuality}`, `${userAvgQualitySleep}`],
+        backgroundColor: '#60b46d', 
+        borderColor: '#60b46d'
+      }],
+    },
+    options:{
+      plugins:{
+        title:{
+          display: true,
+          text: 'Day/Average Comparison',
+          font: {
+            size: 20
+        }
+        }
+      }
+    }
+  })
+  sleepChartAvg.innerHTML = sleepChartSectionAvg;
 }
 
 

@@ -232,8 +232,8 @@ describe('User', () => {
   });
 
   it('should return hours slept per day for selected week', function() {
-    expect(user1.findHoursSleptByWeek(sleepData, "2019/06/21")).to.deep.equal([7, 4, 1, 3, 5, 4, 7]);
-    expect(user1.findHoursSleptByWeek(sleepData, "2019/06/22")).to.deep.equal([4, 1, 3, 5, 4, 7, 0]);
+    expect(user1.findHoursSleptByWeek(sleepData, "2019/06/21")).to.deep.equal([sleepData[0], sleepData[1], sleepData[2], sleepData[3], sleepData[4], sleepData[5], sleepData[6]]);
+    expect(user1.findHoursSleptByWeek(sleepData, "2019/06/22")).to.deep.equal([sleepData[1], sleepData[2], sleepData[3], sleepData[4], sleepData[5], sleepData[6], sleepData[7]]);
   });
 
   it('should return sleep quality per day for selected week', function() {

@@ -4,9 +4,9 @@ import './images/user.png'
 import UserRepository from './UserRepository';
 import User from './User';
 import Sleep from './Sleep';
-// import Hydration from './Hydration';
 import Chart from 'chart.js/auto'
 import {userData, userSleepData, userActivityData, userHydrationData} from './fetch.js';
+// import Hydration from './Hydration';
 
 const header = document.querySelector('#header')
 const sleepChart = document.querySelector('#sleepChartWeek')

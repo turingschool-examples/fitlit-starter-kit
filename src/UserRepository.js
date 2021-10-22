@@ -1,13 +1,15 @@
 class UserRepository {
-  constructor(allUsers){
+  constructor(allUsers) {
     this.users = allUsers;
   }
 
-  showData(id){
-    return this.users.find((user) => {return user.id === id})
+  showData(id) {
+    return this.users.find((user) => {
+      return user.id === id
+    })
   }
 
-  calculateAvgStepGoal(){
+  calculateAvgStepGoal() {
     const average = this.users.reduce((avgGoal, user) => {
       return avgGoal += user.dailyStepGoal / this.users.length
     }, 0);

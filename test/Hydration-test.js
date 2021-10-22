@@ -11,7 +11,7 @@ describe('Hydration', () => {
       "userID": 1,
       "date": "2019/06/15",
       "numOunces": 37
-    },];
+    }, ];
     const hydration = new Hydration(hydrationData);
     expect(hydration.hydrationData).to.deep.equal(hydrationData);
   });

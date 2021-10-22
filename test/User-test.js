@@ -1,22 +1,23 @@
-import { expect } from 'chai';
-import { userSleepData } from '../src/fetch';
+import {
+  expect
+} from 'chai';
 import User from '../src/User';
 import UserRepository from '../src/UserRepository';
 
 describe('User', () => {
-  it('should be a function', function () {
+  it('should be a function', function() {
     expect(User).to.be.a('function');
   });
 
-  it('should store user data', function () {
+  it('should store user data', function() {
     const userData = {
-        id: 1,
-        name: "Luisa Hane",
-        address: "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-        email: "Diana.Hayes1@hotmail.com",
-        strideLength: 4.3,
-        dailyStepGoal: 10000,
-        friends: [ 16, 4, 8 ]
+      id: 1,
+      name: "Luisa Hane",
+      address: "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+      email: "Diana.Hayes1@hotmail.com",
+      strideLength: 4.3,
+      dailyStepGoal: 10000,
+      friends: [16, 4, 8]
     };
     const user = new User(userData)
     expect(user.id).to.equal(userData.id);
@@ -28,15 +29,15 @@ describe('User', () => {
     expect(user.friends).to.equal(userData.friends);
   });
 
-  it('should be able to show User first name', function () {
+  it('should be able to show User first name', function() {
     const userData = {
-        id: 1,
-        name: "Luisa Hane",
-        address: "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-        email: "Diana.Hayes1@hotmail.com",
-        strideLength: 4.3,
-        dailyStepGoal: 10000,
-        friends: [ 16, 4, 8 ]
+      id: 1,
+      name: "Luisa Hane",
+      address: "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+      email: "Diana.Hayes1@hotmail.com",
+      strideLength: 4.3,
+      dailyStepGoal: 10000,
+      friends: [16, 4, 8]
     };
     const user = new User(userData)
     expect(user.displayFirstName()).to.equal('Luisa');
@@ -44,7 +45,7 @@ describe('User', () => {
 
   let userData, hydrationData, sleepData, user1, user2;
 
-  beforeEach(function(){
+  beforeEach(function() {
     userData = [{
       "id": 1,
       "name": "Luisa Hane",
@@ -52,7 +53,7 @@ describe('User', () => {
       "email": "Diana.Hayes1@hotmail.com",
       "strideLength": 4.3,
       "dailyStepGoal": 10000,
-      "friends": [ 16, 4, 8 ]
+      "friends": [16, 4, 8]
     },
     {
       "id": 2,
@@ -62,10 +63,9 @@ describe('User', () => {
       "strideLength": 4.5,
       "dailyStepGoal": 5000,
       "friends": [9, 18, 24, 19]
-    }];
-
-    hydrationData = [
-    {
+    }
+    ];
+    hydrationData = [{
       "userID": 1,
       "date": "2019/06/15",
       "numOunces": 37
@@ -77,8 +77,8 @@ describe('User', () => {
     },
     {
       "userID": 1,
-      "date":"2019/06/17",
-      "numOunces":96
+      "date": "2019/06/17",
+      "numOunces": 96
     },
     {
       "userID": 1,
@@ -92,8 +92,8 @@ describe('User', () => {
     },
     {
       "userID": 1,
-      "date":"2019/06/20",
-      "numOunces":96
+      "date": "2019/06/20",
+      "numOunces": 96
     },
     {
       "userID": 1,
@@ -102,8 +102,8 @@ describe('User', () => {
     },
     {
       "userID": 1,
-      "date":"2019/06/22",
-      "numOunces":96
+      "date": "2019/06/22",
+      "numOunces": 96
     },
     {
       "userID": 2,
@@ -120,10 +120,8 @@ describe('User', () => {
       "date": "2019/06/17",
       "numOunces": 96
     }
-  ];
-
-    sleepData = [
-    {
+    ];
+    sleepData = [{
       "userID": 1,
       "date": "2019/06/15",
       "hoursSlept": 7,
@@ -189,45 +187,44 @@ describe('User', () => {
       "hoursSlept": 1,
       "sleepQuality": 2.2
     }
-  ];
-
+    ];
     user1 = new User(userData[0]);
     user2 = new User(userData[1]);
 
-});
+  });
 
-  it('should calculate the average daily ounces consumed', function () {
+  it('should calculate the average daily ounces consumed', function() {
     expect(user1.calculateAvgOunces(hydrationData)).to.equal(71.13)
     expect(user2.calculateAvgOunces(hydrationData)).to.equal(87.33)
   })
 
-  it('should calculate fluid ounces consumed for a specific date', function () {
-    expect(user1.findOuncesByDate(hydrationData,"2019/06/15")).to.equal(37)
-    expect(user2.findOuncesByDate(hydrationData,"2019/06/15")).to.equal(75)
+  it('should calculate fluid ounces consumed for a specific date', function() {
+    expect(user1.findOuncesByDate(hydrationData, "2019/06/15")).to.equal(37)
+    expect(user2.findOuncesByDate(hydrationData, "2019/06/15")).to.equal(75)
   })
 
-  it('should return ounces consumed per day for selected week', function () {
-    expect(user1.findOuncesByWeek(hydrationData,"2019/06/21")).to.deep.equal([37,69,96,37,69,96,69])
+  it('should return ounces consumed per day for selected week', function() {
+    expect(user1.findOuncesByWeek(hydrationData, "2019/06/21")).to.deep.equal([37, 69, 96, 37, 69, 96, 69])
   })
 
-  it('should calculate the average number of hours slept per day', function () {
+  it('should calculate the average number of hours slept per day', function() {
     expect(user1.calculateAvgDailySleep(sleepData)).to.equal(3.88)
     expect(user2.calculateAvgDailySleep(sleepData)).to.equal(5)
   })
 
-  it('should calculate the average sleep quality', function () {
+  it('should calculate the average sleep quality', function() {
     expect(user1.calculateAvgSleepQuality(sleepData)).to.equal(2.96)
     expect(user2.calculateAvgSleepQuality(sleepData)).to.equal(3.07)
   })
 
-  it('should return hours slept for a specific date', function () {
-    expect(user1.findHoursSleptByDate(sleepData,"2019/06/16")).to.equal(4)
-    expect(user2.findHoursSleptByDate(sleepData,"2019/06/16")).to.equal(9)
+  it('should return hours slept for a specific date', function() {
+    expect(user1.findHoursSleptByDate(sleepData, "2019/06/16")).to.equal(4)
+    expect(user2.findHoursSleptByDate(sleepData, "2019/06/16")).to.equal(9)
   })
 
-  it('should return sleep quality for a specific date', function () {
-    expect(user1.findSleepQualityByDate(sleepData,"2019/06/16")).to.equal(4.3)
-    expect(user2.findSleepQualityByDate(sleepData,"2019/06/16")).to.equal(3.1)
+  it('should return sleep quality for a specific date', function() {
+    expect(user1.findSleepQualityByDate(sleepData, "2019/06/16")).to.equal(4.3)
+    expect(user2.findSleepQualityByDate(sleepData, "2019/06/16")).to.equal(3.1)
   })
   it('should return sleep quality for a specific date', function() {
     expect(user1.findSleepQualityByDate(sleepData, "2019/06/17")).to.equal(2.6);

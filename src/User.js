@@ -15,7 +15,9 @@ class User {
   }
 
   calculateAvgOunces(hydrationData) {
-    const currentUser = hydrationData.filter(element => {return element.userID === this.id})
+    const currentUser = hydrationData.filter(element => {
+      return element.userID === this.id
+    })
     const avg = (currentUser.reduce((avgOunces, userHyd) => {
       return avgOunces + userHyd.numOunces;
     }, 0)) / currentUser.length;
@@ -38,7 +40,7 @@ class User {
       }
       return ouncesPerDay;
     }, [])
-  };
+  }
 
   findSleepQualityByDate(sleepInfo, date) {
     return sleepInfo.find(entry => {
@@ -47,7 +49,9 @@ class User {
   }
 
   calculateAvgDailySleep(sleepInfo) {
-    const currentUser = sleepInfo.filter(element => {return element.userID === this.id})
+    const currentUser = sleepInfo.filter(element => {
+      return element.userID === this.id
+    })
     const avg = (currentUser.reduce((avgDailySleep, userSleep) => {
       return avgDailySleep + userSleep.hoursSlept;
     }, 0)) / currentUser.length;
@@ -55,7 +59,9 @@ class User {
   }
 
   calculateAvgSleepQuality(sleepInfo) {
-    const currentUser = sleepInfo.filter(element => {return element.userID === this.id})
+    const currentUser = sleepInfo.filter(element => {
+      return element.userID === this.id
+    })
     const avg = (currentUser.reduce((avgSleepQuality, userSleep) => {
       return avgSleepQuality + userSleep.sleepQuality;
     }, 0)) / currentUser.length;
@@ -68,12 +74,6 @@ class User {
     }).hoursSlept
   }
 
-  findSleepQualityByDate(sleepInfo, date) {
-    return sleepInfo.find(entry => {
-      return (entry.userID === this.id && entry.date === date);
-    }).sleepQuality
-  }
-
   findHoursSleptByWeek(sleepInfo, date) {
     return sleepInfo.reduce((hoursPerDay, entry) => {
       if ((entry.userID === this.id) && (entry.date <= date)) {
@@ -84,7 +84,7 @@ class User {
       }
       return hoursPerDay;
     }, [])
-  };
+  }
 
   findSleepQualityByWeek(sleepInfo, date) {
     return sleepInfo.reduce((hoursPerDay, entry) => {
@@ -96,7 +96,7 @@ class User {
       }
       return hoursPerDay;
     }, [])
-  };
+  }
 }
 
 module.exports = User;

@@ -4,9 +4,8 @@ import './images/user.png'
 import UserRepository from './UserRepository';
 import User from './User';
 import Sleep from './Sleep';
-import Hydration from './Hydration';
+// import Hydration from './Hydration';
 import Chart from 'chart.js/auto'
-
 import {userData, userSleepData, userActivityData, userHydrationData} from './fetch.js';
 
 const header = document.querySelector('#header')
@@ -22,11 +21,10 @@ const allData = (info, sleep, activity, hydration) => {
   const user = new User(userRepository.users[randomUser]);
   const userSleepData = new Sleep(sleep);
   sleepData = userSleepData.sleepData;
-  const hydrationData = new Hydration(hydration);
+  // const hydrationData = new Hydration(hydration);
   displayUserInfo(user);
   displayStepGoalComparison(user, userRepository);
-  displaySleepDataToday(user, sleepData)
-  displayAvgSleepQuality(user, sleepData)
+  displaySleepDataWeek(user, sleepData)
 };
 
 const parseData = (data) => {
@@ -64,10 +62,10 @@ const displayStepGoalComparison = (currentUser, allUsers) => {
   const activityChartSection = new Chart(activityChart, {
     type: 'bar',
     data: {
-      labels: ['Yours','Community Average'],
+      labels: ['Yours', 'Community Average'],
       datasets: [{
         label: 'Steps',
-        data: [`${currentUser.dailyStepGoal}`,`${allUsers.calculateAvgStepGoal()}`],
+        data: [`${currentUser.dailyStepGoal}`, `${allUsers.calculateAvgStepGoal()}`],
         backgroundColor: ['#4575dd', '#dd5245'],
         borderColor: '#dd5245'
       }],
@@ -77,7 +75,7 @@ const displayStepGoalComparison = (currentUser, allUsers) => {
         legend: {
           display: false,
         },
-        title:{
+        title: {
           display: true,
           text: 'Daily Step Goals',
           font: {
@@ -100,26 +98,13 @@ const pullLatestDate = (dataset, user) => {
   }, "")
 }
 
-const displaySleepDataToday = (currentUser, sleepSupport) => {
-  const date = pullLatestDate(sleepData, currentUser);
-  const quality = currentUser.findSleepQualityByDate(sleepData, date)
-  const hours = currentUser.findHoursSleptByDate(sleepData, date)
-  displaySleepDataWeek(currentUser, sleepSupport);
-}
-
 const displaySleepDataWeek = (currentUser, sleepSupport) => {
   const date = pullLatestDate(sleepSupport, currentUser);
   const userSleep = currentUser.findHoursSleptByWeek(sleepSupport, date)
-  const quality = currentUser.findSleepQualityByWeek(sleepSupport, date)
   const userAvgHoursSlept = currentUser.calculateAvgDailySleep(sleepSupport)
   const userAvgQualitySleep = currentUser.calculateAvgSleepQuality(sleepSupport)
   displaySleepChart(userSleep)
   displaySleepChartAvg(userSleep, userAvgHoursSlept, userAvgQualitySleep)
-}
-
-const displayAvgSleepQuality = (currentUser, sleepSupport) => {
-  const hours = currentUser.calculateAvgDailySleep(sleepSupport);
-  const quality = currentUser.calculateAvgSleepQuality(sleepSupport);
 }
 
 const displaySleepChart = (userSleep) => {
@@ -139,9 +124,9 @@ const displaySleepChart = (userSleep) => {
         borderColor: '#60b46d'
       }],
     },
-    options:{
-      plugins:{
-        title:{
+    options: {
+      plugins: {
+        title: {
           display: true,
           text: 'Weekly Summary',
           font: {
@@ -171,14 +156,14 @@ const displaySleepChartAvg = (userSleep, userAvgHoursSlept, userAvgQualitySleep)
         borderColor: '#60b46d'
       }],
     },
-    options:{
-      plugins:{
-        title:{
+    options: {
+      plugins: {
+        title: {
           display: true,
           text: 'Day/Average Comparison',
           font: {
             size: 20
-        }
+          }
         }
       }
     }

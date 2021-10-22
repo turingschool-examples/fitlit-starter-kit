@@ -12,7 +12,7 @@ describe('Sleep', () => {
       "hoursSlept": 37,
       "sleepQuality": 3.8
 
-    },];
+    }, ];
     const sleep = new Sleep(sleepData);
     expect(sleep.sleepData).to.deep.equal(sleepData);
   });

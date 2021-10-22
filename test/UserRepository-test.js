@@ -1,12 +1,10 @@
 import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
-import User from '../src/User';
-import Sleep from '../src/Sleep';
 
 describe('User Repository', () => {
   let userData, userRepository;
 
-  beforeEach(function(){
+  beforeEach(function() {
     userData = [
       {
         "id": 1,
@@ -47,7 +45,7 @@ describe('User Repository', () => {
     expect(userRepository.showData(0)).to.deep.equal(undefined);
   });
 
-  it('should display average step goal amongst all users',function () {
+  it('should display average step goal amongst all users', function () {
     expect(userRepository.calculateAvgStepGoal()).to.equal(6666.67);
   });
 });

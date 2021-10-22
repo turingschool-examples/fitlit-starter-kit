@@ -1,29 +1,27 @@
-body {
+* {
+  background-color: #D0d0d4;
+  font-family: 'Comfortaa', cursive;
+  border-radius: 15px;
+}
+
+.body {
   height: 100vh;
 }
 
-main {
+.main {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
   height: 75vh;
 }
 
-* {
-  /* border: 2px solid green; */
-  background-color: #D0d0d4;
-  font-family: 'Comfortaa', cursive;
-}
-
 .header {
   border: 2px solid #FFFFFF;
-  border-radius: 15px;
   background-color: #FFFFFF;
   display: flex;
   flex-direction: row;
   height: 15%;
   align-items: center;
-  /* margin-bottom: 2%; */
   padding: 1% 2% 1% 2%;
   justify-content: space-between;
 }
@@ -31,7 +29,6 @@ main {
 .welcome-box {
   background-color: #FFFFFF;
   border: 2px solid #FFFFFF;
-  border-radius: 15px;
   display: flex;
   align-items: center;
   height: 100%;
@@ -39,7 +36,6 @@ main {
 
 .header-image {
   height: 100%;
-  /* width: 35%; */
   margin: 3%;
 }
 
@@ -53,8 +49,7 @@ main {
   width: 30%;
 }
 
-section {
-  /* border: 2px solid green; */
+.cards {
   margin-top: 2%;
   text-align: center;
   width: 30%;
@@ -62,36 +57,28 @@ section {
 
 .activity {
   border: 2px solid #45DD8F;
-  border-radius: 15px;
   background-color: #45DD8F;
 }
 
 .hydration {
   border: 2px solid #46CDFB;
-  border-radius: 15px;
   background-color: #46CDFB;
 }
 
 .sleep {
   border: 2px solid #6D60B4;
-  border-radius: 15px;
   background-color: #6D60B4;
 }
 
-article {
+.content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 80%;
 }
 
-h3, h1, p {
-  align-items: center;
-}
-
 .sleep-chart-week, .sleep-chart-avg, .activity-chart {
-  border-radius: 15px;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
   margin: 20px;
   padding: 10px;
 }

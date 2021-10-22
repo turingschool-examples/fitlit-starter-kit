@@ -1,4 +1,4 @@
-html {
+body {
   height: 100vh;
 }
 
@@ -6,7 +6,7 @@ main {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
-  height: 80vh;
+  height: 75vh;
 }
 
 * {
@@ -21,10 +21,10 @@ main {
   background-color: #FFFFFF;
   display: flex;
   flex-direction: row;
-  height: 20%;
+  height: 15%;
   align-items: center;
   /* margin-bottom: 2%; */
-  padding: 2%;
+  padding: 1% 2% 1% 2%;
   justify-content: space-between;
 }
 
@@ -34,14 +34,17 @@ main {
   border-radius: 15px;
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .header-image {
-  width: 15%;
+  height: 100%;
+  /* width: 35%; */
   margin: 3%;
 }
 
 .user-info {
+  height: 75%;
   align-items: center;
   padding: 1%;
   align-content: right;
@@ -86,7 +89,7 @@ h3, h1, p {
   align-items: center;
 }
 
-.sleep-chart-week, .sleep-chart-avg {
+.sleep-chart-week, .sleep-chart-avg, .activity-chart {
   border-radius: 15px;
   background-color: #ffffff;
   margin: 20px;

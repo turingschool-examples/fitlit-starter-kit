@@ -68,12 +68,15 @@ const displayStepGoalComparison = (currentUser, allUsers) => {
       datasets: [{
         label: 'Steps',
         data: [`${currentUser.dailyStepGoal}`,`${allUsers.calculateAvgStepGoal()}`],
-        backgroundColor: ['green', '#b46096'], 
-        borderColor: '#b46096'
+        backgroundColor: ['#4575dd', '#dd5245'],
+        borderColor: '#dd5245'
       }],
     },
-    options:{
-      plugins:{
+    options: {
+      plugins: {
+        legend: {
+          display: false,
+        },
         title:{
           display: true,
           text: 'Daily Step Goals',
@@ -81,7 +84,7 @@ const displayStepGoalComparison = (currentUser, allUsers) => {
             size: 20
           }
         }
-      }
+      },
     }
   })
   activityChart.innerHTML = activityChartSection;
@@ -127,12 +130,12 @@ const displaySleepChart = (userSleep) => {
       datasets: [{
         label: 'Hours Slept per Day',
         data: [`${userSleep[0].hoursSlept}`, `${userSleep[1].hoursSlept}`, `${userSleep[2].hoursSlept}`, `${userSleep[3].hoursSlept}`, `${userSleep[4].hoursSlept}`, `${userSleep[5].hoursSlept}`, `${userSleep[6].hoursSlept}`],
-        backgroundColor: '#b46096', 
+        backgroundColor: '#b46096',
         borderColor: '#b46096'
       }, {
         label: 'Sleep Quality per Day',
         data: [`${userSleep[0].sleepQuality}`, `${userSleep[1].sleepQuality}`, `${userSleep[2].sleepQuality}`, `${userSleep[3].sleepQuality}`, `${userSleep[4].sleepQuality}`, `${userSleep[5].sleepQuality}`, `${userSleep[6].sleepQuality}`],
-        backgroundColor: '#60b46d', 
+        backgroundColor: '#60b46d',
         borderColor: '#60b46d'
       }],
     },
@@ -159,12 +162,12 @@ const displaySleepChartAvg = (userSleep, userAvgHoursSlept, userAvgQualitySleep)
       datasets: [{
         label: 'Hours Slept',
         data: [`${userSleep[6].hoursSlept}`, `${userAvgHoursSlept}`],
-        backgroundColor: '#b46096', 
+        backgroundColor: '#b46096',
         borderColor: '#b46096'
       }, {
         label: 'Sleep Quality',
         data: [`${userSleep[6].sleepQuality}`, `${userAvgQualitySleep}`],
-        backgroundColor: '#60b46d', 
+        backgroundColor: '#60b46d',
         borderColor: '#60b46d'
       }],
     },

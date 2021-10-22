@@ -10,10 +10,9 @@ import Chart from 'chart.js/auto'
 import {userData, userSleepData, userActivityData, userHydrationData} from './fetch.js';
 
 const header = document.querySelector('#header')
-const activitySection = document.querySelector('#activity')
-const sleepSection = document.querySelector('#sleep')
 const sleepChart = document.querySelector('#sleepChartWeek')
 const sleepChartAvg = document.querySelector('#sleepChartAvg')
+const activityChart = document.querySelector('#activityChart')
 
 let usersData, sleepEntries, activityData, hydrationData, sleepData;
 
@@ -62,10 +61,32 @@ const displayUserInfo = (user) => {
 }
 
 const displayStepGoalComparison = (currentUser, allUsers) => {
-  activitySection.innerHTML = `
-    <h3 class='activity'>Your daily step goal is ${currentUser.dailyStepGoal}, and the average for everyone is ${allUsers.calculateAvgStepGoal()}</h3>
-  `
+  const activityChartSection = new Chart(activityChart, {
+    type: 'bar',
+    data: {
+      labels: ['Yours','Community Average'],
+      datasets: [{
+        label: 'Steps',
+        data: [`${currentUser.dailyStepGoal}`,`${allUsers.calculateAvgStepGoal()}`],
+        backgroundColor: ['green', '#b46096'], 
+        borderColor: '#b46096'
+      }],
+    },
+    options:{
+      plugins:{
+        title:{
+          display: true,
+          text: 'Daily Step Goals',
+          font: {
+            size: 20
+          }
+        }
+      }
+    }
+  })
+  activityChart.innerHTML = activityChartSection;
 }
+
 
 const pullLatestDate = (dataset, user) => {
   return dataset.reduce((latestDate, entry) => {
@@ -122,7 +143,7 @@ const displaySleepChart = (userSleep) => {
           text: 'Weekly Summary',
           font: {
             size: 20
-        }
+          }
         }
       }
     }

@@ -86,7 +86,7 @@ h3, h1, p {
   align-items: center;
 }
 
-.sleep-chart-week, .sleep-chart-avg {
+.sleep-chart-week, .sleep-chart-avg, .activity-chart {
   border-radius: 15px;
   background-color: #ffffff;
   margin: 20px;

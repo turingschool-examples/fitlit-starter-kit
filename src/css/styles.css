@@ -1,5 +1,5 @@
 * {
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Kodchasan', sans-serif;
   border-radius: 15px;
 }
 
@@ -56,6 +56,12 @@
   margin-top: 2%;
   text-align: center;
   width: 30%;
+}
+
+.card-header {
+  color: #FFFFFF;
+  font-size: 40px;
+  font-weight: bold;
 }
 
 .activity {

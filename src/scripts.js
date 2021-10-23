@@ -1,6 +1,7 @@
 import './css/styles.css';
 import './images/turing-logo.png'
 import './images/user.png'
+import './images/shoe.png'
 import UserRepository from './UserRepository';
 import User from './User';
 import Sleep from './Sleep';

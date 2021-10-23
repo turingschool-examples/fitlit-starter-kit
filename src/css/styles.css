@@ -39,17 +39,21 @@
   margin: 3%;
 }
 
-.user-info {
+.user-info-box {
   display: flex;
-  height: 75%;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 75%;
   padding: 1%;
-  align-content: right;
   text-align: left;
-  width: 30%;
+  min-width: 30%;
   background-image: linear-gradient(to right, #fb5b79 , #ff8e75);
   color: #ffffff;
   font-size: 100%;
+}
+
+.user-info {
+  margin: 0;
 }
 
 .cards {

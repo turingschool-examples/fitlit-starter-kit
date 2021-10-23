@@ -63,9 +63,11 @@ const generateHeaderContent = (user) => {
             <img src="./images/user.png" alt="user-icon" class="header header-image">
             <h1 class="welcome header">Welcome, ${user.displayFirstName()}</h1>
           </div>
-          <p class="header user-info">Name: ${user.name}<br>
-          Address: ${user.address}<br>
-          Email: ${user.email}</p>
+          <div class="user-info-box">
+            <p class="user-info">Name: ${user.name}</p>
+            <p class="user-info">Address: ${user.address}</p>
+            <p class="user-info">Email: ${user.email}</p>
+          </div>
   `
 }
 

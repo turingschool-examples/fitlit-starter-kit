@@ -40,6 +40,7 @@
 }
 
 .user-info {
+  display: flex;
   height: 75%;
   align-items: center;
   padding: 1%;
@@ -48,8 +49,7 @@
   width: 30%;
   background-image: linear-gradient(to right, #fb5b79 , #ff8e75);
   color: #ffffff;
-  font-size: 18px;
-  font-weight: 900px !important;;
+  font-size: 100%;
 }
 
 .cards {

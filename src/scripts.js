@@ -50,11 +50,9 @@ const displayUserInfo = (user) => {
       <img src="./images/user.png" alt="user-icon" class="header header-image">
       <h1 class="welcome header">Welcome, ${user.displayFirstName()}</h1>
     </div>
-    <div class="header user-info">
-    <p class="header">Name: ${user.name}<br>
+    <p class="header user-info">Name: ${user.name}<br>
     Address: ${user.address}<br>
     Email: ${user.email}</p>
-    </div>
   `
 }
 

@@ -22,8 +22,12 @@ const loadUser = () => {
 const fetchCall = () => {
   Promise.all([userData(), userSleepData(), userActivityData(), userHydrationData()])
   .then(data => parseData(data))
+	// Do you  want a .catch here?  What happens if one
+	// Of these promises breaks
 }
 
+// Have you learned about ES6 destructuring assignments.
+// Would be perfect here for assigning from data
 const parseData = (data) => {
   usersData = data[0].userData;
   sleepEntries = data[1].sleepData;
@@ -32,8 +36,12 @@ const parseData = (data) => {
   allData(usersData, sleepEntries, activityData, hydrationData)
 }
 
+// activity an hyration unused here
 const allData = (info, sleep, activity, hydration) => {
   const userRepository = new UserRepository(info);
+	// Devs often break out util functions like this for reuse
+	// const getRandomArrIndex = (arr) => 
+	//	Math.floor(Math.random() * arr.length);
   const randomUser = Math.floor(Math.random() * userRepository.users.length);
   const user = new User(userRepository.users[randomUser]);
   const userSleepData = new Sleep(sleep);
@@ -110,14 +118,18 @@ const displaySleepChart = (userSleep) => {
   const sleepChartSection = new Chart(sleepChart, {
     type: 'line',
     data: {
+			// What about a .map here?
+			labels: userSleep.map(sleepObj => sleepObj.date),
       labels: [`${userSleep[0].date}`, `${userSleep[1].date}`, `${userSleep[2].date}`, `${userSleep[3].date}`, `${userSleep[4].date}`, `${userSleep[5].date}`, `${userSleep[6].date}`],
       datasets: [{
         label: 'Hours Slept per Day',
+				// What about a .map here?
         data: [`${userSleep[0].hoursSlept}`, `${userSleep[1].hoursSlept}`, `${userSleep[2].hoursSlept}`, `${userSleep[3].hoursSlept}`, `${userSleep[4].hoursSlept}`, `${userSleep[5].hoursSlept}`, `${userSleep[6].hoursSlept}`],
         backgroundColor: '#b46096',
         borderColor: '#b46096'
       }, {
         label: 'Sleep Quality per Day',
+				// What about a .map here?
         data: [`${userSleep[0].sleepQuality}`, `${userSleep[1].sleepQuality}`, `${userSleep[2].sleepQuality}`, `${userSleep[3].sleepQuality}`, `${userSleep[4].sleepQuality}`, `${userSleep[5].sleepQuality}`, `${userSleep[6].sleepQuality}`],
         backgroundColor: '#60b46d',
         borderColor: '#60b46d'

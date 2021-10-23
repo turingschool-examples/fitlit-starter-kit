@@ -9,55 +9,68 @@ import {userData, userSleepData, userActivityData, userHydrationData} from './fe
 // import Hydration from './Hydration';
 
 const header = document.querySelector('#header')
-const sleepChart = document.querySelector('#sleepChartWeek')
+const singleDaySleepChart = document.querySelector('#sleepChartWeek')
 const sleepChartAvg = document.querySelector('#sleepChartAvg')
-const activityChart = document.querySelector('#activityChart')
+const stepGoalChart = document.querySelector('#activityChart')
 
-let usersData, sleepEntries, activityData, hydrationData, sleepData;
-
-const loadUser = () => {
-  fetchCall();
-}
-
-const fetchCall = () => {
-  Promise.all([userData(), userSleepData(), userActivityData(), userHydrationData()])
-  .then(data => parseData(data))
+const fetchData = () => {
+  return Promise.all([userData(), userSleepData(), userActivityData(), userHydrationData()])
+    .then(data => parseData(data));
 }
 
 const parseData = (data) => {
-  usersData = data[0].userData;
-  sleepEntries = data[1].sleepData;
-  activityData = data[2].activityData;
-  hydrationData = data[3].hydrationData;
-  allData(usersData, sleepEntries, activityData, hydrationData)
+  const usersData = data[0].userData;
+  const sleepEntries = data[1].sleepData;
+  const activityData = data[2].activityData;
+  const hydrationData = data[3].hydrationData;
+  loadPage([usersData, sleepEntries, activityData, hydrationData])
 }
 
-const allData = (info, sleep, activity, hydration) => {
-  const userRepository = new UserRepository(info);
-  const randomUser = Math.floor(Math.random() * userRepository.users.length);
-  const user = new User(userRepository.users[randomUser]);
-  const userSleepData = new Sleep(sleep);
-  sleepData = userSleepData.sleepData;
-  // const hydrationData = new Hydration(hydration);
-  displayUserInfo(user);
-  displayStepGoalComparison(user, userRepository);
-  displaySleepDataWeek(user, sleepData)
+const getLatestDate = (dataset, user) => {
+  return dataset.reduce((latestDate, entry) => {
+    if (entry.userID === user.id && entry.date > latestDate) {
+      latestDate = entry.date;
+    }
+    return latestDate;
+  }, '')
 }
 
-const displayUserInfo = (user) => {
-  header.innerHTML = `
-    <div class="welcome-box">
-      <img src="./images/user.png" alt="user-icon" class="header header-image">
-      <h1 class="welcome header">Welcome, ${user.displayFirstName()}</h1>
-    </div>
-    <p class="header user-info">Name: ${user.name}</br>
-    Address: ${user.address}</br>
-    Email: ${user.email}</p>
+const generateRandomIndex = (dataset) => {
+  return Math.floor(Math.random() * dataset.length);
+}
+
+const getUserSleepData = (user, dataset, date) => {
+  return user.findHoursSleptByWeek(dataset, date);
+}
+
+const getSleepComparison = (currentUser, sleepData, date) => {
+  const hours = currentUser.findHoursSleptByWeek(sleepData, date)[6].hoursSlept;
+  const quality = currentUser.findHoursSleptByWeek(sleepData, date)[6].sleepQuality;
+  const avgHours = currentUser.calculateAvgDailySleep(sleepData);
+  const avgQuality = currentUser.calculateAvgSleepQuality(sleepData);
+  const comparison =  {
+    date: date,
+    hoursSleptOnDate: hours,
+    sleepQualityOnDate: quality,
+    hoursSleptAvg: avgHours,
+    sleepQualityAvg: avgQuality
+  }
+  return comparison;
+}
+
+const generateHeaderContent = (user) => {
+  return `<div class="welcome-box">
+            <img src="./images/user.png" alt="user-icon" class="header header-image">
+            <h1 class="welcome header">Welcome, ${user.displayFirstName()}</h1>
+          </div>
+          <p class="header user-info">Name: ${user.name}<br>
+          Address: ${user.address}<br>
+          Email: ${user.email}</p>
   `
 }
 
-const displayStepGoalComparison = (currentUser, allUsers) => {
-  const activityChartSection = new Chart(activityChart, {
+const generateStepGoalChart = (currentUser, allUsers) => {
+  return new Chart(activityChart, {
     type: 'bar',
     data: {
       labels: ['Yours', 'Community Average'],
@@ -83,40 +96,21 @@ const displayStepGoalComparison = (currentUser, allUsers) => {
       },
     }
   })
-  activityChart.innerHTML = activityChartSection;
 }
 
-const displaySleepDataWeek = (currentUser, sleepSupport) => {
-  const date = pullLatestDate(sleepSupport, currentUser);
-  const userSleep = currentUser.findHoursSleptByWeek(sleepSupport, date)
-  const userAvgHoursSlept = currentUser.calculateAvgDailySleep(sleepSupport)
-  const userAvgQualitySleep = currentUser.calculateAvgSleepQuality(sleepSupport)
-  displaySleepChart(userSleep)
-  displaySleepChartAvg(userSleep, userAvgHoursSlept, userAvgQualitySleep)
-}
-
-const pullLatestDate = (dataset, user) => {
-  return dataset.reduce((latestDate, entry) => {
-    if (entry.userID === user.id && entry.date > latestDate) {
-      latestDate = entry.date;
-    }
-    return latestDate;
-  }, '')
-}
-
-const displaySleepChart = (userSleep) => {
-  const sleepChartSection = new Chart(sleepChart, {
+const generateWeekSleepChart = (userSleep) => {
+  return new Chart(singleDaySleepChart, {
     type: 'line',
     data: {
       labels: userSleep.map(sleepEntry => sleepEntry.date),
       datasets: [{
         label: 'Hours Slept per Day',
-        data: userSleep.map(sleepEntry => sleepEntry.hoursSlept),         
+        data: userSleep.map(sleepEntry => sleepEntry.hoursSlept),
         backgroundColor: '#b46096',
         borderColor: '#b46096'
       }, {
         label: 'Sleep Quality per Day',
-        data: userSleep.map(sleepEntry => sleepEntry.sleepQuality), 
+        data: userSleep.map(sleepEntry => sleepEntry.sleepQuality),
         backgroundColor: '#60b46d',
         borderColor: '#60b46d'
       }],
@@ -133,22 +127,21 @@ const displaySleepChart = (userSleep) => {
       }
     }
   })
-  sleepChart.innerHTML = sleepChartSection;
 }
 
-const displaySleepChartAvg = (userSleep, userAvgHoursSlept, userAvgQualitySleep) => {
-  const sleepChartSectionAvg = new Chart(sleepChartAvg, {
+const generateAvgSleepChart = (sleepComparisonData) => {
+  return new Chart(sleepChartAvg, {
     type: 'bar',
     data: {
-      labels: [`${userSleep[6].date}`, 'Overall Average'],
+      labels: [`${sleepComparisonData.date}`, 'Overall Average'],
       datasets: [{
         label: 'Hours Slept',
-        data: [`${userSleep[6].hoursSlept}`, `${userAvgHoursSlept}`],
+        data: [`${sleepComparisonData.hoursSleptOnDate}`, `${sleepComparisonData.hoursSleptAvg}`],
         backgroundColor: '#b46096',
         borderColor: '#b46096'
       }, {
         label: 'Sleep Quality',
-        data: [`${userSleep[6].sleepQuality}`, `${userAvgQualitySleep}`],
+        data: [`${sleepComparisonData.sleepQualityOnDate}`, `${sleepComparisonData.sleepQualityAvg}`],
         backgroundColor: '#60b46d',
         borderColor: '#60b46d'
       }],
@@ -165,7 +158,21 @@ const displaySleepChartAvg = (userSleep, userAvgHoursSlept, userAvgQualitySleep)
       }
     }
   })
-  sleepChartAvg.innerHTML = sleepChartSectionAvg;
 }
 
-window.addEventListener('load', loadUser);
+const loadPage = (data) => {
+  const allUsers = new UserRepository(data[0]);
+  const sleepData = new Sleep(data[1]);
+  const randomIndex = generateRandomIndex(allUsers.users)
+  const currentUser = new User(allUsers.users[randomIndex]);
+  const date = getLatestDate(sleepData.sleepData, currentUser);
+  const currentUserSleepDataByDate = getUserSleepData(currentUser, sleepData.sleepData, date)
+  const sleepComparisonData = getSleepComparison(currentUser, sleepData.sleepData, date)
+
+  header.innerHTML = generateHeaderContent(currentUser)
+  stepGoalChart.innerHTML = generateStepGoalChart(currentUser, allUsers);
+  singleDaySleepChart.innerHTML = generateWeekSleepChart(currentUserSleepDataByDate)
+  sleepChartAvg.innerHTML = generateAvgSleepChart(sleepComparisonData)
+}
+
+window.addEventListener('load', fetchData);

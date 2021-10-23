@@ -20,16 +20,16 @@ const loadUser = () => {
 }
 
 const fetchCall = () => {
-  Promise.all([userData(), userSleepData(), userActivityData(), userHydrationData()])
-  .then(data => parseData(data))
-	// Do you  want a .catch here?  What happens if one
-	// Of these promises breaks
+  return Promise.all([userData(), userSleepData(), userActivityData(), userHydrationData()])
+    .then(data => parseData(data))
+  // Do you  want a .catch here?  What happens if one
+  // Of these promises breaks
 }
 
 // Have you learned about ES6 destructuring assignments.
 // Would be perfect here for assigning from data
 const parseData = (data) => {
-  usersData = data[0].userData;
+  const {usersData: whateverYouWant } = data[0];
   sleepEntries = data[1].sleepData;
   activityData = data[2].activityData;
   hydrationData = data[3].hydrationData;
@@ -39,35 +39,49 @@ const parseData = (data) => {
 // activity an hyration unused here
 const allData = (info, sleep, activity, hydration) => {
   const userRepository = new UserRepository(info);
-	// Devs often break out util functions like this for reuse
-	// const getRandomArrIndex = (arr) => 
-	//	Math.floor(Math.random() * arr.length);
+  // Devs often break out util functions like this for reuse
+  // const getRandomArrIndex = (arr) => 
+  //	Math.floor(Math.random() * arr.length);
   const randomUser = Math.floor(Math.random() * userRepository.users.length);
   const user = new User(userRepository.users[randomUser]);
   const userSleepData = new Sleep(sleep);
   sleepData = userSleepData.sleepData;
   // const hydrationData = new Hydration(hydration);
-  displayUserInfo(user);
-  displayStepGoalComparison(user, userRepository);
+
+  /**
+   * this pattern of returning single things like user data or 
+   */
+  const stepGoalChart = displayStepGoalComparison(user, userRepository);
+  const userInfo = generateUserInfo(user)
   displaySleepDataWeek(user, sleepData)
+
+  header.innerHTML = userInfo;
+  activityChart.innerHTML = activityChartSection;
 }
 
-const displayUserInfo = (user) => {
-  header.innerHTML = `
-    <div class="welcome-box">
-      <img src="./images/user.png" alt="user-icon" class="header header-image">
-      <h1 class="welcome header">Welcome, ${user.displayFirstName()}</h1>
-    </div>
-    <div class="header user-info">
-    <p class="header">Name: ${user.name}<br>
-    Address: ${user.address}<br>
-    Email: ${user.email}</p>
-    </div>
-  `
-}
+// Why not use 3 paragraph tags below instead of breaks?
+const generateUserInfo = (user) => `
+  <div class="welcome-box">
+    <img src="./images/user.png" alt="user-icon" class="header header-image">
+    <h1 class="welcome header">Welcome, ${user.displayFirstName()}</h1>
+  </div>
+  <div class="header user-info">
+    <p class="header">
+      Name: ${user.name}<br>
+      Address: ${user.address}<br>
+      Email: ${user.email}
+    </p>
+  </div>
+`;
 
-const displayStepGoalComparison = (currentUser, allUsers) => {
-  const activityChartSection = new Chart(activityChart, {
+/**
+ * 
+ * Could return this chart and set inner html in 
+ * a loadpage func below for singel responsibility functions
+ */
+
+const generateSleepChart = (currentUser, allUsers) => {
+  return new Chart(activityChart, {
     type: 'bar',
     data: {
       labels: ['Yours', 'Community Average'],
@@ -93,8 +107,8 @@ const displayStepGoalComparison = (currentUser, allUsers) => {
       },
     }
   })
-  activityChart.innerHTML = activityChartSection;
 }
+
 
 const displaySleepDataWeek = (currentUser, sleepSupport) => {
   const date = pullLatestDate(sleepSupport, currentUser);
@@ -114,22 +128,22 @@ const pullLatestDate = (dataset, user) => {
   }, '')
 }
 
-const displaySleepChart = (userSleep) => {
+const generateSleepChart = (userSleep) => {
   const sleepChartSection = new Chart(sleepChart, {
     type: 'line',
     data: {
-			// What about a .map here?
-			labels: userSleep.map(sleepObj => sleepObj.date),
-      labels: [`${userSleep[0].date}`, `${userSleep[1].date}`, `${userSleep[2].date}`, `${userSleep[3].date}`, `${userSleep[4].date}`, `${userSleep[5].date}`, `${userSleep[6].date}`],
+      // What about a .map here?
+      labels: userSleep.map(sleepObj => sleepObj.date),
+      // labels: [`${userSleep[0].date}`, `${userSleep[1].date}`, `${userSleep[2].date}`, `${userSleep[3].date}`, `${userSleep[4].date}`, `${userSleep[5].date}`, `${userSleep[6].date}`],
       datasets: [{
         label: 'Hours Slept per Day',
-				// What about a .map here?
+        // What about a .map here?
         data: [`${userSleep[0].hoursSlept}`, `${userSleep[1].hoursSlept}`, `${userSleep[2].hoursSlept}`, `${userSleep[3].hoursSlept}`, `${userSleep[4].hoursSlept}`, `${userSleep[5].hoursSlept}`, `${userSleep[6].hoursSlept}`],
         backgroundColor: '#b46096',
         borderColor: '#b46096'
       }, {
         label: 'Sleep Quality per Day',
-				// What about a .map here?
+        // What about a .map here?
         data: [`${userSleep[0].sleepQuality}`, `${userSleep[1].sleepQuality}`, `${userSleep[2].sleepQuality}`, `${userSleep[3].sleepQuality}`, `${userSleep[4].sleepQuality}`, `${userSleep[5].sleepQuality}`, `${userSleep[6].sleepQuality}`],
         backgroundColor: '#60b46d',
         borderColor: '#60b46d'
@@ -182,4 +196,36 @@ const displaySleepChartAvg = (userSleep, userAvgHoursSlept, userAvgQualitySleep)
   sleepChartAvg.innerHTML = sleepChartSectionAvg;
 }
 
-window.addEventListener('load', loadUser);
+const loadPage = () => {
+  const [
+    usersData,
+    sleepEntries,
+    activityData,
+    hydrationData, 
+  ] = fetchCall();
+
+  // transformData
+  /**
+   * const transformedSleepData = transformSleepData
+   */
+
+  const sleepChart = generateSleepChart(args..., transformedSleepData)
+  const otherChart = genereteUserChart(args...)
+
+  sleepChartAvg.innerHTML = sleepChart;
+  sleepChartAvg.innerHTML = otherChart;
+
+//  const obj = {
+//    thing: 'stuff'
+//  }
+
+//  const { thing } = obj;
+//  const theThing = obj.thing
+
+//  const arr = [1, 2, 3, 4]
+
+//  const [index1, index2, index3, index4] = arr;
+
+}
+
+window.addEventListener('load', loadPage);

@@ -50,11 +50,9 @@ const displayUserInfo = (user) => {
       <img src="./images/user.png" alt="user-icon" class="header header-image">
       <h1 class="welcome header">Welcome, ${user.displayFirstName()}</h1>
     </div>
-    <div class="header user-info">
-    <p class="header">Name: ${user.name}<br>
-    Address: ${user.address}<br>
+    <p class="header user-info">Name: ${user.name}</br>
+    Address: ${user.address}</br>
     Email: ${user.email}</p>
-    </div>
   `
 }
 
@@ -110,15 +108,15 @@ const displaySleepChart = (userSleep) => {
   const sleepChartSection = new Chart(sleepChart, {
     type: 'line',
     data: {
-      labels: [`${userSleep[0].date}`, `${userSleep[1].date}`, `${userSleep[2].date}`, `${userSleep[3].date}`, `${userSleep[4].date}`, `${userSleep[5].date}`, `${userSleep[6].date}`],
+      labels: userSleep.map(sleepEntry => sleepEntry.date),
       datasets: [{
         label: 'Hours Slept per Day',
-        data: [`${userSleep[0].hoursSlept}`, `${userSleep[1].hoursSlept}`, `${userSleep[2].hoursSlept}`, `${userSleep[3].hoursSlept}`, `${userSleep[4].hoursSlept}`, `${userSleep[5].hoursSlept}`, `${userSleep[6].hoursSlept}`],
+        data: userSleep.map(sleepEntry => sleepEntry.hoursSlept),         
         backgroundColor: '#b46096',
         borderColor: '#b46096'
       }, {
         label: 'Sleep Quality per Day',
-        data: [`${userSleep[0].sleepQuality}`, `${userSleep[1].sleepQuality}`, `${userSleep[2].sleepQuality}`, `${userSleep[3].sleepQuality}`, `${userSleep[4].sleepQuality}`, `${userSleep[5].sleepQuality}`, `${userSleep[6].sleepQuality}`],
+        data: userSleep.map(sleepEntry => sleepEntry.sleepQuality), 
         backgroundColor: '#60b46d',
         borderColor: '#60b46d'
       }],

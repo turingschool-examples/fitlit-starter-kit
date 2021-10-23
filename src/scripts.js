@@ -13,7 +13,9 @@ const sleepChart = document.querySelector('#sleepChartWeek')
 const sleepChartAvg = document.querySelector('#sleepChartAvg')
 const activityChart = document.querySelector('#activityChart')
 
-let usersData, sleepEntries, activityData, hydrationData, sleepData;
+let usersData, sleepEntries, activityData, hydrationData, sleepData; // Try to get rid of these by having functions that return things
+
+window.addEventListener('load', loadPage); // can move this up with a loadPage function decalration
 
 const loadUser = () => {
   fetchCall();
@@ -196,7 +198,7 @@ const displaySleepChartAvg = (userSleep, userAvgHoursSlept, userAvgQualitySleep)
   sleepChartAvg.innerHTML = sleepChartSectionAvg;
 }
 
-const loadPage = () => {
+function loadPage() {
   const [
     usersData,
     sleepEntries,

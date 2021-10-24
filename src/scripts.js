@@ -129,37 +129,29 @@ const generateWeekWaterChart = (ouncesByWeek) => {
   })
 }
 
-const generateDayWaterChart = (ouncesByDay) => {
+
+const generateDayWaterChart = (ouncesByDay, date) => {
   return new Chart(waterChartDay, {
-    type: 'doughnut',
+    type: 'bar',
     data: {
-      labels: ['Ounces'],
+      labels: ['Yours', 'Recommended 64'],
       datasets: [{
-        label: 'Ounces of Water',
-        data: [ouncesByDay],
-        backgroundColor: '#fafe4a',
-        borderColor: '#fafe4a'
+        label: 'Ounces',
+        data: [`${ouncesByDay}`, 64],
+        backgroundColor: ['#ba4afe', '#ba4afe'],
+        borderColor: '#ba4afe'
       }],
     },
     options: {
-      elements: {
-        center: {
-          text: "Ounces Test"
-        }
-      },
-      animation: false,
       plugins: {
-        legend: {
-          display: false,
-        },
         title: {
           display: true,
-          text: 'Latest Date',
+          text: 'Latest Entry',
           font: {
             size: 20
           }
         }
-      }
+      },
     }
   })
 }
@@ -240,25 +232,7 @@ const loadPage = (data) => {
 
   header.innerHTML = generateHeaderContent(currentUser);
   stepGoalChart.innerHTML = generateStepGoalChart(currentUser, allUsers);
-
-  /*
-    *Query select hydro sections:
-      const waterChartWeek = document.querySelector('#waterChartWeek')
-      const waterChartDay = document.querySelector('#waterChartDay')
-
-    *Build function to return ounces drunk on date, assign to variable
-      const ouncesByDate = currentUser.findOuncesByDate(hydrationData, date)
-
-    *Build function to return week of ounces drunk data, assign to variable
-      const ouncesByWeek = currentUser.findOuncesByWeek(hydrationData, date)
-
-    Build functions to generate Charts
-      generateWeekWaterChart(ouncesByDate)
-
-    Assign innerHTMLs to charts
-
-  */
-  waterChartDay.innerHTML = generateDayWaterChart(ouncesByDate);
+  waterChartDay.innerHTML = generateDayWaterChart(ouncesByDate, date);
   waterChartWeek.innerHTML = generateWeekWaterChart(ouncesByWeek);
   sleepChartWeek.innerHTML = generateWeekSleepChart(currentUserSleepDataByDate);
   sleepChartAvg.innerHTML = generateAvgSleepChart(sleepComparisonData);

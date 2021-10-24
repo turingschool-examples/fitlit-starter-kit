@@ -78,8 +78,8 @@ const generateStepGoalChart = (currentUser, allUsers) => {
       datasets: [{
         label: 'Steps',
         data: [`${currentUser.dailyStepGoal}`, `${allUsers.calculateAvgStepGoal()}`],
-        backgroundColor: ['#4575dd', '#dd5245'],
-        borderColor: '#dd5245'
+        backgroundColor: ['#ba4afe', '#4AB2FE'],
+        borderColor: ['#ba4afe', '#4AB2FE']
       }],
     },
     options: {
@@ -113,8 +113,8 @@ const generateWeekWaterChart = (ouncesByWeek) => {
       {
         label: 'Recommended',
         data: [64, 64, 64, 64, 64, 64, 64],
-        backgroundColor: '#fe964a',
-        borderColor: '#fe964a'
+        backgroundColor: '#17D290',
+        borderColor: '#17D290'
       }],
     },
     options: {
@@ -140,8 +140,8 @@ const generateDayWaterChart = (ouncesByDay) => {
       datasets: [{
         label: 'Ounces',
         data: [`${ouncesByDay}`, 64],
-        backgroundColor: ['#ba4afe', '#fe964a'],
-        borderColor: ['#ba4afe', '#fe964a']
+        backgroundColor: ['#ba4afe', '#17D290'],
+        borderColor: ['#ba4afe', '#17D290']
       }],
     },
     options: {
@@ -169,13 +169,13 @@ const generateWeekSleepChart = (userSleep) => {
       datasets: [{
         label: 'Hours Slept per Day',
         data: userSleep.map(sleepEntry => sleepEntry.hoursSlept),
-        backgroundColor: '#b46096',
-        borderColor: '#b46096'
+        backgroundColor: '#17D290',
+        borderColor: '#17D290'
       }, {
         label: 'Sleep Quality per Day',
         data: userSleep.map(sleepEntry => sleepEntry.sleepQuality),
-        backgroundColor: '#60b46d',
-        borderColor: '#60b46d'
+        backgroundColor: '#4AB2FE',
+        borderColor: '#4AB2FE'
       }],
     },
     options: {
@@ -200,13 +200,13 @@ const generateAvgSleepChart = (sleepComparisonData) => {
       datasets: [{
         label: 'Hours Slept',
         data: [`${sleepComparisonData.hoursSleptOnDate}`, `${sleepComparisonData.hoursSleptAvg}`],
-        backgroundColor: '#b46096',
-        borderColor: '#b46096'
+        backgroundColor: '#17D290',
+        borderColor: '#17D290'
       }, {
         label: 'Sleep Quality',
         data: [`${sleepComparisonData.sleepQualityOnDate}`, `${sleepComparisonData.sleepQualityAvg}`],
-        backgroundColor: '#60b46d',
-        borderColor: '#60b46d'
+        backgroundColor: '#4AB2FE',
+        borderColor: '#4AB2FE'
       }],
     },
     options: {

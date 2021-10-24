@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
-  height: 75vh;
+  height: 80vh;
 }
 
 .header {
@@ -87,7 +87,7 @@
   height: 80%;
 }
 
-.sleep-chart-week, .sleep-chart-avg, .activity-chart {
+.sleep-chart-week, .sleep-chart-avg, .activity-chart, .water-chart-week, .water-chart-day {
   background-color: #FFFFFF;
   margin: 20px;
   padding: 10px;

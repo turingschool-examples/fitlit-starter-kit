@@ -6,12 +6,15 @@ import User from './User';
 import Sleep from './Sleep';
 import Chart from 'chart.js/auto'
 import {userData, userSleepData, userActivityData, userHydrationData} from './fetch.js';
-// import Hydration from './Hydration';
+import Hydration from './Hydration';
 
 const header = document.querySelector('#header')
-const singleDaySleepChart = document.querySelector('#sleepChartWeek')
-const sleepChartAvg = document.querySelector('#sleepChartAvg')
 const stepGoalChart = document.querySelector('#activityChart')
+const sleepChartWeek = document.querySelector('#sleepChartWeek')
+const sleepChartAvg = document.querySelector('#sleepChartAvg')
+const waterChartWeek = document.querySelector('#waterChartWeek')
+const waterChartDay = document.querySelector('#waterChartDay')
+
 
 const fetchData = () => {
   return Promise.all([userData(), userSleepData(), userActivityData(), userHydrationData()])
@@ -100,8 +103,69 @@ const generateStepGoalChart = (currentUser, allUsers) => {
   })
 }
 
+const generateWeekWaterChart = (ouncesByWeek) => {
+  return new Chart(waterChartWeek, {
+    type: 'line',
+    data: {
+      labels: ouncesByWeek.map(waterEntry => waterEntry.date),
+      datasets: [{
+        label: 'Ounces of Water per Day',
+        data: ouncesByWeek.map(waterEntry => waterEntry.numOunces),
+        backgroundColor: '#ba4afe',
+        borderColor: '#ba4afe'
+      }],
+    },
+    options: {
+      plugins: {
+        title: {
+          display: true,
+          text: 'Weekly Summary',
+          font: {
+            size: 20
+          }
+        }
+      }
+    }
+  })
+}
+
+const generateDayWaterChart = (ouncesByDay) => {
+  return new Chart(waterChartDay, {
+    type: 'doughnut',
+    data: {
+      labels: ['Ounces'],
+      datasets: [{
+        label: 'Ounces of Water',
+        data: [ouncesByDay],
+        backgroundColor: '#fafe4a',
+        borderColor: '#fafe4a'
+      }],
+    },
+    options: {
+      elements: {
+        center: {
+          text: "Ounces Test"
+        }
+      },
+      animation: false,
+      plugins: {
+        legend: {
+          display: false,
+        },
+        title: {
+          display: true,
+          text: 'Latest Date',
+          font: {
+            size: 20
+          }
+        }
+      }
+    }
+  })
+}
+
 const generateWeekSleepChart = (userSleep) => {
-  return new Chart(singleDaySleepChart, {
+  return new Chart(sleepChartWeek, {
     type: 'line',
     data: {
       labels: userSleep.map(sleepEntry => sleepEntry.date),
@@ -165,16 +229,39 @@ const generateAvgSleepChart = (sleepComparisonData) => {
 const loadPage = (data) => {
   const allUsers = new UserRepository(data[0]);
   const sleepData = new Sleep(data[1]);
-  const randomIndex = generateRandomIndex(allUsers.users)
+  const hydrationData = new Hydration(data[3]);
+  const randomIndex = generateRandomIndex(allUsers.users);
   const currentUser = new User(allUsers.users[randomIndex]);
   const date = getLatestDate(sleepData.sleepData, currentUser);
-  const currentUserSleepDataByDate = getUserSleepData(currentUser, sleepData.sleepData, date)
-  const sleepComparisonData = getSleepComparison(currentUser, sleepData.sleepData, date)
+  const currentUserSleepDataByDate = getUserSleepData(currentUser, sleepData.sleepData, date);
+  const sleepComparisonData = getSleepComparison(currentUser, sleepData.sleepData, date);
+  const ouncesByDate = currentUser.findOuncesByDate(hydrationData.hydrationData, date)
+  const ouncesByWeek = currentUser.findOuncesByWeek(hydrationData.hydrationData, date)
 
-  header.innerHTML = generateHeaderContent(currentUser)
+  header.innerHTML = generateHeaderContent(currentUser);
   stepGoalChart.innerHTML = generateStepGoalChart(currentUser, allUsers);
-  singleDaySleepChart.innerHTML = generateWeekSleepChart(currentUserSleepDataByDate)
-  sleepChartAvg.innerHTML = generateAvgSleepChart(sleepComparisonData)
+
+  /*
+    *Query select hydro sections:
+      const waterChartWeek = document.querySelector('#waterChartWeek')
+      const waterChartDay = document.querySelector('#waterChartDay')
+
+    *Build function to return ounces drunk on date, assign to variable
+      const ouncesByDate = currentUser.findOuncesByDate(hydrationData, date)
+
+    *Build function to return week of ounces drunk data, assign to variable
+      const ouncesByWeek = currentUser.findOuncesByWeek(hydrationData, date)
+
+    Build functions to generate Charts
+      generateWeekWaterChart(ouncesByDate)
+
+    Assign innerHTMLs to charts
+
+  */
+  waterChartDay.innerHTML = generateDayWaterChart(ouncesByDate);
+  waterChartWeek.innerHTML = generateWeekWaterChart(ouncesByWeek);
+  sleepChartWeek.innerHTML = generateWeekSleepChart(currentUserSleepDataByDate);
+  sleepChartAvg.innerHTML = generateAvgSleepChart(sleepComparisonData);
 }
 
 window.addEventListener('load', fetchData);

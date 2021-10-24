@@ -109,10 +109,16 @@ const generateWeekWaterChart = (ouncesByWeek) => {
     data: {
       labels: ouncesByWeek.map(waterEntry => waterEntry.date),
       datasets: [{
-        label: 'Ounces of Water per Day',
+        label: 'Your daily intake (oz)',
         data: ouncesByWeek.map(waterEntry => waterEntry.numOunces),
         backgroundColor: '#ba4afe',
         borderColor: '#ba4afe'
+      },
+      {
+        label: 'Recommended',
+        data: [64, 64, 64, 64, 64, 64, 64,],
+        backgroundColor: '#fe964a',
+        borderColor: '#fe964a'
       }],
     },
     options: {
@@ -134,16 +140,19 @@ const generateDayWaterChart = (ouncesByDay, date) => {
   return new Chart(waterChartDay, {
     type: 'bar',
     data: {
-      labels: ['Yours', 'Recommended 64'],
+      labels: ['Your intake (oz)', 'Recommended 64'],
       datasets: [{
         label: 'Ounces',
         data: [`${ouncesByDay}`, 64],
-        backgroundColor: ['#ba4afe', '#ba4afe'],
-        borderColor: '#ba4afe'
+        backgroundColor: ['#ba4afe', '#fe964a'],
+        borderColor: ['#ba4afe', '#fe964a']
       }],
     },
     options: {
       plugins: {
+        legend: {
+          display: false
+        },
         title: {
           display: true,
           text: 'Latest Entry',

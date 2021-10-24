@@ -83,6 +83,11 @@ const generateStepGoalChart = (currentUser, allUsers) => {
       }],
     },
     options: {
+      elements: {
+        bar: {
+          borderRadius: 10,
+        }
+      },
       plugins: {
         legend: {
           display: false,
@@ -119,6 +124,12 @@ const generateWeekWaterChart = (ouncesByWeek) => {
     },
     options: {
       plugins: {
+        legend: {
+          labels: {
+            usePointStyle: true,
+            pointStyle: 'rectRounded'
+          }
+        },
         title: {
           display: true,
           text: 'Weekly Summary',
@@ -145,6 +156,11 @@ const generateDayWaterChart = (ouncesByDay) => {
       }],
     },
     options: {
+      elements: {
+        bar: {
+          borderRadius: 10,
+        }
+      },
       plugins: {
         legend: {
           display: false
@@ -180,6 +196,12 @@ const generateWeekSleepChart = (userSleep) => {
     },
     options: {
       plugins: {
+        legend: {
+          labels: {
+            usePointStyle: true,
+            pointStyle: 'rectRounded'
+          }
+        },
         title: {
           display: true,
           text: 'Weekly Summary',
@@ -210,7 +232,18 @@ const generateAvgSleepChart = (sleepComparisonData) => {
       }],
     },
     options: {
+      elements: {
+        bar: {
+          borderRadius: 10,
+        }
+      },
       plugins: {
+        legend: {
+          labels: {
+            usePointStyle: true,
+            pointStyle: 'rectRounded'
+          }
+        },
         title: {
           display: true,
           text: 'Day/Average Comparison',

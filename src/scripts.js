@@ -1,10 +1,10 @@
 import './css/styles.css';
-import './images/turing-logo.png'
-import './images/user.png'
+import './images/turing-logo.png';
+import './images/user.png';
 import UserRepository from './UserRepository';
 import User from './User';
 import Sleep from './Sleep';
-import Chart from 'chart.js/auto'
+import Chart from 'chart.js/auto';
 import {userData, userSleepData, userActivityData, userHydrationData} from './fetch.js';
 import Hydration from './Hydration';
 
@@ -42,10 +42,6 @@ const generateRandomIndex = (dataset) => {
   return Math.floor(Math.random() * dataset.length);
 }
 
-const getUserSleepData = (user, dataset, date) => {
-  return user.findHoursSleptByWeek(dataset, date);
-}
-
 const getSleepComparison = (currentUser, sleepData, date) => {
   const hours = currentUser.findHoursSleptByWeek(sleepData, date)[6].hoursSlept;
   const quality = currentUser.findHoursSleptByWeek(sleepData, date)[6].sleepQuality;
@@ -75,7 +71,7 @@ const generateHeaderContent = (user) => {
 }
 
 const generateStepGoalChart = (currentUser, allUsers) => {
-  return new Chart(activityChart, {
+  return new Chart(stepGoalChart, {
     type: 'bar',
     data: {
       labels: ['Yours', 'Community Average'],
@@ -116,7 +112,7 @@ const generateWeekWaterChart = (ouncesByWeek) => {
       },
       {
         label: 'Recommended',
-        data: [64, 64, 64, 64, 64, 64, 64,],
+        data: [64, 64, 64, 64, 64, 64, 64],
         backgroundColor: '#fe964a',
         borderColor: '#fe964a'
       }],
@@ -136,7 +132,7 @@ const generateWeekWaterChart = (ouncesByWeek) => {
 }
 
 
-const generateDayWaterChart = (ouncesByDay, date) => {
+const generateDayWaterChart = (ouncesByDay) => {
   return new Chart(waterChartDay, {
     type: 'bar',
     data: {
@@ -234,10 +230,10 @@ const loadPage = (data) => {
   const randomIndex = generateRandomIndex(allUsers.users);
   const currentUser = new User(allUsers.users[randomIndex]);
   const date = getLatestDate(sleepData.sleepData, currentUser);
-  const currentUserSleepDataByDate = getUserSleepData(currentUser, sleepData.sleepData, date);
-  const sleepComparisonData = getSleepComparison(currentUser, sleepData.sleepData, date);
-  const ouncesByDate = currentUser.findOuncesByDate(hydrationData.hydrationData, date)
   const ouncesByWeek = currentUser.findOuncesByWeek(hydrationData.hydrationData, date)
+  const ouncesByDate = currentUser.findOuncesByDate(hydrationData.hydrationData, date)
+  const currentUserSleepDataByDate = currentUser.findHoursSleptByWeek(sleepData.sleepData, date);
+  const sleepComparisonData = getSleepComparison(currentUser, sleepData.sleepData, date);
 
   header.innerHTML = generateHeaderContent(currentUser);
   stepGoalChart.innerHTML = generateStepGoalChart(currentUser, allUsers);

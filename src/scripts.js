@@ -48,7 +48,7 @@ const getSleepComparison = (currentUser, sleepData, date) => {
   const avgHours = currentUser.calculateAvgDailySleep(sleepData);
   const avgQuality = currentUser.calculateAvgSleepQuality(sleepData);
   const comparison =  {
-    date: date,
+    date,
     hoursSleptOnDate: hours,
     sleepQualityOnDate: quality,
     hoursSleptAvg: avgHours,

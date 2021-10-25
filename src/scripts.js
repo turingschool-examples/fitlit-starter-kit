@@ -147,7 +147,7 @@ const generateDayWaterChart = (ouncesByDay) => {
   return new Chart(waterChartDay, {
     type: 'bar',
     data: {
-      labels: ['Your intake (oz)', 'Recommended 64'],
+      labels: ['Your intake (oz)', 'Recommended 64 (oz)'],
       datasets: [{
         label: 'Ounces',
         data: [`${ouncesByDay}`, 64],

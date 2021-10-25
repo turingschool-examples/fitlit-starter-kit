@@ -204,7 +204,7 @@ describe('User', () => {
   })
 
   it('should return ounces consumed per day for selected week', function() {
-    expect(user1.findOuncesByWeek(hydrationData, "2019/06/21")).to.deep.equal([37, 69, 96, 37, 69, 96, 69])
+    expect(user1.findOuncesByWeek(hydrationData, "2019/06/21")).to.deep.equal([hydrationData[0], hydrationData[1], hydrationData[2], hydrationData[3], hydrationData[4], hydrationData[5], hydrationData[6]])
   })
 
   it('should calculate the average number of hours slept per day', function() {

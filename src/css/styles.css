@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
-  height: 75vh;
+  height: 80vh;
 }
 
 .header {
@@ -39,17 +39,21 @@
   margin: 3%;
 }
 
-.user-info {
+.user-info-box {
   display: flex;
-  height: 75%;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 75%;
   padding: 1%;
-  align-content: right;
   text-align: left;
-  width: 30%;
+  min-width: 30%;
   background-image: linear-gradient(to right, #fb5b79 , #ff8e75);
   color: #ffffff;
   font-size: 100%;
+}
+
+.user-info {
+  margin: 0;
 }
 
 .cards {
@@ -73,17 +77,17 @@
 }
 
 .sleep {
-  background-image: linear-gradient( #55479F , #8E84C4);
+  background-image: linear-gradient( #ba4afe , #d66efe);
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   height: 80%;
 }
 
-.sleep-chart-week, .sleep-chart-avg, .activity-chart {
+.sleep-chart-week, .sleep-chart-avg, .activity-chart, .water-chart-week, .water-chart-day {
   background-color: #FFFFFF;
   margin: 20px;
   padding: 10px;

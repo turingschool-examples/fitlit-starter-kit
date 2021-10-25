@@ -33,7 +33,7 @@ class User {
   findOuncesByWeek(hydrationData, date) {
     return hydrationData.reduce((ouncesPerDay, entry) => {
       if ((entry.userID === this.id) && (entry.date <= date)) {
-        ouncesPerDay.push(entry.numOunces);
+        ouncesPerDay.push(entry);
         if (ouncesPerDay.length > 7) {
           ouncesPerDay.shift();
         }

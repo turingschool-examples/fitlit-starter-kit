@@ -1,279 +1,227 @@
+/**
+ * Folks often use line breaks on imports to note
+ * different kinds of things you are using
+ * 
+ * Bear in mind this is just my style and someone else
+ * might tell you to crunch it all together 🤓
+ */
+
+// Classes
+import UserRepository from './UserRepository';
+import User from './User';
+
+// Business logic
+import {
+  userData,
+  userSleepData,
+  userActivityData,
+  userHydrationData
+} from './fetch.js';
+
+//charts
+import {
+  generateStepGoalChart,
+  generateWeekWaterChart,
+  generateDayWaterChart,
+  generateWeekSleepChart,
+  generateAvgSleepChart,
+} from './charts';
+
+// Generic utilities
+import { getLatestDate, generateRandomIndex } from './utils';
+
+// Assets
 import './css/styles.css';
 import './images/turing-logo.png';
 import './images/user.png';
-import UserRepository from './UserRepository';
-import User from './User';
-import Sleep from './Sleep';
-import Chart from 'chart.js/auto';
-import {userData, userSleepData, userActivityData, userHydrationData} from './fetch.js';
-import Hydration from './Hydration';
-
-const header = document.querySelector('#header')
-const stepGoalChart = document.querySelector('#activityChart')
-const sleepChartWeek = document.querySelector('#sleepChartWeek')
-const sleepChartAvg = document.querySelector('#sleepChartAvg')
-const waterChartWeek = document.querySelector('#waterChartWeek')
-const waterChartDay = document.querySelector('#waterChartDay')
 
 
-const fetchData = () => {
-  return Promise.all([userData(), userSleepData(), userActivityData(), userHydrationData()])
-    .then(data => parseData(data));
-}
+window.addEventListener('load', laodPage);
 
-const parseData = (data) => {
-  const usersData = data[0].userData;
-  const sleepEntries = data[1].sleepData;
-  const activityData = data[2].activityData;
-  const hydrationData = data[3].hydrationData;
-  loadPage([usersData, sleepEntries, activityData, hydrationData])
-}
 
-const getLatestDate = (dataset, user) => {
-  return dataset.reduce((latestDate, entry) => {
-    if (entry.userID === user.id && entry.date > latestDate) {
-      latestDate = entry.date;
-    }
-    return latestDate;
-  }, '')
-}
-
-const generateRandomIndex = (dataset) => {
-  return Math.floor(Math.random() * dataset.length);
-}
-
+// Get Chart Data
 const getSleepComparison = (currentUser, sleepData, date) => {
-  const hours = currentUser.findHoursSleptByWeek(sleepData, date)[6].hoursSlept;
-  const quality = currentUser.findHoursSleptByWeek(sleepData, date)[6].sleepQuality;
-  const avgHours = currentUser.calculateAvgDailySleep(sleepData);
-  const avgQuality = currentUser.calculateAvgSleepQuality(sleepData);
-  const comparison =  {
+  const hours = currentUser
+    .findHoursSleptByWeek(sleepData, date)[6].hoursSlept;
+  const quality = currentUser
+    .findHoursSleptByWeek(sleepData, date)[6].sleepQuality;
+  const avgHours = currentUser
+    .calculateAvgDailySleep(sleepData);
+  const avgQuality = currentUser
+    .calculateAvgSleepQuality(sleepData);
+
+  return {
     date,
     hoursSleptOnDate: hours,
     sleepQualityOnDate: quality,
     hoursSleptAvg: avgHours,
     sleepQualityAvg: avgQuality
   }
-  return comparison;
 }
 
+/**
+ * A little easier to read if you have all this
+ * green text and there's some intrepolation like
+ * Name: ${user.name}
+ * to see it on a new line since the Name belnds into 
+ * the tags on a one liner
+ */
+
 const generateHeaderContent = (user) => {
-  return `<div class="welcome-box">
-            <img src="./images/user.png" alt="user-icon" class="header header-image">
-            <h1 class="welcome header">Welcome, ${user.displayFirstName()}</h1>
-          </div>
-          <div class="user-info-box">
-            <p class="user-info">Name: ${user.name}</p>
-            <p class="user-info">Address: ${user.address}</p>
-            <p class="user-info">Email: ${user.email}</p>
-          </div>
+  return `
+    <div class="welcome-box">
+      <img
+        src="./images/user.png"
+        alt="user-icon"
+        class="header
+        header-image"
+      >
+      <h1 class="welcome header">
+        Welcome, ${user.displayFirstName()}
+      </h1>
+    </div>
+    <div class="user-info-box">
+      <p class="user-info">
+        Name: ${user.name}
+      </p>
+      <p class="user-info">
+        Address: ${user.address}
+      </p>
+      <p class="user-info">
+        Email: ${user.email}
+      </p>
+    </div>
   `
 }
 
-const generateStepGoalChart = (currentUser, allUsers) => {
-  return new Chart(stepGoalChart, {
-    type: 'bar',
-    data: {
-      labels: ['Yours', 'Community Average'],
-      datasets: [{
-        label: 'Steps',
-        data: [`${currentUser.dailyStepGoal}`, `${allUsers.calculateAvgStepGoal()}`],
-        backgroundColor: ['#ba4afe', '#4AB2FE'],
-        borderColor: ['#ba4afe', '#4AB2FE']
-      }],
-    },
-    options: {
-      elements: {
-        bar: {
-          borderRadius: 10,
-        }
-      },
-      plugins: {
-        legend: {
-          display: false,
-        },
-        title: {
-          display: true,
-          text: 'Daily Step Goals',
-          font: {
-            size: 20
-          }
-        }
-      },
-    }
-  })
+/**
+ * 
+ * Using objects to store data is a bit more declarative than arrays.
+ * You get to say what the keys are and give them descriptive names instead 
+ * of referencing a non-descript index
+ */
+
+const parseData = (data) => {
+  return {
+    userData: data[0].userData,
+    sleepEntries: data[1].sleepData,
+    activityData: data[2].activityData,
+    hydrationData: data[3].hydrationData,
+  }
 }
 
-const generateWeekWaterChart = (ouncesByWeek) => {
-  return new Chart(waterChartWeek, {
-    type: 'line',
-    data: {
-      labels: ouncesByWeek.map(waterEntry => waterEntry.date),
-      datasets: [{
-        label: 'Your daily intake (oz)',
-        data: ouncesByWeek.map(waterEntry => waterEntry.numOunces),
-        backgroundColor: '#ba4afe',
-        borderColor: '#ba4afe'
-      },
-      {
-        label: 'Recommended',
-        data: [64, 64, 64, 64, 64, 64, 64],
-        backgroundColor: '#17D290',
-        borderColor: '#17D290'
-      }],
-    },
-    options: {
-      plugins: {
-        legend: {
-          labels: {
-            usePointStyle: true,
-            pointStyle: 'rectRounded'
-          }
-        },
-        title: {
-          display: true,
-          text: 'Weekly Summary',
-          font: {
-            size: 20
-          }
-        }
-      }
-    }
-  })
-}
+/**
+ * The way this reads is kind of what I was alluding to when we spoke
+ * last weekend.  It separates things like we're doing x y and z.
+ * You can use line breaks and such to organize different "chunks"
+ * of logic to tell the story
+ */
 
+const injectHtml = (data) => {
+  /**
+   * Can pull the query selectors into here
+   * And pass them into the chart functions
+   * to reduce global vars
+   */
 
-const generateDayWaterChart = (ouncesByDay) => {
-  return new Chart(waterChartDay, {
-    type: 'bar',
-    data: {
-      labels: ['Your intake (oz)', 'Recommended 64 (oz)'],
-      datasets: [{
-        label: 'Ounces',
-        data: [`${ouncesByDay}`, 64],
-        backgroundColor: ['#ba4afe', '#17D290'],
-        borderColor: ['#ba4afe', '#17D290']
-      }],
-    },
-    options: {
-      elements: {
-        bar: {
-          borderRadius: 10,
-        }
-      },
-      plugins: {
-        legend: {
-          display: false
-        },
-        title: {
-          display: true,
-          text: 'Latest Entry',
-          font: {
-            size: 20
-          }
-        }
-      },
-    }
-  })
-}
+  // Query selectors
+  const header = document.querySelector('#header')
+  const stepGoalChart = document.querySelector('#activityChart')
+  const sleepChartWeek = document.querySelector('#sleepChartWeek')
+  const sleepChartAvg = document.querySelector('#sleepChartAvg')
+  const waterChartWeek = document.querySelector('#waterChartWeek')
+  const waterChartDay = document.querySelector('#waterChartDay')
+  
+  /**
+ * destructuring syntax below
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+ */
 
-const generateWeekSleepChart = (userSleep) => {
-  return new Chart(sleepChartWeek, {
-    type: 'line',
-    data: {
-      labels: userSleep.map(sleepEntry => sleepEntry.date),
-      datasets: [{
-        label: 'Hours Slept per Day',
-        data: userSleep.map(sleepEntry => sleepEntry.hoursSlept),
-        backgroundColor: '#17D290',
-        borderColor: '#17D290'
-      }, {
-        label: 'Sleep Quality per Day',
-        data: userSleep.map(sleepEntry => sleepEntry.sleepQuality),
-        backgroundColor: '#4AB2FE',
-        borderColor: '#4AB2FE'
-      }],
-    },
-    options: {
-      plugins: {
-        legend: {
-          labels: {
-            usePointStyle: true,
-            pointStyle: 'rectRounded'
-          }
-        },
-        title: {
-          display: true,
-          text: 'Weekly Summary',
-          font: {
-            size: 20
-          }
-        }
-      }
-    }
-  })
-}
+  // Parse data
+  const {
+    userData,
+    sleepEntries,
+    hydrationData,
+  } = parseData(data); // parseData returns object which can be destructured
 
-const generateAvgSleepChart = (sleepComparisonData) => {
-  return new Chart(sleepChartAvg, {
-    type: 'bar',
-    data: {
-      labels: [`${sleepComparisonData.date}`, 'Overall Average'],
-      datasets: [{
-        label: 'Hours Slept',
-        data: [`${sleepComparisonData.hoursSleptOnDate}`, `${sleepComparisonData.hoursSleptAvg}`],
-        backgroundColor: '#17D290',
-        borderColor: '#17D290'
-      }, {
-        label: 'Sleep Quality',
-        data: [`${sleepComparisonData.sleepQualityOnDate}`, `${sleepComparisonData.sleepQualityAvg}`],
-        backgroundColor: '#4AB2FE',
-        borderColor: '#4AB2FE'
-      }],
-    },
-    options: {
-      elements: {
-        bar: {
-          borderRadius: 10,
-        }
-      },
-      plugins: {
-        legend: {
-          labels: {
-            usePointStyle: true,
-            pointStyle: 'rectRounded'
-          }
-        },
-        title: {
-          display: true,
-          text: 'Day/Average Comparison',
-          font: {
-            size: 20
-          }
-        }
-      }
-    }
-  })
-}
+  /**
+   * opther way to do above
+   * 
+   * const data = parseData(data);
+   * const userData = data.userData
+   * ...
+   */
 
-const loadPage = (data) => {
-  const allUsers = new UserRepository(data[0]);
-  const sleepData = new Sleep(data[1]);
-  const hydrationData = new Hydration(data[3]);
-  const randomIndex = generateRandomIndex(allUsers.users);
-  const currentUser = new User(allUsers.users[randomIndex]);
-  const date = getLatestDate(sleepData.sleepData, currentUser);
-  const ouncesByWeek = currentUser.findOuncesByWeek(hydrationData.hydrationData, date)
-  const ouncesByDate = currentUser.findOuncesByDate(hydrationData.hydrationData, date)
-  const currentUserSleepDataByDate = currentUser.findHoursSleptByWeek(sleepData.sleepData, date);
-  const sleepComparisonData = getSleepComparison(currentUser, sleepData.sleepData, date);
+  // Init classes
+  const allUsers = new UserRepository(userData);
 
+  // You could just reference the data here
+  // Some of those classed seem to just store state
+
+  // Get random user
+  const randomIndex = generateRandomIndex(userData);
+  const currentUser = new User(userData[randomIndex]);
+  
+  // Get latest date
+  const date = getLatestDate(sleepEntries, currentUser);
+  
+  // Get chart data
+  const ouncesByWeek = currentUser
+    .findOuncesByWeek(hydrationData, date)
+  const ouncesByDate = currentUser
+    .findOuncesByDate(hydrationData, date)
+  const currentUserSleepDataByDate = currentUser
+    .findHoursSleptByWeek(sleepEntries, date);
+  const sleepComparisonData = getSleepComparison(
+    currentUser,
+    sleepEntries,
+    date
+  );
+  
+  // Set HTML
   header.innerHTML = generateHeaderContent(currentUser);
-  stepGoalChart.innerHTML = generateStepGoalChart(currentUser, allUsers);
-  waterChartDay.innerHTML = generateDayWaterChart(ouncesByDate, date);
-  waterChartWeek.innerHTML = generateWeekWaterChart(ouncesByWeek);
-  sleepChartWeek.innerHTML = generateWeekSleepChart(currentUserSleepDataByDate);
-  sleepChartAvg.innerHTML = generateAvgSleepChart(sleepComparisonData);
+  stepGoalChart.innerHTML = generateStepGoalChart(
+    currentUser,
+    allUsers,
+    stepGoalChart
+  );
+  waterChartDay.innerHTML = generateDayWaterChart(
+    ouncesByDate,
+    waterChartDay
+  );
+  waterChartWeek.innerHTML = generateWeekWaterChart(
+    ouncesByWeek,
+    waterChartWeek
+  );
+  sleepChartWeek.innerHTML = generateWeekSleepChart(
+    currentUserSleepDataByDate,
+    sleepChartWeek
+  );
+  sleepChartAvg.innerHTML = generateAvgSleepChart(
+    sleepComparisonData,
+    sleepChartAvg
+  );
 }
 
-window.addEventListener('load', fetchData);
+/**
+ * 
+ * It's okay to use es6 fucntions and mix if it makes sense for what 
+ * you're doing.  They behave differently.  Here, We want to show
+ * at the top of the file that we are going to loadPage on an loading \
+ * event listener in this case
+ */
+function laodPage() {
+  return Promise.all([
+    userData(),
+    userSleepData(),
+    userActivityData(),
+    userHydrationData()
+  ])
+    .then(data => {
+      injectHtml(data);
+    })
+    // Some stricter linters like AirBnB's
+    // React like the precision of console.error
+    // There's a few others too that set log levels
+    .catch(error => console.error(error))
+}

@@ -5,47 +5,13 @@ import User from '../src/User';
 import UserRepository from '../src/UserRepository';
 
 describe('User', () => {
-  it('should be a function', function() {
-    expect(User).to.be.a('function');
-  });
-
-  it('should store user data', function() {
-    const userData = {
-      id: 1,
-      name: "Luisa Hane",
-      address: "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-      email: "Diana.Hayes1@hotmail.com",
-      strideLength: 4.3,
-      dailyStepGoal: 10000,
-      friends: [16, 4, 8]
-    };
-    const user = new User(userData)
-    expect(user.id).to.equal(userData.id);
-    expect(user.name).to.equal(userData.name);
-    expect(user.address).to.equal(userData.address);
-    expect(user.email).to.equal(userData.email);
-    expect(user.strideLength).to.equal(userData.strideLength);
-    expect(user.dailyStepGoal).to.equal(userData.dailyStepGoal);
-    expect(user.friends).to.equal(userData.friends);
-  });
-
-  it('should be able to show User first name', function() {
-    const userData = {
-      id: 1,
-      name: "Luisa Hane",
-      address: "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-      email: "Diana.Hayes1@hotmail.com",
-      strideLength: 4.3,
-      dailyStepGoal: 10000,
-      friends: [16, 4, 8]
-    };
-    const user = new User(userData)
-    expect(user.displayFirstName()).to.equal('Luisa');
-  });
-
+  /**
+   * You can keep this at the top and use for everything and delete some
+   * duplicate lines of code
+   */
   let userData, hydrationData, sleepData, user1, user2;
 
-  beforeEach(function() {
+  beforeEach(function () {
     userData = [{
       "id": 1,
       "name": "Luisa Hane",
@@ -190,7 +156,30 @@ describe('User', () => {
     ];
     user1 = new User(userData[0]);
     user2 = new User(userData[1]);
+  });
 
+  it('should be a function', function() {
+    expect(User).to.be.a('function');
+  });
+
+  it('should store user data', function() {
+    // It's nice to tie all test back to one mockData referenece 
+    // when possible
+    userData = userData[0]
+    const user = new User(userData)
+    expect(user.id).to.equal(userData.id);
+    expect(user.name).to.equal(userData.name);
+    expect(user.address).to.equal(userData.address);
+    expect(user.email).to.equal(userData.email);
+    expect(user.strideLength).to.equal(userData.strideLength);
+    expect(user.dailyStepGoal).to.equal(userData.dailyStepGoal);
+    expect(user.friends).to.equal(userData.friends);
+  });
+
+  it('should be able to show User first name', function() {
+    userData = userData[0]
+    const user = new User(userData)
+    expect(user.displayFirstName()).to.equal('Luisa');
   });
 
   it('should calculate the average daily ounces consumed', function() {
@@ -204,7 +193,12 @@ describe('User', () => {
   })
 
   it('should return ounces consumed per day for selected week', function() {
-    expect(user1.findOuncesByWeek(hydrationData, "2019/06/21")).to.deep.equal([hydrationData[0], hydrationData[1], hydrationData[2], hydrationData[3], hydrationData[4], hydrationData[5], hydrationData[6]])
+    expect(user1.findOuncesByWeek(hydrationData, "2019/06/21"))
+      /**
+       * Instead of listing these literally you can use js to reduce lines of 
+       * code with JS
+       */
+      .to.deep.equal(hydrationData.slice(0, 7))
   })
 
   it('should calculate the average number of hours slept per day', function() {
@@ -232,13 +226,17 @@ describe('User', () => {
   });
 
   it('should return hours slept per day for selected week', function() {
-    expect(user1.findHoursSleptByWeek(sleepData, "2019/06/21")).to.deep.equal([sleepData[0], sleepData[1], sleepData[2], sleepData[3], sleepData[4], sleepData[5], sleepData[6]]);
-    expect(user1.findHoursSleptByWeek(sleepData, "2019/06/22")).to.deep.equal([sleepData[1], sleepData[2], sleepData[3], sleepData[4], sleepData[5], sleepData[6], sleepData[7]]);
+    expect(user1.findHoursSleptByWeek(sleepData, "2019/06/21"))
+      .to.deep.equal(sleepData.slice(0, 7));
+    expect(user1.findHoursSleptByWeek(sleepData, "2019/06/22"))
+      .to.deep.equal(sleepData.slice(1, 8));
   });
 
   it('should return sleep quality per day for selected week', function() {
-    expect(user1.findSleepQualityByWeek(sleepData, "2019/06/21")).to.deep.equal([3.8, 4.3, 2.6, 3.1, 1.8, 3.0, 2.2]);
-    expect(user1.findSleepQualityByWeek(sleepData, "2019/06/22")).to.deep.equal([4.3, 2.6, 3.1, 1.8, 3.0, 2.2, 2.9]);
+    expect(user1.findSleepQualityByWeek(sleepData, "2019/06/21"))
+      .to.deep.equal([3.8, 4.3, 2.6, 3.1, 1.8, 3.0, 2.2]);
+    expect(user1.findSleepQualityByWeek(sleepData, "2019/06/22"))
+      .to.deep.equal([4.3, 2.6, 3.1, 1.8, 3.0, 2.2, 2.9]);
   });
 
   it('should return the average sleep quality for all users', function() {

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
-import userData from '../data/user-test-data';
+import userTestData from '../src/data/user-test-data';
 
 describe('User Repository', () => {
   let userRepository;
@@ -8,16 +8,16 @@ describe('User Repository', () => {
   let user2;
 
   beforeEach(() => {
-    userRepository = new UserRepository(userData)
-    user1 = new User(userData[0]);
-    user2 = new User(userData[1]);
+    userRepository = new UserRepository(userTestData)
+    user1 = new User(userTestData[0]);
+    user2 = new User(userTestData[1]);
   });
 
   it('should be a function', () => {
     expect(UserRepository).to.be.a('function');
   });
 
-  it('should be an instance of UserRepsoitory', => {
+  it('should be an instance of UserRepsitory', () => {
     expect(userRepository).to.be.an.instanceof(UserRepository);
   });
 

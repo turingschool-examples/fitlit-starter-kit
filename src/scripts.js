@@ -15,3 +15,12 @@ console.log('This is the JavaScript entry file - your code begins here.');
 import userData from './data/users';
 
 import UserRepository from './js/UserRepository';
+
+const users = new UserRepository(userData);
+
+const getRandomUser = () => {
+  return users.getUser(Math.floor(Math.random() * users.users.length))
+}
+
+const randomUser = getRandomUser();
+console.log(randomUser);

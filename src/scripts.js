@@ -16,11 +16,24 @@ import userData from './data/users';
 
 import UserRepository from './js/UserRepository';
 
+const userName = document.querySelector('#userName');
+const stepGoal = document.querySelector('#stepGoal');
+
 const users = new UserRepository(userData);
+let currentUser;
 
 const getRandomUser = () => {
-  return users.getUser(Math.floor(Math.random() * users.users.length))
+  currentUser = users.getUser(Math.floor(Math.random() * users.users.length));
+}
+const updateUser = () => {
+  userName.innerText = `Welcome ${currentUser.getName()}`;
+  stepGoal.innerText = `Your step goal: ${currentUser.dailyStepGoal} / Average: ${users.averageStepGoal()}`  
 }
 
-const randomUser = getRandomUser();
-console.log(randomUser);
+const start = () => {
+  getRandomUser();
+  updateUser();
+}
+
+
+window.addEventListener('load', start);

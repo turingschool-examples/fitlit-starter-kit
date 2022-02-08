@@ -55,4 +55,9 @@ describe('User', () => {
     expect(user2.userData.friends).to.deep.equal([9, 18, 24, 19]);
   })
 
+  it('should have a method to return the user first name only', () => {
+    expect(user1.returnFirstName()).to.equal('Luisa');
+    expect(user2.returnFirstName()).to.equal('Jarvis');
+  })
+
 });

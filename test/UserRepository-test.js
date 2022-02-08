@@ -35,6 +35,10 @@ describe('User Repository', () => {
         ]
       }
     )
-  })
+  });
+
+  it('should calculate the average step goal amonst all users', () => {
+    expect(userRepository.averageStepGoal()).to.equal(6700);
+  });
 
 });

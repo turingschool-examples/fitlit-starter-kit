@@ -6,8 +6,7 @@
   "scripts": {
     "start": "webpack serve",
     "build": "webpack",
-    "test": "mochapack 'test/**/*.js'",
-    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
+    "test": "mochapack 'test/**/*.js'"
   },
   "author": "Turing School of Software and Design",
   "license": "MIT",

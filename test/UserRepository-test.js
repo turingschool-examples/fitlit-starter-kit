@@ -5,11 +5,10 @@ import userData from '../src/data/users';
 
 describe('User Repository', () => {
 
-  let data1, data2;
+  let userRepository;
 
     beforeEach(() => {
-      data1 = new User(userData[0]);
-      data2 = new User(userData[1]);
+      userRepository = new UserRepository(userData);
     });
 
   it('should be a function', () => {
@@ -17,10 +16,25 @@ describe('User Repository', () => {
   });
 
   it('should hold all of the user objects', () => {
-    const repository = new UserRepository(data1);
-    expect(repository.allData[0]).to.equal(data1);
-    repository.addData(data2);
-    expect(repository.allData[1]).to.equal(data2);
+    expect(userRepository.allData).to.equal(userData);
+  });
+
+  it('should provide the user data, given the ID', () => {
+    expect(userRepository.dataByID(1)).to.deep.equal(
+       {
+        "id": 1,
+        "name": "Luisa Hane",
+        "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+        "email": "Diana.Hayes1@hotmail.com",
+        "strideLength": 4.3,
+        "dailyStepGoal": 10000,
+        "friends": [
+          16,
+          4,
+          8
+        ]
+      }
+    )
   })
 
 });

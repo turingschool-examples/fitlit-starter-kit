@@ -1,14 +1,15 @@
 class UserRepository {
   constructor(data) {
-    this.allData = [data];
+    this.allData = data;
   }
 
-  addData(data) {
-    this.allData.push(data);
-  }
-
-  dataByID(id) {
-    this.allData.find()
+  dataByID(idInput) {
+    const output = this.allData.find(data => {
+      if (data.id === idInput) {
+      return data;
+      }
+    });
+    return output;
   }
 
 }

@@ -14,8 +14,12 @@ class User {
   }
 
   firstName() {
-    
+    let fullName = this.name
+    let splitName = fullName.split(" ")
+    return splitName[0]
   }
 
 
 }
+
+export default User;

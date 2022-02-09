@@ -1,31 +1,43 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
-console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
-
-import userData from './data/users';
+import {
+  usersData,
+  sleepData,
+  activityData,
+  hydrationData
+} from './apiCalls';
 
 import UserRepository from './js/UserRepository';
+
 
 const userName = document.querySelector('#userName');
 const stepGoal = document.querySelector('#stepGoal');
 const infoCard = document.querySelector('#infoCard');
 
-const users = new UserRepository(userData);
-let currentUser;
 
-const getRandomUser = () => {
-  currentUser = users.getUser(Math.floor(Math.random() * users.users.length));
+const fetchData = () => {
+  Promise.all([usersData, sleepData, activityData, hydrationData]).then(data => {
+    handleData(data);
+  });
 }
-const updateUser = () => {
+
+const handleData = (data) => {
+  const users = new UserRepository(data[0].userData);
+  const currentUser = getRandomUser(users);
+  updateUser(currentUser, users);
+}
+
+const getRandomUser = (users) => {
+  return users.getUser(Math.floor(Math.random() * users.users.length));
+}
+
+const updateUser = (currentUser, users) => {
   let friends = `Friends: `
   userName.innerText = `Welcome ${currentUser.getName()}`;
   stepGoal.innerText = `Your step goal: ${currentUser.dailyStepGoal} / Average: ${users.averageStepGoal()}`
@@ -40,14 +52,9 @@ const updateUser = () => {
     <p>Email: ${currentUser.email}</p>
     <p>Stride Length: ${currentUser.strideLength}</p>
     <p>${friends}</p>`;
-
-  console.log(currentUser)
-}
-
-const start = () => {
-  getRandomUser();
-  updateUser();
 }
 
 
-window.addEventListener('load', start);
+
+
+window.addEventListener('load', fetchData);

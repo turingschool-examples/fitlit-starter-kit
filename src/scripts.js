@@ -10,8 +10,12 @@ import './images/turing-logo.png'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
-
-import userData from './data/users';
+import {
+  usersData,
+  sleepData,
+  activityData,
+  hydrationData
+} from './apiCalls';
 
 import UserRepository from './js/UserRepository';
 
@@ -19,13 +23,27 @@ const userName = document.querySelector('#userName');
 const stepGoal = document.querySelector('#stepGoal');
 const infoCard = document.querySelector('#infoCard');
 
-const users = new UserRepository(userData);
+
+const fetchData = () => {
+  Promise.all([usersData, sleepData, activityData, hydrationData]).then(data => {
+    handleData(data);
+  });
+}
+
+const handleData = (data) => {
+  const users = new UserRepository(data[0].userData);
+  currentUser = getRandomUser(users);
+  updateUser(currentUser, users);
+}
+
+
 let currentUser;
 
-const getRandomUser = () => {
-  currentUser = users.getUser(Math.floor(Math.random() * users.users.length));
+const getRandomUser = (users) => {
+  return users.getUser(Math.floor(Math.random() * users.users.length));
 }
-const updateUser = () => {
+
+const updateUser = (currentUser, users) => {
   let friends = `Friends: `
   userName.innerText = `Welcome ${currentUser.getName()}`;
   stepGoal.innerText = `Your step goal: ${currentUser.dailyStepGoal} / Average: ${users.averageStepGoal()}`
@@ -44,10 +62,7 @@ const updateUser = () => {
   console.log(currentUser)
 }
 
-const start = () => {
-  getRandomUser();
-  updateUser();
-}
 
 
-window.addEventListener('load', start);
+
+window.addEventListener('load', fetchData);

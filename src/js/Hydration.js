@@ -3,6 +3,16 @@ class Hydration {
     this.id = id;
     this.days = data.filter(day => day.userID === this.id);
   }
+  getAverage() {
+
+  }
+  getDaily() {
+
+  }
+  getWeekly() {
+
+  }
+
   //43 50 50 91 61 96 69
 }
 

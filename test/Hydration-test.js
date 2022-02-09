@@ -53,17 +53,17 @@ describe('Hydration', () => {
     );
   });
 
-  it('should be able to calculate average hydration for all time', () => {
+  it('should be able to calculate average intake for all time', () => {
     expect(user1.hydration.getAverage()).to.eql(62); //Math.floor
     expect(user2.hydration.getAverage()).to.eql(83);
   });
 
   it('should be able to return the amount of water drank on a given day', () => {
-    expect(user1.hydration.getDailyIntake("2019/06/16")).to.eql(69);
+    expect(user1.hydration.getDaily("2019/06/16")).to.eql(69);
   });
 
   it('should be able to calculate the total fluid intake for the past 7 days', () => {
-    expect(user1.hydration.getWeeklyIntake()).to.eql([
+    expect(user1.hydration.getWeekly()).to.eql([
       {
         userID: 1,
         date: "2019/06/16",

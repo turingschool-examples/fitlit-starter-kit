@@ -32,12 +32,9 @@ const fetchData = () => {
 
 const handleData = (data) => {
   const users = new UserRepository(data[0].userData);
-  currentUser = getRandomUser(users);
+  const currentUser = getRandomUser(users);
   updateUser(currentUser, users);
 }
-
-
-let currentUser;
 
 const getRandomUser = (users) => {
   return users.getUser(Math.floor(Math.random() * users.users.length));
@@ -58,8 +55,6 @@ const updateUser = (currentUser, users) => {
     <p>Email: ${currentUser.email}</p>
     <p>Stride Length: ${currentUser.strideLength}</p>
     <p>${friends}</p>`;
-
-  console.log(currentUser)
 }
 
 

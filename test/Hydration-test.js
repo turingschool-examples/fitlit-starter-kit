@@ -28,7 +28,7 @@ describe('Hydration', () => {
   });
 
   it('should hold an array of hydration info', () => {
-    expect(hydration.days).to.be.an('array');
+    expect(user1.hydration.days).to.be.an('array');
   });
 
   it('should be able to populate hydrationInfo array based on ID', () => {
@@ -42,8 +42,20 @@ describe('Hydration', () => {
     );
   });
 
+  it('should be able to populate hydrationInfo with different ID', () => {
+    expect(user2.hydration.days.length).to.eql(2);
+    expect(user2.hydration.days[0]).to.eql(
+      {
+        userID: 2,
+        date: "2019/06/15",
+        numOunces: 75
+      }
+    );
+  });
+
   it('should be able to calculate average hydration for all time', () => {
     expect(user1.hydration.getAverage()).to.eql(62); //Math.floor
+    expect(user2.hydration.getAverage()).to.eql(83);
   });
 
   it('should be able to return the amount of water drank on a given day', () => {

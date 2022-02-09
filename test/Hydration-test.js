@@ -24,7 +24,7 @@ describe('Hydration', () => {
   });
 
   it('should be an instance of Hydration', () => {
-    expect(hydration).to.be.an.instanceof(Hydration);
+    expect(user1.hydration).to.be.an.instanceof(Hydration);
   });
 
   it('should hold an array of hydration info', () => {

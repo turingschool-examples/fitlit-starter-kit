@@ -24,6 +24,7 @@ const userTestData = [{
     24,
     19
   ]
-}]
+}];
+
 
 export default userTestData;

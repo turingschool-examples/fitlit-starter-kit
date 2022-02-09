@@ -1,8 +1,9 @@
 import { expect } from 'chai';
 import UserRepository from '../src/js/UserRepository';
 import userTestData from '../src/data/user-test-data';
-import hydrationTestData from '../src/data/user-test-data';
+import hydrationTestData from '../src/data/hydration-test-data';
 import User from '../src/js/User';
+import Hydration from '../src/js/Hydration';
 
 describe('Hydration', () => {
   let userRepository;
@@ -42,7 +43,7 @@ describe('Hydration', () => {
   });
 
   it('should be able to calculate average hydration for all time', () => {
-    expect(user1.hydration.getAverage()).to.eql(53);
+    expect(user1.hydration.getAverage()).to.eql(62); //Math.floor
   });
 
   it('should be able to return the amount of water drank on a given day', () => {
@@ -50,7 +51,43 @@ describe('Hydration', () => {
   });
 
   it('should be able to calculate the total fluid intake for the past 7 days', () => {
-    expect();
+    expect(user1.hydration.getWeeklyIntake()).to.eql([
+      {
+        userID: 1,
+        date: "2019/06/16",
+        numOunces: 69
+      },
+      {
+        userID: 1,
+        date: "2019/06/17",
+        numOunces: 96
+      },
+      {
+        userID: 1,
+        date: "2019/06/18",
+        numOunces: 61
+      },
+      {
+        userID: 1,
+        date: "2019/06/19",
+        numOunces: 91
+      },
+      {
+        userID: 1,
+        date: "2019/06/20",
+        numOunces: 50
+      },
+      {
+        userID: 1,
+        date: "2019/06/21",
+        numOunces: 50
+      },
+      {
+        userID: 1,
+        date: "2019/06/22",
+        numOunces: 43
+      }
+    ]);
   });
 
 });

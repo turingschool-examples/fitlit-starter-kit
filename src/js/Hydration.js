@@ -13,7 +13,7 @@ class Hydration {
     return this.days.find(day => day.date === date).numOunces;
   }
   getWeekly() {
-
+    return this.days.slice(-7);
   }
 
 

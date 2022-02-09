@@ -9,8 +9,8 @@ class Hydration {
     }, 0) / this.days.length;
     return Math.floor(intakeAverage);
   }
-  getDaily() {
-
+  getDaily(date) {
+    return this.days.find(day => day.date === date).numOunces;
   }
   getWeekly() {
 

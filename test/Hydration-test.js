@@ -31,7 +31,7 @@ describe('Hydration', () => {
     expect(user1.hydration.days).to.be.an('array');
   });
 
-  it('should be able to populate hydrationInfo array based on ID', () => {
+  it('should be able to populate hydration.days array based on ID', () => {
     expect(user1.hydration.days.length).to.eql(8);
     expect(user1.hydration.days[0]).to.eql(
       {
@@ -42,7 +42,7 @@ describe('Hydration', () => {
     );
   });
 
-  it('should be able to populate hydrationInfo with different ID', () => {
+  it('should be able to populate hydration.days with different ID', () => {
     expect(user2.hydration.days.length).to.eql(2);
     expect(user2.hydration.days[0]).to.eql(
       {

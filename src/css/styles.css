@@ -29,3 +29,8 @@ header {
 header, section {
   background-color: #b92912;
 }
+
+.widgetsSection {
+  display: flex;
+  
+}

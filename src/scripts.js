@@ -14,13 +14,21 @@ import {
 } from './apiCalls';
 import Hydration from './js/Hydration';
 import UserRepository from './js/UserRepository';
+import Sleep from './js/Sleep';
 
 
 const userName = document.querySelector('#userName');
 const stepGoal = document.querySelector('#stepGoal');
 const infoCard = document.querySelector('#infoCard');
 const statsSection = document.querySelector('#statsSection');
-
+const todaysIntake = document.querySelector('#todaysIntake');
+const weeklyIntake = document.querySelector('#weeklyIntake');
+const todaysSleepHours = document.querySelector('#todaysSleepHours');
+const todaysSleepQuality = document.querySelector('#todaysSleepQuality');
+const weeklySleepHours = document.querySelector('#weeklySleepHours');
+const weeklySleepQuality = document.querySelector('#weeklySleepQuality');
+const avgSleepHours = document.querySelector('#avgSleepHours');
+const avgSleepQuality = document.querySelector('#avgSleepQuality');
 
 const fetchData = () => {
   Promise.all([usersData, sleepData, activityData, hydrationData]).then(data => {
@@ -32,6 +40,7 @@ const handleData = (data) => {
   const users = new UserRepository(data[0].userData);
   const currentUser = getRandomUser(users);
   currentUser.hydration = new Hydration(data[3].hydrationData, currentUser.id);
+  currentUser.sleep = new Sleep(data[1].sleepData, currentUser.id);
   console.log(users.users.find(user => user.id === currentUser.id))
   updateUser(currentUser, users);
   displayStats(currentUser);
@@ -59,14 +68,20 @@ const updateUser = (currentUser, users) => {
 }
 
 const displayStats = (currentUser) => {
-  console.log(currentUser.hydration.days)
-  statsSection.innerHTML = `
-  <article id="todaysIntake">
-    <p>Your water intake for today is: ${currentUser.hydration.getDaily(currentUser.hydration.days[currentUser.hydration.days.length - 1].date)}
-  </article>`
-let weeklyIntake = document.createElement('article')
-currentUser.hydration.getWeekly().forEach(day => weeklyIntake.innerHTML += `<p>On ${day.date} you drank: ${day.numOunces} fl oz</p>`)
-  statsSection.appendChild(weeklyIntake);
+  todaysIntake.innerHTML +=
+  `<p>Your water intake for today is: ${currentUser.hydration.getDaily(currentUser.hydration.days[currentUser.hydration.days.length - 1].date)}`
+  currentUser.hydration.getWeekly().forEach(day => weeklyIntake.innerHTML += `<p>On ${day.date} you drank: ${day.numOunces} fl oz</p>`);
+  avgSleepHours.innerHTML +=
+  `<p>Your total sleep hour average is: ${currentUser.sleep.getAverage()}`
+  avgSleepQuality.innerHTML +=
+  `<p>Your total sleep quality average is: ${currentUser.sleep.getAverageQuality()}`
+  todaysSleepHours.innerHTML +=
+  `<p>You slept ${currentUser.sleep.getSleep(currentUser.sleep.days[currentUser.sleep.days.length - 1].date)} hours last night.`
+  todaysSleepQuality.innerHTML +=
+  `<p>Your quality last night was: ${currentUser.sleep.getSleepQuality(currentUser.sleep.days[currentUser.sleep.days.length - 1].date)}.`
+  currentUser.sleep.getWeekSleep(currentUser.sleep.days[currentUser.sleep.days.length - 8].date).forEach(day => weeklySleepHours.innerHTML += `<p>On ${day.date}, you slept ${day.hoursSlept} hours.`);
+  currentUser.sleep.getWeekQuality(currentUser.sleep.days[currentUser.sleep.days.length - 8].date).forEach(day => weeklySleepQuality.innerHTML += `<p>On ${day.date}, your sleep quality was: ${day.sleepQuality}.`);
+
 }
 
 

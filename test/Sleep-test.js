@@ -192,4 +192,9 @@ describe('Sleep', () => {
         }
       ]);
   });
+
+  it('should get the average of all the users', () => {
+    expect(user.sleep.getAverageAll()).to.be.eql(7.4)
+  }
+);
 })

@@ -50,13 +50,13 @@ describe('Sleep', () => {
   });
 
   it('should be able to return the sleep quality on a given day', () => {
-    expect(user.sleep.getSleep('2019/06/25')).to.be.eql(3.7);
+    expect(user.sleep.getSleepQuality('2019/06/25')).to.be.eql(3.7);
   });
 
   it('should be able to return the sleep quality on other given days', () => {
-    expect(user.sleep.getSleep(sleepTestData[10].date)).to.be.eql(sleepTestData[10].sleepQuality);
-    expect(user.sleep.getSleep(sleepTestData[4].date)).to.be.eql(sleepTestData[4].sleepQuality);
-    expect(user.sleep.getSleep(sleepTestData[18].date)).to.be.eql(sleepTestData[18].sleepQuality);
+    expect(user.sleep.getSleepQuality(sleepTestData[10].date)).to.be.eql(sleepTestData[10].sleepQuality);
+    expect(user.sleep.getSleepQuality(sleepTestData[4].date)).to.be.eql(sleepTestData[4].sleepQuality);
+    expect(user.sleep.getSleepQuality(sleepTestData[17].date)).to.be.eql(sleepTestData[17].sleepQuality);
   });
 
   it('should be able to return the amount of time slept each day for a week when given a day', () => {
@@ -122,6 +122,73 @@ describe('Sleep', () => {
         {
           "date":"2019/06/23",
           "hoursSlept":8,
+        }
+      ]);
+  });
+
+  it('should be able to return the quality of sleep each day for a week when given a day', () => {
+    expect(user.sleep.getWeekQuality('2019/06/15')).to.be.eql(
+      [
+        {
+          "date":"2019/06/15",
+          "sleepQuality":2.2
+        },
+        {
+          "date":"2019/06/16",
+          "sleepQuality":3.8
+        },
+        {
+          "date":"2019/06/17",
+          "sleepQuality":2.6
+        },
+        {
+          "date":"2019/06/18",
+          "sleepQuality":3.1
+        },
+        {
+          "date":"2019/06/19",
+          "sleepQuality":1.2
+        },
+        {
+          "date":"2019/06/20",
+          "sleepQuality":1.2
+        },
+        {
+          "date":"2019/06/21",
+          "sleepQuality":4.2
+        }
+      ]);
+  });
+
+  it('should be able to return the quality of sleep each day for a different week when given a day', () => {
+    expect(user.sleep.getWeekQuality('2019/06/17')).to.be.eql([
+        {
+          "date":"2019/06/17",
+          "sleepQuality":2.6
+        },
+        {
+          "date":"2019/06/18",
+          "sleepQuality":3.1
+        },
+        {
+          "date":"2019/06/19",
+          "sleepQuality":1.2
+        },
+        {
+          "date":"2019/06/20",
+          "sleepQuality":1.2
+        },
+        {
+          "date":"2019/06/21",
+          "sleepQuality":4.2
+        },
+        {
+          "date":"2019/06/22",
+          "sleepQuality":3,
+        },
+        {
+          "date":"2019/06/23",
+          "sleepQuality":4.9,
         }
       ]);
   });

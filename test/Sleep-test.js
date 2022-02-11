@@ -90,8 +90,7 @@ describe('Sleep', () => {
           "date":"2019/06/21",
           "hoursSlept":7.8
         }
-      ];
-    );
+      ]);
   });
 
   it('should be able to return the amount of time slept each day for a different week when given a day', () => {
@@ -115,7 +114,7 @@ describe('Sleep', () => {
         {
           "date":"2019/06/21",
           "hoursSlept":7.8
-        }
+        },
         {
           "date":"2019/06/22",
           "hoursSlept":7,

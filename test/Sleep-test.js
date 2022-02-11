@@ -7,12 +7,12 @@ import Sleep from '../src/js/Sleep';
 
 
 describe('Sleep', () => {
-  let users, user, sleep;
+  let users, user;
 
   beforeEach('setup test',() => {
     users = new UserRepository(userTestData);
     user = new User(userTestData[0]);
-    sleep = new Sleep(sleepTestData, user.id);
+    user.sleep = new Sleep(sleepTestData, user.id);
   });
 
   it('should be a function', () => {
@@ -20,47 +20,47 @@ describe('Sleep', () => {
   });
 
   it('should be an instance of Sleep', () => {
-    expect(sleep).to.be.an.instanceof(Sleep);
+    expect(user.sleep).to.be.an.instanceof(Sleep);
   });
 
   it('should be able to store sleep data', () => {
-    expect(sleep.days).to.be.an('array');
+    expect(user.sleep.days).to.be.an('array');
   });
 
   it('should store the given user\'s sleep data', () => {
-    expect(sleep.days).to.be.eql(sleepTestData.slice(2));
+    expect(user.sleep.days).to.be.eql(sleepTestData.slice(2));
   });
 
   it('should be able to return the average amount of time slept of all time', () => {
-    expect(sleep.getAverage()).to.be.eql(7.6);
+    expect(user.sleep.getAverage()).to.be.eql(7.6);
   });
 
   it('should be able to return the average amount of sleep quality of all time', () => {
-    expect(sleep.getAverageQuality()).to.be.eql(2.9);
+    expect(user.sleep.getAverageQuality()).to.be.eql(2.9);
   });
 
   it('should be able to return the amount of time slept on a given day', () => {
-    expect(sleep.getSleep('2019/06/25')).to.be.eql(5.1);
+    expect(user.sleep.getSleep('2019/06/25')).to.be.eql(5.1);
   });
 
   it('should be able to return the amount of time slept on other given days', () => {
-    expect(sleep.getSleep('2019/06/26')).to.be.eql(7.7);
-    expect(sleep.getSleep('2019/06/23')).to.be.eql(8);
-    expect(sleep.getSleep('2019/06/18')).to.be.eql(10.4);
+    expect(user.sleep.getSleep('2019/06/26')).to.be.eql(7.7);
+    expect(user.sleep.getSleep('2019/06/23')).to.be.eql(8);
+    expect(user.sleep.getSleep('2019/06/18')).to.be.eql(10.4);
   });
 
   it('should be able to return the sleep quality on a given day', () => {
-    expect(sleep.getSleep('2019/06/25')).to.be.eql(3.7);
+    expect(user.sleep.getSleep('2019/06/25')).to.be.eql(3.7);
   });
 
   it('should be able to return the sleep quality on other given days', () => {
-    expect(sleep.getSleep(sleepTestData[10].date)).to.be.eql(sleepTestData[10].sleepQuality);
-    expect(sleep.getSleep(sleepTestData[4].date)).to.be.eql(sleepTestData[4].sleepQuality);
-    expect(sleep.getSleep(sleepTestData[18].date)).to.be.eql(sleepTestData[18].sleepQuality);
+    expect(user.sleep.getSleep(sleepTestData[10].date)).to.be.eql(sleepTestData[10].sleepQuality);
+    expect(user.sleep.getSleep(sleepTestData[4].date)).to.be.eql(sleepTestData[4].sleepQuality);
+    expect(user.sleep.getSleep(sleepTestData[18].date)).to.be.eql(sleepTestData[18].sleepQuality);
   });
 
   it('should be able to return the amount of time slept each day for a week when given a day', () => {
-    expect(sleep.getWeekSleep('2019/06/15')).to.be.eql(
+    expect(user.sleep.getWeekSleep('2019/06/15')).to.be.eql(
       [
         {
           "date":"2019/06/15",
@@ -95,7 +95,7 @@ describe('Sleep', () => {
   });
 
   it('should be able to return the amount of time slept each day for a different week when given a day', () => {
-    expect(sleep.getWeekSleep('2019/06/17')).to.be.eql([
+    expect(user.sleep.getWeekSleep('2019/06/17')).to.be.eql([
         {
           "date":"2019/06/17",
           "hoursSlept":8

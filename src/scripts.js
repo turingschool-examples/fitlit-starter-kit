@@ -12,13 +12,14 @@ import {
   activityData,
   hydrationData
 } from './apiCalls';
-
+import Hydration from './js/Hydration';
 import UserRepository from './js/UserRepository';
 
 
 const userName = document.querySelector('#userName');
 const stepGoal = document.querySelector('#stepGoal');
 const infoCard = document.querySelector('#infoCard');
+const statsSection = document.querySelector('#statsSection');
 
 
 const fetchData = () => {
@@ -30,7 +31,10 @@ const fetchData = () => {
 const handleData = (data) => {
   const users = new UserRepository(data[0].userData);
   const currentUser = getRandomUser(users);
+  currentUser.hydration = new Hydration(data[3].hydrationData, currentUser.id);
+  console.log(users.users.find(user => user.id === currentUser.id))
   updateUser(currentUser, users);
+  displayStats(currentUser);
 }
 
 const getRandomUser = (users) => {
@@ -54,7 +58,19 @@ const updateUser = (currentUser, users) => {
     <p>${friends}</p>`;
 }
 
+const displayStats = (currentUser) => {
+  console.log(currentUser.hydration.days)
+  statsSection.innerHTML = `
+  <article id="todaysIntake">
+    <p>Your water intake for today is: ${currentUser.hydration.getDaily(currentUser.hydration.days[currentUser.hydration.days.length - 1].date)}
+  </article>`
+let weeklyIntake = document.createElement('article')
+currentUser.hydration.getWeekly().forEach(day => weeklyIntake.innerHTML += `<p>On ${day.date} you drank: ${day.numOunces} fl oz</p>`)
+  statsSection.appendChild(weeklyIntake);
+}
 
 
 
-window.addEventListener('load', fetchData);
+
+
+window.onload = fetchData;

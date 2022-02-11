@@ -1,6 +1,13 @@
 class Sleep {
   constructor(data, userId) {
     this.days = data.filter(day => day.userID === userId);
+    this.averageAll = 0
+
+    data.forEach(day => {
+      this.averageAll += day.hoursSlept;
+    })
+
+    this.averageAll = parseFloat((this.averageAll/ data.length).toFixed(1))
   }
   getAverage() {
     let result = this.days.reduce((acc, curr) => {
@@ -45,6 +52,9 @@ class Sleep {
       result = result.map(day => ({date: day.date, sleepQuality: day.sleepQuality}))
     }
     return result;
+  }
+  getAverageAll() {
+    return this.averageAll;
   }
 }
 

@@ -15,7 +15,8 @@ import {
 import Hydration from './js/Hydration';
 import UserRepository from './js/UserRepository';
 import Sleep from './js/Sleep';
-
+import charts from './js/Charts';
+import Chart from 'chart.js/auto';
 
 const userName = document.querySelector('#userName');
 const stepGoal = document.querySelector('#stepGoal');
@@ -29,6 +30,8 @@ const weeklySleepHours = document.querySelector('#weeklySleepHours');
 const weeklySleepQuality = document.querySelector('#weeklySleepQuality');
 const avgSleepHours = document.querySelector('#avgSleepHours');
 const avgSleepQuality = document.querySelector('#avgSleepQuality');
+// const todaysHydrationChart = document.querySelector('#todaysHydrationChart');
+// todaysIntakeChart = document.querySelector('#todaysIntakeChart');
 
 const fetchData = () => {
   Promise.all([usersData, sleepData, activityData, hydrationData]).then(data => {
@@ -41,9 +44,17 @@ const handleData = (data) => {
   const currentUser = getRandomUser(users);
   currentUser.hydration = new Hydration(data[3].hydrationData, currentUser.id);
   currentUser.sleep = new Sleep(data[1].sleepData, currentUser.id);
-  console.log(users.users.find(user => user.id === currentUser.id))
+
   updateUser(currentUser, users);
   displayStats(currentUser);
+  makeCharts(currentUser);
+
+}
+
+const makeCharts = (currentUser) => {
+  let todaysIntakeChartConfig = charts.todaysIntakeChart(currentUser);
+  let todaysIntakeChart = document.querySelector('#todaysIntakeChart');
+  let todaysIntakeCanvas = new Chart(todaysIntakeChart, todaysIntakeChartConfig);
 }
 
 const getRandomUser = (users) => {

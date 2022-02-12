@@ -7,17 +7,15 @@
   <body>
     <header>
       <h2>FitLit</h2>
-      <section>
-        <h1 id="userName">Welcome User</h1>
-        <p id="stepGoal">Your step goal: / Average: </p>
-        <img id="userLogo" />
+      <h1 id="userName">Welcome User</h1>
+      <p id="stepGoal">Your step goal: / Average: </p>
+      <section class="user-container"><img id="userLogo" />
+        <section class="info-card hidden" id="infoCard">
+        </section>
       </section>
     </header>
     <main>
-      <section id="infoCard">
-        <!-- User information goes here -->
-      </section>
-      <section id="statsSection">
+      <section class="stats-section" id="statsSection">
         <article id="todaysIntake"></article>
         <article id="weeklyIntake"></article>
         <article id="todaysSleepHours"></article>
@@ -29,13 +27,11 @@
       </section>
       <section id="competeSection">
       </section>
-      <section id="weatherSection">
-      </section>
-      <section id="improveSection">
+      <section class="widgets-section">
+        <article id="weatherSection"></article>
+        <article id="improveSection"></article>
       </section>
     </main>
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
 
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>

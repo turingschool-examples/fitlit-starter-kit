@@ -1,5 +1,62 @@
+/* Box sizing rules */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  background: rgb(52,52,52);
+  background: radial-gradient(circle, rgba(52,52,52,1) 0%, rgba(0,0,0,1) 100%);
   background-repeat: no-repeat;
   height: 100%;
+  color: white;
+  height: 100vh;
+  width: 100vw;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 10%;
+}
+
+.user-container {
+  width: 50px;
+  height: 50px;
+  background-color: blue;
+}
+
+.user-container:hover .info-card {
+  display: block;
+}
+
+header, article {
+  background-color: #b92912;
+}
+
+.stats-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.stats-section > article {
+  margin: auto 1em;
+  border-radius: 3px;
+  padding: 1em;
+}
+
+.widgets-section {
+  display: flex;
+
 }

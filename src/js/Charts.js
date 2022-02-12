@@ -21,18 +21,54 @@ let todaysIntakeChart = (currentUser) => {
 };
 
 let weeklyIntakeChart = (currentUser) => {
-
+  let hydration = currentUser.hydration;
+  let lastWeekDates = hydration.getWeekly().map(day => day.date);
+  let weeklyIntake = hydration.getWeekly().map(day => day.numOunces);
+  return {
+    type: 'line',
+    data: {
+      labels: lastWeekDates,
+      datasets:[{
+        label: `Number of Ounces`,
+        data: weeklyIntake,
+        borderColor: 'blue'
+      },
+      {
+        label: `Average`,
+        data: lastWeekDates.map(day => hydration.getAverage()),
+        borderColor: 'black'
+      }]
+    },
+    options: {}
+  }
 }
 
-let todaysSleepHoursChart = (currentUser) => {}
-let todaysSleepHoursQuality = (currentUser) => {}
-let weeklySleepHoursChart = (currentUser) => {}
-let weeklySleepHoursQuality = (currentUser) => {}
-let avgSleepHoursChart = (currentUser) => {}
-let avgSleepHoursQuality = (currentUser) => {}
+// let todaysSleepHoursChart = (currentUser) => {
+//
+// }
+//
+// let todaysSleepHoursQualityChart = (currentUser) => {
+//
+// }
+//
+// let weeklySleepHoursChart = (currentUser) => {
+//
+// }
+//
+// let weeklySleepHoursQualityChart = (currentUser) => {
+//
+// }
+//
+// let avgSleepHoursChart = (currentUser) => {
+//
+// }
+//
+// let avgSleepHoursQualityChart = (currentUser) => {
+//
+// }
 
 
 
 export default {
-  todaysIntakeChart,
+  todaysIntakeChart, weeklyIntakeChart
 }

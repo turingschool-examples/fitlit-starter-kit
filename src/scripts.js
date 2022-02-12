@@ -55,6 +55,34 @@ const makeCharts = (currentUser) => {
   let todaysIntakeChartConfig = charts.todaysIntakeChart(currentUser);
   let todaysIntakeChart = document.querySelector('#todaysIntakeChart');
   let todaysIntakeCanvas = new Chart(todaysIntakeChart, todaysIntakeChartConfig);
+
+  let weeklyIntakeChartConfig = charts.weeklyIntakeChart(currentUser);
+  let weeklyIntakeChart = document.querySelector('#weeklyIntakeChart');
+  let weeklyIntakeCanvas = new Chart(weeklyIntakeChart, weeklyIntakeChartConfig);
+
+  // let todaysSleepHoursChartConfig = charts.todaysSleepHoursChart(currentUser);
+  // let todaysSleepHoursChart = document.querySelector('#todaysSleepHours');
+  // let todaysSleepHoursCanvas = new Chart(todaysSleepHoursChart, todaysSleepHoursChartConfig);
+  //
+  // let todaysSleepHoursQualityChartConfig = charts.todaysSleepHoursQualityChart(currentUser);
+  // let todaysSleepHoursQualityChart = document.querySelector('#todaysSleepHoursQuality');
+  // let todaysSleepHoursQualityCanvas = new Chart(todaysSleepHoursQualityChart, todaysSleepHoursQualityChartConfig);
+  //
+  // let weeklySleepHoursChartConfig = charts.weeklySleepHoursChart(currentUser);
+  // let weeklySleepHoursChart = document.querySelector('#weeklySleepHours');
+  // let weeklySleepHoursCanvas = new Chart(weeklySleepHoursChart, weeklySleepHoursChartConfig);
+  //
+  // let weeklySleepHoursQualityChartConfig = charts.weeklySleepHoursQualityChart(currentUser);
+  // let weeklySleepHoursQualityChart = document.querySelector('#weeklySleepHoursQuality');
+  // let weeklySleepHoursQualityCanvas = new Chart(weeklySleepHoursQualityChart, weeklySleepHoursQualityChartConfig);
+  //
+  // let avgSleepHoursChartConfig = charts.avgSleepHoursChart(currentUser);
+  // let avgSleepHoursChart = document.querySelector('#avgSleepHours');
+  // let avgSleepHoursCanvas = new Chart(avgSleepHoursChart, avgSleepHoursChartConfig);
+  //
+  // let avgSleepHoursQualityChartConfig = charts.avgSleepHoursQualityChart(currentUser);
+  // let avgSleepHoursQualityChart = document.querySelector('#avgSleepHoursQuality');
+  // let avgSleepHoursQualityCanvas = new Chart(avgSleepHoursQualityChart, avgSleepHoursQualityChartConfig);
 }
 
 const getRandomUser = (users) => {

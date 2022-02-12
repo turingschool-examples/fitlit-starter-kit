@@ -43,9 +43,26 @@ let weeklyIntakeChart = (currentUser) => {
   }
 }
 
-// let todaysSleepHoursChart = (currentUser) => {
-//
-// }
+let todaysSleepHoursChart = (currentUser) => {
+  let sleep = currentUser.sleep;
+  let lastRecordDate = sleep.days[sleep.days.length - 1].date;
+  let todaysSleepHours = sleep.getSleep(lastRecordDate)
+  return {
+    type: 'doughnut',
+    data: {
+      labels: ['Total Sleep', 'Missing Sleep'],
+      datasets:[{
+        label: `Today's Sleep`,
+        data: sleep.getAverage() > todaysSleepHours ? [todaysSleepHours, sleep.getAverage() - todaysSleepHours]
+                 : [todaysSleepHours],
+        backgroundColor: [
+          'blue', 'green'
+        ],
+      }]
+    },
+    options: {}
+  }
+}
 //
 // let todaysSleepHoursQualityChart = (currentUser) => {
 //
@@ -70,5 +87,5 @@ let weeklyIntakeChart = (currentUser) => {
 
 
 export default {
-  todaysIntakeChart, weeklyIntakeChart
+  todaysIntakeChart, weeklyIntakeChart, todaysSleepHoursChart
 }

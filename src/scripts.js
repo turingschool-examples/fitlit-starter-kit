@@ -60,10 +60,10 @@ const makeCharts = (currentUser) => {
   let weeklyIntakeChart = document.querySelector('#weeklyIntakeChart');
   let weeklyIntakeCanvas = new Chart(weeklyIntakeChart, weeklyIntakeChartConfig);
 
-  // let todaysSleepHoursChartConfig = charts.todaysSleepHoursChart(currentUser);
-  // let todaysSleepHoursChart = document.querySelector('#todaysSleepHours');
-  // let todaysSleepHoursCanvas = new Chart(todaysSleepHoursChart, todaysSleepHoursChartConfig);
-  //
+  let todaysSleepHoursChartConfig = charts.todaysSleepHoursChart(currentUser);
+  let todaysSleepHoursChart = document.querySelector('#todaysSleepHoursChart');
+  let todaysSleepHoursCanvas = new Chart(todaysSleepHoursChart, todaysSleepHoursChartConfig);
+
   // let todaysSleepHoursQualityChartConfig = charts.todaysSleepHoursQualityChart(currentUser);
   // let todaysSleepHoursQualityChart = document.querySelector('#todaysSleepHoursQuality');
   // let todaysSleepHoursQualityCanvas = new Chart(todaysSleepHoursQualityChart, todaysSleepHoursQualityChartConfig);

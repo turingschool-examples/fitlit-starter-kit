@@ -69,7 +69,7 @@ const updateUser = (currentUser, users) => {
 
 const displayStats = (currentUser) => {
   todaysIntake.innerHTML +=
-  `<p>Your water intake for today is: ${currentUser.hydration.getDaily(currentUser.hydration.days[currentUser.hydration.days.length - 1].date)}`
+  `<p>Your water intake for today is: ${currentUser.hydration.getDaily(currentUser.hydration.days[currentUser.hydration.days.length - 1].date)} fl oz`
   currentUser.hydration.getWeekly().forEach(day => weeklyIntake.innerHTML += `<p>On ${day.date} you drank: ${day.numOunces} fl oz</p>`);
   avgSleepHours.innerHTML +=
   `<p>Your total sleep hour average is: ${currentUser.sleep.getAverage()}`
@@ -78,7 +78,7 @@ const displayStats = (currentUser) => {
   todaysSleepHours.innerHTML +=
   `<p>You slept ${currentUser.sleep.getSleep(currentUser.sleep.days[currentUser.sleep.days.length - 1].date)} hours last night.`
   todaysSleepQuality.innerHTML +=
-  `<p>Your quality last night was: ${currentUser.sleep.getSleepQuality(currentUser.sleep.days[currentUser.sleep.days.length - 1].date)}.`
+  `<p>Your sleep quality last night was: ${currentUser.sleep.getSleepQuality(currentUser.sleep.days[currentUser.sleep.days.length - 1].date)}.`
   currentUser.sleep.getWeekSleep(currentUser.sleep.days[currentUser.sleep.days.length - 8].date).forEach(day => weeklySleepHours.innerHTML += `<p>On ${day.date}, you slept ${day.hoursSlept} hours.`);
   currentUser.sleep.getWeekQuality(currentUser.sleep.days[currentUser.sleep.days.length - 8].date).forEach(day => weeklySleepQuality.innerHTML += `<p>On ${day.date}, your sleep quality was: ${day.sleepQuality}.`);
 

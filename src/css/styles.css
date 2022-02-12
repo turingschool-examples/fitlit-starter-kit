@@ -4,6 +4,10 @@
   margin: 0;
 }
 
+.hidden {
+  display: none;
+}
+
 body, html {
   background: rgb(52,52,52);
   background: radial-gradient(circle, rgba(52,52,52,1) 0%, rgba(0,0,0,1) 100%);
@@ -26,11 +30,33 @@ header {
   height: 10%;
 }
 
-header, section {
+.user-container {
+  width: 50px;
+  height: 50px;
+  background-color: blue;
+}
+
+.user-container:hover .info-card {
+  display: block;
+}
+
+header, article {
   background-color: #b92912;
 }
 
-.widgetsSection {
+.stats-section {
   display: flex;
-  
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.stats-section > article {
+  margin: auto 1em;
+  border-radius: 3px;
+  padding: 1em;
+}
+
+.widgets-section {
+  display: flex;
+
 }

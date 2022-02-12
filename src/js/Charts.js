@@ -1,6 +1,3 @@
-
-
-
 let todaysIntakeChart = (currentUser) => {
   let hydration = currentUser.hydration;
   let lastRecordDate = hydration.days[hydration.days.length - 1].date;
@@ -22,6 +19,19 @@ let todaysIntakeChart = (currentUser) => {
     options: {}
   }
 };
+
+let weeklyIntakeChart = (currentUser) => {
+
+}
+
+let todaysSleepHoursChart = (currentUser) => {}
+let todaysSleepHoursQuality = (currentUser) => {}
+let weeklySleepHoursChart = (currentUser) => {}
+let weeklySleepHoursQuality = (currentUser) => {}
+let avgSleepHoursChart = (currentUser) => {}
+let avgSleepHoursQuality = (currentUser) => {}
+
+
 
 export default {
   todaysIntakeChart,

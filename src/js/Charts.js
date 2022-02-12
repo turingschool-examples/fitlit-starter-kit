@@ -50,7 +50,7 @@ let todaysSleepHoursChart = (currentUser) => {
   return {
     type: 'doughnut',
     data: {
-      labels: ['Total Sleep', 'Missing Sleep'],
+      labels: ['Total Sleep', 'Sleep Deficiency'],
       datasets:[{
         label: `Today's Sleep`,
         data: sleep.getAverage() > todaysSleepHours ? [todaysSleepHours, sleep.getAverage() - todaysSleepHours]
@@ -63,19 +63,74 @@ let todaysSleepHoursChart = (currentUser) => {
     options: {}
   }
 }
-//
-// let todaysSleepHoursQualityChart = (currentUser) => {
-//
-// }
-//
-// let weeklySleepHoursChart = (currentUser) => {
-//
-// }
-//
-// let weeklySleepHoursQualityChart = (currentUser) => {
-//
-// }
-//
+
+let todaysSleepQualityChart = (currentUser) => {
+  let sleep = currentUser.sleep;
+  let lastRecordDate = sleep.days[sleep.days.length - 1].date;
+  let todaysSleepQuality = sleep.getSleepQuality(lastRecordDate)
+  return {
+    type: 'doughnut',
+    data: {
+      labels: ['Sleep Quality', 'Sleep Quality Deficiency'],
+      datasets:[{
+        label: `Today's Sleep Quality`,
+        data: sleep.getAverageQuality() > todaysSleepQuality ? [todaysSleepQuality, sleep.getAverageQuality() - todaysSleepQuality]
+                 : [todaysSleepQuality],
+        backgroundColor: [
+          'blue', 'green'
+        ],
+      }]
+    },
+    options: {}
+  }
+}
+
+let weeklySleepHoursChart = (currentUser) => {
+  let sleep = currentUser.sleep;
+  let lastWeekDates = sleep.getWeekSleep(sleep.days[sleep.days.length - 8].date).map(day => day.date);
+  let weeklySleep = sleep.getWeekSleep(sleep.days[sleep.days.length - 8].date).map(day => day.hoursSlept);
+  return {
+    type: 'line',
+    data: {
+      labels: lastWeekDates,
+      datasets:[{
+        label: `Number of Hours Slept`,
+        data: weeklySleep,
+        borderColor: 'blue'
+      },
+      {
+        label: `Average`,
+        data: lastWeekDates.map(day => sleep.getAverage()),
+        borderColor: 'black'
+      }]
+    },
+    options: {}
+  }
+}
+
+let weeklySleepQualityChart = (currentUser) => {
+  let sleep = currentUser.sleep;
+  let lastWeekDates = sleep.getWeekQuality(sleep.days[sleep.days.length - 8].date).map(day => day.date);
+  let weeklySleepQuality = sleep.getWeekQuality(sleep.days[sleep.days.length - 8].date).map(day => day.sleepQuality);
+  return {
+    type: 'line',
+    data: {
+      labels: lastWeekDates,
+      datasets:[{
+        label: `Weekly Sleep Quality`,
+        data: weeklySleepQuality,
+        borderColor: 'blue'
+      },
+      {
+        label: `Average`,
+        data: lastWeekDates.map(day => sleep.getAverageQuality()),
+        borderColor: 'black'
+      }]
+    },
+    options: {}
+  }
+}
+
 // let avgSleepHoursChart = (currentUser) => {
 //
 // }
@@ -87,5 +142,13 @@ let todaysSleepHoursChart = (currentUser) => {
 
 
 export default {
-  todaysIntakeChart, weeklyIntakeChart, todaysSleepHoursChart
+  todaysIntakeChart,
+  weeklyIntakeChart,
+  todaysSleepHoursChart,
+  todaysSleepQualityChart,
+  weeklySleepHoursChart,
+  weeklySleepQualityChart,
+  // avgSleepHoursChart,
+  // avgSleepHoursQualityChart
+
 }

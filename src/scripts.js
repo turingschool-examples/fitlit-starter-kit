@@ -64,25 +64,25 @@ const makeCharts = (currentUser) => {
   let todaysSleepHoursChart = document.querySelector('#todaysSleepHoursChart');
   let todaysSleepHoursCanvas = new Chart(todaysSleepHoursChart, todaysSleepHoursChartConfig);
 
-  // let todaysSleepHoursQualityChartConfig = charts.todaysSleepHoursQualityChart(currentUser);
-  // let todaysSleepHoursQualityChart = document.querySelector('#todaysSleepHoursQuality');
-  // let todaysSleepHoursQualityCanvas = new Chart(todaysSleepHoursQualityChart, todaysSleepHoursQualityChartConfig);
-  //
-  // let weeklySleepHoursChartConfig = charts.weeklySleepHoursChart(currentUser);
-  // let weeklySleepHoursChart = document.querySelector('#weeklySleepHours');
-  // let weeklySleepHoursCanvas = new Chart(weeklySleepHoursChart, weeklySleepHoursChartConfig);
-  //
-  // let weeklySleepHoursQualityChartConfig = charts.weeklySleepHoursQualityChart(currentUser);
-  // let weeklySleepHoursQualityChart = document.querySelector('#weeklySleepHoursQuality');
-  // let weeklySleepHoursQualityCanvas = new Chart(weeklySleepHoursQualityChart, weeklySleepHoursQualityChartConfig);
-  //
+  let todaysSleepQualityChartConfig = charts.todaysSleepQualityChart(currentUser);
+  let todaysSleepQualityChart = document.querySelector('#todaysSleepQualityChart');
+  let todaysSleepQualityCanvas = new Chart(todaysSleepQualityChart, todaysSleepQualityChartConfig);
+
+  let weeklySleepHoursChartConfig = charts.weeklySleepHoursChart(currentUser);
+  let weeklySleepHoursChart = document.querySelector('#weeklySleepHoursChart');
+  let weeklySleepHoursCanvas = new Chart(weeklySleepHoursChart, weeklySleepHoursChartConfig);
+
+  let weeklySleepQualityChartConfig = charts.weeklySleepQualityChart(currentUser);
+  let weeklySleepQualityChart = document.querySelector('#weeklySleepQualityChart');
+  let weeklySleepQualityCanvas = new Chart(weeklySleepQualityChart, weeklySleepQualityChartConfig);
+
   // let avgSleepHoursChartConfig = charts.avgSleepHoursChart(currentUser);
   // let avgSleepHoursChart = document.querySelector('#avgSleepHours');
   // let avgSleepHoursCanvas = new Chart(avgSleepHoursChart, avgSleepHoursChartConfig);
   //
-  // let avgSleepHoursQualityChartConfig = charts.avgSleepHoursQualityChart(currentUser);
-  // let avgSleepHoursQualityChart = document.querySelector('#avgSleepHoursQuality');
-  // let avgSleepHoursQualityCanvas = new Chart(avgSleepHoursQualityChart, avgSleepHoursQualityChartConfig);
+  // let avgSleepQualityChartConfig = charts.avgSleepQualityChart(currentUser);
+  // let avgSleepQualityChart = document.querySelector('#avgSleepQuality');
+  // let avgSleepQualityCanvas = new Chart(avgSleepQualityChart, avgSleepQualityChartConfig);
 }
 
 const getRandomUser = (users) => {

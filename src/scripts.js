@@ -76,10 +76,10 @@ const makeCharts = (currentUser) => {
   let weeklySleepQualityChart = document.querySelector('#weeklySleepQualityChart');
   let weeklySleepQualityCanvas = new Chart(weeklySleepQualityChart, weeklySleepQualityChartConfig);
 
-  // let avgSleepHoursChartConfig = charts.avgSleepHoursChart(currentUser);
-  // let avgSleepHoursChart = document.querySelector('#avgSleepHours');
-  // let avgSleepHoursCanvas = new Chart(avgSleepHoursChart, avgSleepHoursChartConfig);
-  //
+  let avgSleepHoursChartConfig = charts.avgSleepHoursChart(currentUser);
+  let avgSleepHoursChart = document.querySelector('#avgSleepHoursChart');
+  let avgSleepHoursCanvas = new Chart(avgSleepHoursChart, avgSleepHoursChartConfig);
+
   // let avgSleepQualityChartConfig = charts.avgSleepQualityChart(currentUser);
   // let avgSleepQualityChart = document.querySelector('#avgSleepQuality');
   // let avgSleepQualityCanvas = new Chart(avgSleepQualityChart, avgSleepQualityChartConfig);

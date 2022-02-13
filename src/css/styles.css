@@ -33,7 +33,7 @@ header {
   background-color: #1A1B41;
 }
 
-main {
+main, .user-container {
   color: #1A1B41;
 }
 
@@ -69,7 +69,7 @@ canvas {
 .info-card {
   position: absolute;
   right: 0;
-  background-color: gray;
+  background-color: #F1FFE7;
   padding: 1em;
 }
 

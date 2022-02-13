@@ -7,8 +7,6 @@ let colors = {
   transparent: 'rgba(0, 0, 0, 0)'
 }
 
-
-
 let todaysIntakeChart = (currentUser) => {
   let hydration = currentUser.hydration;
   let lastRecordDate = hydration.days[hydration.days.length - 1].date;

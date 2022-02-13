@@ -4,18 +4,11 @@
   margin: 0;
 }
 
-.hidden {
-  display: none;
-}
-
 body, html {
   background: rgb(52,52,52);
   background: radial-gradient(circle, rgba(52,52,52,1) 0%, rgba(0,0,0,1) 100%);
   background-repeat: no-repeat;
-  height: 100%;
   color: white;
-  height: 100vh;
-  width: 100vw;
 }
 
 body {
@@ -27,21 +20,31 @@ header {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 10%;
 }
 
-.user-container {
-  width: 50px;
-  height: 50px;
-  background-color: blue;
+header, article {
+  background-color: #b92912;
+}
+
+.hidden {
+  display: none;
+}
+
+.user-container img {
+  width: 3em;
+  height: 3em;
+  background-image: url('https://i.pravatar.cc/50');
 }
 
 .user-container:hover .info-card {
   display: block;
 }
 
-header, article {
-  background-color: #b92912;
+.info-card {
+  position: absolute;
+  right: 0;
+  background-color: gray;
+  padding: 1em;
 }
 
 .stats-section {
@@ -58,5 +61,4 @@ header, article {
 
 .widgets-section {
   display: flex;
-
 }

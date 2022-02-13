@@ -80,9 +80,9 @@ const makeCharts = (currentUser) => {
   let avgSleepHoursChart = document.querySelector('#avgSleepHoursChart');
   let avgSleepHoursCanvas = new Chart(avgSleepHoursChart, avgSleepHoursChartConfig);
 
-  // let avgSleepQualityChartConfig = charts.avgSleepQualityChart(currentUser);
-  // let avgSleepQualityChart = document.querySelector('#avgSleepQuality');
-  // let avgSleepQualityCanvas = new Chart(avgSleepQualityChart, avgSleepQualityChartConfig);
+  let avgSleepQualityChartConfig = charts.avgSleepQualityChart(currentUser);
+  let avgSleepQualityChart = document.querySelector('#avgSleepQualityChart');
+  let avgSleepQualityCanvas = new Chart(avgSleepQualityChart, avgSleepQualityChartConfig);
 }
 
 const getRandomUser = (users) => {

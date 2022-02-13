@@ -155,10 +155,28 @@ let avgSleepHoursChart = (currentUser) => {
     }
   }
 }
-//
-// let avgSleepHoursQualityChart = (currentUser) => {
-//
-// }
+
+let avgSleepQualityChart = (currentUser) => {
+  let sleep = currentUser.sleep;
+  return {
+    type: 'bar',
+    data: {
+      labels: ['My Average'],
+      datasets: [{
+        label: '',
+        data: [sleep.getAverageQuality()],
+        backgroundColor: ['green']
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  }
+}
 
 
 
@@ -170,6 +188,6 @@ export default {
   weeklySleepHoursChart,
   weeklySleepQualityChart,
   avgSleepHoursChart,
-  // avgSleepHoursQualityChart
+  avgSleepQualityChart
 
 }

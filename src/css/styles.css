@@ -1,4 +1,10 @@
 /* Box sizing rules */
+/* $lime: #BAFF29;
+$darkBlue: #1A1B41;
+$lightBlue: #6290C3;
+$white: #F1FFE7;
+$blueWhite: #C2E7DA; */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,7 +12,7 @@
 
 body, html {
   background: rgb(52,52,52);
-  background: radial-gradient(circle, rgba(52,52,52,1) 0%, rgba(0,0,0,1) 100%);
+  background: radial-gradient(circle, #37398A 0%, #1A1B41 100%);
   background-repeat: no-repeat;
   color: white;
 }
@@ -22,8 +28,17 @@ header {
   width: 100%;
 }
 
-header, article {
-  background-color: #b92912;
+header {
+  background-color: #1A1B41;
+}
+
+main {
+  color: #1A1B41;
+}
+
+
+article {
+  background-color: #F1FFE7;
 }
 
 .hidden {

@@ -1,21 +1,20 @@
 /* Box sizing rules */
+/* $lime: #BAFF29;
+$darkBlue: #1A1B41;
+$lightBlue: #6290C3;
+$white: #F1FFE7;
+$blueWhite: #C2E7DA; */
+
 * {
   box-sizing: border-box;
   margin: 0;
 }
 
-.hidden {
-  display: none;
-}
-
 body, html {
   background: rgb(52,52,52);
-  background: radial-gradient(circle, rgba(52,52,52,1) 0%, rgba(0,0,0,1) 100%);
+  background: radial-gradient(circle, #37398A 0%, #1A1B41 100%);
   background-repeat: no-repeat;
-  height: 100%;
   color: white;
-  height: 100vh;
-  width: 100vw;
 }
 
 body {
@@ -25,23 +24,50 @@ body {
 
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
-  height: 10%;
+  align-items: center;
+}
+
+header {
+  background-color: #1A1B41;
+}
+
+main, .user-container {
+  color: #1A1B41;
+}
+
+canvas {
+  background-color: #F1FFE7;
+  padding: 1em;
+  border: 3px solid #BAFF29;
+  border-radius: 3px;
+  box-shadow: 0px 0px 1px 2px #DBFF8F;
+}
+
+.hidden {
+  display: none;
 }
 
 .user-container {
-  width: 50px;
-  height: 50px;
-  background-color: blue;
+  position: relative;
+}
+
+.user-container img {
+  width: 3em;
+  height: 3em;
+  background-image: url('https://i.pravatar.cc/50');
 }
 
 .user-container:hover .info-card {
   display: block;
 }
 
-header, article {
-  background-color: #b92912;
+.info-card {
+  position: absolute;
+  right: 0;
+  background-color: #F1FFE7;
+  padding: 1em;
 }
 
 .stats-section {
@@ -52,11 +78,9 @@ header, article {
 
 .stats-section > article {
   margin: auto 1em;
-  border-radius: 3px;
   padding: 1em;
 }
 
 .widgets-section {
   display: flex;
-
 }

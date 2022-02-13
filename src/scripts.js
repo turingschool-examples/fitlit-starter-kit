@@ -107,19 +107,19 @@ const updateUser = (currentUser, users) => {
 }
 
 const displayStats = (currentUser) => {
-  todaysIntake.innerHTML +=
+  todaysIntake.querySelector('canvas').innerHTML +=
   `<p>Your water intake for today is: ${currentUser.hydration.getDaily(currentUser.hydration.days[currentUser.hydration.days.length - 1].date)} fl oz`
-  currentUser.hydration.getWeekly().forEach(day => weeklyIntake.innerHTML += `<p>On ${day.date} you drank: ${day.numOunces} fl oz</p>`);
-  avgSleepHours.innerHTML +=
+  currentUser.hydration.getWeekly().forEach(day => weeklyIntake.querySelector('canvas').innerHTML += `<p>On ${day.date} you drank: ${day.numOunces} fl oz</p>`);
+  avgSleepHours.querySelector('canvas').innerHTML +=
   `<p>Your total sleep hour average is: ${currentUser.sleep.getAverage()}`
-  avgSleepQuality.innerHTML +=
+  avgSleepQuality.querySelector('canvas').innerHTML +=
   `<p>Your total sleep quality average is: ${currentUser.sleep.getAverageQuality()}`
-  todaysSleepHours.innerHTML +=
+  todaysSleepHours.querySelector('canvas').innerHTML +=
   `<p>You slept ${currentUser.sleep.getSleep(currentUser.sleep.days[currentUser.sleep.days.length - 1].date)} hours last night.`
-  todaysSleepQuality.innerHTML +=
+  todaysSleepQuality.querySelector('canvas').innerHTML +=
   `<p>Your sleep quality last night was: ${currentUser.sleep.getSleepQuality(currentUser.sleep.days[currentUser.sleep.days.length - 1].date)}.`
-  currentUser.sleep.getWeekSleep(currentUser.sleep.days[currentUser.sleep.days.length - 8].date).forEach(day => weeklySleepHours.innerHTML += `<p>On ${day.date}, you slept ${day.hoursSlept} hours.`);
-  currentUser.sleep.getWeekQuality(currentUser.sleep.days[currentUser.sleep.days.length - 8].date).forEach(day => weeklySleepQuality.innerHTML += `<p>On ${day.date}, your sleep quality was: ${day.sleepQuality}.`);
+  currentUser.sleep.getWeekSleep(currentUser.sleep.days[currentUser.sleep.days.length - 8].date).forEach(day => weeklySleepHours.querySelector('canvas').innerHTML += `<p>On ${day.date}, you slept ${day.hoursSlept} hours.`);
+  currentUser.sleep.getWeekQuality(currentUser.sleep.days[currentUser.sleep.days.length - 8].date).forEach(day => weeklySleepQuality.querySelector('canvas').innerHTML += `<p>On ${day.date}, your sleep quality was: ${day.sleepQuality}.`);
 
 }
 

@@ -107,11 +107,13 @@ let weeklySleepHoursChart = (currentUser) => {
       datasets:[{
         label: `Number of Hours Slept`,
         data: weeklySleep,
+        backgroundColor: colors.darkBlue,
         borderColor: colors.darkBlue
       },
       {
         label: `Average`,
         data: lastWeekDates.map(day => sleep.getAverage()),
+        backgroundColor: colors.lime,
         borderColor: colors.lime
       }]
     },
@@ -130,11 +132,13 @@ let weeklySleepQualityChart = (currentUser) => {
       datasets:[{
         label: `Weekly Sleep Quality`,
         data: weeklySleepQuality,
+        backgroundColor: colors.lightBlue,
         borderColor: colors.lightBlue
       },
       {
         label: `Average`,
         data: lastWeekDates.map(day => sleep.getAverageQuality()),
+        backgroundColor: colors.lime,
         borderColor: colors.lime
       }]
     },

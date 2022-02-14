@@ -41,37 +41,22 @@ const handleData = (data) => {
 }
 
 const makeCharts = (currentUser) => {
-  let todaysIntakeChartConfig = charts.todaysIntakeChart(currentUser);
-  let todaysIntakeChart = document.querySelector('#todaysIntakeChart');
-  let todaysIntakeCanvas = new Chart(todaysIntakeChart, todaysIntakeChartConfig);
+  let myCharts = [
+     "todaysIntake",
+     "weeklyIntake",
+     "todaysSleepHours",
+     "todaysSleepQuality",
+     "weeklySleepHours",
+     "weeklySleepQuality",
+     "avgSleepHours",
+     "avgSleepQuality"
+  ]
 
-  let weeklyIntakeChartConfig = charts.weeklyIntakeChart(currentUser);
-  let weeklyIntakeChart = document.querySelector('#weeklyIntakeChart');
-  let weeklyIntakeCanvas = new Chart(weeklyIntakeChart, weeklyIntakeChartConfig);
-
-  let todaysSleepHoursChartConfig = charts.todaysSleepHoursChart(currentUser);
-  let todaysSleepHoursChart = document.querySelector('#todaysSleepHoursChart');
-  let todaysSleepHoursCanvas = new Chart(todaysSleepHoursChart, todaysSleepHoursChartConfig);
-
-  let todaysSleepQualityChartConfig = charts.todaysSleepQualityChart(currentUser);
-  let todaysSleepQualityChart = document.querySelector('#todaysSleepQualityChart');
-  let todaysSleepQualityCanvas = new Chart(todaysSleepQualityChart, todaysSleepQualityChartConfig);
-
-  let weeklySleepHoursChartConfig = charts.weeklySleepHoursChart(currentUser);
-  let weeklySleepHoursChart = document.querySelector('#weeklySleepHoursChart');
-  let weeklySleepHoursCanvas = new Chart(weeklySleepHoursChart, weeklySleepHoursChartConfig);
-
-  let weeklySleepQualityChartConfig = charts.weeklySleepQualityChart(currentUser);
-  let weeklySleepQualityChart = document.querySelector('#weeklySleepQualityChart');
-  let weeklySleepQualityCanvas = new Chart(weeklySleepQualityChart, weeklySleepQualityChartConfig);
-
-  let avgSleepHoursChartConfig = charts.avgSleepHoursChart(currentUser);
-  let avgSleepHoursChart = document.querySelector('#avgSleepHoursChart');
-  let avgSleepHoursCanvas = new Chart(avgSleepHoursChart, avgSleepHoursChartConfig);
-
-  let avgSleepQualityChartConfig = charts.avgSleepQualityChart(currentUser);
-  let avgSleepQualityChart = document.querySelector('#avgSleepQualityChart');
-  let avgSleepQualityCanvas = new Chart(avgSleepQualityChart, avgSleepQualityChartConfig);
+  myCharts.forEach(chart => {
+    let chartConfig = charts[chart + 'Chart'](currentUser);
+    let canvas = document.querySelector(`#${chart}Chart`);
+    let setCanvas = new Chart(canvas, chartConfig)
+  });
 }
 
 const getRandomUser = (users) => {

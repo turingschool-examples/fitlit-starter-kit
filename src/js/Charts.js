@@ -5,7 +5,7 @@ let colors = {
   white: '#F1FFE7',
   blueWhite: '#C2E7DA',
   transparent: 'rgba(0, 0, 0, 0)'
-}
+};
 
 let todaysIntakeChart = (currentUser) => {
   let hydration = currentUser.hydration;
@@ -27,7 +27,17 @@ let todaysIntakeChart = (currentUser) => {
         ]
       }]
     },
-    options: {}
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Today\'s Fluid intake (oz)'
+        }
+      }
+    }
   };
 };
 
@@ -52,7 +62,20 @@ let weeklyIntakeChart = (currentUser) => {
         backgroundColor: colors.lightBlue
       }]
     },
-    options: {}
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Last Week\'s Fluid Intake (oz)',
+          padding: {
+            bottom: 10
+          }
+        }
+      }
+    }
   };
 };
 
@@ -72,7 +95,17 @@ let todaysSleepHoursChart = (currentUser) => {
         borderColor: [colors.lightBlue]
       }]
     },
-    options: {}
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Hours Slept Last Night'
+        }
+      }
+    }
   };
 };
 
@@ -92,7 +125,17 @@ let todaysSleepQualityChart = (currentUser) => {
         borderColor: [colors.darkBlue]
       }]
     },
-    options: {}
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Last Night\'s Sleep Quality'
+        }
+      }
+    }
   };
 };
 
@@ -111,13 +154,26 @@ let weeklySleepHoursChart = (currentUser) => {
         borderColor: colors.darkBlue
       },
       {
-        label: `Average`,
+        label: `Average Hours Slept`,
         data: lastWeekDates.map(day => sleep.getAverage()),
         backgroundColor: colors.lime,
         borderColor: colors.lime
       }]
     },
-    options: {}
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Last Week\'s Sleep Hours',
+          padding: {
+            bottom: 10
+          }
+        }
+      }
+    }
   };
 };
 
@@ -130,7 +186,7 @@ let weeklySleepQualityChart = (currentUser) => {
     data: {
       labels: lastWeekDates,
       datasets:[{
-        label: `Weekly Sleep Quality`,
+        label: `My Sleep Quality`,
         data: weeklySleepQuality,
         backgroundColor: colors.lightBlue,
         borderColor: colors.lightBlue
@@ -142,7 +198,20 @@ let weeklySleepQualityChart = (currentUser) => {
         borderColor: colors.lime
       }]
     },
-    options: {}
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Last Week\'s Sleep Quality',
+          padding: {
+            bottom: 10
+          }
+        }
+      }
+    }
   };
 };
 
@@ -160,13 +229,25 @@ let avgSleepHoursChart = (currentUser) => {
       }]
     },
     options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Average Sleep Hours',
+          padding: {
+            bottom: 10
+          }
+        }
+      },
       scales: {
         y: {
           beginAtZero: true
         }
       }
     }
-  };
+  }
 };
 
 let avgSleepQualityChart = (currentUser) => {
@@ -182,6 +263,18 @@ let avgSleepQualityChart = (currentUser) => {
       }]
     },
     options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: 'Average Sleep Quality',
+          padding: {
+            bottom: 10
+          }
+        }
+      },
       scales: {
         y: {
           beginAtZero: true

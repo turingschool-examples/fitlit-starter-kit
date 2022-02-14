@@ -107,6 +107,6 @@ const sleepTestData = [
     "hoursSlept":6.9,
     "sleepQuality":2.5
   }
-]
+];
 
 export default sleepTestData;

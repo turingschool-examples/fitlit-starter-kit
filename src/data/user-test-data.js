@@ -26,5 +26,4 @@ const userTestData = [{
   ]
 }];
 
-
 export default userTestData;

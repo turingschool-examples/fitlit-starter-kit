@@ -10,12 +10,11 @@ let colors = {
 let todaysIntakeChart = (currentUser) => {
   let hydration = currentUser.hydration;
   let lastRecordDate = hydration.days[hydration.days.length - 1].date;
-  let todaysIntake = hydration.getDaily(lastRecordDate)
+  let todaysIntake = hydration.getDaily(lastRecordDate);
   return {
     type: 'doughnut',
     data: {
       labels: ['Total Intake', 'Remaining Intake'],
-      // caption: amount they drank / average
       datasets:[{
         label: `Today's Intake`,
         data: hydration.getAverage() > todaysIntake ? [todaysIntake, hydration.getAverage() - todaysIntake]
@@ -29,7 +28,7 @@ let todaysIntakeChart = (currentUser) => {
       }]
     },
     options: {}
-  }
+  };
 };
 
 let weeklyIntakeChart = (currentUser) => {
@@ -54,13 +53,13 @@ let weeklyIntakeChart = (currentUser) => {
       }]
     },
     options: {}
-  }
-}
+  };
+};
 
 let todaysSleepHoursChart = (currentUser) => {
   let sleep = currentUser.sleep;
   let lastRecordDate = sleep.days[sleep.days.length - 1].date;
-  let todaysSleepHours = sleep.getSleep(lastRecordDate)
+  let todaysSleepHours = sleep.getSleep(lastRecordDate);
   return {
     type: 'doughnut',
     data: {
@@ -74,13 +73,13 @@ let todaysSleepHoursChart = (currentUser) => {
       }]
     },
     options: {}
-  }
-}
+  };
+};
 
 let todaysSleepQualityChart = (currentUser) => {
   let sleep = currentUser.sleep;
   let lastRecordDate = sleep.days[sleep.days.length - 1].date;
-  let todaysSleepQuality = sleep.getSleepQuality(lastRecordDate)
+  let todaysSleepQuality = sleep.getSleepQuality(lastRecordDate);
   return {
     type: 'doughnut',
     data: {
@@ -94,8 +93,8 @@ let todaysSleepQualityChart = (currentUser) => {
       }]
     },
     options: {}
-  }
-}
+  };
+};
 
 let weeklySleepHoursChart = (currentUser) => {
   let sleep = currentUser.sleep;
@@ -117,8 +116,8 @@ let weeklySleepHoursChart = (currentUser) => {
       }]
     },
     options: {}
-  }
-}
+  };
+};
 
 let weeklySleepQualityChart = (currentUser) => {
   let sleep = currentUser.sleep;
@@ -140,8 +139,8 @@ let weeklySleepQualityChart = (currentUser) => {
       }]
     },
     options: {}
-  }
-}
+  };
+};
 
 let avgSleepHoursChart = (currentUser) => {
   let sleep = currentUser.sleep;
@@ -163,8 +162,8 @@ let avgSleepHoursChart = (currentUser) => {
         }
       }
     }
-  }
-}
+  };
+};
 
 let avgSleepQualityChart = (currentUser) => {
   let sleep = currentUser.sleep;
@@ -185,10 +184,8 @@ let avgSleepQualityChart = (currentUser) => {
         }
       }
     }
-  }
-}
-
-
+  };
+};
 
 export default {
   todaysIntakeChart,
@@ -199,5 +196,4 @@ export default {
   weeklySleepQualityChart,
   avgSleepHoursChart,
   avgSleepQualityChart
-
-}
+};

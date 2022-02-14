@@ -1,7 +1,7 @@
 // Your fetch requests will live here!
 const getData = (fetchAPI) => {
   return fetch(`https://fitlit-api.herokuapp.com/api/v1/${fetchAPI}`)
-    .then(response => response.json())
+    .then(response => response.json());
 }
 
 const usersData = getData('users');
@@ -14,4 +14,4 @@ export {
   sleepData,
   activityData,
   hydrationData
-}
+};

@@ -1,14 +1,36 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Fitlit</title>
-  </head>
-  <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="bundle.js"></script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="styles.css">
+  <title>VJC Fitness</title>
+</head>
+<body>
+  <section class="top-section">
+    <div class="welcome-box">
+      <h1 class="welcome-user">Welcome User</h1>
+    </div> 
+    <div class="activity-box">
+      <h2 class="recent-activity-title">Recent Activity</h2>
+      <div class="recent-activity-container">
+        <article class="steps-box"></article>
+        <article class="minutes-active"></article>
+        <article class="miles-walked"></article>
+        <article class="stairs"></article>
+      </div>
+    </div>
+    <div class="user-box">
+      <form class="user-dropdown"></form>
+      <text class="user-info">User Info</text>
+    </div>
+  </section>
+  <section class="bottom-section">
+  
+  </section>
+  <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+  <script src="bundle.js"></script>
+</body>
 </html>

@@ -66,8 +66,20 @@ body, html {
   width: 90%;
   height: 90%;
   margin: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.steps-box,
+.minutes-active,
+.miles-walked,
+.stairs {
+  border: 1px solid pink;
+  width: 23%;
+  height: 80%;
+}
 .user-box {
   border: 1px solid blue;
   width: 40%;

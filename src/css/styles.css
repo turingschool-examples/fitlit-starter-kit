@@ -1,5 +1,68 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    position: relative;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body, html {
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
   background-repeat: no-repeat;
   height: 100%;
+}
+
+.top-section {
+  border: 2px solid green;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.welcome-box {
+  border: 1px solid blue;
+  width: 20%;
+  height: 80%;
+  margin: 5px;
+}
+
+.activity-box {
+  border: 1px solid blue;
+  width: 40%;
+  height: 80%;
+  margin: 5px;
+}
+
+.user-box {
+  border: 1px solid blue;
+  width: 40%;
+  height: 80%;
+  margin: 5px;
+}
+
+.bottom-section {
+  border: 2px solid green;
+  height: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.icons-container {
+  border: 1px solid purple;
+  height: 90%;
+  width: 10%;
+  margin-right: 10px;
+}
+
+.bottom-container {
+  border: 1px solid purple;
+  height: 90%;
+  width: 85%;
+  margin-left: 10px;
 }

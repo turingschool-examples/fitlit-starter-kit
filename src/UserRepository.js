@@ -8,6 +8,15 @@ class UserRepository {
         const correctUser = userData.find(user => user.id === num)
         return correctUser;
     };
+
+    getAverageSteps() {
+        console.log(this.users.length)
+        const dailyStepGoalTotal = this.users.reduce((acc, currentUser) => {
+            acc += currentUser.dailyStepGoal
+            return acc
+        }, 0);
+        return dailyStepGoalTotal / this.users.length;
+    };
 }
 
 export default UserRepository;

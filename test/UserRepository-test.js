@@ -26,4 +26,9 @@ describe('User Repository', () => {
     expect(userRepository.getUserById(1)).to.deep.equal(userData[0]);
     expect(userRepository.getUserById(2)).to.deep.equal(userData[1]);
   });
+  it('should have a function to return the average of all user\'s step goals', () => {
+    expect(userRepository.getAverageSteps()).to.deep.equal(6700);
+    console.log(userRepository.getAverageSteps());
+  })
+
 });

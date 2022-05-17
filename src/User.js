@@ -14,3 +14,6 @@ class User {
         return first;
     }
 }
+
+export default User;
+// module.exports = User;

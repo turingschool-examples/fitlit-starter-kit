@@ -8,7 +8,6 @@ describe('User Repository', () => {
   });
   it('should be able to get user data by id', function(){
     const user1 = new UserRepository(userData)
-
     expect(user1.getUserData(2)).to.deep.equal({
       "id": 2,
       "name": "Jarvis Considine",
@@ -24,4 +23,8 @@ describe('User Repository', () => {
       ]
     });
   });
+  it('should be able to return average step goal for all users', function(){
+    const user = new UserRepository(userData)
+    expect(user.averageStepGoal(userData)).to.equal(6667)
+  })
 });

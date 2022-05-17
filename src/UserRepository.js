@@ -10,8 +10,12 @@ class UserRepository {
         })
         return data;
     }
-    averageStepGoal(){
-        //return average
+    averageStepGoal(data){
+        const average = data.reduce((sum, person) => {
+            sum += person.dailyStepGoal
+            return sum
+        }, 0)
+        return Math.round(average/data.length);
     }
 }
 

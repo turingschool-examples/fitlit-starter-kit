@@ -40,6 +40,9 @@ describe('Sleep Repository', () => {
     expect(sleepRepo).to.be.an.instanceOf(SleepRepository)
   });
   it('should return user data when given id', function () {
-    expect(sleepRepo.getUserData(1)).to.deep.equal(sleepRepo.data[0]);
+    expect(sleepRepo.getUserData(1)).to.deep.equal(sleepRepo.dataObjects[0]);
+  });
+  it('should calculate average hours slept among all users', function () {
+    expect(sleepRepo.calculateAvgHoursSlept()).to.equal(8);
   });
 });

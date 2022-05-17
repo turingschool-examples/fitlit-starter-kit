@@ -25,9 +25,12 @@
     </div>
     <div class="user-box">
       <select class="user-dropdown" id="userDropDown">
-        <option value="default">User Name</option>
+        <option disabled hidden selected>Select User</option>
+        <option value="default"></option>  
+        <!-- onclick="displayUserInfo()" -->
       </select>
-      <text class="user-info">User Info</text>
+      <text class="user-info" id="userInfo"></text>
+
     </div>
   </section>
 

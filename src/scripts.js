@@ -12,17 +12,50 @@ import User from './User';
 
 
 // ****** Global Variables ******
-var user = new User(userData);
+// var user = new User(userData);
+
 
 
 // ****** querySelectors ******
-var welcomeUser = document.querySelector('welcome-user');
+// var welcomeUser = document.querySelector('.welcome-user');
+var userInfo = document.querySelector('.user-info');
+var userDisplay = document.querySelector('#userInfo');
 
+// ****** eventListners ******
 
+document.getElementById('userDropDown').onchange = () => {
+    let userRepo = userListCreation(userData);
+    chooseUser(userRepo);
+};
 
+function chooseUser(userDataList) {
+    var selection = document.getElementById('userDropDown');
+    console.log(selection)
+    var option = parseInt(selection.options[selection.selectedIndex].value);
+    displayUserInfo(userDataList, option);
+}
 
+function displayUserInfo(userArray, id) {
+    var user = userArray.find((user) => user.id === id);
+    // var stepGoalRating;
+    // user.dailyStepGoal > getStepGoalAvg(userArray) ? stepGoalRating = 'Above Average' : stepGoalRating = 'Above Average';
+    userInfo.innerText = 
+        `${user.name}
+        Address: ${user.address}
+        E-mail: ${user.email}
+        Stride Length: ${user.strideLength}
+        Daily Step Goal: ${user.dailyStepGoal}` 
+};
 
-
+function userListCreation(userData) {
+    let newUserArray = [];
+    console.log(userData)
+    userData.forEach((user) => {
+        var user = new User(user);
+        newUserArray.push(user);
+    })
+    return newUserArray;
+}
 
 function displayDropDownInfo() {
     let userDropDown = document.getElementById('userDropDown');
@@ -31,20 +64,15 @@ function displayDropDownInfo() {
         let userOptions = document.createElement('OPTION');
         let userText = document.createTextNode(userArray[i].name);
         userOptions.appendChild(userText);
+        userOptions.setAttribute('value', userArray[i].id);
         userDropDown.insertBefore(userOptions, userDropDown.lastChild);
     }
 } 
 displayDropDownInfo();
 
-// Need an event handler function that handles:
-// // when a user is selected from the dropdown: >>> var userDropDown = document.querySelector('user-dropdown');
-// // // Need onClick function to trigger the dropdown
-// // it triggers showing the info card with the users data info. >>> var userInfoCard = document.querySelector('user-dropdown');
-// // it triggers the 'Welcome ${userNameVariableWeChose!}` display. >>> document.querySelector('welcome-user);
-// // it triggers 
 
 
-welcomeUser.innerText = `Welcome ${user.returnFirstName(user)}!`;
+// welcomeUser.innerText = `Welcome ${user.returnFirstName(user)}!`;
 
 
 

@@ -6,6 +6,7 @@ class User{
     this.address = userData.address;
     this.email = userData.email;
     this.strideLength = userData.strideLength;
+    this.dailyStepGoal = userData.dailyStepGoal;
     };
 }
 export default User;

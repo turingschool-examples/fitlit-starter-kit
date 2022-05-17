@@ -2,7 +2,7 @@
 
 class UserRepository {
   constructor(data) {
-    this.users = [];
+    this.users = data;
   }
 
   getUserById(id) {
@@ -15,7 +15,7 @@ class UserRepository {
       totalSteps += user.dailyStepGoal;
       return totalSteps;
     }, 0)
-    return allUsersAvgStepGoal / this.users.length;
+    return Math.round(allUsersAvgStepGoal / this.users.length);
   }
 }
 

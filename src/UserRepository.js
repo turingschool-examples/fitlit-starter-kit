@@ -6,11 +6,16 @@ class UserRepository {
   }
 
   getUserById(id) {
-    // return single user's data
+    const foundData = this.users.find(user => user.id === id);
+      return foundData;
   }
 
   calculateAvgStepGoal() {
-    // calculate avg step goal among all users
+    const allUsersAvgStepGoal = this.users.reduce((totalSteps, user) => {
+      totalSteps += user.dailyStepGoal;
+      return totalSteps;
+    }, 0)
+    return allUsersAvgStepGoal / this.users.length;
   }
 }
 

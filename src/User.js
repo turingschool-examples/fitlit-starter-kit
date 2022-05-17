@@ -1,7 +1,7 @@
 import userData from './data/users.js'
 class User{
-    constructor(){
-
+    constructor(userData){
+    this.name = userData.name;
     };
 }
 export default User;

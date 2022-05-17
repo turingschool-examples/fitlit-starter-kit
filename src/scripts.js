@@ -1,6 +1,3 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
 console.log(userData,"<>>>>userData")
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
@@ -17,5 +14,20 @@ import userData from './data/users';
 import UserRepository from './UserRepository';
 
 import User from './User';
+
+
+
+// ****** Global Variables ******
+var user = new User(userData[0]);
+
+
+// ****** querySelectors ******
+var welcomeUser = document.querySelector('welcome-user');
+
+function firstName() {
+    welcomeUser.innerText = `Welcome ${user.returnFirstName(user)}!`;
+}
+
+firstName();
 
 

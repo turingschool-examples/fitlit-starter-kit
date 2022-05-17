@@ -11,9 +11,12 @@ describe('User',() => {
         expect(User).to.be.a('function');
     });
     it('should hold a users name', () =>{
-        expect(user.name).to.deep.equal("Luisa Hane")
+        expect(user.name).to.equal("Luisa Hane")
     });
     it('should hold a users id', () =>{
-        expect(user.id).to.deep.equal(1);
+        expect(user.id).to.equal(1);
+    });
+    it('should hold a users address', () =>{
+        expect(user.address).to.equal("15195 Nakia Tunnel, Erdmanport VA 19901-1697");
     });
 })

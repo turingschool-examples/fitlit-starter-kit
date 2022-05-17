@@ -17,12 +17,3 @@ class SleepRepository {
 
 
 export default SleepRepository;
-
-
-// calculateAvgStepGoal() {
-//   const allUsersAvgStepGoal = this.users.reduce((totalSteps, user) => {
-//     totalSteps += user.dailyStepGoal;
-//     return totalSteps;
-//   }, 0)
-//   return Math.round(allUsersAvgStepGoal / this.users.length);
-// }

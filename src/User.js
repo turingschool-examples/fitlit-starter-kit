@@ -5,6 +5,7 @@ class User{
     this.id = userData.id;
     this.address = userData.address;
     this.email = userData.email;
+    this.strideLength = userData.strideLength;
     };
 }
 export default User;

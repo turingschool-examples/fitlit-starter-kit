@@ -7,4 +7,7 @@ describe('User',() => {
     beforeEach( () => {
      user = new User(userData[0]);
       });
+    it('should be a function', () =>{
+        expect(User).to.be.a('function');
+    })
 })

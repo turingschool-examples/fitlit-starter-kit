@@ -4,6 +4,7 @@ class User{
     this.name = userData.name;
     this.id = userData.id;
     this.address = userData.address;
+    this.email = userData.email;
     };
 }
 export default User;

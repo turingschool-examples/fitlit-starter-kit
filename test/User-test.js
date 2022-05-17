@@ -11,6 +11,6 @@ describe('User',() => {
         expect(User).to.be.a('function');
     });
     it('should hold a users name', () =>{
-        expect(user.name).to.deeply.equal("Luisa Hane")
+        expect(user.name).to.deep.equal("Luisa Hane")
     });
 })

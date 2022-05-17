@@ -13,4 +13,7 @@ describe('User',() => {
     it('should hold a users name', () =>{
         expect(user.name).to.deep.equal("Luisa Hane")
     });
+    it('should hold a users id', () =>{
+        expect(user.id).to.deep.equal(1);
+    });
 })

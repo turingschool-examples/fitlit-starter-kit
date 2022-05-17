@@ -63,9 +63,10 @@ let userRepository;
   });
 
   it('should return a user\'s data when given an id', () => {
-    console.log("test", userRepository.calculateAvgStepGoal());
+    
+      // console.log(userRepository.dailyStepGoal)
 
-    expect(userRepository.getUserById(1)).to.deep.equal(userRepository.users[1]);
+    expect(userRepository.getUserById(1)).to.deep.equal(userRepository.users[0]);
   });
 
   it('should return the average step goal of all users', () => {

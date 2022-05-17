@@ -3,3 +3,49 @@ body, html {
   background-repeat: no-repeat;
   height: 100%;
 }
+
+div > section,
+main > section {
+  justify-content: center;
+  border-radius: 25px;
+}
+
+.page-wrapper {
+  display: flex;
+}
+
+.sidebar {
+  display: flex;
+  width: 100px;
+  background-color: white;
+}
+
+/*   Wraps welcome-message to end of page   */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px;
+}
+
+.welcome-message {
+  display: flex;
+  /* justify-content: center; */
+  height: 200px;
+  width: 100%;
+  background-color: white;
+}
+
+.dashboard {
+  display: flex;
+}
+
+
+/*   User Data Modules   */
+main > section {
+  background-color: white;
+  height: 200px;
+  width: 200px;
+  margin: 25px;
+
+}

@@ -28,4 +28,7 @@ describe('User',() => {
     it('should hold a users daily step goal', () =>{
         expect(user.dailyStepGoal).to.equal(10000);
     });
+    it('should hold a users friends', () =>{
+        expect(user.friends).to.deep.equal([16, 4, 8]);
+    });
 })

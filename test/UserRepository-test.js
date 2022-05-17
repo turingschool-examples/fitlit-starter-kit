@@ -28,7 +28,6 @@ describe('User Repository', () => {
   });
   it('should have a function to return the average of all user\'s step goals', () => {
     expect(userRepository.getAverageSteps()).to.deep.equal(6700);
-    console.log(userRepository.getAverageSteps());
   })
 
 });

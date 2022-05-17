@@ -24,5 +24,6 @@ describe('User Repository', () => {
 
   it('should have a function that returns a user object by its id number', () => {
     expect(userRepository.getUserById(1)).to.deep.equal(userData[0]);
+    expect(userRepository.getUserById(2)).to.deep.equal(userData[1]);
   });
 });

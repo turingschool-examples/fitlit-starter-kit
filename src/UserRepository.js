@@ -1,7 +1,8 @@
 class UserRepository {
-    constructor(data){
+    constructor(data) {
         this.data = data;
     }
+
     getUserData(id){
         const data = this.data.find((obj) => {
             if(obj.id === id){
@@ -10,6 +11,7 @@ class UserRepository {
         })
         return data;
     }
+    
     averageStepGoal(data){
         const average = data.reduce((sum, person) => {
             sum += person.dailyStepGoal

@@ -1,23 +1,27 @@
-class UserRepository {
-    constructor(data) {
-        this.data = data;
-    }
+import User from '../src/User';
 
-    getUserData(id){
-        const data = this.data.find((obj) => {
+class UserRepository {
+  constructor(data) {
+    this.users = data.map((userObj) => { return new User(userObj) });
+  }
+
+  // we should create a getAllUsers method that will return this.users array so we have access to this array
+
+    getUser(id){
+        const data = this.users.find((obj) => {
             if(obj.id === id){
                 return obj;
             }
         })
         return data;
     }
-    
-    averageStepGoal(data){
-        const average = data.reduce((sum, person) => {
+
+    averageStepGoal(){
+        const average = this.users.reduce((sum, person) => {
             sum += person.dailyStepGoal
             return sum
         }, 0)
-        return Math.round(average/data.length);
+        return Math.round(average/this.users.length);
     }
 }
 

@@ -1,7 +1,14 @@
-body, html {
+* {border:1px solid black}
+/* html {
+  height: 100vh;
+  width:100vw;
+} */
+
+
+body{
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
   background-repeat: no-repeat;
-  height: 100%;
+  margin: 0px;
 }
 
 div > section,
@@ -12,19 +19,24 @@ main > section {
 
 .page-wrapper {
   display: flex;
+  height: 100vh;
+  width:100vw;
 }
 
 .sidebar {
   display: flex;
+  flex-direction: column;
   width: 100px;
   background-color: white;
+  margin: 25px;
 }
 
 /*   Wraps welcome-message to end of page   */
 .content-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  width: 80%;
   margin: 25px;
 }
 
@@ -38,14 +50,15 @@ main > section {
 
 .dashboard {
   display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 
 /*   User Data Modules   */
 main > section {
   background-color: white;
-  height: 200px;
-  width: 200px;
-  margin: 25px;
-
+  height: 300px;
+  width: 300px;
+  margin: 35px;
 }

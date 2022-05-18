@@ -8,7 +8,7 @@ describe('User Repository', () => {
   });
   it('should be able to get user data by id', function(){
     const user1 = new UserRepository(userData)
-    expect(user1.getUserData(2)).to.deep.equal({
+    expect(user1.getUser(2)).to.deep.equal({
       "id": 2,
       "name": "Jarvis Considine",
       "address": "30086 Kathryn Port, Ciceroland NE 07273",

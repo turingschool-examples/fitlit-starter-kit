@@ -1,5 +1,5 @@
 class User {
-    constructor(userData) {
+    constructor(userData, userHydrationData) {
         this.id = userData.id;
         this.name = userData.name;
         this.address = userData.address;
@@ -9,9 +9,7 @@ class User {
         this.friends = userData.friends;
     }
     returnFirstName(){
-        const fullName = this.name;
-        const [first] = fullName.split(' ');
-        return first;
+        return this.name.split(' ')[0];
     }
 }
 

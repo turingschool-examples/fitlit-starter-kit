@@ -12,7 +12,7 @@
 5. To see the tests:
 - Run `npm test` in the terminal
 
-#### To run the server used, locally, please clone and [follow the instructions from this repo](#https://github.com/turingschool-examples/whats-cookin-api).
+#### To run the server used, locally, please clone and [follow the instructions from this repo](https://frontend.turing.edu/projects/Fitlit-part-one.html).
 
 
 ### Table of Contents
@@ -32,7 +32,7 @@
  - [Betul Baskan](https://github.com/Baskanbetul)
  - [Cyanne Jones](https://github.com/Cyanne-Jones)
  - [Michael Martenilli](https://github.com/mmartinelli22)
- - [Lourdes](https://github.com/lourdesbnts)
+ - [Lourdes Benites](https://github.com/lourdesbnts)
 
 #### Technologies Used
 - Javascript
@@ -53,7 +53,7 @@
 1. Upon loading the website...
 
 
-Hope you enjoy using What's Cookin' Good Lookin'!
+
 
 #### Challenges and Wins
 

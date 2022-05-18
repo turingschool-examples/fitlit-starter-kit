@@ -24,19 +24,41 @@ describe('User', () => {
 
     it('should be a function', function () {
         expect(User).to.be.a('function');
-      });
+    });
     
-      it('should be an instance of User Repository', () => {
+    it('should be an instance of User Repository', () => {
         expect(eachUser).to.be.an.instanceOf(User);
-      });
+    });
 
-      it('should create an object', () => {
-          expect(eachUser).to.be.a('object')
-      });
+    it('should create an object', () => {
+        expect(eachUser).to.be.a('object')
+    });
 
-      it('should return first name', () => {
-          expect(eachUser.getUserFirstName()).to.equal('Luisa Hane')
-      });
+    it('should return first name', () => {
+        expect(eachUser.getUserFirstName()).to.equal('Luisa Hane')
+    });
     
+    it('should check id', () => {
+       expect(eachUser.id).to.equal(1)
+    });
 
+    it('should check name', () => {
+      expect(eachUser.name).to.equal('Luisa Hane')
+    });
+
+    it('should check email', () => {
+      expect(eachUser.email).to.equal('Diana.Hayes1@hotmail.com')
+    });
+
+    it('should check stridelength', () => {
+      expect(eachUser.strideLength).to.equal(4.3)
+    });
+
+    it('should check dailystepgoal', () => {
+      expect(eachUser.dailyStepGoal).to.equal(10000)
+    });
+
+    it('should check friends', () => {
+      expect(eachUser.friends).to.deep.equal([16,4,8])
+    });
 })

@@ -13,7 +13,20 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
 
-// import userData from './data/users';
-import fetchUserData from './apiCalls.js';
-
+import userData from './data/users';
+import fetchUserData from './apiCalls';
 import UserRepository from './UserRepository';
+import User from './User'
+
+
+const getAllUsers = () => {
+    const createUsersArray = userData.map((user) => {
+        return new User(user)
+    });
+return createUsersArray
+}
+console.log(getAllUsers())
+
+const putUsersInRepo = () => {
+    new UserRepository(getAllUsers())
+}

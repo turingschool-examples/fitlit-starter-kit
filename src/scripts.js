@@ -50,7 +50,8 @@ function displayUserInfo(userArray, id) {
         Address: ${user.address}
         E-mail: ${user.email}
         Stride Length: ${user.strideLength}
-        Daily Step Goal: ${user.dailyStepGoal}`
+        Daily Step Goal: ${user.dailyStepGoal}
+        Average Users Step Goal: ${averageGoal(userData)}`
 };
 
 function userListCreation(userData) {
@@ -75,6 +76,14 @@ function displayDropDownInfo() {
     }
 }
 displayDropDownInfo();
+
+function averageGoal(userData) {
+  const result = userData.reduce((sum, element) => {
+    return sum += element.dailyStepGoal
+  }, 0);
+  console.log(result)
+  return result / userData.length;
+}
 
 
 

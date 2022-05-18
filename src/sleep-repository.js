@@ -11,9 +11,9 @@ class SleepRepository {
       totalHours += object.hoursSlept
       return totalHours
     }, 0)
-    let result = allUsersHoursSleptSum / this.dataObjects.length
-    parseInt(result.toFixed(1))
-    return result
+    let result = allUsersHoursSleptSum / this.dataObjects.length;
+    parseInt(result.toFixed(1));
+    return result;
   }
 }
 

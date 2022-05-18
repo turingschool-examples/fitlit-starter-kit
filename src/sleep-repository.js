@@ -2,8 +2,8 @@ class SleepRepository {
   constructor(sleepData){
     this.dataObjects = sleepData;
   }
-  getUserData(userId) {
-    const foundData = this.dataObjects.find(user => user.userID === userId);
+  getAllUserData(userId) {
+    const foundData = this.dataObjects.filter(user => user.userID === userId);
       return foundData;
   }
   calculateAvgHoursSlept() {
@@ -11,7 +11,9 @@ class SleepRepository {
       totalHours += object.hoursSlept
       return totalHours
     }, 0)
-    return Math.round(allUsersHoursSleptSum / this.dataObjects.length)
+    let result = allUsersHoursSleptSum / this.dataObjects.length
+    parseInt(result.toFixed(1))
+    return result
   }
 }
 

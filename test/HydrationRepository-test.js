@@ -121,5 +121,5 @@ let hydrationRepository2;
     }
 
     expect(hydrationRepository2.getFluidOuncesEachDayOfWeek(1, "2019/06/15")).to.deep.equal(hydrationObject);
-  })
+  });
 });

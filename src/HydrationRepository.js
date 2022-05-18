@@ -41,7 +41,7 @@ class HydrationRepository {
 
     // Iterate over week array and for each date, add the date as a key
     // in the acc, and initialize the value at 0.
-    // (e.g., acc = [{"2019/06/15" : 0}])
+    // (e.g., acc = {"2019/06/15" : 0})
 
     // Then, get all user-specific hydration data (allHydrationDataById),
     // and filter for matching date string. This returns an array of hydro objects specific
@@ -53,7 +53,7 @@ class HydrationRepository {
     // of the date key in the acc
     // (e.g., forEach => [{date: "2019/06/15", numOz: 1}, {date: "2019/06/15", numOz: 2}]
     // acc = {"2019/06/15": 3}))
-    
+
     const hydroWeek = weekFromDate.reduce((weekObj, date) => {
       weekObj[date] = 0;
       allHydrationDataById.filter(hydroObj => hydroObj.date === date)

@@ -105,6 +105,10 @@ let hydrationRepository2;
     expect(hydrationRepository1.getAvgFluidOuncesById(1)).to.equal(53);
   });
 
+  it('should return total fluid ounces of a user for a specific date when given id and date', () => {
+    expect(hydrationRepository1.getFluidOuncesByDate(1, "2019/06/15")).to.equal(37);
+  });
+
   it('should return an object with 7 dates as keys and 7 numbers as values', () => {
     const hydrationObject = {
         "2019/06/15": 37,

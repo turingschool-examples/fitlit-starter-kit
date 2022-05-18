@@ -1,19 +1,27 @@
-console.log(userData,"<>>>>userData")
-// An example of how you tell webpack to use a CSS file
 import './css/styles.css';
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
-console.log('This is the JavaScript entry file - your code begins here.');
-// An example of how you tell webpack to use a JS file
-import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
+import {userDataList} from './apiCalls';
 
+window.addEventListener('load', loadData());
 
+function loadData () {
+    Promise.all([userDataList()]).then(data => {
+        var userData = data[0].userData
+        document.getElementById('userDropDown').onchange = () => {
+            let userRepo = userListCreation(userData);
+            chooseUser(userRepo);
+        };
+
+        displayDropDownInfo(userData);
+        userListCreation(userData);
+        chooseUser(userData);
+    })
+}
 
 // ****** Global Variables ******
 // var user = new User(userData);
-
 
 
 // ****** querySelectors ******
@@ -23,14 +31,9 @@ var userDisplay = document.querySelector('#userInfo');
 
 // ****** eventListners ******
 
-document.getElementById('userDropDown').onchange = () => {
-    let userRepo = userListCreation(userData);
-    chooseUser(userRepo);
-};
 
 function chooseUser(userDataList) {
     var selection = document.getElementById('userDropDown');
-    console.log(selection)
     var option = parseInt(selection.options[selection.selectedIndex].value);
     displayUserInfo(userDataList, option);
     userDataList.forEach(obj => {
@@ -42,6 +45,9 @@ function chooseUser(userDataList) {
 }
 
 function displayUserInfo(userArray, id) {
+    if(!id){
+        return;
+    }
     var user = userArray.find((user) => user.id === id);
     // var stepGoalRating;
     // user.dailyStepGoal > getStepGoalAvg(userArray) ? stepGoalRating = 'Above Average' : stepGoalRating = 'Above Average';
@@ -51,12 +57,11 @@ function displayUserInfo(userArray, id) {
         E-mail: ${user.email}
         Stride Length: ${user.strideLength}
         Daily Step Goal: ${user.dailyStepGoal}
-        Average Users Step Goal: ${averageGoal(userData)}`
+        Average Users Step Goal: ${averageGoal(userArray)}`
 };
 
 function userListCreation(userData) {
     let newUserArray = [];
-    console.log(userData)
     userData.forEach((user) => {
         var user = new User(user);
         newUserArray.push(user);
@@ -64,7 +69,7 @@ function userListCreation(userData) {
     return newUserArray;
 }
 
-function displayDropDownInfo() {
+function displayDropDownInfo(userData) {
     let userDropDown = document.getElementById('userDropDown');
     let userArray = userData;
     for (let i = 0; i < userArray.length; i++) {
@@ -75,16 +80,11 @@ function displayDropDownInfo() {
         userDropDown.insertBefore(userOptions, userDropDown.lastChild);
     }
 }
-displayDropDownInfo();
 
 function averageGoal(userData) {
   const result = userData.reduce((sum, element) => {
     return sum += element.dailyStepGoal
   }, 0);
-  console.log(result)
   return result / userData.length;
 }
 
-
-
-// welcomeUser.innerText = `Welcome ${user.returnFirstName(user)}!`;

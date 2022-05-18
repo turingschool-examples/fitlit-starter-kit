@@ -5,9 +5,49 @@
     <title>Fitlit</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
+     <header> 
+       <h1 class="title">fitlit</h1> 
+       <h2 id="userGreeting">Welcome Betul</h2> 
+     </header>
+     <main>
+       <div class="user-card">
+         <h3 class="user-info">User Info</h3>
+         <div class="user-card-properties" id="userCardProperties">
+          <p>information value</p>
+          <p>information value</p>
+          <p>information value</p>
+          <p>information value</p>
+          <p>information value</p>
+          <p>information value</p>
+          <p>information value</p>
+         </div>
+         <div class="user-step-goal-info" id="userStepGoalInfo">
+           <p>Your step goal is 10000 and the average step goals is 7000</p>
+         </div>
+       </div>
+       <div class="hydration-card">
+         <h3 class="hydration-info">Hydration Info</h3>
+         <div class="user-water-per-day" id="userWaterPerDay">
+           <p>You've drank 2 oz water today.</p>
+         </div>
+         <div class="user-water-per-week" id="userWaterPerWeek">
+           <p>You've drank 1000 oz water this week.</p>
+         </div>
+       </div>
+       <div class="sleep-card">
+         <h3 class="sleep-info">Sleep Info</h3>
+         <div class="user-sleep-per-day" id="UserSleepPerDay">
+           <p>You got 8 hours sleep today.</p>
+         </div>
+         <div class="user-sleep-per-week" id="userSleepPerWeek">
+           <p>You got 60 hours sleep this week.</p>
+         </div>
+         <div class="user-sleep-all-time" id="userSleepAllTime">
+           <p>You slept average 8.2 hours all time.</p>
+           <p>Your sleep quality average is 3.6 out of 5.</p>
+         </div>
+       </div>
+     </main> 
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>

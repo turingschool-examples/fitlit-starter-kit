@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="normalize.css">
   <link rel="stylesheet" href="styles.css">
   <title>VJC Fitness</title>
@@ -12,15 +15,15 @@
   <section class="top-section">
     <div class="welcome-box">
       <img class="user-image" src="./images/turing-logo.png">
-      <h1 class="welcome-user">Welcome User</h1>
+      <h1 class="welcome-user">Hello there!</h1>
     </div>
     <div class="activity-box">
       <h2 class="recent-activity-title">Recent Activity</h2>
       <div class="recent-activity-container">
-        <article class="steps-box"></article>
-        <article class="minutes-active"></article>
-        <article class="miles-walked"></article>
-        <article class="stairs"></article>
+        <article class="steps-box" id="stepsBox">Steps</article>
+        <article class="minutes-active">Minutes Acive</article>
+        <article class="miles-walked">Miles Walked</article>
+        <article class="stairs">Stairs Climbed</article>
       </div>
     </div>
     <div class="user-box">
@@ -36,9 +39,12 @@
 
   <section class="bottom-section">
     <div class="icons-container">
-      <img class="activity-img" src="./images/turing-logo.png">
+      <!-- <p class="icons">Water</p> -->
       <img class="water-img" src="./images/turing-logo.png">
+      <!-- <p class="icons">Sleep</p> -->
       <img class="sleep-img" src="./images/turing-logo.png">
+      <!-- <p class="icons">Activity</p> -->
+      <img class="activity-img" src="./images/turing-logo.png">
     </div>
 
     <div class="bottom-container">

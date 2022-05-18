@@ -60,7 +60,6 @@ let hydrationRepository;
   });
 
   it('should return the average fluid ounces of a user when given an id', () => {
-
     expect(hydrationRepository.getAvgFluidOuncesById(1)).to.equal(53);
   });
 });

@@ -16,6 +16,17 @@ class HydrationRepository {
     }, 0)
     return Math.round(totalFluidOunces / allHydrationDataById.length);
   }
+
+  getFluidOuncesByDate(id, date) {
+    const allHydrationDataById = this.getUserById(id);
+    const hydrationByDate = allHydrationDataById
+      .filter(hydroObj => hydroObj.date === date)
+      .reduce((totalOunces, hydroObj) => {
+        totalOunces += hydroObj.numOunces;
+        return totalOunces;
+      }, 0)
+      return Math.round(hydrationByDate);
+  }
 }
 
 

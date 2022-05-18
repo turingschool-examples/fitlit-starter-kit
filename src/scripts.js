@@ -2,7 +2,7 @@ import './css/styles.css';
 import './images/turing-logo.png'
 import UserRepository from './UserRepository';
 import User from './User';
-import {userDataList} from './apiCalls';
+import {userDataList, userHydrationList, userSleepList} from './apiCalls';
 
 // ****** querySelectors ******
 var welcomeUser = document.querySelector('.welcome-user');
@@ -11,11 +11,13 @@ var stepsBox = document.querySelector('#stepsBox');
 // var userDisplay = document.querySelector('#userInfo');
 
 // ****** event listeners ******
-window.addEventListener('load', loadData());
+window.addEventListener('load', loadData);
 
 function loadData () {
-    Promise.all([userDataList()]).then(data => {
+    Promise.all([userDataList(), userHydrationList(), userSleepList()]).then(data => {
         var userData = data[0].userData
+        var userHydrationData = data[1].hydrationData
+        var userSleepData = data[2].sleepData
         const userRepository = new UserRepository(userData);
         document.getElementById('userDropDown').onchange = () => {
             chooseUser(userRepository);

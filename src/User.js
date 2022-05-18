@@ -1,5 +1,5 @@
 class User {
-    constructor(userData) {
+    constructor(userData, userHydrationData) {
         this.id = userData.id;
         this.name = userData.name;
         this.address = userData.address;

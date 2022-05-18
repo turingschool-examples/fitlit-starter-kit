@@ -1,7 +1,6 @@
 import './css/styles.css';
 import './images/turing-logo.png'
 import UserRepository from './UserRepository';
-import User from './User';
 import HydrationRepository from './HydrationRepository';
 import {userDataList, userHydrationList, userSleepList} from './apiCalls';
 
@@ -19,12 +18,16 @@ function loadData () {
         var userData = data[0].userData
         var userHydrationData = data[1].hydrationData
         var userSleepData = data[2].sleepData
+
         const userRepository = new UserRepository(userData);
+        const hydrationRepository = new HydrationRepository(userHydrationData);
+
         document.getElementById('userDropDown').onchange = () => {
             chooseUser(userRepository);
         };
 
         var users = userRepository.users
+        console.log(hydrationRepository.avgOunces())
         displayDropDownInfo(users);
     })
 }

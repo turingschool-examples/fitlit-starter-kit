@@ -52,14 +52,15 @@ let hydrationRepository;
     expect(hydrationRepository).to.be.an.instanceOf(HydrationRepository);
   });
 
-  // it('should return a user\'s hydration data when given an id', () => {
-  //
-  //     // console.log(userRepository.dailyStepGoal)
-  //
-  //   expect(userRepository.getUserById(1)).to.deep.equal(userRepository.users[0]);
-  // });
-  //
-  // it('should return the average fluid ounces of a user', () => {
-  //
+  it('should return a user\'s hydration data when given an id', () => {
+      const hydrationDataUser1 = hydrationData.filter(obj => obj.userID === 1)
 
+    expect(hydrationRepository.getUserById(1)).to.deep.equal(hydrationDataUser1);
+    expect(hydrationRepository.getUserById(1).length).to.equal(2);
   });
+
+  it('should return the average fluid ounces of a user when given an id', () => {
+
+    expect(hydrationRepository.getAvgFluidOuncesById(1)).to.equal(53);
+  });
+});

@@ -8,13 +8,13 @@ class HydrationRepository {
       return foundData;
   }
 
-  getAvgFluidOunces() {
+  getAvgFluidOuncesById(id) {
     const allHydrationDataById = this.getUserById(id);
     const totalFluidOunces = allHydrationDataById.reduce((totalOunces, hydroObj) => {
       totalOunces += hydroObj.numOunces;
       return totalOunces;
     }, 0)
-    return totalFluidOunces / allHydrationDataById.length;
+    return Math.round(totalFluidOunces / allHydrationDataById.length);
   }
 }
 

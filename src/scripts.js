@@ -27,7 +27,8 @@ function loadData () {
 // ****** querySelectors ******
 var welcomeUser = document.querySelector('.welcome-user');
 var userInfo = document.querySelector('.user-info');
-var userDisplay = document.querySelector('#userInfo');
+var stepsBox = document.querySelector('#stepsBox');
+// var userDisplay = document.querySelector('#userInfo');
 
 // ****** eventListners ******
 
@@ -39,7 +40,8 @@ function chooseUser(userDataList) {
     userDataList.forEach(obj => {
       if(obj.id === option){
         var user = new User(obj)
-          welcomeUser.innerText = `Welcome ${user.returnFirstName()}!`;
+          welcomeUser.innerText = `Welcome,
+           ${user.returnFirstName()}!`;
         }
     })
 }
@@ -49,15 +51,17 @@ function displayUserInfo(userArray, id) {
         return;
     }
     var user = userArray.find((user) => user.id === id);
+    console.log(user)
     // var stepGoalRating;
     // user.dailyStepGoal > getStepGoalAvg(userArray) ? stepGoalRating = 'Above Average' : stepGoalRating = 'Above Average';
     userInfo.innerText =
-        `${user.name}
-        Address: ${user.address}
+        // `${user.name}
+        `Address: ${user.address}
         E-mail: ${user.email}
-        Stride Length: ${user.strideLength}
-        Daily Step Goal: ${user.dailyStepGoal}
-        Average Users Step Goal: ${averageGoal(userArray)}`
+        \nStride Length: ${user.strideLength}
+          Daily Step Goal: ${user.dailyStepGoal}
+          Average Users Step Goal: ${averageGoal(userArray)}`
+    // stepsBox.innerText = `Daily Step Goal: ${user.dailyStepGoal}`
 };
 
 function userListCreation(userData) {

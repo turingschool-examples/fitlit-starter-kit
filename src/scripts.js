@@ -2,6 +2,7 @@ import './css/styles.css';
 import './images/turing-logo.png'
 import UserRepository from './UserRepository';
 import User from './User';
+import HydrationRepository from './HydrationRepository';
 import {userDataList, userHydrationList, userSleepList} from './apiCalls';
 
 // ****** querySelectors ******

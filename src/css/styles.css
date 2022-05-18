@@ -19,10 +19,11 @@ main > section {
 
 header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: center; 
+  justify-content: center;
   height: 10vh;
 }
+
 
 header > p {
   margin: 18px;

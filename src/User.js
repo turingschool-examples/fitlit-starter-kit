@@ -9,7 +9,7 @@ class User {
   }
 
   getUserFirstName() {
-
+    return this.name
   }
 }
 

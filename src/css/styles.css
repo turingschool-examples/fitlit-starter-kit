@@ -1,11 +1,11 @@
 * {border:1px solid black}
-/* html {
+html {
   height: 100vh;
   width:100vw;
-} */
+}
 
 
-body{
+body {
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
   background-repeat: no-repeat;
   margin: 0px;
@@ -17,10 +17,21 @@ main > section {
   border-radius: 25px;
 }
 
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 10vh;
+}
+
+header > p {
+  margin: 18px;
+}
+
 .page-wrapper {
   display: flex;
-  height: 100vh;
-  width:100vw;
+  height: 90vh;
+  width: 100vw;
 }
 
 .sidebar {
@@ -42,16 +53,32 @@ main > section {
 
 .welcome-message {
   display: flex;
-  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
   height: 200px;
   width: 100%;
   background-color: white;
+}
+
+.step-display {
+  display: flex;
+  justify-content: space-around;
+  width: 100%
 }
 
 .dashboard {
   display: flex;
   justify-content: center;
   width: 100%;
+}
+
+.activity,
+.sleep,
+.hydration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 

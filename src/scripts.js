@@ -1,11 +1,5 @@
-// console.log(userData,"<>>>>userData")
-// An example of how you tell webpack to use a CSS file
 import './css/styles.css';
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
-
-// An example of how you tell webpack to use a JS file
-// import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
 import {userDataList} from './apiCalls';
@@ -26,10 +20,8 @@ function loadData () {
     })
 }
 
-
 // ****** Global Variables ******
 // var user = new User(userData);
-
 
 
 // ****** querySelectors ******
@@ -39,10 +31,6 @@ var userDisplay = document.querySelector('#userInfo');
 
 // ****** eventListners ******
 
-// document.getElementById('userDropDown').onchange = () => {
-//     let userRepo = userListCreation(userData);
-//     chooseUser(userRepo);
-// };
 
 function chooseUser(userDataList) {
     var selection = document.getElementById('userDropDown');
@@ -93,7 +81,6 @@ function displayDropDownInfo(userData) {
     }
 }
 
-
 function averageGoal(userData) {
   const result = userData.reduce((sum, element) => {
     return sum += element.dailyStepGoal
@@ -101,6 +88,3 @@ function averageGoal(userData) {
   return result / userData.length;
 }
 
-
-
-// welcomeUser.innerText = `Welcome ${user.returnFirstName(user)}!`;

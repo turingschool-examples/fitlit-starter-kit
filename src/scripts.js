@@ -4,54 +4,37 @@ import UserRepository from './UserRepository';
 import User from './User';
 import {userDataList} from './apiCalls';
 
-window.addEventListener('load', loadData());
-
-function loadData () {
-    Promise.all([userDataList()]).then(data => {
-        var userData = data[0].userData
-        document.getElementById('userDropDown').onchange = () => {
-            let userRepo = userListCreation(userData);
-            chooseUser(userRepo);
-        };
-
-        displayDropDownInfo(userData);
-        userListCreation(userData);
-        chooseUser(userData);
-    })
-}
-
-// ****** Global Variables ******
-// var user = new User(userData);
-
-
 // ****** querySelectors ******
 var welcomeUser = document.querySelector('.welcome-user');
 var userInfo = document.querySelector('.user-info');
 var stepsBox = document.querySelector('#stepsBox');
 // var userDisplay = document.querySelector('#userInfo');
 
-// ****** eventListners ******
+// ****** event listeners ******
+window.addEventListener('load', loadData());
 
+function loadData () {
+    Promise.all([userDataList()]).then(data => {
+        var userData = data[0].userData
+        const userRepository = new UserRepository(userData);
+        document.getElementById('userDropDown').onchange = () => {
+            chooseUser(userRepository);
+        };
 
-function chooseUser(userDataList) {
-    var selection = document.getElementById('userDropDown');
-    var option = parseInt(selection.options[selection.selectedIndex].value);
-    displayUserInfo(userDataList, option);
-    userDataList.forEach(obj => {
-      if(obj.id === option){
-        var user = new User(obj)
-          welcomeUser.innerText = `Welcome,
-           ${user.returnFirstName()}!`;
-        }
+        var users = userRepository.users
+        displayDropDownInfo(users);
     })
 }
 
-function displayUserInfo(userArray, id) {
-    if(!id){
-        return;
-    }
-    var user = userArray.find((user) => user.id === id);
-    console.log(user)
+function chooseUser(userRepository) {
+    var selection = document.getElementById('userDropDown');
+    var userId = parseInt(selection.options[selection.selectedIndex].value);
+    var user = userRepository.getUser(userId)
+    displayUserInfo(user, userRepository);
+}
+
+function displayUserInfo(user, userRepository) {
+   welcomeUser.innerText = `Welcome, ${user.returnFirstName()}!`;
     // var stepGoalRating;
     // user.dailyStepGoal > getStepGoalAvg(userArray) ? stepGoalRating = 'Above Average' : stepGoalRating = 'Above Average';
     userInfo.innerText =
@@ -60,35 +43,17 @@ function displayUserInfo(userArray, id) {
         E-mail: ${user.email}
         \nStride Length: ${user.strideLength}
           Daily Step Goal: ${user.dailyStepGoal}
-          Average Users Step Goal: ${averageGoal(userArray)}`
+          Average Users Step Goal: ${userRepository.averageStepGoal()}`
     // stepsBox.innerText = `Daily Step Goal: ${user.dailyStepGoal}`
 };
 
-function userListCreation(userData) {
-    let newUserArray = [];
-    userData.forEach((user) => {
-        var user = new User(user);
-        newUserArray.push(user);
-    })
-    return newUserArray;
-}
-
-function displayDropDownInfo(userData) {
+function displayDropDownInfo(users) {
     let userDropDown = document.getElementById('userDropDown');
-    let userArray = userData;
-    for (let i = 0; i < userArray.length; i++) {
+    for (let i = 0; i < users.length; i++) {
         let userOptions = document.createElement('OPTION');
-        let userText = document.createTextNode(userArray[i].name);
+        let userText = document.createTextNode(users[i].name);
         userOptions.appendChild(userText);
-        userOptions.setAttribute('value', userArray[i].id);
+        userOptions.setAttribute('value', users[i].id);
         userDropDown.insertBefore(userOptions, userDropDown.lastChild);
     }
 }
-
-function averageGoal(userData) {
-  const result = userData.reduce((sum, element) => {
-    return sum += element.dailyStepGoal
-  }, 0);
-  return result / userData.length;
-}
-

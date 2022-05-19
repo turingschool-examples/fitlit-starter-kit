@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
-import User from '../src/User';
 
 describe('User Repository', () => {
 
@@ -52,6 +51,7 @@ let userRepository;
       }];
 
     userRepository = new UserRepository(userData);
+    
   });
 
   it('should be a function', function () {
@@ -62,27 +62,15 @@ let userRepository;
     expect(userRepository).to.be.an.instanceOf(UserRepository);
   });
 
+  it("should take in user data", () => {
+    expect(userRepository.users.length).to.equal(3)
+  });
+  
   it('should return a user\'s data when given an id', () => {
-    
-      // console.log(userRepository.dailyStepGoal)
-
     expect(userRepository.getUserById(1)).to.deep.equal(userRepository.users[0]);
   });
 
   it('should return the average step goal of all users', () => {
-
-
+    expect(userRepository.calculateAvgStepGoal()).to.equal(6667)
   });
-
-  // it("should take in user data", function () {
-  //
-  //   let repository = new UserRepository(userData)
-  //   let data = repository.data
-  //   expect(data.length).to.equal(3)
-  // })
-  //
-  // it("should return a user's data when given an id", function () {
-  //   let repository = new UserRepository(userData)
-  //   expect(repository.findUserData(1)).to.equal(userData[1])
-  // })
 });

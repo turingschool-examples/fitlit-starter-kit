@@ -83,7 +83,9 @@ class Activity {
     }).numSteps;
     if (user.dailyStepGoal <= stepsDay) {
       return true;
-    } else return false;
+    } else { 
+      return false;
+    }
   };
 
   allDaysStepGoal(userId) {

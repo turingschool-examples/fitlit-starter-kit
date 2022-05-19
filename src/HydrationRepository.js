@@ -1,10 +1,11 @@
-import Hydration from '../src/Hydration'; 
+import Hydration from '../src/Hydration';
 
 class HydrationRepository {
     constructor(data) {
       this.users = data.map((userObj) => { return new Hydration(userObj) });
     }
 
+    //
     avgOunces(id) {
         const userAqua = this.users.filter((user) => {
             return user.id === id;
@@ -23,13 +24,12 @@ class HydrationRepository {
         const userByDay = this.users.filter((user) => {
             return user.id === id;
         })
-        const waterByDay = userByDay.filter((user) => {
+        const waterByDay = userByDay.find((user) => {
             return user.date === date;
-    })
+    }).ounces
     console.log(waterByDay)
     return waterByDay
-}
-
+  }
 }
 
 export default HydrationRepository;

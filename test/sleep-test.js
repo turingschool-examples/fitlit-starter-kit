@@ -103,35 +103,20 @@ beforeEach( () => {
     ]);
   });
 
-  it('should return the average hours slept per day when given a userID', () => {
-    expect(sleep.avgSleepQuality).to.equal(5.1);
+  it('should return average sleep quality over all time', () => {
+    let user3 = new Sleep(3, sleepRepo.getAllUserData(3))
+    expect(user3.allUserInstances.length).to.equal(8);
+    expect(user3.calculateAvgDailySleepQuality()).to.equal(11.3);
   });
 
-  it('should return the average hours slept per day when given a userID', () => {
-    expect(sleep.avgSleepQuality).to.equal(5.1);
-  });
-
-  it.skip('should return the amount of hours slept for a specified day', () => {
-    expect(sleep.returnHoursSlept("2019/06/15")).to.equal(6.1);
-  });
-
-  it.skip('should return the quality of sleep for a specified day', () => {
-    expect(sleep.returnSleepQuality("2019/06/15")).to.equal(2.2);
+  it('should find any data object by date', () => {
+    expect(sleep.findUserDataObjectByDate("2019/06/15")).to.deep.equal(sleep.allUserInstances[0]);
+    expect(sleep.findUserDataObjectByDate("2019/06/16")).to.deep.equal(sleep.allUserInstances[1]);
   });
 
   it('should return any object', () => {
     expect(sleep.returnObjectByDate("2019/06/15", "hoursSlept")).to.equal(6.1);
     expect(sleep.returnObjectByDate("2019/06/16", "sleepQuality")).to.equal(3.8);
-  });
-
-  it.skip('should return the average of hours slept within specified week', () => {
-    let user3 = new Sleep(3, sleepRepo.getAllUserData(3))
-    expect(user3.calculateSevenDayAvg("2019/06/15")).to.equal(10.7);
-  });
-
-  it.skip('should return the quality of hours slept within specified week', () => {
-    let user3 = new Sleep(3, sleepRepo.getAllUserData(3))
-    expect(user3.calculateSevenDayAvg("2019/06/15")).to.equal(10.7);
   });
 
   it('should return the average of anything specified within a week', () => {

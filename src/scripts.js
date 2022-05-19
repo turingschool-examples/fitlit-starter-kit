@@ -18,23 +18,21 @@ import fetchUserData from './apiCalls';
 import UserRepository from './UserRepository';
 import User from './User'
 
+let friends = document.getElementById('friends')
+let welcomeName = document.getElementById('name')
+let stepGoal = document.getElementById('step-goal')
+let stepsTaken = document.getElementById('steps-taken')
+let minsActive = document.getElementById('mins-active')
+let flights = document.getElementById('flights')
+let sleep = document.getElementById('sleep')
+let weeklySleep = document.getElementById('weekly-sleep')
+let avgSleep = document.getElementById('.avg-sleep')
+let waterDrank = document.getElementById('water')
+let weeklyWater = document.getElementById('weekly-water')
+let email = document.getElementById('email')
+let avgStepGoal = document.getElementById('avg-step-goal')
 
-
-
-let friends = document.querySelector('.friends')
-let welcomeName = document.querySelector('.name')
-let stepGoal = document.querySelector('.step-goal')
-let stepsTaken = document.querySelector('.steps-taken')
-let minsActive = document.querySelector('.mins-active')
-let flights = document.querySelector('.flights')
-let sleep = document.querySelector('.sleep')
-let weeklySleep = document.querySelector('.weekly-sleep')
-let avgSleep = document.querySelector('.avg-sleep')
-let waterDrank = document.querySelector('.water')
-let weeklyWater = document.querySelector('.weekly-water')
-let email = document.querySelector('.email')
-let avgStepGoal = document.querySelector('.avg-step-goal')
-
+console.log(fetchUserData)
 
 window.addEventListener('load', getAllUsers())
 
@@ -48,8 +46,9 @@ function getAllUsers() {
     const createUsersArray = userData.map((user) => {
         return new User(user)
     });
-    putUsersInRepo(createUsersArray) 
+    putUsersInRepo(createUsersArray)
 }
+console.log(getAllUsers())
 //put array of all user objects in user-repo
 function putUsersInRepo(usersArray) {
     let userRepo = new UserRepository(usersArray)
@@ -71,8 +70,3 @@ function displayUserInfo(user, userRepo) {
     friends.innerText = `${getFriendsNames}`
     avgStepGoal.innerText = `${userRepo.calculateAvgStepGoal()}`
 }
-
-
-
-
-

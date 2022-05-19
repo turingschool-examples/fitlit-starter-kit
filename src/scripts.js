@@ -60,7 +60,7 @@ function getRandomUser(userRepo) {
 }
 
 function displayUserInfo(user, userRepo) {
-    welcomeName.innerText = `Welcome, ${user.name}`
+    welcomeName.innerText = `Welcome, ${user.getUserFirstName()}`
     stepGoal.innerText = `${user.dailyStepGoal}`
     email.innerText = `${user.email}`
 

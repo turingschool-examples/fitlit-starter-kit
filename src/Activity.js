@@ -87,7 +87,6 @@ class Activity {
       return false;
     }
   };
-
 }
 
 export default Activity;

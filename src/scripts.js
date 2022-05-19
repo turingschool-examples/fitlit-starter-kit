@@ -6,7 +6,7 @@ import {userDataList, userHydrationList, userSleepList} from './apiCalls';
 import datepicker from 'js-datepicker';
 import dateFormat from 'dateformat'
 
-
+// const waterIntakeChart = document.getElementById('myChart').getContext('2d');
 // ****** querySelectors ******
 var welcomeUser = document.querySelector('.welcome-user');
 var userInfo = document.querySelector('.user-info');
@@ -14,6 +14,12 @@ var avgWaterGoal = document.querySelector('#averageGoal');
 var dailyOzDrank = document.querySelector('#dailyGoal')
 // var stepsBox = document.querySelector('#stepsBox');
 // var userDisplay = document.querySelector('#userInfo');
+
+// var myChart = new Chart("myChart", {
+//     type: "bar",
+//     data: {[1, 5, 6, 2, 9]},
+//     options: {['hi', 'you', 'hey', 'you', 'hey']}
+//   });
 
 // ****** event listeners ******
 window.addEventListener('load', loadData);
@@ -51,8 +57,9 @@ function loadData () {
               const resultElement = document.getElementById('user-ounce-for-day-result') // long id but it's descriptive haha.
               // we can print something more exciting than "Ounces:" but just wanted to get it working!
               resultElement.innerText = `Ounces: ${userOuncesForDate}`
-              console.log(hydrationRepository.displayWeekWaterIntake(formattedDate))
-
+              const ouncesIntake = hydrationRepository.displayWeekWaterIntake(formattedDate)
+              const dateIntake = hydrationRepository.displayWaterByDate(formattedDate)
+              console.log(hydrationRepository.displayWeeklyWaterChart(dateIntake, ouncesIntake))
             }
           })
     })

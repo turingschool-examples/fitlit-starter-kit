@@ -58,7 +58,9 @@
             <img class="category-image" src="./images/turing-logo.png">
           </div>
           <div class="chart-box">
-            <article class="category-chart"></article>
+            <article class="category-chart">
+              <canvas id="myChart" width="400" height="400"></canvas>
+            </article>
           </div>
           <div class="average-box">
             <article class="daily-goal" id="dailyGoal">
@@ -75,6 +77,7 @@
   </section>
   <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
   <script src="datepicker.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <script src="bundle.js"></script>
 </body>
 </html>

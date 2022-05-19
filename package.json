@@ -25,6 +25,8 @@
   },
   "dependencies": {
     "chart.js": "^3.7.1",
-    "dayjs": "^1.11.2"
+    "dateformat": "^5.0.3",
+    "dayjs": "^1.11.2",
+    "js-datepicker": "^5.18.0"
   }
 }

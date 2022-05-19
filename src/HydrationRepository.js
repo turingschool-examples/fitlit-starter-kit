@@ -5,7 +5,7 @@ class HydrationRepository {
       this.users = data.map((userObj) => { return new Hydration(userObj) });
     }
 
-    //
+    // For a user the average fluid ounces consumed per day for all time
     avgOunces(id) {
         const userAqua = this.users.filter((user) => {
             return user.id === id;
@@ -18,12 +18,11 @@ class HydrationRepository {
     }
 
     // For a user, how many fluid ounces they consumed for a specific day (identified by a date)
-    // Might need a calender dropdown (datePicker NPM)
-    // need to access the date and return the water value in oz
     dailyAvgOunces(id, date) {
         const userByDay = this.users.filter((user) => {
             return user.id === id;
         })
+        // updated Iterator below to .find to return an element to use .ounces on
         const waterByDay = userByDay.find((user) => {
             return user.date === date;
     }).ounces

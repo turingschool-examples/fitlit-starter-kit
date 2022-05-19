@@ -33,7 +33,6 @@ function loadData () {
         };
 
         var users = userRepository.users
-        // console.log(hydrationRepository.avgOunces())
         displayDropDownInfo(users);
     })
 }
@@ -42,6 +41,8 @@ function chooseUser(userRepository, hydrationRepository) {
     var selection = document.getElementById('userDropDown');
     var userId = parseInt(selection.options[selection.selectedIndex].value);
 
+    // Added the code below to get the datepicker working!
+    // I left the console.log's below so we can look at the data together.
     const picker = datepicker('#date-picker', {
       minDate: new Date(2019, 5, 15),
       maxDate: new Date(2020, 0, 22),
@@ -53,22 +54,20 @@ function chooseUser(userRepository, hydrationRepository) {
       onSelect: (instance, date) => {
         const formattedDate = dateFormat(date, "yyyy/mm/dd")
         const userOuncesForDate = hydrationRepository.dailyAvgOunces(userId, formattedDate)
-        const resultElement = document.getElementById('user-ounce-for-day-result')
+        const resultElement = document.getElementById('user-ounce-for-day-result') // long id but it's descriptive haha.
+        // we can print something more exciting than "Ounces:" but just wanted to get it working!
         resultElement.innerText = `Ounces: ${userOuncesForDate}`
 
         // console.log('instance: ', instance)
         // console.log('date: ', dateFormat(date, "yyyy/mm/dd"))
         // console.log('userId: ', userId)
         // console.log('hydrationRepository:', hydrationRepository)
-
-
       }
     })
 
     var user = userRepository.getUser(userId)
     displayUserInfo(user, userRepository, hydrationRepository);
-    // console.log(hydrationRepository)
-}
+};
 
 function displayUserInfo(user, userRepository, hydrationRepository) {
    welcomeUser.innerText = `Welcome, ${user.returnFirstName()}!`;

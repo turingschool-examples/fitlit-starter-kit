@@ -20,6 +20,7 @@ import User from './User'
 
 
 
+
 let friends = document.querySelector('.friends')
 let welcomeName = document.querySelector('.name')
 let stepGoal = document.querySelector('.step-goal')
@@ -70,6 +71,7 @@ function displayUserInfo(user, userRepo) {
     friends.innerText = `${getFriendsNames}`
     avgStepGoal.innerText = `${userRepo.calculateAvgStepGoal()}`
 }
+
 
 
 

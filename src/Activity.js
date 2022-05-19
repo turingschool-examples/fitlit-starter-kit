@@ -88,22 +88,6 @@ class Activity {
     }
   };
 
-  allDaysStepGoal(userId) {
-    let findUser = this.findUser(userId);
-    let user = userData.find((user) => {
-      if (user.id === userId) {
-        return user;
-      }
-    });
-    let week = findUser.reduce((a, b) => {
-      if (b.numSteps >= user.dailyStepGoal) {
-        a.push(b.date);
-      }
-      return a;
-    }, []);
-    return week;
-  };
-
 }
 
 export default Activity;

@@ -2,11 +2,47 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="./../src/css/styles.css">
     <title>Fitlit</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <header>
+      <h1>FitLit</h1>
+      <p class="email">email</p>
+    </header>
+    <div class="page-wrapper">
+      <section class="sidebar">
+        <p class="friends">friends</p>
+      </section>
+      <div class="content-wrapper">
+        <section class="welcome-message">
+          <h2 class="name">Welcome, Name</h2>
+          <section class="step-display">
+            <p class="avg-step-goal">Avg Step Goal</p>
+            <p class="step-goal">Users Step Goal</p>
+          </section>
+        </section>
+        <main class="dashboard">
+          <section class="activity">
+            <h3>👟Activity</h3>
+            <p class="'steps-taken">Steps Taken</p>
+            <p class="mins-active">Mins Active</p>
+            <p class="flights">Flights</p>
+          </section>
+          <section class="sleep">
+            <h3>🌙Sleep</h3>
+            <p class="sleep">Last Nights Sleep</p>
+            <p class="weekly-sleep">Weekly Report</p>
+            <p class="avg-sleep">Averages</p>
+          </section>
+          <section class="hydration">
+            <h3>💧Hydration</h3>
+            <p class="water">Water Drank Today</p>
+            <p class="weekly-water">Weekly Report</p>
+          </section>
+        </main>
+      </div>
+    </div>
 
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>

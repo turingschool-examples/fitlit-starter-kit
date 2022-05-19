@@ -4,12 +4,16 @@ class HydrationRepository {
     constructor(data) {
       this.users = data.map((userObj) => { return new Hydration(userObj) });
     }
-    avgOunces(){
-        const average = this.users.reduce((sum, person) => {
+
+    avgOunces(id) {
+        const userAqua = this.users.filter((user) => {
+            return user.id === id;
+        })
+        const average = userAqua.reduce((sum, person) => {
             sum += person.ounces
             return sum
         }, 0)
-        return Math.round(average/this.users.length);
+        return Math.round(average/userAqua.length);
     }
 }
 

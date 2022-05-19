@@ -8,6 +8,11 @@ class Hydration {
 
     }
 
+    // For a user, how many fluid ounces they consumed for a specific day (identified by a date)
+    // Might need a calender dropdown (datePicker NPM)
+    dailyAvgOunces() {
+
+    }
 }
 
 

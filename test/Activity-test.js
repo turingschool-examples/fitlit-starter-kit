@@ -29,7 +29,7 @@ describe("Activity Repository", () => {
   });
 
   it("should have a method that lists number of flights for a week", function () {
-    expect(activity.activityFlightsPerWeek(1)).to.deep.equal([
+    expect(activity.activityFlightsPast7Days(1)).to.deep.equal([
       36, 18, 33, 2,
       12,  6,  6
     ])

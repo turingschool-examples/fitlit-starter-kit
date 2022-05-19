@@ -48,9 +48,4 @@ describe("Activity Repository", () => {
     expect(activity.stairClimbRecord(1)).to.equal(36)
   });
 
-//   it.skip('should do this' () => {
-//     expect().to.();
-//   });
-
-
 });

@@ -7,7 +7,8 @@ import {userDataList, userHydrationList, userSleepList} from './apiCalls';
 // ****** querySelectors ******
 var welcomeUser = document.querySelector('.welcome-user');
 var userInfo = document.querySelector('.user-info');
-var avgWaterGoal = document.querySelector('#averageGoal')
+var avgWaterGoal = document.querySelector('#averageGoal');
+var dailyOzDrank = document.querySelector('#dailyGoal')
 // var stepsBox = document.querySelector('#stepsBox');
 // var userDisplay = document.querySelector('#userInfo');
 
@@ -45,12 +46,12 @@ function displayUserInfo(user, userRepository, hydrationRepository) {
    welcomeUser.innerText = `Welcome, ${user.returnFirstName()}!`;
     // var stepGoalRating;
     // user.dailyStepGoal > getStepGoalAvg(userArray) ? stepGoalRating = 'Above Average' : stepGoalRating = 'Above Average';
-    userInfo.innerText =
+    userInfo.innerHTML =
         // `${user.name}
-        `Address: ${user.address}
-        E-mail: ${user.email}
-        \nStride Length: ${user.strideLength}
-          Daily Step Goal: ${user.dailyStepGoal}
+        `Address: ${user.address}<br>
+        E-mail: ${user.email}<br>
+        \nStride Length: ${user.strideLength}<br>
+          Daily Step Goal: ${user.dailyStepGoal}<br>
             \nAverage Users Step Goal: ${userRepository.averageStepGoal()}`
         //   console.log(hydrationRepository)
         displayWaterAvgGoalAllTime(user.id, hydrationRepository);
@@ -60,8 +61,12 @@ function displayUserInfo(user, userRepository, hydrationRepository) {
 function displayWaterAvgGoalAllTime(id, hydrationRepository) {
     // console.log(data)
     avgWaterGoal.innerText = `Average Water Consumed: ${hydrationRepository.avgOunces(id)}`
-
+    hydrationRepository.dailyAvgOunces(1, '2020/01/01')
 }
+
+// function displayDailyOz() {
+//     dailyOzDrank.innertext = `Water Drank on: ${date} - ${amount}oz`
+// }
 
 function displayDropDownInfo(users) {
     let userDropDown = document.getElementById('userDropDown');

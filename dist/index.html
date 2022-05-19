@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="normalize.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="datepicker.min.css">
   <title>VJC Fitness</title>
 </head>
 <body>
@@ -29,7 +30,7 @@
     <div class="user-box">
       <select class="user-dropdown" id="userDropDown">
         <option disabled hidden selected>Select User</option>
-        <option value="default"></option>  
+        <option value="default"></option>
         <!-- onclick="displayUserInfo()" -->
       </select>
       <text class="user-info" id="userInfo"></text>
@@ -60,15 +61,20 @@
             <article class="category-chart"></article>
           </div>
           <div class="average-box">
-            <article class="daily-goal" id="dailyGoal">Daily OZ
-            <select class="date-picker"></select></article>
-            <article class="average-goal" id="averageGoal">Average OZ</article>
+            <article class="daily-goal" id="dailyGoal">
+              <div>Daily Ounces</div>
+              <input type="text" name="date-picker" placeholder="Select Date" id="date-picker">
+              <article id="user-ounce-for-day-result"></article>
+              <!-- <select class="date-picker"></select> -->
+            </article>
+            <article class="average-goal" id="averageGoal">Average Ounces</article>
           </div>
         </div>
       </div>
     </div>
   </section>
   <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+  <script src="datepicker.min.js"></script>
   <script src="bundle.js"></script>
 </body>
 </html>

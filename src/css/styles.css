@@ -272,3 +272,5 @@ img {
     width: 23%;
     height: 80%;
   }
+
+@import '~js-datepicker/dist/datepicker.min.css';

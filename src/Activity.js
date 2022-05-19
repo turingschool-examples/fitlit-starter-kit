@@ -57,7 +57,7 @@ class Activity {
     return Math.round(miles * 100) / 100;
   };
 
-  activityFlightsPerWeek(userId) {
+  activityFlightsPast7Days(userId) {
     const userFlightsData = this.findUser(userId);
 
     const lastElement = userFlightsData.indexOf(

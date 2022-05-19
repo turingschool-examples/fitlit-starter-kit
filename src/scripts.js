@@ -50,12 +50,12 @@ function createUsersAverageSteps() {
 
 const buildAttributes = (user) => {
     userName.innerHTML = `Name: ${user.name}`;
-    emailAddress.innerHTML = `email:${user.email}`;
-    stepGoal.innerHTML = `Goal:${user.dailyStepGoal}`;
+    emailAddress.innerHTML = `Email:${user.email}`;
+    stepGoal.innerHTML = `Goal:${user.dailyStepGoal} steps`;
     friends.innerHTML = `Friends:${user.friends}`;
-    address.innerHTML = `address:${user.address}`;
-    strideLength.innerHTML = `Stride Length: ${user.strideLength} feet`;
-    userGreeting.innerHTML = `Welcome ${user.name}!`;
+    address.innerHTML = `Address:${user.address}`;
+    strideLength.innerHTML = `Stride Length: ${user.strideLength} steps`;
+    userGreeting.innerHTML = `Welcome ${user.name.split(" ")[0]}!`;
 }
 
 

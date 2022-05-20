@@ -21,4 +21,3 @@ const fetchUserHydration = () => {
 //.then gives access but doesn't return similar to forEach()
 
 export {fetchUserData, fetchUserActivity, fetchUserSleep, fetchUserHydration}
-export default getPromiseAll;

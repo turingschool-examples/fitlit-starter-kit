@@ -10,18 +10,19 @@ class Sleep {
     return totalAcc;
   }, 0)
     let result = overallSleepQualitySum / this.allUserInstances.length;
+    result = (Math.round(result * 10) / 10)
     return result;
   };
-  findObjectByDate(day) {
+  findUserDataObjectByDate(day) {
     let specifiedObject = this.allUserInstances.find(userObject => userObject.date === day);
     return specifiedObject;
   };
   returnObjectByDate(day, objectType) {
-    let specifiedObject = this.findObjectByDate(day);
+    let specifiedObject = this.findUserDataObjectByDate(day);
     return specifiedObject[objectType];
   };
   calculateAvg(startDate, type) {
-    let startingObject = this.findObjectByDate(startDate);
+    let startingObject = this.findUserDataObjectByDate(startDate);
     let index = this.allUserInstances.indexOf(startingObject);
     let objectsWithinDateRange = this.allUserInstances.slice(this.allUserInstances[index], 7);
     let total = objectsWithinDateRange.reduce((acc, object) => {

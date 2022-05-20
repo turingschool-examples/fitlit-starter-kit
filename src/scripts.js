@@ -14,7 +14,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 // An example of how you tell webpack to use a JS file
 
 // import userData from './data/users';
-import getPromiseAll from './apiCalls';
+import {fetchUserData, fetchUserActivity, fetchUserSleep, fetchUserHydration} from './apiCalls';
 import UserRepository from './UserRepository';
 import User from './User'
 
@@ -33,7 +33,7 @@ let email = document.getElementById('email')
 let avgStepGoal = document.getElementById('avg-step-goal')
 
 
-window.addEventListener('load', getPromiseAll())
+// window.addEventListener('load', getPromiseAll())
 
 let userRepo;
 

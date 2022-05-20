@@ -1,6 +1,4 @@
 import { expect } from 'chai';
-import userData from '../src/data/users.js';
-import User from '../src/User.js';
 import HydrationRepository from '../src/HydrationRepository';
 import hydrationData from '../src/data/hydration'
 
@@ -11,19 +9,19 @@ describe('HydrationRepository', () => {
         hydrationRepository = new HydrationRepository(hydrationData);
     })
 
-    it('should be a function', () => {
+    it('Should be a function', () => {
         expect(HydrationRepository).to.be.a('function');
     })
 
-    it('should be a new instance of HydrationRepository', () => {
+    it('Should be a new instance of HydrationRepository', () => {
         expect(hydrationRepository).to.be.an.instanceof(HydrationRepository)
     })
 
-    it('should hold the users hydration data', () => {
+    it('Should hold the users hydration data', () => {
         expect(hydrationRepository.hydrationData).to.equal(hydrationData);
     })
 
-    it('should return all of users hydration data given its id number', () => {
+    it('Should return all of users hydration data given its id number', () => {
         expect(hydrationRepository.getHydrationDataForUser(1)).to.deep.equal([
             { userID: 1, date: '2019/06/15', numOunces: 37 },
             { userID: 1, date: '2019/06/16', numOunces: 69 },
@@ -35,7 +33,7 @@ describe('HydrationRepository', () => {
           ]);
     })
 
-    it('should have a function that returns the average ounces consumed for all time ', () => {
+    it('Should have a function that returns the average ounces consumed for all time ', () => {
         expect(hydrationRepository.getAllTimeOuncesAverage(1)).to.equal(64.85714285714286);
     })
     
@@ -43,7 +41,7 @@ describe('HydrationRepository', () => {
         expect(hydrationRepository.getUserHydrationForDay(1, '2019/06/15')).to.equal(37);
     })
 
-    it('should show users hydration data per week', () => {
+    it('Should show users hydration data per week', () => {
         expect(hydrationRepository.getUserHydrationPerWeek(2, '2019/06/21')).to.deep.equal([
             {'2019/06/15': 75 },
             {'2019/06/16': 91 },
@@ -52,14 +50,6 @@ describe('HydrationRepository', () => {
             {'2019/06/19': 76 },
             {'2019/06/20': 71 },
             {'2019/06/21': 27 }
-          ]
-          )
-    })
-})
-
-
-
-
-
-
-// For a user, how many fluid ounces of water consumed each day over the course of a week (7 days) - return the amount for each day
+          ]);
+    });
+});

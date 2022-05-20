@@ -25,7 +25,6 @@ class Activity {
   activityStepsForWeek(userId) {
     const userData = this.findUser(userId);
     const lastElement = userData.indexOf(userData[userData.length - 1]);
-    // const userData = this.findUser(userId);
     const weekData = userData.slice(lastElement - 6);
 
     return weekData.map((data) => 

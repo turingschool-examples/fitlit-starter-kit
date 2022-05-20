@@ -36,7 +36,7 @@ let email = document.getElementById('email')
 let avgStepGoal = document.getElementById('avg-step-goal')
 
 
-window.addEventListener('load', Promise.all())
+// window.addEventListener('load', Promise.all())
 
 let userRepo;
 let sleepRepo;
@@ -52,8 +52,6 @@ Promise.all([fetchUserData(), fetchUserActivity(), fetchUserSleep(), fetchUserHy
   })
 
 // //usually reassign to global variables
-
-
 
 function userDataHelper(data) {
     console.log('outside',data)
@@ -88,7 +86,8 @@ function hydrationDataHelper(data) {
   hydrationRepo = new HydrationRepository(data);
   console.log("hydrationRepo", hydrationRepo);
   console.log("wtf", userRepo.getUserById(displayedUsersID).id);
-  displayHydrationInfo(userRepo.getUserById(displayedUsersID).id, hydrationRepo);
+    console.log("wtf2", displayedUsersID);
+  displayHydrationInfo(displayedUsersID, hydrationRepo);
 }
 
 function displayHydrationInfo(id, hydrationRepo) {

@@ -45,17 +45,23 @@ let activityRepo;
 
 Promise.all([fetchUserData(), fetchUserActivity(), fetchUserSleep(), fetchUserHydration()]).then(data => {
     console.log('seeifData', data)
-    const filterData = (data) => {
       instantiateRepoType(data);
-    }
-    // userRepo.diplayUserInfo(data[0].userData, data[0])
-})
+    })
+
+function filterData(data) {
+  instantiateRepoType(data);
+}
 
 function instantiateRepoType(data) {
+  console.log("i've been hit");
   userRepo = new UserRepository(data[0]);
   activityRepo = new ActivityRepository(data[1]);
   sleepRepo = new SleepRepository(data[2]);
   hydrationRepo = new HydrationRepository(data[3]);
+  console.log("userRepo", userRepo);
+  console.log("activityRepo", activityRepo);
+  console.log("sleepRepo", sleepRepo);
+  console.log("hydrationRepo", hydrationRepo);
 }
 //usually reassign to global variables
 

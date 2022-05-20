@@ -29,23 +29,37 @@ describe('HydrationRepository', () => {
             { userID: 1, date: '2019/06/16', numOunces: 69 },
             { userID: 1, date: '2019/06/17', numOunces: 96 },
             { userID: 1, date: '2019/06/18', numOunces: 61 },
-            { userID: 1, date: '2019/06/19', numOunces: 91 }
+            { userID: 1, date: '2019/06/19', numOunces: 91 },
+            { userID: 1, date: '2019/06/20', numOunces: 50 },
+            { userID: 1, date: '2019/06/21', numOunces: 50 }
           ]);
     })
 
     it('should have a function that returns the average ounces consumed for all time ', () => {
-        expect(hydrationRepository.getAllTimeOuncesAverage(1)).to.equal(70.8);
+        expect(hydrationRepository.getAllTimeOuncesAverage(1)).to.equal(64.85714285714286);
+    })
+    
+    it('Should have a function that takes in user\'s id and a date and returns the user\'s hydration in ounces for that day', () => {
+        expect(hydrationRepository.getUserHydrationForDay(1, '2019/06/15')).to.equal(37);
     })
 
+    it('should show users hydration data per week', () => {
+        expect(hydrationRepository.getUserHydrationPerWeek(2, '2019/06/21')).to.deep.equal([
+            {'2019/06/15': 75 },
+            {'2019/06/16': 91 },
+            {'2019/06/17': 96 },
+            {'2019/06/18': 70 },
+            {'2019/06/19': 76 },
+            {'2019/06/20': 71 },
+            {'2019/06/21': 27 }
+          ]
+          )
+    })
 })
 
 
 
 
-
-
-
-// For a user, how many fluid ounces they consumed for a specific day (identified by a date)
 
 
 // For a user, how many fluid ounces of water consumed each day over the course of a week (7 days) - return the amount for each day

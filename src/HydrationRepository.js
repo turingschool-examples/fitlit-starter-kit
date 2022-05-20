@@ -18,5 +18,26 @@ class HydrationRepository {
         }, 0)
         return averageUserHydration / hydrationDataForUser.length;
     }
+
+    getUserHydrationForDay(idNum, date) {
+        const userHydrationDate = this.hydrationData.find((userHydrationData) => {
+            return userHydrationData.userID === idNum && userHydrationData.date === date;
+        })
+        return userHydrationDate.numOunces;
+    }
+
+    getUserHydrationPerWeek(id, dateParam) {
+        const userData = this.getHydrationDataForUser(id);
+        const endDateIndex = userData.findIndex((date) => {
+            return date.date === dateParam;
+        })
+        console.log(endDateIndex)
+        const weeklyRange = userData.slice(endDateIndex+1, -7) 
+        console.log(weeklyRange)
+        const weeklyHydration = weeklyRange.map((date) => {
+            return {[date.date]: date.numOunces}
+        })
+        return weeklyHydration;
+    }
 }
 export default HydrationRepository;

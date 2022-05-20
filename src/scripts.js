@@ -2,6 +2,7 @@ import './css/styles.css';
 import './images/turing-logo.png'
 import UserRepository from './UserRepository';
 import HydrationRepository from './HydrationRepository';
+import SleepRepository from './SleepRepository';
 import {userDataList, userHydrationList, userSleepList} from './apiCalls';
 import datepicker from 'js-datepicker';
 import dateFormat from 'dateformat'
@@ -44,6 +45,7 @@ function loadData () {
                 const ouncesIntake = hydrationRepository.displayWeekWaterIntake(userId, formattedDate)
                 const dateIntake = hydrationRepository.displayWaterByDate(userId, formattedDate)
                 hydrationRepository.displayWeeklyWaterChart(dateIntake, ouncesIntake)
+                SleepRepository.
             }
           })
     })

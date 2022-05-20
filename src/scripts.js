@@ -16,6 +16,9 @@ console.log('This is the JavaScript entry file - your code begins here.');
 // import userData from './data/users';
 import {fetchUserData, fetchUserActivity, fetchUserSleep, fetchUserHydration} from './apiCalls';
 import UserRepository from './UserRepository';
+import SleepRepository from './sleep-repository';
+import ActivityRepository from './Activity';
+import HydrationRepository from './HydrationRepository';
 import User from './User'
 
 let friends = document.getElementById('friends')
@@ -36,13 +39,24 @@ let avgStepGoal = document.getElementById('avg-step-goal')
 // window.addEventListener('load', getPromiseAll())
 
 let userRepo;
+let sleepRepo;
+let hydrationRepo;
+let activityRepo;
 
 Promise.all([fetchUserData(), fetchUserActivity(), fetchUserSleep(), fetchUserHydration()]).then(data => {
     console.log('seeifData', data)
-    userRepo = new UserRepository()
-    userRepo.diplayUserInfo(data[0].userData[3], data[0])
+    const filterData = (data) => {
+      instantiateRepoType(data);
+    }
+    // userRepo.diplayUserInfo(data[0].userData, data[0])
 })
 
+function instantiateRepoType(data) {
+  userRepo = new UserRepository(data[0]);
+  activityRepo = new ActivityRepository(data[1]);
+  sleepRepo = new SleepRepository(data[2]);
+  hydrationRepo = new HydrationRepository(data[3]);
+}
 //usually reassign to global variables
 
 

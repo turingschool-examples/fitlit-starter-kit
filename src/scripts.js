@@ -14,7 +14,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 // An example of how you tell webpack to use a JS file
 
 // import userData from './data/users';
-import userData from './apiCalls';
+import getPromiseAll from './apiCalls';
 import UserRepository from './UserRepository';
 import User from './User'
 
@@ -33,24 +33,22 @@ let email = document.getElementById('email')
 let avgStepGoal = document.getElementById('avg-step-goal')
 
 
-// window.addEventListener('load', getAllUsers())
+window.addEventListener('load', getPromiseAll())
 
-console.log(userData)
+let userRepo;
 
-// function resolvePromise() {
-//   Promise.all([userData])
-//   .then(files => {
-//     files.forEach(file => {
-//       process(file.json())
-//     })
-//   })
-//   let process = (prom) => {
-//     prom.then(data => {
-//       fetchedData = data
-//       console.log(fetchedData)
-//       return fetchedData
-//     })
-//   }
+Promise.all([fetchUserData(), fetchUserActivity(), fetchUserSleep(), fetchUserHydration()]).then(data => {
+    console.log('seeifData', data)
+    userRepo = new UserRepository()
+    userRepo.diplayUserInfo(data[0].userData[3], data[0])
+})
+
+//usually reassign to global variables
+
+
+
+
+
 
 // function getRandomID() {
 //     return Math.floor(Math.random() * userData.length)
@@ -76,14 +74,14 @@ console.log(userData)
 //     displayUserInfo(userRepo.getUserById(getRandomID()), userRepo)
 // }
 //
-// function displayUserInfo(user, userRepo) {
-//     welcomeName.innerText = `Welcome, ${user.getUserFirstName()}`
-//     stepGoal.innerText = `${user.dailyStepGoal}`
-//     email.innerText = `${user.email}`
-//
-//     const getFriendsNames = user.friends.map((friend) => {
-//         return userRepo.getUserById(friend).name
-//     })
-//     friends.innerText = `${getFriendsNames}`
-//     avgStepGoal.innerText = `${userRepo.calculateAvgStepGoal()}`
-// }
+function displayUserInfo(user, userRepo) {
+    welcomeName.innerText = `Welcome, ${user.getUserFirstName()}`
+    stepGoal.innerText = `${user.dailyStepGoal}`
+    email.innerText = `${user.email}`
+
+    const getFriendsNames = user.friends.map((friend) => {
+        return userRepo.getUserById(friend).name
+    })
+    friends.innerText = `${getFriendsNames}`
+    avgStepGoal.innerText = `${userRepo.calculateAvgStepGoal()}`
+}

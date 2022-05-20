@@ -13,8 +13,8 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
 
-import userData from './data/users';
-import fetchUserData from './apiCalls';
+// import userData from './data/users';
+import userData from './apiCalls';
 import UserRepository from './UserRepository';
 import User from './User'
 
@@ -32,41 +32,58 @@ let weeklyWater = document.getElementById('weekly-water')
 let email = document.getElementById('email')
 let avgStepGoal = document.getElementById('avg-step-goal')
 
-console.log(fetchUserData)
 
-window.addEventListener('load', getAllUsers())
+// window.addEventListener('load', getAllUsers())
 
-function getRandomID() {
-    return Math.floor(Math.random() * userData.length)
-}
+console.log(userData)
+
+// function resolvePromise() {
+//   Promise.all([userData])
+//   .then(files => {
+//     files.forEach(file => {
+//       process(file.json())
+//     })
+//   })
+//   let process = (prom) => {
+//     prom.then(data => {
+//       fetchedData = data
+//       console.log(fetchedData)
+//       return fetchedData
+//     })
+//   }
+
+// function getRandomID() {
+//     return Math.floor(Math.random() * userData.length)
+// }
 //make all users from data into user objects
 //could make more dynamic with params to do for every repo
 
-function getAllUsers() {
-    const createUsersArray = userData.map((user) => {
-        return new User(user)
-    });
-    putUsersInRepo(createUsersArray)
-}
-console.log(getAllUsers())
-//put array of all user objects in user-repo
-function putUsersInRepo(usersArray) {
-    let userRepo = new UserRepository(usersArray)
-    getRandomUser(userRepo)
-}
-
-function getRandomUser(userRepo) {
-    displayUserInfo(userRepo.getUserById(getRandomID()), userRepo)
-}
-
-function displayUserInfo(user, userRepo) {
-    welcomeName.innerText = `Welcome, ${user.getUserFirstName()}`
-    stepGoal.innerText = `${user.dailyStepGoal}`
-    email.innerText = `${user.email}`
-
-    const getFriendsNames = user.friends.map((friend) => {
-        return userRepo.getUserById(friend).name
-    })
-    friends.innerText = `${getFriendsNames}`
-    avgStepGoal.innerText = `${userRepo.calculateAvgStepGoal()}`
-}
+// function getAllUsers() {
+//   console.log(userData)
+//     const createUsersArray = userData.map((user) => {
+//         return new User(user)
+//     });
+//     putUsersInRepo(createUsersArray)
+// }
+// // console.log(getAllUsers())
+// //put array of all user objects in user-repo
+// function putUsersInRepo(usersArray) {
+//     let userRepo = new UserRepository(usersArray)
+//     getRandomUser(userRepo)
+// }
+//
+// function getRandomUser(userRepo) {
+//     displayUserInfo(userRepo.getUserById(getRandomID()), userRepo)
+// }
+//
+// function displayUserInfo(user, userRepo) {
+//     welcomeName.innerText = `Welcome, ${user.getUserFirstName()}`
+//     stepGoal.innerText = `${user.dailyStepGoal}`
+//     email.innerText = `${user.email}`
+//
+//     const getFriendsNames = user.friends.map((friend) => {
+//         return userRepo.getUserById(friend).name
+//     })
+//     friends.innerText = `${getFriendsNames}`
+//     avgStepGoal.innerText = `${userRepo.calculateAvgStepGoal()}`
+// }

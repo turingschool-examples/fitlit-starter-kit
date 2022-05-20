@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
-import  userData  from '../src/data/sampleData';
+import  userData  from '../src/data/sampleData-user';
 
 describe('User Repository', () => {
   it('should be a function', function () {

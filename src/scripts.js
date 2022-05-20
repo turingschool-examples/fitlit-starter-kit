@@ -6,20 +6,10 @@ import {userDataList, userHydrationList, userSleepList} from './apiCalls';
 import datepicker from 'js-datepicker';
 import dateFormat from 'dateformat'
 
-// const waterIntakeChart = document.getElementById('myChart').getContext('2d');
 // ****** querySelectors ******
 var welcomeUser = document.querySelector('.welcome-user');
 var userInfo = document.querySelector('.user-info');
 var avgWaterGoal = document.querySelector('#averageGoal');
-var dailyOzDrank = document.querySelector('#dailyGoal')
-// var stepsBox = document.querySelector('#stepsBox');
-// var userDisplay = document.querySelector('#userInfo');
-
-// var myChart = new Chart("myChart", {
-//     type: "bar",
-//     data: {[1, 5, 6, 2, 9]},
-//     options: {['hi', 'you', 'hey', 'you', 'hey']}
-//   });
 
 // ****** event listeners ******
 window.addEventListener('load', loadData);
@@ -29,18 +19,13 @@ function loadData () {
         var userData = data[0].userData
         var userHydrationData = data[1].hydrationData
         var userSleepData = data[2].sleepData
-
-
         const userRepository = new UserRepository(userData);
         const hydrationRepository = new HydrationRepository(userHydrationData);
-
         document.getElementById('userDropDown').onchange = () => {
             chooseUser(userRepository, hydrationRepository);
         };
-
         var users = userRepository.users
         displayDropDownInfo(users);
-
         const picker = datepicker('#date-picker', {
             minDate: new Date(2019, 5, 15),
             maxDate: new Date(2020, 0, 22),
@@ -50,16 +35,15 @@ function loadData () {
                 input.value = newDate
               },
             onSelect: (_instance, date) => {
-              var selection = document.getElementById('userDropDown');
-              var userId = parseInt(selection.options[selection.selectedIndex].value);
-              const formattedDate = dateFormat(date, "yyyy/mm/dd")
-              const userOuncesForDate = hydrationRepository.displayDailyAvgOunces(userId, formattedDate)
-              const resultElement = document.getElementById('user-ounce-for-day-result') // long id but it's descriptive haha.
-              // we can print something more exciting than "Ounces:" but just wanted to get it working!
-              resultElement.innerText = `Ounces: ${userOuncesForDate}`
-              const ouncesIntake = hydrationRepository.displayWeekWaterIntake(formattedDate)
-              const dateIntake = hydrationRepository.displayWaterByDate(formattedDate)
-              console.log(hydrationRepository.displayWeeklyWaterChart(dateIntake, ouncesIntake))
+                var selection = document.getElementById('userDropDown');
+                var userId = parseInt(selection.options[selection.selectedIndex].value);
+                const formattedDate = dateFormat(date, "yyyy/mm/dd")
+                const userOuncesForDate = hydrationRepository.displayDailyAvgOunces(userId, formattedDate)
+                const resultElement = document.getElementById('user-ounce-for-day-result')
+                resultElement.innerText = `Ounces: ${userOuncesForDate}`
+                const ouncesIntake = hydrationRepository.displayWeekWaterIntake(userId, formattedDate)
+                const dateIntake = hydrationRepository.displayWaterByDate(userId, formattedDate)
+                hydrationRepository.displayWeeklyWaterChart(dateIntake, ouncesIntake)
             }
           })
     })
@@ -68,7 +52,6 @@ function loadData () {
 function chooseUser(userRepository, hydrationRepository) {
     var selection = document.getElementById('userDropDown');
     var userId = parseInt(selection.options[selection.selectedIndex].value);
-
     var user = userRepository.getUser(userId)
     displayUserInfo(user, userRepository, hydrationRepository);
     const datePicker = document.querySelector("#date-picker");
@@ -89,19 +72,13 @@ function displayUserInfo(user, userRepository, hydrationRepository) {
         \nStride Length: ${user.strideLength}<br>
           Daily Step Goal: ${user.dailyStepGoal}<br>
             \nAverage Users Step Goal: ${userRepository.averageStepGoal()}`
-        //   console.log(hydrationRepository)
         displayWaterAvgGoalAllTime(user.id, hydrationRepository);
     // stepsBox.innerText = `Daily Step Goal: ${user.dailyStepGoal}`
 };
 
 function displayWaterAvgGoalAllTime(id, hydrationRepository) {
-    // console.log(hydrationRepository)
     avgWaterGoal.innerText = `Average Water Consumed: ${hydrationRepository.displayAllTimeAvgOunces(id)}`
 }
-
-// function displayDailyOz() {
-//     dailyOzDrank.innertext = `Water Drank on: ${date} - ${amount}oz`
-// }
 
 function displayDropDownInfo(users) {
     let userDropDown = document.getElementById('userDropDown');

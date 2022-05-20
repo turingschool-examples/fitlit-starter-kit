@@ -26,8 +26,10 @@ class HydrationRepository {
         return waterByDay;
     }
 
-    displayWeekWaterIntake(date){
-        const filteredFluidById = this.users;
+    displayWeekWaterIntake(id, date){
+        const filteredFluidById = this.users.filter((user) => {
+            return user.id === id;
+        });
         const index = filteredFluidById.findIndex(data => {
           return data.date === date
         })
@@ -38,8 +40,10 @@ class HydrationRepository {
         return week;
     }
 
-    displayWaterByDate(date) {
-        const dateWaterIntake = this.users;
+    displayWaterByDate(id, date) {
+        const dateWaterIntake = this.users.filter((user) => {
+            return user.id === id;
+        });
         const index = dateWaterIntake.findIndex(data => {
             return data.date === date
           })  
@@ -79,12 +83,3 @@ class HydrationRepository {
 }
 
 export default HydrationRepository;
-// data () {
-//     return {
-//     myOptions: {
-//     legend: {
-//     display: false
-//     }
-//     }
-//     }
-//     }

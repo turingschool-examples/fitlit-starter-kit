@@ -93,8 +93,10 @@ function hydrationDataHelper(data) {
 
 function displayHydrationInfo(id, hydrationRepo) {
   console.log("id", id);
-    waterDrank.innerText += hydrationRepo.getFluidOuncesByDate(id, "2020/01/22");
+  waterDrank.innerText += `: ${hydrationRepo.getFluidOuncesByDate(id, "2020/01/22")} ounces`;
   console.log("does this even work", hydrationRepo.getFluidOuncesByDate(id, "2020/01/22"));
+  weeklyWater.innerText += `${hydrationRepo.getFluidOuncesEachDayOfWeek(id, "2020/01/16")}`;
+  console.log("wtf does this look like", hydrationRepo.getFluidOuncesEachDayOfWeek(id, "2020/01/16"))
 }
 
 

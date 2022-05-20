@@ -4,7 +4,6 @@
 function getUserDataFromAPI() {
     return fetch('https://fitlit-api.herokuapp.com/api/v1/users')
         .then(promise => promise.json())
-        .then(someData => someData)
         .catch(error => console.log(error))
 }
 

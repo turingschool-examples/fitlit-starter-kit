@@ -2,36 +2,25 @@ import { getUserDataFromAPI, getSleepDataFromAPI, getHydrationDataFromAPI} from 
 
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
-//
-//
-//need a function  to create repo user repo = new userrepo
-// create a current user
-// create window.addeventlistenr(load () => {
-// ${currentuser.Name}
-// })
-// "id": 1,
-//     "name": "Luisa Hane",
-//     "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-//     "email": "Diana.Hayes1@hotmail.com",
-//     "strideLength": 4.3,
-//     "dailyStepGoal": 10000,
-//     "friends": [
-//       16,
-//       4,
-//       8
-//     ]
-//   },
-
 //fafo 
-
-
 // ///*~~~~~~~~Global Variables~~~~~~~*/
-var userRepo = new UserRepository(getUserDataFromAPI());  
+var userRepo;
 const getRandomID = () => {
-    return Math.floor(Math.random() * 50);
-  };
-  
-  const userId = getRandomID(); 
+  return Math.floor(Math.random() * 50);
+};
+const userId = getRandomID();
+getUserDataFromAPI().then(res => {
+  setUserData(res.userData);
+  console.log({userRepo});
+  createUsersAverageSteps();
+  const thisUser = getUserData();
+  buildAttributes(thisUser);
+})
+
+const setUserData = (someData) => {
+  userRepo = new UserRepository(someData); 
+}
+
 
 
 ///*~~~~~~~~QUERY SELECTORS~~~~~~~*/
@@ -66,21 +55,7 @@ const buildAttributes = (user) => {
     strideLength.innerHTML = `Stride Length: ${user.strideLength} steps`;
     userGreeting.innerHTML = `Welcome ${user.name.split(" ")[0]}!`;
 }
-
-
-
-//*~~~~~~~~Event Listeners~~~~~~~*//
-window.addEventListener('load', (event) => {
-    createUsersAverageSteps();
-  });
-  window.addEventListener('load', (event) => {
-    const thisUser = getUserData();
-    buildAttributes(thisUser);
-  });
-
-    
-
-
+  
 //console.log(userData,"<>>>>userData")
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';

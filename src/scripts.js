@@ -36,36 +36,80 @@ let email = document.getElementById('email')
 let avgStepGoal = document.getElementById('avg-step-goal')
 
 
-// window.addEventListener('load', getPromiseAll())
+window.addEventListener('load', Promise.all())
 
 let userRepo;
 let sleepRepo;
 let hydrationRepo;
 let activityRepo;
+let displayedUsersID;
 
-Promise.all([fetchUserData(), fetchUserActivity(), fetchUserSleep(), fetchUserHydration()]).then(data => {
+Promise.all([fetchUserData(), fetchUserActivity(), fetchUserSleep(), fetchUserHydration()])
+  .then(data => {
     console.log('seeifData', data)
-      instantiateRepoType(data);
-    })
+      userDataHelper(data[0].userData);
+      hydrationDataHelper(data[3].hydrationData);
+  })
 
-function filterData(data) {
-  instantiateRepoType(data);
+// //usually reassign to global variables
+
+
+
+function userDataHelper(data) {
+    console.log('outside',data)
+    displayedUsersID = Math.floor(Math.random() * 50)
+    const usersArray = getAllUsers(data)
+    userRepo = new UserRepository(usersArray)
+    displayUserInfo(userRepo.getUserById(displayedUsersID), userRepo)
 }
 
-function instantiateRepoType(data) {
-  console.log("i've been hit");
-  userRepo = new UserRepository(data[0]);
-  activityRepo = new ActivityRepository(data[1]);
-  sleepRepo = new SleepRepository(data[2]);
-  hydrationRepo = new HydrationRepository(data[3]);
-  console.log("userRepo", userRepo);
-  console.log("activityRepo", activityRepo);
-  console.log("sleepRepo", sleepRepo);
+function getAllUsers(userData) {
+    const createUsersArray = userData.map((user) => {
+        return new User(user)
+    });
+    return createUsersArray
+}
+
+function displayUserInfo(user, userRepo) {
+  welcomeName.innerText = `Welcome, ${user.getUserFirstName()}`
+  stepGoal.innerText = `${user.dailyStepGoal}`
+  email.innerText = `${user.email}`
+
+  const getFriendsNames = user.friends.map((friend) => {
+    return userRepo.getUserById(friend).name
+  })
+  friends.innerText = `${getFriendsNames}`
+  avgStepGoal.innerText = `${userRepo.calculateAvgStepGoal()}`
+}
+
+// hydration helpers:
+function hydrationDataHelper(data) {
+  console.log("hydroData", data);
+  hydrationRepo = new HydrationRepository(data);
   console.log("hydrationRepo", hydrationRepo);
+  console.log("wtf", userRepo.getUserById(displayedUsersID).id);
+  displayHydrationInfo(userRepo.getUserById(displayedUsersID).id, hydrationRepo);
 }
-//usually reassign to global variables
+
+function displayHydrationInfo(id, hydrationRepo) {
+  console.log("id", id);
+    waterDrank.innerText += hydrationRepo.getFluidOuncesByDate(id, "2020/01/22");
+  console.log("does this even work", hydrationRepo.getFluidOuncesByDate(id, "2020/01/22"));
+}
 
 
+// WORKED TO INSTANTIATE ALL REPOS
+// function instantiateRepoType(data) {
+//   console.log("i've been hit");
+//   userRepo = new UserRepository(data[0]);
+//   activityRepo = new ActivityRepository(data[1]);
+//   sleepRepo = new SleepRepository(data[2]);
+//   hydrationRepo = new HydrationRepository(data[3]);
+//   console.log("userRepo", userRepo);
+//   console.log("activityRepo", activityRepo);
+//   console.log("sleepRepo", sleepRepo);
+//   console.log("hydrationRepo", hydrationRepo);
+// }
 
 
 
@@ -94,14 +138,3 @@ function instantiateRepoType(data) {
 //     displayUserInfo(userRepo.getUserById(getRandomID()), userRepo)
 // }
 //
-function displayUserInfo(user, userRepo) {
-    welcomeName.innerText = `Welcome, ${user.getUserFirstName()}`
-    stepGoal.innerText = `${user.dailyStepGoal}`
-    email.innerText = `${user.email}`
-
-    const getFriendsNames = user.friends.map((friend) => {
-        return userRepo.getUserById(friend).name
-    })
-    friends.innerText = `${getFriendsNames}`
-    avgStepGoal.innerText = `${userRepo.calculateAvgStepGoal()}`
-}

@@ -46,7 +46,7 @@ class HydrationRepository {
         });
         const index = dateWaterIntake.findIndex(data => {
             return data.date === date
-          })  
+          })
         const weekDate = dateWaterIntake.slice((index - 6) , (index + 1))
           .map(data => {
             return data.date
@@ -59,7 +59,7 @@ class HydrationRepository {
         var yValues = ounces;
         var barColors = ["red", "green", "blue", "orange","brown", "black", "magenta"];
         new Chart("myChart", {
-            type: "line",
+            type: "bar",
             data: {
                 labels: xValues,
                 datasets: [{

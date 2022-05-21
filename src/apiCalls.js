@@ -14,7 +14,6 @@ function getSleepDataFromAPI() {
 function getHydrationDataFromAPI() {
     return fetch('https://fitlit-api.herokuapp.com/api/v1/hydration')
     .then(promise => promise.json())
-    .then(someData => someData)
     .catch(error => console.log(error))
 }
 

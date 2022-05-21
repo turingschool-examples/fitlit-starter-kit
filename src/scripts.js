@@ -63,7 +63,8 @@ const userBuildAttributes = (user) => {
 };
 
 const hydrationBuildAttributes = (hydrationRepoParam) => {
-  userWaterDay.innerHTML = `You've drank ${hydrationRepoParam.getUserHydrationForDay(userId, "2020/01/21")} ounces of water today.`;
+  console.log(hydrationRepoParam.hydrationData)
+  userWaterDay.innerHTML = `<p>You've drank ${hydrationRepoParam.getUserHydrationForDay(userId, "2020/01/21")} ounces of water today.</p>`;
   console.log('console log from inside hydrationBuildAttributes: ', hydrationRepoParam.getUserHydrationPerWeek(userId, "2020/01/21"));
   userWaterWeek.innerHTML = `${hydrationRepoParam.getUserHydrationPerWeek(userId, "2020/01/21")}`;
 }

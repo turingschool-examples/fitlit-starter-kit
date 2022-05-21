@@ -22,7 +22,7 @@ let stepGoal = document.getElementById('step-goal');
 let stepsTaken = document.getElementById('steps-taken');
 let minsActive = document.getElementById('mins-active');
 let flights = document.getElementById('flights');
-let latestSleep = document.getElementById('last-sleep');
+let lastSleep = document.getElementById('last-sleep');
 let weeklySleep = document.getElementById('weekly-sleep');
 let avgSleep = document.getElementById('avg-sleep');
 let waterDrank = document.getElementById('water');
@@ -86,15 +86,14 @@ function displayUserInfo(user, userRepo) {
 
 function displaySleepInfo(id, sleepRepo) {
   let allUserData = sleepRepo.getAllUserData(id);
+  console.log(allUserData)
   let sleep = sleepRepo.makeNewSleep(id, allUserData);
-  let latestSleep = sleep.returnLatest();
-  let hoursSlept = latestSleep.hoursSlept;
-  let weeklyAvg = sleep.calculateAvg(latestSleep.date, "hoursSlept")
 
-  latestSleep.innerText = `Last Night: ${hoursSlept}`
-  weeklySleep.innerText = `Weekly Avg: ${weeklyAvg}`
+  lastSleep.innerText = `Last Night: ${sleep.latest.hoursSlept}`
+  weeklySleep.innerText = `Weekly Avg: ${sleep.calculateAvg(sleep.latest.date, "hoursSlept")}`
   avgSleep.innerText = `Average Hours Slept: ${sleep.avgHoursSlept} Average Sleep Quality: ${sleep.avgSleepQuality}`
 }
+
 function displayHydrationInfo(id, hydrationRepo) {
   const waterByWeek = hydrationRepo.getFluidOuncesEachDayOfWeek(id, "2020/01/16");
   waterDrank.innerText += `: ${hydrationRepo.getFluidOuncesByDate(id, "2020/01/22")} ounces`;

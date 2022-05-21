@@ -29,15 +29,35 @@ class SleepRepository {
     }, 0);
     return averageUserSleepHours / sleepDataForUser.length;
   }
-  
-  getSleepHoursByDay(date) {
-    const sleepHoursDay = this.sleepData.find((element) => {
+
+  // getSleepHoursByDay(date) {
+  //   const sleepHoursDay = this.sleepData.find((element) => {
+  //     if (element.date === date) {
+  //       return element;
+  //     }
+  //   });
+  //   return sleepHoursDay.hoursSlept;
+  // }
+
+  // getSleepQualityByDay(date) {
+  //   const sleepQualityByDay = this.sleepData.find((element) => {
+  //     if (element.date === date) {
+  //       return element;
+  //     }
+  //   });
+  //   return sleepQualityByDay.sleepQuality;
+  // }
+
+  getSleepDataByDate(date, property) {
+    let sleepDataByDay = this.sleepData.find((element) => {
       if (element.date === date) {
         return element;
       }
     });
-    return sleepHoursDay.hoursSlept;
+    console.log(property)
+    return sleepDataByDay[property];
   }
+  
 }
 
 export default SleepRepository;

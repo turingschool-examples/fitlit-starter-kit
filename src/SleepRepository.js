@@ -110,41 +110,43 @@ class SleepRepository{
     }
 
     displayWeeklySleepChart(date, Shours, SQhours) {
-        var xSleepDate = date;
-        var ySleepQuality = SQhours;
-        var ySleepHours = Shours;
         var barColors = ["red", "green", "blue", "orange","brown", "black", "magenta"];
-        new Chart("myChart1", {
-            type: "bar",
-            data: {
-                labels: xSleepDate,
-                datasets: [{
-                    label: 'Sleep Hours',
-                    borderColor: 'rgba(255, 0, 0, 0.7)',
-                    backgroundColor: barColors,
-                    data: ySleepHours
-                }]
+        const data = {
+            labels: date,
+            datasets: [{
+                label: 'Sleep Hours',
+                borderColor: 'rgba(255, 0, 0, 0.7)',
+                backgroundColor: barColors,
+                data: Shours
             },
-            data: {
-                labels: xSleepDate,
-                datasets: [{
-                    label: 'Sleep Quality',
-                    borderColor: 'rgba(255, 0, 0, 0.7)',
-                    backgroundColor: barColors,
-                    data: ySleepQuality
-                }]
-            },
+            {
+                label: 'Sleep Quality',
+                borderColor: 'rgba(255, 0, 0, 0.7)',
+                backgroundColor: barColors,
+                data: SQhours
+            }]
+        }
+        const config = {
+            type: 'bar',
+            data: data,
             options: {
+                SQhours, 
+                Shours,
                 legend: {
                     display: false
                 },
                 title: {
                     display: true,
-                    text: 'Ounces Consumed Per Date'
+                    text: 'Sleep Hours & Sleep Quality Per Day'
                 }
             }
-        });
+        }
+        new Chart("sleep-chart", config) 
+                
     }
-}
+};
+    
+
+
 
 export default SleepRepository;

@@ -22,6 +22,7 @@ getUserDataFromAPI().then(res => {
 
 getHydrationDataFromAPI().then(res => {
   setHydrationData(res.hydrationData);
+  console.log('here')
   hydrationBuildAttributes(hydrationRepo);
 })
 
@@ -62,9 +63,8 @@ const userBuildAttributes = (user) => {
     averageUserGoal.innerHTML = `On average, fitlit users are walking ${userRepo.getAverageSteps()} feet.`;
 };
 
+
 const hydrationBuildAttributes = (hydrationRepoParam) => {
-  console.log(hydrationRepoParam.hydrationData)
   userWaterDay.innerHTML = `<p>You've drank ${hydrationRepoParam.getUserHydrationForDay(userId, "2020/01/21")} ounces of water today.</p>`;
-  console.log('console log from inside hydrationBuildAttributes: ', hydrationRepoParam.getUserHydrationPerWeek(userId, "2020/01/21"));
   userWaterWeek.innerHTML = `${hydrationRepoParam.getUserHydrationPerWeek(userId, "2020/01/21")}`;
 }

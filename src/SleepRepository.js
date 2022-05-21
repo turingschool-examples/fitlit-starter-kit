@@ -99,7 +99,7 @@ class SleepRepository{
         var xValues = date;
         var yValues = hours;
         var barColors = ["red", "green", "blue", "orange","brown", "black", "magenta"];
-        new Chart("myChart", {
+        new Chart("myChart1", {
             type: "bar",
             data: {
                 labels: xValues,

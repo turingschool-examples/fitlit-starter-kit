@@ -9,7 +9,7 @@ var userRepo;
 var hydrationRepo;
 
 const getRandomID = () => {
-  return Math.floor(Math.random() * 50);
+  return Math.floor(Math.random() * 50) + 1;
 };
 
 const userId = getRandomID();
@@ -79,13 +79,12 @@ const userBuildAttributes = (user) => {
 
 const formatHydrationData = () => {
   const userHydrationDataPerWeek = hydrationRepo.getUserHydrationPerWeek(userId, "2020/01/22");
-  console.log(userHydrationDataPerWeek)
   const formattedData = userHydrationDataPerWeek.map(obj => {
     return `${obj.date}: ${obj.ounces} ounces`;
   });
   hydrationDayHTMLCollection.forEach((dayElem, index) => {
     dayElem.innerText = `${formattedData[index]}`
-  })
+  });
 };
 
 const hydrationBuildAttributes = (hydrationRepoParam) => {

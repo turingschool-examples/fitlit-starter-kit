@@ -38,7 +38,28 @@ describe("Sleep", () => {
       2.614285714285714
     );
   });
-//   it("should have a function that returns the average hours sleep per a day  ", () => {
-//     expect(sleepRepository.getAverageSleepHours(1)).to.equal(8.057142857142855);
-//   });
+
+  it("should have a function that returns the average hours sleep per a day  ", () => {
+    expect(sleepRepository.getAverageSleepHours(1)).to.equal(8.057142857142855);
+  });
+
+  it("should return hours slept for a specific day", () => {
+    expect(sleepRepository.getSleepHoursByDay("2019/06/15")).to.equal(6.1);
+   
+  });
+
+  // getSleepHoursByDay(date) {
+  //     return hours slept for a specific day }
+
+  // getSleepHoursForWeek(date) {
+  //     return how many hours slept each day
+  //     over the course of a given week (7 days) }
+
+  // getSleepQualityForWeek(date) {
+  //     return their sleep quality each day
+  //     over the course of a given week }
+
+  // getSleepQualityOverTime() {
+  //     return average sleep quality per day over
+  //     all time }
 })

@@ -65,41 +65,24 @@ function loadData () {
               },
             onSelect: (_instance, date) => {
                 var selection = document.getElementById('userDropDown');
-                var userId1 = parseInt(selection.options[selection.selectedIndex].value);
-                const formattedDate1 = dateFormat(date, "yyyy/mm/dd");
-                sleepDataDisplay(userId1, formattedDate1, sleepRepository)
+                var userId = parseInt(selection.options[selection.selectedIndex].value);
+                const formattedDate = dateFormat(date, "yyyy/mm/dd");
+                sleepDataDisplay(userId, formattedDate, sleepRepository)
             }
           })
 
     })
 }
 
-function waterDataDisplay(userId, formattedDate, hydrationRepository) {
-    waterContainer.classList.remove("hidden");
-    sleepContainer.classList.add("hidden");
-    const userOuncesForDate = hydrationRepository.displayDailyAvgOunces(userId, formattedDate)
-    dailyResultWater.innerText = `Ounces: ${userOuncesForDate}`
-    const ouncesIntake = hydrationRepository.displayWeekWaterIntake(userId, formattedDate)
-    const dateIntake = hydrationRepository.displayWaterByDate(userId, formattedDate)
-    hydrationRepository.displayWeeklyWaterChart(dateIntake, ouncesIntake)
-    displayWaterAvgGoalAllTime(userId, hydrationRepository);
-}
-
-function sleepDataDisplay(userId1, formattedDate1, sleepRepository) {
-    waterContainer.classList.add("hidden");
-    sleepContainer.classList.remove("hidden");
-    const dailySleepHours = sleepRepository.displayDailySleepHours(userId1, formattedDate1)
-    const dailyQualityOfSleep = sleepRepository.displaySleepQualityByDate(userId1, formattedDate1)
-    dailyResultSleep.innerText = `Hours Slept: ${dailySleepHours}
-                                  Quality of Sleep: ${dailyQualityOfSleep}`
-    const  hours = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
-    const date = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
-    sleepRepository.displayWeeklySleepChart(date, hours)
-    const  hours1 = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
-    const date1 = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
-    sleepRepository.displayWeeklySleepChart(date1, hours1)
-    avgDisplayBoxSleep.innerText = `Average Sleep Qualty of All Time: ${sleepRepository.displayUserSleepQualityAllTime(userId1)}
-                                    Average Hours of Sleep of All Time: ${sleepRepository.displayUserHoursSleepAllTime(userId1)}`
+function displayDropDownInfo(users) {
+    let userDropDown = document.getElementById('userDropDown');
+    for (let i = 0; i < users.length; i++) {
+        let userOptions = document.createElement('OPTION');
+        let userText = document.createTextNode(users[i].name);
+        userOptions.appendChild(userText);
+        userOptions.setAttribute('value', users[i].id);
+        userDropDown.insertBefore(userOptions, userDropDown.lastChild);
+    }
 }
 
 function chooseUser(userRepository, hydrationRepository) {
@@ -124,17 +107,30 @@ function displayUserInfo(user, userRepository, hydrationRepository) {
             \nAverage Users Step Goal: ${userRepository.averageStepGoal()}`
 };
 
-function displayWaterAvgGoalAllTime(id, hydrationRepository) {
-    avgDisplayBoxWater.innerText = `Average Water Consumed: ${hydrationRepository.displayAllTimeAvgOunces(id)}`
+function waterDataDisplay(userId, formattedDate, hydrationRepository) {
+    waterContainer.classList.remove("hidden");
+    sleepContainer.classList.add("hidden");
+    const userOuncesForDate = hydrationRepository.displayDailyAvgOunces(userId, formattedDate)
+    dailyResultWater.innerText = `Ounces: ${userOuncesForDate}`
+    const ouncesIntake = hydrationRepository.displayWeekWaterIntake(userId, formattedDate)
+    const dateIntake = hydrationRepository.displayWaterByDate(userId, formattedDate)
+    hydrationRepository.displayWeeklyWaterChart(dateIntake, ouncesIntake)
+    avgDisplayBoxWater.innerText = `Average Water Consumed: ${hydrationRepository.displayAllTimeAvgOunces(userId)}`
 }
 
-function displayDropDownInfo(users) {
-    let userDropDown = document.getElementById('userDropDown');
-    for (let i = 0; i < users.length; i++) {
-        let userOptions = document.createElement('OPTION');
-        let userText = document.createTextNode(users[i].name);
-        userOptions.appendChild(userText);
-        userOptions.setAttribute('value', users[i].id);
-        userDropDown.insertBefore(userOptions, userDropDown.lastChild);
-    }
+function sleepDataDisplay(userId1, formattedDate1, sleepRepository) {
+    waterContainer.classList.add("hidden");
+    sleepContainer.classList.remove("hidden");
+    const dailySleepHours = sleepRepository.displayDailySleepHours(userId1, formattedDate1)
+    const dailyQualityOfSleep = sleepRepository.displaySleepQualityByDate(userId1, formattedDate1)
+    dailyResultSleep.innerText = `Hours Slept: ${dailySleepHours}
+                                  Quality of Sleep: ${dailyQualityOfSleep}`
+    const  hours = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
+    const date = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
+    sleepRepository.displayWeeklySleepChart(date, hours)
+    const  hours1 = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
+    const date1 = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
+    sleepRepository.displayWeeklySleepChart(date1, hours1)
+    avgDisplayBoxSleep.innerText = `Average Sleep Qualty of All Time: ${sleepRepository.displayUserSleepQualityAllTime(userId1)}
+                                    Average Hours of Sleep of All Time: ${sleepRepository.displayUserHoursSleepAllTime(userId1)}`
 }

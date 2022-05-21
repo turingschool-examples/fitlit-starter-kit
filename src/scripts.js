@@ -42,7 +42,6 @@ var address = document.querySelector('#address');
 var strideLength = document.querySelector('#strideLength');
 var averageUserGoal = document.querySelector('#averageStepGoal');
 var userWaterDay = document.querySelector('#userWaterPerDay');
-var userWaterWeek = document.querySelector('#userWaterPerWeek');
 var userName = document.querySelector('#userName');
 var hydrationDay1 = document.querySelector('#hydrationDay1');
 var hydrationDay2 = document.querySelector('#hydrationDay2');
@@ -79,7 +78,7 @@ const userBuildAttributes = (user) => {
 };
 
 const formatHydrationData = () => {
-  const userHydrationDataPerWeek = hydrationRepo.getUserHydrationPerWeek(userId, "2020/01/21");
+  const userHydrationDataPerWeek = hydrationRepo.getUserHydrationPerWeek(userId, "2020/01/22");
   console.log(userHydrationDataPerWeek)
   const formattedData = userHydrationDataPerWeek.map(obj => {
     return `${obj.date}: ${obj.ounces} ounces`;
@@ -90,6 +89,6 @@ const formatHydrationData = () => {
 };
 
 const hydrationBuildAttributes = (hydrationRepoParam) => {
-  userWaterDay.innerHTML = `<p>You've drank ${hydrationRepoParam.getUserHydrationForDay(userId, "2020/01/21")} ounces of water today.</p>`;
+  userWaterDay.innerHTML = `<p>You've drank ${hydrationRepoParam.getUserHydrationForDay(userId, "2020/01/22")} ounces of water today.</p>`;
   formatHydrationData();
 }

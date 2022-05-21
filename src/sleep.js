@@ -2,11 +2,12 @@ class Sleep {
   constructor(userId, allUserInstances){
     this.userId = userId;
     this.allUserInstances = allUserInstances;
+    this.latest = this.returnLatest();
     this.avgSleepQuality = this.calculateAvgDailySleepQuality();
     this.avgHoursSlept = this.calculateAvgHoursSlept();
   };
   returnLatest() {
-    return this.allUserInstances[0]
+    return this.allUserInstances[199]
   }
   calculateAvgDailySleepQuality() {
     let overallSleepQualitySum = this.allUserInstances.reduce((totalAcc, instance) => {

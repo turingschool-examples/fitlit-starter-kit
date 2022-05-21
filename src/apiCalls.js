@@ -21,9 +21,6 @@ const fetchUserHydration = () => {
 //promise grabs the data out of the air and pins it down
 //second then creates copy reassigns it to global variable
 //.then gives access but doesn't return similar to forEach()
-const getPromiseAll = () => {
-    return Promise.all([fetchUserData(), fetchUserActivity(), fetchUserSleep(), fetchUserHydration()])
-}
 
 
-export default getPromiseAll;
+export {fetchUserData, fetchUserActivity,fetchUserSleep, fetchUserHydration};

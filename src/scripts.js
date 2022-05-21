@@ -14,7 +14,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 // An example of how you tell webpack to use a JS file
 
 // import userData from './data/users';
-import getPromiseAll from './apiCalls';
+import {fetchUserData, fetchUserActivity,fetchUserSleep, fetchUserHydration} from './apiCalls';
 import UserRepository from './UserRepository';
 import User from './User'
 
@@ -33,47 +33,35 @@ let email = document.getElementById('email')
 let avgStepGoal = document.getElementById('avg-step-goal')
 
 
-window.addEventListener('load', getPromiseAll())
+window.addEventListener('load', Promise.all())
 
-let userRepo;
 
-Promise.all([fetchUserData(), fetchUserActivity(), fetchUserSleep(), fetchUserHydration()]).then(data => {
+Promise.all([fetchUserData(), fetchUserActivity(), fetchUserSleep(), fetchUserHydration()])
+    .then(data => {
     console.log('seeifData', data)
-    userRepo = new UserRepository()
-    userRepo.diplayUserInfo(data[0].userData[3], data[0])
+    userDataHelper(data[0].userData)  
 })
 
 //usually reassign to global variables
 
 
+function userDataHelper(data) {
+    console.log('outside',data)
+    const displayedUsersID = Math.floor(Math.random() * 50)
+    const usersArray = getAllUsers(data)
+    const userRepo = new UserRepository(usersArray)
+    displayUserInfo(userRepo.getUserById(displayedUsersID), userRepo)
+}
 
 
+function getAllUsers(userData) {
+    const createUsersArray = userData.map((user) => {
+        return new User(user)
+    });
+    return createUsersArray
+}
 
 
-// function getRandomID() {
-//     return Math.floor(Math.random() * userData.length)
-// }
-//make all users from data into user objects
-//could make more dynamic with params to do for every repo
-
-// function getAllUsers() {
-//   console.log(userData)
-//     const createUsersArray = userData.map((user) => {
-//         return new User(user)
-//     });
-//     putUsersInRepo(createUsersArray)
-// }
-// // console.log(getAllUsers())
-// //put array of all user objects in user-repo
-// function putUsersInRepo(usersArray) {
-//     let userRepo = new UserRepository(usersArray)
-//     getRandomUser(userRepo)
-// }
-//
-// function getRandomUser(userRepo) {
-//     displayUserInfo(userRepo.getUserById(getRandomID()), userRepo)
-// }
-//
 function displayUserInfo(user, userRepo) {
     welcomeName.innerText = `Welcome, ${user.getUserFirstName()}`
     stepGoal.innerText = `${user.dailyStepGoal}`

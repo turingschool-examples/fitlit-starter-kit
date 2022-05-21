@@ -48,9 +48,9 @@ class SleepRepository {
   //   return sleepQualityByDay.sleepQuality;
   // }
 
-  getSleepDataByDate(date, property) {
+  getSleepDataByDate(date, property, id) {
     let sleepDataByDay = this.sleepData.find((element) => {
-      if (element.date === date) {
+      if (element.date === date && element.userID === id) {
         return element;
       }
     });

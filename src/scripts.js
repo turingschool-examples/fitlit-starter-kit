@@ -38,8 +38,8 @@ function loadData () {
         };
         var users = userRepository.users
         displayDropDownInfo(users);
-        
-        const picker = datepicker('#date-picker', {
+
+        const picker = datepicker('#date-picker-water', {
             minDate: new Date(2019, 5, 15),
             maxDate: new Date(2020, 0, 22),
             startDate: new Date(2020, 0, 22),
@@ -55,7 +55,7 @@ function loadData () {
             }
           })
 
-          const picker1 = datepicker('#date-picker1', {
+          const picker1 = datepicker('#date-picker-sleep', {
             minDate: new Date(2019, 5, 15),
             maxDate: new Date(2020, 0, 22),
             startDate: new Date(2020, 0, 22),

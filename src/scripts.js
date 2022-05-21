@@ -22,9 +22,8 @@ getUserDataFromAPI().then(res => {
 
 getHydrationDataFromAPI().then(res => {
   setHydrationData(res.hydrationData);
-  console.log('here')
   hydrationBuildAttributes(hydrationRepo);
-})
+});
 
 const setUserData = (someData) => {
   userRepo = new UserRepository(someData); 
@@ -45,7 +44,23 @@ var averageUserGoal = document.querySelector('#averageStepGoal');
 var userWaterDay = document.querySelector('#userWaterPerDay');
 var userWaterWeek = document.querySelector('#userWaterPerWeek');
 var userName = document.querySelector('#userName');
+var hydrationDay1 = document.querySelector('#hydrationDay1');
+var hydrationDay2 = document.querySelector('#hydrationDay2');
+var hydrationDay3 = document.querySelector('#hydrationDay3');
+var hydrationDay4 = document.querySelector('#hydrationDay4');
+var hydrationDay5 = document.querySelector('#hydrationDay5');
+var hydrationDay6 = document.querySelector('#hydrationDay6');
+var hydrationDay7 = document.querySelector('#hydrationDay7');
 
+var hydrationDayHTMLCollection = [
+  hydrationDay1, 
+  hydrationDay2, 
+  hydrationDay3, 
+  hydrationDay4, 
+  hydrationDay5, 
+  hydrationDay6, 
+  hydrationDay7
+];
 //*~~~~~~~~Functions~~~~~~~*//
 function getUserData(){
     var thisUser = userRepo.getUserById(userId);
@@ -63,8 +78,18 @@ const userBuildAttributes = (user) => {
     averageUserGoal.innerHTML = `On average, fitlit users are walking ${userRepo.getAverageSteps()} feet.`;
 };
 
+const formatHydrationData = () => {
+  const userHydrationDataPerWeek = hydrationRepo.getUserHydrationPerWeek(userId, "2020/01/21");
+  console.log(userHydrationDataPerWeek)
+  const formattedData = userHydrationDataPerWeek.map(obj => {
+    return `${obj.date}: ${obj.ounces} ounces`;
+  });
+  hydrationDayHTMLCollection.forEach((dayElem, index) => {
+    dayElem.innerText = `${formattedData[index]}`
+  })
+};
 
 const hydrationBuildAttributes = (hydrationRepoParam) => {
   userWaterDay.innerHTML = `<p>You've drank ${hydrationRepoParam.getUserHydrationForDay(userId, "2020/01/21")} ounces of water today.</p>`;
-  userWaterWeek.innerHTML = `${hydrationRepoParam.getUserHydrationPerWeek(userId, "2020/01/21")}`;
+  formatHydrationData();
 }

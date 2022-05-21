@@ -86,7 +86,6 @@ function displayUserInfo(user, userRepo) {
 
 function displaySleepInfo(id, sleepRepo) {
   let allUserData = sleepRepo.getAllUserData(id);
-  console.log(allUserData)
   let sleep = sleepRepo.makeNewSleep(id, allUserData);
 
   lastSleep.innerText = `Last Night: ${sleep.latest.hoursSlept}`

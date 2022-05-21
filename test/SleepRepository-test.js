@@ -13,7 +13,7 @@ describe('Sleep Repository', () => {
     });
     it('should display average sleep quality of all time', function () {
         const sleep = new SleepRepository(sleepData)
-        expect(sleep.displayAvgSleepQualityAllTime(1)).to.deep.equal(3.4);
+        expect(sleep.displayUserSleepQualityAllTime(1)).to.deep.equal(3.4);
     });
     it('should display hours of sleep per day', function () {
         const sleep = new SleepRepository(sleepData)
@@ -36,4 +36,3 @@ describe('Sleep Repository', () => {
         expect(sleep.displayAverageSleepQualityAllUser()).to.equal(3.1);
     });
 })
-

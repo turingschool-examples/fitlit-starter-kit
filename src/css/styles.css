@@ -234,6 +234,12 @@ img {
   justify-content: center;
   align-items: center;
 }
+/* .category-chart {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+} */
 
 .average-box {
   /* border: 1px solid yellow; */
@@ -271,6 +277,10 @@ img {
     padding-top: 5px;
     width: 23%;
     height: 80%;
+  }
+
+  .hidden {
+    display: none;
   }
 
 @import '~js-datepicker/dist/datepicker.min.css';

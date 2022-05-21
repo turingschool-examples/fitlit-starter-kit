@@ -6,7 +6,7 @@ class SleepRepository{
     }
 
 // For a user (identified by their userID), the average number of hours slept per day
-    averageSleepQualityPerDay(id) {
+    displayUserHoursSleepAllTime(id) {
         const userSleep = this.users.filter((user) => {
             return user.id === id;
         })
@@ -19,7 +19,7 @@ class SleepRepository{
     }
 
 // For a user, their average sleep quality per day over all time
-    displayAvgSleepQualityAllTime(id) {
+    displayUserSleepQualityAllTime(id) {
         const userSleep = this.users.filter((user) => {
             return user.id === id;
         })
@@ -53,7 +53,7 @@ class SleepRepository{
         return userSleepQualityByDay;
     }
 
-// For a user, how many hours slept each day over the course of a given week (7 days) - 
+// For a user, how many hours slept each day over the course of a given week (7 days) -
 // you should be able to calculate this for any week, not just the latest week
     displayWeekSleepHours(id, date) {
         const dateSleepHours = this.users.filter((user) => {
@@ -61,7 +61,7 @@ class SleepRepository{
         });
         const index = dateSleepHours.findIndex(data => {
             return data.date === date
-        })  
+        })
         const weekDate = dateSleepHours.slice((index - 6) , (index + 1))
         .map(data => {
             return data.hoursSlept
@@ -69,7 +69,7 @@ class SleepRepository{
         return weekDate;
     }
 
-// For a user, their sleep quality each day over the course of a given week (7 days) - 
+// For a user, their sleep quality each day over the course of a given week (7 days) -
 // you should be able to calculate this for any week, not just the latest week
     displayWeekSleepQualityHours(id, date) {
         const dateSleepQualityHours = this.users.filter((user) => {
@@ -77,7 +77,7 @@ class SleepRepository{
         });
         const index = dateSleepQualityHours.findIndex(data => {
             return data.date === date
-        })  
+        })
         const weekDate = dateSleepQualityHours.slice((index - 6) , (index + 1))
         .map(data => {
             return data.sleepQuality
@@ -85,7 +85,7 @@ class SleepRepository{
         return weekDate;
     }
 
-// For all users, the average sleep quality 
+// For all users, the average sleep quality
     displayAverageSleepQualityAllUser() {
         const average = this.users.reduce((sum, person) => {
             sum += person.sleepQuality
@@ -94,10 +94,33 @@ class SleepRepository{
         const number = (average/this.users.length).toFixed(1);
         return parseFloat(number)
     }
+
+    displayWeeklySleepChart(date, hours) {
+        var xValues = date;
+        var yValues = hours;
+        var barColors = ["red", "green", "blue", "orange","brown", "black", "magenta"];
+        new Chart("myChart1", {
+            type: "bar",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    fill: false,
+                    borderColor: 'rgba(255, 0, 0, 0.7)',
+                    backgroundColor: barColors,
+                    data: yValues
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Ounces Consumed Per Date'
+                }
+            }
+        });
+    }
 }
 
-
-
-
 export default SleepRepository;
-

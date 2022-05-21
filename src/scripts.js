@@ -1,5 +1,5 @@
 import './css/styles.css';
-import './images/turing-logo.png'
+import './images/turing-logo.png';
 import UserRepository from './UserRepository';
 import HydrationRepository from './HydrationRepository';
 import SleepRepository from './SleepRepository';
@@ -10,10 +10,20 @@ import dateFormat from 'dateformat'
 // ****** querySelectors ******
 var welcomeUser = document.querySelector('.welcome-user');
 var userInfo = document.querySelector('.user-info');
-var avgWaterGoal = document.querySelector('#averageGoal');
+var avgDisplayBoxWater = document.querySelector('#averageGoalWater');
+var avgDisplayBoxSleep = document.querySelector('#averageGoalSleep');
+var waterButton = document.querySelector('#water-button');
+var sleepButton = document.querySelector('#sleep-button');
+var dailyResultWater = document.getElementById('user-ounce-for-day-result');
+var dailyResultSleep = document.getElementById('user-hours-for-day-result');
+var waterContainer = document.querySelector('#waterContainer');
+var sleepContainer = document.querySelector('#sleepContainer');
 
 // ****** event listeners ******
 window.addEventListener('load', loadData);
+waterButton.addEventListener('click', waterDataDisplay);
+sleepButton.addEventListener('click', sleepDataDisplay);
+
 
 function loadData () {
     Promise.all([userDataList(), userHydrationList(), userSleepList()]).then(data => {
@@ -22,12 +32,14 @@ function loadData () {
         var userSleepData = data[2].sleepData
         const userRepository = new UserRepository(userData);
         const hydrationRepository = new HydrationRepository(userHydrationData);
+        const sleepRepository = new SleepRepository(userSleepData);
         document.getElementById('userDropDown').onchange = () => {
             chooseUser(userRepository, hydrationRepository);
         };
         var users = userRepository.users
         displayDropDownInfo(users);
-        const picker = datepicker('#date-picker', {
+
+        const picker = datepicker('#date-picker-water', {
             minDate: new Date(2019, 5, 15),
             maxDate: new Date(2020, 0, 22),
             startDate: new Date(2020, 0, 22),
@@ -38,48 +50,28 @@ function loadData () {
             onSelect: (_instance, date) => {
                 var selection = document.getElementById('userDropDown');
                 var userId = parseInt(selection.options[selection.selectedIndex].value);
-                const formattedDate = dateFormat(date, "yyyy/mm/dd")
-                const userOuncesForDate = hydrationRepository.displayDailyAvgOunces(userId, formattedDate)
-                const resultElement = document.getElementById('user-ounce-for-day-result')
-                resultElement.innerText = `Ounces: ${userOuncesForDate}`
-                const ouncesIntake = hydrationRepository.displayWeekWaterIntake(userId, formattedDate)
-                const dateIntake = hydrationRepository.displayWaterByDate(userId, formattedDate)
-                hydrationRepository.displayWeeklyWaterChart(dateIntake, ouncesIntake)
-                SleepRepository.
+                const formattedDate = dateFormat(date, "yyyy/mm/dd");
+                waterDataDisplay(userId, formattedDate, hydrationRepository)
             }
           })
+
+          const picker1 = datepicker('#date-picker-sleep', {
+            minDate: new Date(2019, 5, 15),
+            maxDate: new Date(2020, 0, 22),
+            startDate: new Date(2020, 0, 22),
+            formatter: (input, date, _instance) => {
+                const newDate = dateFormat(date, "yyyy/mm/dd")
+                input.value = newDate
+              },
+            onSelect: (_instance, date) => {
+                var selection = document.getElementById('userDropDown');
+                var userId = parseInt(selection.options[selection.selectedIndex].value);
+                const formattedDate = dateFormat(date, "yyyy/mm/dd");
+                sleepDataDisplay(userId, formattedDate, sleepRepository)
+            }
+          })
+
     })
-}
-
-function chooseUser(userRepository, hydrationRepository) {
-    var selection = document.getElementById('userDropDown');
-    var userId = parseInt(selection.options[selection.selectedIndex].value);
-    var user = userRepository.getUser(userId)
-    displayUserInfo(user, userRepository, hydrationRepository);
-    const datePicker = document.querySelector("#date-picker");
-    datePicker.value = "";
-    const userOuncesDisplay = document.querySelector("#user-ounce-for-day-result");
-    userOuncesDisplay.innerText = "";
-
-};
-
-function displayUserInfo(user, userRepository, hydrationRepository) {
-   welcomeUser.innerText = `Welcome, ${user.returnFirstName()}!`;
-    // var stepGoalRating;
-    // user.dailyStepGoal > getStepGoalAvg(userArray) ? stepGoalRating = 'Above Average' : stepGoalRating = 'Above Average';
-    userInfo.innerHTML =
-        // `${user.name}
-        `Address: ${user.address}<br>
-        E-mail: ${user.email}<br>
-        \nStride Length: ${user.strideLength}<br>
-          Daily Step Goal: ${user.dailyStepGoal}<br>
-            \nAverage Users Step Goal: ${userRepository.averageStepGoal()}`
-        displayWaterAvgGoalAllTime(user.id, hydrationRepository);
-    // stepsBox.innerText = `Daily Step Goal: ${user.dailyStepGoal}`
-};
-
-function displayWaterAvgGoalAllTime(id, hydrationRepository) {
-    avgWaterGoal.innerText = `Average Water Consumed: ${hydrationRepository.displayAllTimeAvgOunces(id)}`
 }
 
 function displayDropDownInfo(users) {
@@ -91,4 +83,54 @@ function displayDropDownInfo(users) {
         userOptions.setAttribute('value', users[i].id);
         userDropDown.insertBefore(userOptions, userDropDown.lastChild);
     }
+}
+
+function chooseUser(userRepository, hydrationRepository) {
+    var selection = document.getElementById('userDropDown');
+    var userId = parseInt(selection.options[selection.selectedIndex].value);
+    var user = userRepository.getUser(userId)
+    displayUserInfo(user, userRepository, hydrationRepository);
+    const datePicker = document.querySelector("#date-picker");
+    datePicker.value = "";
+    const userOuncesDisplay = document.querySelector("#user-ounce-for-day-result");
+    userOuncesDisplay.innerText = "";
+};
+
+function displayUserInfo(user, userRepository, hydrationRepository) {
+    welcomeUser.innerText = `Welcome, ${user.returnFirstName()}!`;
+    userInfo.innerHTML =
+            // `${user.name}
+            `Address: ${user.address}<br>
+            E-mail: ${user.email}<br>
+            \nStride Length: ${user.strideLength}<br>
+            Daily Step Goal: ${user.dailyStepGoal}<br>
+            \nAverage Users Step Goal: ${userRepository.averageStepGoal()}`
+};
+
+function waterDataDisplay(userId, formattedDate, hydrationRepository) {
+    waterContainer.classList.remove("hidden");
+    sleepContainer.classList.add("hidden");
+    const userOuncesForDate = hydrationRepository.displayDailyAvgOunces(userId, formattedDate)
+    dailyResultWater.innerText = `Ounces: ${userOuncesForDate}`
+    const ouncesIntake = hydrationRepository.displayWeekWaterIntake(userId, formattedDate)
+    const dateIntake = hydrationRepository.displayWaterByDate(userId, formattedDate)
+    hydrationRepository.displayWeeklyWaterChart(dateIntake, ouncesIntake)
+    avgDisplayBoxWater.innerText = `Average Water Consumed: ${hydrationRepository.displayAllTimeAvgOunces(userId)}`
+}
+
+function sleepDataDisplay(userId1, formattedDate1, sleepRepository) {
+    waterContainer.classList.add("hidden");
+    sleepContainer.classList.remove("hidden");
+    const dailySleepHours = sleepRepository.displayDailySleepHours(userId1, formattedDate1)
+    const dailyQualityOfSleep = sleepRepository.displaySleepQualityByDate(userId1, formattedDate1)
+    dailyResultSleep.innerText = `Hours Slept: ${dailySleepHours}
+                                  Quality of Sleep: ${dailyQualityOfSleep}`
+    const  hours = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
+    const date = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
+    sleepRepository.displayWeeklySleepChart(date, hours)
+    const  hours1 = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
+    const date1 = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
+    sleepRepository.displayWeeklySleepChart(date1, hours1)
+    avgDisplayBoxSleep.innerText = `Average Sleep Qualty of All Time: ${sleepRepository.displayUserSleepQualityAllTime(userId1)}
+                                    Average Hours of Sleep of All Time: ${sleepRepository.displayUserHoursSleepAllTime(userId1)}`
 }

@@ -41,15 +41,15 @@
   <section class="bottom-section">
     <div class="icons-container">
       <!-- <p class="icons">Water</p> -->
-      <img class="water-img" src="./images/turing-logo.png">
+      <img class="water-img" id="water-button" src="./images/turing-logo.png">
       <!-- <p class="icons">Sleep</p> -->
-      <img class="sleep-img" src="./images/turing-logo.png">
+      <img class="sleep-img" id="sleep-button" src="./images/turing-logo.png">
       <!-- <p class="icons">Activity</p> -->
       <img class="activity-img" src="./images/turing-logo.png">
     </div>
 
     <div class="bottom-container">
-      <div class="category-container">
+      <div class="category-container" id="waterContainer">
         <div class="title-container">
           <p>Water</p>
         </div>
@@ -65,11 +65,38 @@
           <div class="average-box">
             <article class="daily-goal" id="dailyGoal">
               <div>Daily Ounces</div>
-              <input type="text" name="date-picker" placeholder="Select Date" id="date-picker">
+              <input type="text" name="date-picker-water" placeholder="Select Date" id="date-picker-water">
               <article id="user-ounce-for-day-result"></article>
               <!-- <select class="date-picker"></select> -->
             </article>
-            <article class="average-goal" id="averageGoal">Average Ounces</article>
+            <article class="average-goal" id="averageGoalWater">Average Ounces</article>
+          </div>
+        </div>
+      </div>
+      <div class="category-container hidden" id="sleepContainer">
+        <div class="title-container">
+          <p>Sleep</p>
+        </div>
+        <div class="stats-container">
+          <div class="img-box">
+            <img class="category-image" src="./images/turing-logo.png">
+          </div>
+          <div class="chart-box">
+            <article class="category-chart">
+              <!-- <div class="two-charts" width="800" height="400"> -->
+                <canvas id="myChart1" width="400" height="400"></canvas>
+                <!-- <canvas id="myChart1" width="400" height="400"></canvas> -->
+            <!-- </div> -->
+            </article>
+          </div>
+          <div class="average-box">
+            <article class="daily-goal" id="dailyGoal">
+              <div>Sleep Quality</div>
+              <input type="text" name="date-picker-sleep" placeholder="Select Date" id="date-picker-sleep">
+              <article id="user-hours-for-day-result"></article>
+              <!-- <select class="date-picker"></select> -->
+            </article>
+            <article class="average-goal" id="averageGoalSleep">Average Sleep</article>
           </div>
         </div>
       </div>

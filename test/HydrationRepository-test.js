@@ -43,13 +43,13 @@ describe('HydrationRepository', () => {
 
     it('Should show users hydration data per week', () => {
         expect(hydrationRepository.getUserHydrationPerWeek(2, '2019/06/21')).to.deep.equal([
-            {'2019/06/15': 75 },
-            {'2019/06/16': 91 },
-            {'2019/06/17': 96 },
-            {'2019/06/18': 70 },
-            {'2019/06/19': 76 },
-            {'2019/06/20': 71 },
-            {'2019/06/21': 27 }
+            {date: '2019/06/15', ounces: 75 },
+            {date: '2019/06/16', ounces: 91 },
+            {date: '2019/06/17', ounces: 96 },
+            {date: '2019/06/18', ounces: 70 },
+            {date: '2019/06/19', ounces: 76 },
+            {date: '2019/06/20', ounces: 71 },
+            {date: '2019/06/21', ounces: 27 }
           ]);
     });
 });

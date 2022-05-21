@@ -31,9 +31,10 @@ class HydrationRepository {
         const endDateIndex = userData.findIndex((date) => {
             return date.date === dateParam;
         });
-        const weeklyRange = userData.slice(endDateIndex -6, 7) 
+        const weeklyRange = userData.slice(endDateIndex - 6, endDateIndex + 1);
         const weeklyHydration = weeklyRange.map((date) => {
-            return {[date.date]: date.numOunces};
+            return {date: date.date,
+                ounces: date.numOunces};
         });
         return weeklyHydration;
     };

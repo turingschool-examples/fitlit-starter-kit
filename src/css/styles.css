@@ -234,6 +234,12 @@ img {
   justify-content: center;
   align-items: center;
 }
+/* .category-chart {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+} */
 
 .average-box {
   /* border: 1px solid yellow; */

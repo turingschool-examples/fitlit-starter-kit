@@ -10,9 +10,11 @@ import dateFormat from 'dateformat'
 // ****** querySelectors ******
 var welcomeUser = document.querySelector('.welcome-user');
 var userInfo = document.querySelector('.user-info');
-var avgDisplayBox = document.querySelector('#averageGoal');
+var avgDisplayBox = document.querySelector('#averageGoalWater');
+var avgDisplayBoxSleep = document.querySelector('#averageGoalSleep');
 var waterButton = document.querySelector('#water-button');
 var resultElement = document.getElementById('user-ounce-for-day-result');
+var resultElementSleep = document.getElementById('user-hours-for-day-result');
 var waterContainer = document.querySelector('#waterContainer');
 var sleepContainer = document.querySelector('#sleepContainer');
 
@@ -56,11 +58,11 @@ function loadData () {
             maxDate: new Date(2020, 0, 22),
             startDate: new Date(2020, 0, 22),
             formatter: (input, date, _instance) => {
-                const newDate1 = dateFormat(date, "yyyy/mm/dd")
+                const newDate = dateFormat(date, "yyyy/mm/dd")
                 input.value = newDate
               },
             onSelect: (_instance, date) => {
-                var selection1 = document.getElementById('userDropDown');
+                var selection = document.getElementById('userDropDown');
                 var userId1 = parseInt(selection.options[selection.selectedIndex].value);
                 const formattedDate1 = dateFormat(date, "yyyy/mm/dd");
                 // waterDataDisplay(userId, formattedDate, hydrationRepository)
@@ -90,13 +92,14 @@ function sleepDataDisplay(userId1, formattedDate1, sleepRepository) {
     console.log(sleepRepository)
   const dailySleepHours = sleepRepository.displayDailySleepHours(userId1, formattedDate1)
   const dailyQualityOfSleep = sleepRepository.displaySleepQualityByDate(userId1, formattedDate1)
-  resultElement.innerText = `Hours Slept: ${dailySleepHours}
+  resultElementSleep.innerText = `Hours Slept: ${dailySleepHours}
   Quality of Sleep: ${dailyQualityOfSleep}`
   const  hours = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
   const date = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
   sleepRepository.displayWeeklySleepChart(date, hours)
-  avgDisplayBox.innerText = `Average Sleep Qualty of All Time: ${sleepRepository.displayUserSleepQualityAllTime(id)}
-    Average Hours of Sleep of All Time: ${sleepRepository.displayUserHoursSleepAllTime(id)}`
+  console.log(sleepRepository)
+  avgDisplayBoxSleep.innerText = `Average Sleep Qualty of All Time: ${sleepRepository.displayUserSleepQualityAllTime(userId1)}
+    Average Hours of Sleep of All Time: ${sleepRepository.displayUserHoursSleepAllTime(userId1)}`
 }
 
 function resetDisplay() {

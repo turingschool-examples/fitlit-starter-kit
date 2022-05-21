@@ -20,4 +20,5 @@ const fetchUserHydration = () => {
 //second then creates copy reassigns it to global variable
 //.then gives access but doesn't return similar to forEach()
 
+
 export {fetchUserData, fetchUserActivity, fetchUserSleep, fetchUserHydration}

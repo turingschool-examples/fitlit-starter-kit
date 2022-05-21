@@ -1,14 +1,12 @@
 // Your fetch requests will live here!
-import UserRepository from './UserRepository';
-
 
 const fetchUserData = () => {
     return fetch("https:fitlit-api.herokuapp.com/api/v1/users").then(response => response.json())
-} 
+}
 
 const fetchUserActivity = () => {
     return fetch("https://fitlit-api.herokuapp.com/api/v1/activity").then(response => response.json())
-} 
+}
 
 const fetchUserSleep = () => {
     return fetch("https://fitlit-api.herokuapp.com/api/v1/sleep").then(response => response.json())
@@ -23,4 +21,4 @@ const fetchUserHydration = () => {
 //.then gives access but doesn't return similar to forEach()
 
 
-export {fetchUserData, fetchUserActivity,fetchUserSleep, fetchUserHydration};
+export {fetchUserData, fetchUserActivity, fetchUserSleep, fetchUserHydration}

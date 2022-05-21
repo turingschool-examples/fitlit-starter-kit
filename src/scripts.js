@@ -13,6 +13,8 @@ var userInfo = document.querySelector('.user-info');
 var avgDisplayBox = document.querySelector('#averageGoal');
 var waterButton = document.querySelector('#water-button');
 var resultElement = document.getElementById('user-ounce-for-day-result');
+var waterContainer = document.querySelector('#waterContainer');
+var sleepContainer = document.querySelector('#sleepContainer');
 
 // ****** event listeners ******
 window.addEventListener('load', loadData);
@@ -43,16 +45,36 @@ function loadData () {
             onSelect: (_instance, date) => {
                 var selection = document.getElementById('userDropDown');
                 var userId = parseInt(selection.options[selection.selectedIndex].value);
-                const formattedDate = dateFormat(date, "yyyy/mm/dd")
+                const formattedDate = dateFormat(date, "yyyy/mm/dd");
                 waterDataDisplay(userId, formattedDate, hydrationRepository)
+                // sleepDataDisplay(userId, formattedDate, sleepRepository)
             }
           })
+
+          const picker1 = datepicker('#date-picker1', {
+            minDate: new Date(2019, 5, 15),
+            maxDate: new Date(2020, 0, 22),
+            startDate: new Date(2020, 0, 22),
+            formatter: (input, date, _instance) => {
+                const newDate1 = dateFormat(date, "yyyy/mm/dd")
+                input.value = newDate
+              },
+            onSelect: (_instance, date) => {
+                var selection1 = document.getElementById('userDropDown');
+                var userId1 = parseInt(selection.options[selection.selectedIndex].value);
+                const formattedDate1 = dateFormat(date, "yyyy/mm/dd");
+                // waterDataDisplay(userId, formattedDate, hydrationRepository)
+                sleepDataDisplay(userId1, formattedDate1, sleepRepository)
+            }
+          })
+
     })
 }
 
 
 function waterDataDisplay(userId, formattedDate, hydrationRepository) {
-  // resetDisplay();
+    waterContainer.classList.remove("hidden");
+    sleepContainer.classList.add("hidden");
   const userOuncesForDate = hydrationRepository.displayDailyAvgOunces(userId, formattedDate)
   const resultElement = document.getElementById('user-ounce-for-day-result')
   resultElement.innerText = `Ounces: ${userOuncesForDate}`
@@ -62,14 +84,16 @@ function waterDataDisplay(userId, formattedDate, hydrationRepository) {
   displayWaterAvgGoalAllTime(userId, hydrationRepository);
 }
 
-function sleepDataDisplay(userId, formattedDate, sleepRepository) {
-  resetDisplay();
-  const dailySleepHours = sleepRepository.displayDailySleepHours(userId, formattedDate)
-  const dailyQualityOfSleep = sleepRepository.displaySleepQualityByDate(userId, formattedDate)
+function sleepDataDisplay(userId1, formattedDate1, sleepRepository) {
+    waterContainer.classList.add("hidden");
+    sleepContainer.classList.remove("hidden");
+    console.log(sleepRepository)
+  const dailySleepHours = sleepRepository.displayDailySleepHours(userId1, formattedDate1)
+  const dailyQualityOfSleep = sleepRepository.displaySleepQualityByDate(userId1, formattedDate1)
   resultElement.innerText = `Hours Slept: ${dailySleepHours}
   Quality of Sleep: ${dailyQualityOfSleep}`
-  const  hours = sleepRepository.displayWeekSleepHours(userId, formattedDate)
-  const date = sleepRepository.displayWeekSleepQualityHours(userId, formattedDate)
+  const  hours = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
+  const date = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
   sleepRepository.displayWeeklySleepChart(date, hours)
   avgDisplayBox.innerText = `Average Sleep Qualty of All Time: ${sleepRepository.displayUserSleepQualityAllTime(id)}
     Average Hours of Sleep of All Time: ${sleepRepository.displayUserHoursSleepAllTime(id)}`

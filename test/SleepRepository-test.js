@@ -44,12 +44,15 @@ describe("Sleep", () => {
   });
 
   it("should return hours slept for a specific day", () => {
-    expect(sleepRepository.getSleepHoursByDay("2019/06/15")).to.equal(6.1);
+    expect(sleepRepository.getSleepDataByDate("2019/06/15","hoursSlept")).to.equal(6.1);
    
   });
 
-  // getSleepHoursByDay(date) {
-  //     return hours slept for a specific day }
+  it("should return user\'s slept quality for a specific day", () => {
+    expect(sleepRepository.getSleepDataByDate("2019/06/15","sleepQuality")).to.equal(2.2);
+  });   
+
+  
 
   // getSleepHoursForWeek(date) {
   //     return how many hours slept each day

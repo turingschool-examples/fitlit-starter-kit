@@ -33,14 +33,16 @@ describe("Sleep", () => {
     ]);
   });
 
-  it("should return all of users average sleep quality for all", () => {
-    expect(sleepRepository.getAverageSleepQualityForAll(1)).to.deep.equal(
+  it("should return one  user\'s average sleep quality for 7 days", () => {
+    expect(sleepRepository.getAverageSleepQualityForUserAllTime(1)).to.deep.equal(
       2.614285714285714
     );
   });
 
   it("should have a function that returns the average hours sleep per a day  ", () => {
-    expect(sleepRepository.getAverageSleepHours(1)).to.equal(8.057142857142855);
+    expect(sleepRepository.getAverageSleepHoursForUserAllTime(1)).to.equal(
+      8.057142857142855
+    );
   });
 
   it("should return hours slept for a specific day", () => {

@@ -12,7 +12,7 @@ class SleepRepository {
     return sleepDataForUser;
   }
 
-  getAverageSleepQualityForAll(idNum) {
+  getAverageSleepQualityForUserAllTime(idNum) {
     const averageSleeps = this.getSleepDataForUser(idNum);
     let averageUserSleepQualityForAll = averageSleeps.reduce((acc, cur) => {
       acc += cur.sleepQuality;
@@ -21,7 +21,7 @@ class SleepRepository {
     return averageUserSleepQualityForAll / averageSleeps.length;
   }
 
-  getAverageSleepHours(idNum) {
+  getAverageSleepHoursForUserAllTime(idNum) {
     const sleepDataForUser = this.getSleepDataForUser(idNum);
     let averageUserSleepHours = sleepDataForUser.reduce((acc, cur) => {
       acc += cur.hoursSlept;
@@ -54,10 +54,9 @@ class SleepRepository {
         return element;
       }
     });
-    console.log(property)
+    console.log(sleepDataByDay);
     return sleepDataByDay[property];
   }
-  
 }
 
 export default SleepRepository;

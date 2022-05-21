@@ -13,6 +13,7 @@ var userInfo = document.querySelector('.user-info');
 var avgDisplayBox = document.querySelector('#averageGoalWater');
 var avgDisplayBoxSleep = document.querySelector('#averageGoalSleep');
 var waterButton = document.querySelector('#water-button');
+var sleepButton = document.querySelector('#sleep-button');
 var resultElement = document.getElementById('user-ounce-for-day-result');
 var resultElementSleep = document.getElementById('user-hours-for-day-result');
 var waterContainer = document.querySelector('#waterContainer');
@@ -20,7 +21,8 @@ var sleepContainer = document.querySelector('#sleepContainer');
 
 // ****** event listeners ******
 window.addEventListener('load', loadData);
-waterButton.addEventListener('click', sleepDataDisplay)
+waterButton.addEventListener('click', waterDataDisplay);
+sleepButton.addEventListener('click', sleepDataDisplay);
 
 
 function loadData () {
@@ -89,7 +91,6 @@ function waterDataDisplay(userId, formattedDate, hydrationRepository) {
 function sleepDataDisplay(userId1, formattedDate1, sleepRepository) {
     waterContainer.classList.add("hidden");
     sleepContainer.classList.remove("hidden");
-    console.log(sleepRepository)
   const dailySleepHours = sleepRepository.displayDailySleepHours(userId1, formattedDate1)
   const dailyQualityOfSleep = sleepRepository.displaySleepQualityByDate(userId1, formattedDate1)
   resultElementSleep.innerText = `Hours Slept: ${dailySleepHours}
@@ -97,7 +98,6 @@ function sleepDataDisplay(userId1, formattedDate1, sleepRepository) {
   const  hours = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
   const date = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
   sleepRepository.displayWeeklySleepChart(date, hours)
-  console.log(sleepRepository)
   avgDisplayBoxSleep.innerText = `Average Sleep Qualty of All Time: ${sleepRepository.displayUserSleepQualityAllTime(userId1)}
     Average Hours of Sleep of All Time: ${sleepRepository.displayUserHoursSleepAllTime(userId1)}`
 }

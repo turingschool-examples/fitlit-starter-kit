@@ -95,19 +95,43 @@ class SleepRepository{
         return parseFloat(number)
     }
 
-    displayWeeklySleepChart(date, hours) {
-        var xValues = date;
-        var yValues = hours;
+    displaySleepWeek(id, date) {
+        const dateSleep = this.users.filter((user) => {
+            return user.id === id;
+        });
+        const index = dateSleep.findIndex(data => {
+            return data.date === date
+          })
+        const weekDate = dateSleep.slice((index - 6) , (index + 1))
+          .map(data => {
+            return data.date
+          })
+        return weekDate;
+    }
+
+    displayWeeklySleepChart(date, Shours, SQhours) {
+        var xSleepDate = date;
+        var ySleepQuality = SQhours;
+        var ySleepHours = Shours;
         var barColors = ["red", "green", "blue", "orange","brown", "black", "magenta"];
         new Chart("myChart1", {
             type: "bar",
             data: {
-                labels: xValues,
+                labels: xSleepDate,
                 datasets: [{
-                    fill: false,
+                    label: 'Sleep Hours',
                     borderColor: 'rgba(255, 0, 0, 0.7)',
                     backgroundColor: barColors,
-                    data: yValues
+                    data: ySleepHours
+                }]
+            },
+            data: {
+                labels: xSleepDate,
+                datasets: [{
+                    label: 'Sleep Quality',
+                    borderColor: 'rgba(255, 0, 0, 0.7)',
+                    backgroundColor: barColors,
+                    data: ySleepQuality
                 }]
             },
             options: {

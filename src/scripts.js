@@ -125,12 +125,15 @@ function sleepDataDisplay(userId1, formattedDate1, sleepRepository) {
     const dailyQualityOfSleep = sleepRepository.displaySleepQualityByDate(userId1, formattedDate1)
     dailyResultSleep.innerText = `Hours Slept: ${dailySleepHours}
                                   Quality of Sleep: ${dailyQualityOfSleep}`
-    const  hours = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
+    const hours = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
     const date = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
     sleepRepository.displayWeeklySleepChart(date, hours)
-    const  hours1 = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
-    const date1 = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
-    sleepRepository.displayWeeklySleepChart(date1, hours1)
+
+    const dateSleep = sleepRepository.displaySleepWeek(userId1, formattedDate1)
+    const Shours = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
+    const SQhours = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
+
+    sleepRepository.displayWeeklySleepChart(dateSleep, Shours, SQhours)
     avgDisplayBoxSleep.innerText = `Average Sleep Qualty of All Time: ${sleepRepository.displayUserSleepQualityAllTime(userId1)}
                                     Average Hours of Sleep of All Time: ${sleepRepository.displayUserHoursSleepAllTime(userId1)}`
 }

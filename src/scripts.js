@@ -16,7 +16,6 @@ import ActivityRepository from './Activity';
 import HydrationRepository from './HydrationRepository';
 import User from './User'
 
-
 let friends = document.getElementById('friends');
 let welcomeName = document.getElementById('name');
 let stepGoal = document.getElementById('step-goal');
@@ -33,11 +32,11 @@ let avgStepGoal = document.getElementById('avg-step-goal');
 
 // window.addEventListener('load', Promise.all())
 
+let displayedUsersID = Math.floor(Math.random() * 50);
 let userRepo;
 let sleepRepo;
 let hydrationRepo;
 let activityRepo;
-let displayedUsersID;
 
 Promise.all([fetchUserData(), fetchUserActivity(), fetchUserSleep(), fetchUserHydration()])
   .then(data => {
@@ -48,7 +47,6 @@ Promise.all([fetchUserData(), fetchUserActivity(), fetchUserSleep(), fetchUserHy
 //usually reassign to global variables
 
 function userDataHelper(data) {
-    displayedUsersID = Math.floor(Math.random() * 50);
     const usersArray = getAllUsers(data);
     userRepo = new UserRepository(usersArray);
     displayUserInfo(userRepo.getUserById(displayedUsersID), userRepo);

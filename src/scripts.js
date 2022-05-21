@@ -55,7 +55,7 @@ const userBuildAttributes = (user) => {
     userName.innerHTML = `Name: ${user.name}`;
     emailAddress.innerHTML = `Email: ${user.email}`;
     stepGoal.innerHTML = `Goal: ${user.dailyStepGoal} steps`;
-    friends.innerHTML = `Friends: ${user.friends}`;
+    friends.innerHTML = `Friends: ${user.friends.map(num => ' ' +userRepo.users.find(user => user.id === num).name)}`;
     address.innerHTML = `Address: ${user.address}`;
     strideLength.innerHTML = `Stride Length: ${user.strideLength} feet`;
     userGreeting.innerHTML = `Welcome ${user.name.split(" ")[0]}!`;

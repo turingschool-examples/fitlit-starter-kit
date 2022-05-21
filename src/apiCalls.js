@@ -1,6 +1,3 @@
-// Your fetch requests will live here!
-
-
 function getUserDataFromAPI() {
     return fetch('https://fitlit-api.herokuapp.com/api/v1/users')
         .then(promise => promise.json())
@@ -22,7 +19,3 @@ function getHydrationDataFromAPI() {
 }
 
 export { getUserDataFromAPI, getSleepDataFromAPI, getHydrationDataFromAPI };
-
-
-
-console.log('I will be a fetch request!')

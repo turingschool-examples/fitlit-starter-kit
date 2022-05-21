@@ -1,8 +1,3 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// console.log(userData,"<>>>>userData")
-// console.log(fetchUserData, 'newuserdata')
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
 
@@ -12,8 +7,6 @@ import './images/turing-logo.png'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
-
-// import userData from './data/users';
 import {fetchUserData, fetchUserActivity, fetchUserSleep, fetchUserHydration} from './apiCalls';
 import UserRepository from './UserRepository';
 import SleepRepository from './sleep-repository';

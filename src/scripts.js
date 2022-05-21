@@ -10,10 +10,14 @@ import dateFormat from 'dateformat'
 // ****** querySelectors ******
 var welcomeUser = document.querySelector('.welcome-user');
 var userInfo = document.querySelector('.user-info');
-var avgWaterGoal = document.querySelector('#averageGoal');
+var avgDisplayBox = document.querySelector('#averageGoal');
+var waterButton = document.querySelector('#water-button');
+var resultElement = document.getElementById('user-ounce-for-day-result');
 
 // ****** event listeners ******
 window.addEventListener('load', loadData);
+waterButton.addEventListener('click', sleepDataDisplay)
+
 
 function loadData () {
     Promise.all([userDataList(), userHydrationList(), userSleepList()]).then(data => {
@@ -22,6 +26,7 @@ function loadData () {
         var userSleepData = data[2].sleepData
         const userRepository = new UserRepository(userData);
         const hydrationRepository = new HydrationRepository(userHydrationData);
+        const sleepRepository = new SleepRepository(userSleepData);
         document.getElementById('userDropDown').onchange = () => {
             chooseUser(userRepository, hydrationRepository);
         };
@@ -39,16 +44,45 @@ function loadData () {
                 var selection = document.getElementById('userDropDown');
                 var userId = parseInt(selection.options[selection.selectedIndex].value);
                 const formattedDate = dateFormat(date, "yyyy/mm/dd")
-                const userOuncesForDate = hydrationRepository.displayDailyAvgOunces(userId, formattedDate)
-                const resultElement = document.getElementById('user-ounce-for-day-result')
-                resultElement.innerText = `Ounces: ${userOuncesForDate}`
-                const ouncesIntake = hydrationRepository.displayWeekWaterIntake(userId, formattedDate)
-                const dateIntake = hydrationRepository.displayWaterByDate(userId, formattedDate)
-                hydrationRepository.displayWeeklyWaterChart(dateIntake, ouncesIntake)
-                SleepRepository.
+                waterDataDisplay(userId, formattedDate, hydrationRepository)
             }
           })
     })
+}
+
+
+function waterDataDisplay(userId, formattedDate, hydrationRepository) {
+  // resetDisplay();
+  const userOuncesForDate = hydrationRepository.displayDailyAvgOunces(userId, formattedDate)
+  const resultElement = document.getElementById('user-ounce-for-day-result')
+  resultElement.innerText = `Ounces: ${userOuncesForDate}`
+  const ouncesIntake = hydrationRepository.displayWeekWaterIntake(userId, formattedDate)
+  const dateIntake = hydrationRepository.displayWaterByDate(userId, formattedDate)
+  hydrationRepository.displayWeeklyWaterChart(dateIntake, ouncesIntake)
+  displayWaterAvgGoalAllTime(userId, hydrationRepository);
+}
+
+function sleepDataDisplay(userId, formattedDate, sleepRepository) {
+  resetDisplay();
+  const dailySleepHours = sleepRepository.displayDailySleepHours(userId, formattedDate)
+  const dailyQualityOfSleep = sleepRepository.displaySleepQualityByDate(userId, formattedDate)
+  resultElement.innerText = `Hours Slept: ${dailySleepHours}
+  Quality of Sleep: ${dailyQualityOfSleep}`
+  const  hours = sleepRepository.displayWeekSleepHours(userId, formattedDate)
+  const date = sleepRepository.displayWeekSleepQualityHours(userId, formattedDate)
+  sleepRepository.displayWeeklySleepChart(date, hours)
+  avgDisplayBox.innerText = `Average Sleep Qualty of All Time: ${sleepRepository.displayUserSleepQualityAllTime(id)}
+    Average Hours of Sleep of All Time: ${sleepRepository.displayUserHoursSleepAllTime(id)}`
+}
+
+function resetDisplay() {
+  resultElement.innerText = '';
+  avgDisplayBox.innerText = '';
+}
+
+function displaySleepDataOfAllTime(id, sleepRepository) {
+  avgDisplayBox.innerText = `Average Sleep Qualty of All Time: ${sleepRepository.displayUserSleepQualityAllTime(id)}
+  Average Hours of Sleep of All Time: ${sleepRepository.displayUserHoursSleepAllTime(id)}`
 }
 
 function chooseUser(userRepository, hydrationRepository) {
@@ -60,13 +94,10 @@ function chooseUser(userRepository, hydrationRepository) {
     datePicker.value = "";
     const userOuncesDisplay = document.querySelector("#user-ounce-for-day-result");
     userOuncesDisplay.innerText = "";
-
 };
 
 function displayUserInfo(user, userRepository, hydrationRepository) {
    welcomeUser.innerText = `Welcome, ${user.returnFirstName()}!`;
-    // var stepGoalRating;
-    // user.dailyStepGoal > getStepGoalAvg(userArray) ? stepGoalRating = 'Above Average' : stepGoalRating = 'Above Average';
     userInfo.innerHTML =
         // `${user.name}
         `Address: ${user.address}<br>
@@ -74,12 +105,12 @@ function displayUserInfo(user, userRepository, hydrationRepository) {
         \nStride Length: ${user.strideLength}<br>
           Daily Step Goal: ${user.dailyStepGoal}<br>
             \nAverage Users Step Goal: ${userRepository.averageStepGoal()}`
-        displayWaterAvgGoalAllTime(user.id, hydrationRepository);
+        // displayWaterAvgGoalAllTime(user.id, hydrationRepository);
     // stepsBox.innerText = `Daily Step Goal: ${user.dailyStepGoal}`
 };
 
 function displayWaterAvgGoalAllTime(id, hydrationRepository) {
-    avgWaterGoal.innerText = `Average Water Consumed: ${hydrationRepository.displayAllTimeAvgOunces(id)}`
+    avgDisplayBox.innerText = `Average Water Consumed: ${hydrationRepository.displayAllTimeAvgOunces(id)}`
 }
 
 function displayDropDownInfo(users) {

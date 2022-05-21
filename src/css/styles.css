@@ -273,4 +273,8 @@ img {
     height: 80%;
   }
 
+  .hidden {
+    display: none;
+  }
+
 @import '~js-datepicker/dist/datepicker.min.css';

@@ -110,19 +110,20 @@ class SleepRepository{
     }
 
     displayWeeklySleepChart(date, Shours, SQhours) {
-        var barColors = ["red", "green", "blue", "orange","brown", "black", "magenta"];
+        var barColors = ['gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray'];
+        var barColors2 = ['black', 'black', 'black', 'black', 'black', 'black', 'black'];
         const data = {
             labels: date,
             datasets: [{
                 label: 'Sleep Hours',
-                borderColor: 'rgba(255, 0, 0, 0.7)',
+                borderColor: 'rgba(255, 0, 0, 0.9)',
                 backgroundColor: barColors,
                 data: Shours
             },
             {
                 label: 'Sleep Quality',
-                borderColor: 'rgba(255, 0, 0, 0.7)',
-                backgroundColor: barColors,
+                borderColor: 'rgba(255, 0, 0, 0.5)',
+                backgroundColor: barColors2,
                 data: SQhours
             }]
         }

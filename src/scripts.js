@@ -7,6 +7,14 @@ import {userDataList, userHydrationList, userSleepList} from './apiCalls';
 import datepicker from 'js-datepicker';
 import dateFormat from 'dateformat'
 
+// ****** Global Variables ******
+var userData;
+var userHydrationData;
+var userSleepData;
+var userRepository;
+var hydrationRepository;
+var sleepRepository;
+
 // ****** querySelectors ******
 var welcomeUser = document.querySelector('.welcome-user');
 var userInfo = document.querySelector('.user-info');
@@ -27,12 +35,12 @@ sleepButton.addEventListener('click', sleepDataDisplay);
 
 function loadData () {
     Promise.all([userDataList(), userHydrationList(), userSleepList()]).then(data => {
-        var userData = data[0].userData
-        var userHydrationData = data[1].hydrationData
-        var userSleepData = data[2].sleepData
-        const userRepository = new UserRepository(userData);
-        const hydrationRepository = new HydrationRepository(userHydrationData);
-        const sleepRepository = new SleepRepository(userSleepData);
+        userData = data[0].userData
+        userHydrationData = data[1].hydrationData
+        userSleepData = data[2].sleepData
+        userRepository = new UserRepository(userData);
+        hydrationRepository = new HydrationRepository(userHydrationData);
+        sleepRepository = new SleepRepository(userSleepData);
         document.getElementById('userDropDown').onchange = () => {
             chooseUser(userRepository, hydrationRepository);
         };
@@ -76,13 +84,13 @@ function loadData () {
 
 function displayDropDownInfo(users) {
     let userDropDown = document.getElementById('userDropDown');
-    for (let i = 0; i < users.length; i++) {
+    users.forEach(user => {
         let userOptions = document.createElement('OPTION');
-        let userText = document.createTextNode(users[i].name);
+        let userText = document.createTextNode(user.name);
         userOptions.appendChild(userText);
-        userOptions.setAttribute('value', users[i].id);
+        userOptions.setAttribute('value', user.id);
         userDropDown.insertBefore(userOptions, userDropDown.lastChild);
-    }
+    })
 }
 
 function chooseUser(userRepository, hydrationRepository) {
@@ -90,16 +98,13 @@ function chooseUser(userRepository, hydrationRepository) {
     var userId = parseInt(selection.options[selection.selectedIndex].value);
     var user = userRepository.getUser(userId)
     displayUserInfo(user, userRepository, hydrationRepository);
-    const datePicker = document.querySelector("#date-picker");
-    datePicker.value = "";
-    const userOuncesDisplay = document.querySelector("#user-ounce-for-day-result");
-    userOuncesDisplay.innerText = "";
+    document.querySelector("#date-picker");
+    document.querySelector("#user-ounce-for-day-result");
 };
 
 function displayUserInfo(user, userRepository, hydrationRepository) {
     welcomeUser.innerText = `Welcome, ${user.returnFirstName()}!`;
     userInfo.innerHTML =
-            // `${user.name}
             `Address: ${user.address}<br>
             E-mail: ${user.email}<br>
             \nStride Length: ${user.strideLength}<br>
@@ -125,12 +130,10 @@ function sleepDataDisplay(userId1, formattedDate1, sleepRepository) {
     const dailyQualityOfSleep = sleepRepository.displaySleepQualityByDate(userId1, formattedDate1)
     dailyResultSleep.innerText = `Hours Slept: ${dailySleepHours}
                                   Quality of Sleep: ${dailyQualityOfSleep}`
-    const  hours = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
-    const date = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
-    sleepRepository.displayWeeklySleepChart(date, hours)
-    const  hours1 = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
-    const date1 = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
-    sleepRepository.displayWeeklySleepChart(date1, hours1)
+    const dateSleep = sleepRepository.displaySleepWeek(userId1, formattedDate1)
+    const Shours = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
+    const SQhours = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
+    sleepRepository.displayWeeklySleepChart(dateSleep, Shours, SQhours)
     avgDisplayBoxSleep.innerText = `Average Sleep Qualty of All Time: ${sleepRepository.displayUserSleepQualityAllTime(userId1)}
                                     Average Hours of Sleep of All Time: ${sleepRepository.displayUserHoursSleepAllTime(userId1)}`
 }

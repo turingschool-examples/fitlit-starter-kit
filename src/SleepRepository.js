@@ -95,32 +95,59 @@ class SleepRepository{
         return parseFloat(number)
     }
 
-    displayWeeklySleepChart(date, hours) {
-        var xValues = date;
-        var yValues = hours;
-        var barColors = ["red", "green", "blue", "orange","brown", "black", "magenta"];
-        new Chart("myChart1", {
-            type: "bar",
-            data: {
-                labels: xValues,
-                datasets: [{
-                    fill: false,
-                    borderColor: 'rgba(255, 0, 0, 0.7)',
-                    backgroundColor: barColors,
-                    data: yValues
-                }]
+    displaySleepWeek(id, date) {
+        const dateSleep = this.users.filter((user) => {
+            return user.id === id;
+        });
+        const index = dateSleep.findIndex(data => {
+            return data.date === date
+          })
+        const weekDate = dateSleep.slice((index - 6) , (index + 1))
+          .map(data => {
+            return data.date
+          })
+        return weekDate;
+    }
+
+    displayWeeklySleepChart(date, Shours, SQhours) {
+        var barColors = ['gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray'];
+        var barColors2 = ['black', 'black', 'black', 'black', 'black', 'black', 'black'];
+        const data = {
+            labels: date,
+            datasets: [{
+                label: 'Sleep Hours',
+                borderColor: 'rgba(255, 0, 0, 0.9)',
+                backgroundColor: barColors,
+                data: Shours
             },
+            {
+                label: 'Sleep Quality',
+                borderColor: 'rgba(255, 0, 0, 0.5)',
+                backgroundColor: barColors2,
+                data: SQhours
+            }]
+        }
+        const config = {
+            type: 'bar',
+            data: data,
             options: {
+                SQhours, 
+                Shours,
                 legend: {
                     display: false
                 },
                 title: {
                     display: true,
-                    text: 'Ounces Consumed Per Date'
+                    text: 'Sleep Hours & Sleep Quality Per Day'
                 }
             }
-        });
+        }
+        new Chart("sleep-chart", config) 
+                
     }
-}
+};
+    
+
+
 
 export default SleepRepository;

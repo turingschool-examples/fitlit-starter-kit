@@ -1,3 +1,5 @@
+import Sleep from './Sleep'
+
 class SleepRepository {
   constructor(sleepData){
     this.dataObjects = sleepData;
@@ -5,6 +7,9 @@ class SleepRepository {
   getAllUserData(userId) {
     const foundData = this.dataObjects.filter(user => user.userID === userId);
       return foundData;
+  }
+  makeNewSleep(user, data) {
+    return new Sleep(user, data)
   }
   calculateAvgHoursSlept() {
     const allUsersHoursSleptSum = this.dataObjects.reduce((totalHours, object) => {

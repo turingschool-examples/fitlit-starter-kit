@@ -7,7 +7,6 @@ function getUserDataFromAPI() {
 function getSleepDataFromAPI() {
     return fetch('https://fitlit-api.herokuapp.com/api/v1/sleep')
     .then(promise => promise.json())
-    .then(someData => someData)
     .catch(error => console.log(error))
 }
 

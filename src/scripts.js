@@ -3,10 +3,12 @@ import { getUserDataFromAPI, getSleepDataFromAPI, getHydrationDataFromAPI} from 
 import './css/styles.css';
 import HydrationRepository from './HydrationRepository.js';
 import UserRepository from './UserRepository';
+import SleepRepository from './SleepRepository';
 
 ///*~~~~~~~~Global Variables~~~~~~~*/
 var userRepo;
 var hydrationRepo;
+var sleepRepo; 
 
 const getRandomID = () => {
   return Math.floor(Math.random() * 50) + 1;
@@ -25,12 +27,22 @@ getHydrationDataFromAPI().then(res => {
   hydrationBuildAttributes(hydrationRepo);
 });
 
+getSleepDataFromAPI().then((res) => {
+	setSleepData(res.sleepData);
+  console.log(sleepRepo);
+	sleepBuildAttributes(sleepRepo);
+});
+
 const setUserData = (someData) => {
   userRepo = new UserRepository(someData); 
 };
 
 const setHydrationData = (someData) => {
   hydrationRepo = new HydrationRepository(someData)
+};
+
+const setSleepData = (someData) => {
+	sleepRepo = new SleepRepository(someData);
 };
 
 ///*~~~~~~~~QUERY SELECTORS~~~~~~~*/
@@ -50,6 +62,7 @@ var hydrationDay4 = document.querySelector('#hydrationDay4');
 var hydrationDay5 = document.querySelector('#hydrationDay5');
 var hydrationDay6 = document.querySelector('#hydrationDay6');
 var hydrationDay7 = document.querySelector('#hydrationDay7');
+var userSleepPerDay = document.querySelector('#UserSleepPerDay');
 
 var hydrationDayHTMLCollection = [
   hydrationDay1, 
@@ -91,3 +104,8 @@ const hydrationBuildAttributes = (hydrationRepoParam) => {
   userWaterDay.innerHTML = `<p>You've drank ${hydrationRepoParam.getUserHydrationForDay(userId, "2020/01/22")} ounces of water today.</p>`;
   formatHydrationData();
 }
+
+const sleepBuildAttributes = (sleepRepoParam) => {
+	userSleepPerDay.innerHTML = `<p>You got ${sleepRepoParam.getSleepDataByDate('2020/01/22', "hoursSlept", userId)} hours sleep today.</p>`;
+
+};

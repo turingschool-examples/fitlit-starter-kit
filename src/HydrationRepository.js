@@ -55,10 +55,13 @@ class HydrationRepository {
     }
 
     displayWeeklyWaterChart(date, ounces) {
+        if(chart != null){
+            chart.destroy()
+        }
         var xValues = date;
         var yValues = ounces;
         var barColors = ["red", "green", "blue", "orange","brown", "black", "magenta"];
-        new Chart("myChart", {
+       var chart = new Chart("myChart", {
             type: "bar",
             data: {
                 labels: xValues,

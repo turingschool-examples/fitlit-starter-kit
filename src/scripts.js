@@ -1,4 +1,5 @@
 import './css/styles.css';
+import './images/water.png';
 import './images/turing-logo.png';
 import UserRepository from './UserRepository';
 import HydrationRepository from './HydrationRepository';
@@ -75,7 +76,9 @@ function loadData () {
                 var selection = document.getElementById('userDropDown');
                 var userId = parseInt(selection.options[selection.selectedIndex].value);
                 const formattedDate = dateFormat(date, "yyyy/mm/dd");
-                sleepDataDisplay(userId, formattedDate, sleepRepository)
+                try{
+                sleepDataDisplay(userId, formattedDate, sleepRepository)}
+                catch{}
             }
           })
 
@@ -93,13 +96,12 @@ function displayDropDownInfo(users) {
     })
 }
 
-function chooseUser(userRepository, hydrationRepository) {
+function chooseUser(userRepository) {
+    clearData();
     var selection = document.getElementById('userDropDown');
     var userId = parseInt(selection.options[selection.selectedIndex].value);
     var user = userRepository.getUser(userId)
-    displayUserInfo(user, userRepository, hydrationRepository);
-    document.querySelector("#date-picker");
-    document.querySelector("#user-ounce-for-day-result");
+    displayUserInfo(user, userRepository);
 };
 
 function displayUserInfo(user, userRepository, hydrationRepository) {
@@ -126,14 +128,24 @@ function waterDataDisplay(userId, formattedDate, hydrationRepository) {
 function sleepDataDisplay(userId1, formattedDate1, sleepRepository) {
     waterContainer.classList.add("hidden");
     sleepContainer.classList.remove("hidden");
-    const dailySleepHours = sleepRepository.displayDailySleepHours(userId1, formattedDate1)
-    const dailyQualityOfSleep = sleepRepository.displaySleepQualityByDate(userId1, formattedDate1)
-    dailyResultSleep.innerText = `Hours Slept: ${dailySleepHours}
-                                  Quality of Sleep: ${dailyQualityOfSleep}`
-    const dateSleep = sleepRepository.displaySleepWeek(userId1, formattedDate1)
-    const Shours = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
-    const SQhours = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
-    sleepRepository.displayWeeklySleepChart(dateSleep, Shours, SQhours)
-    avgDisplayBoxSleep.innerText = `Average Sleep Qualty of All Time: ${sleepRepository.displayUserSleepQualityAllTime(userId1)}
-                                    Average Hours of Sleep of All Time: ${sleepRepository.displayUserHoursSleepAllTime(userId1)}`
+    try{
+        const dailySleepHours = sleepRepository.displayDailySleepHours(userId1, formattedDate1)
+        const dailyQualityOfSleep = sleepRepository.displaySleepQualityByDate(userId1, formattedDate1)
+        dailyResultSleep.innerText = `Hours Slept: ${dailySleepHours}
+                                    Quality of Sleep: ${dailyQualityOfSleep}`
+        const dateSleep = sleepRepository.displaySleepWeek(userId1, formattedDate1)
+        const Shours = sleepRepository.displayWeekSleepHours(userId1, formattedDate1)
+        const SQhours = sleepRepository.displayWeekSleepQualityHours(userId1, formattedDate1)
+        sleepRepository.displayWeeklySleepChart(dateSleep, Shours, SQhours)
+        avgDisplayBoxSleep.innerText = `Average Sleep Qualty of All Time: ${sleepRepository.displayUserSleepQualityAllTime(userId1)}
+                                        Average Hours of Sleep of All Time: ${sleepRepository.displayUserHoursSleepAllTime(userId1)}`
+    }
+    catch{}
+}
+
+function clearData(){
+    dailyResultWater.innerText = '';
+    avgDisplayBoxWater.innerText = 'Average Ounces';
+    dailyResultSleep.innerText = ''; 
+    avgDisplayBoxSleep.innerText = 'Average Sleep';
 }

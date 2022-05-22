@@ -39,16 +39,17 @@ class SleepRepository {
 		return sleepDataByDay[property];
 	}
 
-	getUsersSleepDataHoursPerWeek(id, dateParam, property) {
+	getUsersSleepDataPerWeek(id, dateParam, property) {
 		const userData = this.getSleepDataForUser(id);
 		const endDateIndex = userData.findIndex((date) => {
 			return date.date === dateParam;
 		});
-		const weeklyRange = userData.slice(endDateIndex - 6, 7);
+		const weeklyRange = userData.slice(endDateIndex - 6, endDateIndex + 1);
 		const weeklyPropertyHours = weeklyRange.map((date) => {
-			return {[date.date]: date[property]};
+			return {date: date.date, [property]: date[property]};
 		});
 		return weeklyPropertyHours;
+
 	}
 
 	getAllUsersAverageSleep() {

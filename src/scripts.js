@@ -63,6 +63,13 @@ var hydrationDay5 = document.querySelector('#hydrationDay5');
 var hydrationDay6 = document.querySelector('#hydrationDay6');
 var hydrationDay7 = document.querySelector('#hydrationDay7');
 var userSleepPerDay = document.querySelector('#UserSleepPerDay');
+var sleepDay1 = document.querySelector('#sleepDay1');
+var sleepDay2 = document.querySelector('#sleepDay2');
+var sleepDay3 = document.querySelector('#sleepDay3');
+var sleepDay4 = document.querySelector('#sleepDay4');
+var sleepDay5 = document.querySelector('#sleepDay5');
+var sleepDay6 = document.querySelector('#sleepDay6');
+var sleepDay7 = document.querySelector('#sleepDay7');
 
 var hydrationDayHTMLCollection = [
   hydrationDay1, 
@@ -73,6 +80,17 @@ var hydrationDayHTMLCollection = [
   hydrationDay6, 
   hydrationDay7
 ];
+
+var sleepDayHTMLCollection = [
+	sleepDay1,
+	sleepDay2,
+	sleepDay3,
+	sleepDay4,
+	sleepDay5,
+	sleepDay6,
+	sleepDay7,
+];
+
 //*~~~~~~~~Functions~~~~~~~*//
 function getUserData(){
     var thisUser = userRepo.getUserById(userId);
@@ -108,5 +126,20 @@ const hydrationBuildAttributes = (hydrationRepoParam) => {
 const sleepBuildAttributes = (sleepRepoParam) => {
 	userSleepPerDay.innerHTML = `<p>You got ${sleepRepoParam.getSleepDataByDate('2020/01/22','hoursSlept',userId)} hours sleep today. 
   Your sleep quality is ${sleepRepoParam.getSleepDataByDate('2020/01/22','sleepQuality',userId)} out of 5.</p>`;
+  formatSleepData();
 };
 
+const formatSleepData = () => {
+	const userSleepHoursPerWeek = sleepRepo.getUsersSleepDataPerWeek(userId,'2020/01/22','hoursSlept');
+  const userSleepQualityPerWeek = sleepRepo.getUsersSleepDataPerWeek(userId,'2020/01/22','sleepQuality');
+	const formattedHours = userSleepHoursPerWeek.map((obj) => {
+		return `${obj.hoursSlept} hours.`;
+	});
+  const formattedQuality = userSleepQualityPerWeek.map((obj) => {
+		return `${obj.sleepQuality} hours.`;
+	});
+	sleepDayHTMLCollection.forEach((dayElem, index) => {
+		dayElem.innerText = `${userSleepHoursPerWeek[index].date} : ${formattedHours[index]} hours of sleep,
+    ${formattedQuality[index]} sleep quality out of 5.`;
+	});
+};

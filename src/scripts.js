@@ -106,6 +106,7 @@ const hydrationBuildAttributes = (hydrationRepoParam) => {
 }
 
 const sleepBuildAttributes = (sleepRepoParam) => {
-	userSleepPerDay.innerHTML = `<p>You got ${sleepRepoParam.getSleepDataByDate('2020/01/22', "hoursSlept", userId)} hours sleep today.</p>`;
-
+	userSleepPerDay.innerHTML = `<p>You got ${sleepRepoParam.getSleepDataByDate('2020/01/22','hoursSlept',userId)} hours sleep today. 
+  Your sleep quality is ${sleepRepoParam.getSleepDataByDate('2020/01/22','sleepQuality',userId)} out of 5.</p>`;
 };
+

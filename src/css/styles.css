@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   background-color: #3bb957;
   width: 100%;
   height: 100%;
@@ -47,7 +48,8 @@ header,
 .card {
   background-color: #ffdb7e;
   width: 400px;
-  height: 450px;;
+  height: 450px;
+  ;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

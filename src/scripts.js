@@ -1,5 +1,5 @@
 ///*~~~~~~~~Imports from Other Files~~~~~~~~*/
-import { getUserDataFromAPI, getSleepDataFromAPI, getHydrationDataFromAPI} from './apiCalls.js'; 
+import { getUserDataFromAPI, getSleepDataFromAPI, getHydrationDataFromAPI } from './apiCalls.js';
 import './css/styles.css';
 import HydrationRepository from './HydrationRepository.js';
 import UserRepository from './UserRepository';
@@ -8,7 +8,7 @@ import SleepRepository from './SleepRepository';
 ///*~~~~~~~~Global Variables~~~~~~~*/
 var userRepo;
 var hydrationRepo;
-var sleepRepo; 
+var sleepRepo;
 
 const getRandomID = () => {
   return Math.floor(Math.random() * 50) + 1;
@@ -28,13 +28,13 @@ getHydrationDataFromAPI().then(res => {
 });
 
 getSleepDataFromAPI().then((res) => {
-	setSleepData(res.sleepData);
-  console.log(sleepRepo);
-	sleepBuildAttributes(sleepRepo);
+  setSleepData(res.sleepData);
+
+  sleepBuildAttributes(sleepRepo);
 });
 
 const setUserData = (someData) => {
-  userRepo = new UserRepository(someData); 
+  userRepo = new UserRepository(someData);
 };
 
 const setHydrationData = (someData) => {
@@ -42,7 +42,7 @@ const setHydrationData = (someData) => {
 };
 
 const setSleepData = (someData) => {
-	sleepRepo = new SleepRepository(someData);
+  sleepRepo = new SleepRepository(someData);
 };
 
 ///*~~~~~~~~QUERY SELECTORS~~~~~~~*/
@@ -73,40 +73,40 @@ var sleepDay6 = document.querySelector('#sleepDay6');
 var sleepDay7 = document.querySelector('#sleepDay7');
 
 var hydrationDayHTMLCollection = [
-  hydrationDay1, 
-  hydrationDay2, 
-  hydrationDay3, 
-  hydrationDay4, 
-  hydrationDay5, 
-  hydrationDay6, 
+  hydrationDay1,
+  hydrationDay2,
+  hydrationDay3,
+  hydrationDay4,
+  hydrationDay5,
+  hydrationDay6,
   hydrationDay7
 ];
 
 var sleepDayHTMLCollection = [
-	sleepDay1,
-	sleepDay2,
-	sleepDay3,
-	sleepDay4,
-	sleepDay5,
-	sleepDay6,
-	sleepDay7,
+  sleepDay1,
+  sleepDay2,
+  sleepDay3,
+  sleepDay4,
+  sleepDay5,
+  sleepDay6,
+  sleepDay7,
 ];
 
 //*~~~~~~~~Functions~~~~~~~*//
-function getUserData(){
-    var thisUser = userRepo.getUserById(userId);
-    return thisUser;
+function getUserData() {
+  var thisUser = userRepo.getUserById(userId);
+  return thisUser;
 };
 
 const userBuildAttributes = (user) => {
-    userName.innerHTML = `Name: ${user.name}`;
-    emailAddress.innerHTML = `Email: ${user.email}`;
-    stepGoal.innerHTML = `Goal: ${user.dailyStepGoal} steps`;
-    friends.innerHTML = `Friends: ${user.friends.map(num => ' ' +userRepo.users.find(user => user.id === num).name)}`;
-    address.innerHTML = `Address: ${user.address}`;
-    strideLength.innerHTML = `Stride Length: ${user.strideLength} feet`;
-    userGreeting.innerHTML = `Welcome ${user.name.split(" ")[0]}!`;
-    averageUserGoal.innerHTML = `On average, fitlit users are walking ${userRepo.getAverageSteps()} feet.`;
+  userName.innerHTML = `Name: ${user.name}`;
+  emailAddress.innerHTML = `Email: ${user.email}`;
+  stepGoal.innerHTML = `Goal: ${user.dailyStepGoal} steps`;
+  friends.innerHTML = `Friends: ${user.friends.map(num => ' ' + userRepo.users.find(user => user.id === num).name)}`;
+  address.innerHTML = `Address: ${user.address}`;
+  strideLength.innerHTML = `Stride Length: ${user.strideLength} feet`;
+  userGreeting.innerHTML = `Welcome ${user.name.split(" ")[0]}!`;
+  averageUserGoal.innerHTML = `On average, fitlit users are walking ${userRepo.getAverageSteps()} feet.`;
 };
 
 const formatHydrationData = () => {
@@ -125,25 +125,25 @@ const hydrationBuildAttributes = (hydrationRepoParam) => {
 }
 
 const sleepBuildAttributes = (sleepRepoParam) => {
-	userSleepPerDay.innerHTML = `<p>You got ${sleepRepoParam.getSleepDataByDate('2020/01/22','hoursSlept',userId)} hours sleep today. 
-  Your sleep quality is ${sleepRepoParam.getSleepDataByDate('2020/01/22','sleepQuality',userId)} out of 5.</p>`;
+  userSleepPerDay.innerHTML = `<p>You got ${sleepRepoParam.getSleepDataByDate('2020/01/22', 'hoursSlept', userId)} hours sleep today. 
+  Your sleep quality is ${sleepRepoParam.getSleepDataByDate('2020/01/22', 'sleepQuality', userId)} out of 5.</p>`;
   formatSleepData();
   userSleepAllTime.innerHTML = `<p>On average, you sleep ${sleepRepoParam.getAverageSleepHoursForUserAllTime(userId).toFixed(2)} hours per night. Your average sleep quality is ${sleepRepoParam.getAverageSleepQualityForUserAllTime(userId).toFixed(2)} out of 5.</p>`
 };
 
 const formatSleepData = () => {
-	const userSleepHoursPerWeek = sleepRepo.getUsersSleepDataPerWeek(userId,'2020/01/22','hoursSlept');
-  const userSleepQualityPerWeek = sleepRepo.getUsersSleepDataPerWeek(userId,'2020/01/22','sleepQuality');
-	const formattedHours = userSleepHoursPerWeek.map((obj) => {
-		return `${obj.hoursSlept} hours.`;
-	});
+  const userSleepHoursPerWeek = sleepRepo.getUsersSleepDataPerWeek(userId, '2020/01/22', 'hoursSlept');
+  const userSleepQualityPerWeek = sleepRepo.getUsersSleepDataPerWeek(userId, '2020/01/22', 'sleepQuality');
+  const formattedHours = userSleepHoursPerWeek.map((obj) => {
+    return `${obj.hoursSlept} hours.`;
+  });
   const formattedQuality = userSleepQualityPerWeek.map((obj) => {
-		return `${obj.sleepQuality} hours.`;
-	});
-	sleepDayHTMLCollection.forEach((dayElem, index) => {
-		dayElem.innerText = `${userSleepHoursPerWeek[index].date} : ${formattedHours[index]} hours of sleep,
+    return `${obj.sleepQuality} hours.`;
+  });
+  sleepDayHTMLCollection.forEach((dayElem, index) => {
+    dayElem.innerText = `${userSleepHoursPerWeek[index].date} : ${formattedHours[index]} hours of sleep,
     ${formattedQuality[index]} sleep quality out of 5.`;
-	});
+  });
 };
 
 

@@ -46,7 +46,7 @@ class SleepRepository {
 		});
 		const weeklyRange = userData.slice(endDateIndex - 6, endDateIndex + 1);
 		const weeklyPropertyHours = weeklyRange.map((date) => {
-			return {date: date.date, [property]: date[property]};
+			return { date: date.date, [property]: date[property] };
 		});
 		return weeklyPropertyHours;
 

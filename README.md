@@ -60,7 +60,7 @@
 
 4. Finally, in the last container, we have their sleep info. Sleep Info lets them know how much sleep they got the night before with an average of their sleep quality. As well as the hours slept and sleep quality for the past week. Finally at the bottom it will tell them the calculated average of hours slept, and sleep quality for the week.
 
-![Gif 4]()
+![Gif 4](https://media.giphy.com/media/baUsJnTD6sNYMzW7EI/giphy.gif)
 
 #### Challenges and Wins
 

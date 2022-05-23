@@ -46,15 +46,21 @@
 
 ### Demo of Fitlit
 
-1. The user is welcomed enthusiastically with their first name.
+1. The user is welcomed enthusiastically by their first name.
+
 ![Gif 1](https://media.giphy.com/media/gF2PvYokHacDxlXIsI/giphy.gif)
 
 2. In the first container, personal info will be displayed. We have their personal information containing their full name, email, address, stride length, and friends. As well as their step goals and an average of steps fitlit users are walking.
 
+![Gif 2]()
+
 3. On the second container, we have the users stats on hydration. Hydration Info tells them how much water they have consumed that day and in the past week.
+
+![Gif 3]()
 
 4. Finally, in the last container, we have their sleep info. Sleep Info lets them know how much sleep they got the night before with an average of their sleep quality. As well as the hours slept and sleep quality for the past week. Finally at the bottom it will tell them the calculated average of hours slept, and sleep quality for the week.
 
+![Gif 4]()
 
 #### Challenges and Wins
 

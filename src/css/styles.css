@@ -33,9 +33,13 @@ h3 {
 }
 
 p {
+  font-size: 12px;
   margin: 2px;
-  padding: 5px;
+  padding: 3px;
 }
+ h4 {
+   margin: 5px;
+ }
 
 .card,
 header,
@@ -69,12 +73,11 @@ header,
 }
 
 .user-water-per-day {
-  margin-top: 150px;
-  margin-bottom: 75px;
+  margin: 10px;
 }
 
 .user-sleep-per-day {
-  margin-top: 75px;
+  margin: 10px;
 }
 
 #userGreeting {

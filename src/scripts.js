@@ -135,14 +135,13 @@ const formatSleepData = () => {
 	const userSleepHoursPerWeek = sleepRepo.getUsersSleepDataPerWeek(userId,'2020/01/22','hoursSlept');
   const userSleepQualityPerWeek = sleepRepo.getUsersSleepDataPerWeek(userId,'2020/01/22','sleepQuality');
 	const formattedHours = userSleepHoursPerWeek.map((obj) => {
-		return `${obj.hoursSlept} hours.`;
+		return `${obj.hoursSlept}`;
 	});
   const formattedQuality = userSleepQualityPerWeek.map((obj) => {
-		return `${obj.sleepQuality} hours.`;
+		return `${obj.sleepQuality}`;
 	});
 	sleepDayHTMLCollection.forEach((dayElem, index) => {
-		dayElem.innerText = `${userSleepHoursPerWeek[index].date} : ${formattedHours[index]} hours of sleep,
-    ${formattedQuality[index]} sleep quality out of 5.`;
+		dayElem.innerText = `${userSleepHoursPerWeek[index].date} : ${formattedHours[index]} hours of sleep, your sleep quality is ${formattedQuality[index]}/5.`;
 	});
 };
 

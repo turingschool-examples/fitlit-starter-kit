@@ -20,7 +20,6 @@
 - [Contributors](#contributors)
 - [Technologies Used](#technologies-used)
 - [Challenges and Wins](#challenges-and-wins)
-- [Project Overview and Goals](#project-overview-and-goals)
 - [Deploy Link](#deploy-link)
 
 #### About the Project
@@ -69,10 +68,11 @@
 #### Challenges and Wins
 
 ##### Challenges
-
+- Creating fetch requests
+- Displaying information on the DOM
 
 ##### Wins
+- Got the fetch requests to fetch correctly.
+- Displayed everything beautifully on our app.
 
-
-#### Project Overview And Goals
 

@@ -56,7 +56,7 @@
 
 3. On the second container, we have the users stats on hydration. Hydration Info tells them how much water they have consumed that day and in the past week.
 
-![Gif 3]()
+![Gif 3](https://media.giphy.com/media/wdZ1AOwgmkvhSSg620/giphy.gif)
 
 4. Finally, in the last container, we have their sleep info. Sleep Info lets them know how much sleep they got the night before with an average of their sleep quality. As well as the hours slept and sleep quality for the past week. Finally at the bottom it will tell them the calculated average of hours slept, and sleep quality for the week.
 

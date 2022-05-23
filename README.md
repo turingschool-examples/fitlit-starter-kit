@@ -62,6 +62,10 @@
 
 ![Gif 4](https://media.giphy.com/media/baUsJnTD6sNYMzW7EI/giphy.gif)
 
+5. What our app looks like overall!
+
+![Gif 5](https://media.giphy.com/media/T65Ij0fWbjDVW4DzQP/giphy.gif)
+
 #### Challenges and Wins
 
 ##### Challenges

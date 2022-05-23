@@ -50,9 +50,9 @@
 
 ![Gif 1](https://media.giphy.com/media/gF2PvYokHacDxlXIsI/giphy.gif)
 
-2. In the first container, personal info will be displayed. We have their personal information containing their full name, email, address, stride length, and friends. As well as their step goals and an average of steps fitlit users are walking.
+2. In the first container, we have their personal information containing their full name, email, address, stride length, and friends. As well as their step goals and an average of steps fitlit users are walking.
 
-![Gif 2]()
+![Gif 2](https://media.giphy.com/media/HmGM0NMJX1ifF14MUR/giphy.gif)
 
 3. On the second container, we have the users stats on hydration. Hydration Info tells them how much water they have consumed that day and in the past week.
 

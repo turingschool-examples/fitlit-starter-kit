@@ -63,6 +63,7 @@ var hydrationDay5 = document.querySelector('#hydrationDay5');
 var hydrationDay6 = document.querySelector('#hydrationDay6');
 var hydrationDay7 = document.querySelector('#hydrationDay7');
 var userSleepPerDay = document.querySelector('#UserSleepPerDay');
+var userSleepAllTime = document.querySelector('#userSleepAllTime');
 var sleepDay1 = document.querySelector('#sleepDay1');
 var sleepDay2 = document.querySelector('#sleepDay2');
 var sleepDay3 = document.querySelector('#sleepDay3');
@@ -127,6 +128,7 @@ const sleepBuildAttributes = (sleepRepoParam) => {
 	userSleepPerDay.innerHTML = `<p>You got ${sleepRepoParam.getSleepDataByDate('2020/01/22','hoursSlept',userId)} hours sleep today. 
   Your sleep quality is ${sleepRepoParam.getSleepDataByDate('2020/01/22','sleepQuality',userId)} out of 5.</p>`;
   formatSleepData();
+  userSleepAllTime.innerHTML = `<p>On average, you sleep ${sleepRepoParam.getAverageSleepHoursForUserAllTime(userId).toFixed(2)} hours per night. Your average sleep quality is ${sleepRepoParam.getAverageSleepQualityForUserAllTime(userId).toFixed(2)} out of 5.</p>`
 };
 
 const formatSleepData = () => {
@@ -143,3 +145,5 @@ const formatSleepData = () => {
     ${formattedQuality[index]} sleep quality out of 5.`;
 	});
 };
+
+

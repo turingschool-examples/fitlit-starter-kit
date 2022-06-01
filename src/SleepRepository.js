@@ -31,9 +31,9 @@ class SleepRepository {
 	}
 
 	getSleepDataByDate(date, property, id) {
-		let sleepDataByDay = this.sleepData.find((element) => {
-			if (element.date === date && element.userID === id) {
-				return element;
+		let sleepDataByDay = this.sleepData.find((user) => {
+			if (user.date === date && user.userID === id) {
+				return user;
 			}
 		});
 		return sleepDataByDay[property];

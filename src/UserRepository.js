@@ -10,9 +10,9 @@ class UserRepository {
     };
 
     getAverageSteps() {
-        const dailyStepGoalTotal = this.users.reduce((acc, currentUser) => {
-            acc += currentUser.dailyStepGoal
-            return acc
+        const dailyStepGoalTotal = this.users.reduce((steps, currentUser) => {
+            steps += currentUser.dailyStepGoal
+            return steps
         }, 0);
         return dailyStepGoalTotal / this.users.length;
     };

@@ -4,17 +4,17 @@ class HydrationRepository {
     }
 
     getHydrationDataForUser(idNum) {
-        const hydrationDataForUser = this.hydrationData.filter((obj) => {
-            return obj.userID === idNum;
+        const hydrationDataForUser = this.hydrationData.filter((user) => {
+            return user.userID === idNum;
         });
         return hydrationDataForUser;
     };
 
     getAllTimeOuncesAverage(idNum) {
         const hydrationDataForUser = this.getHydrationDataForUser(idNum);
-        let averageUserHydration = hydrationDataForUser.reduce((acc, cur) => {
-            acc += cur.numOunces
-            return acc;
+        let averageUserHydration = hydrationDataForUser.reduce((user, cur) => {
+            user += cur.numOunces
+            return user;
         }, 0);
         return averageUserHydration / hydrationDataForUser.length;
     };
@@ -33,8 +33,10 @@ class HydrationRepository {
         });
         const weeklyRange = userData.slice(endDateIndex - 6, endDateIndex + 1);
         const weeklyHydration = weeklyRange.map((date) => {
-            return {date: date.date,
-                ounces: date.numOunces};
+            return {
+                date: date.date,
+                ounces: date.numOunces
+            };
         });
         return weeklyHydration;
     };

@@ -6,7 +6,7 @@ class SleepRepository {
 	getSleepDataForUser(idNum) {
 		const sleepDataForUser = this.sleepData.filter((obj) => {
 			if (obj.userID === idNum) {
-				return obj;
+				return idNum;
 			}
 		});
 		return sleepDataForUser;
@@ -14,18 +14,18 @@ class SleepRepository {
 
 	getAverageSleepQualityForUserAllTime(idNum) {
 		const averageSleeps = this.getSleepDataForUser(idNum);
-		let averageUserSleepQualityForAll = averageSleeps.reduce((acc, cur) => {
-			acc += cur.sleepQuality;
-			return acc;
+		let averageUserSleepQualityForAll = averageSleeps.reduce((quality, cur) => {
+			quality += cur.sleepQuality;
+			return quality;
 		}, 0);
 		return averageUserSleepQualityForAll / averageSleeps.length;
 	}
 
 	getAverageSleepHoursForUserAllTime(idNum) {
 		const sleepDataForUser = this.getSleepDataForUser(idNum);
-		let averageUserSleepHours = sleepDataForUser.reduce((acc, cur) => {
-			acc += cur.hoursSlept;
-			return acc;
+		let averageUserSleepHours = sleepDataForUser.reduce((hours, cur) => {
+			hours += cur.hoursSlept;
+			return hours;
 		}, 0);
 		return averageUserSleepHours / sleepDataForUser.length;
 	}
@@ -46,16 +46,16 @@ class SleepRepository {
 		});
 		const weeklyRange = userData.slice(endDateIndex - 6, endDateIndex + 1);
 		const weeklyPropertyHours = weeklyRange.map((date) => {
-			return {date: date.date, [property]: date[property]};
+			return { date: date.date, [property]: date[property] };
 		});
 		return weeklyPropertyHours;
 
 	}
 
 	getAllUsersAverageSleep() {
-		const allUsersAverageSleep = this.sleepData.reduce((acc, currentUser) => {
-			acc += currentUser.sleepQuality;
-			return acc;
+		const allUsersAverageSleep = this.sleepData.reduce((average, currentUser) => {
+			average += currentUser.sleepQuality;
+			return average;
 		}, 0);
 		return allUsersAverageSleep / this.sleepData.length;
 	}

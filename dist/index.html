@@ -1,14 +1,68 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jaldi&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Fitlit</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+     <header> 
+       <h1 class="title">fitlit</h1> 
+       <h2 id="userGreeting"></h2> 
+     </header>
+     <main>
+       <div class="user-card card">
+         <h3 class="user-info">User Info</h3>
+         <div class="user-card-properties" id="userCardProperties">
+          <p id = "userName"></p>
+          <p id = "emailAddress"></p>
+          <p id = "address"></p>
+          <p id = "strideLength"></p>
+          <p id = "friends"></p>
+         </div>
+         <div class="user-step-goal-info card-box" id="userStepGoalInfo">
+           <p id = "stepGoal"></p>
+           <p id= "averageStepGoal"></p>
+         </div>
+       </div>
+       <div class="hydration-card card">
+         <h3 class="hydration-info">Hydration Info</h3>
+         <div class="user-water-per-day card-box" id="userWaterPerDay">
+           <p>You've drank 2 oz water today.</p>
+         </div>
+         <div class="user-water-per-week card-box" id="userWaterPerWeek">
+           <h4>Water drank over the last week:</h3>
+           <p id="hydrationDay1"></p>
+           <p id="hydrationDay2"></p>
+           <p id="hydrationDay3"></p>
+           <p id="hydrationDay4"></p>
+           <p id="hydrationDay5"></p>
+           <p id="hydrationDay6"></p>
+           <p id="hydrationDay7"></p>
+         </div>
+       </div>
+       <div class="sleep-card card">
+         <h3 class="sleep-info">Sleep Info</h3>
+         <div class="user-sleep-per-day card-box" id="UserSleepPerDay">
+           <p>You got 8 hours sleep today.</p>
+         </div>
+         <div class="user-sleep-per-week card-box" id="userSleepPerWeek">
+            <p id="sleepDay1"></p>
+            <p id="sleepDay2"></p>
+            <p id="sleepDay3"></p>
+            <p id="sleepDay4"></p>
+            <p id="sleepDay5"></p>
+            <p id="sleepDay6"></p>
+            <p id="sleepDay7"></p>
+         </div>
+         <div class="user-sleep-all-time card-box" id="userSleepAllTime">
+           <p>You slept average 8.2 hours all time.</p>
+           <p>Your sleep quality average is 3.6 out of 5.</p>
+         </div>
+       </div>
+     </main> 
     <script src="bundle.js"></script>
   </body>
 </html>

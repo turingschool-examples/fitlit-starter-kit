@@ -29,7 +29,6 @@ getHydrationDataFromAPI().then(res => {
 
 getSleepDataFromAPI().then((res) => {
   setSleepData(res.sleepData);
-  console.log(sleepRepo);
   sleepBuildAttributes(sleepRepo);
 });
 

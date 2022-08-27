@@ -76,3 +76,25 @@ There is no boilerplate for testing in this starter-kit repo. You will need to s
   ...more sleep data
 ]
 ```
+## DTR and Project Board
+
+[DTR](https://gist.github.com/willhobson85/9b87733fbbcdf2ac97e2ea51780858f4)
+[Project Board](https://github.com/users/Universal-Patois/projects/3/views/1)
+
+## Design Inspirations
+
+### FitBit
+[FitBit View 1](https://files.slack.com/files-pri/T029P2S9M-F040DFQBC9F/img_6925.jpg)
+[FitBit View 2](https://turingschool.slack.com/files/U0319FB0P2B/F040DFQBCD7/img_6926.jpg)
+
+### Walk Tracker
+[Walk Tracker View 1](https://files.slack.com/files-pri/T029P2S9M-F03V0AM55V5/img_0082.png)
+[Walk Tracker View 2](https://files.slack.com/files-pri/T029P2S9M-F03V0AM567R/img_0083.png)
+
+### Inside Tracker
+[Inside Tracker View 1](https://cdn.shopify.com/s/files/1/0529/3185/4511/products/PDP_Ultimate_2_08cadef0-a3c1-48a1-a221-bf1efa3275ef.jpg?v=1652378104)
+[Inside Tracker View 2](https://cdn.shopify.com/s/files/1/0529/3185/4511/products/PDP_Immunity_2.jpg?v=1652202430)
+
+## Wireframe
+
+[Wireframe Project Design](https://excalidraw.com/#room=d5bcd7fc206815d97f4f,Wwvp_8NbcDmcAcMSdIE89g)

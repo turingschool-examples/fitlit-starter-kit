@@ -1,11 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="eng" dir="ltr">
   <head>
     <meta charset="UTF-8">
     <title>Fitlit</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
+    <header class="welcome-user">
+      <h1>Activity Tracker</h1>
+      <h2 class="greeting"> Welcome, ${}</h2>
+    </header>
+    <section class="personal-information-container">
+      <section class="user-info-container">
+        <h3 class="user-info">User Information</h3>
+        <h4 class="user-id">User ID:</h4>
+        <h4 class="user-name">Name:</h4>
+        <h4 class="user-address">Address:</h4>
+        <h4 class="user-email">E-Mail:</h4>
+        <h4 class="user-stride-length">Stride Length:</h4>
+      </section>
+      <section class="user-friends-container"></section>
+    </section>
+    <section class="widgets-container">
+      <section class="step-goal-container">
+        <h3 class="step-goal">Step Goal:</h3>
+        <h4 class="your-step-goal">Your Goal:</h4>
+        <h4 class="all-users-goals">All Users Goals:</h4>
+        <h4 class="goal-average">Your Goal is ${}</h4>
+      </section>
+      <section class="hydration"></section>
+      <section class="sleep"></section>
+    </section>
     <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
 
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->

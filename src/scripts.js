@@ -16,3 +16,6 @@ import userData from './data/users';
 import sleepData from './data/sleepData';
 import hydrationData from './data/hydrationData';
 import UserRepository from './UserRepository';
+import User from './User';
+import Sleep from './Sleep';
+import Hydration from './Hydration';

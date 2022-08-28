@@ -1,7 +1,5 @@
 import { expect } from "chai";
 import User from "../src/User";
-//import userData from "../src/data/users"
-// import { beforeEach } from "mocha";
 
 describe("User", () => {
   let userData;
@@ -26,45 +24,43 @@ describe("User", () => {
   });
 
   it("should have a parameter to take in a userData object", () => {
-    console.log(user)
-    expect(user).to.be.an("object");
+    expect(userData).to.be.an("object");
   });
 
   it("should have an id", () => {
-    expect(user.id).to.deep.equal(1)
+    expect(user.id).to.equal(1)
   });
 
   it("should have a name", () => {
-    expect(user.name).to.deep.equal("Luisa Hane")
+    expect(user.name).to.equal("Luisa Hane")
   });
 
   it('should have an address', ()=>{
-    expect(user.address).to.deep.equal("15195 Nakia Tunnel, Erdmanport VA 19901-1697")
+    expect(user.address).to.equal("15195 Nakia Tunnel, Erdmanport VA 19901-1697")
   })
 
   it("should have a email", () => {
     expect(user.email).to.deep.equal("Diana.Hayes1@hotmail.com")
   });
 
-  it("should have a strideLength", () => {
-    expect(user.strideLength).to.deep.equal(4.3)
+  it("should have a stride length", () => {
+    expect(user.strideLength).to.equal(4.3)
   });
 
-  it("should have friend array", ()=>{
-    expect(user.friends).to.be.an('array')
-  })
+  it("should have a daily step goal", () => {
+    expect(user.dailyStepGoal).to.equal(10000)
+  });
 
-  it("should save a friends in a array by their id ", () => {
-    expect(user.friends[0]).to.be.an('number')
+  it("should have array of friend user IDs", ()=>{
+    expect(user.friends).to.deep.equal([
+      16,
+      4,
+      8
+      ])
   });
 
   it("should have have a method that returns users first name only", () => {
     let firstName = user.getFirstName()
-    expect(firstName).to.deep.equal("Luisa")
+    expect(firstName).to.equal("Luisa")
   });
-
-  it("should represents a single user", () => {
-    expect(user).to.eql(userData);
-    }
-  );
 });

@@ -1,13 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="rtl">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/css/styles.css">
     <title>Fitlit</title>
   </head>
-  <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
 
+  <body>
+    <div class="large-container">
+
+      <section class="column">
+        <section class="box1 friends-list">
+          <h2>Friends</h2>
+          <button class="friend">Emily Miles</button>
+          <button class="friend">Cole Anthony</button>
+          <button class="friend">Hannah Celemen</button>
+        </section>
+
+        <section class="box1 friends-activity">
+          <h2>Top Activities</h2>
+          <p>Hiking</p>
+          <p>Pottery</p>
+          <p>Paddle boarding</p>
+        </section>
+      </section>
+  
+      <section class="column daily-overview">
+        <section class="box2 hydration">
+          <img>
+          <p>percent bar</p>
+          <h3>Hydration</h3>
+        </section>
+
+        <section class="box2 sleep">
+          <img>
+          <p>percent bar</p>
+          <h3>Sleep</h3>
+        </section>
+
+        <section class="box2 activity">
+          <img>
+          <p>percent bar</p>
+          <h3>Activity</h3>
+        </section>
+      </section>
+  
+      <section class="column">
+        <section class="box1 user-details">
+          <h1>Hello, user!~ <img></h1>
+          <p>Motivational quote...</p>
+          <div>
+            <p>Step Goal: </p>
+            <p>Weekly wins</p>
+            <p>Percentage bubbles here</p>
+          </div>
+        </section>
+        
+        <section class="box1 friends-highlights">
+          <p>Show overview of friend's hydration, sleep, and activity here</p>
+          <p>Hydration bar</p>
+          <p>Sleep bar</p>
+          <p>Activity bar</p>
+          <p>Status</p>
+        </section>
+      </section>
+    </div>
+
+
+
+
+
+    <!-- <h1>Activity Tracker</h1>
+    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>

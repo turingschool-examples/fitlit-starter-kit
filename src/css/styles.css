@@ -1,5 +1,34 @@
-body, html {
+* {
+  border: solid 2px red;
+}
+body,
+html {
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
   background-repeat: no-repeat;
   height: 100%;
+  margin: 0;
 }
+
+header {
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.personal-information-container {
+  height: 40vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.widgets-container {
+  height: 40vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+

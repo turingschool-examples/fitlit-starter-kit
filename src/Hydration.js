@@ -4,6 +4,10 @@ class Hydration {
     this.date = hydrationData.date;
     this.numOunces = hydrationData.numOunces;
   }
+
+  usersDailyOunces() {
+    
+  }
 }
 
 

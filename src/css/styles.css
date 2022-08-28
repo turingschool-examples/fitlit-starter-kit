@@ -1,10 +1,23 @@
 body {
   color: white;
-  background-image: url(src/images/IMG_4293.jpg);
+  background-image: url("../images/IMG_4293.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 0%;
 }
+
+.fredoka400 {
+  font-family: 'Fredoka One', cursive;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.fredoka200 {
+  font-family: 'Fredoka One', cursive;
+  font-family: 'Inter', sans-serif;
+  font-weight: 200;
+}
+
 
 .header{
   margin: 10PX;
@@ -18,10 +31,16 @@ body {
 }
 
 .header-logo {
-  font-size: 50px;
   padding: 0% 2%;
   background-color: rgb(255, 255, 255, .6);
   border-radius: 30px 10px;
+  font-size: 50px;
+}
+
+.header-welcome{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header-welcome-username{
@@ -57,7 +76,7 @@ body {
 .display-article-header {
   margin-top: 5px ;
   margin-left: 10px;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .display-article-content {

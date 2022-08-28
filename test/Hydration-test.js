@@ -1,20 +1,18 @@
 import { expect } from 'chai';
 import User from '../src/User';
 import Hydration from '../src/Hydration';
-import { hydrationData, singleUserData1, singleUserData2, singleUserData3 } from '../src/data/hydrationData';
+import { hydrationData, singleUserData} from '../src/data/hydrationData';
 
 describe('Hydration', () => {
   let user1, user2, user3, hydration1, hydration2, hydration3;
 
   beforeEach(() => {
 
-    user1 = new User(singleUserData1);
-    user2 = new User(singleUserData2);
-    user3 = new user(singleUserData3);
+    user1 = new User(singleUserData);
+    user2 = new User(singleUserData);
+    hydration1 = new Hydration(singleUserData);
+    hydration2 = new Hydration(singleUserData);
 
-    hydration1 = new Hydration(hydrationData1);
-    hydration2 = new Hydration(hydrationData2);
-    hydration3 = new Hydration(hydrationData3);
 
   });
 

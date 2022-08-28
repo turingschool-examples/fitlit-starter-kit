@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { sampleUsers } from '../src/sample-data';
 import UserRepository from '../src/UserRepository';
-import User from "../src/user"
+import User from "../src/User"
 
 describe('User Repository', () => {
   let allSampleData

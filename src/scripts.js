@@ -10,8 +10,6 @@ let sleepInfo = document.querySelector('.sleep');
 
 // Object instances
 
-let allUsers
-
 
 
 // Event listeners
@@ -21,9 +19,14 @@ window.addEventListener('load', getRandomUser);
 // console.log(userData,"<>>>>userData")
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
-import User from './user';
+import User from './User';
 import UserRepository from './UserRepository';
 import { sampleUsers } from './sample-data';
+import { fetchAllData } from './apiCalls';
+
+let allUsers
+
+
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
 
@@ -33,17 +36,30 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 import userData from './data/users';
 
-// Functions
-
-function getRandomUser() {
-  let randomUser = sampleUsers[Math.floor(Math.random() * sampleUsers.length)]
+function getRandomUser(userInfo) {
+  if (userInfo[0]) {
+  allUsers = new UserRepository(userInfo[0].userData)
+  let randomUser = allUsers.userData[Math.floor(Math.random() * allUsers.userData.length)]
   let newUser = new User(randomUser)
   renderUserInfo(newUser)
-  console.log('1', newUser.name)
+  }
 }
 
+function initializeData() {
+  Promise.all([fetchAllData('users'), fetchAllData('sleep'), fetchAllData('hydration')]).then(
+    (data) =>  {
+      getRandomUser(data);
+      // console.log("users", data[0].userData);
+      // console.log("sleep", data[1]);
+      // console.log("hydration", data[2]);
+    }
+  )
+}
+initializeData()
+
+
 function renderUserInfo(newUser) {
-  allUsers = new UserRepository(sampleUsers);
+  // allUsers = new UserRepository(sampleUsers);
 
   greeting.innerHTML = `Welcome ${newUser.getUserFirstName()}`
   userInfo.innerHTML = '';
@@ -57,7 +73,7 @@ function renderUserInfo(newUser) {
 
   stepGoalInfo.innerHTML = '';
 
-  let stepDifference = (allUsers.getUsersAverageStepGoals() - newUser.dailyStepGoal)
+  // let stepDifference = (allUsers.getUsersAverageStepGoals() - newUser.dailyStepGoal)
   stepGoalInfo.innerHTML +=  `<h3 class="step-goal">Step Goals</h3>
   <h4 class="your-step-goal">Your Goal: ${newUser.dailyStepGoal}</h4>
   <h4 class="all-users-goals">All Users Goals: ${allUsers.getUsersAverageStepGoals()}</h4>`
@@ -72,6 +88,8 @@ function renderUserInfo(newUser) {
   // } else { 
   //   `<h4 class="goal-average">Your Goal is on track!</h4>`;
   // }
+
 }
+
 
 

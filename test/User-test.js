@@ -40,7 +40,7 @@ describe("User", () => {
   })
 
   it("should have a email", () => {
-    expect(user.email).to.deep.equal("Diana.Hayes1@hotmail.com")
+    expect(user.email).to.equal("Diana.Hayes1@hotmail.com")
   });
 
   it("should have a stride length", () => {

@@ -1,13 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir='ltr'>
   <head>
     <meta charset="UTF-8">
     <title>Fitlit</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
+    <h1>Welcome, User!</h1>
+    <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
+<section class='rightNav'>
+  <section class="userInfoCard">
+    <p class="userName">Hi, User!
+    <span class="email">email</span>
+    <span class="address">address</span>
+    <span class ="strideLength">Stride Length</span>
+    </p>
+  </section>
+  <sectio class="goalsCard">
+    <p class="goals">GOALS:
+    <span class="stepGoal">Daily Step Goal</span>
+    </p>
+  </section>
+  <section class="friendsCard">
+    <p class="friends">Friends</p>
+    <p class="listOfFriends">friend1</p>
+  </section>
+  <section class="stepComparison">
+    <span class="chart">comparison here</span>
+  </section>
+</section>
+<section class="sleep">
+  <p class="sleepTxt">SLEEP
+  <span class="dailySleep">Daily Sleep: Hours Quality of sleep</span>
+  <span class="weeklySleep">Weekly Sleep: Hours Quality</span>
+  <span class="averageSleep">All time Average Sleep: Hours Quality</span>
+    </p>
+</section>
+<section class="hydration">
+  <p class="hydrationTxt">HYDRATION <span class="waterPerDay">Water consumed per day: hydration data</span>
+  <span class="waterPerweek">Water consumed per day: hydration data</span>
+  </p>
+</section>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>

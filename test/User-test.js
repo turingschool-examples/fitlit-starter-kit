@@ -1,30 +1,16 @@
 import { expect } from "chai";
 import User from "../src/User";
+const userTestData = require("../src/data/userTestData");
 
 describe("User", () => {
-  let userData;
-  let user;
+let user;
 
   beforeEach(() => {
-    userData = {
-        id: 1,
-        name: "Luisa Hane",
-        address: "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-        email: "Diana.Hayes1@hotmail.com",
-        strideLength: 4.3,
-        dailyStepGoal: 10000,
-        friends: [
-        16,
-        4,
-        8
-        ]
-    }
-
-    user = new User(userData);
+    user = new User(userTestData[0]);
   });
 
   it("should have a parameter to take in a userData object", () => {
-    expect(userData).to.be.an("object");
+    expect(userTestData[0]).to.be.an("object");
   });
 
   it("should have an id", () => {

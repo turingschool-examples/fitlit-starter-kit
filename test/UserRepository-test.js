@@ -9,7 +9,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-describe ('UserRepository', function() {
+describe('UserRepository', function() {
 
   it('should be a function', function() {
     var userRepository = new UserRepository();
@@ -67,5 +67,4 @@ describe ('UserRepository', function() {
 
     expect()to.()
   });
-
 });

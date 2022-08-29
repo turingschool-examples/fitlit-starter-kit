@@ -1,5 +1,91 @@
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  background:#F9BA5F;
   background-repeat: no-repeat;
+  font-family: 'Courier Prime', monospace;
+  /* height: 100%; */
+  margin: 0px;
+}
+
+.large-container {
+  display: flex;
+  flex-direction: row;
   height: 100%;
+  width: 100%;
+  border: 2px solid black;
+  /* padding: 20px; */
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid #ffffff; */
+  padding: 20px;
+  gap: 20px;
+  width: 30vw;
+  align-items: stretch;
+  align-content: space-evenly;
+}
+
+.box1 {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 10%;
+}
+
+.friends-list, 
+.friends-activity {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  border: 2px solid #FFE45C;
+  background: #FFE45C;
+}
+
+.friend {
+
+  background: hsl(0, 0%, 100%);
+  border-radius: 10%;
+  padding: 4px;
+  margin: 0px;
+  display: flex;
+  justify-content: flex-start;
+}
+.box2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10%;
+}
+
+.daily-overview {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+.hydration, .activity {
+  display:flex;
+  flex-direction: column;
+  border: 2px solid #128FC8;
+  background: #128FC8;
+
+  padding: 20px;
+  border-radius: 20%;
+}
+
+.sleep {
+  border: 2px solid #FFE45C;
+  background: #FFE45C;
+  padding: 20px;
+  border-radius: 20%;
+}
+
+.user-details,
+.friends-highlights {
+  border: 2px solid hsl(0, 0%, 100%)5C;
+  background: hsl(0, 0%, 100%);
+  padding: 20px;
+  border-radius: 20%;
 }

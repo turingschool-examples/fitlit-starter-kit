@@ -1,5 +1,86 @@
-body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+body {
+  color: white;
+  background-image: url("../images/IMG_4293.png");
+  background-size: cover;
   background-repeat: no-repeat;
-  height: 100%;
+  background-position: 0%;
+}
+
+.fredoka400 {
+  font-family: 'Fredoka One', cursive;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.fredoka200 {
+  font-family: 'Fredoka One', cursive;
+  font-family: 'Inter', sans-serif;
+  font-weight: 200;
+}
+
+
+.header{
+  margin: 10PX;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5px;
+  background-color: rgb(255, 255, 255, .6);
+  color: black;
+  border-radius: 30px 10px;
+}
+
+.header-logo {
+  padding: 0% 2%;
+  background-color: rgb(255, 255, 255, .6);
+  border-radius: 30px 10px;
+  font-size: 50px;
+}
+
+.header-welcome{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-welcome-username{
+  font-size: 40px;
+}
+
+.header-userlogo{
+  background-color: rgb(255, 255, 255, .6);
+  border-radius: 30px 10px;
+  margin: 1%;
+}
+
+.display {
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(255, 255, 255, .6);
+  border-radius: 10px 30px;
+
+}
+
+.display-article {
+  margin: 5px ;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  height: auto;
+  min-width: 200px;
+  border-radius: 10px 30px;
+  background-color: rgb(255, 255, 255, .6);
+}
+
+.display-article-header {
+  margin-top: 5px ;
+  margin-left: 10px;
+  font-size: 25px;
+}
+
+.display-article-content {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
 }

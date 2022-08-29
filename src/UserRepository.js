@@ -8,6 +8,7 @@ class UserRepository {
   }
 
   findAverageStepGoal() {
+    console.log(this.allUserData[1]);
     const userSteps = this.allUserData.map((user) => user.dailyStepGoal);
     const allUserSteps = userSteps.reduce((total, userStep) => {
       total += userStep;

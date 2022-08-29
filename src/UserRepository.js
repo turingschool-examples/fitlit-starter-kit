@@ -1,14 +1,23 @@
-const userData = require('../src/data/users.js')
+const data = require('../src/data/users.js')
 
 class UserRepository {
- constructor(userData) {
-  this.users = userData
+ constructor(data) {
+  this.users = data.users
  }
+
  findUserData(id) {
-  const userID = this.users.find(id => userData[id] === id) 
+   return this.users.id
  }
-}
- console.log(this.findUserData[1]);
+
+ calculateAvgStepGoal() {
+   
+ }
+//  findUserData(id) {
+//   const userID = this.users.find(id => userData[id] === id)
+//  }
+// }
+//  console.log(this.findUserData[1]);
 
 
-export default UserRepository;
+// export default UserRepository;
+module.exports = UserRepository;

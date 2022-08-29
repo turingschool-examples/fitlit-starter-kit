@@ -3,6 +3,13 @@ class UserRepository {
     this.user = data;
     // this.user = userData.id
   }
+  findUserData() {
+
+  }
+
+  calculateAverageStepGoals(){
+    
+  }
 }
 
 export default UserRepository;

@@ -10,6 +10,7 @@ body, html {
 .user-name {
   height: 200px;
   width: 200px;
+  color: black;
   background-color: yellow;
   margin-left: 558px;
 }

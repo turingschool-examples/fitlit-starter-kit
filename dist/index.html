@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,60 +12,62 @@
 
   <body>
     <div class="large-container">
-
       <section class="column">
-        <section class="box1 friends-list">
+        <header>
+          <h1 class="greeting">Hello, user!</h1>
+        </header>
+        <section id="friends-list" class="box1 friends-list">
           <h2>Friends</h2>
-          <button class="friend">Emily Miles</button>
-          <button class="friend">Cole Anthony</button>
-          <button class="friend">Hannah Celemen</button>
+          <button id="friend1" class="friend">Emily Miles</button>
+          <button id="friend2" class="friend">Cole Anthony</button>
+          <button id="friend3" class="friend">Hannah Celemen</button>
         </section>
 
-        <section class="box1 friends-activity">
+        <section id="friendsActivity" class="box1 friends-activity">
           <h2>Top Activities</h2>
-          <p>Hiking</p>
-          <p>Pottery</p>
-          <p>Paddle boarding</p>
+          <p id="activity1">Hiking</p>
+          <p id="activity2">Pottery</p>
+          <p id="activity3">Paddle boarding</p>
         </section>
       </section>
   
       <section class="column daily-overview">
-        <section class="box2 hydration">
-          <img>
+        <section id="hydrationBox" class="box2 hydration">
+          <img role="button" class="water-icon" src="../src/images/icons8-water-96.png" alt="water-icon">
           <p>percent bar</p>
           <h3>Hydration</h3>
         </section>
 
-        <section class="box2 sleep">
-          <img>
+        <section id="sleepBox" class="box2 sleep">
+          <img role="button" class="sleep-icon" src="../src/images/icons8-zzz-96.png" alt="sleep-icon">
           <p>percent bar</p>
           <h3>Sleep</h3>
         </section>
 
-        <section class="box2 activity">
-          <img>
+        <section id="activityBox" class="box2 activity">
+          <img role="button" class="energy-icon" src="../src/images/icons8-sustainable-energy-96.png" alt="energy-icon">
           <p>percent bar</p>
           <h3>Activity</h3>
         </section>
       </section>
   
-      <section class="column">
+      <section id="userInfo" class="column">
         <section class="box1 user-details">
-          <h1>Hello, user!~ <img></h1>
-          <p>Motivational quote...</p>
+          <h1 class="full-name">Luisa Hane</h1>
+          <p class="user-address">address</p>
+          <p class="user-email">email</p>
           <div>
-            <p>Step Goal: </p>
+            <p class="step-goal">Step Goal: </p>
             <p>Weekly wins</p>
             <p>Percentage bubbles here</p>
           </div>
         </section>
         
-        <section class="box1 friends-highlights">
+        <section id="friendsHighlights" class="box1 friends-highlights">
           <p>Show overview of friend's hydration, sleep, and activity here</p>
-          <p>Hydration bar</p>
-          <p>Sleep bar</p>
-          <p>Activity bar</p>
-          <p>Status</p>
+          <p id="friendHydration">Hydration bar</p>
+          <p id="friendSleep">Sleep bar</p>
+          <p id="friendActivity">Activity bar</p>
         </section>
       </section>
     </div>

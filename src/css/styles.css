@@ -1,9 +1,13 @@
 body, html {
-  background:#F9BA5F;
+  background:#ffffff;
   background-repeat: no-repeat;
   font-family: 'Courier Prime', monospace;
   /* height: 100%; */
   margin: 0px;
+}
+
+header {
+  padding: 20px;
 }
 
 .large-container {
@@ -38,19 +42,19 @@ body, html {
   display: flex;
   flex-direction: column;
   align-content: flex-start;
-  border: 2px solid #FFE45C;
-  background: #FFE45C;
+  border: 2px solid #2ECBE9;
+  background: #2ECBE9;
 }
 
 .friend {
-
-  background: hsl(0, 0%, 100%);
+  background: #FFE45C;
   border-radius: 10%;
   padding: 4px;
   margin: 0px;
   display: flex;
   justify-content: flex-start;
 }
+
 .box2 {
   display: flex;
   flex-direction: column;
@@ -65,12 +69,21 @@ body, html {
   /* justify-content: space-between; */
 }
 
-.hydration, .activity {
+.hydration {
+  display:flex;
+  flex-direction: column;
+  border: 2px solid #2ECBE9;
+  background: #fbfbfb;
+  padding: 20px;
+  border-radius: 20%;
+}
+
+
+.activity {
   display:flex;
   flex-direction: column;
   border: 2px solid #128FC8;
   background: #128FC8;
-
   padding: 20px;
   border-radius: 20%;
 }
@@ -84,8 +97,9 @@ body, html {
 
 .user-details,
 .friends-highlights {
-  border: 2px solid hsl(0, 0%, 100%)5C;
-  background: hsl(0, 0%, 100%);
+  border: 2px solid #128FC8;
+  background: #128FC8;
   padding: 20px;
   border-radius: 20%;
 }
+

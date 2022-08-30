@@ -1,14 +1,18 @@
 class UserRepository {
-  constructor(data) {
-    this.user = data;
-    // this.user = userData.id
+  constructor(userData) {
+    this.userData = userData;
   }
+
   findUserData() {
-
+    const singleUserData = this.userData.find(user => user.id === id);
+    return singleUserData;
   }
 
-  calculateAverageStepGoals(){
-    
+  getAllUserAvgStepGoals(){
+    const totalStepGoals = this.userData.reduce((totalSteps, user) => {
+      avg += user.dailyStepGoal / this.userData.length
+    }, 0);
+    return totalStepGoals
   }
 }
 

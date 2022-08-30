@@ -1,14 +1,15 @@
 body, html {
-  background-gradient: linear-gradient(to top, #6947FF 0%, #6190FF 99%, #2CB7FF 100%);
+  background-color: white;
   background-repeat: no-repeat;
   height: 100%;
+  color: black;
 }
 
 header {
   display: flex;
   justify-content: space-between;
   height: 180px;
-  background-color: #white;
+  background-color: white;
 }
 
 .vitals-section-main {
@@ -22,10 +23,4 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-
-
-.sleep-container {
-
 }

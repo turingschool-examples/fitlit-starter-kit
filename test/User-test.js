@@ -28,4 +28,8 @@ describe("User", () => {
     expect(user1.id).to.equal(1);
   });
 
+  it.skip("should be able to store a users name", () => {
+    expect(user1.name).to.equal("Luisa Hane");
+  });
+
 });

@@ -4,7 +4,12 @@ class UserRepository {
     this.avgUserStepGoal = null;
   }
   findUserData(id) {
-    return this.allUserData[id - 1];
+    const userData = this.allUserData.find((data) => {
+      if (data.id === id) {
+        return data;
+      }
+    });
+    return userData;
   }
 
   findAverageStepGoal() {

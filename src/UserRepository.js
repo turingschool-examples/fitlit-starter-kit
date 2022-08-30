@@ -1,23 +1,29 @@
 const data = require('../src/data/users.js')
 
 class UserRepository {
- constructor(data) {
-  this.users = data.users
+ constructor(users) {
+  this.users = users;
  }
 
  findUserData(id) {
-   return this.users.id
+  this.users.find(id => this.users[id] === id)
+  return this.users[id]
  }
 
  calculateAvgStepGoal() {
-   
- }
-//  findUserData(id) {
-//   const userID = this.users.find(id => userData[id] === id)
-//  }
-// }
-//  console.log(this.findUserData[1]);
+  let numOfElements = 0;
+  const stepGoal = this.users.reduce((acc, element) => {
+    acc += element.dailyStepGoal
+
+    numOfElements++
+    return acc
+  }, 0) / 3
+
+  return Math.round(stepGoal)
+
+  }
+
+}
 
 
-// export default UserRepository;
-module.exports = UserRepository;
+export default UserRepository;

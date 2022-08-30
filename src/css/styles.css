@@ -1,26 +1,125 @@
 body, html {
   background-color: white;
   background-repeat: no-repeat;
+  font-family: 'Roboto Mono', monospace;
   height: 100%;
   color: black;
+  border: 2px, solid, red;
 }
 
 header {
   display: flex;
-  justify-content: space-between;
-  height: 180px;
+  justify-content: center;
+  height: 100px;
   background-color: white;
 }
 
-.vitals-section-main {
+main {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+}
+
+.vitals-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 70%;
 }
 
 .right-nav {
-  width: 25%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.user-container {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  color: white;
+  font-size: 12px;
+  word-wrap: normal;
+  padding-left: 1em;
+  padding-right: 1em;
+  background-color: #6190FF;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192), 0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
+}
+
+/* .user-container:hover {
+  box-shadow: 1px 0 3px #CC66FF, -1px 0 3px #CC66FF, 0 1px 3px #CC66FF, 0 -1px 3px#CC66FF;
+} */
+
+.friends-container {
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  color: white;
+  align-items: center;
+  background-color: black;
+  border-radius: 12px;
+  margin-right: 20px;
+  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192), 0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
+}
+
+.friend {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: left;
+  padding: 4px;
+  width: 100%;
+}
+
+.sleep-container {
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  color: white;
+  align-items: center;
+  background-color: #6947FF;
+  border-radius: 12px;
+  margin-right: 20px;
+  padding-top: 10px;
+  margin-top: 75px;
+  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192), 0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
+}
+
+.hydration-container {
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  color: white;
+  align-items: center;
+  background-color: #2CB7FF;
+  border-radius: 12px;
+  padding-top: 10px;
+  margin-top: 75px;
+  margin-right: 20px;
+  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192), 0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
+}
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  color: white;
+  align-items: center;
+  background-color: #6947FF;
+  border-radius: 12px;
+  margin-right: 20px;
+  padding-top: 10px;
+  margin-top: 75px;
+  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192), 0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
+}
+
+#waterBottleImg, #sleepImg, #sandalsImg {
+  border-radius: 50%;
+  background-color: white;
+  padding: 4px;
+  margin: 2px;
 }

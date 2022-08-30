@@ -1,75 +1,74 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
 console.log(userData, "<>>>>userData");
-// An example of how you tell webpack to use a CSS file
+// Import CSS and Images
 import "./css/styles.css";
+import "./images/lighting.png";
+import "./images/sandals.png";
+import "./images/water-bottle.png";
+import "./images/logo_transparent.png";
+import "./images/avatar-male.png";
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import "./images/turing-logo.png";
-
-console.log("This is the JavaScript entry file - your code begins here.");
-
-// An example of how you tell webpack to use a JS file
-
+//Import Classes
 import userData from "./data/users";
-
+import User from "./User";
 import UserRepository from "./UserRepository";
-//variables
-const userRepository = new UserRepository(userData);
-const randomIndex = getRandomIndex();
-const userInfo = userRepository.findUserData(randomIndex);
-const user = new User(userInfo);
 
-// Query Selectors by class Name
-const welcomeMessage = document.getElementsByClassName("welcome-message");
-const userName = document.getElementsByClassName("user-info-card");
-const friends = document.getElementsByClassName("friend-card");
+//Global Variables
+const user = new User(userData[getRandomIndex(userData)]);
+const allUsers = userData.map((user) => new User(user));
+const userRepository = new UserRepository(allUsers);
+
+// Query Selectors
+const userDetails = document.querySelector(".user-card");
+const friendsList = document.querySelector(".friends-card");
 
 // EVent Listeners
-window.addEventListener("load", changeWelcomeMessage);
-welcomeMessage.addEventListener(changeInnerText);
+window.addEventListener("load", displayDashboard);
 
-function getRandomIndex() {
+function getRandomIndex(userData) {
   return Math.floor(Math.random() * userData.length);
 }
 
-function changeWelcomeMessage() {
-  welcomeMessage.innerText = `Welcome, ${user.getFirstName()}!`;
+function displayDashboard() {
   displayUserDetails();
-}
-
-function displayUserDetails() {
-  userName.innerHTML += `
-    <h3 class="user-name">Hi, ${user.getFirstName()}!</h3>
-    <ul>
-        <li class="email"> Email: ${user.email} </li>
-        <li class="address"> ${user.address} </li>
-        <li class ="stride-length"> ${user.strideLength} </li>
-    </ul>`;
-
   displayFriends();
 }
 
+function displayUserDetails() {
+  userDetails.innerHTML = "";
+  userDetails.innerHTML += `
+    <h3 class="user-name">Hi, ${user.getFirstName()}!</h3>
+    <p class="email">Email: ${user.email} </p>
+    <p class="address">Address: ${user.address} </p>
+    <p class ="stride-length">Stride Length (ft): ${user.strideLength} </p>
+    <p class ="step-goal">Daily Step Goal: ${user.dailyStepGoal}</p>`
+}
+
 function displayFriends() {
-  const userName = user.friends.map(
-    (friend) => `<li> ${userInfo.findUserData(friend)} </li>`
+  friendsList.innerHTML = "";
+  const foundFriends = user.friends.map((friend) =>
+    userRepository.findUserData(friend)
   );
-
-  friend.innerHTML += userName.reduce((acc, name) => {
-    acc = name.name;
-    return `<ul> ${acc} </ul>`;
-  });
-  usersGoals();
+  const firstNames = foundFriends.map((friend) => friend.getFirstName());
+  firstNames.forEach(
+    (friend) => (friendsList.innerHTML += `<section class="friend">
+    <img
+    src="./images/avatar-male.png"
+    alt="male avatar"
+    height="50px"
+    width="50px"
+  />
+  <section>${friend}</section>
+  </section>`)
+  );
 }
 
-function usersGoals() {
-  section += `
-        <h2> Goals </h2>
-        <p> ${user.dailyStepGoal} </p>`;
-}
+// function usersGoals() {
+//   section += `
+//         <h2> Goals </h2>
+//         <p> ${user.dailyStepGoal} </p>`;
+// }
 
-
-/// sleep section need a sleep class 
+/// sleep section need a sleep class
 
 // function displySleep(){
 //     sleepDetails.innerHTML += `

@@ -3,7 +3,7 @@ import User from "../src/User";
 
 describe("User", () => {
   let user1;
-  let user2;
+
   beforeEach(() => {
     user1 = new User({
       id: 1,
@@ -38,6 +38,10 @@ describe("User", () => {
 
   it.skip("should be able to store a users email", () => {
     expect(user1.email).to.equal("Diana.Hayes1@hotmail.com");
+  });
+
+  it.skip("should be able to store a users stride length", () => {
+    expect(user1.strideLength).to.equal(4.3);
   });
 
 });

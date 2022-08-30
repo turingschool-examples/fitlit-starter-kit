@@ -1,11 +1,12 @@
 // ######### Imports ###########
-import userData from './data/users';
-import sleepData from './data/sleepData';
-import hydrationData from './data/hydrationData';
 import UserRepository from './UserRepository';
 import User from './User';
 import Sleep from './Sleep';
 import Hydration from './Hydration';
+import { fetchAll } from './apiCalls';
+import './css/styles.css';
+import './images/turing-logo.png'
+import './images/Activity.png'
 
 // ######### Query Selectors ###########
 const userWelcome =  document.querySelector('#userName')
@@ -13,57 +14,43 @@ const userInfo = document.querySelector('#userInfo')
 const userStepComp = document.querySelector('#userSteps')
 
 // ######### Global Variables ###########
- let user; 
+  let singleUser;
   let usersData;
+  let userRepository;
+  let users;
+  let sleep;
+  let hydration;
 // let hydrationData;
 // let sleepData;
 
 
-
-
 // ######### Promises ###########
-//This is were our fetch (API) will go!
+const getFetch = () => {
+  fetchAll()
+  .then(data => {
+    console.log('data', data)
+    users = data[0].userData;
+    sleep = data[1].sleepData;
+    hydration = data[2].hydrationData;
+    singleUser = new User(users[getRandomUser()]);
+    userRepository = new UserRepository(users);
+    welcomeUser();
 
-
-
+  })
+}
 
 // ######### Event Listeners ###########
-// window.addEventListener('load', getPromiseData);
+window.addEventListener('load', getFetch);
 
 
 
 
 // ######### On-Load Function ###########
-const loadPage = () => {
-    fetchAll() .then((data) => {
-        const [userData, sleepData, hydrationData ] = data
-        const  newUser = new User(data)
-        
-}
-// function getRandomPageUser() {
-//   const pageNameIndex = randomIndex(pageNames);
-//   return pageNames[pageNameIndex];
-// }
-// function getPromiseData() {
-//   return  welcomeUser()
-
-// }
 function getRandomUser() {
-    currentUser = user[Math.floor(Math.random() * user.length)];
-    return currentUser
+    return Math.floor(Math.random() * users.length);
+
 }
 
 function welcomeUser() {
-  userWelcome.innerText = `Welcome Back, ${user.returnUsername()} !`;
+  userWelcome.innerText = `Welcome Back, ${singleUser.returnUserName()} !`;
 }
-
-
-console.log(userData,"<>>>>userData")
-// An example of how you tell webpack to use a CSS file
-import './css/styles.css';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
-import './images/Activity.png'
-console.log('This is the JavaScript entry file - your code begins here.');
-

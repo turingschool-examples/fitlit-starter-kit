@@ -18,14 +18,26 @@ describe('User Repository', () => {
   })
 
   it('should hold all the users data', () => {
-    expect(userRepository.findUserData().to.deep.equal())
-  })
+    expect(userRepository.userData).to.equal(userData);
+  });
 
   it('should return a users data when given a user/s id', () => {
-    expect(userRepository.findUserData().to.deep.equal())
-  })
+    expect(userRepository.findUserData(1)).to.deep.equal(
+      {
+        id: 1,
+        name: "Luisa Hane",
+        address: "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+        email: "Diana.Hayes1@hotmail.com",
+        strideLength: 4.3,
+        dailyStepGoal: 10000,
+        friends: [16,4,8]
+      }
+    );
+  });
 
   it('should return an average step goal amonst all users', () => {
-    expect(userRepository.calculateAverageStepGoals()).to.equal();
+
+    expect(userRepository.getAllUserAvgStepGoals()).to.equal();
+
   })
 });

@@ -4,7 +4,7 @@
 console.log(userData,"<>>>>userData")
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
-
+import fetchData from './apiCalls.js'
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
 import './images/icons8-plus-67.png';
@@ -74,3 +74,7 @@ const renderProfile = () => {
   userEmail.innerText = ` ${currentUser.address}`
   stepGoal.innerText = ` ${currentUser.dailyStepGoal}`
 }
+
+fetchData('users');
+fetchData('sleep');
+fetchData('hydration');

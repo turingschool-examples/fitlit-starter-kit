@@ -44,4 +44,8 @@ describe("User", () => {
     expect(user1.strideLength).to.equal(4.3);
   });
 
+  it.skip("should be able to store a users daily step goal", () => {
+    expect(user1.dailyStepGoal).to.equal(10000);
+  });
+
 });

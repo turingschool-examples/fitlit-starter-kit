@@ -1,5 +1,17 @@
-// Your fetch requests will live here!
+const fetchData = (endPoint) => {
+  return fetch(`https://fitlit-api.herokuapp.com/api/v1/${endPoint}`)
+  .then(response => response.json());
+  .then(data => data);
+  .catch(error => console.log(`${endPoint} API Error!`))
+};
+
+const fetchApiData = () => {
+  return Promise.all([
+    fetchData("users"),
+    fetchData("hydration"),
+    fetchData("sleep"),
+  ]);
+};
 
 
-console.log('I will be a fetch request!')
-
+export default fetchData;

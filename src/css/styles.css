@@ -34,7 +34,7 @@ header {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border-radius: 10%;
+  border-radius: 20px;
 }
 
 .friends-list, 
@@ -44,13 +44,14 @@ header {
   align-content: flex-start;
   border: 2px solid #2ECBE9;
   background: #2ECBE9;
+  
+  
 }
 
 .friend {
   background: #FFE45C;
-  border-radius: 10%;
-  padding: 4px;
-  margin: 0px;
+  padding: 5px;
+  margin: 1px;
   display: flex;
   justify-content: flex-start;
 }
@@ -60,7 +61,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 10%;
+  
 }
 
 .daily-overview {
@@ -75,7 +76,7 @@ header {
   border: 2px solid #2ECBE9;
   background: #fbfbfb;
   padding: 20px;
-  border-radius: 20%;
+  border-radius: 20px;
 }
 
 
@@ -85,14 +86,14 @@ header {
   border: 2px solid #128FC8;
   background: #128FC8;
   padding: 20px;
-  border-radius: 20%;
+  border-radius: 20px;
 }
 
 .sleep {
   border: 2px solid #FFE45C;
   background: #FFE45C;
   padding: 20px;
-  border-radius: 20%;
+  border-radius: 20px;
 }
 
 .user-details,
@@ -100,6 +101,6 @@ header {
   border: 2px solid #128FC8;
   background: #128FC8;
   padding: 20px;
-  border-radius: 20%;
+  border-radius: 20px;
 }
 

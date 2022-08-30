@@ -65,6 +65,6 @@ const renderProfile = () => {
   stepGoal.innerText = ` ${currentUser.dailyStepGoal}`;
 }
 
-fetchData('users');
-fetchData('sleep');
-fetchData('hydration');
+fetchData('users', 'userData');
+fetchData('sleep', 'sleepData');
+fetchData('hydration', 'hydrationData');

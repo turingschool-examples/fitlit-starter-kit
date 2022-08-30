@@ -13,8 +13,8 @@ const userInfo = document.querySelector('#userInfo')
 const userStepComp = document.querySelector('#userSteps')
 
 // ######### Global Variables ###########
- let user 
- let userData;
+ let user; 
+  let usersData;
 // let hydrationData;
 // let sleepData;
 
@@ -28,25 +28,33 @@ const userStepComp = document.querySelector('#userSteps')
 
 
 // ######### Event Listeners ###########
-window.addEventListener('load', getPromiseData);
+// window.addEventListener('load', getPromiseData);
 
 
 
 
 // ######### On-Load Function ###########
-
+const loadPage = () => {
+    fetchAll() .then((data) => {
+        const [userData, sleepData, hydrationData ] = data
+        const  newUser = new User(data)
+        
+}
 // function getRandomPageUser() {
 //   const pageNameIndex = randomIndex(pageNames);
 //   return pageNames[pageNameIndex];
 // }
+// function getPromiseData() {
+//   return  welcomeUser()
 
+// }
 function getRandomUser() {
     currentUser = user[Math.floor(Math.random() * user.length)];
     return currentUser
 }
 
 function welcomeUser() {
-  userWelcome.innerText = `${getRandomUser()} ${users.name}?`;
+  userWelcome.innerText = `Welcome Back, ${user.returnUsername()} !`;
 }
 
 
@@ -58,5 +66,4 @@ import './css/styles.css';
 import './images/turing-logo.png'
 import './images/Activity.png'
 console.log('This is the JavaScript entry file - your code begins here.');
-console.log(sleepData)
-console.log(Sleep)
+

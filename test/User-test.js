@@ -32,4 +32,8 @@ describe("User", () => {
     expect(user1.name).to.equal("Luisa Hane");
   });
 
+  it.skip("should be able to store a users address", () => {
+    expect(user1.address).to.equal("15195 Nakia Tunnel, Erdmanport VA 19901-1697");
+  });
+
 });

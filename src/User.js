@@ -10,7 +10,7 @@ class User {
   }
 
   returnUserFirstName() {
-    return this.name
+    return this.name.split(' ')[0]
   }
 }
 

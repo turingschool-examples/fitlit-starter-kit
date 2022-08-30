@@ -2,21 +2,39 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./src/css/styles.css">
     <title>Fitlit</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
     <nav class="fitlit-menu">
-      <!-- FITLIT! -->
-      <!-- Welcome, @UserFirstName! -->
-      <!-- NavBar -->
+      <h1 class="nav-title">FITLIT</h1>
+      <h2 class="nav-user" id="nav-user-name">Welcome @username</h2>
+      <button class="nav-link disabled" disabled>Dashboard</button>
     </nav>
-    <section class="user-main"></section>
-    <section class="user-steps"></section>
-    <section class="user-hydration"></section>
-    <section class="user-sleep"></section>
+    <section class="user-main" id="user-info-card">
+        <h3 class="user-info">My Information</h3>
+        <p class="user-name" id="user-info-name">Name: </p>
+        <p class="user-address" id="user-info-address">Address: </p>
+        <p class="user-email" id="user-info-email">Email: </p>
+        <p class="user-stride" id="user-info-stride">Stride: </p>
+        <p class="user-friends" id="user-info-friends">Friends: </p>
+    </section>
+    <section class="user-steps">
+        <h3 class="step-info">User's Step Goal</h3>
+        <p class="step-goal" id="user-step-average">Daily Step Goal: </p> 
+        <p class="step-goal-comparison" id="step-goal-average">Overall Step Goal: </p>
+    </section>
+    <section class="user-hydration">
+        <!-- <h3 class="hydration-info">User's Hydration</h3>
+        <p class="hydration-daily">Today's Hydration: </p>
+        <p class="hydration-weekly">This Week's Hydration: </p> -->
+    </section>
+    <section class="user-sleep">
+        <!-- <h3 class="sleep-info">User's Sleep</h3>
+        <p class="sleep-daily">Today's Sleep Data: </p>
+        <p class="sleep-weekly">This Week's Sleep Data: </p>
+        <p class="sleep-all-time">All Time Sleep Data: </p> -->
+    </section>
+
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>

@@ -8,13 +8,13 @@ import Sleep from './Sleep';
 import Hydration from './Hydration';
 
 // ######### Query Selectors ###########
-
-
-
+const userWelcome =  document.querySelector('#userName')
+const userInfo = document.querySelector('#userInfo')
+const userStepComp = document.querySelector('#userSteps')
 
 // ######### Global Variables ###########
-// let user;
-// let userData;
+ let user 
+ let userData;
 // let hydrationData;
 // let sleepData;
 
@@ -28,7 +28,7 @@ import Hydration from './Hydration';
 
 
 // ######### Event Listeners ###########
-//window.addEventListener('load', getPromiseData);
+window.addEventListener('load', getPromiseData);
 
 
 
@@ -39,10 +39,15 @@ import Hydration from './Hydration';
 //   const pageNameIndex = randomIndex(pageNames);
 //   return pageNames[pageNameIndex];
 // }
-//
-// function welcomeUser() {
-//   userWelcome.innerText = `${getRandomPageuser()} ${user.name}?`;
-// }
+
+function getRandomUser() {
+    currentUser = user[Math.floor(Math.random() * user.length)];
+    return currentUser
+}
+
+function welcomeUser() {
+  userWelcome.innerText = `${getRandomUser()} ${users.name}?`;
+}
 
 
 console.log(userData,"<>>>>userData")
@@ -51,7 +56,7 @@ import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
-
+import './images/Activity.png'
 console.log('This is the JavaScript entry file - your code begins here.');
 console.log(sleepData)
 console.log(Sleep)

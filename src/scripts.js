@@ -69,10 +69,10 @@ function renderFriendsList() {
 }
 
 const renderProfile = () => {
-  fullName.innerText = ` ${currentUser.name}`
-  userAddress.innerText = ` ${currentUser.email}`
-  userEmail.innerText = ` ${currentUser.address}`
-  stepGoal.innerText = ` ${currentUser.dailyStepGoal}`
+  fullName.innerText = ` ${currentUser.name}`;
+  userAddress.innerText = ` ${currentUser.email}`;
+  userEmail.innerText = ` ${currentUser.address}`;
+  stepGoal.innerText = ` ${currentUser.dailyStepGoal}`;
 }
 
 fetchData('users');

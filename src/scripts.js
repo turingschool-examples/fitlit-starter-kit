@@ -20,6 +20,7 @@ const userRepository = new UserRepository(allUsers);
 // Query Selectors
 const userDetails = document.querySelector(".user-card");
 const friendsList = document.querySelector(".friends-card");
+const stepDetails = document.querySelector(".step-card");
 
 // EVent Listeners
 window.addEventListener("load", displayDashboard);
@@ -31,6 +32,7 @@ function getRandomIndex(userData) {
 function displayDashboard() {
   displayUserDetails();
   displayFriends();
+  displaySteps();
 }
 
 function displayUserDetails() {
@@ -62,21 +64,10 @@ function displayFriends() {
   );
 }
 
-// function usersGoals() {
-//   section += `
-//         <h2> Goals </h2>
-//         <p> ${user.dailyStepGoal} </p>`;
-// }
-
-/// sleep section need a sleep class
-
-// function displySleep(){
-//     sleepDetails.innerHTML += `
-//         <ul>
-//             <li> ${user.d}</li>
-//             <li> </li>
-//             <li> </li>
-//             <li> </li>
-//         </ul>
-//     `
-// }
+function displaySteps() {
+  stepDetails.innerHTML = '';
+  const averageSteps = userRepository.findAverageStepGoal()
+  const comparison = Math.round((user.dailyStepGoal/averageSteps)*100)
+  stepDetails.innerHTML += `<section class='step-comparison-message'><p>Average Step Goal for All Users: ${userRepository.avgUserStepGoal}.</p>
+  <p>Your daily step goal is ${comparison}% compared to all average users.</p></section>`
+}

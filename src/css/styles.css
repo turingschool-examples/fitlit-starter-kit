@@ -6,6 +6,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   height: 100vh;
   margin: 0px;
@@ -32,6 +35,22 @@ body {
 }
 
 /* User Info - Main */
+.user-main {
+  background-image: linear-gradient(#EF8774, #7C4D56);
+  border: 1px solid antiquewhite;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  justify-content: space-around;
+  opacity: 0.80;
+  padding: 5px;
+  width: 400px;
+}
+
+.user-info {
+  text-align: center;
+}
 
 /* User Info - Steps */
 

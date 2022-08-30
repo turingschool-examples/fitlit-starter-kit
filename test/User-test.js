@@ -24,4 +24,8 @@ describe("User", () => {
     expect(user1).to.be.an.instanceof(User);
   });
 
+  it.skip("should be able to store a users id", () => {
+    expect(user1.id).to.equal(1);
+  });
+
 });

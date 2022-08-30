@@ -69,5 +69,6 @@ function displaySteps() {
   const averageSteps = userRepository.findAverageStepGoal()
   const comparison = Math.round((user.dailyStepGoal/averageSteps)*100)
   stepDetails.innerHTML += `<section class='step-comparison-message'><p>Average Step Goal for All Users: ${userRepository.avgUserStepGoal}.</p>
+  <p>Your step goal is: ${user.dailyStepGoal}.</p>
   <p>Your daily step goal is ${comparison}% compared to all average users.</p></section>`
 }

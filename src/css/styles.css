@@ -1,5 +1,61 @@
-body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+/* Global Styling */
+body {
+  background-color: grey;
+  background-image: url(https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1220&q=80);
+  background-position: center;
   background-repeat: no-repeat;
-  height: 100%;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  height: 100vh;
+  margin: 0px;
 }
+
+/* Navigation Bar */
+.fitlit-menu {
+  background-color: #EF8774;
+  color: antiquewhite;
+  display: flex;
+  height: 75px;
+  justify-content: space-between;
+  text-align: justify;
+  width: 100vw;
+}
+
+.nav-link {
+  background-color: #EF8774;
+  border: 1px solid antiquewhite;
+  border-radius: 8%;
+  color: antiquewhite;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin: 20px;
+}
+
+/* User Info - Main */
+.user-main {
+  background-image: linear-gradient(#EF8774, #7C4D56);
+  border: 1px solid antiquewhite;
+  border-radius: 10px;
+  color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  justify-content: space-around;
+  margin-left: 5px;
+  opacity: 0.80;
+  padding: 5px;
+  width: 400px;
+}
+
+.user-info {
+  text-align: center;
+}
+
+/* User Info - Steps */
+
+/* Hydration */
+
+/* Sleep */

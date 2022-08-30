@@ -1,41 +1,47 @@
 class Hydration {
     constructor(hydrationInfo) {
-        this.hydrationData = hydrationInfo
-        this.userHydrationArray = []
+        this.userID = hydrationInfo.userID;
+        this.date = hydrationInfo.date;
+        this.numOunces = hydrationInfo.numOunces;
     }
 
-    getUserHydration(id) {
-        let userHydration = this.hydrationData.filter((user) => user.userID === id)
-        this.userHydrationArray.push(userHydration);
+    getUserHydration(waterArray, id) {
+        let userHydration = waterArray.filter((user) => user.userID === id)
+        if (userHydration.length === 0) {
+            return "Invalid user ID. Please verify user ID and try again."
+        }
         return userHydration
     }
     
-    userAverageOunces(waterArray) {
-        let totalAmount = waterArray.reduce((totalOz, dayOz) => {
+    userAverageOunces(waterArray, id) {
+        let currentUser = this.getUserHydration(waterArray, id)
+        let totalAmount = currentUser.reduce((totalOz, dayOz) => {
             totalOz += dayOz.numOunces;
             return totalOz;
         }, 0);
         let totalAverage = parseFloat((totalAmount / waterArray.length).toFixed(0));
         return totalAverage
     }
-
-    mostRecentOunces(waterArray) {
-        let findLastDate = waterArray.length - 1;
-        let mostRecentDate = waterArray[findLastDate];
-        return mostRecentDate.numOunces;
+    mostRecentOunces(waterArray, userID) {
+        let userOunces = this.getUserHydration(waterArray, userID);
+        let userMostRecent = userOunces.sort((oldest, newest) => newest.date - oldest.date)
+        let findLastDate = userMostRecent[0];
+        return findLastDate
     }
 
-    userOuncesOnDate(date) {
-        //input userHydration array
-        //output numOunces and date keys
-        //we need a way to get the date going back 7 days.
-        //split and join the dates to remove the /
+    findOuncesByDate(waterArray, userID, date) {
+        let userOunces = this.getUserHydration(waterArray, userID)
+        let findDate = userOunces.find(dateOunces => dateOunces.date === date)
+        return findDate
     }
 
-    //userOuncesPerWeek(start) {
-        // let latestDate = date.sort((a, b) => b.date - a.date)
-        // return latestDate;
-    // }
+    userOuncesPerWeek(waterArray, userID) {
+        let currentUser = this.getUserHydration(waterArray, userID)
+        let weekOuncesSorted = currentUser.sort((oldest, newest) => oldest.date - newest.date)
+            .splice(0, 7)
+            .map(hydrationInfo => hydrationInfo.numOunces)
+        return weekOuncesSorted
+    }
 }
 
 export default Hydration;

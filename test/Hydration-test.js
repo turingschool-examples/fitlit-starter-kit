@@ -111,8 +111,8 @@ describe('Hydration', () => {
         expect(hydrationArray.userAverageOunces(hydration2)).to.equal(75);
     })
 
-    it('should be able to find ounces for most recent date', () => {
-        
-    })
+    // it('should be able to find ounces for most recent date', () => {
+
+    // })
     
 })

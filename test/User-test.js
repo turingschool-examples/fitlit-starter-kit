@@ -14,19 +14,14 @@ describe("User", () => {
       dailyStepGoal: 10000,
       friends: [16, 4, 8]
     });
-    user2 = new User({
-      id: 2,
-      name: "Jarvis Considine",
-      address: "30086 Kathryn Port, Ciceroland NE 07273",
-      email: "Dimitri.Bechtelar11@gmail.com",
-      strideLength: 4.5,
-      dailyStepGoal: 5000,
-      friends: [9, 18, 24, 19]
-    });
   });
 
   it.skip("should be a function", () => {
     expect(User).to.be.a("function");
+  });
+
+  it.skip("should be an instance of user", () => {
+    expect(user1).to.be.an.instanceof(User);
   });
 
 });

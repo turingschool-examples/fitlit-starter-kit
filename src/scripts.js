@@ -1,7 +1,19 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
+const userName = document.getElementsByClassName('header-welcome-username') 
+const userIcon = document.getElementsByClassName('header-userlogo') 
+const stepsContent = document.getElementsByClassName('steps-content') 
+const stepsFriends = document.getElementsByClassName('steps-content-friends') 
+const hydrationContent = document.getElementsByClassName('hydration-content') 
+const dailyHydrationNodeList = document.querySelectorAll('.daily-hydration')
+const sleepContent = document.getElementsByClassName('sleep-content') 
 
-console.log(userData,"<>>>>userData")
+
+
+function check() {
+  console.log(userData,"<>>>>userData")
+  
+}
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
 

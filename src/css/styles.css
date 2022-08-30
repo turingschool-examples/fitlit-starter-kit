@@ -1,5 +1,7 @@
 body {
-  color: white;
+  display: flex;
+  justify-content: space-around;
+  white-space: nowrap;
   background-image: url("../images/IMG_4293.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -18,13 +20,13 @@ body {
   font-weight: 200;
 }
 
+/* header */
 
 .header{
-  margin: 10PX;
+  margin: 2% 10%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 5px;
   background-color: rgb(255, 255, 255, .6);
   color: black;
   border-radius: 30px 10px;
@@ -50,8 +52,9 @@ body {
 .header-userlogo{
   background-color: rgb(255, 255, 255, .6);
   border-radius: 30px 10px;
-  margin: 1%;
 }
+
+/* display */
 
 .display {
   margin: auto;
@@ -63,7 +66,6 @@ body {
 }
 
 .display-article {
-  margin: 5px ;
   display: flex;
   flex-direction: column;
   color: black;
@@ -72,6 +74,7 @@ body {
   border-radius: 10px 30px;
   background-color: rgb(255, 255, 255, .6);
 }
+
 
 .display-article-header {
   margin-top: 5px ;
@@ -83,4 +86,18 @@ body {
   display: flex;
   flex-direction: column;
   margin: 10px;
+}
+
+/* elements */
+
+.has-shadow {
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.has-margin {
+  margin: 10px ;
+}
+
+.verticle-margin {
+  margin: 10px 0px ;
 }

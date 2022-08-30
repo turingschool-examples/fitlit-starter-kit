@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="../src/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@200;400&display=swap" rel="stylesheet">
@@ -11,8 +11,9 @@
   <body>
   <div>
   <section class="header">
-    <div class="header-logo fredoka400 has-shadow has-margin">FIT
-      <img class="large-icon" src="../images/icons8-fire-90.png" alt="flame icon" height="50px" width="50px">
+    <div class="header-logo fredoka400 has-shadow has-margin">
+      FIT
+      <img src="../images/icons8-fire-90.png" alt="flame icon" height="50px" width="50px">
       LIT</div>
     <div class="header-welcome fredoka400">WELCOME,
       <div class="header-welcome-username">User!</div>
@@ -30,7 +31,9 @@
       </div>
     </article>
     <article class="display-article hydration has-shadow verticle-margin">
-      <div class="display-article-header fredoka400">🥛 Hydration</div>
+      <div class="display-article-header fredoka400">
+        <img src="../images/icons8-water-52.png" alt="flame icon" height="50px" width="50px">
+        Hydration</div>
       <div class="display-article-content hydration-content fredoka200">Hydration over last 7 days:
         <div class="daily-hydration" id="hydro-7"> Day 7: "#" of oz</div>
         <div class="daily-hydration" id="hydro-6"> Day 6: "#" of oz</div>
@@ -42,7 +45,9 @@
       </div>
     </article>
     <article class="display-article sleep has-shadow has-margin">
-      <div class="display-article-header fredoka400">😴 Sleep</div>
+      <div class="display-article-header fredoka400">
+        <img src="../images/icons8-sleep-52.png" alt="flame icon" height="50px" width="50px">
+        Sleep</div>
       <div class="display-article-content sleep-content fredoka200">7-day average:        
         <div>Hours Slept:</div>
         <div>Sleep Quality:</div>         
@@ -51,6 +56,6 @@
   </section>
 </div>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="bundle.js"></script>
+    <script src="../dist/bundle.js"></script>
   </body>
 </html>

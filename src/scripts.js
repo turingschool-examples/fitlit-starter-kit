@@ -10,15 +10,17 @@ const sleepContent = document.getElementsByClassName('sleep-content')
 
 
 
-function check() {
-  console.log(userData,"<>>>>userData")
+console.log("hey it's working!")
   
-}
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
+import './images/icons8-fire-90.png'
+import './images/icons8-sleep-52.png'
+import './images/icons8-water-52.png'
+import './images/IMG_4293.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -26,4 +28,4 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 import userData from './data/users';
 
-import UserRepository from './UserRepository';
+import UserRepository from './UserRepository.js';

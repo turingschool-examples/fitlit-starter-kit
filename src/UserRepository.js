@@ -1,4 +1,4 @@
-const data = require('../src/data/users.js')
+const data = require('./data/users.js')
 
 class UserRepository {
  constructor(users) {

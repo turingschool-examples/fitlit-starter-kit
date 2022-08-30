@@ -1,5 +1,51 @@
 body, html {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
   background-repeat: no-repeat;
   height: 100%;
 }
+
+.user-name {
+  height: 200px;
+  width: 200px;
+  color: black;
+  background-color: yellow;
+  margin-left: 558px;
+}
+
+.user-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  width: 1414px;
+  height: 1236px;
+  background-color: aqua;
+}
+
+.user-info {
+  height: 200px;
+  width: 200px;
+  background-color: blue;
+}
+
+.user-hydro {
+  height: 200px;
+  width: 200px;
+  background-color:red;
+}
+
+.user-sleep {
+  height: 200px;
+  width: 200px;
+  background-color: green ;
+  }
+
+.user-steps {
+  height: 200px;
+  width: 200px;
+  background-color: Purple;
+  }
+
+

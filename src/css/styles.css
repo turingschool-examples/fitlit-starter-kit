@@ -1,5 +1,31 @@
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  background-gradient: linear-gradient(to top, #6947FF 0%, #6190FF 99%, #2CB7FF 100%);
   background-repeat: no-repeat;
   height: 100%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  height: 180px;
+  background-color: #white;
+}
+
+.vitals-section-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.right-nav {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+
+.sleep-container {
+
 }

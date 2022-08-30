@@ -3,16 +3,19 @@ class UserRepository {
     this.userData = userData;
   }
 
-  findUserData() {
+  findUserData(id) {
     const singleUserData = this.userData.find(user => user.id === id);
     return singleUserData;
-  }
+  };
 
   getAllUserAvgStepGoals(){
     const totalStepGoals = this.userData.reduce((totalSteps, user) => {
-      avg += user.dailyStepGoal / this.userData.length
+      totalSteps += user.dailyStepGoal / this.userData.length
+      return totalSteps
     }, 0);
-    return totalStepGoals
+
+    return Math.floor(totalStepGoals)
+
   }
 }
 

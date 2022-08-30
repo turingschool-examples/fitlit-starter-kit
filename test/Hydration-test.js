@@ -1,118 +1,86 @@
 import { expect } from 'chai';
 import { sampleHydration } from '../src/sample-data';
+import User from '../src/User';
 import Hydration from '../src/Hydration';
 
 describe('Hydration', () => {
 
-    let hydrationArray;
     let hydration1;
     let hydration2;
+    let hydration3;
+    let hydration4;
+    let hydration5;
+    let hydration6;
+    let hydration7;
+    let hydration8;
+    let hydration9;
+    let hydrationArray
 
     beforeEach(() => {
-        hydrationArray = new Hydration(sampleHydration);
-        hydration1 = hydrationArray.getUserHydration(1);
-        hydration2 = hydrationArray.getUserHydration(4);
-    })
-
-
-    it('should be an instance of Hydration', () => {
-        expect(hydrationArray).to.be.an.instanceOf(Hydration);
-    })
-
-    it('should be able to get user info by ID', () => {
-        expect(hydration1).to.deep.equal(
-            [{
-                userID: 1,
-                date: "2019/06/15",
-                numOunces: 37
-              },
-              {
-                userID: 1,
-                date: "2019/06/16",
-                numOunces: 69
-              },
-              {
-                userID: 1,
-                date: "2019/06/17",
-                numOunces: 96
-              },
-              {
-                userID: 1,
-                date: "2019/06/18",
-                numOunces: 61
-              },
-              {
-                userID: 1,
-                date: "2019/06/19",
-                numOunces: 91
-              },
-              {
-                userID: 1,
-                date: "2019/06/20",
-                numOunces: 50
-              },
-              {
-                userID: 1,
-                date: "2019/06/21",
-                numOunces: 50
-              },
-              {
-                userID: 1,
-                date: "2019/06/22",
-                numOunces: 43
-              }]
-        )
-        expect(hydration2).to.deep.equal(
-           [{
+        hydration1 = new Hydration({
+            userID: 1,
+            date: "2019/06/22",
+            numOunces: 43
+        });
+        hydration2 = new Hydration({
             userID: 4,
             date: "2019/06/15",
             numOunces: 85
-          },
-          {
+        });
+        hydration3 = new Hydration({
             userID: 4,
             date: "2019/06/16",
             numOunces: 95
-          },
-          {
+        });
+        hydration4 = new Hydration({
             userID: 4,
             date: "2019/06/17",
             numOunces: 82
-          },
-          {
+        });
+        hydration5 = new Hydration({
             userID: 4,
             date: "2019/06/18",
             numOunces: 93
-          },
-          {
+        });
+        hydration6 = new Hydration({
             userID: 4,
             date: "2019/06/19",
             numOunces: 21
-          },
-          {
+        });
+        hydration7 = new Hydration({
             userID: 4,
             date: "2019/06/20",
             numOunces: 95
-          },
-          {
+        });
+        hydration8 = new Hydration({
             userID: 4,
             date: "2019/06/21",
             numOunces: 91
-          },
-          {
+        });
+        hydration9 = new Hydration({
             userID: 4,
             date: "2019/06/22",
             numOunces: 34
-          }] 
-        )
+        });
+        hydrationArray = [hydration1, hydration2, hydration3, hydration4, hydration5, hydration6, hydration7, hydration8, hydration9]
     })
 
-    it('should be able to get a user\'s total average ounces', () => {
-        expect(hydrationArray.userAverageOunces(hydration1)).to.equal(62);
-        expect(hydrationArray.userAverageOunces(hydration2)).to.equal(75);
+    it('should be an instance of Hydration', () => {
+        expect(hydration1).to.be.an.instanceOf(Hydration);
+        expect(hydration7).to.be.an.instanceOf(Hydration);
     })
 
-    // it('should be able to find ounces for most recent date', () => {
+    it('Should return a user\'s total average ounces', () => {
+        expect(hydration1.userAverageOunces(hydrationArray, 1)).to.equal(43);
+        expect(hydration4.userAverageOunces(hydrationArray, 4)).to.equal(75);
+    });
 
-    // })
+    it('Should return the total number of ounces a user consumed on a specific date', () => {
+        console.log(hydration1.findOuncesByDate(hydrationArray, 4, '2019/06/18'))
+        expect(hydration1.findOuncesByDate(hydrationArray, 4, '2019/06/18')).to.equal(93);
+    });
     
+    it('Should return a week\'s data for a user', () => {
+        expect(hydration1.userOuncesPerWeek(hydrationArray, 4)).to.deep.equal([85, 95, 82, 93, 21, 95, 91])
+    });
 })

@@ -19,22 +19,23 @@ class Hydration {
             totalOz += dayOz.numOunces;
             return totalOz;
         }, 0);
-        let totalAverage = parseFloat((totalAmount / waterArray.length).toFixed(0));
+        let totalAverage = parseFloat((totalAmount / currentUser.length).toFixed(0));
         return totalAverage
     }
+    
     mostRecentOunces(waterArray, userID) {
         let userOunces = this.getUserHydration(waterArray, userID);
         let userMostRecent = userOunces.sort((oldest, newest) => newest.date - oldest.date)
         let findLastDate = userMostRecent[0];
         return findLastDate
     }
-
+    
     findOuncesByDate(waterArray, userID, date) {
         let userOunces = this.getUserHydration(waterArray, userID)
         let findDate = userOunces.find(dateOunces => dateOunces.date === date)
-        return findDate
+        return findDate.numOunces
     }
-
+    
     userOuncesPerWeek(waterArray, userID) {
         let currentUser = this.getUserHydration(waterArray, userID)
         let weekOuncesSorted = currentUser.sort((oldest, newest) => oldest.date - newest.date)

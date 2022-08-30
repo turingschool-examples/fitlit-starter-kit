@@ -17,6 +17,7 @@ header {
   width: 100%;
   border: 2px solid black;
   /* padding: 20px; */
+  box-sizing: border-box;
 }
 
 .column {
@@ -28,6 +29,7 @@ header {
   width: 30vw;
   align-items: stretch;
   align-content: space-evenly;
+  flex: 1 1 300px;
 }
 
 .box1 {

@@ -12,19 +12,17 @@ console.log("This is the JavaScript entry file - your code begins here.");
 // An example of how you tell webpack to use a JS file
 
 import userData from "./data/users";
-import User from './User'
+import User from "./User";
 import UserRepository from "./UserRepository";
 //variables
-//const randomIndex = getRandomIndex();
+const userRepository = new UserRepository(userData);
+const randomIndex = getRandomIndex();
 const userInfo = userRepository.findUserData(randomIndex);
-//const user = new User(userInfo);
-const user = new User(userData[getRandomIndex()]);
-  allUsers = userData.map(user => new User(userInfo));
-  userRepository =  new UserRepository(allUsers);
+const user = new User(userInfo);
 
 // Query Selectors by class Name
 const userName = document.querySelector(".user-card");
-const friends = document.querySelector(".friend-card");
+let friendsList = document.querySelector(".friends-list");
 
 // EVent Listeners
 window.addEventListener("load", displayUserDetails);
@@ -32,7 +30,6 @@ window.addEventListener("load", displayUserDetails);
 function getRandomIndex() {
   return Math.floor(Math.random() * userData.length);
 }
-
 
 function displayUserDetails() {
   displayFriends();
@@ -43,17 +40,14 @@ function displayUserDetails() {
         <li class="address"> Address: ${user.address} </li>
         <li class ="stride-length"> Stride Length: ${user.strideLength} </li>
     </ul>`;
+}
+
+function displayFriends() {
+  let friendName = "";
+  user.friends.find((friend) => {
+    const userInfo = userRepository.findUserData(friend);
+    friendsList.innerHTML += `<li> ${userInfo.name} </li>`
+  });
 
 }
 
-function displayFriends(){
-  const friendInfo = user.friends.map(friend => {
-    if(userRepository.findUserData)
-    return userRepository.findUserData(friend)
-  })
-  
-  const friendName = friendInfo.map(friend => friend ) 
-
-  console.log(friendInfo)
-
-}

@@ -16,39 +16,39 @@ describe("User", () => {
     });
   });
 
-  it.skip("should be a function", () => {
+  it("should be a function", () => {
     expect(User).to.be.a("function");
   });
 
-  it.skip("should be an instance of user", () => {
+  it("should be an instance of user", () => {
     expect(user1).to.be.an.instanceof(User);
   });
 
-  it.skip("should be able to store a users id", () => {
+  it("should be able to store a users id", () => {
     expect(user1.id).to.equal(1);
   });
 
-  it.skip("should be able to store a users name", () => {
+  it("should be able to store a users name", () => {
     expect(user1.name).to.equal("Luisa Hane");
   });
 
-  it.skip("should be able to store a users address", () => {
+  it("should be able to store a users address", () => {
     expect(user1.address).to.equal("15195 Nakia Tunnel, Erdmanport VA 19901-1697");
   });
 
-  it.skip("should be able to store a users email", () => {
+  it("should be able to store a users email", () => {
     expect(user1.email).to.equal("Diana.Hayes1@hotmail.com");
   });
 
-  it.skip("should be able to store a users stride length", () => {
+  it("should be able to store a users stride length", () => {
     expect(user1.strideLength).to.equal(4.3);
   });
 
-  it.skip("should be able to store a users daily step goal", () => {
+  it("should be able to store a users daily step goal", () => {
     expect(user1.dailyStepGoal).to.equal(10000);
   });
 
-  it.skip("should be able to store a users friends", () => {
+  it("should be able to store a users friends", () => {
     expect(user1.friends).to.deep.equal([16, 4, 8]);
   });
 

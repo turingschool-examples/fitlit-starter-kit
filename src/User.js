@@ -7,7 +7,12 @@ class User {
     this.strideLength = userData.strideLength;
     this.dailyStepGoal = userData.dailyStepGoal;
     this.friends = userData.friends;
-  }
+  };
+
+  returnFirstName() {
+    const firstName = this.name.split(" ");
+    return firstName[0];
+  };
 };
 
 export default User;

@@ -12,7 +12,7 @@ import './images/Activity.png'
 const userWelcome =  document.querySelector('#userName')
 const userInfo = document.querySelector('#userInfo')
 const userStepComp = document.querySelector('#userSteps')
-
+const hydrationCard = document.querySelector('#userSteps')
 // ######### Global Variables ###########
   let singleUser;
   let usersData;
@@ -35,10 +35,11 @@ const getFetch = () => {
     singleUser = new User(users[getRandomUser()]);
     userRepository = new UserRepository(users);
     welcomeUser();
-    displayUserData();
-    
+    displayUserData();   
 })
 }
+
+
 
 // ######### Event Listeners ###########
 window.addEventListener('load', getFetch);
@@ -59,6 +60,14 @@ function displayUserData() {
    `
    //maybe we can use a function to conver the friends id into an array of names 
 }
+ 
+
+
+
+
+
+
+
 
 // ######### On-Load Function ###########
 function getRandomUser() {

@@ -1,38 +1,53 @@
 class User {
-    constructor(userData){
-        this.id= userData.id
-        this.name= userData.name
-        this.address= userData.address
-        this.email= userData.email
-        this.strideLength= userData.strideLength
-        this.dailyStepGoal= userData.dailyStepGoal
-        this.friends= userData.friends
-    }
-    
-    getFirstName(){
-        let firstName = this.name.split(" ")
-        return firstName[0]
-    }
+  constructor(userData) {
+    this.id = userData.id;
+    this.name = userData.name;
+    this.address = userData.address;
+    this.email = userData.email;
+    this.strideLength = userData.strideLength;
+    this.dailyStepGoal = userData.dailyStepGoal;
+    this.friends = userData.friends;
+  }
 
-    getSleepDataPerDay(sleepData, date, detail) {
-        const usersData = sleepData.filter(entry => entry.userID === this.id)
-        const entry = usersData.find(entry => entry.date === date)
-        return entry[detail]
-    }
+  getFirstName() {
+    let firstName = this.name.split(" ");
+    return firstName[0];
+  }
 
-    getAvgSleepDataPerDay(sleepData, detail) {
-        const usersData = sleepData.filter(entry => entry.userID === this.id)
-        if(usersData.length === 0) {
-            return 0
-        }
-        const totalSleepData = usersData.reduce((total, entry) => {
-           total += entry[detail]
-            return total
-        }, 0)
-        const average = (totalSleepData/usersData.length).toFixed(1)
-        return parseFloat(average)
-    }
+  getSleepDataPerDay(sleepData, date, detail) {
+    const usersData = sleepData.filter((entry) => entry.userID === this.id);
+    const entry = usersData.find((entry) => entry.date === date);
+    return entry[detail];
+  }
 
+  getAvgSleepDataPerDay(sleepData, detail) {
+    const usersData = sleepData.filter((entry) => entry.userID === this.id);
+    if (usersData.length === 0) {
+      return 0;
+    }
+    const totalSleepData = usersData.reduce((total, entry) => {
+      total += entry[detail];
+      return total;
+    }, 0);
+    const average = (totalSleepData / usersData.length).toFixed(1);
+    return parseFloat(average);
+  }
+
+  getSleepPerDayForWeek(sleepData, startDate, detail) {
+    const userSleep = sleepData.filter((entry) => entry.userID === this.id);
+    const startingDate = userSleep.find((entry) => entry.date === startDate);
+    const startIndex = userSleep.indexOf(startingDate);
+    let newArr = userSleep.slice(startIndex);
+    const weekSleep = newArr.reduce((sleepForWeek, entry) => {
+      if (sleepForWeek.length < 7) {
+        sleepForWeek.push({ date: entry.date, [detail]: entry[detail] });
+        return sleepForWeek;
+      } else {
+        return sleepForWeek;
+      }
+    }, []);
+    return weekSleep;
+  }
   calAverageFluid(fuildsData) {
     const userFuildsInfo = fuildsData.filter((user) => user.userID === this.id);
     const average = userFuildsInfo.reduce((acc, fuild) => {
@@ -63,6 +78,6 @@ class User {
 
     return userDates;
   }
- } 
+}
 
 module.exports = User;

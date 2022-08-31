@@ -1,7 +1,6 @@
 body {
   display: flex;
   justify-content: space-around;
-  white-space: nowrap;
   background-image: url("../images/IMG_4293.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -23,35 +22,45 @@ body {
 /* header */
 
 .header{
-  margin: 2% 10%;
+  padding: 0% 5%;
+  margin: 2% 5%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: rgb(255, 255, 255, .6);
   color: black;
-  border-radius: 30px 10px;
 }
 
 .header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0% 2%;
   background-color: rgb(255, 255, 255, .6);
-  border-radius: 30px 10px;
   font-size: 50px;
 }
 
-.header-welcome{
+.header-welcome-mat{
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: auto;
+  margin: 0% 3%;
+  padding-top: 1%;
+}
+
+.header-welcome {
+  word-wrap: break-word;
+  max-width: 200px;
 }
 
 .header-welcome-username{
   font-size: 40px;
+  text-align: center;
 }
 
 .header-userlogo{
   background-color: rgb(255, 255, 255, .6);
-  border-radius: 30px 10px;
 }
 
 /* display */
@@ -61,8 +70,6 @@ body {
   display: flex;
   justify-content: space-around;
   background-color: rgb(255, 255, 255, .6);
-  border-radius: 10px 30px;
-
 }
 
 .display-article {
@@ -70,25 +77,34 @@ body {
   flex-direction: column;
   color: black;
   height: auto;
-  min-width: 200px;
+  word-wrap: break-word;
+  max-width: 250px;
   border-radius: 10px 30px;
   background-color: rgb(255, 255, 255, .6);
 }
 
-
 .display-article-header {
-  margin-top: 5px ;
-  margin-left: 10px;
   font-size: 25px;
+  padding: 10px;
 }
 
 .display-article-content {
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  padding: 10px;
 }
 
 /* elements */
+
+.display-article-header-icon {
+  height: 50px;
+  margin: 0px -5px 0px 0px;
+}
+
+.flame-icon {
+  height: 50px;
+  margin: 0px -7px 0px -15px;
+}
 
 .has-shadow {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
@@ -100,4 +116,16 @@ body {
 
 .verticle-margin {
   margin: 10px 0px ;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.bent-left {
+  border-radius: 30px 10px;
+}
+
+.bent-right {
+  border-radius: 10px 30px;
 }

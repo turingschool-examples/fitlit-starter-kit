@@ -103,7 +103,7 @@ describe("User", () => {
   });
 
   it("should return fluid ounces of water consumed each day over the course of a week (7 days)", () => {
-    expect(user.getWeeklyFluids(hydrationData)).to.deep.equal([
+    expect(user.getWeeklyFluids(hydrationData, "2019/06/15" )).to.deep.equal([
       { date: "2019/06/15", numOunces: 37 },
       { date: "2019/06/16", numOunces: 69 },
       { date: "2019/06/17", numOunces: 96 },

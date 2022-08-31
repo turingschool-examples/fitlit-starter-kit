@@ -35,15 +35,30 @@ const getFetch = () => {
     singleUser = new User(users[getRandomUser()]);
     userRepository = new UserRepository(users);
     welcomeUser();
-
-  })
+    displayUserData();
+    
+})
 }
 
 // ######### Event Listeners ###########
 window.addEventListener('load', getFetch);
 
+function displayUserData() {
 
+    userInfo.innerHTML = `
 
+<ul>
+  <li>${singleUser.name}</li>
+  <li>${singleUser.email}</li>
+  <li>${singleUser.address}</li>
+  <li>Stride ${singleUser.strideLength}</li>
+  <li>Step Goals  ${singleUser.dailyStepGoal}
+  <li>Friends  ${singleUser.friends}
+  
+</ul>
+   `
+   //maybe we can use a function to conver the friends id into an array of names 
+}
 
 // ######### On-Load Function ###########
 function getRandomUser() {
@@ -54,3 +69,4 @@ function getRandomUser() {
 function welcomeUser() {
   userWelcome.innerText = `Welcome Back, ${singleUser.returnUserName()} !`;
 }
+

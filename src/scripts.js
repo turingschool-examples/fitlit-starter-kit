@@ -3,7 +3,6 @@
 // Imports
 import './css/styles.css';
 import './images/turing-logo.png'
-//import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
 import apiCalls from './apiCalls';
@@ -21,11 +20,6 @@ const overallStepsAverage = document.querySelector("#step-goal-average"); // All
 
 // Instances
 let user, userRepo;
-//= new UserRepository(userData);
-//userRepo.findUsersData(1);
-//userRepo.avgStepGoal();
-//let thisUser = userRepo.currentUser;
-//let user = new User(thisUser[0]);
 
 // Functions
 const getRandomIndex = array => {
@@ -34,17 +28,16 @@ const getRandomIndex = array => {
 
 const fetchApiCalls = userID => {
   apiCalls.fetchData().then(data => {
-    console.log(data);
-    let userData = data[0].userData[0];
+    //console.log(data);
+    let userData = data[0].userData;
     let id;
     if(userID === "load") {
       id = getRandomIndex(userData);
     } else {
       id = userID ;
     }
-    userRepo = new UserRepository(userData)
-    console.log(userRepo)
-    user = new User(userRepo.findUsersData(1))
+    userRepo = new UserRepository(userData);
+    user = new User(userRepo.findUsersData(id));
     loadHandler();
   });
 };
@@ -71,7 +64,7 @@ function showFirstName() {
 
 function compareStepGoal() {
     userStepsAverage.innerHTML = `Daily Step Goal: ${user.dailyStepGoal}`;
-    overallStepsAverage.innerHTML = `Overall Step Goal: ${userRepo.averageStepGoal}`;
+    overallStepsAverage.innerHTML = `Overall Step Goal: ${userRepo.avgStepGoal()}`;
 }
 
 // Event Listeners

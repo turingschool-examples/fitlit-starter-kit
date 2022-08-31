@@ -17,6 +17,7 @@ class UserRepository {
     return Math.floor(totalStepGoals)
 
   }
+
 }
 
 export default UserRepository;

@@ -6,6 +6,7 @@ describe('User Repository', () => {
   let userRepository;
   let userData;
 
+
     beforeEach(() => {
       userData = [
         {
@@ -36,7 +37,8 @@ describe('User Repository', () => {
         ]
       }
     ]
-      userRepository = new UserRepository(userData);
+
+  userRepository = new UserRepository(userData);
 
     });
 

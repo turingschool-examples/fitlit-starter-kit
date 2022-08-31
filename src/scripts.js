@@ -35,8 +35,12 @@ const getFetch = () => {
     singleUser = new User(users[getRandomUser()]);
     userRepository = new UserRepository(users);
     welcomeUser();
+
+  })
+
     displayUserData();   
 })
+
 }
 
 

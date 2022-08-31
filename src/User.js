@@ -44,6 +44,5 @@ class User {
 
     return userDates;
   }
-}
 
 module.exports = User;

@@ -1,46 +1,72 @@
 <!DOCTYPE html>
-<html lang="en" dir='ltr'>
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title>Fitlit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <title>FitLit</title>
   </head>
   <body>
-    <h1>Welcome, User!</h1>
-    <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
-<section class='rightNav'>
-  <section class="userInfoCard">
-    <p class="userName">Hi, User!
-    <span class="email">email</span>
-    <span class="address">address</span>
-    <span class ="strideLength">Stride Length</span>
-    </p>
-  </section>
-  <sectio class="goalsCard">
-    <p class="goals">GOALS:
-    <span class="stepGoal">Daily Step Goal</span>
-    </p>
-  </section>
-  <section class="friendsCard">
-    <p class="friends">Friends</p>
-    <p class="listOfFriends">friend1</p>
-  </section>
-  <section class="stepComparison">
-    <span class="chart">comparison here</span>
-  </section>
-</section>
-<section class="sleep">
-  <p class="sleepTxt">SLEEP
-  <span class="dailySleep">Daily Sleep: Hours Quality of sleep</span>
-  <span class="weeklySleep">Weekly Sleep: Hours Quality</span>
-  <span class="averageSleep">All time Average Sleep: Hours Quality</span>
-    </p>
-</section>
-<section class="hydration">
-  <p class="hydrationTxt">HYDRATION <span class="waterPerDay">Water consumed per day: hydration data</span>
-  <span class="waterPerweek">Water consumed per day: hydration data</span>
-  </p>
-</section>
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+    <header>
+      <img
+        src="./images/logo_transparent.png"
+        alt="fitlit logo"
+        id="fitlitLogo"
+        height="300px"
+        width="300px"
+      />
+    </header>
+    <main>
+      <section class="left-nav">
+        <section class="vitals-section">
+          <section class="sleep-container">
+            <img
+            src="./images/lighting.png"
+            id="sleepImg"
+            alt="sunset logo"
+            height="50px"
+            width="50px"/>
+            <h2 class="sleep-header">SLEEP</h2>
+            <section class="sleep-card">sleep goes here
+            </section>
+          </section>
+          <section class="hydration-container">
+            <img
+              src="./images/water-bottle.png"
+              id="waterBottleImg"
+              alt="water bottle"
+              height="50px"
+              width="50px"/>
+            <h2 class="hydration-header">HYDRATION</h2>
+            <section class="hydration-card">hydration goes here
+            </section>
+          </section>
+        </section> 
+        <section class="steps-container">
+          <img
+          src="./images/sandals.png"
+          id="sandalsImg"
+          alt="weight logo"
+          height="50px"
+          width="50px"
+          />
+          <h2 class="steps-header">ACTIVITY</h2>
+          <section class="step-card"></section>
+        </section>
+      </section>
+      <aside class="right-nav">
+        <section class="user-container">
+          <section class="user-card">
+          </section>
+        </section>
+        <section class="friends-container">
+          <h2 class="friends-header">Friends</h2>
+          <section class="friends-card"></section>
+        </section>
+      </aside>
+    </main>
     <script src="bundle.js"></script>
   </body>
 </html>

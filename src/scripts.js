@@ -1,49 +1,86 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-const userRepository = new UserRepository(userData);
-const randomIndex = getRandomIndex();
-const userInfo = userRepository.findUserData(randomIndex);
-const user = new User(userInfo);
-console.log(userData, "<>>>>userData");
-// An example of how you tell webpack to use a CSS file
+// Import CSS and Images
 import "./css/styles.css";
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import "./images/turing-logo.png";
-
-console.log("This is the JavaScript entry file - your code begins here.");
-
-// An example of how you tell webpack to use a JS file
-
-import userData from "./data/users";
-
+import "./images/lighting.png";
+import "./images/sandals.png";
+import "./images/water-bottle.png";
+import "./images/logo_transparent.png";
+import "./images/avatar-male.png";
+//Import fetch
+import { promiseAll } from "./apiCalls.js";
+//Import Classes
+import User from "./User";
 import UserRepository from "./UserRepository";
 
+//Global Variables
+let user;
+let userRepository;
+let allUsers;
+let userData;
+let hydrationData;
+let sleepData;
 // Query Selectors
-const welcomeMessage = document.guerySelector(".welcome-message");
-const userName = document.querySelector(".user-name-card");
-const friends = document.querySelector(".friends");
+const userDetails = document.querySelector(".user-card");
+const friendsList = document.querySelector(".friends-card");
+const stepDetails = document.querySelector(".step-card");
 
 // EVent Listeners
-welcomeMessage.addEventListener(changeInnerText);
+window.addEventListener("load", promiseAll);
 
-function getRandomIndex() {
-  const userDataIndex = Math.floor(Math.random() * userData.length);
+promiseAll().then((responses) => {
+  userData = responses[0];
+  user = new User(userData.userData[getRandomIndex(userData.userData)]);
+  allUsers = userData.userData.map((user) => new User(user));
+  userRepository = new UserRepository(allUsers);
+  hydrationData = responses[1].hydrationData;
+  sleepData = responses[2].sleepData;
+  displayDashboard();
+});
+
+function getRandomIndex(userData) {
+  return Math.floor(Math.random() * userData.length);
 }
-function changeWelcomeMessage() {
-  welcomeMessage.innerText = `Welcome, ${user.getFirstName()}!`;
+
+function displayDashboard() {
+  displayUserDetails();
+  displayFriends();
+  displaySteps();
 }
+
 function displayUserDetails() {
-  userName.innerHTML += `<h3 class="user-name">Hi, ${user.getFirstName()}!</h3>
-    <p class="email">${user.email}</p>
-    <p class="address">${user.address}</p>
-    <p class ="stride-length">Stride Length: ${user.strideLength}</p>`;
+  userDetails.innerHTML = "";
+  userDetails.innerHTML += `
+    <h3 class="user-name">Hi, ${user.getFirstName()}!</h3>
+    <p class="email">Email: ${user.email} </p>
+    <p class="address">Address: ${user.address} </p>
+    <p class ="stride-length">Stride Length (ft): ${user.strideLength} </p>
+    <p class ="step-goal">Daily Step Goal: ${user.dailyStepGoal}</p>`;
 }
+
 function displayFriends() {
-  user.friends.map((friend) => {
-    const userFriend = userRepository.findUserData(friend);
-    return (friends.innerHTML += `
-      <li>${userFriend.name}</li>
-      `);
-  });
+  friendsList.innerHTML = "";
+  const foundFriends = user.friends.map((friend) =>
+    userRepository.findUserData(friend)
+  );
+  const firstNames = foundFriends.map((friend) => friend.getFirstName());
+  firstNames.forEach(
+    (friend) =>
+      (friendsList.innerHTML += `<section class="friend">
+    <img
+    src="./images/avatar-male.png"
+    alt="male avatar"
+    height="50px"
+    width="50px"
+  />
+  <section>${friend}</section>
+  </section>`)
+  );
+}
+
+function displaySteps() {
+  stepDetails.innerHTML = "";
+  const averageSteps = userRepository.findAverageStepGoal();
+  const comparison = Math.round((user.dailyStepGoal / averageSteps) * 100);
+  stepDetails.innerHTML += `<section class='step-comparison-message'><p>Average Step Goal for All Users: ${userRepository.avgUserStepGoal}.</p>
+  <p>Your step goal is: ${user.dailyStepGoal}.</p>
+  <p>Your daily step goal is ${comparison}% compared to all average users.</p></section>`;
 }

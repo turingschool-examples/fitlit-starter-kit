@@ -20,7 +20,7 @@ class Hydration {
           return userDays;
       }, [])
         return weekById.slice(date1, date2);
-        }
+    }
     getAvgOunces(userInfo) {
       const totalOunces = userInfo.reduce((acc, entry) => {
         if (this.id === entry.userID) {
@@ -30,7 +30,7 @@ class Hydration {
       }, 0);   
       return Math.floor(totalOunces / this.ounces.length);
     }
-      }
+}
 
 
      

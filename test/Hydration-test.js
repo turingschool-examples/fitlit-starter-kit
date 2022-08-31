@@ -73,11 +73,15 @@ describe('Hydration', () => {
     it('Should return a user by ID', () => {
         console.log(hydration1.getUserHydration(hydrationArray, 1) )
         expect(hydration1.getUserHydration(hydrationArray, 1
-        )).to.equal({
+        )).to.deep.equal([{
             userID: 1,
             date: '2019/06/22',
             numOunces: 43
-        })
+        }])
+    })
+
+    it('should give an error for an invail user number', () => {
+        expect(hydration1.getUserHydration(hydrationArray, 55)).to.equal("Invalid user ID. Please verify user ID and try again.")
     })
 
     it('Should return a user\'s total average ounces', () => {

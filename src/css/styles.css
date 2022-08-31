@@ -54,6 +54,7 @@ header {
   margin: 1px;
   display: flex;
   justify-content: flex-start;
+  border-radius: 10px;
 }
 
 .box2 {

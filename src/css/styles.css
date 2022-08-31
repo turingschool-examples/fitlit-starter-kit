@@ -37,7 +37,7 @@ header {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 10%;
 }
 
 .friends-list, 
@@ -64,7 +64,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+  border-radius: 10%;
 }
 
 .daily-overview {
@@ -78,7 +78,7 @@ header {
   border: 2px solid #9DDDFF;
   background: #fbfbfb;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 20%;
 }
 
 .activity {
@@ -87,14 +87,14 @@ header {
   border: 2px solid #9DDDFF;
   background: #9DDDFF;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 20%;
 }
 
 .sleep {
   border: 2px solid #FFF890;
   background: #FFF890;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 20%;
 }
 
 .user-details,

@@ -31,29 +31,4 @@ class Hydration {
       return Math.floor(totalOunces / this.ounces.length);
     }
 }
-
-
-     
-    
-
-      
-
-
-    
-    // ouncesPerWeek(){}
-    // ouncesPerLife(){}
-    //   const userAvgOunces = userData.reduce((userIDs, user) => {
-    //     new User(user)
-      
-    //   console.log(userAvgOunces)
-    //   return userAvgOunces
-    // }, [])
-/*We want create an array where the keys are user ids and the avg Ounces. the value of avg
-ounces is avg ounces per user. 
-iterate through hydrationData to get id and then another iteration to get get numOunces.
-*/
-  
-    
-  
-
 export default Hydration

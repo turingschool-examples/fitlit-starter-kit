@@ -1,14 +1,16 @@
 // Your fetch requests will live here!
-
-let userData = [];
-
-// fetch calls //
-function retrieveAPIData(url) {
-  fetch(url)
-  .then(response => response.json())
-  .then(data => userData = data)
+  
+const fetchAPI = (url) => {
+  return fetch(url)
+  .then(data => data.json())
 }
 
-retrieveAPIData('https://fitlit-api.herokuapp.com/api/v1/users')
+const fetchAll = () => {
+  return Promise.all([
+    fetchAPI('https://fitlit-api.herokuapp.com/api/v1/users'),
+    fetchAPI('https://fitlit-api.herokuapp.com/api/v1/sleep'),
+    fetchAPI('https://fitlit-api.herokuapp.com/api/v1/hydration')
+  ])
+}
 
-export default userData
+export { fetchAll }

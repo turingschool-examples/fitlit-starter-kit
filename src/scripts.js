@@ -6,9 +6,27 @@ import './images/icons8-sleep-52.png'
 import './images/icons8-water-52.png'
 import './images/icons8-walking-100.png'
 import './images/IMG_4293.png'
-// import userData from './data/users';
-import UserRepository from './UserRepository.js';
-import userData from 'fitlit/src/apiCalls.js';
+import UserRepository from './UserRepository';
+import { fetchAll } from './apiCalls';
+
+// global variables //
+let userAPIData
+let sleepAPIData
+let hydrationAPIData
+
+// promises //
+
+const getFetch = () => {
+  fetchAll()
+  .then(data => {
+    console.log(data);
+    userAPIData = data[0].userData
+    sleepAPIData = data[1].sleepData
+    hydrationAPIData = data[2].hydrationData
+  })
+}
+
+// DOM Manipulation //
 
 // header selectors //
 const userNameDisplay = document.querySelector('.header-welcome-username')
@@ -28,51 +46,58 @@ const friend5 = document.getElementById('friend5')
 
 // hydration selectors//
 const hydrationContentDisplay = document.querySelector('.hydration-content') 
-const dailyHydrationList = document.querySelectorAll('.daily-hydration')
+const dailyHydrationListDisplay = document.querySelectorAll('.daily-hydration')
+const hydroDay7Display = document.getElementById('hydro-7')
+const hydroDay6Display = document.getElementById('hydro-6')
+const hydroDay5Display = document.getElementById('hydro-5')
+const hydroDay4Display = document.getElementById('hydro-4')
+const hydroDay3Display = document.getElementById('hydro-3')
+const hydroDay2Display = document.getElementById('hydro-2')
+const hydroDay1Display = document.getElementById('hydro-1')
+
+// sleep selectors //
 const sleepContentDisplay = document.querySelector('.sleep-content') 
+const sleepArticleDisplay = document.getElementById('avg-sleep')
+const avgHoursSleptDisplay = document.getElementById('hours-slept')
+const avgSleepQualityDisplay = document.getElementById('sleep-quality')
 
-// // sleep //
+// event listeners //
+userIconDisplay.addEventListener('click', showUserInfo)
 
-// // event listeners //
-// userIconDisplay.addEventListener('click', showUserInfo)
 
-// // global variables//
-// let userNameData = userData[0].name
+// function calls
+showStepsContent()
 
-// // function calls
-// showStepsContent()
+// functions //
+function applyUserName() {
+  userNameDisplay.innerText = `USER!`; 
+}
+applyUserName()
 
-// // functions //
-// function applyUserName(userNameData) {
-//   userNameDisplay.innerText = `${userNameData}!`; 
-// }
-// applyUserName(userNameData)
+function showUserInfo() {
+  if (welcomeDisplay.innerText === "WELCOME,") {
+    welcomeDisplay.innerText = `USER ADRESS GOES HERE`;
+    userNameDisplay.innerText = ""
+  } else {
+    welcomeDisplay.innerHTML = "WELCOME,";
+    userNameDisplay.innerText = `USER!`
+  }
+}
 
-// function showUserInfo(userNameData) {
-//   if (welcomeDisplay.innerText === "WELCOME,") {
-//     welcomeDisplay.innerText = `${userData[0].address}`;
-//     userNameDisplay.innerText = ""
-//   } else {
-//     welcomeDisplay.innerHTML = "WELCOME,";
-//     userNameDisplay.innerText = `${userData[0].name}!`
-//   }
-// }
-
-// function showStepsContent(stepsGoal, stepsCurrent) {
-//   stepsGoalDisplay.innerText += userData[0].dailyStepGoal
-//   stepsCurrentDisplay.innerText = `So far you have taken: 9999`
-// }
-// function graphStepsContent(params) {
-
-// }
+function showStepsContent(stepsGoal, stepsCurrent) {
+  stepsGoalDisplay.innerText += '10,000'
+  stepsCurrentDisplay.innerText = `So far you have taken: 9,999`
+}
 
 // function showStepsFriends() {
-//   // stepsFriendsList = can probly write a forEach loop here
-//   stepsFriendsDisplay.innerText = 'Your friends have taken:'
-//   friend1.innerText = `${userData[2].name}: ${userData[2].dailyStepGoal}`
-//   friend2.innerText = `${userData[3].name}: ${userData[3].dailyStepGoal}`
-//   friend3.innerText = `${userData[4].name}: ${userData[4].dailyStepGoal}`
-//   friend4.innerText = `${userData[5].name}: ${userData[5].dailyStepGoal}`
-//   friend5.innerText = `${userData[6].name}: ${userData[6].dailyStepGoal}`
-// }
-// showStepsFriends()
+  //   // stepsFriendsList = can probly write a forEach loop here
+  //   stepsFriendsDisplay.innerText = 'Your friends have taken:'
+  //   friend1.innerText = `${userData[2].name}: ${userData[2].dailyStepGoal}`
+  //   friend2.innerText = `${userData[3].name}: ${userData[3].dailyStepGoal}`
+  //   friend3.innerText = `${userData[4].name}: ${userData[4].dailyStepGoal}`
+  //   friend4.innerText = `${userData[5].name}: ${userData[5].dailyStepGoal}`
+  //   friend5.innerText = `${userData[6].name}: ${userData[6].dailyStepGoal}`
+  // }
+  // showStepsFriends()
+  
+  window.addEventListener('load', getFetch)

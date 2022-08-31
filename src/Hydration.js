@@ -13,17 +13,36 @@ class Hydration {
     }
     ouncesPerDay(date, userInfo) {
       let dailyOunces = userInfo.find(entry => {
-        if (this.id === entry.userID)
+        if (this.id === entry.userID) {
         return entry.date === date
+        }
       })
       return {[date]: dailyOunces.numOunces}
     }
-    ouncesPerWeek
+    getDailyOuncesByWeek(userInfo, date1, date2) {
+      let weekById = userInfo.reduce((userDays, entry) => {
+    
+        if (this.id === entry.userID) {
+          userDays.push(entry)
+        }
+          return userDays
+        
+      }, [])
+        console.log(weekById.slice(date1, date2))
+
+        return weekById.slice(date1, date2)
+
+        }
+      }
+
+
+     
+    
 
       
 
 
-    }
+    
     // ouncesPerWeek(){}
     // ouncesPerLife(){}
     //   const userAvgOunces = userData.reduce((userIDs, user) => {

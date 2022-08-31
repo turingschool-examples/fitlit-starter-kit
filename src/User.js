@@ -14,14 +14,12 @@ class User {
         return firstName[0]
     }
 
-    //can be used for a specific users sleep quality or hours slept for a specific day
     getSleepDataPerDay(sleepData, date, detail) {
         const usersData = sleepData.filter(entry => entry.userID === this.id)
         const entry = usersData.find(entry => entry.date === date)
         return entry[detail]
     }
 
-    //get average number of hours slept per day and average sleep quality
     getAvgSleepDataPerDay(sleepData, detail) {
         const usersData = sleepData.filter(entry => entry.userID === this.id)
         if(usersData.length === 0) {
@@ -35,10 +33,36 @@ class User {
         return parseFloat(average)
     }
 
-    
+  calAverageFluid(fuildsData) {
+    const userFuildsInfo = fuildsData.filter((user) => user.userID === this.id);
+    const average = userFuildsInfo.reduce((acc, fuild) => {
+      acc += fuild.numOunces;
+      return acc;
+    }, 0);
+    return average;
+  }
 
+  getDayFluid(data, date) {
+    const userDayFuilds = data.filter(
+      (day) => day.date === date && day.userID === this.id
+    );
+    const sum = userDayFuilds.reduce((acc, fuilds) => {
+      acc += fuilds.numOunces;
 
+      return acc;
+    }, 0);
 
-}
+    return sum;
+  }
+
+  getWeeklyFluids(data) {
+    const userInfo = data.filter((data) => data.userID === this.id);
+    const userDates = userInfo.map((dates) => {
+      return { date: dates.date, numOunces: dates.numOunces };
+    });
+
+    return userDates;
+  }
+ } 
 
 module.exports = User;

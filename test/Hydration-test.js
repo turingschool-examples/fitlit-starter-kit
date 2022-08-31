@@ -1,17 +1,29 @@
 import { expect } from 'chai';
 import User from '../src/User';
 import Hydration from '../src/Hydration';
-import { hydrationData, singleUserData} from '../src/data/hydrationData';
+import { users } from '../src/data/users';
 
 describe('Hydration', () => {
-  let user1, user2, user3, hydration1, hydration2;
+  let userData;
+  let userHydrationData;
+  let hydrationData;
 
   beforeEach(() => {
 
-    user1 = new User(singleUserData);
-    user2 = new User(singleUserData);
-    hydration1 = new Hydration(singleUserData);
-    hydration2 = new Hydration(singleUserData);
+    hydrationData = [
+      {
+      "userID": 1,
+      "date": "2020/01/14",
+      "numOunces": 41
+      },
+      {
+      "userID": 2,
+      "date": "2020/01/14",
+      "numOunces": 88
+      }
+    ];
+
+    userHydrationData = new Hydration(hydrationData);
 
   });
 
@@ -19,16 +31,16 @@ describe('Hydration', () => {
     expect(Hydration).to.be.a('function')
   });
 
-  it.skip('should be an instance of hydration', () => {
-    expect(hydration1).to.be.an.instanceof(Hydration);
+  it('should be an instance of hydration', () => {
+    expect(userHydrationData).to.be.an.instanceof(Hydration);
   });
 
   it.skip('should be able to identify a user by their ID', () => {
-    expect(hydration.userID).to.equal(1);
+    expect(userHydrationData.findUserDataID()).to.equal(1);
   });
 
   it.skip('should be able to identify how many fluid ounces a specific user consumed per day(by date)', () => {
-    expect();
+    expect(hydrationData[0].userID).to.equal(41);
   });
 
   it.skip('should be able to identfy how many fluid ounces a specific user consumed over the course of a week', () => {

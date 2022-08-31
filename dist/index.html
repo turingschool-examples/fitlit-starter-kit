@@ -1,34 +1,61 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="src/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@200;400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@200;400&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Fitlit</title>
   </head>
   <body>
   <div>
-  <section class="header">
-    <div class="header-logo fredoka400">FIT🔥LIT</div>
-    <div class="header-welcome fredoka400">WELCOME,
-      <div class="header-welcome-username">User!</div>
+    <!-- header -->
+  <section class="header bent-left">
+    <div class="header-logo bent-left fredoka400 has-shadow has-margin">
+      FIT
+      <img class="flame-icon" src="./images/icons8-fire-90.png" alt="flame icon">
+      LIT
     </div>
-    <div class="header-userlogo"><img src="../images/turing-logo.png" alt="turing logo" height="100px" width="100px"></div>
+    <div class="header-welcome-mat">
+      <div class="header-welcome fredoka200">WELCOME,
+      </div>
+      <div class="header-welcome-username fredoka400">User!
+      </div>
+    </div>
+    <div class="clickable">
+      <div class="header-userlogo has-shadow has-margin bent-left"><img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+      </div>
+    </div>
   </section>
-  <section class="display">
-    <article class="display-article steps">
-      <div class="display-article-header fredoka400">👣 Daily Steps</div>
+  <!-- display -->
+  <section class="display bent-right">
+    <!-- steps article -->
+    <article class="display-article steps has-shadow has-margin bent-right">
+      <div class="display-article-header fredoka400 bent-right">
+        <img class="display-article-header-icon" src="./images/icons8-walking-100.png" alt="person walking to represent daily steps">
+        Steps
+      </div>
       <div class="display-article-content steps-content fredoka200">
-        Daily Steps Goal: #
-        <div class="steps-content-friends">
-          Friends:
+        <div class="steps-content-goal">
+          Your daily steps goal is: &nbsp;
         </div>
+        <div class="steps-content-current">
+          Steps taken so far today: </div>
+        <div class="steps-content-friends">
+          Your friends have taken:
+        </div>
+        <div id="friend1" class="step-friend">Name</div>
+        <div id="friend2" class="step-friend">Name</div>
+        <div id="friend3" class="step-friend">Name</div>
+        <div id="friend4" class="step-friend">Name</div>
+        <div id="friend5" class="step-friend">Name</div>
       </div>
     </article>
-    <article class="display-article hydration">
-      <div class="display-article-header fredoka400">🥛 Hydration</div>
+    <!-- hydration article -->
+    <article class="display-article hydration has-shadow verticle-margin">
+      <div class="display-article-header fredoka400">
+        <img class="display-article-header-icon" src="./images/icons8-water-52.png" alt="water drop to represent hydration">
+        Hydration</div>
       <div class="display-article-content hydration-content fredoka200">Hydration over last 7 days:
         <div class="daily-hydration" id="hydro-7"> Day 7: "#" of oz</div>
         <div class="daily-hydration" id="hydro-6"> Day 6: "#" of oz</div>
@@ -39,8 +66,11 @@
         <div class="daily-hydration" id="hydro-1"> Day 1: "#" of oz</div>
       </div>
     </article>
-    <article class="display-article sleep">
-      <div class="display-article-header fredoka400">😴 Sleep</div>
+    <!-- sleep article -->
+    <article class="display-article sleep has-shadow has-margin">
+      <div class="display-article-header fredoka400">
+        <img class="display-article-header-icon" src="./images/icons8-sleep-52.png" alt="floating Zs to represent sleep">
+        Sleep</div>
       <div class="display-article-content sleep-content fredoka200">7-day average:        
         <div>Hours Slept:</div>
         <div>Sleep Quality:</div>         
@@ -49,6 +79,6 @@
   </section>
 </div>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="bundle.js"></script>
+    <script src="./bundle.js"></script>
   </body>
 </html>

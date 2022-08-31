@@ -76,3 +76,10 @@ There is no boilerplate for testing in this starter-kit repo. You will need to s
   ...more sleep data
 ]
 ```
+##
+
+<a target="_blank" href="https://icons8.com/icon/60985/fire">Fire</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+<a target="_blank" href="https://icons8.com/icon/1945/water">Water</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+<a target="_blank" href="https://icons8.com/icon/1459/sleep">Sleep</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>

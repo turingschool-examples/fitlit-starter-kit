@@ -1,3 +1,7 @@
+* {
+  border: 1px solid red
+}
+
 body, html {
   background:#ffffff;
   background-repeat: no-repeat;
@@ -44,14 +48,14 @@ header {
   display: flex;
   flex-direction: column;
   align-content: flex-start;
-  border: 2px solid #2ECBE9;
-  background: #2ECBE9;
+  border: 2px solid #9DDDFF;
+  background: #9DDDFF;
   
   
 }
 
 .friend {
-  background: #FFE45C;
+  background: #FFFF90 ;
   padding: 5px;
   margin: 1px;
   display: flex;
@@ -75,7 +79,7 @@ header {
 .hydration {
   display:flex;
   flex-direction: column;
-  border: 2px solid #2ECBE9;
+  border: 2px solid #9DDDFF;
   background: #fbfbfb;
   padding: 20px;
   border-radius: 20px;
@@ -85,23 +89,23 @@ header {
 .activity {
   display:flex;
   flex-direction: column;
-  border: 2px solid #128FC8;
-  background: #128FC8;
+  border: 2px solid #9DDDFF;
+  background: #9DDDFF;
   padding: 20px;
   border-radius: 20px;
 }
 
 .sleep {
-  border: 2px solid #FFE45C;
-  background: #FFE45C;
+  border: 2px solid #FFF890;
+  background: #FFF890;
   padding: 20px;
   border-radius: 20px;
 }
 
 .user-details,
 .friends-highlights {
-  border: 2px solid #128FC8;
-  background: #128FC8;
+  border: 2px solid #9DDDFF;
+  background: #9DDDFF;
   padding: 20px;
   border-radius: 20px;
 }

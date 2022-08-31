@@ -44,8 +44,8 @@ class User {
     return Math.round(average/userFluidsInfo.length);
   }
 
-  getDayFluid(data, date) {
-    const userDayFluids = data.filter(
+  getDayFluid(fluidsData, date) {
+    const userDayFluids = fluidsData.filter(
       (day) => day.date === date && day.userID === this.id
     );
     const sum = userDayFluids.reduce((acc, Fluids) => {
@@ -57,13 +57,16 @@ class User {
     return sum;
   }
 
-  getWeeklyFluids(data) {
-    const userInfo = data.filter((data) => data.userID === this.id);
-    const userDates = userInfo.map((dates) => {
-      return { date: dates.date, numOunces: dates.numOunces };
+  getWeeklyFluids(fluidsData) {
+    const userInfo = fluidsData.filter((data) => data.userID === this.id);
+    let weeklyFluids = []
+     userInfo.map((dates, index) => {
+        if(index < 7){
+        weeklyFluids.push({ date: dates.date, numOunces: dates.numOunces });
+        }
     });
-
-    return userDates;
+    
+    return weeklyFluids;
   }
  } 
 

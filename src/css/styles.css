@@ -1,8 +1,11 @@
+* {
+  border: 1px solid red
+}
+
 body, html {
   background:#ffffff;
   background-repeat: no-repeat;
   font-family: 'Courier Prime', monospace;
-  /* height: 100%; */
   margin: 0px;
 }
 
@@ -16,25 +19,25 @@ header {
   height: 100%;
   width: 100%;
   border: 2px solid black;
-  /* padding: 20px; */
+  box-sizing: border-box;
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  /* border: 2px solid #ffffff; */
   padding: 20px;
   gap: 20px;
   width: 30vw;
   align-items: stretch;
   align-content: space-evenly;
+  flex: 1 1 300px;
 }
 
 .box1 {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 10%;
 }
 
 .friends-list, 
@@ -42,14 +45,14 @@ header {
   display: flex;
   flex-direction: column;
   align-content: flex-start;
-  border: 2px solid #2ECBE9;
-  background: #2ECBE9;
+  border: 2px solid #9DDDFF;
+  background: #9DDDFF;
   
   
 }
 
 .friend {
-  background: #FFE45C;
+  background: #FFFF90 ;
   padding: 5px;
   margin: 1px;
   display: flex;
@@ -62,46 +65,43 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+  border-radius: 10%;
 }
 
 .daily-overview {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
 }
 
 .hydration {
   display:flex;
   flex-direction: column;
-  border: 2px solid #2ECBE9;
+  border: 2px solid #9DDDFF;
   background: #fbfbfb;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 20%;
 }
-
 
 .activity {
   display:flex;
   flex-direction: column;
-  border: 2px solid #128FC8;
-  background: #128FC8;
+  border: 2px solid #9DDDFF;
+  background: #9DDDFF;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 20%;
 }
 
 .sleep {
-  border: 2px solid #FFE45C;
-  background: #FFE45C;
+  border: 2px solid #FFF890;
+  background: #FFF890;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 20%;
 }
 
 .user-details,
 .friends-highlights {
-  border: 2px solid #128FC8;
-  background: #128FC8;
+  border: 2px solid #9DDDFF;
+  background: #9DDDFF;
   padding: 20px;
   border-radius: 20px;
 }
-

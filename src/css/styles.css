@@ -6,7 +6,6 @@ body, html {
   background:#ffffff;
   background-repeat: no-repeat;
   font-family: 'Courier Prime', monospace;
-  /* height: 100%; */
   margin: 0px;
 }
 
@@ -20,14 +19,12 @@ header {
   height: 100%;
   width: 100%;
   border: 2px solid black;
-  /* padding: 20px; */
   box-sizing: border-box;
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  /* border: 2px solid #ffffff; */
   padding: 20px;
   gap: 20px;
   width: 30vw;
@@ -73,7 +70,6 @@ header {
 .daily-overview {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
 }
 
 .hydration {
@@ -84,7 +80,6 @@ header {
   padding: 20px;
   border-radius: 20px;
 }
-
 
 .activity {
   display:flex;
@@ -109,4 +104,3 @@ header {
   padding: 20px;
   border-radius: 20px;
 }
-

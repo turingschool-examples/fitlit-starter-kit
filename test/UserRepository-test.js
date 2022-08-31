@@ -1,6 +1,7 @@
 import { expect } from "chai";
 import UserRepository from "../src/UserRepository";
 const userTestData = require("../src/data/userTestData");
+const sleepTestData = require("../src/data/sleepTestData");
 
 describe("User Repository", () => {
   let userRepo;
@@ -26,7 +27,16 @@ describe("User Repository", () => {
   });
 
   it("should have a method to calculate average step goal of all users", () => {
-    userRepo.findAverageStepGoal();
-    expect(userRepo.avgUserStepGoal).to.equal(6667);
+    expect(userRepo.findAverageStepGoal()).to.equal(6667);
+  });
+
+  it("should have a method to calculate average hours slept of all users", () => {
+    let averageHoursSlept = userRepo.findAverageSleepDetail(sleepTestData, "hoursSlept");
+    expect(averageHoursSlept).to.equal(8.1);
+  });
+
+  it("should have a method to calculate average sleep quality of all users", () => {
+    let averageSleepQuality = userRepo.findAverageSleepDetail(sleepTestData, "sleepQuality");
+    expect(averageSleepQuality).to.equal(2.5);
   });
 });

@@ -12,12 +12,12 @@ import UserRepository from './UserRepository.js';
 // header selectors //
 const userNameDisplay = document.querySelector('.header-welcome-username')
 const userIconDisplay = document.querySelector('.header-userlogo') 
-const welcomeMatDisplay = document.querySelector('.header-welcome') 
+const welcomeDisplay = document.querySelector('.header-welcome') 
 
 // steps selectors//
 const stepsGoalDisplay = document.querySelector('.steps-content-goal') 
 const stepsCurrentDisplay = document.querySelector('.steps-content-current')
-const stepFriendsList = document.querySelectorAll('.step-friend')
+const stepsFriendsList = document.querySelectorAll('.step-friend')
 const stepsFriendsDisplay = document.querySelector('.steps-content-friends')
 const friend1 = document.getElementById('friend1')
 const friend2 = document.getElementById('friend2')
@@ -50,11 +50,11 @@ function applyUserName(userNameData) {
 applyUserName(userNameData)
 
 function showUserInfo(userNameData) {
-  if (welcomeMat.innerText === "WELCOME,") {
-    welcomeMat.innerText = `${userData[0].address}`;
+  if (welcomeDisplay.innerText === "WELCOME,") {
+    welcomeDisplay.innerText = `${userData[0].address}`;
     userNameDisplay.innerText = ""
   } else {
-    welcomeMat.innerHTML = "WELCOME,";
+    welcomeDisplay.innerHTML = "WELCOME,";
     userNameDisplay.innerText = `${userData[0].name}!`
   }
 }
@@ -68,13 +68,12 @@ function graphStepsContent(params) {
 }
 
 function showStepsFriends() {
-  // stepFriendsList = can probly write a forEach loop here
+  // stepsFriendsList = can probly write a forEach loop here
   stepsFriendsDisplay.innerText = 'Your friends have taken:'
-  friend1.innerText = "test"
-  //friend1.innerText = ${userData[2].name}: ${userData[2].dailyStepGoal}
-  //friend2.innerText = ${userData[3].name}: ${userData[3].dailyStepGoal}
-  //friend3.innerText = ${userData[4].name}: ${userData[4].dailyStepGoal}
-  //friend4.innerText = ${userData[5].name}: ${userData[5].dailyStepGoal}
-  //friend5.innerText = ${userData[6].name}: ${userData[6].dailyStepGoal}
+  friend1.innerText = `${userData[2].name}: ${userData[2].dailyStepGoal}`
+  friend2.innerText = `${userData[3].name}: ${userData[3].dailyStepGoal}`
+  friend3.innerText = `${userData[4].name}: ${userData[4].dailyStepGoal}`
+  friend4.innerText = `${userData[5].name}: ${userData[5].dailyStepGoal}`
+  friend5.innerText = `${userData[6].name}: ${userData[6].dailyStepGoal}`
 }
 showStepsFriends()

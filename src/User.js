@@ -37,14 +37,10 @@ class User {
     const userSleep = sleepData.filter((entry) => entry.userID === this.id);
     const startingDate = userSleep.find((entry) => entry.date === startDate);
     const startIndex = userSleep.indexOf(startingDate);
-    let newArr = userSleep.slice(startIndex);
+    let newArr = userSleep.slice(startIndex, startIndex + 7);
     const weekSleep = newArr.reduce((sleepForWeek, entry) => {
-      if (sleepForWeek.length < 7) {
-        sleepForWeek.push({ date: entry.date, [detail]: entry[detail] });
-        return sleepForWeek;
-      } else {
-        return sleepForWeek;
-      }
+      sleepForWeek.push({ date: entry.date, [detail]: entry[detail] });
+      return sleepForWeek;
     }, []);
     return weekSleep;
   }

@@ -89,7 +89,6 @@ describe("User", () => {
     ).to.equal(0);
   });
   it("should have a method to calculate the hours slept per day over a week for a user and quality of sleep ", () => {
-    let sleeptestData;
     let sleepInAWeek = user.getSleepPerDayForWeek(
       sleepTestData,
       "2019/06/16",

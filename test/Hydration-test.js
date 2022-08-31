@@ -35,12 +35,12 @@ describe('Hydration', () => {
     expect(userHydrationData).to.be.an.instanceof(Hydration);
   });
 
-  it.skip('should be able to identify a user by their ID', () => {
-    expect(userHydrationData.findUserDataID()).to.equal(1);
+  it('should be able to identify a user by their ID', () => {
+    expect(userHydrationData.findUserDataID(hydrationData,1)).to.equal(1);
   });
 
-  it.skip('should be able to identify how many fluid ounces a specific user consumed per day(by date)', () => {
-    expect(hydrationData[0].userID).to.equal(41);
+  it('should be able to identify how many fluid ounces a specific user consumed per day(by date)', () => {
+    expect(hydrationData[0].numOunces).to.equal(41);
   });
 
   it.skip('should be able to identfy how many fluid ounces a specific user consumed over the course of a week', () => {

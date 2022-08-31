@@ -6,36 +6,47 @@ import Hydration from '../src/Hydration';
 describe('Hydration', () => {
 
   it('should be a function', () => {
-    let hydration = new Hydration()
+    let hydration = new Hydration(user)
     expect(Hydration).to.be.a('function')
-  })
+  });
 
-  it('should take in a user ID', () => {
-    let user1Data = {
-      userID: 1,
-      date: "2019/06/15",
-      numOunces: 37
-    }
-    let hydration = new Hydration(userID)
-  })
-})
+  it.skip('should have an id', () => {
+    let hydration = new Hydration(user)
+    expect().to.equal()
+  });
 
-// describe('Hydration', () => {
-//   let hydration;
-//   let user1Data;
-//   let user2Data;
-//   let userID;
-//
-//   beforeEach(() => {
-//     hydration = new Hydration(userID)
-//     user1Data = {
-//         userID: 1,
-//         date: "2019/06/15",
-//         numOunces: 37
-//       }
-//       user2Data = {
-//         userID: 2,
-//         date: "2019/06/15",
-//         numOunces: 75
-//       }
-//   });
+  it.skip('should have a date', () => {
+    let hydration = new Hydration(user)
+    expect().to.equal()
+  });
+
+  it.skip('should keep track of number of ounces
+    consumed', () => {
+    let hydration = new Hydration(user)
+    expect().to.equal()
+  });
+
+  it.skip('should have a date', () => {
+    let hydration = new Hydration(user)
+    expect().to.equal()
+  });
+
+  it.skip('should return ounces water consumed
+    on a specific day by user', () => {
+    let hydration = new Hydration(user)
+    expect().to.equal()
+  });
+
+  it.skip('should average the ounces of water consumed
+    forever by a user', () => {
+    let hydration = new Hydration(user)
+    expect().to.equal()
+  });
+
+  it.skip('should return a list containing the ounces
+    water consumed each day over a seven day period by a
+    user', () => {
+    let hydration = new Hydration(user)
+    expect().to.equal()
+  });
+});

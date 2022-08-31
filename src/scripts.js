@@ -97,8 +97,6 @@ function displayUserData() {
   <li>Friends  ${singleUser.friends}
 </ul>`
 
-   //maybe we can use a function to conver the friends id into an array of names
-}
 
 function displayStepGoalComp(userRepository) {
     userStepComp.innerHTML = `Your daily step goal :${singleUser.dailyStepGoal} vs All user average  ${userRepository.getAllUserAvgStepGoals()}`

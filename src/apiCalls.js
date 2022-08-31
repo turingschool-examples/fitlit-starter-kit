@@ -1,9 +1,9 @@
 // Set up function to accept an endpoint path as an argument
 const fetchApiUrl = (path) => {
   return fetch(`https://fitlit-api.herokuapp.com/api/v1/${path}`)
-  .then(response => response.json());
-  .then(data => data);
-  .catch(error => console.log(`${path} API Error!`))
+  .then(response => response.json())
+  .then(data => data)
+  .catch(error => console.log(`${path} API Error!`));
 };
 
 

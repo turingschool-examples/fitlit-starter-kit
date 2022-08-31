@@ -49,9 +49,9 @@ function initializeData() {
   Promise.all([fetchAllData('users'), fetchAllData('sleep'), fetchAllData('hydration')]).then(
     (data) =>  {
       getRandomUser(data);
-      // console.log("users", data[0].userData);
-      // console.log("sleep", data[1]);
-      // console.log("hydration", data[2]);
+      console.log("users", data[0].userData);
+      console.log("sleep", data[1]);
+      console.log("hydration", data[2]);
     }
   )
 }

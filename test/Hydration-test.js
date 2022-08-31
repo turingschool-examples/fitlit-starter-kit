@@ -70,13 +70,22 @@ describe('Hydration', () => {
         expect(hydration7).to.be.an.instanceOf(Hydration);
     })
 
+    it('Should return a user by ID', () => {
+        console.log(hydration1.getUserHydration(hydrationArray, 1))
+        expect(hydration1.getUserHydration(hydrationArray, 1
+        )).to.equal({
+            userID: 1,
+            date: '2019/06/22',
+            numOunces: 43
+        })
+    })
+
     it('Should return a user\'s total average ounces', () => {
         expect(hydration1.userAverageOunces(hydrationArray, 1)).to.equal(43);
         expect(hydration4.userAverageOunces(hydrationArray, 4)).to.equal(75);
     });
 
     it('Should return the total number of ounces a user consumed on a specific date', () => {
-        console.log(hydration1.findOuncesByDate(hydrationArray, 4, '2019/06/18'))
         expect(hydration1.findOuncesByDate(hydrationArray, 4, '2019/06/18')).to.equal(93);
     });
     

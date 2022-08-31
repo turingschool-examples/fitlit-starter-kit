@@ -7,6 +7,9 @@ import { fetchAll } from './apiCalls';
 import './css/styles.css';
 import './images/turing-logo.png'
 import './images/Activity.png'
+import './images/sleeping.png'
+import './images/Hydrate.png'
+
 
 // ######### Query Selectors ###########
 const userWelcome =  document.querySelector('#userName')
@@ -36,9 +39,9 @@ const getFetch = () => {
     singleUser = new User(users[getRandomUser()]);
     userRepository = new UserRepository(users);
     welcomeUser();
-    displayUserData();   
+    displayUserData();
     displayStepGoalComp(userRepository);
-    
+
   })
 
 }
@@ -51,20 +54,20 @@ const getFetch = () => {
 window.addEventListener('load', getFetch);
 
 function findUserName(users,singleUser) {
-    
+
   const friendsArray = users.filter(user => {
       return  user[user] === singleUser.id
-           
-       
+
+
     })
-    
+
    return friendsArray
 }
 
 
 // function convertFriendIDToName(userRepository) {
 //  singleUser.friends.forEach(element => {
-//          element = 
+//          element =
 //     })
 // }
 
@@ -77,7 +80,7 @@ function findUserName(users,singleUser) {
 // ######### On-Load Function ###########
 function getRandomUser() {
     return Math.floor(Math.random() * users.length);
-    
+
 }
 
 function welcomeUser() {
@@ -91,10 +94,9 @@ function displayUserData() {
   <li>${singleUser.address}</li>
   <li>Stride ${singleUser.strideLength}</li>
   <li>Step Goals  ${singleUser.dailyStepGoal}
-  <li>Friends  ${singleUser.friends} 
+  <li>Friends  ${singleUser.friends}
 </ul>`
-   
-}  
+
 
 function displayStepGoalComp(userRepository) {
     userStepComp.innerHTML = `Your daily step goal :${singleUser.dailyStepGoal} vs All user average  ${userRepository.getAllUserAvgStepGoals()}`

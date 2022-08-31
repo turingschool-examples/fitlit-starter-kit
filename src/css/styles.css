@@ -15,6 +15,18 @@ body, html {
   margin-left: 558px;
 }
 
+.icons {
+  display:flex;
+  justify-content: space-evenly;
+
+  margin-left: 100px;
+}
+
+
+
+
+
+
 .user-container {
   display: flex;
   justify-content: space-evenly;
@@ -47,5 +59,3 @@ body, html {
   width: 200px;
   background-color: Purple;
   }
-
-

@@ -1,37 +1,37 @@
 class User {
-    constructor(userData){
-        this.id= userData.id
-        this.name= userData.name
-        this.address= userData.address
-        this.email= userData.email
-        this.strideLength= userData.strideLength
-        this.dailyStepGoal= userData.dailyStepGoal
-        this.friends= userData.friends
-    }
-    
-    getFirstName(){
-        let firstName = this.name.split(" ")
-        return firstName[0]
-    }
+  constructor(userData) {
+    this.id = userData.id;
+    this.name = userData.name;
+    this.address = userData.address;
+    this.email = userData.email;
+    this.strideLength = userData.strideLength;
+    this.dailyStepGoal = userData.dailyStepGoal;
+    this.friends = userData.friends;
+  }
 
-    getSleepDataPerDay(sleepData, date, detail) {
-        const usersData = sleepData.filter(entry => entry.userID === this.id)
-        const entry = usersData.find(entry => entry.date === date)
-        return entry[detail]
-    }
+  getFirstName() {
+    let firstName = this.name.split(" ");
+    return firstName[0];
+  }
 
-    getAvgSleepDataPerDay(sleepData, detail) {
-        const usersData = sleepData.filter(entry => entry.userID === this.id)
-        if(usersData.length === 0) {
-            return 0
-        }
-        const totalSleepData = usersData.reduce((total, entry) => {
-           total += entry[detail]
-            return total
-        }, 0)
-        const average = (totalSleepData/usersData.length).toFixed(1)
-        return parseFloat(average)
+  getSleepDataPerDay(sleepData, date, detail) {
+    const usersData = sleepData.filter((entry) => entry.userID === this.id);
+    const entry = usersData.find((entry) => entry.date === date);
+    return entry[detail];
+  }
+
+  getAvgSleepDataPerDay(sleepData, detail) {
+    const usersData = sleepData.filter((entry) => entry.userID === this.id);
+    if (usersData.length === 0) {
+      return 0;
     }
+    const totalSleepData = usersData.reduce((total, entry) => {
+      total += entry[detail];
+      return total;
+    }, 0);
+    const average = (totalSleepData / usersData.length).toFixed(1);
+    return parseFloat(average);
+  }
 
   calAverageFluid(fluidsData) {
     const userFluidsInfo = fluidsData.filter((user) => user.userID === this.id);
@@ -41,7 +41,7 @@ class User {
       return acc;
     }, 0);
 
-    return Math.round(average/userFluidsInfo.length);
+    return Math.round(average / userFluidsInfo.length);
   }
 
   getDayFluid(fluidsData, date) {
@@ -57,17 +57,19 @@ class User {
     return sum;
   }
 
-  getWeeklyFluids(fluidsData) {
+  getWeeklyFluids(fluidsData, userDate) {
     const userInfo = fluidsData.filter((data) => data.userID === this.id);
-    let weeklyFluids = []
-     userInfo.map((dates, index) => {
-        if(index < 7){
-        weeklyFluids.push({ date: dates.date, numOunces: dates.numOunces });
-        }
+    const findStartDate = userInfo.find((date) => date.date === userDate);
+    const indexOfStart = userInfo.indexOf(findStartDate);
+    const weeklyReport = userInfo.slice(indexOfStart, indexOfStart + 7);
+
+    const weeklyFluids = weeklyReport.map((dates) => {
+        
+      return { date: dates.date, numOunces: dates.numOunces };
     });
-    
+
     return weeklyFluids;
   }
- } 
+}
 
 module.exports = User;

@@ -33,21 +33,23 @@ class User {
         return parseFloat(average)
     }
 
-  calAverageFluid(fuildsData) {
-    const userFuildsInfo = fuildsData.filter((user) => user.userID === this.id);
-    const average = userFuildsInfo.reduce((acc, fuild) => {
-      acc += fuild.numOunces;
+  calAverageFluid(fluidsData) {
+    const userFluidsInfo = fluidsData.filter((user) => user.userID === this.id);
+    const average = userFluidsInfo.reduce((acc, fluid) => {
+      acc += fluid.numOunces;
+
       return acc;
     }, 0);
-    return average;
+
+    return Math.round(average/userFluidsInfo.length);
   }
 
   getDayFluid(data, date) {
-    const userDayFuilds = data.filter(
+    const userDayFluids = data.filter(
       (day) => day.date === date && day.userID === this.id
     );
-    const sum = userDayFuilds.reduce((acc, fuilds) => {
-      acc += fuilds.numOunces;
+    const sum = userDayFluids.reduce((acc, Fluids) => {
+      acc += Fluids.numOunces;
 
       return acc;
     }, 0);

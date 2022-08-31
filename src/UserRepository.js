@@ -1,10 +1,11 @@
 class UserRepository {
   constructor(data) {
     this.allUserData = data;
-    this.avgUserStepGoal = null;
   }
+
   findUserData(id) {
-    return this.allUserData[id - 1];
+    const userData = this.allUserData.find((data) => data.id === id);
+    return userData;
   }
 
   findAverageStepGoal() {
@@ -13,9 +14,19 @@ class UserRepository {
       total += userStep;
       return total;
     }, 0);
-    this.avgUserStepGoal = Math.round(allUserSteps / this.allUserData.length);
-    return this.avgUserStepGoal;
+    const averageSteps = Math.round(allUserSteps / this.allUserData.length);
+    return averageSteps
   }
-}
 
+  findAverageSleepDetail(sleepData, detail) {
+    const userSleepDetail= sleepData.map(user => user[detail])
+    const allUserSleepDetail = userSleepDetail.reduce((total, user) => {
+      total += user
+      return total
+    }, 0)
+    const averageSleepDetail = (allUserSleepDetail/ sleepData.length).toFixed(1)
+    return parseFloat(averageSleepDetail)
+  }
+
+}
 export default UserRepository;

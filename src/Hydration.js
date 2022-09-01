@@ -5,7 +5,7 @@ class Hydration {
         this.numOunces = hydrationInfo.numOunces;
     }
 
-    getUserHydration(waterArray, id) {
+    getUserHydration(waterArray, id) {z
         let userHydration = waterArray.filter((user) => user.userID === id)
         if (userHydration.length === 0) {
             return "Invalid user ID. Please verify user ID and try again."

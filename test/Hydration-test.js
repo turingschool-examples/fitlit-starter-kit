@@ -79,7 +79,9 @@ describe('Hydration', () => {
         }])
     })
 
+
     it('Should return an error if no data available', () => {
+
         expect(hydration1.getUserHydration(hydrationArray, 55)).to.equal("Invalid user ID. Please verify user ID and try again.")
     })
 

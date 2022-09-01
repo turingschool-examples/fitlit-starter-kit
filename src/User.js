@@ -48,8 +48,8 @@ class User {
     const userDayFluids = fluidsData.filter(
       (day) => day.date === date && day.userID === this.id
     );
-    const sum = userDayFluids.reduce((acc, Fluids) => {
-      acc += Fluids.numOunces;
+    const sum = userDayFluids.reduce((acc, fluids) => {
+      acc += fluids.numOunces;
 
       return acc;
     }, 0);

@@ -44,21 +44,23 @@ class User {
     }, []);
     return weekSleep;
   }
-  calAverageFluid(fuildsData) {
-    const userFuildsInfo = fuildsData.filter((user) => user.userID === this.id);
-    const average = userFuildsInfo.reduce((acc, fuild) => {
-      acc += fuild.numOunces;
+  
+calAverageFluid(fluidsData) {
+    const userFluidsInfo = fluidsData.filter((user) => user.userID === this.id);
+    const average = userFluidsInfo.reduce((acc, fluid) => {
+      acc += fluid.numOunces;
       return acc;
     }, 0);
-    return average;
+
+    return Math.round(average / userFluidsInfo.length);
   }
 
-  getDayFluid(data, date) {
-    const userDayFuilds = data.filter(
+  getDayFluid(fluidsData, date) {
+    const userDayFluids = fluidsData.filter(
       (day) => day.date === date && day.userID === this.id
     );
-    const sum = userDayFuilds.reduce((acc, fuilds) => {
-      acc += fuilds.numOunces;
+    const sum = userDayFluids.reduce((acc, fluids) => {
+      acc += fluids.numOunces;
 
       return acc;
     }, 0);
@@ -66,13 +68,18 @@ class User {
     return sum;
   }
 
-  getWeeklyFluids(data) {
-    const userInfo = data.filter((data) => data.userID === this.id);
-    const userDates = userInfo.map((dates) => {
+  getWeeklyFluids(fluidsData, userDate) {
+    const userInfo = fluidsData.filter((data) => data.userID === this.id);
+    const findStartDate = userInfo.find((date) => date.date === userDate);
+    const indexOfStart = userInfo.indexOf(findStartDate);
+    const weeklyReport = userInfo.slice(indexOfStart, indexOfStart + 7);
+
+    const weeklyFluids = weeklyReport.map((dates) => {
+        
       return { date: dates.date, numOunces: dates.numOunces };
     });
 
-    return userDates;
+    return weeklyFluids;
   }
 }
 

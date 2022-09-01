@@ -2,11 +2,15 @@ import { expect } from "chai";
 import User from "../src/User";
 const userTestData = require("../src/data/userTestData");
 const sleepTestData = require("../src/data/sleepTestData");
+const hydrationData = require "../src/data/hydrationTestData";
 
 describe("User", () => {
   let user;
+  let data;
+  
 
   beforeEach(() => {
+    data = userTestData;
     user = new User(userTestData[0]);
   });
 
@@ -88,7 +92,8 @@ describe("User", () => {
       fakeUser.getAvgSleepDataPerDay(sleepTestData, "hoursSlept")
     ).to.equal(0);
   });
-  it("should have a method to calculate the hours slept per day over a week for a user and quality of sleep ", () => {
+  
+   it("should have a method to calculate the hours slept per day over a week for a user and quality of sleep ", () => {
     let sleepInAWeek = user.getSleepPerDayForWeek(
       sleepTestData,
       "2019/06/16",
@@ -119,5 +124,24 @@ describe("User", () => {
       { date: "2019/06/22", sleepQuality: 3 },
     ]);
   });
-  // expect(user.id).to.equal(1);
+
+  it("should return the average fluid ounces consumed per day for all time", () => {
+    expect(user.calAverageFluid(hydrationData)).to.equal(63);
+  });
+
+  it("should return fluid ounces they consumed for a specific day (identified by a date)", () => {
+    expect(user.getDayFluid(hydrationData, "2019/06/15")).to.equal(37);
+  });
+
+  it("should return fluid ounces of water consumed each day over the course of a week (7 days)", () => {
+    expect(user.getWeeklyFluids(hydrationData, "2019/06/15" )).to.deep.equal([
+      { date: "2019/06/15", numOunces: 37 },
+      { date: "2019/06/16", numOunces: 69 },
+      { date: "2019/06/17", numOunces: 96 },
+      { date: "2019/06/18", numOunces: 61 },
+      { date: "2019/06/19", numOunces: 91 },
+      { date: "2019/06/20", numOunces: 50 },
+      { date: "2019/06/21", numOunces: 50 },
+    ]);
+  });
 });

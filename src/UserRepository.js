@@ -1,8 +1,6 @@
 class UserRepository {
     constructor(data) {
         this.data = data
-        //this.currentUser
-        //this.averageStepGoal
     }
 
     findUsersData(idNum) {

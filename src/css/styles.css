@@ -2,7 +2,7 @@ body, html {
   background:#ffffff;
   background-repeat: no-repeat;
   font-family: 'Courier Prime', monospace;
-  /* height: 100%; */
+  font-size: 2vw;
   margin: 0px;
 }
 
@@ -55,6 +55,7 @@ header {
   display: flex;
   justify-content: flex-start;
   border-radius: 10px;
+  font-size: 2vw;
 }
 
 .box2 {
@@ -103,5 +104,6 @@ header {
   background: #128FC8;
   padding: 20px;
   border-radius: 20px;
+  overflow-wrap: break-word;
 }
 

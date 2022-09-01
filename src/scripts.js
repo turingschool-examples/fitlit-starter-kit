@@ -42,7 +42,7 @@ const fetchApiCalls = userID => {
   });
 };
 
-// Handlers
+// Load Handlers
 function loadHandler() {
     displayUserCard();
     showFirstName();

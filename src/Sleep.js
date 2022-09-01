@@ -1,9 +1,9 @@
 class Sleep {
     constructor(sleepInformation) {
-    this.userID = sleepInformation.userID;
-    this.date = sleepInformation.date;
-    this.hoursSlept = sleepInformation.hoursSlept;
-    this.sleepQuality = sleepInformation.sleepQuality;
+        this.userID = sleepInformation.userID;
+        this.date = sleepInformation.date;
+        this.hoursSlept = sleepInformation.hoursSlept;
+        this.sleepQuality = sleepInformation.sleepQuality;
     }
 
     getSleepByID(sleepArray, id) {
@@ -40,11 +40,18 @@ class Sleep {
         return findDate.hoursSlept
     };
 
+    mostRecentSleep(sleepArray, userID) {
+        let userHours = this.getSleepByID(sleepArray, userID);
+        let mostRecentSleep = userHours.sort((oldest, newest) => newest.date - oldest.date)
+        let findLastDate = mostRecentSleep[0];
+        return findLastDate;
+    }
+
     userHoursSleptForWeek(sleepArray, userID) {
         let currentUser = this.getSleepByID(sleepArray, userID)
         let weekHoursSorted = currentUser.sort((oldest, newest) => oldest.date - newest.date)
             .splice(0, 7)
-            .map(hydrationInfo => hydrationInfo.hoursSlept)
+            .map(sleepInformation => sleepInformation.hoursSlept)
         return weekHoursSorted
     };
 
@@ -58,7 +65,7 @@ class Sleep {
         let currentUser = this.getSleepByID(sleepArray, userID)
         let weekQualitySorted = currentUser.sort((oldest, newest) => oldest.date - newest.date)
             .splice(0, 7)
-            .map(hydrationInfo => hydrationInfo.sleepQuality)
+            .map(sleepInformation => sleepInformation.sleepQuality)
         return weekQualitySorted
     }
 

@@ -24,7 +24,7 @@ import { fetchAllData } from "./apiCalls";
 // let allUsers
 // let newUser
 // let userHydration
-let userSleep;
+let currentSleep;
 let currentHydration;
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
@@ -36,6 +36,7 @@ console.log("This is the JavaScript entry file - your code begins here.");
 
 import userData from "./data/users";
 import Hydration from "./Hydration";
+import Sleep from "./Sleep";
 
 // function getRandomUser() {
 //   // if (userInfo[0]) {
@@ -75,20 +76,18 @@ function initializeData() {
       return currentHydration;
     });
 
-    // userSleep = data[1].sleepData.map(userSleep => {
-    //   let currentSleep = new Sleep(userSleep.id, userSleep.date, userSleep.hoursSlept, userSleep.sleepQuality)
-    //   return currentSleep
-    // })
-    // let randomUser = allUsers.userData[Math.floor(Math.random() * allUsers.userData.length)]
-    // renderAllInfo(randomUser)
+    let allSleep = data[1].sleepData.map((sleepUser) => {
+      currentSleep = new Sleep(sleepUser);
+      return currentSleep
+    })
 
     let randomUser =
       userRepository.userData[
-        Math.floor(Math.random() * userRepository.userData.length)
-      ];
-    // console.log(randomUser.id)
+      Math.floor(Math.random() * userRepository.userData.length)];
+    console.log(allSleep)
     renderUserInfo(randomUser, userRepository);
     renderHydrationData(userHydration, randomUser);
+    renderSleepData(allSleep, randomUser);
     // renderAllInfo(randomUser)
 
     // console.log("users", data[0].userData);
@@ -136,11 +135,23 @@ function renderHydrationData(userHydration, randomUser) {
   hydrationInfo.innerHTML = "";
   hydrationInfo.innerHTML += `<h3 class="hydro-info">User Hydration:</h3>
     <h4 class="user-date"></h4>
-    <h4 class="number-ounces-consumed-day">Number of ounces consumed today: ${
-      currentHydration.mostRecentOunces(userHydration, randomUser.id).numOunces
-    }</h4
+    <h4 class="number-ounces-consumed-day">Number of ounces consumed today: ${currentHydration.mostRecentOunces(userHydration, randomUser.id).numOunces
+    }</h4>
       <h4 class="number-ounces-consumed-week">Amount of ounces drank each day over a week: ${currentHydration.userOuncesPerWeek(
-        userHydration,
-        randomUser.id
-      )}</h4`;
+      userHydration,
+      randomUser.id
+    )}</h4>`;
+}
+
+function renderSleepData(allSleep, randomUser) {
+  // console.log(randomUser.hourSlept)
+  sleepInfo.innerHTML = "";
+  sleepInfo.innerHTML += `<h3 class="sleep-info">User Sleep:</h3>
+    <h4 class="latest-day-sleep">Hours Slept Today: ${currentSleep.mostRecentSleep(allSleep, randomUser.id).hoursSlept}</h4>
+    <h4 class="latest-day-sleep-quality">Sleep Quality Today: ${currentSleep.mostRecentSleep(allSleep, randomUser.id).sleepQuality}</h4>
+    <h4 class="latest-week-sleep">Hours Slept This Week: ${currentSleep.userHoursSleptForWeek(allSleep, randomUser.id)}</h4>
+    <h4 class="latest-week-sleep-quality">Sleep Quality This Week: ${currentSleep.mostRecentSleep(allSleep, randomUser.id).sleepQuality}</h4>
+
+    <h4 class="all-time-sleep-quality">All Time Sleep Quality: ${currentSleep.userQualityForWeek(allSleep, randomUser.id)}</h4>
+    <h4 class="all-time-sleep-hours">All Time Average Hours Slept: ${currentSleep.getTotalUserAverageHoursSleep(allSleep, randomUser.id)}</h4>`
 }

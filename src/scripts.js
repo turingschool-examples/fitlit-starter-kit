@@ -75,6 +75,7 @@ function initializeData() {
         let currentHydration = new Hydration(hydroUser)
         return currentHydration
       })
+      
       // userSleep = data[1].sleepData.map(userSleep => {
       //   let currentSleep = new Sleep(userSleep.id, userSleep.date, userSleep.hoursSlept, userSleep.sleepQuality)
       //   return currentSleep

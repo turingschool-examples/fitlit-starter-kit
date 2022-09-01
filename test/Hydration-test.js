@@ -4,31 +4,147 @@ import User from '../src/User';
 import Hydration from '../src/Hydration';
 
 describe('Hydration', () => {
+  let hydration;
+  let userRepository;
+  let users;
+
+  beforeEach(() => {
+    hydration = new Hydration(users)
+    userRepository = new UserRepository(users)
+    users = [
+      {
+      userID: 1,
+      date: "2019/06/15",
+      numOunces: 37
+      },
+      {
+      userID: 1,
+      date: "2019/06/17",
+      numOunces: 96
+      },
+      {
+      userID: 1,
+      date: "2019/06/18",
+      numOunces: 61
+      },
+      {
+      userID: 1,
+      date: "2019/06/19",
+      numOunces: 91
+      },
+      {
+      userID: 1,
+      date: "2019/06/20",
+      numOunces: 50
+      },
+      {
+      userID: 1,
+      date: "2019/06/21",
+      numOunces: 50
+      },
+      {
+      userID: 1,
+      date: "2019/06/22",
+      numOunces: 43
+      },
+      {
+      userID: 1,
+      date: "2019/06/23",
+      numOunces: 39
+      },
+      {
+      userID: 1,
+      date: "2019/06/24",
+      numOunces: 61
+      },
+      {
+      userID: 1,
+      date: "2019/06/25",
+      numOunces: 51
+      },
+      {
+      userID: 1,
+      date: "2019/06/26",
+      numOunces: 52
+      },
+
+      {
+      userID: 2,
+      date: "2019/06/15",
+      numOunces: 75
+      },
+      {
+      userID: 2,
+      date: "2019/06/16",
+      numOunces: 91
+      },
+      {
+      userID: 2,
+      date: "2019/06/17",
+      numOunces: 96
+      },
+      {
+      userID: 2,
+      date: "2019/06/18",
+      numOunces: 70
+      },
+      {
+      userID: 2,
+      date: "2019/06/19",
+      numOunces: 76
+      },
+      {
+      userID: 2,
+      date: "2019/06/20",
+      numOunces: 71
+      },
+      {
+      userID: 2,
+      date: "2019/06/21",
+      numOunces: 27
+      },
+      {
+      userID: 2,
+      date: "2019/06/22",
+      numOunces: 58
+      },
+      {
+      userID: 2,
+      date: "2019/06/23",
+      numOunces: 44
+      },
+      {
+      userID: 2,
+      date: "2019/06/24",
+      numOunces: 33
+      },
+    ]
+  })
 
   it('should be a function', () => {
-    let hydration = new Hydration(users)
+
     expect(Hydration).to.be.a('function')
   });
 
   it.skip('should have an id', () => {
-    let hydration = new Hydration(users)
+
     expect(hydration.id).to.equal(1)
   });
 
   it.skip('should have a date', () => {
-    let hydration = new Hydration(users)
+
     expect(hydration.date).to.equal(/*mm/dd/yy*/)
   });
 
   it.skip('should keep track of number of ounces
     water consumed', () => {
-    let hydration = new Hydration(users)
+
     expect(hydration.numOunces).to.equal()
   });
 
   it.skip('should return ounces water consumed
     on a specific day by user', () => {
-    let hydration = new Hydration(users)
+
 
     hydration.calculateOuncesWaterConsumedSpecificDay(1)
     hydration.calculateOuncesWaterConsumedSpecificDay(2)
@@ -39,7 +155,7 @@ describe('Hydration', () => {
 
   it.skip('should average the ounces of water consumed
     forever by a user', () => {
-    let hydration = new Hydration(users)
+
     hydration.averageOuncesWaterConsumedForever(1)
     hydration.averageOuncesWaterConsumedForever(2)
 
@@ -50,7 +166,7 @@ describe('Hydration', () => {
   it.skip('should return a list containing the ounces
     water consumed each day over a seven day period by a
     user', () => {
-    let hydration = new Hydration(users)
+
     hydration.calculateOuncesWaterConsumedWeek(1)
     hydration.calculateOuncesWaterConsumedWeek(1)
 

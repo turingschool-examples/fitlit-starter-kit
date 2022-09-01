@@ -1,7 +1,9 @@
 import {expect} from "chai";
 import Hydration from "../src/Hydration";
+import hydrationData from "../src/data/hydration-data";
 
-const mockHydrationData = require("../src/data/hydration-data");
+const mockHydrationData = hydrationData
+
 
 describe("Hydration", () => {
   let userHydration;
@@ -26,11 +28,11 @@ describe("Hydration", () => {
     expect(userHydration.date).to.equal("2019/06/15");
   });
 
-  it.skip("should be able to store fluid ounces consumed", () => {
+  it("should be able to store fluid ounces consumed", () => {
     expect(userHydration.numOunces).to.equal(37);
   });
 
-  it.skip("should return the average of fluid ounces consumed per day for all time", () => {
+  it("should return the average of fluid ounces consumed per day for all time", () => {
     const hydrationAvgPerDay = userHydration.returnDailyHydrateAvg();
     expect(hydrationAvgPerDay).to.equal(65);
   });

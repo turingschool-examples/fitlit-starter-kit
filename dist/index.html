@@ -34,18 +34,18 @@
             />
             <h2 class="sleep-header">SLEEP</h2>
 
-            <section class="sleep-card">sleep goes here</section>
-            <label for="start">Choose date to see sleeping habits:</label>
-            <input
-              type="date"
-              id="start"
-              name="trip-start"
-              value="2019-07-15"
-              min="2019-06-15"
-              max="2020-01-22"
-            />
-            <p><button>Submit</button></p>
-            <section class="date-sleep-data"></section>
+            <section class="sleep-card"></section>
+            <section class="date-sleep-data">
+              <div class="average-sleep-hours">
+                Average Number of Hours Slept
+              </div>
+              <div class="average-quality-sleep">Average Quality Sleep</div>
+            </section>
+
+            <section class="table-data"></section>
+            <h3 class="sleep-for-week">
+              Sleep Data for the latest week
+            </h3>
           </section>
 
           <section class="hydration-container">
@@ -57,7 +57,12 @@
               width="50px"
             />
             <h2 class="hydration-header">HYDRATION</h2>
-            <section class="hydration-card">hydration goes here</section>
+            <section class="hydration-card">
+              <canvas
+                id="myChart"
+                style="width: 100%; max-width: 700px;"
+              ></canvas>
+            </section>
           </section>
         </section>
         <section class="steps-container">
@@ -75,6 +80,16 @@
       <aside class="right-nav">
         <section class="user-container">
           <section class="user-card"></section>
+          <label for="start">Change Habits Shown</label>
+          <input
+            type="date"
+            id="start"
+            name="trip-start"
+            value="2020-01-22"
+            min="2019-06-15"
+            max="2020-01-22"
+          />
+          <p><button>Submit</button></p>
         </section>
         <section class="friends-container">
           <h2 class="friends-header">Friends</h2>
@@ -83,5 +98,6 @@
       </aside>
     </main>
     <script src="bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   </body>
 </html>

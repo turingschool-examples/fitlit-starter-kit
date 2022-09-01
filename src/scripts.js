@@ -22,13 +22,17 @@ let sleepData;
 const userDetails = document.querySelector(".user-card");
 const friendsList = document.querySelector(".friends-card");
 const stepDetails = document.querySelector(".step-card");
-const avgSleepDetails = document.querySelector(".sleep-card");
+const avgSleepHours = document.querySelector(".average-sleep-hours");
+const avgQualitySleep = document.querySelector(".average-quality-sleep");
 const sleepForDay = document.querySelector(".date-sleep-data");
+const sleepForWeek = document.querySelector(".sleep-for-week");
 const inputValue = document.querySelector("input");
 const submitButton = document.querySelector("button");
+const dataForDay = document.querySelector(".table-data");
 // EVent Listeners
 window.addEventListener("load", promiseAll);
 submitButton.addEventListener("click", displaySleepForSpecificDay);
+submitButton.addEventListener("click", displaySleepForAWeek);
 
 promiseAll().then((responses) => {
   userData = responses[0];
@@ -49,6 +53,8 @@ function displayDashboard() {
   displayFriends();
   displaySteps();
   displayAverageSleep();
+  displaySleepForSpecificDay();
+  displaySleepForAWeek();
 }
 
 function displayUserDetails() {
@@ -85,24 +91,23 @@ function displaySteps() {
   stepDetails.innerHTML = "";
   const averageSteps = userRepository.findAverageStepGoal();
   const comparison = Math.round((user.dailyStepGoal / averageSteps) * 100);
-  stepDetails.innerHTML += `<section class='step-comparison-message'><p>Average Step Goal for All Users: ${userRepository.avgUserStepGoal}.</p>
+  stepDetails.innerHTML += `<section class='step-comparison-message'><p>Average Step Goal for All Users: ${averageSteps}.</p>
   <p>Your step goal is: ${user.dailyStepGoal}.</p>
   <p>Your daily step goal is ${comparison}% compared to all average users.</p></section>`;
 }
 
 function displayAverageSleep() {
-  avgSleepDetails.innerText = `Your average number of hours slept in one day is ${user.getAvgSleepDataPerDay(
+  avgSleepHours.innerHTML += `<p>${user.getAvgSleepDataPerDay(
     sleepData,
     "hoursSlept"
-  )} hours.`;
-  avgSleepDetails.innerHTML += `<p>Your average number of quality sleep in one day is ${user.getAvgSleepDataPerDay(
+  )} hours </p>`;
+  avgQualitySleep.innerHTML += `<p>${user.getAvgSleepDataPerDay(
     sleepData,
     "sleepQuality"
-  )} hours.</p>`;
+  )}/5</p>`;
 }
 function displaySleepForSpecificDay() {
   const dateInput = inputValue.value.split("-").join("/");
-  console.log(dateInput);
   const avgSleepPerDay = user.getSleepDataPerDay(
     sleepData,
     dateInput,
@@ -113,5 +118,92 @@ function displaySleepForSpecificDay() {
     dateInput,
     "sleepQuality"
   );
-  sleepForDay.innerHTML += `<p>On ${dateInput} you slept for ${avgSleepPerDay} hours and had a quality sleep score of ${avgQualityPerDay} out of 5.`;
+  dataForDay.innerHTML = `<table style="width:100%">
+  <tr>
+    <td>Day</td>
+    <td>Sleep Hours</td>
+    <td>Quality of Sleep</td>
+  </tr>
+  <tr>
+    <td>${dateInput}</td>
+    <td>${avgSleepPerDay}</td>
+    <td>${avgQualityPerDay}</td>
+  </tr>`;
+}
+
+function displaySleepForAWeek() {
+  const dateInput = inputValue.value.split("-").join("/");
+  const sleepInAWeek = user.getSleepPerDayForWeek(
+    sleepData,
+    dateInput,
+    "hoursSlept"
+  );
+  const sleepQualityInAWeek = user.getSleepPerDayForWeek(
+    sleepData,
+    dateInput,
+    "sleepQuality"
+  );
+  console.log(sleepQualityInAWeek);
+  sleepForWeek.innerHTML = `<table style="width:100%">
+  <tr>
+    <td>Day</td>
+    <td>Sleep Hours</td>
+    <td>Quality of Sleep</td>
+  </tr>
+  <tr>
+    <td>${sleepInAWeek[0].date}</td>
+    <td>${sleepInAWeek[0].hoursSlept}</td>
+    <td>${sleepQualityInAWeek[0].sleepQuality}</td>
+  </tr>
+  <tr>
+    <td>${sleepInAWeek[1].date}</td>
+    <td>${sleepInAWeek[1].hoursSlept}</td>
+    <td>${sleepQualityInAWeek[1].sleepQuality}</td>
+  </tr>
+  <tr>
+    <td>${sleepInAWeek[2].date}</td>
+    <td>${sleepInAWeek[2].hoursSlept}</td>
+    <td>${sleepQualityInAWeek[2].sleepQuality}</td>
+  </tr>
+  <tr>
+    <td>${sleepInAWeek[3].date}</td>
+    <td>${sleepInAWeek[3].hoursSlept}</td>
+    <td>${sleepQualityInAWeek[3].sleepQuality}</td>
+  </tr>
+  <tr>
+    <td>${sleepInAWeek[4].date}</td>
+    <td>${sleepInAWeek[4].hoursSlept}</td>
+    <td>${sleepQualityInAWeek[5].sleepQuality}</td>
+  </tr>
+  <tr>
+    <td>${sleepInAWeek[5].date}</td>
+    <td>${sleepInAWeek[5].hoursSlept}</td>
+    <td>${sleepQualityInAWeek[5].sleepQuality}</td>
+  </tr>
+  <tr>
+    <td>${sleepInAWeek[6].date}</td>
+    <td>${sleepInAWeek[6].hoursSlept} hours</td>
+    <td>${sleepQualityInAWeek[6].sleepQuality}</td>
+  </tr>
+</table>
+  `;
+}
+
+function displayHydrationForWeek() {
+  const hyrdrationWeek = user.
+  var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+  var yValues = [55, 49, 44, 24, 15];
+var barColors = ["red", "green","blue","orange","brown"];
+
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {...}
+});
 }

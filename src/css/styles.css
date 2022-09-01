@@ -43,7 +43,7 @@ main {
 .user-container {
   display: flex;
   flex-direction: column;
-  height: 200px;
+  height: 280px;
   color: white;
   font-size: 12px;
   word-wrap: normal;
@@ -88,9 +88,10 @@ main {
 .sleep-container {
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 650px;
   color: white;
   align-items: center;
+  text-align: center;
   background-color: #6947ff;
   border-radius: 12px;
   margin-right: 20px;
@@ -157,4 +158,11 @@ label {
 input,
 label {
   margin: 0.4rem 0;
+  font-family: "Roboto Mono", monospace;
+  font-size: 14px;
+}
+table,
+th,
+td {
+  border: 1px solid #2cb7ff;
 }

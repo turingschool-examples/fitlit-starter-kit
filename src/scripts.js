@@ -22,9 +22,13 @@ let sleepData;
 const userDetails = document.querySelector(".user-card");
 const friendsList = document.querySelector(".friends-card");
 const stepDetails = document.querySelector(".step-card");
-
+const avgSleepDetails = document.querySelector(".sleep-card");
+const sleepForDay = document.querySelector(".date-sleep-data");
+const inputValue = document.querySelector("input");
+const submitButton = document.querySelector("button");
 // EVent Listeners
 window.addEventListener("load", promiseAll);
+submitButton.addEventListener("click", displaySleepForSpecificDay);
 
 promiseAll().then((responses) => {
   userData = responses[0];
@@ -44,6 +48,7 @@ function displayDashboard() {
   displayUserDetails();
   displayFriends();
   displaySteps();
+  displayAverageSleep();
 }
 
 function displayUserDetails() {
@@ -83,4 +88,30 @@ function displaySteps() {
   stepDetails.innerHTML += `<section class='step-comparison-message'><p>Average Step Goal for All Users: ${userRepository.avgUserStepGoal}.</p>
   <p>Your step goal is: ${user.dailyStepGoal}.</p>
   <p>Your daily step goal is ${comparison}% compared to all average users.</p></section>`;
+}
+
+function displayAverageSleep() {
+  avgSleepDetails.innerText = `Your average number of hours slept in one day is ${user.getAvgSleepDataPerDay(
+    sleepData,
+    "hoursSlept"
+  )} hours.`;
+  avgSleepDetails.innerHTML += `<p>Your average number of quality sleep in one day is ${user.getAvgSleepDataPerDay(
+    sleepData,
+    "sleepQuality"
+  )} hours.</p>`;
+}
+function displaySleepForSpecificDay() {
+  const dateInput = inputValue.value.split("-").join("/");
+  console.log(dateInput);
+  const avgSleepPerDay = user.getSleepDataPerDay(
+    sleepData,
+    dateInput,
+    "hoursSlept"
+  );
+  const avgQualityPerDay = user.getSleepDataPerDay(
+    sleepData,
+    dateInput,
+    "sleepQuality"
+  );
+  sleepForDay.innerHTML += `<p>On ${dateInput} you slept for ${avgSleepPerDay} hours and had quality sleep for ${avgQualityPerDay} hours.`;
 }

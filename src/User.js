@@ -44,8 +44,8 @@ class User {
     }, []);
     return weekSleep;
   }
-  
-calAverageFluid(fluidsData) {
+
+  calAverageFluid(fluidsData) {
     const userFluidsInfo = fluidsData.filter((user) => user.userID === this.id);
     const average = userFluidsInfo.reduce((acc, fluid) => {
       acc += fluid.numOunces;
@@ -75,7 +75,6 @@ calAverageFluid(fluidsData) {
     const weeklyReport = userInfo.slice(indexOfStart, indexOfStart + 7);
 
     const weeklyFluids = weeklyReport.map((dates) => {
-        
       return { date: dates.date, numOunces: dates.numOunces };
     });
 

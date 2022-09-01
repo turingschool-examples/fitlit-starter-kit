@@ -1,7 +1,8 @@
-body, html {
+body,
+html {
   background-color: white;
   background-repeat: no-repeat;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   height: 100%;
   color: black;
   border: 2px, solid, red;
@@ -48,11 +49,12 @@ main {
   word-wrap: normal;
   padding-left: 1em;
   padding-right: 1em;
-  background-color: #6190FF;
+  background-color: #6190ff;
   border-radius: 12px;
   margin-bottom: 20px;
   margin-right: 20px;
-  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192), 0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
+  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
+    0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
 }
 
 /* .user-container:hover {
@@ -69,7 +71,8 @@ main {
   border-radius: 12px;
   margin-right: 20px;
   padding-bottom: 1em;
-  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192), 0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
+  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
+    0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
 }
 
 .friend {
@@ -85,15 +88,16 @@ main {
 .sleep-container {
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 400px;
   color: white;
   align-items: center;
-  background-color: #6947FF;
+  background-color: #6947ff;
   border-radius: 12px;
   margin-right: 20px;
   padding-top: 10px;
   margin-top: 50px;
-  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192), 0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
+  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
+    0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
 }
 
 .hydration-container {
@@ -102,12 +106,13 @@ main {
   height: 300px;
   color: white;
   align-items: center;
-  background-color: #2CB7FF;
+  background-color: #2cb7ff;
   border-radius: 12px;
   padding-top: 10px;
   margin-top: 50px;
   margin-right: 20px;
-  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192), 0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
+  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
+    0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
 }
 
 .steps-container {
@@ -116,12 +121,13 @@ main {
   height: 300px;
   color: white;
   align-items: center;
-  background-color: #6947FF;
+  background-color: #6947ff;
   border-radius: 12px;
   margin-right: 20px;
   padding-top: 10px;
   margin-top: 25px;
-  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192), 0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
+  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
+    0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
 }
 
 .step-comparison-message {
@@ -132,11 +138,23 @@ main {
   padding-right: 1em;
   padding-left: 1em;
   word-wrap: normal;
-justify-content: center;}
+  justify-content: center;
+}
 
-#waterBottleImg, #sleepImg, #sandalsImg {
+#waterBottleImg,
+#sleepImg,
+#sandalsImg {
   border-radius: 50%;
   background-color: white;
   padding: 4px;
   margin: 2px;
+}
+label {
+  display: block;
+  font: 1rem "Fira Sans", sans-serif;
+}
+
+input,
+label {
+  margin: 0.4rem 0;
 }

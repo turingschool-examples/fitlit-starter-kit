@@ -34,10 +34,26 @@ describe("Hydration", () => {
   });
 
   it.skip("should return the amount of ounces the user consumed on a specific day", () => {
-    const ouncesConsumedByDate = userHydration.returnOuncesByDate(
-      "2019/06/18"
-    );
+    const ouncesConsumedByDate = userHydration.returnOuncesByDate("2019/06/18");
     expect(ouncesConsumedByDate).to.equal(61);
   });
-  
+
+  it.skip("should return the date and amount of ounces consumed over a week", () => {
+    const ouncesConsumedByWeek = userHydration.returnOuncesByWeek("2019/06/21");
+    expect(ouncesConsumedByWeek).to.deep.equal({
+      date: [
+        "2019/06/15",
+        "2019/06/16",
+        "2019/06/17",
+        "2019/06/18",
+        "2019/06/19",
+        "2019/06/20",
+        "2019/06/21",
+      ],
+      numOunces: [
+        37, 69, 96, 61,
+        91, 50, 50
+      ]
+    });
+  });
 });

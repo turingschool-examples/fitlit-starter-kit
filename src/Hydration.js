@@ -1,17 +1,15 @@
 class Hydration {
-  constructor(hydrationData,) {
-    this.userID = hydrationData.userID;
-    this.date = hydrationData.date;
-    this.numOunces = hydrationData.numOunces;
+  constructor(hydrationData) {
+   this.hydrationData = hydrationData
+    // this.userID = hydrationData.userID;
+    // this.date = hydrationData.date;
+    // this.numOunces = hydrationData.numOunces;
+  
   }
 
-    findUserDataID(waterArray,id) {
-      const singleHydrationData = waterArray.filter(hydrationObj => hydrationObj.userID === id);
-      if (singleHydrationData.length === 0) {
-        return "Invalid user ID. Please verify user ID and try again."
-      }
-      console.log(singleHydrationData)
-      return singleHydrationData[0].userID
+    findUserDataID(id) {
+      const singleHydrationData = this.hydrationData.filter(hydrationObj => hydrationObj.userID === id);
+      return singleHydrationData;
     };
       
 
@@ -22,6 +20,14 @@ class Hydration {
       console.log('sum', sum)
       return (sumOfOunces / userHydration.length).toFixed(2)
     }
+
+    weeklyOunces(waterArray) {
+      const hydrationDate = waterArray.filter(hydrationObj => hydrationObj.date === date);
+    console.log('hydration dates?',hydrationDate)
+      return hydrationDate
+    
+    }
+
 }
 
 // userAverageOunces(waterArray, id) {

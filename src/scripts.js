@@ -13,6 +13,7 @@ import './images/activity2.png'
 import './images/Clipboard.png'
 
 
+
 // ######### Query Selectors ###########
 const userWelcome =  document.querySelector('#userName')
 const userInfo = document.querySelector('#userInfo')

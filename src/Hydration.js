@@ -1,3 +1,5 @@
+import hydrationData from "./data/hydration-data"
+
 class Hydration {
     constructor(id, hydrationData) {
         this.userID = id
@@ -13,6 +15,10 @@ class Hydration {
             return totalOunces + currentOunces
         }, 0)
         return Math.round(hydrationAvgPerDay / this.data.length)
+    }
+    returnOuncesByDate(thisDate) {
+        const ounceByDate = this.data.find(({date}) => date === thisDate)
+        return ounceByDate.numOunces
     }
 }
 

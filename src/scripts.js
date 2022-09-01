@@ -113,5 +113,5 @@ function displaySleepForSpecificDay() {
     dateInput,
     "sleepQuality"
   );
-  sleepForDay.innerHTML += `<p>On ${dateInput} you slept for ${avgSleepPerDay} hours and had quality sleep for ${avgQualityPerDay} hours.`;
+  sleepForDay.innerHTML += `<p>On ${dateInput} you slept for ${avgSleepPerDay} hours and had a quality sleep score of ${avgQualityPerDay} out of 5.`;
 }

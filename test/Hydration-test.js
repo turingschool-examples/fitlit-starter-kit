@@ -1,0 +1,22 @@
+import {expect} from "chai";
+const mockHydrationData = require("../src/data/hydration-data");
+
+describe("Hydration", () => {
+  let userHydration;
+
+  beforeEach(() => {
+    userHydration = new Hydration(1, mockHydrationData);
+  });
+
+  it.skip("should be a function", () => {
+    expect(Hydration).to.be.a("function");
+  });
+
+  it.skip("should be an instance of Hydration", () => {
+    expect(userHydration).to.be.an.instanceof(Hydration);
+  });
+
+  it.skip("should be able to store a user id", () => {
+    expect(userHydration.userID).to.equal(1);
+  });
+})

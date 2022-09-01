@@ -9,6 +9,8 @@ import './images/turing-logo.png'
 import './images/Activity.png'
 import './images/sleeping.png'
 import './images/Hydrate.png'
+import './images/activity2.png'
+import './images/Clipboard.png'
 
 
 // ######### Query Selectors ###########
@@ -96,7 +98,7 @@ function displayUserData() {
   <li>Step Goals  ${singleUser.dailyStepGoal}
   <li>Friends  ${singleUser.friends}
 </ul>`
-
+}
 
 function displayStepGoalComp(userRepository) {
     userStepComp.innerHTML = `Your daily step goal :${singleUser.dailyStepGoal} vs All user average  ${userRepository.getAllUserAvgStepGoals()}`

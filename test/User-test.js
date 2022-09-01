@@ -93,7 +93,7 @@ describe("User", () => {
   });
 
   it("should return the average fluid ounces consumed per day for all time", () => {
-    expect(user.calAverageFluid(hydrationData, 1)).to.equal(63);
+    expect(user.calAverageFluid(hydrationData)).to.equal(63);
   });
 
   it("should return fluid ounces they consumed for a specific day (identified by a date)", () => {

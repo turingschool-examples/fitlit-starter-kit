@@ -32,4 +32,12 @@ describe("Hydration", () => {
     const hydrationAvgPerDay = userHydration.returnDailyHydrateAvg();
     expect(hydrationAvgPerDay).to.equal(65);
   });
+
+  it.skip("should return the amount of ounces the user consumed on a specific day", () => {
+    const ouncesConsumedByDate = userHydration.returnOuncesByDate(
+      "2019/06/18"
+    );
+    expect(ouncesConsumedByDate).to.equal(61);
+  });
+  
 });

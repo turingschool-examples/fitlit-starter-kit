@@ -25,6 +25,11 @@ describe("Hydration", () => {
   });
 
   it.skip("should be able to store fluid ounces consumed", () => {
-    expect(userHydration.flOunces).to.equal(37);
+    expect(userHydration.numOunces).to.equal(37);
   });
-})
+
+  it.skip("should return the average of fluid ounces consumed per day for all time", () => {
+    const hydrationAvgPerDay = userHydration.returnDailyHydrateAvg();
+    expect(hydrationAvgPerDay).to.equal(65);
+  });
+});

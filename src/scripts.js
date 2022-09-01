@@ -10,6 +10,9 @@ import './images/Activity.png'
 import './images/sleeping.png'
 import './images/Hydrate.png'
 import './images/activity2.png'
+import './images/Clipboard.png'
+
+
 
 // ######### Query Selectors ###########
 const userWelcome =  document.querySelector('#userName')

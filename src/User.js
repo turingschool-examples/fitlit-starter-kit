@@ -43,6 +43,7 @@ class User {
       sleepForWeek.push({ date: entry.date, [detail]: entry[detail] });
       return sleepForWeek;
     }, []);
+    console.log(weekSleep);
     return weekSleep;
   }
 

@@ -190,20 +190,45 @@ function displaySleepForAWeek() {
 }
 
 function displayHydrationForWeek() {
-  const hyrdrationWeek = user.
-  var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-  var yValues = [55, 49, 44, 24, 15];
-var barColors = ["red", "green","blue","orange","brown"];
+  const dateInput = inputValue.value.split("-").join("/");
+  const hyrdrationWeek = user.getWeeklyFluids(fluidsData, dateInput);
+  const xValues = [
+    hyrdrationWeek[0].date,
+    hyrdrationWeek[1].date,
+    hyrdrationWeek[2].date,
+    hyrdrationWeek[3].date,
+    hyrdrationWeek[4].date,
+    hyrdrationWeek[5].date,
+    hyrdrationWeek[6].date,
+  ];
+  const yValues = [
+    hyrdrationWeek[0].numOunces,
+    hyrdrationWeek[1].numOunces,
+    hyrdrationWeek[2].numOunces,
+    hyrdrationWeek[3].numOunces,
+    hyrdrationWeek[4].numOunces,
+    hyrdrationWeek[5].numOunces,
+    hyrdrationWeek[6].numOunces,
+  ];
+  const barColors = ["red", "green", "blue", "orange", "brown"];
 
-new Chart("myChart", {
-  type: "bar",
-  data: {
-    labels: xValues,
-    datasets: [{
-      backgroundColor: barColors,
-      data: yValues
-    }]
-  },
-  options: {...}
-});
+  new Chart("myChart", {
+    type: "bar",
+    data: {
+      labels: xValues,
+      datasets: [
+        {
+          backgroundColor: barColors,
+          data: yValues,
+        },
+      ],
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: "Hydration For The Last Week",
+      },
+    },
+  });
 }

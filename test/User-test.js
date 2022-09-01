@@ -8,6 +8,7 @@ describe("User", () => {
   let user;
   let data;
   
+
   beforeEach(() => {
     data = userTestData;
     user = new User(userTestData[0]);
@@ -90,6 +91,38 @@ describe("User", () => {
     expect(
       fakeUser.getAvgSleepDataPerDay(sleepTestData, "hoursSlept")
     ).to.equal(0);
+  });
+  
+   it("should have a method to calculate the hours slept per day over a week for a user and quality of sleep ", () => {
+    let sleepInAWeek = user.getSleepPerDayForWeek(
+      sleepTestData,
+      "2019/06/16",
+      "hoursSlept"
+    );
+    let qualitySleepInAWeek = user.getSleepPerDayForWeek(
+      sleepTestData,
+      "2019/06/16",
+      "sleepQuality"
+    );
+    expect(sleepInAWeek[0].date).to.equal("2019/06/16");
+    expect(sleepInAWeek).to.deep.equal([
+      { date: "2019/06/16", hoursSlept: 4.1 },
+      { date: "2019/06/17", hoursSlept: 8 },
+      { date: "2019/06/18", hoursSlept: 10.4 },
+      { date: "2019/06/19", hoursSlept: 10.7 },
+      { date: "2019/06/20", hoursSlept: 9.3 },
+      { date: "2019/06/21", hoursSlept: 7.8 },
+      { date: "2019/06/22", hoursSlept: 7 },
+    ]);
+    expect(qualitySleepInAWeek).to.deep.equal([
+      { date: "2019/06/16", sleepQuality: 3.8 },
+      { date: "2019/06/17", sleepQuality: 2.6 },
+      { date: "2019/06/18", sleepQuality: 3.1 },
+      { date: "2019/06/19", sleepQuality: 1.2 },
+      { date: "2019/06/20", sleepQuality: 1.2 },
+      { date: "2019/06/21", sleepQuality: 4.2 },
+      { date: "2019/06/22", sleepQuality: 3 },
+    ]);
   });
 
   it("should return the average fluid ounces consumed per day for all time", () => {

@@ -33,11 +33,22 @@ class User {
     return parseFloat(average);
   }
 
-  calAverageFluid(fluidsData) {
+  getSleepPerDayForWeek(sleepData, startDate, detail) {
+    const userSleep = sleepData.filter((entry) => entry.userID === this.id);
+    const startingDate = userSleep.find((entry) => entry.date === startDate);
+    const startIndex = userSleep.indexOf(startingDate);
+    let newArr = userSleep.slice(startIndex, startIndex + 7);
+    const weekSleep = newArr.reduce((sleepForWeek, entry) => {
+      sleepForWeek.push({ date: entry.date, [detail]: entry[detail] });
+      return sleepForWeek;
+    }, []);
+    return weekSleep;
+  }
+  
+calAverageFluid(fluidsData) {
     const userFluidsInfo = fluidsData.filter((user) => user.userID === this.id);
     const average = userFluidsInfo.reduce((acc, fluid) => {
       acc += fluid.numOunces;
-
       return acc;
     }, 0);
 

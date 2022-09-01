@@ -2,15 +2,13 @@ import { expect } from "chai";
 import User from "../src/User";
 const userTestData = require("../src/data/userTestData");
 const sleepTestData = require("../src/data/sleepTestData");
-import Hydration from "../src/data/hydrationTestData";
+const hydrationData = require "../src/data/hydrationTestData";
 
 describe("User", () => {
   let user;
   let data;
-  let hydrationData;
-
+  
   beforeEach(() => {
-    hydrationData = Hydration;
     data = userTestData;
     user = new User(userTestData[0]);
   });

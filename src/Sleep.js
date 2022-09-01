@@ -1,55 +1,72 @@
 class Sleep {
     constructor(sleepData) {
-        this.userID = sleepData.userID
-        this.date = sleepData.date
-        this.hoursSlept = sleepData.hoursSlept
-        this.sleepQuality = sleepData.sleepQuality
+        this.sleepData = sleepData
     }
 
-    findAverageSleepHoursPerDay() {
-        // sleep 
+    findSleepDataById(userID) {
+        const sleepDataById = []
+        this.sleepData.forEach(user => {
+            if (userID === user.userID) {
+                sleepDataById.push(user)
+        }
+    })
+        return sleepDataById
+    }
 
-        const avgHours = this.sleepData.reduce((acc, element) => {
-            if (user.id === userID) {
-                acc += element
-            }
+    findAverageDailySleep() {
+        let avgHours = this.sleepData.reduce((acc, sleep) => {
+                acc += sleep.hoursSlept
             return acc
         }, 0) 
-        return avgHours 
+        // console.log (Math.round(avgHours) / this.sleepData.length)
+        return Math.round(avgHours) / this.sleepData.length
     }
- 
-        // we are going to look at hoursSlept 
-        // the average number of hours slept per day
-        // filter userID === userID push hours into an array
         
+    findAverageSleepQuality() {
+        let avgQuality = this.sleepData.reduce((acc, sleep) => {
+                acc += sleep.sleepQuality
+                // console.log(sleep.sleepQuality)
+            return acc
+        }, 0) 
+        // console.log (Math.round(avgHours) / this.sleepData.length)
+        return Math.round(avgQuality) / this.sleepData.length
+    }
 
-    // findAverageSleepQuality() {
-        // average sleep quality per day over time
+    findHoursSleptByDate(date) {
+        this.sleepData.find(sleep => {
+           if (sleep.date === date) {
+           }
+           console.log('SLEEP.HOURSSLEPT', sleep.hoursSlept)
+            return sleep.hoursSlept
+        })
+    }
 
+    // findSleepQualityByDate(date) {
+        //this.sleepData.find(quality =>)
+        // sleep.date === date
+        // return sleep.quality
     // }
 
-    // findHoursSleptForDay() {
-
-
-    // }
-
-    // findSleepQualityForDay() {
-
-    // }
-
-    // findHoursSleptPerDay() {
+    // findWeeklyHoursSlept() {
         // over the course of 7 days
-
-
     // }
 
 
-    // findSleepQualityPerDay() {
+    // findWeeklySleepQuality() {
     //     over the course of 7 days
     // }
 
-    // findAllUsersAverageSleepQuality() {
 
+    // findAllUsersAverageSleepQuality() {
+        // const usersAvgSleepQuality = this.sleepData.reduce((acc, quality) => {
+        //     acc += quality.sleepQuality
+        
+        //     numOfElements++
+        //     return acc
+        //   }, 0)
+        
+        //   return Math.round(usersAvgSleepQuality / this.users.length)
+        
     // }
 }
 

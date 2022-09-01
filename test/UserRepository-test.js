@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
-import User from '../src/User';
+import User from '../src/User'; 
 
 
 describe('UserRepository', () => {
@@ -12,6 +12,7 @@ describe('UserRepository', () => {
 
   beforeEach(() => {
     userRepository = new UserRepository(users);
+    
     users = [ 
       new User({
       id: 1,

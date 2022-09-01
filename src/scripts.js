@@ -1,33 +1,22 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-console.log(userData,"<>>>>userData")
-// An example of how you tell webpack to use a CSS file
 import './css/styles.css';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png';
 import './images/icons8-plus-67.png';
 import './images/icons8-sustainable-energy-96.png';
 import './images/icons8-water-96.png';
 import './images/icons8-zzz-96.png';
 
-console.log('This is the JavaScript entry file - your code begins here.');
-
-// An example of how you tell webpack to use a JS file
-
-import userData from './data/users';
-
+import fetchData from './apiCalls.js';
 import UserRepository from './UserRepository';
 import User from './User';
+import Hydration from './Hydration';
+import Sleep from './Sleep';
 
-// randomly generate a user by Id
-// render user info inside the userInfo box
-// render user's first name
-// compare step goal to average step goal of all users
-
-const currentUser = userData[getRandomIndex()];
-console.log(currentUser)
+let userData;
+let sleepData;
+let hydrationData;
+let currentUser;
+let hydration;
+let sleep;
+let allUsers;
 
 const greeting = document.querySelector('.greeting');
 const friendsList = document.querySelector('#friendsList');
@@ -36,41 +25,66 @@ const userAddress = document.querySelector('.user-address');
 const userEmail = document.querySelector('.user-email');
 const stepGoal = document.querySelector('.step-goal');
 
-
 window.addEventListener('load', loadUserInfo);
 
+Promise.all([fetchData('users', 'userData'), fetchData('sleep', 'sleepData'), fetchData('hydration', 'hydrationData'),])
+  .then(data => {
+    userData = data[0],
+    sleepData = data[1],
+    hydrationData = data[2],
+    currentUser = new User(userData[Math.floor(Math.random() * userData.length)]);
+    hydration = new Hydration(currentUser.id, hydrationData);
+    sleep = new Sleep(currentUser.id, sleepData);
+    allUsers = new UserRepository(userData);
 
-function getRandomIndex() {
-  const min = Math.ceil(1);
-  const max = Math.floor(50);
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+    loadUserInfo();
+
+    console.log(currentUser)
+    console.log(hydration)
+    console.log(sleep)
+    console.log(allUsers)
+  }
+);
+
 
 function loadUserInfo() {
   renderGreeting();
   renderFriendsList();
-  renderProfile()
-}
+  renderProfile();
+};
 
 function renderGreeting() {
-  const userFirstName = currentUser.name.split(' ')[0];
-  greeting.innerHTML = `Hello, ${userFirstName}!`;
-}
+  // console.log('line 48', JSON.parse(JSON.stringify(currentUser)))
+  const userFirstName = currentUser.name.split(' ')[0]; // error happening here
+      greeting.innerHTML = `Hello, ${userFirstName}!`;
+      console.log(userFirstName)
+      // Is coming back correctly with the first name only of the random user
+      console.log(currentUser)
+      // Is coming back correctly with the whole random User instance object
+      console.log(currentUser.name) 
+      // Is comming back correctly with the first and last name of the random user 
+      console.log(currentUser.name.split(' ')[0]) 
+      // is coming back correctly with the first name only of the random user
+};
 
+// console.log('function', renderGreeting())
 
 function renderFriendsList() {
   const friendNames = userData
   .filter(user => {
-    if (currentUser.friends.includes(user.id)) {
+    if(currentUser.userFriends.includes(user.id)) {
       return user.name;
     }
-  })
-  return friendNames.forEach(friend => friendsList.innerHTML += `<button class="friend">${friend.name}</button>`); 
-}
+  });
+  return friendNames.forEach(friend => {
+    friendsList.innerHTML += 
+    `<button class="friend">${friend.name}</button>`
+  }); 
+};
 
-const renderProfile = () => {
-  fullName.innerText = ` ${currentUser.name}`
-  userAddress.innerText = ` ${currentUser.email}`
-  userEmail.innerText = ` ${currentUser.address}`
-  stepGoal.innerText = ` ${currentUser.dailyStepGoal}`
-}
+function renderProfile() {
+  fullName.innerText = `${currentUser.name}`;
+  userAddress.innerText = `${currentUser.email}`;
+  userEmail.innerText = `${currentUser.address}`;
+  stepGoal.innerText = `${currentUser.dailyStepGoal}`;
+};

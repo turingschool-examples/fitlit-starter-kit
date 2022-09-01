@@ -3,7 +3,8 @@ class Hydration {
       this.id = userId;
       this.ounces = hydrationData.filter(data => data.userID === userId); 
       this.hydrationData = hydrationData;
-    }
+    };
+    
     ouncesPerDay(date, userInfo) {
       let dailyOunces = userInfo.find(entry => {
         if (this.id === entry.userID) {
@@ -11,7 +12,8 @@ class Hydration {
         }
       })
       return {[date]: dailyOunces.numOunces};
-    }
+    };
+    
     getDailyOuncesByWeek(userInfo, date1, date2) {
       let weekById = userInfo.reduce((userDays, entry) => {
         if (this.id === entry.userID) {
@@ -20,7 +22,8 @@ class Hydration {
           return userDays;
       }, [])
         return weekById.slice(date1, date2);
-    }
+    };
+    
     getAvgOunces(userInfo) {
       const totalOunces = userInfo.reduce((acc, entry) => {
         if (this.id === entry.userID) {
@@ -29,6 +32,7 @@ class Hydration {
         return acc;      
       }, 0);   
       return Math.round(totalOunces / this.ounces.length);
-    }
-}
+    };
+};
+
 export default Hydration

@@ -26,7 +26,7 @@ import { fetchAllData } from './apiCalls';
 
 // let allUsers
 // let newUser
-let userHydration
+// let userHydration
 let userSleep
 
 
@@ -64,15 +64,15 @@ function initializeData() {
     (data) => {
       // getRandomUser(data);
       // getUserHydrationData(data)
-      console.log(data)
+      // console.log(data)
       let allUsers = data[0].userData.map(user => {
         let currentUser = new User(user)
         return currentUser
       })
       const userRepository = new UserRepository(allUsers)
 
-      userHydration = data[2].hydrationData.map(hydroUser => {
-        let currentHydration = new Hydration(hydroUser.userID, hydroUser.date, hydroUser.numOunces)
+      let userHydration = data[2].hydrationData.map(hydroUser => {
+        let currentHydration = new Hydration(hydroUser)
         return currentHydration
       })
       // userSleep = data[1].sleepData.map(userSleep => {
@@ -85,10 +85,12 @@ function initializeData() {
       // console.log("sleep", data[1]);
       // console.log("hydration", data[2]);
       // console.log("users", data[0].userData);
-      console.log(allUsers)
+      // console.log(allUsers)
       let randomUser = userRepository.userData[Math.floor(Math.random() * userRepository.userData.length)]
       // console.log(randomUser)
       renderUserInfo(randomUser, userRepository)
+      // console.log(userHydration)
+      renderHydrationData(userHydration, randomUser)
       // renderAllInfo(randomUser)
       // console.log("users", data[0].userData);
     })
@@ -132,12 +134,14 @@ function renderUserInfo(newUser, allUsers) {
   <h4 class="goal-average">Your Goal is ${status} average by ${stepDifference}</h4>`
 }
 
-function renderHydrationData(userHydration) {
+function renderHydrationData(userHydration, randomUser) {
+  console.log(newUser)
+  // console.log(userHydration)
   hydrationInfo.innerHTML = ''
   hydrationInfo.innerHTML +=
     `<h3 class="hydro-info">User Hydration:</h3>
   <h4 class="user-date"></h4>
-  <h4 class="number-ounces-consumed-day">${userHydration}</h4
+  <h4 class="number-ounces-consumed-day">${userHydration.mostRecentOunces(userHydration, randomUser.id)}</h4
   <h4 class="number-ounces-consumed-week"></h4`
 }
 

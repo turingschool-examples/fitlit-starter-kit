@@ -37,15 +37,17 @@ class User {
     const userSleep = sleepData.filter((entry) => entry.userID === this.id);
     const startingDate = userSleep.find((entry) => entry.date === startDate);
     const startIndex = userSleep.indexOf(startingDate);
-    let newArr = userSleep.slice(startIndex, startIndex + 7);
+    let newArr = userSleep.slice(startIndex - 7, startIndex);
+    newArr = newArr.reverse();
     const weekSleep = newArr.reduce((sleepForWeek, entry) => {
       sleepForWeek.push({ date: entry.date, [detail]: entry[detail] });
       return sleepForWeek;
     }, []);
+    console.log(weekSleep);
     return weekSleep;
   }
-  
-calAverageFluid(fluidsData) {
+
+  calAverageFluid(fluidsData) {
     const userFluidsInfo = fluidsData.filter((user) => user.userID === this.id);
     const average = userFluidsInfo.reduce((acc, fluid) => {
       acc += fluid.numOunces;
@@ -75,7 +77,6 @@ calAverageFluid(fluidsData) {
     const weeklyReport = userInfo.slice(indexOfStart, indexOfStart + 7);
 
     const weeklyFluids = weeklyReport.map((dates) => {
-        
       return { date: dates.date, numOunces: dates.numOunces };
     });
 

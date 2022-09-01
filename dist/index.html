@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
     <title>FitLit</title>
   </head>
   <body>
@@ -23,34 +26,47 @@
         <section class="vitals-section">
           <section class="sleep-container">
             <img
-            src="./images/lighting.png"
-            id="sleepImg"
-            alt="sunset logo"
-            height="50px"
-            width="50px"/>
+              src="./images/lighting.png"
+              id="sleepImg"
+              alt="sunset logo"
+              height="50px"
+              width="50px"
+            />
             <h2 class="sleep-header">SLEEP</h2>
-            <section class="sleep-card">sleep goes here
+
+            <section class="sleep-card"></section>
+            <section class="date-sleep-data">
+              <div class="average-sleep-hours">
+                Average Number of Hours Slept
+              </div>
+              <div class="average-quality-sleep">Average Quality Sleep</div>
             </section>
+
+            <section class="table-data"></section>
+            <h3 class="sleep-for-week">
+              Sleep Data for the latest week
+            </h3>
           </section>
+
           <section class="hydration-container">
             <img
               src="./images/water-bottle.png"
               id="waterBottleImg"
               alt="water bottle"
               height="50px"
-              width="50px"/>
+              width="50px"
+            />
             <h2 class="hydration-header">HYDRATION</h2>
-            <section class="hydration-card">hydration goes here
-            </section>
+            <section class="hydration-card"></section>
           </section>
-        </section> 
+        </section>
         <section class="steps-container">
           <img
-          src="./images/sandals.png"
-          id="sandalsImg"
-          alt="weight logo"
-          height="50px"
-          width="50px"
+            src="./images/sandals.png"
+            id="sandalsImg"
+            alt="weight logo"
+            height="50px"
+            width="50px"
           />
           <h2 class="steps-header">ACTIVITY</h2>
           <section class="step-card"></section>
@@ -58,8 +74,17 @@
       </section>
       <aside class="right-nav">
         <section class="user-container">
-          <section class="user-card">
-          </section>
+          <section class="user-card"></section>
+          <label for="start">Change Habits Shown</label>
+          <input
+            type="date"
+            id="start"
+            name="trip-start"
+            value="2020-01-22"
+            min="2019-06-15"
+            max="2020-01-22"
+          />
+          <p><button>Submit</button></p>
         </section>
         <section class="friends-container">
           <h2 class="friends-header">Friends</h2>

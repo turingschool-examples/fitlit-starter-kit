@@ -4,6 +4,7 @@ function fetchData(details) {
     .then((response) => response.json())
     .catch((error) => console.log(error));
 }
+
 const promiseAll = () => {
   const result = Promise.all([
     fetchData("users"),
@@ -12,7 +13,6 @@ const promiseAll = () => {
   ]).then((response) => {
     return response;
   });
-  console.log(result);
   return result;
 };
 

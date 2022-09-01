@@ -2,12 +2,11 @@ import { expect } from "chai";
 import User from "../src/User";
 const userTestData = require("../src/data/userTestData");
 const sleepTestData = require("../src/data/sleepTestData");
-const hydrationData = require "../src/data/hydrationTestData";
+const hydrationData = require("../src/data/hydrationTestData");
 
 describe("User", () => {
   let user;
   let data;
-  
 
   beforeEach(() => {
     data = userTestData;
@@ -92,8 +91,8 @@ describe("User", () => {
       fakeUser.getAvgSleepDataPerDay(sleepTestData, "hoursSlept")
     ).to.equal(0);
   });
-  
-   it("should have a method to calculate the hours slept per day over a week for a user and quality of sleep ", () => {
+
+  it("should have a method to calculate the hours slept per day over a week for a user and quality of sleep ", () => {
     let sleepInAWeek = user.getSleepPerDayForWeek(
       sleepTestData,
       "2019/06/16",
@@ -134,7 +133,7 @@ describe("User", () => {
   });
 
   it("should return fluid ounces of water consumed each day over the course of a week (7 days)", () => {
-    expect(user.getWeeklyFluids(hydrationData, "2019/06/15" )).to.deep.equal([
+    expect(user.getWeeklyFluids(hydrationData, "2019/06/15")).to.deep.equal([
       { date: "2019/06/15", numOunces: 37 },
       { date: "2019/06/16", numOunces: 69 },
       { date: "2019/06/17", numOunces: 96 },

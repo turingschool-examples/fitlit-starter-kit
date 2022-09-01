@@ -1,14 +1,13 @@
 /* Global Styling */
 body {
+  background-attachment: fixed;
   background-color: grey;
   background-image: url(https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1220&q=80);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
-  /* flex-direction: column; */
   flex-wrap: wrap;
-  justify-content: space-between;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   height: 100vh;
   margin: 0px;
@@ -21,6 +20,7 @@ body {
   display: flex;
   height: 75px;
   justify-content: space-between;
+  padding: 0px 30px;
   text-align: justify;
   width: 100vw;
 }
@@ -34,8 +34,15 @@ body {
   margin: 20px;
 }
 
-/* User Info - Main */
-.user-main {
+/* Main Page Body */
+.main-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+/* User Info - Main/Hydration */
+.left-column {
   background-image: linear-gradient(#EF8774, #7C4D56);
   border: 1px solid antiquewhite;
   border-radius: 10px;
@@ -43,19 +50,19 @@ body {
   display: flex;
   flex-direction: column;
   height: 350px;
-  justify-content: space-around;
-  margin-left: 5px;
+  justify-content: space-evenly;
+  margin: 55px;
   opacity: 0.80;
-  padding: 5px;
+  padding: 10px;
   width: 400px;
 }
 
-.user-info,
-.step-info {
+.center-text {
   text-align: center;
 }
 
-.user-steps {
+/* User Info - Steps/Sleep */
+.right-column {
   background-image: linear-gradient(#EF8774, #7C4D56);
   border: 1px solid antiquewhite;
   border-radius: 10px;
@@ -63,15 +70,9 @@ body {
   display: flex;
   flex-direction: column;
   height: 350px;
-  justify-content: space-around;
-  /* margin-right: 5px; */
+  justify-content: space-evenly;
+  margin: 55px;
   opacity: 0.80;
-  padding: 5px;
+  padding: 10px;
   width: 300px;
 }
-
-/* User Info - Steps */
-
-/* Hydration */
-
-/* Sleep */

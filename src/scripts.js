@@ -4,11 +4,11 @@ import './images/icons8-sustainable-energy-96.png';
 import './images/icons8-water-96.png';
 import './images/icons8-zzz-96.png';
 
-import fetchData from './apiCalls.js'
+import fetchData from './apiCalls.js';
 import UserRepository from './UserRepository';
 import User from './User';
-import Hydration from './Hydration'
-import Sleep from './Sleep'
+import Hydration from './Hydration';
+import Sleep from './Sleep';
 
 let userData;
 let sleepData;
@@ -33,12 +33,12 @@ Promise.all([fetchData('users', 'userData'), fetchData('sleep', 'sleepData'), fe
     sleepData = data[1],
     hydrationData = data[2],
     currentUser = new User(userData[Math.floor(Math.random() * userData.length)]);
-    hydration = new Hydration(currentUser.id, hydrationData)
-    sleep = new Sleep(currentUser.id, sleepData)
-    allUsers = new UserRepository(userData)
+    hydration = new Hydration(currentUser.id, hydrationData);
+    sleep = new Sleep(currentUser.id, sleepData);
+    allUsers = new UserRepository(userData);
 
-    loadUserInfo()
-    
+    loadUserInfo();
+
     console.log(currentUser)
     console.log(hydration)
     console.log(sleep)

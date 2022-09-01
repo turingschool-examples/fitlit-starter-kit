@@ -13,7 +13,7 @@ class Sleep {
     const dailySleep = this.sleepDataPerUser.reduce((acc, data) => {
       if (data.date === date) {
         acc = data[type];
-      }
+      };
       
       return acc;
     }, 0);
@@ -26,7 +26,7 @@ class Sleep {
     sum = dataSet.reduce((acc, data) => {
       if (data[type]) {
         acc += data[type];
-      }
+      };
 
       return acc;
     }, 0);
@@ -41,9 +41,9 @@ class Sleep {
     const sleepPerDay = week.map(data => data[type]);
 
     return sleepPerDay;
-  };
-  
+  };  
 };
+
 
 
 export default Sleep;

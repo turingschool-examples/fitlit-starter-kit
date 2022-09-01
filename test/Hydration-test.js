@@ -19,4 +19,10 @@ describe("Hydration", () => {
   it.skip("should be able to store a user id", () => {
     expect(userHydration.userID).to.equal(1);
   });
+
+  it.skip("should be able to store a date", () => {
+    expect(userHydration.date).to.equal("2019/06/15");
+  });
+
+  
 })

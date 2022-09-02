@@ -6,6 +6,7 @@ body, html {
   background:#ffffff;
   background-repeat: no-repeat;
   font-family: 'Courier Prime', monospace;
+  font-size: 2vw;
   margin: 0px;
 }
 
@@ -58,6 +59,7 @@ header {
   display: flex;
   justify-content: flex-start;
   border-radius: 10px;
+  font-size: 2vw;
 }
 
 .box2 {
@@ -104,4 +106,5 @@ header {
   background: #9DDDFF;
   padding: 20px;
   border-radius: 20px;
+  overflow-wrap: break-word;
 }

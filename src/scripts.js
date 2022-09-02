@@ -1,15 +1,28 @@
+// Import styles:
 import './css/styles.css';
 import './images/icons8-plus-67.png';
 import './images/icons8-sustainable-energy-96.png';
 import './images/icons8-water-96.png';
 import './images/icons8-zzz-96.png';
 
+// Import local files:
 import fetchData from './apiCalls.js';
 import UserRepository from './UserRepository';
 import User from './User';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
 
+// Import third party libraries:
+
+// Query Selectors
+const greeting = document.querySelector('.greeting');
+const friendsList = document.querySelector('#friendsList');
+const fullName = document.querySelector('.full-name');
+const userAddress = document.querySelector('.user-address');
+const userEmail = document.querySelector('.user-email');
+const stepGoal = document.querySelector('.step-goal');
+
+// Global variables
 let userData;
 let sleepData;
 let hydrationData;
@@ -18,16 +31,9 @@ let hydration;
 let sleep;
 let allUsers;
 
-const greeting = document.querySelector('.greeting');
-const friendsList = document.querySelector('#friendsList');
-const fullName = document.querySelector('.full-name');
-const userAddress = document.querySelector('.user-address');
-const userEmail = document.querySelector('.user-email');
-const stepGoal = document.querySelector('.step-goal');
-
-window.addEventListener('load', loadUserInfo);
-
-Promise.all([fetchData('users', 'userData'), fetchData('sleep', 'sleepData'), fetchData('hydration', 'hydrationData'),])
+// API data
+function fetchAllData() {
+  Promise.all([fetchData('users', 'userData'), fetchData('sleep', 'sleepData'), fetchData('hydration', 'hydrationData'),])
   .then(data => {
     userData = data[0],
     sleepData = data[1],
@@ -36,17 +42,18 @@ Promise.all([fetchData('users', 'userData'), fetchData('sleep', 'sleepData'), fe
     hydration = new Hydration(currentUser.id, hydrationData);
     sleep = new Sleep(currentUser.id, sleepData);
     allUsers = new UserRepository(userData);
-
+    
     loadUserInfo();
+  });
+}
 
-    console.log(currentUser)
-    console.log(hydration)
-    console.log(sleep)
-    console.log(allUsers)
-  }
-);
+// Event Listeners
+window.addEventListener('load', fetchAllData);
+
+// Helper Functions
 
 
+// DOM Functions
 function loadUserInfo() {
   renderGreeting();
   renderFriendsList();
@@ -54,20 +61,9 @@ function loadUserInfo() {
 };
 
 function renderGreeting() {
-  // console.log('line 48', JSON.parse(JSON.stringify(currentUser)))
-  const userFirstName = currentUser.name.split(' ')[0]; // error happening here
+  const userFirstName = currentUser.name.split(' ')[0];
       greeting.innerHTML = `Hello, ${userFirstName}!`;
-      console.log(userFirstName)
-      // Is coming back correctly with the first name only of the random user
-      console.log(currentUser)
-      // Is coming back correctly with the whole random User instance object
-      console.log(currentUser.name) 
-      // Is comming back correctly with the first and last name of the random user 
-      console.log(currentUser.name.split(' ')[0]) 
-      // is coming back correctly with the first name only of the random user
 };
-
-// console.log('function', renderGreeting())
 
 function renderFriendsList() {
   const friendNames = userData

@@ -1,6 +1,7 @@
 class Sleep {
-    constructor(sleepData) {
+    constructor(sleepData, userID) {
         this.sleepData = sleepData
+        this.userID = userID
     }
 
     findSleepDataById(userID) {
@@ -9,6 +10,7 @@ class Sleep {
                 return user
             }
         }) 
+        // console.log('HEY', sleepDataById) => array of objects
         return sleepDataById
     }
 
@@ -33,19 +35,17 @@ class Sleep {
         return parseFloat((avgQuality / filterSleep.length).toFixed(1))
     }
 
-    findHoursSleptByDate(date) {
-        const sleepByDate = this.sleepData.find(sleep => {
-            sleep.date === date
-            return sleep
-        }) 
-        return sleepByDate.hoursSlept
+    findHoursSleptByDate(userID, date) {
+        const filterSleep = this.findSleepDataById(userID)
+
+        const sleepHoursByDate = filterSleep.find(user => user.date === date)
+        return sleepHoursByDate.hoursSlept
     }
 
-    findSleepQualityByDate(date) {
-        const sleepQualityByDate = this.sleepData.find(sleep => {
-            sleep.date === date
-            return sleep
-        }) 
+    findSleepQualityByDate(userID, date) {
+        const filterSleep = this.findSleepDataById(userID)
+
+        const sleepQualityByDate = filterSleep.find(user => user.date === date) 
         return sleepQualityByDate.sleepQuality
     }
 
@@ -56,12 +56,8 @@ class Sleep {
             acc.push(sleep.hoursSlept)
             return acc
         }, [])
-        console.log(weeklySleepHours)
         return weeklySleepHours
-
-
         
-    
         // we are going to look at each date
         // and look at the hours slept
         // return a week worth of objects

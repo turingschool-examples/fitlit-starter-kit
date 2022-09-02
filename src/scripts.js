@@ -17,7 +17,7 @@ import './images/Clipboard.png'
 const userWelcome =  document.querySelector('#userName')
 const userInfo = document.querySelector('#userInfo')
 const userStepComp = document.querySelector('#userSteps')
-const hydrationCard = document.querySelector('#userSteps')
+const hydrationCard = document.querySelector('#userHydro')
 // ######### Global Variables ###########
   let singleUser;
   let usersData;
@@ -25,6 +25,7 @@ const hydrationCard = document.querySelector('#userSteps')
   let users;
   let sleep;
   let hydration;
+  let singleHydro;
 // let hydrationData;
 // let sleepData;
 
@@ -40,10 +41,11 @@ const getFetch = () => {
     hydration = data[2].hydrationData;
     singleUser = new User(users[getRandomUser()]);
     userRepository = new UserRepository(users);
+    singleHydro = new Hydration(hydration);
     welcomeUser();
     displayUserData();
     displayStepGoalComp(userRepository);
-
+    displayHydrationData(singleHydro)
   })
 
 }
@@ -98,7 +100,7 @@ function welcomeUser() {
 }
 
 function displayUserData() {
-    userInfo.innerHTML = `<ul>
+    userInfo.innerHTML = `<ul class='user-data-details'>
   <li> Name: ${singleUser.name}</li>
   <li> Email: ${singleUser.email}</li>
   <li> Address: ${singleUser.address}</li>
@@ -109,13 +111,13 @@ function displayUserData() {
 }
 
 function displayStepGoalComp(userRepository) {
-    userStepComp.innerHTML = `Your daily step goal :${singleUser.dailyStepGoal} <br> vs <br> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}`
-    //<p class='step-goals'></p>
+  userStepComp.innerHTML = `<p class='user-step-details'>Your daily step goal: ${singleUser.dailyStepGoal}</p> <br> vs <br><p class='user-step-details'> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
+   
 }
 
-// function displayHydrationData() {
-//   userHydroComp.innerHTML = `Today: ${} vs All Time ${}`
-// }
+function displayHydrationData(singleHydro) {
+  hydrationCard.innerHTML = `Today: ${singleHydro.usersDailyOunces(singleUser.id)} vs All Time ${singleHydro.getLifeTimeOunces()}`
+}
 //
 // function displaySleepData() {
 //   usersleepComp.innerHTML = `Today: ${} vs All Time ${}`

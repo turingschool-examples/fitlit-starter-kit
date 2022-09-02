@@ -13,8 +13,8 @@ class Hydration {
       return dailyOunces.numOunces;
     };
     getDailyOuncesByWeek(date1, date2) {
-      const weekOunces = this.ounces.slice(date1, date2)
-      return weekOunces.map(day => day.numOunces)
+      const weekOunces = this.ounces.slice(date1, date2);
+      return weekOunces.map(day => day.numOunces);
     };
     getAvgOunces() {
       const totalOunces = this.ounces.reduce((acc, entry) => {

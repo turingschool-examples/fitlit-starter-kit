@@ -183,19 +183,13 @@ describe('Sleep', () => {
     });
 
     it('should find user hours slept by a date', () => {
-      const user1Day = sleep.findHoursSleptByDate(user1.id, '2019/06/15')
-        expect(user1Day).to.equal(6.1) 
-        
-      const user2Day = sleep.findHoursSleptByDate(user2.id, '2019/06/15')
-        expect(user2Day).to.equal(4.4)    
+      expect(sleep.findHoursSleptByDate(user1.id, '2019/06/15')).to.equal(6.1) 
+      expect(sleep.findHoursSleptByDate(user2.id, '2019/06/15')).to.equal(4.4)    
     });
 
     it('should find sleep quality by date', () => {
-      const user1Day = sleep.findSleepQualityByDate(user1.id, '2019/06/15')
-        expect(user1Day).to.equal(2.2) 
-        
-      const user2Day = sleep.findSleepQualityByDate(user2.id, '2019/06/16')
-        expect(user2Day).to.equal(3.9)   
+      expect(sleep.findSleepQualityByDate(user1.id, '2019/06/15')).to.equal(2.2)
+      expect(sleep.findSleepQualityByDate(user2.id, '2019/06/16')).to.equal(3.9)  
     });
 
     it('should find weekly hours slept', () => {

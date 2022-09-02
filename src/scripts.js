@@ -18,6 +18,7 @@ const userWelcome =  document.querySelector('#userName')
 const userInfo = document.querySelector('#userInfo')
 const userStepComp = document.querySelector('#userSteps')
 const hydrationCard = document.querySelector('#userHydro')
+const sleepCard = document.querySelector('#userSleep')
 // ######### Global Variables ###########
   let singleUser;
   let usersData;
@@ -26,6 +27,7 @@ const hydrationCard = document.querySelector('#userHydro')
   let sleep;
   let hydration;
   let singleHydro;
+  let singleSleep;
 // let hydrationData;
 // let sleepData;
 
@@ -42,10 +44,14 @@ const getFetch = () => {
     singleUser = new User(users[getRandomUser()]);
     userRepository = new UserRepository(users);
     singleHydro = new Hydration(hydration);
+    singleSleep = new Sleep(sleep);
     welcomeUser();
     displayUserData();
     displayStepGoalComp(userRepository);
     displayHydrationData(singleHydro);
+    displaySleepData(singleSleep);
+
+
   })
 
 }
@@ -111,6 +117,7 @@ function displayUserData() {
 }
 
 function displayStepGoalComp(userRepository) {
+  userStepComp.innerHTML = `<p class='user-step-details'>Your daily step goal: ${singleUser.dailyStepGoal}</p> <br> vs <br><p class='user-step-details'> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
   userStepComp.innerHTML = `<p class='user-step-details'>Your daily step goal: ${singleUser.dailyStepGoal}</p> <br>  <br><p class='user-step-details'> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
     userStepComp.innerHTML = `Your daily step goal :${singleUser.dailyStepGoal} <br> vs <br> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}`
     userStepComp.innerHTML = `<p class='user-step-details'>Your daily step goal: ${singleUser.dailyStepGoal}</p> <br> vs <br><p class='user-step-details'> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
@@ -126,7 +133,14 @@ function displayHydrationData(singleHydro) {
   <p class='user-step-details'> Weekly: ${singleHydro.getOuncesPerWeek(singleUser.id, "2020/01/22") } `
  
 }
+
+
+function displaySleepData(singleSleep) {
+  sleepCard.innerHTML = `Today you slept for ${singleSleep.getSleepHrsByDay(singleUser.id)} <br> Quality of Sleep(today): ${singleSleep.getSleepQualPerDay(singleUser.id)}`
+}
+
   
 // function displaySleepData() {
 //   usersleepComp.innerHTML = `Today: ${}  All Time ${}`
 // }
+

@@ -58,6 +58,7 @@ function loadUserInfo() {
   renderProfile();
   // renderSleepChartByWeek('2019/06/15','2019/06/21', 'hoursSlept');
   renderSleepChartByDay('2019/06/15', 'hoursSlept');
+  renderDailySteps
 };
 
 function renderGreeting() {
@@ -150,19 +151,22 @@ function renderSleepChartByDay(date, type) {
     }
   })
 
-  // const sleepByDay = new Chart('sleepCanvasByDay', {
-  //   type: 'doughnut', 
+  function renderDailySteps() {
+    const activity = new Chart('sleepCanvasByDay', {
+      type: 'doughnut', 
+  
+      
+      data: {
+        labels: ['Hours of Sleep By Day', 'Maximum Hours'],
+        datasets: 
+        [{
+          data: [day, max],
+        }]
+      },
+    })
+  }
 
-    
-  //   data: {
-  //     labels: ['Hours of Sleep By Day', 'Maximum Hours'],
-  //     datasets: 
-  //     [{
-  //       data: [day, max],
-  //     }]
-  //   },
-  // })
-}
+  }
 
 
 

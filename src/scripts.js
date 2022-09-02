@@ -1,9 +1,11 @@
+// Import styles:
 import './css/styles.css';
 import './images/icons8-plus-67.png';
 import './images/icons8-sustainable-energy-96.png';
 import './images/icons8-water-96.png';
 import './images/icons8-zzz-96.png';
 
+// Import local files:
 import fetchData from './apiCalls.js';
 import UserRepository from './UserRepository';
 import User from './User';
@@ -12,6 +14,17 @@ import Sleep from './Sleep';
 import Chart from 'chart.js/auto';
 
 
+// Import third party libraries:
+
+// Query Selectors
+const greeting = document.querySelector('.greeting');
+const friendsList = document.querySelector('#friendsList');
+const fullName = document.querySelector('.full-name');
+const userAddress = document.querySelector('.user-address');
+const userEmail = document.querySelector('.user-email');
+const stepGoal = document.querySelector('.step-goal');
+
+// Global variables
 let userData;
 let sleepData;
 let hydrationData;
@@ -20,62 +33,41 @@ let hydration;
 let sleep;
 let allUsers;
 
-const greeting = document.querySelector('.greeting');
-const friendsList = document.querySelector('#friendsList');
-const fullName = document.querySelector('.full-name');
-const userAddress = document.querySelector('.user-address');
-const userEmail = document.querySelector('.user-email');
-const stepGoal = document.querySelector('.step-goal');
-
-const load = document.querySelector('.loading');
-
-window.addEventListener('load', fetchAll);
-
-function fetchAll() {
+// API data
+function fetchAllData() {
   Promise.all([fetchData('users', 'userData'), fetchData('sleep', 'sleepData'), fetchData('hydration', 'hydrationData'),])
-    .then(data => {
-      userData = data[0],
-      sleepData = data[1],
-      hydrationData = data[2],
-      currentUser = new User(userData[Math.floor(Math.random() * userData.length)]);
-      hydration = new Hydration(currentUser.id, hydrationData);
-      sleep = new Sleep(currentUser.id, sleepData);
-      allUsers = new UserRepository(userData); 
-      loadUserInfo();
-      hideLoading();
-    }
-  );
-
+  .then(data => {
+    userData = data[0],
+    sleepData = data[1],
+    hydrationData = data[2],
+    currentUser = new User(userData[Math.floor(Math.random() * userData.length)]);
+    hydration = new Hydration(currentUser.id, hydrationData);
+    sleep = new Sleep(currentUser.id, sleepData);
+    allUsers = new UserRepository(userData);
+    
+    loadUserInfo();
+  });
 }
 
-const hideLoading = () => {
-  load.classList.add('hidden');
-}
+// Event Listeners
+window.addEventListener('load', fetchAllData);
 
+// Helper Functions
+
+// DOM Functions
 function loadUserInfo() {
   renderGreeting();
   renderFriendsList();
   renderProfile();
   // renderSleepChartByWeek('2019/06/15','2019/06/21', 'hoursSlept');
   renderSleepChartByDay('2019/06/15', 'hoursSlept');
-  renderDailySteps
+  renderDailySteps();
 };
 
 function renderGreeting() {
-  // console.trace()
-  // console.log('line 48', JSON.parse(JSON.stringify(currentUser)))
-  const userFirstName = currentUser.name.split(' ')[0]; // error happening here
-      greeting.innerHTML = `Hello, ${userFirstName}!`;
-      // Is coming back correctly with the first name only of the random user
-      // console.log(currentUser)
-      // Is coming back correctly with the whole random User instance object
-      // console.log(currentUser.name) 
-      // Is comming back correctly with the first and last name of the random user 
-      // console.log(currentUser.name.split(' ')[0]) 
-      // is coming back correctly with the first name only of the random user
+  const userFirstName = currentUser.name.split(' ')[0];
+  greeting.innerHTML = `Hello, ${userFirstName}!`;
 };
-
-// console.log('function', renderGreeting())
 
 function renderFriendsList() {
   const friendNames = userData
@@ -152,15 +144,14 @@ function renderSleepChartByDay(date, type) {
   })
 
   function renderDailySteps() {
-    const activity = new Chart('sleepCanvasByDay', {
+    let avg;
+    const activity = new Chart('stepsByDay', {
       type: 'doughnut', 
-  
-      
       data: {
-        labels: ['Hours of Sleep By Day', 'Maximum Hours'],
+        labels: ['step goal', ''],
         datasets: 
         [{
-          data: [day, max],
+          data: [day, avg],
         }]
       },
     })

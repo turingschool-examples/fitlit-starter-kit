@@ -1,10 +1,6 @@
 class Hydration {
   constructor(hydrationData) {
    this.hydrationData = hydrationData
-    // this.userID = hydrationData.userID;
-    // this.date = hydrationData.date;
-    // this.numOunces = hydrationData.numOunces;
-  
   }
 
     findUserDataID(id) {
@@ -14,31 +10,37 @@ class Hydration {
       
 
     usersDailyOunces(id) {
-      let userHydration = findUserDataID(id)
-      let sumOfOunces = 0;
-      const dailyOunces = userHydrationData.forEach(ounce => sum += ounce.numOunces);
-      console.log('sum', sum)
-      return (sumOfOunces / userHydration.length).toFixed(2)
+      let userHydroOunces = this.findUserDataID(id);
+      const ouncesByDate = userHydroOunces.map((userDate) => userDate.date).pop();
+      const todayOunces = userHydroOunces.find((HydroObj) => HydroObj.date === ouncesByDate)
+      return todayOunces.numOunces;
     }
 
-    weeklyOunces(waterArray) {
-      const hydrationDate = waterArray.filter(hydrationObj => hydrationObj.date === date);
-    console.log('hydration dates?',hydrationDate)
-      return hydrationDate
-    
-    }
+  getOuncesPerWeek(id, date) {
+    let userHydroData = this.findUserDataID(id);
+    const userHydroDates = userHydroData.map(userHydro => userHydro.date);
+    const userIndexOfDate = userHydroDates.indexOf(date);
+    const userSevenDays = userHydroData.slice(userIndexOfDate - 6, userIndexOfDate + 1)
+    const usersAvgHydro = userSevenDays.reduce((avgHydro, userHydro) => {
+      avgHydro += userHydro.numOunces / 7;
+      return avgHydro;
+    }, 0)
 
-}
+    return usersAvgHydro.toFixed(1);
+  }
+  getLifeTimeOunces() {
+   
+    let lifetimeOunces  = this.hydrationData.reduce((avg, userOunces) => {
+      avg += userOunces.numOunces / this.hydrationData.length
+      return avg;
+    }, 0)
+    return lifetimeOunces.toFixed(1);
+  }
+  }
 
-// userAverageOunces(waterArray, id) {
-//         let currentUser = this.getUserHydration(waterArray, id)
-//         let totalAmount = currentUser.reduce((totalOz, dayOz) => {
-//             totalOz += dayOz.numOunces;
-//             return totalOz;
-//         }, 0);
-//         let totalAverage = parseFloat((totalAmount / currentUser.length).toFixed(0));
-//         return totalAverage
-//     }
+
+
+
 
 
 

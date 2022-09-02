@@ -160,14 +160,14 @@ describe('Sleep', () => {
     })
 
     it('should return how many hours slept each day over the course of a given week', () => {
-        expect(userOne.getSleepHoursPerWeek(1, "2019/06/27")).to.equal(6.6);
+        expect(userOne.getSleepHoursPerWeek(1, "2019/06/27")).to.equal(6.7);
     })
 
     it('should return the average sleep quality over the course of a given week', () => {
         expect(userOne.getSleepQualPerWeek(1, "2019/06/27")).to.equal('2.0');
     })
 
-    it.only('should return the average sleep quality for all users', () => {
+    it('should return the average sleep quality for all users', () => {
         expect(userSleepData.getAvgSleepQual()).to.deep.equal('3.2');
     })
 

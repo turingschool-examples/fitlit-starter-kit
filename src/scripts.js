@@ -218,6 +218,48 @@ function displayHydrationForWeek() {
   const dateInput = inputValue.value.split("-").join("/");
   const hyrdrationWeek = user.getWeeklyFluids(hydrationData, dateInput);
 
+  if (hyrdrationWeek.length > 6) {
+    chart.innerHTML = `
+  <table class="sleep-data" style="width:100%">
+  <tr>
+    <td>Day</td>
+    <td>Number Of Ounces</td>
+  </tr>
+  <tr>
+    <td class="hydra-data">${hyrdrationWeek[0].date}</td>
+    <td class="hydra-data">${hyrdrationWeek[0].numOunces}</td>
+    
+  </tr>
+  <tr>
+    <td class="hydra-data">${hyrdrationWeek[1].date}</td>
+    <td class="hydra-data">${hyrdrationWeek[1].numOunces}</td>
+  </tr>
+  <tr>
+    <td class="hydra-data">${hyrdrationWeek[2].date}</td>
+    <td class="hydra-data">${hyrdrationWeek[2].numOunces}</td>
+  </tr>
+  <tr>
+    <td class="hydra-data">${hyrdrationWeek[3].date}</td>
+    <td class="hydra-data">${hyrdrationWeek[3].numOunces}</td>
+  </tr>
+    <tr>
+    <td class="hydra-data">${hyrdrationWeek[4].date}</td>
+    <td class="hydra-data">${hyrdrationWeek[4].numOunces}</td>
+  </tr>
+  <tr>
+    <td class="hydra-data">${hyrdrationWeek[5].date}</td>
+    <td class="hydra-data">${hyrdrationWeek[5].numOunces}</td>
+  </tr>
+  <tr>
+    <td class="hydra-data">${hyrdrationWeek[6].date}</td>
+    <td class="hydra-data">${hyrdrationWeek[6].numOunces}</td>
+  </tr>
+</table>`;
+  } else {
+    chart.innerHTML = `<p> There Is Not Enough Data To Display For This Week. Please Select 
+    A Different Week To See Your Weekly Report <p>`;
+  }
+
   // const xValues = [
   //   hyrdrationWeek[0].date,
   //   hyrdrationWeek[1].date,

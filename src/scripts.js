@@ -103,8 +103,8 @@ function renderSleepChartByWeek(start, end, type) {
         borderColor: "#128FC8",
       }]
     },
-  })
-}
+  });
+};
 
 function renderSleepChartByDay(date, type) {
   const day = sleep.getSleepDataByGivenDay(date, type);
@@ -141,23 +141,24 @@ function renderSleepChartByDay(date, type) {
         }
       }
     }
-  })
+  });
+};
 
-  function renderDailySteps() {
-    let avg;
-    const activity = new Chart('stepsByDay', {
-      type: 'doughnut', 
-      data: {
-        labels: ['step goal', ''],
-        datasets: 
-        [{
-          data: [day, avg],
-        }]
-      },
-    })
-  }
+function renderDailySteps() {
+  let avg;
+  const activity = new Chart('stepsByDay', {
+    type: 'doughnut', 
+    data: {
+      labels: ['step goal', ''],
+      datasets: 
+      [{
+        data: [day, avg],
+      }]
+    },
+  });
+};
 
-  }
+
 
 
 

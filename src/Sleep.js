@@ -42,7 +42,7 @@ class Sleep {
     const usersAvgSleep = userSevenDays.reduce((avgSleep, userSleep) => {
       avgSleep += userSleep.hoursSlept / 7;
       return avgSleep;
-    }, 0) 
+    }, 0)
     return usersAvgSleep;
   }
 

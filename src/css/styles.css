@@ -50,21 +50,30 @@ body, html {
 }
 
 .user-data-details  {
-  color:white; 
+  color:rgb(1, 32, 7); 
+}
+.user-hydro-details {
+color: rgb(1, 32, 7);
+margin-bottom: -33px;
+margin-top: 45px;
 }
 
 .user-hydro {
-  height: 200px;
-  width: 300px;
-  background-color: blue;
-  margin-top: 2%;
-  border: 3px solid  #531345;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 10%;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  transition: all 0.1s ease;
-  background-color:aqua;
-}
+    display: flex;
+      height: 200px;
+      width: 300px;
+      margin-top: 2%;
+      border: 3px solid #531345;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 10%;
+      box-shadow: 0 12px 16px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);
+      transition: all 0.1s ease;
+      background-color: aqua;
+      flex-direction: column;
+      align-content: flex-start;
+      justify-content: space-between;
+      align-items: center;
+    }
 
 .user-sleep {
   height: 200px;

@@ -36,7 +36,7 @@ class Sleep {
     findHoursSleptByDate(date) {
         const sleepByDate = this.sleepData.find(sleep => {
             sleep.date === date
-            return sleep.hoursSlept
+            return sleep
         }) 
         return sleepByDate.hoursSlept
     }
@@ -44,13 +44,30 @@ class Sleep {
     findSleepQualityByDate(date) {
         const sleepQualityByDate = this.sleepData.find(sleep => {
             sleep.date === date
-            return sleep.sleepQuality
+            return sleep
         }) 
         return sleepQualityByDate.sleepQuality
     }
 
     findWeeklySleepHours() {
+        // For a user, how many hours slept each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
+
+        const weeklySleepHours = this.sleepData.reduce((acc, sleep) => {
+            acc.push(sleep.hoursSlept)
+            return acc
+        }, [])
+        console.log(weeklySleepHours)
+        return weeklySleepHours
+
+
         
+    
+        // we are going to look at each date
+        // and look at the hours slept
+        // return a week worth of objects
+        // return 7 dates
+        // reverse / splice / map
+        // we know that the last date is the 23rd
     }
 
 
@@ -64,10 +81,7 @@ class Sleep {
             acc += sleep.sleepQuality
             return acc
           }, 0)
-          console.log(this.sleepData.length)
           return parseFloat((avgSleepQuality / this.sleepData.length).toFixed(1))
         }
-
-
 }
 export default Sleep;

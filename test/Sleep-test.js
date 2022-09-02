@@ -203,20 +203,8 @@ describe('Sleep', () => {
       expect(sleep.findSleepQualityByDate('2019/06/15')).to.equal(2.2)
     });
 
-    it.skip('should find weekly hours slept', () => {
-      // let hours1 = [
-      //   { date: '2019/06/15', hoursSlept: 6.1 },
-      //   { date: '2019/06/16', hoursSlept: 7 },
-      //   { date: '2019/06/17', hoursSlept: 10.8 },
-      //   { date: '2019/06/18', hoursSlept: 5.4 },
-      //   { date: '2019/06/19', hoursSlept: 4.1 },
-      //   { date: '2019/06/20', hoursSlept: 9.6 },
-      //   { date: '2019/06/21', hoursSlept: 5.1 },
-      //   { date: '2019/06/22', hoursSlept: 8.1 },
-      //   { date: '2019/06/23', hoursSlept: 8.9 }
-      // ]
-      
-      expect(sleep.findWeeklyHoursSlept()).to.equal()
+    it('should find weekly hours slept', () => {
+      expect(sleep.findWeeklySleepHours()).to.equal()
     });
 
     it.skip('should find weekly sleep quality', () => {

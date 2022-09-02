@@ -16,11 +16,11 @@ describe('Hydration', () => {
     expect(hydrate1.id).to.equal(1);
   })
   it ('should calculate the daily ounces per user', () => {
-    expect(hydrate1.ouncesPerDay('2019/06/15', hydrationData)).to.deep.equal({'2019/06/15': 37});
-    expect(hydrate1.ouncesPerDay('2019/06/16', hydrationData)).to.deep.equal({'2019/06/16': 69});
+    expect(hydrate1.ouncesPerDay('2019/06/15')).to.deep.equal(37);
+    expect(hydrate1.ouncesPerDay('2019/06/16')).to.deep.equal(69);
   })
   it ('should calculate weekly ouces per user', () => {
-    expect(hydrate1.getDailyOuncesByWeek(hydrationData, 0, 2)).to.deep.equal([
+    expect(hydrate1.getDailyOuncesByWeek(0, 2)).to.deep.equal([
       { userID: 1, date: '2019/06/15', numOunces: 37 },
       { userID: 1, date: '2019/06/16', numOunces: 69 }
     ]);

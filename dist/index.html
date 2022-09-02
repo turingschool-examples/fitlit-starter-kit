@@ -11,10 +11,16 @@
   </head>
   
   <body>
+    <h1 class="loading">Loading...</h1>
+    <div class="title">
+      
+    </div>
     <div class="large-container">
       <section class="column">
         <header>
-          <h1 class="greeting">Hello, !</h1>
+          <h1>Activity Tracker</h1>
+          <h2 class="greeting">Hello, !</h2>
+          <h3>Today: </h3>
         </header>
         <section id="friendsList" class="box1 friends-list">
           <h2>Friends</h2>
@@ -37,7 +43,10 @@
 
         <section id="sleepBox" class="box2 sleep">
           <img role="button" class="sleep-icon" src="./images/icons8-zzz-96.png" alt="sleep-icon">
-          <p>percent bar</p>
+          <div class="container">
+            <!-- <canvas id="sleepCanvasByWeek"></canvas> -->
+            <canvas id="sleepCanvasByDay"></canvas>
+          </div>
           <h3>Sleep</h3>
         </section>
 
@@ -70,9 +79,14 @@
     </div>
 
 
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
 
-    <!-- <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
+   
+  
+
+    
+    
+    <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">  -->
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>

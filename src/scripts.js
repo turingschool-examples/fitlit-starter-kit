@@ -99,9 +99,9 @@ function welcomeUser() {
 
 function displayUserData() {
     userInfo.innerHTML = `<ul>
-  <li>${singleUser.name}</li>
-  <li>${singleUser.email}</li>
-  <li>${singleUser.address}</li>
+  <li> Name: ${singleUser.name}</li>
+  <li> Email: ${singleUser.email}</li>
+  <li> Address: ${singleUser.address}</li>
   <li>Stride ${singleUser.strideLength}</li>
   <li>Step Goals  ${singleUser.dailyStepGoal}
   <li>Friends  ${singleUser.friends}
@@ -109,5 +109,14 @@ function displayUserData() {
 }
 
 function displayStepGoalComp(userRepository) {
-    userStepComp.innerHTML = `Your daily step goal :${singleUser.dailyStepGoal} vs All user average  ${userRepository.getAllUserAvgStepGoals()}`
+    userStepComp.innerHTML = `Your daily step goal :${singleUser.dailyStepGoal} <br> vs <br> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}`
+    //<p class='step-goals'></p>
 }
+
+// function displayHydrationData() {
+//   userHydroComp.innerHTML = `Today: ${} vs All Time ${}`
+// }
+//
+// function displaySleepData() {
+//   usersleepComp.innerHTML = `Today: ${} vs All Time ${}`
+// }

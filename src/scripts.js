@@ -63,8 +63,7 @@ function loadUserInfo() {
   renderOuncesPerDay('2020/01/22');
   // renderSleepChartByWeek('2019/06/15','2019/06/21', 'hoursSlept');
   renderSleepChartByDay('2019/06/15', 'hoursSlept');
-//   renderDailySteps();
-  renderOuncesPerWeek(194, 201);
+  renderOuncesByWeek(194, 201);
 
 };
 
@@ -90,20 +89,15 @@ function renderProfile() {
   fullName.innerText = `${currentUser.name}`;
   userAddress.innerText = `${currentUser.email}`;
   userEmail.innerText = `${currentUser.address}`;
-  stepGoal.innerText += `${currentUser.dailyStepGoal}`;
-};
+  stepGoal.innerText += `${currentUser.dailyStepGoal}
+  Average Step Goal: ${allUsers.returnAverageStepGoal()}`;
 
-function renderOuncesPerDay(date) {
-    let hydrate = document.getElementById('hydrate');
-    const dailyOunces = hydration.ouncesPerDay(date);
-    hydrate.innerText = `${date}: ${dailyOunces}`; 
 };
-
 
 function renderSleepChartByWeek(start, end, type) {
   const weeklyData = sleep.getDailySleepByWeek(start, end, type);
   const sleepWeekCanvas = new Chart('sleepCanvasByWeek', {
-    type: 'bar', // bar, horizontal, pie, line, doughnut, radar, polarArea
+    type: 'bar',
     data: {
       labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
       datasets: [{
@@ -131,52 +125,46 @@ function renderSleepChartByDay(date, type) {
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor:'rgb(255, 99, 132)',
         borderWidth: 1,
-      },
-      {
-        label: 'Maximum Sleep',
-        data: [max],
-        backgroundColor: 'rgba(177, 99, 255, 0.2)',
-        borderColor:'rgb(229, 99, 255)',
-        borderWidth: 1,
       }]
     },
     options: {
       indexAxis: 'y',
-      scales: {
-        x: {
-          stacked: true
-        },
-        y: {
-          stacked: true,
-          beginAtZero: true,
-        }
-      }
     }
   });
 };
 
-// function renderDailySteps() {
-//   let avg;
-//   const activity = new Chart('stepsByDay', {
-//     type: 'doughnut', 
-//     data: {
-//       labels: ['step goal', ''],
-//       datasets: 
-//       [{
-//         data: [day, avg],
-//       }]
-//     },
-//   });
-// };
-function renderOuncesPerWeek(date1, date2) {
-    let weeklyWins = document.getElementById('weekly-wins');
-    const weeklyOunces = hydration.getDailyOuncesByWeek(date1, date2);
-    weeklyWins.innerText += `This week's water intake:
-    Day 1: ${weeklyOunces[0]} ounces
-    Day 2: ${weeklyOunces[1]} ounces
-    Day 3: ${weeklyOunces[2]} ounces
-    Day 4: ${weeklyOunces[3]} ounces
-    Day 5: ${weeklyOunces[4]} ounces
-    Day 6: ${weeklyOunces[5]} ounces
-    Day 7: ${weeklyOunces[6]} ounces`;
-};
+function renderOuncesByWeek(start, end) {
+    const weeklyData = hydration.getDailyOuncesByWeek(start, end);
+    const sleepWeekCanvas = new Chart('weekly-ounces', {
+      type: 'bar',
+      data: {
+        labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+        datasets: [{
+          label: 'Water Intake for the week',
+          data: weeklyData,
+          backgroundColor: "#128FC8",
+          borderColor: 'white',
+        }]
+      },
+    });
+  };
+
+  function renderOuncesPerDay(date) {
+    const day = hydration.ouncesPerDay(date);
+    const weeklyOunce = new Chart('daily-ounces', {
+      type: 'bar',
+      data: {
+        labels: [''],
+        datasets: [{
+          label: 'Daily Water Intake',
+          data: [day],
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor:'rgb(255, 99, 132)',
+          borderWidth: 1,
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+      }
+    });
+  };

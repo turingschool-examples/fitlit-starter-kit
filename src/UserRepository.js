@@ -3,18 +3,18 @@ class UserRepository {
     this.users = usersData;
   };
 
-  returnUserData = (userID) => {
+  returnUserData(userID) {
     const getUser = this.users
       .find(user => user.id === userID);
     return getUser;
   };
 
-  returnAverageStepGoal = () => {
+  returnAverageStepGoal() {
     const goalAverage = this.users
       .reduce((goalsTotal, user) => {
         return goalsTotal += user.dailyStepGoal
       }, 0);
-    return Math.floor(goalAverage / this.users.length);
+    return Math.round(goalAverage / this.users.length);
   }; 
 };
 

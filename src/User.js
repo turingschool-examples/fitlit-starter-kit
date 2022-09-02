@@ -74,13 +74,13 @@ class User {
     const userInfo = fluidsData.filter((data) => data.userID === this.id);
     const findStartDate = userInfo.find((date) => date.date === userDate);
     const indexOfStart = userInfo.indexOf(findStartDate);
-    const weeklyReport = userInfo.slice(indexOfStart, indexOfStart + 7);
+    const weeklyReport = userInfo.slice(indexOfStart-7, indexOfStart);
 
     const weeklyFluids = weeklyReport.map((dates) => {
       return { date: dates.date, numOunces: dates.numOunces };
     });
 
-    return weeklyFluids;
+    return weeklyFluids.reverse();
   }
 }
 

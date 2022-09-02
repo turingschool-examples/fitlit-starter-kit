@@ -21,7 +21,7 @@ describe('Hydration', () => {
   })
   it ('should calculate weekly ouces per user', () => {
     expect(hydrate1.getDailyOuncesByWeek(0, 2)).to.deep.equal([37, 69]);
-    expect(hydrate2.getDailyOuncesByWeek(0, 2)).to.deep.equal([75, 91])
+    expect(hydrate2.getDailyOuncesByWeek(0, 2)).to.deep.equal([75, 91]);
   })
   it('should calculate the avg ounces per user', () => {
     expect(hydrate1.getAvgOunces(hydrationData)).to.deep.equal(59);

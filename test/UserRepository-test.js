@@ -60,7 +60,6 @@ describe('UserRepository', () => {
     ];
   });
 
-
   it('should be a function', () => {
     expect(UserRepository).to.be.a('function')
   });
@@ -70,7 +69,7 @@ describe('UserRepository', () => {
   });
 
   it('should store an array of users', () => {
-    expect(userRepository.users.length).to.equal(3)
+    expect(userRepository.users).to.deep.equal(users)
   });
 
   it('should determine which user information to retrieve by ID', () => {
@@ -79,7 +78,6 @@ describe('UserRepository', () => {
   });
 
   it('should return average of all user step goals', () => {
-  
     expect(userRepository.calculateAvgStepGoal()).to.equal(6667)
   });
 });

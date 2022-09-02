@@ -35,7 +35,7 @@ describe('User', () => {
       24,
       19
       ]
-      });
+    });
   });
 
   it('should be a function', () => {

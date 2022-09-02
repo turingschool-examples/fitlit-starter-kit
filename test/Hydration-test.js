@@ -13,7 +13,6 @@ describe('Hydration', () => {
   beforeEach(() => {
 
     users = [
-
       {
       userID: 1,
       date: "2019/06/15",
@@ -137,12 +136,12 @@ describe('Hydration', () => {
       numOunces: 33
       },
     ]
+    
     hydration = new Hydration(users)
 
   });
 
   it('should be a function', () => {
-
     expect(Hydration).to.be.a('function')
   });
 

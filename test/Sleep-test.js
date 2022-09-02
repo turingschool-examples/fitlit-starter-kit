@@ -188,11 +188,11 @@ describe('Sleep', () => {
   });
 
     it('should find user average number of hours slept per day', () => {
-        expect(sleep.findAverageDailySleep()).to.equal(6.95)
+        expect(sleep.findAverageDailySleep(user1.id)).to.equal(7.2)
     })
 
-    it('should find user average sleep quality per day', () => {
-        expect(sleep.findAverageSleepQuality()).to.equal(2.8)
+    it('should find user average sleep quality per day over all time', () => {
+        expect(sleep.findAverageSleepQuality(user1.id)).to.equal(3.3)
     })
 
     it('should find user hours slept by a date', () => {

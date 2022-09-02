@@ -95,5 +95,4 @@ describe('User', () => {
     expect(user1Data.returnUserFirstName()).to.equal('Luisa')
     expect(user2Data.returnUserFirstName()).to.equal('Jarvis')
   });
-
 });

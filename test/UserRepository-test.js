@@ -7,9 +7,6 @@ describe('UserRepository', () => {
   let userRepository;
   let users;
 
-  // hydration data
-  // sleep data
-
   beforeEach(() => {
     userRepository = new UserRepository(users);
     

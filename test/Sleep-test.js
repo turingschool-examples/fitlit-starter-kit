@@ -60,12 +60,6 @@ describe('Sleep', () => {
             sleepQuality: 3.5
             },
             {
-            userID: 1,
-            date: "2019/06/23",
-            hoursSlept: 8.9,
-            sleepQuality: 2.2
-            },
-            {
             userID: 2,
             date: "2019/06/15",
             hoursSlept: 4.4,
@@ -112,24 +106,6 @@ describe('Sleep', () => {
             date: "2019/06/22",
             hoursSlept: 4.7,
             sleepQuality: 4
-            },
-            {
-            userID: 2,
-            date: "2019/06/23",
-            hoursSlept: 10.1,
-            sleepQuality: 1.3
-            },
-            {
-            userID: 2,
-            date: "2019/06/24",
-            hoursSlept: 7.9,
-            sleepQuality: 1.6
-            },
-            {
-            userID: 2,
-            date: "2019/06/25",
-            hoursSlept: 5.9,
-            sleepQuality: 1.6
             }
           ];
 
@@ -182,59 +158,57 @@ describe('Sleep', () => {
       { userID: 1, date: '2019/06/19', hoursSlept: 4.1, sleepQuality: 3.6 },
       { userID: 1, date: '2019/06/20', hoursSlept: 9.6, sleepQuality: 2.9 },
       { userID: 1, date: '2019/06/21', hoursSlept: 5.1, sleepQuality: 2.6 },
-      { userID: 1, date: '2019/06/22', hoursSlept: 8.1, sleepQuality: 3.5 },
-      { userID: 1, date: '2019/06/23', hoursSlept: 8.9, sleepQuality: 2.2 }
+      { userID: 1, date: '2019/06/22', hoursSlept: 8.1, sleepQuality: 3.5 }
     ]);
       expect(sleep.findSleepDataById(user2.id)).to.deep.equal([
-      { userID: 2, date: "2019/06/15", hoursSlept: 4.4, sleepQuality: 1.6 },
-      { userID: 2, date: "2019/06/16", hoursSlept: 4.9, sleepQuality: 3.9 },
-      { userID: 2, date: "2019/06/17", hoursSlept: 8, sleepQuality: 3.4 },
-      { userID: 2, date: "2019/06/18", hoursSlept: 10.1, sleepQuality: 1.8 },
-      { userID: 2, date: "2019/06/19", hoursSlept: 6.9, sleepQuality: 1.2 },
-      { userID: 2, date: "2019/06/20", hoursSlept: 4.6,sleepQuality: 2.8 },
-      { userID: 2, date: "2019/06/21", hoursSlept: 6.1, sleepQuality: 3.5 },
-      { userID: 2, date: "2019/06/22", hoursSlept: 4.7, sleepQuality: 4 },
-      { userID: 2, date: "2019/06/23", hoursSlept: 10.1, sleepQuality: 1.3 },
-      { userID: 2, date: "2019/06/24", hoursSlept: 7.9, sleepQuality: 1.6 },
-      { userID: 2, date: "2019/06/25", hoursSlept: 5.9, sleepQuality: 1.6 }
+      { userID: 2, date: '2019/06/15', hoursSlept: 4.4, sleepQuality: 1.6 },
+      { userID: 2, date: '2019/06/16', hoursSlept: 4.9, sleepQuality: 3.9 },
+      { userID: 2, date: '2019/06/17', hoursSlept: 8, sleepQuality: 3.4 },
+      { userID: 2, date: '2019/06/18', hoursSlept: 10.1, sleepQuality: 1.8 },
+      { userID: 2, date: '2019/06/19', hoursSlept: 6.9, sleepQuality: 1.2 },
+      { userID: 2, date: '2019/06/20', hoursSlept: 4.6,sleepQuality: 2.8 },
+      { userID: 2, date: '2019/06/21', hoursSlept: 6.1, sleepQuality: 3.5 },
+      { userID: 2, date: '2019/06/22', hoursSlept: 4.7, sleepQuality: 4 }
     ]);
   });
 
     it('should find user average number of hours slept per day', () => {
-        expect(sleep.findAverageDailySleep(user1.id)).to.equal(7.2)
-        expect(sleep.findAverageDailySleep(user2.id)).to.equal(6.7)
+        expect(sleep.findAverageDailySleep(user1.id)).to.equal(7)
+        expect(sleep.findAverageDailySleep(user2.id)).to.equal(6.2)
     });
 
     it('should find user average sleep quality per day over all time', () => {
-        expect(sleep.findAverageSleepQuality(user1.id)).to.equal(3.3)
-        expect(sleep.findAverageSleepQuality(user2.id)).to.equal(2.4)
+        expect(sleep.findAverageSleepQuality(user1.id)).to.equal(3.4)
+        expect(sleep.findAverageSleepQuality(user2.id)).to.equal(2.8)
     });
 
     it('should find user hours slept by a date', () => {
-        const user1Day = sleep.findHoursSleptByDate(1, '2019/06/15')
+      const user1Day = sleep.findHoursSleptByDate(user1.id, '2019/06/15')
         expect(user1Day).to.equal(6.1) 
-
-        const user2Day = sleep.findHoursSleptByDate(2, '2019/06/25')
-        expect(user2Day).to.equal(5.9)    
+        
+      const user2Day = sleep.findHoursSleptByDate(user2.id, '2019/06/15')
+        expect(user2Day).to.equal(4.4)    
     });
 
     it('should find sleep quality by date', () => {
-      const user1Day = sleep.findSleepQualityByDate(1, '2019/06/15')
-      expect(user1Day).to.equal(2.2) 
-
-      const user2Day = sleep.findSleepQualityByDate(2, '2019/06/25')
-      expect(user2Day).to.equal(1.6)   
+      const user1Day = sleep.findSleepQualityByDate(user1.id, '2019/06/15')
+        expect(user1Day).to.equal(2.2) 
+        
+      const user2Day = sleep.findSleepQualityByDate(user2.id, '2019/06/16')
+        expect(user2Day).to.equal(3.9)   
     });
 
-    it.skip('should find weekly hours slept', () => {
-      expect(sleep.findWeeklySleepHours()).to.equal()
+    it('should find weekly hours slept', () => {
+      expect(sleep.findWeeklySleepHours(1,'2019/06/22')).to.equal('7.2')
+      expect(sleep.findWeeklySleepHours(2,'2019/06/22')).to.equal('6.5')
     });
 
-    it.skip('should find weekly sleep quality', () => {
-      expect(sleep.findWeeklySleepQuality()).to.equal()
+    it('should find weekly sleep quality', () => {
+      expect(sleep.findWeeklySleepQuality(1,'2019/06/22')).to.equal('3.6')
+      expect(sleep.findWeeklySleepQuality(2,'2019/06/22')).to.equal('2.9')
     });
 
     it('should find all users average sleep quality', () => {
-      expect(sleep.findAvgSleepQualityForAllUsers()).to.equal(2.8)
+      expect(sleep.findAvgSleepQualityForAllUsers()).to.equal(3.1)
     });
-})
+});

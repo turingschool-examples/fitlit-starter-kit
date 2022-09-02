@@ -9,8 +9,7 @@ class Sleep {
             if (userID === user.userID) {
                 return user
             }
-        }) 
-        // console.log('HEY', sleepDataById) => array of objects
+        })
         return sleepDataById
     }
 
@@ -24,7 +23,6 @@ class Sleep {
         return parseFloat((avgHours / filterSleep.length).toFixed(1))
     }
 
-        
     findAverageSleepQuality(userID) {
         const filterSleep = this.findSleepDataById(userID)
 
@@ -45,32 +43,35 @@ class Sleep {
     findSleepQualityByDate(userID, date) {
         const filterSleep = this.findSleepDataById(userID)
 
-        const sleepQualityByDate = filterSleep.find(user => user.date === date) 
+        const sleepQualityByDate = filterSleep.find(user => user.date === date)
         return sleepQualityByDate.sleepQuality
     }
 
-    findWeeklySleepHours() {
-        // For a user, how many hours slept each day over the course of a given week (7 days) - you should be able to calculate this for any week, not just the latest week
+    findWeeklySleepHours(userID, date) {
+        const filterSleep = this.findSleepDataById(userID)
+        const getDates = filterSleep.map(user => user.date)
+        const dateIndex = getDates.indexOf(date)
+        const weeklyRange = filterSleep.slice(dateIndex -6, dateIndex +1)
 
-        const weeklySleepHours = this.sleepData.reduce((acc, sleep) => {
-            acc.push(sleep.hoursSlept)
+        const weeklySleepHours = weeklyRange.reduce((acc, hours) => {
+            acc += hours.hoursSlept / 7
             return acc
-        }, [])
-        return weeklySleepHours
+        }, 0)
+        return weeklySleepHours.toFixed(1)
+    }
         
-        // we are going to look at each date
-        // and look at the hours slept
-        // return a week worth of objects
-        // return 7 dates
-        // reverse / splice / map
-        // we know that the last date is the 23rd
+    findWeeklySleepQuality(userID, date) {
+        const filterSleep = this.findSleepDataById(userID)
+        const getDates = filterSleep.map(user => user.date)
+        const dateIndex = getDates.indexOf(date)
+        const weeklyRange = filterSleep.slice(dateIndex -6, dateIndex +1)
+
+        const weeklySleepQuality = weeklyRange.reduce((acc, hours) => {
+            acc += hours.sleepQuality / 7
+            return acc
+        }, 0)
+        return weeklySleepQuality.toFixed(1)
     }
-
-
-    findWeeklySleepQuality() {
-        //over the course of 7 days
-    }
-
 
     findAvgSleepQualityForAllUsers() {
         const avgSleepQuality = this.sleepData.reduce((acc, sleep) => {
@@ -80,4 +81,5 @@ class Sleep {
           return parseFloat((avgSleepQuality / this.sleepData.length).toFixed(1))
         }
 }
+
 export default Sleep;

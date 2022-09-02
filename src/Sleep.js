@@ -41,8 +41,9 @@ class Sleep {
     const sleepPerDay = week.map(data => data[type]);
 
     return sleepPerDay;
-  };
-}
+  };  
+};
+
 
 
 export default Sleep;

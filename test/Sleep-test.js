@@ -48,3 +48,5 @@ describe('Sleep', () => {
     expect(userSleep.getAvgSleepData('sleepQuality', userSleep.sleepData)).to.equal(4);
   });
 })
+
+

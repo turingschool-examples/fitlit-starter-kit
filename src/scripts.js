@@ -110,7 +110,7 @@ function displayUserData() {
 
 function displayStepGoalComp(userRepository) {
     userStepComp.innerHTML = `Your daily step goal :${singleUser.dailyStepGoal} <br> vs <br> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}`
-    //<p class='step-goals'></p>
+  
 }
 
 // function displayHydrationData() {

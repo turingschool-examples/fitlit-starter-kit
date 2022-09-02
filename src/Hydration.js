@@ -1,9 +1,23 @@
 const data = require('../src/data/users.js')
+import UserRepository from '../src/UserRepository';
+
+
 class Hydration {
-  constructor(users) {
-    this.userID = users.userID
-    console.log('here',this.userID)
+  constructor(userData) {
+    this.userData = userData
   }
+  calculateOuncesWaterConsumedSpecificDay(userID) {
+    let ouncesByDate;
+    let userDataById = this.userData.filter(user => {
+        if (userID === user.userID) {
+            return user
+        }
+    })
+
+    //return userDataById
+
+  }
+
 
 }
 

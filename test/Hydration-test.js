@@ -5,14 +5,12 @@ import Hydration from '../src/Hydration';
 
 describe('Hydration', () => {
   let hydration;
-  let userRepository;
+  let userData;
   let user1;
   let user2;
-  let users;
 
   beforeEach(() => {
-
-    users = [
+    userData = [
       {
       userID: 1,
       date: "2019/06/15",
@@ -136,8 +134,37 @@ describe('Hydration', () => {
       numOunces: 33
       },
     ]
-    
-    hydration = new Hydration(users)
+
+    hydration = new Hydration(userData)
+
+    user1 = new User({
+          id: 1,
+          name: "Luisa Hane",
+          address: "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+          email: "Diana.Hayes1@hotmail.com",
+          strideLength: 4.3,
+          dailyStepGoal: 10000,
+          friends: [
+          16,
+          4,
+          8
+          ]
+        })
+
+    user2 = new User({
+          id: 2,
+          name: "Jarvis Considine",
+          address: "30086 Kathryn Port, Ciceroland NE 07273",
+          email: "Dimitri.Bechtelar11@gmail.com",
+          strideLength: 4.5,
+          dailyStepGoal: 5000,
+          friends: [
+          9,
+          18,
+          24,
+          19
+          ]
+      })
 
   });
 
@@ -145,53 +172,35 @@ describe('Hydration', () => {
     expect(Hydration).to.be.a('function')
   });
 
-  it('should have an id', () => {
+  it('should be an instance of hydration', () => {
 
-    expect(hydration.userID).to.equal(1)
-  });
-})
-  /*
-  it('should have a date', () => {
-
-    expect(hydration.date).to.equal(mm/dd/yy)
-  });
-});
-  it.skip('should keep track of number of ounces
-    water consumed', () => {
-
-    expect(hydration.numOunces).to.equal()
+    expect(hydration).to.be.an.instanceof(Hydration)
   });
 
-  it.skip('should return ounces water consumed
-    on a specific day by user', () => {
-
+  it('should return ounces water consumed on a specific day by user', () => {
 
     hydration.calculateOuncesWaterConsumedSpecificDay(1)
     hydration.calculateOuncesWaterConsumedSpecificDay(2)
 
-  expect(hydration.numOunces).to.equal(ounces consumed by id 1)
-    expect(hydration.numOunces).to.equal(ounces consumed by id)
+    expect(hydration.userData.numOunces).to.equal()
+    expect(hydration.userData.numOunces).to.equal()
   });
 
-  it.skip('should average the ounces of water consumed
-    forever by a user', () => {
+  it.skip('should average the ounces water consumed forever by a user', () => {
 
     hydration.averageOuncesWaterConsumedForever(1)
     hydration.averageOuncesWaterConsumedForever(2)
 
-    expect(hydration.numOunces).to.equal()
-    expect(hydration.numOunces).to.equal()
+    expect(hydration.userData.numOunces).to.equal()
+    expect(hydration.userData.numOunces).to.equal()
   });
 
-  it.skip('should return a list containing the ounces
-    water consumed each day over a seven day period by a
-    user', () => {
+  it.skip('should return a list containing the ounces water consumed each day over a seven day period by a user', () => {
 
     hydration.calculateOuncesWaterConsumedWeek(1)
-    hydration.calculateOuncesWaterConsumedWeek(1)
+    hydration.calculateOuncesWaterConsumedWeek(2)
 
-    expect(hydration.numOunces).to.equal()
-    expect(hydration.numOunces).to.equal()
+    expect(hydration.userData.numOunces).to.deep.equal()
+    expect(hydration.userData.numOunces).to.deep.equal()
   });
-});
-*/
+})

@@ -13,7 +13,6 @@ import './images/activity2.png'
 import './images/Clipboard.png'
 
 
-
 // ######### Query Selectors ###########
 const userWelcome =  document.querySelector('#userName')
 const userInfo = document.querySelector('#userInfo')
@@ -51,6 +50,14 @@ const getFetch = () => {
 
 
 
+//findFriends function
+//***find 1 friend and pass in 1 id***
+//call the function mutilple times for each friend
+//forEach over the friends
+//grab friend id's and pass the id in as an arguement
+//iterate over the users data & use a filter/find to find the ID's that match
+//maybe have a nested loop for multiple friendsArray
+//if user id = friend id, return object
 
 
 // ######### Event Listeners ###########

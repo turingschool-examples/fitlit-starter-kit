@@ -34,39 +34,39 @@ class Sleep {
     }
 
     findHoursSleptByDate(date) {
-        const sleepByDate = this.sleepData.filter(sleep=> {
-            if(sleep.date === date) {
-                return sleep.hoursSlept
-            }
+        const sleepByDate = this.sleepData.find(sleep => {
+            sleep.date === date
+            return sleep.hoursSlept
         }) 
+        return sleepByDate.hoursSlept
+    }
+
+    findSleepQualityByDate(date) {
+        const sleepQualityByDate = this.sleepData.find(sleep => {
+            sleep.date === date
+            return sleep.sleepQuality
+        }) 
+        return sleepQualityByDate.sleepQuality
+    }
+
+    findWeeklySleepHours() {
         
     }
 
-    // findSleepQualityByDate(date) {
-    //     this.sleepData.find(quality =>)
-    //     sleep.date === date
-    //     return sleep.quality
-    // }
 
-    // findWeeklyHoursSlept() {
-        // over the course of 7 days
-    // }
+    findWeeklySleepQuality() {
+        //over the course of 7 days
+    }
 
 
-    // findWeeklySleepQuality() {
-    //     over the course of 7 days
-    // }
-
-
-    // findAllUsersAverageSleepQuality() {
-        // const usersAvgSleepQuality = this.sleepData.reduce((acc, quality) => {
-        //     acc += quality.sleepQuality
-        
-        //     numOfElements++
-        //     return acc
-        //   }, 0)
-        
-        //   return Math.round(usersAvgSleepQuality / this.users.length)
+    findAvgSleepQualityForAllUsers() {
+        const avgSleepQuality = this.sleepData.reduce((acc, sleep) => {
+            acc += sleep.sleepQuality
+            return acc
+          }, 0)
+          console.log(this.sleepData.length)
+          return parseFloat((avgSleepQuality / this.sleepData.length).toFixed(1))
+        }
 
 
 }

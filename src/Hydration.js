@@ -20,6 +20,20 @@ class Hydration {
         const ounceByDate = this.data.find(({date}) => date === thisDate)
         return ounceByDate.numOunces
     }
+    returnOuncesByWeek(date) {
+        const startDate = this.data.findIndex(currentDate => {
+            return currentDate.date === date
+        })
+        const weekData = this.data.slice(startDate, startDate + 7).reverse()
+        let weeklyIntake = {
+            date: [],
+            numOunces: []
+        };
+        weeklyIntake.date = weekData.map(date => date.date)
+        weeklyIntake.numOunces = weekData.map(date => date.numOunces)
+        return weeklyIntake
+
+    }
 }
 
 export default Hydration

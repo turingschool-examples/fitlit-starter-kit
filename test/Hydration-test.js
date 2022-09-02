@@ -42,7 +42,7 @@ describe("Hydration", () => {
     expect(ouncesConsumedByDate).to.equal(61);
   });
 
-  it.skip("should return the date and amount of ounces consumed over a week", () => {
+  it("should return the date and amount of ounces consumed over a week", () => {
     const ouncesConsumedByWeek = userHydration.returnOuncesByWeek("2019/06/21");
     expect(ouncesConsumedByWeek).to.deep.equal({
       date: [

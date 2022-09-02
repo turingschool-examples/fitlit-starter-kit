@@ -64,6 +64,7 @@ function loadUserInfo() {
   // renderSleepChartByWeek('2019/06/15','2019/06/21', 'hoursSlept');
   renderSleepChartByDay('2019/06/15', 'hoursSlept');
 //   renderDailySteps();
+  renderOuncesPerWeek(194, 201);
 
 };
 
@@ -81,7 +82,7 @@ function renderFriendsList() {
   });
   return friendNames.forEach(friend => {
     friendsList.innerHTML += 
-    `<button class="friend">${friend.name}</button>`
+    `<button class="friend">${friend.name}</button>`;
   }); 
 };
 
@@ -89,14 +90,15 @@ function renderProfile() {
   fullName.innerText = `${currentUser.name}`;
   userAddress.innerText = `${currentUser.email}`;
   userEmail.innerText = `${currentUser.address}`;
-  stepGoal.innerText = `${currentUser.dailyStepGoal}`;
+  stepGoal.innerText += `${currentUser.dailyStepGoal}`;
 };
 
 function renderOuncesPerDay(date) {
-    let hydrate = document.getElementById('hydrate')
+    let hydrate = document.getElementById('hydrate');
     const dailyOunces = hydration.ouncesPerDay(date);
     hydrate.innerText = `${date}: ${dailyOunces}`; 
 };
+
 
 function renderSleepChartByWeek(start, end, type) {
   const weeklyData = sleep.getDailySleepByWeek(start, end, type);
@@ -166,3 +168,15 @@ function renderSleepChartByDay(date, type) {
 //     },
 //   });
 // };
+function renderOuncesPerWeek(date1, date2) {
+    let weeklyWins = document.getElementById('weekly-wins');
+    const weeklyOunces = hydration.getDailyOuncesByWeek(date1, date2);
+    weeklyWins.innerText += `This week's water intake:
+    Day 1: ${weeklyOunces[0]} ounces
+    Day 2: ${weeklyOunces[1]} ounces
+    Day 3: ${weeklyOunces[2]} ounces
+    Day 4: ${weeklyOunces[3]} ounces
+    Day 5: ${weeklyOunces[4]} ounces
+    Day 6: ${weeklyOunces[5]} ounces
+    Day 7: ${weeklyOunces[6]} ounces`;
+};

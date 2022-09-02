@@ -18,10 +18,8 @@ class UserRepository {
     numOfElements++
     return acc
   }, 0)
-
   return Math.round(stepGoal / this.users.length)
-
-   }
+  }
 }
 
 

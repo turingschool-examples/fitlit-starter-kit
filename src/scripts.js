@@ -45,7 +45,7 @@ const getFetch = () => {
     welcomeUser();
     displayUserData();
     displayStepGoalComp(userRepository);
-    displayHydrationData(singleHydro)
+    displayHydrationData(singleHydro);
   })
 
 }
@@ -111,16 +111,22 @@ function displayUserData() {
 }
 
 function displayStepGoalComp(userRepository) {
+  userStepComp.innerHTML = `<p class='user-step-details'>Your daily step goal: ${singleUser.dailyStepGoal}</p> <br>  <br><p class='user-step-details'> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
     userStepComp.innerHTML = `Your daily step goal :${singleUser.dailyStepGoal} <br> vs <br> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}`
     userStepComp.innerHTML = `<p class='user-step-details'>Your daily step goal: ${singleUser.dailyStepGoal}</p> <br> vs <br><p class='user-step-details'> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
+
    
 
 }
 
+
+
 function displayHydrationData(singleHydro) {
-  hydrationCard.innerHTML = `Today: ${singleHydro.usersDailyOunces(singleUser.id)} vs All Time ${singleHydro.getLifeTimeOunces()}`
+  hydrationCard.innerHTML = `<p class='user-hydro-details'> Today: ${singleHydro.usersDailyOunces(singleUser.id)}</p> <br>  <br> <p class='user-step-details'> All Time ${singleHydro.getLifeTimeOunces()}<br>
+  <p class='user-step-details'> Weekly: ${singleHydro.getOuncesPerWeek(singleUser.id, "2020/01/22") } `
+ 
 }
-//
+  
 // function displaySleepData() {
-//   usersleepComp.innerHTML = `Today: ${} vs All Time ${}`
+//   usersleepComp.innerHTML = `Today: ${}  All Time ${}`
 // }

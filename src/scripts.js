@@ -11,6 +11,8 @@ import UserRepository from './UserRepository';
 import User from './User';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
+import Chart from 'chart.js/auto';
+
 
 // Import third party libraries:
 
@@ -52,17 +54,19 @@ window.addEventListener('load', fetchAllData);
 
 // Helper Functions
 
-
 // DOM Functions
 function loadUserInfo() {
   renderGreeting();
   renderFriendsList();
   renderProfile();
+  // renderSleepChartByWeek('2019/06/15','2019/06/21', 'hoursSlept');
+  renderSleepChartByDay('2019/06/15', 'hoursSlept');
+  renderDailySteps();
 };
 
 function renderGreeting() {
   const userFirstName = currentUser.name.split(' ')[0];
-      greeting.innerHTML = `Hello, ${userFirstName}!`;
+  greeting.innerHTML = `Hello, ${userFirstName}!`;
 };
 
 function renderFriendsList() {
@@ -84,3 +88,77 @@ function renderProfile() {
   userEmail.innerText = `${currentUser.address}`;
   stepGoal.innerText = `${currentUser.dailyStepGoal}`;
 };
+
+function renderSleepChartByWeek(start, end, type) {
+  const weeklyData = sleep.getDailySleepByWeek(start, end, type);
+  const sleepWeekCanvas = new Chart('sleepCanvasByWeek', {
+    type: 'bar', // bar, horizontal, pie, line, doughnut, radar, polarArea
+    data: {
+      labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+      datasets: [{
+        label: 'Hours of Sleep Per Week',
+        data: weeklyData,
+        fill: true,
+        backgroundColor: "#128FC8",
+        borderColor: "#128FC8",
+      }]
+    },
+  });
+};
+
+function renderSleepChartByDay(date, type) {
+  const day = sleep.getSleepDataByGivenDay(date, type);
+  const max = 12-day; 
+
+  const sleepDayCanvas = new Chart('sleepCanvasByDay', {
+    type: 'bar',
+    data: {
+      labels: [''],
+      datasets: [{
+        label: 'Hours Slept by Day',
+        data: [day],
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor:'rgb(255, 99, 132)',
+        borderWidth: 1,
+      },
+      {
+        label: 'Maximum Sleep',
+        data: [max],
+        backgroundColor: 'rgba(177, 99, 255, 0.2)',
+        borderColor:'rgb(229, 99, 255)',
+        borderWidth: 1,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      scales: {
+        x: {
+          stacked: true
+        },
+        y: {
+          stacked: true,
+          beginAtZero: true,
+        }
+      }
+    }
+  });
+};
+
+function renderDailySteps() {
+  let avg;
+  const activity = new Chart('stepsByDay', {
+    type: 'doughnut', 
+    data: {
+      labels: ['step goal', ''],
+      datasets: 
+      [{
+        data: [day, avg],
+      }]
+    },
+  });
+};
+
+
+
+
+

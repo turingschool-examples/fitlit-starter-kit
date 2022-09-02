@@ -104,7 +104,8 @@ main {
 .hydration-container {
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 75vh;
+  width: 30vw;
   color: white;
   align-items: center;
   background-color: #2cb7ff;
@@ -115,6 +116,34 @@ main {
   box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
     0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
 }
+.hydration-card,
+.hydra-chart {
+ display: flex;
+ align-items: center;
+ text-align: center;
+}
+.hydra-data,
+.hydra-chart {
+ margin: 8px;
+ border: 1px solid #6947ff;
+}
+.hydra-chart{
+  
+  font-size: 1.7vw;
+  width: 28vw;
+  margin-top: 32vh;
+  position: absolute;
+}
+.hydration-container {
+ height: 75vh;
+ width: 30vw;
+ color: white;
+ align-items: center;
+ background-color: #2cb7ff;
+ padding-top: 10px;
+ margin-top: 50px;
+ margin-right: 20px;
+ }
 
 .steps-container {
   display: flex;
@@ -150,6 +179,7 @@ main {
   padding: 4px;
   margin: 2px;
 }
+
 label {
   display: block;
   font: 1rem "Fira Sans", sans-serif;
@@ -161,8 +191,6 @@ label {
   font-family: "Roboto Mono", monospace;
   font-size: 14px;
 }
-table,
-th,
-td {
+.sleep-data {
   border: 1px solid #2cb7ff;
 }

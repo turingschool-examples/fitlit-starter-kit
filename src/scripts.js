@@ -1,7 +1,7 @@
 // Import styles:
 import './css/styles.css';
 import './images/icons8-plus-67.png';
-import './images/icons8-sustainable-energy-96.png';
+import './images/icons8-high-voltage-48.png';
 import './images/icons8-water-96.png';
 import './images/icons8-zzz-96.png';
 
@@ -11,6 +11,7 @@ import UserRepository from './UserRepository';
 import User from './User';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
+import Chart from 'chart.js/auto';
 
 // Import third party libraries:
 
@@ -22,6 +23,7 @@ const userAddress = document.querySelector('.user-address');
 const userEmail = document.querySelector('.user-email');
 const stepGoal = document.querySelector('.step-goal');
 
+
 // Global variables
 let userData;
 let sleepData;
@@ -30,6 +32,7 @@ let currentUser;
 let hydration;
 let sleep;
 let allUsers;
+
 
 // API data
 function fetchAllData() {
@@ -58,6 +61,7 @@ function loadUserInfo() {
   renderGreeting();
   renderFriendsList();
   renderProfile();
+  renderOuncesPerDay('2020/01/22');
 };
 
 function renderGreeting() {
@@ -83,4 +87,12 @@ function renderProfile() {
   userAddress.innerText = `${currentUser.email}`;
   userEmail.innerText = `${currentUser.address}`;
   stepGoal.innerText = `${currentUser.dailyStepGoal}`;
+};
+
+function renderOuncesPerDay(date) {
+    let hydrate = document.getElementById('hydrate')
+    const dailyOunces = hydration.ouncesPerDay(date);
+    hydrate.innerText = `${date}: ${dailyOunces}`;
+
+    
 };

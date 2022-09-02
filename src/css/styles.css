@@ -1,6 +1,6 @@
-* {
+/* * {
   border: 1px solid red
-}
+} */
 
 body, html {
   background:#ffffff;
@@ -12,6 +12,7 @@ body, html {
 
 header {
   padding: 20px;
+  font-size: 1.5vw;
 }
 
 .large-container {
@@ -19,7 +20,7 @@ header {
   flex-direction: row;
   height: 100%;
   width: 100%;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   box-sizing: border-box;
 }
 
@@ -38,7 +39,8 @@ header {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border-radius: 10%;
+  border-radius: 10px;
+  font-size: 1.2vw;
 }
 
 .friends-list, 
@@ -48,6 +50,7 @@ header {
   align-content: flex-start;
   border: 2px solid #9DDDFF;
   background: #9DDDFF;
+  box-shadow: 3px 3px 2px grey;
   
   
 }
@@ -59,7 +62,9 @@ header {
   display: flex;
   justify-content: flex-start;
   border-radius: 10px;
-  font-size: 2vw;
+  font-size: 1.1vw;
+  border: 1px solid grey;
+  box-shadow: 3px 3px 2px grey;
 }
 
 .box2 {
@@ -67,12 +72,15 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 10%;
+  border-radius: 10px;
+  box-shadow: 3px 3px 2px grey;
+  font-size: 1.2vw;
 }
 
 .daily-overview {
   display: flex;
   flex-direction: column;
+  font-size: 1.2vw;
 }
 
 .hydration {
@@ -81,7 +89,7 @@ header {
   border: 2px solid #9DDDFF;
   background: #fbfbfb;
   padding: 20px;
-  border-radius: 20%;
+  border-radius: 20px;
 }
 
 .activity {
@@ -90,14 +98,14 @@ header {
   border: 2px solid #9DDDFF;
   background: #9DDDFF;
   padding: 20px;
-  border-radius: 20%;
+  border-radius: 20px;
 }
 
 .sleep {
   border: 2px solid #FFF890;
   background: #FFF890;
   padding: 20px;
-  border-radius: 20%;
+  border-radius: 20px;
 }
 
 .user-details,
@@ -107,4 +115,20 @@ header {
   padding: 20px;
   border-radius: 20px;
   overflow-wrap: break-word;
+  box-shadow: 3px 3px 2px grey;
+  font-size: 1.3vw;
 }
+.friends-highlights {
+  border: 2px solid #FFF890;
+  background: #FFF890;
+}
+.water-icon{
+  width: 2vw;
+}
+.sleep-icon{
+  width: 2vw;
+}
+.energy-icon{
+  width: 2vw;
+}
+

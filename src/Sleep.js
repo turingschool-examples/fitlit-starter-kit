@@ -30,7 +30,7 @@ class Sleep {
 
       return acc;
     }, 0);
-
+    
     return Math.round(sum / dataSet.length);
   };
 

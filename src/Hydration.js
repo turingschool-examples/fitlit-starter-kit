@@ -5,13 +5,15 @@ class Hydration {
       this.hydrationData = hydrationData;
     };
     
-    ouncesPerDay(date, userInfo) {
-      let dailyOunces = userInfo.find(entry => {
-        if (this.id === entry.userID) {
+    ouncesPerDay(date) {
+      let dailyOunces = this.ounces.find(entry => {
+        
         return entry.date === date;
-        }
+        
       })
-      return {[date]: dailyOunces.numOunces};
+      
+      
+      return dailyOunces.numOunces;
     };
     
     getDailyOuncesByWeek(userInfo, date1, date2) {

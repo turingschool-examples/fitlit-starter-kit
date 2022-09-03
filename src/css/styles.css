@@ -1,18 +1,14 @@
 body,
 html {
   background-color: white;
-  background-repeat: no-repeat;
   font-family: "Roboto Mono", monospace;
-  height: 100%;
-  color: black;
-  border: 2px, solid, red;
+  height: 100vh;
 }
 
 header {
   display: flex;
   justify-content: center;
   height: 200px;
-  background-color: white;
 }
 
 main {
@@ -22,6 +18,7 @@ main {
 
 .left-nav {
   width: 70%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -45,7 +42,7 @@ main {
   flex-direction: column;
   height: 280px;
   color: white;
-  font-size: 12px;
+  font-size: 14px;
   word-wrap: normal;
   padding-left: 1em;
   padding-right: 1em;
@@ -57,9 +54,30 @@ main {
     0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
 }
 
-/* .user-container:hover {
+.submit {
+  align-items: center;
+  color: black;
+  background-color: white;
+  margin: 6px;
+  border-radius: 2px;
+}
+
+.date-form {
+  display: flex;
+  justify-content: center;
+}
+
+button:hover {
+  cursor: pointer;
   box-shadow: 1px 0 3px #CC66FF, -1px 0 3px #CC66FF, 0 1px 3px #CC66FF, 0 -1px 3px#CC66FF;
-} */
+}
+
+.habit-label {
+  color: black;
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
+}
 
 .friends-container {
   display: flex;
@@ -88,7 +106,7 @@ main {
 .sleep-container {
   display: flex;
   flex-direction: column;
-  height: 550px;
+  height: 560px;
   color: white;
   align-items: center;
   text-align: center;
@@ -98,7 +116,8 @@ main {
   padding-top: 10px;
   padding-right: 1em;
   padding-left: 1em;
-  margin-top: 50px;
+  margin-top: 0px;
+  margin-left: 15px;
   box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
     0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
 }
@@ -106,13 +125,14 @@ main {
 .hydration-container {
   display: flex;
   flex-direction: column;
-  height: 75vh;
+  height: 70vh;
   width: 30vw;
-  color: white;
   align-items: center;
   background-color: #2cb7ff;
   border-radius: 12px;
   padding-top: 10px;
+  padding-right: 1em;
+  padding-left: 1em;
   margin-top: 50px;
   margin-right: 20px;
   box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
@@ -135,16 +155,6 @@ main {
   margin-top: 32vh;
   position: absolute;
 }
-.hydration-container {
- height: 75vh;
- width: 30vw;
- color: white;
- align-items: center;
- background-color: #2cb7ff;
- padding-top: 10px;
- margin-top: 50px;
- margin-right: 20px;
- }
 
 .steps-container {
   display: flex;
@@ -201,4 +211,13 @@ label {
 .chart-container {
   width: 400px;
   height: 200px;
+}
+
+.sleep-for-week {
+  margin-top: 15px;
+}
+
+p {
+  margin-top: 4px;
+  margin-bottom: 4px;
 }

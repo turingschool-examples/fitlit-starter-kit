@@ -84,16 +84,18 @@
       <aside class="right-nav">
         <section class="user-container">
           <section class="user-card"></section>
-          <label for="start">Change Habits Shown</label>
-          <input
-            type="date"
-            id="start"
-            name="trip-start"
-            value="2020-01-22"
-            min="2019-06-15"
-            max="2020-01-22"
-          />
-          <p><button>Submit</button></p>
+            <label for="start" class="habit-label">Choose a date to look at previous data!</label>
+            <section class = "date-form">
+              <input
+                type="date"
+                id="start"
+                name="trip-start"
+                value="2020-01-22"
+                min="2019-06-15"
+                max="2020-01-22"
+              />
+              <button class="submit">Submit</button>
+            </section>  
         </section>
         <section class="friends-container">
           <h2 class="friends-header">Friends</h2>

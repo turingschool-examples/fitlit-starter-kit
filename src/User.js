@@ -17,7 +17,7 @@ class User {
   getSleepDataPerDay(sleepData, date, detail) {
     const usersData = sleepData.filter((entry) => entry.userID === this.id);
     const entry = usersData.find((entry) => entry.date === date);
-    return entry[detail];
+    return entry[detail]
   }
 
   getAvgSleepDataPerDay(sleepData, detail) {
@@ -52,7 +52,6 @@ class User {
       acc += fluid.numOunces;
       return acc;
     }, 0);
-
     return Math.round(average / userFluidsInfo.length);
   }
 
@@ -62,10 +61,8 @@ class User {
     );
     const sum = userDayFluids.reduce((acc, fluids) => {
       acc += fluids.numOunces;
-
       return acc;
     }, 0);
-
     return sum;
   }
 
@@ -73,12 +70,10 @@ class User {
     const userInfo = fluidsData.filter((data) => data.userID === this.id);
     const findStartDate = userInfo.find((date) => date.date === userDate);
     const indexOfStart = userInfo.indexOf(findStartDate);
-    const weeklyReport = userInfo.slice(indexOfStart-7, indexOfStart);
-
+    const weeklyReport = userInfo.slice(indexOfStart - 6, indexOfStart);
     const weeklyFluids = weeklyReport.map((dates) => {
       return { date: dates.date, numOunces: dates.numOunces };
     });
-
     return weeklyFluids.reverse();
   }
 }

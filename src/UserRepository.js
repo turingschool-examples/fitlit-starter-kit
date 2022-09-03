@@ -17,25 +17,6 @@ class UserRepository {
     return Math.floor(totalStepGoals)
   }
 
-
-  // convertFriendIdToName(id) {
-  //   const user = this.userData(id)
-  //
-  //   const friendsArray = []
-  //     console.log('hello',user)
-  //         user.friends.forEach(friend => {
-  //           console.log('friend', friend)
-  //           const matchingIds = this.userData.filter(user => {
-  //             return user.id === friend;
-  //           })
-  //          matchingIds.forEach(user =>  friendsArray.push(user.name))
-  //
-  //         })
-  //         console.log('array', friendsArray)
-  //         return friendsArray.join('<br>')
-  //
-  //   }
-
 }
 
 export default UserRepository;

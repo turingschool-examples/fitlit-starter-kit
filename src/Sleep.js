@@ -12,17 +12,16 @@ class Sleep {
        return avg;
     }, 0);
 
-    return (totalHours / this.sleepData.length).toFixed(1);
+    return (totalHours / userSleep.length).toFixed(1);
   };
 
   getAvgSleepQualPerDay(id) { // average sleep quality (over all time)
     let userSleepQuality = this.findUserDataID(id);
     const totalQualityHours = userSleepQuality.reduce((avg, sleepQual) => {
-      console.log(avg);
       avg += sleepQual.sleepQuality;
       return avg;
     }, 0);
-    return (totalQualityHours / this.sleepData.length).toFixed(1);
+    return (totalQualityHours / userSleepQuality.length).toFixed(1);
   };
 
   getHrsSleptByDate(id) {

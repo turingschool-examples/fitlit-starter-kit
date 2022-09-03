@@ -22,7 +22,7 @@ const fullName = document.querySelector('.full-name');
 const userAddress = document.querySelector('.user-address');
 const userEmail = document.querySelector('.user-email');
 const stepGoal = document.querySelector('.step-goal');
-
+const sleepAverages = document.querySelector('#sleep-averages');
 
 // Global variables
 let userData;
@@ -32,7 +32,6 @@ let currentUser;
 let hydration;
 let sleep;
 let allUsers;
-
 
 // API data
 function fetchAllData() {
@@ -61,10 +60,10 @@ function loadUserInfo() {
   renderFriendsList();
   renderProfile();
   renderOuncesPerDay('2020/01/22');
-  // renderSleepChartByWeek('2019/06/15','2019/06/21', 'hoursSlept');
-  renderSleepChartByDay('2019/06/15', 'hoursSlept');
   renderOuncesByWeek(194, 201);
-
+  renderSleepChartByDay();
+  renderSleepChartByWeek();
+  renderSleepAverages();
 };
 
 function renderGreeting() {
@@ -91,80 +90,146 @@ function renderProfile() {
   userEmail.innerText = `${currentUser.address}`;
   stepGoal.innerText += `${currentUser.dailyStepGoal}
   Average Step Goal: ${allUsers.returnAverageStepGoal()}`;
-
 };
 
-function renderSleepChartByWeek(start, end, type) {
-  const weeklyData = sleep.getDailySleepByWeek(start, end, type);
-  const sleepWeekCanvas = new Chart('sleepCanvasByWeek', {
+function renderSleepAverages() {
+  sleepAverages.innerText = `Average Hours of Sleep: ${sleep.getAvgSleepData('hoursSlept', sleepData)}
+  Average Sleep Quality: ${sleep.getAvgSleepData('sleepQuality', sleepData)}`;
+}
+
+// Chart styling
+const fontFamily = 'Courier Prime';
+const chartPlugins = {
+  legend: {
+    labels: {
+      font: {
+        family: fontFamily,
+      }
+    }
+  } 
+};
+
+const chartOptions = {
+  scales: {
+    x: {
+      ticks: {
+        font: {
+          family: fontFamily,
+        }
+      }
+    },
+    y: {
+      ticks: {
+        font: {
+          family: fontFamily,
+        }
+      }
+    }
+  }, 
+  plugins: {
+    chartPlugins,
+  }
+};
+
+const barStyle1 = {
+  backgroundColor: '#128FC8',
+  borderColor: '#2ecbe9',
+  hoverBackgroundColor: '#2ecbe9',
+}
+
+const barStyle2 = {
+  backgroundColor: 'rgba(255, 99, 132, 0.2)',
+  borderColor:'rgb(255, 99, 132)',
+  hoverBackgroundColor:'rgb(255, 99, 132)',
+}
+
+//Chart render functions
+function renderSleepChartByWeek() {
+  const weeklyHS = sleep.getDailySleepByWeek('2019/06/15','2019/06/21', 'hoursSlept');
+  const weeklySQ = sleep.getDailySleepByWeek('2019/06/15','2019/06/21', 'sleepQuality');
+  const weeklyHoursSlept = new Chart('weeklyHoursSlept', {
     type: 'bar',
     data: {
       labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
       datasets: [{
         label: 'Hours of Sleep Per Week',
-        data: weeklyData,
-        fill: true,
-        backgroundColor: "#128FC8",
-        borderColor: "#128FC8",
-      }]
+        data: weeklyHS,
+        ...barStyle1,
+      },
+      {
+        label: 'Sleep Quality Per Week',
+        data: weeklySQ,
+        ...barStyle2
+      }
+    ]
     },
+    options: {
+      chartOptions, 
+    }
   });
 };
 
-function renderSleepChartByDay(date, type) {
-  const day = sleep.getSleepDataByGivenDay(date, type);
-  const max = 12-day; 
-
-  const sleepDayCanvas = new Chart('sleepCanvasByDay', {
+function renderSleepChartByDay() {
+  const hours = sleep.getSleepDataByGivenDay('2019/06/15', 'hoursSlept');
+  const quality = sleep.getSleepDataByGivenDay('2019/06/15', 'sleepQuality');
+  const sleepDayCanvas = new Chart('dailyHoursSlept', {
     type: 'bar',
     data: {
       labels: [''],
       datasets: [{
-        label: 'Hours Slept by Day',
-        data: [day],
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor:'rgb(255, 99, 132)',
-        borderWidth: 1,
-      }]
-    },
+        label: 'Hours Slept',
+        data: [hours],
+        ...barStyle1,
+        borderRadius: 4,
+      },
+      {
+        label: 'Sleep Quality',
+        data: [quality],
+        ...barStyle2,
+        borderRadius: 4,
+      }
+    ]},
     options: {
       indexAxis: 'y',
+      chartOptions,
     }
   });
 };
 
 function renderOuncesByWeek(start, end) {
-    const weeklyData = hydration.getDailyOuncesByWeek(start, end);
-    const sleepWeekCanvas = new Chart('weekly-ounces', {
-      type: 'bar',
-      data: {
-        labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
-        datasets: [{
-          label: 'Water Intake for the week',
-          data: weeklyData,
-          backgroundColor: "#128FC8",
-          borderColor: 'white',
-        }]
-      },
-    });
-  };
+  const weeklyData = hydration.getDailyOuncesByWeek(start, end);
+  const sleepWeekCanvas = new Chart('weeklyOunces', {
+    type: 'bar',
+    data: {
+      labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+      datasets: [{
+        label: 'Water Intake for the week',
+        data: weeklyData,
+        ...barStyle1,
+      }]
+    },
+    options: {
+      chartOptions,
+    }
+  });
+};
 
-  function renderOuncesPerDay(date) {
-    const day = hydration.ouncesPerDay(date);
-    const weeklyOunce = new Chart('daily-ounces', {
-      type: 'bar',
-      data: {
-        labels: [''],
-        datasets: [{
-          label: 'Daily Water Intake',
-          data: [day],
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor:'rgb(255, 99, 132)',
-          borderWidth: 1,
-        }]
-      },
-      options: {
-        indexAxis: 'y',
-      }
-    });
-  };
+function renderOuncesPerDay(date) {
+  const day = hydration.ouncesPerDay(date);
+  const weeklyOunce = new Chart('dailyOunces', {
+    type: 'bar',
+    data: {
+      labels: [''],
+      datasets: [{
+        label: 'Daily Water Intake',
+        data: [day],
+        ...barStyle2,
+        borderRadius: 4,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      chartOptions,
+    }
+  });
+};

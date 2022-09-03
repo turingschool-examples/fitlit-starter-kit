@@ -6,13 +6,17 @@ body, html {
   background:#ffffff;
   background-repeat: no-repeat;
   font-family: 'Courier Prime', monospace;
-  font-size: 2vw;
+  /* font-size: 2vw; */
   margin: 0px;
 }
 
-header {
+h1, h2, h3, h4, h5, h6 {
+  margin: 0px;
+}
+
+.greeting {
   padding: 20px;
-  font-size: 1.5vw;
+  font-size: 2.5rem;
 }
 
 .large-container {
@@ -22,6 +26,7 @@ header {
   width: 100%;
   /* border: 2px solid black; */
   box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .column {
@@ -29,10 +34,10 @@ header {
   flex-direction: column;
   padding: 20px;
   gap: 20px;
-  width: 30vw;
   align-items: stretch;
   align-content: space-evenly;
   flex: 1 1 300px;
+  overflow: hidden;
 }
 
 .box1 {
@@ -75,6 +80,7 @@ header {
   border-radius: 10px;
   box-shadow: 3px 3px 2px grey;
   font-size: 1.2vw;
+  gap: 2%;
 }
 
 .daily-overview {
@@ -123,12 +129,39 @@ header {
   background: #FFF890;
 }
 .water-icon{
-  width: 2vw;
+  height: 30px;
+  width: 30px;
 }
 .sleep-icon{
-  width: 2vw;
+  height: 30px;
+  width: 30px;
 }
 .energy-icon{
-  width: 2vw;
+  height: 30px;
+  width: 30px;
 }
 
+.icon {
+  margin: 0px;
+  border-radius: 4px;
+  height: 30px;
+  width: 30px;
+  margin-bottom: 0px;
+}
+
+.chart-container {
+  position: relative;
+  margin: 20px 0px;
+  width: 100%;
+}
+
+.box-title {
+  display: flex;
+  align-items: flex-end;
+  font-size: 1.25rem;
+}
+
+button {
+  font-family: 'Courier Prime', monospace;
+  font-size: 12px;
+}

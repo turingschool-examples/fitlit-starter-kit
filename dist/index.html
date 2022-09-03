@@ -13,7 +13,7 @@
   <body>
     <div class="large-container">
       <section class="column">
-        <header>
+        <header class="greeting">
           <h1 class="greeting">Hello, !</h1> 
         </header>
         <section id="friendsList" class="box1 friends-list">
@@ -31,25 +31,29 @@
       <section class="column daily-overview">
         <section id="hydrationBox" class="box2 hydration">
           <img role="button" class="water-icon" src="./images/icons8-water-96.png" alt="water-icon" width="50">
-          <div>
-            <canvas id="daily-ounces"></canvas>
+          <div class="chart-container">
+            <canvas id="dailyOunces"></canvas>
          </div>
           <h3>Hydration</h3>
         </section>
 
         <section id="sleepBox" class="box2 sleep">
-          <img role="button" class="sleep-icon" src="./images/icons8-zzz-96.png" alt="sleep-icon">
-          <div class="container">
-            <!-- <canvas id="sleepCanvasByWeek"></canvas> -->
-            <canvas id="sleepCanvasByDay"></canvas>
+            <img role="button" class="sleep-icon" src="./images/icons8-zzz-96.png" alt="sleep-icon">
+          <div class="chart-container" id="daily-sleep-overview">
+            <canvas id="dailyHoursSlept"></canvas>
           </div>
-          <h3>Sleep</h3>
+          <section id="sleep-averages">
+          </section>
+          <div>
+            <h3>Sleep</h3>
+          </div>
         </section>
 
         <section id="activityBox" class="box2 activity">
           <img role="button" class="energy-icon" src="./images/icons8-high-voltage-48.png" alt="energy-icon">
-          <p>percent bar</p>
-          <canvas id="stepsByDay"></canvas>
+          <div class="chart-container">
+            <!-- <canvas id="stepsByDay"></canvas> -->
+          </div>
           <h3>Activity</h3>
         </section>
       </section>
@@ -61,8 +65,10 @@
           <p class="user-email">email</p>
           <div>
             <p class="step-goal">Daily Step Goal: </p>
-            <div>
-              <canvas id="weekly-ounces"></canvas>
+            <div class="chart-container" id="weekly-highlights">
+              <canvas id="weeklyOunces"></canvas>
+              <br/>
+              <canvas id="weeklyHoursSlept"></canvas>
             </div>
           </div>
         </section>
@@ -75,16 +81,6 @@
         </section>
       </section>
     </div>
-
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
-
-   
-  
-
-    
-    
-    <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">  -->
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>

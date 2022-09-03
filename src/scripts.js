@@ -45,6 +45,7 @@ const getFetch = () => {
     userRepository = new UserRepository(users);
     singleHydro = new Hydration(hydration);
     singleSleep = new Sleep(sleep);
+    console.log("single sleep", singleSleep.findUserDataID(singleUser.id))
     welcomeUser();
     displayUserData();
     displayStepGoalComp(userRepository);
@@ -118,11 +119,11 @@ function displayUserData() {
 
 function displayStepGoalComp(userRepository) {
   userStepComp.innerHTML = `<p class='user-step-details'>Your daily step goal: ${singleUser.dailyStepGoal}</p> <br> vs <br><p class='user-step-details'> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
-  userStepComp.innerHTML = `<p class='user-step-details'>Your daily step goal: ${singleUser.dailyStepGoal}</p> <br>  <br><p class='user-step-details'> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
+  // userStepComp.innerHTML = `<p class='user-step-details'>Your daily step goal: ${singleUser.dailyStepGoal}</p> <br>  <br><p class='user-step-details'> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
     userStepComp.innerHTML = `Your daily step goal :${singleUser.dailyStepGoal} <br> vs <br> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}`
-    userStepComp.innerHTML = `<p class='user-step-details'>Your daily step goal: ${singleUser.dailyStepGoal}</p> <br> vs <br><p class='user-step-details'> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
+    // userStepComp.innerHTML = `<p class='user-step-details'>Your daily step goal: ${singleUser.dailyStepGoal}</p> <br> vs <br><p class='user-step-details'> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
 
-   
+
 
 }
 
@@ -131,16 +132,20 @@ function displayStepGoalComp(userRepository) {
 function displayHydrationData(singleHydro) {
   hydrationCard.innerHTML = `<p class='user-hydro-details'> Today: ${singleHydro.usersDailyOunces(singleUser.id)}</p> <br>  <br> <p class='user-step-details'> All Time ${singleHydro.getLifeTimeOunces()}<br>
   <p class='user-step-details'> Weekly: ${singleHydro.getOuncesPerWeek(singleUser.id, "2020/01/22") } `
- 
+
 }
 
 
 function displaySleepData(singleSleep) {
-  sleepCard.innerHTML = `Today you slept for ${singleSleep.getSleepHrsByDay(singleUser.id)} <br> Quality of Sleep(today): ${singleSleep.getSleepQualPerDay(singleUser.id)}`
+  sleepCard.innerHTML = `
+  Last night, you slept for ${singleSleep.getHrsSleptByDate(singleUser.id)} hours and
+  received ${singleSleep.getSleepQualByDate(singleUser.id)} hours of quality sleep <br>
+  <!-- Average hours slept: ${singleSleep.getAvgHrsSleptPerDay(singleUser.id)} hours <br>
+  Average hours of quality sleep: ${singleSleep.getAvgSleepQualPerDay(singleUser.id)} hours <br> -->
+  Hours slept (1-week): ${singleSleep.getHrsSleptPerWeek(singleUser.id, "2020/01/22")} <br>
+  Quality hours slept (1-week): ${singleSleep.getSleepQualPerWeek(singleUser.id, "2020/01/22")}
+  `
+  console.log("single user", singleSleep.getAvgSleepQualPerDay(singleUser.id));
+  console.log("single user-2", singleUser.id);
+
 }
-
-  
-// function displaySleepData() {
-//   usersleepComp.innerHTML = `Today: ${}  All Time ${}`
-// }
-

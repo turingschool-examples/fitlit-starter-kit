@@ -34,21 +34,23 @@ const sleepCard = document.querySelector('#userSleep')
 const getFetch = () => {
   fetchAll()
   .then(data => {
-    console.log('data', data)
+    // console.log('data', data)
     users = data[0].userData;
-    console.log('users', users)
+    // console.log('users', users)
     sleep = data[1].sleepData;
     hydration = data[2].hydrationData;
     singleUser = new User(users[getRandomUser()]);
+    // console.log('singleUser',singleUser)
     userRepository = new UserRepository(users);
     singleHydro = new Hydration(hydration);
     singleSleep = new Sleep(sleep);
-    console.log("single sleep", singleSleep.findUserDataID(singleUser.id))
+    // console.log("single sleep", singleSleep.findUserDataID(singleUser.id))
     welcomeUser();
     displayUserData();
     displayStepGoalComp(userRepository);
     displayHydrationData(singleHydro);
     displaySleepData(singleSleep);
+     convertFriendIdToName();
 
   })
 }
@@ -81,7 +83,26 @@ function getRandomUser() {
 
 function welcomeUser() {
     userWelcome.innerText = `Welcome Back, ${singleUser.returnUserName()} !`;
+   
 }
+
+function convertFriendIdToName() {
+  const friendsArray = []   
+        singleUser.friends.forEach(friend => {
+          console.log('blahblah',users)
+          const matchingIds = users.filter(user => {
+            console.log('is it friend',friend)
+            return user.id === friend
+          })
+         matchingIds.forEach(user =>  user.push(user.name))
+        //  console.log('name',user.name)
+          friendsArray.push(user.name)
+        })
+        console.log('did it work?',friendsArray)
+        return friendsArray    
+  
+  }
+
 
 function displayUserData() {
     userInfo.innerHTML = `<ul class='user-data-details'>

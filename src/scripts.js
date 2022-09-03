@@ -11,6 +11,7 @@ import './images/sleeping.png'
 import './images/Hydrate.png'
 import './images/activity2.png'
 import './images/Clipboard.png'
+import './images/water.png'
 
 
 // ######### Query Selectors ###########

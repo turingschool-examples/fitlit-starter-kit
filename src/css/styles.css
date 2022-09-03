@@ -68,7 +68,7 @@ body, html {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   transition: all 0.1s ease;
   background-color:aqua;
-  background-image: url('/Users/thom_pete/turing_work/mod2/Projects/down-with-the-fitness/src/images/blue-grid-texture.png');
+  background-image: url('/src/images/blue-grid-texture.png');
 }
 
 .user-data-details  {
@@ -91,7 +91,7 @@ margin-top: 40px;
   box-shadow: 0 12px 16px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);
   transition: all 0.1s ease;
   background-color: aqua;
-  background-image:url('/Users/thom_pete/turing_work/mod2/Projects/down-with-the-fitness/src/images/water-texture.png') ;
+  background-image:url('/src/images/water-texture.png') ;
   flex-direction: column;
   align-content: flex-start;
   justify-content: space-between;
@@ -109,7 +109,7 @@ margin-top: 40px;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   transition: all 0.1s ease;
   background-color: aqua ;
-  background-image: url('/Users/thom_pete/turing_work/mod2/Projects/down-with-the-fitness/src/images/cloud-texture.png');
+  background-image: url('/src/images/cloud-texture.png');
   flex-direction: column;
   align-content: flex-start;
   }

@@ -36,7 +36,7 @@ class Hydration {
       return currentDate.date === date
     });
     const weekData = this.userHydrateData.slice(startDate, startDate + 7).reverse();
-    let weeklyIntake = {
+    const weeklyIntake = {
       date: [],
       numOunces: []
     };

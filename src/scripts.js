@@ -81,21 +81,11 @@ function waterForTheDay() {
 }
 
 function waterForTheWeek() {
-  let weeklyIntake = hydration.returnOuncesByWeek(hydration.date)
-  // weeklyIntake.date.forEach(currentDate => {
-  //   const singleDate = `<br/>
-  //   Date: ${currentDate} <br/>
-  //   Amount: ${currentDate.numOunces}`
-  //   weeksWater.innerHTML += singleDate
-  // })
-  // console.log(weeklyIntake)
-  return Object.keys(weeklyIntake).reduce((acc, key) => {
-    weeklyIntake[key].forEach(value => {
-      weeksWater.innerHTML = `Date: ${value.date}, Amount: ${value.numOunces}`
-    })
-
-      return acc
-  }, '')
+  const weeklyIntake = hydration.returnOuncesByWeek(hydration.date)
+  weeksWater.innerHTML = 'Weekly Intake: <br/>'
+  weeklyIntake.date.forEach((value, i)  => {
+    weeksWater.innerHTML += `Date: ${value}, Amount: ${weeklyIntake.numOunces[i]}oz. <br/>`
+  })
 }
 
 

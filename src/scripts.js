@@ -53,6 +53,7 @@ function loadHandler() {
     showFirstName();
     compareStepGoal();
     waterForTheDay();
+    waterForTheWeek();
 };
 
 
@@ -79,7 +80,23 @@ function waterForTheDay() {
   todayWater.innerHTML = `Todays Hydration: ${waterToday}oz.`
 }
 
+function waterForTheWeek() {
+  let weeklyIntake = hydration.returnOuncesByWeek(hydration.date)
+  // weeklyIntake.date.forEach(currentDate => {
+  //   const singleDate = `<br/>
+  //   Date: ${currentDate} <br/>
+  //   Amount: ${currentDate.numOunces}`
+  //   weeksWater.innerHTML += singleDate
+  // })
+  // console.log(weeklyIntake)
+  return Object.keys(weeklyIntake).reduce((acc, key) => {
+    weeklyIntake[key].forEach(value => {
+      weeksWater.innerHTML = `Date: ${value.date}, Amount: ${value.numOunces}`
+    })
 
+      return acc
+  }, '')
+}
 
 
 // Event Listeners

@@ -10,7 +10,7 @@
   - [Project Specs](#project-specs)
 
   ## Introduction
-    The purpose of this project was to get practice with implementing infomation from an API onto our application. We used mocha and chai to test the functionality of our application as we created it. We did this by creating a fitness tracking app that contains several widgets that pull information from API's.
+   The purpose of this project was to get practice with implementing infomation from an API onto our application. We used mocha and chai to test the functionality of our application as we created it. We did this by creating a fitness tracking app that contains several widgets that pull information from API's.
 
   ## Technologies
   - Javascript
@@ -23,6 +23,14 @@
   This application tracks a users sleep, hydration, and fitness goals and progress. It compares these statistics to their average and other users statistics.
 
   ## Page Demo
+
+
+
+
+<iframe src="https://giphy.com/embed/VV3A370zyOmI4VFnk6" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/VV3A370zyOmI4VFnk6">via GIPHY</a></p>
+
+
+
 
   ## Possible Future Extensions
   There will be a a second part to this application. Possible future extensions may include implementing Day.js or Chart.js to better display user statistics.

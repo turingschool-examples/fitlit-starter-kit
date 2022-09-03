@@ -77,91 +77,24 @@ There is no boilerplate for testing in this starter-kit repo. You will need to s
 ]
 ```
 newStuff: 
-
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
+
+## Table of Contents
+---
+- [About The Project](#About-the-Project)
+- [Technologies](#Technologies)
+- [Getting Started](#Getting-Started)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Testing](#Testing)
+- [Contact](#Contact)
+- [Acknowledgments](#Acknowledgments)
+- [Reflections](#Reflections)
+- [Project Spec](#Project-Spec)
 
 
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">Best-README-Template</h3>
-
-  <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
-  </p>
-</div>
-
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-
-
-<!-- ABOUT THE PROJECT -->
 ## About The Project
+---
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
@@ -180,8 +113,8 @@ Use the `BLANK_README.md` to get started.
 
 
 
-### Built With
-``` ```
+### Technologies
+---
 * ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 * ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 * ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
@@ -211,7 +144,6 @@ You can find the project [here](https://github.com/emilyjmiles/fitlit-group-proj
    npm install
    ```
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -219,20 +151,23 @@ You can find the project [here](https://github.com/emilyjmiles/fitlit-group-proj
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+This app will display the hydration and sleep information for a given user. Charts are used to display this information as well as just text.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Testing
+---
+We tested our code using [Mocha](https://mochajs.org/) & [Chai](https://www.chaijs.com/).
+
 <!-- CONTACT -->
 ## Contact
+[![Contributors][contributors-shield]][contributors-url]
 
 Emily Miles - [LinkedIn](https://www.linkedin.com/in/emilyjmiles/) - ms.emily.j.miles@gmail.com
 
 Hannah Celemen - [LinkedIn](https://www.linkedin.com/in/hannah-celemen/) - hclaire.celemen@gmail.com
 
 Cole Anthony - [LinkedIn](https://www.linkedin.com/in/cole-edwin-anthony/) - cole.edwin.anthony@gmail.com
-
-Project Link: [https://github.com/emilyjmiles/fitlit-group-project.git](https://github.com/emilyjmiles/fitlit-group-project.git)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -241,44 +176,33 @@ Project Link: [https://github.com/emilyjmiles/fitlit-group-project.git](https://
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+These resources helped us with this project:
 
-* [MDN Docs](https://developer.mozilla.org/en-US/)
-* [Chart.js](https://www.chartjs.org/docs/latest/)
-* [Chart.js tutorials](https://www.youtube.com/c/ChartJS-tutorials)
+[![MDN Docs][MDN-shield]][MDN]
+[![Chart.js][Charts]][charts-url]
+[![Chart.js-tutorials][youtube-shield]][charts-youtube-link]
+[![Turing School](https://img.shields.io/badge/Turing_School-030303?style=for-the-badge)](https://https://turing.edu/)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Reflections
+
+
+## Project Spec
+The project spec can be found [here](https://frontend.turing.edu/projects/Fitlit-part-one.html)
 
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[youtube-shield]: https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white
+[charts-youtube-link]: https://www.youtube.com/c/ChartJS-tutorials
+[MDN-shield]: https://img.shields.io/badge/MDN_Web_Docs-black?style=for-the-badge&logo=mdnwebdocs&logoColor=white
+[MDN]:https://developer.mozilla.org/en-US/
+[charts-url]: https://www.chartjs.org/docs/latest/
+[Charts]: https://img.shields.io/badge/chart.js-F5788D.svg?style=for-the-badge&logo=chart.js&logoColor=white
+[contributors-shield]: https://img.shields.io/badge/Contributors-3-2ea44f?style=for-the-badge
+[contributors-url]: https://github.com/emilyjmiles/fitlit-group-project/graphs/contributors
+
 [product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 

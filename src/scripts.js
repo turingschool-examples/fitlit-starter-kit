@@ -1,46 +1,38 @@
 // This is the JavaScript entry file - your code begins here
 // Query Selectors
-let firstName = document.getElementById('firstName');
-let friendsInfo = document.querySelector('.user-friends-container');
+let firstName = document.getElementById("firstName");
 
-let userID = document.getElementById('userId')
-let userName = document.getElementById('userName')
-let userAddress = document.getElementById('userAddress')
-let userEmail = document.getElementById('userEmail')
-let userStrideLength = document.getElementById('userStrideLength')
+let userID = document.getElementById("userId");
+let userName = document.getElementById("userName");
+let userAddress = document.getElementById("userAddress");
+let userEmail = document.getElementById("userEmail");
+let userStrideLength = document.getElementById("userStrideLength");
 
-let yourGoal = document.getElementById('yourGoal')
-let allUsersGoals = document.getElementById('allUsersGoals')
-let averageStatus = document.getElementById('averageStatus')
-let userStepDifference = document.getElementById('userStepDifference')
+let yourGoal = document.getElementById("yourGoal");
+let allUsersGoals = document.getElementById("allUsersGoals");
+let averageStatus = document.getElementById("averageStatus");
+let userStepDifference = document.getElementById("userStepDifference");
 
-let ouncesConsumeDaily = document.getElementById('ouncesConsumedDaily')
-let ouncesConsumedWeekly = document.getElementById('ouncesConsumedWeekly')
+let ouncesConsumeDaily = document.getElementById("ouncesConsumedDaily");
+let ouncesConsumedWeekly = document.getElementById("ouncesConsumedWeekly");
 
-let latestDaySleep = document.getElementById('latestDaySleep')
-let latestDaySleepQuality = document.getElementById('latestDaySleepQuality')
-let latestWeekSleep = document.getElementById('latestWeekSleep')
-let latestWeekSleepQuality = document.getElementById('latestWeekSleepQuality')
-let allTimeSleepQuality = document.getElementById('allTimeSleepQuality')
-let allTimeSleepHours = document.getElementById('allTimeSleepHours')
-
-// Object instances
+let latestDaySleep = document.getElementById("latestDaySleep");
+let latestDaySleepQuality = document.getElementById("latestDaySleepQuality");
+let latestWeekSleep = document.getElementById("latestWeekSleep");
+let latestWeekSleepQuality = document.getElementById("latestWeekSleepQuality");
+let allTimeSleepQuality = document.getElementById("allTimeSleepQuality");
+let allTimeSleepHours = document.getElementById("allTimeSleepHours");
 
 // Event listeners
 window.addEventListener("load", initializeData);
-// Do not delete or rename this file ********
 
-// console.log(userData,"<>>>>userData")
 // An example of how you tell webpack to use a CSS file
 import "./css/styles.css";
 import User from "./User";
 import UserRepository from "./UserRepository";
-import { sampleUsers } from "./sample-data";
 import { fetchAllData } from "./apiCalls";
 
-// let allUsers
-// let newUser
-// let userHydration
+// Global Variables
 let currentSleep;
 let currentHydration;
 
@@ -50,28 +42,8 @@ import "./images/turing-logo.png";
 console.log("This is the JavaScript entry file - your code begins here.");
 
 // An example of how you tell webpack to use a JS file
-
-import userData from "./data/users";
 import Hydration from "./Hydration";
 import Sleep from "./Sleep";
-
-// function getRandomUser() {
-//   // if (userInfo[0]) {
-//   // allUsers = new UserRepository(userInfo[0].userData)
-//   // let randomUser = allUsers.userData[Math.floor(Math.random() * allUsers.userData.length)]
-//   // newUser = new User(randomUser)
-//   // userHydration = new Hydration(newUser)
-//   // console.log("NEW USER", newUser)
-//   // console.log("HYDRATION", userHydration)
-//   // }
-//   // console.log(userInfo)
-//   renderAllInfo()
-// }
-
-// function renderAllInfo() {
-//   renderUserInfo(newUser)
-//   renderHydrationData(userHydration)
-// }
 
 function initializeData() {
   Promise.all([
@@ -79,9 +51,6 @@ function initializeData() {
     fetchAllData("sleep"),
     fetchAllData("hydration"),
   ]).then((data) => {
-    // getRandomUser(data);
-    // getUserHydrationData(data)
-    // console.log(data)
     let allUsers = data[0].userData.map((user) => {
       let currentUser = new User(user);
       return currentUser;
@@ -95,61 +64,80 @@ function initializeData() {
 
     let allSleep = data[1].sleepData.map((sleepUser) => {
       currentSleep = new Sleep(sleepUser);
-      return currentSleep
-    })
+      return currentSleep;
+    });
 
     let randomUser =
       userRepository.userData[
-      Math.floor(Math.random() * userRepository.userData.length)];
+        Math.floor(Math.random() * userRepository.userData.length)
+      ];
     renderUserInfo(randomUser, userRepository);
     renderHydrationData(userHydration, randomUser);
     renderSleepData(allSleep, randomUser);
-    // renderAllInfo(randomUser)
-
   });
 }
-// initializeData()
 
 function renderUserInfo(newUser, allUsers) {
-  firstName.innerText = ` ${newUser.getUserFirstName()}`
+  firstName.innerText = ` ${newUser.getUserFirstName()}`;
 
-  userID.innerText = ` ${newUser.id}`
-  userName.innerText = ` ${newUser.name}`
-  userAddress.innerText = ` ${newUser.address}`
-  userEmail.innerText = ` ${newUser.email}`
-  userStrideLength.innerText = ` ${newUser.strideLength}`
-  
-  yourGoal.innerText = ` ${newUser.dailyStepGoal}`
-  allUsersGoals.innerText = ` ${allUsers.getUsersAverageStepGoals()}`
+  userID.innerText = ` ${newUser.id}`;
+  userName.innerText = ` ${newUser.name}`;
+  userAddress.innerText = ` ${newUser.address}`;
+  userEmail.innerText = ` ${newUser.email}`;
+  userStrideLength.innerText = ` ${newUser.strideLength}`;
+
+  yourGoal.innerText = ` ${newUser.dailyStepGoal}`;
+  allUsersGoals.innerText = ` ${allUsers.getUsersAverageStepGoals()}`;
 
   let status;
   let stepDifference;
   if (newUser.dailyStepGoal < allUsers.getUsersAverageStepGoals()) {
     status = "Below";
     stepDifference =
-    allUsers.getUsersAverageStepGoals() - newUser.dailyStepGoal;
+      allUsers.getUsersAverageStepGoals() - newUser.dailyStepGoal;
   } else if (newUser.dailyStepGoal > allUsers.getUsersAverageStepGoals()) {
     status = "Above";
     stepDifference =
-    newUser.dailyStepGoal - allUsers.getUsersAverageStepGoals();
+      newUser.dailyStepGoal - allUsers.getUsersAverageStepGoals();
   } else {
     status = on;
     stepDifference = "100%";
   }
 
-  averageStatus.innerText = ` ${status}`
-  userStepDifference.innerText = ` ${stepDifference}`
+  averageStatus.innerText = ` ${status}`;
+  userStepDifference.innerText = ` ${stepDifference}`;
 }
 
 function renderHydrationData(userHydration, randomUser) {
-  ouncesConsumeDaily.innerText = ` ${currentHydration.mostRecentOunces(userHydration, randomUser.id).numOunces}`
-  ouncesConsumedWeekly.innerText = ` ${currentHydration.userOuncesPerWeek(userHydration,randomUser.id)}`
+  ouncesConsumeDaily.innerText = ` ${
+    currentHydration.mostRecentOunces(userHydration, randomUser.id).numOunces
+  }`;
+  ouncesConsumedWeekly.innerText = ` ${currentHydration.userOuncesPerWeek(
+    userHydration,
+    randomUser.id
+  )}`;
 }
 
 function renderSleepData(allSleep, randomUser) {
-  latestDaySleep.innerText = ` ${currentSleep.mostRecentSleep(allSleep, randomUser.id).hoursSlept}`
-  latestDaySleepQuality.innerText = ` ${currentSleep.mostRecentSleep(allSleep, randomUser.id).sleepQuality}`
-  latestWeekSleep.innerText = `${currentSleep.userHoursSleptForWeek(allSleep, randomUser.id)}${currentSleep.userHoursSleptForWeek(allSleep, randomUser.id)}`
-  latestWeekSleepQuality.innerText = ` ${currentSleep.mostRecentSleep(allSleep, randomUser.id).sleepQuality}`
-  allTimeSleepQuality.innerText = ` ${currentSleep.userQualityForWeek(allSleep, randomUser.id)}`
-  allTimeSleepHours.innerText =   ` ${currentSleep.getTotalUserAverageHoursSleep(allSleep, randomUser.id)}`
+  latestDaySleep.innerText = ` ${
+    currentSleep.mostRecentSleep(allSleep, randomUser.id).hoursSlept
+  }`;
+  latestDaySleepQuality.innerText = ` ${
+    currentSleep.mostRecentSleep(allSleep, randomUser.id).sleepQuality
+  }`;
+  latestWeekSleep.innerText = `${currentSleep.userHoursSleptForWeek(
+    allSleep,
+    randomUser.id
+  )}${currentSleep.userHoursSleptForWeek(allSleep, randomUser.id)}`;
+  latestWeekSleepQuality.innerText = ` ${
+    currentSleep.mostRecentSleep(allSleep, randomUser.id).sleepQuality
+  }`;
+  allTimeSleepQuality.innerText = ` ${currentSleep.userQualityForWeek(
+    allSleep,
+    randomUser.id
+  )}`;
+  allTimeSleepHours.innerText = ` ${currentSleep.getTotalUserAverageHoursSleep(
+    allSleep,
+    randomUser.id
+  )}`;
+}

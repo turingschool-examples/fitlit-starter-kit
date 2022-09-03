@@ -125,11 +125,11 @@ function renderUserInfo(newUser, allUsers) {
   let status;
   let stepDifference;
   if (newUser.dailyStepGoal < allUsers.getUsersAverageStepGoals()) {
-    status = "below";
+    status = "Below";
     stepDifference =
     allUsers.getUsersAverageStepGoals() - newUser.dailyStepGoal;
   } else if (newUser.dailyStepGoal > allUsers.getUsersAverageStepGoals()) {
-    status = "above";
+    status = "Above";
     stepDifference =
     newUser.dailyStepGoal - allUsers.getUsersAverageStepGoals();
   } else {
@@ -153,4 +153,3 @@ function renderSleepData(allSleep, randomUser) {
   latestWeekSleepQuality.innerText = ` ${currentSleep.mostRecentSleep(allSleep, randomUser.id).sleepQuality}`
   allTimeSleepQuality.innerText = ` ${currentSleep.userQualityForWeek(allSleep, randomUser.id)}`
   allTimeSleepHours.innerText =   ` ${currentSleep.getTotalUserAverageHoursSleep(allSleep, randomUser.id)}`
-}

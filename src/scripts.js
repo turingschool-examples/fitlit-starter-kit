@@ -25,7 +25,6 @@ const stepGoal = document.querySelector('.step-goal');
 const sleepAverages = document.querySelector('#sleep-averages');
 
 // Global variables
-const fontFamily = 'Courier Prime';
 let userData;
 let sleepData;
 let hydrationData;
@@ -98,6 +97,8 @@ function renderSleepAverages() {
   Average Sleep Quality: ${sleep.getAvgSleepData('sleepQuality', sleepData)}`;
 }
 
+// Chart styling
+const fontFamily = 'Courier Prime';
 const chartPlugins = {
   legend: {
     labels: {
@@ -108,7 +109,6 @@ const chartPlugins = {
   } 
 };
 
-// Chart styling
 const chartOptions = {
   scales: {
     x: {

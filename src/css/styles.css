@@ -1,12 +1,10 @@
 * {
-  /* border: solid 2px red; */
   font-family: optima;
   font-style: oblique;
-  /* font-size: 45px; */
   color: #FF00FF;
   text-shadow:
     0 0 7px #FFC0CB,
-    0 0 10px #fff,
+    /* 0 0 10px #fff, */
     0 0 21px #FF00FF,
     0 0 42px #0fa,
     0 0 82px #0fa,
@@ -14,10 +12,14 @@
     0 0 102px #0fa,
     0 0 151px #0fa;
 }
-body,
-html {
-  background-image: linear-gradient(to top, #25F5CE 0%, #7D25F5 99%, #0CF5C9 100%,);
-  background-repeat: no-repeat;
+
+body {
+  background-image: url('https://www.secureworks.com//content.secureworks.com/-/media/Images/Insights/2022/abstract%20approved/008-blue-purple-windows/008-blue-purple-windows_800x800.ashx?modified=20220621215349');
+  image-rendering: -webkit-optimize-contrast;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: 50%;
   height: 100vh;
   margin: 0;
 }
@@ -28,38 +30,63 @@ header {
   flex-direction: column;
   align-items: center;
 }
+
 h1 {
-    font-size: 45px;
-    color: #FF00FF;
-    text-shadow:
-      0 0 7px #FFC0CB,
-      0 0 10px #fff,
-      0 0 21px #FF00FF,
-      0 0 42px #0fa,
-      0 0 82px #0fa,
-      0 0 92px #0fa,
-      0 0 102px #0fa,
-      0 0 151px #0fa;
+  font-size: 45px;
 }
 
 h2 {
+  -webkit-animation: flicker 3s infinite;
   font-size: xx-large;
- color: #6df1d8;
+  color: #6df1d8;
 }
 
-.user-info,.step-goal, .hydro-info, .sleep-info {
+@-webkit-keyframes flicker {
+  0% {
+    opacity: 0;
+  }
+
+  9% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: .5;
+  }
+
+  13% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: .5;
+  }
+
+  25% {
+    opacity: 1;
+  }
+}
+
+
+.user-info,
+.step-goal,
+.hydro-info,
+.sleep-info {
   font-family: optima;
   color: #5c2c6d;
   font-size: x-large;
   border-bottom: .5px solid #ff00ffe5;
 }
- .user-info-container, .step-goal-container, .hydration, .sleep {
-      border: 2px solid #f48a86;
-    border-radius: 8px;
-    padding: 15px;
-    background-color: rgba(128, 228, 214, 0.2);
-    /* opacity: 50%; */
-} 
+
+.user-info-container,
+.step-goal-container,
+.hydration,
+.sleep {
+  border: 2px solid #f48a86;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: rgba(128, 228, 214, 0.1);
+}
 
 
 .personal-information-container {
@@ -68,7 +95,6 @@ h2 {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  /* border: 3px solid #f48a86; */
   border-radius: 8px;
   padding: 5px;
 }
@@ -79,6 +105,4 @@ h2 {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  /* border: 1px solid #F24B38 */
 }
-

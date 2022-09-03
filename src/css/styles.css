@@ -2,143 +2,167 @@
   border: 1px solid red
 } */
 
-body, html {
+html {
+  display: flex;
+  flex-wrap: wrap;
   background:#ffffff;
   background-repeat: no-repeat;
-  font-family: 'Courier Prime', monospace;
-  /* font-size: 2vw; */
-  margin: 0px;
+  font-family: 'Alegreya';
+  font-size: 1vw;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 0px;
+body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+header {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.fitlit-logo {
+  width: 66%;
+  height: auto;
+}
+
+.title {
+  margin: 0%;
+  font-size: 1.6rem;
+}
+
+.text {
+  margin: 0.5%;
+  font-size: 1.3rem;
+}
+
+.step-goal {
+  padding: 5%;
 }
 
 .greeting {
-  padding: 20px;
-  font-size: 2.5rem;
+  margin: 0%;
+  padding: 2.5%;
 }
 
-.large-container {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
-  /* border: 2px solid black; */
-  box-sizing: border-box;
-  flex-wrap: wrap;
-}
 
 .column {
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  gap: 20px;
-  align-items: stretch;
-  align-content: space-evenly;
-  flex: 1 1 300px;
+  justify-content: center;
+  text-align: center;
+  margin: 1%;
+  padding: 1%;
   overflow: hidden;
+  flex: 1 1 300px; /* this is needed for flex wrapping to work -- do more research about properties */
 }
 
-.box1 {
+.user-section {
   display: flex;
-  flex-direction: column;
-  padding: 20px;
-  border-radius: 10px;
-  font-size: 1.2vw;
+  justify-content: space-evenly;
 }
 
-.friends-list, 
-.friends-activity {
+.user-details {
+  background-image: url('/src/images/teal-watercolor.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 5%;
+  border-radius: 50px;
+  box-shadow: 10px 10px 5px #6a6a6a;
+  font-size: 1.3rem;
+}
+
+.daily {
   display: flex;
   flex-direction: column;
-  align-content: flex-start;
-  border: 2px solid #9DDDFF;
-  background: #9DDDFF;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5%;
+  margin: 2.5%;
+  border-radius: 50px;
   box-shadow: 3px 3px 2px grey;
-  
-  
+  font-size: 0.75rem; 
+}
+
+.hydration {
+  background-image: url('/src/images/grey-watercolor.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 10px 5px #6a6a6a;
+}
+
+.activity {
+  background-image: url('/src/images/teal-watercolor.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 10px 5px #6a6a6a;
+}
+
+.sleep {
+  background-image: url('/src/images/lilac-watercolor.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 10px 5px #6a6a6a;
+}
+
+.water-icon{
+  width: 2vw;
+}
+.sleep-icon{
+  width: 2vw;
+}
+.energy-icon{
+  width: 2vw;
+}
+
+.friends {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 50px;
+  font-size: 1.2vw;
+  padding: 5%;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+}
+
+.friends-list {
+  background-image: url('/src/images/lilac-watercolor.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 10px 5px #6a6a6a;
 }
 
 .friend {
-  background: #FFFF90 ;
-  padding: 5px;
-  margin: 1px;
-  display: flex;
-  justify-content: flex-start;
-  border-radius: 10px;
+  background: #FFFFFF ;
+  padding: 1.25%;
+  margin-left: 2.5%;
+  margin-top: 1.25%;
+  margin-right: 2.5%;
+  margin-bottom: 1.25%;
+  border-radius: 25px;
   font-size: 1.1vw;
   border: 1px solid grey;
   box-shadow: 3px 3px 2px grey;
 }
 
-.box2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  box-shadow: 3px 3px 2px grey;
-  font-size: 1.2vw;
-  gap: 2%;
-}
-
-.daily-overview {
-  display: flex;
-  flex-direction: column;
-  font-size: 1.2vw;
-}
-
-.hydration {
-  display:flex;
-  flex-direction: column;
-  border: 2px solid #9DDDFF;
-  background: #fbfbfb;
-  padding: 20px;
-  border-radius: 20px;
-}
-
-.activity {
-  display:flex;
-  flex-direction: column;
-  border: 2px solid #9DDDFF;
-  background: #9DDDFF;
-  padding: 20px;
-  border-radius: 20px;
-}
-
-.sleep {
-  border: 2px solid #FFF890;
-  background: #FFF890;
-  padding: 20px;
-  border-radius: 20px;
-}
-
-.user-details,
 .friends-highlights {
-  border: 2px solid #9DDDFF;
-  background: #9DDDFF;
-  padding: 20px;
-  border-radius: 20px;
+  background-image: url('/src/images/teal-watercolor.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 10px 5px #6a6a6a;
   overflow-wrap: break-word;
-  box-shadow: 3px 3px 2px grey;
-  font-size: 1.3vw;
 }
-.friends-highlights {
-  border: 2px solid #FFF890;
-  background: #FFF890;
-}
-.water-icon{
-  height: 30px;
-  width: 30px;
-}
-.sleep-icon{
-  height: 30px;
-  width: 30px;
-}
-.energy-icon{
-  height: 30px;
-  width: 30px;
+
+.friends-activity {
+  background-image: url('/src/images/grey-watercolor.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 10px 5px #6a6a6a;
 }
 
 .icon {

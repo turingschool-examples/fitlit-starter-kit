@@ -56,7 +56,7 @@ const getFetch = () => {
     displayStepGoalComp(userRepository);
     displayHydrationData(singleHydro);
     displaySleepData(singleSleep);
-     convertFriendIdToName();
+     //convertFriendIdToName();
 
   })
 }
@@ -89,25 +89,23 @@ function getRandomUser() {
 
 function welcomeUser() {
     userWelcome.innerText = `Welcome Back, ${singleUser.returnUserName()} !`;
-   
+
 }
 
-function convertFriendIdToName() {
-  const friendsArray = []   
-        singleUser.friends.forEach(friend => {
-          console.log('blahblah',users)
-          const matchingIds = users.filter(user => {
-            console.log('is it friend',friend)
-            return user.id === friend
-          })
-         matchingIds.forEach(user =>  user.push(user.name))
-        //  console.log('name',user.name)
-          friendsArray.push(user.name)
-        })
-        console.log('did it work?',friendsArray)
-        return friendsArray    
-  
-  }
+// function convertFriendIdToName() {
+//   const friendsArray = []
+//         singleUser.friends.forEach(friend => {
+//           console.log(friend)
+//           const matchingIds = users.find(user => {
+//             user.id === friend;
+//           })
+//          matchingIds.forEach(user =>  friendsArray.push(user.name))
+//
+//         })
+//         console.log('array', friendsArray)
+//         return friendsArray
+//
+//   }
 
 
 function displayUserData() {

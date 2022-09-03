@@ -15,7 +15,7 @@ class Sleep {
     return (totalHours / userSleep.length).toFixed(1);
   };
 
-  getAvgSleepQualPerDay(id) { // average sleep quality (over all time)
+  getAvgSleepQualPerDay(id) {
     let userSleepQuality = this.findUserDataID(id);
     const totalQualityHours = userSleepQuality.reduce((avg, sleepQual) => {
       avg += sleepQual.sleepQuality;

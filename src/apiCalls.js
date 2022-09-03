@@ -1,17 +1,16 @@
 // Your fetch requests will live here!
   
-const fetchAPI = (url) => {
-  return fetch(url)
-  .then(data => data.json())
-}
+const getUsersApiData = fetch('https://fitlit-api.herokuapp.com/api/v1/users')
+.then(response => response.json())
+.catch(err => console.log(err))
 
-const fetchAll = () => {
-  return Promise.all([
-    fetchAPI('https://fitlit-api.herokuapp.com/api/v1/users'),
-    fetchAPI('https://fitlit-api.herokuapp.com/api/v1/sleep'),
-    fetchAPI('https://fitlit-api.herokuapp.com/api/v1/hydration')
-  ])
-}
+const getSleepApiData = fetch('https://fitlit-api.herokuapp.com/api/v1/sleep')
+.then(response => response.json())
+.catch(err => console.log(err))
+
+const getHydrationApiData = fetch('https://fitlit-api.herokuapp.com/api/v1/hydration')
+.then(response => response.json())
+.catch(err => console.log(err))
 
 
-export { fetchAll }
+export { getUsersApiData, getSleepApiData, getHydrationApiData }

@@ -8,7 +8,7 @@ Are you in need of some extra motivation?  Especially when it comes to working o
 # WE WILL ADD OUR GIF HERE!  
 
 ## Project Specs:
-[this project spec](http://frontend.turing.io/projects/fitlit.html).
+[Click to view rubric](http://frontend.turing.io/projects/fitlit.html).
 
 ## Local Setup instructions:
 

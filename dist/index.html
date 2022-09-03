@@ -2,11 +2,49 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Fitlit</title>
+    <html lang='en' dir 'ltr'>
+     <link rel='icon' href='./images/Activity.png'>
+    <title>Get Down with the Fitness</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+      <header>
+        <h1>My Fitness Data:</h1>
+        <section class="user-name" id='userName'>users name</section>
+      </header>
+      <main>
+      <section class='widget-labels' id='widgetLabels'>
+        <section class='health-catergory' id='healthCatergory'>
+          <div class='icons'>
+            <img class ='Clipboard' src="./images/Clipboard.png" alt="clipboard logo" height="100px" width="100px">
+            <h2>Personal Data</h2>
+          </div>
+        </section>
+        <section class='health-catergory' id='healthCatergory'>
+          <div class='icons'>
+           <img class="hydrate-logo" src="./images/Hydrate.png" alt="hydrate logo" height="100px" width="100px">
+           <h2>Hydrate</h2>
+          </div>
+        </section>
+        <section class='health-catergory' id='healthCatergory'>
+          <div class='icons'>
+            <img class="sleep-logo" src="./images/sleeping.png" alt="sleep logo" height="100px" width="100px">
+             <h2>Sleep</h2>
+          </div>
+        </section>
+        <section class='health-catergory' id='healthCatergory'>
+          <div class='icons'>
+            <img class='activity-logo' src="./images/Activity.png" alt="Activity logo" height="100px" width="100px">
+            <h2>Step Stats</h2>
+          </div>
+        </section>
+       </section>
+        <section class="user-container" id="userContainer">
+          <section class="user-info" id="userInfo">User Info</section>
+          <section class="user-hydro" id="userHydro">Hydro</section>
+          <section class="user-sleep" id="userSleep">Sleep</section>
+          <section class="user-steps" id="userSteps">Steps Comp</section>
+        </section>
+      </main>
 
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>

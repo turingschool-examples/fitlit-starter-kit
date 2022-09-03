@@ -124,19 +124,19 @@ function displayStepGoalComp(userRepository) {
     // userStepComp.innerHTML = `<p class='user-step-details'>Your daily step goal: ${singleUser.dailyStepGoal}</p> <br> vs <br><p class='user-step-details'> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
 
 
-
 }
 
 
 
 function displayHydrationData(singleHydro) {
-  hydrationCard.innerHTML = `<p class='user-hydro-details'> Today: ${singleHydro.usersDailyOunces(singleUser.id)}</p> <br>  <br> <p class='user-step-details'> All Time ${singleHydro.getLifeTimeOunces()}<br>
+  hydrationCard.innerHTML = `<p class='user-hydro-details'> Today's OZ drank: ${singleHydro.usersDailyOunces(singleUser.id)}</p> <br>  <br> <p class='user-step-details'> Average OZ drank per day: ${singleHydro.getLifeTimeOunces()}<br>
   <p class='user-step-details'> Weekly: ${singleHydro.getOuncesPerWeek(singleUser.id, "2020/01/22") } `
 
 }
 
 
 function displaySleepData(singleSleep) {
+
   sleepCard.innerHTML = `
   Last night, you slept for ${singleSleep.getHrsSleptByDate(singleUser.id)} hours and
   received ${singleSleep.getSleepQualByDate(singleUser.id)} hours of quality sleep <br>
@@ -149,3 +149,9 @@ function displaySleepData(singleSleep) {
   console.log("single user-2", singleUser.id);
 
 }
+
+  sleepCard.innerHTML = `Today you slept for ${singleSleep.getSleepHrsByDay(singleUser.id)} <br> Quality of Sleep(today): ${singleSleep.getSleepQualPerDay(singleUser.id)}`
+}
+
+
+

@@ -178,12 +178,8 @@ describe('Hydration', () => {
   });
 
   it('should return ounces water consumed on a specific day by user', () => {
+      expect(hydration.findWaterConsumedByDate(1, "2019/06/26")).to.equal(52)
 
-    hydration.calculateOuncesWaterConsumedSpecificDay(1)
-    hydration.calculateOuncesWaterConsumedSpecificDay(2)
-
-    expect(hydration.userData.numOunces).to.equal()
-    expect(hydration.userData.numOunces).to.equal()
   });
 
   it.skip('should average the ounces water consumed forever by a user', () => {

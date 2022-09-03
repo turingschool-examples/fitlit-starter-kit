@@ -13,9 +13,9 @@ import { fetchAll } from './apiCalls';
 let userAPIData
 let sleepAPIData
 let hydrationAPIData
+console.log("hi")
 
 // promises //
-
 const getFetch = () => {
   fetchAll()
   .then(data => {
@@ -89,15 +89,102 @@ function showStepsContent(stepsGoal, stepsCurrent) {
   stepsCurrentDisplay.innerText = `So far you have taken: 9,999`
 }
 
-// function showStepsFriends() {
-  //   // stepsFriendsList = can probly write a forEach loop here
-  //   stepsFriendsDisplay.innerText = 'Your friends have taken:'
-  //   friend1.innerText = `${userData[2].name}: ${userData[2].dailyStepGoal}`
-  //   friend2.innerText = `${userData[3].name}: ${userData[3].dailyStepGoal}`
-  //   friend3.innerText = `${userData[4].name}: ${userData[4].dailyStepGoal}`
-  //   friend4.innerText = `${userData[5].name}: ${userData[5].dailyStepGoal}`
-  //   friend5.innerText = `${userData[6].name}: ${userData[6].dailyStepGoal}`
-  // }
-  // showStepsFriends()
+function showStepsFriends() {
+    // stepsFriendsList = can probly write a forEach loop here
+    stepsFriendsDisplay.innerText = 'Your friends have taken:'
+    friend1.innerText = `Friend 1 - DAILY STEP GOAL`
+    friend2.innerText = `Friend 2 - DAILY STEP GOAL`
+    friend3.innerText = `Friend 3 - DAILY STEP GOAL`
+    friend4.innerText = `Friend 4 - DAILY STEP GOAL`
+    friend5.innerText = `Friend 5 - DAILY STEP GOAL`
+  }
+  showStepsFriends()
   
   window.addEventListener('load', getFetch)
+
+
+  /* experimental */
+
+
+  let stepsGoalData = 10000
+  let stepsTakenData = 9000
+  let stepsData = [(stepsGoalData), (stepsGoalData - stepsTakenData)]
+
+  new Chart("steps-pie-chart", {
+    type: "pie",
+    data: {
+      labels: ["Steps Goal", "Steps Remaining"],
+      datasets: [{
+        label: 'Graph Label', // steps / sleep / hydro
+        backgroundColor: ["rgba(4, 104, 255, 0.6)", "rgba(255, 255, 255, 0)"],
+        data: stepsData // [steps goal, ]
+      }]
+    },
+    // options: {...}
+  });
+  
+
+var xValues = ["Friend 1", "Friend 2", "Friend 3", "Friend 4", "Friend 5", "friend 6", "friend 7"];
+var yValues = [55, 49, 44, 24, 15, 100, 45];
+var barColors = [
+  "rgb(255, 0, 0, .6)", 
+  "rgb(255, 125, 0, .6)",
+  "rgb(255, 255, 0, .6)",
+  "rgb(0, 255, 0, .6)",
+  "rgb(0, 0, 255, .6)",
+  "rgb(75, 0, 130, .6)",
+  "rgb(150, 0, 210, .6)"];
+
+new Chart("steps-friends-chart", {
+  type: "bar",
+  data: {
+    labels: xValues, // bar titles - add friends' names here
+    datasets: [{
+      label: 'Steps By Day', // steps / sleep / hydro
+      backgroundColor: barColors,
+      data: yValues // add friends' data here
+    }]
+  },
+  // options: {...}
+});
+
+new Chart("hydro-homies", {
+  type: "bar",
+  data: {
+    labels: xValues, // bar titles - add friends' names here
+    datasets: [{
+      label: 'Oz Drank By Day', // steps / sleep / hydro
+      backgroundColor: barColors,
+      data: yValues // add friends' data here
+    }]
+  },
+  // options: {...}
+});
+
+new Chart("sleephours", {
+  type: "bar",
+  data: {
+    labels: xValues, // bar titles - add friends' names here
+    datasets: [{
+      label: 'Sleep Quality By Day', // steps / sleep / hydro
+      backgroundColor: barColors,
+      data: yValues // add friends' data here
+    }]
+  },
+  // options: {...}
+});
+
+
+new Chart("sleepquality", {
+  type: "bar",
+  data: {
+    labels: xValues, // bar titles - add friends' names here
+    datasets: [{
+      label: 'Sleep Quality By Day', // steps / sleep / hydro
+      backgroundColor: barColors,
+      data: yValues // add friends' data here
+    }]
+  },
+  // options: {...}
+});
+

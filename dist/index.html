@@ -41,6 +41,8 @@
         </div>
         <div class="steps-content-current">
           Steps taken so far today: </div>
+          <canvas class="graph" height="250" id="steps-pie-chart"></canvas>
+
         <div class="steps-content-friends">
           Your friends have taken:
         </div>
@@ -50,6 +52,7 @@
         <div id="friend4" class="step-friend">Name - Steps</div>
         <div id="friend5" class="step-friend">Name - Steps</div>
       </div>
+      <canvas class="graph" height="250" id="steps-friends-chart"></canvas>
     </article>
     <!-- hydration article -->
     <article class="display-article hydration has-shadow verticle-margin">
@@ -65,6 +68,8 @@
         <div class="daily-hydration" id="hydro-2"> Day 2: "#" of oz</div>
         <div class="daily-hydration" id="hydro-1"> Day 1: "#" of oz</div>
       </div>
+      <canvas class="graph" height="250" id="hydro-homies"></canvas>
+
     </article>
     <!-- sleep article -->
     <article class="display-article sleep has-shadow has-margin">
@@ -74,12 +79,17 @@
       <div class="display-article-content sleep-content fredoka200">
         <div id="avg-sleep">7-day average:</div>
         <div id="hours-slept">Hours Slept:</div>
-        <div id="sleep-quality">Sleep Quality:</div>         
+        <div id="sleep-quality">Sleep Quality:</div>
       </div>
+      <canvas class="graph" height="250" id="sleephours"></canvas>
+      <canvas class="graph" height="250" id="sleepquality"></canvas>
+
     </article>
   </section>
 </div>
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="./bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js">
+    </script>
+    <script src="./bundle.js">
+    </script>
   </body>
 </html>

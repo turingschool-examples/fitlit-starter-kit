@@ -27,7 +27,8 @@
 
 
 
-![giphy-fitlit](https://user-images.githubusercontent.com/105816411/188285220-c9deeebe-4d7a-4344-815a-1988c336b87b.gif)
+
+![giphy-fitlit2](https://user-images.githubusercontent.com/105816411/188285277-b9e67c14-cc82-4130-bae6-9ba74b4e432e.gif)
 
 
 

@@ -1,9 +1,10 @@
+@import '~js-datepicker/dist/datepicker.min.css';
+
 body {
   display: flex;
   justify-content: space-around;
   background-image: url("../images/IMG_4293.png");
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: 0%;
 }
 
@@ -76,7 +77,7 @@ body {
   display: flex;
   flex-direction: column;
   color: black;
-  height: auto;
+  /* height: auto; */
   word-wrap: break-word;
   max-width: 250px;
   border-radius: 10px 30px;
@@ -93,10 +94,13 @@ body {
   flex-direction: column;
   padding: 10px;
   justify-content: space-between;
-
 }
 
 /* elements */
+
+.border {
+  border: 1px solid black;
+}
 
 .display-article-header-icon {
   height: 50px;
@@ -137,4 +141,10 @@ body {
 .graph {
 padding: 0px 10px 0px 5px;
 margin-top: auto;
+}
+
+.picker {
+  text-align: center;
+  background-color: rgb(255, 255, 255, .6);
+
 }

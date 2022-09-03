@@ -56,7 +56,7 @@ const getFetch = () => {
     displayStepGoalComp(userRepository);
     displayHydrationData(singleHydro);
     displaySleepData(singleSleep);
-     //convertFriendIdToName();
+    //convertFriendIdToName();
 
   })
 }
@@ -92,20 +92,17 @@ function welcomeUser() {
 
 }
 
-// function convertFriendIdToName() {
-//   const friendsArray = []
-//         singleUser.friends.forEach(friend => {
-//           console.log(friend)
-//           const matchingIds = users.find(user => {
-//             user.id === friend;
-//           })
-//          matchingIds.forEach(user =>  friendsArray.push(user.name))
-//
-//         })
-//         console.log('array', friendsArray)
-//         return friendsArray
-//
-//   }
+function convertFriendIdToName() {
+  let friendArray = []
+  const friendIds = users.filter(user => {
+    if(singleUser.friends.includes(user.id)) {
+      return user.name;
+    }
+  });
+  friendIds.forEach(friend => { friendArray.push(friend.name);
+  });
+  return friendArray
+};
 
 
 function displayUserData() {
@@ -115,7 +112,7 @@ function displayUserData() {
   <li> Address: ${singleUser.address}</li>
   <li>Stride ${singleUser.strideLength}</li>
   <li>Step Goals  ${singleUser.dailyStepGoal}
-  <li>Friends  ${singleUser.friends}
+  <li>Friends:  ${convertFriendIdToName()}
 </ul>`
 }
 

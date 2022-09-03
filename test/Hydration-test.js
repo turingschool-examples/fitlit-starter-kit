@@ -135,6 +135,7 @@ describe('Hydration', () => {
       },
     ]
 
+
     hydration = new Hydration(userData)
 
     user1 = new User({
@@ -166,13 +167,17 @@ describe('Hydration', () => {
           ]
       })
 
+    hydration = new Hydration(users)
+
   });
 
-  it('should be a function', () => {
+  it.skip('should be a function', () => {
     expect(Hydration).to.be.a('function')
   });
 
   it('should be an instance of hydration', () => {
+
+  it.skip('should have an id', () => {
 
     expect(hydration).to.be.an.instanceof(Hydration)
   });

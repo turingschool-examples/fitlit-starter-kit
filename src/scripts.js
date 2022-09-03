@@ -105,7 +105,7 @@ function showStepsFriends() {
   window.addEventListener('load', getFetch)
 
 
-  /* experimental */
+  /* ------ experimental -------- */
 
 
   let stepsGoalData = 10000
@@ -126,7 +126,7 @@ function showStepsFriends() {
   });
   
 
-var xValues = ["Friend 1", "Friend 2", "Friend 3", "Friend 4", "Friend 5", "friend 6", "friend 7"];
+var xValues = ["Friend 1", "Friend 2", "Friend 3", "Friend 4", "Friend 5", "friend 6", "friend 7"]; 
 var yValues = [55, 49, 44, 24, 15, 100, 45];
 var barColors = [
   "rgb(255, 0, 0, .6)", 
@@ -140,11 +140,11 @@ var barColors = [
   new Chart("compare-avg-goal", {
     type: "bar",
     data: {
-      labels: ["Your goal", "Average FitLit Goal"], // bar titles - add friends' names here
+      labels: ["Your goal", "Average FitLit Goal"], 
       datasets: [{
         label: 'Sleep Quality By Day', // steps / sleep / hydro
         backgroundColor: barColors,
-        data: yValues // add friends' data here
+        data: yValues // array containing user goal, average of all users goals
       }]
     },
     // options: {...}
@@ -156,21 +156,24 @@ new Chart("steps-friends-chart", {
   data: {
     labels: xValues, // bar titles - add friends' names here
     datasets: [{
-      label: 'Steps By Day', // steps / sleep / hydro
+      label: "Friends' Step Goals",
       backgroundColor: barColors,
-      data: yValues // add friends' data here
+      data: yValues // add friends' step goal data here
     }]
   },
   // options: {...}
 });
 
+var hydroColors = [
+  "rgba(4, 104, 255, 0.6)"];
+
 new Chart("week-in-water", {
   type: "bar",
   data: {
-    labels: xValues, // bar titles - add friends' names here
+    labels: xValues, // bar titles - relevant dates here
     datasets: [{
-      label: 'OZ Drank Per Day', // steps / sleep / hydro
-      backgroundColor: "rgba(4, 104, 255, 0.6)",
+      label: 'OZ Drank Per Day', 
+      backgroundColor: hydroColors,
       data: yValues // add friends' data here
     }]
   },
@@ -180,10 +183,10 @@ new Chart("week-in-water", {
 new Chart("chosen-week-in-water", {
   type: "bar",
   data: {
-    labels: xValues, // range of dates
+    labels: xValues,  // bar titles - relevant dates here
     datasets: [{
       label: 'OZ Drank Per Day', // steps / sleep / hydro
-      backgroundColor: "rgba(4, 104, 255, 0.6)",
+      backgroundColor: hydroColors,
       data: yValues // add friends' data here
     }]
   },
@@ -197,21 +200,25 @@ new Chart("hydro-homies", {
   data: {
     labels: xValues, // bar titles - add friends' names here
     datasets: [{
-      label: 'Oz Drank By Day', // steps / sleep / hydro
-      backgroundColor: barColors,
+      label: 'Hydro Homies', // steps / sleep / hydro
+      backgroundColor: hydroColors,
       data: yValues // add friends' data here
     }]
   },
   // options: {...}
 });
 
+var sleepColors = [
+  "rgb(60, 0, 160, .6)"]
+
+
 new Chart("average-sleep-hours", {
   type: "bar",
   data: {
     labels: xValues, // bar titles - add friends' names here
     datasets: [{
-      label: 'Sleep Quality By Day', // steps / sleep / hydro
-      backgroundColor: barColors,
+      label: 'Hours Slept By Day', // steps / sleep / hydro
+      backgroundColor: sleepColors,
       data: yValues // add friends' data here
     }]
   },
@@ -224,16 +231,60 @@ new Chart("average-sleep-quality", {
   data: {
     labels: xValues, // bar titles - add friends' names here
     datasets: [{
-      label: 'Sleep Quality By Day', // steps / sleep / hydro
-      backgroundColor: barColors,
+      label: 'Hours Slept By Day', // steps / sleep / hydro
+      backgroundColor: sleepColors,
       data: yValues // add friends' data here
     }]
   },
   // options: {...}
 });
 
-const pickerUIElement = document.querySelector('.picker')
-const picker = datepicker(pickerUIElement)
+new Chart("sleep-quality", { // missing from DOM
+  type: "bar",
+  data: {
+    labels: xValues, // bar titles - add friends' names here
+    datasets: [{
+      label: 'Sleep Quality By Day', // steps / sleep / hydro
+      backgroundColor: sleepColors,
+      data: yValues // add friends' data here
+    }]
+  },
+  // options: {...}
+});
+
+
+const waterDrankPicker = document.getElementById('water-drank-on-date')
+const hoursSleptPicker = document.getElementById('hours-slept-by-date')
+const weekSleptPicker = document.getElementById('week-slept-by-date')
+const sleepQualityPicker = document.getElementById('sleep-quality-by-date')
+const weekSleepQualityPicker = document.getElementById('sleep-quality-by-week')
+
+function waterDrankByDate() {
+  const picker = datepicker(waterDrankPicker)
+}
+waterDrankByDate()
+
+function hoursSleptByDate() {
+  const picker = datepicker(hoursSleptPicker)
+}
+hoursSleptByDate()
+
+function hoursSleptByWeek() {
+  const picker = datepicker(weekSleptPicker)
+}
+hoursSleptByWeek()
+
+function sleepQualityByDate() {
+  const picker = datepicker(sleepQualityPicker)
+}
+sleepQualityByDate()
+
+function sleepQualityByWeek() {
+  const picker = datepicker(weekSleepQualityPicker)
+}
+sleepQualityByWeek()
+
+
 /*
 Datepicker takes 2 arguments:
 1 - selector - two possibilities:

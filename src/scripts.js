@@ -4,6 +4,7 @@ import './images/icons8-plus-67.png';
 import './images/icons8-high-voltage-48.png';
 import './images/icons8-water-96.png';
 import './images/icons8-zzz-96.png';
+import './images/fitlit-logo.png'
 
 // Import local files:
 import fetchData from './apiCalls.js';
@@ -11,9 +12,9 @@ import UserRepository from './UserRepository';
 import User from './User';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
-import Chart from 'chart.js/auto';
 
 // Import third party libraries:
+import Chart from 'chart.js/auto';
 
 // Query Selectors
 const greeting = document.querySelector('.greeting');
@@ -98,7 +99,7 @@ function renderSleepAverages() {
 }
 
 // Chart styling
-const fontFamily = 'Courier Prime';
+const fontFamily = 'Alegreya';
 const chartPlugins = {
   legend: {
     labels: {
@@ -132,18 +133,16 @@ const chartOptions = {
 };
 
 const barStyle1 = {
-  backgroundColor: '#128FC8',
-  borderColor: '#2ecbe9',
-  hoverBackgroundColor: '#2ecbe9',
+  backgroundColor: '#0077BB',
+  hoverBackgroundColor: '#00DDDD',
 }
 
 const barStyle2 = {
-  backgroundColor: 'rgba(255, 99, 132, 0.2)',
-  borderColor:'rgb(255, 99, 132)',
-  hoverBackgroundColor:'rgb(255, 99, 132)',
+  backgroundColor: '#9000EE',
+  hoverBackgroundColor:'#CC77FF',
 }
 
-//Chart render functions
+// Chart render functions
 function renderSleepChartByWeek() {
   const weeklyHS = sleep.getDailySleepByWeek('2019/06/15','2019/06/21', 'hoursSlept');
   const weeklySQ = sleep.getDailySleepByWeek('2019/06/15','2019/06/21', 'sleepQuality');
@@ -167,6 +166,7 @@ function renderSleepChartByWeek() {
       chartOptions, 
     }
   });
+  return weeklyHoursSlept;
 };
 
 function renderSleepChartByDay() {
@@ -194,11 +194,12 @@ function renderSleepChartByDay() {
       chartOptions,
     }
   });
+  return sleepDayCanvas;
 };
 
 function renderOuncesByWeek(start, end) {
   const weeklyData = hydration.getDailyOuncesByWeek(start, end);
-  const sleepWeekCanvas = new Chart('weeklyOunces', {
+  const weeklyOunces = new Chart('weeklyOunces', {
     type: 'bar',
     data: {
       labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
@@ -212,11 +213,12 @@ function renderOuncesByWeek(start, end) {
       chartOptions,
     }
   });
+  return weeklyOunces;
 };
 
 function renderOuncesPerDay(date) {
   const day = hydration.ouncesPerDay(date);
-  const weeklyOunce = new Chart('dailyOunces', {
+  const dailyOunces = new Chart('dailyOunces', {
     type: 'bar',
     data: {
       labels: [''],
@@ -232,4 +234,5 @@ function renderOuncesPerDay(date) {
       chartOptions,
     }
   });
+  return dailyOunces;
 };

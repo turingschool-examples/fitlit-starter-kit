@@ -12,6 +12,12 @@ import './images/Hydrate.png'
 import './images/activity2.png'
 import './images/Clipboard.png'
 import './images/water.png'
+import './images/realWater.png'
+import './images/water-texture.png'
+import './images/cloud-texture.png'
+import './images/grid-texture.png'
+import './images/blue-grid-texture.png'
+import './images/road-texture.png'
 
 // ######### Query Selectors ###########
 const userWelcome =  document.querySelector('#userName')
@@ -115,22 +121,22 @@ function displayUserData() {
 
 function displayStepGoalComp(userRepository) {
   userStepComp.innerHTML = `<p class='user-step-details'>Your daily step goal: ${singleUser.dailyStepGoal}</p> <br> vs <br><p class='user-step-details'> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
-    userStepComp.innerHTML = `Your daily step goal :${singleUser.dailyStepGoal} <br> vs <br> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}`
+    userStepComp.innerHTML =` <p class='user-step-details'>Your daily step goal :${singleUser.dailyStepGoal} <br> vs <br> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
 }
 
 function displayHydrationData(singleHydro) {
-  hydrationCard.innerHTML = `<p class='user-hydro-details'> Today's OZ drank: ${singleHydro.usersDailyOunces(singleUser.id)}</p> <br>  <br> <p class='user-step-details'> Average OZ drank per day: ${singleHydro.getLifeTimeOunces()}<br>
-  <p class='user-step-details'> Weekly: ${singleHydro.getOuncesPerWeek(singleUser.id, "2020/01/22") } `
+  hydrationCard.innerHTML = `<p class='user-hydro-details-1'> Today's OZ drank: ${singleHydro.usersDailyOunces(singleUser.id)}</p> <br>  <br> <p class='user-hydro-details-2'> Average OZ drank per day: ${singleHydro.getLifeTimeOunces()}<br>
+  <p class='user-hydro-details-3'> Weekly: ${singleHydro.getOuncesPerWeek(singleUser.id, "2020/01/22") } `
 
 }
 
 function displaySleepData(singleSleep) {
   sleepCard.innerHTML = `
-  Last night, you slept for ${singleSleep.getHrsSleptByDate(singleUser.id)} hours and
-  received ${singleSleep.getSleepQualByDate(singleUser.id)} hours of quality sleep <br>
-  Average hours slept: ${singleSleep.getAvgHrsSleptPerDay(singleUser.id)} hours <br>
-  Average hours of quality sleep: ${singleSleep.getAvgSleepQualPerDay(singleUser.id)} hours <br>
-  Hours slept (1-week): ${singleSleep.getHrsSleptPerWeek(singleUser.id, "2020/01/22")} <br>
-  Quality hours slept (1-week): ${singleSleep.getSleepQualPerWeek(singleUser.id, "2020/01/22")}
+  <p class='sleep-info-1'>Last night, you slept for ${singleSleep.getHrsSleptByDate(singleUser.id)} hours and
+  received ${singleSleep.getSleepQualByDate(singleUser.id)} hours of quality sleep </p> <br>
+   <p class='sleep-info-2'>Average hours slept: ${singleSleep.getAvgHrsSleptPerDay(singleUser.id)} hours <br></p>
+   <p class='sleep-info-3'>Average hours of quality sleep: ${singleSleep.getAvgSleepQualPerDay(singleUser.id)} hours <br></p>
+   <p class='sleep-info-4'>Hours slept (1-week): ${singleSleep.getHrsSleptPerWeek(singleUser.id, "2020/01/22")} <br><p>
+   <p class='sleep-info-5'>Quality hours slept (1-week): ${singleSleep.getSleepQualPerWeek(singleUser.id, "2020/01/22")}</p>
   `
 }

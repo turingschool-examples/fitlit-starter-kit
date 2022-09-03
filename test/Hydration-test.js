@@ -16,43 +16,36 @@ describe('Hydration', () => {
       date: "2019/06/15",
       numOunces: 37
       },
-
       {
       userID: 1,
       date: "2019/06/17",
       numOunces: 96
       },
-
       {
       userID: 1,
       date: "2019/06/18",
       numOunces: 61
       },
-
       {
       userID: 1,
       date: "2019/06/19",
       numOunces: 91
       },
-
       {
       userID: 1,
       date: "2019/06/20",
       numOunces: 50
       },
-
       {
       userID: 1,
       date: "2019/06/21",
       numOunces: 50
       },
-
       {
       userID: 1,
       date: "2019/06/22",
       numOunces: 43
       },
-
       {
       userID: 1,
       date: "2019/06/23",
@@ -63,61 +56,51 @@ describe('Hydration', () => {
       date: "2019/06/24",
       numOunces: 61
       },
-
       {
       userID: 1,
       date: "2019/06/25",
       numOunces: 51
       },
-
       {
       userID: 1,
       date: "2019/06/26",
       numOunces: 52
       },
-
       {
       userID: 2,
       date: "2019/06/15",
       numOunces: 75
       },
-
       {
       userID: 2,
       date: "2019/06/16",
       numOunces: 91
       },
-
       {
       userID: 2,
       date: "2019/06/17",
       numOunces: 96
       },
-
       {
       userID: 2,
       date: "2019/06/18",
       numOunces: 70
       },
-
       {
       userID: 2,
       date: "2019/06/19",
       numOunces: 76
       },
-
       {
       userID: 2,
       date: "2019/06/20",
       numOunces: 71
       },
-
       {
       userID: 2,
       date: "2019/06/21",
       numOunces: 27
       },
-
       {
       userID: 2,
       date: "2019/06/22",
@@ -133,8 +116,7 @@ describe('Hydration', () => {
       date: "2019/06/24",
       numOunces: 33
       },
-    ]
-
+    ];
 
     hydration = new Hydration(userData)
 
@@ -150,7 +132,7 @@ describe('Hydration', () => {
           4,
           8
           ]
-        })
+        });
 
     user2 = new User({
           id: 2,
@@ -164,44 +146,32 @@ describe('Hydration', () => {
           18,
           24,
           19
-          ]
-      })
+        ]
+      });
 
-    hydration = new Hydration(users)
-
+    hydration = new Hydration(userData)
   });
 
-  it.skip('should be a function', () => {
+  it('should be a function', () => {
     expect(Hydration).to.be.a('function')
   });
 
   it('should be an instance of hydration', () => {
-
-  it.skip('should have an id', () => {
-
     expect(hydration).to.be.an.instanceof(Hydration)
   });
 
   it('should return ounces water consumed on a specific day by user', () => {
       expect(hydration.findWaterConsumedByDate(1, "2019/06/26")).to.equal(52)
-
+      expect(hydration.findWaterConsumedByDate(2, "2019/06/21")).to.equal(27)
   });
 
-  it.skip('should average the ounces water consumed forever by a user', () => {
-
-    hydration.averageOuncesWaterConsumedForever(1)
-    hydration.averageOuncesWaterConsumedForever(2)
-
-    expect(hydration.userData.numOunces).to.equal()
-    expect(hydration.userData.numOunces).to.equal()
+  it('should average the ounces water consumed forever by a user', () => {
+    expect(hydration.findAverageDailyHydration(1)).to.equal(57.4)
+    expect(hydration.findAverageDailyHydration(2)).to.equal(64.1)
   });
 
-  it.skip('should return a list containing the ounces water consumed each day over a seven day period by a user', () => {
-
-    hydration.calculateOuncesWaterConsumedWeek(1)
-    hydration.calculateOuncesWaterConsumedWeek(2)
-
-    expect(hydration.userData.numOunces).to.deep.equal()
-    expect(hydration.userData.numOunces).to.deep.equal()
+  it('should return a list containing the ounces water consumed each day over a seven day period by a user', () => {
+    expect(hydration.findWeeklyHydration(1, "2019/06/26")).to.equal('49.4')
+    expect(hydration.findWeeklyHydration(2, "2019/06/24")).to.equal('54.1')
   });
 })

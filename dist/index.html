@@ -5,83 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" type="text/css" href="../src/css/styles.css"> -->
+    <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
     <title>Fitlit</title>
   </head>
   
   <body>
-    <div class="large-container">
-      <section class="column">
-        <header class="greeting">
-          <h1 class="greeting">Hello, !</h1> 
+      <section class="column user-section" id="userSection">
+        <header>
+          <img src="./images/fitlit-logo.png" class="fitlit-logo">
+          <h1 class="greeting" id="greeting">Hello, !</h1> 
         </header>
-        <section id="friendsList" class="box1 friends-list">
-          <h2>Friends</h2>
-        </section>
-
-        <section id="friendsActivity" class="box1 friends-activity">
-          <h2>Top Activities</h2>
-          <p id="activity1">Hiking</p>
-          <p id="activity2">Pottery</p>
-          <p id="activity3">Paddle boarding</p>
+        <section class="user-info" id="userInfo" >
+          <section class="user-details" >
+            <p class="text full-name">Luisa Hane</p>
+            <p class="text user-address">address</p>
+            <p class="text user-email">email</p>
+            <p class="text step-goal">Daily Step Goal: </p>
+            <div class="chart-container" id="weekly-highlights">
+              <canvas id="weeklyOunces"></canvas>
+              <br/>
+              <canvas id="weeklyHoursSlept"></canvas>
+            </div>
+          </section>
         </section>
       </section>
 
       <section class="column daily-overview">
-        <section id="hydrationBox" class="box2 hydration">
-          <img role="button" class="water-icon" src="./images/icons8-water-96.png" alt="water-icon" width="50">
-          <div class="chart-container">
+        <section class="daily hydration"id="hydrationBox">
+          <img role="button" class="water-icon" src="./images/icons8-water-96.png" id="waterIcon" alt="water icon" width="50">
+          <div class="canvas-container" id="canvasContainer">
             <canvas id="dailyOunces"></canvas>
-         </div>
-          <h3>Hydration</h3>
+          </div>
+          <h3 class="title hydration-label">Hydration</h3>
         </section>
-
-        <section id="sleepBox" class="box2 sleep">
-            <img role="button" class="sleep-icon" src="./images/icons8-zzz-96.png" alt="sleep-icon">
+        <section class="daily sleep" id="sleepBox">
+          <img role="button" class="sleep-icon" src="./images/icons8-zzz-96.png" alt="sleep icon">
           <div class="chart-container" id="daily-sleep-overview">
             <canvas id="dailyHoursSlept"></canvas>
           </div>
           <section id="sleep-averages">
           </section>
           <div>
-            <h3>Sleep</h3>
-          </div>
+          <h3 class="title sleep-label">Sleep</h3>
         </section>
-
-        <section id="activityBox" class="box2 activity">
+        <section class="daily activity" id="activityBox">
           <img role="button" class="energy-icon" src="./images/icons8-high-voltage-48.png" alt="energy-icon">
-          <div class="chart-container">
-            <!-- <canvas id="stepsByDay"></canvas> -->
+          <div class="canvas-container" id="canvasContainer">
+            <canvas id="stepsByDay"></canvas>
           </div>
-          <h3>Activity</h3>
+          <h3 class="title activity-label">Activity</h3>
         </section>
       </section>
-  
-      <section id="userInfo" class="column">
-        <section class="box1 user-details">
-          <h1 class="full-name">Luisa Hane</h1>
-          <p class="user-address">address</p>
-          <p class="user-email">email</p>
-          <div>
-            <p class="step-goal">Daily Step Goal: </p>
-            <div class="chart-container" id="weekly-highlights">
-              <canvas id="weeklyOunces"></canvas>
-              <br/>
-              <canvas id="weeklyHoursSlept"></canvas>
-            </div>
-          </div>
+
+      <section class="column friends-info" id="friendsInfo">
+        <section class="friends friends-list" id="friendsList">
+          <h2 class="title friends-list-label">Friends</h2>
         </section>
-        
-        <section id="friendsHighlights" class="box1 friends-highlights">
+        <section class="friends friends-highlights" id="friendsHighlights">
           <p>Show overview of friend's hydration, sleep, and activity here</p>
           <p id="friendHydration">Hydration bar</p>
           <p id="friendSleep">Sleep bar</p>
           <p id="friendActivity">Activity bar</p>
         </section>
+        <section class="friends friends-activity" id="friendsActivity">
+          <h2 class="title top-activities-label">Top Activities</h2>
+          <p id="activity1">Hiking</p>
+          <p id="activity2">Pottery</p>
+          <p id="activity3">Paddle boarding</p>
+        </section> 
       </section>
-    </div>
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>
 </html>

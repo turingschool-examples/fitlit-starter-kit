@@ -89,7 +89,7 @@ function renderProfile() {
   fullName.innerText = `${currentUser.name}`;
   userAddress.innerText = `${currentUser.email}`;
   userEmail.innerText = `${currentUser.address}`;
-  stepGoal.innerText += `${currentUser.dailyStepGoal}
+  stepGoal.innerText += ` ${currentUser.dailyStepGoal}
   Average Step Goal: ${allUsers.returnAverageStepGoal()}`;
 };
 

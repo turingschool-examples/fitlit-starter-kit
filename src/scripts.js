@@ -108,6 +108,7 @@ const chartPlugins = {
   } 
 };
 
+// Chart styling
 const chartOptions = {
   scales: {
     x: {
@@ -142,6 +143,7 @@ const barStyle2 = {
   hoverBackgroundColor:'rgb(255, 99, 132)',
 }
 
+//Chart render functions
 function renderSleepChartByWeek() {
   const weeklyHS = sleep.getDailySleepByWeek('2019/06/15','2019/06/21', 'hoursSlept');
   const weeklySQ = sleep.getDailySleepByWeek('2019/06/15','2019/06/21', 'sleepQuality');

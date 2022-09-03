@@ -5,45 +5,50 @@ class Sleep {
 
   findUserDataID = (id) => this.sleepData.filter(userSleepData => userSleepData.userID === id);
 
-  getAvgHrsSleptPerDay(id) {
+  getAvgHrsSleptPerDay(id) { // get user's average hours slept over all time
     let userSleep = this.findUserDataID(id);
-    const totalHours = this.sleepData.reduce((acc, hour) => {
-       return acc += hour.hoursSlept / this.sleepData.length;
+    const totalHours = userSleep.reduce((avg, hour) => {
+       avg += hour.hoursSlept;
+       return avg;
     }, 0);
-    return parseFloat(totalHours).toFixed(1);
+
+    return (totalHours / this.sleepData.length).toFixed(1);
   };
 
-  getAvgSleepQuality(id) {
+  getAvgSleepQualPerDay(id) { // average sleep quality (over all time)
     let userSleepQuality = this.findUserDataID(id);
-    const totalQualityHours = userSleepQuality.reduce((acc, sleepQual) => {
-      return acc += sleepQual.sleepQuality / this.sleepData.length;
+    const totalQualityHours = userSleepQuality.reduce((avg, sleepQual) => {
+      console.log(avg);
+      avg += sleepQual.sleepQuality;
+      return avg;
     }, 0);
-    return totalQualityHours.toFixed(1);
+    return (totalQualityHours / this.sleepData.length).toFixed(1);
   };
 
-  getSleepHrsByDay(id) {
+  getHrsSleptByDate(id) {
     let userSleepID = this.findUserDataID(id);
     const sleepHoursByDate = userSleepID.map((userDate) => userDate.date).pop();
     const todaySleep = userSleepID.find((sleepObj) => sleepObj.date === sleepHoursByDate)
     return todaySleep.hoursSlept;
   }
 
-  getSleepQualPerDay(id) {
+  getSleepQualByDate(id) {
     let userSleepQual = this.findUserDataID(id);
     const sleepQualByDate = userSleepQual.map((userDate) => userDate.date).pop();
     const todayQualSleep = userSleepQual.find((sleepObj) => sleepObj.date === sleepQualByDate)
     return todayQualSleep.sleepQuality;
   }
-  getSleepHoursPerWeek(id, date) {
+
+  getHrsSleptPerWeek(id, date) {
     let userSleepData = this.findUserDataID(id);
     const userSleepDates = userSleepData.map(userSleep => userSleep.date);
     const userIndexOfDate = userSleepDates.indexOf(date);
     const userSevenDays = userSleepData.slice(userIndexOfDate -6, userIndexOfDate +1)
     const usersAvgSleep = userSevenDays.reduce((avgSleep, userSleep) => {
-      avgSleep += userSleep.hoursSlept / 7;
+      avgSleep += userSleep.hoursSlept;
       return avgSleep;
     }, 0)
-    return usersAvgSleep;
+    return usersAvgSleep.toFixed(1);
   }
 
   getSleepQualPerWeek(id, date) {
@@ -52,20 +57,19 @@ class Sleep {
     const userIndexOfDate = userSleepDates.indexOf(date);
     const userSevenDays = userSleepQualData.slice(userIndexOfDate -6, userIndexOfDate +1)
     const usersAvgSleep = userSevenDays.reduce((avgSleep, userSleep) => {
-      avgSleep += userSleep.sleepQuality / 7;
+      avgSleep += userSleep.sleepQuality;
       return avgSleep;
     }, 0)
     return usersAvgSleep.toFixed(1);
   }
 
-  getAvgSleepQual() {
-    let userSleepQual = this.sleepData.reduce((avg, userSleepQ) =>{
+  getAllAvgSleepQual() {
+    const userSleepQualDetails = this.sleepData.reduce((avg, userSleepQ) => {
       avg += userSleepQ.sleepQuality / this.sleepData.length
       return avg;
     }, 0)
-    return userSleepQual.toFixed(1);
+    return userSleepQualDetails.toFixed(1);
   }
-
 }
 
 

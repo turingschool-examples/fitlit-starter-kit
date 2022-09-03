@@ -7,12 +7,12 @@ class Hydration {
       const singleHydrationData = this.hydrationData.filter(hydrationObj => hydrationObj.userID === id);
       return singleHydrationData;
     };
-      
+
 
     usersDailyOunces(id) {
       let userHydroOunces = this.findUserDataID(id);
       const ouncesByDate = userHydroOunces.map((userDate) => userDate.date).pop();
-      const todayOunces = userHydroOunces.find((HydroObj) => HydroObj.date === ouncesByDate)
+      const todayOunces = userHydroOunces.find((hydroObj) => hydroObj.date === ouncesByDate)
       return todayOunces.numOunces;
     }
 
@@ -29,7 +29,7 @@ class Hydration {
     return usersAvgHydro.toFixed(1);
   }
   getLifeTimeOunces() {
-   
+
     let lifetimeOunces  = this.hydrationData.reduce((avg, userOunces) => {
       avg += userOunces.numOunces / this.hydrationData.length
       return avg;

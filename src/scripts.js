@@ -7,27 +7,38 @@ import './images/icons8-water-52.png'
 import './images/icons8-walking-100.png'
 import './images/IMG_4293.png'
 import UserRepository from './UserRepository';
-import { fetchAll } from './apiCalls';
-import datepicker from 'js-datepicker'
+import Hydration from './Hydration';
+import User from './User';
+import  { getUsersApiData, getSleepApiData, getHydrationApiData } from './apiCalls';
+import Sleep from './Sleep';
+import userData from './data/users';
 
-
-// global variables // <--- i do not trust these
-let userAPIData
-let sleepAPIData
-let hydrationAPIData
-
+// global variables //
+let currentUser;
+let usersData;
+let userRepo;
+let sleepData;
+let hydrationData;
 
 // promises //
-const getFetch = () => {
-  fetchAll()
-  .then(data => {
-    console.log(data);
-    userAPIData = data[0].userData
-    sleepAPIData = data[1].sleepData
-    hydrationAPIData = data[2].hydrationData
-  })
-}
+function getAllData() {
+  Promise.all([getUsersApiData, getSleepApiData, getHydrationApiData]).then((data) => {
+    usersData = data[0].userData;
+    sleepData = data[1].sleepData;
+    hydrationData = data[2].hydrationData;
 
+    console.log('USERS', usersData)
+    console.log('SLEEP', sleepData)
+    console.log('HYDRATION', hydrationData)
+
+    userRepo = new UserRepository(usersData)
+    currentUser = new User(usersData[Math.floor(Math.random() * usersData.length)]);
+    hydrationData = new Hydration(hydrationData)
+    sleepData = new Sleep(sleepData)
+    getUser()
+
+  });
+}
 // DOM Manipulation //
 
 // header selectors //
@@ -36,253 +47,262 @@ const userIconDisplay = document.querySelector('.header-userlogo')
 const welcomeDisplay = document.querySelector('.header-welcome') 
 
 // steps selectors//
-const stepsGoalDisplay = document.querySelector('.steps-content-goal') 
-const stepsCurrentDisplay = document.querySelector('.steps-content-current')
-const stepsFriendsList = document.querySelectorAll('.step-friend')
-const stepsFriendsDisplay = document.querySelector('.steps-content-header')
-const friend1 = document.getElementById('friend1')
-const friend2 = document.getElementById('friend2')
-const friend3 = document.getElementById('friend3')
-const friend4 = document.getElementById('friend4')
-const friend5 = document.getElementById('friend5')
+// const stepsGoalDisplay = document.querySelector('.steps-content-goal') 
+// const stepsCurrentDisplay = document.querySelector('.steps-content-current')
+// const stepsFriendsList = document.querySelectorAll('.step-friend')
+// const stepsFriendsDisplay = document.querySelector('.steps-content-header')
+// const friend1 = document.getElementById('friend1')
+// const friend2 = document.getElementById('friend2')
+// const friend3 = document.getElementById('friend3')
+// const friend4 = document.getElementById('friend4')
+// const friend5 = document.getElementById('friend5')
 
 // hydration selectors//
-const hydrationContentDisplay = document.querySelector('.hydration-content') 
-const dailyHydrationListDisplay = document.querySelectorAll('.daily-hydration')
-const hydroDay7Display = document.getElementById('hydro-7')
-const hydroDay6Display = document.getElementById('hydro-6')
-const hydroDay5Display = document.getElementById('hydro-5')
-const hydroDay4Display = document.getElementById('hydro-4')
-const hydroDay3Display = document.getElementById('hydro-3')
-const hydroDay2Display = document.getElementById('hydro-2')
-const hydroDay1Display = document.getElementById('hydro-1')
+// const hydrationContentDisplay = document.querySelector('.hydration-content') 
+// const dailyHydrationListDisplay = document.querySelectorAll('.daily-hydration')
+// const hydroDay7Display = document.getElementById('hydro-7')
+// const hydroDay6Display = document.getElementById('hydro-6')
+// const hydroDay5Display = document.getElementById('hydro-5')
+// const hydroDay4Display = document.getElementById('hydro-4')
+// const hydroDay3Display = document.getElementById('hydro-3')
+// const hydroDay2Display = document.getElementById('hydro-2')
+// const hydroDay1Display = document.getElementById('hydro-1')
 
 // sleep selectors //
-const sleepContentDisplay = document.querySelector('.sleep-content') 
-const sleepArticleDisplay = document.getElementById('avg-sleep')
-const avgHoursSleptDisplay = document.getElementById('hours-slept')
-const avgSleepQualityDisplay = document.getElementById('sleep-quality')
+// const sleepContentDisplay = document.querySelector('.sleep-content') 
+// const sleepArticleDisplay = document.getElementById('avg-sleep')
+// const avgHoursSleptDisplay = document.getElementById('hours-slept')
+// const avgSleepQualityDisplay = document.getElementById('sleep-quality')
 
 // event listeners //
-userIconDisplay.addEventListener('click', showUserInfo)
+// userIconDisplay.addEventListener('click', showUserInfo)
+window.addEventListener('load', getAllData())
+
+
+//helper function //
+function getUser() {
+  applyUserName()
+  // showUserInfo()
+  // showStepsContent()
+}
 
 
 // function calls
-showStepsContent()
+// showStepsContent()
 
 // functions //
 function applyUserName() {
-  userNameDisplay.innerText = `USER!`; 
-}
-applyUserName()
-
-function showUserInfo() {
-  if (welcomeDisplay.innerText === "WELCOME,") {
-    welcomeDisplay.innerText = `USER ADRESS & stride length GOES HERE`;
-    userNameDisplay.innerText = ""
-  } else {
-    welcomeDisplay.innerHTML = "WELCOME,";
-    userNameDisplay.innerText = `USER!`
-  }
+  userNameDisplay.innerText = `${currentUser.returnUserFirstName()}`; 
 }
 
-function showStepsContent(stepsGoal, stepsCurrent) {
-  stepsGoalDisplay.innerText += '10,000'
-  stepsCurrentDisplay.innerText = `So far you have taken: 9,999`
-}
 
-function showStepsFriends() {
-    // stepsFriendsList = can probly write a forEach loop here
-    stepsFriendsDisplay.innerText = 'Your friends have taken:'
-    friend1.innerText = `Friend 1 - DAILY STEP GOAL`
-    friend2.innerText = `Friend 2 - DAILY STEP GOAL`
-    friend3.innerText = `Friend 3 - DAILY STEP GOAL`
-    friend4.innerText = `Friend 4 - DAILY STEP GOAL`
-    friend5.innerText = `Friend 5 - DAILY STEP GOAL`
-  }
-  showStepsFriends()
+// function showUserInfo() {
+//   if (welcomeDisplay.innerText === "WELCOME,") {
+//     welcomeDisplay.innerText = `${currentUser.address}`;
+//     userNameDisplay.innerText = ""
+//   } else {
+//     welcomeDisplay.innerHTML = "WELCOME,";
+//     userNameDisplay.innerText = `USER!`
+//   }
+// }
+
+// function showStepsContent(stepsGoal, stepsCurrent) {
+//   stepsGoalDisplay.innerText += '10,000'
+//   stepsCurrentDisplay.innerText = `So far you have taken: 9,999`
+// }
+
+// function showStepsFriends() {
+//     // stepsFriendsList = can probly write a forEach loop here
+//     stepsFriendsDisplay.innerText = 'Your friends have taken:'
+//     friend1.innerText = `Friend 1 - DAILY STEP GOAL`
+//     friend2.innerText = `Friend 2 - DAILY STEP GOAL`
+//     friend3.innerText = `Friend 3 - DAILY STEP GOAL`
+//     friend4.innerText = `Friend 4 - DAILY STEP GOAL`
+//     friend5.innerText = `Friend 5 - DAILY STEP GOAL`
+//   }
+//   showStepsFriends()
   
-  window.addEventListener('load', getFetch)
+  // window.addEventListener('load', getFetch)
 
 
   /* ------ experimental -------- */
 
 
-  let stepsGoalData = 10000
-  let stepsTakenData = 9000
-  let stepsData = [(stepsGoalData), (stepsGoalData - stepsTakenData)]
+//   let stepsGoalData = 10000
+//   let stepsTakenData = 9000
+//   let stepsData = [(stepsGoalData), (stepsGoalData - stepsTakenData)]
 
-  new Chart("steps-pie-chart", {
-    type: "pie",
-    data: {
-      labels: ["Steps Goal", "Steps Remaining"],
-      datasets: [{
-        label: 'Graph Label', // steps / sleep / hydro
-        backgroundColor: ["rgba(4, 104, 255, 0.6)", "rgb(255, 125, 0, .6)"],
-        data: stepsData // [steps goal, ]
-      }]
-    },
-    // options: {...}
-  });
+//   new Chart("steps-pie-chart", {
+//     type: "pie",
+//     data: {
+//       labels: ["Steps Goal", "Steps Remaining"],
+//       datasets: [{
+//         label: 'Graph Label', // steps / sleep / hydro
+//         backgroundColor: ["rgba(4, 104, 255, 0.6)", "rgb(255, 125, 0, .6)"],
+//         data: stepsData // [steps goal, ]
+//       }]
+//     },
+//     // options: {...}
+//   });
   
 
-var xValues = ["Friend 1", "Friend 2", "Friend 3", "Friend 4", "Friend 5", "friend 6", "friend 7"]; 
-var yValues = [55, 49, 44, 24, 15, 100, 45];
-var barColors = [
-  "rgb(255, 0, 0, .6)", 
-  "rgb(255, 125, 0, .6)",
-  "rgb(255, 255, 0, .6)",
-  "rgb(0, 255, 0, .6)",
-  "rgb(0, 0, 255, .6)",
-  "rgb(75, 0, 130, .6)",
-  "rgb(150, 0, 210, .6)"];
+// var xValues = ["Friend 1", "Friend 2", "Friend 3", "Friend 4", "Friend 5", "friend 6", "friend 7"]; 
+// var yValues = [55, 49, 44, 24, 15, 100, 45];
+// var barColors = [
+//   "rgb(255, 0, 0, .6)", 
+//   "rgb(255, 125, 0, .6)",
+//   "rgb(255, 255, 0, .6)",
+//   "rgb(0, 255, 0, .6)",
+//   "rgb(0, 0, 255, .6)",
+//   "rgb(75, 0, 130, .6)",
+//   "rgb(150, 0, 210, .6)"];
 
-  new Chart("compare-avg-goal", {
-    type: "bar",
-    data: {
-      labels: ["Your goal", "Average FitLit Goal"], 
-      datasets: [{
-        label: 'Sleep Quality By Day', // steps / sleep / hydro
-        backgroundColor: barColors,
-        data: yValues // array containing user goal, average of all users goals
-      }]
-    },
-    // options: {...}
-  });
+//   new Chart("compare-avg-goal", {
+//     type: "bar",
+//     data: {
+//       labels: ["Your goal", "Average FitLit Goal"], 
+//       datasets: [{
+//         label: 'Sleep Quality By Day', // steps / sleep / hydro
+//         backgroundColor: barColors,
+//         data: yValues // array containing user goal, average of all users goals
+//       }]
+//     },
+//     // options: {...}
+//   });
   
 
-new Chart("steps-friends-chart", {
-  type: "bar",
-  data: {
-    labels: xValues, // bar titles - add friends' names here
-    datasets: [{
-      label: "Friends' Step Goals",
-      backgroundColor: barColors,
-      data: yValues // add friends' step goal data here
-    }]
-  },
-  // options: {...}
-});
+// new Chart("steps-friends-chart", {
+//   type: "bar",
+//   data: {
+//     labels: xValues, // bar titles - add friends' names here
+//     datasets: [{
+//       label: "Friends' Step Goals",
+//       backgroundColor: barColors,
+//       data: yValues // add friends' step goal data here
+//     }]
+//   },
+//   // options: {...}
+// });
 
-var hydroColors = [
-  "rgba(4, 104, 255, 0.6)"];
+// var hydroColors = [
+//   "rgba(4, 104, 255, 0.6)"];
 
-new Chart("week-in-water", {
-  type: "bar",
-  data: {
-    labels: xValues, // bar titles - relevant dates here
-    datasets: [{
-      label: 'OZ Drank Per Day', 
-      backgroundColor: hydroColors,
-      data: yValues // add friends' data here
-    }]
-  },
-  // options: {...}
-});
+// new Chart("week-in-water", {
+//   type: "bar",
+//   data: {
+//     labels: xValues, // bar titles - relevant dates here
+//     datasets: [{
+//       label: 'OZ Drank Per Day', 
+//       backgroundColor: hydroColors,
+//       data: yValues // add friends' data here
+//     }]
+//   },
+//   // options: {...}
+// });
 
-new Chart("chosen-week-in-water", {
-  type: "bar",
-  data: {
-    labels: xValues,  // bar titles - relevant dates here
-    datasets: [{
-      label: 'OZ Drank Per Day', // steps / sleep / hydro
-      backgroundColor: hydroColors,
-      data: yValues // add friends' data here
-    }]
-  },
-  // options: {...}
-});
-
-
-
-new Chart("hydro-homies", {
-  type: "bar",
-  data: {
-    labels: xValues, // bar titles - add friends' names here
-    datasets: [{
-      label: 'Hydro Homies', // steps / sleep / hydro
-      backgroundColor: hydroColors,
-      data: yValues // add friends' data here
-    }]
-  },
-  // options: {...}
-});
-
-var sleepColors = [
-  "rgb(60, 0, 160, .6)"]
+// new Chart("chosen-week-in-water", {
+//   type: "bar",
+//   data: {
+//     labels: xValues,  // bar titles - relevant dates here
+//     datasets: [{
+//       label: 'OZ Drank Per Day', // steps / sleep / hydro
+//       backgroundColor: hydroColors,
+//       data: yValues // add friends' data here
+//     }]
+//   },
+//   // options: {...}
+// });
 
 
-new Chart("average-sleep-hours", {
-  type: "bar",
-  data: {
-    labels: xValues, // bar titles - add friends' names here
-    datasets: [{
-      label: 'Hours Slept By Day', // steps / sleep / hydro
-      backgroundColor: sleepColors,
-      data: yValues // add friends' data here
-    }]
-  },
-  // options: {...}
-});
+
+// new Chart("hydro-homies", {
+//   type: "bar",
+//   data: {
+//     labels: xValues, // bar titles - add friends' names here
+//     datasets: [{
+//       label: 'Hydro Homies', // steps / sleep / hydro
+//       backgroundColor: hydroColors,
+//       data: yValues // add friends' data here
+//     }]
+//   },
+//   // options: {...}
+// });
+
+// var sleepColors = [
+//   "rgb(60, 0, 160, .6)"]
 
 
-new Chart("average-sleep-quality", {
-  type: "bar",
-  data: {
-    labels: xValues, // bar titles - add friends' names here
-    datasets: [{
-      label: 'Hours Slept By Day', // steps / sleep / hydro
-      backgroundColor: sleepColors,
-      data: yValues // add friends' data here
-    }]
-  },
-  // options: {...}
-});
-
-new Chart("sleep-quality", { // missing from DOM
-  type: "bar",
-  data: {
-    labels: xValues, // bar titles - add friends' names here
-    datasets: [{
-      label: 'Sleep Quality By Day', // steps / sleep / hydro
-      backgroundColor: sleepColors,
-      data: yValues // add friends' data here
-    }]
-  },
-  // options: {...}
-});
+// new Chart("average-sleep-hours", {
+//   type: "bar",
+//   data: {
+//     labels: xValues, // bar titles - add friends' names here
+//     datasets: [{
+//       label: 'Hours Slept By Day', // steps / sleep / hydro
+//       backgroundColor: sleepColors,
+//       data: yValues // add friends' data here
+//     }]
+//   },
+//   // options: {...}
+// });
 
 
-const waterDrankPicker = document.getElementById('water-drank-on-date')
-const hoursSleptPicker = document.getElementById('hours-slept-by-date')
-const weekSleptPicker = document.getElementById('week-slept-by-date')
-const sleepQualityPicker = document.getElementById('sleep-quality-by-date')
-const weekSleepQualityPicker = document.getElementById('sleep-quality-by-week')
+// new Chart("average-sleep-quality", {
+//   type: "bar",
+//   data: {
+//     labels: xValues, // bar titles - add friends' names here
+//     datasets: [{
+//       label: 'Hours Slept By Day', // steps / sleep / hydro
+//       backgroundColor: sleepColors,
+//       data: yValues // add friends' data here
+//     }]
+//   },
+//   // options: {...}
+// });
 
-function waterDrankByDate() {
-  const picker = datepicker(waterDrankPicker)
-}
-waterDrankByDate()
+// new Chart("sleep-quality", { // missing from DOM
+//   type: "bar",
+//   data: {
+//     labels: xValues, // bar titles - add friends' names here
+//     datasets: [{
+//       label: 'Sleep Quality By Day', // steps / sleep / hydro
+//       backgroundColor: sleepColors,
+//       data: yValues // add friends' data here
+//     }]
+//   },
+//   // options: {...}
+// });
 
-function hoursSleptByDate() {
-  const picker = datepicker(hoursSleptPicker)
-}
-hoursSleptByDate()
 
-function hoursSleptByWeek() {
-  const picker = datepicker(weekSleptPicker)
-}
-hoursSleptByWeek()
+// const waterDrankPicker = document.getElementById('water-drank-on-date')
+// const hoursSleptPicker = document.getElementById('hours-slept-by-date')
+// const weekSleptPicker = document.getElementById('week-slept-by-date')
+// const sleepQualityPicker = document.getElementById('sleep-quality-by-date')
+// const weekSleepQualityPicker = document.getElementById('sleep-quality-by-week')
 
-function sleepQualityByDate() {
-  const picker = datepicker(sleepQualityPicker)
-}
-sleepQualityByDate()
+// function waterDrankByDate() {
+//   const picker = datepicker(waterDrankPicker)
+// }
+// waterDrankByDate()
 
-function sleepQualityByWeek() {
-  const picker = datepicker(weekSleepQualityPicker)
-}
-sleepQualityByWeek()
+// function hoursSleptByDate() {
+//   const picker = datepicker(hoursSleptPicker)
+// }
+// hoursSleptByDate()
+
+// function hoursSleptByWeek() {
+//   const picker = datepicker(weekSleptPicker)
+// }
+// hoursSleptByWeek()
+
+// function sleepQualityByDate() {
+//   const picker = datepicker(sleepQualityPicker)
+// }
+// sleepQualityByDate()
+
+// function sleepQualityByWeek() {
+//   const picker = datepicker(weekSleepQualityPicker)
+// }
+// sleepQualityByWeek()
 
 
 /*

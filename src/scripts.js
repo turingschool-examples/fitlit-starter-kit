@@ -6,25 +6,36 @@ import './images/icons8-sleep-52.png'
 import './images/icons8-water-52.png'
 import './images/icons8-walking-100.png'
 import './images/IMG_4293.png'
-import UserRepository from './UserRepository';
 import { fetchAll } from './apiCalls';
 import datepicker from 'js-datepicker'
 
+// import userData from './data/users'
+import User from './User.js'
+import Hydration from './Hydration.js'
+import Sleep from './Sleep.js'
+import UserRepository from './UserRepository';
 
 // global variables // <--- i do not trust these
-let userAPIData
-let sleepAPIData
-let hydrationAPIData
+let userAPIData;
+let sleepAPIData;
+let hydrationAPIData;
+// const userNumber = userData[Math.floor(Math.random()*userData.length)]
+
+// instanciate classes //
+const currentUserData = new User(userNumber)
+const allUserData = new UserRepository(userAPIData) // <-- userAPIData
+const allUserHydroData = new Hydration(hydrationAPIData)
 
 
 // promises //
 const getFetch = () => {
   fetchAll()
   .then(data => {
-    console.log(data);
     userAPIData = data[0].userData
     sleepAPIData = data[1].sleepData
     hydrationAPIData = data[2].hydrationData
+    console.log(data);
+    loadData()
   })
 }
 
@@ -49,6 +60,8 @@ const friend5 = document.getElementById('friend5')
 // hydration selectors//
 const hydrationContentDisplay = document.querySelector('.hydration-content') 
 const dailyHydrationListDisplay = document.querySelectorAll('.daily-hydration')
+const waterDrankToday = document.getElementById('water-drank-today')
+
 const hydroDay7Display = document.getElementById('hydro-7')
 const hydroDay6Display = document.getElementById('hydro-6')
 const hydroDay5Display = document.getElementById('hydro-5')
@@ -65,30 +78,33 @@ const avgSleepQualityDisplay = document.getElementById('sleep-quality')
 
 // event listeners //
 userIconDisplay.addEventListener('click', showUserInfo)
-
+window.addEventListener('load', getFetch)
+function loadData() {
+  console.log(applyUserName()); 
+}
 
 // function calls
 showStepsContent()
 
 // functions //
 function applyUserName() {
-  userNameDisplay.innerText = `USER!`; 
+  userNameDisplay.innerText = currentUserData.returnUserFirstName(); 
 }
 applyUserName()
 
 function showUserInfo() {
   if (welcomeDisplay.innerText === "WELCOME,") {
-    welcomeDisplay.innerText = `USER ADRESS & stride length GOES HERE`;
+    welcomeDisplay.innerText = `${currentUserData.address}, Stride Length: ${currentUserData.strideLength}`;
     userNameDisplay.innerText = ""
   } else {
     welcomeDisplay.innerHTML = "WELCOME,";
-    userNameDisplay.innerText = `USER!`
+    userNameDisplay.innerText = `${currentUserData.returnUserFirstName()}!`
   }
 }
 
 function showStepsContent(stepsGoal, stepsCurrent) {
-  stepsGoalDisplay.innerText += '10,000'
-  stepsCurrentDisplay.innerText = `So far you have taken: 9,999`
+  stepsGoalDisplay.innerText += currentUserData.dailyStepGoal
+  // stepsCurrentDisplay.innerText = `So far you have taken: 9,999`
 }
 
 function showStepsFriends() {
@@ -101,16 +117,18 @@ function showStepsFriends() {
     friend5.innerText = `Friend 5 - DAILY STEP GOAL`
   }
   showStepsFriends()
+
+  function displayTodaysHydration() {
+    waterDrankToday.innerText = allUserHydroData.findWaterConsumedByDate(userNumber, '2019/06/26')
+  }
+  displayTodaysHydration()
   
-  window.addEventListener('load', getFetch)
 
 
   /* ------ experimental -------- */
 
-
-  let stepsGoalData = 10000
   let stepsTakenData = 9000
-  let stepsData = [(stepsGoalData), (stepsGoalData - stepsTakenData)]
+  let stepsData = [(currentUserData.dailyStepGoal), (currentUserData.dailyStepGoal - stepsTakenData)]
 
   new Chart("steps-pie-chart", {
     type: "pie",
@@ -142,9 +160,9 @@ var barColors = [
     data: {
       labels: ["Your goal", "Average FitLit Goal"], 
       datasets: [{
-        label: 'Sleep Quality By Day', // steps / sleep / hydro
+        label: 'Your Goal VS AVG', // steps / sleep / hydro
         backgroundColor: barColors,
-        data: yValues // array containing user goal, average of all users goals
+        data: [currentUserData.dailyStepGoal, allUserData.calculateAvgStepGoal()] // array containing user goal, average of all users goals
       }]
     },
     // options: {...}
@@ -209,7 +227,7 @@ new Chart("hydro-homies", {
 });
 
 var sleepColors = [
-  "rgb(60, 0, 160, .6)"]
+  "rgb(95, 0, 160, .6)"]
 
 
 new Chart("average-sleep-hours", {

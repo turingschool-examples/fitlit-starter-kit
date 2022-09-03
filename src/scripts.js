@@ -287,7 +287,6 @@ function displayHydrationForWeek() {
     stepDetails.innerHTML = "";
     const averageSteps = userRepository.findAverageStepGoal();
     const comparison = Math.round((user.dailyStepGoal / averageSteps) * 100);
-    // Chart.defaults.global.defaultFontFamily = "Roboto";
     Chart.defaults.color = 'white';
     let myChart = new Chart(stepChart, {
       type: "bar",
@@ -298,7 +297,7 @@ function displayHydrationForWeek() {
           user.dailyStepGoal, 
           averageSteps
           ],
-        backgroundColor: ["#2CB7FF", "#6190FF"],
+        backgroundColor: ["#2CB7FF", "#6947FF"],
         borderWidth:1,
         borderColor: 'white',
         hoverBorderWidth: 3,

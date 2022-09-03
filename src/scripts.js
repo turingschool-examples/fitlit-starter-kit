@@ -84,7 +84,6 @@ function initializeData() {
     let randomUser =
       userRepository.userData[
       Math.floor(Math.random() * userRepository.userData.length)];
-    console.log(allSleep)
     renderUserInfo(randomUser, userRepository);
     renderHydrationData(userHydration, randomUser);
     renderSleepData(allSleep, randomUser);
@@ -113,11 +112,11 @@ function renderUserInfo(newUser, allUsers) {
   let status;
   let stepDifference;
   if (newUser.dailyStepGoal < allUsers.getUsersAverageStepGoals()) {
-    status = "below";
+    status = "Below";
     stepDifference =
       allUsers.getUsersAverageStepGoals() - newUser.dailyStepGoal;
   } else if (newUser.dailyStepGoal > allUsers.getUsersAverageStepGoals()) {
-    status = "above";
+    status = "Above";
     stepDifference =
       newUser.dailyStepGoal - allUsers.getUsersAverageStepGoals();
   } else {
@@ -128,23 +127,22 @@ function renderUserInfo(newUser, allUsers) {
   stepGoalInfo.innerHTML += `<h3 class="step-goal">Step Goals</h3>
     <h4 class="your-step-goal">Your Goal: ${newUser.dailyStepGoal}</h4>
     <h4 class="all-users-goals">All Users Goals: ${allUsers.getUsersAverageStepGoals()}</h4>
-    <h4 class="goal-average">Your Goal is ${status} average by ${stepDifference}</h4>`;
+    <h4 class="goal-average">Your Goal Is ${status} Average By ${stepDifference}</h4>`;
 }
 
 function renderHydrationData(userHydration, randomUser) {
   hydrationInfo.innerHTML = "";
   hydrationInfo.innerHTML += `<h3 class="hydro-info">User Hydration:</h3>
     <h4 class="user-date"></h4>
-    <h4 class="number-ounces-consumed-day">Number of ounces consumed today: ${currentHydration.mostRecentOunces(userHydration, randomUser.id).numOunces
+    <h4 class="number-ounces-consumed-day">Ounces Consumed Today: ${currentHydration.mostRecentOunces(userHydration, randomUser.id).numOunces
     }</h4>
-      <h4 class="number-ounces-consumed-week">Amount of ounces drank each day over a week: ${currentHydration.userOuncesPerWeek(
+      <h4 class="number-ounces-consumed-week">Ounces Consumed Each Day Over A Week: ${currentHydration.userOuncesPerWeek(
       userHydration,
       randomUser.id
     )}</h4>`;
 }
 
 function renderSleepData(allSleep, randomUser) {
-  // console.log(randomUser.hourSlept)
   sleepInfo.innerHTML = "";
   sleepInfo.innerHTML += `<h3 class="sleep-info">User Sleep:</h3>
     <h4 class="latest-day-sleep">Hours Slept Today: ${currentSleep.mostRecentSleep(allSleep, randomUser.id).hoursSlept}</h4>

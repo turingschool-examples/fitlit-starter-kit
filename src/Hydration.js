@@ -41,7 +41,7 @@ class Hydration {
         let weekOuncesSorted = currentUser.sort((oldest, newest) => oldest.date - newest.date)
             .splice(0, 7)
             .map(hydrationInfo => hydrationInfo.numOunces)
-        return weekOuncesSorted
+        return weekOuncesSorted;
     }
 }
 

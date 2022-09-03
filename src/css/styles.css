@@ -8,7 +8,7 @@ html {
   background:#ffffff;
   background-repeat: no-repeat;
   font-family: 'Alegreya';
-  font-size: 1vw;
+  font-size: 1vh;
 }
 
 body {
@@ -21,7 +21,7 @@ body {
 }
 
 header {
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
 }
 
@@ -30,25 +30,25 @@ header {
   height: auto;
 }
 
-.title {
-  margin: 0%;
-  font-size: 1.6rem;
-}
-
-.text {
-  margin: 0.5%;
-  font-size: 1.3rem;
-}
-
-.step-goal {
-  padding: 5%;
-}
-
 .greeting {
   margin: 0%;
   padding: 2.5%;
 }
 
+.title {
+  margin: 0%;
+  font-size: 2.5rem;
+}
+
+.text {
+  margin: 0.5%;
+  font-size: 2rem;
+}
+
+.step-goal {
+  padding: 5%;
+  font-size: 2rem;
+}
 
 .column {
   display: flex;
@@ -82,7 +82,8 @@ header {
   justify-content: space-evenly;
   align-items: center;
   padding: 5%;
-  margin: 2.5%;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
   border-radius: 50px;
   box-shadow: 3px 3px 2px grey;
   font-size: 0.75rem; 
@@ -109,22 +110,29 @@ header {
   box-shadow: 10px 10px 5px #6a6a6a;
 }
 
-.water-icon{
-  width: 2vw;
-}
-.sleep-icon{
-  width: 2vw;
-}
-.energy-icon{
-  width: 2vw;
+.icon {
+  margin: 0%;
+  width: 15%;
+  height: auto;
 }
 
-.friends {
+.weekly-chart-container {
+  position: relative;
+  margin: 0%;
+  width: 100%;
+}
+
+.daily-chart-container {
+  position: relative;
+  margin: 0%;
+  width: 75%;
+}
+
+.friends-details {
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius: 50px;
-  font-size: 1.2vw;
   padding: 5%;
   margin-top: 2.5%;
   margin-bottom: 2.5%;
@@ -139,13 +147,14 @@ header {
 
 .friend {
   background: #FFFFFF ;
-  padding: 1.25%;
-  margin-left: 2.5%;
-  margin-top: 1.25%;
-  margin-right: 2.5%;
-  margin-bottom: 1.25%;
+  padding: 1%;
+  margin-left: 10%;
+  margin-top: 1%;
+  margin-right: 10%;
+  margin-bottom: 1%;
   border-radius: 25px;
-  font-size: 1.1vw;
+  font-size: 2rem;
+  font-family: 'Alegreya';
   border: 1px solid grey;
   box-shadow: 3px 3px 2px grey;
 }
@@ -163,29 +172,4 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 10px 10px 5px #6a6a6a;
-}
-
-.icon {
-  margin: 0px;
-  border-radius: 4px;
-  height: 30px;
-  width: 30px;
-  margin-bottom: 0px;
-}
-
-.chart-container {
-  position: relative;
-  margin: 20px 0px;
-  width: 100%;
-}
-
-.box-title {
-  display: flex;
-  align-items: flex-end;
-  font-size: 1.25rem;
-}
-
-button {
-  font-family: 'Courier Prime', monospace;
-  font-size: 12px;
 }

@@ -1,11 +1,28 @@
 // This is the JavaScript entry file - your code begins here
 // Query Selectors
-let greeting = document.querySelector(".greeting");
-let userInfo = document.querySelector(".user-info-container");
-let friendsInfo = document.querySelector(".user-friends-container");
-let stepGoalInfo = document.querySelector(".step-goal-container");
-let hydrationInfo = document.querySelector(".hydration");
-let sleepInfo = document.querySelector(".sleep");
+let firstName = document.getElementById('firstName');
+let friendsInfo = document.querySelector('.user-friends-container');
+
+let userID = document.getElementById('userId')
+let userName = document.getElementById('userName')
+let userAddress = document.getElementById('userAddress')
+let userEmail = document.getElementById('userEmail')
+let userStrideLength = document.getElementById('userStrideLength')
+
+let yourGoal = document.getElementById('yourGoal')
+let allUsersGoals = document.getElementById('allUsersGoals')
+let averageStatus = document.getElementById('averageStatus')
+let userStepDifference = document.getElementById('userStepDifference')
+
+let ouncesConsumeDaily = document.getElementById('ouncesConsumedDaily')
+let ouncesConsumedWeekly = document.getElementById('ouncesConsumedWeekly')
+
+let latestDaySleep = document.getElementById('latestDaySleep')
+let latestDaySleepQuality = document.getElementById('latestDaySleepQuality')
+let latestWeekSleep = document.getElementById('latestWeekSleep')
+let latestWeekSleepQuality = document.getElementById('latestWeekSleepQuality')
+let allTimeSleepQuality = document.getElementById('allTimeSleepQuality')
+let allTimeSleepHours = document.getElementById('allTimeSleepHours')
 
 // Object instances
 
@@ -89,67 +106,50 @@ function initializeData() {
     renderSleepData(allSleep, randomUser);
     // renderAllInfo(randomUser)
 
-    // console.log("users", data[0].userData);
   });
 }
 // initializeData()
+
 function renderUserInfo(newUser, allUsers) {
-  // console.log(newUser)
-  // allUsers = new UserRepository(sampleUsers);
-  const firstName = newUser.getUserFirstName();
-  greeting.innerHTML = `Welcome ${firstName}`;
-  userInfo.innerHTML = "";
+  firstName.innerText = ` ${newUser.getUserFirstName()}`
 
-  userInfo.innerHTML += `<h3 class="user-info">User Information</h3>
-    <h4 class="user-id">User ID: ${newUser.id}</h4>
-    <h4 class="user-name">Name: ${newUser.name}</h4>
-    <h4 class="user-address">Address: ${newUser.address}</h4>
-    <h4 class="user-email">E-Mail: ${newUser.email}</h4>
-    <h4 class="user-stride-length">Stride Length: ${newUser.strideLength}</h4>`;
-
-  stepGoalInfo.innerHTML = "";
+  userID.innerText = ` ${newUser.id}`
+  userName.innerText = ` ${newUser.name}`
+  userAddress.innerText = ` ${newUser.address}`
+  userEmail.innerText = ` ${newUser.email}`
+  userStrideLength.innerText = ` ${newUser.strideLength}`
+  
+  yourGoal.innerText = ` ${newUser.dailyStepGoal}`
+  allUsersGoals.innerText = ` ${allUsers.getUsersAverageStepGoals()}`
 
   let status;
   let stepDifference;
   if (newUser.dailyStepGoal < allUsers.getUsersAverageStepGoals()) {
     status = "Below";
     stepDifference =
-      allUsers.getUsersAverageStepGoals() - newUser.dailyStepGoal;
+    allUsers.getUsersAverageStepGoals() - newUser.dailyStepGoal;
   } else if (newUser.dailyStepGoal > allUsers.getUsersAverageStepGoals()) {
     status = "Above";
     stepDifference =
-      newUser.dailyStepGoal - allUsers.getUsersAverageStepGoals();
+    newUser.dailyStepGoal - allUsers.getUsersAverageStepGoals();
   } else {
     status = on;
     stepDifference = "100%";
   }
 
-  stepGoalInfo.innerHTML += `<h3 class="step-goal">Step Goals</h3>
-    <h4 class="your-step-goal">Your Goal: ${newUser.dailyStepGoal}</h4>
-    <h4 class="all-users-goals">All Users Goals: ${allUsers.getUsersAverageStepGoals()}</h4>
-    <h4 class="goal-average">Your Goal Is ${status} Average By ${stepDifference}</h4>`;
+  averageStatus.innerText = ` ${status}`
+  userStepDifference.innerText = ` ${stepDifference}`
 }
 
 function renderHydrationData(userHydration, randomUser) {
-  hydrationInfo.innerHTML = "";
-  hydrationInfo.innerHTML += `<h3 class="hydro-info">User Hydration:</h3>
-    <h4 class="user-date"></h4>
-    <h4 class="number-ounces-consumed-day">Ounces Consumed Today: ${currentHydration.mostRecentOunces(userHydration, randomUser.id).numOunces
-    }</h4>
-      <h4 class="number-ounces-consumed-week">Ounces Consumed Each Day Over A Week: ${currentHydration.userOuncesPerWeek(
-      userHydration,
-      randomUser.id
-    )}</h4>`;
+  ouncesConsumeDaily.innerText = ` ${currentHydration.mostRecentOunces(userHydration, randomUser.id).numOunces}`
+  ouncesConsumedWeekly.innerText = ` ${currentHydration.userOuncesPerWeek(userHydration,randomUser.id)}`
 }
 
 function renderSleepData(allSleep, randomUser) {
-  sleepInfo.innerHTML = "";
-  sleepInfo.innerHTML += `<h3 class="sleep-info">User Sleep:</h3>
-    <h4 class="latest-day-sleep">Hours Slept Today: ${currentSleep.mostRecentSleep(allSleep, randomUser.id).hoursSlept}</h4>
-    <h4 class="latest-day-sleep-quality">Sleep Quality Today: ${currentSleep.mostRecentSleep(allSleep, randomUser.id).sleepQuality}</h4>
-    <h4 class="latest-week-sleep">Hours Slept This Week: ${currentSleep.userHoursSleptForWeek(allSleep, randomUser.id)}</h4>
-    <h4 class="latest-week-sleep-quality">Sleep Quality This Week: ${currentSleep.mostRecentSleep(allSleep, randomUser.id).sleepQuality}</h4>
-
-    <h4 class="all-time-sleep-quality">All Time Sleep Quality: ${currentSleep.userQualityForWeek(allSleep, randomUser.id)}</h4>
-    <h4 class="all-time-sleep-hours">All Time Average Hours Slept: ${currentSleep.getTotalUserAverageHoursSleep(allSleep, randomUser.id)}</h4>`
-}
+  latestDaySleep.innerText = ` ${currentSleep.mostRecentSleep(allSleep, randomUser.id).hoursSlept}`
+  latestDaySleepQuality.innerText = ` ${currentSleep.mostRecentSleep(allSleep, randomUser.id).sleepQuality}`
+  latestWeekSleep.innerText = `${currentSleep.userHoursSleptForWeek(allSleep, randomUser.id)}${currentSleep.userHoursSleptForWeek(allSleep, randomUser.id)}`
+  latestWeekSleepQuality.innerText = ` ${currentSleep.mostRecentSleep(allSleep, randomUser.id).sleepQuality}`
+  allTimeSleepQuality.innerText = ` ${currentSleep.userQualityForWeek(allSleep, randomUser.id)}`
+  allTimeSleepHours.innerText =   ` ${currentSleep.getTotalUserAverageHoursSleep(allSleep, randomUser.id)}`

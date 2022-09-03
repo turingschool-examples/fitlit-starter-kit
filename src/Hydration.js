@@ -8,6 +8,7 @@ class Hydration {
     this.numOunces = hydrationData[0].numOunces;
     this.data = hydrationData;
   };
+
   setUserHydrateData (hydrationData) {
     const userHydrate = hydrationData.filter(userHydrateData => {
       if(userHydrateData.userID === this.userID) {
@@ -27,7 +28,7 @@ class Hydration {
     return Math.round(hydrationAvgPerDay / this.data.length)
   };
   returnOuncesByDate(thisDate) {
-    const ounceByDate = this.data.find(({date}) => date === thisDate)
+    const ounceByDate = this.userHydrateData.find(({date}) => date === thisDate)
     return ounceByDate.numOunces
   };
   returnOuncesByWeek(date) {

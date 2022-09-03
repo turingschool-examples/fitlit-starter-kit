@@ -7,6 +7,7 @@ import UserRepository from './UserRepository';
 import User from './User';
 import apiCalls from './apiCalls';
 import Hydration from './Hydration';
+import hydrationData from './data/hydration-data';
 
 // Query Selectors
 const userName = document.querySelector("#user-info-name");
@@ -14,7 +15,6 @@ const userAddress = document.querySelector("#user-info-address");
 const userEmail = document.querySelector("#user-info-email");
 const userStride = document.querySelector("#user-info-stride");
 const userFriends = document.querySelector("#user-info-friends");
-const userCard = document.querySelector("#user-info-card");
 const userWelcome = document.querySelector("#nav-user-name");
 const userStepsAverage = document.querySelector("#user-step-average"); // Single User
 const overallStepsAverage = document.querySelector("#step-goal-average");
@@ -42,7 +42,7 @@ const fetchApiCalls = userID => {
     }
     userRepo = new UserRepository(userData);
     user = new User(userRepo.findUsersData(id));
-    hydration = new Hydration(id, hydrationData);
+    hydration = new Hydration(user.id, hydrationData);
     loadHandler();
   });
 };
@@ -74,9 +74,12 @@ function compareStepGoal() {
 }
 
 function waterForTheDay() {
+  hydration.setUserHydrateData(hydrationData)
   const waterToday = hydration.returnOuncesByDate(hydration.date)
   todayWater.innerHTML = `Todays Hydration: ${waterToday}oz.`
 }
+
+
 
 
 // Event Listeners

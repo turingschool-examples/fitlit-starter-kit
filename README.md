@@ -1,8 +1,7 @@
 # FitLit: Get Down with the Fitness
-##Group project
+## Group project
 
-##OverView
-
+## OverView
 Are you in need of some extra motivation?  Especially when it comes to working out?!  Look no further!  Use our app: Get Down with the Fitness to keep track of your daily/weekly steps goals, hydration stats, and sleep goals!  The best part is, you can compete and share with your friends!
 
 # WE WILL ADD OUR GIF HERE!  
@@ -19,7 +18,6 @@ Are you in need of some extra motivation?  Especially when it comes to working o
 - Do not run `npm audit fix --force`.  This will update to the latest version of packages.  We need to be using `webpack-dev-server@3.11.2` which is not the latest version.  If you start to run into Webpack errors, first check that all group members are using the correct version.  
 
 ## Testing
-
 There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
 
 ## Technologies Used:
@@ -33,6 +31,7 @@ There is no boilerplate for testing in this starter-kit repo. You will need to s
 
 ## Future Features & Goals:
 - Add a user login page instead of generating a random user
+- Add weekly charts/graphs for users to view their stats
 
 ## Project management:
 - As a team, we first began working with logic in each class file.  Secondly, we used TDD to build our test suites for each class.  We then moved onto working with the DOM in Scripts.js

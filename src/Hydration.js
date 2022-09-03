@@ -1,4 +1,5 @@
 import hydrationData from "./data/hydration-data"
+
 class Hydration {
   constructor(id, hydrationData) {
     this.userID = id;

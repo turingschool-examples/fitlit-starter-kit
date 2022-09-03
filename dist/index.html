@@ -33,21 +33,17 @@
               width="50px"
             />
             <h2 class="sleep-header">SLEEP</h2>
-
             <section class="sleep-card"></section>
-            <section class="date-sleep-data">
+            <section class="sleep-data-average">
               <div class="average-sleep-hours">
-                Average Number of Hours Slept
+                Average Number of Hours Slept:
               </div>
-              <div class="average-quality-sleep">Average Quality Sleep</div>
+              <div class="average-quality-sleep">Average Sleep Quality:</div>
             </section>
-
             <section class="table-data"></section>
-            <h3 class="sleep-for-week">
-              Sleep Data for the latest week
-            </h3>
+            <section class="sleep-for-week">
+            </section>
           </section>
-
           <section class="hydration-container">
             <img
               src="./images/water-bottle.png"
@@ -71,8 +67,19 @@
             width="50px"
           />
           <h2 class="steps-header">ACTIVITY</h2>
-          <section class="step-card"></section>
+          <section class="chart-container">
+            <canvas id="stepChart"></canvas>
+          </section>
+          <section class="step-card"> 
+          </section>
         </section>
+        <img
+        src="./images/gym.png"
+        id="weightsImg"
+        alt="weights image"
+        height="150px"
+        width="150px"
+      />
       </section>
       <aside class="right-nav">
         <section class="user-container">

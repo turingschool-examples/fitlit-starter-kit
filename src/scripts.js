@@ -5,8 +5,11 @@ import "./images/sandals.png";
 import "./images/water-bottle.png";
 import "./images/logo_transparent.png";
 import "./images/avatar-male.png";
+import "./images/gym.png";
+
 //Import fetch
 import { promiseAll } from "./apiCalls.js";
+
 //Import Classes
 import User from "./User";
 import UserRepository from "./UserRepository";
@@ -19,22 +22,23 @@ let allUsers;
 let userData;
 let hydrationData;
 let sleepData;
+
 // Query Selectors
 const userDetails = document.querySelector(".user-card");
 const friendsList = document.querySelector(".friends-card");
 const stepDetails = document.querySelector(".step-card");
 const avgSleepHours = document.querySelector(".average-sleep-hours");
 const avgQualitySleep = document.querySelector(".average-quality-sleep");
-const sleepForDay = document.querySelector(".date-sleep-data");
 const sleepForWeek = document.querySelector(".sleep-for-week");
 const inputValue = document.querySelector("input");
 const submitButton = document.querySelector("button");
 const dataForDay = document.querySelector(".table-data");
 const hydraData = document.querySelector(".hydration-card");
 const chart = document.querySelector(".hydra-chart");
+const stepChart = document.getElementById("stepChart").getContext('2d')
+
 // EVent Listeners
 window.addEventListener("load", promiseAll);
-//submitButton.addEventListener("click", displaySleepForSpecificDay);
 submitButton.addEventListener("click", () => {
   displaySleepForAWeek();
   displaySleepForSpecificDay();
@@ -58,13 +62,12 @@ function getRandomIndex(userData) {
 function displayDashboard() {
   displayUserDetails();
   displayFriends();
-  displaySteps();
   displayAverageSleep();
   displaySleepForSpecificDay();
   displaySleepForAWeek();
-  displayHydaForToday();
-
+  displayHydraForToday();
   displayHydrationForWeek();
+  displaySteps();
 }
 
 function displayUserDetails() {
@@ -97,15 +100,6 @@ function displayFriends() {
   );
 }
 
-function displaySteps() {
-  stepDetails.innerHTML = "";
-  const averageSteps = userRepository.findAverageStepGoal();
-  const comparison = Math.round((user.dailyStepGoal / averageSteps) * 100);
-  stepDetails.innerHTML += `<section class='step-comparison-message'><p>Average Step Goal for All Users: ${averageSteps}.</p>
-  <p>Your step goal is: ${user.dailyStepGoal}.</p>
-  <p>Your daily step goal is ${comparison}% compared to all average users.</p></section>`;
-}
-
 function displayAverageSleep() {
   avgSleepHours.innerHTML += `<p>${user.getAvgSleepDataPerDay(
     sleepData,
@@ -114,35 +108,36 @@ function displayAverageSleep() {
   avgQualitySleep.innerHTML += `<p>${user.getAvgSleepDataPerDay(
     sleepData,
     "sleepQuality"
-  )}/5</p>`;
+  )}</p>`;
 }
 function displaySleepForSpecificDay() {
   const dateInput = inputValue.value.split("-").join("/");
-  const avgSleepPerDay = user.getSleepDataPerDay(
+  const sleepPerDay = user.getSleepDataPerDay(
     sleepData,
     dateInput,
     "hoursSlept"
   );
-  const avgQualityPerDay = user.getSleepDataPerDay(
+  const qualityPerDay = user.getSleepDataPerDay(
     sleepData,
     dateInput,
     "sleepQuality"
   );
-  dataForDay.innerHTML = `<table class="sleep-data" style="width:100%">
+  dataForDay.innerHTML += `<table class="sleep-data" style="width:100%">
   <tr>
-    <td class="sleep-data">Day</td>
-    <td class="sleep-data">Sleep Hours</td>
-    <td class="sleep-data">Quality of Sleep</td>
+    <td>Day</td>
+    <td>Sleep Hours</td>
+    <td>Quality of Sleep</td>
   </tr>
   <tr>
     <td class="sleep-data">${dateInput}</td>
-    <td class="sleep-data">${avgSleepPerDay}</td>
-    <td class="sleep-data"${avgQualityPerDay}</td>
+    <td class="sleep-data">${sleepPerDay}</td>
+    <td class="sleep-data">${qualityPerDay}</td>
   </tr>`;
 }
 
 function displaySleepForAWeek() {
   const dateInput = inputValue.value.split("-").join("/");
+  sleepForWeek.innerHTML = '';
   const sleepInAWeek = user.getSleepPerDayForWeek(
     sleepData,
     dateInput,
@@ -153,7 +148,6 @@ function displaySleepForAWeek() {
     dateInput,
     "sleepQuality"
   );
-  //console.log(sleepQualityInAWeek);
   sleepForWeek.innerHTML = `<table class="sleep-data">
   <tr>
     <td>Day</td>
@@ -183,23 +177,18 @@ function displaySleepForAWeek() {
   <tr>
     <td class="sleep-data">${sleepInAWeek[4].date}</td>
     <td class="sleep-data">${sleepInAWeek[4].hoursSlept}</td>
-    <td class="sleep-data">${sleepQualityInAWeek[5].sleepQuality}</td>
+    <td class="sleep-data">${sleepQualityInAWeek[4].sleepQuality}</td>
   </tr>
   <tr>
     <td class="sleep-data">${sleepInAWeek[5].date}</td>
     <td class="sleep-data">${sleepInAWeek[5].hoursSlept}</td>
     <td class="sleep-data">${sleepQualityInAWeek[5].sleepQuality}</td>
   </tr>
-  <tr>
-    <td class="sleep-data">${sleepInAWeek[6].date}</td>
-    <td class="sleep-data">${sleepInAWeek[6].hoursSlept} hours</td>
-    <td class="sleep-data">${sleepQualityInAWeek[6].sleepQuality}</td>
-  </tr>
 </table>
   `;
 }
 
-function displayHydaForToday() {
+function displayHydraForToday() {
   const dateInput = inputValue.value.split("-").join("/");
   const dayFluids = user.getDayFluid(hydrationData, dateInput);
   hydraData.innerHTML += `
@@ -216,9 +205,8 @@ function displayHydaForToday() {
 
 function displayHydrationForWeek() {
   const dateInput = inputValue.value.split("-").join("/");
-  const hyrdrationWeek = user.getWeeklyFluids(hydrationData, dateInput);
-
-  if (hyrdrationWeek.length > 6) {
+  const hydrationWeek = user.getWeeklyFluids(hydrationData, dateInput);
+  if (hydrationWeek.length > 6) {
     chart.innerHTML = `
   <table class="sleep-data" style="width:100%">
   <tr>
@@ -226,40 +214,39 @@ function displayHydrationForWeek() {
     <td>Number Of Ounces</td>
   </tr>
   <tr>
-    <td class="hydra-data">${hyrdrationWeek[0].date}</td>
-    <td class="hydra-data">${hyrdrationWeek[0].numOunces}</td>
-    
+    <td class="hydra-data">${hydrationWeek[0].date}</td>
+    <td class="hydra-data">${hydrationWeek[0].numOunces}</td>
   </tr>
   <tr>
-    <td class="hydra-data">${hyrdrationWeek[1].date}</td>
-    <td class="hydra-data">${hyrdrationWeek[1].numOunces}</td>
+    <td class="hydra-data">${hydrationWeek[1].date}</td>
+    <td class="hydra-data">${hydrationWeek[1].numOunces}</td>
   </tr>
   <tr>
-    <td class="hydra-data">${hyrdrationWeek[2].date}</td>
-    <td class="hydra-data">${hyrdrationWeek[2].numOunces}</td>
+    <td class="hydra-data">${hydrationWeek[2].date}</td>
+    <td class="hydra-data">${hydrationWeek[2].numOunces}</td>
   </tr>
   <tr>
-    <td class="hydra-data">${hyrdrationWeek[3].date}</td>
-    <td class="hydra-data">${hyrdrationWeek[3].numOunces}</td>
+    <td class="hydra-data">${hydrationWeek[3].date}</td>
+    <td class="hydra-data">${hydrationWeek[3].numOunces}</td>
   </tr>
     <tr>
-    <td class="hydra-data">${hyrdrationWeek[4].date}</td>
-    <td class="hydra-data">${hyrdrationWeek[4].numOunces}</td>
+    <td class="hydra-data">${hydrationWeek[4].date}</td>
+    <td class="hydra-data">${hydrationWeek[4].numOunces}</td>
   </tr>
   <tr>
-    <td class="hydra-data">${hyrdrationWeek[5].date}</td>
-    <td class="hydra-data">${hyrdrationWeek[5].numOunces}</td>
+    <td class="hydra-data">${hydrationWeek[5].date}</td>
+    <td class="hydra-data">${hydrationWeek[5].numOunces}</td>
   </tr>
   <tr>
-    <td class="hydra-data">${hyrdrationWeek[6].date}</td>
-    <td class="hydra-data">${hyrdrationWeek[6].numOunces}</td>
+    <td class="hydra-data">${hydrationWeek[6].date}</td>
+    <td class="hydra-data">${hydrationWeek[6].numOunces}</td>
   </tr>
 </table>`;
   } else {
     chart.innerHTML = `<p> There Is Not Enough Data To Display For This Week. Please Select 
     A Different Week To See Your Weekly Report <p>`;
   }
-
+}
   // const xValues = [
   //   hyrdrationWeek[0].date,
   //   hyrdrationWeek[1].date,
@@ -299,4 +286,47 @@ function displayHydrationForWeek() {
   //     },
   //   },
   // });
-}
+
+  function displaySteps() {
+    stepDetails.innerHTML = "";
+    const averageSteps = userRepository.findAverageStepGoal();
+    const comparison = Math.round((user.dailyStepGoal / averageSteps) * 100);
+    // Chart.defaults.global.defaultFontFamily = "Roboto";
+    Chart.defaults.color = 'white';
+    let myChart = new Chart(stepChart, {
+      type: "bar",
+      data: {
+        labels: ["Your Goal", "Average User Goal"],
+        datasets: [{
+          data: [
+          user.dailyStepGoal, 
+          averageSteps
+          ],
+        backgroundColor: ["#2CB7FF", "#6190FF"],
+        borderWidth:1,
+        borderColor: 'white',
+        hoverBorderWidth: 3,
+        hoverBorderColor: 'black',
+        barPercentage: 0.9,
+        categoryPercentage: 0.9,
+      }]  
+      },
+      options: {
+        plugins: {
+          title: {
+          display: true,
+          text: "Your Step Goal vs. Average User Step Goal",
+          fontSize: 25,
+          },
+          legend: { 
+            display: false, 
+          },
+        },
+      }
+    });
+    stepDetails.innerHTML += `<p>Your daily step goal is ${comparison}% compared to all average users.</p>`;
+    // `<section class='step-comparison-message'><p>Average Step Goal for All Users: ${averageSteps}.</p>
+    // <p>Your step goal is: ${user.dailyStepGoal}.</p>
+    // ;
+  }
+

@@ -88,7 +88,7 @@ main {
 .sleep-container {
   display: flex;
   flex-direction: column;
-  height: 650px;
+  height: 550px;
   color: white;
   align-items: center;
   text-align: center;
@@ -96,6 +96,8 @@ main {
   border-radius: 12px;
   margin-right: 20px;
   padding-top: 10px;
+  padding-right: 1em;
+  padding-left: 1em;
   margin-top: 50px;
   box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
     0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
@@ -128,7 +130,6 @@ main {
  border: 1px solid #6947ff;
 }
 .hydra-chart{
-  
   font-size: 1.7vw;
   width: 28vw;
   margin-top: 32vh;
@@ -148,9 +149,11 @@ main {
 .steps-container {
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 400px;
+  width: 60%;
   color: white;
   align-items: center;
+  text-align: center;
   background-color: #6947ff;
   border-radius: 12px;
   margin-right: 20px;
@@ -161,7 +164,7 @@ main {
 }
 
 .step-comparison-message {
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .step-card {
@@ -193,4 +196,9 @@ label {
 }
 .sleep-data {
   border: 1px solid #2cb7ff;
+}
+
+.chart-container {
+  width: 400px;
+  height: 200px;
 }

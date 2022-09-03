@@ -136,4 +136,3 @@ The project spec can be found [here](https://frontend.turing.edu/projects/Fitlit
 [contributors-url]: https://github.com/emilyjmiles/fitlit-group-project/graphs/contributors
 
 [product-screenshot]: images/screenshot.png
-<p align="right">(<a href="#readme-top">back to top</a>)</p>

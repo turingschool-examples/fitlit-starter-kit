@@ -64,7 +64,11 @@ const stepsGoalDisplay = document.querySelector('.steps-content-goal')
 // hydration selectors//
 const waterDrankToday = document.getElementById('water-drank-today')
 const averageWaterDrank = document.getElementById('avg-water-drank')
-const averageWaterThisWeek = document.getElementById('avg-water-week')
+const averageWaterThisWeek = document.getElementById('avg-water-week') // used
+const chosenWaterDrankByDate = document.getElementById('display-water-drank-on-date')
+
+
+
 
 
 // const hydrationContentDisplay = document.querySelector('.hydration-content') 
@@ -94,7 +98,8 @@ function populateDashboard() {
   showStepsContent()
   displayTodaysHydration()
   displayAverageWaterDrank()
-  console.log(displayWeeklyHydration()); 
+  displayWeeklyHydration()
+  displayWaterFromChosenDay()
   // showStepsFriends()
   generateCharts()
 }
@@ -133,7 +138,7 @@ function showStepsContent() {
 //   }
 
 
-function displayTodaysHydration() {
+function displayTodaysHydration() { // "today"
   waterDrankToday.innerText = ` ${hydrationData.findWaterConsumedByDate(currentUser.id, '2019/06/26')} fl. oz.`
 }
 
@@ -141,9 +146,17 @@ function displayAverageWaterDrank() {
   averageWaterDrank.innerText = ` ${hydrationData.findAverageDailyHydration(currentUser.id)} fl. oz.`
 }
 
-function displayWeeklyHydration() {
-  averageWaterThisWeek.innerText = `${hydrationData.findWeeklyHydration(currentUser.id, '2019/06/26')} fl. oz.` 
+function displayWeeklyHydration() { // current week
+  // averageWaterThisWeek.innerText = `${hydrationData.findWeeklyHydration(currentUser.id, '2019/06/26')} fl. oz.` 
 }
+
+const waterDrankOnDatePicker = document.getElementById('choose-water-drank-on-date')
+
+function displayWaterFromChosenDay() {
+  chosenWaterDrankByDate.innertext = waterDrankOnDatePicker.input
+}
+
+
 /* ------ experimental -------- */
 
 
@@ -278,48 +291,3 @@ var sleepColors = [
 //   // options: {...}
 // });
 
-const waterDrankPicker = document.getElementById('water-drank-on-date')
-const hoursSleptPicker = document.getElementById('hours-slept-by-date')
-const weekSleptPicker = document.getElementById('week-slept-by-date')
-const sleepQualityPicker = document.getElementById('sleep-quality-by-date')
-const weekSleepQualityPicker = document.getElementById('sleep-quality-by-week')
-
-function waterDrankByDate() {
-  const picker = datepicker(waterDrankPicker)
-}
-waterDrankByDate()
-
-function hoursSleptByDate() {
-  const picker = datepicker(hoursSleptPicker)
-}
-hoursSleptByDate()
-
-function hoursSleptByWeek() {
-  const picker = datepicker(weekSleptPicker)
-}
-hoursSleptByWeek()
-
-function sleepQualityByDate() {
-  const picker = datepicker(sleepQualityPicker)
-}
-sleepQualityByDate()
-
-function sleepQualityByWeek() {
-  const picker = datepicker(weekSleepQualityPicker)
-}
-sleepQualityByWeek()
-
-/*
-Datepicker takes 2 arguments:
-1 - selector - two possibilities:
-  1 string - a CSS selector, such as '.my-class', '#my-id', or 'div'.
-  or
-  1 DOM node - provide a DOM node, such as document.querySelector('#my-id').
-2 - (optional) An object full of options.
-
-The return value of the datepicker function is the datepicker instance. See the methods and properties below.
-
-You can use Datepicker with any type of element you want. If used with an <input> element (the common use case), then the <input>'s value will automatically be set when selecting a date.
-
-NOTE: Datepicker will not change the value of input fields with a type of date - <input type="date">. This is because those input's already have a built in calendar and can cause problems. Use <input type="text"> instead.
-*/

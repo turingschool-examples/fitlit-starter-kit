@@ -1,3 +1,5 @@
+import { use } from 'chai';
+
 const data = require('./data/users.js')
 
 class UserRepository {
@@ -6,8 +8,8 @@ class UserRepository {
  }
 
  findUserData(id) {
-  this.users.find(id => this.users[id] === id)
-  return this.users[id]
+  const findUserData = this.users.find(user => id === user.id)
+    return findUserData
  }
 
  calculateAvgStepGoal() {
@@ -19,7 +21,7 @@ class UserRepository {
     return acc
   }, 0)
   return Math.round(stepGoal / this.users.length)
-  }
+  }  
 }
 
 export default UserRepository;

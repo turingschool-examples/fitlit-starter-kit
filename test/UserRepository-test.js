@@ -70,8 +70,8 @@ describe('UserRepository', () => {
   });
 
   it('should determine which user information to retrieve by ID', () => {
-    expect(userRepository.findUserData(1)).to.deep.equal(users[1]);
-    expect(userRepository.findUserData(2)).to.deep.equal(users[2]);
+    expect(userRepository.findUserData(1)).to.deep.equal(users[0]);
+    expect(userRepository.findUserData(2)).to.deep.equal(users[1]);
   });
 
   it('should return average of all user step goals', () => {

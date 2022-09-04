@@ -60,17 +60,15 @@ class Sleep {
         return weeklySleepHours.toFixed(1)
     }
         
-    findWeeklySleepQuality(userID, date) {
+    findWeeklySleepData(userID, date) {
         const filterSleep = this.findSleepDataById(userID)
+        
         const getDates = filterSleep.map(user => user.date)
         const dateIndex = getDates.indexOf(date)
         const weeklyRange = filterSleep.slice(dateIndex -6, dateIndex +1)
 
-        const weeklySleepQuality = weeklyRange.reduce((acc, hours) => {
-            acc += hours.sleepQuality / 7
-            return acc
-        }, 0)
-        return weeklySleepQuality.toFixed(1)
+        // console.log('HEY', weeklyRange.reverse())
+       return weeklyRange.reverse()
     }
 
     findAvgSleepQualityForAllUsers() {

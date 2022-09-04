@@ -74,6 +74,7 @@ New feature ideas:
 - [ ] The user will be able to toggle between different sets of charts.
 - [ ] The user will be able to change the weekly data projected in the charts.
 - [ ] The user details is hidden and viewable after a click on their profile.
+- [ ] Add user profile icon
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

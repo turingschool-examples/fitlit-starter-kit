@@ -125,7 +125,7 @@ function displaySleepForSpecificDay() {
   );
   dataForDay.innerHTML = `<table class="sleep-data" style="width:100%">
   <tr>
-    <td class="sleep-data">Day</td>
+    <td class="sleep-data">Date</td>
     <td class="sleep-data">Sleep Hours</td>
     <td class="sleep-data">Quality of Sleep</td>
   </tr>
@@ -192,7 +192,7 @@ function displayHydraForToday() {
   const dateInput = inputValue.value.split("-").join("/");
   const dayFluids = user.getDayFluid(hydrationData, dateInput);
   hydraData.innerHTML = `
-    <table class="hydra-data" style="width:100%">
+    <table class="hydra-data">
     <tr>
       <td class="hydra-data">Date</td>
       <td class="hydra-data">Fluids (oz)</td>
@@ -208,7 +208,7 @@ function displayHydrationForWeek() {
   const hydrationWeek = user.getWeeklyFluids(hydrationData, dateInput);
   if (hydrationWeek.length >= 6) {
     chart.innerHTML = `
-  <table class="sleep-data" style="width:100%">
+  <table class="hydra-data" style="width:100%">
   <tr>
     <td class ="hydra-data">Date</td>
     <td class ="hydra-data">Fluids (oz)</td>

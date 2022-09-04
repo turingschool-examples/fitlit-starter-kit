@@ -124,7 +124,7 @@ The following resources helped us build this project:
 ## Reflections
 We worked on making the UI/UX design of our page to be responsive to ensure that it is easy to navigate and viewable on any device. We wanted our page to be user accessible by carefully choosing the font and color scheme, as well as using semantic html for screen reader accessibilty. 
 
-We learned how to create bar charts and how to properly configure them to look uniform with our page. We hope to project user data in other chart forms that will be more concisely show the user their progress.
+We learned how to create bar charts and how to properly configure them to look uniform with our page. We hope to project user data in other chart forms that will more concisely show the user their progress.
 
 At the start of this project, we were all concerned about the size and complexity of the work that needed to be done. To our surprise, the experience was much smoother and less stressful than we had anticipated. We feel this was due to our continuous communication and supportive teamwork throughout the project. 
 

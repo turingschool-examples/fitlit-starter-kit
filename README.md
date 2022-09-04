@@ -76,7 +76,7 @@ You can find the project [here](https://github.com/emilyjmiles/fitlit-group-proj
 
 Desktop View | Cell Phone View
 :-: | :-:
-<video src="https://media.giphy.com/media/6QMupVufGnhGwmbZpj/giphy.gif" width=270/> | <video src="https://media.giphy.com/media/5D3KvzWgqlYy7nBR5x/giphy.gif" width=90/>
+ <video src="[Desktop View](https://media.giphy.com/media/6QMupVufGnhGwmbZpj/giphy.gif)" width=270/> | <video src="[Cell Phone View]https://media.giphy.com/media/5D3KvzWgqlYy7nBR5x/giphy.gif" width=90/>
 
 New feature ideas: 
 - [ ] During Part Two of the project:

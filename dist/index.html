@@ -1,14 +1,55 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Fitlit</title>
-  </head>
-  <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+<html lang="eng" dir="ltr">
 
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="bundle.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Fitlit</title>
+</head>
+
+<body>
+  <header class="welcome-user">
+    <h1>Activity Tracker</h1>
+    <h2 class="greeting">Welcome <span id='firstName'></span></h2>
+  </header>
+  <section class="personal-information-container">
+    <section class="user-info-container">
+      <h3 class="user-info">User Information<span id='userInfo'></span></h3>
+      <h4 class="user-id">User ID:<span id='userId'></span></h4>
+      <h4 class="user-name">Name:<span id='userName'></span></h4>
+      <h4 class="user-address">Address:<span id='userAddress'></span></h4>
+      <h4 class="user-email">E-Mail:<span id='userEmail'></span></h4>
+      <h4 class="user-stride-length">Stride Length:<span id='userStrideLength'></span></h4>
+    </section>
+    <section class="user-friends-container" hidden></section>
+  </section>
+  <section class="widgets-container">
+    <section class="step-goal-container">
+      <h3 class="step-goal">Step Goal:</h3>
+      <h4 class="your-step-goal">Your Goal:<span id='yourGoal'></span></h4>
+      <h4 class="all-users-goals">All Users Goals:<span id='allUsersGoals'></span></h4>
+      <h4 class="goal-average">Your Goal is <span id='averageStatus'></span> average by <span
+          id='userStepDifference'></span></h4>
+    </section>
+    <section class="hydration">
+      <h3 class="hydro-info">User Hydration:</h3>
+      <h4 class="number-ounces-consumed-day">Ounces consumed today:<span id='ouncesConsumedDaily'></span></h4>
+      <h4 class="number-ounces-consumed-week">Ounces consumed daily over a week:<span id='ouncesConsumedWeekly'></span>
+      </h4>
+    </section>
+    <section class="sleep">
+      <h3 class="sleep-info">User Sleep:</h3>
+      <h4 class="latest-day-sleep">Hours Slept Today:<span id='latestDaySleep'></span></h4>
+      <h4 class="latest-week-sleep">Hours Slept This Week:<span id='latestWeekSleep'></span></h4>
+      <h4 class="all-time-sleep-hours">All Time Average Hours Slept:<span id='allTimeSleepHours'></span></h4>
+      <h4 class="latest-day-sleep-quality">Sleep Quality Today:<span id='latestDaySleepQuality'></span></h4>
+      <h4 class="all-time-sleep-quality">Sleep Quality This Week:<span id='allTimeSleepQuality'></span></h4> 
+      <h4 class="latest-week-sleep-quality">All Time Average Sleep Quality:<span id='latestWeekSleepQuality'></span>
+      </h4>  
+    </section>
+  </section>
+
+  <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+  <script src="bundle.js"></script>
+</body>
+
 </html>

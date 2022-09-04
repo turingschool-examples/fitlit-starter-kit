@@ -4,12 +4,8 @@ import UserRepository from '../src/UserRepository';
 import { users } from '../src/data/users';
 
 describe('User', () => {
-
   let userData;
   let user;
-  // let userRepository;
-  // let userSleepData;
-  // let userHydrationData;
 
   beforeEach( () => {
     userData = {
@@ -26,9 +22,7 @@ describe('User', () => {
       ]
     };
     user = new User(userData);
-    // userRepository = new UserRepository(user1); //Not sure if this is correct
   });
-
 
   it('should be a function', () => {
     expect(User).to.be.a('function');

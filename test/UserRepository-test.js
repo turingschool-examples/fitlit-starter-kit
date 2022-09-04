@@ -6,7 +6,6 @@ describe('User Repository', () => {
   let userRepository;
   let userData;
 
-
     beforeEach(() => {
       userData = [
         {
@@ -36,11 +35,10 @@ describe('User Repository', () => {
           19
         ]
       }
-    ]
+    ];
 
-  userRepository = new UserRepository(userData);
-
-    });
+    userRepository = new UserRepository(userData);
+  });
 
   it('should be a function', function () {
     expect(UserRepository).to.be.a('function');
@@ -48,7 +46,7 @@ describe('User Repository', () => {
 
   it('should be an instance of UserRepository', () => {
     expect(userRepository).to.be.an.instanceOf(UserRepository);
-  })
+  });
 
   it('should hold all the users data', () => {
     expect(userRepository.userData).to.equal(userData);
@@ -68,5 +66,5 @@ describe('User Repository', () => {
 
   it('should return an average step goal amonst all users', () => {
     expect(userRepository.getAllUserAvgStepGoals()).to.equal(30);
-  })
+  });
 });

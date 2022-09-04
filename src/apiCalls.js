@@ -1,4 +1,3 @@
-// Your fetch requests will live here!
 const fetchData = (url) => {
   return fetch(url)
   .then(data => data.json())

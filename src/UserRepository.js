@@ -1,7 +1,7 @@
 class UserRepository {
   constructor(userData) {
     this.userData = userData;
-  }
+  };
 
   findUserData(id) {
     const singleUserData = this.userData.find(user => user.id === id);
@@ -15,8 +15,7 @@ class UserRepository {
     }, 0);
 
     return Math.floor(totalStepGoals)
-  }
-
-}
+  };
+};
 
 export default UserRepository;

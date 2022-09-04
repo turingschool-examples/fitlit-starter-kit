@@ -3,7 +3,6 @@ body, html {
   justify-content: space-evenly;
   align-content: center;
   background-image: url('/src/images/brain.png');
-  /* background-image: linear-gradient(to top, #f29affc7 0%, #fc5eca 99%, #ab4aff 100%); */
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
@@ -34,7 +33,6 @@ body, html {
 .health-category {
   display:flex;
   flex-direction: row;
-
 }
 
 .icons {
@@ -45,7 +43,6 @@ body, html {
   margin-left: 80px;
   align-content: center;
 }
-
 
 .user-container {
   display: flex;
@@ -62,9 +59,9 @@ body, html {
 .h1 {
   font-size: small;
 }
+
 .h2 {
   font-weight: bold;
-
 }
 
 .user-info {
@@ -80,12 +77,12 @@ body, html {
   background-image: url('/src/images/blue-grid-texture.png');
   font-weight: bold;
   font-size: large;
-
 }
 
 .user-data-details  {
   color:rgb(1, 32, 7);
 }
+
 .user-hydro-details {
 color: rgb(1, 32, 7);
 margin-bottom: -33px;
@@ -127,10 +124,19 @@ margin-top: 40px;
   align-content: flex-start;
   font-weight: bold;
   }
+.user-hydro-details-1 {
+  margin-top: 91px;
+}
+.user-hydro-details-2 {
+  margin-bottom: 11px;
+}
+.user-hydro-details-3 {
+  margin-bottom: 153px;
+}
 
 .sleep-info-1 {
   margin-left: 7px;
-  margin-top: 13px;
+  margin-top: 73px;
 }
 
 .sleep-info-2 {
@@ -142,14 +148,17 @@ margin-top: 40px;
   margin-left: 5px;
   margin-top: -10px;
 }
+
 .sleep-info-4 {
   margin-left: 5px;
   margin-top: -10px;
 }
+
 .sleep-info-5 {
   margin-left: 5px;
   margin-top: -46px;
 }
+
 .user-steps {
   display: flex;
   height: 375px;
@@ -168,15 +177,11 @@ margin-top: 40px;
   align-items: center;
   font-weight: bold;
   }
+
 .user-step-details {
   color:whitesmoke;
 }
-.user-hydro-details-2 {
-  margin-top:-40px;
-}
 
-
-/* Bottom Section */
 .footer {
   display: flex;
   background-color: #060911;
@@ -185,6 +190,6 @@ margin-top: 40px;
 }
 
 .footer-text {
-  color: #F9F6EE;
-  margin-top: 700px;
+  color: grey;
+  margin-top: 1300px;
 }

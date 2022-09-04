@@ -48,10 +48,9 @@ describe('Hydration', () => {
         "date": "2020/01/16",
         "numOunces": 42
       }
-  ]
+  ];
 
     userHydrationData = new Hydration(hydrationData);
-
   });
 
   it('should be a function', () => {
@@ -71,7 +70,7 @@ describe('Hydration', () => {
   });
 
   it('should be able to identfy how many fluid ounces a specific user consumed over the course of a week', () => {
-  const sevenDayHydration = [ 
+  const sevenDayHydration = [
     {userID: 1,
       date : "2020/01/14",
         numOunces: 41},
@@ -109,12 +108,12 @@ describe('Hydration', () => {
       userID: 1,
       date: "2020/01/21",
       numOunces: 41
-    }, 
+    },
     {
       userID: 1,
       date: "2020/01/22",
       numOunces: 36
-    },  
+    },
   ]
     const weeklyOunceData = new Hydration(sevenDayHydration)
     expect(weeklyOunceData.getOuncesPerWeek(1, "2020/01/22")).to.equal('57.9');
@@ -170,5 +169,5 @@ describe('Hydration', () => {
     ]
     const weeklyOunceData = new Hydration(sevenDayHydration)
     expect(weeklyOunceData.getLifeTimeOunces()).to.deep.equal('54.0');
-  })
-})
+  });
+});

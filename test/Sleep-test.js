@@ -123,12 +123,10 @@ describe('Sleep', () => {
            hoursSlept: 6.4,
            sleepQuality: 1.9
        }
-     ]
+     ];
      userSleepData = new Sleep(sleepData);
      userOne = new Sleep(userOneSleep);
-    })
-
-
+   });
 
     it('should be a function',  () => {
         expect(Sleep).to.be.a('function')
@@ -136,39 +134,37 @@ describe('Sleep', () => {
 
     it('should instantiate Sleep',() => {
         expect(userSleepData).to.be.an.instanceOf(Sleep);
-    })
+    });
 
     it('should be able to identify a user by their ID', () => {
         expect(userOne.findUserDataID(1)).to.deep.equal(userOneSleep);
-    })
+    });
 
     it('should return the average hours slept per day', () => {
         expect(userOne.getAvgHrsSleptPerDay(1)).to.equal('6.6');
-    })
+    });
 
     it('should return the average sleep quality per day', () => {
         expect(userOne.getAvgSleepQualPerDay(1)).to.equal('2.3');
-    })
+    });
 
     it('should return how many hours they slept for a specific day', () => {
         expect(userOne.getHrsSleptByDate(1)).to.equal(6.4);
-
-    })
+    });
 
     it('should return their sleep quality for a specific day', () => {
         expect(userOne.getSleepQualByDate(1)).to.equal(1.9);
-    })
+    });
 
     it('should return how many hours slept over the course of a given week', () => {
         expect(userOne.getHrsSleptPerWeek(1, "2019/06/27")).to.equal('46.9');
-    })
+    });
 
     it('should return the average sleep quality over the course of a given week', () => {
         expect(userOne.getSleepQualPerWeek(1, "2019/06/27")).to.equal('14.3');
-    })
+    });
 
     it('should return the average sleep quality for all users', () => {
         expect(userSleepData.getAllAvgSleepQual()).to.equal('3.2');
-    })
-
+    });
 });

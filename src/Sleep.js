@@ -1,11 +1,11 @@
 class Sleep {
   constructor(sleepData) {
     this.sleepData = sleepData;
-  }
+  };
 
   findUserDataID = (id) => this.sleepData.filter(userSleepData => userSleepData.userID === id);
 
-  getAvgHrsSleptPerDay(id) { // get user's average hours slept over all time
+  getAvgHrsSleptPerDay(id) {
     let userSleep = this.findUserDataID(id);
     const totalHours = userSleep.reduce((avg, hour) => {
        avg += hour.hoursSlept;
@@ -29,14 +29,14 @@ class Sleep {
     const sleepHoursByDate = userSleepID.map((userDate) => userDate.date).pop();
     const todaySleep = userSleepID.find((sleepObj) => sleepObj.date === sleepHoursByDate)
     return todaySleep.hoursSlept;
-  }
+  };
 
   getSleepQualByDate(id) {
     let userSleepQual = this.findUserDataID(id);
     const sleepQualByDate = userSleepQual.map((userDate) => userDate.date).pop();
     const todayQualSleep = userSleepQual.find((sleepObj) => sleepObj.date === sleepQualByDate)
     return todayQualSleep.sleepQuality;
-  }
+  };
 
   getHrsSleptPerWeek(id, date) {
     let userSleepData = this.findUserDataID(id);
@@ -48,7 +48,7 @@ class Sleep {
       return avgSleep;
     }, 0)
     return usersAvgSleep.toFixed(1);
-  }
+  };
 
   getSleepQualPerWeek(id, date) {
     let userSleepQualData = this.findUserDataID(id);
@@ -60,7 +60,7 @@ class Sleep {
       return avgSleep;
     }, 0)
     return usersAvgSleep.toFixed(1);
-  }
+  };
 
   getAllAvgSleepQual() {
     const userSleepQualDetails = this.sleepData.reduce((avg, userSleepQ) => {
@@ -68,7 +68,7 @@ class Sleep {
       return avg;
     }, 0)
     return userSleepQualDetails.toFixed(1);
-  }
+  };
 }
 
 

@@ -8,7 +8,6 @@ import './images/icons8-walking-100.png'
 import './images/IMG_4293.png'
 
 import { fetchAll } from './apiCalls';
-import datepicker from 'js-datepicker'
 
 // import userData from './data/users'
 import UserRepository from './UserRepository';
@@ -98,14 +97,12 @@ function populateDashboard() {
   applyUserName()
   showStepsContent()
 
-  // showUserInfo()
   // renderFriends()
   // renderStepGoal()
   showStepsFriends() 
   displayTodaysHydration()
   displayAverageWaterDrank()
-  displayWeeklyHydration()
-  displayWaterFromChosenDay()
+  displayWeeklyHydration('2019/06/26')
   // showStepsFriends()
   generateCharts()
 }
@@ -129,26 +126,15 @@ function showUserInfo() {
   }
 }
 
-
-function showUserInfo() {
-  if (welcomeDisplay.innerText === "WELCOME,") {
-    welcomeDisplay.innerText = `${currentUser.address}`;
-    userNameDisplay.innerText = ""
-  } else {
-    welcomeDisplay.innerHTML = "WELCOME,";
-    userNameDisplay.innerText = `${currentUser.returnUserFirstName()}!`
-  }
-}
-
 function showStepsContent() {
   stepsGoalDisplay.innerText += `${currentUser.dailyStepGoal}`
   // stepsCurrentDisplay.innerText = `So far you have taken: 9,999`
 }
 
 function showStepsFriends() {
-    // stepsFriendsList = can probly write a forEach loop here
-    friendList.innerHTML= `${createFriendList()}`
-  }
+  // stepsFriendsList = can probly write a forEach loop here
+  friendList.innerHTML= `${createFriendList()}`
+}
 
 function createFriendList() {
   let userFriends = currentUser.friends
@@ -162,11 +148,6 @@ function createFriendList() {
 
 // friends are a list of user IDs
 // 
-
-function showStepsContent() {
-  stepsGoalDisplay.innerText += currentUser.dailyStepGoal
-  // stepsCurrentDisplay.innerText = `So far you have taken: 9,999`
-}
 
 // function showStepsFriends() {
 //     // stepsFriendsList = can probly write a forEach loop here
@@ -187,14 +168,13 @@ function displayAverageWaterDrank() {
   averageWaterDrank.innerText = ` ${hydrationData.findAverageDailyHydration(currentUser.id)} fl. oz.`
 }
 
-function displayWeeklyHydration() { // current week
-  // averageWaterThisWeek.innerText = `${hydrationData.findWeeklyHydration(currentUser.id, '2019/06/26')} fl. oz.` 
-}
-
-const waterDrankOnDatePicker = document.getElementById('choose-water-drank-on-date')
-
-function displayWaterFromChosenDay() {
-  chosenWaterDrankByDate.innertext = waterDrankOnDatePicker.input
+function displayWeeklyHydration(date) { // current week
+  const weeklyHydration = hydrationData.findWeeklyHydration(currentUser.id, date)
+  weeklyHydration.forEach(element => {
+    const date = element.date
+    const oz = element.numOunces
+    averageWaterThisWeek.innerHTML += `${date}: ${oz} fl. oz. <br>` 
+  })
 }
 
 
@@ -217,18 +197,18 @@ var barColors = [
   "rgb(75, 0, 130, .6)",
   "rgb(150, 0, 210, .6)"];
   
-  new Chart("compare-avg-goal", {
-    type: "bar",
-    data: {
-      labels: ["Your goal", "Average FitLit Goal"], 
-      datasets: [{
-        label: 'Your Goal VS AVG', // steps / sleep / hydro
-        backgroundColor: barColors,
-        data: [currentUser.dailyStepGoal, userRepo.calculateAvgStepGoal()] // array containing user goal, average of all users goals
-      }]
-    },
-    // options: {...}
-  }); 
+  // new Chart("compare-avg-goal", {
+  //   type: "bar",
+  //   data: {
+  //     labels: ["Your goal", "Average FitLit Goal"], 
+  //     datasets: [{
+  //       label: 'Your Goal VS AVG',
+  //       backgroundColor: barColors,
+  //       data: [currentUser.dailyStepGoal, userRepo.calculateAvgStepGoal()]
+  //     }]
+  //   },
+  //   // options: {...}
+  // }); 
 }
 
 
@@ -248,18 +228,18 @@ var barColors = [
 var hydroColors = [
   "rgba(4, 104, 255, 0.6)"];
 
-new Chart("week-in-water", {
-  type: "bar",
-  data: {
-    labels: xValues, // bar titles - relevant dates here
-    datasets: [{
-      label: 'OZ Drank Per Day', 
-      backgroundColor: hydroColors,
-      data: yValues // add friends' data here
-    }]
-  },
-  // options: {...}
-});
+// new Chart("week-in-water", {
+//   type: "bar",
+//   data: {
+//     labels: xValues, // bar titles - relevant dates here
+//     datasets: [{
+//       label: 'OZ Drank Per Day', 
+//       backgroundColor: hydroColors,
+//       data: yValues // add friends' data here
+//     }]
+//   },
+//   // options: {...}
+// });
 
 // new Chart("chosen-week-in-water", {
 //   type: "bar",

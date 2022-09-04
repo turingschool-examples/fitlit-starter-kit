@@ -8,7 +8,6 @@
     <title>Fitlit</title>
   </head>
   <body>
-  <div>
     <!-- header -->
   <section class="header bent-left has-shadow">
     <div class="header-logo bent-left fredoka400 has-shadow has-margin">
@@ -65,23 +64,23 @@
           
       <div class="display-article-content hydration-content fredoka200">
 
-        <div>Water drank TODAY:
+        <div>Hydration Today:
           <div class="bold" id="water-drank-today">fl. oz</div>
         </div>
-        <div>Average water per day:</div>
+        <div>Average Hydration Per Day:</div>
         <div class="bold" id="avg-water-drank"></div>
-        <div>Average hydration this week:</div>
-        <div class="bold avg-water-week"></div>
+        <div>Hydration this week:</div>
+        <div id="avg-water-week" class="bold"></div>
         <canvas class="graph" height="250" id="week-in-water"></canvas>
       </div>
       
-      <div class="display-article-content hydro-by-date fredoka200">
+      <!-- <div class="display-article-content hydro-by-date fredoka200">
         Water drank on date:
         <input type="date" id="choose-water-drank-on-date">
         <div class="border" id="display-water-drank-on-date">test</div>
         <div>Weekly water displays here</div>
         <canvas class="graph" height="250" id="chosen-week-in-water"></canvas>
-      </div>
+      </div> -->
       
       <!-- <canvas class="graph" height="250" id="hydro-homies"></canvas> -->
 
@@ -100,27 +99,26 @@
         <canvas class="graph" height="150" id="average-sleep-hours"></canvas>
 
         <div id="hours-slept">How many hours did I sleep on...</div>
-        <input type="date" id="hours-slept-by-date">CHOOSE DATE
+        <!-- <input type="date" id="hours-slept-by-date">CHOOSE DATE -->
         <br>
         <div>How much did I sleep the week of...</div>
-        <input type="date" id="week-slept-by-date">CHOOSE DATE
-
+        <!-- <input type="date" id="week-slept-by-date">CHOOSE DATE -->
       </div>
+
       <div class="display-article-content sleep-content fredoka200" id="sleep-quality">Sleep Quality:
         <div>Average quality of sleep: #</div>
 
         <canvas class="graph" height="250" id="average-sleep-quality"></canvas>
         <div>How well did I sleep on...</div>
-        <input type="date" id="sleep-quality-by-date">CHOOSE DATE
+        <!-- <input type="date" id="sleep-quality-by-date">CHOOSE DATE -->
         <div>How well did I sleep the week of...</div>
-        <input type="date" id="sleep-quality-by-week">CHOOSE DATE
+        <!-- <input type="date" id="sleep-quality-by-week">CHOOSE DATE -->
         <canvas class="graph" height="250" id="sleep-quality"></canvas>
 
       </div>
 
     </article>
   </section>
-</div>
 
     <script src="./bundle.js"></script>
   </body>

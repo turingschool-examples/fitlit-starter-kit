@@ -2,6 +2,7 @@
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   background-image: url("../images/IMG_4293.png");
   background-size: cover;
@@ -26,7 +27,7 @@ body {
 
 .header{
   padding: 0% 5%;
-  margin: 2% 5%;
+  margin: 10px auto;
   display: flex;
   justify-content: space-around;
   align-items: center;

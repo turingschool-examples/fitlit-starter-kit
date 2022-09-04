@@ -24,6 +24,9 @@ body {
 }
 
 /* header */
+p {
+  margin: 0px;
+}
 
 .header{
   padding: 0% 5%;

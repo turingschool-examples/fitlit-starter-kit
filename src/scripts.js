@@ -6,6 +6,7 @@ import './images/icons8-sleep-52.png'
 import './images/icons8-water-52.png'
 import './images/icons8-walking-100.png'
 import './images/IMG_4293.png'
+
 import { fetchAll } from './apiCalls';
 import datepicker from 'js-datepicker'
 
@@ -16,10 +17,6 @@ import User from './User';
 import  { getUsersApiData, getSleepApiData, getHydrationApiData } from './apiCalls';
 import Sleep from './Sleep';
 import userData from './data/users';
-
-// global variables // <--- i do not trust these
-
-// instanciate classes //
 
 // global variables //
 let currentUser;
@@ -44,7 +41,6 @@ function getAllData() {
     hydrationData = new Hydration(hydrationData)
     sleepData = new Sleep(sleepData)
     populateDashboard()
-
   });
 }
 // DOM Manipulation //
@@ -55,15 +51,15 @@ const userIconDisplay = document.querySelector('.header-userlogo')
 const welcomeDisplay = document.querySelector('.header-welcome') 
 
 // steps selectors//
-const stepsGoalDisplay = document.querySelector('.steps-content-goal') 
-const stepsCurrentDisplay = document.querySelector('.steps-content-current')
-const stepsFriendsList = document.querySelectorAll('.step-friend')
-const stepsFriendsDisplay = document.querySelector('.steps-content-header')
-const friend1 = document.getElementById('friend1')
-const friend2 = document.getElementById('friend2')
-const friend3 = document.getElementById('friend3')
-const friend4 = document.getElementById('friend4')
-const friend5 = document.getElementById('friend5')
+// const stepsGoalDisplay = document.querySelector('.steps-content-goal') 
+// const stepsCurrentDisplay = document.querySelector('.steps-content-current')
+// const stepsFriendsList = document.querySelectorAll('.step-friend')
+// const stepsFriendsDisplay = document.querySelector('.steps-content-header')
+// const friend1 = document.getElementById('friend1')
+// const friend2 = document.getElementById('friend2')
+// const friend3 = document.getElementById('friend3')
+// const friend4 = document.getElementById('friend4')
+// const friend5 = document.getElementById('friend5')
 
 // hydration selectors//
 // const hydrationContentDisplay = document.querySelector('.hydration-content') 
@@ -75,6 +71,7 @@ const friend5 = document.getElementById('friend5')
 // const hydroDay3Display = document.getElementById('hydro-3')
 // const hydroDay2Display = document.getElementById('hydro-2')
 // const hydroDay1Display = document.getElementById('hydro-1')
+
 const waterDrankToday = document.getElementById('water-drank-today')
 
 // sleep selectors //
@@ -84,9 +81,10 @@ const waterDrankToday = document.getElementById('water-drank-today')
 // const avgSleepQualityDisplay = document.getElementById('sleep-quality')
 
 // event listeners //
-userIconDisplay.addEventListener('click', showUserInfo)
-window.addEventListener('load', getAllData())
 
+userIconDisplay.addEventListener('click', showUserInfo)
+
+window.addEventListener('load', getAllData())
 
 //helper function //
 function populateDashboard() {
@@ -136,27 +134,13 @@ function showStepsFriends() {
   function displayTodaysHydration() {
     waterDrankToday.innerText = hydrationData.findWaterConsumedByDate(currentUser.id, '2019/06/26')
   }
-  
-
 
   /* ------ experimental -------- */
+
 
   // let stepsTakenData = 9000
   // let stepsData = [(currentUser.dailyStepGoal), (currentUser.dailyStepGoal - stepsTakenData)]
 
-//   new Chart("steps-pie-chart", {
-//     type: "pie",
-//     data: {
-//       labels: ["Steps Goal", "Steps Remaining"],
-//       datasets: [{
-//         label: 'Graph Label', // steps / sleep / hydro
-//         backgroundColor: ["rgba(4, 104, 255, 0.6)", "rgb(255, 125, 0, .6)"],
-//         data: stepsData // [steps goal, ]
-//       }]
-//     },
-//     // options: {...}
-//   });
-  
 function generateCharts() {
   
   var xValues = ["Friend 1", "Friend 2", "Friend 3", "Friend 4", "Friend 5", "friend 6", "friend 7"]; 
@@ -181,9 +165,9 @@ function generateCharts() {
         }]
       },
       // options: {...}
-    });
-    
+    }); 
   }
+ }
 
 // new Chart("steps-friends-chart", {
 //   type: "bar",
@@ -245,7 +229,6 @@ function generateCharts() {
 var sleepColors = [
   "rgb(95, 0, 160, .6)"]
 
-
 // new Chart("average-sleep-hours", {
 //   type: "bar",
 //   data: {
@@ -286,7 +269,6 @@ var sleepColors = [
 //   // options: {...}
 // });
 
-
 const waterDrankPicker = document.getElementById('water-drank-on-date')
 const hoursSleptPicker = document.getElementById('hours-slept-by-date')
 const weekSleptPicker = document.getElementById('week-slept-by-date')
@@ -317,7 +299,6 @@ function sleepQualityByWeek() {
   const picker = datepicker(weekSleepQualityPicker)
 }
 sleepQualityByWeek()
-
 
 /*
 Datepicker takes 2 arguments:

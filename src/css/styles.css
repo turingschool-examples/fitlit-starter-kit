@@ -108,6 +108,10 @@ align-items: ceter;
 
 /* elements */
 
+.bold {
+  font-weight: bold;
+}
+
 .border {
   border: 1px solid black;
 }

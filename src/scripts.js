@@ -6,6 +6,11 @@ import './images/icons8-sleep-52.png'
 import './images/icons8-water-52.png'
 import './images/icons8-walking-100.png'
 import './images/IMG_4293.png'
+
+import { fetchAll } from './apiCalls';
+import datepicker from 'js-datepicker'
+
+// import userData from './data/users'
 import UserRepository from './UserRepository';
 import Hydration from './Hydration';
 import User from './User';
@@ -56,6 +61,15 @@ const stepsFriendsDisplay = document.querySelector('.steps-content-header')
 // const friend5 = document.getElementById('friend5')
 
 // hydration selectors//
+const waterDrankToday = document.getElementById('water-drank-today')
+const averageWaterDrank = document.getElementById('avg-water-drank')
+const averageWaterThisWeek = document.getElementById('avg-water-week') // used
+const chosenWaterDrankByDate = document.getElementById('display-water-drank-on-date')
+
+
+
+
+
 // const hydrationContentDisplay = document.querySelector('.hydration-content') 
 // const dailyHydrationListDisplay = document.querySelectorAll('.daily-hydration')
 // const hydroDay7Display = document.getElementById('hydro-7')
@@ -66,6 +80,7 @@ const stepsFriendsDisplay = document.querySelector('.steps-content-header')
 // const hydroDay2Display = document.getElementById('hydro-2')
 // const hydroDay1Display = document.getElementById('hydro-1')
 
+
 // sleep selectors //
 // const sleepContentDisplay = document.querySelector('.sleep-content') 
 // const sleepArticleDisplay = document.getElementById('avg-sleep')
@@ -73,27 +88,44 @@ const stepsFriendsDisplay = document.querySelector('.steps-content-header')
 // const avgSleepQualityDisplay = document.getElementById('sleep-quality')
 
 // event listeners //
-userIconDisplay.addEventListener('click', showUserInfo)
-window.addEventListener('load', getAllData())
 
+window.addEventListener('load', getAllData())
+userIconDisplay.addEventListener('click', showUserInfo)
 
 //helper function //
 function populateDashboard() {
   applyUserName()
   showStepsContent()
+
   // showUserInfo()
   // renderFriends()
   // renderStepGoal()
   showStepsFriends() 
-  
+  displayTodaysHydration()
+  displayAverageWaterDrank()
+  displayWeeklyHydration()
+  displayWaterFromChosenDay()
+  // showStepsFriends()
+  generateCharts()
 }
-
-
-// function calls
 
 // functions //
 function applyUserName() {
-  userNameDisplay.innerText = `${currentUser.returnUserFirstName()}!`; 
+  userNameDisplay.innerText = currentUser.returnUserFirstName(); 
+
+}
+
+function showUserInfo() {
+  if (welcomeDisplay.innerText === "WELCOME,") {
+    welcomeDisplay.innerHTML = `
+    ${currentUser.address}, <br>
+    Stride Length: ${currentUser.strideLength},<br>
+    ${currentUser.email}`;
+    userNameDisplay.innerText = ""
+  } else {
+    welcomeDisplay.innerHTML = "WELCOME,";
+    userNameDisplay.innerText = `${currentUser.returnUserFirstName()}!`
+  }
 }
 
 
@@ -129,3 +161,172 @@ function createFriendList() {
 
 // friends are a list of user IDs
 // 
+
+function showStepsContent() {
+  stepsGoalDisplay.innerText += currentUser.dailyStepGoal
+  // stepsCurrentDisplay.innerText = `So far you have taken: 9,999`
+}
+
+// function showStepsFriends() {
+//     // stepsFriendsList = can probly write a forEach loop here
+//     stepsFriendsDisplay.innerText = 'Your friends have taken:'
+//     friend1.innerText = `Friend 1 - DAILY STEP GOAL`
+//     friend2.innerText = `Friend 2 - DAILY STEP GOAL`
+//     friend3.innerText = `Friend 3 - DAILY STEP GOAL`
+//     friend4.innerText = `Friend 4 - DAILY STEP GOAL`
+//     friend5.innerText = `Friend 5 - DAILY STEP GOAL`
+//   }
+
+
+function displayTodaysHydration() { // "today"
+  waterDrankToday.innerText = ` ${hydrationData.findWaterConsumedByDate(currentUser.id, '2019/06/26')} fl. oz.`
+}
+
+function displayAverageWaterDrank() {
+  averageWaterDrank.innerText = ` ${hydrationData.findAverageDailyHydration(currentUser.id)} fl. oz.`
+}
+
+function displayWeeklyHydration() { // current week
+  // averageWaterThisWeek.innerText = `${hydrationData.findWeeklyHydration(currentUser.id, '2019/06/26')} fl. oz.` 
+}
+
+const waterDrankOnDatePicker = document.getElementById('choose-water-drank-on-date')
+
+function displayWaterFromChosenDay() {
+  chosenWaterDrankByDate.innertext = waterDrankOnDatePicker.input
+}
+
+
+/* ------ experimental -------- */
+
+
+// let stepsTakenData = 9000
+// let stepsData = [(currentUser.dailyStepGoal), (currentUser.dailyStepGoal - stepsTakenData)]
+
+function generateCharts() {
+
+var xValues = ["Friend 1", "Friend 2", "Friend 3", "Friend 4", "Friend 5", "friend 6", "friend 7"]; 
+var yValues = [55, 49, 44, 24, 15, 100, 45];
+var barColors = [
+  "rgb(255, 0, 0, .6)", 
+  "rgb(255, 125, 0, .6)",
+  "rgb(255, 255, 0, .6)",
+  "rgb(0, 255, 0, .6)",
+  "rgb(0, 0, 255, .6)",
+  "rgb(75, 0, 130, .6)",
+  "rgb(150, 0, 210, .6)"];
+  
+  new Chart("compare-avg-goal", {
+    type: "bar",
+    data: {
+      labels: ["Your goal", "Average FitLit Goal"], 
+      datasets: [{
+        label: 'Your Goal VS AVG', // steps / sleep / hydro
+        backgroundColor: barColors,
+        data: [currentUser.dailyStepGoal, userRepo.calculateAvgStepGoal()] // array containing user goal, average of all users goals
+      }]
+    },
+    // options: {...}
+  }); 
+}
+
+
+// new Chart("steps-friends-chart", {
+//   type: "bar",
+//   data: {
+//     labels: xValues, // bar titles - add friends' names here
+//     datasets: [{
+//       label: "Friends' Step Goals",
+//       backgroundColor: barColors,
+//       data: yValues // add friends' step goal data here
+//     }]
+//   },
+//   // options: {...}
+// });
+
+// var hydroColors = [
+//   "rgba(4, 104, 255, 0.6)"];
+
+// new Chart("week-in-water", {
+//   type: "bar",
+//   data: {
+//     labels: xValues, // bar titles - relevant dates here
+//     datasets: [{
+//       label: 'OZ Drank Per Day', 
+//       backgroundColor: hydroColors,
+//       data: yValues // add friends' data here
+//     }]
+//   },
+//   // options: {...}
+// });
+
+// new Chart("chosen-week-in-water", {
+//   type: "bar",
+//   data: {
+//     labels: xValues,  // bar titles - relevant dates here
+//     datasets: [{
+//       label: 'OZ Drank Per Day', // steps / sleep / hydro
+//       backgroundColor: hydroColors,
+//       data: yValues // add friends' data here
+//     }]
+//   },
+//   // options: {...}
+// });
+
+
+
+// new Chart("hydro-homies", {
+//   type: "bar",
+//   data: {
+//     labels: xValues, // bar titles - add friends' names here
+//     datasets: [{
+//       label: 'Hydro Homies', // steps / sleep / hydro
+//       backgroundColor: hydroColors,
+//       data: yValues // add friends' data here
+//     }]
+//   },
+//   // options: {...}
+// });
+
+var sleepColors = [
+  "rgb(95, 0, 160, .6)"]
+
+// new Chart("average-sleep-hours", {
+//   type: "bar",
+//   data: {
+//     labels: xValues, // bar titles - add friends' names here
+//     datasets: [{
+//       label: 'Hours Slept By Day', // steps / sleep / hydro
+//       backgroundColor: sleepColors,
+//       data: yValues // add friends' data here
+//     }]
+//   },
+//   // options: {...}
+// });
+
+
+// new Chart("average-sleep-quality", {
+//   type: "bar",
+//   data: {
+//     labels: xValues, // bar titles - add friends' names here
+//     datasets: [{
+//       label: 'Hours Slept By Day', // steps / sleep / hydro
+//       backgroundColor: sleepColors,
+//       data: yValues // add friends' data here
+//     }]
+//   },
+//   // options: {...}
+// });
+
+// new Chart("sleep-quality", { // missing from DOM
+//   type: "bar",
+//   data: {
+//     labels: xValues, // bar titles - add friends' names here
+//     datasets: [{
+//       label: 'Sleep Quality By Day', // steps / sleep / hydro
+//       backgroundColor: sleepColors,
+//       data: yValues // add friends' data here
+//     }]
+//   },
+//   // options: {...}
+// });

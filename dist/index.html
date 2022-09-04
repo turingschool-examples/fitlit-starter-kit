@@ -36,12 +36,18 @@
         <img class="display-article-header-icon" src="./images/icons8-walking-100.png" alt="person walking to represent daily steps">
         Steps
       </div>
-      <section class="display-article-content steps-content fredoka200">
-        <div class="steps-content-goal">Your daily steps goal is:<br></div>
-      </section>
+
+
+      <div class="display-article-content steps-content fredoka200">
+        <div>Your daily steps goal is: </div>
+        <div class="steps-content-goal bold"></div>
+        <canvas class="graph" id="steps-pie-chart"></canvas>
+      </div>
 
       <div class="display-article-content step-goal-vs-avg fredoka200">
-        <div>Your Goal vs User Average:<br> </div>
+        <div>Your Goal vs User Average</div>
+        <canvas class="graph" height="200" id="compare-avg-goal"></canvas>
+
       </div>
         
       <div class="steps-content-friends has-margin fredoka200">
@@ -58,13 +64,23 @@
       </div>
           
       <div class="display-article-content hydration-content fredoka200">
-        <div>Water Consumption Today:<br> &nbsp; #OZ</div><br>
-        <!-- <div>Average water per day: &nbsp; #OZ</div> -->
-        <div>Average water over the last week:</div>
+
+        <div>Water drank TODAY:
+          <div class="bold" id="water-drank-today">fl. oz</div>
+        </div>
+        <div>Average water per day:</div>
+        <div class="bold" id="avg-water-drank"></div>
+        <div>Average hydration this week:</div>
+        <div class="bold avg-water-week"></div>
+        <canvas class="graph" height="250" id="week-in-water"></canvas>
       </div>
       
       <div class="display-article-content hydro-by-date fredoka200">
-        <div>Water Consumed Over the Past Week</div>
+        Water drank on date:
+        <input type="date" id="choose-water-drank-on-date">
+        <dss="border" id="display-water-drank-on-date">test</div>
+        <div>Weekly water displays here</div>
+        <canvas class="graph" height="250" id="chosen-week-in-water"></canvas>
 
       </div>
       
@@ -79,21 +95,34 @@
         Sleep
       </div>
 
-      <div class="display-article-content sleep-content fredoka200">
-        <div id="sleep-hours">Sleep Hours Today: #</div>
-        <div id="sleep-quality">Sleep Quality Today: </div>
+
+      <div class="display-article-content sleep-content fredoka200">Sleep Time:
+        <div id="avg-sleep">Average hours of sleep this week: #</div>
+        <canvas class="graph" height="150" id="average-sleep-hours"></canvas>
+
+        <div id="hours-slept">How many hours did I sleep on...</div>
+        <input type="date" id="hours-slept-by-date">CHOOSE DATE
         <br>
-        <div>Weekly Sleep Data</div>
-        <div>All-Time Average Sleep Quality &</div>
+        <div>How much did I sleep the week of...</div>
+        <input type="date" id="week-slept-by-date">CHOOSE DATE
+
       </div>
       <div class="display-article-content sleep-content fredoka200" id="sleep-quality">Sleep Quality:
         <div>Average quality of sleep: #</div>
+
+        <canvas class="graph" height="250" id="average-sleep-quality"></canvas>
+        <div>How well did I sleep on...</div>
+        <input type="date" id="sleep-quality-by-date">CHOOSE DATE
+        <div>How well did I sleep the week of...</div>
+        <input type="date" id="sleep-quality-by-week">CHOOSE DATE
+        <canvas class="graph" height="250" id="sleep-quality"></canvas>
 
       </div>
 
     </article>
   </section>
 </div>
+
     <script src="./bundle.js"></script>
   </body>
 </html>

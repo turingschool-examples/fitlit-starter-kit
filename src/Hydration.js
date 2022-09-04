@@ -14,8 +14,9 @@ class Hydration {
 
   findWaterConsumedByDate(userID, date) {
         const hydrationDataById = this.findHydrationById(userID)
+
         const findWaterConsumedByDate = hydrationDataById.find(user => user.date === date)
-        
+   
         return findWaterConsumedByDate.numOunces
     }
 
@@ -26,7 +27,8 @@ class Hydration {
             return acc
         }, 0)
 
-        return parseFloat((avgOunces / filterHydration.length).toFixed(1))
+        return parseFloat((avgOunces / filterHydration.length).toFixed(0))
+
     }
     
   findWeeklyHydration(userID, date) {
@@ -46,6 +48,7 @@ class Hydration {
         })
         return weeklyOunces
     }
+      
 }
 
 export default Hydration;

@@ -88,6 +88,7 @@ const chosenWaterDrankByDate = document.getElementById('display-water-drank-on-d
 // const avgHoursSleptDisplay = document.getElementById('hours-slept')
 // const avgSleepQualityDisplay = document.getElementById('sleep-quality')
 
+
 // event listeners //
 window.addEventListener('load', getAllData())
 userIconDisplay.addEventListener('click', showUserInfo)
@@ -204,21 +205,21 @@ var barColors = [
 //   // options: {...}
 // });
 
-// var hydroColors = [
-//   "rgba(4, 104, 255, 0.6)"];
+var hydroColors = [
+  "rgba(4, 104, 255, 0.6)"];
 
-// new Chart("week-in-water", {
-//   type: "bar",
-//   data: {
-//     labels: xValues, // bar titles - relevant dates here
-//     datasets: [{
-//       label: 'OZ Drank Per Day', 
-//       backgroundColor: hydroColors,
-//       data: yValues // add friends' data here
-//     }]
-//   },
-//   // options: {...}
-// });
+new Chart("week-in-water", {
+  type: "bar",
+  data: {
+    labels: xValues, // bar titles - relevant dates here
+    datasets: [{
+      label: 'OZ Drank Per Day', 
+      backgroundColor: hydroColors,
+      data: yValues // add friends' data here
+    }]
+  },
+  // options: {...}
+});
 
 // new Chart("chosen-week-in-water", {
 //   type: "bar",

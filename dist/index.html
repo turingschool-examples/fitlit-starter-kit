@@ -16,14 +16,14 @@
       <img class="flame-icon" src="./images/icons8-fire-90.png" alt="flame icon">
       LIT
     </div>
-    <div class="header-welcome-mat">
+    <section class="header-welcome-mat">
       <div class="header-welcome fredoka200">WELCOME,
       </div>
-      <div class="header-welcome-username fredoka400">User!
+      <div class="header-welcome-username fredoka400">
       </div>
-    </div>
+    </section>
     <div class="clickable">
-      <div class="header-userlogo has-shadow has-margin bent-left"><img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+      <div class="header-userlogo has-shadow has-margin bent-left"><img src="./images/icons8-avatar-67.png" alt="turing logo" height="100px" width="100px">
       </div>
     </div>
   </section>
@@ -37,6 +37,7 @@
         Steps
       </div>
 
+
       <div class="display-article-content steps-content fredoka200">
         <div>Your daily steps goal is: </div>
         <div class="steps-content-goal bold"></div>
@@ -46,16 +47,12 @@
       <div class="display-article-content step-goal-vs-avg fredoka200">
         <div>Your Goal vs User Average</div>
         <canvas class="graph" height="200" id="compare-avg-goal"></canvas>
+
       </div>
         
       <div class="steps-content-friends has-margin fredoka200">
-        <div class="steps-content-header">Your friends have taken:</div>
-        <div id="friend1" class="step-friend">Name - Steps</div>
-        <div id="friend2" class="step-friend">Name - Steps</div>
-        <div id="friend3" class="step-friend">Name - Steps</div>
-        <div id="friend4" class="step-friend">Name - Steps</div>
-        <div id="friend5" class="step-friend">Name - Steps</div>
-        <canvas class="graph" height="250" id="steps-friends-chart"></canvas>
+        <div class="steps-content-header">Your friends: <br></div>
+        <div id="friendList" class="friend-list">Your Friends: <br></div>
       </div>
     </article>
 
@@ -67,6 +64,7 @@
       </div>
           
       <div class="display-article-content hydration-content fredoka200">
+
         <div>Water drank TODAY:
           <div class="bold" id="water-drank-today">fl. oz</div>
         </div>
@@ -86,7 +84,7 @@
 
       </div>
       
-      <canvas class="graph" height="250" id="hydro-homies"></canvas>
+      <!-- <canvas class="graph" height="250" id="hydro-homies"></canvas> -->
 
     </article>
 
@@ -97,6 +95,7 @@
         Sleep
       </div>
 
+
       <div class="display-article-content sleep-content fredoka200">Sleep Time:
         <div id="avg-sleep">Average hours of sleep this week: #</div>
         <canvas class="graph" height="150" id="average-sleep-hours"></canvas>
@@ -106,22 +105,24 @@
         <br>
         <div>How much did I sleep the week of...</div>
         <input type="date" id="week-slept-by-date">CHOOSE DATE
-      </div>
 
+      </div>
       <div class="display-article-content sleep-content fredoka200" id="sleep-quality">Sleep Quality:
         <div>Average quality of sleep: #</div>
+
         <canvas class="graph" height="250" id="average-sleep-quality"></canvas>
         <div>How well did I sleep on...</div>
         <input type="date" id="sleep-quality-by-date">CHOOSE DATE
         <div>How well did I sleep the week of...</div>
         <input type="date" id="sleep-quality-by-week">CHOOSE DATE
         <canvas class="graph" height="250" id="sleep-quality"></canvas>
+
       </div>
 
     </article>
   </section>
 </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
     <script src="./bundle.js"></script>
   </body>
 </html>

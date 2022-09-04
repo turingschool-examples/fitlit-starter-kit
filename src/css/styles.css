@@ -12,12 +12,14 @@ body {
   font-family: 'Fredoka One', cursive;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
+  align-items: ceter;
 }
 
 .fredoka200 {
   font-family: 'Fredoka One', cursive;
   font-family: 'Inter', sans-serif;
   font-weight: 200;
+  align-items: center;
 }
 
 /* header */
@@ -55,13 +57,21 @@ body {
   max-width: 200px;
 }
 
-.header-welcome-username{
+.header-welcome-username {
   font-size: 40px;
   text-align: center;
 }
 
-.header-userlogo{
+.header-userlogo{ 
   background-color: rgb(255, 255, 255, .6);
+}
+
+.friend-list {
+align-items: ceter;
+}
+
+.steps-content-header {
+  align-items: center;
 }
 
 /* display */

@@ -161,8 +161,8 @@ describe('Hydration', () => {
   });
 
   it('should return ounces water consumed on a specific day by user', () => {
-      expect(hydration.findWaterConsumedByDate(1, "2019/06/26")).to.equal(52)
-      expect(hydration.findWaterConsumedByDate(2, "2019/06/21")).to.equal(27)
+      expect(hydration.findWaterConsumedByDate(1, '2019/06/26')).to.equal(52)
+      expect(hydration.findWaterConsumedByDate(2, '2019/06/21')).to.equal(27)
   });
 
   it('should average the ounces water consumed forever by a user', () => {
@@ -171,7 +171,34 @@ describe('Hydration', () => {
   });
 
   it('should return a list containing the ounces water consumed each day over a seven day period by a user', () => {
-    expect(hydration.findWeeklyHydration(1, "2019/06/26")).to.equal('49.4')
-    expect(hydration.findWeeklyHydration(2, "2019/06/24")).to.equal('54.1')
+    expect(hydration.findWeeklyHydration(1, '2019/06/26')).to.deep.equal([
+      { userID: 1, date: '2019/06/26', numOunces: 52 },
+      { userID: 1, date: '2019/06/25', numOunces: 51 },
+      { userID: 1, date: '2019/06/24', numOunces: 61 },
+      { userID: 1, date: '2019/06/23', numOunces: 39 },
+      { userID: 1, date: '2019/06/22', numOunces: 43 },
+      { userID: 1, date: '2019/06/21', numOunces: 50 },
+      { userID: 1, date: '2019/06/20', numOunces: 50 }
+    ])
+    expect(hydration.findWeeklyHydration(2, '2019/06/24')).to.deep.equal([
+      { userID: 2, date: '2019/06/24', numOunces: 33 },
+      { userID: 2, date: '2019/06/23', numOunces: 44 },
+      { userID: 2, date: '2019/06/22', numOunces: 58 },
+      { userID: 2, date: '2019/06/21', numOunces: 27 },
+      { userID: 2, date: '2019/06/20', numOunces: 71 },
+      { userID: 2, date: '2019/06/19', numOunces: 76 },
+      { userID: 2, date: '2019/06/18', numOunces: 70 }
+    ])
+  });
+
+  it('should return a list containing the ounces water consumed each day over a seven day period by a user', () => {
+    expect(hydration.findWeeklyHydrationData(1, '2019/06/26')).to.deep.equal([
+      52, 51, 61, 39,
+      43, 50, 50
+    ])
+    expect(hydration.findWeeklyHydrationData(2, '2019/06/24')).to.deep.equal([
+        33, 44, 58, 27,
+        71, 76, 70
+      ])
   });
 })

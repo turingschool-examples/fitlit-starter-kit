@@ -1,3 +1,5 @@
+import { use } from 'chai';
+
 const data = require('./data/users.js')
 /* We need to import data from hydration/sleep datasets.
 the data set above does not include the date as a property,
@@ -13,19 +15,10 @@ class UserRepository {
 We need to return an array of user data. The function
 on line 21 achieves this.
  findUserData(id) {
- this.users.find(id => this.users[id] === id)
- //console.log(this.users[id])
-  return this.users[id]
-} */
 
- findUserData(userID) {
-     const userDataById = this.users.filter(user => {
-         if (userID === user.userID) {
-           console.log(user)
-             return user
-         }
-     })
-     return userDataById
+  const findUserData = this.users.find(user => id === user.id)
+    return findUserData
+
  }
 
  calculateAvgStepGoal() {
@@ -36,6 +29,7 @@ on line 21 achieves this.
     return acc
   }, 0)
   return Math.round(stepGoal / this.users.length)
+
   }
 /* function below is currently failing, but in progress */
   findToday(id) {

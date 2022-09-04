@@ -1,6 +1,6 @@
 // imports //
 import './css/styles.css';
-import './images/turing-logo.png'
+import './images/icons8-avatar-67.png'
 import './images/icons8-fire-90.png'
 import './images/icons8-sleep-52.png'
 import './images/icons8-water-52.png'
@@ -43,8 +43,7 @@ function getAllData() {
     populateDashboard()
   });
 }
-// DOM Manipulation //
-
+ 
 // header selectors //
 const userNameDisplay = document.querySelector('.header-welcome-username')
 const userIconDisplay = document.querySelector('.header-userlogo') 
@@ -54,7 +53,7 @@ const welcomeDisplay = document.querySelector('.header-welcome')
 const stepsGoalDisplay = document.querySelector('.steps-content-goal') 
 // const stepsCurrentDisplay = document.querySelector('.steps-content-current')
 // const stepsFriendsList = document.querySelectorAll('.step-friend')
-// const stepsFriendsDisplay = document.querySelector('.steps-content-header')
+const stepsFriendsDisplay = document.querySelector('.steps-content-header')
 // const friend1 = document.getElementById('friend1')
 // const friend2 = document.getElementById('friend2')
 // const friend3 = document.getElementById('friend3')
@@ -89,6 +88,7 @@ const chosenWaterDrankByDate = document.getElementById('display-water-drank-on-d
 // const avgSleepQualityDisplay = document.getElementById('sleep-quality')
 
 // event listeners //
+
 window.addEventListener('load', getAllData())
 userIconDisplay.addEventListener('click', showUserInfo)
 
@@ -96,6 +96,11 @@ userIconDisplay.addEventListener('click', showUserInfo)
 function populateDashboard() {
   applyUserName()
   showStepsContent()
+
+  // showUserInfo()
+  // renderFriends()
+  // renderStepGoal()
+  showStepsFriends() 
   displayTodaysHydration()
   displayAverageWaterDrank()
   displayWeeklyHydration()
@@ -107,6 +112,7 @@ function populateDashboard() {
 // functions //
 function applyUserName() {
   userNameDisplay.innerText = currentUser.returnUserFirstName(); 
+
 }
 
 function showUserInfo() {
@@ -121,6 +127,40 @@ function showUserInfo() {
     userNameDisplay.innerText = `${currentUser.returnUserFirstName()}!`
   }
 }
+
+
+function showUserInfo() {
+  if (welcomeDisplay.innerText === "WELCOME,") {
+    welcomeDisplay.innerText = `${currentUser.address}`;
+    userNameDisplay.innerText = ""
+  } else {
+    welcomeDisplay.innerHTML = "WELCOME,";
+    userNameDisplay.innerText = `${currentUser.returnUserFirstName()}!`
+  }
+}
+
+function showStepsContent() {
+  stepsGoalDisplay.innerText += `${currentUser.dailyStepGoal}`
+  // stepsCurrentDisplay.innerText = `So far you have taken: 9,999`
+}
+
+function showStepsFriends() {
+    // stepsFriendsList = can probly write a forEach loop here
+    friendList.innerHTML= `${createFriendList()}`
+  }
+
+function createFriendList() {
+  let userFriends = currentUser.friends
+
+  const findFriendsNames = userFriends.reduce((acc, friend) => {
+      acc.push(userRepo.findUserData(friend))
+    return acc
+  }, []).map((friend) => friend.name)
+  return findFriendsNames
+}
+
+// friends are a list of user IDs
+// 
 
 function showStepsContent() {
   stepsGoalDisplay.innerText += currentUser.dailyStepGoal
@@ -290,4 +330,3 @@ var sleepColors = [
 //   },
 //   // options: {...}
 // });
-

@@ -37,7 +37,7 @@ const hydraData = document.querySelector(".hydration-card");
 const chart = document.querySelector(".hydra-chart");
 const stepChart = document.getElementById("stepChart").getContext('2d')
 
-// EVent Listeners
+// Event Listeners
 window.addEventListener("load", promiseAll);
 submitButton.addEventListener("click", () => {
   displaySleepForAWeek();
@@ -243,45 +243,6 @@ function displayHydrationForWeek() {
     A Different Week To See Your Weekly Report <p>`;
   }
 }
-  // const xValues = [
-  //   hyrdrationWeek[0].date,
-  //   hyrdrationWeek[1].date,
-  //   hyrdrationWeek[2].date,
-  //   hyrdrationWeek[3].date,
-  //   hyrdrationWeek[4].date,
-  //   hyrdrationWeek[5].date,
-  //   hyrdrationWeek[6].date,
-  // ];
-  // const yValues = [
-  //   hyrdrationWeek[0].numOunces,
-  //   hyrdrationWeek[1].numOunces,
-  //   hyrdrationWeek[2].numOunces,
-  //   hyrdrationWeek[3].numOunces,
-  //   hyrdrationWeek[4].numOunces,
-  //   hyrdrationWeek[5].numOunces,
-  //   hyrdrationWeek[6].numOunces,
-  // ];
-  // const barColors = ["red", "green", "blue", "orange", "brown"];
-
-  // new Chart("myChart", {
-  //   type: "bar",
-  //   data: {
-  //     labels: xValues,
-  //     datasets: [
-  //       {
-  //         backgroundColor: barColors,
-  //         data: yValues,
-  //       },
-  //     ],
-  //   },
-  //   options: {
-  //     legend: { display: false },
-  //     title: {
-  //       display: true,
-  //       text: "Hydration For The Last Week",
-  //     },
-  //   },
-  // });
 
   function displaySteps() {
     stepDetails.innerHTML = "";
@@ -320,8 +281,5 @@ function displayHydrationForWeek() {
       }
     });
     stepDetails.innerHTML += `<p>Your daily step goal is ${comparison}% compared to all average users.</p>`;
-    // `<section class='step-comparison-message'><p>Average Step Goal for All Users: ${averageSteps}.</p>
-    // <p>Your step goal is: ${user.dailyStepGoal}.</p>
-    // ;
   }
 

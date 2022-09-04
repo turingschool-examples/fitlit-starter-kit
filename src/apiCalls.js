@@ -1,4 +1,3 @@
-// Your fetch requests will live here!
 function fetchData(details) {
   return fetch(`https://fitlit-api.herokuapp.com/api/v1/${details}`)
     .then((response) => response.json())

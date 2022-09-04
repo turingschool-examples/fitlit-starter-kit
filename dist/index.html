@@ -21,7 +21,7 @@
           <p class="text user-address">address</p>
           <p class="text user-email">email</p>
           <p class="step-goal">Daily Step Goal: </p>
-          <div class="weekly-chart-container" id="weekly-highlights">
+          <div class="chart-container" id="weekly-highlights">
             <canvas class="weekly-ounces" id="weeklyOunces"></canvas>
             <br/>
             <canvas class="weekly-hours-slept" id="weeklyHoursSlept"></canvas>
@@ -32,22 +32,22 @@
     <section class="column daily-overview" id="dailyOverview">
       <section class="daily hydration"id="hydrationBox">
         <img role="button" class="icon water-icon" id="waterIcon" src="./images/icons8-water-96.png" alt="water icon">
-        <div class="daily-chart-container" id="chartContainer">
+        <div class="chart-container" id="chartContainer">
           <canvas class="daily-ounces" id="dailyOunces"></canvas>
         </div>
         <h2 class="title hydration-box-label" id="hydrationBoxLabel">Hydration</h3>
       </section>
       <section class="daily sleep" id="sleepBox">
         <img role="button" class="icon sleep-icon" src="./images/icons8-zzz-96.png" id="sleepIcon" alt="sleep icon">
-        <div class="daily-chart-container" id="chartContainer">
+        <div class="chart-container" id="chartContainer">
           <canvas class="daily-hours-slept" id="dailyHoursSlept"></canvas>
         </div>
-        <section id="sleep-averages"></section>
+        <section class="sleep-averages" id="sleepAverages"></section>
         <h2 class="title sleep-box-label" id="sleepBoxLabel">Sleep</h3>
       </section>
       <section class="daily activity" id="activityBox">
         <img role="button" class="icon activity-icon" id="activityIcon" src="./images/icons8-high-voltage-48.png" alt="activity icon">
-        <div class="daily-chart-container" id="chartContainer">
+        <div class="chart-container" id="chartContainer">
           <br/>
           <p class="text activity-message" id="activityMessage">Have you wandered out into nature yet today?</p>
           <!-- <canvas class="steps-by-day" id="stepsByDay"></canvas> -->

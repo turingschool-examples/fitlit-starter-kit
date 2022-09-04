@@ -111,7 +111,8 @@ function renderUserInfo(newUser, allUsers) {
 function renderHydrationData(userHydration, randomUser) {
   ouncesConsumeDaily.innerText = ` ${currentHydration.mostRecentOunces(userHydration, randomUser.id).numOunces
     }`;
-  ouncesConsumedWeekly.innerText = ` ${currentHydration.userOuncesPerWeek(
+  ouncesConsumedWeekly.innerText = ` 
+  ${currentHydration.userOuncesPerWeek(
     userHydration,
     randomUser.id
   )}`;
@@ -122,13 +123,15 @@ function renderSleepData(allSleep, randomUser) {
     }`;
   latestDaySleepQuality.innerText = ` ${currentSleep.mostRecentSleep(allSleep, randomUser.id).sleepQuality
     }`;
-  latestWeekSleep.innerText = `${currentSleep.userHoursSleptForWeek(
+  latestWeekSleep.innerText = `
+  ${currentSleep.userHoursSleptForWeek(
     allSleep,
     randomUser.id
   )}`;
   latestWeekSleepQuality.innerText = ` ${currentSleep.getTotalUserQualitySleep(allSleep, randomUser.id)
     }`;
-  allTimeSleepQuality.innerText = ` ${currentSleep.userQualityForWeek(
+  allTimeSleepQuality.innerText = ` 
+  ${currentSleep.userQualityForWeek(
     allSleep,
     randomUser.id
   )}`;

@@ -4,6 +4,8 @@
   font-style: oblique;
   text-shadow: 0 0 7px #ffc0cb, 0 0 21px #ff00ff, 0 0 42px #0fa, 0 0 82px #0fa,
     0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -89,7 +91,6 @@ h2 {
   border-radius: 8px;
   display: flex;
   flex-direction: row;
-  height: 40vh;
   justify-content: space-around;
   padding: 5px;
 }
@@ -98,8 +99,12 @@ h2 {
   align-items: center;
   display: flex;
   flex-direction: row;
-  height: 40vh;
   justify-content: space-around;
+}
+
+.sleep {
+  height: 300px;
+  overflow-y: scroll;
 }
 
 #firstName {

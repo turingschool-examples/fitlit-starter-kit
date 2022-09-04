@@ -116,7 +116,7 @@ The following resources helped us build this project:
 [![MDN Docs][MDN-shield]][MDN]
 [![Chart.js][Charts]][charts-url]
 [![Chart.js-tutorials][youtube-shield]][charts-youtube-link]
-[![Turing School](https://img.shields.io/badge/Turing_School-030303?style=for-the-badge)](https://https://turing.edu/)
+[![Turing School](https://img.shields.io/badge/Turing_School-030303?style=for-the-badge)](https://turing.edu/)
 [![Chai Assertion Library](https://img.shields.io/badge/chai-A30701?style=for-the-badge&logo=chai&logoColor=white)](https://www.chaijs.com/api/bdd/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

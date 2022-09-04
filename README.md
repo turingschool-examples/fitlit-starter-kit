@@ -77,6 +77,7 @@ You can find the project [here](https://github.com/emilyjmiles/fitlit-group-proj
 caption1 | caption2
 :-: | :-:
 <video src='video1.mov' width=180/> | <video src='video2.mp4' width=180/> -->
+
 New feature ideas: 
 - [ ] During Part Two of the project:
     - [ ] The activity box will contain a chart that displays the user's daily activity

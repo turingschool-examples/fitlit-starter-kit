@@ -81,7 +81,7 @@ You can find the project [here](https://github.com/emilyjmiles/fitlit-group-proj
 New feature ideas: 
 - [ ] During Part Two of the project:
     - [ ] The activity box will contain a chart that displays the user's daily activity
-    - [ ] Add as weekly graph of the users activity
+    - [ ] Add a weekly graph of the users activity
     - [ ] A user will be able to add data to their hydration, sleep, or activity.
     - [ ] A user will be able to see the comparison of their data to all the users average data.
 - [ ] The friends buttons will be clickable to display their information instead of the user that appeared when the page loaded. 

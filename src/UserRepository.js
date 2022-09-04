@@ -27,6 +27,5 @@ class UserRepository {
     const averageSleepDetail = (allUserSleepDetail/ sleepData.length).toFixed(1)
     return parseFloat(averageSleepDetail)
   }
-
 }
 export default UserRepository;

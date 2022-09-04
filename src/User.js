@@ -17,14 +17,11 @@ class User {
   getSleepDataPerDay(sleepData, date, detail) {
     const usersData = sleepData.filter((entry) => entry.userID === this.id);
     const entry = usersData.find((entry) => entry.date === date);
-    return entry[detail];
+    return entry[detail]
   }
 
   getAvgSleepDataPerDay(sleepData, detail) {
     const usersData = sleepData.filter((entry) => entry.userID === this.id);
-    if (usersData.length === 0) {
-      return 0;
-    }
     const totalSleepData = usersData.reduce((total, entry) => {
       total += entry[detail];
       return total;
@@ -37,13 +34,12 @@ class User {
     const userSleep = sleepData.filter((entry) => entry.userID === this.id);
     const startingDate = userSleep.find((entry) => entry.date === startDate);
     const startIndex = userSleep.indexOf(startingDate);
-    let newArr = userSleep.slice(startIndex - 7, startIndex);
+    let newArr = userSleep.slice(startIndex - 6, startIndex);
     newArr = newArr.reverse();
     const weekSleep = newArr.reduce((sleepForWeek, entry) => {
       sleepForWeek.push({ date: entry.date, [detail]: entry[detail] });
       return sleepForWeek;
     }, []);
-    console.log(weekSleep);
     return weekSleep;
   }
 
@@ -53,7 +49,6 @@ class User {
       acc += fluid.numOunces;
       return acc;
     }, 0);
-
     return Math.round(average / userFluidsInfo.length);
   }
 
@@ -63,10 +58,8 @@ class User {
     );
     const sum = userDayFluids.reduce((acc, fluids) => {
       acc += fluids.numOunces;
-
       return acc;
     }, 0);
-
     return sum;
   }
 
@@ -74,12 +67,10 @@ class User {
     const userInfo = fluidsData.filter((data) => data.userID === this.id);
     const findStartDate = userInfo.find((date) => date.date === userDate);
     const indexOfStart = userInfo.indexOf(findStartDate);
-    const weeklyReport = userInfo.slice(indexOfStart-7, indexOfStart);
-
+    const weeklyReport = userInfo.slice(indexOfStart - 6, indexOfStart);
     const weeklyFluids = weeklyReport.map((dates) => {
       return { date: dates.date, numOunces: dates.numOunces };
     });
-
     return weeklyFluids.reverse();
   }
 }

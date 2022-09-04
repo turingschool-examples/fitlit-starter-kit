@@ -1,18 +1,14 @@
 body,
 html {
   background-color: white;
-  background-repeat: no-repeat;
   font-family: "Roboto Mono", monospace;
-  height: 100%;
-  color: black;
-  border: 2px, solid, red;
+  height: 100vh;
 }
 
 header {
   display: flex;
   justify-content: center;
-  height: 200px;
-  background-color: white;
+  margin-left: 70px;
 }
 
 main {
@@ -22,6 +18,7 @@ main {
 
 .left-nav {
   width: 70%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -43,23 +40,45 @@ main {
 .user-container {
   display: flex;
   flex-direction: column;
-  height: 280px;
   color: white;
-  font-size: 12px;
+  font-size: 14px;
   word-wrap: normal;
   padding-left: 1em;
   padding-right: 1em;
   background-color: #6190ff;
   border-radius: 12px;
+  padding-bottom: 1em;
   margin-bottom: 20px;
   margin-right: 20px;
   box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
     0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
 }
 
-/* .user-container:hover {
-  box-shadow: 1px 0 3px #CC66FF, -1px 0 3px #CC66FF, 0 1px 3px #CC66FF, 0 -1px 3px#CC66FF;
-} */
+.submit {
+  align-items: center;
+  color: black;
+  background-color: white;
+  margin: 8px;
+  border-radius: 2px;
+}
+
+.date-form {
+  display: flex;
+  justify-content: center;
+}
+
+button:hover {
+  cursor: pointer;
+  box-shadow: 1px 0 3px #cc66ff, -1px 0 3px #cc66ff, 0 1px 3px #cc66ff,
+    0 -1px 3px#CC66FF;
+}
+
+.habit-label {
+  color: black;
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
+}
 
 .friends-container {
   display: flex;
@@ -88,80 +107,86 @@ main {
 .sleep-container {
   display: flex;
   flex-direction: column;
-  height: 650px;
+  width: 29vw;
+  height: 70vh;
   color: white;
   align-items: center;
   text-align: center;
   background-color: #6947ff;
   border-radius: 12px;
-  margin-right: 20px;
+  margin-right: 15px;
   padding-top: 10px;
-  margin-top: 50px;
+  padding-right: 1em;
+  padding-left: 1em;
+  padding-bottom: 1em;
+  margin-top: 0px;
+  margin-left: 15px;
   box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
     0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
+}
+
+.sleep-data {
+  border: 1px solid #2cb7ff;
+}
+.sleep-for-week {
+  margin-top: 15px;
+}
+
+.hydra-data {
+  border: 1px solid #6947ff;
+}
+
+.hydra-chart {
+  margin-top: 15px;
 }
 
 .hydration-container {
   display: flex;
   flex-direction: column;
-  height: 75vh;
-  width: 30vw;
-  color: white;
+  height: 55vh;
+  width: 25vw;
   align-items: center;
+  text-align: center;
   background-color: #2cb7ff;
   border-radius: 12px;
+  margin-right: 15px;
   padding-top: 10px;
-  margin-top: 50px;
-  margin-right: 20px;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  padding-left: 1em;
+  margin-top: 15px;
   box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
     0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
 }
-.hydration-card,
-.hydra-chart {
- display: flex;
- align-items: center;
- text-align: center;
+
+.bottom-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
-.hydra-data,
-.hydra-chart {
- margin: 8px;
- border: 1px solid #6947ff;
-}
-.hydra-chart{
-  
-  font-size: 1.7vw;
-  width: 28vw;
-  margin-top: 32vh;
-  position: absolute;
-}
-.hydration-container {
- height: 75vh;
- width: 30vw;
- color: white;
- align-items: center;
- background-color: #2cb7ff;
- padding-top: 10px;
- margin-top: 50px;
- margin-right: 20px;
- }
 
 .steps-container {
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 400px;
+  width: 50%;
   color: white;
   align-items: center;
-  background-color: #6947ff;
+  text-align: center;
+  background-color: #cc66ff;
   border-radius: 12px;
-  margin-right: 20px;
+  margin-right: 40px;
+  margin-left: 15px;
   padding-top: 10px;
-  margin-top: 25px;
+  margin-top: 20px;
+  margin-bottom: 25px;
   box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
     0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
 }
 
 .step-comparison-message {
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .step-card {
@@ -191,6 +216,13 @@ label {
   font-family: "Roboto Mono", monospace;
   font-size: 14px;
 }
-.sleep-data {
-  border: 1px solid #2cb7ff;
+
+.chart-container {
+  width: 400px;
+  height: 200px;
+}
+
+p {
+  margin-top: 4px;
+  margin-bottom: 4px;
 }

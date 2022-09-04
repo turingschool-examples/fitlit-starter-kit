@@ -17,7 +17,9 @@
 ---
 
 ## About The Project
-<img width="338" alt="FitLit logo" src="https://user-images.githubusercontent.com/94808267/188324820-0027eff1-424d-4e2c-8dd9-13404c3ed30d.png">
+<p align="center">
+  <img width="450" height="600" alt="FitLit logo" src="https://user-images.githubusercontent.com/94808267/188324820-0027eff1-424d-4e2c-8dd9-13404c3ed30d.png">
+</p>
 
 FitLit is a health tracking application. This program can help you set healthy habbits as it tracks your hydration, sleep, and activity. You can view your daily and weekly progress! You can set goals that will improve the quality of your sleep and overall physical health. 
 

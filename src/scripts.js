@@ -287,36 +287,36 @@ var sleepColors = [
 // });
 
 
-// const waterDrankPicker = document.getElementById('water-drank-on-date')
-// const hoursSleptPicker = document.getElementById('hours-slept-by-date')
-// const weekSleptPicker = document.getElementById('week-slept-by-date')
-// const sleepQualityPicker = document.getElementById('sleep-quality-by-date')
-// const weekSleepQualityPicker = document.getElementById('sleep-quality-by-week')
+const waterDrankPicker = document.getElementById('water-drank-on-date')
+const hoursSleptPicker = document.getElementById('hours-slept-by-date')
+const weekSleptPicker = document.getElementById('week-slept-by-date')
+const sleepQualityPicker = document.getElementById('sleep-quality-by-date')
+const weekSleepQualityPicker = document.getElementById('sleep-quality-by-week')
 
-// function waterDrankByDate() {
-//   const picker = datepicker(waterDrankPicker)
-// }
-// waterDrankByDate()
+function waterDrankByDate() {
+  const picker = datepicker(waterDrankPicker)
+}
+waterDrankByDate()
 
-// function hoursSleptByDate() {
-//   const picker = datepicker(hoursSleptPicker)
-// }
-// hoursSleptByDate()
+function hoursSleptByDate() {
+  const picker = datepicker(hoursSleptPicker)
+}
+hoursSleptByDate()
 
-// function hoursSleptByWeek() {
-//   const picker = datepicker(weekSleptPicker)
-// }
-// hoursSleptByWeek()
+function hoursSleptByWeek() {
+  const picker = datepicker(weekSleptPicker)
+}
+hoursSleptByWeek()
 
-// function sleepQualityByDate() {
-//   const picker = datepicker(sleepQualityPicker)
-// }
-// sleepQualityByDate()
+function sleepQualityByDate() {
+  const picker = datepicker(sleepQualityPicker)
+}
+sleepQualityByDate()
 
-// function sleepQualityByWeek() {
-//   const picker = datepicker(weekSleepQualityPicker)
-// }
-// sleepQualityByWeek()
+function sleepQualityByWeek() {
+  const picker = datepicker(weekSleepQualityPicker)
+}
+sleepQualityByWeek()
 
 
 /*

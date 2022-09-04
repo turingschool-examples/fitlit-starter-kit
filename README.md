@@ -32,7 +32,7 @@ FitLit is an interactive website that tracks fitness activities, sleep, and hydr
 ## Features
 Athlete (user) is randomly generated upon FitLit page load and they are greeted with a welcoming dashboard of their own sleep, hydration, and step (activity) data. These data are also compared against all users to show the user how they stack up against the competition! They can see their user profile information such as email and address as well. The user can select a date to display relevant data for that date and the previous week. 
 
-![fitlit-overview](add gif url here)
+![fitlit_gif](https://user-images.githubusercontent.com/18154724/188334563-7f259183-e2f7-4ab2-808c-944092cb5f44.gif)
 
 ## Setup
 1. Fork this repo - on the top right corner of this page, click the **Fork** button. 
@@ -52,64 +52,3 @@ This project was built by a group of three Front End Engineering students at Tur
 - [Jedeo Manirikumwenatwe](https://github.com/Jedeo)
 - [Nicole Forseth](https://github.com/forsethnico)
 - [Piper Jarrett](https://github.com/piperjarrett)
-
-## Data Model
-
-**Users**
-
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
-
-**Activity**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
-
-**Hydration**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
-
-**Sleep**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```

@@ -65,14 +65,13 @@ You can find the project [here](https://github.com/emilyjmiles/fitlit-group-proj
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-Current Features:
-- A clear and responsive UI/UX design to easily navigate and read the page with attention to user accessibility. 
-- 
+<-- Illustrations -->
 
 New feature ideas: 
-- [] The Friends buttons will be clickable to display their information instead of the user that appeared when the page loaded. 
-- [] The friend's hydration and sleep information can be displayed in a box as an average between them.
-- [] The user will be able to toggle between different sets of charts.
+- [ ] The Friends buttons will be clickable to display their information instead of the user that appeared when the page loaded. 
+- [ ] The friend's hydration and sleep information can be displayed in a box as an average between them.
+- [ ] The user will be able to toggle between different sets of charts.
+- [ ] The user will be able to change the weekly data projected in the charts.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -106,6 +105,9 @@ The following resources helped us build this project:
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Reflections
+We worked on making the UI/UX design of our page to be responsive to ensure that it is easy to navigate. We wanted our page to be user accessible by carefully choosing the font and color scheme. 
+
+We learned how to create bar charts and how to properly configure them to look uniform with our page. We hope to project user data in other chart forms that will be more concisely show the user their progress.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

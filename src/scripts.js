@@ -51,10 +51,10 @@ const userIconDisplay = document.querySelector('.header-userlogo')
 const welcomeDisplay = document.querySelector('.header-welcome') 
 
 // steps selectors//
-// const stepsGoalDisplay = document.querySelector('.steps-content-goal') 
+const stepsGoalDisplay = document.querySelector('.steps-content-goal') 
 // const stepsCurrentDisplay = document.querySelector('.steps-content-current')
 // const stepsFriendsList = document.querySelectorAll('.step-friend')
-// const stepsFriendsDisplay = document.querySelector('.steps-content-header')
+const stepsFriendsDisplay = document.querySelector('.steps-content-header')
 // const friend1 = document.getElementById('friend1')
 // const friend2 = document.getElementById('friend2')
 // const friend3 = document.getElementById('friend3')
@@ -167,7 +167,7 @@ function generateCharts() {
       // options: {...}
     }); 
   }
- }
+
 
 // new Chart("steps-friends-chart", {
 //   type: "bar",

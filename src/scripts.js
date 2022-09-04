@@ -96,10 +96,6 @@ function populateDashboard() {
   generateCharts()
 }
 
-
-// function calls
-// showStepsContent()
-
 // functions //
 function applyUserName() {
   userNameDisplay.innerText = currentUser.returnUserFirstName(); 
@@ -107,7 +103,10 @@ function applyUserName() {
 
 function showUserInfo() {
   if (welcomeDisplay.innerText === "WELCOME,") {
-    welcomeDisplay.innerText = `${currentUser.address}, Stride Length: ${currentUser.strideLength}`;
+    welcomeDisplay.innerHTML = `
+    ${currentUser.address}, <br>
+    Stride Length: ${currentUser.strideLength}, <br>
+    email: ${currentUser.email}`;
     userNameDisplay.innerText = ""
   } else {
     welcomeDisplay.innerHTML = "WELCOME,";
@@ -117,7 +116,7 @@ function showUserInfo() {
 
 function showStepsContent(stepsGoal, stepsCurrent) {
   stepsGoalDisplay.innerText += currentUser.dailyStepGoal
-  // stepsCurrentDisplay.innerText = `So far you have taken: 9,999`
+  stepsCurrentDisplay.innerText = `So far you have taken: 9,999`
 }
 
 function showStepsFriends() {

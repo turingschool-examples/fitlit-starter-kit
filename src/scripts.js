@@ -18,6 +18,12 @@ import './images/cloud-texture.png'
 import './images/grid-texture.png'
 import './images/blue-grid-texture.png'
 import './images/road-texture.png'
+import './images/milky-way.png'
+import './images/galaxy.png'
+import './images/constellation.png'
+import './images/brain.png'
+
+
 
 // ######### Query Selectors ###########
 const userWelcome =  document.querySelector('#userName')
@@ -108,10 +114,13 @@ function convertFriendIdToName() {
 function displayUserData() {
     userInfo.innerHTML = `<ul class='user-data-details'>
   <li> Name: ${singleUser.name}</li>
+  <br>
   <li> Email: ${singleUser.email}</li>
+  <br>
   <li> Address: ${singleUser.address}</li>
+  <br>
   <li>Stride ${singleUser.strideLength}</li>
-  <li>Step Goals  ${singleUser.dailyStepGoal}
+  <br>
   <li>Friends:  ${convertFriendIdToName()}
 </ul>`
 }
@@ -122,7 +131,7 @@ function displayStepGoalComp(userRepository) {
 }
 
 function displayHydrationData(singleHydro) {
-  hydrationCard.innerHTML = `<p class='user-hydro-details-1'> Today's OZ drank: ${singleHydro.usersDailyOunces(singleUser.id)}</p> <br>  <br> <p class='user-hydro-details-2'> Average OZ drank per day: ${singleHydro.getLifeTimeOunces()}<br>
+  hydrationCard.innerHTML = `<p class='user-hydro-details-1'> Today's OZ drank: ${singleHydro.usersDailyOunces(singleUser.id)}</p> <br> <p class='user-hydro-details-2'> Average OZ drank per day: ${singleHydro.getLifeTimeOunces()}<br>
   <p class='user-hydro-details-3'> Weekly: ${singleHydro.getOuncesPerWeek(singleUser.id, "2020/01/22") } `
 
 }

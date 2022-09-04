@@ -2,10 +2,15 @@ body, html {
   display: flex;
   justify-content: space-evenly;
   align-content: center;
-  margin: 0;
-  height: 100%;
-  background-image: linear-gradient(to top, #f29affc7 0%, #fc5eca 99%, #ab4aff 100%);
+  background-image: url('/src/images/brain.png');
+  /* background-image: linear-gradient(to top, #f29affc7 0%, #fc5eca 99%, #ab4aff 100%); */
   background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
   font-family: Comic Sans MS;
 }
 
@@ -50,6 +55,10 @@ body, html {
   height: 1236px;
 }
 
+.header {
+  margin-right: 100px;
+}
+
 .h1 {
   font-size: small;
 }
@@ -59,7 +68,7 @@ body, html {
 }
 
 .user-info {
-  height: 215px;
+  height: 375px;
   width: 325px;
   margin-top: 2%;
   border: 3px solid  #531345;
@@ -69,6 +78,9 @@ body, html {
   transition: all 0.1s ease;
   background-color:aqua;
   background-image: url('/src/images/blue-grid-texture.png');
+  font-weight: bold;
+  font-size: large;
+
 }
 
 .user-data-details  {
@@ -82,7 +94,7 @@ margin-top: 40px;
 
 .user-hydro {
   display: flex;
-  height: 215px;
+  height: 375px;
   width: 300px;
   margin-top: 2%;
   border: 3px solid #531345;
@@ -96,11 +108,12 @@ margin-top: 40px;
   align-content: flex-start;
   justify-content: space-between;
   align-items: center;
+  font-weight: bold;
     }
 
 .user-sleep {
   display:flex;
-  height: 215px;
+  height: 375px;
   width: 300px;
   margin-top: 2%;
   border: 3px solid  #531345;
@@ -112,6 +125,7 @@ margin-top: 40px;
   background-image: url('/src/images/cloud-texture.png');
   flex-direction: column;
   align-content: flex-start;
+  font-weight: bold;
   }
 
 .sleep-info-1 {
@@ -138,7 +152,7 @@ margin-top: 40px;
 }
 .user-steps {
   display: flex;
-  height: 200px;
+  height: 375px;
   width: 300px;
   margin-top: 2%;
   border: 3px solid #531345;
@@ -152,10 +166,25 @@ margin-top: 40px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
   }
 .user-step-details {
   color:whitesmoke;
 }
 .user-hydro-details-2 {
   margin-top:-40px;
+}
+
+
+/* Bottom Section */
+.footer {
+  display: flex;
+  background-color: #060911;
+  width: 10vw;
+  height: 7.5vh;
+}
+
+.footer-text {
+  color: #F9F6EE;
+  margin-top: 700px;
 }

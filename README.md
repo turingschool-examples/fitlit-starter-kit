@@ -72,11 +72,11 @@ You can find the project [here](https://github.com/emilyjmiles/fitlit-group-proj
 <!-- USAGE EXAMPLES -->
 ## Usage
 * The program displays user data through text and charts when the page loads
-<img width="1428" alt="Screen Shot 2022-09-04 at 12 14 24 PM" src="https://user-images.githubusercontent.com/94808267/188327742-03ee3310-d07a-498b-8213-637de49ab7ef.png">
-<!-- 
-caption1 | caption2
+<!-- <img width="1428" alt="Screen Shot 2022-09-04 at 12 14 24 PM" src="https://user-images.githubusercontent.com/94808267/188327742-03ee3310-d07a-498b-8213-637de49ab7ef.png"> -->
+
+Desktop View | Cell Phone View
 :-: | :-:
-<video src='video1.mov' width=180/> | <video src='video2.mp4' width=180/> -->
+<video src="https://giphy.com/embed/6QMupVufGnhGwmbZpj" width=270/> | <video src='video2.mp4' width=90/>
 
 New feature ideas: 
 - [ ] During Part Two of the project:

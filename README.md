@@ -62,7 +62,11 @@ You can find the project [here](https://github.com/emilyjmiles/fitlit-group-proj
 2. Install NPM packages
    ```sh
    npm install
-   ```
+   npm start
+   ``` 
+3. Enter the following url in your browser: http://localhost:8080/
+4. Explore the website.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->

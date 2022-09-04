@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src='Chart.min.js'></script>
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@200;400&display=swap" rel="stylesheet">
@@ -38,22 +39,20 @@
 
 
         <div class="display-article-content steps-content fredoka200">
-          <div>Your daily steps goal is: </div>
-          <div class="steps-content-goal bold"></div>
-          <!-- <canvas class="graph" id="steps-pie-chart"></canvas> -->
-        </div>
-
-        <div class="display-article-content fredoka200">
-          <p>FitLit User Average: <span class="bold" id="step-goal-vs-avg"></span> </p>
+          <p>Your daily steps goal is: <span class="steps-content-goal bold"></span></p>
+            <p>FitLit User Average: <span class="bold" id="step-goal-vs-avg"></span> </p>
+          </div>
+          <canvas class="graph" height="200" id="compare-avg-goal"></canvas>
           
-          <!-- <canvas class="graph" height="200" id="compare-avg-goal"></canvas> -->
 
         </div>
           
         <div class="steps-content-friends has-margin fredoka200">
           <div class="steps-content-header">Your friend's Step Goals: </div>
           <div id="friendList" class="friend-list bold"></div>
+          <!-- <canvas class="graph" height="200" id="steps-friends-chart"></canvas> -->
         </div>
+
       </article>
 
       <!-- hydration article -->
@@ -105,6 +104,8 @@
 
       </article>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script type="text/javascript" src="jscript/graph.js"></script>
     <script src="./bundle.js"></script>
   </body>
 </html>

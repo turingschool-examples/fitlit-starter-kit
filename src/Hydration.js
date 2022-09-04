@@ -37,7 +37,6 @@ class Hydration {
         const getDates = filterHydration.map(user => user.date)
         const dateIndex = getDates.indexOf(date)
         const weeklyRange = filterHydration.slice(dateIndex -6, dateIndex +1)
-        console.log("weekly range", weeklyRange.reverse());
         return weeklyRange.reverse()
     }
 

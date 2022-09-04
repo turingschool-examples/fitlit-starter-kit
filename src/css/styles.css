@@ -1,4 +1,3 @@
-@import '~js-datepicker/dist/datepicker.min.css';
 
 body {
   display: flex;
@@ -158,7 +157,7 @@ align-items: ceter;
 
 .graph {
 padding: 0px 10px 0px 5px;
-margin-top: auto;
+/* margin-top: auto; */
 }
 
 .picker {

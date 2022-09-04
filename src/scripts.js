@@ -77,7 +77,7 @@ function populateDashboard() {
   displayAllTimeSleepData()
   compareGoals()
 
-  // generateCharts()
+  generateCharts()
 }
 
 // functions //
@@ -157,8 +157,6 @@ function displayAllTimeSleepData() {
 
 function generateCharts() {
 
-// var xValues = ["Friend 1", "Friend 2", "Friend 3", "Friend 4", "Friend 5", "friend 6", "friend 7"] 
-// var yValues = [55, 49, 44, 24, 15, 100, 45]
   var barColors = [
     "rgb(255, 0, 0, .6)", 
     "rgb(255, 125, 0, .6)",
@@ -172,18 +170,27 @@ function generateCharts() {
   new Chart("compare-avg-goal", {
     type: "bar",
     data: {
-      labels: ["Your goal", "Average FitLit Goal"], 
+      labels: ["Your goal", "AVG Goal"], 
       datasets: [{
-        label: 'Your Goal VS AVG',
+        label: 'Your Goal Vs. FitLit Average',
         backgroundColor: barColors,
         data: [currentUser.dailyStepGoal, userRepo.calculateAvgStepGoal()]
       }]
     },
-    // options: {...}
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  
+
   }) 
 }
 
-/*
 new Chart("steps-friends-chart", {
   type: "bar",
   data: {
@@ -197,6 +204,7 @@ new Chart("steps-friends-chart", {
   // options: {...}
 })
 
+/*
 var hydroColors = [
   "rgba(4, 104, 255, 0.6)"]
 

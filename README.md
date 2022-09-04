@@ -57,7 +57,7 @@ You can find the project [here](https://github.com/emilyjmiles/fitlit-group-proj
 ### Installation
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone git@github.com:emilyjmiles/fitlit-group-project.git
    ```
 2. Install NPM packages
    ```sh

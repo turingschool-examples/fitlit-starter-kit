@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
-import User from '../src/User'; 
+import User from '../src/User';
 
 
 describe('UserRepository', () => {
@@ -9,8 +9,8 @@ describe('UserRepository', () => {
 
   beforeEach(() => {
     userRepository = new UserRepository(users);
-    
-    users = [ 
+
+    users = [
       new User({
       id: 1,
       name: "Luisa Hane",
@@ -24,7 +24,7 @@ describe('UserRepository', () => {
       8
       ]
     }),
-      
+
     new User({
       id: 2,
       name: "Jarvis Considine",
@@ -39,7 +39,7 @@ describe('UserRepository', () => {
       19
       ]
       }),
-    
+
       new User({
       id: 3,
       name: "Herminia Witting",
@@ -70,11 +70,15 @@ describe('UserRepository', () => {
   });
 
   it('should determine which user information to retrieve by ID', () => {
-    expect(userRepository.findUserData(1)).to.deep.equal(users[1]);
-    expect(userRepository.findUserData(2)).to.deep.equal(users[2]);
+    expect(userRepository.findUserData(1)).to.deep.equal();
+    expect(userRepository.findUserData(2)).to.deep.equal();
   });
 
   it('should return average of all user step goals', () => {
     expect(userRepository.calculateAvgStepGoal()).to.equal(6667)
   });
+
+  it("should return today's date", () => {
+    expect(userRepository.findToday(1)).to.deep.equal(users[1])
+  })
 });

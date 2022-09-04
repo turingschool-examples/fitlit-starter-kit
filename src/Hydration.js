@@ -14,8 +14,8 @@ class Hydration {
 
   findWaterConsumedByDate(userID, date) {
         const hydrationDataById = this.findHydrationById(userID)
-        const findWaterConsumedByDate = hydrationDataById.find(user => user.date === date)
-        return findWaterConsumedByDate.numOunces
+        const waterConsumedByDate = hydrationDataById.find(user => user.date === date)
+        return waterConsumedByDate.numOunces
     }
 
   findAverageDailyHydration(userID) {

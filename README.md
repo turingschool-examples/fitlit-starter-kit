@@ -75,7 +75,7 @@ You can find the project [here](https://github.com/emilyjmiles/fitlit-group-proj
 <!-- <img width="1428" alt="Screen Shot 2022-09-04 at 12 14 24 PM" src="https://user-images.githubusercontent.com/94808267/188327742-03ee3310-d07a-498b-8213-637de49ab7ef.png"> -->
 
 
- <img src="https://media.giphy.com/media/6QMupVufGnhGwmbZpj/giphy.gif" width="71%">   <img src="https://media.giphy.com/media/5D3KvzWgqlYy7nBR5x/giphy.gif" width="25%">
+ <img src="https://media.giphy.com/media/6QMupVufGnhGwmbZpj/giphy.gif" width="71%">   <img src="https://media.giphy.com/media/5D3KvzWgqlYy7nBR5x/giphy.gif" width="26%">
 
 New feature ideas: 
 - [ ] During Part Two of the project:

@@ -19,7 +19,7 @@
 ## About The Project
 <img width="338" alt="FitLit logo" src="https://user-images.githubusercontent.com/94808267/188324820-0027eff1-424d-4e2c-8dd9-13404c3ed30d.png">
 
-FitLit is a health tracking application. The program will choose a user at random and display the user's sleep and hydration information in text and charts as well as displaying a list of friends. 
+FitLit is a health tracking application. This program can help you set healthy habbits as it tracks your hydration, sleep, and activity. You can view your daily and weekly progress! You can set goals that will improve the quality of your sleep or physical acitivity. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

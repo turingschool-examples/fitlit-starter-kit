@@ -39,8 +39,8 @@
       </div>
 
       <div class="display-article-content steps-content fredoka200">
-        <div class="steps-content-goal">Your daily steps goal is: #</div>
-        <div class="steps-content-current">Steps taken so far today: #</div>
+        <div>Your daily steps goal is: </div>
+        <div class="steps-content-goal bold"></div>
         <canvas class="graph" id="steps-pie-chart"></canvas>
       </div>
 
@@ -68,11 +68,13 @@
       </div>
           
       <div class="display-article-content hydration-content fredoka200">
-        <div>Water drunk TODAY:
-          <div id="water-drank-today"></div>
+        <div>Water drank TODAY:
+          <div class="bold" id="water-drank-today">fl. oz</div>
         </div>
-        <div>Average water per day: &nbsp; #OZ</div>
-        <div>Average water over the last week:</div>
+        <div>Average water per day:</div>
+        <div class="bold" id="avg-water-drank"></div>
+        <div>Average hydration this week:</div>
+        <div class="bold avg-water-week"></div>
         <canvas class="graph" height="250" id="week-in-water"></canvas>
       </div>
       

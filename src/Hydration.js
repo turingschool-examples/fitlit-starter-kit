@@ -24,7 +24,7 @@ class Hydration {
             acc += hydration.numOunces
             return acc
         }, 0)
-        return parseFloat((avgOunces / filterHydration.length).toFixed(1))
+        return parseFloat((avgOunces / filterHydration.length).toFixed(0))
     }
     
   findWeeklyHydration(userID, date) {
@@ -39,6 +39,7 @@ class Hydration {
         }, 0)
         return weeklyHydration.toFixed(1)
     }
+      
 }
 
 export default Hydration;

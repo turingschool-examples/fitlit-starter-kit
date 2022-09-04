@@ -73,7 +73,10 @@ You can find the project [here](https://github.com/emilyjmiles/fitlit-group-proj
 ## Usage
 * The program displays user data through text and charts when the page loads
 <img width="1428" alt="Screen Shot 2022-09-04 at 12 14 24 PM" src="https://user-images.githubusercontent.com/94808267/188327742-03ee3310-d07a-498b-8213-637de49ab7ef.png">
-
+<!-- 
+caption1 | caption2
+:-: | :-:
+<video src='video1.mov' width=180/> | <video src='video2.mp4' width=180/> -->
 New feature ideas: 
 - [ ] During Part Two of the project:
     - [ ] The activity box will contain a chart that displays the user's daily activity

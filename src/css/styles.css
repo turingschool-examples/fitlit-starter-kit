@@ -110,22 +110,20 @@ header {
   box-shadow: 10px 10px 5px #6a6a6a;
 }
 
+.sleep-averages {
+  font-size: 1.5rem;
+}
+
 .icon {
   margin: 0%;
   width: 15%;
   height: auto;
 }
 
-.weekly-chart-container {
+.chart-container {
   position: relative;
-  margin: 0%;
   width: 100%;
-}
-
-.daily-chart-container {
-  position: relative;
   margin: 0%;
-  width: 75%;
 }
 
 .friends-details {

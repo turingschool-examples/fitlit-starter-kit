@@ -16,14 +16,14 @@
       <img class="flame-icon" src="./images/icons8-fire-90.png" alt="flame icon">
       LIT
     </div>
-    <div class="header-welcome-mat">
+    <section class="header-welcome-mat">
       <div class="header-welcome fredoka200">WELCOME,
       </div>
-      <div class="header-welcome-username fredoka400">User!
+      <div class="header-welcome-username fredoka400">
       </div>
-    </div>
+    </section>
     <div class="clickable">
-      <div class="header-userlogo has-shadow has-margin bent-left"><img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+      <div class="header-userlogo has-shadow has-margin bent-left"><img src="./images/icons8-avatar-67.png" alt="turing logo" height="100px" width="100px">
       </div>
     </div>
   </section>
@@ -36,19 +36,17 @@
         <img class="display-article-header-icon" src="./images/icons8-walking-100.png" alt="person walking to represent daily steps">
         Steps
       </div>
-
-      <div class="display-article-content steps-content fredoka200">
-        <div class="steps-content-goal">Your daily steps goal is: </div>
-        <!-- <div class="steps-content-current">Steps taken so far today: #</div> -->
-      </div>
+      <section class="display-article-content steps-content fredoka200">
+        <div class="steps-content-goal">Your daily steps goal is:<br></div>
+      </section>
 
       <div class="display-article-content step-goal-vs-avg fredoka200">
-        <div>Your Goal vs User Average: </div>
+        <div>Your Goal vs User Average:<br> </div>
       </div>
         
       <div class="steps-content-friends has-margin fredoka200">
-        <div class="steps-content-header">Your friends:</div>
-        <div id="friend1" class="step-friend">Name</div>
+        <div class="steps-content-header">Your friends: <br></div>
+        <div id="friendList" class="friend-list">Your Friends: <br></div>
       </div>
     </article>
 
@@ -60,17 +58,13 @@
       </div>
           
       <div class="display-article-content hydration-content fredoka200">
-        <div>Water drunk TODAY: &nbsp; #OZ</div>
-        <div>Average water per day: &nbsp; #OZ</div>
+        <div>Water Consumption Today:<br> &nbsp; #OZ</div><br>
+        <!-- <div>Average water per day: &nbsp; #OZ</div> -->
         <div>Average water over the last week:</div>
-        <!-- <canvas class="graph" height="250" id="week-in-water"></canvas> -->
       </div>
       
       <div class="display-article-content hydro-by-date fredoka200">
-        Water drank on date:
-        <div id="water-drank-on-date" class="picker clickable">CHOOSE DATE</div>
-        <div>Weekly water displays here</div>
-        <!-- <canvas class="graph" height="250" id="chosen-week-in-water"></canvas> -->
+        <div>Water Consumed Over the Past Week</div>
 
       </div>
       
@@ -85,28 +79,21 @@
         Sleep
       </div>
 
-      <div class="display-article-content sleep-content fredoka200">Sleep Time:
-        <div id="avg-sleep">Average hours of sleep this week: #</div>
-        <div id="hours-slept">How many hours did I sleep on...</div>
+      <div class="display-article-content sleep-content fredoka200">
+        <div id="sleep-hours">Sleep Hours Today: #</div>
+        <div id="sleep-quality">Sleep Quality Today: </div>
         <br>
-        <div>How much did I sleep the week of...</div
+        <div>Weekly Sleep Data</div>
+        <div>All-Time Average Sleep Quality &</div>
       </div>
-
       <div class="display-article-content sleep-content fredoka200" id="sleep-quality">Sleep Quality:
         <div>Average quality of sleep: #</div>
-        <!-- <canvas class="graph" height="250" id="average-sleep-quality"></canvas> -->
-        <div>How well did I sleep on...</div>
-        <div id="sleep-quality-by-date" class="picker clickable">CHOOSE DATE</div>
-        <div>How well did I sleep the week of...</div>
-        <div id="sleep-quality-by-week" class="picker clickable">CHOOSE DATE</div>
-        <!-- <canvas class="graph" height="250" id="sleep-quality"></canvas> -->
+
       </div>
 
     </article>
   </section>
 </div>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <script src="datepicker.min.js"></script> -->
     <script src="./bundle.js"></script>
   </body>
 </html>

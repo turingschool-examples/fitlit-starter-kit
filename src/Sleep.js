@@ -67,7 +67,6 @@ class Sleep {
         const dateIndex = getDates.indexOf(date)
         const weeklyRange = filterSleep.slice(dateIndex -6, dateIndex +1)
 
-        // console.log('HEY', weeklyRange.reverse())
        return weeklyRange.reverse()
     }
 

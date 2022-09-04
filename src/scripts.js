@@ -1,6 +1,6 @@
 // imports //
 import './css/styles.css';
-// import './images/turing-logo.png'
+import './images/icons8-avatar-67.png'
 import './images/icons8-fire-90.png'
 import './images/icons8-sleep-52.png'
 import './images/icons8-water-52.png'
@@ -41,7 +41,7 @@ function getAllData() {
  
 // header selectors //
 const userNameDisplay = document.querySelector('.header-welcome-username')
-// const userIconDisplay = document.querySelector('.header-userlogo') 
+const userIconDisplay = document.querySelector('.header-userlogo') 
 const welcomeDisplay = document.querySelector('.header-welcome') 
 
 // steps selectors//
@@ -73,7 +73,7 @@ const stepsFriendsDisplay = document.querySelector('.steps-content-header')
 // const avgSleepQualityDisplay = document.getElementById('sleep-quality')
 
 // event listeners //
-// userIconDisplay.addEventListener('click', showUserInfo)
+userIconDisplay.addEventListener('click', showUserInfo)
 window.addEventListener('load', getAllData())
 
 
@@ -93,30 +93,28 @@ function populateDashboard() {
 
 // functions //
 function applyUserName() {
-  userNameDisplay.innerText = `${currentUser.returnUserFirstName()}`; 
+  userNameDisplay.innerText = `${currentUser.returnUserFirstName()}!`; 
 }
 
 
-// function showUserInfo() {
-//   if (welcomeDisplay.innerText === "WELCOME,") {
-//     welcomeDisplay.innerText = `${currentUser.address}`;
-//     userNameDisplay.innerText = ""
-//   } else {
-//     welcomeDisplay.innerHTML = "WELCOME,";
-//     userNameDisplay.innerText = `USER!`
-//   }
-// }
+function showUserInfo() {
+  if (welcomeDisplay.innerText === "WELCOME,") {
+    welcomeDisplay.innerText = `${currentUser.address}`;
+    userNameDisplay.innerText = ""
+  } else {
+    welcomeDisplay.innerHTML = "WELCOME,";
+    userNameDisplay.innerText = `${currentUser.returnUserFirstName()}!`
+  }
+}
 
 function showStepsContent() {
-  stepsGoalDisplay.innerText += `${userRepo.calculateAvgStepGoal()}`
+  stepsGoalDisplay.innerText += `${currentUser.dailyStepGoal}`
   // stepsCurrentDisplay.innerText = `So far you have taken: 9,999`
 }
 
-
-
 function showStepsFriends() {
     // stepsFriendsList = can probly write a forEach loop here
-    stepsFriendsDisplay.innerText = `${createFriendList()}`
+    friendList.innerHTML= `${createFriendList()}`
   }
 
 function createFriendList() {

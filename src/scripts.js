@@ -69,7 +69,7 @@ function initializeData() {
 
     let randomUser =
       userRepository.userData[
-        Math.floor(Math.random() * userRepository.userData.length)
+      Math.floor(Math.random() * userRepository.userData.length)
       ];
     renderUserInfo(randomUser, userRepository);
     renderHydrationData(userHydration, randomUser);
@@ -109,9 +109,8 @@ function renderUserInfo(newUser, allUsers) {
 }
 
 function renderHydrationData(userHydration, randomUser) {
-  ouncesConsumeDaily.innerText = ` ${
-    currentHydration.mostRecentOunces(userHydration, randomUser.id).numOunces
-  }`;
+  ouncesConsumeDaily.innerText = ` ${currentHydration.mostRecentOunces(userHydration, randomUser.id).numOunces
+    }`;
   ouncesConsumedWeekly.innerText = ` ${currentHydration.userOuncesPerWeek(
     userHydration,
     randomUser.id
@@ -119,19 +118,16 @@ function renderHydrationData(userHydration, randomUser) {
 }
 
 function renderSleepData(allSleep, randomUser) {
-  latestDaySleep.innerText = ` ${
-    currentSleep.mostRecentSleep(allSleep, randomUser.id).hoursSlept
-  }`;
-  latestDaySleepQuality.innerText = ` ${
-    currentSleep.mostRecentSleep(allSleep, randomUser.id).sleepQuality
-  }`;
+  latestDaySleep.innerText = ` ${currentSleep.mostRecentSleep(allSleep, randomUser.id).hoursSlept
+    }`;
+  latestDaySleepQuality.innerText = ` ${currentSleep.mostRecentSleep(allSleep, randomUser.id).sleepQuality
+    }`;
   latestWeekSleep.innerText = `${currentSleep.userHoursSleptForWeek(
     allSleep,
     randomUser.id
-  )}${currentSleep.userHoursSleptForWeek(allSleep, randomUser.id)}`;
-  latestWeekSleepQuality.innerText = ` ${
-    currentSleep.mostRecentSleep(allSleep, randomUser.id).sleepQuality
-  }`;
+  )}`;
+  latestWeekSleepQuality.innerText = ` ${currentSleep.getTotalUserQualitySleep(allSleep, randomUser.id)
+    }`;
   allTimeSleepQuality.innerText = ` ${currentSleep.userQualityForWeek(
     allSleep,
     randomUser.id

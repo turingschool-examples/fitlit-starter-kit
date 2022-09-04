@@ -22,9 +22,6 @@ class User {
 
   getAvgSleepDataPerDay(sleepData, detail) {
     const usersData = sleepData.filter((entry) => entry.userID === this.id);
-    if (usersData.length === 0) {
-      return 0;
-    }
     const totalSleepData = usersData.reduce((total, entry) => {
       total += entry[detail];
       return total;

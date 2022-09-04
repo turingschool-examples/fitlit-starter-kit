@@ -40,7 +40,6 @@ main {
 .user-container {
   display: flex;
   flex-direction: column;
-  height: 280px;
   color: white;
   font-size: 14px;
   word-wrap: normal;
@@ -48,6 +47,7 @@ main {
   padding-right: 1em;
   background-color: #6190ff;
   border-radius: 12px;
+  padding-bottom: 1em;
   margin-bottom: 20px;
   margin-right: 20px;
   box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
@@ -58,7 +58,7 @@ main {
   align-items: center;
   color: black;
   background-color: white;
-  margin: 6px;
+  margin: 8px;
   border-radius: 2px;
 }
 
@@ -106,7 +106,7 @@ button:hover {
 .sleep-container {
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  /* height: 80vh; */
   width: 30vw;
   color: white;
   align-items: center;
@@ -117,10 +117,19 @@ button:hover {
   padding-top: 10px;
   padding-right: 1em;
   padding-left: 1em;
+  padding-bottom: 1em;
   margin-top: 0px;
   margin-left: 15px;
   box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
     0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
+}
+
+.sleep-data {
+  border: 1px solid #2cb7ff;
+}
+
+.sleep-for-week {
+  margin-top: 15px;
 }
 
 .hydration-container {
@@ -133,23 +142,27 @@ button:hover {
   border-radius: 12px;
   padding-top: 10px;
   padding-right: 1em;
+  padding-bottom: 1em;
   padding-left: 1em;
   margin-top: 15px;
   margin-right: 15px;
   box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
     0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
 }
+
 .hydration-card,
 .hydra-chart {
  display: flex;
  align-items: center;
  text-align: center;
 }
+
 .hydra-data,
 .hydra-chart {
  margin: 8px;
  border: 1px solid #6947ff;
 }
+
 .hydra-chart{
   font-size: 1.4vw;
   width: 25vw;
@@ -213,17 +226,10 @@ label {
   font-family: "Roboto Mono", monospace;
   font-size: 14px;
 }
-.sleep-data {
-  border: 1px solid #2cb7ff;
-}
 
 .chart-container {
   width: 400px;
   height: 200px;
-}
-
-.sleep-for-week {
-  margin-top: 15px;
 }
 
 p {

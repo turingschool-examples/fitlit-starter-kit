@@ -92,7 +92,7 @@ const avgSleepQualityDisplay = document.getElementById('sleep-quality-today')
 const weeklySleepHoursDisplay = document.getElementById('sleep-hours-weekly')
 const allTimeSleepHoursDisplay = document.getElementById('all-time-sleep')
 const allTimeSleepQualityDisplay = document.getElementById('all-time-quality')
-
+const userGoalVsAverageGoalDisplay = document.getElementById('step-goal-vs-avg')
 
 
 
@@ -112,6 +112,7 @@ function populateDashboard() {
   displayTodaysSleepData()
   displayThisWeeksSleepData()
   displayAllTimeSleepData()
+  compareGoals()
 
   // generateCharts()
 }
@@ -137,6 +138,10 @@ function showUserInfo() {
 function showStepsContent() {
   stepsGoalDisplay.innerText += `${currentUser.dailyStepGoal}`
   // stepsCurrentDisplay.innerText = `So far you have taken: 9,999`
+}
+
+function compareGoals() {
+  userGoalVsAverageGoalDisplay.innerText = `${userRepo.calculateAvgStepGoal()}`
 }
 
 function showStepsFriends() {
@@ -183,8 +188,6 @@ function displayThisWeeksSleepData() {
     weeklySleepHoursDisplay.innerHTML += `<p class="bold">${date} <br> Hours:${hoursSlept}, Quality: ${sleepQuality}</p>`
   })
 }
-
-// all time avg sleep quality && number hours slept
 
 function displayAllTimeSleepData() {
   allTimeSleepHoursDisplay.innerText = sleepData.findAverageDailySleep(currentUser.id)

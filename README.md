@@ -107,7 +107,7 @@ The following resources helped us build this project:
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Reflections
-We worked on making the UI/UX design of our page to be responsive to ensure that it is easy to navigate. We wanted our page to be user accessible by carefully choosing the font and color scheme. 
+We worked on making the UI/UX design of our page to be responsive to ensure that it is easy to navigate and viewable on any device. We wanted our page to be user accessible by carefully choosing the font and color scheme. 
 
 We learned how to create bar charts and how to properly configure them to look uniform with our page. We hope to project user data in other chart forms that will be more concisely show the user their progress.
 

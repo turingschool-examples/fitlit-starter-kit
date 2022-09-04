@@ -51,8 +51,8 @@ class Sleep {
         let currentUser = this.getSleepByID(sleepArray, userID)
         let weekHoursSorted = currentUser.sort((oldest, newest) => oldest.date - newest.date)
             .splice(0, 7)
-            .map(sleepInformation => sleepInformation.hoursSlept)
-        return weekHoursSorted
+            .map(sleepInformation => `${sleepInformation.hoursSlept}hrs (${sleepInformation.date}) \n`)
+        return weekHoursSorted;
     };
 
     userQualityOnDate(sleepArray, userID, date) {
@@ -65,7 +65,7 @@ class Sleep {
         let currentUser = this.getSleepByID(sleepArray, userID)
         let weekQualitySorted = currentUser.sort((oldest, newest) => oldest.date - newest.date)
             .splice(0, 7)
-            .map(sleepInformation => sleepInformation.sleepQuality)
+            .map(sleepInformation => `${sleepInformation.sleepQuality} (${sleepInformation.date}) \n`)
         return weekQualitySorted
     }
 

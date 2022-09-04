@@ -4,7 +4,7 @@ import './images/icons8-plus-67.png';
 import './images/icons8-high-voltage-48.png';
 import './images/icons8-water-96.png';
 import './images/icons8-zzz-96.png';
-import './images/fitlit-logo.png'
+import './images/fitlit-logo.png';
 
 // Import local files:
 import fetchData from './apiCalls.js';
@@ -18,12 +18,12 @@ import Chart from 'chart.js/auto';
 
 // Query Selectors
 const greeting = document.querySelector('.greeting');
-const friendsList = document.querySelector('#friendsList');
+const friendsList = document.querySelector('.friends-list');
 const fullName = document.querySelector('.full-name');
 const userAddress = document.querySelector('.user-address');
 const userEmail = document.querySelector('.user-email');
 const stepGoal = document.querySelector('.step-goal');
-const sleepAverages = document.querySelector('#sleep-averages');
+const sleepAverages = document.querySelector('.sleep-averages');
 
 // Global variables
 let userData;
@@ -99,13 +99,20 @@ function renderSleepAverages() {
 }
 
 // Chart styling
-const fontFamily = 'Alegreya';
+const fontProperties = (context) => {
+  let width = context.chart.width;
+  let size = Math.round(width / 28);
+
+  return {
+      family: 'Alegreya',
+      size: size
+  };
+};
+
 const chartPlugins = {
   legend: {
     labels: {
-      font: {
-        family: fontFamily,
-      }
+      font: fontProperties
     }
   } 
 };
@@ -114,21 +121,17 @@ const chartOptions = {
   scales: {
     x: {
       ticks: {
-        font: {
-          family: fontFamily,
-        }
+        font: fontProperties
       }
     },
     y: {
       ticks: {
-        font: {
-          family: fontFamily,
-        }
+        font: fontProperties
       }
     }
   }, 
   plugins: {
-    chartPlugins,
+    ...chartPlugins,
   }
 };
 
@@ -163,7 +166,7 @@ function renderSleepChartByWeek() {
     ]
     },
     options: {
-      chartOptions, 
+      ...chartOptions, 
     }
   });
   return weeklyHoursSlept;
@@ -191,8 +194,14 @@ function renderSleepChartByDay() {
     ]},
     options: {
       indexAxis: 'y',
-      chartOptions,
-    }
+      responsive: true,
+      ...chartOptions,  
+    },
+    // scales: {
+    //   yAxes: {
+    //     maxBarThickness: 10,
+    //   }
+    // }
   });
   return sleepDayCanvas;
 };
@@ -210,7 +219,7 @@ function renderOuncesByWeek(start, end) {
       }]
     },
     options: {
-      chartOptions,
+      ...chartOptions,
     }
   });
   return weeklyOunces;
@@ -231,8 +240,14 @@ function renderOuncesPerDay(date) {
     },
     options: {
       indexAxis: 'y',
-      chartOptions,
-    }
+      responsive: true,
+      ...chartOptions,
+    },
+    // scales: {
+    //   yAxes: {
+    //     maxBarThickness: 10,
+    //   }
+    // }
   });
   return dailyOunces;
 };

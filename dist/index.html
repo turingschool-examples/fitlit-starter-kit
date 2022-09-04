@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- <link rel="stylesheet" href="datepicker.min.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@200;400&display=swap" rel="stylesheet">
@@ -39,8 +38,8 @@
       </div>
 
       <div class="display-article-content steps-content fredoka200">
-        <div class="steps-content-goal">Your daily steps goal is: #</div>
-        <div class="steps-content-current">Steps taken so far today: #</div>
+        <div>Your daily steps goal is: </div>
+        <div class="steps-content-goal bold"></div>
         <canvas class="graph" id="steps-pie-chart"></canvas>
       </div>
 
@@ -68,17 +67,20 @@
       </div>
           
       <div class="display-article-content hydration-content fredoka200">
-        <div>Water drunk TODAY:
-          <div id="water-drank-today"></div>
+        <div>Water drank TODAY:
+          <div class="bold" id="water-drank-today">fl. oz</div>
         </div>
-        <div>Average water per day: &nbsp; #OZ</div>
-        <div>Average water over the last week:</div>
+        <div>Average water per day:</div>
+        <div class="bold" id="avg-water-drank"></div>
+        <div>Average hydration this week:</div>
+        <div class="bold avg-water-week"></div>
         <canvas class="graph" height="250" id="week-in-water"></canvas>
       </div>
       
       <div class="display-article-content hydro-by-date fredoka200">
         Water drank on date:
-        <div id="water-drank-on-date" class="picker clickable">CHOOSE DATE</div>
+        <input type="date" id="choose-water-drank-on-date">
+        <dss="border" id="display-water-drank-on-date">test</div>
         <div>Weekly water displays here</div>
         <canvas class="graph" height="250" id="chosen-week-in-water"></canvas>
 
@@ -100,19 +102,19 @@
         <canvas class="graph" height="150" id="average-sleep-hours"></canvas>
 
         <div id="hours-slept">How many hours did I sleep on...</div>
-        <div id="hours-slept-by-date" class="picker clickable">CHOOSE DATE</div>
+        <input type="date" id="hours-slept-by-date">CHOOSE DATE
         <br>
         <div>How much did I sleep the week of...</div>
-        <div id="week-slept-by-date" class="picker clickable">CHOOSE DATE</div>
+        <input type="date" id="week-slept-by-date">CHOOSE DATE
       </div>
 
       <div class="display-article-content sleep-content fredoka200" id="sleep-quality">Sleep Quality:
         <div>Average quality of sleep: #</div>
         <canvas class="graph" height="250" id="average-sleep-quality"></canvas>
         <div>How well did I sleep on...</div>
-        <div id="sleep-quality-by-date" class="picker clickable">CHOOSE DATE</div>
+        <input type="date" id="sleep-quality-by-date">CHOOSE DATE
         <div>How well did I sleep the week of...</div>
-        <div id="sleep-quality-by-week" class="picker clickable">CHOOSE DATE</div>
+        <input type="date" id="sleep-quality-by-week">CHOOSE DATE
         <canvas class="graph" height="250" id="sleep-quality"></canvas>
       </div>
 
@@ -120,7 +122,6 @@
   </section>
 </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <!-- <script src="datepicker.min.js"></script> -->
     <script src="./bundle.js"></script>
   </body>
 </html>

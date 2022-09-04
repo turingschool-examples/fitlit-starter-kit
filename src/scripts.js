@@ -38,7 +38,7 @@ function getAllData() {
     populateDashboard()
   });
 }
-
+ 
 // header selectors //
 const userNameDisplay = document.querySelector('.header-welcome-username')
 // const userIconDisplay = document.querySelector('.header-userlogo') 
@@ -48,7 +48,7 @@ const welcomeDisplay = document.querySelector('.header-welcome')
 const stepsGoalDisplay = document.querySelector('.steps-content-goal') 
 // const stepsCurrentDisplay = document.querySelector('.steps-content-current')
 // const stepsFriendsList = document.querySelectorAll('.step-friend')
-// const stepsFriendsDisplay = document.querySelector('.steps-content-header')
+const stepsFriendsDisplay = document.querySelector('.steps-content-header')
 // const friend1 = document.getElementById('friend1')
 // const friend2 = document.getElementById('friend2')
 // const friend3 = document.getElementById('friend3')
@@ -84,12 +84,12 @@ function populateDashboard() {
   // showUserInfo()
   // renderFriends()
   // renderStepGoal()
+  showStepsFriends() 
   
 }
 
 
 // function calls
-// showStepsContent()
 
 // functions //
 function applyUserName() {
@@ -107,22 +107,27 @@ function applyUserName() {
 //   }
 // }
 
-function showStepsContent(stepsGoal, stepsCurrent) {
+function showStepsContent() {
   stepsGoalDisplay.innerText += `${userRepo.calculateAvgStepGoal()}`
   // stepsCurrentDisplay.innerText = `So far you have taken: 9,999`
 }
 
-// function showStepsFriends() {
-//     // stepsFriendsList = can probly write a forEach loop here
-//     stepsFriendsDisplay.innerText = 'Your friends have taken:'
-//     friend1.innerText = `Friend 1 - DAILY STEP GOAL`
-//     friend2.innerText = `Friend 2 - DAILY STEP GOAL`
-//     friend3.innerText = `Friend 3 - DAILY STEP GOAL`
-//     friend4.innerText = `Friend 4 - DAILY STEP GOAL`
-//     friend5.innerText = `Friend 5 - DAILY STEP GOAL`
-//   }
-//   showStepsFriends()
 
-function displayOuncesDrankPerWeek() {
 
+function showStepsFriends() {
+    // stepsFriendsList = can probly write a forEach loop here
+    stepsFriendsDisplay.innerText = `${createFriendList()}`
+  }
+
+function createFriendList() {
+  let userFriends = currentUser.friends
+
+  const findFriendsNames = userFriends.reduce((acc, friend) => {
+      acc.push(userRepo.findUserData(friend))
+    return acc
+  }, []).map((friend) => friend.name)
+  return findFriendsNames
 }
+
+// friends are a list of user IDs
+// 

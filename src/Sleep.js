@@ -7,7 +7,6 @@ class Sleep {
     findSleepDataById(userID) {
         const sleepDataById = this.sleepData.filter(user => {
             if (userID === user.userID) {
-              console.log(user)
                 return user
             }
         })

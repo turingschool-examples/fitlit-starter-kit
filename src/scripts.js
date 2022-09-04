@@ -89,6 +89,11 @@ const sleepContentDisplay = document.querySelector('.sleep-content')
 const sleepArticleDisplay = document.getElementById('avg-sleep')
 const avgHoursSleptDisplay = document.getElementById('hours-slept')
 const avgSleepQualityDisplay = document.getElementById('sleep-quality-today')
+const weeklySleepHoursDisplay = document.getElementById('sleep-hours-weekly')
+const allTimeSleepHoursDisplay = document.getElementById('all-time-sleep')
+const allTimeSleepQualityDisplay = document.getElementById('all-time-quality')
+
+
 
 
 // event listeners //
@@ -105,8 +110,10 @@ function populateDashboard() {
   displayAverageWaterDrank()
   displayWeeklyHydration()
   displayTodaysSleepData()
+  displayThisWeeksSleepData()
+  displayAllTimeSleepData()
 
-  generateCharts()
+  // generateCharts()
 }
 
 // functions //
@@ -167,10 +174,23 @@ function displayWeeklyHydration() { // current week
 function displayTodaysSleepData() {
   avgHoursSleptDisplay.innerText = sleepData.findHoursSleptByDate(currentUser.id, todaysDate)
   avgSleepQualityDisplay.innerText = sleepData.findSleepQualityByDate(currentUser.id, todaysDate)
-
 }
 
+function displayThisWeeksSleepData() {
+  const thisWeeksSleepData = sleepData.findWeeklySleepData(currentUser.id, todaysDate)
+  thisWeeksSleepData.forEach(element => {
+    const {date, hoursSlept, sleepQuality} = element
+    weeklySleepHoursDisplay.innerHTML += `<p class="bold">${date} <br> Hours:${hoursSlept}, Quality: ${sleepQuality}</p>`
+  })
+}
 
+// all time avg sleep quality && number hours slept
+
+function displayAllTimeSleepData() {
+  allTimeSleepHoursDisplay.innerText = sleepData.findAverageDailySleep(currentUser.id)
+
+  allTimeSleepQualityDisplay.innerText = sleepData.findAverageSleepQuality(currentUser.id)
+}
 /* ------ experimental -------- */
 
 

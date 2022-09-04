@@ -74,9 +74,8 @@ You can find the project [here](https://github.com/emilyjmiles/fitlit-group-proj
 * The program displays user data through text and charts when the page loads
 <!-- <img width="1428" alt="Screen Shot 2022-09-04 at 12 14 24 PM" src="https://user-images.githubusercontent.com/94808267/188327742-03ee3310-d07a-498b-8213-637de49ab7ef.png"> -->
 
-Desktop View | Cell Phone View
-|------------|----------------|
- <video src="[Desktop View](https://media.giphy.com/media/6QMupVufGnhGwmbZpj/giphy.gif)" width=270/> | <video src="[Cell Phone View]https://media.giphy.com/media/5D3KvzWgqlYy7nBR5x/giphy.gif" width=90/>
+
+ <video src="![Desktop View](https://media.giphy.com/media/6QMupVufGnhGwmbZpj/giphy.gif)" width=270/> | <video src="![Cell Phone View]https://media.giphy.com/media/5D3KvzWgqlYy7nBR5x/giphy.gif" width=90/>
 
 New feature ideas: 
 - [ ] During Part Two of the project:

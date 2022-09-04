@@ -1,14 +1,128 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@200;400&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Fitlit</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+  <div>
+    <!-- header -->
+  <section class="header bent-left has-shadow">
+    <div class="header-logo bent-left fredoka400 has-shadow has-margin">
+      FIT
+      <img class="flame-icon" src="./images/icons8-fire-90.png" alt="flame icon">
+      LIT
+    </div>
+    <section class="header-welcome-mat">
+      <div class="header-welcome fredoka200">WELCOME,
+      </div>
+      <div class="header-welcome-username fredoka400">
+      </div>
+    </section>
+    <div class="clickable">
+      <div class="header-userlogo has-shadow has-margin bent-left"><img src="./images/icons8-avatar-67.png" alt="turing logo" height="100px" width="100px">
+      </div>
+    </div>
+  </section>
+  <!-- display -->
+  <section class="display bent-right has-shadow">
 
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="bundle.js"></script>
+    <!-- steps article -->
+    <article class="display-article steps has-shadow has-margin bent-right">
+      <div class="display-article-header fredoka400 bent-right">
+        <img class="display-article-header-icon" src="./images/icons8-walking-100.png" alt="person walking to represent daily steps">
+        Steps
+      </div>
+
+
+      <div class="display-article-content steps-content fredoka200">
+        <div>Your daily steps goal is: </div>
+        <div class="steps-content-goal bold"></div>
+        <canvas class="graph" id="steps-pie-chart"></canvas>
+      </div>
+
+      <div class="display-article-content step-goal-vs-avg fredoka200">
+        <div>Your Goal vs User Average</div>
+        <canvas class="graph" height="200" id="compare-avg-goal"></canvas>
+
+      </div>
+        
+      <div class="steps-content-friends has-margin fredoka200">
+        <div class="steps-content-header">Your friends: <br></div>
+        <div id="friendList" class="friend-list">Your Friends: <br></div>
+      </div>
+    </article>
+
+    <!-- hydration article -->
+    <article class="display-article hydration has-shadow verticle-margin">
+      <div class="display-article-header fredoka400">
+        <img class="display-article-header-icon" src="./images/icons8-water-52.png" alt="water drop to represent hydration">
+        Hydration
+      </div>
+          
+      <div class="display-article-content hydration-content fredoka200">
+
+        <div>Water drank TODAY:
+          <div class="bold" id="water-drank-today">fl. oz</div>
+        </div>
+        <div>Average water per day:</div>
+        <div class="bold" id="avg-water-drank"></div>
+        <div>Average hydration this week:</div>
+        <div class="bold avg-water-week"></div>
+        <canvas class="graph" height="250" id="week-in-water"></canvas>
+      </div>
+      
+      <div class="display-article-content hydro-by-date fredoka200">
+        Water drank on date:
+        <input type="date" id="choose-water-drank-on-date">
+        <dss="border" id="display-water-drank-on-date">test</div>
+        <div>Weekly water displays here</div>
+        <canvas class="graph" height="250" id="chosen-week-in-water"></canvas>
+
+      </div>
+      
+      <!-- <canvas class="graph" height="250" id="hydro-homies"></canvas> -->
+
+    </article>
+
+    <!-- sleep article -->
+    <article class="display-article sleep has-shadow has-margin">
+      <div class="display-article-header fredoka400">
+        <img class="display-article-header-icon" src="./images/icons8-sleep-52.png" alt="floating Zs to represent sleep">
+        Sleep
+      </div>
+
+
+      <div class="display-article-content sleep-content fredoka200">Sleep Time:
+        <div id="avg-sleep">Average hours of sleep this week: #</div>
+        <canvas class="graph" height="150" id="average-sleep-hours"></canvas>
+
+        <div id="hours-slept">How many hours did I sleep on...</div>
+        <input type="date" id="hours-slept-by-date">CHOOSE DATE
+        <br>
+        <div>How much did I sleep the week of...</div>
+        <input type="date" id="week-slept-by-date">CHOOSE DATE
+
+      </div>
+      <div class="display-article-content sleep-content fredoka200" id="sleep-quality">Sleep Quality:
+        <div>Average quality of sleep: #</div>
+
+        <canvas class="graph" height="250" id="average-sleep-quality"></canvas>
+        <div>How well did I sleep on...</div>
+        <input type="date" id="sleep-quality-by-date">CHOOSE DATE
+        <div>How well did I sleep the week of...</div>
+        <input type="date" id="sleep-quality-by-week">CHOOSE DATE
+        <canvas class="graph" height="250" id="sleep-quality"></canvas>
+
+      </div>
+
+    </article>
+  </section>
+</div>
+
+    <script src="./bundle.js"></script>
   </body>
 </html>

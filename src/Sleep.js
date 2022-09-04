@@ -7,6 +7,7 @@ class Sleep {
     findSleepDataById(userID) {
         const sleepDataById = this.sleepData.filter(user => {
             if (userID === user.userID) {
+              console.log(user)
                 return user
             }
         })
@@ -19,7 +20,7 @@ class Sleep {
         const avgHours = filterSleep.reduce((acc, sleep) => {
             acc += sleep.hoursSlept
             return acc
-        }, 0) 
+        }, 0)
         return parseFloat((avgHours / filterSleep.length).toFixed(1))
     }
 
@@ -59,7 +60,7 @@ class Sleep {
         }, 0)
         return weeklySleepHours.toFixed(1)
     }
-        
+
     findWeeklySleepQuality(userID, date) {
         const filterSleep = this.findSleepDataById(userID)
         const getDates = filterSleep.map(user => user.date)

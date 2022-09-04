@@ -147,8 +147,8 @@ const barStyle2 = {
 
 // Chart render functions
 function renderSleepChartByWeek() {
-  const weeklyHS = sleep.getDailySleepByWeek('2019/06/15','2019/06/21', 'hoursSlept');
-  const weeklySQ = sleep.getDailySleepByWeek('2019/06/15','2019/06/21', 'sleepQuality');
+  const weeklyHS = sleep.getDailySleepByWeek('2020/01/15','2020/01/22', 'hoursSlept');
+  const weeklySQ = sleep.getDailySleepByWeek('2020/01/15','2020/01/22', 'sleepQuality');
   const weeklyHoursSlept = new Chart('weeklyHoursSlept', {
     type: 'bar',
     data: {
@@ -173,8 +173,8 @@ function renderSleepChartByWeek() {
 };
 
 function renderSleepChartByDay() {
-  const hours = sleep.getSleepDataByGivenDay('2019/06/15', 'hoursSlept');
-  const quality = sleep.getSleepDataByGivenDay('2019/06/15', 'sleepQuality');
+  const hours = sleep.getSleepDataByGivenDay('2020/01/22', 'hoursSlept');
+  const quality = sleep.getSleepDataByGivenDay('2020/01/22', 'sleepQuality');
   const sleepDayCanvas = new Chart('dailyHoursSlept', {
     type: 'bar',
     data: {
@@ -182,12 +182,14 @@ function renderSleepChartByDay() {
       datasets: [{
         label: 'Hours Slept',
         data: [hours],
+        barPercentage: 0.5,
         ...barStyle1,
         borderRadius: 4,
       },
       {
         label: 'Sleep Quality',
         data: [quality],
+        barPercentage: 0.5,
         ...barStyle2,
         borderRadius: 4,
       }
@@ -197,11 +199,6 @@ function renderSleepChartByDay() {
       responsive: true,
       ...chartOptions,  
     },
-    // scales: {
-    //   yAxes: {
-    //     maxBarThickness: 10,
-    //   }
-    // }
   });
   return sleepDayCanvas;
 };
@@ -235,6 +232,7 @@ function renderOuncesPerDay(date) {
         label: 'Daily Water Intake',
         data: [day],
         ...barStyle2,
+        barPercentage: 0.25,
         borderRadius: 4,
       }]
     },
@@ -243,11 +241,6 @@ function renderOuncesPerDay(date) {
       responsive: true,
       ...chartOptions,
     },
-    // scales: {
-    //   yAxes: {
-    //     maxBarThickness: 10,
-    //   }
-    // }
   });
   return dailyOunces;
 };

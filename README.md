@@ -69,12 +69,16 @@ You can find the project [here](https://github.com/emilyjmiles/fitlit-group-proj
 <img width="1428" alt="Screen Shot 2022-09-04 at 12 14 24 PM" src="https://user-images.githubusercontent.com/94808267/188327742-03ee3310-d07a-498b-8213-637de49ab7ef.png">
 
 New feature ideas: 
-- [ ] The Friends buttons will be clickable to display their information instead of the user that appeared when the page loaded. 
-- [ ] The friend's hydration and sleep information can be displayed in a box as an average between them.
+- [ ] During Part Two of the project:
+    - [ ] The activity box will contain a chart that displays the user's daily activity
+    - [ ] Add as weekly graph of the users activity
+    - [ ] A user will be able to add data to their hydration, sleep, or activity.
+    - [ ] A user will be able to see the comparison of their data to all the users average data.
+- [ ] The friends buttons will be clickable to display their information instead of the user that appeared when the page loaded. 
+- [ ] The friends hydration and sleep information can be displayed in a box as an average between them.
 - [ ] The user will be able to toggle between different sets of charts.
 - [ ] The user will be able to change the weekly data projected in the charts.
-- [ ] The user details is hidden and viewable after a click on their profile.
-- [ ] Add user profile icon
+- [ ] The user details is hidden and viewable after a click on their profile icon.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

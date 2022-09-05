@@ -1,14 +1,103 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src='Chart.min.js'></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@200;400&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Fitlit</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <!-- header -->
+    <section class="header bent-left has-shadow">
+      <div class="header-logo bent-left fredoka400 has-shadow has-margin">
+        FIT
+        <img class="flame-icon" src="./images/icons8-fire-90.png" alt="flame icon">
+        LIT
+      </div>
+      <section class="header-welcome-mat">
+        <div class="header-welcome fredoka200">WELCOME,
+        </div>
+        <div class="header-welcome-username fredoka400">
+        </div>
+      </section>
+      <div class="clickable">
+        <div class="header-userlogo has-shadow has-margin bent-left"><img src="./images/icons8-avatar-67.png" alt="turing logo" height="100px" width="100px">
+        </div>
+      </div>
+    </section>
+    <!-- display -->
+    <section class="display bent-right has-shadow">
 
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="bundle.js"></script>
+      <!-- steps article -->
+      <article class="display-article steps has-shadow has-margin bent-right">
+        <div class="display-article-header fredoka400 bent-right">
+          <img class="display-article-header-icon" src="./images/icons8-walking-100.png" alt="person walking to represent daily steps">
+          Steps
+        </div>
+
+
+        <div class="display-article-content steps-content fredoka200">
+          <p>Your daily steps goal is: <span class="steps-content-goal bold"></span></p>
+            <p>FitLit User Average: <span class="bold" id="step-goal-vs-avg"></span> </p>
+            <canvas class="graph" height="250" id="compare-avg-goal"></canvas>
+          </div>
+        </div>
+          
+        <div class="steps-content-friends has-margin fredoka200">
+          <div class="steps-content-header">Your friend's Step Goals: </div>
+          <div id="friendList" class="friend-list bold"></div>
+          <canvas class="graph" height="300" id="steps-friends-chart"></canvas>
+        </div>
+      </article>
+
+      <!-- hydration article -->
+      <article class="display-article hydration has-shadow verticle-margin">
+        <div class="display-article-header fredoka400">
+          <img class="display-article-header-icon" src="./images/icons8-water-52.png" alt="water drop to represent hydration">
+          Hydration
+        </div>
+            
+        <div class="display-article-content hydration-content fredoka200">
+
+          <p>Hydration Today:
+            <span class="bold" id="water-drank-today">fl. oz</span>
+          </p>
+          <p>Average Hydration Per Day: <span class="bold" id="avg-water-drank"></span></p>
+          <br>
+          <div>Hydration this week:</div>
+          <div id="avg-water-week" class="bold"></div>
+          <canvas class="graph" height="450" id="week-in-water"></canvas>
+        </div>
+        
+      </article>
+
+      <!-- sleep article -->
+      <article class="display-article sleep has-shadow has-margin">
+        <div class="display-article-header fredoka400">
+          <img class="display-article-header-icon" src="./images/icons8-sleep-52.png" alt="floating Zs to represent sleep">
+          Sleep
+        </div>
+
+        <div class="display-article-content sleep-content fredoka200">Last Night's Sleep:
+          <p id="avg-sleep">Hours Slept: <span class="bold" id="hours-slept">How many hours did I sleep on...</span></p>
+          <p>Sleep Quality: <span class="bold" id="sleep-quality-today">How many hours did I </span>
+          </p>
+          <p>Average of Hours Slept: <span class="bold" id="all-time-sleep"></span></p>
+          <p>Average Quality of Sleep <span class="bold" id="all-time-quality"></span> </p>
+        </div>
+        
+        <div class="display-article-content sleep-content fredoka200" id="sleep-this-week">
+          <div>Sleep This Week: </div>
+          <div id="sleep-hours-weekly"></div>
+          <canvas class="graph" height="250" id="sleep-graph"></canvas>
+        </div>
+
+      </article>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script type="text/javascript" src="jscript/graph.js"></script>
+    <script src="./bundle.js"></script>
   </body>
 </html>

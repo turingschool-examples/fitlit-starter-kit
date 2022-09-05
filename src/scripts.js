@@ -173,7 +173,7 @@ function generateCharts() {
       labels: ["Your goal", "AVG Goal"], 
       datasets: [{
         label: 'Your Goal Vs. FitLit Average',
-        backgroundColor: barColors,
+        backgroundColor: ["rgb(0, 0, 255, .6)", "rgb(255, 125, 0, .6)"],
         data: [currentUser.dailyStepGoal, userRepo.calculateAvgStepGoal()]
       }]
     },
@@ -186,24 +186,35 @@ function generateCharts() {
         }]
       }
     }
-  
-
   }) 
+    
+  const friendsNames = currentUser.friends.map(friend => userRepo.findUserData(friend).name)
+  const friendsGoals = currentUser.friends.map(friend => userRepo.findUserData
+  (friend).dailyStepGoal)
+
+  new Chart("steps-friends-chart", {
+    type: "bar",
+    data: {
+      labels: friendsNames, 
+      datasets: [{
+        label: 'Your Friends Goals',
+        backgroundColor: barColors,
+        data: friendsGoals
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  }) 
+
+  
 }
-
-new Chart("steps-friends-chart", {
-  type: "bar",
-  data: {
-    labels: xValues, // bar titles - add friends' names here
-    datasets: [{
-      label: "Friends' Step Goals",
-      backgroundColor: barColors,
-      data: yValues // add friends' step goal data here
-    }]
-  },
-  // options: {...}
-})
-
 /*
 var hydroColors = [
   "rgba(4, 104, 255, 0.6)"]

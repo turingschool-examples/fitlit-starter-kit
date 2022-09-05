@@ -190,11 +190,6 @@ describe('Sleep', () => {
       ]);
     });
 
-    // it('should find weekly sleep quality', () => {
-    //   expect(sleep.findWeeklySleepQuality(1,'2019/06/22')).to.equal('3.6')
-    //   expect(sleep.findWeeklySleepQuality(2,'2019/06/22')).to.equal('2.9')
-    // });
-
     it('should find all users average sleep quality', () => {
       expect(sleep.findAvgSleepQualityForAllUsers()).to.equal(3.1)
     });

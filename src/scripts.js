@@ -12,7 +12,7 @@ import Hydration from './Hydration'
 import User from './User'
 import Sleep from './Sleep'
 
-import  { getUsersApiData, getSleepApiData, getHydrationApiData } from './apiCalls'
+import { getUsersApiData, getSleepApiData, getHydrationApiData } from './apiCalls'
 import { createAvgGoalChart, createStepFriendsChart, createWeeklyHydroChart, createWeeklySleepData } from './charts'
 
 // global variables //
@@ -29,13 +29,11 @@ function getAllData() {
     usersData = data[0].userData
     sleepData = data[1].sleepData
     hydrationData = data[2].hydrationData
-
     userRepo = new UserRepository(usersData)
     currentUser = new User(usersData[Math.floor(Math.random() * usersData.length)])
     hydrationData = new Hydration(hydrationData)
     todaysDate = sleepData[sleepData.length - 1].date
     sleepData = new Sleep(sleepData)
-
     populateDashboard()
   })
 }
@@ -51,7 +49,7 @@ const stepsGoalDisplay = document.querySelector('.steps-content-goal')
 // hydration selectors//
 const waterDrankToday = document.getElementById('water-drank-today')
 const averageWaterDrank = document.getElementById('avg-water-drank')
-const averageWaterThisWeek = document.getElementById('avg-water-week') // used
+const averageWaterThisWeek = document.getElementById('avg-water-week')
 
 // sleep selectors //
 const avgHoursSleptDisplay = document.getElementById('hours-slept')
@@ -65,7 +63,7 @@ const userGoalVsAverageGoalDisplay = document.getElementById('step-goal-vs-avg')
 window.addEventListener('load', getAllData())
 userIconDisplay.addEventListener('click', showUserInfo)
 
-//helper function //
+//helper functions //
 function populateDashboard() {
   applyUserName()
   showStepsContent()
@@ -79,6 +77,7 @@ function populateDashboard() {
   compareGoals()
   generateCharts()
 }
+
 function generateCharts() {
   createAvgGoalChart(currentUser, userRepo)
   createStepFriendsChart(currentUser, userRepo)
@@ -114,7 +113,6 @@ function compareGoals() {
 
 function createFriendList() {
   const userFriends = currentUser.friends
-
   const findFriendsNames = userFriends.reduce((acc, friend) => {
     const friendInfo = userRepo.findUserData(friend)
     acc += `<p>${friendInfo.name}: ${friendInfo.dailyStepGoal}</p>`
@@ -149,12 +147,11 @@ function displayThisWeeksSleepData() {
   const thisWeeksSleepData = sleepData.findWeeklySleepData(currentUser.id, todaysDate)
   thisWeeksSleepData.forEach(element => {
     const {date, hoursSlept, sleepQuality} = element
-    weeklySleepHoursDisplay.innerHTML += `<p class="bold">${date} <br> Hours:${hoursSlept}, Quality: ${sleepQuality}</p>`
+    weeklySleepHoursDisplay.innerHTML += `<p class="bold">${date}:<br>Hours: ${hoursSlept}, Quality: ${sleepQuality}</p>`
   })
 }
 
 function displayAllTimeSleepData() {
   allTimeSleepHoursDisplay.innerText = sleepData.findAverageDailySleep(currentUser.id)
-
   allTimeSleepQualityDisplay.innerText = sleepData.findAverageSleepQuality(currentUser.id)
 }

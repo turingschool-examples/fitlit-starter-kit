@@ -15,7 +15,6 @@ class Sleep {
 
     findAverageDailySleep(userID) {
         const filterSleep = this.findSleepDataById(userID)
-
         const avgHours = filterSleep.reduce((acc, sleep) => {
             acc += sleep.hoursSlept
             return acc
@@ -25,7 +24,6 @@ class Sleep {
 
     findAverageSleepQuality(userID) {
         const filterSleep = this.findSleepDataById(userID)
-
         const avgQuality = filterSleep.reduce((acc, sleep) => {
             acc += sleep.sleepQuality
             return acc
@@ -35,14 +33,12 @@ class Sleep {
 
     findHoursSleptByDate(userID, date) {
         const filterSleep = this.findSleepDataById(userID)
-
         const sleepHoursByDate = filterSleep.find(user => user.date === date)
         return sleepHoursByDate.hoursSlept
     }
 
     findSleepQualityByDate(userID, date) {
         const filterSleep = this.findSleepDataById(userID)
-
         const sleepQualityByDate = filterSleep.find(user => user.date === date)
         return sleepQualityByDate.sleepQuality
     }
@@ -52,7 +48,6 @@ class Sleep {
         const getDates = filterSleep.map(user => user.date)
         const dateIndex = getDates.indexOf(date)
         const weeklyRange = filterSleep.slice(dateIndex -6, dateIndex +1)
-
         const weeklySleepHours = weeklyRange.reduce((acc, hours) => {
             acc += hours.hoursSlept / 7
             return acc
@@ -61,13 +56,10 @@ class Sleep {
     }
         
     findWeeklySleepData(userID, date) {
-
         const filterSleep = this.findSleepDataById(userID)
-        
         const getDates = filterSleep.map(user => user.date)
         const dateIndex = getDates.indexOf(date)
         const weeklyRange = filterSleep.slice(dateIndex -6, dateIndex +1)
-
        return weeklyRange.reverse()
     }
 

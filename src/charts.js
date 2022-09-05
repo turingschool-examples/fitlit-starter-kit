@@ -7,6 +7,7 @@ const barColors = [
   "rgb(75, 0, 130, .6)",
   "rgb(150, 0, 210, .6)"
 ]
+
 export function createAvgGoalChart(currentUser, userRepo) {
 
   new Chart("compare-avg-goal", {
@@ -15,7 +16,7 @@ export function createAvgGoalChart(currentUser, userRepo) {
       labels: ["Your goal", "AVG Goal"], 
       datasets: [{
         label: 'Your Goal Vs. FitLit Average',
-        backgroundColor: ["rgb(0, 0, 255, .6)", "rgb(255, 125, 0, .6)"],
+        backgroundColor: [barColors[3], barColors[1]],
         data: [currentUser.dailyStepGoal, userRepo.calculateAvgStepGoal()]
       }]
     },
@@ -58,11 +59,8 @@ export function createStepFriendsChart(currentUser, userRepo) {
   }) 
 }
 
-
-
 export function createWeeklyHydroChart(hydrationData, currentUser, todaysDate) {
   const weeklyHydration = hydrationData.findWeeklyHydration(currentUser.id, todaysDate)
-
   const hydroData = weeklyHydration.reduce((acc,cur) => {
     acc.dates.push(cur.date)
     acc.ounces.push(cur.numOunces)
@@ -75,7 +73,7 @@ export function createWeeklyHydroChart(hydrationData, currentUser, todaysDate) {
       labels:  hydroData.dates,
       datasets: [{
         label: 'Weekly Hydration',
-        backgroundColor: barColors,
+        backgroundColor: barColors[4],
         data: hydroData.ounces
       }]
     },
@@ -93,7 +91,6 @@ export function createWeeklyHydroChart(hydrationData, currentUser, todaysDate) {
 
 export function createWeeklySleepData(currentUser, sleepData, todaysDate) {
   const thisWeeksSleepData = sleepData.findWeeklySleepData(currentUser.id, todaysDate)
-
   const sleepChartData = thisWeeksSleepData.reduce((acc,cur) => {
     acc.dates.push(cur.date)
     acc.hours.push(cur.hoursSlept)
@@ -107,24 +104,17 @@ export function createWeeklySleepData(currentUser, sleepData, todaysDate) {
       labels: sleepChartData.dates,
       datasets: [{
         label: 'Hours of Sleep',
-        backgroundColor: barColors[1],
+        backgroundColor: barColors[5],
         data: sleepChartData.hours
       },
       {
         label: 'Quality of Sleep',
-        backgroundColor: barColors[5],
+        backgroundColor: barColors[6],
         data: sleepChartData.qualities
       }]
     },
     options: {
-      // indexAxis: 'y',
-      // scales: {
-      //   yAxes: [{
-      //     ticks: {
-      //       beginAtZero: true
-      //     }
-      //   }]
-      // }
-    }
+      indexAxis: 'y',
+    }  
   }) 
 }

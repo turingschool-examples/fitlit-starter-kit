@@ -13,6 +13,7 @@ import User from './User'
 import Sleep from './Sleep'
 
 import  { getUsersApiData, getSleepApiData, getHydrationApiData } from './apiCalls'
+import { createAvgGoalChart, createStepFriendsChart, createWeeklyHydroChart, createWeeklySleepData } from './charts'
 
 // global variables //
 let currentUser
@@ -76,8 +77,13 @@ function populateDashboard() {
   displayThisWeeksSleepData()
   displayAllTimeSleepData()
   compareGoals()
-
   generateCharts()
+}
+function generateCharts() {
+  createAvgGoalChart(currentUser, userRepo)
+  createStepFriendsChart(currentUser, userRepo)
+  createWeeklyHydroChart(hydrationData, currentUser, todaysDate)
+  createWeeklySleepData(currentUser, sleepData, todaysDate)
 }
 
 // functions //
@@ -152,154 +158,3 @@ function displayAllTimeSleepData() {
 
   allTimeSleepQualityDisplay.innerText = sleepData.findAverageSleepQuality(currentUser.id)
 }
-
-/* ------ experimental -------- */
-
-function generateCharts() {
-
-  var barColors = [
-    "rgb(255, 0, 0, .6)", 
-    "rgb(255, 125, 0, .6)",
-    "rgb(255, 255, 0, .6)",
-    "rgb(0, 255, 0, .6)",
-    "rgb(0, 0, 255, .6)",
-    "rgb(75, 0, 130, .6)",
-    "rgb(150, 0, 210, .6)"
-  ]
-  
-  new Chart("compare-avg-goal", {
-    type: "bar",
-    data: {
-      labels: ["Your goal", "AVG Goal"], 
-      datasets: [{
-        label: 'Your Goal Vs. FitLit Average',
-        backgroundColor: ["rgb(0, 0, 255, .6)", "rgb(255, 125, 0, .6)"],
-        data: [currentUser.dailyStepGoal, userRepo.calculateAvgStepGoal()]
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      }
-    }
-  }) 
-    
-  const friendsNames = currentUser.friends.map(friend => userRepo.findUserData(friend).name)
-  const friendsGoals = currentUser.friends.map(friend => userRepo.findUserData
-  (friend).dailyStepGoal)
-
-  new Chart("steps-friends-chart", {
-    type: "bar",
-    data: {
-      labels: friendsNames, 
-      datasets: [{
-        label: 'Your Friends Goals',
-        backgroundColor: barColors,
-        data: friendsGoals
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      }
-    }
-  }) 
-
-  
-}
-/*
-var hydroColors = [
-  "rgba(4, 104, 255, 0.6)"]
-
-new Chart("week-in-water", {
-  type: "bar",
-  data: {
-    labels: xValues, // bar titles - relevant dates here
-    datasets: [{
-      label: 'OZ Drank Per Day', 
-      backgroundColor: hydroColors,
-      data: yValues // add friends' data here
-    }]
-  },
-  // options: {...}
-})
-
-new Chart("chosen-week-in-water", {
-  type: "bar",
-  data: {
-    labels: xValues,  // bar titles - relevant dates here
-    datasets: [{
-      label: 'OZ Drank Per Day', // steps / sleep / hydro
-      backgroundColor: hydroColors,
-      data: yValues // add friends' data here
-    }]
-  },
-  // options: {...}
-})
-
-
-
-new Chart("hydro-homies", {
-  type: "bar",
-  data: {
-    labels: xValues, // bar titles - add friends' names here
-    datasets: [{
-      label: 'Hydro Homies', // steps / sleep / hydro
-      backgroundColor: hydroColors,
-      data: yValues // add friends' data here
-    }]
-  },
-  // options: {...}
-})
-
-var sleepColors = [
-  "rgb(95, 0, 160, .6)"]
-
-new Chart("average-sleep-hours", {
-  type: "bar",
-  data: {
-    labels: xValues, // bar titles - add friends' names here
-    datasets: [{
-      label: 'Hours Slept By Day', // steps / sleep / hydro
-      backgroundColor: sleepColors,
-      data: yValues // add friends' data here
-    }]
-  },
-  // options: {...}
-})
-
-
-new Chart("average-sleep-quality", {
-  type: "bar",
-  data: {
-    labels: xValues, // bar titles - add friends' names here
-    datasets: [{
-      label: 'Hours Slept By Day', // steps / sleep / hydro
-      backgroundColor: sleepColors,
-      data: yValues // add friends' data here
-    }]
-  },
-  // options: {...}
-})
-
-new Chart("sleep-quality", { // missing from DOM
-  type: "bar",
-  data: {
-    labels: xValues, // bar titles - add friends' names here
-    datasets: [{
-      label: 'Sleep Quality By Day', // steps / sleep / hydro
-      backgroundColor: sleepColors,
-      data: yValues // add friends' data here
-    }]
-  },
-  // options: {...}
-})
-*/

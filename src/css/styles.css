@@ -90,9 +90,7 @@ align-items: ceter;
   display: flex;
   flex-direction: column;
   color: black;
-  /* height: auto; */
-  word-wrap: break-word;
-  max-width: 250px;
+  max-width: 300px;
   border-radius: 10px 30px;
   background-color: rgb(255, 255, 255, .6);
 }
@@ -156,8 +154,7 @@ align-items: ceter;
 /* EXPERIMENTAL */
 
 .graph {
-padding: 0px 10px 0px 5px;
-/* margin-top: auto; */
+padding: 0px 10px 0px 0px;
 }
 
 .picker {

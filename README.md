@@ -45,7 +45,7 @@ Athlete (user) is randomly generated upon FitLit page load and they are greeted 
 - Adding data points using post to our data model such as a sleep data point or an activity for a current date. 
 
 ## Technologies
-This project used JavaScript, HTML, and CSS primarily. Additional technologies learned specifically for this project included Webpack, Chart.js, and making network requests to fetch information from an API. 
+This project used JavaScript, HTML, and CSS primarily. Test driven development using Mocha and Chai was also used. Additional technologies learned specifically for this project included Webpack, Chart.js, and making network requests to fetch information from an API. 
 
 ## Contributors
 This project was built by a group of three Front End Engineering students at Turing School of Software and Design: 

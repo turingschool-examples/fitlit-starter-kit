@@ -30,14 +30,18 @@
     </section>
     <section class="column daily-overview" id="dailyOverview">
       <section class="daily hydration"id="hydrationBox">
-        <img role="button" class="icon water-icon" id="waterIcon" src="./images/icons8-water-96.png" alt="water icon">
+        <button type="button" class="icon-button">
+          <img class="icon water-icon" id="waterIcon" src="./images/water.png" alt="water icon">
+        </button>
         <div class="chart-container" id="chartContainer">
           <canvas class="daily-ounces" id="dailyOunces"></canvas>
         </div>
         <h2 class="title hydration-box-label" id="hydrationBoxLabel">Hydration</h3>
       </section>
       <section class="daily sleep" id="sleepBox">
-        <img role="button" class="icon sleep-icon" src="./images/icons8-zzz-96.png" id="sleepIcon" alt="sleep icon">
+        <button type="button" class="icon-button">
+          <img class="icon sleep-icon" src="./images/zzz.png" id="sleepIcon" alt="sleep icon">
+        </button>
         <div class="chart-container" id="chartContainer">
           <canvas class="daily-hours-slept" id="dailyHoursSlept"></canvas>
         </div>
@@ -45,7 +49,9 @@
         <h2 class="title sleep-box-label" id="sleepBoxLabel">Sleep</h3>
       </section>
       <section class="daily activity" id="activityBox">
-        <img role="button" class="icon activity-icon" id="activityIcon" src="./images/icons8-high-voltage-48.png" alt="activity icon">
+        <button type="button" class="icon-button">
+          <img class="icon activity-icon" id="activityIcon" src="./images/quick-mode.png" alt="activity icon">
+        </button>
         <div class="chart-container" id="chartContainer">
           <br/>
           <p class="text activity-message" id="activityMessage">Have you wandered out into nature yet today?</p>

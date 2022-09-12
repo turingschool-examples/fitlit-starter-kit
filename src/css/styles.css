@@ -5,7 +5,6 @@ body, html {
   background-image: url('/src/images/brain.png');
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100%;
   overflow: hidden;
   margin: 0;
   height: 100vh;
@@ -52,6 +51,12 @@ body, html {
   height: 1236px;
 }
 
+ul {
+line-height: 2.5;
+}
+.user-labels {
+color: blue;
+}
 .header {
   margin-right: 100px;
 }
@@ -80,7 +85,7 @@ body, html {
 }
 
 .user-data-details  {
-  color:rgb(1, 32, 7);
+  /* color:rgb(1, 32, 7); */
 }
 
 .user-hydro-details {

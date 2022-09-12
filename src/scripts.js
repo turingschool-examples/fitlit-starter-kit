@@ -23,7 +23,11 @@ const userInfo = document.querySelector('#userInfo')
 const userStepComp = document.querySelector('#userSteps')
 const hydrationCard = document.querySelector('#userHydro')
 const sleepCard = document.querySelector('#userSleep')
-
+const userInfoName = document.querySelector('#name')
+const userInfoEmail = document.querySelector('#email')
+const userInfoAddress = document.querySelector('#address')
+const userInfoStride = document.querySelector('#stride')
+const userInfoFriends = document.querySelector('#friends')
 // ######### Global Variables ###########
   let singleUser;
   let usersData;
@@ -85,17 +89,11 @@ function convertFriendIdToName() {
 };
 
 function displayUserData() {
-  userInfo.innerHTML = `<ul class='user-data-details'>
-    <li> Name: ${singleUser.name}</li>
-    <br>
-    <li> Email: ${singleUser.email}</li>
-    <br>
-    <li> Address: ${singleUser.address}</li>
-    <br>
-    <li>Stride ${singleUser.strideLength}</li>
-    <br>
-    <li>Friends:  ${convertFriendIdToName()}
-  </ul>`
+  userInfoName.innerText = singleUser.name
+  userInfoEmail.innerText = singleUser.email
+  userInfoAddress.innerText = singleUser.address
+  userInfoStride.innerText = singleUser.strideLength
+  userInfoFriends.innerText = convertFriendIdToName()
 };
 
 function displayStepGoalComp(userRepository) {

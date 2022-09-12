@@ -115,9 +115,7 @@ header {
 }
 
 .icon {
-  margin: 0%;
-  width: 15%;
-  height: auto;
+  width: 60%;
 }
 
 .chart-container {
@@ -144,7 +142,8 @@ header {
 }
 
 .friend {
-  background: #FFFFFF ;
+  background: #FFFFFF;
+  cursor: pointer;
   padding: 1%;
   margin-left: 10%;
   margin-top: 1%;
@@ -171,3 +170,17 @@ header {
   background-size: cover;
   box-shadow: 10px 10px 5px #6a6a6a;
 }
+
+.icon-button {
+  background-color: transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  flex: 1 1 0px;
+  margin: 0%;
+  border: 0px;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+}
+

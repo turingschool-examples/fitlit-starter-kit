@@ -22,8 +22,7 @@ class Sleep {
   };
 
   getAvgSleepData(type, dataSet) {
-    let sum;
-    sum = dataSet.reduce((acc, data) => {
+    const sum = dataSet.reduce((acc, data) => {
       if (data[type]) {
         acc += data[type];
       };

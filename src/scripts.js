@@ -1,9 +1,9 @@
 // Import styles:
 import './css/styles.css';
-import './images/icons8-plus-67.png';
-import './images/icons8-high-voltage-48.png';
-import './images/icons8-water-96.png';
-import './images/icons8-zzz-96.png';
+// import './images/icons8-plus-67.png';
+import './images/quick-mode.png';
+import './images/water.png';
+import './images/zzz.png';
 import './images/fitlit-logo.png';
 
 // Import local files:

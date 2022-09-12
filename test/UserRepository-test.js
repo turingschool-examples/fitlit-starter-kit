@@ -12,6 +12,7 @@ describe('User Repository', () => {
       new User({id: 2, name: 'Jarvis Considine', address: '30086 Kathryn Port, Ciceroland NE 07273', email: 'Dimitri.Bechtelar11@gmail.com', strideLength: 4.5, dailyStepGoal: 5000, friends: [9, 18, 24, 19]}),
       new User({id: 3, name: 'Herminia Witting', address: '85823 Bosco Fork, East Oscarstad MI 85126-5660', email: 'Elwin.Tromp@yahoo.com', strideLength: 4.4, dailyStepGoal: 5000, friends: [19, 11, 42, 33]}),
     ]; 
+
     userRepo = new UserRepository(users);
   });
 
@@ -46,6 +47,6 @@ describe('User Repository', () => {
   });
 
   it('should return the average step goal for all users', () => {
-    expect(userRepo.returnAverageStepGoal()).to.equal(6666);
+    expect(userRepo.returnAverageStepGoal()).to.equal(6667);
   });
 });

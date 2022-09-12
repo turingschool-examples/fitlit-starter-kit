@@ -8,25 +8,23 @@ describe('Hydration', () => {
   beforeEach(() => {
     hydrate1 = new Hydration(1, hydrationData);
     hydrate2 = new Hydration(2, hydrationData);
-  })
+  });
   it('should be a function', () => {
     expect(Hydration).to.be.a('function');
-  })
+  });
   it ('should take in a user\'s id', () => {
     expect(hydrate1.id).to.equal(1);
-  })
+  });
   it ('should calculate the daily ounces per user', () => {
-    expect(hydrate1.ouncesPerDay('2019/06/15', hydrationData)).to.deep.equal({'2019/06/15': 37});
-    expect(hydrate1.ouncesPerDay('2019/06/16', hydrationData)).to.deep.equal({'2019/06/16': 69});
-  })
+    expect(hydrate1.ouncesPerDay('2019/06/15')).to.equal(37);
+    expect(hydrate2.ouncesPerDay('2019/06/15')).to.equal(75);
+  });
   it ('should calculate weekly ouces per user', () => {
-    expect(hydrate1.getDailyOuncesByWeek(hydrationData, 0, 2)).to.deep.equal([
-      { userID: 1, date: '2019/06/15', numOunces: 37 },
-      { userID: 1, date: '2019/06/16', numOunces: 69 }
-    ]);
-  })
+    expect(hydrate1.getDailyOuncesByWeek(0, 2)).to.deep.equal([37, 69]);
+    expect(hydrate2.getDailyOuncesByWeek(0, 2)).to.deep.equal([75, 91]);
+  });
   it('should calculate the avg ounces per user', () => {
     expect(hydrate1.getAvgOunces(hydrationData)).to.deep.equal(59);
     expect(hydrate2.getAvgOunces(hydrationData)).to.deep.equal(83);
-  })
+  });
 })

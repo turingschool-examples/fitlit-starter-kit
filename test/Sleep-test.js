@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import Sleep from '../src/Sleep';
 import User from '../src/user';
 
-describe.only('Sleep', () => {
+describe('Sleep', () => {
   let currentUser;
   let userSleep;
 
@@ -25,7 +25,7 @@ describe.only('Sleep', () => {
   });
 
   it('should give average number of hours slept per day', () => {
-    expect(userSleep.getAvgSleepData('hoursSlept', userSleep.sleepDataPerUser)).to.equal(5.1);
+    expect(userSleep.getAvgSleepData('hoursSlept', userSleep.sleepDataPerUser)).to.equal(5);
   });
 
   it('should give number of sleep quality for given day', () => {
@@ -45,6 +45,8 @@ describe.only('Sleep', () => {
   });
 
   it('should give average sleep quality for all users', () => {
-    expect(userSleep.getAvgSleepData('sleepQuality', userSleep.sleepData)).to.equal(3.9);
+    expect(userSleep.getAvgSleepData('sleepQuality', userSleep.sleepData)).to.equal(4);
   });
 })
+
+

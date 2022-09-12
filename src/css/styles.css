@@ -1,107 +1,173 @@
-* {
+/* * {
   border: 1px solid red
-}
+} */
 
-body, html {
+html {
+  display: flex;
+  flex-wrap: wrap;
   background:#ffffff;
   background-repeat: no-repeat;
-  font-family: 'Courier Prime', monospace;
-  margin: 0px;
+  font-family: 'Alegreya';
+  font-size: 1vh;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 header {
-  padding: 20px;
+  font-size: 3rem;
+  text-align: center;
 }
 
-.large-container {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
-  border: 2px solid black;
-  box-sizing: border-box;
+.fitlit-logo {
+  width: 66%;
+  height: auto;
+}
+
+.greeting {
+  margin: 0%;
+  padding: 2.5%;
+}
+
+.title {
+  margin: 0%;
+  font-size: 2.5rem;
+}
+
+.text {
+  margin: 0.5%;
+  font-size: 2rem;
+}
+
+.step-goal {
+  padding: 5%;
+  font-size: 2rem;
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  gap: 20px;
-  width: 30vw;
-  align-items: stretch;
-  align-content: space-evenly;
-  flex: 1 1 300px;
-}
-
-.box1 {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  border-radius: 10%;
-}
-
-.friends-list, 
-.friends-activity {
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  border: 2px solid #9DDDFF;
-  background: #9DDDFF;
-  
-  
-}
-
-.friend {
-  background: #FFFF90 ;
-  padding: 5px;
-  margin: 1px;
-  display: flex;
-  justify-content: flex-start;
-  border-radius: 10px;
-}
-
-.box2 {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  border-radius: 10%;
+  text-align: center;
+  margin: 1%;
+  padding: 1%;
+  overflow: hidden;
+  flex: 1 1 300px; /* this is needed for flex wrapping to work -- do more research about properties */
 }
 
-.daily-overview {
+.user-section {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.user-details {
+  background-image: url('/src/images/teal-watercolor.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 5%;
+  border-radius: 50px;
+  box-shadow: 10px 10px 5px #6a6a6a;
+  font-size: 1.3rem;
+}
+
+.daily {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5%;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  border-radius: 50px;
+  box-shadow: 3px 3px 2px grey;
+  font-size: 0.75rem; 
 }
 
 .hydration {
-  display:flex;
-  flex-direction: column;
-  border: 2px solid #9DDDFF;
-  background: #fbfbfb;
-  padding: 20px;
-  border-radius: 20%;
+  background-image: url('/src/images/grey-watercolor.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 10px 5px #6a6a6a;
 }
 
 .activity {
-  display:flex;
-  flex-direction: column;
-  border: 2px solid #9DDDFF;
-  background: #9DDDFF;
-  padding: 20px;
-  border-radius: 20%;
+  background-image: url('/src/images/teal-watercolor.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 10px 5px #6a6a6a;
 }
 
 .sleep {
-  border: 2px solid #FFF890;
-  background: #FFF890;
-  padding: 20px;
-  border-radius: 20%;
+  background-image: url('/src/images/lilac-watercolor.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 10px 5px #6a6a6a;
 }
 
-.user-details,
+.sleep-averages {
+  font-size: 1.5rem;
+}
+
+.icon {
+  margin: 0%;
+  width: 15%;
+  height: auto;
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  margin: 0%;
+}
+
+.friends-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 50px;
+  padding: 5%;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+}
+
+.friends-list {
+  background-image: url('/src/images/lilac-watercolor.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 10px 5px #6a6a6a;
+}
+
+.friend {
+  background: #FFFFFF ;
+  padding: 1%;
+  margin-left: 10%;
+  margin-top: 1%;
+  margin-right: 10%;
+  margin-bottom: 1%;
+  border-radius: 25px;
+  font-size: 2rem;
+  font-family: 'Alegreya';
+  border: 1px solid grey;
+  box-shadow: 3px 3px 2px grey;
+}
+
 .friends-highlights {
-  border: 2px solid #9DDDFF;
-  background: #9DDDFF;
-  padding: 20px;
-  border-radius: 20px;
+  background-image: url('/src/images/teal-watercolor.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 10px 5px #6a6a6a;
+  overflow-wrap: break-word;
+}
+
+.friends-activity {
+  background-image: url('/src/images/grey-watercolor.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 10px 10px 5px #6a6a6a;
 }

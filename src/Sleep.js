@@ -4,11 +4,6 @@ class Sleep {
     this.sleepData = sleepData;
   };
 
-  // getAverage(minDate, maxDate, numDays) {
-  //   const average = array => array.reduce((a, b) => a + b) / array.length;
-  //   console.log(average([1,2,3,4,5]));
-  // }
-
   getSleepDataByGivenDay(date, type) {
     const dailySleep = this.sleepDataPerUser.reduce((acc, data) => {
       if (data.date === date) {
@@ -22,15 +17,14 @@ class Sleep {
   };
 
   getAvgSleepData(type, dataSet) {
-    let sum;
-    sum = dataSet.reduce((acc, data) => {
+    const sum = dataSet.reduce((acc, data) => {
       if (data[type]) {
         acc += data[type];
       };
 
       return acc;
     }, 0);
-
+    
     return Math.round(sum / dataSet.length);
   };
 
@@ -41,8 +35,9 @@ class Sleep {
     const sleepPerDay = week.map(data => data[type]);
 
     return sleepPerDay;
-  };
-}
+  };  
+};
+
 
 
 export default Sleep;

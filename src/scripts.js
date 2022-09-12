@@ -21,6 +21,7 @@ const fullName = document.querySelector('.full-name');
 const userAddress = document.querySelector('.user-address');
 const userEmail = document.querySelector('.user-email');
 const stepGoal = document.querySelector('.step-goal');
+const sleepAverages = document.querySelector('.sleep-averages');
 
 // Global variables
 let userData;
@@ -53,7 +54,6 @@ window.addEventListener('load', fetchAllData);
 
 // Helper Functions
 
-
 // DOM Functions
 function loadUserInfo() {
   renderGreeting();
@@ -80,7 +80,7 @@ function renderFriendsList() {
 
   return friendNames.forEach(friend => {
     friendsList.innerHTML += 
-    `<button class="friend">${friend.name}</button>`
+    `<button class="friend">${friend.name}</button>`;
   }); 
 };
 

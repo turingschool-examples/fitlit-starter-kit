@@ -28,6 +28,10 @@ const userInfoEmail = document.querySelector('#email')
 const userInfoAddress = document.querySelector('#address')
 const userInfoStride = document.querySelector('#stride')
 const userInfoFriends = document.querySelector('#friends')
+const ouncesDrankToday = document.querySelector('#todayOunces')
+const avgOuncesDrankPerDay = document.querySelector('#AvgOzPerDay')
+const avgOuncesDrankPerWeek = document.querySelector('#AvgOzWeekly')
+
 // ######### Global Variables ###########
   let singleUser;
   let usersData;
@@ -102,8 +106,9 @@ function displayStepGoalComp(userRepository) {
 };
 
 function displayHydrationData(singleHydro) {
-  hydrationCard.innerHTML = `<p class='user-hydro-details-1'> Today's OZ drank: ${singleHydro.usersDailyOunces(singleUser.id)}</p> <br> <p class='user-hydro-details-2'> Average OZ drank per day: ${singleHydro.getLifeTimeOunces()}</p> <br>
-  <p class='user-hydro-details-3'> Weekly: ${singleHydro.getOuncesPerWeek(singleUser.id, "2020/01/22") } </p> `
+  ouncesDrankToday.innerHTML = singleHydro.usersDailyOunces(singleUser.id)
+  avgOuncesDrankPerDay.innerHTML = singleHydro.getLifeTimeOunces()
+  avgOuncesDrankPerWeek.innerHTML = singleHydro.getOuncesPerWeek(singleUser.id, "2020/01/22")
 };
 
 function displaySleepData(singleSleep) {

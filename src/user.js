@@ -11,8 +11,9 @@ class User {
 
   returnName() {
     const splitName = this.name.split(' ');
+
     return splitName[0];
-  }
+  };
 };
 
 export default User;

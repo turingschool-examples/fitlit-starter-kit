@@ -9,7 +9,7 @@ class Sleep {
       if (data.date === date) {
         acc = data[type];
       };
-      
+
       return acc;
     }, 0);
 
@@ -37,7 +37,5 @@ class Sleep {
     return sleepPerDay;
   };  
 };
-
-
 
 export default Sleep;

@@ -5,7 +5,7 @@ class UserActivity {
 
   milesBasedOnSteps(activityDate, user) {
     let userActivity = this.data.filter((data) => data.date === activityDate);
-    if (userActivity === []) {
+    if (userActivity.length < 1) {
       return "Sorry no data available for given date";
     } else {
       let numberOfSteps = userActivity.reduce((acc, activity) => {
@@ -17,16 +17,18 @@ class UserActivity {
       return parseFloat(numberOfMilesWalked.toFixed(2));
     }
   }
-
-  //   getDayMilesWalked(userActivityTestData, date) {
-
-  //     let userActivity = new UserActivity(userActivityTestData);
-
-  //     let numberOFSteps = userActivity.numOfSteps(userActivityTestData, date);
-
-  //     let userMiles = numberOFSteps / this.strideLength / 2000;
-  //     return parseFloat(userMiles.toFixed(2));
-  //   }
+  minutesActive(activityDate, user) {
+    let userActivity = this.data.filter((data) => data.date === activityDate);
+    if (userActivity.length < 1) {
+      return "Sorry no data available for given date";
+    } else {
+      let activeTime = userActivity.reduce((activeMinutes, activity) => {
+        activeMinutes += activity.minutesActive;
+        return activeMinutes;
+      }, 0);
+      return activeTime;
+    }
+  }
 }
 
 module.exports = UserActivity;

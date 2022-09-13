@@ -1,5 +1,5 @@
 const UserActivity = require("./UserActivity");
-const userActivityTestData = require("../src/data/userActivityTestData")
+const userActivityTestData = require("../src/data/userActivityTestData");
 
 class User {
   constructor(userData) {
@@ -20,7 +20,7 @@ class User {
   getSleepDataPerDay(sleepData, date, detail) {
     const usersData = sleepData.filter((entry) => entry.userID === this.id);
     const entry = usersData.find((entry) => entry.date === date);
-    return entry[detail]
+    return entry[detail];
   }
 
   getAvgSleepDataPerDay(sleepData, detail) {
@@ -77,8 +77,13 @@ class User {
     return weeklyFluids.reverse();
   }
 
-  getDayMilesWalked(userActivityTestData, date){
-    let userActivity = new UserActivity(userActivityTestData[0])
+  getDayMilesWalked(userActivityTestData, date) {
+    let userActivity = new UserActivity(userActivityTestData[0]);
+
+    let numberOFSteps = userActivity.numOfSteps(userActivityTestData, date);
+
+    let userMiles = numberOFSteps / this.strideLength / 2000;
+    return parseFloat(userMiles.toFixed(2));
   }
 }
 

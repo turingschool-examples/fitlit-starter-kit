@@ -9,8 +9,8 @@ describe("UserActivity", ()=> {
     let userActivity;
     let userMiles;
     beforeEach(()=>{
-        userActivity = new UserActivity(userActivityTestData[0])
-        userMiles = new User(userTestData[0])
+        userActivity = new UserActivity(userActivityTestData)
+        userMiles = new User(userTestData[1])
     })
     
     it.only('should return the miles a user has walked based on their number of steps specified by a date', ()=> {

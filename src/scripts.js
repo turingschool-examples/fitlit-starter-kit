@@ -39,7 +39,7 @@ function fetchAllData() {
     userData = data[0],
     sleepData = data[1],
     hydrationData = data[2]
-
+    
     currentUser = new User(userData[Math.floor(Math.random() * userData.length)]);
     hydration = new Hydration(currentUser.id, hydrationData);
     sleep = new Sleep(currentUser.id, sleepData);

@@ -39,14 +39,15 @@ function fetchAllData() {
     userData = data[0],
     sleepData = data[1],
     hydrationData = data[2]
-
+    
     currentUser = new User(userData[Math.floor(Math.random() * userData.length)]);
     hydration = new Hydration(currentUser.id, hydrationData);
     sleep = new Sleep(currentUser.id, sleepData);
     allUsers = new UserRepository(userData);
-    
-    loadUserInfo();
-  });
+
+    loadUserInfo()
+  })
+
 };
 
 // Event Listeners
@@ -60,10 +61,10 @@ function loadUserInfo() {
   renderFriendsList();
   renderProfile();
   renderSleepAverages();
-  charts.renderOuncesPerDay(hydration, '2020/01/22');
+  charts.renderOuncesPerDay(hydration, '2019/06/15');
   charts.renderOuncesByWeek(hydration, 194, 201);
-  charts.renderSleepChartByDay(sleep);
-  charts.renderSleepChartByWeek(sleep);
+  charts.renderSleepChartByDay(sleep, '2019/06/15');
+  charts.renderSleepChartByWeek(sleep, '2019/06/15', '2019/06/22');
 };
 
 function renderGreeting() {
@@ -93,6 +94,6 @@ function renderProfile() {
 };
 
 function renderSleepAverages() {
-  sleepAverages.innerText = `Average Hours of Sleep: ${sleep.getAvgSleepData('hoursSlept', sleepData)}
-  Average Sleep Quality: ${sleep.getAvgSleepData('sleepQuality', sleepData)}`;
+  sleepAverages.innerText = `Your Average Hours of Sleep: ${sleep.getAvgSleepData('hoursSlept', true)}
+  Average Sleep Quality for all users: ${sleep.getAvgSleepData('sleepQuality', false)}`;
 };

@@ -78,7 +78,7 @@ class User {
   }
 
   getDayMilesWalked(userActivityTestData, date){
-    
+    let userActivity = new UserActivity(userActivityTestData[0])
   }
 }
 

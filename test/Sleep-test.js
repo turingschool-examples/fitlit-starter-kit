@@ -106,7 +106,14 @@ describe('Sleep', () => {
     })
 
     it('Should return a user\'s hours slept for a week', () => {
-        expect(sleep1.userHoursSleptForWeek(sleepArray, 1)).to.deep.equal([6.1, 4.1, 8, 10.4, 10.7, 9.3, 7.8])
+        expect(sleep1.userHoursSleptForWeek(sleepArray, 1)).to.deep.equal([
+        "6.1hrs (2019/06/15) \n",
+         "4.1hrs (2019/06/16) \n",
+        "8hrs (2019/06/17) \n",
+        "10.4hrs (2019/06/18) \n",
+        "10.7hrs (2019/06/19) \n",
+        "9.3hrs (2019/06/20) \n",
+        "7.8hrs (2019/06/21) \n"])
     });
 
     it('Should return a user\'s total quality sleep', () => {
@@ -119,6 +126,13 @@ describe('Sleep', () => {
     });
 
     it('Should return a user\'s quality of sleep for a week', () => {
-        expect(sleep1.userQualityForWeek(sleepArray, 1)).to.deep.equal([2.2, 3.8, 2.6, 3.1, 1.2, 1.2, 4.2])
+        expect(sleep1.userQualityForWeek(sleepArray, 1)).to.deep.equal([
+        "2.2 (2019/06/15) \n",
+        "3.8 (2019/06/16) \n",
+        "2.6 (2019/06/17) \n",
+        "3.1 (2019/06/18) \n",
+        "1.2 (2019/06/19) \n",
+        "1.2 (2019/06/20) \n",
+        "4.2 (2019/06/21) \n"])
     });
 })

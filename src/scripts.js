@@ -72,6 +72,7 @@ function initializeData() {
       Math.floor(Math.random() * userRepository.userData.length)
       ];
     renderUserInfo(randomUser, userRepository);
+    renderStepAverage(randomUser, userRepository)
     renderHydrationData(userHydration, randomUser);
     renderSleepData(allSleep, randomUser);
   });
@@ -89,6 +90,9 @@ function renderUserInfo(newUser, allUsers) {
   yourGoal.innerText = ` ${newUser.dailyStepGoal}`;
   allUsersGoals.innerText = ` ${allUsers.getUsersAverageStepGoals()}`;
 
+}
+
+function renderStepAverage(newUser, allUsers) {
   let status;
   let stepDifference;
   if (newUser.dailyStepGoal < allUsers.getUsersAverageStepGoals()) {
@@ -103,7 +107,7 @@ function renderUserInfo(newUser, allUsers) {
     status = on;
     stepDifference = "100%";
   }
-
+  
   averageStatus.innerText = ` ${status}`;
   userStepDifference.innerText = ` ${stepDifference}`;
 }

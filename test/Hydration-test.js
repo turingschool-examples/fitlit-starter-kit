@@ -95,6 +95,13 @@ describe('Hydration', () => {
     });
     
     it('Should return a week\'s data for a user', () => {
-        expect(hydration1.userOuncesPerWeek(hydrationArray, 4)).to.deep.equal([85, 95, 82, 93, 21, 95, 91])
+        expect(hydration1.userOuncesPerWeek(hydrationArray, 4)).to.deep.equal([
+        "85oz (2019/06/15) \n",
+        "95oz (2019/06/16) \n",
+        "82oz (2019/06/17) \n",
+        "93oz (2019/06/18) \n",
+        "21oz (2019/06/19) \n",
+        "95oz (2019/06/20) \n",
+        "91oz (2019/06/21) \n"])
     });
 })

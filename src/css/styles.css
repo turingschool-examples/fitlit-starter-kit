@@ -2,8 +2,8 @@
   color: #ff00ff;
   font-family: optima;
   font-style: oblique;
-  text-shadow: 0 0 7px #ffc0cb, 0 0 21px #ff00ff, 0 0 42px #0fa, 0 0 82px #0fa,
-    0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+  /* text-shadow: 0 0 7px #ffc0cb, 0 0 21px #ff00ff, 0 0 42px #0fa, 0 0 82px #0fa,
+    0 0 92px #0fa, 0 0 102px #0fa; */
     margin: 0;
     padding: 0;
 }
@@ -27,7 +27,7 @@ header {
 }
 
 span {
-  color: #5c2c6d;
+  color: #6df1d8;
 }
 
 h1 {
@@ -71,7 +71,7 @@ h2 {
 .hydro-info,
 .sleep-info {
   border-bottom: 0.5px solid #ff00ffe5;
-  color: #5c2c6d;
+  color: #6df1d8;
   font-family: optima;
   font-size: x-large;
 }

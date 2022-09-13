@@ -78,7 +78,7 @@ class User {
   }
 
   getDayMilesWalked(userActivityTestData, date) {
-    let userActivity = new UserActivity(userActivityTestData[0]);
+    let userActivity = new UserActivity(userActivityTestData);
 
     let numberOFSteps = userActivity.numOfSteps(userActivityTestData, date);
 

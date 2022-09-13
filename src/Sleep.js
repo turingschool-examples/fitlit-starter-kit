@@ -16,7 +16,15 @@ class Sleep {
     return dailySleep;
   };
 
-  getAvgSleepData(type, dataSet) {
+  getAvgSleepData(type, isCurrentUser) {
+    let dataSet;
+
+    if (isCurrentUser) {
+      dataSet = this.sleepDataPerUser;
+    } else {
+      dataSet = this.sleepData;
+    }
+    
     const sum = dataSet.reduce((acc, data) => {
       if (data[type]) {
         acc += data[type];
@@ -28,7 +36,7 @@ class Sleep {
     return Math.round(sum / dataSet.length);
   };
 
-  getDailySleepByWeek(minDate, maxDate, type) {
+  getDailySleepByWeek(type, minDate, maxDate) {
     const start = this.sleepDataPerUser.findIndex(data => data.date === minDate); 
     const end = this.sleepDataPerUser.findIndex(data => data.date === maxDate);
     const week = this.sleepDataPerUser.slice(start, end + 1);

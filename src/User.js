@@ -1,3 +1,6 @@
+const UserActivity = require("./UserActivity");
+const userActivityTestData = require("../src/data/userActivityTestData");
+
 class User {
   constructor(userData) {
     this.id = userData.id;
@@ -17,7 +20,7 @@ class User {
   getSleepDataPerDay(sleepData, date, detail) {
     const usersData = sleepData.filter((entry) => entry.userID === this.id);
     const entry = usersData.find((entry) => entry.date === date);
-    return entry[detail]
+    return entry[detail];
   }
 
   getAvgSleepDataPerDay(sleepData, detail) {

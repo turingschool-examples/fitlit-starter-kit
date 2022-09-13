@@ -57,8 +57,9 @@ line-height: 2.5;
 .user-labels {
 color: blue;
 }
-.header {
-  margin-right: 100px;
+
+header {
+  margin-left: 5vw;
 }
 
 .h1 {
@@ -69,9 +70,10 @@ color: blue;
   font-weight: bold;
 }
 
+
 .user-info {
-  height: 375px;
-  width: 325px;
+  height: 23vw;
+  width: 24vw;
   margin-top: 2%;
   border: 3px solid  #531345;
   background-color: rgba(255, 255, 255, 0.3);
@@ -96,8 +98,8 @@ margin-top: 40px;
 
 .user-hydro {
   display: flex;
-  height: 375px;
-  width: 300px;
+  height: 23vw;
+  width: 24vw;
   margin-top: 2%;
   border: 3px solid #531345;
   background-color: rgba(255, 255, 255, 0.3);
@@ -115,8 +117,8 @@ margin-top: 40px;
 
 .user-sleep {
   display:flex;
-  height: 375px;
-  width: 300px;
+  height: 23vw;
+  width: 24vw;
   margin-top: 2%;
   border: 3px solid  #531345;
   background-color: rgba(255, 255, 255, 0.3);
@@ -166,8 +168,8 @@ margin-top: 40px;
 
 .user-steps {
   display: flex;
-  height: 375px;
-  width: 300px;
+  height: 23vw;
+  width: 24vw;
   margin-top: 2%;
   border: 3px solid #531345;
   background-color: rgba(255, 255, 255, 0.3);
@@ -181,10 +183,14 @@ margin-top: 40px;
   justify-content: center;
   align-items: center;
   font-weight: bold;
+line-height: 100px;
   }
-
+.user-step {
+  
+}
 .user-step-details {
   color:whitesmoke;
+
 }
 
 .footer {

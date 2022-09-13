@@ -12,6 +12,9 @@ describe("UserActivity", ()=> {
         userActivity = new UserActivity(userActivityTestData[0])
         userMiles = new User(userTestData[0])
     })
-
     
+    it.only('should return the miles a user has walked based on their number of steps specified by a date', ()=> {
+      const result = userMiles.getDayMilesWalked(userActivityTestData, "2019/06/15")
+        expect(result).to.equal(.42)
+      })
 })

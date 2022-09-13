@@ -49,23 +49,4 @@ describe("User", () => {
     let firstName = user.getFirstName();
     expect(firstName).to.equal("Luisa");
   });
-
-  it("should return the average fluid ounces consumed per day for all time", () => {
-    expect(user.calAverageFluid(hydrationData)).to.equal(63);
-  });
-
-  it("should return fluid ounces they consumed for a specific day (identified by a date)", () => {
-    expect(user.getDayFluid(hydrationData, "2019/06/15")).to.equal(37);
-  });
-
-  it("should return fluid ounces of water consumed each day over the course of a week (7 days)", () => {
-    expect(user.getWeeklyFluids(hydrationData, "2019/06/22")).to.deep.equal([
-      { date: "2019/06/21", numOunces: 50 },
-      { date: "2019/06/20", numOunces: 50 },
-      { date: "2019/06/19", numOunces: 91 },
-      { date: "2019/06/18", numOunces: 61 },
-      { date: "2019/06/17", numOunces: 96 },
-      { date: "2019/06/16", numOunces: 69 },
-    ]);
-  });
 });

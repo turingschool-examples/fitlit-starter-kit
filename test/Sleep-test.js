@@ -30,9 +30,9 @@ describe("SleepSeries", () => {
 
   it("should return undefined if the user has no average sleep data", () => {
     let averageHours = emptySleepData.getAvgSleepDataPerDay("hoursSlept");
-    expect(averageHours).to.equal(undefined);
+    expect(averageHours).to.equal(0.0);
     let averageQuality = emptySleepData.getAvgSleepDataPerDay("sleepQuality");
-    expect(averageQuality).to.equal(undefined);
+    expect(averageQuality).to.equal(0.0);
   });
 
   it("should have a method to return the average number of hours slept per day for a user", () => {
@@ -50,7 +50,7 @@ describe("SleepSeries", () => {
       "2019/06/24",
       "hoursSlept"
     );
-    expect(hoursPerDay).to.equal(undefined);
+    expect(hoursPerDay).to.equal(0.0);
   });
 
   it("should have a method to calculate the sleep quality per day over a week for a user", () => {

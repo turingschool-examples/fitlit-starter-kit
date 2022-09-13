@@ -8,7 +8,7 @@ class SleepSeries {
     if (entry) {
       return entry[detail];
     } else {
-      return undefined;
+      return 0.0;
     }
   }
 
@@ -21,7 +21,7 @@ class SleepSeries {
       const average = (totalSleepData / this.data.length).toFixed(1);
       return parseFloat(average);
     } else {
-      return undefined;
+      return 0.0;
     }
   }
 
@@ -31,7 +31,7 @@ class SleepSeries {
     dayDate.setDate(endDateObj.getDate() - 7);
     let weekSleep = [{}, {}, {}, {}, {}, {}, {}];
     let index = 0;
-    weekSleep.forEach((emptySlot) => {
+    weekSleep.forEach(() => {
       dayDate.setDate(dayDate.getDate() + 1);
       let entryDate = `${dayDate.getFullYear()}/${String(
         dayDate.getMonth() + 1
@@ -43,17 +43,7 @@ class SleepSeries {
         weekSleep[index] = { date: entryDate, [detail]: 0.0 };
       }
       index++;
-    });
-
-    // let selectedSleepEntries = this.data.filter(entry => {
-    //   const entryDate = new Date(entry.date);
-    //   return (entryDate <= endDateObj && entryDate > startDateObj)
-    // })
-
-    // const weekSleep = selectedSleepEntries.reduce((sleepForWeek, entry) => {
-    //   sleepForWeek.push({ date: entry.date, [detail]: entry[detail] });
-    //   return sleepForWeek;
-    // }, []);
+    })
     return weekSleep;
   }
 }

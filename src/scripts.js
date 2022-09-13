@@ -13,6 +13,8 @@ import { promiseAll } from "./apiCalls.js";
 //Import Classes
 import User from "./User";
 import UserRepository from "./UserRepository";
+import HydrationSeries from "./HydrationSeries";
+import SleepSeries from "./SleepSeries";
 import Chart from "chart.js/auto";
 
 //Global Variables
@@ -52,13 +54,14 @@ promiseAll().then((responses) => {
   sleepData = responses[2].sleepData;
   user = new User(userData.userData[getRandomIndex(userData.userData)]);
   user.userSleepData = new SleepSeries(sleepData.filter((entry) => entry.userID === user.id))
+  user.userHydrationData = new HydrationSeries(hydrationData.filter((entry) => entry.userID === user.id))
   allUsers = userData.userData.map((user) => {
     const newUser = new User(user);
     newUser.userSleepData = new SleepSeries(sleepData.filter((entry) => {entry.userID === newUser.id}))
+    newUser.userHydrationData = new HydrationSeries(hydrationData.filter((entry) => {entry.userID === newUser.id}))
     return newUser;
 });
   userRepository = new UserRepository(allUsers);
- 
   displayDashboard();
 });
 

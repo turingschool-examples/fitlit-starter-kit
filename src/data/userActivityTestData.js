@@ -68,7 +68,78 @@ activityData = [
       "numSteps": 8015,
       "minutesActive": 106,
       "flightsOfStairs": 37
-    }
+    },
+
+    {
+      "userID": 1,
+      "date": "2019/06/26",
+      "numSteps": 8105,
+      "minutesActive": 219,
+      "flightsOfStairs": 28
+    },
+    {
+      "userID": 2,
+      "date": "2019/06/26",
+      "numSteps": 11522,
+      "minutesActive": 88,
+      "flightsOfStairs": 18
+    },
+    {
+      "userID": 3,
+      "date": "2019/06/26",
+      "numSteps": 3126,
+      "minutesActive": 229,
+      "flightsOfStairs": 45
+    },
+    {
+      "userID": 4,
+      "date": "2019/06/26",
+      "numSteps": 14142,
+      "minutesActive": 124,
+      "flightsOfStairs": 8
+    },
+    {
+      "userID": 5,
+      "date": "2019/06/26",
+      "numSteps": 11076,
+      "minutesActive": 26,
+      "flightsOfStairs": 25
+    },
+    {
+      "userID": 6,
+      "date": "2019/06/26",
+      "numSteps": 6394,
+      "minutesActive": 29,
+      "flightsOfStairs": 47
+    },
+    {
+      "userID": 7,
+      "date": "2019/06/26",
+      "numSteps": 11877,
+      "minutesActive": 169,
+      "flightsOfStairs": 9
+    },
+    {
+      "userID": 8,
+      "date": "2019/06/26",
+      "numSteps": 8161,
+      "minutesActive": 257,
+      "flightsOfStairs": 43
+    },
+    {
+      "userID": 9,
+      "date": "2019/06/26",
+      "numSteps": 7880,
+      "minutesActive": 98,
+      "flightsOfStairs": 20
+    },
+    {
+      "userID": 10,
+      "date": "2019/06/26",
+      "numSteps": 6549,
+      "minutesActive": 154,
+      "flightsOfStairs": 9
+    },
 ]
 
 module.exports = activityData;

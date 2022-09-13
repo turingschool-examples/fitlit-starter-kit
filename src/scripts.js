@@ -48,11 +48,17 @@ submitButton.addEventListener("click", () => {
 
 promiseAll().then((responses) => {
   userData = responses[0];
-  user = new User(userData.userData[getRandomIndex(userData.userData)]);
-  allUsers = userData.userData.map((user) => new User(user));
-  userRepository = new UserRepository(allUsers);
   hydrationData = responses[1].hydrationData;
   sleepData = responses[2].sleepData;
+  user = new User(userData.userData[getRandomIndex(userData.userData)]);
+  user.userSleepData = new SleepSeries(sleepData.filter((entry) => entry.userID === user.id))
+  allUsers = userData.userData.map((user) => {
+    const newUser = new User(user);
+    newUser.userSleepData = new SleepSeries(sleepData.filter((entry) => {entry.userID === newUser.id}))
+    return newUser;
+});
+  userRepository = new UserRepository(allUsers);
+ 
   displayDashboard();
 });
 
@@ -102,24 +108,20 @@ function displayFriends() {
 }
 
 function displayAverageSleep() {
-  avgSleepHours.innerHTML += `<p>${user.getAvgSleepDataPerDay(
-    sleepData,
+  avgSleepHours.innerHTML += `<p>${user.userSleepData.getAvgSleepDataPerDay(
     "hoursSlept"
   )} hours </p>`;
-  avgQualitySleep.innerHTML += `<p>${user.getAvgSleepDataPerDay(
-    sleepData,
+  avgQualitySleep.innerHTML += `<p>${user.userSleepData.getAvgSleepDataPerDay(
     "sleepQuality"
   )}</p>`;
 }
 function displaySleepForSpecificDay() {
   const dateInput = inputValue.value.split("-").join("/");
-  const sleepPerDay = user.getSleepDataPerDay(
-    sleepData,
+  const sleepPerDay = user.userSleepData.getSleepDataPerDay(
     dateInput,
     "hoursSlept"
   );
-  const qualityPerDay = user.getSleepDataPerDay(
-    sleepData,
+  const qualityPerDay = user.userSleepData.getSleepDataPerDay(
     dateInput,
     "sleepQuality"
   );
@@ -138,16 +140,14 @@ function displaySleepForSpecificDay() {
 
 function displaySleepForAWeek() {
   const dateInput = inputValue.value.split("-").join("/");
-  const sleepInAWeek = user.getSleepPerDayForWeek(
-    sleepData,
+  const sleepInAWeek = user.userSleepData.getSleepPerDayForWeek(
     dateInput,
     "hoursSlept"
-  );
-  const sleepQualityInAWeek = user.getSleepPerDayForWeek(
-    sleepData,
+  ).reverse();
+  const sleepQualityInAWeek = user.userSleepData.getSleepPerDayForWeek(
     dateInput,
     "sleepQuality"
-  );
+  ).reverse();
   sleepForWeek.innerHTML = `<table class="sleep-data">
   <tr>
     <td class="sleep-data">Date</td>

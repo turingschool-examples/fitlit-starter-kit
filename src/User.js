@@ -1,3 +1,5 @@
+import SleepSeries from "./SleepSeries";
+
 class User {
   constructor(userData) {
     this.id = userData.id;
@@ -7,42 +9,14 @@ class User {
     this.strideLength = userData.strideLength;
     this.dailyStepGoal = userData.dailyStepGoal;
     this.friends = userData.friends;
+    this.userSleepData = new SleepSeries();
   }
 
   getFirstName() {
     let firstName = this.name.split(" ");
     return firstName[0];
   }
-
-  getSleepDataPerDay(sleepData, date, detail) {
-    const usersData = sleepData.filter((entry) => entry.userID === this.id);
-    const entry = usersData.find((entry) => entry.date === date);
-    return entry[detail]
-  }
-
-  getAvgSleepDataPerDay(sleepData, detail) {
-    const usersData = sleepData.filter((entry) => entry.userID === this.id);
-    const totalSleepData = usersData.reduce((total, entry) => {
-      total += entry[detail];
-      return total;
-    }, 0);
-    const average = (totalSleepData / usersData.length).toFixed(1);
-    return parseFloat(average);
-  }
-
-  getSleepPerDayForWeek(sleepData, startDate, detail) {
-    const userSleep = sleepData.filter((entry) => entry.userID === this.id);
-    const startingDate = userSleep.find((entry) => entry.date === startDate);
-    const startIndex = userSleep.indexOf(startingDate);
-    let newArr = userSleep.slice(startIndex - 6, startIndex);
-    newArr = newArr.reverse();
-    const weekSleep = newArr.reduce((sleepForWeek, entry) => {
-      sleepForWeek.push({ date: entry.date, [detail]: entry[detail] });
-      return sleepForWeek;
-    }, []);
-    return weekSleep;
-  }
-
+  
   calAverageFluid(fluidsData) {
     const userFluidsInfo = fluidsData.filter((user) => user.userID === this.id);
     const average = userFluidsInfo.reduce((acc, fluid) => {
@@ -75,4 +49,4 @@ class User {
   }
 }
 
-module.exports = User;
+export default User;

@@ -12,7 +12,7 @@ describe("SleepSeries", () => {
     emptySleepData = new SleepSeries();
   });
 
-  it("should be empty if no data is passed into the constructor", () => {
+  it("should be empty if no user sleep data is passed into the constructor", () => {
     expect(emptySleepData.data).to.deep.equal([]);
   });
 
@@ -69,6 +69,22 @@ describe("SleepSeries", () => {
     ]);
   });
 
+  it("should return remaining sleep quality data per day over a week and if the user has missing sleep data for chosen date (and/or other dates in that week) will return 0", () => {
+    let qualitySleepInAWeek = userSleep.getSleepPerDayForWeek(
+      "2019/06/24",
+      "sleepQuality"
+    );
+    expect(qualitySleepInAWeek).to.deep.equal([
+      { date: "2019/06/18", sleepQuality: 3.1 },
+      { date: "2019/06/19", sleepQuality: 1.2 },
+      { date: "2019/06/20", sleepQuality: 1.2 },
+      { date: "2019/06/21", sleepQuality: 4.2 },
+      { date: "2019/06/22", sleepQuality: 3 },
+      { date: "2019/06/23", sleepQuality: 0.0 },
+      { date: "2019/06/24", sleepQuality: 0.0 },
+    ]);
+  });
+
   it("should have a method to return the hours slept per day over a week for a user", () => {
     let sleepInAWeek = userSleep.getSleepPerDayForWeek(
       "2019/06/22",
@@ -86,7 +102,7 @@ describe("SleepSeries", () => {
     ]);
   });
 
-  it("should return the remaining hours slept per day over a week for a user if the user has missing sleep data on the chosen date (and/or other dates in that week) will return 0", () => {
+  it("should return remaining hours slept per day over a week and if the user has missing sleep data on the chosen date (and/or other dates in that week) will return 0", () => {
     let sleepInAWeek = userSleep.getSleepPerDayForWeek(
       "2019/06/24",
       "hoursSlept"

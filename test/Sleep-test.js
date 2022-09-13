@@ -28,7 +28,7 @@ describe("SleepSeries", () => {
     );
   });
 
-  it("should return undefined if the user has no average sleep data", () => {
+  it("should return 0.0 if the user has no average sleep data", () => {
     let averageHours = emptySleepData.getAvgSleepDataPerDay("hoursSlept");
     expect(averageHours).to.equal(0.0);
     let averageQuality = emptySleepData.getAvgSleepDataPerDay("sleepQuality");
@@ -45,12 +45,17 @@ describe("SleepSeries", () => {
     expect(average).to.equal(2.7);
   });
 
-  it("should return undefined if the user has no sleep data on a specific date", () => {
+  it("should return 0.0 if the user has no sleep data on a specific date", () => {
     let hoursPerDay = emptySleepData.getSleepDataPerDay(
       "2019/06/24",
       "hoursSlept"
     );
     expect(hoursPerDay).to.equal(0.0);
+    let sleepQualityPerDay = emptySleepData.getSleepDataPerDay(
+        "2019/06/24",
+        "sleepQuality"
+      );
+      expect(sleepQualityPerDay).to.equal(0.0);
   });
 
   it("should have a method to calculate the sleep quality per day over a week for a user", () => {
@@ -69,7 +74,7 @@ describe("SleepSeries", () => {
     ]);
   });
 
-  it("should return remaining sleep quality data per day over a week and if the user has missing sleep data for chosen date (and/or other dates in that week) will return 0", () => {
+  it("should return remaining sleep quality data per day over a week and 0.0 for dates with missing sleep data", () => {
     let qualitySleepInAWeek = userSleep.getSleepPerDayForWeek(
       "2019/06/24",
       "sleepQuality"
@@ -90,7 +95,6 @@ describe("SleepSeries", () => {
       "2019/06/22",
       "hoursSlept"
     );
-
     expect(sleepInAWeek).to.deep.equal([
       { date: "2019/06/16", hoursSlept: 4.1 },
       { date: "2019/06/17", hoursSlept: 8 },
@@ -102,7 +106,7 @@ describe("SleepSeries", () => {
     ]);
   });
 
-  it("should return remaining hours slept per day over a week and if the user has missing sleep data on the chosen date (and/or other dates in that week) will return 0", () => {
+  it("should return remaining hours slept per day over a week and 0.0 for days with missing sleep data", () => {
     let sleepInAWeek = userSleep.getSleepPerDayForWeek(
       "2019/06/24",
       "hoursSlept"

@@ -43,7 +43,7 @@ class SleepSeries {
         weekSleep[index] = { date: entryDate, [detail]: 0.0 };
       }
       index++;
-    })
+    });
     return weekSleep;
   }
 }

@@ -18,7 +18,6 @@ class User {
     let firstName = this.name.split(" ");
     return firstName[0];
   }
-  //add get activity in miles function here
 }
 
 export default User;

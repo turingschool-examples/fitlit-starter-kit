@@ -1,8 +1,6 @@
 import { expect } from "chai";
 import User from "../src/User";
 const userTestData = require("../src/data/userTestData");
-const sleepTestData = require("../src/data/sleepTestData");
-const hydrationData = require("../src/data/hydrationTestData");
 
 describe("User", () => {
   let user;

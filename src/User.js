@@ -1,3 +1,6 @@
+const UserActivity = require("./UserActivity");
+const userActivityTestData = require("../src/data/userActivityTestData")
+
 class User {
   constructor(userData) {
     this.id = userData.id;
@@ -72,6 +75,10 @@ class User {
       return { date: dates.date, numOunces: dates.numOunces };
     });
     return weeklyFluids.reverse();
+  }
+
+  getDayMilesWalked(userActivityTestData, date){
+    
   }
 }
 

@@ -1,5 +1,5 @@
-import SleepSeries from "./SleepSeries";
-import HydrationSeries from "./HydrationSeries";
+const UserActivity = require("./UserActivity");
+const userActivityTestData = require("../src/data/userActivityTestData");
 
 class User {
   constructor(userData) {

@@ -2,16 +2,20 @@ class UserActivity {
   constructor(userActivityData) {
     this.data = userActivityData;
   }
-  //method for user miles walked
-  numOfSteps(activityDate, user) {
+
+  milesBasedOnSteps(activityDate, user) {
     let userActivity = this.data.filter((data) => data.date === activityDate);
-    let numberOfSteps = userActivity.reduce((acc, activity) => {
-      acc += activity.numSteps;
-      return acc;
-    }, 0);
-    const numOfStridesForMile = 5280 / user.strideLength;
-    const numberOfMilesWalked = numberOfSteps / numOfStridesForMile;
-    return parseFloat(numberOfMilesWalked.toFixed(2));
+    if (userActivity === []) {
+      return "Sorry no data available for given date";
+    } else {
+      let numberOfSteps = userActivity.reduce((acc, activity) => {
+        acc += activity.numSteps;
+        return acc;
+      }, 0);
+      const numOfStridesForMile = 5280 / user.strideLength;
+      const numberOfMilesWalked = numberOfSteps / numOfStridesForMile;
+      return parseFloat(numberOfMilesWalked.toFixed(2));
+    }
   }
 
   //   getDayMilesWalked(userActivityTestData, date) {

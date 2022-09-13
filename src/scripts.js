@@ -15,6 +15,8 @@ import User from "./User";
 import UserRepository from "./UserRepository";
 import Chart from "chart.js/auto";
 
+// Test data
+// const userActivityTestData = require("../data/userActivityTestData");
 //Global Variables
 let user;
 let userRepository;
@@ -35,7 +37,7 @@ const submitButton = document.querySelector("button");
 const dataForDay = document.querySelector(".table-data");
 const hydraData = document.querySelector(".hydration-card");
 const chart = document.querySelector(".hydra-chart");
-const stepChart = document.getElementById("stepChart").getContext('2d')
+const stepChart = document.getElementById("stepChart").getContext("2d");
 
 // Event Listeners
 window.addEventListener("load", promiseAll);
@@ -51,6 +53,10 @@ promiseAll().then((responses) => {
   user = new User(userData.userData[getRandomIndex(userData.userData)]);
   allUsers = userData.userData.map((user) => new User(user));
   userRepository = new UserRepository(allUsers);
+  // activityData = userActivityTestData.filter(
+  //   (activityData) => activityData.userID === user.id
+  // );
+  // userActivity = new UserActivity(activityData, user);
   hydrationData = responses[1].hydrationData;
   sleepData = responses[2].sleepData;
   displayDashboard();
@@ -239,47 +245,45 @@ function displayHydrationForWeek() {
   </tr>
 </table>`;
   } else {
-    chart.innerHTML = `<p> There Is Not Enough Data To Display For This Week. Please Select 
+    chart.innerHTML = `<p> There Is Not Enough Data To Display For This Week. Please Select
     A Different Week To See Your Weekly Report <p>`;
   }
 }
 
-  function displaySteps() {
-    stepDetails.innerHTML = "";
-    const averageSteps = userRepository.findAverageStepGoal();
-    const comparison = Math.round((user.dailyStepGoal / averageSteps) * 100);
-    Chart.defaults.color = 'white';
-    let myChart = new Chart(stepChart, {
-      type: "bar",
-      data: {
-        labels: ["Your Goal", "Average User Goal"],
-        datasets: [{
-          data: [
-          user.dailyStepGoal, 
-          averageSteps
-          ],
-        backgroundColor: ["#2CB7FF", "#6947FF"],
-        borderWidth:1,
-        borderColor: 'white',
-        hoverBorderWidth: 3,
-        hoverBorderColor: 'black',
-        barPercentage: 0.9,
-        categoryPercentage: 0.9,
-      }]  
-      },
-      options: {
-        plugins: {
-          title: {
+function displaySteps() {
+  stepDetails.innerHTML = "";
+  const averageSteps = userRepository.findAverageStepGoal();
+  const comparison = Math.round((user.dailyStepGoal / averageSteps) * 100);
+  Chart.defaults.color = "white";
+  let myChart = new Chart(stepChart, {
+    type: "bar",
+    data: {
+      labels: ["Your Goal", "Average User Goal"],
+      datasets: [
+        {
+          data: [user.dailyStepGoal, averageSteps],
+          backgroundColor: ["#2CB7FF", "#6947FF"],
+          borderWidth: 1,
+          borderColor: "white",
+          hoverBorderWidth: 3,
+          hoverBorderColor: "black",
+          barPercentage: 0.9,
+          categoryPercentage: 0.9,
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        title: {
           display: true,
           text: "Your Step Goal vs. Average User Step Goal",
           fontSize: 25,
-          },
-          legend: { 
-            display: false, 
-          },
         },
-      }
-    });
-    stepDetails.innerHTML += `<p>Your daily step goal is ${comparison}% compared to all average users.</p>`;
-  }
-
+        legend: {
+          display: false,
+        },
+      },
+    },
+  });
+  stepDetails.innerHTML += `<p>Your daily step goal is ${comparison}% compared to all average users.</p>`;
+}

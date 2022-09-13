@@ -28,7 +28,8 @@ const userInfoEmail = document.querySelector('#email')
 const userInfoAddress = document.querySelector('#address')
 const userInfoStride = document.querySelector('#stride')
 const userInfoFriends = document.querySelector('#friends')
-
+const userStepGoal = document.querySelector('#stepGoal')
+const allUserAverage = document.querySelector('#allUserAverage')
 const userSleepPerNight = document.querySelector('#hoursSleptPerNight')
 const userQualPerNight = document.querySelector('#qualHrsPerNight')
 const userAvgSleep = document.querySelector('#avgHrsSlept')
@@ -38,6 +39,7 @@ const userWeeklyQualSleep = document.querySelector('#qualHrsSleptPerWeek')
 const ouncesDrankToday = document.querySelector('#todayOunces')
 const avgOuncesDrankPerDay = document.querySelector('#AvgOzPerDay')
 const avgOuncesDrankPerWeek = document.querySelector('#AvgOzWeekly')
+
 
 
 // ######### Global Variables ###########
@@ -109,8 +111,10 @@ function displayUserData() {
 };
 
 function displayStepGoalComp(userRepository) {
-  userStepComp.innerHTML = `<p class='user-step-details'>Your daily step goal: ${singleUser.dailyStepGoal}</p> <br> vs <br><p class='user-step-details'> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
-    userStepComp.innerHTML =` <p class='user-step-details'>Your daily step goal :${singleUser.dailyStepGoal} <br> vs <br> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
+  userStepGoal.innerHTML = singleUser.dailyStepGoal
+  allUserAverage.innerHTML = userRepository.getAllUserAvgStepGoals()
+  // userStepComp.innerHTML = `<p class='user-step-details'>Your daily step goal: ${singleUser.dailyStepGoal}</p> <br> vs <br><p class='user-step-details'> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
+  //   userStepComp.innerHTML =` <p class='user-step-details'>Your daily step goal :${singleUser.dailyStepGoal} <br> vs <br> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
 };
 
 function displayHydrationData(singleHydro) {

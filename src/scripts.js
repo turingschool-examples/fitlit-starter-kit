@@ -28,6 +28,14 @@ const userInfoEmail = document.querySelector('#email')
 const userInfoAddress = document.querySelector('#address')
 const userInfoStride = document.querySelector('#stride')
 const userInfoFriends = document.querySelector('#friends')
+const userSleepPerNight = document.querySelector('#hoursSleptPerNight')
+const userQualPerNight = document.querySelector('#qualHrsPerNight')
+const userAvgSleep = document.querySelector('#avgHrsSlept')
+const userAvgQualSleep = document.querySelector('#avgQualHrsSlept')
+const userWeeklySleep = document.querySelector('#hrsSleptPerWeek')
+const userWeeklyQualSleep = document.querySelector('#qualHrsSleptPerWeek')
+
+
 // ######### Global Variables ###########
   let singleUser;
   let usersData;
@@ -107,11 +115,10 @@ function displayHydrationData(singleHydro) {
 };
 
 function displaySleepData(singleSleep) {
-  sleepCard.innerHTML = `
-    <p class='sleep-info-1'>You slept for ${singleSleep.getHrsSleptByDate(singleUser.id)} hours last night <br>
-    You received ${singleSleep.getSleepQualByDate(singleUser.id)} hours of quality sleep </p> <br>
-     <p class='sleep-info-2'>Average hours slept: ${singleSleep.getAvgHrsSleptPerDay(singleUser.id)} hours <br></p>
-     <p class='sleep-info-3'>Average hours of quality sleep: ${singleSleep.getAvgSleepQualPerDay(singleUser.id)} hours <br></p>
-     <p class='sleep-info-4'>Hours slept (1-week): ${singleSleep.getHrsSleptPerWeek(singleUser.id, "2020/01/22")} <br><p>
-     <p class='sleep-info-5'>Quality hours slept (1-week): ${singleSleep.getSleepQualPerWeek(singleUser.id, "2020/01/22")}</p>`
+  userSleepPerNight.innerText = singleSleep.getHrsSleptByDate(singleUser.id)
+  userQualPerNight.innerText = singleSleep.getSleepQualByDate(singleUser.id)
+  userAvgSleep.innerText = singleSleep.getAvgHrsSleptPerDay(singleUser.id)
+  userAvgQualSleep.innerText = singleSleep.getAvgSleepQualPerDay(singleUser.id)
+  userWeeklySleep.innerText = singleSleep.getHrsSleptPerWeek(singleUser.id, "2020/01/22")
+  userWeeklyQualSleep.innerText = singleSleep.getSleepQualPerWeek(singleUser.id, "2020/01/22")
 };

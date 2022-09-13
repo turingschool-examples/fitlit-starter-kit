@@ -31,23 +31,25 @@ let currentUser;
 let hydration;
 let sleep;
 let allUsers;
+let activityData;
 
 // API data
 function fetchAllData() {
-  Promise.all([fetchData('users', 'userData'), fetchData('sleep', 'sleepData'), fetchData('hydration', 'hydrationData'),])
+  Promise.all([fetchData('users', 'userData'), fetchData('sleep', 'sleepData'), fetchData('hydration', 'hydrationData'), fetchData('activity', 'activityData')])
   .then(data => {
     userData = data[0],
     sleepData = data[1],
-    hydrationData = data[2]
-    
+    hydrationData = data[2],
+    activityData = data[3]
+
     currentUser = new User(userData[Math.floor(Math.random() * userData.length)]);
     hydration = new Hydration(currentUser.id, hydrationData);
     sleep = new Sleep(currentUser.id, sleepData);
     allUsers = new UserRepository(userData);
-
-    loadUserInfo()
-  })
-
+    
+    loadUserInfo();
+    
+  });
 };
 
 // Event Listeners

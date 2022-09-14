@@ -50,9 +50,9 @@ const barStyle2 = {
 
 const charts = {
 // Chart render functions
-  renderSleepChartByWeek(sleep) {
-    const weeklyHS = sleep.getDailySleepByWeek('2020/01/15','2020/01/22', 'hoursSlept');
-    const weeklySQ = sleep.getDailySleepByWeek('2020/01/15','2020/01/22', 'sleepQuality');
+  renderSleepChartByWeek(sleep, date1, date2) {
+    const weeklyHS = sleep.getDailySleepByWeek( 'hoursSlept', date1, date2,);
+    const weeklySQ = sleep.getDailySleepByWeek( 'sleepQuality', date1, date2,);
 
     const weeklyHoursSlept = new Chart('weeklyHoursSlept', {
       type: 'bar',
@@ -79,8 +79,8 @@ const charts = {
   },
 
   renderSleepChartByDay(sleep) {
-    const hours = sleep.getSleepDataByGivenDay('2020/01/22', 'hoursSlept');
-    const quality = sleep.getSleepDataByGivenDay('2020/01/22', 'sleepQuality');
+    const hours = sleep.getSleepDataByGivenDay('2020/01/20', 'hoursSlept');
+    const quality = sleep.getSleepDataByGivenDay('2020/01/20', 'sleepQuality');
 
     const sleepDayCanvas = new Chart('dailyHoursSlept', {
       type: 'bar',

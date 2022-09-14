@@ -55,48 +55,48 @@ describe('Activity', () => {
         expect(userActivityData[0].flightsOfStairs).to.equal(16)
     });
 
-    it('should return the miles a user has walked based on their number of steps') {
+    // it('should return the miles a user has walked based on their number of steps') {
+    //     expect()
+    // };
 
-    };
+    // it('should return how many minutes were they active for a given day') {
+    //     expect()
+    // };
 
-    it('should return how many minutes were they active for a given day') {
+    // it('should return the average minutes active for a given week') {
+    //     expect()
+    // };
 
-    };
-
-    it('should return the average minutes active for a given week') {
-
-    };
-
-    it('should return the miles a user has walked based on their number of steps') {
-
-    };
+    // it('should return the miles a user has walked based on their number of steps') {
+    //     expect()
+    // };
     
-    it('should return true if a user achieved their daily step goal') {
+    // it('should return true if a user achieved their daily step goal') {
+    //     expect()
+    // };
 
-    };
+    // it('should return false if a user did not achieve their daily step goal') {
+    //     expect()
+    // };
 
-    it('should return false if a user did not achieve their daily step goal') {
+    // it('should return all the days where they exceeded their step goal') {
+    //     expect()
+    // };
 
-    };
+    // it('should return their all-time stair climbing record') {
+    //     expect()
+    // };
 
-    it('should return all the days where they exceeded their step goal') {
+    // it('should return the average stairs climbed for a specified date') {
+    //     expect()
+    // };
 
-    };
+    // it('should return the average steps taken for a specific date') {
+    //     expect()
+    // };
 
-    it('should return their all-time stair climbing record') {
-
-    };
-
-    it('should return the average stairs climbed for a specified date') {
-
-    };
-
-    it('should return the average steps taken for a specific date') {
-
-    };
-
-    it('should return the average minutes active for a specific date') {
-
-    };
+    // it('should return the average minutes active for a specific date') {
+    //     expect()
+    // };
 })
 

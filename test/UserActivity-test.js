@@ -53,4 +53,8 @@ describe("UserActivity", () => {
       "You exceeded your step goal on 2019/06/26 by 6522 steps"
     );
   });
+  it("should create a method that finds a users all-time stair climbing record", () => {
+    const resultTwo = userActivity.allTimeStairClimbingRecord();
+    expect(resultTwo).to.equal(28);
+  });
 });

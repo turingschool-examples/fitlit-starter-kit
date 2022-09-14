@@ -6,13 +6,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Fitlit</title>
   </head>
   <body>
     <section class="column user-section" id="userSection">
       <header>
         <img class="fitlit-logo" id="fitlitLogo" src="./images/fitlit-logo.png" alt="fitlit logo">
-        <h1 class="greeting" id="greeting">Hello, !</h1> 
+        <h1 class="greeting" id="greeting">Hello, !</h1>        
       </header>
       <section class="user-info" id="userInfo" >
         <section class="user-details" >
@@ -30,17 +31,33 @@
     </section>
     <section class="column daily-overview" id="dailyOverview">
       <section class="daily hydration"id="hydrationBox">
-        <button type="button" class="icon-button">
-          <img class="icon water-icon" id="waterIcon" src="./images/water.png" alt="water icon">
+        <!-- the button to open popup form -->
+        <button id="waterIcon" type="button" class="icon-button">
+          <img class="icon water-icon"  src="./images/water.png" alt="water icon"><span class="material-icons water-plus-icon">add_circle</span>
         </button>
+        <!-- The hydration form:  -->
+        <div class="hydration-form form-popup hidden">
+          <form class="form-container">
+            <h3>Add Ounces of Water Drank</h3>
+            <label for="date">Date: </label>
+            <input type="text" placeholder="yyyy/mm/dd" name="date" required>
+
+            <label for="ounces">Ounces drank: </label>
+            <input type="number" placeholder="Enter number" name="ounces" required>
+
+            <button type="submit" class="post form-btn">Submit</button>
+            <button type="button" class="cancel form-btn">Close</button>
+          </form>
+        </div>
+      
         <div class="chart-container" id="chartContainer">
           <canvas class="daily-ounces" id="dailyOunces"></canvas>
         </div>
         <h2 class="title hydration-box-label" id="hydrationBoxLabel">Hydration</h3>
       </section>
       <section class="daily sleep" id="sleepBox">
-        <button type="button" class="icon-button">
-          <img class="icon sleep-icon" src="./images/zzz.png" id="sleepIcon" alt="sleep icon">
+        <button id="sleepIcon" type="button" class="icon-button">
+          <img class="icon sleep-icon" src="./images/zzz.png"  alt="sleep icon"><span class="material-icons plus-icon">add_circle</span>
         </button>
         <div class="chart-container" id="chartContainer">
           <canvas class="daily-hours-slept" id="dailyHoursSlept"></canvas>
@@ -49,8 +66,8 @@
         <h2 class="title sleep-box-label" id="sleepBoxLabel">Sleep</h3>
       </section>
       <section class="daily activity" id="activityBox">
-        <button type="button" class="icon-button">
-          <img class="icon activity-icon" id="activityIcon" src="./images/quick-mode.png" alt="activity icon">
+        <button id="activityIcon" type="button" class="icon-button">
+          <img class="icon activity-icon"  src="./images/quick-mode.png" alt="activity icon"><span class="material-icons plus-icon">add_circle</span>
         </button>
         <div class="chart-container" id="chartContainer">
           <br/>

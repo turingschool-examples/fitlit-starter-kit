@@ -29,6 +29,41 @@ class UserActivity {
       return activeTime;
     }
   }
+  stepGoalForGivenDay(activityDate, user) {
+    let stepGoalMet = false;
+    const userActivity = this.data.filter((data) => data.date === activityDate);
+    const stepGoalvsStep = userActivity.forEach((activity) => {
+      if (activity.numSteps >= user.dailyStepGoal) {
+        stepGoalMet = true;
+      } else {
+        stepGoalMet = false;
+      }
+    });
+    return stepGoalMet;
+  }
+  allDaysExceedingStepGoal(user) {
+    let response = "";
+    const daysExceedingStepGoal = this.data.filter(
+      (activity) => activity.numSteps > user.dailyStepGoal
+    );
+    if (daysExceedingStepGoal.length < 1) {
+      response = `Sorry you haven't exceeded your step goal.`;
+    } else {
+      daysExceedingStepGoal.forEach((exceededActivity) => {
+        response = `You exceeded your step goal on ${
+          exceededActivity.date
+        } by ${exceededActivity.numSteps - user.dailyStepGoal} steps`;
+      });
+    }
+    return response;
+  }
+  allTimeStairClimbingRecord() {
+    const climbingRecord = this.data.sort((a, b) => {
+      return b.flightsOfStairs - a.flightsOfStairs;
+    });
+    const allTimeRecord = climbingRecord.shift();
+    return allTimeRecord.flightsOfStairs;
+  }
 }
 
 module.exports = UserActivity;

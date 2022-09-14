@@ -16,5 +16,5 @@ const postData = (url, bodyData) => {
   fetch(url, requestData)
 };
 
-export default fetchData
+export { fetchData, postData };
 

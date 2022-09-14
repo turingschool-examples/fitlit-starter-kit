@@ -1,5 +1,7 @@
 const UserActivity = require("./UserActivity");
 const userActivityTestData = require("../src/data/userActivityTestData");
+import SleepSeries from "./SleepSeries";
+import HydrationSeries from "./HydrationSeries";
 
 class User {
   constructor(userData) {
@@ -11,7 +13,7 @@ class User {
     this.dailyStepGoal = userData.dailyStepGoal;
     this.friends = userData.friends;
     this.userSleepData = new SleepSeries();
-    this.userHydrationData = new HydrationSeries(); 
+    this.userHydrationData = new HydrationSeries();
   }
 
   getFirstName() {

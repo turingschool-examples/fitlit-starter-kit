@@ -31,4 +31,14 @@ describe("UserActivity", () => {
     const result = userActivity.minutesActive("2022/08/11", user);
     expect(result).to.equal("Sorry no data available for given date");
   });
+  it("should create a method that returns whether a user step goal was reached for a given day", () => {
+    const result = userActivity.stepGoalForGivenDay("2019/06/15", user);
+    expect(result).to.equal(false);
+    user = new User(userData[1]);
+    userActivity = new UserActivity(
+      userActivityTestData.filter((data) => data.userID === 2)
+    );
+    const resultTwo = userActivity.stepGoalForGivenDay("2019/06/26", user);
+    expect(resultTwo).to.equal(true);
+  });
 });

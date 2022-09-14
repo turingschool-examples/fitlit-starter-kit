@@ -158,11 +158,6 @@ function displaySleepForAWeek() {
     <td class="sleep-data">Quality of Sleep</td>
   </tr>
   <tr>
-    <td class="sleep-data">${sleepInAWeek[0].date}</td>
-    <td class="sleep-data">${sleepInAWeek[0].hoursSlept}</td>
-    <td class="sleep-data">${sleepQualityInAWeek[0].sleepQuality}</td>
-  </tr>
-  <tr>
     <td class="sleep-data">${sleepInAWeek[1].date}</td>
     <td class="sleep-data">${sleepInAWeek[1].hoursSlept}</td>
     <td class="sleep-data">${sleepQualityInAWeek[1].sleepQuality}</td>
@@ -187,13 +182,18 @@ function displaySleepForAWeek() {
     <td class="sleep-data">${sleepInAWeek[5].hoursSlept}</td>
     <td class="sleep-data">${sleepQualityInAWeek[5].sleepQuality}</td>
   </tr>
+  <tr>
+    <td class="sleep-data">${sleepInAWeek[6].date}</td>
+    <td class="sleep-data">${sleepInAWeek[6].hoursSlept}</td>
+    <td class="sleep-data">${sleepQualityInAWeek[6].sleepQuality}</td>
+  </tr>
 </table>
   `;
 }
 
 function displayHydraForToday() {
   const dateInput = inputValue.value.split("-").join("/");
-  const dayFluids = user.getDayFluid(hydrationData, dateInput);
+  const dayFluids = user.userHydrationData.getDayFluid(dateInput);
   hydraData.innerHTML = `
     <table class="hydra-data">
     <tr>
@@ -208,17 +208,13 @@ function displayHydraForToday() {
 
 function displayHydrationForWeek() {
   const dateInput = inputValue.value.split("-").join("/");
-  const hydrationWeek = user.getWeeklyFluids(hydrationData, dateInput);
+  const hydrationWeek = user.userHydrationData.getWeeklyFluids(dateInput).reverse()
   if (hydrationWeek.length >= 6) {
     chart.innerHTML = `
   <table class="hydra-data" style="width:100%">
   <tr>
     <td class ="hydra-data">Date</td>
     <td class ="hydra-data">Fluids (oz)</td>
-  </tr>
-  <tr>
-    <td class="hydra-data">${hydrationWeek[0].date}</td>
-    <td class="hydra-data">${hydrationWeek[0].numOunces}</td>
   </tr>
   <tr>
     <td class="hydra-data">${hydrationWeek[1].date}</td>
@@ -239,6 +235,10 @@ function displayHydrationForWeek() {
   <tr>
     <td class="hydra-data">${hydrationWeek[5].date}</td>
     <td class="hydra-data">${hydrationWeek[5].numOunces}</td>
+  </tr>
+  <tr>
+    <td class="hydra-data">${hydrationWeek[6].date}</td>
+    <td class="hydra-data">${hydrationWeek[6].numOunces}</td>
   </tr>
 </table>`;
   } else {

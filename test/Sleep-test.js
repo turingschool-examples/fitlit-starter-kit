@@ -48,4 +48,7 @@ describe('Sleep', () => {
   it('should give average sleep quality for all users', () => {
     expect(userSleep.getAvgSleepData('sleepQuality', userSleep.sleepData)).to.equal(4);
   });
+
+  // should only run method if there is data corresponding with the date passed
+  // if no data, should tell user you did not save data for this day
 });

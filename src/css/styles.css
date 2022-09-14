@@ -8,7 +8,7 @@ html {
   background:#ffffff;
   background-repeat: no-repeat;
   font-family: 'Alegreya';
-  font-size: 1vh;
+  font-size: 1rem;
 }
 
 body {
@@ -33,6 +33,11 @@ header {
 .greeting {
   margin: 0%;
   padding: 2.5%;
+  font-size: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .title {
@@ -116,6 +121,7 @@ header {
 
 .icon {
   width: 60%;
+  /* height: auto; */
 }
 
 .chart-container {
@@ -173,14 +179,66 @@ header {
 
 .icon-button {
   background-color: transparent;
+  border: 0px;
   border-radius: 2px;
   cursor: pointer;
-  display: flex;
   flex: 1 1 0px;
   margin: 0%;
-  border: 0px;
-  height: auto;
-  justify-content: center;
-  align-items: center;
+  position: relative;
 }
 
+
+.material-icons {
+  display: inline-block;
+  font-family: 'Material Icons';
+  font-size: 24px;
+}
+
+.face-icon {
+  font-size: 3rem;
+}
+
+.water-plus-icon {
+  bottom: 0px;
+  position: absolute;
+  right: 28px;
+}
+
+.plus-icon {
+  bottom: 0px;
+  position: absolute;
+  right: 16px;
+}
+
+.add-water-field {
+  display: flex
+}
+
+.form-popup {
+  align-items: center;
+  bottom: 0px;
+  display:flex;
+  justify-content: center;
+  left: 0px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+.form-container {
+  background: white;
+  border: 1px solid black;
+  border-radius: 30px;
+  box-shadow: 3px 3px 2px grey;;
+  gap: 10px;
+  height: 200px;
+  padding: 20px;
+  width: 200px;
+  z-index: 1;
+}
+
+
+
+.hidden {
+  display:none;
+}

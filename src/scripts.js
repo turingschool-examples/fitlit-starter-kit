@@ -60,6 +60,7 @@ const getFetch = () => {
     sleep = data[1].sleepData;
     hydration = data[2].hydrationData;
     singleUser = new User(users[getRandomUser()]);
+    console.log(singleUser)
     userRepository = new UserRepository(users);
     singleHydro = new Hydration(hydration);
     singleSleep = new Sleep(sleep);

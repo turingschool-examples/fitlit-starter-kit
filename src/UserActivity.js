@@ -66,4 +66,4 @@ class UserActivity {
   }
 }
 
-module.exports = UserActivity;
+export default UserActivity;

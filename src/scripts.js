@@ -16,6 +16,8 @@ import UserRepository from "./UserRepository";
 import HydrationSeries from "./HydrationSeries";
 import SleepSeries from "./SleepSeries";
 import Chart from "chart.js/auto";
+import UserActivity from "./UserActivity";
+// const activityData = require("./data/userActivityTestData");
 
 // Test data
 // const userActivityTestData = require("../data/userActivityTestData");
@@ -26,6 +28,7 @@ let allUsers;
 let userData;
 let hydrationData;
 let sleepData;
+let userActivity;
 
 // Query Selectors
 const userDetails = document.querySelector(".user-card");
@@ -40,6 +43,7 @@ const dataForDay = document.querySelector(".table-data");
 const hydraData = document.querySelector(".hydration-card");
 const chart = document.querySelector(".hydra-chart");
 const stepChart = document.getElementById("stepChart").getContext("2d");
+// const activityCard = document.querySelector(".activity-card");
 
 // Event Listeners
 window.addEventListener("load", promiseAll);
@@ -48,6 +52,7 @@ submitButton.addEventListener("click", () => {
   displaySleepForSpecificDay();
   displayHydraForToday();
   displayHydrationForWeek();
+  // displayMilesWalked();
 });
 
 promiseAll().then((responses) => {
@@ -55,15 +60,31 @@ promiseAll().then((responses) => {
   hydrationData = responses[1].hydrationData;
   sleepData = responses[2].sleepData;
   user = new User(userData.userData[getRandomIndex(userData.userData)]);
-  user.userSleepData = new SleepSeries(sleepData.filter((entry) => entry.userID === user.id))
-  user.userHydrationData = new HydrationSeries(hydrationData.filter((entry) => entry.userID === user.id))
+  user.userSleepData = new SleepSeries(
+    sleepData.filter((entry) => entry.userID === user.id)
+  );
+  user.userHydrationData = new HydrationSeries(
+    hydrationData.filter((entry) => entry.userID === user.id)
+  );
   allUsers = userData.userData.map((user) => {
     const newUser = new User(user);
-    newUser.userSleepData = new SleepSeries(sleepData.filter((entry) => {entry.userID === newUser.id}))
-    newUser.userHydrationData = new HydrationSeries(hydrationData.filter((entry) => {entry.userID === newUser.id}))
+    newUser.userSleepData = new SleepSeries(
+      sleepData.filter((entry) => {
+        entry.userID === newUser.id;
+      })
+    );
+    newUser.userHydrationData = new HydrationSeries(
+      hydrationData.filter((entry) => {
+        entry.userID === newUser.id;
+      })
+    );
     return newUser;
-});
+  });
   userRepository = new UserRepository(allUsers);
+  // userActivity = new UserActivity(
+  //   activityData.filter((entry) => entry.userID === user.id)
+  // );
+
   displayDashboard();
 });
 
@@ -80,6 +101,7 @@ function displayDashboard() {
   displayHydraForToday();
   displayHydrationForWeek();
   displaySteps();
+  // displayMilesWalked();
 }
 
 function displayUserDetails() {
@@ -145,14 +167,12 @@ function displaySleepForSpecificDay() {
 
 function displaySleepForAWeek() {
   const dateInput = inputValue.value.split("-").join("/");
-  const sleepInAWeek = user.userSleepData.getSleepPerDayForWeek(
-    dateInput,
-    "hoursSlept"
-  ).reverse();
-  const sleepQualityInAWeek = user.userSleepData.getSleepPerDayForWeek(
-    dateInput,
-    "sleepQuality"
-  ).reverse();
+  const sleepInAWeek = user.userSleepData
+    .getSleepPerDayForWeek(dateInput, "hoursSlept")
+    .reverse();
+  const sleepQualityInAWeek = user.userSleepData
+    .getSleepPerDayForWeek(dateInput, "sleepQuality")
+    .reverse();
   sleepForWeek.innerHTML = `<table class="sleep-data">
   <tr>
     <td class="sleep-data">Date</td>
@@ -210,7 +230,9 @@ function displayHydraForToday() {
 
 function displayHydrationForWeek() {
   const dateInput = inputValue.value.split("-").join("/");
-  const hydrationWeek = user.userHydrationData.getWeeklyFluids(dateInput).reverse()
+  const hydrationWeek = user.userHydrationData
+    .getWeeklyFluids(dateInput)
+    .reverse();
   if (hydrationWeek.length >= 6) {
     chart.innerHTML = `
   <table class="hydra-data" style="width:100%">
@@ -286,3 +308,9 @@ function displaySteps() {
   });
   stepDetails.innerHTML += `<p>Your daily step goal is ${comparison}% compared to all average users.</p>`;
 }
+
+// function displayMilesWalked() {
+//   const dateInput = inputValue.value.split("-").join("/");
+//   const milesWalked = userActivity.milesBasedOnSteps(dateInput, user);
+//   activityCard.innerHTML = `<p>You walked ${milesWalked} miles on ${dateInput}`;
+// }

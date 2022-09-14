@@ -6,6 +6,12 @@ sleepTestData = [
     sleepQuality: 2.2,
   },
   {
+    userID: 47,
+    date: "2019/06/15",
+    hoursSlept: 4.7,
+    sleepQuality: 4.5
+    },
+  {
     userID: 1,
     date: "2019/06/16",
     hoursSlept: 4.1,
@@ -42,18 +48,11 @@ sleepTestData = [
     sleepQuality: 4.2,
   },
   {
-    userID: 47,
-    date: "2019/06/21",
-    hoursSlept: 10,
-    sleepQuality: 1,
-  },
-  {
     userID: 1,
     date: "2019/06/22",
     hoursSlept: 7,
     sleepQuality: 3,
   },
- 
   {
     userID: 4,
     date: "2019/06/25",

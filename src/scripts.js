@@ -13,6 +13,8 @@ import { promiseAll } from "./apiCalls.js";
 //Import Classes
 import User from "./User";
 import UserRepository from "./UserRepository";
+import HydrationSeries from "./HydrationSeries";
+import SleepSeries from "./SleepSeries";
 import Chart from "chart.js/auto";
 
 // Test data
@@ -50,15 +52,18 @@ submitButton.addEventListener("click", () => {
 
 promiseAll().then((responses) => {
   userData = responses[0];
-  user = new User(userData.userData[getRandomIndex(userData.userData)]);
-  allUsers = userData.userData.map((user) => new User(user));
-  userRepository = new UserRepository(allUsers);
-  // activityData = userActivityTestData.filter(
-  //   (activityData) => activityData.userID === user.id
-  // );
-  // userActivity = new UserActivity(activityData, user);
   hydrationData = responses[1].hydrationData;
   sleepData = responses[2].sleepData;
+  user = new User(userData.userData[getRandomIndex(userData.userData)]);
+  user.userSleepData = new SleepSeries(sleepData.filter((entry) => entry.userID === user.id))
+  user.userHydrationData = new HydrationSeries(hydrationData.filter((entry) => entry.userID === user.id))
+  allUsers = userData.userData.map((user) => {
+    const newUser = new User(user);
+    newUser.userSleepData = new SleepSeries(sleepData.filter((entry) => {entry.userID === newUser.id}))
+    newUser.userHydrationData = new HydrationSeries(hydrationData.filter((entry) => {entry.userID === newUser.id}))
+    return newUser;
+});
+  userRepository = new UserRepository(allUsers);
   displayDashboard();
 });
 
@@ -108,24 +113,20 @@ function displayFriends() {
 }
 
 function displayAverageSleep() {
-  avgSleepHours.innerHTML += `<p>${user.getAvgSleepDataPerDay(
-    sleepData,
+  avgSleepHours.innerHTML += `<p>${user.userSleepData.getAvgSleepDataPerDay(
     "hoursSlept"
   )} hours </p>`;
-  avgQualitySleep.innerHTML += `<p>${user.getAvgSleepDataPerDay(
-    sleepData,
+  avgQualitySleep.innerHTML += `<p>${user.userSleepData.getAvgSleepDataPerDay(
     "sleepQuality"
   )}</p>`;
 }
 function displaySleepForSpecificDay() {
   const dateInput = inputValue.value.split("-").join("/");
-  const sleepPerDay = user.getSleepDataPerDay(
-    sleepData,
+  const sleepPerDay = user.userSleepData.getSleepDataPerDay(
     dateInput,
     "hoursSlept"
   );
-  const qualityPerDay = user.getSleepDataPerDay(
-    sleepData,
+  const qualityPerDay = user.userSleepData.getSleepDataPerDay(
     dateInput,
     "sleepQuality"
   );
@@ -144,26 +145,19 @@ function displaySleepForSpecificDay() {
 
 function displaySleepForAWeek() {
   const dateInput = inputValue.value.split("-").join("/");
-  const sleepInAWeek = user.getSleepPerDayForWeek(
-    sleepData,
+  const sleepInAWeek = user.userSleepData.getSleepPerDayForWeek(
     dateInput,
     "hoursSlept"
-  );
-  const sleepQualityInAWeek = user.getSleepPerDayForWeek(
-    sleepData,
+  ).reverse();
+  const sleepQualityInAWeek = user.userSleepData.getSleepPerDayForWeek(
     dateInput,
     "sleepQuality"
-  );
+  ).reverse();
   sleepForWeek.innerHTML = `<table class="sleep-data">
   <tr>
     <td class="sleep-data">Date</td>
     <td class="sleep-data">Sleep Hours</td>
     <td class="sleep-data">Quality of Sleep</td>
-  </tr>
-  <tr>
-    <td class="sleep-data">${sleepInAWeek[0].date}</td>
-    <td class="sleep-data">${sleepInAWeek[0].hoursSlept}</td>
-    <td class="sleep-data">${sleepQualityInAWeek[0].sleepQuality}</td>
   </tr>
   <tr>
     <td class="sleep-data">${sleepInAWeek[1].date}</td>
@@ -190,13 +184,18 @@ function displaySleepForAWeek() {
     <td class="sleep-data">${sleepInAWeek[5].hoursSlept}</td>
     <td class="sleep-data">${sleepQualityInAWeek[5].sleepQuality}</td>
   </tr>
+  <tr>
+    <td class="sleep-data">${sleepInAWeek[6].date}</td>
+    <td class="sleep-data">${sleepInAWeek[6].hoursSlept}</td>
+    <td class="sleep-data">${sleepQualityInAWeek[6].sleepQuality}</td>
+  </tr>
 </table>
   `;
 }
 
 function displayHydraForToday() {
   const dateInput = inputValue.value.split("-").join("/");
-  const dayFluids = user.getDayFluid(hydrationData, dateInput);
+  const dayFluids = user.userHydrationData.getDayFluid(dateInput);
   hydraData.innerHTML = `
     <table class="hydra-data">
     <tr>
@@ -211,17 +210,13 @@ function displayHydraForToday() {
 
 function displayHydrationForWeek() {
   const dateInput = inputValue.value.split("-").join("/");
-  const hydrationWeek = user.getWeeklyFluids(hydrationData, dateInput);
+  const hydrationWeek = user.userHydrationData.getWeeklyFluids(dateInput).reverse()
   if (hydrationWeek.length >= 6) {
     chart.innerHTML = `
   <table class="hydra-data" style="width:100%">
   <tr>
     <td class ="hydra-data">Date</td>
     <td class ="hydra-data">Fluids (oz)</td>
-  </tr>
-  <tr>
-    <td class="hydra-data">${hydrationWeek[0].date}</td>
-    <td class="hydra-data">${hydrationWeek[0].numOunces}</td>
   </tr>
   <tr>
     <td class="hydra-data">${hydrationWeek[1].date}</td>
@@ -242,6 +237,10 @@ function displayHydrationForWeek() {
   <tr>
     <td class="hydra-data">${hydrationWeek[5].date}</td>
     <td class="hydra-data">${hydrationWeek[5].numOunces}</td>
+  </tr>
+  <tr>
+    <td class="hydra-data">${hydrationWeek[6].date}</td>
+    <td class="hydra-data">${hydrationWeek[6].numOunces}</td>
   </tr>
 </table>`;
   } else {

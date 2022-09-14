@@ -32,11 +32,11 @@ describe("User Repository", () => {
 
   it("should have a method to calculate average hours slept of all users", () => {
     let averageHoursSlept = userRepo.findAverageSleepDetail(sleepTestData, "hoursSlept");
-    expect(averageHoursSlept).to.equal(8.1);
+    expect(averageHoursSlept).to.equal(7.5);
   });
 
   it("should have a method to calculate average sleep quality of all users", () => {
     let averageSleepQuality = userRepo.findAverageSleepDetail(sleepTestData, "sleepQuality");
-    expect(averageSleepQuality).to.equal(2.5);
+    expect(averageSleepQuality).to.equal(2.8);
   });
 });

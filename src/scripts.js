@@ -45,7 +45,6 @@ function fetchAllData() {
     activityData = data[3]
     
     currentUser = new User(userData[Math.floor(Math.random() * userData.length)]);
-    console.log(currentUser)
     hydration = new Hydration(currentUser.id, hydrationData);
     sleep = new Sleep(currentUser.id, sleepData);
     allUsers = new UserRepository(userData);

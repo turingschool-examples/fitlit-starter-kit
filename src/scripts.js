@@ -44,7 +44,7 @@ let allUsers;
 let activityData;
 let lastSleepEntry;
 let lastHydrationEntry;
-let firstDayOfTheWeek;
+let firstDayOfLastWeek;
 
 
 // API data
@@ -55,7 +55,7 @@ function fetchAllData() {
     sleepData = data[1],
     hydrationData = data[2],
     activityData = data[3]
-
+    
     currentUser = new User(userData[Math.floor(Math.random() * userData.length)]);
     hydration = new Hydration(currentUser.id, hydrationData);
     sleep = new Sleep(currentUser.id, sleepData);
@@ -64,9 +64,7 @@ function fetchAllData() {
     //grab last date this user made an entry
     lastSleepEntry = sleep.sleepDataPerUser[sleep.sleepDataPerUser.length - 1].date;
     lastHydrationEntry = hydration.ounces[hydration.ounces.length - 1].date;
-    firstDayOfTheWeek = hydration.ounces[hydration.ounces.length - 7].date;
-
-
+    firstDayOfLastWeek = hydration.ounces[hydration.ounces.length - 8].date;
     
     loadUserInfo();
   });
@@ -90,10 +88,11 @@ function loadUserInfo() {
   renderProfile();
   // if the user inputs a date, then render all this
   renderSleepAverages();
+  charts.renderOuncesByWeek(hydration, firstDayOfLastWeek, lastHydrationEntry);
   charts.renderOuncesPerDay(hydration, lastHydrationEntry);
-  charts.renderOuncesByWeek(hydration, 194, 201);
   charts.renderSleepChartByDay(sleep, lastSleepEntry);
-  charts.renderSleepChartByWeek(sleep, firstDayOfTheWeek, lastSleepEntry);
+  charts.renderSleepChartByWeek(sleep, firstDayOfLastWeek, lastSleepEntry);
+
 };
 
 function renderGreeting() {

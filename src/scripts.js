@@ -17,7 +17,6 @@ import HydrationSeries from "./HydrationSeries";
 import SleepSeries from "./SleepSeries";
 import Chart from "chart.js/auto";
 import UserActivity from "./UserActivity";
-const activityData = require("./data/userActivityTestData");
 
 // Test data
 // const userActivityTestData = require("../data/userActivityTestData");
@@ -29,6 +28,7 @@ let userData;
 let hydrationData;
 let sleepData;
 let userActivity;
+let activityData;
 
 // Query Selectors
 const userDetails = document.querySelector(".user-card");
@@ -61,6 +61,7 @@ promiseAll().then((responses) => {
   userData = responses[0];
   hydrationData = responses[1].hydrationData;
   sleepData = responses[2].sleepData;
+  activityData = responses[3].activityData;
   user = new User(userData.userData[getRandomIndex(userData.userData)]);
   user.userSleepData = new SleepSeries(
     sleepData.filter((entry) => entry.userID === user.id)
@@ -318,9 +319,14 @@ function displaySteps() {
 
 function displayMilesWalked() {
   const dateInput = inputValue.value.split("-").join("/");
+
   const milesWalked = userActivity.milesBasedOnSteps(dateInput, user);
-  activityCard.innerHTML = `<h3>On ${dateInput} you:</h3>
-  <p>  walked ${milesWalked} miles, `;
+  if (milesWalked === 0) {
+    activityCard.innerHTML = "<p>Please add data for given date</p>";
+  } else {
+    activityCard.innerHTML = `<h3>On ${dateInput} you:</h3>
+    <p>  walked ${milesWalked} miles, `;
+  }
 }
 
 function displayNumberOfSteps() {
@@ -329,11 +335,19 @@ function displayNumberOfSteps() {
   const numberOfSteps = userActivity.data.find((activity) => {
     return activity.date === dateInput;
   });
-  activityCard.innerHTML += `</p>${numberOfSteps.numSteps} steps,</p>`;
+  if (numberOfSteps === undefined) {
+    activityCard.innerHTML += "";
+  } else {
+    activityCard.innerHTML += `</p>${numberOfSteps.numSteps} steps,</p>`;
+  }
 }
 
 function displayMinutesActive() {
   const dateInput = inputValue.value.split("-").join("/");
   const minsActive = userActivity.minutesActive(dateInput, user);
-  activityCard.innerHTML += `</p>and were active for ${minsActive} minutes</p>`;
+  if (minsActive === 0) {
+    activityCard.innerHTML += "";
+  } else {
+    activityCard.innerHTML += `</p>and were active for ${minsActive} minutes</p>`;
+  }
 }

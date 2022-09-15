@@ -21,7 +21,7 @@ describe("UserActivity", () => {
   });
   it("should only work if data is available for date", () => {
     const result = userActivity.milesBasedOnSteps("2022/08/11", user);
-    expect(result).to.equal("Sorry no data available for given date");
+    expect(result).to.equal(0);
   });
   it("should have a method to calculate how many minutes a user was active for a given date", () => {
     const result = userActivity.minutesActive("2019/06/15", user);
@@ -29,7 +29,7 @@ describe("UserActivity", () => {
   });
   it("should only work if data is available for date", () => {
     const result = userActivity.minutesActive("2022/08/11", user);
-    expect(result).to.equal("Sorry no data available for given date");
+    expect(result).to.equal(0);
   });
   it("should create a method that returns whether a user step goal was reached for a given day", () => {
     const result = userActivity.stepGoalForGivenDay("2019/06/15", user);

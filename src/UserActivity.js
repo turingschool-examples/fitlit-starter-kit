@@ -5,6 +5,7 @@ class UserActivity {
 
   milesBasedOnSteps(activityDate, user) {
     let userActivity = this.data.filter((data) => data.date === activityDate);
+    console.log(userActivity);
     if (userActivity.length < 1) {
       return 0;
     } else {

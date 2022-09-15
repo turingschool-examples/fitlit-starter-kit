@@ -1,5 +1,5 @@
 function fetchData(details) {
-  return fetch(`https://fitlit-api.herokuapp.com/api/v1/${details}`)
+  return fetch(`http://localhost:3001/api/v1/${details}`)
     .then((response) => response.json())
     .catch((error) => console.log(error));
 }
@@ -9,6 +9,7 @@ const promiseAll = () => {
     fetchData("users"),
     fetchData("hydration"),
     fetchData("sleep"),
+    fetchData("activity"),
   ]).then((response) => {
     return response;
   });

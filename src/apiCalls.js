@@ -25,10 +25,40 @@ const postSleep = (id,userInputSleepData) => {
   .then(data => console.log(data))
   .catch(err => console.log(err))
 }
-const fetchSleep = () => { 
+const fetchSleep = () => {
   Promise.all([fetchData('http://localhost:3001/api/v1/sleep')])
  .then(data => console.log('ya think this will work?',data))
 }
 fetchSleep();
 export { fetchAll }
 export { postSleep }
+export { postActivity }
+
+
+
+
+
+const postActivity = (id, userInputActivityData) => {
+  fetch('http://localhost:3001/api/v1/activity', {
+      method: 'POST',
+      body: JSON.stringify ({
+        userID: id,
+        date: Date.now(),
+        numSteps: userInputActivityData.numSteps,
+        minutesActive: userInputActivityData.minutesActive,
+        flightsOfStairs: userInputActivityData.flightsOfStairs
+      }),
+      headers: { 'Content-Type': 'application/json' }
+  })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
+
+
+}
+
+const fetchActivity = () => {
+  Promise.all([fetchData('http://localhost:3001/api/v1/activity')])
+ .then(data => console.log('ya think this will work? Activity addition',data))
+}
+fetchActivity();

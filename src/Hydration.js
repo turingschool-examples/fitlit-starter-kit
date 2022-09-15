@@ -6,13 +6,16 @@ class Hydration {
   };
   
   ouncesPerDay(date) {
+
     const dailyOunces = this.ounces.find(entry => entry.date === date);
 
     return dailyOunces.numOunces;
   };
 
-  getDailyOuncesByWeek(date1, date2) {
-    const weekOunces = this.ounces.slice(date1, date2);
+  getDailyOuncesByWeek(minDate, maxDate) {
+    const start = this.ounces.findIndex(data => data.date === minDate);
+    const end = this.ounces.findIndex(data => data.date === maxDate);
+    const weekOunces = this.ounces.slice(start, end);
 
     return weekOunces.map(day => day.numOunces);
   };

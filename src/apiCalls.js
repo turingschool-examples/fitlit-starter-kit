@@ -16,5 +16,10 @@ const postData = (url, bodyData) => {
   fetch(url, requestData)
 };
 
-export default fetchData
+export { fetchData, postData };
 
+// click on icon to add data
+// form will be dispplayed
+// user will input Date 
+// user inputs numOunces or sleep or steps
+// Submit will trigger postData()

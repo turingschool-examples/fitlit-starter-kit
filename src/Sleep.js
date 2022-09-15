@@ -5,18 +5,25 @@ class Sleep {
   };
 
   getSleepDataByGivenDay(date, type) {
-    const dailySleep = this.sleepDataPerUser.reduce((acc, data) => {
-      if (data.date === date) {
-        acc = data[type];
-      };
+    const value = this.sleepDataPerUser.find(data => data.date === date); 
 
-      return acc;
-    }, 0);
-
-    return dailySleep;
+    if (value) {
+      return value[type];
+    } else {
+      return 'This date could not be found.'
+    }
   };
 
-  getAvgSleepData(type, dataSet) {
+  getAvgSleepData(type, isCurrentUser) {
+    let dataSet;
+
+    // should check if currentUser's data set should be be used 
+    if (isCurrentUser) {
+      dataSet = this.sleepDataPerUser;
+    } else {
+      dataSet = this.sleepData;
+    }
+    
     const sum = dataSet.reduce((acc, data) => {
       if (data[type]) {
         acc += data[type];
@@ -28,13 +35,16 @@ class Sleep {
     return Math.round(sum / dataSet.length);
   };
 
-  getDailySleepByWeek(minDate, maxDate, type) {
+  getDailySleepByWeek(type, minDate, maxDate) {
     const start = this.sleepDataPerUser.findIndex(data => data.date === minDate); 
     const end = this.sleepDataPerUser.findIndex(data => data.date === maxDate);
     const week = this.sleepDataPerUser.slice(start, end + 1);
-    const sleepPerDay = week.map(data => data[type]);
 
-    return sleepPerDay;
+    if (start === -1 || end === -1) {
+      return 'These days do not exist. Please change your selection.'
+    }
+
+    return week.map(data => data[type]);
   };  
 };
 

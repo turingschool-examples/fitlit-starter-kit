@@ -1,3 +1,4 @@
+import UserActivity from "./UserActivity";
 import SleepSeries from "./SleepSeries";
 import HydrationSeries from "./HydrationSeries";
 
@@ -11,7 +12,7 @@ class User {
     this.dailyStepGoal = userData.dailyStepGoal;
     this.friends = userData.friends;
     this.userSleepData = new SleepSeries();
-    this.userHydrationData = new HydrationSeries(); 
+    this.userHydrationData = new HydrationSeries();
   }
 
   getFirstName() {

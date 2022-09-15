@@ -116,7 +116,6 @@ function renderFriendsList() {
 function renderProfile() {
   fullName.innerHTML = `${currentUser.name}`;
 
-  
   stepGoal.innerText += ` ${currentUser.dailyStepGoal}
   Average Step Goal: ${allUsers.returnAverageStepGoal()}`;
 };
@@ -130,7 +129,7 @@ function showUserDetails() {
   dropDownBox.classList.toggle('hidden');
   userAddress.innerText = `${currentUser.email}`;
   userEmail.innerText = `${currentUser.address}`;
-}
+};
 
 // function renderLastEntryDate() {
 //   lastEntryDate.innerText = `Last Sleep Entry: ${lastSleepEntry}
@@ -139,16 +138,16 @@ function showUserDetails() {
 
 function userInputHydrationForm() {
   hydrationFormPopup.classList.remove('hidden');
-}
+};
 
 function userInputSleepForm() {
   sleepFormPopup.classList.remove('hidden');
-}
+};
 
 function userInputActivityForm() {
   activityFormPopup.classList.remove('hidden');
-}
+};
 
 function closeForm() {
   // target a close button by click event and add hidden class to it
-}
+};

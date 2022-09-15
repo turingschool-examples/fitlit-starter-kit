@@ -5,7 +5,7 @@ import Sleep from './Sleep';
 import Hydration from './Hydration';
 import { fetchAll } from './apiCalls';
 import { postSleep } from './apiCalls';
-
+import { postHydration } from './apiCalls';
 import { postActivity } from './apiCalls';
 import './css/styles.css';
 import './images/Activity.png'
@@ -77,12 +77,11 @@ fetchAll()
     displayStepGoalComp(userRepository);
     displayHydrationData(singleHydro);
     displaySleepData(singleSleep);
-    postSleep(singleUser.id,newSleepInfo)
-
     postActivity(singleUser.id,newActivityData)
   })
 };
-const newSleepInfo = {hoursSlept:8,sleepQuality:2}
+//Test variables 
+
 
 const newActivityData = {numSteps:1000, minutesActive: 2000, flightsOfStairs: 3000}
 

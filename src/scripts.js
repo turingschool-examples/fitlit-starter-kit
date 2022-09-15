@@ -32,6 +32,8 @@ let hydration;
 let sleep;
 let allUsers;
 let activityData;
+let lastHydrationEntry;
+let firstDayOfLastWeek;
 
 // API data
 function fetchAllData() {
@@ -41,14 +43,16 @@ function fetchAllData() {
     sleepData = data[1],
     hydrationData = data[2],
     activityData = data[3]
-
+    
     currentUser = new User(userData[Math.floor(Math.random() * userData.length)]);
     hydration = new Hydration(currentUser.id, hydrationData);
     sleep = new Sleep(currentUser.id, sleepData);
     allUsers = new UserRepository(userData);
+
+    lastHydrationEntry = hydration.ounces[hydration.ounces.length - 1].date;
+    firstDayOfLastWeek = hydration.ounces[hydration.ounces.length - 8].date;
     
     loadUserInfo();
-    
   });
 };
 
@@ -63,10 +67,11 @@ function loadUserInfo() {
   renderFriendsList();
   renderProfile();
   renderSleepAverages();
-  charts.renderOuncesPerDay(hydration, '2019/06/15');
-  charts.renderOuncesByWeek(hydration, 194, 201);
-  charts.renderSleepChartByDay(sleep, '2019/06/15');
-  charts.renderSleepChartByWeek(sleep, '2019/06/15', '2019/06/22');
+  charts.renderOuncesByWeek(hydration, firstDayOfLastWeek, lastHydrationEntry);
+  charts.renderOuncesPerDay(hydration, lastHydrationEntry);
+  charts.renderSleepChartByDay(sleep);
+  charts.renderSleepChartByWeek(sleep);
+
 };
 
 function renderGreeting() {

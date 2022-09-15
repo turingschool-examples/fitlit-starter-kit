@@ -1,26 +1,47 @@
+import User from '../src/User';
+import UserRepository from '../src/UserRepository';
+
 class Activity {
-    constructor(activityData) {
-    this.activityData = activityData; 
+    constructor(activityData, userID) {
+    this.activityData = activityData;
+    this.userID = userID;
+    console.log('num', userID)
       // userID: 1,
       // date: "2019/06/15",
       // numSteps: 3577,
       // minutesActive: 140,
-      // flightsOfStairs: 1   
+      // flightsOfStairs: 1
     }
 
   findUserDataID(id) {
-    const activityData = this.userData.filter(activityObj => activityObj.userID === id);
+    const activityData = this.activityData.filter(activityObj => activityObj.userID === id);
     return activityData;
   };
 
-  getMilesFromStrideLength(id) {
+  findData(id) {
+    const singleUserData = this.userData.find(user => user.id === id);
+    
+    return this.activityData.find(data => data.id === data);
+    //can we incorporate date?  If they match, give us the user
+    return this.activityData.find(date => date.id === date);
+  };
+
+
+
+  getMilesFromSteps(id, userInput) {
     let userStrideData = this.findUserDataID(id);
-    const strideLengthByDate = userStrideData.map((userDate) => userDate.date).pop();
+    const getMiles = (userInput * user.strideLength) / 5280
+    console.log('userINput', userInput)
+    console.log('strie', user)
+    console.log(getMiles)
+    return getMiles.toFixed(1);
+
   }
 
 }
 
 export default Activity;
+
 
 
 

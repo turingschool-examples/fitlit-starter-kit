@@ -29,7 +29,7 @@ describe('Activity', () => {
             }]
 
         singleUserActivity = new Activity(userActivityData);
-    
+
     })
     it('should be a function',  () => {
         expect(Activity).to.be.a('function')
@@ -48,11 +48,15 @@ describe('Activity', () => {
     });
 
     it('should return a user\s minutes active', () => {
-        expect(userActivityData[0].minutesActive).to.equal(140) 
+        expect(userActivityData[0].minutesActive).to.equal(140)
     });
 
-    it('should return a user\s flights of stairs climbed', () => {
-        expect(userActivityData[0].flightsOfStairs).to.equal(16)
+    it.skip('should return a user\s flights of stairs climbed', () => {
+        expect(userActivityData[0].flightsOfStairs).to.equal(1)
+    });
+
+    it('should return a users miles from stride length', () => {
+        expect(singleUserActivity.getMilesFromSteps(1, 3577)).to.equal(2.9)
     });
 
     // it('should return the miles a user has walked based on their number of steps') {
@@ -70,7 +74,7 @@ describe('Activity', () => {
     // it('should return the miles a user has walked based on their number of steps') {
     //     expect()
     // };
-    
+
     // it('should return true if a user achieved their daily step goal') {
     //     expect()
     // };
@@ -99,4 +103,3 @@ describe('Activity', () => {
     //     expect()
     // };
 })
-

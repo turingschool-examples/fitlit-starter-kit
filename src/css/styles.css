@@ -4,7 +4,7 @@ html {
   font-family: "Roboto Mono", monospace;
 }
 header,
-main{
+main {
   display: flex;
   justify-content: space-between;
 }
@@ -17,7 +17,6 @@ header {
 main {
   flex-direction: row;
   margin: 20px;
-  
 }
 
 .left-nav {
@@ -39,14 +38,14 @@ main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content:flex-start;
+  justify-content: flex-start;
 }
 
 .friends-container,
-.steps-container, 
+.steps-container,
 .placeholder-container,
-.hydration-container ,
-.sleep-container, 
+.hydration-container,
+.sleep-container,
 .user-container {
   display: flex;
   flex-direction: column;
@@ -54,7 +53,6 @@ main {
   color: white;
   box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
     0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
-
 }
 
 .user-container {
@@ -68,7 +66,7 @@ main {
   margin-right: 20px;
 }
 
-.user-card{
+.user-card {
   color: black;
 }
 
@@ -123,7 +121,7 @@ button:hover {
   width: 100%;
 }
 
-.friend img{
+.friend img {
   width: 1.5vw;
   height: 2.5vh;
 }
@@ -141,12 +139,12 @@ button:hover {
   margin-top: 0px;
 }
 
-.sleep-data, .hydra-data {
+.sleep-data,
+.hydra-data {
   border: 1px solid #2cb7ff;
 }
 .sleep-for-week {
   margin-top: 15px;
-  
 }
 
 .hydra-data {
@@ -159,7 +157,7 @@ button:hover {
 
 .hydration-container {
   color: black;
-  flex-direction:column;
+  flex-direction: column;
   width: auto;
   align-content: center;
   text-align: center;
@@ -174,11 +172,10 @@ button:hover {
 .bottom-nav {
   display: flex;
   flex-direction: row;
-  justify-content:flex-start;
+  justify-content: flex-start;
 }
 
-
-.steps-container, 
+.steps-container,
 .placeholder-container {
   color: rgb(0, 0, 0);
   width: auto;
@@ -191,7 +188,7 @@ button:hover {
 }
 
 .placeholder-container {
-  flex-direction: row;
+  /* flex-direction: row; */
   justify-content: center;
   width: 20vw;
   margin-left: 20px;
@@ -235,7 +232,7 @@ label {
   height: auto;
 }
 
-.chart.text{
+.chart.text {
   font-size: 1vw;
 }
 
@@ -248,5 +245,5 @@ p {
 .email,
 .stride-length,
 .step-goal {
-  font-size:2vh;
+  font-size: 2vh;
 }

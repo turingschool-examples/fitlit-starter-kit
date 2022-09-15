@@ -6,7 +6,7 @@ class UserActivity {
   milesBasedOnSteps(activityDate, user) {
     let userActivity = this.data.filter((data) => data.date === activityDate);
     if (userActivity.length < 1) {
-      return "Sorry no data available for given date";
+      return 0;
     } else {
       let numberOfSteps = userActivity.reduce((acc, activity) => {
         acc += activity.numSteps;
@@ -20,7 +20,7 @@ class UserActivity {
   minutesActive(activityDate, user) {
     let userActivity = this.data.filter((data) => data.date === activityDate);
     if (userActivity.length < 1) {
-      return "Sorry no data available for given date";
+      return 0;
     } else {
       let activeTime = userActivity.reduce((activeMinutes, activity) => {
         activeMinutes += activity.minutesActive;

@@ -1,5 +1,4 @@
-const UserActivity = require("./UserActivity");
-const userActivityTestData = require("../src/data/userActivityTestData");
+import UserActivity from "./UserActivity";
 import SleepSeries from "./SleepSeries";
 import HydrationSeries from "./HydrationSeries";
 

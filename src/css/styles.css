@@ -2,29 +2,33 @@ body,
 html {
   background-color: white;
   font-family: "Roboto Mono", monospace;
-  height: 100vh;
+}
+header,
+main{
+  display: flex;
+  justify-content: space-between;
 }
 
 header {
-  display: flex;
   justify-content: center;
   margin-left: 70px;
 }
 
 main {
-  display: flex;
   flex-direction: row;
+  margin: 20px;
+  
 }
 
 .left-nav {
-  width: 70%;
+  width: 65vw;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .right-nav {
-  width: 30%;
+  width: 35vw;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -34,24 +38,38 @@ main {
 .vitals-section {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+  justify-content:flex-start;
 }
 
+.friends-container,
+.steps-container, 
+.placeholder-container,
+.hydration-container ,
+.sleep-container, 
 .user-container {
   display: flex;
   flex-direction: column;
+  border-radius: 12px;
   color: white;
+  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
+    0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
+
+}
+
+.user-container {
   font-size: 14px;
   word-wrap: normal;
   padding-left: 1em;
   padding-right: 1em;
   background-color: #6190ff;
-  border-radius: 12px;
   padding-bottom: 1em;
   margin-bottom: 20px;
   margin-right: 20px;
-  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
-    0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
+}
+
+.user-card{
+  color: black;
 }
 
 .submit {
@@ -59,12 +77,19 @@ main {
   color: black;
   background-color: white;
   margin: 8px;
-  border-radius: 2px;
+  width: 100px;
+  border-radius: 12px;
 }
 
 .date-form {
   display: flex;
   justify-content: center;
+}
+
+.date-form input {
+  height: 4vh;
+  width: 15vw;
+  border-radius: 12px;
 }
 
 button:hover {
@@ -76,22 +101,16 @@ button:hover {
 .habit-label {
   color: black;
   margin-top: 10px;
-  font-size: 16px;
+  font-size: 1.5vw;
   text-align: center;
 }
 
 .friends-container {
-  display: flex;
-  flex-direction: column;
   height: 50%;
-  color: white;
   align-items: center;
   background-color: black;
-  border-radius: 12px;
   margin-right: 20px;
   padding-bottom: 1em;
-  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
-    0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
 }
 
 .friend {
@@ -104,32 +123,30 @@ button:hover {
   width: 100%;
 }
 
+.friend img{
+  width: 1.5vw;
+  height: 2.5vh;
+}
+
 .sleep-container {
-  display: flex;
-  flex-direction: column;
-  width: 29vw;
-  height: 70vh;
-  color: white;
+  width: auto;
   align-items: center;
   text-align: center;
   background-color: #6947ff;
-  border-radius: 12px;
   margin-right: 15px;
   padding-top: 10px;
-  padding-right: 1em;
-  padding-left: 1em;
-  padding-bottom: 1em;
+  padding-right: 1vw;
+  padding-left: 1vw;
+  padding-bottom: 1vw;
   margin-top: 0px;
-  margin-left: 15px;
-  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
-    0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
 }
 
-.sleep-data {
+.sleep-data, .hydra-data {
   border: 1px solid #2cb7ff;
 }
 .sleep-for-week {
   margin-top: 15px;
+  
 }
 
 .hydra-data {
@@ -141,50 +158,44 @@ button:hover {
 }
 
 .hydration-container {
-  display: flex;
-  flex-direction: column;
-  height: 55vh;
-  width: 25vw;
-  align-items: center;
+  color: black;
+  flex-direction:column;
+  width: auto;
+  align-content: center;
   text-align: center;
   background-color: #2cb7ff;
-  border-radius: 12px;
   margin-right: 15px;
   padding-top: 10px;
-  padding-right: 1em;
-  padding-bottom: 1em;
-  padding-left: 1em;
-  margin-top: 15px;
-  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
-    0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
+  padding-right: 1vw;
+  padding-bottom: 1vw;
+  padding-left: 1vw;
 }
 
 .bottom-nav {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  justify-content:flex-start;
 }
 
-.steps-container {
-  display: flex;
-  flex-direction: column;
-  height: 400px;
-  width: 50%;
-  color: white;
+
+.steps-container, 
+.placeholder-container {
+  color: rgb(0, 0, 0);
+  width: auto;
   align-items: center;
   text-align: center;
   background-color: #cc66ff;
-  border-radius: 12px;
-  margin-right: 40px;
-  margin-left: 15px;
   padding-top: 10px;
   margin-top: 20px;
   margin-bottom: 25px;
-  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
-    0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
 }
 
+.placeholder-container {
+  flex-direction: row;
+  justify-content: center;
+  width: 20vw;
+  margin-left: 20px;
+}
 .step-comparison-message {
   font-size: 10px;
 }
@@ -198,7 +209,9 @@ button:hover {
 
 #waterBottleImg,
 #sleepImg,
-#sandalsImg {
+#sandalsImg,
+#weightsImg {
+  align-self: center;
   border-radius: 50%;
   background-color: white;
   padding: 4px;
@@ -218,11 +231,22 @@ label {
 }
 
 .chart-container {
-  width: 400px;
-  height: 200px;
+  width: 30vw;
+  height: auto;
+}
+
+.chart.text{
+  font-size: 1vw;
 }
 
 p {
   margin-top: 4px;
   margin-bottom: 4px;
+}
+
+.address,
+.email,
+.stride-length,
+.step-goal {
+  font-size:2vh;
 }

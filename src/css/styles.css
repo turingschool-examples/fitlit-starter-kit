@@ -56,7 +56,7 @@ body {
   align-content: center;
   width: 77vw;
   height: 53vh;
-  
+
 }
 
 
@@ -212,9 +212,18 @@ line-height: 5;
 .user-step {
   padding: 5px;
 }
+.user-activity-container {
+  display: flex;
+  flex-direction: column;
+  background-color: green;
+  /* margin-top: 43%;
+  margin-left: -12%; */
+  width: 31vw;
+  height: 25vw;
+}
 
 
-.footer {
+/* .footer {
   display: flex;
   background-color: #060911;
   width: 10vw;
@@ -224,4 +233,4 @@ line-height: 5;
 .footer-text {
   color: grey;
   margin-top: 1300px;
-}
+} */

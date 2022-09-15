@@ -54,6 +54,7 @@ submitButton.addEventListener("click", () => {
   displayHydrationForWeek();
   displayMilesWalked();
   displayNumberOfSteps();
+  displayMinutesActive();
 });
 
 promiseAll().then((responses) => {
@@ -104,6 +105,7 @@ function displayDashboard() {
   displaySteps();
   displayMilesWalked();
   displayNumberOfSteps();
+  displayMinutesActive();
 }
 
 function displayUserDetails() {
@@ -317,18 +319,21 @@ function displaySteps() {
 function displayMilesWalked() {
   const dateInput = inputValue.value.split("-").join("/");
   const milesWalked = userActivity.milesBasedOnSteps(dateInput, user);
-  activityCard.innerHTML = `<h3>On ${dateInput} you walked:</h3>
-  <p> ${milesWalked} miles `;
+  activityCard.innerHTML = `<h3>On ${dateInput} you:</h3>
+  <p>  walked ${milesWalked} miles, `;
 }
 
 function displayNumberOfSteps() {
   const dateInput = inputValue.value.split("-").join("/");
-  console.log(userActivity);
   console.log(user);
-  console.log(userActivity.data);
   const numberOfSteps = userActivity.data.find((activity) => {
     return activity.date === dateInput;
   });
-  console.log(numberOfSteps);
-  activityCard.innerHTML += `</p>${numberOfSteps.numSteps} steps</p>`;
+  activityCard.innerHTML += `</p>${numberOfSteps.numSteps} steps,</p>`;
+}
+
+function displayMinutesActive() {
+  const dateInput = inputValue.value.split("-").join("/");
+  const minsActive = userActivity.minutesActive(dateInput, user);
+  activityCard.innerHTML += `</p>and were active for ${minsActive} minutes</p>`;
 }

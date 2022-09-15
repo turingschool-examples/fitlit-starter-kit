@@ -1,10 +1,10 @@
 // Import styles:
 import dayjs from 'dayjs';  
 import './css/styles.css';
-import './images/plus.png';
 import './images/quick-mode.png';
 import './images/water.png';
 import './images/zzz.png';
+import './images/down-button.png';
 import './images/fitlit-logo.png';
 
 // Import local files:
@@ -23,6 +23,14 @@ const userAddress = document.querySelector('.user-address');
 const userEmail = document.querySelector('.user-email');
 const stepGoal = document.querySelector('.step-goal');
 const sleepAverages = document.querySelector('.sleep-averages');
+const userInfoButton = document.querySelector('.down-button');
+const dropDownBox = document.querySelector('.drop-down');
+const addWaterButton = document.querySelector('#waterButton');
+const addSleepButton = document.querySelector('#sleepButton');
+const addActivityButton = document.querySelector('#activityButton');
+const hydrationFormPopup = document.querySelector('.hydration-form-popup');
+const sleepFormPopup = document.querySelector('.sleep-form-popup');
+const activityFormPopup = document.querySelector('.activity-form-popup')
 // const lastEntryDate = document.querySelector('#lastEntry');
 
 // Global variables
@@ -35,7 +43,8 @@ let sleep;
 let allUsers;
 let activityData;
 let lastSleepEntry;
-let lastHydrateEntry;
+let lastHydrationEntry;
+let firstDayOfTheWeek;
 
 
 // API data
@@ -53,9 +62,11 @@ function fetchAllData() {
     allUsers = new UserRepository(userData);
 
     //grab last date this user made an entry
-    lastSleepEntry = sleep.sleepDataPerUser[sleep.sleepDataPerUser.length - 1].date
-    lastHydrateEntry = hydration.ounces[hydration.ounces.length - 1].date
-  
+    lastSleepEntry = sleep.sleepDataPerUser[sleep.sleepDataPerUser.length - 1].date;
+    lastHydrationEntry = hydration.ounces[hydration.ounces.length - 1].date;
+    firstDayOfTheWeek = hydration.ounces[hydration.ounces.length - 7].date;
+
+
     
     loadUserInfo();
   });
@@ -63,12 +74,13 @@ function fetchAllData() {
 
 // Event Listeners
 window.addEventListener('load', fetchAllData);
+userInfoButton.addEventListener('click', showUserDetails);
+addWaterButton.addEventListener('click', userInputHydrationForm);
+addSleepButton.addEventListener('click', userInputSleepForm);
+addActivityButton.addEventListener('click', userInputActivityForm);
 
 // Helper Functions
 
-// dayjs
-const now = dayjs().format().slice(0, 10).split('-').join('/');
-console.log(now)
 
 
 // DOM Functions
@@ -76,16 +88,17 @@ function loadUserInfo() {
   renderGreeting();
   renderFriendsList();
   renderProfile();
+  // if the user inputs a date, then render all this
   renderSleepAverages();
-  charts.renderOuncesPerDay(hydration, lastHydrateEntry);
+  charts.renderOuncesPerDay(hydration, lastHydrationEntry);
   charts.renderOuncesByWeek(hydration, 194, 201);
   charts.renderSleepChartByDay(sleep, lastSleepEntry);
-  charts.renderSleepChartByWeek(sleep, '2019/06/15', '2019/06/22');
+  charts.renderSleepChartByWeek(sleep, firstDayOfTheWeek, lastSleepEntry);
 };
 
 function renderGreeting() {
   const userFirstName = currentUser.name.split(' ')[0];
-  greeting.innerHTML = `Hello, ${userFirstName}! <span class="face-icon material-icons">face</span>`;
+  greeting.innerHTML = `Hello, ${userFirstName}!`;
 };
 
 function renderFriendsList() {
@@ -102,9 +115,9 @@ function renderFriendsList() {
 };
 
 function renderProfile() {
-  fullName.innerText = `${currentUser.name}`;
-  userAddress.innerText = `${currentUser.email}`;
-  userEmail.innerText = `${currentUser.address}`;
+  fullName.innerHTML = `${currentUser.name}`;
+
+  
   stepGoal.innerText += ` ${currentUser.dailyStepGoal}
   Average Step Goal: ${allUsers.returnAverageStepGoal()}`;
 };
@@ -114,7 +127,29 @@ function renderSleepAverages() {
   Average Sleep Quality for all users: ${sleep.getAvgSleepData('sleepQuality', false)}`;
 };
 
+function showUserDetails() {
+  dropDownBox.classList.toggle('hidden');
+  userAddress.innerText = `${currentUser.email}`;
+  userEmail.innerText = `${currentUser.address}`;
+}
+
 // function renderLastEntryDate() {
 //   lastEntryDate.innerText = `Last Sleep Entry: ${lastSleepEntry}
-//   Last Hydration Entry: ${lastHydrateEntry}`
+//   Last Hydration Entry: ${lastHydrationEntry}`
 // }
+
+function userInputHydrationForm() {
+  hydrationFormPopup.classList.remove('hidden');
+}
+
+function userInputSleepForm() {
+  sleepFormPopup.classList.remove('hidden');
+}
+
+function userInputActivityForm() {
+  activityFormPopup.classList.remove('hidden');
+}
+
+function closeForm() {
+  // target a close button by click event and add hidden class to it
+}

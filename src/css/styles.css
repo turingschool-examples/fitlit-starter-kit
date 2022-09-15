@@ -34,6 +34,9 @@ header {
   margin: 0%;
   padding: 2.5%;
   font-size: 3.5rem;
+}
+
+.full-name{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,14 +48,13 @@ header {
   font-size: 2.5rem;
 }
 
-.text {
-  margin: 0.5%;
+.full-name {
   font-size: 2rem;
 }
 
 .step-goal {
   padding: 5%;
-  font-size: 2rem;
+  font-size: 1.25rem;
 }
 
 .column {
@@ -64,6 +66,14 @@ header {
   padding: 1%;
   overflow: hidden;
   flex: 1 1 300px; /* this is needed for flex wrapping to work -- do more research about properties */
+}
+
+.user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0px
 }
 
 .user-section {
@@ -79,6 +89,9 @@ header {
   border-radius: 50px;
   box-shadow: 10px 10px 5px #6a6a6a;
   font-size: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .daily {
@@ -99,6 +112,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 10px 10px 5px #6a6a6a;
+  position: relative;
 }
 
 .activity {
@@ -106,6 +120,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 10px 10px 5px #6a6a6a;
+  position: relative;
 }
 
 .sleep {
@@ -113,6 +128,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 10px 10px 5px #6a6a6a;
+  position: relative;
 }
 
 .sleep-averages {
@@ -194,10 +210,6 @@ header {
   font-size: 24px;
 }
 
-.face-icon {
-  font-size: 3rem;
-}
-
 .water-plus-icon {
   bottom: 0px;
   position: absolute;
@@ -214,31 +226,67 @@ header {
   display: flex
 }
 
-.form-popup {
+.form {
   align-items: center;
-  bottom: 0px;
   display:flex;
   justify-content: center;
   left: 0px;
   position: absolute;
   right: 0px;
   top: 0px;
+  bottom: 0px;
 }
 
 .form-container {
+  display: flex;
+  flex-direction: column;
   background: white;
-  border: 1px solid black;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid #fff;
   border-radius: 30px;
   box-shadow: 3px 3px 2px grey;;
-  gap: 10px;
   height: 200px;
   padding: 20px;
   width: 200px;
   z-index: 1;
 }
 
+.user-info {
+  align-self: center;
+  position: relative;
+}
 
+.drop-down {
+  position: absolute;
+  right: 0px;
+  top: 40px;
+  padding: 0.5em 0.5em;
+  font-size: 1rem;
+  background: white;
+  border: 0.75rem solid transparent;
+  border-top: none;
+  border-radius: 4px;
+  box-shadow: 3px 3px 2px grey;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.drop-down:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid #fff;
+  right: 2px;
+  bottom: 100%;
+}
 
 .hidden {
-  display:none;
+  display: none;
 }

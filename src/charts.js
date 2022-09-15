@@ -51,8 +51,8 @@ const barStyle2 = {
 const charts = {
 // Chart render functions
   renderSleepChartByWeek(sleep, date1, date2) {
-    const weeklyHS = sleep.getDailySleepByWeek( 'hoursSlept', date1, date2,);
-    const weeklySQ = sleep.getDailySleepByWeek( 'sleepQuality', date1, date2,);
+    const weeklyHS = sleep.getDailySleepByWeek('hoursSlept', date1, date2,);
+    const weeklySQ = sleep.getDailySleepByWeek('sleepQuality', date1, date2,);
 
     const weeklyHoursSlept = new Chart('weeklyHoursSlept', {
       type: 'bar',
@@ -78,23 +78,23 @@ const charts = {
     return weeklyHoursSlept;
   },
 
-  renderSleepChartByDay(sleep) {
-    const hours = sleep.getSleepDataByGivenDay('2020/01/20', 'hoursSlept');
-    const quality = sleep.getSleepDataByGivenDay('2020/01/20', 'sleepQuality');
+  renderSleepChartByDay(sleep, date) {
+    const hours = sleep.getSleepDataByGivenDay(date, 'hoursSlept');
+    const quality = sleep.getSleepDataByGivenDay(date, 'sleepQuality');
 
     const sleepDayCanvas = new Chart('dailyHoursSlept', {
       type: 'bar',
       data: {
         labels: [''],
         datasets: [{
-          label: 'Hours Slept',
+          label: `Hours Slept on ${date}`,
           data: [hours],
           barPercentage: 0.5,
           ...barStyle1,
           borderRadius: 4
         },
         {
-          label: 'Sleep Quality',
+          label: `Sleep Quality on ${date}`,
           data: [quality],
           barPercentage: 0.5,
           ...barStyle2,
@@ -140,7 +140,7 @@ const charts = {
       data: {
         labels: [''],
         datasets: [{
-          label: 'Daily Water Intake',
+          label: `Daily Water Intake on ${date}`,
           data: [day],
           ...barStyle2,
           barPercentage: 0.25,

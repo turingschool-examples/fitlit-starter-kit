@@ -4,6 +4,7 @@ import User from './User';
 import Sleep from './Sleep';
 import Hydration from './Hydration';
 import { fetchAll } from './apiCalls';
+import { postSleep } from './apiCalls';
 import './css/styles.css';
 import './images/Activity.png'
 import './images/Clipboard.png'
@@ -16,6 +17,7 @@ import './images/milky-way.png'
 import './images/galaxy.png'
 import './images/constellation.png'
 import './images/brain.png'
+import Activity from './Activity';
 
 // ######### Query Selectors ###########
 const userWelcome =  document.querySelector('#userName')
@@ -49,28 +51,39 @@ const avgOuncesDrankPerWeek = document.querySelector('#AvgOzWeekly')
   let users;
   let sleep;
   let hydration;
+  let activity;
   let singleHydro;
   let singleSleep;
+  let singleActivity;
 
 // ######### Promises ###########
 const getFetch = () => {
-  fetchAll()
+fetchAll()
   .then(data => {
     users = data[0].userData;
     sleep = data[1].sleepData;
     hydration = data[2].hydrationData;
+    activity = data[3].activityData;
     singleUser = new User(users[getRandomUser()]);
     console.log(singleUser)
     userRepository = new UserRepository(users);
     singleHydro = new Hydration(hydration);
     singleSleep = new Sleep(sleep);
+    singleActivity = new Activity(activity);
     welcomeUser();
     displayUserData();
     displayStepGoalComp(userRepository);
     displayHydrationData(singleHydro);
     displaySleepData(singleSleep);
+    postSleep(singleUser.id,newSleepInfo)
   })
 };
+const newSleepInfo = {hoursSlept:8,sleepQuality:2}
+
+
+
+
+
 
 // ######### Event Listeners ###########
 window.addEventListener('load', getFetch);
@@ -114,14 +127,12 @@ function displayUserData() {
 function displayStepGoalComp(userRepository) {
   userStepGoal.innerHTML = singleUser.dailyStepGoal
   allUserAverage.innerHTML = userRepository.getAllUserAvgStepGoals()
-  // userStepComp.innerHTML = `<p class='user-step-details'>Your daily step goal: ${singleUser.dailyStepGoal}</p> <br> vs <br><p class='user-step-details'> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
-  //   userStepComp.innerHTML =` <p class='user-step-details'>Your daily step goal :${singleUser.dailyStepGoal} <br> vs <br> All user average step goals:  ${userRepository.getAllUserAvgStepGoals()}</p>`
 };
 
 function displayHydrationData(singleHydro) {
   ouncesDrankToday.innerHTML = singleHydro.usersDailyOunces(singleUser.id)
   avgOuncesDrankPerDay.innerHTML = singleHydro.getLifeTimeOunces()
-  avgOuncesDrankPerWeek.innerHTML = singleHydro.getOuncesPerWeek(singleUser.id, "2020/01/22")
+  avgOuncesDrankPerWeek.innerHTML = singleHydro.getOuncesPerWeek(singleUser.id, "2022/01/23")
 };
 
 function displaySleepData(singleSleep) {
@@ -129,6 +140,6 @@ function displaySleepData(singleSleep) {
   userQualPerNight.innerText = singleSleep.getSleepQualByDate(singleUser.id)
   userAvgSleep.innerText = singleSleep.getAvgHrsSleptPerDay(singleUser.id)
   userAvgQualSleep.innerText = singleSleep.getAvgSleepQualPerDay(singleUser.id)
-  userWeeklySleep.innerText = singleSleep.getHrsSleptPerWeek(singleUser.id, "2020/01/22")
-  userWeeklyQualSleep.innerText = singleSleep.getSleepQualPerWeek(singleUser.id, "2020/01/22")
+  userWeeklySleep.innerText = singleSleep.getHrsSleptPerWeek(singleUser.id, "2022/01/23")
+  userWeeklyQualSleep.innerText = singleSleep.getSleepQualPerWeek(singleUser.id, "2022/01/23")
 };

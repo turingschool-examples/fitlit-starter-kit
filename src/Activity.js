@@ -1,6 +1,11 @@
 class Activity {
-    constructor(userData) {
-    this.userData = userData;    
+    constructor(activityData) {
+    this.activityData = activityData; 
+      // userID: 1,
+      // date: "2019/06/15",
+      // numSteps: 3577,
+      // minutesActive: 140,
+      // flightsOfStairs: 1   
     }
 
   findUserDataID(id) {

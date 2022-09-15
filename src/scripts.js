@@ -130,7 +130,8 @@ function displaySleepForSpecificDay() {
     dateInput,
     "sleepQuality"
   );
-  dataForDay.innerHTML = `<table class="sleep-data" style="width:100%">
+  dataForDay.innerHTML = `
+  <table class="sleep-data">
   <tr>
     <td class="sleep-data">Date</td>
     <td class="sleep-data">Sleep Hours</td>
@@ -213,7 +214,7 @@ function displayHydrationForWeek() {
   const hydrationWeek = user.userHydrationData.getWeeklyFluids(dateInput).reverse()
   if (hydrationWeek.length >= 6) {
     chart.innerHTML = `
-  <table class="hydra-data" style="width:100%">
+  <table class="hydra-data">
   <tr>
     <td class ="hydra-data">Date</td>
     <td class ="hydra-data">Fluids (oz)</td>
@@ -272,11 +273,13 @@ function displaySteps() {
       ],
     },
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         title: {
           display: true,
           text: "Your Step Goal vs. Average User Step Goal",
-          fontSize: 25,
+          fontSize: 20,
         },
         legend: {
           display: false,
@@ -284,5 +287,5 @@ function displaySteps() {
       },
     },
   });
-  stepDetails.innerHTML += `<p>Your daily step goal is ${comparison}% compared to all average users.</p>`;
+  stepDetails.innerHTML += `<p class=chart-text>Your daily step goal is ${comparison}% compared to all average users.</p>`;
 }

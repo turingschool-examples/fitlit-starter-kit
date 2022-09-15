@@ -2,13 +2,86 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Fitlit</title>
+    <html lang='en' dir 'ltr'>
+     <link rel='icon' href='./images/Activity.png'>
+    <title>GDFitness</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+      <header>
+        <h1>Get Down with the Fitness</h1>
+        <section class="user-name" id='userName'>users name</section>
+      </header>
+      <main>
+      <section class='widget-labels' id='widgetLabels'>
+        <section class='health-catergory' id='healthCatergory'>
+          <div class='icons data'>
+            <img class ='clipboard' src="./images/Clipboard.png" alt="clipboard logo" height="100px" width="100px">
+            <h2>Personal Data</h2>
+          </div>
+        </section>
+        <section class='health-catergory' id='healthCatergory'>
+          <div class='icons hydro'>
+           <img class="hydrate-logo" src="./images/galaxy.png" alt="hydrate logo" height="100px" width="100px">
+           <h2>Hydrate</h2>
+          </div>
+        </section>
+        <section class='health-catergory' id='healthCatergory'>
+          <div class='icons sleep'>
+            <img class="sleep-logo" src="./images/milky-way.png" alt="sleep logo" height="100px" width="100px">
+             <h2>Sleep</h2>
+          </div>
+        </section>
+        <section class='health-catergory' id='healthCatergory'>
+          <div class='icons step'>
+            <img class='activity-logo' src="./images/constellation.png" alt="Activity logo" height="100px" width="100px">
+            <h2>Step Stats</h2>
+          </div>
+        </section>
+       </section>
+        <section class="user-container" id="userContainer">
+          <section class="user-info" id="userInfo">
+            <div class='user-data-details'>
+              <p><span class="user-labels"> Name:</span> <span id='name'></span> </p>
+              <p><span class="user-labels">Email </p>
+              <p></span><span id='email'></span></p>
+              <p><span class="user-labels">Address:</span><span id='address'></span> </p>
+              <p><span class="user-labels">Stride:</span><span id='stride'></span></p>
+              <p><span class="user-labels">Friends:</span><span id='friends'></span> </p>
+          </div>
+      </section>
+        <section class="user-hydro" id="userHydro">
+            <div class='user-hydro-details'>
+              <p><span class="user-labels"> Todays OZ Drank:</span> <span id='todayOunces'></span> </p>
+              <p><span class="user-labels"> Avg OZ Drank Daily:</span> <span id='AvgOzPerDay'></span> </p>
+              <p><span class="user-labels"> Avg OZ Drank Weekly:</span> <span id='AvgOzWeekly'></span> </p>
+            </div>
+          </section>
+          <section class="user-sleep" id="userSleep">
+            <div class="user-sleep-details">
+              <p><span class="user-labels"> Hours Slept Last Night: </span><span id='hoursSleptPerNight'></span></p>
+              <p><span class="user-labels">Quality hours slept =  </span> <span id='qualHrsPerNight'></span> </p>
+              <p><span class="user-labels"> Avg hours slept: </span> <span id='avgHrsSlept'></span> </p>
+              <p><span class="user-labels"> Avg quality hours slept: </span> <span id='avgQualHrsSlept'></span> </p>
+              <p><span class="user-labels"> Hours slept (1-week): </span> <span id='hrsSleptPerWeek'></span> </p>
+              <p><span class="user-labels"> Quality hours (1-week): </span> <span id='qualHrsSleptPerWeek'></span> </li>
+            </div>
+          </section>
+      <section class="user-steps" id="userSteps">
+         <div class='user-step'>
+          <p><span class="user-labels">Daily Step Goal:</span> <span id='stepGoal'></span> Steps</p>
+          <p><span class="user-labels">All User Average:</span><span id='allUserAverage'></span> Steps </p>
+        </div>
+     </section>
+     <section class="user-activity-container" id="userActivityContainer">
+         <p><span class="user-labels"> Your Num of steps:</span> <span id='name'></span> </p>
+         <p><span class="user-labels">Your minutes active </p>
+         <p><span class="user-labels">Your flights of stairs</p>
+     </section>
+        </section>
+      </main>
+      <!-- <footer>
+      <p class='footer-text'>© Lee, Thomas, & Morgan 2022</p>
+      </footer> -->
     <script src="bundle.js"></script>
   </body>
 </html>

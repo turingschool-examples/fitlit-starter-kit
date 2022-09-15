@@ -5,6 +5,7 @@ import Sleep from './Sleep';
 import Hydration from './Hydration';
 import { fetchAll } from './apiCalls';
 import { postSleep } from './apiCalls';
+import { postHydration } from './apiCalls';
 import './css/styles.css';
 import './images/Activity.png'
 import './images/Clipboard.png'
@@ -75,10 +76,10 @@ fetchAll()
     displayStepGoalComp(userRepository);
     displayHydrationData(singleHydro);
     displaySleepData(singleSleep);
-    postSleep(singleUser.id,newSleepInfo)
   })
 };
-const newSleepInfo = {hoursSlept:8,sleepQuality:2}
+//Test variables 
+
 
 
 

@@ -41,7 +41,7 @@ class Sleep {
   getHrsSleptPerWeek(id, date) {
     let userSleepData = this.findUserDataID(id);
     const userSleepDates = userSleepData.map(userSleep => userSleep.date);
-    const userIndexOfDate = userSleepDates.indexOf(date);//returns number
+    const userIndexOfDate = userSleepDates.indexOf(date);
     const userSevenDays = userSleepData.slice(userIndexOfDate -6, userIndexOfDate +1)
     const usersAvgSleep = userSevenDays.reduce((avgSleep, userSleep) => {
       avgSleep += userSleep.hoursSlept;

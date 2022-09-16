@@ -44,24 +44,24 @@
     <section class="column daily-overview" id="dailyOverview">
       <section class="daily hydration"id="hydrationBox">
           <!-- The hydration form:  -->
-          <div id="hydration-form" class="form hydration-form-popup hidden">
-            <form class="form-container">
-              <h3>Add Ounces of Water Drank</h3>
-              <label for="date">Date: </label>
-              <input type="text" placeholder="yyyy/mm/dd" name="date" required>
-  
-              <label for="ounces">Ounces drank: </label>
-              <input type="number" placeholder="Enter number" name="ounces" required>
-  
-              <button type="submit" class="post form-btn">Submit</button>
-              <button type="button" class="cancel form-btn" id="close-hydration-form">Close</button> 
-            </form>
-          </div>
+        <div id="hydration-form" class="form hydration-form-popup hidden">
+          <form class="form-container">
+            <h3>Add Ounces of Water Drank</h3>
+            <label for="date">Date: </label>
+            <input type="text" placeholder="yyyy/mm/dd" name="date" required>
+
+            <label for="ounces">Ounces drank: </label>
+            <input type="number" placeholder="Enter number" name="ounces" required>
+
+            <button type="submit" class="post form-btn">Submit</button>
+            <button type="button" class="cancel form-btn" id="close-hydration-form">Close</button> 
+          </form>
+        </div>
         <!-- the button to open hydration popup form -->
         <button id="waterButton" type="button" class="icon-button">
           <img class="icon water-icon"  src="./images/water.png" alt="water icon"><span class="material-icons water-plus-icon">add_circle</span>
         </button>
-        <div class="chart-container" id="chartContainer">
+        <div class="chart-container" id="chartContainer1">
           <canvas class="daily-ounces" id="dailyOunces"></canvas>
         </div>
         <h2 class="title hydration-box-label" id="hydrationBoxLabel">Hydration</h3>
@@ -69,7 +69,7 @@
       <section class="daily sleep" id="sleepBox">
         <!-- The sleep form:  -->
         <div id="sleep-form" class="form sleep-form-popup hidden">
-          <form class="form-container">
+          <form class="form-container" id="sleepy-form">
             <h3>Add How You Slept</h3>
             <label for="date">Date: </label>
             <input type="text" placeholder="yyyy/mm/dd" name="date" required>
@@ -88,7 +88,7 @@
         <button id="sleepButton" type="button" class="icon-button">
           <img class="icon sleep-icon" src="./images/zzz.png"  alt="sleep icon"><span class="material-icons plus-icon">add_circle</span>
         </button>
-        <div class="chart-container" id="chartContainer">
+        <div class="chart-container" id="chartContainer2">
           <canvas class="daily-hours-slept" id="dailyHoursSlept"></canvas>
         </div>
         <section class="sleep-averages" id="sleepAverages"></section>
@@ -113,7 +113,7 @@
         <button id="activityButton" type="button" class="icon-button">
           <img class="icon activity-icon"  src="./images/quick-mode.png" alt="activity icon"><span class="material-icons plus-icon">add_circle</span>
         </button>
-        <div class="chart-container" id="chartContainer">
+        <div class="chart-container" id="chartContainer3">
           <br/>
           <p class="text activity-message" id="activityMessage">Have you wandered out into nature yet today?</p>
           <!-- <canvas class="steps-by-day" id="stepsByDay"></canvas> -->

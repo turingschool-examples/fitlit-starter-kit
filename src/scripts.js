@@ -36,6 +36,7 @@ const closeHydrate = document.querySelector('#close-hydration-form');
 const closeSleep = document.querySelector('#close-sleep-form');
 const closeActivity = document.querySelector('#close-activity-form');
 const updateAllCharts = document.querySelector('#updateCharts');
+const replaceChart = document.querySelector('#weekly-highlights')
 // const lastEntryDate = document.querySelector('#lastEntry');
 
 // Global variables
@@ -193,6 +194,31 @@ hydrationFormPopup.addEventListener('submit', (event) => {
   event.target.reset();
 });
 
+sleepFormPopup.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const newSleepData = {  
+    userID: currentUser.id,
+    date: formData.get('date'),
+    hoursSlept: parseInt(formData.get('hours')),
+    sleepQuality: parseInt(formData.get('quality'))
+  };
+  
+  if (
+    newSleepData.userID &&
+    newSleepData.date &&
+    newSleepData.hoursSlept &&
+    newSleepData.sleepQuality
+  ) {
+    postData('http://localhost:3001/api/v1/sleep', newSleepData);
+  } else {
+    return 'Invalid data';
+  }
+  console.log(event)
+  event.target.reset();
+});
+
+
 function closeHydrationForm() {
   hydrationFormPopup.classList.add('hidden');
 }
@@ -212,7 +238,6 @@ function changeWeeklyData(event) {
 }
 
 function renderUpdatedCharts() {
-
   destroyCharts();
   Promise.all([
     fetchData('users', 'userData'),
@@ -224,16 +249,23 @@ function renderUpdatedCharts() {
       sleepData = data[1],
       hydrationData = data[2],
       activityData = data[3];
-      console.log(hydrationData[hydrationData.length -1])
-
       hydration = new Hydration(currentUser.id, hydrationData);
       sleep = new Sleep(currentUser.id, sleepData);
       allUsers = new UserRepository(userData);
 
-
+      if (hydrationData[hydrationData.date]) {    
   charts.renderOuncesByWeek(hydration, chosenDate);
   charts.renderOuncesPerDay(hydration, chosenDate);
   charts.renderSleepChartByDay(sleep, chosenDate);
   charts.renderSleepChartByWeek(sleep, chosenDate);
-})
-}
+  
+      } else {
+  charts.renderSleepChartByWeek(sleep, chosenDate);
+  alert('no hydration data for selected day')
+  charts.renderOuncesByWeek(hydration, chosenDate);
+  charts.renderSleepChartByDay(sleep, chosenDate);
+  charts.renderOuncesPerDay(hydration, chosenDate);
+      }
+      })
+};
+

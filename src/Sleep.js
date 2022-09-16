@@ -10,14 +10,13 @@ class Sleep {
     if (value) {
       return value[type];
     } else {
-      return "This date could not be found.";
+      return 'This date could not be found.';
     }
   }
 
   getAvgSleepData(type, isCurrentUser) {
     let dataSet;
 
-    // should check if currentUser's data set should be be used
     if (isCurrentUser) {
       dataSet = this.sleepDataPerUser;
     } else {
@@ -43,7 +42,7 @@ class Sleep {
     const week = this.sleepDataPerUser.slice(start, start + 7);
 
     if (start === -1) {
-      return "These days do not exist. Please change your selection.";
+      return 'These days do not exist. Please change your selection.';
     }
 
     return week.map((data) => data[type]);

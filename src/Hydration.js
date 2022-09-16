@@ -12,10 +12,10 @@ class Hydration {
     return dailyOunces.numOunces;
   };
 
-  getDailyOuncesByWeek(minDate, maxDate) {
+  getDailyOuncesByWeek(minDate) {
     const start = this.ounces.findIndex(data => data.date === minDate);
-    const end = this.ounces.findIndex(data => data.date === maxDate);
-    const weekOunces = this.ounces.slice(start, end);
+    
+    const weekOunces = this.ounces.slice(start, start + 7);
 
     return weekOunces.map(day => day.numOunces);
   };

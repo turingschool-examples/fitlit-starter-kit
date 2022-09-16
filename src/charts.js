@@ -111,9 +111,8 @@ const charts = {
     return sleepDayCanvas;
   },
 
-  renderOuncesByWeek(hydration, start, end) {
-    const weeklyData = hydration.getDailyOuncesByWeek(start, end);
-
+  renderOuncesByWeek(hydration, date) {
+    let weeklyData = hydration.getDailyOuncesByWeek(date);
     const weeklyOunces = new Chart('weeklyOunces', {
       type: 'bar',
       data: {

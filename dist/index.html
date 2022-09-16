@@ -27,14 +27,11 @@
               </div>
             </div>
           </div>
-          
           <p class="text step-goal">Daily Step Goal: </p>
-
-          <label for="calender">Choose Start and End Date</label>
-          <div>
-          <input type="date" id="calender-start" name="Start">
-          <input type="date" id="calender-end" name="End">
-          </div>
+          <form>
+            <label for="calender">Choose Day</label>
+            <input type="date" id="calender-start" name="Start">
+          </form>
           <div class="chart-container" id="weekly-highlights">
             <canvas class="weekly-ounces" id="weeklyOunces"></canvas>
             <br/>
@@ -56,7 +53,7 @@
               <input type="number" placeholder="Enter number" name="ounces" required>
   
               <button type="submit" class="post form-btn">Submit</button>
-              <button type="button" class="cancel form-btn">Close</button> 
+              <button type="button" class="cancel form-btn" id="close-hydration-form">Close</button> 
             </form>
           </div>
         <!-- the button to open hydration popup form -->
@@ -83,7 +80,7 @@
             <input type="number" placeholder="Enter number" name="quality" required>
 
             <button type="submit" class="post form-btn">Submit</button>
-            <button type="button" class="cancel form-btn">Close</button> 
+            <button type="button" class="cancel form-btn" id="close-sleep-form">Close</button> 
           </form>
         </div>
       <!-- the button to open sleep popup form -->
@@ -108,7 +105,7 @@
             <input type="number" placeholder="Enter number" name="steps" required>
 
             <button type="submit" class="post form-btn">Submit</button>
-            <button type="button" class="cancel form-btn">Close</button> 
+            <button type="button" class="cancel form-btn" id="close-activity-form">Close</button> 
           </form>
         </div>
         <!-- the button to open activity popup form -->

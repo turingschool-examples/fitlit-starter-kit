@@ -30,7 +30,11 @@ const addSleepButton = document.querySelector('#sleepButton');
 const addActivityButton = document.querySelector('#activityButton');
 const hydrationFormPopup = document.querySelector('.hydration-form-popup');
 const sleepFormPopup = document.querySelector('.sleep-form-popup');
-const activityFormPopup = document.querySelector('.activity-form-popup')
+const activityFormPopup = document.querySelector('.activity-form-popup');
+const calenderForWeek = document.querySelector('#calender-start');
+const closeHydrate = document.querySelector('#close-hydration-form');
+const closeSleep = document.querySelector('#close-sleep-form');
+const closeActivity = document.querySelector('#close-activity-form');
 // const lastEntryDate = document.querySelector('#lastEntry');
 
 // Global variables
@@ -76,7 +80,10 @@ userInfoButton.addEventListener('click', showUserDetails);
 addWaterButton.addEventListener('click', userInputHydrationForm);
 addSleepButton.addEventListener('click', userInputSleepForm);
 addActivityButton.addEventListener('click', userInputActivityForm);
-
+calenderForWeek.addEventListener('change', changeWeeklyData);
+closeHydrate.addEventListener('click', closeHydrationForm);
+closeSleep.addEventListener('click', closeSleepForm);
+closeActivity.addEventListener('click', closeActivityForm);
 // Helper Functions
 
 
@@ -88,7 +95,7 @@ function loadUserInfo() {
   renderProfile();
   // if the user inputs a date, then render all this
   renderSleepAverages();
-  charts.renderOuncesByWeek(hydration, firstDayOfLastWeek, lastHydrationEntry);
+  charts.renderOuncesByWeek(hydration, firstDayOfLastWeek);
   charts.renderOuncesPerDay(hydration, lastHydrationEntry);
   charts.renderSleepChartByDay(sleep, lastSleepEntry);
   charts.renderSleepChartByWeek(sleep, firstDayOfLastWeek, lastSleepEntry);
@@ -148,6 +155,20 @@ function userInputActivityForm() {
   activityFormPopup.classList.remove('hidden');
 };
 
-function closeForm() {
-  // target a close button by click event and add hidden class to it
+function closeHydrationForm() {
+  hydrationFormPopup.classList.add('hidden');
 };
+function closeSleepForm() {
+  sleepFormPopup.classList.add('hidden');
+};
+function closeActivityForm() {
+  activityFormPopup.classList.add('hidden');
+};
+
+function changeWeeklyData(event) {
+  const chosenDate = dayjs(event.target.value).format().slice(0, 10).split('-').join('/');
+  
+  charts.renderOuncesByWeek(hydration, chosenDate);
+
+};
+

@@ -36,9 +36,9 @@ describe('Hydration', () => {
     expect(hydrate2.ouncesPerDay('2019/06/15')).to.equal(75);
   });
 
-  it('should calculate weekly ouces per user', () => {
-    expect(hydrate1.getDailyOuncesByWeek(0, 2)).to.deep.equal([37, 69]);
-    expect(hydrate2.getDailyOuncesByWeek(0, 2)).to.deep.equal([75, 91]);
+  it ('should calculate weekly ouces per user', () => {
+    expect(hydrate1.getDailyOuncesByWeek(0, 2)).to.deep.equal([72]);
+    expect(hydrate2.getDailyOuncesByWeek(0, 2)).to.deep.equal([91]);
   });
 
   it('should calculate the avg ounces per user', () => {

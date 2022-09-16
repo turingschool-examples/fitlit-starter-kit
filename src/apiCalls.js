@@ -4,7 +4,7 @@ const fetchData = (fileName, dataKey) => {
     .then((data) => data[dataKey])
     .catch((error) =>
       console.log(
-        "There was a problem loading your data. Please try again.",
+        'There was a problem loading your data. Please try again.',
         error
       )
     );
@@ -12,10 +12,10 @@ const fetchData = (fileName, dataKey) => {
 
 const postData = (url, bodyData) => {
   const requestData = {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify(bodyData),
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   };
   fetch(url, requestData)
@@ -24,7 +24,6 @@ const postData = (url, bodyData) => {
       if (data.message) {
         alert(data.message);
       } else {
-        console.log(data);
         return data;
       }
     })

@@ -68,7 +68,7 @@ function fetchAllData() {
     currentUser = new User(
       userData[Math.floor(Math.random() * userData.length)]
     );
-    console.log(currentUser);
+
     hydration = new Hydration(currentUser.id, hydrationData);
     sleep = new Sleep(currentUser.id, sleepData);
     allUsers = new UserRepository(userData);
@@ -174,7 +174,6 @@ hydrationFormPopup.addEventListener('submit', (event) => {
     date: formData.get('date'),
     numOunces: parseInt(formData.get('ounces')),
   };
-  console.log(newHydrationData);
 
   if (
     newHydrationData.userID &&
@@ -182,7 +181,6 @@ hydrationFormPopup.addEventListener('submit', (event) => {
     newHydrationData.numOunces
   ) {
     postData('http://localhost:3001/api/v1/hydration', newHydrationData);
-    console.log(newHydrationData, 'inside');
   } else {
     return 'Invalid data';
   }

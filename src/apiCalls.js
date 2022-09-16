@@ -1,25 +1,34 @@
 const fetchData = (fileName, dataKey) => {
-  return fetch(`http://localhost:3001/api/v1/${fileName}`)  
-    .then(response => response.json())
-    .then(data => data[dataKey])
-    .catch(error => console.log('There was a problem loading your data. Please try again.', error))
+  return fetch(`http://localhost:3001/api/v1/${fileName}`)
+    .then((response) => response.json())
+    .then((data) => data[dataKey])
+    .catch((error) =>
+      console.log(
+        "There was a problem loading your data. Please try again.",
+        error
+      )
+    );
 };
 
 const postData = (url, bodyData) => {
   const requestData = {
-  method: 'POST',
-  body: JSON.stringify(bodyData),
-  headers: {
-      'Content-Type': 'application/json'
-  }
-}
+    method: "POST",
+    body: JSON.stringify(bodyData),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
   fetch(url, requestData)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.message) {
+        alert(data.message);
+      } else {
+        console.log(data);
+        return data;
+      }
+    })
+    .catch((error) => alert(error));
 };
 
 export { fetchData, postData };
-
-// click on icon to add data
-// form will be dispplayed
-// user will input Date 
-// user inputs numOunces or sleep or steps
-// Submit will trigger postData()

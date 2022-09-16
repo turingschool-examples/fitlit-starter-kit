@@ -243,8 +243,9 @@ function renderUpdatedCharts() {
     fetchData('sleep', 'sleepData'),
     fetchData('hydration', 'hydrationData'),
     fetchData('activity', 'activityData'),
-  ]).then((data) => {
-    userData = data[0],
+  ])
+    .then((data) => {
+      userData = data[0],
       sleepData = data[1],
       hydrationData = data[2],
       activityData = data[3];
@@ -253,18 +254,18 @@ function renderUpdatedCharts() {
       allUsers = new UserRepository(userData);
 
       if (hydrationData[hydrationData.date]) {    
-  charts.renderOuncesByWeek(hydration, chosenDate);
-  charts.renderOuncesPerDay(hydration, chosenDate);
-  charts.renderSleepChartByDay(sleep, chosenDate);
-  charts.renderSleepChartByWeek(sleep, chosenDate);
+        charts.renderOuncesByWeek(hydration, chosenDate);
+        charts.renderOuncesPerDay(hydration, chosenDate);
+        charts.renderSleepChartByDay(sleep, chosenDate);
+        charts.renderSleepChartByWeek(sleep, chosenDate);
 
       } else {
-  charts.renderSleepChartByWeek(sleep, chosenDate);
-  alert('no hydration data for selected day')
-  charts.renderOuncesByWeek(hydration, chosenDate);
-  charts.renderSleepChartByDay(sleep, chosenDate);
-  charts.renderOuncesPerDay(hydration, chosenDate);
+        charts.renderSleepChartByWeek(sleep, chosenDate);
+        alert('no hydration data for selected day')
+        charts.renderOuncesByWeek(hydration, chosenDate);
+        charts.renderSleepChartByDay(sleep, chosenDate);
+        charts.renderOuncesPerDay(hydration, chosenDate);
       }
-      })
+    });
 };
 

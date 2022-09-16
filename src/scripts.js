@@ -36,6 +36,7 @@ const closeHydrate = document.querySelector('#close-hydration-form');
 const closeSleep = document.querySelector('#close-sleep-form');
 const closeActivity = document.querySelector('#close-activity-form');
 const updateAllCharts = document.querySelector('#updateCharts');
+
 // const lastEntryDate = document.querySelector('#lastEntry');
 
 // Global variables
@@ -74,17 +75,21 @@ function fetchAllData() {
     allUsers = new UserRepository(userData);
 
     //grab last date this user made an entry
-    lastSleepEntry =
-      sleep.sleepDataPerUser[sleep.sleepDataPerUser.length - 1].date;
+    lastSleepEntry = sleep.sleepDataPerUser[sleep.sleepDataPerUser.length - 1].date;
     lastHydrationEntry = hydration.ounces[hydration.ounces.length - 1].date;
     firstDayOfLastWeek = hydration.ounces[hydration.ounces.length - 7].date;
 
-    loadUserInfo();
+    
+    loadUserInfo()
   });
 }
 
 // Event Listeners
+
 window.addEventListener('load', fetchAllData);
+
+
+
 userInfoButton.addEventListener('click', showUserDetails);
 addWaterButton.addEventListener('click', userInputHydrationForm);
 addSleepButton.addEventListener('click', userInputSleepForm);
@@ -98,6 +103,7 @@ updateAllCharts.addEventListener('click', renderUpdatedCharts);
 
 // DOM Functions
 function loadUserInfo() {
+  
   renderGreeting();
   renderFriendsList();
   renderProfile();
@@ -106,12 +112,13 @@ function loadUserInfo() {
   charts.renderOuncesPerDay(hydration, lastHydrationEntry);
   charts.renderSleepChartByDay(sleep, lastSleepEntry);
   charts.renderSleepChartByWeek(sleep, firstDayOfLastWeek);
-}
+};
+
 
 function renderGreeting() {
   const userFirstName = currentUser.name.split(' ')[0];
   greeting.innerHTML = `Hello, ${userFirstName}!`;
-}
+};
 
 function renderFriendsList() {
   const friendNames = userData.filter((user) => {
@@ -187,6 +194,30 @@ hydrationFormPopup.addEventListener('submit', (event) => {
   event.target.reset();
 });
 
+sleepFormPopup.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const newSleepData = {  
+    userID: currentUser.id,
+    date: formData.get('date'),
+    hoursSlept: parseInt(formData.get('hours')),
+    sleepQuality: parseInt(formData.get('quality'))
+  };
+  
+  if (
+    newSleepData.userID &&
+    newSleepData.date &&
+    newSleepData.hoursSlept &&
+    newSleepData.sleepQuality
+  ) {
+    postData('http://localhost:3001/api/v1/sleep', newSleepData);
+  } else {
+    return 'Invalid data';
+  }
+  event.target.reset();
+});
+
+
 function closeHydrationForm() {
   hydrationFormPopup.classList.add('hidden');
 }
@@ -207,10 +238,34 @@ function changeWeeklyData(event) {
 
 function renderUpdatedCharts() {
   destroyCharts();
-  fetchAllData();
+  Promise.all([
+    fetchData('users', 'userData'),
+    fetchData('sleep', 'sleepData'),
+    fetchData('hydration', 'hydrationData'),
+    fetchData('activity', 'activityData'),
+  ])
+    .then((data) => {
+      userData = data[0],
+      sleepData = data[1],
+      hydrationData = data[2],
+      activityData = data[3];
+      hydration = new Hydration(currentUser.id, hydrationData);
+      sleep = new Sleep(currentUser.id, sleepData);
+      allUsers = new UserRepository(userData);
 
-  charts.renderOuncesByWeek(hydration, chosenDate);
-  charts.renderOuncesPerDay(hydration, chosenDate);
-  charts.renderSleepChartByDay(sleep, chosenDate);
-  charts.renderSleepChartByWeek(sleep, chosenDate);
-}
+      if (hydrationData[hydrationData.date]) {    
+        charts.renderOuncesByWeek(hydration, chosenDate);
+        charts.renderOuncesPerDay(hydration, chosenDate);
+        charts.renderSleepChartByDay(sleep, chosenDate);
+        charts.renderSleepChartByWeek(sleep, chosenDate);
+
+      } else {
+        charts.renderSleepChartByWeek(sleep, chosenDate);
+        alert('no hydration data for selected day')
+        charts.renderOuncesByWeek(hydration, chosenDate);
+        charts.renderSleepChartByDay(sleep, chosenDate);
+        charts.renderOuncesPerDay(hydration, chosenDate);
+      }
+    });
+};
+

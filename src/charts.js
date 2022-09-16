@@ -128,7 +128,6 @@ const charts = {
 
   renderOuncesByWeek(hydration, date) {
     let weeklyData = hydration.getDailyOuncesByWeek(date);
-    console.log(weeklyData);
     const hydrationChart = document.querySelector('#weeklyOunces');
     const config = {
       type: 'bar',

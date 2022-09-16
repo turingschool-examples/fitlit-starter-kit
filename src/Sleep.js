@@ -17,7 +17,6 @@ class Sleep {
   getAvgSleepData(type, isCurrentUser) {
     let dataSet;
 
-    // should check if currentUser's data set should be be used 
     if (isCurrentUser) {
       dataSet = this.sleepDataPerUser;
     } else {

@@ -7,7 +7,6 @@ class Hydration {
   
   ouncesPerDay(date) {
     const dailyOunces = this.ounces.find(entry => entry.date === date);
-    console.log(dailyOunces)
     return dailyOunces.numOunces;
   };
 

@@ -36,7 +36,7 @@ const closeHydrate = document.querySelector('#close-hydration-form');
 const closeSleep = document.querySelector('#close-sleep-form');
 const closeActivity = document.querySelector('#close-activity-form');
 const updateAllCharts = document.querySelector('#updateCharts');
-const replaceChart = document.querySelector('#weekly-highlights')
+
 // const lastEntryDate = document.querySelector('#lastEntry');
 
 // Global variables
@@ -112,13 +112,13 @@ function loadUserInfo() {
   charts.renderOuncesPerDay(hydration, lastHydrationEntry);
   charts.renderSleepChartByDay(sleep, lastSleepEntry);
   charts.renderSleepChartByWeek(sleep, firstDayOfLastWeek);
-  }
+};
 
 
 function renderGreeting() {
   const userFirstName = currentUser.name.split(' ')[0];
   greeting.innerHTML = `Hello, ${userFirstName}!`;
-}
+};
 
 function renderFriendsList() {
   const friendNames = userData.filter((user) => {
@@ -214,7 +214,6 @@ sleepFormPopup.addEventListener('submit', (event) => {
   } else {
     return 'Invalid data';
   }
-  console.log(event)
   event.target.reset();
 });
 
@@ -258,7 +257,7 @@ function renderUpdatedCharts() {
   charts.renderOuncesPerDay(hydration, chosenDate);
   charts.renderSleepChartByDay(sleep, chosenDate);
   charts.renderSleepChartByWeek(sleep, chosenDate);
-  
+
       } else {
   charts.renderSleepChartByWeek(sleep, chosenDate);
   alert('no hydration data for selected day')

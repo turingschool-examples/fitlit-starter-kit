@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 import Activity from '../src/Activity';
-
+import UserRepository from '../src/Activity';
 
 describe('Activity', () => {
-    let userActivityData, singleUserActivity;
+    let userActivityData, singleUserActivity,userData;
 
     beforeEach(() => {
         userActivityData = [{
@@ -29,34 +29,65 @@ describe('Activity', () => {
             }]
 
         singleUserActivity = new Activity(userActivityData);
+            ///userData is just coppied from userRepo Test
+        userData = [
+            {
+                "id": 1,
+                "name": "Luisa Hane",
+                "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+                "email": "Diana.Hayes1@hotmail.com",
+                "strideLength": 4.3,
+                "dailyStepGoal": 10,
+                "friends": [
+                    16,
+                    4,
+                    8
+                ]
+            },
+            {
+                "id": 2,
+                "name": "Jarvis Considine",
+                "address": "30086 Kathryn Port, Ciceroland NE 07273",
+                "email": "Dimitri.Bechtelar11@gmail.com",
+                "strideLength": 4.5,
+                "dailyStepGoal": 50,
+                "friends": [
+                    9,
+                    18,
+                    24,
+                    19
+                ]
+            }
+        ];
+      
 
     })
     it('should be a function',  () => {
         expect(Activity).to.be.a('function')
     });
 
-    it('should instantiate Sleep',() => {
+    it('should instantiate Activity',() => {
         expect(singleUserActivity).to.be.an.instanceOf(Activity);
     });
 
     it('should be able to identify a user by their ID', () => {
-        expect(singleUserActivity.findUserDataID(1)).to.deep.equal(userActivityData);
+        expect(singleUserActivity.findData(1,userData)).to.equal(userData[0]);
     });
 
     it('should return a user\s number of steps', () => {
-        expect(userActivityData[0].numSteps).to.equal(3577)
+        expect(singleUserActivity.getNumberOfStepsForToday(1)).to.equal(3577)
     });
 
     it('should return a user\s minutes active', () => {
         expect(userActivityData[0].minutesActive).to.equal(140)
     });
 
-    it.skip('should return a user\s flights of stairs climbed', () => {
-        expect(userActivityData[0].flightsOfStairs).to.equal(1)
+    it('should return a user\s flights of stairs climbed', () => {
+        expect(userActivityData[0].flightsOfStairs).to.equal(16)
     });
 
-    it('should return a users miles from stride length', () => {
-        expect(singleUserActivity.getMilesFromSteps(1, 3577)).to.equal(2.9)
+    it('should return a users miles from steps', () => {
+        expect(singleUserActivity.getMilesFromSteps(1,userData)).to.equal('2.9')
     });
 
     // it('should return the miles a user has walked based on their number of steps') {

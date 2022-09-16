@@ -12,6 +12,30 @@ body {
   min-height: 100vh;
   font-family: Comic Sans MS;
 }
+.for-input-styles {
+  display:flex;
+
+}
+.activity-input {
+  display:flex;
+  flex-direction: column;
+  width: 70vw;
+  height: 70vh;
+  line-height: 3;
+  background-color: blueviolet;
+  z-index: 99;
+}
+
+label{
+font-weight: bold;
+font-size: larger;
+}
+.submit-button {
+  font-weight: bold;
+  background-color: #333;
+  color:crimson;
+  margin-top:3vw;
+}
 
 .user-name {
   display: flex;
@@ -20,6 +44,7 @@ body {
   height: 50px;
   width: 200px;
   color: black;
+  padding-left: 1vw;
 }
 
 .widget-labels {
@@ -43,8 +68,18 @@ body {
   align-content: center;
 }
 
+.hydrate-logo {
+  width: 7vw;
+  height: 7vw; 
+  margin-top: -1vw;
+}
+.sleep-logo {
+  margin-left: 5vw;
+  padding-top: 1vw;
+}
+
 .clipboard {
-  margin-left: 2vw;
+  margin-left: 12vw;
 }
 .data {
   margin-right:-1vw;
@@ -52,10 +87,12 @@ body {
 
 .user-container {
   display: flex;
+  flex-wrap:wrap;
   justify-content: space-evenly;
   align-content: center;
-  width: 77vw;
-  height: 53vh;
+  width: 88vw;
+  height: 92vh;
+  margin-top: 5vw;
 
 }
 
@@ -67,23 +104,24 @@ color: rgb(0, 0, 255);
 header {
 height: 33vh;
 width: 30vw;
-margin-left: 2vw;
+margin-left: 3vw;
 }
 
-.h1 {
-  font-size: small;
+h1 {
+  font-size: x-large;
+  padding-left: 1vw;
 }
 
 .h2 {
   font-weight: bold;
+  margin-bottom: -5vw;
 }
 
 
 .user-info {
+  display:flex;
   width: 31vw;
-  height: 25vw;
-  margin-top: 2%;
-  margin-left: -2vw;
+  height: 29vw;
   margin-right: 2%;
   border: 3px solid  #531345;
   background-color: rgba(255, 255, 255, 0.3);
@@ -97,24 +135,23 @@ margin-left: 2vw;
 }
 
 .user-data-details  {
-  line-height: 4vh;
+  line-height: 2.5vh;
   margin-top: -1vh;
-  padding-top: 5px;
+  padding-top: 1vw;
+  padding-left: 2vw;
 }
 
 .user-hydro-details {
 color: rgb(1, 32, 7);
-margin-bottom: -33px;
-margin-top: 40px;
-line-height: 5;
+line-height: 2;
+margin-top: 3vw;
+
 }
 
 .user-hydro {
   display: flex;
-  width: 30%;
-  height: 45vh;
-  margin-top: 2%;
-  margin-right: 2%;
+  width: 17vw;
+  height: 51vh;
   border: 3px solid #531345;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 10%;
@@ -131,10 +168,8 @@ line-height: 5;
 
 .user-sleep {
   display:flex;
-  width: 30%;
-  height: 45vh;
-  margin-top: 2%;
-  margin-right:2%;
+  width: 20vw;
+  height: 43vh;
   border: 3px solid  #531345;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 10%;
@@ -142,14 +177,16 @@ line-height: 5;
   transition: all 0.1s ease;
   background-color: aqua ;
   background-image: url('/src/images/cloud-texture.png');
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-content: flex-start;
   font-weight: bold;
+  margin-right: 2vw;
   }
 
 .user-sleep-details {
   height: 30vh;
-  line-height: 2;
+  padding-left: 1vw;
 }
 
 .user-hydro-details-1 {
@@ -191,12 +228,11 @@ line-height: 5;
 
 .user-steps {
   display: flex;
-  width: 30%;
-  height:45vh;
-  margin-right: -5vw;
-  margin-top: 2%;
+  width: 20vw;
+  height: 31vh;
+  margin-top: 2%; 
   border: 3px solid #531345;
-  color:wheat;
+  color:black;
   border-radius: 10%;
   box-shadow: 0 12px 16px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);
   transition: all 0.1s ease;
@@ -207,19 +243,27 @@ line-height: 5;
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  line-height: 5;
   }
 .user-step {
   padding: 5px;
 }
+.activity-logo {
+  width:5vw;
+  height:5vw;
+  margin-left: 12vw;
+  margin-top: -16vw;
+}
+
 .user-activity-container {
   display: flex;
   flex-direction: column;
   background-color: green;
-  /* margin-top: 43%;
-  margin-left: -12%; */
-  width: 31vw;
-  height: 25vw;
+  width: 23vw;
+  height: 13vw;
+  border-radius: 10%;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  transition: all 0.1s ease;
+  margin-top: 1vh;
 }
 
 

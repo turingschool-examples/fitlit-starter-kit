@@ -2,10 +2,9 @@ import User from '../src/User';
 import UserRepository from '../src/UserRepository';
 
 class Activity {
-    constructor(activityData, userID) {
+    constructor(activityData) {
     this.activityData = activityData;
-    this.userID = userID;
-    console.log('num', userID)
+
       // userID: 1,
       // date: "2019/06/15",
       // numSteps: 3577,
@@ -13,31 +12,33 @@ class Activity {
       // flightsOfStairs: 1
     }
 
-  findUserDataID(id) {
-    const activityData = this.activityData.filter(activityObj => activityObj.userID === id);
-    return activityData;
-  };
 
-  findData(id) {
-    const singleUserData = this.userData.find(user => user.id === id);
-    
-    return this.activityData.find(data => data.id === data);
-    //can we incorporate date?  If they match, give us the user
-    return this.activityData.find(date => date.id === date);
+
+  findData(id,userArrayFromRepo) {
+    const userRepoInstance = new UserRepository(userArrayFromRepo) 
+   return userRepoInstance.findUserData(id)
   };
 
 
+///for the parameters of the method getMilesFromSteps 
+///we have 2 things we need 1: id (we will get this from single user.id in scripts.js)
+//2:and we need an instance of the class userRepo object (this should be an array of users and we can get it from userRepository on line 71 in scripts.js )
+// It seems like some of theese can be combined but for now Im doing it seperatly
+//
+getMilesFromSteps(id,userArrayFromRepo) {
+    let userObjectData = this.findData(id,userArrayFromRepo);
+    const getStepsByDate = this.activityData.find((element) => { 
+      return element.date
+    })
+  const getMiles = (getStepsByDate.numSteps * userObjectData.strideLength) / 5280
 
-  getMilesFromSteps(id, userInput) {
-    let userStrideData = this.findUserDataID(id);
-    const getMiles = (userInput * user.strideLength) / 5280
-    console.log('userINput', userInput)
-    console.log('strie', user)
-    console.log(getMiles)
     return getMiles.toFixed(1);
-
   }
 
+  getNumberOfStepsForToday(id) {
+
+
+  }  
 }
 
 export default Activity;

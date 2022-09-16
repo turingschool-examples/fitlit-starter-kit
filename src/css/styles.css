@@ -1,5 +1,249 @@
-body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
+body,
+html {
+  background-color: white;
+  font-family: "Roboto Mono", monospace;
+}
+header,
+main {
+  display: flex;
+  justify-content: space-between;
+}
+
+header {
+  justify-content: center;
+  margin-left: 70px;
+}
+
+main {
+  flex-direction: row;
+  margin: 20px;
+}
+
+.left-nav {
+  width: 65vw;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-nav {
+  width: 35vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.vitals-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.friends-container,
+.steps-container,
+.placeholder-container,
+.hydration-container,
+.sleep-container,
+.user-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 1px 0 3px rgb(192, 192, 192), -1px 0 3px rgb(192, 192, 192),
+    0 1px 3px rgb(192, 192, 192), 0 -1px 3px rgb(192, 192, 192);
+}
+
+.user-container {
+  font-size: 14px;
+  word-wrap: normal;
+  padding-left: 1em;
+  padding-right: 1em;
+  background-color: #6190ff;
+  padding-bottom: 1em;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.user-card {
+  color: black;
+}
+
+.submit {
+  align-items: center;
+  color: black;
+  background-color: white;
+  margin: 8px;
+  width: 100px;
+  border-radius: 12px;
+}
+
+.date-form {
+  display: flex;
+  justify-content: center;
+}
+
+.date-form input {
+  height: 4vh;
+  width: 15vw;
+  border-radius: 12px;
+}
+
+button:hover {
+  cursor: pointer;
+  box-shadow: 1px 0 3px #cc66ff, -1px 0 3px #cc66ff, 0 1px 3px #cc66ff,
+    0 -1px 3px#CC66FF;
+}
+
+.habit-label {
+  color: black;
+  margin-top: 10px;
+  font-size: 1.5vw;
+  text-align: center;
+}
+
+.friends-container {
+  height: 50%;
+  align-items: center;
+  background-color: black;
+  margin-right: 20px;
+  padding-bottom: 1em;
+}
+
+.friend {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: left;
+  padding: 4px;
+  width: 100%;
+}
+
+.friend img {
+  width: 1.5vw;
+  height: 2.5vh;
+}
+
+.sleep-container {
+  width: auto;
+  align-items: center;
+  text-align: center;
+  background-color: #6947ff;
+  margin-right: 15px;
+  padding-top: 10px;
+  padding-right: 1vw;
+  padding-left: 1vw;
+  padding-bottom: 1vw;
+  margin-top: 0px;
+}
+
+.sleep-data,
+.hydra-data {
+  border: 1px solid #2cb7ff;
+}
+.sleep-for-week {
+  margin-top: 15px;
+}
+
+.hydra-data {
+  border: 1px solid #6947ff;
+}
+
+.hydra-chart {
+  margin-top: 15px;
+}
+
+.hydration-container {
+  color: black;
+  flex-direction: column;
+  width: auto;
+  align-content: center;
+  text-align: center;
+  background-color: #2cb7ff;
+  margin-right: 15px;
+  padding-top: 10px;
+  padding-right: 1vw;
+  padding-bottom: 1vw;
+  padding-left: 1vw;
+}
+
+.bottom-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.steps-container,
+.placeholder-container {
+  color: rgb(0, 0, 0);
+  width: auto;
+  align-items: center;
+  text-align: center;
+  background-color: #cc66ff;
+  padding-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+.placeholder-container {
+  /* flex-direction: row; */
+  justify-content: center;
+  width: 20vw;
+  margin-left: 20px;
+}
+.step-comparison-message {
+  font-size: 10px;
+}
+
+.step-card {
+  padding-right: 1em;
+  padding-left: 1em;
+  word-wrap: normal;
+  justify-content: center;
+}
+
+#waterBottleImg,
+#sleepImg,
+#sandalsImg,
+#weightsImg {
+  align-self: center;
+  border-radius: 50%;
+  background-color: white;
+  padding: 4px;
+  margin: 2px;
+}
+
+label {
+  display: block;
+  font: 1rem "Fira Sans", sans-serif;
+}
+
+input,
+label {
+  margin: 0.4rem 0;
+  font-family: "Roboto Mono", monospace;
+  font-size: 14px;
+}
+
+.chart-container {
+  width: 30vw;
+  height: auto;
+}
+
+.chart.text {
+  font-size: 1vw;
+}
+
+p {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.address,
+.email,
+.stride-length,
+.step-goal {
+  font-size: 2vh;
 }

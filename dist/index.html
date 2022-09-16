@@ -1,14 +1,114 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
   <head>
-    <meta charset="UTF-8">
-    <title>Fitlit</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <title>FitLit</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+    <header>
+      <img
+        src="./images/logo_transparent.png"
+        alt="fitlit logo"
+        id="fitlitLogo"
+        height="140px"
+        width="350px"
+      />
+    </header>
+    <main>
+      <section class="left-nav">
+        <section class="vitals-section">
+          <section class="sleep-container">
+            <img
+              src="./images/lighting.png"
+              id="sleepImg"
+              alt="sunset logo"
+              height="50px"
+              width="50px"
+            />
+            <h2 class="sleep-header">SLEEP</h2>
+            <section class="sleep-card"></section>
+            <section class="sleep-data-average">
+              <section class="average-sleep-hours">
+                Average Number of Hours Slept:
+              </section>
+              <section class="average-quality-sleep">
+                Average Sleep Quality:
+              </section>
+            </section>
+            <section class="table-data"></section>
+            <section class="sleep-for-week"></section>
+          </section>
+          <section class="hydration-container">
+            <img
+              src="./images/water-bottle.png"
+              id="waterBottleImg"
+              alt="water bottle"
+              height="50px"
+              width="50px"
+            />
+            <h2 class="hydration-header">HYDRATION</h2>
+            <section class="hydration-card"></section>
+            <section class="hydra-chart"></section>
+          </section>
+        </section>
+        <section class="bottom-nav">
+          <section class="steps-container">
+            <img
+              src="./images/sandals.png"
+              id="sandalsImg"
+              alt="weight logo"
+              height="50px"
+              width="50px"
+            />
+            <h2 class="steps-header">ACTIVITY</h2>
+            <section class="chart-container">
+              <canvas id="stepChart"></canvas>
+            </section>
+            <section class="step-card"></section>
+          </section>
+          <section class="placeholder-container">
+            <img
+            src="./images/gym.png"
+            id="weightsImg"
+            alt="weights image"
+            height="50px"
+            width="50px"
+          />
+          <section class="activity-card"></section>
+          <section class='activity-info'></section>
+        </section>
+      </section>
+      <aside class="right-nav">
+        <section class="user-container">
+          <section class="user-card"></section>
+          <label for="start" class="habit-label"
+            >Choose a date to look at previous data!</label
+          >
+          <section class="date-form">
+            <input
+              type="date"
+              id="start"
+              name="trip-start"
+              value="2020-01-22"
+              min="2019-06-15"
+              max="2020-01-22"
+            />
+            <button class="submit">Submit</button>
+          </section>
+        </section>
+        <section class="friends-container">
+          <h2 class="friends-header">Friends</h2>
+          <section class="friends-card"></section>
+        </section>
+      </aside>
+    </main>
     <script src="bundle.js"></script>
   </body>
 </html>

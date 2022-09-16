@@ -92,6 +92,7 @@ calenderForWeek.addEventListener("change", changeWeeklyData);
 closeHydrate.addEventListener("click", closeHydrationForm);
 closeSleep.addEventListener("click", closeSleepForm);
 closeActivity.addEventListener("click", closeActivityForm);
+updateAllCharts.addEventListener("click", renderNewCharts);
 // Helper Functions
 
 // DOM Functions
@@ -100,11 +101,11 @@ function loadUserInfo() {
   renderFriendsList();
   renderProfile();
   // if the user inputs a date, then render all this
-  // renderSleepAverages();
+  renderSleepAverages();
   charts.renderOuncesByWeek(hydration, firstDayOfLastWeek, lastHydrationEntry);
-  // charts.renderOuncesPerDay(hydration, lastHydrationEntry);
-  // charts.renderSleepChartByDay(sleep, lastSleepEntry);
-  // charts.renderSleepChartByWeek(sleep, firstDayOfLastWeek, lastSleepEntry);
+  charts.renderOuncesPerDay(hydration, lastHydrationEntry);
+  charts.renderSleepChartByDay(sleep, lastSleepEntry);
+  charts.renderSleepChartByWeek(sleep, firstDayOfLastWeek, lastSleepEntry);
 }
 
 function renderGreeting() {
@@ -188,22 +189,6 @@ hydrationFormPopup.addEventListener("submit", (event) => {
   closeForm();
 });
 
-function changeChartsData(event) {
-  console.log(event.target.value);
-  const chosenDate = dayjs(event.target.value)
-    .format()
-    .slice(0, 10)
-    .split("-")
-    .join("/");
-
-  console.log(chosenDate, hydration);
-  if (hydration.ounces.find(chosenDate))
-    // renderSleepAverages();
-    // charts.renderOuncesByWeek(hydration, firstDayOfLastWeek, lastHydrationEntry);
-    charts.renderOuncesPerDay(hydration, chosenDate, event.returnValue);
-  // charts.renderSleepChartByDay(sleep, lastSleepEntry);
-  // charts.renderSleepChartByWeek(sleep, firstDayOfLastWeek, lastSleepEntry);
-}
 function closeHydrationForm() {
   hydrationFormPopup.classList.add("hidden");
 }
@@ -223,3 +208,5 @@ function changeWeeklyData(event) {
 
   charts.renderOuncesByWeek(hydration, chosenDate);
 }
+
+function renderNewCharts() {}

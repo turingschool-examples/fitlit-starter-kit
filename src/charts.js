@@ -48,21 +48,15 @@ const barStyle2 = {
   hoverBackgroundColor: "#CC77FF",
 };
 
+const destroyChart = (chart) => {
+  chart.destroy();
+};
+
+const renderChart = (chart) => {
+  chart.render();
+};
+
 const charts = {
-  // add and remove chart data functions
-  // addData(chart, data) {
-  //   chart.data.datasets.data = data;
-  //   chart.update();
-  // },
-
-  // removeData(chart) {
-  //   chart.data.datasets.forEach((dataset) => {
-  //     dataset.data.pop();
-  //   });
-  //   chart.update();
-  // },
-
-  // Chart render functions
   renderSleepChartByWeek(sleep, date) {
     const weeklyHS = sleep.getDailySleepByWeek("hoursSlept", date);
     const weeklySQ = sleep.getDailySleepByWeek("sleepQuality", date);
@@ -127,7 +121,7 @@ const charts = {
     return sleepDayCanvas;
   },
 
-  renderOuncesByWeek(hydration, date, input) {
+  renderOuncesByWeek(hydration, date) {
     let weeklyData = hydration.getDailyOuncesByWeek(date);
     const hydrationChart = document
       .querySelector("#weeklyOunces")
@@ -148,14 +142,6 @@ const charts = {
         ...chartOptions,
       },
     };
-    const weeklyWaterChart = new Chart(hydrationChart, setConfig);
-    console.log(input, weeklyWaterChart.removeData(hydrationChart));
-    // if (input) {
-    //   weeklyWaterChart.removeData(hydrationChart);
-    //   weeklyWaterChart.addData(hydrationChart, weeklyData);
-    // } else {
-    //   return weeklyWaterChart;
-    // }
   },
 
   renderOuncesPerDay(hydration, date) {

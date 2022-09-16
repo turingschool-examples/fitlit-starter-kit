@@ -12,18 +12,10 @@ class Hydration {
   }
 
   getDailyOuncesByWeek(minDate) {
-<<<<<<< HEAD
     const start = this.ounces.findIndex((data) => data.date === minDate);
 
     const weekOunces = this.ounces.slice(start, start + 7);
-
-    return weekOunces.map((day) => day.numOunces);
   }
-=======
-    const start = this.ounces.findIndex(data => data.date === minDate);
-    
-    const weekOunces = this.ounces.slice(start, start + 7);
->>>>>>> d40348a7253713e005a19555766c131953f79b1f
 
   getAvgOunces() {
     const totalOunces = this.ounces.reduce((acc, entry) => {

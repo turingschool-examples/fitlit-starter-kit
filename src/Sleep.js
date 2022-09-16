@@ -10,7 +10,7 @@ class Sleep {
     if (value) {
       return value[type];
     } else {
-      return "This date could not be found.";
+      return 'This date could not be found.';
     }
   }
 
@@ -43,7 +43,7 @@ class Sleep {
     const week = this.sleepDataPerUser.slice(start, start + 7);
 
     if (start === -1) {
-      return "These days do not exist. Please change your selection.";
+      return 'These days do not exist. Please change your selection.';
     }
 
     return week.map((data) => data[type]);

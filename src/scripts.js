@@ -1,41 +1,41 @@
 // Import styles:
-import dayjs from "dayjs";
-import "./css/styles.css";
-import "./images/quick-mode.png";
-import "./images/water.png";
-import "./images/zzz.png";
-import "./images/down-button.png";
-import "./images/fitlit-logo.png";
+import dayjs from 'dayjs';
+import './css/styles.css';
+import './images/quick-mode.png';
+import './images/water.png';
+import './images/zzz.png';
+import './images/down-button.png';
+import './images/fitlit-logo.png';
 
 // Import local files:
-import { fetchData, postData } from "./apiCalls.js";
-import charts from "./charts.js";
-import UserRepository from "./UserRepository";
-import User from "./User";
-import Hydration from "./Hydration";
-import Sleep from "./Sleep";
+import { fetchData, postData } from './apiCalls.js';
+import { charts, destroyCharts } from './charts.js';
+import UserRepository from './UserRepository';
+import User from './User';
+import Hydration from './Hydration';
+import Sleep from './Sleep';
 
 // Query Selectors
-const greeting = document.querySelector(".greeting");
-const friendsList = document.querySelector(".friends-list");
-const fullName = document.querySelector(".full-name");
-const userAddress = document.querySelector(".user-address");
-const userEmail = document.querySelector(".user-email");
-const stepGoal = document.querySelector(".step-goal");
-const sleepAverages = document.querySelector(".sleep-averages");
-const userInfoButton = document.querySelector(".down-button");
-const dropDownBox = document.querySelector(".drop-down");
-const addWaterButton = document.querySelector("#waterButton");
-const addSleepButton = document.querySelector("#sleepButton");
-const addActivityButton = document.querySelector("#activityButton");
-const hydrationFormPopup = document.querySelector(".hydration-form-popup");
-const sleepFormPopup = document.querySelector(".sleep-form-popup");
-const activityFormPopup = document.querySelector(".activity-form-popup");
-const calenderForWeek = document.querySelector("#calender-start");
-const closeHydrate = document.querySelector("#close-hydration-form");
-const closeSleep = document.querySelector("#close-sleep-form");
-const closeActivity = document.querySelector("#close-activity-form");
-const updateAllCharts = document.querySelector("#updateCharts");
+const greeting = document.querySelector('.greeting');
+const friendsList = document.querySelector('.friends-list');
+const fullName = document.querySelector('.full-name');
+const userAddress = document.querySelector('.user-address');
+const userEmail = document.querySelector('.user-email');
+const stepGoal = document.querySelector('.step-goal');
+const sleepAverages = document.querySelector('.sleep-averages');
+const userInfoButton = document.querySelector('.down-button');
+const dropDownBox = document.querySelector('.drop-down');
+const addWaterButton = document.querySelector('#waterButton');
+const addSleepButton = document.querySelector('#sleepButton');
+const addActivityButton = document.querySelector('#activityButton');
+const hydrationFormPopup = document.querySelector('.hydration-form-popup');
+const sleepFormPopup = document.querySelector('.sleep-form-popup');
+const activityFormPopup = document.querySelector('.activity-form-popup');
+const calenderForWeek = document.querySelector('#calender-start');
+const closeHydrate = document.querySelector('#close-hydration-form');
+const closeSleep = document.querySelector('#close-sleep-form');
+const closeActivity = document.querySelector('#close-activity-form');
+const updateAllCharts = document.querySelector('#updateCharts');
 // const lastEntryDate = document.querySelector('#lastEntry');
 
 // Global variables
@@ -50,14 +50,15 @@ let activityData;
 let lastSleepEntry;
 let lastHydrationEntry;
 let firstDayOfLastWeek;
+let chosenDate;
 
 // API data
 function fetchAllData() {
   Promise.all([
-    fetchData("users", "userData"),
-    fetchData("sleep", "sleepData"),
-    fetchData("hydration", "hydrationData"),
-    fetchData("activity", "activityData"),
+    fetchData('users', 'userData'),
+    fetchData('sleep', 'sleepData'),
+    fetchData('hydration', 'hydrationData'),
+    fetchData('activity', 'activityData'),
   ]).then((data) => {
     (userData = data[0]),
       (sleepData = data[1]),
@@ -83,16 +84,16 @@ function fetchAllData() {
 }
 
 // Event Listeners
-window.addEventListener("load", fetchAllData);
-userInfoButton.addEventListener("click", showUserDetails);
-addWaterButton.addEventListener("click", userInputHydrationForm);
-addSleepButton.addEventListener("click", userInputSleepForm);
-addActivityButton.addEventListener("click", userInputActivityForm);
-calenderForWeek.addEventListener("change", changeWeeklyData);
-closeHydrate.addEventListener("click", closeHydrationForm);
-closeSleep.addEventListener("click", closeSleepForm);
-closeActivity.addEventListener("click", closeActivityForm);
-updateAllCharts.addEventListener("click", renderNewCharts);
+window.addEventListener('load', fetchAllData);
+userInfoButton.addEventListener('click', showUserDetails);
+addWaterButton.addEventListener('click', userInputHydrationForm);
+addSleepButton.addEventListener('click', userInputSleepForm);
+addActivityButton.addEventListener('click', userInputActivityForm);
+calenderForWeek.addEventListener('change', changeWeeklyData);
+closeHydrate.addEventListener('click', closeHydrationForm);
+closeSleep.addEventListener('click', closeSleepForm);
+closeActivity.addEventListener('click', closeActivityForm);
+updateAllCharts.addEventListener('click', renderNewSleepChart);
 // Helper Functions
 
 // DOM Functions
@@ -100,16 +101,15 @@ function loadUserInfo() {
   renderGreeting();
   renderFriendsList();
   renderProfile();
-  // if the user inputs a date, then render all this
   renderSleepAverages();
-  charts.renderOuncesByWeek(hydration, firstDayOfLastWeek, lastHydrationEntry);
-  charts.renderOuncesPerDay(hydration, lastHydrationEntry);
+  charts.renderOuncesByWeek(hydration, lastHydrationEntry);
+  charts.renderOuncesPerDay(hydration, firstDayOfLastWeek);
   charts.renderSleepChartByDay(sleep, lastSleepEntry);
-  charts.renderSleepChartByWeek(sleep, firstDayOfLastWeek, lastSleepEntry);
+  charts.renderSleepChartByWeek(sleep, firstDayOfLastWeek);
 }
 
 function renderGreeting() {
-  const userFirstName = currentUser.name.split(" ")[0];
+  const userFirstName = currentUser.name.split(' ')[0];
   greeting.innerHTML = `Hello, ${userFirstName}!`;
 }
 
@@ -134,17 +134,17 @@ function renderProfile() {
 
 function renderSleepAverages() {
   sleepAverages.innerText = `Your Average Hours of Sleep: ${sleep.getAvgSleepData(
-    "hoursSlept",
+    'hoursSlept',
     true
   )}
   Average Sleep Quality for all users: ${sleep.getAvgSleepData(
-    "sleepQuality",
+    'sleepQuality',
     false
   )}`;
 }
 
 function showUserDetails() {
-  dropDownBox.classList.toggle("hidden");
+  dropDownBox.classList.toggle('hidden');
   userAddress.innerText = `${currentUser.email}`;
   userEmail.innerText = `${currentUser.address}`;
 }
@@ -155,24 +155,24 @@ function showUserDetails() {
 // }
 
 function userInputHydrationForm() {
-  hydrationFormPopup.classList.remove("hidden");
+  hydrationFormPopup.classList.remove('hidden');
 }
 
 function userInputSleepForm() {
-  sleepFormPopup.classList.remove("hidden");
+  sleepFormPopup.classList.remove('hidden');
 }
 
 function userInputActivityForm() {
-  activityFormPopup.classList.remove("hidden");
+  activityFormPopup.classList.remove('hidden');
 }
 
-hydrationFormPopup.addEventListener("submit", (event) => {
+hydrationFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
   const newHydrationData = {
     userID: currentUser.id,
-    date: formData.get("date"),
-    numOunces: formData.get("ounces"),
+    date: formData.get('date'),
+    numOunces: formData.get('ounces'),
   };
   console.log(newHydrationData);
 
@@ -181,32 +181,37 @@ hydrationFormPopup.addEventListener("submit", (event) => {
     newHydrationData.date &&
     newHydrationData.numOunces
   ) {
-    postData("http://localhost:3001/api/v1/hydration", newHydrationData);
+    postData('http://localhost:3001/api/v1/hydration', newHydrationData);
   } else {
-    return "Invalid data";
+    return 'Invalid data';
   }
   event.target.reset();
   closeForm();
 });
 
 function closeHydrationForm() {
-  hydrationFormPopup.classList.add("hidden");
+  hydrationFormPopup.classList.add('hidden');
 }
 function closeSleepForm() {
-  sleepFormPopup.classList.add("hidden");
+  sleepFormPopup.classList.add('hidden');
 }
 function closeActivityForm() {
-  activityFormPopup.classList.add("hidden");
+  activityFormPopup.classList.add('hidden');
 }
 
 function changeWeeklyData(event) {
-  const chosenDate = dayjs(event.target.value)
+  chosenDate = dayjs(event.target.value)
     .format()
     .slice(0, 10)
-    .split("-")
-    .join("/");
-
-  charts.renderOuncesByWeek(hydration, chosenDate);
+    .split('-')
+    .join('/');
 }
 
-function renderNewCharts() {}
+function renderNewSleepChart() {
+  destroyCharts();
+
+  charts.renderOuncesByWeek(hydration, chosenDate);
+  charts.renderOuncesPerDay(hydration, chosenDate);
+  charts.renderSleepChartByDay(sleep, chosenDate);
+  charts.renderSleepChartByWeek(sleep, chosenDate);
+}

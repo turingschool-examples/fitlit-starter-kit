@@ -7,14 +7,18 @@ class Hydration {
 
   ouncesPerDay(date) {
     const dailyOunces = this.ounces.find((entry) => entry.date === date);
+    console.log(dailyOunces);
 
     return dailyOunces.numOunces;
   }
 
   getDailyOuncesByWeek(minDate) {
     const start = this.ounces.findIndex((data) => data.date === minDate);
+    const weekOunces = this.ounces
+      .slice(start, start + 7)
+      .map((day) => day.numOunces);
 
-    const weekOunces = this.ounces.slice(start, start + 7);
+    return weekOunces;
   }
 
   getAvgOunces() {

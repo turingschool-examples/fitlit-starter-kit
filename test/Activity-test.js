@@ -70,8 +70,18 @@ describe('Activity', () => {
         expect(singleUserActivity).to.be.an.instanceOf(Activity);
     });
 
+    // ****** Constructor Tests ******
+
     it('should be able to identify a user by their ID', () => {
         expect(singleUserActivity.findData(1,userData)).to.equal(userData[0]);
+    });
+
+    it('should be able to identify a user specified date', () => {
+        expect(singleUserActivity.findDate("2019/06/15")).to.deep.equal("2019/06/15");
+      });
+
+    it('should be able to identify a specified user object', () => {
+    expect(singleUserActivity.findUser("2019/06/15")).to.deep.equal(userActivityData[0]);
     });
 
     it('should return a user\s number of steps', () => {
@@ -86,17 +96,15 @@ describe('Activity', () => {
         expect(userActivityData[0].flightsOfStairs).to.equal(16)
     });
 
+    // ******* Methods Tests ********
+
     it('should return a users miles from steps', () => {
-        expect(singleUserActivity.getMilesFromSteps(1,userData)).to.equal('2.9')
+        expect(singleUserActivity.getMilesFromSteps(1, userData, "2019/06/15" )).to.equal('2.9')
     });
 
-    // it('should return the miles a user has walked based on their number of steps') {
-    //     expect()
-    // };
-
-    // it('should return how many minutes were they active for a given day') {
-    //     expect()
-    // };
+    it('should return how many minutes were they active for a given day', () => {
+        expect(singleUserActivity.returnDailyMinutesActive("2019/06/15")).to.equal(140)
+    });
 
     // it('should return the average minutes active for a given week') {
     //     expect()

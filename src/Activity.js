@@ -16,11 +16,11 @@ class Activity {
     const start = this.usersActivity.findIndex(data => data.date === date);
     const weeklyData = this.usersActivity.slice(start, start + 7);
 
-    const averageMinutes = weeklyData.reduce((average, data) => {
-      return average += data.minutesActive;
+    const totalMinutes = weeklyData.reduce((sum, data) => {
+      return sum += data.minutesActive;
     }, 0);
 
-    return Math.round(averageMinutes / weeklyData.length);
+    return Math.round(totalMinutes / weeklyData.length);
   };
 
   getStepGoalByDay(date) {
@@ -31,31 +31,40 @@ class Activity {
     const moreMessage = this.usersActivity
       .find(data => data.date === date && this.currentUser.dailyStepGoal < data.numSteps);   
 
-    if(lessMessage) {
+    if (lessMessage) {
       return `Your steps for today are ${lessMessage.numSteps}. You have not yet reached your step goal of ${this.currentUser.dailyStepGoal} steps for today.`;
     };
 
-    if(equalMessage) {
+    if (equalMessage) {
       return `Your steps for today are ${equalMessage.numSteps}. You have reached your step goal of ${this.currentUser.dailyStepGoal} steps for today!`;
     };
     
-    if(moreMessage) {
+    if (moreMessage) {
       return `Your steps for today are ${moreMessage.numSteps}. You have exceeded your step goal of ${this.currentUser.dailyStepGoal} steps for today!!`;
     };
   };
 
   getDaysThatExceedStepGoal() {
-    const exceededStepGoal = this.usersActivity
-      .filter(data => this.currentUser.dailyStepGoal < data.numSteps)
-      .map(data => `{date: ${data.date}, steps: ${data.numSteps}}`);
+    const exceededStepGoal = this.usersActivity.reduce((list, data) => {
+      if (this.currentUser.dailyStepGoal < data.numSteps) {
+        list.push({date: data.date, steps: data.numSteps})
+      }
+
+      return list;
+    }, []);
 
     return exceededStepGoal;
   };
 
   getHighestFlightsClimbed() {
-    const climbingRecord = this.usersActivity
-      .sort((first, last) => last.flightsOfStairs - first.flightsOfStairs)
-      .map(data => `{date: ${data.date}, flights: ${data.flightsOfStairs}}`)
+    const sortedData = this.usersActivity
+      .sort((first, last) => last.flightsOfStairs - first.flightsOfStairs);
+    
+    const climbingRecord = sortedData.reduce((list, data) => {
+      list.push({date: data.date, flights: data.flightsOfStairs});
+      return list;
+    }, []);
+   
     return climbingRecord[0];
   };
 

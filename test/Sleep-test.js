@@ -72,9 +72,7 @@ describe.only('Sleep', () => {
   });
 
   it('should check that dates exists', () => {
-    expect(sleep1.getDailySleepByWeek('sleepQuality', '2018/06/15')).to.equal(
-      'No entries found.'
-    );
+    expect(sleep1.getDailySleepByWeek('sleepQuality', '2018/06/15')).to.equal('No entries found.');
   });
 
   it('should sort each day of the week and filter non-consecutive entry', () => {

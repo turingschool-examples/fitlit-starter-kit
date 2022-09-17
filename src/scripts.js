@@ -78,7 +78,7 @@ function fetchAllData() {
     sleep = new Sleep(currentUser.id, sleepData);
     activity = new Activity(currentUser, activityData)
     allUsers = new UserRepository(userData);
-      console.log(activity)
+
     //grab last date this user made an entry
     lastSleepEntry = sleep.sleepDataPerUser[sleep.sleepDataPerUser.length - 1].date;
     lastHydrationEntry = hydration.ounces[hydration.ounces.length - 1].date;

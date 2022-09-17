@@ -3,13 +3,12 @@ class Hydration {
     this.id = userId;
     this.ounces = hydrationData.filter((data) => data.userID === userId);
     this.hydrationData = hydrationData;
-  }
-
+  };
+  
   ouncesPerDay(date) {
-    const dailyOunces = this.ounces.find((entry) => entry.date === date);
-
+    const dailyOunces = this.ounces.find(entry => entry.date === date);
     return dailyOunces.numOunces;
-  }
+  };
 
   getDailyOuncesByWeek(minDate) {
     const start = this.ounces.findIndex((data) => data.date === minDate);

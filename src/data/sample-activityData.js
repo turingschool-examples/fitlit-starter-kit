@@ -58,7 +58,7 @@ const activityData = [
   {
     "userID": 1,
     "date": "2019/06/17",
-    "numSteps": 14329,
+    "numSteps": 10000,
     "minutesActive": 168,
     "flightsOfStairs": 18
   },

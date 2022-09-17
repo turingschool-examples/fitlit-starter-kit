@@ -100,29 +100,29 @@ describe('Activity', () => {
 
   it('should return all the days that a user exceeded their step goal', () => {
     expect(activity1.getDaysThatExceedStepGoal()).to.deep.equal([
-      '{date: 2019/06/15, steps: 7402}',
-      '{date: 2019/06/16, steps: 12304}',
-      '{date: 2019/06/19, steps: 10961}',
-      '{date: 2019/06/20, steps: 5369}',
-      '{date: 2019/06/21, steps: 7498}'
+      { date: '2019/06/15', steps: 7402 },
+      { date: '2019/06/16', steps: 12304 },
+      { date: '2019/06/19', steps: 10961 },
+      { date: '2019/06/20', steps: 5369 },
+      { date: '2019/06/21', steps: 7498 }
     ]);
 
     expect(activity2.getDaysThatExceedStepGoal()).to.deep.equal([
-      '{date: 2019/06/17, steps: 13750}',
-      '{date: 2019/06/19, steps: 9858}',
-      '{date: 2019/06/20, steps: 8153}',
-      '{date: 2019/06/21, steps: 10225}'
+      { date: '2019/06/17', steps: 13750 },
+      { date: '2019/06/19', steps: 9858 },
+      { date: '2019/06/20', steps: 8153 },
+      { date: '2019/06/21', steps: 10225 }
     ]);
 
     expect(activity3.getDaysThatExceedStepGoal()).to.deep.equal([ 
-      '{date: 2019/06/20, steps: 14478}' 
+      { date: '2019/06/20', steps: 14478 } 
     ]);
   });
 
   it('should return a user\'s highest stairs climbed record', () => {
-    expect(activity1.getHighestFlightsClimbed()).to.deep.equal('{date: 2019/06/20, flights: 46}');
-    expect(activity2.getHighestFlightsClimbed()).to.deep.equal('{date: 2019/06/19, flights: 44}');
-    expect(activity3.getHighestFlightsClimbed()).to.deep.equal('{date: 2019/06/16, flights: 36}');
+    expect(activity1.getHighestFlightsClimbed()).to.deep.equal({ date: '2019/06/20', flights: 46 });
+    expect(activity2.getHighestFlightsClimbed()).to.deep.equal({ date: '2019/06/19', flights: 44 });
+    expect(activity3.getHighestFlightsClimbed()).to.deep.equal({ date: '2019/06/16', flights: 36 });
   });
 
   it('should return the averages for all user\'s', () => {

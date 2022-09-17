@@ -36,7 +36,6 @@ const closeHydrate = document.querySelector('#close-hydration-form');
 const closeSleep = document.querySelector('#close-sleep-form');
 const closeActivity = document.querySelector('#close-activity-form');
 const updateAllCharts = document.querySelector('#updateCharts');
-// const lastEntryDate = document.querySelector('#lastEntry');
 
 // Global variables
 let userData;
@@ -149,11 +148,6 @@ function showUserDetails() {
   userEmail.innerText = `${currentUser.address}`;
 }
 
-// function renderLastEntryDate() {
-//   lastEntryDate.innerText = `Last Sleep Entry: ${lastSleepEntry}
-//   Last Hydration Entry: ${lastHydrationEntry}`
-// }
-
 function userInputHydrationForm() {
   hydrationFormPopup.classList.remove('hidden');
 }
@@ -167,8 +161,10 @@ function userInputActivityForm() {
 }
 
 hydrationFormPopup.addEventListener('submit', (event) => {
+  console.log(event);
   event.preventDefault();
   const formData = new FormData(event.target);
+  console.log(formData);
   const newHydrationData = {
     userID: currentUser.id,
     date: formData.get('date'),
@@ -187,6 +183,24 @@ hydrationFormPopup.addEventListener('submit', (event) => {
   event.target.reset();
 });
 
+sleepFormPopup.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const newSleepData = {
+    userID: currentUser.id,
+    date: formData.get('date'),
+    hoursSlept: parseInt(formData.get('hours')),
+    sleepQuality: parseInt(formData.get('quality')),
+  };
+
+  if (newSleepData.userID && newSleepData.date && newSleepData.numOunces) {
+    postData('http://localhost:3001/api/v1/hydration', newSleepData);
+  } else {
+    return 'Invalid data';
+  }
+  event.target.reset();
+});
+
 function closeHydrationForm() {
   hydrationFormPopup.classList.add('hidden');
 }
@@ -198,16 +212,15 @@ function closeActivityForm() {
 }
 
 function changeWeeklyData(event) {
-  chosenDate = dayjs(event.target.value)
+  return (chosenDate = dayjs(event.target.value)
     .format()
     .slice(0, 10)
     .split('-')
-    .join('/');
+    .join('/'));
 }
 
 function renderUpdatedCharts() {
   destroyCharts();
-  fetchAllData();
 
   charts.renderOuncesByWeek(hydration, chosenDate);
   charts.renderOuncesPerDay(hydration, chosenDate);

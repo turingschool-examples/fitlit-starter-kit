@@ -34,18 +34,34 @@ class Sleep {
     return Math.round(sum / dataSet.length);
   }
 
-  getDailySleepByWeek(type, minDate) {
-    const start = this.sleepDataPerUser.findIndex(
-      (data) => data.date === minDate
-    );
+  getDailySleepByWeek(date) {
+    const start = this.sleepDataPerUser.findIndex((data) => data.date === date);
+    const week = this.sleepDataPerUser
+      .slice(start, start + 7)
+      .map((entry) => {
+        return {
+          date: entry.date,
+          hoursSlept: entry.hoursSlept,
+          sleepQuality: entry.sleepQuality,
+        };
+      })
+      .filter((entry) => {
+        const getEachDate = entry.date.split('/');
+        const chosenDate = date.split('/');
 
-    const week = this.sleepDataPerUser.slice(start, start + 7);
+        if (
+          getEachDate[0] === chosenDate[0] &&
+          getEachDate[1] === chosenDate[1]
+        ) {
+          return entry;
+        }
+      });
 
     if (start === -1) {
-      return 'These days do not exist. Please change your selection.';
+      return 'No entries found.';
+    } else {
+      return week;
     }
-
-    return week.map((data) => data[type]);
   }
 }
 

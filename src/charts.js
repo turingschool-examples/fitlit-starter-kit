@@ -56,21 +56,21 @@ const barStyle2 = {
 
 const charts = {
   renderSleepChartByWeek(sleep, date) {
-    const weeklyHS = sleep.getDailySleepByWeek('hoursSlept', date);
-    const weeklySQ = sleep.getDailySleepByWeek('sleepQuality', date);
+    const week = sleep.getDailySleepByWeek(date);
+    console.log(week);
     const sleepChart = document.querySelector('#weeklyHoursSlept');
     // setup data block
     const weeklySleepData = {
-      labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+      labels: iterateThruWeek(week, 'date'),
       datasets: [
         {
           label: `Hours of Sleep Week of ${date}`,
-          data: weeklyHS,
+          data: iterateThruWeek(week, 'hoursSlept'),
           ...barStyle1,
         },
         {
           label: `Sleep Quality Week of ${date}`,
-          data: weeklySQ,
+          data: iterateThruWeek(week, 'sleepQuality'),
           ...barStyle2,
         },
       ],
@@ -128,7 +128,6 @@ const charts = {
 
   renderOuncesByWeek(hydration, date) {
     let weeklyData = hydration.getDailyOuncesByWeek(date);
-    console.log(weeklyData);
     const hydrationChart = document.querySelector('#weeklyOunces');
     const config = {
       type: 'bar',
@@ -180,7 +179,6 @@ const charts = {
   },
 };
 
-// destroy and render new chart functions
 const destroyCharts = () => {
   weeklySleepChart.destroy();
   dailySleepChart.destroy();
@@ -188,4 +186,7 @@ const destroyCharts = () => {
   dailyOunces.destroy();
 };
 
+const iterateThruWeek = (week, key) => {
+  return week.map((day) => day[key]);
+};
 export { charts, destroyCharts };

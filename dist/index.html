@@ -12,45 +12,7 @@
         <section class="user-name" id='userName'>users name</section>
       </header>
       <main>
-        <div class="for-input-styles">
-          <section class="activity-input">
-            <h2>Input Your Activity Data</h2>
-            <label for="number-of-steps">Steps You Walked Today </label>
-            <input type="text" id="stepInput" name="number-of-steps" required minlength="1" maxlength="8" size="10" required>
-            <label for="minutes-active">Minutes Active</label>
-            <input type="text" id="minutesActive" name="minutes-active" required minlength="1" maxlength="8" size="10" required>
-            <label for="flights-of-stairs">Flights of Stairs Climbed </label>
-            <input type="text" id="flightOfStairs" name="flights-of-stairs" required minlength="1" maxlength="8" size="10" required>
-            <input class="submit-button" type="button" value="Submit user activity">
-          </section>
-          </div>
-        
-      <!-- <section class='widget-labels' id='widgetLabels'>
-        <section class='health-catergory' id='healthCatergory'>
-          <div class='icons data'>
-            <img class ='clipboard' src="./images/Clipboard.png" alt="clipboard logo" height="100px" width="100px">
-            <h2>Personal Data</h2>
-          </div>
-        </section>
-        <section class='health-catergory' id='healthCatergory'>
-          <div class='icons hydro'>
-           <img class="hydrate-logo" src="./images/galaxy.png" alt="hydrate logo" height="100px" width="100px">
-           <h2>Hydrate</h2>
-          </div>
-        </section>
-        <section class='health-catergory' id='healthCatergory'>
-          <div class='icons sleep'>
-            <img class="sleep-logo" src="./images/milky-way.png" alt="sleep logo" height="100px" width="100px">
-             <h2>Sleep</h2>
-          </div>
-        </section>
-        <section class='health-catergory' id='healthCatergory'>
-          <div class='icons step'>
-            <img class='activity-logo' src="./images/constellation.png" alt="Activity logo" height="100px" width="100px">
-            <h2>Step Stats</h2>
-          </div>
-        </section> -->
-       
+
         <section class="user-container" id="userContainer">
           <section class="user-info" id="userInfo">
             <div class='user-data-details'>
@@ -99,6 +61,18 @@
          <p><span class="user-labels">Your flights of stairs</p>
      </section>
         </section>
+          <section class="activity-input">
+            <form>
+              <h2>Input Your Activity Data</h2>
+              <label for="number-of-steps">Steps You Walked Today: </label>
+              <input type="text" id="stepInput" name="number-of-steps" required minlength="1" maxlength="8" size="10" required>
+              <label for="minutes-active">Minutes you were Active:</label>
+              <input type="text" id="minutesActive" name="minutes-active" required minlength="1" maxlength="8" size="10" required>
+              <label for="flights-of-stairs">Flights of Stairs Climbed you climbed: </label>
+              <input type="text" id="flightOfStairs" name="flights-of-stairs" required minlength="1" maxlength="8" size="10" required>
+              <input class="submit-button" type="button" value="Submit user activity">
+          </form>
+          </section>
       </main>
       <!-- <footer>
       <p class='footer-text'>© Lee, Thomas, & Morgan 2022</p>

@@ -6,30 +6,46 @@ body {
   background-image: url('/src/images/brain.png');
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: hidden ;
   margin: 0;
   width: 100%;
   min-height: 100vh;
   font-family: Comic Sans MS;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .for-input-styles {
   display:flex;
 
 }
+
 .activity-input {
-  display:flex;
-  flex-direction: column;
-  width: 70vw;
-  height: 70vh;
-  line-height: 3;
-  background-color: blueviolet;
-  z-index: 99;
+    background-color: blueviolet;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 30vw;
+    height: 50vh;
+    line-height: 3;
+    background-color: blueviolet;
+    z-index: 99;
+    border: 3px solid #531345;
+    border-radius: 10%;
+    box-shadow: 0 12px 16px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 
 label{
 font-weight: bold;
 font-size: larger;
 }
+
 .submit-button {
   font-weight: bold;
   background-color: #333;
@@ -70,7 +86,7 @@ font-size: larger;
 
 .hydrate-logo {
   width: 7vw;
-  height: 7vw; 
+  height: 7vw;
   margin-top: -1vw;
 }
 .sleep-logo {
@@ -230,7 +246,7 @@ margin-top: 3vw;
   display: flex;
   width: 20vw;
   height: 31vh;
-  margin-top: 2%; 
+  margin-top: 2%;
   border: 3px solid #531345;
   color:black;
   border-radius: 10%;

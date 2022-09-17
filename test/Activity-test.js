@@ -59,7 +59,7 @@ describe('Activity', () => {
                 ]
             }
         ];
-      
+
 
     })
     it('should be a function',  () => {
@@ -126,9 +126,9 @@ describe('Activity', () => {
     //     expect()
     // };
 
-    // it('should return their all-time stair climbing record') {
-    //     expect()
-    // };
+    it('should return their all-time stair climbing record', () => {
+        expect(singleUserActivity.findAllTimeStairsClimbed()).to.equal(36)
+    });
 
     // it('should return the average stairs climbed for a specified date') {
     //     expect()

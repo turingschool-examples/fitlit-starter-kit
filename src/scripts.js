@@ -1,5 +1,4 @@
 // Import styles:
-import dayjs from 'dayjs';
 import './css/styles.css';
 import './images/quick-mode.png';
 import './images/water.png';
@@ -14,6 +13,10 @@ import UserRepository from './UserRepository';
 import User from './User';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
+import Activity from './Activity';
+
+// Import third party libraries
+import dayjs from 'dayjs';
 
 // Query Selectors
 const greeting = document.querySelector('.greeting');
@@ -46,6 +49,7 @@ let hydrationData;
 let currentUser;
 let hydration;
 let sleep;
+let activity;
 let allUsers;
 let activityData;
 let lastSleepEntry;
@@ -72,6 +76,7 @@ function fetchAllData() {
 
     hydration = new Hydration(currentUser.id, hydrationData);
     sleep = new Sleep(currentUser.id, sleepData);
+    activity = new Activity(currentUser, activityData)
     allUsers = new UserRepository(userData);
 
     //grab last date this user made an entry

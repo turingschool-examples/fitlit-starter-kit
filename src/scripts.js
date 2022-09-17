@@ -106,7 +106,6 @@ updateAllCharts.addEventListener('click', renderUpdatedCharts);
 
 // DOM Functions
 function loadUserInfo() {
-  
   renderGreeting();
   renderFriendsList();
   renderProfile();

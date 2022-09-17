@@ -63,6 +63,6 @@ class Sleep {
       return week;
     }
   }
-}
+};
 
 export default Sleep;

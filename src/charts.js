@@ -57,7 +57,7 @@ const barStyle2 = {
 const charts = {
   renderSleepChartByWeek(sleep, date) {
     const week = sleep.getDailySleepByWeek(date);
-    console.log(week);
+
     const sleepChart = document.querySelector('#weeklyHoursSlept');
     // setup data block
     const weeklySleepData = {

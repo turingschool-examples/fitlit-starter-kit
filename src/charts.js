@@ -273,7 +273,7 @@ const charts = {
         datasets: [
           {
             label: `Flights of Stairs Climbed Week of ${date}`,
-            data: iterateThruWeek(weeklyData, 'flightsOfStairs'),
+            data: iterateThruWeek(weeklyData, 'flightsOfStars'),
             ...barStyle1,
           },
         ],

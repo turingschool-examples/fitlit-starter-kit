@@ -5,7 +5,14 @@ import Chart from 'chart.js/auto';
 let weeklySleepChart;
 let dailySleepChart;
 let weeklyHydrationChart;
-let dailyOunces;
+let dailyOuncesChart;
+let weeklyNumStepsChart;
+let weeklyMinutesActiveChart;
+let weeklyFlightsClimbedChart;
+let dailyMilesChart;
+let dailyNumStepsChart;
+let dailyMinutesActiveChart;
+let dailyFlightsClimbedChart;
 
 // Chart styling
 const fontProperties = (context) => {
@@ -45,19 +52,96 @@ const chartOptions = {
 };
 
 const barStyle1 = {
-  backgroundColor: '#0077BB',
-  hoverBackgroundColor: '#00DDDD',
+  borderColor: '#0077BB',
+  borderWidth: 2.5,
+  backgroundColor: '#0077BB9d',
+  hoverBackgroundColor: '#00DDDD9d',
 };
 
 const barStyle2 = {
-  backgroundColor: '#9000EE',
+  borderColor: '#9000EE',
+  borderWidth: 2.5,
+  backgroundColor: '#9000EE6d',
   hoverBackgroundColor: '#CC77FF',
 };
 
+// const barStyle3 = {
+//   backgroundColor: '#9000EE',
+//   hoverBackgroundColor: '#CC77FF',
+// };
+
+// const barStyle4 = {
+//   backgroundColor: '#9000EE',
+//   hoverBackgroundColor: '#CC77FF',
+// };
+
+// const barStyle5 = {
+//   backgroundColor: '#9000EE',
+//   hoverBackgroundColor: '#CC77FF',
+// };
+
 const charts = {
+  renderOuncesByWeek(hydration, date) {
+    const hydrationChart = document.querySelector('.weekly-ounces');
+    const weeklyData = hydration.getDailyOuncesByWeek(date);
+
+    const config = {
+      type: 'bar',
+      data: {
+        labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+        datasets: [
+          {
+            label: `Water Intake Week of ${date}`,
+            data: weeklyData,
+            ...barStyle1,
+          },
+        ],
+      },
+      options: {
+        ...chartOptions,
+      },
+    };
+    weeklyHydrationChart = new Chart(hydrationChart, config);
+  
+    return weeklyHydrationChart;
+  },
+  
+  renderOuncesPerDay(hydration, date) {
+    const hydrationChart = document.querySelector('.daily-ounces');
+    const day = hydration.ouncesPerDay(date);
+
+    const config = {
+      type: 'bar',
+      data: {
+        labels: [''],
+        datasets: [
+          {
+            label: `Daily Water Intake on ${date}`,
+            data: [day],
+            ...barStyle1,
+            catagoryPercentage: 0.15,
+            barPercentage: 0.3,
+            borderRadius: 4,
+          },
+        ],
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        ...chartOptions,
+      },
+    };
+
+    dailyOuncesChart = new Chart(hydrationChart, config);
+  
+    return dailyOuncesChart;
+  },
+
   renderSleepChartByWeek(sleep, date) {
-    const week = sleep.getDailySleepByWeek(date);
-    const sleepChart = document.querySelector('#weeklyHoursSlept');
+    const sleepChart = document.querySelector('.weekly-hours-slept');
+    const weeklyHS = sleep.getDailySleepByWeek('hoursSlept', date);
+    const weeklySQ = sleep.getDailySleepByWeek('sleepQuality', date);
+    
     const weeklySleepData = {
       labels: iterateThruWeek(week, 'date'),
       datasets: [
@@ -81,6 +165,7 @@ const charts = {
         ...chartOptions,
       },
     };
+
     weeklySleepChart = new Chart(sleepChart, config);
 
     return weeklySleepChart;
@@ -89,7 +174,8 @@ const charts = {
   renderSleepChartByDay(sleep, date) {
     const hours = sleep.getSleepDataByGivenDay(date, 'hoursSlept');
     const quality = sleep.getSleepDataByGivenDay(date, 'sleepQuality');
-    const dailySleep = document.querySelector('#dailyHoursSlept');
+    const dailySleep = document.querySelector('.daily-hours-slept');
+
     const config = {
       type: 'bar',
       data: {
@@ -98,15 +184,17 @@ const charts = {
           {
             label: `Hours Slept on ${date}`,
             data: [hours],
-            barPercentage: 0.5,
             ...barStyle1,
+            catagoryPercentage: 0.3,
+            barPercentage: 0.6,
             borderRadius: 4,
           },
           {
             label: `Sleep Quality on ${date}`,
             data: [quality],
-            barPercentage: 0.5,
             ...barStyle2,
+            catagoryPercentage: 0.3,
+            barPercentage: 0.6,
             borderRadius: 4,
           },
         ],
@@ -117,21 +205,23 @@ const charts = {
         ...chartOptions,
       },
     };
+
     dailySleepChart = new Chart(dailySleep, config);
 
     return dailySleepChart;
   },
 
-  renderOuncesByWeek(hydration, date) {
-    let weeklyData = hydration.getDailyOuncesByWeek(date);
-    const hydrationChart = document.querySelector('#weeklyOunces');
+  renderNumStepsByWeek(activity, date) {
+    let weeklyData = activity.getWeeklyActivity('numSteps', date);
+    const activityChart = document.querySelector('.weekly-num-steps');
+
     const config = {
       type: 'bar',
       data: {
         labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
         datasets: [
           {
-            label: `Water Intake Week of ${date}`,
+            label: `Steps Taken Week of ${date}`,
             data: weeklyData,
             ...barStyle1,
           },
@@ -141,24 +231,79 @@ const charts = {
         ...chartOptions,
       },
     };
-    weeklyHydrationChart = new Chart(hydrationChart, config);
 
-    return weeklyHydrationChart;
+    weeklyNumStepsChart = new Chart(activityChart, config);
+  
+    return weeklyNumStepsChart;
   },
 
-  renderOuncesPerDay(hydration, date) {
-    const day = hydration.ouncesPerDay(date);
-    const hydrationChart = document.querySelector('#dailyOunces');
+  renderMinutesActiveByWeek(activity, date) {
+    let weeklyData = activity.getWeeklyActivity('minutesActive', date);
+    const activityChart = document.querySelector('.weekly-minutes-active');
+
+    const config = {
+      type: 'bar',
+      data: {
+        labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+        datasets: [
+          {
+            label: `Minutes Active Week of ${date}`,
+            data: weeklyData,
+            ...barStyle1,
+          },
+        ],
+      },
+      options: {
+        ...chartOptions,
+      },
+    };
+
+    weeklyMinutesActiveChart = new Chart(activityChart, config);
+  
+    return weeklyMinutesActiveChart;
+  },
+
+  renderFlightsClimbedByWeek(activity, date) {
+    let weeklyData = activity.getWeeklyActivity('flightsOfStairs', date);
+    const activityChart = document.querySelector('.weekly-flights-climbed');
+
+    const config = {
+      type: 'bar',
+      data: {
+        labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+        datasets: [
+          {
+            label: `Flights of Stairs Climbed Week of ${date}`,
+            data: weeklyData,
+            ...barStyle1,
+          },
+        ],
+      },
+      options: {
+        ...chartOptions,
+      },
+    };
+
+    weeklyFlightsClimbedChart = new Chart(activityChart, config);
+  
+    return weeklyFlightsClimbedChart;
+  },
+
+  renderMilesPerDay(activity, date) {
+    const activityChart = document.querySelector('.miles-by-day');
+    const day = activity.getDailyMilesByDate(date);
+
     const config = {
       type: 'bar',
       data: {
         labels: [''],
         datasets: [
           {
-            label: `Daily Water Intake on ${date}`,
+            label: `Your Total Miles Walked on ${date}`,
             data: [day],
-            ...barStyle2,
-            barPercentage: 0.25,
+            ...barStyle1,
+            catagoryPercentage: 0.15,
+            barPercentage: 0.3,
             borderRadius: 4,
           },
         ],
@@ -169,9 +314,130 @@ const charts = {
         ...chartOptions,
       },
     };
-    dailyOunces = new Chart(hydrationChart, config);
 
-    return dailyOunces;
+    dailyMilesChart = new Chart(activityChart, config);
+  
+    return dailyMilesChart;
+  },
+
+  renderNumStepsPerDay(activity, date) {
+    const currentUserDay = activity.getDailyActivityByDate('numSteps', date);
+    // const allUsersAvg;
+    const activityChart = document.querySelector('.steps-by-day');
+
+    const config = {
+      type: 'bar',
+      data: {
+        labels: [''],
+        datasets: [
+          {
+            label: `Your Steps Taken on ${date}`,
+            data: [currentUserDay],
+            ...barStyle1,
+            catagoryPercentage: 0.3,
+            barPercentage: 0.6,
+            borderRadius: 4,
+          },
+          // {
+          //   label: `Average Steps Taken for All User's on ${date}`,
+          //   data: [allUsersAvg],
+          //   ...barStyle2,
+          //   catagoryPercentage: 0.3,
+          //   barPercentage: 0.6,
+          //   borderRadius: 4,
+          // },
+        ],
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        ...chartOptions,
+      },
+    };
+
+    dailyNumStepsChart = new Chart(activityChart, config);
+  
+    return dailyNumStepsChart;
+  },
+
+  renderMinutesActivePerDay(activity, date) {
+    const currentUserDay = activity.getDailyActivityByDate('minutesActive', date);
+    // const allUsersAvg;
+    const activityChart = document.querySelector('.minutes-by-day');
+
+    const config = {
+      type: 'bar',
+      data: {
+        labels: [''],
+        datasets: [
+          {
+            label: `Your Minutes Active on ${date}`,
+            data: [currentUserDay],
+            ...barStyle1,
+            catagoryPercentage: 0.3,
+            barPercentage: 0.6,
+            borderRadius: 4,
+          },
+          // {
+          //   label: `Average Minutes Active for All User's on ${date}`,
+          //   data: [allUsersAvg],
+          //   ...barStyle2,
+          //   catagoryPercentage: 0.3,
+          //   barPercentage: 0.6,
+          //   borderRadius: 4,
+          // },
+        ],
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        ...chartOptions,
+      },
+    };
+
+    dailyMinutesActiveChart = new Chart(activityChart, config);
+  
+    return dailyMinutesActiveChart;
+  },
+
+  renderFlightsClimbedPerDay(activity, date) {
+    const currentUserDay = activity.getDailyActivityByDate('flightsOfStairs', date);
+    // const allUsersAvg;
+    const hydrationChart = document.querySelector('.flights-by-day');
+
+       const config = {
+      type: 'bar',
+      data: {
+        labels: [''],
+        datasets: [
+          {
+            label: `Your Flights of Stairs Climbed Walked on ${date}`,
+            data: [currentUserDay],
+            ...barStyle1,
+            catagoryPercentage: 0.3,
+            barPercentage: 0.6,
+            borderRadius: 4,
+          },
+          // {
+          //   label: `Average Flights of Stairs Climbed for All User's on ${date}`,
+          //   data: [allUsersAvg],
+          //   ...barStyle2,
+          //   catagoryPercentage: 0.3,
+          //   barPercentage: 0.6,
+          //   borderRadius: 4,
+          // },
+        ],
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        ...chartOptions,
+      },
+    };
+
+    dailyFlightsClimbedChart = new Chart(hydrationChart, config);
+  
+    return dailyFlightsClimbedChart;
   },
 };
 
@@ -179,7 +445,14 @@ const destroyCharts = () => {
   weeklySleepChart.destroy();
   dailySleepChart.destroy();
   weeklyHydrationChart.destroy();
-  dailyOunces.destroy();
+  dailyOuncesChart.destroy();
+  weeklyNumStepsChart.destory();
+  weeklyMinutesActiveChart.destory();
+  weeklyFlightsClimbedChart.destory();
+  dailyMilesChart.destory();
+  dailyNumStepsChart.destory();
+  dailyMinutesActiveChart.destory();
+  dailyFlightsClimbedChart.destory();
 };
 
 const iterateThruWeek = (week, key) => {

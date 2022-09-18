@@ -1,7 +1,7 @@
 class UserRepository {
   constructor(usersData, healthData) {
     this.users = usersData;
-    this.data = healthData
+    this.data = healthData;
   };
 
   getUserData(userID) {
@@ -12,7 +12,7 @@ class UserRepository {
 
   getAverageStepGoal() {
     const goalAverage = this.users.reduce((goalsTotal, user) => {
-        return goalsTotal += user.dailyStepGoal
+        return goalsTotal += user.dailyStepGoal;
       }, 0);
 
     return Math.round(goalAverage / this.users.length);
@@ -25,7 +25,6 @@ class UserRepository {
       return sum;
     }, 0);
 
-    console.log(Math.round(typeTotal / typeData.length))
     return Math.round(typeTotal / typeData.length);
   }; 
 };

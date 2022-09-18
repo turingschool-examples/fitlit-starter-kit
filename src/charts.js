@@ -139,8 +139,7 @@ const charts = {
 
   renderSleepChartByWeek(sleep, date) {
     const sleepChart = document.querySelector('.weekly-hours-slept');
-    const weeklyHS = sleep.getDailySleepByWeek('hoursSlept', date);
-    const weeklySQ = sleep.getDailySleepByWeek('sleepQuality', date);
+    const week = sleep.getDailySleepByWeek(date);
     
     const weeklySleepData = {
       labels: iterateThruWeek(week, 'date'),

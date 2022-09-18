@@ -1,5 +1,4 @@
 // Import styles:
-import dayjs from 'dayjs';
 import './css/styles.css';
 import './images/quick-mode.png';
 import './images/water.png';
@@ -14,6 +13,10 @@ import UserRepository from './UserRepository';
 import User from './User';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
+import Activity from './Activity';
+
+// Import third party libraries
+import dayjs from 'dayjs';
 
 // Query Selectors
 const greeting = document.querySelector('.greeting');
@@ -37,8 +40,6 @@ const closeSleep = document.querySelector('#close-sleep-form');
 const closeActivity = document.querySelector('#close-activity-form');
 const updateAllCharts = document.querySelector('#updateCharts');
 
-// const lastEntryDate = document.querySelector('#lastEntry');
-
 // Global variables
 let userData;
 let sleepData;
@@ -46,6 +47,7 @@ let hydrationData;
 let currentUser;
 let hydration;
 let sleep;
+let activity;
 let allUsers;
 let activityData;
 let lastSleepEntry;
@@ -72,6 +74,7 @@ function fetchAllData() {
 
     hydration = new Hydration(currentUser.id, hydrationData);
     sleep = new Sleep(currentUser.id, sleepData);
+    activity = new Activity(currentUser, activityData)
     allUsers = new UserRepository(userData);
 
     //grab last date this user made an entry
@@ -103,7 +106,6 @@ updateAllCharts.addEventListener('click', renderUpdatedCharts);
 
 // DOM Functions
 function loadUserInfo() {
-  
   renderGreeting();
   renderFriendsList();
   renderProfile();
@@ -156,11 +158,6 @@ function showUserDetails() {
   userEmail.innerText = `${currentUser.address}`;
 }
 
-// function renderLastEntryDate() {
-//   lastEntryDate.innerText = `Last Sleep Entry: ${lastSleepEntry}
-//   Last Hydration Entry: ${lastHydrationEntry}`
-// }
-
 function userInputHydrationForm() {
   hydrationFormPopup.classList.remove('hidden');
 }
@@ -174,8 +171,10 @@ function userInputActivityForm() {
 }
 
 hydrationFormPopup.addEventListener('submit', (event) => {
+  console.log(event);
   event.preventDefault();
   const formData = new FormData(event.target);
+  console.log(formData);
   const newHydrationData = {
     userID: currentUser.id,
     date: formData.get('date'),
@@ -217,7 +216,6 @@ sleepFormPopup.addEventListener('submit', (event) => {
   event.target.reset();
 });
 
-
 function closeHydrationForm() {
   hydrationFormPopup.classList.add('hidden');
 }
@@ -229,11 +227,11 @@ function closeActivityForm() {
 }
 
 function changeWeeklyData(event) {
-  chosenDate = dayjs(event.target.value)
+  return (chosenDate = dayjs(event.target.value)
     .format()
     .slice(0, 10)
     .split('-')
-    .join('/');
+    .join('/'));
 }
 
 function renderUpdatedCharts() {

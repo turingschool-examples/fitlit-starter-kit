@@ -252,18 +252,13 @@ function renderUpdatedCharts() {
       hydration = new Hydration(currentUser.id, hydrationData);
       sleep = new Sleep(currentUser.id, sleepData);
       allUsers = new UserRepository(userData);
-
-      if (hydrationData[hydrationData.date]) {    
-        charts.renderOuncesByWeek(hydration, chosenDate);
-        charts.renderOuncesPerDay(hydration, chosenDate);
+      if (!hydration.ounces.find((data) => data.date == chosenDate)) {
+        alert ('no hydration data!!!')
         charts.renderSleepChartByDay(sleep, chosenDate);
         charts.renderSleepChartByWeek(sleep, chosenDate);
-
-      } else {
-        charts.renderSleepChartByWeek(sleep, chosenDate);
-        alert('no hydration data for selected day')
+      } else if (!sleep.sleepDataPerUser.find((entry) => entry.date === chosenDate)) {
+        alert ('no sleep Data!!!')
         charts.renderOuncesByWeek(hydration, chosenDate);
-        charts.renderSleepChartByDay(sleep, chosenDate);
         charts.renderOuncesPerDay(hydration, chosenDate);
       }
     });

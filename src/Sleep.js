@@ -5,6 +5,7 @@ class Sleep {
 
   findUserDataID = (id) => this.sleepData.filter(userSleepData => userSleepData.userID === id);
 
+
   getAvgHrsSleptPerDay(id) {
     let userSleep = this.findUserDataID(id);
     const totalHours = userSleep.reduce((avg, hour) => {
@@ -42,7 +43,7 @@ class Sleep {
     let userSleepData = this.findUserDataID(id);
     const userSleepDates = userSleepData.map(userSleep => userSleep.date);
     const userIndexOfDate = userSleepDates.indexOf(date);
-    const userSevenDays = userSleepData.slice(userIndexOfDate -6, userIndexOfDate +1)
+    const userSevenDays = userSleepData.slice(userIndexOfDate -6, userIndexOfDate +1);
     const usersAvgSleep = userSevenDays.reduce((avgSleep, userSleep) => {
       avgSleep += userSleep.hoursSlept;
       return avgSleep;

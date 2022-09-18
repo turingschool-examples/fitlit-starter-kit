@@ -19,10 +19,19 @@ class Activity {
    return userRepoInstance.findUserData(id)
   };
 
+  findUserData = (id) => { // Added by Lee
+    const findUser = this.activityData.filter((userActiveData) =>  userActiveData.userID === id)
+    return findUser;
+   }
+
+
   findDate(date) {
     const userDate = this.activityData.find((newDate) => newDate.date === date)
     return userDate.date;
+
   }
+  // I was thinking maybe we could discuss maybe throwing this funciton out?? It currently helps many tests pass but I think
+  // we could utilize another function to access the date for a user - just a thought
 
   findUser(date) {
     const userActivityData = this.activityData.find((element) => {
@@ -30,20 +39,28 @@ class Activity {
         return element;
       }
     })
+    console.log(userActivityData)
     return userActivityData;
   }
 
-
-///for the parameters of the method getMilesFromSteps 
-///we have 2 things we need 1: id (we will get this from single user.id in scripts.js)
-//2:and we need an instance of the class userRepo object (this should be an array of users and we can get it from userRepository on line 71 in scripts.js )
-// It seems like some of theese can be combined but for now Im doing it seperatly
-//
-getMilesFromSteps(id, userArrayFromRepo, date) {
+getUserMilesFromSteps(id, userArrayFromRepo, date) {
     let userObjectData = this.findData(id,userArrayFromRepo); // gives user 1 object
     const getStepsByDate = this.findUser(date);     
     const getMiles = (getStepsByDate.numSteps * userObjectData.strideLength) / 5280
     return getMiles.toFixed(1);
+}
+
+getUserAvgMinutesActivePerWeek(id, date) {
+  const singleActiveUser = this.findUserData(id);
+  const userActiveDates = singleActiveUser.findIndex((user) => {
+  return user.date === date;
+ })
+ const sevenActiveDays = this.activityData.slice(userActiveDates -6, userActiveDates +1)
+ const userAvgActiveMins = sevenActiveDays.reduce((avgActiveMins, user) => {
+  avgActiveMins += user.minutesActive;
+  return avgActiveMins;
+ }, 0)
+ return (userAvgActiveMins/ 7).toFixed(1);
 }
 
 // Dashboard methods:
@@ -64,7 +81,7 @@ returnDailyMinutesActive(date) {
   return eachDayData.minutesActive;
 }
 
-returnDailyflightsOfStairs(date) {
+returnDailyFlightsOfStairs(date) {
   const eachDayData = this.findUser(date);
   if(!eachDayData) {
     return 0
@@ -72,19 +89,48 @@ returnDailyflightsOfStairs(date) {
   return eachDayData.flightsOfStairs
 }
 
+// Averages for all users - added by Lee
+
+returnAllUsersAvgFlights(date) {
+  let average = 0;
+  let userDates = this.findDate(date)
+  const usersAverageFlights = this.activityData.reduce((acc, activeUser) => {
+    if (activeUser.date === userDates) {
+      acc.push(average += activeUser.flightsOfStairs)
+    }
+    return acc; 
+   }, [])
+   return (average / usersAverageFlights.length).toFixed(1);
+}
+
+returnAllUsersAvgStepsTaken(date) {
+  let average = 0;
+  let userDates = this.findDate(date)
+  const usersAverageSteps = this.activityData.reduce((acc, activeUser) => {
+    if (activeUser.date === userDates) {
+      acc.push(average += activeUser.numSteps)
+    }
+    return acc; 
+   }, [])
+   return (average / usersAverageSteps.length);
+}
+
+returnAllUsersAvgMinsActive(date) {
+  let average = 0;
+  let userDates = this.findDate(date)
+ const usersActiveMins = this.activityData.reduce((acc, activeUser) => {
+  if (activeUser.date === userDates) {
+    acc.push(average += activeUser.minutesActive)
+  }
+  return acc; 
+ }, [])
+ return (average / usersActiveMins.length).toFixed(1);
+}
 }
 export default Activity;
 
 
-
-
-// For a specific day (specified by a date), return the miles a user has walked based on their number of steps (use their strideLength to help calculate this)
-// For a user, how many minutes active did they average for a given week (7 days)?
 // For a user, did they reach their step goal for a given day (specified by a date)?
 // For a user, find all the days where they exceeded their step goal // filter method!
 // For a user, find their all-time stair climbing record // find method!
 
-// For all users, what is the average number of:
-  // stairs climbed for a specified date
-  // steps taken for a specific date
-  // minutes active for a specific date

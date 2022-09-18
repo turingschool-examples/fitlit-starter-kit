@@ -2,13 +2,15 @@ import { expect } from 'chai';
 import Sleep from '../src/Sleep';
 import sleepData from '../src/data/sample-sleep';
 
-describe('Sleep', () => {
+describe.only('Sleep', () => {
   let sleep1;
   let sleep2;
+  let sleep3;
 
   beforeEach(() => {
     sleep1 = new Sleep(1, sleepData);
     sleep2 = new Sleep(2, sleepData);
+    sleep3 = new Sleep(3, sleepData);
   });
 
   it('should be a function', () => {
@@ -16,12 +18,12 @@ describe('Sleep', () => {
   });
 
   it('should return sleep data that corresponds with given user id', () => {
-    expect(sleep2.sleepDataPerUser).to.be.an('array');
-    expect(sleep2.sleepDataPerUser).to.deep.equal([
+    expect(sleep3.sleepDataPerUser).to.be.an('array');
+    expect(sleep3.sleepDataPerUser).to.deep.equal([
       {
-        userID: 2,
+        userID: 3,
         date: '2019/06/15',
-        hoursSlept: 7,
+        hoursSlept: 10.8,
         sleepQuality: 4.7,
       },
     ]);
@@ -53,16 +55,16 @@ describe('Sleep', () => {
     expect(sleep1.getAvgSleepData('sleepQuality', false)).to.equal(3);
   });
 
-  it('should give overview of hours slept over a week', () => {
-    expect(
-      sleep1.getDailySleepByWeek('hoursSlept', '2019/06/15')
-    ).to.deep.equal([6.1, 4.1, 8, 10.4, 10.7, 9.3, 7.8]);
-  });
-
-  it('should give overview of sleep quality over a week', () => {
-    expect(
-      sleep1.getDailySleepByWeek('sleepQuality', '2019/06/15')
-    ).to.deep.equal([2.2, 3.8, 2.6, 3.1, 1.2, 1.2, 4.2]);
+  it('should give overview of sleep over a week', () => {
+    expect(sleep1.getDailySleepByWeek('2019/06/15')).to.deep.equal([
+      { date: '2019/06/15', hoursSlept: 6.1, sleepQuality: 2.2 },
+      { date: '2019/06/16', hoursSlept: 4.1, sleepQuality: 3.8 },
+      { date: '2019/06/17', hoursSlept: 8, sleepQuality: 2.6 },
+      { date: '2019/06/18', hoursSlept: 10.4, sleepQuality: 3.1 },
+      { date: '2019/06/19', hoursSlept: 10.7, sleepQuality: 1.2 },
+      { date: '2019/06/20', hoursSlept: 9.3, sleepQuality: 1.2 },
+      { date: '2019/06/21', hoursSlept: 7.8, sleepQuality: 4.2 },
+    ]);
   });
 
   it('should give average sleep quality for all users', () => {
@@ -70,8 +72,16 @@ describe('Sleep', () => {
   });
 
   it('should check that dates exists', () => {
-    expect(sleep1.getDailySleepByWeek('sleepQuality', '2018/06/15')).to.equal(
-      'These days do not exist. Please change your selection.'
-    );
+    expect(sleep1.getDailySleepByWeek('sleepQuality', '2018/06/15')).to.equal('No entries found.');
+  });
+
+  it('should sort each day of the week and filter non-consecutive entry', () => {
+    expect(sleep2.getDailySleepByWeek('2020/01/16')).to.deep.equal([
+      { date: '2020/01/16', hoursSlept: 9.1, sleepQuality: 2.6 },
+      { date: '2020/01/17', hoursSlept: 7.3, sleepQuality: 2.3 },
+      { date: '2020/01/18', hoursSlept: 5.3, sleepQuality: 1.3 },
+      { date: '2020/01/19', hoursSlept: 6.6, sleepQuality: 4.6 },
+      { date: '2020/01/20', hoursSlept: 6.4, sleepQuality: 1.8 },
+    ]);
   });
 });

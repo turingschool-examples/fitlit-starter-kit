@@ -5,24 +5,54 @@ class Activity {
     this.activityData = activityData;
   };
 
-  getMinutesActiveByDate(date) {
-    const minutesActive = this.usersActivity
-      .find(data => data.date === date);
+  getDailyActivityByDate(type, date) {
+    const value = this.usersActivity.find(data => data.date === date);
 
-    return minutesActive.minutesActive;
+    if (value) {
+      return value[type];
+    } else {
+      return 'This date could not be found.';
+    };
+
+  };
+
+  getDailyMilesByDate(date) {
+    const totalMiles = this.usersActivity.reduce((total, data) => {
+      const mileInFeet = 5280;
+      if (data.date === date) {
+        total = this.currentUser.strideLength * data.numSteps / mileInFeet
+      };
+
+      return total
+    }, 0);
+
+    if (totalMiles) {
+      return parseFloat(totalMiles.toFixed(1));
+    } else {
+      return 'This date could not be found.';
+    };
+  };
+
+  getWeeklyActivity(type, date) {
+    const start = this.usersActivity.findIndex((data) => data.date === date);
+    const weeklyData = this.usersActivity
+      .slice(start, start + 7)
+      .map((day) => day[type]);
+
+    return weeklyData;
   };
 
   getAvgMinutesActivePerWeek(date) {
     const start = this.usersActivity.findIndex(data => data.date === date);
     const weeklyData = this.usersActivity.slice(start, start + 7);
-
+    
     const totalMinutes = weeklyData.reduce((sum, data) => {
       return sum += data.minutesActive;
     }, 0);
-
+    
     return Math.round(totalMinutes / weeklyData.length);
   };
-
+  
   getStepGoalByDay(date) {
     const lessMessage = this.usersActivity
       .find(data => data.date === date && this.currentUser.dailyStepGoal > data.numSteps);

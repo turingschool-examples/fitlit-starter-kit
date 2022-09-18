@@ -40,8 +40,6 @@ const closeSleep = document.querySelector('#close-sleep-form');
 const closeActivity = document.querySelector('#close-activity-form');
 const updateAllCharts = document.querySelector('#updateCharts');
 
-// const lastEntryDate = document.querySelector('#lastEntry');
-
 // Global variables
 let userData;
 let sleepData;
@@ -171,11 +169,6 @@ function showUserDetails() {
   userEmail.innerText = `${currentUser.address}`;
 }
 
-// function renderLastEntryDate() {
-//   lastEntryDate.innerText = `Last Sleep Entry: ${lastSleepEntry}
-//   Last Hydration Entry: ${lastHydrationEntry}`
-// }
-
 function userInputHydrationForm() {
   hydrationFormPopup.classList.remove('hidden');
 }
@@ -189,8 +182,10 @@ function userInputActivityForm() {
 }
 
 hydrationFormPopup.addEventListener('submit', (event) => {
+  console.log(event);
   event.preventDefault();
   const formData = new FormData(event.target);
+  console.log(formData);
   const newHydrationData = {
     userID: currentUser.id,
     date: formData.get('date'),
@@ -232,7 +227,6 @@ sleepFormPopup.addEventListener('submit', (event) => {
   event.target.reset();
 });
 
-
 function closeHydrationForm() {
   hydrationFormPopup.classList.add('hidden');
 }
@@ -244,11 +238,11 @@ function closeActivityForm() {
 }
 
 function changeWeeklyData(event) {
-  chosenDate = dayjs(event.target.value)
+  return (chosenDate = dayjs(event.target.value)
     .format()
     .slice(0, 10)
     .split('-')
-    .join('/');
+    .join('/'));
 }
 
 function renderUpdatedCharts() {

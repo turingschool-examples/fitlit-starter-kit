@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import Sleep from '../src/Sleep';
-import sleepData from '../src/data/sample-sleep';
+import sleepData from '../src/data/sample-sleepData';
 
 describe.only('Sleep', () => {
   let sleep1;

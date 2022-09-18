@@ -27,16 +27,23 @@
               </div>
             </div>
           </div>
-          <p class="text step-goal">Daily Step Goal: </p>
-          <form>
-            <label for="calender">Choose Day</label>
-            <input type="date" id="calender-start" name="Start">
-            <button type="button" id="updateCharts">Update</button>
-          </form>
+          <div class="choose-day-calendar" id="chooseDayCalendar"></div>
+            <form class="choose-day-calendar" id="chooseDayCalendar">
+              <label for="calender">Choose Day </label>
+              <input type="date" class="calendar-start" id="calendarStart" name="Start">
+              <button type="button" class="update-charts" id="updateCharts">Update</button>
+            </form>
+          </div>
           <div class="chart-container" id="weekly-highlights">
             <canvas class="weekly-ounces" id="weeklyOunces"></canvas>
             <br/>
             <canvas class="weekly-hours-slept" id="weeklyHoursSlept"></canvas>
+            <br/>
+            <canvas class="weekly-num-steps" id="weeklyNumSteps"></canvas>
+            <br/>
+            <canvas class="weekly-minutes-active" id="weeklyMinutesActive"></canvas>
+            <br/>
+            <canvas class="weekly-flights-climbed" id="weeklyFlightsClimbed"></canvas>
           </div>
         </section>
       </section>
@@ -114,10 +121,14 @@
           <img class="icon activity-icon"  src="./images/quick-mode.png" alt="activity icon"><span class="material-icons plus-icon">add_circle</span>
         </button>
         <div class="chart-container" id="chartContainer3">
+          <p class="text step-goal">Daily Step Goal: </p>
+          <canvas class="miles-by-day" id="milesByDay"></canvas>
           <br/>
-          <p class="text activity-message" id="activityMessage">Have you wandered out into nature yet today?</p>
-          <!-- <canvas class="steps-by-day" id="stepsByDay"></canvas> -->
+          <canvas class="steps-by-day" id="stepsByDay"></canvas>
           <br/>
+          <canvas class="minutes-by-day" id="minutesByDay"></canvas>
+          <br/>
+          <canvas class="flights-by-day" id="flightsByDay"></canvas>
         </div>
         <h2 class="title activity-box-label" id="activityBoxLabel">Activity</h3>
       </section>

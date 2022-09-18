@@ -20,7 +20,7 @@ import dayjs from 'dayjs';
 
 // Query Selectors
 const greeting = document.querySelector('.greeting');
-const friendsList = document.querySelector('.friends-list');
+let friendsList = document.querySelector('.friends-list');
 const fullName = document.querySelector('.full-name');
 const userAddress = document.querySelector('.user-address');
 const userEmail = document.querySelector('.user-email');
@@ -142,6 +142,7 @@ function renderFriendsList() {
   });
 
   return friendNames.forEach((friend) => {
+    console.log(friendsList)
     friendsList.innerHTML += `<button class="friend">${friend.name}</button>`;
   });
 }
@@ -284,5 +285,16 @@ function loadConditions(data) {
     charts.renderOuncesByWeek(hydration, chosenDate);
     charts.renderOuncesPerDay(hydration, chosenDate);
   } 
+}
+function loadFriendData(event) {
+  currentUser = new User(allUsers.users.find((user) => user.name === event.target.innerText))
+  
+
+  destroyCharts()
+  
+  loadUserInfo()
+
+
+
 }
 

@@ -33,13 +33,33 @@ class Activity {
     };
   };
 
-  getWeeklyActivity(type, date) {
+  getWeeklyActivity(date) {
     const start = this.usersActivity.findIndex((data) => data.date === date);
     const weeklyData = this.usersActivity
       .slice(start, start + 7)
-      .map((day) => day[type]);
+      .map((day) => {
+        return {
+          'date': day.date,
+          'numSteps': day.numSteps,
+          'minutesActive': day.minutesActive,
+          'flightsOfStars': day.flightsOfStairs
+          
+        };
+      })
+      .filter((day) => {
+        const getEachDate = day.date.split('/');
+        const chosenDate = date.split('/');
 
-    return weeklyData;
+        if (
+          getEachDate[0] === chosenDate[0] &&
+          getEachDate[1] === chosenDate[1]
+        ) {
+          
+          return day;
+        }
+      });
+      
+      return weeklyData
   };
 
   getAvgMinutesActivePerWeek(date) {

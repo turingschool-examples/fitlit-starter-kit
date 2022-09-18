@@ -10,13 +10,30 @@ class Hydration {
     return dailyOunces.numOunces;
   };
 
-  getDailyOuncesByWeek(minDate) {
-    const start = this.ounces.findIndex((data) => data.date === minDate);
-    const weekOunces = this.ounces
+  getDailyOuncesByWeek(date) {
+    const start = this.ounces.findIndex((data) => data.date === date);
+    const week = this.ounces
       .slice(start, start + 7)
-      .map((day) => day.numOunces);
+      .map((entry) => {
+        return {
+          date: entry.date,
+          numOunces: entry.numOunces,
+          
+        };
+      })
+      .filter((entry) => {
+        const getEachDate = entry.date.split('/');
+        const chosenDate = date.split('/');
 
-    return weekOunces;
+        if (
+          getEachDate[0] === chosenDate[0] &&
+          getEachDate[1] === chosenDate[1]
+        ) {
+          console.log(entry)
+          return entry;
+        }
+      });
+      return week
   }
 
   getAvgOunces() {

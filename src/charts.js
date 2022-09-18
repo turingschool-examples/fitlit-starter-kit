@@ -88,11 +88,11 @@ const charts = {
     const config = {
       type: 'bar',
       data: {
-        labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+        labels: iterateThruWeek(weeklyData, 'date'),
         datasets: [
           {
             label: `Water Intake Week of ${date}`,
-            data: weeklyData,
+            data: iterateThruWeek(weeklyData, 'numOunces'),
             ...barStyle1,
           },
         ],
@@ -139,8 +139,7 @@ const charts = {
 
   renderSleepChartByWeek(sleep, date) {
     const sleepChart = document.querySelector('.weekly-hours-slept');
-    const weeklyHS = sleep.getDailySleepByWeek('hoursSlept', date);
-    const weeklySQ = sleep.getDailySleepByWeek('sleepQuality', date);
+    const week = sleep.getDailySleepByWeek(date);
     
     const weeklySleepData = {
       labels: iterateThruWeek(week, 'date'),
@@ -212,17 +211,17 @@ const charts = {
   },
 
   renderNumStepsByWeek(activity, date) {
-    let weeklyData = activity.getWeeklyActivity('numSteps', date);
+    let weeklyData = activity.getWeeklyActivity(date);
     const activityChart = document.querySelector('.weekly-num-steps');
 
     const config = {
       type: 'bar',
       data: {
-        labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+        labels: iterateThruWeek(weeklyData, 'date'),
         datasets: [
           {
             label: `Steps Taken Week of ${date}`,
-            data: weeklyData,
+            data: iterateThruWeek(weeklyData, 'numSteps'),
             ...barStyle1,
           },
         ],
@@ -446,13 +445,13 @@ const destroyCharts = () => {
   dailySleepChart.destroy();
   weeklyHydrationChart.destroy();
   dailyOuncesChart.destroy();
-  weeklyNumStepsChart.destory();
-  weeklyMinutesActiveChart.destory();
-  weeklyFlightsClimbedChart.destory();
-  dailyMilesChart.destory();
-  dailyNumStepsChart.destory();
-  dailyMinutesActiveChart.destory();
-  dailyFlightsClimbedChart.destory();
+  weeklyNumStepsChart.destroy();
+  weeklyMinutesActiveChart.destroy();
+  weeklyFlightsClimbedChart.destroy();
+  dailyMilesChart.destroy();
+  dailyNumStepsChart.destroy();
+  dailyMinutesActiveChart.destroy();
+  dailyFlightsClimbedChart.destroy();
 };
 
 const iterateThruWeek = (week, key) => {

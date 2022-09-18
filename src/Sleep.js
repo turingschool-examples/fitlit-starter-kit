@@ -36,6 +36,11 @@ class Sleep {
 
   getDailySleepByWeek(date) {
     const start = this.sleepDataPerUser.findIndex((data) => data.date === date);
+      
+    if (start === -1) {
+        return 'No entries found.';
+    } 
+    
     const week = this.sleepDataPerUser
       .slice(start, start + 7)
       .map((entry) => {
@@ -56,13 +61,11 @@ class Sleep {
           return entry;
         }
       });
-
-    if (start === -1) {
-      return 'No entries found.';
-    } else {
-      return week;
-    }
+    
+    return week
   }
+
+  
 };
 
 export default Sleep;

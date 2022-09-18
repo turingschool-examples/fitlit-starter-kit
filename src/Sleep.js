@@ -54,7 +54,7 @@ class Sleep {
           getEachDate[0] === chosenDate[0] &&
           getEachDate[1] === chosenDate[1]
         ) {
-          console.log(entry)
+          
           return entry;
         }
       });

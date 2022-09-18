@@ -58,7 +58,8 @@ class Activity {
           return day;
         }
       });
-      
+      console.log(weeklyData)
+
       return weeklyData
   };
 
@@ -67,6 +68,7 @@ class Activity {
     const weeklyData = this.usersActivity.slice(start, start + 7);
     
     const totalMinutes = weeklyData.reduce((sum, data) => {
+     
       return sum += data.minutesActive;
     }, 0);
     

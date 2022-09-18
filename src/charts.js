@@ -237,17 +237,17 @@ const charts = {
   },
 
   renderMinutesActiveByWeek(activity, date) {
-    let weeklyData = activity.getWeeklyActivity('minutesActive', date);
+    let weeklyData = activity.getWeeklyActivity(date);
     const activityChart = document.querySelector('.weekly-minutes-active');
 
     const config = {
       type: 'bar',
       data: {
-        labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+        labels: iterateThruWeek(weeklyData, 'date'),
         datasets: [
           {
             label: `Minutes Active Week of ${date}`,
-            data: weeklyData,
+            data: iterateThruWeek(weeklyData, 'minutesActive'),
             ...barStyle1,
           },
         ],
@@ -263,17 +263,17 @@ const charts = {
   },
 
   renderFlightsClimbedByWeek(activity, date) {
-    let weeklyData = activity.getWeeklyActivity('flightsOfStairs', date);
+    let weeklyData = activity.getWeeklyActivity(date);
     const activityChart = document.querySelector('.weekly-flights-climbed');
 
     const config = {
       type: 'bar',
       data: {
-        labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+        labels: iterateThruWeek(weeklyData, 'date'),
         datasets: [
           {
             label: `Flights of Stairs Climbed Week of ${date}`,
-            data: weeklyData,
+            data: iterateThruWeek(weeklyData, 'flightsOfStairs'),
             ...barStyle1,
           },
         ],

@@ -4,18 +4,12 @@ import UserRepository from '../src/UserRepository';
 class Activity {
     constructor(activityData) {
     this.activityData = activityData;
-
-      // userID: 1,
-      // date: "2019/06/15",
-      // numSteps: 3577,
-      // minutesActive: 140,
-      // flightsOfStairs: 1
     }
 
 
 
   findData(id,userArrayFromRepo) {
-    const userRepoInstance = new UserRepository(userArrayFromRepo) 
+    const userRepoInstance = new UserRepository(userArrayFromRepo)
    return userRepoInstance.findUserData(id)
   };
 
@@ -43,9 +37,11 @@ class Activity {
     return userActivityData;
   }
 
+
 getUserMilesFromSteps(id, userArrayFromRepo, date) {
+
     let userObjectData = this.findData(id,userArrayFromRepo); // gives user 1 object
-    const getStepsByDate = this.findUser(date);     
+    const getStepsByDate = this.findUser(date);
     const getMiles = (getStepsByDate.numSteps * userObjectData.strideLength) / 5280
     return getMiles.toFixed(1);
 }
@@ -115,6 +111,13 @@ returnAllUsersAvgStepsTaken(date) {
    return (average / usersAverageSteps.length);
 }
 
+
+//LEE:
+// For a user, how many minutes active did they average for a given week (7 days)?
+
+
+//THOMAS:
+
 returnAllUsersAvgMinsActive(date) {
   let average = 0;
   let userDates = this.findDate(date)
@@ -130,7 +133,26 @@ returnAllUsersAvgMinsActive(date) {
 export default Activity;
 
 
+
 // For a user, did they reach their step goal for a given day (specified by a date)?
 // For a user, find all the days where they exceeded their step goal // filter method!
+
+//MORGAN:
 // For a user, find their all-time stair climbing record // find method!
+
+
+findAllTimeStairsClimbed(id, userArrayFromRepo) {
+  let userObjectData = this.findData(id,userArrayFromRepo)
+  let userObjectValues = Object.values(userObjectData)
+  console.log( userObjectValues)
+  const mostStairsClimbed = userObjectValues.sort((a, b) => {
+    return b.flightsOfStairs - a.flightsOfStairs
+  });
+  return mostStairsClimbed[0].flightsOfStairs
+}
+
+// For all users, what is the average number of:
+  // stairs climbed for a specified date
+  // steps taken for a specific date
+  // minutes active for a specific date
 

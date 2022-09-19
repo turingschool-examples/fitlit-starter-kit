@@ -164,7 +164,7 @@ describe('Activity', () => {
                 ]
             }
         ];
-      
+
 
     })
         // ****** Constructor Tests ******
@@ -234,9 +234,9 @@ describe('Activity', () => {
     //     expect()
     // };
 
-    // it('should return their all-time stair climbing record') {
-    //     expect()
-    // };
+    it('should return their all-time stair climbing record', () => {
+        expect(singleUserActivity.findAllTimeStairsClimbed()).to.equal(36)
+    });
 
     it('should return the average stairs climbed for a specified date', () => {
         expect(usersActivity.returnAllUsersAvgFlights("2019/06/15")).to.equal('19.7')

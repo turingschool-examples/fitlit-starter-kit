@@ -128,7 +128,6 @@ function loadUserInfo() {
   charts.renderFlightsClimbedPerDay(activity, lastActivityEntry);
 };
 
-
 function renderGreeting() {
   const userFirstName = currentUser.name.split(' ')[0];
   greeting.innerHTML = `Hello, ${userFirstName}!`;
@@ -230,8 +229,6 @@ sleepFormPopup.addEventListener('submit', (event) => {
   event.target.reset();
 });
 
-
-
 activityFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
@@ -285,7 +282,6 @@ function renderUpdatedCharts() {
   ])
     .then((data) => {
       loadConditions(data)
-      
     });
 };
 function loadConditions(data) {
@@ -336,5 +332,4 @@ function loadFriendData(event) {
   friendsList.innerHTML = `Click on one of ${currentUser.name.split(' ')[0]}'s friends to view their profile`
   stepGoal.innerText = ''
   loadUserInfo()
-}
-
+};

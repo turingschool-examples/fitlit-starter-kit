@@ -33,7 +33,6 @@ class Activity {
         return element;
       }
     })
-    console.log(userActivityData)
     return userActivityData;
   }
 
@@ -112,11 +111,7 @@ returnAllUsersAvgStepsTaken(date) {
 }
 
 
-//LEE:
-// For a user, how many minutes active did they average for a given week (7 days)?
 
-
-//THOMAS:
 
 returnAllUsersAvgMinsActive(date) {
   let average = 0;
@@ -139,6 +134,27 @@ const mostStairsClimbed = singleActiveUser.sort((a, b) => {
   return mostStairsClimbed[0].flightsOfStairs
 }
 
+stepGoalConfirm(id,date,userRepo) {
+  const whatDay = this.findUser(date)
+  const getGoals = this.findData(id, userRepo)
+  if(whatDay.numSteps > getGoals.dailyStepGoal ) {
+    return true
+  }
+}
+
+findAllDaysStepGpalConfirm(id,userRepo) {
+  const singleUser = this.findData(id, userRepo)
+
+ const userActivityArray = this.findUserData(id)   
+  const arrayOfSurpassedGoal =  userActivityArray.filter((element) => {
+        return  element.numSteps > singleUser.dailyStepGoal
+    })  
+    const arrayOfDates = arrayOfSurpassedGoal.map((element) => {
+      return element.date
+    })
+  return arrayOfDates
+}
+
 }
 
 
@@ -147,7 +163,7 @@ export default Activity;
 
 
 
-// For a user, did they reach their step goal for a given day (specified by a date)?
+// For a user, did they reach their step goal for a given day (specified by a date)? DONE
 // For a user, find all the days where they exceeded their step goal // filter method!
 
 //MORGAN:

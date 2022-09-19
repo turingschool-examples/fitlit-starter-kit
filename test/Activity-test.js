@@ -222,17 +222,20 @@ describe('Activity', () => {
     //     expect()
     // };
 
-    // it('should return true if a user achieved their daily step goal') {
-    //     expect()
-    // };
+    it('should return true if a user achieved their daily step goal', () => { 
+        expect(singleUserActivity.stepGoalConfirm(1, "2019/06/15",userData)).to.equal(true)
+    }) 
 
-    // it('should return false if a user did not achieve their daily step goal') {
-    //     expect()
-    // };
-
-    // it('should return all the days where they exceeded their step goal') {
-    //     expect()
-    // };
+    it('should return all the days where they exceeded their step goal', () => {
+        expect(singleUserActivity.findAllDaysStepGpalConfirm(1, userData)).to.deep.equal(['2019/06/15',
+            '2019/06/16',
+            '2019/06/17',
+            '2019/06/18',
+            '2019/06/19',
+            '2019/06/20',
+            '2019/06/21',
+            '2019/06/22'])
+    });
 
     it('should return their all-time stair climbing record', () => {
         expect(singleUserActivity.findAllTimeStairsClimbed(1)).to.equal(36)

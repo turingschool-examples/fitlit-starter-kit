@@ -20,6 +20,7 @@ const postSleep = (id,userInputSleepData) => {
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(err => console.log(err))
+
 }
 
 const postHydration = (id,userInputHydration) => {
@@ -46,7 +47,7 @@ const fetchHydration = () => {
   Promise.all([fetchData('http://localhost:3001/api/v1/hydration')])
   .then(data => console.log('ya think this will work? water addition', data))}
 
-  
+
 export { fetchAll }
 export { postSleep }
 export { postHydration }
@@ -70,9 +71,12 @@ const postActivity = (id, userInputActivityData) => {
   })
       .then(response => response.json())
       .then(data => console.log(data))
-      .catch(err => console.log(err))
+      .catch(error => {
+      console.log(error.message)
+      displayErrorMessage(error)
 
 
+})
 }
 
 const fetchActivity = () => {
@@ -81,3 +85,11 @@ const fetchActivity = () => {
 }
 fetchActivity();
 
+
+const displayErrorMessage = (error) => {
+  if (error.message === "Failed to fetch") {
+    return postError.innerText = "OOPS something went wrong";
+  } else {
+    return postError.innerText = error.message;
+  };
+};

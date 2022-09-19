@@ -135,6 +135,7 @@ function renderGreeting() {
 };
 
 function renderFriendsList() {
+  friendsList.innerHTML = `Click on one of ${currentUser.name.split(' ')[0]}'s friends to view their profile`
   const friendNames = userData.filter((user) => {
     if (currentUser.userFriends.includes(user.id)) {
       return user.name;
@@ -142,7 +143,7 @@ function renderFriendsList() {
   });
 
   return friendNames.forEach((friend) => {
-    console.log(friendsList)
+    
     friendsList.innerHTML += `<button class="friend">${friend.name}</button>`;
   });
 }
@@ -291,7 +292,7 @@ function loadFriendData(event) {
   
 
   destroyCharts()
-  
+  friendsList.innerHTML = `Click on one of ${currentUser.name.split(' ')[0]}'s friends to view their profile`
   loadUserInfo()
 
 

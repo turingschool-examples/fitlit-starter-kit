@@ -22,10 +22,10 @@ class Activity {
       if (data.date === date) {
         total = this.currentUser.strideLength * data.numSteps / mileInFeet
       };
-
+      
       return total
     }, 0);
-
+    
     if (totalMiles) {
       return parseFloat(totalMiles.toFixed(1));
     } else {

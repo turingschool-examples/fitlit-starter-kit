@@ -126,46 +126,40 @@ describe('Activity', () => {
     expect(activity3.getDailyMilesByDate('2019/06/01')).to.equal('This date could not be found.')
   });
 
-  it('should return a user\'s weekly number of steps taken for a given start date', () => {
-    expect(activity1.getWeeklyActivity('numSteps', '2019/06/15')).to.deep.equal(
-      [ 7402, 12304, 4547,  2546, 10961,  5369, 7498 ]
+  it('should return all the weekly data for a user for a given start date', () => {
+    expect(activity1.getWeeklyActivity('2019/06/15')).to.deep.equal(
+      [
+        { date: '2019/06/15', numSteps: 7402, minutesActive: 116, flightsOfStars: 33 },
+        { date: '2019/06/16', numSteps: 12304, minutesActive: 152, flightsOfStars: 8 },
+        { date: '2019/06/17', numSteps: 4547, minutesActive: 97, flightsOfStars: 5 },
+        { date: '2019/06/18', numSteps: 2546, minutesActive: 274, flightsOfStars: 26 },
+        { date: '2019/06/19', numSteps: 10961, minutesActive: 188, flightsOfStars: 17 },
+        { date: '2019/06/20', numSteps: 5369, minutesActive: 129, flightsOfStars: 46 },
+        { date: '2019/06/21', numSteps: 7498, minutesActive: 199, flightsOfStars: 13 }
+      ]
     );
-    expect(activity2.getWeeklyActivity('numSteps', '2019/06/15')).to.deep.equal(
-      [ 4294, 4112, 13750, 4662, 9858, 8153, 10225 ]
-   );
-    expect(activity3.getWeeklyActivity('numSteps', '2019/06/15')).to.deep.equal(
-      [ 3577,  6637, 10000,  4419, 8429, 14478, 6760 ]
-   );
-  });
-
-  it('should return a user\'s weekly minutes active for a given start date', () => {
-    expect(activity1.getWeeklyActivity('minutesActive', '2019/06/15')).to.deep.equal(
-      [ 116, 152,  97, 274, 188, 129, 199 ]
+    expect(activity2.getWeeklyActivity('2019/06/15')).to.deep.equal(
+      [
+        { date: '2019/06/15', numSteps: 4294, minutesActive: 138, flightsOfStars: 10 },
+        { date: '2019/06/16', numSteps: 4112, minutesActive: 220, flightsOfStars: 37 },
+        { date: '2019/06/17', numSteps: 13750, minutesActive: 65, flightsOfStars: 4 },
+        { date: '2019/06/18', numSteps: 4662, minutesActive: 181, flightsOfStars: 31 },
+        { date: '2019/06/19', numSteps: 9858, minutesActive: 243, flightsOfStars: 44 },
+        { date: '2019/06/20', numSteps: 8153, minutesActive: 74, flightsOfStars: 10 },
+        { date: '2019/06/21', numSteps: 10225, minutesActive: 174, flightsOfStars: 26 }
+      ]
     );
-    expect(activity2.getWeeklyActivity('minutesActive', '2019/06/15')).to.deep.equal(
-      [ 138, 220, 65, 181, 243, 74, 174 ]
+    expect(activity3.getWeeklyActivity('2019/06/15')).to.deep.equal(
+      [
+        { date: '2019/06/15', numSteps: 3577, minutesActive: 140, flightsOfStars: 16 },
+        { date: '2019/06/16', numSteps: 6637, minutesActive: 175, flightsOfStars: 36 },
+        { date: '2019/06/17', numSteps: 10000, minutesActive: 168, flightsOfStars: 18 },
+        { date: '2019/06/18', numSteps: 4419, minutesActive: 165, flightsOfStars: 33 },
+        { date: '2019/06/19', numSteps: 8429, minutesActive: 275, flightsOfStars: 2 },
+        { date: '2019/06/20', numSteps: 14478, minutesActive: 140, flightsOfStars: 12 },
+        { date: '2019/06/21', numSteps: 6760, minutesActive: 135, flightsOfStars: 6 }
+      ]
     );
-    expect(activity3.getWeeklyActivity('minutesActive', '2019/06/15')).to.deep.equal(
-      [ 140, 175, 168, 165, 275, 140, 135 ]
-    );
-  });
-
-  it('should return a user\'s weekly flights of stairs climbed for a given start date', () => {
-    expect(activity1.getWeeklyActivity('flightsOfStairs', '2019/06/15')).to.deep.equal(
-      [ 33,  8,  5, 26, 17, 46, 13 ]
-    );
-    expect(activity2.getWeeklyActivity('flightsOfStairs', '2019/06/15')).to.deep.equal(
-      [ 10, 37,  4, 31, 44, 10, 26 ]
-    );
-    expect(activity3.getWeeklyActivity('flightsOfStairs', '2019/06/15')).to.deep.equal(
-      [ 16, 36, 18, 33, 2, 12,  6 ]
-    );
-  });
-
-  it('should return a user\'s average minutes active for a given week', () => {
-    expect(activity1.getAvgMinutesActivePerWeek('2019/06/15')).to.equal(165);
-    expect(activity2.getAvgMinutesActivePerWeek('2019/06/15')).to.equal(156);
-    expect(activity3.getAvgMinutesActivePerWeek('2019/06/15')).to.equal(171);
   });
 
   it('should show a user if they reached their daily step goal for a given day', () => {

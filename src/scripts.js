@@ -57,6 +57,7 @@ let lastWeekHydration;
 let lastWeekSleep;
 let lastWeekActivity;
 let chosenDate;
+let todayDate;
 
 // API data
 function fetchAllData() {
@@ -93,9 +94,6 @@ function fetchAllData() {
 // Event Listeners
 
 window.addEventListener('load', fetchAllData);
-
-
-
 userInfoButton.addEventListener('click', showUserDetails);
 addWaterButton.addEventListener('click', userInputHydrationForm);
 addSleepButton.addEventListener('click', userInputSleepForm);
@@ -188,9 +186,9 @@ function userInputActivityForm() {
 hydrationFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
-  const getTodayDate = new Date();
-  const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
-  console.log(formData);
+  // const getTodayDate = new Date();
+  // const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
+  // console.log(formData);
   const newHydrationData = {
     userID: currentUser.id,
     date: formData.get('date'),
@@ -215,8 +213,8 @@ hydrationFormPopup.addEventListener('submit', (event) => {
 sleepFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
-  const getTodayDate = new Date();
-  const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
+  // const getTodayDate = new Date();
+  // const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
   const newSleepData = {  
     userID: currentUser.id,
     date: formData.get('date'),
@@ -245,8 +243,8 @@ sleepFormPopup.addEventListener('submit', (event) => {
 activityFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
-  const getTodayDate = new Date();
-  const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
+  // const getTodayDate = new Date();
+  // const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
   const newActivityData = {  
     'userID': currentUser.id,
     'date': formData.get('date'),
@@ -254,7 +252,8 @@ activityFormPopup.addEventListener('submit', (event) => {
     'minutesActive': formData.get('minutes'),
     'flightsOfStairs': formData.get('flights')
   };
-  
+  console.log(newActivityData.date)
+  setTodayDate(newActivityData.date)
   if (
     newActivityData.userID &&
     newActivityData.date.includes('/') &&
@@ -361,7 +360,11 @@ function checkFormDate(date, todayDate) {
   }
 }
 
-function getTodayDate() {
+function setTodayDate(formDate) {
+  console.log(dayjs())
   const getTodayDate = new Date();
-  const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
+  todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()];
+  // console.log(todayDate, formDate)
+  const getFormDate = formDate.split('/').map(str => parseInt(str))
+  console.log(getFormDate)
 }

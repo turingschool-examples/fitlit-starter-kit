@@ -29,6 +29,7 @@
               <p class="user-email"></p>
             </div>
           </div>
+<<<<<<< HEAD
         </div>
         <div class="choose-day-calendar">
           <form class="choose-day-calendar" id="chooseDayCalendar">
@@ -48,6 +49,27 @@
           <br />
           <canvas class="weekly-flights-climbed" id="weeklyFlightsClimbed"></canvas>
         </div>
+=======
+          <div>
+            <form class="choose-day-calendar" id="chooseDayCalendar">
+              <label for="calendar">Choose Day </label>
+              <input type="date" class="calendar-start" id="calendarStart" name="Start">
+              <button type="button" class="update-charts" id="updateCharts">Update</button>
+            </form>
+          </div>
+          <div class="chart-container" id="weekly-highlights">
+            <canvas class="weekly-ounces" id="weeklyOunces"></canvas>
+            <br/>
+            <canvas class="weekly-hours-slept" id="weeklyHoursSlept"></canvas>
+            <br/>
+            <canvas class="weekly-num-steps" id="weeklyNumSteps"></canvas>
+            <br/>
+            <canvas class="weekly-minutes-active" id="weeklyMinutesActive"></canvas>
+            <br/>
+            <canvas class="weekly-flights-climbed" id="weeklyFlightsClimbed"></canvas>
+          </div>
+        </section>
+>>>>>>> 692ab69107a942c80a4f39644c51da490ff58175
       </section>
     </section>
     </section>
@@ -143,6 +165,41 @@
         <h2 class="title activity-box-label" id="activityBoxLabel">Activity</h3>
       </section>
     </section>
+<<<<<<< HEAD
+=======
+    <section class="daily activity" id="activityBox">
+      <!-- The activity form:  -->
+      <div id="activityForm" class="form activity-form-popup hidden">
+        <form class="form-container">
+          <h3>Add How Many Steps You Made</h3>
+          <label for="activity-date">Date: </label>
+          <input type="text" id="activity-date" placeholder="yyyy/mm/dd" name="date" required>
+
+          <label for="steps">Number of Steps: </label>
+          <input type="number" id="steps" placeholder="Enter number" name="steps" required>
+
+          <button type="submit" class="post form-btn">Submit</button>
+          <button type="button" class="cancel form-btn" id="close-activity-form">Close</button>
+        </form>
+      </div>
+      <!-- the button to open activity popup form -->
+      <button id="activityButton" type="button" class="icon-button">
+        <img class="icon activity-icon" src="./images/quick-mode.webp" alt="activity icon"><span
+          class="material-icons plus-icon">add_circle</span>
+      </button>
+      <div class="chart-container" id="chartContainer3">
+        <p class="text step-goal">Daily Step Goal: </p>
+        <canvas class="miles-by-day" id="milesByDay"></canvas>
+        <br />
+        <canvas class="steps-by-day" id="stepsByDay"></canvas>
+        <br />
+        <canvas class="minutes-by-day" id="minutesByDay"></canvas>
+        <br />
+        <canvas class="flights-by-day" id="flightsByDay"></canvas>
+      </div>
+      <h2 class="title activity-box-label" id="activityBoxLabel">Activity</h3>
+    </section>
+>>>>>>> 692ab69107a942c80a4f39644c51da490ff58175
     <section class="column friends-info" id="friendsInfo">
       <section class="friends-details friends-list" id="friendsList">
         <h3 class="title friends-list-label" id="friendsListLabel"></h3>
@@ -165,6 +222,18 @@
         <br/>
         <p class="text activity3" id="activity3">Paddle boarding</p>
       </section> 
+<<<<<<< HEAD
+=======
+    </section>
+    <section class="friends-details friends-activity" id="friendsActivity">
+      <h2 class="title top-activities-label" id="topActivitiesLabel">Top Activities</h2>
+      <br />
+      <p class="text activity1" id="activity1">Hiking</p>
+      <br />
+      <p class="text activity2" id="activity2">Running</p>
+      <br />
+      <p class="text activity3" id="activity3">Biking</p>
+>>>>>>> 692ab69107a942c80a4f39644c51da490ff58175
     </section>
   </section>
   <script src="bundle.js"></script>

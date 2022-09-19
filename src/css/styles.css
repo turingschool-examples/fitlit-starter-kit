@@ -68,6 +68,7 @@ header {
   margin: 1%;
   padding: 1%;
   flex: 1 1 300px; /* this is needed for flex wrapping to work -- do more research about properties */
+  overflow: hidden;
 }
 
 .user {
@@ -275,6 +276,7 @@ header {
   z-index: 1;
   display: flex;
   flex-direction: column;
+  overflow-wrap: anywhere;
 }
 
 .drop-down:after {

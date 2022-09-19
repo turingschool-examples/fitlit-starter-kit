@@ -1,10 +1,10 @@
 // Import styles:
 import './css/styles.css';
-import './images/quick-mode.png';
-import './images/water.png';
-import './images/zzz.png';
-import './images/down-button.png';
-import './images/fitlit-logo.png';
+import './images/quick-mode.webp';
+import './images/water.webp';
+import './images/zzz.webp';
+import './images/down-button.webp';
+import './images/fitlit-logo.webp';
 
 // Import local files:
 import { fetchData, postData } from './apiCalls.js';
@@ -31,9 +31,9 @@ const dropDownBox = document.querySelector('.drop-down');
 const addWaterButton = document.querySelector('#waterButton');
 const addSleepButton = document.querySelector('#sleepButton');
 const addActivityButton = document.querySelector('#activityButton');
-const hydrationFormPopup = document.querySelector('.hydration-form-popup');
-const sleepFormPopup = document.querySelector('.sleep-form-popup');
-const activityFormPopup = document.querySelector('.activity-form-popup');
+const hydrationFormPopup = document.querySelector('#hydrationForm');
+const sleepFormPopup = document.querySelector('#sleepForm');
+const activityFormPopup = document.querySelector('#activityForm');
 const calenderForWeek = document.querySelector('#calendarStart');
 const closeHydrate = document.querySelector('#close-hydration-form');
 const closeSleep = document.querySelector('#close-sleep-form');
@@ -168,8 +168,8 @@ function renderSleepAverages() {
 
 function showUserDetails() {
   dropDownBox.classList.toggle('hidden');
-  userAddress.innerText = `${currentUser.email}`;
-  userEmail.innerText = `${currentUser.address}`;
+  userAddress.innerText = `Address:  ${currentUser.address}`;
+  userEmail.innerText = `Email:  ${currentUser.email}`;
 }
 
 function userInputHydrationForm() {
@@ -185,7 +185,6 @@ function userInputActivityForm() {
 }
 
 hydrationFormPopup.addEventListener('submit', (event) => {
-  console.log(event);
   event.preventDefault();
   const formData = new FormData(event.target);
   console.log(formData);

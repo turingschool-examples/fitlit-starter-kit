@@ -94,9 +94,9 @@ describe('User Repository', () => {
   });
 
   it('should return the average sleep quality for all users for a given date', () => {
-    expect(userRepoSleep.getAllUsersAverages('sleepQuality', '2019/06/15')).to.equal(4);
+    expect(userRepoSleep.getAllUsersAverages('sleepQuality', '2019/06/16')).to.equal(4);
     expect(userRepoSleep.getAllUsersAverages('sleepQuality', '2019/06/17')).to.equal(3);
-    expect(userRepoSleep.getAllUsersAverages('sleepQuality', '2019/06/19')).to.equal(1)
+    expect(userRepoSleep.getAllUsersAverages('sleepQuality', '2020/01/18')).to.equal(1)
   });
 
   it('should return the average number of steps for all users for a given date', () => {

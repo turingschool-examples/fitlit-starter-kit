@@ -58,6 +58,7 @@ let lastWeekSleep;
 let lastWeekActivity;
 let chosenDate;
 let todayDate;
+let isLessThanCurrentDate;
 
 // API data
 function fetchAllData() {
@@ -191,7 +192,7 @@ hydrationFormPopup.addEventListener('submit', (event) => {
     date: formData.get('date'),
     numOunces: parseInt(formData.get('ounces')),
   };
-  const isLessThanCurrentDate = setTodayDate(newHydrationData.date);
+  isLessThanCurrentDate = setTodayDate(newHydrationData.date);
 
   if (!newHydrationData.date.includes('/') || !isLessThanCurrentDate) {
     alert(checkFormDate(newHydrationData.date, todayDate));
@@ -211,7 +212,7 @@ sleepFormPopup.addEventListener('submit', (event) => {
     sleepQuality: parseInt(formData.get('quality'))
   };
 
-  const isLessThanCurrentDate = setTodayDate(newSleepData.date);
+  isLessThanCurrentDate = setTodayDate(newSleepData.date);
 
   if (!newSleepData.date.includes('/') || !isLessThanCurrentDate) {
     alert(checkFormDate(newSleepData.date, todayDate));
@@ -231,7 +232,7 @@ activityFormPopup.addEventListener('submit', (event) => {
     minutesActive: formData.get('minutes'),
     flightsOfStairs: formData.get('flights')
   };
-  const isLessThanCurrentDate = setTodayDate(newActivityData.date);
+  isLessThanCurrentDate = setTodayDate(newActivityData.date);
 
   if (!newActivityData.date.includes('/') || !isLessThanCurrentDate) {
     alert(checkFormDate(newActivityData.date, todayDate));

@@ -94,7 +94,7 @@ returnAllUsersAvgFlights(date) {
     if (activeUser.date === userDates) {
       acc.push(average += activeUser.flightsOfStairs)
     }
-    return acc; 
+    return acc;
    }, [])
    return (average / usersAverageFlights.length).toFixed(1);
 }
@@ -106,7 +106,7 @@ returnAllUsersAvgStepsTaken(date) {
     if (activeUser.date === userDates) {
       acc.push(average += activeUser.numSteps)
     }
-    return acc; 
+    return acc;
    }, [])
    return (average / usersAverageSteps.length);
 }
@@ -125,11 +125,24 @@ returnAllUsersAvgMinsActive(date) {
   if (activeUser.date === userDates) {
     acc.push(average += activeUser.minutesActive)
   }
-  return acc; 
+  return acc;
  }, [])
  return (average / usersActiveMins.length).toFixed(1);
 }
+
+
+findAllTimeStairsClimbed(id) {
+const singleActiveUser = this.findUserData(id);
+const mostStairsClimbed = singleActiveUser.sort((a, b) => {
+    return b.flightsOfStairs - a.flightsOfStairs
+  });
+  return mostStairsClimbed[0].flightsOfStairs
 }
+
+}
+
+
+
 export default Activity;
 
 
@@ -141,18 +154,8 @@ export default Activity;
 // For a user, find their all-time stair climbing record // find method!
 
 
-findAllTimeStairsClimbed(id, userArrayFromRepo) {
-  let userObjectData = this.findData(id,userArrayFromRepo)
-  let userObjectValues = Object.values(userObjectData)
-  console.log( userObjectValues)
-  const mostStairsClimbed = userObjectValues.sort((a, b) => {
-    return b.flightsOfStairs - a.flightsOfStairs
-  });
-  return mostStairsClimbed[0].flightsOfStairs
-}
 
 // For all users, what is the average number of:
   // stairs climbed for a specified date
   // steps taken for a specific date
   // minutes active for a specific date
-

@@ -61,8 +61,9 @@
          <p><span class="user-labels">Your flights of stairs</p>
      </section>
         </section>
+       <section class="user-input">
           <section class="activity-input">
-            <form>
+            <form class="activity-form">
               <h2>Input Your Activity Data</h2>
               <label for="number-of-steps">Steps You Walked Today: </label>
               <input type="text" id="stepInput" name="number-of-steps" required minlength="1" maxlength="8" size="10" required>
@@ -73,6 +74,25 @@
               <input class="submit-button" type="button" value="Submit user activity">
           </form>
           </section>
+                  <section class="hydration-input">
+                    <form class="hydration-form">
+                      <h2>Input Your Hydration Data</h2>
+                      <label for="number-of-onces">Ounces You Drank Today: </label>
+                      <input type="text" id="hydrationInput" name="number-of-ounces" required minlength="1" maxlength="8" size="10" required>
+                      <input class="submit-button" type="button" value="Submit user activity">
+                    </form>
+                  </section>
+                          <section class="sleep-input">
+                            <form class="sleep-form">
+                              <h2>Input Your Sleep Data</h2>
+                              <label for="number-of-hours-slept">Hours of Sleep: </label>
+                              <input type="text" id="sleepHoursInput" name="number-of-hours-slept" required minlength="1" maxlength="8" size="10" required>
+                              <label for="quality-hours">Hours of Quality Sleep:</label>
+                              <input type="text" id="qualSleepHoursInput" name="minutes-active" required minlength="1" maxlength="8" size="10" required>
+                              <input class="submit-button" type="button" value="Submit user activity" form="sleep-form" >
+                            </form>
+                          </section>
+            </section>
       </main>
       <!-- <footer>
       <p class='footer-text'>© Lee, Thomas, & Morgan 2022</p>

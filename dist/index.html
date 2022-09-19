@@ -112,8 +112,14 @@
             <label for="steps">Number of Steps: </label>
             <input type="number" placeholder="Enter number" name="steps" required>
 
+            <label for="minutes">Minutes Active: </label>
+            <input type="number" id="minutes" placeholder="Enter number" name="minutes" required>
+
+            <label for="flights">Flights of Stairs: </label>
+            <input type="number" id="flights" placeholder="Enter number" name="flights" required>
+
             <button type="submit" class="post form-btn">Submit</button>
-            <button type="button" class="cancel form-btn" id="close-activity-form">Close</button> 
+            <button type="button" class="cancel form-btn" id="close-activity-form">Close</button>
           </form>
         </div>
         <!-- the button to open activity popup form -->
@@ -121,7 +127,7 @@
           <img class="icon activity-icon"  src="./images/quick-mode.png" alt="activity icon"><span class="material-icons plus-icon">add_circle</span>
         </button>
         <div class="chart-container" id="chartContainer3">
-          <p class="text step-goal">Daily Step Goal: </p>
+          <p class="text step-goal"></p>
           <canvas class="miles-by-day" id="milesByDay"></canvas>
           <br/>
           <canvas class="steps-by-day" id="stepsByDay"></canvas>

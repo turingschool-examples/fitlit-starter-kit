@@ -33,8 +33,8 @@ class Hydration {
           return entry;
         }
       });
-      return week
-  }
+      return week;
+  };
 
   getAvgOunces() {
     const totalOunces = this.ounces.reduce((acc, entry) => {

@@ -105,7 +105,7 @@ closeHydrate.addEventListener('click', closeHydrationForm);
 closeSleep.addEventListener('click', closeSleepForm);
 closeActivity.addEventListener('click', closeActivityForm);
 updateAllCharts.addEventListener('click', renderUpdatedCharts);
-friendsList.addEventListener('click', loadFriendData)
+friendsList.addEventListener('click', loadFriendData);
 // Helper Functions
 
 // DOM Functions
@@ -135,7 +135,7 @@ function renderGreeting() {
 };
 
 function renderFriendsList() {
-  friendsList.innerHTML = `Click on one of ${currentUser.name.split(' ')[0]}'s friends to view their profile`
+  friendsList.innerHTML = `Click on ${currentUser.name.split(' ')[0]}'s friends to view their profile`;
   const friendNames = userData.filter((user) => {
     if (currentUser.userFriends.includes(user.id)) {
       return user.name;
@@ -146,14 +146,14 @@ function renderFriendsList() {
     
     friendsList.innerHTML += `<button class="friend">${friend.name}</button>`;
   });
-}
+};
 
 function renderProfile() {
   fullName.innerHTML = `${currentUser.name}`;
 
-  stepGoal.innerText += ` ${currentUser.dailyStepGoal}
+  stepGoal.innerHTML += ` <div>Daily Step Goal: ${currentUser.dailyStepGoal}</div>
   Average Step Goal: ${allUsers.getAverageStepGoal()}`;
-}
+};
 
 function renderSleepAverages() {
   sleepAverages.innerText = `Your Average Hours of Sleep: ${sleep.getAvgSleepData(
@@ -164,25 +164,25 @@ function renderSleepAverages() {
     'sleepQuality',
     false
   )}`;
-}
+};
 
 function showUserDetails() {
   dropDownBox.classList.toggle('hidden');
   userAddress.innerText = `${currentUser.email}`;
   userEmail.innerText = `${currentUser.address}`;
-}
+};
 
 function userInputHydrationForm() {
   hydrationFormPopup.classList.remove('hidden');
-}
+};
 
 function userInputSleepForm() {
   sleepFormPopup.classList.remove('hidden');
-}
+};
 
 function userInputActivityForm() {
   activityFormPopup.classList.remove('hidden');
-}
+};
 
 hydrationFormPopup.addEventListener('submit', (event) => {
   console.log(event);
@@ -230,6 +230,33 @@ sleepFormPopup.addEventListener('submit', (event) => {
   event.target.reset();
 });
 
+
+
+activityFormPopup.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const newActivityData = {  
+    'userID': currentUser.id,
+    'date': formData.get('date'),
+    'numSteps': formData.get('steps'),
+    'minutesActive': formData.get('minutes'),
+    'flightsOfStairs': formData.get('flights')
+  };
+  
+  if (
+    newActivityData.userID &&
+    newActivityData.date &&
+    newActivityData.numSteps &&
+    newActivityData.minutesActive &&
+    newActivityData.flightsOfStairs
+  ) {
+    postData('http://localhost:3001/api/v1/activity', newActivityData);
+  } else {
+    return 'Invalid data';
+  }
+  event.target.reset();
+});
+
 function closeHydrationForm() {
   hydrationFormPopup.classList.add('hidden');
 }
@@ -246,7 +273,7 @@ function changeWeeklyData(event) {
     .slice(0, 10)
     .split('-')
     .join('/'));
-}
+};
 
 function renderUpdatedCharts() {
   destroyCharts();
@@ -268,34 +295,46 @@ function loadConditions(data) {
   activityData = data[3];
   hydration = new Hydration(currentUser.id, hydrationData);
   sleep = new Sleep(currentUser.id, sleepData);
+  activity = new Activity(currentUser, activityData);
   allUsers = new UserRepository(userData);
 
-  if (!hydration.ounces.find((data) => data.date == chosenDate) && !sleep.sleepDataPerUser.find((entry) => entry.date === chosenDate)) {
-    alert ('no data at all!!')
-    return 'no data at all!!'
-  }
+  charts.renderOuncesByWeek(hydration, chosenDate);
+  charts.renderOuncesPerDay(hydration, chosenDate);
+  charts.renderSleepChartByDay(sleep, chosenDate);
+  charts.renderSleepChartByWeek(sleep, chosenDate);
+  charts.renderNumStepsByWeek(activity, chosenDate);
+  charts.renderMinutesActiveByWeek(activity, chosenDate);
+  charts.renderFlightsClimbedByWeek(activity, chosenDate);
+  charts.renderMilesPerDay(activity, chosenDate)
+  charts.renderNumStepsPerDay(activity, chosenDate);
+  charts.renderMinutesActivePerDay(activity, chosenDate);
+  charts.renderFlightsClimbedPerDay(activity, chosenDate);
+
+  // if (!hydration.ounces.find((data) => data.date == chosenDate) 
+  // && !sleep.sleepDataPerUser.find((entry) => entry.date === chosenDate) 
+  // && !activity.usersActivity.find((input) => input.date === chosenDate)) {
+  //   alert ('no data at all!!')
+  //   return 'no data at all!!'
+  // };
   
-  if (!hydration.ounces.find((data) => data.date == chosenDate)) {
-    alert ('no hydration data!!!')
-    charts.renderSleepChartByDay(sleep, chosenDate);
-    charts.renderSleepChartByWeek(sleep, chosenDate);
-  } 
+  // if (!hydration.ounces.find((data) => data.date == chosenDate)) {
+  //   alert ('no hydration data!!!')
+  //   charts.renderSleepChartByDay(sleep, chosenDate);
+  //   charts.renderSleepChartByWeek(sleep, chosenDate);
+  // }; 
   
-  if (!sleep.sleepDataPerUser.find((entry) => entry.date === chosenDate)) {
-    alert ('no sleep Data!!!')
-    charts.renderOuncesByWeek(hydration, chosenDate);
-    charts.renderOuncesPerDay(hydration, chosenDate);
-  } 
-}
+  // if (!sleep.sleepDataPerUser.find((entry) => entry.date === chosenDate)) {
+  //   alert ('no sleep Data!!!')
+  //   charts.renderOuncesByWeek(hydration, chosenDate);
+  //   charts.renderOuncesPerDay(hydration, chosenDate);
+  //};
+};
+
 function loadFriendData(event) {
   currentUser = new User(allUsers.users.find((user) => user.name === event.target.innerText))
-  
-
   destroyCharts()
   friendsList.innerHTML = `Click on one of ${currentUser.name.split(' ')[0]}'s friends to view their profile`
+  stepGoal.innerText = ''
   loadUserInfo()
-
-
-
 }
 

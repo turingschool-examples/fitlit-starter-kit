@@ -58,9 +58,7 @@ class Activity {
           return day;
         }
       });
-      console.log(weeklyData)
-
-      return weeklyData
+      return weeklyData;
   };
 
   getAvgMinutesActivePerWeek(date) {

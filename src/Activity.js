@@ -22,10 +22,10 @@ class Activity {
       if (data.date === date) {
         total = this.currentUser.strideLength * data.numSteps / mileInFeet
       };
-
+      
       return total
     }, 0);
-
+    
     if (totalMiles) {
       return parseFloat(totalMiles.toFixed(1));
     } else {
@@ -33,14 +33,32 @@ class Activity {
     };
   };
 
-  getWeeklyActivity(type, date) {
+  getWeeklyActivity(date) {
     const start = this.usersActivity.findIndex((data) => data.date === date);
     const weeklyData = this.usersActivity
       .slice(start, start + 7)
-      .map((day) => day[type]);
+      .map((day) => {
+        return {
+          'date': day.date,
+          'numSteps': day.numSteps,
+          'minutesActive': day.minutesActive,
+          'flightsOfStars': day.flightsOfStairs
+          
+        };
+      })
+      .filter((day) => {
+        const getEachDate = day.date.split('/');
+        const chosenDate = date.split('/');
 
-    console.log(weeklyData)
-    return weeklyData;
+        if (
+          getEachDate[0] === chosenDate[0] &&
+          getEachDate[1] === chosenDate[1]
+        ) {
+          
+          return day;
+        }
+      });
+      return weeklyData;
   };
 
   getAvgMinutesActivePerWeek(date) {
@@ -48,6 +66,7 @@ class Activity {
     const weeklyData = this.usersActivity.slice(start, start + 7);
     
     const totalMinutes = weeklyData.reduce((sum, data) => {
+     
       return sum += data.minutesActive;
     }, 0);
     

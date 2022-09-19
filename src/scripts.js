@@ -20,7 +20,7 @@ import dayjs from 'dayjs';
 
 // Query Selectors
 const greeting = document.querySelector('.greeting');
-const friendsList = document.querySelector('.friends-list');
+let friendsList = document.querySelector('.friends-list');
 const fullName = document.querySelector('.full-name');
 const userAddress = document.querySelector('.user-address');
 const userEmail = document.querySelector('.user-email');
@@ -35,9 +35,9 @@ const hydrationFormPopup = document.querySelector('#hydrationForm');
 const sleepFormPopup = document.querySelector('#sleepForm');
 const activityFormPopup = document.querySelector('#activityForm');
 const calenderForWeek = document.querySelector('#calendarStart');
-const closeHydrate = document.querySelector('#close-hydration-form');
-const closeSleep = document.querySelector('#close-sleep-form');
-const closeActivity = document.querySelector('#close-activity-form');
+const closeHydrate = document.querySelector('#closeHydrationForm');
+const closeSleep = document.querySelector('#closeSleepForm');
+const closeActivity = document.querySelector('#closeActivityForm');
 const updateAllCharts = document.querySelector('#updateCharts');
 
 // Global variables
@@ -66,10 +66,10 @@ function fetchAllData() {
     fetchData('hydration', 'hydrationData'),
     fetchData('activity', 'activityData'),
   ]).then((data) => {
-    (userData = data[0]),
-      (sleepData = data[1]),
-      (hydrationData = data[2]),
-      (activityData = data[3]);
+      userData = data[0],
+      sleepData = data[1],
+      hydrationData = data[2],
+      activityData = data[3];
 
     currentUser = new User(userData[Math.floor(Math.random() * userData.length)]);
     hydration = new Hydration(currentUser.id, hydrationData);
@@ -105,6 +105,7 @@ closeHydrate.addEventListener('click', closeHydrationForm);
 closeSleep.addEventListener('click', closeSleepForm);
 closeActivity.addEventListener('click', closeActivityForm);
 updateAllCharts.addEventListener('click', renderUpdatedCharts);
+friendsList.addEventListener('click', loadFriendData);
 // Helper Functions
 
 // DOM Functions
@@ -134,6 +135,7 @@ function renderGreeting() {
 };
 
 function renderFriendsList() {
+  friendsList.innerHTML = `Click on ${currentUser.name.split(' ')[0]}'s friends to view their profile`;
   const friendNames = userData.filter((user) => {
     if (currentUser.userFriends.includes(user.id)) {
       return user.name;
@@ -141,16 +143,17 @@ function renderFriendsList() {
   });
 
   return friendNames.forEach((friend) => {
+    
     friendsList.innerHTML += `<button class="friend">${friend.name}</button>`;
   });
-}
+};
 
 function renderProfile() {
   fullName.innerHTML = `${currentUser.name}`;
 
-  stepGoal.innerText += ` ${currentUser.dailyStepGoal}
+  stepGoal.innerHTML += ` <div>Daily Step Goal: ${currentUser.dailyStepGoal}</div>
   Average Step Goal: ${allUsers.getAverageStepGoal()}`;
-}
+};
 
 function renderSleepAverages() {
   sleepAverages.innerText = `Your Average Hours of Sleep: ${sleep.getAvgSleepData(
@@ -161,25 +164,26 @@ function renderSleepAverages() {
     'sleepQuality',
     false
   )}`;
-}
+};
 
 function showUserDetails() {
   dropDownBox.classList.toggle('hidden');
   userAddress.innerText = `Address:  ${currentUser.address}`;
   userEmail.innerText = `Email:  ${currentUser.email}`;
-}
+};
+
 
 function userInputHydrationForm() {
   hydrationFormPopup.classList.remove('hidden');
-}
+};
 
 function userInputSleepForm() {
   sleepFormPopup.classList.remove('hidden');
-}
+};
 
 function userInputActivityForm() {
   activityFormPopup.classList.remove('hidden');
-}
+};
 
 hydrationFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -236,6 +240,38 @@ sleepFormPopup.addEventListener('submit', (event) => {
   event.target.reset();
 });
 
+
+
+activityFormPopup.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const getTodayDate = new Date();
+  const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
+  const newActivityData = {  
+    'userID': currentUser.id,
+    'date': formData.get('date'),
+    'numSteps': formData.get('steps'),
+    'minutesActive': formData.get('minutes'),
+    'flightsOfStairs': formData.get('flights')
+  };
+  
+  if (
+    newActivityData.userID &&
+    newActivityData.date.includes('/') &&
+    newActivityData.date <= todayDate &&
+    newActivityData.numSteps &&
+    newActivityData.minutesActive &&
+    newActivityData.flightsOfStairs
+  ) {
+    postData('http://localhost:3001/api/v1/activity', newActivityData);
+  } else if (!newActivityData.date.includes('/') || newActivityData.date > todayDate) {
+    alert(checkFormDate(newActivityData.date, todayDate))
+  } else {
+    return 'Invalid data';
+  }
+  event.target.reset();
+});
+
 function closeHydrationForm() {
   hydrationFormPopup.classList.add('hidden');
 }
@@ -252,7 +288,7 @@ function changeWeeklyData(event) {
     .slice(0, 10)
     .split('-')
     .join('/'));
-}
+};
 
 function renderUpdatedCharts() {
   destroyCharts();
@@ -263,29 +299,59 @@ function renderUpdatedCharts() {
     fetchData('activity', 'activityData'),
   ])
     .then((data) => {
-      userData = data[0],
-      sleepData = data[1],
-      hydrationData = data[2],
-      activityData = data[3];
-      hydration = new Hydration(currentUser.id, hydrationData);
-      sleep = new Sleep(currentUser.id, sleepData);
-      allUsers = new UserRepository(userData);
-
-      if (hydrationData[hydrationData.date]) {    
-        charts.renderOuncesByWeek(hydration, chosenDate);
-        charts.renderOuncesPerDay(hydration, chosenDate);
-        charts.renderSleepChartByDay(sleep, chosenDate);
-        charts.renderSleepChartByWeek(sleep, chosenDate);
-
-      } else {
-        charts.renderSleepChartByWeek(sleep, chosenDate);
-        alert('no hydration data for selected day')
-        charts.renderOuncesByWeek(hydration, chosenDate);
-        charts.renderSleepChartByDay(sleep, chosenDate);
-        charts.renderOuncesPerDay(hydration, chosenDate);
-      }
+      loadConditions(data)
+      
     });
 };
+function loadConditions(data) {
+  userData = data[0],
+  sleepData = data[1],
+  hydrationData = data[2],
+  activityData = data[3];
+  hydration = new Hydration(currentUser.id, hydrationData);
+  sleep = new Sleep(currentUser.id, sleepData);
+  activity = new Activity(currentUser, activityData);
+  allUsers = new UserRepository(userData);
+
+  charts.renderOuncesByWeek(hydration, chosenDate);
+  charts.renderOuncesPerDay(hydration, chosenDate);
+  charts.renderSleepChartByDay(sleep, chosenDate);
+  charts.renderSleepChartByWeek(sleep, chosenDate);
+  charts.renderNumStepsByWeek(activity, chosenDate);
+  charts.renderMinutesActiveByWeek(activity, chosenDate);
+  charts.renderFlightsClimbedByWeek(activity, chosenDate);
+  charts.renderMilesPerDay(activity, chosenDate)
+  charts.renderNumStepsPerDay(activity, chosenDate);
+  charts.renderMinutesActivePerDay(activity, chosenDate);
+  charts.renderFlightsClimbedPerDay(activity, chosenDate);
+
+  // if (!hydration.ounces.find((data) => data.date == chosenDate) 
+  // && !sleep.sleepDataPerUser.find((entry) => entry.date === chosenDate) 
+  // && !activity.usersActivity.find((input) => input.date === chosenDate)) {
+  //   alert ('no data at all!!')
+  //   return 'no data at all!!'
+  // };
+  
+  // if (!hydration.ounces.find((data) => data.date == chosenDate)) {
+  //   alert ('no hydration data!!!')
+  //   charts.renderSleepChartByDay(sleep, chosenDate);
+  //   charts.renderSleepChartByWeek(sleep, chosenDate);
+  // }; 
+  
+  // if (!sleep.sleepDataPerUser.find((entry) => entry.date === chosenDate)) {
+  //   alert ('no sleep Data!!!')
+  //   charts.renderOuncesByWeek(hydration, chosenDate);
+  //   charts.renderOuncesPerDay(hydration, chosenDate);
+  //};
+};
+
+function loadFriendData(event) {
+  currentUser = new User(allUsers.users.find((user) => user.name === event.target.innerText))
+  destroyCharts()
+  friendsList.innerHTML = `Click on one of ${currentUser.name.split(' ')[0]}'s friends to view their profile`
+  stepGoal.innerText = ''
+  loadUserInfo()
+}
 
 function checkFormDate(date, todayDate) {
   if (!date.includes('/')) {
@@ -293,4 +359,9 @@ function checkFormDate(date, todayDate) {
   } else if (date > todayDate) {
     return 'You cannot add to a future date.'
   }
+}
+
+function getTodayDate() {
+  const getTodayDate = new Date();
+  const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
 }

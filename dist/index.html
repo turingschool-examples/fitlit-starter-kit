@@ -57,14 +57,14 @@
       <div id="hydrationForm" class="form hydration-form-popup hidden">
         <form class="form-container">
           <h3>Add Ounces of Water Drank</h3>
-          <label for="hydration-date">Date: </label>
-          <input type="text" id="hydration-date" placeholder="yyyy/mm/dd" name="date" required>
+          <label for="hydrationDate">Date: </label>
+          <input type="text" id="hydrationDate" placeholder="yyyy/mm/dd" name="date" required>
 
           <label for="ounces">Ounces drank: </label>
           <input type="number" id="ounces" placeholder="Enter number" name="ounces" required>
 
           <button type="submit" class="post form-btn">Submit</button>
-          <button type="button" class="cancel form-btn" id="close-hydration-form">Close</button>
+          <button type="button" class="cancel form-btn" id="closeHydrationForm">Close</button>
         </form>
       </div>
       <!-- the button to open hydration popup form -->
@@ -82,8 +82,8 @@
       <div id="sleepForm" class="form sleep-form-popup hidden">
         <form class="form-container">
           <h3>Add How You Slept</h3>
-          <label for="sleep-date">Date: </label>
-          <input type="text" id="sleep-date" placeholder="yyyy/mm/dd" name="date" required>
+          <label for="sleepDate">Date: </label>
+          <input type="text" id="sleepDate" placeholder="yyyy/mm/dd" name="date" required>
 
           <label for="hoursSlept">Number of Hours: </label>
           <input type="number" id="hoursSlept" placeholder="Enter number" name="hours" required>
@@ -92,7 +92,7 @@
           <input type="number" id="qualitySleep" placeholder="Enter number" name="quality" required>
 
           <button type="submit" class="post form-btn">Submit</button>
-          <button type="button" class="cancel form-btn" id="close-sleep-form">Close</button>
+          <button type="button" class="cancel form-btn" id="closeSleepForm">Close</button>
         </form>
       </div>
       <!-- the button to open sleep popup form -->
@@ -103,7 +103,7 @@
       <div class="chart-container" id="chartContainer2">
         <canvas class="daily-hours-slept" id="dailyHoursSlept"></canvas>
       </div>
-      <section class="text sleep-averages" id="sleepAverages"></section>
+      <section class="sleep-averages" id="sleepAverages"></section>
       <h2 class="title sleep-box-label" id="sleepBoxLabel">Sleep</h3>
     </section>
     <section class="daily activity" id="activityBox">
@@ -111,20 +111,20 @@
       <div id="activityForm" class="form activity-form-popup hidden">
         <form class="form-container">
           <h3>Add How Many Steps You Made</h3>
-          <label for="activity-date">Date: </label>
-          <input type="text" id="activity-date" placeholder="yyyy/mm/dd" name="date" required>
+          <label for="activityDate">Date: </label>
+          <input type="text" id="activityDate" placeholder="yyyy/mm/dd" name="date" required>
 
           <label for="steps">Number of Steps: </label>
           <input type="number" id="steps" placeholder="Enter number" name="steps" required>
 
-          <label for="minutes-active">Number of Minutes Active: </label>
-          <input type="number" id="steps" placeholder="Enter number" name="steps" required>
+          <label for="minutes">Minutes Active: </label>
+          <input type="number" id="minutes" placeholder="Enter number" name="minutes" required>
 
-          <label for="steps">Number of Steps: </label>
-          <input type="number" id="steps" placeholder="Enter number" name="steps" required>
+          <label for="flights">Flights of Stairs: </label>
+          <input type="number" id="flights" placeholder="Enter number" name="flights" required>
 
           <button type="submit" class="post form-btn">Submit</button>
-          <button type="button" class="cancel form-btn" id="close-activity-form">Close</button>
+          <button type="button" class="cancel form-btn" id="closeActivityForm">Close</button>
         </form>
       </div>
       <!-- the button to open activity popup form -->
@@ -133,7 +133,7 @@
           class="material-icons plus-icon">add_circle</span>
       </button>
       <div class="chart-container" id="chartContainer3">
-        <p class="text step-goal">Daily Step Goal: </p>
+        <p class="text step-goal"></p>
         <canvas class="miles-by-day" id="milesByDay"></canvas>
         <br />
         <canvas class="steps-by-day" id="stepsByDay"></canvas>
@@ -147,7 +147,7 @@
   </section>
   <section class="column friends-info" id="friendsInfo">
     <section class="friends-details friends-list" id="friendsList">
-      <h2 class="title friends-list-label" id="friendsListLabel">Friends</h2>
+      <h3 class="title friends-list-label" id="friendsListLabel"></h3>
     </section>
     <section class="friends-details friends-highlights" id="friendsHighlights">
       <h2 class="title friends-data-label" id="friendsDataLabel">Friends Overview</h2>
@@ -163,10 +163,11 @@
       <br />
       <p class="text activity1" id="activity1">Hiking</p>
       <br />
-      <p class="text activity2" id="activity2">Running</p>
+      <p class="text activity2" id="activity2">Snowboarding</p>
       <br />
-      <p class="text activity3" id="activity3">Biking</p>
+      <p class="text activity3" id="activity3">Paddle boarding</p>
     </section>
+  </section>
   </section>
   <script src="bundle.js"></script>
 </body>

@@ -184,19 +184,24 @@ function userInputActivityForm() {
 hydrationFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
+  const getTodayDate = new Date();
+  const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
   console.log(formData);
   const newHydrationData = {
     userID: currentUser.id,
     date: formData.get('date'),
     numOunces: parseInt(formData.get('ounces')),
   };
-
+  console.log(newHydrationData.date, todayDate)
   if (
     newHydrationData.userID &&
-    newHydrationData.date &&
+    newHydrationData.date.includes('/') &&
+    newHydrationData.date <= todayDate &&
     newHydrationData.numOunces
   ) {
     postData('http://localhost:3001/api/v1/hydration', newHydrationData);
+  } else if (!newHydrationData.date.includes('/') || newHydrationData.date > todayDate) {
+    alert(checkFormDate(!newHydrationData.date.includes('/') , todayDate))
   } else {
     return 'Invalid data';
   }
@@ -206,20 +211,25 @@ hydrationFormPopup.addEventListener('submit', (event) => {
 sleepFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
+  const getTodayDate = new Date();
+  const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
   const newSleepData = {  
     userID: currentUser.id,
     date: formData.get('date'),
     hoursSlept: parseInt(formData.get('hours')),
     sleepQuality: parseInt(formData.get('quality'))
   };
-  
+
   if (
     newSleepData.userID &&
-    newSleepData.date &&
+    newSleepData.date.includes('/') &&
+    newSleepData.date <= todayDate &&
     newSleepData.hoursSlept &&
     newSleepData.sleepQuality
   ) {
     postData('http://localhost:3001/api/v1/sleep', newSleepData);
+  } else if (!newSleepData.date.includes('/') || newSleepData.date > todayDate) {
+    alert(checkFormDate(newSleepData.date, todayDate))
   } else {
     return 'Invalid data';
   }
@@ -277,3 +287,10 @@ function renderUpdatedCharts() {
     });
 };
 
+function checkFormDate(date, todayDate) {
+  if (!date.includes('/')) {
+    return 'The date needs to be separated by /. Please try again.'
+  } else if (date > todayDate) {
+    return 'You cannot add to a future date.'
+  }
+}

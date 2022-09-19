@@ -30,12 +30,12 @@
             </div>
           </div>
         </div>
-        <div class="choose-day-calendar" id="chooseDayCalendar"></div>
-        <form class="choose-day-calendar" id="chooseDayCalendar">
-          <label for="calendarStart">Choose Day </label>
-          <input type="date" class="calendar-start" id="calendarStart" name="Start">
-          <button type="button" class="update-charts" id="updateCharts">Update</button>
-        </form>
+        <div class="choose-day-calendar">
+          <form class="choose-day-calendar" id="chooseDayCalendar">
+            <label for="calendarStart">Choose Day </label>
+            <input type="date" class="calendar-start" id="calendarStart" name="Start">
+            <button type="button" class="update-charts" id="updateCharts">Update</button>
+          </form>
         </div>
         <div class="chart-container" id="weekly-highlights">
           <canvas class="weekly-ounces" id="weeklyOunces"></canvas>
@@ -113,6 +113,12 @@
           <h3>Add How Many Steps You Made</h3>
           <label for="activity-date">Date: </label>
           <input type="text" id="activity-date" placeholder="yyyy/mm/dd" name="date" required>
+
+          <label for="steps">Number of Steps: </label>
+          <input type="number" id="steps" placeholder="Enter number" name="steps" required>
+
+          <label for="minutes-active">Number of Minutes Active: </label>
+          <input type="number" id="steps" placeholder="Enter number" name="steps" required>
 
           <label for="steps">Number of Steps: </label>
           <input type="number" id="steps" placeholder="Enter number" name="steps" required>

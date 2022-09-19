@@ -39,6 +39,7 @@ class Activity {
       .slice(start, start + 7)
       .map((day) => day[type]);
 
+    console.log(weeklyData)
     return weeklyData;
   };
 

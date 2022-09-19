@@ -73,7 +73,7 @@ describe('Sleep', () => {
 
   it('should check that given date exists', () => {
     expect(sleep1.getSleepDataByGivenDay('sleepQuality','2018/06/15')).to.equal('This date could not be found.');
-  })
+  });
 
   it('should check each day of the week and filter non-consecutive entry', () => {
     expect(sleep2.getDailySleepByWeek('2020/01/16')).to.deep.equal([

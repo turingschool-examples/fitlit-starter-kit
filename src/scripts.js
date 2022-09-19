@@ -35,9 +35,9 @@ const hydrationFormPopup = document.querySelector('#hydrationForm');
 const sleepFormPopup = document.querySelector('#sleepForm');
 const activityFormPopup = document.querySelector('#activityForm');
 const calenderForWeek = document.querySelector('#calendarStart');
-const closeHydrate = document.querySelector('#close-hydration-form');
-const closeSleep = document.querySelector('#close-sleep-form');
-const closeActivity = document.querySelector('#close-activity-form');
+const closeHydrate = document.querySelector('#closeHydrationForm');
+const closeSleep = document.querySelector('#closeSleepForm');
+const closeActivity = document.querySelector('#closeActivityForm');
 const updateAllCharts = document.querySelector('#updateCharts');
 
 // Global variables
@@ -57,6 +57,7 @@ let lastWeekHydration;
 let lastWeekSleep;
 let lastWeekActivity;
 let chosenDate;
+let todayDate;
 
 // API data
 function fetchAllData() {
@@ -93,9 +94,6 @@ function fetchAllData() {
 // Event Listeners
 
 window.addEventListener('load', fetchAllData);
-
-
-
 userInfoButton.addEventListener('click', showUserDetails);
 addWaterButton.addEventListener('click', userInputHydrationForm);
 addSleepButton.addEventListener('click', userInputSleepForm);
@@ -188,19 +186,24 @@ function userInputActivityForm() {
 hydrationFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
-  console.log(formData);
+  // const getTodayDate = new Date();
+  // const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
+  // console.log(formData);
   const newHydrationData = {
     userID: currentUser.id,
     date: formData.get('date'),
     numOunces: parseInt(formData.get('ounces')),
   };
-
+  console.log(newHydrationData.date, todayDate)
   if (
     newHydrationData.userID &&
-    newHydrationData.date &&
+    newHydrationData.date.includes('/') &&
+    newHydrationData.date <= todayDate &&
     newHydrationData.numOunces
   ) {
     postData('http://localhost:3001/api/v1/hydration', newHydrationData);
+  } else if (!newHydrationData.date.includes('/') || newHydrationData.date > todayDate) {
+    alert(checkFormDate(!newHydrationData.date.includes('/') , todayDate))
   } else {
     return 'Invalid data';
   }
@@ -210,20 +213,25 @@ hydrationFormPopup.addEventListener('submit', (event) => {
 sleepFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
+  // const getTodayDate = new Date();
+  // const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
   const newSleepData = {  
     userID: currentUser.id,
     date: formData.get('date'),
     hoursSlept: parseInt(formData.get('hours')),
     sleepQuality: parseInt(formData.get('quality'))
   };
-  
+
   if (
     newSleepData.userID &&
-    newSleepData.date &&
+    newSleepData.date.includes('/') &&
+    newSleepData.date <= todayDate &&
     newSleepData.hoursSlept &&
     newSleepData.sleepQuality
   ) {
     postData('http://localhost:3001/api/v1/sleep', newSleepData);
+  } else if (!newSleepData.date.includes('/') || newSleepData.date > todayDate) {
+    alert(checkFormDate(newSleepData.date, todayDate))
   } else {
     return 'Invalid data';
   }
@@ -235,6 +243,8 @@ sleepFormPopup.addEventListener('submit', (event) => {
 activityFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
+  // const getTodayDate = new Date();
+  // const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
   const newActivityData = {  
     'userID': currentUser.id,
     'date': formData.get('date'),
@@ -242,15 +252,19 @@ activityFormPopup.addEventListener('submit', (event) => {
     'minutesActive': formData.get('minutes'),
     'flightsOfStairs': formData.get('flights')
   };
-  
+  console.log(newActivityData.date)
+  setTodayDate(newActivityData.date)
   if (
     newActivityData.userID &&
-    newActivityData.date &&
+    newActivityData.date.includes('/') &&
+    newActivityData.date <= todayDate &&
     newActivityData.numSteps &&
     newActivityData.minutesActive &&
     newActivityData.flightsOfStairs
   ) {
     postData('http://localhost:3001/api/v1/activity', newActivityData);
+  } else if (!newActivityData.date.includes('/') || newActivityData.date > todayDate) {
+    alert(checkFormDate(newActivityData.date, todayDate))
   } else {
     return 'Invalid data';
   }
@@ -338,3 +352,19 @@ function loadFriendData(event) {
   loadUserInfo()
 }
 
+function checkFormDate(date, todayDate) {
+  if (!date.includes('/')) {
+    return 'The date needs to be separated by /. Please try again.'
+  } else if (date > todayDate) {
+    return 'You cannot add to a future date.'
+  }
+}
+
+function setTodayDate(formDate) {
+  console.log(dayjs())
+  const getTodayDate = new Date();
+  todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()];
+  // console.log(todayDate, formDate)
+  const getFormDate = formDate.split('/').map(str => parseInt(str))
+  console.log(getFormDate)
+}

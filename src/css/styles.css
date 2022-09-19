@@ -67,6 +67,7 @@ header {
   text-align: center;
   margin: 1%;
   padding: 1%;
+  overflow: hidden;
   flex: 1 1 300px; /* this is needed for flex wrapping to work -- do more research about properties */
   overflow: hidden;
 }

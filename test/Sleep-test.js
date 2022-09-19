@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import Sleep from '../src/Sleep';
 import sleepData from '../src/data/sample-sleepData';
 
-describe.only('Sleep', () => {
+describe('Sleep', () => {
   let sleep1;
   let sleep2;
   let sleep3;
@@ -71,11 +71,11 @@ describe.only('Sleep', () => {
     expect(sleep1.getAvgSleepData('sleepQuality', false)).to.equal(3);
   });
 
-  it('should check that dates exists', () => {
-    expect(sleep1.getDailySleepByWeek('sleepQuality', '2018/06/15')).to.equal('No entries found.');
-  });
+  it('should check that given date exists', () => {
+    expect(sleep1.getSleepDataByGivenDay('sleepQuality','2018/06/15')).to.equal('This date could not be found.');
+  })
 
-  it('should sort each day of the week and filter non-consecutive entry', () => {
+  it('should check each day of the week and filter non-consecutive entry', () => {
     expect(sleep2.getDailySleepByWeek('2020/01/16')).to.deep.equal([
       { date: '2020/01/16', hoursSlept: 9.1, sleepQuality: 2.6 },
       { date: '2020/01/17', hoursSlept: 7.3, sleepQuality: 2.3 },

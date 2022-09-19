@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import Sleep from '../src/Sleep';
 import sleepData from '../src/data/sample-sleepData';
 
-describe.only('Sleep', () => {
+describe('Sleep', () => {
   let sleep1;
   let sleep2;
   let sleep3;

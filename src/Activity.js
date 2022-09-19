@@ -6,6 +6,8 @@ class Activity {
     this.activityData = activityData;
     }
 
+
+
   findData(id,userArrayFromRepo) {
     const userRepoInstance = new UserRepository(userArrayFromRepo)
    return userRepoInstance.findUserData(id)

@@ -7,7 +7,13 @@ class Hydration {
   
   ouncesPerDay(date) {
     const dailyOunces = this.ounces.find(entry => entry.date === date);
+
+    if (dailyOunces) {
     return dailyOunces.numOunces;
+    } else {
+      alert('hydration data missing for this date!')
+      return 'no data available'
+    }
   };
 
   getDailyOuncesByWeek(date) {

@@ -1,99 +1,103 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Fitlit</title>
-  </head>
-  <body>
-    <section class="column user-section" id="userSection">
-      <header>
-        <img class="fitlit-logo" id="fitlitLogo" src="./images/fitlit-logo.png" alt="fitlit logo">
-        <h1 class="greeting" id="greeting">Hello, !</h1>        
-      </header>
-      <section class="user-card" id="userCard" >
-        <section class="user-details">
-          <div class="user">
-            <p class="full-name"></p>
-            <div class="user-info">
-              <button type="button" class="icon-button"><img class="icon down-button" src="./images/down-button.png" alt="See user contact info"></button>
-              <div class="drop-down hidden">
-                <p class="user-address"></p>
-                <p class="user-email"></p>
-              </div>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Fitlit</title>
+</head>
+
+<body>
+  <section class="column user-section" id="userSection">
+    <header>
+      <img class="fitlit-logo" id="fitlitLogo" src="./images/fitlit-logo.webp" alt="fitlit logo">
+      <h1 class="greeting" id="greeting">Hello, !</h1>
+    </header>
+    <section class="user-card" id="userCard">
+      <section class="user-details">
+        <div class="user">
+          <h2 class="full-name"></h2>
+          <div class="user-info">
+            <button type="button" class="icon-button"><img class="icon down-button" src="./images/down-button.webp"
+                alt="See user contact info"></button>
+            <div class="drop-down hidden">
+              <p class="user-address"></p>
+              <p class="user-email"></p>
             </div>
           </div>
-          <div class="choose-day-calendar" id="chooseDayCalendar"></div>
-            <form class="choose-day-calendar" id="chooseDayCalendar">
-              <label for="calendar">Choose Day </label>
-              <input type="date" class="calendar-start" id="calendarStart" name="Start">
-              <button type="button" class="update-charts" id="updateCharts">Update</button>
-            </form>
-          </div>
-          <div class="chart-container" id="weekly-highlights">
-            <canvas class="weekly-ounces" id="weeklyOunces"></canvas>
-            <br/>
-            <canvas class="weekly-hours-slept" id="weeklyHoursSlept"></canvas>
-            <br/>
-            <canvas class="weekly-num-steps" id="weeklyNumSteps"></canvas>
-            <br/>
-            <canvas class="weekly-minutes-active" id="weeklyMinutesActive"></canvas>
-            <br/>
-            <canvas class="weekly-flights-climbed" id="weeklyFlightsClimbed"></canvas>
-          </div>
-        </section>
+        </div>
+        <div class="choose-day-calendar">
+          <form class="choose-day-calendar" id="chooseDayCalendar">
+            <label for="calendarStart">Choose Day </label>
+            <input type="date" class="calendar-start" id="calendarStart" name="Start">
+            <button type="button" class="update-charts" id="updateCharts">Update</button>
+          </form>
+        </div>
+        <div class="chart-container" id="weekly-highlights">
+          <canvas class="weekly-ounces" id="weeklyOunces"></canvas>
+          <br />
+          <canvas class="weekly-hours-slept" id="weeklyHoursSlept"></canvas>
+          <br />
+          <canvas class="weekly-num-steps" id="weeklyNumSteps"></canvas>
+          <br />
+          <canvas class="weekly-minutes-active" id="weeklyMinutesActive"></canvas>
+          <br />
+          <canvas class="weekly-flights-climbed" id="weeklyFlightsClimbed"></canvas>
+        </div>
       </section>
     </section>
-    <section class="column daily-overview" id="dailyOverview">
-      <section class="daily hydration"id="hydrationBox">
-          <!-- The hydration form:  -->
-        <div id="hydration-form" class="form hydration-form-popup hidden">
-          <form class="form-container">
-            <h3>Add Ounces of Water Drank</h3>
-            <label for="date">Date: </label>
-            <input type="text" placeholder="yyyy/mm/dd" name="date" required>
+    </section>
+  <section class="column daily-overview" id="dailyOverview">
+    <section class="daily hydration" id="hydrationBox">
+      <!-- The hydration form:  -->
+      <div id="hydrationForm" class="form hydration-form-popup hidden">
+        <form class="form-container">
+          <h3>Add Ounces of Water Drank</h3>
+          <label for="hydration-date">Date: </label>
+          <input type="text" id="hydration-date" placeholder="yyyy/mm/dd" name="date" required>
 
-            <label for="ounces">Ounces drank: </label>
-            <input type="number" placeholder="Enter number" name="ounces" required>
+          <label for="ounces">Ounces drank: </label>
+          <input type="number" id="ounces" placeholder="Enter number" name="ounces" required>
 
-            <button type="submit" class="post form-btn">Submit</button>
-            <button type="button" class="cancel form-btn" id="close-hydration-form">Close</button> 
-          </form>
-        </div>
-        <!-- the button to open hydration popup form -->
-        <button id="waterButton" type="button" class="icon-button">
-          <img class="icon water-icon"  src="./images/water.png" alt="water icon"><span class="material-icons water-plus-icon">add_circle</span>
-        </button>
-        <div class="chart-container" id="chartContainer1">
-          <canvas class="daily-ounces" id="dailyOunces"></canvas>
-        </div>
-        <h2 class="title hydration-box-label" id="hydrationBoxLabel">Hydration</h3>
-      </section>
-      <section class="daily sleep" id="sleepBox">
-        <!-- The sleep form:  -->
-        <div id="sleep-form" class="form sleep-form-popup hidden">
-          <form class="form-container">
-            <h3>Add How You Slept</h3>
-            <label for="date">Date: </label>
-            <input type="text" placeholder="yyyy/mm/dd" name="date" required>
+          <button type="submit" class="post form-btn">Submit</button>
+          <button type="button" class="cancel form-btn" id="close-hydration-form">Close</button>
+        </form>
+      </div>
+      <!-- the button to open hydration popup form -->
+      <button id="waterButton" type="button" class="icon-button">
+        <img class="icon water-icon" src="./images/water.webp" alt="water icon"><span
+          class="material-icons water-plus-icon">add_circle</span>
+      </button>
+      <div class="chart-container" id="chartContainer1">
+        <canvas class="daily-ounces" id="dailyOunces"></canvas>
+      </div>
+      <h2 class="title hydration-box-label" id="hydrationBoxLabel">Hydration</h3>
+    </section>
+    <section class="daily sleep" id="sleepBox">
+      <!-- The sleep form:  -->
+      <div id="sleepForm" class="form sleep-form-popup hidden">
+        <form class="form-container">
+          <h3>Add How You Slept</h3>
+          <label for="sleep-date">Date: </label>
+          <input type="text" id="sleep-date" placeholder="yyyy/mm/dd" name="date" required>
 
-            <label for="hours">Number of Hours: </label>
-            <input type="number" placeholder="Enter number" name="hours" required>
+          <label for="hoursSlept">Number of Hours: </label>
+          <input type="number" id="hoursSlept" placeholder="Enter number" name="hours" required>
 
-            <label for="quality">Quality of Sleep: </label>
-            <input type="number" placeholder="Enter number" name="quality" required>
+          <label for="qualitySleep">Quality of Sleep: </label>
+          <input type="number" id="qualitySleep" placeholder="Enter number" name="quality" required>
 
-            <button type="submit" class="post form-btn">Submit</button>
-            <button type="button" class="cancel form-btn" id="close-sleep-form">Close</button> 
-          </form>
-        </div>
+          <button type="submit" class="post form-btn">Submit</button>
+          <button type="button" class="cancel form-btn" id="close-sleep-form">Close</button>
+        </form>
+      </div>
       <!-- the button to open sleep popup form -->
         <button id="sleepButton" type="button" class="icon-button">
-          <img class="icon sleep-icon" src="./images/zzz.png"  alt="sleep icon"><span class="material-icons plus-icon">add_circle</span>
+          <img class="icon sleep-icon" src="./images/zzz.webp"  alt="sleep icon"><span class="material-icons plus-icon">add_circle</span>
         </button>
         <div class="chart-container" id="chartContainer2">
           <canvas class="daily-hours-slept" id="dailyHoursSlept"></canvas>
@@ -103,7 +107,7 @@
       </section>
       <section class="daily activity" id="activityBox">
         <!-- The activity form:  -->
-        <div id="activity-form" class="form activity-form-popup hidden">
+        <div id="activityForm" class="form activity-form-popup hidden">
           <form class="form-container">
             <h3>Add How Many Steps You Made</h3>
             <label for="date">Date: </label>
@@ -124,7 +128,7 @@
         </div>
         <!-- the button to open activity popup form -->
         <button id="activityButton" type="button" class="icon-button">
-          <img class="icon activity-icon"  src="./images/quick-mode.png" alt="activity icon"><span class="material-icons plus-icon">add_circle</span>
+          <img class="icon activity-icon"  src="./images/quick-mode.webp" alt="activity icon"><span class="material-icons plus-icon">add_circle</span>
         </button>
         <div class="chart-container" id="chartContainer3">
           <p class="text step-goal"></p>
@@ -162,6 +166,8 @@
         <p class="text activity3" id="activity3">Paddle boarding</p>
       </section> 
     </section>
-    <script src="bundle.js"></script>
-  </body>
+  </section>
+  <script src="bundle.js"></script>
+</body>
+
 </html>

@@ -21,13 +21,16 @@ body {
 }
 
 header {
-  font-size: 3rem;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
 }
 
 .fitlit-logo {
-  width: 66%;
-  height: auto;
+  width: 290px;
+  height: 210px;
 }
 
 .greeting {
@@ -52,9 +55,9 @@ header {
   font-size: 2rem;
 }
 
-.step-goal {
+.text {
   padding: 5%;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
 }
 
 .column {
@@ -64,7 +67,6 @@ header {
   text-align: center;
   margin: 1%;
   padding: 1%;
-  overflow: hidden;
   flex: 1 1 300px; /* this is needed for flex wrapping to work -- do more research about properties */
 }
 
@@ -82,7 +84,7 @@ header {
 }
 
 .user-details {
-  background-image: url('/src/images/teal-watercolor.png');
+  background-image: url('/src/images/teal-watercolor.webp');
   background-repeat: no-repeat;
   background-size: cover;
   padding: 5%;
@@ -108,7 +110,7 @@ header {
 }
 
 .hydration {
-  background-image: url('/src/images/grey-watercolor.png');
+  background-image: url('/src/images/grey-watercolor.webp');
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 10px 10px 5px #6a6a6a;
@@ -116,7 +118,7 @@ header {
 }
 
 .activity {
-  background-image: url('/src/images/teal-watercolor.png');
+  background-image: url('/src/images/teal-watercolor.webp');
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 10px 10px 5px #6a6a6a;
@@ -124,20 +126,16 @@ header {
 }
 
 .sleep {
-  background-image: url('/src/images/lilac-watercolor.png');
+  background-image: url('/src/images/lilac-watercolor.webp');
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 10px 10px 5px #6a6a6a;
   position: relative;
 }
 
-.sleep-averages {
-  font-size: 1.5rem;
-}
-
 .icon {
-  width: 60%;
-  /* height: auto; */
+  width: 60px;
+  height: 60px;
 }
 
 .chart-container {
@@ -157,7 +155,7 @@ header {
 }
 
 .friends-list {
-  background-image: url('/src/images/lilac-watercolor.png');
+  background-image: url('/src/images/lilac-watercolor.webp');
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 10px 10px 5px #6a6a6a;
@@ -179,7 +177,7 @@ header {
 }
 
 .friends-highlights {
-  background-image: url('/src/images/teal-watercolor.png');
+  background-image: url('/src/images/teal-watercolor.webp');
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 10px 10px 5px #6a6a6a;
@@ -187,7 +185,7 @@ header {
 }
 
 .friends-activity {
-  background-image: url('/src/images/grey-watercolor.png');
+  background-image: url('/src/images/grey-watercolor.webp');
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 10px 10px 5px #6a6a6a;
@@ -211,15 +209,15 @@ header {
 }
 
 .water-plus-icon {
-  bottom: 0px;
+  bottom: 5px;
   position: absolute;
-  right: 28px;
+  right: 6px;
 }
 
 .plus-icon {
-  bottom: 0px;
   position: absolute;
-  right: 16px;
+  right: 5px;
+  bottom: 8px;
 }
 
 .add-water-field {
@@ -235,22 +233,22 @@ header {
   right: 0px;
   top: 0px;
   bottom: 0px;
+  flex: 1 1 0px
 }
 
 .form-container {
   display: flex;
   flex-direction: column;
-  background: white;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid #fff;
+  background: #aac1d0;
   border-radius: 30px;
-  box-shadow: 3px 3px 2px grey;;
-  height: 200px;
+  box-shadow: 3px 3px 2px grey;
   padding: 20px;
-  width: 200px;
+  font-size: 1rem;
   z-index: 1;
+}
+
+.form-btn {
+  font: 'Alegreya'
 }
 
 .user-info {
@@ -258,14 +256,19 @@ header {
   position: relative;
 }
 
+.down-button {
+  width: 30px;
+  height: 30px;
+}
+
 .drop-down {
   position: absolute;
   right: 0px;
+  left: -200px;
   top: 40px;
   padding: 0.5em 0.5em;
   font-size: 1rem;
-  background: white;
-  border: 0.75rem solid transparent;
+  background: #b1a1cd;
   border-top: none;
   border-radius: 4px;
   box-shadow: 3px 3px 2px grey;
@@ -282,8 +285,8 @@ header {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-top: 10px solid transparent;
-  border-bottom: 10px solid #fff;
-  right: 4px;
+  border-bottom: 10px solid #b1a1cd;
+  right: 11px;
   bottom: 100%;
 }
 

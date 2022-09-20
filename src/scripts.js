@@ -281,7 +281,6 @@ function loadConditions(data) {
   activity = new Activity(currentUser, activityData);
   allUsers = new UserRepository(userData);
 
-  
   if (!hydration.ounces.find((data) => data.date == chosenDate) 
   && !sleep.sleepDataPerUser.find((entry) => entry.date === chosenDate) 
   && !activity.usersActivity.find((input) => input.date === chosenDate)) {

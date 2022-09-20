@@ -11,8 +11,8 @@ class Hydration {
     if (dailyOunces) {
     return dailyOunces.numOunces;
     } else {
-      alert('hydration data missing for this date!')
-      return 'no data available'
+      alert('hydration data missing for this date!');
+      return 'no data available';
     }
   };
 

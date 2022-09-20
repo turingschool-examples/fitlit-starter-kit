@@ -19,6 +19,8 @@ import './images/milky-way.png'
 import './images/galaxy.png'
 import './images/constellation.png'
 import './images/brain.png'
+import './images/pink-cloud.png'
+import './images/blue-clouds.png'
 import Activity from './Activity';
 
 // ######### Query Selectors ###########
@@ -85,7 +87,7 @@ fetchAll()
     postActivity(singleUser.id,newActivityData)
   })
 };
-//Test variables 
+//Test variables
 
 
 const newActivityData = {numSteps:1000, minutesActive: 2000, flightsOfStairs: 3000}

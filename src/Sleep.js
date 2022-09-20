@@ -10,7 +10,6 @@ class Sleep {
     if (value) {
       return value[type];
     } else {
-      alert('sleep data missing for this date!!');
       return 'This date could not be found.';
     }
   }

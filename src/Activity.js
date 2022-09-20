@@ -59,6 +59,7 @@ class Activity {
           return day;
         }
       });
+
       return weeklyData;
   };
 
@@ -108,7 +109,8 @@ class Activity {
   };
 
   getHighestFlightsClimbed() {
-    const sortedData = this.usersActivity
+    const userActivityDataCopy = this.usersActivity.map(data => data);
+    const sortedData = userActivityDataCopy
       .sort((first, last) => last.flightsOfStairs - first.flightsOfStairs);
     
     const climbingRecord = sortedData.reduce((list, data) => {

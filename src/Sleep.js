@@ -54,11 +54,11 @@ class Sleep {
           getEachDate[0] === chosenDate[0] &&
           getEachDate[1] === chosenDate[1]
         ) {
-          
           return entry;
-        }
+        } 
       });
-      return week
+
+      return week;
   }
 };
 

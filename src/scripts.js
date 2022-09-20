@@ -35,9 +35,9 @@ const hydrationFormPopup = document.querySelector('#hydrationForm');
 const sleepFormPopup = document.querySelector('#sleepForm');
 const activityFormPopup = document.querySelector('#activityForm');
 const calenderForWeek = document.querySelector('#calendarStart');
-const closeHydrate = document.querySelector('#close-hydration-form');
-const closeSleep = document.querySelector('#close-sleep-form');
-const closeActivity = document.querySelector('#close-activity-form');
+const closeHydrate = document.querySelector('#closeHydrationForm');
+const closeSleep = document.querySelector('#closeSleepForm');
+const closeActivity = document.querySelector('#closeActivityForm');
 const updateAllCharts = document.querySelector('#updateCharts');
 
 // Global variables
@@ -57,6 +57,8 @@ let lastWeekHydration;
 let lastWeekSleep;
 let lastWeekActivity;
 let chosenDate;
+let todayDate;
+let isLessThanCurrentDate;
 
 // API data
 function fetchAllData() {
@@ -93,9 +95,6 @@ function fetchAllData() {
 // Event Listeners
 
 window.addEventListener('load', fetchAllData);
-
-
-
 userInfoButton.addEventListener('click', showUserDetails);
 addWaterButton.addEventListener('click', userInputHydrationForm);
 addSleepButton.addEventListener('click', userInputSleepForm);
@@ -187,23 +186,19 @@ function userInputActivityForm() {
 hydrationFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
-  console.log(formData);
   const newHydrationData = {
     userID: currentUser.id,
     date: formData.get('date'),
     numOunces: parseInt(formData.get('ounces')),
   };
+  isLessThanCurrentDate = setTodayDate(newHydrationData.date);
 
-  if (
-    newHydrationData.userID &&
-    newHydrationData.date &&
-    newHydrationData.numOunces
-  ) {
-    postData('http://localhost:3001/api/v1/hydration', newHydrationData);
+  if (!newHydrationData.date.includes('/') || !isLessThanCurrentDate) {
+    alert(checkFormDate(newHydrationData.date, todayDate));
   } else {
-    return 'Invalid data';
+    postData('http://localhost:3001/api/v1/activity', newHydrationData);
+    event.target.reset();
   }
-  event.target.reset();
 });
 
 sleepFormPopup.addEventListener('submit', (event) => {
@@ -215,43 +210,35 @@ sleepFormPopup.addEventListener('submit', (event) => {
     hoursSlept: parseInt(formData.get('hours')),
     sleepQuality: parseInt(formData.get('quality'))
   };
-  
-  if (
-    newSleepData.userID &&
-    newSleepData.date &&
-    newSleepData.hoursSlept &&
-    newSleepData.sleepQuality
-  ) {
-    postData('http://localhost:3001/api/v1/sleep', newSleepData);
+
+  isLessThanCurrentDate = setTodayDate(newSleepData.date);
+
+  if (!newSleepData.date.includes('/') || !isLessThanCurrentDate) {
+    alert(checkFormDate(newSleepData.date, todayDate));
   } else {
-    return 'Invalid data';
+    postData('http://localhost:3001/api/v1/activity', newSleepData);
+    event.target.reset();
   }
-  event.target.reset();
 });
 
 activityFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
   const newActivityData = {  
-    'userID': currentUser.id,
-    'date': formData.get('date'),
-    'numSteps': formData.get('steps'),
-    'minutesActive': formData.get('minutes'),
-    'flightsOfStairs': formData.get('flights')
+    userID: currentUser.id,
+    date: formData.get('date'),
+    numSteps: formData.get('steps'),
+    minutesActive: formData.get('minutes'),
+    flightsOfStairs: formData.get('flights')
   };
-  
-  if (
-    newActivityData.userID &&
-    newActivityData.date &&
-    newActivityData.numSteps &&
-    newActivityData.minutesActive &&
-    newActivityData.flightsOfStairs
-  ) {
-    postData('http://localhost:3001/api/v1/activity', newActivityData);
+  isLessThanCurrentDate = setTodayDate(newActivityData.date);
+
+  if (!newActivityData.date.includes('/') || !isLessThanCurrentDate) {
+    alert(checkFormDate(newActivityData.date, todayDate));
   } else {
-    return 'Invalid data';
+    postData('http://localhost:3001/api/v1/activity', newActivityData);
+    event.target.reset();
   }
-  event.target.reset();
 });
 
 function closeHydrationForm() {
@@ -312,25 +299,36 @@ function loadConditions(data) {
   charts.renderNumStepsPerDay(activity, chosenDate);
   charts.renderMinutesActivePerDay(activity, chosenDate);
   charts.renderFlightsClimbedPerDay(activity, chosenDate);
-
-  
-  // if (!hydration.ounces.find((data) => data.date == chosenDate)) {
-    //   alert ('no hydration data!!!')
-  //   charts.renderSleepChartByDay(sleep, chosenDate);
-  //   charts.renderSleepChartByWeek(sleep, chosenDate);
-  // }; 
-  
-  // if (!sleep.sleepDataPerUser.find((entry) => entry.date === chosenDate)) {
-  //   alert ('no sleep Data!!!')
-  //   charts.renderOuncesByWeek(hydration, chosenDate);
-  //   charts.renderOuncesPerDay(hydration, chosenDate);
-  //};
 };
 
 function loadFriendData(event) {
-  currentUser = new User(allUsers.users.find((user) => user.name === event.target.innerText))
-  destroyCharts()
-  friendsList.innerHTML = `Click on one of ${currentUser.name.split(' ')[0]}'s friends to view their profile`
-  stepGoal.innerText = ''
-  loadUserInfo()
-};
+  currentUser = new User(allUsers.users.find((user) => user.name === event.target.innerText));
+  destroyCharts();
+  friendsList.innerHTML = `Click on one of ${currentUser.name.split(' ')[0]}'s friends to view their profile`;
+  stepGoal.innerText = '';
+  loadUserInfo();
+}
+
+function checkFormDate(date, todayDate) {
+  if (!date.includes('/')) {
+    return 'The date needs to be separated by /. Please try again.';
+  } else if (date >= todayDate) {
+    return 'You cannot add to a future date. Please try again';
+  }
+}
+
+function setTodayDate(formDate) {
+  const getTodayDate = new Date();
+  todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()];
+  const getFormDate = formDate.split('/').map(str => parseInt(str));
+
+  if (
+    todayDate[0] === getFormDate[0] &&
+    todayDate[1] === getFormDate[1] &&
+    todayDate[2] >= getFormDate[2] 
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}

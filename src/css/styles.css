@@ -98,8 +98,8 @@ font-size: larger;
 
 .submit-button {
   font-weight: bold;
-  background-color: #333;
-  color:crimson;
+  background-color: rgb(132, 37, 155);
+  color:rgb(255, 255, 255);
   margin-top:3vw;
 }
 

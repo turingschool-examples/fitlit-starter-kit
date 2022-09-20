@@ -69,40 +69,37 @@
         </section>
        <section class="user-input">
           <section class="activity-input">
-            <form class="activity-form">
+            <form class="activity-form" aria-label="Input your activity information">
               <h2>Input Your Activity Data</h2>
               <label for="number-of-steps">Steps You Walked Today: </label>
-              <input type="text" id="enterYourAmountOfSteps" name="number-of-steps" required minlength="1" maxlength="8" size="10" required>
+              <input type="text" id="enterYourAmountOfSteps" name="number-of-steps" aria-label="number of steps" required minlength="1" maxlength="8" size="10" required>
               <label for="minutes-active">Minutes you were Active:</label>
-              <input type="text" id="minutesActive" name="minutes-active" required minlength="1" maxlength="8" size="10" required>
+              <input type="text" id="minutesActive" name="minutes-active" aria-label="minutes active" required minlength="1" maxlength="8" size="10" required>
               <label for="flights-of-stairs">Flights of Stairs Climbed you climbed: </label>
-              <input type="text" id="flightOfStairs" name="flights-of-stairs" required minlength="1" maxlength="8" size="10" required>
-              <input class="submit-button" type="button" value="Submit user activity">
+              <input type="text" id="flightOfStairs" name="flights-of-stairs" aria-label="flights of satirs climed" required minlength="1" maxlength="8" size="10" required>
+              <input class="submit-button" type="button" aria-label="Submit user activity">
           </form>
           </section>
                   <section class="hydration-input">
-                    <form class="hydration-form">
+                    <form class="hydration-form" aria-label="Input your Hydration information">
                       <h2>Input Your Hydration Data</h2>
                       <label for="number-of-onces">Ounces You Drank Today: </label>
-                      <input type="text" id="hydrationInput" name="number-of-ounces" required minlength="1" maxlength="8" size="10" required>
+                      <input type="text" id="hydrationInput" name="number-of-ounces" required minlength="1" maxlength="8" size="10" aria-label="ounces of water drank" required>
                       <input class="submit-button" type="button" value="Submit user activity">
                     </form>
                   </section>
                           <section class="sleep-input">
-                            <form class="sleep-form">
+                            <form class="sleep-form" aria-label="Input your sleep information">
                               <h2>Input Your Sleep Data</h2>
                               <label for="number-of-hours-slept">Hours of Sleep: </label>
-                              <input type="text" id="sleepHoursInput" name="number-of-hours-slept" required minlength="1" maxlength="8" size="10" required>
+                              <input type="text" id="sleepHoursInput" name="number-of-hours-slept" required minlength="1" maxlength="8" size="10" aria-label="number of hours slept" required>
                               <label for="quality-hours">Hours of Quality Sleep:</label>
-                              <input type="text" id="qualSleepHoursInput" name="minutes-active" required minlength="1" maxlength="8" size="10" required>
+                              <input type="text" id="qualSleepHoursInput" name="minutes-active" required minlength="1" maxlength="8" size="10" aria-label="number quality of hours slept" required>
                               <input class="submit-button" type="button" value="Submit user activity" form="sleep-form" >
                             </form>
                           </section>
             </section>
       </main>
-      <!-- <footer>
-      <p class='footer-text'>© Lee, Thomas, & Morgan 2022</p>
-      </footer> -->
     <script src="bundle.js"></script>
   </body>
 </html>

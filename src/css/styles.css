@@ -3,7 +3,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-content: center;
-  background-image: url('/src/images/brain.png');
+  background-color: #533483;
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
@@ -13,32 +13,47 @@ body {
   overflow-x: hidden;
   overflow-y: scroll;
 }
+
 .for-input-styles {
   display:flex;
+}
 
+.user-form-title {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  width: 100vw;
+  height: 20vh;
+}
+
+.main-section-title {
+  margin-left: 32%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .user-input {
   display: flex;
-  justify-content: space-evenly;
-
+  justify-content: space-around;
+  margin-right: 15%;
 }
 
 .activity-input {
-    background-color: blueviolet;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    width: 20vw;
-    height: 50vh;
-    line-height: 3;
-    background-color: blueviolet;
-    z-index: 99;
-    border: 3px solid #531345;
-    border-radius: 10%;
-    box-shadow: 0 12px 16px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  width: 20vw;
+  height: 50vh;
+  line-height: 2;
+  background-color: #9C9EFE;
+  z-index: 99;
+  border: 3px solid #531345;
+  border-radius: 10%;
+  box-shadow: 0 12px 16px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);
+
 }
+
 .hydration-input {
   display: flex;
   flex-direction: column;
@@ -47,7 +62,7 @@ body {
   width: 20vw;
   height: 50vh;
   line-height: 3;
-  background-color: rgb(73, 43, 226);
+  background-color: #9C9EFE;
   z-index: 99;
   border: 3px solid #531345;
   border-radius: 10%;
@@ -62,7 +77,7 @@ body {
   width: 20vw;
   height: 50vh;
   line-height: 3;
-  background-color: rgb(135, 117, 229);
+  background-color: #9C9EFE;
   z-index: 99;
   border: 3px solid #531345;
   border-radius: 10%;
@@ -153,9 +168,10 @@ color: rgb(0, 0, 255);
 }
 
 header {
-height: 33vh;
+height: 20vh;
 width: 30vw;
-margin-left: 3vw;
+margin-left: 17vw;
+margin-top: 3%;
 }
 
 h1 {
@@ -168,11 +184,10 @@ h1 {
   margin-bottom: -5vw;
 }
 
-
 .user-info {
   display:flex;
   width: 31vw;
-  height: 29vw;
+  height: 26vw;
   margin-right: 2%;
   border: 3px solid  #531345;
   background-color: rgba(255, 255, 255, 0.3);
@@ -201,8 +216,8 @@ margin-top: 3vw;
 
 .user-hydro {
   display: flex;
-  width: 17vw;
-  height: 51vh;
+  width: 18vw;
+  height: 50vh;
   border: 3px solid #531345;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 10%;
@@ -219,8 +234,8 @@ margin-top: 3vw;
 
 .user-sleep {
   display:flex;
-  width: 20vw;
-  height: 43vh;
+  width: 18vw;
+  height: 50vh;
   border: 3px solid  #531345;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 10%;
@@ -279,16 +294,16 @@ margin-top: 3vw;
 
 .user-steps {
   display: flex;
-  width: 20vw;
+  width: 27vw;
   height: 31vh;
-  margin-top: .5vh;
+  margin-top: 10vh;
   border: 3px solid #531345;
   color:black;
   border-radius: 10%;
   box-shadow: 0 12px 16px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);
   transition: all 0.1s ease;
   background-color: aqua;
-  background-image: url('/src/images/road-texture.png');
+  background-image: url('/src/images/blue-clouds.png');
   background-size: cover;
   flex-direction: column;
   justify-content: center;
@@ -308,24 +323,16 @@ margin-top: 3vw;
 .user-activity-container {
   display: flex;
   flex-direction: column;
-  background-color: green;
-  width: 23vw;
-  height: 13vw;
+  border: 3px solid #531345;
+  color:black;
+  background-image: url('/src/images/pink-cloud.png');
+  width: 27vw;
+  height: 31vh;
   border-radius: 10%;
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
   transition: all 0.1s ease;
-  margin-top: 1vh;
+  margin-top: 10vh;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
 }
-
-
-/* .footer {
-  display: flex;
-  background-color: #060911;
-  width: 10vw;
-  height: 7.5vh;
-}
-
-.footer-text {
-  color: grey;
-  margin-top: 1300px;
-} */

@@ -58,6 +58,7 @@ let lastWeekSleep;
 let lastWeekActivity;
 let chosenDate;
 let todayDate;
+let isLessThanCurrentDate;
 
 // API data
 function fetchAllData() {
@@ -186,35 +187,24 @@ function userInputActivityForm() {
 hydrationFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
-  // const getTodayDate = new Date();
-  // const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
-  // console.log(formData);
   const newHydrationData = {
     userID: currentUser.id,
     date: formData.get('date'),
     numOunces: parseInt(formData.get('ounces')),
   };
-  console.log(newHydrationData.date, todayDate)
-  if (
-    newHydrationData.userID &&
-    newHydrationData.date.includes('/') &&
-    newHydrationData.date <= todayDate &&
-    newHydrationData.numOunces
-  ) {
-    postData('http://localhost:3001/api/v1/hydration', newHydrationData);
-  } else if (!newHydrationData.date.includes('/') || newHydrationData.date > todayDate) {
-    alert(checkFormDate(!newHydrationData.date.includes('/') , todayDate))
+  isLessThanCurrentDate = setTodayDate(newHydrationData.date);
+
+  if (!newHydrationData.date.includes('/') || !isLessThanCurrentDate) {
+    alert(checkFormDate(newHydrationData.date, todayDate));
   } else {
-    return 'Invalid data';
+    postData('http://localhost:3001/api/v1/activity', newHydrationData);
+    event.target.reset();
   }
-  event.target.reset();
 });
 
 sleepFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
-  // const getTodayDate = new Date();
-  // const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
   const newSleepData = {  
     userID: currentUser.id,
     date: formData.get('date'),
@@ -222,53 +212,34 @@ sleepFormPopup.addEventListener('submit', (event) => {
     sleepQuality: parseInt(formData.get('quality'))
   };
 
-  if (
-    newSleepData.userID &&
-    newSleepData.date.includes('/') &&
-    newSleepData.date <= todayDate &&
-    newSleepData.hoursSlept &&
-    newSleepData.sleepQuality
-  ) {
-    postData('http://localhost:3001/api/v1/sleep', newSleepData);
-  } else if (!newSleepData.date.includes('/') || newSleepData.date > todayDate) {
-    alert(checkFormDate(newSleepData.date, todayDate))
+  isLessThanCurrentDate = setTodayDate(newSleepData.date);
+
+  if (!newSleepData.date.includes('/') || !isLessThanCurrentDate) {
+    alert(checkFormDate(newSleepData.date, todayDate));
   } else {
-    return 'Invalid data';
+    postData('http://localhost:3001/api/v1/activity', newSleepData);
+    event.target.reset();
   }
-  event.target.reset();
 });
-
-
 
 activityFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
-  // const getTodayDate = new Date();
-  // const todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()].join('/')
   const newActivityData = {  
-    'userID': currentUser.id,
-    'date': formData.get('date'),
-    'numSteps': formData.get('steps'),
-    'minutesActive': formData.get('minutes'),
-    'flightsOfStairs': formData.get('flights')
+    userID: currentUser.id,
+    date: formData.get('date'),
+    numSteps: formData.get('steps'),
+    minutesActive: formData.get('minutes'),
+    flightsOfStairs: formData.get('flights')
   };
-  console.log(newActivityData.date)
-  setTodayDate(newActivityData.date)
-  if (
-    newActivityData.userID &&
-    newActivityData.date.includes('/') &&
-    newActivityData.date <= todayDate &&
-    newActivityData.numSteps &&
-    newActivityData.minutesActive &&
-    newActivityData.flightsOfStairs
-  ) {
-    postData('http://localhost:3001/api/v1/activity', newActivityData);
-  } else if (!newActivityData.date.includes('/') || newActivityData.date > todayDate) {
-    alert(checkFormDate(newActivityData.date, todayDate))
+  isLessThanCurrentDate = setTodayDate(newActivityData.date);
+
+  if (!newActivityData.date.includes('/') || !isLessThanCurrentDate) {
+    alert(checkFormDate(newActivityData.date, todayDate));
   } else {
-    return 'Invalid data';
+    postData('http://localhost:3001/api/v1/activity', newActivityData);
+    event.target.reset();
   }
-  event.target.reset();
 });
 
 function closeHydrationForm() {
@@ -298,8 +269,7 @@ function renderUpdatedCharts() {
     fetchData('activity', 'activityData'),
   ])
     .then((data) => {
-      loadConditions(data)
-      
+      loadConditions(data);
     });
 };
 function loadConditions(data) {
@@ -345,26 +315,33 @@ function loadConditions(data) {
 };
 
 function loadFriendData(event) {
-  currentUser = new User(allUsers.users.find((user) => user.name === event.target.innerText))
-  destroyCharts()
-  friendsList.innerHTML = `Click on one of ${currentUser.name.split(' ')[0]}'s friends to view their profile`
-  stepGoal.innerText = ''
-  loadUserInfo()
+  currentUser = new User(allUsers.users.find((user) => user.name === event.target.innerText));
+  destroyCharts();
+  friendsList.innerHTML = `Click on one of ${currentUser.name.split(' ')[0]}'s friends to view their profile`;
+  stepGoal.innerText = '';
+  loadUserInfo();
 }
 
 function checkFormDate(date, todayDate) {
   if (!date.includes('/')) {
-    return 'The date needs to be separated by /. Please try again.'
-  } else if (date > todayDate) {
-    return 'You cannot add to a future date.'
+    return 'The date needs to be separated by /. Please try again.';
+  } else if (date >= todayDate) {
+    return 'You cannot add to a future date. Please try again';
   }
 }
 
 function setTodayDate(formDate) {
-  console.log(dayjs())
   const getTodayDate = new Date();
   todayDate = [getTodayDate.getFullYear(), getTodayDate.getMonth() + 1, getTodayDate.getDate()];
-  // console.log(todayDate, formDate)
-  const getFormDate = formDate.split('/').map(str => parseInt(str))
-  console.log(getFormDate)
+  const getFormDate = formDate.split('/').map(str => parseInt(str));
+
+  if (
+    todayDate[0] === getFormDate[0] &&
+    todayDate[1] === getFormDate[1] &&
+    todayDate[2] >= getFormDate[2] 
+  ) {
+    return true;
+  } else {
+    return false;
+  }
 }

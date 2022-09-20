@@ -2,13 +2,104 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Fitlit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <html lang='en' dir 'ltr'>
+     <link rel='icon' href='./images/Activity.png'>
+    <title>GDFitness</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+      <header>
+        <h1>Get Down with the Fitness</h1>
+        <section class="user-name" id='userName'>users name</section>
+      </header>
+      <main>
+        <section class="user-container" id="userContainer">
+          <section class="user-info" id="userInfo">
+            <div class='user-data-details'>
+              <img class='clipboard' src="./images/Clipboard.png" alt="clipboard logo" height="80px" width="80px">
+              <h2>Personal Data</h2>
+              <p><span class="user-labels"> Name:</span> <span id='name'></span> </p>
+              <p><span class="user-labels">Email: </p><p></span>
+                <span id='email'></span></p>
+              <p><span class="user-labels">Address:</span><span id='address'></span> </p>
+              <p><span class="user-labels">Stride:</span><span id='stride'></span></p>
+              <p><span class="user-labels">Friends:</span><span id='friends'></span> </p>
+          </div>
+      </section>
+        <section class="user-hydro" id="userHydro">
+          <h2>Hydrate</h2>
+          <img class="hydrate-logo" src="./images/galaxy.png" alt="hydrate logo" height="100px" width="100px">
+            <div class='user-hydro-details'>
+              <p><span class="user-labels"> Todays OZ Drank:</span> <span id='todayOunces'></span> </p>
+              <p><span class="user-labels"> Avg OZ Drank Daily:</span> <span id='AvgOzPerDay'></span> </p>
+              <p><span class="user-labels"> Avg OZ Drank Weekly:</span> <span id='AvgOzWeekly'></span> </p>
+            </div>
+          </section>
+          <section class="user-sleep" id="userSleep">
+            <img class="sleep-logo" src="./images/milky-way.png" alt="sleep logo" height="80px" width="80px">
+            <h2>Sleep</h2>
+            <div class="user-sleep-details">
+              <p><span class="user-labels"> Hours Slept Last Night: </span><span id='hoursSleptPerNight'></span></p>
+              <p><span class="user-labels">Quality hours slept =  </span> <span id='qualHrsPerNight'></span> </p>
+              <p><span class="user-labels"> Avg hours slept: </span> <span id='avgHrsSlept'></span> </p>
+              <p><span class="user-labels"> Avg quality hours slept: </span> <span id='avgQualHrsSlept'></span> </p>
+              <p><span class="user-labels"> Hours slept (1-week): </span> <span id='hrsSleptPerWeek'></span> </p>
+              <p><span class="user-labels"> Quality hours (1-week): </span> <span id='qualHrsSleptPerWeek'></span> </li>
+            </div>
+          </section>
+      <section class="user-steps" id="userSteps">
+         <div class='user-step'>
+          <h2>Step Stats</h2>
+          <img class='activity-logo' src="./images/constellation.png" alt="Activity logo" height="100px" width="100px">
+          <p><span class="user-labels">Daily Step Goal:</span> <span id='stepGoal'></span> Steps</p>
+          <p><span class="user-labels">All User Average:</span><span id='allUserAverage'></span> Steps </p>
+        </div>
+     </section>
+     <section class="user-activity-container" id="userActivityContainer">
+        <div class='user-step'>
+        <h2>Activity Stats</h2>
+         <p><span class="user-labels">Your Num of steps:</span> <span id='numOfSteps'></span> </p>
+         <p><span class="user-labels">Your minutes active:</span> <span id='minsActive'></span> </p>
+         <p><span class="user-labels">Your flights of stairs:</span> <span id ='stairFlights'></span> </p>
+        </div>
+     </section>
+        </section>
+        <section class='user-form-title'>
+        <h1 class='main-section-title'>ADD YOUR ACTIVITY BELOW</h1>
+        </section>
+       <section class="user-input">
+          <section class="activity-input">
+            <form class="activity-form" aria-label="Input your activity information">
+              <h2>Input Your Activity Data</h2>
+              <label for="number-of-steps">Steps You Walked Today: </label>
+              <input type="text" id="enterYourAmountOfSteps" name="number-of-steps" aria-label="number of steps" required minlength="1" maxlength="8" size="10" required>
+              <label for="minutes-active">Minutes you were Active:</label>
+              <input type="text" id="minutesActive" name="minutes-active" aria-label="minutes active" required minlength="1" maxlength="8" size="10" required>
+              <label for="flights-of-stairs">Flights of Stairs Climbed you climbed: </label>
+              <input type="text" id="flightOfStairs" name="flights-of-stairs" aria-label="flights of satirs climed" required minlength="1" maxlength="8" size="10" required>
+              <input class="submit-button" type="button" value="Submit user activity">
+          </form>
+          </section>
+                  <section class="hydration-input">
+                    <form class="hydration-form" aria-label="Input your Hydration information">
+                      <h2>Input Your Hydration Data</h2>
+                      <label for="number-of-onces">Ounces You Drank Today: </label>
+                      <input type="text" id="hydrationInput" name="number-of-ounces" required minlength="1" maxlength="8" size="10" aria-label="ounces of water drank" required>
+                      <input class="submit-button" type="button" value="Submit user activity">
+                    </form>
+                  </section>
+                          <section class="sleep-input">
+                            <form class="sleep-form" aria-label="Input your sleep information">
+                              <h2>Input Your Sleep Data</h2>
+                              <label for="number-of-hours-slept">Hours of Sleep: </label>
+                              <input type="text" id="sleepHoursInput" name="number-of-hours-slept" required minlength="1" maxlength="8" size="10" aria-label="number of hours slept" required>
+                              <label for="quality-hours">Hours of Quality Sleep:</label>
+                              <input type="text" id="qualSleepHoursInput" name="minutes-active" required minlength="1" maxlength="8" size="10" aria-label="number quality of hours slept" required>
+                              <input class="submit-button" type="button" value="Submit user activity" form="sleep-form" >
+                            </form>
+                          </section>
+            </section>
+      </main>
     <script src="bundle.js"></script>
   </body>
 </html>

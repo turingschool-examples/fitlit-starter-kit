@@ -126,9 +126,11 @@ We worked on making the UI/UX design of our page to be responsive to ensure that
 
 In Part 1, we learned how to retrieve data from provided Endpoints to create our bar charts. It required a lot of research and  how to properly configure them to look uniform with our page. We hope to project user data in other chart forms that will more concisely show the user their progress.
 
-In Part 2, we learned 
-
 At the start of this project, we were all concerned about the size and complexity of the work that needed to be done. To our surprise, the experience was much smoother and less stressful than we had anticipated. We feel this was due to our continuous communication and supportive teamwork throughout the project. 
+
+In Part 2, we learned how to work with more clomplex data sets, how to post data to a server and we built upon our knowledge of how to display the data we worked with in charts. As our styling was mostly finished by part 1, this time for part 2 was mostly spent improving functionality and making sure our validations were working properly.
+
+We continued our excellent communication and support of one another to enhance our working conditions. We are all very proud of the work we did with this project!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

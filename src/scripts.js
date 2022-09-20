@@ -167,6 +167,19 @@ function showUserDetails() {
 
 function loadFriendData(event) {
   currentUser = new User(allUsers.users.find((user) => user.name === event.target.innerText));
+  hydration = new Hydration(currentUser.id, hydrationData);
+  sleep = new Sleep(currentUser.id, sleepData);
+  activity = new Activity(currentUser, activityData)
+  allUsers = new UserRepository(userData);
+  allUsersActivity = new UserRepository(userData, activityData)
+
+  lastHydrationEntry = hydration.ounces[hydration.ounces.length - 1].date;
+  lastSleepEntry = sleep.sleepDataPerUser[sleep.sleepDataPerUser.length - 1].date;
+  lastActivityEntry = activity.usersActivity[activity.usersActivity.length - 1].date;
+
+  lastWeekHydration = hydration.ounces[hydration.ounces.length - 7].date;
+  lastWeekSleep = sleep.sleepDataPerUser[sleep.sleepDataPerUser.length - 7].date;
+  lastWeekActivity = activity.usersActivity[activity.usersActivity.length - 7].date;
   destroyCharts();
   friendsList.innerHTML = `Click on one of ${currentUser.name.split(' ')[0]}'s friends to view their profile`;
   stepGoal.innerText = '';

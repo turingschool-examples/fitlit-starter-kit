@@ -4,9 +4,9 @@
 ## OverView
 Are you in need of some extra motivation?  Especially when it comes to working out?!  Look no further!  Use our app: Get Down with the Fitness to keep track of your daily/weekly steps goals, hydration stats, and sleep goals!  The best part is, you can compete and share with your friends!
 
-![Site overview:](https://user-images.githubusercontent.com/102934145/188329775-6afa5319-c898-4dbd-afa5-94bcd069495a.png)
-
-
+![Part 1 Site overview:](https://user-images.githubusercontent.com/102934145/188329775-6afa5319-c898-4dbd-afa5-94bcd069495a.png)
+![Part 2 Site overview ](https://user-images.githubusercontent.com/105405396/191311266-13710462-afd7-41cd-94bf-b2066294503c.png)
+![User Input Forms](https://user-images.githubusercontent.com/105405396/191311368-d0955a76-c3eb-4ccf-8d75-360b06258f98.png)
 ## Project Specs:
 [Click to view rubric](http://frontend.turing.io/projects/fitlit.html).
 

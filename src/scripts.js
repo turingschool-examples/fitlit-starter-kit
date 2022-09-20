@@ -271,6 +271,7 @@ function renderUpdatedCharts() {
       loadConditions(data)
     });
 };
+
 function loadConditions(data) {
   userData = data[0],
   sleepData = data[1],

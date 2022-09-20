@@ -20,8 +20,6 @@ import dayjs from 'dayjs';
 
 // Query Selectors
 const greeting = document.querySelector('.greeting');
-let friendsList = document.querySelector('.friends-list');
-const fullName = document.querySelector('.full-name');
 const userAddress = document.querySelector('.user-address');
 const userEmail = document.querySelector('.user-email');
 const stepGoal = document.querySelector('.step-goal');
@@ -39,17 +37,19 @@ const closeHydrate = document.querySelector('#closeHydrationForm');
 const closeSleep = document.querySelector('#closeSleepForm');
 const closeActivity = document.querySelector('#closeActivityForm');
 const updateAllCharts = document.querySelector('#updateCharts');
+let friendsList = document.querySelector('.friends-list');
 
 // Global variables
 let userData;
 let sleepData;
 let hydrationData;
+let activityData;
 let currentUser;
 let hydration;
 let sleep;
 let activity;
 let allUsers;
-let activityData;
+let allUsersActivity;
 let lastHydrationEntry;
 let lastSleepEntry;
 let lastActivityEntry;
@@ -78,22 +78,21 @@ function fetchAllData() {
     sleep = new Sleep(currentUser.id, sleepData);
     activity = new Activity(currentUser, activityData)
     allUsers = new UserRepository(userData);
+    allUsersActivity = new UserRepository(userData, activityData)
 
-    //grab last date this user made an entry
     lastHydrationEntry = hydration.ounces[hydration.ounces.length - 1].date;
     lastSleepEntry = sleep.sleepDataPerUser[sleep.sleepDataPerUser.length - 1].date;
     lastActivityEntry = activity.usersActivity[activity.usersActivity.length - 1].date;
 
     lastWeekHydration = hydration.ounces[hydration.ounces.length - 7].date;
-    lastWeekSleep =  sleep.sleepDataPerUser[sleep.sleepDataPerUser.length - 7].date;
-    lastWeekActivity =activity.usersActivity[activity.usersActivity.length - 7].date;
+    lastWeekSleep = sleep.sleepDataPerUser[sleep.sleepDataPerUser.length - 7].date;
+    lastWeekActivity = activity.usersActivity[activity.usersActivity.length - 7].date;
     
     loadUserInfo()
   });
-}
+};
 
 // Event Listeners
-
 window.addEventListener('load', fetchAllData);
 userInfoButton.addEventListener('click', showUserDetails);
 addWaterButton.addEventListener('click', userInputHydrationForm);
@@ -105,7 +104,6 @@ closeSleep.addEventListener('click', closeSleepForm);
 closeActivity.addEventListener('click', closeActivityForm);
 updateAllCharts.addEventListener('click', renderUpdatedCharts);
 friendsList.addEventListener('click', loadFriendData);
-// Helper Functions
 
 // DOM Functions
 function loadUserInfo() {
@@ -121,15 +119,14 @@ function loadUserInfo() {
   charts.renderNumStepsByWeek(activity, lastWeekActivity);
   charts.renderMinutesActiveByWeek(activity, lastWeekActivity);
   charts.renderFlightsClimbedByWeek(activity, lastWeekActivity);
-  charts.renderMilesPerDay(activity, lastActivityEntry)
-  charts.renderNumStepsPerDay(activity, lastActivityEntry);
-  charts.renderMinutesActivePerDay(activity, lastActivityEntry);
-  charts.renderFlightsClimbedPerDay(activity, lastActivityEntry);
+  charts.renderMilesPerDay(activity, lastActivityEntry);
+  charts.renderNumStepsPerDay(activity, allUsersActivity, lastActivityEntry);
+  charts.renderMinutesActivePerDay(activity, allUsersActivity, lastActivityEntry);
+  charts.renderFlightsClimbedPerDay(activity, allUsersActivity, lastActivityEntry);
 };
 
 function renderGreeting() {
-  const userFirstName = currentUser.name.split(' ')[0];
-  greeting.innerHTML = `Hello, ${userFirstName}!`;
+  greeting.innerHTML = `Hello, ${currentUser.name}!`;
 };
 
 function renderFriendsList() {
@@ -137,20 +134,18 @@ function renderFriendsList() {
   const friendNames = userData.filter((user) => {
     if (currentUser.userFriends.includes(user.id)) {
       return user.name;
-    }
+    };
   });
 
   return friendNames.forEach((friend) => {
-    
     friendsList.innerHTML += `<button class="friend">${friend.name}</button>`;
   });
 };
 
 function renderProfile() {
-  fullName.innerHTML = `${currentUser.name}`;
-
-  stepGoal.innerHTML += ` <div>Daily Step Goal: ${currentUser.dailyStepGoal}</div>
-  Average Step Goal: ${allUsers.getAverageStepGoal()}`;
+  stepGoal.innerHTML += ` <div>${activity.getStepGoalByDay(lastActivityEntry)}</div>
+  <br>
+  Average Step Goal for All User's: ${allUsers.getAverageStepGoal()}`;
 };
 
 function renderSleepAverages() {
@@ -158,7 +153,7 @@ function renderSleepAverages() {
     'hoursSlept',
     true
   )}
-  Average Sleep Quality for all users: ${sleep.getAvgSleepData(
+  Average Sleep Quality for All Users: ${sleep.getAvgSleepData(
     'sleepQuality',
     false
   )}`;
@@ -170,6 +165,13 @@ function showUserDetails() {
   userEmail.innerText = `Email:  ${currentUser.email}`;
 };
 
+function loadFriendData(event) {
+  currentUser = new User(allUsers.users.find((user) => user.name === event.target.innerText));
+  destroyCharts();
+  friendsList.innerHTML = `Click on one of ${currentUser.name.split(' ')[0]}'s friends to view their profile`;
+  stepGoal.innerText = '';
+  loadUserInfo();
+};
 
 function userInputHydrationForm() {
   hydrationFormPopup.classList.remove('hidden');
@@ -183,6 +185,7 @@ function userInputActivityForm() {
   activityFormPopup.classList.remove('hidden');
 };
 
+// POST Data and Update Charts Functions and Event Listeners
 hydrationFormPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   const formData = new FormData(event.target);
@@ -191,14 +194,15 @@ hydrationFormPopup.addEventListener('submit', (event) => {
     date: formData.get('date'),
     numOunces: parseInt(formData.get('ounces')),
   };
+
   isLessThanCurrentDate = setTodayDate(newHydrationData.date);
 
   if (!newHydrationData.date.includes('/') || !isLessThanCurrentDate) {
     alert(checkFormDate(newHydrationData.date, todayDate));
   } else {
-    postData('http://localhost:3001/api/v1/activity', newHydrationData);
+    postData('http://localhost:3001/api/v1/hydration', newHydrationData);
     event.target.reset();
-  }
+  };
 });
 
 sleepFormPopup.addEventListener('submit', (event) => {
@@ -216,9 +220,9 @@ sleepFormPopup.addEventListener('submit', (event) => {
   if (!newSleepData.date.includes('/') || !isLessThanCurrentDate) {
     alert(checkFormDate(newSleepData.date, todayDate));
   } else {
-    postData('http://localhost:3001/api/v1/activity', newSleepData);
+    postData('http://localhost:3001/api/v1/sleep', newSleepData);
     event.target.reset();
-  }
+  };
 });
 
 activityFormPopup.addEventListener('submit', (event) => {
@@ -231,6 +235,7 @@ activityFormPopup.addEventListener('submit', (event) => {
     minutesActive: formData.get('minutes'),
     flightsOfStairs: formData.get('flights')
   };
+
   isLessThanCurrentDate = setTodayDate(newActivityData.date);
 
   if (!newActivityData.date.includes('/') || !isLessThanCurrentDate) {
@@ -238,7 +243,7 @@ activityFormPopup.addEventListener('submit', (event) => {
   } else {
     postData('http://localhost:3001/api/v1/activity', newActivityData);
     event.target.reset();
-  }
+  };
 });
 
 function closeHydrationForm() {
@@ -261,6 +266,7 @@ function changeWeeklyData(event) {
 
 function renderUpdatedCharts() {
   destroyCharts();
+
   Promise.all([
     fetchData('users', 'userData'),
     fetchData('sleep', 'sleepData'),
@@ -277,6 +283,7 @@ function loadConditions(data) {
   sleepData = data[1],
   hydrationData = data[2],
   activityData = data[3];
+
   hydration = new Hydration(currentUser.id, hydrationData);
   sleep = new Sleep(currentUser.id, sleepData);
   activity = new Activity(currentUser, activityData);
@@ -285,9 +292,9 @@ function loadConditions(data) {
   if (!hydration.ounces.find((data) => data.date == chosenDate) 
   && !sleep.sleepDataPerUser.find((entry) => entry.date === chosenDate) 
   && !activity.usersActivity.find((input) => input.date === chosenDate)) {
-    alert ('no data at all!!')
-    return 'no data at all!!'
-  }
+    alert ('no data at all!!');
+    return 'no data at all!!';
+  };
   charts.renderOuncesByWeek(hydration, chosenDate);
   charts.renderOuncesPerDay(hydration, chosenDate);
   charts.renderSleepChartByDay(sleep, chosenDate);
@@ -295,27 +302,19 @@ function loadConditions(data) {
   charts.renderNumStepsByWeek(activity, chosenDate);
   charts.renderMinutesActiveByWeek(activity, chosenDate);
   charts.renderFlightsClimbedByWeek(activity, chosenDate);
-  charts.renderMilesPerDay(activity, chosenDate)
-  charts.renderNumStepsPerDay(activity, chosenDate);
-  charts.renderMinutesActivePerDay(activity, chosenDate);
-  charts.renderFlightsClimbedPerDay(activity, chosenDate);
+  charts.renderMilesPerDay(activity, chosenDate);
+  charts.renderNumStepsPerDay(activity, allUsersActivity, chosenDate);
+  charts.renderMinutesActivePerDay(activity, allUsersActivity, chosenDate);
+  charts.renderFlightsClimbedPerDay(activity, allUsersActivity, chosenDate);
 };
-
-function loadFriendData(event) {
-  currentUser = new User(allUsers.users.find((user) => user.name === event.target.innerText));
-  destroyCharts();
-  friendsList.innerHTML = `Click on one of ${currentUser.name.split(' ')[0]}'s friends to view their profile`;
-  stepGoal.innerText = '';
-  loadUserInfo();
-}
 
 function checkFormDate(date, todayDate) {
   if (!date.includes('/')) {
     return 'The date needs to be separated by /. Please try again.';
   } else if (date >= todayDate) {
     return 'You cannot add to a future date. Please try again';
-  }
-}
+  };
+};
 
 function setTodayDate(formDate) {
   const getTodayDate = new Date();
@@ -330,5 +329,5 @@ function setTodayDate(formDate) {
     return true;
   } else {
     return false;
-  }
-}
+  };
+};

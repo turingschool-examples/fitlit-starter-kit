@@ -29,7 +29,6 @@ class Activity {
     if (totalMiles) {
       return parseFloat(totalMiles.toFixed(1));
     } else {
-      alert('activity data missing for this date!!');
       return 'This date could not be found.';
     };
   };

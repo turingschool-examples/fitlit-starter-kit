@@ -66,20 +66,24 @@ const barStyle2 = {
 };
 
 // const barStyle3 = {
-//   backgroundColor: '#9000EE',
-//   hoverBackgroundColor: '#CC77FF',
-// };
+  //   backgroundColor: '#9000EE',
+  //   hoverBackgroundColor: '#CC77FF',
+  // };
+  
+  // const barStyle4 = {
+    //   backgroundColor: '#9000EE',
+    //   hoverBackgroundColor: '#CC77FF',
+    // };
+    
+    // const barStyle5 = {
+      //   backgroundColor: '#9000EE',
+      //   hoverBackgroundColor: '#CC77FF',
+      // };
 
-// const barStyle4 = {
-//   backgroundColor: '#9000EE',
-//   hoverBackgroundColor: '#CC77FF',
-// };
-
-// const barStyle5 = {
-//   backgroundColor: '#9000EE',
-//   hoverBackgroundColor: '#CC77FF',
-// };
-
+const iterateThruWeek = (week, key) => {
+  return week.map((day) => day[key]);
+};
+      
 const charts = {
   renderOuncesByWeek(hydration, date) {
     const hydrationChart = document.querySelector('.weekly-ounces');
@@ -91,7 +95,7 @@ const charts = {
         labels: iterateThruWeek(weeklyData, 'date'),
         datasets: [
           {
-            label: `Water Intake Week of ${date}`,
+            label: `Water Intake for the Week of ${date}`,
             data: iterateThruWeek(weeklyData, 'numOunces'),
             ...barStyle1,
           },
@@ -116,7 +120,7 @@ const charts = {
         labels: [''],
         datasets: [
           {
-            label: `Daily Water Intake on ${date}`,
+            label: `Your Daily Water Intake on ${date}`,
             data: [day],
             ...barStyle1,
             catagoryPercentage: 0.15,
@@ -145,7 +149,7 @@ const charts = {
       labels: iterateThruWeek(week, 'date'),
       datasets: [
         {
-          label: `Hours of Sleep Week of ${date}`,
+          label: `Hours of Sleep for the Week of ${date}`,
           data: iterateThruWeek(week, 'hoursSlept'),
           ...barStyle1,
         },
@@ -181,7 +185,7 @@ const charts = {
         labels: [''],
         datasets: [
           {
-            label: `Hours Slept on ${date}`,
+            label: `Your Hours Slept on ${date}`,
             data: [hours],
             ...barStyle1,
             catagoryPercentage: 0.3,
@@ -189,7 +193,7 @@ const charts = {
             borderRadius: 4,
           },
           {
-            label: `Sleep Quality on ${date}`,
+            label: `Your Sleep Quality on ${date}`,
             data: [quality],
             ...barStyle2,
             catagoryPercentage: 0.3,
@@ -220,7 +224,7 @@ const charts = {
         labels: iterateThruWeek(weeklyData, 'date'),
         datasets: [
           {
-            label: `Steps Taken Week of ${date}`,
+            label: `Steps Taken for the Week of ${date}`,
             data: iterateThruWeek(weeklyData, 'numSteps'),
             ...barStyle1,
           },
@@ -246,7 +250,7 @@ const charts = {
         labels: iterateThruWeek(weeklyData, 'date'),
         datasets: [
           {
-            label: `Minutes Active Week of ${date}`,
+            label: `Minutes Active for the Week of ${date}`,
             data: iterateThruWeek(weeklyData, 'minutesActive'),
             ...barStyle1,
           },
@@ -272,7 +276,7 @@ const charts = {
         labels: iterateThruWeek(weeklyData, 'date'),
         datasets: [
           {
-            label: `Flights of Stairs Climbed Week of ${date}`,
+            label: `Flights of Stairs Climbed for the Week of ${date}`,
             data: iterateThruWeek(weeklyData, 'flightsOfStars'),
             ...barStyle1,
           },
@@ -319,9 +323,9 @@ const charts = {
     return dailyMilesChart;
   },
 
-  renderNumStepsPerDay(activity, date) {
+  renderNumStepsPerDay(activity, allUsers, date) {
     const currentUserDay = activity.getDailyActivityByDate('numSteps', date);
-    // const allUsersAvg;
+    const allUsersAvg = allUsers.getAllUsersAverages('numSteps', date)
     const activityChart = document.querySelector('.steps-by-day');
 
     const config = {
@@ -337,14 +341,14 @@ const charts = {
             barPercentage: 0.6,
             borderRadius: 4,
           },
-          // {
-          //   label: `Average Steps Taken for All User's on ${date}`,
-          //   data: [allUsersAvg],
-          //   ...barStyle2,
-          //   catagoryPercentage: 0.3,
-          //   barPercentage: 0.6,
-          //   borderRadius: 4,
-          // },
+          {
+            label: `Average Steps Taken for All User's on ${date}`,
+            data: [allUsersAvg],
+            ...barStyle2,
+            catagoryPercentage: 0.3,
+            barPercentage: 0.6,
+            borderRadius: 4,
+          },
         ],
       },
       options: {
@@ -359,9 +363,9 @@ const charts = {
     return dailyNumStepsChart;
   },
 
-  renderMinutesActivePerDay(activity, date) {
+  renderMinutesActivePerDay(activity, allUsers, date) {
     const currentUserDay = activity.getDailyActivityByDate('minutesActive', date);
-    // const allUsersAvg;
+    const allUsersAvg = allUsers.getAllUsersAverages('minutesActive', date)
     const activityChart = document.querySelector('.minutes-by-day');
 
     const config = {
@@ -377,14 +381,14 @@ const charts = {
             barPercentage: 0.6,
             borderRadius: 4,
           },
-          // {
-          //   label: `Average Minutes Active for All User's on ${date}`,
-          //   data: [allUsersAvg],
-          //   ...barStyle2,
-          //   catagoryPercentage: 0.3,
-          //   barPercentage: 0.6,
-          //   borderRadius: 4,
-          // },
+          {
+            label: `Average Minutes Active for All User's on ${date}`,
+            data: [allUsersAvg],
+            ...barStyle2,
+            catagoryPercentage: 0.3,
+            barPercentage: 0.6,
+            borderRadius: 4,
+          },
         ],
       },
       options: {
@@ -399,9 +403,9 @@ const charts = {
     return dailyMinutesActiveChart;
   },
 
-  renderFlightsClimbedPerDay(activity, date) {
+  renderFlightsClimbedPerDay(activity, allUsers, date) {
     const currentUserDay = activity.getDailyActivityByDate('flightsOfStairs', date);
-    // const allUsersAvg;
+    const allUsersAvg = allUsers.getAllUsersAverages('flightsOfStairs', date)
     const hydrationChart = document.querySelector('.flights-by-day');
 
        const config = {
@@ -410,21 +414,21 @@ const charts = {
         labels: [''],
         datasets: [
           {
-            label: `Your Flights of Stairs Climbed Walked on ${date}`,
+            label: `Your Flights of Stairs Climbed on ${date}`,
             data: [currentUserDay],
             ...barStyle1,
             catagoryPercentage: 0.3,
             barPercentage: 0.6,
             borderRadius: 4,
           },
-          // {
-          //   label: `Average Flights of Stairs Climbed for All User's on ${date}`,
-          //   data: [allUsersAvg],
-          //   ...barStyle2,
-          //   catagoryPercentage: 0.3,
-          //   barPercentage: 0.6,
-          //   borderRadius: 4,
-          // },
+          {
+            label: `Average Flights of Stairs Climbed for All User's on ${date}`,
+            data: [allUsersAvg],
+            ...barStyle2,
+            catagoryPercentage: 0.3,
+            barPercentage: 0.6,
+            borderRadius: 4,
+          },
         ],
       },
       options: {
@@ -454,7 +458,4 @@ const destroyCharts = () => {
   dailyFlightsClimbedChart.destroy();
 };
 
-const iterateThruWeek = (week, key) => {
-  return week.map((day) => day[key]);
-};
 export { charts, destroyCharts };

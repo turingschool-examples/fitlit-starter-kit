@@ -36,6 +36,11 @@ describe('Hydration', () => {
     expect(hydrate2.ouncesPerDay('2019/06/15')).to.equal(75);
   });
 
+  it("should check that given date exists in the user's data set", () => {
+    expect(hydrate1.ouncesPerDay('2020/06/15')).to.equal('This date could not be found.');
+    expect(hydrate2.ouncesPerDay('2020/08/15')).to.equal('This date could not be found.');
+  });
+
   it('should calculate weekly ouces per user', () => {
     expect(hydrate1.getDailyOuncesByWeek('2019/06/15')).to.deep.equal([
       { date: '2019/06/15', numOunces: 37 },

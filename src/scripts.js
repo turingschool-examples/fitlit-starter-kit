@@ -127,7 +127,6 @@ function loadUserInfo() {
   charts.renderFlightsClimbedPerDay(activity, lastActivityEntry);
 };
 
-
 function renderGreeting() {
   const userFirstName = currentUser.name.split(' ')[0];
   greeting.innerHTML = `Hello, ${userFirstName}!`;
@@ -269,9 +268,10 @@ function renderUpdatedCharts() {
     fetchData('activity', 'activityData'),
   ])
     .then((data) => {
-      loadConditions(data);
+      loadConditions(data)
     });
 };
+
 function loadConditions(data) {
   userData = data[0],
   sleepData = data[1],
@@ -282,6 +282,12 @@ function loadConditions(data) {
   activity = new Activity(currentUser, activityData);
   allUsers = new UserRepository(userData);
 
+  if (!hydration.ounces.find((data) => data.date == chosenDate) 
+  && !sleep.sleepDataPerUser.find((entry) => entry.date === chosenDate) 
+  && !activity.usersActivity.find((input) => input.date === chosenDate)) {
+    alert ('no data at all!!')
+    return 'no data at all!!'
+  }
   charts.renderOuncesByWeek(hydration, chosenDate);
   charts.renderOuncesPerDay(hydration, chosenDate);
   charts.renderSleepChartByDay(sleep, chosenDate);
@@ -293,25 +299,6 @@ function loadConditions(data) {
   charts.renderNumStepsPerDay(activity, chosenDate);
   charts.renderMinutesActivePerDay(activity, chosenDate);
   charts.renderFlightsClimbedPerDay(activity, chosenDate);
-
-  // if (!hydration.ounces.find((data) => data.date == chosenDate) 
-  // && !sleep.sleepDataPerUser.find((entry) => entry.date === chosenDate) 
-  // && !activity.usersActivity.find((input) => input.date === chosenDate)) {
-  //   alert ('no data at all!!')
-  //   return 'no data at all!!'
-  // };
-  
-  // if (!hydration.ounces.find((data) => data.date == chosenDate)) {
-  //   alert ('no hydration data!!!')
-  //   charts.renderSleepChartByDay(sleep, chosenDate);
-  //   charts.renderSleepChartByWeek(sleep, chosenDate);
-  // }; 
-  
-  // if (!sleep.sleepDataPerUser.find((entry) => entry.date === chosenDate)) {
-  //   alert ('no sleep Data!!!')
-  //   charts.renderOuncesByWeek(hydration, chosenDate);
-  //   charts.renderOuncesPerDay(hydration, chosenDate);
-  //};
 };
 
 function loadFriendData(event) {

@@ -43,6 +43,10 @@ const userWeeklyQualSleep = document.querySelector('#qualHrsSleptPerWeek')
 const ouncesDrankToday = document.querySelector('#todayOunces')
 const avgOuncesDrankPerDay = document.querySelector('#AvgOzPerDay')
 const avgOuncesDrankPerWeek = document.querySelector('#AvgOzWeekly')
+const numOfStepsForUser = document.querySelector('#numOfSteps')
+const minsActiveForUser = document.querySelector('#minsActive')
+const stairFlightsForUser = document.querySelector('#stairFlights')
+
 
 
 
@@ -77,6 +81,7 @@ fetchAll()
     displayStepGoalComp(userRepository);
     displayHydrationData(singleHydro);
     displaySleepData(singleSleep);
+    displayActivityData(singleActivity);
     postActivity(singleUser.id,newActivityData)
   })
 };
@@ -148,3 +153,10 @@ function displaySleepData(singleSleep) {
   userWeeklySleep.innerText = singleSleep.getHrsSleptPerWeek(singleUser.id, "2022/01/23")
   userWeeklyQualSleep.innerText = singleSleep.getSleepQualPerWeek(singleUser.id, "2022/01/23")
 };
+
+function displayActivityData(singleActivity) {
+  numOfStepsForUser.innerText = singleActivity.returnDailySteps("2022/01/23")
+  minsActiveForUser.innerText = singleActivity.returnDailyMinutesActive("2022/01/23")
+  stairFlightsForUser.innerText = singleActivity.returnDailyFlightsOfStairs("2022/01/23")
+};
+

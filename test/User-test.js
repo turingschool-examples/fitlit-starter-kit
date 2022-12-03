@@ -8,8 +8,13 @@ describe('User', () => {
     it('should be a function', function () { 
         expect(User).to.be.a('function');
     });
+    it('should instantiate a new User', function () {
+    var user = new User() 
 
-   
+    expect(User).to.be.a('function');
+    })
+    
+        
   });
 
 

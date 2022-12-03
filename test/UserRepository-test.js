@@ -5,6 +5,30 @@ describe('User Repository', () => {
   it('should be a function', function () {
     expect(UserRepository).to.be.a('function');
   });
+
+  it('should instantiate a new user repository', function () {
+
+    expect(userRepository).to.be.a('function');
+    })
+    
+  it('should take in user data', function() {
+
+    expect(user.data).to.equal({})
+    })
+    
+  it('should supply user data when given id', function() {
+  
+    userRepository.getData()
+  
+    expect(user.id).to.equal(user.userData)
+    })
+    
+  it('should give the average step goal of all users', function () {
+  
+    userRepository.stepAverage()
+  
+    expect()
+    })
 });
 
 

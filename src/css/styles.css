@@ -1,11 +1,16 @@
+*{
+  font-family: 'Raleway';
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  background-image: linear-gradient(to top, #131111 0%, #8d858a 99%, #7f777d 100%);
   background-repeat: no-repeat;
   min-height: 100vh;
   min-width: 100vw;
   display: flex;
   justify-content: space-between;
-
 }
 
 .friends-list{
@@ -33,9 +38,9 @@ flex-direction: column;
 justify-content: space-between;
 }
 
-.friends-list{
-  display: flex;
-  justify-content: center;
+.friends-list,
+.previous-activities{
+ background-color: #534f52;
 
 }
 
@@ -47,5 +52,6 @@ justify-content: space-between;
   width: 30vw;
   border: 2px solid blue;
   display: flex;
+  background-color: #534f52;
 }
 

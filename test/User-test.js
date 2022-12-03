@@ -56,6 +56,12 @@ describe('User', () => {
 
     expect(user.dailyStepGoal).to.equal(userData[dailyStepGoal]);
     })
+
+    it('should have friends', function () {
+    let user = new User(userData);
+
+    expect(user.friends).to.equal(userData[friends]);
+    })
   });
 
 

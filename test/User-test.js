@@ -51,6 +51,11 @@ describe('User', () => {
     expect(user.strideLength).to.equal(userData[strideLength]);
     })
     
+    it('should have a step goal', function () {
+    let user = new User(userData);
+
+    expect(user.dailyStepGoal).to.equal(userData[dailyStepGoal]);
+    })
   });
 
 

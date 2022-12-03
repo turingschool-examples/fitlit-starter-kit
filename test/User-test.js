@@ -13,7 +13,14 @@ describe('User', () => {
 
     expect(User).to.be.a('function');
     })
-    
+    it('should have a Userdata parameter', function () {
+    var user = new User(userData);
+
+    expect(userData).to.equal({});
+    })
+
+        
+   
         
   });
 

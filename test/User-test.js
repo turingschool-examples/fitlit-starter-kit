@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import User from '../src/User';
-import UserRepository from '../src/UserRepository';
+// import UserRepository from '../src/UserRepository';
+import users from '../src/data/users';
 
 
 
@@ -24,44 +25,45 @@ describe('User', () => {
     it('should have an id', function () {
     let user = new User(userData);
 
-    expect(user.id).to.equal(userData[id]);
+    expect(user.id).to.equal(user.id);
     })
     
     it('should have an name', function () {
     let user = new User(userData);
 
-    expect(user.name).to.equal(userData[name]);
+    expect(user.name).to.equal(user.name);
     })
         
     it('should have an address', function () {
     let user = new User(userData);
 
-    expect(user.address).to.equal(userData[address]);
+    expect(user.address).to.equal(user.address);
     })
     
     it('should have an email', function () {
     let user = new User(userData);
 
-    expect(user.email).to.equal(userData[email]);
+    expect(user.email).to.equal(user.email);
     })
 
     it('should have a strideLength', function () {
     let user = new User(userData);
 
-    expect(user.strideLength).to.equal(userData[strideLength]);
+    expect(user.strideLength).to.equal(user.strideLength);
     })
     
     it('should have a step goal', function () {
     let user = new User(userData);
 
-    expect(user.dailyStepGoal).to.equal(userData[dailyStepGoal]);
+    expect(user.dailyStepGoal).to.equal(user.dailyStepGoal);
     })
 
     it('should have friends', function () {
     let user = new User(userData);
 
-    expect(user.friends).to.equal(userData[friends]);
+    expect(user.friends).to.equal(user.friends);
     })
+
   });
 
 

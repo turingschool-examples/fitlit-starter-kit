@@ -1,5 +1,51 @@
 body, html {
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
   background-repeat: no-repeat;
-  height: 100%;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: space-between;
+
 }
+
+.friends-list{
+height: 100vh;
+width: 15vw;
+border: 2px solid green;
+}
+
+.main{
+  height: 100vh;
+width: 60vw;
+border: 2px solid green;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+}
+
+.previous-activities{
+  height: 100vh;
+width: 15vw;
+border: 2px solid blue;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.friends-list{
+  display: flex;
+  justify-content: center;
+
+}
+
+.welcome,
+.steps,
+.water,
+.sleep{
+  height: 20vh;
+  width: 30vw;
+  border: 2px solid blue;
+  display: flex;
+}
+

@@ -3,12 +3,40 @@
   <head>
     <meta charset="UTF-8">
     <title>Fitlit</title>
+    <link rel="stylesheet" href="../src/css/styles.css">
+    <link href='https://fonts.google.com/specimen/Raleway' rel='stylesheet'>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <section class="friends-list">Friends List</section>
+    <main class="main">
+      <div class="welcome">
+      <h1>Welcome</h1>
+    </div>
+      <div class="steps">steps</div>
+      <div class="water">water</div>
+      <div class="sleep">sleep</div>
+    </main>
+    <section class="previous-activities">
+      <form action="/action_page.php">
+        <label for="days">Choose a Day:</label>
+        <select name="days" id="days">
+          <option value="monday">Monday</option>
+          <option value="tuesday">Tuesday</option>
+          <option value="wednesday">Wednesday</option>
+          <option value="thursday">Thursday</option>
+          <option value="friday">Friday</option>
+          <option value="saturday">Saturday</option>
+          <option value="sunday">Sunday</option>
+        </select>
+      </form>
+      <div class="stride-length">Stride Length</div>
+      <div class="step-count">Step Count</div>
+      <div class="house-slept">House Slept</div>
+      <div class="sleep-quality">Sleep Quality</div>
+      <div class="ounces-drank">Ounces Drank</div>
+    </section>
 
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="bundle.js"></script>
+<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->  
+  <script src="bundle.js"></script>
   </body>
 </html>

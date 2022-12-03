@@ -1,3 +1,18 @@
+import { expect } from 'chai';
+import User from '../src/User';
+import UserRepository from '../src/UserRepository';
+
+
+
+describe('User', () => {
+    it('should be a function', function () { 
+        expect(User).to.be.a('function');
+    });
+
+   
+  });
+
+
 // Should be a function 
 // Should represent a single player
 // Should have a parameter to take in a userData object

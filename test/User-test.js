@@ -39,7 +39,13 @@ describe('User', () => {
     expect(user.address).to.equal(userData[address]);
     })
     
-        
+    it('should have an email', function () {
+    let user = new User(userData);
+
+    expect(user.email).to.equal(userData[email]);
+    })
+
+    
   });
 
 

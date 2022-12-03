@@ -8,19 +8,27 @@ describe('User', () => {
     it('should be a function', function () { 
         expect(User).to.be.a('function');
     });
+
     it('should instantiate a new User', function () {
-    var user = new User() 
+    let user = new User() 
 
     expect(User).to.be.a('function');
     })
+
     it('should have a Userdata parameter', function () {
-    var user = new User(userData);
+    let user = new User(userData);
 
     expect(userData).to.equal({});
     })
 
+    it('should have an id', function () {
+    let user = new User(userData);
+
+    expect(user.id).to.equal(userData[id]);
+    })
+    
         
-   
+    
         
   });
 

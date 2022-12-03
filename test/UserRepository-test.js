@@ -10,7 +10,12 @@ describe('User Repository', () => {
 
     expect(userRepository).to.be.a('function');
     })
+    
+  it('should take in user data', function() {
 
+    expect(user.data).to.equal({})
+    })
+    
 });
 
 

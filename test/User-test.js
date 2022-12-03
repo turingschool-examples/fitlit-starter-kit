@@ -27,6 +27,11 @@ describe('User', () => {
     expect(user.id).to.equal(userData[id]);
     })
     
+    it('should have an id', function () {
+    let user = new User(userData);
+
+    expect(user.name).to.equal(userData[name]);
+    })
         
     
         

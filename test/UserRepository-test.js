@@ -16,6 +16,13 @@ describe('User Repository', () => {
     expect(user.data).to.equal({})
     })
     
+  it('should supply user data when given id', function() {
+  
+    userRepository.getData()
+  
+    expect(user.id).to.equal(user.userData)
+    })
+  
 });
 
 

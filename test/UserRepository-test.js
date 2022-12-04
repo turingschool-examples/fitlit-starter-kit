@@ -40,18 +40,14 @@ beforeEach(() => {
       })
     })
     
-  it.skip('should supply user data when given id', function() {
+  it('should supply user data when given id', function() {
   
-    userRepository.getData()
-  
-    expect(user2.id).to.equal(user2.userData)
+    expect(userRepository.getData(user2.userData.id)).to.deep.equal(user2)
     })
     
-  it.skip('should give the average step goal of all users', function () {
+  it('should give the average step goal of all users', function () {
   
-    userRepository.stepAverage()
-
-    expect()
+    expect(userRepository.stepAverage()).to.equal()
   })
 });
 

@@ -82,9 +82,9 @@ describe('User', () => {
         expect(user1.userData.id).to.equal(1);
     })
 
-    it.skip('should have an name', function () {
+    it('should have an name', function () {
 
-        expect(user.name).to.equal(userData.name);
+        expect(user1.userData.name).to.equal("Luisa Hane");
     })
 
     it.skip('should have an address', function () {

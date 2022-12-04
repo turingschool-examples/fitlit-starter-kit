@@ -50,9 +50,9 @@ beforeEach(() => {
   it.skip('should give the average step goal of all users', function () {
   
     userRepository.stepAverage()
-  
+
     expect()
-    })
+  })
 });
 
 

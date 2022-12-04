@@ -107,10 +107,10 @@ describe('User', () => {
         expect(user1.userData.dailyStepGoal).to.equal(10000);
     })
 
-    it.skip('should have friends', function () {
+    it('should have friends', function () {
 
 
-        expect(user.friends).to.equal(userData.friends);
+        expect(user1.userData.friends).to.deep.equal([16, 4, 8]);
     })
 
     it.skip('should return users first name', function () {

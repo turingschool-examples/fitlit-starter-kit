@@ -23,9 +23,9 @@ beforeEach(() => {
     expect(userRepository.data).to.deep.equal([user1, user2, user3]);
     })
     
-  it.skip('should take in user data', function() {
+  it('should take in user data', function() {
 
-    expect(user1.userData).to.equal(
+    expect(user1.userData).to.deep.equal(
       {"id": 1,
       "name": "Luisa Hane",
       "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
@@ -40,18 +40,14 @@ beforeEach(() => {
       })
     })
     
-  it.skip('should supply user data when given id', function() {
+  it('should supply user data when given id', function() {
   
-    userRepository.getData()
-  
-    expect(user2.id).to.equal(user2.userData)
+    expect(userRepository.getData(user2.userData.id)).to.deep.equal(user2)
     })
     
-  it.skip('should give the average step goal of all users', function () {
+  it('should give the average step goal of all users', function () {
   
-    userRepository.stepAverage()
-
-    expect()
+    expect(userRepository.stepGoalAverage()).to.equal(6666)
   })
 });
 

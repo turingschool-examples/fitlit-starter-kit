@@ -92,9 +92,9 @@ describe('User', () => {
         expect(user1.userData.address).to.equal("15195 Nakia Tunnel, Erdmanport VA 19901-1697");
     })
 
-    it.skip('should have an email', function () {
+    it('should have an email', function () {
 
-        expect(user.email).to.equal(userData.email);
+        expect(user1.userData.email).to.equal("Diana.Hayes1@hotmail.com");
     })
 
     it.skip('should have a strideLength', function () {

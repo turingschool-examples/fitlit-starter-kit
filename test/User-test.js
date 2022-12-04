@@ -55,53 +55,53 @@ describe('User', () => {
         expect(User).to.be.a('function');
     });
 
-    it('should instantiate a new User', function () {
+    it.skip('should instantiate a new User', function () {
 
         expect(User).to.be.a('function');
     })
 
-    it('should have a Userdata parameter', function () {
+    it.skip('should have a Userdata parameter', function () {
 
         expect(userData).to.equal({});
     })
 
-    it('should have an id', function () {
+    it.skip('should have an id', function () {
 
         expect(user.id).to.equal(userData.id);
     })
 
-    it('should have an name', function () {
+    it.skip('should have an name', function () {
 
         expect(user.name).to.equal(userData.name);
     })
 
-    it('should have an address', function () {
+    it.skip('should have an address', function () {
 
         expect(user.address).to.equal(userData.address);
     })
 
-    it('should have an email', function () {
+    it.skip('should have an email', function () {
 
         expect(user.email).to.equal(userData.email);
     })
 
-    it('should have a strideLength', function () {
+    it.skip('should have a strideLength', function () {
 
         expect(user.strideLength).to.equal(userData.strideLength);
     })
 
-    it('should have a step goal', function () {
+    it.skip('should have a step goal', function () {
 
         expect(user.dailyStepGoal).to.equal(userData.dailyStepGoal);
     })
 
-    it('should have friends', function () {
+    it.skip('should have friends', function () {
 
 
         expect(user.friends).to.equal(userData.friends);
     })
 
-    it('should return users first name,' function () {
+    it.skip('should return users first name', function () {
 
         user.getFirstName(userData)
 

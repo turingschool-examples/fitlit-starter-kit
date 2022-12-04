@@ -63,7 +63,7 @@ describe('User', () => {
     expect(user.friends).to.equal(userData.friends);
     })
 
-    it('should return users first name,' function() {
+    it('should return users first name', function() {
 
     user.getFirstName(userData)  
 

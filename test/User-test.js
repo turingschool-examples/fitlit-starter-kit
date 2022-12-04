@@ -102,9 +102,9 @@ describe('User', () => {
         expect(user1.userData.strideLength).to.equal(4.3);
     })
 
-    it.skip('should have a step goal', function () {
+    it('should have a step goal', function () {
 
-        expect(user.dailyStepGoal).to.equal(userData.dailyStepGoal);
+        expect(user1.userData.dailyStepGoal).to.equal(10000);
     })
 
     it.skip('should have friends', function () {

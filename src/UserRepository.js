@@ -1,6 +1,9 @@
+import userData from './data/users';
+// const data = require('./data/users')
+
 class UserRepository {
     constructor(data) {
-
+        this.data = data
     }
 }
 

@@ -1,10 +1,14 @@
 import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
+import userData from '../src/data/users';
 
 describe('User Repository', () => {
   let userRepo 
+  let sampleData 
+
   beforeEach(() => {
-    userRepo = new UserRepository()
+    sampleData = userData.slice(0,3)
+    userRepo = new UserRepository(sampleData)
   })
   it('should be a function', function () {
     expect(UserRepository).to.be.a('function');
@@ -16,4 +20,6 @@ describe('User Repository', () => {
     expect(userRepo.userData).to.be.an('array')
   })
   
+
+
 });

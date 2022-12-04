@@ -47,7 +47,7 @@ beforeEach(() => {
     
   it('should give the average step goal of all users', function () {
   
-    expect(userRepository.stepAverage()).to.equal()
+    expect(userRepository.stepGoalAverage()).to.equal(6666)
   })
 });
 

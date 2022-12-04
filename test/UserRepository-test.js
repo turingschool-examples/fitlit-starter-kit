@@ -19,6 +19,9 @@ describe('User Repository', () => {
   it('Should have a user data property', function (){
     expect(userRepo.userData).to.be.an('array')
   })
+  it('Should return user data given an id',function(){
+    expect(userRepo.getUserData(1)).to.deep.equal(sampleData[0])
+  })
   
 
 

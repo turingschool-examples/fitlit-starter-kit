@@ -11,6 +11,9 @@ describe('User Repository', () => {
   });
   it('Should be instance of userRepository', function () {
     expect(userRepo).to.be.an.instanceOf(UserRepository)
-    
   })
+  it('Should have a user data property', function (){
+    expect(userRepo.userData).to.be.an('array')
+  })
+  
 });

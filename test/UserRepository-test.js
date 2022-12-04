@@ -23,7 +23,7 @@ describe('User Repository', () => {
     expect(userRepo.getUserData(1)).to.deep.equal(sampleData[0])
   })
   it('Should return avarage step goal amoungst all users', function(){
-    expect(userRepo.calculateAverageStepGoal()).to.equal(6666.66)
+    expect(userRepo.calculateAverageStepGoal()).to.equal(6666.67)
   })
   
 

@@ -109,16 +109,12 @@ describe('User', () => {
 
     it('should have friends', function () {
 
-
         expect(user1.userData.friends).to.deep.equal([16, 4, 8]);
     })
 
-    it.skip('should return users first name', function () {
+    it('should return users first name', function () {
 
-        user.getFirstName(userData)
-
-
-        expect(user.name).to.equal(userData.name)
+        expect(user1.getFirstName()).to.equal("Luisa Hane");
     })
 
 });

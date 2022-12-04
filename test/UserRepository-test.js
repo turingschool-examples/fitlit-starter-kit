@@ -23,9 +23,9 @@ beforeEach(() => {
     expect(userRepository.data).to.deep.equal([user1, user2, user3]);
     })
     
-  it.skip('should take in user data', function() {
+  it('should take in user data', function() {
 
-    expect(user1.userData).to.equal(
+    expect(user1.userData).to.deep.equal(
       {"id": 1,
       "name": "Luisa Hane",
       "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",

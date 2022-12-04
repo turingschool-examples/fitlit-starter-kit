@@ -97,9 +97,9 @@ describe('User', () => {
         expect(user1.userData.email).to.equal("Diana.Hayes1@hotmail.com");
     })
 
-    it.skip('should have a strideLength', function () {
+    it('should have a strideLength', function () {
 
-        expect(user.strideLength).to.equal(userData.strideLength);
+        expect(user1.userData.strideLength).to.equal(4.3);
     })
 
     it.skip('should have a step goal', function () {

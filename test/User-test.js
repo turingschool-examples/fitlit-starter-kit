@@ -77,9 +77,9 @@ describe('User', () => {
         });
     })
 
-    it.skip('should have an id', function () {
+    it('should have an id', function () {
 
-        expect(user.id).to.equal(userData.id);
+        expect(user1.userData.id).to.equal(1);
     })
 
     it.skip('should have an name', function () {

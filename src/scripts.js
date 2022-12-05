@@ -1,5 +1,5 @@
-// import './css/styles.css';
-// import './images/turing-logo.png'
+import './css/styles.css';
+import './images/turing-logo.png'
 
 
 import userData from './data/users';
@@ -40,5 +40,10 @@ const displayUserInfo = function(user) {
   </div>`
 }
 
+const displayUserName = function(user) {
+  userNameDisplay.innerText = `Welcome, ${user.getFirstName()}!`
+}
+
 
 displayUserInfo(user1)
+displayUserName(user1)

@@ -10,17 +10,16 @@ let one = 1
 
 //Query Selectors
 var infoBox = document.querySelector('.zero')
-  console.log(1)
-  console.log(infoBox)
+
 
 // Event Listeners
-infoBox.addEventListener('click', displayUserInfo)
+window.addEventListener('load', displayUserInfo)
 
 //Event Handlers
 function displayUserInfo() {
-  console.log("Hi")
   infoBox.innerHTML = "Hello"
 }
+
 // Functions
 function getUser() {
   let randomIndex = Math.floor(Math.random() * userRepository.data.length);

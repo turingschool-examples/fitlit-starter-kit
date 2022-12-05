@@ -7,8 +7,13 @@ import UserRepository from './UserRepository';
 
 // Global Variables
 
+//Query Selectors
 
-// 
+// Event Listeners
+
+//Event Handlers
+
+// Functions
 function getUser() {
   let randomIndex = Math.floor(Math.random() * userRepository.data.length);
   let randomUser = userRepository.data[randomIndex];

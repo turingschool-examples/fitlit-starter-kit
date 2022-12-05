@@ -4,6 +4,7 @@ class User {
     this.name = userInfo.name;
     this.address = userInfo.address;
     this.email = userInfo.email;
+    this.strideLength = userInfo.strideLength;
   }
 }
 

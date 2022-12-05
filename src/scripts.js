@@ -1,5 +1,6 @@
 import './css/styles.css';
 import './images/turing-logo.png'
+import { fetchInfo } from './apiCalls'
 
 
 import userData from './data/users';
@@ -9,7 +10,7 @@ import UserRepository from './UserRepository';
 import User from './User';
 
 
-
+fetchInfo()
 const userDisplay = document.querySelector('#userInfo')
 const userNameDisplay = document.querySelector('#userName')
 const userStepGoalAvg = document.querySelector('#stepGoalAvg')

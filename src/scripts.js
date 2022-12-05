@@ -1,18 +1,26 @@
 // import './images/turing-logo.png'
 //console.log(userData,"<>>>>userData")
 import './css/styles.css';
-import User from '../src/User';
-import userData from '../src/data/users'
-import UserRepository from './UserRepository';
+// import User fromgit  '../src/User';
+// import userData from '../src/data/users'
+// import UserRepository from './UserRepository';
 
 // Global Variables
+let one = 1
 
 //Query Selectors
-const infoBox = document.querySelector('.zero')
+var infoBox = document.querySelector('.zero')
+  console.log(1)
+  console.log(infoBox)
+
 // Event Listeners
+infoBox.addEventListener('click', displayUserInfo)
 
 //Event Handlers
-
+function displayUserInfo() {
+  console.log("Hi")
+  infoBox.innerHTML = "Hello"
+}
 // Functions
 function getUser() {
   let randomIndex = Math.floor(Math.random() * userRepository.data.length);
@@ -20,9 +28,6 @@ function getUser() {
   currentUser = new User(randomUser);
 }
 
-function displayUserInfo() {
-
-}
 
 
 

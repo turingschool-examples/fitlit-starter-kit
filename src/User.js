@@ -14,5 +14,4 @@ class User {
     return userNameSplitArray[0];
   };
 };
-
-module.exports = User;
+export default User;

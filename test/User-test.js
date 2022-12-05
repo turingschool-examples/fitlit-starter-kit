@@ -1,7 +1,7 @@
 const chai = require("chai");
 const expect = chai.expect;
-const userTestData = require('./User-test-data');
-const User = require('../src/User');
+import userTestData from './User-test-data';
+import User from '../src/User';
 
 describe('User', function() {
 
@@ -31,7 +31,7 @@ describe('User', function() {
     expect(selectedUser.friends).to.deep.equal(userTestData[selectedUserInt].friends);
   });
 
-  it('should have a method to return a user first name', function () {
+  it('should have a method to return a user first name', function() {
     const userNameSplitArray = userTestData[selectedUserInt].name.split(' ');
     expect(selectedUser.returnFirstName()).to.equal(userNameSplitArray[0]);
   });

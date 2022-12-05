@@ -3,6 +3,7 @@ class User {
     this.id = userInfo.id;
     this.name = userInfo.name;
     this.address = userInfo.address;
+    this.email = userInfo.email;
   }
 }
 

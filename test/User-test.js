@@ -11,6 +11,10 @@ describe('User', function () {
   })
 
   it("Should be a function", function() {
-    expect(user).to.be.a('function')
+    expect(User).to.be.a('function')
+  })
+
+  it('Should be an instance of User', function() {
+    expect(user).to.be.an.instanceof(User)
   })
 })

@@ -8,8 +8,11 @@ import UserRepository from './UserRepository';
 
 import User from './User';
 
+
+
 const userDisplay = document.querySelector('#userInfo')
 const userNameDisplay = document.querySelector('#userName')
+const userStepGoalAvg = document.querySelector('#stepGoalAvg')
 
 const users = [{
   "id": 1,
@@ -54,6 +57,9 @@ const users = [{
 },]
 
 
+
+
+const userRepo = new UserRepository(users.map(user => new User(user)))
 const user1 = new User(users[0])
 
 
@@ -81,6 +87,13 @@ const displayUserName = function(user) {
   userNameDisplay.innerText = `Welcome, ${user.getFirstName()}!`
 }
 
+const displayComparedStepGoal = function(user, repository) {
+  console.log('working')
+  userStepGoalAvg.innerHTML = `<p>${user.dailyStepGoal} ${repository.calculateAverageStepGoal()}</p>`
+}
+
+
 
 displayUserInfo(user1)
 displayUserName(user1)
+displayComparedStepGoal(user1, userRepo)

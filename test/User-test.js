@@ -5,16 +5,19 @@ const User = require('../src/User');
 
 describe('User', function() {
 
+  let selectedUserInt;
+  let selectedUser;
+
   this.beforeEach(() => {
-    let selectedUserInt = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
-    let selectedUser = new User (userTestData[selectedUserInt]);
+    selectedUserInt = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
+    selectedUser = new User (userTestData[selectedUserInt]);
   });
 
   it('should represent a single user', function() {
-    expect(selectedUser.length).to.equal(1);
+    expect([selectedUser].length).to.equal(1);
   });
 
-  it('should have a parameter to take in a userData object', function() {
+  it('should have a parameter to take in a userData object and instantiate a new User', function() {
     expect(selectedUser).to.be.an.instanceOf(User);
   });
 

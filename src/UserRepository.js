@@ -9,8 +9,6 @@ class UserRepository {
     calculateAverageStepGoal(){
         return this.userData.reduce((stepAvg, user) => {
             const result = stepAvg + user.dailyStepGoal / this.userData.length
-            console.log(typeof result.toFixed(2))
-
             return +result.toFixed(2)
         },0)
     }

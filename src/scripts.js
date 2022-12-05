@@ -1,17 +1,24 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
+// import './css/styles.css';
+// import './images/turing-logo.png'
 
-console.log(userData,"<>>>>userData")
-// An example of how you tell webpack to use a CSS file
-import './css/styles.css';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
-
-console.log('This is the JavaScript entry file - your code begins here.');
-
-// An example of how you tell webpack to use a JS file
 
 import userData from './data/users';
 
 import UserRepository from './UserRepository';
+
+import User from './User';
+
+const userDisplay = document.querySelector('.user-info')
+
+const displayUserInfo = function(user) {
+  userDisplay.innerHTML = `
+  <div>
+    <p class="id">${user.id}</p>
+    <p class="name">${user.name}</p>
+    <p class="address">${user.address}</p>
+    <p class="email">${user.email}</p>
+    <p class="stride-length">${user.strideLength}</p>
+    <p class="daily-step-goal">${user.dailyStepGoal}</p>
+    <p class="friends">${user.friends}</p>
+  </div>`
+}

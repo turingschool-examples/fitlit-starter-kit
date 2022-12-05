@@ -22,11 +22,17 @@ describe("User", function () {
     expect(user.id).to.equal(1);
   });
 
-  it('Should have a name', function() {
-    expect(user.name).to.equal('Luisa Hane')
-  })
+  it("Should have a name", function () {
+    expect(user.name).to.equal("Luisa Hane");
+  });
 
-  it('Should have address', function() {
-    expect(user.address).to.equal('15195 Nakia Tunnel, Erdmanport VA 19901-1697')
-  })
+  it("Should have address", function () {
+    expect(user.address).to.equal(
+      "15195 Nakia Tunnel, Erdmanport VA 19901-1697"
+    );
+  });
+
+  it("Should have an email", function () {
+    expect(user.email).to.equal("Diana.Hayes1@hotmail.com");
+  });
 });

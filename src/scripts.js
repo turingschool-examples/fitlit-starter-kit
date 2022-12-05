@@ -9,6 +9,7 @@ import UserRepository from './UserRepository';
 import User from './User';
 
 const userDisplay = document.querySelector('#userInfo')
+const userNameDisplay = document.querySelector('#userName')
 
 const user1 = new User({
   "id": 1,

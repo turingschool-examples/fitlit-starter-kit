@@ -1,17 +1,36 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-console.log(userData,"<>>>>userData")
-// An example of how you tell webpack to use a CSS file
+// import './images/turing-logo.png'
+//console.log(userData,"<>>>>userData")
 import './css/styles.css';
+// import User fromgit  '../src/User';
+// import userData from '../src/data/users'
+// import UserRepository from './UserRepository';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+// Global Variables
+let one = 1
+
+//Query Selectors
+var infoBox = document.querySelector('.zero')
+
+
+// Event Listeners
+window.addEventListener('load', displayUserInfo)
+
+//Event Handlers
+function displayUserInfo() {
+  infoBox.innerHTML = "Hello"
+}
+
+// Functions
+function getUser() {
+  let randomIndex = Math.floor(Math.random() * userRepository.data.length);
+  let randomUser = userRepository.data[randomIndex];
+  currentUser = new User(randomUser);
+}
+
+
+
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
-// An example of how you tell webpack to use a JS file
 
-import userData from './data/users';
 
-import UserRepository from './UserRepository';

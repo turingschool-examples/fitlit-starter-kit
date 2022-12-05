@@ -36,7 +36,11 @@ describe("User", function () {
     expect(user.email).to.equal("Diana.Hayes1@hotmail.com");
   });
 
-  it('Should have a stride length', function() {
-    expect(user.strideLength).to.equal(4.3)
-  })
+  it("Should have a stride length", function () {
+    expect(user.strideLength).to.equal(4.3);
+  });
+
+  it("Should have a daily step goal", function () {
+    expect(user.dailyStepGoal).to.equal(10000);
+  });
 });

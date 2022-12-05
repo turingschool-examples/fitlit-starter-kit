@@ -43,4 +43,8 @@ describe("User", function () {
   it("Should have a daily step goal", function () {
     expect(user.dailyStepGoal).to.equal(10000);
   });
+
+  it('Should have friends', function() {
+    expect(user.friends).to.deep.equal([16, 4, 8])
+  })
 });

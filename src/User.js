@@ -1,5 +1,7 @@
 class User {
-  constructor() {}
+  constructor(userInfo) {
+    this.id = userInfo.id;
+  }
 }
 
 export default User;

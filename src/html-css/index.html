@@ -9,11 +9,23 @@
         <link rel="icon"  type="image" href="https://cdn-icons-png.flaticon.com/512/4760/4760815.png">
     </head>
     <body>
-        <nav></nav>
-        <aside></aside>
+        <nav class="welcome-banner" id="welcomeBanner">
+            <span>FitLit</span><span id="welcomeMessage">insert Welcome message here</span>
+        </nav>
+        <div class="data-display">
+        <aside class="friends-profile">
+            <button class="user-avatar" id="userAvatar">insert randomized emoji on round background here. click to toggle between friends and profile view</button>
+            <section class="friends-profile friends" id="friends">
+                instert friends here to load on page view
+            </section>
+            <section class="friends-profile profile hidden" id="profile">
+                insert profile information here
+            </section>
+        </aside>
         <section class="fit-data" id="steps"></section>
         <section class="fit-data" id="sleep"></section>
         <section class="fit-data" id="hydration"></section>
+        </div>
 
         <!-- scripts here -->
     </body> 

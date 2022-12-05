@@ -47,7 +47,7 @@ describe('User Data', () => {
   })
 
   it('should have a daily step goal', function () {
-    expect(userData.dailyStepGoal).to.equal(10000)
+    expect(user1.dailyStepGoal).to.equal(10000)
   })
 
   it('should be able to have friends', function () {

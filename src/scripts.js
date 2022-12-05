@@ -8,7 +8,7 @@ import UserRepository from './UserRepository';
 // Global Variables
 
 //Query Selectors
-
+const infoBox = document.querySelector('.zero')
 // Event Listeners
 
 //Event Handlers
@@ -18,6 +18,10 @@ function getUser() {
   let randomIndex = Math.floor(Math.random() * userRepository.data.length);
   let randomUser = userRepository.data[randomIndex];
   currentUser = new User(randomUser);
+}
+
+function displayUserInfo() {
+
 }
 
 

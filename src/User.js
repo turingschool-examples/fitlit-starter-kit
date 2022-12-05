@@ -5,6 +5,7 @@ class User {
     this.address = userInfo.address;
     this.email = userInfo.email;
     this.strideLength = userInfo.strideLength;
+    this.dailyStepGoal = userInfo.dailyStepGoal;
   }
 }
 

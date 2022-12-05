@@ -1,13 +1,16 @@
 import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
 import userData from '../src/data/users';
+import User from '../src/User'
 
 describe('User Repository', () => {
   let userRepo 
   let sampleData 
 
   beforeEach(() => {
-    sampleData = userData.slice(0,3)
+    sampleData = userData.slice(0,3).map((user) => {
+      return new User(user)
+    })
     userRepo = new UserRepository(sampleData)
   })
   it('should be a function', function () {

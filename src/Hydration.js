@@ -1,7 +1,7 @@
-class UserRepository {
-    constructor (currentUser) {
-        // this.userHydrationInfo =
+class Hydration {
+    constructor (currentUser, data) {
+        this.userHydrationInfo = data.hydrationData.filter(day => day.userID === currentUser.id)
     } 
 }
 
-export default UserRepository;
+export default Hydration;

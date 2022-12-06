@@ -15,3 +15,21 @@ console.log('This is the JavaScript entry file - your code begins here.');
 import userData from './data/users';
 
 import UserRepository from './UserRepository';
+
+import User from './User';
+
+const welcomeTitle = document.querySelector('.welcome-user-title');
+let currentUser ;
+
+window.addEventListener('load', () => {
+    currentUser = new User(userData[generateRandomIndex()])
+    updateWelcomeText();
+})
+
+function generateRandomIndex() {
+    return Math.floor(Math.random() * userData.length);
+}
+
+function updateWelcomeText() {
+    welcomeTitle.innerText = `Welcome ${currentUser.getFirstName()}`;
+}

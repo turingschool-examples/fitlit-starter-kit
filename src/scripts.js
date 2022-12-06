@@ -8,6 +8,7 @@ import UserRepository from './UserRepository';
 
 let allUserData;
 let allUserSleep;
+let allUserHydro
 
 
 const getFetch = () => {
@@ -15,6 +16,7 @@ const getFetch = () => {
   .then(data => {
     allUserData = data[0].userData;
     allUserSleep = data[1].sleepData;
+    allUserHydro = data[2].hydrationData;
 })
 }
 

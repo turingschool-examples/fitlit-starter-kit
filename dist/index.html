@@ -1,14 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang = 'en' dir = 'ltr'>
   <head>
-    <meta charset="UTF-8">
-    <title>Fitlit</title>
+    <link rel = 'stylesheet' href = '../css/styles.css'> 
+    <link rel = 'preconnect' href = 'go find a google font'>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>FitLit Project</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+      <!-- <h1>Activity Tracker</h1>
+      <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
+      <section class="left-container">
+        <h2>user name</h2>
+        <img class="user-avatar" src="" alt="Custom user image"/>
+        <article class="user-data-section-l">
+            <h3>
+                data stuff
+            </h3>
+        </article>
+    </section>
+    <section class="right-container">
+        <section class="title-area">
+            <h1>Page Title</h1>
+            <img alt="Custom Logo"/>
+        </section>
+        <section class="article-data">
+            <article class="r-sleep-data">
+                <h3>sleep</h3>
+                <div></div>
+                <div>
+                    <h3>sleep data</h3>
+                </div>
+            </article>
+            <article class="r-active-data">
+                <h3>active</h3>
+                <div></div>
+                <div>
+                    <h3>active data</h3>
+                </div>
+            </article>
+            <article class="r-hydration-data">
+                <h3>hydration</h3>
+                <div></div>
+                <div>
+                    <h3>hydration data</h3>
+                </div>
+            </article>
+        </section>
+    </section>
     <script src="bundle.js"></script>
   </body>
 </html>
+
+<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->

@@ -21,12 +21,24 @@ main {
 .aside-container {
   height: 100vh;
   width: 25%;
+  padding: 1em;
   display: flex;
   flex-direction: column;
   text-indent: 3em;
   background-color: rgb(218, 234, 249);
 }
 
+.aside-top-box {
+  height: 50vh;
+  padding: 1em;
+  background-color: aquamarine;
+}
+
+.form-bottom-box {
+  height: 50vh;
+  padding: 1em;
+  background-color: aqua;
+}
 .big-container-right {
   height: 100vh;
   width: 75%;
@@ -38,6 +50,7 @@ main {
 .info-card-container {
   height: 50vh;
   display: flex;
+  padding: 1em;
   flex-direction: column;
   justify-content: space-around;
   padding: 2em;
@@ -54,6 +67,7 @@ main {
 
 .widget-container {
   height: 50vh;
+  padding: 1em;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;

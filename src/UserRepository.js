@@ -13,6 +13,9 @@ class UserRepository {
             return user.id === userId
         });
     };
+    addNewUser(user) {
+        this.users.push(user);
+    };
 }
 
 export default UserRepository;

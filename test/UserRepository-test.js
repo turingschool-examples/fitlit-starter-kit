@@ -37,4 +37,11 @@ describe('User Repository', () => {
     expect(userRepo.getUserData(3)).to.deep.equal(userData[2]);
   });
 
+  it('should be able to add new users', function() {
+    const user4 = new User(userData[3]);
+    userRepo.addNewUser(user4);
+    
+    expect(userRepo.users).to.deep.equal([userData[0], userData[1], userData[2], userData[3]]);
+  });
+
 });

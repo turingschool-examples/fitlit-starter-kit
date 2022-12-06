@@ -6,10 +6,15 @@ import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
 
+let allUserData;
 
 
-
-
+const getFetch = () => {
+  return fetchAll()
+  .then(data => {
+    allUserData = data[0].userData;
+})
+}
 
 
 

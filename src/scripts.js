@@ -9,11 +9,24 @@ import './css/styles.css';
 let one = 1
 
 //Query Selectors
-var infoBox = document.querySelector('.zero')
-
+ infoBox = document.querySelector('.zero')
+ hydrationBox = document.querySelector('.one')
+ stepGoalBox = document.querySelector('.two')
+ activityBox = document.querySelector('.three')
+ friendsBox = document.querySelector('.four')
+ sleepBox = document.querySelector('.five')
+ activityTrackerTitle = document.querySelector(h1)
 
 // Event Listeners
 window.addEventListener('load', displayUserInfo)
+// infoBox.addEventListener('click', )
+// hydrationBox.addEventListener('click', )
+// stepGoalBox.addEventListener('click', )
+// activityBox.addEventListener('click', )
+// friendsBox.addEventListener('click', )
+// sleepBox.addEventListener('click', )
+// activityTrackerTitle.addEventListener('click', )
+
 
 //Event Handlers
 function displayUserInfo() {

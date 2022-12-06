@@ -11,6 +11,7 @@ let one = 1
 let users
 let sleep
 let hydration
+let currentUser
 
 //Query Selectors
 var infoBox = document.querySelector('.zero')
@@ -31,22 +32,20 @@ function getAllData() {
       console.log('sleep', sleep)
       console.log('hydration', hydration)
     })
-    .then()
-
+    .then(() => getUser())
+    .catch(err => console.log('To err is human', err))
 }
 
 function displayUserInfo() {
   // infoBox.innerHTML = "Hello"
   getAllData()
-  getUser()
 }
 
 // Functions
 function getUser() {
-  let randomIndex = Math.floor(Math.random() * users.data.length);
-  let randomUser = users.data[randomIndex];
+  let randomIndex = Math.floor(Math.random() * users.data.userData.length);
+  let randomUser = users.data.userData[randomIndex];
   currentUser = new User(randomUser);
-  console.log('current user', currentUser)
 }
 
 

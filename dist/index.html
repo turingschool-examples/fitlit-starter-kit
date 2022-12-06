@@ -5,9 +5,22 @@
     <title>Fitlit</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
+    <aside class="sidebar">
+      <h1 class="welcome-user-title">Welcome User!</h1>
+      <p class="user-info"></p>
+    </aside>
+    <main class="widgets-container">
+      <section class="non-sleep-widgets-container">
+        <section class="steps-widget card"></section>
+        <section class="hydration1-widget card"></section>
+        <section class="hydration2-widget card"></section>
+      </section>
+      <section class="sleep-widgets-container">
+        <section class="sleep1-widget card"></section>
+        <section class="sleep2-widget card"></section>
+        <section class="sleep3-widget card"></section>
+      </section>
+    </main>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>

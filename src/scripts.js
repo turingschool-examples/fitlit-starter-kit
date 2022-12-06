@@ -54,7 +54,7 @@ function displayUserInfo() {
                             <li>${user.userData.email}</li>
                             <li>Stride Length: ${user.userData.strideLength}</li>
                             <li>Daily Step Goal: ${user.userData.dailyStepGoal}</li>
-                            <li>Friends: ${user.userData.friends}</li>`
+                            <li>Friends: ${getUserFriends()}</li>`
 }
 
 function displayWelcomeName() {
@@ -69,10 +69,13 @@ function getUser() {
   currentUser = new User(randomUser);
 }
 
-
-
-
-console.log('This is the JavaScript entry file - your code begins here.');
+function getUserFriends() {
+  let friendsArray = user.userData.friends.map(friend => {
+    return userRepository.getData(friend).name
+  }) 
+  console.log(friendsArray)
+  return friendsArray.join(', ')
+}
 
 
 

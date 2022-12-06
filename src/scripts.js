@@ -1,7 +1,7 @@
 import "./css/styles.css";
-import userData from "./data/users";
 import User from "./User";
 import UserRepository from "./UserRepository";
+import returnDataPromises from "./apiCalls";
 
 //// query selectors
 const userInfoCard = document.querySelector(".user-info");
@@ -9,15 +9,27 @@ const stepsWidgetCard = document.querySelector(".steps-widget")
 const welcomeTitle = document.querySelector('.welcome-user-title');
 
 ////Global Variables
-const users = userData.map((user) => new User(user));
-const userRepository = new UserRepository(users);
+let userData;
+let sleepData;
+let hydrationData;
+let userRepository;
 let currentUser;
 
 function loadhandler() {
+  userRepository = new UserRepository(userData);
   randomizeCurrentUser()
   displayCurrentUserInfo()
   compareAndDisplayStepsGoal()
   updateWelcomeText()
+}
+
+function fetchApiCalls() {
+  returnDataPromises().then(data => {
+    userData = data[0].userData.map((user) => new User(user));
+    sleepData = data[1]
+    hydrationData = data[2]
+    loadhandler()
+  })
 }
 
 function generateRandomIndex() {
@@ -55,10 +67,10 @@ function displayStepsGoalComparison(numberRanked) {
 }
 
 function updateWelcomeText() {
-    welcomeTitle.innerText = `Welcome ${currentUser.getFirstName()}`;
+  welcomeTitle.innerText = `Welcome ${currentUser.getFirstName()}`;
 }
 
 ///// event listeners
 window.addEventListener("load", () => {
-  loadhandler()
+  fetchApiCalls()
 });

@@ -17,8 +17,12 @@ const getFetch = () => {
     allUserData = data[0].userData;
     allUserSleep = data[1].sleepData;
     allUserHydro = data[2].hydrationData;
+    pageLoadHandler(allUserData, allUserSleep, allUserHydro)
 })
 }
+
+
+
 
 
 

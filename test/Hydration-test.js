@@ -1,16 +1,18 @@
 import { expect } from "chai";
 import Hydration from "../src/Hydration";
-import hydration from "../data/hydration";
+import hydrationData from "../src/data/hydration";
 
 describe('Hydration', function(){
     let data 
+    let userHydrate
     beforeEach(()=>{
-        data = hydration
+        data = hydrationData
         userHydrate = new Hydration(data)
     })
 
     it("Should be a function", function () {
-        expect(userHydrate).to.be.a("function");
+        expect(Hydration).to.be.a("function");
   });
+
 
 })

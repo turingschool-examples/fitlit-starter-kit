@@ -1,7 +1,10 @@
 const chai = require("chai");
 const expect = chai.expect;
+
 import userTestData from './User-test-data';
 import User from '../src/User';
+import hydrationTestData from './hydration-test-data';
+
 
 describe('User', function() {
 
@@ -35,5 +38,22 @@ describe('User', function() {
     const userNameSplitArray = userTestData[selectedUserInt].name.split(' ');
     expect(selectedUser.returnFirstName()).to.equal(userNameSplitArray[0]);
   });
+  it('should accept hydration data and store it in a key-value pair', function(){
+    const hydrationData = hydrationTestData.filter( data => data.userID === selectedUser.id)
+    selectedUser.hydrationData = hydrationData
+
+    expect(selectedUser.hydrationData).to.equal(hydrationData)
+  })
+  it('should have a method that returns a single users hydration on a given day', function(){
+    const hydrationData = hydrationTestData.filter( data => data.userID === selectedUser.id)
+    selectedUser.hydrationData = hydrationData
+  
+     expect(selectedUser.findDaysHydration("2019/06/15")).to.equal({
+      userID: 20,
+      date: "2019/06/15",
+      numOunces: 23
+      })
+  })
+  it('')
 });
 

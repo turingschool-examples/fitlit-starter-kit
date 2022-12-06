@@ -6,7 +6,6 @@
 function getAPIData(info) {
   const fetchedInfo = fetch(`https://fitlit-api.herokuapp.com/api/v1/${info}`)
     .then((res) => res.json())
-    .catch(err => console.log('To err is human', err))
   return fetchedInfo
 } 
 

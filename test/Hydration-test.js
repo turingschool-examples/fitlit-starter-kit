@@ -9,4 +9,8 @@ describe('Hydration', function(){
         userHydrate = new Hydration(data)
     })
 
+    it("Should be a function", function () {
+        expect(userHydrate).to.be.a("function");
+  });
+
 })

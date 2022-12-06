@@ -6,6 +6,7 @@
     padding: 0;
 }
 
+html,
 body,
 main {
   height: 100vh;
@@ -14,11 +15,27 @@ main {
   flex-direction: row;
   font-family: 'Kalam', cursive;
   font-family: 'Space Grotesk', sans-serif;
-  background-color: blue;
+  background-color: rgb(161, 161, 215);
 }
-/* body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
-  height: 100%;
-} */
-/* ^double-check that this default is not necessary? */
+
+.aside-container {
+  height: 100vh;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(218, 234, 249);
+}
+
+.big-container-right {
+  display: flex;
+  flex-direction: column;
+}
+.info-card-container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(187, 224, 224);
+}
+
+.widget-container {
+  display: flex;
+}

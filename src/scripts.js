@@ -40,7 +40,7 @@ window.addEventListener('load', displayUserInfo)
 // activityBox.addEventListener('click', )
 // friendsBox.addEventListener('click', )
 // sleepBox.addEventListener('click', )
-// activityTrackerTitle.addEventListener('click', )
+window.addEventListener('load', displayWelcomeName)
 
 
 //Event Handlers
@@ -48,6 +48,11 @@ function displayUserInfo() {
   console.log('hi')
   infoBox.innerText = `${user.userData.name}`
 }
+
+function displayWelcomeName() {
+  console.log('potato')
+  activityTrackerTitle.innerText += ` ${user.getFirstName()}`
+ }
 
 // Functions
 function getUser() {

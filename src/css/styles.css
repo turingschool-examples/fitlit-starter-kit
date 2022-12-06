@@ -1,5 +1,24 @@
-body, html {
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body,
+main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Kalam', cursive;
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: blue;
+}
+/* body, html {
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
   background-repeat: no-repeat;
   height: 100%;
-}
+} */
+/* ^double-check that this default is not necessary? */

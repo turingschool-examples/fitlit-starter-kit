@@ -22,4 +22,8 @@ describe('Hydration', function(){
         expect(userHydrate.data).to.deep.equal(data)
     })
 
+    it("Should track average ounces of water consumed per day for all time", function () {
+        expect(userHydrate.calcAvgWaterConsumption(1)).to.equal(67)
+    })
+
 })

@@ -1,6 +1,6 @@
 import './css/styles.css';
 import './images/turing-logo.png'
-import { fetchData } from './apiCalls'
+import { fetchAll } from './apiCalls'
 
 
 import userData from './data/users';
@@ -9,11 +9,12 @@ import UserRepository from './UserRepository';
 
 import User from './User';
 let allUserData
-fetchData.then((data) => allUserData = new UserRepository(data.map((userInfo) => new User(userInfo))))
-
-setTimeout(() => {
-  console.log(allUserData)
-}, 1000)
+// fetchData.then((data) => allUserData = new UserRepository(data.map((userInfo) => new User(userInfo))))
+console.log(fetchAll().then((json) => json.map((element) => element.json())))
+//map over to make user repositories for sleep, hydration etc.
+// setTimeout(() => {
+//   console.log(allUserData)
+// }, 1000)
 
 
 const userDisplay = document.querySelector('#userInfo')

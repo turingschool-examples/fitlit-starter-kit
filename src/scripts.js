@@ -6,6 +6,7 @@ import UserRepository from "./UserRepository";
 //// query selectors
 const userInfoCard = document.querySelector(".user-info");
 const stepsWidgetCard = document.querySelector(".steps-widget")
+const welcomeTitle = document.querySelector('.welcome-user-title');
 
 ////Global Variables
 const users = userData.map((user) => new User(user));
@@ -16,6 +17,7 @@ function loadhandler() {
   randomizeCurrentUser()
   displayCurrentUserInfo()
   compareAndDisplayStepsGoal()
+  updateWelcomeText()
 }
 
 function generateRandomIndex() {
@@ -52,7 +54,11 @@ function displayStepsGoalComparison(numberRanked) {
   `
 }
 
+function updateWelcomeText() {
+    welcomeTitle.innerText = `Welcome ${currentUser.getFirstName()}`;
+}
+
+///// event listeners
 window.addEventListener("load", () => {
   loadhandler()
 });
-

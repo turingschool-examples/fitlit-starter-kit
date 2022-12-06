@@ -8,17 +8,13 @@ class UserRepository {
   }
 
   getData(userID) {
-    let user = this.data.find((currentUser) => {
-      if (currentUser.userData.id === userID) {
-        return currentUser.userData
-      }
-    })
-    return user
-  }
+    return this.data.find((currentUser) => currentUser.id === userID)
+
+}
 
   stepGoalAverage() {
     let sum = this.data.reduce((acc, user) => {
-      acc += user.userData.dailyStepGoal
+      acc += user.dailyStepGoal
       return acc
     }, 0)
     let totalUsers = this.data.length
@@ -37,7 +33,6 @@ export default UserRepository;
 
 //properties:
 //this.data or this.userData -> something like that
-
 
 
 

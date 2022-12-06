@@ -4,7 +4,7 @@ class User {
   }
 
   getFirstName() {
-    return this.userData.name;
+    return this.userData.name.split(' ')[0];
   }
 }
 

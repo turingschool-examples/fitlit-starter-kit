@@ -14,7 +14,7 @@ class UserRepository {
 
   stepGoalAverage() {
     let sum = this.data.reduce((acc, user) => {
-      acc += user.userData.dailyStepGoal
+      acc += user.dailyStepGoal
       return acc
     }, 0)
     let totalUsers = this.data.length

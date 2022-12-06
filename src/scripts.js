@@ -61,7 +61,7 @@ function displayWelcomeName() {
  }
 
 function stepGoalDisplay() {
-  stepGoalBox.innerText = `Your step goal is ${user.userData.dailyStepGoal} steps.`
+  stepGoalBox.innerText = `Your step goal is ${user.userData.dailyStepGoal} steps. The average step goal is ${userRepository.stepGoalAverage()}.`
 } 
 
 // Functions

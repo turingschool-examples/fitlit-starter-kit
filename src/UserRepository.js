@@ -40,7 +40,6 @@ export default UserRepository;
 
 
 
-
 // It should have methods to determine:
 
 // Given a user’s ID, what is their user data?

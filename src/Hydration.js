@@ -1,5 +1,6 @@
 class Hydration{
-    constructor(){
+    constructor(data){
+        this.data = data
 
     }
 }

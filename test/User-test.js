@@ -55,4 +55,4 @@ describe ("User", function() {
         expect(firstName).to.equal('Luisa');
     });
 
-})
+});

@@ -2,8 +2,8 @@
 //console.log(userData,"<>>>>userData")
 import './css/styles.css';
 import User from  '../src/User';
-// import userData from '../src/data/users'
-// import UserRepository from './UserRepository';
+import userData from '../src/data/users'
+import UserRepository from './UserRepository';
 
 // Global Variables
 
@@ -21,7 +21,9 @@ const user = new User ( {
   ]
 })
 
-console.log(user)
+const userRepository = new UserRepository(userData)
+
+console.log(userRepository)
 
 //Query Selectors
  let infoBox = document.querySelector('.zero')

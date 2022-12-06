@@ -28,6 +28,7 @@ function fetchApiCalls() {
     userData = data[0].userData.map((user) => new User(user));
     sleepData = data[1]
     hydrationData = data[2]
+    console.log(hydrationData)
     loadhandler()
   })
 }

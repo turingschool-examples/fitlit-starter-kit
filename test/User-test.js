@@ -47,6 +47,12 @@ describe ("User", function() {
 
     it('should have friends', function() {
         expect(user.friends).to.deep.equal([16, 4, 8]);
-    })
+    });
+
+    it('should return users first name', function() {
+        const firstName = user.getFirstName();
+
+        expect(firstName).to.equal('Luisa');
+    });
 
 })

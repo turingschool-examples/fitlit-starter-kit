@@ -1,6 +1,6 @@
 import './css/styles.css';
 import './images/turing-logo.png'
-import { fetchInfo } from './apiCalls'
+import { fetchData } from './apiCalls'
 
 
 import userData from './data/users';
@@ -8,9 +8,14 @@ import userData from './data/users';
 import UserRepository from './UserRepository';
 
 import User from './User';
+let allUserData
+fetchData.then((data) => allUserData = new UserRepository(data.map((userInfo) => new User(userInfo))))
+
+setTimeout(() => {
+  console.log(allUserData)
+}, 1000)
 
 
-fetchInfo()
 const userDisplay = document.querySelector('#userInfo')
 const userNameDisplay = document.querySelector('#userName')
 const userStepGoalAvg = document.querySelector('#stepGoalAvg')

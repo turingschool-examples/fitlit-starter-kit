@@ -30,7 +30,11 @@ describe('User Repository', () => {
   });
 
   it('should find a user by their id', function() {
-    expect(userRepo.getUserData(2)).to.deep.equal(userData[1]);
+    expect(userRepo.getUserData(2)).to.deep.equal(userData[1])
+  });
+
+  it('should find a different user by their id', function() {
+    expect(userRepo.getUserData(3)).to.deep.equal(userData[2]);
   });
 
 });

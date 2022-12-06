@@ -24,13 +24,13 @@ const user = new User ( {
 console.log(user)
 
 //Query Selectors
- infoBox = document.querySelector('.zero')
- hydrationBox = document.querySelector('.one')
- stepGoalBox = document.querySelector('.two')
- activityBox = document.querySelector('.three')
- friendsBox = document.querySelector('.four')
- sleepBox = document.querySelector('.five')
- activityTrackerTitle = document.querySelector(h1)
+ let infoBox = document.querySelector('.zero')
+ let hydrationBox = document.querySelector('.one')
+ let stepGoalBox = document.querySelector('.two')
+ let activityBox = document.querySelector('.three')
+ let friendsBox = document.querySelector('.four')
+ let sleepBox = document.querySelector('.five')
+ let activityTrackerTitle = document.querySelector('h1')
 
 // Event Listeners
 window.addEventListener('load', displayUserInfo)
@@ -45,7 +45,8 @@ window.addEventListener('load', displayUserInfo)
 
 //Event Handlers
 function displayUserInfo() {
-  infoBox.innerHTML = "Hello"
+  console.log('hi')
+  infoBox.innerText = `${user.userData.name}`
 }
 
 // Functions

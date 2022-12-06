@@ -1,12 +1,32 @@
 import './css/styles.css';
 import './images/turing-logo.png'
-
+import { fetchAll } from './apiCalls'
 
 import userData from './data/users';
-
+import User from './User';
 import UserRepository from './UserRepository';
 
-import User from './User';
+let allUserData;
+let allUserSleep;
+let allUserHydro
+
+
+const getFetch = () => {
+  return fetchAll()
+  .then(data => {
+    allUserData = data[0].userData;
+    allUserSleep = data[1].sleepData;
+    allUserHydro = data[2].hydrationData;
+    pageLoadHandler(allUserData, allUserSleep, allUserHydro)
+})
+}
+
+
+function pageLoadHandler(dataSet1, dataSet2, dataSet3) {
+
+}
+
+
 
 
 
@@ -88,7 +108,6 @@ const displayUserName = function(user) {
 }
 
 const displayComparedStepGoal = function(user, repository) {
-  console.log('working')
   userStepGoalAvg.innerHTML = `<p>${user.dailyStepGoal} ${repository.calculateAverageStepGoal()}</p>`
 }
 

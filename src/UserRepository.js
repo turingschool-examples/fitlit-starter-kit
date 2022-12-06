@@ -3,9 +3,10 @@ class UserRepository {
         this.users = users;
     }
     avgStepGoal() {
-        
-        //need to find the average step goal between users
-        //need array.length
+        const stepGoal = this.users.reduce((sum, user) => {
+            return sum += user.dailyStepGoal
+        },0)
+        return Math.round(stepGoal / this.users.length);
     }
 }
 

@@ -39,4 +39,4 @@ const userTestData = [
     ]
   }];
 
-  module.exports = userTestData;
+  export default userTestData;

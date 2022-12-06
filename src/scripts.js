@@ -31,6 +31,7 @@ console.log(user)
  let friendsBox = document.querySelector('.four')
  let sleepBox = document.querySelector('.five')
  let activityTrackerTitle = document.querySelector('h1')
+ let userInfoList = document.querySelector("#userInfoList")
 
 // Event Listeners
 window.addEventListener('load', displayUserInfo)
@@ -46,7 +47,12 @@ window.addEventListener('load', displayWelcomeName)
 //Event Handlers
 function displayUserInfo() {
   console.log('hi')
-  infoBox.innerText = `${user.userData.name}`
+  userInfoList.innerHTML += `<li>${user.userData.name}</li>
+                            <li>${user.userData.address}</li> 
+                            <li>${user.userData.email}</li>
+                            <li>Stride Length: ${user.userData.strideLength}</li>
+                            <li>Daily Step Goal: ${user.userData.dailyStepGoal}</li>
+                            <li>Friends: ${user.userData.friends}</li>`
 }
 
 function displayWelcomeName() {

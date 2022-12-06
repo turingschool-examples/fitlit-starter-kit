@@ -1,5 +1,59 @@
-body, html {
+*, html {
+  margin:0;
+  padding:0;  
+}
+
+/* body, html {
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
   background-repeat: no-repeat;
   height: 100%;
+} */
+body {
+  display:flex;
+  flex-direction: row;
 }
+.sidebar {
+  width: 20vw;
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
+  border-right: solid 2px;
+}
+
+.welcome-user-title {
+  font-size: 2rem;
+  text-align:center;
+}
+
+.widgets-container {
+  width:80vw;
+  height:100vh;
+  display:flex;
+  flex-direction: row;
+}
+
+.non-sleep-widgets-container{
+  width:40vw;
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:space-around;
+}
+
+.sleep-widgets-container{
+  width:40vw;
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:space-around;
+}
+
+.card{
+  height:30vh;
+  width:30vw;
+  border: 1px solid;
+}
+
+

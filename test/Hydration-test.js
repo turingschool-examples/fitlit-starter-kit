@@ -18,4 +18,8 @@ describe('Hydration', function(){
         expect(userHydrate).to.be.an.instanceof(Hydration);
     });
 
+    it("Should have a property that hold hydration data", function (){
+        expect(userHydrate.data).to.deep.equal(data)
+    })
+
 })

@@ -12,7 +12,10 @@ describe('Hydration', function(){
 
     it("Should be a function", function () {
         expect(Hydration).to.be.a("function");
-  });
+    });
 
+    it("Should be an instance of User", function () {
+        expect(userHydrate).to.be.an.instanceof(Hydration);
+    });
 
 })

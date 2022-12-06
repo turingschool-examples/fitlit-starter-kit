@@ -7,12 +7,14 @@ import User from './User';
 import UserRepository from './UserRepository';
 
 let allUserData;
+let allUserSleep;
 
 
 const getFetch = () => {
   return fetchAll()
   .then(data => {
     allUserData = data[0].userData;
+    allUserSleep = data[1].sleepData;
 })
 }
 

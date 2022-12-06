@@ -79,7 +79,7 @@ describe("User Hydration", () => {
     });
 
     it("should store all of a users hydration events in a single array property", function () {
-        expect(userHydration.allUserHydrations).to.deep.equal([
+        expect(userHydration.userHydrationInfo).to.deep.equal([
             {
                 userID: 1,
                 date: "2019/06/15",

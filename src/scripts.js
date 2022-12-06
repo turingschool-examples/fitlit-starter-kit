@@ -7,6 +7,10 @@ import UserRepository from "./UserRepository";
 
 import User from "./User";
 
+import apiCalls from "./apiCalls";
+
+import fetchData from "./apiCalls";
+
 // An example of how you tell webpack to use a CSS file
 // import './css/styles.css';
 
@@ -15,19 +19,52 @@ import User from "./User";
 
 // ----------------variables-------------------------
 
+
+
+let usersData;
+
+let sleepData;
+
+let hydrationData;
+
+let generatedUser;
+
+let newUserRepository;
+
 let gretting = document.querySelector("h1");
 
 let cardInfo = document.querySelector("#cardInfo");
 
-const data = userData;
 
-const newUserRepository = new UserRepository(data);
 
-let generatedUser;
 
 // ------------------functions-----------------------------------
+const fetchApiPromises = () => {
+	apiCalls.fetchData().then(data => {
+		usersData = data[0].userData
+		console.log(usersData)
+		sleepData = data[1]
+		hydrationData = data[2]
+		createDashboard();
+	});
+	
+};
+
+function createDashboard() {
+	createUserRepository();
+	createUser();
+	greetUser();
+	displayCardInfo();
+	compareStepGoals();
+}
+
 function createUser() {
-	return (generatedUser = new User(newUserRepository.generateRandomUser(data)));
+	return (generatedUser = new User(newUserRepository.generateRandomUser(usersData)));
+}
+
+function createUserRepository() {
+	newUserRepository = new UserRepository(usersData);
+	return newUserRepository;
 }
 
 function greetUser() {
@@ -40,17 +77,15 @@ function displayCardInfo() {
 }
 
 function compareStepGoals() {
-	console.log(newUserRepository.findAvrgStepGoal(data));
+	console.log(newUserRepository.findAvrgStepGoal(usersData));
 	console.log(generatedUser.dailyStepGoal);
 }
 
-// -------------------eventListeners----------------
 
-window.addEventListener("load", (event) => {
-	createUser();
-	greetUser();
-	displayCardInfo();
-	compareStepGoals();
+
+// -------------------eventListeners----------------
+window.addEventListener('load', (event) => {
+	fetchApiPromises()
 });
 
 // Do not delete or rename this file ********

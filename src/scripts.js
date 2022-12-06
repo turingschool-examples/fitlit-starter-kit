@@ -2,19 +2,15 @@ import './css/styles.css';
 import './images/turing-logo.png'
 import { fetchAll } from './apiCalls'
 
-
 import userData from './data/users';
-
+import User from './User';
 import UserRepository from './UserRepository';
 
-import User from './User';
-let allUserData
-// fetchData.then((data) => allUserData = new UserRepository(data.map((userInfo) => new User(userInfo))))
-console.log(fetchAll().then((json) => json.map((element) => element.json())))
-//map over to make user repositories for sleep, hydration etc.
-// setTimeout(() => {
-//   console.log(allUserData)
-// }, 1000)
+
+
+
+
+
 
 
 const userDisplay = document.querySelector('#userInfo')
@@ -95,7 +91,6 @@ const displayUserName = function(user) {
 }
 
 const displayComparedStepGoal = function(user, repository) {
-  console.log('working')
   userStepGoalAvg.innerHTML = `<p>${user.dailyStepGoal} ${repository.calculateAverageStepGoal()}</p>`
 }
 

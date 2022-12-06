@@ -40,4 +40,10 @@ describe('User Data', function() {
   it('should take in the length of stride by the foot', function() {
     expect(user.friends).to.deep.equal([ 9, 18, 24, 19 ])
   });
+
+  it('should only show the user\'s first name', function() {
+    const firstName = user.showFirstName()
+    
+    expect(firstName).to.equal('Jarvis')
+  });
 });

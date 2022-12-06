@@ -26,4 +26,8 @@ describe('Hydration', function(){
         expect(userHydrate.calcAvgWaterConsumption(1)).to.equal(67)
     })
 
+    it("SHould have water consumed by date", function() {
+        expect(userHydrate.consumeBydate(1,'2019/06/15')).to.equal(37)
+    })
+
 })

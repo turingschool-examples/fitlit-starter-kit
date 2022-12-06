@@ -39,7 +39,7 @@ console.log(userRepository)
 window.addEventListener('load', displayUserInfo)
 // infoBox.addEventListener('click', )
 // hydrationBox.addEventListener('click', )
-// stepGoalBox.addEventListener('click', )
+window.addEventListener('load', stepGoalDisplay)
 // activityBox.addEventListener('click', )
 // friendsBox.addEventListener('click', )
 // sleepBox.addEventListener('click', )
@@ -59,6 +59,10 @@ function displayUserInfo() {
 function displayWelcomeName() {
   activityTrackerTitle.innerText += ` ${user.getFirstName()}`
  }
+
+function stepGoalDisplay() {
+  stepGoalBox.innerText = `Your step goal is ${user.userData.dailyStepGoal} steps.`
+} 
 
 // Functions
 function getUser() {

@@ -1,4 +1,4 @@
-hydrationData: [
+const hydrationData = [
     {
     userID: 1,
     date: "2019/06/15",
@@ -56,4 +56,4 @@ hydrationData: [
     },
 ]
 
-export default hydration
+export default hydrationData

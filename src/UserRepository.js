@@ -8,9 +8,8 @@ class UserRepository {
   }
 
   getData(userID) {
-    let user = this.data.find((currentUser) => currentUser.id === userID)
-  console.log(user)
-    return user 
+    return this.data.find((currentUser) => currentUser.id === userID)
+
 }
 
   stepGoalAverage() {

@@ -48,7 +48,6 @@ window.addEventListener('load', displayWelcomeName)
 
 //Event Handlers
 function displayUserInfo() {
-  console.log('hi')
   userInfoList.innerHTML += `<li>${user.userData.name}</li>
                             <li>${user.userData.address}</li> 
                             <li>${user.userData.email}</li>
@@ -58,7 +57,6 @@ function displayUserInfo() {
 }
 
 function displayWelcomeName() {
-  console.log('potato')
   activityTrackerTitle.innerText += ` ${user.getFirstName()}`
  }
 
@@ -73,7 +71,6 @@ function getUserFriends() {
   let friendsArray = user.userData.friends.map(friend => {
     return userRepository.getData(friend).name
   }) 
-  console.log(friendsArray)
   return friendsArray.join(', ')
 }
 

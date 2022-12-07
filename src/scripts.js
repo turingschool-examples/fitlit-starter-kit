@@ -23,8 +23,6 @@ window.addEventListener('load', function() {
           {
               let userRepo = new UserRepository(values[0],values[1],values[2])
               console.log(userRepo)
-              console.log('script: ',values[0].userData[0].id);
-              header1.innerText = values[0].userData[0].name
           }
   })
 });

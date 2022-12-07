@@ -53,7 +53,7 @@ function stepGoalDisplay() {
     const userFriends = user.friends
     const findFriendsNames = userFriends.reduce((acc, friend) => {
       const friendInfo = userRepo.getUserData(friend)
-      acc += `<p>${friendInfo.name}: ${friendInfo.dailyStepGoal}</p>`
+      acc += `<p>${friendInfo.name}'s step goal: ${friendInfo.dailyStepGoal}</p>`
       return acc
     }, "")
     friendsData.innerHTML = findFriendsNames

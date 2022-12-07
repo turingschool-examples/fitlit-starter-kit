@@ -74,6 +74,36 @@ const sleepTestData = [
     hoursSlept: 10.7,
     sleepQuality: 3.4
     },
+    {
+    userID: 20,
+    date: "2019/06/14",
+    hoursSlept: 5.9,
+    sleepQuality: 1.6
+    },
+  {
+    userID: 20,
+    date: "2019/06/13",
+    hoursSlept: 7.8,
+    sleepQuality: 3
+    },
+  {
+    userID: 20,
+    date: "2019/06/12",
+    hoursSlept: 8.5,
+    sleepQuality: 2.5
+    },
+  {
+    userID: 20,
+    date: "2019/06/11",
+    hoursSlept: 6.5,
+    sleepQuality: 2
+  },
+  {
+    userID: 20,
+    date: "2019/06/10",
+    hoursSlept: 7,
+    sleepQuality: 2.8
+    }
 ];
 
 //module.exports = sleepTestData;

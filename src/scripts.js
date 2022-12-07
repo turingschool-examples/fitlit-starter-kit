@@ -46,9 +46,6 @@ function getAllData() {
       users = new UserRepository(data[0])
       sleep = data[1]
       hydration = data[2]
-      console.log('data', data)
-      console.log('users', users)
-      console.log('sleep', sleep)
       console.log('hydration', hydration)
     })
     .then(() => getUser())
@@ -73,7 +70,7 @@ function displayWelcomeName() {
  }
 
 function stepGoalDisplay() {
-  stepGoalBox.innerText = `Your step goal is ${currentUser.userData.dailyStepGoal} steps. The average step goal is ${userRepository.stepGoalAverage()}.`
+  stepGoalBox.innerText = `Your step goal is ${currentUser.userData.dailyStepGoal} steps. The average step goal is ${users.stepGoalAverage()}.`
 } 
 
 // Functions
@@ -85,7 +82,7 @@ function getUser() {
 
 function getUserFriends() {
   let friendsArray = currentUser.userData.friends.map(friend => {
-    return userRepository.getData(friend).name
+    return users.getData(friend).name
   }) 
   return friendsArray.join(', ')
 }

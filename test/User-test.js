@@ -4,6 +4,7 @@ const expect = chai.expect;
 import userTestData from './User-test-data';
 import User from '../src/User';
 import hydrationTestData from './hydration-test-data';
+import sleepTestData from './sleep-test-data';
 
 
 describe('User', function() {
@@ -70,15 +71,15 @@ describe('User', function() {
 
   it('should calculate the avg number of hours slept per night from all user data', function() {
     selectedUser = new User (userTestData[0]);
-    const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
+    const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
     selectedUser.sleepData = sleepData;
 
-    expect(selectedUser.averageSleepHours()).to.equal(6.2)
+    expect(selectedUser.averageSleepHours()).to.equal(6.6)
   });
 
   it.skip('should calculate the avg sleep quality per night from all user data', function() {
     selectedUser = new User(userTestData[0]);
-    const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
+    const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
     selectedUser.sleepData = sleepData;
 
     expect(selectedUser.averageSleepQuality()).to.equal(2.1);
@@ -86,7 +87,7 @@ describe('User', function() {
 
   it.skip('should find the hours slept for a given date', function() {
     selectedUser = new User(userTestData[0]);
-    const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
+    const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
     selectedUser.sleepData = sleepData;
 
     expect(selectedUser.findDaySleep("2019/06/16")).to.equal(4.3);
@@ -94,7 +95,7 @@ describe('User', function() {
 
   it.skip('should find the sleep quality for a given date', function() {
     selectedUser = new User(userTestData[0]);
-    const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
+    const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
     selectedUser.sleepData = sleepData;
 
     expect(selectedUser.findDaySleep("2019/06/16")).to.equal(1.4);
@@ -102,14 +103,14 @@ describe('User', function() {
 
   it.skip('should find sleep hours data over any given week', function() {
     selectedUser = new User(userTestData[0]);
-    const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
+    const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
     selectedUser.sleepData = sleepData;
 
     expect(selectedUser.findWeekSleepHours()).to.deep.equal()
   });
   it.skip('should find sleep quality data for any given week', function() {
     selectedUser = new User(userTestData[0]);
-    const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
+    const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
     selectedUser.sleepData = sleepData;
 
     expect(selectedUser.findWeekSleepQuality()).to.deep.equal()

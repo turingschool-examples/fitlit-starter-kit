@@ -8,16 +8,16 @@ class UserRepository {
   }
 
   getData(userID) {
-    return this.data.find((currentUser) => currentUser.id === userID)
+    return this.data.userData.find((currentUser) => currentUser.id === userID)
 
 }
 
   stepGoalAverage() {
-    let sum = this.data.reduce((acc, user) => {
+    let sum = this.data.userData.reduce((acc, user) => {
       acc += user.dailyStepGoal
       return acc
     }, 0)
-    let totalUsers = this.data.length
+    let totalUsers = this.data.userData.length
     return parseInt(sum / totalUsers)
   }
 }

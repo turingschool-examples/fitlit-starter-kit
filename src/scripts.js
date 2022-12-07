@@ -112,6 +112,11 @@ const displayComparedStepGoal = function(user, repository) {
   userStepGoalAvg.innerHTML = `<p>${user.dailyStepGoal} ${repository.calculateAverageStepGoal()}</p>`
 }
 
+const displayCurrentDayHydration = function(currentHydration) {
+  hydrationBox.innerHTML = `
+  <p>${currentHydration}</p>`
+}
+
 
 
 displayUserInfo(user1)

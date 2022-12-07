@@ -1,17 +1,58 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
+// imports here
 
-console.log(userData,"<>>>>userData")
-// An example of how you tell webpack to use a CSS file
-import './css/styles.css';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
+import './css/styles.css';
+import userData from './data/users';
+import User from './User'
+import UserRepository from './UserRepository';
 
+// query selectors here
+const userInfoBox = document.getElementById("userInfoBox");
+const userName = document.getElementById("name");
+const userAddress = document.getElementById("address");
+const userStrideLength = document.getElementById("strideLength");
+const userDailyStepGoal = document.getElementById("dailyStepGoal");
+const userEmail = document.getElementById("email");
+const userFriends = document.getElementById("friends");
+const userFirstName = document.getElementById("firstName");
+const userStepComparison = document.getElementById("stepCompareResults");
+let newRepo;
+let aNewUser;
+let userId = 1;
+// let userData;
+
+// event listeners
+window.addEventListener("load", onLoad);
+
+// logs
+console.log(userData,"<>>>>userData")
 console.log('This is the JavaScript entry file - your code begins here.');
 
-// An example of how you tell webpack to use a JS file
+// functions:
 
-import userData from './data/users';
+function onLoad() {
+    addUser();
+};
 
-import UserRepository from './UserRepository';
+const createUserArray = (userData) => {
+    return newRepo = new UserRepository(userData);
+    console.log(newRepo);
+};
+
+function createNewUser() {
+    createUserArray(userData);
+    const userObject = newRepo.getUserData(userId);
+    aNewUser = new User(userObject);
+    return aNewUser;
+}
+
+const addUser = () => {
+    createNewUser();
+    console.log(aNewUser);
+    userName.innerText = aNewUser.name;
+    userAddress.innerText = aNewUser.address;
+    userStrideLength.innerText = aNewUser.strideLength;
+    userDailyStepGoal.innerText = aNewUser.dailyStepGoal;
+    userEmail.innerText = aNewUser.email;
+    userFirstName.innerText = `Hi ${aNewUser.getFirstName()}!`;
+};

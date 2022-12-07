@@ -82,6 +82,7 @@ fetchAll()
 function pageLoadHandler(dataSet1, dataSet2, dataSet3) {
   console.log(allUserData.userData[0])
   displayUserName(allUserData.userData[0])
+  displayUserInfo(allUserData.userData[0])
 }
 
 
@@ -114,6 +115,6 @@ const displayCurrentDayHydration = function(currentHydration) {
 
 
 
-displayUserInfo(user1)
+// displayUserInfo(user1)
 // displayUserName(user1)
 displayComparedStepGoal(user1, userRepo)

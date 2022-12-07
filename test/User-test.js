@@ -58,6 +58,7 @@ describe('User', function() {
     selectedUser = new User (userTestData[0]);
     const hydrationData = hydrationTestData.filter( data => data.userID === selectedUser.id)
     selectedUser.hydrationData = hydrationData
+    console.log(selectedUser.hydrationData)
     expect(selectedUser.findWeekHydration("2020/01/22")).to.deep.equal([
     { userID: 20, date: '2020/01/16', numOunces: 15 },
     { userID: 20, date: '2020/01/17', numOunces: 21 },

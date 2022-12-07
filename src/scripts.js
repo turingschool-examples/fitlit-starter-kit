@@ -89,6 +89,3 @@ function getUserFriends() {
   }) 
   return friendsArray.join(', ')
 }
-
-
-

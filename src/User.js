@@ -36,6 +36,9 @@ class User {
   findDaySleepHours(date) {
     return this.sleepData.find(day => day.date === date).hoursSlept;
   }
+  findDaySleepQuality(date) {
+    return this.sleepData.find(day => day.date === date).sleepQuality;
+  }
 };
 
 

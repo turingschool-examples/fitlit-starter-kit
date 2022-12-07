@@ -3,7 +3,7 @@
 import './css/styles.css';
 import {getAPIData} from './apiCalls'
 import User from '../src/User';
-// import userData from '../src/data/users'
+import userData from '../src/data/users'
 import UserRepository from './UserRepository';
 
 // Global Variables
@@ -11,22 +11,7 @@ let one = 1
 let users
 let sleep
 let hydration
-let currentUser
-
-
-const user = new User ( {
-  "id": 1,
-  "name": "Luisa Hane",
-  "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-  "email": "Diana.Hayes1@hotmail.com",
-  "strideLength": 4.3,
-  "dailyStepGoal": 10000,
-  "friends": [
-    16,
-    4,
-    8
-  ]
-})
+let currentUser 
 
 const userRepository = new UserRepository(userData)
 
@@ -43,14 +28,15 @@ console.log(userRepository)
  let userInfoList = document.querySelector("#userInfoList")
 
 // Event Listeners
-window.addEventListener('load', displayUserInfo)
+window.addEventListener('load', getAllData)
+// window.addEventListener('load', displayUserInfo)
 // infoBox.addEventListener('click', )
 // hydrationBox.addEventListener('click', )
-window.addEventListener('load', stepGoalDisplay)
+// window.addEventListener('load', stepGoalDisplay)
 // activityBox.addEventListener('click', )
 // friendsBox.addEventListener('click', )
 // sleepBox.addEventListener('click', )
-window.addEventListener('load', displayWelcomeName)
+// window.addEventListener('load', displayWelcomeName)
 
 
 //Event Handlers
@@ -60,31 +46,34 @@ function getAllData() {
       users = new UserRepository(data[0])
       sleep = data[1]
       hydration = data[2]
-
+      console.log('data', data)
       console.log('users', users)
       console.log('sleep', sleep)
       console.log('hydration', hydration)
     })
     .then(() => getUser())
+    .then(() => displayUserInfo())
+    .then(() => stepGoalDisplay())
+    .then(() => displayWelcomeName())
     .catch(err => console.log('To err is human', err))
 }
 
 function displayUserInfo() {
-  getAllData()
-  userInfoList.innerHTML += `<li>${user.userData.name}</li>
-                            <li>${user.userData.address}</li> 
-                            <li>${user.userData.email}</li>
-                            <li>Stride Length: ${user.userData.strideLength}</li>
-                            <li>Daily Step Goal: ${user.userData.dailyStepGoal}</li>
+  // getAllData()
+  userInfoList.innerHTML += `<li>${currentUser.userData.name}</li>
+                            <li>${currentUser.userData.address}</li> 
+                            <li>${currentUser.userData.email}</li>
+                            <li>Stride Length: ${currentUser.userData.strideLength}</li>
+                            <li>Daily Step Goal: ${currentUser.userData.dailyStepGoal}</li>
                             <li>Friends: ${getUserFriends()}</li>`
 }
 
 function displayWelcomeName() {
-  activityTrackerTitle.innerText += ` ${user.getFirstName()}`
+  activityTrackerTitle.innerText += ` ${currentUser.getFirstName()}`
  }
 
 function stepGoalDisplay() {
-  stepGoalBox.innerText = `Your step goal is ${user.userData.dailyStepGoal} steps. The average step goal is ${userRepository.stepGoalAverage()}.`
+  stepGoalBox.innerText = `Your step goal is ${currentUser.userData.dailyStepGoal} steps. The average step goal is ${userRepository.stepGoalAverage()}.`
 } 
 
 // Functions
@@ -95,11 +84,8 @@ function getUser() {
 }
 
 function getUserFriends() {
-  let friendsArray = user.userData.friends.map(friend => {
+  let friendsArray = currentUser.userData.friends.map(friend => {
     return userRepository.getData(friend).name
   }) 
   return friendsArray.join(', ')
 }
-
-
-

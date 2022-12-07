@@ -11,7 +11,7 @@ class User {
 
 // Hydration
   getAvgDailyWater(userID) {
-    console.log(this.hydrationData.hydrationData)
+    console.log('where are you', this.hydrationData)
   }
 }
 

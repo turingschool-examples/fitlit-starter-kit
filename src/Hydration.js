@@ -4,6 +4,16 @@ class Hydration {
       (day) => day.userID === currentUser.id
     );
   }
+
+  averageUserHydrationAllTime() {
+   const total =  this.userHydrationInfo.map(ounces => {
+        return ounces.numOunces
+        }).reduce((totalOunces, ounce) => {
+        return (totalOunces += ounce)
+    })
+    return total / this.userHydrationInfo.length
+    }
+
   givenDayHydration(date) {
     return this.userHydrationInfo.find((hydration) => hydration.date === date)
       .numOunces;

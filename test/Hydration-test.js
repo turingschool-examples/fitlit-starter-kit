@@ -32,6 +32,7 @@ describe('Hydration', function(){
 
     it("Should be able to calculate water each day over a week", function() {
         expect(userHydrate.returnWeeklyWaterConsumption(1, '2019/06/15')).to.deep.equal([37, 75, 47, 85, 42, 87, 94])
+        expect(userHydrate.returnWeeklyWaterConsumption(1, '2019/06/21')).to.deep.equal([37, 75, 47, 85, 42, 87, 94])
     })
 
 })

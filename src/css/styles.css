@@ -51,12 +51,13 @@ main {
   height: 50vh;
   display: flex;
   padding: 1em;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
   padding: 2em;
   background-color: rgb(187, 224, 224);
 }
 
+.user-info-box,
 .step-goal-box {
   height: 10em;
   width: 20em;
@@ -64,6 +65,7 @@ main {
   float: right;
   background-color: aliceblue;
 }
+
 
 .widget-container {
   height: 50vh;

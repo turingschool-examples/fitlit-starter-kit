@@ -1,5 +1,12 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
+// imports here
+
+import './images/turing-logo.png'
+import './css/styles.css';
+import userData from './data/users';
+import User from './User'
+import UserRepository from './UserRepository';
+
+// query selectors here
 const userInfoBox = document.getElementById("userInfoBox");
 const userName = document.getElementById("name");
 const userAddress = document.getElementById("address");
@@ -7,17 +14,19 @@ const userStrideLength = document.getElementById("strideLength");
 const userDailyStepGoal = document.getElementById("dailyStepGoal");
 const userFriends = document.getElementById("friends");
 
-console.log(userData,"<>>>>userData")
-// An example of how you tell webpack to use a CSS file
-import './css/styles.css';
+// event listeners
+window.addEventListener("load", onLoad);
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+console.log(userData,"<>>>>userData")
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
-// An example of how you tell webpack to use a JS file
+// functions
+const onLoad = () => {
+    addUser(userData[0]);
+};
 
-import userData from './data/users';
-import User from '/'
-import UserRepository from './UserRepository';
+const addUser = (user) => {
+    const newUser = new User(user);
+    userName.innerText += newUser.name;
+};

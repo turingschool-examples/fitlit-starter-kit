@@ -8,12 +8,14 @@ class UserRepository {
   }
 
   getData(userID) {
-    return this.data.find((currentUser) => currentUser.id === userID)
+    let userDataArr = Object.entries(this.data)
+    console.log(userDataArr)
+    return userDataArr.find((currentUser) => currentUser.userData.id === userID)
 
 }
 
   stepGoalAverage() {
-    let sum = this.data.reduce((acc, user) => {
+    let sum = this.data.userData.reduce((acc, user) => {
       acc += user.dailyStepGoal
       return acc
     }, 0)

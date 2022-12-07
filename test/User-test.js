@@ -6,7 +6,8 @@ import User from '../src/User'
 describe('User', () => {
     let user1, user2, user3
     beforeEach(() => {
-        user1 = new User({
+        user1 = new User(
+            {
             "id": 1,
             "name": "Luisa Hane",
             "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
@@ -18,7 +19,15 @@ describe('User', () => {
                 4,
                 8
             ]
-        })
+        },
+            [{userID: 1, date: '2019/06/15', hoursSlept: 6.1, sleepQuality: 2.2},
+            {userID: 1, date: '2019/06/16', hoursSlept: 4.1, sleepQuality: 3.8},
+            {userID: 1, date: '2019/06/17', hoursSlept: 5.4, sleepQuality: 3.6}],
+
+            [{userID: 1, date: '2019/06/15', numOunces: 70},
+            {userID: 1, date: '2019/06/16', numOunces: 65},
+            {userID: 1, date: '2019/06/17', numOunces: 73}]
+        )
         user2 = new User({
             "id": 2,
             "name": "Jarvis Considine",
@@ -32,7 +41,15 @@ describe('User', () => {
                 24,
                 19
             ]
-        })
+        },
+            [{userID: 2, date: '2019/06/15', hoursSlept: 7, sleepQuality: 4.7},
+            {userID: 2, date: '2019/06/16', hoursSlept: 3.1, sleepQuality: 3.1},
+            {userID: 2, date: '2019/06/17', hoursSlept: 5.8, sleepQuality: 3.3}],
+            
+            [{userID: 2, date: '2019/06/15', numOunces: 65},
+            {userID: 2, date: '2019/06/16', numOunces: 60},
+            {userID: 2, date: '2019/06/17', numOunces: 71}]
+        )
         user3 = new User({
             "id": 3,
             "name": "Herminia Witting",
@@ -46,7 +63,16 @@ describe('User', () => {
                 42,
                 33
             ]
-        })
+        },
+            
+        [{userID: 3, date: '2019/06/15', hoursSlept: 6.3, sleepQuality: 3.7},
+        {userID: 3, date: '2019/06/16', hoursSlept: 4.7, sleepQuality: 4.1},
+        {userID: 3, date: '2019/06/17', hoursSlept: 5.8, sleepQuality: 3.9}],
+        
+        [{userID: 3, date: '2019/06/15', numOunces: 78},
+        {userID: 3, date: '2019/06/16', numOunces: 40},
+        {userID: 3, date: '2019/06/17', numOunces: 60}]
+    )
     })
 
     it('should be a function', function () {
@@ -115,7 +141,16 @@ describe('User', () => {
     it('should return users first name', function() {
 
 
-        expect(user1.getFirstName()).to.equal("Luisa Hane");
+        expect(user1.getFirstName()).to.equal("Luisa");
+    })
+
+    it('should find average hours slept per day', function() {
+
+        user1.getAverage()
+        console.log(user1)
+
+    expect(user1.getAverage()).to.equal(5.2)    
+
     })
 
 });

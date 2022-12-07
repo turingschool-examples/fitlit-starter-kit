@@ -51,7 +51,7 @@ function getAllData() {
       console.log('sleep', sleep)
       console.log('hydration', hydration)
     })
-    .then(() => getUser())
+    .then(() => getUser(sleep, hydration))
     .then(() => displayUserInfo())
     .then(() => stepGoalDisplay())
     .then(() => displayWelcomeName())
@@ -73,19 +73,20 @@ function displayWelcomeName() {
  }
 
 function stepGoalDisplay() {
-  stepGoalBox.innerText = `Your step goal is ${currentUser.userData.dailyStepGoal} steps. The average step goal is ${userRepository.stepGoalAverage()}.`
+  stepGoalBox.innerText = `Your step goal is ${currentUser.userData.dailyStepGoal} steps. The average step goal is ${users.stepGoalAverage()}.`
 } 
 
 // Functions
-function getUser() {
+function getUser(sleep, hydration) {
   let randomIndex = Math.floor(Math.random() * users.data.userData.length);
   let randomUser = users.data.userData[randomIndex];
-  currentUser = new User(randomUser);
+  currentUser = new User(randomUser, sleep, hydration);
+  console.log('string', currentUser)
 }
 
 function getUserFriends() {
   let friendsArray = currentUser.userData.friends.map(friend => {
-    return userRepository.getData(friend).name
+    return users.getData(friend).name
   }) 
   return friendsArray.join(', ')
 }

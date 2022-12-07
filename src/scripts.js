@@ -33,6 +33,7 @@ function pageLoadHandler(dataSet1, dataSet2, dataSet3) {
 const userDisplay = document.querySelector('#userInfo')
 const userNameDisplay = document.querySelector('#userName')
 const userStepGoalAvg = document.querySelector('#stepGoalAvg')
+const hydrationBox = document.querySelector('#hydration')
 
 const users = [{
   "id": 1,

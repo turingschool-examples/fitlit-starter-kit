@@ -101,18 +101,27 @@ describe('User', function() {
     expect(selectedUser.findDaySleepQuality("2019/06/16")).to.equal(1.4);
   });
 
-  it.skip('should find sleep hours data over any given week', function() {
+  it('should find sleep data over any given week', function() {
     selectedUser = new User(userTestData[0]);
     const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
     selectedUser.sleepData = sleepData;
 
-    expect(selectedUser.findWeekSleepHours()).to.deep.equal()
-  });
-  it.skip('should find sleep quality data for any given week', function() {
-    selectedUser = new User(userTestData[0]);
-    const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
-    selectedUser.sleepData = sleepData;
-
-    expect(selectedUser.findWeekSleepQuality()).to.deep.equal()
+    expect(selectedUser.findWeekSleep("2019/06/16")).to.deep.equal([
+    { userID: 20, date: "2019/06/10", hoursSlept: 7, sleepQuality: 2.8 },
+    { userID: 20, date: "2019/06/11", hoursSlept: 6.5, sleepQuality: 2 },
+    { userID: 20, date: "2019/06/12", hoursSlept: 8.5, sleepQuality: 2.5 },
+    { userID: 20, date: "2019/06/13", hoursSlept: 7.8, sleepQuality: 3 },
+    { userID: 20, date: "2019/06/14", hoursSlept: 5.9, sleepQuality: 1.6 },
+    { userID: 20, date: "2019/06/15", hoursSlept: 5.9, sleepQuality: 1.6 },
+    { userID: 20, date: "2019/06/16", hoursSlept: 4.3, sleepQuality: 1.4 }
+    ])
   });
 });
+
+
+
+
+
+
+ 
+    

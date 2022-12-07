@@ -11,24 +11,6 @@ let allUserSleep;
 let allUserHydro
 
 
-const getFetch = () => {
-  return fetchAll()
-  .then(data => {
-    allUserData = data[0].userData;
-    allUserSleep = data[1].sleepData;
-    allUserHydro = data[2].hydrationData;
-    pageLoadHandler(allUserData, allUserSleep, allUserHydro)
-})
-}
-
-
-function pageLoadHandler(dataSet1, dataSet2, dataSet3) {
-
-}
-
-
-
-
 
 const userDisplay = document.querySelector('#userInfo')
 const userNameDisplay = document.querySelector('#userName')
@@ -85,11 +67,24 @@ const user1 = new User(users[0])
 
 
 
+// const getFetch = () => {
+fetchAll()
+  .then(data => {
+    // allUserData = data[0].userData;
+    allUserData = new UserRepository(data[0].userData.map(user => new User(user)))
+    allUserSleep = data[1].sleepData;
+    allUserHydro = data[2].hydrationData;
+    pageLoadHandler(allUserData, allUserSleep, allUserHydro)
+})
+// }
 
 
+function pageLoadHandler(dataSet1, dataSet2, dataSet3) {
+  console.log(allUserData.userData[0])
+  displayUserName(allUserData.userData[0])
+}
 
 
-console.log(user1)
 
 const displayUserInfo = function(user) {
   userDisplay.innerHTML = `
@@ -120,5 +115,5 @@ const displayCurrentDayHydration = function(currentHydration) {
 
 
 displayUserInfo(user1)
-displayUserName(user1)
+// displayUserName(user1)
 displayComparedStepGoal(user1, userRepo)

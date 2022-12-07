@@ -94,5 +94,9 @@ it.skip('should find the hours slept for a given date', function() {
 });
 
 it.skip('should find the sleep quality for a given date', function() {
+  selectedUser = new User(userTestData[0]);
+  const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
+  selectedUser.sleepData = sleepData;
 
+  expect(selectedUser.findDaySleep("2019/06/16")).to.equal(1.4);
 })

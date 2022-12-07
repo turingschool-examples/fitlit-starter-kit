@@ -2,11 +2,14 @@ import "./css/styles.css";
 import User from "./User";
 import UserRepository from "./UserRepository";
 import returnDataPromises from "./apiCalls";
+import Hydration from "./Hydration"
 
 //// query selectors
 const userInfoCard = document.querySelector(".user-info");
 const stepsWidgetCard = document.querySelector(".steps-widget")
 const welcomeTitle = document.querySelector('.welcome-user-title');
+const todayConsumedWaterCard = document.querySelector('.hydration1-widget')
+const hydrationWidget2Card = document.querySelector('.hydration2-widget')
 
 ////Global Variables
 let userData;
@@ -15,14 +18,7 @@ let hydrationData;
 let userRepository;
 let currentUser;
 
-function loadhandler() {
-  userRepository = new UserRepository(userData);
-  randomizeCurrentUser()
-  displayCurrentUserInfo()
-  compareAndDisplayStepsGoal()
-  updateWelcomeText()
-}
-
+////functions
 function fetchApiCalls() {
   returnDataPromises().then(data => {
     userData = data[0].userData.map((user) => new User(user));
@@ -30,6 +26,15 @@ function fetchApiCalls() {
     hydrationData = data[2]
     loadhandler()
   })
+}
+
+function loadhandler() {
+  userRepository = new UserRepository(userData);
+  randomizeCurrentUser()
+  displayCurrentUserInfo()
+  compareAndDisplayStepsGoal()
+  updateWelcomeText()
+  displayHydrationWidgets()
 }
 
 function generateRandomIndex() {
@@ -64,6 +69,16 @@ function displayStepsGoalComparison(numberRanked) {
     You step goal ranks ${numberRanked} highest out of ${userRepository.users.length}. <br>
   </p>
   `
+}
+
+function displayHydrationWidgets() {
+  let userHydration = new Hydration(currentUser, hydrationData)
+  displayTodaysHydration(userHydration)
+}
+function displayTodaysHydration(userHydration) {
+  todayConsumedWaterCard.innerHTML = `<p class="todays-hydration">
+  Today you have consumed ${userHydration.givenDayHydration(userHydration.userHydrationInfo[userHydration.userHydrationInfo.length-1].date)} ounces of water.
+  </p>`
 }
 
 function updateWelcomeText() {

@@ -60,11 +60,4 @@ describe('User', () => {
       expect(Sleep).to.be.a('function');
   })
   
-  it('should find average hours slept per day', function() {
-
-  getUser()
-
-
-
-  })
   })

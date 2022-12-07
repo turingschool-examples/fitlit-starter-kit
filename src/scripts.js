@@ -48,7 +48,7 @@ function getAllData() {
       hydration = data[2]
       console.log('hydration', hydration)
     })
-    .then(() => getUser())
+    .then(() => getUser(sleep, hydration))
     .then(() => displayUserInfo())
     .then(() => stepGoalDisplay())
     .then(() => displayWelcomeName())
@@ -74,10 +74,11 @@ function stepGoalDisplay() {
 } 
 
 // Functions
-function getUser() {
+function getUser(sleep, hydration) {
   let randomIndex = Math.floor(Math.random() * users.data.userData.length);
   let randomUser = users.data.userData[randomIndex];
-  currentUser = new User(randomUser);
+  currentUser = new User(randomUser, sleep, hydration);
+  console.log('string', currentUser)
 }
 
 function getUserFriends() {

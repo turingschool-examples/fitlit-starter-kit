@@ -1,5 +1,90 @@
-body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
-  height: 100%;
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body,
+main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Kalam', cursive;
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: rgb(161, 161, 215);
+}
+
+.aside-container {
+  height: 100vh;
+  width: 25%;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  text-indent: 3em;
+  background-color: rgb(218, 234, 249);
+}
+
+.aside-top-box {
+  height: 50vh;
+  padding: 1em;
+  background-color: aquamarine;
+}
+
+.form-bottom-box {
+  height: 50vh;
+  padding: 1em;
+  background-color: aqua;
+}
+.big-container-right {
+  height: 100vh;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  background-color: blue;
+}
+
+.info-card-container {
+  height: 50vh;
+  display: flex;
+  padding: 1em;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2em;
+  background-color: rgb(187, 224, 224);
+}
+
+.step-goal-box {
+  height: 10em;
+  width: 20em;
+  padding: 1em;
+  float: right;
+  background-color: aliceblue;
+}
+
+.widget-container {
+  height: 50vh;
+  padding: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.widget1,
+.widget2,
+.widget3,
+.widget4,
+.widget5,
+.widget6 {
+  height: 10em;
+  width: 10em;
+  padding: 1em;
+  border-radius: 25%;
+  text-align: center;
+  font-size: .8em;
+  background-color: rgb(86, 86, 161);
 }

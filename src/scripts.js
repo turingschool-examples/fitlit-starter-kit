@@ -83,9 +83,15 @@ function pageLoadHandler(dataSet1, dataSet2, dataSet3) {
   console.log(allUserData.userData[0])
   displayUserName(allUserData.userData[0])
   displayUserInfo(allUserData.userData[0])
+  displayComparedStepGoal(allUserData.userData[0], allUserData)
 }
 
 
+
+
+const displayUserName = function(user) {
+  userNameDisplay.innerText = `Welcome, ${user.getFirstName()}!`
+}
 
 const displayUserInfo = function(user) {
   userDisplay.innerHTML = `
@@ -98,10 +104,6 @@ const displayUserInfo = function(user) {
     <p class="daily-step-goal">${user.dailyStepGoal}</p>
     <p class="friends">${user.friends}</p>
   </div>`
-}
-
-const displayUserName = function(user) {
-  userNameDisplay.innerText = `Welcome, ${user.getFirstName()}!`
 }
 
 const displayComparedStepGoal = function(user, repository) {
@@ -117,4 +119,4 @@ const displayCurrentDayHydration = function(currentHydration) {
 
 // displayUserInfo(user1)
 // displayUserName(user1)
-displayComparedStepGoal(user1, userRepo)
+// displayComparedStepGoal(user1, userRepo)

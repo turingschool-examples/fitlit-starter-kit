@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import userData from '../src/data/users'
 import User from '../src/User'
 import Sleep from '../src/Sleep'
-import {getAPIData} from './apiCalls'
+// import {getAPIData} from './apiCalls'
 
 describe('User', () => {
     let user1, user2, user3

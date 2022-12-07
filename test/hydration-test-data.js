@@ -102,6 +102,10 @@ const hydrationTestData = [
       date: "2020/01/22",
       numOunces: 22
     },
-  ];
+    {
+      userID: 20,
+      date: "2020/01/23",
+      numOunces: 12
+    }]
 
   module.exports = hydrationTestData;

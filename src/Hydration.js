@@ -12,6 +12,14 @@ class Hydration{
     consumeBydate(id,date){
         return this.data.find(waterLog => waterLog.userID === id && waterLog.date === date).numOunces
     }
+
+    returnWeeklyWaterConsumption(id, date) {
+        const userData = this.data.filter(waterLog => waterLog.userID === id)
+        const ounces = userData.map(el => el.numOunces)
+        const index = userData.findIndex(el => el.date === date && el.userID === id)
+        // This is where we'll need to set a conditional for whether userData[index + 7]
+        return ounces.slice(index, index + 7)
+    }
 }
 
 export default Hydration

@@ -15,6 +15,7 @@ const userDisplay = document.querySelector('#userInfo')
 const userNameDisplay = document.querySelector('#userName')
 const userStepGoalAvg = document.querySelector('#stepGoalAvg')
 const hydrationBox = document.querySelector('#hydration')
+const displayWeekly = document.querySelector('#week')
 
 fetchAll()
   .then(data => {
@@ -25,7 +26,6 @@ fetchAll()
     currentUser = allUserData.userData[0]
     console.log(allUserHydro)
     currentDate = allUserHydro.data.slice(-1)[0].date
-
     pageLoadHandler()
 })
 
@@ -34,6 +34,7 @@ function pageLoadHandler() {
   displayUserInfo(currentUser)
   displayComparedStepGoal(currentUser, allUserData)
   displayCurrentDayHydration(allUserHydro, currentDate)
+  displayWeeklyInfo(allUserHydro, currentDate)
 }
 
 const displayUserName = function(user) {
@@ -60,4 +61,9 @@ const displayComparedStepGoal = function(user, repository) {
 const displayCurrentDayHydration = function(hydration, date) {
   hydrationBox.innerHTML = `
   <p>${hydration.consumeBydate(currentUser.id, date)}</p>`
+}
+
+const displayWeeklyInfo = function(hydration, date) {
+  displayWeekly.innerHTML = `
+  <p>Water ${hydration.returnWeeklyWaterConsumption(currentUser.id, date)}</p>`
 }

@@ -67,52 +67,51 @@ describe('User', function() {
     { userID: 20, date: '2020/01/21', numOunces: 32 },
     { userID: 20, date: '2020/01/22', numOunces: 22 }])
   })
-});
 
-it('should calculate the avg number of hours slept per night from all user data', function() {
-  
-  selectedUser = new User (userTestData[0]);
-  const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
-  selectedUser.sleepData = sleepData;
+  it('should calculate the avg number of hours slept per night from all user data', function() {
+    selectedUser = new User (userTestData[0]);
+    const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
+    selectedUser.sleepData = sleepData;
 
-  expect(selectedUser.averageSleepHours()).to.equal(6.2)
-});
+    expect(selectedUser.averageSleepHours()).to.equal(6.2)
+  });
 
-it.skip('should calculate the avg sleep quality per night from all user data', function() {
-  selectedUser = new User(userTestData[0]);
-  const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
-  selectedUser.sleepData = sleepData;
+  it.skip('should calculate the avg sleep quality per night from all user data', function() {
+    selectedUser = new User(userTestData[0]);
+    const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
+    selectedUser.sleepData = sleepData;
 
-  expect(selectedUser.averageSleepQuality()).to.equal(2.1);
-});
+    expect(selectedUser.averageSleepQuality()).to.equal(2.1);
+  });
 
-it.skip('should find the hours slept for a given date', function() {
-  selectedUser = new User(userTestData[0]);
-  const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
-  selectedUser.sleepData = sleepData;
+  it.skip('should find the hours slept for a given date', function() {
+    selectedUser = new User(userTestData[0]);
+    const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
+    selectedUser.sleepData = sleepData;
 
-  expect(selectedUser.findDaySleep("2019/06/16")).to.equal(4.3);
-});
+    expect(selectedUser.findDaySleep("2019/06/16")).to.equal(4.3);
+  });
 
-it.skip('should find the sleep quality for a given date', function() {
-  selectedUser = new User(userTestData[0]);
-  const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
-  selectedUser.sleepData = sleepData;
+  it.skip('should find the sleep quality for a given date', function() {
+    selectedUser = new User(userTestData[0]);
+    const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
+    selectedUser.sleepData = sleepData;
 
-  expect(selectedUser.findDaySleep("2019/06/16")).to.equal(1.4);
-});
+    expect(selectedUser.findDaySleep("2019/06/16")).to.equal(1.4);
+  });
 
-it.skip('should find sleep hours data over any given week', function() {
-  selectedUser = new User(userTestData[0]);
-  const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
-  selectedUser.sleepData = sleepData;
+  it.skip('should find sleep hours data over any given week', function() {
+    selectedUser = new User(userTestData[0]);
+    const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
+    selectedUser.sleepData = sleepData;
 
-  expect(selectedUser.findWeekSleepHours()).to.deep.equal()
-});
-it.skip('should find sleep quality data for any given week', function() {
-  selectedUser = new User(userTestData[0]);
-  const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
-  selectedUser.sleepData = sleepData;
+    expect(selectedUser.findWeekSleepHours()).to.deep.equal()
+  });
+  it.skip('should find sleep quality data for any given week', function() {
+    selectedUser = new User(userTestData[0]);
+    const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
+    selectedUser.sleepData = sleepData;
 
-  expect(selectedUser.findWeekSleepQuality()).to.deep.equal()
+    expect(selectedUser.findWeekSleepQuality()).to.deep.equal()
+  });
 });

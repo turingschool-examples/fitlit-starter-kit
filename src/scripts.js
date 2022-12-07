@@ -9,6 +9,7 @@ let allUserData;
 let allUserSleep;
 let allUserHydro
 let currentUser
+let currentDate
 
 const userDisplay = document.querySelector('#userInfo')
 const userNameDisplay = document.querySelector('#userName')
@@ -22,6 +23,9 @@ fetchAll()
     allUserSleep = data[1].sleepData;
     allUserHydro = new Hydration(data[2].hydrationData)
     currentUser = allUserData.userData[0]
+    console.log(allUserHydro)
+    currentDate = allUserHydro.data.slice(-1)[0].date
+
     pageLoadHandler()
 })
 
@@ -29,6 +33,7 @@ function pageLoadHandler() {
   displayUserName(currentUser)
   displayUserInfo(currentUser)
   displayComparedStepGoal(currentUser, allUserData)
+  displayCurrentDayHydration(allUserHydro, currentDate)
 }
 
 const displayUserName = function(user) {
@@ -52,7 +57,7 @@ const displayComparedStepGoal = function(user, repository) {
   userStepGoalAvg.innerHTML = `<p>${user.dailyStepGoal} ${repository.calculateAverageStepGoal()}</p>`
 }
 
-const displayCurrentDayHydration = function(user) {
+const displayCurrentDayHydration = function(hydration, date) {
   hydrationBox.innerHTML = `
-  <p>${user}</p>`
+  <p>${hydration.consumeBydate(currentUser.id, date)}</p>`
 }

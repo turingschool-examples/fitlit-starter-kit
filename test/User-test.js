@@ -1,7 +1,10 @@
 const chai = require("chai");
 const expect = chai.expect;
+
 import userTestData from './User-test-data';
 import User from '../src/User';
+import hydrationTestData from './hydration-test-data';
+
 
 describe('User', function() {
 
@@ -35,5 +38,35 @@ describe('User', function() {
     const userNameSplitArray = userTestData[selectedUserInt].name.split(' ');
     expect(selectedUser.returnFirstName()).to.equal(userNameSplitArray[0]);
   });
+  it('should accept hydration data and store it in an attribute', function(){
+    const hydrationData = hydrationTestData.filter( data => data.userID === selectedUser.id)
+    selectedUser.hydrationData = hydrationData
+
+    expect(selectedUser.hydrationData).to.deep.equal(hydrationData)
+  })
+  it('should have a method that returns a single users hydration on a given day', function(){
+    selectedUser = new User (userTestData[0]);
+    const hydrationData = hydrationTestData.filter( data => data.userID === selectedUser.id)
+    selectedUser.hydrationData = hydrationData
+    expect(selectedUser.findDaysHydration("2019/06/15")).to.deep.equal({
+      userID: 20,
+      date: "2019/06/15",
+      numOunces: 23
+      })
+  })
+  it('should have a method for returning fluid ounces drank per day for a whole week', function(){
+    selectedUser = new User (userTestData[0]);
+    const hydrationData = hydrationTestData.filter( data => data.userID === selectedUser.id)
+    selectedUser.hydrationData = hydrationData
+    console.log(selectedUser.hydrationData)
+    expect(selectedUser.findWeekHydration("2020/01/22")).to.deep.equal([
+    { userID: 20, date: '2020/01/16', numOunces: 15 },
+    { userID: 20, date: '2020/01/17', numOunces: 21 },
+    { userID: 20, date: '2020/01/18', numOunces: 20 },
+    { userID: 20, date: '2020/01/19', numOunces: 17 },
+    { userID: 20, date: '2020/01/20', numOunces: 22 },
+    { userID: 20, date: '2020/01/21', numOunces: 32 },
+    { userID: 20, date: '2020/01/22', numOunces: 22 }])
+  })
 });
 

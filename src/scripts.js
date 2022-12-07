@@ -3,6 +3,7 @@ import './images/turing-logo.png'
 import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
+import fetchUserData from "./apiCalls.js"
 
 const userName = document.querySelector('#username') 
 const name = document.querySelector('#name') 
@@ -15,10 +16,9 @@ const averageStepGoal = document.querySelector('#average-goal')
 let user
 let userRepo
 let currentUser
-  
+
 user = new User(userData[Math.floor(Math.random() * userData.length)])
 userRepo = new UserRepository(userData)
-
 
   console.log('here', user)
   window.addEventListener('load', () => {
@@ -27,7 +27,6 @@ userRepo = new UserRepository(userData)
     displayInfo()
     stepGoalDisplay()
   })
-
 
 function displayName() {
   userName.innerHTML = `Welcome, ${user.showFirstName()}!`
@@ -43,7 +42,7 @@ function displayInfo() {
 
 function stepGoalDisplay() {
     averageStepGoal.innerHTML = `Your step goal is ${user.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
-  }
+}
 
 
 // const makeClasses = (users) => {
@@ -58,7 +57,3 @@ function stepGoalDisplay() {
 
 //getrandomIndex  compare user Id
 //userRepo has users
-
-
-
-

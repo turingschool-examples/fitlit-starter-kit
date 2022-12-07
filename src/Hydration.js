@@ -18,6 +18,12 @@ class Hydration{
         const ounces = userData.map(el => el.numOunces)
         const index = userData.findIndex(el => el.date === date && el.userID === id)
         // This is where we'll need to set a conditional for whether userData[index + 7]
+        if (ounces.length < 7) {
+          return ounces
+        } 
+        if (!ounces[index + 6]) {
+          return ounces.slice(-7)
+        }
         return ounces.slice(index, index + 7)
     }
 }

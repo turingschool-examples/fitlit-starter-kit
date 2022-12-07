@@ -42,7 +42,7 @@ function displayInfo() {
 }
 
 function stepGoalDisplay() {
-    averageStepGoal.innerHTML = `Your step goal is ${user.dailyStepGoal} steps. The average step goal is ${userRepository.getAverageStepGoal()}.`
+    averageStepGoal.innerHTML = `Your step goal is ${user.dailyStepGoal} steps. The average step goal is ${userRepo.getAverageStepGoal()}.`
   }
 
 

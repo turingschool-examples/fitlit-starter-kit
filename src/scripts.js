@@ -9,7 +9,7 @@ const userInfoCard = document.querySelector(".user-info");
 const stepsWidgetCard = document.querySelector(".steps-widget")
 const welcomeTitle = document.querySelector('.welcome-user-title');
 const todayConsumedWaterCard = document.querySelector('.hydration1-widget')
-const hydrationWidget2Card = document.querySelector('.hydration2-widget')
+const weekHydrationCard = document.querySelector('.hydration2-widget')
 
 ////Global Variables
 let userData;
@@ -74,11 +74,23 @@ function displayStepsGoalComparison(numberRanked) {
 function displayHydrationWidgets() {
   let userHydration = new Hydration(currentUser, hydrationData)
   displayTodaysHydration(userHydration)
+  displayWeekHydration(userHydration)
 }
+
 function displayTodaysHydration(userHydration) {
   todayConsumedWaterCard.innerHTML = `<p class="todays-hydration">
   Today you have consumed ${userHydration.givenDayHydration(userHydration.userHydrationInfo[userHydration.userHydrationInfo.length-1].date)} ounces of water.
   </p>`
+}
+
+function displayWeekHydration (userHydration) {
+console.log("week hydration",userHydration.weekHydration())
+userHydration.weekHydration().forEach(item => {
+  weekHydrationCard.innerHTML+= `<p class="weekly-hydration-item">
+  ${item.date} : ${item.numOunces}oz of water consumed
+  </p>`
+})
+weekHydrationCard
 }
 
 function updateWelcomeText() {

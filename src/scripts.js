@@ -19,7 +19,7 @@ const userStepComparison = document.getElementById("stepCompareResults");
 let newRepo;
 let aNewUser;
 let userId = 1;
-// let userData;
+let usersAvgSteps;
 
 // event listeners
 window.addEventListener("load", onLoad);
@@ -35,8 +35,10 @@ function onLoad() {
 };
 
 const createUserArray = (userData) => {
-    return newRepo = new UserRepository(userData);
-    console.log(newRepo);
+    newRepo = new UserRepository(userData);
+    usersAvgSteps = newRepo.avgStepGoal()
+    userStepComparison.innerText = `${usersAvgSteps} steps`
+    return newRepo
 };
 
 function createNewUser() {
@@ -48,7 +50,7 @@ function createNewUser() {
 
 const addUser = () => {
     createNewUser();
-    console.log(aNewUser);
+    // console.log(aNewUser);
     userName.innerText = aNewUser.name;
     userAddress.innerText = aNewUser.address;
     userStrideLength.innerText = aNewUser.strideLength;

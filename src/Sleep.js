@@ -6,6 +6,10 @@ class Sleep {
     this.currentUser = currentUser;
     this.sleepData = data.sleepData;
   }
+
+  averageSleepQuality(){
+    return (this.userSleepInfo.map(day => day.sleepQuality).reduce((a, b) => a + b) / this.userSleepInfo.length).toFixed(1)
+  }
 }
 
 export default Sleep;

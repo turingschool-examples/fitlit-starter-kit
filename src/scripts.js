@@ -46,9 +46,6 @@ function getAllData() {
       users = new UserRepository(data[0])
       sleep = data[1]
       hydration = data[2]
-      console.log('data', data)
-      console.log('users', users)
-      console.log('sleep', sleep)
       console.log('hydration', hydration)
     })
     .then(() => getUser(sleep, hydration))

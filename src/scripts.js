@@ -1,13 +1,14 @@
 import './css/styles.css';
 import './images/turing-logo.png'
 import { fetchAll } from './apiCalls'
-import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
+import Hydration from './Hydration'
 
 let allUserData;
 let allUserSleep;
 let allUserHydro
+let currentUser
 
 const userDisplay = document.querySelector('#userInfo')
 const userNameDisplay = document.querySelector('#userName')
@@ -16,18 +17,18 @@ const hydrationBox = document.querySelector('#hydration')
 
 fetchAll()
   .then(data => {
+    console.log(data)
     allUserData = new UserRepository(data[0].userData.map(user => new User(user)))
     allUserSleep = data[1].sleepData;
-    allUserHydro = data[2].hydrationData;
+    allUserHydro = new Hydration(data[2].hydrationData)
+    currentUser = allUserData.userData[0]
     pageLoadHandler()
 })
 
 function pageLoadHandler() {
-  const user = allUserData.userData[0]
-  console.log(user)
-  displayUserName(user)
-  displayUserInfo(user)
-  displayComparedStepGoal(user, allUserData)
+  displayUserName(currentUser)
+  displayUserInfo(currentUser)
+  displayComparedStepGoal(currentUser, allUserData)
 }
 
 const displayUserName = function(user) {
@@ -51,7 +52,7 @@ const displayComparedStepGoal = function(user, repository) {
   userStepGoalAvg.innerHTML = `<p>${user.dailyStepGoal} ${repository.calculateAverageStepGoal()}</p>`
 }
 
-const displayCurrentDayHydration = function(currentHydration) {
+const displayCurrentDayHydration = function(user) {
   hydrationBox.innerHTML = `
-  <p>${currentHydration}</p>`
+  <p>${user}</p>`
 }

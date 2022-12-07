@@ -6,7 +6,6 @@ import User from '../src/User';
 import hydrationTestData from './hydration-test-data';
 import sleepTestData from './sleep-test-data';
 
-
 describe('User', function() {
 
   let selectedUserInt;
@@ -68,7 +67,6 @@ describe('User', function() {
     { userID: 20, date: '2020/01/21', numOunces: 32 },
     { userID: 20, date: '2020/01/22', numOunces: 22 }])
   })
-
   it('should calculate the avg number of hours slept per night from all user data', function() {
     selectedUser = new User (userTestData[0]);
     const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);

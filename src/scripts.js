@@ -4,30 +4,47 @@ import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
 
-const userName = document.querySelector('#user-name')  
-let user
-// let userRepository
-let currentUser
+const userName = document.querySelector('#username') 
+const name = document.querySelector('#name') 
+const email = document.querySelector('#email')
+const address = document.querySelector('#address')
+const strideLength = document.querySelector('#stride-length')
+const userStepGoal = document.querySelector('#user-goal')
+const averageStepGoal = document.querySelector('#average-goal')
 
-// let thisData = userData.map(justID => {
-  // return justID.id}) //array of Numbers [userData.id]
+let user
+let userRepo
+let currentUser
   
 user = new User(userData[Math.floor(Math.random() * userData.length)])
-let testNewUser = new UserRepository(user)
-// const getRandomIndex = Math.floor(Math.random() * 50)
-// if(thisData[justID.id] === getRandomIndex)
+userRepo = new UserRepository(userData)
+
 
   console.log('here', user)
   window.addEventListener('load', () => {
     user
+    displayName()
+    displayInfo()
+    stepGoalDisplay()
   })
 
 
 function displayName() {
-  userName.innerText = ` ${user.showFirstName()}`
+  userName.innerHTML = `Welcome, ${user.showFirstName()}!`
    }
 
-displayName()
+function displayInfo() {
+    name.innerHTML = `Name: ${user.name}`
+    email.innerHTML = `Email: ${user.email}`
+    address.innerHTML = `Address: ${user.address}`
+    strideLength.innerHTML = `Your Stride Length: ${user.strideLength}`
+    userStepGoal.innerHTML = `Your Step Goal: ${user.dailyStepGoal}`
+}
+
+function stepGoalDisplay() {
+    averageStepGoal.innerHTML = `Your step goal is ${user.dailyStepGoal} steps. The average step goal is ${userRepository.getAverageStepGoal()}.`
+  }
+
 
 // const makeClasses = (users) => {
 //   userRepository = new UserRepository(users);

@@ -70,7 +70,8 @@ describe('User', function() {
 });
 
 it('should calculate the avg number of hours slept per night from all user data', function() {
-  selectedUser = new User(userTestData[0]);
+  
+  selectedUser = new User (userTestData[0]);
   const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
   selectedUser.sleepData = sleepData;
 

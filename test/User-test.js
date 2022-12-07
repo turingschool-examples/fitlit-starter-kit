@@ -54,20 +54,18 @@ describe('User', function() {
       numOunces: 23
       })
   })
-  it.skip('should have a method for returning fluid ounces drank per day for a whole week', function(){
+  it('should have a method for returning fluid ounces drank per day for a whole week', function(){
     selectedUser = new User (userTestData[0]);
     const hydrationData = hydrationTestData.filter( data => data.userID === selectedUser.id)
     selectedUser.hydrationData = hydrationData
-    console.log(selectedUser.hydrationData)
-    expect(selectedUser.findWeekHydration("2020/01/22").to.equal({
-      "2020/01/22": 22,
-      "2020/01/21": 32,
-      "2020/01/20": 22,
-      "2020/01/19": 17,
-      "2020/01/18": 20,
-      "2020/01/17": 21,
-      "2020/01/16": 15,
-    }))
+    expect(selectedUser.findWeekHydration("2020/01/22")).to.deep.equal([
+    { userID: 20, date: '2020/01/16', numOunces: 15 },
+    { userID: 20, date: '2020/01/17', numOunces: 21 },
+    { userID: 20, date: '2020/01/18', numOunces: 20 },
+    { userID: 20, date: '2020/01/19', numOunces: 17 },
+    { userID: 20, date: '2020/01/20', numOunces: 22 },
+    { userID: 20, date: '2020/01/21', numOunces: 32 },
+    { userID: 20, date: '2020/01/22', numOunces: 22 }])
   })
 });
 

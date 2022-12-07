@@ -16,42 +16,43 @@ const userEmail = document.getElementById("email");
 const userFriends = document.getElementById("friends");
 const userFirstName = document.getElementById("firstName");
 const userStepComparison = document.getElementById("stepCompareResults");
-var newRepo;
+let newRepo;
+let aNewUser;
+let userId = 1;
+// let userData;
 
 // event listeners
 window.addEventListener("load", onLoad);
 
+// logs
 console.log(userData,"<>>>>userData")
-
 console.log('This is the JavaScript entry file - your code begins here.');
-// global variables
-// functions
+
+// functions:
+
 function onLoad() {
-    addUser(userData[0]);
-    createUserArray();
+    addUser();
 };
 
-const createUserArray = () => {
-    const userArray = userData.map(user => {
-        return new User(user); 
-    });
-    newRepo = new UserRepository(userArray);
-    // console.log(newRepo);
-    return newRepo;
-};
-
-const addUser = (user) => {
+const createUserArray = (userData) => {
+    return newRepo = new UserRepository(userData);
     console.log(newRepo);
-    const newUser = newRepo.users[0];
-    // const newUserRepo = new UserRepository(newUser);
-    userName.innerText = newUser.name;
-    userAddress.innerText = newUser.address;
-    userStrideLength.innerText = newUser.strideLength;
-    userDailyStepGoal.innerText = newUser.dailyStepGoal;
-    userEmail.innerText = newUser.email;
-    userFirstName.innerText = `Hi ${newUser.getFirstName()}!`;
-    // userStepComparison = newUser.
 };
 
-//need to call our get avg step func inside userRepo class
-//we need to instantiate userRepo so we can access all the users
+function createNewUser() {
+    createUserArray(userData);
+    const userObject = newRepo.getUserData(userId);
+    aNewUser = new User(userObject);
+    return aNewUser;
+}
+
+const addUser = () => {
+    createNewUser();
+    console.log(aNewUser);
+    userName.innerText = aNewUser.name;
+    userAddress.innerText = aNewUser.address;
+    userStrideLength.innerText = aNewUser.strideLength;
+    userDailyStepGoal.innerText = aNewUser.dailyStepGoal;
+    userEmail.innerText = aNewUser.email;
+    userFirstName.innerText = `Hi ${aNewUser.getFirstName()}!`;
+};

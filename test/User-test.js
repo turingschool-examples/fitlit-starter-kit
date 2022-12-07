@@ -48,30 +48,24 @@ describe('User', function() {
     selectedUser = new User (userTestData[0]);
     const hydrationData = hydrationTestData.filter( data => data.userID === selectedUser.id)
     selectedUser.hydrationData = hydrationData
-     expect(selectedUser.findDaysHydration("2019/06/15")).to.deep.equal({
+    expect(selectedUser.findDaysHydration("2019/06/15")).to.deep.equal({
       userID: 20,
       date: "2019/06/15",
       numOunces: 23
       })
   })
   it('should have a method for returning fluid ounces drank per day for a whole week', function(){
-    // reference hydration test data to pull examplecases from
-    // Parameter of a ID should be passed
-    //parameter for the end date of the 7 days should be entered
-    // Use a combination of filter and reduce to parse out the objects that contain both the ID and the range of date -7
-    //return an object where keys are dates and values are num of ounces
     selectedUser = new User (userTestData[0]);
     const hydrationData = hydrationTestData.filter( data => data.userID === selectedUser.id)
     selectedUser.hydrationData = hydrationData
-    expect(selectedUser.findWeekHydration("2020/01/22").to.equal({
-      "2020/01/22": 22,
-      "2020/01/21": 32,
-      "2020/01/20": 22,
-      "2020/01/19": 17,
-      "2020/01/18": 20,
-      "2020/01/17": 21,
-      "2020/01/16": 15,
-    }))
+    expect(selectedUser.findWeekHydration("2020/01/22")).to.deep.equal([
+    { userID: 20, date: '2020/01/16', numOunces: 15 },
+    { userID: 20, date: '2020/01/17', numOunces: 21 },
+    { userID: 20, date: '2020/01/18', numOunces: 20 },
+    { userID: 20, date: '2020/01/19', numOunces: 17 },
+    { userID: 20, date: '2020/01/20', numOunces: 22 },
+    { userID: 20, date: '2020/01/21', numOunces: 32 },
+    { userID: 20, date: '2020/01/22', numOunces: 22 }])
   })
 });
 

@@ -69,16 +69,30 @@ describe('User', function() {
   })
 });
 
-it('should calculate the avg number of hours slept per night from all data', function() {
+it('should calculate the avg number of hours slept per night from all user data', function() {
   selectedUser = new User(userTestData[0]);
   const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
   selectedUser.sleepData = sleepData;
 
-  expect(selectedUser.averageSleep()).to.equal()
+  expect(selectedUser.averageSleepHours()).to.equal(6.2)
 });
 
-it('', function() {
+it.skip('should calculate the avg sleep quality per night from all user data', function() {
   selectedUser = new User(userTestData[0]);
   const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
   selectedUser.sleepData = sleepData;
+
+  expect(selectedUser.averageSleepQuality()).to.equal(2.1);
 });
+
+it.skip('should find the hours slept for a given date', function() {
+  selectedUser = new User(userTestData[0]);
+  const sleepData = sleepData.filter(data => data.userID === selectedUser.id);
+  selectedUser.sleepData = sleepData;
+
+  expect(selectedUser.findDaySleep("2019/06/16")).to.equal(4.3);
+});
+
+it.skip('should find the sleep quality for a given date', function() {
+
+})

@@ -25,7 +25,6 @@ class Sleep {
         const userSleepInfo = this.sleepData.filter(sleepLog => sleepLog.userID === id)
         const hours = userSleepInfo.map(el => el.hoursSlept)
         const index = userSleepInfo.findIndex(el => el.date === date && el.userID === id)
-        // This is where we'll need to set a conditional for whether userData[index + 7]
         if (hours.length < 7) {
           return hours
         } 

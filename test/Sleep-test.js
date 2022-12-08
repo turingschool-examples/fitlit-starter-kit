@@ -44,4 +44,8 @@ describe("Sleep", function () {
         expect(userSleep.returnHoursSleptByWeek(1, '2019/06/15')).to.deep.equal([ 6.1, 7, 10.8, 5.4, 4.1, 9.6, 5.1 ])
         expect(userSleep.returnHoursSleptByWeek(1, '2019/06/21')).to.deep.equal([ 6.1, 7, 10.8, 5.4, 4.1, 9.6, 5.1 ])
     })
+    it("should return sleep quality each day over given week", function() {
+        expect(userSleep.returnSleepQualityByWeek(1, '2019/06/15')).to.deep.equal([ 2.2, 4.7, 4.7, 3, 3.6, 2.9, 2.6 ])
+        expect(userSleep.returnSleepQualityByWeek(1, '2019/06/21')).to.deep.equal([ 2.2, 4.7, 4.7, 3, 3.6, 2.9, 2.6 ])
+    })
 })

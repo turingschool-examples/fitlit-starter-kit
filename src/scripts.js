@@ -24,7 +24,7 @@ fetchAll()
   .then(data => {
     console.log(data)
     allUserData = new UserRepository(data[0].userData.map(user => new User(user)))
-    allUserSleep = data[1].sleepData;
+    allUserSleep = new Sleep(data[1].sleepData);
     allUserHydro = new Hydration(data[2].hydrationData)
     currentUser = allUserData.userData[0]
     console.log(allUserHydro)
@@ -71,3 +71,6 @@ const displayWeeklyInfo = function(hydration, date) {
   <p>Water ${hydration.returnWeeklyWaterConsumption(currentUser.id, date)}</p>`
 }
 
+const displayCurrentDaySleep = function() {
+
+}

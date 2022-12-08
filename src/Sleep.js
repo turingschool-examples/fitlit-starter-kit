@@ -46,6 +46,11 @@ class Sleep {
         }
         return quality.slice(index, index + 7)
     }
+
+    returnAvgSleepQualityForAllUsers() {
+        const result = this.sleepData.reduce((total, sleepLog, _, arr ) => total + sleepLog.sleepQuality / arr.length ,0)
+        return +result.toFixed(1)
+    }
     }
 
 

@@ -39,13 +39,7 @@ window.addEventListener('load', function () {
         });
 });
 
-function displaySelectedUserInformation() {
-    let user = userRepo.selectedUser
-    console.log(user)
-    friendsDisplay.innerText = `${user.name}`
-  }
-  
-  function pickRandomUserDisplay() {
+function pickRandomUserDisplay() {
   userRepo.randomizeUser();
   console.log(userRepo.selectedUser);
 };
@@ -64,7 +58,6 @@ function showUserInfoDisplay() {
     
     `;
   })
-  
 }
 
 // User step goal display

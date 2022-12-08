@@ -34,13 +34,12 @@ class User {
   }
 
   // Sleep
-  getAverage() {
+  getAverageDailySleep() {
     let totalHours = this.sleepData.hoursSlept.reduce((acc, user) => {
       acc += user.hoursSlept
       return acc
     }, 0)
     let averageHours = totalHours/this.sleepData.hoursSlept.length
-    console.log("average hours", averageHours)
     return parseInt(averageHours)
   }
 

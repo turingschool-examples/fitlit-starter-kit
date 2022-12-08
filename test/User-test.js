@@ -316,9 +316,6 @@ describe('User', () => {
     expect(user1.getAverage()).to.equal(5.2)    
 
     })
-// was this supposed to be outside of the it block?
-		expect(user1.getFirstName()).to.equal("Luisa Hane");
-	})
 //Hydration
 	it('should output the average fluid ounces of water consumed daily', function() {
 
@@ -342,5 +339,6 @@ describe('User', () => {
 		expect().to.equal()
 	})
 
-	
-});
+    
+    })
+}); 

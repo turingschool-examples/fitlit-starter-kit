@@ -3,19 +3,19 @@
 import './css/styles.css';
 import {getAPIData} from './apiCalls'
 import User from '../src/User';
-import userData from '../src/data/users'
+// import userData from '../src/data/users'
 import UserRepository from './UserRepository';
 
 // Global Variables
-let one = 1
+// let one = 1
 let users
 let sleep
 let hydration
 let currentUser 
 
-const userRepository = new UserRepository(userData)
-
-console.log(userRepository)
+// const userRepository = new UserRepository(userData)
+// 
+// console.log(userRepository)
 
 //Query Selectors
  let infoBox = document.querySelector('.zero')
@@ -46,12 +46,11 @@ function getAllData() {
       users = new UserRepository(data[0])
       sleep = data[1]
       hydration = data[2]
+      loadPage()
       console.log('hydration', hydration)
+      console.log('users', users)
+      console.log('currentUser', currentUser)
     })
-    .then(() => getUser(sleep, hydration))
-    .then(() => displayUserInfo())
-    .then(() => stepGoalDisplay())
-    .then(() => displayWelcomeName())
     .catch(err => console.log('To err is human', err))
 }
 
@@ -86,4 +85,11 @@ function getUserFriends() {
     return users.getData(friend).name
   }) 
   return friendsArray.join(', ')
+}
+
+function loadPage() {
+  getUser(sleep, hydration)
+  displayUserInfo()
+  stepGoalDisplay()
+  displayWelcomeName()
 }

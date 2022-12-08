@@ -39,11 +39,6 @@ window.addEventListener('load', function () {
         });
 });
 
-function pickRandomUserDisplay() {
-  userRepo.randomizeUser();
-  console.log(userRepo.selectedUser);
-};
-
 // Welcome message display
 function showPersonalizedWelcome() {
   welcomeMessage.innerText = `--------Welcome, ${userRepo.selectedUser.name}!`;

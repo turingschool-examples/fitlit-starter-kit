@@ -1,5 +1,3 @@
-
-
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
@@ -9,47 +7,39 @@ import './html-css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
-console.log('This is the JavaScript entry file - your code begins here.');
-
-// An example of how you tell webpack to use a JS file
+// Query Selectors
 const header1 = document.querySelector('h1')
 const userPromise = apiCalls.loadUserData()
 const hydrationPromise = apiCalls.loadHydrationData()
 const sleepPromise = apiCalls.loadSleepData()
 
+// Global variables
 let userRepo;
 let userClassRepo = [];
 let hydrationClassRepo = [];
 let sleepClassRepo = [];
 
-
+// Functions
 window.addEventListener('load', function() {
   Promise.all([userPromise, hydrationPromise, sleepPromise])
-    .then((values) => {
-      userRepo = new UserRepository(values[0],values[1],values[2])
-      console.log("USER REPO", userRepo)
-      values[0].forEach(user => {
-      userClassRepo.push(new User(user));
-    });
-    console.log(userClassRepo);
+  .then((values) => {
+    userRepo = new UserRepository(values[0],values[1],values[2]);
+    console.log("REPO", userRepo);
+    createRepos(userClassRepo, 'userData', User);
+    createRepos(hydrationClassRepo, 'hydrationData', Hydration);
+    createRepos(sleepClassRepo, 'sleepData', Sleep);
   });
 });
 
-//   Promise.all([userRepo])
-//     .then(repo => {
-//       // input: userData in promise
-//       // output: instatiations of User to be pushed in to a global var array
-//       // userData mapped to instatiate User class for each object
-//       // Create new attribute inside of each user for hydration and sleep data
-//       console.log(repo);
-//       repo.userData.forEach(user => {
-//         // console.log(userClassRepo);
-//         userClassRepo.push(new User(user));
-//       })
-//       console.log("userRepo", userClassRepo);
-//     })
-// });
+function createRepos(repo, dataVarName, className) {
+  userRepo[dataVarName].forEach(value => {
+    repo.push(new className(value));
+  })
+  console.log(repo);
+};
 
 import apiCalls from './apiCalls';
 import UserRepository from './UserRepository';
 import User from './User';
+import Hydration from './Hydration';
+import Sleep from './Sleep';

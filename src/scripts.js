@@ -74,7 +74,8 @@ const displayCurrentDayHydration = function (hydration, date) {
 const displayWeeklyInfo = function (hydration, sleep, date) {
   displayWeekly.innerHTML = `
   <p>Water ${hydration.returnWeeklyWaterConsumption(currentUser.id, date)}</p>
-  <p>Sleep ${sleep.returnHoursSleptByWeek(currentUser.id, date)} </p>
+  <p>Sleep Hours${sleep.returnHoursSleptByWeek(currentUser.id, date)} </p>
+  <p>Sleep Quality ${sleep.returnSleepQualityByWeek(currentUser.id, date)} </p>
   `;
 };
 

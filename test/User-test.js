@@ -1,5 +1,4 @@
 import { expect } from 'chai';
-import userData from '../src/data/users'
 import User from '../src/User'
 
 describe('User', () => {
@@ -208,9 +207,15 @@ describe('User', () => {
 	})
 
 //Sleep
-	it('should output the average number of hours of sleep per day for a user', function() {
+	it.skip('should return a users average number of hours of sleep per day', function() {
 
 		expect(user2.getAverageDailySleep()).to.equal(5.3)
 	})
 
+    it.skip('Should give user average sleep over all sleep data', function() {
+
+        expect(user2.getOverallSleepAvg()).to.equal()
+    })
+
+    
 })

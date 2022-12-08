@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 import User from '../src/User';
 import UserRepository from '../src/UserRepository';
-//import userData from '../src/data/users';
 
 describe('UserRepository', () => {
   let userRepository, users;
@@ -56,19 +55,19 @@ describe('UserRepository', () => {
     userRepository = new UserRepository(users)
   })
 
-  it.skip('should be a function', function () {
+  it('should be a function', function () {
 
     expect(UserRepository).to.be.a('function');
   });
 
-  it.skip('should instantiate a new user repository', function () {
+  it('should instantiate a new user repository', function () {
 
     expect(userRepository.data).to.deep.equal(users);
   })
 
   it('should take in user data', function () {
 
-    expect(user1.userData).to.deep.equal(
+    expect(userRepository.data.userData[0]).to.deep.equal(
       {
         "id": 1,
         "name": "Luisa Hane",
@@ -87,14 +86,26 @@ describe('UserRepository', () => {
 
   it('should supply user data when given id', function () {
 
-    console.log(userRepository.data[1].userData.id)
-    expect(userRepository.getData(userRepository.data[1].userData.id)).to.deep.equal(user2)
+    expect(userRepository.getData(userRepository.data.userData[1].id)).to.deep.equal({
+      id: 2,
+      name: "Jarvis Considine",
+      address: "30086 Kathryn Port, Ciceroland NE 07273",
+      email: "Dimitri.Bechtelar11@gmail.com",
+      strideLength: 4.5,
+      dailyStepGoal: 5000,
+      friends: [
+        9,
+        18,
+        24,
+        19
+      ]
+    })
 
   })
 
   it('should give the average step goal of all users', function () {
 
-    expect(userRepository.data.stepGoalAverage()).to.equal(6666)
+    expect(userRepository.stepGoalAverage()).to.equal(6666)
   })
 })
 

@@ -138,7 +138,7 @@ describe('User', () => {
 			expect(user1.userData.id).to.equal(1);
 	})
 
-	it('should have an name', function () {
+	it('should have a name', function () {
 
 			expect(user1.userData.name).to.equal("Luisa Hane");
 	})
@@ -168,89 +168,6 @@ describe('User', () => {
 			expect(user1.userData.friends).to.deep.equal([16, 4, 8]);
 	})
 
-	it('should return users first name', function() {
-
-    let user1, user2, user3
-    beforeEach(() => {
-        user1 = new User(
-            {
-            "id": 1,
-            "name": "Luisa Hane",
-            "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-            "email": "Diana.Hayes1@hotmail.com",
-            "strideLength": 4.3,
-            "dailyStepGoal": 10000,
-            "friends": [
-                16,
-                4,
-                8
-            ]
-        },
-            [{userID: 1, date: '2019/06/15', hoursSlept: 6.1, sleepQuality: 2.2},
-            {userID: 1, date: '2019/06/16', hoursSlept: 4.1, sleepQuality: 3.8},
-            {userID: 1, date: '2019/06/17', hoursSlept: 5.4, sleepQuality: 3.6}],
-
-            [{userID: 1, date: '2019/06/15', numOunces: 70},
-            {userID: 1, date: '2019/06/16', numOunces: 65},
-            {userID: 1, date: '2019/06/17', numOunces: 73}]
-        )
-        user2 = new User({
-            "id": 2,
-            "name": "Jarvis Considine",
-            "address": "30086 Kathryn Port, Ciceroland NE 07273",
-            "email": "Dimitri.Bechtelar11@gmail.com",
-            "strideLength": 4.5,
-            "dailyStepGoal": 5000,
-            "friends": [
-                9,
-                18,
-                24,
-                19
-            ]
-        },
-            [{userID: 2, date: '2019/06/15', hoursSlept: 7, sleepQuality: 4.7},
-            {userID: 2, date: '2019/06/16', hoursSlept: 3.1, sleepQuality: 3.1},
-            {userID: 2, date: '2019/06/17', hoursSlept: 5.8, sleepQuality: 3.3}],
-            
-            [{userID: 2, date: '2019/06/15', numOunces: 65},
-            {userID: 2, date: '2019/06/16', numOunces: 60},
-            {userID: 2, date: '2019/06/17', numOunces: 71}]
-        )
-        user3 = new User({
-            "id": 3,
-            "name": "Herminia Witting",
-            "address": "85823 Bosco Fork, East Oscarstad MI 85126-5660",
-            "email": "Elwin.Tromp@yahoo.com",
-            "strideLength": 4.4,
-            "dailyStepGoal": 5000,
-            "friends": [
-                19,
-                11,
-                42,
-                33
-            ]
-        },
-            
-        [{userID: 3, date: '2019/06/15', hoursSlept: 6.3, sleepQuality: 3.7},
-        {userID: 3, date: '2019/06/16', hoursSlept: 4.7, sleepQuality: 4.1},
-        {userID: 3, date: '2019/06/17', hoursSlept: 5.8, sleepQuality: 3.9}],
-        
-        [{userID: 3, date: '2019/06/15', numOunces: 78},
-        {userID: 3, date: '2019/06/16', numOunces: 40},
-        {userID: 3, date: '2019/06/17', numOunces: 60}]
-    )
-    })
-
-    it('should be a function', function () {
-
-        expect(User).to.be.a('function');
-    });
-
-    it('should instantiate a new User', function () {
-
-        expect(User).to.be.a('function');
-    })
-
     it('should have a Userdata parameter', function () {
 
         expect(user1.userData).to.deep.equal({
@@ -265,60 +182,14 @@ describe('User', () => {
                 4,
                 8
             ]
-        });
-    })
-
-    it('should have an id', function () {
-
-        expect(user1.userData.id).to.equal(1);
-    })
-
-    it('should have an name', function () {
-
-        expect(user1.userData.name).to.equal("Luisa Hane");
-    })
-
-    it('should have an address', function () {
-
-        expect(user1.userData.address).to.equal("15195 Nakia Tunnel, Erdmanport VA 19901-1697");
-    })
-
-    it('should have an email', function () {
-
-        expect(user1.userData.email).to.equal("Diana.Hayes1@hotmail.com");
-    })
-
-    it('should have a strideLength', function () {
-
-        expect(user1.userData.strideLength).to.equal(4.3);
-    })
-
-    it('should have a step goal', function () {
-
-        expect(user1.userData.dailyStepGoal).to.equal(10000);
-    })
-
-    it('should have friends', function () {
-
-        expect(user1.userData.friends).to.deep.equal([16, 4, 8]);
-    })
+        })
+    });
 
     it('should return users first name', function() {
 
         expect(user1.getFirstName()).to.equal("Luisa");
     })
 
-    it('should find average hours slept per day', function() {
-
-        user1.getAverage()
-        console.log(user1)
-
-    expect(user1.getAverage()).to.equal(5.2)    
-
-    })
-// was this supposed to be outside of the it block?
-		expect(user1.getFirstName()).to.equal("Luisa Hane");
-	})
 //Hydration
 	it('should output the average fluid ounces of water consumed daily', function() {
 
@@ -337,10 +208,9 @@ describe('User', () => {
 	})
 
 //Sleep
-	it.skip('should output the average number of hours per day for a user', function() {
+	it('should output the average number of hours of sleep per day for a user', function() {
 
-		expect().to.equal()
+		expect(user2.getAverageDailySleep()).to.equal(5.3)
 	})
 
-	
-});
+})

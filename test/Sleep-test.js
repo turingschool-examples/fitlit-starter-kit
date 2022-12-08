@@ -33,4 +33,7 @@ describe("Sleep", function () {
     it("should return how many hours the user slept for specific day", function() {
         expect(userSleep.returnHoursSleptByDate(1, '2019/06/15')).to.equal(6.1)
     })
+    it("should return sleep quality for the user for specific day", function() {
+        expect(userSleep.returnSleepQualityByDate(1, '2019/06/15')).to.equal(2.2)
+    })
 })

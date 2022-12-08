@@ -3,8 +3,10 @@ import './images/turing-logo.png'
 import userData from './data/users';
 import User from './User';
 import UserRepository from './UserRepository';
-import fetchUserData from "./apiCalls.js"
+import fetchUserData from "./apiCalls.js";
+import {promiseAll} from "./apiCalls.js"
 
+console.log('hello friends', fetchUserData)
 const userName = document.querySelector('#username') 
 const name = document.querySelector('#name') 
 const email = document.querySelector('#email')
@@ -14,27 +16,35 @@ const userStepGoal = document.querySelector('#user-goal')
 const averageStepGoal = document.querySelector('#average-goal')
 const friendsData = document.querySelector('#friends')
 
+
 let user
 let userRepo
 let currentUser
 
+promiseAll().then((response) => {
+console.log('response',response)
 user = new User(userData[Math.floor(Math.random() * userData.length)])
 userRepo = new UserRepository(userData)
+console.log('userRepo', user)
 
+})
   console.log('here', user)
   window.addEventListener('load', () => {
     user
+    promiseAll
     displayName()
-    displayInfo()
+    displayInfoToDom()
     stepGoalDisplay()
     friendNames()
   })
+
+
 
 function displayName() {
   userName.innerHTML = `Welcome, ${user.showFirstName()}!`
    }
 
-function displayInfo() {
+function displayInfoToDom() {
     name.innerHTML = `Name: ${user.name}`
     email.innerHTML = `Email: ${user.email}`
     address.innerHTML = `Address: ${user.address}`
@@ -65,7 +75,7 @@ function stepGoalDisplay() {
 //     getRandomUser();
 //   }}
 // const getRandomUser = () => {
-//   currentUser = new User(userData]);
+//   currentUser = new User(userData);
 //   userRepository = new UserRepository(currentUser)
 // }
 

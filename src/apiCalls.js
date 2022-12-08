@@ -6,8 +6,21 @@ const fetchUserData = () => {
             console.log(users)
         })
     }
+    
+    const promiseAll = () => {
+        const result = Promise.all([
+          fetchUserData("users"),
+          // fetchData("hydration"),
+          // fetchData("sleep"),
+        ]).then((response) => {
+          console.log('response',response)
+          return response;
+        });
+        console.log('result',result)
+        return result
+      }
 
-console.log('I will be a fetch request!')
+console.log('I will be a fetch request!',promiseAll())
 
 export default fetchUserData()
-// export {promiseAll}
+export {promiseAll}

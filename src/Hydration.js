@@ -1,4 +1,4 @@
-import userHydrationData from "./data/hydration-data"
+import userHydrationData from '../src/data/hydration-data.js'
 
 class Hydration {
      constructor(userHydrationData) {
@@ -7,4 +7,5 @@ class Hydration {
          this.numOunces = userHydrationData.numOunces
      }
 }
-module.exports = Hydration;
+//module.exports = Hydration;
+export default Hydration;

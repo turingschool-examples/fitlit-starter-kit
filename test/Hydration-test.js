@@ -1,6 +1,8 @@
 import { expect } from 'chai';
-import Hydration from '../src/Hydration';
-import userHydrationData from './data/hydration-data';
+import Hydration from '../src/Hydration.js';
+import userHydrationData from '../src/data/hydration-data.js';
+
+const mockHydrationData = userHydrationData
 
 // At least three tests
 // - should be a function
@@ -15,7 +17,9 @@ import userHydrationData from './data/hydration-data';
 describe ("Hydration", function() {
     let hydration
     beforeEach(function() {
-        hydration = new Hydration
+        hydration = new Hydration(mockHydrationData)
     })
-    it('should be a function')
+    it('should be a function', function() {
+        expect(Hydration).to.be.a('function');
+    })
 });

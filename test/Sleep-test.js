@@ -19,4 +19,8 @@ describe("Sleep", function () {
     it("should be an instance of Sleep", function (){
         expect(userSleep).to.be.an.instanceOf(Sleep)
     })
+
+    it("should have property that holds the sleep data", function() {
+        expect(userSleep.sleepData).to.deep.equal(sleepRepository)
+    })
 })

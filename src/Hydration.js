@@ -6,7 +6,7 @@ class Hydration {
          this.userID = id;
          this.date = userHydrationData[0].date;
          this.numOunces = userHydrationData[0].numOunces;
-         this.data = userHydrationData
+         this.dataSet = userHydrationData
     }
     getAvgOuncesConsumed() {
 

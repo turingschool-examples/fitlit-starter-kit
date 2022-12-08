@@ -26,7 +26,7 @@ describe ("Hydration", function() {
     });
 
     it('should be able to take in a hydration class', function() {
-        expect(hydration.data).to.deep.equal(mockHydrationData);
+        expect(hydration.dataSet).to.deep.equal(mockHydrationData);
     });
 
     it('should have an id', function() {

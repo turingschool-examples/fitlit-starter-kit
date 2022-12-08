@@ -13,6 +13,9 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
 const header1 = document.querySelector('h1')
+const userProfile = document.querySelector('#profile')
+const welcomeMessage = document.querySelector('#welcomeMessage')
+const friendsDisplay = document.querySelector('#friends')
 const userPromise = apiCalls.loadUserData()
 const hydrationPromise = apiCalls.loadHydrationData()
 const sleepPromise = apiCalls.loadSleepData()
@@ -23,17 +26,25 @@ let hydrationClassRepo = [];
 let sleepClassRepo = [];
 
 
-window.addEventListener('load', function() {
-  Promise.all([userPromise, hydrationPromise, sleepPromise])
-    .then((values) => {
-      userRepo = new UserRepository(values[0],values[1],values[2])
-        userRepo.initialize()
-        
-      console.log("USER REPO", userRepo)
-      
-      console.log(userRepo);
-    });
-  });
+window.addEventListener('load', function () {
+    Promise.all([userPromise, hydrationPromise, sleepPromise])
+        .then((values) => {
+            userRepo = new UserRepository(values[0], values[1], values[2])
+            userRepo.initialize()
+
+            console.log("USER REPO", userRepo)
+
+            console.log(userRepo);
+            displaySelectedUserInformation()
+        });
+});
+
+function displaySelectedUserInformation() {
+    let user = userRepo.selectedUser
+    console.log(user)
+    friendsDisplay.innerText = `${user.name}`
+  }
+  
 
 //   Promise.all([userRepo])
 //     .then(repo => {

@@ -5,10 +5,11 @@ import sleepRepo from "../src/data/sleep";
 
 describe("Sleep", function () {
     let userSleep;
-    let sleepRepo;
+    let sleepRepository;
 
 
     beforeEach(() => {
-        
+        sleepRepository = sleepRepo
+        userSleep = new Sleep(sleepRepository)
     })
 })

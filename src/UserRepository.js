@@ -1,12 +1,30 @@
+import User from "./User";
+
 class UserRepository {
     constructor(allUserData, hydrationData, sleepData) {
         this.userData = allUserData;
         this.hydrationData = hydrationData;
         this.sleepData = sleepData;
+        this.users = []
         this.selectedUser;
     }
+    initialize() {
+        this.userData.forEach(user => {
+            let newUser = new User(user)
+            this.users.push(newUser)
+        })
+        this.hydrationData.forEach(hydroData => {
+            let user = this.findUser(hydroData.userID)
+            user.hydrationData.push(hydroData)
+        })
+        this.sleepData.forEach(sleepData => {
+            let user = this.findUser(sleepData.userID)
+            user.sleepData.push(sleepData)
+        })
+    }
     findUser(id) {
-        return this.userData.find(user => {
+        //we now have a users array so this must change to users so we can find the correct id
+        return this.users.find(user => {
             return  user.id === id});
         }
     randomizeUser() {

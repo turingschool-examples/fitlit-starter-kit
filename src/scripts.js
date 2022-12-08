@@ -27,13 +27,13 @@ window.addEventListener('load', function() {
   Promise.all([userPromise, hydrationPromise, sleepPromise])
     .then((values) => {
       userRepo = new UserRepository(values[0],values[1],values[2])
+        userRepo.initialize()
+        
       console.log("USER REPO", userRepo)
-      values[0].forEach(user => {
-      userClassRepo.push(new User(user));
+      
+      console.log(userRepo);
     });
-    console.log(userClassRepo);
   });
-});
 
 //   Promise.all([userRepo])
 //     .then(repo => {

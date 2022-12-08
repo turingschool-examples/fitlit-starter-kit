@@ -8,21 +8,18 @@ import './html-css/styles.css';
 import './images/turing-logo.png'
 
 // Query Selectors
-const header1 = document.querySelector('h1')
-const userProfile = document.querySelector('#profile')
-const welcomeMessage = document.querySelector('#welcomeMessage')
-const friendsDisplay = document.querySelector('#friends')
 const userPromise = apiCalls.loadUserData()
 const hydrationPromise = apiCalls.loadHydrationData()
 const sleepPromise = apiCalls.loadSleepData()
+const header1 = document.querySelector('h1')
+const welcomeMessage = document.querySelector('#welcomeMessage')
+const friendsDisplay = document.querySelector('#friends')
+const stepGoal = document.querySelector('#stepGoal')
+const stepGoalVsAvg = document.querySelector('#stepGoalVsAvg')
+const userProfile = document.querySelector('#profile')
 
 // Global variables
 let userRepo;
-let userClassRepo = [];
-let hydrationClassRepo = [];
-let sleepClassRepo = [];
-
-
 
 window.addEventListener('load', function () {
     Promise.all([userPromise, hydrationPromise, sleepPromise])
@@ -33,7 +30,12 @@ window.addEventListener('load', function () {
             console.log("USER REPO", userRepo)
 
             console.log(userRepo);
-            displaySelectedUserInformation()
+            pickRandomUserDisplay();
+            showPersonalizedWelcome();
+            showUserInfoDisplay();
+            displayUserStepGoal();
+            displayStepGoalComparison();
+            displaySelectedUserInformation();
         });
 });
 
@@ -43,21 +45,54 @@ function displaySelectedUserInformation() {
     friendsDisplay.innerText = `${user.name}`
   }
   
+  function pickRandomUserDisplay() {
+  userRepo.randomizeUser();
+  console.log(userRepo.selectedUser);
+};
 
-//   Promise.all([userRepo])
-//     .then(repo => {
-//       // input: userData in promise
-//       // output: instatiations of User to be pushed in to a global var array
-//       // userData mapped to instatiate User class for each object
-//       // Create new attribute inside of each user for hydration and sleep data
-//       console.log(repo);
-//       repo.userData.forEach(user => {
-//         // console.log(userClassRepo);
-//         userClassRepo.push(new User(user));
-//       })
-//       console.log("userRepo", userClassRepo);
-//     })
-// });
+// Welcome message display
+function showPersonalizedWelcome() {
+  welcomeMessage.innerText = `--------Welcome, ${userRepo.selectedUser.name}!`;
+}
+
+// Info card display
+function showUserInfoDisplay() {
+  friendsDisplay.innerText = ` `;
+  userRepo.selectedUser.friends.forEach(friend => {
+    // Added space manually with this interpolation but can fix later with CSS
+    friendsDisplay.innerText += `${(userRepo.findUser(friend)).name}
+    
+    `;
+  })
+  
+}
+
+// User step goal display
+function displayUserStepGoal() {
+  stepGoal.innerText = `Step goal: ${userRepo.selectedUser.dailyStepGoal} steps per day`;
+}
+
+// Step Goal vs. Avg all users
+function displayStepGoalComparison() {
+  // Added space manually with this interpolation but can fix later with CSS
+  stepGoalVsAvg.innerText = `Your step goal: ${userRepo.selectedUser.dailyStepGoal}
+
+  Average Step Goal: ${userRepo.averageSteps()}`
+}
+
+// User Profile Information Dislplay
+function displaySelectedUserInformation() {
+  // Added space manually with this interpolation but can fix later with CSS
+  userProfile.innerText = `${userRepo.selectedUser.name}
+
+  ${userRepo.selectedUser.address}
+
+  ${userRepo.selectedUser.email}
+
+  ${userRepo.selectedUser.dailyStepGoal}
+
+  ${userRepo.selectedUser.strideLength}`
+}
 
 
 import apiCalls from './apiCalls';

@@ -17,7 +17,8 @@ const userNameDisplay = document.querySelector("#userName");
 const userStepGoalAvg = document.querySelector("#stepGoalAvg");
 const hydrationBox = document.querySelector("#hydration");
 const displayWeekly = document.querySelector("#week");
-const sleepBox = document.querySelector("#sleep");
+const currentSleep = document.querySelector("#currentDaySleep");
+const allTimeSleep = document.querySelector("#allTimeSleep");
 
 fetchAll().then((data) => {
   console.log(data);
@@ -39,6 +40,7 @@ function pageLoadHandler() {
   displayCurrentDayHydration(allUserHydro, currentDate);
   displayWeeklyInfo(allUserHydro, allUserSleep, currentDate);
   displayCurrentDaySleep();
+  displayAllTimeSleep();
 }
 
 const displayUserName = function (user) {
@@ -77,7 +79,19 @@ const displayWeeklyInfo = function (hydration, sleep, date) {
 };
 
 const displayCurrentDaySleep = function () {
-  sleepBox.innerHTML = `<p>Current Sleep ${allUserSleep.calcAvgSleepPerDay(
-    currentUser.id
+  currentSleep.innerHTML = `<p>Current Sleep ${allUserSleep.returnHoursSleptByDate(
+    currentUser.id,
+    currentDate
   )}</p>`;
+};
+
+const displayAllTimeSleep = function () {
+  allTimeSleep.innerHTML = `
+  <p>Sleep Quality avg all time ${allUserSleep.calcAvgSleepQualityPerDay(
+    currentUser.id
+  )}</p>
+  <p>Sleep hour avg all time ${allUserSleep.calcAvgSleepPerDay(
+    currentUser.id
+  )}</p>
+  `;
 };

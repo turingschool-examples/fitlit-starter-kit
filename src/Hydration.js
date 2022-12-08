@@ -1,9 +1,9 @@
-import hydrationData from "./data/hydration-data"
+import userHydrationData from "./data/hydration-data"
 
-/*Hydration
+Hydration
      constructor({userHydrationData})
          this.userID = userHydrationData.userID
          this.date = userHydrationData.date
-         this.numOunces = userHydrationData.numOunces */
+         this.numOunces = userHydrationData.numOunces
 
 module.exports = Hydration;

@@ -12,7 +12,14 @@ class User {
 
 // Hydration
   getAvgDailyWater(userID) {
-    console.log('where are you', this.hydrationData)
+    let matchedIDS = this.hydrationData.hydrationData.filter((user) => {
+      return user.userID === userID
+    })
+    let avg = matchedIDS.reduce((acc, curr) => {
+      acc += curr.numOunces
+      return acc
+    }, 0)
+    return avg / matchedIDS.length
   }
 
   getAverage() {

@@ -8,7 +8,25 @@ class UserRepository {
         this.users = []
         this.selectedUser;
     }
-   
+    initialize() {
+        this.userData.forEach(user => {
+            let newUser = new User(user)
+            this.users.push(newUser)
+        })
+        this.hydrationData.forEach(hydroData => {
+            let user = this.findUser(hydroData.userID)
+            user.hydrationData.push(hydroData)
+        })
+        this.sleepData.forEach(sleepData => {
+            let user = this.findUser(sleepData.userID)
+            user.sleepData.push(sleepData)
+        })
+    }
+    findUser(id) {
+        //we now have a users array so this must change to users so we can find the correct id
+        return this.users.find(user => {
+            return  user.id === id});
+        }
     randomizeUser() {
         let selectedUserIndex = Math.floor(Math.random() * (this.userData.length - 0 + 1)) + 0
         this.selectedUser = this.userData[selectedUserIndex]

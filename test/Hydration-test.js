@@ -17,20 +17,31 @@ const mockHydrationData = userHydrationData
 describe ("Hydration", function() {
     let hydration;
     beforeEach(function() {
-        hydration = new Hydration(1, mockHydrationData)
+        hydration = new Hydration(1, mockHydrationData);
+        //console.log(hydration);
     });
 
     it('should be a function', function() {
         expect(Hydration).to.be.a('function');
     });
 
-    it('should be able to take in a Hydration class', function() {
-        expect(hydration).to.deep.equal(mockHydrationData);
+    it('should be able to take in a hydration class', function() {
+        expect(hydration.data).to.deep.equal(mockHydrationData);
     });
 
     it('should have an id', function() {
         expect(hydration.userID).to.equal(1);
     });
+
+    it('should have a date', function() {
+        expect(hydration.date).to.equal("2019/06/15");
+    });
+
+    it('should have the number of fluid ounces of water consumed', function() {
+        expect(hydration.numOunces).to.equal(37);
+    });
+
+    it.skip('should have a ')
 
 
 });

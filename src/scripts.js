@@ -30,7 +30,6 @@ window.addEventListener('load', function () {
             console.log("USER REPO", userRepo)
 
             console.log(userRepo);
-            pickRandomUserDisplay();
             showPersonalizedWelcome();
             showUserInfoDisplay();
             displayUserStepGoal();

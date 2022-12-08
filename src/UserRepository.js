@@ -25,7 +25,6 @@ class UserRepository {
         this.userData = null
         this.hydrationData = null
         this.sleepData = null
-        console.log(this.selectedUser)
     }
     findUser(id) {
         //we now have a users array so this must change to users so we can find the correct id
@@ -40,11 +39,12 @@ class UserRepository {
         return this.users[selectedUserIndex]
     }
     averageSteps() {
-        let averageStepGoal = this.userData.reduce((acc, user) => {
+        let averageStepGoal = this.users.reduce((acc, user) => {
             return acc + user.dailyStepGoal
         }, 0);
-        return Number((averageStepGoal/this.userData.length).toFixed(0))
+        return Number((averageStepGoal/this.users.length).toFixed(0))
     }
+    //add averaging sleep data method
 }
 
 export default UserRepository;

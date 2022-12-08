@@ -16,11 +16,15 @@ describe("Sleep", function () {
         expect(Sleep).to.be.a("function")
     })
 
-    it("should be an instance of Sleep", function (){
+    it("should be an instance of Sleep", function() {
         expect(userSleep).to.be.an.instanceOf(Sleep)
     })
 
     it("should have property that holds the sleep data", function() {
         expect(userSleep.sleepData).to.deep.equal(sleepRepository)
+    })
+
+    it("should calculate average sleep per day", function() {
+        expect(userSleep.calcAvgSleepPerDay(1)).to.equal(6.9)
     })
 })

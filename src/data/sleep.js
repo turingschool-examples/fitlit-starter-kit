@@ -1,4 +1,4 @@
-sleepRepo = [{
+const sleepRepo = [{
     userID: 1,
     date: "2019/06/15",
     hoursSlept: 6.1,

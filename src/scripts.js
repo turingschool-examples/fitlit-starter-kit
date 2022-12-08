@@ -9,6 +9,9 @@ import './images/turing-logo.png'
 
 // Query Selectors
 const header1 = document.querySelector('h1')
+const userProfile = document.querySelector('#profile')
+const welcomeMessage = document.querySelector('#welcomeMessage')
+const friendsDisplay = document.querySelector('#friends')
 const userPromise = apiCalls.loadUserData()
 const hydrationPromise = apiCalls.loadHydrationData()
 const sleepPromise = apiCalls.loadSleepData()
@@ -19,24 +22,43 @@ let userClassRepo = [];
 let hydrationClassRepo = [];
 let sleepClassRepo = [];
 
-// Functions
-window.addEventListener('load', function() {
-  Promise.all([userPromise, hydrationPromise, sleepPromise])
-  .then((values) => {
-    userRepo = new UserRepository(values[0],values[1],values[2]);
-    console.log("REPO", userRepo);
-    createRepos(userClassRepo, 'userData', User);
-    createRepos(hydrationClassRepo, 'hydrationData', Hydration);
-    createRepos(sleepClassRepo, 'sleepData', Sleep);
-  });
+
+
+window.addEventListener('load', function () {
+    Promise.all([userPromise, hydrationPromise, sleepPromise])
+        .then((values) => {
+            userRepo = new UserRepository(values[0], values[1], values[2])
+            userRepo.initialize()
+
+            console.log("USER REPO", userRepo)
+
+            console.log(userRepo);
+            displaySelectedUserInformation()
+        });
 });
 
-function createRepos(repo, dataVarName, className) {
-  userRepo[dataVarName].forEach(value => {
-    repo.push(new className(value));
-  })
-  console.log(repo);
-};
+function displaySelectedUserInformation() {
+    let user = userRepo.selectedUser
+    console.log(user)
+    friendsDisplay.innerText = `${user.name}`
+  }
+  
+
+//   Promise.all([userRepo])
+//     .then(repo => {
+//       // input: userData in promise
+//       // output: instatiations of User to be pushed in to a global var array
+//       // userData mapped to instatiate User class for each object
+//       // Create new attribute inside of each user for hydration and sleep data
+//       console.log(repo);
+//       repo.userData.forEach(user => {
+//         // console.log(userClassRepo);
+//         userClassRepo.push(new User(user));
+//       })
+//       console.log("userRepo", userClassRepo);
+//     })
+// });
+
 
 import apiCalls from './apiCalls';
 import UserRepository from './UserRepository';

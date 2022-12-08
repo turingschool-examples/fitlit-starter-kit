@@ -289,14 +289,15 @@ describe('User', () => {
 		expect(user1.getFirstName()).to.equal("Luisa Hane");
 	})
 
-	it.only('should output the average fluid ounces of water consumed daily', function() {
+	it('should output the average fluid ounces of water consumed daily', function() {
 
 		expect(user1.getAvgDailyWater(1)).to.equal(61);
 	})
 
-	it.skip('should identify how many ounces of water a user consumed on a specific day', function() {
+	it('should identify how many ounces of water a user consumed on a specific day', function() {
 
 		expect(user2.getWaterPerDay("2019/06/15")).to.equal(75);
+		expect(user3.getWaterPerDay("2019/06/15")).to.equal(47);
 	})
 
 	it.skip('should calculate average ounces consumed daily over the course of one week', function() {

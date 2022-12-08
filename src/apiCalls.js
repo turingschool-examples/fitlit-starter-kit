@@ -9,9 +9,9 @@ fetch("https://fitlit-api.herokuapp.com/api/v1/users")
     console.log("data: ", data)
     userData = data
     console.log("inside of function: ", userData)
-})
+});
 
-function fetchReqeuest () {
+function fetchRequest () {
     return fetch("https://fitlit-api.herokuapp.com/api/v1/users")
 }
 
@@ -22,4 +22,4 @@ function fetchReqeuest () {
 //     .then((response) => response.json())
 // }
 
-export{fetchReqeuest}
+export {fetchRequest} 

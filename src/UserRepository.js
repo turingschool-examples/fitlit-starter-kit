@@ -8,7 +8,7 @@ class UserRepository {
             return sum += user.dailyStepGoal
         },0);
         return Math.round(stepGoal / this.users.length);
-    }
+    };
 
     getUserData(userId) {
         return this.users.find(user => {
@@ -19,6 +19,6 @@ class UserRepository {
     addNewUser(user) {
         this.users.push(user);
     };
-}
+};
 
 export default UserRepository;

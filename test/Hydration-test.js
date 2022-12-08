@@ -19,7 +19,12 @@ describe ("Hydration", function() {
     beforeEach(function() {
         hydration = new Hydration(mockHydrationData)
     })
+
     it('should be a function', function() {
         expect(Hydration).to.be.a('function');
-    })
+    });
+
+    it('should be able to take in a Hydration class', function() {
+        expect(hydration).to.deep.equal(Hydration);
+    });
 });

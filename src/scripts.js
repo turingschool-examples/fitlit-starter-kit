@@ -27,7 +27,9 @@ fetchAll().then((data) => {
   );
   allUserSleep = new Sleep(data[1].sleepData);
   allUserHydro = new Hydration(data[2].hydrationData);
-  currentUser = allUserData.userData[0];
+  // currentUser = allUserData.userData[0];
+  console.log(Math.floor(Math.random() * allUserData.userData.length))
+  currentUser = allUserData.userData[Math.floor(Math.random() * allUserData.userData.length)];
   console.log(allUserHydro);
   currentDate = allUserHydro.data.slice(-1)[0].date;
   pageLoadHandler();

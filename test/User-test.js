@@ -222,4 +222,8 @@ describe('User', () => {
         expect(user2.sleepOnSpecificDate()).to.equal()
     })
 
+    it.skip('Should provide users sleep quality on specific date', function() {
+
+        expect(user.)
+    })
 })

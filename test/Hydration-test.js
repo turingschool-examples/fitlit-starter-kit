@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import Hydration from '../src/Hydration.js';
-import userHydrationData from '../src/data/hydration-data.js';
+import hydrationDataSet from '../src/data/hydration-data.js';
 
-const mockHydrationData = userHydrationData
+const mockHydrationDataSet = hydrationDataSet
 
 // At least three tests
 // - should be a function
@@ -17,7 +17,7 @@ const mockHydrationData = userHydrationData
 describe ("Hydration", function() {
     let hydration;
     beforeEach(function() {
-        hydration = new Hydration(1, mockHydrationData);
+        hydration = new Hydration(1, mockHydrationDataSet);
         //console.log(hydration);
     });
 
@@ -26,7 +26,7 @@ describe ("Hydration", function() {
     });
 
     it('should be able to take in a hydration class', function() {
-        expect(hydration.dataSet).to.deep.equal(mockHydrationData);
+        expect(hydration.dataSet).to.deep.equal(mockHydrationDataSet);
     });
 
     it('should have an id', function() {

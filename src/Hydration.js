@@ -1,12 +1,12 @@
-import userHydrationData from '../src/data/hydration-data.js'
+import hydrationDataSet from '../src/data/hydration-data.js'
 import userData from '../src/data/users.js'
 
 class Hydration {
-    constructor(id, userHydrationData) {
+    constructor(id, hydrationDataSet) {
          this.userID = id;
-         this.date = userHydrationData[0].date;
-         this.numOunces = userHydrationData[0].numOunces;
-         this.dataSet = userHydrationData
+         this.date = hydrationDataSet[0].date;
+         this.numOunces = hydrationDataSet[0].numOunces;
+         this.dataSet = hydrationDataSet
     }
     getAvgOuncesConsumed() {
 

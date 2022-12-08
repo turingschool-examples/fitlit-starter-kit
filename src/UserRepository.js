@@ -1,4 +1,3 @@
-import userData from './data/users';
 import User from './User';
 // const data = require('./data/users')
 

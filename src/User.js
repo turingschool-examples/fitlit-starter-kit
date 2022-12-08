@@ -7,6 +7,9 @@ class User {
     this.strideLength = userData.strideLength;
     this.dailyStepGoal = userData.dailyStepGoal;
     this.friends = userData.friends;
+    // Added these properties to push data in to
+    this.hydrationData = [];
+    this.sleepData = [];
   };
 
   returnFirstName() {

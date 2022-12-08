@@ -26,12 +26,25 @@ class Sleep {
         const hours = userSleepInfo.map(el => el.hoursSlept)
         const index = userSleepInfo.findIndex(el => el.date === date && el.userID === id)
         if (hours.length < 7) {
-          return hours
+            return hours
         } 
         if (!hours[index + 6]) {
-          return hours.slice(-7)
+            return hours.slice(-7)
         }
         return hours.slice(index, index + 7)
+    }
+
+    returnSleepQualityByWeek(id, date) {
+        const userSleepInfo = this.sleepData.filter(sleepLog => sleepLog.userID === id)
+        const quality = userSleepInfo.map(el => el.sleepQuality)
+        const index = userSleepInfo.findIndex(el => el.date === date && el.userID === id)
+        if (quality.length < 7) {
+            return quality
+        } 
+        if (!quality[index + 6]) {
+            return quality.slice(-7)
+        }
+        return quality.slice(index, index + 7)
     }
     }
 

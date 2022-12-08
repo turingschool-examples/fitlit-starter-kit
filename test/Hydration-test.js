@@ -15,16 +15,22 @@ const mockHydrationData = userHydrationData
 // - should be able to return how many fluid ounces consumed each day over the course of a week
 
 describe ("Hydration", function() {
-    let hydration
+    let hydration;
     beforeEach(function() {
-        hydration = new Hydration(mockHydrationData)
-    })
+        hydration = new Hydration(1, mockHydrationData)
+    });
 
     it('should be a function', function() {
         expect(Hydration).to.be.a('function');
     });
 
     it('should be able to take in a Hydration class', function() {
-        expect(hydration).to.deep.equal(Hydration);
+        expect(hydration).to.deep.equal(mockHydrationData);
     });
+
+    it('should have an id', function() {
+        expect(hydration.userID).to.equal(1);
+    });
+
+
 });

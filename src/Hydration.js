@@ -1,10 +1,11 @@
 import userHydrationData from '../src/data/hydration-data.js'
 
 class Hydration {
-     constructor(userHydrationData) {
-         this.userID = userHydrationData.userID
-         this.date = userHydrationData.date
-         this.numOunces = userHydrationData.numOunces
+     constructor(id, userHydrationData) {
+         this.userID = id;
+         this.date = userHydrationData[0].date;
+         this.numOunces = userHydrationData.numOunces;
+         this.data = userHydrationData
      }
 }
 //module.exports = Hydration;

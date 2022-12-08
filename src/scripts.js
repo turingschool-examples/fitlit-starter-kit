@@ -28,6 +28,7 @@ window.addEventListener('load', function() {
     createRepos(userClassRepo, 'userData', User);
     createRepos(hydrationClassRepo, 'hydrationData', Hydration);
     createRepos(sleepClassRepo, 'sleepData', Sleep);
+    pickRandomUserDisplay();
   });
 });
 
@@ -37,6 +38,11 @@ function createRepos(repo, dataVarName, className) {
   })
   console.log(repo);
 };
+
+function pickRandomUserDisplay() {
+  userRepo.randomizeUser();
+  console.log(userRepo.selectedUser);
+}
 
 import apiCalls from './apiCalls';
 import UserRepository from './UserRepository';

@@ -30,4 +30,7 @@ describe("Sleep", function () {
     it("should calculate average sleep quality per day over all time", function() {
         expect(userSleep.calcAvgSleepQualityPerDay(1)).to.equal(3.4)
     })
+    it("should return how many hours the user slept for specific day", function() {
+        expect(userSleep.returnHoursSleptByDate(1, '2019/06/15')).to.equal(6.1)
+    })
 })

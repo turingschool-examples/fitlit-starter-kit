@@ -9,8 +9,7 @@ class User {
     return this.userData.name.split(' ')[0];
   }
 
-
-// Hydration
+  // Hydration
   getAvgDailyWater(userID) {
     let matchedIDS = this.hydrationData.hydrationData.filter((user) => {
       return user.userID === userID
@@ -22,6 +21,19 @@ class User {
     return avg / matchedIDS.length
   }
 
+  getWaterPerDay(date) {
+    let dates = this.hydrationData.hydrationData.filter((user) => {
+      return user.date === date
+    })
+    return dates.reduce((acc, curr) => {
+      if (curr.userID === this.userData.id) {
+        acc = curr.numOunces
+      }
+      return acc
+    }, 0)
+  }
+
+  // Sleep
   getAverage() {
     let totalHours = this.sleepData.hoursSlept.reduce((acc, user) => {
       acc += user.hoursSlept

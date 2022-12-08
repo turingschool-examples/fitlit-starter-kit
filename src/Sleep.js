@@ -12,11 +12,27 @@ class Sleep {
         const result = this.sleepData.filter(sleepLog => sleepLog.userID === id).reduce((total, sleepLog, _, arr ) => total + sleepLog.sleepQuality / arr.length ,0)
         return +result.toFixed(1)
     }
+
     returnHoursSleptByDate(id,date){
         return this.sleepData.find(sleepLog => sleepLog.userID === id && sleepLog.date === date).hoursSlept
     }
+
     returnSleepQualityByDate(id,date){
         return this.sleepData.find(sleepLog => sleepLog.userID === id && sleepLog.date === date).sleepQuality
+    }
+
+    returnHoursSleptByWeek(id, date) {
+        const userSleepInfo = this.sleepData.filter(sleepLog => sleepLog.userID === id)
+        const hours = userSleepInfo.map(el => el.hoursSlept)
+        const index = userSleepInfo.findIndex(el => el.date === date && el.userID === id)
+        // This is where we'll need to set a conditional for whether userData[index + 7]
+        if (hours.length < 7) {
+          return hours
+        } 
+        if (!hours[index + 6]) {
+          return hours.slice(-7)
+        }
+        return hours.slice(index, index + 7)
     }
     }
 

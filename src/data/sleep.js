@@ -41,7 +41,7 @@ const sleepRepo = [{
     sleepQuality: 2.6
     },
     {
-    userID: 1,
+    userID: 6,
     date: "2019/06/22",
     hoursSlept: 8.1,
     sleepQuality: 3.5

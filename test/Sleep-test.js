@@ -25,7 +25,7 @@ describe("Sleep", function () {
     })
 
     it("should calculate average sleep per day", function() {
-        expect(userSleep.calcAvgSleepPerDay(1)).to.equal(7.0)
+        expect(userSleep.calcAvgSleepPerDay(1)).to.equal(6.9)
     })
 
     it("should calculate average sleep quality per day over all time", function() {
@@ -40,8 +40,8 @@ describe("Sleep", function () {
         expect(userSleep.returnSleepQualityByDate(1, '2019/06/15')).to.equal(2.2)
     })
 
-    it("should calculate hours slept over a given week", function() {
-        expect(userSleep.returnHoursSleptByWeek(1, '2019/06/15')).to.deep.equal([5.9, 4.6, 9.2, 8.1, 10.7, 7.2, 6.5])
-        expect(userSleep.returnHoursSleptByWeek(1, '2019/06/21')).to.deep.equal([5.9, 4.6, 9.2, 8.1, 10.7, 7.2, 6.5])
+    it("should return hours slept over a given week", function() {
+        expect(userSleep.returnHoursSleptByWeek(1, '2019/06/15')).to.deep.equal([ 6.1, 7, 10.8, 5.4, 4.1, 9.6, 5.1 ])
+        expect(userSleep.returnHoursSleptByWeek(1, '2019/06/21')).to.deep.equal([ 6.1, 7, 10.8, 5.4, 4.1, 9.6, 5.1 ])
     })
 })

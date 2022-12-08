@@ -3,7 +3,7 @@ import userData from '../src/data/users'
 import User from '../src/User'
 
 describe('User', () => {
-	let user1, user2, user3, hydrationData
+	let user1, user2, user3, hydrationData, sleepData
 	beforeEach(() => {
 		hydrationData = {hydrationData: [
 			{
@@ -32,6 +32,37 @@ describe('User', () => {
 			numOunces: 42
 			}
 		]}
+		sleepData = {sleepData: [{
+			userID: 1,
+			date: "2019/06/15",
+			hoursSlept: 6.1,
+			sleepQuality: 2.2
+			},
+			{
+			userID: 2,
+			date: "2019/06/15",
+			hoursSlept: 7,
+			sleepQuality: 4.7
+			},
+			{
+			userID: 3,
+			date: "2019/06/15",
+			hoursSlept: 10.8,
+			sleepQuality: 4.7
+			},
+			{
+			userID: 1,
+			date: "2019/06/16",
+			hoursSlept: 5.4,
+			sleepQuality: 3
+			},
+			{
+			userID: 2,
+			date: "2019/06/16",
+			hoursSlept: 4.1,
+			sleepQuality: 3.6
+			}]
+}
 		user1 = new User({
 				"id": 1,
 				"name": "Luisa Hane",
@@ -44,7 +75,7 @@ describe('User', () => {
 						4,
 						8
 				]
-		}, {}, hydrationData)
+		}, sleepData, hydrationData)
 		user2 = new User({
 				"id": 2,
 				"name": "Jarvis Considine",
@@ -58,7 +89,7 @@ describe('User', () => {
 						24,
 						19
 				]
-		}, {}, hydrationData)
+		}, sleepData, hydrationData)
 		user3 = new User({
 				"id": 3,
 				"name": "Herminia Witting",
@@ -72,7 +103,7 @@ describe('User', () => {
 						42,
 						33
 				]
-		}, {}, hydrationData)
+		}, sleepData, hydrationData)
 	})
 
 	it('should be a function', function () {
@@ -288,7 +319,7 @@ describe('User', () => {
 // was this supposed to be outside of the it block?
 		expect(user1.getFirstName()).to.equal("Luisa Hane");
 	})
-
+//Hydration
 	it('should output the average fluid ounces of water consumed daily', function() {
 
 		expect(user1.getAvgDailyWater(1)).to.equal(61);
@@ -304,4 +335,12 @@ describe('User', () => {
 
 		expect().to.equal()
 	})
+
+//Sleep
+	it.skip('should output the average number of hours per day for a user', function() {
+
+		expect().to.equal()
+	})
+
+	
 });

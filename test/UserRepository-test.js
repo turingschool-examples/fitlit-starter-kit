@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 import User from '../src/User';
 import UserRepository from '../src/UserRepository';
-//import userData from '../src/data/users';
 
 describe('UserRepository', () => {
   let userRepository, users;
@@ -56,19 +55,19 @@ describe('UserRepository', () => {
     userRepository = new UserRepository(users)
   })
 
-  it.skip('should be a function', function () {
+  it('should be a function', function () {
 
     expect(UserRepository).to.be.a('function');
   });
 
-  it.skip('should instantiate a new user repository', function () {
+  it('should instantiate a new user repository', function () {
 
     expect(userRepository.data).to.deep.equal(users);
   })
 
   it('should take in user data', function () {
 
-    expect(user1.userData).to.deep.equal(
+    expect(userRepository.data.userData[0]).to.deep.equal(
       {
         "id": 1,
         "name": "Luisa Hane",

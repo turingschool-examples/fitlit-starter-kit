@@ -4,6 +4,8 @@ import { fetchAll } from './apiCalls'
 import User from './User';
 import UserRepository from './UserRepository';
 import Hydration from './Hydration'
+import Sleep from './Sleep'
+
 
 let allUserData;
 let allUserSleep;
@@ -16,6 +18,7 @@ const userNameDisplay = document.querySelector('#userName')
 const userStepGoalAvg = document.querySelector('#stepGoalAvg')
 const hydrationBox = document.querySelector('#hydration')
 const displayWeekly = document.querySelector('#week')
+const sleepBox = document.querySelector('#sleep')
 
 fetchAll()
   .then(data => {
@@ -67,3 +70,4 @@ const displayWeeklyInfo = function(hydration, date) {
   displayWeekly.innerHTML = `
   <p>Water ${hydration.returnWeeklyWaterConsumption(currentUser.id, date)}</p>`
 }
+

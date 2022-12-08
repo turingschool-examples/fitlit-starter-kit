@@ -1,5 +1,3 @@
-
-
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
@@ -9,9 +7,7 @@ import './html-css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
-console.log('This is the JavaScript entry file - your code begins here.');
-
-// An example of how you tell webpack to use a JS file
+// Query Selectors
 const header1 = document.querySelector('h1')
 const userProfile = document.querySelector('#profile')
 const welcomeMessage = document.querySelector('#welcomeMessage')
@@ -20,10 +16,12 @@ const userPromise = apiCalls.loadUserData()
 const hydrationPromise = apiCalls.loadHydrationData()
 const sleepPromise = apiCalls.loadSleepData()
 
+// Global variables
 let userRepo;
 let userClassRepo = [];
 let hydrationClassRepo = [];
 let sleepClassRepo = [];
+
 
 
 window.addEventListener('load', function () {
@@ -61,6 +59,9 @@ function displaySelectedUserInformation() {
 //     })
 // });
 
+
 import apiCalls from './apiCalls';
 import UserRepository from './UserRepository';
 import User from './User';
+import Hydration from './Hydration';
+import Sleep from './Sleep';

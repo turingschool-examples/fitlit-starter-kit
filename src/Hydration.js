@@ -1,3 +1,5 @@
+import hydrationData from "./data/hydration-data"
+
 /*Hydration
      constructor({userHydrationData})
          this.userID = userHydrationData.userID

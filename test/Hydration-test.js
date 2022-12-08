@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import Hydration from '../src/Hydration';
-import hydrationData from '../src/data/hydration-data';
+import hydrationData from './data/hydration-data';
 
 // At least three tests
 // - should be a function

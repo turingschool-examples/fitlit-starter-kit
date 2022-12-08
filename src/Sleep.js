@@ -15,6 +15,9 @@ class Sleep {
     returnHoursSleptByDate(id,date){
         return this.sleepData.find(sleepLog => sleepLog.userID === id && sleepLog.date === date).hoursSlept
     }
+    returnSleepQualityByDate(id,date){
+        return this.sleepData.find(sleepLog => sleepLog.userID === id && sleepLog.date === date).sleepQuality
+    }
     }
 
 

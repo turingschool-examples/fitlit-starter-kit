@@ -1,5 +1,55 @@
-body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
-  height: 100%;
+body {
+  background-color: darkgrey;
+  background-size: cover;
+  color: aliceblue;
+  display: flex;
+  flex-wrap: wrap;
+  /* font:, */
+  /* background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  background-repeat: no-repeat; */
+  height: 100vh;
+  margin: 0px;
+  text-align: center;
+}
+
+.left-container {
+display: flex;
+width: 30vw;
+border: 2px solid red;
+}
+
+.right-container {
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+justify-content: space-between;
+align-items: stretch;
+width: 69vw;
+border: 2px solid blue;
+}
+
+.article-data {
+display: flex;
+height: 70%;
+border: 2px solid green;
+flex-wrap: wrap;
+align-items: center;
+/* background-color: black; */
+justify-content: space-around;
+}
+
+.left-container {
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+align-content: center;
+justify-content: space-evenly;
+border: 2px solid green;
+}
+
+.title-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 20%
 }

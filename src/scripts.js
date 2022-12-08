@@ -37,7 +37,7 @@ function pageLoadHandler() {
   displayUserInfo(currentUser);
   displayComparedStepGoal(currentUser, allUserData);
   displayCurrentDayHydration(allUserHydro, currentDate);
-  displayWeeklyInfo(allUserHydro, currentDate);
+  displayWeeklyInfo(allUserHydro, allUserSleep, currentDate);
   displayCurrentDaySleep();
 }
 
@@ -69,9 +69,11 @@ const displayCurrentDayHydration = function (hydration, date) {
   <p>${hydration.consumeBydate(currentUser.id, date)}</p>`;
 };
 
-const displayWeeklyInfo = function (hydration, date) {
+const displayWeeklyInfo = function (hydration, sleep, date) {
   displayWeekly.innerHTML = `
-  <p>Water ${hydration.returnWeeklyWaterConsumption(currentUser.id, date)}</p>`;
+  <p>Water ${hydration.returnWeeklyWaterConsumption(currentUser.id, date)}</p>
+  <p>Sleep ${sleep.returnHoursSleptByWeek(currentUser.id, date)} </p>
+  `;
 };
 
 const displayCurrentDaySleep = function () {

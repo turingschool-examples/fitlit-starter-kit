@@ -2,7 +2,6 @@ let userData
 let sleepData
 let hydroData
 
-// Added dot notation to access the array within the data
 function loadUserData() {
     const userURL = 'https://fitlit-api.herokuapp.com/api/v1/users'
     return fetch(userURL)

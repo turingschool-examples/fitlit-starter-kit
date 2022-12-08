@@ -20,36 +20,32 @@ const userProfile = document.querySelector('#profile')
 
 // Global variables
 let userRepo;
-let userClassRepo = [];
-let hydrationClassRepo = [];
-let sleepClassRepo = [];
 
-// Functions
-window.addEventListener('load', function() {
-  Promise.all([userPromise, hydrationPromise, sleepPromise])
-  .then((values) => {
-    userRepo = new UserRepository(values[0],values[1],values[2]);
-    console.log("REPO", userRepo);
-    createRepos(userClassRepo, 'userData', User);
-    createRepos(hydrationClassRepo, 'hydrationData', Hydration);
-    createRepos(sleepClassRepo, 'sleepData', Sleep);
-    pickRandomUserDisplay();
-    showPersonalizedWelcome();
-    showUserInfoDisplay();
-    displayUserStepGoal();
-    displayStepGoalComparison();
-    displaySelectedUserInformation();
-  });
+window.addEventListener('load', function () {
+    Promise.all([userPromise, hydrationPromise, sleepPromise])
+        .then((values) => {
+            userRepo = new UserRepository(values[0], values[1], values[2])
+            userRepo.initialize()
+
+            console.log("USER REPO", userRepo)
+
+            console.log(userRepo);
+            pickRandomUserDisplay();
+            showPersonalizedWelcome();
+            showUserInfoDisplay();
+            displayUserStepGoal();
+            displayStepGoalComparison();
+            displaySelectedUserInformation();
+        });
 });
 
-function createRepos(repo, dataVarName, className) {
-  userRepo[dataVarName].forEach(value => {
-    repo.push(new className(value));
-  })
-  console.log(repo);
-};
-
-function pickRandomUserDisplay() {
+function displaySelectedUserInformation() {
+    let user = userRepo.selectedUser
+    console.log(user)
+    friendsDisplay.innerText = `${user.name}`
+  }
+  
+  function pickRandomUserDisplay() {
   userRepo.randomizeUser();
   console.log(userRepo.selectedUser);
 };

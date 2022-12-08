@@ -2,9 +2,7 @@ import { expect } from 'chai';
 import userData from '../src/data/users'
 import User from '../src/User'
 
-
 describe('User', () => {
-
 	let user1, user2, user3, hydrationData
 	beforeEach(() => {
 		hydrationData = {hydrationData: [
@@ -274,9 +272,7 @@ describe('User', () => {
         expect(user1.userData.friends).to.deep.equal([16, 4, 8]);
     })
 
-
     it('should return users first name', function() {
-
 
         expect(user1.getFirstName()).to.equal("Luisa");
     })
@@ -289,10 +285,8 @@ describe('User', () => {
     expect(user1.getAverage()).to.equal(5.2)    
 
     })
-
-
-
-			expect(user1.getFirstName()).to.equal("Luisa Hane");
+// was this supposed to be outside of the it block?
+		expect(user1.getFirstName()).to.equal("Luisa Hane");
 	})
 
 	it.only('should output the average fluid ounces of water consumed daily', function() {

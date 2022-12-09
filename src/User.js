@@ -86,6 +86,19 @@ class User {
     }, 0)
   }
 
+  sleepQualityOnSPecificDate(date) {
+    let dates = this.sleepData.sleepData.filter((user) => {
+      return user.date === date
+    })
+    console.log('hi', dates)
+    return dates.reduce((acc, curr) => {
+      if (curr.userID === this.userData.id) {
+        acc = curr.sleepQuality
+      }
+      return acc
+    }, 0)
+  }
+
 }
 
 

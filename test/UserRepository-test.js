@@ -36,6 +36,19 @@ describe('User Repository', () => {
       "friends": [
         29,
         19
+      ],
+      "hydrationData": [
+        { userID: 21, date: '2019/06/15', numOunces: 23 },
+        { userID: 21, date: '2019/06/16', numOunces: 36 }
+      ],
+      "sleepData": [
+        { userID: 21, date: '2019/06/15', hoursSlept: 9.6, sleepQuality: 1 },
+        {
+          userID: 21,
+          date: '2019/06/16',
+          hoursSlept: 4.8,
+          sleepQuality: 1.3
+        }
       ]
     });
   })

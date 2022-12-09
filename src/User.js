@@ -20,7 +20,6 @@ class User {
         return (day1.date).localeCompare(day2.date)
     })
   }
-
   returnFirstName() {
     let userNameSplitArray = this.name.split(' ');
     return userNameSplitArray[0];

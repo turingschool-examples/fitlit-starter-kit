@@ -85,9 +85,16 @@ function getUserFriends() {
   return friendsArray.join(', ')
 }
 
+function displayWater() {
+  hydrationBox.innerText = `Your water intake for today is ${currentUser.getWaterPerDay('2019/06/15')} ounces`
+
+}
+
 function loadPage() {
   getUser(sleep, hydration)
   displayUserInfo()
   stepGoalDisplay()
   displayWelcomeName()
+  displayWater()
 }
+

@@ -22,6 +22,7 @@ const userName = document.querySelector('#userName')
 
 // Global variables
 let userRepo;
+let currentUser
 
 const profileEmojis = ["✌","😂","😝","😁","😱","🔥","🌈","☀","🎀","⚽","🎾","🏁","😡","👿","🐻","🐶","🐬","🐟","😍","😉","😓","😳","💪","💩","💖","🌟","🎉","🌺","🏈","⚾","🏆","👽","💀","🐵","🐮","🐩","🐎","😘","😜","😵","💃","💎","🚀","🌙","⛄","🌊","⛵","🏀","💰","👶","👸","🐰","🐷","🐍","🐫","🚲",]
 const profileBackgrounds = ['#F8B195','#F67280','#C06C84','#6C5B7B','#355C7D','#99B898','#FECEAB','	#FF847C','#2A363B','#A8E6CE']
@@ -31,6 +32,8 @@ window.addEventListener('load', function () {
         .then((values) => {
             userRepo = new UserRepository(values[0], values[1], values[2])
             userRepo.initialize()
+            currentUser = userRepo.selectedUser
+            currentUser.createUserArrays(currentUser.hydrationData)
             showPersonalizedWelcome();
             showUserInfoDisplay();
             displayUserStepGoal();

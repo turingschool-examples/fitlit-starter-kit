@@ -1,25 +1,26 @@
-import hydrationDataSet from '../src/data/hydration-data.js'
-// import userData from '../src/data/users.js'
-
+//---> what does the fetched data look like for the param hydrationData?
 class Hydration {
-    constructor(hydrationDataSet) {
-         this.userID = hydrationDataSet[0].userID;
-         this.date = hydrationDataSet[0].date;
-         this.numOunces = hydrationDataSet[0].numOunces;
-         this.dataSet = hydrationDataSet;
-         this.userHydrationData = this.setUserHydrationData(hydrationDataSet);
+    constructor(id, hydrationData) {
+         this.userID = id;
+         this.date;
+         this.numOunces;
+         this.dataSet = hydrationData;
+         this.oneUserDataSet;
     }
-    setUserHydrationData(hydrationDataSet) {
-        const userHydration = hydrationDataSet.filter(userHydrationData => {
-        if (this.userID === this.userHydrationData.userID) {
-            return this.userHydrationData;
-        }
+​
+    getOneUserData(hydrationData) {
+        let oneUserArray = hydrationData.filter(element => {
+            if (this.userID === this.dataSet.userID) {
+                return element;
+            }
         });
-       // userHydration.reverse();
-       // return userHydration
+​
+        this.oneUserDataSet = oneUserArray;
+        console.log("Is this one user's info: ", this.oneUserDataSet);
+        console.log("Is this the same one user's info: ", oneUserArray);
     }
-
-    returnAverageOuncesConsumed() {
+​
+    getAvgConsumed() {
         let ouncesConsumedPerDay = this.dataSet.filter(element => element.userID === this.userID).map(element => element.numOunces);
         let ouncesConsumedPerDayLength = ouncesConsumedPerDay.length;
         let ouncesConsumedPerDayTotal = ouncesConsumedPerDay.reduce((accumulator, currentValue) => {
@@ -27,24 +28,23 @@ class Hydration {
           return accumulator;
         }, 0);
         return Math.round(ouncesConsumedPerDayTotal / ouncesConsumedPerDayLength);
-      };
-
-    returnOuncesConsumedForDay(thisDate) {
-        let ouncesByDate = this.dataSet.find(element => element.date === thisDate);
+    }
+​
+    getOneDayTotal(thisDate) {
+        let ouncesByDate = this.oneUserDataSet.find(element => element.date === thisDate);
         return ouncesByDate.numOunces;
     }
-    returnOuncesConsumedForWeek() {
-        //open fitness app
-            //would show me today
-            //would show me past six days
-        //return weeklyIntake
-            /* weeklyIntake = {
-                 date: [],
-                 numOunces: []
-            } */
+​
+    getToday() {
+        return this.oneUserDataSet[-1];
+    }
+​
+    getOneWeekTotal() {
+        let waterWeek = this.oneUserDataSet.slice(-7);
+        return waterWeek;
     }
 }
-
-
+​
+​
 //module.exports = Hydration;
 export default Hydration;

@@ -242,8 +242,8 @@ describe('User', () => {
 		expect(user2.givenWeeksSleepQualityByDay()).to.deeply.equal()
 	})
 
-	it.skip('Should average overall sleep quality', function () {
+	it('Should average overall sleep quality for all users', function () {
 
-		expect(user2.averageSleepQuality()).to.equal()
+		expect(user1.averageSleepQuality()).to.equal(3.64)
 	})
 })

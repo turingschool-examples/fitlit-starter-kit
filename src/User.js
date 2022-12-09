@@ -104,11 +104,19 @@ class User {
       return user.userID === this.userData.id;
     })
 
-    let hi = userWeeklySleep.slice(-7)
+    const last7SleepDays = userWeeklySleep.slice(-7);
 
-    console.log('abced', hi);
+    let filteredSleep = last7SleepDays.map(user => {
+      let sleepDate = user.date;
+      let sleepHours = user.hoursSlept;
+      let both = {};
+      both[sleepDate] = sleepHours;
+      return both;
+    })
 
-    return hi;
+    console.log('hi', filteredSleep)
+
+    return filteredSleep;
   }
 
   averageSleepQuality() {

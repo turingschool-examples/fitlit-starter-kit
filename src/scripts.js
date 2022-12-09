@@ -18,7 +18,7 @@ const stepGoal = document.querySelector('#stepGoal')
 const stepGoalVsAvg = document.querySelector('#stepGoalVsAvg')
 const userProfile = document.querySelector('#profile')
 const userName = document.querySelector('#userName')
-
+const userAvatar = document.querySelector('#userAvatar')
 // Global variables
 let userRepo;
 
@@ -51,6 +51,8 @@ function selectRandom(selectedArray){
 function showUserInfoDisplay() {
   friendsDisplay.innerText = ` `;
   userName.innerText = `${userRepo.selectedUser.name}`
+  userAvatar.innerText = selectRandom(profileEmojis)
+  userAvatar.style.backgroundColor = selectRandom(profileBackgrounds)
   userRepo.selectedUser.friends.forEach(friend => {
     friendsDisplay.innerHTML += `
     <div class="single-friend">

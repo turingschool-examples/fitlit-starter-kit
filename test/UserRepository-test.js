@@ -24,9 +24,8 @@ describe('User Repository', () => {
     expect(fullUserData.hydrationData).to.equal(hydrationTestData);
     expect(fullUserData.sleepData).to.equal(sleepTestData);
   })
-  it('should be able to be given an id and return that user\'s data', function () {
+  it.skip('should be able to be given an id and return that user\'s data', function () {
     fullUserData.initialize();
-    console.log('here:', fullUserData.users[0]);
     expect(fullUserData.findUser(21)).to.deep.equal({
       "id": 21,
       "name": "Alexandrea Wehner",
@@ -45,12 +44,14 @@ describe('User Repository', () => {
     expect(fullUserData.selectedUser).to.deep.equal(userTestData[indexNumber])
   })
   it('should calculate average dailyStepGoals for all users', function () {
+    fullUserData.initialize();
     expect(fullUserData.averageSteps()).to.equal(6333);
   })
-  // it('should have a method to average all users sleep hours data available', function() {
-  //   // input: this.users[index].sleepData[index].hoursSlept accesses sleep hours
-  //   // use 
-  // })
+  it('should have a method to average all users sleep hours data available', function() {
+    fullUserData.initialize();
+
+    expect(fullUserData.calculateAllUserAvgHrsSlept()).to.equal(6.9);
+  })
   // it('should have a method to average all users sleep quality data available', function() {
   //   // input: this.users[index].sleepData[index].sleepQuality accesses sleep quality
   // })

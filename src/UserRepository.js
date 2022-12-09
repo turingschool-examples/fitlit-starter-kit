@@ -73,7 +73,34 @@ class UserRepository {
         }, 0);
         return Number((averageStepGoal/this.users.length).toFixed(0))
     }
-    
+    calculateAllUserAvgHrsSlept() {
+      let allUsersSleep = this.users.map(user => {
+        let userSleepHrsArr = user.sleepData.map(sleepData => {
+          return sleepData.hoursSlept;
+        })
+        return userSleepHrsArr;
+      })
+      
+      let userSleepHrAvgArray = [];
+      allUsersSleep.forEach(userArr => {
+        let userTotal = userArr.reduce((total, entry) => {
+          return total += entry;
+        }, 0)
+        let userAvg = userTotal / userArr.length;
+        userSleepHrAvgArray.push(userAvg);
+      })
+      
+      let allUserAvgSum = userSleepHrAvgArray.reduce((total, userAvg) => {
+        return total += userAvg;
+      }, 0)
+      
+      return Number((allUserAvgSum / userSleepHrAvgArray.length).toFixed(1));
+      
+      // allUsersSleep.forEach((userSleepArr) => {
+      //   return total += userSleepArr.hoursSlept;
+      // }, 0)
+
+    }
 }
 
 export default UserRepository;

@@ -73,51 +73,25 @@ class UserRepository {
         }, 0);
         return Number((averageStepGoal/this.users.length).toFixed(0))
     }
-    calculateAllUserAvgHrsSlept() {
+    calculateAllUserAvgSleep(sleepKey) {
       let allUsersSleep = this.users.map(user => {
-        let userSleepHrsArr = user.sleepData.map(sleepData => {
-          return sleepData.hoursSlept;
+        let userSleepArray = user.sleepData.map(sleepData => {
+          return sleepData[sleepKey];
         })
-        return userSleepHrsArr;
+        return userSleepArray;
       })
-
-      let userSleepHrAvgArray = [];
+      let userSleepAvgArray = [];
       allUsersSleep.forEach(userArr => {
         let userTotal = userArr.reduce((total, entry) => {
           return total += entry;
         }, 0)
         let userAvg = userTotal / userArr.length;
-        userSleepHrAvgArray.push(userAvg);
+        userSleepAvgArray.push(userAvg);
       })
-      
-      let allUserAvgSum = userSleepHrAvgArray.reduce((total, userAvg) => {
+      let allUserAvgSum = userSleepAvgArray.reduce((total, userAvg) => {
         return total += userAvg;
       }, 0)
-      
-      return Number((allUserAvgSum / userSleepHrAvgArray.length).toFixed(1));
-    }
-    calculateAllUserAvgSleepQuality() {
-      let allUsersSleep = this.users.map(user => {
-        let userSleepQltyArr = user.sleepData.map(sleepData => {
-          return sleepData.sleepQuality;
-        })
-        return userSleepQltyArr;
-      })
-
-      let userSleepQltyAvgArray = [];
-      allUsersSleep.forEach(userArr => {
-        let userTotal = userArr.reduce((total, entry) => {
-          return total += entry;
-        }, 0)
-        let userAvg = userTotal / userArr.length;
-        userSleepQltyAvgArray.push(userAvg);
-      })
-      
-      let allUserAvgSum = userSleepQltyAvgArray.reduce((total, userAvg) => {
-        return total += userAvg;
-      }, 0)
-      
-      return Number((allUserAvgSum / userSleepQltyAvgArray.length).toFixed(1));
+      return Number((allUserAvgSum / userSleepAvgArray.length).toFixed(1));
     }
 }
 

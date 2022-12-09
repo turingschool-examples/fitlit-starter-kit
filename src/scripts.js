@@ -52,20 +52,20 @@ const displayUserName = function (user) {
 const displayUserInfo = function (user) {
   userDisplay.innerHTML = `
   <div>
-    <p class="id">${user.id}</p>
-    <p class="name">${user.name}</p>
-    <p class="address">${user.address}</p>
-    <p class="email">${user.email}</p>
-    <p class="stride-length">${user.strideLength}</p>
-    <p class="daily-step-goal">${user.dailyStepGoal}</p>
-    <p class="friends">${user.friends}</p>
+    <p class="id">User#: ${user.id}</p>
+    <p class="name">Name: ${user.name}</p>
+    <p class="address">Address: ${user.address}</p>
+    <p class="email">Email: ${user.email}</p>
+    <p class="daily-step-goal">Step Goal: ${user.dailyStepGoal}</p>
+    <p class="stride-length">Stride Length${user.strideLength}</p>
+    <p class="friends">Friends: ${user.friends}</p>
   </div>`;
 };
 
 const displayComparedStepGoal = function (user, repository) {
-  userStepGoalAvg.innerHTML = `<p>${
+  userStepGoalAvg.innerHTML = `<p>Daily step goal: ${
     user.dailyStepGoal
-  } ${repository.calculateAverageStepGoal()}</p>`;
+  } Step goal average:${repository.calculateAverageStepGoal()}</p>`;
 };
 
 const displayCurrentDayHydration = function (hydration, date) {

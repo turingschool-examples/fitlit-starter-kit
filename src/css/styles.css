@@ -2,4 +2,25 @@ body, html {
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
   background-repeat: no-repeat;
   height: 100%;
+  width: 100%;
+  display:flex;
+}
+body {
+  flex-direction: column;
+}
+.dashboard {
+  display: flex;
+  flex-direction: row;
+}
+.left-section {
+  border:solid 2px red;
+  width: 25%;
+}
+.main {
+  background-color: #ff9a9e;
+  width: 100%
+}
+.card {
+  border:solid 2px red;
+  background-color: antiquewhite;
 }

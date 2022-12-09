@@ -1,5 +1,46 @@
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  background-image: linear-gradient(to top, #ff9a9e 0%, #f8e6f2 99%, #ffffff 100%);
   background-repeat: no-repeat;
   height: 100%;
+  width: 100%;
+  display:flex;
+}
+body {
+  flex-direction: column;
+}
+.dashboard {
+  display: flex;
+  flex-direction: row;
+}
+.left-section {
+  width: 25%;
+}
+.main {
+  width: 100%
+}
+.main-report {
+  display: flex;
+  flex-direction: column;
+  background-color: antiquewhite;
+  border-radius: 8px
+}
+
+.week, .hydration, .sleep {
+  border-radius: 8px;
+  width:100%
+}
+
+.daily-report {
+  display: flex;
+  border-radius: 8px;
+}
+.week {
+  background-color: #ff9a9e;
+}
+
+.hydration{
+  background-color:skyblue;
+}
+.sleep {
+  background-color: darkkhaki;
 }

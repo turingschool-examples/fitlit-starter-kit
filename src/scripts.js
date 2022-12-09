@@ -52,37 +52,37 @@ const displayUserName = function (user) {
 const displayUserInfo = function (user) {
   userDisplay.innerHTML = `
   <div>
-    <p class="id">${user.id}</p>
-    <p class="name">${user.name}</p>
-    <p class="address">${user.address}</p>
-    <p class="email">${user.email}</p>
-    <p class="stride-length">${user.strideLength}</p>
-    <p class="daily-step-goal">${user.dailyStepGoal}</p>
-    <p class="friends">${user.friends}</p>
+    <p class="id">User ID: ${user.id}</p>
+    <p class="name">Name: ${user.name}</p>
+    <p class="address">Address: ${user.address}</p>
+    <p class="email">Email: ${user.email}</p>
+    <p class="daily-step-goal">Step Goal: ${user.dailyStepGoal}</p>
+    <p class="stride-length">Stride Length: ${user.strideLength}</p>
+    <p class="friends">Friends: ${user.friends}</p>
   </div>`;
 };
 
 const displayComparedStepGoal = function (user, repository) {
-  userStepGoalAvg.innerHTML = `<p>${
+  userStepGoalAvg.innerHTML = `<p>Daily step goal: ${
     user.dailyStepGoal
-  } ${repository.calculateAverageStepGoal()}</p>`;
+  } Step goal average:${repository.calculateAverageStepGoal()}</p>`;
 };
 
 const displayCurrentDayHydration = function (hydration, date) {
   hydrationBox.innerHTML = `
-  <p>${hydration.consumeBydate(currentUser.id, date)}</p>`;
+  <p>Current Water: ${hydration.consumeBydate(currentUser.id, date)}</p>`;
 };
 
 const displayWeeklyInfo = function (hydration, sleep, date) {
   displayWeekly.innerHTML = `
-  <p>Water ${hydration.returnWeeklyWaterConsumption(currentUser.id, date)}</p>
-  <p>Sleep Hours${sleep.returnHoursSleptByWeek(currentUser.id, date)} </p>
-  <p>Sleep Quality ${sleep.returnSleepQualityByWeek(currentUser.id, date)} </p>
+  <p>Water: ${hydration.returnWeeklyWaterConsumption(currentUser.id, date)}</p>
+  <p>Sleep Hours: ${sleep.returnHoursSleptByWeek(currentUser.id, date)} </p>
+  <p>Sleep Quality: ${sleep.returnSleepQualityByWeek(currentUser.id, date)} </p>
   `;
 };
 
 const displayCurrentDaySleep = function () {
-  currentSleep.innerHTML = `<p>Current Sleep ${allUserSleep.returnHoursSleptByDate(
+  currentSleep.innerHTML = `<p>Current Sleep: ${allUserSleep.returnHoursSleptByDate(
     currentUser.id,
     currentDate
   )}</p>`;
@@ -90,10 +90,10 @@ const displayCurrentDaySleep = function () {
 
 const displayAllTimeSleep = function () {
   allTimeSleep.innerHTML = `
-  <p>Sleep Quality avg all time ${allUserSleep.calcAvgSleepQualityPerDay(
+  <p>Sleep Quality avg all time: ${allUserSleep.calcAvgSleepQualityPerDay(
     currentUser.id
   )}</p>
-  <p>Sleep hour avg all time ${allUserSleep.calcAvgSleepPerDay(
+  <p>Sleep hour avg all time: ${allUserSleep.calcAvgSleepPerDay(
     currentUser.id
   )}</p>
   `;

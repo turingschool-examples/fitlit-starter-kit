@@ -30,6 +30,41 @@ describe('User', () => {
 					userID: 2,
 					date: "2019/06/16",
 					numOunces: 42
+				},
+				{
+					userID: 2,
+					date: "2019/06/17",
+					numOunces: 19
+				},
+				{
+					userID: 2,
+					date: "2019/06/18",
+					numOunces: 42
+				},
+				{
+					userID: 2,
+					date: "2019/06/19",
+					numOunces: 42
+				},
+				{
+					userID: 2,
+					date: "2019/06/20",
+					numOunces: 33
+				},
+				{
+					userID: 2,
+					date: "2019/06/21",
+					numOunces: 51
+				},
+				{
+					userID: 2,
+					date: "2019/06/22",
+					numOunces: 87
+				},
+				{
+					userID: 2,
+					date: "2019/06/23",
+					numOunces: 23
 				}
 			]
 		}
@@ -63,7 +98,45 @@ describe('User', () => {
 				date: "2019/06/16",
 				hoursSlept: 4.1,
 				sleepQuality: 3.6
-			}]
+			},
+			{
+				userID: 2,
+				date: "2019/06/17",
+				hoursSlept: 4.1,
+				sleepQuality: 3.6
+			},
+			{
+				userID: 2,
+				date: "2019/06/18",
+				hoursSlept: 4.1,
+				sleepQuality: 3.6
+			},
+			{
+				userID: 2,
+				date: "2019/06/19",
+				hoursSlept: 4.1,
+				sleepQuality: 3.6
+			},
+			{
+				userID: 2,
+				date: "2019/06/20",
+				hoursSlept: 6.5,
+				sleepQuality: 1.1
+			},
+			{
+				userID: 2,
+				date: "2019/06/21",
+				hoursSlept: 4.1,
+				sleepQuality: 3.6
+			},
+			{
+				userID: 2,
+				date: "2019/06/22",
+				hoursSlept: 3.9,
+				sleepQuality: 5.4
+			}
+
+			]
 		}
 		user1 = new User({
 			"id": 1,
@@ -204,9 +277,17 @@ describe('User', () => {
 		expect(user3.getWaterPerDay("2019/06/15")).to.equal(47);
 	})
 
-	it.skip('should calculate average ounces consumed daily over the course of one week', function () {
+	it('should calculate average ounces consumed daily over the course of one week', function () {
 
-		expect().to.equal()
+		expect(user2.getWeeklyConsumption()).to.deep.equal([
+			{ userID: 2, date: '2019/06/17', numOunces: 19 },
+			{ userID: 2, date: '2019/06/18', numOunces: 42 },
+			{ userID: 2, date: '2019/06/19', numOunces: 42 },
+			{ userID: 2, date: '2019/06/20', numOunces: 33 },
+			{ userID: 2, date: '2019/06/21', numOunces: 51 },
+			{ userID: 2, date: '2019/06/22', numOunces: 87 },
+			{ userID: 2, date: '2019/06/23', numOunces: 23 }
+		])
 	})
 
 	//Sleep
@@ -217,7 +298,7 @@ describe('User', () => {
 
 	it('Should return a users average sleep quality', function () {
 
-		expect(user2.getOverallQualityAvg()).to.equal(4.15)
+		expect(user1.getOverallQualityAvg()).to.equal(2.6)
 	})
 
 	it('Should give hours slept on a specific date', function () {
@@ -232,18 +313,34 @@ describe('User', () => {
 		expect(user1.sleepQualityOnSPecificDate("2019/06/16")).to.equal(3)
 	})
 
-	it.skip('Should provide daily sleep data for any given week', function () {
+	it('Should provide daily sleep data for any given week', function () {
 
-		expect(user2.givenWeekSleepDataByDay()).to.deeply.equal()
+		expect(user2.givenWeekSleepDataByDay()).to.deep.equal([
+			{ '2019/06/16': 4.1 },
+			{ '2019/06/17': 4.1 },
+			{ '2019/06/18': 4.1 },
+			{ '2019/06/19': 4.1 },
+			{ '2019/06/20': 6.5 },
+			{ '2019/06/21': 4.1 },
+			{ '2019/06/22': 3.9 }
+		])
 	})
 
-	it.skip('Should provide daily sleep quality for any given week', function () {
+	it('Should provide daily sleep quality for any given week', function () {
 
-		expect(user2.givenWeeksSleepQualityByDay()).to.deeply.equal()
+		expect(user2.givenWeeksSleepQualityByDay()).to.deep.equal([
+			{ '2019/06/16': 3.6 },
+			{ '2019/06/17': 3.6 },
+			{ '2019/06/18': 3.6 },
+			{ '2019/06/19': 3.6 },
+			{ '2019/06/20': 1.1 },
+			{ '2019/06/21': 3.6 },
+			{ '2019/06/22': 5.4 }
+		])
 	})
 
 	it('Should average overall sleep quality for all users', function () {
 
-		expect(user1.averageSleepQuality()).to.equal(3.64)
+		expect(user1.averageSleepQuality()).to.equal(3.55)
 	})
 })

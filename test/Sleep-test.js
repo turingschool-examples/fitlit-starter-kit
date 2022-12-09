@@ -34,4 +34,11 @@ describe('Sleep', () => {
         expect(userSleepQual).to.equal(3)
     })
 
+    it('should have a method that returns the hours slept for 1 user on a given date', () => {
+
+        let user1 = sleep.getHoursSleptOnDay(1, '2019/06/15')
+
+        expect(user1).to.equal(6.1)
+    })
+
 })

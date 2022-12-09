@@ -6,29 +6,36 @@ class Sleep {
     }
 
     avgHoursSleptPerDay (iD) {
-        let filteredArr = this.sleepData.filter(user => {
+        const userSleepData = this.sleepData.filter(user => {
             return user.userID === iD
         })
-        let reducedArr = filteredArr.reduce((acc, dataPoint) => {
+        const totalHoursSlept = userSleepData.reduce((acc, dataPoint) => {
             acc += dataPoint.hoursSlept
             return acc
         }, 0)
-
-        return Math.round(reducedArr / filteredArr.length)
+        return Math.round(totalHoursSlept / userSleepData.length)
     }
     
     avgSleepQuality (iD) {
-        let filteredArr = this.sleepData.filter(user => {
+        const userSleepData = this.sleepData.filter(user => {
             return user.userID === iD
         })
-        let reducedArr = filteredArr.reduce((acc, dataPoint) => {
+        const totalSleepQuality = userSleepData.reduce((acc, dataPoint) => {
             acc += dataPoint.sleepQuality
             return acc
         }, 0)
-
-        return Math.round(reducedArr / filteredArr.length)
+        return Math.round(totalSleepQuality / userSleepData.length)
     }
-    // method to average the sleep quality per day over all time
+    
+    getHoursSleptOnDay(iD, date) {
+        const userSleepData = this.sleepData.filter(user => {
+            return user.userID === iD
+        })
+        const sleepDataByDate = userSleepData.filter(user => {
+            return user.date === date
+        })
+        return sleepDataByDate[0].hoursSlept
+    }
 
 }
 

@@ -10,15 +10,14 @@ const mockHydrationDataSet = hydrationDataSet
 // - should have an id
 // - should have a date
 // - should have the number of fluid ounces of water consumed
-// - should be able to return the average fluid ounces consumed per day for all time
-// - should be able to return how many fluid ounces consumed for a specific day
-// - should be able to return how many fluid ounces consumed each day over the course of a week
+// - should be able to return the average fluid ounces consumed per day by a user for all time
+// - should be able to return how many fluid ounces consumed by a user for a specific day
+// - should be able to return how many fluid ounces consumed by a user each day over the course of a week
 
 describe ("Hydration", function() {
     let hydration;
     beforeEach(function() {
-        hydration = new Hydration(1, mockHydrationDataSet);
-        //console.log(hydration);
+        hydration = new Hydration(mockHydrationDataSet);
     });
 
     it('should be a function', function() {
@@ -41,7 +40,8 @@ describe ("Hydration", function() {
         expect(hydration.numOunces).to.equal(37);
     });
 
-    it.skip('should have a ')
-
+    it('should be able to return the average fluid ounces consumed per day by a user for all time', function() {
+        expect(returnAverageOuncesConsumed()).to.equal(66)
+    });
 
 });

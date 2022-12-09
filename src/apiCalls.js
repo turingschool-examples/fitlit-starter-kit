@@ -1,5 +1,4 @@
-// Your fetch requests will live here!
-// console.log('I will be a fetch request!')
+// fetch requests 👇🏻
 
 const fetchUserData = () => {
     return fetch("https://fitlit-api.herokuapp.com/api/v1/users")
@@ -16,6 +15,6 @@ const fetchHydrationData = () => {
             .then(response => response.json());
 };
 
-export {fetchUserData} 
-export {fetchSleepData}
-export {fetchHydrationData}
+export {fetchUserData}; 
+export {fetchSleepData};
+export {fetchHydrationData};

@@ -1,4 +1,5 @@
 // imports 👇🏻
+
 import './images/turing-logo.png'
 import './css/styles.css';
 import User from './User'
@@ -25,9 +26,9 @@ let newRepo;
 let aNewUser;
 let userId = 1;
 let usersAvgSteps;
-let userData
-let hydrationData
-let sleepData
+let userData;
+let hydrationData;
+let sleepData;
 
 // event listeners 👇🏻
 
@@ -38,10 +39,10 @@ let sleepData
 
 Promise.all([fetchUserData(), fetchSleepData(), fetchHydrationData()])
 .then(data => {
-    userData = data[0].userData
-    sleepData = data[1].sleepData
-    hydrationData = data[2].hydrationData
-    onLoad(userData)
+    userData = data[0].userData;
+    sleepData = data[1].sleepData;
+    hydrationData = data[2].hydrationData;
+    onLoad(userData);
 });
 
 function onLoad() {
@@ -50,17 +51,17 @@ function onLoad() {
 
 const createUserArray = (userData) => {
     newRepo = new UserRepository(userData);
-    usersAvgSteps = newRepo.avgStepGoal()
-    userStepComparison.innerText = `${usersAvgSteps} steps`
-    return newRepo
+    usersAvgSteps = newRepo.avgStepGoal();
+    userStepComparison.innerText = `${usersAvgSteps} steps`;
+    return newRepo;
 };
 
 function createNewUser() {
-    createUserArray(userData)
+    createUserArray(userData);
     const userObject = newRepo.getUserData(userId);
     aNewUser = new User(userObject);
     return aNewUser;
-}
+};
 
 const addUser = () => {
     createNewUser(userData);

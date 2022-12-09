@@ -38,7 +38,19 @@ class User {
       return user.userID === this.userData.id;
     })
 
-    return userWeeklyH20.slice(-7);
+    let weeklyWater = userWeeklyH20.slice(-7);
+    console.log('weeklyWater', weeklyWater)
+
+    let filteredWater = weeklyWater.map(user => {
+      let date = user.date;
+      let numOunces = user.numOunces;
+      let both = {};
+      both[date] = numOunces;
+      return both;
+    })
+    console.log('filteredWater variable', filteredWater)
+
+    return filteredWater;
   }
 
   // Sleep

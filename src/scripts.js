@@ -24,6 +24,7 @@ let currentUser
  let sleepBox = document.querySelector('.five')
  let activityTrackerTitle = document.querySelector('h1')
  let userInfoList = document.querySelector("#userInfoList")
+ let hydrationInfoList = document.querySelector("#hydrationInfoList")
 
 // Event Listeners
 window.addEventListener('load', getAllData)
@@ -86,7 +87,8 @@ function getUserFriends() {
 }
 
 function displayWater() {
-  hydrationBox.innerText = `Your water intake for today is ${currentUser.getWaterPerDay('2019/06/15')} ounces`
+  hydrationInfoList.innerHTML += `<li>Your water intake for today is ${currentUser.getWaterPerDay('2019/06/15')} ounces</li>
+                             <li>Your weekly water intake is ${currentUser.getWeeklyConsumption()} ounces</li>`
 
 }
 

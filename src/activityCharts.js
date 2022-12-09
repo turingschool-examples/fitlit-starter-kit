@@ -13,54 +13,24 @@ let sleepDblDataChart;
 let todaysHydroChart;
 let weeksHydroChart;
 
-new Chart(hydroDayChart, {
-    type: 'bar',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-
-
-// new Chart(hydroDayChart, {
-//     type: 'doughnut',
-//     data: {
-//         labels: ['Today\'s Intake', 'Recommended Daily Intake'],
-//         datasets: [
-//             {
-//                 label: 'Make it to 64oz!', //maybe interpolate how close they are to meeting the goal?
-//                 data: [ 45, 64 ]
-//                 backgroundColor: [ '#BF1363', '#F39237' ]
-//             }
-//         ];
-//     }
-// })
 
 // functions to update charts (data passed in as parameter)
 
-// const updateHydroChart = (data) => {
-//     todaysHydroChart = new Chart(stepChart, {
-//         type: 'doughnut',
-//         data: {
-//             labels: ['Today\'s Intake', 'Recommended Daily Intake'],
-//             datasets: [
-//                 {
-//                     label: 'Make it to 64oz!', //maybe interpolate how close they are to meeting the goal?
-//                     data: [ data, 64 ] //data
-//                     backgroundColor: [ #BF1363, #F39237 ]
-//                 }
-//             ];
-//         }
-//     })
-// }
+const updateHydroChart = (ozToday) => {
+    todaysHydroChart = new Chart(hydroDayChart, {
+        type: 'doughnut',
+        data: {
+            labels: ['Today\'s Intake', 'Recommended Daily Intake'],
+            datasets: [
+                {
+                    //label: optional and probably not helpful here
+                    data: [ 50, 25 ], //[ ozToday, conditional parameter? if larger than 64, this is 0. else (64 - ozToday)]
+                    backgroundColor: [ '#BF1363', '#F39237' ]
+                }
+            ],
+        }
+        //options
+    })
+} //sizing of this done in CSS
+
+export default updateHydroChart;

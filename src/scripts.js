@@ -12,7 +12,6 @@ import './images/turing-logo.png'
 const userPromise = apiCalls.loadUserData()
 const hydrationPromise = apiCalls.loadHydrationData()
 const sleepPromise = apiCalls.loadSleepData()
-const header1 = document.querySelector('h1')
 const welcomeMessage = document.querySelector('#welcomeMessage')
 const friendsDisplay = document.querySelector('#friends')
 const stepGoal = document.querySelector('#stepGoal')
@@ -33,13 +32,12 @@ window.addEventListener('load', function () {
             userRepo = new UserRepository(values[0], values[1], values[2])
             userRepo.initialize()
             currentUser = userRepo.selectedUser
-            currentUser.createUserArrays(currentUser.hydrationData)
             showPersonalizedWelcome();
             showUserInfoDisplay();
             displayUserStepGoal();
             displayStepGoalComparison();
             displaySelectedUserInformation();
-            updateHydroDateChart(); //update charts upon page load
+            activityCharts.updateHydroDateChart(); //update charts upon page load
         });
 });
 
@@ -98,8 +96,7 @@ function displaySelectedUserInformation() {
 
 import apiCalls from './apiCalls';
 import UserRepository from './UserRepository';
-import User from './User';
-import Hydration from './Hydration';
-import Sleep from './Sleep';
+import activityCharts from './activityCharts.js';
 
-export { userRepo }; //saying it won't export this
+
+export { userRepo };

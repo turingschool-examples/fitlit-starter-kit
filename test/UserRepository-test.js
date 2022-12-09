@@ -26,7 +26,7 @@ describe('User Repository', () => {
   })
   it('should be able to be given an id and return that user\'s data', function () {
     fullUserData.initialize();
-    // console.log('here:', fullUserData);
+    console.log('here:', fullUserData.users[0]);
     expect(fullUserData.findUser(21)).to.deep.equal({
       "id": 21,
       "name": "Alexandrea Wehner",

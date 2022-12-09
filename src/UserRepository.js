@@ -20,13 +20,17 @@ class UserRepository {
           } else {
             let user = this.findUser(hydroData.userID)
             user.hydrationData.push(hydroData)
-            console.log(user.hydrationData);
+            // console.log(user.hydrationData);
           }
         })
-        // this.sleepData.forEach(sleepData => {
-        //     let user = this.filterUserData(sleepData.userID)
-        //     user.sleepData.push(sleepData)
-        // })
+        this.sleepData.forEach(sleepData => {
+          if (this.findUser(sleepData.userID) === false) {
+            return;
+          } else {
+            let user = this.findUser(sleepData.userID)
+            user.sleepData.push(sleepData)
+          }
+        })
         this.selectedUser = this.randomizeUser()
         this.userData = null
         this.hydrationData = null

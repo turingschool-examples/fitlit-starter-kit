@@ -25,10 +25,15 @@ const findHydroPercentage = (numDrunk, goal) => {
     return numDrunk < goal ? goal - numDrunk : 0;
 }
 const updateHydroDateChart = () => {
-    const todaysDate = "2019/06/15" //find today method
-    const numDrunk = userRepo.selectedUser.find(todaysDate).numOunces
+    const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData);
+    console.log('User:', userRepo.selectedUser);
+    console.log('Today\'s date', todaysDate);
+    const numDrunk = userRepo.selectedUser.findDaysHydration(todaysDate).numOunces;
+    console.log('numDrunk: ', numDrunk);
     const goal = 64;
+    console.log('Goal: ', goal);
     const ozLeft = findHydroPercentage(numDrunk, goal);
+    console.log('ounces left: ', ozLeft);
     todaysHydroChart = new Chart(hydroDayChart, {
         type: 'doughnut',
         data: {
@@ -69,4 +74,5 @@ const updateHydroDateChart = () => {
 
 // }
 
-export default { updateHydroDateChart, todaysHydroChart};
+export default { updateHydroDateChart, todaysHydroChart };
+//export {  };

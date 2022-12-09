@@ -3,7 +3,9 @@
 
 // An example of how you tell webpack to use a CSS file
 import './html-css/styles.css';
-import updateHydroDateChart from './activityCharts.js';
+import activityCharts from './activityCharts';
+import updateHydroDateChart from './activityCharts';
+import { todaysHydroChart } from './activityCharts'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
@@ -36,7 +38,7 @@ window.addEventListener('load', function () {
             displayUserStepGoal();
             displayStepGoalComparison();
             displaySelectedUserInformation();
-            updateHydroDateChart(); //update charts upon page load
+            activityCharts.updateHydroDateChart(); //update charts upon page load
         });
 });
 

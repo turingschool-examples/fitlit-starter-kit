@@ -20,7 +20,7 @@ class Hydration {
     }
 
     returnAverageOuncesConsumed() {
-        let ouncesConsumedPerDay = hydrationData.filter(element => element.userID === this.userID).map(element => element.numOunces);
+        let ouncesConsumedPerDay = this.dataSet.filter(element => element.userID === this.userID).map(element => element.numOunces);
         let ouncesConsumedPerDayLength = ouncesConsumedPerDay.length;
         let ouncesConsumedPerDayTotal = ouncesConsumedPerDay.reduce((accumulator, currentValue) => {
           accumulator += currentValue
@@ -30,11 +30,13 @@ class Hydration {
       };
 
     returnOuncesConsumedForDay(thisDate) {
-        //use .find to access .date in an object
-            //make sure that thisDate === .date in an object
-        //return information
+        let ouncesByDate = this.dataSet.find(element => element.date === thisDate);
+        return ouncesByDate.numOunces;
     }
     returnOuncesConsumedForWeek() {
+        //open fitness app
+            //would show me today
+            //would show me past six days
         //return weeklyIntake
             /* weeklyIntake = {
                  date: [],

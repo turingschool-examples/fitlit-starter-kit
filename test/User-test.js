@@ -215,9 +215,9 @@ describe('User', () => {
 		expect(user1.getAverageDailySleep()).to.equal(5.75)
 	})
 
-	it('Should give user average sleep over all sleep data', function () {
+	it('Should return a users average sleep quality', function () {
 
-		expect(user2.getOverallSleepAvg()).to.equal()
+		expect(user2.getOverallQualityAvg()).to.equal(4.15)
 	})
 
 	it.skip('Should give hours slept on a specific date', function () {

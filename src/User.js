@@ -61,8 +61,16 @@ class User {
     return userOverallSleepData
   }
 
-  getOverallSleepAvg() {
-
+  getOverallQualityAvg() {
+    let specificUserSleepQuality = this.getUserSleepData()
+    //console.log("Specific ", specificUserSleepData)
+    let totalQuality = specificUserSleepQuality.reduce((acc, user) => {
+      acc += user.sleepQuality
+      console.log(acc)
+      return acc
+    }, 0)
+    let averageQuality = totalQuality / specificUserSleepQuality.length
+    return averageQuality
   }
 
 }

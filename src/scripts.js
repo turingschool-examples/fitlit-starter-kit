@@ -39,6 +39,7 @@ let sleepData;
 
 Promise.all([fetchUserData(), fetchSleepData(), fetchHydrationData()])
 .then(data => {
+    console.log(data)
     userData = data[0].userData;
     sleepData = data[1].sleepData;
     hydrationData = data[2].hydrationData;

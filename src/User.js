@@ -99,6 +99,21 @@ class User {
     }, 0)
   }
 
+  averageSleepQuality() {
+
+    //console.log("Specific ", specificUserSleepData)
+    let totalQuality = this.sleepData.sleepData.reduce((acc, user) => {
+      acc += user.sleepQuality
+      console.log(acc)
+      return acc
+    }, 0)
+    let averageQuality = totalQuality / this.sleepData.sleepData.length
+    console.log('avg uality', averageQuality)
+    return Number(averageQuality.toFixed(2))
+
+    // 3
+  }
+
 }
 
 

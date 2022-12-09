@@ -24,10 +24,14 @@ describe('Sleep', () => {
     it('should have a method that returns the sleep data for 1 user', () => {
 
         let sleepUser1 = sleep.avgHoursSleptPerDay(1);
-        console.log("result: ", sleepUser1)
 
         expect(sleepUser1).to.equal(6)
+    })
 
+    it('should have a method that returns the average sleep quality for 1 user', () => {
+        let userSleepQual = sleep.avgSleepQuality(1);
+
+        expect(userSleepQual).to.equal(3)
     })
 
 })

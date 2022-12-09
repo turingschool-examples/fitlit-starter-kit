@@ -41,12 +41,28 @@ describe("Sleep", function () {
     })
 
     it("should return hours slept over a given week", function() {
-        expect(userSleep.returnHoursSleptByWeek(1, '2019/06/15')).to.deep.equal([ 6.1, 7, 10.8, 5.4, 4.1, 9.6, 5.1 ])
-        expect(userSleep.returnHoursSleptByWeek(1, '2019/06/21')).to.deep.equal([ 6.1, 7, 10.8, 5.4, 4.1, 9.6, 5.1 ])
+        expect(userSleep.returnHoursSleptByWeek(1, '2019/06/15')).to.deep.equal({
+          count: [ 6.1, 7, 10.8, 5.4, 4.1, 9.6, 5.1 ],
+          label: 'Weekly Hours Slept', 
+          dates: ["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"]
+        })
+        expect(userSleep.returnHoursSleptByWeek(1, '2019/06/21')).to.deep.equal({
+          count: [ 6.1, 7, 10.8, 5.4, 4.1, 9.6, 5.1 ],
+          label: 'Weekly Hours Slept', 
+          dates: ["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"]
+        })
     })
     it("should return sleep quality each day over given week", function() {
-        expect(userSleep.returnSleepQualityByWeek(1, '2019/06/15')).to.deep.equal([ 2.2, 4.7, 4.7, 3, 3.6, 2.9, 2.6 ])
-        expect(userSleep.returnSleepQualityByWeek(1, '2019/06/21')).to.deep.equal([ 2.2, 4.7, 4.7, 3, 3.6, 2.9, 2.6 ])
+        expect(userSleep.returnSleepQualityByWeek(1, '2019/06/15')).to.deep.equal({
+          count: [ 2.2, 4.7, 4.7, 3, 3.6, 2.9, 2.6 ],
+          label: 'Weekly Sleep Quality', 
+          dates: ["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"]
+        })
+        expect(userSleep.returnSleepQualityByWeek(1, '2019/06/21')).to.deep.equal({
+          count: [ 2.2, 4.7, 4.7, 3, 3.6, 2.9, 2.6 ],
+          label: 'Weekly Sleep Quality', 
+          dates: ["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"]
+        })
     })
     it("should return avg sleep quality for all users", function() {
         expect(userSleep.returnAvgSleepQualityForAllUsers()).to.equal(3.1)

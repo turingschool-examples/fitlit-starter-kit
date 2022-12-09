@@ -24,27 +24,39 @@ class Sleep {
     returnHoursSleptByWeek(id, date) {
         const userSleepInfo = this.sleepData.filter(sleepLog => sleepLog.userID === id)
         const hours = userSleepInfo.map(el => el.hoursSlept)
+        const dates  = userSleepInfo.map(el => el.date)
         const index = userSleepInfo.findIndex(el => el.date === date && el.userID === id)
-        if (hours.length < 7) {
-            return hours
-        } 
         if (!hours[index + 6]) {
-            return hours.slice(-7)
+            return {
+              count: hours.slice(-7),
+              label: 'Weekly Hours Slept',
+              dates: dates.slice(-7)
+            }
         }
-        return hours.slice(index, index + 7)
+        return {
+          count: hours.slice(index, index + 7),
+          label: 'Weekly Hours Slept',
+          dates: dates.slice(index, index + 7)
+        }
     }
 
     returnSleepQualityByWeek(id, date) {
         const userSleepInfo = this.sleepData.filter(sleepLog => sleepLog.userID === id)
         const quality = userSleepInfo.map(el => el.sleepQuality)
+        const dates  = userSleepInfo.map(el => el.date)
         const index = userSleepInfo.findIndex(el => el.date === date && el.userID === id)
-        if (quality.length < 7) {
-            return quality
-        } 
         if (!quality[index + 6]) {
-            return quality.slice(-7)
+            return {
+              count: quality.slice(-7),
+              label: 'Weekly Sleep Quality',
+              dates: dates.slice(-7)
+            }
         }
-        return quality.slice(index, index + 7)
+        return {
+          count: quality.slice(index, index + 7),
+          label: 'Weekly Sleep Quality',
+          dates: dates.slice(index, index + 7)
+        }
     }
 
     returnAvgSleepQualityForAllUsers() {

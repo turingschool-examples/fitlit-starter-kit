@@ -5,7 +5,7 @@ class Hydration{
 
     }
     calcAvgWaterConsumption(id){
-        const result = this.data.filter(waterLog => waterLog.userID === id).reduce((total,waterLog,_,arr) => total + waterLog.numOunces  / arr.length  ,0)
+        const result = this.data.filter(waterLog => waterLog.userID === id).reduce((total,waterLog,_,arr) => total + waterLog.numOunces / arr.length ,0)
         return Math.round(result)
     }
 
@@ -15,16 +15,21 @@ class Hydration{
 
     returnWeeklyWaterConsumption(id, date) {
         const userData = this.data.filter(waterLog => waterLog.userID === id)
-        const ounces = userData.map(el => el.numOunces)
+        const ounces = userData.map(el => el.numOunces) 
+        const dates = userData.map(el => el.date)
         const index = userData.findIndex(el => el.date === date && el.userID === id)
-        // This is where we'll need to set a conditional for whether userData[index + 7]
-        if (ounces.length < 7) {
-          return ounces
-        } 
         if (!ounces[index + 6]) {
-          return ounces.slice(-7)
+          return {
+            count: ounces.slice(-7),
+            label: 'Weekly Water Consumption',
+            dates:  dates.slice(-7)
+          }
         }
-        return ounces.slice(index, index + 7)
+        return {
+          count: ounces.slice(index, index + 7),
+          label: 'Weekly Water Consumption',
+          dates:  dates.slice(index, index + 7)
+        }
     }
 }
 

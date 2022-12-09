@@ -273,17 +273,17 @@ describe('User', () => {
 	it('Should provide daily sleep data for any given week', function () {
 
 		expect(user2.givenWeekSleepDataByDay()).to.deep.equal([
-			{ userID: 2, date: '2019/06/16', hoursSlept: 4.1, sleepQuality: 3.6 },
-			{ userID: 2, date: '2019/06/17', hoursSlept: 4.1, sleepQuality: 3.6 },
-			{ userID: 2, date: '2019/06/18', hoursSlept: 4.1, sleepQuality: 3.6 },
-			{ userID: 2, date: '2019/06/19', hoursSlept: 4.1, sleepQuality: 3.6 },
-			{ userID: 2, date: '2019/06/20', hoursSlept: 6.5, sleepQuality: 1.1 },
-			{ userID: 2, date: '2019/06/21', hoursSlept: 4.1, sleepQuality: 3.6 },
-			{ userID: 2, date: '2019/06/22', hoursSlept: 3.9, sleepQuality: 5.4 }
+			{ '2019/06/16': 4.1 },
+			{ '2019/06/17': 4.1 },
+			{ '2019/06/18': 4.1 },
+			{ '2019/06/19': 4.1 },
+			{ '2019/06/20': 6.5 },
+			{ '2019/06/21': 4.1 },
+			{ '2019/06/22': 3.9 }
 		])
 	})
 
-	it('Should provide daily sleep quality for any given week', function () {
+	it.skip('Should provide daily sleep quality for any given week', function () {
 
 		expect(user2.givenWeeksSleepQualityByDay()).to.deep.equal()
 	})

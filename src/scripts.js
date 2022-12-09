@@ -1,9 +1,7 @@
 // import './images/turing-logo.png'
-//console.log(userData,"<>>>>userData")
 import './css/styles.css';
 import {getAPIData} from './apiCalls'
 import User from '../src/User';
-// import userData from '../src/data/users'
 import UserRepository from './UserRepository';
 
 // Global Variables
@@ -47,9 +45,9 @@ function getAllData() {
       sleep = data[1]
       hydration = data[2]
       loadPage()
-      console.log('hydration', hydration)
-      console.log('users', users)
-      console.log('currentUser', currentUser)
+      // console.log('hydration', hydration)
+      // console.log('users', users)
+      // console.log('currentUser', currentUser)
     })
     .catch(err => console.log('To err is human', err))
 }

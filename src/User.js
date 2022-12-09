@@ -33,8 +33,16 @@ class User {
     }, 0)
   }
 
+  getWeeklyConsumption() {
+    let userWeeklyH20 = this.hydrationData.hydrationData.filter(user => {
+      return user.userID === this.userData.id;
+    })
+
+    return userWeeklyH20.slice(-7);
+  }
+
   // Sleep
-  getAverageDailySleep(hoursSlept) {
+  getAverageDailySleep() {
     let specificUserSleepData = this.getUserSleepData()
     console.log("Specific ", specificUserSleepData)
     let totalHours = specificUserSleepData.reduce((acc, user) => {
@@ -42,7 +50,7 @@ class User {
       console.log(acc)
       return acc
     }, 0)
-    let averageHours = totalHours/specificUserSleepData.length
+    let averageHours = totalHours / specificUserSleepData.length
     return averageHours
   }
 
@@ -50,12 +58,63 @@ class User {
     let userOverallSleepData = this.sleepData.sleepData.filter(user => {
       return user.userID === this.userData.id;
     })
-      return userOverallSleepData
+    return userOverallSleepData
+  }
+
+  getOverallQualityAvg() {
+    let specificUserSleepQuality = this.getUserSleepData()
+    //console.log("Specific ", specificUserSleepData)
+    let totalQuality = specificUserSleepQuality.reduce((acc, user) => {
+      acc += user.sleepQuality
+      console.log(acc)
+      return acc
+    }, 0)
+    let averageQuality = totalQuality / specificUserSleepQuality.length
+    return averageQuality
+  }
+
+  sleepOnSpecificDate(date) {
+    let dates = this.sleepData.sleepData.filter((user) => {
+      return user.date === date
+    })
+    console.log('hi', dates)
+    return dates.reduce((acc, curr) => {
+      if (curr.userID === this.userData.id) {
+        acc = curr.hoursSlept
+      }
+      return acc
+    }, 0)
+  }
+
+  sleepQualityOnSPecificDate(date) {
+    let dates = this.sleepData.sleepData.filter((user) => {
+      return user.date === date
+    })
+    console.log('hi', dates)
+    return dates.reduce((acc, curr) => {
+      if (curr.userID === this.userData.id) {
+        acc = curr.sleepQuality
+      }
+      return acc
+    }, 0)
+  }
+
+  averageSleepQuality() {
+
+    //console.log("Specific ", specificUserSleepData)
+    let totalQuality = this.sleepData.sleepData.reduce((acc, user) => {
+      acc += user.sleepQuality
+      console.log(acc)
+      return acc
+    }, 0)
+    let averageQuality = totalQuality / this.sleepData.sleepData.length
+    console.log('avg uality', averageQuality)
+    return Number(averageQuality.toFixed(2))
+
+    // 3
   }
 
 }
-
-
 
 
 //For a user (identified by their userID), the average number of hours slept per day

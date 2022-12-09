@@ -226,9 +226,10 @@ describe('User', () => {
 		expect(user3.sleepOnSpecificDate("2019/06/15")).to.equal(10.8)
 	})
 
-	it.skip('Should provide users sleep quality on specific date', function () {
+	it('Should provide users sleep quality on specific date', function () {
 
-		expect(user2.sleepQualityOnSPecificDate()).to.equal()
+		expect(user2.sleepQualityOnSPecificDate("2019/06/15")).to.equal(4.7)
+		expect(user1.sleepQualityOnSPecificDate("2019/06/16")).to.equal(3)
 	})
 
 	it.skip('Should provide daily sleep data for any given week', function () {

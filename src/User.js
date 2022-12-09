@@ -26,11 +26,9 @@ class User {
     return userNameSplitArray[0];
   };
   findLatestHydrationDate() {
-    // console.log(this.hydrationData[this.hydrationData.length - 1].date)
     return this.hydrationData[this.hydrationData.length - 1].date
   }
   findLatestSleepDate() {
-    console.log('hi: ',this.sleepData[this.sleepData.length - 1].date)
     return this.sleepData[this.sleepData.length - 1].date
   }
   findDaysHydration(selectedDate){

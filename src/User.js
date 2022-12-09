@@ -99,6 +99,18 @@ class User {
     }, 0)
   }
 
+  givenWeekSleepDataByDay() {
+    let userWeeklySleep = this.sleepData.sleepData.filter(user => {
+      return user.userID === this.userData.id;
+    })
+
+    let hi = userWeeklySleep.slice(-7)
+
+    console.log('abced', hi);
+
+    return hi;
+  }
+
   averageSleepQuality() {
 
     //console.log("Specific ", specificUserSleepData)
@@ -110,8 +122,6 @@ class User {
     let averageQuality = totalQuality / this.sleepData.sleepData.length
     console.log('avg uality', averageQuality)
     return Number(averageQuality.toFixed(2))
-
-    // 3
   }
 
 }

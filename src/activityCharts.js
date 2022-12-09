@@ -13,10 +13,9 @@ let sleepDblDataChart;
 let todaysHydroChart;
 let weeksHydroChart;
 
-
 // functions to update charts (data passed in as parameter)
 
-const updateHydroChart = (ozToday) => {
+const updateHydroDateChart = (ozToday) => {
     todaysHydroChart = new Chart(hydroDayChart, {
         type: 'doughnut',
         data: {
@@ -32,5 +31,8 @@ const updateHydroChart = (ozToday) => {
         //options
     })
 } //sizing of this done in CSS
+
+const updateHydroChart = (ozToday) =>
+let weeksHydroChart;
 
 export default updateHydroChart;

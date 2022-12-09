@@ -207,9 +207,9 @@ describe('User', () => {
 	})
 
 //Sleep
-	it.skip('should return a users average number of hours of sleep per day', function() {
+	it('should return a users average number of hours of sleep per day', function() {
 
-		expect(user2.getAverageDailySleep()).to.equal(5.3)
+		expect(user1.getAverageDailySleep()).to.equal(5.75)
 	})
 
     it.skip('Should give user average sleep over all sleep data', function() {
@@ -217,9 +217,10 @@ describe('User', () => {
         expect(user2.getOverallSleepAvg()).to.equal()
     })
 
-    it.skip('Should give hours slept on a specific date' function() {
+    it.skip('Should give hours slept on a specific date', function() {
 
-        expect(user2.sleepOnSpecificDate()).to.equal()
+        expect(user2.sleepOnSpecificDate("2019/06/15")).to.equal(7);
+		expect(user3.sleepOnSpecificDate("2019/06/15")).to.equal(10.8)
     })
 
     it.skip('Should provide users sleep quality on specific date', function() {
@@ -234,11 +235,11 @@ describe('User', () => {
 
     it.skip('Should provide daily sleep quality for any given week', function() {
 
-        expect(user2.givenWeeksSleepQualityByDay().to.deeply.equal)
+        expect(user2.givenWeeksSleepQualityByDay()).to.deeply.equal()
     })
 
     it.skip('Should average overall sleep quality', function() {
 
-        expect(user2.averageSleepQuality())to.equal()
+        expect(user2.averageSleepQuality()).to.equal()
     })
 })

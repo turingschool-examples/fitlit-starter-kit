@@ -37,6 +37,19 @@ describe('User Repository', () => {
       "friends": [
         29,
         19
+      ],
+      "hydrationData": [
+        { userID: 21, date: '2019/06/15', numOunces: 23 },
+        { userID: 21, date: '2019/06/16', numOunces: 36 }
+      ],
+      "sleepData": [
+        { userID: 21, date: '2019/06/15', hoursSlept: 9.6, sleepQuality: 1 },
+        {
+          userID: 21,
+          date: '2019/06/16',
+          hoursSlept: 4.8,
+          sleepQuality: 1.3
+        }
       ]
     });
   })
@@ -45,6 +58,7 @@ describe('User Repository', () => {
     expect(fullUserData.selectedUser).to.deep.equal(userTestData[indexNumber])
   })
   it('should calculate average dailyStepGoals for all users', function () {
+    fullUserData.initialize()
     expect(fullUserData.averageSteps()).to.equal(6333);
   })
   // it('should have a method to average all users sleep hours data available', function() {

@@ -16,6 +16,12 @@ class User {
     let userNameSplitArray = this.name.split(' ');
     return userNameSplitArray[0];
   };
+  // findLatestHydrationDate() {
+  //   return this.hydrationData[this.hydrationData.length - 1]
+  // }
+  // findLatestSleepDate() {
+  //   return this.sleepData[this.sleepData.length - 1]
+  // }
   findDaysHydration(selectedDate){
     var result = this.hydrationData.find(day => day.date === selectedDate)
     return result

@@ -103,7 +103,7 @@ describe('User', function() {
     selectedUser = new User(userTestData[0]);
     const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
     selectedUser.sleepData = sleepData;
-
+    
     expect(selectedUser.findWeekSleep("2019/06/16")).to.deep.equal([
     { userID: 20, date: "2019/06/10", hoursSlept: 7, sleepQuality: 2.8 },
     { userID: 20, date: "2019/06/11", hoursSlept: 6.5, sleepQuality: 2 },

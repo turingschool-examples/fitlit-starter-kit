@@ -20,13 +20,40 @@ class UserRepository {
           } else {
             let user = this.findUser(hydroData.userID)
             user.hydrationData.push(hydroData)
-            console.log(user.hydrationData);
+            // console.log(user.hydrationData);
           }
         })
-        // this.sleepData.forEach(sleepData => {
-        //     let user = this.filterUserData(sleepData.userID)
-        //     user.sleepData.push(sleepData)
-        // })
+        this.sleepData.forEach(sleepData => {
+            if (this.findUser(sleepData.userID) === false) {
+                return 
+            } else {
+                let user = this.findUser(sleepData.userID)
+                user.sleepData.push(sleepData)
+                // console.log(user.sleepData);
+            }
+        })
+        this.users.forEach(user => {
+            user.hydrationData.sort((day1,day2) => {
+                return (day1.date).localeCompare(day2.date)
+            })
+            user.sleepData.sort((day1,day2) => {
+                return (day1.date).localeCompare(day2.date)
+            })
+        })
+        let user1 = this.users.forEach(user => console.log(user.hydrationData))
+        let user2 = this.users.forEach(user => console.log(user.sleepData))
+        // let sortedDates = this.hydrationData.sort((day1,day2) => {
+        //      return day1.date -day2.date
+        //    })
+        //    console.log(sortedDates)
+           // const sortLegos = () => {
+           //   const copiedLegos = [...legos]
+           //   return copiedLegos.sort((a,b) => 
+           //   b.rating - a.rating
+           // )}
+           // console.log(sortLegos())
+        // console.log(this.users)
+        // console.log(this.users[1].sleepData)
         this.selectedUser = this.randomizeUser()
         this.userData = null
         this.hydrationData = null
@@ -67,6 +94,8 @@ class UserRepository {
         let averageStepGoal = this.users.reduce((acc, user) => {
             return acc + user.dailyStepGoal
         }, 0);
+        // console.log(this.users)
+        // console.log(averageStepGoal)
         return Number((averageStepGoal/this.users.length).toFixed(0))
     }
     

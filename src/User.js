@@ -33,8 +33,16 @@ class User {
     }, 0)
   }
 
+  getWeeklyConsumption() {
+    let userWeeklyH20 = this.hydrationData.hydrationData.filter(user => {
+      return user.userID === this.userData.id;
+    })
+
+    return userWeeklyH20.slice(-7);
+  }
+
   // Sleep
-  getAverageDailySleep(hoursSlept) {
+  getAverageDailySleep() {
     let specificUserSleepData = this.getUserSleepData()
     console.log("Specific ", specificUserSleepData)
     let totalHours = specificUserSleepData.reduce((acc, user) => {
@@ -42,7 +50,7 @@ class User {
       console.log(acc)
       return acc
     }, 0)
-    let averageHours = totalHours/specificUserSleepData.length
+    let averageHours = totalHours / specificUserSleepData.length
     return averageHours
   }
 
@@ -50,7 +58,11 @@ class User {
     let userOverallSleepData = this.sleepData.sleepData.filter(user => {
       return user.userID === this.userData.id;
     })
-      return userOverallSleepData
+    return userOverallSleepData
+  }
+
+  getOverallSleepAvg() {
+
   }
 
 }

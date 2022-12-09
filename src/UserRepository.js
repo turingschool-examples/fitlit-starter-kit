@@ -55,21 +55,6 @@ class UserRepository {
         }, 0);
         return Number((averageStepGoal/this.users.length).toFixed(0))
     }
-    // averageSleepQuality() {
-    //     console.log(this.users)
-    //     this.users.forEach(user => {
-    //         let sleepQualityPerUser = user.sleepData.reduce((acc, sleep) => {
-    //         acc += sleep.sleepQuality
-    //         return acc
-    //     }, 0)
-    //     let averageSleepQualityPerUser = sleepQualityPerUser/user.sleepData.length
-
-    //     let allAverageSleepQuality += averageSleepQualityPerUser
-    //     console.log(allAverageSleepQuality)
-    // })
-        // return Number((averageSleepQuality/this.users.length).toFixed(0))
-    // }
-    
 }
 
 export default UserRepository;

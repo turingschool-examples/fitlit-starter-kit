@@ -1,4 +1,5 @@
 import { Chart } from "chart.js/auto";
+import { userRepo } from './scripts';
 // import { getRelativePosition } from "chart.js/helpers";
 
 //query selects for the canvases
@@ -15,7 +16,19 @@ let weeksHydroChart;
 
 // functions to update charts (data passed in as parameter)
 
-const updateHydroDateChart = (ozToday) => {
+const findHydroPercentage = (numDrunk, goal) => {
+    // if (numDrunk < goal) {
+    //  return goal - numDrunk >> the second datapoint in doughnut chart
+    // } else {
+    //     return 0; >> so that doughnut chart remains full
+    // }
+    return numDrunk < goal ? goal - numDrunk : 0;
+}
+const updateHydroDateChart = () => {
+    const todaysDate = "2019/06/15" //find today method
+    const numDrunk = userRepo.selectedUser.find(todaysDate)
+    const goal = 64;
+    const ozLeft = findHydroPercentage(numDrunk, goal);
     todaysHydroChart = new Chart(hydroDayChart, {
         type: 'doughnut',
         data: {
@@ -23,7 +36,7 @@ const updateHydroDateChart = (ozToday) => {
             datasets: [
                 {
                     //label: optional and probably not helpful here
-                    data: [ 50, 25 ], //[ ozToday, conditional parameter? if larger than 64, this is 0. else (64 - ozToday)]
+                    data: [ numDrunk, ozLeft ],
                     backgroundColor: [ '#BF1363', '#F39237' ]
                 }
             ],
@@ -32,7 +45,28 @@ const updateHydroDateChart = (ozToday) => {
     })
 } //sizing of this done in CSS
 
-const updateHydroChart = (ozToday) =>
-let weeksHydroChart;
+// const updateHydroDateChart = (ozToday) => {
+// todaysHydroChart = new Chart(hydroDayChart, {
+//     type: 'doughnut',
+//     data: {
+//         labels: ['Today\'s Intake', 'Recommended Daily Intake'],
+//         datasets: [
+//             {
+//                 //label: optional and probably not helpful here
+//                 //
+//                 //set max as a const (64)
+//                 data: [ 50, 25 ], //[ ozToday, conditional parameter? if larger than 64, this is 0. else (64 - ozToday)]
+//                 backgroundColor: [ '#BF1363', '#F39237' ]
+//             }
+//         ],
+//     }
+//     //options
+// })
+// }
 
-export default updateHydroChart;
+// const updateHydroChart = (ozToday) => {
+//     weeksHydroChart
+
+// }
+
+export default updateHydroDateChart;

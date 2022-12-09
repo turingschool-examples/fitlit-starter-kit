@@ -26,11 +26,7 @@ window.addEventListener('load', function () {
         .then((values) => {
             userRepo = new UserRepository(values[0], values[1], values[2])
             userRepo.initialize()
-
             console.log("USER REPO", userRepo)
-
-            console.log(userRepo);
-            pickRandomUserDisplay();
             showPersonalizedWelcome();
             showUserInfoDisplay();
             displayUserStepGoal();

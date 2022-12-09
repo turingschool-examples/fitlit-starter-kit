@@ -44,7 +44,7 @@ function pageLoadHandler() {
   // displayWeeklyInfo(allUserHydro, allUserSleep, currentDate);
   displayCurrentDaySleep();
   displayAllTimeSleep();
-  createChart(allUserHydro.returnWeeklyWaterConsumption(currentUser.id, currentDate))
+  createChart(allUserHydro.returnWeeklyWaterConsumption(currentUser.id, currentDate), allUserSleep.returnSleepQualityByWeek(currentUser.id, currentDate), allUserSleep.returnHoursSleptByWeek(currentUser.id, currentDate))
 }
 
 const displayUserName = function (user) {

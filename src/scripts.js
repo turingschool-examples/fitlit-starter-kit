@@ -76,7 +76,6 @@ function getUser(sleep, hydration) {
   let randomIndex = Math.floor(Math.random() * users.data.userData.length);
   let randomUser = users.data.userData[randomIndex];
   currentUser = new User(randomUser, sleep, hydration);
-  console.log('string', currentUser)
 }
 
 function getUserFriends() {

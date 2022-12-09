@@ -3,6 +3,7 @@
 
 // An example of how you tell webpack to use a CSS file
 import './html-css/styles.css';
+import './activityCharts.js'; //might not need this after functions from activity file are referenced?
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'

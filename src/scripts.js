@@ -17,12 +17,13 @@ const friendsDisplay = document.querySelector('#friends')
 const stepGoal = document.querySelector('#stepGoal')
 const stepGoalVsAvg = document.querySelector('#stepGoalVsAvg')
 const userProfile = document.querySelector('#profile')
+const userName = document.querySelector('#userName')
 
 // Global variables
 let userRepo;
 
-const profileEmojis = ["✌","😂","😝","😁","😱","🔥","🌈","☀","🎀","⚽","🎾","🏁","😡","👿","🐻","🐶","🐬","🐟","😍","😉","😓","😳","💪","💩","💖","🌟","🎉","🌺","🏈","⚾","🏆","👽","💀","🐵","🐮","🐩","🐎","😘","😜","😵","🚽","💃","💎","🚀","🌙","⛄","🌊","⛵","🏀","💰","👶","👸","🐰","🐷","🐍","🐫","🔫","👄","🚲",]
-const profileBackgrounds = ['#e8c19a','#009090','#715d06','#165806','#ff99cc','#00cc66','#993300','	#ff7733']
+const profileEmojis = ["✌","😂","😝","😁","😱","🔥","🌈","☀","🎀","⚽","🎾","🏁","😡","👿","🐻","🐶","🐬","🐟","😍","😉","😓","😳","💪","💩","💖","🌟","🎉","🌺","🏈","⚾","🏆","👽","💀","🐵","🐮","🐩","🐎","😘","😜","😵","💃","💎","🚀","🌙","⛄","🌊","⛵","🏀","💰","👶","👸","🐰","🐷","🐍","🐫","🚲",]
+const profileBackgrounds = ['#F8B195','#F67280','#C06C84','#6C5B7B','#355C7D','#99B898','#FECEAB','	#FF847C','#2A363B','#A8E6CE']
 
 window.addEventListener('load', function () {
     Promise.all([userPromise, hydrationPromise, sleepPromise])
@@ -49,6 +50,7 @@ function selectRandom(selectedArray){
 // Info card display
 function showUserInfoDisplay() {
   friendsDisplay.innerText = ` `;
+  userName.innerText = `${userRepo.selectedUser.name}`
   userRepo.selectedUser.friends.forEach(friend => {
     friendsDisplay.innerHTML += `
     <div class="single-friend">

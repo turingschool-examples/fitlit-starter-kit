@@ -49,10 +49,10 @@ describe('User Repository', () => {
   })
   it('should have a method to average all users sleep hours data available', function() {
     fullUserData.initialize();
-
     expect(fullUserData.calculateAllUserAvgHrsSlept()).to.equal(6.9);
   })
-  // it('should have a method to average all users sleep quality data available', function() {
-  //   // input: this.users[index].sleepData[index].sleepQuality accesses sleep quality
-  // })
+  it('should have a method to average all users sleep quality data available', function() {
+    fullUserData.initialize();
+    expect(fullUserData.calculateAllUserAvgSleepQuality()).to.equal(2.1)
+  })
 });

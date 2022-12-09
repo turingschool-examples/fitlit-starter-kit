@@ -80,7 +80,7 @@ class UserRepository {
         })
         return userSleepHrsArr;
       })
-      
+
       let userSleepHrAvgArray = [];
       allUsersSleep.forEach(userArr => {
         let userTotal = userArr.reduce((total, entry) => {
@@ -95,11 +95,29 @@ class UserRepository {
       }, 0)
       
       return Number((allUserAvgSum / userSleepHrAvgArray.length).toFixed(1));
-      
-      // allUsersSleep.forEach((userSleepArr) => {
-      //   return total += userSleepArr.hoursSlept;
-      // }, 0)
+    }
+    calculateAllUserAvgSleepQuality() {
+      let allUsersSleep = this.users.map(user => {
+        let userSleepQltyArr = user.sleepData.map(sleepData => {
+          return sleepData.sleepQuality;
+        })
+        return userSleepQltyArr;
+      })
 
+      let userSleepQltyAvgArray = [];
+      allUsersSleep.forEach(userArr => {
+        let userTotal = userArr.reduce((total, entry) => {
+          return total += entry;
+        }, 0)
+        let userAvg = userTotal / userArr.length;
+        userSleepQltyAvgArray.push(userAvg);
+      })
+      
+      let allUserAvgSum = userSleepQltyAvgArray.reduce((total, userAvg) => {
+        return total += userAvg;
+      }, 0)
+      
+      return Number((allUserAvgSum / userSleepQltyAvgArray.length).toFixed(1));
     }
 }
 

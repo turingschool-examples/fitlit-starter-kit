@@ -30,6 +30,41 @@ describe('User', () => {
 					userID: 2,
 					date: "2019/06/16",
 					numOunces: 42
+				},
+				{
+					userID: 2,
+					date: "2019/06/17",
+					numOunces: 19
+				},
+				{
+					userID: 2,
+					date: "2019/06/18",
+					numOunces: 42
+				},
+				{
+					userID: 2,
+					date: "2019/06/19",
+					numOunces: 42
+				},
+				{
+					userID: 2,
+					date: "2019/06/20",
+					numOunces: 33
+				},
+				{
+					userID: 2,
+					date: "2019/06/21",
+					numOunces: 51
+				},
+				{
+					userID: 2,
+					date: "2019/06/22",
+					numOunces: 87
+				},
+				{
+					userID: 2,
+					date: "2019/06/23",
+					numOunces: 23
 				}
 			]
 		}
@@ -242,9 +277,17 @@ describe('User', () => {
 		expect(user3.getWaterPerDay("2019/06/15")).to.equal(47);
 	})
 
-	it.skip('should calculate average ounces consumed daily over the course of one week', function () {
+	it('should calculate average ounces consumed daily over the course of one week', function () {
 
-		expect().to.equal()
+		expect(user2.getWeeklyConsumption()).to.deep.equal([
+			{ userID: 2, date: '2019/06/17', numOunces: 19 },
+			{ userID: 2, date: '2019/06/18', numOunces: 42 },
+			{ userID: 2, date: '2019/06/19', numOunces: 42 },
+			{ userID: 2, date: '2019/06/20', numOunces: 33 },
+			{ userID: 2, date: '2019/06/21', numOunces: 51 },
+			{ userID: 2, date: '2019/06/22', numOunces: 87 },
+			{ userID: 2, date: '2019/06/23', numOunces: 23 }
+		])
 	})
 
 	//Sleep

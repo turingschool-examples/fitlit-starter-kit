@@ -21,16 +21,14 @@ const userProfile = document.querySelector('#profile')
 // Global variables
 let userRepo;
 
+const profileEmojis = ["✌","😂","😝","😁","😱","🔥","🌈","☀","🎀","⚽","🎾","🏁","😡","👿","🐻","🐶","🐬","🐟","😍","😉","😓","😳","💪","💩","💖","🌟","🎉","🌺","🏈","⚾","🏆","👽","💀","🐵","🐮","🐩","🐎","😘","😜","😵","🚽","💃","💎","🚀","🌙","⛄","🌊","⛵","🏀","💰","👶","👸","🐰","🐷","🐍","🐫","🔫","👄","🚲",]
+const profileBackgrounds = ['#e8c19a','#009090','#715d06','#165806','#ff99cc','#00cc66','#993300','	#ff7733']
+
 window.addEventListener('load', function () {
     Promise.all([userPromise, hydrationPromise, sleepPromise])
         .then((values) => {
             userRepo = new UserRepository(values[0], values[1], values[2])
             userRepo.initialize()
-
-            console.log("USER REPO", userRepo)
-
-            console.log(userRepo);
-            pickRandomUserDisplay();
             showPersonalizedWelcome();
             showUserInfoDisplay();
             displayUserStepGoal();
@@ -44,14 +42,22 @@ function showPersonalizedWelcome() {
   welcomeMessage.innerText = `--------Welcome, ${userRepo.selectedUser.name}!`;
 }
 
+function selectRandom(selectedArray){
+  return selectedArray[Math.floor(Math.random()*selectedArray.length)];
+}
+
 // Info card display
 function showUserInfoDisplay() {
   friendsDisplay.innerText = ` `;
   userRepo.selectedUser.friends.forEach(friend => {
-    // Added space manually with this interpolation but can fix later with CSS
-    friendsDisplay.innerText += `${(userRepo.findUser(friend)).name}
-    
+    friendsDisplay.innerHTML += `
+    <div class="single-friend">
+      <div class="friend-avatar friend-${friend}">${selectRandom(profileEmojis)}</div> 
+        ${(userRepo.findUser(friend)).name};
+    </div>
     `;
+    var friendID = document.querySelector(`.friend-${friend}`)
+    friendID.style.backgroundColor = selectRandom(profileBackgrounds)
   })
 }
 

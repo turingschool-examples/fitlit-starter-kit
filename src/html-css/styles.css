@@ -30,6 +30,7 @@ body, html {
   background-color: #78C1E7;
   border-radius: 10px;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   justify-content: space-around;
 }
@@ -63,4 +64,22 @@ body, html {
   border: 0px;
   height: 35%;
   font-size: larger;
+}
+
+.single-friend {
+  display: flex;
+  align-items: center;
+}
+
+.friend-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 0px;
+  height: 40px;
+  width: 40px;
+  background-color: #FBFEF9;
 }

@@ -1,19 +1,36 @@
 import { Chart } from 'chart.js/auto'
 
-const createChart= function(data) {
+const createChart = function(hydration, sleepQuality, sleepHours) {
   new Chart(
     document.getElementById('weeklyChart'), 
     {
       type: 'bar',
       data: {
-        labels: data.dates,
+        labels: hydration.dates,
         datasets: [
           {
-            label: data.label,
-            data: data.count
+            label: hydration.label,
+            data: hydration.count
+          }, 
+          {
+            label: sleepQuality.label,
+            data: sleepQuality.count
+          },
+          {
+            label: sleepHours.label,
+            data: sleepHours.count
           }
         ] 
-      }
+      },
+      // options: {
+      //   scales: {
+      //     hydration: {
+      //       type: 'linear',
+      //       position: 'left'
+      //     },
+
+      //   }
+      // }
     }
   )
 }

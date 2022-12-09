@@ -12,16 +12,27 @@ class User {
     this.sleepData = [];
   };
 
+  createUserArrays() {
+    this.hydrationData.sort((day1,day2) => {
+        return (day1.date).localeCompare(day2.date)
+    })
+    this.sleepData.sort((day1,day2) => {
+        return (day1.date).localeCompare(day2.date)
+    })
+  }
+
   returnFirstName() {
     let userNameSplitArray = this.name.split(' ');
     return userNameSplitArray[0];
   };
-  // findLatestHydrationDate() {
-  //   return this.hydrationData[this.hydrationData.length - 1]
-  // }
-  // findLatestSleepDate() {
-  //   return this.sleepData[this.sleepData.length - 1]
-  // }
+  findLatestHydrationDate() {
+    // console.log(this.hydrationData[this.hydrationData.length - 1].date)
+    return this.hydrationData[this.hydrationData.length - 1].date
+  }
+  findLatestSleepDate() {
+    console.log('hi: ',this.sleepData[this.sleepData.length - 1].date)
+    return this.sleepData[this.sleepData.length - 1].date
+  }
   findDaysHydration(selectedDate){
     var result = this.hydrationData.find(day => day.date === selectedDate)
     return result

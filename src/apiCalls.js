@@ -1,25 +1,21 @@
 // Your fetch requests will live here!
 // console.log('I will be a fetch request!')
 
-let userData
-
-fetch("https://fitlit-api.herokuapp.com/api/v1/users")
-.then((response) => response.json())
-.then(data => {
-    console.log("data: ", data)
-    userData = data
-    console.log("inside of function: ", userData)
-});
-
-function fetchRequest () {
+const fetchUserData = () => {
     return fetch("https://fitlit-api.herokuapp.com/api/v1/users")
-}
+            .then(response => response.json());
+};
 
-// export default userData;
+const fetchSleepData = () => {
+    return fetch("https://fitlit-api.herokuapp.com/api/v1/sleep")
+            .then(response => response.json());
+};
 
-// function getAPIData() {
-//     return fetch("https://fitlit-api.herokuapp.com/api/v1/users")
-//     .then((response) => response.json())
-// }
+const fetchHydrationData = () => {
+    return fetch("https://fitlit-api.herokuapp.com/api/v1/hydration")
+            .then(response => response.json());
+};
 
-export {fetchRequest} 
+export {fetchUserData} 
+export {fetchSleepData}
+export {fetchHydrationData}

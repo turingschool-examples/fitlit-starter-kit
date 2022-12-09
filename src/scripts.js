@@ -1,12 +1,14 @@
-// imports here
+// imports 👇🏻
 import './images/turing-logo.png'
 import './css/styles.css';
 import User from './User'
 import UserRepository from './UserRepository';
-import {fetchRequest} from './apiCalls'
+import {fetchUserData} from './apiCalls'
+import {fetchSleepData} from './apiCalls';
+import {fetchHydrationData} from './apiCalls';
 
+// query selectors 👇🏻
 
-// query selectors here
 const userInfoBox = document.getElementById("userInfoBox");
 const userName = document.getElementById("name");
 const userAddress = document.getElementById("address");
@@ -16,34 +18,33 @@ const userEmail = document.getElementById("email");
 const userFriends = document.getElementById("friends");
 const userFirstName = document.getElementById("firstName");
 const userStepComparison = document.getElementById("stepCompareResults");
+
+// global variables 👇🏻
+
 let newRepo;
 let aNewUser;
 let userId = 1;
 let usersAvgSteps;
 let userData
+let hydrationData
+let sleepData
+
+// event listeners 👇🏻
 
 
-// event listeners
 
 
-// logs
-// console.log(userData,"<>>>>userData")
-// console.log('This is the JavaScript entry file - your code begins here.');
+// functions 👇🏻
 
-// functions:
+Promise.all([fetchUserData(), fetchSleepData(), fetchHydrationData()])
+.then(data => {
+    userData = data[0].userData
+    sleepData = data[1].sleepData
+    hydrationData = data[2].hydrationData
+    onLoad(userData)
+});
 
-// access the promise HERE and run anything we want to do before we actually get the data 
-
-fetchRequest()
-    .then(response => response.json())
-    .then(data => {
-        userData = data.userData
-        onLoad(userData)
-    });
-
- 
-
-function onLoad(userData) {
+function onLoad() {
     addUser();
 };
 
@@ -54,7 +55,7 @@ const createUserArray = (userData) => {
     return newRepo
 };
 
-function createNewUser(userData) {
+function createNewUser() {
     createUserArray(userData)
     const userObject = newRepo.getUserData(userId);
     aNewUser = new User(userObject);

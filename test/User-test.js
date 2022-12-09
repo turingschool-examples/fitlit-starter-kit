@@ -220,7 +220,7 @@ describe('User', () => {
 		expect(user2.getOverallQualityAvg()).to.equal(4.15)
 	})
 
-	it.skip('Should give hours slept on a specific date', function () {
+	it('Should give hours slept on a specific date', function () {
 
 		expect(user2.sleepOnSpecificDate("2019/06/15")).to.equal(7);
 		expect(user3.sleepOnSpecificDate("2019/06/15")).to.equal(10.8)

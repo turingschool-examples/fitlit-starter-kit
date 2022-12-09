@@ -73,9 +73,20 @@ class User {
     return averageQuality
   }
 
+  sleepOnSpecificDate(date) {
+    let dates = this.sleepData.sleepData.filter((user) => {
+      return user.date === date
+    })
+    console.log('hi', dates)
+    return dates.reduce((acc, curr) => {
+      if (curr.userID === this.userData.id) {
+        acc = curr.hoursSlept
+      }
+      return acc
+    }, 0)
+  }
+
 }
-
-
 
 
 //For a user (identified by their userID), the average number of hours slept per day

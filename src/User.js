@@ -11,7 +11,6 @@ class User {
     this.hydrationData = [];
     this.sleepData = [];
   };
-
   createUserArrays() {
     this.hydrationData.sort((day1,day2) => {
         return (day1.date).localeCompare(day2.date)

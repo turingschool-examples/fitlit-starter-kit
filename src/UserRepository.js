@@ -55,6 +55,29 @@ class UserRepository {
         }, 0);
         return Number((averageStepGoal/this.users.length).toFixed(0))
     }
+    calculateAllUserAvgSleep(sleepKey) {
+      // First part creates an array of arrays of all users' sleep data decided by the sleepKey argument i.e. "hoursSlept" or "sleepQuality"
+      let allUsersSleep = this.users.map(user => {
+        let userSleepArray = user.sleepData.map(sleepData => {
+          return sleepData[sleepKey];
+        })
+        return userSleepArray;
+      })
+      // This uses the above array and iterates over each users' array, returning an array of averages for each user
+      let userSleepAvgArray = [];
+      allUsersSleep.forEach(userArr => {
+        let userTotal = userArr.reduce((total, entry) => {
+          return total += entry;
+        }, 0)
+        let userAvg = userTotal / userArr.length;
+        userSleepAvgArray.push(userAvg);
+      })
+      // This part adds all the user averages together, then divides it by the total amount of users to get an average for all users
+      let allUserAvgSum = userSleepAvgArray.reduce((total, userAvg) => {
+        return total += userAvg;
+      }, 0)
+      return Number((allUserAvgSum / userSleepAvgArray.length).toFixed(1));
+    }
 }
 
 export default UserRepository;

@@ -17,16 +17,19 @@ const friendsDisplay = document.querySelector('#friends')
 const stepGoal = document.querySelector('#stepGoal')
 const stepGoalVsAvg = document.querySelector('#stepGoalVsAvg')
 const userProfile = document.querySelector('#profile')
+const userName = document.querySelector('#userName')
 
 // Global variables
 let userRepo;
+
+const profileEmojis = ["✌","😂","😝","😁","😱","🔥","🌈","☀","🎀","⚽","🎾","🏁","😡","👿","🐻","🐶","🐬","🐟","😍","😉","😓","😳","💪","💩","💖","🌟","🎉","🌺","🏈","⚾","🏆","👽","💀","🐵","🐮","🐩","🐎","😘","😜","😵","💃","💎","🚀","🌙","⛄","🌊","⛵","🏀","💰","👶","👸","🐰","🐷","🐍","🐫","🚲",]
+const profileBackgrounds = ['#F8B195','#F67280','#C06C84','#6C5B7B','#355C7D','#99B898','#FECEAB','	#FF847C','#2A363B','#A8E6CE']
 
 window.addEventListener('load', function () {
     Promise.all([userPromise, hydrationPromise, sleepPromise])
         .then((values) => {
             userRepo = new UserRepository(values[0], values[1], values[2])
             userRepo.initialize()
-            console.log("USER REPO", userRepo)
             showPersonalizedWelcome();
             showUserInfoDisplay();
             displayUserStepGoal();
@@ -40,14 +43,23 @@ function showPersonalizedWelcome() {
   welcomeMessage.innerText = `--------Welcome, ${userRepo.selectedUser.name}!`;
 }
 
+function selectRandom(selectedArray){
+  return selectedArray[Math.floor(Math.random()*selectedArray.length)];
+}
+
 // Info card display
 function showUserInfoDisplay() {
   friendsDisplay.innerText = ` `;
+  userName.innerText = `${userRepo.selectedUser.name}`
   userRepo.selectedUser.friends.forEach(friend => {
-    // Added space manually with this interpolation but can fix later with CSS
-    friendsDisplay.innerText += `${(userRepo.findUser(friend)).name}
-    
+    friendsDisplay.innerHTML += `
+    <div class="single-friend">
+      <div class="friend-avatar friend-${friend}">${selectRandom(profileEmojis)}</div> 
+        ${(userRepo.findUser(friend)).name};
+    </div>
     `;
+    var friendID = document.querySelector(`.friend-${friend}`)
+    friendID.style.backgroundColor = selectRandom(profileBackgrounds)
   })
 }
 

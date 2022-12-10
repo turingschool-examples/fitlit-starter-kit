@@ -5,7 +5,7 @@ import User from "./User";
 import UserRepository from "./UserRepository";
 import Hydration from "./Hydration";
 import Sleep from "./Sleep";
-import { createChart } from "./charts";
+import { createChart, sleepChart } from "./charts";
 
 let allUserData;
 let allUserSleep;
@@ -42,9 +42,10 @@ function pageLoadHandler() {
   displayComparedStepGoal(currentUser, allUserData);
   displayCurrentDayHydration(allUserHydro, currentDate);
   // displayWeeklyInfo(allUserHydro, allUserSleep, currentDate);
-  displayCurrentDaySleep();
-  displayAllTimeSleep();
+  // displayCurrentDaySleep();
+  // displayAllTimeSleep();
   createChart(allUserHydro.returnWeeklyWaterConsumption(currentUser.id, currentDate), allUserSleep.returnSleepQualityByWeek(currentUser.id, currentDate), allUserSleep.returnHoursSleptByWeek(currentUser.id, currentDate))
+  sleepChart(allUserSleep.returnHoursSleptByDate(currentUser.id, currentDate), allUserSleep.calcAvgSleepQualityPerDay(currentUser.id), allUserSleep.calcAvgSleepPerDay(currentUser.id))
 }
 
 const displayUserName = function (user) {

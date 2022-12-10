@@ -20,12 +20,13 @@ let currentUser
  let hydrationBox = document.querySelector('.one')
  let stepGoalBox = document.querySelector('.two')
  let activityBox = document.querySelector('.three')
- let friendsBox = document.querySelector('.four')
+ let sleepHistoryBox = document.querySelector('.four')
  let sleepBox = document.querySelector('.five')
  let activityTrackerTitle = document.querySelector('h1')
  let userInfoList = document.querySelector("#userInfoList")
  let hydrationInfoList = document.querySelector("#hydrationInfoList")
  let sleepInfoList = document.querySelector("#sleepInfoList")
+ let sleepHistoryList = document.querySelector("#sleepHistoryList")
 
 // Event Listeners
 window.addEventListener('load', getAllData)
@@ -92,9 +93,21 @@ function displayWater() {
 
 }
 
+// function showOverallSleep() {
+//   currentUser.sleepOnSpecificDate()
+//   currentUser.sleepQualityOnSpecificDate()
+// }
+
 function displaySleep() {
+
   sleepInfoList.innerHTML += `<li>Last night you slept ${currentUser.sleepOnSpecificDate('2019/06/15')} hours</li>
-  <li>The quality of your sleep last night was ${currentUser.sleepQualityOnSpecificDate('2019/06/15')} out of 5</li> `
+  <li>The quality of your sleep last night was ${currentUser.sleepQualityOnSpecificDate('2019/06/15')} out of 5</li> 
+  <li>Your weekly sleep pattern: ${currentUser.givenWeekSleepDataByDay()} - ${currentUser.givenWeeksSleepQualityByDay()}</li>`
+}
+
+function displaySleepHistory() {
+  sleepHistoryList.innerHTML += `<li>Overall Sleep Hours: ${currentUser.getAverageDailySleep()} hours</li>
+  <li>Overall Sleep Quality: ${currentUser.getOverallQualityAvg()} out of 5</li>`
 }
 
 function loadPage() {
@@ -104,5 +117,6 @@ function loadPage() {
   displayWelcomeName()
   displayWater()
   displaySleep()
+  displaySleepHistory()
 }
 

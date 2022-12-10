@@ -7,30 +7,41 @@ class User {
     this.strideLength = userData.strideLength;
     this.dailyStepGoal = userData.dailyStepGoal;
     this.friends = userData.friends;
-    // Added these properties to push data in to
     this.hydrationData = [];
     this.sleepData = [];
   };
+
   sortUserArrays(dataProperty) {
     this[dataProperty].sort((day1,day2) => {
-        return (day1.date).localeCompare(day2.date)
-    })
-  }
+        return (day1.date).localeCompare(day2.date);
+    });
+  };
+
   returnFirstName() {
     let userNameSplitArray = this.name.split(' ');
     return userNameSplitArray[0];
   };
+
   findLatestDate(dataProperty) {
     const lastIndex = (this[dataProperty].length) - 1;
     this.sortUserArrays(dataProperty);
     console.log(this[dataProperty][dataProperty.length - 1]);
     return this[dataProperty][lastIndex].date;
+  };
 
-  }
   findDaysHydration(selectedDate){
     var result = this.hydrationData.find(day => day.date === selectedDate);
     return result;
-  }
+  };
+
+  findDaySleepData(sleepKey, date) {
+    return this.sleepData.find(day => day.date === date)[sleepKey];
+  };
+
+  averageSleepData(sleepKey) {
+    return Number((this.sleepData.reduce((total, day) => total + day[sleepKey], 0) / this.sleepData.length).toFixed(1));
+  };
+
   findWeekHydration(selectedDate){
     const sevenDaysAgo = new Date(new Date(selectedDate) - 7 * 24 * 60 * 60 * 1000) ; 
     var newArray = this.hydrationData.filter(day => {
@@ -40,29 +51,18 @@ class User {
       return Date.parse(day1.date) - Date.parse(day2.date);
     })
     return newArray;
-  }
-  averageSleepData(sleepKey) {
-    return Number((this.sleepData.reduce((total, day) => total + day[sleepKey], 0) / this.sleepData.length).toFixed(1))
-  }
-  // averageSleepQuality() {
-  //   return Number((this.sleepData.reduce((total, day) => total + day.sleepQuality, 0) / this.sleepData.length).toFixed(1))
-  // }
-  findDaySleepData(sleepKey, date) {
-    return this.sleepData.find(day => day.date === date)[sleepKey];
-  }
-  // findDaySleepQuality(date) {
-  //   return this.sleepData.find(day => day.date === date).sleepQuality;
-  // }
+  };
+
   findWeekSleep(selectedDate){
-    const sevenDaysAgo = new Date(new Date(selectedDate) - 7 * 24 * 60 * 60 * 1000)  
+    const sevenDaysAgo = new Date(new Date(selectedDate) - 7 * 24 * 60 * 60 * 1000);  
     const weekofSleep = this.sleepData.filter(day => {
       const dateConverted = new Date(day.date);
       return dateConverted > sevenDaysAgo && dateConverted <= new Date(selectedDate);
     }).sort((day1, day2) => {
-      return Date.parse(day1.date) - Date.parse(day2.date)
+      return Date.parse(day1.date) - Date.parse(day2.date);
     })
     return weekofSleep;
-  }
+  };
 };
 
 

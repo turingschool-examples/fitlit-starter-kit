@@ -17,17 +17,12 @@ let weeksHydroChart;
 // functions to update charts (data passed in as parameter)
 
 const findHydroPercentage = (numDrunk, goal) => {
-    // if (numDrunk < goal) {
-    //  return goal - numDrunk >> the second datapoint in doughnut chart
-    // } else {
-    //     return 0; >> so that doughnut chart remains full
-    // }
     return numDrunk < goal ? goal - numDrunk : 0;
 }
 const updateHydroDateChart = () => {
-    const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData);
+    const todaysDate = userRepo.selectedUser.findLatestDate('hydrationData');
     const numDrunk = userRepo.selectedUser.findDaysHydration(todaysDate).numOunces;
-    const goal = 64;
+    const goal = 64; //can be dynamic later with user input
     const ozLeft = findHydroPercentage(numDrunk, goal);
     console.log('ounces left: ', ozLeft);
     todaysHydroChart = new Chart(hydroDayChart, {
@@ -42,12 +37,11 @@ const updateHydroDateChart = () => {
                 }
             ],
         }
-        //options
-    })
-} //sizing of this done in CSS
+    });
+};
 
 const updateHydroWeeklyChart = () => {
-    const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData)
+    const todaysDate = userRepo.selectedUser.findLatestDate('hydrationData')
     console.log(todaysDate)
     const weeklyHydration = userRepo.selectedUser.findWeekHydration(todaysDate)
     weeklyHydration.reverse();
@@ -123,9 +117,6 @@ const updateSleepChart = () => {
         }],
         labels: [`${userSleepWeek[0].date}`, ``, ``, `${userSleepWeek[3].date}`, ``, ``, `${userSleepWeek[6].date}`]
     },
-    // options: {
-    //   aspect-ratio: {1000 / 500};
-    // }
   });
 }
 

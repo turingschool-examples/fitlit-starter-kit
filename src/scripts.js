@@ -141,15 +141,17 @@ function displaySleepData() {
 // User Profile Information Display
 function displaySelectedUserInformation() {
   // Added space manually with this interpolation but can fix later with CSS
-  userProfile.innerText = `${userRepo.selectedUser.name}
-
+  userProfile.innerText = `Mailing Address:
   ${userRepo.selectedUser.address}
 
+  Email Address:
   ${userRepo.selectedUser.email}
 
-  ${userRepo.selectedUser.dailyStepGoal}
+  Daily Step Goal:
+  ${userRepo.selectedUser.dailyStepGoal} steps
 
-  ${userRepo.selectedUser.strideLength}`
+  Stride Length:
+  ${userRepo.selectedUser.strideLength} feet`
 }
 
 export { userRepo };

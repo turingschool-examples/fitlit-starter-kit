@@ -104,10 +104,15 @@ body, html {
   align-items: center;
 }
 
+.profile {
+  width: 14vw;
+  font-size: 12px;
+}
+
 .user-name {
   margin-top: 35%;
   padding-bottom: 5%;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .hidden {

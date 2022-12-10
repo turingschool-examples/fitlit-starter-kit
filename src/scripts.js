@@ -1,6 +1,6 @@
 // import './images/turing-logo.png'
 import './css/styles.css';
-import {getAPIData} from './apiCalls'
+import { getAPIData } from './apiCalls'
 import User from '../src/User';
 import UserRepository from './UserRepository';
 
@@ -9,24 +9,24 @@ import UserRepository from './UserRepository';
 let users
 let sleep
 let hydration
-let currentUser 
+let currentUser
 
 // const userRepository = new UserRepository(userData)
 // 
 // console.log(userRepository)
 
 //Query Selectors
- let infoBox = document.querySelector('.zero')
- let hydrationBox = document.querySelector('.one')
- let stepGoalBox = document.querySelector('.two')
- let activityBox = document.querySelector('.three')
- let sleepHistoryBox = document.querySelector('.four')
- let sleepBox = document.querySelector('.five')
- let activityTrackerTitle = document.querySelector('h1')
- let userInfoList = document.querySelector("#userInfoList")
- let hydrationInfoList = document.querySelector("#hydrationInfoList")
- let sleepInfoList = document.querySelector("#sleepInfoList")
- let sleepHistoryList = document.querySelector("#sleepHistoryList")
+let sleepBox = document.querySelector('.zero')
+let stepGoalBox = document.querySelector('.one')
+let infoBox = document.querySelector('.two')
+//let activityBox = document.querySelector('.three')
+let sleepHistoryBox = document.querySelector('.four')
+let hydrationBox = document.querySelector('.three')
+let activityTrackerTitle = document.querySelector('h1')
+let userInfoList = document.querySelector("#userInfoList")
+let hydrationInfoList = document.querySelector("#hydrationInfoList")
+let sleepInfoList = document.querySelector("#sleepInfoList")
+let sleepHistoryList = document.querySelector("#sleepHistoryList")
 
 // Event Listeners
 window.addEventListener('load', getAllData)
@@ -67,11 +67,11 @@ function displayUserInfo() {
 
 function displayWelcomeName() {
   activityTrackerTitle.innerText += ` ${currentUser.getFirstName()}`
- }
+}
 
 function displayStepGoal() {
-  stepGoalBox.innerText = `Your step goal is ${currentUser.userData.dailyStepGoal} steps. The average step goal is ${users.stepGoalAverage()}.`
-} 
+  stepGoalBox.innerText += ` Your step goal is ${currentUser.userData.dailyStepGoal} steps. The average step goal is ${users.stepGoalAverage()}.`
+}
 
 // Functions
 function getUser(sleep, hydration) {
@@ -83,13 +83,13 @@ function getUser(sleep, hydration) {
 function getUserFriends() {
   let friendsArray = currentUser.userData.friends.map(friend => {
     return users.getData(friend).name
-  }) 
+  })
   return friendsArray.join(', ')
 }
 
 function displayWater() {
-  hydrationInfoList.innerHTML += `<li>Your water intake for today is ${currentUser.getWaterPerDay('2019/06/15')} ounces</li>
-                             <li>Your weekly water intake is ${currentUser.getWeeklyConsumption()} ounces</li>`
+  hydrationBox.innerText += `Your water intake for today is ${currentUser.getWaterPerDay('2019/06/15')} ounces`
+  hydrationInfoList.innerHTML += `<li>Your weekly water intake is ${currentUser.getWeeklyConsumption()} ounces</li>`
 
 }
 

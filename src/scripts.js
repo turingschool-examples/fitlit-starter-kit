@@ -71,7 +71,12 @@ function displayWelcomeName() {
 }
 
 function displayStepGoal() {
-  stepGoalBox.innerText += ` Your step goal is ${currentUser.userData.dailyStepGoal} steps. The average step goal is ${users.stepGoalAverage()}.`
+  let currentUserStepGoal = currentUser.userData.dailyStepGoal
+  let allUsersStepGoal = users.stepGoalAverage()
+  let result = [currentUserStepGoal, allUsersStepGoal]
+  console.log(result)
+  return result
+  // stepGoalBox.innerText += ` Your step goal is ${currentUser.userData.dailyStepGoal} steps. The average step goal is ${users.stepGoalAverage()}.`
 }
 
 // Functions
@@ -119,6 +124,8 @@ function loadPage() {
   // displayWater()
   // displaySleep()
   // displaySleepHistory()
-  makeCharts()
+  makeCharts(displayStepGoal())
 }
+
+// export default displayStepGoal;
 

@@ -133,10 +133,6 @@ function displaySleepData() {
   sleepHours = userRepo.selectedUser.averageSleepHours();
   sleepQuality = userRepo.selectedUser.averageSleepQuality();
   sleepUserAvg.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
-
-  sleepHours = userRepo.calculateAllUserAvgSleep('hoursSlept');
-  sleepQuality = userRepo.calculateAllUserAvgSleep('sleepQuality');
-  sleepGlobalAvg.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
 }
 // User Profile Information Display
 function displaySelectedUserInformation() {

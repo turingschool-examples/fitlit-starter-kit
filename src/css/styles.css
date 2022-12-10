@@ -1,7 +1,9 @@
-body, html {
+body,
+html {
   background-image: linear-gradient(to top, aliceblue 0%, lightblue 90%, blue 100%);
   background-repeat: no-repeat;
   height: 100%;
+  font-size: 7px;
 }
 
 .grid-container {
@@ -9,6 +11,8 @@ body, html {
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   grid-template-rows: 1fr 1fr 1fr;
+  height: 80vh;
+  width: 100vw;
 }
 
 .grid-item {
@@ -29,4 +33,4 @@ body, html {
 .two {
   grid-column: 4;
   grid-row: 1 / 3;
-} 
+}

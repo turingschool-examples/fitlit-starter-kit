@@ -17,11 +17,11 @@ let currentUser
 
 //Query Selectors
 let sleepBox = document.querySelector('.zero')
-let hydrationBox = document.querySelector('.one')
+let stepGoalBox = document.querySelector('.one')
 let infoBox = document.querySelector('.two')
-let activityBox = document.querySelector('.three')
+//let activityBox = document.querySelector('.three')
 let sleepHistoryBox = document.querySelector('.four')
-let stepGoalBox = document.querySelector('.five')
+let hydrationBox = document.querySelector('.three')
 let activityTrackerTitle = document.querySelector('h1')
 let userInfoList = document.querySelector("#userInfoList")
 let hydrationInfoList = document.querySelector("#hydrationInfoList")
@@ -70,7 +70,7 @@ function displayWelcomeName() {
 }
 
 function displayStepGoal() {
-  stepGoalBox.innerText = `Your step goal is ${currentUser.userData.dailyStepGoal} steps. The average step goal is ${users.stepGoalAverage()}.`
+  stepGoalBox.innerText += ` Your step goal is ${currentUser.userData.dailyStepGoal} steps. The average step goal is ${users.stepGoalAverage()}.`
 }
 
 // Functions
@@ -88,8 +88,8 @@ function getUserFriends() {
 }
 
 function displayWater() {
-  hydrationInfoList.innerHTML += `<li>Your water intake for today is ${currentUser.getWaterPerDay('2019/06/15')} ounces</li>
-                             <li>Your weekly water intake is ${currentUser.getWeeklyConsumption()} ounces</li>`
+  hydrationBox.innerText += `Your water intake for today is ${currentUser.getWaterPerDay('2019/06/15')} ounces`
+  hydrationInfoList.innerHTML += `<li>Your weekly water intake is ${currentUser.getWeeklyConsumption()} ounces</li>`
 
 }
 

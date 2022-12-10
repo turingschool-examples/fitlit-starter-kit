@@ -149,6 +149,31 @@ const sleepData = [
     hoursSlept: 5.8,
     sleepQuality: 6.3,
     userID: 5},
+
+    {date: "2019/06/21",
+    hoursSlept: 4.5,
+    sleepQuality: 6.5,
+    userID: 1},
+
+    {date: "2019/06/21",
+    hoursSlept: 3.8,
+    sleepQuality: 5.7,
+    userID: 2},
+
+    {date: "2019/06/21",
+    hoursSlept: 7.2,
+    sleepQuality: 9.3,
+    userID: 3},
+
+    {date: "2019/06/21",
+    hoursSlept: 4.7,
+    sleepQuality: 3.3,
+    userID: 4},
+
+    {date: "2019/06/21",
+    hoursSlept: 5.8,
+    sleepQuality: 6.3,
+    userID: 5},
     
 ]
 

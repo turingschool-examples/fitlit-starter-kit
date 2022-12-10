@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="styleSheet" href="../src/css/styles.css">
-    <title>Fitlit</title>
-  </head>
-  <body>
-    <header>
-      <h1>Welcome</h1>
-      <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
-    </header>
-    <main>
-      <section class="grid-container">
-        <section class="grid-item zero" id="0">Your Info <ul id="userInfoList"> </ul></section>
-        <section class="grid-item one" id="1">Hydration <ul id="hydrationInfoList"> </ul></section>
-        <section class="grid-item two" id="2">StepGoal</section>
-        <section class="grid-item three" id="3">Activity</section>
-        <section class="grid-item four" id="4">Sleep History <ul id="sleepHistoryList"> </ul></section>
-        <section class="grid-item five" id="5">Sleep <ul id="sleepInfoList"> </ul></section>
-      </section>
-    </main>
 
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-<script src="bundle.js"></script>
-<!-- <script type="text/javascript" src="../src/scripts.js"></script> -->
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <link rel="styleSheet" href="../src/css/styles.css">
+  <title>Fitlit</title>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome</h1>
+    <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
+  </header>
+  <main>
+    <section class="grid-container">
+      <section class="grid-item zero" id="0">Sleep <ul id="sleepInfoList"> </ul>
+      </section>
+      <section class="grid-item one" id="1">Hydration <ul id="hydrationInfoList"> </ul>
+      </section>
+      <section class="grid-item two" id="2">Your Info <ul id="userInfoList"> </ul>
+      </section>
+      <section class="grid-item three" id="3">Activity</section>
+      <section class="grid-item four" id="4">Sleep History <ul id="sleepHistoryList"> </ul>
+      </section>
+      <section class="grid-item five" id="5">Sleep
+      </section>
+    </section>
+  </main>
+
+  <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+  <script src="bundle.js"></script>
+  <!-- <script type="text/javascript" src="../src/scripts.js"></script> -->
+</body>
+
 </html>

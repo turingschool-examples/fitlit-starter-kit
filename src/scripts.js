@@ -3,6 +3,9 @@
 
 // An example of how you tell webpack to use a CSS file
 import './html-css/styles.css';
+import activityCharts from './activityCharts';
+// import updateHydroDateChart from './activityCharts';
+// import { todaysHydroChart } from './activityCharts'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
@@ -19,6 +22,11 @@ const stepGoalVsAvg = document.querySelector('#stepGoalVsAvg')
 const userProfile = document.querySelector('#profile')
 const userName = document.querySelector('#userName')
 const userAvatar = document.querySelector('#userAvatar')
+const hydrationToday = document.getElementById('hydrationToday')
+const hydrationGoal = document.getElementById('hydrationGoal')
+const sleepToday = document.getElementById('sleepToday')
+const sleepUserAvg = document.getElementById('sleepUserAvg')
+const sleepGlobalAvg = document.getElementById('sleepGlobalAvg')
 // Global variables
 let userRepo;
 
@@ -35,6 +43,9 @@ window.addEventListener('load', function () {
             displayUserStepGoal();
             displayStepGoalComparison();
             displaySelectedUserInformation();
+            displayHydrationData();
+            displaySleepData();
+            activityCharts.updateHydroDateChart(); //update charts upon page load
         });
 });
 
@@ -91,8 +102,34 @@ function displayStepGoalComparison() {
 
   Average Step Goal: ${userRepo.averageSteps()}`
 }
+// Hydration data display
+function displayHydrationData() {
+  const today = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData)
+  const todaysOunces = userRepo.selectedUser.findDaysHydration(today).numOunces;
+  const goal = 64;
+  hydrationToday.innerText = `You have consumed ${todaysOunces} ounces of water today!`;
+  if(todaysOunces < goal){
+    hydrationGoal.innerText = `Only ${goal - todaysOunces} to go!`
+  }else{
+    hydrationGoal.innerText = 'You have met the daily recommendation, great job!';
+  }
+};
 
-// User Profile Information Dislplay
+//Sleep data display
+function displaySleepData() {
+  const today = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData);
+  let sleepHours = userRepo.selectedUser.findDaySleepHours(today);
+  let sleepQuality = userRepo.selectedUser.findDaySleepQuality(today);
+  sleepToday.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
+
+  //refactor average sleep data methods to be 1 dynamic method and invoke for data below
+
+  // sleepHours = 
+  // sleepQuality = userRepo.selectedUser.averageSleepQuality()
+  // sleepUserAvg.innerText = `${}`;
+  // sleepGlobalAvg.innerText = ``;
+}
+// User Profile Information Display
 function displaySelectedUserInformation() {
   // Added space manually with this interpolation but can fix later with CSS
   userProfile.innerText = `${userRepo.selectedUser.name}
@@ -112,3 +149,5 @@ import UserRepository from './UserRepository';
 import User from './User';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
+
+export { userRepo }; //saying it won't export this

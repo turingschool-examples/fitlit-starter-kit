@@ -32,21 +32,34 @@
             <p class="fit-data highlight">something to highlight here (steps are not actually a value passed in? so we should pick something else)</p>
             <!-- MADE AN ID ON THIS -->
             <h4 class="fit-data chart-header" id="stepGoalVsAvg">Your Step Goal vs. Average Step Goal</h4>
-            <table class="fit-data chart" id="stepsChart">insert table for comparison here</table>
+            <div>
+                <canvas id="stepGoalChart"></canvas>
+            </div>
         </section>
         <section class="fit-data" id="sleep">
             <h2 class="fit-data-header">Sleep</h2>
+            <h4 class="fit-data sleep-today">Your Sleep For Today</h4>
             <p class="fit-data" id="sleepToday">insert today's sleep data here</p>
-            <p class="fit-data highlight" id="avgSleepData">insert averaged sleep data here</p>
+            <h4 class="fit-data sleep-user-avg">Your Sleep Averages</h4>
+            <p class="fit-data highlight" id="sleepUserAvg">insert averaged user sleep data here</p>
+            <h4 class="fit-data sleep-global-avg">Compare to Other Users</h4>
+            <p class="fit-data highlight" id="sleepGlobalAvg">insert averaged global sleep data here</p>
             <h4 class="fit-data chart-header">Your Sleep for the Last 7 Days</h4>
-            <table class="fit-data chart" id="sleepChart">insert table for sleep here</table>
+            <div>
+                <canvas id="weeksSleepChart"></canvas>
+            </div>
         </section>
         <section class="fit-data" id="hydration">
             <h2 class="fit-data-header">Hydration</h2>
+            <div class="fit-data day-hydro">
+                <canvas id="todaysHydrationChart"></canvas>
+            </div>
             <p class="fit-data" id="hydrationToday">insert today's hydration data here</p>
-            <p class="fit-data highlight" id="avgSleepData">insert highlight (how today's intake compares to average?) OR hydration image here</p>
+            <p class="fit-data" id="hydrationGoal">Hydration comparison data here</p>
             <h4 class="fit-data chart-header">Water Consumption for the Last 7 Days</h4>
-            <table class="fit-data chart" id="hydrationChart">insert table for hydration here</table>
+            <div>
+                <canvas id="weeksHydrationChart"></canvas>
+            </div>
         </section>
         </div>
       <script src="bundle.js"></script>

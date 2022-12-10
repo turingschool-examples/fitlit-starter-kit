@@ -31,14 +31,15 @@ body, html {
 }
 
 .fit-data {
-  margin-top: 3%;
-  margin-bottom: 3%;
-  width: 25vw;
+  align-items: center;
   background-color: #FBFEF9;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  width: 25vw;
 }
 
 .fit-data-header {
@@ -46,6 +47,13 @@ body, html {
   justify-content: center;
   font-size: 30px;
   font-size: 3.5vw;
+}
+/* div for hydration doughnut */
+.day-hydro {
+  height: 27vh;
+  display: flex;
+  align-items: center;
+  border: 2px black;
 }
 
 .user-avatar {

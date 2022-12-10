@@ -39,3 +39,8 @@ html {
   grid-column: 2 / 4;
   grid-row: 2;
 }
+
+#stepGoal {
+  height: 20px;
+  width: 20px;
+}

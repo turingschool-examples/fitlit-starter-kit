@@ -25,11 +25,10 @@ class User {
   findLatestDate(dataProperty) {
     const lastIndex = (this[dataProperty].length) - 1;
     this.sortUserArrays(dataProperty);
-    console.log(this[dataProperty][dataProperty.length - 1]);
     return this[dataProperty][lastIndex].date;
   };
 
-  findDaysHydration(selectedDate){
+  findDaysHydration(selectedDate) {
     var result = this.hydrationData.find(day => day.date === selectedDate);
     return result;
   };
@@ -42,14 +41,14 @@ class User {
     return Number((this.sleepData.reduce((total, day) => total + day[sleepKey], 0) / this.sleepData.length).toFixed(1));
   };
 
-  findWeekHydration(selectedDate){
+  findWeekHydration(selectedDate) {
     const sevenDaysAgo = new Date(new Date(selectedDate) - 7 * 24 * 60 * 60 * 1000) ; 
     var newArray = this.hydrationData.filter(day => {
       var dateConverted = new Date(day.date);
       return dateConverted > sevenDaysAgo && dateConverted <= new Date(selectedDate);
     }).sort((day1, day2) => {
       return Date.parse(day1.date) - Date.parse(day2.date);
-    })
+    });
     return newArray;
   };
 
@@ -60,7 +59,7 @@ class User {
       return dateConverted > sevenDaysAgo && dateConverted <= new Date(selectedDate);
     }).sort((day1, day2) => {
       return Date.parse(day1.date) - Date.parse(day2.date);
-    })
+    });
     return weekofSleep;
   };
 };

@@ -5,34 +5,34 @@ class UserRepository {
         this.userData = allUserData;
         this.hydrationData = hydrationData;
         this.sleepData = sleepData;
-        this.users = []
+        this.users = [];
         this.selectedUser;
     }
     initialize() {
         this.userData.forEach(user => {
-            let newUser = new User(user)
-            this.users.push(newUser)
-        })
+            let newUser = new User(user);
+            this.users.push(newUser);
+        });
         this.hydrationData.forEach(hydroData => {
           if (this.findUser(hydroData.userID) === false) {
             return;
           } else {
-            let user = this.findUser(hydroData.userID)
-            user.hydrationData.push(hydroData)
+            let user = this.findUser(hydroData.userID);
+            user.hydrationData.push(hydroData);
           }
-        })
+        });
         this.sleepData.forEach(sleepData => {
             if (this.findUser(sleepData.userID) === false) {
                 return 
             } else {
-                let user = this.findUser(sleepData.userID)
-                user.sleepData.push(sleepData)
+                let user = this.findUser(sleepData.userID);
+                user.sleepData.push(sleepData);
             }
-        })
-        this.selectedUser = this.randomizeUser()
-        this.userData = null
-        this.hydrationData = null
-        this.sleepData = null
+        });
+        this.selectedUser = this.randomizeUser();
+        this.userData = null;
+        this.hydrationData = null;
+        this.sleepData = null;
     };
 
     findUser(id) {
@@ -49,7 +49,7 @@ class UserRepository {
 
     randomizeUser() {
         let selectedUserIndex = Math.floor(Math.random() * (this.users.length));
-        return this.users[selectedUserIndex]
+        return this.users[selectedUserIndex];
     };
 
     averageSteps() {

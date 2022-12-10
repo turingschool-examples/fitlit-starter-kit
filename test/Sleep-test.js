@@ -24,8 +24,8 @@ describe('Sleep', () => {
     it('should have a method that returns the sleep data for 1 user', () => {
 
         let sleepUser1 = sleep.avgHoursSleptPerDay(1);
-
-        expect(sleepUser1).to.equal(7)
+        console.log(sleepUser1);
+        expect(sleepUser1).to.equal(6)
     });
 
     it('should have a method that returns the average sleep quality for 1 user', () => {
@@ -50,17 +50,22 @@ describe('Sleep', () => {
 
     it('should have a method that return the hours slept over 7 days', () => {
         let user1 = sleep.getHoursSleptOverWeek(1, '2019/06/15')
+    
+        expect(user1).to.deep.equal([6.1, 5.1, 6.1, 10.1, 8.1, 4.5, 4.5])
     });
 
     it('should have a method that return the sleep quality over 7 days', () => {
         let user1 = sleep.getSleepQualityOverWeek(1, '2019/06/15')
+
+        expect(user1).to.deep.equal([ 2.2, 1.2, 4.2, 7.2, 8.5, 6.5,6.5])
     });
 
     it('should average sleep quality between all users', () => {
 
         let usersSleepQualityAvg = sleep.getSleepQualityAllUsers()
-
         console.log(usersSleepQualityAvg);
+        expect(usersSleepQualityAvg).to.equal('5.3');
+        
     })
 
 })

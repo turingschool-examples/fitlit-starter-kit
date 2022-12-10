@@ -59,7 +59,6 @@ const updateHydroWeeklyChart = () => {
                 }
             ],
         }
-        //options
     })
 }
 const updateStepChart = () => {
@@ -95,7 +94,7 @@ const updateStepChart = () => {
   }
 
 const updateSleepChart = () => {
-  const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.sleepData);
+  const todaysDate = userRepo.selectedUser.findLatestDate('sleepData');
   const userSleepWeek = userRepo.selectedUser.findWeekSleep(todaysDate);
   userSleepWeek.reverse();
   sleepDblDataChart = new Chart(sleepChart, {

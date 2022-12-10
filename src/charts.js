@@ -2,7 +2,6 @@ import Chart from 'chart.js/auto';
 // import displayStepGoal from './scripts'
 
 // Steps
-var xValues = ["Your Steps", "Steps Remaining"];
 // var yValues = displayStepGoal();
 var barColors = [
   "#b91d47",
@@ -27,8 +26,7 @@ function makeStepCharts(yValues) {
     }
   });
 }
-
-var h20ChartKeys = ["Water Today", "H2O Goal"] 
+ 
 const dailyHydration = document.getElementById('dailyHydration')
 function makeDailyH20Charts(yValues) {
   new Chart(dailyHydration, {
@@ -49,8 +47,30 @@ function makeDailyH20Charts(yValues) {
   });
 }
 
-function loadCharts(stepYValues, dailyH2OYValues) {
+const dailySleep = document.getElementById('dailySleep')
+function dailySleepChart(yValues) {
+  new Chart(dailySleep, {
+    type: "doughnut",
+    data: {
+      labels: ["Hours Slept"],
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Today"
+      }
+    }
+  })
+}
+  
+
+function loadCharts(stepYValues, dailyH2OYValues, yValues) {
   makeStepCharts(stepYValues)
   makeDailyH20Charts(dailyH2OYValues)
+  dailySleepChart(yValues)
 }
 export default loadCharts;

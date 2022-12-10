@@ -1,12 +1,15 @@
-// imports here
+// imports 👇🏻
 
 import './images/turing-logo.png'
 import './css/styles.css';
-import userData from './data/users';
 import User from './User'
 import UserRepository from './UserRepository';
+import {fetchUserData} from './apiCalls'
+import {fetchSleepData} from './apiCalls';
+import {fetchHydrationData} from './apiCalls';
 
-// query selectors here
+// query selectors 👇🏻
+
 const userInfoBox = document.getElementById("userInfoBox");
 const userName = document.getElementById("name");
 const userAddress = document.getElementById("address");
@@ -16,27 +19,41 @@ const userEmail = document.getElementById("email");
 const userFriends = document.getElementById("friends");
 const userFirstName = document.getElementById("firstName");
 const userStepComparison = document.getElementById("stepCompareResults");
+
+// global variables 👇🏻
+
 let newRepo;
 let aNewUser;
 let userId = 1;
-// let userData;
+let usersAvgSteps;
+let userData;
+let hydrationData;
+let sleepData;
 
-// event listeners
-window.addEventListener("load", onLoad);
+// event listeners 👇🏻
 
-// logs
-console.log(userData,"<>>>>userData")
-console.log('This is the JavaScript entry file - your code begins here.');
 
-// functions:
+
+
+// functions 👇🏻
+
+Promise.all([fetchUserData(), fetchSleepData(), fetchHydrationData()])
+.then(data => {
+    userData = data[0].userData;
+    sleepData = data[1].sleepData;
+    hydrationData = data[2].hydrationData;
+    onLoad(userData);
+});
 
 function onLoad() {
     addUser();
 };
 
 const createUserArray = (userData) => {
-    return newRepo = new UserRepository(userData);
-    console.log(newRepo);
+    newRepo = new UserRepository(userData);
+    usersAvgSteps = newRepo.avgStepGoal();
+    userStepComparison.innerText = `${usersAvgSteps} steps`;
+    return newRepo;
 };
 
 function createNewUser() {
@@ -44,11 +61,10 @@ function createNewUser() {
     const userObject = newRepo.getUserData(userId);
     aNewUser = new User(userObject);
     return aNewUser;
-}
+};
 
 const addUser = () => {
-    createNewUser();
-    console.log(aNewUser);
+    createNewUser(userData);
     userName.innerText = aNewUser.name;
     userAddress.innerText = aNewUser.address;
     userStrideLength.innerText = aNewUser.strideLength;

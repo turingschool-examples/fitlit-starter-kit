@@ -8,15 +8,7 @@ class UserRepository {
     }
 
     getFriendData(friendIDs) {
-        let friendNames = []
-        const friends = friendIDs.filter(e => {
-                this.userData.forEach(t => {
-                if(t.id === e) {
-                    friendNames.push(t.name.split(' ')[0]) 
-                }
-            })
-        })
-        return friendNames 
+        return this.userData.filter(e => friendIDs.includes(e.id)).map(el => el.getFirstName()).join(', ')
     }
 
     calculateAverageStepGoal(){

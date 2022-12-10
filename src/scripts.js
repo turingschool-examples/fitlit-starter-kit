@@ -21,6 +21,7 @@ const displayWeekly = document.querySelector("#week");
 const currentSleep = document.querySelector("#currentDaySleep");
 const allTimeSleep = document.querySelector("#allTimeSleep");
 
+
 fetchAll().then((data) => {
   console.log(data);
   allUserData = new UserRepository(
@@ -36,7 +37,8 @@ fetchAll().then((data) => {
   pageLoadHandler();
 });
 
-function pageLoadHandler() {
+
+function pageLoadHandler(event) {
   displayUserName(currentUser);
   displayUserInfo(currentUser, allUserData);
   // displayComparedStepGoal(currentUser, allUserData);
@@ -44,6 +46,7 @@ function pageLoadHandler() {
   // displayWeeklyInfo(allUserHydro, allUserSleep, currentDate);
   // displayCurrentDaySleep();
   // displayAllTimeSleep();
+  console.log(currentUser)
   createChart(allUserHydro.returnWeeklyWaterConsumption(currentUser.id, currentDate), allUserSleep.returnSleepQualityByWeek(currentUser.id, currentDate), allUserSleep.returnHoursSleptByWeek(currentUser.id, currentDate))
   sleepChart(allUserSleep.returnHoursSleptByDate(currentUser.id, currentDate), allUserSleep.calcAvgSleepQualityPerDay(currentUser.id), allUserSleep.calcAvgSleepPerDay(currentUser.id))
   stepGoalChart(currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal())
@@ -54,7 +57,6 @@ const displayUserName = function (user) {
 };
 
 const displayUserInfo = function (user, repository) {
-  console.log(user)
   userDisplay.innerHTML = `
   <div>
     <p class="id">User ID: ${user.id}</p>

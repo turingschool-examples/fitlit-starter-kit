@@ -98,7 +98,7 @@ class User {
     }, 0)
   }
 
-  sleepQualityOnSPecificDate(date) {
+  sleepQualityOnSpecificDate(date) {
     let dates = this.sleepData.sleepData.filter((user) => {
       return user.date === date
     })

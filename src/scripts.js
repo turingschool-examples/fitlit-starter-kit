@@ -38,6 +38,7 @@ window.addEventListener('load', function () {
             displayStepGoalComparison();
             displaySelectedUserInformation();
             activityCharts.updateHydroDateChart(); //update charts upon page load
+            activityCharts.updateHydroWeeklyChart();
         });
 });
 

@@ -22,6 +22,7 @@ const stepGoalVsAvg = document.querySelector('#stepGoalVsAvg')
 const userProfile = document.querySelector('#profile')
 const userName = document.querySelector('#userName')
 const hydrationToday = document.getElementById('hydrationToday')
+const hydrationGoal = document.getElementById('hydrationGoal')
 const sleepToday = document.getElementById('sleepToday')
 const sleepUserAvg = document.getElementById('sleepUserAvg')
 const sleepGlobalAvg = document.getElementById('sleepGlobalAvg')
@@ -41,6 +42,7 @@ window.addEventListener('load', function () {
             displayUserStepGoal();
             displayStepGoalComparison();
             displaySelectedUserInformation();
+            displayHydrationData();
             activityCharts.updateHydroDateChart(); //update charts upon page load
         });
 });
@@ -82,8 +84,24 @@ function displayStepGoalComparison() {
 
   Average Step Goal: ${userRepo.averageSteps()}`
 }
+// Hydration data display
+function displayHydrationData() {
+  const today = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData)
+  const todaysOunces = userRepo.selectedUser.findDaysHydration(today).numOunces;
+  const goal = 64;
+  hydrationToday.innerText = `You have consumed ${todaysOunces} ounces of water today!`;
+  if(todaysOunces < goal){
+    hydrationGoal.innerText = `Only ${goal - todaysOunces} to go!`
+  }else{
+    hydrationGoal.innerText = 'You have met the daily recommendation, great job!';
+  }
+};
 
-// User Profile Information Dislplay
+//Sleep data display
+// function displaySleepData() {
+
+// }
+// User Profile Information Display
 function displaySelectedUserInformation() {
   // Added space manually with this interpolation but can fix later with CSS
   userProfile.innerText = `${userRepo.selectedUser.name}

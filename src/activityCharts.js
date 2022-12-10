@@ -14,7 +14,6 @@ let sleepDblDataChart;
 let todaysHydroChart;
 let weeksHydroChart;
 
-
 // functions to update charts (data passed in as parameter)
 
 const findHydroPercentage = (numDrunk, goal) => {
@@ -47,30 +46,28 @@ const updateHydroDateChart = () => {
     })
 } //sizing of this done in CSS
 
-// const updateHydroDateChart = (ozToday) => {
-// todaysHydroChart = new Chart(hydroDayChart, {
-//     type: 'doughnut',
-//     data: {
-//         labels: ['Today\'s Intake', 'Recommended Daily Intake'],
-//         datasets: [
-//             {
-//                 //label: optional and probably not helpful here
-//                 //
-//                 //set max as a const (64)
-//                 data: [ 50, 25 ], //[ ozToday, conditional parameter? if larger than 64, this is 0. else (64 - ozToday)]
-//                 backgroundColor: [ '#BF1363', '#F39237' ]
-//             }
-//         ],
-//     }
-//     //options
-// })
-// }
-
-// const updateHydroChart = (ozToday) => {
-//     weeksHydroChart
-
-// }
-
+const updateHydroWeeklyChart = () => {
+    const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData)
+    console.log(todaysDate)
+    const weeklyHydration = userRepo.selectedUser.findWeekHydration(todaysDate)
+    weeklyHydration.reverse();
+    console.log(weeklyHydration)
+    weeksHydroChart = new Chart(hydroWeekChart, {
+        type: 'bar',
+        data: {
+            labels: ['Day 1','Day 2','Day 3','Day 4','Day 5','Day 6', 'Day 7'],
+            datasets: [
+                {
+                    label: 'Daily Intake',
+                    data: [weeklyHydration[0].numOunces, weeklyHydration[1].numOunces, weeklyHydration[2].numOunces, weeklyHydration[3].numOunces,weeklyHydration[4].numOunces, weeklyHydration[5].numOunces, weeklyHydration[6].numOunces],
+                    type: 'line',
+                    backgroundColor: ['#BF1263'],
+                }
+            ],
+        }
+        //options
+    })
+}
 const updateStepChart = () => {
     const userStepGoal = userRepo.selectedUser.dailyStepGoal
     console.log(userStepGoal)

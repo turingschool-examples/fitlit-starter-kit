@@ -24,6 +24,7 @@ class User {
   findLatestDate(userDataProperty) {
     this.sortUserArrays(userDataProperty);
     return userDataProperty[userDataProperty.length - 1].date
+
   }
   findDaysHydration(selectedDate){
     var result = this.hydrationData.find(day => day.date === selectedDate)

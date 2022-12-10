@@ -20,7 +20,7 @@ const hydrationBox = document.querySelector("#hydration");
 const displayWeekly = document.querySelector("#week");
 const currentSleep = document.querySelector("#currentDaySleep");
 const allTimeSleep = document.querySelector("#allTimeSleep");
-
+let dropDownCalendar = document.getElementById('myDate').value = new Date();
 
 fetchAll().then((data) => {
   console.log(data);
@@ -105,3 +105,9 @@ const displayAllTimeSleep = function () {
   )}</p>
   `;
 };
+
+function myFunction() {
+  let dropDownCalendar = document.getElementById('myDate').value 
+  console.log(dropDownCalendar)
+}
+

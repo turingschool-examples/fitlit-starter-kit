@@ -1,14 +1,15 @@
 import Chart from 'chart.js/auto';
+// import displayStepGoal from './scripts'
 
 // Steps
 var xValues = ["Your Steps", "Steps Remaining"];
-var yValues = [55, 45];
+// var yValues = displayStepGoal();
 var barColors = [
   "#b91d47",
   "#00aba9",
 ];
 const steps = document.getElementById('stepGoal');
-function makeCharts() {
+function makeCharts(yValues) {
   new Chart(steps, {
     type: "doughnut",
     data: {

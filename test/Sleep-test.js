@@ -50,7 +50,7 @@ describe('Sleep', () => {
 
     it('should have a method that return the hours slept over 7 days', () => {
         let user1 = sleep.getHoursSleptOverWeek(1, '2019/06/15')
-    
+        console.log(user1)
         expect(user1).to.deep.equal([6.1, 5.1, 6.1, 10.1, 8.1, 4.5, 4.5])
     });
 

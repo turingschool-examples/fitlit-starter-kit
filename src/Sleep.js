@@ -51,6 +51,7 @@ class Sleep {
         })
         let index = userSleepData.indexOf(obj)
         const hoursSleptPerWeek = userSleepData.splice(index, 7)
+        // console.log("in method:", hoursSleptPerWeek)
         return hoursSleptPerWeek.map(data => {
             return data.hoursSlept
         })

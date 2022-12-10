@@ -80,15 +80,7 @@ const updateStepChart = () => {
             datasets: [{
               label: 'Step Goal',
               data: [avgStepGoal, userStepGoal],
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-              ],
-              borderColor: [
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-              ],
-              borderWidth: 1
+              backgroundColor: ['#BF1363', '#F39237'],
             }]
           },
         options: {

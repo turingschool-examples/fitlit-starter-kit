@@ -56,6 +56,7 @@ window.addEventListener('load', function () {
 });
 
 userAvatar.addEventListener('click', toggleProfileInfo)
+userName.addEventListener('click', toggleProfileInfo)
 
 // Welcome message display
 function showPersonalizedWelcome() {

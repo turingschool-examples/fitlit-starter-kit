@@ -70,6 +70,14 @@ body, html {
   font-size: 26px;
 }
 
+.user-avatar:hover {
+  outline: #FBA03F;
+  outline-style: solid;
+  outline-offset: -1px;
+  outline-width: 5px;
+  cursor: pointer;
+}
+
 .single-friend {
   display: flex;
   align-items: center;
@@ -113,6 +121,10 @@ body, html {
   margin-top: 35%;
   padding-bottom: 5%;
   font-size: 16px;
+}
+.user-name:hover {
+  color: #BF1363;
+  cursor: pointer;
 }
 
 .hidden {

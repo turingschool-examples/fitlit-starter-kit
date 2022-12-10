@@ -14,11 +14,6 @@ let sleepDblDataChart;
 let todaysHydroChart;
 let weeksHydroChart;
 
-
-//global variables
-
-
-
 // functions to update charts (data passed in as parameter)
 
 const findHydroPercentage = (numDrunk, goal) => {
@@ -30,13 +25,11 @@ const findHydroPercentage = (numDrunk, goal) => {
     return numDrunk < goal ? goal - numDrunk : 0;
 }
 const updateHydroDateChart = () => {
-    console.log('test 1')
-    const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData) //find today method
-    console.log(todaysDate)
-    const numDrunk = userRepo.selectedUser.findDaysHydration(todaysDate).numOunces
-    console.log(numDrunk)
+    const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData);
+    const numDrunk = userRepo.selectedUser.findDaysHydration(todaysDate).numOunces;
     const goal = 64;
     const ozLeft = findHydroPercentage(numDrunk, goal);
+    console.log('ounces left: ', ozLeft);
     todaysHydroChart = new Chart(hydroDayChart, {
         type: 'doughnut',
         data: {
@@ -75,5 +68,36 @@ const updateHydroWeeklyChart = () => {
         //options
     })
 }
+const updateStepChart = () => {
+    const userStepGoal = userRepo.selectedUser.dailyStepGoal
+    console.log(userStepGoal)
+    const avgStepGoal = userRepo.averageSteps()
+    console.log(avgStepGoal)
+    stepComparisonChart = new Chart(stepChart, {
+        type: 'bar',
+        data: {
+            labels: ['Average Step Goal', 'Your Step Goal'],
+            datasets: [{
+              label: 'Step Goal',
+              data: [avgStepGoal, userStepGoal],
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+              ],
+              borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+              ],
+              borderWidth: 1
+            }]
+          },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }}
+    })
+  }
 
-export default { updateHydroDateChart, updateHydroWeeklyChart};
+export default { updateHydroDateChart, todaysHydroChart, updateStepChart };

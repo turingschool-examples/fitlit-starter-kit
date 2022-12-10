@@ -11,18 +11,20 @@ class User {
     this.hydrationData = [];
     this.sleepData = [];
   };
-  sortUserArrays(dataProperty) {
-    dataProperty.sort((day1,day2) => {
-      return (day1.date).localeCompare(day2.date)
+  sortUserArrays(userDataProperty) {
+    userDataProperty.sort
+    userDataProperty.sort((day1,day2) => {
+        return (day1.date).localeCompare(day2.date)
     })
   }
   returnFirstName() {
     let userNameSplitArray = this.name.split(' ');
     return userNameSplitArray[0];
   };
-  findLatestDate(dataProperty) {
-    this.sortUserArrays(dataProperty)
-    return dataProperty[dataProperty.length - 1].date
+  findLatestDate(userDataProperty) {
+    this.sortUserArrays(userDataProperty);
+    return userDataProperty[userDataProperty.length - 1].date
+
   }
   findDaysHydration(selectedDate){
     var result = this.hydrationData.find(day => day.date === selectedDate)

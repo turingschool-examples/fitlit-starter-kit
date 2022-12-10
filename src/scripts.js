@@ -3,7 +3,9 @@
 
 // An example of how you tell webpack to use a CSS file
 import './html-css/styles.css';
-import updateHydroDateChart from './activityCharts.js';
+import activityCharts from './activityCharts';
+// import updateHydroDateChart from './activityCharts';
+// import { todaysHydroChart } from './activityCharts'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
@@ -18,7 +20,12 @@ const stepGoal = document.querySelector('#stepGoal')
 const stepGoalVsAvg = document.querySelector('#stepGoalVsAvg')
 const userProfile = document.querySelector('#profile')
 const userName = document.querySelector('#userName')
-
+const userAvatar = document.querySelector('#userAvatar')
+const hydrationToday = document.getElementById('hydrationToday')
+const hydrationGoal = document.getElementById('hydrationGoal')
+const sleepToday = document.getElementById('sleepToday')
+const sleepUserAvg = document.getElementById('sleepUserAvg')
+const sleepGlobalAvg = document.getElementById('sleepGlobalAvg')
 // Global variables
 let userRepo;
 let currentUser
@@ -37,10 +44,14 @@ window.addEventListener('load', function () {
             displayUserStepGoal();
             displayStepGoalComparison();
             displaySelectedUserInformation();
-            activityCharts.updateHydroDateChart(); //update charts upon page load
-            activityCharts.updateHydroWeeklyChart();
+            displayHydrationData();
+            displaySleepData();
+            activityCharts.updateHydroDateChart();
+            activityCharts.updateStepChart(); //update charts upon page load
         });
 });
+
+userAvatar.addEventListener('click', toggleProfileInfo)
 
 // Welcome message display
 function showPersonalizedWelcome() {
@@ -55,6 +66,8 @@ function selectRandom(selectedArray){
 function showUserInfoDisplay() {
   friendsDisplay.innerText = ` `;
   userName.innerText = `${userRepo.selectedUser.name}`
+  userAvatar.innerText = selectRandom(profileEmojis)
+  userAvatar.style.backgroundColor = selectRandom(profileBackgrounds)
   userRepo.selectedUser.friends.forEach(friend => {
     friendsDisplay.innerHTML += `
     <div class="single-friend">
@@ -65,6 +78,18 @@ function showUserInfoDisplay() {
     var friendID = document.querySelector(`.friend-${friend}`)
     friendID.style.backgroundColor = selectRandom(profileBackgrounds)
   })
+}
+
+function toggleProfileInfo() {
+  if (friendsDisplay.classList != 'hidden'){
+    friendsDisplay.classList.add('hidden')
+    friendsDisplay.classList.remove("friends-profile")
+    userProfile.classList.remove('hidden')
+  } else {
+    friendsDisplay.classList.remove('hidden')
+    friendsDisplay.classList.add('friends-profile')
+    userProfile.classList.add('hidden')
+  }
 }
 
 // User step goal display
@@ -79,8 +104,34 @@ function displayStepGoalComparison() {
 
   Average Step Goal: ${userRepo.averageSteps()}`
 }
+// Hydration data display
+function displayHydrationData() {
+  const today = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData)
+  const todaysOunces = userRepo.selectedUser.findDaysHydration(today).numOunces;
+  const goal = 64;
+  hydrationToday.innerText = `You have consumed ${todaysOunces} ounces of water today!`;
+  if(todaysOunces < goal){
+    hydrationGoal.innerText = `Only ${goal - todaysOunces} to go!`
+  }else{
+    hydrationGoal.innerText = 'You have met the daily recommendation, great job!';
+  }
+};
 
-// User Profile Information Dislplay
+//Sleep data display
+function displaySleepData() {
+  const today = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData);
+  let sleepHours = userRepo.selectedUser.findDaySleepHours(today);
+  let sleepQuality = userRepo.selectedUser.findDaySleepQuality(today);
+  sleepToday.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
+
+  //refactor average sleep data methods to be 1 dynamic method and invoke for data below
+
+  // sleepHours = 
+  // sleepQuality = userRepo.selectedUser.averageSleepQuality()
+  // sleepUserAvg.innerText = `${}`;
+  // sleepGlobalAvg.innerText = ``;
+}
+// User Profile Information Display
 function displaySelectedUserInformation() {
   // Added space manually with this interpolation but can fix later with CSS
   userProfile.innerText = `${userRepo.selectedUser.name}

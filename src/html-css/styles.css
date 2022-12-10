@@ -4,6 +4,11 @@ body, html {
   font-family: 'Poppins', sans-serif;
 }
 
+.app-name{
+  margin-left: 1.4vw;
+  font-size: 26px;
+}
+
 .welcome-banner {
   width: 100vw;
   height: 5vh;
@@ -11,6 +16,11 @@ body, html {
   font-size: larger;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+}
+.welcome-message{
+  margin-left: 29vw;
+  margin-right: 20vw;
 }
 
 .data-display {

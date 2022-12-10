@@ -53,4 +53,17 @@ const createChart = function (hydration, sleepQuality, sleepHours) {
   });
 };
 
-export { createChart };
+const sleepChart = function(currentSleep, avgSleepQuality, avgHoursSlept) {
+  new Chart(document.getElementById('allTimeSleep'), {
+    type: 'polarArea',
+    data: {
+      labels: ['Current Sleep', 'Avg Sleep Quality', 'Avg Hours Slept'],
+      datasets: [{
+        label: 'Sleep Info',
+        data: [currentSleep, avgSleepQuality, avgHoursSlept],
+      }]
+    }
+  })
+}
+
+export { createChart, sleepChart };

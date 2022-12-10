@@ -19,12 +19,11 @@
         </nav>
         <div class="data-display">
         <aside class="user-tab">
-            <button class="user-avatar" id="userAvatar">🐺</button>
-            <p class="user-name" id="userName">Example</p>
+            <button type="onClick" class="user-avatar" id="userAvatar"></button>
+            <p class="user-name" id="userName"></p>
             <section class="friends-profile" id="friends">
             </section>
             <section class="profile hidden" id="profile">
-                insert profile information here
             </section>
         </aside>
         <section class="fit-data" id="steps">
@@ -36,17 +35,19 @@
             <div>
                 <canvas id="stepGoalChart"></canvas>
             </div>
-            <table class="fit-data chart" id="stepsChart">insert table for comparison here</table>
         </section>
         <section class="fit-data" id="sleep">
             <h2 class="fit-data-header">Sleep</h2>
+            <h4 class="fit-data sleep-today">Your Sleep For Today</h4>
             <p class="fit-data" id="sleepToday">insert today's sleep data here</p>
-            <p class="fit-data highlight" id="avgSleepData">insert averaged sleep data here</p>
+            <h4 class="fit-data sleep-user-avg">Your Sleep Averages</h4>
+            <p class="fit-data highlight" id="sleepUserAvg">insert averaged user sleep data here</p>
+            <h4 class="fit-data sleep-global-avg">Compare to Other Users</h4>
+            <p class="fit-data highlight" id="sleepGlobalAvg">insert averaged global sleep data here</p>
             <h4 class="fit-data chart-header">Your Sleep for the Last 7 Days</h4>
             <div>
                 <canvas id="weeksSleepChart"></canvas>
             </div>
-            <table class="fit-data chart" id="sleepChart">insert table for sleep here</table>
         </section>
         <section class="fit-data" id="hydration">
             <h2 class="fit-data-header">Hydration</h2>
@@ -54,12 +55,11 @@
                 <canvas id="todaysHydrationChart"></canvas>
             </div>
             <p class="fit-data" id="hydrationToday">insert today's hydration data here</p>
-            <p class="fit-data highlight" id="avgSleepData">insert highlight (how today's intake compares to average?) OR hydration image here</p>
+            <p class="fit-data" id="hydrationGoal">Hydration comparison data here</p>
             <h4 class="fit-data chart-header">Water Consumption for the Last 7 Days</h4>
             <div>
                 <canvas id="weeksHydrationChart"></canvas>
             </div>
-            <table class="fit-data chart" id="hydrationChart">insert table for hydration here</table>
         </section>
         </div>
       <script src="bundle.js"></script>

@@ -10,27 +10,37 @@ const createChart = function(hydration, sleepQuality, sleepHours) {
         datasets: [
           {
             label: hydration.label,
+            yAxisID: 'hydration',
             data: hydration.count
           }, 
           {
             label: sleepQuality.label,
+            yAxisID: 'sleep',
             data: sleepQuality.count
           },
           {
             label: sleepHours.label,
+            yAxisID: 'sleep',
             data: sleepHours.count
           }
         ] 
       },
-      // options: {
-      //   scales: {
-      //     hydration: {
-      //       type: 'linear',
-      //       position: 'left'
-      //     },
-
-      //   }
-      // }
+      options: {
+        scales: {
+          hydration: {
+            type: 'linear',
+            position: 'left'
+          },
+          sleep: {
+            type: 'linear',
+            position: 'right',
+            ticks: {
+              max: 15,
+              min: 0
+          }
+          },
+        }
+      }
     }
   )
 }

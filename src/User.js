@@ -40,12 +40,12 @@ class User {
     })
     return newArray
   }
-  averageSleepHours() {
-    return Number((this.sleepData.reduce((total, day) => total + day.hoursSlept, 0) / this.sleepData.length).toFixed(1))
+  averageSleepData(sleepKey) {
+    return Number((this.sleepData.reduce((total, day) => total + day[sleepKey], 0) / this.sleepData.length).toFixed(1))
   }
-  averageSleepQuality() {
-    return Number((this.sleepData.reduce((total, day) => total + day.sleepQuality, 0) / this.sleepData.length).toFixed(1))
-  }
+  // averageSleepQuality() {
+  //   return Number((this.sleepData.reduce((total, day) => total + day.sleepQuality, 0) / this.sleepData.length).toFixed(1))
+  // }
   findDaySleepHours(date) {
     return this.sleepData.find(day => day.date === date).hoursSlept;
   }

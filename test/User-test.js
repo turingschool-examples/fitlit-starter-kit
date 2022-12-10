@@ -214,7 +214,7 @@ describe('User', function () {
     const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
     selectedUser.sleepData = sleepData;
 
-    expect(selectedUser.averageSleepHours()).to.equal(6.6)
+    expect(selectedUser.averageSleepData('hoursSlept')).to.equal(6.6)
   });
 
   it('should calculate the avg sleep quality per night from all user data', function () {
@@ -222,7 +222,7 @@ describe('User', function () {
     const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
     selectedUser.sleepData = sleepData;
 
-    expect(selectedUser.averageSleepQuality()).to.equal(2.1);
+    expect(selectedUser.averageSleepData('sleepQuality')).to.equal(2.1);
   });
 
   it('should find the hours slept for a given date', function () {

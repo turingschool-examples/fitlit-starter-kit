@@ -29,13 +29,36 @@ class Sleep {
     
     getHoursSleptOnDay(iD, date) {
         const userSleepData = this.sleepData.filter(user => {
+            return user.userID === iD && user.date === date
+        })
+        return userSleepData[0].hoursSlept
+    }
+
+    getSleepQualityOnDay(iD, date) {
+        const userSleepData = this.sleepData.filter(user => {
+            return user.userID === iD && user.date === date
+        })
+        return userSleepData[0].sleepQuality
+    }
+
+    getHoursSleptOverWeek(iD, startDate) {
+        const userSleepData = this.sleepData.filter(user => {
             return user.userID === iD
         })
-        const sleepDataByDate = userSleepData.filter(user => {
-            return user.date === date
+
+        const obj = userSleepData.find(dataPoint => {
+            return dataPoint.date === startDate
         })
-        return sleepDataByDate[0].hoursSlept
+        let index = userSleepData.indexOf(obj)
+        const hoursSleptPerWeek = userSleepData.splice(index, 3)
+        return hoursSleptPerWeek.map(data => {
+            return data.hoursSlept
+        })
     }
+
+    // sleep quality
+
+    // all users, average sleep quality
 
 }
 

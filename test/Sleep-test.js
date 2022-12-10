@@ -25,13 +25,13 @@ describe('Sleep', () => {
 
         let sleepUser1 = sleep.avgHoursSleptPerDay(1);
 
-        expect(sleepUser1).to.equal(6)
+        expect(sleepUser1).to.equal(7)
     })
 
     it('should have a method that returns the average sleep quality for 1 user', () => {
         let userSleepQual = sleep.avgSleepQuality(1);
 
-        expect(userSleepQual).to.equal(3)
+        expect(userSleepQual).to.equal(5)
     })
 
     it('should have a method that returns the hours slept for 1 user on a given date', () => {
@@ -39,6 +39,20 @@ describe('Sleep', () => {
         let user1 = sleep.getHoursSleptOnDay(1, '2019/06/15')
 
         expect(user1).to.equal(6.1)
+    })
+
+    it('should have a method that returns the sleep quality for 1 user on a given date', () => {
+
+        let user1 = sleep.getSleepQualityOnDay(1, '2019/06/15')
+
+        expect(user1).to.equal(2.2)
+    })
+
+    it('should have a method that return the hours slept over 7 days', () => {
+        let user1 = sleep.getHoursSleptOverWeek(1, '2019/06/15')
+
+        console.log("user1", user1)
+
     })
 
 })

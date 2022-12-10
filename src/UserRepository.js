@@ -30,6 +30,8 @@ class UserRepository {
             }
         })
         this.selectedUser = this.randomizeUser()
+        // REMOVE THIS LOG LATER - Trying to diagnose why selected user comes back undefined sometimes
+        console.log("SELECTED USER", this.selectedUser);
         this.userData = null
         this.hydrationData = null
         this.sleepData = null
@@ -46,7 +48,9 @@ class UserRepository {
         }
     }
     randomizeUser() {
-        let selectedUserIndex = Math.floor(Math.random() * (this.userData.length - 0 + 1)) + 0
+        let selectedUserIndex = Math.floor(Math.random() * (this.users.length - 0 + 1)) + 0
+        // REMOVE THIS LOG LATER - Trying to diagnose why selected user comes back undefined sometimes
+        console.log("SELECTED USER INDEX", selectedUserIndex);
         return this.users[selectedUserIndex]
     }
     averageSteps() {

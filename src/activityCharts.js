@@ -100,4 +100,33 @@ const updateStepChart = () => {
     })
   }
 
-export default { updateHydroDateChart, todaysHydroChart, updateStepChart };
+const updateSleepChart = () => {
+  const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.sleepData);
+  const userSleepWeek = userRepo.selectedUser.findWeekSleep(todaysDate);
+  userSleepWeek.reverse();
+  sleepDblDataChart = new Chart(sleepChart, {
+    type: 'bar',
+    data: {
+        datasets: [{
+            label: 'Hours Slept',
+            data: [userSleepWeek[0].hoursSlept, userSleepWeek[1].hoursSlept, userSleepWeek[2].hoursSlept, userSleepWeek[3].hoursSlept, userSleepWeek[4].hoursSlept, userSleepWeek[5].hoursSlept, userSleepWeek[6].hoursSlept],
+            backgroundColor: ['#78C1E7'],
+            // this dataset is drawn below
+            order: 2
+        }, {
+            label: 'Sleep Quality',
+            data: [userSleepWeek[0].sleepQuality, userSleepWeek[1].sleepQuality, userSleepWeek[2].sleepQuality, userSleepWeek[3].sleepQuality, userSleepWeek[4].sleepQuality, userSleepWeek[5].sleepQuality, userSleepWeek[6].sleepQuality],
+            type: 'line',
+            backgroundColor: ['#BF1263'],
+            // this dataset is drawn on top
+            order: 1
+        }],
+        labels: [`${userSleepWeek[0].date}`, ``, ``, `${userSleepWeek[3].date}`, ``, ``, `${userSleepWeek[6].date}`]
+    },
+    // options: {
+    //   aspect-ratio: {1000 / 500};
+    // }
+  });
+}
+
+export default { updateHydroDateChart, todaysHydroChart, updateStepChart, updateSleepChart };

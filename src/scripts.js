@@ -48,6 +48,7 @@ window.addEventListener('load', function () {
             displaySleepData();
             activityCharts.updateHydroDateChart();
             activityCharts.updateStepChart(); //update charts upon page load
+            activityCharts.updateSleepChart();
         });
 });
 
@@ -55,7 +56,9 @@ userAvatar.addEventListener('click', toggleProfileInfo)
 
 // Welcome message display
 function showPersonalizedWelcome() {
-  welcomeMessage.innerText = `--------Welcome, ${userRepo.selectedUser.name}!`;
+  let selectedMsgInt = Math.floor(Math.random() * (2 - 0 + 1));
+  let randomGreetings = [`Let's Carpe this Diem!`, `You miss 100% of the shots you don't take.`, `You can have results or excuses, not both.`];
+  welcomeMessage.innerText = `Welcome, ${userRepo.selectedUser.name}! - - ${randomGreetings[selectedMsgInt]}`;
 }
 
 function selectRandom(selectedArray){

@@ -6,9 +6,6 @@ var yValues = [55, 45];
 var barColors = [
   "#b91d47",
   "#00aba9",
-  "#2b5797",
-  "#e8c3b9",
-  "#1e7145"
 ];
 const steps = document.getElementById('stepGoal');
 function makeCharts() {

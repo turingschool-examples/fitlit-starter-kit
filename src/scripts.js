@@ -114,7 +114,7 @@ function displaySleepHistory() {
 function loadPage() {
   getUser(sleep, hydration)
   displayUserInfo()
-  displayStepGoal()
+  // displayStepGoal()
   displayWelcomeName()
   displayWater()
   displaySleep()

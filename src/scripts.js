@@ -45,7 +45,8 @@ window.addEventListener('load', function () {
             displaySelectedUserInformation();
             displayHydrationData();
             displaySleepData();
-            activityCharts.updateHydroDateChart(); //update charts upon page load
+            activityCharts.updateHydroDateChart();
+            activityCharts.updateStepChart(); //update charts upon page load
         });
 });
 

@@ -14,6 +14,7 @@ let sleepDblDataChart;
 let todaysHydroChart;
 let weeksHydroChart;
 
+
 // functions to update charts (data passed in as parameter)
 
 const findHydroPercentage = (numDrunk, goal) => {
@@ -26,12 +27,8 @@ const findHydroPercentage = (numDrunk, goal) => {
 }
 const updateHydroDateChart = () => {
     const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData);
-    console.log('User:', userRepo.selectedUser);
-    console.log('Today\'s date', todaysDate);
     const numDrunk = userRepo.selectedUser.findDaysHydration(todaysDate).numOunces;
-    console.log('numDrunk: ', numDrunk);
     const goal = 64;
-    console.log('Goal: ', goal);
     const ozLeft = findHydroPercentage(numDrunk, goal);
     console.log('ounces left: ', ozLeft);
     todaysHydroChart = new Chart(hydroDayChart, {
@@ -74,4 +71,36 @@ const updateHydroDateChart = () => {
 
 // }
 
-export default { updateHydroDateChart, todaysHydroChart };
+const updateStepChart = () => {
+    const userStepGoal = userRepo.selectedUser.dailyStepGoal
+    console.log(userStepGoal)
+    const avgStepGoal = userRepo.averageSteps()
+    console.log(avgStepGoal)
+    stepComparisonChart = new Chart(stepChart, {
+        type: 'bar',
+        data: {
+            labels: ['Average Step Goal', 'Your Step Goal'],
+            datasets: [{
+              label: 'Step Goal',
+              data: [avgStepGoal, userStepGoal],
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+              ],
+              borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+              ],
+              borderWidth: 1
+            }]
+          },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }}
+    })
+  }
+
+export default { updateHydroDateChart, todaysHydroChart, updateStepChart };

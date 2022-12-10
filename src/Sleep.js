@@ -76,8 +76,7 @@ class Sleep {
         }, 0)
         console.log(this.sleepData.length);
         return (avgSleepQualityAllUsers / this.sleepData.length).toFixed(1);
-    }
-
+    };
 }
 
 export default Sleep;

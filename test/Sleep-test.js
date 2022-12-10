@@ -65,7 +65,7 @@ describe('Sleep', () => {
         let usersSleepQualityAvg = sleep.getSleepQualityAllUsers()
         console.log(usersSleepQualityAvg);
         expect(usersSleepQualityAvg).to.equal('5.3');
-        
+        //need to adjust so this will return a number instead of a string
     })
 
 })

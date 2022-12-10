@@ -21,7 +21,10 @@ const stepGoal = document.querySelector('#stepGoal')
 const stepGoalVsAvg = document.querySelector('#stepGoalVsAvg')
 const userProfile = document.querySelector('#profile')
 const userName = document.querySelector('#userName')
-
+const hydrationToday = document.getElementById('hydrationToday')
+const sleepToday = document.getElementById('sleepToday')
+const sleepUserAvg = document.getElementById('sleepUserAvg')
+const sleepGlobalAvg = document.getElementById('sleepGlobalAvg')
 // Global variables
 let userRepo;
 

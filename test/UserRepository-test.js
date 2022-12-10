@@ -57,7 +57,15 @@ describe('User Repository', () => {
     expect(fullUserData.selectedUser).to.deep.equal(userTestData[indexNumber])
   })
   it('should calculate average dailyStepGoals for all users', function () {
-    fullUserData.initialize()
+    fullUserData.initialize();
     expect(fullUserData.averageSteps()).to.equal(6333);
+  })
+  it('should have a method to average all users sleep hours data available', function() {
+    fullUserData.initialize();
+    expect(fullUserData.calculateAllUserAvgSleep('hoursSlept')).to.equal(6.9);
+  })
+  it('should have a method to average all users sleep quality data available', function() {
+    fullUserData.initialize();
+    expect(fullUserData.calculateAllUserAvgSleep('sleepQuality')).to.equal(2.1)
   })
 });

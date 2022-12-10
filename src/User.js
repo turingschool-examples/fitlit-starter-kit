@@ -7,12 +7,25 @@ class User {
     this.strideLength = userData.strideLength;
     this.dailyStepGoal = userData.dailyStepGoal;
     this.friends = userData.friends;
+    // Added these properties to push data in to
+    this.hydrationData = [];
+    this.sleepData = [];
   };
-
+  sortUserArrays(userDataProperty) {
+    userDataProperty.sort
+    userDataProperty.sort((day1,day2) => {
+        return (day1.date).localeCompare(day2.date)
+    })
+  }
   returnFirstName() {
     let userNameSplitArray = this.name.split(' ');
     return userNameSplitArray[0];
   };
+  findLatestDate(userDataProperty) {
+    this.sortUserArrays(userDataProperty);
+    return userDataProperty[userDataProperty.length - 1].date
+
+  }
   findDaysHydration(selectedDate){
     var result = this.hydrationData.find(day => day.date === selectedDate)
     return result

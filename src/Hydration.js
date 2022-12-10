@@ -9,15 +9,13 @@ class Hydration {
 
     getOneUserData(hydrationData) {
         let oneUserArray = hydrationData.filter(element => {
-            if (this.userID === this.dataSet.userID) {
+            if (this.userID === element.userID) {
                 return element;
             }
         });
-
         this.oneUserDataSet = oneUserArray;
-        console.log("Is this one user's info: ", this.oneUserDataSet);
-        console.log("Is this the same one user's info: ", oneUserArray);
-    }
+        return this.oneUserDataSet
+    };
 
     getAvgConsumed() {
         let ouncesConsumedPerDay = this.dataSet.filter(element => element.userID === this.userID).map(element => element.numOunces);

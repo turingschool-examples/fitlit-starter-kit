@@ -74,7 +74,7 @@ const updateStepChart = () => {
               label: 'Step Goal',
               data: [avgStepGoal, userStepGoal],
               backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 99, 132, 0.2)', //can we make the opacity 1 to match the colors on the other chart?
                 'rgba(255, 159, 64, 0.2)',
               ],
               borderColor: [
@@ -104,14 +104,13 @@ const updateSleepChart = () => {
             label: 'Hours Slept',
             data: [userSleepWeek[0].hoursSlept, userSleepWeek[1].hoursSlept, userSleepWeek[2].hoursSlept, userSleepWeek[3].hoursSlept, userSleepWeek[4].hoursSlept, userSleepWeek[5].hoursSlept, userSleepWeek[6].hoursSlept],
             backgroundColor: ['#78C1E7'],
-            // this dataset is drawn below
             order: 2
         }, {
             label: 'Sleep Quality',
             data: [userSleepWeek[0].sleepQuality, userSleepWeek[1].sleepQuality, userSleepWeek[2].sleepQuality, userSleepWeek[3].sleepQuality, userSleepWeek[4].sleepQuality, userSleepWeek[5].sleepQuality, userSleepWeek[6].sleepQuality],
             type: 'line',
             backgroundColor: ['#BF1263'],
-            // this dataset is drawn on top
+
             order: 1
         }],
         labels: [`${userSleepWeek[0].date}`, ``, ``, `${userSleepWeek[3].date}`, ``, ``, `${userSleepWeek[6].date}`]
@@ -119,4 +118,4 @@ const updateSleepChart = () => {
   });
 }
 
-export default { updateHydroDateChart, todaysHydroChart, updateStepChart, updateSleepChart, updateHydroWeeklyChart };
+export default { updateHydroDateChart, updateStepChart, updateSleepChart, updateHydroWeeklyChart };

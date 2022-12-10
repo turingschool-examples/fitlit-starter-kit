@@ -11,7 +11,7 @@ describe('User', function () {
   let selectedUserInt;
   let selectedUser;
 
-  this.beforeEach(() => {
+  beforeEach(() => {
     selectedUserInt = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
     selectedUser = new User(userTestData[selectedUserInt]);
   });

@@ -103,4 +103,30 @@ const updateStepChart = () => {
     })
   }
 
-export default { updateHydroDateChart, todaysHydroChart, updateStepChart };
+const updateSleepChart = () => {
+  const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.sleepData);
+  const userSleepWeek = userRepo.selectedUser.findWeekSleep(todaysDate);
+  userSleepWeek.reverse();
+  console.log(userSleepWeek);
+  sleepDblDataChart = new Chart(sleepChart, {
+    type: 'bar',
+    data: {
+        datasets: [{
+            label: 'Hours Slept',
+            data: [userSleepWeek[0].hoursSlept, userSleepWeek[1].hoursSlept, userSleepWeek[2].hoursSlept, userSleepWeek[3].hoursSlept, userSleepWeek[4].hoursSlept, userSleepWeek[5].hoursSlept, userSleepWeek[6].hoursSlept],
+            // this dataset is drawn below
+            order: 2
+        }, {
+            label: 'Sleep Quality',
+            data: [userSleepWeek[0].sleepQuality, userSleepWeek[1].sleepQuality, userSleepWeek[2].sleepQuality, userSleepWeek[3].sleepQuality, userSleepWeek[4].sleepQuality, userSleepWeek[5].sleepQuality, userSleepWeek[6].sleepQuality],
+            type: 'line',
+            // this dataset is drawn on top
+            order: 1
+        }],
+        labels: [`${userSleepWeek[0].date}`, `${userSleepWeek[1].date}`, `${userSleepWeek[2].date}`, `${userSleepWeek[3].date}`, `${userSleepWeek[4].date}`, `${userSleepWeek[5].date}`, `${userSleepWeek[6].date}`]
+    },
+    // options: options
+  });
+}
+
+export default { updateHydroDateChart, todaysHydroChart, updateStepChart, updateSleepChart };

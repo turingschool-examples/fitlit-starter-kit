@@ -71,6 +71,17 @@ class Sleep {
         })
     };
 
+
+    getSleepQualityAllUsers() {
+        const avgSleepQualityAllUsers = this.sleepData.reduce((acc, dataPoint) => {
+            acc += dataPoint.sleepQuality
+            return acc
+        }, 0)
+        console.log(this.sleepData.length);
+        return (avgSleepQualityAllUsers / this.sleepData.length).toFixed(1);
+    }
+    
+
     // sleep quality
 
     // all users, average sleep quality

@@ -1,5 +1,6 @@
 // import './images/turing-logo.png'
 import './css/styles.css';
+import makeCharts from './charts';
 import { getAPIData } from './apiCalls'
 import User from '../src/User';
 import UserRepository from './UserRepository';
@@ -17,7 +18,7 @@ let currentUser
 
 //Query Selectors
 let sleepBox = document.querySelector('.zero')
-let stepGoalBox = document.querySelector('.one')
+let stepGoalBox = document.querySelector('#step-text')
 let infoBox = document.querySelector('.two')
 //let activityBox = document.querySelector('.three')
 let sleepHistoryBox = document.querySelector('.four')
@@ -58,11 +59,11 @@ function getAllData() {
 function displayUserInfo() {
   // getAllData()
   userInfoList.innerHTML += `<li>${currentUser.userData.name}</li>
-                            <li>${currentUser.userData.address}</li> 
-                            <li>${currentUser.userData.email}</li>
-                            <li>Stride Length: ${currentUser.userData.strideLength}</li>
-                            <li>Daily Step Goal: ${currentUser.userData.dailyStepGoal}</li>
-                            <li>Friends: ${getUserFriends()}</li>`
+  <li>${currentUser.userData.address}</li> 
+  <li>${currentUser.userData.email}</li>
+  <li>Stride Length: ${currentUser.userData.strideLength}</li>
+  <li>Daily Step Goal: ${currentUser.userData.dailyStepGoal}</li>
+  <li>Friends: ${getUserFriends()}</li>`
 }
 
 function displayWelcomeName() {
@@ -118,5 +119,6 @@ function loadPage() {
   displayWater()
   displaySleep()
   displaySleepHistory()
+  makeCharts()
 }
 

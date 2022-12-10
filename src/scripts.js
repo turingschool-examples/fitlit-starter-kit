@@ -110,10 +110,13 @@ function displayWater() {
 // }
 
 function displaySleep() {
-
-  sleepInfoList.innerHTML += `<li>Last night you slept ${currentUser.sleepOnSpecificDate('2019/06/15')} hours</li>
-  <li>The quality of your sleep last night was ${currentUser.sleepQualityOnSpecificDate('2019/06/15')} out of 5</li> 
-  <li>Your weekly sleep pattern: ${currentUser.givenWeekSleepDataByDay()} - ${currentUser.givenWeeksSleepQualityByDay()}</li>`
+  let dailySleep = currentUser.sleepOnSpecificDate('2019/06/15')
+  let maxSleep = 12
+  let result = [dailySleep, maxSleep]
+  return result
+  // sleepInfoList.innerHTML += `<li>Last night you slept ${currentUser.sleepOnSpecificDate('2019/06/15')} hours</li>
+  // <li>The quality of your sleep last night was ${currentUser.sleepQualityOnSpecificDate('2019/06/15')} out of 5</li> 
+  // <li>Your weekly sleep pattern: ${currentUser.givenWeekSleepDataByDay()} - ${currentUser.givenWeeksSleepQualityByDay()}</li>`
 }
 
 function displaySleepHistory() {
@@ -129,7 +132,7 @@ function loadPage() {
   // displayWater()
   // displaySleep()
   // displaySleepHistory()
-  loadCharts(displayStepGoal(), displayWater())
+  loadCharts(displayStepGoal(), displayWater(), displaySleep())
 }
 
 // export default displayStepGoal;

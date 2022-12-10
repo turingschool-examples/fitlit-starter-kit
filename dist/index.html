@@ -5,18 +5,20 @@
     <title>Fitlit</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
+    <section class="header"> 
+      <h1>Activity Tracker</h1>
+      <section class="user-welcome">
+        <p id="userName"></p>
+      </section>
+    </section>
     <div class="dashboard">
       <div class="left-section">
         <nav id="userInfo"></nav>
-        <div style="width: 300px;">
-          <canvas id="stepGoalAvg"></canvas>
+        <div style="width: 275px;">
+          <canvas class="step-goal"id="stepGoalAvg"></canvas>
         </div>
       </div>
       <main class="main">
-        <section class="user-welcome">
-          <p id="userName"></p>
-        </section>
         <div class="main-report">
           <section class=" week" id="week">
             <div style="width: 800px;">

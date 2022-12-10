@@ -10,6 +10,9 @@ const createChart = function (hydration, sleepQuality, sleepHours) {
           label: hydration.label,
           yAxisID: "hydration",
           data: hydration.count,
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'white',
+          borderWidth: 1
         },
         {
           label: sleepQuality.label,

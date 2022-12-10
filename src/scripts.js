@@ -21,6 +21,7 @@ const displayWeekly = document.querySelector("#week");
 const currentSleep = document.querySelector("#currentDaySleep");
 const allTimeSleep = document.querySelector("#allTimeSleep");
 
+
 fetchAll().then((data) => {
   console.log(data);
   allUserData = new UserRepository(
@@ -36,14 +37,16 @@ fetchAll().then((data) => {
   pageLoadHandler();
 });
 
-function pageLoadHandler() {
+
+function pageLoadHandler(event) {
   displayUserName(currentUser);
-  displayUserInfo(currentUser);
+  displayUserInfo(currentUser, allUserData);
   // displayComparedStepGoal(currentUser, allUserData);
   displayCurrentDayHydration(allUserHydro, currentDate);
   // displayWeeklyInfo(allUserHydro, allUserSleep, currentDate);
   // displayCurrentDaySleep();
   // displayAllTimeSleep();
+  console.log(currentUser)
   createChart(allUserHydro.returnWeeklyWaterConsumption(currentUser.id, currentDate), allUserSleep.returnSleepQualityByWeek(currentUser.id, currentDate), allUserSleep.returnHoursSleptByWeek(currentUser.id, currentDate))
   sleepChart(allUserSleep.returnHoursSleptByDate(currentUser.id, currentDate), allUserSleep.calcAvgSleepQualityPerDay(currentUser.id), allUserSleep.calcAvgSleepPerDay(currentUser.id))
   stepGoalChart(currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal())
@@ -53,7 +56,7 @@ const displayUserName = function (user) {
   userNameDisplay.innerText = `Welcome, ${user.getFirstName()}!`;
 };
 
-const displayUserInfo = function (user) {
+const displayUserInfo = function (user, repository) {
   userDisplay.innerHTML = `
   <div>
     <p class="id">User ID: ${user.id}</p>
@@ -62,7 +65,7 @@ const displayUserInfo = function (user) {
     <p class="email">Email: ${user.email}</p>
     <p class="daily-step-goal">Step Goal: ${user.dailyStepGoal}</p>
     <p class="stride-length">Stride Length: ${user.strideLength}</p>
-    <p class="friends">Friends: ${user.friends}</p>
+    <p class="friends">Friends: ${repository.getFriendData(user.friends)}</p>
   </div>`;
 };
 

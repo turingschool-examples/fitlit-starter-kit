@@ -1,4 +1,3 @@
-//---> what does the fetched data look like for the param hydrationData?
 class Hydration {
     constructor(id, hydrationData) {
          this.userID = id;
@@ -14,8 +13,8 @@ class Hydration {
             }
         });
         this.oneUserDataSet = oneUserArray;
-        return this.oneUserDataSet
-    };
+        return this.oneUserDataSet;
+    }
 
     getAvgConsumed() {
         let ouncesConsumedPerDay = this.dataSet.filter(element => element.userID === this.userID).map(element => element.numOunces);
@@ -42,6 +41,4 @@ class Hydration {
     }
 }
 
-
-//module.exports = Hydration;
 export default Hydration;

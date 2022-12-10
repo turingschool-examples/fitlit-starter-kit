@@ -25,6 +25,7 @@ let currentUser
  let activityTrackerTitle = document.querySelector('h1')
  let userInfoList = document.querySelector("#userInfoList")
  let hydrationInfoList = document.querySelector("#hydrationInfoList")
+ let sleepInfoList = document.querySelector("#sleepInfoList")
 
 // Event Listeners
 window.addEventListener('load', getAllData)
@@ -67,7 +68,7 @@ function displayWelcomeName() {
   activityTrackerTitle.innerText += ` ${currentUser.getFirstName()}`
  }
 
-function stepGoalDisplay() {
+function displayStepGoal() {
   stepGoalBox.innerText = `Your step goal is ${currentUser.userData.dailyStepGoal} steps. The average step goal is ${users.stepGoalAverage()}.`
 } 
 
@@ -91,11 +92,17 @@ function displayWater() {
 
 }
 
+function displaySleep() {
+  sleepInfoList.innerHTML += `<li>Last night you slept ${currentUser.sleepOnSpecificDate('2019/06/15')} hours</li>
+  <li>The quality of your sleep last night was ${currentUser.sleepQualityOnSpecificDate('2019/06/15')} out of 5</li> `
+}
+
 function loadPage() {
   getUser(sleep, hydration)
   displayUserInfo()
-  stepGoalDisplay()
+  displayStepGoal()
   displayWelcomeName()
   displayWater()
+  displaySleep()
 }
 

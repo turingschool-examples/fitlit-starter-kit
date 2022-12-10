@@ -9,7 +9,7 @@ var barColors = [
   "#00aba9",
 ];
 const steps = document.getElementById('stepGoal');
-function makeCharts(yValues) {
+function makeStepCharts(yValues) {
   new Chart(steps, {
     type: "doughnut",
     data: {
@@ -22,10 +22,35 @@ function makeCharts(yValues) {
     options: {
       title: {
         display: true,
-        text: "World Wide Wine Production 2018"
+        text: "Today"
       }
     }
   });
 }
 
-export default makeCharts;
+var h20ChartKeys = ["Water Today", "H2O Goal"] 
+const dailyHydration = document.getElementById('dailyHydration')
+function makeDailyH20Charts(yValues) {
+  new Chart(dailyHydration, {
+    type: "doughnut",
+    data: {
+      labels: ["Water Today", "H20 Goal"],
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Today"
+      }
+    }
+  });
+}
+
+function loadCharts(stepYValues, dailyH2OYValues) {
+  makeStepCharts(stepYValues)
+  makeDailyH20Charts(dailyH2OYValues)
+}
+export default loadCharts;

@@ -29,13 +29,13 @@ class Sleep {
         if (!hours[index + 6]) {
             return {
               count: hours.slice(-7),
-              label: 'Weekly Hours Slept',
+              label: 'Hours Slept',
               dates: dates.slice(-7)
             }
         }
         return {
           count: hours.slice(index, index + 7),
-          label: 'Weekly Hours Slept',
+          label: 'Hours Slept',
           dates: dates.slice(index, index + 7)
         }
     }
@@ -48,13 +48,13 @@ class Sleep {
         if (!quality[index + 6]) {
             return {
               count: quality.slice(-7),
-              label: 'Weekly Sleep Quality',
+              label: 'Sleep Quality',
               dates: dates.slice(-7)
             }
         }
         return {
           count: quality.slice(index, index + 7),
-          label: 'Weekly Sleep Quality',
+          label: 'Sleep Quality',
           dates: dates.slice(index, index + 7)
         }
     }

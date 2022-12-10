@@ -21,13 +21,13 @@ class Hydration{
         if (!ounces[index + 6]) {
           return {
             count: ounces.slice(-7),
-            label: 'Weekly Water Consumption',
+            label: 'Water Consumption',
             dates:  dates.slice(-7)
           }
         }
         return {
           count: ounces.slice(index, index + 7),
-          label: 'Weekly Water Consumption',
+          label: 'Water Consumption',
           dates:  dates.slice(index, index + 7)
         }
     }

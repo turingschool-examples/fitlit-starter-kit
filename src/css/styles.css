@@ -1,9 +1,9 @@
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #f8e6f2 99%, #ffffff 100%);
-  background-repeat: no-repeat;
   height: 100%;
   width: 100%;
-  display:flex;
+  display: flex;
+  background-color: #404040;
+  color: white;
 }
 body {
   flex-direction: column;
@@ -11,6 +11,7 @@ body {
 .dashboard {
   display: flex;
   flex-direction: row;
+  height: -webkit-fill-available;
 }
 .left-section {
   width: 25%;
@@ -22,7 +23,8 @@ body {
   display: flex;
   flex-direction: column;
   background-color: antiquewhite;
-  border-radius: 8px
+  border-radius: 8px;
+  background-color: #404040;
 }
 
 .week, .hydration, .sleep {
@@ -35,12 +37,25 @@ body {
   border-radius: 8px;
 }
 .week {
-  background-color: #ff9a9e;
+  background-color: #404040;
+  margin-bottom: 50px;
 }
 
 .hydration{
-  background-color:skyblue;
+  background-color:#1982c4;
 }
 .sleep {
   background-color: darkkhaki;
 }
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.user-welcome {
+  padding-left: 125px;
+}
+

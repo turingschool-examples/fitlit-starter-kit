@@ -38,7 +38,7 @@ fetchAll().then((data) => {
 
 function pageLoadHandler() {
   displayUserName(currentUser);
-  displayUserInfo(currentUser);
+  displayUserInfo(currentUser, allUserData);
   // displayComparedStepGoal(currentUser, allUserData);
   displayCurrentDayHydration(allUserHydro, currentDate);
   // displayWeeklyInfo(allUserHydro, allUserSleep, currentDate);
@@ -53,7 +53,8 @@ const displayUserName = function (user) {
   userNameDisplay.innerText = `Welcome, ${user.getFirstName()}!`;
 };
 
-const displayUserInfo = function (user) {
+const displayUserInfo = function (user, repository) {
+  console.log(user)
   userDisplay.innerHTML = `
   <div>
     <p class="id">User ID: ${user.id}</p>
@@ -62,7 +63,7 @@ const displayUserInfo = function (user) {
     <p class="email">Email: ${user.email}</p>
     <p class="daily-step-goal">Step Goal: ${user.dailyStepGoal}</p>
     <p class="stride-length">Stride Length: ${user.strideLength}</p>
-    <p class="friends">Friends: ${user.friends}</p>
+    <p class="friends">Friends: ${repository.getFriendData(user.friends)}</p>
   </div>`;
 };
 

@@ -1,9 +1,10 @@
 // import './images/turing-logo.png'
 import './css/styles.css';
-import makeCharts from './charts';
+// import makeStepCharts from './charts';
 import { getAPIData } from './apiCalls'
 import User from '../src/User';
 import UserRepository from './UserRepository';
+import loadCharts from './charts';
 
 // Global Variables
 // let one = 1
@@ -94,8 +95,12 @@ function getUserFriends() {
 }
 
 function displayWater() {
-  hydrationBox.innerText += `Your water intake for today is ${currentUser.getWaterPerDay('2019/06/15')} ounces`
-  hydrationInfoList.innerHTML += `<li>Your weekly water intake is ${currentUser.getWeeklyConsumption()} ounces</li>`
+  let dailyWaterIntake = currentUser.getWaterPerDay('2019/06/15')
+  let dailyWaterGoal = 96
+  let result = [dailyWaterIntake, dailyWaterGoal]
+  return result
+  // hydrationBox.innerText += `Your water intake for today is ${currentUser.getWaterPerDay('2019/06/15')} ounces`
+  // hydrationInfoList.innerHTML += `<li>Your weekly water intake is ${currentUser.getWeeklyConsumption()} ounces</li>`
 
 }
 
@@ -124,7 +129,7 @@ function loadPage() {
   // displayWater()
   // displaySleep()
   // displaySleepHistory()
-  makeCharts(displayStepGoal())
+  loadCharts(displayStepGoal(), displayWater())
 }
 
 // export default displayStepGoal;

@@ -43,6 +43,7 @@ window.addEventListener('load', function () {
             displayStepGoalComparison();
             displaySelectedUserInformation();
             displayHydrationData();
+            displaySleepData();
             activityCharts.updateHydroDateChart(); //update charts upon page load
         });
 });
@@ -98,9 +99,19 @@ function displayHydrationData() {
 };
 
 //Sleep data display
-// function displaySleepData() {
+function displaySleepData() {
+  const today = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData);
+  let sleepHours = userRepo.selectedUser.findDaySleepHours(today);
+  let sleepQuality = userRepo.selectedUser.findDaySleepQuality(today);
+  sleepToday.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
 
-// }
+  //refactor average sleep data methods to be 1 dynamic method and invoke for data below
+
+  // sleepHours = 
+  // sleepQuality = userRepo.selectedUser.averageSleepQuality()
+  // sleepUserAvg.innerText = `${}`;
+  // sleepGlobalAvg.innerText = ``;
+}
 // User Profile Information Display
 function displaySelectedUserInformation() {
   // Added space manually with this interpolation but can fix later with CSS

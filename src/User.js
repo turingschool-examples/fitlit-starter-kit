@@ -11,8 +11,9 @@ class User {
     this.hydrationData = [];
     this.sleepData = [];
   };
-  createUserArrays(userArray) {
-    userArray.sort((day1,day2) => {
+  sortUserArrays(userDataProperty) {
+    userDataProperty.sort
+    userDataProperty.sort((day1,day2) => {
         return (day1.date).localeCompare(day2.date)
     })
   }
@@ -20,8 +21,9 @@ class User {
     let userNameSplitArray = this.name.split(' ');
     return userNameSplitArray[0];
   };
-  findLatestDate(userArray) {
-    return userArray[userArray.length - 1].date
+  findLatestDate(userDataProperty) {
+    this.sortUserArrays(userDataProperty);
+    return userDataProperty[userDataProperty.length - 1].date
   }
   findDaysHydration(selectedDate){
     var result = this.hydrationData.find(day => day.date === selectedDate)

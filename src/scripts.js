@@ -3,6 +3,9 @@
 
 // An example of how you tell webpack to use a CSS file
 import './html-css/styles.css';
+import activityCharts from './activityCharts';
+// import updateHydroDateChart from './activityCharts';
+// import { todaysHydroChart } from './activityCharts'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
@@ -35,6 +38,7 @@ window.addEventListener('load', function () {
             displayUserStepGoal();
             displayStepGoalComparison();
             displaySelectedUserInformation();
+            activityCharts.updateHydroDateChart(); //update charts upon page load
         });
 });
 
@@ -96,3 +100,5 @@ import UserRepository from './UserRepository';
 import User from './User';
 import Hydration from './Hydration';
 import Sleep from './Sleep';
+
+export { userRepo }; //saying it won't export this

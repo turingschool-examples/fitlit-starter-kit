@@ -5,10 +5,15 @@ class Sleep {
         this.sleepData = sleepData 
     };
 
-    avgHoursSleptPerDay (iD) {
+    getUserData(iD) {
         const userSleepData = this.sleepData.filter(user => {
             return user.userID === iD
         })
+        return userSleepData;
+    }
+
+    avgHoursSleptPerDay (iD) {
+        const userSleepData = this.getUserData(iD);
         const totalHoursSlept = userSleepData.reduce((acc, dataPoint) => {
             acc += dataPoint.hoursSlept
             return acc
@@ -17,9 +22,7 @@ class Sleep {
     };
     
     avgSleepQuality (iD) {
-        const userSleepData = this.sleepData.filter(user => {
-            return user.userID === iD
-        })
+        const userSleepData = this.getUserData(iD);
         const totalSleepQuality = userSleepData.reduce((acc, dataPoint) => {
             acc += dataPoint.sleepQuality
             return acc
@@ -28,24 +31,17 @@ class Sleep {
     };
     
     getHoursSleptOnDay(iD, date) {
-        const userSleepData = this.sleepData.filter(user => {
-            return user.userID === iD && user.date === date
-        })
+        const userSleepData = this.getUserData(iD);
         return userSleepData[0].hoursSlept
     };
 
     getSleepQualityOnDay(iD, date) {
-        const userSleepData = this.sleepData.filter(user => {
-            return user.userID === iD && user.date === date
-        })
+        const userSleepData = this.getUserData(iD);
         return userSleepData[0].sleepQuality
     };
 
     getHoursSleptOverWeek(iD, startDate) {
-        const userSleepData = this.sleepData.filter(user => {
-            return user.userID === iD
-        })
-
+        const userSleepData = this.getUserData(iD);
         const obj = userSleepData.find(dataPoint => {
             return dataPoint.date === startDate
         })
@@ -57,10 +53,7 @@ class Sleep {
     };
 
     getSleepQualityOverWeek(iD, startDate) {
-        const userSleepData = this.sleepData.filter(user => {
-            return user.userID === iD
-        })
-
+        const userSleepData = this.getUserData(iD);
         const obj = userSleepData.find(dataPoint => {
             return dataPoint.date === startDate
         })
@@ -71,7 +64,6 @@ class Sleep {
         })
     };
 
-
     getSleepQualityAllUsers() {
         const avgSleepQualityAllUsers = this.sleepData.reduce((acc, dataPoint) => {
             acc += dataPoint.sleepQuality
@@ -80,11 +72,6 @@ class Sleep {
         console.log(this.sleepData.length);
         return (avgSleepQualityAllUsers / this.sleepData.length).toFixed(1);
     }
-    
-
-    // sleep quality
-
-    // all users, average sleep quality
 
 }
 

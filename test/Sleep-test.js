@@ -55,4 +55,11 @@ describe('Sleep', () => {
 
     })
 
+    it('should have a method that return the sleep quality over 7 days', () => {
+        let user1 = sleep.getSleepQualityOverWeek(1, '2019/06/15')
+
+        console.log("user1", user1)
+
+    })
+
 })

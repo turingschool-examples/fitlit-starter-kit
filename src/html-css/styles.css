@@ -48,10 +48,6 @@ body, html {
   font-size: 3.5vw;
 }
 
-.hidden {
-  display: none!important;
-}
-
 .user-avatar {
   border-radius: 50%;
   margin-top: -30px;
@@ -84,6 +80,7 @@ body, html {
   margin-bottom: -30%;
   margin-top: -20%;
   font-size:xx-large;
+  
 }
 
 .user-tab {
@@ -101,4 +98,8 @@ body, html {
 .user-name {
   margin-top: 35%;
   margin-bottom: 30%;
+}
+
+.hidden {
+  display: none;
 }

@@ -38,6 +38,8 @@ window.addEventListener('load', function () {
         });
 });
 
+userAvatar.addEventListener('click', toggleProfileInfo)
+
 // Welcome message display
 function showPersonalizedWelcome() {
   welcomeMessage.innerText = `--------Welcome, ${userRepo.selectedUser.name}!`;
@@ -63,6 +65,18 @@ function showUserInfoDisplay() {
     var friendID = document.querySelector(`.friend-${friend}`)
     friendID.style.backgroundColor = selectRandom(profileBackgrounds)
   })
+}
+
+function toggleProfileInfo() {
+  if (friendsDisplay.classList != 'hidden'){
+    friendsDisplay.classList.add('hidden')
+    friendsDisplay.classList.remove("friends-profile")
+    userProfile.classList.remove('hidden')
+  } else {
+    friendsDisplay.classList.remove('hidden')
+    friendsDisplay.classList.add('friends-profile')
+    userProfile.classList.add('hidden')
+  }
 }
 
 // User step goal display

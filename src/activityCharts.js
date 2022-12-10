@@ -87,8 +87,15 @@ const updateStepChart = () => {
           scales: {
             y: {
               beginAtZero: true
-            }
-          }}
+            },
+          },
+          // this removes the legend
+          plugins: {
+            legend: {
+                display: false
+            },
+          },
+        }
     })
   }
 
@@ -113,7 +120,7 @@ const updateSleepChart = () => {
             // this dataset is drawn on top
             order: 1
         }],
-        labels: [`${userSleepWeek[0].date}`, ``, ``, `${userSleepWeek[3].date}`, ``, ``, `${userSleepWeek[6].date}`]
+        labels: ['Day 1','Day 2','Day 3','Day 4','Day 5','Day 6', 'Day 7']
     },
     // options: {
     //   aspect-ratio: {1000 / 500};

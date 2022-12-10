@@ -6,11 +6,13 @@ import './html-css/styles.css';
 import activityCharts from './activityCharts';
 import apiCalls from './apiCalls';
 import UserRepository from './UserRepository';
+
 // import updateHydroDateChart from './activityCharts';
 // import { todaysHydroChart } from './activityCharts'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
+import './images/walkingIcon.svg'
 
 // Query Selectors
 const userPromise = apiCalls.loadUserData()
@@ -18,7 +20,6 @@ const hydrationPromise = apiCalls.loadHydrationData()
 const sleepPromise = apiCalls.loadSleepData()
 const welcomeMessage = document.querySelector('#welcomeMessage')
 const friendsDisplay = document.querySelector('#friends')
-const stepGoal = document.querySelector('#stepGoal')
 const stepGoalVsAvg = document.querySelector('#stepGoalVsAvg')
 const userProfile = document.querySelector('#profile')
 const userName = document.querySelector('#userName')
@@ -43,7 +44,6 @@ window.addEventListener('load', function () {
             currentUser = userRepo.selectedUser
             showPersonalizedWelcome();
             showUserInfoDisplay();
-            displayUserStepGoal();
             displayStepGoalComparison();
             displaySelectedUserInformation();
             displayHydrationData();
@@ -99,17 +99,20 @@ function toggleProfileInfo() {
   }
 }
 
-// User step goal display
-function displayUserStepGoal() {
-  stepGoal.innerText = `Step goal: ${userRepo.selectedUser.dailyStepGoal} steps per day`;
-}
 
 // Step Goal vs. Avg all users
 function displayStepGoalComparison() {
-  // Added space manually with this interpolation but can fix later with CSS
-  stepGoalVsAvg.innerText = `Your step goal: ${userRepo.selectedUser.dailyStepGoal}
+  if (userRepo.selectedUser.dailyStepGoal > userRepo.averageSteps()) {
+    let stepGoalDiff =  userRepo.selectedUser.dailyStepGoal - userRepo.averageSteps();
+    stepGoalVsAvg.innerText = `Nice work! Your step goal is
+    ${stepGoalDiff} steps above average!`
+  } else {
+    let stepGoalDiff =  userRepo.averageSteps() - userRepo.selectedUser.dailyStepGoal;
+    stepGoalVsAvg.innerText = `Your step goal is ${stepGoalDiff} steps below average.
 
-  Average Step Goal: ${userRepo.averageSteps()}`
+    Consider increasing your goal for your fitness.`
+  }
+  
 }
 // Hydration data display
 function displayHydrationData() {

@@ -25,33 +25,32 @@
             <section class="profile hidden" id="profile">
             </section>
         </aside>
-        <section class="fit-data" id="steps">
+        <section class="fit-data-section" id="steps">
             <h2 class="fit-data-header">Steps</h2>
-            <p class="fit-data" id="stepGoal">steps goal displayed here</p>
-            <p class="fit-data highlight">something to highlight here (steps are not actually a value passed in? so we should pick something else)</p>
-            <!-- MADE AN ID ON THIS -->
-            <h4 class="fit-data chart-header" id="stepGoalVsAvg">Your Step Goal vs. Average Step Goal</h4>
+            <img src="./images/walkingIcon.svg" class="walking-icon">
+            <h4 class="fit-data chart-header">Your Step Goal vs. Average Step Goal</h4>
+            <p class="fit-data highlight" id="stepGoalVsAvg"></p>
             <div>
                 <canvas id="stepGoalChart"></canvas>
             </div>
         </section>
-        <section class="fit-data" id="sleep">
+        <section class="fit-data-section" id="sleep">
             <h2 class="fit-data-header">Sleep</h2>
-            <h4 class="fit-data sleep-today">Your Sleep For Today</h4>
-            <p class="fit-data" id="sleepToday">insert today's sleep data here</p>
-            <h4 class="fit-data sleep-user-avg">Compare to Your Average</h4>
+            <h4 class="fit-data">Your Sleep For Today</h4>
+            <p class="fit-data highlight" id="sleepToday">insert today's sleep data here</p>
+            <h4 class="fit-data sleep-user-avg">Your average sleep for the last week</h4>
             <p class="fit-data highlight" id="sleepUserAvg">insert averaged user sleep data here</p>
-            <h4 class="fit-data sleep-global-avg">Compare to Other Users</h4>
+            <h4 class="fit-data sleep-global-avg">Compared to all users' average</h4>
             <p class="fit-data highlight" id="sleepGlobalAvg">insert averaged global sleep data here</p>
             <h4 class="fit-data chart-header">Your Sleep for the Last 7 Days</h4>
             <div class="fit-data week-sleep">
                 <canvas id="weeksSleepChart"></canvas>
             </div>
         </section>
-        <section class="fit-data" id="hydration">
+        <section class="fit-data-section" id="hydration">
             <h2 class="fit-data-header">Hydration</h2>
             <div class="fit-data day-hydro">
-                <canvas id="todaysHydrationChart"></canvas>
+                <canvas class="hydation-chart" id="todaysHydrationChart"></canvas>
             </div>
             <p class="fit-data" id="hydrationToday">insert today's hydration data here</p>
             <p class="fit-data" id="hydrationGoal">Hydration comparison data here</p>

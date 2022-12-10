@@ -123,12 +123,13 @@ function displaySleepData() {
   let sleepQuality = userRepo.selectedUser.findDaySleepQuality(today);
   sleepToday.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
 
-  //refactor average sleep data methods to be 1 dynamic method and invoke for data below
+  sleepHours = userRepo.selectedUser.averageSleepHours();
+  sleepQuality = userRepo.selectedUser.averageSleepQuality();
+  sleepUserAvg.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
 
-  // sleepHours = 
-  // sleepQuality = userRepo.selectedUser.averageSleepQuality()
-  // sleepUserAvg.innerText = `${}`;
-  // sleepGlobalAvg.innerText = ``;
+  sleepHours = userRepo.calculateAllUserAvgSleep('hoursSlept');
+  sleepQuality = userRepo.calculateAllUserAvgSleep('sleepQuality');
+  sleepGlobalAvg.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
 }
 // User Profile Information Display
 function displaySelectedUserInformation() {

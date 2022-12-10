@@ -3,7 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="styleSheet" href="../src/css/styles.css">
+  <!-- <link rel="styleSheet" href="../src/css/styles.css"> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+  </script> -->
   <title>Fitlit</title>
 </head>
 
@@ -16,7 +18,10 @@
     <section class="grid-container">
       <section class="grid-item zero" id="0">Sleep <ul id="sleepInfoList"> </ul>
       </section>
-      <section class="grid-item one" id="1">Step Goal
+      <section class="grid-item one" id="1">
+        <span id="step-text">Step Goal</span>
+        <canvas id="stepGoal" style="width:100%;max-width:600px"></canvas>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
       </section>
       <section class="grid-item two" id="2">Your Info <ul id="userInfoList"> </ul>
       </section>
@@ -31,6 +36,7 @@
 
   <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
+  
   <!-- <script type="text/javascript" src="../src/scripts.js"></script> -->
 </body>
 

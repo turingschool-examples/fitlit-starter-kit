@@ -63,11 +63,11 @@ body, html {
 .user-avatar {
   border-radius: 50%;
   border: 0px;
-  width: 45%;
-  height: 10vh;
+  width: 62px;
+  height: 62px;
   margin-bottom: -30%;
-  margin-top: -20%;
-  font-size:xx-large;
+  margin-top: -30px;
+  font-size: 26px;
 }
 
 .single-friend {
@@ -75,6 +75,8 @@ body, html {
   align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
+  width: 14vw;
+  font-size: 14px;
 }
 
 .friend-avatar {
@@ -82,8 +84,8 @@ body, html {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 0px;
+  margin-right: 8px;
   border: 0px;
   height: 40px;
   width: 40px;
@@ -91,8 +93,8 @@ body, html {
 }
 
 .user-tab {
-  height: 65vh;
-  width: 12vw;
+  height: 75vh;
+  width: 15vw;
   margin-top: 3%;
   margin-bottom: 3%;
   background-color: #78C1E7;
@@ -105,6 +107,7 @@ body, html {
 .user-name {
   margin-top: 35%;
   padding-bottom: 5%;
+  font-size: 20px;
 }
 
 .hidden {

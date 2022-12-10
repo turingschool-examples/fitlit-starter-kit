@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import Hydration from '../src/Hydration.js';
 import hydrationData from './MockHydroData.js';
-​
-​
+
+
 // "hydrationData": line 3 is a declaration
-​
+
 describe ("Hydration", function() {
     let hydration;
     let hydrationData;
@@ -55,42 +55,44 @@ describe ("Hydration", function() {
     });
 //is it deep equal a Class instance?
     it('should instantiate our good friend Hydration', function() {
-        expect(hydration.dataSet).to.deep.equal(hydrationData);
+        expect(hydration.dataSet).to.deep.equal(miniHydrationData);
     });
 //test property userID
     it('should have a userID', function() {
-        expect(hydration.userID).to.equal(1);
-    });
-//test property date
-    it('should have a date', function() {
-        expect(hydration.date).to.equal("2019/06/15");
-    });
-//test property numOunces
-    it('should have the number of fluid ounces of water consumed on a particular day', function() {
-        expect(hydration.numOunces).to.equal(37);
+        expect(hydration.userID).to.equal(miniHydrationData[0].userID);
     });
 //test property dataSet
-    it
+    it('should receive information from a data set', function() {
+        expect(hydration.dataSet).to.equal(miniHydrationData)
+    });
 //test property oneUserDataSet
-    it
+    it('should have a property to store a data set for one user', function() {
+        expect(hydration.oneUserDataSet).to.be.a.property;
+    })
+//test property today
+    it('should have a property to store a date for today', function() {
+        expect(hydration.today).to.be.a.property;
+    })
 //-------methods------------
 //method0
     it('should have a method to create a hydration data set for a particular user', function() {
-​
+        hydration.getOneUserData(miniHydrationData);
+        console.log(hydration.oneUserDataSet);
+       // expect(hydration.oneUserDataSet).to.deep.equal(miniHydrationData);
     })
 //method1
     it('should have a method to return the average fluid ounces consumed per day by a user for all time', function() {
         expect(returnAverageOuncesConsumed()).to.equal(66)
-​
+
         //happy and sad paths in these methods?
     });
 //method2
     it('should have a method to return the ounces water consumed for a particular date passed as an argument', function() {
-​
+
     })
 //method3
     it('should have a method to return the user hydration for the most recent 7 days', function() {
-​
+
     })
 });
 //revisit: are there different possible outcomes to test for based on different arguments being passed in?

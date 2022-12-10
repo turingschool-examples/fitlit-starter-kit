@@ -4,6 +4,8 @@
 // An example of how you tell webpack to use a CSS file
 import './html-css/styles.css';
 import activityCharts from './activityCharts';
+import apiCalls from './apiCalls';
+import UserRepository from './UserRepository';
 // import updateHydroDateChart from './activityCharts';
 // import { todaysHydroChart } from './activityCharts'
 
@@ -49,6 +51,7 @@ window.addEventListener('load', function () {
             activityCharts.updateHydroDateChart();
             activityCharts.updateStepChart(); //update charts upon page load
             activityCharts.updateSleepChart();
+            activityCharts.updateHydroWeeklyChart();
         });
 });
 
@@ -75,7 +78,7 @@ function showUserInfoDisplay() {
     friendsDisplay.innerHTML += `
     <div class="single-friend">
       <div class="friend-avatar friend-${friend}">${selectRandom(profileEmojis)}</div> 
-        ${(userRepo.findUser(friend)).name};
+        ${(userRepo.findUser(friend)).name}
     </div>
     `;
     var friendID = document.querySelector(`.friend-${friend}`)
@@ -148,11 +151,5 @@ function displaySelectedUserInformation() {
 
   ${userRepo.selectedUser.strideLength}`
 }
-
-
-import apiCalls from './apiCalls';
-import UserRepository from './UserRepository';
-import activityCharts from './activityCharts.js';
-
 
 export { userRepo };

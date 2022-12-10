@@ -129,4 +129,4 @@ const updateSleepChart = () => {
   });
 }
 
-export default { updateHydroDateChart, todaysHydroChart, updateStepChart, updateSleepChart };
+export default { updateHydroDateChart, todaysHydroChart, updateStepChart, updateSleepChart, updateHydroWeeklyChart };

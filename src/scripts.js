@@ -20,7 +20,8 @@ const hydrationBox = document.querySelector("#hydration");
 const displayWeekly = document.querySelector("#week");
 const currentSleep = document.querySelector("#currentDaySleep");
 const allTimeSleep = document.querySelector("#allTimeSleep");
-let dropDownCalendar = document.getElementById('myDate').value = new Date();
+
+
 
 fetchAll().then((data) => {
   console.log(data);
@@ -50,7 +51,12 @@ function pageLoadHandler(event) {
   createChart(allUserHydro.returnWeeklyWaterConsumption(currentUser.id, currentDate), allUserSleep.returnSleepQualityByWeek(currentUser.id, currentDate), allUserSleep.returnHoursSleptByWeek(currentUser.id, currentDate))
   sleepChart(allUserSleep.returnHoursSleptByDate(currentUser.id, currentDate), allUserSleep.calcAvgSleepQualityPerDay(currentUser.id), allUserSleep.calcAvgSleepPerDay(currentUser.id))
   stepGoalChart(currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal())
+  let dropDownCalendar = document.getElementById('myDate').value = currentDate;
+  
+  console.log(currentDate)
 }
+
+
 
 const displayUserName = function (user) {
   userNameDisplay.innerText = `Welcome, ${user.getFirstName()}!`;
@@ -106,8 +112,10 @@ const displayAllTimeSleep = function () {
   `;
 };
 
-function myFunction() {
+function createCalendar() {
   let dropDownCalendar = document.getElementById('myDate').value 
   console.log(dropDownCalendar)
 }
+
+
 

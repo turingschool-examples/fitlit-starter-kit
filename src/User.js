@@ -39,7 +39,6 @@ class User {
     })
 
     let weeklyWater = userWeeklyH20.slice(-7);
-    console.log('weeklyWater', weeklyWater)
 
     let filteredWater = weeklyWater.map(user => {
       let date = user.date;
@@ -48,22 +47,18 @@ class User {
       both[date] = numOunces;
       return both;
     })
-    console.log('filteredWater variable', filteredWater)
-
     return filteredWater;
   }
 
   // Sleep
   getAverageDailySleep() {
     let specificUserSleepData = this.getUserSleepData()
-    console.log("Specific ", specificUserSleepData)
     let totalHours = specificUserSleepData.reduce((acc, user) => {
       acc += user.hoursSlept
-      console.log(acc)
       return acc
     }, 0)
     let averageHours = totalHours / specificUserSleepData.length
-    return averageHours
+    return Number(averageHours.toFixed(2))
   }
 
   getUserSleepData() {
@@ -75,14 +70,12 @@ class User {
 
   getOverallQualityAvg() {
     let specificUserSleepQuality = this.getUserSleepData()
-    //console.log("Specific ", specificUserSleepData)
     let totalQuality = specificUserSleepQuality.reduce((acc, user) => {
       acc += user.sleepQuality
-      console.log(acc)
       return acc
     }, 0)
     let averageQuality = totalQuality / specificUserSleepQuality.length
-    return averageQuality
+    return Number(averageQuality.toFixed(2))
   }
 
   sleepOnSpecificDate(date) {
@@ -98,7 +91,7 @@ class User {
     }, 0)
   }
 
-  sleepQualityOnSPecificDate(date) {
+  sleepQualityOnSpecificDate(date) {
     let dates = this.sleepData.sleepData.filter((user) => {
       return user.date === date
     })

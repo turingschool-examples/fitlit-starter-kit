@@ -1,64 +1,35 @@
-// import './images/turing-logo.png'
 import './css/styles.css';
-// import makeStepCharts from './charts';
-import { getAPIData } from './apiCalls'
+import { getAPIData } from './apiCalls';
 import User from '../src/User';
 import UserRepository from './UserRepository';
 import loadCharts from './charts';
 
 // Global Variables
-// let one = 1
-let users
-let sleep
-let hydration
-let currentUser
-
-// const userRepository = new UserRepository(userData)
-// 
-// console.log(userRepository)
+let users;
+let sleep;
+let hydration;
+let currentUser;
 
 //Query Selectors
-let sleepBox = document.querySelector('.zero')
-let stepGoalBox = document.querySelector('#step-text')
-let infoBox = document.querySelector('.two')
-//let activityBox = document.querySelector('.three')
-let sleepHistoryBox = document.querySelector('.four')
-let hydrationBox = document.querySelector('.three')
-let activityTrackerTitle = document.querySelector('h1')
-let userInfoList = document.querySelector("#userInfoList")
-let hydrationInfoList = document.querySelector("#hydrationInfoList")
-let sleepInfoList = document.querySelector("#sleepInfoList")
-let sleepHistoryList = document.querySelector("#sleepHistoryList")
+let activityTrackerTitle = document.querySelector('h1');
+let userInfoList = document.querySelector("#userInfoList");
 
 // Event Listeners
-window.addEventListener('load', getAllData)
-// window.addEventListener('load', displayUserInfo)
-// infoBox.addEventListener('click', )
-// hydrationBox.addEventListener('click', )
-// window.addEventListener('load', stepGoalDisplay)
-// activityBox.addEventListener('click', )
-// friendsBox.addEventListener('click', )
-// sleepBox.addEventListener('click', )
-// window.addEventListener('load', displayWelcomeName)
-
+window.addEventListener('load', getAllData);
 
 //Event Handlers
 function getAllData() {
   Promise.all([getAPIData('users'), getAPIData('sleep'), getAPIData('hydration')])
     .then((data) => {
-      users = new UserRepository(data[0])
-      sleep = data[1]
-      hydration = data[2]
-      loadPage()
-      // console.log('hydration', hydration)
-      // console.log('users', users)
-      // console.log('currentUser', currentUser)
+      users = new UserRepository(data[0]);
+      sleep = data[1];
+      hydration = data[2];
+      loadPage();
     })
     .catch(err => console.log('To err is human', err))
 }
 
 function displayUserInfo() {
-  // getAllData()
   userInfoList.innerHTML += `<li>${currentUser.userData.name}</li>
   <li>${currentUser.userData.address}</li> 
   <li>${currentUser.userData.email}</li>
@@ -68,15 +39,14 @@ function displayUserInfo() {
 }
 
 function displayWelcomeName() {
-  activityTrackerTitle.innerText += ` ${currentUser.getFirstName()}`
+  activityTrackerTitle.innerText += ` ${currentUser.getFirstName()}`;
 }
 
 function displayStepGoal() {
-  let currentUserStepGoal = currentUser.userData.dailyStepGoal
-  let allUsersStepGoal = users.stepGoalAverage() - currentUserStepGoal
-  let result = [currentUserStepGoal, allUsersStepGoal]
-  return result
-  // stepGoalBox.innerText += ` Your step goal is ${currentUser.userData.dailyStepGoal} steps. The average step goal is ${users.stepGoalAverage()}.`
+  let currentUserStepGoal = currentUser.userData.dailyStepGoal;
+  let allUsersStepGoal = users.stepGoalAverage() - currentUserStepGoal;
+  let result = [currentUserStepGoal, allUsersStepGoal];
+  return result;
 }
 
 // Functions
@@ -88,95 +58,60 @@ function getUser(sleep, hydration) {
 
 function getUserFriends() {
   let friendsArray = currentUser.userData.friends.map(friend => {
-    return users.getData(friend).name
+    return users.getData(friend).name;
   })
-  return friendsArray.join(', ')
+  return friendsArray.join(', ');
 }
 
 function displayWater() {
-  let dailyWaterIntake = currentUser.getWaterPerDay('2019/06/15')
-  let dailyWaterGoal = 96 - dailyWaterIntake
-  let result = [dailyWaterIntake, dailyWaterGoal]
-  return result
-  // hydrationBox.innerText += `Your water intake for today is ${currentUser.getWaterPerDay('2019/06/15')} ounces`
-  // hydrationInfoList.innerHTML += `<li>Your weekly water intake is ${currentUser.getWeeklyConsumption()} ounces</li>`
-
+  let dailyWaterIntake = currentUser.getWaterPerDay('2019/06/15');
+  let dailyWaterGoal = 96 - dailyWaterIntake;
+  let result = [dailyWaterIntake, dailyWaterGoal];
+  return result;
 }
 
-// function showOverallSleep() {
-//   currentUser.sleepOnSpecificDate()
-//   currentUser.sleepQualityOnSpecificDate()
-// }
-
 function displaySleep() {
-  let dailySleep = currentUser.sleepOnSpecificDate('2019/06/15')
-  let maxSleep = 12 - dailySleep
-  let result = [dailySleep, maxSleep]
-  return result
-  // sleepInfoList.innerHTML += `<li>Last night you slept ${currentUser.sleepOnSpecificDate('2019/06/15')} hours</li>
-  // <li>The quality of your sleep last night was ${currentUser.sleepQualityOnSpecificDate('2019/06/15')} out of 5</li> 
-  // <li>Your weekly sleep pattern: ${currentUser.givenWeekSleepDataByDay()} - ${currentUser.givenWeeksSleepQualityByDay()}</li>`
+  let dailySleep = currentUser.sleepOnSpecificDate('2019/06/15');
+  let maxSleep = 12 - dailySleep;
+  let result = [dailySleep, maxSleep];
+  return result;
 }
 
 function displaySleepQuality() {
-  let dailyQuality = currentUser.sleepQualityOnSpecificDate('2019/06/15')
-  let maxQuality = 5 - dailyQuality
-  let result = [dailyQuality, maxQuality]
-  return result
-}
-
-function displaySleepHistory() {
-  // sleepHistoryList.innerHTML += `<li>Overall Sleep Hours: ${currentUser.getAverageDailySleep()} hours</li>
-  // <li>Overall Sleep Quality: ${currentUser.getOverallQualityAvg()} out of 5</li>`
-  let avgSleep = currentUser.getAverageDailySleep()
-  let avgQuality = currentUser.getOverallQualityAvg()
-  // let maxQuality = 5
-  let result = [avgSleep, avgQuality]
-  return result
+  let dailyQuality = currentUser.sleepQualityOnSpecificDate('2019/06/15');
+  let maxQuality = 5 - dailyQuality;
+  let result = [dailyQuality, maxQuality];
+  return result;
 }
 
 function displayLast7DaysSleep() {
-  let weeklySleepAndDate = currentUser.givenWeekSleepDataByDay()
-  let weeklySleep = weeklySleepAndDate.map(current => Object.values(current)[0])
-  return weeklySleep
-  // console.log('weekly sleep', weeklySleep)
-  // return weeklySleep
+  let weeklySleepAndDate = currentUser.givenWeekSleepDataByDay();
+  let weeklySleep = weeklySleepAndDate.map(current => Object.values(current)[0]);
+  return weeklySleep;
 }
-// currentUser.givenWeekSleepDataByDay() returns an array of objects
-// Each object has a dynamic key of a date and dynamic value of sleep hours
-// We need to return/access only the values/hours
 
 function displayLast7DaysQuality() {
-  let weeklyQualityAndDate = currentUser.givenWeeksSleepQualityByDay()
-  let weeklyQuality = weeklyQualityAndDate.map(current => Object.values(current)[0])
-  return weeklyQuality
-  // console.log('weekly sleep', weeklySleep)
-  // return weeklySleep
+  let weeklyQualityAndDate = currentUser.givenWeeksSleepQualityByDay();
+  let weeklyQuality = weeklyQualityAndDate.map(current => Object.values(current)[0]);
+  return weeklyQuality;
 }
 
 function displayLast7DaysHydration() {
-  let weeklyHydration = currentUser.getWeeklyConsumption()
-  let weeklyWater = weeklyHydration.map(current => Object.values(current)[0])
-  return weeklyWater
+  let weeklyHydration = currentUser.getWeeklyConsumption();
+  let weeklyWater = weeklyHydration.map(current => Object.values(current)[0]);
+  return weeklyWater;
 }
 
 function displayAllTimeSleepData() {
-  let allTimeSleepQualityAvg = currentUser.getOverallQualityAvg()
-  let allTimeSleepDurationAvg = currentUser.getAverageDailySleep()
-  let result = [allTimeSleepQualityAvg, allTimeSleepDurationAvg]
-  return result
+  let allTimeSleepQualityAvg = currentUser.getOverallQualityAvg();
+  let allTimeSleepDurationAvg = currentUser.getAverageDailySleep();
+  let result = [allTimeSleepQualityAvg, allTimeSleepDurationAvg];
+  return result;
 }
 
 function loadPage() {
-  getUser(sleep, hydration)
-  displayUserInfo()
-  // displayStepGoal()
-  displayWelcomeName()
-  // displayWater()
-  // displaySleep()
-  // displaySleepHistory()
-  loadCharts(displayStepGoal(), displayWater(), displaySleep(), displaySleepQuality(), displayLast7DaysSleep(), displayLast7DaysQuality(), displayLast7DaysHydration(), displayAllTimeSleepData())
+  getUser(sleep, hydration);
+  displayUserInfo();
+  displayWelcomeName();
+  loadCharts(displayStepGoal(), displayWater(), displaySleep(), displaySleepQuality(), displayLast7DaysSleep(), displayLast7DaysQuality(), displayLast7DaysHydration(), displayAllTimeSleepData());
 }
-
-// export default displayStepGoal;
-

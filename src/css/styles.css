@@ -6,6 +6,7 @@ body, html {
   color: white;
 }
 body {
+  font-family: serif;
   flex-direction: column;
 }
 .dashboard {
@@ -52,6 +53,7 @@ body {
   justify-content: center;
   margin: 25px;
   height: 300px;
+  box-shadow: 10px 10px 5px 0px rgb(0 0 0 / 50%);
 }
 .sleep {
   background-color: darkkhaki;
@@ -60,6 +62,7 @@ body {
   justify-content: center;
   margin: 25px;
   height: 300px;
+  box-shadow: 10px 10px 5px 0px rgb(0 0 0 / 50%);
 }
 
 .header {
@@ -70,10 +73,27 @@ body {
 }
 
 .user-welcome {
-  padding-left: 125px;
+  padding-left: 200px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .user-info {
   display: flex;
   flex-direction: column;
+  margin-top: 40px;
+}
+
+.step-goal {
+  margin-top: 75px;
+}
+
+.calendar-submit {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.calendar-button {
+  margin-left: 10px;
 }

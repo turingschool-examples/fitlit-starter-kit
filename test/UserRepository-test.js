@@ -13,10 +13,10 @@ describe('User Repository', () => {
     })
     userRepo = new UserRepository(sampleData)
   })
-  it('should be a function', function () {
+  it('should be a function', function (){
     expect(UserRepository).to.be.a('function');
   });
-  it('Should be instance of userRepository', function () {
+  it('Should be instance of userRepository', function (){
     expect(userRepo).to.be.an.instanceOf(UserRepository)
   })
   it('Should have a user data property', function (){
@@ -29,9 +29,6 @@ describe('User Repository', () => {
     expect(userRepo.calculateAverageStepGoal()).to.equal(6666.67)
   })
   it('Should return friends firsts names', function(){
-    expect(userRepo.getFriendData([1, 2])).to.deep.equal(['Luisa', 'Jarvis'])
+    expect(userRepo.getFriendData([1, 2])).to.deep.equal('Luisa, Jarvis')
   })
-  
-
-
 });

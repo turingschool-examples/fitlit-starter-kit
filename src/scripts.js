@@ -127,8 +127,13 @@ function displaySleepQuality() {
 }
 
 function displaySleepHistory() {
-  sleepHistoryList.innerHTML += `<li>Overall Sleep Hours: ${currentUser.getAverageDailySleep()} hours</li>
-  <li>Overall Sleep Quality: ${currentUser.getOverallQualityAvg()} out of 5</li>`
+  // sleepHistoryList.innerHTML += `<li>Overall Sleep Hours: ${currentUser.getAverageDailySleep()} hours</li>
+  // <li>Overall Sleep Quality: ${currentUser.getOverallQualityAvg()} out of 5</li>`
+  let avgSleep = currentUser.getAverageDailySleep()
+  let avgQuality = currentUser.getOverallQualityAvg()
+  // let maxQuality = 5
+  let result = [avgSleep, avgQuality]
+  return result
 }
 
 function loadPage() {
@@ -139,7 +144,7 @@ function loadPage() {
   // displayWater()
   // displaySleep()
   // displaySleepHistory()
-  loadCharts(displayStepGoal(), displayWater(), displaySleep(), displaySleepQuality())
+  loadCharts(displayStepGoal(), displayWater(), displaySleep(), displaySleepQuality(), displaySleepHistory())
 }
 
 // export default displayStepGoal;

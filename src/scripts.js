@@ -58,9 +58,9 @@ function pageLoadHandler(event) {
   // displayAllTimeSleep();
   console.log(currentUser)
   createChart(allUserHydro.returnWeeklyWaterConsumption(currentUser.id, currentDate), allUserSleep.returnSleepQualityByWeek(currentUser.id, currentDate), allUserSleep.returnHoursSleptByWeek(currentUser.id, currentDate))
-  createSmallBarChart("allTimeSleep", ["Average Quality", "Average Slept"],"Avg Sleep Quality",[allUserSleep.calcAvgSleepQualityPerDay(currentUser.id), allUserSleep.calcAvgSleepPerDay(currentUser.id)], ["#7C77B9",  "#FC9F5B"])
-  createSmallBarChart("dailySleep", ["Daily Quality", "Daily Slept"], "Daily Sleep",[allUserSleep.returnSleepQualityByDate(currentUser.id, currentDate), allUserSleep.returnHoursSleptByDate(currentUser.id, currentDate)], ["#7C77B9",  "#FC9F5B"])
-  createSmallBarChart("stepGoalAvg", ["My Step Goal", "Average Step Goal"], 'nope',[currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal()], ["#7C77B9",  "#FC9F5B"], 'y')
+  createSmallBarChart("allTimeSleep", ["Average Quality", "Average Slept"],"Avg Sleep Quality",[allUserSleep.calcAvgSleepQualityPerDay(currentUser.id), allUserSleep.calcAvgSleepPerDay(currentUser.id)], ["rgba(255, 243, 199, .2)", "rgba(186, 239, 195, .2)"], ["rgb(255, 243, 199)", "rgb(186, 239, 195)"])
+  createSmallBarChart("dailySleep", ["Daily Quality", "Daily Slept"], "Daily Sleep",[allUserSleep.returnSleepQualityByDate(currentUser.id, currentDate), allUserSleep.returnHoursSleptByDate(currentUser.id, currentDate)], ["rgba(255, 243, 199, .2)", "rgba(186, 239, 195, .2)"], ["rgb(255, 243, 199)", "rgb(186, 239, 195)"])
+  createSmallBarChart("stepGoalAvg", ["My Step Goal", "Average Step Goal"], 'nope',[currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal()], ["rgba(253, 221, 224, .2)"],["rgb(253, 221, 224)"], 'y')
   // dropDownCalendar = document.getElementById('myDate').value
   // console.log(dropDownCalendar)
 }

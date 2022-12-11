@@ -95,5 +95,6 @@ const createSmallBarChart = function (id, labels, label, data, colors, borderCol
 };
 
 Chart.defaults.color = "#fff";
+Chart.defaults.font.family = "'Open Sans'"
 
 export { createChart, createSmallBarChart };

@@ -1,5 +1,6 @@
 import { Chart } from "chart.js/auto";
 
+
 const createChart = function (hydration, sleepQuality, sleepHours) {
   new Chart(document.getElementById("weeklyChart"), {
     type: "bar",
@@ -87,5 +88,7 @@ const stepGoalChart = function (stepGoal, avgStepGoal) {
     },
   });
 };
+
+Chart.defaults.color = '#fff'
 
 export { createChart, sleepChart, stepGoalChart };

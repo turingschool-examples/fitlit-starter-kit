@@ -1,68 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Poppins:wght@300&family=Raleway:wght@100&display=swap" rel="stylesheet">
-        <meta charset="UTF-8">
-        <title>FitLit - your personal dashboard</title>
-        <link rel="icon"  type="image" href="https://cdn-icons-png.flaticon.com/512/4760/4760815.png">
-    </head>
-    <body>
-        <nav class="welcome-banner" id="welcomeBanner">
-            <section>
-                <p class="app-name">FitLit</p>
-            </section>
-            <section>
-                <p class="welcome-message" id="welcomeMessage">insert Welcome message here</p>
-            </section>
-            <section>
-              <p class="welcome-banner-right"></p>
-            </section>
-        </nav>
-        <div class="data-display">
-        <aside class="user-tab">
-            <button type="onClick" class="user-avatar" id="userAvatar"></button>
-            <p class="user-name" id="userName"></p>
-            <section class="friends-profile" id="friends">
-            </section>
-            <section class="profile hidden" id="profile">
-            </section>
-        </aside>
-        <section class="fit-data-section" id="steps">
-            <h2 class="fit-data-header">Steps</h2>
-            <img src="./images/walkingIcon.svg" class="walking-icon">
-            <h4 class="fit-data chart-header">Your Step Goal vs. Average Step Goal</h4>
-            <p class="fit-data highlight" id="stepGoalVsAvg"></p>
-            <div class="fit-data week-step-chart">
-                <canvas id="stepGoalChart"></canvas>
-            </div>
-        </section>
-        <section class="fit-data-section" id="sleep">
-            <h2 class="fit-data-header">Sleep</h2>
-            <h4 class="fit-data">Your Sleep For Today</h4>
-            <p class="fit-data highlight" id="sleepToday">insert today's sleep data here</p>
-            <h4 class="fit-data sleep-user-avg">Your average sleep for the last week</h4>
-            <p class="fit-data highlight" id="sleepUserAvg">insert averaged user sleep data here</p>
-            <h4 class="fit-data sleep-global-avg">Compared to all users' average</h4>
-            <p class="fit-data highlight" id="sleepGlobalAvg">insert averaged global sleep data here</p>
-            <h4 class="fit-data chart-header">Your Sleep for the Last 7 Days</h4>
-            <div class="fit-data week-sleep-chart">
-                <canvas id="weeksSleepChart"></canvas>
-            </div>
-        </section>
-        <section class="fit-data-section" id="hydration">
-            <h2 class="fit-data-header">Hydration</h2>
-            <div class="fit-data day-hydro">
-                <canvas id="todaysHydrationChart"></canvas>
-            </div>
-            <p class="fit-data highlight" id="hydrationToday">insert today's hydration data here</p>
-            <p class="fit-data highlight" id="hydrationGoal">Hydration comparison data here</p>
-            <h4 class="fit-data chart-header">Water Consumption for the Last 7 Days</h4>
-            <div class="fit-data week-hydration-chart">
-                <canvas id="weeksHydrationChart"></canvas>
-            </div>
-        </section>
+  <head>
+    <meta charset="UTF-8">
+    <title>FitLit - Your personal dashboard</title>
+    <link rel="icon"  type="image" href="https://cdn-icons-png.flaticon.com/512/4760/4760815.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Poppins:wght@300&family=Raleway:wght@100&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="welcome-banner" id="welcomeBanner">
+      <section>
+        <p class="app-name">FitLit</p>
+      </section>
+      <section>
+        <p class="welcome-message" id="welcomeMessage">insert Welcome message here</p>
+      </section>
+      <section>
+        <p class="welcome-banner-right"></p>
+      </section>
+    </nav>
+    <section class="data-display">
+      <aside class="user-tab">
+        <button type="onClick" class="user-avatar" id="userAvatar"></button>
+        <p class="user-name" id="userName"></p>
+        <section class="friends-profile" id="friends"></section>
+        <section class="profile hidden" id="profile"></section>
+      </aside>
+      <section class="fit-data-section" id="steps">
+        <h2 class="fit-data-header">Steps</h2>
+        <img src="./images/walkingIcon.svg" class="walking-icon">
+        <h4 class="fit-data chart-header">Your Step Goal vs. Average Step Goal</h4>
+        <p class="fit-data highlight" id="stepGoalVsAvg"></p>
+        <div class="fit-data week-step-chart">
+          <canvas id="stepGoalChart"></canvas>
         </div>
-      <script src="bundle.js"></script>
-    </body> 
+      </section>
+      <section class="fit-data-section" id="sleep">
+        <h2 class="fit-data-header">Sleep</h2>
+        <h4 class="fit-data">Your Sleep For Today</h4>
+        <p class="fit-data highlight" id="sleepToday">insert today's sleep data here</p>
+        <h4 class="fit-data sleep-user-avg">Your average sleep for the last week</h4>
+        <p class="fit-data highlight" id="sleepUserAvg">insert averaged user sleep data here</p>
+        <h4 class="fit-data sleep-global-avg">Compared to all users' average</h4>
+        <p class="fit-data highlight" id="sleepGlobalAvg">insert averaged global sleep data here</p>
+        <h4 class="fit-data chart-header">Your Sleep for the Last 7 Days</h4>
+        <div class="fit-data week-sleep-chart">
+          <canvas id="weeksSleepChart"></canvas>
+        </div>
+      </section>
+      <section class="fit-data-section" id="hydration">
+          <h2 class="fit-data-header">Hydration</h2>
+          <div class="fit-data day-hydro">
+            <canvas id="todaysHydrationChart"></canvas>
+          </div>
+          <p class="fit-data highlight" id="hydrationToday">insert today's hydration data here</p>
+          <p class="fit-data highlight" id="hydrationGoal">Hydration comparison data here</p>
+          <h4 class="fit-data chart-header">Water Consumption for the Last 7 Days</h4>
+          <div class="fit-data week-hydration-chart">
+            <canvas id="weeksHydrationChart"></canvas>
+          </div>
+      </section>
+    </section>
+  <script src="bundle.js"></script>
+  </body> 
 </html>

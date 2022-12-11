@@ -73,7 +73,7 @@ const displayUserName = function (user) {
 
 const displayUserInfo = function (user, repository) {
   userDisplay.innerHTML = `
-  <div class="user-info">
+  <div class="user-card">
     <p class="id">User ID: ${user.id}</p>
     <p class="name">Name: ${user.name}</p>
     <p class="address">Address: ${user.address}</p>

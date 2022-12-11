@@ -88,57 +88,12 @@ const createSmallBarChart = function (id, labels, label, data, colors, axis = 'x
         legend: {
           display: false,
         }
-      }
+      },
+      indexAxis: axis,
     }
-  });
-};
-// const sleepChart = function (avgSleepQuality, avgHoursSlept) {
-//   new Chart(document.getElementById("allTimeSleep"), {
-//     type: "bar",
-//     data: {
-//       labels: ["Avg Sleep Quality", "Avg Hours Slept"],
-//       datasets: [
-//         {
-//           label: 'Avg Sleep Quality',
-//           data: [avgSleepQuality,avgHoursSlept],
-//           backgroundColor: ["#7C77B9",  "#FC9F5B"],
-//           borderColor: "white",
-//           borderWidth: 1,
-//         },
-//       ],
-//     },
-//     options: {
-//       plugins: {
-//         legend: {
-//           display: false,
-//         }
-//       }
-//     }
-//   });
-// };
-
-const stepGoalChart = function (stepGoal, avgStepGoal) {
-  new Chart(document.getElementById("stepGoalAvg"), {
-    type: "bar",
-    data: {
-      labels: ["My step Goal", "Average Step Goal"],
-      datasets: [
-        {
-          axis: "y",
-          label: "Step Info",
-          data: [stepGoal, avgStepGoal],
-          backgroundColor: "#E36414",
-          borderColor: "white",
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      indexAxis: "y",
-    },
   });
 };
 
 Chart.defaults.color = "#fff";
 
-export { createChart, sleepChart, stepGoalChart };
+export { createChart, createSmallBarChart };

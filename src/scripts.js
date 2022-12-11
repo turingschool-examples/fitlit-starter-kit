@@ -43,10 +43,7 @@ function displayWelcomeName() {
 }
 
 function displayStepGoal() {
-  let currentUserStepGoal = currentUser.userData.dailyStepGoal;
-  let allUsersStepGoal = users.stepGoalAverage() - currentUserStepGoal;
-  let result = [currentUserStepGoal, allUsersStepGoal];
-  return result;
+  return [currentUser.userData.dailyStepGoal, (users.stepGoalAverage() - currentUser.userData.dailyStepGoal)];
 }
 
 // Functions
@@ -57,61 +54,58 @@ function getUser(sleep, hydration) {
 }
 
 function getUserFriends() {
-  let friendsArray = currentUser.userData.friends.map(friend => {
-    return users.getData(friend).name;
-  })
-  return friendsArray.join(', ');
+  return currentUser.userData.friends
+    .map(friend => users.getData(friend).name)
+    .join(', ')
 }
 
 function displayWater() {
   let dailyWaterIntake = currentUser.getWaterPerDay('2019/06/15');
-  let dailyWaterGoal = 96 - dailyWaterIntake;
-  let result = [dailyWaterIntake, dailyWaterGoal];
-  return result;
+  return [dailyWaterIntake, 96 - dailyWaterIntake];
 }
 
 function displaySleep() {
   let dailySleep = currentUser.sleepOnSpecificDate('2019/06/15');
-  let maxSleep = 12 - dailySleep;
-  let result = [dailySleep, maxSleep];
-  return result;
+  return [dailySleep, 12 - dailySleep];
 }
 
 function displaySleepQuality() {
   let dailyQuality = currentUser.sleepQualityOnSpecificDate('2019/06/15');
-  let maxQuality = 5 - dailyQuality;
-  let result = [dailyQuality, maxQuality];
-  return result;
+  return [dailyQuality, 5 - dailyQuality];
 }
 
 function displayLast7DaysSleep() {
-  let weeklySleepAndDate = currentUser.givenWeekSleepDataByDay();
-  let weeklySleep = weeklySleepAndDate.map(current => Object.values(current)[0]);
-  return weeklySleep;
+  return currentUser
+    .givenWeekSleepDataByDay()
+    .map(current => Object.values(current)[0])
 }
 
 function displayLast7DaysQuality() {
-  let weeklyQualityAndDate = currentUser.givenWeeksSleepQualityByDay();
-  let weeklyQuality = weeklyQualityAndDate.map(current => Object.values(current)[0]);
-  return weeklyQuality;
+  return currentUser
+    .givenWeeksSleepQualityByDay()
+    .map(current => Object.values(current)[0])
 }
 
 function displayLast7DaysHydration() {
-  let weeklyHydration = currentUser.getWeeklyConsumption();
-  let weeklyWater = weeklyHydration.map(current => Object.values(current)[0]);
-  return weeklyWater;
+  return currentUser
+    .getWeeklyConsumption()
+    .map(current => Object.values(current)[0])
 }
 
 function displayAllTimeSleepData() {
-  let allTimeSleepQualityAvg = currentUser.getOverallQualityAvg();
-  let allTimeSleepDurationAvg = currentUser.getAverageDailySleep();
-  let result = [allTimeSleepQualityAvg, allTimeSleepDurationAvg];
-  return result;
+  return [currentUser.getOverallQualityAvg(), currentUser.getAverageDailySleep()];
 }
 
 function loadPage() {
   getUser(sleep, hydration);
   displayUserInfo();
   displayWelcomeName();
-  loadCharts(displayStepGoal(), displayWater(), displaySleep(), displaySleepQuality(), displayLast7DaysSleep(), displayLast7DaysQuality(), displayLast7DaysHydration(), displayAllTimeSleepData());
+  loadCharts(displayStepGoal(),
+    displayWater(),
+    displaySleep(),
+    displaySleepQuality(),
+    displayLast7DaysSleep(),
+    displayLast7DaysQuality(),
+    displayLast7DaysHydration(),
+    displayAllTimeSleepData());
 }

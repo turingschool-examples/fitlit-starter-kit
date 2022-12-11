@@ -18,7 +18,6 @@ const userAddress = document.getElementById("address");
 const userStrideLength = document.getElementById("strideLength");
 const userDailyStepGoal = document.getElementById("dailyStepGoal");
 const userEmail = document.getElementById("email");
-// const userFriends = document.getElementById("friends");
 const userFirstName = document.getElementById("firstName");
 const userStepComparison = document.getElementById("stepCompareResults");
 const dailySleepHours = document.getElementById("dailySleepHours");

@@ -53,7 +53,7 @@ userAvatar.addEventListener('click', toggleProfileInfo)
 function showPersonalizedWelcome() {
   let selectedMsgInt = Math.floor(Math.random() * (2 - 0 + 1));
   let randomGreetings = [`Let's Carpe this Diem!`, `You miss 100% of the shots you don't take.`, `You can have results or excuses, not both.`];
-  welcomeMessage.innerText = `Welcome, ${userRepo.selectedUser.name}! - - ${randomGreetings[selectedMsgInt]}`;
+  welcomeMessage.innerText = `Welcome, ${currentUser.name}! - - ${randomGreetings[selectedMsgInt]}`;
 }
 
 function selectRandom(selectedArray){
@@ -63,18 +63,16 @@ function selectRandom(selectedArray){
 // Info card display
 function showUserInfoDisplay() {
   friendsDisplay.innerText = ` `;
-  userName.innerText = `${userRepo.selectedUser.name}`
+  userName.innerText = `${currentUser.name}`
   userAvatar.innerText = selectRandom(profileEmojis)
   userAvatar.style.backgroundColor = selectRandom(profileBackgrounds)
-  userRepo.selectedUser.friends.forEach(friend => {
+  currentUser.friends.forEach(friend => {
     friendsDisplay.innerHTML += `
     <div class="single-friend">
-      <div class="friend-avatar friend-${friend}">${selectRandom(profileEmojis)}</div> 
+      <div  class="friend-avatar friend-${friend}" style="background-color: ${selectRandom(profileBackgrounds)}">${selectRandom(profileEmojis)}</div> 
         ${(userRepo.findUser(friend)).name}
     </div>
     `;
-    var friendID = document.querySelector(`.friend-${friend}`)
-    friendID.style.backgroundColor = selectRandom(profileBackgrounds)
   })
 }
 

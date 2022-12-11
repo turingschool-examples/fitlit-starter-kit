@@ -107,10 +107,4 @@ describe('UserRepository', () => {
 
     expect(userRepository.stepGoalAverage()).to.equal(6666)
   })
-})
-
-//test the data being passed in -> test this.data
-
-//test the output of the get user data method, make sure the id argument works
-
-//test the output of the average step goals -> make sure the math is solid
+});

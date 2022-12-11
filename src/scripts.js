@@ -112,12 +112,12 @@ function displayStepGoalComparison() {
 
 // Hydration data display
 function displayHydrationData() {
-    const today = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData)
-    const todaysOunces = userRepo.selectedUser.findDaysHydration(today).numOunces;
+    const lastHydration = currentUser.findLatestDate(currentUser.hydrationData)
+    const lastHydrationOunces = currentUser.findDaysHydration(lastHydration).numOunces;
     const goal = 64;
-    hydrationToday.innerText = `You have consumed ${todaysOunces} ounces of water today!`;
-    if (todaysOunces < goal) {
-        hydrationGoal.innerText = `Only ${goal - todaysOunces} to go!`
+    hydrationToday.innerText = `You have consumed ${lastHydrationOunces} ounces of water today!`;
+    if (lastHydrationOunces < goal) {
+        hydrationGoal.innerText = `Only ${goal - lastHydrationOunces} to go!`
     } else {
         hydrationGoal.innerText = 'You have met the daily recommendation, great job!';
     }

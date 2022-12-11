@@ -1,9 +1,10 @@
 // import './images/turing-logo.png'
 import './css/styles.css';
-import makeCharts from './charts';
+// import makeStepCharts from './charts';
 import { getAPIData } from './apiCalls'
 import User from '../src/User';
 import UserRepository from './UserRepository';
+import loadCharts from './charts';
 
 // Global Variables
 // let one = 1
@@ -94,8 +95,12 @@ function getUserFriends() {
 }
 
 function displayWater() {
-  hydrationBox.innerText += `Your water intake for today is ${currentUser.getWaterPerDay('2019/06/15')} ounces`
-  hydrationInfoList.innerHTML += `<li>Your weekly water intake is ${currentUser.getWeeklyConsumption()} ounces</li>`
+  let dailyWaterIntake = currentUser.getWaterPerDay('2019/06/15')
+  let dailyWaterGoal = 96
+  let result = [dailyWaterIntake, dailyWaterGoal]
+  return result
+  // hydrationBox.innerText += `Your water intake for today is ${currentUser.getWaterPerDay('2019/06/15')} ounces`
+  // hydrationInfoList.innerHTML += `<li>Your weekly water intake is ${currentUser.getWeeklyConsumption()} ounces</li>`
 
 }
 
@@ -105,10 +110,20 @@ function displayWater() {
 // }
 
 function displaySleep() {
+  let dailySleep = currentUser.sleepOnSpecificDate('2019/06/15')
+  let maxSleep = 12
+  let result = [dailySleep, maxSleep]
+  return result
+  // sleepInfoList.innerHTML += `<li>Last night you slept ${currentUser.sleepOnSpecificDate('2019/06/15')} hours</li>
+  // <li>The quality of your sleep last night was ${currentUser.sleepQualityOnSpecificDate('2019/06/15')} out of 5</li> 
+  // <li>Your weekly sleep pattern: ${currentUser.givenWeekSleepDataByDay()} - ${currentUser.givenWeeksSleepQualityByDay()}</li>`
+}
 
-  sleepInfoList.innerHTML += `<li>Last night you slept ${currentUser.sleepOnSpecificDate('2019/06/15')} hours</li>
-  <li>The quality of your sleep last night was ${currentUser.sleepQualityOnSpecificDate('2019/06/15')} out of 5</li> 
-  <li>Your weekly sleep pattern: ${currentUser.givenWeekSleepDataByDay()} - ${currentUser.givenWeeksSleepQualityByDay()}</li>`
+function displaySleepQuality() {
+  let dailyQuality = currentUser.sleepQualityOnSpecificDate('2019/06/15')
+  let maxQuality = 5
+  let result = [dailyQuality, maxQuality]
+  return result
 }
 
 function displaySleepHistory() {
@@ -124,7 +139,7 @@ function loadPage() {
   // displayWater()
   // displaySleep()
   // displaySleepHistory()
-  makeCharts(displayStepGoal())
+  loadCharts(displayStepGoal(), displayWater(), displaySleep(), displaySleepQuality())
 }
 
 // export default displayStepGoal;

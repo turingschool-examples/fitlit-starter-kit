@@ -131,7 +131,6 @@ const displayWeeklySleepQuality = () => {
 const displayAvgAllTime = () => {
     const avgAllSleepQuality = userSleepData.avgSleepQuality(1)
     const avgAllSleepHours = userSleepData.avgHoursSleptPerDay(1)
-
     avgSleepData.innerHTML = `
     <div id="compareSleepQual">Average all-time sleep quality: ${avgAllSleepQuality}</div>
     <div id="compareSleepHours">Average all-time hours slept: ${avgAllSleepHours}</div>

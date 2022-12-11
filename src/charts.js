@@ -135,12 +135,38 @@ function hydrationBarGraph(hydrationByDay) {
   });
 }
 
-function loadCharts(stepYValues, dailyH2OYValues, sleepYValues, qualityYValues, userSleepHistory, userQualityHistory, hydrationByDay) {
+const labels = ['All-Time Avg. Sleep Quality (1-5)', 'All-Time Avg. Sleep Duration']
+
+let allTimeSleepData = document.getElementById('allTimeSleepHistory')
+function allTimeSleepQuality(allTimeSleep) {
+  new Chart("allTimeSleepHistory", {
+    type: "bar",
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'All-Time Sleep History',
+        data: allTimeSleep,
+        backgroundColor: [
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(201, 203, 207, 0.2)'
+        ],
+        borderColor: [
+          'rgb(255, 99, 132)',
+          'rgb(255, 159, 64)',
+        ],
+        borderWidth: 1
+      }]
+    }
+  })
+}
+
+function loadCharts(stepYValues, dailyH2OYValues, sleepYValues, qualityYValues, userSleepHistory, userQualityHistory, hydrationByDay, allTimeSleep) {
   makeStepCharts(stepYValues)
   makeDailyH20Charts(dailyH2OYValues)
   dailySleepChart(sleepYValues)
   dailySleepQualityChart(qualityYValues)
   sleepHistoryBarGraph(userSleepHistory, userQualityHistory)
   hydrationBarGraph(hydrationByDay)
+  allTimeSleepQuality(allTimeSleep)
 }
 export default loadCharts;

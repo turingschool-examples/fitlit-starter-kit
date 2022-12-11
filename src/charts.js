@@ -15,25 +15,25 @@ const createChart = function (hydration, sleepQuality, sleepHours) {
           label: hydration.label,
           yAxisID: "hydration",
           data: hydration.count,
-          backgroundColor: "rgba(54, 162, 235, .7)",
-          borderColor: "white",
-          borderWidth: 1,
+          backgroundColor: 'rgba(187, 231, 255, .2)',
+          borderColor: "#BBE7FF",
+          borderWidth: 3,
         },
         {
           label: sleepQuality.label,
           yAxisID: "sleep",
           data: sleepQuality.count,
-          backgroundColor: "#7C77B9",
-          borderColor: "white",
-          borderWidth: 1,
+          backgroundColor: 'rgba(255, 243, 199, .2)',
+          borderColor: "#FFF3C7",
+          borderWidth: 3,
         },
         {
           label: sleepHours.label,
           yAxisID: "sleep",
           data: sleepHours.count,
-          backgroundColor: "#FC9F5B",
-          borderColor: "white",
-          borderWidth: 1,
+          backgroundColor: 'rgba(186, 239, 195, .2)',
+          borderColor: "#BAEFC3",
+          borderWidth: 3,
         },
       ],
     },
@@ -68,7 +68,7 @@ const createChart = function (hydration, sleepQuality, sleepHours) {
 };
 
 
-const createSmallBarChart = function (id, labels, label, data, colors, axis = 'x') {
+const createSmallBarChart = function (id, labels, label, data, colors, borderColors, axis = 'x') {
   new Chart(document.getElementById(id), {
     type: "bar",
     data: {
@@ -77,9 +77,9 @@ const createSmallBarChart = function (id, labels, label, data, colors, axis = 'x
         {
           label: label,
           data: data,
-          backgroundColor: '#4c4b4b',
-          borderColor: colors,
-          borderWidth: 1,
+          backgroundColor: colors,
+          borderColor: borderColors,
+          borderWidth: 3,
         },
       ],
     },

@@ -77,13 +77,11 @@ function showUserInfoDisplay() {
 }
 
 function toggleProfileInfo() {
-  if (friendsDisplay.classList != 'hidden'){
+  if (!friendsDisplay.classList.contains('hidden')) {
     friendsDisplay.classList.add('hidden')
-    friendsDisplay.classList.remove("friends-profile")
     userProfile.classList.remove('hidden')
   } else {
     friendsDisplay.classList.remove('hidden')
-    friendsDisplay.classList.add('friends-profile')
     userProfile.classList.add('hidden')
   }
 }

@@ -77,8 +77,8 @@ const createSmallBarChart = function (id, labels, label, data, colors, axis = 'x
         {
           label: label,
           data: data,
-          backgroundColor: colors,
-          borderColor: "white",
+          backgroundColor: '#4c4b4b',
+          borderColor: colors,
           borderWidth: 1,
         },
       ],

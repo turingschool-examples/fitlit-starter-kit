@@ -1,12 +1,11 @@
 import { Chart } from "chart.js/auto";
 
-
 const createChart = function (hydration, sleepQuality, sleepHours) {
-  let chart = Chart.getChart('weeklyChart')
-  if(chart) {
-    chart.destroy()
+  let chart = Chart.getChart("weeklyChart");
+  if (chart) {
+    chart.destroy();
   }
-  console.log('detroyed?')
+  console.log("detroyed?");
   new Chart(document.getElementById("weeklyChart"), {
     type: "bar",
     data: {
@@ -16,25 +15,25 @@ const createChart = function (hydration, sleepQuality, sleepHours) {
           label: hydration.label,
           yAxisID: "hydration",
           data: hydration.count,
-          backgroundColor: 'rgba(54, 162, 235, .7)',
-          borderColor: 'white',
-          borderWidth: 1
+          backgroundColor: "rgba(54, 162, 235, .7)",
+          borderColor: "white",
+          borderWidth: 1,
         },
         {
           label: sleepQuality.label,
           yAxisID: "sleep",
           data: sleepQuality.count,
-          backgroundColor: '#7C77B9', 
-          borderColor: 'white',
-          borderWidth: 1
+          backgroundColor: "#7C77B9",
+          borderColor: "white",
+          borderWidth: 1,
         },
         {
           label: sleepHours.label,
           yAxisID: "sleep",
           data: sleepHours.count,
-          backgroundColor: '#FC9F5B', 
-          borderColor: 'white',
-          borderWidth: 1
+          backgroundColor: "#FC9F5B",
+          borderColor: "white",
+          borderWidth: 1,
         },
       ],
     },
@@ -68,35 +67,71 @@ const createChart = function (hydration, sleepQuality, sleepHours) {
   });
 };
 
-const sleepChart = function (currentSleep, avgSleepQuality, avgHoursSlept) {
-  new Chart(document.getElementById("allTimeSleep"), {
-    type: "doughnut",
+
+const createSmallBarChart = function (id, labels, label, data, colors, axis = 'x') {
+  new Chart(document.getElementById(id), {
+    type: "bar",
     data: {
-      labels: ["Current Sleep", "Avg Sleep Quality", "Avg Hours Slept"],
+      labels: labels,
       datasets: [
         {
-          label: "Sleep Info",
-          data: [currentSleep, avgSleepQuality, avgHoursSlept],
-          backgroundColor: ['rgba(54, 162, 235, .7)', '#7C77B9', '#FC9F5B']
+          label: label,
+          data: data,
+          backgroundColor: colors,
+          borderColor: "white",
+          borderWidth: 1,
         },
       ],
     },
+    options: {
+      plugins: {
+        legend: {
+          display: false,
+        }
+      }
+    }
   });
 };
+// const sleepChart = function (avgSleepQuality, avgHoursSlept) {
+//   new Chart(document.getElementById("allTimeSleep"), {
+//     type: "bar",
+//     data: {
+//       labels: ["Avg Sleep Quality", "Avg Hours Slept"],
+//       datasets: [
+//         {
+//           label: 'Avg Sleep Quality',
+//           data: [avgSleepQuality,avgHoursSlept],
+//           backgroundColor: ["#7C77B9",  "#FC9F5B"],
+//           borderColor: "white",
+//           borderWidth: 1,
+//         },
+//       ],
+//     },
+//     options: {
+//       plugins: {
+//         legend: {
+//           display: false,
+//         }
+//       }
+//     }
+//   });
+// };
 
 const stepGoalChart = function (stepGoal, avgStepGoal) {
   new Chart(document.getElementById("stepGoalAvg"), {
     type: "bar",
     data: {
       labels: ["My step Goal", "Average Step Goal"],
-      datasets: [{
-        axis: "y",
-        label: "Step Info",
-        data: [stepGoal, avgStepGoal],
-        backgroundColor: '#E36414', 
-        borderColor: 'white',
-        borderWidth: 1
-      }],
+      datasets: [
+        {
+          axis: "y",
+          label: "Step Info",
+          data: [stepGoal, avgStepGoal],
+          backgroundColor: "#E36414",
+          borderColor: "white",
+          borderWidth: 1,
+        },
+      ],
     },
     options: {
       indexAxis: "y",
@@ -104,6 +139,6 @@ const stepGoalChart = function (stepGoal, avgStepGoal) {
   });
 };
 
-Chart.defaults.color = '#fff'
+Chart.defaults.color = "#fff";
 
 export { createChart, sleepChart, stepGoalChart };

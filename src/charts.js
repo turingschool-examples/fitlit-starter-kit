@@ -67,10 +67,29 @@ function dailySleepChart(yValues) {
   })
 }
   
-
-function loadCharts(stepYValues, dailyH2OYValues, yValues) {
+const dailySleepQuality = document.getElementById('dailySleepQuality')
+function dailySleepQualityChart(yValues) {
+  new Chart(dailySleepQuality, {
+    type: "doughnut",
+    data: {
+      labels: ["Quality of Sleep"],
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Today"
+      }
+    }
+  })
+}
+function loadCharts(stepYValues, dailyH2OYValues, sleepYValues, qualityYValues ) {
   makeStepCharts(stepYValues)
   makeDailyH20Charts(dailyH2OYValues)
-  dailySleepChart(yValues)
+  dailySleepChart(sleepYValues)
+  dailySleepQualityChart(qualityYValues)
 }
 export default loadCharts;

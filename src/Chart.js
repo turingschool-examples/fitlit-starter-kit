@@ -6,10 +6,10 @@ const buildSleepChart = (userData) => {
     const sleepChart = new Chart (myChart, {
         type: 'bar',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: [`${userData[0].date}`, `${userData[1].date}`, `${userData[2].date}`, `${userData[3].date}`, `${userData[4].date}`, `${userData[5].date}`, `${userData[6].date}`],
             datasets: [{
-              label: '# of Votes',
-              data: [userData[1].hoursSlept, userData[2].hoursSlept, userData[3].hoursSlept, userData[4].hoursSlept, userData[5].hoursSlept, userData[6].hoursSlept],
+              label: 'hours slept',
+              data: [userData[0].hoursSlept, userData[1].hoursSlept, userData[2].hoursSlept, userData[3].hoursSlept, userData[4].hoursSlept, userData[5].hoursSlept, userData[6].hoursSlept],
               borderWidth: 1
             }]
           },

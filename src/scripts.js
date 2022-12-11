@@ -156,6 +156,12 @@ function displayLast7DaysQuality() {
   // return weeklySleep
 }
 
+function displayLast7DaysHydration() {
+  let weeklyHydration = currentUser.getWeeklyConsumption()
+  let weeklyWater = weeklyHydration.map(current => Object.values(current)[0])
+  return weeklyWater
+}
+
 function loadPage() {
   getUser(sleep, hydration)
   displayUserInfo()
@@ -164,7 +170,7 @@ function loadPage() {
   // displayWater()
   // displaySleep()
   // displaySleepHistory()
-  loadCharts(displayStepGoal(), displayWater(), displaySleep(), displaySleepQuality(), displayLast7DaysSleep(), displayLast7DaysQuality())
+  loadCharts(displayStepGoal(), displayWater(), displaySleep(), displaySleepQuality(), displayLast7DaysSleep(), displayLast7DaysQuality(), displayLast7DaysHydration())
 }
 
 // export default displayStepGoal;

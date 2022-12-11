@@ -75,7 +75,6 @@ function displayStepGoal() {
   let currentUserStepGoal = currentUser.userData.dailyStepGoal
   let allUsersStepGoal = users.stepGoalAverage() - currentUserStepGoal
   let result = [currentUserStepGoal, allUsersStepGoal]
-  console.log(result)
   return result
   // stepGoalBox.innerText += ` Your step goal is ${currentUser.userData.dailyStepGoal} steps. The average step goal is ${users.stepGoalAverage()}.`
 }
@@ -133,7 +132,6 @@ function displaySleepHistory() {
   let avgQuality = currentUser.getOverallQualityAvg()
   // let maxQuality = 5
   let result = [avgSleep, avgQuality]
-  console.log('sleep history result', result)
   return result
 }
 
@@ -165,9 +163,7 @@ function displayLast7DaysHydration() {
 function displayAllTimeSleepData() {
   let allTimeSleepQualityAvg = currentUser.getOverallQualityAvg()
   let allTimeSleepDurationAvg = currentUser.getAverageDailySleep()
-  console.log(allTimeSleepDurationAvg)
   let result = [allTimeSleepQualityAvg, allTimeSleepDurationAvg]
-  console.log('alltime sleep data', result)
   return result
 }
 

@@ -114,11 +114,33 @@ function sleepHistoryBarGraph(userSleepHistory, userQualityHistory) {
   });
 }
 
-function loadCharts(stepYValues, dailyH2OYValues, sleepYValues, qualityYValues, userSleepHistory, userQualityHistory) {
+var xValues = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'];
+
+const hydrationHistory = document.getElementById('weeklyHydration')
+function hydrationBarGraph(hydrationByDay) {
+  new Chart("weeklyHydration", {
+    type: "line",
+    data: {
+      labels: xValues,
+      datasets: [{
+        label: 'Hydration by Day',
+        data: hydrationByDay,
+        borderColor: "blue",
+        fill: false
+      },]
+    },
+    options: {
+      legend: { display: false }
+    }
+  });
+}
+
+function loadCharts(stepYValues, dailyH2OYValues, sleepYValues, qualityYValues, userSleepHistory, userQualityHistory, hydrationByDay) {
   makeStepCharts(stepYValues)
   makeDailyH20Charts(dailyH2OYValues)
   dailySleepChart(sleepYValues)
   dailySleepQualityChart(qualityYValues)
   sleepHistoryBarGraph(userSleepHistory, userQualityHistory)
+  hydrationBarGraph(hydrationByDay)
 }
 export default loadCharts;

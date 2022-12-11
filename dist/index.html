@@ -5,15 +5,15 @@
     <title>Fitlit</title>
   </head>
   <body>
-    <section class="header"> 
-      <h1>Activity Tracker</h1>
-      <section class="user-welcome">
-        <p id="userName"></p>
-      </section>
-    </section>
     <div class="dashboard">
       <div class="left-section">
-        <nav id="userInfo"></nav>
+        <section>
+          <h1>Activity Tracker</h1>
+          <section class="user-welcome">
+            <p id="userName"></p>
+          </section>
+          <nav id="userInfo"></nav>
+        </section>
         <div style="width: 275px;">
           <canvas class="step-goal"id="stepGoalAvg"></canvas>
         </div>
@@ -21,20 +21,19 @@
       <main class="main">
         <div class="main-report">
           <section class=" week" id="week">
-            <div style="width: 800px;">
+            <div style="width: 1000px;">
               <canvas id="weeklyChart"></canvas>
             </div>
-            <div>
+            <div class="calendar-submit">
               <input type="date" id="myDate" value="">
-              <button id="calendarBtn" type="button">Submit</button>
+              <button class="calendar-button" id="calendarBtn" type="button">Submit</button>
             </div>
-        
           </section>
           <div class="daily-report">
             <section class="hydration" id="hydration"></section>
             <section class="sleep" id="sleep">
               <section id="currentDaySleep"></section>
-              <div style="width: 200px;">
+              <div style="width: 290px;">
                 <canvas id="allTimeSleep"></canvas>
               </div>
             </section>
@@ -42,7 +41,6 @@
         </div>
       </main>
     </div>
-
     <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>

@@ -6,6 +6,7 @@ body, html {
   color: white;
 }
 body {
+  font-family: serif;
   flex-direction: column;
 }
 .dashboard {
@@ -17,7 +18,12 @@ body {
   width: 25%;
 }
 .main {
-  width: 100%
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 .main-report {
   display: flex;
@@ -42,20 +48,51 @@ body {
 }
 
 .hydration{
-  background-color:#1982c4;
+  background-color: rgba(54, 162, 235, .7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px;
+  height: 300px;
+  box-shadow: 10px 10px 5px 0px rgb(0 0 0 / 50%);
 }
 .sleep {
   background-color: darkkhaki;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px;
+  height: 300px;
+  box-shadow: 10px 10px 5px 0px rgb(0 0 0 / 50%);
 }
 
 .header {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
   justify-content: flex-start;
 }
 
 .user-welcome {
-  padding-left: 125px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
+.user-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.step-goal {
+  margin-top: 75px;
+}
+
+.calendar-submit {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.calendar-button {
+  margin-left: 10px;
+}

@@ -1,5 +1,6 @@
 import { Chart } from "chart.js/auto";
 
+
 const createChart = function (hydration, sleepQuality, sleepHours) {
   new Chart(document.getElementById("weeklyChart"), {
     type: "bar",
@@ -10,7 +11,7 @@ const createChart = function (hydration, sleepQuality, sleepHours) {
           label: hydration.label,
           yAxisID: "hydration",
           data: hydration.count,
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          backgroundColor: 'rgba(54, 162, 235, .7)',
           borderColor: 'white',
           borderWidth: 1
         },
@@ -18,11 +19,17 @@ const createChart = function (hydration, sleepQuality, sleepHours) {
           label: sleepQuality.label,
           yAxisID: "sleep",
           data: sleepQuality.count,
+          backgroundColor: '#7C77B9', 
+          borderColor: 'white',
+          borderWidth: 1
         },
         {
           label: sleepHours.label,
           yAxisID: "sleep",
           data: sleepHours.count,
+          backgroundColor: '#FC9F5B', 
+          borderColor: 'white',
+          borderWidth: 1
         },
       ],
     },
@@ -58,13 +65,14 @@ const createChart = function (hydration, sleepQuality, sleepHours) {
 
 const sleepChart = function (currentSleep, avgSleepQuality, avgHoursSlept) {
   new Chart(document.getElementById("allTimeSleep"), {
-    type: "polarArea",
+    type: "doughnut",
     data: {
       labels: ["Current Sleep", "Avg Sleep Quality", "Avg Hours Slept"],
       datasets: [
         {
           label: "Sleep Info",
           data: [currentSleep, avgSleepQuality, avgHoursSlept],
+          backgroundColor: ['rgba(54, 162, 235, .7)', '#7C77B9', '#FC9F5B']
         },
       ],
     },
@@ -80,6 +88,9 @@ const stepGoalChart = function (stepGoal, avgStepGoal) {
         axis: "y",
         label: "Step Info",
         data: [stepGoal, avgStepGoal],
+        backgroundColor: '#E36414', 
+        borderColor: 'white',
+        borderWidth: 1
       }],
     },
     options: {
@@ -87,5 +98,7 @@ const stepGoalChart = function (stepGoal, avgStepGoal) {
     },
   });
 };
+
+Chart.defaults.color = '#fff'
 
 export { createChart, sleepChart, stepGoalChart };

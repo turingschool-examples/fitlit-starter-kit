@@ -5,7 +5,7 @@ import User from "./User";
 import UserRepository from "./UserRepository";
 import Hydration from "./Hydration";
 import Sleep from "./Sleep";
-import { createChart, sleepChart, stepGoalChart } from "./charts";
+import { createChart, createSmallBarChart, stepGoalChart } from "./charts";
 
 let allUserData;
 let allUserSleep;
@@ -58,9 +58,9 @@ function pageLoadHandler(event) {
   // displayAllTimeSleep();
   console.log(currentUser)
   createChart(allUserHydro.returnWeeklyWaterConsumption(currentUser.id, currentDate), allUserSleep.returnSleepQualityByWeek(currentUser.id, currentDate), allUserSleep.returnHoursSleptByWeek(currentUser.id, currentDate))
-  sleepChart("allTimeSleep", ["Avg Sleep Quality", "Avg Hours Slept"],"Avg Sleep Quality",[allUserSleep.calcAvgSleepQualityPerDay(currentUser.id), allUserSleep.calcAvgSleepPerDay(currentUser.id)], ["#7C77B9",  "#FC9F5B"])
-  sleepChart("dailySleep", ["Daily Sleep Quality", "Daily Hours Slept"], "Daily Sleep",[allUserSleep.returnSleepQualityByDate(currentUser.id, currentDate), allUserSleep.returnHoursSleptByDate(currentUser.id, currentDate)], ["#7C77B9",  "#FC9F5B"])
-  stepGoalChart(currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal())
+  createSmallBarChart("allTimeSleep", ["Average Quality", "Average Slept"],"Avg Sleep Quality",[allUserSleep.calcAvgSleepQualityPerDay(currentUser.id), allUserSleep.calcAvgSleepPerDay(currentUser.id)], ["#7C77B9",  "#FC9F5B"])
+  createSmallBarChart("dailySleep", ["Daily Quality", "Daily Slept"], "Daily Sleep",[allUserSleep.returnSleepQualityByDate(currentUser.id, currentDate), allUserSleep.returnHoursSleptByDate(currentUser.id, currentDate)], ["#7C77B9",  "#FC9F5B"])
+  createSmallBarChart("stepGoalAvg", ["My Step Goal", "Average Step Goal"], 'nope',[currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal()], ["#7C77B9",  "#FC9F5B"], 'y')
   // dropDownCalendar = document.getElementById('myDate').value
   // console.log(dropDownCalendar)
 }

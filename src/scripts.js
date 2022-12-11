@@ -73,7 +73,7 @@ function displayWelcomeName() {
 
 function displayStepGoal() {
   let currentUserStepGoal = currentUser.userData.dailyStepGoal
-  let allUsersStepGoal = users.stepGoalAverage()
+  let allUsersStepGoal = users.stepGoalAverage() - currentUserStepGoal
   let result = [currentUserStepGoal, allUsersStepGoal]
   console.log(result)
   return result
@@ -96,7 +96,7 @@ function getUserFriends() {
 
 function displayWater() {
   let dailyWaterIntake = currentUser.getWaterPerDay('2019/06/15')
-  let dailyWaterGoal = 96
+  let dailyWaterGoal = 96 - dailyWaterIntake
   let result = [dailyWaterIntake, dailyWaterGoal]
   return result
   // hydrationBox.innerText += `Your water intake for today is ${currentUser.getWaterPerDay('2019/06/15')} ounces`
@@ -111,7 +111,7 @@ function displayWater() {
 
 function displaySleep() {
   let dailySleep = currentUser.sleepOnSpecificDate('2019/06/15')
-  let maxSleep = 12
+  let maxSleep = 12 - dailySleep
   let result = [dailySleep, maxSleep]
   return result
   // sleepInfoList.innerHTML += `<li>Last night you slept ${currentUser.sleepOnSpecificDate('2019/06/15')} hours</li>
@@ -121,7 +121,7 @@ function displaySleep() {
 
 function displaySleepQuality() {
   let dailyQuality = currentUser.sleepQualityOnSpecificDate('2019/06/15')
-  let maxQuality = 5
+  let maxQuality = 5 - dailyQuality
   let result = [dailyQuality, maxQuality]
   return result
 }
@@ -156,15 +156,30 @@ function displayLast7DaysQuality() {
   // return weeklySleep
 }
 
+function displayLast7DaysHydration() {
+  let weeklyHydration = currentUser.getWeeklyConsumption()
+  let weeklyWater = weeklyHydration.map(current => Object.values(current)[0])
+  return weeklyWater
+}
+
+function displayAllTimeSleepData() {
+  let allTimeSleepQualityAvg = currentUser.getOverallQualityAvg()
+  let allTimeSleepDurationAvg = currentUser.getAverageDailySleep()
+  console.log(allTimeSleepDurationAvg)
+  let result = [allTimeSleepQualityAvg, allTimeSleepDurationAvg]
+  console.log('alltime sleep data', result)
+  return result
+}
+
 function loadPage() {
   getUser(sleep, hydration)
-  // displayUserInfo()
+  displayUserInfo()
   // displayStepGoal()
   displayWelcomeName()
   // displayWater()
   // displaySleep()
   // displaySleepHistory()
-  loadCharts(displayStepGoal(), displayWater(), displaySleep(), displaySleepQuality(), displayLast7DaysSleep(), displayLast7DaysQuality())
+  loadCharts(displayStepGoal(), displayWater(), displaySleep(), displaySleepQuality(), displayLast7DaysSleep(), displayLast7DaysQuality(), displayLast7DaysHydration(), displayAllTimeSleepData())
 }
 
 // export default displayStepGoal;

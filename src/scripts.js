@@ -23,8 +23,11 @@ const displayWeekly = document.querySelector("#week");
 const currentSleep = document.querySelector("#currentDaySleep");
 const allTimeSleep = document.querySelector("#allTimeSleep");
 const calendarBtn = document.querySelector("#calendarBtn");
+const calendar = document.getElementById('myDate')
 
-calendarBtn.addEventListener("click", createCalendar)
+calendarBtn.addEventListener("click", function() {
+  createChart(allUserHydro.returnWeeklyWaterConsumption(currentUser.id, calendar.value.replace(/-/g, '/')), allUserSleep.returnSleepQualityByWeek(currentUser.id, calendar.value.replace(/-/g, '/')), allUserSleep.returnHoursSleptByWeek(currentUser.id, calendar.value.replace(/-/g, '/')))
+})
 
 fetchAll().then((data) => {
   console.log(data);
@@ -38,6 +41,9 @@ fetchAll().then((data) => {
   currentUser = allUserData.userData[Math.floor(Math.random() * allUserData.userData.length)];
   console.log(allUserHydro);
   currentDate = allUserHydro.data.slice(-1)[0].date;
+  calendar.setAttribute('min', allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, '-'))
+  calendar.setAttribute('max', currentDate.replace(/\//g, '-'))
+  calendar.setAttribute('value', currentDate.replace(/\//g, '-'))
   pageLoadHandler();
 });
 
@@ -54,8 +60,8 @@ function pageLoadHandler(event) {
   createChart(allUserHydro.returnWeeklyWaterConsumption(currentUser.id, currentDate), allUserSleep.returnSleepQualityByWeek(currentUser.id, currentDate), allUserSleep.returnHoursSleptByWeek(currentUser.id, currentDate))
   sleepChart(allUserSleep.returnHoursSleptByDate(currentUser.id, currentDate), allUserSleep.calcAvgSleepQualityPerDay(currentUser.id), allUserSleep.calcAvgSleepPerDay(currentUser.id))
   stepGoalChart(currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal())
-  dropDownCalendar = document.getElementById('myDate').value = currentDate.replace(/\//g, '-');
-  console.log(dropDownCalendar.replace(/\//g, '-'))
+  // dropDownCalendar = document.getElementById('myDate').value
+  // console.log(dropDownCalendar)
 }
 
 
@@ -114,10 +120,7 @@ const displayAllTimeSleep = function () {
   `;
 };
 
-function createCalendar() {
-  dropDownCalendar = document.getElementById('myDate').value 
-  console.log(dropDownCalendar)
-}
+
 
 
 

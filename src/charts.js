@@ -2,6 +2,11 @@ import { Chart } from "chart.js/auto";
 
 
 const createChart = function (hydration, sleepQuality, sleepHours) {
+  let chart = Chart.getChart('weeklyChart')
+  if(chart) {
+    chart.destroy()
+  }
+  console.log('detroyed?')
   new Chart(document.getElementById("weeklyChart"), {
     type: "bar",
     data: {

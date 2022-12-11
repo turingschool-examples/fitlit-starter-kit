@@ -139,19 +139,14 @@ class User {
   }
 
   averageSleepQuality() {
-
     let totalQuality = this.sleepData.sleepData.reduce((acc, user) => {
       acc += user.sleepQuality
-
       return acc
     }, 0)
     let averageQuality = totalQuality / this.sleepData.sleepData.length
-
     return Number(averageQuality.toFixed(2))
   }
 
 }
 
-
-//For a user (identified by their userID), the average number of hours slept per day
 export default User;

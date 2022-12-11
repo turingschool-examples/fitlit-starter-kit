@@ -65,13 +65,14 @@ const createChart = function (hydration, sleepQuality, sleepHours) {
 
 const sleepChart = function (currentSleep, avgSleepQuality, avgHoursSlept) {
   new Chart(document.getElementById("allTimeSleep"), {
-    type: "polarArea",
+    type: "doughnut",
     data: {
       labels: ["Current Sleep", "Avg Sleep Quality", "Avg Hours Slept"],
       datasets: [
         {
           label: "Sleep Info",
           data: [currentSleep, avgSleepQuality, avgHoursSlept],
+          backgroundColor: ['rgba(54, 162, 235, .7)', '#7C77B9', '#FC9F5B']
         },
       ],
     },

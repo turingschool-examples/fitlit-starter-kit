@@ -58,7 +58,8 @@ function pageLoadHandler(event) {
   // displayAllTimeSleep();
   console.log(currentUser)
   createChart(allUserHydro.returnWeeklyWaterConsumption(currentUser.id, currentDate), allUserSleep.returnSleepQualityByWeek(currentUser.id, currentDate), allUserSleep.returnHoursSleptByWeek(currentUser.id, currentDate))
-  sleepChart(allUserSleep.returnHoursSleptByDate(currentUser.id, currentDate), allUserSleep.calcAvgSleepQualityPerDay(currentUser.id), allUserSleep.calcAvgSleepPerDay(currentUser.id))
+  sleepChart("allTimeSleep", ["Avg Sleep Quality", "Avg Hours Slept"],"Avg Sleep Quality",[allUserSleep.calcAvgSleepQualityPerDay(currentUser.id), allUserSleep.calcAvgSleepPerDay(currentUser.id)], ["#7C77B9",  "#FC9F5B"])
+  sleepChart("dailySleep", ["Daily Sleep Quality", "Daily Hours Slept"], "Daily Sleep",[allUserSleep.returnSleepQualityByDate(currentUser.id, currentDate), allUserSleep.returnHoursSleptByDate(currentUser.id, currentDate)], ["#7C77B9",  "#FC9F5B"])
   stepGoalChart(currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal())
   // dropDownCalendar = document.getElementById('myDate').value
   // console.log(dropDownCalendar)

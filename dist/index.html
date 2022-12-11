@@ -1,14 +1,56 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Fitlit</title>
-  </head>
-  <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+<html lang="en-US">
 
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="bundle.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <!-- <link rel="styleSheet" href="../src/css/styles.css"> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+  </script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <title>Fitlit</title>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome</h1>
+    <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
+  </header>
+  <main>
+    <section class="grid-container">
+      <section class="grid-item zero" id="0">
+        <h2 id="sleep-text">Daily Sleep</h2>
+        <canvas id="dailySleep" style="width:100%;;max-width:150px"></canvas>
+        <h2 id="quality-text"> Sleep Quality</h2>
+        <canvas id="dailySleepQuality" style="width:100%;;max-width:150px"></canvas>
+      </section>
+      <section class="grid-item one" id="1">
+        <h2 id="step-text">Step Goal</h2>
+        <canvas id="stepGoal" style="width:100%;;max-width:150px"></canvas>
+      </section>
+      <section class="grid-item two" id="2">
+        <h2 id="infoText">Your Info</h2>
+        <ul id="userInfoList"></ul>
+      </section>
+      <section class="grid-item three" id="3">
+        <h2 id="hydrationText">Hydration</h2>
+        <canvas id="dailyHydration" style="width:100%;;max-width:150px"></canvas>
+      </section>
+      <section class="grid-item four" id="4">
+        <h2 id="sleepHistoryText">Sleep History</h2>
+        <canvas id="sleepHistory" style="width:100%;max-width:250px"></canvas>
+        <canvas id="allTimeSleepHistory" style="width:100%;max-width:250px"></canvas>
+      </section>
+      <section class="grid-item five" id="5">
+        <h2 id="weeklyHydrationText">Weekly Hydration</h2>
+        <canvas id="weeklyHydration" style="width:100%;;max-width:250px"></canvas>
+      </section>
+    </section>
+  </main>
+
+  <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+  <script src="bundle.js"></script>
+  
+  <!-- <script type="text/javascript" src="../src/scripts.js"></script> -->
+</body>
+
 </html>

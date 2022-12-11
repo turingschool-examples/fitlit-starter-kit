@@ -137,17 +137,24 @@ function displaySleepHistory() {
   return result
 }
 
-// function displayLast7DaysSleep() {
-// let weeklySleepAndDate =  currentUser.givenWeekSleepDataByDay()
-// let weeklySleep = weeklySleepAndDate.map((current, index) => {
-//   console.log(current) 
-// })
-// console.log('weekly sleep', weeklySleep)
-// return weeklySleep
-// }
+function displayLast7DaysSleep() {
+  let weeklySleepAndDate = currentUser.givenWeekSleepDataByDay()
+  let weeklySleep = weeklySleepAndDate.map(current => Object.values(current)[0])
+  return weeklySleep
+  // console.log('weekly sleep', weeklySleep)
+  // return weeklySleep
+}
 // currentUser.givenWeekSleepDataByDay() returns an array of objects
 // Each object has a dynamic key of a date and dynamic value of sleep hours
 // We need to return/access only the values/hours
+
+function displayLast7DaysQuality() {
+  let weeklyQualityAndDate = currentUser.givenWeeksSleepQualityByDay()
+  let weeklyQuality = weeklyQualityAndDate.map(current => Object.values(current)[0])
+  return weeklyQuality
+  // console.log('weekly sleep', weeklySleep)
+  // return weeklySleep
+}
 
 function loadPage() {
   getUser(sleep, hydration)

@@ -127,9 +127,27 @@ function displaySleepQuality() {
 }
 
 function displaySleepHistory() {
-  sleepHistoryList.innerHTML += `<li>Overall Sleep Hours: ${currentUser.getAverageDailySleep()} hours</li>
-  <li>Overall Sleep Quality: ${currentUser.getOverallQualityAvg()} out of 5</li>`
+  // sleepHistoryList.innerHTML += `<li>Overall Sleep Hours: ${currentUser.getAverageDailySleep()} hours</li>
+  // <li>Overall Sleep Quality: ${currentUser.getOverallQualityAvg()} out of 5</li>`
+  let avgSleep = currentUser.getAverageDailySleep()
+  let avgQuality = currentUser.getOverallQualityAvg()
+  // let maxQuality = 5
+  let result = [avgSleep, avgQuality]
+  console.log('sleep history result', result)
+  return result
 }
+
+// function displayLast7DaysSleep() {
+// let weeklySleepAndDate =  currentUser.givenWeekSleepDataByDay()
+// let weeklySleep = weeklySleepAndDate.map((current, index) => {
+//   console.log(current) 
+// })
+// console.log('weekly sleep', weeklySleep)
+// return weeklySleep
+// }
+// currentUser.givenWeekSleepDataByDay() returns an array of objects
+// Each object has a dynamic key of a date and dynamic value of sleep hours
+// We need to return/access only the values/hours
 
 function loadPage() {
   getUser(sleep, hydration)
@@ -139,7 +157,7 @@ function loadPage() {
   // displayWater()
   // displaySleep()
   // displaySleepHistory()
-  loadCharts(displayStepGoal(), displayWater(), displaySleep(), displaySleepQuality())
+  loadCharts(displayStepGoal(), displayWater(), displaySleep(), displaySleepQuality(), displayLast7DaysSleep(), displayLast7DaysQuality())
 }
 
 // export default displayStepGoal;

@@ -6,49 +6,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <title>Fitlit</title>
   </head>
-  <body>
-    <div class="dashboard">
-      <div class="left-section">
-        <section>
-          <h1>Fit Litty</h1>
-          <section class="user-welcome">
-            <p id="userName"></p>
-          </section>
-          <nav id="userInfo"></nav>
-        </section>
-        <div style="width: 100%">
-          <canvas class="step-goal" id="stepGoalAvg"></canvas>
-        </div>
+  <body class="dashboard">
+    <section class="left-section">
+      <h1>Fit Lit</h1>
+      <div class="user-welcome">
+        <p id="userName"></p>
       </div>
-      <main class="main">
-        <div class="main-report">
-          <section class="week" id="week">
-            <div class="week-chart" style="width: 90%">
-              <canvas id="weeklyChart"></canvas>
-            </div>
-            <div class="calendar-submit">
-              <input type="date" id="myDate" value="" />
-              <button class="calendar-button" id="calendarBtn" type="button">
-                Submit
-              </button>
-            </div>
-          </section>
-          <div class="daily-report">
-            <section class="hydration" id="hydration"></section>
-            <section class="sleep" id="sleep">
-              <section id="currentDaySleep"></section>
-              <div style="width: 40%">
-                <canvas id="dailySleep"></canvas>
-              </div>
-              <div style="width: 40%">
-                <canvas id="allTimeSleep"></canvas>
-              </div>
-            </section>
+      <nav id="userInfo"></nav>
+      <div style="width: 100%">
+        <canvas class="step-goal" id="stepGoalAvg"></canvas>
+      </div>
+    </section>
+    <main class="main">
+      <section class="main-report">
+        <article class="week" id="week">
+          <div class="week-chart" style="width: 90%">
+            <canvas id="weeklyChart"></canvas>
           </div>
-        </div>
-      </main>
-    </div>
-    <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+          <form class="calendar-submit">
+            <input type="date" id="myDate" value="" />
+            <button class="calendar-button" id="calendarBtn" type="button">
+              Submit
+            </button>
+          </form>
+        </article>
+        <section class="daily-report">
+          <article class="hydration" id="hydration"></article>
+          <article class="sleep" id="sleep">
+            <section id="currentDaySleep"></section>
+            <div style="width: 40%">
+              <canvas id="dailySleep"></canvas>
+            </div>
+            <div style="width: 40%">
+              <canvas id="allTimeSleep"></canvas>
+            </div>
+          </article>
+        </section>
+      </section>
+    </main>
     <script src="bundle.js"></script>
   </body>
 </html>

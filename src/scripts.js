@@ -8,6 +8,7 @@ import Sleep from './Sleep';
 import {fetchUserData} from './apiCalls'
 import {fetchSleepData} from './apiCalls';
 import {fetchHydrationData} from './apiCalls';
+import {sleepChart} from './Chart'
 
 // query selectors 👇🏻
 
@@ -136,3 +137,4 @@ const displayAvgAllTime = () => {
     <div id="compareSleepHours">Average all-time hours slept: ${avgAllSleepHours}</div>
     `
 }
+

@@ -48,7 +48,7 @@ main {
 }
 
 .info-card-container {
-  height: 50vh;
+  height: 30vh;
   display: flex;
   padding: 1em;
   flex-direction: row;
@@ -68,12 +68,18 @@ main {
 
 
 .widget-container {
-  height: 50vh;
+  height: 30vh;
   padding: 1em;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+}
+
+.chart-container {
+  height: 30vh;
+  display: flex;
+  background-color:rgb(161, 161, 215)
 }
 
 .widget1,

@@ -89,17 +89,19 @@ function dailySleepQualityChart(yValues) {
 
 var xValues = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'];
 
-new Chart("myChart", {
+const sleepHistory = document.getElementById('sleepHistory')
+function sleepHistoryBarGraph(userSleepHistory, userQualityHistory) {
+new Chart("sleepHistory", {
   type: "line",
   data: {
     labels: xValues,
     datasets: [{ 
-      data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+      data: userSleepHistory,
       borderColor: "red",
       fill: false
     }, 
     { 
-      data: [300,700,2000,5000,6000,4000,2000,1000,200,100],
+      data: userQualityHistory,
       borderColor: "blue",
       fill: false
     }]
@@ -108,12 +110,13 @@ new Chart("myChart", {
     legend: {display: false}
   }
 });
+}
 
-
-function loadCharts(stepYValues, dailyH2OYValues, sleepYValues, qualityYValues ) {
+function loadCharts(stepYValues, dailyH2OYValues, sleepYValues, qualityYValues, userQualityHistory, userSleepHistory) {
   makeStepCharts(stepYValues)
   makeDailyH20Charts(dailyH2OYValues)
   dailySleepChart(sleepYValues)
   dailySleepQualityChart(qualityYValues)
+  sleepHistoryBarGraph(userSleepHistory, userQualityHistory)
 }
 export default loadCharts;

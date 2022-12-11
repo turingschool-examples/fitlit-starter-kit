@@ -125,13 +125,12 @@ function displayHydrationData() {
 
 //Sleep data display
 function displaySleepData() {
-    const today = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData);
-    let sleepHours = userRepo.selectedUser.findDaySleepHours(today);
-    let sleepQuality = userRepo.selectedUser.findDaySleepQuality(today);
+    const today = currentUser.findLatestDate(currentUser.hydrationData);
+    let sleepHours = currentUser.findDaySleepHours(today);
+    let sleepQuality = currentUser.findDaySleepQuality(today);
     sleepToday.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
-
-    sleepHours = userRepo.selectedUser.averageSleepHours();
-    sleepQuality = userRepo.selectedUser.averageSleepQuality();
+    sleepHours = currentUser.averageSleepHours();
+    sleepQuality = currentUser.averageSleepQuality();
     sleepUserAvg.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
 }
 // User Profile Information Display

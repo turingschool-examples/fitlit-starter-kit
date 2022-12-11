@@ -8,7 +8,10 @@ import Sleep from './Sleep';
 import {fetchUserData} from './apiCalls'
 import {fetchSleepData} from './apiCalls';
 import {fetchHydrationData} from './apiCalls';
-import {sleepChart} from './Chart'
+import {buildSleepChart} from './Chart'
+
+
+
 
 // query selectors 👇🏻
 
@@ -59,6 +62,7 @@ function onLoad() {
     displayWeeklySleep();
     displayWeeklySleepQuality();
     displayAvgAllTime();
+    displaySleepChart()
 };
 
 const createUserArray = (userData) => {
@@ -95,14 +99,10 @@ const displayDailySleep = () => {
     let lastNightDate = user1[0].date
     dailySleepHours.innerText = `Hours slept last night: ${userSleepData.getHoursSleptOnDay(1, lastNightDate)}`
     dailySleepQuality.innerText = `Sleep quality last night: ${userSleepData.getSleepQualityOnDay(1, lastNightDate)}`
-    // console.log(user1)
 }
 
 const displayWeeklySleep = () => {
     const user = userSleepData.getUserData(1).slice(-7)
-    // const lastDate = user[6].date
-    // const weeklySleep = userSleepData.getHoursSleptOverWeek(1, lastDate)
-    // console.log("weekly sleep", weeklySleep)
     weeklySleepHours.innerHTML = `              
     <h4>hours slept last 6 days
         <div id="day1">Day 1: ${user[6].hoursSlept} hours</div>
@@ -138,3 +138,6 @@ const displayAvgAllTime = () => {
     `
 }
 
+const displaySleepChart = () => {
+    buildSleepChart()
+}

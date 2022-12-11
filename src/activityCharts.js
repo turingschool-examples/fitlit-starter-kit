@@ -29,7 +29,6 @@ const updateHydroDateChart = () => {
     const numDrunk = userRepo.selectedUser.findDaysHydration(todaysDate).numOunces;
     const goal = 64;
     const ozLeft = findHydroPercentage(numDrunk, goal);
-    console.log('ounces left: ', ozLeft);
     todaysHydroChart = new Chart(hydroDayChart, {
         type: 'doughnut',
         data: {
@@ -48,10 +47,8 @@ const updateHydroDateChart = () => {
 
 const updateHydroWeeklyChart = () => {
     const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData)
-    console.log(todaysDate)
     const weeklyHydration = userRepo.selectedUser.findWeekHydration(todaysDate)
     weeklyHydration.reverse();
-    console.log(weeklyHydration)
     weeksHydroChart = new Chart(hydroWeekChart, {
         type: 'bar',
         data: {
@@ -70,9 +67,7 @@ const updateHydroWeeklyChart = () => {
 }
 const updateStepChart = () => {
     const userStepGoal = userRepo.selectedUser.dailyStepGoal
-    console.log(userStepGoal)
     const avgStepGoal = userRepo.averageSteps()
-    console.log(avgStepGoal)
     stepComparisonChart = new Chart(stepChart, {
         type: 'bar',
         data: {

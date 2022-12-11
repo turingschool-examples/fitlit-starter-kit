@@ -47,7 +47,6 @@ class UserRepository {
     }
     randomizeUser() {
         let selectedUserIndex = Math.floor(Math.random() * (this.users.length))
-        console.log("RANSOM USER INDEX", selectedUserIndex);
         return this.users[selectedUserIndex]
     }
     averageSteps() {

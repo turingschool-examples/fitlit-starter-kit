@@ -112,7 +112,7 @@ new Chart("sleepHistory", {
 });
 }
 
-function loadCharts(stepYValues, dailyH2OYValues, sleepYValues, qualityYValues, userQualityHistory, userSleepHistory) {
+function loadCharts(stepYValues, dailyH2OYValues, sleepYValues, qualityYValues, userSleepHistory, userQualityHistory) {
   makeStepCharts(stepYValues)
   makeDailyH20Charts(dailyH2OYValues)
   dailySleepChart(sleepYValues)

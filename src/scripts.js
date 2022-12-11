@@ -92,8 +92,8 @@ const instantiateSleep = () => {
 const displayDailySleep = () => {
     let user1 = userSleepData.getUserData(1).reverse()
     let lastNightDate = user1[0].date
-    dailySleepHours.innerText = userSleepData.getHoursSleptOnDay(1, lastNightDate)
-    dailySleepQuality.innerText = userSleepData.getSleepQualityOnDay(1, lastNightDate)
+    dailySleepHours.innerText = `Hours slept last night: ${userSleepData.getHoursSleptOnDay(1, lastNightDate)}`
+    dailySleepQuality.innerText = `Sleep quality last night: ${userSleepData.getSleepQualityOnDay(1, lastNightDate)}`
     // console.log(user1)
 }
 
@@ -103,28 +103,28 @@ const displayWeeklySleep = () => {
     // const weeklySleep = userSleepData.getHoursSleptOverWeek(1, lastDate)
     // console.log("weekly sleep", weeklySleep)
     weeklySleepHours.innerHTML = `              
-    <ul>
-        <li id="day1">Day 1: ${user[6].hoursSlept} hours</li>
-        <li id="day2">Day 2: ${user[5].hoursSlept} hours</li>
-        <li id="day3">Day 3: ${user[4].hoursSlept} hours</li>
-        <li id="day4">Day 4: ${user[3].hoursSlept} hours</li>
-        <li id="day5">Day 5: ${user[2].hoursSlept} hours</li>
-        <li id="day6">Day 6: ${user[1].hoursSlept} hours</li>
-    </ul>`
+    <h4>hours slept last 6 days
+        <div id="day1">Day 1: ${user[6].hoursSlept} hours</div>
+        <div id="day2">Day 2: ${user[5].hoursSlept} hours</div>
+        <div id="day3">Day 3: ${user[4].hoursSlept} hours</div>
+        <div id="day4">Day 4: ${user[3].hoursSlept} hours</div>
+        <div id="day5">Day 5: ${user[2].hoursSlept} hours</div>
+        <div id="day6">Day 6: ${user[1].hoursSlept} hours</div>
+    </h4>`
 }
 
 
 const displayWeeklySleepQuality = () => {
     const user = userSleepData.getUserData(1).slice(-7)
     weeklySleepQuality.innerHTML = `              
-    <ul>
-        <li id="day1">Day 1: ${user[6].sleepQuality}</li>
-        <li id="day2">Day 2: ${user[5].sleepQuality}</li>
-        <li id="day3">Day 3: ${user[4].sleepQuality}</li>
-        <li id="day4">Day 4: ${user[3].sleepQuality}</li>
-        <li id="day5">Day 5: ${user[2].sleepQuality}</li>
-        <li id="day6">Day 6: ${user[1].sleepQuality}</li>
-    </ul>`
+    <h4>sleep quality last 6 days
+        <div id="day1">Day 1: ${user[6].sleepQuality}</div>
+        <div id="day2">Day 2: ${user[5].sleepQuality}</div>
+        <div id="day3">Day 3: ${user[4].sleepQuality}</div>
+        <div id="day4">Day 4: ${user[3].sleepQuality}</div>
+        <div id="day5">Day 5: ${user[2].sleepQuality}</div>
+        <div id="day6">Day 6: ${user[1].sleepQuality}</div>
+    </h4>`
 }
 
 const displayAvgAllTime = () => {

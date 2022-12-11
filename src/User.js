@@ -82,7 +82,6 @@ class User {
     let dates = this.sleepData.sleepData.filter((user) => {
       return user.date === date
     })
-    console.log('hi', dates)
     return dates.reduce((acc, curr) => {
       if (curr.userID === this.userData.id) {
         acc = curr.hoursSlept
@@ -95,7 +94,6 @@ class User {
     let dates = this.sleepData.sleepData.filter((user) => {
       return user.date === date
     })
-    console.log('hi', dates)
     return dates.reduce((acc, curr) => {
       if (curr.userID === this.userData.id) {
         acc = curr.sleepQuality
@@ -119,8 +117,6 @@ class User {
       return both;
     })
 
-    console.log('hi', filteredSleep)
-
     return filteredSleep;
   }
 
@@ -139,21 +135,18 @@ class User {
       return both;
     })
 
-    console.log('hi', filteredQuality)
-
     return filteredQuality;
   }
 
   averageSleepQuality() {
 
-    //console.log("Specific ", specificUserSleepData)
     let totalQuality = this.sleepData.sleepData.reduce((acc, user) => {
       acc += user.sleepQuality
-      console.log(acc)
+
       return acc
     }, 0)
     let averageQuality = totalQuality / this.sleepData.sleepData.length
-    console.log('avg uality', averageQuality)
+
     return Number(averageQuality.toFixed(2))
   }
 

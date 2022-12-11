@@ -2,8 +2,7 @@ import Chart from 'chart.js/auto';
 
 const myChart = document.getElementById("myChart")
 
-const buildSleepChart = (sleepData) => {
-    // let something = sleepData.getHoursSleptOverWeek
+const buildSleepChart = (userData) => {
     const sleepChart = new Chart (myChart, {
         type: 'bar',
         data: {

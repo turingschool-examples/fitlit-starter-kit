@@ -49,7 +49,7 @@ window.addEventListener('load', function () {
             displayHydrationData();
             displaySleepData();
             activityCharts.updateHydroDateChart();
-            activityCharts.updateStepChart(); //update charts upon page load
+            activityCharts.updateStepChart();
             activityCharts.updateSleepChart();
             activityCharts.updateHydroWeeklyChart();
         });
@@ -62,7 +62,7 @@ userName.addEventListener('click', toggleProfileInfo)
 function showPersonalizedWelcome() {
   let selectedMsgInt = Math.floor(Math.random() * (2 - 0 + 1));
   let randomGreetings = [`Let's Carpe this Diem!`, `You miss 100% of the shots you don't take.`, `You can have results or excuses, not both.`];
-  welcomeMessage.innerText = `Welcome, ${userRepo.selectedUser.name}! - - ${randomGreetings[selectedMsgInt]}`;
+  welcomeMessage.innerText = `Welcome, ${userRepo.selectedUser.name}! ${randomGreetings[selectedMsgInt]}`;
 }
 
 function selectRandom(selectedArray){
@@ -144,7 +144,6 @@ function displaySleepData() {
 }
 // User Profile Information Display
 function displaySelectedUserInformation() {
-  // Added space manually with this interpolation but can fix later with CSS
   userProfile.innerText = `Mailing Address:
   ${userRepo.selectedUser.address}
 

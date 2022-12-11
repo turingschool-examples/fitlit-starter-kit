@@ -15,6 +15,9 @@
             <section>
                 <p class="welcome-message" id="welcomeMessage">insert Welcome message here</p>
             </section>
+            <section>
+              <p class="welcome-banner-right"></p>
+            </section>
         </nav>
         <div class="data-display">
         <aside class="user-tab">
@@ -30,7 +33,7 @@
             <img src="./images/walkingIcon.svg" class="walking-icon">
             <h4 class="fit-data chart-header">Your Step Goal vs. Average Step Goal</h4>
             <p class="fit-data highlight" id="stepGoalVsAvg"></p>
-            <div>
+            <div class="fit-data week-step-chart">
                 <canvas id="stepGoalChart"></canvas>
             </div>
         </section>
@@ -43,19 +46,19 @@
             <h4 class="fit-data sleep-global-avg">Compared to all users' average</h4>
             <p class="fit-data highlight" id="sleepGlobalAvg">insert averaged global sleep data here</p>
             <h4 class="fit-data chart-header">Your Sleep for the Last 7 Days</h4>
-            <div class="fit-data week-sleep">
+            <div class="fit-data week-sleep-chart">
                 <canvas id="weeksSleepChart"></canvas>
             </div>
         </section>
         <section class="fit-data-section" id="hydration">
             <h2 class="fit-data-header">Hydration</h2>
             <div class="fit-data day-hydro">
-                <canvas class="hydation-chart" id="todaysHydrationChart"></canvas>
+                <canvas id="todaysHydrationChart"></canvas>
             </div>
-            <p class="fit-data" id="hydrationToday">insert today's hydration data here</p>
-            <p class="fit-data" id="hydrationGoal">Hydration comparison data here</p>
+            <p class="fit-data highlight" id="hydrationToday">insert today's hydration data here</p>
+            <p class="fit-data highlight" id="hydrationGoal">Hydration comparison data here</p>
             <h4 class="fit-data chart-header">Water Consumption for the Last 7 Days</h4>
-            <div>
+            <div class="fit-data week-hydration-chart">
                 <canvas id="weeksHydrationChart"></canvas>
             </div>
         </section>

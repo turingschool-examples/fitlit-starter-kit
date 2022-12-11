@@ -18,7 +18,7 @@ body {
   width: 25%;
 }
 .main {
-  width: 100%;
+  width: 75%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,12 +43,21 @@ body {
   border-radius: 8px;
 }
 .week {
-  background-color: #404040;
+  /* background-color: #EB36A2; */
+  border: 2px solid #EB36A2;
+  padding: 10px;
   margin-bottom: 50px;
 }
 
+.week-chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .hydration{
-  background-color: rgba(54, 162, 235, .7);
+  /* background-color: rgba(54, 162, 235, .7); */
+  border: 2px solid rgba(54, 162, 235, .7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,7 +67,8 @@ body {
   box-shadow: 10px 10px 5px 0px rgb(0 0 0 / 50%);
 }
 .sleep {
-  background-color: darkkhaki;
+  /* background-color: #A2EB36; */
+  border: 2px solid #A2EB36;
   display: flex;
   align-items: center;
   justify-content: center;

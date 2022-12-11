@@ -77,7 +77,7 @@
 
 ### Built With
 
-* [![Javascript][Javascript.js][Next-url](https://img.shields.io/badge/JavaScript-0769AD?style=for-the-badge&logo=javascript&logoColor=white)]
+* [![Javascript](https://img.shields.io/badge/JavaScript-0769AD?style=for-the-badge&logo=javascript&logoColor=white)
 * [![CSS][Next.js]][Next-url]
 * [![HTML][Next.js]][Next-url]
 * [![Webpack][Next.js]][Next-url]

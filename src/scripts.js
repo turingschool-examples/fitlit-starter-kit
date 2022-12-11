@@ -119,6 +119,13 @@ function displaySleep() {
   // <li>Your weekly sleep pattern: ${currentUser.givenWeekSleepDataByDay()} - ${currentUser.givenWeeksSleepQualityByDay()}</li>`
 }
 
+function displaySleepQuality() {
+  let dailyQuality = currentUser.sleepQualityOnSpecificDate('2019/06/15')
+  let maxQuality = 5
+  let result = [dailyQuality, maxQuality]
+  return result
+}
+
 function displaySleepHistory() {
   sleepHistoryList.innerHTML += `<li>Overall Sleep Hours: ${currentUser.getAverageDailySleep()} hours</li>
   <li>Overall Sleep Quality: ${currentUser.getOverallQualityAvg()} out of 5</li>`
@@ -132,7 +139,7 @@ function loadPage() {
   // displayWater()
   // displaySleep()
   // displaySleepHistory()
-  loadCharts(displayStepGoal(), displayWater(), displaySleep())
+  loadCharts(displayStepGoal(), displayWater(), displaySleep(), displaySleepQuality())
 }
 
 // export default displayStepGoal;

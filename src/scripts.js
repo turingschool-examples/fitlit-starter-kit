@@ -158,7 +158,7 @@ function displayLast7DaysQuality() {
 
 function loadPage() {
   getUser(sleep, hydration)
-  // displayUserInfo()
+  displayUserInfo()
   // displayStepGoal()
   displayWelcomeName()
   // displayWater()

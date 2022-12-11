@@ -144,11 +144,11 @@ function allTimeSleepQuality(allTimeSleep) {
     data: {
       labels: labels,
       datasets: [{
-        label: 'All-Time Sleep History',
+        label: 'Sleep History',
         data: allTimeSleep,
         backgroundColor: [
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(201, 203, 207, 0.2)'
+          'blue',
+          'red'
         ],
         borderColor: [
           'rgb(255, 99, 132)',

@@ -23,9 +23,10 @@ const displayWeekly = document.querySelector("#week");
 const currentSleep = document.querySelector("#currentDaySleep");
 const allTimeSleep = document.querySelector("#allTimeSleep");
 const calendarBtn = document.querySelector("#calendarBtn");
+const calendar = document.getElementById('myDate')
 
 calendarBtn.addEventListener("click", function() {
-  createChart(allUserHydro.returnWeeklyWaterConsumption(currentUser.id, document.getElementById('myDate').value.replace(/-/g, '/')), allUserSleep.returnSleepQualityByWeek(currentUser.id, document.getElementById('myDate').value.replace(/-/g, '/')), allUserSleep.returnHoursSleptByWeek(currentUser.id, document.getElementById('myDate').value.replace(/-/g, '/')))
+  createChart(allUserHydro.returnWeeklyWaterConsumption(currentUser.id, calendar.value.replace(/-/g, '/')), allUserSleep.returnSleepQualityByWeek(currentUser.id, calendar.value.replace(/-/g, '/')), allUserSleep.returnHoursSleptByWeek(currentUser.id, calendar.value.replace(/-/g, '/')))
 })
 
 fetchAll().then((data) => {
@@ -40,6 +41,9 @@ fetchAll().then((data) => {
   currentUser = allUserData.userData[Math.floor(Math.random() * allUserData.userData.length)];
   console.log(allUserHydro);
   currentDate = allUserHydro.data.slice(-1)[0].date;
+  calendar.setAttribute('min', allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, '-'))
+  calendar.setAttribute('max', currentDate.replace(/\//g, '-'))
+  calendar.setAttribute('value', currentDate.replace(/\//g, '-'))
   pageLoadHandler();
 });
 

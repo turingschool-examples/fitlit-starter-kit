@@ -27,7 +27,7 @@ We were given approximately 11 days to work on this project.  We spent about 50 
     https://www.linkedin.com/in/craig-weller/
 - Anna Peterson: 
     https://github.com/jsahim
-    https://www.linkedin.com/in/jeffrey-sahim/ 
+    https://www.linkedin.com/in/ 
 - Ciera DePauw:
     https://github.com/cieragrace
     https://www.linkedin.com/in/karimal-rashdan/

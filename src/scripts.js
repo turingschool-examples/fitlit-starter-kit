@@ -138,5 +138,6 @@ const displayAvgAllTime = () => {
 }
 
 const displaySleepChart = () => {
-    buildSleepChart()
+    const userSleepDataOverWeek = userSleepData.getUserData(1).slice(-7)
+    buildSleepChart(userSleepDataOverWeek);
 }

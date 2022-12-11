@@ -39,7 +39,6 @@ html {
 .main-report {
   display: flex;
   flex-direction: column;
-  background-color: antiquewhite;
   border-radius: 8px;
   background-color: #232323;
 }

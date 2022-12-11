@@ -81,7 +81,8 @@ main {
 .widget3,
 .widget4,
 .widget5,
-.widget6 {
+.widget6, 
+.widget7{
   height: 10em;
   width: 10em;
   padding: 1em;

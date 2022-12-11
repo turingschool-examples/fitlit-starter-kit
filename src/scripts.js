@@ -12,7 +12,6 @@ import {fetchHydrationData} from './apiCalls';
 // query selectors 👇🏻
 
 const userInfoBox = document.getElementById("userInfoBox");
-const stepGoalBox = document.getElementById("stepGoalBox");
 const userName = document.getElementById("name");
 const userAddress = document.getElementById("address");
 const userStrideLength = document.getElementById("strideLength");
@@ -25,6 +24,7 @@ const dailySleepHours = document.getElementById("dailySleepHours");
 const weeklySleepHours = document.getElementById("weeklySleepHours")
 const dailySleepQuality = document.getElementById("dailySleepQuality")
 const weeklySleepQuality = document.getElementById("weeklySleepQuality")
+const avgSleepData = document.getElementById("avgSleepData")
 
 // global variables 👇🏻
 
@@ -57,7 +57,7 @@ function onLoad() {
     displayDailySleep();
     displayWeeklySleep();
     displayWeeklySleepQuality();
-    displayAvgQualAllTime();
+    displayAvgAllTime();
 };
 
 const createUserArray = (userData) => {
@@ -110,7 +110,7 @@ const displayWeeklySleep = () => {
         <li id="day4">Day 4: ${user[3].hoursSlept} hours</li>
         <li id="day5">Day 5: ${user[2].hoursSlept} hours</li>
         <li id="day6">Day 6: ${user[1].hoursSlept} hours</li>
-  </ul>`
+    </ul>`
 }
 
 
@@ -124,12 +124,15 @@ const displayWeeklySleepQuality = () => {
         <li id="day4">Day 4: ${user[3].sleepQuality}</li>
         <li id="day5">Day 5: ${user[2].sleepQuality}</li>
         <li id="day6">Day 6: ${user[1].sleepQuality}</li>
-  </ul>`
+    </ul>`
 }
 
-const displayAvgQualAllTime = () => {
-    const user = userSleepData.getSleepQualityAllUsers()
-    stepGoalBox.innerHTML += `
-    <h4 id="compareSleepQual">Average all-time sleep quality: ${user}</h4>
+const displayAvgAllTime = () => {
+    const avgAllSleepQuality = userSleepData.avgSleepQuality(1)
+    const avgAllSleepHours = userSleepData.avgHoursSleptPerDay(1)
+
+    avgSleepData.innerHTML = `
+    <div id="compareSleepQual">Average all-time sleep quality: ${avgAllSleepQuality}</div>
+    <div id="compareSleepHours">Average all-time hours slept: ${avgAllSleepHours}</div>
     `
 }

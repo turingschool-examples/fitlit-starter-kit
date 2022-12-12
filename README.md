@@ -27,8 +27,15 @@ Tracking progress while going through your health and welness journey can be dif
 
 
 ### Context:
-Faye, Kirsten, Ryan, and Rick all worked on this project for 9 days. We are all in our third week in our second module in Turing. 
+Faye, Kirsten, Ryan, and Rick all worked on this project for 9 days. We are all in our third week in our second module in Turing.
 
+### Technologies Used
+- Javascript
+- HTML
+- CSS 
+- Mocha/Chai
+- Webpack
+- Charts.js
 
 ### Contributors:
 - [Rick Vermeil (he/him)](https://www.linkedin.com/in/rick-vermeil-b93581159/)

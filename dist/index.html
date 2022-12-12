@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <title>Fitlit</title>
@@ -10,7 +10,7 @@
     <section class="left-section">
       <h1>Fit Lit</h1>
       <div class="user-welcome">
-        <p class="user-name" id="userName"></p>
+        <h2 class="user-name" id="userName"></h2>
       </div>
       <div style="width: 90%">
         <canvas class="step-goal" id="stepGoalAvg"></canvas>
@@ -24,7 +24,8 @@
             <canvas id="weeklyChart"></canvas>
           </div>
           <form class="calendar-submit">
-            <input type="date" id="myDate" value="" />
+            <label for="myDate">Choose a Date:  </label>
+            <input type="date" id="myDate"/>
             <button class="calendar-button" id="calendarBtn" type="button">
               Submit
             </button>

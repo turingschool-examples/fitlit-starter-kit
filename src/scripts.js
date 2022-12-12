@@ -81,7 +81,7 @@ function showUserInfoDisplay() {
     currentUser.friends.forEach(friend => {
         friendsDisplay.innerHTML += `
     <div class="single-friend">
-      <div  class="friend-avatar friend-${friend}" style="background-color: ${selectRandom(profileBackgrounds)}">${selectRandom(profileEmojis)}</div> 
+    <div  class="friend-avatar friend-${friend}" style="background-color: ${selectRandom(profileBackgrounds)}">${selectRandom(profileEmojis)}</div> 
         ${(userRepo.findUser(friend)).name}
     </div>
     `;
@@ -107,7 +107,7 @@ function displayUserStepGoal() {
 function displayStepGoalComparison() {
     stepGoalVsAvg.innerText = `Your step goal: ${currentUser.dailyStepGoal}
 
-  Average Step Goal: ${userRepo.averageSteps()}`
+Average Step Goal: ${userRepo.averageSteps()}`
 }
 
 // Hydration data display
@@ -138,13 +138,13 @@ function displaySelectedUserInformation() {
     // Added space manually with this interpolation but can fix later with CSS
     userProfile.innerText = `${currentUser.name}
 
-  ${currentUser.address}
+${currentUser.address}
 
-  ${currentUser.email}
+${currentUser.email}
 
-  ${currentUser.dailyStepGoal}
+${currentUser.dailyStepGoal}
 
-  ${currentUser.strideLength}`
+${currentUser.strideLength}`
 }
 
 export { userRepo };

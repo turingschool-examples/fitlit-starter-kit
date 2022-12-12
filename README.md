@@ -1,15 +1,16 @@
-# IdeaBox
+# FitLit
 
 
 ### Learning Goals:
-- Gain an understanding of how to write clean HTML and CSS to match a provided comp
-- Understand what it looks like to have a separate data model (using a class) and DOM model
-- Incorporate & iterate over arrays in order to filter what is being displayed
-- Craft code with clean style, using small functions that show trends toward DRYness and SRP
+- Implement ES6 classes that communicate to each other as needed.
+- Use object and array prototype methods to perform data manipulation.
+- Create a dashboard that is easy to use and displays information in a clear way.
+- Implement a robust testing suite using TDD.
+- Make network requests to retrieve data.
 
 
 ### Abstract:
-Have a lot of great ideas? Need a place to store them? Welcome to IdeaBox! The place where you can keep track of all of the things swirling around your head. Save and store all of your ideas, while filtering through your favorite ideas all in one place. 
+Tracking progress while going through your health and welness journey can be difficult and complicated. Fortunately FitLit is here to save the day! Through this web app user data can be collected, stored, and displayed to the user in truly meaningfuly ways. By using FitLit you can track a users progress on important health aspects like step goals, sleep, and hydration while also being able to compare them to user averages for all three catagories as well. 
 
 
 ### Installation Instructions:

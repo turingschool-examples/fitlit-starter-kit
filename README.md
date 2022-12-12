@@ -27,14 +27,14 @@ Tracking progress while going through your health and welness journey can be dif
 
 
 ### Context:
-Bob, Ryan, Blanche, and Josephine all worked on this project for six days. We are all in our fourth week in our first module in Turing. 
+Faye, Kirsten, Ryan, and Rick all worked on this project for 9 days. We are all in our third week in our second module in Turing. 
 
 
 ### Contributors:
-- [Robert 'Bob' Aiken (he/him)](https://www.linkedin.com/in/robertsiraaiken/)
+- [Rick Vermeil (he/him)](https://www.linkedin.com/in/rick-vermeil-b93581159/)
 - [Ryan Baer (he/him)](https://www.linkedin.com/in/ryan-baer-33311114a/)
-- [Blanche Haddad (they/them)](https://www.linkedin.com/in/blanche-haddad-denver/)
-- [Josephine Heiderpriem (she/her)](https://www.linkedin.com/in/josephine-heidepriem-she-her-1a2b7324b/) 
+- [Kirsten Smith (they/them)](https://www.linkedin.com/in/kirsten-stamm-smith/)
+- [Faye Rosenshein (she/her)](https://www.linkedin.com/in/faye-rosenshein-8ba421242/) 
 
 
 ### Wins + Challenges:

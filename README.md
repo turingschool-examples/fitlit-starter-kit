@@ -7,7 +7,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="src/images/fitlit_logo_v.png" alt="Logo" width="300" height="250">
+    <img src="src/images/fitlit_logo_gray.png" alt="Logo" width="300" height="250">
   </a>
 
 <h3 align="center">FitLit</h3>

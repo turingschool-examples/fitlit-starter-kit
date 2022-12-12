@@ -15,11 +15,11 @@ Tracking progress while going through your health and welness journey can be dif
 
 ### Installation Instructions:
 - Fork the repository found here: https://github.com/RyanBaer42/IdeaBox 
-- Clone down your new, forked repo. While cloning, name it what you want your project to be named, and run `git clone`. 
+- Clone down your new, forked repo. While cloning, name it what you want your local repo to be named, and run `git clone`. 
 - cd into the repository
-- Run `open index.html` in your text editor
-Alternatively: 
-- [Use this link](https://ryanbaer42.github.io/IdeaBox/)
+- Install NPM packages by running `npm install` in your terminal
+- Start the server by running `npm start` in your server  
+- After starting the server, the project will run at http://localhost:8080/
 
 ### Preview of App:
 

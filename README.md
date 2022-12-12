@@ -27,7 +27,7 @@
     <a href="https://github.com/nordbyi/FitLit"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/nordbyi/FitLit">View Demo</a>
+    <a href="https://nordbyi.github.io/FitLit/">View Demo</a>
     ·
     <a href="https://github.com/nordbyi/FitLit/issues">Report Bug</a>
     ·

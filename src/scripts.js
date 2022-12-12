@@ -1,8 +1,12 @@
-import './html-css/styles.css';
+
+// File imports
+import './styles.css';
 import activityCharts from './activityCharts';
 import apiCalls from './apiCalls';
 import UserRepository from './UserRepository';
-import './images/turing-logo.png'
+
+// Image imports
+import './images/walkingIcon.svg';
 
 // Query Selectors
 const userPromise = apiCalls.loadUserData()
@@ -10,7 +14,6 @@ const hydrationPromise = apiCalls.loadHydrationData()
 const sleepPromise = apiCalls.loadSleepData()
 const welcomeMessage = document.querySelector('#welcomeMessage')
 const friendsDisplay = document.querySelector('#friends')
-const stepGoal = document.querySelector('#stepGoal')
 const stepGoalVsAvg = document.querySelector('#stepGoalVsAvg')
 const userProfile = document.querySelector('#profile')
 const userName = document.querySelector('#userName')
@@ -20,6 +23,7 @@ const hydrationGoal = document.getElementById('hydrationGoal')
 const sleepToday = document.getElementById('sleepToday')
 const sleepUserAvg = document.getElementById('sleepUserAvg')
 const sleepGlobalAvg = document.getElementById('sleepGlobalAvg')
+
 // Global variables
 let userRepo;
 let currentUser
@@ -36,10 +40,8 @@ window.addEventListener('load', function () {
 });
 
 userAvatar.addEventListener('click', toggleProfileInfo)
+userName.addEventListener('click', toggleProfileInfo)
 
-
-
-//update DOM
 function parseData(values) {
     userRepo = new UserRepository(values[0], values[1], values[2])
     userRepo.initialize()
@@ -60,19 +62,16 @@ function updateDOM() {
     activityCharts.updateHydroWeeklyChart();
 }
 
-
-// Welcome message display
 function showPersonalizedWelcome() {
-    let randomGreetings = [`Let's Carpe this Diem!`, `You miss 100% of the shots you don't take.`, `You can have results or excuses, not both.`, `Lets do this thing!`, `Do or do not there is no try.`, `Everything is awesome when you're living out a dream.`];
     let selectedMsg = selectRandom(randomGreetings)
-    welcomeMessage.innerText = `Welcome, ${currentUser.name}! - - ${selectedMsg}`;
+    let randomGreetings = [`Let's Carpe this Diem!`, `You miss 100% of the shots you don't take.`, `You can have results or excuses, not both.`, `Lets do this thing!`, `Do or do not there is no try.`, `Everything is awesome when you're living out a dream.`];
+    welcomeMessage.innerText = `Welcome, ${currentUser.name}! ${selectedMsg}`;
 }
 
 function selectRandom(selectedArray) {
     return selectedArray[Math.floor(Math.random() * selectedArray.length)];
 }
 
-// Info card display
 function showUserInfoDisplay() {
     friendsDisplay.innerText = ` `;
     userName.innerText = `${currentUser.name}`
@@ -98,19 +97,19 @@ function toggleProfileInfo() {
     }
 }
 
-// User step goal display
-function displayUserStepGoal() {
-    stepGoal.innerText = `Step goal: ${currentUser.dailyStepGoal} steps per day`;
-}
-
-// Step Goal vs. Avg all users
 function displayStepGoalComparison() {
-    stepGoalVsAvg.innerText = `Your step goal: ${currentUser.dailyStepGoal}
+  if (userRepo.selectedUser.dailyStepGoal > userRepo.averageSteps()) {
+    let stepGoalDiff =  userRepo.selectedUser.dailyStepGoal - userRepo.averageSteps();
+    stepGoalVsAvg.innerText = `Nice work! Your step goal is
+    ${stepGoalDiff} steps above average!`
+  } else {
+    let stepGoalDiff =  userRepo.averageSteps() - userRepo.selectedUser.dailyStepGoal;
+    stepGoalVsAvg.innerText = `Your step goal is ${stepGoalDiff} steps below average.
 
-Average Step Goal: ${userRepo.averageSteps()}`
+    Consider increasing your goal for your fitness.`
+  }
 }
 
-// Hydration data display
 function displayHydrationData() {
     const lastHydration = currentUser.findLatestDate(currentUser.hydrationData)
     const lastHydrationOunces = currentUser.findDaysHydration(lastHydration).numOunces;
@@ -123,7 +122,6 @@ function displayHydrationData() {
     }
 };
 
-//Sleep data display
 function displaySleepData() {
     const today = currentUser.findLatestDate(currentUser.hydrationData);
     let sleepHours = currentUser.findDaySleepHours(today);
@@ -133,18 +131,19 @@ function displaySleepData() {
     sleepQuality = currentUser.averageSleepQuality();
     sleepUserAvg.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
 }
-// User Profile Information Display
+
 function displaySelectedUserInformation() {
-    // Added space manually with this interpolation but can fix later with CSS
-    userProfile.innerText = `${currentUser.name}
+  userProfile.innerText = `Mailing Address:
+  ${currentUser.address}
 
-${currentUser.address}
+  Email Address:
+  ${currentUser.email}
 
-${currentUser.email}
+  Daily Step Goal:
+  ${currentUser.dailyStepGoal} steps
 
-${currentUser.dailyStepGoal}
-
-${currentUser.strideLength}`
+  Stride Length:
+  ${currentUser.strideLength} feet`
 }
 
 export { userRepo };

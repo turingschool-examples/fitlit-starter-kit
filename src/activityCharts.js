@@ -45,8 +45,8 @@ const updateHydroWeeklyChart = () => {
             labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
             datasets: [
                 {
-                    label: 'Daily Intake',
-                    data: [weeklyHydration[0].numOunces, weeklyHydration[1].numOunces, weeklyHydration[2].numOunces, weeklyHydration[3].numOunces, weeklyHydration[4].numOunces, weeklyHydration[5].numOunces, weeklyHydration[6].numOunces],
+                    label: 'Daily Intake in Ounces',
+                    data: [weeklyHydration[0].numOunces, weeklyHydration[1].numOunces, weeklyHydration[2].numOunces, weeklyHydration[3].numOunces,weeklyHydration[4].numOunces, weeklyHydration[5].numOunces, weeklyHydration[6].numOunces],
                     type: 'line',
                     backgroundColor: ['#BF1263'],
                 }
@@ -63,51 +63,52 @@ const updateStepChart = () => {
         data: {
             labels: ['Average Step Goal', 'Your Step Goal'],
             datasets: [{
-                label: 'Step Goal',
-                data: [avgStepGoal, userStepGoal],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                ],
-                borderColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(255, 159, 64)',
-                ],
-                borderWidth: 1
+
+              label: 'Step Goal',
+              data: [avgStepGoal, userStepGoal],
+              backgroundColor: ['#BF1363', '#F39237'],
             }]
         },
         options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+        scales: {
+            y: {
+              beginAtZero: true
+            },
+          },
+          // this removes the legend
+          plugins: {
+            legend: {
+                display: false
+            },
+          },
         }
     })
 }
 
 const updateSleepChart = () => {
-    const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.sleepData);
-    const userSleepWeek = userRepo.selectedUser.findWeekSleep(todaysDate);
-    userSleepWeek.reverse();
-    sleepDblDataChart = new Chart(sleepChart, {
-        type: 'bar',
-        data: {
-            datasets: [{
-                label: 'Hours Slept',
-                data: [userSleepWeek[0].hoursSlept, userSleepWeek[1].hoursSlept, userSleepWeek[2].hoursSlept, userSleepWeek[3].hoursSlept, userSleepWeek[4].hoursSlept, userSleepWeek[5].hoursSlept, userSleepWeek[6].hoursSlept],
-                backgroundColor: ['#78C1E7'],
-                order: 2
-            }, {
-                label: 'Sleep Quality',
-                data: [userSleepWeek[0].sleepQuality, userSleepWeek[1].sleepQuality, userSleepWeek[2].sleepQuality, userSleepWeek[3].sleepQuality, userSleepWeek[4].sleepQuality, userSleepWeek[5].sleepQuality, userSleepWeek[6].sleepQuality],
-                type: 'line',
-                backgroundColor: ['#BF1263'],
-                order: 1
-            }],
-            labels: [`${userSleepWeek[0].date}`, ``, ``, `${userSleepWeek[3].date}`, ``, ``, `${userSleepWeek[6].date}`]
-        },
-    });
+  const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.sleepData);
+  const userSleepWeek = userRepo.selectedUser.findWeekSleep(todaysDate);
+  userSleepWeek.reverse();
+  sleepDblDataChart = new Chart(sleepChart, {
+    type: 'bar',
+    data: {
+        datasets: [{
+            label: 'Hours Slept',
+            data: [userSleepWeek[0].hoursSlept, userSleepWeek[1].hoursSlept, userSleepWeek[2].hoursSlept, userSleepWeek[3].hoursSlept, userSleepWeek[4].hoursSlept, userSleepWeek[5].hoursSlept, userSleepWeek[6].hoursSlept],
+            backgroundColor: ['#78C1E7'],
+            // this dataset is drawn below
+            order: 2
+        }, {
+            label: 'Sleep Quality',
+            data: [userSleepWeek[0].sleepQuality, userSleepWeek[1].sleepQuality, userSleepWeek[2].sleepQuality, userSleepWeek[3].sleepQuality, userSleepWeek[4].sleepQuality, userSleepWeek[5].sleepQuality, userSleepWeek[6].sleepQuality],
+            type: 'line',
+            backgroundColor: ['#BF1263'],
+            // this dataset is drawn on top
+            order: 1
+        }],
+        labels: ['Day 1','Day 2','Day 3','Day 4','Day 5','Day 6', 'Day 7']
+    },
+  });
 }
 
 export default { updateHydroDateChart, updateStepChart, updateSleepChart, updateHydroWeeklyChart };

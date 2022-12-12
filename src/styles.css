@@ -1,9 +1,20 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body, html {
-  /* background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); */
   background-repeat: no-repeat;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
   font-family: 'Poppins', sans-serif;
+}
+
+.app-name{
+  margin-left: 1.4vw;
+  font-size: 26px;
 }
 
 .welcome-banner {
@@ -13,6 +24,17 @@ body, html {
   font-size: larger;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+/* Used this class for spacing but decided to add an empty section to the banner and change flex spacing above to be more responsve  */
+/* .welcome-message{
+  margin-left: 23vw;
+  margin-right: 15vw;
+} */
+
+.welcome-banner-right {
+  width: 6vw;
 }
 
 .data-display {
@@ -30,49 +52,84 @@ body, html {
   justify-content: space-evenly; 
 }
 
-.fit-data {
-  align-items: center;
+.fit-data-section {
+  height: 88vh;
+  width: 25vw;
   background-color: #FBFEF9;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   margin-top: 3%;
-  margin-bottom: 3%;
-  width: 25vw;
+}
+
+.fit-data {
+  font-size: 14px;
+  width: 22vw;
+  text-align: center;
+}
+
+.highlight {
+  font-size: 18px;
+  text-align: center;
+}
+
+.walking-icon {
+  height: 20vh;
+}
+
+.week-step-chart {
+  margin-bottom: 1vh;
+}
+
+.week-sleep-chart {
+  margin-bottom: 1vh;
+}
+
+.week-hydration-chart {
+  margin-bottom: 1vh;
 }
 
 .fit-data-header {
   display: flex;
   justify-content: center;
-  font-size: 30px;
   font-size: 3.5vw;
+  margin-top: 2vh;
 }
 /* div for hydration doughnut */
 .day-hydro {
   height: 27vh;
   display: flex;
   align-items: center;
-  border: 2px black;
-}
-
-.week-sleep {
-  height: 27vh;
-  display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
 .user-avatar {
   border-radius: 50%;
-  margin-top: -30px;
   border: 0px;
-  width: 45%;
-  font-size: larger;
+  width: 62px;
+  height: 62px;
+  margin-bottom: -30%;
+  margin-top: -30px;
+  font-size: 26px;
+}
+
+.user-avatar:hover {
+  outline: #FBA03F;
+  outline-style: solid;
+  outline-offset: -1px;
+  outline-width: 5px;
+  cursor: pointer;
 }
 
 .single-friend {
   display: flex;
   align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 14vw;
+  font-size: 14px;
 }
 
 .friend-avatar {
@@ -80,26 +137,17 @@ body, html {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 0px;
+  margin-right: 8px;
   border: 0px;
   height: 40px;
   width: 40px;
-  background-color: #FBFEF9;
   font-size: small;
 }
 
-.user-avatar {
-  height: 10vh;
-  margin-bottom: -30%;
-  margin-top: -20%;
-  font-size:xx-large;
-  
-}
-
 .user-tab {
-  height: 40vh;
-  width: 12vw;
+  height: 55vh;
+  width: 15vw;
   margin-top: 3%;
   margin-bottom: 3%;
   background-color: #78C1E7;
@@ -109,9 +157,19 @@ body, html {
   align-items: center;
 }
 
+.profile {
+  width: 14vw;
+  font-size: 12px;
+}
+
 .user-name {
   margin-top: 35%;
-  margin-bottom: 30%;
+  padding-bottom: 5%;
+  font-size: 16px;
+}
+.user-name:hover {
+  color: #BF1363;
+  cursor: pointer;
 }
 
 .hidden {

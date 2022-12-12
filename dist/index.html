@@ -29,11 +29,11 @@
       </aside>
       <section class="fit-data-section" id="steps">
         <h2 class="fit-data-header">Steps</h2>
-        <img src="./images/walkingIcon.svg" class="walking-icon">
+        <img src="./images/walkingIcon.svg" class="walking-icon" alt="walking person icon">
         <h4 class="fit-data chart-header">Your Step Goal vs. Average Step Goal</h4>
         <p class="fit-data highlight" id="stepGoalVsAvg"></p>
         <div class="fit-data week-step-chart">
-          <canvas id="stepGoalChart"></canvas>
+          <canvas id="stepGoalChart" aria-label="User step goal versus all user's average step goal chart"></canvas>
         </div>
       </section>
       <section class="fit-data-section" id="sleep">
@@ -53,7 +53,7 @@
         <div>
           <h4 class="fit-data chart-header">Your Sleep for the Last 7 Days</h4>
           <div class="fit-data week-sleep-chart">
-            <canvas id="weeksSleepChart"></canvas>
+            <canvas id="weeksSleepChart" aria-label="7-day sleep data chart"></canvas>
           </div>
         </div>
       </section>
@@ -66,7 +66,7 @@
           <p class="fit-data highlight" id="hydrationGoal">Hydration comparison data here</p>
           <h4 class="fit-data chart-header">Water Consumption for the Last 7 Days</h4>
           <div class="fit-data week-hydration-chart">
-            <canvas id="weeksHydrationChart"></canvas>
+            <canvas id="weeksHydrationChart" aria-label="7-day hydration data chart"></canvas>
           </div>
       </section>
     </section>

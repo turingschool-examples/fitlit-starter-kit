@@ -112,7 +112,7 @@ function displayStepGoalComparison() {
 }
 // Hydration data display
 function displayHydrationData() {
-  const today = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData)
+  const today = userRepo.selectedUser.findLatestDate('hydrationData')
   const todaysOunces = userRepo.selectedUser.findDaysHydration(today).numOunces;
   const goal = 64;
   hydrationToday.innerText = `You have consumed ${todaysOunces} ounces of water today!`;
@@ -125,13 +125,13 @@ function displayHydrationData() {
 
 //Sleep data display
 function displaySleepData() {
-  const today = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData);
-  let sleepHours = userRepo.selectedUser.findDaySleepHours(today);
-  let sleepQuality = userRepo.selectedUser.findDaySleepQuality(today);
+  const today = userRepo.selectedUser.findLatestDate('hydrationData');
+  let sleepHours = userRepo.selectedUser.findDaySleepData('hoursSlept', today);
+  let sleepQuality = userRepo.selectedUser.findDaySleepData('sleepQuality', today);
   sleepToday.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
 
-  sleepHours = userRepo.selectedUser.averageSleepHours();
-  sleepQuality = userRepo.selectedUser.averageSleepQuality();
+  sleepHours = userRepo.selectedUser.averageSleepData('hoursSlept');
+  sleepQuality = userRepo.selectedUser.averageSleepData('sleepQuality');
   sleepUserAvg.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
 }
 // User Profile Information Display

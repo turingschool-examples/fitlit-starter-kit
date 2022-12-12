@@ -47,7 +47,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-We created a fitness tracking application that allows a user to see the information on their sleep/hydration/steps. Features added allows users to see all data displayed in a visually pleasing manner using charts from chart.js. The application also allows the user to take advantage of a calendar to manipulte dates to see a wide variety of information from different dates.
+We created a fitness tracking application that allows a user to see the information on their sleep, hydration and step goals. Features added allows users to see all data displayed in a visually pleasing manner using charts from chart.js. The application also allows the user to take advantage of a calendar to manipulte dates to see a wide variety of information from different dates. Users can view their personal information inside of an information section.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

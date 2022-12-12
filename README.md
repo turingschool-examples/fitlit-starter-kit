@@ -23,7 +23,8 @@ Tracking progress while going through your health and welness journey can be dif
 
 ### Preview of App:
 
-<img src="![Screen_Recording_2022-12-12_at_10_27_48_AM_AdobeExpress](https://user-images.githubusercontent.com/113728354/207113559-505660cf-7612-4f6e-9756-bc2d352acf2d.gif)" height="250" width="250">
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/113728354/207120223-ecd2ad19-c3ab-4fad-bef4-c74db5182182.gif)
+
 
 ### Context:
 Bob, Ryan, Blanche, and Josephine all worked on this project for six days. We are all in our fourth week in our first module in Turing. 

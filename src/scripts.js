@@ -92,6 +92,7 @@ const displayComparedStepGoal = function (user, repository) {
 
 const displayCurrentDayHydration = function (hydration, date) {
   hydrationBox.innerHTML = `
+  <i class="fa-regular fa-glass fa-2xl"></i>
   <p>Current Water: ${hydration.consumeBydate(currentUser.id, date)}</p>`;
 };
 

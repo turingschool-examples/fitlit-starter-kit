@@ -1,5 +1,5 @@
 import "./css/styles.css";
-import "./images/turing-logo.png";
+import "./images/fitlit_logo_h.png";
 import { fetchAll } from "./apiCalls";
 import User from "./User";
 import UserRepository from "./UserRepository";

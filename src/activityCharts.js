@@ -1,7 +1,6 @@
 import { Chart } from "chart.js/auto";
 import { userRepo } from './scripts';
 
-//query selects for the canvases
 const stepChart = document.getElementById("stepGoalChart").getContext('2d');
 const sleepChart = document.getElementById("weeksSleepChart").getContext('2d');
 const hydroDayChart = document.getElementById("todaysHydrationChart").getContext('2d');
@@ -11,7 +10,6 @@ let stepComparisonChart;
 let sleepDblDataChart;
 let todaysHydroChart;
 let weeksHydroChart;
-// functions to update charts (data passed in as parameter)
 
 const findHydroPercentage = (numDrunk, goal) => {
     return numDrunk < goal ? goal - numDrunk : 0;
@@ -36,7 +34,7 @@ const updateHydroDateChart = () => {
 }
 
 const updateHydroWeeklyChart = () => {
-    const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData)
+    const todaysDate = userRepo.selectedUser.findLatestDate('hydrationData')
     const weeklyHydration = userRepo.selectedUser.findWeekHydration(todaysDate)
     weeklyHydration.reverse();
     weeksHydroChart = new Chart(hydroWeekChart, {
@@ -64,32 +62,32 @@ const updateStepChart = () => {
             labels: ['Average Step Goal', 'Your Step Goal'],
             datasets: [{
 
-              label: 'Step Goal',
-              data: [avgStepGoal, userStepGoal],
-              backgroundColor: ['#BF1363', '#F39237'],
+                label: 'Step Goal',
+                data: [avgStepGoal, userStepGoal],
+                backgroundColor: ['#BF1363', '#F39237'],
             }]
         },
         options: {
         scales: {
             y: {
-              beginAtZero: true
+                beginAtZero: true
             },
-          },
+        },
           // this removes the legend
-          plugins: {
+            plugins: {
             legend: {
                 display: false
             },
-          },
+        },
         }
     })
 }
 
 const updateSleepChart = () => {
-  const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.sleepData);
-  const userSleepWeek = userRepo.selectedUser.findWeekSleep(todaysDate);
-  userSleepWeek.reverse();
-  sleepDblDataChart = new Chart(sleepChart, {
+    const todaysDate = userRepo.selectedUser.findLatestDate('sleepData');
+    const userSleepWeek = userRepo.selectedUser.findWeekSleep(todaysDate);
+    userSleepWeek.reverse();
+    sleepDblDataChart = new Chart(sleepChart, {
     type: 'bar',
     data: {
         datasets: [{
@@ -108,7 +106,7 @@ const updateSleepChart = () => {
         }],
         labels: ['Day 1','Day 2','Day 3','Day 4','Day 5','Day 6', 'Day 7']
     },
-  });
+    });
 }
 
 export default { updateHydroDateChart, updateStepChart, updateSleepChart, updateHydroWeeklyChart };

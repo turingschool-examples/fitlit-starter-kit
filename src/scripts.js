@@ -1,15 +1,7 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS file
 import './html-css/styles.css';
 import activityCharts from './activityCharts';
 import apiCalls from './apiCalls';
 import UserRepository from './UserRepository';
-// import updateHydroDateChart from './activityCharts';
-// import { todaysHydroChart } from './activityCharts'
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
 // Query Selectors
@@ -32,120 +24,127 @@ const sleepGlobalAvg = document.getElementById('sleepGlobalAvg')
 let userRepo;
 let currentUser
 
-const profileEmojis = ["✌","😂","😝","😁","😱","🔥","🌈","☀","🎀","⚽","🎾","🏁","😡","👿","🐻","🐶","🐬","🐟","😍","😉","😓","😳","💪","💩","💖","🌟","🎉","🌺","🏈","⚾","🏆","👽","💀","🐵","🐮","🐩","🐎","😘","😜","😵","💃","💎","🚀","🌙","⛄","🌊","⛵","🏀","💰","👶","👸","🐰","🐷","🐍","🐫","🚲",]
-const profileBackgrounds = ['#F8B195','#F67280','#C06C84','#6C5B7B','#355C7D','#99B898','#FECEAB','	#FF847C','#2A363B','#A8E6CE']
+const profileEmojis = ["✌", "😂", "😝", "😁", "😱", "🔥", "🌈", "☀", "🎀", "⚽", "🎾", "🏁", "😡", "👿", "🐻", "🐶", "🐬", "🐟", "😍", "😉", "😓", "😳", "💪", "💩", "💖", "🌟", "🎉", "🌺", "🏈", "⚾", "🏆", "👽", "💀", "🐵", "🐮", "🐩", "🐎", "😘", "😜", "😵", "💃", "💎", "🚀", "🌙", "⛄", "🌊", "⛵", "🏀", "💰", "👶", "👸", "🐰", "🐷", "🐍", "🐫", "🚲",]
+const profileBackgrounds = ['#F8B195', '#F67280', '#C06C84', '#6C5B7B', '#355C7D', '#99B898', '#FECEAB', '	#FF847C', '#2A363B', '#A8E6CE']
 
 window.addEventListener('load', function () {
     Promise.all([userPromise, hydrationPromise, sleepPromise])
         .then((values) => {
-            userRepo = new UserRepository(values[0], values[1], values[2])
-            userRepo.initialize()
-            currentUser = userRepo.selectedUser
-            showPersonalizedWelcome();
-            showUserInfoDisplay();
-            displayUserStepGoal();
-            displayStepGoalComparison();
-            displaySelectedUserInformation();
-            displayHydrationData();
-            displaySleepData();
-            activityCharts.updateHydroDateChart();
-            activityCharts.updateStepChart(); //update charts upon page load
-            activityCharts.updateSleepChart();
-            activityCharts.updateHydroWeeklyChart();
+            parseData(values)
+            updateDOM()
         });
 });
 
 userAvatar.addEventListener('click', toggleProfileInfo)
 
-// Welcome message display
-function showPersonalizedWelcome() {
-  let selectedMsgInt = Math.floor(Math.random() * (2 - 0 + 1));
-  let randomGreetings = [`Let's Carpe this Diem!`, `You miss 100% of the shots you don't take.`, `You can have results or excuses, not both.`];
-  welcomeMessage.innerText = `Welcome, ${userRepo.selectedUser.name}! - - ${randomGreetings[selectedMsgInt]}`;
+
+
+//update DOM
+function parseData(values) {
+    userRepo = new UserRepository(values[0], values[1], values[2])
+    userRepo.initialize()
+    currentUser = userRepo.selectedUser
 }
 
-function selectRandom(selectedArray){
-  return selectedArray[Math.floor(Math.random()*selectedArray.length)];
+function updateDOM() {
+    showPersonalizedWelcome();
+    showUserInfoDisplay();
+    displayUserStepGoal();
+    displayStepGoalComparison();
+    displaySelectedUserInformation();
+    displayHydrationData();
+    displaySleepData();
+    activityCharts.updateHydroDateChart();
+    activityCharts.updateStepChart();
+    activityCharts.updateSleepChart();
+    activityCharts.updateHydroWeeklyChart();
+}
+
+
+// Welcome message display
+function showPersonalizedWelcome() {
+    let randomGreetings = [`Let's Carpe this Diem!`, `You miss 100% of the shots you don't take.`, `You can have results or excuses, not both.`, `Lets do this thing!`, `Do or do not there is no try.`, `Everything is awesome when you're living out a dream.`];
+    let selectedMsg = selectRandom(randomGreetings)
+    welcomeMessage.innerText = `Welcome, ${currentUser.name}! - - ${selectedMsg}`;
+}
+
+function selectRandom(selectedArray) {
+    return selectedArray[Math.floor(Math.random() * selectedArray.length)];
 }
 
 // Info card display
 function showUserInfoDisplay() {
-  friendsDisplay.innerText = ` `;
-  userName.innerText = `${userRepo.selectedUser.name}`
-  userAvatar.innerText = selectRandom(profileEmojis)
-  userAvatar.style.backgroundColor = selectRandom(profileBackgrounds)
-  userRepo.selectedUser.friends.forEach(friend => {
-    friendsDisplay.innerHTML += `
+    friendsDisplay.innerText = ` `;
+    userName.innerText = `${currentUser.name}`
+    userAvatar.innerText = selectRandom(profileEmojis)
+    userAvatar.style.backgroundColor = selectRandom(profileBackgrounds)
+    currentUser.friends.forEach(friend => {
+        friendsDisplay.innerHTML += `
     <div class="single-friend">
-      <div class="friend-avatar friend-${friend}">${selectRandom(profileEmojis)}</div> 
+    <div  class="friend-avatar friend-${friend}" style="background-color: ${selectRandom(profileBackgrounds)}">${selectRandom(profileEmojis)}</div> 
         ${(userRepo.findUser(friend)).name}
     </div>
     `;
-    var friendID = document.querySelector(`.friend-${friend}`)
-    friendID.style.backgroundColor = selectRandom(profileBackgrounds)
-  })
+    })
 }
 
 function toggleProfileInfo() {
-  if (friendsDisplay.classList != 'hidden'){
-    friendsDisplay.classList.add('hidden')
-    friendsDisplay.classList.remove("friends-profile")
-    userProfile.classList.remove('hidden')
-  } else {
-    friendsDisplay.classList.remove('hidden')
-    friendsDisplay.classList.add('friends-profile')
-    userProfile.classList.add('hidden')
-  }
+    if (!friendsDisplay.classList.contains('hidden')) {
+        friendsDisplay.classList.add('hidden')
+        userProfile.classList.remove('hidden')
+    } else {
+        friendsDisplay.classList.remove('hidden')
+        userProfile.classList.add('hidden')
+    }
 }
 
 // User step goal display
 function displayUserStepGoal() {
-  stepGoal.innerText = `Step goal: ${userRepo.selectedUser.dailyStepGoal} steps per day`;
+    stepGoal.innerText = `Step goal: ${currentUser.dailyStepGoal} steps per day`;
 }
 
 // Step Goal vs. Avg all users
 function displayStepGoalComparison() {
-  // Added space manually with this interpolation but can fix later with CSS
-  stepGoalVsAvg.innerText = `Your step goal: ${userRepo.selectedUser.dailyStepGoal}
+    stepGoalVsAvg.innerText = `Your step goal: ${currentUser.dailyStepGoal}
 
-  Average Step Goal: ${userRepo.averageSteps()}`
+Average Step Goal: ${userRepo.averageSteps()}`
 }
+
 // Hydration data display
 function displayHydrationData() {
-  const today = userRepo.selectedUser.findLatestDate('hydrationData')
-  const todaysOunces = userRepo.selectedUser.findDaysHydration(today).numOunces;
-  const goal = 64;
-  hydrationToday.innerText = `You have consumed ${todaysOunces} ounces of water today!`;
-  if(todaysOunces < goal){
-    hydrationGoal.innerText = `Only ${goal - todaysOunces} to go!`
-  }else{
-    hydrationGoal.innerText = 'You have met the daily recommendation, great job!';
-  }
+    const lastHydration = currentUser.findLatestDate(currentUser.hydrationData)
+    const lastHydrationOunces = currentUser.findDaysHydration(lastHydration).numOunces;
+    const goal = 64;
+    hydrationToday.innerText = `You have consumed ${lastHydrationOunces} ounces of water today!`;
+    if (lastHydrationOunces < goal) {
+        hydrationGoal.innerText = `Only ${goal - lastHydrationOunces} to go!`
+    } else {
+        hydrationGoal.innerText = 'You have met the daily recommendation, great job!';
+    }
 };
 
 //Sleep data display
 function displaySleepData() {
-  const today = userRepo.selectedUser.findLatestDate('hydrationData');
-  let sleepHours = userRepo.selectedUser.findDaySleepData('hoursSlept', today);
-  let sleepQuality = userRepo.selectedUser.findDaySleepData('sleepQuality', today);
-  sleepToday.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
-
-  sleepHours = userRepo.selectedUser.averageSleepData('hoursSlept');
-  sleepQuality = userRepo.selectedUser.averageSleepData('sleepQuality');
-  sleepUserAvg.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
+    const today = currentUser.findLatestDate(currentUser.hydrationData);
+    let sleepHours = currentUser.findDaySleepHours(today);
+    let sleepQuality = currentUser.findDaySleepQuality(today);
+    sleepToday.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
+    sleepHours = currentUser.averageSleepHours();
+    sleepQuality = currentUser.averageSleepQuality();
+    sleepUserAvg.innerText = `${sleepHours} hours | ${sleepQuality} quality`;
 }
 // User Profile Information Display
 function displaySelectedUserInformation() {
-  // Added space manually with this interpolation but can fix later with CSS
-  userProfile.innerText = `${userRepo.selectedUser.name}
+    // Added space manually with this interpolation but can fix later with CSS
+    userProfile.innerText = `${currentUser.name}
 
-  ${userRepo.selectedUser.address}
+${currentUser.address}
 
-  ${userRepo.selectedUser.email}
+${currentUser.email}
 
-  ${userRepo.selectedUser.dailyStepGoal}
+${currentUser.dailyStepGoal}
 
-  ${userRepo.selectedUser.strideLength}`
+${currentUser.strideLength}`
 }
 
 export { userRepo };

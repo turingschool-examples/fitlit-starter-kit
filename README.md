@@ -14,7 +14,7 @@ Tracking progress while going through your health and welness journey can be dif
 
 
 ### Installation Instructions:
-- Fork the repository found here: https://github.com/RyanBaer42/IdeaBox 
+- Fork the repository found here: https://github.com/smithkirsten/fitlit-group-project  
 - Clone down your new, forked repo. While cloning, name it what you want your local repo to be named, and run `git clone`. 
 - cd into the repository
 - Install NPM packages by running `npm install` in your terminal
@@ -23,7 +23,7 @@ Tracking progress while going through your health and welness journey can be dif
 
 ### Preview of App:
 
-![ideabox](https://user-images.githubusercontent.com/108428451/200425330-da8582fa-a874-4a02-aeb2-94939566e16d.gif)
+![Screen_Recording_2022-12-12_at_10_27_48_AM_AdobeExpress](https://user-images.githubusercontent.com/113728354/207113559-505660cf-7612-4f6e-9756-bc2d352acf2d.gif)
 
 ### Context:
 Bob, Ryan, Blanche, and Josephine all worked on this project for six days. We are all in our fourth week in our first module in Turing. 

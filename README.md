@@ -10,14 +10,13 @@
 
 
 ### Abstract:
-Tracking progress while going through your health and wellness journey can be difficult and complicated. Fortunately FitLit is here to save the day! Through this web app user data can be collected, stored, and displayed to the user in truly meaningfuly ways. By using FitLit you can track a users progress on important health aspects like step goals, sleep, and hydration while also being able to compare them to user averages for all three catagories. 
-
+Tracking progress while going through your health and wellness journey can be difficult and complicated. Fortunately FitLit is here to save the day! Through this web app user data can be collected, stored, and displayed to the user in truly meaningful ways. By using FitLit you can track a user's progress on important health aspects like step goals, sleep, and hydration while also being able to compare them to user averages for all three categories. 
 
 ### Installation Instructions:
 - Fork the repository found here: https://github.com/smithkirsten/fitlit-group-project  
 - Clone down your new, forked repo. While cloning, name it what you want your local repo to be named, and run `git clone`. 
 - cd into the repository
-- Install NPM packages by running `npm install` then ``in your terminal
+- Install NPM packages by running `npm install` in your terminal
 - Start the server by running `npm start` in your server  
 - After starting the server, the project will run at http://localhost:8080/
 
@@ -47,10 +46,12 @@ Faye, Kirsten, Ryan, and Rick all worked on this project for 9 days. We are all 
 ### Wins + Challenges:
 Some challenges included: 
 - Webpack, learning how to work with webpack while downloading a third-party extension and getting it to run with Webpack. 
-- Fetching data while utilizing promises. Having to understand JavaScript execution context and the callstack in order to have functions call after the data has already been fetched. 
+- Fetching data while utilizing promises. Having to understand JavaScript execution context and the call stack in order to have functions call after the data has already been fetched. 
 - Chart.js, learning how to utilize a third-party extension
 
 Some wins included:
-- Chart.js, we succesfully implemented the extension which allowed us to display user data in a meaningful way.
+- Chart.js, we successfully implemented the extension which allowed us to display user data in a meaningful way.
 - Testing in Mocha and Chai, we feel that our tests and test data allowed us to accurately gauge how the code would perform when the website was active
-- 
+- We were proud of our division of labor, we all felt that each person carried their weight and contributed in meaningful ways. 
+- Project board utilization, we successfully utilized the project board tool, the issues tab, and had very positive and meaningful task delegation and communication by using these tools.
+

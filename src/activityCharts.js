@@ -1,33 +1,25 @@
 import { Chart } from "chart.js/auto";
 import { userRepo } from './scripts';
-// import { getRelativePosition } from "chart.js/helpers";
 
 //query selects for the canvases
-const stepChart = document.getElementById("stepGoalChart").getContext('2d'); //bar graph
-const sleepChart = document.getElementById("weeksSleepChart").getContext('2d'); //double line graph??? or 2 graphs
-const hydroDayChart = document.getElementById("todaysHydrationChart").getContext('2d'); //doughnut chart
-const hydroWeekChart = document.getElementById("weeksHydrationChart").getContext('2d');//line graph
+const stepChart = document.getElementById("stepGoalChart").getContext('2d');
+const sleepChart = document.getElementById("weeksSleepChart").getContext('2d');
+const hydroDayChart = document.getElementById("todaysHydrationChart").getContext('2d');
+const hydroWeekChart = document.getElementById("weeksHydrationChart").getContext('2d');
 
-//variables that will be chart names
 let stepComparisonChart;
 let sleepDblDataChart;
 let todaysHydroChart;
 let weeksHydroChart;
-
 // functions to update charts (data passed in as parameter)
 
 const findHydroPercentage = (numDrunk, goal) => {
-    // if (numDrunk < goal) {
-    //  return goal - numDrunk >> the second datapoint in doughnut chart
-    // } else {
-    //     return 0; >> so that doughnut chart remains full
-    // }
     return numDrunk < goal ? goal - numDrunk : 0;
 }
 const updateHydroDateChart = () => {
-    const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData);
+    const todaysDate = userRepo.selectedUser.findLatestDate('hydrationData');
     const numDrunk = userRepo.selectedUser.findDaysHydration(todaysDate).numOunces;
-    const goal = 64;
+    const goal = 64; //can be dynamic later with user input
     const ozLeft = findHydroPercentage(numDrunk, goal);
     todaysHydroChart = new Chart(hydroDayChart, {
         type: 'doughnut',
@@ -35,15 +27,13 @@ const updateHydroDateChart = () => {
             labels: ['Today\'s Intake', 'Recommended Daily Intake'],
             datasets: [
                 {
-                    //label: optional and probably not helpful here
-                    data: [ numDrunk, ozLeft ],
-                    backgroundColor: [ '#BF1363', '#F39237' ]
+                    data: [numDrunk, ozLeft],
+                    backgroundColor: ['#BF1363', '#F39237']
                 }
             ],
         }
-        //options
     })
-} //sizing of this done in CSS
+}
 
 const updateHydroWeeklyChart = () => {
     const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData)
@@ -52,7 +42,7 @@ const updateHydroWeeklyChart = () => {
     weeksHydroChart = new Chart(hydroWeekChart, {
         type: 'bar',
         data: {
-            labels: ['Day 1','Day 2','Day 3','Day 4','Day 5','Day 6', 'Day 7'],
+            labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
             datasets: [
                 {
                     label: 'Daily Intake in Ounces',
@@ -62,9 +52,9 @@ const updateHydroWeeklyChart = () => {
                 }
             ],
         }
-        //options
     })
-}
+};
+
 const updateStepChart = () => {
     const userStepGoal = userRepo.selectedUser.dailyStepGoal
     const avgStepGoal = userRepo.averageSteps()
@@ -73,13 +63,14 @@ const updateStepChart = () => {
         data: {
             labels: ['Average Step Goal', 'Your Step Goal'],
             datasets: [{
+
               label: 'Step Goal',
               data: [avgStepGoal, userStepGoal],
               backgroundColor: ['#BF1363', '#F39237'],
             }]
-          },
+        },
         options: {
-          scales: {
+        scales: {
             y: {
               beginAtZero: true
             },
@@ -92,7 +83,7 @@ const updateStepChart = () => {
           },
         }
     })
-  }
+}
 
 const updateSleepChart = () => {
   const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.sleepData);
@@ -117,10 +108,7 @@ const updateSleepChart = () => {
         }],
         labels: ['Day 1','Day 2','Day 3','Day 4','Day 5','Day 6', 'Day 7']
     },
-    // options: {
-    //   aspect-ratio: {1000 / 500};
-    // }
   });
 }
 
-export default { updateHydroDateChart, todaysHydroChart, updateStepChart, updateSleepChart, updateHydroWeeklyChart };
+export default { updateHydroDateChart, updateStepChart, updateSleepChart, updateHydroWeeklyChart };

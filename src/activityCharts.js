@@ -7,7 +7,6 @@ const sleepChart = document.getElementById("weeksSleepChart").getContext('2d');
 const hydroDayChart = document.getElementById("todaysHydrationChart").getContext('2d');
 const hydroWeekChart = document.getElementById("weeksHydrationChart").getContext('2d');
 
-//variables that will be chart names
 let stepComparisonChart;
 let sleepDblDataChart;
 let todaysHydroChart;
@@ -18,9 +17,9 @@ const findHydroPercentage = (numDrunk, goal) => {
     return numDrunk < goal ? goal - numDrunk : 0;
 }
 const updateHydroDateChart = () => {
-    const todaysDate = userRepo.selectedUser.findLatestDate(userRepo.selectedUser.hydrationData);
+    const todaysDate = userRepo.selectedUser.findLatestDate('hydrationData');
     const numDrunk = userRepo.selectedUser.findDaysHydration(todaysDate).numOunces;
-    const goal = 64;
+    const goal = 64; //can be dynamic later with user input
     const ozLeft = findHydroPercentage(numDrunk, goal);
     todaysHydroChart = new Chart(hydroDayChart, {
         type: 'doughnut',
@@ -54,7 +53,8 @@ const updateHydroWeeklyChart = () => {
             ],
         }
     })
-}
+};
+
 const updateStepChart = () => {
     const userStepGoal = userRepo.selectedUser.dailyStepGoal
     const avgStepGoal = userRepo.averageSteps()
@@ -110,4 +110,4 @@ const updateSleepChart = () => {
     });
 }
 
-export default { updateHydroDateChart, todaysHydroChart, updateStepChart, updateSleepChart, updateHydroWeeklyChart };
+export default { updateHydroDateChart, updateStepChart, updateSleepChart, updateHydroWeeklyChart };

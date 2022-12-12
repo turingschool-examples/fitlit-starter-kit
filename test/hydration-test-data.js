@@ -1,6 +1,3 @@
-// This data represents two days of hydration data for the User-test
-// group (id#'s 20-22) and another 3 users (id#'s 1-3)
-
 const hydrationTestData = [
   { 
     userID: 20,

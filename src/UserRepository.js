@@ -62,18 +62,13 @@ class UserRepository {
     calculateAllUserAvgSleep(sleepKey) {
       let dataEntries = 0;
       const allUsersSleep = this.users.reduce((total, user)=> {
-        //iterate through each user
-        user.sleepData.forEach(dataEntry => {
-          //iterate through each dataEntry 
+        user.sleepData.forEach(dataEntry => { 
           dataEntries++;
-          //increment a tracker for number of data entries
           total += dataEntry[sleepKey];
-          //add the value of the dynamic key to the total to get an overall total of user values
         })
         return total;
       }, 0);
       return Number((allUsersSleep / dataEntries).toFixed(1));
-      //return the average set to 1 decimal place
     }
 }
 

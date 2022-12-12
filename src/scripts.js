@@ -1,4 +1,3 @@
-
 // File imports
 import './styles.css';
 import activityCharts from './activityCharts';
@@ -51,7 +50,6 @@ function parseData(values) {
 function updateDOM() {
     showPersonalizedWelcome();
     showUserInfoDisplay();
-    // displayUserStepGoal();
     displayStepGoalComparison();
     displaySelectedUserInformation();
     displayHydrationData();

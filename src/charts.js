@@ -90,6 +90,7 @@ const createSmallBarChart = function (
       ],
     },
     options: {
+      responsive: false,
       plugins: {
         legend: {
           display: false,

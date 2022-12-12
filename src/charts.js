@@ -5,7 +5,6 @@ const createChart = function (hydration, sleepQuality, sleepHours) {
   if (chart) {
     chart.destroy();
   }
-  console.log("detroyed?");
   new Chart(document.getElementById("weeklyChart"), {
     type: "bar",
     data: {
@@ -15,7 +14,7 @@ const createChart = function (hydration, sleepQuality, sleepHours) {
           label: hydration.label,
           yAxisID: "hydration",
           data: hydration.count,
-          backgroundColor: 'rgba(187, 231, 255, .2)',
+          backgroundColor: "rgba(187, 231, 255, .2)",
           borderColor: "#BBE7FF",
           borderWidth: 3,
         },
@@ -23,7 +22,7 @@ const createChart = function (hydration, sleepQuality, sleepHours) {
           label: sleepQuality.label,
           yAxisID: "sleep",
           data: sleepQuality.count,
-          backgroundColor: 'rgba(255, 243, 199, .2)',
+          backgroundColor: "rgba(255, 243, 199, .2)",
           borderColor: "#FFF3C7",
           borderWidth: 3,
         },
@@ -31,7 +30,7 @@ const createChart = function (hydration, sleepQuality, sleepHours) {
           label: sleepHours.label,
           yAxisID: "sleep",
           data: sleepHours.count,
-          backgroundColor: 'rgba(186, 239, 195, .2)',
+          backgroundColor: "rgba(186, 239, 195, .2)",
           borderColor: "#BAEFC3",
           borderWidth: 3,
         },
@@ -67,8 +66,15 @@ const createChart = function (hydration, sleepQuality, sleepHours) {
   });
 };
 
-
-const createSmallBarChart = function (id, labels, label, data, colors, borderColors, axis = 'x') {
+const createSmallBarChart = function (
+  id,
+  labels,
+  label,
+  data,
+  colors,
+  borderColors,
+  axis = "x"
+) {
   new Chart(document.getElementById(id), {
     type: "bar",
     data: {
@@ -87,14 +93,14 @@ const createSmallBarChart = function (id, labels, label, data, colors, borderCol
       plugins: {
         legend: {
           display: false,
-        }
+        },
       },
       indexAxis: axis,
-    }
+    },
   });
 };
 
 Chart.defaults.color = "#fff";
-Chart.defaults.font.family = "'Open Sans'"
+Chart.defaults.font.family = "'Open Sans'";
 
 export { createChart, createSmallBarChart };

@@ -1,25 +1,24 @@
-body, html {
-  /* height: 100%; */
-  /* width: 100%; */
+body,
+html {
   display: flex;
-  background-color: #232323 ;
+  background-color: #232323;
   color: white;
   margin: 0;
 }
+
 body {
   width: 100%;
   height: 100vh;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   flex-direction: column;
 }
-html {
-  /* height: 100vh; */
-}
+
 .dashboard {
   display: flex;
   flex-direction: row;
   height: -webkit-fill-available;
 }
+
 .left-section {
   width: 25%;
   border-right: 1px solid #232323;
@@ -30,6 +29,7 @@ html {
   margin-left: 20px;
   height: 100vh;
 }
+
 .main {
   width: 75%;
   display: flex;
@@ -38,6 +38,7 @@ html {
   justify-content: space-between;
   margin-top: 20px;
 }
+
 .main-report {
   display: flex;
   flex-direction: column;
@@ -45,17 +46,20 @@ html {
   background-color: #232323;
 }
 
-.week, .hydration, .sleep {
+.week,
+.hydration,
+.sleep {
   border-radius: 8px;
-  width: 95%
+  width: 95%;
 }
 
 .daily-report {
   display: flex;
   border-radius: 8px;
 }
+
 .week {
-  border: 2px solid #FDDDE0;
+  border: 2px solid #fddde0;
   padding: 10px;
   margin-bottom: 50px;
   width: 97%;
@@ -72,8 +76,8 @@ html {
   justify-content: center;
 }
 
-.hydration{
-  border: 2px solid #BBE7FF;
+.hydration {
+  border: 2px solid #bbe7ff;
   background-color: #353333;
   display: flex;
   flex-direction: column;
@@ -83,9 +87,10 @@ html {
   height: 200px;
   box-shadow: 10px 10px 5px 0px rgb(0 0 0 / 75%);
 }
+
 .sleep {
   background-color: #353333;
-  border: 2px solid #BAEFC3;
+  border: 2px solid #baefc3;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,7 +145,7 @@ h1 {
 
 .fa-regular {
   padding: 10px;
-  color: #BBE7FF;
+  color: #bbe7ff;
 }
 
 input {

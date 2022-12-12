@@ -4,7 +4,6 @@ import User from "../src/User";
 
 describe("User", function () {
   let user;
-  let user2;
 
   beforeEach(() => {
     user = new User(userData[0]);

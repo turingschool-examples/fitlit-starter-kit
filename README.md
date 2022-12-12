@@ -1,13 +1,14 @@
 <a name="readme-top"></a>
 
 
-##Contributors
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+## Contributors
+
+
+* [![Ian][Ian-badge]][Ian-url]
+* [![Patt][Patt-badge]][Patt-url]
+* [![Rae][Rae-badge]][Rae-url]
+* [![Jordan][Jordan-badge]][Jordan-url]
+
 
 
 
@@ -18,7 +19,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">FitLit</h3>
 
   <p align="center">
     project_description
@@ -200,9 +201,14 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[Ian-badge]: https://img.shields.io/badge/-Ian%20Nordby-orange
+[Ian-url]: https://github.com/nordbyi
+[Patt-badge]: https://img.shields.io/badge/-Patt%20Sookmark-brightgreen
+[Patt-url]: https://github.com/pattpjy
+[Rae-badge]: https://img.shields.io/badge/-Rae%20Gebhart-blue
+[Rae-url]: https://github.com/rae-107
+[Jordan-badge]: https://img.shields.io/badge/-Jordan%20Smith-lightgrey
+[Jordan-url]: https://github.com/jaysmith2022
 [Mocha]: https://img.shields.io/badge/Mocha-FF2D20?style=for-the-badge&logo=mocha&logoColor=white
 [Mocha-url]: https://mochajs.org/
 [Chai]: https://img.shields.io/badge/Chai-20232A?style=for-the-badge&logo=chai&logoColor=61DAFB

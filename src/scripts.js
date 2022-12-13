@@ -94,7 +94,8 @@ function pageLoadHandler() {
     [currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal()],
     ["rgba(253, 221, 224, .2)"],
     ["rgb(253, 221, 224)"],
-    "y"
+    "y",
+    false
   );
 }
 

@@ -15,11 +15,7 @@ let currentDate;
 
 const userDisplay = document.querySelector("#userInfo");
 const userNameDisplay = document.querySelector("#userName");
-const userStepGoalAvg = document.querySelector("#stepGoalAvg");
 const hydrationBox = document.querySelector("#hydration");
-const displayWeekly = document.querySelector("#week");
-const currentSleep = document.querySelector("#currentDaySleep");
-const allTimeSleep = document.querySelector("#allTimeSleep");
 const calendarBtn = document.querySelector("#calendarBtn");
 const calendar = document.getElementById("myDate");
 
@@ -60,7 +56,7 @@ fetchAll().then((data) => {
   pageLoadHandler();
 });
 
-function pageLoadHandler(event) {
+function pageLoadHandler() {
   displayUserName(currentUser);
   displayUserInfo(currentUser, allUserData);
   displayCurrentDayHydration(allUserHydro, currentDate);
@@ -98,7 +94,8 @@ function pageLoadHandler(event) {
     [currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal()],
     ["rgba(253, 221, 224, .2)"],
     ["rgb(253, 221, 224)"],
-    "y"
+    "y",
+    false
   );
 }
 

@@ -73,7 +73,8 @@ const createSmallBarChart = function (
   data,
   colors,
   borderColors,
-  axis = "x"
+  axis = "x",
+  responsive = true
 ) {
   new Chart(document.getElementById(id), {
     type: "bar",
@@ -90,6 +91,7 @@ const createSmallBarChart = function (
       ],
     },
     options: {
+      responsive: responsive,
       plugins: {
         legend: {
           display: false,

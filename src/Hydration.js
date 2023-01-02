@@ -4,12 +4,17 @@ class Hydration {
   }
   calcAvgWaterConsumption(id) {
     const result = this.data
-      .filter((waterLog) => waterLog.userID === id)
       .reduce(
-        (total, waterLog, _, arr) => total + waterLog.numOunces / arr.length,
-        0
-      );
-    return Math.round(result);
+        (total, waterLog, _, arr) => {
+          if(waterLog.userID === id) {
+            total.ounces += waterLog.numOunces
+            total.count +=1
+            return total 
+          }
+          return total
+  },{ounces: 0, count: 0});
+
+    return Math.round(result.ounces / result.count);
   }
 
   consumeBydate(id, date) {

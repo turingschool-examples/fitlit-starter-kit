@@ -5,7 +5,7 @@ class Hydration {
   calcAvgWaterConsumption(id) {
     const result = this.data
       .reduce(
-        (total, waterLog, _, arr) => {
+        (total, waterLog) => {
           if(waterLog.userID === id) {
             total.ounces += waterLog.numOunces
             total.count +=1
@@ -13,7 +13,6 @@ class Hydration {
           }
           return total
   },{ounces: 0, count: 0});
-
     return Math.round(result.ounces / result.count);
   }
 

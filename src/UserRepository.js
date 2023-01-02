@@ -9,9 +9,16 @@ class UserRepository {
 
   getFriendData(friendIDs) {
     return this.userData
-      .filter((e) => friendIDs.includes(e.id))
-      .map((el) => el.getFirstName())
-      .join(", ");
+    .reduce((acc, curr) => {
+      if(friendIDs.includes(curr.id)) {
+        if(acc) {
+        return acc + ', ' + curr.getFirstName()
+        } else {
+        return acc + curr.getFirstName()
+      }
+      }
+      return acc
+    }, '')
   }
 
   calculateAverageStepGoal() {

@@ -46,7 +46,7 @@ class User {
   findWeekHydration(selectedDate) {
     var newArray = this.hydrationData.filter(day => {
       var dateConverted = new Date(day.date);
-      return dateConverted > sevenDaysAgo && dateConverted <= new Date(selectedDate);
+      return dateConverted > this.findSevenDaysAgo(selectedDate) && dateConverted <= new Date(selectedDate);
     }).sort((day1, day2) => {
       return Date.parse(day1.date) - Date.parse(day2.date);
     });

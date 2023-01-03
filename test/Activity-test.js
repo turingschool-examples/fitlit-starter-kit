@@ -4,8 +4,7 @@ import data from "../src/data/activity";
 
 describe("Activity", () => {
   let userActivity
-  let data
-
+  
   beforeEach(() => {
     userActivity = new Activity(data)
   });
@@ -15,4 +14,7 @@ describe("Activity", () => {
   it("Should be instance of Activity", function () {
     expect(userActivity).to.be.an.instanceOf(Activity);
   });
+  it("Should have a property that holds user data", function () {
+    expect(userActivity.data).to.deep.equal(data)
+  })
 });

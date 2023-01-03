@@ -2,7 +2,7 @@ class Hydration {
   constructor(data) {
     this.data = data;
   }
-
+  
   calcAvgWaterConsumption(id) {
     const result = this.data
       .reduce(

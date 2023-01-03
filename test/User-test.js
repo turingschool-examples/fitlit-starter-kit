@@ -8,12 +8,10 @@ import sleepTestData from './sleep-test-data';
 
 describe('User', function () {
 
-  let selectedUserInt;
   let selectedUser;
 
   beforeEach(() => {
-    selectedUserInt = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
-    selectedUser = new User(userTestData[selectedUserInt]);
+    selectedUser = new User(userTestData[0]);
   });
 
   it('should represent a single user', function () {
@@ -25,17 +23,17 @@ describe('User', function () {
   });
 
   it('should hold on to the user properties from the data file', function () {
-    expect(selectedUser.id).to.equal(userTestData[selectedUserInt].id);
-    expect(selectedUser.name).to.equal(userTestData[selectedUserInt].name);
-    expect(selectedUser.address).to.equal(userTestData[selectedUserInt].address);
-    expect(selectedUser.email).to.equal(userTestData[selectedUserInt].email);
-    expect(selectedUser.strideLength).to.equal(userTestData[selectedUserInt].strideLength);
-    expect(selectedUser.dailyStepGoal).to.equal(userTestData[selectedUserInt].dailyStepGoal);
-    expect(selectedUser.friends).to.deep.equal(userTestData[selectedUserInt].friends);
+    expect(selectedUser.id).to.equal(userTestData[0].id);
+    expect(selectedUser.name).to.equal(userTestData[0].name);
+    expect(selectedUser.address).to.equal(userTestData[0].address);
+    expect(selectedUser.email).to.equal(userTestData[0].email);
+    expect(selectedUser.strideLength).to.equal(userTestData[0].strideLength);
+    expect(selectedUser.dailyStepGoal).to.equal(userTestData[0].dailyStepGoal);
+    expect(selectedUser.friends).to.deep.equal(userTestData[0].friends);
   });
 
   it('should have a method to return a user first name', function () {
-    const userNameSplitArray = userTestData[selectedUserInt].name.split(' ');
+    const userNameSplitArray = userTestData[0].name.split(' ');
     expect(selectedUser.returnFirstName()).to.equal(userNameSplitArray[0]);
   });
 

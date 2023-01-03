@@ -64,8 +64,7 @@ describe('User Repository', () => {
     });
   });
 
-  it('should let the user know the user was not found if the user ID is not found',
-  function() {
+  it('should let the user know the user was not found if the user ID is not found', function() {
     expect(fullUserData.findUser(5000)).to.equal(false);
   });
 

@@ -169,3 +169,12 @@ body, html {
 .hidden {
   display: none;
 }
+
+@media (max-width: 1150px) {
+  /* change flex direction, row => column */
+  .data-display {
+  /* height: 95vh; */
+  display: flex;
+  flex-direction: column
+}
+}

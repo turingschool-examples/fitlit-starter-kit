@@ -1,16 +1,14 @@
 import hydrationData from "./data/hydration";
+import { checkID } from "./helperFunction"
 
 class Hydration {
   constructor(data) {
     this.data = data;
+    
   }
   
-  checkID(id) {
-    return this.data.some((user) => user.userID === id) 
-  }
-
   calcAvgWaterConsumption(id) {
-    if(!this.checkID(id)) {
+    if(!checkID(id,this.data)) {
       return 'User Not Found'
     }
     const result = this.data
@@ -27,9 +25,19 @@ class Hydration {
   }
 
   consumeBydate(id, date) {
-    return this.data.find(
+    if(!checkID(id,this.data)) {
+      return 'User Not Found'
+    }
+    
+    const ounceForDate = this.data.find(
       (waterLog) => waterLog.userID === id && waterLog.date === date
-    ).numOunces;
+    );
+
+    if(ounceForDate) {
+      return  ounceForDate.numOunces
+    } else {
+      return 'No data found for date selected'
+    }
   }
 
   returnWeeklyWaterConsumption(id, date) {
@@ -39,6 +47,9 @@ class Hydration {
     const index = userData.findIndex(
       (el) => el.date === date && el.userID === id
     );
+    if(index === -1 ) {
+      return 'No data found for date selected'
+    }
     if (!ounces[index + 6]) {
       return {
         count: ounces.slice(-7),

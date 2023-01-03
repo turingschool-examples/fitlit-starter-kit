@@ -12,4 +12,7 @@ describe("Activity", () => {
   it("should be a function", function () {
     expect(Activity).to.be.a("function");
   });
+  it("Should be instance of Activity", function () {
+    expect(userActivity).to.be.an.instanceOf(Activity);
+  });
 });

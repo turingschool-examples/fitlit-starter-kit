@@ -83,4 +83,11 @@ describe("Hydration", function () {
       ],
     });
   });
+
+  it('Should return error message if start date does not have data', function () {
+    expect(
+      userHydrate.returnWeeklyWaterConsumption(1, "2018/06/21")
+    ).to.equal('No data found for date selected')
+  });
+  
 });

@@ -10,8 +10,7 @@
 
 
 ### Abstract:
-Tracking progress while going through your health and welness journey can be difficult and complicated. Fortunately FitLit is here to save the day! Through this web app user data can be collected, stored, and displayed to the user in truly meaningfuly ways. By using FitLit you can track a users progress on important health aspects like step goals, sleep, and hydration while also being able to compare them to user averages for all three catagories as well. 
-
+Tracking progress while going through your health and wellness journey can be difficult and complicated. Fortunately FitLit is here to save the day! Through this web app user data can be collected, stored, and displayed to the user in truly meaningful ways. By using FitLit you can track a user's progress on important health aspects like step goals, sleep, and hydration while also being able to compare them to user averages for all three categories. 
 
 ### Installation Instructions:
 - Fork the repository found here: https://github.com/smithkirsten/fitlit-group-project  
@@ -35,7 +34,7 @@ Faye, Kirsten, Ryan, and Rick all worked on this project for 9 days. We are all 
 - CSS 
 - Mocha/Chai
 - Webpack
-- Charts.js
+- Chart.js
 
 ### Contributors:
 - [Rick Vermeil (he/him)](https://www.linkedin.com/in/rick-vermeil-b93581159/)
@@ -46,9 +45,13 @@ Faye, Kirsten, Ryan, and Rick all worked on this project for 9 days. We are all 
 
 ### Wins + Challenges:
 Some challenges included: 
-- We used event delegation to run functionality on our dynamically-created HTML elements. 
-- We cleaned up bugs that were displaying the incorrect arrays on the DOM. 
+- Webpack, learning how to work with webpack while downloading a third-party extension and getting it to run with Webpack. 
+- Fetching data while utilizing promises. Having to understand JavaScript execution context and the call stack in order to have functions call after the data has already been fetched. 
+- Chart.js, learning how to utilize a third-party extension
 
 Some wins included:
-- We changed our function which generated dynamically-created HTML elements, not hard-coded.
-- We made our site nearly identical to the original comp. 
+- Chart.js, we successfully implemented the extension which allowed us to display user data in a meaningful way.
+- Testing in Mocha and Chai, we feel that our tests and test data allowed us to accurately gauge how the code would perform when the website was active
+- We were proud of our division of labor, we all felt that each person carried their weight and contributed in meaningful ways. 
+- Project board utilization, we successfully utilized the project board tool, the issues tab, and had very positive and meaningful task delegation and communication by using these tools.
+

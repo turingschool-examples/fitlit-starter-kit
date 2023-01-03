@@ -40,12 +40,13 @@ class User {
   averageSleepData(sleepKey) {
     return Number((this.sleepData.reduce((total, day) => total + day[sleepKey], 0) / this.sleepData.length).toFixed(1));
   };
-
+  findSevenDaysAgo(selectedDate){
+    return new Date(new Date(selectedDate) - 7 * 24 * 60 * 60 * 1000)
+  }
   findWeekHydration(selectedDate) {
-    const sevenDaysAgo = new Date(new Date(selectedDate) - 7 * 24 * 60 * 60 * 1000) ; 
     var newArray = this.hydrationData.filter(day => {
       var dateConverted = new Date(day.date);
-      return dateConverted > sevenDaysAgo && dateConverted <= new Date(selectedDate);
+      return dateConverted > this.findSevenDaysAgo(selectedDate) && dateConverted <= new Date(selectedDate);
     }).sort((day1, day2) => {
       return Date.parse(day1.date) - Date.parse(day2.date);
     });
@@ -53,10 +54,9 @@ class User {
   };
 
   findWeekSleep(selectedDate){
-    const sevenDaysAgo = new Date(new Date(selectedDate) - 7 * 24 * 60 * 60 * 1000);  
     const weekofSleep = this.sleepData.filter(day => {
       const dateConverted = new Date(day.date);
-      return dateConverted > sevenDaysAgo && dateConverted <= new Date(selectedDate);
+      return dateConverted > this.findSevenDaysAgo(selectedDate) && dateConverted <= new Date(selectedDate);
     }).sort((day1, day2) => {
       return Date.parse(day1.date) - Date.parse(day2.date);
     });

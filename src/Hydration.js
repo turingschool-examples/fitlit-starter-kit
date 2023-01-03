@@ -4,9 +4,12 @@ class Hydration {
   constructor(data) {
     this.data = data;
   }
+  
   checkID(id) {
-    if(!this.data.find((user) => user.id === id)) {
-      return 'User Not Found'
+    if(this.data.find((user) => user.id === id)) {
+      return true
+    } else {
+      return false
     }
   }
 

@@ -12,6 +12,8 @@ let allUserSleep;
 let allUserHydro;
 let currentUser;
 let currentDate;
+let calendarMax;
+let calendarMin;
 
 const userDisplay = document.querySelector("#userInfo");
 const userNameDisplay = document.querySelector("#userName");
@@ -20,6 +22,10 @@ const calendarBtn = document.querySelector("#calendarBtn");
 const calendar = document.getElementById("myDate");
 
 calendarBtn.addEventListener("click", function () {
+  const time = new Date(calendar.value).getTime()
+  if( time < new Date(calendarMin).getTime() || time > new Date(calendarMax).getTime()) {
+    return
+  }
   createChart(
     allUserHydro.returnWeeklyWaterConsumption(
       currentUser.id,
@@ -47,11 +53,13 @@ fetchAll().then((data) => {
       Math.floor(Math.random() * allUserData.userData.length)
     ];
   currentDate = allUserHydro.data.slice(-1)[0].date;
+  calendarMin = allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, "-")
+  calendarMax = currentDate.replace(/\//g, "-")
   calendar.setAttribute(
     "min",
-    allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, "-")
+    calendarMin
   );
-  calendar.setAttribute("max", currentDate.replace(/\//g, "-"));
+  calendar.setAttribute("max", calendarMax);
   calendar.setAttribute("value", currentDate.replace(/\//g, "-"));
   pageLoadHandler();
 });

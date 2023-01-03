@@ -1,15 +1,29 @@
+import hydrationData from "./data/hydration";
+
 class Hydration {
   constructor(data) {
     this.data = data;
   }
+  
+  checkID(id) {
+    return this.data.some((user) => user.userID === id) 
+  }
+
   calcAvgWaterConsumption(id) {
+    if(!this.checkID(id)) {
+      return 'User Not Found'
+    }
     const result = this.data
-      .filter((waterLog) => waterLog.userID === id)
       .reduce(
-        (total, waterLog, _, arr) => total + waterLog.numOunces / arr.length,
-        0
-      );
-    return Math.round(result);
+        (total, waterLog) => {
+          if(waterLog.userID === id) {
+            total.ounces += waterLog.numOunces
+            total.count +=1
+            return total 
+          }
+          return total
+  },{ounces: 0, count: 0});
+    return Math.round(result.ounces / result.count);
   }
 
   consumeBydate(id, date) {

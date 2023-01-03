@@ -44,11 +44,15 @@ const updateHydroWeeklyChart = () => {
             datasets: [
                 {
                     label: 'Daily Intake in Ounces',
-                    data: [weeklyHydration[0].numOunces, weeklyHydration[1].numOunces, weeklyHydration[2].numOunces, weeklyHydration[3].numOunces,weeklyHydration[4].numOunces, weeklyHydration[5].numOunces, weeklyHydration[6].numOunces],
+                    data: [weeklyHydration[0].numOunces, weeklyHydration[1].numOunces, weeklyHydration[2].numOunces, weeklyHydration[3].numOunces, weeklyHydration[4].numOunces, weeklyHydration[5].numOunces, weeklyHydration[6].numOunces],
                     type: 'line',
                     backgroundColor: ['#BF1263'],
                 }
             ],
+        },
+        options: {
+            responsive: true, 
+        maintainAspectRatio: false,
         }
     })
 };
@@ -68,16 +72,18 @@ const updateStepChart = () => {
             }]
         },
         options: {
-        scales: {
-            y: {
-                beginAtZero: true
+            responsive: true, 
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                },
             },
-        },
             plugins: {
-            legend: {
-                display: false
+                legend: {
+                    display: false
+                },
             },
-        },
         }
     })
 }
@@ -87,22 +93,26 @@ const updateSleepChart = () => {
     const userSleepWeek = userRepo.selectedUser.findWeekSleep(todaysDate);
     userSleepWeek.reverse();
     sleepDblDataChart = new Chart(sleepChart, {
-    type: 'bar',
-    data: {
-        datasets: [{
-            label: 'Hours Slept',
-            data: [userSleepWeek[0].hoursSlept, userSleepWeek[1].hoursSlept, userSleepWeek[2].hoursSlept, userSleepWeek[3].hoursSlept, userSleepWeek[4].hoursSlept, userSleepWeek[5].hoursSlept, userSleepWeek[6].hoursSlept],
-            backgroundColor: ['#78C1E7'],
-            order: 2
-        }, {
-            label: 'Sleep Quality',
-            data: [userSleepWeek[0].sleepQuality, userSleepWeek[1].sleepQuality, userSleepWeek[2].sleepQuality, userSleepWeek[3].sleepQuality, userSleepWeek[4].sleepQuality, userSleepWeek[5].sleepQuality, userSleepWeek[6].sleepQuality],
-            type: 'line',
-            backgroundColor: ['#BF1263'],
-            order: 1
-        }],
-        labels: ['Day 1','Day 2','Day 3','Day 4','Day 5','Day 6', 'Day 7']
-    },
+        type: 'bar',
+        data: {
+            datasets: [{
+                label: 'Hours Slept',
+                data: [userSleepWeek[0].hoursSlept, userSleepWeek[1].hoursSlept, userSleepWeek[2].hoursSlept, userSleepWeek[3].hoursSlept, userSleepWeek[4].hoursSlept, userSleepWeek[5].hoursSlept, userSleepWeek[6].hoursSlept],
+                backgroundColor: ['#78C1E7'],
+                order: 2
+            }, {
+                label: 'Sleep Quality',
+                data: [userSleepWeek[0].sleepQuality, userSleepWeek[1].sleepQuality, userSleepWeek[2].sleepQuality, userSleepWeek[3].sleepQuality, userSleepWeek[4].sleepQuality, userSleepWeek[5].sleepQuality, userSleepWeek[6].sleepQuality],
+                type: 'line',
+                backgroundColor: ['#BF1263'],
+                order: 1
+            }],
+            labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7']
+        },
+        options: {
+            responsive: true, 
+            maintainAspectRatio: false,
+        }
     });
 }
 

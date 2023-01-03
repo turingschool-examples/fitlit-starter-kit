@@ -6,13 +6,14 @@
   padding: 0;
 }
 
-body, html {
+body,
+html {
   background-repeat: no-repeat;
   margin: 0;
   font-family: 'Poppins', sans-serif;
 }
 
-.app-name{
+.app-name {
   margin-left: 1.4vw;
   font-size: 26px;
 }
@@ -43,7 +44,7 @@ body, html {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly; 
+  justify-content: space-evenly;
 }
 
 .fit-data-section {
@@ -73,15 +74,11 @@ body, html {
   height: 20vh;
 }
 
-.week-step-chart {
-  margin-bottom: 1vh;
-}
-
-.week-sleep-chart {
-  margin-bottom: 1vh;
-}
-
+.week-step-chart,
+.week-sleep-chart,
 .week-hydration-chart {
+  height: 25vh;
+  width: 20vw;
   margin-bottom: 1vh;
 }
 
@@ -161,6 +158,7 @@ body, html {
   padding-bottom: 5%;
   font-size: 16px;
 }
+
 .user-name:hover {
   color: #BF1363;
   cursor: pointer;
@@ -171,26 +169,40 @@ body, html {
 }
 
 @media (max-width: 1150px) {
+
   /* change flex direction, row => column */
   .data-display {
-  /* height: 95vh; */
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  
+    height: 270vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+  }
+
+  .fit-data-section {
+    height: 100vh;
+    width: 50vw;
+  }
+
+  .fit-data {
+    width: 35vw;
+    text-align: center;
+  }
+
+  .user-tab {
+    height: 55vh;
+    width: 40vw;
+  }
 }
-.fit-data-section {
-  height: 100vh;
-  width: 50vw;
-}
-.fit-data {
-  font-size: 10px;
-  width: 100%;
-  text-align: center;
-}
-.user-tab {
-  height: 55vh;
-  width: 40vw;
-}
+
+@media (max-width: 700px) {
+  .user-tab {
+    width: 55vw;
+  }
+  .fit-data {
+  }
+  .fit-data-section {
+    width: 70vw;
+  }
 }

@@ -23,7 +23,7 @@ describe("Hydration", function () {
   });
 
   it('should return message if ID not found', function() {
-    expect(userHydrate.checkID()).to.equal('User Not Found')
+    expect(userHydrate.checkID(87)).to.equal('User Not Found')
   })
 
   it("Should track average ounces of water consumed per day for all time", function () {

@@ -1,8 +1,15 @@
+import hydrationData from "./data/hydration";
+
 class Hydration {
   constructor(data) {
     this.data = data;
   }
-  
+  checkID(id) {
+    if(!this.data.find((user) => user.id === id)) {
+      return 'User Not Found'
+    }
+  }
+
   calcAvgWaterConsumption(id) {
     const result = this.data
       .reduce(

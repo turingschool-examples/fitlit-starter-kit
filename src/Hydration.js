@@ -6,14 +6,13 @@ class Hydration {
   }
   
   checkID(id) {
-    if(this.data.find((user) => user.id === id)) {
-      return true
-    } else {
-      return false
-    }
+    return this.data.some((user) => user.userID === id) 
   }
 
   calcAvgWaterConsumption(id) {
+    if(!this.checkID(id)) {
+      return 'User Not Found'
+    }
     const result = this.data
       .reduce(
         (total, waterLog) => {

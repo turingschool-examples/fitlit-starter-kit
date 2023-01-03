@@ -22,7 +22,11 @@ describe("Hydration", function () {
     expect(userHydrate.data).to.deep.equal(data);
   });
 
-  it('should return message if ID not found', function() {
+  it('should return true if ID found', function() {
+    expect(userHydrate.checkID(1)).to.equal(true)
+  })
+
+  it('should return false if ID not found', function() {
     expect(userHydrate.checkID(87)).to.equal(false)
   })
 

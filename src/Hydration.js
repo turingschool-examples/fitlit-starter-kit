@@ -1,17 +1,14 @@
 import hydrationData from "./data/hydration";
+import { checkID } from "./helperFunction"
 
 class Hydration {
   constructor(data) {
     this.data = data;
-
+    
   }
   
-  checkID(id) {
-    return this.data.some((user) => user.userID === id) 
-  }
-
   calcAvgWaterConsumption(id) {
-    if(!this.checkID(id)) {
+    if(!checkID(id,this.data)) {
       return 'User Not Found'
     }
     const result = this.data
@@ -28,7 +25,7 @@ class Hydration {
   }
 
   consumeBydate(id, date) {
-    if(!this.checkID(id)) {
+    if(!checkID(id,this.data)) {
       return 'User Not Found'
     }
     

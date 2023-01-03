@@ -22,14 +22,6 @@ describe("Hydration", function () {
     expect(userHydrate.data).to.deep.equal(data);
   });
 
-  it('should return true if ID found', function() {
-    expect(userHydrate.checkID(1)).to.equal(true)
-  })
-
-  it('should return false if ID not found', function() {
-    expect(userHydrate.checkID(87)).to.equal(false)
-  })
-
   it("Should track average ounces of water consumed per day for all time", function () {
     expect(userHydrate.calcAvgWaterConsumption(1)).to.equal(67);
   });
@@ -89,5 +81,5 @@ describe("Hydration", function () {
       userHydrate.returnWeeklyWaterConsumption(1, "2018/06/21")
     ).to.equal('No data found for date selected')
   });
-  
+
 });

@@ -31,9 +31,16 @@ class Hydration {
     if(!this.checkID(id)) {
       return 'User Not Found'
     }
-    return this.data.find(
+    
+    const ounceForDate = this.data.find(
       (waterLog) => waterLog.userID === id && waterLog.date === date
-    ).numOunces;
+    );
+    
+    if(ounceForDate) {
+      return  ounceForDate.numOunces
+    } else {
+      return 'No data found for date selected'
+    }
   }
 
   returnWeeklyWaterConsumption(id, date) {

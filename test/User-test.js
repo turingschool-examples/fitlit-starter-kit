@@ -45,7 +45,6 @@ describe('User', function () {
   });
 
   it('should have a method that returns a single users hydration on a given day', function () {
-    selectedUser = new User(userTestData[0]);
     const hydrationData = hydrationTestData.filter(data => data.userID === selectedUser.id)
     selectedUser.hydrationData = hydrationData
     expect(selectedUser.findDaysHydration("2019/06/15")).to.deep.equal({
@@ -56,7 +55,6 @@ describe('User', function () {
   });
 
   it('should have a method for returning fluid ounces drank per day for a whole week', function () {
-    selectedUser = new User(userTestData[0]);
     const hydrationData = hydrationTestData.filter(data => data.userID === selectedUser.id)
     selectedUser.hydrationData = hydrationData
     expect(selectedUser.findWeekHydration("2020/01/22")).to.deep.equal([
@@ -70,7 +68,6 @@ describe('User', function () {
   });
 
   it('should be able to sort hydration data by date', function () {
-    selectedUser = new User(userTestData[0]);
     const hydrationData = hydrationTestData.filter(data => data.userID === selectedUser.id)
     selectedUser.hydrationData = hydrationData
     selectedUser.sortUserArrays('hydrationData')
@@ -90,7 +87,6 @@ describe('User', function () {
     });
 
     it('should be able to sort sleep data by date', function () {
-      selectedUser = new User(userTestData[0]);
       const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
       selectedUser.sleepData = sleepData;
 
@@ -107,21 +103,18 @@ describe('User', function () {
     });
     
     it('should find the latest date for hydration data', function () {
-      selectedUser = new User(userTestData[0]);
       const hydrationData = hydrationTestData.filter(data => data.userID === selectedUser.id);
       selectedUser.hydrationData = hydrationData;
       expect(selectedUser.findLatestDate('hydrationData')).to.equal('2020/01/23');
     });
 
     it('should find the latest date for sleep data', function () {
-      selectedUser = new User(userTestData[0]);
       const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
       selectedUser.sleepData = sleepData;
       expect(selectedUser.findLatestDate('sleepData')).to.equal('2019/06/16');
     });
 
     it('should calculate the avg number of hours slept per night from all user data', function () {
-      selectedUser = new User(userTestData[0]);
       const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
       selectedUser.sleepData = sleepData;
       
@@ -129,7 +122,6 @@ describe('User', function () {
     });
     
     it('should calculate the avg sleep quality per night from all user data', function () {
-      selectedUser = new User(userTestData[0]);
       const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
       selectedUser.sleepData = sleepData;
       
@@ -137,7 +129,6 @@ describe('User', function () {
     });
     
     it('should find the hours slept for a given date', function () {
-      selectedUser = new User(userTestData[0]);
       const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
       selectedUser.sleepData = sleepData;
       
@@ -145,7 +136,6 @@ describe('User', function () {
     });
     
     it('should find the sleep quality for a given date', function () {
-      selectedUser = new User(userTestData[0]);
       const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
       selectedUser.sleepData = sleepData;
       
@@ -153,7 +143,6 @@ describe('User', function () {
     });
     
     it('should find sleep data over any given week', function () {
-      selectedUser = new User(userTestData[0]);
       const sleepData = sleepTestData.filter(data => data.userID === selectedUser.id);
       selectedUser.sleepData = sleepData;
       

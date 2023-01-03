@@ -26,6 +26,10 @@ describe("Hydration", function () {
     expect(userHydrate.calcAvgWaterConsumption(1)).to.equal(67);
   });
 
+  it('should return error message if user does not exist', function () {
+    expect(userHydrate.calcAvgWaterConsumption(87)).to.equal('User Not Found');
+  })
+
   it("Should have water consumed by date", function () {
     expect(userHydrate.consumeBydate(1, "2019/06/15")).to.equal(37);
   });

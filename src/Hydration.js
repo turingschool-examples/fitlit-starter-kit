@@ -3,6 +3,7 @@ import hydrationData from "./data/hydration";
 class Hydration {
   constructor(data) {
     this.data = data;
+
   }
   
   checkID(id) {
@@ -27,6 +28,9 @@ class Hydration {
   }
 
   consumeBydate(id, date) {
+    if(!this.checkID(id)) {
+      return 'User Not Found'
+    }
     return this.data.find(
       (waterLog) => waterLog.userID === id && waterLog.date === date
     ).numOunces;

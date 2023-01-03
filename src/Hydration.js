@@ -35,7 +35,7 @@ class Hydration {
     const ounceForDate = this.data.find(
       (waterLog) => waterLog.userID === id && waterLog.date === date
     );
-    
+
     if(ounceForDate) {
       return  ounceForDate.numOunces
     } else {
@@ -50,6 +50,9 @@ class Hydration {
     const index = userData.findIndex(
       (el) => el.date === date && el.userID === id
     );
+    if(index === -1 ) {
+      return 'No data found for date selected'
+    }
     if (!ounces[index + 6]) {
       return {
         count: ounces.slice(-7),

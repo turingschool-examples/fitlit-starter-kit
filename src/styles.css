@@ -168,16 +168,34 @@ html {
   display: none;
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 740px) {
 
-  /* change flex direction, row => column */
   .data-display {
     height: 270vh;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+  }
 
+  .welcome-message {
+    font-size: 14px;
+  }
+
+  .user-avatar {
+    border-radius: 50%;
+    border: 0px;
+    width: 62px;
+    height: 62px;
+    margin-bottom: -30%;
+    margin-top: -30px;
+    font-size: 26px;
+  }
+
+  .friend-avatar {
+    height: 30px;
+    width: 40px;
+    font-size: 16px;
   }
 
   .fit-data-section {
@@ -193,16 +211,5 @@ html {
   .user-tab {
     height: 55vh;
     width: 40vw;
-  }
-}
-
-@media (max-width: 700px) {
-  .user-tab {
-    width: 55vw;
-  }
-  .fit-data {
-  }
-  .fit-data-section {
-    width: 70vw;
   }
 }

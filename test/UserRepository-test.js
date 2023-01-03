@@ -64,6 +64,11 @@ describe('User Repository', () => {
     });
   });
 
+  it('should let the user know the user was not found if the user ID is not found',
+  function() {
+    expect(fullUserData.findUser(5000)).to.equal(false);
+  });
+
   it('should randomly find an id and use that id to select a user',function () {
     const indexNumber = fullUserData.randomizeUser();
     expect(fullUserData.selectedUser).to.deep.equal(userTestData[indexNumber]);

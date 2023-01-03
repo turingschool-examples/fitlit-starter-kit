@@ -75,13 +75,21 @@ function showUserInfoDisplay() {
     userName.innerText = `${currentUser.name}`;
     userAvatar.innerText = selectRandom(profileEmojis);
     userAvatar.style.backgroundColor = selectRandom(profileBackgrounds);
+// Added conditional in case user ID is not found
     currentUser.friends.forEach(friend => {
-        friendsDisplay.innerHTML += `
-    <div class="single-friend">
-    <div  class="friend-avatar friend-${friend}" style="background-color: ${selectRandom(profileBackgrounds)}">${selectRandom(profileEmojis)}</div> 
+      if (userRepo.findUser(friend)) {
+      friendsDisplay.innerHTML += `
+        <div class="single-friend">
+        <div class="friend-avatar friend-${friend}" style="background-color: ${selectRandom(profileBackgrounds)}">${selectRandom(profileEmojis)}</div> 
         ${(userRepo.findUser(friend)).name}
-    </div>
-    `;
+        </div>
+        `;
+      } else {
+        friendsDisplay.innerHTML += `
+        <div class="single-friend">
+        <p> User not found </p>
+        `;
+      }
     })
 }
 

@@ -35,4 +35,7 @@ describe("Activity", () => {
     expect(userActivity.findMintuesActiveForDate(1, "2018/06/15")).to.equal('No data found for inputs')
     expect(userActivity.findMintuesActiveForDate(99, "2019/06/15")).to.equal('No data found for inputs')
   })
+  it("Should return minutes active for a given week", function () {
+    expect(userActivity.averageMinutesActiveForWeek(1, "2019/06/15")).to.equal(159)
+  })
 });

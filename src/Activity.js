@@ -1,0 +1,39 @@
+import { userDataForDate, weeklyData } from './helperFunctions'
+class Activity {
+  constructor(data) {
+    this.data = data;
+  }
+
+  calculateMilesForDate(id, date, strideLength) {
+    const userActivity = userDataForDate(this.data, id, date)
+    if (!userActivity) {
+      return 'No data found for inputs'
+    }
+    return (userActivity.numSteps * strideLength / 5280).toFixed(2) * 1
+  }
+
+  findMintuesActiveForDate(id, date) {
+    const userActive = userDataForDate(this.data, id, date)
+    if (!userActive) {
+      return 'No data found for inputs'
+    }
+    return userActive.minutesActive
+  }
+
+  averageMinutesActiveForWeek(id, date) {
+    const minutesActiveObject = weeklyData(this.data, 'minutesActive', 'Minutes Active', id, date)
+    if (typeof minutesActiveObject !== 'string') {
+      return minutesActiveObject.count.reduce((acc, curr, _, arr) => acc + curr / arr.length, 0).toFixed(0) * 1
+    } else {
+      return minutesActiveObject
+    }
+  }
+
+  dailyStepGoaAchieved(id, date, stepGoal) {
+    const userData = userDataForDate(this.data, id, date)
+    return userData.numSteps > stepGoal
+  }
+}
+
+
+export default Activity;

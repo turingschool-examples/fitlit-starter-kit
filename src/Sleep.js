@@ -1,3 +1,5 @@
+import { userDataForDate, weeklyData } from "./helperFunctions";
+
 class Sleep {
   constructor(sleepData) {
     this.sleepData = sleepData;
@@ -24,61 +26,25 @@ class Sleep {
   }
 
   returnHoursSleptByDate(id, date) {
-    return this.sleepData.find(
-      (sleepLog) => sleepLog.userID === id && sleepLog.date === date
-    ).hoursSlept;
+    return userDataForDate(this.sleepData, id, date).hoursSlept;
   }
 
   returnSleepQualityByDate(id, date) {
-    return this.sleepData.find(
-      (sleepLog) => sleepLog.userID === id && sleepLog.date === date
-    ).sleepQuality;
+    return userDataForDate(this.sleepData, id, date).sleepQuality;
   }
 
   returnHoursSleptByWeek(id, date) {
-    const userSleepInfo = this.sleepData.filter(
-      (sleepLog) => sleepLog.userID === id
-    );
-    const hours = userSleepInfo.map((el) => el.hoursSlept);
-    const dates = userSleepInfo.map((el) => el.date);
-    const index = userSleepInfo.findIndex(
-      (el) => el.date === date && el.userID === id
-    );
-    if (!hours[index + 6]) {
-      return {
-        count: hours.slice(-7),
-        label: "Hours Slept",
-        dates: dates.slice(-7),
-      };
-    }
-    return {
-      count: hours.slice(index, index + 7),
-      label: "Hours Slept",
-      dates: dates.slice(index, index + 7),
-    };
+    return weeklyData(this.sleepData, "hoursSlept", "Hours Slept", id, date);
   }
 
   returnSleepQualityByWeek(id, date) {
-    const userSleepInfo = this.sleepData.filter(
-      (sleepLog) => sleepLog.userID === id
+    return weeklyData(
+      this.sleepData,
+      "sleepQuality",
+      "Sleep Quality",
+      id,
+      date
     );
-    const quality = userSleepInfo.map((el) => el.sleepQuality);
-    const dates = userSleepInfo.map((el) => el.date);
-    const index = userSleepInfo.findIndex(
-      (el) => el.date === date && el.userID === id
-    );
-    if (!quality[index + 6]) {
-      return {
-        count: quality.slice(-7),
-        label: "Sleep Quality",
-        dates: dates.slice(-7),
-      };
-    }
-    return {
-      count: quality.slice(index, index + 7),
-      label: "Sleep Quality",
-      dates: dates.slice(index, index + 7),
-    };
   }
 
   returnAvgSleepQualityForAllUsers() {

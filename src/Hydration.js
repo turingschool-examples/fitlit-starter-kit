@@ -1,5 +1,4 @@
-import { userDataForDate } from './helperFunctions'
-import { checkID } from "./helperFunctions"
+import { userDataForDate, checkID, weeklyData } from './helperFunctions'
 
 class Hydration {
   constructor(data) {
@@ -38,28 +37,9 @@ class Hydration {
     }
   }
 
+
   returnWeeklyWaterConsumption(id, date) {
-    const userData = this.data.filter((waterLog) => waterLog.userID === id);
-    const ounces = userData.map((el) => el.numOunces);
-    const dates = userData.map((el) => el.date);
-    const index = userData.findIndex(
-      (el) => el.date === date && el.userID === id
-    );
-    if(index === -1 ) {
-      return 'No data found for date selected'
-    }
-    if (!ounces[index + 6]) {
-      return {
-        count: ounces.slice(-7),
-        label: "Water Consumption",
-        dates: dates.slice(-7),
-      };
-    }
-    return {
-      count: ounces.slice(index, index + 7),
-      label: "Water Consumption",
-      dates: dates.slice(index, index + 7),
-    };
+    return weeklyData(this.data, 'numOunces', "Water Consumption", id, date)
   }
 }
 

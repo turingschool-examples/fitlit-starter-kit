@@ -33,5 +33,6 @@ describe("Activity", () => {
   })
   it('Should return error message if no data is found for findMintuesActiveForDate', function () {
     expect(userActivity.findMintuesActiveForDate(1, "2018/06/15")).to.equal('No data found for inputs')
+    expect(userActivity.findMintuesActiveForDate(99, "2019/06/15")).to.equal('No data found for inputs')
   })
 });

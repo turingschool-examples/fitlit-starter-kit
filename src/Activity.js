@@ -5,7 +5,9 @@ class Activity {
 
   calculateMilesForDate(id, date, strideLength) {
     const userActivity = this.data.find(el => el.userID === id && el.date === date)
-    console.log(userActivity)
+    if (!userActivity) {
+      return 'No data found for inputs'
+    }
     return (userActivity.numSteps * strideLength / 5280).toFixed(2) * 1
   }
 

@@ -46,4 +46,8 @@ describe("Activity", () => {
     const userRepo = new UserRepository(userData)
     expect(userActivity.dailyStepGoaAchieved(1, "2019/06/19", userRepo.getUserData(1).dailyStepGoal)).to.equal(true)
   })
+  it('Should return false if step goal is not met', function () {
+    const userRepo = new UserRepository(userData)
+    expect(userActivity.dailyStepGoaAchieved(1, "2019/06/18", userRepo.getUserData(1).dailyStepGoal)).to.equal(false)
+  })
 });

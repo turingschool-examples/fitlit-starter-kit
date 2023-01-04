@@ -42,5 +42,8 @@ describe("Activity", () => {
     expect(userActivity.averageMinutesActiveForWeek(1, "2018/06/15")).to.equal("No data found for date selected")
     expect(userActivity.averageMinutesActiveForWeek(99, "2019/06/15")).to.equal("No data found for date selected")
   })
-
+  it('Should return true if step goal is met', function () {
+    const userRepo = new UserRepository(userData)
+    expect(userActivity.dailyStepGoaAchieved(1, "2019/06/19", userRepo.getUserData(1).dailyStepGoal)).to.equal(true)
+  })
 });

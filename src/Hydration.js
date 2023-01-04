@@ -1,5 +1,5 @@
-import hydrationData from "./data/hydration";
-import { checkID } from "./helperFunction"
+import { userDataForDate } from './helperFunctions'
+import { checkID } from "./helperFunctions"
 
 class Hydration {
   constructor(data) {
@@ -29,9 +29,7 @@ class Hydration {
       return 'User Not Found'
     }
     
-    const ounceForDate = this.data.find(
-      (waterLog) => waterLog.userID === id && waterLog.date === date
-    );
+    const ounceForDate = userDataForDate(this.data, id, date);
 
     if(ounceForDate) {
       return  ounceForDate.numOunces

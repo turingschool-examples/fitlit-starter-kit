@@ -23,7 +23,7 @@ describe("Activity", () => {
     const userRepo = new UserRepository(userData)
     expect(userActivity.calculateMilesForDate(1, "2019/06/15", userRepo.getUserData(1).strideLength)).to.equal(2.91)
   })
-  it("Should return error message if no data found", function () {
+  it("Should return error message if no data is found for calculateMilesForDate", function () {
     const userRepo = new UserRepository(userData)
     expect(userActivity.calculateMilesForDate(1, "2018/06/15", userRepo.getUserData(1).strideLength)).to.equal('No data found for inputs')
     expect(userActivity.calculateMilesForDate(99, "2019/06/15", userRepo.getUserData(1).strideLength)).to.equal('No data found for inputs')
@@ -31,5 +31,7 @@ describe("Activity", () => {
   it("Should return minutes active by day", function () {
     expect(userActivity.findMintuesActiveForDate(1, "2019/06/15")).to.equal(140)
   })
-  // it('Should return error message for date')
+  it('Should return error message if no data is found for findMintuesActiveForDate', function () {
+    expect(userActivity.findMintuesActiveForDate(1, "2018/06/15").to.equal('No data found for inputs'))
+  })
 });

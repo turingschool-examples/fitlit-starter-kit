@@ -28,6 +28,11 @@ class Activity {
       return minutesActiveObject
     }
   }
+
+  dailyStepGoaAchieved(id, date, stepGoal) {
+    const userData = userDataForDate(this.data, id, date)
+    return userData.numSteps > stepGoal
+  }
 }
 
 

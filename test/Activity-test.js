@@ -1,10 +1,12 @@
 import { expect } from "chai";
 import Activity from "../src/Activity";
 import data from "../src/data/activity";
+import UserRepository from "../src/UserRepository";
+import userData from "../src/data/users";
 
 describe("Activity", () => {
   let userActivity
-  
+
   beforeEach(() => {
     userActivity = new Activity(data)
   });
@@ -16,5 +18,9 @@ describe("Activity", () => {
   });
   it("Should have a property that holds user data", function () {
     expect(userActivity.data).to.deep.equal(data)
+  });
+  it("Should return the miles a user has walked based on their number of steps for a given day", function () {
+    const userRepo = new UserRepository(userData)
+    expect(userActivity.calculateMilesForDate(1, "2019/06/15", userRepo.getUserData(1).strideLength)).to.equal(2.91)
   })
 });

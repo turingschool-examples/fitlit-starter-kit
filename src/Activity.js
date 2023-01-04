@@ -1,4 +1,4 @@
-import { userDataForDate } from './helperFunctions'
+import { userDataForDate, weeklyData } from './helperFunctions'
 class Activity {
   constructor(data) {
     this.data = data;
@@ -19,6 +19,11 @@ class Activity {
     }
     return userActive.minutesActive
   }
+
+  averageMinutesActiveForWeek(id, date) {
+    return weeklyData(this.data, 'minutesActive', 'Minutes Active', id, date).count.reduce((acc, curr, _, arr) => acc + curr / arr.length, 0).toFixed(0) * 1
+  }
 }
+
 
 export default Activity;

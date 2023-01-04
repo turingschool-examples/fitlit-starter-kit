@@ -13,8 +13,11 @@ class Activity {
   }
 
   findMintuesActiveForDate(id, date) {
-    const userActive = userDataForDate(this.data, id, date).minutesActive
-    return userActive
+    const userActive = userDataForDate(this.data, id, date)
+    if (!userActive) {
+      return 'No data found for inputs'
+    }
+    return userActive.minutesActive
   }
 }
 

@@ -21,7 +21,12 @@ class Activity {
   }
 
   averageMinutesActiveForWeek(id, date) {
-    return weeklyData(this.data, 'minutesActive', 'Minutes Active', id, date).count.reduce((acc, curr, _, arr) => acc + curr / arr.length, 0).toFixed(0) * 1
+    const minutesActiveObject = weeklyData(this.data, 'minutesActive', 'Minutes Active', id, date)
+    if (typeof minutesActiveObject !== 'string') {
+      return minutesActiveObject.count.reduce((acc, curr, _, arr) => acc + curr / arr.length, 0).toFixed(0) * 1
+    } else {
+      return minutesActiveObject
+    }
   }
 }
 

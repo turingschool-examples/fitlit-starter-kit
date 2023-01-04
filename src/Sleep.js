@@ -1,3 +1,5 @@
+import { userDataForDate } from './helperFunctions'
+
 class Sleep {
   constructor(sleepData) {
     this.sleepData = sleepData;
@@ -24,15 +26,11 @@ class Sleep {
   }
 
   returnHoursSleptByDate(id, date) {
-    return this.sleepData.find(
-      (sleepLog) => sleepLog.userID === id && sleepLog.date === date
-    ).hoursSlept;
+    return userDataForDate(this.sleepData, id, date).hoursSlept;
   }
 
   returnSleepQualityByDate(id, date) {
-    return this.sleepData.find(
-      (sleepLog) => sleepLog.userID === id && sleepLog.date === date
-    ).sleepQuality;
+    return userDataForDate(this.sleepData, id, date).sleepQuality;
   }
 
   returnHoursSleptByWeek(id, date) {

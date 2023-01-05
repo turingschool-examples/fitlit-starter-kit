@@ -63,13 +63,17 @@ class Activity {
     if(!checkID(id, this.data)) {
       return 'User Not Found'
     }
-    return this.data.reduce((highest, data) => {
+    const highestStairCount = this.data.reduce((highest, data) => {
       if (data.userID === id && data.flightsOfStairs > highest) {
         highest = data.flightsOfStairs
         return highest
       }
       return highest
     }, -1);
+    if(highestStairCount === -1) {
+      return 'No Data Found'
+    }
+    return highestStairCount
   }
 }
 

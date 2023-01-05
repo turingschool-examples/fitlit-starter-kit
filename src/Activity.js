@@ -40,7 +40,7 @@ class Activity {
   findDatesOverStepGoal(id, stepGoal) {
     const userData = this.data.filter(user => user.userID === id)
     if(userData.length === 0) {
-      'No User Found'
+      return 'No User Found'
     }
     const datesAchivedGoal = userData.filter(el => el.numSteps > stepGoal)
     if(datesAchivedGoal.length === 0) {

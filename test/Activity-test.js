@@ -76,4 +76,7 @@ describe("Activity", () => {
   it('Should return message if no data found', function () {
     expect(userActivity.findHighestStairsClimbed(9)).to.equal('No Data Found')
   })
+  it('Should return the average stairs climbed for all users', function() {
+    expect(userActivity.allUserStairAvgForDate("2019/06/15")).to.equal(28)
+  })
 });

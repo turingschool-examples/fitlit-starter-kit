@@ -50,8 +50,10 @@ describe("Activity", () => {
     const userRepo = new UserRepository(userData)
     expect(userActivity.dailyStepGoaAchieved(1, "2019/06/18", userRepo.getUserData(1).dailyStepGoal)).to.equal(false)
   })
-  it('Should return error message if user not found', function () {
+  it('Should return error message if user or date not found', function () {
     const userRepo = new UserRepository(userData)
-    expect(userActivity.dailyStepGoaAchieved(99, "2019/06/18", userRepo.getUserData(1).dailyStepGoal)).to.equal('User Not Found')
+    expect(userActivity.dailyStepGoaAchieved(99, "2019/06/18", userRepo.getUserData(1).dailyStepGoal)).to.equal('No data found for inputs')
+    expect(userActivity.dailyStepGoaAchieved(1, "2018/06/18", userRepo.getUserData(1).dailyStepGoal)).to.equal('No data found for inputs')
   })
+  
 });

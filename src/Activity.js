@@ -31,6 +31,9 @@ class Activity {
 
   dailyStepGoaAchieved(id, date, stepGoal) {
     const userData = userDataForDate(this.data, id, date)
+    if(!userData) {
+      return 'User Not Found'
+    }
     return userData.numSteps > stepGoal
   }
 }

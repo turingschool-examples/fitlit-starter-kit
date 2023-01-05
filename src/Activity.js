@@ -1,4 +1,4 @@
-import { userDataForDate, weeklyData } from "./helperFunctions";
+import { userDataForDate, weeklyData, checkID } from "./helperFunctions";
 class Activity {
   constructor(data) {
     this.data = data;
@@ -60,13 +60,16 @@ class Activity {
   }
 
   findHighestStairsClimbed(id) {
+    if(!checkID(id, this.data)) {
+      return 'User Not Found'
+    }
     return this.data.reduce((highest, data) => {
       if (data.userID === id && data.flightsOfStairs > highest) {
         highest = data.flightsOfStairs
         return highest
       }
       return highest
-    }, 0);
+    }, -1);
   }
 }
 

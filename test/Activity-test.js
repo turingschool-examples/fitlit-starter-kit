@@ -67,5 +67,7 @@ describe("Activity", () => {
     const userRepo = new UserRepository(userData)
     expect(userActivity.findDatesOverStepGoal(99, userRepo.getUserData(1).dailyStepGoal)).to.deep.equal('No User Found')
   })
-  
+  it('Should return all time stair climbing record', function () {
+    expect(userActivity.findHighestStairsClimbed(1)).to.equal(33)
+  })
 });

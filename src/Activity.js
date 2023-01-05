@@ -78,6 +78,9 @@ class Activity {
 
   allUserStairAvgForDate(date) {
     const allUserData = this.data.filter(key => key.date === date)
+    if(allUserData.length === 0) {
+      return 'No Data Found'
+    }
     const averageStairs = allUserData.reduce((avg, cur, _ , arr) => {
       return avg + cur.flightsOfStairs / arr.length
     }, 0)

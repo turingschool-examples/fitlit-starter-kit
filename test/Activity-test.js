@@ -79,4 +79,7 @@ describe("Activity", () => {
   it('Should return the average stairs climbed for all users', function() {
     expect(userActivity.allUserStairAvgForDate("2019/06/15")).to.equal(28)
   })
+  it('Should return message if no data for allUserStairAvgForDate', function () {
+    expect(userActivity.allUserStairAvgForDate("2018/06/15")).to.equal('No Data Found')
+  })
 });

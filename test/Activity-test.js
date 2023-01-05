@@ -73,4 +73,7 @@ describe("Activity", () => {
   it('Should return error message if user not found', function() {
     expect(userActivity.findHighestStairsClimbed(99)).to.equal('User Not Found')
   })
+  it('Should ', function () {
+    expect(userActivity.findHighestStairsClimbed(9)).to.equal('No Data Found')
+  })
 });

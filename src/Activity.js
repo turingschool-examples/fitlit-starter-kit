@@ -75,6 +75,14 @@ class Activity {
     }
     return highestStairCount
   }
+
+  allUserStairAvgForDate(date) {
+    const allUserData = this.data.filter(key => key.date === date)
+    const averageStairs = allUserData.reduce((avg, cur, _ , arr) => {
+      return avg + cur.flightsOfStairs / arr.length
+    }, 0)
+    return averageStairs.toFixed() * 1
+  }
 }
 
 export default Activity;

@@ -59,5 +59,10 @@ describe("Activity", () => {
     const userRepo = new UserRepository(userData)
     expect(userActivity.findDatesOverStepGoal(1, userRepo.getUserData(1).dailyStepGoal)).to.deep.equal(["2019/06/19", "2019/06/20"])
   })
+  it('Should return a message if step goal never met from findDatesOverStepGoal', function () {
+    const userRepo = new UserRepository(userData)
+    expect(userActivity.findDatesOverStepGoal(10, userRepo.getUserData(10).dailyStepGoal)).to.deep.equal('No Step Goals Met')
+    // expect(userActivity.findDatesOverStepGoal(99, userRepo.getUserData(1).dailyStepGoal)).to.deep.equal([])
+  })
   
 });

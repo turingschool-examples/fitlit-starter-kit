@@ -36,6 +36,11 @@ class Activity {
     }
     return userData.numSteps > stepGoal
   }
+
+  findDatesOverStepGoal(id, stepGoal) {
+    const userData = this.data.filter(user => user.userID === id && user.numSteps > stepGoal)
+    return userData.map(el => el.date)
+  }
 }
 
 

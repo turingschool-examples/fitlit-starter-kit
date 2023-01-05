@@ -55,5 +55,9 @@ describe("Activity", () => {
     expect(userActivity.dailyStepGoaAchieved(99, "2019/06/18", userRepo.getUserData(1).dailyStepGoal)).to.equal('No data found for inputs')
     expect(userActivity.dailyStepGoaAchieved(1, "2018/06/18", userRepo.getUserData(1).dailyStepGoal)).to.equal('No data found for inputs')
   })
+  it('Should return all days where user exceeded their step goal', function () {
+    const userRepo = new UserRepository(userData)
+    expect(userActivity.findDatesOverStepGoal(1, userRepo.getUserData(1).dailyStepGoal)).to.deep.equal(["2019/06/19", "2019/06/20"])
+  })
   
 });

@@ -5,6 +5,7 @@ import User from "./User";
 import UserRepository from "./UserRepository";
 import Hydration from "./Hydration";
 import Sleep from "./Sleep";
+import * as dayjs from "dayjs"
 import { createChart, createSmallBarChart } from "./charts";
 
 let allUserData;
@@ -46,8 +47,8 @@ fetchAll().then((data) => {
   allUserData = new UserRepository(
     data[0].userData.map((user) => new User(user))
   );
-  allUserSleep = new Sleep(data[1].sleepData);
-  allUserHydro = new Hydration(data[2].hydrationData);
+  allUserSleep = new Sleep(formatDates(data[1].sleepData));
+  allUserHydro = new Hydration(formatDates(data[2].hydrationData));
   currentUser =
     allUserData.userData[
       Math.floor(Math.random() * allUserData.userData.length)
@@ -129,3 +130,12 @@ const displayCurrentDayHydration = function (hydration, date) {
   <i class="fa-regular fa-glass fa-2xl"></i>
   <p>Today's Water: ${hydration.consumeBydate(currentUser.id, date)} oz</p>`;
 };
+
+function formatDates(array) {
+  return array.map(user => {
+    return {
+    ...user,
+      date: dayjs(user.date).format("YYYY/MM/DD")
+    }
+  })
+}

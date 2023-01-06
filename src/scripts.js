@@ -8,6 +8,7 @@ import Sleep from "./Sleep";
 import * as dayjs from "dayjs"
 import { createChart, createSmallBarChart } from "./charts";
 import Activity from "./Activity";
+import { testSequentialDates } from "./helperFunctions"
 
 let allUserData;
 let allUserSleep;
@@ -51,8 +52,8 @@ fetchAll().then((data) => {
   );
   allUserSleep = new Sleep(formatDates(data[1].sleepData).sort((high, low) => low.date - high.date));
   
-  allUserHydro = new Hydration(formatDates(data[2].hydrationData).sort((high, low) => low.date - high.date));
-  console.log(allUserHydro.data)
+  allUserHydro = new Hydration(formatDates(data[2].hydrationData).sort((high, low) => dayjs(high.date).diff(dayjs(low.date))));
+  console.log(testSequentialDates(allUserHydro.data))
   allUserActivity = new Activity(formatDates(data[3].activityData))
   currentUser =
     allUserData.userData[

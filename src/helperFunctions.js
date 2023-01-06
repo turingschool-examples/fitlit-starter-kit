@@ -38,9 +38,9 @@ const testSequentialDates = (arr) => {
     if(index === ar.length-1) {
       return true
     }
-    console.log(dayjs(curr.date).diff(dayjs(ar[index+1].date)) <= 0)
-    console.log(dayjs(curr.date), ar[index+1].date)
-    console.log(dayjs(curr.date).diff(dayjs(ar[index+1].date)))
+    // console.log(dayjs(curr.date).diff(dayjs(ar[index+1].date)) <= 0)
+    // console.log(dayjs(curr.date), ar[index+1].date)
+    // console.log(dayjs(curr.date).diff(dayjs(ar[index+1].date)))
     return dayjs(curr.date).diff(dayjs(ar[index+1].date)) <= 0
   })
 }

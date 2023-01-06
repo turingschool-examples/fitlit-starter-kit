@@ -5,11 +5,15 @@ import User from "./User";
 import UserRepository from "./UserRepository";
 import Hydration from "./Hydration";
 import Sleep from "./Sleep";
+import * as dayjs from "dayjs"
 import { createChart, createSmallBarChart } from "./charts";
+import Activity from "./Activity";
+import { testSequentialDates } from "./helperFunctions"
 
 let allUserData;
 let allUserSleep;
 let allUserHydro;
+let allUserActivity;
 let currentUser;
 let currentDate;
 let calendarMax;
@@ -46,8 +50,12 @@ fetchAll().then((data) => {
   allUserData = new UserRepository(
     data[0].userData.map((user) => new User(user))
   );
-  allUserSleep = new Sleep(data[1].sleepData);
-  allUserHydro = new Hydration(data[2].hydrationData);
+  allUserSleep = new Sleep(formatDates(data[1].sleepData).sort((high, low) => low.date - high.date));
+  console.log("sleep", testSequentialDates(allUserSleep.sleepData))
+  allUserHydro = new Hydration(formatDates(data[2].hydrationData).sort((high, low) => dayjs(high.date).diff(dayjs(low.date))));
+  console.log(testSequentialDates(allUserHydro.data))
+  allUserActivity = new Activity(formatDates(data[3].activityData).sort((high, low) => dayjs(high.date).diff(dayjs(low.date))))
+  console.log(testSequentialDates(allUserActivity.data))
   currentUser =
     allUserData.userData[
       Math.floor(Math.random() * allUserData.userData.length)
@@ -129,3 +137,12 @@ const displayCurrentDayHydration = function (hydration, date) {
   <i class="fa-regular fa-glass fa-2xl"></i>
   <p>Today's Water: ${hydration.consumeBydate(currentUser.id, date)} oz</p>`;
 };
+
+function formatDates(array) {
+  return array.map(user => {
+    return {
+    ...user,
+      date: dayjs(user.date).format("YYYY/MM/DD")
+    }
+  })
+}

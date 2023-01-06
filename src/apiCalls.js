@@ -4,9 +4,10 @@ const fetchUserData = (url) => {
 
 const fetchAll = () => {
   return Promise.all([
-    fetchUserData("https://fitlit-api.herokuapp.com/api/v1/users"),
-    fetchUserData("https://fitlit-api.herokuapp.com/api/v1/sleep"),
-    fetchUserData("https://fitlit-api.herokuapp.com/api/v1/hydration"),
+    fetchUserData("http://localhost:3001/api/v1/users"),
+    fetchUserData("http://localhost:3001/api/v1/sleep"),
+    fetchUserData("http://localhost:3001/api/v1/hydration"),
+    fetchUserData("http://localhost:3001/api/v1/activity")
   ]);
 };
 

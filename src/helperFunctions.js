@@ -1,3 +1,6 @@
+import * as dayjs from "dayjs"
+
+
 const checkID = function (id, data) {
   return data.some((user) => user.userID === id);
 };
@@ -30,4 +33,16 @@ const weeklyData = function (data, query, label, id, date) {
   };
 };
 
-export { checkID, userDataForDate, weeklyData };
+const testSequentialDates = (arr) => {
+  return arr.every((curr, index, ar) => {
+    if(index === ar.length-1) {
+      return true
+    }
+    // console.log(dayjs(curr.date).diff(dayjs(ar[index+1].date)) <= 0)
+    // console.log(dayjs(curr.date), ar[index+1].date)
+    // console.log(dayjs(curr.date).diff(dayjs(ar[index+1].date)))
+    return dayjs(curr.date).diff(dayjs(ar[index+1].date)) <= 0
+  })
+}
+
+export { checkID, userDataForDate, weeklyData, testSequentialDates };

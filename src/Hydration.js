@@ -3,7 +3,6 @@ import { userDataForDate, checkID, weeklyData } from './helperFunctions'
 class Hydration {
   constructor(data) {
     this.data = data;
-    
   }
   
   calcAvgWaterConsumption(id) {

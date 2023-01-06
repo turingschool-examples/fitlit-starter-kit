@@ -51,10 +51,11 @@ fetchAll().then((data) => {
     data[0].userData.map((user) => new User(user))
   );
   allUserSleep = new Sleep(formatDates(data[1].sleepData).sort((high, low) => low.date - high.date));
-  
+  console.log("sleep", testSequentialDates(allUserSleep.sleepData))
   allUserHydro = new Hydration(formatDates(data[2].hydrationData).sort((high, low) => dayjs(high.date).diff(dayjs(low.date))));
   console.log(testSequentialDates(allUserHydro.data))
-  allUserActivity = new Activity(formatDates(data[3].activityData))
+  allUserActivity = new Activity(formatDates(data[3].activityData).sort((high, low) => dayjs(high.date).diff(dayjs(low.date))))
+  console.log(testSequentialDates(allUserActivity.data))
   currentUser =
     allUserData.userData[
       Math.floor(Math.random() * allUserData.userData.length)

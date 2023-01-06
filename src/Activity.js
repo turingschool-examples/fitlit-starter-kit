@@ -76,15 +76,23 @@ class Activity {
     return highestStairCount
   }
 
-  allUserStairAvgForDate(date) {
+  allUserAveragesForDate(date) {
     const allUserData = this.data.filter(key => key.date === date)
     if(allUserData.length === 0) {
       return 'No Data Found'
     }
-    const averageStairs = allUserData.reduce((avg, cur, _ , arr) => {
-      return avg + cur.flightsOfStairs / arr.length
-    }, 0)
-    return averageStairs.toFixed() * 1
+    const userAverages = allUserData.reduce((acc, cur, _ , arr) => {
+      return {
+        stairs: acc.stairs + cur.flightsOfStairs / arr.length,
+        steps: acc.steps + cur.numSteps / arr.length,
+        minutesActive: acc.minutesActive + cur.minutesActive / arr.length
+      }
+    }, {stairs: 0, steps: 0, minutesActive: 0})
+    return {
+      stairs: userAverages.stairs.toFixed() * 1,
+      steps: userAverages.steps.toFixed() * 1,
+      minutesActive: userAverages.minutesActive.toFixed() * 1,
+    }
   }
 }
 

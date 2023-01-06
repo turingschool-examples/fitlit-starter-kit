@@ -7,10 +7,12 @@ import Hydration from "./Hydration";
 import Sleep from "./Sleep";
 import * as dayjs from "dayjs"
 import { createChart, createSmallBarChart } from "./charts";
+import Activity from "./Activity";
 
 let allUserData;
 let allUserSleep;
 let allUserHydro;
+let allUserActivity;
 let currentUser;
 let currentDate;
 let calendarMax;
@@ -49,6 +51,7 @@ fetchAll().then((data) => {
   );
   allUserSleep = new Sleep(formatDates(data[1].sleepData));
   allUserHydro = new Hydration(formatDates(data[2].hydrationData));
+  allUserActivity = new Activity(formatDates(data[3].activityData))
   currentUser =
     allUserData.userData[
       Math.floor(Math.random() * allUserData.userData.length)

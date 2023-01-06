@@ -50,8 +50,9 @@ fetchAll().then((data) => {
     data[0].userData.map((user) => new User(user))
   );
   allUserSleep = new Sleep(formatDates(data[1].sleepData).sort((high, low) => low.date - high.date));
-  console.log(allUserSleep.sleepData)
-  allUserHydro = new Hydration(formatDates(data[2].hydrationData));
+  
+  allUserHydro = new Hydration(formatDates(data[2].hydrationData).sort((high, low) => low.date - high.date));
+  console.log(allUserHydro.data)
   allUserActivity = new Activity(formatDates(data[3].activityData))
   currentUser =
     allUserData.userData[

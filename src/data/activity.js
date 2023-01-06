@@ -57,15 +57,14 @@ const activityData = [
   },
   {
     userID: 9,
-    date: "2019/06/15",
+    date: "2019/06/16",
     numSteps: 6389,
     minutesActive: 41,
-    flightsOfStairs: 33,
   },
   {
     userID: 10,
     date: "2019/06/15",
-    numSteps: 8015,
+    numSteps: 2999,
     minutesActive: 106,
     flightsOfStairs: 37,
   },

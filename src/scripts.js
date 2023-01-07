@@ -105,9 +105,10 @@ function pageLoadHandler() {
   );
   createSmallBarChart(
     "stepGoalAvg",
-    ["My Step Goal", "Average Step Goal"],
+    ["My Step Goal", "Average Step Goal", 'Today\'s Steps'],
     "Steps",
-    [currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal()],
+    [currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal(),
+    allUserActivity.findInfoForDate(currentUser.id, currentDate, "numSteps" )],
     ["rgba(253, 221, 224, .2)"],
     ["rgb(253, 221, 224)"],
     "y",

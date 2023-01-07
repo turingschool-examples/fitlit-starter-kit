@@ -78,7 +78,8 @@ function pageLoadHandler() {
   createChart(
     allUserHydro.returnWeeklyWaterConsumption(currentUser.id, weekStartDate),
     allUserSleep.returnSleepQualityByWeek(currentUser.id, weekStartDate),
-    allUserSleep.returnHoursSleptByWeek(currentUser.id, weekStartDate)
+    allUserSleep.returnHoursSleptByWeek(currentUser.id, weekStartDate),
+    allUserActivity.averageMinutesActiveForWeek(currentUser.id, weekStartDate)
   );
   createSmallBarChart(
     "allTimeSleep",

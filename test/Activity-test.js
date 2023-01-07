@@ -159,4 +159,8 @@ describe("Activity", () => {
       "No Data Found"
     );
   });
+
+  it('Should calculate weekly step count', function () {
+    expect(userActivity.weeklyStepCountByDay(1, "2019/06/15")).to.deep.equal([3577, 4294, 7402, 3486, 11374, 14810, 2634])
+  })
 });

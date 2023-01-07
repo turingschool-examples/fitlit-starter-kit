@@ -98,6 +98,14 @@ class Activity {
   weeklyStepCountByDay(id, date) {
     return weeklyData(this.data, "numSteps", "Steps", id, date)
   }
+
+  weeklyMinutesActiveByDay(id, date) {
+    return weeklyData(this.data, "minutesActive", "Minutes Active", id, date)
+  }
+
+  weeklyStairsClimbedByDay(id, date) {
+    return weeklyData(this.data, "flightsOfStairs", "Stairs Climbed", id, date)
+  }
 }
 
 export default Activity;

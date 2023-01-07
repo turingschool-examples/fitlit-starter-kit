@@ -28,14 +28,15 @@ class Activity {
       id,
       date
     );
-    if (typeof minutesActiveObject !== "string") {
+    if (minutesActiveObject.count.some(el => el !== null)) {
       return (
         minutesActiveObject.count
+          .filter(element => element !== null)
           .reduce((acc, curr, _, arr) => acc + curr / arr.length, 0)
           .toFixed(0) * 1
       );
     } else {
-      return minutesActiveObject;
+      return "No data found for date selected"
     }
   }
 

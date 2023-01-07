@@ -52,17 +52,14 @@ fetchAll().then((data) => {
     data[0].userData.map((user) => new User(user))
   );
   allUserSleep = new Sleep(formatDates(data[1].sleepData).sort((high, low) => dayjs(high.date).diff(dayjs(low.date))));
-  console.log("sleep", testSequentialDates(allUserSleep.sleepData))
   allUserHydro = new Hydration(formatDates(data[2].hydrationData).sort((high, low) => dayjs(high.date).diff(dayjs(low.date))));
-  console.log('hydro', testSequentialDates(allUserHydro.data))
   allUserActivity = new Activity(formatDates(data[3].activityData).sort((high, low) => dayjs(high.date).diff(dayjs(low.date))))
-  console.log('activity', testSequentialDates(allUserActivity.data))
   currentUser =
     allUserData.userData[
       Math.floor(Math.random() * allUserData.userData.length)
     ];
   currentDate = currentDateForUser()
-  weekStartDate = dayjs(currentDate).subtract(7, 'day').format("YYYY/MM/DD")
+  weekStartDate = dayjs(currentDate).subtract(6, 'day').format("YYYY/MM/DD")
   calendarMin = allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, "-")
   calendarMax = currentDate.replace(/\//g, "-")
   calendar.setAttribute(
@@ -79,9 +76,9 @@ function pageLoadHandler() {
   displayUserInfo(currentUser, allUserData);
   displayCurrentDayHydration(allUserHydro, currentDate);
   createChart(
-    allUserHydro.returnWeeklyWaterConsumption(currentUser.id, currentDate),
-    allUserSleep.returnSleepQualityByWeek(currentUser.id, currentDate),
-    allUserSleep.returnHoursSleptByWeek(currentUser.id, currentDate)
+    allUserHydro.returnWeeklyWaterConsumption(currentUser.id, weekStartDate),
+    allUserSleep.returnSleepQualityByWeek(currentUser.id, weekStartDate),
+    allUserSleep.returnHoursSleptByWeek(currentUser.id, weekStartDate)
   );
   createSmallBarChart(
     "allTimeSleep",

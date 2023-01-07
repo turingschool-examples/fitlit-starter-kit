@@ -32,7 +32,7 @@ class Hydration {
     if(ounceForDate) {
       return  ounceForDate.numOunces
     } else {
-      return 'No data found for date selected'
+      return '0'
     }
   }
 

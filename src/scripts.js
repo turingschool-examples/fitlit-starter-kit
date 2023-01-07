@@ -113,6 +113,15 @@ function pageLoadHandler() {
     "y",
     false
   );
+  const weekStepChartData = allUserActivity.weeklyStepCountByDay(currentUser.id, weekStartDate)
+  createSmallBarChart(
+    "weekStepChart",
+    weekStepChartData.dates,
+    "Weekly Steps",
+    weekStepChartData.count,
+    ["rgba(255, 243, 199, .2)"],
+    ["rgb(255, 243, 199)"]
+  );
 }
 
 const displayUserName = function (user) {

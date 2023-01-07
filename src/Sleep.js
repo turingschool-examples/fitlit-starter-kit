@@ -26,11 +26,15 @@ class Sleep {
   }
 
   returnHoursSleptByDate(id, date) {
-    return userDataForDate(this.sleepData, id, date).hoursSlept;
+    const sleepHours = userDataForDate(this.sleepData, id, date);
+    if(!sleepHours) return 'No Data Found'
+    return sleepHours.hoursSlept
   }
 
   returnSleepQualityByDate(id, date) {
-    return userDataForDate(this.sleepData, id, date).sleepQuality;
+    const sleepQuality = userDataForDate(this.sleepData, id, date);
+    if(!sleepQuality) return 'No Data Found'
+    return sleepQuality.sleepQuality
   }
 
   returnHoursSleptByWeek(id, date) {

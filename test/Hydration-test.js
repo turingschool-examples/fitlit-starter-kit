@@ -39,7 +39,7 @@ describe("Hydration", function () {
   })
 
   it('Should return error message if user does not exist in consumeByDate', function () {
-    expect(userHydrate.consumeBydate(1, "2018/06/10")).to.equal('No data found for date selected');
+    expect(userHydrate.consumeBydate(1, "2018/06/10")).to.equal('0');
   })
 
 

@@ -94,6 +94,10 @@ class Activity {
       minutesActive: userAverages.minutesActive.toFixed() * 1,
     }
   }
+
+  weeklyStepCountByDay(id, date) {
+    return weeklyData(this.data, "numSteps", "Steps", id, date)
+  }
 }
 
 export default Activity;

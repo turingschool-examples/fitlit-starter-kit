@@ -8,7 +8,7 @@ import Sleep from "./Sleep";
 import * as dayjs from "dayjs"
 import { createChart, createSmallBarChart } from "./charts";
 import Activity from "./Activity";
-import { testSequentialDates } from "./helperFunctions"
+import { testSequentialDates, userDataForID } from "./helperFunctions"
 
 let allUserData;
 let allUserSleep;
@@ -16,6 +16,7 @@ let allUserHydro;
 let allUserActivity;
 let currentUser;
 let currentDate;
+let weekStartDate
 let calendarMax;
 let calendarMin;
 
@@ -50,17 +51,15 @@ fetchAll().then((data) => {
   allUserData = new UserRepository(
     data[0].userData.map((user) => new User(user))
   );
-  allUserSleep = new Sleep(formatDates(data[1].sleepData).sort((high, low) => low.date - high.date));
-  console.log("sleep", testSequentialDates(allUserSleep.sleepData))
+  allUserSleep = new Sleep(formatDates(data[1].sleepData).sort((high, low) => dayjs(high.date).diff(dayjs(low.date))));
   allUserHydro = new Hydration(formatDates(data[2].hydrationData).sort((high, low) => dayjs(high.date).diff(dayjs(low.date))));
-  console.log(testSequentialDates(allUserHydro.data))
   allUserActivity = new Activity(formatDates(data[3].activityData).sort((high, low) => dayjs(high.date).diff(dayjs(low.date))))
-  console.log(testSequentialDates(allUserActivity.data))
   currentUser =
     allUserData.userData[
       Math.floor(Math.random() * allUserData.userData.length)
     ];
-  currentDate = allUserHydro.data.slice(-1)[0].date;
+  currentDate = currentDateForUser()
+  weekStartDate = dayjs(currentDate).subtract(6, 'day').format("YYYY/MM/DD")
   calendarMin = allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, "-")
   calendarMax = currentDate.replace(/\//g, "-")
   calendar.setAttribute(
@@ -77,9 +76,9 @@ function pageLoadHandler() {
   displayUserInfo(currentUser, allUserData);
   displayCurrentDayHydration(allUserHydro, currentDate);
   createChart(
-    allUserHydro.returnWeeklyWaterConsumption(currentUser.id, currentDate),
-    allUserSleep.returnSleepQualityByWeek(currentUser.id, currentDate),
-    allUserSleep.returnHoursSleptByWeek(currentUser.id, currentDate)
+    allUserHydro.returnWeeklyWaterConsumption(currentUser.id, weekStartDate),
+    allUserSleep.returnSleepQualityByWeek(currentUser.id, weekStartDate),
+    allUserSleep.returnHoursSleptByWeek(currentUser.id, weekStartDate)
   );
   createSmallBarChart(
     "allTimeSleep",
@@ -145,4 +144,12 @@ function formatDates(array) {
       date: dayjs(user.date).format("YYYY/MM/DD")
     }
   })
+}
+
+function currentDateForUser() {
+  const hydroData = userDataForID(currentUser.id, allUserHydro.data).slice(-1)[0].date
+  const sleepData = userDataForID(currentUser.id, allUserSleep.sleepData).slice(-1)[0].date
+  const activityData = userDataForID(currentUser.id, allUserActivity.data).slice(-1)[0].date
+  const mostCurrent = [hydroData, sleepData, activityData].sort((low, high) => dayjs(low).diff(dayjs(high)))
+  return mostCurrent[mostCurrent.length -1]
 }

@@ -131,6 +131,15 @@ function pageLoadHandler() {
     ["rgba(255, 243, 199, .2)"],
     ["rgb(255, 243, 199)"]
   );
+  const weekStairsChartData = allUserActivity.weeklyStairsClimbedByDay(currentUser.id, weekStartDate)
+  createSmallBarChart(
+    "weekStairChart",
+    weekStairsChartData.dates,
+    "Weekly Stairs",
+    weekStairsChartData.count,
+    ["rgba(255, 243, 199, .2)"],
+    ["rgb(255, 243, 199)"]
+  );
 }
 
 const displayUserName = function (user) {

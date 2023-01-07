@@ -11,16 +11,15 @@ const userDataForDate = function (data, id, date) {
 const weeklyData = function (data, query, label, id, date, rerun = {}) {
   const userInfo = data.filter((el) => el.userID === id);
   const queryData = userInfo.map((el) => el[query]);
-  const dates = userInfo.map((el) => el.date);
   const index = userInfo.findIndex(
     (el) => el.date === date && el.userID === id
   );
   const newDate = dayjs(date).add(1, "day").format("YYYY/MM/DD");
-  if (index === -1) {
+    const currentIndexData = index === -1 ? null : queryData[index]
     const currentCount = rerun.count || [];
     const currentDates = rerun.dates || [];
     const dataFiller = {
-      count: [...currentCount, null],
+      count: [...currentCount, currentIndexData],
       label: label,
       dates: [...currentDates, date],
     };
@@ -29,74 +28,13 @@ const weeklyData = function (data, query, label, id, date, rerun = {}) {
       return dataFiller;
     }
     return weeklyData(data, query, label, id, newDate, dataFiller)
-  } else {
-    const currentCount = rerun.count || [];
-    const currentDates = rerun.dates || [];
-    const dataFiller = {
-      count: [...currentCount, queryData[index]],
-      label: label,
-      dates: [...currentDates, date],
-    };
-    if (dataFiller.count.length === 7) {
-      console.log('return last valid', dataFiller)
-      return dataFiller;
-    }
-    return weeklyData(data, query, label, id, newDate, dataFiller)
-  }
-  // if (index === -1) {
-  //   //
-  //   // const a = dayjs(date)
-  //   // const b = a.add(7, 'day')
-
-  //   console.log('newDate', newDate)
-  //   weeklyData(data, query, label, id, date, {})
-  // }
-  // if (!queryData[index + 6]) {
-  //   return {
-  //     count: queryData.slice(-7),
-  //     label: label,
-  //     dates: dates.slice(-7),
-  //   };
-  // }
-  // return {
-  //   count: queryData.slice(index, index + 7),
-  //   label: label,
-  //   dates: dates.slice(index, index + 7),
-  // };
 };
-
-// const weeklyData = function (data, query, label, id, date) {
-//   const userInfo = data.filter((el) => el.userID === id);
-//   const queryData = userInfo.map((el) => el[query]);
-//   const dates = userInfo.map((el) => el.date);
-//   const index = userInfo.findIndex(
-//     (el) => el.date === date && el.userID === id
-//   );
-//   if (index === -1) {
-//     return "No data found for date selected";
-//   }
-//   if (!queryData[index + 6]) {
-//     return {
-//       count: queryData.slice(-7),
-//       label: label,
-//       dates: dates.slice(-7),
-//     };
-//   }
-//   return {
-//     count: queryData.slice(index, index + 7),
-//     label: label,
-//     dates: dates.slice(index, index + 7),
-//   };
-// };
 
 const testSequentialDates = (arr) => {
   return arr.every((curr, index, ar) => {
     if (index === ar.length - 1) {
       return true;
     }
-    // console.log(dayjs(curr.date).diff(dayjs(ar[index+1].date)) <= 0)
-    // console.log(dayjs(curr.date), ar[index+1].date)
-    // console.log(dayjs(curr.date).diff(dayjs(ar[index+1].date)))
     return dayjs(curr.date).diff(dayjs(ar[index + 1].date)) <= 0;
   });
 };

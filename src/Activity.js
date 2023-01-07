@@ -12,12 +12,12 @@ class Activity {
     return ((userActivity.numSteps * strideLength) / 5280).toFixed(2) * 1;
   }
 
-  findMintuesActiveForDate(id, date) {
+  findInfoForDate(id, date, query) {
     const userActive = userDataForDate(this.data, id, date);
     if (!userActive) {
       return "No data found for inputs";
     }
-    return userActive.minutesActive;
+    return userActive[query];
   }
 
   averageMinutesActiveForWeek(id, date) {
@@ -40,7 +40,7 @@ class Activity {
     }
   }
 
-  dailyStepGoaAchieved(id, date, stepGoal) {
+  dailyStepGoalAchieved(id, date, stepGoal) {
     const userData = userDataForDate(this.data, id, date);
     if (!userData) {
       return "No data found for inputs";

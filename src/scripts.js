@@ -156,8 +156,10 @@ const displayUserInfo = function (user, repository) {
     <p class="address">Address: ${user.address}</p>
     <p class="email">Email: ${user.email}</p>
     <p class="daily-step-goal">Step Goal: ${user.dailyStepGoal}</p>
-    <p class="daily-miles-walked">Today's miles: ${allUserActivity.calculateMilesForDate(user.id, currentDate, user.strideLength)}
-    <p class="stride-length">Stride Length: ${user.strideLength}</p>
+    <p class="daily-miles-walked">Today's miles: ${allUserActivity.calculateMilesForDate(user.id, currentDate, user.strideLength)} miles</p>
+    <p class="stride-length">Stride Length: ${user.strideLength} feet</p>
+    <p class="minutes-active-daily-allusers">Minutes Active for All Users: ${allUserActivity.allUserAveragesForDate(currentDate).minutesActive} mins</p>
+    <p class="flights-daily-allusers">Flights of Stairs for All Users: ${allUserActivity.allUserAveragesForDate(currentDate).stairs} flights</p>
     <p class="friends">Friends: ${repository.getFriendData(user.friends)}</p>
   </div>`;
 };

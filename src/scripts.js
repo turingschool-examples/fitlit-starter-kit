@@ -16,6 +16,7 @@ let allUserHydro;
 let allUserActivity;
 let currentUser;
 let currentDate;
+let weekStartDate
 let calendarMax;
 let calendarMin;
 
@@ -61,6 +62,7 @@ fetchAll().then((data) => {
       Math.floor(Math.random() * allUserData.userData.length)
     ];
   currentDate = allUserHydro.data.slice(-1)[0].date;
+  weekStartDate = dayjs(currentDate).subtract(7, 'day').format("YYYY/MM/DD")
   calendarMin = allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, "-")
   calendarMax = currentDate.replace(/\//g, "-")
   calendar.setAttribute(

@@ -24,7 +24,6 @@ const weeklyData = function (data, query, label, id, date, rerun = {}) {
       dates: [...currentDates, date],
     };
     if (dataFiller.count.length === 7) {
-      console.log('return last null', dataFiller)
       return dataFiller;
     }
     return weeklyData(data, query, label, id, newDate, dataFiller)

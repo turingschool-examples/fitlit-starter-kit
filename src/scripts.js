@@ -78,7 +78,8 @@ function pageLoadHandler() {
   createChart(
     allUserHydro.returnWeeklyWaterConsumption(currentUser.id, weekStartDate),
     allUserSleep.returnSleepQualityByWeek(currentUser.id, weekStartDate),
-    allUserSleep.returnHoursSleptByWeek(currentUser.id, weekStartDate)
+    allUserSleep.returnHoursSleptByWeek(currentUser.id, weekStartDate),
+    allUserActivity.averageMinutesActiveForWeek(currentUser.id, weekStartDate)
   );
   createSmallBarChart(
     "allTimeSleep",
@@ -104,13 +105,42 @@ function pageLoadHandler() {
   );
   createSmallBarChart(
     "stepGoalAvg",
-    ["My Step Goal", "Average Step Goal"],
+    ["My Step Goal", "Average Step Goal", 'Today\'s Steps', 'Average Steps'],
     "Steps",
-    [currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal()],
+    [currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal(),
+    allUserActivity.findInfoForDate(currentUser.id, currentDate, "numSteps" ), 
+    allUserActivity.allUserAveragesForDate(currentDate).steps],
     ["rgba(253, 221, 224, .2)"],
     ["rgb(253, 221, 224)"],
     "y",
     false
+  );
+  const weekStepChartData = allUserActivity.weeklyStepCountByDay(currentUser.id, weekStartDate)
+  createSmallBarChart(
+    "weekStepChart",
+    weekStepChartData.dates,
+    "Weekly Steps",
+    weekStepChartData.count,
+    ["rgba(255, 243, 199, .2)"],
+    ["rgb(255, 243, 199)"]
+  );
+  const weekActiveChartData = allUserActivity.weeklyMinutesActiveByDay(currentUser.id, weekStartDate)
+  createSmallBarChart(
+    "weekMinutesActiveChart",
+    weekActiveChartData.dates,
+    "Weekly Activity",
+    weekActiveChartData.count,
+    ["rgba(255, 243, 199, .2)"],
+    ["rgb(255, 243, 199)"]
+  );
+  const weekStairsChartData = allUserActivity.weeklyStairsClimbedByDay(currentUser.id, weekStartDate)
+  createSmallBarChart(
+    "weekStairChart",
+    weekStairsChartData.dates,
+    "Weekly Stairs",
+    weekStairsChartData.count,
+    ["rgba(255, 243, 199, .2)"],
+    ["rgb(255, 243, 199)"]
   );
 }
 
@@ -126,7 +156,10 @@ const displayUserInfo = function (user, repository) {
     <p class="address">Address: ${user.address}</p>
     <p class="email">Email: ${user.email}</p>
     <p class="daily-step-goal">Step Goal: ${user.dailyStepGoal}</p>
-    <p class="stride-length">Stride Length: ${user.strideLength}</p>
+    <p class="daily-miles-walked">Today's miles: ${allUserActivity.calculateMilesForDate(user.id, currentDate, user.strideLength)} miles</p>
+    <p class="stride-length">Stride Length: ${user.strideLength} feet</p>
+    <p class="minutes-active-daily-allusers">Minutes Active for All Users: ${allUserActivity.allUserAveragesForDate(currentDate).minutesActive} mins</p>
+    <p class="flights-daily-allusers">Flights of Stairs for All Users: ${allUserActivity.allUserAveragesForDate(currentDate).stairs} flights</p>
     <p class="friends">Friends: ${repository.getFriendData(user.friends)}</p>
   </div>`;
 };

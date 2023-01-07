@@ -47,15 +47,15 @@ describe("Activity", () => {
     ).to.equal("No data found for inputs");
   });
   it("Should return minutes active by day", function () {
-    expect(userActivity.findMintuesActiveForDate(1, "2019/06/15")).to.equal(
+    expect(userActivity.findInfoForDate(1, "2019/06/15", 'minutesActive')).to.equal(
       140
     );
   });
-  it("Should return error message if no data is found for findMintuesActiveForDate", function () {
-    expect(userActivity.findMintuesActiveForDate(1, "2018/06/15")).to.equal(
+  it("Should return error message if no data is found for findInfoForDate", function () {
+    expect(userActivity.findInfoForDate(1, "2018/06/15", 'minutesActive')).to.equal(
       "No data found for inputs"
     );
-    expect(userActivity.findMintuesActiveForDate(99, "2019/06/15")).to.equal(
+    expect(userActivity.findInfoForDate(99, "2019/06/15", 'minutesActive')).to.equal(
       "No data found for inputs"
     );
   });
@@ -75,7 +75,7 @@ describe("Activity", () => {
   it("Should return true if step goal is met", function () {
     const userRepo = new UserRepository(userData);
     expect(
-      userActivity.dailyStepGoaAchieved(
+      userActivity.dailyStepGoalAchieved(
         1,
         "2019/06/19",
         userRepo.getUserData(1).dailyStepGoal
@@ -85,7 +85,7 @@ describe("Activity", () => {
   it("Should return false if step goal is not met", function () {
     const userRepo = new UserRepository(userData);
     expect(
-      userActivity.dailyStepGoaAchieved(
+      userActivity.dailyStepGoalAchieved(
         1,
         "2019/06/18",
         userRepo.getUserData(1).dailyStepGoal
@@ -95,14 +95,14 @@ describe("Activity", () => {
   it("Should return error message if user or date not found", function () {
     const userRepo = new UserRepository(userData);
     expect(
-      userActivity.dailyStepGoaAchieved(
+      userActivity.dailyStepGoalAchieved(
         99,
         "2019/06/18",
         userRepo.getUserData(1).dailyStepGoal
       )
     ).to.equal("No data found for inputs");
     expect(
-      userActivity.dailyStepGoaAchieved(
+      userActivity.dailyStepGoalAchieved(
         1,
         "2018/06/18",
         userRepo.getUserData(1).dailyStepGoal
@@ -159,4 +159,16 @@ describe("Activity", () => {
       "No Data Found"
     );
   });
+
+  it('Should calculate weekly step count', function () {
+    expect(userActivity.weeklyStepCountByDay(1, "2019/06/15")).to.deep.equal({count:[3577, 4294, 7402, 3486, 11374, 14810, 2634], label:'Steps', dates:["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"]})
+  })
+
+  it('Should return minutes active weekly data', function () {
+    expect(userActivity.weeklyMinutesActiveByDay(1, "2019/06/15")).to.deep.equal({count:[140, 138, 116, 114, 213, 287, 107], label:'Minutes Active', dates:["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"]})
+  })
+
+  it('Should return stairs climbed weekly data', function () {
+    expect(userActivity.weeklyStairsClimbedByDay(1, "2019/06/15")).to.deep.equal({count:[16, 10, 33, 32, 13, 18, 5], label:'Stairs Climbed', dates:["2019/06/15", "2019/06/16", "2019/06/17", "2019/06/18", "2019/06/19", "2019/06/20", "2019/06/21"]})
+  })
 });

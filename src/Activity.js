@@ -12,12 +12,12 @@ class Activity {
     return ((userActivity.numSteps * strideLength) / 5280).toFixed(2) * 1;
   }
 
-  findMintuesActiveForDate(id, date) {
+  findInfoForDate(id, date, query) {
     const userActive = userDataForDate(this.data, id, date);
     if (!userActive) {
       return "No data found for inputs";
     }
-    return userActive.minutesActive;
+    return userActive[query];
   }
 
   averageMinutesActiveForWeek(id, date) {
@@ -28,18 +28,19 @@ class Activity {
       id,
       date
     );
-    if (typeof minutesActiveObject !== "string") {
+    if (minutesActiveObject.count.some(el => el !== null)) {
       return (
         minutesActiveObject.count
+          .filter(element => element !== null)
           .reduce((acc, curr, _, arr) => acc + curr / arr.length, 0)
           .toFixed(0) * 1
       );
     } else {
-      return minutesActiveObject;
+      return "No data found for date selected"
     }
   }
 
-  dailyStepGoaAchieved(id, date, stepGoal) {
+  dailyStepGoalAchieved(id, date, stepGoal) {
     const userData = userDataForDate(this.data, id, date);
     if (!userData) {
       return "No data found for inputs";
@@ -93,6 +94,18 @@ class Activity {
       steps: userAverages.steps.toFixed() * 1,
       minutesActive: userAverages.minutesActive.toFixed() * 1,
     }
+  }
+
+  weeklyStepCountByDay(id, date) {
+    return weeklyData(this.data, "numSteps", "Steps", id, date)
+  }
+
+  weeklyMinutesActiveByDay(id, date) {
+    return weeklyData(this.data, "minutesActive", "Minutes Active", id, date)
+  }
+
+  weeklyStairsClimbedByDay(id, date) {
+    return weeklyData(this.data, "flightsOfStairs", "Stairs Climbed", id, date)
   }
 }
 

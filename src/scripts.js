@@ -105,10 +105,11 @@ function pageLoadHandler() {
   );
   createSmallBarChart(
     "stepGoalAvg",
-    ["My Step Goal", "Average Step Goal", 'Today\'s Steps'],
+    ["My Step Goal", "Average Step Goal", 'Today\'s Steps', 'Average Steps'],
     "Steps",
     [currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal(),
-    allUserActivity.findInfoForDate(currentUser.id, currentDate, "numSteps" )],
+    allUserActivity.findInfoForDate(currentUser.id, currentDate, "numSteps" ), 
+    allUserActivity.allUserAveragesForDate(currentDate).steps],
     ["rgba(253, 221, 224, .2)"],
     ["rgb(253, 221, 224)"],
     "y",
@@ -155,6 +156,7 @@ const displayUserInfo = function (user, repository) {
     <p class="address">Address: ${user.address}</p>
     <p class="email">Email: ${user.email}</p>
     <p class="daily-step-goal">Step Goal: ${user.dailyStepGoal}</p>
+    <p class="daily-miles-walked">Today's miles: ${allUserActivity.calculateMilesForDate(user.id, currentDate, user.strideLength)}
     <p class="stride-length">Stride Length: ${user.strideLength}</p>
     <p class="friends">Friends: ${repository.getFriendData(user.friends)}</p>
   </div>`;

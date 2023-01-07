@@ -8,7 +8,7 @@ import Sleep from "./Sleep";
 import * as dayjs from "dayjs"
 import { createChart, createSmallBarChart } from "./charts";
 import Activity from "./Activity";
-import { testSequentialDates } from "./helperFunctions"
+import { testSequentialDates, userDataForID } from "./helperFunctions"
 
 let allUserData;
 let allUserSleep;
@@ -61,7 +61,7 @@ fetchAll().then((data) => {
     allUserData.userData[
       Math.floor(Math.random() * allUserData.userData.length)
     ];
-  currentDate = allUserHydro.data.slice(-1)[0].date;
+  currentDate = currentDateForUser()
   weekStartDate = dayjs(currentDate).subtract(7, 'day').format("YYYY/MM/DD")
   calendarMin = allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, "-")
   calendarMax = currentDate.replace(/\//g, "-")
@@ -147,4 +147,12 @@ function formatDates(array) {
       date: dayjs(user.date).format("YYYY/MM/DD")
     }
   })
+}
+
+function currentDateForUser() {
+  const hydroData = userDataForID(currentUser.id, allUserHydro.data).slice(-1)[0].date
+  const sleepData = userDataForID(currentUser.id, allUserSleep.sleepData).slice(-1)[0].date
+  const activityData = userDataForID(currentUser.id, allUserActivity.data).slice(-1)[0].date
+  const mostCurrent = [hydroData, sleepData, activityData].sort((low, high) => dayjs(low).diff(dayjs(high)))
+  return mostCurrent[mostCurrent.length -1]
 }

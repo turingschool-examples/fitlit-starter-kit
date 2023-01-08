@@ -169,8 +169,8 @@ const displayUserInfo = function (user, repository) {
     <p class="daily-step-goal"><strong>Step Goal:</strong> ${user.dailyStepGoal}</p>
     <p class="daily-miles-walked"><strong>Today's miles:</strong> ${allUserActivity.calculateMilesForDate(user.id, currentDate, user.strideLength)} miles</p>
     <p class="stride-length"><strong>Stride Length:</strong> ${user.strideLength} feet</p>
-    <p class="minutes-active-daily-allusers"><strong>Minutes Active for All Users:</strong> ${allUserActivity.allUserAveragesForDate(currentDate).minutesActive} mins</p>
-    <p class="flights-daily-allusers"><strong>Flights of Stairs for All Users:</strong> ${allUserActivity.allUserAveragesForDate(currentDate).stairs} flights</p>
+    <p class="minutes-active-daily-allusers"><strong>Average Minutes Active for All Users:</strong> ${allUserActivity.allUserAveragesForDate(currentDate).minutesActive} mins</p>
+    <p class="flights-daily-allusers"><strong> Average Flights of Stairs for All Users:</strong> ${allUserActivity.allUserAveragesForDate(currentDate).stairs} flights</p>
     <p class="friends"><strong>Friends:</strong> ${repository.getFriendData(user.friends)}</p>
   </div>`;
 };

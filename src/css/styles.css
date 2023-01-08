@@ -84,13 +84,14 @@ body {
   margin-top: 20px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .user-name {
   font-size: large;
   margin-right: 30px;
+  margin-left: 20px;
 }
 
 .user-info {
@@ -122,6 +123,7 @@ body {
   border-radius: 8px;
   margin-bottom: 50px;
   box-shadow: 10px 10px 5px 0px rgb(0 0 0 / 75%);
+  background-color: #353333;
 }
 
 .weekly-steps {

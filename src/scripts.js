@@ -26,8 +26,11 @@ const hydrationBox = document.querySelector("#hydration");
 const calendarBtn = document.querySelector("#calendarBtn");
 const calendar = document.getElementById("myDate");
 const stepsInput = document.querySelector("#todaySteps");
-const hydrationInput = document.querySelector("#todayHydration");
+const stairsInput = document.querySelector("#todayStairs");
 const activityInput = document.querySelector("#todayActivity");
+const sleepQualityInput = document.querySelector("#todaySleepQuality");
+const sleepHoursInput = document.querySelector("#todaySleepHours");
+const hydrationInput = document.querySelector("#todayHydration");
 const submitErrorMessage = document.querySelector("#submitError");
 const inputButton = document.querySelector("#inputButton");
 
@@ -91,38 +94,42 @@ calendarBtn.addEventListener("click", function () {
   );
 });
 
-fetchAll().then((data) => {
-  allUserData = new UserRepository(
-    data[0].userData.map((user) => new User(user))
-  );
-  allUserSleep = new Sleep(
-    formatDates(data[1].sleepData).sort((high, low) =>
-      dayjs(high.date).diff(dayjs(low.date))
-    )
-  );
-  allUserHydro = new Hydration(
-    formatDates(data[2].hydrationData).sort((high, low) =>
-      dayjs(high.date).diff(dayjs(low.date))
-    )
-  );
-  allUserActivity = new Activity(
-    formatDates(data[3].activityData).sort((high, low) =>
-      dayjs(high.date).diff(dayjs(low.date))
-    )
-  );
-  currentUser =
-    allUserData.userData[
-      Math.floor(Math.random() * allUserData.userData.length)
-    ];
-  currentDate = currentDateForUser();
-  weekStartDate = dayjs(currentDate).subtract(6, "day").format("YYYY/MM/DD");
-  calendarMin = allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, "-");
-  calendarMax = currentDate.replace(/\//g, "-");
-  calendar.setAttribute("min", calendarMin);
-  calendar.setAttribute("max", calendarMax);
-  calendar.setAttribute("value", currentDate.replace(/\//g, "-"));
-  pageLoadHandler();
-}).catch(error => console.log(error.message));
+inputButton.addEventListener("click", submitFormHandler);
+
+fetchAll()
+  .then((data) => {
+    allUserData = new UserRepository(
+      data[0].userData.map((user) => new User(user))
+    );
+    allUserSleep = new Sleep(
+      formatDates(data[1].sleepData).sort((high, low) =>
+        dayjs(high.date).diff(dayjs(low.date))
+      )
+    );
+    allUserHydro = new Hydration(
+      formatDates(data[2].hydrationData).sort((high, low) =>
+        dayjs(high.date).diff(dayjs(low.date))
+      )
+    );
+    allUserActivity = new Activity(
+      formatDates(data[3].activityData).sort((high, low) =>
+        dayjs(high.date).diff(dayjs(low.date))
+      )
+    );
+    currentUser =
+      allUserData.userData[
+        Math.floor(Math.random() * allUserData.userData.length)
+      ];
+    currentDate = currentDateForUser();
+    weekStartDate = dayjs(currentDate).subtract(6, "day").format("YYYY/MM/DD");
+    calendarMin = allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, "-");
+    calendarMax = currentDate.replace(/\//g, "-");
+    calendar.setAttribute("min", calendarMin);
+    calendar.setAttribute("max", calendarMax);
+    calendar.setAttribute("value", currentDate.replace(/\//g, "-"));
+    pageLoadHandler();
+  })
+  .catch((error) => console.log(error.message));
 // use catch to display error message to user
 
 function pageLoadHandler() {
@@ -209,7 +216,40 @@ function pageLoadHandler() {
     ["rgb(199, 239, 255)"]
   );
 }
-
+function submitFormHandler(event) {
+  event.preventDefault()
+  if (
+    !stepsInput.value ||
+    !activityInput.value ||
+    !stairsInput.value ||
+    !sleepHoursInput.value ||
+    !sleepQualityInput.value ||
+    !hydrationInput.value
+  ) {
+    console.log('please fill out all inputs')
+    return
+  }
+    postData(
+      {
+        userID: currentUser.id,
+        date: "2222/22/22",
+        hoursSlept: sleepHoursInput.value,
+        sleepQuality: sleepQualityInput.value,
+      },
+      {
+        userID: currentUser.id,
+        date: "2222/22/22",
+        numOunces: hydrationInput.value,
+      },
+      {
+        userID: currentUser.id,
+        date: "2222/22/22",
+        flightsOfStairs: stairsInput.value,
+        minutesActive: activityInput.value,
+        numSteps: stepsInput.value,
+      }
+    );
+}
 // console.log(
 //   postData(
 //     { userID: 1, date: "2021/10/30", hoursSlept: 10, sleepQuality: 10 },

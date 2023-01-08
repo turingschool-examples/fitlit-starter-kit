@@ -11,7 +11,7 @@ const fetchAll = () => {
   ]);
 };
 
-const testPost = async function (sleep, hydration, activity) {
+const testPost = function (sleep, hydration, activity) {
   const postObject = {
     method: "POST",
     body: {},
@@ -19,7 +19,7 @@ const testPost = async function (sleep, hydration, activity) {
       "Content-Type": "application/json",
     },
   };
-  const promises = await Promise.all([
+  return Promise.all([
     fetchUserData("http://localhost:3001/api/v1/sleep", {
       ...postObject,
       body: JSON.stringify(sleep),
@@ -32,8 +32,14 @@ const testPost = async function (sleep, hydration, activity) {
       ...postObject,
       body: JSON.stringify(activity),
     }),
-  ]);
-  return promises;
+  ])
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`${response.status}: ${response.statusText}`)
+    }
+    return response.json()
+  })
+  .catch(error => error)
 };
 
 export { fetchAll, testPost };

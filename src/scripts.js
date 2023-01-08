@@ -21,10 +21,17 @@ let calendarMax;
 let calendarMin;
 
 const userDisplay = document.querySelector("#userInfo");
-const userNameDisplay = document.querySelector("#userName");
+const userNameLogo = document.querySelector("#userWelcome")
 const hydrationBox = document.querySelector("#hydration");
 const calendarBtn = document.querySelector("#calendarBtn");
 const calendar = document.getElementById("myDate");
+const stepsInput = document.querySelector("#todaySteps")
+const hydrationInput = document.querySelector("#todayHydration")
+const activityInput = document.querySelector("#todayActivity")
+const submitErrorMessage = document.querySelector("#submitError")
+const inputButton = document.querySelector("#inputButton")
+
+
 
 calendarBtn.addEventListener("click", function () {
   const time = new Date(calendar.value).getTime()
@@ -70,6 +77,8 @@ fetchAll().then((data) => {
   calendar.setAttribute("value", currentDate.replace(/\//g, "-"));
   pageLoadHandler();
 });
+
+
 
 function pageLoadHandler() {
   displayUserName(currentUser);
@@ -121,8 +130,8 @@ function pageLoadHandler() {
     weekStepChartData.dates,
     "Weekly Steps",
     weekStepChartData.count,
-    ["rgba(255, 243, 199, .2)"],
-    ["rgb(255, 243, 199)"]
+    ["rgba(215, 199, 255, .2)"],
+    ["rgb(215, 199, 255)"]
   );
   const weekActiveChartData = allUserActivity.weeklyMinutesActiveByDay(currentUser.id, weekStartDate)
   createSmallBarChart(
@@ -130,8 +139,8 @@ function pageLoadHandler() {
     weekActiveChartData.dates,
     "Weekly Activity",
     weekActiveChartData.count,
-    ["rgba(255, 243, 199, .2)"],
-    ["rgb(255, 243, 199)"]
+    ["rgba(255, 199, 211, .2)"],
+    ["rgb(255, 199, 211)"]
   );
   const weekStairsChartData = allUserActivity.weeklyStairsClimbedByDay(currentUser.id, weekStartDate)
   createSmallBarChart(
@@ -139,28 +148,30 @@ function pageLoadHandler() {
     weekStairsChartData.dates,
     "Weekly Stairs",
     weekStairsChartData.count,
-    ["rgba(255, 243, 199, .2)"],
-    ["rgb(255, 243, 199)"]
+    ["rgba(199, 239, 255, .2)"],
+    ["rgb(199, 239, 255)"]
   );
 }
 
 const displayUserName = function (user) {
-  userNameDisplay.innerText = `Welcome, ${user.getFirstName()}!`;
+  userNameLogo.innerHTML = `
+  <h2 class="user-name" id="userName">Welcome, ${user.getFirstName()}!</h2>
+  <img src="./images/fitlit_logo_h.png" alt="FitLit Logo" width="30%" />`
 };
 
 const displayUserInfo = function (user, repository) {
   userDisplay.innerHTML = `
   <div class="user-card">
-    <p class="id">User ID: ${user.id}</p>
-    <p class="name">Name: ${user.name}</p>
-    <p class="address">Address: ${user.address}</p>
-    <p class="email">Email: ${user.email}</p>
-    <p class="daily-step-goal">Step Goal: ${user.dailyStepGoal}</p>
-    <p class="daily-miles-walked">Today's miles: ${allUserActivity.calculateMilesForDate(user.id, currentDate, user.strideLength)} miles</p>
-    <p class="stride-length">Stride Length: ${user.strideLength} feet</p>
-    <p class="minutes-active-daily-allusers">Minutes Active for All Users: ${allUserActivity.allUserAveragesForDate(currentDate).minutesActive} mins</p>
-    <p class="flights-daily-allusers">Flights of Stairs for All Users: ${allUserActivity.allUserAveragesForDate(currentDate).stairs} flights</p>
-    <p class="friends">Friends: ${repository.getFriendData(user.friends)}</p>
+    <p class="id"><strong>User ID:</strong> ${user.id}</p>
+    <p class="name"><strong>Name:</strong> ${user.name}</p>
+    <p class="address"><strong>Address:</strong> ${user.address}</p>
+    <p class="email"><strong>Email:</strong> ${user.email}</p>
+    <p class="daily-step-goal"><strong>Step Goal:</strong> ${user.dailyStepGoal}</p>
+    <p class="daily-miles-walked"><strong>Today's miles:</strong> ${allUserActivity.calculateMilesForDate(user.id, currentDate, user.strideLength)} miles</p>
+    <p class="stride-length"><strong>Stride Length:</strong> ${user.strideLength} feet</p>
+    <p class="minutes-active-daily-allusers"><strong>Average Minutes Active for All Users:</strong> ${allUserActivity.allUserAveragesForDate(currentDate).minutesActive} mins</p>
+    <p class="flights-daily-allusers"><strong> Average Flights of Stairs for All Users:</strong> ${allUserActivity.allUserAveragesForDate(currentDate).stairs} flights</p>
+    <p class="friends"><strong>Friends:</strong> ${repository.getFriendData(user.friends)}</p>
   </div>`;
 };
 

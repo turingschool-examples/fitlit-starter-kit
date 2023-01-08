@@ -11,14 +11,31 @@
   </head>
   <body class="dashboard">
     <section class="left-section">
-      <img src="./images/fitlit_logo_h.png" alt="FitLit Logo" width="100%" />
-      <div class="user-welcome">
-        <h2 class="user-name" id="userName"></h2>
+      <div class="user-welcome" id="userWelcome">
       </div>
       <div style="width: 90%">
         <canvas class="step-goal" id="stepGoalAvg"></canvas>
       </div>
       <nav class="user-info" id="userInfo"></nav>
+      <section class="user-inputs-today">
+        <h2 class="user-input-title">Add Today's Info:</h2>
+        <form class="step-input-info">
+          <label for="step"><strong>Today's Steps:</strong></label>
+          <input type="text" name="step" placeholder="Total Steps for Today" id="todaySteps" class="today-steps" id="todaySteps">
+        </form>
+        <form class="hydration-input-info">
+          <label for="hydration"><strong>Today's Water:</strong></label>
+          <input type="text" name="hydration" placeholder="Water Intake for Today" id="todayHydration" class="today-hydration" id="todayHydration">
+        </form>
+        <form class="activity-input-info">
+          <label for="activity"><strong>Today's Activity:</strong></label>
+          <input type="text" name="activity" placeholder="Today's Activity Minutes" id="todayActivity" class="today-activity" id="todayActivity">
+        </form>
+        <div class="input-button-container">
+          <button class="input-button" id="inputButton" type="submit" id="saveChanges">Submit</button>
+        </div>
+        <p class="submit-error" id="submitError"></p>
+      </section>
     </section>
     <main class="main">
       <section class="main-report">
@@ -36,13 +53,13 @@
         </article>
         <article class="small-weekly-container">
           <div class="small-week-chart" style="width: 30%">
-            <canvas id="weekStepChart"></canvas>
+            <canvas class="weekly-steps" id="weekStepChart"></canvas>
           </div>
           <div class="small-week-chart" style="width: 30%">
-            <canvas id="weekStairChart"></canvas>
+            <canvas class="weekly-stairs" id="weekStairChart"></canvas>
           </div>
           <div class="small-week-chart" style="width: 30%">
-            <canvas id="weekMinutesActiveChart"></canvas>
+            <canvas class="weekly-minutes" id="weekMinutesActiveChart"></canvas>
           </div>
         </article>
         <section class="daily-report">

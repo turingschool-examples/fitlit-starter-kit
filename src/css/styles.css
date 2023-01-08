@@ -1,6 +1,8 @@
 body {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   font-family: "Open Sans", sans-serif;
+  font-size: 100%;
   background-color: #232323;
   color: white;
   margin: 0;
@@ -9,7 +11,6 @@ body {
 .dashboard {
   display: flex;
   flex-direction: row;
-  height: -webkit-fill-available;
 }
 
 .left-section {
@@ -19,8 +20,6 @@ body {
   box-shadow: 10px 10px 5px 0px rgb(0 0 0 / 75%);
   padding-bottom: 100px;
   margin-right: 20px;
-  margin-left: 20px;
-  height: 100vh;
 }
 
 .main {
@@ -28,8 +27,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
+  justify-content: space-around;
 }
 
 .main-report {
@@ -83,8 +81,16 @@ body {
 }
 
 .user-welcome {
-  font-size: 20px;
-  font-weight: bold;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.user-name {
+  font-size: large;
+  margin-right: 30px;
   margin-left: 20px;
 }
 
@@ -96,7 +102,7 @@ body {
 }
 
 .step-goal {
-  margin-top: 50px;
+  margin-top: 30px;
   border: 2px solid rgb(255, 243, 199);
   border-radius: 8px;
   margin-right: 20px;
@@ -104,6 +110,32 @@ body {
   margin-left: 20px;
   padding: 5px;
   box-sizing: initial;
+}
+
+.small-weekly-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.weekly-steps,
+.weekly-stairs,
+.weekly-minutes {
+  border-radius: 8px;
+  margin-bottom: 50px;
+  box-shadow: 10px 10px 5px 0px rgb(0 0 0 / 75%);
+  background-color: #353333;
+}
+
+.weekly-steps {
+  border: 2px solid rgb(215, 199, 255);
+}
+
+.weekly-stairs {
+  border: 2px solid rgb(199, 239, 255)
+}
+
+.weekly-minutes {
+  border: 2px solid rgb(255, 199, 211)
 }
 
 .calendar-submit {
@@ -125,3 +157,69 @@ h1 {
 input {
   margin: 0px 10px;
 }
+
+.user-input-title {
+  margin-left: 15px;
+}
+.user-inputs-today {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.step-input-info,
+.hydration-input-info,
+.activity-input-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 21px;
+  margin-bottom: 20px;
+}
+
+.today-steps {
+  margin-left: 28px;
+}
+
+.today-hydration {
+  margin-left: 22px;
+}
+
+.input-button-container {
+  width: 100%;
+  margin-left: 136px;
+}
+
+.input-button {
+  text-transform: uppercase;
+  font-weight: 300;
+  border-radius: 2px;
+  color:white;
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 6px 12px;
+  transition: all 0.5s ease;
+  cursor:pointer;
+}
+.input-button:hover,
+.input-button:hover {
+  outline: 0;
+  color: black;
+}
+.input-button:active,
+.input-button:active {
+  outline: 0;
+  color: #fff;
+}
+.input-button {
+  z-index: -1;
+  background: linear-gradient(to left, transparent 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+}
+.input-button:hover {
+  background-position: left bottom;
+  border: 0;
+}
+

@@ -25,6 +25,13 @@ const userNameLogo = document.querySelector("#userWelcome")
 const hydrationBox = document.querySelector("#hydration");
 const calendarBtn = document.querySelector("#calendarBtn");
 const calendar = document.getElementById("myDate");
+const stepsInput = document.querySelector("#todaySteps")
+const stepsBtn = document.querySelector("#stepsSubmit")
+const hydrationInput = document.querySelector("#todayHydration")
+const hydroBtn = document.querySelector("#hydroSubmit")
+const activityInput = document.querySelector("#todayActivity")
+const ActivityBtn = document.querySelector("#activitySubmit")
+
 
 calendarBtn.addEventListener("click", function () {
   const time = new Date(calendar.value).getTime()
@@ -70,6 +77,8 @@ fetchAll().then((data) => {
   calendar.setAttribute("value", currentDate.replace(/\//g, "-"));
   pageLoadHandler();
 });
+
+
 
 function pageLoadHandler() {
   displayUserName(currentUser);
@@ -153,16 +162,16 @@ const displayUserName = function (user) {
 const displayUserInfo = function (user, repository) {
   userDisplay.innerHTML = `
   <div class="user-card">
-    <p class="id">User ID: ${user.id}</p>
-    <p class="name">Name: ${user.name}</p>
-    <p class="address">Address: ${user.address}</p>
-    <p class="email">Email: ${user.email}</p>
-    <p class="daily-step-goal">Step Goal: ${user.dailyStepGoal}</p>
-    <p class="daily-miles-walked">Today's miles: ${allUserActivity.calculateMilesForDate(user.id, currentDate, user.strideLength)} miles</p>
-    <p class="stride-length">Stride Length: ${user.strideLength} feet</p>
-    <p class="minutes-active-daily-allusers">Minutes Active for All Users: ${allUserActivity.allUserAveragesForDate(currentDate).minutesActive} mins</p>
-    <p class="flights-daily-allusers">Flights of Stairs for All Users: ${allUserActivity.allUserAveragesForDate(currentDate).stairs} flights</p>
-    <p class="friends">Friends: ${repository.getFriendData(user.friends)}</p>
+    <p class="id"><strong>User ID:</strong> ${user.id}</p>
+    <p class="name"><strong>Name:</strong> ${user.name}</p>
+    <p class="address"><strong>Address:</strong> ${user.address}</p>
+    <p class="email"><strong>Email:</strong> ${user.email}</p>
+    <p class="daily-step-goal"><strong>Step Goal:</strong> ${user.dailyStepGoal}</p>
+    <p class="daily-miles-walked"><strong>Today's miles:</strong> ${allUserActivity.calculateMilesForDate(user.id, currentDate, user.strideLength)} miles</p>
+    <p class="stride-length"><strong>Stride Length:</strong> ${user.strideLength} feet</p>
+    <p class="minutes-active-daily-allusers"><strong>Minutes Active for All Users:</strong> ${allUserActivity.allUserAveragesForDate(currentDate).minutesActive} mins</p>
+    <p class="flights-daily-allusers"><strong>Flights of Stairs for All Users:</strong> ${allUserActivity.allUserAveragesForDate(currentDate).stairs} flights</p>
+    <p class="friends"><strong>Friends:</strong> ${repository.getFriendData(user.friends)}</p>
   </div>`;
 };
 

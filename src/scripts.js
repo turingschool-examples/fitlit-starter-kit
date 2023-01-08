@@ -28,7 +28,9 @@ const calendar = document.getElementById("myDate");
 const stepsInput = document.querySelector("#todaySteps")
 const hydrationInput = document.querySelector("#todayHydration")
 const activityInput = document.querySelector("#todayActivity")
+const submitErrorMessage = document.querySelector("#submitError")
 const inputButton = document.querySelector("#inputButton")
+
 
 
 calendarBtn.addEventListener("click", function () {

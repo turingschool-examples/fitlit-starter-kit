@@ -150,6 +150,9 @@ h1 {
   margin-left: 20px;
 }
 
+.today-inputs {
+}
+
 .fa-regular {
   padding: 10px;
   color: #bbe7ff;
@@ -159,16 +162,8 @@ input {
   margin: 0px 10px;
 }
 
-.user-input-title {
-  margin-left: 15px;
-}
-.user-inputs-today {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.step-input-info,
+.today-inputs,
+.user-input-title,
 .hydration-input-info,
 .activity-input-info {
   display: flex;

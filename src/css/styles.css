@@ -159,6 +159,9 @@ input {
   margin: 0px 10px;
 }
 
+.user-input-title {
+  margin-left: 15px;
+}
 .user-inputs-today {
   display: flex;
   flex-direction: column;

@@ -52,6 +52,33 @@ calendarBtn.addEventListener("click", function () {
       calendar.value.replace(/-/g, "/")
     )
   );
+  const weekStepChartData = allUserActivity.weeklyStepCountByDay(currentUser.id, calendar.value.replace(/-/g, "/"))
+  createSmallBarChart(
+    "weekStepChart",
+    weekStepChartData.dates,
+    "Weekly Steps",
+    weekStepChartData.count,
+    ["rgba(215, 199, 255, .2)"],
+    ["rgb(215, 199, 255)"]
+  );
+  const weekActiveChartData = allUserActivity.weeklyMinutesActiveByDay(currentUser.id, calendar.value.replace(/-/g, "/"))
+  createSmallBarChart(
+    "weekMinutesActiveChart",
+    weekActiveChartData.dates,
+    "Weekly Activity",
+    weekActiveChartData.count,
+    ["rgba(255, 199, 211, .2)"],
+    ["rgb(255, 199, 211)"]
+  );
+  const weekStairsChartData = allUserActivity.weeklyStairsClimbedByDay(currentUser.id, calendar.value.replace(/-/g, "/"))
+  createSmallBarChart(
+    "weekStairChart",
+    weekStairsChartData.dates,
+    "Weekly Stairs",
+    weekStairsChartData.count,
+    ["rgba(199, 239, 255, .2)"],
+    ["rgb(199, 239, 255)"]
+  );
 });
 
 fetchAll().then((data) => {

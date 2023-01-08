@@ -9,7 +9,7 @@ import * as dayjs from "dayjs";
 import { createChart, createSmallBarChart } from "./charts";
 import Activity from "./Activity";
 import {
-  testSequentialDates,
+  testSequentialDates, // Delete?
   userDataForID,
   userDataForDate,
 } from "./helperFunctions";
@@ -292,7 +292,7 @@ function submitFormHandler(event) {
       numOunces: hydrationInput.value,
     },
     {
-      userID: 'f',
+      userID: currentUser.id,
       date: "2022/01/24",
       flightsOfStairs: stairsInput.value,
       minutesActive: activityInput.value,

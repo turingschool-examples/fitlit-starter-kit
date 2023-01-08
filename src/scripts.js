@@ -8,11 +8,7 @@ import Sleep from "./Sleep";
 import * as dayjs from "dayjs";
 import { createChart, createSmallBarChart } from "./charts";
 import Activity from "./Activity";
-import {
-  testSequentialDates, // Delete?
-  userDataForID,
-  userDataForDate,
-} from "./helperFunctions";
+import { userDataForID, userDataForDate } from "./helperFunctions";
 
 let allUserData;
 let allUserSleep;
@@ -99,42 +95,13 @@ calendarBtn.addEventListener("click", function () {
 });
 
 inputButton.addEventListener("click", function (event) {
-  submitErrorMessage.innerHTML = ``; //312 or here
+  submitErrorMessage.innerHTML = ``;
   submitFormHandler(event);
 });
 
 fetchAll()
   .then((data) => {
     updateDataModel(data);
-    // allUserData = new UserRepository(
-    //   data[0].userData.map((user) => new User(user))
-    // );
-    // allUserSleep = new Sleep(
-    //   formatDates(data[1].sleepData).sort((high, low) =>
-    //     dayjs(high.date).diff(dayjs(low.date))
-    //   )
-    // );
-    // allUserHydro = new Hydration(
-    //   formatDates(data[2].hydrationData).sort((high, low) =>
-    //     dayjs(high.date).diff(dayjs(low.date))
-    //   )
-    // );
-    // allUserActivity = new Activity(
-    //   formatDates(data[3].activityData).sort((high, low) =>
-    //     dayjs(high.date).diff(dayjs(low.date))
-    //   )
-    // );
-    // currentUser =
-    //   allUserData.userData[
-    //     Math.floor(Math.random() * allUserData.userData.length)
-    //   ];
-    // currentDate = currentDateForUser();
-    // weekStartDate = dayjs(currentDate).subtract(6, "day").format("YYYY/MM/DD");
-    // calendarMin = allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, "-");
-    // calendarMax = currentDate.replace(/\//g, "-");
-    // calendar.setAttribute("min", calendarMin);
-    // calendar.setAttribute("max", calendarMax);
-    // calendar.setAttribute("value", currentDate.replace(/\//g, "-"));
     pageLoadHandler();
   })
   .catch((error) => console.log(error.message));
@@ -273,14 +240,10 @@ function submitFormHandler(event) {
     </div>`;
     return;
   }
-  // console.log(allUserHydro.data, currentUser.id)
-  // console.log(userDataForDate(allUserHydro.data, currentUser.id, "2022/01/24"),
-  // userDataForDate(allUserSleep.sleepData, currentUser.id, "2022/01/24"),
-  // userDataForDate(allUserActivity.data, currentUser.id, "2022/01/24"))
   if (
-    userDataForDate(allUserHydro.data, currentUser.id, "2022/01/24") ||
-    userDataForDate(allUserSleep.sleepData, currentUser.id, "2022/01/24") ||
-    userDataForDate(allUserActivity.data, currentUser.id, "2022/01/24")
+    userDataForDate(allUserHydro.data, currentUser.id, dayjs().format("YYYY/MM/DD")) ||
+    userDataForDate(allUserSleep.sleepData, currentUser.id, dayjs().format("YYYY/MM/DD")) ||
+    userDataForDate(allUserActivity.data, currentUser.id, dayjs().format("YYYY/MM/DD"))
   ) {
     submitErrorMessage.innerHTML = `
     <div class="submitErrorMessage"> 
@@ -288,22 +251,22 @@ function submitFormHandler(event) {
     </div>`;
     return;
   }
-  
+console.log(dayjs().format("YYYY/MM/DD"))
   postData(
     {
       userID: currentUser.id,
-      date: "2022/01/24",
+      date: dayjs().format("YYYY/MM/DD"),
       hoursSlept: sleepHoursInput.value,
       sleepQuality: sleepQualityInput.value,
     },
     {
       userID: currentUser.id,
-      date: "2022/01/24",
+      date: dayjs().format("YYYY/MM/DD"),
       numOunces: hydrationInput.value,
     },
     {
       userID: currentUser.id,
-      date: "2022/01/24",
+      date: dayjs().format("YYYY/MM/DD"),
       flightsOfStairs: stairsInput.value,
       minutesActive: activityInput.value,
       numSteps: stepsInput.value,
@@ -311,13 +274,13 @@ function submitFormHandler(event) {
     updateDataModel,
     pageLoadHandler,
     currentUser
-  ).catch((error) => console.log(error.message));
+  ).catch((error) => error.message);
   // use catch to display error message to user
 }
 
 const displayUserName = function (user) {
   userNameLogo.innerHTML = `
-  <h2 class="user-name" id="userName">Welcome, ${user.getFirstName()}!</h2>
+  <h1 class="user-name" id="userName">Welcome, ${user.getFirstName()}!</h1>
   <img src="./images/fitlit_logo_h.png" alt="FitLit Logo" width="30%" />`;
 };
 

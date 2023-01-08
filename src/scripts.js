@@ -102,39 +102,73 @@ inputButton.addEventListener("click", submitFormHandler);
 
 fetchAll()
   .then((data) => {
-    allUserData = new UserRepository(
-      data[0].userData.map((user) => new User(user))
-    );
-    allUserSleep = new Sleep(
-      formatDates(data[1].sleepData).sort((high, low) =>
-        dayjs(high.date).diff(dayjs(low.date))
-      )
-    );
-    allUserHydro = new Hydration(
-      formatDates(data[2].hydrationData).sort((high, low) =>
-        dayjs(high.date).diff(dayjs(low.date))
-      )
-    );
-    allUserActivity = new Activity(
-      formatDates(data[3].activityData).sort((high, low) =>
-        dayjs(high.date).diff(dayjs(low.date))
-      )
-    );
-    currentUser =
-      allUserData.userData[
-        Math.floor(Math.random() * allUserData.userData.length)
-      ];
-    currentDate = currentDateForUser();
-    weekStartDate = dayjs(currentDate).subtract(6, "day").format("YYYY/MM/DD");
-    calendarMin = allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, "-");
-    calendarMax = currentDate.replace(/\//g, "-");
-    calendar.setAttribute("min", calendarMin);
-    calendar.setAttribute("max", calendarMax);
-    calendar.setAttribute("value", currentDate.replace(/\//g, "-"));
+    updateDataModel(data)
+    // allUserData = new UserRepository(
+    //   data[0].userData.map((user) => new User(user))
+    // );
+    // allUserSleep = new Sleep(
+    //   formatDates(data[1].sleepData).sort((high, low) =>
+    //     dayjs(high.date).diff(dayjs(low.date))
+    //   )
+    // );
+    // allUserHydro = new Hydration(
+    //   formatDates(data[2].hydrationData).sort((high, low) =>
+    //     dayjs(high.date).diff(dayjs(low.date))
+    //   )
+    // );
+    // allUserActivity = new Activity(
+    //   formatDates(data[3].activityData).sort((high, low) =>
+    //     dayjs(high.date).diff(dayjs(low.date))
+    //   )
+    // );
+    // currentUser =
+    //   allUserData.userData[
+    //     Math.floor(Math.random() * allUserData.userData.length)
+    //   ];
+    // currentDate = currentDateForUser();
+    // weekStartDate = dayjs(currentDate).subtract(6, "day").format("YYYY/MM/DD");
+    // calendarMin = allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, "-");
+    // calendarMax = currentDate.replace(/\//g, "-");
+    // calendar.setAttribute("min", calendarMin);
+    // calendar.setAttribute("max", calendarMax);
+    // calendar.setAttribute("value", currentDate.replace(/\//g, "-"));
     pageLoadHandler();
   })
   .catch((error) => console.log(error.message));
 // use catch to display error message to user
+
+function updateDataModel(data, user) {
+  allUserData = new UserRepository(
+    data[0].userData.map((user) => new User(user))
+  );
+  allUserSleep = new Sleep(
+    formatDates(data[1].sleepData).sort((high, low) =>
+      dayjs(high.date).diff(dayjs(low.date))
+    )
+  );
+  allUserHydro = new Hydration(
+    formatDates(data[2].hydrationData).sort((high, low) =>
+      dayjs(high.date).diff(dayjs(low.date))
+    )
+  );
+  allUserActivity = new Activity(
+    formatDates(data[3].activityData).sort((high, low) =>
+      dayjs(high.date).diff(dayjs(low.date))
+    )
+  );
+  currentUser =
+    user ||
+    allUserData.userData[
+      Math.floor(Math.random() * allUserData.userData.length)
+    ];
+  currentDate = currentDateForUser();
+  weekStartDate = dayjs(currentDate).subtract(6, "day").format("YYYY/MM/DD");
+  calendarMin = allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, "-");
+  calendarMax = currentDate.replace(/\//g, "-");
+  calendar.setAttribute("min", calendarMin);
+  calendar.setAttribute("max", calendarMax);
+  calendar.setAttribute("value", currentDate.replace(/\//g, "-"));
+}
 
 function pageLoadHandler() {
   displayUserName(currentUser);
@@ -233,34 +267,42 @@ function submitFormHandler(event) {
     console.log("please fill out all inputs");
     return;
   }
+  // console.log(allUserHydro.data, currentUser.id)
+  // console.log(userDataForDate(allUserHydro.data, currentUser.id, "2022/01/24"),
+  // userDataForDate(allUserSleep.sleepData, currentUser.id, "2022/01/24"),
+  // userDataForDate(allUserActivity.data, currentUser.id, "2022/01/24"))
   if (
-    (!userDataForDate(allUserHydro.data, currentUser.id, currentDate) ||
-    !userDataForDate(allUserSleep.sleepData, currentUser.id, currentDate) ||
-    !userDataForDate(allUserActivity.data, currentUser.id, currentDate))
+    userDataForDate(allUserHydro.data, currentUser.id, "2022/01/24") ||
+    userDataForDate(allUserSleep.sleepData, currentUser.id, "2022/01/24") ||
+    userDataForDate(allUserActivity.data, currentUser.id, "2022/01/24")
   ) {
     console.log("Data already exists for this day");
-    return
+    return;
   }
   postData(
     {
       userID: currentUser.id,
-      date: currentDate,
+      date: "2022/01/24",
       hoursSlept: sleepHoursInput.value,
       sleepQuality: sleepQualityInput.value,
     },
     {
       userID: currentUser.id,
-      date: currentDate,
+      date: "2022/01/24",
       numOunces: hydrationInput.value,
     },
     {
-      userID: currentUser.id,
-      date: currentDate,
+      userID: 'f',
+      date: "2022/01/24",
       flightsOfStairs: stairsInput.value,
       minutesActive: activityInput.value,
       numSteps: stepsInput.value,
-    }
-  );
+    },
+    updateDataModel,
+    pageLoadHandler,
+    currentUser
+  ).catch(error => console.log(error.message));
+  // use catch to display error message to user
 }
 // console.log(
 //   postData(

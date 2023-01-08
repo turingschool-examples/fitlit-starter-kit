@@ -21,7 +21,6 @@ body {
   box-shadow: 10px 10px 5px 0px rgb(0 0 0 / 75%);
   padding-bottom: 100px;
   margin-right: 20px;
-  margin-left: 20px;
   height: 100vh;
 }
 
@@ -158,4 +157,29 @@ h1 {
 
 input {
   margin: 0px 10px;
+}
+
+.user-inputs-today {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.step-input-info,
+.hydration-input-info,
+.activity-input-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 21px;
+  margin-bottom: 20px;
+}
+
+.today-steps {
+  margin-left: 22px;
+}
+
+.today-hydration {
+  margin-left: 18px;
 }

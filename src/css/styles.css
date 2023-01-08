@@ -1,6 +1,6 @@
 body {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   font-family: "Open Sans", sans-serif;
   font-size: 100%;
   background-color: #232323;
@@ -15,6 +15,7 @@ body {
 
 .left-section {
   width: 25%;
+  height: 100%;
   border-right: 1px solid #232323;
   background-color: #353333;
   box-shadow: 10px 10px 5px 0px rgb(0 0 0 / 75%);

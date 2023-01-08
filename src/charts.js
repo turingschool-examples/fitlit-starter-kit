@@ -76,7 +76,10 @@ const createSmallBarChart = function (
   axis = "x",
   responsive = true
 ) {
-  console.log('data', data)
+  let smallWeekChart = Chart.getChart(id);
+  if (smallWeekChart) {
+    smallWeekChart.destroy();
+  }
   const noData = data[0] === 'No Data Found' ? [data[0]] : ''
   new Chart(document.getElementById(id), {
     type: "bar",

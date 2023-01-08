@@ -98,11 +98,14 @@ calendarBtn.addEventListener("click", function () {
   );
 });
 
-inputButton.addEventListener("click", submitFormHandler);
+inputButton.addEventListener("click", function (event) {
+  submitErrorMessage.innerHTML = ``; //312 or here
+  submitFormHandler(event);
+});
 
 fetchAll()
   .then((data) => {
-    updateDataModel(data)
+    updateDataModel(data);
     // allUserData = new UserRepository(
     //   data[0].userData.map((user) => new User(user))
     // );
@@ -264,7 +267,10 @@ function submitFormHandler(event) {
     !sleepQualityInput.value ||
     !hydrationInput.value
   ) {
-    console.log("please fill out all inputs");
+    submitErrorMessage.innerHTML = `
+    <div class="submitErrorMessage"> 
+      <p><strong>Please Fill Out All Inputs</strong></p>
+    </div>`;
     return;
   }
   // console.log(allUserHydro.data, currentUser.id)
@@ -276,9 +282,13 @@ function submitFormHandler(event) {
     userDataForDate(allUserSleep.sleepData, currentUser.id, "2022/01/24") ||
     userDataForDate(allUserActivity.data, currentUser.id, "2022/01/24")
   ) {
-    console.log("Data already exists for this day");
+    submitErrorMessage.innerHTML = `
+    <div class="submitErrorMessage"> 
+      <p><strong>Data already exists for this day</strong></p>
+    </div>`;
     return;
   }
+  
   postData(
     {
       userID: currentUser.id,
@@ -301,23 +311,9 @@ function submitFormHandler(event) {
     updateDataModel,
     pageLoadHandler,
     currentUser
-  ).catch(error => console.log(error.message));
+  ).catch((error) => console.log(error.message));
   // use catch to display error message to user
 }
-// console.log(
-//   postData(
-//     { userID: 1, date: "2021/10/30", hoursSlept: 10, sleepQuality: 10 },
-//     { userID: 1, date: "2021/10/30", numOunces: 35 },
-//     {
-//       userID: 1,
-//       date: "2021/10/30",
-//       flightsOfStairs: 20,
-//       minutesActive: 42,
-//       numSteps: 600,
-//     }
-//   )
-//   // .catch(error => error)
-// );
 
 const displayUserName = function (user) {
   userNameLogo.innerHTML = `

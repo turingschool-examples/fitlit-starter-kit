@@ -1,5 +1,10 @@
 const fetchUserData = (url, object) => {
-  return fetch(url, object).then((response) => response.json());
+  return fetch(url, object).then((response) => {
+    if(!response.ok) {
+      throw new Error('bad happened')
+    }
+    return response.json()
+  })
 };
 
 const fetchAll = () => {
@@ -11,7 +16,16 @@ const fetchAll = () => {
   ]);
 };
 
-const testPost = function (sleep, hydration, activity) {
+// const fetchAll = () => {
+//   return Promise.all([
+//     fetchUserData("http://localhost:3001/api/v1/users"),
+//     fetchUserData("http://localhost:3001/api/v1/sleep"),
+//     fetchUserData("http://localhost:3001/api/v1/hydration"),
+//     fetchUserData("http://localhost:3001/api/v1/activity"),
+//   ]);
+// };
+
+const postData = function (sleep, hydration, activity, updateData, rerenderPage, user) {
   const postObject = {
     method: "POST",
     body: {},
@@ -34,12 +48,19 @@ const testPost = function (sleep, hydration, activity) {
     }),
   ])
   .then(response => {
-    if (!response.ok) {
+    // console.log(updateData, rerenderPage)
+    // console.log(response.ok)
+    if (response.status >= 300) {
+      console.log('throwing error')
       throw new Error(`${response.status}: ${response.statusText}`)
     }
+    fetchAll().then(data => {
+      updateData(data, user)
+      rerenderPage()
+    })
+    // fetch data and rerender page without reloading
     return response.json()
   })
-  .catch(error => error)
 };
 
-export { fetchAll, testPost };
+export { fetchAll, postData };

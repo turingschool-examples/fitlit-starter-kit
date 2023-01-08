@@ -25,7 +25,7 @@ const fetchAll = () => {
 //   ]);
 // };
 
-const postData = function (sleep, hydration, activity) {
+const postData = function (sleep, hydration, activity, updateData, rerenderPage, user) {
   const postObject = {
     method: "POST",
     body: {},
@@ -48,13 +48,19 @@ const postData = function (sleep, hydration, activity) {
     }),
   ])
   .then(response => {
-    if (!response.ok) {
+    // console.log(updateData, rerenderPage)
+    // console.log(response.ok)
+    if (response.status >= 300) {
+      console.log('throwing error')
       throw new Error(`${response.status}: ${response.statusText}`)
     }
+    fetchAll().then(data => {
+      updateData(data, user)
+      rerenderPage()
+    })
     // fetch data and rerender page without reloading
     return response.json()
   })
-  .catch(error => error)
 };
 
 export { fetchAll, postData };

@@ -1,5 +1,7 @@
 body {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   font-family: "Open Sans", sans-serif;
   background-color: #232323;
   color: white;
@@ -104,6 +106,31 @@ body {
   margin-left: 20px;
   padding: 5px;
   box-sizing: initial;
+}
+
+.small-weekly-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.weekly-steps,
+.weekly-stairs,
+.weekly-minutes {
+  border-radius: 8px;
+  margin-bottom: 50px;
+  box-shadow: 10px 10px 5px 0px rgb(0 0 0 / 75%);
+}
+
+.weekly-steps {
+  border: 2px solid rgb(215, 199, 255);
+}
+
+.weekly-stairs {
+  border: 2px solid rgb(199, 239, 255)
+}
+
+.weekly-minutes {
+  border: 2px solid rgb(255, 199, 211)
 }
 
 .calendar-submit {

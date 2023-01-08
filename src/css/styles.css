@@ -132,11 +132,11 @@ body {
 }
 
 .weekly-stairs {
-  border: 2px solid rgb(199, 239, 255)
+  border: 2px solid rgb(199, 239, 255);
 }
 
 .weekly-minutes {
-  border: 2px solid rgb(255, 199, 211)
+  border: 2px solid rgb(255, 199, 211);
 }
 
 .calendar-submit {
@@ -159,7 +159,6 @@ input {
   margin: 0px 10px;
 }
 
-/* .submitErrorMessage, */
 .today-input-container,
 .user-input-title,
 .hydration-input-info,
@@ -171,7 +170,7 @@ input {
   margin-left: 21px;
   margin-bottom: 20px;
 }
-/* centered or no? */
+
 .today-steps {
   margin-left: 86px;
 }
@@ -190,8 +189,8 @@ input {
 
 .today-hydration {
   margin-left: 24px;
-} 
-/* centered or no?  */
+}
+
 .input-button-container {
   width: 100%;
   margin-left: 136px;
@@ -201,12 +200,12 @@ input {
   text-transform: uppercase;
   font-weight: 300;
   border-radius: 2px;
-  color:white;
+  color: white;
   background-color: transparent;
   border: 1px solid white;
   padding: 6px 12px;
   transition: all 0.5s ease;
-  cursor:pointer;
+  cursor: pointer;
 }
 .input-button:hover,
 .input-button:hover {

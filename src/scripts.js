@@ -1,14 +1,14 @@
 import "./css/styles.css";
 import "./images/fitlit_logo_h.png";
-import { fetchAll } from "./apiCalls";
+import { fetchAll, testPost } from "./apiCalls";
 import User from "./User";
 import UserRepository from "./UserRepository";
 import Hydration from "./Hydration";
 import Sleep from "./Sleep";
-import * as dayjs from "dayjs"
+import * as dayjs from "dayjs";
 import { createChart, createSmallBarChart } from "./charts";
 import Activity from "./Activity";
-import { testSequentialDates, userDataForID } from "./helperFunctions"
+import { testSequentialDates, userDataForID } from "./helperFunctions";
 
 let allUserData;
 let allUserSleep;
@@ -16,27 +16,28 @@ let allUserHydro;
 let allUserActivity;
 let currentUser;
 let currentDate;
-let weekStartDate
+let weekStartDate;
 let calendarMax;
 let calendarMin;
 
 const userDisplay = document.querySelector("#userInfo");
-const userNameLogo = document.querySelector("#userWelcome")
+const userNameLogo = document.querySelector("#userWelcome");
 const hydrationBox = document.querySelector("#hydration");
 const calendarBtn = document.querySelector("#calendarBtn");
 const calendar = document.getElementById("myDate");
-const stepsInput = document.querySelector("#todaySteps")
-const hydrationInput = document.querySelector("#todayHydration")
-const activityInput = document.querySelector("#todayActivity")
-const submitErrorMessage = document.querySelector("#submitError")
-const inputButton = document.querySelector("#inputButton")
-
-
+const stepsInput = document.querySelector("#todaySteps");
+const hydrationInput = document.querySelector("#todayHydration");
+const activityInput = document.querySelector("#todayActivity");
+const submitErrorMessage = document.querySelector("#submitError");
+const inputButton = document.querySelector("#inputButton");
 
 calendarBtn.addEventListener("click", function () {
-  const time = new Date(calendar.value).getTime()
-  if( time < new Date(calendarMin).getTime() || time > new Date(calendarMax).getTime()) {
-    return
+  const time = new Date(calendar.value).getTime();
+  if (
+    time < new Date(calendarMin).getTime() ||
+    time > new Date(calendarMax).getTime()
+  ) {
+    return;
   }
   createChart(
     allUserHydro.returnWeeklyWaterConsumption(
@@ -52,7 +53,10 @@ calendarBtn.addEventListener("click", function () {
       calendar.value.replace(/-/g, "/")
     )
   );
-  const weekStepChartData = allUserActivity.weeklyStepCountByDay(currentUser.id, calendar.value.replace(/-/g, "/"))
+  const weekStepChartData = allUserActivity.weeklyStepCountByDay(
+    currentUser.id,
+    calendar.value.replace(/-/g, "/")
+  );
   createSmallBarChart(
     "weekStepChart",
     weekStepChartData.dates,
@@ -61,7 +65,10 @@ calendarBtn.addEventListener("click", function () {
     ["rgba(215, 199, 255, .2)"],
     ["rgb(215, 199, 255)"]
   );
-  const weekActiveChartData = allUserActivity.weeklyMinutesActiveByDay(currentUser.id, calendar.value.replace(/-/g, "/"))
+  const weekActiveChartData = allUserActivity.weeklyMinutesActiveByDay(
+    currentUser.id,
+    calendar.value.replace(/-/g, "/")
+  );
   createSmallBarChart(
     "weekMinutesActiveChart",
     weekActiveChartData.dates,
@@ -70,7 +77,10 @@ calendarBtn.addEventListener("click", function () {
     ["rgba(255, 199, 211, .2)"],
     ["rgb(255, 199, 211)"]
   );
-  const weekStairsChartData = allUserActivity.weeklyStairsClimbedByDay(currentUser.id, calendar.value.replace(/-/g, "/"))
+  const weekStairsChartData = allUserActivity.weeklyStairsClimbedByDay(
+    currentUser.id,
+    calendar.value.replace(/-/g, "/")
+  );
   createSmallBarChart(
     "weekStairChart",
     weekStairsChartData.dates,
@@ -85,27 +95,34 @@ fetchAll().then((data) => {
   allUserData = new UserRepository(
     data[0].userData.map((user) => new User(user))
   );
-  allUserSleep = new Sleep(formatDates(data[1].sleepData).sort((high, low) => dayjs(high.date).diff(dayjs(low.date))));
-  allUserHydro = new Hydration(formatDates(data[2].hydrationData).sort((high, low) => dayjs(high.date).diff(dayjs(low.date))));
-  allUserActivity = new Activity(formatDates(data[3].activityData).sort((high, low) => dayjs(high.date).diff(dayjs(low.date))))
+  allUserSleep = new Sleep(
+    formatDates(data[1].sleepData).sort((high, low) =>
+      dayjs(high.date).diff(dayjs(low.date))
+    )
+  );
+  allUserHydro = new Hydration(
+    formatDates(data[2].hydrationData).sort((high, low) =>
+      dayjs(high.date).diff(dayjs(low.date))
+    )
+  );
+  allUserActivity = new Activity(
+    formatDates(data[3].activityData).sort((high, low) =>
+      dayjs(high.date).diff(dayjs(low.date))
+    )
+  );
   currentUser =
     allUserData.userData[
       Math.floor(Math.random() * allUserData.userData.length)
     ];
-  currentDate = currentDateForUser()
-  weekStartDate = dayjs(currentDate).subtract(6, 'day').format("YYYY/MM/DD")
-  calendarMin = allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, "-")
-  calendarMax = currentDate.replace(/\//g, "-")
-  calendar.setAttribute(
-    "min",
-    calendarMin
-  );
+  currentDate = currentDateForUser();
+  weekStartDate = dayjs(currentDate).subtract(6, "day").format("YYYY/MM/DD");
+  calendarMin = allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, "-");
+  calendarMax = currentDate.replace(/\//g, "-");
+  calendar.setAttribute("min", calendarMin);
   calendar.setAttribute("max", calendarMax);
   calendar.setAttribute("value", currentDate.replace(/\//g, "-"));
   pageLoadHandler();
 });
-
-
 
 function pageLoadHandler() {
   displayUserName(currentUser);
@@ -141,17 +158,23 @@ function pageLoadHandler() {
   );
   createSmallBarChart(
     "stepGoalAvg",
-    ["My Step Goal", "Average Step Goal", 'Today\'s Steps', 'Average Steps'],
+    ["My Step Goal", "Average Step Goal", "Today's Steps", "Average Steps"],
     "Steps",
-    [currentUser.dailyStepGoal, allUserData.calculateAverageStepGoal(),
-    allUserActivity.findInfoForDate(currentUser.id, currentDate, "numSteps" ), 
-    allUserActivity.allUserAveragesForDate(currentDate).steps],
+    [
+      currentUser.dailyStepGoal,
+      allUserData.calculateAverageStepGoal(),
+      allUserActivity.findInfoForDate(currentUser.id, currentDate, "numSteps"),
+      allUserActivity.allUserAveragesForDate(currentDate).steps,
+    ],
     ["rgba(253, 221, 224, .2)"],
     ["rgb(253, 221, 224)"],
     "y",
     false
   );
-  const weekStepChartData = allUserActivity.weeklyStepCountByDay(currentUser.id, weekStartDate)
+  const weekStepChartData = allUserActivity.weeklyStepCountByDay(
+    currentUser.id,
+    weekStartDate
+  );
   createSmallBarChart(
     "weekStepChart",
     weekStepChartData.dates,
@@ -160,7 +183,10 @@ function pageLoadHandler() {
     ["rgba(215, 199, 255, .2)"],
     ["rgb(215, 199, 255)"]
   );
-  const weekActiveChartData = allUserActivity.weeklyMinutesActiveByDay(currentUser.id, weekStartDate)
+  const weekActiveChartData = allUserActivity.weeklyMinutesActiveByDay(
+    currentUser.id,
+    weekStartDate
+  );
   createSmallBarChart(
     "weekMinutesActiveChart",
     weekActiveChartData.dates,
@@ -169,7 +195,10 @@ function pageLoadHandler() {
     ["rgba(255, 199, 211, .2)"],
     ["rgb(255, 199, 211)"]
   );
-  const weekStairsChartData = allUserActivity.weeklyStairsClimbedByDay(currentUser.id, weekStartDate)
+  const weekStairsChartData = allUserActivity.weeklyStairsClimbedByDay(
+    currentUser.id,
+    weekStartDate
+  );
   createSmallBarChart(
     "weekStairChart",
     weekStairsChartData.dates,
@@ -180,10 +209,24 @@ function pageLoadHandler() {
   );
 }
 
+console.log(
+  testPost(
+    { userID: 1, date: "30/10/2025", hoursSlept: 10, sleepQuality: 10 },
+    { userID: 1, date: "30/10/2025", numOunces: 35 },
+    {
+      userID: 1,
+      date: "30/10/2025",
+      flightsOfStairs: 20,
+      minutesActive: 42,
+      numSteps: 600,
+    }
+  )
+);
+
 const displayUserName = function (user) {
   userNameLogo.innerHTML = `
   <h2 class="user-name" id="userName">Welcome, ${user.getFirstName()}!</h2>
-  <img src="./images/fitlit_logo_h.png" alt="FitLit Logo" width="30%" />`
+  <img src="./images/fitlit_logo_h.png" alt="FitLit Logo" width="30%" />`;
 };
 
 const displayUserInfo = function (user, repository) {
@@ -193,12 +236,26 @@ const displayUserInfo = function (user, repository) {
     <p class="name"><strong>Name:</strong> ${user.name}</p>
     <p class="address"><strong>Address:</strong> ${user.address}</p>
     <p class="email"><strong>Email:</strong> ${user.email}</p>
-    <p class="daily-step-goal"><strong>Step Goal:</strong> ${user.dailyStepGoal}</p>
-    <p class="daily-miles-walked"><strong>Today's miles:</strong> ${allUserActivity.calculateMilesForDate(user.id, currentDate, user.strideLength)} miles</p>
-    <p class="stride-length"><strong>Stride Length:</strong> ${user.strideLength} feet</p>
-    <p class="minutes-active-daily-allusers"><strong>Average Minutes Active for All Users:</strong> ${allUserActivity.allUserAveragesForDate(currentDate).minutesActive} mins</p>
-    <p class="flights-daily-allusers"><strong> Average Flights of Stairs for All Users:</strong> ${allUserActivity.allUserAveragesForDate(currentDate).stairs} flights</p>
-    <p class="friends"><strong>Friends:</strong> ${repository.getFriendData(user.friends)}</p>
+    <p class="daily-step-goal"><strong>Step Goal:</strong> ${
+      user.dailyStepGoal
+    }</p>
+    <p class="daily-miles-walked"><strong>Today's miles:</strong> ${allUserActivity.calculateMilesForDate(
+      user.id,
+      currentDate,
+      user.strideLength
+    )} miles</p>
+    <p class="stride-length"><strong>Stride Length:</strong> ${
+      user.strideLength
+    } feet</p>
+    <p class="minutes-active-daily-allusers"><strong>Average Minutes Active for All Users:</strong> ${
+      allUserActivity.allUserAveragesForDate(currentDate).minutesActive
+    } mins</p>
+    <p class="flights-daily-allusers"><strong> Average Flights of Stairs for All Users:</strong> ${
+      allUserActivity.allUserAveragesForDate(currentDate).stairs
+    } flights</p>
+    <p class="friends"><strong>Friends:</strong> ${repository.getFriendData(
+      user.friends
+    )}</p>
   </div>`;
 };
 
@@ -209,18 +266,27 @@ const displayCurrentDayHydration = function (hydration, date) {
 };
 
 function formatDates(array) {
-  return array.map(user => {
+  return array.map((user) => {
     return {
-    ...user,
-      date: dayjs(user.date).format("YYYY/MM/DD")
-    }
-  })
+      ...user,
+      date: dayjs(user.date).format("YYYY/MM/DD"),
+    };
+  });
 }
 
 function currentDateForUser() {
-  const hydroData = userDataForID(currentUser.id, allUserHydro.data).slice(-1)[0].date
-  const sleepData = userDataForID(currentUser.id, allUserSleep.sleepData).slice(-1)[0].date
-  const activityData = userDataForID(currentUser.id, allUserActivity.data).slice(-1)[0].date
-  const mostCurrent = [hydroData, sleepData, activityData].sort((low, high) => dayjs(low).diff(dayjs(high)))
-  return mostCurrent[mostCurrent.length -1]
+  const hydroData = userDataForID(currentUser.id, allUserHydro.data).slice(
+    -1
+  )[0].date;
+  const sleepData = userDataForID(currentUser.id, allUserSleep.sleepData).slice(
+    -1
+  )[0].date;
+  const activityData = userDataForID(
+    currentUser.id,
+    allUserActivity.data
+  ).slice(-1)[0].date;
+  const mostCurrent = [hydroData, sleepData, activityData].sort((low, high) =>
+    dayjs(low).diff(dayjs(high))
+  );
+  return mostCurrent[mostCurrent.length - 1];
 }

@@ -21,6 +21,7 @@ let calendarMax;
 let calendarMin;
 
 const userDisplay = document.querySelector("#userInfo");
+const userNameLogo = document.querySelector("#userWelcome")
 const userNameDisplay = document.querySelector("#userName");
 const hydrationBox = document.querySelector("#hydration");
 const calendarBtn = document.querySelector("#calendarBtn");
@@ -145,7 +146,10 @@ function pageLoadHandler() {
 }
 
 const displayUserName = function (user) {
-  userNameDisplay.innerText = `Welcome, ${user.getFirstName()}!`;
+  // userNameDisplay.innerText =`Welcome, ${user.getFirstName()}!`;
+  userNameLogo.innerHTML = `
+  <h2 class="user-name" id="userName">Welcome, ${user.getFirstName()}!</h2>
+  <img src="./images/fitlit_logo_h.png" alt="FitLit Logo" width="30%" />`
 };
 
 const displayUserInfo = function (user, repository) {

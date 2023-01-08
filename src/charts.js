@@ -96,7 +96,7 @@ const createSmallBarChart = function (
       responsive: responsive,
       plugins: {
         legend: {
-          display: false,
+          display: true,
         },
       },
       indexAxis: axis,

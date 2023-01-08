@@ -121,8 +121,8 @@ function pageLoadHandler() {
     weekStepChartData.dates,
     "Weekly Steps",
     weekStepChartData.count,
-    ["rgba(255, 243, 199, .2)"],
-    ["rgb(255, 243, 199)"]
+    ["rgba(215, 199, 255, .2)"],
+    ["rgb(215, 199, 255)"]
   );
   const weekActiveChartData = allUserActivity.weeklyMinutesActiveByDay(currentUser.id, weekStartDate)
   createSmallBarChart(
@@ -130,8 +130,8 @@ function pageLoadHandler() {
     weekActiveChartData.dates,
     "Weekly Activity",
     weekActiveChartData.count,
-    ["rgba(255, 243, 199, .2)"],
-    ["rgb(255, 243, 199)"]
+    ["rgba(255, 199, 211, .2)"],
+    ["rgb(255, 199, 211)"]
   );
   const weekStairsChartData = allUserActivity.weeklyStairsClimbedByDay(currentUser.id, weekStartDate)
   createSmallBarChart(
@@ -139,8 +139,8 @@ function pageLoadHandler() {
     weekStairsChartData.dates,
     "Weekly Stairs",
     weekStairsChartData.count,
-    ["rgba(255, 243, 199, .2)"],
-    ["rgb(255, 243, 199)"]
+    ["rgba(199, 239, 255, .2)"],
+    ["rgb(199, 239, 255)"]
   );
 }
 

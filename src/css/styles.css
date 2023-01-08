@@ -150,9 +150,6 @@ h1 {
   margin-left: 20px;
 }
 
-.today-inputs {
-}
-
 .fa-regular {
   padding: 10px;
   color: #bbe7ff;
@@ -162,7 +159,8 @@ input {
   margin: 0px 10px;
 }
 
-.today-inputs,
+/* .submitErrorMessage, */
+.today-input-container,
 .user-input-title,
 .hydration-input-info,
 .activity-input-info {
@@ -173,15 +171,27 @@ input {
   margin-left: 21px;
   margin-bottom: 20px;
 }
-
+/* centered or no? */
 .today-steps {
-  margin-left: 28px;
+  margin-left: 86px;
+}
+
+.today-stairs {
+  margin-left: 14px;
+}
+
+.today-sleep-quality {
+  margin-left: 23px;
+}
+
+.today-sleep-hours {
+  margin-left: 33px;
 }
 
 .today-hydration {
-  margin-left: 22px;
-}
-
+  margin-left: 24px;
+} 
+/* centered or no?  */
 .input-button-container {
   width: 100%;
   margin-left: 136px;
@@ -219,3 +229,7 @@ input {
   border: 0;
 }
 
+.submitErrorMessage {
+  display: flex;
+  justify-content: center;
+}

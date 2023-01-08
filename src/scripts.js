@@ -211,16 +211,17 @@ function pageLoadHandler() {
 
 console.log(
   testPost(
-    { userID: 1, date: "30/10/2025", hoursSlept: 10, sleepQuality: 10 },
-    { userID: 1, date: "30/10/2025", numOunces: 35 },
+    { userID: 1, date: "2021/10/30", hoursSlept: 10, sleepQuality: 10 },
+    { userID: 1, date: "2021/10/30", numOunces: 35 },
     {
       userID: 1,
-      date: "30/10/2025",
+      date: "2021/10/30",
       flightsOfStairs: 20,
       minutesActive: 42,
       numSteps: 600,
     }
   )
+  // .catch(error => error)
 );
 
 const displayUserName = function (user) {

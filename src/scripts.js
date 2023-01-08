@@ -8,7 +8,11 @@ import Sleep from "./Sleep";
 import * as dayjs from "dayjs";
 import { createChart, createSmallBarChart } from "./charts";
 import Activity from "./Activity";
-import { testSequentialDates, userDataForID } from "./helperFunctions";
+import {
+  testSequentialDates,
+  userDataForID,
+  userDataForDate,
+} from "./helperFunctions";
 
 let allUserData;
 let allUserSleep;
@@ -217,7 +221,7 @@ function pageLoadHandler() {
   );
 }
 function submitFormHandler(event) {
-  event.preventDefault()
+  event.preventDefault();
   if (
     !stepsInput.value ||
     !activityInput.value ||
@@ -226,29 +230,37 @@ function submitFormHandler(event) {
     !sleepQualityInput.value ||
     !hydrationInput.value
   ) {
-    console.log('please fill out all inputs')
+    console.log("please fill out all inputs");
+    return;
+  }
+  if (
+    (!userDataForDate(allUserHydro.data, currentUser.id, currentDate) ||
+    !userDataForDate(allUserSleep.sleepData, currentUser.id, currentDate) ||
+    !userDataForDate(allUserActivity.data, currentUser.id, currentDate))
+  ) {
+    console.log("Data already exists for this day");
     return
   }
-    postData(
-      {
-        userID: currentUser.id,
-        date: "2222/22/22",
-        hoursSlept: sleepHoursInput.value,
-        sleepQuality: sleepQualityInput.value,
-      },
-      {
-        userID: currentUser.id,
-        date: "2222/22/22",
-        numOunces: hydrationInput.value,
-      },
-      {
-        userID: currentUser.id,
-        date: "2222/22/22",
-        flightsOfStairs: stairsInput.value,
-        minutesActive: activityInput.value,
-        numSteps: stepsInput.value,
-      }
-    );
+  postData(
+    {
+      userID: currentUser.id,
+      date: currentDate,
+      hoursSlept: sleepHoursInput.value,
+      sleepQuality: sleepQualityInput.value,
+    },
+    {
+      userID: currentUser.id,
+      date: currentDate,
+      numOunces: hydrationInput.value,
+    },
+    {
+      userID: currentUser.id,
+      date: currentDate,
+      flightsOfStairs: stairsInput.value,
+      minutesActive: activityInput.value,
+      numSteps: stepsInput.value,
+    }
+  );
 }
 // console.log(
 //   postData(

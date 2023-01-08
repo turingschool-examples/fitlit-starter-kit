@@ -102,7 +102,7 @@ inputButton.addEventListener("click", function (event) {
 fetchAll()
   .then((data) => {
     updateDataModel(data);
-    pageLoadHandler();
+    pageRender();
   })
   .catch((error) => console.log(error.message));
 // use catch to display error message to user
@@ -140,7 +140,7 @@ function updateDataModel(data, user) {
   calendar.setAttribute("value", currentDate.replace(/\//g, "-"));
 }
 
-function pageLoadHandler() {
+function pageRender() {
   displayUserName(currentUser);
   displayUserInfo(currentUser, allUserData);
   displayCurrentDayHydration(allUserHydro, currentDate);
@@ -272,7 +272,7 @@ console.log(dayjs().format("YYYY/MM/DD"))
       numSteps: stepsInput.value,
     },
     updateDataModel,
-    pageLoadHandler,
+    pageRender,
     currentUser
   ).catch((error) => error.message);
   // use catch to display error message to user

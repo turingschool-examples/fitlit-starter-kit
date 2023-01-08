@@ -17,25 +17,37 @@
         <canvas class="step-goal" id="stepGoalAvg"></canvas>
       </div>
       <nav class="user-info" id="userInfo"></nav>
-      <section class="user-inputs-today">
+      <form class="user-inputs-today">
         <h2 class="user-input-title">Add Today's Info:</h2>
-        <form class="step-input-info">
+        <div class="step-input-info">
           <label for="step"><strong>Today's Steps:</strong></label>
-          <input type="text" name="step" placeholder="Total Steps for Today" id="todaySteps" class="today-steps" id="todaySteps">
-        </form>
-        <form class="hydration-input-info">
+          <input type="number" name="step" placeholder="Total Steps for Today" id="todaySteps" class="today-steps" >
+        </div>
+        <div class="stairs-input-info">
+          <label for="stairs"><strong>Today's Stairs Climbed:</strong></label>
+          <input type="number" name="stairs" placeholder="Flights Climbed Today" id="todayStairs" class="today-stairs">
+        </div>
+        <div class="minutes-input-info">
+          <label for="minutes-active"><strong>Today's Activity:</strong></label>
+          <input type="number" name="minutes-active" placeholder="Today's Activity Minutes" id="todayActivity" class="today-minutes-active">
+        </div>
+        <div class="sleep-quality-input-info">
+          <label for="sleep-quality"><strong>Today's Sleep Quality:</strong></label>
+          <input type="number" name="sleep-quality" placeholder="Today's Sleep Quality" id="todaySleepQuality" class="today-sleep-quality">
+        </div>
+        <div class="sleep-hours-input-info">
+          <label for="sleep-hours"><strong>Today's Sleep Hours:</strong></label>
+          <input type="number" name="sleep-hours" placeholder="Today's Sleep Hours" id="todaySleepHours" class="today-sleep-hours">
+        </div>
+        <div class="hydration-input-info">
           <label for="hydration"><strong>Today's Water:</strong></label>
-          <input type="text" name="hydration" placeholder="Water Intake for Today" id="todayHydration" class="today-hydration" id="todayHydration">
-        </form>
-        <form class="activity-input-info">
-          <label for="activity"><strong>Today's Activity:</strong></label>
-          <input type="text" name="activity" placeholder="Today's Activity Minutes" id="todayActivity" class="today-activity" id="todayActivity">
-        </form>
+          <input type="number" name="hydration" placeholder="Water Intake for Today" id="todayHydration" class="today-hydration" >
+        </div>
         <div class="input-button-container">
           <button class="input-button" id="inputButton" type="submit" id="saveChanges">Submit</button>
         </div>
         <p class="submit-error" id="submitError"></p>
-      </section>
+      </form>
     </section>
     <main class="main">
       <section class="main-report">

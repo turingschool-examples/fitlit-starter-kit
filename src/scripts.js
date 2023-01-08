@@ -26,11 +26,9 @@ const hydrationBox = document.querySelector("#hydration");
 const calendarBtn = document.querySelector("#calendarBtn");
 const calendar = document.getElementById("myDate");
 const stepsInput = document.querySelector("#todaySteps")
-const stepsBtn = document.querySelector("#stepsSubmit")
 const hydrationInput = document.querySelector("#todayHydration")
-const hydroBtn = document.querySelector("#hydroSubmit")
 const activityInput = document.querySelector("#todayActivity")
-const ActivityBtn = document.querySelector("#activitySubmit")
+const inputButton = document.querySelector("#inputButton")
 
 
 calendarBtn.addEventListener("click", function () {

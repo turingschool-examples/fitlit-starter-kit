@@ -1,6 +1,6 @@
 import "./css/styles.css";
 import "./images/fitlit_logo_h.png";
-import { fetchAll, testPost } from "./apiCalls";
+import { fetchAll, postData } from "./apiCalls";
 import User from "./User";
 import UserRepository from "./UserRepository";
 import Hydration from "./Hydration";
@@ -122,7 +122,8 @@ fetchAll().then((data) => {
   calendar.setAttribute("max", calendarMax);
   calendar.setAttribute("value", currentDate.replace(/\//g, "-"));
   pageLoadHandler();
-});
+}).catch(error => console.log(error.message));
+// use catch to display error message to user
 
 function pageLoadHandler() {
   displayUserName(currentUser);
@@ -209,20 +210,20 @@ function pageLoadHandler() {
   );
 }
 
-console.log(
-  testPost(
-    { userID: 1, date: "2021/10/30", hoursSlept: 10, sleepQuality: 10 },
-    { userID: 1, date: "2021/10/30", numOunces: 35 },
-    {
-      userID: 1,
-      date: "2021/10/30",
-      flightsOfStairs: 20,
-      minutesActive: 42,
-      numSteps: 600,
-    }
-  )
-  // .catch(error => error)
-);
+// console.log(
+//   postData(
+//     { userID: 1, date: "2021/10/30", hoursSlept: 10, sleepQuality: 10 },
+//     { userID: 1, date: "2021/10/30", numOunces: 35 },
+//     {
+//       userID: 1,
+//       date: "2021/10/30",
+//       flightsOfStairs: 20,
+//       minutesActive: 42,
+//       numSteps: 600,
+//     }
+//   )
+//   // .catch(error => error)
+// );
 
 const displayUserName = function (user) {
   userNameLogo.innerHTML = `

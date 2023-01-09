@@ -277,7 +277,7 @@ function submitFormHandler(event) {
   }
   postData(
     {
-      userID: "F",
+      userID: currentUser.id,
       date: dayjs().format("YYYY/MM/DD"),
       hoursSlept: +sleepHoursInput.value,
       sleepQuality: +sleepQualityInput.value,
@@ -296,13 +296,15 @@ function submitFormHandler(event) {
     },
     updateDataModel,
     pageRender,
-    currentUser
+    currentUser,
+    clearInputs,
   ).catch((error) => {
     submitErrorMessage.innerHTML = `
       <div class="submitErrorMessage"> 
         <p><strong>${error.message}</strong></p>
       </div>`;
   });
+  
 }
 
 const displayUserName = function (user) {
@@ -371,4 +373,13 @@ function currentDateForUser() {
     dayjs(low).diff(dayjs(high))
   );
   return mostCurrent[mostCurrent.length - 1];
+}
+
+function clearInputs() {
+  stepsInput.value = ""
+  stairsInput.value = ""
+  activityInput.value = ""
+  sleepQualityInput.value = ""
+  sleepHoursInput.value = ""
+  hydrationInput.value = ""
 }

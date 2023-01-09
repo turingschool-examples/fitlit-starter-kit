@@ -4,7 +4,7 @@ const fetchUserData = (url, object) => {
       throw new Error(`${response.status}: ${response.statusText}`);
     }
     return response.json();
-  });
+  }); 
 };
 
 const fetchAll = () => {
@@ -16,14 +16,15 @@ const fetchAll = () => {
   ]);
 };
 
-const postData = function (
+const postData = (
   sleep,
   hydration,
   activity,
   updateData,
   rerenderPage,
-  user
-) {
+  user,
+  clearInputs
+) => {
   const postObject = {
     method: "POST",
     body: {},
@@ -51,6 +52,7 @@ const postData = function (
     fetchAll().then((data) => {
       updateData(data, user);
       rerenderPage();
+      clearInputs();
     });
     return response;
   });

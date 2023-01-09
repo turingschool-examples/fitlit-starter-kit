@@ -109,7 +109,6 @@ fetchAll()
     main.innerHTML = `
     <h2 class="fetch-error">**${error.message}**</h2>
     `
-    console.log(error.message)
   });
 // use catch to display error message to user
 
@@ -246,6 +245,13 @@ function submitFormHandler(event) {
     </div>`;
     return;
   }
+  if (!allUserHydro) {
+    submitErrorMessage.innerHTML = `
+    <div class="submitErrorMessage"> 
+      <p><strong>Data failed to load: unable to post new data</strong></p>
+    </div>`;
+    return;
+   }
   if (
     userDataForDate(
       allUserHydro.data,
@@ -271,7 +277,7 @@ function submitFormHandler(event) {
   }
   postData(
     {
-      userID: currentUser.id,
+      userID: "F",
       date: dayjs().format("YYYY/MM/DD"),
       hoursSlept: +sleepHoursInput.value,
       sleepQuality: +sleepQualityInput.value,

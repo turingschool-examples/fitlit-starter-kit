@@ -33,6 +33,7 @@ const sleepHoursInput = document.querySelector("#todaySleepHours");
 const hydrationInput = document.querySelector("#todayHydration");
 const submitErrorMessage = document.querySelector("#submitError");
 const inputButton = document.querySelector("#inputButton");
+const main = document.querySelector('#main')
 
 calendarBtn.addEventListener("click", function () {
   const time = new Date(calendar.value).getTime();
@@ -104,7 +105,12 @@ fetchAll()
     updateDataModel(data);
     pageRender();
   })
-  .catch((error) => console.log(error.message));
+  .catch((error) => {
+    main.innerHTML = `
+    <h2 class="fetch-error">**${error.message}**</h2>
+    `
+    console.log(error.message)
+  });
 // use catch to display error message to user
 
 function updateDataModel(data, user) {
@@ -241,9 +247,21 @@ function submitFormHandler(event) {
     return;
   }
   if (
-    userDataForDate(allUserHydro.data, currentUser.id, dayjs().format("YYYY/MM/DD")) ||
-    userDataForDate(allUserSleep.sleepData, currentUser.id, dayjs().format("YYYY/MM/DD")) ||
-    userDataForDate(allUserActivity.data, currentUser.id, dayjs().format("YYYY/MM/DD"))
+    userDataForDate(
+      allUserHydro.data,
+      currentUser.id,
+      dayjs().format("YYYY/MM/DD")
+    ) ||
+    userDataForDate(
+      allUserSleep.sleepData,
+      currentUser.id,
+      dayjs().format("YYYY/MM/DD")
+    ) ||
+    userDataForDate(
+      allUserActivity.data,
+      currentUser.id,
+      dayjs().format("YYYY/MM/DD")
+    )
   ) {
     submitErrorMessage.innerHTML = `
     <div class="submitErrorMessage"> 
@@ -251,7 +269,6 @@ function submitFormHandler(event) {
     </div>`;
     return;
   }
-console.log(dayjs().format("YYYY/MM/DD"))
   postData(
     {
       userID: currentUser.id,
@@ -274,8 +291,12 @@ console.log(dayjs().format("YYYY/MM/DD"))
     updateDataModel,
     pageRender,
     currentUser
-  ).catch((error) => error.message);
-  // use catch to display error message to user
+  ).catch((error) => {
+    submitErrorMessage.innerHTML = `
+      <div class="submitErrorMessage"> 
+        <p><strong>${error.message}</strong></p>
+      </div>`;
+  });
 }
 
 const displayUserName = function (user) {

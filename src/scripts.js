@@ -109,7 +109,6 @@ fetchAll()
     main.innerHTML = `
     <h2 class="fetch-error">**${error.message}**</h2>
     `
-    console.log(error.message)
   });
 // use catch to display error message to user
 
@@ -246,6 +245,13 @@ function submitFormHandler(event) {
     </div>`;
     return;
   }
+  if (!allUserHydro) {
+    submitErrorMessage.innerHTML = `
+    <div class="submitErrorMessage"> 
+      <p><strong>Data failed to load: unable to post new data</strong></p>
+    </div>`;
+    return;
+   }
   if (
     userDataForDate(
       allUserHydro.data,
@@ -273,30 +279,32 @@ function submitFormHandler(event) {
     {
       userID: currentUser.id,
       date: dayjs().format("YYYY/MM/DD"),
-      hoursSlept: sleepHoursInput.value,
-      sleepQuality: sleepQualityInput.value,
+      hoursSlept: +sleepHoursInput.value,
+      sleepQuality: +sleepQualityInput.value,
     },
     {
       userID: currentUser.id,
       date: dayjs().format("YYYY/MM/DD"),
-      numOunces: hydrationInput.value,
+      numOunces: +hydrationInput.value,
     },
     {
       userID: currentUser.id,
       date: dayjs().format("YYYY/MM/DD"),
-      flightsOfStairs: stairsInput.value,
-      minutesActive: activityInput.value,
-      numSteps: stepsInput.value,
+      flightsOfStairs: +stairsInput.value,
+      minutesActive: +activityInput.value,
+      numSteps: +stepsInput.value,
     },
     updateDataModel,
     pageRender,
-    currentUser
+    currentUser,
+    clearInputs,
   ).catch((error) => {
     submitErrorMessage.innerHTML = `
       <div class="submitErrorMessage"> 
         <p><strong>${error.message}</strong></p>
       </div>`;
   });
+  
 }
 
 const displayUserName = function (user) {
@@ -365,4 +373,13 @@ function currentDateForUser() {
     dayjs(low).diff(dayjs(high))
   );
   return mostCurrent[mostCurrent.length - 1];
+}
+
+function clearInputs() {
+  stepsInput.value = ""
+  stairsInput.value = ""
+  activityInput.value = ""
+  sleepQualityInput.value = ""
+  sleepHoursInput.value = ""
+  hydrationInput.value = ""
 }

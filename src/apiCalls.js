@@ -1,10 +1,10 @@
 const fetchUserData = (url, object) => {
   return fetch(url, object).then((response) => {
     if (!response.ok) {
-      throw new Error("Unable To Post Your Data. Try Later.");
+      throw new Error(`${response.status}: ${response.statusText}`);
     }
     return response.json();
-  });
+  }); 
 };
 
 const fetchAll = () => {
@@ -16,14 +16,15 @@ const fetchAll = () => {
   ]);
 };
 
-const postData = function (
+const postData = (
   sleep,
   hydration,
   activity,
   updateData,
   rerenderPage,
-  user
-) {
+  user,
+  clearInputs
+) => {
   const postObject = {
     method: "POST",
     body: {},
@@ -46,12 +47,12 @@ const postData = function (
     }),
   ]).then((response) => {
     if (response.status >= 300) {
-      console.log("throwing error");
       throw new Error(`${response.status}: ${response.statusText}`);
     }
     fetchAll().then((data) => {
       updateData(data, user);
       rerenderPage();
+      clearInputs();
     });
     return response;
   });

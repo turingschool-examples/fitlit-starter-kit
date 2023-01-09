@@ -8,11 +8,7 @@ import Sleep from "./Sleep";
 import * as dayjs from "dayjs";
 import { createChart, createSmallBarChart } from "./charts";
 import Activity from "./Activity";
-import {
-  testSequentialDates,
-  userDataForID,
-  userDataForDate,
-} from "./helperFunctions";
+import { userDataForID, userDataForDate } from "./helperFunctions";
 
 let allUserData;
 let allUserSleep;
@@ -37,6 +33,7 @@ const sleepHoursInput = document.querySelector("#todaySleepHours");
 const hydrationInput = document.querySelector("#todayHydration");
 const submitErrorMessage = document.querySelector("#submitError");
 const inputButton = document.querySelector("#inputButton");
+const main = document.querySelector('#main')
 
 calendarBtn.addEventListener("click", function () {
   const time = new Date(calendar.value).getTime();
@@ -98,43 +95,22 @@ calendarBtn.addEventListener("click", function () {
   );
 });
 
-inputButton.addEventListener("click", submitFormHandler);
+inputButton.addEventListener("click", function (event) {
+  submitErrorMessage.innerHTML = ``;
+  submitFormHandler(event);
+});
 
 fetchAll()
   .then((data) => {
-    updateDataModel(data)
-    // allUserData = new UserRepository(
-    //   data[0].userData.map((user) => new User(user))
-    // );
-    // allUserSleep = new Sleep(
-    //   formatDates(data[1].sleepData).sort((high, low) =>
-    //     dayjs(high.date).diff(dayjs(low.date))
-    //   )
-    // );
-    // allUserHydro = new Hydration(
-    //   formatDates(data[2].hydrationData).sort((high, low) =>
-    //     dayjs(high.date).diff(dayjs(low.date))
-    //   )
-    // );
-    // allUserActivity = new Activity(
-    //   formatDates(data[3].activityData).sort((high, low) =>
-    //     dayjs(high.date).diff(dayjs(low.date))
-    //   )
-    // );
-    // currentUser =
-    //   allUserData.userData[
-    //     Math.floor(Math.random() * allUserData.userData.length)
-    //   ];
-    // currentDate = currentDateForUser();
-    // weekStartDate = dayjs(currentDate).subtract(6, "day").format("YYYY/MM/DD");
-    // calendarMin = allUserHydro.data.slice(0, 1)[0].date.replace(/\//g, "-");
-    // calendarMax = currentDate.replace(/\//g, "-");
-    // calendar.setAttribute("min", calendarMin);
-    // calendar.setAttribute("max", calendarMax);
-    // calendar.setAttribute("value", currentDate.replace(/\//g, "-"));
-    pageLoadHandler();
+    updateDataModel(data);
+    pageRender();
   })
-  .catch((error) => console.log(error.message));
+  .catch((error) => {
+    main.innerHTML = `
+    <h2 class="fetch-error">**${error.message}**</h2>
+    `
+    console.log(error.message)
+  });
 // use catch to display error message to user
 
 function updateDataModel(data, user) {
@@ -170,7 +146,7 @@ function updateDataModel(data, user) {
   calendar.setAttribute("value", currentDate.replace(/\//g, "-"));
 }
 
-function pageLoadHandler() {
+function pageRender() {
   displayUserName(currentUser);
   displayUserInfo(currentUser, allUserData);
   displayCurrentDayHydration(allUserHydro, currentDate);
@@ -264,64 +240,68 @@ function submitFormHandler(event) {
     !sleepQualityInput.value ||
     !hydrationInput.value
   ) {
-    console.log("please fill out all inputs");
+    submitErrorMessage.innerHTML = `
+    <div class="submitErrorMessage"> 
+      <p><strong>Please Fill Out All Inputs</strong></p>
+    </div>`;
     return;
   }
-  // console.log(allUserHydro.data, currentUser.id)
-  // console.log(userDataForDate(allUserHydro.data, currentUser.id, "2022/01/24"),
-  // userDataForDate(allUserSleep.sleepData, currentUser.id, "2022/01/24"),
-  // userDataForDate(allUserActivity.data, currentUser.id, "2022/01/24"))
   if (
-    userDataForDate(allUserHydro.data, currentUser.id, "2022/01/24") ||
-    userDataForDate(allUserSleep.sleepData, currentUser.id, "2022/01/24") ||
-    userDataForDate(allUserActivity.data, currentUser.id, "2022/01/24")
+    userDataForDate(
+      allUserHydro.data,
+      currentUser.id,
+      dayjs().format("YYYY/MM/DD")
+    ) ||
+    userDataForDate(
+      allUserSleep.sleepData,
+      currentUser.id,
+      dayjs().format("YYYY/MM/DD")
+    ) ||
+    userDataForDate(
+      allUserActivity.data,
+      currentUser.id,
+      dayjs().format("YYYY/MM/DD")
+    )
   ) {
-    console.log("Data already exists for this day");
+    submitErrorMessage.innerHTML = `
+    <div class="submitErrorMessage"> 
+      <p><strong>Data already exists for this day</strong></p>
+    </div>`;
     return;
   }
   postData(
     {
       userID: currentUser.id,
-      date: "2022/01/24",
+      date: dayjs().format("YYYY/MM/DD"),
       hoursSlept: sleepHoursInput.value,
       sleepQuality: sleepQualityInput.value,
     },
     {
       userID: currentUser.id,
-      date: "2022/01/24",
+      date: dayjs().format("YYYY/MM/DD"),
       numOunces: hydrationInput.value,
     },
     {
-      userID: 'f',
-      date: "2022/01/24",
+      userID: currentUser.id,
+      date: dayjs().format("YYYY/MM/DD"),
       flightsOfStairs: stairsInput.value,
       minutesActive: activityInput.value,
       numSteps: stepsInput.value,
     },
     updateDataModel,
-    pageLoadHandler,
+    pageRender,
     currentUser
-  ).catch(error => console.log(error.message));
-  // use catch to display error message to user
+  ).catch((error) => {
+    submitErrorMessage.innerHTML = `
+      <div class="submitErrorMessage"> 
+        <p><strong>${error.message}</strong></p>
+      </div>`;
+  });
 }
-// console.log(
-//   postData(
-//     { userID: 1, date: "2021/10/30", hoursSlept: 10, sleepQuality: 10 },
-//     { userID: 1, date: "2021/10/30", numOunces: 35 },
-//     {
-//       userID: 1,
-//       date: "2021/10/30",
-//       flightsOfStairs: 20,
-//       minutesActive: 42,
-//       numSteps: 600,
-//     }
-//   )
-//   // .catch(error => error)
-// );
 
 const displayUserName = function (user) {
   userNameLogo.innerHTML = `
-  <h2 class="user-name" id="userName">Welcome, ${user.getFirstName()}!</h2>
+  <h1 class="user-name" id="userName">Welcome, ${user.getFirstName()}!</h1>
   <img src="./images/fitlit_logo_h.png" alt="FitLit Logo" width="30%" />`;
 };
 

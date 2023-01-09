@@ -132,11 +132,11 @@ body {
 }
 
 .weekly-stairs {
-  border: 2px solid rgb(199, 239, 255)
+  border: 2px solid rgb(199, 239, 255);
 }
 
 .weekly-minutes {
-  border: 2px solid rgb(255, 199, 211)
+  border: 2px solid rgb(255, 199, 211);
 }
 
 .calendar-submit {
@@ -159,16 +159,8 @@ input {
   margin: 0px 10px;
 }
 
-.user-input-title {
-  margin-left: 15px;
-}
-.user-inputs-today {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.step-input-info,
+.today-input-container,
+.user-input-title,
 .hydration-input-info,
 .activity-input-info {
   display: flex;
@@ -180,11 +172,23 @@ input {
 }
 
 .today-steps {
-  margin-left: 28px;
+  margin-left: 86px;
+}
+
+.today-stairs {
+  margin-left: 14px;
+}
+
+.today-sleep-quality {
+  margin-left: 23px;
+}
+
+.today-sleep-hours {
+  margin-left: 33px;
 }
 
 .today-hydration {
-  margin-left: 22px;
+  margin-left: 24px;
 }
 
 .input-button-container {
@@ -196,12 +200,12 @@ input {
   text-transform: uppercase;
   font-weight: 300;
   border-radius: 2px;
-  color:white;
+  color: white;
   background-color: transparent;
   border: 1px solid white;
   padding: 6px 12px;
   transition: all 0.5s ease;
-  cursor:pointer;
+  cursor: pointer;
 }
 .input-button:hover,
 .input-button:hover {
@@ -224,3 +228,12 @@ input {
   border: 0;
 }
 
+.submitErrorMessage {
+  display: flex;
+  justify-content: center;
+}
+
+.fetch-error {
+  font-size: 80px;
+  color: red;
+}

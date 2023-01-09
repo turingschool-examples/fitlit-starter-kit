@@ -232,3 +232,8 @@ input {
   display: flex;
   justify-content: center;
 }
+
+.fetch-error {
+  font-size: 80px;
+  color: red;
+}

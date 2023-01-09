@@ -28,7 +28,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-top: 40px;
 }
 
 .main-report {
@@ -181,10 +182,12 @@ input {
 
 .today-sleep-quality {
   margin-left: 23px;
+  width: 140px;
 }
 
 .today-sleep-hours {
   margin-left: 33px;
+  width: 140px;
 }
 
 .today-hydration {

@@ -110,7 +110,6 @@ fetchAll()
     <h2 class="fetch-error">**${error.message}**</h2>
     `
   });
-// use catch to display error message to user
 
 function updateDataModel(data, user) {
   allUserData = new UserRepository(

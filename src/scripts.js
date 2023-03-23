@@ -16,3 +16,5 @@ import userData from './data/users';
 console.log("User Data:", userData);
 
 import SomeClassYouChangeTheName from './SomeClassYouChangeTheName';
+
+const newClass = new SomeClassYouChangeTheName();

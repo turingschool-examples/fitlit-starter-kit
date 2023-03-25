@@ -1,14 +1,69 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Fitlit</title>
-  </head>
-  <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
 
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="bundle.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Fitlit</title>
+</head>
+
+<body>
+  <header>
+    <h1>Fit Lit</h1>
+    <h2>Hello, ${user}</h2>
+    <h2>Date</h2>
+  </header>
+  <main>
+    <section class="user">
+      <h3>User Profile</h3>
+      <ul>
+        <li>Name</li>
+        <li>ID</li>
+        <li>Stride Length</li>
+        <li>Daily Step Goal</li>
+      </ul>
+    </section>
+    <section class="activity">
+      <h3>Activity</h3>
+      <ul>
+        <li>Steps Today</li>
+        <li>Active Minutes Today</li>
+        <li>Distance Walked Today</li>
+        <li>Weekly Step Count</li>
+        <li>Goal Reached</li>
+      </ul>
+    </section>
+    <section class="hydration">
+      <h3>Hydration</h3>
+      <ul>
+        <li>Today</li>
+        <li>All Week</li>
+      </ul>
+    </section>
+    <section class="friends">
+      <h3>Friends</h3>
+      <ul>
+      </ul>
+    </section>
+    <section class="sleep">
+      <h3>Sleep Card</h3>
+      <ul>
+        <li>Latest Day</li>
+        <li>Latest Week</li>
+        <li>All Time Average</li>
+      </ul>
+    </section>
+    <section class="comparison">
+      <h3>Comparison to Other Users</h3>
+      <ul>
+        <li>Step Goal</li>
+      </ul>
+    </section>
+  </main>
+  <h1>Activity Tracker</h1>
+  <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+
+  <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+  <script src="bundle.js"></script>
+</body>
+
 </html>

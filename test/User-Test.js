@@ -57,7 +57,9 @@ describe('User', function() {
 
     it('should be able to return the users first name', function() {
         expect(user1.getFirstName()).to.equal('Trystan')
-      })
+    })
 
-   
+    it('should be able to return the average step goal of all users', function() {
+        expect(user1.usersAvgDailyStep()).to.equal(6333)
+    })
 })

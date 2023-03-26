@@ -55,5 +55,9 @@ describe('User', function() {
         expect(user1.getUserData(1)).to.deep.equal(user1)
     })
 
+    it('should be able to return the users first name', function() {
+        expect(user1.getFirstName()).to.equal('Trystan')
+      })
+
    
 })

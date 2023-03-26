@@ -19,7 +19,10 @@ class User {
         }, {})
         return user
     }
-   
+    getFirstName() {
+        let firstName =  this.name.split(' ')[0]
+        return firstName
+      }
 }
 
 export default User;

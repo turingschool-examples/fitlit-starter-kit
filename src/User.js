@@ -22,7 +22,14 @@ class User {
     getFirstName() {
         let firstName =  this.name.split(' ')[0]
         return firstName
-      }
+    }
+    usersAvgDailyStep() {
+        const averageSteps = mock.users.reduce((acc, index) => {
+            acc += index.dailyStepGoal/mock.users.length
+            return acc
+        }, 0)
+        return Math.round(averageSteps)
+    }
 }
 
 export default User;

@@ -1,5 +1,23 @@
+* {
+  /* height: 100%; */
+  /* width: 100%; */
+  border: 2px solid green
+}
+
 body, html {
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
   background-repeat: no-repeat;
   height: 100%;
 }
+
+header {
+  display: flex;
+  flex-direction: row;
+  height: 20%;
+  width: 100%;
+}
+
+/* body {
+  display: flex;
+  flex-direction: column;
+} */

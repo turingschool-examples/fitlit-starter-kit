@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "scripts.js",
+
   "scripts": {
     "start": "webpack serve",
     "build": "webpack",
     "test": "mochapack 'test/**/*.js'"
+
   },
   "author": "Turing School of Software and Design",
   "license": "MIT",

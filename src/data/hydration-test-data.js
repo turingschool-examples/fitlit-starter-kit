@@ -4,7 +4,7 @@ export default { hydrationTestData: [{
     "numOunces": 28
   },
   {
-    "userID": 2,
+    "userID": 1,
     "date": "2023/03/24",
     "numOunces": 35
   },
@@ -14,7 +14,7 @@ export default { hydrationTestData: [{
     "numOunces": 95
   },
   {
-    "userID": 4,
+    "userID": 1,
     "date": "2023/03/24",
     "numOunces": 74
   },

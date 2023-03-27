@@ -1,8 +1,8 @@
 import { expect } from 'chai';
-import UserRepository from '../src/UserRepository';
+import User from '../src/User';
 
 describe('User Repository', () => {
   it('should be a function', function () {
-    expect(UserRepository).to.be.a('function');
+    expect(User).to.be.a('function');
   });
 });

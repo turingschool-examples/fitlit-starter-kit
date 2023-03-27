@@ -3,3 +3,5 @@ class UserRepository {
         this.users = users;
     }
 };
+
+module.exports = UserRepository;

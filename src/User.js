@@ -8,4 +8,10 @@ class User {
         this.dailyStepGoal = user.dailyStepGoal;
         this.friends = user.friends;
     }
+
+
+
+    
 }
+
+module.exports = User;

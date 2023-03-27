@@ -4,11 +4,11 @@
   border: 2px solid green
 }
 
-body, html {
+/* body, html {
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
   background-repeat: no-repeat;
   height: 100%;
-}
+} */
 
 header {
   display: flex;
@@ -17,7 +17,32 @@ header {
   width: 100%;
 }
 
-/* body {
+body {
   display: flex;
   flex-direction: column;
-} */
+  text-align: center;
+}
+
+.data-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.friends-sidebar {
+  width: 30%;
+}
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 70%;
+}
+
+.widget {
+  margin: 0% 5% 0% 5%;
+}
+
+.friends {
+  margin: 0% 5% 0% 5%;
+}

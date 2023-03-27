@@ -1,33 +1,35 @@
-import User from './User.js'
-import hydrationData from './data/hydration'
+//import mock from '../src/data/mock';
 
 class Hydration {
-    constructor(entry) {
-        // this.userID = entry.userID;
-        // this.date = entry.date;
-        // this.numOunces = entry.numOunces
-        this.hydrationData = entry
+    constructor(hydrationData) {
+        this.hydration = hydrationData
     }
 
     findUserID(id) {
-        console.log(this.hydrationData)
-        let currentUser = this.hydrationData.filter(data => data.userID === id)
+        let currentUser = this.hydration.filter(data => data.userID === id)
         return currentUser
     }
 
-    calculateAverageFluidDay(id, date) {
-        const userHydration = hydrationData.filter((data) => {
-            if (id.user.ID === data.userID && date === data.date) {
-                return numOunces
+    findDailyFluidIntake(id, date) {
+        const userHydration = this.hydration.reduce((acc, currVal) => {
+            if (id === currVal.userID && date === currVal.date) {
+                acc += currVal.numOunces
             }
-            return userHydration
-        })
-
-        calculateAverageFluidWeek(user)
-
-
+            return acc
+        }, 0)
+        return userHydration
     }
+
+    calculateFluidWeekly(id) {
+        const userWeekly = findUserID(id).sort((a, b) => {
+            b.date - a.date
+        })
+        const week = userWeekly.slice(0, 7)
+        return week.numOunces
+    }
+
 }
+
 
 export default Hydration;
 
@@ -48,30 +50,13 @@ export default Hydration;
 //     return Math.floor(totalOunces / userDrinks.length);
 //   }
 
-class Hydration {
-    constructor(data) {
-        this.data = data;
-    }
+// class Hydration {
+//     constructor(data) {
+//         this.data = data;
+//     }
 
-    getDailyWaterIntake(date) {
-        return this.data.find(user => user.date === date).numOunces;
-    }
+//     getDailyWaterIntake(date) {
+//         return this.data.find(user => user.date === date).numOunces;
+//     }
 
-    const hydrationData = [
-        {
-            userID: 1,
-            date: '2019/06/15',
-            numOunces: 37
-        },
-        {
-            userID: 2,
-            date: '2019/06/15',
-            numOunces: 75
-        },
-        {
-            userID: 3,
-            date: '2019/06/15',
-            numOunces: 47
-        }
-      }
-module.exports = hydraationData
+// }

@@ -1,26 +1,46 @@
 import { expect } from 'chai';
 import Hydration from '../src/Hydration';
-import hydrationData from '../src/data/hydration'
+import mock from '../src/data/mock';
 
 
 describe('Hydration', () => {
-    let hydration, currentUser;
+    let hydration1;
 
     beforeEach(() => {
-        hydration = new Hydration(hydrationData[0])
-        currentUser = hydration.findUserID(1)
+        hydration1 = new Hydration(mock.hydrationData)
+        //currentUser = hydration.findUserID(1)
     });
 
-    console.log(currentUser)
+
     it('Should be a function', () => {
         expect(Hydration).to.be.a('function');
     });
 
-    // it('Should be able to take in data', () => {
-    //     expect(hydration.userID).to.equal(1);
-    //     expect(hydration.date).to.equal("2023/03/24");
-    //     expect(hydration.numOunces).to.equal(28)
-    // });
+    it('Should be an instance of Hydration', () => {
+        expect(hydration1).to.be.an.instanceOf(Hydration)
+    })
+
+    it('Should be able to store data', () => {
+        expect(hydration1.hydration).to.equal(mock.hydrationData)
+    })
+
+    it('Should be able to find hydration data of each user', () => {
+        expect(hydration1.findUserID(2)).to.deep.equal([{
+            "userID": 2,
+            "date": "2023/03/24",
+            "numOunces": 35
+        },
+        {
+            "userID": 2,
+            "date": "2023/03/25",
+            "numOunces": 92
+        }])
+    })
+
+    it('Should be able to calculate the daily fluid intake of a user, based on a specific date', () => {
+        expect(hydration1.findDailyFluidIntake(1, '2023/03/24')).to.equal(28)
+    })
+
+
 
 })
-

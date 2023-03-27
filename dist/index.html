@@ -1,14 +1,70 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Fitlit</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>FitLit</title>
+    <link href="/src/css/styles.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="bundle.js"></script>
+    <header>
+      <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+      <h1>FitLit</h1>
+    </header>
+    <article>
+      <img class="main-icon">
+      <h3 class="user-name js-user-name">First Name</h3>
+      <p class="user-info js-user-info"></p>
+    </article>
+  <!--   activity -->
+    <article class="card activity">
+      <section>
+        <div>
+          <img class="icon">
+          <h2 class="card-title">activity</h2>
+        </div>
+        <p class="card-info js-card-info"></p>
+      </section>
+      <section>
+        <p class="card-info js-card-info"></p>
+        <p class="card-info js-card-info"></p>
+      </section>
+    </article>
+  <!--   hydration -->
+    <article class="card hydration">
+      <section>
+        <div>
+          <img class="icon">
+          <h2 class="card-title">hydration</h2>
+        </div>
+        <p class="card-info js-card-info"></p>
+      </section>
+      <section>
+        <p class="card-info js-card-info"></p>
+        <p class="card-info js-card-info"></p>
+      </section>
+    </article>
+  <!--   sleep -->
+    <article class="card sleep">
+      <section>
+        <div>
+          <img class="icon">
+          <h2 class="card-title">sleep</h2>
+        </div>
+        <p class="card-info js-card-info"></p>
+      </section>
+      <section>
+        <p class="card-info js-card-info"></p>
+        <p class="card-info js-card-info"></p>
+      </section>
+    </article>
+  <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+  <script src="bundle.js"></script>
   </body>
 </html>

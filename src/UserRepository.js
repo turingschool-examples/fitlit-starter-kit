@@ -1,7 +1,13 @@
 class UserRepository {
+
     constructor(users) {
         this.users = users;    
     }
+
+  constructor(users) {
+    this.users = users;    
+  }
+
 
   getUser(id) { 
     return this.users.find(user => user.id === id)
@@ -14,6 +20,7 @@ class UserRepository {
     }, 0)
 
     return Math.trunc(averageSteps / this.users.length);
-    };
+  };
 };
 
+module.exports = UserRepository;

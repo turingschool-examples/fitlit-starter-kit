@@ -1,6 +1,11 @@
  const hydrationTestData = [
   {
     "userID": 1,
+    "date": "2023/03/23",
+    "numOunces": 15
+  },
+  {
+    "userID": 1,
     "date": "2023/03/24",
     "numOunces": 28
   },
@@ -74,6 +79,16 @@
     "date": "2023/03/26",
     "numOunces": 21
   },
+  {
+    "userID": 1,
+    "date": "2023/03/29",
+    "numOunces": 20
+  },
+  {
+    "userID": 1,
+    "date": "2023/03/31",
+    "numOunces": 51
+  }
 ];
 
 export default hydrationTestData;

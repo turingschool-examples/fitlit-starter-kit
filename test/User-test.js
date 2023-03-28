@@ -32,7 +32,7 @@ describe('User Repository', () => {
     testUser.sleepData = testSleepData;
     testUser. sleepData = testActivityData;
 
-    let testUser2 = new User()
+    let testUser2 = new User();
   });
 
   it('should be a function', () => {
@@ -51,31 +51,31 @@ describe('User Repository', () => {
 
   it.skip('should store hydration data', () => {
     expect(testUser.hydrationData).to.be.an.instanceOf(Hydration);
-    expect(testUser.hydrationData.data).to.equal()
+    expect(testUser.hydrationData.data.length).to.equal(8);
   });
 
   it.skip('should store sleep data', () => {
     expect(testUser.sleepData).to.be.an.instanceOf(Sleep);
-    expect(testUser.sleepData.data).to.equal(8)
+    expect(testUser.sleepData.data.length).to.equal(8);
   });
 
   it.skip('should store activity data', () => {
     expect(testUser.activityData).to.be.an.instanceOf(Activity);
-    expect(testUser.activityData.data.length).to.equal(8)
+    expect(testUser.activityData.data.length).to.equal(8);
   });
   
   it.skip('should be able to retun friends friends names', () => {
-    expect(testUser.getFriends()).to.equal("Brycen")
-    expect(testUser2.getFriends()).to.equal("Embrace the Solitude")
+    expect(testUser.getFriends()).to.equal("Brycen");
+    expect(testUser2.getFriends()).to.equal("Embrace the Solitude");
   });
 
   it.skip('should get the average step goals of all users', () => {
-    expect(testUser.getAverage()).to.equal(6570)
+    expect(testUser.getAverage()).to.equal(6570);
   });
 
   it.skip('should get the users first name', () => {
-    expect(testUser.getName()).to.equal('Trystan')
-    expect(testUser2.getName()).to.equal('User')
+    expect(testUser.getName()).to.equal('Trystan');
+    expect(testUser2.getName()).to.equal('User');
   });
 
 });

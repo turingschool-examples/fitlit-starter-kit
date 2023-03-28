@@ -17,7 +17,7 @@ var testRepository;
   })
 
   it('should store users', function() {
-    expect(testRepository.users).to.deep.equal(users);
+    expect(testRepository.users).to.deep.equal(userTestData);
   })
 
   it('should find a user by id', function() {

@@ -14,11 +14,11 @@ describe("Hydration", () => {
     hydration = new Hydration(hydrationTestData);
 
   });
-  it("should be a function", function () {
+  it("should be a function", () => {
     expect(Hydration).to.be.a("function");
   });
 
-  it("should be an instance of Hydration", function () {
+  it("should be an instance of Hydration", () => {
     expect(hydration).to.be.an.instanceOf(Hydration);
   });
 

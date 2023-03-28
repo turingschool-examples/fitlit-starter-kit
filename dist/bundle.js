@@ -474,6 +474,17 @@ class User {
             }
         }
     }
+    stepAverage(userData) {
+        const fullSum = userData.reduce((acc, curr) => {
+            acc += curr
+            return acc
+        },0)
+        return fullSum / userData.length
+        
+    }
+    
+
+    
 
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (User);
@@ -1293,6 +1304,7 @@ __webpack_require__.r(__webpack_exports__);
 //console.log("User Data:", userData);
 
 const currentUser = new _user__WEBPACK_IMPORTED_MODULE_2__["default"](1, _data_users__WEBPACK_IMPORTED_MODULE_3__["default"]);
+console.log(currentUser.stepAverage(_data_users__WEBPACK_IMPORTED_MODULE_3__["default"])) 
 console.log(currentUser)
 console.log(currentUser.userId)
 console.log(currentUser.userName)

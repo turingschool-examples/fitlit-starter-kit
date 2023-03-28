@@ -4,7 +4,7 @@ class UserRepository {
   }
 
   getUser(id) { 
-    return this.users.find(user => user.id === id)
+    return this.users.find(user => user.id === id);
   }
 
   calculateAverageStepGoal() {

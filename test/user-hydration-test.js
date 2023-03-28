@@ -1,3 +1,4 @@
+const { use } = require("chai");
 const chai = require("chai");
 const expect = chai.expect;
 
@@ -19,9 +20,11 @@ describe('userHydration', () => {
   });
 
   it("Should calculate how many ounces are consumed for a specific day ", () => {
-    const specificDayOz = userHydration.calculateSingleDayOunces(hydrationData[i]['date']);
+    const specificDayOz = userHydration.calculateSingleDayOunces('date-string');
     expect(specificDayOz).to.equal('specificOz');
   });
-  it("Should calculate the average daily ounces", () => {});
-  it("Should calculate the average daily ounces", () => {});
+  it("should calculate how many fluid ounces of water were consumed through 7 days", () => {
+    const weekOfOz = userHydration.calculateWeekOfOunces();
+    expect(weekOfOz).to.deep.equal([undefined, undefined, undefined, undefined, undefined, undefined, undefined])
+  });
 })

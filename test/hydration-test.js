@@ -38,7 +38,20 @@ describe('Hydration', function() {
     expect(user2.getAverageOunces(2)).to.equal(60);
   });
 
-  
+  it('should be able to return ounces drank from a specific date', function() {
+    expect(user1.getDailyOunces(1, "2023/03/24")).to.equal(28);
+    expect(user2.getDailyOunces(2, "2023/03/26")).to.equal(88);
+  });
 
-
+  it('should be able to show daily ounces drank for a week', function() {
+    expect(user1.getWeeklyOunces(1)).to.deep.equal([
+      {'Date': '2023/03/30', 'Number of Ounces Drank': 76},
+      {'Date': '2023/03/29', 'Number of Ounces Drank': 20},
+      {'Date': '2023/03/28', 'Number of Ounces Drank': 97},
+      {'Date': '2023/03/27', 'Number of Ounces Drank': 63},
+      {'Date': '2023/03/26', 'Number of Ounces Drank': 21},
+      {'Date': '2023/03/25', 'Number of Ounces Drank': 50},
+      {'Date': '2023/03/24', 'Number of Ounces Drank': 28},
+    ]);
+  });
 });

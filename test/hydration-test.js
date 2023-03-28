@@ -1,30 +1,38 @@
-import { expect } from 'chai';
+import {
+  expect
+} from 'chai';
 import Hydration from '../src/classes/Hydration.js';
 import hydrationTestData from './hydration-test-data.js';
 
-describe('Hydration', () => {
+describe("Hydration", () => {
   let hydration;
-  
+
   beforeEach(() => {
-    hydration = new Hydration(hydrationTestData[0]);
+    hydration = new Hydration(hydrationTestData);
+
   });
-  it('should be a function', function () {
-    expect(Hydration).to.be.a('function');
+  it("should be a function", () => {
+    expect(Hydration).to.be.a("function");
   });
 
-  it('should be instance of Hydration', function () {
+  it("should be an instance of Hydration", () => {
     expect(hydration).to.be.an.instanceOf(Hydration);
-  })
-
-  it('should hold a userID', function () {
-    expect(hydration.id).to.deep.equal(1);
   });
 
-  it('should hold a date', function () {
-    expect(hydration.date).to.deep.equal("2023/03/24");
+  it("should have a property that holds the hydration data object", () => {
+    hydration = new Hydration(hydrationTestData[0]);
+    expect(hydration.data).to.deep.equal({
+      userID: 1,
+      date: "2023/03/24",
+      numOunces: 28
+    }, );
   });
-  
-  it('should hold a ounces', function () {
-    expect(hydration.ounces).to.deep.equal(28);
+
+  it("should be able to find hydration data based on the user", () => {
+    expect(hydration.findUserById(1)).to.have.a.lengthOf(3);
+  });
+
+  it("should be able to able to calculate the average liquid a user consumes", () => {
+    expect(hydration.calculateAverageFluidPerUser(1)).to.equal(33);
   });
 });

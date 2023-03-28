@@ -15,24 +15,6 @@ describe('Hydration', () => {
   it('should be instance of Hydration', function () {
     expect(hydration).to.be.an.instanceOf(Hydration);
   })
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   it('should be a function', function () {
     expect(hydration.dailyOuncesConsumed).to.be.a('function');

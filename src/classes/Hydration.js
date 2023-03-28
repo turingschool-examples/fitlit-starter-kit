@@ -5,25 +5,6 @@ class Hydration {
     this.data = hydrationData;
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
   dailyOuncesConsumed(user, date) {
     const ouncesByDay = this.data.find((entry) => {
       return entry.userID === user && entry.date === date

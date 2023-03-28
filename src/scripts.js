@@ -33,7 +33,7 @@ function displayWelcomeMessage() {
 };
 
 function displayStepGoalComparison(user, allUsers) {
-    const userStepGaol = user.stepGoal;
+    const userStepGoal = user.stepGoal;
     const totalStepGoals = allUsers.reduce((acc, user) => acc + user.stepGoal, 0);
     const averageStepGoal = totalStepGoals / allUsers.length;
 
@@ -46,5 +46,5 @@ function displayStepGoalComparison(user, allUsers) {
         console.log(`You can do it!!! Your step goal is below average.  TRY HARDER.`);
     } else {
         console.log(`You are right on track with the average step goal.  Way to be just AVERAGE.`)
-    }
-}
+    };
+};

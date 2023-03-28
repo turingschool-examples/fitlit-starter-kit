@@ -3,9 +3,6 @@ import {
 } from 'chai';
 import Hydration from '../src/classes/Hydration.js';
 import hydrationTestData from './hydration-test-data.js';
-import User from '../src/User.js';
-import UserRepository from "../src/UserRepository";
-
 
 describe("Hydration", () => {
   let hydration;

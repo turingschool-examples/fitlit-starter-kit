@@ -12,7 +12,8 @@ import './images/turing-logo.png';
 // An example of how you tell webpack to use a JS file
 import User from './user';
 import userData from './data/users';
-
+import userHydration from './userHydration';
+import 
 //console.log("User Data:", userData);
 
 //Get Random user by refrencing the class

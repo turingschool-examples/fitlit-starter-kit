@@ -25,7 +25,7 @@ describe('Hydration', () => {
     })
 
     it('Should be able to find hydration data of each user', () => {
-        expect(hydration1.findUserID(2)).to.deep.equal([{
+        expect(hydration1.findUserData(2)).to.deep.equal([{
             "userID": 2,
             "date": "2023/03/24",
             "numOunces": 35
@@ -39,6 +39,11 @@ describe('Hydration', () => {
 
     it('Should be able to calculate the daily fluid intake of a user, based on a specific date', () => {
         expect(hydration1.findDailyFluidIntake(1, '2023/03/24')).to.equal(28)
+    })
+
+    it('Should be able to return the amount of water consumed per day for the last week', () => {
+        expect(hydration1.calculateFluidWeekly(1)).to.deep.equal([28, 50])
+
     })
 
 

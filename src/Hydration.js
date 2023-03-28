@@ -5,7 +5,7 @@ class Hydration {
         this.hydration = hydrationData
     }
 
-    findUserID(id) {
+    findUserData(id) {
         let currentUser = this.hydration.filter(data => data.userID === id)
         return currentUser
     }
@@ -21,12 +21,13 @@ class Hydration {
     }
 
     calculateFluidWeekly(id) {
-        const userWeekly = findUserID(id).sort((a, b) => {
-            b.date - a.date
-        })
+        const userWeekly = this.hydration.filter(data => data.userID === id).sort((a, b) => {
+            return b.date - a.date
+        }).map((day) => day.numOunces)
         const week = userWeekly.slice(0, 7)
-        return week.numOunces
+        return week
     }
+
 
 }
 

@@ -19,7 +19,7 @@ class Hydration {
     acc += user.numOunces
     return acc
     },0)
-    return total/allUserHydration.length
+    return total/allUserHydration.length.toFixed(2)
   }
 }
 

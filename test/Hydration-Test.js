@@ -8,7 +8,6 @@ describe('Hydration', () => {
 
     beforeEach(() => {
         hydration1 = new Hydration(mock.hydrationData)
-        //currentUser = hydration.findUserID(1)
     });
 
 
@@ -43,6 +42,10 @@ describe('Hydration', () => {
 
     it('Should be able to return the amount of water consumed per day for the last week', () => {
         expect(hydration1.calculateFluidWeekly(1)).to.deep.equal([28, 50])
+    })
+
+    it('Should have a method to calculate all time daily average of water consumption', () => {
+        expect(hydration1.calculateAllTimeAverage(1)).to.equal(39)
 
     })
 

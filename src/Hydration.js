@@ -1,5 +1,3 @@
-//import mock from '../src/data/mock';
-
 class Hydration {
     constructor(hydrationData) {
         this.hydration = hydrationData
@@ -28,36 +26,14 @@ class Hydration {
         return week
     }
 
-
+    calculateAllTimeAverage(id) {
+        const allWater = this.hydration.filter(data => data.userID === id)
+        const totalOunces = allWater.reduce((acc, currVal) => {
+            acc += currVal.numOunces
+            return acc
+        }, 0)
+        return Math.floor(totalOunces / allWater.length)
+    }
 }
 
-
 export default Hydration;
-
-// getAvgFluidOunces(id) {
-//     const userDrinks = this.hydrationData.filter(data => data.userID === id);
-//     const totalOunces = userDrinks.reduce((acc, data) => {
-//         acc += data.numOunces;
-//         return acc;
-//     }, 0);
-//     return Math.floor(totalOunces / userDrinks.length);
-// }
-//   getAvgFluidOunces(id) {
-//     const userDrinks = this.hydrationData.filter(data => data.userID === id);
-//     const totalOunces = userDrinks.reduce((acc, data) => {
-//       acc += data.numOunces;
-//       return acc; 
-//     }, 0);
-//     return Math.floor(totalOunces / userDrinks.length);
-//   }
-
-// class Hydration {
-//     constructor(data) {
-//         this.data = data;
-//     }
-
-//     getDailyWaterIntake(date) {
-//         return this.data.find(user => user.date === date).numOunces;
-//     }
-
-// }

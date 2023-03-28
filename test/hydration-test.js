@@ -6,7 +6,7 @@ describe('Hydration', () => {
   let hydration;
   
   beforeEach(() => {
-    hydration = new Hydration(hydrationTestData[0]);
+    hydration = new Hydration(hydrationTestData);
   });
   it('should be a function', function () {
     expect(Hydration).to.be.a('function');
@@ -16,15 +16,46 @@ describe('Hydration', () => {
     expect(hydration).to.be.an.instanceOf(Hydration);
   })
 
-  it('should hold a userID', function () {
-    expect(hydration.id).to.deep.equal(1);
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  it('should be a function', function () {
+    expect(hydration.dailyOuncesConsumed).to.be.a('function');
   });
 
-  it('should hold a date', function () {
-    expect(hydration.date).to.deep.equal("2023/03/24");
+  it('should return a users ounces consumed', function () {
+    expect(hydration.dailyOuncesConsumed(1, "2023/03/24")).to.be.equal(28);
+  });
+
+  it('should return a different users ounces consumed', function () {
+    expect(hydration.dailyOuncesConsumed(14, "2023/03/24")).to.be.equal(45);
   });
   
-  it('should hold a ounces', function () {
-    expect(hydration.ounces).to.deep.equal(28);
+  it('should be a function', function () {
+    expect(hydration.weeklyOuncesConsumed).to.be.a('function');
+  });
+
+  it('should return a users ounces consumed in a given week', function () {
+    expect(hydration.weeklyOuncesConsumed(1, "2023/03/24")).to.be.deep.equal([
+      { userID: 1, date: '2023/03/24', numOunces: 28 },
+      { userID: 1, date: '2023/03/25', numOunces: 50 },
+      { userID: 1, date: '2023/03/26', numOunces: 21 },
+      { userID: 1, date: '2023/03/29', numOunces: 20 }
+    ]);
   });
 });

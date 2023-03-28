@@ -8,8 +8,8 @@ import activityTestData from '../src/data/activity-test-data.js';
 import hydrationTestData  from '../src/data/hydration-test-data';
 import sleepTestData from '../src/data/sleep-test-data';
 
-describe('User Repository', () => {
-  beforeEach(() =>{
+describe('User', () => {
+  beforeEach(() => {
     let testUser = new User({
       "id": 1,
       "name": "Trystan Gorczany",
@@ -33,8 +33,6 @@ describe('User Repository', () => {
     // testUser.sleepData = testSleepClass;
     // testUser.activityData = testActivityClass;
 
-
-    
     let testUser2 = new User();
   });
 

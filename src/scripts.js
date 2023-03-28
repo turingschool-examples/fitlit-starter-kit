@@ -48,3 +48,9 @@ function displayStepGoalComparison(user, allUsers) {
         console.log(`You are right on track with the average step goal.  Way to be just AVERAGE.`)
     };
 };
+
+function displayWaterConsumed(user) {
+    const waterConsumed = user.waterConsumed;
+    console.log(`You have consumed ${waterConsumed} ounces of water today.`)
+};
+

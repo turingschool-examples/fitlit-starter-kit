@@ -25,9 +25,9 @@ describe('User Repository', () => {
       ]
     });
 
-    // let testHydrationClass = new Hydration(hydrationTestData);
-    // let testSleepClass = new Sleep(sleepTestData);
-    // let testActivityClass = new Activity(activityTestData);
+    // let testHydrationClass = new Hydration(hydrationTestData.hydrationTestData);
+    // let testSleepClass = new Sleep(sleepTestData.sleepTestData);
+    // let testActivityClass = new Activity(activityTestData.activityTestData);
 
     // testUser.hydrationData = testHydrationclass;
     // testUser.sleepData = testSleepClass;
@@ -51,19 +51,19 @@ describe('User Repository', () => {
   });
 
   it.skip('should store hydration data', () => {
-    let hydration = new Hydration(hydrationTestData)
+    let hydration = new Hydration(hydrationTestData.hydrationTestData)
     expect(testUser.hydrationData).to.deep.equal(hydration);
     expect(testUser.hydrationData.data.length).to.equal(8);
   });
 
   it.skip('should store sleep data', () => {
-    let sleepy = new Sleep(sleepTestData)
+    let sleepy = new Sleep(sleepTestData.sleepTestData)
     expect(testUser.sleepData).to.deep.equal(sleepy);
     expect(testUser.sleepData.data.length).to.equal(8);
   });
 
   it.skip('should store activity data', () => {
-    let activity = new Activity(activityTestData)
+    let activity = new Activity(activityTestData.activityTestData)
     expect(testUser.activityData).to.deep.equal(activity);
     expect(testUser.activityData.data.length).to.equal(8);
   });

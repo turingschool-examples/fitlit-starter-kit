@@ -13,7 +13,6 @@ getFirstName() {
  return this.name.split(' ')[0];   
 }
 
-    
 }
 
 module.exports = User;

@@ -1,10 +1,10 @@
-const dayjs = require('dayjs')
+import * as dayjs from 'dayjs'
 
 class Sleep {
   constructor(data){
     this.data = data
       .map((sleep) => {
-        sleep.date = dayjs(sleep.date, 'YYYY/MM/D').format('YYYY/MM/D')
+        sleep.date = dayjs(sleep.date, 'YYYY/MM/DD')
         return sleep
       })
   }
@@ -18,23 +18,14 @@ class Sleep {
   }
 
   getSleepInfoForSpecificDate(date, dataType){
+    console.log(date, this.data)
     return this.data.find(sleep => sleep.date === date)[dataType]
   }
 
-  // hoursSlept(date) {
-  //   return this.data.find(sleep => sleep.date === date).hoursSlept
-  // }
-
-  // qualityOfSleep(date) {
-  //   return this.data.find(sleep => sleep.date === date).sleepQuality
-  // }
-
-  hoursSleptInWeek(date) {
-    let sevenDaysEarlier = dayjs(date, 'YYYY/MM/D')
-      .subtract(7, "day")
-      .format('YYYY/MM/D')
-    let targetObject = this.data.find(sleep => sleep.date === sevenDaysEarlier)
-    return targetObject
+  hoursSleptInWeek() {
+    return this.data
+      .map(sleep => sleep.hoursSlept)
+      .slice(1,6)
   }
 
   qualitySleptInWeek() {
@@ -44,7 +35,10 @@ class Sleep {
   sortData() {
     this.data = this.data
       .sort((a,b) => a.date - b.date)
-    console.log(this.data)
+    this.data.map((sleep) => {
+      sleep.date = dayjs(sleep.date, 'YYYY/MM/D').format('YYYY/MM/DD')
+      return sleep
+    })
   }
 
 }

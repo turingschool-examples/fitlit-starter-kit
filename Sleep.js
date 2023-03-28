@@ -1,19 +1,63 @@
 class Sleep {
     constructor(userID, allSleepData) {
         this.userId = userID;
-        this.userSleepLogs = allSleepData.filter((data) => {
+        this.userSleepLogs = allSleepData.sleepData.filter((data) => {
             return data.userID === this.userId;
         })
     }
 
-    findAllTimeAvg(attribute) {
-        // For a user (identified by their userID), the average number of hours slept per day
-        const totalOfAttribute = this.userSleepInfo.reduce((acc, currentVal) => {
-            return acc += currentVal[attribute]
+    findAllTimeAvgOfDetail(detail) {
+        const totalOfDetail = this.userSleepInfo.reduce((acc, currentVal) => {
+            return acc += currentVal[detail]
         }, 0)
 
-        return totalOfAttribute / this.userSleepInfo.length;
+        return totalOfDetail / this.userSleepInfo.length;
     }
+
+    findDetailByDay(date, detail) {
+        const selectedDay = this.userSleepLogs.find((log) => {
+            return log.date === date;
+        })
+        if (!selectedDay) {
+            return 'no such date'
+        } else if (!selectedDay[detail]) {
+            return 'no such sleep details'
+        } else {
+            return selectedDay[detail];
+        }
+    };
+
+    findDetailByWeek(date, detail) {
+        const acendingSleepLogs = this.userSleepLogs.sort((a, b) => {
+            return a.date - b.date
+        });
+
+        const selectedDayIndex = this.acendingSleepLogs.findIndex((log) => {
+            return log.date === date
+        });
+
+        const sevenDayDetail = acendingSleepLogs.slice(selectedDayIndex, selectedDayIndex + 7).map(log => log[detail])
+        
+        let lastWeekDetails = [0, 0, 0, 0, 0, 0, 0]
+
+         sevenDayDetail.forEach((log, index) => {
+                lastWeekDetails[index] = log
+            })
+        
+
+        if (selectedDayIndex < 0) {
+            return 'no such date';
+        } else if (!logKeys.includes(detail)) {
+            return 'no such sleep information';
+        } else {
+            return lastWeekDetails
+        }
+    };
+
+}
+
+export default Sleep;
+
     // avgNumberHoursSleptPerDay() {
     //     // For a user (identified by their userID), the average number of hours slept per day
     //     const totalHours = this.userSleepInfo.reduce((acc, currentVal) => {
@@ -31,50 +75,3 @@ class Sleep {
 
     //     return totalSleepQuality / this.userSleepInfo.length;
     // }
-
-    findAttributeByDay(date, attribute) {
-        // For a user, how many hours they slept for a specific day (identified by a date)
-        const selectedDay = this.userSleepLogs.find((log) => {
-            return log.date === date;
-        })
-        if (!selectedDay) {
-            return 'no such date'
-        } else if (!selectedDay[attribute]) {
-            return 'no such sleep informaiton'
-        } else {
-            return selectedDay[attribute];
-        }
-    };
-
-    findAttributeByWeek(date, attribute) {
-        const decendingSleepLogs = this.userSleepLogs.sort((a, b) => {
-            return b.date - a.date
-        });
-
-        const selectedDayIndex = this.decendingSleepLogs.findIndex((log) => {
-            return log.date === date
-        });
-
-        const logKeys = Object.keys(decendingSleepLogs[selectedDayIndex])
-        if (selectedDayIndex < 0) {
-            return 'no such date'
-        } else if (!logKeys.includes(attribute)) {
-            return 'no such sleep information'
-        } else {
-            return [
-                decendingSleepLogs[selectedDayIndex][attribute],
-                decendingSleepLogs[selectedDayIndex + 1][attribute],
-                decendingSleepLogs[selectedDayIndex + 2][attribute],
-                decendingSleepLogs[selectedDayIndex + 3][attribute],
-                decendingSleepLogs[selectedDayIndex + 4][attribute],
-                decendingSleepLogs[selectedDayIndex + 5][attribute],
-                decendingSleepLogs[selectedDayIndex + 6][attribute],
-            ]
-        }
-
-
-
-    }
-
-
-export default Sleep;

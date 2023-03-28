@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import User from '../src/User';
-// import Sleep from '../src/data/Sleep';
-// import Hydration from '../src/data/Hydration';
-// import Activity from '../src/data/Activity';
+// import Sleep from '../src/Sleep';
+// import Hydration from '../src/Hydration';
+// import Activity from '../src/Activity';
 import userTestData from '../src/data/user-test-data.js';
 import activityTestData from '../src/data/activity-test-data.js';
 import hydrationTestData  from '../src/data/hydration-test-data';

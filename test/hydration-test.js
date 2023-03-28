@@ -30,7 +30,7 @@ describe("Hydration", () => {
 
   it("should be able to find hydration data based on the user", () => {
     expect(hydration.findUserById(1)).to.have.a.lengthOf(3);
-  })
+  });
 
   it("should be able to able to calculate the average liquid a user consumes", () => {
     expect(hydration.calculateAverageFluidPerUser(1)).to.equal(33);

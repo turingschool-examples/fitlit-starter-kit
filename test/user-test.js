@@ -20,7 +20,7 @@ describe('User', function() {
   }); 
 
   it('should be able to take in a user id', function() {
-    expect(user1)
+    expect(user1.id).to.be.equal(1)
   });
 
 });

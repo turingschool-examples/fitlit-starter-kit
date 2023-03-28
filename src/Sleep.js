@@ -17,19 +17,14 @@ class Sleep {
     return parseFloat((total / this.data.length).toFixed(4))
   }
 
-  getSleepInfoForSpecificDate(date, dataType){
-    console.log(date, this.data)
-    return this.data.find(sleep => sleep.date === date)[dataType]
+  getInfoForSpecificDate(date, infoType){
+    return this.data.find(sleep => sleep.date === date)[infoType]
   }
 
-  hoursSleptInWeek() {
+  getInfoForPastWeek(infoType) {
     return this.data
-      .map(sleep => sleep.hoursSlept)
-      .slice(1,6)
-  }
-
-  qualitySleptInWeek() {
-
+      .map(sleep => sleep[infoType])
+      .slice(0,7)
   }
 
   sortData() {

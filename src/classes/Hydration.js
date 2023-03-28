@@ -10,7 +10,7 @@ class Hydration {
       }
       return acc
     }, [])
-    return userHydrationInfo
+    return userHydrationInfo;
   }
 
   calculateAverageFluidPerUser(id) {

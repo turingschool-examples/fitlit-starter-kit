@@ -7,23 +7,24 @@ describe('Activity', ()=> {
     // run all the set up functions here
   })
 
-  it.skip('', ()=> {
+  it.skip('check method to determine how step data compares to dailyStepGoal', ()=> {
 
   })
 
-  it.skip('', ()=> {
+  it.skip('should check all the properties to see if they hold the data we want', ()=> {
 
   })
 
-  it.skip('', ()=> {
+  it.skip('should calculate miles for a given day', ()=> {
 
   })
 
-  it.skip('', ()=> {
+  it.skip('should calculate minutes active for a given day', ()=> {
+
+  })
+
+  it.skip('should check how a given daily steps compares to the goal', () => {
 
   })
   
-  it.skip('', ()=> {
-
-  })
 })

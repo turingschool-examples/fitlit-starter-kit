@@ -2,13 +2,24 @@ class Hydration {
   constructor(hydrationData) {
     this.data = hydrationData;
   }
-  
-  calculateAverageFluidPerUser(userID) {
-    let allUsersFluid = this.data.filter((user) => userID === user.userID);
-    console.log(allUsersFluid);
-    return allUsersFluid.reduce((acc, user) => {
-      return (acc += user.numOunces) / allUsersFluid.length.toFixed(2);
-    }, 0);
+
+  findUserById(userID) {
+    let userHydrationInfo = this.data.reduce((acc, currentUser) => {
+      if (userID === currentUser.userID) {
+        acc.push(currentUser.userID)
+      }
+      return acc
+    }, [])
+    return userHydrationInfo
+  }
+
+  calculateAverageFluidPerUser(id) {
+    let allUserHydration = this.data.filter(user => id === user.userID)
+    let total = allUserHydration.reduce((acc, user)=> {
+    acc += user.numOunces
+    return acc
+    },0)
+    return total/allUserHydration.length
   }
 }
 

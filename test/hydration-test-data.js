@@ -10,70 +10,65 @@ const hydrationTestData = [
       "numOunces": 35
     },
     {
-      "userID": 3,
-      "date": "2023/03/24",
-      "numOunces": 95
+      "userID": 1,
+      "date": "2023/03/25",
+      "numOunces": 50
     },
     {
-      "userID": 4,
-      "date": "2023/03/24",
-      "numOunces": 74
+      "userID": 2,
+      "date": "2023/03/25",
+      "numOunces": 92
     },
     {
-      "userID": 5,
-      "date": "2023/03/24",
-      "numOunces": 47
+      "userID": 1,
+      "date": "2023/03/26",
+      "numOunces": 21
     },
     {
-      "userID": 6,
-      "date": "2023/03/24",
-      "numOunces": 86
+      "userID": 2,
+      "date": "2023/03/26",
+      "numOunces": 88
     },
     {
-      "userID": 7,
-      "date": "2023/03/24",
-      "numOunces": 74
+      "userID": 1,
+      "date": "2023/03/27",
+      "numOunces": 63
     },
     {
-      "userID": 8,
-      "date": "2023/03/24",
-      "numOunces": 36
+      "userID": 2,
+      "date": "2023/03/27",
+      "numOunces": 68
     },
     {
-      "userID": 9,
-      "date": "2023/03/24",
-      "numOunces": 40
-    },
-    {
-      "userID": 10,
-      "date": "2023/03/24",
-      "numOunces": 49
-    },
-    {
-      "userID": 11,
-      "date": "2023/03/24",
-      "numOunces": 48
-    },
-    {
-      "userID": 12,
-      "date": "2023/03/24",
-      "numOunces": 24
-    },
-    {
-      "userID": 13,
-      "date": "2023/03/24",
+      "userID": 1,
+      "date": "2023/03/28",
       "numOunces": 97
     },
     {
-      "userID": 14,
-      "date": "2023/03/24",
-      "numOunces": 45
+      "userID": 2,
+      "date": "2023/03/28",
+      "numOunces": 50
     },
     {
-      "userID": 15,
-      "date": "2023/03/24",
-      "numOunces": 100
+      "userID": 1,
+      "date": "2023/03/29",
+      "numOunces": 20
+    },
+    {
+      "userID": 2,
+      "date": "2023/03/29",
+      "numOunces": 57
+    },
+    {
+      "userID": 1,
+      "date": "2023/03/30",
+      "numOunces": 76
+    },
+    {
+      "userID": 2,
+      "date": "2023/03/30",
+      "numOunces": 28
     }
-  ]
+  ];
 
   export default hydrationTestData;

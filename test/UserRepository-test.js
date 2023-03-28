@@ -110,6 +110,23 @@ var testRepository, users;
   })
 
   it('should store users', function() {
-    expect(testRepository.users).to.deep.equal(users)
+    expect(testRepository.users).to.deep.equal(users);
+  })
+
+  it('should find a user by id', function() {
+   testRepository.getUser(1);
+    expect(testRepository.getUser(1)).to.deep.equal(
+    {"id": 1,
+    "name": "Trystan Gorczany",
+    "address": "9484 Lucas Flat, West Kittymouth WA 67504",
+    "email": "Taurean_Pollich31@gmail.com",
+    "strideLength": 4,
+    "dailyStepGoal": 7000,
+    "friends": [
+      5,
+      43,
+      46,
+      11
+    ]});
   })
 });

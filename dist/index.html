@@ -1,69 +1,74 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="UTF-8">
-  <title>Fitlit</title>
-</head>
-
-<body>
-  <header>
-    <h1>Fit Lit</h1>
-    <h2>Hello, ${user}</h2>
-    <h2>Date</h2>
-  </header>
-  <main>
-    <section class="user">
-      <h3>User Profile</h3>
-      <ul>
-        <li>Name</li>
-        <li>ID</li>
-        <li>Stride Length</li>
-        <li>Daily Step Goal</li>
-      </ul>
-    </section>
-    <section class="activity">
-      <h3>Activity</h3>
-      <ul>
-        <li>Steps Today</li>
-        <li>Active Minutes Today</li>
-        <li>Distance Walked Today</li>
-        <li>Weekly Step Count</li>
-        <li>Goal Reached</li>
-      </ul>
-    </section>
-    <section class="hydration">
-      <h3>Hydration</h3>
-      <ul>
-        <li>Today</li>
-        <li>All Week</li>
-      </ul>
-    </section>
-    <section class="friends">
-      <h3>Friends</h3>
-      <ul>
-      </ul>
-    </section>
-    <section class="sleep">
-      <h3>Sleep Card</h3>
-      <ul>
-        <li>Latest Day</li>
-        <li>Latest Week</li>
-        <li>All Time Average</li>
-      </ul>
-    </section>
-    <section class="comparison">
-      <h3>Comparison to Other Users</h3>
-      <ul>
-        <li>Step Goal</li>
-      </ul>
-    </section>
-  </main>
-  <h1>Activity Tracker</h1>
-  <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-  <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-  <script src="bundle.js"></script>
-</body>
-
+  <head>
+    <link rel="stylesheet" href="Fit-Lit/src/css/styles.css">
+        <link href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    </head>
+    <title>Fitlit</title>
+  </head>
+  <body>
+    <article class="nav-container">
+      <p class="welcome-message">Hello, ${user}</p>
+      <p class="fitlit-message">FitLit</p>
+      <p class="date-message">Date</p>
+    </article>
+    <main class="data-container">
+      <div class="left-container">
+        <section class="user-container">
+          <p class="profile-header">User Profile</p>
+          <p class="user-name">Name</p>
+          <p class="user-id">ID</p>
+          <p class="user-stride">Stride Length</p>
+          <p class="user-steps">Daily Step Goal</p>
+        </section>
+          <section class="friends-container">
+          <p class="friends-header">Friends</p>
+          <p class="friends">friends go here</p>
+        </section>
+      </div>
+      <div class="center-container">
+        <section class="activity-container">
+          <p class="activity-header">Activity</section>
+          <p class="activity-steps-today">Steps Today</p>
+          <p class="activity-distance-today">Distance Walked Today</p>
+          <p class="activity-total-today">Active Minutes Today</p>
+          <p class="activity-steps-weekly">Steps This Week</p>
+          <p class="activity-goal">Goal Reached</p>
+        </section>
+        <section class="sleep-container">
+          <p class="sleep-header">Sleep</p>
+          <p class="sleep-today">Sleep Today</p>
+          <p class="sleep-weekly">Sleep This Week</p>
+          <p class="sleep-average">All Time Average</p>
+        </section>
+        <section class="hydration-container">
+          <p class="hydration-header">Hydration</p>
+          <p class="hydration-today">Hydration Today</p>
+          <p class="hydration-weekly">Hydration This Week</p>
+        </section>
+      </div>
+      <div class="right-container">
+        <section class="activity-tracker">
+          <p class="activity-tracker-header">Steps Today</p>
+          <img class="activity-tacker-placeholder" src="Fit-Lit/assets/activity-tracker-png.png" alt="activity-tracker-placeholder">
+        </section>
+        <section class="sleep-tracker">
+          <p class="sleep-tracker-header">Steps Today</p>
+          <img class="sleep-tacker-placeholder" src="Fit-Lit/assets/sleep-tracker-png.png" alt="activity-tracker-placeholder">
+        </section>
+        <section class="comparison-container">
+          <p class="comparison-header">Comparison to Other Users</p>
+          <p class="comparion-steps">comparison goes here</p>
+        </section>
+      </div>
+    </main>
+    </body>
+    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+    <script src="bundle.js"></script>
+  </body>
 </html>

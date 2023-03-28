@@ -1,11 +1,12 @@
 import { expect } from 'chai';
 import User from '../src/User';
-import Sleep from '../src/data/Sleep';
-import Hydration from '../src/data/Hydration';
-import Activity from '../src/data/Activity';
+// import Sleep from '../src/Sleep';
+// import Hydration from '../src/Hydration';
+// import Activity from '../src/Activity';
 import userTestData from '../src/data/user-test-data.js';
 import activityTestData from '../src/data/activity-test-data.js';
 import hydrationTestData  from '../src/data/hydration-test-data';
+import sleepTestData from '../src/data/sleep-test-data';
 
 describe('User Repository', () => {
   beforeEach(() =>{
@@ -24,14 +25,16 @@ describe('User Repository', () => {
       ]
     });
 
-    let testHydrationData = new Hydration(hydrationTestData);
-    let testSleepData = new Sleep(activityData);
-    let testActivityData = new Activity(activityTestData);
+    // let testHydrationClass = new Hydration(1, hydrationTestData.hydrationTestData);
+    // let testSleepClass = new Sleep(1, sleepTestData.sleepTestData);
+    // let testAcreivityClass = new Activity(1, activityTestData.activityTestData);
 
-    testUser.hydrationData = testHydrationData;
-    testUser.sleepData = testSleepData;
-    testUser. sleepData = testActivityData;
+    // testUser.hydrationData = testHydrationclass;
+    // testUser.sleepData = testSleepClass;
+    // testUser.activityData = testActivityClass;
 
+
+    
     let testUser2 = new User();
   });
 
@@ -50,17 +53,20 @@ describe('User Repository', () => {
   });
 
   it.skip('should store hydration data', () => {
-    expect(testUser.hydrationData).to.be.an.instanceOf(Hydration);
+    let hydration = new Hydration(hydrationTestData.hydrationTestData)
+    expect(testUser.hydrationData).to.deep.equal(hydration);
     expect(testUser.hydrationData.data.length).to.equal(8);
   });
 
   it.skip('should store sleep data', () => {
-    expect(testUser.sleepData).to.be.an.instanceOf(Sleep);
+    let sleepy = new Sleep(sleepTestData.sleepTestData)
+    expect(testUser.sleepData).to.deep.equal(sleepy);
     expect(testUser.sleepData.data.length).to.equal(8);
   });
 
   it.skip('should store activity data', () => {
-    expect(testUser.activityData).to.be.an.instanceOf(Activity);
+    let activity = new Activity(activityTestData.activityTestData)
+    expect(testUser.activityData).to.deep.equal(activity);
     expect(testUser.activityData.data.length).to.equal(8);
   });
   

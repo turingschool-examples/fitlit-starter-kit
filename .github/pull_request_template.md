@@ -1,6 +1,6 @@
 ## Checklist:
 
-Neccesary checkmarks:
+Necessary checkmarks:
 
    - [] All Tests are Passing
 

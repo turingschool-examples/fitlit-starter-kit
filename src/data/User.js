@@ -8,7 +8,7 @@ class User {
     this.dailyStepGoal = userInfo.dailyStepGoal;
     this.friends = userInfo.friends;
   };
-  
+
 };
 
 

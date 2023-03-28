@@ -18,4 +18,15 @@ console.log("User Data:", userData);
 
 import SomeClassYouChangeTheName from './SomeClassYouChangeTheName';
 
-const newClass = new SomeClassYouChangeTheName();
+const newUser = new User();
+
+function generateRandomUser() {
+    const randomUser = newUser[Math.floor(Math.random() * newUser.length)];
+    return randomUser
+};
+
+function displayWelcomeMessage() {
+    const randomUser = generateRandomUser();
+    const firstName = randomUser.firstName;
+    console.log(`Welcome, ${firstName}!`);
+};

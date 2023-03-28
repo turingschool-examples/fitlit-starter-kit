@@ -51,17 +51,17 @@ describe('User Repository', () => {
 
   it.skip('should store hydration data', () => {
     expect(testUser.hydrationData).to.be.an.instanceOf(Hydration);
-    expect(testUser.hydrationData.data).to.deep.equal()
+    expect(testUser.hydrationData.data).to.equal()
   });
 
   it.skip('should store sleep data', () => {
     expect(testUser.sleepData).to.be.an.instanceOf(Sleep);
-    expect(testUser.sleepData.data).to.deep.equal()
+    expect(testUser.sleepData.data).to.equal(8)
   });
 
   it.skip('should store activity data', () => {
     expect(testUser.activityData).to.be.an.instanceOf(Activity);
-    expect(testUser.activityData.data).to.deep.equal()
+    expect(testUser.activityData.data.length).to.equal(8)
   });
   
   it.skip('should be able to retun friends friends names', () => {

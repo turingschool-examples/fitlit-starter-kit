@@ -1,4 +1,4 @@
-export default { users: [
+const userTestData = [
   {
     "id": 1,
     "name": "Trystan Gorczany",
@@ -40,4 +40,6 @@ export default { users: [
       7
     ]
   }
-]};
+];
+
+export default userTestData;

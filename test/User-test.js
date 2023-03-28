@@ -25,9 +25,9 @@ describe('User Repository', () => {
       ]
     });
 
-    // let testHydrationClass = new Hydration(hydrationTestData.hydrationTestData);
-    // let testSleepClass = new Sleep(sleepTestData.sleepTestData);
-    // let testActivityClass = new Activity(activityTestData.activityTestData);
+    // let testHydrationClass = new Hydration(1, hydrationTestData.hydrationTestData);
+    // let testSleepClass = new Sleep(1, sleepTestData.sleepTestData);
+    // let testAcreivityClass = new Activity(1, activityTestData.activityTestData);
 
     // testUser.hydrationData = testHydrationclass;
     // testUser.sleepData = testSleepClass;

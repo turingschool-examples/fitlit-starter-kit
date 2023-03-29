@@ -8,6 +8,22 @@ class Sleep{
     this.sleepQuality = sleepInfo.sleepQuality;
     // this.sleepData = sleepData
   }
+  
+  getAvgSleep(userID) {
+    const sleepEntries = sleepTestData.filter(entry => entry.userID === userID);
+    const avgSleep = sleepEntries.reduce((acc, user) => {
+      return acc += user.hoursSlept
+    }, 0);
+    return Math.round(avgSleep/sleepEntries.length * 10) / 10;
+};
+  
+  getAvgQuality(userID) {
+    const sleepEntries = sleepTestData.filter(entry => entry.userID === userID);
+    const avgQuality = sleepEntries.reduce((acc, user) => {
+      return acc += user.sleepQuality
+    }, 0);
+    return Math.round(avgQuality/sleepEntries.length * 10) / 10;
+  }
 }
 
 

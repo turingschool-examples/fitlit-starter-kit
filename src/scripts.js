@@ -73,6 +73,8 @@ function displayhydrationCard(hydration, userID, date) {
      userID,
      date
    )} ounces </p> 
-  <p><b>Water consumed this week: </b> ${hydration.weeklyOuncesConsumed(userID, date)} </p>
-  `;;
+  <p><b>Water consumed this week: </b> <br>${hydration.weeklyOuncesConsumed(userID, date).map(day => {
+    return `${day.date}: ${day.numOunces} ounces<br>`;
+  })} </p>
+  `;
 }

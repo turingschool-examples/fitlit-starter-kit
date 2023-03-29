@@ -1,11 +1,8 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-
-// An example of how you tell webpack to use a CSS file
 import './css/styles.css';
 import User from './data/User';
 import { userDataFetch } from './apiCalls';
+import userData from './data/users';
+console.log("User Data:", userData);
 
 let users, hydration, sleep, activity //other vars;
 
@@ -29,18 +26,12 @@ function displayUsers() {
 }
 
 console.log(users)
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png';
+
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
-// An example of how you tell webpack to use a JS file
 
-import userData from './data/users';
-console.log("User Data:", userData);
 
-import SomeClassYouChangeTheName from './SomeClassYouChangeTheName';
-// import users from './data/users';
 
 const newUser = new User();
 

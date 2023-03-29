@@ -1,39 +1,31 @@
 import { expect } from 'chai';
 import User from '../src/User';
-// import Sleep from '../src/Sleep';
-// import Hydration from '../src/Hydration';
-// import Activity from '../src/Activity';
+import Sleep from '../src/Sleep';
+import Hydration from '../src/Hydration';
+import Activity from '../src/Activity';
 import userTestData from '../src/data/user-test-data.js';
 import activityTestData from '../src/data/activity-test-data.js';
 import hydrationTestData  from '../src/data/hydration-test-data';
 import sleepTestData from '../src/data/sleep-test-data';
 
 describe('User', () => {
+  let testUser;
+  let hydration;
+  let sleep;
+  let activity;
+  let testUser2
   beforeEach(() => {
-    let testUser = new User({
-      "id": 1,
-      "name": "Trystan Gorczany",
-      "address": "9484 Lucas Flat, West Kittymouth WA 67504",
-      "email": "Taurean_Pollich31@gmail.com",
-      "strideLength": 4,
-      "dailyStepGoal": 7000,
-      "friends": [
-        5,
-        43,
-        46,
-        11
-      ]
-    });
+    testUser = new User(userTestData.userTestData[0]);
 
-    // let testHydrationClass = new Hydration(1, hydrationTestData.hydrationTestData);
-    // let testSleepClass = new Sleep(1, sleepTestData.sleepTestData);
-    // let testAcreivityClass = new Activity(1, activityTestData.activityTestData);
+    hydration = new Hydration(1, hydrationTestData.hydrationTestData);
+    sleep = new Sleep(1, sleepTestData.sleepTestData);
+    activity = new Activity(1, activityTestData.activityTestData);
 
-    // testUser.hydrationData = testHydrationclass;
-    // testUser.sleepData = testSleepClass;
-    // testUser.activityData = testActivityClass;
+    testUser.hydrationData = hydration;
+    testUser.sleepData = sleep;
+    testUser.activityData = activity;
 
-    let testUser2 = new User();
+    testUser2 = new User();
   });
 
   it('should be a function', () => {
@@ -51,25 +43,25 @@ describe('User', () => {
   });
 
   it.skip('should store hydration data', () => {
-    let hydration = new Hydration(hydrationTestData.hydrationTestData)
+    // let hydration = new Hydration(hydrationTestData.hydrationTestData)
     expect(testUser.hydrationData).to.deep.equal(hydration);
     expect(testUser.hydrationData.data.length).to.equal(8);
   });
 
   it.skip('should store sleep data', () => {
-    let sleepy = new Sleep(sleepTestData.sleepTestData)
-    expect(testUser.sleepData).to.deep.equal(sleepy);
+    // let sleepy = new Sleep(sleepTestData.sleepTestData)
+    expect(testUser.sleepData).to.deep.equal(sleep);
     expect(testUser.sleepData.data.length).to.equal(8);
   });
 
   it.skip('should store activity data', () => {
-    let activity = new Activity(activityTestData.activityTestData)
+    // let activity = new Activity(activityTestData.activityTestData)
     expect(testUser.activityData).to.deep.equal(activity);
     expect(testUser.activityData.data.length).to.equal(8);
   });
   
   it.skip('should be able to retun friends friends names', () => {
-    expect(testUser.getFriends()).to.equal("Brycen");
+    expect(testUser.getFriends()).to.deep.equal(["Brycen"]);
     expect(testUser2.getFriends()).to.equal("Embrace the Solitude");
   });
 

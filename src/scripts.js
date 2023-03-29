@@ -1,7 +1,8 @@
 import './css/styles.css';
 import User from "../src/data/User.js"
-// import Hydration from "./Hydration"
+import Hydration from "./data/Hydration.js"
 import userTestData from '../test/user-test-data';
+import hydrationTestData from '../test/hydration-test-data';
 
 let welcomeMessage = document.querySelector("#headerWelcome");
 let userName = document.querySelector("#userName");
@@ -11,13 +12,20 @@ let userStrideLength = document.querySelector("#userSL");
 let userDailyStepGoal = document.querySelector("#userDSG");
 let stepGoalComparison = document.querySelector("#stepGoalComp");
 let userFriends = document.querySelector("#userFriends");
+let dailyWater = document.querySelector("#dailyWater");
 
+let date = new Date()
+var currentDate = date.getFullYear() + "/" + ("0" + (date.getMonth()+1)).slice(-2) + "/"+ ("0" + date.getDate()).slice(-2);
+
+console.log(currentDate)
 let newUser;
+let hydrationEntries;
 
 window.addEventListener('load', function() {
     generateRandomUser();
     displayWelcomeMessage();
     displayInfoCard();
+    displayWaterConsumed();
 });
 
 function generateRandomUser() {
@@ -55,9 +63,18 @@ function displayStepGoalComparison() {
     };
 };
 
-function displayWaterConsumed(user) {
-    const waterConsumed = user.waterConsumed;
-    console.log(`You have consumed ${waterConsumed} ounces of water today.`)
+function displayWaterConsumed() {
+  hydrationEntries = hydrationTestData.filter(entry => entry.userID === newUser.id);
+  console.log(hydrationEntries)
+
+  const currentDayEntry = hydrationEntries.find(entry => entry.date == currentDate)
+  console.log(currentDayEntry)
+
+  if (currentDayEntry) {
+    dailyWater.innerText = `You have consumed ${currentDayEntry.numOunces} ounces of water today.`
+  } else {
+    dailyWater.innerText = 'Drink more water. You thirsty!'
+  }
 };
 
 function waterConsumedByWeek(user, startDate = null) {

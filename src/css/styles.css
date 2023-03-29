@@ -5,6 +5,16 @@
   margin: 0;
 } */
 
+body {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 100%;
+  background: linear-gradient(0.25turn, #3365ee, #3c4b7b, #6d758a);
+  transition: transform 250ms ease-out;
+}
+
+/* Header */
 header {
   display: flex;
   flex-direction: column;
@@ -14,28 +24,44 @@ header {
   border: 2px solid black;
 }
 
-body {
+.lower-header {
   display: flex;
-  flex-direction: column;
-  text-align: center;
-  height: 80%;
-  background: linear-gradient(0.25turn, #3365ee, #3c4b7b, #6d758a);
-  transition: transform 250ms ease-out;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
+.header-date {
+  background-color: rgb(158, 234, 231);
+  margin-right: 3%;
+  border-radius: 8px;
+  padding: 1%;
+  text-shadow: 2px 2px rgb(222, 217, 217);
+}
+
+.header-quote {
+  border-radius: 8px;
+  background-color: rgb(158, 234, 231);
+  margin-left: 3%;
+  padding: 1%;
+  text-shadow: 2px 2px rgb(222, 217, 217);
+}
+
+.header-welcome {
+  border-radius: 8px;
+  background-color: rgb(158, 234, 231);
+  font-size: 2.5em;
+  width: 30%;
+  padding: 1%;
+  display: flex;
+  margin-left: 35%;
+  box-shadow: 7px 5px 5px #2c2e34;
+}
+
+/* Main */
 .data-container {
   display: flex;
   flex-direction: row;
-}
-
-.info-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 30%;
-  border: 2px solid black;
-  overflow-y: auto;
-  align-items: center;
+  height: 80%;
 }
 
 .main-section {
@@ -64,18 +90,23 @@ body {
   padding: 1%;
 }
 
+/* SideBar */
+.info-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 30%;
+  border: 2px solid black;
+  overflow-y: auto;
+  align-items: center;
+}
+
 .user-name {
   display: flex;
   flex-direction: column;
-  height: 20%;
+  height: 10%;
   margin: 0% 5% 0% 5%;
   cursor: pointer;
-}
-
-.lower-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 }
 
 .sidebar-title {
@@ -86,40 +117,4 @@ body {
   box-shadow: 7px 5px 5px #2c2e34;
   text-shadow: 2px 2px rgb(222, 217, 217);
   padding: 1%;
-}
-
-.friends-info {
-  display: flex;
-  flex-direction: column;
-  height: 90%;
-  background-color: rgb(158, 234, 231);
-  border-radius: 8px;
-  padding: 1%;
-}
-
-.header-date {
-  background-color: rgb(158, 234, 231);
-  margin-right: 3%;
-  border-radius: 8px;
-  padding: 1%;
-  text-shadow: 2px 2px rgb(222, 217, 217);
-}
-
-.header-quote {
-  border-radius: 8px;
-  background-color: rgb(158, 234, 231);
-  margin-left: 3%;
-  padding: 1%;
-  text-shadow: 2px 2px rgb(222, 217, 217);
-}
-
-.header-welcome {
-  border-radius: 8px;
-  background-color: rgb(158, 234, 231);
-  font-size: 2.5em;
-  width: 30%;
-  padding: 1%;
-  display: flex;
-  margin-left: 35%;
-  box-shadow: 7px 5px 5px #2c2e34;
 }

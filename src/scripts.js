@@ -1,38 +1,57 @@
 import './css/styles.css';
-// import './images/turing-logo.png';
-import User from "./User"
-import UserRespository from "./User"
-import Hydration from "./Hydration"
+import User from "../src/data/User.js"
+// import Hydration from "./Hydration"
+import userTestData from '../test/user-test-data';
 
+let welcomeMessage = document.querySelector("#headerWelcome");
+let userName = document.querySelector("#userName");
+let userEmail = document.querySelector("#userEmail");
+let userAddress = document.querySelector("#userAddress");
+let userStrideLength = document.querySelector("#userSL");
+let userDailyStepGoal = document.querySelector("#userDSG");
+let stepGoalComparison = document.querySelector("#stepGoalComp");
+let userFriends = document.querySelector("#userFriends");
 
+let newUser;
 
-const newUser = new User();
+window.addEventListener('load', function() {
+    generateRandomUser();
+    displayWelcomeMessage();
+    displayInfoCard();
+});
 
 function generateRandomUser() {
-    const randomUser = newUser[Math.floor(Math.random() * newUser.length)];
-    return randomUser
+    newUser = new User(userTestData[Math.floor(Math.random() * userTestData.length)]);
 };
 
 function displayWelcomeMessage() {
-    const randomUser = generateRandomUser();
-    const firstName = randomUser.firstName;
-    console.log(`Welcome, ${firstName}!`);
+    welcomeMessage.innerText = `Welcome, ${newUser.getUserFirstName()}!`
 };
 
-function displayStepGoalComparison(user, allUsers) {
-    const userStepGoal = user.stepGoal;
-    const totalStepGoals = allUsers.reduce((acc, user) => acc + user.stepGoal, 0);
-    const averageStepGoal = totalStepGoals / allUsers.length;
+function displayInfoCard() {
+    userName.innerText = newUser.name;
+    userEmail.innerText = newUser.email;
+    userAddress.innerText = newUser.address;
+    userStrideLength.innerText = `Stride Length: ${newUser.strideLength}`;
+    userDailyStepGoal.innerText = `Daily Step Goal: ${newUser.dailyStepGoal}`;
+    userFriends.innerText = `Friends: ${newUser.friends}`;
+    displayStepGoalComparison();
+};
 
-    console.log(`Your step goal is ${userStepGoal}.`);
-    console.log(`The average step goal amongst all users is ${averageStepGoal}.`)
+function displayStepGoalComparison() {
+    const userStepGoal = newUser.dailyStepGoal;
+    const totalStepGoals = userTestData.reduce((acc, user) => {
+        acc += user.dailyStepGoal
+        return acc
+    }, 0)
+    const averageStepGoal = totalStepGoals / userTestData.length;
 
     if (userStepGoal > averageStepGoal) {
-        console.log(`Great job!!! Your step goal is above average.  You are KICKING ASS.`);
+        stepGoalComparison.innerText = `Great job!!! Your step goal is above average.  You are KICKING ASS.`;
     } else if (userStepGoal < averageStepGoal) {
-        console.log(`You can do it!!! Your step goal is below average.  TRY HARDER.`);
+        stepGoalComparison.innerText = `You can do it!!! Your step goal is below average.  TRY HARDER.`;
     } else {
-        console.log(`You are right on track with the average step goal.  Way to be just AVERAGE.`)
+        stepGoalComparison.innerText = `You are right on track with the average step goal.  Way to be just AVERAGE.`
     };
 };
 

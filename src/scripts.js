@@ -28,7 +28,7 @@ fetch("https://fitlit-api.herokuapp.com/api/v1/users")
     displayUserCard(user);
     displayStepUserVsAllUsers(user, userBase);
     displayUserGreeting(user);
-  })
+  });
 
 fetch("https://fitlit-api.herokuapp.com/api/v1/hydration")
   .then((response) => response.json())
@@ -37,9 +37,16 @@ fetch("https://fitlit-api.herokuapp.com/api/v1/hydration")
     displayhydrationCard(hydration, userID, date);
   });
 
+fetch("https://fitlit-api.herokuapp.com/api/v1/sleep")
+  .then((response) => response.json())
+  .then((data) => {
+    sleep = new Sleep(data.sleepData);
+    // sleep DOM manipulation functions go here
+  });
+
 // Functions
 function displayUserCard(user) {
-  const userCard = document.querySelector('.user-info-card-js');
+  const userCard = document.querySelector('.user-profile-info-js');
   userCard.innerHTML = `
     <p><b>Name:</b> ${user.name}</p>
     <p><b>Address:</b> ${user.address}</p>
@@ -51,7 +58,7 @@ function displayUserCard(user) {
 }
 
 function displayStepUserVsAllUsers(user, userBase) {
-  const stepUserVsAllUsers = document.querySelector('.step-user-vs-all-users-js');
+  const stepUserVsAllUsers = document.querySelector('.user-steps-vs-all-js');
   stepUserVsAllUsers.innerHTML = `
     <p><b>Your Step Goal:</b> ${user.dailyStepGoal}</p>
     <p><b>Average Step Goal:</b> ${userBase.calculateAverageStepGoal()}</p>

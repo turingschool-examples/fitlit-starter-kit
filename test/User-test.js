@@ -61,12 +61,12 @@ describe('User', () => {
   });
   
   it.skip('should be able to retun friends friends names', () => {
-    expect(testUser.getFriends()).to.deep.equal(["Brycen"]);
-    expect(testUser2.getFriends()).to.equal("Embrace the Solitude");
+    expect(testUser.getFriends(userTestData.userTestData)).to.deep.equal(["Brycen"]);
+    expect(testUser2.getFriends(userTestData.userTestData)).to.equal("Embrace the Solitude");
   });
 
   it.skip('should get the average step goals of all users', () => {
-    expect(testUser.getAverage()).to.equal(6570);
+    expect(testUser.getAverage(userTestData.userTestData)).to.equal(6570);
   });
 
   it.skip('should get the users first name', () => {

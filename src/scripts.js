@@ -66,8 +66,8 @@ function displayStepUserVsAllUsers(user, userBase) {
 }
 
 function displayUserGreeting(user) {
-  const userNavbar = document.querySelector('.nav-bar');
-  userNavbar.innerHTML = `
+  const userGreeting = document.querySelector('.welcome-header');
+  userGreeting.innerHTML = `
 <h2>Hi, ${user.getFirstName()}</h2>
 `;
 }

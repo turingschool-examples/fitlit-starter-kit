@@ -1,22 +1,24 @@
 import './css/styles.css';
 // import './images/turing-logo.png';
-import User from "./User"
-import UserRespository from "./User"
-import Hydration from "./Hydration"
+import User from "../src/data/User.js"
+// import Hydration from "./Hydration"
+import userTestData from '../test/user-test-data';
 
+let welcomeMessage = document.querySelector("#headerWelcome");
 
+let newUser;
 
-const newUser = new User();
+window.addEventListener('load', function() {
+    generateRandomUser();
+    displayWelcomeMessage();
+})
 
 function generateRandomUser() {
-    const randomUser = newUser[Math.floor(Math.random() * newUser.length)];
-    return randomUser
+    newUser = new User(userTestData[Math.floor(Math.random() * userTestData.length)]);
 };
 
 function displayWelcomeMessage() {
-    const randomUser = generateRandomUser();
-    const firstName = randomUser.firstName;
-    console.log(`Welcome, ${firstName}!`);
+    welcomeMessage.innerText = `Welcome, ${newUser.getUserFirstName()}!`
 };
 
 function displayStepGoalComparison(user, allUsers) {

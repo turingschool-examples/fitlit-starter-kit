@@ -2,10 +2,11 @@ import {
   expect
 } from 'chai';
 import Activity from '../src/classes/Activity';
+import User from '../src/classes/User';
 import activityTestData from './activity-test-data';
 import userTestData from './user-test-data';
-import User from '../src/classes/User';
 
+import User from '../src/classes/User';
 
 describe("Activity", () => {
   let activity;
@@ -33,8 +34,36 @@ describe("Activity", () => {
     }, );
   });
 
+
   it("should calculate the miles walked given a date", () => {
    const user = new User(userTestData[0]);
    expect(activity.calculateMilesWalked("2023/03/24", user)).to.equal(6);
   })
+
+  it('should be a function', function () {
+    expect(activity.dailyMinutesActive).to.be.a('function');
+  });
+
+  it('should return a users daily minutes of activity', function () {
+    expect(activity.dailyMinutesActive(1, "2023/03/24")).to.be.equal(261);
+  });
+
+  it('should return a users daily minutes of activity', function () {
+    expect(activity.dailyMinutesActive(6, "2023/03/24")).to.be.equal(116);
+  });
+
+  it('should be a function', function () {
+    expect(activity.stepGoalMet).to.be.a('function');
+  });
+
+  it('should return true if user has met step goal', () => {
+    let user = new User(userTestData[0]);
+    expect(activity.stepGoalMet(user, "2023/03/24")).to.be.equal(true);
+  });
+
+  it('should return false is user did not meet step goal',() => {
+    let user = new User(userTestData[1]);
+    expect(activity.stepGoalMet(user, "2023/03/24")).to.be.equal(false);
+  })
+
 });

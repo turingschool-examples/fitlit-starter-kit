@@ -15,12 +15,6 @@ console.log('This is the JavaScript entry file - your code begins here.');
 import userData from './data/users';
 console.log("User Data:", userData);
 
-import SomeClassYouChangeTheName from './SomeClassYouChangeTheName';
-// import { arguments } from 'file-loader';
-
-const newClass = new SomeClassYouChangeTheName();
-
-
 
 // get a radom number based on the amount of IDs we have
 // fetch data based off the id ADN the end-point key

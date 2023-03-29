@@ -15,6 +15,16 @@ class UserHydration {
     return allTimeAverage
   }
 
+    calculateSingleDayOunces(day) {
+      const allDays = this.hydrationInfo.filter(dayInfo => dayInfo.date === day);
+      const totalOunces = allDays.reduce((acc, cur) => {
+        return acc += cur.numOunces;
+      }, 0);
+  
+      return totalOunces;
+    }
+  
+
     calculateOuncesLastSevenDays() {
       const sevenDayOunces = [];
   
@@ -36,7 +46,7 @@ class UserHydration {
   
       return sevenDayOunces;
     }
-  }
+}
   
 
   

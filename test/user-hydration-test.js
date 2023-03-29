@@ -19,9 +19,9 @@ describe('userHydration', () => {
     expect(average).to.equal(58.43);
   });
 
-  it.skip("Should calculate how many ounces are consumed for a specific day ", () => {
-    const specificDayOz = hydrationObj.calculateSingleDayOunces('date-string');
-    expect(specificDayOz).to.equal('specificOz');
+  it("Should calculate how many ounces are consumed for a specific day ", () => {
+    const specificDayOz = hydrationObj.calculateSingleDayOunces("2023/03/24");
+    expect(specificDayOz).to.equal(28);
   });
   it.skip("should calculate how many fluid ounces of water were consumed through 7 days", () => {
     const weekOfOz = hydrationObj.calculateWeekOfOunces();

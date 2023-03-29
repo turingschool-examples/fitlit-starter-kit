@@ -13,6 +13,7 @@ const userAddress = document.querySelector('.user-address')
 const userEmail = document.querySelector('.user-email')
 const userStride = document.querySelector('.user-stride')
 const userSteps = document.querySelector('.user-steps')
+const welcomeMessage = document.querySelector('.welcome-message')
 
 window.addEventListener('load', displayRandomUser() )
 
@@ -27,6 +28,7 @@ function displayRandomUser() {
   // userEmail.innerText = user.email
   userStride.innerText = `Stride Length: ${user.strideLength}`
   userSteps.innerText = `Daily Step Goal: ${user.dailyStepGoal}`
+welcomeMessage.innerText = `Hello, ${user.getFirstName()}!`
 
 }
 

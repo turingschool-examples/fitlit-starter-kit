@@ -8,13 +8,41 @@ import './css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
 
-console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
-
+import User from './user';
 import userData from './data/users';
-console.log("User Data:", userData);
+import UserHydration from './userHydration';
 
-import SomeClassYouChangeTheName from './SomeClassYouChangeTheName';
+//console.log("User Data:", userData);
 
-const newClass = new SomeClassYouChangeTheName();
+//Get Random user by refrencing the class
+const currentUser = new User(userData);
+//Get Current user First Name
+currentUser.userFirstName()
+
+//Change The Current User By ID
+currentUser.findUserById(1,userData)
+//Get Current user First Name
+currentUser.userFirstName()
+
+//Get overall Step goal
+currentUser.findOverAllStepGoal(userData)
+//Get user Step Goal
+currentUser.dailyStepGoal
+
+//Get First Name by ID
+currentUser.userFirstNameById(49,userData)
+
+
+
+//Print Current User Object
+console.log(currentUser)
+
+// console.log(currentUser.userId)
+// console.log(currentUser.userName)
+// console.log(currentUser.address)
+// console.log(currentUser.email)
+// console.log(currentUser.strideLength)
+// console.log(currentUser.dailyStepGoal)
+// console.log(currentUser.friends)

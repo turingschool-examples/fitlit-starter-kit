@@ -1,6 +1,11 @@
+import * as dayjs from 'dayjs'
 class Hydration {
   constructor(data) {
-    this.data = data;
+    this.data = data
+      .map((water) => {
+        water.date = dayjs(water.date, 'YYYY/MM/DD')
+        return water
+      })
   }
   // acc = total currentValue = water
   findAvgDailyHydration(userID) {
@@ -25,10 +30,17 @@ class Hydration {
     return consumptionByDate.numOunces
   }
 
-  findWeeklyHydration(date) {
-    const hydrationData = this.data.filter(data => data.date >= date);
-    const weekData = hydrationData.slice(0, Math.min(hydrationData.length,7));
-    return weekData.map(data => data.numOunces);
+  findWeeklyHydration() {
+    return this.data.map(water => water.numOunces).slice(0,7)
+  }
+
+  sortData() {
+    this.data = this.data
+      .sort((a,b) => a.date - b.date)
+    this.data.map((water) => {
+      water.date = dayjs(water.date, 'YYYY/MM/D').format('YYYY/MM/DD')
+      return water
+    })
   }
 }
 

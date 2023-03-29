@@ -1,6 +1,6 @@
 import {expect} from 'chai';
-import Sleep from '../src/Sleep';
-import sleepTestData from './sleep-test-data';
+import Sleep from '../src/classes/Sleep.js';
+import sleepTestData from "./sleep-test-data";
 
 describe('Sleep', () => {
   let sleep;

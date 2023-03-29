@@ -15,4 +15,4 @@ getFirstName() {
 
 }
 
-module.exports = User;
+export default User;

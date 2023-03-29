@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import User from '../src/User';
-import UserRepository from '../src/UserRepository';
+import User from "../src/classes/User.js";
+import UserRepository from '../src/classes/UserRepository';
 
 describe('User', () => {
 var testRepository, testUser, users;

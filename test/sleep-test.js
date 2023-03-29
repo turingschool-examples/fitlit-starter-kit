@@ -45,4 +45,18 @@ let userSleep1, userSleep2;
     expect(userSleep2.getAvgQuality(2)).to.equal(3.3);
   });
 
+  it('should be able to get user\'s hours slept by day', function() {
+    expect(userSleep1.getHoursByDay(1, '2023/03/24')).to.equal(9.6);
+    expect(userSleep1.getHoursByDay(1, '2023/03/29')).to.equal(5.6);
+    expect(userSleep2.getHoursByDay(2, '2023/03/25')).to.equal(8.1);
+    expect(userSleep2.getHoursByDay(2, '2023/03/28')).to.equal(5.1);
+  });
+
+  it('should be able to get user\'s sleep quality by day', function() {
+    expect(userSleep1.getQualityByDay(1, '2023/03/24')).to.equal(4.3);
+    expect(userSleep1.getQualityByDay(1, '2023/03/29')).to.equal(2.1);
+    expect(userSleep2.getQualityByDay(2, '2023/03/25')).to.equal(4.7);
+    expect(userSleep2.getQualityByDay(2, '2023/03/28')).to.equal(2.1);
+  });
+
 })

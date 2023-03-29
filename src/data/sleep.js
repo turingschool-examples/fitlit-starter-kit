@@ -8,7 +8,7 @@ class Sleep{
     this.sleepQuality = sleepInfo.sleepQuality;
     // this.sleepData = sleepData
   }
-  
+
   getAvgSleep(userID) {
     const sleepEntries = sleepTestData.filter(entry => entry.userID === userID);
     const avgSleep = sleepEntries.reduce((acc, user) => {
@@ -24,7 +24,19 @@ class Sleep{
     }, 0);
     return Math.round(avgQuality/sleepEntries.length * 10) / 10;
   }
-}
+
+  getHoursByDay(userID, date) {
+    const sleepEntries = sleepTestData.filter(entry => entry.userID === userID);
+    const dailyEntry = sleepEntries.find(entry => entry.date === date)
+    return dailyEntry.hoursSlept
+  }
+
+  getQualityByDay(userID, date) {
+    const sleepEntries = sleepTestData.filter(entry => entry.userID === userID);
+    const dailyEntry = sleepEntries.find(entry => entry.date === date)
+    return dailyEntry.sleepQuality
+  }
+};
 
 
 export default Sleep;

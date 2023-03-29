@@ -6,8 +6,8 @@ import './images/turing-logo.png';
 
 // JS File Imports
 
-import UserRepository from './UserRepository';
-import User from './User';
+import UserRepository from './classes/UserRepository';
+import User from './classes/User';
 import Hydration from './classes/Hydration';
 
 //Global variables

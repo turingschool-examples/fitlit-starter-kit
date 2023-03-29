@@ -21,7 +21,7 @@ class Hydration {
     acc += user.numOunces
     return acc
     },0)
-    return total/allUserHydration.length.toFixed(2)
+    return total/allUserHydration.length.toFixed(2);
   }
 
   dailyOuncesConsumed(user, date) {

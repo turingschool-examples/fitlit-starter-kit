@@ -39,7 +39,7 @@ class UserHydration {
   }
   
 
-  }
+  
 
 
 export default UserHydration

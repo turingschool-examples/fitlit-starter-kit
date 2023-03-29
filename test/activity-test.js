@@ -3,6 +3,9 @@ import {
 } from 'chai';
 import Activity from '../src/classes/Activity';
 import activityTestData from './activity-test-data';
+import userTestData from './user-test-data';
+import User from '../src/classes/User';
+
 
 describe("Activity", () => {
   let activity;
@@ -29,4 +32,9 @@ describe("Activity", () => {
       flightsOfStairs: 26
     }, );
   });
+
+  it("should calculate the miles walked given a date", () => {
+   const user = new User(userTestData[0]);
+   expect(activity.calculateMilesWalked("2023/03/24", user)).to.equal(6);
+  })
 });

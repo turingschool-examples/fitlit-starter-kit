@@ -8,20 +8,34 @@ import './images/turing-logo.png';
 
 import UserRepository from './UserRepository';
 import User from './User';
+import Hydration from './classes/Hydration';
 
+//Global variables
+let hydration;
+let user;
+let userID = 1;
+let date = "2023/03/24";
+
+//Query Selectors
+const hydrationCard = document.querySelector(".hydration-holder");
 
 // Fetch APIs
 fetch("https://fitlit-api.herokuapp.com/api/v1/users")
   .then(response => response.json())
   .then(userData => {
     const userBase = new UserRepository(userData.users);
-    console.log(userBase)
-    let user = new User(userBase.getUser(1));
+    user = new User(userBase.getUser(userID));
     displayUserCard(user);
     displayStepUserVsAllUsers(user, userBase);
     displayUserGreeting(user);
-})
+  })
 
+fetch("https://fitlit-api.herokuapp.com/api/v1/hydration")
+  .then((response) => response.json())
+  .then((data) => {
+    hydration = new Hydration(data.hydrationData);
+    displayhydrationCard(hydration, userID, date);
+  });
 
 // Functions
 function displayUserCard(user) {
@@ -45,8 +59,22 @@ function displayStepUserVsAllUsers(user, userBase) {
 }
 
 function displayUserGreeting(user) {
-const userNavbar = document.querySelector('.nav-bar');
-userNavbar.innerHTML = `
+  const userNavbar = document.querySelector('.nav-bar');
+  userNavbar.innerHTML = `
 <h2>Hi, ${user.getFirstName()}</h2>
 `;
+}
+
+function displayhydrationCard(hydration, userID, date) {
+  hydrationCard.innerHTML = `<p><b>Average Daily Water Consumption:</b> ${hydration.calculateAverageFluidPerUser(
+    userID
+  )} ounces </p>
+   <p><b>Water consumed today:</b> ${hydration.dailyOuncesConsumed(
+     userID,
+     date
+   )} ounces </p> 
+  <p><b>Water consumed this week: </b> <br>${hydration.weeklyOuncesConsumed(userID, date).map(day => {
+    return `${day.date}: ${day.numOunces} ounces<br>`;
+  })} </p>
+  `;
 }

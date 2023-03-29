@@ -1,32 +1,134 @@
+*   { 
+  font-family: 'Lato', sans-serif;
+  /* border: 1px green solid; */
+}
+
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
+  margin: 0px;
   height: 100%;
 }
 
-header {
+.nav-container {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  height: 15%;
+  margin-top: 25px;
+  margin-right: 4%;
+  margin-bottom: 1%;
+  margin-left: 4%;
+  height: 8%;
+  font-size: 21px;
+  color: #202020;
 }
 
-main {
+.welcome-container  {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  height: 85%;
-
-  
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  width: 375px;
 }
 
-.user, .activity, .hydration, .friends, .sleep, .comparison  {
+.profile-image{
+  padding-right: 10px;
+}
+
+.fitlit-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 375px;
+}
+
+.fitlit-message {
+  font-weight: bolder;
+  padding-right: 10px;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-content: center;
+  width: 375px;
+}
+
+.calendar-image {
+  padding-left: 10px;
+  margin: 5px;
+}
+
+.data-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid black;
-  height: 40%;
-  width: 30%;
-  border-radius: 5px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-bottom: 2%;
+  height: 95%;
 }
 
+.left-container, .center-container, .right-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 90%;
+  width: 31%;
+  margin-right: 1%;
+  margin-left: 1%;
+  background-color: rgb(20, 20, 20);opacity:0.9;
+  /* background-color: rgb(26, 36, 92);opacity:0.8; */
+  border-radius: 2%;
+}
+
+.user-container, .friends-container, .comparison-container, .activity-container, .sleep-container, .hydration-container, .activity-tracker, .sleep-tracker {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 4%;
+  padding: 2%;
+  height: fit-content;
+  width: 90%;
+  background-color: rgb(255, 52, 106);opacity:0.8;
+  border-radius: 2%;
+}
+
+.user-container{
+  background-color: rgb(255, 123, 0);opacity:0.8;
+}
+
+.friends-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 90%;
+}
+
+.friends-image  {
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.user-name, .user-name, .user-id, .user-stride, .user-steps, .comparison-steps, .activity-steps-today, .activity-distance-today, .activity-total-today, .activity-steps-weekly, .activity-goal, .sleep-today, .sleep-weekly, .sleep-average, .hydration-today, .hydration-weekly {
+  margin: 5px;
+}
+
+.profile-header, .friends-header, .comparison-header, .activity-header, .steps-header, .activity-header, .sleep-header, .hydration-header, .activity-tracker-header, .sleep-tracker-header {
+  /* text-justify: ; */
+  margin: 5px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* .water-container  {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 5%;
+} */

@@ -9,6 +9,10 @@ import './images/turing-logo.png';
 import UserRepository from './UserRepository';
 import User from './User';
 
+//Global variables
+let hydration;
+let user;
+const userID = 1;
 
 // Fetch APIs
 fetch("https://fitlit-api.herokuapp.com/api/v1/users")
@@ -16,12 +20,19 @@ fetch("https://fitlit-api.herokuapp.com/api/v1/users")
   .then(userData => {
     const userBase = new UserRepository(userData.users);
     console.log(userBase)
-    let user = new User(userBase.getUser(1));
+    user = new User(userBase.getUser(userID));
     displayUserCard(user);
     displayStepUserVsAllUsers(user, userBase);
     displayUserGreeting(user);
 })
 
+fetch("https://fitlit-api.herokuapp.com/api/v1/hydration")
+  .then((response) => response.json())
+  .then((data) => {
+    hydration = new Hydration(data.hydrationData);
+    console.log(user.id, "user");
+    displayhydrationCard(hydration);
+  });
 
 // Functions
 function displayUserCard(user) {

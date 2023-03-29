@@ -1,4 +1,4 @@
-class userHydration {
+class UserHydration {
   constructor(userID, hydrationData) {
     this.userID = userID
     this.hydrationInfo = hydrationData.filter(user => user.userID === userID)
@@ -25,23 +25,7 @@ class userHydration {
     return totalOunces
   }
 
-  calculateOuncesLastSevenDays(startDate, endDate) {
-    const ouncesInWeek = [];
-
-    for (var i = 6; i >=0; i--) {
-      const date = new Date();
-      date.setDate(date.getDate() - i);
-      
-      const dayInfo = this.hydrationInfo.find => {
-        const infoDate = new Date(info.date);
-        return infoDate.toDateString() === date.toDateString();
-      }
-      }
-    }
-    return this.hydrationInfo.sort()
-
-
   }
-}
 
-export default userHydration
+
+export default UserHydration

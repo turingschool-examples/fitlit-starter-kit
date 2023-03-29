@@ -1,10 +1,73 @@
-body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  background-image: white;
   height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+
+body {
   font-family: 'Space Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 header {
   font-family: 'Bungee Shade', cursive;
+  background-color: hotpink;
+  display: flex;
+  justify-content: space-evenly;
 }
+
+article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+section {
+  background-color: rgba(97, 17, 17, 0.765);
+  display: flex;
+
+}
+
+div {
+  height: 20vh;
+  width: 50vw;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  display: flex;
+  flex-direction: column;
+}
+
+h3 {
+  font-family:fantasy;
+}
+
+.box {
+  background-color: hotpink;
+  display: flex;
+  justify-content: center;
+}
+
+.info-box {
+  height: 20vh;
+  width: 50vw;
+  padding: 10px;
+  border: solid black;
+  margin: 10px
+}
+

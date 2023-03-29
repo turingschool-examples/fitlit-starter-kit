@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>FitLit</title>
-    <link href="/src/css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="./css/styles.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
@@ -14,54 +14,51 @@
   </head>
   <body>
     <header>
-      <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+      <img src="./images/temp-logo.png" alt="FitLit logo" height="100px" width="100px">
       <h1>FitLit</h1>
+        <h3 class="user-name js-user-name">First Name</h3>
+        <p class="user-info info-box js-user-info"></p>
     </header>
-    <article>
-      <img class="main-icon">
-      <h3 class="user-name js-user-name">First Name</h3>
-      <p class="user-info js-user-info"></p>
-    </article>
   <!--   activity -->
-    <article class="card activity">
+    <article class="activity box">
       <section>
         <div>
-          <img class="icon">
+          <img class="icon" src="./images/activity-logo.png" alt="activity logo" height="100px" width="100px">
           <h2 class="card-title">activity</h2>
         </div>
-        <p class="card-info js-card-info"></p>
+        <p class="card-info info-box js-card-info"></p>
       </section>
       <section>
-        <p class="card-info js-card-info"></p>
-        <p class="card-info js-card-info"></p>
+        <p class="card-info info-box js-card-info"></p>
+        <p class="card-info info-box js-card-info"></p>
       </section>
     </article>
   <!--   hydration -->
-    <article class="card hydration">
+    <article class="hydration box">
       <section>
         <div>
-          <img class="icon">
+          <img class="icon" src="./images/hydration-logo.png" alt="hydration logo" height="100px" width="100px">
           <h2 class="card-title">hydration</h2>
         </div>
-        <p class="card-info js-card-info"></p>
+        <p class="card-info info-box js-card-info"></p>
       </section>
       <section>
-        <p class="card-info js-card-info"></p>
-        <p class="card-info js-card-info"></p>
+        <p class="card-info info-box js-card-info"></p>
+        <p class="card-info info-box js-card-info"></p>
       </section>
     </article>
   <!--   sleep -->
-    <article class="card sleep">
+    <article class="sleep box">
       <section>
         <div>
-          <img class="icon">
+          <img class="icon" src="./images/sleep-logo.png" alt="sleep logo" height="100px" width="100px">
           <h2 class="card-title">sleep</h2>
         </div>
-        <p class="card-info js-card-info"></p>
+        <p class="card-info info-box js-card-info"></p>
       </section>
       <section>
-        <p class="card-info js-card-info"></p>
-        <p class="card-info js-card-info"></p>
+        <p class="card-info info-box js-card-info"></p>
+        <p class="card-info info-box js-card-info"></p>
       </section>
     </article>
   <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->

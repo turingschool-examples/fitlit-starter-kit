@@ -1,7 +1,7 @@
 import './css/styles.css';
 // import './images/turing-logo.png';
 import User from "./User"
-import UserRespository from "./UserRepository"
+import UserRespository from "./User"
 import Hydration from "./Hydration"
 
 
@@ -44,4 +44,4 @@ function displayWaterConsumed(user) {
 function waterConsumedByWeek(user, startDate = null) {
     const waterConsumedWeekly = user.waterConsumed;
     let startIndex = startDate
-}
+};

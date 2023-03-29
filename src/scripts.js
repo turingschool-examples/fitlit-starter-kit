@@ -19,6 +19,7 @@ fetch("https://fitlit-api.herokuapp.com/api/v1/users")
     let user = new User(userBase.getUser(1));
     displayUserCard(user);
     displayStepUserVsAllUsers(user, userBase);
+    displayUserGreeting(user);
 })
 
 
@@ -41,4 +42,11 @@ function displayStepUserVsAllUsers(user, userBase) {
     <p><b>Your Step Goal:</b> ${user.dailyStepGoal}</p>
     <p><b>Average Step Goal:</b> ${userBase.calculateAverageStepGoal()}</p>
   `;
+}
+
+function displayUserGreeting(user) {
+const userNavbar = document.querySelector('.nav-bar');
+userNavbar.innerHTML = `
+<h2>Hi, ${user.getFirstName()}</h2>
+`;
 }

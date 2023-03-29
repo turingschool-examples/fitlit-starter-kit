@@ -14,6 +14,7 @@ const userEmail = document.querySelector('.user-email')
 const userStride = document.querySelector('.user-stride')
 const userSteps = document.querySelector('.user-steps')
 const welcomeMessage = document.querySelector('.welcome-message')
+const comparisonSteps = document.querySelector('.comparison-steps')
 
 window.addEventListener('load', displayRandomUser() )
 
@@ -24,14 +25,13 @@ function getRandomIndex(array) {
 function displayRandomUser() {
   user = new User(mock.users[getRandomIndex(mock.users)])
   userName.innerText = user.name
-  // userAddress.innerText = user.address
-  // userEmail.innerText = user.email
+  userAddress.innerText = `Address: ${user.address}`
+  userEmail.innerText = `Email: ${user.email}`
   userStride.innerText = `Stride Length: ${user.strideLength}`
   userSteps.innerText = `Daily Step Goal: ${user.dailyStepGoal}`
   welcomeMessage.innerText = `Hello, ${user.getFirstName()}!`
-
+  comparisonSteps.innerText = `The average daily is taking ${user.usersAvgDailyStep()} steps today.`
 }
-
 
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';

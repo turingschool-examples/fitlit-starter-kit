@@ -13,7 +13,25 @@ import './images/turing-logo.png';
 import User from './user';
 import userData from './data/users';
 import UserHydration from './userHydration';
+import Sleep from './Sleep';
+import fetchAll from './apiCalls';
 
+// Global Varible Section
+let allUsersData
+let allUserSleepData
+let allUserHydrationData
+let allUserActivityData
+
+window.addEventListener('load', () => {
+  fetchAll()
+  .then(data => {
+    allUserSleepData = data[1]
+    allUserHydrationData = data[2]
+    allUserSleepData = data[3]
+    console.log(allUserHydrationData)
+  })
+
+})
 //console.log("User Data:", userData);
 
 //Get Random user by refrencing the class
@@ -37,7 +55,7 @@ currentUser.userFirstNameById(49,userData)
 
 
 //Print Current User Object
-console.log(currentUser)
+// console.log(currentUser)
 
 // console.log(currentUser.userId)
 // console.log(currentUser.userName)

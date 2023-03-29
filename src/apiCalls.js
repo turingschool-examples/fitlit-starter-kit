@@ -14,5 +14,3 @@ const fetchAll = () => {
 export default fetchAll
 
 
-console.log('I will be a fetch request!')
-

@@ -28,7 +28,7 @@ function displayRandomUser() {
   // userEmail.innerText = user.email
   userStride.innerText = `Stride Length: ${user.strideLength}`
   userSteps.innerText = `Daily Step Goal: ${user.dailyStepGoal}`
-welcomeMessage.innerText = `Hello, ${user.getFirstName()}!`
+  welcomeMessage.innerText = `Hello, ${user.getFirstName()}!`
 
 }
 

@@ -5,13 +5,20 @@ import User from "../src/data/User.js"
 import userTestData from '../test/user-test-data';
 
 let welcomeMessage = document.querySelector("#headerWelcome");
+let userName = document.querySelector("#userName");
+let userEmail = document.querySelector("#userEmail");
+let userAddress = document.querySelector("#userAddress");
+let userStrideLength = document.querySelector("#userSL");
+let userDailyStepGoal = document.querySelector("#userDSG");
+let userFriends = document.querySelector("#userFriends");
 
 let newUser;
 
 window.addEventListener('load', function() {
     generateRandomUser();
     displayWelcomeMessage();
-})
+    displayInfoCard();
+});
 
 function generateRandomUser() {
     newUser = new User(userTestData[Math.floor(Math.random() * userTestData.length)]);
@@ -19,6 +26,15 @@ function generateRandomUser() {
 
 function displayWelcomeMessage() {
     welcomeMessage.innerText = `Welcome, ${newUser.getUserFirstName()}!`
+};
+
+function displayInfoCard() {
+    userName.innerText = newUser.name;
+    userEmail.innerText = newUser.email;
+    userAddress.innerText = newUser.address;
+    userStrideLength.innerText = `Stride Length: ${newUser.strideLength}`;
+    userDailyStepGoal.innerText = `Daily Step Goal: ${newUser.dailyStepGoal}`;
+    userFriends.innerText = `Friends: ${newUser.friends}`;
 };
 
 function displayStepGoalComparison(user, allUsers) {

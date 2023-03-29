@@ -28,7 +28,7 @@ body {
   flex-direction: row;
 }
 
-.friends-sidebar {
+.info-card {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -64,7 +64,7 @@ body {
   padding: 1%;
 }
 
-.friends {
+.user-name {
   display: flex;
   flex-direction: column;
   height: 20%;

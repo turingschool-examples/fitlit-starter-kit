@@ -66,15 +66,13 @@ function displayUserGreeting(user) {
 }
 
 function displayhydrationCard(hydration, userID, date) {
-  console.log(date, "date")
-  hydrationCard.innerHTML = `<p> Average Water Consumption: ${hydration.calculateAverageFluidPerUser(
+  hydrationCard.innerHTML = `<p><b>Average Daily Water Consumption:</b> ${hydration.calculateAverageFluidPerUser(
     userID
   )} ounces </p>
-   ounces </p>
-   <p>Drinks consumed today: ${hydration.dailyOuncesConsumed(
+   <p><b>Water consumed today:</b> ${hydration.dailyOuncesConsumed(
      userID,
      date
-   )}</p>  
-  <p>Drinks by week: ${hydration.weeklyOuncesConsumed(userID, date)} </p>
+   )} ounces </p> 
+  <p><b>Water consumed this week: </b> ${hydration.weeklyOuncesConsumed(userID, date)} </p>
   `;;
 }

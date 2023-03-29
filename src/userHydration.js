@@ -10,7 +10,7 @@ class UserHydration {
         return acc += cur.numOunces
       }, 0)
 
-    const allTimeAverage = allTimeTotalOunces / hydrationData.length
+    const allTimeAverage = allTimeTotalOunces / this.hydrationInfo.length
 
     return allTimeAverage
   }

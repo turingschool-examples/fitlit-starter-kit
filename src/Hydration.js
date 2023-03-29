@@ -7,7 +7,7 @@ class Hydration {
         return water
       })
   }
-  // acc = total currentValue = water
+  
   findAvgDailyHydration(userID) {
     const userHydrationData = this.data.filter(water => water.userID === userID);
     if (userHydrationData.length === 0) {

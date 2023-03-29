@@ -17,7 +17,7 @@ describe('User', () => {
   beforeEach(() => {
     testUser = new User(userTestData.userTestData[0]);
 
-    hydration = new Hydration(1, hydrationTestData.hydrationTestData);
+    hydration = new Hydration(hydrationTestData.hydrationTestData);
     sleep = new Sleep(sleepTestData.sleepTestData);
     // activity = new Activity(1, activityTestData.activityTestData);
 
@@ -32,7 +32,7 @@ describe('User', () => {
     expect(User).to.be.a('function');
   });
 
-  it.skip('should set all the properties using setData()', () => {
+  it('should set all the properties using setData()', () => {
     expect(testUser.id).to.equal(1);
     expect(testUser.name).to.equal("Trystan Gorczany");
     expect(testUser.address).to.equal("9484 Lucas Flat, West Kittymouth WA 67504");
@@ -42,14 +42,12 @@ describe('User', () => {
     expect(testUser.friends).to.deep.equal([ 5, 43, 46, 11 ]);
   });
 
-  it.skip('should store hydration data', () => {
-    // let hydration = new Hydration(hydrationTestData.hydrationTestData)
+  it('should store hydration data', () => {
     expect(testUser.hydrationData).to.deep.equal(hydration);
     expect(testUser.hydrationData.data.length).to.equal(8);
   });
 
   it('should store sleep data', () => {
-    // let sleepy = new Sleep(sleepTestData.sleepTestData)
     expect(testUser.sleepData).to.deep.equal(sleep);
     expect(testUser.sleepData.data.length).to.equal(8);
   });

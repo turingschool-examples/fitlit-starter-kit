@@ -1,6 +1,37 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
+import User from '../src/User'
+import mock from '../src/data/mock' 
+// console.log("user data:", User)
+
+let user;
+
+// query selectors
+const userName = document.querySelector('.user-name')
+const userAddress = document.querySelector('.user-address')
+const userEmail = document.querySelector('.user-email')
+const userStride = document.querySelector('.user-stride')
+const userSteps = document.querySelector('.user-steps')
+const welcomeMessage = document.querySelector('.welcome-message')
+
+window.addEventListener('load', displayRandomUser() )
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function displayRandomUser() {
+  user = new User(mock.users[getRandomIndex(mock.users)])
+  userName.innerText = user.name
+  // userAddress.innerText = user.address
+  // userEmail.innerText = user.email
+  userStride.innerText = `Stride Length: ${user.strideLength}`
+  userSteps.innerText = `Daily Step Goal: ${user.dailyStepGoal}`
+  welcomeMessage.innerText = `Hello, ${user.getFirstName()}!`
+
+}
+
 
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
@@ -24,8 +55,14 @@ console.log('This is the JavaScript entry file - your code begins here.');
 // An example of how you tell webpack to use a JS file
 
 import userData from './data/users';
-console.log("User Data:", userData);
+// console.log("User Data:", userData);
 
 import SomeClassYouChangeTheName from './SomeClassYouChangeTheName';
 
 const newClass = new SomeClassYouChangeTheName();
+
+
+
+
+
+

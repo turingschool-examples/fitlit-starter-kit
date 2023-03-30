@@ -2,10 +2,11 @@
 // Do not delete or rename this file ********
 
 import User from '../src/User'
+import Hydration from '../src/Hydration'
 import mock from '../src/data/mock' 
 // console.log("user data:", User)
 
-let user;
+let user, hydration;
 
 // query selectors
 const userName = document.querySelector('.user-name')
@@ -14,6 +15,9 @@ const userEmail = document.querySelector('.user-email')
 const userStride = document.querySelector('.user-stride')
 const userSteps = document.querySelector('.user-steps')
 const welcomeMessage = document.querySelector('.welcome-message')
+const comparisonSteps = document.querySelector('.comparison-steps')
+const hydrationToday = document.querySelector('.hydration-today')
+const hydrationWeekly = document.querySelector('.hydration-weekly')
 
 window.addEventListener('load', displayRandomUser() )
 
@@ -24,14 +28,20 @@ function getRandomIndex(array) {
 function displayRandomUser() {
   user = new User(mock.users[getRandomIndex(mock.users)])
   userName.innerText = user.name
-  // userAddress.innerText = user.address
-  // userEmail.innerText = user.email
+  userAddress.innerText = `Address: ${user.address}`
+  userEmail.innerText = `Email: ${user.email}`
   userStride.innerText = `Stride Length: ${user.strideLength}`
   userSteps.innerText = `Daily Step Goal: ${user.dailyStepGoal}`
   welcomeMessage.innerText = `Hello, ${user.getFirstName()}!`
-
+  comparisonSteps.innerText = `The average daily is taking ${user.usersAvgDailyStep()} steps today.`
+  displayHydration()
 }
 
+function displayHydration() {
+  hydration = new Hydration(mock.hydrationData)
+  hydrationToday.innerText = `Daily Intake: ${hydration.findDailyFluidIntake(user.id, hydration.findUserData(user.id)[0].date)} oz`
+  hydrationWeekly.innerText = `Weekly Intake: ${hydration.calculateFluidWeekly(user.id)} oz`
+}
 
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';

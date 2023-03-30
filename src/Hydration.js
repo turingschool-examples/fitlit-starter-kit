@@ -5,6 +5,9 @@ class Hydration {
 
     findUserData(id) {
         let currentUser = this.hydration.filter(data => data.userID === id)
+        .sort((a, b)    =>  {
+            return new Date(b.date)- new Date(a.date)
+        })
         return currentUser
     }
 

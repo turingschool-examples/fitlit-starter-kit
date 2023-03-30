@@ -27,25 +27,22 @@ class Hydration {
 
   getWeeklyOunces(userID) {
     const hydrationEntries = hydrationTestData.filter(hydrationEntry => hydrationEntry.userID === userID);
+    const reverse = hydrationEntries.reverse()
 
     const weeklyHydrationEntries = [
-      hydrationEntries[hydrationEntries.length - 1], 
-      hydrationEntries[hydrationEntries.length - 2], 
-      hydrationEntries[hydrationEntries.length - 3], 
-      hydrationEntries[hydrationEntries.length - 4], 
-      hydrationEntries[hydrationEntries.length - 5], 
-      hydrationEntries[hydrationEntries.length - 6], 
-      hydrationEntries[hydrationEntries.length - 7]
+      reverse[0], 
+      reverse[1], 
+      reverse[2], 
+      reverse[3], 
+      reverse[4], 
+      reverse[5], 
+      reverse[6]
     ];
- 
-    const weeklyOunces = weeklyHydrationEntries.reduce((acc, entry) => {
-        const weeklyInfo = {
-        'Date': entry.date,
-        'Number of Ounces Drank': entry.numOunces
-      };
-      acc.push(weeklyInfo);
-      return acc;
-    }, []);
+    
+    const weeklyOunces = weeklyHydrationEntries.map(entry => ({
+      'Date': entry.date,
+      'Number of Ounces Drank': entry.numOunces
+    }))
     return weeklyOunces;
   };
 };

@@ -6,7 +6,6 @@ import Hydration from '../src/Hydration'
 // import mock from '../src/data/mock' 
 import apiCalls from '../src/apiCalls'
 
-
 // console.log("user data:", User)
 
 let user, hydration;
@@ -22,7 +21,7 @@ const comparisonSteps = document.querySelector('.comparison-steps')
 const hydrationToday = document.querySelector('.hydration-today')
 const hydrationWeekly = document.querySelector('.hydration-weekly')
 
-window.addEventListener('load', displayRandomUser() )
+window.addEventListener('load', displayRandomUser())
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -63,7 +62,7 @@ import './images/water-placeholder.png';
 import './images/activity-placeholder.png';
 import './images/sleep-placeholder.png';
 
-console.log('This is the JavaScript entry file - your code begins here.');
+
 
 // An example of how you tell webpack to use a JS file
 

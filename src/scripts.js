@@ -4,43 +4,18 @@ import './css/styles.css';
 // Image Imports
 import './images/turing-logo.png';
 
-// JS File Imports
-
-import UserRepository from './classes/UserRepository';
-import User from './classes/User';
-import Hydration from './classes/Hydration';
+// 3rd party library im
 import Chart from 'chart.js/auto';
 
-//Global variables
-let hydration;
-let user;
-let userID = 1;
-let date = "2023/03/24";
+// Import API Calls
+import './apiCalls'
 
 //Query Selectors
 const hydrationCard = document.querySelector(".hydration-holder");
 
-// Fetch APIs
-fetch("https://fitlit-api.herokuapp.com/api/v1/users")
-  .then(response => response.json())
-  .then(userData => {
-    const userBase = new UserRepository(userData.users);
-    user = new User(userBase.getUser(userID));
-    displayUserCard(user);
-    displayStepUserVsAllUsers(user, userBase);
-    displayUserGreeting(user);
-  })
-
-fetch("https://fitlit-api.herokuapp.com/api/v1/hydration")
-  .then((response) => response.json())
-  .then((data) => {
-    hydration = new Hydration(data.hydrationData);
-    displayhydrationCard(hydration, userID, date);
-  });
-
-// Functions
+// DOM Manipulation Functions
 function displayUserCard(user) {
-  const userCard = document.querySelector('.user-info-card-js');
+  const userCard = document.querySelector('.user-profile-info-js');
   userCard.innerHTML = `
     <p><b>Name:</b> ${user.name}</p>
     <p><b>Address:</b> ${user.address}</p>
@@ -52,7 +27,7 @@ function displayUserCard(user) {
 }
 
 function displayStepUserVsAllUsers(user, userBase) {
-  const stepUserVsAllUsers = document.querySelector('.step-user-vs-all-users-js');
+  const stepUserVsAllUsers = document.querySelector('.user-steps-vs-all-js');
   stepUserVsAllUsers.innerHTML = `
     <p><b>Your Step Goal:</b> ${user.dailyStepGoal}</p>
     <p><b>Average Step Goal:</b> ${userBase.calculateAverageStepGoal()}</p>
@@ -60,8 +35,8 @@ function displayStepUserVsAllUsers(user, userBase) {
 }
 
 function displayUserGreeting(user) {
-  const userNavbar = document.querySelector('.nav-bar');
-  userNavbar.innerHTML = `
+  const userGreeting = document.querySelector('.welcome-header');
+  userGreeting.innerHTML = `
 <h2>Hi, ${user.getFirstName()}</h2>
 `;
 }
@@ -78,10 +53,10 @@ function displayhydrationCard(hydration, userID, date) {
   </p>
   `;
   const waterButton = document.querySelector(".hydration-button");
-  waterButton.addEventListener("click", createHydrationChart);
+  waterButton.addEventListener("click", () => createHydrationChart(hydration, userID, date));
 }
 
-function createHydrationChart() {
+function createHydrationChart(hydration, userID, date) {
   const weeklyOunces = hydration.weeklyOuncesConsumed(userID, date);
   const labels = weeklyOunces.map(days => days.date);
   const data = weeklyOunces.map(days => days.numOunces);
@@ -103,3 +78,25 @@ function createHydrationChart() {
   }
   )
 }
+
+
+function displayLatestSleepData(sleep, userID, date) {
+  const latestSleepData = document.querySelector('.latest-sleep-data-js');
+  latestSleepData.innerHTML = `
+    <p><b>Hours Slept:</b> ${sleep.findSleepHoursOnDate(userID, date)}</p>
+    <p><b>Sleep Quality:</b> </p>
+  `;
+};
+
+function displayAllTimeSleepData(sleep, userID) {
+  const allTimeSleepData = document.querySelector('.all-time-sleep-data-js');
+  allTimeSleepData.innerHTML = `
+    <p><b>Average Hours Slept:</b> ${sleep.calculateAverageSleepHours(userID)}</p>
+    <p><b>Average Sleep Quality:</b> ${sleep.calculateAverageSleepQuality(userID)}</p>
+  `;
+};
+
+
+// Export Statements
+
+export { displayUserCard, displayStepUserVsAllUsers, displayUserGreeting, displayhydrationCard, displayLatestSleepData, displayAllTimeSleepData}

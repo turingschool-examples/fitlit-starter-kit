@@ -16,10 +16,11 @@ Our application showcases communication with third party data sources using api'
 - Mocha
 - chai
 - webpack
-- dayjs
-- chartjs
+- ### third party extensions
+  - dayjs
+  - chartjs
 ## Contributors 
 - Ashlee Webb: [github](https://github.com/AshleeAWebb) | [linkedin](https://www.linkedin.com/in/ashlee-webb-0b592199/)
 - Adam Meza: [github](https://github.com/Adam-Meza) | [linkedin](https://www.linkedin.com/in/adam-meza/)
-- Rahchel Brendel: [github](https://github.com/brendel-r)
+- Rahchel Brendel: [github](https://github.com/brendel-r) | [linkedin](https://www.linkedin.com/in/rachel-brendel-bb9673197/)
 - Patrick Ankiewicz: [github](https://github.com/Pma913) | [linkedin](https://www.linkedin.com/in/patrick-ankiewicz/)

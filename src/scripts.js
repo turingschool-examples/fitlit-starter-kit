@@ -1,3 +1,5 @@
+
+
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
@@ -11,7 +13,23 @@ import Hydration from '../src/Hydration';
 import hydrationTestData  from '../src/data/hydration-test-data';
 import sleepTestData from '../src/data/sleep-test-data';
 import './images/turing-logo.png';
+
+// real data
+import usersData from '../src/data/users'
+// import sleep from '../src/data/sleep'
+import hydrationData from '../src/data/hydration'
+
 // import './images/turing-logo.png';
+
+
+// filter out all the sleep datat = > make an instance of sleep with that number +> set it to a prooperty in user
+// do the same for hydration and activity
+// change all the global calls of sleep and hydration to calling with in the user
+
+let getRandomUser = () => {
+  return usersData.users[Math.floor(Math.random() * usersData.users.length)]
+}
+
 
 
 // Queury selectors
@@ -25,9 +43,18 @@ const hydrationWeek = document.querySelector('#hydrationBoxWeek');
 const hydrationAvg = document.querySelector('#hydrationBoxAvg')
 
 // Global Variables
- let user = new User(userTestData.userTestData[0]);
- let sleep = new Sleep(sleepTestData.sleepTestData);
- let hydration = new Hydration(hydrationTestData.hydrationTestData);
+let user = new User(getRandomUser());
+
+let setHydrationData = () => {
+  return hydrationData.hydrationData.filter(water => water.userID === user.id)
+}
+// let setSleepData = () => {
+//   console.log(sleepTestData)
+//   return sleepTestData.sleepTestData.filter(sleep => sleep.userID === user.id)
+// }
+
+let sleep = new Sleep(sleepTestData.sleepTestData);
+let hydration = new Hydration(setHydrationData());
 
 // Event listeners
 

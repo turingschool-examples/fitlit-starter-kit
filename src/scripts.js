@@ -17,8 +17,6 @@ let weeklyWater = document.querySelector("#weeklyWater");
 
 let date = new Date()
 var currentDate = date.getFullYear() + "/" + ("0" + (date.getMonth()+1)).slice(-2) + "/"+ ("0" + date.getDate()).slice(-2);
-
-console.log(currentDate)
 let newUser;
 let hydrationEntries;
 
@@ -67,10 +65,8 @@ function displayStepGoalComparison() {
 
 function displayWaterConsumed() {
   hydrationEntries = hydrationTestData.filter(entry => entry.userID === newUser.id);
-  console.log(hydrationEntries)
 
   const currentDayEntry = hydrationEntries.find(entry => entry.date == currentDate)
-  console.log(currentDayEntry)
 
   if (currentDayEntry) {
     dailyWater.innerText = `You have consumed ${currentDayEntry.numOunces} ounces of water today.`
@@ -80,28 +76,13 @@ function displayWaterConsumed() {
 };
 
 function displayWeeklyWaterConsumption() {
-  // let newHydration = new Hydration(hydrationTestData[1])
-  const hydrationEntries = hydrationTestData.filter(hydrationEntry => hydrationEntry.userID === newUser.id);
-    const reverse = hydrationEntries.reverse()
+  let newHydration = new Hydration(hydrationTestData[0])
 
-    const weeklyHydrationEntries = [
-      reverse[0], 
-      reverse[1], 
-      reverse[2], 
-      reverse[3], 
-      reverse[4], 
-      reverse[5], 
-      reverse[6]
-    ];
-    
-    const weeklyOunces = weeklyHydrationEntries.reduce((acc, entry) => {
-        const weeklyInfo = {
-        'Date': entry.date,
-        'Number of Ounces Drank': entry.numOunces
-      };
-      acc.push(weeklyInfo);
-      return acc;
-    }, []);
-  // console.log(weeklyOunces.toString())
-  weeklyWater.innertext = weeklyOunces
+  let weeklyOunces = newHydration.getWeeklyOunces(hydrationTestData[0].userID)
+
+  for (let i = 0; i < 7; i++) {
+   weeklyWater.innerText += `${weeklyOunces[i].Date}: ${weeklyOunces[i]['Number of Ounces Drank']}  ounces
+    `
+  }
+  
 };

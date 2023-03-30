@@ -3,7 +3,10 @@
 
 import User from '../src/User'
 import Hydration from '../src/Hydration'
-import mock from '../src/data/mock'
+// import mock from '../src/data/mock' 
+import apiCalls from '../src/apiCalls'
+
+// console.log("user data:", User)
 
 let user, hydration;
 

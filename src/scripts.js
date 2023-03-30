@@ -40,7 +40,9 @@ fetch("https://fitlit-api.herokuapp.com/api/v1/hydration")
 fetch("https://fitlit-api.herokuapp.com/api/v1/sleep")
   .then((response) => response.json())
   .then((data) => {
-    sleep = new Sleep(data.sleepData);
+    sleepData = new Sleep(data.sleepData);
+    displayLatestSleepData(sleepData, userID, date);
+    displayAllTimeSleepData(sleepData, userID);
     // sleep DOM manipulation functions go here
   });
 
@@ -85,3 +87,19 @@ function displayhydrationCard(hydration, userID, date) {
   })} </p>
   `;
 }
+
+function displayLatestSleepData(sleepData, userID, date) {
+  const latestSleepData = document.querySelector('.latest-sleep-data-js');
+  latestSleepData.innerHTML = `
+    <p><b>Hours Slept:</b> ${sleepData.calculateDailySleep(userID, date)}</p>
+    <p><b>Sleep Quality:</b> ${sleepData.calculateDailySleepQuality(userID, date)}</p>
+  `;
+};
+
+function displayAllTimeSleepData(sleepData, userID) {
+  const allTimeSleepData = document.querySelector('.all-time-sleep-data-js');
+  allTimeSleepData.innerHTML = `
+    <p><b>Average Hours Slept:</b> ${sleepData.calculateAverageSleep(userID)}</p>
+    <p><b>Average Sleep Quality:</b> ${sleepData.calculateAverageSleepQuality(userID)}</p>
+  `;
+};

@@ -68,7 +68,11 @@ function displayAllTimeSleepData(sleep, userID) {
   `;
 };
 
+function displayActivityCard() {
+
+}
+
 
 // Export Statements
 
-export { displayUserCard, displayStepUserVsAllUsers, displayUserGreeting, displayhydrationCard, displayLatestSleepData, displayAllTimeSleepData}
+export { displayUserCard, displayStepUserVsAllUsers, displayUserGreeting, displayhydrationCard, displayLatestSleepData, displayAllTimeSleepData, displayActivityCard}

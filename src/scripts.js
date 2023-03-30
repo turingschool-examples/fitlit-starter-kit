@@ -3,31 +3,8 @@ import { userDataFetch } from './apiCalls';
 
 let users, hydration, sleep, activity //other vars;
 
-Promise.all([userDataFetch('users'), userDataFetch('hydration'), userDataFetch('sleep'), userDataFetch('activity')])
-  .then(data => {
-    users = data[0].users
-    // console.log("This is:", users)
-    hydration = data[1].hydrationData
-    // console.log(hydration)
-    sleep = data[2].sleepData
-    // console.log(sleep)
-    activity = data[3].activityData
-    // console.log(activity)
-  })
-  .then(() => {
-    // displayUsers()
-    // call functions here 
-    loadMainPage()
-  })
-
-
-
-
-
 import User from "../src/data/User.js"
 import Hydration from "../src/data/Hydration.js"
-// import userTestData from '../test/user-test-data';
-// import hydrationTestData from '../test/hydration-test-data';
 
 let welcomeMessage = document.querySelector("#headerWelcome");
 let userName = document.querySelector("#userName");
@@ -45,22 +22,27 @@ var currentDate = date.getFullYear() + "/" + ("0" + (date.getMonth()+1)).slice(-
 let newUser;
 let hydrationEntries;
 
-function loadMainPage () {
+window.addEventListener('load', function () {
+  Promise.all([userDataFetch('users'), userDataFetch('hydration'), userDataFetch('sleep'), userDataFetch('activity')])
+  .then(data => {
+    users = data[0].users
+    hydration = data[1].hydrationData
+    sleep = data[2].sleepData
+    activity = data[3].activityData
     generateRandomUser();
     displayWelcomeMessage();
     displayInfoCard();
     displayWaterConsumed();
     displayWeeklyWaterConsumption();
-}
-
-window.addEventListener('load', loadMainPage());
+  })
+});
 
 function generateRandomUser() {
-    newUser = new User(users[Math.floor(Math.random() * [users.length])]);
+  newUser = new User(users[Math.floor(Math.random() * [users.length])]);
 };
 
 function displayWelcomeMessage() {
-    welcomeMessage.innerText = `Welcome, ${newUser.getUserFirstName()}!`
+  welcomeMessage.innerText = `Welcome, ${newUser.getUserFirstName()}!`
 };
 
 function displayInfoCard() {
@@ -103,30 +85,15 @@ function displayWaterConsumed() {
 };
 
 function displayWeeklyWaterConsumption() {
-  // console.log(hydration.find(entry => entry.userID == newUser.id))
-  // let newHydration = new Hydration(hydration.find(entry => entry.userID == newUser.id))
-  // console.log(newHydration)
-  // let weeklyOunces = newHydration.getWeeklyOunces(newUser.id)
-
-
-
+  
   const hydrationEntries = hydration.filter(hydrationEntry => hydrationEntry.userID === newUser.id);
-  const reverse = hydrationEntries.reverse()
 
-  const weeklyOunces = reverse.map(entry => ({
-    'Date': entry.date,
-    'Number of Ounces Drank': entry.numOunces
-  }))
+  const indexOfCurrentDayEntry = hydrationEntries.indexOf(hydrationEntries.find(entry => entry.date === currentDate))
+  console.log(indexOfCurrentDayEntry)
 
-  for (let i = 0; i < 7; i++) {
-    weeklyWater.innerText += `${weeklyOunces[i].Date}: ${weeklyOunces[i]['Number of Ounces Drank']}  ounces
-     `
-   }
-   
-
-  // for (let i = 0; i < 7; i++) {
-  //  weeklyWater.innerText += `${weeklyOunces[i].Date}: ${weeklyOunces[i]['Number of Ounces Drank']}  ounces
-  //   `
-  // }
+  for (let i = indexOfCurrentDayEntry; i > indexOfCurrentDayEntry - 7; i--) {
+    weeklyWater.innerText += `${hydrationEntries[i].date}: ${hydrationEntries[i].numOunces}  ounces
+    `
+  }
   
 };

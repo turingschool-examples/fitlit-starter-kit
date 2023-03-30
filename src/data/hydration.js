@@ -39,10 +39,12 @@ class Hydration {
       reverse[6]
     ];
     
+
     const weeklyOunces = weeklyHydrationEntries.map(entry => ({
       'Date': entry.date,
       'Number of Ounces Drank': entry.numOunces
     }))
+    
     return weeklyOunces;
   };
 };

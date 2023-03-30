@@ -26,6 +26,14 @@ class Sleep {
         }
     };
 
+    findMostRecentDay(){
+        const mostRecentDay = this.userSleepLogs.sort((a, b) => {
+            return b.date - a.date 
+        })
+        console.log(mostRecentDay)
+        return mostRecentDay[0].date
+    }
+
     findDetailByWeek(date, detail) {
         const convertDate = new Date(date)
         const datedSleepLogs = this.userSleepLogs.map((log) => {

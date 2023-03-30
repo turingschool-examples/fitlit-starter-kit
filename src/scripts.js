@@ -22,45 +22,64 @@ let allUserSleepData
 let allUserHydrationData
 let allUserActivityData
 
+let currentUser;
+let currentUserSleep;
+
+//Selectors
+const cardDisplay = document.getElementById('cardDisplay')
+
+
+
+
 window.addEventListener('load', () => {
-  fetchAll()
-  .then(data => {
-    allUserSleepData = data[1]
-    allUserHydrationData = data[2]
-    allUserSleepData = data[3]
-    console.log(allUserHydrationData)
-  })
+    fetchAll()
+        .then(data => {
+            allUsersData = data[0]
+            allUserSleepData = data[1]            
+            allUserHydrationData = data[2]
+            allUserActivityData = data[3]
+        })
+        .then(data => {
+            currentUser = new User(allUsersData);
+            currentUserSleep = new Sleep (currentUser.userId, allUserSleepData)
+            createSingleCard(currentUser.userID, 'Hours Slept', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'hoursSlept'), 'hours');
+            
+            
+        })
+
+
+
+
+    // createSingleCardDisplay(cardId, cardTitle, outputToDisplay, units)
 
 })
-//console.log("User Data:", userData);
-
-//Get Random user by refrencing the class
-const currentUser = new User(userData);
-//Get Current user First Name
-currentUser.userFirstName()
-
-//Change The Current User By ID
-currentUser.findUserById(1,userData)
-//Get Current user First Name
-currentUser.userFirstName()
-
-//Get overall Step goal
-currentUser.findOverAllStepGoal(userData)
-//Get user Step Goal
-currentUser.dailyStepGoal
-
-//Get First Name by ID
-currentUser.userFirstNameById(49,userData)
 
 
+// //Get Random user by refrencing the class
+// //Get Current user First Name
+// currentUser.userFirstName()
 
-//Print Current User Object
-// console.log(currentUser)
+// //Change The Current User By ID
+// currentUser.findUserById(1, userData)
+// //Get Current user First Name
+// currentUser.userFirstName()
 
-// console.log(currentUser.userId)
-// console.log(currentUser.userName)
-// console.log(currentUser.address)
-// console.log(currentUser.email)
-// console.log(currentUser.strideLength)
-// console.log(currentUser.dailyStepGoal)
-// console.log(currentUser.friends)
+// //Get overall Step goal
+// currentUser.findOverAllStepGoal(userData)
+// //Get user Step Goal
+// currentUser.dailyStepGoal
+
+// //Get First Name by ID
+// currentUser.userFirstNameById(49, userData)
+
+/////////////
+function createSingleCard (cardId, cardTitle, outputToDisplay, units){
+    cardDisplay.innerHTML += `
+        <section class='singleDayCard' id= ${cardId}> 
+             <h3> ${cardTitle} </h3>
+            <div>
+                <text> ${outputToDisplay} </text>
+                <text>  ${units} </text>
+            </div>
+         </section>`
+}

@@ -4,6 +4,8 @@ import './css/styles.css';
 // Image Imports
 import './images/turing-logo.png';
 
+// import './apiCalls'
+
 // JS File Imports
 
 import UserRepository from './classes/UserRepository';
@@ -45,6 +47,8 @@ fetch("https://fitlit-api.herokuapp.com/api/v1/sleep")
     displayAllTimeSleepData(sleepData, userID);
     // sleep DOM manipulation functions go here
   });
+
+
 
 // Functions
 function displayUserCard(user) {
@@ -103,3 +107,5 @@ function displayAllTimeSleepData(sleepData, userID) {
     <p><b>Average Sleep Quality:</b> ${sleepData.calculateAverageSleepQuality(userID)}</p>
   `;
 };
+
+// export { displayUserCard, displayStepUserVsAllUsers, displayUserGreeting, displayhydrationCard, displayLatestSleepData, displayAllTimeSleepData}

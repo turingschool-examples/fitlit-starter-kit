@@ -10,7 +10,7 @@ class User {
     this.dailyStepGoal = userInfo.dailyStepGoal;
     this.friends = userInfo.friends;
   };
-
+  
   getUserData(userId) {
     return userTestData[userId - 1]
   }

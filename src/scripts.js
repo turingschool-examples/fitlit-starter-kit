@@ -1,4 +1,35 @@
 import './css/styles.css';
+import { userDataFetch } from './apiCalls';
+
+let users, hydration, sleep, activity //other vars;
+
+Promise.all([userDataFetch('users'), userDataFetch('hydration'), userDataFetch('sleep'), userDataFetch('activity')])
+  .then(data => {
+    users = data[0].users
+    console.log("This is:", users)
+    hydration = data[1].hydrationData
+    console.log(hydration)
+    sleep = data[2].sleepData
+    console.log(sleep)
+    activity = data[3].activityData
+    console.log(activity)
+  })
+  .then(() => {
+    displayUsers()
+    // call functions here 
+  })
+function displayUsers() {
+  console.log(users)
+}
+
+console.log(users)
+
+
+console.log('This is the JavaScript entry file - your code begins here.');
+
+
+
+
 import User from "../src/data/User.js"
 // import Hydration from "./Hydration"
 import userTestData from '../test/user-test-data';
@@ -13,6 +44,7 @@ let stepGoalComparison = document.querySelector("#stepGoalComp");
 let userFriends = document.querySelector("#userFriends");
 
 let newUser;
+
 
 window.addEventListener('load', function() {
     generateRandomUser();

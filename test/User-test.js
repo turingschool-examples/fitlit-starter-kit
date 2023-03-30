@@ -2,9 +2,9 @@ import { expect } from 'chai';
 import User from '../src/User';
 import Sleep from '../src/Sleep';
 import Hydration from '../src/Hydration';
-// import Activity from '../src/Activity';
+import Activity from '../src/Activity';
 import userTestData from '../src/data/user-test-data.js';
-// import activityTestData from '../src/data/activity-test-data.js';
+import activityTestData from '../src/data/activity-test-data.js';
 import hydrationTestData  from '../src/data/hydration-test-data';
 import sleepTestData from '../src/data/sleep-test-data';
 
@@ -12,18 +12,18 @@ describe('User', () => {
   let testUser;
   let hydration;
   let sleep;
-  // let activity;
+  let activity;
   let testUser2
   beforeEach(() => {
     testUser = new User(userTestData.userTestData[0]);
 
     hydration = new Hydration(hydrationTestData.hydrationTestData);
     sleep = new Sleep(sleepTestData.sleepTestData);
-    // activity = new Activity(1, activityTestData.activityTestData);
+    activity = new Activity(activityTestData.activityTestData, testUser.strideLength);
 
     testUser.hydrationData = hydration;
     testUser.sleepData = sleep;
-    // testUser.activityData = activity;
+    testUser.activityData = activity;
 
     testUser2 = new User({});
   });
@@ -49,11 +49,10 @@ describe('User', () => {
 
   it('should store sleep data', () => {
     expect(testUser.sleepData).to.deep.equal(sleep);
-    expect(testUser.sleepData.data.length).to.equal(8);
+    expect(testUser.sleepData.data.length).to.equal(58);
   });
 
-  it.skip('should store activity data', () => {
-    // let activity = new Activity(activityTestData.activityTestData)
+  it('should store activity data', () => {
     expect(testUser.activityData).to.deep.equal(activity);
     expect(testUser.activityData.data.length).to.equal(8);
   });

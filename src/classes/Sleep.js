@@ -48,6 +48,40 @@ class Sleep {
     });
     return sleepData;
   }
+  calculateWeeklyHoursSlept(userID, date) {
+    const startDate = dayjs(date);
+    const endDate = startDate.add(6, "day");
+    const filteredSleepData = this.data.filter(
+      (user) => user.userID === userID
+    );
+    const sleepData = filteredSleepData.filter((entry) => {
+      return (
+        dayjs(entry.date).isAfter(startDate) &&
+        dayjs(entry.date).isBefore(endDate.add(1, "day"))
+      );
+    });
+    let hoursSlept = sleepData.map((element) => {
+      return { hoursSlept: element.hoursSlept };
+    });
+    return hoursSlept;
+  }
+  calculateWeeklySleepQuality(userID, date) {
+    const startDate = dayjs(date);
+    const endDate = startDate.add(6, "day");
+    const filteredSleepData = this.data.filter(
+      (user) => user.userID === userID
+    );
+    const sleepData = filteredSleepData.filter((entry) => {
+      return (
+        dayjs(entry.date).isAfter(startDate) &&
+        dayjs(entry.date).isBefore(endDate.add(1, "day"))
+      );
+    });
+    let sleepQuality = sleepData.map((element) => {
+      return { sleepQuality: element.sleepQuality };
+    });
+    return sleepQuality;
+  }
 }
 
 export default Sleep;

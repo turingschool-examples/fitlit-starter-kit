@@ -9,6 +9,7 @@ import './images/turing-logo.png';
 import UserRepository from './classes/UserRepository';
 import User from './classes/User';
 import Hydration from './classes/Hydration';
+import Chart from 'chart.js/auto';
 
 //Global variables
 let hydration;
@@ -66,15 +67,34 @@ function displayUserGreeting(user) {
 }
 
 function displayhydrationCard(hydration, userID, date) {
-  hydrationCard.innerHTML = `<p><b>Average Daily Water Consumption:</b> ${hydration.calculateAverageFluidPerUser(
+  hydrationCard.innerHTML = `<p><b>Average Water Consumption:</b> ${hydration.calculateAverageFluidPerUser(
     userID
   )} ounces </p>
    <p><b>Water consumed today:</b> ${hydration.dailyOuncesConsumed(
      userID,
      date
    )} ounces </p> 
-  <p><b>Water consumed this week: </b> <br>${hydration.weeklyOuncesConsumed(userID, date).map(day => {
-    return `${day.date}: ${day.numOunces} ounces<br>`;
-  })} </p>
+    <button class="hydration-button">Weekly Water</button>
+  </p>
   `;
+  const waterButton = document.querySelector(".hydration-button");
+  waterButton.addEventListener("click", createHydrationChart);
+}
+
+function createHydrationChart() {
+  const weeklyOunces = hydration.weeklyOuncesConsumed(userID, date);
+  const labels = weeklyOunces.map(days => days.date);
+  const data = weeklyOunces.map(days => days.numOunces);
+
+  new Chart("chart", {
+    type: 'bar',
+    data: {
+      datasets: [{
+        label:"ounces",
+        data: data,
+      }],
+      labels: labels,
+    }
+  }
+  )
 }

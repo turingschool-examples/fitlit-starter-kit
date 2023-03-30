@@ -3,7 +3,7 @@
 
 import User from '../src/User'
 import Hydration from '../src/Hydration'
-// import mock from '../src/data/mock' 
+import mock from '../src/data/mock' 
 import apiCalls from '../src/apiCalls'
 
 // console.log("user data:", User)
@@ -22,35 +22,34 @@ const hydrationToday = document.querySelector('.hydration-today')
 const hydrationWeekly = document.querySelector('.hydration-weekly')
 
 // event listeners
-window.addEventListener('load', displayRandomUser())
-
-// functions 
+window.addEventListener('load', () => {
 Promise.all(apiCalls)
-  .then(function(apiCallsArray) {
+  .then((apiCallsArray) => {
     const usersData = apiCallsArray[0].users
-    console.log(usersData)
     // const sleepData = apiCallsArray[1].sleep
-    const hydrationData = apiCallsArray[2].hydration
+    // const hydrationData = apiCallsArray[2].hydration
     // const activityData = apiCallsArray[3].activity
-    getRandomIndex(usersData)
-    displayRandomUser(usersData)
+  getRandomIndex(usersData)
+  displayRandomUser(usersData)
   })
+  .catch(error => console.log(error))
+})
+
 
 function getRandomIndex(array) {
-  // console.log(array);
   return Math.floor(Math.random() * array.length);
 }
 
-function displayRandomUser(usersData) {
-  user = new User(usersData[getRandomIndex(usersData)])
-  userName.innerText = user.name
+function displayRandomUser(userBeingPassedIn) {
+  user = new User(userBeingPassedIn[getRandomIndex(userBeingPassedIn)])
+  userName.innerText = `Name: ${user.name}`
   userAddress.innerText = `Address: ${user.address}`
-  userEmail.innerText = `Email: ${user.email}`
-  userStride.innerText = `Stride Length: ${user.strideLength}`
-  userSteps.innerText = `Daily Step Goal: ${user.dailyStepGoal}`
-  welcomeMessage.innerText = `Hello, ${user.getFirstName()}!`
-  comparisonSteps.innerText = `The average user is taking ${user.usersAvgDailyStep()} steps today.`
-  displayHydration()
+  // userEmail.innerText = `Email: ${user.email}`
+  // userStride.innerText = `Stride Length: ${user.strideLength}`
+  // userSteps.innerText = `Daily Step Goal: ${user.dailyStepGoal}`
+  // welcomeMessage.innerText = `Hello, ${user.getFirstName()}!`
+  // comparisonSteps.innerText = `The average user is taking ${user.usersAvgDailyStep()} steps today.`
+  // displayHydration()
 }
 
 function displayHydration() {

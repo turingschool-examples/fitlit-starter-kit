@@ -36,7 +36,7 @@ describe('Sleep Repository', () => {
   });
 
   it('should return error if invalid argument is given', () => {
-    expect(sleep.getAverage("Tacos")).to.equal("Tacos is not a valid argument!")
+    expect(sleep.getAverage("Tacos")).to.equal("Tacos is not a valid argument!");
   });
 
   it('should retrieve sleep hours data', () => {
@@ -48,7 +48,7 @@ describe('Sleep Repository', () => {
   });
 
   it('should return an error if date is not available', () => {
-    expect(sleep.getInfoForSpecificDate("1889/04/25", "sleepQuality")).to.equal("There is no data for this date")
+    expect(sleep.getInfoForSpecificDate("1889/04/25", "sleepQuality")).to.equal("There is no data for this date");
   });
   
   it('should retrieve sleep hours for specified week', () => {
@@ -57,5 +57,9 @@ describe('Sleep Repository', () => {
 
   it('should retrieve sleep quality for specified week', () => {
     expect(sleep.getInfoForPastWeek("sleepQuality")).to.deep.equal([4.3, 3.5, 4.7, 3, 3.1, 1.2, 3.9]);
+  });
+
+  it('should return error if invalid argument is given', () => {
+    expect(sleep.getAverage("ice cream")).to.equal("ice cream is not a valid argument!");
   });
 });

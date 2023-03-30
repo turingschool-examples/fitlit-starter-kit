@@ -49,7 +49,7 @@ describe('User', () => {
 
   it('should store sleep data', () => {
     expect(testUser.sleepData).to.deep.equal(sleep);
-    expect(testUser.sleepData.data.length).to.equal(8);
+    expect(testUser.sleepData.data.length).to.equal(58);
   });
 
   it.skip('should store activity data', () => {

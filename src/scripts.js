@@ -6,34 +6,28 @@ let users, hydration, sleep, activity //other vars;
 Promise.all([userDataFetch('users'), userDataFetch('hydration'), userDataFetch('sleep'), userDataFetch('activity')])
   .then(data => {
     users = data[0].users
-    console.log("This is:", users)
+    // console.log("This is:", users)
     hydration = data[1].hydrationData
-    console.log(hydration)
+    // console.log(hydration)
     sleep = data[2].sleepData
-    console.log(sleep)
+    // console.log(sleep)
     activity = data[3].activityData
-    console.log(activity)
+    // console.log(activity)
   })
   .then(() => {
-    displayUsers()
+    // displayUsers()
     // call functions here 
+    loadMainPage()
   })
-function displayUsers() {
-  console.log(users)
-}
 
-console.log(users)
-
-
-console.log('This is the JavaScript entry file - your code begins here.');
 
 
 
 
 import User from "../src/data/User.js"
 import Hydration from "../src/data/Hydration.js"
-import userTestData from '../test/user-test-data';
-import hydrationTestData from '../test/hydration-test-data';
+// import userTestData from '../test/user-test-data';
+// import hydrationTestData from '../test/hydration-test-data';
 
 let welcomeMessage = document.querySelector("#headerWelcome");
 let userName = document.querySelector("#userName");
@@ -51,17 +45,18 @@ var currentDate = date.getFullYear() + "/" + ("0" + (date.getMonth()+1)).slice(-
 let newUser;
 let hydrationEntries;
 
-
-window.addEventListener('load', function() {
+function loadMainPage () {
     generateRandomUser();
     displayWelcomeMessage();
     displayInfoCard();
     displayWaterConsumed();
     displayWeeklyWaterConsumption();
-});
+}
+
+window.addEventListener('load', loadMainPage());
 
 function generateRandomUser() {
-    newUser = new User(userTestData[Math.floor(Math.random() * userTestData.length)]);
+    newUser = new User(users[Math.floor(Math.random() * [users.length])]);
 };
 
 function displayWelcomeMessage() {
@@ -80,11 +75,11 @@ function displayInfoCard() {
 
 function displayStepGoalComparison() {
     const userStepGoal = newUser.dailyStepGoal;
-    const totalStepGoals = userTestData.reduce((acc, user) => {
+    const totalStepGoals = users.reduce((acc, user) => {
         acc += user.dailyStepGoal
         return acc
     }, 0)
-    const averageStepGoal = totalStepGoals / userTestData.length;
+    const averageStepGoal = totalStepGoals / users.length;
 
     if (userStepGoal > averageStepGoal) {
         stepGoalComparison.innerText = `Great job!!! Your step goal is above average.  You are KICKING ASS.`;
@@ -96,7 +91,7 @@ function displayStepGoalComparison() {
 };
 
 function displayWaterConsumed() {
-  hydrationEntries = hydrationTestData.filter(entry => entry.userID === newUser.id);
+  hydrationEntries = hydration.filter(entry => entry.userID === newUser.id);
 
   const currentDayEntry = hydrationEntries.find(entry => entry.date == currentDate)
 
@@ -108,13 +103,30 @@ function displayWaterConsumed() {
 };
 
 function displayWeeklyWaterConsumption() {
-  let newHydration = new Hydration(hydrationTestData[0])
+  // console.log(hydration.find(entry => entry.userID == newUser.id))
+  // let newHydration = new Hydration(hydration.find(entry => entry.userID == newUser.id))
+  // console.log(newHydration)
+  // let weeklyOunces = newHydration.getWeeklyOunces(newUser.id)
 
-  let weeklyOunces = newHydration.getWeeklyOunces(hydrationTestData[0].userID)
+
+
+  const hydrationEntries = hydration.filter(hydrationEntry => hydrationEntry.userID === newUser.id);
+  const reverse = hydrationEntries.reverse()
+
+  const weeklyOunces = reverse.map(entry => ({
+    'Date': entry.date,
+    'Number of Ounces Drank': entry.numOunces
+  }))
 
   for (let i = 0; i < 7; i++) {
-   weeklyWater.innerText += `${weeklyOunces[i].Date}: ${weeklyOunces[i]['Number of Ounces Drank']}  ounces
-    `
-  }
+    weeklyWater.innerText += `${weeklyOunces[i].Date}: ${weeklyOunces[i]['Number of Ounces Drank']}  ounces
+     `
+   }
+   
+
+  // for (let i = 0; i < 7; i++) {
+  //  weeklyWater.innerText += `${weeklyOunces[i].Date}: ${weeklyOunces[i]['Number of Ounces Drank']}  ounces
+  //   `
+  // }
   
 };

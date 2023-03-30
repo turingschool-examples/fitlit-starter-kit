@@ -4,7 +4,7 @@ import './css/styles.css';
 // Image Imports
 import './images/turing-logo.png';
 
-// 3rd party library im
+// 3rd party library import
 import Chart from 'chart.js/auto';
 
 // Import API Calls
@@ -78,7 +78,6 @@ function createHydrationChart(hydration, userID, date) {
   }
   )
 }
-
 
 function displayLatestSleepData(sleep, userID, date) {
   const latestSleepData = document.querySelector('.latest-sleep-data-js');

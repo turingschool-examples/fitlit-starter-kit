@@ -29,8 +29,6 @@ let currentUserSleep;
 const cardDisplay = document.getElementById('cardDisplay')
 
 
-
-
 window.addEventListener('load', () => {
     fetchAll()
         .then(data => {
@@ -38,22 +36,20 @@ window.addEventListener('load', () => {
             allUserSleepData = data[1]            
             allUserHydrationData = data[2]
             allUserActivityData = data[3]
+            pageLoad()
         })
-        .then(data => {
-            currentUser = new User(allUsersData);
-            currentUserSleep = new Sleep (currentUser.userId, allUserSleepData)
-            createSingleCard(currentUser.userID, 'Hours Slept', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'hoursSlept'), 'hours');
-            
-            
-        })
-
-
-
-
-    // createSingleCardDisplay(cardId, cardTitle, outputToDisplay, units)
 
 })
 
+function pageLoad (){
+    currentUser = new User(allUsersData);
+    currentUserSleep = new Sleep (currentUser.userId, allUserSleepData);
+
+     // createSingleCardDisplay(cardId, cardTitle, outputToDisplay, units)
+    createSingleCard(currentUser.userID, 'Hours Slept', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'hoursSlept'), 'hours');     
+}
+
+ // createSingleCardDisplay(cardId, cardTitle, outputToDisplay, units)
 
 // //Get Random user by refrencing the class
 // //Get Current user First Name

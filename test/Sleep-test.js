@@ -7,8 +7,8 @@ describe('Sleep', () => {
     beforeEach('data creation', () => {
         sleepList = {
             sleepData: [
-                { "userID": 1, "date": "2023/03/24", "hoursSlept": 9.6, "sleepQuality": 4.3 },
                 { "userID": 1, "date": "2023/03/19", "hoursSlept": 4.2, "sleepQuality": 1.2 },
+                { "userID": 1, "date": "2023/03/24", "hoursSlept": 9.6, "sleepQuality": 4.3 },
                 { "userID": 1, "date": "2023/03/18", "hoursSlept": 4.1, "sleepQuality": 3.9 },
                 { "userID": 1, "date": "2023/03/17", "hoursSlept": 9.2, "sleepQuality": 1.6 },
                 { "userID": 1, "date": "2023/03/23", "hoursSlept": 8.4, "sleepQuality": 3.5 },
@@ -50,6 +50,11 @@ describe('Sleep', () => {
             { "userID": 1, "date": "2023/03/16", "hoursSlept": 4.8, "sleepQuality": 2.5 }]
         );
         });
+
+        it('should find the most recent days data', function () {
+            expect(testUser.findMostRecentDay()).to.be.equal("2023/03/24");
+        })
+
         it('should find the overall average of hours slept', function () {
             expect(testUser.findAllTimeAvgOfDetail("hoursSlept")).to.be.equal(7);
         });

@@ -91,6 +91,11 @@ function createHydrationChart() {
     data: {
       datasets: [{
         label:"ounces",
+        backgroundColor: "#538BC7",
+        borderColor: "#3C4252",
+        borderWidth: 2,
+        hoverBackgroundColor: "#5A73C0",
+        hoverBorderColor: "#5A73C0",
         data: data,
       }],
       labels: labels,

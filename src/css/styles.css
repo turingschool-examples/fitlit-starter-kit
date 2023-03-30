@@ -10,9 +10,9 @@
 #F3CEC7 = red
 */
 
-/* * {
+* {
   border: 1px solid red;
-} */
+}
 
 body, html {
   /* background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
@@ -20,6 +20,7 @@ body, html {
   height: 100%; */
 }
 
+/* main section */
 .welcome-box {
   display: flex;
 }
@@ -40,22 +41,26 @@ body, html {
   width: 100%;
 }
 
-.profile-card {
+.activity-card {
   background-color: #FDC507;
   min-width: 30%;
   max-width: 30%;
+  border-radius: 20px;
 }
 
 .hydration-card {
   background-color: #FCADC3;
+  color: #3C4252;
   min-width: 30%;
   max-width: 30%;
+  border-radius: 20px;
 }
 
 .sleep-card {
   background-color: #F16433;
   min-width: 30%;
-  max-width: 30%
+  max-width: 30%;
+  border-radius: 20px;
 }
 
 .infographic {

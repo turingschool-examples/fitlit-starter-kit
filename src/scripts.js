@@ -4,6 +4,9 @@ import './css/styles.css';
 // Image Imports
 import './images/turing-logo.png';
 
+// 3rd party library import
+import Chart from 'chart.js/auto';
+
 // Import API Calls
 import './apiCalls'
 
@@ -39,17 +42,41 @@ function displayUserGreeting(user) {
 }
 
 function displayhydrationCard(hydration, userID, date) {
-  hydrationCard.innerHTML = `<p><b>Average Daily Water Consumption:</b> ${hydration.calculateAverageFluidPerUser(
+  hydrationCard.innerHTML = `<p><b>Average Water Consumption:</b> ${hydration.calculateAverageFluidPerUser(
     userID
   )} ounces </p>
    <p><b>Water consumed today:</b> ${hydration.dailyOuncesConsumed(
      userID,
      date
    )} ounces </p> 
-  <p><b>Water consumed this week: </b> <br>${hydration.weeklyOuncesConsumed(userID, date).map(day => {
-    return `${day.date}: ${day.numOunces} ounces<br>`;
-  })} </p>
+    <button class="hydration-button">Weekly Water</button>
+  </p>
   `;
+  const waterButton = document.querySelector(".hydration-button");
+  waterButton.addEventListener("click", () => createHydrationChart(hydration, userID, date));
+}
+
+function createHydrationChart(hydration, userID, date) {
+  const weeklyOunces = hydration.weeklyOuncesConsumed(userID, date);
+  const labels = weeklyOunces.map(days => days.date);
+  const data = weeklyOunces.map(days => days.numOunces);
+
+  new Chart("chart", {
+    type: 'bar',
+    data: {
+      datasets: [{
+        label:"ounces",
+        backgroundColor: "#538BC7",
+        borderColor: "#3C4252",
+        borderWidth: 2,
+        hoverBackgroundColor: "#5A73C0",
+        hoverBorderColor: "#5A73C0",
+        data: data,
+      }],
+      labels: labels,
+    }
+  }
+  )
 }
 
 function displayLatestSleepData(sleep, userID, date) {

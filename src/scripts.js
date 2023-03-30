@@ -43,7 +43,6 @@ const displayCurrentUser = (user) => {
   `
 }
 
-
 const displaySleepInfo = (sleep) => {
   const latestSleep = sleep.data[sleep.data.length - 1];
   const pastWeekSleep = sleep.getInfoForPastWeek('hoursSlept');
@@ -53,12 +52,6 @@ const displaySleepInfo = (sleep) => {
   sleepWeek.innerHTML = `<h4>Last 7 Days: ${pastWeekSleep.join(', ')}</h4>`;
   sleepAvg.innerHTML = `<h4> Average Sleep Quality: ${avgQuality.toFixed(1)} Average Hours Slept: ${avgHours.toFixed(1)}</h4>`;
 }
-
-
-
-// import userData from './data/users';
-// console.log("User Data:", userData);
-// let user = new User(userTestData.userTestData[0])
 
 const displayHydrationAvg = (userId) => {
   hydrationAvg.innerHTML = `<h4>Average daily water intake: ${hydration.findAvgDailyHydration(userId)}oz</h4>`;
@@ -75,6 +68,7 @@ const displayHydrationWeek = () => {
   hydrationWeek.innerHTML = `<h4>Last 7 days: ${splitData.join(', ')}</h4>`
 }
 
+// function invocation
 displayCurrentUser(user)
 displaySleepInfo(sleep)
 displayHydrationStats(user.id)

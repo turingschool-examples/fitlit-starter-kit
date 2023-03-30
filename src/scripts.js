@@ -7,8 +7,8 @@ import './css/styles.css';
 import userTestData from '../src/data/user-test-data';
 import User from '../src/User'
 import Sleep from '../src/Sleep';
-// import Hydration from '../src/Hydration';
-// import hydrationTestData  from '../src/data/hydration-test-data';
+import Hydration from '../src/Hydration';
+import hydrationTestData  from '../src/data/hydration-test-data';
 import sleepTestData from '../src/data/sleep-test-data';
 import './images/turing-logo.png';
 // import './images/turing-logo.png';
@@ -20,11 +20,14 @@ const userInfo = document.querySelector('#userInfo')
 const sleepCurrent = document.querySelector('#sleepBox')
 const sleepWeek = document.querySelector('#sleepBoxWeek')
 const sleepAvg = document.querySelector('#sleepBoxAvg')
+const hydrationDay = document.querySelector('#hydrationBoxDaily');
+const hydrationWeek = document.querySelector('#hydrationBoxWeek');
+const hydrationAvg = document.querySelector('#hydrationBoxAvg')
 
 // Global Variables
  let user = new User(userTestData.userTestData[0]);
  let sleep = new Sleep(sleepTestData.sleepTestData);
- //  let hydration = new Hydration();
+ let hydration = new Hydration(hydrationTestData.hydrationTestData);
 
 // Event listeners
 
@@ -39,7 +42,7 @@ const displayCurrentUser = (user) => {
   <h4>Your Step Goal Compared to All Users: ${user.dailyStepGoal}/${user.getAverage(userTestData.userTestData)}</h4>
   `
 }
-displayCurrentUser(user)
+
 
 const displaySleepInfo = (sleep) => {
   const latestSleep = sleep.data[sleep.data.length - 1];
@@ -50,8 +53,33 @@ const displaySleepInfo = (sleep) => {
   sleepWeek.innerHTML = `<h4>Last 7 Days: ${pastWeekSleep.join(', ')}</h4>`;
   sleepAvg.innerHTML = `<h4> Average Sleep Quality: ${avgQuality.toFixed(1)} Average Hours Slept: ${avgHours.toFixed(1)}</h4>`;
 }
-displaySleepInfo(sleep)
 
+
+
+// import userData from './data/users';
+// console.log("User Data:", userData);
+// let user = new User(userTestData.userTestData[0])
+
+const displayHydrationAvg = (userId) => {
+  hydrationAvg.innerHTML = `<h4>Average daily water intake: ${hydration.findAvgDailyHydration(userId)}oz</h4>`;
+}
+
+const displayHydrationStats = (userId) => {
+  hydrationDay.innerHTML = `<h4>Fluid ounces drank today: ${hydration.findAvgDailyHydration(userId)}oz</h4>`;
+
+}
+
+const displayHydrationWeek = () => {
+  let weekData = hydration.findWeeklyHydration()
+  let splitData = weekData.map(num => num + 'oz')
+  hydrationWeek.innerHTML = `<h4>Last 7 days: ${splitData.join(', ')}</h4>`
+}
+
+displayCurrentUser(user)
+displaySleepInfo(sleep)
+displayHydrationStats(user.id)
+displayHydrationWeek('2023/03/02')
+displayHydrationAvg(user.id)
 
 
 // get a radom number based on the amount of IDs we have

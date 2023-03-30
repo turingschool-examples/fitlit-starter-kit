@@ -16,30 +16,30 @@ describe('Sleep Repository', () => {
 
   it('should be able to sort based on date', ()=> {
     expect(sleep.data[2]).to.deep.equal({ 
-      "userID":1,"date":"2023/03/03","hoursSlept":8.4,"sleepQuality":3.5})
+      "userID":3,"date":"2023/03/24","hoursSlept":9.7,"sleepQuality":4.7})
   })
 
   it('should calculate average hours slept', () => {
-    expect(sleep.getAverage("hoursSlept")).to.equal(7.2375);
+    expect(sleep.getAverage("hoursSlept")).to.equal(7.5724);
   });
 
   it('should calculate average sleep quality', () => {
-    expect(sleep.getAverage("sleepQuality")).to.equal(3.1625);
+    expect(sleep.getAverage("sleepQuality")).to.equal(3.0259);
   });
 
   it('should retrieve sleep hours data', () => {
-    expect(sleep.getInfoForSpecificDate("2023/03/01", "hoursSlept")).to.equal(9.6);
+    expect(sleep.getInfoForSpecificDate("2023/03/24", "hoursSlept")).to.equal(9.6);
   });
   
   it('should retrieve sleep quality data', () => {
-    expect(sleep.getInfoForSpecificDate("2023/03/01", "sleepQuality")).to.equal(4.3);
+    expect(sleep.getInfoForSpecificDate("2023/03/24", "sleepQuality")).to.equal(4.3);
   });
   
   it('should retrieve sleep hours for specified week', () => {
-    expect(sleep.getInfoForPastWeek("hoursSlept")).to.deep.equal([9.6, 9.7, 8.4, 8, 4.7, 4.2, 4.1]);
+    expect(sleep.getInfoForPastWeek("hoursSlept")).to.deep.equal([9.6, 8.4, 9.7, 4.7, 8, 4.2, 4.1]);
   });
 
   it('should retrieve sleep quality for specified week', () => {
-    expect(sleep.getInfoForPastWeek("sleepQuality")).to.deep.equal([4.3, 4.7, 3.5, 3.1, 3, 1.2, 3.9]);
+    expect(sleep.getInfoForPastWeek("sleepQuality")).to.deep.equal([4.3, 3.5, 4.7, 3, 3.1, 1.2, 3.9]);
   });
 });

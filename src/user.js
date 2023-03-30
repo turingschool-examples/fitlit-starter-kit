@@ -96,7 +96,6 @@ export default User
 
 
 
-
 /*
 Iteration 1 Classes :### 
 Class - allUsers 
@@ -118,3 +117,23 @@ properties id name address email strideLength dailyStepGoal
 UserFriends methods 
 `userFirstName()` `findToday()` the most recent day
 */
+
+//console.log("User Data:", userData);
+
+// //Get Random user by refrencing the class
+// const currentUser = new User(userData);
+// //Get Current user First Name
+// currentUser.userFirstName()
+
+// //Change The Current User By ID
+// currentUser.findUserById(1,userData)
+// //Get Current user First Name
+// currentUser.userFirstName()
+
+// //Get overall Step goal
+// currentUser.findOverAllStepGoal(userData)
+// //Get user Step Goal
+// currentUser.dailyStepGoal
+
+// //Get First Name by ID
+// currentUser.userFirstNameById(49,userData)

@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>GitFit</title>
+    <head>
+      <title>User Info Card</title>
+    </head>
   </head>
   <body>
     <h1>Activity Tracker</h1>
@@ -16,16 +19,22 @@
       </ol>
     </nav>
     <aside class="user-profile">
-      <div class="user-data" id="user1"></div>
+      <div class="info-card">
+        <div class="user-info">
+          <h1 id="firstName">Welcome, first name!</h1>
+          <p id="fullName">Full Name: John</p>
+          <p id="address">Address:666</p>
+          <p id="email">Email: john.doe@example.com</p>
+          <p id="strideLength">Stride Length: 99</p>
+          <p id="dailyStepgoal">Daily Step Goal: 99</p>
+          <p id="friends">Friends:</p>
+
+        </div>
       <div></div>
       <div></div>
       <div class="friends"></div>
     </aside>
     <img src="bundle.js.map" alt="turing logo" height="100px" width="100px">
-
-
-
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>
 </html>

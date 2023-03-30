@@ -11,52 +11,52 @@ import './images/turing-logo.png';
 
 // An example of how you tell webpack to use a JS file
 import User from './user';
-import userData from './data/users';
+// import userData from './data/users';
 import UserHydration from './userHydration';
 import Sleep from './Sleep';
 import fetchAll from './apiCalls';
 
 // Global Varible Section
-let allUsersData
+let userData
 let allUserSleepData
 let allUserHydrationData
 let allUserActivityData
 
+//querySelector variables 
+
+const userInfoBox = document.querySelector('.user-info')
+
+
+
+
 window.addEventListener('load', () => {
   fetchAll()
   .then(data => {
+    userData = data[0]
     allUserSleepData = data[1]
     allUserHydrationData = data[2]
-    allUserSleepData = data[3]
-    console.log(allUserHydrationData)
+    allUserActivityData = data[3]
+    const currentUser = new User(userData);
+    loadUserInfo(currentUser,userData)
   })
-
 })
-//console.log("User Data:", userData);
 
-//Get Random user by refrencing the class
-const currentUser = new User(userData);
-//Get Current user First Name
-currentUser.userFirstName()
+function loadUserInfo(currentUserData,userData) {
+    document.getElementById('firstName').innerHTML = currentUserData.userName;
+    document.getElementById('fullName').innerHTML = currentUserData.userName;
+    document.getElementById('address').innerHTML = currentUserData.address;
+    document.getElementById('email').innerHTML = currentUserData.email;
+    document.getElementById('strideLength').innerHTML = currentUserData.strideLength;
+    document.getElementById('dailyStepgoal').innerHTML = currentUserData.dailyStepGoal;
+    document.getElementById('friends').innerHTML = currentUserData.userFirstNameById(currentUserData.friends[0],userData);
+   
 
-//Change The Current User By ID
-currentUser.findUserById(1,userData)
-//Get Current user First Name
-currentUser.userFirstName()
+    console.log(currentUserData.friends[0])
 
-//Get overall Step goal
-currentUser.findOverAllStepGoal(userData)
-//Get user Step Goal
-currentUser.dailyStepGoal
-
-//Get First Name by ID
-currentUser.userFirstNameById(49,userData)
-
+}
 
 
 //Print Current User Object
-// console.log(currentUser)
-
 // console.log(currentUser.userId)
 // console.log(currentUser.userName)
 // console.log(currentUser.address)
@@ -64,3 +64,9 @@ currentUser.userFirstNameById(49,userData)
 // console.log(currentUser.strideLength)
 // console.log(currentUser.dailyStepGoal)
 // console.log(currentUser.friends)
+
+
+// console.log(userData.users)
+//     console.log(allUserSleepData)
+//     console.log(allUserHydrationData)
+//     console.log(allUserActivityData)

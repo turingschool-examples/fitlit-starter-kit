@@ -70,3 +70,14 @@ p {
 .header-box{
   background-color: rgb(255, 204, 236);
 }
+
+h3 {
+  margin: 2px;
+}
+
+h4 {
+  font-family: 'Space Mono', monospace;
+  padding: 0;
+  margin: 0;
+}
+

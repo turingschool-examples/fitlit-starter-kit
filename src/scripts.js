@@ -1,6 +1,6 @@
 import './css/styles.css';
 import User from "../src/data/User.js"
-import Hydration from "./data/Hydration.js"
+import Hydration from "../src/data/Hydration.js"
 import userTestData from '../test/user-test-data';
 import hydrationTestData from '../test/hydration-test-data';
 
@@ -13,6 +13,7 @@ let userDailyStepGoal = document.querySelector("#userDSG");
 let stepGoalComparison = document.querySelector("#stepGoalComp");
 let userFriends = document.querySelector("#userFriends");
 let dailyWater = document.querySelector("#dailyWater");
+let weeklyWater = document.querySelector("#weeklyWater");
 
 let date = new Date()
 var currentDate = date.getFullYear() + "/" + ("0" + (date.getMonth()+1)).slice(-2) + "/"+ ("0" + date.getDate()).slice(-2);
@@ -26,6 +27,7 @@ window.addEventListener('load', function() {
     displayWelcomeMessage();
     displayInfoCard();
     displayWaterConsumed();
+    displayWeeklyWaterConsumption();
 });
 
 function generateRandomUser() {
@@ -73,11 +75,33 @@ function displayWaterConsumed() {
   if (currentDayEntry) {
     dailyWater.innerText = `You have consumed ${currentDayEntry.numOunces} ounces of water today.`
   } else {
-    dailyWater.innerText = 'Drink more water. You thirsty!'
+    dailyWater.innerText = 'Drink more water you thirsty bitch!'
   }
 };
 
-function waterConsumedByWeek(user, startDate = null) {
-    const waterConsumedWeekly = user.waterConsumed;
-    let startIndex = startDate
+function displayWeeklyWaterConsumption() {
+  // let newHydration = new Hydration(hydrationTestData[1])
+  const hydrationEntries = hydrationTestData.filter(hydrationEntry => hydrationEntry.userID === newUser.id);
+    const reverse = hydrationEntries.reverse()
+
+    const weeklyHydrationEntries = [
+      reverse[0], 
+      reverse[1], 
+      reverse[2], 
+      reverse[3], 
+      reverse[4], 
+      reverse[5], 
+      reverse[6]
+    ];
+    
+    const weeklyOunces = weeklyHydrationEntries.reduce((acc, entry) => {
+        const weeklyInfo = {
+        'Date': entry.date,
+        'Number of Ounces Drank': entry.numOunces
+      };
+      acc.push(weeklyInfo);
+      return acc;
+    }, []);
+  // console.log(weeklyOunces.toString())
+  weeklyWater.innertext = weeklyOunces
 };

@@ -1,3 +1,5 @@
+const dayjs = require("dayjs");
+
 class Sleep {
   constructor(sleepData) {
     this.data = sleepData;
@@ -32,6 +34,22 @@ class Sleep {
     let sleepQuality = filteredSleepData.find((user) => user.date === date);
     return sleepQuality.sleepQuality;
   }
-};
+  calculateWeeklyHoursSlept(userID, date) {
+    const startDate = dayjs(date);
+    const endDate = startDate.add(6, "day");
+    const filteredSleepData = this.data.filter(
+      (user) => user.userID === userID
+    );
+    console.log(filteredSleepData, "filtered Sleep data");
+    const sleepData = filteredSleepData.filter((entry) => {
+      //date date that is after the start date
+      return (
+        dayjs(entry.date).isAfter(startDate) &&
+        dayjs(entry.date).isBefore(endDate.add(1, "day"))
+      );
+    });
+    return sleepData;
+  }
+}
 
 export default Sleep;

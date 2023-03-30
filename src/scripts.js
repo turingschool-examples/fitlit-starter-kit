@@ -47,7 +47,7 @@ const displaySleepInfo = (sleep) => {
   const avgQuality = sleep.getAverage('sleepQuality');
   const avgHours = sleep.getAverage('hoursSlept');
   sleepCurrent.innerHTML = `<h4>Latest Hours Slept: ${latestSleep.hoursSlept} Latest Quality of Sleep: ${latestSleep.sleepQuality}</h4>`;
-  sleepWeek.innerHTML = `<h4> Sleep Pattern Last 7 Days: ${pastWeekSleep.join(', ')}</h4>`;
+  sleepWeek.innerHTML = `<h4>Last 7 Days: ${pastWeekSleep.join(', ')}</h4>`;
   sleepAvg.innerHTML = `<h4> Average Sleep Quality: ${avgQuality.toFixed(1)} Average Hours Slept: ${avgHours.toFixed(1)}</h4>`;
 }
 displaySleepInfo(sleep)

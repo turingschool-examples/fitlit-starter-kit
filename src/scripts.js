@@ -4,53 +4,13 @@ import './css/styles.css';
 // Image Imports
 import './images/turing-logo.png';
 
-// import './apiCalls'
-
-// JS File Imports
-
-import UserRepository from './classes/UserRepository';
-import User from './classes/User';
-import Hydration from './classes/Hydration';
-
-//Global variables
-let hydration;
-let user;
-let userID = 1;
-let date = "2023/03/24";
+// Import API Calls
+import './apiCalls'
 
 //Query Selectors
 const hydrationCard = document.querySelector(".hydration-holder");
 
-// Fetch APIs
-fetch("https://fitlit-api.herokuapp.com/api/v1/users")
-  .then(response => response.json())
-  .then(userData => {
-    const userBase = new UserRepository(userData.users);
-    user = new User(userBase.getUser(userID));
-    displayUserCard(user);
-    displayStepUserVsAllUsers(user, userBase);
-    displayUserGreeting(user);
-  });
-
-fetch("https://fitlit-api.herokuapp.com/api/v1/hydration")
-  .then((response) => response.json())
-  .then((data) => {
-    hydration = new Hydration(data.hydrationData);
-    displayhydrationCard(hydration, userID, date);
-  });
-
-fetch("https://fitlit-api.herokuapp.com/api/v1/sleep")
-  .then((response) => response.json())
-  .then((data) => {
-    sleepData = new Sleep(data.sleepData);
-    displayLatestSleepData(sleepData, userID, date);
-    displayAllTimeSleepData(sleepData, userID);
-    // sleep DOM manipulation functions go here
-  });
-
-
-
-// Functions
+// DOM Manipulation Functions
 function displayUserCard(user) {
   const userCard = document.querySelector('.user-profile-info-js');
   userCard.innerHTML = `
@@ -92,20 +52,23 @@ function displayhydrationCard(hydration, userID, date) {
   `;
 }
 
-function displayLatestSleepData(sleepData, userID, date) {
+function displayLatestSleepData(sleep, userID, date) {
   const latestSleepData = document.querySelector('.latest-sleep-data-js');
   latestSleepData.innerHTML = `
-    <p><b>Hours Slept:</b> ${sleepData.calculateDailySleep(userID, date)}</p>
-    <p><b>Sleep Quality:</b> ${sleepData.calculateDailySleepQuality(userID, date)}</p>
+    <p><b>Hours Slept:</b> ${sleep.findSleepHoursOnDate(userID, date)}</p>
+    <p><b>Sleep Quality:</b> </p>
   `;
 };
 
-function displayAllTimeSleepData(sleepData, userID) {
+function displayAllTimeSleepData(sleep, userID) {
   const allTimeSleepData = document.querySelector('.all-time-sleep-data-js');
   allTimeSleepData.innerHTML = `
-    <p><b>Average Hours Slept:</b> ${sleepData.calculateAverageSleep(userID)}</p>
-    <p><b>Average Sleep Quality:</b> ${sleepData.calculateAverageSleepQuality(userID)}</p>
+    <p><b>Average Hours Slept:</b> ${sleep.calculateAverageSleepHours(userID)}</p>
+    <p><b>Average Sleep Quality:</b> ${sleep.calculateAverageSleepQuality(userID)}</p>
   `;
 };
 
-// export { displayUserCard, displayStepUserVsAllUsers, displayUserGreeting, displayhydrationCard, displayLatestSleepData, displayAllTimeSleepData}
+
+// Export Statements
+
+export { displayUserCard, displayStepUserVsAllUsers, displayUserGreeting, displayhydrationCard, displayLatestSleepData, displayAllTimeSleepData}

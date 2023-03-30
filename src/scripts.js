@@ -3,7 +3,10 @@
 
 import User from '../src/User'
 import Hydration from '../src/Hydration'
-import mock from '../src/data/mock' 
+// import mock from '../src/data/mock' 
+import apiCalls from '../src/apiCalls'
+
+
 // console.log("user data:", User)
 
 let user, hydration;
@@ -33,7 +36,7 @@ function displayRandomUser() {
   userStride.innerText = `Stride Length: ${user.strideLength}`
   userSteps.innerText = `Daily Step Goal: ${user.dailyStepGoal}`
   welcomeMessage.innerText = `Hello, ${user.getFirstName()}!`
-  comparisonSteps.innerText = `The average daily is taking ${user.usersAvgDailyStep()} steps today.`
+  comparisonSteps.innerText = `The average user is taking ${user.usersAvgDailyStep()} steps today.`
   displayHydration()
 }
 

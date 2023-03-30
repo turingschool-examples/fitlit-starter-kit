@@ -21,14 +21,28 @@ const comparisonSteps = document.querySelector('.comparison-steps')
 const hydrationToday = document.querySelector('.hydration-today')
 const hydrationWeekly = document.querySelector('.hydration-weekly')
 
+// event listeners
 window.addEventListener('load', displayRandomUser())
 
+// functions 
+Promise.all(apiCalls)
+  .then(function(apiCallsArray) {
+    const usersData = apiCallsArray[0].users
+    console.log(usersData)
+    // const sleepData = apiCallsArray[1].sleep
+    const hydrationData = apiCallsArray[2].hydration
+    // const activityData = apiCallsArray[3].activity
+    getRandomIndex(usersData)
+    displayRandomUser(usersData)
+  })
+
 function getRandomIndex(array) {
+  // console.log(array);
   return Math.floor(Math.random() * array.length);
 }
 
-function displayRandomUser() {
-  user = new User(mock.users[getRandomIndex(mock.users)])
+function displayRandomUser(usersData) {
+  user = new User(usersData[getRandomIndex(usersData)])
   userName.innerText = user.name
   userAddress.innerText = `Address: ${user.address}`
   userEmail.innerText = `Email: ${user.email}`

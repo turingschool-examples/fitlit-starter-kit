@@ -9,6 +9,9 @@ class User {
     this.strideLength = userStats.strideLength;
     this.dailyStepGoal = userStats.dailyStepGoal;
     this.friends = userStats.friends;
+    this.activity = []
+    this.sleep = []
+    this.hydration = []
   }
 
   getFriends(dataSet) {

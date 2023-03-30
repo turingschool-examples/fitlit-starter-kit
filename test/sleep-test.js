@@ -45,4 +45,15 @@ describe('Sleep', () => {
     expect(sleep.findSleepQualityOnDate(3, "2023/06/28")).to.equal(4.6);
     expect(sleep.findSleepQualityOnDate(4, "2023/06/30")).to.equal(3.4);
   });
+   it("should return how many hours slept over each day in a given week", function () {
+     expect(sleep.calculateWeeklyHoursSlept(3, "2023/03/24")).to.deep.equal([
+       { userID: 3, date: "2023/03/29", hoursSlept: 5.6, sleepQuality: 1.4 },
+       { userID: 3, date: "2023/03/28", hoursSlept: 5.2, sleepQuality: 4.6 },
+       { userID: 3, date: "2023/03/27", hoursSlept: 8.5, sleepQuality: 2.9 },
+       { userID: 3, date: "2023/03/26", hoursSlept: 4.1, sleepQuality: 2 },
+       { userID: 3, date: "2023/03/25", hoursSlept: 9.5, sleepQuality: 1.8 },
+       { userID: 3, date: "2023/03/24", hoursSlept: 9.7, sleepQuality: 4.7 },
+     ]);
+   });
+
 });

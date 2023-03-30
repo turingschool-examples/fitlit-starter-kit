@@ -23,18 +23,20 @@ describe('Hydration', () => {
         expect(hydration1.hydration).to.equal(mock.hydrationData)
     })
 
-    it('Should be able to find hydration data of each user', () => {
+    it('Should be able to find hydration data of each user, filtered by date', () => {
         expect(hydration1.findUserData(2)).to.deep.equal([{
-            "userID": 2,
-            "date": "2023/03/24",
-            "numOunces": 35
-        },
-        {
             "userID": 2,
             "date": "2023/03/25",
             "numOunces": 92
+        },
+        {
+            "userID": 2,
+            "date": "2023/03/24",
+            "numOunces": 35
         }])
     })
+
+
 
     it('Should be able to calculate the daily fluid intake of a user, based on a specific date', () => {
         expect(hydration1.findDailyFluidIntake(1, '2023/03/24')).to.equal(28)

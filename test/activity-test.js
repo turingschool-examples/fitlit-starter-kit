@@ -36,4 +36,4 @@ describe('Activity', function() {
   // it('should be able to take in a users flights of stairs traversed', function() {
   //   expect(user1.flightsOfStairs).to.equal(26)
   });
-});
+// });

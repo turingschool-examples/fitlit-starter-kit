@@ -1,10 +1,12 @@
 import { expect } from 'chai';
 import User from '../src/User';
 import mock from '../src/data/mock';
+// import apiCalls from '../src/apiCalls';
 
 describe('User', function() {
     let  user1, user2, user3
     beforeEach(function() {
+        // usersData = apiCalls[0].users
         user1 = new User(mock.users[0])
         user2 = new User(mock.users[1])
         user3 = new User(mock.users[2])

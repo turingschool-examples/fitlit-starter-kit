@@ -31,6 +31,25 @@ class Sleep{
     const dailyEntry = sleepEntries.find(entry => entry.date === date)
     return dailyEntry.sleepQuality
   }
+
+  getWeekSleep(userID, startDate) {
+    const sleepEntries = this.sleepData.filter(entry => entry.userID === userID);
+    const indexOfCurrentDayEntry = sleepEntries.indexOf(sleepEntries.find(entry => {
+      return entry.date === startDate
+    }))
+    let weeklySleep = [];
+
+    for (let i = indexOfCurrentDayEntry; i > indexOfCurrentDayEntry - 7; i--) {
+      weeklySleep.push(sleepEntries[i])
+    }
+
+    const weeklySleepData = weeklySleep.map(entry => (
+      {
+      [entry.date]: entry.hoursSlept + ' hours'
+      }
+      ))
+      return weeklySleepData
+  }
 };
 
 

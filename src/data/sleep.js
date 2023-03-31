@@ -45,7 +45,8 @@ class Sleep{
 
     const weeklySleepData = weeklySleep.map(entry => (
       {
-      [entry.date]: entry.hoursSlept + ' hours slept'
+      date: entry.date, 
+      hoursSlept: entry.hoursSlept + ' hours slept'
       }
       ))
       return weeklySleepData
@@ -64,7 +65,8 @@ class Sleep{
 
     const weeklySleepQualityData = weeklySleepQuality.map(entry => (
       {
-      [entry.date]: entry.sleepQuality + ' sleep quality rating'
+      date: entry.date,
+      sleepQuality: entry.sleepQuality + ' sleep quality rating'
       }
       ))
       return weeklySleepQualityData

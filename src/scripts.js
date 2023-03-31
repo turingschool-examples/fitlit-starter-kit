@@ -5,6 +5,7 @@ let users, hydration, sleep, activity
 
 import User from "../src/data/User.js"
 import Hydration from "../src/data/Hydration.js"
+import Sleep from "../src/data/sleep.js"
 
 let welcomeMessage = document.querySelector("#headerWelcome");
 let userName = document.querySelector("#userName");
@@ -16,6 +17,11 @@ let stepGoalComparison = document.querySelector("#stepGoalComp");
 let userFriends = document.querySelector("#userFriends");
 let dailyWater = document.querySelector("#dailyWater");
 let weeklyWater = document.querySelector("#weeklyWater");
+let dailySleep = document.querySelector("#dailySleep");
+let weeklySleep = document.querySelector("#weeklySleepHours");
+let weeklySleepQuality = document.querySelector("#weeklySleepQuality");
+let averageSleep = document.querySelector("#averageSleep");
+let averageSleepQuality = document.querySelector("#averageSleepQuality");
 
 let date = new Date();
 let currentDate = date.getFullYear() + "/" + ("0" + (date.getMonth()+1)).slice(-2) + "/"+ ("0" + date.getDate()).slice(-2);
@@ -26,13 +32,17 @@ window.addEventListener('load', function () {
   .then(data => {
     users = new User (data[0].users)
     hydration = new Hydration(data[1].hydrationData)
-    sleep = data[2].sleepData
+    sleep = new Sleep(data[2].sleepData)
     activity = data[3].activityData
     generateRandomUser();
     displayWelcomeMessage();
     displayInfoCard();
     displayWaterConsumed();
     displayWeeklyWaterConsumption();
+    displayDailySleep();
+    displayWeeklySleep();
+    displayWeeklySleepQuality();
+    displayAverageSleep();
   })
 });
 
@@ -80,4 +90,34 @@ function displayWeeklyWaterConsumption() {
   for (let i = 0; i < 7; i++) {
     weeklyWater.innerText += hydration.getWeeklyOunces(newUser.id)[i]
   }
+};
+
+function displayDailySleep() {
+  const currentDayEntry = sleep.getHoursByDay(newUser.id, currentDate);
+
+  if (currentDayEntry) {
+    dailySleep.innerText = `You slept ${currentDayEntry} hours last night.`
+  } else {
+    dailySleep.innerText = 'You need to get more sleep!'
+  }
+};
+
+function displayWeeklySleep() {
+  const weeklySleepEntries = sleep.getWeekSleep(newUser.id, currentDate);
+  weeklySleepEntries.forEach(entry => {
+   weeklySleep.innerText += `${entry.date}: ${entry.hoursSlept}
+   `
+  });
+};
+
+function displayWeeklySleepQuality() {
+  const weeklySleepQualityEntries = sleep.getWeekSleepQuality(newUser.id, currentDate); 
+  weeklySleepQualityEntries.forEach(entry => {
+   weeklySleepQuality.innerText += ` @ ${entry.sleepQuality}
+   `
+  });
+};
+
+function displayAverageSleep() {
+  averageSleep.innerText += `You average ${sleep.getAvgSleep(newUser.id)} hours of sleep each night and a ${sleep.getAvgQuality(newUser.id)} sleep quality rating!`; 
 };

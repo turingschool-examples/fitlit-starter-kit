@@ -5,6 +5,7 @@ class Sleep {
     this.data = data
       .map((sleep) => {
         sleep.date = dayjs(sleep.date, 'YYYY/MM/DD')
+        .format('YYYY/MM/DD')
         return sleep;
       })
   }
@@ -23,7 +24,9 @@ class Sleep {
 
   getInfoForSpecificDate(date, infoType){
     if (this.data.some(sleep => sleep.date === date)){
-      return this.data.find(sleep => sleep.date === date)[infoType];
+    let x = this.data.find(sleep => sleep.date === date)[infoType];
+    console.log(x)
+    return x
     } else {
       return "There is no data for this date";
     }
@@ -37,15 +40,6 @@ class Sleep {
     } else {
       return `${infoType} is not a valid argument!`;
     }
-  }
-
-  sortData() {
-    this.data = this.data
-      .sort((a,b) => a.date - b.date);
-    this.data.map((sleep) => {
-      sleep.date = dayjs(sleep.date, 'YYYY/MM/D').format('YYYY/MM/DD');
-      return sleep;
-    })
   }
 
 }

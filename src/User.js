@@ -31,7 +31,6 @@ class User {
       acc += userSet.dailyStepGoal
       return acc
     }, 0);
-
     return total / dataSet.length
   }
 

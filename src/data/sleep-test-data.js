@@ -56,5 +56,17 @@ export default { sleepTestData: [
   {"userID":26,"date":"2023/03/25","hoursSlept":6.4,"sleepQuality":1},
   {"userID":27,"date":"2023/03/25","hoursSlept":6.7,"sleepQuality":2},
   {"userID":28,"date":"2023/03/25","hoursSlept":6.4,"sleepQuality":4.7},
-  {"userID":29,"date":"2023/03/25","hoursSlept":7.8,"sleepQuality":4.1}]
+  {"userID":29,"date":"2023/03/25","hoursSlept":7.8,"sleepQuality":4.1},
+  {"userID":1,"date":"2023/03/26","hoursSlept":5.1,"sleepQuality":4.2},
+  {"userID":1,"date":"2023/03/27","hoursSlept":8.2,"sleepQuality":3.4},
+  {"userID":1,"date":"2023/03/28","hoursSlept":6.4,"sleepQuality":1},
+  {"userID":1,"date":"2023/03/29","hoursSlept":6.7,"sleepQuality":2},
+  {"userID":1,"date":"2023/03/30","hoursSlept":6.4,"sleepQuality":4.7},
+  {"userID":1,"date":"2023/03/31","hoursSlept":7.8,"sleepQuality":4.1}
+]
+
+
+
+
+
 }

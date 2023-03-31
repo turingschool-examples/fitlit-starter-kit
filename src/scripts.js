@@ -1,6 +1,6 @@
 
 // Webpack links
-import { fetchApiData } from '../src/apiCalls';
+import { fetchAllData } from '../src/apiCalls';
 import './css/styles.css';
 import User from '../src/User'
 import Sleep from '../src/Sleep';
@@ -31,38 +31,29 @@ let activityObj;
 
 // Event listeners
 window.addEventListener('load', () => {
-  fetchApiData('https://fitlit-api.herokuapp.com/api/v1/users')
-    .then(res => res.json())
-    .then(data => {
-    userList = data.users;
-    userObj = new User(data.users[Math.floor(Math.random() * data.users.length)]);
-    displayCurrentUser(userObj);
-    
-    fetchApiData('https://fitlit-api.herokuapp.com/api/v1/sleep')
-    .then(res => res.json())
-    .then(data => {
-      sleepObj = new Sleep(data.sleepData.filter(sleep => sleep.userID === userObj.id))
-      displaySleepInfo(sleepObj);
-    });
-    
-    fetchApiData('https://fitlit-api.herokuapp.com/api/v1/hydration')
-    .then(res => res.json())
-    .then(data => {
-      hydrationObj = new Hydration(data.hydrationData.filter(hydration => hydration.userID === userObj.id))
+  fetchAllData()
+  .then(data => {
+      userList = data[0].users;
+      userObj = new User(data[0].users[Math.floor(Math.random() * 50)]);
+      displayCurrentUser(userObj);
+
+      hydrationObj = new Hydration(getUserData('hydrationData', data[1]));
       displayHydration(userObj.id);
-    });
-    
-    fetchApiData('https://fitlit-api.herokuapp.com/api/v1/activity')
-    .then(res => res.json())
-    .then(data => {
-      activityObj = new Activity(data.activityData.filter(activity => activity.userID === userObj.id), userObj.strideLength);
+
+      sleepObj = new Sleep(getUserData('sleepData', data[2]));
+      displaySleepInfo(sleepObj);
+
+      activityObj = new Activity(getUserData('activityData', data[3]), userObj.strideLength);
       displayActivity(userObj.id);
-    });
-    });
+    })
 });
     
-
 // DOM Methods
+
+const getUserData = (infoType, array) => {
+  return array[infoType].filter(data => data.userID === userObj.id).reverse();
+};
+
 const displayCurrentUser = (user) => {
   firstName.innerText = `${user.getName()}`;
   userInfo.innerHTML = `<h4>Address: ${user.address}</h4>
@@ -71,7 +62,7 @@ const displayCurrentUser = (user) => {
   <h4>Daily Step Goal: ${user.dailyStepGoal}</h4>
   <h4>Friends: ${user.getFriends(userList)}</h4>
   <h4>Your Step Goal Compared to All Users: ${user.dailyStepGoal}/${user.getAverage(userList)}</h4>`
-}
+};
 
 const displaySleepInfo = (sleep) => {
   const latestSleep = sleep.data[sleep.data.length - 1];
@@ -81,32 +72,21 @@ const displaySleepInfo = (sleep) => {
   sleepDay.innerHTML = `<h4>Latest Hours Slept:</h4> ${latestSleep.hoursSlept} Latest Quality of Sleep: ${latestSleep.sleepQuality}</h4>`;
   sleepWeek.innerHTML = `<h4>Last 7 Days: ${pastWeekSleep.join(', ')}</h4>`;
   sleepAvg.innerHTML = `<h4> Average Sleep Quality: ${avgQuality.toFixed(1)} Average Hours Slept: ${avgHours.toFixed(1)}</h4>`;
-}
-
-const displayHydrationAvg = (userId) => {
-  hydrationAvg.innerHTML = `<h4>Average daily water intake: ${hydrationObj.findAvgDailyHydration(userId)}oz</h4>`;
-}
-
-const displayHydrationStats = (userId) => {
-  hydrationDay.innerHTML = `<h4>Fluid ounces drank today: ${hydrationObj.findAvgDailyHydration(userId)}oz</h4>`;
-}
-
-const displayHydrationWeek = () => {
-  let weekData = hydrationObj.findWeeklyHydration()
-  let splitData = weekData.map(num => num + 'oz')
-  hydrationWeek.innerHTML = `<h4>Last 7 days: ${splitData.join(', ')}</h4>`
-}
+};
 
 const displayHydration = (userId) => {
-  displayHydrationAvg(userId);
-  displayHydrationStats(userId);
-  displayHydrationWeek();
-}
+  let weekData = hydrationObj.findWeeklyHydration();
+  let splitData = weekData.map(num => num + 'oz');
+  hydrationWeek.innerHTML = `<h4>Last 7 days: ${splitData.join(', ')}</h4>`;
+  hydrationDay.innerHTML = `<h4>Fluid ounces drank today: ${hydrationObj.findAvgDailyHydration(userId)}oz</h4>`;
+  hydrationAvg.innerHTML = `<h4>Average daily water intake: ${hydrationObj.findAvgDailyHydration(userId)}oz</h4>`;
+};
 
 const displayActivity = (date) => {
-  activityDay.innerHTML = `<h4>Latest # of Steps: ${activityObj.getStepCount()}</h4>`
-  activityAvg.innerHTML = `<h4>Latest # of Minutes Active: ${activityObj.getMinutesActive()}</h4>`
-  activityAvg.innerHTML = `<h4>Latest Distance Walked: ${activityObj.calculateMiles()}</h4>`
-  activityWeek.innerHTML = `<h4>Weekly Step Goal: ${activityObj.getLatestWeek()}</h4>`
-}
+  let currentDate = activityObj.data[0].date;
+  activityDay.innerHTML = `<h4>Latest # of Steps: ${activityObj.getStepCount(activityObj.data[0].date)}</h4>`;
+  activityAvg.innerHTML = `<h4>Latest # of Minutes Active: ${activityObj.getMinutesActive(currentDate)}</h4>`;
+  activityAvg.innerHTML = `<h4>Latest Distance Walked: ${activityObj.calculateMiles(currentDate)}</h4>`;
+  activityWeek.innerHTML = `<h4>Weekly Steps: ${activityObj.getLatestWeek()}</h4>`;
+};
 

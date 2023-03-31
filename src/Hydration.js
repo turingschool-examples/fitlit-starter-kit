@@ -4,6 +4,7 @@ class Hydration {
     this.data = data
       .map((water) => {
         water.date = dayjs(water.date, 'YYYY/MM/DD')
+        .format('YYYY/MM/DD')
         return water
       })
   }
@@ -32,15 +33,6 @@ class Hydration {
 
   findWeeklyHydration() {
     return this.data.map(water => water.numOunces).slice(0,7)
-  }
-
-  sortData() {
-    this.data = this.data
-      .sort((a,b) => a.date - b.date)
-    this.data.map((water) => {
-      water.date = dayjs(water.date, 'YYYY/MM/D').format('YYYY/MM/DD')
-      return water
-    })
   }
 }
 

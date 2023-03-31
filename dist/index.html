@@ -7,59 +7,46 @@
   </head>
   <body>
     <header id="header" class="website-header">
-			<h1 id="headerWelcome" class="header-welcome">Welcome [User name here]!</h1>
-			<div class="lower-header">
-				<h2 id="headerQuote" class="header-quote">[Random inspirational quote here]</h2>
-				<h2 id="headerDate" class="header-date">[Current date]</h2>
-			</div>
-		</header>
-		<div class="data-container">		
-			<main id="main" class="main-section">
-      <section id="hydrationWidget" class="widget">
-				<h1 class="widgetTitles">Hydration Data</h1>
-			</section>
-      <section id="sleepWidget" class="widget">
-				<h1 class="widgetTitles">Sleep Data</h1>
-			</section>
-      <section id="activityWidget" class="widget">
-				<h1 class="widgetTitles">Activity Data</h1>
-			</section>
-    </main>
-    <sidebar id="friendsSidebar" class="friends-sidebar">
-      <h1 id="sidebarTitle" class="sidebar-title">Friends</h1>
-      <section class="friends-info">
-        <div id="friend1" class="friends">
-					<img/>
-					<h2>Friend 1 name here!</h2>
-				</div>
-				<div id="friend2" class="friends">
-					<img/>
-					<h2>Friend 2 name here!</h2>
-				</div>
-				<div id="friend3" class="friends">
-					<img/>
-					<h2>Friend 3 name here!</h2>
-				</div>
-				<div id="friend4" class="friends">
-					<img/>
-					<h2>Friend 4 name here!</h2>
-				</div>
-				<div id="friend5" class="friends">
-					<img/>
-					<h2>Friend 5 name here!</h2>
-					</div>
-      	</section>
-    	</sidebar>
-		</div>
+		  <h1 id="headerWelcome" class="header-welcome"></h1>
+		  <div class="lower-header">
+		  	<h2 id="headerQuote" class="header-quote">Random inspirational quote here</h2>
+			  <h2 id="headerDate" class="header-date">Current date</h2>
+		  </div>
+	  </header>
+    <div class="data-container">		
+      <main id="main" class="main-section">
+        <section id="hydrationWidget" class="widget">
+          <h1 class="widgetTitles">Hydration Data</h1>
+          <h2 id="dailyWater"></h2>
+          <h2>Weekly Water Consumption:</h2>
+          <h3 id="weeklyWater"></h3>
+        </section>
+        <section id="sleepWidget" class="widget">
+          <h1 class="widgetTitles">Sleep Data</h1>
+        </section>
+        <section id="activityWidget" class="widget">
+          <h1 class="widgetTitles">Activity Data</h1>
+        </section>
+      </main>
+      <sidebar id="infoCard" class="info-card">
+        <h1 id="userName" class="user-name"></h1>
+        <h2 id="userEmail" class="user-email"></h2>
+        <h2 id="userAddress" class="user-address"></h2>
+        <h2 id="userSL" class="user-SL"></h2>
+        <h2 id="userDSG" class="user-DSG"></h2>
+        <h3 id="stepGoalComp" class="step-goal-comp"></h3>
+        <h2 id="userFriends" class="user-friends"></h2>
+      </sidebar>
+    </div>
 
     <!-- <h1>Activity Tracker</h1>
     <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
 
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script type="text/javascript" src="user.js"></script>
+    <!-- <script type="text/javascript" src="user.js"></script>
     <script type="text/javascript" src="hydration.js"></script>
     <script type="text/javascript" src="sleep.js"></script>
-    <script type="text/javascript" src="activity.js"></script>
+    <script type="text/javascript" src="activity.js"></script> -->
     <script src="bundle.js"></script>
   </body>
 </html>

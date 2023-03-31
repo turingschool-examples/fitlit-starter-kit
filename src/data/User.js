@@ -1,30 +1,24 @@
-import userTestData from "../../test/user-test-data";
-
 class User {
-  constructor(userInfo) {
-    this.id = userInfo.id;
-    this.name = userInfo.name;
-    this.address = userInfo.address;
-    this.email = userInfo.email;
-    this.strideLength = userInfo.strideLength;
-    this.dailyStepGoal = userInfo.dailyStepGoal;
-    this.friends = userInfo.friends;
+  constructor(users) {
+    this.users = users;
   };
- 
+  
   getUserData(userId) {
-    return userTestData[userId - 1]
+    return this.users.find(user => user.id === userId)
   }
 
   getAverageStepGoal() {
-    const avgStepGoal = userTestData.reduce((acc, user) => {
+    const avgStepGoal = this.users.reduce((acc, user) => {
       acc += user.dailyStepGoal
       return acc
     }, 0)
-    return Math.round(avgStepGoal/userTestData.length)
+    return Math.round(avgStepGoal/this.users.length)
   }
 
-  getUserFirstName() {
-    return this.name.split(" ")[0]
+  getUserFirstName(userID) {
+    const currentUser = this.users.find(user => user.id === userID);
+    
+    return currentUser.name.split(" ")[0]
   }
 };
 

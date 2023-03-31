@@ -1,50 +1,83 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-
-// An example of how you tell webpack to use a CSS file
 import './css/styles.css';
+import { userDataFetch } from './apiCalls';
 
+let users, hydration, sleep, activity
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png';
+import User from "../src/data/User.js"
+import Hydration from "../src/data/Hydration.js"
 
-console.log('This is the JavaScript entry file - your code begins here.');
+let welcomeMessage = document.querySelector("#headerWelcome");
+let userName = document.querySelector("#userName");
+let userEmail = document.querySelector("#userEmail");
+let userAddress = document.querySelector("#userAddress");
+let userStrideLength = document.querySelector("#userSL");
+let userDailyStepGoal = document.querySelector("#userDSG");
+let stepGoalComparison = document.querySelector("#stepGoalComp");
+let userFriends = document.querySelector("#userFriends");
+let dailyWater = document.querySelector("#dailyWater");
+let weeklyWater = document.querySelector("#weeklyWater");
 
-// An example of how you tell webpack to use a JS file
+let date = new Date();
+let currentDate = date.getFullYear() + "/" + ("0" + (date.getMonth()+1)).slice(-2) + "/"+ ("0" + date.getDate()).slice(-2);
+let newUser;
 
-import userData from './data/users';
-console.log("User Data:", userData);
-
-import SomeClassYouChangeTheName from './SomeClassYouChangeTheName';
-import users from './data/users';
-
-const newUser = new User();
+window.addEventListener('load', function () {
+  Promise.all([userDataFetch('users'), userDataFetch('hydration'), userDataFetch('sleep'), userDataFetch('activity')])
+  .then(data => {
+    users = new User (data[0].users)
+    hydration = new Hydration(data[1].hydrationData)
+    sleep = data[2].sleepData
+    activity = data[3].activityData
+    generateRandomUser();
+    displayWelcomeMessage();
+    displayInfoCard();
+    displayWaterConsumed();
+    displayWeeklyWaterConsumption();
+  })
+});
 
 function generateRandomUser() {
-    const randomUser = newUser[Math.floor(Math.random() * newUser.length)];
-    return randomUser
+  newUser = users.getUserData(Math.floor(Math.random() * users.users.length));
 };
 
 function displayWelcomeMessage() {
-    const randomUser = generateRandomUser();
-    const firstName = randomUser.firstName;
-    console.log(`Welcome, ${firstName}!`);
+  welcomeMessage.innerText = `Welcome, ${users.getUserFirstName(newUser.id)}!`
 };
 
-function displayStepGoalComparison(user, allUsers) {
-    const userStepGoal = user.stepGoal;
-    const totalStepGoals = allUsers.reduce((acc, user) => acc + user.stepGoal, 0);
-    const averageStepGoal = totalStepGoals / allUsers.length;
+function displayInfoCard() {
+    userName.innerText = newUser.name;
+    userEmail.innerText = newUser.email;
+    userAddress.innerText = newUser.address;
+    userStrideLength.innerText = `Stride Length: ${newUser.strideLength}`;
+    userDailyStepGoal.innerText = `Daily Step Goal: ${newUser.dailyStepGoal}`;
+    userFriends.innerText = `Friends: ${newUser.friends}`;
+    displayStepGoalComparison();
+};
 
-    console.log(`Your step goal is ${userStepGoal}.`);
-    console.log(`The average step goal amongst all users is ${averageStepGoal}.`)
+function displayStepGoalComparison() {
+    const userStepGoal = newUser.dailyStepGoal;
 
-    if (userStepGoal > averageStepGoal) {
-        console.log(`Great job!!! Your step goal is above average.  You are KICKING ASS.`);
-    } else if (userStepGoal < averageStepGoal) {
-        console.log(`You can do it!!! Your step goal is below average.  TRY HARDER.`);
+    if (userStepGoal > users.getAverageStepGoal()) {
+        stepGoalComparison.innerText = `Great job!!! Your step goal is above average.  You are KICKING ASS.`;
+    } else if (userStepGoal < users.getAverageStepGoal()) {
+        stepGoalComparison.innerText = `You can do it!!! Your step goal is below average.  TRY HARDER.`;
     } else {
-        console.log(`You are right on track with the average step goal.  Way to be just AVERAGE.`)
+        stepGoalComparison.innerText = `You are right on track with the average step goal.  Way to be just AVERAGE.`
     };
+};
+
+function displayWaterConsumed() {
+  const currentDayEntry = hydration.getDailyOunces(newUser.id, currentDate);
+
+  if (currentDayEntry) {
+    dailyWater.innerText = `You have consumed ${currentDayEntry} ounces of water today.`
+  } else {
+    dailyWater.innerText = 'Drink more water you thirsty bitch!'
+  }
+};
+
+function displayWeeklyWaterConsumption() {
+  for (let i = 0; i < 7; i++) {
+    weeklyWater.innerText += hydration.getWeeklyOunces(newUser.id)[i]
+  }
 };

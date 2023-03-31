@@ -1,14 +1,10 @@
-import hydrationTestData from '../../test/hydration-test-data';
-
 class Hydration {
-  constructor(hydrationInfo) {
-    this.userID = hydrationInfo.userID;
-    this.date = hydrationInfo.date;
-    this.numOunces = hydrationInfo.numOunces;
+  constructor(hydrationData) {
+    this.hydrationData = hydrationData;
   };
   
   getAverageOunces(userID) {
-    const hydrationEntries = hydrationTestData.filter(hydrationEntry => hydrationEntry.userID === userID);
+    const hydrationEntries = this.hydrationData.filter(hydrationEntry => hydrationEntry.userID === userID);
 
     const averageOunces = hydrationEntries.reduce((acc, user) => {
       return acc += user.numOunces
@@ -17,35 +13,27 @@ class Hydration {
   };
 
   getDailyOunces(userID, date) {
-    const hydrationEntries = hydrationTestData.filter(hydrationEntry => hydrationEntry.userID === userID);
+    const hydrationEntries = this.hydrationData.filter(hydrationEntry => hydrationEntry.userID === userID);
 
     const dailyEntry = hydrationEntries.find(entry => {
-      return entry.date === date 
+      return entry.date === date ;
     });
     return dailyEntry.numOunces
   };
 
   getWeeklyOunces(userID) {
-    const hydrationEntries = hydrationTestData.filter(hydrationEntry => hydrationEntry.userID === userID);
+    let date = new Date();
+    let currentDate = date.getFullYear() + "/" + ("0" + (date.getMonth()+1)).slice(-2) + "/"+ ("0" + date.getDate()).slice(-2);
+    const hydrationEntries = this.hydrationData.filter(hydrationEntry => hydrationEntry.userID === userID);
+   
+    const indexOfCurrentDayEntry = hydrationEntries.indexOf(hydrationEntries.find(entry => entry.date === currentDate))
+   
+    let weeklyOunces = [];
+    for (let i = indexOfCurrentDayEntry; i > indexOfCurrentDayEntry - 7; i--) {
+      weeklyOunces.push(`${hydrationEntries[i].date}: ${hydrationEntries[i].numOunces}  ounces
+      `)
+    }
 
-    const weeklyHydrationEntries = [
-      hydrationEntries[hydrationEntries.length - 1], 
-      hydrationEntries[hydrationEntries.length - 2], 
-      hydrationEntries[hydrationEntries.length - 3], 
-      hydrationEntries[hydrationEntries.length - 4], 
-      hydrationEntries[hydrationEntries.length - 5], 
-      hydrationEntries[hydrationEntries.length - 6], 
-      hydrationEntries[hydrationEntries.length - 7]
-    ];
- 
-    const weeklyOunces = weeklyHydrationEntries.reduce((acc, entry) => {
-        const weeklyInfo = {
-        'Date': entry.date,
-        'Number of Ounces Drank': entry.numOunces
-      };
-      acc.push(weeklyInfo);
-      return acc;
-    }, []);
     return weeklyOunces;
   };
 };

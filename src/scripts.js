@@ -45,11 +45,10 @@ window.addEventListener('load', () => {
 
       activityObj = new Activity(getUserData('activityData', data[3]), userObj.strideLength);
       displayActivity(userObj.id);
-    })
+    });
 });
     
 // DOM Methods
-
 const getUserData = (infoType, array) => {
   return array[infoType].filter(data => data.userID === userObj.id).reverse();
 };
@@ -84,7 +83,7 @@ const displayHydration = (userId) => {
 
 const displayActivity = (date) => {
   let currentDate = activityObj.data[0].date;
-  activityDay.innerHTML = `<h4>Latest # of Steps: ${activityObj.getStepCount(activityObj.data[0].date)}</h4>`;
+  activityDay.innerHTML = `<h4>Latest # of Steps: ${activityObj.getStepCount(currentDate)}</h4>`;
   activityAvg.innerHTML = `<h4>Latest # of Minutes Active: ${activityObj.getMinutesActive(currentDate)}</h4>`;
   activityAvg.innerHTML = `<h4>Latest Distance Walked: ${activityObj.calculateMiles(currentDate)}</h4>`;
   activityWeek.innerHTML = `<h4>Weekly Steps: ${activityObj.getLatestWeek()}</h4>`;

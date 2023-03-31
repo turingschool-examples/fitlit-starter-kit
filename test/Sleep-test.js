@@ -22,7 +22,6 @@ describe('Sleep Repository', () => {
   });
 
   it('should calculate average hours slept', () => {
-    console.log(sleep.data)
     expect(sleep.getAverage("hoursSlept")).to.equal(7.0625);
   });
 

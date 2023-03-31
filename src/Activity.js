@@ -8,8 +8,6 @@ class Activity {
       .format('YYYY/MM/DD')
       return activity
     })
-
-    // this.currentDate = this.data.sort()
     this.userStride = stride
   }
 

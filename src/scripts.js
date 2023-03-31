@@ -50,7 +50,7 @@ window.addEventListener('load', () => {
 })
 
 function loadUserInfo(currentUserData,userData) {
-    document.getElementById('firstName').innerHTML = currentUserData.userName;
+    document.getElementById('firstName').innerHTML = `Welcome ${currentUserData.userName} !!!`;
     document.getElementById('fullName').innerHTML = currentUserData.userName;
     document.getElementById('address').innerHTML = currentUserData.address;
     document.getElementById('email').innerHTML = currentUserData.email;

@@ -4,9 +4,6 @@ const userDataFetch = (data) => {
     .catch(err => console.log(`Error at: ${err}`))
 }
 
-
-console.log('I will be a fetch request!')
-
 export { userDataFetch };
 
 

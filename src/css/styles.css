@@ -81,6 +81,10 @@ header {
   justify-content: center;
 }
 
+.sleep-info {
+  display: flex;
+}
+
 .widgetTitles {
   background-color: rgb(9, 169, 193);
   border-radius: 10px;

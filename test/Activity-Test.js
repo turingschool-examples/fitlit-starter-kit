@@ -30,7 +30,7 @@ describe('Activity', function () {
   it('should have a method to find minutes active by day', function () {
     expect(activity1.minutesActiveByDay(user, '2023/03/25')).to.equal(111)
   });
-  // it('should be a function', function() {
-  //   expect(Activity).to.be.a('function')
-  // });
+  it('should have a method to determine if user reached their daily step goal', function () {
+    expect(activity1.reachStepGoal(user, '2023/03/25')).to.equal(true)
+  });
 })

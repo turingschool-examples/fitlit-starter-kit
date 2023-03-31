@@ -25,6 +25,7 @@ let allUserActivityData
 
 let currentUser;
 let currentUserSleep;
+let currentUserHydration;
 
 //Selectors
 const cardDisplay = document.getElementById('cardDisplay')
@@ -43,13 +44,13 @@ window.addEventListener('load', () => {
     allUserSleepData = data[1]
     allUserHydrationData = data[2]
     allUserActivityData = data[3]
-    const currentUser = new User(userData);
-    loadUserInfo(currentUser,userData)
+    console.log(allUserHydrationData)
+    pageLoad()
   })
 })
 
 function loadUserInfo(currentUserData,userData) {
-    document.getElementById('firstName').innerHTML = currentUserData.userName;
+    document.getElementById('firstName').innerHTML = `Welcome ${currentUserData.userName} !!!`;
     document.getElementById('fullName').innerHTML = currentUserData.userName;
     document.getElementById('address').innerHTML = currentUserData.address;
     document.getElementById('email').innerHTML = currentUserData.email;
@@ -62,24 +63,16 @@ function loadUserInfo(currentUserData,userData) {
 
 }
 
-window.addEventListener('load', () => {
-    fetchAll()
-        .then(data => {
-            allUsersData = data[0]
-            allUserSleepData = data[1]            
-            allUserHydrationData = data[2]
-            allUserActivityData = data[3]
-            pageLoad()
-        })
 
-})
 
-function pageLoad (){
-    currentUser = new User(allUsersData);
+function pageLoad () {
+    currentUser = new User(userData);
     currentUserSleep = new Sleep (currentUser.userId, allUserSleepData);
-
-     // createSingleCardDisplay(cardId, cardTitle, outputToDisplay, units)
-    createSingleCard(currentUser.userID, 'Hours Slept', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'hoursSlept'), 'hours');     
+    currentUserHydration = new UserHydration(currentUser.userId, allUserHydrationData)
+    createSingleCard('singleHyOz', 'Total Ounces', currentUserHydration.calculateSingleDayOunces(currentUserHydration.findMostRecentDay()), 'Ounces')
+    createSingleCard(currentUser.userID, 'Hours Slept', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'hoursSlept'), 'hours');   
+    loadUserInfo(currentUser,userData) 
+    console.log(currentUser) 
 }
 
  // createSingleCardDisplay(cardId, cardTitle, outputToDisplay, units)

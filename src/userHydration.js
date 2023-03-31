@@ -1,7 +1,7 @@
 class UserHydration {
   constructor(userID, hydrationData) {
     this.userID = userID
-    this.hydrationInfo = hydrationData.filter(user => user.userID === userID)
+    this.hydrationInfo = hydrationData.hydrationData.filter(user => user.userID === userID)
   }
 
   calculateAllTimeAverageDailyOunces() {
@@ -35,6 +35,10 @@ class UserHydration {
         return datesOunces
         
       }
+
+    findMostRecentDay() {
+      return this.hydrationInfo[0].date
+    }
       
         
     }

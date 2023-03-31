@@ -68,7 +68,7 @@ function createHydrationChart(hydration, userID, date) {
     type: 'bar',
     data: {
       datasets: [{
-        label:"ounces",
+        label: "ounces",
         backgroundColor: "#538BC7",
         borderColor: "#3C4252",
         borderWidth: 2,
@@ -78,27 +78,99 @@ function createHydrationChart(hydration, userID, date) {
       }],
       labels: labels,
     }
-  }
-  )
+  })
 }
 
-function displayLatestSleepData(sleep, userID, date) {
-  const latestSleepData = document.querySelector('.latest-sleep-data-js');
+function displaySleepCard(sleep, userID, date) {
+  const latestSleepData = document.querySelector(".latest-sleep-data-js");
   latestSleepData.innerHTML = `
     <p><b>Hours Slept:</b> ${sleep.findSleepHoursOnDate(userID, date)}</p>
     <p><b>Sleep Quality:</b> </p>
   `;
-};
-
-function displayAllTimeSleepData(sleep, userID) {
-  const allTimeSleepData = document.querySelector('.all-time-sleep-data-js');
+  const allTimeSleepData = document.querySelector(".all-time-sleep-data-js");
   allTimeSleepData.innerHTML = `
-    <p><b>Average Hours Slept:</b> ${sleep.calculateAverageSleepHours(userID)}</p>
-    <p><b>Average Sleep Quality:</b> ${sleep.calculateAverageSleepQuality(userID)}</p>
+    <p><b>Average Hours Slept:</b> ${sleep.calculateAverageSleepHours(
+      userID
+    )}</p>
+    <p><b>Average Sleep Quality:</b> ${sleep.calculateAverageSleepQuality(
+      userID
+    )}</p>
   `;
-};
+  const hoursSleptButton = document.querySelector("#hours-slept-button");
+  hoursSleptButton.addEventListener("click", () =>
+    createHoursSleptChart(sleep, userID, date)
+  );
+  const qualitySleptButton = document.querySelector(
+    "#weekly-sleep-quality-button"
+  );
+  qualitySleptButton.addEventListener("click", () =>
+    createSleepQualityChart(sleep, userID, date)
+  );
+}
 
+function createHoursSleptChart(sleep, userID, date) {
+  const weeklyHours = sleep.calculateWeeklyHoursSlept(userID, date);
+  const labels = weeklyHours.map(days => days.date);
+  const data = weeklyHours.map(days => days.hoursSlept);
+
+  new Chart("chart", {
+    type: "line",
+    data: {
+      datasets: [{
+        label: "Hours Slept",
+        backgroundColor: "#F16433",
+        borderColor: "A25E9B",
+        borderWidth: 2,
+        hoverBackgroundColor: "#5A73C0",
+        hoverBorderColor: "#5A73C0",
+        data: data,
+      }, ],
+      labels: labels,
+    },
+  });
+}
+
+function createSleepQualityChart(sleep, userID, date) {
+  const weeklyHours = sleep.calculateWeeklySleepQuality(userID, date);
+  const labels = weeklyHours.map((days) => days.date);
+  const data = weeklyHours.map((days) => days.sleepQuality);
+
+  new Chart("chart", {
+    type: "bar",
+    data: {
+      datasets: [
+        {
+          label: "Sleep Quality",
+          backgroundColor: "#A25E9B",
+          borderColor: "#A25E9B",
+          borderWidth: 2,
+          hoverBackgroundColor: "#F16433",
+          hoverBorderColor: "#5A73C0",
+          data: data,
+        },
+      ],
+      labels: labels,
+    },
+  });
+}
 
 // Export Statements
 
-export { displayUserCard, displayStepUserVsAllUsers, displayUserGreeting, displayhydrationCard, displayLatestSleepData, displayAllTimeSleepData}
+export {
+  displayUserCard,
+  displayStepUserVsAllUsers,
+  displayUserGreeting,
+  displayhydrationCard,
+  displaySleepCard,
+  displayActivityCard,
+};
+
+function displayActivityCard(activity, user, date, userID) {
+ const activityCard = document.querySelector('.CHANGEME');
+ activityCard.innerHTML = `
+ <p><b>Miles Walked:</b> ${activity.calculateMilesWalked(date, user)} miles</p>
+ <p><b>Minutes Active:</b> ${activity.dailyMinutesActive(userID, date)} minutes</b></p>
+ <p><b>Step Goal Met:</b> ${activity.stepGoalMet(user, date)}</b></p>
+
+ `
+}

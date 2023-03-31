@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="UTF-8">
     <title>Fitlit</title>
   </head>
+
   <body>
-    <nav class="navigation">PUT NAVIGATION STUFF HERE</nav>
-    <img src="./images/turing-logo.png" alt="CHANGE THIS IMAGE" height="100px" width="100px">
-    <h1 class="main-header">Fitlit</h1>
-    <div class="wrapper">
+    <div class="nav-wrapper">
+      <nav class="navigation">
+        <div class="nav-left-container">
+          <div class="logo-stand-in">
+            <img src="">
+          </div>
+          <h1>Fitness Tracker</h1>
+        </div>
+        <div class="nav-right-container">
+          <div class="nav-date">15th March 2023</div>
+        </div>
+      </nav>
+    </div>
+    <main>
+      <section>
+        <h2 class="welcome-header">Hello</h2>
+      </section>
+      <section class="cards">
+        <section class="profile-card">
+          <article class="user-profile-info-js"></article>
+          <article class="user-steps-vs-all-js"></article>
+
       <main class="card-wrapper">
         <section class="welcome-box">
           <h3 class="date-header">DATE</h3>
@@ -27,6 +47,9 @@
           <section class="sleep-card">
             <article class="latest-sleep-data-js"></article>
             <article class="all-time-sleep-data-js"></article>
+            <article id="weekly-sleep-hours-data-js"></article>
+            <button class="sleep-button" id="hours-slept-button">Weekly Hours Slept</button>
+            <button class="sleep-button" id="weekly-sleep-quality-button">Weekly Sleep Quality</button>
             <img class="sleep-img" src="./images/sleep.png" alt="sleepy moon image">
           </section>
         </section>
@@ -42,4 +65,5 @@
     </div>
     <script src="bundle.js"></script>
   </body>
+
 </html>

@@ -11,7 +11,6 @@ class Sleep {
             return b.date - a.date 
         })
 
-        console.log(mostRecentDay)
         return mostRecentDay[0].date
     }
 
@@ -36,27 +35,9 @@ class Sleep {
     };
 
     findDetailByWeek(date, detail) {
-        const convertDate = new Date(date)
-        const datedSleepLogs = this.userSleepLogs.map((log) => {
-            const sleepInfo = {}
-            sleepInfo.date = new Date(log.date)
-            sleepInfo.detail = log[detail]
-            return sleepInfo
-        })
+        const selectedDayIndex = this.userSleepLogs.findIndex(log => log.date === date);
 
-        // const sevenDayDetail = datedSleepLogs.filter((log) => {
-        //     return log.date >=  date && log.date <= 
-        // })
-
-        // const accendDatedSleepLogs = datedSleepLogs.sort((a, b) => {
-        //     return a.date - b.date
-        // })
-
-        // const selectedDayIndex = accendDatedSleepLogs.findIndex((log) => {
-        //     return log.date.getTime() === convertDate.getTime();
-        // });
-
-        // const sevenDayDetail = accendDatedSleepLogs.slice(selectedDayIndex, selectedDayIndex + 7).map(log => log.detail);
+        const sevenDayDetail = this.userSleepLogs.slice(selectedDayIndex, selectedDayIndex +7).map(log => log[detail]);
 
         let lastWeekDetails = [0, 0, 0, 0, 0, 0, 0]
 
@@ -70,6 +51,8 @@ class Sleep {
             return lastWeekDetails;
         }
     };
-}
+
+};
+
 
 export default Sleep;

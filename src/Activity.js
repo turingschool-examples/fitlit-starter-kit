@@ -34,6 +34,14 @@ class Activity {
     }
   }
 
+  // todaysStepCount(user, date) {
+  //   const currentUserActivity = this.activity.filter(data => data.userID === user.id)
+
+  //   const userActivity = currentUserActivity.filter(data => data.date === date)
+
+  //   return userActivity[0].numSteps
+  // }
+
 }
 
 export default Activity

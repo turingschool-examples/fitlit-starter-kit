@@ -3,11 +3,12 @@
 
 import User from '../src/User'
 import Hydration from '../src/Hydration'
+import Activity from '../src/Activity'
 import apiCalls from '../src/apiCalls'
 
 // console.log("user data:", User)
 
-let user, hydration
+let user, hydration, activity
 
 // query selectors
 const userName = document.querySelector('.user-name')
@@ -20,6 +21,8 @@ const comparisonSteps = document.querySelector('.comparison-steps')
 const hydrationToday = document.querySelector('.hydration-today')
 const hydrationWeekly = document.querySelector('.hydration-weekly')
 const dateMessage = document.querySelector('.date-message')
+const stepsToday = document.querySelector('.activity-steps-today')
+const distanceWalkedToday = document.querySelector('.activity-distance-today')
 
 // event listeners
 window.addEventListener('load', () => {
@@ -33,6 +36,7 @@ window.addEventListener('load', () => {
       const activityData = apiCallsArray[3].activity
       displayRandomUser(usersData)
       displayHydration(hydrationData, usersData)
+      displayActivity(activityData, usersData)
       displayDate()
     })
     .catch(error => console.log(error))
@@ -62,6 +66,18 @@ function displayHydration(hydrationData) {
   hydration = new Hydration((hydrationData))
   hydrationToday.innerText = `Daily Intake: ${hydration.findDailyFluidIntake(user.id, hydration.findUserData(user.id)[0].date)} oz`
   hydrationWeekly.innerText = `Weekly Intake: ${hydration.calculateFluidWeekly(user.id)} oz`
+}
+
+function displayActivity(activityData) {
+  console.log(activityData)
+  activity = new Activity(activityData)
+  console.log(activity)
+  // activity = new Activity(activityData)
+  // console.log(activity)
+  // stepsToday.innerText = `Steps Today: ${activity.todaysStepCount()}`
+  // distanceWalkedToday = `Distance Walked Today: ${activity.milesWalkedByDay(user, '2023/03/24')}`
+
+
 }
 
 // imports

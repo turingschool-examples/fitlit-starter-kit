@@ -1,60 +1,59 @@
 class User {
-    constructor(userData){
+  constructor(userData) {
+    const randomUser = Math.floor(Math.random() * 49);
+    this.userId = 1;
+    this.userName = 'John Doe';
+    this.address = '123 Main St';
+    this.email = 'johndoe@example.com';
+    this.strideLength = 2.5;
+    this.dailyStepGoal =10000;
+    this.friends = [2, 3];
 
-        const randomUser = Math.floor(Math.random() * 49);
-        for(var i  = 0; i < userData.users.length; i++){
-            
-            if (userData.users[i].id === randomUser){
-                console.log(`Random User ${userData.users[i].name} Found!`)
-                this.userId = userData.users[i].id
-                this.userName = userData.users[i].name
-                this.address = userData.users[i].address
-                this.email = userData.users[i].email
-                this.strideLength = userData.users[i].strideLength
-                this.dailyStepGoal = userData.users[i].dailyStepGoal
-                this.friends = userData.users[i].friends
-                
-            }
-            else{
-            
-            }
-        }
+    const randomUserObj = userData.users.find(user => user.id === randomUser);
+    if (randomUserObj) {
+    this.userId = randomUserObj.id
+    this.userName = randomUserObj.name
+    this.address = randomUserObj.address
+    this.email = randomUserObj.email
+    this.strideLength = randomUserObj.strideLength
+    this.dailyStepGoal = randomUserObj.dailyStepGoal
+    this.friends = randomUserObj.friends
+    // console.log('here', this.userId)
     }
+}
+
+        
+    
 //MEANT TO FIND THE RANDOM USER
  // if user input matches a user- store all of the users data in the variables
 
 
-    findUserById(userId,userData){
-        for(var i  = 0; i < userData.users.length; i++){
+findUserById(userId,userData){
+    for(var i  = 0; i < userData.users.length; i++){
+        
+    if (userData.users[i].id === userId){
+        console.log(`User ${userData.users[i].name} Found By ID!`)
+        this.userId = userData.users[i].id
+        this.userName = userData.users[i].name
+        this.address = userData.users[i].address
+        this.email = userData.users[i].email
+        this.strideLength = userData.users[i].strideLength
+        this.dailyStepGoal = userData.users[i].dailyStepGoal
+        this.friends = userData.users[i].friends
+        return 
             
-            if (userData.users[i].id === userId){
-                console.log(`User ${userData.users[i].name} Found By ID!`)
-                this.userId = userData.users[i].id
-                this.userName = userData.users[i].name
-                this.address = userData.users[i].address
-                this.email = userData.users[i].email
-                this.strideLength = userData.users[i].strideLength
-                this.dailyStepGoal = userData.users[i].dailyStepGoal
-                this.friends = userData.users[i].friends
-                return 
-                
-            }
-            else{
-               
-            }
+        } else {     
         }
+    }
     }
     //MEANT TO FIND THE SELECTED USER
     // if user input matches a user- store all of the users data in the variables
 
-    findOverAllStepGoal(userData) {
-        let sum = 0
-        for(var i  = 0; i < userData.users.length; i++){
-            sum += userData.users[i].dailyStepGoal
-        }
-        sum = sum / userData.users.length
-        return sum
-    }
+    findOverAllStepGoalAvg(userData) {
+        const sum = userData.users.reduce((acc, user) => acc + user.dailyStepGoal, 0);
+        const average = sum / userData.users.length;
+        return average;
+      }
     
     userFirstName(){
         const nameArr = this.userName.split(" ")
@@ -65,13 +64,13 @@ class User {
     userFirstNameById(userId,userData){
         let nameArr = ""
         for(var i  = 0; i < userData.users.length; i++){
-            if (userData.users[i].id === userId){
-                const name = userData.users[i].name
-                nameArr = name.split(" ")
-            }
-            else{
-        
-            }
+        if (userData.users[i].id === userId){
+            const name = userData.users[i].name
+            nameArr = name.split(" ")
+        }
+        else{
+    
+        }
         }
         if(!(nameArr === "")){
             console.log(`User First Name :${nameArr[0]} Found By ID!`)
@@ -83,6 +82,21 @@ class User {
         }
     }
     
+    generateRandomUser(userData) {
+        const randomUser = Math.floor(Math.random() * 49);
+        const user = userData.users.find(user => user.id === randomUser);
+        if (user) {
+            console.log(`Random User ${user.name} Found!`);
+            const { id, name, address, email, strideLength, dailyStepGoal, friends } = user;
+            this.userId = id;
+            this.userName = name;
+            this.address = address;
+            this.email = email;
+            this.strideLength = strideLength;
+            this.dailyStepGoal = dailyStepGoal;
+            this.friends = friends;
+        }
+     }
 
 }
 export default User

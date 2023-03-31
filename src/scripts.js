@@ -159,4 +159,15 @@ export {
   displayUserGreeting,
   displayhydrationCard,
   displaySleepCard,
+  displayActivityCard,
 };
+
+function displayActivityCard(activity, user, date, userID) {
+ const activityCard = document.querySelector('.CHANGEME');
+ activityCard.innerHTML = `
+ <p><b>Miles Walked:</b> ${activity.calculateMilesWalked(date, user)} miles</p>
+ <p><b>Minutes Active:</b> ${activity.dailyMinutesActive(userID, date)} minutes</b></p>
+ <p><b>Step Goal Met:</b> ${activity.stepGoalMet(user, date)}</b></p>
+
+ `
+}

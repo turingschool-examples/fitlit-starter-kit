@@ -1,5 +1,3 @@
-import mock from '../src/data/mock';
-
 class User {
     constructor(userObj) {
         this.id =  userObj.id
@@ -23,9 +21,9 @@ class User {
         let firstName =  this.name.split(' ')[0]
         return firstName
     }
-    usersAvgDailyStep() {
-        const averageSteps = mock.users.reduce((acc, index) => {
-            acc += index.dailyStepGoal/mock.users.length
+    usersAvgDailyStep(usersData) {
+        const averageSteps = usersData.reduce((acc, index) => {
+            acc += index.dailyStepGoal/usersData.length
             return acc
         }, 0)
         return Math.round(averageSteps)

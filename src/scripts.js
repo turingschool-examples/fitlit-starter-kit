@@ -24,22 +24,22 @@ const dateMessage = document.querySelector('.date-message')
 // event listeners
 window.addEventListener('load', () => {
 
-// functions 
-Promise.all(apiCalls)
-  .then((apiCallsArray) => {
-    const usersData = apiCallsArray[0].users
-    // const sleepData = apiCallsArray[1].sleep
-    const hydrationData = apiCallsArray[2].hydrationData
-    // const activityData = apiCallsArray[3].activity
-  displayRandomUser(usersData)
-  displayHydration(hydrationData, usersData)
-  displayDate()
-  })
-  .catch(error => console.log(error))
+  // functions 
+  Promise.all(apiCalls)
+    .then((apiCallsArray) => {
+      const usersData = apiCallsArray[0].users
+      // const sleepData = apiCallsArray[1].sleep
+      const hydrationData = apiCallsArray[2].hydrationData
+      const activityData = apiCallsArray[3].activity
+      displayRandomUser(usersData)
+      displayHydration(hydrationData, usersData)
+      displayDate()
+    })
+    .catch(error => console.log(error))
 })
 
-function displayDate()  {
-  let date = new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
+function displayDate() {
+  let date = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" })
   dateMessage.innerText = `${date}`
 }
 

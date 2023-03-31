@@ -25,22 +25,22 @@ class UserHydration {
     }
   
 
-    calculateOuncesLastSevenDays(startDate, endDate) {
-      
-        const datesOunces = this.hydrationInfo
-        .filter(day => day.date >= startDate && day.date <= endDate)
-        .map(dates => dates.numOunces)
+    calculateOuncesLastSevenDays(date) {
+      const selectedDayIndex = this.hydrationInfo.findIndex(log => log.date === date);
 
+        const sevenDayDetail = this.hydrationInfo.slice(selectedDayIndex, selectedDayIndex +7).map(log => log.numOunces);
 
-        return datesOunces
-        
+        let lastWeekDetails = [0, 0, 0, 0, 0, 0, 0]
+
+        sevenDayDetail.forEach((log, index) => {
+            lastWeekDetails[index] = log;
+        });
+        return lastWeekDetails
       }
 
     findMostRecentDay() {
       return this.hydrationInfo[0].date
-    }
-      
-        
+    }   
     }
 
 // }

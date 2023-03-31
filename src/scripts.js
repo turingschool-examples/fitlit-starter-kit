@@ -70,11 +70,11 @@ function pageLoad () {
     currentUserSleep = new Sleep (currentUser.userId, allUserSleepData);
     currentUserHydration = new UserHydration(currentUser.userId, allUserHydrationData)
     createSingleCard(currentUser.userID, 'Hours Slept', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'hoursSlept'), 'hours');
-    createSevenDayCard(currentUser.userID, 'Hours Slept', currentUserSleep.findDetailByWeek(currentUserSleep.findDetailByWeek(), 'hoursSlept'), 'Days');
-    createSingleCard('singleHyOz', 'Total Ounces', currentUserHydration.calculateSingleDayOunces(currentUserHydration.calculateSingleDayOunces()), 'Ounces')
-    createSevenDayCard(currentUser.userID, 'Ounces Drank', currentUserSleep.calculateOuncesLastSevenDays(currentUserHydration.calculateOuncesLastSevenDays(), 'Ounces'), 'Days');
+    createSevenDayCard(currentUser.userID, 'Hours Slept', currentUserSleep.findDetailByWeek(currentUserSleep.findMostRecentDay(), 'hoursSlept'), 'days');
+    createSingleCard(currentUser.userID, 'Total Ounces', currentUserHydration.calculateSingleDayOunces(currentUserHydration.findMostRecentDay()), 'Ounces');
+    createSevenDayCard(currentUser.userID, 'Ounces Drank', currentUserHydration.calculateOuncesLastSevenDays(currentUserHydration.findMostRecentDay()), 'days');
     loadUserInfo(currentUser,userData) 
-    console.log(currentUser) 
+    console.log(currentUserHydration.calculateOuncesLastSevenDays()) 
 }
 
  // createSingleCardDisplay(cardId, cardTitle, outputToDisplay, units)
@@ -113,8 +113,14 @@ function createSevenDayCard (cardId, cardTitle, outputToDisplay, units){
   <section class='SevenDayCard' id= ${cardId}> 
     <h3> ${cardTitle} </h3>
  <div>
-     <text> ${outputToDisplay} </text>
-     <text>  ${units} </text>
+    <text> ${outputToDisplay[0]} </text>
+    <text> ${outputToDisplay[1]} </text>
+    <text> ${outputToDisplay[2]} </text>
+    <text> ${outputToDisplay[3]} </text>
+    <text> ${outputToDisplay[4]} </text>
+    <text> ${outputToDisplay[5]} </text>
+    <text> ${outputToDisplay[6]} </text>
+    <text>  ${units} </text>
  </div>
 </section>
 `

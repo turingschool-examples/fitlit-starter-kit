@@ -68,9 +68,11 @@ const displaySleepInfo = (sleep) => {
   const pastWeekSleep = sleep.getInfoForPastWeek('hoursSlept');
   const avgQuality = sleep.getAverage('sleepQuality');
   const avgHours = sleep.getAverage('hoursSlept');
-  sleepDay.innerHTML = `<h4>Latest Hours Slept:</h4> ${latestSleep.hoursSlept} Latest Quality of Sleep: ${latestSleep.sleepQuality}</h4>`;
+  sleepDay.innerHTML = `<h4>Latest Hours Slept: ${latestSleep.hoursSlept}</h4>
+  <h4>Latest Quality of Sleep: ${latestSleep.sleepQuality}</h4>`;
   sleepWeek.innerHTML = `<h4>Last 7 Days: ${pastWeekSleep.join(', ')}</h4>`;
-  sleepAvg.innerHTML = `<h4> Average Sleep Quality: ${avgQuality.toFixed(1)} Average Hours Slept: ${avgHours.toFixed(1)}</h4>`;
+  sleepAvg.innerHTML = `<h4> Average Sleep Quality: ${avgQuality.toFixed(1)}</h4>
+  <h4>Average Hours Slept: ${avgHours.toFixed(1)}</h4>`;
 };
 
 const displayHydration = (userId) => {
@@ -82,11 +84,11 @@ const displayHydration = (userId) => {
   hydrationAvg.innerHTML = `<h4>Average daily water intake: ${hydrationObj.findAvgDailyHydration(userId)}oz</h4>`;
 };
 
-const displayActivity = (date) => {
+const displayActivity = () => {
   let currentDate = activityObj.data[0].date;
   activityDay.innerHTML = `<h4>Latest # of Steps: ${activityObj.getStepCount(currentDate)}</h4>`;
-  activityAvg.innerHTML = `<h4>Latest # of Minutes Active: ${activityObj.getMinutesActive(currentDate)}</h4>`;
-  activityAvg.innerHTML = `<h4>Latest Distance Walked: ${activityObj.calculateMiles(currentDate)}</h4>`;
   activityWeek.innerHTML = `<h4>Weekly Steps: ${activityObj.getLatestWeek()}</h4>`;
+  activityAvg.innerHTML = `<h4>Latest # of Minutes Active: ${activityObj.getMinutesActive(currentDate)}</h4>
+    <h4>Latest Distance Walked: ${activityObj.calculateMiles(currentDate)}</h4>`;
 };
 

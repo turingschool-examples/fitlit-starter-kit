@@ -1,4 +1,4 @@
-const activityData = [
+const activityTestData = [
   {
   "userID": 1,
   "date": "2023/03/24",
@@ -99,4 +99,4 @@ const activityData = [
   },  
 ]
 
-export default activityData
+export default activityTestData

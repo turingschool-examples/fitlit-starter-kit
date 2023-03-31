@@ -1,10 +1,31 @@
 class Activity {
-  constructor(userInfo) {
-    this.userID = userInfo.userID
-    this.date = userInfo.date
-    this.numSteps = userInfo.numSteps
-    this.minutesActive = userInfo.minutesActive
-    this.flightsOfStairs = userInfo.flightsOfStairs
+  constructor(activityData) {
+    this.activityData = activityData
+  }
+
+  returnMiles() {
+
+  }
+  returnMinutesActive(userID) {
+
+  }
+
+  returnMinutesActiveWeek() {
+
+  }
+
+  returnExceededStepGoal() {
+
+  }
+
+  returnClimbingRecord() {
+
+  }
+
+  returnAverages() {
+    // stairs climb specified date
+    // steps taken specific date
+    // minutes active specific date
   }
 }
 

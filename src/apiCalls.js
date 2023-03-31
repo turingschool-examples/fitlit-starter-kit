@@ -1,6 +1,20 @@
+import User from '../src/User'
+
+export let userClass;
+
+
+
 function fetchApiData(url) {
   const fetchedUserData = fetch(url)
-  .then(res => res.json())
+  // .then(res => res.json())
+  // .then(data => {
+  // userObj = data.users[Math.floor(Math.random() * data.users.length)];
+  // console.log(userObj);
+  
+  
+ 
+    
+  
   .catch((error) => console.log(error));
 
   return fetchedUserData;

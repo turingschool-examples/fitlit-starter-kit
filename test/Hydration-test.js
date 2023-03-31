@@ -34,10 +34,8 @@ describe('Hydration', () => {
   });
 
   it('should return message if user does not exist', () => {
-    const hydrationData = [
-        ];
-        const hydration =new Hydration(hydrationData);
-    expect(hydration.findAvgDailyHydration(2)).to.equal('No Hydration Data Found');
+        const hydration = new Hydration([]);
+    expect(hydration.findAvgDailyHydration()).to.equal('No Hydration Data Found');
   });
 
   it('should return the a specfic days water consumption', () => {
@@ -45,9 +43,7 @@ describe('Hydration', () => {
   });
 
   it('should return message if nothing logged that specfic day', () => {    
-      const hydrationData = [
-    ];
-  const hydration =new Hydration(hydrationData);
+  const hydration = new Hydration([]);
     expect(hydration.getHydrationSpecificDay('2023/03/03')).to.equal('No Hydration Data Found');
   });
 

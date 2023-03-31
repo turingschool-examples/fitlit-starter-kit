@@ -23,6 +23,7 @@ describe('userHydration', () => {
     const specificDayOz = hydrationObj.calculateSingleDayOunces("2023/03/24");
     expect(specificDayOz).to.equal(28);
   });
+  
   it("should calculate how many fluid ounces of water were consumed through 7 days", () => {
     const weekOfOz = hydrationObj.calculateOuncesLastSevenDays( "2023/03/24", "2023/03/30");
     expect(weekOfOz).to.deep.equal([28, 50, 21, 63, 97, 20, 76])

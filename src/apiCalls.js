@@ -10,7 +10,13 @@ import UserRepository from './classes/UserRepository';
 import User from './classes/User';
 import Hydration from './classes/Hydration';
 import Sleep from './classes/Sleep';
-import { displayUserCard, displayStepUserVsAllUsers, displayUserGreeting, displayhydrationCard, displayLatestSleepData, displayAllTimeSleepData} from './scripts';
+import {
+  displayUserCard,
+  displayStepUserVsAllUsers,
+  displayUserGreeting,
+  displayhydrationCard,
+  displaySleepCard,
+} from "./scripts";
 // add new DOM manipulation functions made in scripts.js to this import object and the export object in scripts.
 
 function fetchUsers() {
@@ -38,12 +44,9 @@ Promise.all([fetchUsers(), fetchHydration(), fetchSleep()])
 
     hydration = new Hydration(hydrationData.hydrationData);
     displayhydrationCard(hydration, userID, date);
-
+   
     sleep = new Sleep(sleepData.sleepData);
-    console.log(sleep)
-    // displayLatestSleepData(sleepData, userID, date);
-    displayAllTimeSleepData(sleep, userID);
-    // sleep DOM manipulation functions go here
+    displaySleepCard(sleep, userID, date);
   })
   .catch(error => {
     console.error('Error fetching data:', error);

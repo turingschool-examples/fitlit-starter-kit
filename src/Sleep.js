@@ -23,7 +23,7 @@ class Sleep {
   }
 
   getInfoForSpecificDate(date, infoType){
-    if (this.data.some(sleep => sleep.date === date)){
+    if (this.data.some(sleep => sleep.date === date)) {
       return this.data.find(sleep => sleep.date === date)[infoType];
     } else {
       return "There is no data for this date";

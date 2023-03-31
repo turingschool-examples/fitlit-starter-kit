@@ -74,10 +74,11 @@ const displaySleepInfo = (sleep) => {
 };
 
 const displayHydration = (userId) => {
+  let currentDate = hydrationObj.data[0].date
   let weekData = hydrationObj.findWeeklyHydration();
   let splitData = weekData.map(num => num + 'oz');
   hydrationWeek.innerHTML = `<h4>Last 7 days: ${splitData.join(', ')}</h4>`;
-  hydrationDay.innerHTML = `<h4>Fluid ounces drank today: ${hydrationObj.findAvgDailyHydration(userId)}oz</h4>`;
+  hydrationDay.innerHTML = `<h4>Fluid ounces drank today: ${hydrationObj.getHydrationSpecificDay(currentDate)}oz</h4>`;
   hydrationAvg.innerHTML = `<h4>Average daily water intake: ${hydrationObj.findAvgDailyHydration(userId)}oz</h4>`;
 };
 

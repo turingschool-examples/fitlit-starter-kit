@@ -44,6 +44,11 @@ function displayUserGreeting(user) {
 `;
 }
 
+function clearChartArea() {
+  const chartArea = document.querySelector(".infographic");
+  chartArea.innerHTML = "<canvas id='chart'></canvas>";
+}
+
 function displayhydrationCard(hydration, userID, date) {
   hydrationCard.innerHTML = `<p><b>Average Water Consumption:</b> ${hydration.calculateAverageFluidPerUser(
     userID
@@ -63,7 +68,7 @@ function createHydrationChart(hydration, userID, date) {
   const weeklyOunces = hydration.weeklyOuncesConsumed(userID, date);
   const labels = weeklyOunces.map(days => days.date);
   const data = weeklyOunces.map(days => days.numOunces);
-
+  clearChartArea();
   new Chart("chart", {
     type: 'bar',
     data: {
@@ -112,7 +117,7 @@ function createHoursSleptChart(sleep, userID, date) {
   const weeklyHours = sleep.calculateWeeklyHoursSlept(userID, date);
   const labels = weeklyHours.map(days => days.date);
   const data = weeklyHours.map(days => days.hoursSlept);
-
+  clearChartArea();
   new Chart("chart", {
     type: "line",
     data: {
@@ -134,7 +139,7 @@ function createSleepQualityChart(sleep, userID, date) {
   const weeklyHours = sleep.calculateWeeklySleepQuality(userID, date);
   const labels = weeklyHours.map((days) => days.date);
   const data = weeklyHours.map((days) => days.sleepQuality);
-
+  clearChartArea();
   new Chart("chart", {
     type: "bar",
     data: {

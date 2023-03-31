@@ -1,16 +1,11 @@
-import sleepTestData from '../../test/sleep-test-data';
 
 class Sleep{
-  constructor(sleepInfo) {
-    this.userID = sleepInfo.userID;
-    this.date = sleepInfo.date;
-    this.hoursSlept = sleepInfo.hoursSlept;
-    this.sleepQuality = sleepInfo.sleepQuality;
-    // this.sleepData = sleepData
+  constructor(sleepData) {
+    this.sleepData = sleepData
   }
 
   getAvgSleep(userID) {
-    const sleepEntries = sleepTestData.filter(entry => entry.userID === userID);
+    const sleepEntries = this.sleepData.filter(sleepEntry => sleepEntry.userID === userID);
     const avgSleep = sleepEntries.reduce((acc, user) => {
       return acc += user.hoursSlept
     }, 0);
@@ -18,7 +13,7 @@ class Sleep{
 };
   
   getAvgQuality(userID) {
-    const sleepEntries = sleepTestData.filter(entry => entry.userID === userID);
+    const sleepEntries = this.sleepData.filter(entry => entry.userID === userID);
     const avgQuality = sleepEntries.reduce((acc, user) => {
       return acc += user.sleepQuality
     }, 0);
@@ -26,13 +21,13 @@ class Sleep{
   }
 
   getHoursByDay(userID, date) {
-    const sleepEntries = sleepTestData.filter(entry => entry.userID === userID);
+    const sleepEntries = this.sleepData.filter(entry => entry.userID === userID);
     const dailyEntry = sleepEntries.find(entry => entry.date === date)
     return dailyEntry.hoursSlept
   }
 
   getQualityByDay(userID, date) {
-    const sleepEntries = sleepTestData.filter(entry => entry.userID === userID);
+    const sleepEntries = this.sleepData.filter(entry => entry.userID === userID);
     const dailyEntry = sleepEntries.find(entry => entry.date === date)
     return dailyEntry.sleepQuality
   }

@@ -85,4 +85,87 @@ const hydrationData = [
     },
 ]
 
-export default { users, hydrationData }
+const sleepData = [
+    {
+    "userID": 1,
+    "date": "2023/03/24",
+    "hoursSlept": 9.6,
+    "sleepQuality": 4.3
+    },
+    {
+    "userID": 2,
+    "date": "2023/03/24",
+    "hoursSlept": 8.4,
+    "sleepQuality": 3.5
+    },
+    {
+    "userID": 3,
+    "date": "2023/03/24",
+    "hoursSlept": 9.7,
+    "sleepQuality": 4.7
+    },
+    {
+    "userID": 1,
+    "date": "2023/03/25",
+    "hoursSlept": 6.3,
+    "sleepQuality": 3.3
+    },
+    {
+    "userID": 2,
+    "date": "2023/03/25",
+    "hoursSlept": 8.1,
+    "sleepQuality": 4.7
+    },
+    {
+    "userID": 3,
+    "date": "2023/03/25",
+    "hoursSlept": 9.5,
+    "sleepQuality": 1.8
+    },
+]
+
+const activityData = [
+    {
+    "userID": 1,
+    "date": "2023/03/24",
+    "numSteps": 7362,
+    "minutesActive": 261,
+    "flightsOfStairs": 26
+    },
+    {
+    "userID": 2,
+    "date": "2023/03/24",
+    "numSteps": 3049,
+    "minutesActive": 125,
+    "flightsOfStairs": 43
+    },
+    {
+    "userID": 3,
+    "date": "2023/03/24",
+    "numSteps": 12970,
+    "minutesActive": 282,
+    "flightsOfStairs": 38
+    },
+    {
+    "userID": 1,
+    "date": "2023/03/25",
+    "numSteps": 14264,
+    "minutesActive": 111,
+    "flightsOfStairs": 1
+    },
+    {
+    "userID": 2,
+    "date": "2023/03/25",
+    "numSteps": 14719,
+    "minutesActive": 201,
+    "flightsOfStairs": 39
+    },
+    {
+    "userID": 3,
+    "date": "2023/03/25",
+    "numSteps": 12255,
+    "minutesActive": 245,
+    "flightsOfStairs": 46
+    },
+]
+export default { users, hydrationData, sleepData, activityData }

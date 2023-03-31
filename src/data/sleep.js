@@ -45,10 +45,29 @@ class Sleep{
 
     const weeklySleepData = weeklySleep.map(entry => (
       {
-      [entry.date]: entry.hoursSlept + ' hours'
+      [entry.date]: entry.hoursSlept + ' hours slept'
       }
       ))
       return weeklySleepData
+  }
+
+  getWeekSleepQuality(userID, startDate) {
+    const sleepEntries = this.sleepData.filter(entry => entry.userID === userID);
+    const indexOfCurrentDayEntry = sleepEntries.indexOf(sleepEntries.find(entry => {
+      return entry.date === startDate
+    }))
+    let weeklySleepQuality = [];
+
+    for (let i = indexOfCurrentDayEntry; i > indexOfCurrentDayEntry - 7; i--) {
+      weeklySleepQuality.push(sleepEntries[i])
+    }
+
+    const weeklySleepQualityData = weeklySleepQuality.map(entry => (
+      {
+      [entry.date]: entry.sleepQuality + ' sleep quality rating'
+      }
+      ))
+      return weeklySleepQualityData
   }
 };
 

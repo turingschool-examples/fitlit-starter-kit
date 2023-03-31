@@ -18,6 +18,7 @@ import {
   displayUserGreeting,
   displayhydrationCard,
   displaySleepCard,
+  displayActivityCard,
 } from "./scripts";
 
 import Activity from './classes/Activity';

@@ -10,7 +10,7 @@ class Hydration {
   }
   
   findAvgDailyHydration() {
-    if (this.data.length === 0) {
+    if (!this.data.length) {
       return 'No Hydration Data Found';
     }
     const dailyAvg = this.data.reduce((total, water) => {
@@ -22,7 +22,7 @@ class Hydration {
   }
 
   getHydrationSpecificDay(date) {
-    if (this.data.length === 0) {
+    if (!this.data.length) {
       return 'No Hydration Data Found';
     }
     const consumptionByDate = this.data.find(specficDate => specficDate.date === date);

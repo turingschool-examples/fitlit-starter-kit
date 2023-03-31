@@ -41,5 +41,28 @@ let sleep;
     expect(sleep.getQualityByDay(2, '2023/03/25')).to.equal(4.7);
     expect(sleep.getQualityByDay(2, '2023/03/28')).to.equal(2.1);
   });
+  
+  it('should be able to get user\'s weekly sleep data', function() {
+    expect(sleep.getWeekSleep(1, '2023/03/30')).to.deep.equal([
+    {'2023/03/30': '6.2 hours slept'},
+    {'2023/03/29': '5.6 hours slept'}, 
+    {'2023/03/28': '6 hours slept'},
+    {'2023/03/27': '7.1 hours slept'},
+    {'2023/03/26': '5.4 hours slept'},
+    {'2023/03/25': '6.3 hours slept'},
+    {'2023/03/24': '9.6 hours slept'}
+  ])});
 
-})
+
+  it('should be able to get user\'s weekly sleep data', function() {
+    expect(sleep.getWeekSleepQuality(2, '2023/03/30')).to.deep.equal([
+    {'2023/03/30': '3.2 sleep quality rating'},
+    {'2023/03/29': '2.2 sleep quality rating'}, 
+    {'2023/03/28': '2.1 sleep quality rating'},
+    {'2023/03/27': '2.8 sleep quality rating'},
+    {'2023/03/26': '4.8 sleep quality rating'},
+    {'2023/03/25': '4.7 sleep quality rating'},
+    {'2023/03/24': '3.5 sleep quality rating'}
+  ])});
+
+});

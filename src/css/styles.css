@@ -1,3 +1,19 @@
+/* colors
+#FCADC3 = pink
+#FDC504 = yellow
+#3C4252 = bluegrey
+#A25E9B = purple
+#538BC7 = light blue
+#5A73C0 = darkerblue 
+#F16433 = orange
+#F3CEC7 = peach
+#F3CEC7 = red
+*/
+
+* {
+  border: 1px solid red;
+}
+
 body, html {
   background-repeat: no-repeat;
   height: 100%;
@@ -64,6 +80,63 @@ h1 {
   font-weight: 300;
 }
 
-main {
-  margin-top: 150px;
+/* main section */
+.welcome-box {
+  display: flex;
+  margin-top: 10%;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.card-wrapper {
+  width: 50%;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  width: 100%;
+}
+
+.activity-card {
+  background-color: #FDC507;
+  min-width: 30%;
+  max-width: 30%;
+  border-radius: 20px;
+}
+
+.hydration-card {
+  background-color: #FCADC3;
+  color: #3C4252;
+  min-width: 30%;
+  max-width: 30%;
+  border-radius: 20px;
+}
+
+.sleep-card {
+  background-color: #F16433;
+  min-width: 30%;
+  max-width: 30%;
+  border-radius: 20px;
+}
+
+.infographic {
+  background-color: #F3CEC7;
+  width: 50%;
+}
+
+/* text */
+
+b {
+  font-size: smaller;
+  margin: 0px;
+}
+
+p {
+  font-size: small;
+  margin: 0px;
 }

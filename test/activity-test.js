@@ -6,8 +6,6 @@ import User from '../src/classes/User';
 import activityTestData from './activity-test-data';
 import userTestData from './user-test-data';
 
-import User from '../src/classes/User';
-
 describe("Activity", () => {
   let activity;
 

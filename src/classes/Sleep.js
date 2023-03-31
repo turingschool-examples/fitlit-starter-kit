@@ -61,7 +61,10 @@ class Sleep {
       );
     });
     let hoursSlept = sleepData.map((element) => {
-      return { hoursSlept: element.hoursSlept };
+      return {
+        date: element.date,
+        hoursSlept: element.hoursSlept
+      };
     });
     return hoursSlept;
   }
@@ -78,7 +81,10 @@ class Sleep {
       );
     });
     let sleepQuality = sleepData.map((element) => {
-      return { sleepQuality: element.sleepQuality };
+      return {
+        date: element.date,
+        sleepQuality: element.sleepQuality
+      };
     });
     return sleepQuality;
   }

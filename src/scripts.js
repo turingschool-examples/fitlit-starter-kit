@@ -3,6 +3,9 @@ import './css/styles.css';
 
 // Image Imports
 import './images/turing-logo.png';
+import './images/barbell.png';
+import './images/sleep.png';
+import './images/water.png';
 
 // 3rd party library import
 import Chart from 'chart.js/auto';

@@ -5,16 +5,15 @@ class Hydration {
       .map((water) => {
         water.date = dayjs(water.date, 'YYYY/MM/DD')
         .format('YYYY/MM/DD')
-        return water
-      })
+        return water;
+      });
   }
   
-  findAvgDailyHydration(userID) {
-    const userHydrationData = this.data.filter(water => water.userID === userID);
-    if (userHydrationData.length === 0) {
-      return 'No User Found';
+  findAvgDailyHydration() {
+    if (this.data.length === 0) {
+      return 'No Hydration Data Found';
     }
-    const dailyAvg = userHydrationData.reduce((total, water) => {
+    const dailyAvg = this.data.reduce((total, water) => {
       total.ounces += water.numOunces;
       total.count += 1;
       return total;
@@ -23,16 +22,15 @@ class Hydration {
   }
 
   getHydrationSpecificDay(date) {
-    const userHydrationData = this.data.filter(specficDate => specficDate.date === date);
-    if (userHydrationData.length === 0) {
-      return `No hydration data on ${date}`
+    if (this.data.length === 0) {
+      return 'No Hydration Data Found';
     }
     const consumptionByDate = this.data.find(specficDate => specficDate.date === date);
-    return consumptionByDate.numOunces
+    return consumptionByDate.numOunces;
   }
 
   findWeeklyHydration() {
-    return this.data.map(water => water.numOunces).slice(0,7)
+    return this.data.map(water => water.numOunces).slice(0,7);
   }
 }
 

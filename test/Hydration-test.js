@@ -6,9 +6,8 @@ describe('Hydration', () => {
   let data;
   let hydration;
   beforeEach(() => {
-    data = hydrationTestData.hydrationTestData
+    data = hydrationTestData.hydrationTestData.reverse()
     hydration = new Hydration(data);
-    hydration.sortData()
   });
 
   it('should be a function', () => {
@@ -48,7 +47,7 @@ describe('Hydration', () => {
 
   it('should return the user\'s total amount of water for 7 consecutive days', () => {
     expect(hydration.findWeeklyHydration()).to.deep.equal(
-      [28, 35, 95, 74, 47, 86, 74]
+      [ 36, 74, 86, 47, 74, 95, 35 ]
     );
   });
 

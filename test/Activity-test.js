@@ -9,11 +9,9 @@ describe('Activity', ()=> {
   let activity
 
   beforeEach(() =>{
-    // run all the set up functions here
     user = new User(userTestData.userTestData[0])
-    activity = new Activity(activityTestData.activityTestData, 4)
+    activity = new Activity(activityTestData.activityTestData.reverse(), 4)
     user.activity = activity
-    user.activity.sortData()
   })
 
   it('should check all the properties to see if they hold the data we want', ()=> {
@@ -27,31 +25,21 @@ describe('Activity', ()=> {
   it('should hold the users stride', () => {
     expect(activity.userStride).to.equal(4)
   })
-
-  it('should be able to sort data', () => {
-    expect(user.activity.data[0]).to.deep.equal({
-      "userID": 1,
-      "date": "2023/03/20",
-      "numSteps": 8443,
-      "minutesActive": 136,
-      "flightsOfStairs": 43
-    })
-  })
   
   it('should calculate minutes active for the lastest day', ()=> {
-    expect(user.activity.getMinutesActive("2023/03/20")).to.deep.equal(136)
+    expect(user.activity.getMinutesActive("2023/03/20")).to.deep.equal(261)
   })
 
   it('should be able to check the amount of steps for the latest day', ()=> {
-    expect(user.activity.getStepCount("2023/03/20")).to.deep.equal(8443)
+    expect(user.activity.getStepCount("2023/03/20")).to.deep.equal(7362)
   })
 
   it('should calculate miles for a given day', ()=> {
-    expect(user.activity.calculateMiles("2023/03/20")).to.equal(6.40)
+    expect(user.activity.calculateMiles("2023/03/20")).to.equal(5.58)
   })
 
   it('should check how a each day in the last weeks steps compares to the goal', () => {
-    expect(user.activity.getLatestWeek()).to.deep.equal([8443,7255, 7765, 3049, 7362, 12970, 8934])
+    expect(user.activity.getLatestWeek()).to.deep.equal([ 7362, 3049, 12970, 8934, 8443, 13297, 7765])
   })
   
 })

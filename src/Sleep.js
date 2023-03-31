@@ -5,6 +5,7 @@ class Sleep {
     this.data = data
       .map((sleep) => {
         sleep.date = dayjs(sleep.date, 'YYYY/MM/DD')
+        .format('YYYY/MM/DD')
         return sleep;
       })
   }
@@ -37,15 +38,6 @@ class Sleep {
     } else {
       return `${infoType} is not a valid argument!`;
     }
-  }
-
-  sortData() {
-    this.data = this.data
-      .sort((a,b) => a.date - b.date);
-    this.data.map((sleep) => {
-      sleep.date = dayjs(sleep.date, 'YYYY/MM/D').format('YYYY/MM/DD');
-      return sleep;
-    })
   }
 
 }

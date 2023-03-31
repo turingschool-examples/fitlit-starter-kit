@@ -1,46 +1,15 @@
-import User from '../src/User'
-
-export let userClass;
-
-
-
-function fetchApiData(url) {
-  const fetchedUserData = fetch(url)
-  // .then(res => res.json())
-  // .then(data => {
-  // userObj = data.users[Math.floor(Math.random() * data.users.length)];
-  // console.log(userObj);
-  
-  
- 
-    
-  
-  .catch((error) => console.log(error));
-
-  return fetchedUserData;
+const fetchAPI = (url) => {
+  return fetch(url)
+  .then(data => data.json())
 }
 
-export { fetchApiData }
+const fetchAllData = () => {
+  return Promise.all([
+    fetchAPI('https://fitlit-api.herokuapp.com/api/v1/users'),
+    fetchAPI('https://fitlit-api.herokuapp.com/api/v1/hydration'),
+    fetchAPI('https://fitlit-api.herokuapp.com/api/v1/sleep'),
+    fetchAPI('https://fitlit-api.herokuapp.com/api/v1/activity')
+  ])
+}
 
-//     displayCurrentUser(user);
-
-
-//     fetch("https://fitlit-api.herokuapp.com/api/v1/sleep")
-//     .then(res => res.json())
-//     .then(data => {
-
-//     })
-//     fetch("https://fitlit-api.herokuapp.com/api/v1/hydration")
-//     .then(res => res.json())
-//     .then(data => {
-
-//     })
-
-//     fetch('https://fitlit-api.herokuapp.com/api/v1/activity')
-//     .then(res => res.json())
-//     .then (data => {
-
-//     })
-
-//   })
-// }
+export { fetchAllData }

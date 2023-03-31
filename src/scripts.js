@@ -20,6 +20,8 @@ let weeklyWater = document.querySelector("#weeklyWater");
 let dailySleep = document.querySelector("#dailySleep");
 let weeklySleep = document.querySelector("#weeklySleepHours");
 let weeklySleepQuality = document.querySelector("#weeklySleepQuality");
+let averageSleep = document.querySelector("#averageSleep");
+let averageSleepQuality = document.querySelector("#averageSleepQuality");
 
 let date = new Date();
 let currentDate = date.getFullYear() + "/" + ("0" + (date.getMonth()+1)).slice(-2) + "/"+ ("0" + date.getDate()).slice(-2);
@@ -40,6 +42,7 @@ window.addEventListener('load', function () {
     displayDailySleep();
     displayWeeklySleep();
     displayWeeklySleepQuality();
+    displayAverageSleep();
   })
 });
 
@@ -113,4 +116,8 @@ function displayWeeklySleepQuality() {
    weeklySleepQuality.innerText += ` @ ${entry.sleepQuality}
    `
   });
-}
+};
+
+function displayAverageSleep() {
+  averageSleep.innerText += `You average ${sleep.getAvgSleep(newUser.id)} hours of sleep each night and a ${sleep.getAvgQuality(newUser.id)} sleep quality rating!`; 
+};

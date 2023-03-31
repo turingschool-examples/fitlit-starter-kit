@@ -57,23 +57,23 @@ describe('Sleep', () => {
    });
      it("should return the hours slept over a week given a specified date",() => {
        expect(sleep.calculateWeeklyHoursSlept(3, "2023/03/23")).to.deep.equal([
-         { hoursSlept: 5.6},
-         { hoursSlept: 5.2},
-         { hoursSlept: 8.5},
-         { hoursSlept: 4.1},
-         { hoursSlept: 9.5},
-         { hoursSlept: 9.7},
+         { date: "2023/03/29", hoursSlept: 5.6},
+         { date: "2023/03/28", hoursSlept: 5.2},
+         { date: "2023/03/27", hoursSlept: 8.5},
+         { date: "2023/03/26", hoursSlept: 4.1},
+         { date: "2023/03/25", hoursSlept: 9.5},
+         { date: "2023/03/24", hoursSlept: 9.7},
        ]);
      });
      it("should return the sleep quality given a specified date", () => {
        expect(sleep.calculateWeeklySleepQuality(3, "2023/03/23")).to.deep.equal(
          [
-           { sleepQuality: 1.4 },
-           { sleepQuality: 4.6 },
-           { sleepQuality: 2.9 },
-           { sleepQuality: 2 },
-           { sleepQuality: 1.8 },
-           { sleepQuality: 4.7 },
+           { date: "2023/03/29", sleepQuality: 1.4 },
+           { date: "2023/03/28", sleepQuality: 4.6 },
+           { date: "2023/03/27", sleepQuality: 2.9 },
+           { date: "2023/03/26", sleepQuality: 2 },
+           { date: "2023/03/25", sleepQuality: 1.8 },
+           { date: "2023/03/24", sleepQuality: 4.7 },
          ]
        );
      });

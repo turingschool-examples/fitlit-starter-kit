@@ -6,6 +6,14 @@ class Sleep {
         })
     }
 
+    findMostRecentDay(){
+        const mostRecentDay = this.userSleepLogs.sort((a, b) => {
+            return b.date - a.date 
+        })
+
+        return mostRecentDay[0].date
+    }
+
     findAllTimeAvgOfDetail(detail) {
         const totalOfDetail = this.userSleepLogs.reduce((acc, currentVal) => {
             return acc += currentVal[detail]
@@ -27,23 +35,9 @@ class Sleep {
     };
 
     findDetailByWeek(date, detail) {
-        const convertDate = new Date(date)
-        const datedSleepLogs = this.userSleepLogs.map((log) => {
-            const sleepInfo = {}
-            sleepInfo.date = new Date(log.date)
-            sleepInfo.detail = log[detail]
-            return sleepInfo
-        })
+        const selectedDayIndex = this.userSleepLogs.findIndex(log => log.date === date);
 
-        const accendDatedSleepLogs = datedSleepLogs.sort((a, b) => {
-            return a.date - b.date
-        })
-
-        const selectedDayIndex = accendDatedSleepLogs.findIndex((log) => {
-            return log.date.getTime() === convertDate.getTime();
-        });
-
-        const sevenDayDetail = accendDatedSleepLogs.slice(selectedDayIndex, selectedDayIndex + 7).map(log => log.detail);
+        const sevenDayDetail = this.userSleepLogs.slice(selectedDayIndex, selectedDayIndex +7).map(log => log[detail]);
 
         let lastWeekDetails = [0, 0, 0, 0, 0, 0, 0]
 
@@ -57,6 +51,8 @@ class Sleep {
             return lastWeekDetails;
         }
     };
-}
+
+};
+
 
 export default Sleep;

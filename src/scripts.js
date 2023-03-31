@@ -22,6 +22,13 @@ let allUserSleepData
 let allUserHydrationData
 let allUserActivityData
 
+
+let currentUser;
+let currentUserSleep;
+
+//Selectors
+const cardDisplay = document.getElementById('cardDisplay')
+
 //querySelector variables 
 
 const userInfoBox = document.querySelector('.user-info')
@@ -55,18 +62,56 @@ function loadUserInfo(currentUserData,userData) {
 
 }
 
+window.addEventListener('load', () => {
+    fetchAll()
+        .then(data => {
+            allUsersData = data[0]
+            allUserSleepData = data[1]            
+            allUserHydrationData = data[2]
+            allUserActivityData = data[3]
+            pageLoad()
+        })
 
-//Print Current User Object
-// console.log(currentUser.userId)
-// console.log(currentUser.userName)
-// console.log(currentUser.address)
-// console.log(currentUser.email)
-// console.log(currentUser.strideLength)
-// console.log(currentUser.dailyStepGoal)
-// console.log(currentUser.friends)
+})
+
+function pageLoad (){
+    currentUser = new User(allUsersData);
+    currentUserSleep = new Sleep (currentUser.userId, allUserSleepData);
+
+     // createSingleCardDisplay(cardId, cardTitle, outputToDisplay, units)
+    createSingleCard(currentUser.userID, 'Hours Slept', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'hoursSlept'), 'hours');     
+}
+
+ // createSingleCardDisplay(cardId, cardTitle, outputToDisplay, units)
+
+// //Get Random user by refrencing the class
+// //Get Current user First Name
+// currentUser.userFirstName()
+
+// //Change The Current User By ID
+// currentUser.findUserById(1, userData)
+// //Get Current user First Name
+// currentUser.userFirstName()
+
+// //Get overall Step goal
+// currentUser.findOverAllStepGoal(userData)
+// //Get user Step Goal
+// currentUser.dailyStepGoal
+
+// //Get First Name by ID
+// currentUser.userFirstNameById(49, userData)
+
+/////////////
+function createSingleCard (cardId, cardTitle, outputToDisplay, units){
+    cardDisplay.innerHTML += `
+        <section class='singleDayCard' id= ${cardId}> 
+             <h3> ${cardTitle} </h3>
+            <div>
+                <text> ${outputToDisplay} </text>
+                <text>  ${units} </text>
+            </div>
+         </section>`
+}
 
 
-// console.log(userData.users)
-//     console.log(allUserSleepData)
-//     console.log(allUserHydrationData)
-//     console.log(allUserActivityData)
+

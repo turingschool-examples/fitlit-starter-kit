@@ -18,6 +18,7 @@ let userFriends = document.querySelector("#userFriends");
 let dailyWater = document.querySelector("#dailyWater");
 let weeklyWater = document.querySelector("#weeklyWater");
 let dailySleep = document.querySelector("#dailySleep");
+let weeklySleep = document.querySelector("#weeklySleepHours")
 
 let date = new Date();
 let currentDate = date.getFullYear() + "/" + ("0" + (date.getMonth()+1)).slice(-2) + "/"+ ("0" + date.getDate()).slice(-2);
@@ -36,6 +37,7 @@ window.addEventListener('load', function () {
     displayWaterConsumed();
     displayWeeklyWaterConsumption();
     displayDailySleep();
+    displayWeeklySleep()
   })
 });
 
@@ -93,4 +95,15 @@ function displayDailySleep() {
   } else {
     dailySleep.innerText = 'You need to get more sleep!'
   }
+};
+
+function displayWeeklySleep() {
+  
+  const weeklySleepEntries = sleep.getWeekSleep(newUser.id, currentDate);
+  console.log(Object.values(weeklySleepEntries)) 
+  weeklySleepEntries.forEach(entry => {
+   weeklySleep.innerText += `${entry.date}: ${entry.hoursSlept}
+   `
+  })
+  
 };

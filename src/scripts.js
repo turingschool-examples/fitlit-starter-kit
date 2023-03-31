@@ -69,8 +69,10 @@ function pageLoad () {
     currentUser = new User(userData);
     currentUserSleep = new Sleep (currentUser.userId, allUserSleepData);
     currentUserHydration = new UserHydration(currentUser.userId, allUserHydrationData)
-    createSingleCard('singleHyOz', 'Total Ounces', currentUserHydration.calculateSingleDayOunces(currentUserHydration.findMostRecentDay()), 'Ounces')
-    createSingleCard(currentUser.userID, 'Hours Slept', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'hoursSlept'), 'hours');   
+    createSingleCard(currentUser.userID, 'Hours Slept', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'hoursSlept'), 'hours');
+    createSevenDayCard(currentUser.userID, 'Hours Slept', currentUserSleep.findDetailByWeek(currentUserSleep.findDetailByWeek(), 'hoursSlept'), 'Days');
+    createSingleCard('singleHyOz', 'Total Ounces', currentUserHydration.calculateSingleDayOunces(currentUserHydration.calculateSingleDayOunces()), 'Ounces')
+    createSevenDayCard(currentUser.userID, 'Ounces Drank', currentUserSleep.calculateOuncesLastSevenDays(currentUserHydration.calculateOuncesLastSevenDays(), 'Ounces'), 'Days');
     loadUserInfo(currentUser,userData) 
     console.log(currentUser) 
 }
@@ -104,6 +106,18 @@ function createSingleCard (cardId, cardTitle, outputToDisplay, units){
                 <text>  ${units} </text>
             </div>
          </section>`
+}
+
+function createSevenDayCard (cardId, cardTitle, outputToDisplay, units){
+  cardDisplay.innerHTML += `
+  <section class='SevenDayCard' id= ${cardId}> 
+    <h3> ${cardTitle} </h3>
+ <div>
+     <text> ${outputToDisplay} </text>
+     <text>  ${units} </text>
+ </div>
+</section>
+`
 }
 
 

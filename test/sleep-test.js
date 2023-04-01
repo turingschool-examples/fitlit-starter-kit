@@ -44,25 +44,12 @@ let sleep;
   
   it('should be able to get user\'s weekly sleep data', function() {
     expect(sleep.getWeekSleep(1, '2023/03/30')).to.deep.equal([
-    {'date': '2023/03/30', 'hoursSlept': '6.2 hours slept'},
-    {'date': '2023/03/29', 'hoursSlept': '5.6 hours slept'}, 
-    {'date': '2023/03/28', 'hoursSlept': '6 hours slept'},
-    {'date': '2023/03/27', 'hoursSlept': '7.1 hours slept'},
-    {'date': '2023/03/26', 'hoursSlept': '5.4 hours slept'},
-    {'date': '2023/03/25', 'hoursSlept': '6.3 hours slept'},
-    {'date': '2023/03/24', 'hoursSlept': '9.6 hours slept'}
+    {'date': '2023/03/30', 'hoursSlept': '6.2 hours slept', 'sleepQuality': ' a sleep quality rating of ' + '3.3'},
+    {'date': '2023/03/29', 'hoursSlept': '5.6 hours slept', 'sleepQuality': ' a sleep quality rating of ' + '2.1'}, 
+    {'date': '2023/03/28', 'hoursSlept': '6 hours slept', 'sleepQuality': ' a sleep quality rating of ' + '4.6'},
+    {'date': '2023/03/27', 'hoursSlept': '7.1 hours slept', 'sleepQuality': ' a sleep quality rating of ' + '4.7'},
+    {'date': '2023/03/26', 'hoursSlept': '5.4 hours slept', 'sleepQuality': ' a sleep quality rating of ' + '3.1'},
+    {'date': '2023/03/25', 'hoursSlept': '6.3 hours slept', 'sleepQuality': ' a sleep quality rating of ' + '3.3'},
+    {'date': '2023/03/24', 'hoursSlept': '9.6 hours slept', 'sleepQuality': ' a sleep quality rating of ' + '4.3'}
   ])});
-
-
-  it('should be able to get user\'s weekly sleep data', function() {
-    expect(sleep.getWeekSleepQuality(2, '2023/03/30')).to.deep.equal([
-    {'date': '2023/03/30', 'sleepQuality': '3.2 sleep quality rating'},
-    {'date': '2023/03/29', 'sleepQuality': '2.2 sleep quality rating'}, 
-    {'date': '2023/03/28', 'sleepQuality': '2.1 sleep quality rating'},
-    {'date': '2023/03/27', 'sleepQuality': '2.8 sleep quality rating'},
-    {'date': '2023/03/26', 'sleepQuality': '4.8 sleep quality rating'},
-    {'date': '2023/03/25', 'sleepQuality': '4.7 sleep quality rating'},
-    {'date': '2023/03/24', 'sleepQuality': '3.5 sleep quality rating'}
-  ])});
-
 });

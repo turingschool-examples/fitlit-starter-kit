@@ -9,8 +9,8 @@ class Activity {
 
     const userActivity = currentUserActivity.filter(data => data.date === date)
 
-    const miles = Math.round((userActivity[0].numSteps * user.strideLength) / 5280)
-    return miles
+    const miles = (userActivity[0].numSteps * user.strideLength) / 5280
+    return miles.toFixed(2)
   }
 
   minutesActiveByDay(user, date) {
@@ -28,19 +28,29 @@ class Activity {
     const userActivity = currentUserActivity.filter(data => data.date === date)
 
     if (userActivity[0].numSteps >= user.dailyStepGoal) {
-      return true
+      return 'Congrats! You did it!'
     } else {
-      return false
+      return 'Better luck next time!'
     }
   }
 
-  // todaysStepCount(user, date) {
-  //   const currentUserActivity = this.activity.filter(data => data.userID === user.id)
+  todaysStepCount(user, date) {
+    const currentUserActivity = this.activity.filter(data => data.userID === user.id)
+    const userActivity = currentUserActivity.filter(data => data.date === date)
+    console.log(userActivity)
+    return userActivity[0].numSteps
+  }
+  weeklyStepCount(user, date) {
 
-  //   const userActivity = currentUserActivity.filter(data => data.date === date)
-
-  //   return userActivity[0].numSteps
-  // }
+    const currentUserActivity = this.activity.filter(data => data.userID === user.id)
+    console.log('currentUserActivity', currentUserActivity)
+    const userActivity = currentUserActivity.filter(data => data.date <= date).sort((a, b) => {
+      return new Date(b.date)- new Date(a.date)
+    }).map(data => data.numSteps)
+    const weeklySteps = userActivity.slice(0, 7)
+    console.log('weekStep', weeklySteps)
+    return weeklySteps
+  }
 
 }
 

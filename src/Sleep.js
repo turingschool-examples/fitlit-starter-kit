@@ -1,21 +1,15 @@
 import mock from '../src/data/mock';
 
 class Sleep {
-  constructor(id) {
-    this.avgHours = 0;
-    this.avgQuality = 0;
-    this.dailyHours = 0;
-    this.dailyQuality = 0;
-    this.weeklyHours = 0;
-    this.weeklyQuality = 0;
-    this.sleepID = id;
+  constructor(sleepData) {
+    this.sleepData = sleepData;
   } 
 
-  findAvgHours()  {
+  findAvgHours(userParam)  {
     let totalSleep = 0;
     let days = 0;
-    mock.sleepData.forEach((record)  =>  {
-      if (record.userID === this.sleepID)  {
+    this.sleepData.forEach((record)  =>  {
+      if (record.userID === userParam.id)  {
         totalSleep = (totalSleep + record.hoursSlept);
         days = (days + 1);
       }
@@ -24,11 +18,11 @@ class Sleep {
     return this.avgHours;
   }
 
-  findAvgQuality()  {
+  findAvgQuality(userParam)  {
     let totalQuality = 0;
     let days = 0;
-    mock.sleepData.forEach((record) =>  {
-      if(record.userID === this.sleepID) {
+    this.sleepData.forEach((record) =>  {
+      if(record.userID === userParam.id) {
         totalQuality = (totalQuality + record.sleepQuality);
         days = (days +1);
       }
@@ -37,16 +31,15 @@ class Sleep {
     return this.avgQuality;
   }
 
-  findDailyHours(dateParam) {
-    let recordObject = mock.sleepData.filter(record  =>  record.userID === this.sleepID && record.date === dateParam);
-    this.dailyHours = (recordObject[0].hoursSlept);
-    return this.dailyHours;
+  findDailyHours(userParam, dateParam) {
+    let recordObject = this.sleepData.filter(record => record.userID === userParam.id && record.date === dateParam);
+    console.log(recordObject[0].hoursSlept)
+    return recordObject[0].hoursSlept
   }
 
-  findDailyQuality(dateParam) {
-    let recordObject = mock.sleepData.filter(record  =>  record.userID === this.sleepID && record.date === dateParam);
-    this.dailyQuality = (recordObject[0].sleepQuality);
-    return this.dailyQuality;
+  findDailyQuality(userParam, dateParam) {
+    let recordObject = this.sleepData.filter(record  =>  record.userID === userParam.id && record.date === dateParam);
+    return recordObject[0].sleepQuality;
   }
 
   transformDate(dateParam)  {
@@ -62,28 +55,31 @@ class Sleep {
     return new Date(`${year}, ${month}, ${day}`);
   }
 
-  findWeeklyHours(dateParam)  {
-    let weekEnd = this.transformDate(dateParam)
-    let weekStart = new Date((weekEnd) - 604800000);
-    let weekArray = mock.sleepData.filter(record => record.userID === this.sleepID && this.transformDate(record.date) <= weekEnd && this.transformDate(record.date) >= weekStart);
-    let weeklyHoursData = weekArray.reduce((sleepObject, record)  =>  {
-      sleepObject[record.date] = record.hoursSlept;
-      return sleepObject;
-    }, {})
-    this.weeklyHours = weeklyHoursData;
-    return this.weeklyHours;
+  findWeeklyHours(userParam, dateParam)  {  
+    let weekArray = this.sleepData.filter(record => record.userID === userParam.id && record.date <= dateParam);
+    const sortWeekArray = weekArray.sort((a, b) => {
+      return new Date(b.date) - new Date(a.date)
+    }).map(data => data.hoursSlept)
+    const sliceWeekArray = sortWeekArray.slice(0, 7)
+    const totalHours = sliceWeekArray.reduce((acc, cV) => {
+      acc += cV
+      return acc
+    },0)
+    return totalHours.toFixed(2)
   }
 
-  findWeeklyQuality(dateParam)  {
-    let weekEnd = this.transformDate(dateParam)
-    let weekStart = new Date((weekEnd) - 604800000);
-    let weekArray = mock.sleepData.filter(record => record.userID === this.sleepID && this.transformDate(record.date) <= weekEnd && this.transformDate(record.date) >= weekStart);
-    let weeklyQualityData = weekArray.reduce((qualityObject, record)  =>  {
-      qualityObject[record.date] = record.sleepQuality;
-      return qualityObject;
-    }, {})
-    this.weeklyQuality = weeklyQualityData;
-    return this.weeklyQuality;
+  findWeeklyQuality(userParam, dateParam)  {
+    let weekArray = this.sleepData.filter(record => record.userID === userParam.id && record.date <= dateParam);
+    const sortWeekArray = weekArray.sort((a, b) => {
+      return new Date(b.date) - new Date(a.date)
+    }).map(data => data.sleepQuality)
+    const sliceWeekArray = sortWeekArray.slice(0, 7)
+    const totalQuality = sliceWeekArray.reduce((acc, cV)  =>  {
+      acc += cV
+      return acc;
+    },0)
+    console.log(totalQuality)
+    return totalQuality.toFixed(2)
   }
 }
 

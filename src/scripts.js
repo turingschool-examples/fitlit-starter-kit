@@ -42,7 +42,6 @@ window.addEventListener('load', () => {
     allUserSleepData = data[1]
     allUserHydrationData = data[2]
     allUserActivityData = data[3]
-    console.log(allUserHydrationData)
     pageLoad()
   })
 })
@@ -73,7 +72,7 @@ function pageLoad () {
     createSevenDayCard(currentUser.userID, 'Ounces Drank', currentUserHydration.calculateOuncesLastSevenDays(currentUserHydration.findMostRecentDay()), 'last 7 days');
     loadUserInfo(currentUser,userData) 
     console.log(currentUserHydration.calculateOuncesLastSevenDays()) 
-}
+  }
 
  // createSingleCardDisplay(cardId, cardTitle, outputToDisplay, units)
 

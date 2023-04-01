@@ -22,18 +22,7 @@ class User {
 }
 
     findUserById(userId, userData) {
-        const user = userData.users.find(user => user.id === userId);
-        if (user) {
-        console.log(`User ${user.name} Found By ID!`);
-        this.userId = user.id;
-        this.userName = user.name;
-        this.address = user.address;
-        this.email = user.email;
-        this.strideLength = user.strideLength;
-        this.dailyStepGoal = user.dailyStepGoal;
-        this.friends = user.friends;
-        return;
-        }
+        return userData.users.find(user => user.id === userId);
     }
 
     findOverAllStepGoalAvg(userData) {

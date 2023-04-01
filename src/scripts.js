@@ -47,13 +47,13 @@ window.addEventListener('load', () => {
 })
 
 function loadUserInfo(currentUserData,userData) {
-    document.getElementById('firstName').innerHTML = `Welcome ${currentUserData.userName} !!!`;
-    document.getElementById('fullName').innerHTML = currentUserData.userName;
-    document.getElementById('address').innerHTML = currentUserData.address;
-    document.getElementById('email').innerHTML = currentUserData.email;
-    document.getElementById('strideLength').innerHTML = currentUserData.strideLength;
-    document.getElementById('dailyStepgoal').innerHTML = currentUserData.dailyStepGoal;
-    document.getElementById('friends').innerHTML = currentUserData.userFirstNameById(currentUserData.friends[0],userData);
+    document.getElementById('firstName').innerHTML = `Welcome ${currentUserData.userName}!`;
+    document.getElementById('fullName').innerHTML = `User: ${currentUserData.userName}`
+    document.getElementById('address').innerHTML = `Address: ${currentUserData.address}`;
+    document.getElementById('email').innerHTML = `Email: ${currentUserData.email}`;
+    document.getElementById('strideLength').innerHTML = `Stride Length : ${currentUserData.strideLength}`;
+    document.getElementById('dailyStepgoal').innerHTML = `Daily Step Goal: ${currentUserData.dailyStepGoal}`;
+  
    
 
     console.log(currentUserData.friends[0])

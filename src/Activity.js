@@ -1,46 +1,37 @@
 class Activity {
-    constructor(userData) {
-        this.userData = userData; 
-        // console.log('activity user',userData)
+    constructor(userDetail, allActivityData) {
+        this.userId = userDetail.id
+        this.strideLength = userDetail.strideLength
+        this.dailyStepGoal = userDetail.dailyStepGoal
+        this.activityLogs = allActivityData.activityData.filter( data => data.userID === this.userId); 
+    } 
+
+    calculateMiles(date) {
+        const selectedDay = this.activityLogs.find(log => log.date === date);
+        const miles = (selectedDay.numSteps * this.strideLength) / 5280;
+    
+        return Math.round(miles * 10) / 10;
     }
 
-    findUserByActivityByDate(userId, userData) {
-        let userActivity = this.userData.activityData.find((activity) => activity.userId === userId && activity.date === userData.date)
-        return userActivity
-    }
-   
+    calculateActiveMinutes(date) {
+        const dayLog = this.activityLogs.find((log) => {
+            return log.date === date;
+        })
 
-    calculateMiles(userActivity, strideLength) {
-        const miles = (userActivity.numSteps * strideLength) / 5280
-        return miles 
-
+        return dayLog.minutesActive;
     }
 
-    calculateActiveMinutes(userActivity) {
-        return userActivity.minutesActive
 
-    }
+    checkStepGoalReached(date) {
+        const dayDetail = this.activityLogs.find(log => log.date === date);
+        const stepGoal = this.dailyStepGoal;
 
-    // calculateTotalSteps(userActivity) {
-    //     return userActivity.numSteps.reduce((acc, curr) => {
-            
-    //         return acc
-    //     }, 0)
-    // }
-
-    checkWeeklyGoal(userActivity, dailyStepGoal) {
-        if(userActivity.numSteps < dailyStepGoal) {
-            "False: goal not met"
+        if(stepGoal <= dayDetail.numSteps){
+            return `Good Job! ${dayDetail.numSteps} meets your goal!`
         } else {
-            return `Good job! ${userActivity.numSteps} meets your goal!`
-        }    
-    }
+            return `Not quite! ${stepGoal - dayDetail.numSteps} steps to go!`
+        }
+    };
 }
 
 export default Activity
-
-// {userID":1,
-// "date":"2023/03/24",
-// "numSteps":7362,
-// "minutesActive":261,
-// "flightsOfStairs":26 },

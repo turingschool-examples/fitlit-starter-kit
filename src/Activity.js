@@ -37,18 +37,15 @@ class Activity {
   todaysStepCount(user, date) {
     const currentUserActivity = this.activity.filter(data => data.userID === user.id)
     const userActivity = currentUserActivity.filter(data => data.date === date)
-    console.log(userActivity)
     return userActivity[0].numSteps
   }
   weeklyStepCount(user, date) {
 
     const currentUserActivity = this.activity.filter(data => data.userID === user.id)
-    console.log('currentUserActivity', currentUserActivity)
     const userActivity = currentUserActivity.filter(data => data.date <= date).sort((a, b) => {
       return new Date(b.date)- new Date(a.date)
     }).map(data => data.numSteps)
     const weeklySteps = userActivity.slice(0, 7)
-    console.log('weekStep', weeklySteps)
     return weeklySteps
   }
 

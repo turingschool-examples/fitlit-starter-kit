@@ -1,5 +1,3 @@
-import mock from '../src/data/mock';
-
 class Sleep {
   constructor(sleepData) {
     this.sleepData = sleepData;
@@ -33,7 +31,6 @@ class Sleep {
 
   findDailyHours(userParam, dateParam) {
     let recordObject = this.sleepData.filter(record => record.userID === userParam.id && record.date === dateParam);
-    console.log(recordObject[0].hoursSlept)
     return recordObject[0].hoursSlept
   }
 
@@ -42,17 +39,13 @@ class Sleep {
     return recordObject[0].sleepQuality;
   }
 
-  transformDate(dateParam)  {
-    let splitDate = dateParam.split("/")
-    let year = splitDate[0];
-    let month;
-    let day = splitDate[2];
-    if (splitDate[1] >= 1 && splitDate[1] <= 11) {
-      month = (splitDate[1] - 1);
-    } else {
-      month = (splitDate[1] + 11);
-    }
-    return new Date(`${year}, ${month}, ${day}`);
+  chartWeeklyHours(userParam, dateParam)  {  
+    let weekArray = this.sleepData.filter(record => record.userID === userParam.id && record.date <= dateParam);
+    const sortWeekArray = weekArray.sort((a, b) => {
+      return new Date(b.date) - new Date(a.date)
+    }).map(data => data.hoursSlept)
+    const sliceWeekArray = sortWeekArray.slice(0, 7)
+    return sliceWeekArray
   }
 
   findWeeklyHours(userParam, dateParam)  {  
@@ -78,7 +71,6 @@ class Sleep {
       acc += cV
       return acc;
     },0)
-    console.log(totalQuality)
     return totalQuality.toFixed(2)
   }
 }

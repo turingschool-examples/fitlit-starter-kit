@@ -7,7 +7,7 @@ class Sleep {
     this.dailyHours = 0;
     this.dailyQuality = 0;
     this.weeklyHours = 0;
-    // this.weeklyQuality = 0;
+    this.weeklyQuality = 0;
     this.sleepID = id;
   } 
 
@@ -62,37 +62,30 @@ class Sleep {
     return new Date(`${year}, ${month}, ${day}`);
   }
 
-
   findWeeklyHours(dateParam)  {
     let weekEnd = this.transformDate(dateParam)
-    // console.log(weekEnd)
     let weekStart = new Date((weekEnd) - 604800000);
-    // console.log(weekStart)
     let weekArray = mock.sleepData.filter(record => record.userID === this.sleepID && this.transformDate(record.date) <= weekEnd && this.transformDate(record.date) >= weekStart);
-    // console.log(weekArray);
     let weeklyHoursData = weekArray.reduce((sleepObject, record)  =>  {
       sleepObject[record.date] = record.hoursSlept;
       return sleepObject;
     }, {})
     this.weeklyHours = weeklyHoursData;
-    //console.log(this.weeklyHours);
     return this.weeklyHours;
   }
+
+  findWeeklyQuality(dateParam)  {
+    let weekEnd = this.transformDate(dateParam)
+    let weekStart = new Date((weekEnd) - 604800000);
+    let weekArray = mock.sleepData.filter(record => record.userID === this.sleepID && this.transformDate(record.date) <= weekEnd && this.transformDate(record.date) >= weekStart);
+    let weeklyQualityData = weekArray.reduce((qualityObject, record)  =>  {
+      qualityObject[record.date] = record.sleepQuality;
+      return qualityObject;
+    }, {})
+    this.weeklyQuality = weeklyQualityData;
+    return this.weeklyQuality;
+  }
 }
-
-
-
-
-    // weekArray.forEach((record)  => {
-    //   let hours = this.findDailyHours(record.date);
-    //   // console.log(hours);
-    //   weeklyCount = (weeklyCount + hours);
-    //   // console.log(weeklyCount)
-    //   return weeklyCount;
-    // })
-    // // console.log(weeklyCount);
-    // this.weeklyHours = weeklyCount;
-    // return weeklyHours;
 
 
 export default Sleep;

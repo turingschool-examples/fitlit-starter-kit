@@ -1,5 +1,4 @@
-const userTestData = [
-  {
+const userTestData = [{
     "id": 1,
     "name": "Trystan Gorczany",
     "address": "9484 Lucas Flat, West Kittymouth WA 67504",
@@ -91,6 +90,31 @@ const userTestData = [
       43
     ]
   },
+  {
+    "id": 43,
+    "name": "Pedro Nolan",
+    "address": "611 Rhianna Path, Clevelandview AZ 03492-5773",
+    "email": "Danika88@yahoo.com",
+    "strideLength": 3.3,
+    "dailyStepGoal": 11000,
+    "friends": [49, 34, 13]
+  }, {
+    "id":46,
+    "name":"Santa Zboncak",
+    "address":"9246 Collins Skyway, Roselynville IN 13036",
+    "email": "Mohammed.Gislason64@yahoo.com",
+    "strideLength":4.2,
+    "dailyStepGoal":11000,
+    "friends":[44, 34, 23, 9, 3]
+  }, {
+    "id":11,
+    "name": "Kailey Langosh",
+    "address":"41048 Mattie Club, North Rickyhaven CO 60210-1389",
+    "email":"Adella2@hotmail.com",
+    "strideLength":4.3,
+    "dailyStepGoal":9000,
+    "friends":[0,26,17]
+  }
 ];
 
 export default userTestData;

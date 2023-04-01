@@ -26,6 +26,7 @@ const stepsToday = document.querySelector('.activity-steps-today')
 const distanceWalkedToday = document.querySelector('.activity-distance-today')
 const activeMinutesToday = document.querySelector('.activity-total-today')
 const numStepsWeekly = document.querySelector('.activity-steps-weekly')
+const goalReached = document.querySelector('.activity-goal')
 const sleepToday = document.querySelector('.sleep-today')
 const sleepWeekly = document.querySelector('.sleep-weekly')
 const sleepAverage = document.querySelector('.sleep-average')
@@ -100,6 +101,8 @@ console.log("Date: " + htmlDate);
   distanceWalkedToday.innerText = `Distance Walked Today: ${activity.milesWalkedByDay(user, htmlDate)} miles`
   activeMinutesToday.innerText = `Active Minutes Today: ${activity.minutesActiveByDay(user, htmlDate)} minutes`
   numStepsWeekly.innerText = `Steps this week: ${activity.weeklyStepCount(user, htmlDate)}`
+  goalReached.innerText = `Goal Reached: ${activity.reachStepGoal(user, htmlDate)}`
+
 }
 
 // imports

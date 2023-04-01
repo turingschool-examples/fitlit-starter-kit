@@ -28,9 +28,9 @@ class Activity {
     const userActivity = currentUserActivity.filter(data => data.date === date)
 
     if (userActivity[0].numSteps >= user.dailyStepGoal) {
-      return true
+      return 'Congrats! You did it!'
     } else {
-      return false
+      return 'Better luck next time!'
     }
   }
 
@@ -51,16 +51,6 @@ class Activity {
     const weeklySteps = userActivity.slice(0, 7)
     console.log('weekStep', weeklySteps)
     return weeklySteps
-  //   console.log('userActivity', userActivity)
-  //   // const userStepsWeekly = this.activity.filter(data => data.userID === user.id && date <= this.activity.date)
-  //   // .sort((a, b) => {
-  //   //   return b.date - a.date
-  // // }).map((day) => day.numSteps)
-  // // const week = userStepsWeekly.slice(0, 7)
-  // // console.log('steps', userStepsWeekly)
-  // // console.log('week', week)
-  // return week
-  // }
   }
 
 }

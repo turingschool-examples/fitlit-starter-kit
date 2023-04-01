@@ -13,6 +13,7 @@ import User from './user';
 import UserHydration from './userHydration';
 import Sleep from './Sleep';
 import fetchAll from './apiCalls';
+import Activity from './Activity';
 
 // Global Varible Section
 let userData
@@ -24,6 +25,7 @@ let allUserActivityData
 let currentUser;
 let currentUserSleep;
 let currentUserHydration;
+let currentUserActivity;
 
 //Selectors
 const cardDisplay = document.getElementById('cardDisplay')
@@ -31,8 +33,6 @@ const cardDisplay = document.getElementById('cardDisplay')
 //querySelector variables 
 
 const userInfoBox = document.querySelector('.user-info')
-
-
 
 
 window.addEventListener('load', () => {
@@ -61,39 +61,54 @@ function loadUserInfo(currentUserData,userData) {
 }
 
 
-
 function pageLoad () {
     currentUser = new User(userData);
     currentUserSleep = new Sleep (currentUser.userId, allUserSleepData);
     currentUserHydration = new UserHydration(currentUser.userId, allUserHydrationData)
+    currentUserActivity = new Activity (currentUser.userId, allUserActivityData)
+
+    // User
+    loadUserInfo(currentUser,userData) 
+     // *** Need their step goal compared to all user step goal
+
+    // Sleep
+    // their all-time average sleep quality and all-time average number of hours slept
+    sleepSummaryCard (currentUserSleep.findAllTimeAvgOfDetail('hoursSlept'), currentUserSleep.findAllTimeAvgOfDetail('sleepQuality'))
     createSingleCard(currentUser.userID, 'Hours Slept', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'hoursSlept'), 'todays hours');
     createSevenDayCard(currentUser.userID, 'Hours Slept', currentUserSleep.findDetailByWeek(currentUserSleep.findMostRecentDay(), 'hoursSlept'), 'last 7 days');
+
+
+    // sleep quality today
+    // sleep quality last week
+    
+
+    // Hydration
     createSingleCard(currentUser.userID, 'Total Ounces', currentUserHydration.calculateSingleDayOunces(currentUserHydration.findMostRecentDay()), 'todays Ounces');
     createSevenDayCard(currentUser.userID, 'Ounces Drank', currentUserHydration.calculateOuncesLastSevenDays(currentUserHydration.findMostRecentDay()), 'last 7 days');
-    loadUserInfo(currentUser,userData) 
-    console.log(currentUserHydration.calculateOuncesLastSevenDays()) 
+
+    // Activity 
+
+    // the number of steps for the latest day
+    // the number minutes active for the latest day
+    //the distance they have walked (in miles) for the latest day based on their step count
+    //a weekly view of their step count, and if they reached their step count goal for each day
+
   }
 
- // createSingleCardDisplay(cardId, cardTitle, outputToDisplay, units)
+function sleepSummaryCard (avgHours, avgQuality){
+  cardDisplay.innerHTML += `
+  <section class='summary-card sleep-summary'> 
+       <h3> Sleep Summary </h3>
+      <div>
+          <text>All-time Hours Average: </text>  
+          <text> ${avgHours} </text> 
+          <text> All-time Quality Average: </text>
+          <text> ${avgQuality} </text>
+      </div>
+   </section>`
+}
 
-// //Get Random user by refrencing the class
-// //Get Current user First Name
-// currentUser.userFirstName()
 
-// //Change The Current User By ID
-// currentUser.findUserById(1, userData)
-// //Get Current user First Name
-// currentUser.userFirstName()
-
-// //Get overall Step goal
-// currentUser.findOverAllStepGoal(userData)
-// //Get user Step Goal
-// currentUser.dailyStepGoal
-
-// //Get First Name by ID
-// currentUser.userFirstNameById(49, userData)
-
-/////////////
 function createSingleCard (cardId, cardTitle, outputToDisplay, units){
     cardDisplay.innerHTML += `
         <section class='singleDayCard' id= ${cardId}> 

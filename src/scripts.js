@@ -4,11 +4,12 @@
 import User from '../src/User'
 import Hydration from '../src/Hydration'
 import Sleep from '../src/Sleep'
+import Activity from '../src/Activity'
 import apiCalls from '../src/apiCalls'
 
 // console.log("user data:", User)
 
-let user, hydration, activity, sleep
+let user, hydration, activity, sleep, date
 
 // query selectors
 const userName = document.querySelector('.user-name')
@@ -23,6 +24,8 @@ const hydrationWeekly = document.querySelector('.hydration-weekly')
 const dateMessage = document.querySelector('.date-message')
 const stepsToday = document.querySelector('.activity-steps-today')
 const distanceWalkedToday = document.querySelector('.activity-distance-today')
+const activeMinutesToday = document.querySelector('.activity-total-today')
+const numStepsWeekly = document.querySelector('.activity-steps-weekly')
 const sleepToday = document.querySelector('.sleep-today')
 const sleepWeekly = document.querySelector('.sleep-weekly')
 const sleepAverage = document.querySelector('.sleep-average')
@@ -57,6 +60,7 @@ window.addEventListener('load', () => {
 
 function displayDate() {
   let date = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" })
+  console.log('display date', date)
   dateMessage.innerText = `${date}`
 }
 
@@ -82,15 +86,20 @@ function displayHydration(hydrationData) {
 }
 
 function displayActivity(activityData) {
-  // console.log(activityData)
-  // activity = new Activity(activityData)
-  // console.log(activity)
-  // activity = new Activity(activityData)
-  // console.log(activity)
-  // stepsToday.innerText = `Steps Today: ${activity.todaysStepCount()}`
-  // distanceWalkedToday = `Distance Walked Today: ${activity.milesWalkedByDay(user, '2023/03/24')}`
+  
+  activity = new Activity(activityData)
+  var date = new Date();
+  var month = ('0' + (date.getMonth() + 1)).slice(-2);
+  var day   = ('0' + date.getDate()).slice(-2);
+  var year  = date.getFullYear();
+  var htmlDate = year + '/' + month + '/' + day;
 
-
+console.log("Date: " + htmlDate);
+  
+  stepsToday.innerText = `Steps Today: ${activity.todaysStepCount(user, htmlDate )}`
+  distanceWalkedToday.innerText = `Distance Walked Today: ${activity.milesWalkedByDay(user, htmlDate)} miles`
+  activeMinutesToday.innerText = `Active Minutes Today: ${activity.minutesActiveByDay(user, htmlDate)} minutes`
+  numStepsWeekly.innerText = `Steps this week: ${activity.weeklyStepCount(user, htmlDate)}`
 }
 
 // imports

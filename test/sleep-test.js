@@ -18,6 +18,22 @@ let sleep;
     expect(sleep).to.be.an.instanceOf(Sleep);
   })
 
+  it('should take in a user ID', function() {
+    expect(sleep.sleepData[0].userID).to.equal(1);
+  });
+
+  it('should take in a date', function() {
+    expect(sleep.sleepData[0].date).to.equal("2023/03/24");
+  });
+
+  it('should take in a user hours slept', function() {
+    expect(sleep.sleepData[0].hoursSlept).to.equal(9.6);
+  });
+
+  it('should take in a user sleep quality', function() {
+    expect(sleep.sleepData[0].sleepQuality).to.equal(4.3);
+  });
+
   it('should be able to average user\'s sleep', function() {
     expect(sleep.getAvgSleep(1)).to.equal(6.6);
     expect(sleep.getAvgSleep(2)).to.equal(8.1);

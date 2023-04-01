@@ -16,7 +16,19 @@ describe('Hydration', function() {
 
   it('should be an instance of hydration', function() {
     expect(hydration).to.be.an.instanceof(Hydration);
-  }); 
+  });
+  
+  it('should take in a user ID', function() {
+    expect(hydration.hydrationData[0].userID).to.equal(1);
+  });
+
+  it('should take in a date', function() {
+    expect(hydration.hydrationData[0].date).to.equal("2023/03/24");
+  });
+
+  it('should take in a users number of ounces consumed', function() {
+    expect(hydration.hydrationData[0].numOunces).to.equal(28);
+  });
 
   it('should be able to average the amount of ounces drank', function() {
     expect(hydration.getAverageOunces(1)).to.equal(51);

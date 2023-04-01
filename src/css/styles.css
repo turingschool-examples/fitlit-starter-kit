@@ -145,3 +145,8 @@ body, html {
   padding-left: 10%;
 }
 
+.bar-chart, .pie-chart {
+  width: 400; 
+  height: 400;
+}
+

@@ -3,7 +3,6 @@
 
 import User from '../src/User'
 import Hydration from '../src/Hydration'
-import Activity from '../src/Activity'
 import apiCalls from '../src/apiCalls'
 
 // console.log("user data:", User)

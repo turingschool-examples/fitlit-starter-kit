@@ -1,3 +1,6 @@
+const dayjs = require("dayjs");
+
+
 class Activity {
   constructor(activityData) {
     this.data = activityData;
@@ -29,6 +32,17 @@ class Activity {
       return false;
     }
   }
+
+  weeklyMinutes(user, date) {
+    const startDate = dayjs(date);
+    const endDate = startDate.add(6, "day");
+    const milesByWeek = this.data.filter((entry) => {
+      return entry.userID === user && dayjs(entry.date).isAfter(startDate.subtract(1, "day")) && dayjs(entry.date).isBefore(endDate.add(1, "day"));
+    });
+    return milesByWeek;
+  }
+  
+
 }
 
 export default Activity;

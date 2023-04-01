@@ -160,14 +160,40 @@ function createSleepQualityChart(sleep, userID, date) {
 }
 
 function displayActivityCard(activity, user, date, userID) {
-  const activityCard = document.querySelector('.activity-card');
+  const activityCard = document.querySelector('.activity-holder');
   activityCard.innerHTML = `
   <p><b>Miles Walked:</b> ${activity.calculateMilesWalked(date, user)} miles</p>
   <p><b>Minutes Active:</b> ${activity.dailyMinutesActive(userID, date)} minutes</b></p>
   <p><b>Step Goal Met:</b> ${activity.stepGoalMet(user, date)}</b></p>
- 
-  `
- };
+  </p> 
+    <button class="activity-button">View Weekly Activity</button>
+  </p>`;
+  const activityButton = document.querySelector(".activity-button");
+  activityButton.addEventListener("click", () => createActivityChart(activity, userID, date));
+
+};
+
+function createActivityChart(activity, userID, date) {
+  const weeklyMinutes = activity.weeklyMinutes(userID, date);
+  const labels = weeklyMinutes.map(days => days.date);
+  const data = weeklyMinutes.map(days => days.minutesActive);
+  clearChartArea();
+  new Chart("chart", {
+    type: 'bar',
+    data: {
+      datasets: [{
+        label: "minutes",
+        backgroundColor: "#FDC504",
+        borderColor: "#3C4252",
+        borderWidth: 2,
+        hoverBackgroundColor: "#5A73C0",
+        hoverBorderColor: "#5A73C0",
+        data: data,
+      }],
+      labels: labels,
+    }
+  })
+};
 
 // Export Statements
 

@@ -14,14 +14,17 @@ describe('Sleep', function() {
       expect(Sleep).to.be.a('function')
   });
   it('should be able to calculate average hours slept', function() {
-    const sleep = new Sleep(user1.id)
-    sleep.findAvgHours()
+    const sleep = new Sleep(user1.id);
+    sleep.findAvgHours();
 
     expect(sleep.findAvgHours()).to.deep.equal("7.95");
+  });
+  it('should be able to store average sleep quality', function()  {
+    const sleep = new Sleep(user1.id);
+    sleep.findAvgQuality();
 
-    // it needs to accept a current user
-    // find the user id of current user
-    // then iterate through sleep data to find all instances of that user id
-    // then add the number of hours slept divided by the total instances to get average 
-})
+    expect(sleep.findAvgQuality()).to.deep.equal("3.80");
+  })
+
+ 
 })

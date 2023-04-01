@@ -87,22 +87,17 @@ function displayHydration(hydrationData) {
 }
 
 function displayActivity(activityData) {
-  
   activity = new Activity(activityData)
   var date = new Date();
   var month = ('0' + (date.getMonth() + 1)).slice(-2);
   var day   = ('0' + date.getDate()).slice(-2);
   var year  = date.getFullYear();
   var htmlDate = year + '/' + month + '/' + day;
-
-console.log("Date: " + htmlDate);
-  
   stepsToday.innerText = `Steps Today: ${activity.todaysStepCount(user, htmlDate )}`
   distanceWalkedToday.innerText = `Distance Walked Today: ${activity.milesWalkedByDay(user, htmlDate)} miles`
   activeMinutesToday.innerText = `Active Minutes Today: ${activity.minutesActiveByDay(user, htmlDate)} minutes`
   numStepsWeekly.innerText = `Steps this week: ${activity.weeklyStepCount(user, htmlDate)}`
   goalReached.innerText = `Goal Reached: ${activity.reachStepGoal(user, htmlDate)}`
-
 }
 
 // imports

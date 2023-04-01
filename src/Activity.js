@@ -36,7 +36,6 @@ class Activity {
 
   todaysStepCount(user, date) {
     const currentUserActivity = this.activity.filter(data => data.userID === user.id)
-    // console.log('date', date)
     const userActivity = currentUserActivity.filter(data => data.date === date)
     console.log(userActivity)
     return userActivity[0].numSteps

@@ -37,6 +37,13 @@ class Sleep {
     return this.avgQuality;
   }
 
+
+  findDailyHours(dateParam) {
+    let recordObject = mock.sleepData.filter(record  =>  record.userID === this.sleepID && record.date === dateParam);
+    this.dailyHours = (recordObject[0].hoursSlept)
+  
+    return this.dailyHours
+  }
 }
 
 

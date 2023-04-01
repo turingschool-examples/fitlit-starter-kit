@@ -90,21 +90,6 @@ header {
   display: flex;
 }
 
-.sleep-info {
-  display: flex;
-  justify-content: center;
-}
-
-/* .widgetTitles {
-  background-color: rgb(9, 169, 193);
-  border-radius: 10px;
-  width: 15%;
-  box-shadow: 7px 5px 5px #2c2e34;
-  text-shadow: 2px 2px rgb(222, 217, 217);
-  cursor: pointer;
-  padding: 1%;
-} */
-
 /* SideBar */
 .info-card {
   display: flex;

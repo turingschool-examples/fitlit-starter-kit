@@ -28,15 +28,15 @@ describe('Hydration', function() {
     expect(hydration.getDailyOunces(2, "2023/03/26")).to.equal(88);
   });
 
-  // it('should be able to show daily ounces drank for a week', function() {
-  //   expect(hydration.getWeeklyOunces(1)).to.deep.equal([
-  //     {'2023/03/30': '76 ounces'},
-  //     {'2023/03/29': '20 ounces'},
-  //     {'2023/03/28': '97 ounces'},
-  //     {'2023/03/27': '63 ounces'},
-  //     {'2023/03/26': '21 ounces'},
-  //     {'2023/03/25': '67 ounces'},
-  //     {'2023/03/24': '87 ounces'}
-  //   ]);
-  // });
+  it('should be able to show daily ounces drank for a week', function() {
+    expect(hydration.getWeeklyOunces(1, '2023/03/30')).to.deep.equal([
+      {'date': '2023/03/30', 'numOunces': '76 ounces drank'},
+      {'date': '2023/03/29', 'numOunces': '20 ounces drank'},
+      {'date': '2023/03/28', 'numOunces': '97 ounces drank'},
+      {'date': '2023/03/27', 'numOunces': '63 ounces drank'},
+      {'date': '2023/03/26', 'numOunces': '21 ounces drank'},
+      {'date': '2023/03/25', 'numOunces': '50 ounces drank'},
+      {'date': '2023/03/24', 'numOunces': '28 ounces drank'}
+    ]);
+  });
 });

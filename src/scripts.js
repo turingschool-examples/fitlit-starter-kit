@@ -48,13 +48,13 @@ window.addEventListener('load', () => {
 })
 
 
-function loadUserInfo(currentUserData, userData) {
-  document.getElementById('firstName').innerHTML = `Welcome ${currentUserData.userName} !!!`;
-  document.getElementById('fullName').innerHTML = currentUserData.userName;
-  document.getElementById('address').innerHTML = currentUserData.address;
-  document.getElementById('email').innerHTML = currentUserData.email;
-  document.getElementById('strideLength').innerHTML = currentUserData.strideLength;
-  document.getElementById('dailyStepgoal').innerHTML = currentUserData.dailyStepGoal;
+function loadUserInfo(currentUserData,userData) {
+  document.getElementById('firstName').innerHTML = `Welcome ${currentUserData.userName}!`;
+  document.getElementById('fullName').innerHTML = `User: ${currentUserData.userName}`
+  document.getElementById('address').innerHTML = `Address: ${currentUserData.address}`;
+  document.getElementById('email').innerHTML = `Email: ${currentUserData.email}`;
+  document.getElementById('strideLength').innerHTML = `Stride Length : ${currentUserData.strideLength}`;
+  document.getElementById('dailyStepgoal').innerHTML = `Daily Step Goal: ${currentUserData.dailyStepGoal}`;
 }
 
 
@@ -92,7 +92,10 @@ function sleepSummaryCard(avgHours, avgQuality) {
       <div>
           <text>All-time Hours Average: </text>  
           <text> ${avgHours} </text> 
+          <p></p>
+          <p></p>
           <text> All-time Quality Average: </text>
+         
           <text> ${avgQuality} </text>
       </div>
    </section>`
@@ -123,18 +126,38 @@ function activityCard(stepCount, miles, weekSteps,stepGoalMet){
    activityDisplay.innerHTML += `
    <section class='card activity'>
     <div>
-      <text> Total Active Min minutes</text>
+      <text> Total Active Minutes</text>
+      <p></p>
+      <p></p>
       <text> ${stepCount} steps </text>
+      <p></p>
+      <p></p>
       <text> ${miles} miles</text>
+      <p></p>
+      <p></p>
     </div>
     <div class='data-row'>
-      <text> ${weekSteps[0]} </text>
-      <text> ${weekSteps[1]} </text>
-      <text> ${weekSteps[2]} </text>
-      <text> ${weekSteps[3]} </text>
-      <text> ${weekSteps[4]} </text>
-      <text> ${weekSteps[5]} </text>
-      <text> ${weekSteps[6]} </text>   
+      <text>Week 1: ${weekSteps[0]} </text>
+      <p></p>
+      <p></p>
+      <text>Week 2: ${weekSteps[1]} </text>
+      <p></p>
+      <p></p>
+      <text>Week 3: ${weekSteps[2]} </text>
+      <p></p>
+      <p></p>
+      <text>Week 4: ${weekSteps[3]} </text>
+      <p></p>
+      <p></p>
+      <text>Week 5: ${weekSteps[4]} </text>
+      <p></p>
+      <p></p>
+      <text>Week 6: ${weekSteps[5]} </text>
+      <p></p>
+      <p></p>
+      <text>Week 7: ${weekSteps[6]} </text> 
+      <p></p>
+      <p></p>  
     </div>
     <div class ='data-row'> 
        <text> ${stepGoalMet[0]} </text>

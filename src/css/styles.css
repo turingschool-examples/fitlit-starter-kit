@@ -9,7 +9,8 @@ body, html {
 }
 
 h1 {
-  color:darkgray
+  color:darkgray;
+  text-shadow: 0 0 3px #45B8AC;
 }
 
 h3 {
@@ -66,8 +67,19 @@ aside {
   border: 1px solid #45B8AC;
   border-radius: 5%;
   margin-top: 30px;
-    padding: 20px;
+    padding: 10px;
     width: 145px;
+    height: 205px;
+}
+
+#card-activity{
+  background-color: #363945;
+  border: 1px solid #45B8AC;
+  border-radius: 5%;
+  margin-top: 30px;
+    padding: 10px;
+    width: 145px;
+    height: 460px;
 }
 
 .top-display{

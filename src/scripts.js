@@ -124,7 +124,7 @@ function sleepWeekCard(detail, detailToday, detailByWeek) {
 
 function activityCard(stepCount, miles, weekSteps,stepGoalMet){
    activityDisplay.innerHTML += `
-   <section class='card activity'>
+   <section class='card activity' id= 'card-activity'>
     <div>
       <text> Total Active Minutes</text>
       <p></p>

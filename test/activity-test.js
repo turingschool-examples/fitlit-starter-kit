@@ -1,11 +1,12 @@
 import { expect } from 'chai';
 import Activity from '../src/data/Activity';
 import activityTestData from './activity-test-data';
+import userTestData from './user-test-data';
 
 describe('Activity', function() {
   let activity
   beforeEach(() => {
-    activity = new Activity(activityTestData);
+    activity = new Activity(activityTestData, userTestData);
   });
 
   it('should be a function', function() {
@@ -35,5 +36,18 @@ describe('Activity', function() {
 
   // it('should be able to take in a users flights of stairs traversed', function() {
   //   expect(user1.flightsOfStairs).to.equal(26)
+  // });
+
+  it('should be able to calculate the number of miles walked in a day', function() {
+    expect(activity.returnMiles(1, '2023/03/24')).to.equal(6)
   });
-// });
+
+  it('should be able to return how many minutes the user was active', function() {
+    expect(activity.returnMinutesActive(2, '2023/03/24')).to.equal(125)
+  });
+
+  it('should be able to return if the user reached thier step goal', function() {
+    expect(activity.returnMetStepGoal(1, '2023/03/25')).to.equal(true)
+    expect(activity.returnMetStepGoal(2, '2023/03/24')).to.equal(false)
+  });
+});

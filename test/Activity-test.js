@@ -22,7 +22,7 @@ describe('Activity', () => {
             ]
         };
 
-        testUserInfo = new user({
+        testUserInfo = {
             "id": 1,
             "name": "Trystan Gorczany",
             "address": "9484 Lucas Flat, West Kittymouth WA 67504",
@@ -35,7 +35,7 @@ describe('Activity', () => {
                 46,
                 11
             ]
-        });
+        };
 
         testUser = new Activity(testUserInfo, activityLogs)
     });
@@ -48,19 +48,19 @@ describe('Activity', () => {
         expect(testUser).to.be.an.instanceof(Activity);
     });
 
-    it.skip('should store a users id', function () {
+    it('should store a users id', function () {
         expect(testUser.userId).to.equal(1);
     });
 
-    it.skip('should store a users stride length', function () {
+    it('should store a users stride length', function () {
         expect(testUser.strideLength).to.equal(4);
     });
 
-    it.skip('should store a users daily step goal', function () {
+    it('should store a users daily step goal', function () {
         expect(testUser.dailyStepGoal).to.equal(7000);
     });
 
-    it.skip('should store a users activity logs', function () {
+    it('should store a users activity logs', function () {
         expect(testUser.activityLogs).to.deep.equal([
             { "userID": 1, "date": "2023/03/24", "numSteps": 7362, "minutesActive": 250, "flightsOfStairs": 26 },
             { "userID": 1, "date": "2023/03/23", "numSteps": 6502, "minutesActive": 275, "flightsOfStairs": 23 },
@@ -74,16 +74,16 @@ describe('Activity', () => {
 
 
 
-    it.skip('should find the miles per day when given a date', function () {
+    it('should find the miles per day when given a date', function () {
         expect(testUser.calculateMiles('2023/03/22')).to.be.equal(4.2);
         expect(testUser.calculateMiles('2023/03/18')).to.be.equal(2.7);
     })
 
-    it.skip('should find the active minuts by day', function () {
+    it('should find the active minuts by day', function () {
         expect(testUser.calculateActiveMinutes('2023/03/21')).to.be.equal(211);
     });
 
-    it.skip('should find if they reached the step goal for a specific day', function () {
+    it('should find if they reached the step goal for a specific day', function () {
         expect(testUser.checkStepGoalReached('2023/03/18')).to.be.equal('Not quite! 3495 steps to go!');
         expect(testUser.checkStepGoalReached('2023/03/24')).to.be.equal(`Good Job! 7362 meets your goal!`);
     });

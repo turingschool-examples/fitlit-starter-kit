@@ -5,7 +5,7 @@ class Sleep {
     this.avgHours = 0;
     this.avgQuality = 0;
     this.dailyHours = 0;
-    // this.dailyQuality = 0;
+    this.dailyQuality = 0;
     // this.weeklyHours = 0;
     // this.weeklyQuality = 0;
     this.sleepID = id;
@@ -37,12 +37,16 @@ class Sleep {
     return this.avgQuality;
   }
 
-
   findDailyHours(dateParam) {
     let recordObject = mock.sleepData.filter(record  =>  record.userID === this.sleepID && record.date === dateParam);
     this.dailyHours = (recordObject[0].hoursSlept)
-  
     return this.dailyHours
+  }
+
+  findDailyQuality(dateParam) {
+    let recordObject = mock.sleepData.filter(record  =>  record.userID === this.sleepID && record.date === dateParam);
+    this.dailyQuality= (recordObject[0].sleepQuality)
+    return this.dailyQuality 
   }
 }
 

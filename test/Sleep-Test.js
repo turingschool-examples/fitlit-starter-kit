@@ -29,6 +29,14 @@ describe('Sleep', function() {
   it('should be able to find hours slept by date', function() {
     const sleep = new Sleep(user1.id);
     sleep.findDailyHours("2023/03/24");
+
     expect(sleep.dailyHours).to.deep.equal(9.6);
+  })
+
+  it('should be able to find sleep quality by date', function() {
+    const sleep = new Sleep(user1.id);
+    sleep.findDailyQuality("2023/03/24");
+    
+    expect(sleep.dailyQuality).to.deep.equal(4.3);
   })
 })

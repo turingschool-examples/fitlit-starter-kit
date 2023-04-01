@@ -86,12 +86,24 @@ const hydrationData = [
 ]
 
 const sleepData = [
+    // {
+    // "userID": 1,
+    // "date": "2023/03/18",
+    // "hoursSlept": 1,
+    // "sleepQuality": 6,
+    // },
     {
     "userID": 1,
     "date": "2023/03/24",
     "hoursSlept": 9.6,
-    "sleepQuality": 4.3
+    "sleepQuality": 4.3,
     },
+    // {
+    // "userID": 1,
+    // "date": "2023/03/23",
+    // "hoursSlept": 10.6,
+    // "sleepQuality": 2.2,
+    // },
     {
     "userID": 2,
     "date": "2023/03/24",

@@ -49,6 +49,8 @@ window.addEventListener('load', () => {
       displayActivity(activityData, usersData)
       displayDate()
       displaySleepActivity(sleepData)
+      displayBarChart()
+      displayPieChart()
     })
     .catch(error => console.log(error))
 })
@@ -60,7 +62,6 @@ function displaySleepActivity(sleepData) {
   var day   = ('0' + date.getDate()).slice(-2);
   var year  = date.getFullYear();
   var htmlDate = year + '/' + month + '/' + day;
-  console.log('sleep', sleep.sleepID)
   sleepToday.innerText = `Sleep Today: ${sleep.findDailyHours(user, htmlDate)} hours`
   sleepWeekly.innerText = `Sleep Weekly: ${sleep.findWeeklyHours(user, htmlDate)} hours`
   sleepAverage.innerText = `Sleep Average All Time: ${sleep.findAvgHours(user)} hours `
@@ -73,7 +74,6 @@ function displaySleepActivity(sleepData) {
 
 function displayDate() {
   let date = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" })
-  // console.log('display date', date)
   dateMessage.innerText = `${date}`
 }
 
@@ -110,6 +110,57 @@ function displayActivity(activityData) {
   activeMinutesToday.innerText = `Active Minutes Today: ${activity.minutesActiveByDay(user, htmlDate)} minutes`
   numStepsWeekly.innerText = `Steps this week: ${activity.weeklyStepCount(user, htmlDate)}`
   goalReached.innerText = `Goal Reached: ${activity.reachStepGoal(user, htmlDate)}`
+}
+
+function displayPieChart() {
+  const ctx = document.querySelector('.pie-chart');
+  var date = new Date();
+  var month = ('0' + (date.getMonth() + 1)).slice(-2);
+  var day   = ('0' + date.getDate()).slice(-2);
+  var year  = date.getFullYear();
+  var htmlDate = year + '/' + month + '/' + day;
+
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      datasets: [{
+        label: 'A weekly glance at your hours slept per day',
+        data: sleep.chartWeeklyHours(user, htmlDate),
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+function displayBarChart() {
+  const ctx = document.querySelector('.bar-chart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      datasets: [{
+        label: 'A weekly glance at your steps per day',
+        data: hydration.calculateFluidWeekly(user.id),
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
 }
 
 // imports

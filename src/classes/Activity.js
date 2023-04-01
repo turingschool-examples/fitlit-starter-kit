@@ -4,6 +4,7 @@ class Activity {
   }
  
   calculateMilesWalked(date, user) {
+
     const dayActivities = this.data.find(activity => activity.date === date);
     const steps = dayActivities.numSteps;
     const miles = Math.round((steps * user.strideLength)/5280);
@@ -21,7 +22,6 @@ class Activity {
     const stepsToday = this.data.find((entry) => {
       return entry.date === date && user === user
     });
-    console.log(stepsToday.numSteps);
     if(user.dailyStepGoal <= stepsToday.numSteps) {
       return true;
     }

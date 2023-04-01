@@ -10,7 +10,6 @@ describe('User', () => {
     user1 = new User(userTestData[0]);
     user2 = new User(userTestData[1]);
     user3 = new User(userTestData[4]);
-
   });
 
   it('should be a function', () => {

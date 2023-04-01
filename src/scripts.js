@@ -3,9 +3,9 @@ import './css/styles.css';
 
 // Image Imports
 import './images/turing-logo.png';
-import './images/barbell.png';
-import './images/sleep.png';
-import './images/water.png';
+import './images/Activity_Logo.svg';
+import './images/Hydration_Logo.svg';
+import './images/Sleep_Logo.svg';
 
 // 3rd party library import
 import Chart from 'chart.js/auto';
@@ -160,7 +160,7 @@ function createSleepQualityChart(sleep, userID, date) {
 }
 
 function displayActivityCard(activity, user, date, userID) {
-  const activityCard = document.querySelector('.activity-card');
+  const activityCard = document.querySelector('.activity-card-js');
   activityCard.innerHTML = `
   <p class="activity-text"><b class="activity-header">Miles Walked</b><br>${activity.calculateMilesWalked(date, user)} miles</p>
   <p class="activity-text"><b class="activity-header">Minutes Active</b><br>${activity.dailyMinutesActive(userID, date)} minutes</b></p>

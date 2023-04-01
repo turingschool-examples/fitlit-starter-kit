@@ -109,7 +109,6 @@ body {
 }
 
 .activity-card, .hydration-card, .sleep-card, .user-card {
-  background-color: #f3efefe5;
   margin: 1em;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -119,6 +118,7 @@ body {
   align-items: center;
   padding: 1%;
   opacity: 0.9;
+  position: relative;
 }
 
 .stat-cards {
@@ -126,7 +126,16 @@ body {
   height: 30%;
   aspect-ratio: 1 / 1.3;
   border: 2px solid;
-  
+}
+
+.stat-card-icon-wrapper {
+  height: 30%;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0;
+  transform: translateY(-50%);
+  position: absolute;
 }
 
 .infographic {
@@ -166,7 +175,7 @@ body {
 
 /* images */
 .barbell-img, .water-img, .sleep-img {
-  height: 25%;
+  height: 100%;
 }
 
 /* buttons */

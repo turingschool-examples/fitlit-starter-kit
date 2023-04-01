@@ -7,6 +7,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       </head>
     <title>Fitlit</title>
   </head>
@@ -109,20 +110,22 @@
           <p class="hydration-today">Hydration Today</p>
           <p class="hydration-weekly">Hydration This Week</p>
         </section>
-        <div class ="space-filler">
+        <div class="space-filler">
           <img class="water-placeholder" src="./images/activity-placeholder.png" alt="activity-placeholder" height="50" width="50">
           <img class="water-placeholder" src="./images/sleep-placeholder.png" alt="sleep-placeholder" height="50" width="50">
           <img class="water-placeholder" src="./images/water-placeholder.png" alt="water-placeholder" height="50" width="40">
         </div>
       </div>
       <div class="right-container">
-        <section class="activity-tracker">
+        <canvas class="bar-chart"></canvas>        
+        <!-- <section class="activity-tracker">
           <p class="activity-tracker-header">Activity Today</p>
           <img class="activity-tracker-placeholder" src="./images/activity-tracker-png.png" alt="activity-tracker-placeholder" height="250" width="400">
-        </section>
-        <section class="sleep-tracker">
+        </section> -->
+        <canvas class="pie-chart"></canvas>
+        <!-- <section class="sleep-tracker">
           <p class="sleep-tracker-header">Sleep Today</p>
-          <img class="sleep-tracker-placeholder" src="./images/sleep-tracker-png.png" alt="sleep-tracker-placeholder" height="250" width="400">
+          <img class="sleep-tracker-placeholder" src="./images/sleep-tracker-png.png" alt="sleep-tracker-placeholder" height="250" width="400"> -->
         </section>
       </div>
     </main>

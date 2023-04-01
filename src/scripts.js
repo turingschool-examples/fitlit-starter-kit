@@ -135,5 +135,14 @@ function displayActivity() {
 };
 
 function displayWeeklyStepCount() {
-
+    const weeklyActivityEntries = activity.returnWeeklySteps(newUser.id, currentDate); 
+    weeklyActivityEntries.forEach(entry => {
+        if(activity.returnMetStepGoal(newUser.id, entry.date)) {
+            weeklyStepCount.innerText += `${entry.date}: ${entry.steps}. You met your goal.  Take a nap!
+            `
+        } else {
+            weeklyStepCount.innerText += `${entry.date}: ${entry.steps}. You have not met your goal.  STEP IT UP!
+            `
+        }
+    });
 };

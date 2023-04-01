@@ -28,11 +28,12 @@ let currentUserHydration;
 let currentUserActivity;
 
 //Selectors
-const cardDisplay = document.getElementById('cardDisplay')
 
-//querySelector variables 
+const hydrationDisplay = document.querySelector('.hydration-display')
+const sleepDisplay = document.querySelector('.sleep-display')
+const activityDisplay = document.querySelector('.activity-display')
 
-const userInfoBox = document.querySelector('.user-info')
+
 
 
 window.addEventListener('load', () => {
@@ -75,8 +76,8 @@ function pageLoad() {
 
 
   // Hydration
-  createSingleCard('Total Ounces', currentUserHydration.calculateSingleDayOunces(currentUserHydration.findMostRecentDay()), 'todays Ounces');
-  createSevenDayCard('Ounces Drank', currentUserHydration.calculateOuncesLastSevenDays(currentUserHydration.findMostRecentDay()), 'last 7 days');
+  createSingleCard("Today's Ounces", currentUserHydration.calculateSingleDayOunces(currentUserHydration.findMostRecentDay()));
+  createSevenDayCard('Ounces for Week', currentUserHydration.calculateOuncesLastSevenDays(currentUserHydration.findMostRecentDay()));
 
   // Activity 
   activityCard(currentUserActivity.findMostRecentSteps(), 
@@ -85,7 +86,7 @@ function pageLoad() {
 }
 
 function sleepSummaryCard(avgHours, avgQuality) {
-  cardDisplay.innerHTML += `
+  sleepDisplay.innerHTML += `
   <section class='card sleep-summary'> 
        <h3> Sleep Summary </h3>
       <div>
@@ -98,7 +99,7 @@ function sleepSummaryCard(avgHours, avgQuality) {
 }
 
 function sleepWeekCard(detail, detailToday, detailByWeek) {
-  cardDisplay.innerHTML += `
+  sleepDisplay.innerHTML += `
   <section class='card sleep-week'> 
     <h3>Sleep ${detail}</h3>
        <h3> Today </h3>
@@ -119,7 +120,7 @@ function sleepWeekCard(detail, detailToday, detailByWeek) {
 }
 
 function activityCard(stepCount, miles, weekSteps,stepGoalMet){
-   cardDisplay.innerHTML += `
+   activityDisplay.innerHTML += `
    <section class='card activity'>
     <div>
       <text> Total Active Min minutes</text>
@@ -148,19 +149,18 @@ function activityCard(stepCount, miles, weekSteps,stepGoalMet){
   `
 }
 
-function createSingleCard(cardId, cardTitle, outputToDisplay, units) {
-  cardDisplay.innerHTML += `
-        <section class='card single' id= ${cardId}> 
+function createSingleCard(cardTitle, outputToDisplay) {
+  hydrationDisplay.innerHTML += `
+        <section class='card single'> 
              <h3> ${cardTitle} </h3>
             <div>
                 <text> ${outputToDisplay} </text>
-                <text>  ${units} </text>
             </div>
          </section>`
 }
 
-function createSevenDayCard(cardTitle, outputToDisplay, units) {
-  cardDisplay.innerHTML += `
+function createSevenDayCard(cardTitle, outputToDisplay) {
+  hydrationDisplay.innerHTML += `
   <section class='card seven-day'> 
     <h3> ${cardTitle} </h3>
  <div class='dataRow'>
@@ -171,7 +171,6 @@ function createSevenDayCard(cardTitle, outputToDisplay, units) {
     <text> ${outputToDisplay[4]} </text>
     <text> ${outputToDisplay[5]} </text>
     <text> ${outputToDisplay[6]} </text>
-    <text>  ${units} </text>
  </div>
 </section>
 `

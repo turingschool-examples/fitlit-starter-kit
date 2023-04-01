@@ -1,6 +1,4 @@
-import {
-  expect
-} from 'chai';
+import { expect } from 'chai';
 import Activity from '../src/classes/Activity';
 import User from '../src/classes/User';
 import activityTestData from './activity-test-data';
@@ -12,7 +10,7 @@ describe("Activity", () => {
   beforeEach(() => {
     activity = new Activity(activityTestData);
   });
-  
+
   it("should be a function", () => {
     expect(Activity).to.be.a("function");
   });
@@ -32,36 +30,44 @@ describe("Activity", () => {
     }, );
   });
 
-
-  it("should calculate the miles walked given a date", () => {
-   const user = new User(userTestData[0]);
-   expect(activity.calculateMilesWalked("2023/03/24", user)).to.equal(6);
+  it("should calculate the miles a user has walked given a date", () => {
+    const user = new User(userTestData[0]);
+    expect(activity.calculateMilesWalked("2023/03/24", user)).to.equal(6);
   })
 
-  it('should be a function', function () {
-    expect(activity.dailyMinutesActive).to.be.a('function');
-  });
-
-  it('should return a users daily minutes of activity', function () {
+  it("should return a users daily minutes of activity", () => {
     expect(activity.dailyMinutesActive(1, "2023/03/24")).to.be.equal(261);
   });
 
-  it('should return a users daily minutes of activity', function () {
+  it("should be able to return multiple users daily minutes of activity", () => {
     expect(activity.dailyMinutesActive(6, "2023/03/24")).to.be.equal(116);
   });
 
-  it('should be a function', function () {
-    expect(activity.stepGoalMet).to.be.a('function');
-  });
-
-  it('should return true if user has met step goal', () => {
+  it("should return true if user has met step goal", () => {
     let user = new User(userTestData[0]);
     expect(activity.stepGoalMet(user, "2023/03/24")).to.be.equal(true);
   });
 
-  it('should return false is user did not meet step goal',() => {
+  it("should return false is user did not meet step goal", () => {
     let user = new User(userTestData[1]);
     expect(activity.stepGoalMet(user, "2023/03/24")).to.be.equal(false);
   })
+  it("should have a method to return their weekly step count given a user ID and date", () => {
+    expect(activity.weeklyMinutes(1, "2023/03/23")).to.be.deep.equal([{
+        userID: 1,
+        date: "2023/03/24",
+        numSteps: 7362,
+        minutesActive: 261,
+        flightsOfStairs: 26,
+      },
+      {
+        userID: 1,
+        date: "2023/03/26",
+        numSteps: 8646,
+        minutesActive: 32,
+        flightsOfStairs: 31,
+      },
+    ]);
+  });
 
 });

@@ -28,8 +28,11 @@ const activeMinutesToday = document.querySelector('.activity-total-today')
 const numStepsWeekly = document.querySelector('.activity-steps-weekly')
 const goalReached = document.querySelector('.activity-goal')
 const sleepToday = document.querySelector('.sleep-today')
+const sleepQualityToday = document.querySelector('.sleep-quality-today')
 const sleepWeekly = document.querySelector('.sleep-weekly')
-const sleepAverage = document.querySelector('.sleep-average')
+const sleepQualityWeekly = document.querySelector('.sleep-quality-weekly')
+const sleepAverage = document.querySelector('.sleep-average-allTime')
+const sleepQualityAll = document.querySelector('.sleep-quality-allTime')
 
 // event listeners
 window.addEventListener('load', () => {
@@ -45,23 +48,32 @@ window.addEventListener('load', () => {
       displayHydration(hydrationData, usersData)
       displayActivity(activityData, usersData)
       displayDate()
-      // displaySleepActivity(sleepData)
+      displaySleepActivity(sleepData)
     })
     .catch(error => console.log(error))
 })
 
-// function displaySleepActivity(sleepData) {
-//   sleep = new Sleep(sleepData)
-//   console.log('sleep', sleep.sleepID)
+function displaySleepActivity(sleepData) {
+  sleep = new Sleep(sleepData)
+  var date = new Date();
+  var month = ('0' + (date.getMonth() + 1)).slice(-2);
+  var day   = ('0' + date.getDate()).slice(-2);
+  var year  = date.getFullYear();
+  var htmlDate = year + '/' + month + '/' + day;
+  console.log('sleep', sleep.sleepID)
+  sleepToday.innerText = `Sleep Today: ${sleep.findDailyHours(user, htmlDate)} hours`
+  sleepWeekly.innerText = `Sleep Weekly: ${sleep.findWeeklyHours(user, htmlDate)} hours`
+  sleepAverage.innerText = `Sleep Average All Time: ${sleep.findAvgHours(user)} hours `
+  sleepQualityToday.innerText = `Sleep Quality Today: ${sleep.findDailyQuality(user, htmlDate)}`
+  sleepQualityWeekly.innerText = `Sleep Quality Weekly: ${sleep.findWeeklyQuality(user, htmlDate)}`
+  sleepQualityAll.innerText = `Sleep Quality All Time: ${sleep.findAvgQuality(user)}`
 
-//   sleepToday.innerText = `Sleep Today: ${sleep.findDailyHours(Date.now())}`
-
-// }
+}
 
 
 function displayDate() {
   let date = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" })
-  console.log('display date', date)
+  // console.log('display date', date)
   dateMessage.innerText = `${date}`
 }
 

@@ -35,12 +35,13 @@ describe('Activity', () => {
         expect(Activity).to.be.a('function');
     });
 
-    it.skip('should be an instance of sleep', function () {
+    it('should be an instance of new Activity class', function () {
         expect(testUser).to.be.an.instanceof(Activity);
     });
 
     it.skip('should store an instance of the user', function () {
         expect(testUser.user).to.be.deep.equal({
+            
             "id": 1,
             "name": "Trystan Gorczany",
             "address": "9484 Lucas Flat, West Kittymouth WA 67504",
@@ -56,7 +57,7 @@ describe('Activity', () => {
         });
     });
 
-    it.skip('should store a users activity logs', function () {
+    it('should store a users activity logs', function () {
         ///user logs need to be added
         expect(testUser.userLogs).to.deep.equal();
     });

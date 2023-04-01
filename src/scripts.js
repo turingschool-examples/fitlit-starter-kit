@@ -46,6 +46,7 @@ window.addEventListener('load', () => {
     })
 })
 
+
 function loadUserInfo(currentUserData, userData) {
   document.getElementById('firstName').innerHTML = `Welcome ${currentUserData.userName} !!!`;
   document.getElementById('fullName').innerHTML = currentUserData.userName;
@@ -54,6 +55,7 @@ function loadUserInfo(currentUserData, userData) {
   document.getElementById('strideLength').innerHTML = currentUserData.strideLength;
   document.getElementById('dailyStepgoal').innerHTML = currentUserData.dailyStepGoal;
   document.getElementById('friends').innerHTML = currentUserData.userFirstNameById(currentUserData.friends[0], userData);
+
 
 }
 

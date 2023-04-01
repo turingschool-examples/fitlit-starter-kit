@@ -3,11 +3,12 @@
 
 import User from '../src/User'
 import Hydration from '../src/Hydration'
+import Sleep from '../src/Sleep'
 import apiCalls from '../src/apiCalls'
 
 // console.log("user data:", User)
 
-let user, hydration, activity
+let user, hydration, activity, sleep
 
 // query selectors
 const userName = document.querySelector('.user-name')
@@ -22,6 +23,9 @@ const hydrationWeekly = document.querySelector('.hydration-weekly')
 const dateMessage = document.querySelector('.date-message')
 const stepsToday = document.querySelector('.activity-steps-today')
 const distanceWalkedToday = document.querySelector('.activity-distance-today')
+const sleepToday = document.querySelector('.sleep-today')
+const sleepWeekly = document.querySelector('.sleep-weekly')
+const sleepAverage = document.querySelector('.sleep-average')
 
 // event listeners
 window.addEventListener('load', () => {
@@ -30,16 +34,26 @@ window.addEventListener('load', () => {
   Promise.all(apiCalls)
     .then((apiCallsArray) => {
       const usersData = apiCallsArray[0].users
-      // const sleepData = apiCallsArray[1].sleep
+      const sleepData = apiCallsArray[1].sleepData
       const hydrationData = apiCallsArray[2].hydrationData
-      const activityData = apiCallsArray[3].activity
+      const activityData = apiCallsArray[3].activityData
       displayRandomUser(usersData)
       displayHydration(hydrationData, usersData)
       displayActivity(activityData, usersData)
       displayDate()
+      // displaySleepActivity(sleepData)
     })
     .catch(error => console.log(error))
 })
+
+// function displaySleepActivity(sleepData) {
+//   sleep = new Sleep(sleepData)
+//   console.log('sleep', sleep.sleepID)
+
+//   sleepToday.innerText = `Sleep Today: ${sleep.findDailyHours(Date.now())}`
+
+// }
+
 
 function displayDate() {
   let date = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" })
@@ -62,15 +76,15 @@ function displayRandomUser(usersData) {
 }
 
 function displayHydration(hydrationData) {
-  hydration = new Hydration((hydrationData))
+  hydration = new Hydration(hydrationData)
   hydrationToday.innerText = `Daily Intake: ${hydration.findDailyFluidIntake(user.id, hydration.findUserData(user.id)[0].date)} oz`
   hydrationWeekly.innerText = `Weekly Intake: ${hydration.calculateFluidWeekly(user.id)} oz`
 }
 
 function displayActivity(activityData) {
-  console.log(activityData)
-  activity = new Activity(activityData)
-  console.log(activity)
+  // console.log(activityData)
+  // activity = new Activity(activityData)
+  // console.log(activity)
   // activity = new Activity(activityData)
   // console.log(activity)
   // stepsToday.innerText = `Steps Today: ${activity.todaysStepCount()}`

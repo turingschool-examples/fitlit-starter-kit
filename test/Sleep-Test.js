@@ -39,4 +39,12 @@ describe('Sleep', function() {
     
     expect(sleep.dailyQuality).to.deep.equal(4.3);
   })
+
+  it('should be able store one week of sleep data', function()  {
+    const sleep = new Sleep(user1.id);
+    sleep.findWeeklyHours("2023/03/24"); 
+    
+    expect(sleep.weeklyHours).to.deep.equal({ '2023/03/24': 9.6 })
+  })
+
 })

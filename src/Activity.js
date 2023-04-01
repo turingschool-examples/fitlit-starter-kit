@@ -24,9 +24,9 @@ class Activity {
     // calculateTotalSteps(userActivity) {
     //     return userActivity.numSteps.reduce((acc, curr) => {
             
-    //         return acc
-    //     }, 0)
-    // }
+    checkStepGoalReached(date) {
+        const dayDetail = this.activityLogs.find(log => log.date === date);
+        const stepGoal = this.dailyStepGoal;
 
     checkWeeklyGoal(userActivity, dailyStepGoal) {
         if(userActivity.numSteps < dailyStepGoal) {

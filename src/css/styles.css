@@ -52,3 +52,46 @@ text {
   font-size: 18px;
   margin-bottom: 5px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card {
+  border: red 2px dashed;
+}
+
+.top-display{
+  display: flex;
+}
+
+.main-display{
+  display: flex;
+}
+

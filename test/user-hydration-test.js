@@ -10,12 +10,23 @@ describe('userHydration', () => {
    let hydrationObj;
 
   beforeEach(() => {
-    hydrationObj = new UserHydration(1, hydrationData)
+    hydrationObj = [
+      { "userID": 1, "date": "2023/03/24", "numOunces": 28 },
+      { "userID": 1, "date": "2023/03/25", "numOunces": 50 },
+      { "userID": 1, "date": "2023/03/26", "numOunces": 21 },  
+      { "userID": 1, "date": "2023/03/27", "numOunces": 63 },  
+      { "userID": 1, "date": "2023/03/28", "numOunces": 97 },
+      { "userID": 1, "date": "2023/03/29", "numOunces": 20 },
+      { "userID": 1, "date": "2023/03/30", "numOunces": 76 },
+      { "userID": 1, "date": "2023/03/31", "numOunces": 51 },
+      { "userID": 1, "date": "2023/04/01", "numOunces": 88 },
+      { "userID": 1, "date": "2023/04/02", "numOunces": 22 }
+    ]
   });
 
   it("Should calculate the all time average daily ounces", () => {
     const average = hydrationObj.calculateAllTimeAverageDailyOunces();
-    
+    console.log(average)
     expect(average).to.equal(58.43);
   });
 

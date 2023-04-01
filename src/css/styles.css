@@ -1,3 +1,7 @@
+/* * {
+  border: orange solid 1px;
+} */
+
 body, html {
   background-color: #343236;
   background-repeat: no-repeat;
@@ -16,24 +20,27 @@ text {
   color: darkgray;
 }
 
+aside {
+  width: 25%;
+}
 .info-card {
   background-color: #363945;
   border: 1px solid #45B8AC;
-  border-radius: 5%;
-  padding: 20px;
+  padding: 0px;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  width: 28%;
+  align-items: flex-start;
+  width: 25%;
+  height: 100%;
 }
 
-.info-card img {
+/* .info-card img {
   width: 50px;
   height: 50px;
   border-radius: 30%;
   border-style: double;
   margin-right: 20px;
-}
+} */
 
 .info-card .user-info {
   color: darkgray;
@@ -52,3 +59,56 @@ text {
   font-size: 18px;
   margin-bottom: 5px;
 }
+
+.card {
+  border: red 2px dashed;
+}
+
+.top-display{
+  display: flex;
+}
+
+.main-display{
+  display: flex;
+  height: 100%;
+}
+
+.card-display {
+  display: flex;
+  padding-left: 30px;
+}
+
+.hydration-display {
+  padding: 0px 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

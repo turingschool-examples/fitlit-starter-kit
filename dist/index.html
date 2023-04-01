@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>GitFit</title>
-    <head>
-      <title>User Info Card</title>
-    </head>
-  </head>
-  <body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>GitFit</title>
+</head>
+<body>
+  <section class='top-display'>
     <h1>Git Fit</h1>
     <div class="app-title"></div>
     <nav class="nav-bar">
     </nav>
-    <aside class="user-profile">
-      <div class="info-card">
+  </section>
+  <div class="main-display">
+    <aside class="info-card">
         <div class="user-info">
           <h1 id="firstName">Welcome, first name!</h1>
           <p id="fullName">Full Name: John</p>
@@ -23,13 +23,19 @@
           <p id="strideLength">Stride Length: 99</p>
           <p id="dailyStepgoal">Daily Step Goal: 99</p>
         </div>
-      <div></div>
-      <div></div>
-      <div class="friends"></div>
     </aside>
     <seciton class="card-display" id="cardDisplay">
-      <!-- card/widgets go here -->
+      <div class="sleep-display">
+        <!-- sleep widgets -->
+      </div>
+      <div class="hydration-display">
+        <!-- hydration -->
+      </div>
+      <div class="activity-display">
+        <!-- activity -->
+      </div>
     </seciton>
-    <script src="bundle.js"></script>
-  </body>
+  </div>
+  <script src="bundle.js"></script>
+</body>
 </html>

@@ -8,8 +8,7 @@ class Activity {
 
 
     findMostRecentSteps() {
-        console.log(this.activityLogs)
-        return this.activityLogs[0].numSteps 
+        return this.activityLogs[0].numSteps
     }
     findMostRecentDay() {
         return this.activityLogs[0].date
@@ -67,14 +66,12 @@ class Activity {
             }
         })
 
-        
-        let lastWeekDetails = ['','' ,'', '', '', '', '']
+        let lastWeekDetails = ['', '', '', '', '', '', '']
 
         sevenDayGoalDetail.forEach((log, index) => {
             lastWeekDetails[index] = log;
         });
 
-        console.log(sevenDayGoalDetail)
         return lastWeekDetails
     };
 

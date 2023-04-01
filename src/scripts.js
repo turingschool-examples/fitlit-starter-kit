@@ -55,9 +55,6 @@ function loadUserInfo(currentUserData, userData) {
   document.getElementById('dailyStepgoal').innerHTML = currentUserData.dailyStepGoal;
   document.getElementById('friends').innerHTML = currentUserData.userFirstNameById(currentUserData.friends[0], userData);
 
-
-  console.log(currentUserData.friends[0])
-
 }
 
 
@@ -65,7 +62,8 @@ function pageLoad() {
   currentUser = new User(userData);
   currentUserSleep = new Sleep(currentUser.userId, allUserSleepData);
   currentUserHydration = new UserHydration(currentUser.userId, allUserHydrationData)
-  currentUserActivity = new Activity(currentUser.userId, allUserActivityData)
+  console.log('userstuff ', allUserActivityData)
+  currentUserActivity = new Activity(currentUser.findUserById(currentUser.userId, userData), allUserActivityData)
 
   // User
   loadUserInfo(currentUser, userData)
@@ -74,8 +72,7 @@ function pageLoad() {
   // Sleep
   sleepSummaryCard(currentUserSleep.findAllTimeAvgOfDetail('hoursSlept'), currentUserSleep.findAllTimeAvgOfDetail('sleepQuality'));
   sleepWeekCard('Hours', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'hoursSlept'), currentUserSleep.findDetailByWeek(currentUserSleep.findMostRecentDay(), "hoursSlept"));
-  sleepWeekCard('Quality', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'sleepQuality'), currentUserSleep.findDetailByWeek(currentUserSleep.findMostRecentDay(), "sleepQuality"))
-    ;
+  sleepWeekCard('Quality', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'sleepQuality'), currentUserSleep.findDetailByWeek(currentUserSleep.findMostRecentDay(), "sleepQuality"));
 
 
 
@@ -84,12 +81,9 @@ function pageLoad() {
   createSevenDayCard(currentUser.userID, 'Ounces Drank', currentUserHydration.calculateOuncesLastSevenDays(currentUserHydration.findMostRecentDay()), 'last 7 days');
 
   // Activity 
-
-  // the number of steps for the latest day
-  // the number minutes active for the latest day
-  //the distance they have walked (in miles) for the latest day based on their step count
-  //a weekly view of their step count, and if they reached their step count goal for each day
-
+  activityCard(currentUserActivity.findMostRecentSteps(), 
+              currentUserActivity.calculateMiles(currentUserActivity.findMostRecentDay()), 
+              currentUserActivity.calculateStepLastSevenDays(currentUserActivity.findMostRecentDay()), currentUserActivity.calculateGoalLastSevenDays(currentUserActivity.findMostRecentDay()))
 }
 
 function sleepSummaryCard(avgHours, avgQuality) {
@@ -126,6 +120,35 @@ function sleepWeekCard(detail, detailToday, detailByWeek) {
    </section>`
 }
 
+function activityCard(stepCount, miles, weekSteps,stepGoalMet){
+   cardDisplay.innerHTML += `
+   <section class='activityCard'>
+    <div>
+      <text> Total Active Min minutes</text>
+      <text> ${stepCount} steps </text>
+      <text> ${miles} miles</text>
+    </div>
+    <div class='dataRow'>
+      <text> ${weekSteps[0]} </text>
+      <text> ${weekSteps[1]} </text>
+      <text> ${weekSteps[2]} </text>
+      <text> ${weekSteps[3]} </text>
+      <text> ${weekSteps[4]} </text>
+      <text> ${weekSteps[5]} </text>
+      <text> ${weekSteps[6]} </text>   
+    </div>
+    <div class ='dataRow'> 
+       <text> ${stepGoalMet[0]} </text>
+      <text> ${stepGoalMet[1]} </text>
+      <text> ${stepGoalMet[2]} </text>
+      <text> ${stepGoalMet[3]} </text>
+      <text> ${stepGoalMet[4]} </text>
+      <text> ${stepGoalMet[5]} </text>
+     <text> ${stepGoalMet[6]} </text> 
+    </div> 
+   </section>
+  `
+}
 
 function createSingleCard(cardId, cardTitle, outputToDisplay, units) {
   cardDisplay.innerHTML += `

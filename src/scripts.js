@@ -6,12 +6,10 @@
 import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png';
+// import './images/turing-logo.png';
 
 
-// An example of how you tell webpack to use a JS file
 import User from './user';
-// import userData from './data/users';
 import UserHydration from './userHydration';
 import Sleep from './Sleep';
 import fetchAll from './apiCalls';

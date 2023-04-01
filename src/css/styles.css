@@ -1,11 +1,24 @@
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  background-color: #343236;
   background-repeat: no-repeat;
   height: 100%;
 }
+
+h1 {
+  color:darkgray
+}
+
+h3 {
+  color: darkgray;
+}
+
+text {
+  color: darkgray;
+}
+
 .info-card {
-  background-color: #f2f2f2;
-  border: 1px solid #ddd;
+  background-color: #363945;
+  border: 1px solid #45B8AC;
   border-radius: 5px;
   padding: 20px;
   display: flex;
@@ -21,16 +34,19 @@ body, html {
 }
 
 .info-card .user-info {
+  color: darkgray;
   display: flex;
   flex-direction: column;
 }
 
 .info-card h1 {
+  color:darkgray;
   font-size: 28px;
   margin-bottom: 10px;
 }
 
 .info-card p {
+  color:darkgray;
   font-size: 18px;
   margin-bottom: 5px;
 }

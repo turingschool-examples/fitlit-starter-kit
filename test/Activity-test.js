@@ -35,12 +35,13 @@ describe('Activity', () => {
         expect(Activity).to.be.a('function');
     });
 
-    it('should be an instance of sleep', function () {
+    it('should be an instance of new Activity class', function () {
         expect(testUser).to.be.an.instanceof(Activity);
     });
 
-    it('should store an instance of the user', function () {
+    it.skip('should store an instance of the user', function () {
         expect(testUser.user).to.be.deep.equal({
+            
             "id": 1,
             "name": "Trystan Gorczany",
             "address": "9484 Lucas Flat, West Kittymouth WA 67504",

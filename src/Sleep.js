@@ -52,13 +52,13 @@ class Sleep {
     let weekArray = this.sleepData.filter(record => record.userID === userParam.id && record.date <= dateParam);
     const sortWeekArray = weekArray.sort((a, b) => {
       return new Date(b.date) - new Date(a.date)
-    }).map(data => data.hoursSlept)
+    })
     const sliceWeekArray = sortWeekArray.slice(0, 7)
-    const totalHours = sliceWeekArray.reduce((acc, cV) => {
-      acc += cV
+    const hoursArray = sliceWeekArray.reduce((acc, cV) => {
+      acc[cV.date] = cV.hoursSlept
       return acc
-    },0)
-    return totalHours.toFixed(2)
+    },[])
+    return hoursArray
   }
 
   findWeeklyQuality(userParam, dateParam)  {
@@ -67,11 +67,12 @@ class Sleep {
       return new Date(b.date) - new Date(a.date)
     })
     const sliceWeekArray = sortWeekArray.slice(0, 7)
-    const totalQuality = sliceWeekArray.reduce((acc, cV)  =>  {
-      acc[cV.date] = cV.sleepQuality;
+    const qualityArray = sliceWeekArray.reduce((acc, cV)  =>  {
+      acc[cV.date] = cV.sleepQuality
       return acc;
-    },{})
-    return totalQuality
+    },[])
+  
+    return qualityArray
   }
 }
 

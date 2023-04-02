@@ -62,12 +62,15 @@ function displaySleepActivity(sleepData) {
   var day   = ('0' + date.getDate()).slice(-2);
   var year  = date.getFullYear();
   var htmlDate = year + '/' + month + '/' + day;
+  // var weekHoursArray = sleep.findWeeklyHours(user, htmlDate);
+  // var weekQualityArray = sleep.findWeeklyQuality(user, htmlDate);
   sleepToday.innerText = `Sleep Today: ${sleep.findDailyHours(user, htmlDate)} hours`
-  sleepWeekly.innerText = `Sleep Weekly: ${sleep.findWeeklyHours(user, htmlDate)} hours`
+  // sleepWeekly.innerText = `Sleep Weekly: ${sleep.weekHours} hours`
   sleepAverage.innerText = `Sleep Average All Time: ${sleep.findAvgHours(user)} hours `
   sleepQualityToday.innerText = `Sleep Quality Today: ${sleep.findDailyQuality(user, htmlDate)}`
-  sleepQualityWeekly.innerText = `Sleep Quality Weekly: ${sleep.findWeeklyQuality(user, htmlDate)}`
+  // sleepQualityWeekly.innerText = `Sleep Quality Weekly: ${weekQualityArray}`
   sleepQualityAll.innerText = `Sleep Quality All Time: ${sleep.findAvgQuality(user)}`
+  console.log(weekHoursArray)
 
 }
 

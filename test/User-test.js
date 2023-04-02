@@ -9,11 +9,11 @@ import hydrationTestData  from '../src/data/hydration-test-data';
 import sleepTestData from '../src/data/sleep-test-data';
 
 describe('User', () => {
-  let testUser;
-  let hydration;
-  let sleep;
-  let activity;
-  let testUser2
+  let testUser,
+      hydration,
+      sleep,
+      activity,
+      testUser2;
   beforeEach(() => {
     testUser = new User(userTestData.userTestData[0]);
 
@@ -70,5 +70,4 @@ describe('User', () => {
     expect(testUser.getName()).to.equal('Trystan');
     expect(testUser2.getName()).to.equal('User');
   });
-
 });

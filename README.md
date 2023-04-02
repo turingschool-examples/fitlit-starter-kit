@@ -7,8 +7,8 @@ Our application showcases communication with third party data sources using api'
 3. Run `npm install`
 4. Run `npm start`
 5. copy and paste the provided url into a new web page
-## FitLit ad a glance
-(*GIF here*)
+## FitLit at a glance
+![Giph of project](https://media.giphy.com/media/zSo2GMYjWElzI1br2A/giphy.gif)
 ## Technologies Used
 - javaScript
 - HTML5
@@ -17,7 +17,6 @@ Our application showcases communication with third party data sources using api'
 - chai
 - webpack
 - ### third party extensions
-  - dayjs
   - chartjs
 ## Contributors 
 - Ashlee Webb: [github](https://github.com/AshleeAWebb) | [linkedin](https://www.linkedin.com/in/ashlee-webb-0b592199/)

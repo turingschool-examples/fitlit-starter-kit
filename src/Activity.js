@@ -1,14 +1,7 @@
-import * as dayjs from 'dayjs'
-
 class Activity {
-  constructor(data, stride){
-    this.data = data
-    .map((activity) => {
-      activity.date = dayjs(activity.date, 'YYYY/MM/DD')
-      .format('YYYY/MM/DD')
-      return activity
-    })
-    this.userStride = stride
+  constructor(data, stride) {
+    this.data = data;
+    this.userStride = stride;
   }
 
   getMinutesActive(date) {
@@ -26,7 +19,6 @@ class Activity {
   getLatestWeek() {
     return this.data.map(activity => activity.numSteps).slice(0,7)
   }
-
 }
 
 export default Activity

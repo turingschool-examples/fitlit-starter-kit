@@ -20,34 +20,62 @@ const hydrationCard = document.querySelector(".hydration-holder");
 function displayUserCard(user) {
   const userCard = document.querySelector('.user-profile-info-js');
   userCard.innerHTML = `
-    <p><b>Name:</b> ${user.name}</p>
-    <p><b>Address:</b> ${user.address}</p>
-    <p><b>Email:</b> ${user.email}</p>
-    <p><b>Stride Length:</b> ${user.strideLength}</p>
-    <p><b>Daily Step Goal</b> ${user.dailyStepGoal}</p>
-    <p><b>Friends:</b> ${user.friends}</p>
+    <b>Name</b> 
+    <p>${user.name}</p>
+    <b>Address</b> 
+    <p>${user.address}</p>
+    <b>Email</b> 
+    <p>${user.email}</p>
   `;
 }
+
+function displayUserCardInitial(user) {
+  const userCardName = document.querySelector('.user-card-name-js');
+  const userInitial = user.getFirstName().charAt(0);
+  userCardName.innerText = `${userInitial}`;
+};
 
 function displayStepUserVsAllUsers(user, userBase) {
   const stepUserVsAllUsers = document.querySelector('.user-steps-vs-all-js');
   stepUserVsAllUsers.innerHTML = `
-    <p><b>Your Step Goal:</b> ${user.dailyStepGoal}</p>
-    <p><b>Average Step Goal:</b> ${userBase.calculateAverageStepGoal()}</p>
+    <b>Your Stride Length</b>
+    <p>${user.strideLength}</p>
+    <b>Your Step Goal</b> 
+    <p>${user.dailyStepGoal}</p>
+    <b>Average User Step Goal</b> 
+    <p>${userBase.calculateAverageStepGoal()}</p>
+  `;
+};
+
+function displayFriendsList(user, userBase) {
+  const friendsList = document.querySelector('.user-friends-js');
+  let userFriends = userBase.returnUserFriendsName(user.id);
+  friendsList.innerHTML = `
+    <b>Friends</b>
+    <p>${userFriends.join(",  ")}</p>
   `;
 }
 
-function displayUserGreeting(user) {
+function displayUserGreeting(user, date) {
   const userGreeting = document.querySelector('.welcome-header');
+  const dayjs = require('dayjs')
+  const customParseFormat = require('dayjs/plugin/customParseFormat');
+  dayjs.extend(customParseFormat);
+  const dateString = date;
+  console.log(dateString)
+  const dateToday = dayjs(dateString, 'YYYY/MM/DD');
+
+  const formattedDateString = dateToday.format('dddd D MMMM');
   userGreeting.innerHTML = `
-<h2>Hi, ${user.getFirstName()}</h2>
+  <p class="welcome welcome-date">${formattedDateString}</p>
+<h2 class="welcome">Hi, ${user.getFirstName()}</h2>
 `;
-}
+};
 
 function clearChartArea() {
   const chartArea = document.querySelector(".infographic");
   chartArea.innerHTML = "<canvas id='chart'></canvas>";
-}
+};
 
 function displayhydrationCard(hydration, userID, date) {
   hydrationCard.innerHTML = `<p class="water-text"><b>Average Water Consumed</b><br> ${hydration.calculateAverageFluidPerUser(
@@ -61,7 +89,7 @@ function displayhydrationCard(hydration, userID, date) {
   `;
   const waterButton = document.querySelector(".hydration-button");
   waterButton.addEventListener("click", () => createHydrationChart(hydration, userID, date));
-}
+};
 
 function createHydrationChart(hydration, userID, date) {
   const weeklyOunces = hydration.weeklyOuncesConsumed(userID, date);
@@ -83,7 +111,7 @@ function createHydrationChart(hydration, userID, date) {
       labels: labels,
     }
   })
-}
+};
 
 function displaySleepCard(sleep, userID, date) {
   const latestSleepData = document.querySelector(".latest-sleep-data-js");
@@ -110,7 +138,7 @@ function displaySleepCard(sleep, userID, date) {
   qualitySleptButton.addEventListener("click", () =>
     createSleepQualityChart(sleep, userID, date)
   );
-}
+};
 
 function createHoursSleptChart(sleep, userID, date) {
   const weeklyHours = sleep.calculateWeeklyHoursSlept(userID, date);
@@ -132,7 +160,7 @@ function createHoursSleptChart(sleep, userID, date) {
       labels: labels,
     },
   });
-}
+};
 
 function createSleepQualityChart(sleep, userID, date) {
   const weeklyHours = sleep.calculateWeeklySleepQuality(userID, date);
@@ -156,17 +184,43 @@ function createSleepQualityChart(sleep, userID, date) {
       labels: labels,
     },
   });
-}
+};
 
 function displayActivityCard(activity, user, date, userID) {
-  const activityCard = document.querySelector('.activity-card-js');
+  const activityCard = document.querySelector('.activity-card');
   activityCard.innerHTML = `
   <p class="activity-text"><b>Miles Walked</b><br>${activity.calculateMilesWalked(date, user)} miles</p>
   <p class="activity-text"><b>Minutes Active</b><br>${activity.dailyMinutesActive(userID, date)} minutes</b></p>
   <p class="activity-text"><b>Step Goal</b><br>${activity.stepGoalMet(user, date)}</b></p>
- 
-  `
- };
+  </p> 
+    <button class="activity-button">View Weekly Activity</button>
+  </p>`;
+  const activityButton = document.querySelector(".activity-button");
+  activityButton.addEventListener("click", () => createActivityChart(activity, userID, date));
+
+};
+
+function createActivityChart(activity, userID, date) {
+  const weeklyMinutes = activity.weeklyMinutes(userID, date);
+  const labels = weeklyMinutes.map(days => days.date);
+  const data = weeklyMinutes.map(days => days.minutesActive);
+  clearChartArea();
+  new Chart("chart", {
+    type: 'bar',
+    data: {
+      datasets: [{
+        label: "minutes",
+        backgroundColor: "#FDC504",
+        borderColor: "#3C4252",
+        borderWidth: 2,
+        hoverBackgroundColor: "#5A73C0",
+        hoverBorderColor: "#5A73C0",
+        data: data,
+      }],
+      labels: labels,
+    }
+  })
+};
 
 // Export Statements
 
@@ -177,4 +231,6 @@ export {
   displayhydrationCard,
   displaySleepCard,
   displayActivityCard,
+  displayFriendsList,
+  displayUserCardInitial,
 };

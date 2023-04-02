@@ -19,6 +19,8 @@ import {
   displayhydrationCard,
   displaySleepCard,
   displayActivityCard,
+  displayFriendsList,
+  displayUserCardInitial,
 } from "./scripts";
 
 import Activity from './classes/Activity';
@@ -51,7 +53,9 @@ Promise.all([fetchUsers(), fetchHydration(), fetchSleep(), fetchActivity()])
     user = new User(userBase.getUser(userID));
     displayUserCard(user);
     displayStepUserVsAllUsers(user, userBase);
-    displayUserGreeting(user);
+    displayUserGreeting(user, date);
+    displayFriendsList(user, userBase);
+    displayUserCardInitial(user);
 
     hydration = new Hydration(hydrationData.hydrationData);
     displayhydrationCard(hydration, userID, date);

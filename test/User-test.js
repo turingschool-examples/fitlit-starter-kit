@@ -1,117 +1,65 @@
-import { expect } from 'chai';
+import {
+  expect
+} from 'chai';
 import User from "../src/classes/User.js";
-import UserRepository from '../src/classes/UserRepository';
+import userTestData from './user-test-data.js';
 
-describe('User', () => {
-var testRepository, testUser, users;
-beforeEach(() => { 
-  testRepository = new UserRepository(users);
-   users = [
-     {
-       "id": 1,
-       "name": "Trystan Gorczany",
-       "address": "9484 Lucas Flat, West Kittymouth WA 67504",
-       "email": "Taurean_Pollich31@gmail.com",
-       "strideLength": 4,
-       "dailyStepGoal": 7000,
-       "friends": [
-         5,
-         43,
-         46,
-         11
-       ]
-     },
-     {
-       "id": 2,
-       "name": "Tyreek VonRueden",
-       "address": "623 Koelpin Skyway, Lake Luigichester MN 77576-1678",
-       "email": "Nicolette_Halvorson43@yahoo.com",
-       "strideLength": 4.5,
-       "dailyStepGoal": 9000,
-       "friends": [
-         13,
-         19,
-         3
-       ]
-     },
-     {
-       "id": 3,
-       "name": "Colt Rohan",
-       "address": "48010 Balistreri Harbor, Cleobury IN 43317",
-       "email": "Wilford.Barton@gmail.com",
-       "strideLength": 2.7,
-       "dailyStepGoal": 3000,
-       "friends": [
-         31,
-         16,
-         15,
-         7
-       ]
-     },
-     {
-       "id": 4,
-       "name": "Evie Satterfield",
-       "address": "1378 Renner Island, Port Lincoln NE 06237-3602",
-       "email": "Adan66@yahoo.com",
-       "strideLength": 3.9,
-       "dailyStepGoal": 4000,
-       "friends": [
-         21,
-         32,
-         8
-       ]
-     },
-     {
-       "id": 5,
-       "name": "Brycen Rutherford",
-       "address": "0770 Keeley Square, West Keyon SD 73400-6577",
-       "email": "Jerald55@yahoo.com",
-       "strideLength": 3.3,
-       "dailyStepGoal": 10000,
-       "friends": [
-         5,
-         46
-       ]
-     },
-     {
-       "id": 6,
-       "name": "Jillian Senger",
-       "address": "235 Geoffrey Highway, New Lavadaport CA 62933-3709",
-       "email": "Cortez51@gmail.com",
-       "strideLength": 4.3,
-       "dailyStepGoal": 10000,
-       "friends": [
-         25,
-         15,
-         20
-       ]
-     },
-     {
-       "id": 7,
-       "name": "Elaina Mosciski",
-       "address": "307 Gerhard Pine, Luettgenton NC 60477",
-       "email": "Karolann.Kuvalis@yahoo.com",
-       "strideLength": 3,
-       "dailyStepGoal": 9000,
-       "friends": [
-         7,
-         46,
-         43
-       ]
-     },
-   ];
-   });
-
-    it('should be a function', function() {
-      expect(User).to.be.a('function');
-    });
-
-    it('should be an instance of User', function() {
-      testUser = new User(testRepository.getUser(1));
-      expect(testUser).to.be.an.instanceOf(User);
-    })
-
-    it('should return the first name of user', function() {
-      expect(testUser.getFirstName()).to.equal("Trystan");
-    })
+describe("User", () => {
+  let user1, user2, user3;
+  beforeEach(() => {
+    user1 = new User(userTestData[0]);
+    user2 = new User(userTestData[1]);
+    user3 = new User(userTestData[4]);
   });
+
+  it("should be a function", () => {
+    expect(User).to.be.a('function');
+  });
+
+  it("should be an instance of User", () => {
+    expect(user1).to.be.an.instanceOf(User);
+  });
+
+  it("should have a user's id", () => {
+    expect(user1.id).to.equal(1);
+    expect(user2.id).to.equal(2);
+    expect(user3.id).to.equal(5);
+  });
+
+  it("should have a user's address", () => {
+    expect(user1.address).to.equal("9484 Lucas Flat, West Kittymouth WA 67504")
+  })
+
+  it("should have a user's name", () => {
+    expect(user1.name).to.equal("Trystan Gorczany");
+    expect(user2.name).to.equal("Tyreek VonRueden");
+  });
+
+  it("should have the email address of the user", () => {
+    expect(user1.email).to.equal("Taurean_Pollich31@gmail.com")
+    expect(user2.email).to.equal("Nicolette_Halvorson43@yahoo.com");
+    expect(user3.email).to.equal("Jerald55@yahoo.com");
+  });
+
+  it("should hold the user's daily stride goal", () => {
+    expect(user1.strideLength).to.equal(4);
+    expect(user2.strideLength).to.equal(4.5)
+    expect(user3.strideLength).to.equal(3.3)
+  })
+
+  it("should have a user's daily step goal", () => {
+    expect(user1.dailyStepGoal).to.equal(7000)
+    expect(user2.dailyStepGoal).to.equal(9000)
+    expect(user3.dailyStepGoal).to.equal(10000)
+  });
+
+  it("should have an array of the user's friends id number", () => {
+    expect(user1.friends).to.deep.equal([5, 43, 46, 11]);
+  });
+
+  it("should have a method to return the first name of user", () => {
+    expect(user1.getFirstName()).to.equal("Trystan");
+    expect(user2.getFirstName()).to.equal("Tyreek");
+    expect(user3.getFirstName()).to.equal("Brycen");
+  });
+});

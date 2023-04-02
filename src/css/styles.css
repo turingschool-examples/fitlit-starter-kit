@@ -41,11 +41,7 @@ body, html {
   align-items: center;
   position: relative;
   width: 100%;
-  max-width: 1300px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 25px;
-  padding-left: 25px;
+  margin: 0 3%;
 }
 
 .nav-left-container {
@@ -56,8 +52,8 @@ body, html {
 
 .nav-right-container {
   display: flex;
-  align-items: center;
-  margin-right: 10%;
+  align-items: flex-end;
+  margin-right: 5%;
 }
 
 .logo-stand-in {
@@ -80,12 +76,15 @@ h1 {
 }
 
 /* Welcome Header */
+.welcome {
+  margin-left: 2%;
 
-.welcome-header {
+}
+
+h2 {
   width: 100%;
   padding-left: 1%;
   margin-block-end: 0;
-  margin-bottom: 2%
 }
 
 /* main section */
@@ -93,7 +92,7 @@ main {
   display: flex;
   justify-items: start;
   align-items: start;
-  margin-top: 7%;
+  margin-top: 5.5%;
 }
 
 .cards{
@@ -145,6 +144,8 @@ body {
   background-color: rgb(243, 206, 199)
 }
 
+/* User Card */
+
 .user-card {
   width: 100%;
   height: 30%;
@@ -152,7 +153,62 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 1.5% 0;
 }
+
+.user-info-wrapper {
+  height: 100%;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: start;
+  align-items: start;
+  padding: 1.5% 0;
+}
+
+.user-name-profile-backing {
+  background-color: white;
+  border-radius: 20%;
+  margin-left: 2%;
+  width: 5%;
+  height: 4%;
+}
+
+.user-name-profile {
+  text-align: center;
+  margin-block: 10%;
+  color: black;
+}
+
+.profile-info {
+  height: 8em;
+  width: 20%;
+  padding: 0 6%;
+}
+
+.profile-info b {
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.profile-info p {
+  color: rgb(84, 84, 84);
+  margin-bottom: 0.8em;
+}
+
+
+.personal-info {
+  border-right: 0.1px solid rgb(169, 167, 167);
+}
+
+.goals-steps-info {
+  border-right: 0.1px solid rgb(169, 167, 167);
+}
+
+
+/* Colors */
+
 
 .activity-card {
   background-color: rgba(204, 51, 51, 0.214);

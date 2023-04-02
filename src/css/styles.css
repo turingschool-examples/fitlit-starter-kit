@@ -84,7 +84,7 @@ body, html {
   border-radius: 1.5%;
 }
 
-.user-container, .friends-container, .comparison-container, .activity-container, .sleep-container, .hydration-container, .activity-tracker, .sleep-tracker {
+.user-container, .friends-container, .comparison-container, .activity-container, .sleep-container, .hydration-container, .hydration-tracker, .activity-tracker, .sleep-tracker {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -96,55 +96,26 @@ body, html {
   border-radius: 1.5%;
 }
 
-.friend-grid {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 90%;
+.user-container{
+  display: none;
 }
 
-.friends-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.friend-item  {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 5px;
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-.friends-image  {
-  padding-top: 10px;
-  padding-right: 20px;
-  padding-left: 20px;
-}
-
-.friend-name  {
-  margin-top: 5px;
-}
 
 .user-name, .user-name, .user-email, .user-address, .user-stride, .user-steps, .comparison-steps, .activity-steps-today, .activity-distance-today, .activity-total-today, .activity-steps-weekly, .activity-goal, .sleep-today, .sleep-weekly, .sleep-average, .hydration-today, .hydration-weekly {
   margin: 5px;
 }
 
-.profile-header, .friends-header, .comparison-header, .activity-header, .steps-header, .activity-header, .sleep-header, .hydration-header, .activity-tracker-header, .sleep-tracker-header {
+.profile-header, .friends-header, .comparison-header, .activity-header, .steps-header, .activity-header, .sleep-header, .hydration-header, .hydration-tracker-header, .activity-tracker-header, .sleep-tracker-header {
   margin: 5px;
   text-align: center;
   font-weight: bold;
   font-size: 18px;
 }
 
-.activity-tracker-placeholder, .sleep-tracker-placeholder  {
-  padding-left: 10%;
+.activity-tracker, .hydration-chart, .sleep-chart {
+  cursor: pointer;
 }
 
-.pie-chart {
-  cursor: pointer;
+.hydration-chart, .sleep-chart  {
+  margin: 10px;
 }

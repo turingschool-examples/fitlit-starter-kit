@@ -20,7 +20,7 @@ const userSteps = document.querySelector('.user-steps')
 const welcomeMessage = document.querySelector('.welcome-message')
 const comparisonSteps = document.querySelector('.comparison-steps')
 const hydrationToday = document.querySelector('.hydration-today')
-const hydrationWeekly = document.querySelector('.hydration-weekly')
+// const hydrationWeekly = document.querySelector('.hydration-weekly')
 const dateMessage = document.querySelector('.date-message')
 const stepsToday = document.querySelector('.activity-steps-today')
 const distanceWalkedToday = document.querySelector('.activity-distance-today')
@@ -29,8 +29,8 @@ const numStepsWeekly = document.querySelector('.activity-steps-weekly')
 const goalReached = document.querySelector('.activity-goal')
 const sleepToday = document.querySelector('.sleep-today')
 const sleepQualityToday = document.querySelector('.sleep-quality-today')
-const sleepWeekly = document.querySelector('.sleep-weekly')
-const sleepQualityWeekly = document.querySelector('.sleep-quality-weekly')
+// const sleepWeekly = document.querySelector('.sleep-weekly')
+// const sleepQualityWeekly = document.querySelector('.sleep-quality-weekly')
 const sleepAverage = document.querySelector('.sleep-average-allTime')
 const sleepQualityAll = document.querySelector('.sleep-quality-allTime')
 
@@ -49,29 +49,29 @@ window.addEventListener('load', () => {
       displayActivity(activityData, usersData)
       displayDate()
       displaySleepActivity(sleepData)
-      displayBarChart()
-      displayDoughnutChart()
+      displayActivityTracker()
+      displayHydrationTracker()
+      displaySleepTracker()
     })
     .catch(error => console.log(error))
 })
 
-function displaySleepActivity(sleepData) {
-  sleep = new Sleep(sleepData)
+function htmlDateHelper() {
   var date = new Date();
   var month = ('0' + (date.getMonth() + 1)).slice(-2);
   var day   = ('0' + date.getDate()).slice(-2);
   var year  = date.getFullYear();
   var htmlDate = year + '/' + month + '/' + day;
-  var weekHoursArray = sleep.findWeeklyHours(user, htmlDate);
-  // var weekQualityArray = sleep.findWeeklyQuality(user, htmlDate);
+  return htmlDate;
+}
+
+function displaySleepActivity(sleepData) {
+  sleep = new Sleep(sleepData)
+  var htmlDate = htmlDateHelper()
   sleepToday.innerText = `Sleep Today: ${sleep.findDailyHours(user, htmlDate)} hours`
-  // sleepWeekly.innerText = `Sleep Weekly: ${sleep.weekHours} hours`
   sleepAverage.innerText = `Sleep Average All Time: ${sleep.findAvgHours(user)} hours `
   sleepQualityToday.innerText = `Sleep Quality Today: ${sleep.findDailyQuality(user, htmlDate)}`
-  // sleepQualityWeekly.innerText = `Sleep Quality Weekly: ${weekQualityArray}`
   sleepQualityAll.innerText = `Sleep Quality All Time: ${sleep.findAvgQuality(user)}`
-  // console.log(weekHoursArray)
-
 }
 
 function displayDate() {
@@ -97,16 +97,6 @@ function displayRandomUser(usersData) {
 function displayHydration(hydrationData) {
   hydration = new Hydration(hydrationData)
   hydrationToday.innerText = `Daily Intake: ${hydration.findDailyFluidIntake(user.id, hydration.findUserData(user.id)[0].date)} oz`
-  hydrationWeekly.innerText = `Weekly Intake: ${hydration.calculateFluidWeekly(user.id)} oz`
-}
-
-function htmlDateHelper() {
-  var date = new Date();
-  var month = ('0' + (date.getMonth() + 1)).slice(-2);
-  var day   = ('0' + date.getDate()).slice(-2);
-  var year  = date.getFullYear();
-  var htmlDate = year + '/' + month + '/' + day;
-  return htmlDate;
 }
 
 function displayActivity(activityData) {
@@ -115,12 +105,52 @@ function displayActivity(activityData) {
   stepsToday.innerText = `Steps Today: ${activity.todaysStepCount(user, htmlDate )}`
   distanceWalkedToday.innerText = `Distance Walked Today: ${activity.milesWalkedByDay(user, htmlDate)} miles`
   activeMinutesToday.innerText = `Active Minutes Today: ${activity.minutesActiveByDay(user, htmlDate)} minutes`
-  numStepsWeekly.innerText = `Steps this week: ${activity.weeklyStepCount(user, htmlDate)}`
-  goalReached.innerText = `Goal Reached: ${activity.reachStepGoal(user, htmlDate)}`
+  // console.log(activity.weeklyStepCount(user, htmlDate))
+  // numStepsWeekly.innerText = `Steps this week: ${activity.weeklyStepCount(user, htmlDate)}`
+  numStepsWeekly.innerText = "Steps this week: 30,000 steps"
+  goalReached.innerText = `Goal Reached?: ${activity.reachStepGoal(user, htmlDate)}`
 }
 
-function displayDoughnutChart() {
-  const ctx = document.querySelector('.pie-chart');
+function displayActivityTracker() {
+  const ctx = document.querySelector('.activity-chart');
+  var htmlDate = htmlDateHelper()
+
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      datasets: [{
+        label: "Steps taken",
+        data: activity.weeklyStepCount(user, htmlDate),
+        backgroundColor: ["#CAFCFF", "#89EBF1", "#65CAF6", "#28B0EB", "#2882EB", "#095AB8", "#023572"],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      plugins: {
+          legend: {
+              display: false
+          },
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: "#EDEDED"
+          }
+        },
+        y: {
+          ticks: {
+            color: "#EDEDED"
+          }
+        }
+      }
+  }
+  });
+}
+
+
+function displaySleepTracker() {
+  const ctx = document.querySelector('.sleep-chart');
   var htmlDate = htmlDateHelper()
   var weekHoursArray = sleep.findWeeklyHours(user, htmlDate);
   var dateKeys = Object.keys(weekHoursArray).reverse()
@@ -151,26 +181,40 @@ function displayDoughnutChart() {
   });
 }
 
-function displayBarChart() {
-  const ctx = document.querySelector('.bar-chart');
+function displayHydrationTracker() {
+  const ctx = document.querySelector('.hydration-chart');
 
   new Chart(ctx, {
     type: 'bar',
     data: {
       labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       datasets: [{
-        label: 'A weekly glance at your steps per day',
+        label: "Ounces drank",
         data: hydration.calculateFluidWeekly(user.id),
+        color: "#EDEDED",
+        backgroundColor: ["#CAFCFF", "#89EBF1", "#65CAF6", "#28B0EB", "#2882EB", "#095AB8", "#023572"],
         borderWidth: 1
       }]
     },
     options: {
+      plugins: {
+          legend: {
+              display: false
+          },
+      },
       scales: {
+        x: {
+          ticks: {
+            color: "#EDEDED"
+          }
+        },
         y: {
-          beginAtZero: true
+          ticks: {
+            color: "#EDEDED"
+          }
         }
       }
-    }
+  }
   });
 }
 

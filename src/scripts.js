@@ -113,14 +113,21 @@ function displayActivity(activityData) {
 function displayActivityTracker() {
   const ctx = document.querySelector('.activity-chart');
   var htmlDate = htmlDateHelper()
+  var weekHoursArray = activity.weeklyStepCount(user, htmlDate);
+  var dateKeys = Object.keys(weekHoursArray).reverse()
+  var shortenedKeys = []
+  dateKeys.forEach((key)  =>  {
+    shortenedKeys.push(key.slice(5))
+    return shortenedKeys
+  })
 
   new Chart(ctx, {
     type: "bar",
     data: {
-      labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      labels: shortenedKeys,
       datasets: [{
         label: "Steps taken",
-        data: activity.weeklyStepCount(user, htmlDate),
+        data: activity.chartWeeklySteps(user, htmlDate),
         backgroundColor: ["#CAFCFF", "#89EBF1", "#65CAF6", "#28B0EB", "#2882EB", "#095AB8", "#023572"],
         borderWidth: 1
       }]
@@ -183,14 +190,22 @@ function displaySleepTracker() {
 
 function displayHydrationTracker() {
   const ctx = document.querySelector('.hydration-chart');
+  var htmlDate = htmlDateHelper()
+  var weekHoursArray = hydration.calculateFluidWeekly(user, htmlDate);
+  var dateKeys = Object.keys(weekHoursArray).reverse()
+  var shortenedKeys = []
+  dateKeys.forEach((key)  =>  {
+    shortenedKeys.push(key.slice(5))
+    return shortenedKeys
+  })
 
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      labels: shortenedKeys,
       datasets: [{
         label: "Ounces drank",
-        data: hydration.calculateFluidWeekly(user.id),
+        data: hydration.chartWeeklyFluids(user, htmlDate),
         color: "#EDEDED",
         backgroundColor: ["#CAFCFF", "#89EBF1", "#65CAF6", "#28B0EB", "#2882EB", "#095AB8", "#023572"],
         borderWidth: 1

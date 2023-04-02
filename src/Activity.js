@@ -39,14 +39,26 @@ class Activity {
     const userActivity = currentUserActivity.filter(data => data.date === date)
     return userActivity[0].numSteps
   }
-  weeklyStepCount(user, date) {
-
+  chartWeeklySteps(user, date) {
     const currentUserActivity = this.activity.filter(data => data.userID === user.id)
     const userActivity = currentUserActivity.filter(data => data.date <= date).sort((a, b) => {
       return new Date(b.date)- new Date(a.date)
     }).map(data => data.numSteps)
     const weeklySteps = userActivity.slice(0, 7)
     return weeklySteps
+  }
+
+  weeklyStepCount(userParam, dateParam) {
+    const currentUserActivity = this.activity.filter(data => data.userID === userParam.id && data.date <= dateParam)
+    const userActivity = currentUserActivity.sort((a, b) => {
+      return new Date(b.date)- new Date(a.date)
+    })
+    const weeklySteps = userActivity.slice(0, 7)
+    const currentWeek = weeklySteps.reduce((acc, cV) => {
+      acc[cV.date] = cV.numSteps
+      return acc
+    },[])
+    return currentWeek
   }
 
 }

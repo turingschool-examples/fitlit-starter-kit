@@ -35,7 +35,7 @@
         <section class="activity-container">
           <style>
             .activity-container {
-            background-image: url('./images/activity-background.png');
+            background-image: url('./images/background.png');
             background-repeat: repeat;
             background-size: contain;
           }
@@ -55,7 +55,9 @@
         </section>
         <div class="activity-tracker">
           <p class="activity-tracker-header">Steps This Week</p>
-          <canvas class="activity-chart"></canvas>
+          <div class="chart-wrapper">
+            <canvas class="activity-chart"></canvas>
+          </div>
           <p class="activity-units">in steps</p>
         </div>
       </div>
@@ -101,6 +103,11 @@
           </style>
             <div class="offset">
               <p class="community-header">Community</p>
+              <div class="friends=container">
+                <img class="friend1-image" src="./images/friend1-image.png" alt="friend1-image" height="50px" width="50px">
+                <img class="friend2-image" src="./images/friend2-image.png" alt="friend2-image" height="50px" width="50px">
+                <img class="friend3-image" src="./images/friend3-image.png" alt="friend3-image" height="50px" width="50px">
+                <img class="friend3-image" src="./images/friend4-image.png" alt="friend3-image" height="50px" width="50px">
               <p class="comparison-steps">Comparison data will go here</p>
             </div>
         </section>
@@ -108,12 +115,16 @@
       <div class="right-container">
         <div class="hydration-tracker">
           <p class="hydration-tracker-header">Hydration This Week</p>
-          <canvas class="hydration-chart"></canvas>  
+          <div class="chart-wrapper">
+            <canvas class="hydration-chart"></canvas>
+          </div>
           <p class="hydration-units">in ounces</p>
         </div>     
         <div class="sleep-tracker">
           <p class="sleep-tracker-header">Sleep This Week</p>
-          <canvas class="sleep-chart"></canvas>
+          <div class="chart-wrapper">
+            <canvas class="sleep-chart"></canvas>
+          </div>
           <p class="sleep-units">in hours</p>
         </div>
       </div>

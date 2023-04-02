@@ -125,6 +125,17 @@ body, html {
   color: #CAFCFF;
 }
 
+/* friends container */
+.friends-container  {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.friend1-image, .friend2-image, .friend3-image  {
+  padding: 10px;
+}
+
 /* data visualizations */
 .activity-tracker, .hydration-tracker, .sleep-tracker {
   display: flex;
@@ -136,9 +147,12 @@ body, html {
 
 /* chart elements */
 .activity-chart, .hydration-chart, .sleep-chart {
-  /* height:min-content;
-  width: min-content; */
   cursor: pointer;
+}
+
+.chart-wrapper  {
+  height: 70%;
+  width: 100%;
 }
 
 /* chart increments  */

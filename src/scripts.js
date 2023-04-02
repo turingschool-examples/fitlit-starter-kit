@@ -138,6 +138,8 @@ function displayActivityTracker() {
               display: false
           },
       },
+      responsive: true,
+      maintainAspectRatio: true,
       scales: {
         x: {
           ticks: {
@@ -174,7 +176,7 @@ function displaySleepTracker() {
         label: "Hours slept",
         data: sleep.chartWeeklyHours(user, htmlDate),
         backgroundColor: ["#CAFCFF", "#89EBF1", "#65CAF6", "#28B0EB", "#2882EB", "#095AB8", "#023572"],
-        borderWidth: 1
+        borderWidth: 0
       }],
     },
     options: {
@@ -183,7 +185,8 @@ function displaySleepTracker() {
               display: false
           },
       },
-      maintainAspectRatio: true,
+      responsive: true,
+      maintainAspectRatio: false,
   }
   });
 }
@@ -217,6 +220,8 @@ function displayHydrationTracker() {
               display: false
           },
       },
+      responsive: true,
+      maintainAspectRatio: true,
       scales: {
         x: {
           ticks: {
@@ -234,17 +239,16 @@ function displayHydrationTracker() {
 }
 
 // imports
-import SomeClassYouChangeTheName from './SomeClassYouChangeTheName';
 import './css/styles.css';
 import './images/logo-image.png';
 import './images/profile-image.png';
 import './images/background.png';
 import './images/background-flip.png';
 import './images/spacer-gif.gif';
-
-
-
-const newClass = new SomeClassYouChangeTheName();
+import './images/friend1-image.png';
+import './images/friend2-image.png';
+import './images/friend3-image.png';
+import './images/friend4-image.png';
 
 
 

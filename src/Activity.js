@@ -5,13 +5,13 @@ class Activity {
         this.dailyStepGoal = userDetail.dailyStepGoal;
         this.activityLogs = allUserActivityData.activityData.filter(data => data.userID === this.userId);
     }
-    
+
     findMostRecentDay() {
-        return this.activityLogs[0].date;
+        return this.activityLogs[this.activityLogs.length - 1].date;
     }
 
     findMostRecentSteps() {
-        return this.activityLogs[0].numSteps;
+        return this.activityLogs[this.activityLogs.length - 1].numSteps;
     }
 
     calculateMiles(date) {
@@ -39,38 +39,23 @@ class Activity {
         }
     };
 
-    findStepsLastSevenDays(date) {
-        const selectedDayIndex = this.activityLogs.findIndex(log => log.date === date);
+    findStepsLastSevenDays() {
+        const sevenDayDetail = this.activityLogs.slice(-7).map(log => log.numSteps);
 
-        const sevenDayDetail = this.activityLogs.slice(selectedDayIndex, selectedDayIndex + 7).map(log => log.numSteps);
-
-        let lastWeekDetails = [0, 0, 0, 0, 0, 0, 0]
-
-        sevenDayDetail.forEach((log, index) => {
-            lastWeekDetails[index] = log;
-        });
-        return lastWeekDetails
+        return sevenDayDetail
     }
 
-    checkGoalLastSevenDays(date) {
-        const selectedDayIndex = this.activityLogs.findIndex(log => log.date === date);
+    checkGoalLastSevenDays() {
+        const sevenDayDetail = this.findStepsLastSevenDays() 
 
-        const sevenDayStepDetail = this.activityLogs.slice(selectedDayIndex, selectedDayIndex + 7).map(log => log.numSteps);
-        const sevenDayGoalDetail = sevenDayStepDetail.map((daySteps) => {
+        const sevenDayGoalDetail = sevenDayDetail.map((daySteps) => {
             if (this.dailyStepGoal <= daySteps) {
                 return 'Yes'
             } else {
                 return 'No'
             }
         })
-
-        let lastWeekDetails = ['', '', '', '', '', '', '']
-
-        sevenDayGoalDetail.forEach((log, index) => {
-            lastWeekDetails[index] = log;
-        });
-
-        return lastWeekDetails
+        return sevenDayGoalDetail
     };
 }
 

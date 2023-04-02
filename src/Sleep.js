@@ -7,11 +7,7 @@ class Sleep {
     }
 
     findMostRecentDay(){
-        const mostRecentDay = this.userSleepLogs.sort((a, b) => {
-            return b.date - a.date 
-        })
-
-        return mostRecentDay[0].date
+        return this.userSleepLogs[this.userSleepLogs.length -1].date
     }
 
     findAllTimeAvgOfDetail(detail) {
@@ -34,22 +30,10 @@ class Sleep {
         }
     };
 
-    findDetailLastSevenDays(date, detail) {
-        const selectedDayIndex = this.userSleepLogs.findIndex(log => log.date === date);
+    findDetailLastSevenDays(detail) {
+         const sevenDayDetail = this.userSleepLogs.slice(-7).map(log => log[detail]);
 
-        const sevenDayDetail = this.userSleepLogs.slice(selectedDayIndex, selectedDayIndex +7).map(log => log[detail]);
-
-        let lastWeekDetails = [0, 0, 0, 0, 0, 0, 0]
-
-        sevenDayDetail.forEach((log, index) => {
-            lastWeekDetails[index] = log;
-        });
-
-        if (selectedDayIndex < 0) {
-            return 'no such date';
-        } else {
-            return lastWeekDetails;
-        }
+        return sevenDayDetail
     };
 
 };

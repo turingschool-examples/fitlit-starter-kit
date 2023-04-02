@@ -8,16 +8,16 @@ describe('Activity', () => {
 	beforeEach('data creation', () => {
 		activityLogs = {
 			activityData: [
-				{ "userID": 1, "date": "2023/03/24", "numSteps": 7362, "minutesActive": 250, "flightsOfStairs": 26 },
-				{ "userID": 2, "date": "2023/03/24", "numSteps": 5205, "minutesActive": 200, "flightsOfStairs": 16 },
+				{ "userID": 1, "date": "2023/03/18", "numSteps": 3505, "minutesActive": 265, "flightsOfStairs": 22 },
+				{ "userID": 3, "date": "2023/03/18", "numSteps": 5327, "minutesActive": 185, "flightsOfStairs": 14 },
+				{ "userID": 1, "date": "2023/03/19", "numSteps": 3493, "minutesActive": 201, "flightsOfStairs": 15 },
+				{ "userID": 1, "date": "2023/03/20", "numSteps": 9675, "minutesActive": 501, "flightsOfStairs": 22 },
+				{ "userID": 1, "date": "2023/03/21", "numSteps": 4575, "minutesActive": 211, "flightsOfStairs": 17 },
+				{ "userID": 1, "date": "2023/03/22", "numSteps": 5505, "minutesActive": 361, "flightsOfStairs": 15 },
 				{ "userID": 1, "date": "2023/03/23", "numSteps": 6502, "minutesActive": 275, "flightsOfStairs": 23 },
 				{ "userID": 2, "date": "2023/03/23", "numSteps": 4867, "minutesActive": 155, "flightsOfStairs": 10 },
-				{ "userID": 1, "date": "2023/03/22", "numSteps": 5505, "minutesActive": 361, "flightsOfStairs": 15 },
-				{ "userID": 1, "date": "2023/03/21", "numSteps": 4575, "minutesActive": 211, "flightsOfStairs": 17 },
-				{ "userID": 1, "date": "2023/03/20", "numSteps": 9675, "minutesActive": 501, "flightsOfStairs": 22 },
-				{ "userID": 1, "date": "2023/03/19", "numSteps": 3493, "minutesActive": 201, "flightsOfStairs": 15 },
-				{ "userID": 3, "date": "2023/03/18", "numSteps": 5327, "minutesActive": 185, "flightsOfStairs": 14 },
-				{ "userID": 1, "date": "2023/03/18", "numSteps": 3505, "minutesActive": 265, "flightsOfStairs": 22 }
+				{ "userID": 2, "date": "2023/03/24", "numSteps": 5205, "minutesActive": 200, "flightsOfStairs": 16 },
+				{ "userID": 1, "date": "2023/03/24", "numSteps": 7362, "minutesActive": 250, "flightsOfStairs": 26 }
 			]
 		};
 
@@ -60,13 +60,13 @@ describe('Activity', () => {
 
 	it('should store a users activity logs', function () {
 		expect(testUser.activityLogs).to.deep.equal([
-			{ "userID": 1, "date": "2023/03/24", "numSteps": 7362, "minutesActive": 250, "flightsOfStairs": 26 },
-			{ "userID": 1, "date": "2023/03/23", "numSteps": 6502, "minutesActive": 275, "flightsOfStairs": 23 },
-			{ "userID": 1, "date": "2023/03/22", "numSteps": 5505, "minutesActive": 361, "flightsOfStairs": 15 },
-			{ "userID": 1, "date": "2023/03/21", "numSteps": 4575, "minutesActive": 211, "flightsOfStairs": 17 },
-			{ "userID": 1, "date": "2023/03/20", "numSteps": 9675, "minutesActive": 501, "flightsOfStairs": 22 },
+			{ "userID": 1, "date": "2023/03/18", "numSteps": 3505, "minutesActive": 265, "flightsOfStairs": 22 },
 			{ "userID": 1, "date": "2023/03/19", "numSteps": 3493, "minutesActive": 201, "flightsOfStairs": 15 },
-			{ "userID": 1, "date": "2023/03/18", "numSteps": 3505, "minutesActive": 265, "flightsOfStairs": 22 }
+			{ "userID": 1, "date": "2023/03/20", "numSteps": 9675, "minutesActive": 501, "flightsOfStairs": 22 },
+			{ "userID": 1, "date": "2023/03/21", "numSteps": 4575, "minutesActive": 211, "flightsOfStairs": 17 },
+			{ "userID": 1, "date": "2023/03/22", "numSteps": 5505, "minutesActive": 361, "flightsOfStairs": 15 },
+			{ "userID": 1, "date": "2023/03/23", "numSteps": 6502, "minutesActive": 275, "flightsOfStairs": 23 },
+			{ "userID": 1, "date": "2023/03/24", "numSteps": 7362, "minutesActive": 250, "flightsOfStairs": 26 }
 		]);
 	});
 
@@ -93,14 +93,10 @@ describe('Activity', () => {
 	});
 
 	it('should be able to find the previous 7 days of number of steps', function () {
-		expect(testUser.findStepsLastSevenDays('2023/03/24')).to.deep.equal([7362, 6502, 5505, 4575, 9675, 3493, 3505]);
-
-		expect(testUser.findStepsLastSevenDays('2023/03/20')).to.deep.equal([9675, 3493, 3505, 0, 0, 0, 0]);
+		expect(testUser.findStepsLastSevenDays()).to.deep.equal([3505, 3493, 9675, 4575, 5505, 6502, 7362]);
 	});
 
 	it('should be able to find the previous 7 days of if the step goal was reached', function () {
-		expect(testUser.checkGoalLastSevenDays('2023/03/24')).to.deep.equal(['Yes', 'No', 'No', 'No', 'Yes', 'No', 'No']);
-
-		expect(testUser.checkGoalLastSevenDays('2023/03/20')).to.deep.equal(['Yes', 'No', 'No', '', '', '', '']);
+		expect(testUser.checkGoalLastSevenDays()).to.deep.equal(['No', 'No', 'Yes', 'No', 'No', 'No', 'Yes']);
 	});
 });

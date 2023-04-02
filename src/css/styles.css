@@ -1,5 +1,6 @@
 *   { 
   font-family: 'Lato', sans-serif;
+  /* border: 1px green solid; */
 }
 
 body, html {
@@ -108,7 +109,7 @@ body, html {
 
 /* header tags */
 .profile-header, .community-header, .activity-header, .steps-header, .activity-header, .sleep-header, .hydration-header, .hydration-tracker-header, .activity-tracker-header, .sleep-tracker-header {
-  margin-bottom: 16px;
+  margin-bottom: 15px;
   text-align: center;
   font-weight: bold;
   font-size: 18px;
@@ -119,13 +120,29 @@ body, html {
   margin: 5px;
 }
 
+.sqi-info {
+  margin-top: 15px;
+  color: #CAFCFF;
+}
+
 /* data visualizations */
 .activity-tracker, .hydration-tracker, .sleep-tracker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   height: 85%;
-  padding: 16px;
+  padding: 10px;
 }
 
 /* chart elements */
 .activity-chart, .hydration-chart, .sleep-chart {
+  /* height:min-content;
+  width: min-content; */
   cursor: pointer;
+}
+
+/* chart increments  */
+.activity-units, .hydration-units, .sleep-units  {
+  margin-top: 15px;
+  font-size: 12px;
 }

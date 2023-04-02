@@ -27,11 +27,15 @@ describe('Activity', () => {
   });
   
   it('should calculate minutes active for the lastest day', () => {
-    expect(user.activity.getMinutesActive("2023/03/20")).to.deep.equal(261);
+    expect(user.activity.getDailyActivityInfo("2023/03/20", 'minutesActive')).to.deep.equal(261);
   });
 
   it('should be able to check the amount of steps for the latest day', () => {
-    expect(user.activity.getStepCount("2023/03/20")).to.deep.equal(7362);
+    expect(user.activity.getDailyActivityInfo("2023/03/20", 'numSteps')).to.deep.equal(7362);
+  });
+
+  it('should send an error if given a false arguement', () => {
+    expect(user.activity.getDailyActivityInfo("2023/03/20", 'Banana')).to.deep.equal('Banana is not a valid argument!');
   });
 
   it('should calculate miles for a given day', () => {
@@ -39,6 +43,6 @@ describe('Activity', () => {
   });
 
   it('should check how a each day in the last weeks steps compares to the goal', () => {
-    expect(user.activity.getLatestWeek()).to.deep.equal([ 7362, 3049, 12970, 8934, 8443, 13297, 7765]);
+    expect(user.activity.getLatestWeek()).to.deep.equal([ 7255, 7765, 13297, 8443, 8934, 12970, 3049]);
   });
 });

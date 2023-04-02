@@ -27,11 +27,12 @@ let userList,
     hydrationObj,
     activityObj;
 
-// Event listeners
+// Event Listeners
 window.addEventListener('load', () => {
   fetchAllData()
   .then(data => {
       userList = data[0].users;
+
       userObj = new User(data[0].users[Math.floor(Math.random() * 50)]);
       displayCurrentUser(userObj);
 
@@ -62,10 +63,10 @@ const displayCurrentUser = (user) => {
 };
 
 const displaySleepInfo = (sleep) => {
-  const latestSleep = sleep.data[sleep.data.length - 1];
-  const pastWeekSleep = sleep.getInfoForPastWeek('hoursSlept');
-  const avgQuality = sleep.getAverage('sleepQuality');
-  const avgHours = sleep.getAverage('hoursSlept');
+  let latestSleep = sleep.data[sleep.data.length - 1],
+    pastWeekSleep = sleep.getInfoForPastWeek('hoursSlept'),
+    avgQuality = sleep.getAverage('sleepQuality'),
+    avgHours = sleep.getAverage('hoursSlept');
   sleepDay.innerHTML = `<h4>Latest Hours Slept: ${latestSleep.hoursSlept}</h4>
   <h4>Latest Quality of Sleep: ${latestSleep.sleepQuality}</h4>`;
   sleepAvg.innerHTML = `<h4> Average Sleep Quality: ${avgQuality.toFixed(1)}</h4>
@@ -74,24 +75,23 @@ const displaySleepInfo = (sleep) => {
 };
 
 const displayHydration = (userId) => {
-  let currentDate = hydrationObj.data[0].date
+  let currentDate = hydrationObj.data[0].date;
   let weekData = hydrationObj.findWeeklyHydration();
-  let splitData = weekData.map(num => num + 'oz');
-  hydrationWeek.innerHTML = `<h4>Last 7 days: ${splitData.join(', ')}</h4>`;
   hydrationAvg.innerHTML = `<h4>Average daily water intake: ${hydrationObj.findAvgDailyHydration(userId)}oz</h4>`;
   hydrationDay.innerHTML = `<h4>Fluid ounces drank today: ${hydrationObj.getHydrationSpecificDay(currentDate)}oz</h4>`;
+  displayHydrationChart(weekData);
 };
 
 const displayActivity = () => {
   let currentDate = activityObj.data[0].date;
-  activityDay.innerHTML = `<h4>Latest # of Steps: ${activityObj.getStepCount(currentDate)}</h4>`;
-  activityAvg.innerHTML = `<h4>Latest # of Minutes Active: ${activityObj.getMinutesActive(currentDate)}</h4>
+  let weekData = activityObj.getLatestWeek();
+  activityDay.innerHTML = `<h4>Latest # of Steps: ${activityObj.getDailyActivityInfo(currentDate, 'numSteps')}</h4>`;
+  activityAvg.innerHTML = `<h4>Latest # of Minutes Active: ${activityObj.getDailyActivityInfo(currentDate, 'minutesActive')}</h4>
     <h4>Latest Distance Walked: ${activityObj.calculateMiles(currentDate)}</h4>`;
-  activityWeek.innerHTML = `<h4>Weekly Steps: ${activityObj.getLatestWeek()}</h4>`;
-};
+  displayActivityChart(weekData);
+  };
 
-
-//Chart Stuff
+//Charts
 let displaySleepChart = (sleepWeekData) => {
   const data = [
     { day: "", sleep: 2 },
@@ -121,4 +121,66 @@ let displaySleepChart = (sleepWeekData) => {
       }
     }
   );
-}
+};
+
+let displayHydrationChart = (hydrationWeekData) => {
+  const data = [
+    { day: "", sleep: 15 },
+    { day: "", sleep: 30 },
+    { day: "", sleep: 45 },
+    { day: "", sleep: 60 },
+    { day: "", sleep: 75 },
+    { day: "", sleep: 90 },
+    { day: "", sleep: 105 },
+  ];
+
+  new Chart(
+    hydrationWeek,
+    {
+      type: 'line',
+      color:'#000000',
+      data: {
+        labels: data.map(row => row.day),
+        datasets: [
+          {
+            label: "Hydration",
+            data: hydrationWeekData,
+            pointRadius: 0,
+            borderColor: "#FFFFFF"
+          }
+        ]
+      }
+    }
+  );
+};
+
+let displayActivityChart = (activityWeekData) => {
+  const data = [
+    { day: "", activity: 2000},
+    { day: "", activity: 4000 },
+    { day: "", activity: 6000 },
+    { day: "", activity: 8000 },
+    { day: "", activity: 10000 },
+    { day: "", activity: 12000 },
+    { day: "", activity: 14000 },
+  ];
+
+  new Chart(
+    activityWeek,
+    {
+      type: 'line',
+      color:'#000000',
+      data: {
+        labels: data.map(row => row.day),
+        datasets: [
+          {
+            label: "Activity",
+            data: activityWeekData,
+            pointRadius: 0,
+            borderColor: "#FFFFFF"
+          }
+        ]
+      }
+    }
+  );
+};

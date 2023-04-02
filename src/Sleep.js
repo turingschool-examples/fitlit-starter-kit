@@ -39,15 +39,6 @@ class Sleep {
     return recordObject[0].sleepQuality;
   }
 
-  chartWeeklyHours(userParam, dateParam)  {  
-    let weekArray = this.sleepData.filter(record => record.userID === userParam.id && record.date <= dateParam);
-    const sortWeekArray = weekArray.sort((a, b) => {
-      return new Date(b.date) - new Date(a.date)
-    }).map(data => data.hoursSlept)
-    const sliceWeekArray = sortWeekArray.slice(0, 7)
-    return sliceWeekArray
-  }
-
   findWeeklyHours(userParam, dateParam)  {  
     let weekArray = this.sleepData.filter(record => record.userID === userParam.id && record.date <= dateParam);
     const sortWeekArray = weekArray.sort((a, b) => {
@@ -58,8 +49,25 @@ class Sleep {
       acc[cV.date] = cV.hoursSlept
       return acc
     },[])
+    // console.log("hoursArray")
+    // console.log(hoursArray)
     return hoursArray
   }
+
+  chartWeeklyHours(userParam, dateParam)  {  
+    let weekArray = this.sleepData.filter(record => record.userID === userParam.id && record.date <= dateParam);
+    const sortWeekArray = weekArray.sort((a, b) => {
+      return new Date(b.date) - new Date(a.date)
+    }).map(data => data.hoursSlept)
+    const sliceWeekArray = sortWeekArray.slice(0, 7)
+    // console.log(sliceWeekArray)
+    return sliceWeekArray
+    // const data = this.findWeeklyHours(userParam, dateParam)
+    // console.log("sleep.chartWeeklyHours() output")
+    // console.log(data)
+    // return data
+  }
+
 
   findWeeklyQuality(userParam, dateParam)  {
     let weekArray = this.sleepData.filter(record => record.userID === userParam.id && record.date <= dateParam);

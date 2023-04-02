@@ -50,7 +50,7 @@ window.addEventListener('load', () => {
       displayDate()
       displaySleepActivity(sleepData)
       displayBarChart()
-      displayPieChart()
+      displayDoughnutChart()
     })
     .catch(error => console.log(error))
 })
@@ -62,7 +62,7 @@ function displaySleepActivity(sleepData) {
   var day   = ('0' + date.getDate()).slice(-2);
   var year  = date.getFullYear();
   var htmlDate = year + '/' + month + '/' + day;
-  // var weekHoursArray = sleep.findWeeklyHours(user, htmlDate);
+  var weekHoursArray = sleep.findWeeklyHours(user, htmlDate);
   // var weekQualityArray = sleep.findWeeklyQuality(user, htmlDate);
   sleepToday.innerText = `Sleep Today: ${sleep.findDailyHours(user, htmlDate)} hours`
   // sleepWeekly.innerText = `Sleep Weekly: ${sleep.weekHours} hours`
@@ -70,10 +70,9 @@ function displaySleepActivity(sleepData) {
   sleepQualityToday.innerText = `Sleep Quality Today: ${sleep.findDailyQuality(user, htmlDate)}`
   // sleepQualityWeekly.innerText = `Sleep Quality Weekly: ${weekQualityArray}`
   sleepQualityAll.innerText = `Sleep Quality All Time: ${sleep.findAvgQuality(user)}`
-  console.log(weekHoursArray)
+  // console.log(weekHoursArray)
 
 }
-
 
 function displayDate() {
   let date = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" })
@@ -101,13 +100,18 @@ function displayHydration(hydrationData) {
   hydrationWeekly.innerText = `Weekly Intake: ${hydration.calculateFluidWeekly(user.id)} oz`
 }
 
-function displayActivity(activityData) {
-  activity = new Activity(activityData)
+function htmlDateHelper() {
   var date = new Date();
   var month = ('0' + (date.getMonth() + 1)).slice(-2);
   var day   = ('0' + date.getDate()).slice(-2);
   var year  = date.getFullYear();
   var htmlDate = year + '/' + month + '/' + day;
+  return htmlDate;
+}
+
+function displayActivity(activityData) {
+  activity = new Activity(activityData)
+  var htmlDate = htmlDateHelper()
   stepsToday.innerText = `Steps Today: ${activity.todaysStepCount(user, htmlDate )}`
   distanceWalkedToday.innerText = `Distance Walked Today: ${activity.milesWalkedByDay(user, htmlDate)} miles`
   activeMinutesToday.innerText = `Active Minutes Today: ${activity.minutesActiveByDay(user, htmlDate)} minutes`
@@ -115,31 +119,35 @@ function displayActivity(activityData) {
   goalReached.innerText = `Goal Reached: ${activity.reachStepGoal(user, htmlDate)}`
 }
 
-function displayPieChart() {
+function displayDoughnutChart() {
   const ctx = document.querySelector('.pie-chart');
-  var date = new Date();
-  var month = ('0' + (date.getMonth() + 1)).slice(-2);
-  var day   = ('0' + date.getDate()).slice(-2);
-  var year  = date.getFullYear();
-  var htmlDate = year + '/' + month + '/' + day;
+  var htmlDate = htmlDateHelper()
+  var weekHoursArray = sleep.findWeeklyHours(user, htmlDate);
+  var dateKeys = Object.keys(weekHoursArray).reverse()
+  var shortenedKeys = []
+  dateKeys.forEach((key)  =>  {
+    shortenedKeys.push(key.slice(5))
+    return shortenedKeys
+  })
 
   new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      labels: shortenedKeys,
       datasets: [{
-        label: 'A weekly glance at your hours slept per day',
+        label: "Hours slept",
         data: sleep.chartWeeklyHours(user, htmlDate),
+        backgroundColor: ["#CAFCFF", "#89EBF1", "#65CAF6", "#28B0EB", "#2882EB", "#095AB8", "#023572"],
         borderWidth: 1
-      }]
+      }],
     },
     options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
+      plugins: {
+          legend: {
+              display: false
+          },
       }
-    }
+  }
   });
 }
 

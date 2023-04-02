@@ -87,7 +87,7 @@ class Sleep {
       };
     });
     return sleepQuality;
-  }
-}
+  };
+};
 
 export default Sleep;

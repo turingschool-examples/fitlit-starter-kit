@@ -4,19 +4,19 @@ import {
 import User from "../src/classes/User.js";
 import userTestData from './user-test-data.js';
 
-describe('User', () => {
-  var user1, user2, user3
+describe("User", () => {
+  let user1, user2, user3;
   beforeEach(() => {
     user1 = new User(userTestData[0]);
     user2 = new User(userTestData[1]);
     user3 = new User(userTestData[4]);
   });
 
-  it('should be a function', () => {
+  it("should be a function", () => {
     expect(User).to.be.a('function');
   });
 
-  it('should be an instance of User', () => {
+  it("should be an instance of User", () => {
     expect(user1).to.be.an.instanceOf(User);
   });
 
@@ -46,6 +46,7 @@ describe('User', () => {
     expect(user2.strideLength).to.equal(4.5)
     expect(user3.strideLength).to.equal(3.3)
   })
+
   it("should have a user's daily step goal", () => {
     expect(user1.dailyStepGoal).to.equal(7000)
     expect(user2.dailyStepGoal).to.equal(9000)
@@ -56,7 +57,7 @@ describe('User', () => {
     expect(user1.friends).to.deep.equal([5, 43, 46, 11]);
   });
 
-  it('should have a method to return the first name of user', () => {
+  it("should have a method to return the first name of user", () => {
     expect(user1.getFirstName()).to.equal("Trystan");
     expect(user2.getFirstName()).to.equal("Tyreek");
     expect(user3.getFirstName()).to.equal("Brycen");

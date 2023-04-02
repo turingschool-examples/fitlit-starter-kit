@@ -145,10 +145,70 @@ body {
   background-color: rgb(243, 206, 199)
 }
 
+/* User Card */
+
 .user-card {
   width: 100%;
   height: 30%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5% 0;
 }
+
+.user-info-wrapper {
+  height: 100%;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: start;
+  align-items: start;
+  padding: 1.5% 0;
+}
+
+.user-name-profile-backing {
+  background-color: white;
+  border-radius: 20%;
+  margin-left: 2%;
+  width: 5%;
+  height: 4%;
+}
+
+.user-name-profile {
+  text-align: center;
+  margin-block: 10%;
+  color: black;
+}
+
+.profile-info {
+  height: 8em;
+  width: 20%;
+  padding: 0 6%;
+}
+
+.profile-info b {
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.profile-info p {
+  color: rgb(84, 84, 84);
+  margin-bottom: 0.8em;
+}
+
+
+.personal-info {
+  border-right: 0.1px solid rgb(169, 167, 167);
+}
+
+.goals-steps-info {
+  border-right: 0.1px solid rgb(169, 167, 167);
+}
+
+
+/* Colors */
+
 
 .activity-card {
   background-color: #FDC507;

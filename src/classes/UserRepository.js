@@ -21,10 +21,10 @@ class UserRepository {
     return friendsArray.reduce((acc, currentID)=> {
        this.users.forEach((user)=> {
         if(currentID === user.id) {
-          acc.push(user.name)
-        } 
-      })
-      return acc
+          acc.push(user.name);
+        }; 
+      });
+      return acc;
     },[]);
   };
 };

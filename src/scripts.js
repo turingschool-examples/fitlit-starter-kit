@@ -85,7 +85,7 @@ function displayhydrationCard(hydration, userID, date) {
     <b class="water-text">Water Drank Today</b> 
     <p class="water-text">${hydration.dailyOuncesConsumed(userID,date)} ounces </p>
   `;
-  const waterButton = document.querySelector(".hydration-button");
+  const waterButton = document.querySelector("#hydrationButton");
   waterButton.addEventListener("click", () => createHydrationChart(hydration, userID, date));
 };
 
@@ -190,11 +190,11 @@ function displayActivityCard(activity, user, date) {
   <b class="activity-text">Miles Walked</b>
   <p class="activity-text"> ${activity.calculateMilesWalked(date, user)} miles</p>
   <b class="activity-text">Minutes Active</b>
-  <p class="activity-text"> ${activity.dailyMinutesActive(userID, date)} minutes</p>
+  <p class="activity-text"> ${activity.dailyMinutesActive(user.id, date)} minutes</p>
   <b class="activity-text">Step Goal</b>
   <p class="activity-text">${activity.stepGoalMet(user, date)}</p>
   `;
-  const activityButton = document.querySelector(".activity-button");
+  const activityButton = document.querySelector("#activityButton");
   activityButton.addEventListener("click", () => createActivityChart(activity, user.id, date));
 
 };

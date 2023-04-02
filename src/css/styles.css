@@ -1,6 +1,5 @@
 *   { 
   font-family: 'Lato', sans-serif;
-  /* border: 1px green solid; */
 }
 
 body, html {
@@ -11,6 +10,7 @@ body, html {
   color: #fefefe;
 }
 
+/* dashboard */
 .data-container {
   display: flex;
   flex-direction: row;
@@ -22,6 +22,7 @@ body, html {
   background-color: #272727;
 }
 
+/* nav bar */
 .nav-container  {
   display: flex;
   flex-direction: column;
@@ -55,6 +56,7 @@ body, html {
   font-weight: bold;
 }
 
+/* containers */
 .left-container, .center-container, .right-container {
   display: flex;
   flex-direction: column;
@@ -83,6 +85,7 @@ body, html {
   border-radius: 5px;
 }
 
+/* background div */
 .offset {
   display: flex;
   flex-direction: column;
@@ -93,18 +96,17 @@ body, html {
   border-radius: 5px;
 }
 
-.activity-info-container  {
-  margin: 5px;
-}
-
+/* this element takes up empty space */
 .spacer-gif  {
   width: 98%;
 }
 
+/* user container toggle */
 .user-container{
   display: none;
 }
 
+/* header tags */
 .profile-header, .community-header, .activity-header, .steps-header, .activity-header, .sleep-header, .hydration-header, .hydration-tracker-header, .activity-tracker-header, .sleep-tracker-header {
   margin-bottom: 16px;
   text-align: center;
@@ -112,15 +114,18 @@ body, html {
   font-size: 18px;
 }
 
+/* paragraph tags */
 .user-name, .user-name, .user-email, .user-address, .user-stride, .user-steps, .comparison-steps, .sleep-today, .sleep-average-allTime, .sleep-quality-today, .sleep-quality-allTime, .hydration-today, .hydration-weekly {
   margin: 5px;
 }
 
+/* data visualizations */
 .activity-tracker, .hydration-tracker, .sleep-tracker {
   height: 85%;
   padding: 16px;
 }
 
+/* chart elements */
 .activity-chart, .hydration-chart, .sleep-chart {
   cursor: pointer;
 }

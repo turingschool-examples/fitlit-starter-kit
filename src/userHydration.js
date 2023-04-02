@@ -1,51 +1,38 @@
 class UserHydration {
   constructor(userID, hydrationData) {
-    this.userID = userID
+    this.userId = userID
     this.hydrationInfo = hydrationData.hydrationData.filter(user => user.userID === userID)
   }
-
-  calculateAllTimeAverageDailyOunces() {
-    const allTimeTotalOunces = this.hydrationInfo
-      .reduce((acc, cur) => {
-        return acc += cur.numOunces
-      }, 0)
-
-    const allTimeAverage = allTimeTotalOunces / this.hydrationInfo.length
-
-    return allTimeAverage
+  
+  findMostRecentDay() {
+    return this.hydrationInfo[this.hydrationInfo.length -1].date
   }
 
-    calculateSingleDayOunces(day) {
-      const allDays = this.hydrationInfo.filter(dayInfo => dayInfo.date === day);
-      const totalOunces = allDays.reduce((acc, cur) => {
-        return acc += cur.numOunces;
-      }, 0);
-  
-      return totalOunces;
-    }
-  
+  calculateAllTimeAvgOunces() {
+    const allTimeTotalOunces = this.hydrationInfo.reduce((acc, cur) => {
+      return acc += cur.numOunces;
+    }, 0)
 
-    calculateOuncesLastSevenDays(date) {
-      const selectedDayIndex = this.hydrationInfo.findIndex(log => log.date === date);
+    const allTimeAverage = Math.round(allTimeTotalOunces / this.hydrationInfo.length);
 
-        const sevenDayDetail = this.hydrationInfo.slice(selectedDayIndex, selectedDayIndex +7).map(log => log.numOunces);
+    return allTimeAverage;
+  }
 
-        let lastWeekDetails = [0, 0, 0, 0, 0, 0, 0]
+  findSingleDayOunces(day) {
+    const allDays = this.hydrationInfo.filter(dayInfo => dayInfo.date === day);
+    const totalOunces = allDays.reduce((acc, cur) => {
+      return acc += cur.numOunces;
+    }, 0);
 
-        sevenDayDetail.forEach((log, index) => {
-            lastWeekDetails[index] = log;
-        });
-        return lastWeekDetails
-      }
+    return totalOunces;
+  }
 
-    findMostRecentDay() {
-      return this.hydrationInfo[0].date
-    }   
-    }
+  findOuncesLastSevenDays() {
+     const sevenDayDetail = this.hydrationInfo.slice(-7).map(log => log.numOunces);
 
-// }
+    return sevenDayDetail
+  }
 
-  
+}
 
-
-export default UserHydration
+export default UserHydration;

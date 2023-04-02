@@ -1,7 +1,7 @@
 const fetchAPI = (url) => {
   return fetch(url)
-  .then(data => data.json())
-}
+  .then(data => data.json());
+};
 
 const fetchAllData = () => {
   return Promise.all([
@@ -9,7 +9,7 @@ const fetchAllData = () => {
     fetchAPI('https://fitlit-api.herokuapp.com/api/v1/hydration'),
     fetchAPI('https://fitlit-api.herokuapp.com/api/v1/sleep'),
     fetchAPI('https://fitlit-api.herokuapp.com/api/v1/activity')
-  ])
-}
+  ]);
+};
 
 export { fetchAllData }

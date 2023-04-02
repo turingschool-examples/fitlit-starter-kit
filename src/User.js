@@ -1,5 +1,3 @@
-import userTestData from '../src/data/user-test-data.js';
-
 class User {
   constructor(userStats) {
     this.id = userStats.id;
@@ -9,9 +7,9 @@ class User {
     this.strideLength = userStats.strideLength;
     this.dailyStepGoal = userStats.dailyStepGoal;
     this.friends = userStats.friends;
-    this.activity = []
-    this.sleep = []
-    this.hydration = []
+    this.activity = [];
+    this.sleep = [];
+    this.hydration = [];
   }
 
   getFriends(dataSet) {
@@ -28,10 +26,10 @@ class User {
 
   getAverage(dataSet) {
     let total = dataSet.reduce((acc, userSet) => {
-      acc += userSet.dailyStepGoal
-      return acc
+      acc += userSet.dailyStepGoal;
+      return acc;
     }, 0);
-    return total / dataSet.length
+    return total / dataSet.length;
   }
 
   getName() {

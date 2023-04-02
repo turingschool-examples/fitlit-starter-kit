@@ -49,8 +49,6 @@ class Sleep {
       acc[cV.date] = cV.hoursSlept
       return acc
     },[])
-    // console.log("hoursArray")
-    // console.log(hoursArray)
     return hoursArray
   }
 
@@ -60,12 +58,8 @@ class Sleep {
       return new Date(b.date) - new Date(a.date)
     }).map(data => data.hoursSlept)
     const sliceWeekArray = sortWeekArray.slice(0, 7)
-    // console.log(sliceWeekArray)
+
     return sliceWeekArray
-    // const data = this.findWeeklyHours(userParam, dateParam)
-    // console.log("sleep.chartWeeklyHours() output")
-    // console.log(data)
-    // return data
   }
 
 

@@ -8,19 +8,21 @@
         <link href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      </head>
-    <title>Fitlit</title>
+  <title>Fitlit</title>
   </head>
+  
   <body>
-    <article class="nav-container">
-      <div class="welcome-container">
-        <p class="welcome-message">Hello, user!</p>
-      </div>
-      <div class="calendar-container">
-        <p class="date-message">Wednesday, March 28th 2023</p>
-      </div>
-    </article>
     <main class="data-container">
+      <article class="nav-container">
+        <div class="welcome-container">
+          <img class="profile-image" src="./images/profile-image.png" alt="profile-image" height="50px" width="50px">
+          <p class="welcome-message">User</p>
+          <p class="date-message">Date</p>
+        </div>
+        <div class="logo-container">
+          <img class="logo-image" src="./images/logo-image.png" alt="logo-image" height="100px" width="100px">
+        </div>
+      </article>
       <div class="left-container">
         <section class="user-container">
           <p class="profile-header">User Profile</p>
@@ -31,14 +33,24 @@
           <p class="user-steps">Daily Step Goal</p>
         </section>
         <section class="activity-container">
-          <img class=""
-          <div class="activity-toggle">
-            <p class="activity-header">Activity</p>
-            <p class="activity-steps-today">Steps Today</p>
-            <p class="activity-distance-today">Distance Walked Today</p>
-            <p class="activity-total-today">Active Minutes Today</p>
-            <p class="activity-steps-weekly">Steps This Week</p>
-            <p class="activity-goal">Goal Reached</p>
+          <style>
+            .activity-container {
+            background-image: url('./images/activity-background.png');
+            background-repeat: repeat;
+            background-size: contain;
+          }
+          </style>
+          <div class="offset">
+            <div class="activity-info-container">
+              <p class="activity-header">Today's Activity</p>
+              <p class="activity-steps-today">Steps Today</p>
+              <p class="activity-distance-today">Distance Walked Today</p>
+              <p class="activity-total-today">Active Minutes Today</p>
+              <p class="activity-goal">Goal Reached</p>
+            </div>
+            <div class="spacer-container">
+              <img class="spacer-gif" src="./images/spacer-gif.gif">
+            </div>
           </div>
         </section>
         <div class="activity-tracker">
@@ -48,19 +60,47 @@
       </div>
       <div class="center-container">
         <section class="hydration-container">
-          <p class="hydration-header">Hydration</p>
-          <p class="hydration-today">Hydration Today</p>
-        </section>
-        <section class="comparison-container">
-          <p class="comparison-header">Comparison to Other Users</p>
-          <p class="comparison-steps">Comparison data will go here</p>
+          <style>
+            .hydration-container {
+            background-image: url('./images/background.png');
+            background-repeat: repeat;
+            background-size: contain;
+          }
+          </style>
+          <div class="offset">
+            <p class="hydration-header">Hydration Data</p>
+            <p class="hydration-today">Hydration Today</p>
+            <p class="hydration-goal">Keep going!</p>
+          </div>
         </section>
         <section class="sleep-container">
-          <p class="sleep-header">Sleep</p>
-          <p class="sleep-today">Sleep Today</p>
-          <p class="sleep-quality-today">Sleep Quality Today</p>
-          <p class="sleep-average-allTime">All Time Average</p>
-          <p class="sleep-quality-allTime">Sleep Quality All</p>
+          <style>
+            .sleep-container {
+            background-image: url('./images/background-flip.png');
+            background-repeat: repeat;
+            background-size: contain;
+          }
+          </style>
+            <div class="offset">
+              <p class="sleep-header">Sleep Data</p>
+              <p class="sleep-today">Last Rest</p>
+              <p class="sleep-average-allTime">Average Rest</p>
+              <p class="sleep-quality-today">Last Rest Quality</p>
+              <p class="sleep-quality-allTime">Average Rest Quality</p>
+            </div>
+        </section>
+        <section class="community-container">
+          <style>
+            .community-container {
+            background-image: url('./images/background.png');
+            background-repeat: repeat;
+            background-size: contain;
+          }
+          </style>
+            <div class="offset">
+              <p class="community-header">Community</p>
+              <p class="comparison-steps">Comparison data will go here</p>
+            </div>
         </section>
       </div>
       <div class="right-container">
@@ -72,8 +112,9 @@
           <p class="sleep-tracker-header">Sleep This Week</p>
           <canvas class="sleep-chart"></canvas>
         </div>
+      </div>
     </main>
-    </body>
-    <script src="bundle.js"></script>
+  </body>
+  <script src="bundle.js"></script>
   </body>
 </html>

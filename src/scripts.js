@@ -68,10 +68,10 @@ function htmlDateHelper() {
 function displaySleepActivity(sleepData) {
   sleep = new Sleep(sleepData)
   var htmlDate = htmlDateHelper()
-  sleepToday.innerText = `Sleep Today: ${sleep.findDailyHours(user, htmlDate)} hours`
-  sleepAverage.innerText = `Sleep Average All Time: ${sleep.findAvgHours(user)} hours `
-  sleepQualityToday.innerText = `Sleep Quality Today: ${sleep.findDailyQuality(user, htmlDate)}`
-  sleepQualityAll.innerText = `Sleep Quality All Time: ${sleep.findAvgQuality(user)}`
+  sleepToday.innerText = `Last Rest: ${sleep.findDailyHours(user, htmlDate)} hours`
+  sleepAverage.innerText = `Average Rest: ${sleep.findAvgHours(user)} hours `
+  sleepQualityToday.innerText = `Last Rest Quality: ${sleep.findDailyQuality(user, htmlDate)}`
+  sleepQualityAll.innerText = `Average Rest Quality: ${sleep.findAvgQuality(user)}`
 }
 
 function displayDate() {
@@ -90,24 +90,23 @@ function displayRandomUser(usersData) {
   userEmail.innerText = `Email: ${user.email}`
   userStride.innerText = `Stride Length: ${user.strideLength}`
   userSteps.innerText = `Daily Step Goal: ${user.dailyStepGoal}`
-  welcomeMessage.innerText = `Hello, ${user.getFirstName(user)}!`
+  welcomeMessage.innerText = `${user.name}`
   comparisonSteps.innerText = `The average user is taking ${user.usersAvgDailyStep(usersData)} steps today.`
 }
 
 function displayHydration(hydrationData) {
   hydration = new Hydration(hydrationData)
-  hydrationToday.innerText = `Daily Intake: ${hydration.findDailyFluidIntake(user.id, hydration.findUserData(user.id)[0].date)} oz`
+  hydrationToday.innerText = `You'ved logged ${hydration.findDailyFluidIntake(user.id, hydration.findUserData(user.id)[0].date)} oz of water today.`
 }
 
 function displayActivity(activityData) {
   activity = new Activity(activityData)
   var htmlDate = htmlDateHelper()
-  stepsToday.innerText = `Steps Today: ${activity.todaysStepCount(user, htmlDate )}`
-  distanceWalkedToday.innerText = `Distance Walked Today: ${activity.milesWalkedByDay(user, htmlDate)} miles`
-  activeMinutesToday.innerText = `Active Minutes Today: ${activity.minutesActiveByDay(user, htmlDate)} minutes`
+  stepsToday.innerText = `Steps Taken: ${activity.todaysStepCount(user, htmlDate )}`
+  distanceWalkedToday.innerText = `Distance Walked: ${activity.milesWalkedByDay(user, htmlDate)} miles`
+  activeMinutesToday.innerText = `Minutes Active: ${activity.minutesActiveByDay(user, htmlDate)} minutes`
   // console.log(activity.weeklyStepCount(user, htmlDate))
   // numStepsWeekly.innerText = `Steps this week: ${activity.weeklyStepCount(user, htmlDate)}`
-  numStepsWeekly.innerText = "Steps this week: 30,000 steps"
   goalReached.innerText = `Goal Reached?: ${activity.reachStepGoal(user, htmlDate)}`
 }
 
@@ -176,7 +175,8 @@ function displaySleepTracker() {
           legend: {
               display: false
           },
-      }
+      },
+      maintainAspectRatio: true,
   }
   });
 }
@@ -221,18 +221,13 @@ function displayHydrationTracker() {
 // imports
 import SomeClassYouChangeTheName from './SomeClassYouChangeTheName';
 import './css/styles.css';
-import './images/turing-logo.png';
-import './images/activity-tracker-png.png';
-import './images/sleep-tracker-png.png';
-import './images/background-placeholder.png';
-import './images/profile-placeholder.png';
-import './images/logo-left.png';
-import './images/logo-right.png';
-import './images/calendar-placeholder.png';
-import './images/friend-placeholder.png';
-import './images/water-placeholder.png';
-import './images/activity-placeholder.png';
-import './images/sleep-placeholder.png';
+import './images/logo-image.png';
+import './images/profile-image.png';
+import './images/background.png';
+import './images/background-flip.png';
+import './images/spacer-gif.gif';
+
+
 
 const newClass = new SomeClassYouChangeTheName();
 

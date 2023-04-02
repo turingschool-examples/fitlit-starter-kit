@@ -9,7 +9,7 @@ class User {
         this.friends = userObj.friends
     }
     getUserData(num) {
-        const user = usersData.reduce((acc, index) => {
+        const user = mock.users.reduce((acc, index) => {
         if (index.id === num) {
             return index
         }

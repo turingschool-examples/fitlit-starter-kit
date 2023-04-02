@@ -6,7 +6,7 @@ describe('Hydration', () => {
   let data;
   let hydration;
   beforeEach(() => {
-    data = hydrationTestData.hydrationTestData.reverse()
+    data = hydrationTestData.hydrationTestData.reverse();
     hydration = new Hydration(data);
   });
 
@@ -20,7 +20,7 @@ describe('Hydration', () => {
 
   it('should store an array of hydration data', () => {
     expect(hydration.data).to.deep.equal(data);
-  })
+  });
   
   it('should have a user id, number of ounces, and date', () => {
     const userData = data[0];
@@ -34,7 +34,7 @@ describe('Hydration', () => {
   });
 
   it('should return message if user does not exist', () => {
-        const hydration = new Hydration([]);
+    const hydration = new Hydration([]);
     expect(hydration.findAvgDailyHydration()).to.equal('No Hydration Data Found');
   });
 
@@ -43,15 +43,12 @@ describe('Hydration', () => {
   });
 
   it('should return message if nothing logged that specfic day', () => {    
-  const hydration = new Hydration([]);
+    const hydration = new Hydration([]);
     expect(hydration.getHydrationSpecificDay('2023/03/03')).to.equal('No Hydration Data Found');
   });
 
   it('should return the user\'s total amount of water for 7 consecutive days', () => {
-    expect(hydration.findWeeklyHydration()).to.deep.equal(
-      [ 36, 74, 86, 47, 74, 95, 35 ]
-    );
+    expect(hydration.findWeeklyHydration()).to.deep.equal([ 36, 74, 86, 47, 74, 95, 35 ]);
   });
-
 });
 

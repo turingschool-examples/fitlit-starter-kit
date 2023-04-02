@@ -80,9 +80,9 @@ function pageLoad() {
 
   // Hydration
   createSingleCard('Today\'s Ounces',
-    currentUserHydration.calculateSingleDayOunces(currentUserHydration.findMostRecentDay()));
+    currentUserHydration.findSingleDayOunces(currentUserHydration.findMostRecentDay()));
   createSevenDayCard('Ounces for Week',
-    currentUserHydration.calculateOuncesLastSevenDays(currentUserHydration.findMostRecentDay()));
+    currentUserHydration.findOuncesLastSevenDays());
 
   // Activity 
   activityCard(currentUserActivity.findMostRecentSteps(),

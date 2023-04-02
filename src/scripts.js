@@ -1,6 +1,10 @@
 // Webpack links
 import { fetchAllData } from '../src/apiCalls';
 import './css/styles.css';
+import './images/fitlit-logo.png';
+import './images/hydration-logo.png'
+import './images/activity-logo.png'
+import './images/sleep-logo.png'
 import User from '../src/User';
 import Sleep from '../src/Sleep';
 import Hydration from '../src/Hydration';
@@ -54,7 +58,7 @@ const getUserData = (infoType, array) => {
 const displayCurrentUser = (user) => {
   firstName.innerText = `${user.getName()}`;
   userInfo.innerHTML = `<h4>Address: ${user.address}</h4>
-  <h4>Email: ${user.email}</h4> 
+  <h4><b>Email:</b> ${user.email}</h4> 
   <h4>Stride Length: ${user.strideLength}</h4>
   <h4>Daily Step Goal: ${user.dailyStepGoal}</h4>
   <h4>Friends: ${user.getFriends(userList)}</h4>

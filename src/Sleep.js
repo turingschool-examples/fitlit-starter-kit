@@ -34,7 +34,7 @@ class Sleep {
         }
     };
 
-    findDetailByWeek(date, detail) {
+    findDetailLastSevenDays(date, detail) {
         const selectedDayIndex = this.userSleepLogs.findIndex(log => log.date === date);
 
         const sevenDayDetail = this.userSleepLogs.slice(selectedDayIndex, selectedDayIndex +7).map(log => log[detail]);
@@ -53,6 +53,5 @@ class Sleep {
     };
 
 };
-
 
 export default Sleep;

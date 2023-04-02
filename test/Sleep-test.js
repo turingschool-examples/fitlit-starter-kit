@@ -49,53 +49,45 @@ describe('Sleep', () => {
             { "userID": 1, "date": "2023/03/17", "hoursSlept": 9.2, "sleepQuality": 1.6 },
             { "userID": 1, "date": "2023/03/16", "hoursSlept": 4.8, "sleepQuality": 2.5 }]
         );
-        });
+    });
 
-        it('should find the most recent days data', function () {
-            expect(testUser.findMostRecentDay()).to.be.equal("2023/03/24");
-        })
+    it('should find the most recent days data', function () {
+        expect(testUser.findMostRecentDay()).to.be.equal('2023/03/24');
+    });
 
-        it('should find the overall average of hours slept', function () {
-            expect(testUser.findAllTimeAvgOfDetail("hoursSlept")).to.be.equal(7);
-        });
+    it('should find the overall average of hours slept', function () {
+        expect(testUser.findAllTimeAvgOfDetail('hoursSlept')).to.be.equal(7);
+    });
 
-        it('should find the overall average of sleep quality', function () {
-            expect(testUser.findAllTimeAvgOfDetail("sleepQuality")).to.be.equal(3.1);
-        });
+    it('should find the overall average of sleep quality', function () {
+        expect(testUser.findAllTimeAvgOfDetail('sleepQuality')).to.be.equal(3.1);
+    });
 
-        it('should find the number of sleep hours by date', function () {
+    it('should find the number of sleep hours by date', function () {
+        expect(testUser.findDetailByDay('2023/03/23', 'hoursSlept')).to.be.equal(8.4);
+    });
 
-            expect(testUser.findDetailByDay('2023/03/23', "hoursSlept")).to.be.equal(8.4);
-        });
+    it('should find the number of sleep quality by date', function () {
+        expect(testUser.findDetailByDay('2023/03/16', 'sleepQuality')).to.be.equal(2.5);
+    });
 
-        it('should find the number of sleep quality by date', function () {
-            expect(testUser.findDetailByDay('2023/03/16', "sleepQuality")).to.be.equal(2.5);
-        });
+    it('should be able to tell if a date is valid', function () {
+        expect(testUser.findDetailByDay('2023/02/16', 'sleepQuality')).to.be.equal('no such date');
+        expect(testUser.findDetailByDay('2022/05/16', 'hoursSlept')).to.be.equal('no such date');
+    });
 
-        it('should be able to tell if a date is valid', function () {
-            expect(testUser.findDetailByDay('2023/02/16', "sleepQuality")).to.be.equal('no such date');
+    it('should be able to find the previous 7 days sleep quality given an end date', function () {
+        expect(testUser.findDetailLastSevenDays('2023/03/16', 'sleepQuality')).to.deep.equal([2.5, 0, 0, 0, 0, 0, 0]);
+        expect(testUser.findDetailLastSevenDays('2023/03/24', 'sleepQuality')).to.deep.equal([4.3, 3.5, 4.7, 3, 3.1, 1.2, 3.9]);
+    });
 
-            expect(testUser.findDetailByDay('2022/05/16', "hoursSlept")).to.be.equal('no such date');
-        });
+    it('should be able to find the previous 7 days hours slept given an end date', function () {
+        expect(testUser.findDetailLastSevenDays('2023/03/16', 'hoursSlept')).to.deep.equal([4.8, 0, 0, 0, 0, 0, 0]);
+        expect(testUser.findDetailLastSevenDays('2023/03/24', 'hoursSlept')).to.deep.equal([9.6, 8.4, 9.7, 4.7, 8, 4.2, 4.1]);
+    });
 
-        it('should be able to find the previous 7 days sleep quality given an end date', function () {
-            expect(testUser.findDetailByWeek('2023/03/16', "sleepQuality")).to.deep.equal([2.5, 0, 0, 0, 0, 0, 0] );
-
-            expect(testUser.findDetailByWeek('2023/03/24', "sleepQuality")).to.deep.equal([4.3, 3.5, 4.7, 3, 3.1, 1.2, 3.9]);
-        });
-
-        it('should be able to find the previous 7 days hours slept given an end date', function () {
-            expect(testUser.findDetailByWeek('2023/03/16', "hoursSlept")).to.deep.equal([4.8, 0, 0, 0, 0, 0, 0] );
-            
-            expect(testUser.findDetailByWeek('2023/03/24', "hoursSlept")).to.deep.equal([9.6, 8.4, 9.7, 4.7, 8, 4.2, 4.1]);
-        });
-
-        it('should be able to find if a given take is not valid when finding the previous 7 days detail', function () {
-            expect(testUser.findDetailByWeek('2023/03/14', "hoursSlept")).to.deep.equal('no such date');
-            
-            expect(testUser.findDetailByWeek('2022/03/19', "sleepQuality")).to.deep.equal('no such date');
-
-        });
-
-
+    it('should be able to find if a given take is not valid when finding the previous 7 days detail', function () {
+        expect(testUser.findDetailLastSevenDays('2023/03/14', 'hoursSlept')).to.deep.equal('no such date');
+        expect(testUser.findDetailLastSevenDays('2022/03/19', 'sleepQuality')).to.deep.equal('no such date');
+    });
 });

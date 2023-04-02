@@ -48,7 +48,7 @@ window.addEventListener('load', () => {
 })
 
 
-function loadUserInfo(currentUserData,userData) {
+function loadUserInfo(currentUserData, userData) {
   document.getElementById('firstName').innerHTML = `Welcome ${currentUserData.userName}!`;
   document.getElementById('fullName').innerHTML = `User: ${currentUserData.userName}`
   document.getElementById('address').innerHTML = `Address: ${currentUserData.address}`;
@@ -69,20 +69,25 @@ function pageLoad() {
   // *** Need their step goal compared to all user step goal
 
   // Sleep
-  sleepSummaryCard(currentUserSleep.findAllTimeAvgOfDetail('hoursSlept'), currentUserSleep.findAllTimeAvgOfDetail('sleepQuality'));
-  sleepWeekCard('Hours', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'hoursSlept'), currentUserSleep.findDetailByWeek(currentUserSleep.findMostRecentDay(), "hoursSlept"));
-  sleepWeekCard('Quality', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'sleepQuality'), currentUserSleep.findDetailByWeek(currentUserSleep.findMostRecentDay(), "sleepQuality"));
-
-
+  sleepSummaryCard(currentUserSleep.findAllTimeAvgOfDetail('hoursSlept'),
+    currentUserSleep.findAllTimeAvgOfDetail('sleepQuality'));
+  sleepWeekCard('Hours',
+    currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'hoursSlept'),
+    currentUserSleep.findDetailLastSevenDays(currentUserSleep.findMostRecentDay(), "hoursSlept"));
+  sleepWeekCard('Quality',
+    currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'sleepQuality'),
+    currentUserSleep.findDetailLastSevenDays(currentUserSleep.findMostRecentDay(), "sleepQuality"));
 
   // Hydration
-  createSingleCard("Today's Ounces", currentUserHydration.calculateSingleDayOunces(currentUserHydration.findMostRecentDay()));
-  createSevenDayCard('Ounces for Week', currentUserHydration.calculateOuncesLastSevenDays(currentUserHydration.findMostRecentDay()));
+  createSingleCard('Today\'s Ounces',
+    currentUserHydration.calculateSingleDayOunces(currentUserHydration.findMostRecentDay()));
+  createSevenDayCard('Ounces for Week',
+    currentUserHydration.calculateOuncesLastSevenDays(currentUserHydration.findMostRecentDay()));
 
   // Activity 
-  activityCard(currentUserActivity.findMostRecentSteps(), 
-              currentUserActivity.calculateMiles(currentUserActivity.findMostRecentDay()), 
-              currentUserActivity.findStepsLastSevenDays(currentUserActivity.findMostRecentDay()), currentUserActivity.checkGoalLastSevenDays(currentUserActivity.findMostRecentDay()))
+  activityCard(currentUserActivity.findMostRecentSteps(),
+    currentUserActivity.calculateMiles(currentUserActivity.findMostRecentDay()),
+    currentUserActivity.findStepsLastSevenDays(currentUserActivity.findMostRecentDay()), currentUserActivity.checkGoalLastSevenDays(currentUserActivity.findMostRecentDay()))
 }
 
 function sleepSummaryCard(avgHours, avgQuality) {
@@ -122,8 +127,8 @@ function sleepWeekCard(detail, detailToday, detailByWeek) {
    </section>`
 }
 
-function activityCard(stepCount, miles, weekSteps,stepGoalMet){
-   activityDisplay.innerHTML += `
+function activityCard(stepCount, miles, weekSteps, stepGoalMet) {
+  activityDisplay.innerHTML += `
    <section class='card activity' id= 'card-activity'>
     <div>
       <text> Total Active Minutes</text>
@@ -160,7 +165,7 @@ function activityCard(stepCount, miles, weekSteps,stepGoalMet){
       <p></p>  
     </div>
     <div class ='data-row  fuckYou'> 
-       <text> ${stepGoalMet[0]} </text>
+      <text> ${stepGoalMet[0]} </text>
       <text> ${stepGoalMet[1]} </text>
       <text> ${stepGoalMet[2]} </text>
       <text> ${stepGoalMet[3]} </text>
@@ -186,15 +191,14 @@ function createSevenDayCard(cardTitle, outputToDisplay) {
   hydrationDisplay.innerHTML += `
   <section class='card seven-day'> 
     <h3> ${cardTitle} </h3>
- <div class='dataRow'>
-    <text> ${outputToDisplay[0]} </text>
-    <text> ${outputToDisplay[1]} </text>
-    <text> ${outputToDisplay[2]} </text>
-    <text> ${outputToDisplay[3]} </text>
-    <text> ${outputToDisplay[4]} </text>
-    <text> ${outputToDisplay[5]} </text>
-    <text> ${outputToDisplay[6]} </text>
- </div>
-</section>
-`
+    <div class='dataRow'>
+      <text> ${outputToDisplay[0]} </text>
+      <text> ${outputToDisplay[1]} </text>
+      <text> ${outputToDisplay[2]} </text>
+      <text> ${outputToDisplay[3]} </text>
+      <text> ${outputToDisplay[4]} </text>
+      <text> ${outputToDisplay[5]} </text>
+      <text> ${outputToDisplay[6]} </text>
+    </div>
+  </section>`
 }

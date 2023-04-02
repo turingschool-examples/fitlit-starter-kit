@@ -128,12 +128,12 @@ function displaySleepCard(sleep, userID, date) {
       userID
     )}</p>
   `;
-  const hoursSleptButton = document.querySelector("#hours-slept-button");
+  const hoursSleptButton = document.querySelector("#hoursSleptButton");
   hoursSleptButton.addEventListener("click", () =>
     createHoursSleptChart(sleep, userID, date)
   );
   const qualitySleptButton = document.querySelector(
-    "#weekly-sleep-quality-button"
+    "#weeklySleepQualityButton"
   );
   qualitySleptButton.addEventListener("click", () =>
     createSleepQualityChart(sleep, userID, date)

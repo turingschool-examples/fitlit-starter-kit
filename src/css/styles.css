@@ -85,6 +85,7 @@ h1 {
   width: 100%;
   padding-left: 1%;
   margin-block-end: 0;
+  margin-bottom: 2%
 }
 
 /* main section */
@@ -101,7 +102,7 @@ main {
   justify-content: start;
   align-items: start;
   justify-items: center;
-  max-width: 55%;
+  max-width: 57%;
 }
 
 body {
@@ -110,12 +111,8 @@ body {
 
 .activity-card, .hydration-card, .sleep-card, .user-card {
   margin: 1em;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 1%;
   opacity: 0.9;
   position: relative;
@@ -134,7 +131,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   top: 0;
-  transform: translateY(-50%);
+  transform: translateX(70%) translateY(-50%);
   position: absolute;
 }
 
@@ -151,6 +148,10 @@ body {
 .user-card {
   width: 100%;
   height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .activity-card {
@@ -169,6 +170,10 @@ body {
   border-color: rgb(72, 85, 182);
 }
 
+.activity-card-js, .hydration-holder, .latest-sleep-data-js {
+  margin-top: 20%;
+}
+
 .info-chart{
   margin-top: 20%;
 }
@@ -180,60 +185,61 @@ body {
 
 /* buttons */
 
+button {
+  border: 0px;
+  border-radius: 5px;
+  color: white;
+  padding: 5px;
+}
+
 .activity-button {
   background-color: rgb(253, 106, 22);
-  color: white;
-  border-radius: 5px;
+  width: 96%;
 }
 
 .hydration-button {
   background-color: rgb(66, 194, 251);
-  color: white;
-  border-radius: 5px;
+  width: 96%;
 }
 
 .sleep-button {
   background-color: rgb(117, 132, 241);
-  color: white;
-  border-radius: 5px;
+  width: 48%;
+}
+
+.button-wrapper {
+  position: absolute;
+  bottom: 4%;
+  display: flex;
+  width: 94%;
+  justify-content: space-around;
 }
 
 /* text */
-.card-header {
-  margin: 5px;
-  text-align: center;
+
+.water-text, .sleep-text, .activity-text {
+  text-align: left;
+  padding-top: 20px
 }
 
 .water-text {
 color:rgb(66, 194, 251);
 }
 
-.water-header {
-  color:rgb(66, 194, 251);
-}
-
 .activity-text {
   color: rgb(253, 106, 22);;
-}
-
-.activity-header {
- color: rgb(253, 106, 22);
 }
 
 .sleep-text {
   color: rgb(117, 132, 241);
 }
 
-.sleep-header {
-  color: rgb(117, 132, 241);
-}
-
 b {
-  font-size: smaller;
+  font-size: 16px;
   margin: 0px;
 }
 
 p {
-  font-size: small;
+  font-size: 14px;
   margin: 0px;
 }

@@ -1,17 +1,17 @@
 class Activity {
     constructor(userDetail, allUserActivityData) {
-        this.userId = userDetail.id
-        this.strideLength = userDetail.strideLength
-        this.dailyStepGoal = userDetail.dailyStepGoal
+        this.userId = userDetail.id;
+        this.strideLength = userDetail.strideLength;
+        this.dailyStepGoal = userDetail.dailyStepGoal;
         this.activityLogs = allUserActivityData.activityData.filter(data => data.userID === this.userId);
     }
-
+    
+    findMostRecentDay() {
+        return this.activityLogs[0].date;
+    }
 
     findMostRecentSteps() {
-        return this.activityLogs[0].numSteps
-    }
-    findMostRecentDay() {
-        return this.activityLogs[0].date
+        return this.activityLogs[0].numSteps;
     }
 
     calculateMiles(date) {
@@ -24,24 +24,22 @@ class Activity {
     calculateActiveMinutes(date) {
         const dayLog = this.activityLogs.find((log) => {
             return log.date === date;
-        })
-
+        });
         return dayLog.minutesActive;
     }
-
 
     checkStepGoalReached(date) {
         const dayDetail = this.activityLogs.find(log => log.date === date);
         const stepGoal = this.dailyStepGoal;
 
         if (stepGoal <= dayDetail.numSteps) {
-            return `Yes! ${dayDetail.numSteps} meets your goal!`
+            return `Yes! ${dayDetail.numSteps} steps meets your goal!`
         } else {
             return `Not quite! ${stepGoal - dayDetail.numSteps} steps to go!`
         }
     };
 
-    calculateStepLastSevenDays(date) {
+    findStepsLastSevenDays(date) {
         const selectedDayIndex = this.activityLogs.findIndex(log => log.date === date);
 
         const sevenDayDetail = this.activityLogs.slice(selectedDayIndex, selectedDayIndex + 7).map(log => log.numSteps);
@@ -54,7 +52,7 @@ class Activity {
         return lastWeekDetails
     }
 
-    calculateGoalLastSevenDays(date) {
+    checkGoalLastSevenDays(date) {
         const selectedDayIndex = this.activityLogs.findIndex(log => log.date === date);
 
         const sevenDayStepDetail = this.activityLogs.slice(selectedDayIndex, selectedDayIndex + 7).map(log => log.numSteps);
@@ -74,10 +72,6 @@ class Activity {
 
         return lastWeekDetails
     };
-
-
-
-
 }
 
 export default Activity

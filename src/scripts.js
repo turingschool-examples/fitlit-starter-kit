@@ -159,7 +159,7 @@ function activityCard(stepCount, miles, weekSteps,stepGoalMet){
       <p></p>
       <p></p>  
     </div>
-    <div class ='data-row'> 
+    <div class ='data-row  fuckYou'> 
        <text> ${stepGoalMet[0]} </text>
       <text> ${stepGoalMet[1]} </text>
       <text> ${stepGoalMet[2]} </text>

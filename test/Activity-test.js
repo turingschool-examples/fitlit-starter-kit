@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import Activity from '../src/Activity';
-import user from '../src/user'
 
 describe('Activity', () => {
     let testUser;
@@ -36,7 +35,6 @@ describe('Activity', () => {
                 11
             ]
         };
-
         testUser = new Activity(testUserInfo, activityLogs)
     });
 
@@ -71,8 +69,14 @@ describe('Activity', () => {
             { "userID": 1, "date": "2023/03/18", "numSteps": 3505, "minutesActive": 265, "flightsOfStairs": 22 }
         ]);
     });
+    
+    it('should find the most recent day of activity logs', function () {
+        expect(testUser.findMostRecentDay()).to.equal('2023/03/24');
+    });
 
-
+    it('should find the number of steps for the most recent day', function () {
+        expect(testUser.findMostRecentSteps()).to.equal(7362);
+    });
 
     it('should find the miles per day when given a date', function () {
         expect(testUser.calculateMiles('2023/03/22')).to.be.equal(4.2);
@@ -85,6 +89,18 @@ describe('Activity', () => {
 
     it('should find if they reached the step goal for a specific day', function () {
         expect(testUser.checkStepGoalReached('2023/03/18')).to.be.equal('Not quite! 3495 steps to go!');
-        expect(testUser.checkStepGoalReached('2023/03/24')).to.be.equal(`Good Job! 7362 meets your goal!`);
+        expect(testUser.checkStepGoalReached('2023/03/24')).to.be.equal(`Yes! 7362 steps meets your goal!`);
+    });
+
+    it('should be able to find the previous 7 days of number of steps', function () {
+        expect(testUser.findStepsLastSevenDays('2023/03/24')).to.deep.equal([7362, 6502, 5505, 4575, 9675, 3493, 3505]);
+
+        expect(testUser.findStepsLastSevenDays('2023/03/20')).to.deep.equal([9675, 3493, 3505, 0, 0, 0, 0]);
+    });
+
+    it('should be able to find the previous 7 days of if the step goal was reached', function () {
+        expect(testUser.checkGoalLastSevenDays('2023/03/24')).to.deep.equal(['Yes', 'No', 'No', 'No', 'Yes', 'No', 'No']);
+
+        expect(testUser.checkGoalLastSevenDays('2023/03/20')).to.deep.equal(['Yes', 'No', 'No', '', '', '', '']);
     });
 });

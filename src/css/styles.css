@@ -14,8 +14,15 @@
   border: 1px solid red;
 } */
 
-body, html {
+html {
   height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100%;
+  width: 100%;
   padding: 0;
   margin: 0;
   font-family: 'europa', sans-serif;
@@ -29,10 +36,8 @@ body, html {
   bottom: auto;
   z-index: 9999;
   display: flex;
-  width: 100%;
-  height: 100px;
+  height: 8%;
   align-items: center;
-  background-color:rgba(248, 238, 218, 0.4);
 }
 
 .navigation {
@@ -40,13 +45,19 @@ body, html {
   justify-content: space-between;
   align-items: center;
   position: relative;
+  height: 100%;
   width: 100%;
-  margin: 0 3%;
+  background-color: rgba(241, 99, 50, 0.8);
 }
 
 .nav-left-container {
   display: flex;
   align-items: center;
+  width: 50%;
+}
+
+.site-logo-wrapper {
+  height: 100%;
   width: 30%;
 }
 
@@ -57,7 +68,7 @@ body, html {
 }
 
 .logo-stand-in {
-  background-color: rgb(228, 169, 169);
+  background-color: white;
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -67,7 +78,7 @@ body, html {
 h1 {
   font-size: 1.3em;
   font-weight: 800;
-  margin-left: 16%;
+  margin-left: 4%;
 }
 
 .nav-date {
@@ -76,18 +87,18 @@ h1 {
 }
 
 /* Welcome Header */
-.welcome {
-  margin-bottom: 5%;
-  margin-top: 5%;
-  padding-left: 2%;
- 
-
+.welcome-date{
+  font-size: 0.8rem;
+  color:rgb(224, 97, 23);
 }
 
 h2 {
+  font-size: 1.4rem;
   width: 100%;
-  padding-left: 1%;
-  margin-block-end: 0;
+  margin-block-end: 3.5%;
+  margin-block-start: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 /* main section */
@@ -95,7 +106,11 @@ main {
   display: flex;
   justify-items: start;
   align-items: start;
-  margin-top: 5.5%;
+  padding: 0 3% 0% 3%;
+  margin-top: 6%;
+  height: 85%;
+  width: 90%;
+
 }
 
 .cards{
@@ -104,15 +119,26 @@ main {
   justify-content: start;
   align-items: start;
   justify-items: center;
-  max-width: 57%;
+  height: 80%;
+  width: 70%;
 }
 
 body {
-  margin-left: 3%;
+  position: absolute;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+}
+
+.stat-card-wrapper {
+  display: flex;
+  width: 99%;
+  justify-content: space-between;
+  margin-bottom: 2%;
+  height: 60%;
 }
 
 .activity-card, .hydration-card, .sleep-card, .user-card {
-  margin: 1em;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   padding: 1%;
@@ -121,42 +147,51 @@ body {
 }
 
 .stat-cards {
-  width: 27%;
-  height: 30%;
-  aspect-ratio: 1 / 1.3;
+  max-width: 30%;
+  aspect-ratio: 1 / 1;
   border: 2px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+
+
 .stat-card-icon-wrapper {
-  height: 30%;
+  height: 25%;
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
   top: 0;
-  transform: translateX(70%) translateY(-50%);
+  transform: translateY(-50%);
   position: absolute;
 }
 
 .infographic {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  height: 600px;
-  width: 500px;
-  margin-top: 10%;
-  margin-left: 4%;
-  background-color: rgb(243, 206, 199)
+  margin-top: 7%;
+  height: 77%;
+  width: 45%;
+  margin-left: 2%;
+  background-color: rgba(248, 238, 218, 0.4);
+  padding: 1%;
+  border: 2px solid black;
 }
 
-/* User Card */
+/* User Profile Card */
 
-.user-card {
-  width: 100%;
-  height: 30%;
+.user-profile-card {
+  background: rgba(248, 238, 218, 0.4);
+  border-radius: 1%;
+  border: 2px solid black;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  padding: 1.5% 0;
+  width: 100%;
+  height: 35%;
 }
 
 .user-info-wrapper {
@@ -165,8 +200,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-content: start;
-  align-items: start;
+  align-items: center;
   padding: 1.5% 0;
 }
 
@@ -175,7 +209,10 @@ body {
   border-radius: 20%;
   margin-left: 2%;
   width: 5%;
-  height: 4%;
+  height: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .user-name-profile {
@@ -185,9 +222,13 @@ body {
 }
 
 .profile-info {
-  height: 8em;
+  height: 90%;
   width: 20%;
   padding: 0 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
 }
 
 .profile-info b {
@@ -212,22 +253,27 @@ body {
 
 .activity-card {
   background-color: rgba(248, 238, 218, 0.4);
-  border-color: rgb(204, 51, 51);
+  border-color: 2px solid black;
 }
 
 .hydration-card {
   background-color:rgba(248, 238, 218, 0.4);
+  margin: 0 2%;
   color: #3C4252;
-  border-color: rgb(66, 194, 251);
+  border-color: 2px solid black;
 }
 
 .sleep-card {
   background-color: rgba(248, 238, 218, 0.4);
-  border-color: rgb(72, 85, 182);
+  border-color: 2px solid black;
 }
 
 .activity-card-js, .hydration-holder, .latest-sleep-data-js {
   margin-top: 20%;
+}
+
+.latest-sleep-data-js, .all-time-sleep-data-js {
+  width: 100%;
 }
 
 .info-chart{
@@ -275,7 +321,11 @@ button {
 
 .water-text, .sleep-text, .activity-text {
   text-align: left;
-  padding-top: 10px
+  font-size: 0.8rem;
+  width: 100%;
+  display: inline-block;
+  margin-block-end: 0.1rem;
+  padding-left: 2%;
 }
 
 .water-text {
@@ -291,11 +341,11 @@ color:rgb(66, 194, 251);
 }
 
 b {
-  font-size: 16px;
-  margin: 0px;
+  font-size: 0.9rem;
+  margin: 0.3rem 0;
 }
 
 p {
-  font-size: 14px;
-  margin: 0px;
+  font-size: 0.8rem;
+  margin: 0;
 }

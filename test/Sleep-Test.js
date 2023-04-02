@@ -29,7 +29,7 @@ describe('Sleep', function() {
   })
 
   it('should be able to find hours slept by date', function() {
-    sleep.findDailyHours("2023/03/24");
+    sleep.findDailyHours(user1, "2023/03/24");
 
     expect(sleep.dailyHours).to.deep.equal(9.6);
   })
@@ -41,13 +41,13 @@ describe('Sleep', function() {
   })
 
   it('should be able store one week of sleep data', function()  {
-    sleep.findWeeklyHours("2023/03/24"); 
+    sleep.findWeeklyHours(user1, "2023/03/24"); 
     
     expect(sleep.weeklyHours).to.deep.equal({ '2023/03/24': 9.6 })
   })
 
   it('should be able store one week of sleep quality data', function()  {
-    sleep.findWeeklyQuality("2023/03/24"); 
+    sleep.findWeeklyQuality(user1, "2023/03/24"); 
     
     expect(sleep.weeklyQuality).to.deep.equal({ '2023/03/24': 4.3 })
   })

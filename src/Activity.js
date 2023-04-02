@@ -21,7 +21,7 @@ class Activity {
         return Math.round(miles * 10) / 10;
     }
 
-    calculateActiveMinutes(date) {
+    findActiveMinutes(date) {
         const dayLog = this.activityLogs.find((log) => {
             return log.date === date;
         });

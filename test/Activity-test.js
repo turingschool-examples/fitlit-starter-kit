@@ -84,7 +84,7 @@ describe('Activity', () => {
     })
 
     it('should find the active minuts by day', function () {
-        expect(testUser.calculateActiveMinutes('2023/03/21')).to.be.equal(211);
+        expect(testUser.findActiveMinutes('2023/03/21')).to.be.equal(211);
     });
 
     it('should find if they reached the step goal for a specific day', function () {

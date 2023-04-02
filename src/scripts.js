@@ -82,7 +82,7 @@ function pageLoad() {
   // Activity 
   activityCard(currentUserActivity.findMostRecentSteps(), 
               currentUserActivity.calculateMiles(currentUserActivity.findMostRecentDay()), 
-              currentUserActivity.calculateStepLastSevenDays(currentUserActivity.findMostRecentDay()), currentUserActivity.calculateGoalLastSevenDays(currentUserActivity.findMostRecentDay()))
+              currentUserActivity.findStepsLastSevenDays(currentUserActivity.findMostRecentDay()), currentUserActivity.checkGoalLastSevenDays(currentUserActivity.findMostRecentDay()))
 }
 
 function sleepSummaryCard(avgHours, avgQuality) {

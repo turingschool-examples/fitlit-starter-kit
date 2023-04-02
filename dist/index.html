@@ -8,34 +8,21 @@
         <link href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      </head>
-    <title>Fitlit</title>
+  <title>Fitlit</title>
   </head>
+  
   <body>
-    <style>
-      body  {
-        background-image: url('./images/background-placeholder.png');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-      }
-    </style>
-    <article class="nav-container">
-      <div class="welcome-container">
-        <img class="profile-image" src="./images/profile-placeholder.png" alt="profile-placeholder" height="60px" width="60px">
-        <p class="welcome-message">Hello, user!</p>
-      </div>
-      <div class="fitlit-container">
-        <img class="profile-image" src="./images/logo-left.png" alt="logo-left" height="60px" width="60px">
-        <p class="fitlit-message">FitLit</p>
-        <img class="profile-image" src="./images/logo-right.png" alt="logo-right" height="60px" width="60px">
-      </div>
-      <div class="calendar-container">
-        <p class="date-message">Wednesday, March 28th 2023</p>
-        <img class="calendar-image" src="./images/calendar-placeholder.png" alt="calendar-image" height="45px" width="45px">
-      </div>
-    </article>
     <main class="data-container">
+      <article class="nav-container">
+        <div class="welcome-container">
+          <img class="profile-image" src="./images/profile-image.png" alt="profile-image" height="50px" width="50px">
+          <p class="welcome-message">User</p>
+          <p class="date-message">Date</p>
+        </div>
+        <div class="logo-container">
+          <img class="logo-image" src="./images/logo-image.png" alt="logo-image" height="100px" width="100px">
+        </div>
+      </article>
       <div class="left-container">
         <section class="user-container">
           <p class="profile-header">User Profile</p>
@@ -45,93 +32,89 @@
           <p class="user-stride">Stride Length</p>
           <p class="user-steps">Daily Step Goal</p>
         </section>
-        <section class="friends-container">
-          <p class="friends-header">Friends</p>
-          <div class="friend-grid">
-            <!-- <div class="friend-item">
-              <img class="friend-image" src="./images/friend-placeholder.png" alt="friend-placeholder" height="50px" width="50px">
-              <p class="friend-name">Friend #1</p>
+        <section class="activity-container">
+          <style>
+            .activity-container {
+            background-image: url('./images/activity-background.png');
+            background-repeat: repeat;
+            background-size: contain;
+          }
+          </style>
+          <div class="offset">
+            <div class="activity-info-container">
+              <p class="activity-header">Today's Activity</p>
+              <p class="activity-steps-today">Steps Today</p>
+              <p class="activity-distance-today">Distance Walked Today</p>
+              <p class="activity-total-today">Active Minutes Today</p>
+              <p class="activity-goal">Goal Reached</p>
             </div>
-            <div class="friend-item">
-              <img class="friend-image" src="./images/friend-placeholder.png" alt="friend-placeholder" height="50px" width="50px">
-              <p class="friend-name">Friend #2</p>
+            <div class="spacer-container">
+              <img class="spacer-gif" src="./images/spacer-gif.gif">
             </div>
-            <div class="friend-item">
-              <img class="friend-image" src="./images/friend-placeholder.png" alt="friend-placeholder" height="50px" width="50px">
-              <p class="friend-name">Friend #3</p>
-            </div>
-            <div class="friend-item">
-              <img class="friend-image" src="./images/friend-placeholder.png" alt="friend-placeholder" height="50px" width="50px">
-              <p class="friend-name">Friend #4</p>
-            </div>
-            <div class="friend-item">
-              <img class="friend-image" src="./images/friend-placeholder.png" alt="friend-placeholder" height="50px" width="50px">
-              <p class="friend-name">Friend #5</p>
-            </div>
-            <div class="friend-item">
-              <img class="friend-image" src="./images/friend-placeholder.png" alt="friend-placeholder" height="50px" width="50px">
-              <p class="friend-name">Friend #6</p>
-            </div>
-            <div class="friend-item">
-              <img class="friend-image" src="./images/friend-placeholder.png" alt="friend-placeholder" height="50px" width="50px">
-              <p class="friend-name">Friend #7</p>
-            </div>
-            <div class="friend-item">
-              <img class="friend-image" src="./images/friend-placeholder.png" alt="friend-placeholder" height="50px" width="50px">
-              <p class="friend-name">Friend #8</p>
-            </div> -->
           </div>
         </section>
-        <section class="comparison-container">
-          <p class="comparison-header">Comparison to Other Users</p>
-          <p class="comparison-steps">Comparison data will go here</p>
-        </section>
-      </div>
-      <div class="center-container">
-        <section class="activity-container">
-          <p class="activity-header">Activity</p>
-          <p class="activity-steps-today">Steps Today</p>
-          <p class="activity-distance-today">Distance Walked Today</p>
-          <p class="activity-total-today">Active Minutes Today</p>
-          <p class="activity-steps-weekly">Steps This Week</p>
-          <p class="activity-goal">Goal Reached</p>
-        </section>
-        <section class="sleep-container">
-          <p class="sleep-header">Sleep</p>
-          <p class="sleep-today">Sleep Today</p>
-          <p class="sleep-quality-today">Sleep Quality Today</p>
-          <p class="sleep-weekly">Sleep This Week</p>
-          <p class="sleep-quality-weekly">Sleep Quality weekly</p>
-          <p class="sleep-average-allTime">All Time Average</p>
-          <p class="sleep-quality-allTime">Sleep Quality All</p>
-        </section>
-        <section class="hydration-container">
-          <p class="hydration-header">Hydration</p>
-          <p class="hydration-today">Hydration Today</p>
-          <p class="hydration-weekly">Hydration This Week</p>
-        </section>
-        <div class="space-filler">
-          <img class="water-placeholder" src="./images/activity-placeholder.png" alt="activity-placeholder" height="50" width="50">
-          <img class="water-placeholder" src="./images/sleep-placeholder.png" alt="sleep-placeholder" height="50" width="50">
-          <img class="water-placeholder" src="./images/water-placeholder.png" alt="water-placeholder" height="50" width="40">
+        <div class="activity-tracker">
+          <p class="activity-tracker-header">Steps This Week</p>
+          <canvas class="activity-chart"></canvas>
         </div>
       </div>
-      <div class="right-container">
-        <canvas class="bar-chart"></canvas>        
-        <!-- <section class="activity-tracker">
-          <p class="activity-tracker-header">Activity Today</p>
-          <img class="activity-tracker-placeholder" src="./images/activity-tracker-png.png" alt="activity-tracker-placeholder" height="250" width="400">
-        </section> -->
-        <canvas class="pie-chart"></canvas>
-        <!-- <section class="sleep-tracker">
-          <p class="sleep-tracker-header">Sleep Today</p>
-          <img class="sleep-tracker-placeholder" src="./images/sleep-tracker-png.png" alt="sleep-tracker-placeholder" height="250" width="400"> -->
+      <div class="center-container">
+        <section class="hydration-container">
+          <style>
+            .hydration-container {
+            background-image: url('./images/background.png');
+            background-repeat: repeat;
+            background-size: contain;
+          }
+          </style>
+          <div class="offset">
+            <p class="hydration-header">Hydration Data</p>
+            <p class="hydration-today">Hydration Today</p>
+            <p class="hydration-goal">Keep going!</p>
+          </div>
+        </section>
+        <section class="sleep-container">
+          <style>
+            .sleep-container {
+            background-image: url('./images/background-flip.png');
+            background-repeat: repeat;
+            background-size: contain;
+          }
+          </style>
+            <div class="offset">
+              <p class="sleep-header">Sleep Data</p>
+              <p class="sleep-today">Last Rest</p>
+              <p class="sleep-average-allTime">Average Rest</p>
+              <p class="sleep-quality-today">Last Rest Quality</p>
+              <p class="sleep-quality-allTime">Average Rest Quality</p>
+            </div>
+        </section>
+        <section class="community-container">
+          <style>
+            .community-container {
+            background-image: url('./images/background.png');
+            background-repeat: repeat;
+            background-size: contain;
+          }
+          </style>
+            <div class="offset">
+              <p class="community-header">Community</p>
+              <p class="comparison-steps">Comparison data will go here</p>
+            </div>
         </section>
       </div>
+      <div class="right-container">
+        <div class="hydration-tracker">
+          <p class="hydration-tracker-header">Hydration This Week</p>
+          <canvas class="hydration-chart"></canvas>  
+        </div>     
+        <div class="sleep-tracker">
+          <p class="sleep-tracker-header">Sleep This Week</p>
+          <canvas class="sleep-chart"></canvas>
+        </div>
+      </div>
     </main>
-    </body>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px" hidden>
-    <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="bundle.js"></script>
+  </body>
+  <script src="bundle.js"></script>
   </body>
 </html>

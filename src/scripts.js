@@ -95,9 +95,9 @@ function sleepSummaryCard(avgHours, avgQuality) {
           <p></p>
           <p></p>
           <text> All-time Quality Average: </text>
-         
           <text> ${avgQuality} </text>
       </div>
+      <img id="sleepIcon" src="Sleep-Icon.PNG" alt="Sleep-Icon" width="50" height="50"/>
    </section>`
 }
 
@@ -164,6 +164,7 @@ function activityCard(stepCount, miles, weekSteps,stepGoalMet){
       <br>
       <text> ${stepGoalMet[6]} </text> 
     </div> 
+    <img id="activityLogo" src="activity-icon.png" alt="activity-icon" width="50" height="50"/>
    </section>
   `
 }
@@ -175,6 +176,7 @@ function createSingleCard(cardTitle, outputToDisplay) {
             <div>
                 <text> ${outputToDisplay} </text>
             </div>
+            <img id="hydrationIcon" src="Hydration-Icon.PNG" alt="Hydration-Icon" width="50" height="50"/>
          </section>`
 }
 

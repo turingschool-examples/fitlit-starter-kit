@@ -103,8 +103,23 @@ aside {
   padding: 0px 20px;
 }
 
+#gitFitLogo {
+height: 488px;
+width: 500px;
+border: 1px solid #45B8AC;
+border-radius: 5%;
+margin-top: 25px;
+margin-left: 25px;
+}
 
+#hydrationIcon {
+  width: 40px;
+  margin-top: 70px;
+} 
 
+#activityLogo {
+  margin-top: 10px;
+}
 
 
 

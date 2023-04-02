@@ -21,12 +21,27 @@ class Hydration {
         return userHydration
     }
 
-    calculateFluidWeekly(id) {
-        const userWeekly = this.hydration.filter(data => data.userID === id).sort((a, b) => {
-            return b.date - a.date
+    chartWeeklyFluids(userParam, dateParam) {
+        const userWeekly = this.hydration.filter(data => data.userID === userParam.id && data.date <= dateParam).sort((a, b) => {
+            return new Date(b.date) - new Date(a.date)
         }).map((day) => day.numOunces)
         const week = userWeekly.slice(0, 7)
         return week
+    }
+
+    
+
+    calculateFluidWeekly(userParam, dateParam) {
+        const userWeekly = this.hydration.filter(data => data.userID === userParam.id && data.date <= dateParam)
+        const sortWeekArray = userWeekly.sort((a, b) => {
+            return new Date(b.date) - new Date(a.date)
+        })
+        const sliceFluidWeek = sortWeekArray.slice(0, 7)
+        const fluidArray = sliceFluidWeek.reduce((acc, cV) => {
+            acc[cV.date] = cV
+            return acc
+        },[])
+        return fluidArray
     }
 
     calculateAllTimeAverage(id) {

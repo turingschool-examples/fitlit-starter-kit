@@ -8,7 +8,6 @@ import './css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/turing-logo.png';
 
-
 import User from './user';
 import UserHydration from './userHydration';
 import Sleep from './Sleep';
@@ -21,20 +20,15 @@ let allUserSleepData
 let allUserHydrationData
 let allUserActivityData
 
-
 let currentUser;
 let currentUserSleep;
 let currentUserHydration;
 let currentUserActivity;
 
 //Selectors
-
 const hydrationDisplay = document.querySelector('.hydration-display')
 const sleepDisplay = document.querySelector('.sleep-display')
 const activityDisplay = document.querySelector('.activity-display')
-
-
-
 
 window.addEventListener('load', () => {
   fetchAll()
@@ -47,7 +41,6 @@ window.addEventListener('load', () => {
     })
 })
 
-
 function loadUserInfo(currentUserData, userData) {
   document.getElementById('firstName').innerHTML = `Welcome ${currentUserData.userName}!`;
   document.getElementById('fullName').innerHTML = `User: ${currentUserData.userName}`
@@ -57,12 +50,11 @@ function loadUserInfo(currentUserData, userData) {
   document.getElementById('dailyStepgoal').innerHTML = `Daily Step Goal: ${currentUserData.dailyStepGoal}`;
 }
 
-
 function pageLoad() {
   currentUser = new User(userData);
   currentUserSleep = new Sleep(currentUser.userId, allUserSleepData);
-  currentUserHydration = new UserHydration(currentUser.userId, allUserHydrationData)
-  currentUserActivity = new Activity(currentUser.findUserById(currentUser.userId, userData), allUserActivityData)
+  currentUserHydration = new UserHydration(currentUser.userId, allUserHydrationData);
+  currentUserActivity = new Activity(currentUser.findUserById(currentUser.userId, userData), allUserActivityData);
 
   // User
   loadUserInfo(currentUser, userData)
@@ -73,10 +65,10 @@ function pageLoad() {
     currentUserSleep.findAllTimeAvgOfDetail('sleepQuality'));
   sleepWeekCard('Hours',
     currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'hoursSlept'),
-    currentUserSleep.findDetailLastSevenDays(currentUserSleep.findMostRecentDay(), "hoursSlept"));
+    currentUserSleep.findDetailLastSevenDays('hoursSlept'));
   sleepWeekCard('Quality',
     currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'sleepQuality'),
-    currentUserSleep.findDetailLastSevenDays(currentUserSleep.findMostRecentDay(), "sleepQuality"));
+    currentUserSleep.findDetailLastSevenDays('sleepQuality'));
 
   // Hydration
   createSingleCard('Today\'s Ounces',

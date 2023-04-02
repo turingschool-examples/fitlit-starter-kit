@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="Fit-Lit/src/css/styles.css">
-        <link href="https://fonts.gstatic.com" crossorigin>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <title>Fitlit</title>
   </head>
   
@@ -19,19 +16,17 @@
           <p class="welcome-message">User</p>
           <p class="date-message">Date</p>
         </div>
+        <section class="expanded-container">
+          <p class="user-greeting">User Profile</p>
+          <p class="user-email">Email</p>
+          <p class="user-address">Address</p>
+          <p class="user-stride">Stride Length</p>
+        </section>
         <div class="logo-container">
           <img class="logo-image" src="./images/logo-image.png" alt="logo-image" height="100px" width="100px">
         </div>
       </article>
       <div class="left-container">
-        <section class="user-container">
-          <p class="profile-header">User Profile</p>
-          <p class="user-name">Name</p>
-          <p class="user-email">Email</p>
-          <p class="user-address">Address</p>
-          <p class="user-stride">Stride Length</p>
-          <p class="user-steps">Daily Step Goal</p>
-        </section>
         <section class="activity-container">
           <style>
             .activity-container {
@@ -43,19 +38,20 @@
           <div class="offset">
             <div class="activity-info-container">
               <p class="activity-header">Today's Activity</p>
+              <p class="user-steps">Goal</p>
               <p class="activity-steps-today">Steps Today</p>
               <p class="activity-distance-today">Distance Walked Today</p>
               <p class="activity-total-today">Active Minutes Today</p>
               <p class="activity-goal">Goal Reached</p>
             </div>
             <div class="spacer-container">
-              <img class="spacer-gif" src="./images/spacer-gif.gif" alt="gif">
+              <img class="spacer-gif" src="./images/spacer-gif.gif">
             </div>
           </div>
         </section>
         <div class="activity-tracker">
           <p class="activity-tracker-header">Steps This Week</p>
-          <div class="chart-wrapper">
+          <div class="chart-wrapper-bar">
             <canvas class="activity-chart"></canvas>
           </div>
           <p class="activity-units">in steps</p>
@@ -73,25 +69,8 @@
           <div class="offset">
             <p class="hydration-header">Hydration Data</p>
             <p class="hydration-today">Hydration Today</p>
-            <p class="hydration-goal">Keep going!</p>
+            <a href="https://www.thecalculator.co/health/Water-Calculator-56.html" class="hydration-info">how much water should you be drinking?</a>
           </div>
-        </section>
-        <section class="sleep-container">
-          <style>
-            .sleep-container {
-            background-image: url('./images/background-flip.png');
-            background-repeat: repeat;
-            background-size: contain;
-          }
-          </style>
-            <div class="offset">
-              <p class="sleep-header">Sleep Data</p>
-              <p class="sleep-today">Last Rest</p>
-              <p class="sleep-average-allTime">Average Rest</p>
-              <p class="sleep-quality-today">Last Rest Quality</p>
-              <p class="sleep-quality-allTime">Average Rest Quality</p>
-              <a href="https://www.verywellhealth.com/pittsburgh-sleep-quality-index-psqi-5080750" class="sqi-info">how is sleep quality measured?</a>
-            </div>
         </section>
         <section class="community-container">
           <style>
@@ -111,18 +90,35 @@
               <p class="comparison-steps">Comparison data will go here</p>
             </div>
         </section>
+        <section class="sleep-container">
+          <style>
+            .sleep-container {
+            background-image: url('./images/background-flip.png');
+            background-repeat: repeat;
+            background-size: contain;
+          }
+          </style>
+            <div class="offset">
+              <p class="sleep-header">Sleep Data</p>
+              <p class="sleep-today">Last Rest</p>
+              <p class="sleep-average-allTime">Average Rest</p>
+              <p class="sleep-quality-today">Last Rest Quality</p>
+              <p class="sleep-quality-allTime">Average Rest Quality</p>
+              <a href="https://www.verywellhealth.com/pittsburgh-sleep-quality-index-psqi-5080750" class="sqi-info">how is sleep quality measured?</a>
+            </div>
+        </section>
       </div>
       <div class="right-container">
         <div class="hydration-tracker">
           <p class="hydration-tracker-header">Hydration This Week</p>
-          <div class="chart-wrapper">
+          <div class="chart-wrapper-bar">
             <canvas class="hydration-chart"></canvas>
           </div>
           <p class="hydration-units">in ounces</p>
         </div>     
         <div class="sleep-tracker">
           <p class="sleep-tracker-header">Sleep This Week</p>
-          <div class="chart-wrapper">
+          <div class="chart-wrapper-doughnut">
             <canvas class="sleep-chart"></canvas>
           </div>
           <p class="sleep-units">in hours</p>

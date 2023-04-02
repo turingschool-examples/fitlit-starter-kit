@@ -1,18 +1,13 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
 import User from '../src/User'
 import Hydration from '../src/Hydration'
 import Sleep from '../src/Sleep'
 import Activity from '../src/Activity'
 import apiCalls from '../src/apiCalls'
 
-// console.log("user data:", User)
-
-let user, hydration, activity, sleep, date
+// global variables
+let user, hydration, activity, sleep, toggle
 
 // query selectors
-const userName = document.querySelector('.user-name')
 const userAddress = document.querySelector('.user-address')
 const userEmail = document.querySelector('.user-email')
 const userStride = document.querySelector('.user-stride')
@@ -20,7 +15,6 @@ const userSteps = document.querySelector('.user-steps')
 const welcomeMessage = document.querySelector('.welcome-message')
 const comparisonSteps = document.querySelector('.comparison-steps')
 const hydrationToday = document.querySelector('.hydration-today')
-// const hydrationWeekly = document.querySelector('.hydration-weekly')
 const dateMessage = document.querySelector('.date-message')
 const stepsToday = document.querySelector('.activity-steps-today')
 const distanceWalkedToday = document.querySelector('.activity-distance-today')
@@ -29,12 +23,15 @@ const numStepsWeekly = document.querySelector('.activity-steps-weekly')
 const goalReached = document.querySelector('.activity-goal')
 const sleepToday = document.querySelector('.sleep-today')
 const sleepQualityToday = document.querySelector('.sleep-quality-today')
-// const sleepWeekly = document.querySelector('.sleep-weekly')
-// const sleepQualityWeekly = document.querySelector('.sleep-quality-weekly')
 const sleepAverage = document.querySelector('.sleep-average-allTime')
 const sleepQualityAll = document.querySelector('.sleep-quality-allTime')
+const profileImage = document.querySelector('.profile-image')
+const expandedContainer = document.querySelector('.expanded-container')
+const userGreeting = document.querySelector('.user-greeting')
 
 // event listeners
+profileImage.addEventListener("click", toggleExpanded)
+welcomeMessage.addEventListener("click", toggleExpanded)
 window.addEventListener('load', () => {
 
   // functions 
@@ -56,6 +53,15 @@ window.addEventListener('load', () => {
     .catch(error => console.log(error))
 })
 
+function getRandomIndex(usersData) {
+  return Math.floor(Math.random() * usersData.length);
+}
+
+function displayDate() {
+  let date = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" })
+  dateMessage.innerText = `${date}`
+}
+
 function htmlDateHelper() {
   var date = new Date();
   var month = ('0' + (date.getMonth() + 1)).slice(-2);
@@ -65,38 +71,15 @@ function htmlDateHelper() {
   return htmlDate;
 }
 
-function displaySleepActivity(sleepData) {
-  sleep = new Sleep(sleepData)
-  var htmlDate = htmlDateHelper()
-  sleepToday.innerText = `Last Rest: ${sleep.findDailyHours(user, htmlDate)} hours`
-  sleepAverage.innerText = `Average Rest: ${sleep.findAvgHours(user)} hours `
-  sleepQualityToday.innerText = `Last Rest Quality: ${sleep.findDailyQuality(user, htmlDate)}`
-  sleepQualityAll.innerText = `Average Rest Quality: ${sleep.findAvgQuality(user)}`
-}
-
-function displayDate() {
-  let date = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" })
-  dateMessage.innerText = `${date}`
-}
-
-function getRandomIndex(usersData) {
-  return Math.floor(Math.random() * usersData.length);
-}
-
 function displayRandomUser(usersData) {
   user = new User(usersData[getRandomIndex(usersData)]);
-  userName.innerText = `Name: ${user.name}`
-  userAddress.innerText = `Address: ${user.address}`
-  userEmail.innerText = `Email: ${user.email}`
-  userStride.innerText = `Stride Length: ${user.strideLength}`
-  userSteps.innerText = `Daily Step Goal: ${user.dailyStepGoal}`
+  // userName.innerText = `Name: ${user.name}`
+  // userAddress.innerText = `${user.address}`
+  // userEmail.innerText = `${user.email}`
+  // userStride.innerText = `${user.strideLength}`
+  userSteps.innerText = `Your goal is to take ${user.dailyStepGoal} steps today.`
   welcomeMessage.innerText = `${user.name}`
   comparisonSteps.innerText = `The average user is taking ${user.usersAvgDailyStep(usersData)} steps today.`
-}
-
-function displayHydration(hydrationData) {
-  hydration = new Hydration(hydrationData)
-  hydrationToday.innerText = `You'ved logged ${hydration.findDailyFluidIntake(user.id, hydration.findUserData(user.id)[0].date)} oz of water today.`
 }
 
 function displayActivity(activityData) {
@@ -105,9 +88,21 @@ function displayActivity(activityData) {
   stepsToday.innerText = `Steps Taken: ${activity.todaysStepCount(user, htmlDate )}`
   distanceWalkedToday.innerText = `Distance Walked: ${activity.milesWalkedByDay(user, htmlDate)} miles`
   activeMinutesToday.innerText = `Minutes Active: ${activity.minutesActiveByDay(user, htmlDate)} minutes`
-  // console.log(activity.weeklyStepCount(user, htmlDate))
-  // numStepsWeekly.innerText = `Steps this week: ${activity.weeklyStepCount(user, htmlDate)}`
   goalReached.innerText = `Goal Reached?: ${activity.reachStepGoal(user, htmlDate)}`
+}
+
+function displayHydration(hydrationData) {
+  hydration = new Hydration(hydrationData)
+  hydrationToday.innerText = `You'ved logged ${hydration.findDailyFluidIntake(user.id, hydration.findUserData(user.id)[0].date)} oz of water today.`
+}
+
+function displaySleepActivity(sleepData) {
+  sleep = new Sleep(sleepData)
+  var htmlDate = htmlDateHelper()
+  sleepToday.innerText = `Last Rest: ${sleep.findDailyHours(user, htmlDate)} hours`
+  sleepAverage.innerText = `Average Rest: ${sleep.findAvgHours(user)} hours `
+  sleepQualityToday.innerText = `Last Rest Quality: ${sleep.findDailyQuality(user, htmlDate)}`
+  sleepQualityAll.innerText = `Average Rest Quality: ${sleep.findAvgQuality(user)}`
 }
 
 function displayActivityTracker() {
@@ -139,7 +134,7 @@ function displayActivityTracker() {
           },
       },
       responsive: true,
-      maintainAspectRatio: true,
+      maintainAspectRatio: false,
       scales: {
         x: {
           ticks: {
@@ -155,7 +150,6 @@ function displayActivityTracker() {
   }
   });
 }
-
 
 function displaySleepTracker() {
   const ctx = document.querySelector('.sleep-chart');
@@ -221,7 +215,7 @@ function displayHydrationTracker() {
           },
       },
       responsive: true,
-      maintainAspectRatio: true,
+      maintainAspectRatio: false,
       scales: {
         x: {
           ticks: {
@@ -236,6 +230,23 @@ function displayHydrationTracker() {
       }
   }
   });
+}
+
+function toggleExpanded() {
+  if (toggle === true)  {
+    toggle = false;
+    console.log(toggle)
+    userGreeting.innerText =  `Welcome back, ${user.name.split(" ")[0]}!`
+    userAddress.innerText = `${user.address}`
+    userEmail.innerText = `${user.email}`
+    userStride.innerText = `Stride Length: ${user.strideLength}`
+    expandedContainer.style.display = "inline";
+  } else {
+    toggle = true;
+    console.log(toggle)
+    expandedContainer.style.display = "none"
+  }
+  return toggle
 }
 
 // imports

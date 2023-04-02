@@ -8,12 +8,13 @@ import Hydration from '../src/Hydration';
 import Activity from '../src/Activity';
 // import './images/turing-logo.png';
 import userClass from '../src/apiCalls.js';
+import Chart from 'chart.js/auto'
 
 // Queury selectors
 const firstName = document.querySelector('#userName');
 const userInfo = document.querySelector('#userInfo');
 const sleepDay = document.querySelector('#sleepBox');
-const sleepWeek = document.querySelector('#sleepBoxWeek');
+const sleepWeek = document.querySelector('#sleepBoxWeek')
 const sleepAvg = document.querySelector('#sleepBoxAvg');
 const hydrationDay = document.querySelector('#hydrationBoxDaily');
 const hydrationWeek = document.querySelector('#hydrationBoxWeek');
@@ -68,9 +69,10 @@ const displaySleepInfo = (sleep) => {
   const pastWeekSleep = sleep.getInfoForPastWeek('hoursSlept');
   const avgQuality = sleep.getAverage('sleepQuality');
   const avgHours = sleep.getAverage('hoursSlept');
+  test(pastWeekSleep)
   sleepDay.innerHTML = `<h4>Latest Hours Slept: ${latestSleep.hoursSlept}</h4>
   <h4>Latest Quality of Sleep: ${latestSleep.sleepQuality}</h4>`;
-  sleepWeek.innerHTML = `<h4>Last 7 Days: ${pastWeekSleep.join(', ')}</h4>`;
+  // sleepWeek.innerHTML = `<h4>Last 7 Days: ${pastWeekSleep.join(', ')}</h4>`;
   sleepAvg.innerHTML = `<h4> Average Sleep Quality: ${avgQuality.toFixed(1)}</h4>
   <h4>Average Hours Slept: ${avgHours.toFixed(1)}</h4>`;
 };
@@ -92,3 +94,37 @@ const displayActivity = () => {
     <h4>Latest Distance Walked: ${activityObj.calculateMiles(currentDate)}</h4>`;
 };
 
+
+//chart stuff
+
+
+let test = (sleepWeekData) => {
+  const data = [
+    { day: "", sleep: 10 },
+    { day: "", sleep: 20 },
+    { day: "", sleep: 15 },
+    { day: "", sleep: 25 },
+    { day: "", sleep: 22 },
+    { day: "", sleep: 30 },
+    { day: "", sleep: 28 },
+  ];
+
+  new Chart(
+    sleepWeek,
+    {
+      type: 'line',
+      color:'#000000',
+      data: {
+        labels: data.map(row => row.day),
+        datasets: [
+          {
+            label: "Sleep",
+            data: sleepWeekData,
+            pointRadius: 0,
+            borderColor: "#FFFFFF"
+          }
+        ]
+      }
+    }
+  );
+}

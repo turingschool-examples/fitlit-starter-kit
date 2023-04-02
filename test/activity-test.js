@@ -45,12 +45,12 @@ describe("Activity", () => {
 
   it("should return true if user has met step goal", () => {
     let user = new User(userTestData[0]);
-    expect(activity.stepGoalMet(user, "2023/03/24")).to.be.equal(true);
+    expect(activity.stepGoalMet(user, "2023/03/24")).to.be.equal("Congratulations you met your goal!");
   });
 
   it("should return false is user did not meet step goal", () => {
     let user = new User(userTestData[1]);
-    expect(activity.stepGoalMet(user, "2023/03/24")).to.be.equal(false);
+    expect(activity.stepGoalMet(user, "2023/03/24")).to.be.equal (`You can still meet your goal for today! Just 1638 steps left to go!`);
   })
   it("should have a method to return their weekly step count given a user ID and date", () => {
     expect(activity.weeklyMinutes(1, "2023/03/23")).to.be.deep.equal([{

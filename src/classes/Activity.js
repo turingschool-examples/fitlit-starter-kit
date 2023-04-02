@@ -24,9 +24,9 @@ class Activity {
       return entry.date === date && user === user
     });
     if (user.dailyStepGoal <= stepsToday.numSteps) {
-      return true;
+      return "Congratulations you met your goal!";
     } else {
-      return false;
+      return `You can still meet your goal for today! Just ${user.dailyStepGoal - stepsToday.numSteps} steps left to go!`;
     };
   };
 

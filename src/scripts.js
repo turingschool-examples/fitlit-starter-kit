@@ -3,9 +3,9 @@ import './css/styles.css';
 
 // Image Imports
 import './images/turing-logo.png';
-import './images/barbell.png';
-import './images/sleep.png';
-import './images/water.png';
+import './images/Activity_Logo.svg';
+import './images/Hydration_Logo.svg';
+import './images/Sleep_Logo.svg';
 
 // 3rd party library import
 import Chart from 'chart.js/auto';
@@ -78,14 +78,13 @@ function clearChartArea() {
 };
 
 function displayhydrationCard(hydration, userID, date) {
-  hydrationCard.innerHTML = `<p><b>Average Water Consumption:</b> ${hydration.calculateAverageFluidPerUser(
+  hydrationCard.innerHTML = `<p class="water-text"><b>Average Water Consumed</b><br> ${hydration.calculateAverageFluidPerUser(
     userID
   )} ounces </p>
-   <p><b>Water consumed today:</b> ${hydration.dailyOuncesConsumed(
+   <p class="water-text"><b>Water Drank Today</b><br> ${hydration.dailyOuncesConsumed(
      userID,
      date
    )} ounces </p> 
-    <button class="hydration-button">Weekly Water</button>
   </p>
   `;
   const waterButton = document.querySelector(".hydration-button");
@@ -117,15 +116,15 @@ function createHydrationChart(hydration, userID, date) {
 function displaySleepCard(sleep, userID, date) {
   const latestSleepData = document.querySelector(".latest-sleep-data-js");
   latestSleepData.innerHTML = `
-    <p><b>Hours Slept:</b> ${sleep.findSleepHoursOnDate(userID, date)}</p>
-    <p><b>Sleep Quality:</b> </p>
+    <p class="sleep-text"><b>Hours Slept</b><br>${sleep.findSleepHoursOnDate(userID, date)}</p>
+    <p class="sleep-text"><b>Sleep Quality</b><br>${sleep.findSleepQualityOnDate(userID, date)}</p>
   `;
   const allTimeSleepData = document.querySelector(".all-time-sleep-data-js");
   allTimeSleepData.innerHTML = `
-    <p><b>Average Hours Slept:</b> ${sleep.calculateAverageSleepHours(
+    <p class="sleep-text"><b>Average Hours Slept</b><br>${sleep.calculateAverageSleepHours(
       userID
     )}</p>
-    <p><b>Average Sleep Quality:</b> ${sleep.calculateAverageSleepQuality(
+    <p class="sleep-text"><b>Average Sleep Quality</b><br>${sleep.calculateAverageSleepQuality(
       userID
     )}</p>
   `;
@@ -188,11 +187,11 @@ function createSleepQualityChart(sleep, userID, date) {
 };
 
 function displayActivityCard(activity, user, date, userID) {
-  const activityCard = document.querySelector('.activity-holder');
+  const activityCard = document.querySelector('.activity-card');
   activityCard.innerHTML = `
-  <p><b>Miles Walked:</b> ${activity.calculateMilesWalked(date, user)} miles</p>
-  <p><b>Minutes Active:</b> ${activity.dailyMinutesActive(userID, date)} minutes</b></p>
-  <p><b>Step Goal Met:</b> ${activity.stepGoalMet(user, date)}</b></p>
+  <p class="activity-text"><b>Miles Walked</b><br>${activity.calculateMilesWalked(date, user)} miles</p>
+  <p class="activity-text"><b>Minutes Active</b><br>${activity.dailyMinutesActive(userID, date)} minutes</b></p>
+  <p class="activity-text"><b>Step Goal</b><br>${activity.stepGoalMet(user, date)}</b></p>
   </p> 
     <button class="activity-button">View Weekly Activity</button>
   </p>`;

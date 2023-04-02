@@ -15,10 +15,13 @@ h1 {
 
 h3 {
   color: darkgray;
+  border: 1px solid #45B8AC;
+  background-color: black;
 }
 
 text {
   color: darkgray;
+
 }
 
 aside {

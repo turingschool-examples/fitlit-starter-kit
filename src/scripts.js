@@ -126,47 +126,43 @@ function activityCard(stepCount, miles, weekSteps,stepGoalMet){
    activityDisplay.innerHTML += `
    <section class='card activity' id= 'card-activity'>
     <div>
-      <text> Total Active Minutes</text>
-      <p></p>
-      <p></p>
+      <h3> Total Active Minutes</h3>
+      <br>
       <text> ${stepCount} steps </text>
-      <p></p>
-      <p></p>
+      <br>
       <text> ${miles} miles</text>
-      <p></p>
-      <p></p>
+      <br>
     </div>
     <div class='data-row'>
       <text>Week 1: ${weekSteps[0]} </text>
-      <p></p>
-      <p></p>
+      <br>
       <text>Week 2: ${weekSteps[1]} </text>
-      <p></p>
-      <p></p>
+      <br>
       <text>Week 3: ${weekSteps[2]} </text>
-      <p></p>
-      <p></p>
+      <br>
       <text>Week 4: ${weekSteps[3]} </text>
-      <p></p>
-      <p></p>
+      <br>
       <text>Week 5: ${weekSteps[4]} </text>
-      <p></p>
-      <p></p>
+      <br>
       <text>Week 6: ${weekSteps[5]} </text>
-      <p></p>
-      <p></p>
+      <br>
       <text>Week 7: ${weekSteps[6]} </text> 
-      <p></p>
-      <p></p>  
+      <br>
     </div>
     <div class ='data-row'> 
        <text> ${stepGoalMet[0]} </text>
+       <br>
       <text> ${stepGoalMet[1]} </text>
+      <br>
       <text> ${stepGoalMet[2]} </text>
+      <br>
       <text> ${stepGoalMet[3]} </text>
+      <br>
       <text> ${stepGoalMet[4]} </text>
+      <br>
       <text> ${stepGoalMet[5]} </text>
-     <text> ${stepGoalMet[6]} </text> 
+      <br>
+      <text> ${stepGoalMet[6]} </text> 
     </div> 
    </section>
   `

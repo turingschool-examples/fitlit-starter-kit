@@ -77,7 +77,10 @@ h1 {
 
 /* Welcome Header */
 .welcome {
-  margin-left: 2%;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  padding-left: 2%;
+ 
 
 }
 
@@ -139,7 +142,7 @@ body {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   height: 600px;
   width: 500px;
-  margin-top: 4%;
+  margin-top: 10%;
   margin-left: 4%;
   background-color: rgb(243, 206, 199)
 }
@@ -208,18 +211,18 @@ body {
 /* Colors */
 
 .activity-card {
-  background-color: rgba(204, 51, 51, 0.214);
+  background-color: rgba(248, 238, 218, 0.4);
   border-color: rgb(204, 51, 51);
 }
 
 .hydration-card {
-  background-color: rgba(66, 195, 251, 0.172);
+  background-color:rgba(248, 238, 218, 0.4);
   color: #3C4252;
   border-color: rgb(66, 194, 251);
 }
 
 .sleep-card {
-  background-color: rgba(72, 85, 182, 0.205);
+  background-color: rgba(248, 238, 218, 0.4);
   border-color: rgb(72, 85, 182);
 }
 
@@ -272,7 +275,7 @@ button {
 
 .water-text, .sleep-text, .activity-text {
   text-align: left;
-  padding-top: 20px
+  padding-top: 10px
 }
 
 .water-text {

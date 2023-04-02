@@ -126,12 +126,12 @@ function displaySleepCard(sleep, userID, date) {
     <b class="sleep-text">Average Sleep Quality</b>
     <p class="sleep-text">${sleep.calculateAverageSleepQuality(userID)}</p>
   `;
-  const hoursSleptButton = document.querySelector("#hours-slept-button");
+  const hoursSleptButton = document.querySelector("#hoursSleptButton");
   hoursSleptButton.addEventListener("click", () =>
     createHoursSleptChart(sleep, userID, date)
   );
   const qualitySleptButton = document.querySelector(
-    "#weekly-sleep-quality-button"
+    "#weeklySleepQualityButton"
   );
   qualitySleptButton.addEventListener("click", () =>
     createSleepQualityChart(sleep, userID, date)
@@ -184,7 +184,7 @@ function createSleepQualityChart(sleep, userID, date) {
   });
 };
 
-function displayActivityCard(activity, user, date, userID) {
+function displayActivityCard(activity, user, date) {
   const activityCard = document.querySelector('.activity-card-js');
   activityCard.innerHTML = `
   <b class="activity-text">Miles Walked</b>
@@ -193,10 +193,9 @@ function displayActivityCard(activity, user, date, userID) {
   <p class="activity-text"> ${activity.dailyMinutesActive(userID, date)} minutes</p>
   <b class="activity-text">Step Goal</b>
   <p class="activity-text">${activity.stepGoalMet(user, date)}</p>
-  </p> 
   `;
   const activityButton = document.querySelector(".activity-button");
-  activityButton.addEventListener("click", () => createActivityChart(activity, userID, date));
+  activityButton.addEventListener("click", () => createActivityChart(activity, user.id, date));
 
 };
 

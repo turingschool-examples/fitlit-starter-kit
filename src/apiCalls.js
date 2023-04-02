@@ -1,16 +1,8 @@
-let hydration;
-let activity;
-let user;
-let userID = 1;
-// need function to generate random user
-let date = "2023/03/24";
-// need function to pull latest date? 
-let sleep;
-
 import UserRepository from './classes/UserRepository';
-import User from './classes/User';
 import Hydration from './classes/Hydration';
 import Sleep from './classes/Sleep';
+import Activity from './classes/Activity';
+import dayjs from 'dayjs';
 
 import {
   displayUserCard,
@@ -23,7 +15,12 @@ import {
   displayUserCardInitial,
 } from "./scripts";
 
-import Activity from './classes/Activity';
+let user;
+let hydration;
+let activity;
+let sleep;
+let date = dayjs().format("YYYY/MM/DD");
+
 
 // add new DOM manipulation functions made in scripts.js to this import object and the export object in scripts.
 
@@ -50,7 +47,7 @@ function fetchActivity() {
 Promise.all([fetchUsers(), fetchHydration(), fetchSleep(), fetchActivity()])
   .then(([userData, hydrationData, sleepData, activityData]) => {
     const userBase = new UserRepository(userData.users);
-    user = new User(userBase.getUser(userID));
+    user = userBase.getRandomUser();
     displayUserCard(user);
     displayStepUserVsAllUsers(user, userBase);
     displayUserGreeting(user, date);
@@ -58,14 +55,14 @@ Promise.all([fetchUsers(), fetchHydration(), fetchSleep(), fetchActivity()])
     displayUserCardInitial(user);
 
     hydration = new Hydration(hydrationData.hydrationData);
-    displayhydrationCard(hydration, userID, date);
+    displayhydrationCard(hydration, user.id, date);
    
     sleep = new Sleep(sleepData.sleepData);
 
-    displaySleepCard(sleep, userID, date);
+    displaySleepCard(sleep, user.id, date);
 
     activity = new Activity(activityData.activityData)
-    displayActivityCard(activity, user, date, userID)
+    displayActivityCard(activity, user, date, user.id)
 
   })
   .catch(error => {

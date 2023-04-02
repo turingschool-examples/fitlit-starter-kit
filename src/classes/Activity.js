@@ -21,7 +21,7 @@ class Activity {
 
   stepGoalMet(user, date) {
     const stepsToday = this.data.find((entry) => {
-      return entry.date === date && user === user
+      return entry.date === date && entry.userID === user.id
     });
     if (user.dailyStepGoal <= stepsToday.numSteps) {
       return "Congratulations, you met your goal!";
@@ -30,11 +30,11 @@ class Activity {
     };
   };
 
-  weeklyMinutes(user, date) {
+  weeklyMinutes(userID, date) {
     const startDate = dayjs(date);
     const endDate = startDate.add(6, "day");
     const milesByWeek = this.data.filter((entry) => {
-      return entry.userID === user && dayjs(entry.date).isAfter(startDate.subtract(1, "day")) && dayjs(entry.date).isBefore(endDate.add(1, "day"));
+      return entry.userID === userID && dayjs(entry.date).isAfter(startDate.subtract(1, "day")) && dayjs(entry.date).isBefore(endDate.add(1, "day"));
     });
     return milesByWeek;
   };

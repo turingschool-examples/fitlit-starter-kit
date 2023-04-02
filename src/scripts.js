@@ -186,16 +186,16 @@ function createSleepQualityChart(sleep, userID, date) {
   });
 };
 
-function displayActivityCard(activity, user, date, userID) {
+function displayActivityCard(activity, user, date) {
   const activityCard = document.querySelector('.activity-card-js');
   activityCard.innerHTML = `
   <p class="activity-text"><b>Miles Walked</b><br>${activity.calculateMilesWalked(date, user)} miles</p>
-  <p class="activity-text"><b>Minutes Active</b><br>${activity.dailyMinutesActive(userID, date)} minutes</b></p>
+  <p class="activity-text"><b>Minutes Active</b><br>${activity.dailyMinutesActive(user.id, date)} minutes</b></p>
   <p class="activity-text"><b>Step Goal</b><br>${activity.stepGoalMet(user, date)}</b></p>
   </p> 
   `;
   const activityButton = document.querySelector(".activity-button");
-  activityButton.addEventListener("click", () => createActivityChart(activity, userID, date));
+  activityButton.addEventListener("click", () => createActivityChart(activity, user.id, date));
 
 };
 

@@ -1,3 +1,5 @@
+import User from "./User";
+
 class UserRepository {
   constructor(users) {
     this.users = users;
@@ -27,6 +29,11 @@ class UserRepository {
       return acc;
     },[]);
   };
+
+  getRandomUser() {
+    const index = Math.floor(Math.random() * this.users.length);
+    return new User(this.users[index]);
+  }
 };
 
 export default UserRepository;

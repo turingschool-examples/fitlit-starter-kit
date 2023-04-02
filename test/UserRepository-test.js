@@ -3,6 +3,7 @@ import {
 } from 'chai';
 import UserRepository from '../src/classes/UserRepository';
 import userTestData from './user-test-data';
+import User from '../src/classes/User';
 // import User from '../src/classes'
 
 describe('User Repository', () => {
@@ -53,4 +54,7 @@ describe('User Repository', () => {
       'Kailey Langosh'
     ]);
   });
+  it("should return a user", () => {
+    expect(testRepository.getRandomUser()).to.be.instanceOf(User);
+  })
 });

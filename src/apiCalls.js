@@ -51,7 +51,7 @@ Promise.all([fetchUsers(), fetchHydration(), fetchSleep(), fetchActivity()])
     user = new User(userBase.getUser(userID));
     displayUserCard(user);
     displayStepUserVsAllUsers(user, userBase);
-    displayUserGreeting(user);
+    displayUserGreeting(user, date);
 
     hydration = new Hydration(hydrationData.hydrationData);
     displayhydrationCard(hydration, userID, date);

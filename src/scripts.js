@@ -37,10 +37,19 @@ function displayStepUserVsAllUsers(user, userBase) {
   `;
 }
 
-function displayUserGreeting(user) {
+function displayUserGreeting(user, date) {
   const userGreeting = document.querySelector('.welcome-header');
+  const dayjs = require('dayjs')
+  const customParseFormat = require('dayjs/plugin/customParseFormat');
+  dayjs.extend(customParseFormat);
+  const dateString = date;
+  console.log(dateString)
+  const dateToday = dayjs(dateString, 'YYYY/MM/DD');
+
+  const formattedDateString = dateToday.format('dddd D MMMM');
   userGreeting.innerHTML = `
-<h2>Hi, ${user.getFirstName()}</h2>
+  <p class="welcome welcome-date">${formattedDateString}</p>
+<h2 class="welcome">Hi, ${user.getFirstName()}</h2>
 `;
 }
 

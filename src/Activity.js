@@ -60,9 +60,9 @@ class Activity {
         const sevenDayStepDetail = this.activityLogs.slice(selectedDayIndex, selectedDayIndex + 7).map(log => log.numSteps);
         const sevenDayGoalDetail = sevenDayStepDetail.map((daySteps) => {
             if (this.dailyStepGoal <= daySteps) {
-                return 'Yes'
+                return 'Hooray!'
             } else {
-                return 'No'
+                return 'Nooray'
             }
         })
 

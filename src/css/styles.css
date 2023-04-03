@@ -18,12 +18,15 @@ body {
 header {
   display: flex;
   font-family: 'Bungee Shade', cursive;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  width: 100vw;
   margin: 0;
 }
 
 section {
   display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
 }
 
 .card {
@@ -49,11 +52,11 @@ div
   border-radius: 50px;
   display: flex;
   flex-direction: column;
-  min-height: 20vh;
+  height: 20vh;
   justify-content: center;
   margin: 10px;
   padding: 10px;
-  width: 50vw;
+  width: 45vw;
 }
 
 .sleep {
@@ -70,6 +73,8 @@ div
 
 .header-box {
   background-color: rgb(255, 204, 236);
+  min-height: 20vh;
+  height: auto;
 }
 
 h3 {
@@ -100,7 +105,13 @@ h4 {
   font-size: 18px;
 }
 
+canvas {
+  height: 30px;
+}
+
 @media screen and (max-width: 600px) {
+
+
   header {
     flex-direction: column;
     align-items: center;
@@ -109,7 +120,7 @@ h4 {
   .info-box {
     width: 90%;
     max-width: 100vh;
-    font-size: 30px;
+    font-size: 20px;
   }
 
   .card-title {

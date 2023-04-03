@@ -80,7 +80,7 @@ function displayRandomUser(usersData) {
   // userStride.innerText = `${user.strideLength}`
   userSteps.innerText = `Your goal is to take ${user.dailyStepGoal} steps today.`
   welcomeMessage.innerText = `${user.name}`
-  comparisonSteps.innerText = `The average user is taking ${user.usersAvgDailyStep(usersData)} steps today.`
+  comparisonSteps.innerText = `The average FitLit user is taking ${user.usersAvgDailyStep(usersData)} steps today.`
 }
 
 function displayActivity(activityData) {
@@ -264,7 +264,7 @@ function toggleExpanded() {
     userGreeting.innerText =  `Welcome back, ${user.name.split(" ")[0]}!`
     userAddress.innerText = `${user.address}`
     userEmail.innerText = `${user.email}`
-    userStride.innerText = `Stride Length: ${user.strideLength}`
+    userStride.innerText = `Stride Length: ${user.strideLength} ft`
     expandedContainer.style.display = "inline";
   } else {
     toggle = true;

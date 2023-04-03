@@ -76,7 +76,7 @@ function displayRandomUser(usersData) {
   user = new User(usersData[getRandomIndex(usersData)])
   userSteps.innerText = `Your goal is to take ${user.dailyStepGoal} steps today.`
   welcomeMessage.innerText = `${user.name}`
-  comparisonSteps.innerText = `The average FitLit user is taking ${user.usersAvgDailyStep(usersData)} steps today.`
+  comparisonSteps.innerText = `The average FitLit user has a goal of ${user.usersAvgDailyStep(usersData)} steps today.`
 }
 
 function displayActivity(activityData) {

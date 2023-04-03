@@ -176,7 +176,7 @@ function displaySleepTracker() {
         color: "#fefefe",
         label: 'Quality of sleep',
         data: sleep.chartWeeklyQuality(user, htmlDate),
-        backgroundColor: "#28B0EB",
+        backgroundColor: "#828282",
         borderWidth: 0,
       },
       {

@@ -29,8 +29,6 @@ class Hydration {
             return week
     }
 
-    
-
     calculateFluidWeekly(userParam, dateParam) {
         const userWeekly = this.hydration.filter(data => data.userID === userParam.id && data.date <= dateParam)
         const sortWeekArray = userWeekly.sort((a, b) => {

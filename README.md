@@ -5,6 +5,14 @@
 ## Technologies Used
 
 ## Installation Guide
+1. Fork the repository
+2. Copy SSH key on GitHub inside the code dropdown
+3. Using the terminal, run git clone [SSH key here]
+4. cd into the repository
+5. Open it in your text editor
+6. Run npm install 
+7. Run npm start
+8. Click the hyperlink where the project is running to launch the application in the web browser
 
 ## Overview
 

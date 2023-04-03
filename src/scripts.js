@@ -1,4 +1,4 @@
-// Webpack links
+// Webpack Links
 import { fetchAllData } from '../src/apiCalls';
 import './css/styles.css';
 import './images/fitlit-logo.png';
@@ -11,7 +11,7 @@ import Hydration from '../src/Hydration';
 import Activity from '../src/Activity';
 import Chart from 'chart.js/auto';
 
-// Queury selectors
+// Queury Selectors
 const firstName = document.getElementById('userName'),
       userInfo = document.getElementById('userInfo'),
       sleepDay = document.getElementById('sleepBox'),

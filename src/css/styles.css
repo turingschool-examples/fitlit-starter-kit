@@ -41,16 +41,21 @@ body {
   width: 50%;
 }
 
-.site-logo-wrapper {
-  height: 100%;
-  width: 30%;
+.site-logo {
+  margin-left: 5.5%;
+  height: 50%;
+  width: 5%;
 }
 
 h1 {
   font-size: 1.3em;
   font-weight: 800;
-  margin-left: 5%;
+  margin-left: 3%;
   color: white;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  font: 'source sans pro', sans-serif;
 }
 
 /* Welcome Header */
@@ -258,7 +263,7 @@ button {
   border-radius: 5px;
   background-color: rgba(56, 44, 94);
   color: white;
-  padding: 1%;
+  padding: 2%;
   margin-top: 2%;
   width: 100%;
   font-size: 1rem;

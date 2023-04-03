@@ -351,3 +351,8 @@ p {
   font-size: 0.8rem;
   margin: 0;
 }
+
+.chart-placeholder {
+  background: url(../images/Chart-Placeholder.svg) no-repeat;
+  background-size: cover;
+}

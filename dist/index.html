@@ -1,14 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <title>Fitlit</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+    <div class="nav-wrapper">
+      <nav class="navigation">
+        <div class="nav-left-container">
+          <div class="logo-stand-in">
+          </div>
+          <h1>Fitness Tracking App</h1>
+        </div>
+        <!-- <div class="nav-right-container">
+          <div class="nav-date">15th March 2023</div>
+        </div> -->
+      </nav>
+    </div>
+    <main>
+      <section class="cards">
+        <h2 class="welcome-header">Hello</h2>
+        <section class="stat-card-wrapper">
+          <section class="activity-card stat-cards">
+            <div class="stat-card-icon-wrapper"><img class="barbell-img" src="./images/Activity_Logo.svg" alt="barbell icon"></div>
+            <article class="activity-card-js">Activity</article>
+            <div class="button-wrapper">
+              <button class="activity-button" id="activityButton">View Weekly Activity</button>
+            </div>
+          </section>
+          <section class="hydration-card stat-cards">
+            <div class="stat-card-icon-wrapper"><img class="water-img" src="./images/Hydration_Logo.svg" alt="blue water drop icon"></div>
+            <article class="hydration-holder"></article>
+            <div class="button-wrapper">
+              <button class="hydration-button" id="hydrationButton">Weekly Water Drank</button>
+            </div>
+            </section>
+          <section class="sleep-card stat-cards">
+            <div class="stat-card-icon-wrapper"><img class="sleep-img" src="./images/Sleep_Logo.svg" alt="sleep icon with moon and zzz"></div>
+            <article class="latest-sleep-data-js"></article>
+            <article class="all-time-sleep-data-js"></article>
+            <article id="weekly-sleep-hours-data-js"></article>
+            <div class="button-wrapper">
+              <button class="sleep-button" id="hoursSleptButton">Weekly Hours Slept</button>
+              <button class="sleep-button" id="weeklySleepQualityButton">Weekly Sleep Quality</button>
+            </div>
+          </section>
+        </section>
+        <section class="user-profile-card">
+          <div class="user-name-profile-backing">
+            <h3 class="user-card-name-js user-name-profile">Trystan</h2>
+          </div>
+          <div class ="user-info-wrapper">
+            <article class="user-profile-info-js profile-info personal-info"></article>
+            <article class="user-steps-vs-all-js profile-info goals-steps-info"></article>
+            <article class="user-friends-js profile-info friends-info"></article>
+          </div>
+        </section>
+      </section>
+      <aside class="infographic">
+        <canvas class="info-chart" id="chart"></canvas>
+      </aside>
+    </main>
     <script src="bundle.js"></script>
   </body>
 </html>

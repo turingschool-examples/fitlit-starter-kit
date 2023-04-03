@@ -1,78 +1,37 @@
-# FitLit Starter Kit
+# README
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+## Description
 
-## Setup
+Description: For this project our group built an application we named 'Git Fit'. It currently shows a randomized user and all that users data for different aspects of 'Getting Fit'. For each user there is a sleep column that displays the quality of sleep throughout the week and how many hours. The second column will deal with how many ounces have been drank by week and day. The final column displays the users activity levels, showing if they met their step goals for each week.
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `npm start` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page).  `Control + C` is the command to stop running the local server.  Closing the terminal without stopping the server first could allow the server to continue to run in the background and cause problems. This command is not specific to Webpack; make note of it for future use.   
-1. Make sure both members of your team are collaborators on the forked repo.  
-1. Do not run `npm audit fix --force`.  This will update to the latest version of packages.  We need to be using `webpack-dev-server@3.11.2` which is not the latest version.  If you start to run into Webpack errors, first check that all group members are using the correct version.  
+## Installation / Usage
 
-## Testing
+Installation steps:  
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
+1. Fork the GitHub Repository file (the word file should be a hyperlink).                                                                                                                                       
 
+2. After initializing git inside the directory the user wants they can now clone their forked copy to their machine 
 
-## Data Model
+3. The user can now type 'npm install' into their terminal and hit enter. 
 
-**Users**
+4. Then type 'npm start' into the same terminal. Now the user can open a new window in their terminal using 'cmd - t'.  
 
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
+5. The user can now type open '**[http://localhost:8080/](http://localhost:8080/)**' into the new window in terminal to open up the application.
 
-**Activity**
+## Contributor  /  Links
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
+Sharie Trashiel
 
-**Hydration**
+[https://github.com/sdtrachsel](https://github.com/sdtrachsel)
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
+Josua Martin
 
-**Sleep**
+[https://github.com/jmartin777](https://github.com/jmartin777)
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+Johnathan Chaney
+
+[https://github.com/cadechaney](https://github.com/cadechaney)
+
+Isaiah Richardson
+
+[https://github.com/CapCinematic](https://github.com/CapCinematic)

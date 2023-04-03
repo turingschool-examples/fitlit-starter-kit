@@ -26,7 +26,7 @@ class Hydration {
             return new Date(b.date) - new Date(a.date)
         }).map((day) => day.numOunces)
         const week = userWeekly.slice(0, 7)
-        return week
+            return week
     }
 
     

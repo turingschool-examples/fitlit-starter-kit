@@ -24,6 +24,10 @@ describe('User Repository', () => {
     expect(testRepository.users).to.deep.equal(userTestData);
   });
 
+  it("should not be able to return an invalid user", () => {
+    expect(testRepository.getUser(63)).to.deep.equal(undefined);
+  });
+
   it('should find a user by id and return users data', () => {
     testRepository.getUser(1);
     expect(testRepository.getUser(1)).to.deep.equal({
@@ -54,7 +58,7 @@ describe('User Repository', () => {
       'Kailey Langosh'
     ]);
   });
-  it("should return a user", () => {
+  it("should generate a random user", () => {
     expect(testRepository.getRandomUser()).to.be.instanceOf(User);
   })
 });

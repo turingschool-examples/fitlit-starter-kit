@@ -267,6 +267,7 @@ button {
   margin-top: 2%;
   width: 100%;
   font-size: 1rem;
+  cursor: pointer;
 }
 
 .sleep-button {
@@ -279,6 +280,18 @@ button {
   display: flex;
   width: 94%;
   justify-content: space-around;
+}
+
+button:hover {
+  background-color:#4c416eef;
+  transition: 0.7s;
+}
+
+button:focus {
+  outline-color: transparent;
+  outline-style:solid;
+  box-shadow: 0 0 0 2px #F57630;
+  transition: 0.7s;
 }
 
 /* text */

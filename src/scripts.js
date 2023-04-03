@@ -49,6 +49,7 @@ window.addEventListener('load', () => {
       displayActivityTracker()
       displayHydrationTracker()
       displaySleepTracker()
+      displayCalendar()
     })
     .catch(error => console.log(error))
 })
@@ -116,6 +117,8 @@ function displayActivityTracker() {
     return shortenedKeys
   })
 
+Chart.defaults.color = "#EDEDED",
+
   new Chart(ctx, {
     type: "bar",
     data: {
@@ -138,12 +141,10 @@ function displayActivityTracker() {
       scales: {
         x: {
           ticks: {
-            color: "#EDEDED"
           }
         },
         y: {
           ticks: {
-            color: "#EDEDED"
           }
         }
       }
@@ -162,28 +163,56 @@ function displaySleepTracker() {
     return shortenedKeys
   })
 
+
   new Chart(ctx, {
-    type: 'doughnut',
+    type: 'line',
     data: {
       labels: shortenedKeys,
+      color: "#fefefe",
       datasets: [{
+        color: "#fefefe",
+        label: 'Quality of sleep',
+        data: sleep.chartWeeklyHours(user, htmlDate),
+        backgroundColor: "#28B0EB",
+        borderWidth: 0,
+      },
+      {
+        color: "white",
         label: "Hours slept",
         data: sleep.chartWeeklyHours(user, htmlDate),
         backgroundColor: ["#CAFCFF", "#89EBF1", "#65CAF6", "#28B0EB", "#2882EB", "#095AB8", "#023572"],
-        borderWidth: 0
-      }],
+        stack: 'combined',
+        type: 'bar',
+      },],
     },
     options: {
       plugins: {
           legend: {
-              display: false
+              display: false,
+              labels:  {
+                color: "white",
+              },
           },
       },
       responsive: true,
       maintainAspectRatio: false,
-  }
-  });
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: "white"
+        }
+      },
+      y: {
+        stacked: true,
+        ticks: {
+          color: "white"
+        }
+      }
+    }
+});
 }
+
 
 function displayHydrationTracker() {
   const ctx = document.querySelector('.hydration-chart');
@@ -260,6 +289,7 @@ import './images/friend1-image.png';
 import './images/friend2-image.png';
 import './images/friend3-image.png';
 import './images/friend4-image.png';
+import './images/friend5-image.png';
 
 
 

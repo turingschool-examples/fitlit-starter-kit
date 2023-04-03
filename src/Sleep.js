@@ -76,6 +76,16 @@ class Sleep {
   
     return qualityArray
   }
+
+  chartWeeklyQuality(userParam, dateParam)  {  
+    let weekArray = this.sleepData.filter(record => record.userID === userParam.id && record.date <= dateParam);
+    const sortWeekArray = weekArray.sort((a, b) => {
+      return new Date(b.date) - new Date(a.date)
+    }).map(data => data.sleepQuality)
+    const sliceWeekArray = sortWeekArray.slice(0, 7)
+
+    return sliceWeekArray
+  }
 }
 
 export default Sleep;

@@ -1,11 +1,14 @@
 *   { 
   font-family: 'Lato', sans-serif;
+  /* border: 1px green solid; */
 }
 
 body, html {
   margin: 0px;
   height: 100vh;
+  width: 100vw;
   background-color: #272727;
+  font-weight: thin;
   font-size: 14px;
   color: #fefefe;
 }
@@ -29,7 +32,8 @@ body, html {
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  background-color: #141414;opacity:0.9;
+  width: 145px;
+  background-color: #141414;
   border-right: 1px #272727 solid;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -40,6 +44,7 @@ body, html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 0px;
   padding-top: 5px;
 }
 
@@ -47,7 +52,7 @@ body, html {
   margin: 5px;
 }
 
-.profile-image  {
+.profile-image, .welcome-message  {
   cursor: pointer;
 }
 
@@ -63,8 +68,8 @@ body, html {
   justify-content: flex-start;
   align-items: center;
   height: 90vh;
-  width: 25%;
-  background-color: #141414;opacity:0.9;
+  width: 25vw;
+  background-color: #141414;
 }
 
 .right-container  {
@@ -80,9 +85,20 @@ body, html {
   padding: 10px;
   height: 85%;
   width: 85%;
-  background-color: #3e3e3e;opacity:0.8;
+  background-color: #3e3e3e;
   text-align: center;
   border-radius: 5px;
+}
+
+/* user container toggle */
+.expanded-container  {
+  display: none;
+  margin-right: 5px;
+  margin-bottom: 350px;
+  margin-left: 5px;
+  overflow-wrap: normal;
+  text-align: center;
+  font-size: 12px;
 }
 
 /* background div */
@@ -92,40 +108,72 @@ body, html {
   justify-content: center;
   height: 100%;
   padding: 10px;
-  background-color: #3e3e3e;
+  background-color: #3e3e3e;opacity:0.98;
   border-radius: 5px;
 }
 
 /* this element takes up empty space */
 .spacer-gif  {
-  width: 98%;
+  margin-top: 5px;
+  height: 100px;
+  width: 100px;
 }
 
-/* user container toggle */
-.user-container{
-  display: none;
+.user-greeting  {
+  font-weight: bold;
 }
 
 /* header tags */
-.profile-header, .community-header, .activity-header, .steps-header, .activity-header, .sleep-header, .hydration-header, .hydration-tracker-header, .activity-tracker-header, .sleep-tracker-header {
-  margin-bottom: 16px;
+.community-header, .activity-header, .steps-header, .activity-header, .sleep-header, .hydration-header, .hydration-tracker-header, .activity-tracker-header, .sleep-tracker-header {
+  margin-bottom: 15px;
   text-align: center;
   font-weight: bold;
   font-size: 18px;
 }
 
 /* paragraph tags */
-.user-name, .user-name, .user-email, .user-address, .user-stride, .user-steps, .comparison-steps, .sleep-today, .sleep-average-allTime, .sleep-quality-today, .sleep-quality-allTime, .hydration-today, .hydration-weekly {
+.user-name, .user-email, .user-address, .user-stride, .user-steps, .comparison-steps, .sleep-today, .sleep-average-allTime, .sleep-quality-today, .sleep-quality-allTime, .hydration-today, .hydration-weekly {
   margin: 5px;
 }
 
+.hydration-info, .sqi-info {
+  margin-top: 15px;
+  color: #CAFCFF;
+  cursor: pointer;
+}
+
+/* friends container */
+.friends-container  {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.friend1-image, .friend2-image, .friend3-image  {
+  padding: 10px;
+}
+
 /* data visualizations */
+.chart-wrapper-bar, .chart-wrapper-doughnut  {
+  height: 70%;
+  width: 100%;
+}
+
 .activity-tracker, .hydration-tracker, .sleep-tracker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   height: 85%;
-  padding: 16px;
+  padding: 10px;
 }
 
 /* chart elements */
 .activity-chart, .hydration-chart, .sleep-chart {
   cursor: pointer;
+}
+
+/* chart increments  */
+.activity-units, .hydration-units, .sleep-units  {
+  margin-top: 15px;
+  font-size: 12px;
 }

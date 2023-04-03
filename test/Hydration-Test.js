@@ -44,7 +44,7 @@ describe('Hydration', () => {
     })
 
     it('Should be able to return the amount of water consumed per day for the last week', () => {
-        expect(hydration1.calculateFluidWeekly(5)).to.deep.equal([])
+        expect(hydration1.calculateFluidWeekly(1)).to.deep.equal([28, 50])
     })
 
     it('Should have a method to calculate all time daily average of water consumption', () => {

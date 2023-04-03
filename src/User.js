@@ -1,6 +1,6 @@
 class User {
     constructor(userObj) {
-        this.id = userObj.id
+        this.id =  userObj.id
         this.name = userObj.name
         this.address = userObj.address
         this.email = userObj.email
@@ -8,26 +8,22 @@ class User {
         this.dailyStepGoal = userObj.dailyStepGoal
         this.friends = userObj.friends
     }
-
     getUserData(num) {
-        const user = usersData.reduce((acc, index) => {
-            if (index.id === num) {
-                return index
-            }
+        const user = mock.users.reduce((acc, index) => {
+        if (index.id === num) {
+            return index
+        }
             return acc
         }, {})
-        console.log(user)
         return user
     }
-
     getFirstName() {
-        let firstName = this.name.split(' ')[0]
+        let firstName =  this.name.split(' ')[0]
         return firstName
     }
-
     usersAvgDailyStep(usersData) {
         const averageSteps = usersData.reduce((acc, index) => {
-            acc += index.dailyStepGoal / usersData.length
+            acc += index.dailyStepGoal/usersData.length
             return acc
         }, 0)
         return Math.round(averageSteps)

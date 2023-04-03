@@ -5,9 +5,9 @@ class Hydration {
 
     findUserData(id) {
         let currentUser = this.hydration.filter(data => data.userID === id)
-            .sort((a, b) => {
-                return new Date(b.date) - new Date(a.date)
-            })
+        .sort((a, b)    =>  {
+            return new Date(b.date)- new Date(a.date)
+        })
         return currentUser
     }
 
@@ -29,7 +29,7 @@ class Hydration {
         return week
     }
 
-
+    
 
     calculateFluidWeekly(userParam, dateParam) {
         const userWeekly = this.hydration.filter(data => data.userID === userParam.id && data.date <= dateParam)
@@ -40,7 +40,7 @@ class Hydration {
         const fluidArray = sliceFluidWeek.reduce((acc, cV) => {
             acc[cV.date] = cV
             return acc
-        }, [])
+        },[])
         return fluidArray
     }
 

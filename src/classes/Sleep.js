@@ -34,20 +34,7 @@ class Sleep {
     let sleepQuality = filteredSleepData.find((user) => user.date === date);
     return sleepQuality.sleepQuality;
   }
-  calculateWeeklySleepObject(userID, date) {
-    const startDate = dayjs(date);
-    const endDate = startDate.add(6, "day");
-    const filteredSleepData = this.data.filter(
-      (user) => user.userID === userID
-    );
-    const sleepData = filteredSleepData.filter((entry) => {
-      return (
-        dayjs(entry.date).isAfter(startDate) &&
-        dayjs(entry.date).isBefore(endDate.add(1, "day"))
-      );
-    });
-    return sleepData;
-  }
+  
   calculateWeeklyHoursSlept(userID, date) {
     const startDate = dayjs(date);
     const endDate = startDate.add(6, "day");

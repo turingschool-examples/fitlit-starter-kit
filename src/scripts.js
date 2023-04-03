@@ -149,7 +149,7 @@ function createHoursSleptChart(sleep, userID, date) {
       datasets: [{
         label: "Hours Slept",
         backgroundColor: "#F16433",
-        borderColor: "A25E9B",
+        borderColor: "a25e9b",
         borderWidth: 2,
         hoverBackgroundColor: "#5A73C0",
         hoverBorderColor: "#5A73C0",

@@ -10,7 +10,7 @@ describe("Hydration", () => {
   beforeEach(() => {
     hydration = new Hydration(hydrationTestData);
   });
-  
+
   it("should be a function", () => {
     expect(Hydration).to.be.a("function");
   });
@@ -26,6 +26,10 @@ describe("Hydration", () => {
       date: "2023/03/24",
       numOunces: 28
     }, );
+  });
+
+  it("should not return data for an invalid user", () => {
+    expect(hydration.findUserById(150)).to.deep.equal([]);
   });
 
   it("should be able to find hydration data based on the user", () => {
@@ -51,11 +55,29 @@ describe("Hydration", () => {
   });
 
   it('should return a users ounces consumed in a given week', function () {
-    expect(hydration.weeklyOuncesConsumed(1, "2023/03/24")).to.be.deep.equal([
-      { userID: 1, date: '2023/03/24', numOunces: 28 },
-      { userID: 1, date: '2023/03/25', numOunces: 50 },
-      { userID: 1, date: '2023/03/26', numOunces: 21 },
-      { userID: 1, date: '2023/03/29', numOunces: 20 },
+    expect(hydration.weeklyOuncesConsumed(1, "2023/03/24")).to.be.deep.equal([{
+        userID: 1,
+        date: '2023/03/24',
+        numOunces: 28
+      },
+      {
+        userID: 1,
+        date: '2023/03/25',
+        numOunces: 50
+      },
+      {
+        userID: 1,
+        date: '2023/03/26',
+        numOunces: 21
+      },
+      {
+        userID: 1,
+        date: '2023/03/29',
+        numOunces: 20
+      },
     ]);
   });
+  it("should not return weekly hydration information with an invalid date or user", () => {
+    expect(hydration.weeklyOuncesConsumed(150, "150/03/24")).to.be.deep.equal([]);
+  })
 });

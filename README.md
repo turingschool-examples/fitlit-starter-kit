@@ -1,78 +1,45 @@
-# FitLit Starter Kit
+![Fit Lit Logo](./src/images/logo-image.png) 
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+## About
+Fit Lit is a locally-hosted, web-based application designed to help users track, log, and visualize their personalized fitness data. The dashboard-style interface allows users to access statistics in three broad categories-- activity, hydration, and sleep. Within each of these three categories, users can dig deeper to see information related to their daily, weekly, and all-time data.
 
-## Setup
+---
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `npm start` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page).  `Control + C` is the command to stop running the local server.  Closing the terminal without stopping the server first could allow the server to continue to run in the background and cause problems. This command is not specific to Webpack; make note of it for future use.   
-1. Make sure both members of your team are collaborators on the forked repo.  
-1. Do not run `npm audit fix --force`.  This will update to the latest version of packages.  We need to be using `webpack-dev-server@3.11.2` which is not the latest version.  If you start to run into Webpack errors, first check that all group members are using the correct version.  
+## Set Up 
 
-## Testing
+> ### Installing the files
+> - Fork this [repository](https://github.com/RandyGitProjects/Fit-Lit) to your GitHub account. 
+> - In your forked respository, click the `code` drop-down menu and copy the SSH key.
+> - On your local machine, open the terminal using  `⌘ + space` and navigate to the location you'd like the flashcards repository directory cloned to. 
+> - Once you're there, run `git clone [SSH Key] [Fit-Lit]` via the command line.
+> - Run `npm install`. 
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
+> ### Opening the application
+> - When you're ready to use the app, open the terminal and navigate to the Fit-Lit directory via the terminal.
+> - In the terminal, use command+t to open a new terminal tab. 
+> - In the new terminal tab, run `npm start`.
+> - Once WebPack has compiled the necessary resources, you will see a link within the text of your terminal. You can copy and paste that link into your browser to access a locally-hosted version of this application on your machine. 
+
+---
+
+## Preview
+
+![Application Functionality](./src/images/README-gif.gif) 
 
 
-## Data Model
+---
 
-**Users**
+## Contributors
+Randy Cisneros  [GitHub](https://github.com/RandyGitProjects) | [LinkedIn](https://www.linkedin.com/in/randy-cisneros-17006a191/)
 
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
+Dustin Gouner  [GitHub](https://github.com/dustingouner) | [LinkedIn](https://www.linkedin.com/in/dustin-gouner/)
 
-**Activity**
+Em Lindvall  [GitHub](https://github.com/emlindvall) | [LinkedIn](https://www.linkedin.com/in/emilylindvall/)
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
+Kelli Watkins [GitHub](https://github.com/klwats) | [LinkedIn](https://www.linkedin.com/in/kelli-watkins-1b73418b/)
 
-**Hydration**
+---
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
+## Context
+This application was built while all colloborators were Mod 2 students at [Turing School of Software and Design Front End Web Development program](https://frontend.turing.edu/), a four- module, seven-month course focused on preparing students for a career as web developers working with Javascript, HTML, CSS, and the React framework. The application was built over the course of ten days, and completed with the [Project Specification and Rubric](https://frontend.turing.edu/projects/module-2/fitlit-part-one-agile.html) in mind.
 
-**Sleep**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```

@@ -74,10 +74,6 @@ function htmlDateHelper() {
 
 function displayRandomUser(usersData) {
   user = new User(usersData[getRandomIndex(usersData)]);
-  // userName.innerText = `Name: ${user.name}`
-  // userAddress.innerText = `${user.address}`
-  // userEmail.innerText = `${user.email}`
-  // userStride.innerText = `${user.strideLength}`
   userSteps.innerText = `Your goal is to take ${user.dailyStepGoal} steps today.`
   welcomeMessage.innerText = `${user.name}`
   comparisonSteps.innerText = `The average FitLit user is taking ${user.usersAvgDailyStep(usersData)} steps today.`

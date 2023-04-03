@@ -2,11 +2,9 @@
 import './css/styles.css';
 
 // Image Imports
-import './images/turing-logo.png';
 import './images/Activity_Logo.svg';
 import './images/Hydration_Logo.svg';
 import './images/Sleep_Logo.svg';
-import './images/site-logo.svg'
 
 // 3rd party library import
 import Chart from 'chart.js/auto';
@@ -75,6 +73,7 @@ function displayUserGreeting(user, date) {
 
 function clearChartArea() {
   const chartArea = document.querySelector(".infographic");
+  chartArea.classList.remove("chart-placeholder")
   chartArea.innerHTML = "<canvas id='chart'></canvas>";
 };
 

@@ -74,13 +74,9 @@ function htmlDateHelper() {
 
 function displayRandomUser(usersData) {
   user = new User(usersData[getRandomIndex(usersData)]);
-  // userName.innerText = `Name: ${user.name}`
-  // userAddress.innerText = `${user.address}`
-  // userEmail.innerText = `${user.email}`
-  // userStride.innerText = `${user.strideLength}`
   userSteps.innerText = `Your goal is to take ${user.dailyStepGoal} steps today.`
   welcomeMessage.innerText = `${user.name}`
-  comparisonSteps.innerText = `The average user is taking ${user.usersAvgDailyStep(usersData)} steps today.`
+  comparisonSteps.innerText = `The average FitLit user is taking ${user.usersAvgDailyStep(usersData)} steps today.`
 }
 
 function displayActivity(activityData) {
@@ -120,14 +116,22 @@ function displayActivityTracker() {
 Chart.defaults.color = "#EDEDED",
 
   new Chart(ctx, {
-    type: "bar",
+    type: "line",
     data: {
       labels: shortenedKeys,
-      datasets: [{
+      datasets:[{
+          color: "#fefefe",
+          label: 'Goal met?',
+          data: activity.reachStepGoal(user, htmlDate),
+          backgroundColor: "#28B0EB",
+          borderWidth: 0,
+        },{
         label: "Steps taken",
         data: activity.chartWeeklySteps(user, htmlDate),
         backgroundColor: ["#CAFCFF", "#89EBF1", "#65CAF6", "#28B0EB", "#2882EB", "#095AB8", "#023572"],
-        borderWidth: 1
+        borderWidth: 1,
+        stack: 'combined',
+        type: 'bar',
       }]
     },
     options: {
@@ -172,7 +176,7 @@ function displaySleepTracker() {
       datasets: [{
         color: "#fefefe",
         label: 'Quality of sleep',
-        data: sleep.chartWeeklyHours(user, htmlDate),
+        data: sleep.chartWeeklyQuality(user, htmlDate),
         backgroundColor: "#28B0EB",
         borderWidth: 0,
       },
@@ -226,7 +230,7 @@ function displayHydrationTracker() {
   })
 
   new Chart(ctx, {
-    type: 'bar',
+    type: 'doughnut',
     data: {
       labels: shortenedKeys,
       datasets: [{
@@ -234,7 +238,7 @@ function displayHydrationTracker() {
         data: hydration.chartWeeklyFluids(user, htmlDate),
         color: "#EDEDED",
         backgroundColor: ["#CAFCFF", "#89EBF1", "#65CAF6", "#28B0EB", "#2882EB", "#095AB8", "#023572"],
-        borderWidth: 1
+        borderWidth: 0
       }]
     },
     options: {
@@ -245,18 +249,6 @@ function displayHydrationTracker() {
       },
       responsive: true,
       maintainAspectRatio: false,
-      scales: {
-        x: {
-          ticks: {
-            color: "#EDEDED"
-          }
-        },
-        y: {
-          ticks: {
-            color: "#EDEDED"
-          }
-        }
-      }
   }
   });
 }
@@ -268,7 +260,7 @@ function toggleExpanded() {
     userGreeting.innerText =  `Welcome back, ${user.name.split(" ")[0]}!`
     userAddress.innerText = `${user.address}`
     userEmail.innerText = `${user.email}`
-    userStride.innerText = `Stride Length: ${user.strideLength}`
+    userStride.innerText = `Stride Length: ${user.strideLength} ft`
     expandedContainer.style.display = "inline";
   } else {
     toggle = true;

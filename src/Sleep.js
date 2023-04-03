@@ -71,6 +71,7 @@ class Sleep {
       acc[cV.date] = cV.sleepQuality
       return acc;
     }, [])
+    console.log(qualityArray)
     return qualityArray
   }
 }

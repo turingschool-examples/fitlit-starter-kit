@@ -59,8 +59,8 @@ window.addEventListener('load', () => {
 function htmlDateHelper() {
   var date = new Date();
   var month = ('0' + (date.getMonth() + 1)).slice(-2);
-  var day   = ('0' + date.getDate()).slice(-2);
-  var year  = date.getFullYear();
+  var day = ('0' + date.getDate()).slice(-2);
+  var year = date.getFullYear();
   var htmlDate = year + '/' + month + '/' + day;
   return htmlDate;
 }
@@ -102,7 +102,7 @@ function displayHydration(hydrationData) {
 function displayActivity(activityData) {
   activity = new Activity(activityData)
   var htmlDate = htmlDateHelper()
-  stepsToday.innerText = `Steps Taken: ${activity.todaysStepCount(user, htmlDate )}`
+  stepsToday.innerText = `Steps Taken: ${activity.todaysStepCount(user, htmlDate)}`
   distanceWalkedToday.innerText = `Distance Walked: ${activity.milesWalkedByDay(user, htmlDate)} miles`
   activeMinutesToday.innerText = `Minutes Active: ${activity.minutesActiveByDay(user, htmlDate)} minutes`
   // console.log(activity.weeklyStepCount(user, htmlDate))
@@ -116,7 +116,7 @@ function displayActivityTracker() {
   var weekHoursArray = activity.weeklyStepCount(user, htmlDate);
   var dateKeys = Object.keys(weekHoursArray).reverse()
   var shortenedKeys = []
-  dateKeys.forEach((key)  =>  {
+  dateKeys.forEach((key) => {
     shortenedKeys.push(key.slice(5))
     return shortenedKeys
   })
@@ -134,9 +134,9 @@ function displayActivityTracker() {
     },
     options: {
       plugins: {
-          legend: {
-              display: false
-          },
+        legend: {
+          display: false
+        },
       },
       scales: {
         x: {
@@ -150,7 +150,7 @@ function displayActivityTracker() {
           }
         }
       }
-  }
+    }
   });
 }
 
@@ -161,7 +161,7 @@ function displaySleepTracker() {
   var weekHoursArray = sleep.findWeeklyHours(user, htmlDate);
   var dateKeys = Object.keys(weekHoursArray).reverse()
   var shortenedKeys = []
-  dateKeys.forEach((key)  =>  {
+  dateKeys.forEach((key) => {
     shortenedKeys.push(key.slice(5))
     return shortenedKeys
   })
@@ -179,12 +179,12 @@ function displaySleepTracker() {
     },
     options: {
       plugins: {
-          legend: {
-              display: false
-          },
+        legend: {
+          display: false
+        },
       },
       maintainAspectRatio: true,
-  }
+    }
   });
 }
 
@@ -194,7 +194,7 @@ function displayHydrationTracker() {
   var weekHoursArray = hydration.calculateFluidWeekly(user, htmlDate);
   var dateKeys = Object.keys(weekHoursArray).reverse()
   var shortenedKeys = []
-  dateKeys.forEach((key)  =>  {
+  dateKeys.forEach((key) => {
     shortenedKeys.push(key.slice(5))
     return shortenedKeys
   })
@@ -213,9 +213,9 @@ function displayHydrationTracker() {
     },
     options: {
       plugins: {
-          legend: {
-              display: false
-          },
+        legend: {
+          display: false
+        },
       },
       scales: {
         x: {
@@ -229,7 +229,7 @@ function displayHydrationTracker() {
           }
         }
       }
-  }
+    }
   });
 }
 

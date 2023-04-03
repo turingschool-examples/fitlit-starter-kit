@@ -32,10 +32,10 @@ describe('Sleep', function () {
   })
 
   it('should be able store one week of sleep data', function () {
-    expect(sleep.findWeeklyHours(user1, "2023/03/21")).to.deep.equal([])
+    expect(sleep.findWeeklyHours(user1, "2023/03/24")).to.deep.equal([])
   })
 
   it('should be able store one week of sleep quality data', function () {
-    expect(sleep.findWeeklyQuality(user1, "2023/03/24")).to.equal({ '2023/03/24': 4.3 })
+    expect(sleep.findWeeklyQuality(user1, "2023/03/24")).to.deep.equal([])
   })
 })

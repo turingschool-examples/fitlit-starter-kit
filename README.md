@@ -1,4 +1,49 @@
-# FitLit Starter Kit
+# FitLit
+
+## Abstract
+This web application creates a dashboard with easy to read information about users daily habits like sleep, hydration, and activity. Users are able to see the latest activity data, goals, and milestones.
+
+## Setup
+Fork and clone this [repo](https://github.com/tdmburr/fitlit).
+
+Install the library dependencies. Run:
+
+```npm install```
+
+Run ```npm start``` in the terminal to see the HTML page
+
+```Control + C``` is the command to stop running the local server
+
+## Preview of App
+![FitLit]()
+
+## Reflections:
+
+This is our first two-part group project, where we will be working together over an extended amount of time. We have currently gone through Module 1 and halfway through Module 2 of Turing School of Software and Design Front-End Engineering Program. This project allowed us to continue growing our cooperative learning skills, teammwork, communication, and our software developer skills. 
+
+## Technologies Used:
+Chai
+Mocha
+Javascript
+API
+CSS
+HTML
+
+## Countributors:
+Winston Calhoun [LinkedIn](https://www.linkedin.com/in/winston-calhoun-9841bb256/) || [github](https://github.com/WinstonCalhoun)  
+Devynne Marshall ([LinkedIn](https://www.linkedin.com/in/devynnemarshall/) || [github](https://github.com/Devynnem))  
+Trey Marshall ([LinkedIn](https://www.linkedin.com/in/trey-marshall-32ab01260/) || [github](https://github.com/tdmburr))  
+Sarah Moore [LinkedIn](https://www.linkedin.com/in/sarah-moore-a35196127/) || [github](https://github.com/sarahcatherine311)  
+Mattheus Saqueli [LinkedIn](https://www.linkedin.com/in/mattheus-saqueli-409813250/) || [github](https://github.com/mattsaqueli)  
+
+
+
+
+
+
+
+
+
 
 The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
 

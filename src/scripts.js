@@ -8,7 +8,6 @@ import './css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/turing-logo.png';
 
-
 import User from './user';
 import UserHydration from './userHydration';
 import Sleep from './Sleep';
@@ -21,20 +20,15 @@ let allUserSleepData
 let allUserHydrationData
 let allUserActivityData
 
-
 let currentUser;
 let currentUserSleep;
 let currentUserHydration;
 let currentUserActivity;
 
 //Selectors
-
 const hydrationDisplay = document.querySelector('.hydration-display')
 const sleepDisplay = document.querySelector('.sleep-display')
 const activityDisplay = document.querySelector('.activity-display')
-
-
-
 
 window.addEventListener('load', () => {
   fetchAll()
@@ -47,8 +41,7 @@ window.addEventListener('load', () => {
     })
 })
 
-
-function loadUserInfo(currentUserData,userData) {
+function loadUserInfo(currentUserData, userData) {
   document.getElementById('firstName').innerHTML = `Welcome ${currentUserData.userName}!`;
   document.getElementById('fullName').innerHTML = `User: ${currentUserData.userName}`
   document.getElementById('address').innerHTML = `Address: ${currentUserData.address}`;
@@ -57,32 +50,36 @@ function loadUserInfo(currentUserData,userData) {
   document.getElementById('dailyStepgoal').innerHTML = `Daily Step Goal: ${currentUserData.dailyStepGoal}`;
 }
 
-
 function pageLoad() {
   currentUser = new User(userData);
   currentUserSleep = new Sleep(currentUser.userId, allUserSleepData);
-  currentUserHydration = new UserHydration(currentUser.userId, allUserHydrationData)
-  currentUserActivity = new Activity(currentUser.findUserById(currentUser.userId, userData), allUserActivityData)
+  currentUserHydration = new UserHydration(currentUser.userId, allUserHydrationData);
+  currentUserActivity = new Activity(currentUser.findUserById(currentUser.userId, userData), allUserActivityData);
 
   // User
   loadUserInfo(currentUser, userData)
   // *** Need their step goal compared to all user step goal
 
   // Sleep
-  sleepSummaryCard(currentUserSleep.findAllTimeAvgOfDetail('hoursSlept'), currentUserSleep.findAllTimeAvgOfDetail('sleepQuality'));
-  sleepWeekCard('Hours', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'hoursSlept'), currentUserSleep.findDetailByWeek(currentUserSleep.findMostRecentDay(), "hoursSlept"));
-  sleepWeekCard('Quality', currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'sleepQuality'), currentUserSleep.findDetailByWeek(currentUserSleep.findMostRecentDay(), "sleepQuality"));
-
-
+  sleepSummaryCard(currentUserSleep.findAllTimeAvgOfDetail('hoursSlept'),
+    currentUserSleep.findAllTimeAvgOfDetail('sleepQuality'));
+  sleepWeekCard('Hours',
+    currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'hoursSlept'),
+    currentUserSleep.findDetailLastSevenDays('hoursSlept'));
+  sleepWeekCard('Quality',
+    currentUserSleep.findDetailByDay(currentUserSleep.findMostRecentDay(), 'sleepQuality'),
+    currentUserSleep.findDetailLastSevenDays('sleepQuality'));
 
   // Hydration
-  createSingleCard("Today's Ounces", currentUserHydration.calculateSingleDayOunces(currentUserHydration.findMostRecentDay()));
-  createSevenDayCard('Ounces for Week', currentUserHydration.calculateOuncesLastSevenDays(currentUserHydration.findMostRecentDay()));
+  createSingleCard('Today\'s Ounces',
+    currentUserHydration.findSingleDayOunces(currentUserHydration.findMostRecentDay()));
+  createSevenDayCard('Ounces for Week',
+    currentUserHydration.findOuncesLastSevenDays());
 
   // Activity 
-  activityCard(currentUserActivity.findMostRecentSteps(), 
-              currentUserActivity.calculateMiles(currentUserActivity.findMostRecentDay()), 
-              currentUserActivity.calculateStepLastSevenDays(currentUserActivity.findMostRecentDay()), currentUserActivity.calculateGoalLastSevenDays(currentUserActivity.findMostRecentDay()))
+  activityCard(currentUserActivity.findMostRecentSteps(),
+    currentUserActivity.calculateMiles(currentUserActivity.findMostRecentDay()),
+    currentUserActivity.findStepsLastSevenDays(currentUserActivity.findMostRecentDay()), currentUserActivity.checkGoalLastSevenDays(currentUserActivity.findMostRecentDay()))
 }
 
 function sleepSummaryCard(avgHours, avgQuality) {
@@ -122,8 +119,8 @@ function sleepWeekCard(detail, detailToday, detailByWeek) {
    </section>`
 }
 
-function activityCard(stepCount, miles, weekSteps,stepGoalMet){
-   activityDisplay.innerHTML += `
+function activityCard(stepCount, miles, weekSteps, stepGoalMet) {
+  activityDisplay.innerHTML += `
    <section class='card activity' id= 'card-activity'>
     <div>
       <h3> Total Active Minutes</h3>
@@ -184,15 +181,14 @@ function createSevenDayCard(cardTitle, outputToDisplay) {
   hydrationDisplay.innerHTML += `
   <section class='card seven-day'> 
     <h3> ${cardTitle} </h3>
- <div class='dataRow'>
-    <text> ${outputToDisplay[0]} </text>
-    <text> ${outputToDisplay[1]} </text>
-    <text> ${outputToDisplay[2]} </text>
-    <text> ${outputToDisplay[3]} </text>
-    <text> ${outputToDisplay[4]} </text>
-    <text> ${outputToDisplay[5]} </text>
-    <text> ${outputToDisplay[6]} </text>
- </div>
-</section>
-`
+    <div class='dataRow'>
+      <text> ${outputToDisplay[0]} </text>
+      <text> ${outputToDisplay[1]} </text>
+      <text> ${outputToDisplay[2]} </text>
+      <text> ${outputToDisplay[3]} </text>
+      <text> ${outputToDisplay[4]} </text>
+      <text> ${outputToDisplay[5]} </text>
+      <text> ${outputToDisplay[6]} </text>
+    </div>
+  </section>`
 }

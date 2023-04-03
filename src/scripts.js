@@ -1,4 +1,4 @@
-// Webpack links
+// Webpack Links
 import { fetchAllData } from '../src/apiCalls';
 import './css/styles.css';
 import './images/fitlit-logo.png';
@@ -11,7 +11,7 @@ import Hydration from '../src/Hydration';
 import Activity from '../src/Activity';
 import Chart from 'chart.js/auto';
 
-// Queury selectors
+// Queury Selectors
 const firstName = document.getElementById('userName'),
       userInfo = document.getElementById('userInfo'),
       sleepDay = document.getElementById('sleepBox'),
@@ -40,13 +40,16 @@ window.addEventListener('load', () => {
       userObj = new User(data[0].users[Math.floor(Math.random() * 50)]);
       displayCurrentUser(userObj);
 
-      hydrationObj = new Hydration(getUserData('hydrationData', data[1]));
+      userObj.hydration = new Hydration(getUserData('hydrationData', data[1]));
+      hydrationObj = userObj.hydration;
       displayHydration(userObj.id);
 
-      sleepObj = new Sleep(getUserData('sleepData', data[2]));
+      userObj.sleep = new Sleep(getUserData('sleepData', data[2]));
+      sleepObj = userObj.sleep;
       displaySleepInfo(sleepObj);
 
-      activityObj = new Activity(getUserData('activityData', data[3]), userObj.strideLength);
+      userObj.activity = new Activity(getUserData('activityData', data[3]), userObj.strideLength);
+      activityObj = userObj.activity
       displayActivity(userObj.id);
     });
 });

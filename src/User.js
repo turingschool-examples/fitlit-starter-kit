@@ -8,6 +8,7 @@ class User {
         this.dailyStepGoal = userObj.dailyStepGoal
         this.friends = userObj.friends
     }
+
     getUserData(num) {
         const user = mock.users.reduce((acc, index) => {
         if (index.id === num) {
@@ -17,10 +18,12 @@ class User {
         }, {})
         return user
     }
+
     getFirstName() {
         let firstName =  this.name.split(' ')[0]
         return firstName
     }
+    
     usersAvgDailyStep(usersData) {
         const averageSteps = usersData.reduce((acc, index) => {
             acc += index.dailyStepGoal/usersData.length

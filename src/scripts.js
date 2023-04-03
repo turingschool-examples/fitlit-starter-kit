@@ -34,28 +34,28 @@ profileImage.addEventListener("click", toggleExpanded)
 welcomeMessage.addEventListener("click", toggleExpanded)
 window.addEventListener('load', () => {
 
-  // functions 
-  Promise.all(apiCalls)
-    .then((apiCallsArray) => {
-      const usersData = apiCallsArray[0].users
-      const sleepData = apiCallsArray[1].sleepData
-      const hydrationData = apiCallsArray[2].hydrationData
-      const activityData = apiCallsArray[3].activityData
-      displayRandomUser(usersData)
-      displayHydration(hydrationData, usersData)
-      displayActivity(activityData, usersData)
-      displayDate()
-      displaySleepActivity(sleepData)
-      displayActivityTracker()
-      displayHydrationTracker()
-      displaySleepTracker()
-      displayCalendar()
-    })
-    .catch(error => console.log(error))
+// functions 
+Promise.all(apiCalls)
+  .then((apiCallsArray) => {
+    const usersData = apiCallsArray[0].users
+    const sleepData = apiCallsArray[1].sleepData
+    const hydrationData = apiCallsArray[2].hydrationData
+    const activityData = apiCallsArray[3].activityData
+    displayRandomUser(usersData)
+    displayHydration(hydrationData, usersData)
+    displayActivity(activityData, usersData)
+    displayDate()
+    displaySleepActivity(sleepData)
+    displayActivityTracker()
+    displayHydrationTracker()
+    displaySleepTracker()
+    displayCalendar()
+  })
+  .catch(error => console.log(error))
 })
 
 function getRandomIndex(usersData) {
-  return Math.floor(Math.random() * usersData.length);
+  return Math.floor(Math.random() * usersData.length)
 }
 
 function displayDate() {
@@ -64,16 +64,16 @@ function displayDate() {
 }
 
 function htmlDateHelper() {
-  var date = new Date();
-  var month = ('0' + (date.getMonth() + 1)).slice(-2);
-  var day   = ('0' + date.getDate()).slice(-2);
-  var year  = date.getFullYear();
-  var htmlDate = year + '/' + month + '/' + day;
+  var date = new Date()
+  var month = ('0' + (date.getMonth() + 1)).slice(-2)
+  var day   = ('0' + date.getDate()).slice(-2)
+  var year  = date.getFullYear()
+  var htmlDate = year + '/' + month + '/' + day
   return htmlDate;
 }
 
 function displayRandomUser(usersData) {
-  user = new User(usersData[getRandomIndex(usersData)]);
+  user = new User(usersData[getRandomIndex(usersData)])
   userSteps.innerText = `Your goal is to take ${user.dailyStepGoal} steps today.`
   welcomeMessage.innerText = `${user.name}`
   comparisonSteps.innerText = `The average FitLit user is taking ${user.usersAvgDailyStep(usersData)} steps today.`
@@ -103,9 +103,9 @@ function displaySleepActivity(sleepData) {
 }
 
 function displayActivityTracker() {
-  const ctx = document.querySelector('.activity-chart');
+  const ctx = document.querySelector('.activity-chart')
   var htmlDate = htmlDateHelper()
-  var weekHoursArray = activity.weeklyStepCount(user, htmlDate);
+  var weekHoursArray = activity.weeklyStepCount(user, htmlDate)
   var dateKeys = Object.keys(weekHoursArray).reverse()
   var shortenedKeys = []
   dateKeys.forEach((key)  =>  {
@@ -157,16 +157,15 @@ Chart.defaults.color = "#EDEDED",
 }
 
 function displaySleepTracker() {
-  const ctx = document.querySelector('.sleep-chart');
+  const ctx = document.querySelector('.sleep-chart')
   var htmlDate = htmlDateHelper()
-  var weekHoursArray = sleep.findWeeklyHours(user, htmlDate);
+  var weekHoursArray = sleep.findWeeklyHours(user, htmlDate)
   var dateKeys = Object.keys(weekHoursArray).reverse()
   var shortenedKeys = []
   dateKeys.forEach((key)  =>  {
     shortenedKeys.push(key.slice(5))
-    return shortenedKeys
+    return  shortenedKeys
   })
-
 
   new Chart(ctx, {
     type: 'line',
@@ -217,11 +216,10 @@ function displaySleepTracker() {
 });
 }
 
-
 function displayHydrationTracker() {
-  const ctx = document.querySelector('.hydration-chart');
+  const ctx = document.querySelector('.hydration-chart')
   var htmlDate = htmlDateHelper()
-  var weekHoursArray = hydration.calculateFluidWeekly(user, htmlDate);
+  var weekHoursArray = hydration.calculateFluidWeekly(user, htmlDate)
   var dateKeys = Object.keys(weekHoursArray).reverse()
   var shortenedKeys = []
   dateKeys.forEach((key)  =>  {
@@ -238,7 +236,7 @@ function displayHydrationTracker() {
         data: hydration.chartWeeklyFluids(user, htmlDate),
         color: "#EDEDED",
         backgroundColor: ["#CAFCFF", "#89EBF1", "#65CAF6", "#28B0EB", "#2882EB", "#095AB8", "#023572"],
-        borderWidth: 0
+        borderWidth: 0,
       }]
     },
     options: {
@@ -255,13 +253,13 @@ function displayHydrationTracker() {
 
 function toggleExpanded() {
   if (toggle === true)  {
-    toggle = false;
+    toggle = false
     console.log(toggle)
     userGreeting.innerText =  `Welcome back, ${user.name.split(" ")[0]}!`
     userAddress.innerText = `${user.address}`
     userEmail.innerText = `${user.email}`
     userStride.innerText = `Stride Length: ${user.strideLength} ft`
-    expandedContainer.style.display = "inline";
+    expandedContainer.style.display = "inline"
   } else {
     toggle = true;
     console.log(toggle)

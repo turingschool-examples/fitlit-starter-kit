@@ -1,16 +1,15 @@
 import { expect } from 'chai';
 import User from '../src/User';
 import mock from '../src/data/mock';
-// import apiCalls from '../src/apiCalls';
 
 describe('User', function () {
     let user1, user2, user3
     beforeEach(function () {
-        // usersData = apiCalls[0].users
         user1 = new User(mock.users[0])
         user2 = new User(mock.users[1])
         user3 = new User(mock.users[2])
-    })
+    });
+
     it('should be a function', function () {
         expect(User).to.be.a('function')
     });
@@ -55,7 +54,7 @@ describe('User', function () {
 
     it('should be able to return the users first name', function () {
         expect(user1.getFirstName()).to.equal('Trystan')
-    })
+    });
 
     it('should be able to return the average step goal of all users', function () {
         expect(user1.usersAvgDailyStep(mock.users)).to.equal(6333)

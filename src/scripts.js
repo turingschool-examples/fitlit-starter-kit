@@ -99,11 +99,11 @@ function createHydrationChart(hydration, userID, date) {
     data: {
       datasets: [{
         label: "ounces",
-        backgroundColor: "#538BC7",
+        backgroundColor: "#F57630",
         borderColor: "#3C4252",
         borderWidth: 2,
-        hoverBackgroundColor: "#5A73C0",
-        hoverBorderColor: "#5A73C0",
+        hoverBackgroundColor: "#F68C52",
+        hoverBorderColor: "#3C4252",
         data: data,
       }],
       labels: labels,
@@ -171,11 +171,11 @@ function createSleepQualityChart(sleep, userID, date) {
       datasets: [
         {
           label: "Sleep Quality",
-          backgroundColor: "#A25E9B",
-          borderColor: "#A25E9B",
+          backgroundColor: "#F57630",
+          borderColor: "#3C4252",
           borderWidth: 2,
-          hoverBackgroundColor: "#F16433",
-          hoverBorderColor: "#5A73C0",
+          hoverBackgroundColor: "#F68C52",
+          hoverBorderColor: "#3C4252",
           data: data,
         },
       ],
@@ -209,11 +209,11 @@ function createActivityChart(activity, userID, date) {
     data: {
       datasets: [{
         label: "minutes",
-        backgroundColor: "#FDC504",
+        backgroundColor: "#F57630",
         borderColor: "#3C4252",
         borderWidth: 2,
-        hoverBackgroundColor: "#5A73C0",
-        hoverBorderColor: "#5A73C0",
+        hoverBackgroundColor: "#F68C52",
+        hoverBorderColor: "#3C4252",
         data: data,
       }],
       labels: labels,

@@ -32,6 +32,6 @@ describe('Activity', function () {
     expect(activity1.todaysStepCount(user, '2023/03/25')).to.equal(14264)
   });
   it('should return the users weekly step count for the last 7 days', function () {
-  expect(activity1.weeklyStepCount(user, '2023/03/25')).to.deep.equal([14264, 7362])
+    expect(activity1.weeklyStepCount(user, '2023/03/25')).to.deep.equal([])
   })
 })

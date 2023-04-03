@@ -1,11 +1,6 @@
+/* Global Settings */
 
-html {
-  height: 100%;
-  padding: 0;
-  margin: 0;
-}
-
-body {
+html, body {
   height: 100%;
   width: 100%;
   padding: 0;
@@ -13,25 +8,37 @@ body {
   font-family: 'europa', sans-serif;
 }
 
-.nav-wrapper {
+body {
+  position: absolute;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+  background-color: rgb(254, 253, 249);
+}
+
+b {
+  font-size: 0.9rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+p {
+  font-size: 0.9rem;
+  margin: 0.1rem 0 1rem 0;
+  color: rgb(49, 49, 49);
+}
+
+/* Navigation Bar */
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 8%;
   position: absolute;
   left: 0%;
   right: 0%;
   top: 0%;
-  bottom: auto;
-  z-index: 9999;
-  display: flex;
-  height: 8%;
-  align-items: center;
-}
-
-.navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  height: 100%;
-  width: 100%;
   background-color: rgba(56, 44, 94);
 }
 
@@ -39,10 +46,10 @@ body {
   display: flex;
   align-items: center;
   width: 50%;
+  margin-left: 3%;
 }
 
 .site-logo {
-  margin-left: 5.5%;
   height: 50%;
   width: 5%;
 }
@@ -75,16 +82,15 @@ h2 {
   color: rgba(56, 44, 94);
 }
 
-/* main section */
+/* Main Section Groups */
 main {
   display: flex;
   justify-items: start;
   align-items: start;
-  padding: 0 3% 0% 3%;
-  margin-top: 6%;
   height: 85%;
-  width: 90%;
-
+  width: 94%;
+  padding: 0 3%;
+  margin-top: 7%;
 }
 
 .cards{
@@ -94,38 +100,53 @@ main {
   align-items: start;
   justify-items: center;
   height: 80%;
-  width: 70%;
+  width: 75%;
 }
 
-body {
-  position: absolute;
-  left: 0%;
-  bottom: 0%;
-  top: 0%;
+.infographic {
+  display: flex;
+  align-items: center;
+  height: 77%;
+  width: 35%;
+  margin: 7% 0 0 2%;
+  padding: 1%;
+  border: 3px solid black;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  background-color: rgba(248, 238, 218, 0.4);
 }
+
+/* Cards General Styles */
+
+.stat-cards, .user-profile-card {
+  position: relative;
+  padding: 1%;
+  border: 3px solid;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  opacity: 0.9;
+  background-color: rgba(248, 238, 218, 0.4);
+}
+
+/* Stat Cards */
 
 .stat-card-wrapper {
   display: flex;
-  width: 99%;
   justify-content: space-between;
-  margin-bottom: 2%;
-  height: 60%;
-}
-
-.activity-card, .hydration-card, .sleep-card, .user-card {
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  padding: 1%;
-  opacity: 0.9;
-  position: relative;
+  width: 100%;
+  height: 55%;
+  margin-bottom: 3%;
 }
 
 .stat-cards {
-  max-width: 30%;
-  border: 3px solid;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 30%;
+}
+
+.hydration-card {
+  margin: 0 1%;
 }
 
 .stat-card-icon-wrapper {
@@ -138,105 +159,8 @@ body {
   position: absolute;
 }
 
-.infographic {
-  display: flex;
-  align-items: center;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  margin-top: 7%;
-  height: 77%;
-  width: 35%;
-  margin-left: 2%;
-  background-color: rgba(248, 238, 218, 0.4);
-  padding: 1%;
-  border: 3px solid black;
-}
-
-/* User Profile Card */
-
-.user-profile-card {
-  background: rgba(248, 238, 218, 0.4);
-  border-radius: 1%;
-  border: 3px solid black;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 35%;
-}
-
-.user-info-wrapper {
+.barbell-img, .water-img, .sleep-img {
   height: 100%;
-  width: 95%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 1.5% 0;
-}
-
-.user-name-profile-backing {
-  background-color: rgba(56, 44, 94);
-  border-radius: 20%;
-  margin-left: 2%;
-  width: 5%;
-  height: 15%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.user-name-profile {
-  text-align: center;
-  margin-block: 10%;
-  color: white;
-}
-
-.profile-info {
-  height: 90%;
-  width: 20%;
-  padding: 0 6%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-}
-
-.profile-info b {
-  font-size: 0.8rem;
-  font-weight: 800;
-}
-
-.profile-info p {
-  color: rgb(84, 84, 84);
-  margin-bottom: 0.8em;
-}
-
-.personal-info {
-  border-right: 0.1px solid rgb(169, 167, 167);
-}
-
-.goals-steps-info {
-  border-right: 0.1px solid rgb(169, 167, 167);
-}
-
-/* Colors */
-.stat-cards {
-  background-color: rgba(248, 238, 218, 0.4);
-  border-color: 5px solid black;
-}
-
-.hydration-card {
-  background-color:rgba(248, 238, 218, 0.4);
-  margin: 0 2%;
-  border-color: 2px solid black;
-}
-
-.sleep-card {
-  background-color: rgba(248, 238, 218, 0.4);
-  border-color: 2px solid black;
 }
 
 .activity-card-js, .hydration-holder, .latest-sleep-data-js {
@@ -247,27 +171,86 @@ body {
   width: 100%;
 }
 
+.water-text, .sleep-text, .activity-text {
+  display: inline-block;
+  width: 100%;
+  padding-left: 2%;
+  text-align: left;
+}
+
+/* User Profile Card */
+
+.user-profile-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 35%;
+}
+
+.user-info-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  width: 95%;
+  padding: 1.5% 0;
+}
+
+.user-name-profile-backing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 5%;
+  height: 15%;
+  border-radius: 20%;
+  margin-left: 2%;
+  background-color: rgba(56, 44, 94);
+}
+
+.user-name-profile {
+  text-align: center;
+  margin-block: 10%;
+  color: white;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 90%;
+  width: 20%;
+  padding: 0 6%;
+}
+
+.personal-info, .goal-steps-info {
+  border-right: 0.1px solid rgb(169, 167, 167);
+}
+
+/* Infographic */
+
 .info-chart{
   margin-top: 20%;
 }
 
-/* images */
-.barbell-img, .water-img, .sleep-img {
-  height: 100%;
+.chart-placeholder {
+  background: url(../images/Chart-Placeholder.svg) no-repeat;
+  background-size: cover;
 }
 
 /* buttons */
 
 button {
-  border: 0px;
-  border-radius: 5px;
-  background-color: rgba(56, 44, 94);
-  color: white;
+  width: 100%;
   padding: 2%;
   margin-top: 2%;
-  width: 100%;
-  font-size: 1rem;
-  cursor: pointer;
+  border: 0px;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.9rem;
+  background-color: rgba(56, 44, 94);
 }
 
 .sleep-button {
@@ -276,44 +259,10 @@ button {
 
 .button-wrapper {
   position: absolute;
-  bottom: 4%;
   display: flex;
-  width: 94%;
   justify-content: space-around;
+  bottom: 4%;
+  width: 94%;
 }
 
-button:hover {
-  background-color:#4c416eef;
-  transition: 0.7s;
-}
 
-button:focus {
-  outline-color: transparent;
-  outline-style:solid;
-  box-shadow: 0 0 0 2px #F57630;
-  transition: 0.7s;
-}
-
-/* text */
-
-.water-text, .sleep-text, .activity-text {
-  text-align: left;
-  width: 100%;
-  display: inline-block;
-  padding-left: 2%;
-}
-
-b {
-  font-size: 0.9rem;
-  margin: 0;
-}
-
-p {
-  font-size: 0.9rem;
-  margin: 0.1rem 0 1rem 0;
-}
-
-.chart-placeholder {
-  background: url(../images/Chart-Placeholder.svg) no-repeat;
-  background-size: cover;
-}

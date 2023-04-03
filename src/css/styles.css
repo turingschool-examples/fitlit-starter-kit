@@ -145,11 +145,12 @@ body, html {
 /* friends container */
 .friends-container  {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-wrap;
   justify-content: space-evenly;
 }
 
-.friend1-image, .friend2-image, .friend3-image  {
+
+.friend1-image, .friend2-image, .friend3-image, .friend4-image, .friend5-image  {
   padding: 10px;
 }
 

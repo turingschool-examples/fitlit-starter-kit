@@ -164,7 +164,7 @@ function displaySleepTracker() {
   var shortenedKeys = []
   dateKeys.forEach((key)  =>  {
     shortenedKeys.push(key.slice(5))
-    return shortenedKeys
+    return  shortenedKeys
   })
 
   new Chart(ctx, {
@@ -236,7 +236,7 @@ function displayHydrationTracker() {
         data: hydration.chartWeeklyFluids(user, htmlDate),
         color: "#EDEDED",
         backgroundColor: ["#CAFCFF", "#89EBF1", "#65CAF6", "#28B0EB", "#2882EB", "#095AB8", "#023572"],
-        borderWidth: 0
+        borderWidth: 0,
       }]
     },
     options: {

@@ -145,13 +145,18 @@ body, html {
 /* friends container */
 .friends-container  {
   display: flex;
-  flex-direction: row-wrap;
-  justify-content: space-evenly;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  justify-content: center;
 }
 
 
 .friend1-image, .friend2-image, .friend3-image, .friend4-image, .friend5-image  {
   padding: 10px;
+}
+
+.friend1, .friend2, .friend3, .friend4, .friend5-image{
+  margin-top: 0px;
 }
 
 /* data visualizations */

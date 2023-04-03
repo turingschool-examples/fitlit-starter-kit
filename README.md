@@ -8,7 +8,7 @@ Our application showcases communication with third party data sources using api'
 4. Run `npm start`
 5. copy and paste the provided url into a new web page
 ## FitLit at a glance
-![Giph of project](https://media.giphy.com/media/zSo2GMYjWElzI1br2A/giphy.gif)
+![Giph of project](https://media.giphy.com/media/M9HqhKlZ7qiD9WwBjO/giphy.gif)
 ## Technologies Used
 - javaScript
 - HTML5

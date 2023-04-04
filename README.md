@@ -35,3 +35,6 @@ Johnathan Chaney
 Isaiah Richardson
 
 [https://github.com/CapCinematic](https://github.com/CapCinematic)
+
+##Git Fit
+![GitFit](dist/images/Gitfit.png)

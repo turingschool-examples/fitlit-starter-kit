@@ -4,7 +4,7 @@
 A web application designed to allow users to monitor their latest and all-time activity, hydration, and sleep data and to compare their health metrics and goals against the wider user base of the platform. 
 
 ## Preview of App
-![demo]()
+![demo](src/images/Git-fit.gif)
 
 ## Technologies Used
 - Charts.js & Day.js 3rd party libraries

@@ -58,7 +58,7 @@ describe("Activity", () => {
   });
   
   it("should have a method to return their weekly step count given a user ID and date", () => {
-    expect(activity.weeklyMinutes(1, "2023/03/23")).to.be.deep.equal([{
+    expect(activity.weeklyMinutes(1, "2023/03/26")).to.be.deep.equal([{
         userID: 1,
         date: "2023/03/24",
         numSteps: 7362,

@@ -55,12 +55,7 @@ describe("Hydration", () => {
   });
 
   it('should return a users ounces consumed in a given week', function () {
-    expect(hydration.weeklyOuncesConsumed(1, "2023/03/24")).to.be.deep.equal([{
-        userID: 1,
-        date: '2023/03/24',
-        numOunces: 28
-      },
-      {
+    expect(hydration.weeklyOuncesConsumed(1, "2023/03/31")).to.be.deep.equal([{
         userID: 1,
         date: '2023/03/25',
         numOunces: 50
@@ -74,6 +69,11 @@ describe("Hydration", () => {
         userID: 1,
         date: '2023/03/29',
         numOunces: 20
+      },
+      {
+        userID: 1,
+        date: '2023/03/31',
+        numOunces: 51
       },
     ]);
   });

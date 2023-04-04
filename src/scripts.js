@@ -6,7 +6,7 @@ import './images/Activity_Logo.svg';
 import './images/Hydration_Logo.svg';
 import './images/Sleep_Logo.svg';
 import './images/Site_Logo.svg';
-import "./images/Git-fit.gif";
+import "./images/src/Sisphyus-fitness.gif";
 
 // 3rd party library import
 import Chart from 'chart.js/auto';

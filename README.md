@@ -36,5 +36,5 @@ Isaiah Richardson
 
 [https://github.com/CapCinematic](https://github.com/CapCinematic)
 
-##Git Fit
+## Git Fit
 ![GitFit](dist/images/Gitfit.png)

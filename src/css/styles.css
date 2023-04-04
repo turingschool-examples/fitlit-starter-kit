@@ -243,6 +243,7 @@ main {
 /* buttons */
 
 button {
+  cursor: pointer;
   width: 100%;
   padding: 2%;
   margin-top: 2%;
@@ -251,6 +252,18 @@ button {
   color: white;
   font-size: 0.9rem;
   background-color: rgba(56, 44, 94);
+}
+
+button:hover {
+  background-color:#4c416eef;
+  transition: 0.7s;
+}
+
+button:focus {
+  outline-color: transparent;
+  outline-style:solid;
+  box-shadow: 0 0 0 2px #F57630;
+  transition: 0.7s;
 }
 
 .sleep-button {

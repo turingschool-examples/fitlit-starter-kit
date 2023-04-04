@@ -29,6 +29,7 @@ function displayUserCard(user) {
   `;
 }
 
+// User Functions
 function displayUserCardInitial(user) {
   const userCardName = document.querySelector('.user-card-name-js');
   const userInitial = user.getFirstName().charAt(0);
@@ -62,22 +63,16 @@ function displayUserGreeting(user, date) {
   const customParseFormat = require('dayjs/plugin/customParseFormat');
   dayjs.extend(customParseFormat);
   const dateString = date;
-  console.log(dateString)
   const dateToday = dayjs(dateString, 'YYYY/MM/DD');
 
   const formattedDateString = dateToday.format('dddd D MMMM');
   userGreeting.innerHTML = `
   <p class="welcome welcome-date">${formattedDateString}</p>
-<h2 class="welcome">Hi, ${user.getFirstName()}</h2>
+  <h2 class="welcome">Hi, ${user.getFirstName()}</h2>
 `;
 };
 
-function clearChartArea() {
-  const chartArea = document.querySelector(".infographic");
-  chartArea.classList.remove("chart-placeholder")
-  chartArea.innerHTML = "<canvas id='chart'></canvas>";
-};
-
+// Hydration Function
 function displayhydrationCard(hydration, userID, date) {
   hydrationCard.innerHTML = `
     <b class="water-text">Average Water Consumed</b> 
@@ -89,28 +84,7 @@ function displayhydrationCard(hydration, userID, date) {
   waterButton.addEventListener("click", () => createHydrationChart(hydration, userID, date));
 };
 
-function createHydrationChart(hydration, userID, date) {
-  const weeklyOunces = hydration.weeklyOuncesConsumed(userID, date);
-  const labels = weeklyOunces.map(days => days.date);
-  const data = weeklyOunces.map(days => days.numOunces);
-  clearChartArea();
-  new Chart("chart", {
-    type: 'bar',
-    data: {
-      datasets: [{
-        label: "ounces",
-        backgroundColor: "#F57630",
-        borderColor: "#3C4252",
-        borderWidth: 2,
-        hoverBackgroundColor: "#F68C52",
-        hoverBorderColor: "#3C4252",
-        data: data,
-      }],
-      labels: labels,
-    }
-  })
-};
-
+// Sleep Functions
 function displaySleepCard(sleep, userID, date) {
   const latestSleepData = document.querySelector(".latest-sleep-data-js");
   latestSleepData.innerHTML = `
@@ -136,6 +110,51 @@ function displaySleepCard(sleep, userID, date) {
   qualitySleptButton.addEventListener("click", () =>
     createSleepQualityChart(sleep, userID, date)
   );
+};
+
+// Activity Function
+function displayActivityCard(activity, user, date) {
+  const activityCard = document.querySelector('.activity-card-js');
+  activityCard.innerHTML = `
+  <b class="activity-text">Miles Walked</b>
+  <p class="activity-text"> ${activity.calculateMilesWalked(date, user)} miles</p>
+  <b class="activity-text">Minutes Active</b>
+  <p class="activity-text"> ${activity.dailyMinutesActive(user.id, date)} minutes</p>
+  <b class="activity-text">Step Goal</b>
+  <p class="activity-text">${activity.stepGoalMet(user, date)}</p>
+  `;
+  const activityButton = document.querySelector("#activityButton");
+  activityButton.addEventListener("click", () => createActivityChart(activity, user.id, date));
+
+};
+
+// Chart Functions
+function clearChartArea() {
+  const chartArea = document.querySelector(".infographic");
+  chartArea.classList.remove("chart-placeholder");
+  chartArea.innerHTML = "<canvas id='chart'></canvas>";
+};
+
+function createHydrationChart(hydration, userID, date) {
+  const weeklyOunces = hydration.weeklyOuncesConsumed(userID, date);
+  const labels = weeklyOunces.map(days => days.date);
+  const data = weeklyOunces.map(days => days.numOunces);
+  clearChartArea();
+  new Chart("chart", {
+    type: 'bar',
+    data: {
+      datasets: [{
+        label: "ounces",
+        backgroundColor: "#F57630",
+        borderColor: "#3C4252",
+        borderWidth: 2,
+        hoverBackgroundColor: "#F68C52",
+        hoverBorderColor: "#3C4252",
+        data: data,
+      }],
+      labels: labels,
+    }
+  })
 };
 
 function createHoursSleptChart(sleep, userID, date) {
@@ -182,21 +201,6 @@ function createSleepQualityChart(sleep, userID, date) {
       labels: labels,
     },
   });
-};
-
-function displayActivityCard(activity, user, date) {
-  const activityCard = document.querySelector('.activity-card-js');
-  activityCard.innerHTML = `
-  <b class="activity-text">Miles Walked</b>
-  <p class="activity-text"> ${activity.calculateMilesWalked(date, user)} miles</p>
-  <b class="activity-text">Minutes Active</b>
-  <p class="activity-text"> ${activity.dailyMinutesActive(user.id, date)} minutes</p>
-  <b class="activity-text">Step Goal</b>
-  <p class="activity-text">${activity.stepGoalMet(user, date)}</p>
-  `;
-  const activityButton = document.querySelector("#activityButton");
-  activityButton.addEventListener("click", () => createActivityChart(activity, user.id, date));
-
 };
 
 function createActivityChart(activity, userID, date) {

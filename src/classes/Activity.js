@@ -31,8 +31,8 @@ class Activity {
   };
 
   weeklyMinutes(userID, date) {
-    const startDate = dayjs(date);
-    const endDate = startDate.add(6, "day");
+    const endDate = dayjs(date);
+    const startDate = endDate.subtract(6, "day");
     const milesByWeek = this.data.filter((entry) => {
       return entry.userID === userID && dayjs(entry.date).isAfter(startDate.subtract(1, "day")) && dayjs(entry.date).isBefore(endDate.add(1, "day"));
     });

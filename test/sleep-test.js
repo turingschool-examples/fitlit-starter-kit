@@ -51,7 +51,7 @@ describe('Sleep', () => {
     expect(sleep.findSleepQualityOnDate(4, "2023/06/30")).to.equal(3.4);
   });
   it("should return the hours slept over a week given a specified date", () => {
-    expect(sleep.calculateWeeklyHoursSlept(3, "2023/03/23")).to.deep.equal([{
+    expect(sleep.calculateWeeklyHoursSlept(3, "2023/03/29")).to.deep.equal([{
         date: "2023/03/29",
         hoursSlept: 5.6
       },
@@ -79,7 +79,7 @@ describe('Sleep', () => {
   });
   
   it("should return the sleep quality over a week given a specified date", () => {
-    expect(sleep.calculateWeeklySleepQuality(3, "2023/03/23")).to.deep.equal(
+    expect(sleep.calculateWeeklySleepQuality(3, "2023/03/29")).to.deep.equal(
       [{
           date: "2023/03/29",
           sleepQuality: 1.4

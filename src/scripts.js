@@ -11,7 +11,7 @@ import './images/Site_Logo.svg';
 import Chart from 'chart.js/auto';
 
 // Import API Calls
-import './apiCalls'
+import './apiCalls';
 
 //Query Selectors
 const hydrationCard = document.querySelector(".hydration-holder");

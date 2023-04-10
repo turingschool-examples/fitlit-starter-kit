@@ -16,10 +16,11 @@ body {
   background-color: rgb(254, 253, 249);
 }
 
-b {
+.bold-text {
   font-size: 0.9rem;
   margin: 0;
   font-weight: 600;
+  font-weight: bold;
 }
 
 p {

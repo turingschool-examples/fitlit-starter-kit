@@ -5,8 +5,10 @@ import hydrationTestData from '../src/data/hydration-test-data';
 describe('Hydration', () => {
   let data;
   let hydration;
+  let sadHydration;
   beforeEach(() => {
     data = hydrationTestData.hydrationTestData.reverse();
+    sadHydration = new Hydration([]);
     hydration = new Hydration(data);
   });
 
@@ -34,8 +36,7 @@ describe('Hydration', () => {
   });
 
   it('should return message if user does not exist', () => {
-    const hydration = new Hydration([]);
-    expect(hydration.findAvgDailyHydration()).to.equal('No Hydration Data Found');
+    expect(sadHydration.findAvgDailyHydration()).to.equal('No Hydration Data Found');
   });
 
   it('should return the a specfic days water consumption', () => {
@@ -43,8 +44,7 @@ describe('Hydration', () => {
   });
 
   it('should return message if nothing logged that specfic day', () => {    
-    const hydration = new Hydration([]);
-    expect(hydration.getHydrationSpecificDay('2023/03/03')).to.equal('No Hydration Data Found');
+    expect(sadHydration.getHydrationSpecificDay('2023/03/03')).to.equal('No Hydration Data Found');
   });
 
   it('should return the user\'s total amount of water for 7 consecutive days', () => {

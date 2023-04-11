@@ -26,4 +26,4 @@ const postActivityData = (data) => {
   };
 
 export { fetchAllData }
-// export { postActivityData }
+export { postActivityData }

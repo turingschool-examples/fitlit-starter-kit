@@ -298,7 +298,7 @@ function createMap(user) {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(map);
-      const path = L.polyline(coordinates, {color: 'red'}).addTo(map);
+      const path = L.polyline(coordinates, {color: 'orange'}).addTo(map);
       map.fitBounds(path.getBounds());
     })
     .catch((error) => {

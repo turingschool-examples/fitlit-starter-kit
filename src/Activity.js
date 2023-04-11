@@ -50,9 +50,9 @@ class Activity {
 
         const sevenDayGoalDetail = sevenDayDetail.map((daySteps) => {
             if (this.dailyStepGoal <= daySteps) {
-                return 'Hooray!'
+                return 'Yes'
             } else {
-                return 'Nooray'
+                return 'No'
             }
         })
         return sevenDayGoalDetail

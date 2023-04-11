@@ -110,7 +110,6 @@ main {
   height: 77%;
   width: 35%;
   margin: 7% 0 0 2%;
-  padding: 1%;
   border: 3px solid black;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -239,6 +238,11 @@ main {
 
 .chart-placeholder {
   background: url(../images/Chart-Placeholder.svg) no-repeat;
+  background-size: cover;
+}
+
+.map-error {
+  background: url(../images/RunMapError.svg) no-repeat;
   background-size: cover;
 }
 

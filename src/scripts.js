@@ -22,7 +22,9 @@ const firstName = document.getElementById('userName'),
       hydrationAvg = document.getElementById('hydrationBoxAvg'),
       activityDay = document.getElementById('activityBoxDaily'),
       activityAvg = document.getElementById('activityBoxAvg'),
-      activityWeek = document.getElementById('activityBoxWeek');
+      activityWeek = document.getElementById('activityBoxWeek'),
+      userInputForm = document.querySelector('form');
+
 
 // Global Variables
 let userList,
@@ -52,6 +54,28 @@ window.addEventListener('load', () => {
       activityObj = userObj.activity
       displayActivity(userObj.id);
     });
+});
+
+userInputForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const userInputId = document.getElementById('userId').value,
+        userInputDate = document.getElementById('date').value,
+        userInputStairs = document.getElementById('flightsOfStairs').value,
+        userInputMins = document.getElementById('activeMinutes').value,
+        userInputSteps = document.getElementById('numSteps').value;
+
+  const userInputData = {
+    userID: userInputId,
+    date: userInputDate,
+    flightsOfStairs: userInputStairs,
+    minutesActive: userInputMins,
+    numSteps: userInputSteps
+  };
+
+  // postRequest(userInputData); this is whatever we name our post function
+
+  userInputForm.reset();
 });
     
 // DOM Methods

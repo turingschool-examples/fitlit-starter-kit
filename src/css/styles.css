@@ -205,9 +205,9 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 5%;
   height: 15%;
-  border-radius: 20%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
   margin-left: 2%;
   background-color: rgba(56, 44, 94);
 }

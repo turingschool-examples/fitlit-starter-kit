@@ -1,5 +1,6 @@
 // Webpack Links
 import { fetchAllData } from '../src/apiCalls';
+import { postActivityData } from '../src/apiCalls';
 import './css/styles.css';
 import './images/fitlit-logo.png';
 import './images/hydration-logo.png'
@@ -66,14 +67,14 @@ userInputForm.addEventListener('submit', function(event) {
         userInputSteps = document.getElementById('numSteps').value;
 
   const userInputData = {
-    userID: userInputId,
+    userID: parseInt(userInputId),
     date: userInputDate,
-    flightsOfStairs: userInputStairs,
-    minutesActive: userInputMins,
-    numSteps: userInputSteps
+    flightsOfStairs: parseInt(userInputStairs),
+    minutesActive: parseInt(userInputMins),
+    numSteps: parseInt(userInputSteps)
   };
-
-  // postRequest(userInputData); this is whatever we name our post function
+  
+  postActivityData(userInputData);
 
   userInputForm.reset();
 });

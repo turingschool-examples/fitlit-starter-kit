@@ -16,6 +16,7 @@ import Activity from './classes/Activity';
 // 3rd party library import
 import Chart from 'chart.js/auto';
 import dayjs from 'dayjs';
+import L from 'leaflet'
 
 // Import API Calls
 import './apiCalls';
@@ -24,6 +25,7 @@ import {
   fetchHydration,
   fetchSleep,
   fetchActivity,
+  fetchMap
 } from "./apiCalls";
 
 // Global variables
@@ -171,6 +173,8 @@ function displayActivityCard(activity, user, date) {
   const activityButton = document.querySelector("#activityButton");
   activityButton.addEventListener("click", () => createActivityChart(activity, user.id, date));
 
+  const mapButton = document.querySelector("#mapButton");
+  mapButton.addEventListener("click", () => createMap(user));
 };
 
 // Chart Functions
@@ -268,4 +272,44 @@ function createActivityChart(activity, userID, date) {
       labels: labels,
     }
   })
+};
+
+function createMap(user) {
+  const chartArea = document.querySelector(".infographic");
+  chartArea.classList.remove("chart-placeholder");
+  fetchMap(user)
+  .then((mapXML) => {
+    const mapData = mapXML.getElementsByTagName('rtept');
+    const coordinates = [...mapData].map(coord => {
+      const lat = coord.getAttribute("lat");
+      const lon = coord.getAttribute("lon");
+      return [lat, lon];
+    });
+    const map = L.map('map', {
+      center: coordinates[0],
+      zoom: 13
+  });
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+  const path = L.polyline(coordinates, {color: 'red'}).addTo(map);
+  map.fitBounds(path.getBounds());
+  })
+}
+
+// function displayMap(user) {
+// }
+
+// Export Statements
+
+export {
+  displayUserCard,
+  displayStepUserVsAllUsers,
+  displayUserGreeting,
+  displayhydrationCard,
+  displaySleepCard,
+  displayActivityCard,
+  displayFriendsList,
+  displayUserCardInitial,
 };

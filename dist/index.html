@@ -7,36 +7,22 @@
     <link href="./css/styles.css" rel="stylesheet" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
   </head>
   <body>
-    <header>
+    <header class="main-header">
       <div class="logo info-box"><img class="logo" src="./images/fitlit-logo.png" alt="FitLit logo"></div>
-        <section class="header-box info-box">
+        <!-- <section class="header-box info-box"> -->
           <h3 class="user-name" id="userName">First Name</h3>
           <p class="user-info" id="userInfo"></p>
-        </section>
+        <!-- </section> -->
     </header>
   <!--   activity -->
-    <article>
-      <section>
-        <div class="activity card-title">
-          <img class="icon" src="./images/activity-logo.png" alt="activity logo">
-        </div>
-        <p class="activity info-box" id="activityBoxAvg">test </p>
-      </section>
-      <section>
-        <p class="activity info-box" id="activityBoxDaily">test</p>
-        <p class="activity info-box"><canvas id="activityBoxWeek" width="800" height="400"></canvasid></canvas></p>
-      </section>
-      <section>
-        <form>
+    <article class="activity-container"">
+      <p class="activity info-box"><canvas id="activityBoxWeek" width="800" height="400"></canvasid></canvas></p>
+          <p class="activity info-box" id="activityInfoBox">test</p>
+          <button>drop down</button>
+          <!-- <form>
           <section>
             <label for="user-id">User Identification Number:</label>
             <input type="text" id="userId" name="user-id">
@@ -58,35 +44,21 @@
             <input type="number" id="numSteps" name="num-steps">
           </section>
           <input type="submit" id="userInputBtn" class="user-input" value="Enter User Data">
-        </form>
+        </form> -->
       </section>
     </article>
+  <section class="bottom-container">
   <!--   hydration -->
     <article>
-      <section>
-        <div class="hydration card-title">
-          <img class="icon" src="./images/hydration-logo.png" alt="hydration logo">
-        </div>
-        <p class="hydration info-box" id="hydrationBoxAvg">test</p>
-      </section>
-      <section>
-        <p class="hydration info-box" id="hydrationBoxDaily">test</p>
-        <p class="hydration info-box"><canvas id="hydrationBoxWeek" width="800" height="400"></canvasid></canvas></p>
-      </section>
+      <p class="hydration info-box"><canvas id="hydrationBoxWeek" width="800" height="400"></canvasid></canvas></p>
+        <p class="hydration info-box" id="hydrationInfoBox">test</p>
     </article>
   <!--   sleep -->
     <article>
-      <section>
-        <div class="sleep card-title">
-          <img class="icon" src="./images/sleep-logo.png" alt="sleep logo">
-        </div>
-        <p class="sleep info-box" id="sleepBoxAvg">test</p>
-      </section>
-      <section>
-        <p class="sleep info-box" id="sleepBox">test</p>
-        <p class="sleep info-box" ><canvas id="sleepBoxWeek" width="800" height="400"></canvasid></canvas></p>
-      </section>
+      <p class="sleep info-box" ><canvas id="sleepBoxWeek" width="800" height="400"></canvasid></canvas></p>
+        <p class="sleep info-box" id="sleepInfoBox">test</p>
     </article>
+  </section>
   <script src="bundle.js"></script>
   </body>
 </html>

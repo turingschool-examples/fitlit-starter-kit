@@ -65,7 +65,7 @@ userInputBtn.addEventListener('click', function(event) {
         userInputMins = document.getElementById('activeMinutes').value,
         userInputSteps = document.getElementById('numSteps').value;
 
-  const userInputData ={
+  const userInputData = {
     userID: userInputId,
     date: userInputDate,
     flightsOfStairs: userInputStairs,

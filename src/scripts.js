@@ -23,7 +23,7 @@ const firstName = document.getElementById('userName'),
       activityDay = document.getElementById('activityBoxDaily'),
       activityAvg = document.getElementById('activityBoxAvg'),
       activityWeek = document.getElementById('activityBoxWeek'),
-      userInputBtn = document.getElementById('userInputBtn');
+      userInputForm = document.querySelector('form');
 
 
 // Global Variables
@@ -56,7 +56,7 @@ window.addEventListener('load', () => {
     });
 });
 
-userInputBtn.addEventListener('click', function(event) {
+userInputForm.addEventListener('submit', function(event) {
   event.preventDefault();
 
   const userInputId = document.getElementById('userId').value,
@@ -74,6 +74,8 @@ userInputBtn.addEventListener('click', function(event) {
   };
 
   // postRequest(userInputData); this is whatever we name our post function
+
+  userInputForm.reset();
 });
     
 // DOM Methods

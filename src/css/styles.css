@@ -256,7 +256,7 @@ main {
 
 button {
   cursor: pointer;
-  width: 100%;
+  width: 48%;
   padding: 2%;
   margin-top: 2%;
   border: 0px;
@@ -276,10 +276,6 @@ button:focus {
   outline-style:solid;
   box-shadow: 0 0 0 2px #F57630;
   transition: 0.7s;
-}
-
-.sleep-button {
-  width: 48%;
 }
 
 .button-wrapper {

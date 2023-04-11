@@ -2,10 +2,11 @@
   font-family: 'Lato', sans-serif;
 }
 
+
+
 body, html {
   margin: 0px;
-  height: 100vh;
-  width: 100vw;
+  padding: 15px;
   background-color: #272727;
   font-weight: thin;
   font-size: 14px;
@@ -16,11 +17,8 @@ body, html {
 .data-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  height: 100vh;
-  width: 100vw;
   background-color: #272727;
 }
 
@@ -31,7 +29,7 @@ body, html {
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  width: 145px;
+  width: 150px;
   background-color: #141414;
   border-right: 1px #272727 solid;
   border-top-left-radius: 10px;
@@ -61,29 +59,39 @@ body, html {
 }
 
 /* containers */
-.left-container, .center-container, .right-container {
+.display-container {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  height: 95vh;
-  width: 25vw;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:space-around;
+  align-items:flex-start;
+  grid-gap: 15px;
+  padding: 15px;
+  height: min-content;
+  width: 90%;
   background-color: #141414;
-}
-
-.right-container  {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
-.activity-container, .activity-tracker, .hydration-container, .community-container, .sleep-container, .hydration-tracker, .sleep-tracker {
+.activity-container, .add-activity-container, .activity-tracker, .hydration-container, .timer-container, .sleep-container, .hydration-tracker, .sleep-tracker {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 2.5%;
   padding: 10px;
-  height: 85%;
-  width: 85%;
+  height: min-content;
+  background-color: #3e3e3e;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.community-container  {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  height: min-content;
+  width: 300px;
   background-color: #3e3e3e;
   text-align: center;
   border-radius: 5px;
@@ -93,7 +101,7 @@ body, html {
 .expanded-container  {
   display: none;
   margin-right: 5px;
-  margin-bottom: 350px;
+  margin-bottom: 700px;
   margin-left: 5px;
   overflow-wrap: normal;
   text-align: center;
@@ -106,16 +114,9 @@ body, html {
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  padding: 10px;
+  padding: 25px;
   background-color: #3e3e3e;opacity:0.98;
   border-radius: 5px;
-}
-
-/* this element takes up empty space */
-.spacer-gif  {
-  margin-top: 5px;
-  height: 100px;
-  width: 100px;
 }
 
 .user-greeting  {
@@ -123,7 +124,7 @@ body, html {
 }
 
 /* header tags */
-.community-header, .activity-header, .steps-header, .activity-header, .sleep-header, .hydration-header, .hydration-tracker-header, .activity-tracker-header, .sleep-tracker-header {
+.activity-header, .steps-header, .add-activity-header, .timer-header, .community-header, .sleep-header, .hydration-header, .hydration-tracker-header, .activity-tracker-header, .sleep-tracker-header {
   margin-bottom: 15px;
   text-align: center;
   font-weight: bold;
@@ -168,7 +169,6 @@ body, html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 85%;
   padding: 10px;
 }
 
@@ -182,3 +182,4 @@ body, html {
   margin-top: 15px;
   font-size: 12px;
 }
+

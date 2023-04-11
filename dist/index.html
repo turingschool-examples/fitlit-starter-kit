@@ -25,7 +25,7 @@
           <img class="logo-image" src="./images/logo-image.png" alt="logo-image" height="100px" width="100px">
         </div>
       </article>
-      <div class="left-container">
+      <div class="display-container">
         <section class="activity-container">
           <style>
             .activity-container {
@@ -45,6 +45,26 @@
             </div>
           </div>
         </section>
+        <section class="add-activity-container">
+          <style>
+            .add-activity-container {
+            background-image: url('./images/background.png');
+            background-position: fixed;
+            background-repeat: repeat;
+            background-size: contain;
+          }
+          </style>
+          <div class="offset">
+            <p class="add-activity-header">Log Activity</p>
+            <form class="add-activity-form">
+              <label for="new-date">Date:</label><br>
+              <input type="text" id="new-date" name="new-date" value="yyyy/mm/dd"><br><br>
+              <label for="new-steps">New Steps:</label><br>
+              <input type="text" id="new-steps" name="new-steps"><br><br>
+              <input type="submit" value="Add">
+            </form> 
+          </div>
+        </section>
         <div class="activity-tracker">
           <p class="activity-tracker-header">Steps This Week</p>
           <div class="chart-wrapper-bar">
@@ -52,12 +72,11 @@
           </div>
           <p class="activity-units">in steps</p>
         </div>
-      </div>
-      <div class="center-container">
         <section class="hydration-container">
           <style>
             .hydration-container {
             background-image: url('./images/background.png');
+            background-position: fixed;
             background-repeat: repeat;
             background-size: contain;
           }
@@ -68,6 +87,51 @@
             <a href="https://www.thecalculator.co/health/Water-Calculator-56.html" class="hydration-info">how much water should you be drinking?</a>
           </div>
         </section>
+        <div class="sleep-tracker">
+          <p class="sleep-tracker-header">Sleep This Week</p>
+          <div class="chart-wrapper-doughnut">
+            <canvas class="sleep-chart"></canvas>
+          </div>
+          <p class="sleep-units">in hours</p>
+        </div>
+        <section class="timer-container">
+          <style>
+            .timer-container {
+            background-image: url('./images/background.png');
+            background-position: fixed;
+            background-repeat: repeat;
+            background-size: contain;
+          }
+          </style>
+          <div class="offset">
+            <p class="timer-header">Stretch Timer</p>
+            <img class="timer-placeholder" src="./images/timer-placeholder.jpg" height="150px" width="150px">
+          </div>
+        </section>
+        <section class="sleep-container">
+          <style>
+            .sleep-container {
+            background-image: url('./images/background-flip.png');
+            background-repeat: repeat;
+            background-size: contain;
+          }
+          </style>
+            <div class="offset">
+              <p class="sleep-header">Sleep Data</p>
+              <p class="sleep-today">Last Rest</p>
+              <p class="sleep-average-allTime">Average Rest</p>
+              <p class="sleep-quality-today">Last Rest Quality</p>
+              <p class="sleep-quality-allTime">Average Rest Quality</p>
+              <a href="https://www.verywellhealth.com/pittsburgh-sleep-quality-index-psqi-5080750" class="sqi-info">how is sleep quality measured?</a>
+            </div>
+        </section>
+        <div class="hydration-tracker">
+          <p class="hydration-tracker-header">Hydration This Week</p>
+          <div class="chart-wrapper-bar">
+            <canvas class="hydration-chart"></canvas>
+          </div>
+          <p class="hydration-units">in ounces</p>
+        </div>     
         <section class="community-container">
           <style>
             .community-container {
@@ -103,42 +167,8 @@
               <p class="comparison-steps">Comparison data will go here</p>
             </div>
         </section>
-        <section class="sleep-container">
-          <style>
-            .sleep-container {
-            background-image: url('./images/background-flip.png');
-            background-repeat: repeat;
-            background-size: contain;
-          }
-          </style>
-            <div class="offset">
-              <p class="sleep-header">Sleep Data</p>
-              <p class="sleep-today">Last Rest</p>
-              <p class="sleep-average-allTime">Average Rest</p>
-              <p class="sleep-quality-today">Last Rest Quality</p>
-              <p class="sleep-quality-allTime">Average Rest Quality</p>
-              <a href="https://www.verywellhealth.com/pittsburgh-sleep-quality-index-psqi-5080750" class="sqi-info">how is sleep quality measured?</a>
-            </div>
-        </section>
-      </div>
-      <div class="right-container">
-        <div class="hydration-tracker">
-          <p class="hydration-tracker-header">Hydration This Week</p>
-          <div class="chart-wrapper-bar">
-            <canvas class="hydration-chart"></canvas>
-          </div>
-          <p class="hydration-units">in ounces</p>
-        </div>     
-        <div class="sleep-tracker">
-          <p class="sleep-tracker-header">Sleep This Week</p>
-          <div class="chart-wrapper-doughnut">
-            <canvas class="sleep-chart"></canvas>
-          </div>
-          <p class="sleep-units">in hours</p>
-        </div>
-      </div>
     </main>
   </body>
-  <script src="bundle.js"></script>
+  <script src="./bundle.js"></script>
   </body>
 </html>

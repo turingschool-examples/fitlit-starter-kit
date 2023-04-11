@@ -2,19 +2,19 @@
 
 let apiCalls;
 
-const userAPI = fetch("https://fitlit-api.herokuapp.com/api/v1/users")
+const userAPI = fetch("http://localhost:3001/api/v1/users	")
   .then(response => response.json())
   .catch(error => console.log(error))
 
-const sleepAPI = fetch("https://fitlit-api.herokuapp.com/api/v1/sleep")
+const sleepAPI = fetch("http://localhost:3001/api/v1/sleep")
   .then(response => response.json())
   .catch(error => console.log(error))
 
-  const hydrationAPI = fetch("https://fitlit-api.herokuapp.com/api/v1/hydration")
+  const hydrationAPI = fetch("http://localhost:3001/api/v1/hydration")
   .then(response => response.json())
   .catch(error => console.log(error))
 
-  const activityAPI = fetch("https://fitlit-api.herokuapp.com/api/v1/activity")
+  const activityAPI = fetch("http://localhost:3001/api/v1/activity")
   .then(response => response.json())
   .catch(error => console.log(error))
 

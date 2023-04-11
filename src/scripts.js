@@ -181,7 +181,9 @@ function displayActivityCard(activity, user, date) {
 function clearChartArea() {
   const chartArea = document.querySelector(".infographic");
   chartArea.classList.remove("chart-placeholder");
-  chartArea.innerHTML = "<canvas id='chart'></canvas>";
+  chartArea.innerHTML = `
+  <div id="map"></div>
+  <canvas id='chart'></canvas>`
 };
 
 function createHydrationChart(hydration, userID, date) {

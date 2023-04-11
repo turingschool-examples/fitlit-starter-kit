@@ -3,8 +3,7 @@
   margin: 0;
   max-width: auto;
   padding: 0;
-  /* border: solid 1px red; */
-  font-family: 'Lexend', sans-serif;
+  border: solid 1px red;
 }
 
 body {
@@ -12,6 +11,7 @@ body {
   font-size: 18px;
   display: flex;
   flex-wrap: wrap;
+  font-family: 'Lexend', sans-serif;
   gap: 10px;
   max-width: 100%;
   overflow-wrap: normal;
@@ -131,10 +131,6 @@ h4 {
   padding: 0;
 }
 
-/* .bottom-container {
-
-} */
-
 .logo img {
   border: none;
   border-radius: 50px;
@@ -155,6 +151,41 @@ h4 {
 
 .user-info {
   font-size: 12px;
+}
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  top: 0%; /* Centered at the top */
+  width: 75%; 
+  height: 50%; 
+  overflow: auto; 
+  background-color: rgba(255, 255, 255); 
+  border: 6px solid rgb(86, 153, 248);
+  padding-top: 20px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid rgb(86, 153, 248);
+  width: 50%;
+}
+
+.close {
+  color: #000;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(86, 153, 248);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* media queries */

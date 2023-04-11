@@ -27,7 +27,10 @@ const firstName = document.getElementById('userName'),
       userInputDate = document.getElementById('date'),
       userInputStairs = document.getElementById('flightsOfStairs'),
       userInputMins = document.getElementById('activeMinutes'),
-      userInputSteps = document.getElementById('numSteps');
+      userInputSteps = document.getElementById('numSteps'),
+      modal = document.getElementById('activityModal'),
+      openModalBtn = document.getElementById('openModalBtn'),
+      span = document.getElementsByClassName("close")[0];;
 
 // Global Variables
 let userList,
@@ -87,8 +90,21 @@ const displayActivity = () => {
     <h4>Latest Distance Walked: ${activityObj.calculateMiles(currentDate)}</h4>`;
   displayChart(weekData, activityWeek);
   };
+  
 
 // Event Listeners
+openModalBtn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
 window.addEventListener('load', () => {
   fetchAllData()
   .then(data => {
@@ -134,4 +150,5 @@ userInputForm.addEventListener('submit', function(event) {
   
   userInputForm.reset();
   userInputButton.disabled = true;
+  modal.style.display = "none";
 });

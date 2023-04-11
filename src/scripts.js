@@ -7,13 +7,58 @@ import './images/Hydration_Logo.svg';
 import './images/Sleep_Logo.svg';
 import './images/Site_Logo.svg';
 
+// Classes Imports
+import UserRepository from './classes/UserRepository';
+import Hydration from './classes/Hydration';
+import Sleep from './classes/Sleep';
+import Activity from './classes/Activity';
+
 // 3rd party library import
 import Chart from 'chart.js/auto';
+import dayjs from 'dayjs';
 import L from 'leaflet'
 
 // Import API Calls
 import './apiCalls';
-import { fetchMap } from './apiCalls.js';
+import {
+  fetchUsers,
+  fetchHydration,
+  fetchSleep,
+  fetchActivity,
+  fetchMap
+} from "./apiCalls";
+
+// Global variables
+let user;
+let hydration;
+let activity;
+let sleep;
+let date = dayjs().format("YYYY/MM/DD");
+
+// Fetch Requests
+Promise.all([fetchUsers(), fetchHydration(), fetchSleep(), fetchActivity()])
+  .then(([userData, hydrationData, sleepData, activityData]) => {
+    const userBase = new UserRepository(userData.users);
+    user = userBase.getRandomUser();
+    displayUserCard(user);
+    displayStepUserVsAllUsers(user, userBase);
+    displayUserGreeting(user, date);
+    displayFriendsList(user, userBase);
+    displayUserCardInitial(user);
+
+    hydration = new Hydration(hydrationData.hydrationData);
+    displayhydrationCard(hydration, user.id, date);
+
+    sleep = new Sleep(sleepData.sleepData);
+
+    displaySleepCard(sleep, user.id, date);
+
+    activity = new Activity(activityData.activityData);
+    displayActivityCard(activity, user, date, user.id);
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+  });
 
 //Query Selectors
 const hydrationCard = document.querySelector(".hydration-holder");

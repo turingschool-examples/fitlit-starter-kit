@@ -69,3 +69,14 @@ Promise.all([fetchUsers(), fetchHydration(), fetchSleep(), fetchActivity()])
     console.error('Error fetching data:', error);
   });
 
+// map fetch function
+
+function fetchMap(user) {
+  return fetch(`http://localhost:3001/api/v1/users/${user.id}/latestrun`)
+  .then((response) => response.text())
+  .then(str => new DOMParser().parseFromString(str, "text/xml"));
+}
+
+export {
+  fetchMap
+};

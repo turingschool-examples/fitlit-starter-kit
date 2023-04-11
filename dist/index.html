@@ -1,14 +1,42 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Fitlit</title>
-  </head>
-  <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+<html lang="en">
 
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="bundle.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>GitFit</title>
+</head>
+<body>
+  <section class='top-display'>
+    <h1>Git Fit</h1>
+    <div class="app-title"></div>
+    <nav class="nav-bar">
+    </nav>
+  </section>
+  <div class="main-display">
+    <aside class="info-card">
+        <div class="user-info">
+          <h1 id="firstName">Welcome, first name!</h1>
+          <p id="fullName">Full Name: John</p>
+          <p id="address">Address:666</p>
+          <p id="email">Email: john.doe@example.com</p>
+          <p id="strideLength">Stride Length: 99</p>
+          <p id="dailyStepgoal">Daily Step Goal: 99</p>
+        </div>
+    </aside>
+    <seciton class="card-display" id="cardDisplay">
+      <div class="sleep-display">
+        <!-- sleep widgets -->
+      </div>
+      <div class="hydration-display">
+        <!-- hydration -->
+      </div>
+      <div class="activity-display">
+        <!-- activity -->
+      </div>
+    </seciton>
+    <img id="gitFitLogo" src="Gitfit-logo.JPEG" alt="Gitfit-logo" width="500" height="600"/>
+  </div>
+  <script src="bundle.js"></script>
+</body>
 </html>

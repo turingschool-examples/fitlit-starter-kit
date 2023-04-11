@@ -1,5 +1,150 @@
+/* * {
+  border: orange solid 1px;
+} */
+
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  background-color: #343236;
   background-repeat: no-repeat;
   height: 100%;
 }
+
+h1 {
+  color:darkgray;
+  text-shadow: 0 0 3px #45B8AC;
+}
+
+h3 {
+  color: darkgray;
+  border: 1px solid #45B8AC;
+  background-color: black;
+}
+
+text {
+  color: darkgray;
+
+}
+
+aside {
+  width: 25%;
+}
+.info-card {
+  background-color: #363945;
+  border: 1px solid #45B8AC;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 25%;
+  height: 100%;
+  border-radius: 2%;
+}
+
+/* .info-card img {
+  width: 50px;
+  height: 50px;
+  border-radius: 30%;
+  border-style: double;
+  margin-right: 20px;
+} */
+
+.info-card .user-info {
+  color: darkgray;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-card h1 {
+  color:darkgray;
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  color:darkgray;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.card {
+  background-color: #363945;
+  border: 1px solid #45B8AC;
+  border-radius: 5%;
+  margin-top: 30px;
+    padding: 10px;
+    width: 145px;
+    height: 205px;
+}
+
+#card-activity{
+  background-color: #363945;
+  border: 1px solid #45B8AC;
+  border-radius: 5%;
+  margin-top: 30px;
+    padding: 10px;
+    width: 145px;
+    height: 460px;
+}
+
+.top-display{
+  display: flex;
+}
+
+.main-display{
+  display: flex;
+  height: 100%;
+}
+
+.card-display {
+  display: flex;
+  padding-left: 30px;
+}
+
+.hydration-display {
+  padding: 0px 20px;
+}
+
+#gitFitLogo {
+height: 488px;
+width: 500px;
+border: 1px solid #45B8AC;
+border-radius: 5%;
+margin-top: 25px;
+margin-left: 25px;
+}
+
+#hydrationIcon {
+  width: 40px;
+  margin-top: 70px;
+} 
+
+#activityLogo {
+  margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

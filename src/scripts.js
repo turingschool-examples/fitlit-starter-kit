@@ -54,7 +54,6 @@ window.addEventListener('load', () => {
       userObj.activity = new Activity(getUserData('activityData', data[3]), userObj.strideLength);
       activityObj = userObj.activity
       displayActivity(userObj.id);
-      console.log(data[3])
     });
 });
 

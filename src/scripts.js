@@ -1,6 +1,6 @@
 // Webpack Links
 import { fetchAllData } from '../src/apiCalls';
-// import { postActivityData } from '../src/apiCalls';
+import { postActivityData } from '../src/apiCalls';
 import { displayChart } from '../src/charts'
 import './css/styles.css';
 import './images/fitlit-logo.png';
@@ -22,8 +22,12 @@ const firstName = document.getElementById('userName'),
       hydrationWeek = document.getElementById('hydrationBoxWeek'),
       activityInfo = document.getElementById('activityInfoBox'),
       activityWeek = document.getElementById('activityBoxWeek'),
-      userInputForm = document.querySelector('form');
-
+      userInputForm = document.querySelector('form'),
+      userInputButton = document.getElementById('userInputBtn'),
+      userInputDate = document.getElementById('date'),
+      userInputStairs = document.getElementById('flightsOfStairs'),
+      userInputMins = document.getElementById('activeMinutes'),
+      userInputSteps = document.getElementById('numSteps');
 
 // Global Variables
 let userList,
@@ -32,52 +36,16 @@ let userList,
     hydrationObj,
     activityObj;
 
-// Event Listeners
-window.addEventListener('load', () => {
-  fetchAllData()
-  .then(data => {
-      userList = data[0].users;
-
-      userObj = new User(data[0].users[Math.floor(Math.random() * 50)]);
-      displayCurrentUser(userObj);
-
-      userObj.hydration = new Hydration(getUserData('hydrationData', data[1]));
-      hydrationObj = userObj.hydration;
-      displayHydration(userObj.id);
-
-      userObj.sleep = new Sleep(getUserData('sleepData', data[2]));
-      sleepObj = userObj.sleep;
-      displaySleepInfo(sleepObj);
-
-      userObj.activity = new Activity(getUserData('activityData', data[3]), userObj.strideLength);
-      activityObj = userObj.activity
-      displayActivity(userObj.id);
-    });
-});
-
-// userInputForm.addEventListener('submit', function(event) {
-//   event.preventDefault();
-
-//   const userInputId = document.getElementById('userId').value,
-//         userInputDate = document.getElementById('date').value,
-//         userInputStairs = document.getElementById('flightsOfStairs').value,
-//         userInputMins = document.getElementById('activeMinutes').value,
-//         userInputSteps = document.getElementById('numSteps').value;
-
-//   const userInputData = {
-//     userID: parseInt(userInputId),
-//     date: userInputDate,
-//     flightsOfStairs: parseInt(userInputStairs),
-//     minutesActive: parseInt(userInputMins),
-//     numSteps: parseInt(userInputSteps)
-//   };
-  
-//   postActivityData(userInputData);
-
-//   userInputForm.reset();
-// });
-    
+userInputButton.disabled = true;
 // DOM Methods
+let changeButton = () => {
+  if (userInputDate.value && userInputStairs.value && userInputMins.value && userInputSteps.value) {
+    userInputButton.disabled = false;
+    
+    console.log('green light')
+  }
+}
+
 const getUserData = (infoType, array) => {
   return array[infoType].filter(data => data.userID === userObj.id).reverse();
 };
@@ -119,3 +87,51 @@ const displayActivity = () => {
     <h4>Latest Distance Walked: ${activityObj.calculateMiles(currentDate)}</h4>`;
   displayChart(weekData, activityWeek);
   };
+
+// Event Listeners
+window.addEventListener('load', () => {
+  fetchAllData()
+  .then(data => {
+      userList = data[0].users;
+
+      userObj = new User(data[0].users[Math.floor(Math.random() * 50)]);
+      displayCurrentUser(userObj);
+
+      userObj.hydration = new Hydration(getUserData('hydrationData', data[1]));
+      hydrationObj = userObj.hydration;
+      displayHydration(userObj.id);
+
+      userObj.sleep = new Sleep(getUserData('sleepData', data[2]));
+      sleepObj = userObj.sleep;
+      displaySleepInfo(sleepObj);
+
+      userObj.activity = new Activity(getUserData('activityData', data[3]), userObj.strideLength);
+      activityObj = userObj.activity
+      displayActivity(userObj.id);
+    });
+});
+
+userInputDate.addEventListener('input', changeButton);
+
+userInputStairs.addEventListener('input', changeButton);
+
+userInputMins.addEventListener('input', changeButton);
+
+userInputSteps.addEventListener('input', changeButton);
+
+userInputForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const userInputData = {
+    userID: userObj.id,
+    date: userInputDate,
+    flightsOfStairs: parseInt(userInputStairs.value),
+    minutesActive: parseInt(userInputMins.value),
+    numSteps: parseInt(userInputSteps.value)
+  };
+  
+  postActivityData(userInputData);
+  
+  userInputForm.reset();
+  userInputButton.disabled = true;
+});

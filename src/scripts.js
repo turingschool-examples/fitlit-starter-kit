@@ -182,16 +182,3 @@ userInputForm.addEventListener('submit', function(event) {
   userInputButton.disabled = true;
   modal.style.display = "none";
 });
-
-// Challenge Testing
-
-
-// let userTestData = { name: "adam", daysReached: 6 }
-// let friendsTestData = [
-//   {name: "rachel", daysReached: 5 },
-//   {name: "ashlee", daysReached: 7 },
-//   {name: "patrick", daysReached: 4 },
-//   {name: "liz", daysReached: 3 }
-// ]
-
-// displayChallengeChart(stepChallengeBox, userChallengeData, friendsChallengeData)

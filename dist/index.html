@@ -24,7 +24,7 @@
   <!--   activity -->
   <article class="activity-container">
     <div class="activity-info-box">
-      <h2>Steps for The Past Week</h2>
+      <h2>Activity</h2>
       <p class="activity activity-chart"><canvas id="activityBoxWeek" width="800" height="400"></canvasid></canvas></p>
     </div>
     <div class="activity-info-box">
@@ -32,23 +32,23 @@
       <button class="open-modal"id="openModalBtn">Enter User Data</button>
      </div>
       <div id="activityModal" class="modal">
-        <span class="close">&times;</span>
+        <span class="close-btn">&times;</span>
         <form>
-          <section>
+          <section class="input-box">
             <label for="date">Date:</label>
-            <input type="date" id="date" name="date">
+            <input class="data-input" type="date" id="date" name="date">
           </section>
-          <section>
+          <section class="input-box">
             <label for="flights-of-stairs">Flights Of Stairs Climbed:</label>
-            <input type="number" id="flightsOfStairs" name="flights-of-stairs">
+            <input class="data-input" type="number" id="flightsOfStairs" name="flights-of-stairs">
           </section>
-          <section>
+          <section class="input-box"> 
             <label for="active-minutes">Active Minutes:</label>
-            <input type="number" id="activeMinutes" name="active-minutes">
+            <input class="data-input" type="number" id="activeMinutes" name="active-minutes">
           </section>
-          <section>
+          <section class="input-box">
             <label for="num-steps">Number of Steps:</label>
-            <input type="number" id="numSteps" name="num-steps">
+            <input class="data-input" type="number" id="numSteps" name="num-steps">
           </section>
           <input type="submit" id="userInputBtn" class="user-input" value="Enter User Data">
         </form>
@@ -61,12 +61,14 @@
   </article>
   <section class="bottom-container">
     <!--   hydration -->
-    <article>
+    <article class="info-card">
+      <h2>Hydration</h2>
       <p class="hydration info-box"><canvas id="hydrationBoxWeek" width="800" height="400"></canvasid></canvas></p>
       <p class="hydration info-box" id="hydrationInfoBox">test</p>
     </article>
     <!--   sleep -->
-    <article>
+    <article class="info-card">
+      <h2>Sleep</h2>
       <p class="sleep info-box"><canvas id="sleepBoxWeek" width="800" height="400"></canvasid></canvas></p>
       <p class="sleep info-box" id="sleepInfoBox">test</p>
     </article>

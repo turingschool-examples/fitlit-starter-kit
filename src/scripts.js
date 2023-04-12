@@ -30,8 +30,10 @@ const firstName = document.getElementById('userName'),
       userInputSteps = document.getElementById('numSteps'),
       modal = document.getElementById('activityModal'),
       openModalBtn = document.getElementById('openModalBtn'),
-      span = document.getElementsByClassName("close")[0],
+      span = document.querySelector(".close-btn"),
       stepChallengeBox = document.getElementById('stepChallengeBox');
+
+      console.log(span)
 
 // Global Variables
 let userList,
@@ -72,7 +74,7 @@ const displaySleepInfo = (sleep) => {
   sleepInfo.innerHTML = `<h4>Latest Hours Slept: ${latestSleep.hoursSlept}</h4>
   <h4>Latest Quality of Sleep: ${latestSleep.sleepQuality}</h4><h4> Average Sleep Quality: ${avgQuality.toFixed(1)}</h4>
   <h4>Average Hours Slept: ${avgHours.toFixed(1)}</h4>`
-  displayChart(pastWeekSleep, sleepWeek);
+  displayChart(pastWeekSleep, sleepWeek, "Sleep for the Week");
 };
 
 const displayHydration = (userId) => {
@@ -80,7 +82,7 @@ const displayHydration = (userId) => {
   let weekData = hydrationObj.findWeeklyHydration();
   hydrationInfo.innerHTML = `<h4>Average daily water intake: ${hydrationObj.findAvgDailyHydration(userId)}oz</h4>
   <h4>Fluid ounces drank today: ${hydrationObj.getHydrationSpecificDay(currentDate)}oz</h4>`;
-  displayChart(weekData, hydrationWeek);
+  displayChart(weekData, hydrationWeek, "Hydration for the Week");
 };
 
 const displayActivity = () => {
@@ -89,7 +91,7 @@ const displayActivity = () => {
   activityInfo.innerHTML = `<h4>Latest # of Steps: ${activityObj.getDailyActivityInfo(currentDate, 'numSteps')}</h4>
   <h4>Latest # of Minutes Active: ${activityObj.getDailyActivityInfo(currentDate, 'minutesActive')}</h4>
     <h4>Latest Distance Walked: ${activityObj.calculateMiles(currentDate)}</h4>`;
-  displayChart(weekData, activityWeek);
+  displayChart(weekData, activityWeek, "Activity for the Week");
   };
 
   const getStepChallengeStats = (challenger) => {

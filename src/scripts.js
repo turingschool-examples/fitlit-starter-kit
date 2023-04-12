@@ -2,6 +2,7 @@
 import { fetchAllData } from '../src/apiCalls';
 import { postActivityData } from '../src/apiCalls';
 import { displayChart } from '../src/charts'
+import { displayChallengeChart } from '../src/charts';
 import './css/styles.css';
 import './images/fitlit-logo.png';
 import './images/hydration-logo.png'
@@ -11,7 +12,6 @@ import User from '../src/User';
 import Sleep from '../src/Sleep';
 import Hydration from '../src/Hydration';
 import Activity from '../src/Activity';
-
 
 // Queury Selectors
 const firstName = document.getElementById('userName'),
@@ -27,7 +27,11 @@ const firstName = document.getElementById('userName'),
       userInputDate = document.getElementById('date'),
       userInputStairs = document.getElementById('flightsOfStairs'),
       userInputMins = document.getElementById('activeMinutes'),
-      userInputSteps = document.getElementById('numSteps');
+      userInputSteps = document.getElementById('numSteps'),
+      modal = document.getElementById('activityModal'),
+      openModalBtn = document.getElementById('openModalBtn'),
+      span = document.getElementsByClassName("close")[0],
+      stepChallengeBox = document.getElementById('stepChallengeBox');
 
 // Global Variables
 let userList,
@@ -88,7 +92,27 @@ const displayActivity = () => {
   displayChart(weekData, activityWeek);
   };
 
+  const getStepChallengeStats = () => {
+    let averageStepGoal = userObj.dailyStepGoal;
+    let stepsForTheWeek = userObj.activity.getLatestWeek();
+    let dailyGoalAchieved = stepsForTheWeek.filter((steps) => steps >= averageStepGoal)
+    
+    return dailyGoalAchieved.length
+  }
+
 // Event Listeners
+openModalBtn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
 window.addEventListener('load', () => {
   fetchAllData()
   .then(data => {
@@ -134,4 +158,17 @@ userInputForm.addEventListener('submit', function(event) {
   
   userInputForm.reset();
   userInputButton.disabled = true;
+  modal.style.display = "none";
 });
+
+// Challenge Testing
+
+let userTestData = { name: "adam", daysReached: 6 }
+let friendsTestData = [
+  {name: "rachel", daysReached: 5 },
+  {name: "ashlee", daysReached: 7 },
+  {name: "patrick", daysReached: 4 },
+  {name: "liz", daysReached: 3 }
+]
+
+displayChallengeChart(stepChallengeBox, userTestData, friendsTestData)

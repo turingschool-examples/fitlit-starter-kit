@@ -1,57 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>FitLit</title>
-    <link href="./css/styles.css" rel="stylesheet" type="text/css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <header class="main-header">
-      <div class="logo info-box"><img class="logo" src="./images/fitlit-logo.png" alt="FitLit logo"></div>
-          <h3 class="user-name" id="userName">First Name</h3>
-          <p class="user-info" id="userInfo"></p>
-    </header>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>FitLit</title>
+  <link href="./css/styles.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="logo info-box"><img class="logo" src="./images/fitlit-logo.png" alt="FitLit logo"></div>
+    <h3 class="user-name" id="userName">First Name</h3>
+    <p class="user-info" id="userInfo"></p>
+  </header>
   <!--   activity -->
-    <article class="activity-container">
-      <p class="activity info-box"><canvas id="activityBoxWeek" width="800" height="400"></canvasid></canvas></p>
-          <p class="activity info-box" id="activityInfoBox">test</p>
-          <form>
-          <section>
-            <label for="date">Date:</label>
-            <input type="date" id="date" name="date">
-          </section>
-          <section>
-            <label for="flights-of-stairs">Flights Of Stairs Climbed:</label>
-            <input type="number" id="flightsOfStairs" name="flights-of-stairs">
-          </section>
-          <section>
-            <label for="active-minutes">Active Minutes:</label>
-            <input type="number" id="activeMinutes" name="active-minutes">
-          </section>
-          <section>
-            <label for="num-steps">Number of Steps:</label>
-            <input type="number" id="numSteps" name="num-steps">
-          </section>
-          <input type="submit" id="userInputBtn" class="user-input" value="Enter User Data">
-        </form>
-      </section>
-    </article>
+  <article class="activity-container">
+    <div class="activity-info-box">
+      <h2>Steps for The Past Week</h2>
+      <p class="activity activity-chart"><canvas id="activityBoxWeek" width="800" height="400"></canvasid></canvas></p>
+    </div>
+    <div class="activity-info-box">
+      <p class="activity" id="activityInfoBox">test</p>
+      <button id="openModalBtn">Enter User Data</button>
+    </div>
+    <div class="activity-info-box">
+      <p class="activity activity-chart"><canvas id="stepChallengeBox" width="800" height="400"></canvasid></canvas></p>
+    </div>
+    <div id="activityModal" class="modal">
+      <span class="close">&times;</span>
+      <!--   User Input Form-->
+      <form>
+        <section>
+          <label for="date">Date:</label>
+          <input type="date" id="date" name="date">
+        </section>
+        <section>
+          <label for="flights-of-stairs">Flights Of Stairs Climbed:</label>
+          <input type="number" id="flightsOfStairs" name="flights-of-stairs">
+        </section>
+        <section>
+          <label for="active-minutes">Active Minutes:</label>
+          <input type="number" id="activeMinutes" name="active-minutes">
+        </section>
+        <section>
+          <label for="num-steps">Number of Steps:</label>
+          <input type="number" id="numSteps" name="num-steps">
+        </section>
+        <input type="submit" id="userInputBtn" class="user-input" value="Enter User Data">
+      </form>
+    </div>
+    </section>
+  </article>
   <section class="bottom-container">
-  <!--   hydration -->
+    <!--   hydration -->
     <article>
       <p class="hydration info-box"><canvas id="hydrationBoxWeek" width="800" height="400"></canvasid></canvas></p>
-        <p class="hydration info-box" id="hydrationInfoBox">test</p>
+      <p class="hydration info-box" id="hydrationInfoBox">test</p>
     </article>
-  <!--   sleep -->
+    <!--   sleep -->
     <article>
-      <p class="sleep info-box" ><canvas id="sleepBoxWeek" width="800" height="400"></canvasid></canvas></p>
-        <p class="sleep info-box" id="sleepInfoBox">test</p>
+      <p class="sleep info-box"><canvas id="sleepBoxWeek" width="800" height="400"></canvasid></canvas></p>
+      <p class="sleep info-box" id="sleepInfoBox">test</p>
     </article>
   </section>
   <script src="bundle.js"></script>
-  </body>
+</body>
+
 </html>

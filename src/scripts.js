@@ -17,6 +17,8 @@ import Activity from './classes/Activity';
 import Chart from 'chart.js/auto';
 import dayjs from 'dayjs';
 import L from 'leaflet'
+import MicroModal from "micromodal";
+MicroModal.init();
 
 // Import API Calls
 import './apiCalls';
@@ -62,6 +64,9 @@ Promise.all([fetchUsers(), fetchHydration(), fetchSleep(), fetchActivity()])
 
 //Query Selectors
 const hydrationCard = document.querySelector(".hydration-holder");
+const hydrationOpenButton = document.querySelector("#hydrationOpenButton");
+const hydrationCloseButton = document.querySelector("#hydrationCloseButton");
+
 
 // DOM Manipulation Functions
 function displayUserCard(user) {
@@ -313,8 +318,12 @@ function createMap(user) {
     });
 }
 
-// function displayMap(user) {
-// }
+hydrationOpenButton.addEventListener("click", displayModal);
+
+function displayModal() {
+  MicroModal.show("hydration-modal");
+}
+
 
 // Export Statements
 

@@ -254,7 +254,7 @@ main {
 
 /* buttons */
 
-button {
+button, .submit {
   cursor: pointer;
   width: 48%;
   padding: 2%;

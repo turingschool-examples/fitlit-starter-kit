@@ -70,13 +70,13 @@
                 <h2 class="modal__title">Hydration Input</h2>
               </header>
               <main class="modal__content">
-               <form>
+               <form id="form">
                 <label for="waterIntake" class="form-water-intake" id="waterIntakeLabel">Ounces Drank</label>
                 <input type="number" name="waterIntake" class="waterIntake" aria-labelledby="travelersInputLabel" id="travelersInput"
                   min="1" max="600,000,000,000,000" required>
                 <label for="start">Date:</label>
-                <input type="date" id="start" name="date-start" value="" min="" max="">
-                <button class="modal__btn">Submit</button>
+                <input type="date" id="start" name="date-start" value="" min="" max="2023-07-01" required>
+                <input type="submit" value="submit" class="submit"/>
                </form>
               </main>
               <footer class="modal__footer">

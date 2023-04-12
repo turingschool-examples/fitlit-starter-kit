@@ -11,8 +11,6 @@ import User from '../src/User';
 import Sleep from '../src/Sleep';
 import Hydration from '../src/Hydration';
 import Activity from '../src/Activity';
-import activityTestData from './data/activity-test-data';
-
 
 // Queury Selectors
 const firstName = document.getElementById('userName'),
@@ -38,8 +36,7 @@ let userList,
     userObj,
     sleepObj,
     hydrationObj,
-    activityObj,
-    metStepGoalDays;
+    activityObj;
 
 userInputButton.disabled = true;
 // DOM Methods
@@ -94,11 +91,10 @@ const displayActivity = () => {
   };
 
   const getStepChallengeStats = () => {
-    // sucessfulStepGoalDays;
     let averageStepGoal = userObj.dailyStepGoal;
     let stepsForTheWeek = userObj.activity.getLatestWeek();
     let dailyGoalAchieved = stepsForTheWeek.filter((steps) => steps >= averageStepGoal)
-    console.log(dailyGoalAchieved.length)
+    
     return dailyGoalAchieved.length
   }
   
@@ -135,8 +131,6 @@ window.addEventListener('load', () => {
       userObj.activity = new Activity(getUserData('activityData', data[3]), userObj.strideLength);
       activityObj = userObj.activity
       displayActivity(userObj.id);
-
-      getStepChallengeStats();
     });
 });
 

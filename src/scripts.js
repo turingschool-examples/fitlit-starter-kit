@@ -12,7 +12,6 @@ import Sleep from '../src/Sleep';
 import Hydration from '../src/Hydration';
 import Activity from '../src/Activity';
 
-
 // Queury Selectors
 const firstName = document.getElementById('userName'),
       userInfo = document.getElementById('userInfo'),
@@ -90,6 +89,14 @@ const displayActivity = () => {
     <h4>Latest Distance Walked: ${activityObj.calculateMiles(currentDate)}</h4>`;
   displayChart(weekData, activityWeek);
   };
+
+  const getStepChallengeStats = () => {
+    let averageStepGoal = userObj.dailyStepGoal;
+    let stepsForTheWeek = userObj.activity.getLatestWeek();
+    let dailyGoalAchieved = stepsForTheWeek.filter((steps) => steps >= averageStepGoal)
+    
+    return dailyGoalAchieved.length
+  }
   
 
 // Event Listeners

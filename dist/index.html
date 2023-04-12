@@ -17,8 +17,10 @@
       <img class="logo-image" src="./images/fitlit-logo.png" alt="FitLit logo">
     </div>
     <div class="user-main">
-      <h3 class="user-name" id="userName">First Name</h3>
-      <ul class="user-info" id="userInfo"></p>
+
+      <h2 class="user-name" id="userName">First Name</h2>
+      <ul class="user-info" id="userInfo"></ul>
+
     </div>
   </header>
   <!--   activity -->
@@ -28,7 +30,7 @@
       <p class="activity activity-chart"><canvas id="activityBoxWeek" width="800" height="400"></canvasid></canvas></p>
     </div>
     <div class="activity-info-box">
-      <p class="activity activityUserStat" id="activityInfoBox">test</p>
+      <ul class="activity activityUserStat" id="activityInfoBox">test</ul>
       <button class="open-modal"id="openModalBtn">Enter User Data</button>
      </div>
       <div id="activityModal" class="modal">
@@ -39,16 +41,17 @@
             <input class="data-input" type="date" id="date" name="date">
           </section>
           <section class="input-box">
-            <label for="flights-of-stairs">Flights Of Stairs Climbed:</label>
+            <label for="flightsOfStairs">Flights Of Stairs Climbed:</label>
             <input class="data-input" type="number" id="flightsOfStairs" name="flights-of-stairs">
           </section>
           <section class="input-box"> 
-            <label for="active-minutes">Active Minutes:</label>
+            <label for="activeMinutes">Active Minutes:</label>
             <input class="data-input" type="number" id="activeMinutes" name="active-minutes">
           </section>
           <section class="input-box">
-            <label for="num-steps">Number of Steps:</label>
+            <label for="numSteps">Number of Steps:</label>
             <input class="data-input" type="number" id="numSteps" name="num-steps">
+
           </section>
           <input type="submit" id="userInputBtn" class="user-input" value="Enter User Data">
         </form>
@@ -64,13 +67,13 @@
     <article class="info-card">
       <h2>Hydration</h2>
       <p class="hydration info-box"><canvas id="hydrationBoxWeek" width="800" height="400"></canvasid></canvas></p>
-      <p class="hydration info-box" id="hydrationInfoBox">test</p>
+      <ul class="hydration info-box" id="hydrationInfoBox">test</ul>
     </article>
     <!--   sleep -->
     <article class="info-card">
       <h2>Sleep</h2>
       <p class="sleep info-box"><canvas id="sleepBoxWeek" width="800" height="400"></canvasid></canvas></p>
-      <p class="sleep info-box" id="sleepInfoBox">test</p>
+      <ul class="sleep info-box" id="sleepInfoBox">test</ul>
     </article>
   </section>
   <script src="bundle.js"></script>

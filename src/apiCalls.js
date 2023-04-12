@@ -16,13 +16,21 @@ const fetchAll = () => {
 function fetchHydrationData(){
   fetch('http://localhost:3001/api/v1/hydration', {
     method: 'POST',
-    body: JSON.stringify(),
+    body: JSON.stringify({
+      userID: 71888,
+      date: "4/11/2023",
+      numOunces: 54
+  }),
     headers: {"Content-Type": "application/json"}
   })
   .then(res => res.json())
   .then(data => console.log(data))
+  .then(JSON => console.log('user',JSON))
   .catch(error => console.log(error))
  };
 
+ fetchHydrationData()
 
 export default fetchAll
+
+

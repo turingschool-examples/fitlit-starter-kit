@@ -31,4 +31,29 @@ let displayChart = (weekData, location) => {
   );
 };
 
+let displayChallengeChart = (location, user, friends) => {
+  friends.unshift(user)
+  const friendsArray = friends;
+  const data = friends.map(person => person.daysReached)
+  new Chart(
+    location,
+    {
+      type: 'bar',
+      color:'#042048',
+      data: {
+        labels: friendsArray.map(row => row.name),
+        datasets: [
+          {
+            label: "",
+            data: data,
+            pointRadius: 0,
+            borderColor: "#042048"
+          }
+        ]
+      }
+    }
+  );
+};
+
+export { displayChallengeChart }
 export { displayChart }

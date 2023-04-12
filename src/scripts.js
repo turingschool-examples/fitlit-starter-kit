@@ -56,12 +56,12 @@ const getUserData = (infoType, array) => {
 
 const displayCurrentUser = (user) => {
   firstName.innerText = `${user.getName()}`;
-  userInfo.innerHTML = `<h4>Address: ${user.address}</h4>
-  <h4><b>Email:</b> ${user.email}</h4> 
-  <h4>Stride Length: ${user.strideLength}</h4>
-  <h4>Daily Step Goal: ${user.dailyStepGoal}</h4>
-  <h4>Friends: ${user.getFriends(userList)}</h4>
-  <h4>Your Step Goal Compared to All Users: ${user.dailyStepGoal}/${user.getAverage(userList)}</h4>`
+  userInfo.innerHTML = `<li>Address: ${user.address}</li>
+  <li><b>Email:</b> ${user.email}</li> 
+  <li>Stride Length: ${user.strideLength}</li>
+  <li>Daily Step Goal: ${user.dailyStepGoal}</li>
+  <li>Friends: ${user.getFriends(userList)}</li>
+  <li>Your Step Goal Compared to All Users: ${user.dailyStepGoal}/${user.getAverage(userList)}</li>`
 };
 
 const displaySleepInfo = (sleep) => {
@@ -69,26 +69,26 @@ const displaySleepInfo = (sleep) => {
     pastWeekSleep = sleep.getInfoForPastWeek('hoursSlept'),
     avgQuality = sleep.getAverage('sleepQuality'),
     avgHours = sleep.getAverage('hoursSlept');
-  sleepInfo.innerHTML = `<h4>Latest Hours Slept: ${latestSleep.hoursSlept}</h4>
-  <h4>Latest Quality of Sleep: ${latestSleep.sleepQuality}</h4><h4> Average Sleep Quality: ${avgQuality.toFixed(1)}</h4>
-  <h4>Average Hours Slept: ${avgHours.toFixed(1)}</h4>`
+  sleepInfo.innerHTML = `<li>Latest Hours Slept: ${latestSleep.hoursSlept}</li>
+  <li>Latest Quality of Sleep: ${latestSleep.sleepQuality}</li><li> Average Sleep Quality: ${avgQuality.toFixed(1)}</li>
+  <li>Average Hours Slept: ${avgHours.toFixed(1)}</li>`
   displayChart(pastWeekSleep, sleepWeek);
 };
 
 const displayHydration = (userId) => {
   let currentDate = hydrationObj.data[0].date;
   let weekData = hydrationObj.findWeeklyHydration();
-  hydrationInfo.innerHTML = `<h4>Average daily water intake: ${hydrationObj.findAvgDailyHydration(userId)}oz</h4>
-  <h4>Fluid ounces drank today: ${hydrationObj.getHydrationSpecificDay(currentDate)}oz</h4>`;
+  hydrationInfo.innerHTML = `<li>Average daily water intake: ${hydrationObj.findAvgDailyHydration(userId)}oz</li>
+  <li>Fluid ounces drank today: ${hydrationObj.getHydrationSpecificDay(currentDate)}oz</li>`;
   displayChart(weekData, hydrationWeek);
 };
 
 const displayActivity = () => {
   let currentDate = activityObj.data[0].date;
   let weekData = activityObj.getLatestWeek();
-  activityInfo.innerHTML = `<h4>Latest # of Steps: ${activityObj.getDailyActivityInfo(currentDate, 'numSteps')}</h4>
-  <h4>Latest # of Minutes Active: ${activityObj.getDailyActivityInfo(currentDate, 'minutesActive')}</h4>
-    <h4>Latest Distance Walked: ${activityObj.calculateMiles(currentDate)}</h4>`;
+  activityInfo.innerHTML = `<li>Latest # of Steps: ${activityObj.getDailyActivityInfo(currentDate, 'numSteps')}</li>
+  <li>Latest # of Minutes Active: ${activityObj.getDailyActivityInfo(currentDate, 'minutesActive')}</li>
+    <li>Latest Distance Walked: ${activityObj.calculateMiles(currentDate)}</li>`;
   displayChart(weekData, activityWeek);
   };
 

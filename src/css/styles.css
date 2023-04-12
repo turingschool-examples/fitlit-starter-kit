@@ -36,12 +36,15 @@ section {
   justify-content: space-evenly;
   width: 100vw;
 }
-p {  
+ul {  
   height: 250px;
   width: 350px;
   padding: 5px;
 }
 
+li {
+  list-style-type: none;
+}
 
 /* Set styles for info boxes and div elements */
 .info-box, div {
@@ -104,10 +107,7 @@ p {
   justify-content: center;
   border: none;
 }
-h2 {
-  position: absolute;
-  top: 300px;
-}
+
 
 /* logo, header, user info */
 .logo {
@@ -131,9 +131,13 @@ h2 {
 
 .user-main {
   display: flex;
+  min-width: 400px;
   flex-direction: column;
   align-content: flex-start;
   align-items: flex-start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .user-name {
@@ -141,9 +145,9 @@ h2 {
   font-size: 30px;
 }
 
-.user-info {
+/* .user-info {
   font-size: 12px;
-}
+} */
 
 .user-name, .user-info {
   shape-outside: circle();

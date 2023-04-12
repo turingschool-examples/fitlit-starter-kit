@@ -31,3 +31,4 @@ function fetchMap(user) {
 export {
   fetchMap
 };
+

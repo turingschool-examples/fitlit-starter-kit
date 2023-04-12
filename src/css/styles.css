@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #042048;
+  background: radial-gradient(circle at center,#64aef8, #426eb0, #052c62), 100%;
   font-size: 18px;
   display: flex;
   flex-wrap: wrap;

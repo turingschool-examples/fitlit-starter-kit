@@ -2,6 +2,7 @@
 import { fetchAllData } from '../src/apiCalls';
 import { postActivityData } from '../src/apiCalls';
 import { displayChart } from '../src/charts'
+import { displayChallengeChart } from '../src/charts';
 import './css/styles.css';
 import './images/fitlit-logo.png';
 import './images/hydration-logo.png'
@@ -11,7 +12,6 @@ import User from '../src/User';
 import Sleep from '../src/Sleep';
 import Hydration from '../src/Hydration';
 import Activity from '../src/Activity';
-
 
 // Queury Selectors
 const firstName = document.getElementById('userName'),
@@ -30,7 +30,8 @@ const firstName = document.getElementById('userName'),
       userInputSteps = document.getElementById('numSteps'),
       modal = document.getElementById('activityModal'),
       openModalBtn = document.getElementById('openModalBtn'),
-      span = document.getElementsByClassName("close")[0];
+      span = document.getElementsByClassName("close")[0],
+      stepChallengeBox = document.getElementById('stepChallengeBox');
 
 // Global Variables
 let userList,
@@ -90,7 +91,14 @@ const displayActivity = () => {
     <h4>Latest Distance Walked: ${activityObj.calculateMiles(currentDate)}</h4>`;
   displayChart(weekData, activityWeek);
   };
-  
+
+  const getStepChallengeStats = () => {
+    let averageStepGoal = userObj.dailyStepGoal;
+    let stepsForTheWeek = userObj.activity.getLatestWeek();
+    let dailyGoalAchieved = stepsForTheWeek.filter((steps) => steps >= averageStepGoal)
+    
+    return dailyGoalAchieved.length
+  }
 
 // Event Listeners
 openModalBtn.onclick = function() {
@@ -152,3 +160,15 @@ userInputForm.addEventListener('submit', function(event) {
   userInputButton.disabled = true;
   modal.style.display = "none";
 });
+
+// Challenge Testing
+
+let userTestData = { name: "adam", daysReached: 6 }
+let friendsTestData = [
+  {name: "rachel", daysReached: 5 },
+  {name: "ashlee", daysReached: 7 },
+  {name: "patrick", daysReached: 4 },
+  {name: "liz", daysReached: 3 }
+]
+
+displayChallengeChart(stepChallengeBox, userTestData, friendsTestData)

@@ -51,6 +51,20 @@ section {
   width: 35vw;
 }
 
+.activity-info-box {
+  height: 100%;
+  width: 25%;
+  padding: 10px;
+}
+.activity-info-box h2 {
+  font-size: 20px;
+}
+
+.activity-chart {
+  height: 250px;
+  width: 320px;
+}
+
 .sleep, .activity, .hydration {
   background-color: #fff;
   /* border: solid 6px #5699f8; */

@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #042048;
+  background: radial-gradient(circle at center,#64aef8, #426eb0, #052c62), 100%;
   font-size: 18px;
   display: flex;
   flex-wrap: wrap;
@@ -35,6 +35,11 @@ section {
   display: flex;
   justify-content: space-evenly;
   width: 100vw;
+}
+p {  
+  height: 250px;
+  width: 350px;
+  padding: 5px;
 }
 
 
@@ -74,7 +79,7 @@ section {
 .activity-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   height: 300px;
   box-shadow: -2px 0px 6px 0px rgba(86, 153, 248, 0.5);
@@ -98,6 +103,10 @@ section {
   flex-direction: column;
   justify-content: center;
   border: none;
+}
+h2 {
+  position: absolute;
+  top: 300px;
 }
 
 /* logo, header, user info */
@@ -144,10 +153,20 @@ section {
 /* modal formatting */
 button,
 .user-input {
-  border: #5699f8 solid 4px;
+  box-shadow: -2px 0px 6px 0px rgba(86, 153, 248, 0.5);
+  border: rgba(86, 153, 248, 0.5) solid 4px;
   padding: 10px;
   background-color: white;
   border-radius: 50px;
+}
+
+button:hover,
+button:focus,
+.user-input:hover,
+.user-input:focus {
+  background-color: rgb(86, 153, 248);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .modal {
@@ -193,6 +212,11 @@ form {
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+.open-modal{
+  position: absolute;
+  top:470px;
 }
 
 /* media queries */

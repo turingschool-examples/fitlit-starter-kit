@@ -30,7 +30,7 @@ const firstName = document.getElementById('userName'),
       userInputSteps = document.getElementById('numSteps'),
       modal = document.getElementById('activityModal'),
       openModalBtn = document.getElementById('openModalBtn'),
-      span = document.getElementsByClassName("close")[0];;
+      span = document.getElementsByClassName("close")[0];
 
 // Global Variables
 let userList,

@@ -102,7 +102,7 @@ const displayActivity = () => {
 
   const createFriends = (info) => {
     userObj.friends = userObj.friends.map(friend => {
-      return new User(userList[friend])
+      return new User(userList.find(anom => anom.id === friend))
     });
     userObj.friends.forEach(friend => {
       friend.activity = new Activity(info[3].activityData.filter(activ => activ.userID === friend.id).reverse());

@@ -36,6 +36,7 @@ window.addEventListener('load', () => {
       userData = data[0]
       allUserSleepData = data[1]
       allUserHydrationData = data[2]
+      console.log(allUserHydrationData)
       allUserActivityData = data[3]
       pageLoad()
     })

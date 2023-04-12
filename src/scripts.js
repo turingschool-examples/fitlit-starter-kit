@@ -87,12 +87,11 @@ function sleepSummaryCard(avgHours, avgQuality) {
   <section class='card sleep-summary'> 
        <h3> Sleep Summary </h3>
       <div>
-          <text>All-time Hours Average: </text>  
-          <text> ${avgHours} </text> 
-          <p></p>
-          <p></p>
-          <text> All-time Quality Average: </text>
-          <text> ${avgQuality} </text>
+          <p>All-time Hours Average: </p>  
+          <p> ${avgHours} </p> 
+          <br>
+          <p> All-time Quality Average: </p>
+          <p> ${avgQuality} </p>
       </div>
       <img id="sleepIcon" src="Sleep-Icon.PNG" alt="Sleep-Icon" width="50" height="50"/>
    </section>`
@@ -104,17 +103,17 @@ function sleepWeekCard(detail, detailToday, detailByWeek) {
     <h3>Sleep ${detail}</h3>
        <h3> Today </h3>
       <div>
-             <text> ${detailToday} </text> 
+             <p> ${detailToday} </p> 
       </div>
       <h3> This Week </h3>
       <div class='data-row'>
-        <text> ${detailByWeek[0]} </text>
-        <text> ${detailByWeek[1]} </text>
-       <text> ${detailByWeek[2]} </text>
-       <text> ${detailByWeek[3]} </text>
-       <text> ${detailByWeek[4]} </text>
-       <text> ${detailByWeek[5]} </text>
-        <text> ${detailByWeek[6]} </text>
+        <p> ${detailByWeek[0]} </p>
+        <p> ${detailByWeek[1]} </p>
+        <p> ${detailByWeek[2]} </p>
+        <p> ${detailByWeek[3]} </p>
+        <p> ${detailByWeek[4]} </p>
+        <p> ${detailByWeek[5]} </p>
+        <p> ${detailByWeek[6]} </p>
    </div>
    </section>`
 }
@@ -125,41 +124,41 @@ function activityCard(stepCount, miles, weekSteps, stepGoalMet) {
     <div>
       <h3> Total Active Minutes</h3>
       <br>
-      <text> ${stepCount} steps </text>
+      <p> ${stepCount} steps </p>
       <br>
-      <text> ${miles} miles</text>
+      <p> ${miles} miles</p>
       <br>
     </div>
     <div class='data-row'>
-      <text>Week 1: ${weekSteps[0]} </text>
+      <p>Week 1: ${weekSteps[0]} </p>
       <br>
-      <text>Week 2: ${weekSteps[1]} </text>
+      <p>Week 2: ${weekSteps[1]} </p>
       <br>
-      <text>Week 3: ${weekSteps[2]} </text>
+      <p>Week 3: ${weekSteps[2]} </p>
       <br>
-      <text>Week 4: ${weekSteps[3]} </text>
+      <p>Week 4: ${weekSteps[3]} </p>
       <br>
-      <text>Week 5: ${weekSteps[4]} </text>
+      <p>Week 5: ${weekSteps[4]} </p>
       <br>
-      <text>Week 6: ${weekSteps[5]} </text>
+      <p>Week 6: ${weekSteps[5]} </p>
       <br>
-      <text>Week 7: ${weekSteps[6]} </text> 
+      <p>Week 7: ${weekSteps[6]} </p> 
       <br>
     </div>
     <div class ='data-row'> 
-       <text> ${stepGoalMet[0]} </text>
+       <p> ${stepGoalMet[0]} </p>
        <br>
-      <text> ${stepGoalMet[1]} </text>
+      <p> ${stepGoalMet[1]} </p>
       <br>
-      <text> ${stepGoalMet[2]} </text>
+      <p> ${stepGoalMet[2]} </p>
       <br>
-      <text> ${stepGoalMet[3]} </text>
+      <p> ${stepGoalMet[3]} </p>
       <br>
-      <text> ${stepGoalMet[4]} </text>
+      <p> ${stepGoalMet[4]} </p>
       <br>
-      <text> ${stepGoalMet[5]} </text>
+      <p> ${stepGoalMet[5]} </p>
       <br>
-      <text> ${stepGoalMet[6]} </text> 
+      <p> ${stepGoalMet[6]} </p> 
     </div> 
     <img id="activityLogo" src="activity-icon.png" alt="activity-icon" width="50" height="50"/>
    </section>
@@ -171,7 +170,7 @@ function createSingleCard(cardTitle, outputToDisplay) {
         <section class='card single'> 
              <h3> ${cardTitle} </h3>
             <div>
-                <text> ${outputToDisplay} </text>
+                <p> ${outputToDisplay} </p>
             </div>
             <img id="hydrationIcon" src="Hydration-Icon.PNG" alt="Hydration-Icon" width="50" height="50"/>
          </section>`
@@ -182,13 +181,13 @@ function createSevenDayCard(cardTitle, outputToDisplay) {
   <section class='card seven-day'> 
     <h3> ${cardTitle} </h3>
     <div class='dataRow'>
-      <text> ${outputToDisplay[0]} </text>
-      <text> ${outputToDisplay[1]} </text>
-      <text> ${outputToDisplay[2]} </text>
-      <text> ${outputToDisplay[3]} </text>
-      <text> ${outputToDisplay[4]} </text>
-      <text> ${outputToDisplay[5]} </text>
-      <text> ${outputToDisplay[6]} </text>
+      <p> ${outputToDisplay[0]} </p>
+      <p> ${outputToDisplay[1]} </p>
+      <p> ${outputToDisplay[2]} </p>
+      <p> ${outputToDisplay[3]} </p>
+      <p> ${outputToDisplay[4]} </p>
+      <p> ${outputToDisplay[5]} </p>
+      <p> ${outputToDisplay[6]} </p>
     </div>
   </section>`
 }

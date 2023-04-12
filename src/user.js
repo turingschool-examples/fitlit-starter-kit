@@ -33,29 +33,19 @@ class User {
     
     userFirstName(){
         const nameArr = this.userName.split(" ")
-        console.log(nameArr[0])
         return nameArr[0]
     }
 
-    userFirstNameById(userId,userData){
-        let nameArr = ""
-        for(var i  = 0; i < userData.users.length; i++){
-        if (userData.users[i].id === userId){
-            const name = userData.users[i].name
-            nameArr = name.split(" ")
-        } else {
+    userFirstNameById(userId, userData){
 
-        }
+        const user = userData.users.find(user => user.id === userId)
+
+            if (user) {
+                const firstName = user.name.split(' ')
+                return firstName
+            }
     }
-        if(!(nameArr === "")){
-            console.log(`User First Name :${nameArr[0]} Found By ID!`)
-            return nameArr[0]
-        } else {
-            console.log("User Not Found!")
-            return ""
-        }
-    }
-    
+       
     generateRandomUser(userData) {
         const randomUser = Math.floor(Math.random() * 49);
         const user = userData.users.find(user => user.id === randomUser);
@@ -73,4 +63,5 @@ class User {
     }
 
 }
+
 export default User

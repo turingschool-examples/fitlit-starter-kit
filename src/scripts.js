@@ -38,15 +38,15 @@ let userList,
     userObj,
     sleepObj,
     hydrationObj,
-    activityObj;
+    activityObj,
+    userChallengeData,
+    friendsChallengeData = [];
 
 userInputButton.disabled = true;
 // DOM Methods
 let changeButton = () => {
   if (userInputDate.value && userInputStairs.value && userInputMins.value && userInputSteps.value) {
     userInputButton.disabled = false;
-    
-    console.log('green light')
   }
 }
 
@@ -92,12 +92,29 @@ const displayActivity = () => {
   displayChart(weekData, activityWeek);
   };
 
-  const getStepChallengeStats = () => {
-    let averageStepGoal = userObj.dailyStepGoal;
-    let stepsForTheWeek = userObj.activity.getLatestWeek();
-    let dailyGoalAchieved = stepsForTheWeek.filter((steps) => steps >= averageStepGoal)
-    
-    return dailyGoalAchieved.length
+  const getStepChallengeStats = (challenger) => {
+    const averageStepGoal = challenger.dailyStepGoal;
+    const stepsForTheWeek = challenger.activity.getLatestWeek();
+    const dailyGoalAchieved = stepsForTheWeek.filter((steps) => steps >= averageStepGoal)
+
+    return { name: challenger.name, daysReached: dailyGoalAchieved.length }
+  }
+
+  const createFriends = (info) => {
+    userObj.friends = userObj.friends.map(friend => {
+      return new User(userList[friend])
+    });
+    userObj.friends.forEach(friend => {
+      friend.activity = new Activity(info[3].activityData.filter(activ => activ.userID === friend.id).reverse());
+    });
+  }  
+
+  const postChallengeStats = () => {
+    userChallengeData = getStepChallengeStats(userObj)
+    userObj.friends.forEach(friend => {
+      friendsChallengeData.push(getStepChallengeStats(friend))
+    })
+  
   }
 
 // Event Listeners
@@ -121,6 +138,7 @@ window.addEventListener('load', () => {
       userObj = new User(data[0].users[Math.floor(Math.random() * 50)]);
       displayCurrentUser(userObj);
 
+
       userObj.hydration = new Hydration(getUserData('hydrationData', data[1]));
       hydrationObj = userObj.hydration;
       displayHydration(userObj.id);
@@ -132,6 +150,10 @@ window.addEventListener('load', () => {
       userObj.activity = new Activity(getUserData('activityData', data[3]), userObj.strideLength);
       activityObj = userObj.activity
       displayActivity(userObj.id);
+      
+      createFriends(data);
+      postChallengeStats();
+      displayChallengeChart(stepChallengeBox, userChallengeData, friendsChallengeData);
     });
 });
 
@@ -163,12 +185,13 @@ userInputForm.addEventListener('submit', function(event) {
 
 // Challenge Testing
 
-let userTestData = { name: "adam", daysReached: 6 }
-let friendsTestData = [
-  {name: "rachel", daysReached: 5 },
-  {name: "ashlee", daysReached: 7 },
-  {name: "patrick", daysReached: 4 },
-  {name: "liz", daysReached: 3 }
-]
 
-displayChallengeChart(stepChallengeBox, userTestData, friendsTestData)
+// let userTestData = { name: "adam", daysReached: 6 }
+// let friendsTestData = [
+//   {name: "rachel", daysReached: 5 },
+//   {name: "ashlee", daysReached: 7 },
+//   {name: "patrick", daysReached: 4 },
+//   {name: "liz", daysReached: 3 }
+// ]
+
+// displayChallengeChart(stepChallengeBox, userChallengeData, friendsChallengeData)

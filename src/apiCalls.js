@@ -17,7 +17,7 @@ function fetchHydrationData(){
   fetch('http://localhost:3001/api/v1/hydration', {
     method: 'POST',
     body: JSON.stringify({
-      userID: 71888,
+      userID: 1,
       date: "4/11/2023",
       numOunces: 54
   }),
@@ -25,7 +25,7 @@ function fetchHydrationData(){
   })
   .then(res => res.json())
   .then(data => console.log(data))
-  .then(JSON => console.log('user',JSON))
+  // .then(JSON => console.log('user',JSON))
   .catch(error => console.log(error))
  };
 

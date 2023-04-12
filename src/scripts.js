@@ -29,6 +29,8 @@ let currentUserActivity;
 const hydrationDisplay = document.querySelector('.hydration-display')
 const sleepDisplay = document.querySelector('.sleep-display')
 const activityDisplay = document.querySelector('.activity-display')
+const newHydrationData = document.querySelector('.hydration-display')
+
 
 window.addEventListener('load', () => {
   fetchAll()
@@ -41,6 +43,9 @@ window.addEventListener('load', () => {
       pageLoad()
     })
 })
+
+// newHydrationData.addEventListener('click', createNewHydrationData())
+
 
 function loadUserInfo(currentUserData, userData) {
   document.getElementById('firstName').innerHTML = `Welcome ${currentUserData.userName}!`;
@@ -76,6 +81,7 @@ function pageLoad() {
     currentUserHydration.findSingleDayOunces(currentUserHydration.findMostRecentDay()));
   createSevenDayCard('Ounces for Week',
     currentUserHydration.findOuncesLastSevenDays());
+    // createNewHydrationData('Today\'s Ounces', )
 
   // Activity 
   activityCard(currentUserActivity.findMostRecentSteps(),
@@ -168,13 +174,13 @@ function activityCard(stepCount, miles, weekSteps, stepGoalMet) {
 
 function createSingleCard(cardTitle, outputToDisplay) {
   hydrationDisplay.innerHTML += `
-        <section class='card single'> 
-             <h3> ${cardTitle} </h3>
-            <div>
-                <p> ${outputToDisplay} </p>
-            </div>
-            <img id="hydrationIcon" src="Hydration-Icon.PNG" alt="Hydration-Icon" width="50" height="50"/>
-         </section>`
+  <section class='card single'> 
+  <h3> ${cardTitle} </h3>
+  <div>
+  <p> ${outputToDisplay} </p>
+  </div>
+  <img id="hydrationIcon" src="Hydration-Icon.PNG" alt="Hydration-Icon" width="50" height="50"/>
+  </section>`
 }
 
 function createSevenDayCard(cardTitle, outputToDisplay) {
@@ -192,3 +198,16 @@ function createSevenDayCard(cardTitle, outputToDisplay) {
     </div>
   </section>`
 }
+
+// function createNewHydrationData(cardTitle, outputToDisplay) {
+//   const newHydrationData = fetchHydrationData()
+
+//   hydrationDisplay.innerHTML += `
+//         <section class='card single'> 
+//         <h3> ${cardTitle} </h3>
+//         <div>
+//         <p> ${outputToDisplay} </p>
+//         </div>
+//         <img id="hydrationIcon" src="Hydration-Icon.PNG" alt="Hydration-Icon" width="50" height="50"/>
+//         </section>`
+// }

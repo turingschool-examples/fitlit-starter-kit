@@ -3,7 +3,7 @@
   margin: 0;
   max-width: auto;
   padding: 0;
-  border: solid 1px red;
+  /* border: solid 1px red; */
 }
 
 body {
@@ -11,12 +11,14 @@ body {
   font-size: 18px;
   display: flex;
   flex-wrap: wrap;
-  font-family: 'Lexend', sans-serif;
+  font-family: "Lexend", sans-serif;
   gap: 10px;
   max-width: 100%;
   overflow-wrap: normal;
   padding: 0px 200px;
-  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 header {
@@ -25,24 +27,8 @@ header {
   justify-content: space-evenly;
   align-items: center;
   width: 100vw;
-  /* font-size: 10px; */
-  /* height: 150px; */
   margin: 0;
-}
-
-.logo {
-  float: left;
-  width: 300px;
-  height: 300px;
-  margin: 20px;
-  shape-outside: circle();
-  clip-path: circle();
-  background: lightblue;
-}
-
-.main-header {
   color:white;
-
 }
 
 section {
@@ -51,17 +37,10 @@ section {
   width: 100vw;
 }
 
-.card-title {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
 
 /* Set styles for info boxes and div elements */
 .info-box, div {
   align-items: center;
-  /* border: none; */
   border-radius: 50px;
   display: flex;
   flex-direction: column;
@@ -70,7 +49,6 @@ section {
   margin: 10px;
   padding: 10px;
   width: 35vw;
-  /* font-size: 10px; */
 }
 
 .activity-info-box {
@@ -89,14 +67,8 @@ section {
 
 .sleep, .activity, .hydration {
   background-color: #fff;
-  border: solid 6px #5699f8;
-}
-
-.flex-container {
-  height: 200px;
-  width: 200px;
-  display: flex;
-  flex-direction: column;
+  /* border: solid 6px #5699f8; */
+  box-shadow: -3px 0px 6px 1px rgba(86, 153, 248, 0.5);
 }
 
 .activity-container {
@@ -104,9 +76,9 @@ section {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 10000px;
   height: 300px;
-  border: #5699f8 solid 4px;
+  box-shadow: -2px 0px 6px 0px rgba(86, 153, 248, 0.5);
+  /* border: #5699f8 solid 6px; */
   background-color: white;
   border-radius: 50px;
 }
@@ -122,45 +94,41 @@ section {
 .activity {
   align-items: center;
   border-radius: 50px;
-  /* height: 300px;
-  width: 300px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   border: none;
 }
 
-.header-box {
-  background-color: white;
-  min-height: 20vh;
-  height: auto;
-}
-
-h3 {
-  font-size: 30px;
-  margin: 2px;
-}
-
-h4 {
-  margin: 0;
-  padding: 0;
+/* logo, header, user info */
+.logo {
+  display: flex;
+  width: 150px;
+  height: 150px;
+  margin: 20px auto;
+  shape-outside: circle();
+  clip-path: circle();
+  background: #5699f8;
+  border: none;
+  border-radius: 50px;
 }
 
 .logo img {
-  border: none;
-  border-radius: 50px;
   display: block;
   height: 100%;
   object-fit: contain;
   width: 100%;
 }
 
-.logo {
-  height: 150px;
-  width: 150px
+.user-main {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-start;
 }
 
 .user-name {
+  display: flex;
   font-size: 30px;
 }
 
@@ -168,17 +136,33 @@ h4 {
   font-size: 12px;
 }
 
+.user-name, .user-info {
+  shape-outside: circle();
+  margin-left: 10px;
+}
+
+/* modal formatting */
+button,
+.user-input {
+  border: #5699f8 solid 4px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 50px;
+}
+
 .modal {
   display: none; 
   position: fixed; 
   z-index: 1; 
-  top: 0%; /* Centered at the top */
+  top: 0%; 
   width: 75%; 
   height: 50%; 
-  overflow: auto; 
+  max-width: fit-content;
   background-color: rgba(255, 255, 255); 
   border: 6px solid rgb(86, 153, 248);
-  padding-top: 20px;
+  padding-top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .modal-content {
@@ -190,9 +174,9 @@ h4 {
 }
 
 .close {
-  color: #000;
+  color: black;
   float: right;
-  font-size: 28px;
+  font-size: 36px;
   font-weight: bold;
 }
 
@@ -201,6 +185,14 @@ h4 {
   color: rgb(86, 153, 248);
   text-decoration: none;
   cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 /* media queries */

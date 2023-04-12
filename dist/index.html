@@ -17,14 +17,16 @@
       <img class="logo-image" src="./images/fitlit-logo.png" alt="FitLit logo">
     </div>
     <div class="user-main">
+
       <h2 class="user-name" id="userName">First Name</h2>
-      <p class="user-info" id="userInfo"></p>
+      <ul class="user-info" id="userInfo"></ul>
+
     </div>
   </header>
   <!--   activity -->
   <article class="activity-container">
     <div class="activity-info-box">
-      <h3>Steps for The Past Week</h3>
+      <h2>Activity</h2>
       <p class="activity activity-chart"><canvas id="activityBoxWeek" width="800" height="400"></canvasid></canvas></p>
     </div>
     <div class="activity-info-box">
@@ -32,23 +34,24 @@
       <button class="open-modal"id="openModalBtn">Enter User Data</button>
      </div>
       <div id="activityModal" class="modal">
-        <span class="close">&times;</span>
+        <span class="close-btn">&times;</span>
         <form>
-          <section>
+          <section class="input-box">
             <label for="date">Date:</label>
-            <input type="date" id="date" name="date">
+            <input class="data-input" type="date" id="date" name="date">
           </section>
-          <section>
+          <section class="input-box">
             <label for="flightsOfStairs">Flights Of Stairs Climbed:</label>
-            <input type="number" id="flightsOfStairs" name="flights-of-stairs">
+            <input class="data-input" type="number" id="flightsOfStairs" name="flights-of-stairs">
           </section>
-          <section>
+          <section class="input-box"> 
             <label for="activeMinutes">Active Minutes:</label>
-            <input type="number" id="activeMinutes" name="active-minutes">
+            <input class="data-input" type="number" id="activeMinutes" name="active-minutes">
           </section>
-          <section>
+          <section class="input-box">
             <label for="numSteps">Number of Steps:</label>
-            <input type="number" id="numSteps" name="number-of-steps">
+            <input class="data-input" type="number" id="numSteps" name="num-steps">
+
           </section>
           <input type="submit" id="userInputBtn" class="user-input" value="Enter User Data">
         </form>
@@ -61,12 +64,14 @@
   </article>
   <section class="bottom-container">
     <!--   hydration -->
-    <article>
+    <article class="info-card">
+      <h2>Hydration</h2>
       <p class="hydration info-box"><canvas id="hydrationBoxWeek" width="800" height="400"></canvasid></canvas></p>
       <ul class="hydration info-box" id="hydrationInfoBox">test</ul>
     </article>
     <!--   sleep -->
-    <article>
+    <article class="info-card">
+      <h2>Sleep</h2>
       <p class="sleep info-box"><canvas id="sleepBoxWeek" width="800" height="400"></canvasid></canvas></p>
       <ul class="sleep info-box" id="sleepInfoBox">test</ul>
     </article>

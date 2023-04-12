@@ -3,7 +3,7 @@
   margin: 0;
   max-width: auto;
   padding: 0;
-  /* border: solid 1px red; */
+  font-family: "Lexend", sans-serif;
 }
 
 body {
@@ -109,6 +109,17 @@ li {
 }
 
 
+.info-card{
+background-color: white;
+border-radius: 50px;
+margin: 8px;
+display: flex;
+flex-direction: column;
+align-items: center;
+box-shadow: -2px 0px 6px 0px rgba(86, 153, 248, 0.5);
+}
+
+
 /* logo, header, user info */
 .logo {
   display: flex;
@@ -118,8 +129,7 @@ li {
   shape-outside: circle();
   clip-path: circle();
   background: #5699f8;
-  border: none;
-  border-radius: 50px;
+
 }
 
 .logo img {
@@ -133,7 +143,7 @@ li {
   display: flex;
   min-width: 400px;
   flex-direction: column;
-  align-content: flex-start;
+  justify-content: flex-end;
   align-items: flex-start;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -161,6 +171,7 @@ button,
   border: rgba(86, 153, 248, 0.5) solid 4px;
   padding: 10px;
   background-color: white;
+  color:black;
   border-radius: 50px;
 }
 
@@ -188,6 +199,22 @@ button:focus,
   transform: translateX(-50%);
 }
 
+.data-input {
+  border-radius: 10px;
+  width: 200px;
+  height: 30px;
+  margin: 2px;
+}
+
+.input-box {
+  padding: 2%;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .modal-content {
   background-color: #fefefe;
   margin: auto;
@@ -196,15 +223,16 @@ button:focus,
   width: 50%;
 }
 
-.close {
+.close-btn {
+  margin: 10px;
   color: black;
   float: right;
   font-size: 36px;
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close-btn:hover,
+.close-btn:focus {
   color: rgb(86, 153, 248);
   text-decoration: none;
   cursor: pointer;
@@ -243,5 +271,10 @@ form {
   section {
     flex-direction: column;
     align-items: center;
+  }
+
+  .input-box {
+    justify-content: center;
+    width: 200px;
   }
 }

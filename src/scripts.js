@@ -30,7 +30,7 @@ const firstName = document.getElementById('userName'),
       userInputSteps = document.getElementById('numSteps'),
       modal = document.getElementById('activityModal'),
       openModalBtn = document.getElementById('openModalBtn'),
-      span = document.getElementsByClassName("close")[0],
+      span = document.querySelector(".close-btn"),
       stepChallengeBox = document.getElementById('stepChallengeBox');
 
 // Global Variables
@@ -69,27 +69,30 @@ const displaySleepInfo = (sleep) => {
     pastWeekSleep = sleep.getInfoForPastWeek('hoursSlept'),
     avgQuality = sleep.getAverage('sleepQuality'),
     avgHours = sleep.getAverage('hoursSlept');
+
   sleepInfo.innerHTML = `<li>Latest Hours Slept: ${latestSleep.hoursSlept}</li>
   <li>Latest Quality of Sleep: ${latestSleep.sleepQuality}</li><li> Average Sleep Quality: ${avgQuality.toFixed(1)}</li>
   <li>Average Hours Slept: ${avgHours.toFixed(1)}</li>`
-  displayChart(pastWeekSleep, sleepWeek);
+  displayChart(pastWeekSleep, sleepWeek, "Sleep for the Week");
 };
 
 const displayHydration = (userId) => {
   let currentDate = hydrationObj.data[0].date;
   let weekData = hydrationObj.findWeeklyHydration();
+
   hydrationInfo.innerHTML = `<li>Average daily water intake: ${hydrationObj.findAvgDailyHydration(userId)}oz</li>
   <li>Fluid ounces drank today: ${hydrationObj.getHydrationSpecificDay(currentDate)}oz</li>`;
-  displayChart(weekData, hydrationWeek);
+  displayChart(weekData, hydrationWeek, "Hydration for the Week");
 };
 
 const displayActivity = () => {
   let currentDate = activityObj.data[0].date;
   let weekData = activityObj.getLatestWeek();
+
   activityInfo.innerHTML = `<li>Latest # of Steps: ${activityObj.getDailyActivityInfo(currentDate, 'numSteps')}</li>
   <li>Latest # of Minutes Active: ${activityObj.getDailyActivityInfo(currentDate, 'minutesActive')}</li>
     <li>Latest Distance Walked: ${activityObj.calculateMiles(currentDate)}</li>`;
-  displayChart(weekData, activityWeek);
+  displayChart(weekData, activityWeek, "Activity for the Week");
   };
 
   const getStepChallengeStats = (challenger) => {

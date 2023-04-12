@@ -17,6 +17,8 @@ import Activity from './classes/Activity';
 import Chart from 'chart.js/auto';
 import dayjs from 'dayjs';
 import L from 'leaflet'
+import MicroModal from "micromodal";
+MicroModal.init();
 
 // Import API Calls
 import './apiCalls';
@@ -48,20 +50,25 @@ Promise.all([fetchUsers(), fetchHydration(), fetchSleep(), fetchActivity()])
 
     hydration = new Hydration(hydrationData.hydrationData);
     displayhydrationCard(hydration, user.id, date);
-
+    
     sleep = new Sleep(sleepData.sleepData);
-
+    
     displaySleepCard(sleep, user.id, date);
-
+    
     activity = new Activity(activityData.activityData);
     displayActivityCard(activity, user, date, user.id);
   })
   .catch((error) => {
     console.error("Error fetching data:", error);
   });
+  
+  //Query Selectors
+  const hydrationCard = document.querySelector(".hydration-holder");
+  const hydrationOpenButton = document.querySelector("#hydrationOpenButton");
+  const hydrationCloseButton = document.querySelector("#hydrationCloseButton");
+  
+  hydrationOpenButton.addEventListener("click", displayModal);
 
-//Query Selectors
-const hydrationCard = document.querySelector(".hydration-holder");
 
 // DOM Manipulation Functions
 function displayUserCard(user) {
@@ -313,8 +320,10 @@ function createMap(user) {
     });
 }
 
-// function displayMap(user) {
-// }
+function displayModal() {
+  MicroModal.show("hydration-modal");
+}
+
 
 // Export Statements
 

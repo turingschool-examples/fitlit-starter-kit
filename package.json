@@ -26,6 +26,7 @@
   "dependencies": {
     "chart.js": "^4.2.1",
     "dayjs": "^1.11.7",
-    "leaflet": "^1.9.3"
+    "leaflet": "^1.9.3",
+    "micromodal": "^0.4.10"
   }
 }

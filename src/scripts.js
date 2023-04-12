@@ -33,8 +33,6 @@ const firstName = document.getElementById('userName'),
       span = document.querySelector(".close-btn"),
       stepChallengeBox = document.getElementById('stepChallengeBox');
 
-      console.log(span)
-
 // Global Variables
 let userList,
     userObj,

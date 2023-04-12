@@ -320,8 +320,7 @@ button:focus {
   margin-top: 0;
   margin-bottom: 0;
   font-weight: 600;
-  font-size: 1.25rem;
-  line-height: 1.25;
+  line-height: 1.50;
   color:  rgba(56, 44, 94);
   box-sizing: border-box;
 }
@@ -373,26 +372,6 @@ button:focus {
   display: block;
 }
 
-.micromodal-slide[aria-hidden="false"] .modal__overlay {
-  animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
-}
-
-.micromodal-slide[aria-hidden="false"] .modal__container {
-  animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
-}
-
-.micromodal-slide[aria-hidden="true"] .modal__overlay {
-  animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
-}
-
-.micromodal-slide[aria-hidden="true"] .modal__container {
-  animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
-}
-
-.micromodal-slide .modal__container,
-.micromodal-slide .modal__overlay {
-  will-change: transform;
-}
 
 
 

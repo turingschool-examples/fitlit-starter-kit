@@ -50,22 +50,24 @@ Promise.all([fetchUsers(), fetchHydration(), fetchSleep(), fetchActivity()])
 
     hydration = new Hydration(hydrationData.hydrationData);
     displayhydrationCard(hydration, user.id, date);
-
+    
     sleep = new Sleep(sleepData.sleepData);
-
+    
     displaySleepCard(sleep, user.id, date);
-
+    
     activity = new Activity(activityData.activityData);
     displayActivityCard(activity, user, date, user.id);
   })
   .catch((error) => {
     console.error("Error fetching data:", error);
   });
-
-//Query Selectors
-const hydrationCard = document.querySelector(".hydration-holder");
-const hydrationOpenButton = document.querySelector("#hydrationOpenButton");
-const hydrationCloseButton = document.querySelector("#hydrationCloseButton");
+  
+  //Query Selectors
+  const hydrationCard = document.querySelector(".hydration-holder");
+  const hydrationOpenButton = document.querySelector("#hydrationOpenButton");
+  const hydrationCloseButton = document.querySelector("#hydrationCloseButton");
+  
+  hydrationOpenButton.addEventListener("click", displayModal);
 
 
 // DOM Manipulation Functions
@@ -317,8 +319,6 @@ function createMap(user) {
       }, 3000);
     });
 }
-
-hydrationOpenButton.addEventListener("click", displayModal);
 
 function displayModal() {
   MicroModal.show("hydration-modal");

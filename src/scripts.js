@@ -5,7 +5,7 @@ import { fetchActivityData } from '../src/apiCalls';
 import { displayChart } from '../src/charts';
 import { displayChallengeChart } from '../src/charts';
 import { charts } from '../src/charts';
-import './css/styles.css';
+import './css/styles.scss';
 import './images/fitlit-logo.png';
 import './images/hydration-logo.png';
 import './images/activity-logo.png';

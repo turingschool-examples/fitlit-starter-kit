@@ -17,6 +17,8 @@ import Activity from './classes/Activity';
 import Chart from 'chart.js/auto';
 import dayjs from 'dayjs';
 import L from 'leaflet'
+import MicroModal from "micromodal";
+MicroModal.init();
 
 // Import API Calls
 import './apiCalls';
@@ -30,6 +32,7 @@ import {
 
 // Global variables
 let user;
+let userBase;
 let hydration;
 let activity;
 let sleep;
@@ -38,7 +41,7 @@ let date = dayjs().format("YYYY/MM/DD");
 // Fetch Requests
 Promise.all([fetchUsers(), fetchHydration(), fetchSleep(), fetchActivity()])
   .then(([userData, hydrationData, sleepData, activityData]) => {
-    const userBase = new UserRepository(userData.users);
+    userBase = new UserRepository(userData.users);
     user = userBase.getRandomUser();
     displayUserCard(user);
     displayStepUserVsAllUsers(user, userBase);
@@ -48,20 +51,25 @@ Promise.all([fetchUsers(), fetchHydration(), fetchSleep(), fetchActivity()])
 
     hydration = new Hydration(hydrationData.hydrationData);
     displayhydrationCard(hydration, user.id, date);
-
+    
     sleep = new Sleep(sleepData.sleepData);
-
+    
     displaySleepCard(sleep, user.id, date);
-
+    
     activity = new Activity(activityData.activityData);
     displayActivityCard(activity, user, date, user.id);
   })
   .catch((error) => {
     console.error("Error fetching data:", error);
   });
+  
+  //Query Selectors
+  const hydrationCard = document.querySelector(".hydration-holder");
+  const hydrationOpenButton = document.querySelector("#hydrationOpenButton");
+  const hydrationCloseButton = document.querySelector("#hydrationCloseButton");
+  
+  hydrationOpenButton.addEventListener("click", displayModal);
 
-//Query Selectors
-const hydrationCard = document.querySelector(".hydration-holder");
 
 // DOM Manipulation Functions
 function displayUserCard(user) {
@@ -181,7 +189,9 @@ function displayActivityCard(activity, user, date) {
 function clearChartArea() {
   const chartArea = document.querySelector(".infographic");
   chartArea.classList.remove("chart-placeholder");
-  chartArea.innerHTML = "<canvas id='chart'></canvas>";
+  chartArea.innerHTML = `
+  <div id="map"></div>
+  <canvas id='chart'></canvas>`
 };
 
 function createHydrationChart(hydration, userID, date) {
@@ -285,21 +295,7 @@ function createMap(user) {
       if (mapData.length === 0) {
         throw new Error('No map data found for the given user');
       }
-      const coordinates = [...mapData].map(coord => {
-        const lat = coord.getAttribute("lat");
-        const lon = coord.getAttribute("lon");
-        return [lat, lon];
-      });
-      const map = L.map('map', {
-        center: coordinates[0],
-        zoom: 13
-      });
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      }).addTo(map);
-      const path = L.polyline(coordinates, {color: 'red'}).addTo(map);
-      map.fitBounds(path.getBounds());
+      buildMap(mapData);
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -311,8 +307,58 @@ function createMap(user) {
     });
 }
 
-// function displayMap(user) {
-// }
+function buildMap(mapData) {
+  const coordinates = [...mapData].map(coord => {
+    const lat = coord.getAttribute("lat");
+    const lon = coord.getAttribute("lon");
+    return [lat, lon];
+  });
+  const map = L.map('map', {
+    center: coordinates[0],
+    zoom: 13
+  });
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+  const path = L.polyline(coordinates, {color: 'rgba(56, 44, 94)', opacity: .75, weight: 5}).addTo(map);
+  map.fitBounds(path.getBounds());
+}
+
+// modal function
+function displayModal() {
+  MicroModal.show("hydration-modal");
+}
+
+
+
+  
+var form = document.getElementById('form')
+
+form.addEventListener('submit', function(event) {
+event.preventDefault()
+
+let ouncesInput = document.getElementById("travelersInput")
+let ouncesData = ouncesInput.value
+let dateInput = document.getElementById("start")
+let dateData = dateInput.value
+console.log(dateData)
+console.log(ouncesData)
+console.log(event)
+fetch("http://localhost:3001/api/v1/hydration", {
+  method: 'POST',
+  body: JSON.stringify(
+    { userID: user.id, date: dateData, numOunces: ouncesData} //Input innnerText values?
+  ),
+  headers: {
+    'content-Type': 'application/json'
+  }
+  })
+  .then(response => response.json())
+  .then(json => console.log(json)) //display new data?
+  .catch(error => console.log("error", error))
+})
+
 
 // Export Statements
 

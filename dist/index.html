@@ -66,9 +66,9 @@
         <div class="modal micromodal-slide" id="hydration-modal" aria-hidden="true">
           <div class="modal__overlay" tabindex="-1" data-micromodal-close>
             <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-              <header class="modal__header">
+              <!-- <header > -->
                 <h2 class="modal__title">Hydration Input</h2>
-              </header>
+              <!-- </header> -->
               <main class="modal__content">
                <form id="form">
                 <label for="waterIntake" class="form-water-intake" id="waterIntakeLabel">Ounces Drank</label>
@@ -77,10 +77,11 @@
                 <label for="start">Date:</label>
                 <input type="date" id="start" name="date-start" value="" min="" max="2023-07-01" required>
                 <input type="submit" value="submit" class="submit"/>
+                <button class="modal__btn" data-micromodal-close="hydration-modal" aria-label="Close this dialog window" id="hydrationCloseButton">Close</button>
                </form>
               </main>
               <footer class="modal__footer">
-                <button class="modal__btn" data-micromodal-close="hydration-modal" aria-label="Close this dialog window" id="hydrationCloseButton">Close</button>
+                <!-- <button class="modal__btn" data-micromodal-close="hydration-modal" aria-label="Close this dialog window" id="hydrationCloseButton">Close</button> -->
               </footer>
             </div>
           </div>

@@ -51,6 +51,8 @@ let displayChallengeChart = (location, user, friends) => {
         labels: friendsArray.map(row => row.name),
         datasets: [
           {
+            backgroundColor: "#042048",
+            barThickness: 6,
             label: "Days Your Friends Met Their Goal",
             data: data,
             pointRadius: 0,

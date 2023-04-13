@@ -336,27 +336,32 @@ function displayModal() {
 var form = document.getElementById('form')
 
 form.addEventListener('submit', function(event) {
-event.preventDefault()
-
-let ouncesInput = document.getElementById("travelersInput")
-let ouncesData = ouncesInput.value
-let dateInput = document.getElementById("start")
-let dateData = dateInput.value
-console.log(dateData)
-console.log(ouncesData)
-console.log(event)
-fetch("http://localhost:3001/api/v1/hydration", {
-  method: 'POST',
-  body: JSON.stringify(
-    { userID: user.id, date: dateData, numOunces: ouncesData} //Input innnerText values?
-  ),
-  headers: {
-    'content-Type': 'application/json'
-  }
-  })
-  .then(response => response.json())
-  .then(json => console.log(json)) //display new data?
-  .catch(error => console.log("error", error))
+  event.preventDefault()
+  let ouncesInput = document.getElementById("travelersInput")
+  let ouncesData = ouncesInput.value
+  let dateInput = document.getElementById("start")
+  let dateData = dateInput.value
+  console.log(dateData)
+  console.log(ouncesData)
+  console.log(event)
+  fetch("http://localhost:3001/api/v1/hydration", {
+    method: 'POST',
+    body: JSON.stringify(
+      { userID: user.id, date: dateData, numOunces: Number(ouncesData)} //Input innnerText values?
+    ),
+    headers: {
+      'content-Type': 'application/json'
+    }
+    })
+    .then(response => {
+      response.json()
+      fetchHydration()
+      .then((hydration) => {
+        hydration = new Hydration(hydration.hydrationData);
+        displayhydrationCard(hydration, user.id, date);
+      })
+    })
+    .catch(error => console.log("error", error))
 })
 
 

@@ -425,27 +425,30 @@ button:focus {
 
 .modal__container {
   background-color: #fff;
-  padding: 30px;
+  padding: 20px;
   max-width: 500px;
   max-height: 100vh;
   border-radius: 4px;
   overflow-y: auto;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.modal__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+/* .modal__header {
+  align-self: center;
+} */
 
 .modal__title {
   margin-top: 0;
-  margin-bottom: 0;
-  font-weight: 600;
-  line-height: 1.50;
+  margin-bottom: 0; 
+  font-weight: 600; 
+  line-height: 1.50;  
   color:  rgba(56, 44, 94);
   box-sizing: border-box;
+  padding-left: 30%;
+ 
 }
 
 .modal__close {
@@ -462,7 +465,7 @@ button:focus {
   color: rgb(49, 49, 49);;
 }
 
-.modal__btn:focus, .modal__btn:hover {
+.modal__btn:focus, .modal__btn:hover,.submit:hover {
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
 }

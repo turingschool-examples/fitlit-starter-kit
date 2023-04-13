@@ -36,7 +36,7 @@ const firstName = document.getElementById('userName'),
       stepChallengeBox = document.getElementById('stepChallengeBox');
 
 // Global Variables
-let userList,
+let users,
     user,
     userChallengeData,
     friendsChallengeData = [];
@@ -60,8 +60,8 @@ const displayCurrentUser = (user) => {
   <li><b>Email:</b> ${user.email}</li> 
   <li>Stride Length: ${user.strideLength}</li>
   <li>Daily Step Goal: ${user.dailyStepGoal}</li>
-  <li>Friends: ${user.getFriends(userList)}</li>
-  <li>Your Step Goal Compared to All Users: ${user.dailyStepGoal}/${user.getAverage(userList)}</li>`
+  <li>Friends: ${user.getFriends(users)}</li>
+  <li>Your Step Goal Compared to All Users: ${user.dailyStepGoal}/${user.getAverage(users)}</li>`
 };
 
 const displaySleepInfo = (sleep) => {
@@ -105,7 +105,7 @@ const displayActivity = () => {
 
   const createFriends = (info) => {
     user.friends = user.friends.map(friend => {
-      return new User(userList.find(anom => anom.id === friend))
+      return new User(users.find(anom => anom.id === friend))
     });
     user.friends.forEach(friend => {
       friend.activity = new Activity(info[3].activityData.filter(activ => activ.userID === friend.id).reverse());
@@ -149,7 +149,7 @@ window.onclick = function(event) {
 window.addEventListener('load', () => {
   fetchAllData()
   .then(data => {
-      userList = data[0].users;
+      users = data[0].users;
 
       user = new User(data[0].users[Math.floor(Math.random() * 50)]);
       displayCurrentUser(user);

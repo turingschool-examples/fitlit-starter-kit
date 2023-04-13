@@ -58,5 +58,5 @@ let displayChallengeChart = (location, user, friends) => {
   );
 };
 
-export { displayChallengeChart }
-export { displayChart }
+export { displayChallengeChart };
+export { displayChart };

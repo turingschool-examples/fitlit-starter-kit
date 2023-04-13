@@ -22,15 +22,17 @@ const firstName = document.getElementById('userName'),
       hydrationWeek = document.getElementById('hydrationBoxWeek'),
       activityInfo = document.getElementById('activityInfoBox'),
       activityWeek = document.getElementById('activityBoxWeek'),
+
       userInputForm = document.querySelector('form'),
-      userInputButton = document.getElementById('userInputBtn'),
-      userInputDate = document.getElementById('date'),
+
       userInputStairs = document.getElementById('flightsOfStairs'),
       userInputMins = document.getElementById('activeMinutes'),
       userInputSteps = document.getElementById('numSteps'),
       modal = document.getElementById('activityModal'),
+
+      userInputButton = document.getElementById('userInputBtn'),
       openModalBtn = document.getElementById('openModalBtn'),
-      span = document.querySelector(".close-btn"),
+      closeBtn = document.querySelector(".close-btn"),
       stepChallengeBox = document.getElementById('stepChallengeBox');
 
 // Global Variables
@@ -46,7 +48,7 @@ userInputButton.disabled = true;
 
 // DOM Methods
 let changeButton = () => {
-  if (userInputDate.value && userInputStairs.value && userInputMins.value && userInputSteps.value) {
+  if (userInputStairs.value && userInputMins.value && userInputSteps.value) {
     userInputButton.disabled = false;
   }
 };
@@ -94,47 +96,31 @@ const displayActivity = () => {
   <li>Latest # of Minutes Active: ${activityObj.getDailyActivityInfo(currentDate, 'minutesActive')}</li>
     <li>Latest Distance Walked: ${activityObj.calculateMiles(currentDate)}</li>`;
   displayChart(weekData, activityWeek, "Activity for the Week");
-  };
+};
 
-  const getStepChallengeStats = (challenger) => {
-    const averageStepGoal = challenger.dailyStepGoal;
-    const stepsForTheWeek = challenger.activity.getLatestWeek();
-    const dailyGoalAchieved = stepsForTheWeek.filter((steps) => steps >= averageStepGoal);
+const getStepChallengeStats = (challenger) => {
+  const averageStepGoal = challenger.dailyStepGoal;
+  const stepsForTheWeek = challenger.activity.getLatestWeek();
+  const dailyGoalAchieved = stepsForTheWeek.filter((steps) => steps >= averageStepGoal);
 
-    return { name: challenger.name, daysReached: dailyGoalAchieved.length };
-  };
+  return { name: challenger.name, daysReached: dailyGoalAchieved.length };
+};
 
-  const createFriends = (info) => {
-    userObj.friends = userObj.friends.map(friend => {
-      return new User(userList.find(anom => anom.id === friend))
-    });
-    userObj.friends.forEach(friend => {
-      friend.activity = new Activity(info[3].activityData.filter(activ => activ.userID === friend.id).reverse());
-    });
-  };
+const createFriends = (info) => {
+  userObj.friends = userObj.friends.map(friend => {
+    return new User(userList.find(anom => anom.id === friend))
+  });
+  userObj.friends.forEach(friend => {
+    friend.activity = new Activity(getUserData('activityData', info[3]));
+  });
+};
 
-  const postChallengeStats = () => {
-    userChallengeData = getStepChallengeStats(userObj);
-    userObj.friends.forEach(friend => {
-      friendsChallengeData.push(getStepChallengeStats(friend))
-    });
-  };
+const postChallengeStats = () => {
+  userChallengeData = getStepChallengeStats(userObj);
+  userObj.friends.forEach(friend => friendsChallengeData.push(getStepChallengeStats(friend)));
+};
 
 // Event Listeners
-openModalBtn.onclick = function() {
-  modal.style.display = "block";
-};
-
-span.onclick = function() {
-  modal.style.display = "none";
-};
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  };
-};
-
 window.addEventListener('load', () => {
   fetchAllData()
   .then(data => {
@@ -162,20 +148,28 @@ window.addEventListener('load', () => {
     });
 });
 
-userInputDate.addEventListener('input', changeButton);
+openModalBtn.onclick = function() {
+  modal.style.display = "block";
+};
 
-userInputStairs.addEventListener('input', changeButton);
+closeBtn.onclick = function() {
+  modal.style.display = "none";
+};
 
-userInputMins.addEventListener('input', changeButton);
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  };
+};
 
-userInputSteps.addEventListener('input', changeButton);
+[userInputStairs, userInputMins, userInputSteps].forEach(input => input.addEventListener('input', changeButton))
 
 userInputForm.addEventListener('submit', function(event) {
   event.preventDefault();
 
   const userInputData = {
     userID: userObj.id,
-    date: userInputDate,
+    date: Date(),
     flightsOfStairs: parseInt(userInputStairs.value),
     minutesActive: parseInt(userInputMins.value),
     numSteps: parseInt(userInputSteps.value)

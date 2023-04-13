@@ -13,17 +13,19 @@ const fetchAllData = () => {
 };
 
 const postActivityData = (data) => {
-  fetch('http://localhost:3001/api/v1/activity', {
+  return fetch('http://localhost:3001/api/v1/activity', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
       'Content-Type': 'application/json'
     }
   })
-  .then(response => response.json())
-  .then(json => console.log(json))
-  .catch(err => console.log(err))
-  };
+};
+
+const fetchActivityData = () => {
+  return fetch('http://localhost:3001/api/v1/activity')
+}
 
 export { fetchAllData };
 export { postActivityData };
+export { fetchActivityData };

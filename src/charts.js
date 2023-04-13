@@ -1,10 +1,12 @@
 import Chart from 'chart.js/auto';
 
+let charts = [];
+
 let displayChart = (weekData, location, chartLabel) => {
 
   const data = [    { day: "", activity:"" },    { day: "", activity:"" },    { day: "", activity:"" },    { day: "", activity:"" },    { day: "", activity: "" },    { day: "", activity: "" },    { day: "", activity: "" },  ];
 
-  new Chart(
+  let chart = new Chart(
     location,
     {
       type: 'line',
@@ -33,6 +35,8 @@ let displayChart = (weekData, location, chartLabel) => {
       alt: 'Informational Chart on User Data'
     }
   );
+
+  charts.push(chart)
 };
 
 let displayChallengeChart = (location, user, friends) => {
@@ -74,3 +78,5 @@ let displayChallengeChart = (location, user, friends) => {
 
 export { displayChallengeChart };
 export { displayChart };
+export { charts }
+

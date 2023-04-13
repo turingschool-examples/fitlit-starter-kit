@@ -324,17 +324,14 @@ function buildMap(mapData) {
 
 // modal function
 function displayModal() {
-  MicroModal.show("hydration-modal");
+  MicroModal.show("hydrationModal");
 }
 
-
-
-  
 var form = document.getElementById('form')
 
 form.addEventListener('submit', function(event) {
   event.preventDefault()
-  let ouncesInput = document.getElementById("travelersInput")
+  let ouncesInput = document.getElementById("hydrationInput")
   let ouncesData = ouncesInput.value
   let dateInput = document.getElementById("start")
   let dateData = dateInput.value

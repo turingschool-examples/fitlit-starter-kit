@@ -4,6 +4,7 @@ import { postActivityData } from '../src/apiCalls';
 import { fetchActivityData } from '../src/apiCalls';
 import { displayChart } from '../src/charts';
 import { displayChallengeChart } from '../src/charts';
+import { charts } from '../src/charts';
 import './css/styles.css';
 import './images/fitlit-logo.png';
 import './images/hydration-logo.png';
@@ -88,12 +89,12 @@ const displayHydration = (userId) => {
 };
 
 const displayActivity = () => {
-  let currentDate = activityObj.data[0].date;
-  let weekData = activityObj.getLatestWeek();
+  let currentDate = userObj.activity.data[0].date;
+  let weekData = userObj.activity.getLatestWeek();
 
-  activityInfo.innerHTML = `<li>Latest # of Steps: ${activityObj.getDailyActivityInfo(currentDate, 'numSteps')}</li>
-  <li>Latest # of Minutes Active: ${activityObj.getDailyActivityInfo(currentDate, 'minutesActive')}</li>
-    <li>Latest Distance Walked: ${activityObj.calculateMiles(currentDate)}</li>`;
+  activityInfo.innerHTML = `<li>Latest # of Steps: ${userObj.activity.getDailyActivityInfo(currentDate, 'numSteps')}</li>
+  <li>Latest # of Minutes Active: ${userObj.activity.getDailyActivityInfo(currentDate, 'minutesActive')}</li>
+    <li>Latest Distance Walked: ${userObj.activity.calculateMiles(currentDate)}</li>`;
   displayChart(weekData, activityWeek, "Activity for the Week");
   };
 
@@ -169,11 +170,11 @@ window.addEventListener('load', () => {
       activityObj = userObj.activity;
       displayActivity(userObj.id);
 
-      console.log(userObj)
-
       createFriends(data);
       postChallengeStats();
       displayChallengeChart(stepChallengeBox, userChallengeData, friendsChallengeData);
+      // const chart = activityWeek.getContext('2d')
+      console.log('chart location finder: ', charts)
     })
   .catch(err => console.log(err.message))
 });
@@ -196,18 +197,25 @@ userInputForm.addEventListener('submit', function(event) {
     minutesActive: parseInt(userInputMins.value),
     numSteps: parseInt(userInputSteps.value)
   };
-  
+  console.log('user activity before post: ',userObj.activity.data)
   postActivityData(userInputData)
   .then(res => res.json())
-  .then(res => console.log(res))
-  .catch(err => console.log(err.message))
+  .then(res => {
+    console.log(res)
 
-  fetchActivityData()
-  .then(res => res.json())
-  .then(data => {
-    userObj.activity = new Activity(getUserData('activityData', data), userObj.strideLength);
-    console.log(userObj)
+    fetchActivityData()
+    .then(res => res.json())
+    .then(data => {
+      userObj.activity = new Activity(getUserData('activityData', data), userObj.strideLength);
+      charts[2].destroy()
+      charts.splice(2,1)
+      displayActivity()
+    })
+    .catch(err => console.log(err.message));
   })
+  .catch(err => console.log(err.message));
+
+    console.log('user activity array: ',userObj.activity.data)
   
   userInputForm.reset();
   userInputButton.disabled = true;

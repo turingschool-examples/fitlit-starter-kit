@@ -13,6 +13,7 @@ import UserHydration from './userHydration';
 import Sleep from './Sleep';
 import fetchAll from './apiCalls';
 import Activity from './Activity';
+import fetchNewHydration from './newHydrationdata'
 
 // Global Varible Section
 let userData

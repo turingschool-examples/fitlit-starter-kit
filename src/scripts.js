@@ -188,6 +188,7 @@ function displayActivityCard(activity, user, date) {
 // Chart Functions
 function clearChartArea() {
   const chartArea = document.querySelector(".infographic");
+  chartArea.classList.remove("map-error");
   chartArea.classList.remove("chart-placeholder");
   chartArea.innerHTML = `
   <div id="map"></div>
@@ -300,10 +301,6 @@ function createMap(user) {
     .catch((error) => {
       console.error('Error:', error);
       chartArea.classList.add("map-error");
-      setTimeout(() => {
-        chartArea.classList.remove("map-error");
-        chartArea.classList.add("chart-placeholder");
-      }, 3000);
     });
 }
 

@@ -289,28 +289,13 @@ function createMap(user) {
   const chartArea = document.querySelector(".infographic");
   chartArea.classList.remove("chart-placeholder");
 
-  // map function
   fetchMap(user)
     .then((mapXML) => {
       const mapData = mapXML.getElementsByTagName('rtept');
       if (mapData.length === 0) {
         throw new Error('No map data found for the given user');
       }
-      const coordinates = [...mapData].map(coord => {
-        const lat = coord.getAttribute("lat");
-        const lon = coord.getAttribute("lon");
-        return [lat, lon];
-      });
-      const map = L.map('map', {
-        center: coordinates[0],
-        zoom: 13
-      });
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      }).addTo(map);
-      const path = L.polyline(coordinates, {color: 'orange'}).addTo(map);
-      map.fitBounds(path.getBounds());
+      buildMap(mapData);
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -320,6 +305,24 @@ function createMap(user) {
         chartArea.classList.add("chart-placeholder");
       }, 3000);
     });
+}
+
+function buildMap(mapData) {
+  const coordinates = [...mapData].map(coord => {
+    const lat = coord.getAttribute("lat");
+    const lon = coord.getAttribute("lon");
+    return [lat, lon];
+  });
+  const map = L.map('map', {
+    center: coordinates[0],
+    zoom: 13
+  });
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+  const path = L.polyline(coordinates, {color: 'rgba(56, 44, 94)', opacity: .75, weight: 5}).addTo(map);
+  map.fitBounds(path.getBounds());
 }
 
 // modal function

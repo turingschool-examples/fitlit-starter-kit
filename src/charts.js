@@ -1,6 +1,8 @@
 import Chart from 'chart.js/auto';
 import Hydration from './Hydration';
 
+let charts = [];
+
 let displayChart = (weekData, location, chartLabel) => {
 
   const data = [
@@ -13,7 +15,7 @@ let displayChart = (weekData, location, chartLabel) => {
     { day: "", activity: "" },
   ];
 
-  new Chart(
+  let chart = new Chart(
     location,
     {
       type: 'line',
@@ -31,6 +33,8 @@ let displayChart = (weekData, location, chartLabel) => {
       }
     }
   );
+
+  charts.push(chart)
 };
 
 let displayChallengeChart = (location, user, friends) => {
@@ -60,3 +64,4 @@ let displayChallengeChart = (location, user, friends) => {
 
 export { displayChallengeChart };
 export { displayChart };
+export { charts }

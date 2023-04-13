@@ -37,10 +37,7 @@ const firstName = document.getElementById('userName'),
 
 // Global Variables
 let userList,
-    userObj,
-    sleepObj,
-    hydrationObj,
-    activityObj,
+    user,
     userChallengeData,
     friendsChallengeData = [];
 
@@ -54,7 +51,7 @@ let changeButton = () => {
 };
 
 const getUserData = (infoType, array) => {
-  return array[infoType].filter(data => data.userID === userObj.id).reverse();
+  return array[infoType].filter(data => data.userID === user.id).reverse();
 };
 
 const displayCurrentUser = (user) => {
@@ -80,21 +77,21 @@ const displaySleepInfo = (sleep) => {
 };
 
 const displayHydration = (userId) => {
-  let currentDate = hydrationObj.data[0].date;
-  let weekData = hydrationObj.findWeeklyHydration();
+  let currentDate = user.hydration.data[0].date;
+  let weekData = user.hydration.findWeeklyHydration();
 
-  hydrationInfo.innerHTML = `<li>Average daily water intake: ${hydrationObj.findAvgDailyHydration(userId)}oz</li>
-  <li>Fluid ounces drank today: ${hydrationObj.getHydrationSpecificDay(currentDate)}oz</li>`;
+  hydrationInfo.innerHTML = `<li>Average daily water intake: ${user.hydration.findAvgDailyHydration(userId)}oz</li>
+  <li>Fluid ounces drank today: ${user.hydration.getHydrationSpecificDay(currentDate)}oz</li>`;
   displayChart(weekData, hydrationWeek, "Hydration for the Week");
 };
 
 const displayActivity = () => {
-  let currentDate = userObj.activity.data[0].date;
-  let weekData = userObj.activity.getLatestWeek();
+  let currentDate = user.activity.data[0].date;
+  let weekData = user.activity.getLatestWeek();
 
-  activityInfo.innerHTML = `<li>Latest # of Steps: ${userObj.activity.getDailyActivityInfo(currentDate, 'numSteps')}</li>
-  <li>Latest # of Minutes Active: ${userObj.activity.getDailyActivityInfo(currentDate, 'minutesActive')}</li>
-    <li>Latest Distance Walked: ${userObj.activity.calculateMiles(currentDate)}</li>`;
+  activityInfo.innerHTML = `<li>Latest # of Steps: ${user.activity.getDailyActivityInfo(currentDate, 'numSteps')}</li>
+  <li>Latest # of Minutes Active: ${user.activity.getDailyActivityInfo(currentDate, 'minutesActive')}</li>
+    <li>Latest Distance Walked: ${user.activity.calculateMiles(currentDate)}</li>`;
   displayChart(weekData, activityWeek, "Activity for the Week");
   };
 
@@ -107,17 +104,17 @@ const displayActivity = () => {
   };
 
   const createFriends = (info) => {
-    userObj.friends = userObj.friends.map(friend => {
+    user.friends = user.friends.map(friend => {
       return new User(userList.find(anom => anom.id === friend))
     });
-    userObj.friends.forEach(friend => {
+    user.friends.forEach(friend => {
       friend.activity = new Activity(info[3].activityData.filter(activ => activ.userID === friend.id).reverse());
     });
   };
 
   const postChallengeStats = () => {
-    userChallengeData = getStepChallengeStats(userObj);
-    userObj.friends.forEach(friend => {
+    userChallengeData = getStepChallengeStats(user);
+    user.friends.forEach(friend => {
       friendsChallengeData.push(getStepChallengeStats(friend))
     });
   };
@@ -154,27 +151,22 @@ window.addEventListener('load', () => {
   .then(data => {
       userList = data[0].users;
 
-      userObj = new User(data[0].users[Math.floor(Math.random() * 50)]);
-      displayCurrentUser(userObj);
+      user = new User(data[0].users[Math.floor(Math.random() * 50)]);
+      displayCurrentUser(user);
 
 
-      userObj.hydration = new Hydration(getUserData('hydrationData', data[1]));
-      hydrationObj = userObj.hydration;
-      displayHydration(userObj.id);
+      user.hydration = new Hydration(getUserData('hydrationData', data[1]));
+      displayHydration(user.id);
 
-      userObj.sleep = new Sleep(getUserData('sleepData', data[2]));
-      sleepObj = userObj.sleep;
-      displaySleepInfo(sleepObj);
+      user.sleep = new Sleep(getUserData('sleepData', data[2]));
+      displaySleepInfo(user.sleep);
 
-      userObj.activity = new Activity(getUserData('activityData', data[3]), userObj.strideLength);
-      activityObj = userObj.activity;
-      displayActivity(userObj.id);
+      user.activity = new Activity(getUserData('activityData', data[3]), user.strideLength);
+      displayActivity(user.id);
 
       createFriends(data);
       postChallengeStats();
       displayChallengeChart(stepChallengeBox, userChallengeData, friendsChallengeData);
-      // const chart = activityWeek.getContext('2d')
-      console.log('chart location finder: ', charts)
     })
   .catch(err => console.log(err.message))
 });
@@ -191,13 +183,13 @@ userInputForm.addEventListener('submit', function(event) {
   event.preventDefault();
 
   const userInputData = {
-    userID: userObj.id,
+    userID: user.id,
     date: convertDate(),
     flightsOfStairs: parseInt(userInputStairs.value),
     minutesActive: parseInt(userInputMins.value),
     numSteps: parseInt(userInputSteps.value)
   };
-  console.log('user activity before post: ',userObj.activity.data)
+
   postActivityData(userInputData)
   .then(res => res.json())
   .then(res => {
@@ -206,7 +198,7 @@ userInputForm.addEventListener('submit', function(event) {
     fetchActivityData()
     .then(res => res.json())
     .then(data => {
-      userObj.activity = new Activity(getUserData('activityData', data), userObj.strideLength);
+      user.activity = new Activity(getUserData('activityData', data), user.strideLength);
       charts[2].destroy()
       charts.splice(2,1)
       displayActivity()
@@ -214,8 +206,6 @@ userInputForm.addEventListener('submit', function(event) {
     .catch(err => console.log(err.message));
   })
   .catch(err => console.log(err.message));
-
-    console.log('user activity array: ',userObj.activity.data)
   
   userInputForm.reset();
   userInputButton.disabled = true;

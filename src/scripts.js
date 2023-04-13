@@ -159,7 +159,8 @@ window.addEventListener('load', () => {
       createFriends(data);
       postChallengeStats();
       displayChallengeChart(stepChallengeBox, userChallengeData, friendsChallengeData);
-    });
+    })
+  .catch(err => console.log(err))
 });
 
 userInputDate.addEventListener('input', changeButton);
@@ -181,7 +182,10 @@ userInputForm.addEventListener('submit', function(event) {
     numSteps: parseInt(userInputSteps.value)
   };
   
-  postActivityData(userInputData);
+  postActivityData(userInputData)
+  .then(response => response.json())
+  .then(response => console.log(response))
+  .catch(err => console.log(err))
   
   userInputForm.reset();
   userInputButton.disabled = true;

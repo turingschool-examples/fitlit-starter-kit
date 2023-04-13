@@ -403,15 +403,12 @@ button:focus {
     height: 30%;
   }
 
-  .sleep-button {
-    width: 100%;
-  }
 }
 
 
 /* Modal Stlying */
 
-.modal__overlay {
+.modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -423,7 +420,7 @@ button:focus {
   align-items: center;
 }
 
-.modal__container {
+.modal-container {
   background-color: #fff;
   padding: 20px;
   max-width: 500px;
@@ -436,11 +433,11 @@ button:focus {
   align-items: flex-start;
 }
 
-/* .modal__header {
+/* .modal-header {
   align-self: center;
 } */
 
-.modal__title {
+.modal-title {
   margin-top: 0;
   margin-bottom: 0; 
   font-weight: 600; 
@@ -451,21 +448,21 @@ button:focus {
  
 }
 
-.modal__close {
+.modal-close {
   background: transparent;
   border: 0;
 }
 
-.modal__header .modal__close:before { content: "\2715"; }
+.modal-header .modal-close:before { content: "\2715"; }
 
-.modal__content {
+.modal-content {
   margin-top: 2rem;
   margin-bottom: 2rem;
   line-height: 1.5;
   color: rgb(49, 49, 49);;
 }
 
-.modal__btn:focus, .modal__btn:hover,.submit:hover {
+.modal-button:focus, .modal-button:hover,.submit:hover {
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
 }

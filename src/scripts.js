@@ -42,6 +42,7 @@ window.addEventListener('load', () => {
       console.log(allUserHydrationData)
       allUserActivityData = data[3]
       pageLoad()
+      fetchNewHydration()
     })
 })
 
@@ -199,6 +200,8 @@ function createSevenDayCard(cardTitle, outputToDisplay) {
     </div>
   </section>`
 }
+
+export default currentUser
 
 // function createNewHydrationData(cardTitle, outputToDisplay) {
 //   const newHydrationData = fetchHydrationData()

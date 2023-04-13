@@ -1,10 +1,12 @@
+
+import currentUser from "./scripts"
+
 const hydrationURL = 'http://localhost:3001/api/v1/hydration'
 
-const fetchNewHydration =
-function fetchHydrationData(){
+const fetchNewHydration = (numOunces) => {
   fetch(hydrationURL, {
     method: 'POST',
-    body: JSON.stringify({
+    body: JSON.stringify({   
       userID: 1,
       date: "4/11/2023",
       numOunces: 54
@@ -12,9 +14,19 @@ function fetchHydrationData(){
     headers: {"Content-Type": "application/json"}
   })
   .then(res => res.json())
-  .then(data => console.log(data))
-  // .then(JSON => console.log('user',JSON))
+  .then(data => {
+    console.log(data);
+    currentUser.numOunces = numOunces;
+  })
   .catch(error => console.log(error))
  }
+ 
+
 
  export default fetchNewHydration
+
+
+ 
+
+
+

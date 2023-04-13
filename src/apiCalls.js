@@ -25,5 +25,5 @@ const postActivityData = (data) => {
   .catch(err => console.log(err))
   };
 
-export { fetchAllData }
-export { postActivityData }
+export { fetchAllData };
+export { postActivityData };

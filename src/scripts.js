@@ -1,13 +1,13 @@
 // Webpack Links
 import { fetchAllData } from '../src/apiCalls';
 import { postActivityData } from '../src/apiCalls';
-import { displayChart } from '../src/charts'
+import { displayChart } from '../src/charts';
 import { displayChallengeChart } from '../src/charts';
 import './css/styles.css';
 import './images/fitlit-logo.png';
-import './images/hydration-logo.png'
-import './images/activity-logo.png'
-import './images/sleep-logo.png'
+import './images/hydration-logo.png';
+import './images/activity-logo.png';
+import './images/sleep-logo.png';
 import User from '../src/User';
 import Sleep from '../src/Sleep';
 import Hydration from '../src/Hydration';
@@ -43,12 +43,13 @@ let userList,
     friendsChallengeData = [];
 
 userInputButton.disabled = true;
+
 // DOM Methods
 let changeButton = () => {
   if (userInputDate.value && userInputStairs.value && userInputMins.value && userInputSteps.value) {
     userInputButton.disabled = false;
   }
-}
+};
 
 const getUserData = (infoType, array) => {
   return array[infoType].filter(data => data.userID === userObj.id).reverse();
@@ -98,10 +99,10 @@ const displayActivity = () => {
   const getStepChallengeStats = (challenger) => {
     const averageStepGoal = challenger.dailyStepGoal;
     const stepsForTheWeek = challenger.activity.getLatestWeek();
-    const dailyGoalAchieved = stepsForTheWeek.filter((steps) => steps >= averageStepGoal)
+    const dailyGoalAchieved = stepsForTheWeek.filter((steps) => steps >= averageStepGoal);
 
-    return { name: challenger.name, daysReached: dailyGoalAchieved.length }
-  }
+    return { name: challenger.name, daysReached: dailyGoalAchieved.length };
+  };
 
   const createFriends = (info) => {
     userObj.friends = userObj.friends.map(friend => {
@@ -110,28 +111,29 @@ const displayActivity = () => {
     userObj.friends.forEach(friend => {
       friend.activity = new Activity(info[3].activityData.filter(activ => activ.userID === friend.id).reverse());
     });
-  }  
+  };
 
   const postChallengeStats = () => {
-    userChallengeData = getStepChallengeStats(userObj)
+    userChallengeData = getStepChallengeStats(userObj);
     userObj.friends.forEach(friend => {
       friendsChallengeData.push(getStepChallengeStats(friend))
-    })
-  
-  }
+    });
+  };
 
 // Event Listeners
 openModalBtn.onclick = function() {
   modal.style.display = "block";
-}
+};
+
 span.onclick = function() {
   modal.style.display = "none";
-}
+};
+
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
-  }
-}
+  };
+};
 
 window.addEventListener('load', () => {
   fetchAllData()
@@ -151,7 +153,7 @@ window.addEventListener('load', () => {
       displaySleepInfo(sleepObj);
 
       userObj.activity = new Activity(getUserData('activityData', data[3]), userObj.strideLength);
-      activityObj = userObj.activity
+      activityObj = userObj.activity;
       displayActivity(userObj.id);
       
       createFriends(data);

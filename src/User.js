@@ -10,7 +10,7 @@ class User {
     this.activity = [];
     this.sleep = [];
     this.hydration = [];
-  }
+  };
 
   getFriends(dataSet) {
     if (this.friends === undefined) {
@@ -21,8 +21,8 @@ class User {
         let splitName = buddy.name.split(' ');
         return splitName[0];
       });
-    } 
-  }
+    };
+  };
 
   getAverage(dataSet) {
     let total = dataSet.reduce((acc, userSet) => {
@@ -30,12 +30,12 @@ class User {
       return acc;
     }, 0);
     return total / dataSet.length;
-  }
+  };
 
   getName() {
     let splitName = this.name.split(' ');
     return splitName[0];
-  }
-}
+  };
+};
 
 export default User;

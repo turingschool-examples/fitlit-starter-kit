@@ -15,7 +15,7 @@ class Sleep {
     };
   };
 
-  getInfoForSpecificDate(date, infoType){
+  getInfoForSpecificDate(date, infoType) {
     if (this.data.some(sleep => sleep.date === date)) {
       return this.data.find(sleep => sleep.date === date)[infoType];
     } else {

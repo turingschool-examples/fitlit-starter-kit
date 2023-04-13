@@ -7,17 +7,23 @@ A web application designed to allow users to monitor their latest and all-time a
 ![demo](src/images/Sisphyus-fitness.gif)
 
 ## Technologies Used
-- Charts.js & Day.js 3rd party libraries
-- Fetch API
-- Lighthouse and WAVE accessibility tools
+### Core
+- Javascript
+- CSS & HTML
 - Webpack module bundler
+- Fetch API
+- Mocha Javascript testing framework and Chai assertion library
+
+### Third Party Libraries
+- Charts.js
+- Day.js
+- Micromodal
+- Leaflet
+
+### Other
 - Git/GitHub
 - GitHub project board
-- Figma for wireframing
-- JavaScript
-- CSS & HTML
-- Mocha JavaScript testing framework
-- Chai assertion library
+- Figma and Adobe Illustrator for wireframing and vector graphics
 
 ## Installation Guide
 1. Fork the repository

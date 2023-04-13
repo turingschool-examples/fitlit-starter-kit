@@ -1,6 +1,7 @@
 // Webpack Links
 import { fetchAllData } from '../src/apiCalls';
 import { postActivityData } from '../src/apiCalls';
+import { fetchActivityData } from '../src/apiCalls';
 import { displayChart } from '../src/charts';
 import { displayChallengeChart } from '../src/charts';
 import './css/styles.css';
@@ -120,6 +121,18 @@ const displayActivity = () => {
     });
   };
 
+  const convertDate = () => {
+  let splitDate = userInputDate.value.split('')
+  splitDate.forEach((num, index) => {
+    if (isNaN(parseInt(num))) {
+      splitDate.splice(index, 1, "/")
+    } 
+  })
+  
+  return splitDate.join('');
+}
+
+
 // Event Listeners
 openModalBtn.onclick = function() {
   modal.style.display = "block";
@@ -155,7 +168,9 @@ window.addEventListener('load', () => {
       userObj.activity = new Activity(getUserData('activityData', data[3]), userObj.strideLength);
       activityObj = userObj.activity;
       displayActivity(userObj.id);
-      console.log(userObj.activity)
+
+      console.log(userObj)
+
       createFriends(data);
       postChallengeStats();
       displayChallengeChart(stepChallengeBox, userChallengeData, friendsChallengeData);
@@ -171,17 +186,6 @@ userInputMins.addEventListener('input', changeButton);
 
 userInputSteps.addEventListener('input', changeButton);
 
-const convertDate = () => {
-  let splitDate = userInputDate.value.split('')
-  splitDate.forEach((num, index) => {
-    if (isNaN(parseInt(num))) {
-      splitDate.splice(index, 1, "/")
-    } 
-  })
-  
-  return splitDate.join('');
-}
-
 userInputForm.addEventListener('submit', function(event) {
   event.preventDefault();
 
@@ -192,11 +196,18 @@ userInputForm.addEventListener('submit', function(event) {
     minutesActive: parseInt(userInputMins.value),
     numSteps: parseInt(userInputSteps.value)
   };
-  console.log('user input', userInputData)
+  
   postActivityData(userInputData)
-  .then(response => response.json())
-  .then(response => console.log('Here lays my response: ',response))
-  .catch(err => console.log(err))
+  .then(res => res.json())
+  .then(res => console.log(res))
+  .catch(err => console.log(err.message))
+
+  fetchActivityData()
+  .then(res => res.json())
+  .then(data => {
+    userObj.activity = new Activity(getUserData('activityData', data), userObj.strideLength);
+    console.log(userObj)
+  })
   
   userInputForm.reset();
   userInputButton.disabled = true;

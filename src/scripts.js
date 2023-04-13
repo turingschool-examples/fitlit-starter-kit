@@ -130,6 +130,7 @@ const getStepChallengeStats = (challenger) => {
   const dailyGoalAchieved = stepsForTheWeek.filter((steps) => steps >= averageStepGoal);
 
   return { name: challenger.name, daysReached: dailyGoalAchieved.length };
+};
 
 // Event Listeners
 window.addEventListener('load', () => {

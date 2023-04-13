@@ -155,12 +155,12 @@ window.addEventListener('load', () => {
       userObj.activity = new Activity(getUserData('activityData', data[3]), userObj.strideLength);
       activityObj = userObj.activity;
       displayActivity(userObj.id);
-      
+      console.log(userObj.activity)
       createFriends(data);
       postChallengeStats();
       displayChallengeChart(stepChallengeBox, userChallengeData, friendsChallengeData);
     })
-  .catch(err => console.log(err))
+  .catch(err => console.log(err.message))
 });
 
 userInputDate.addEventListener('input', changeButton);
@@ -171,20 +171,31 @@ userInputMins.addEventListener('input', changeButton);
 
 userInputSteps.addEventListener('input', changeButton);
 
+const convertDate = () => {
+  let splitDate = userInputDate.value.split('')
+  splitDate.forEach((num, index) => {
+    if (isNaN(parseInt(num))) {
+      splitDate.splice(index, 1, "/")
+    } 
+  })
+  
+  return splitDate.join('');
+}
+
 userInputForm.addEventListener('submit', function(event) {
   event.preventDefault();
 
   const userInputData = {
     userID: userObj.id,
-    date: userInputDate,
+    date: convertDate(),
     flightsOfStairs: parseInt(userInputStairs.value),
     minutesActive: parseInt(userInputMins.value),
     numSteps: parseInt(userInputSteps.value)
   };
-  
+  console.log('user input', userInputData)
   postActivityData(userInputData)
   .then(response => response.json())
-  .then(response => console.log(response))
+  .then(response => console.log('Here lays my response: ',response))
   .catch(err => console.log(err))
   
   userInputForm.reset();

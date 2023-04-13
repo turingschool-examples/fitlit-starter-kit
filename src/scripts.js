@@ -3,7 +3,7 @@ import { fetchAllData } from '../src/apiCalls';
 import { postActivityData } from '../src/apiCalls';
 import { displayChart } from '../src/charts';
 import { displayChallengeChart } from '../src/charts';
-import './css/styles.css';
+import './css/styles.scss';
 import './images/fitlit-logo.png';
 import './images/hydration-logo.png';
 import './images/activity-logo.png';

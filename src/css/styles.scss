@@ -1,6 +1,7 @@
 /* variables */
 $blue: rgb(86, 153, 248);
 $transparent-blue: rgba(86, 153, 248, 0.5);
+$warm-black: rgba(26, 14, 1, 0.5);
 
 /* wide ranging */
 * {
@@ -29,7 +30,7 @@ div,
 
 body {
   background: radial-gradient(circle at center,#64aef8, #426eb0, #052c62), 100%;
-  font-size: 18px;
+  font-size: 20px;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
@@ -99,6 +100,7 @@ ul {
     height: 100%;
     width: 25%;
     padding: 10px;
+    position: relative;
 
     h2 {
       font-size: 20px;
@@ -120,6 +122,9 @@ ul {
     justify-content: center;
     border: none;
   }
+  .activityUserStat {
+    margin-top: 15px;
+  }
 
 /*Other boxes */
 .sleep, .activity, .hydration {
@@ -139,42 +144,44 @@ ul {
 /* logo, header, user info */
 .logo {
   display: flex;
-  width: 150px;
-  height: 150px;
-  margin: 20px auto;
-  shape-outside: circle();
+  width: 175px;
+  height: 175px;
   clip-path: circle();
   background: #5699f8;
-
+  padding: 0px;
+  margin-left: 200px;
+  float: left; 
 }
 
-  .logo img {
-    display: block;
-    height: 100%;
-    object-fit: contain;
-    width: 100%;
-  }
+.logo img {
+  display: block;
+  height: 95%;
+  object-fit: contain;
+  width: 95%;
+}
 
 .user-main {
+  padding: 0px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-  min-width: 400px;
+  min-width: 600px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  border-radius: 0px;
+  text-shadow: 10px 10px 10px $warm-black;
 }
 
-  .user-name {
-    display: flex;
-    font-size: 30px;
-  }
+.user-name {
+  display: flex;
+  font-size: 30px;
+}
 
-  .user-name, .user-info {
-    shape-outside: circle();
-    margin-left: 10px;
-  }
+.user-info {
+  font-size: 20px;
+}
 
 /* modal formatting */
 form {
@@ -242,19 +249,32 @@ form {
 
 .open-modal{
   position: absolute;
-  top: 470px;
+  margin-top: 150px;
+  z-index: inherit;
 }
 
 /* media queries */
 @media screen and (max-width: 600px) {
+  body {
+    padding: 20px;
+  }
+
   header {
     flex-direction: column;
     align-items: center;
   }
 
+  .activity-container {
+    flex-direction: column;
+    max-width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    height: auto;
+  }
+
   .info-box {
     width: 90%;
-    max-width: 100vh;
+    max-width: 90%;
     font-size: 20px;
   }
 
@@ -265,10 +285,52 @@ form {
   section {
     flex-direction: column;
     align-items: center;
+    width: 90%;
   }
 
   .input-box {
     justify-content: center;
-    width: 200px;
+    width: 90%;
+  }
+
+  .user-main {
+    width: 90%;
+    min-width: 90%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: visible;
+    margin-top: 0;
+  }
+
+  .user-info {
+  display: none;
+  }
+
+  .logo {
+  margin-left: 0;
+  }
+
+  .user-main{
+    margin-top: 0;
+  }
+  .activity-info-box {
+    max-width: 90%;
+  }
+
+  .modal {
+    width: 90%;
+    height: auto;
+  }
+
+  .modal-content {
+    width: 90%;
   }
 }
+
+
+
+
+
+

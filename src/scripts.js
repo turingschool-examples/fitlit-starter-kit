@@ -38,7 +38,7 @@ let users,
     user,
     userChallengeData,
     friendsChallengeData = [],
-    inputs = []
+    inputs = [];
 
 formInputs.forEach(input => inputs.push(input));
 userInputButton.disabled = true;
@@ -151,7 +151,7 @@ window.addEventListener('load', () => {
       postChallengeStats();
       displayChallengeChart(stepChallengeBox, userChallengeData, friendsChallengeData);
     })
-  .catch(err => console.log(err.message))
+  .catch(err => console.log(err.message));
 });
 
 openModalBtn.onclick = function() {
@@ -176,9 +176,9 @@ userInputForm.addEventListener('submit', function(event) {
   const userInputData = {
     userID: user.id,
     date: dayjs().format('YYYY/MM/DD'),
-    flightsOfStairs: parseInt(inputs[0].value),
-    minutesActive: parseInt(inputs[1].value),
-    numSteps: parseInt(inputs[2].value)
+    flightsOfStairs: parseInt(inputs.find(input => input.id === "flightsOfStairs").value),
+    minutesActive: parseInt(inputs.find(input => input.id === "activeMinutes").value),
+    numSteps: parseInt(inputs.find(input => input.id === "numSteps").value)
   };
 
   
@@ -187,6 +187,7 @@ userInputForm.addEventListener('submit', function(event) {
   .then(res => res.json())
   .then(res => {
     console.log('successfully recorded: ', res);
+
     fetchActivityData()
     .then(res => res.json())
     .then(data => {

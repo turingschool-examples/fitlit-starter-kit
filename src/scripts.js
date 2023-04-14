@@ -47,9 +47,7 @@ userInputButton.disabled = true;
 
 // DOM Methods
 let changeButton = () => {
-console.log('hi')
   if (userInputStairs.value && userInputMins.value && userInputSteps.value) {
-  console.log('inside change')
     userInputButton.disabled = false;
   }
 };

@@ -167,7 +167,6 @@ ul {
   justify-content: flex-end;
   align-items: flex-start;
   min-width: 600px;
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   border-radius: 0px;
@@ -315,6 +314,7 @@ form {
   .user-main{
     margin-top: 0;
   }
+  
   .activity-info-box {
     max-width: 90%;
   }

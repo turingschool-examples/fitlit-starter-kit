@@ -16,7 +16,7 @@ import Activity from './classes/Activity';
 // 3rd party library import
 import Chart from 'chart.js/auto';
 import dayjs from 'dayjs';
-import L from 'leaflet'
+import L from 'leaflet';
 import MicroModal from "micromodal";
 MicroModal.init();
 
@@ -51,28 +51,26 @@ Promise.all([fetchUsers(), fetchHydration(), fetchSleep(), fetchActivity()])
 
     hydration = new Hydration(hydrationData.hydrationData);
     displayhydrationCard(hydration, user.id, date);
-    
+
     sleep = new Sleep(sleepData.sleepData);
-    
+
     displaySleepCard(sleep, user.id, date);
-    
+
     activity = new Activity(activityData.activityData);
     displayActivityCard(activity, user, date, user.id);
   })
   .catch((error) => {
-    console.error("Error fetching data:", error);
+    alert("Error fetching data:" + error);
   });
-  
-  //Query Selectors
-  const hydrationCard = document.querySelector(".hydration-holder");
-  const hydrationOpenButton = document.querySelector("#hydrationOpenButton");
-  const hydrationCloseButton = document.querySelector("#hydrationCloseButton");
-  
-  hydrationOpenButton.addEventListener("click", displayModal);
 
+//Query Selectors
+const hydrationCard = document.querySelector(".hydration-holder");
+const hydrationOpenButton = document.querySelector("#hydrationOpenButton");
+const form = document.getElementById('form');
+hydrationOpenButton.addEventListener("click", displayModal);
 
 // DOM Manipulation Functions
-function displayUserCard(user) {
+const displayUserCard = (user) => {
   const userCard = document.querySelector('.user-profile-info-js');
   userCard.innerHTML = `
     <p class="bold-text">Name</p> 
@@ -82,16 +80,16 @@ function displayUserCard(user) {
     <p class="bold-text">Email</p> 
     <p>${user.email}</p>
   `;
-}
+};
 
 // User Functions
-function displayUserCardInitial(user) {
+const displayUserCardInitial = (user) => {
   const userCardName = document.querySelector('.user-card-name-js');
   const userInitial = user.getFirstName().charAt(0);
   userCardName.innerText = `${userInitial}`;
 };
 
-function displayStepUserVsAllUsers(user, userBase) {
+const displayStepUserVsAllUsers = (user, userBase) => {
   const stepUserVsAllUsers = document.querySelector('.user-steps-vs-all-js');
   stepUserVsAllUsers.innerHTML = `
     <p class="bold-text">Your Stride Length</p>
@@ -103,16 +101,16 @@ function displayStepUserVsAllUsers(user, userBase) {
   `;
 };
 
-function displayFriendsList(user, userBase) {
+const displayFriendsList = (user, userBase) => {
   const friendsList = document.querySelector('.user-friends-js');
   let userFriends = userBase.returnUserFriendsName(user.id);
   friendsList.innerHTML = `
     <p class="bold-text">Friends</p>
     <p>${userFriends.join(",  ")}</p>
   `;
-}
+};
 
-function displayUserGreeting(user, date) {
+const displayUserGreeting = (user, date) => {
   const userGreeting = document.querySelector('.welcome-header');
   const dayjs = require('dayjs')
   const customParseFormat = require('dayjs/plugin/customParseFormat');
@@ -128,7 +126,7 @@ function displayUserGreeting(user, date) {
 };
 
 // Hydration Function
-function displayhydrationCard(hydration, userID, date) {
+const displayhydrationCard = (hydration, userID, date) => {
   hydrationCard.innerHTML = `
     <p class="bold-text water-text">Average Water Consumed</p> 
     <p class="water-text">${hydration.calculateAverageFluidPerUser(userID)} ounces </p>
@@ -140,7 +138,7 @@ function displayhydrationCard(hydration, userID, date) {
 };
 
 // Sleep Functions
-function displaySleepCard(sleep, userID, date) {
+const displaySleepCard = (sleep, userID, date) => {
   const latestSleepData = document.querySelector(".latest-sleep-data-js");
   latestSleepData.innerHTML = `
     <p class="bold-text sleep-text">Hours Slept</p>
@@ -155,6 +153,7 @@ function displaySleepCard(sleep, userID, date) {
     <p class="bold-text sleep-text">Average Sleep Quality</p>
     <p class="sleep-text">${sleep.calculateAverageSleepQuality(userID)}</p>
   `;
+
   const hoursSleptButton = document.querySelector("#hoursSleptButton");
   hoursSleptButton.addEventListener("click", () =>
     createHoursSleptChart(sleep, userID, date)
@@ -168,7 +167,7 @@ function displaySleepCard(sleep, userID, date) {
 };
 
 // Activity Function
-function displayActivityCard(activity, user, date) {
+const displayActivityCard = (activity, user, date) => {
   const activityCard = document.querySelector('.activity-card-js');
   activityCard.innerHTML = `
   <p class="bold-text activity-text">Miles Walked</p>
@@ -186,7 +185,7 @@ function displayActivityCard(activity, user, date) {
 };
 
 // Chart Functions
-function clearChartArea() {
+const clearChartArea = () => {
   const chartArea = document.querySelector(".infographic");
   chartArea.classList.remove("map-error");
   chartArea.classList.remove("chart-placeholder");
@@ -195,7 +194,7 @@ function clearChartArea() {
   <canvas id='chart'></canvas>`
 };
 
-function createHydrationChart(hydration, userID, date) {
+const createHydrationChart = (hydration, userID, date) => {
   const weeklyOunces = hydration.weeklyOuncesConsumed(userID, date);
   const labels = weeklyOunces.map(days => days.date);
   const data = weeklyOunces.map(days => days.numOunces);
@@ -217,7 +216,7 @@ function createHydrationChart(hydration, userID, date) {
   })
 };
 
-function createHoursSleptChart(sleep, userID, date) {
+const createHoursSleptChart = (sleep, userID, date) => {
   const weeklyHours = sleep.calculateWeeklyHoursSlept(userID, date);
   const labels = weeklyHours.map(days => days.date);
   const data = weeklyHours.map(days => days.hoursSlept);
@@ -239,7 +238,7 @@ function createHoursSleptChart(sleep, userID, date) {
   });
 };
 
-function createSleepQualityChart(sleep, userID, date) {
+const createSleepQualityChart = (sleep, userID, date) => {
   const weeklyHours = sleep.calculateWeeklySleepQuality(userID, date);
   const labels = weeklyHours.map((days) => days.date);
   const data = weeklyHours.map((days) => days.sleepQuality);
@@ -247,23 +246,21 @@ function createSleepQualityChart(sleep, userID, date) {
   new Chart("chart", {
     type: "bar",
     data: {
-      datasets: [
-        {
-          label: "Sleep Quality",
-          backgroundColor: "#F57630",
-          borderColor: "#3C4252",
-          borderWidth: 2,
-          hoverBackgroundColor: "#F68C52",
-          hoverBorderColor: "#3C4252",
-          data: data,
-        },
-      ],
+      datasets: [{
+        label: "Sleep Quality",
+        backgroundColor: "#F57630",
+        borderColor: "#3C4252",
+        borderWidth: 2,
+        hoverBackgroundColor: "#F68C52",
+        hoverBorderColor: "#3C4252",
+        data: data,
+      }, ],
       labels: labels,
     },
   });
 };
 
-function createActivityChart(activity, userID, date) {
+const createActivityChart = (activity, userID, date) => {
   const weeklyMinutes = activity.weeklyMinutes(userID, date);
   const labels = weeklyMinutes.map(days => days.date);
   const data = weeklyMinutes.map(days => days.minutesActive);
@@ -282,10 +279,10 @@ function createActivityChart(activity, userID, date) {
       }],
       labels: labels,
     }
-  })
+  });
 };
 
-function createMap(user) {
+const createMap = (user) => {
   clearChartArea();
   const chartArea = document.querySelector(".infographic");
   chartArea.classList.remove("chart-placeholder");
@@ -302,9 +299,9 @@ function createMap(user) {
       console.error('Error:', error);
       chartArea.classList.add("map-error");
     });
-}
+};
 
-function buildMap(mapData) {
+const buildMap = (mapData) => {
   const coordinates = [...mapData].map(coord => {
     const lat = coord.getAttribute("lat");
     const lon = coord.getAttribute("lon");
@@ -318,46 +315,47 @@ function buildMap(mapData) {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
-  const path = L.polyline(coordinates, {color: 'rgba(56, 44, 94)', opacity: .75, weight: 5}).addTo(map);
+  const path = L.polyline(coordinates, {
+    color: 'rgba(56, 44, 94)',
+    opacity: .75,
+    weight: 5
+  }).addTo(map);
   map.fitBounds(path.getBounds());
 }
 
-// modal function
+// Modal Functions
 function displayModal() {
   MicroModal.show("hydrationModal");
 }
 
-var form = document.getElementById('form')
-
-form.addEventListener('submit', function(event) {
+form.addEventListener('submit', function (event) {
   event.preventDefault()
   let ouncesInput = document.getElementById("hydrationInput")
   let ouncesData = ouncesInput.value
   let dateInput = document.getElementById("start")
   let dateData = dateInput.value
-  console.log(dateData)
-  console.log(ouncesData)
-  console.log(event)
   fetch("http://localhost:3001/api/v1/hydration", {
-    method: 'POST',
-    body: JSON.stringify(
-      { userID: user.id, date: dateData, numOunces: Number(ouncesData)} //Input innnerText values?
-    ),
-    headers: {
-      'content-Type': 'application/json'
-    }
+      method: 'POST',
+      body: JSON.stringify({
+          userID: user.id,
+          date: dateData,
+          numOunces: Number(ouncesData)
+        } //Input innnerText values?
+      ),
+      headers: {
+        'content-Type': 'application/json'
+      }
     })
     .then(response => {
       response.json()
       fetchHydration()
-      .then((hydration) => {
-        hydration = new Hydration(hydration.hydrationData);
-        displayhydrationCard(hydration, user.id, date);
-      })
+        .then((hydration) => {
+          hydration = new Hydration(hydration.hydrationData);
+          displayhydrationCard(hydration, user.id, date);
+        })
     })
     .catch(error => console.log("error", error))
-})
-
+});
 
 // Export Statements
 

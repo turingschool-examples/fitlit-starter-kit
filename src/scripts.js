@@ -24,14 +24,9 @@ const firstName = document.getElementById('userName'),
       hydrationWeek = document.getElementById('hydrationBoxWeek'),
       activityInfo = document.getElementById('activityInfoBox'),
       activityWeek = document.getElementById('activityBoxWeek'),
-
       userInputForm = document.querySelector('form'),
-
-      userInputStairs = document.getElementById('flightsOfStairs'),
-      userInputMins = document.getElementById('activeMinutes'),
-      userInputSteps = document.getElementById('numSteps'),
+      formInputs = document.querySelectorAll('.data-input'),
       modal = document.getElementById('activityModal'),
-
       userInputButton = document.getElementById('userInputBtn'),
       openModalBtn = document.getElementById('openModalBtn'),
       closeBtn = document.querySelector(".close-btn"),
@@ -41,13 +36,15 @@ const firstName = document.getElementById('userName'),
 let users,
     user,
     userChallengeData,
-    friendsChallengeData = [];
+    friendsChallengeData = [],
+    inputs = [];
 
+formInputs.forEach(input => inputs.push(input));
 userInputButton.disabled = true;
 
 // DOM Methods
 let changeButton = () => {
-  if (userInputStairs.value && userInputMins.value && userInputSteps.value) {
+  if (inputs.every(input => input.value)) {
     userInputButton.disabled = false;
   }
 };
@@ -99,7 +96,7 @@ const displayActivity = () => {
 
   const createFriends = (info) => {
     user.friends = user.friends.map(friend => {
-      return new User(users.find(anom => anom.id === friend))
+      return new User(users.find(anom => anom.id === friend));
     });
     user.friends.forEach(friend => {
       friend.activity = new Activity(info[3].activityData.filter(activ => activ.userID === friend.id).reverse());
@@ -109,16 +106,17 @@ const displayActivity = () => {
   const postChallengeStats = () => {
     userChallengeData = getStepChallengeStats(user);
     user.friends.forEach(friend => {
-      friendsChallengeData.push(getStepChallengeStats(friend))
+      friendsChallengeData.push(getStepChallengeStats(friend));
     });
   };
 
   const convertDate = () => {
   let date = new Date().toJSON().slice(0, 10);
-  let splitDate = date.split('')
+  let splitDate = date.split('');
+
   splitDate.forEach((num, index) => {
     if (isNaN(parseInt(num))) {
-      splitDate.splice(index, 1, "/")
+      splitDate.splice(index, 1, "/");
     } 
   })
   
@@ -156,7 +154,7 @@ window.addEventListener('load', () => {
       postChallengeStats();
       displayChallengeChart(stepChallengeBox, userChallengeData, friendsChallengeData);
     })
-  .catch(err => console.log(err.message))
+  .catch(err => console.log(err.message));
 });
 
 openModalBtn.onclick = function() {
@@ -173,7 +171,7 @@ window.onclick = function(event) {
   };
 };
 
-[userInputStairs, userInputMins, userInputSteps].forEach(input => input.addEventListener('input', changeButton))
+inputs.forEach(input => input.addEventListener('input', changeButton));
 
 userInputForm.addEventListener('submit', function(event) {
   event.preventDefault();
@@ -181,23 +179,23 @@ userInputForm.addEventListener('submit', function(event) {
   const userInputData = {
     userID: user.id,
     date: convertDate(),
-    flightsOfStairs: parseInt(userInputStairs.value),
-    minutesActive: parseInt(userInputMins.value),
-    numSteps: parseInt(userInputSteps.value)
+    flightsOfStairs: parseInt(inputs.find(input => input.id === "flightsOfStairs").value),
+    minutesActive: parseInt(inputs.find(input => input.id === "activeMinutes").value),
+    numSteps: parseInt(inputs.find(input => input.id === "numSteps").value)
   };
 
   postActivityData(userInputData)
   .then(res => res.json())
   .then(res => {
-    console.log(res)
+    console.log('successfully recorded: ', res);
 
     fetchActivityData()
     .then(res => res.json())
     .then(data => {
       user.activity = new Activity(getUserData('activityData', data), user.strideLength);
-      charts[2].destroy()
-      charts.splice(2,1)
-      displayActivity()
+      charts[2].destroy();
+      charts.splice(2,1);
+      displayActivity();
     })
     .catch(err => console.log(err.message));
   })

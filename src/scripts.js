@@ -43,7 +43,7 @@ let users,
 formInputs.forEach(input => inputs.push(input));
 userInputButton.disabled = true;
 
-// DOM Methods
+// DM Methods
 let changeButton = () => {
   if (inputs.every(input => input.value)) {
     userInputButton.disabled = false;
@@ -53,6 +53,30 @@ let changeButton = () => {
 const getUserData = (infoType, array, userInst = user) => {
   return array[infoType].filter(data => data.userID === userInst.id).reverse();
 };
+
+const createFriends = (info) => {
+  user.friends = user.friends.map(friend => {
+    return new User(users.find(user => user.id === friend));
+  });
+  user.friends.forEach(friend => {
+    friend.activity = new Activity(getUserData('activityData', info[3], friend));    });
+};
+
+const postChallengeStats = () => {
+userChallengeData = getStepChallengeStats(user);
+user.friends.forEach(friend => {
+  friendsChallengeData.push(getStepChallengeStats(friend));
+});
+};
+
+const getStepChallengeStats = (challenger) => {
+const averageStepGoal = challenger.dailyStepGoal;
+const stepsForTheWeek = challenger.activity.getLatestWeek();
+const dailyGoalAchieved = stepsForTheWeek.filter((steps) => steps >= averageStepGoal);
+return { name: challenger.name, daysReached: dailyGoalAchieved.length };
+};
+
+//DOM methods
 
 const displayCurrentUser = (user) => {
   firstName.innerText = `${user.getName()}`;
@@ -105,31 +129,6 @@ const resetDOM = () => {
   modal.style.display = "none";
 }
 
-const createFriends = (info) => {
-  user.friends = user.friends.map(friend => {
-    return new User(users.find(user => user.id === friend));
-  });
-  user.friends.forEach(friend => {
-    friend.activity = new Activity(getUserData('activityData', info[3], friend));    });
-};
-
-const postChallengeStats = () => {
-  userChallengeData = getStepChallengeStats(user);
-  user.friends.forEach(friend => {
-    friendsChallengeData.push(getStepChallengeStats(friend));
-  });
-};
-  
-const getStepChallengeStats = (challenger) => {
-  const averageStepGoal = challenger.dailyStepGoal;
-  const stepsForTheWeek = challenger.activity.getLatestWeek();
-  const dailyGoalAchieved = stepsForTheWeek.filter((steps) => steps >= averageStepGoal);
-
-  return { name: challenger.name, daysReached: dailyGoalAchieved.length };
-};
-
-
-
 // Event Listeners
 window.addEventListener('load', () => {
   fetchAllData()
@@ -138,7 +137,6 @@ window.addEventListener('load', () => {
 
       user = new User(data[0].users[Math.floor(Math.random() * 50)]);
       displayCurrentUser(user);
-
 
       user.hydration = new Hydration(getUserData('hydrationData', data[1]));
       displayHydration(user.id);

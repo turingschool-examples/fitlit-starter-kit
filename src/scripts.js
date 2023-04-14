@@ -5,6 +5,7 @@ import { fetchActivityData } from '../src/apiCalls';
 import { displayChart } from '../src/charts';
 import { displayChallengeChart } from '../src/charts';
 import { charts } from '../src/charts';
+import dayjs from 'dayjs';
 import './css/styles.scss';
 import './images/fitlit-logo.png';
 import './images/hydration-logo.png';
@@ -52,8 +53,8 @@ let changeButton = () => {
   }
 };
 
-const getUserData = (infoType, array) => {
-  return array[infoType].filter(data => data.userID === user.id).reverse();
+const getUserData = (infoType, array, userInst = user) => {
+  return array[infoType].filter(data => data.userID === userInst.id).reverse();
 };
 
 const displayCurrentUser = (user) => {
@@ -97,14 +98,25 @@ const displayActivity = () => {
   displayChart(weekData, activityWeek, "Activity for the Week");
 };
 
+const resetDOM = () => {
+  charts[2].destroy()
+  charts.pop(2)
+  displayActivity()
+
+  userInputForm.reset();
+  userInputButton.disabled = true;
+  modal.style.display = "none";
+}
+
   const createFriends = (info) => {
     user.friends = user.friends.map(friend => {
       return new User(users.find(anom => anom.id === friend))
     });
     user.friends.forEach(friend => {
-      friend.activity = new Activity(info[3].activityData.filter(activ => activ.userID === friend.id).reverse());
-    });
+      friend.activity = new Activity(getUserData('activityData', info[3], friend));    });
   };
+
+
 
   const postChallengeStats = () => {
     userChallengeData = getStepChallengeStats(user);
@@ -132,6 +144,8 @@ const getStepChallengeStats = (challenger) => {
 
   return { name: challenger.name, daysReached: dailyGoalAchieved.length };
 };
+
+
 
 // Event Listeners
 window.addEventListener('load', () => {
@@ -180,7 +194,7 @@ userInputForm.addEventListener('submit', function(event) {
 
   const userInputData = {
     userID: user.id,
-    date: convertDate(),
+    date: dayjs().format('YYYY/MM/DD'),
     flightsOfStairs: parseInt(userInputStairs.value),
     minutesActive: parseInt(userInputMins.value),
     numSteps: parseInt(userInputSteps.value)
@@ -189,21 +203,13 @@ userInputForm.addEventListener('submit', function(event) {
   postActivityData(userInputData)
   .then(res => res.json())
   .then(res => {
-    console.log(res)
-
     fetchActivityData()
     .then(res => res.json())
     .then(data => {
       user.activity = new Activity(getUserData('activityData', data), user.strideLength);
-      charts[2].destroy()
-      charts.splice(2,1)
-      displayActivity()
+      resetDOM()
     })
     .catch(err => console.log(err.message));
   })
   .catch(err => console.log(err.message));
-  
-  userInputForm.reset();
-  userInputButton.disabled = true;
-  modal.style.display = "none";
 });

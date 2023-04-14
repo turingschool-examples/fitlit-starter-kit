@@ -5,7 +5,7 @@ Staying in shape can difficult. With all the streses of life, keeping track of b
 
 ## Context
 
-This project was completed during two 1 week sprints in the second module of the Turing Program. The first sprint focused on implementing Test Driven Development (TDD), building an understanding of using asynchronous JavaScript to retrieve data from RESTful API's, and using GitHub Projects to plan and execute remote group work. The second sprint focused primarily on  
+This project was completed during two 1 week sprints in the second module of the Turing Program. The first sprint focused on implementing Test Driven Development (TDD), building an understanding of using asynchronous JavaScript to retrieve data from RESTful API's, and using GitHub Projects to plan and execute remote group work. The second sprint focused primarily on  xx
 
 ## Installation
 

@@ -25,30 +25,27 @@ const firstName = document.getElementById('userName'),
       hydrationWeek = document.getElementById('hydrationBoxWeek'),
       activityInfo = document.getElementById('activityInfoBox'),
       activityWeek = document.getElementById('activityBoxWeek'),
-
       userInputForm = document.querySelector('form'),
-
-      userInputStairs = document.getElementById('flightsOfStairs'),
-      userInputMins = document.getElementById('activeMinutes'),
-      userInputSteps = document.getElementById('numSteps'),
+      formInputs = document.querySelectorAll('.data-input'),
       modal = document.getElementById('activityModal'),
-
       userInputButton = document.getElementById('userInputBtn'),
       openModalBtn = document.getElementById('openModalBtn'),
-      closeBtn = document.querySelector(".close-btn"),
+      closeBtn = document.getElementById('close-btn'),
       stepChallengeBox = document.getElementById('stepChallengeBox');
 
 // Global Variables
 let users,
     user,
     userChallengeData,
-    friendsChallengeData = [];
+    friendsChallengeData = [],
+    inputs = []
 
+formInputs.forEach(input => inputs.push(input));
 userInputButton.disabled = true;
 
 // DOM Methods
 let changeButton = () => {
-  if (userInputStairs.value && userInputMins.value && userInputSteps.value) {
+  if (inputs.every(input => input.value)) {
     userInputButton.disabled = false;
   }
 };
@@ -108,35 +105,21 @@ const resetDOM = () => {
   modal.style.display = "none";
 }
 
-  const createFriends = (info) => {
-    user.friends = user.friends.map(friend => {
-      return new User(users.find(anom => anom.id === friend))
-    });
-    user.friends.forEach(friend => {
-      friend.activity = new Activity(getUserData('activityData', info[3], friend));    });
-  };
+const createFriends = (info) => {
+  user.friends = user.friends.map(friend => {
+    return new User(users.find(user => user.id === friend));
+  });
+  user.friends.forEach(friend => {
+    friend.activity = new Activity(getUserData('activityData', info[3], friend));    });
+};
 
-
-
-  const postChallengeStats = () => {
-    userChallengeData = getStepChallengeStats(user);
-    user.friends.forEach(friend => {
-      friendsChallengeData.push(getStepChallengeStats(friend))
-    });
-  };
-
-  const convertDate = () => {
-  let date = new Date().toJSON().slice(0, 10);
-  let splitDate = date.split('')
-  splitDate.forEach((num, index) => {
-    if (isNaN(parseInt(num))) {
-      splitDate.splice(index, 1, "/")
-    } 
-  })
+const postChallengeStats = () => {
+  userChallengeData = getStepChallengeStats(user);
+  user.friends.forEach(friend => {
+    friendsChallengeData.push(getStepChallengeStats(friend));
+  });
+};
   
-  return splitDate.join('');
-}
-
 const getStepChallengeStats = (challenger) => {
   const averageStepGoal = challenger.dailyStepGoal;
   const stepsForTheWeek = challenger.activity.getLatestWeek();
@@ -187,7 +170,7 @@ window.onclick = function(event) {
   };
 };
 
-[userInputStairs, userInputMins, userInputSteps].forEach(input => input.addEventListener('input', changeButton))
+inputs.forEach(input => input.addEventListener('input', changeButton));
 
 userInputForm.addEventListener('submit', function(event) {
   event.preventDefault();
@@ -195,14 +178,17 @@ userInputForm.addEventListener('submit', function(event) {
   const userInputData = {
     userID: user.id,
     date: dayjs().format('YYYY/MM/DD'),
-    flightsOfStairs: parseInt(userInputStairs.value),
-    minutesActive: parseInt(userInputMins.value),
-    numSteps: parseInt(userInputSteps.value)
+    flightsOfStairs: parseInt(inputs[0].value),
+    minutesActive: parseInt(inputs[1].value),
+    numSteps: parseInt(inputs[2].value)
   };
+
+  
 
   postActivityData(userInputData)
   .then(res => res.json())
   .then(res => {
+    console.log('successfully recorded: ', res);
     fetchActivityData()
     .then(res => res.json())
     .then(data => {

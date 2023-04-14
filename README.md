@@ -1,11 +1,11 @@
 # FitLit 
 ## Abstract
 
-Staying in shape can difficult. With all the streses of life, keeping track of basic health statistics such as step count, fluid intake, and sleep can easily get away from you. Fit Lit is a web application designed to help users stay on track! Fit lit takes step count, sleep quality and longevity, and water consumed, stores it using API's, and then that data in an easily readable, helpful display.
+Staying in shape can be difficult. With all the stresses of life, keeping track of basic health statistics such as step count, fluid intake, and sleep can easily get away from you. Fit Lit is a web application designed to help users stay on track! Fit lit takes step count, sleep quality and longevity, and water consumed, stores it using API's, and then that data in an easily readable, helpful display.
 
 ## Context
 
-This project was completed during two 1 week sprints in the second module of the Turing Program. The first sprint focused on implementing Test Driven Development (TDD), building an understanding of using asynchronous JavaScript to retrieve data from RESTful API's, and using GitHub Projects to plan and execute remote group work. The second sprint focused primarily on  xx
+This project was completed during two 1 week sprints in the second module of the Turing Program. The first sprint focused on implementing Test Driven Development (TDD), building an understanding of using asynchronous JavaScript to retrieve data from RESTful API's, and using GitHub Projects to plan and execute remote group work. The second sprint focused primarily on implementing feedback and building extensions on an existing code base, POSTing data to a local API, and utilizing third party extensions to display user data.
 
 ## Installation
 

@@ -47,7 +47,9 @@ userInputButton.disabled = true;
 
 // DOM Methods
 let changeButton = () => {
+console.log('hi')
   if (userInputStairs.value && userInputMins.value && userInputSteps.value) {
+  console.log('inside change')
     userInputButton.disabled = false;
   }
 };
@@ -114,7 +116,8 @@ const displayActivity = () => {
   };
 
   const convertDate = () => {
-  let splitDate = userInputDate.value.split('')
+  let date = new Date().toJSON().slice(0, 10);
+  let splitDate = date.split('')
   splitDate.forEach((num, index) => {
     if (isNaN(parseInt(num))) {
       splitDate.splice(index, 1, "/")

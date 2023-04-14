@@ -114,7 +114,8 @@ const displayActivity = () => {
   };
 
   const convertDate = () => {
-  let splitDate = userInputDate.value.split('')
+  let date = new Date().toJSON().slice(0, 10);
+  let splitDate = date.split('')
   splitDate.forEach((num, index) => {
     if (isNaN(parseInt(num))) {
       splitDate.splice(index, 1, "/")

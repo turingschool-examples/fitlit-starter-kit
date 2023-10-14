@@ -6,9 +6,55 @@
   </head>
   <body>
     <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+    <section class="user-info">
+      <div class="expander" onclick="toggleExpander(this)">Toggle Arrow</div>
+      <span id="userName">John Doe</span>
+      <div class="block" id="expandableContent">
+        Additional user information goes here.
+      </div>
+    </section>
+  
+    <section class="activity-info">
+      <div class="expander" onclick="toggleExpander(this)">Toggle Arrow</div>
+      <span id="activityName">Activity</span>
+      <div class="block" id="activityContent">
+        Activity details go here.
+      </div>
+    </section>
+  
+    <section class="sleep-info">
+      <div class="expander" onclick="toggleExpander(this)">Toggle Arrow</div>
+      <span id="sleepName">Sleep</span>
+      <div class="block" id="sleepContent">
+        Sleep details go here.
+      </div>
+    </section>
+  
+    <section class="hydration-info">
+      <div class="expander" onclick="toggleExpander(this)">Toggle Arrow</div>
+      <span id="hydrationName">Hydration</span>
+      <div class="block" id="hydrationContent">
+        Hydration details go here.
+      </div>
+    </section>
+  
+    <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
+    <script>
+      function toggleExpander(expander) {
+        const block = expander.nextElementSibling.nextElementSibling; // Access the next sibling of the next sibling
+        block.classList.toggle("expanded");
+      }
+    </script>
+    <!-- <section class="user-info">
+      <script class="expand-info"></script>
+        <div class="expander" onclick="toggleExpander(this)">Toggle Arrow</div> //this just place holder
+        <div class="content" id="expandableContent"></div>
+      <script class="activity" id=""
+    
+    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    </section>
+Do not include the scripts.js file here - it is done automatically by the webpack server
+    <script src="bundle.js"></script> -->
   </body>
 </html>

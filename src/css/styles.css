@@ -38,6 +38,13 @@ body {
   display: flex;
   justify-content: center;
 }
+/* below are just place holders for button */
+.goodbye-btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .block {
   display: none;

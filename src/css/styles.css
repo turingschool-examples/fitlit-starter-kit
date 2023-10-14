@@ -3,3 +3,40 @@ body, html {
   background-repeat: no-repeat;
   height: 100%;
 }
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.expander {
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.expander::after {
+  content: '\25B6'; /* Right-pointing triangle (▶) */
+  display: inline-block;
+  margin-left: 5px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.expanded::after {
+  transform: rotate(90deg);
+}
+
+.block {
+  display: none;
+}
+
+.block.expanded {
+  display: block;
+}

@@ -1,4 +1,4 @@
-export default { users: [
+const users =  [
   {
     "id": 1,
     "name": "Trystan Gorczany",
@@ -672,4 +672,8 @@ export default { users: [
       12
     ]
   }
-]};
+]
+
+module.exports = {
+  users
+}

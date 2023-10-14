@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Fitlit</title>
-  </head>
-  <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
-    <script src="bundle.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Fitlit</title>
+</head>
+<body>
+  <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+  <h1>Activity Tracker</h1>
+  <section class="user-info">
+    <div class="expander" onclick="toggleExpander(this)"></div>
+    <span id="user-name">John Doe</span>
+    <div class="block" id="user-expandable-content">
+      Additional user information goes here.
+    </div>
+  </section>
+  <section class="activity-info">
+    <div class="expander" onclick="toggleExpander(this)"></div>
+    <span id="activity-name">Activity</span>
+    <div class="block" id="activityContent">
+      Activity details go here.
+    </div>
+  </section>
+  <section class="sleep-info">
+    <div class="expander" onclick="toggleExpander(this)"></div>
+    <span id="sleep-name">Sleep</span>
+    <div class="block" id="sleep-content">
+      Sleep details go here.
+    </div>
+  </section>
+  <section class="hydration-info">
+    <div class="expander" onclick="toggleExpander(this)"></div>
+    <span id="hydration-name">Hydration</span>
+    <div class="block" id="hydration-content">
+      Hydration details go here.
+    </div>
+  </section>
+  <button class="goodbye-user-btn" id="goodbye-btn">
+    Goodbye User
+  </button>
+  <script src="bundle.js"></script>
+  <script>
+    function toggleExpander(expander) {
+      const block = expander.nextElementSibling.nextElementSibling;
+      block.classList.toggle("expanded");
+    }
+  </script>
+</body>
 </html>

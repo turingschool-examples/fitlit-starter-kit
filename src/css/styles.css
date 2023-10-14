@@ -3,3 +3,53 @@ body, html {
   background-repeat: no-repeat;
   height: 100%;
 }
+/* body is temporary until seperation of details into individual containers */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+/* Base for seperate containers, no use yet?\ */
+.container {
+  text-align: center;
+}
+
+.expander {
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.expander::after {
+  content: '\25B6'; 
+  display: inline-block;
+  margin-left: 5px;
+  transition: 0.2s ease-in-out;
+}
+
+.expanded::after {
+  transform: rotate(90deg);
+}
+/* Row has no use as of yet, place holder */
+.row {
+  display: flex;
+  justify-content: center;
+}
+/* below are just place holders for button */
+.goodbye-btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.block {
+  display: none;
+}
+
+.block.expanded {
+  display: block;
+}

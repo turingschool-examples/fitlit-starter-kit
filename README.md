@@ -76,3 +76,45 @@ Mocha and chai are already set up, with a boilerplate test for you..
   ...more sleep data
 ]
 ```
+# Pull Request
+
+## Description
+
+Please describe the purpose and context of this pull request.
+
+## Changes
+
+List the changes made in this pull request.
+
+## Reviewers
+
+- [ ] Lex
+- [ ] Zen
+- [ ] Joey
+
+## Opinions
+
+### Lex's Opinion
+- [ ] Approved
+- [ ] Requested changes
+- [ ] Not sure
+
+Comments:
+
+### Zen's Opinion
+- [ ] Approved
+- [ ] Requested changes
+- [ ] Not sure
+
+Comments:
+
+### Joey's Opinion
+- [ ] Approved
+- [ ] Requested changes
+- [ ] Not sure
+
+Comments:
+
+## Additional Notes
+
+Add any additional information or notes related to this pull request.

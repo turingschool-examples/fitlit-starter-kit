@@ -6,6 +6,7 @@ body, html {
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -23,7 +24,7 @@ body {
 }
 
 .expander::after {
-  content: '\25B6'; /* Right-pointing triangle (▶) */
+  content: '\25B6'; 
   display: inline-block;
   margin-left: 5px;
   transition: transform 0.2s ease-in-out;
@@ -31,6 +32,11 @@ body {
 
 .expanded::after {
   transform: rotate(90deg);
+}
+
+.row {
+  display: flex;
+  justify-content: center;
 }
 
 .block {

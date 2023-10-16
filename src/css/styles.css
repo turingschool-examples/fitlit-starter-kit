@@ -3,7 +3,7 @@ body, html {
   background-repeat: no-repeat;
   height: 100%;
 }
-/* body is temporary until seperation of details into individual containers */
+
 body {
   display: flex;
   flex-direction: column;
@@ -12,18 +12,18 @@ body {
   height: 100vh;
   margin: 0;
 }
-/* Base for seperate containers, no use yet?\ */
+
 .container {
   text-align: center;
   }
   
   
-  .page-title{
+.page-title{
   text-align: center;
   }
   
   
-  .user-info{
+.user-info{
   text-align: center;
   display: flex;
   justify-content: center;
@@ -34,7 +34,7 @@ body {
   margin-bottom: 100px;
   }
   
-  .title{
+.title{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +43,7 @@ body {
   margin-top: -200px;
   }
   
-  .info-sections {
+.info-sections {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,23 +52,22 @@ body {
  }
   
   
-  .expander {
+.expander {
   cursor: pointer;
   display: inline-block;
   margin-right: 10px;
   }
   
   
-  .expander::after {
-  content: '\25B6';
-  display: inline-block;
-  margin-left: 5px;
-  transition: 0.2s ease-in-out;
+.expander::after {
+    content: '\25B6';
+    display: inline-block;
+    margin-left: 5px;
+    transition: 0.1s ease-in-out;
   }
   
-  
-  .expanded::after {
-  transform: rotate(90deg);
+.expander.expanded::after {
+    transform: rotate(90deg);
   }
   /* Row has no use as of yet, place holder */
   /* .row {
@@ -76,7 +75,7 @@ body {
   justify-content: center;
   } */
   /* below are just place holders for button */
-  .goodbye-user-btn{
+.goodbye-user-btn{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -90,4 +89,27 @@ body {
 
 .block.expanded {
   display: block;
+}
+
+.expand {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 90%;
+  height: 90vh;
+}
+
+.expand i {
+  padding: 20px;
+  display: block;
+  font-size: 100px;
+  transition: all 0.4s ease;
+}
+
+.expand i:hover {
+  transform: rotateZ(90deg);
 }

@@ -23,18 +23,18 @@ function fluidOuncesForDay(hydratedUsers, userId, date) {
     return entry ? entry.numOunces : 0;
 }
 
-const give7DayWaterConsumption = (id, theDate) => {
+const give7DayWaterConsumption = (array, id, theDate) => {
   let arr = [];
-  const user = hydrationData.filter((person) => person.userID === id);
+
+  const user = array.filter((person) => person.userID === id);
+
   const index = user.findIndex((element) => element.date === theDate);
 
-  for (i = index; i < index + 7; i++) {
+  for (let i = index; i < index + 7; i++) {
     arr.push(user[i]);
   }
   return arr.map((item) => `On ${item.date} you consumed ${item.numOunces}`);
 };
-
-give7DayWaterConsumption(20, "2023/04/12");
 
 
 export { 

@@ -1,5 +1,6 @@
 import { expect } from 'chai';
-const { getUserFromId } = require("./users-functions.js"); 
+
+const { getUserFromId, averageStepGoals } = require("./users-functions.js"); 
 
 describe('Find User', () => {
  it('should return a users data based on their id', () => {
@@ -45,3 +46,33 @@ describe('Find User', () => {
  })
 })
 
+
+
+describe("Average Step Goals", () => {
+  it("should return the average step goals for all the users in the dataset", () => {
+    const users = [
+      {
+        id: 1,
+        name: "Trystan Gorczany",
+        address: "9484 Lucas Flat, West Kittymouth WA 67504",
+        email: "Taurean_Pollich31@gmail.com",
+        strideLength: 4,
+        dailyStepGoal: 7000,
+        friends: [5, 43, 46, 11],
+      },
+      {
+        id: 2,
+        name: "Tyreek VonRueden",
+        address: "623 Koelpin Skyway, Lake Luigichester MN 77576-1678",
+        email: "Nicolette_Halvorson43@yahoo.com",
+        strideLength: 4.5,
+        dailyStepGoal: 9000,
+        friends: [13, 19, 3],
+      },
+    ];
+    const average = averageStepGoals(users)
+
+    expect(average).to.equal(8000);
+    
+  });
+});

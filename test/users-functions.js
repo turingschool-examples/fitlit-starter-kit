@@ -1,6 +1,12 @@
-export { getUserFromId }
+export { getUserFromId, averageStepGoals }
 
 
-function getUserFromId (num, array) {
+const getUserFromId = (num, array) => {
   return array.find(array => array.id === num);
+};
+
+const averageStepGoals = (users) => {
+  return (
+    users.reduce((acc, curr) => (acc += curr.dailyStepGoal), 0) / users.length
+  );
 };

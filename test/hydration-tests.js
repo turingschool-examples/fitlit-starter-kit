@@ -165,12 +165,11 @@ describe("Average Total Water Consumption", () => {
 
     const averageWaterConsumption = giveAverageWaterConsumption(hydrationData, 1)
 
-    expect(waterFor7Days[0]).to.equal("On 2023/03/24 you consumed 35");
-    expect(waterFor7Days[1]).to.equal("On 2023/03/25 you consumed 92");
-    expect(waterFor7Days[2]).to.equal("On 2023/03/26 you consumed 88");
-    expect(waterFor7Days[3]).to.equal("On 2023/03/27 you consumed 68");
-    expect(waterFor7Days[4]).to.equal("On 2023/03/28 you consumed 50");
-    expect(waterFor7Days[5]).to.equal("On 2023/03/29 you consumed 57");
-    expect(waterFor7Days[6]).to.equal("On 2023/03/30 you consumed 28");
+    expect(averageWaterConsumption).to.equal(50);
+
+    const averageWaterConsumption1 = giveAverageWaterConsumption(hydrationData, 2);
+    
+    expect(averageWaterConsumption1).to.equal(59);
+    
   });
 });

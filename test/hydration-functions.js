@@ -18,7 +18,7 @@
 //     return averages;
 //   }
 
-const giveAverageFluidOuncesPerDay = (array, id) => {
+const giveAverageWaterConsumption = (array, id) => {
   let total = 0;
   const filtered = array.filter((person) => person.userID === id);
   filtered.forEach((element) => {
@@ -48,8 +48,7 @@ const give7DayWaterConsumption = (array, id, theDate) => {
 
 
 export { 
-  
+  giveAverageWaterConsumption,
   fluidOuncesForDay,
-  giveAverageFluidOuncesPerDay, 
   give7DayWaterConsumption 
 };

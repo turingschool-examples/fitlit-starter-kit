@@ -45,8 +45,9 @@
   <script src="bundle.js"></script>
   <script>
     function toggleExpander(expander) {
-      const block = expander.nextElementSibling.nextElementSibling;
-      block.classList.toggle("expanded");
+      const block = expander.nextElementSibling.nextElementSibling
+      expander.classList.toggle("expanded")
+      block.classList.toggle("expanded")
     }
   </script>
 </body>

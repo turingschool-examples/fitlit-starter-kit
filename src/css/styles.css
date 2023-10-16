@@ -15,36 +15,66 @@ body {
 /* Base for seperate containers, no use yet?\ */
 .container {
   text-align: center;
-}
-
-.expander {
+  }
+  
+  
+  .page-title{
+  text-align: center;
+  }
+  
+  
+  .user-info{
+  text-align: center;
+  }
+  
+  .title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;
+  width: 100%;
+  }
+  
+  .info-sections {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  width: 100%;
+  }
+  
+  
+  .expander {
   cursor: pointer;
   display: inline-block;
   margin-right: 10px;
-}
-
-.expander::after {
-  content: '\25B6'; 
+  }
+  
+  
+  .expander::after {
+  content: '\25B6';
   display: inline-block;
   margin-left: 5px;
   transition: 0.2s ease-in-out;
-}
-
-.expanded::after {
+  }
+  
+  
+  .expanded::after {
   transform: rotate(90deg);
-}
-/* Row has no use as of yet, place holder */
-.row {
+  }
+  /* Row has no use as of yet, place holder */
+  /* .row {
   display: flex;
   justify-content: center;
-}
-/* below are just place holders for button */
-.goodbye-btn{
+  } */
+  /* below are just place holders for button */
+  .goodbye-user-btn{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+  }
+  
 
 .block {
   display: none;

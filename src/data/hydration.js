@@ -1,4 +1,4 @@
-export default { hydrationData: [
+const hydrationData = [
   {
     "userID": 1,
     "date": "2023/03/24",
@@ -24999,4 +24999,6 @@ export default { hydrationData: [
     "date": "2023/07/01",
     "numOunces": 83
   }
-]};
+]
+
+export {hydrationData}

@@ -60,7 +60,7 @@ body {
   
   
 .expander::after {
-    content: '\25B6';
+    content: '➜';
     display: inline-block;
     margin-left: 5px;
     transition: 0.1s ease-in-out;
@@ -69,12 +69,7 @@ body {
 .expander.expanded::after {
     transform: rotate(90deg);
   }
-  /* Row has no use as of yet, place holder */
-  /* .row {
-  display: flex;
-  justify-content: center;
-  } */
-  /* below are just place holders for button */
+
 .goodbye-user-btn{
   display: flex;
   flex-direction: column;

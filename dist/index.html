@@ -11,10 +11,8 @@
   </section>
   <section class="user-info">
     <div class="expander" onclick="toggleExpander(this)"></div>
-    <div class="user-container">
-      <span id="user-name">John Doe</span>
-      <div class="block-user-expandable-content" id="user-expandable-content"></div>
-    </div>
+    <span id="user-name">John Doe</span>
+    <div class="block" id="user-expandable-content"></div>
   </section>
   <section class="info-sections">
     <section class="activity-info">
@@ -44,8 +42,8 @@
   </button>
   <script src="bundle.js"></script>
   <script>
-    // Will need to move function to a seperate folder and 
-    // tie the function to the html with an id instead of keeping it here
+    // Will need to move function to another folder in the future and
+    // tie it back to the html with an id
     function toggleExpander(expander) {
       const block = expander.nextElementSibling.nextElementSibling
       expander.classList.toggle("expanded")

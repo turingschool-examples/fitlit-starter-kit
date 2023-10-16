@@ -25,6 +25,13 @@ body {
   
   .user-info{
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;
+  width: 100%;
+  margin-top: 100px;
+  margin-bottom: 100px;
   }
   
   .title{
@@ -33,6 +40,7 @@ body {
   align-items: center;
   max-width: 900px;
   width: 100%;
+  margin-top: -200px;
   }
   
   .info-sections {
@@ -40,6 +48,7 @@ body {
   justify-content: space-between;
   align-items: center;
   max-width: 900px;
+  margin-bottom: 100px;
  }
   
   

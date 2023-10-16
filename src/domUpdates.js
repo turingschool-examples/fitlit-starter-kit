@@ -11,7 +11,7 @@ const exampleFunction2 = (person) => {
 
 // query selectors
 
-const profileSection = document.querySelector('.profile-section');
+const profileSection = document.querySelector('#user-expandable-content');
 const friendsSection = document.querySelector('.friends-section');
 
 

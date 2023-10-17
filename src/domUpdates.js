@@ -25,6 +25,10 @@ const  showAverages = (averages) =>{
   allUserAverageSteps.innerHTML += `<p>${averages}</p>`
 }
 
+const showUserAverageSteps = () =>{
+  averageSteps.innerHTML +=`<p>${user.dailyStepGoal}</p>`
+}
+
 const showUserInfo = (userId, array) => {
   let user = array[userId - 1];
   
@@ -32,6 +36,7 @@ const showUserInfo = (userId, array) => {
 
   welcome.innerHTML += `<p>Welcome ${user.name}</p>`;
   
+  averageSteps.innerHTML +=`<p>${user.dailyStepGoal}</p>`
   
   profileSection.innerHTML = '';
 
@@ -58,6 +63,7 @@ const showUserInfo = (userId, array) => {
 export {
   showUserInfo,
   showAverages,
+  showUserAverageSteps,
   exampleFunction1,
   exampleFunction2,
 }

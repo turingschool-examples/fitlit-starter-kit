@@ -1,5 +1,7 @@
 //NOTE: Your DOM manipulation will occur in this file
 
+import { averageStepGoals } from "../test/users-functions";
+
 //Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.
 const exampleFunction1 = (person) => {
   console.log(`oh hi there ${person}`)
@@ -14,6 +16,14 @@ const exampleFunction2 = (person) => {
 const profileSection = document.querySelector('#user-expandable-content');
 const welcome = document.querySelector('.welcome-sign');
 
+const averageSteps = document.querySelector("#user-average-steps")
+const allUserAverageSteps = document.querySelector("#all-users-average-steps")
+
+
+const  showAverages = (averages) =>{
+  allUserAverageSteps.innerHTML = ""
+  allUserAverageSteps.innerHTML += `<p>${averages}</p>`
+}
 
 const showUserInfo = (userId, array) => {
   let user = array[userId - 1];
@@ -47,6 +57,7 @@ const showUserInfo = (userId, array) => {
 
 export {
   showUserInfo,
+  showAverages,
   exampleFunction1,
   exampleFunction2,
 }

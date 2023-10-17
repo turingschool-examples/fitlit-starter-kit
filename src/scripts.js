@@ -18,10 +18,10 @@ import { exampleFunction1, exampleFunction2, showUserInfo, welcomeUser } from '.
 exampleFunction1('Travis');
 exampleFunction2('Travis')
 
-
+let currentUser
 
 window.addEventListener('load', () => {
-  welcomeUser();
+  welcomeUser(users);
 renderUserInfo()
 })
 
@@ -31,7 +31,8 @@ const getRandomIndex = (array) => {
 
 const renderUserInfo = () => {
  let index = getRandomIndex(users)
-  showUserInfo(index, users)
+  currentUser = showUserInfo(index, users)
+  
 }
 
 

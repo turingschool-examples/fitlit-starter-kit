@@ -17,11 +17,16 @@ const welcome = document.querySelector('.welcome-sign');
 
 // global variables
 
-let currentUser;
-let index;
+
+
 
 const showUserInfo = (userId, array) => {
   let user = array[userId - 1];
+  
+  welcome.innerHTML = "";
+
+  welcome.innerHTML += `<p>Welcome ${user.name}</p>`;
+  
   
   profileSection.innerHTML = '';
 
@@ -43,13 +48,6 @@ const showUserInfo = (userId, array) => {
     `;
   });
 };
-
-const welcomeUser = (users) => {
-  welcome.innerText = `Hey1`
-  
-}
-
-
 
 
 export {

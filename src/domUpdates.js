@@ -13,10 +13,20 @@ const exampleFunction2 = (person) => {
 
 const profileSection = document.querySelector('#user-expandable-content');
 const friendsSection = document.querySelector('.friends-section');
+const welcome = document.querySelector('.welcome-sign');
+
+// global variables
+
+
 
 
 const showUserInfo = (userId, array) => {
   let user = array[userId - 1];
+  
+  welcome.innerHTML = "";
+
+  welcome.innerHTML += `<p>Welcome ${user.name}</p>`;
+  
   
   profileSection.innerHTML = '';
 
@@ -27,13 +37,13 @@ const showUserInfo = (userId, array) => {
      <p>Email: ${user.email}</p>
      <p>Stride Length - ${user.strideLength}</p>
      <p>Daily Step Goal - ${user.dailyStepGoal}</p>
+     <p>FRIENDS</p>
     `;
   const usersFriends = array[userId - 1].friends;
 
-  friendsSection.innerHTML = "";
+   usersFriends.forEach((friend) => {
 
-  return usersFriends.forEach((friend) => {
-    friendsSection.innerHTML += `
+    profileSection.innerHTML += `
     <p>${array[friend - 1].name}</p>
     `;
   });
@@ -42,6 +52,8 @@ const showUserInfo = (userId, array) => {
 
 export {
   showUserInfo,
+  welcomeUser,
+  
   exampleFunction1,
   exampleFunction2,
 }

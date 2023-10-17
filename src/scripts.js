@@ -13,15 +13,13 @@ import users from './data/users';
 console.log("User Data:", users);
 
 // Example of one way to import functions from the domUpdates file.  You will delete these examples.
-import { exampleFunction1, exampleFunction2, showUserInfo, welcomeUser } from './domUpdates';
+import { exampleFunction1, exampleFunction2, showUserInfo } from './domUpdates';
 
 exampleFunction1('Travis');
 exampleFunction2('Travis')
 
-let currentUser
 
 window.addEventListener('load', () => {
-  welcomeUser(users);
 renderUserInfo()
 })
 
@@ -31,7 +29,7 @@ const getRandomIndex = (array) => {
 
 const renderUserInfo = () => {
  let index = getRandomIndex(users)
-  currentUser = showUserInfo(index, users)
+ showUserInfo(index, users)
   
 }
 

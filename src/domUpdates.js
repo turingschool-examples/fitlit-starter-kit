@@ -12,12 +12,7 @@ const exampleFunction2 = (person) => {
 // query selectors
 
 const profileSection = document.querySelector('#user-expandable-content');
-const friendsSection = document.querySelector('.friends-section');
 const welcome = document.querySelector('.welcome-sign');
-
-// global variables
-
-
 
 
 const showUserInfo = (userId, array) => {
@@ -52,8 +47,6 @@ const showUserInfo = (userId, array) => {
 
 export {
   showUserInfo,
-  welcomeUser,
-  
   exampleFunction1,
   exampleFunction2,
 }

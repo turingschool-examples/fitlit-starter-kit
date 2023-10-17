@@ -32,13 +32,13 @@ const showUserInfo = (userId, array) => {
      <p>Email: ${user.email}</p>
      <p>Stride Length - ${user.strideLength}</p>
      <p>Daily Step Goal - ${user.dailyStepGoal}</p>
+     <p>FRIENDS</p>
     `;
   const usersFriends = array[userId - 1].friends;
 
-  friendsSection.innerHTML = "";
+   usersFriends.forEach((friend) => {
 
-  return usersFriends.forEach((friend) => {
-    friendsSection.innerHTML += `
+    profileSection.innerHTML += `
     <p>${array[friend - 1].name}</p>
     `;
   });

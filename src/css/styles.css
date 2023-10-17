@@ -54,7 +54,16 @@ body {
   margin-bottom: 100px;
  }
   
-  
+ .aside {
+  background-color: #f0f0f0;
+  padding: 10px;
+  width:10vh;
+  position:absolute;
+  right:25%;
+  top:25%
+  /* come back to this to fix styling wit hthe way user info drops down */
+  }
+    
 .expander {
   cursor: pointer;
   display: inline-block;

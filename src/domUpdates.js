@@ -19,10 +19,14 @@ const welcome = document.querySelector('.welcome-sign');
 const averageSteps = document.querySelector("#user-average-steps")
 const allUserAverageSteps = document.querySelector("#all-users-average-steps")
 
-const hydrationContent = document.querySelector("hydration-content")
+const hydrationContent = document.querySelector("#hydration-content")
 
 
 
+const showWaterWeek = (waterWeek) =>{
+  hydrationContent.innerHTML = ""
+  hydrationContent.innerHTML += `<p>You drank ${waterWeek}over the course of the week</p>`
+}
 
 const  showAverages = (averages) =>{
   allUserAverageSteps.innerHTML = ""
@@ -68,6 +72,7 @@ export {
   showUserInfo,
   showAverages,
   showUserAverageSteps,
+  showWaterWeek,
   exampleFunction1,
   exampleFunction2,
 }

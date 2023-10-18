@@ -15,6 +15,7 @@ console.log("User Data:", users);
 // Example of one way to import functions from the domUpdates file.  You will delete these examples.
 import { exampleFunction1, exampleFunction2, showUserInfo, showAverages } from './domUpdates';
 import { averageStepGoals } from '../test/users-functions';
+import { give7DayWaterConsumption, giveAverageWaterConsumption, fluidOuncesForDay, giveWaterConsumptionforSpecificDay } from '../test/hydration-functions';
 
 exampleFunction1('Travis');
 exampleFunction2('Travis')
@@ -24,6 +25,8 @@ window.addEventListener('load', () => {
 renderUserInfo(),
 allAverages()
 })
+
+
 
 const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length);
@@ -40,6 +43,7 @@ const allAverages =() =>{
     let averages = averageStepGoals(users)
     showAverages(averages)
   }
+
 
 
 

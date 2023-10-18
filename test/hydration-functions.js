@@ -28,6 +28,10 @@ const giveAverageWaterConsumption = (array, id) => {
 };
 
 
+const giveWaterConsumptionforSpecificDay = (id, date) => {
+  return hydrationData.find(person => person.userID === id && person.date === date).numOunces
+}
+
 function fluidOuncesForDay(hydratedUsers, userId, date) {
     const entry = hydratedUsers.find(item => item.userID === userId && item.date === date);
     return entry ? entry.numOunces : 0;
@@ -50,5 +54,6 @@ const give7DayWaterConsumption = (array, id, theDate) => {
 export { 
   giveAverageWaterConsumption,
   fluidOuncesForDay,
-  give7DayWaterConsumption 
+  give7DayWaterConsumption ,
+  giveWaterConsumptionforSpecificDay
 };

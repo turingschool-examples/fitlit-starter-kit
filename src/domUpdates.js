@@ -19,6 +19,10 @@ const welcome = document.querySelector('.welcome-sign');
 const averageSteps = document.querySelector("#user-average-steps")
 const allUserAverageSteps = document.querySelector("#all-users-average-steps")
 
+const hydrationContent = document.querySelector("hydration-content")
+
+
+
 
 const  showAverages = (averages) =>{
   allUserAverageSteps.innerHTML = ""

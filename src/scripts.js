@@ -25,6 +25,7 @@ exampleFunction2('Travis')
 const populateDOM = (data) => {
   renderUserInfo(data)
   allAverages(data)
+  grabWaterWeek();
 };
 
 window.addEventListener('load', () => {
@@ -33,7 +34,7 @@ fetchUserData().then((data) => populateDOM(data));
 // console.log("testing 2");
 // allAverages(), 
 // console.log("testing 3");
-grabWaterWeek()
+
 console.log("testing 4");
 
 })

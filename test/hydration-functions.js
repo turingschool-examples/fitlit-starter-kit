@@ -45,8 +45,10 @@ const give7DayWaterConsumption = (array, id, theDate) => {
   const index = user.findIndex((element) => element.date === theDate);
 
   for (let i = index; i < index + 7; i++) {
+    console.log(user)
     arr.push(user[i]);
   }
+  console.log("hydration arr", arr)
   return arr.map((item) => `On ${item.date} you consumed ${item.numOunces}`);
 };
 

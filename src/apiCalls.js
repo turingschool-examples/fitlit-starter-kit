@@ -3,13 +3,6 @@ import { getUserFromId } from "../test/users-functions";
 
 console.log('I will be a fetch request!')
 
-let fetchedUsersArray = [];
-
-// const pushData = (data) => {
-//   fetchedUsersArray.push(...data);
-//   //console.log("worked", fetchedUsersArray);
-// };
-
 export const fetchUserData = () => {
   return fetch("https://fitlit-api.herokuapp.com/api/v1/users")
     .then((response) => {
@@ -31,6 +24,3 @@ export const fetchUserData = () => {
     });
 };
 
-// fetchUserData()
-
-// export {fetchedUsersArray}

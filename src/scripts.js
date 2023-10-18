@@ -30,12 +30,6 @@ const populateDOM = (data) => {
 
 window.addEventListener('load', () => {
 fetchUserData().then((data) => populateDOM(data));
-// renderUserInfo(), 
-// console.log("testing 2");
-// allAverages(), 
-// console.log("testing 3");
-
-console.log("testing 4");
 
 })
 
@@ -44,12 +38,10 @@ let index
 // 2023/06/25 - 2023/07/01
 
 const getRandomIndex = (array) => {
-  console.log("array check", array)
     return Math.floor(Math.random() * array.length);
 };
 
 const renderUserInfo = (data) => {
-  console.log("RENDER CHECK")
      index = getRandomIndex(data)
     showUserInfo(index, data)
     
@@ -62,7 +54,6 @@ const grabWaterWeek = () =>{
 
 
 const allAverages = (data) =>{
-  console.log("ALL AVERAGES CHECK")
     let averages = averageStepGoals(data)
     showAverages(averages)
   }
@@ -73,7 +64,3 @@ const allAverages = (data) =>{
 
 
 
-// export {
-//   getRandomIndex,
-//   renderUserInfo
-// }

@@ -9,23 +9,33 @@ import './css/styles.css';
 import './images/turing-logo.png';
 
 // An example of how you tell webpack to use a JS file
-import users from './data/users';
+//import users from './data/users';
 import { hydrationData } from './data/hydration';
-console.log("User Data:", users);
+//console.log("User Data:", users);
 
 // Example of one way to import functions from the domUpdates file.  You will delete these examples.
 import { exampleFunction1, exampleFunction2, showUserInfo, showAverages,showWaterWeek } from './domUpdates';
 import { averageStepGoals } from '../test/users-functions';
 import { give7DayWaterConsumption, giveAverageWaterConsumption, fluidOuncesForDay, giveWaterConsumptionforSpecificDay } from '../test/hydration-functions';
+import { fetchUserData} from './apiCalls';
 
 exampleFunction1('Travis');
 exampleFunction2('Travis')
 
+const populateDOM = (data) => {
+  renderUserInfo(data)
+  allAverages(data)
+};
 
 window.addEventListener('load', () => {
-renderUserInfo(),
-allAverages(),
+fetchUserData().then((data) => populateDOM(data));
+// renderUserInfo(), 
+// console.log("testing 2");
+// allAverages(), 
+// console.log("testing 3");
 grabWaterWeek()
+console.log("testing 4");
+
 })
 
 let index 
@@ -33,12 +43,14 @@ let index
 // 2023/06/25 - 2023/07/01
 
 const getRandomIndex = (array) => {
+  console.log("array check", array)
     return Math.floor(Math.random() * array.length);
 };
 
-const renderUserInfo = () => {
-     index = getRandomIndex(users)
-    showUserInfo(index, users)
+const renderUserInfo = (data) => {
+  console.log("RENDER CHECK")
+     index = getRandomIndex(data)
+    showUserInfo(index, data)
     
 }
 
@@ -48,8 +60,9 @@ const grabWaterWeek = () =>{
 }
 
 
-const allAverages =() =>{
-    let averages = averageStepGoals(users)
+const allAverages = (data) =>{
+  console.log("ALL AVERAGES CHECK")
+    let averages = averageStepGoals(data)
     showAverages(averages)
   }
 
@@ -59,7 +72,7 @@ const allAverages =() =>{
 
 
 
-export {
-  getRandomIndex,
-  renderUserInfo
-}
+// export {
+//   getRandomIndex,
+//   renderUserInfo
+// }

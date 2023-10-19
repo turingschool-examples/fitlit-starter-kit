@@ -45,6 +45,8 @@ window.addEventListener('load', () => {
     .then((data) => {
       const userData = data[0];
       const hydrationData = data[1];
+      const sleepData = data[2];
+      const activityData = data[3];
       populateDOM(userData);
       populateDOM2(hydrationData);
       populateDOM3(sleepData);

@@ -10,14 +10,15 @@ import './images/turing-logo.png';
 
 // An example of how you tell webpack to use a JS file
 //import users from './data/users';
-import { hydrationData } from './data/hydration';
+// import { hydrationData } from './data/hydration';
 //console.log("User Data:", users);
 
 // Example of one way to import functions from the domUpdates file.  You will delete these examples.
 import { exampleFunction1, exampleFunction2, showUserInfo, showAverages,showWaterWeek } from './domUpdates';
 import { averageStepGoals } from '../test/users-functions';
 import { give7DayWaterConsumption, giveAverageWaterConsumption, fluidOuncesForDay, giveWaterConsumptionforSpecificDay } from '../test/hydration-functions';
-import { fetchUserData} from './apiCalls';
+import { fetchUserData, fetchHydrationData} from './apiCalls';
+
 
 exampleFunction1('Travis');
 exampleFunction2('Travis')
@@ -25,13 +26,33 @@ exampleFunction2('Travis')
 const populateDOM = (data) => {
   renderUserInfo(data)
   allAverages(data)
-  grabWaterWeek();
 };
 
-window.addEventListener('load', () => {
-fetchUserData().then((data) => populateDOM(data));
+const populateDOM2 = (data) => {
+  grabWaterWeek(data)
+};
 
-})
+// window.addEventListener('load', () => {
+// Promise.all().then(data => {
+//   fetchUserData().then((data) => populateDOM(data));
+//   fetchHydrationData().then((data) => populateDOM2(data));
+// })
+  
+
+// })
+
+window.addEventListener('load', () => {
+  Promise.all([fetchUserData(), fetchHydrationData()])
+    .then((data) => {
+      const userData = data[0];
+      const hydrationData = data[1];
+      populateDOM(userData);
+      populateDOM2(hydrationData);
+    })
+    .catch((error) => {
+      console.error("An error occurred:", error);
+    });
+});
 
 let index 
 
@@ -47,8 +68,8 @@ const renderUserInfo = (data) => {
     
 }
 
-const grabWaterWeek = () =>{
-    let waterWeek = give7DayWaterConsumption(hydrationData, index, "2023/06/25")
+const grabWaterWeek = (data) =>{
+    let waterWeek = give7DayWaterConsumption(data, index, "2023/06/25")
     showWaterWeek(waterWeek)
 }
 

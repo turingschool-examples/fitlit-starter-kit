@@ -17,7 +17,7 @@ import './images/turing-logo.png';
 import { exampleFunction1, exampleFunction2, showUserInfo, showAverages,showWaterWeek } from './domUpdates';
 import { averageStepGoals } from '../test/users-functions';
 import { give7DayWaterConsumption, giveAverageWaterConsumption, fluidOuncesForDay, giveWaterConsumptionforSpecificDay } from '../test/hydration-functions';
-import { fetchUserData, fetchHydrationData} from './apiCalls';
+import { fetchUserData, fetchHydrationData, fetchSleepData, fetchActivityData} from './apiCalls';
 
 
 exampleFunction1('Travis');
@@ -32,22 +32,23 @@ const populateDOM2 = (data) => {
   grabWaterWeek(data)
 };
 
-// window.addEventListener('load', () => {
-// Promise.all().then(data => {
-//   fetchUserData().then((data) => populateDOM(data));
-//   fetchHydrationData().then((data) => populateDOM2(data));
-// })
-  
+const populateDOM3 = (data) => {
 
-// })
+};
+
+const populateDOM4 = (data) => {
+
+};
 
 window.addEventListener('load', () => {
-  Promise.all([fetchUserData(), fetchHydrationData()])
+  Promise.all([fetchUserData(), fetchHydrationData(), fetchSleepData(), fetchActivityData()])
     .then((data) => {
       const userData = data[0];
       const hydrationData = data[1];
       populateDOM(userData);
       populateDOM2(hydrationData);
+      populateDOM3(sleepData);
+      populateDOM4(activityData);
     })
     .catch((error) => {
       console.error("An error occurred:", error);

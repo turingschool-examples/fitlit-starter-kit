@@ -53,7 +53,7 @@ export const fetchSleepData = () => {
 };
 
 export const fetchActivityData = () => {
-  return fetch("https://fitlit-api.herokuapp.com/api/v1/sleep")
+  return fetch("https://fitlit-api.herokuapp.com/api/v1/activity")
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");

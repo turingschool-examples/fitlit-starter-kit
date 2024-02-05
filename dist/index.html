@@ -2,12 +2,106 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitlit</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
+    <main class="main">
+      <heading>Fitlit</heading>
+        <img src="./images/dumbell.png" alt="dumbell" height="50px" width="30px">
+      <section class="user-container">
+        <article class="user-data">
+          <article class="user-data-left">
+            <div class="name-cont">
+              <h1 class="user-name">USERNAME</h1>
+            </div>
+            <div class="address-cont">
+              <address class="address">
+                email: useremail@email.com<br>
+                address:<br>
+                123 streetName, <br>
+                town, state, zip
+              </address>
+            </div>
+            <div class="button-cont">
+              <button class="more-data"></button>
+            </div>
+            <figure class="profile-img">
+              <!-- insert random image src -->
+            </figure>
+          </article>
+          <article class="user-data-right">
+            <dl class="steps-data">
+              <div class="stride-cont">
+                <dt class="stride-label">Stride Length</dt>
+                <dd class="stride-data">1234</dd>
+              </div>
+              <div class="steps-goal-cont">
+                <dt class="steps-goal-label">My Step Goal</dt>
+                <dd class="steps-goal-data">1234</dd>
+              </div>
+              <div class="global-steps-goal-cont">
+                <dt class="global-steps-goal-label">Avg Step Goal Among Users</dt>
+                <dd class="global-steps-goal-data">1234</dd>
+              </div>
+            </dl>   
+          </article>
+        </article>
+      </section>
+      <section class="hydration-container">
+        <section class="banner-box">
+          <p class="banner-text">GET SWOLE - DON'T LET YOUR DREAMS BE DREAMS</p>
+        </section>
+        <article class="user-hydration">
+          <h2 class="card-heading" id="h2-hydration">Hydration</h2>
+          <dl class="hydration-list">
+            <div class="daily-hydration-cont">
+              <div class="daily-hydration-box">
+              <dt class="daily-hydration-label">Daily Hydration</dt>
+              </div>
+              <dd class="daily-hydration-data">1234</dd>
+            </div>
+            <div class="weekly-hydration-cont">
+              <div class="weekly-hydration-box">
+              <dt class="weekly-hydration-label">Weekly Hydration</dt>
+              </div>
+              <dd class="weekly-hydration-data">1234</dd>
+            </div>
+          </dl>
+          <figure>
+            <!-- insert image here -->
+          </figure>
+        </article>
+      </section>
+      <section class="sleep-container">
+        <article class="user-sleep">
+          <h2 class="sleep-heading" id="h2-sleep">Sleep</h2>
+          <dl class="sleep-list">
+            <div class="sleep-cont">
+              <div class="daily-sleep-box">
+              <dt class="daily-sleep-label">Daily Hydration</dt>
+              </div>
+              <dd class="daily-sleep-data">1234</dd>
+            </div>
+            <div class="weekly-sleep-cont">
+              <div class="weekly-sleep-box">
+              <dt class="weekly-sleep-label">Weekly Hydration</dt>
+              </div>
+              <dd class="weekly-sleep-data">1234</dd>
+            </div>
+            <div class="avg-sleep-cont">
+              <div class="avg-sleep-box">
+              <dt class="avg-sleep-label">Weekly Hydration</dt>
+              </div>
+              <dd class="avg-sleep-data">1234</dd>
+            </div>
+          </dl>
+          <figure>
+            <!-- insert image here -->
+          </figure>
+        </article>
+      </section>
+    </main>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>

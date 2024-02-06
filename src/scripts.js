@@ -17,37 +17,25 @@ import users from './data/users';
 // exampleFunction1('Travis');
 // exampleFunction2('Travis')
 
-export function getUserData(userID, users) {
+function getUserData(userID, users) {
     let findUser = users.find((user) => {
         return user.id === userID;
     });
-    // let findUser1 = findUser.friends.map((friend) => {
-    //     users.filter((user) => {
-    //         return user.id === friend
-    //     })
-    // })
-    // console.log('here', findUser1)
-    // let findUser2 = findUser1.map((friend) => {
-    //     return {name: friend.name, dailyStepGoal: friend.dailyStepGoal}
-    // })
-    // // console.log('here', findUser2)
-    // return findUser2;
-    let friendsList = [];
-    findUser.friends.forEach(friend => {
-        friendsList.push(findFriend(friend))
-        
-    });
-    // let updatedFriends = findUser.friends.map((friend) => {
-        
-    // })
-    // console.log(findUser);
-    
+    let updatedFriends = findUser.friends.map((friend) => {
+        return users.find((match) => {
+            return match.id === friend;
+        })
+    })
+    findUser.friends = updatedFriends;
+    return findUser;
 }
 
-export function getAverageSteps(users) {
+function getAverageSteps(users) {
     let totalSteps = users.reduce((total, user) => {
         total += user.dailyStepGoal;
         return total;
     }, 0)
     return Math.round(totalSteps / users.length);
 }
+
+export { getUserData, getAverageSteps };

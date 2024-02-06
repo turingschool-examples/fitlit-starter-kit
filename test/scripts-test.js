@@ -59,10 +59,31 @@ describe("getUserData", function() {
             "strideLength": 4.5,
             "dailyStepGoal": 9000,
             "friends": [
-                13,
-                19,
-                3
-            ]
+                {
+                    "id": 1,
+                    "name": "David Kwon",
+                    "address": "1234 E Stanford Place",
+                    "email": "dingus@gmail.com",
+                    "strideLength": 5,
+                    "dailyStepGoal": 4000,
+                    "friends": [
+                      2,
+                      3
+                    ]
+                },
+                {
+                    "id": 3,
+                    "name": "Ethan Duvall",
+                    "address": "48010 Balistreri Harbor, Cleobury IN 43317",
+                    "email": "wowza@gmail.com",
+                    "strideLength": 2.7,
+                    "dailyStepGoal": 3000,
+                    "friends": [
+                      1,
+                      2
+                    ]
+                }
+            ]    
         })
     });
 })

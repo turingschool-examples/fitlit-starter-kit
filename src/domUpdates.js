@@ -1,16 +1,32 @@
 //NOTE: Your DOM manipulation will occur in this file
+import { getUserInfo, calculateAverageSteps, getRandomUser } from './scripts.js';
+import userData from './data/users';
 
-//Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.
-const exampleFunction1 = (person) => {
-  console.log(`oh hi there ${person}`)
+const username = document.querySelector('.user-name')
+const address = document.querySelector('.address-cont')
+const strideData = document.querySelector('.stride-data')
+const stepGoal = document.querySelector('.steps-goal-data')
+const avgStepGoal = document.querySelector('.global-steps-goal-data')
+
+function displayUserData(userInfo) {
+  username.innerText = userInfo.name
+  strideData.innerText = userInfo.strideLength
+  stepGoal.innerText = userInfo.dailyStepGoal
+  avgStepGoal.innerText = calculateAverageSteps(userData)
+  address.innerHTML +=
+  `<address class='contact-info'>
+    Email: ${userInfo.email} <br>
+    Address: ${userInfo.address} <br>
+  </address>`
 }
 
-const exampleFunction2 = (person) => {
-  console.log(`bye now ${person}`)
-}
 
+// On load, a user should be chosen at random.
+
+// As a user, I should be able to view an info card with all of my info on the page
+// As a user, I should be able to see my first name somewhere prominently on the page to welcome me
+// As a user, I should be able to see how my step goal compares to the average step goal amongst all users (this display should not be hard-coded)
 
 export {
-  exampleFunction1,
-  exampleFunction2,
+  displayUserData
 }

@@ -13,7 +13,35 @@ import userData from './data/users';
 console.log("User Data:", userData);
 
 // Example of one way to import functions from the domUpdates file.  You will delete these examples.
-import { exampleFunction1, exampleFunction2 } from './domUpdates';
+import { displayUserData } from './domUpdates';
 
-exampleFunction1('Travis');
-exampleFunction2('Travis')
+
+function getUserInfo(userID) {
+    let userInfo = userData.users.find((user) => {
+      return user.id === userID
+    })
+    return displayUserData(userInfo)
+}
+
+function calculateAverageSteps(userData) {
+    let totalSteps = 0
+    userData.users.forEach(user => {
+        totalSteps += user.dailyStepGoal
+    })
+    return totalSteps / userData.users.length
+}
+
+// const randomUserId = (usersArr) => Math.floor(Math.random() * usersArr.length)
+
+function getRandomUser(usersArr) {
+   let randomUserId = Math.floor(Math.random() * usersArr.length)
+   return getUserInfo(randomUserId)
+}
+
+getRandomUser(userData.users);
+
+export {
+    getUserInfo,
+    calculateAverageSteps,
+    getRandomUser
+}

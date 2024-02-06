@@ -1,17 +1,29 @@
+
 import { expect } from 'chai';
-// import { } from '../src/scripts';
-// import userData from './usersSampleData'
+import { getUserInfo } from '../src/scripts';
+// import { users } from './usersSampleData'
+
+// import userData from './usersSampleData';
+// const { users } = require('./usersSampleData')
+
+
 
 describe('User Repository', () => {
   it('should run tests', function () {
-    expect(true).to.be(true);
+    expect(true).to.equal(true);
   });
 });
+
+describe('get user info', () => {
+  it('should be a function', function () {
+    expect(getUserInfo()).to.be.a('function')
+  })
+} )
 
 // describe('display user data', () => {
 //   it.skip('should be able to find user data using a user ID', function () {
 //     const userID = 2
-//     const userData = userData
+  
 //     expect(getUserInfo(userID).be.equal.to({
 //       "id": 2,
 //       "name": "Tyreek VonRueden",

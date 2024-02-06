@@ -16,12 +16,16 @@ import { displayWelcomeMessage } from './domUpdates';
 
 
 
-import users from '../src/data/users'
+import users from './data/users'
+console.log("scripts: ", users)
+
 
 var randomUser = []
 
+
 function generateUser(id) {
-    return users.users.find(user => user.id === id)
+  console.log(users.users.find(user => user.id === id))
+  // return users.users.find(user => user.id === id)
 };
 
 /* */

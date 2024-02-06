@@ -5,9 +5,13 @@
 
 // const { generateUser, getAverageStepGoal } = require('./scripts.js');
 import { generateUser, getAverageStepGoal } from './scripts'; // Adjust the path as necessary
-import { users } from '../src/data/users'
+import users from './data/users'
+console.log('domUpdates:', users)
+
 // ------------- * Event Listeners *
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("userObject:", userObject)
+  console.log("generateUser:", generateUser(30))
   displayWelcomeMessage(userObject)
   
   // displayUserInfo(userObject)
@@ -24,17 +28,15 @@ document.addEventListener("DOMContentLoaded", () => {
 // }
 
 var randomUserId = () => {
-  // Note: Assuming `users.users` is an array of user objects with `id` properties.
-  // Generate a random index from 0 to users.users.length - 1
   const randomIndex = Math.floor(Math.random() * users.users.length);
-  // Return the id of the randomly selected user
+  console.log(randomIndex)
   console.log('randomUserId:', users.users[randomIndex].id)
-  return users.users[randomIndex].id;
+  // return users.users[randomIndex].id;
+  return 30;
 }
 
 
-var userObject = generateUser(randomUserId()); // Note the parentheses to invoke the function
-
+var userObject = generateUser(30); // Note the parentheses to invoke the function
 
 //function displayUserInfo(user)
 

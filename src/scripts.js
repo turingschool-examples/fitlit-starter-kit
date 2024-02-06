@@ -12,29 +12,30 @@ import './images/fitlit-logo.png';
 /*import userData from './data/users';
 console.log("User Data:", userData);*/
 // Example of one way to import functions from the domUpdates file.  You will delete these examples.
+
+// Import DOM update functions and data
 import { displayWelcomeMessage } from './domUpdates';
+import users from './data/users';
 
-
-
-import users from '../src/data/users'
-
-var randomUser = []
-
-function generateUser(id) {
-    return users.users.find(user => user.id === id)
-};
-
-/* */
+function generateRandomUser() {
+  const randomIndex = Math.floor(Math.random() * users.users.length);
+  return users.users[randomIndex];
+}
 
 function getAverageStepGoal() {
   const totalStepsGoal = users.users.reduce((total, user) => total + user.dailyStepGoal, 0);
-  let averageSteps = totalStepsGoal / users.users.length;  
-  return averageSteps
+  return totalStepsGoal / users.users.length;
 }
+
+export { generateRandomUser, getAverageStepGoal };
+
+document.addEventListener('DOMContentLoaded', () => {
+  const randomUser = generateRandomUser();
+  displayWelcomeMessage(randomUser);
+});
 
 // module.exports = {
 //     generateUser,
 //     getAverageStepGoal
 // }
 
-export { generateUser, getAverageStepGoal };

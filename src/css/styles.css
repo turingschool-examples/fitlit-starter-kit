@@ -1,5 +1,37 @@
 body, html {
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
   background-repeat: no-repeat;
+  scroll-behavior: smooth;
   height: 100%;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+button {
+  background-color: #fdfdfd00;
+  border: none;
+  border-radius: 7px;
+  width: 100px;
+}
+
+button:hover {
+  text-shadow: 0px 4px 8px black;
+}
+
+.info-card {
+  width: 85%;
+  height: 10em;
+}
+
+article {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex-direction: column;
+    margin: 100px;
 }

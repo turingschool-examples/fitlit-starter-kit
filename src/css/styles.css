@@ -8,19 +8,20 @@ body, html {
 }
 section{
   border:solid;
-  width:33%;
+  width:50%;
   height:45%;
   border-width: 3px;
   display:flex;
   justify-content: space-between;
 }
 #info{
-  width: 70%;
+  width: 50%;
+  text-align:justify;
 }
 #infoCard img {
   position: absolute;
   top: 1%;
-  left: 27%;
+  left: 43%;
 }
 #infoCard h1{
   text-align: center;
@@ -28,19 +29,20 @@ section{
   font-size:20px;
   background-color: azure;
   position: absolute;
-  width: 461px;
+  width: 700px;
 }
 
 #friends{
-  margin-top: 20%;
+  margin-top: 13%;
   border:solid;
-  width:50%;
+  width:40%;
   height:74%;
   overflow-x: auto;
 }
 #friends aside{
   display: flex;
   border:solid;
+  justify-content: space-evenly;
   background-color: #fecfef;
   text-align: center;
 }

@@ -1,4 +1,6 @@
-const { default: users } = require("./users")
+// const { default: users } = require("./users")
+import users from "./users"
+console.log("load:", users)
 
 var randomUser = []
 

@@ -13,9 +13,11 @@ import './images/fitlit-logo.png';
 console.log("User Data:", userData);*/
 // Example of one way to import functions from the domUpdates file.  You will delete these examples.
 
+
 // Import DOM update functions and data
 import { displayWelcomeMessage } from './domUpdates';
 import users from './data/users';
+
 
 function generateRandomUser() {
   const randomIndex = Math.floor(Math.random() * users.users.length);

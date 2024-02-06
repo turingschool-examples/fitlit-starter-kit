@@ -6,28 +6,30 @@
   </head>
   <body>
     <nav> 
-      <button class="home-button">Home</button>
-      <button class="steps-button">Steps</button>
-      <button class="water-button">Water</button>
-      <button class="sleep-button">Sleep</button>
-      <button class="account-button">Account</button>
+      <a class="home-button" href="#top">Home</a>
+      <a class="steps-button" href="#section2">Steps</a>
+      <a class="water-button" href="#section3">Water</a>
+      <a class="sleep-button" href="#section4">Sleep</a>
+      <a class="account-button" href="#section5">Account</a>
     </nav>
-  <article>
-    <img src="./images/fitlit-logo.png">
-    <h1 class="welcome-message" id="welcomeMessage">welcome back (person.name)</h1>
-  </article>
-  <section class="steps-main info-card">
-    <h1 class="average-steps"></h1>
-  </section>
-  <section class="water-main info-card">
+    <main id="top">
+      <article>
+        <img src="./images/fitlit-logo.png">
+        <h1 class="welcome-message" id="welcomeMessage">welcome back (person.name)</h1>
+      </article>
+      <section class="steps-main info-card" id="section2">
+        <h1 class="average-steps"></h1>
+      </section>
+      <section class="water-main info-card" id="section3">
 
-  </section>
-  <section class="sleep-main info-card">
+      </section>
+      <section class="sleep-main info-card" id="section4">
 
-  </section>
-  <section class="account-main info-card">
+      </section>
+      <section class="account-main info-card" id="section5">
 
-  </section>
+      </section>
+    </main>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>

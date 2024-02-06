@@ -1,37 +1,66 @@
+* {
+  font-family: "Baskerville Old Face";
+  font-style: normal;
+}
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
   scroll-behavior: smooth;
-  height: 100%;
+  background: url('../images/white-texture.jpg') round center center fixed;
+  background-size: cover;
+}
+main {
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 nav {
+    overflow: hidden;
+    background:rgba(0, 0, 0, 0);
+    color: black;
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    height: 2em;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
 }
 
-button {
-  background-color: #fdfdfd00;
-  border: none;
-  border-radius: 7px;
-  width: 100px;
+nav a {
+  color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  font-variant: unicase;
+  font-weight: bolder;
 }
 
-button:hover {
-  text-shadow: 0px 4px 8px black;
+nav a:hover {
+  text-shadow: 0px 0px 11px rgb(255 255 255);
 }
 
 .info-card {
-  width: 85%;
-  height: 10em;
+    width: 75%;
+    height: 100vh;
+    border: black solid;
+    padding: 10%;
+    background: #0000006b;
+    margin: 10px;
+    
 }
 
 article {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    flex-direction: column;
-    margin: 100px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 10em;
+  height: 100vh;
+}
+
+article img {
+  mix-blend-mode: color-burn;
 }

@@ -1,16 +1,65 @@
-//NOTE: Your DOM manipulation will occur in this file
+// import { 
+//   generateUser, 
+//   getAverageStepGoal 
+// } from '../scripts';
 
-//Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.
-const exampleFunction1 = (person) => {
-  console.log(`oh hi there ${person}`)
+// const { generateUser, getAverageStepGoal } = require('./scripts.js');
+import { generateUser, getAverageStepGoal } from './scripts'; // Adjust the path as necessary
+import users from './data/users'
+console.log('domUpdates:', users)
+
+// ------------- * Event Listeners *
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("userObject:", userObject)
+  console.log("generateUser:", generateUser(30))
+  displayWelcomeMessage(userObject)
+  
+  // displayUserInfo(userObject)
+  // compareStepGoal(userObject)
+})
+
+// function userInfoToDom() {
+//  const randomUsers = users.users[Math.floor(Math.random() * users.users.length) + 1];
+//  console.log(randomUsers)
+// }
+
+// var randomUserId = () => {
+//  users.users[Math.floor(Math.random() * users.users.length) + 1];
+// }
+
+var randomUserId = () => {
+  const randomIndex = Math.floor(Math.random() * users.users.length);
+  console.log(randomIndex)
+  console.log('randomUserId:', users.users[randomIndex].id)
+  // return users.users[randomIndex].id;
+  return 30;
 }
 
-const exampleFunction2 = (person) => {
-  console.log(`bye now ${person}`)
+
+var userObject = generateUser(30); // Note the parentheses to invoke the function
+
+//function displayUserInfo(user)
+
+function displayWelcomeMessage(user) {
+  console.log("name should be replaced, is this invoked?")
+  const firstName = user.name.split(' ')[0];
+  const welcomeMessageElement = document.getElementById('welcomeMessage')
+  welcomeMessageElement.innerText = `Welcome Back, ${firstName}!`
 }
+
+
 
 
 export {
-  exampleFunction1,
-  exampleFunction2,
+  randomUserId,
+  displayWelcomeMessage,
 }
+
+// generate random user id
+// find user object w id
+
+// display user info uses inner text to change the welcome message 
+
+
+
+// 

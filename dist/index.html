@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
     <title>Fitlit</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <nav> 
+      <button class="home-button">Home</button>
+      <button class="steps-button">Steps</button>
+      <button class="water-button">Water</button>
+      <button class="sleep-button">Sleep</button>
+      <button class="account-button">Account</button>
+    </nav>
+  <article>
+    <img src="./images/fitlit-logo.png">
+    <h1 class="welcome-message" id="welcomeMessage">welcome back (person.name)</h1>
+  </article>
+  <section class="steps-main info-card">
+    <h1 class="average-steps"></h1>
+  </section>
+  <section class="water-main info-card">
 
+  </section>
+  <section class="sleep-main info-card">
+
+  </section>
+  <section class="account-main info-card">
+
+  </section>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>

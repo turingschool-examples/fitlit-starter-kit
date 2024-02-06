@@ -3,21 +3,22 @@
 
 
 // An example of how you tell webpack to use a CSS file
-// import './css/styles.css';
+import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png';
+import './images/turing-logo.png';
 
 // An example of how you tell webpack to use a JS file
-import users from './data/users';
+
 
 // Example of one way to import functions from the domUpdates file.  You will delete these examples.
-// import { exampleFunction1, exampleFunction2 } from './domUpdates';
+import { updateUserInfo } from './domUpdates';
 
 // exampleFunction1('Travis');
 // exampleFunction2('Travis')
 
 function getUserData(userID, users) {
+
     let findUser = users.find((user) => {
         return user.id === userID;
     });
@@ -39,3 +40,5 @@ function getAverageSteps(users) {
 }
 
 export { getUserData, getAverageSteps };
+
+

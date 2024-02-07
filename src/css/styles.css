@@ -7,6 +7,7 @@ body, html {
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  font-family: 'Bungee', sans-serif;
 }
 
 main {
@@ -27,7 +28,7 @@ header {
 
 h1 {
   background-color: #FFFCF8;
-  font-family: 'Sixtyfour', sans-serif;
+  font-family: 'DotGothic16', sans-serif;
   font-size: 1em;
   margin-left: .5em;
   margin-top: 0;
@@ -47,6 +48,10 @@ h1 {
   height: 50%;
 }
 
+.name-cont {
+  width: 20%;
+}
+
 .user-data {
   display: flex;
   flex-direction: row;
@@ -58,7 +63,7 @@ h1 {
   display: flex;
   flex-direction: column;
   margin-left: 4em;
-  width: 60%;
+  width: 20%;
 }
 
 .user-name {
@@ -70,11 +75,11 @@ h1 {
 }
 
 .profile-image {
-  margin: 0;
+  margin-left: 2em;
+  margin-bottom: 4em;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  float: left;
+  align-items: center;
+  justify-content: left;
 }
 
 /*<> Right <>*/
@@ -159,18 +164,18 @@ dt {
   border-top: 3px black solid;
   border-bottom: 3px black solid;
   height: 15%;
-  font-size: 1em;
+  font-size: 1.45em;
   font-weight: 500;
   font-family: 'Sixtyfour', sans-serif;
 }
 
-.user-hydration {
-  /* display: flex;
-  flex-direction: column; */
-}
+/* .user-hydration {
+
+} */
 
 .card-heading {
   border: 1px black solid;
+  font-family: 'Bungee Outline', sans-serif;
 }
 
 .daily-hydration-cont,

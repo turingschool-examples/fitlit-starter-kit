@@ -8,6 +8,7 @@ body, html {
   width: 100%;
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
+
 section{
   display:flex;
   justify-content: center;

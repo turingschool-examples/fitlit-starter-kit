@@ -57,6 +57,4 @@ window.addEventListener("load", function () {
   createWaterMeter();
 });
 
-
-
 export { updateUserInfo };

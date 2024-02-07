@@ -18,12 +18,25 @@ main {
 }
 
 header {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0;
+  background-color: #FFFCF8;
   height: 5%;
 }
 
 h1 {
+  background-color: #FFFCF8;
+  font-family: 'Sixtyfour', sans-serif;
   font-size: 1em;
-  margin-left: 3em;
+  margin-left: .5em;
+  margin-top: 0;
+  padding-top: .5em;
+}
+
+.dumbell-image {
+  margin-left: .5em;
+  margin-top: .05em;
 }
 
 /*<><> Main user Data <><>*/
@@ -56,6 +69,14 @@ h1 {
   float: right;
 }
 
+.profile-image {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  float: left;
+}
+
 /*<> Right <>*/
 
 .user-data-right {
@@ -84,20 +105,44 @@ dt {
   height: 25%;
   padding: 0;
 }
+/* animation: 3s linear 1s infinite running slidein; */
+@keyframes stride-animation {
+  from {width: 1vw;}
+  to {width: 15vw;}
+}
+
+@keyframes steps-goal-animation {
+  from {width: 1vw;}
+  to {width: 25vw;}
+}
+
+@keyframes global-steps-goal-animation {
+  from {width: 1vw;}
+  to {width: 35vw;}
+}
 
 .stride-label {
   background-color: #D4B7F8;
   width: 15vw;
+  animation-name: stride-animation;
+  animation-duration: 3s;
+  animation-direction: normal;
 }
 
 .steps-goal-label {
   background-color: #FBE5A8;
   width: 25vw;
+  animation-name: steps-goal-animation;
+  animation-duration: 3s;
+  animation-direction: normal;
 }
 
 .global-steps-goal-label {
   background-color: #B7DAF7;
   width: 35vw;
+  animation-name: global-steps-goal-animation;
+  animation-duration: 3s;
+  animation-direction: normal;
 }
 
 /*<><> Hydration <><>*/
@@ -113,13 +158,38 @@ dt {
   background-color: #FAC8EC;
   border-top: 3px black solid;
   border-bottom: 3px black solid;
-  height: 20%;
-  font-size: 2em;
+  height: 15%;
+  font-size: 1em;
   font-weight: 500;
+  font-family: 'Sixtyfour', sans-serif;
 }
 
 .user-hydration {
-  
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.card-heading {
+  border: 1px black solid;
+}
+
+.daily-hydration-cont,
+.weekly-hydration-cont {
+  border: 1px orange solid;
+  display: flex;
+  justify-content: baseline;
+  height: 25%;
+  padding: 0;
+}
+
+.daily-hydration-label {
+  border: 2px green solid;
+  margin: 0;
+}
+
+.weekly-hydration-label {
+  border: 2px green solid;
+  margin: 0;
 }
 
 /*<><> Sleep <><>*/

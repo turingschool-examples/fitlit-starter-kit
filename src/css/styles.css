@@ -1,20 +1,20 @@
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  /* background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); */
+  background-color: #e3edf7;
   background-repeat: no-repeat;
   height: 100%;
   display:flex;
   margin:0;
   width: 100%;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
+
 section{
-  border:solid;
-  width:50%;
-  height:45%;
-  border-width: 3px;
   display:flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
-#info{
+/* #info{
   width: 50%;
   text-align:justify;
 }
@@ -50,4 +50,151 @@ section{
   margin:0;
   text-align: center;
   background-color: azure;
+} */
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
 }
+
+.left-area {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hydration-area {
+  height: 100%;
+  width: 30%;
+}
+
+.info-area,
+.sleep-area {
+  display: flex;
+  height: 50%;
+  width: 100%;
+}
+
+.widget {
+  display: flex;
+  height: 80%;
+  width: 90%;
+  margin: 2%;
+  padding: 1%;
+  border-radius: 3rem;
+  box-shadow: 10px 10px 12px -1px rgba(0, 0, 0, 0.61),
+              -10px 10px 15px -1px rgba(255, 255, 255, 0.822)
+}
+
+#infoCard {
+  width: 95%;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(158, 175, 192);
+}
+
+#info,
+#friends {
+  text-align: center;
+  margin-top: 2%;
+}
+
+#info {
+  width: 60%;
+}
+
+#friends {
+  width: 40%;
+  overflow-x: auto;
+}
+
+h1 {
+  font-size: xx-large;
+  margin: 2%;
+}
+
+h3 {
+  font-size: medium;
+  margin: 2%;
+}
+
+aside {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#hydrationWidget {
+  height: 90%;
+  background-color: #87b6e6;
+  flex-direction: column;
+  align-items: center;
+}
+
+#hydrationVisual,
+#hydrationDays,
+#hydrationDaysLabel,
+#hydrationBottleLabel {
+  width: 100%;
+}
+
+#hydrationVisual {
+  height: 60%;
+}
+
+#hydrationBottleLabel {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+#hydrationDays,
+#hydrationDaysLabel,
+#hydrationBottleLabel {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  height: 10%;
+}
+
+.hydration-selector {
+  height: 40%;
+  width: 10%;
+  border: none;
+  border-radius: 1rem;
+  background-color: #466585;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: large;
+  font-weight: 600;
+  color: white;
+}
+
+#waterBottle {
+  height: 100%;
+}
+
+#hydrationBottle {
+  display: flex;
+  align-items: flex-start;  
+  justify-content: center;
+}
+
+#waterMeterContainer {
+  height: 100%;
+  width: 100%;
+}
+
+#waterMeter {
+  height: 0;
+  width: 0;
+}
+
+
+
+
+
+
+
+

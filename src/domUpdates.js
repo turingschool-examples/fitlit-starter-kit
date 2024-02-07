@@ -1,8 +1,10 @@
 //NOTE: Your DOM manipulation will occur in this file
 import usersData from "./data/users";
 import { getUserData, getAverageSteps } from "./scripts";
+import { CircularFluidMeter } from "fluid-meter";
 const info = document.querySelector("#info");
 const friendsList = document.querySelector("#friends");
+const waterMeter = document.querySelector("#waterMeterContainer");
 //Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.
 function updateUserInfo() {
   
@@ -30,9 +32,31 @@ function updateFriendsList(friends) {
   )});
 }
 
+function createWaterMeter() {
+  let createdWaterMeter = new CircularFluidMeter(waterMeter, {
+      borderWidth: 15,
+      initialProgress: 23,
+      maxProgress: 100,
+      backgroundColor: '#002d59',
+      borderColor: '#3e4954',
+      bubbleColor: '#6bcfff',
+      fontFamily: 'Codystar',
+      fontSize: 34,
+      progressFormatter: (value) => {
+          return `${value.toFixed(0)} fl oz`;
+      },
+      fluidConfiguration: {
+          color: '#1e90ff'
+      }
+  })
+  return createdWaterMeter;
+}
+
 window.addEventListener("load", function () {
   updateUserInfo();
+  createWaterMeter();
 });
 
 
-export { updateUserInfo};
+
+export { updateUserInfo };

@@ -132,19 +132,20 @@ aside {
   align-items: center;
 }
 
-#hydrationBottle,
+#hydrationVisual,
 #hydrationDays,
 #hydrationDaysLabel,
 #hydrationBottleLabel {
   width: 100%;
 }
 
-#hydrationBottle {
-  height: 70%;
+#hydrationVisual {
+  height: 60%;
 }
 
 #hydrationBottleLabel {
   margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 #hydrationDays,
@@ -168,6 +169,30 @@ aside {
   font-weight: 600;
   color: white;
 }
+
+#waterBottle {
+  height: 100%;
+}
+
+#hydrationBottle {
+  display: flex;
+  align-items: flex-start;  
+  justify-content: center;
+}
+
+#waterMeterContainer {
+  height: 100%;
+  width: 100%;
+}
+
+#waterMeter {
+  height: 0;
+  width: 0;
+}
+
+
+
+
 
 
 

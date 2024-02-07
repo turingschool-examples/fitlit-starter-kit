@@ -8,11 +8,13 @@ import './css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
 
+
 // An example of how you tell webpack to use a JS file
 
 
 // Example of one way to import functions from the domUpdates file.  You will delete these examples.
 import { updateUserInfo } from './domUpdates';
+
 
 // exampleFunction1('Travis');
 // exampleFunction2('Travis')
@@ -38,6 +40,7 @@ function getAverageSteps(users) {
     }, 0)
     return Math.round(totalSteps / users.length);
 }
+
 
 export { getUserData, getAverageSteps };
 

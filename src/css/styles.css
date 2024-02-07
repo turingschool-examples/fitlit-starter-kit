@@ -6,13 +6,14 @@ body, html {
   display:flex;
   margin:0;
   width: 100%;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 section{
   display:flex;
   justify-content: center;
   align-items: center;
 }
-#info{
+/* #info{
   width: 50%;
   text-align:justify;
 }
@@ -48,7 +49,7 @@ section{
   margin:0;
   text-align: center;
   background-color: azure;
-}
+} */
 
 .main {
   height: 100vh;
@@ -80,6 +81,7 @@ section{
   height: 80%;
   width: 90%;
   margin: 2%;
+  padding: 1%;
   border-radius: 3rem;
   box-shadow: 10px 10px 12px -1px rgba(0, 0, 0, 0.61),
               -10px 10px 15px -1px rgba(255, 255, 255, 0.822)
@@ -95,5 +97,33 @@ section{
   display: flex;
   flex-direction: row;
 }
+
+#info,
+#friends {
+  width: 50%;
+  text-align: center;
+  margin-top: 2%;
+}
+
+#friends {
+  overflow-x: auto;
+}
+
+h1 {
+  font-size: xx-large;
+  margin: 2%;
+}
+
+h3 {
+  font-size: medium;
+  margin: 2%;
+}
+
+aside {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
 
 

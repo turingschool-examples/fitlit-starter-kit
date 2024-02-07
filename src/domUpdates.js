@@ -2,16 +2,6 @@ import userData from './data/users.js';
 import hydrationData from './data/hydration.js';
 import { generateRandomUser } from './scripts'
 
-// ------------- * Event Listeners *
-// document.addEventListener("DOMContentLoaded", () => {
-//   displayWelcomeMessage(userObject)
-  
-  // displayUserInfo(userObject)
-  // compareStepGoal(userObject)
-// })
-
-
-
 // DOM update functions
 function displayWelcomeMessage(user) {
   const welcomeMessageElement = document.querySelector('.welcome-message');
@@ -61,7 +51,7 @@ function updateAccountStride(user) {
 //account-step
 function updateAccountStep(user) {
   const accountStep = document.querySelector('#account-step');
-  accountStep.textContent = `${user.dailyStepGoal}ft`;
+  accountStep.textContent = `${user.dailyStepGoal}`;
 }
 
 // account-friends
@@ -69,14 +59,6 @@ function updateAccountFriends(user) {
   const accountFriends = document.querySelector('#account-friends');
   accountFriends.textContent = `${friendIdsToNames(user)}`;
 }
-
-
-// function friendIdsToNames(user) {
-//   const friendNames = user.map(id => {
-//     const friend = users.find(user => user.id === id);
-//     return friend 
-//   })
-// }
 
 function friendIdsToNames(user) {
   var friendArr = user.friends
@@ -121,5 +103,10 @@ export {
   displayWelcomeMessage,
   displayStepGoal,
   compareStepGoalToAverage,
-  // ... any other functions you wish to export
+  updateAccountName,
+  updateAccountAddress,
+  updateAccountEmail,
+  updateAccountStride,
+  updateAccountStep,
+  updateAccountFriends
 };

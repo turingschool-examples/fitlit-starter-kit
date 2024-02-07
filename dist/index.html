@@ -18,19 +18,26 @@
         <h1 class="welcome-message" id="welcomeMessage">welcome back (person.name)</h1>
       </article>
       <section class="steps-main info-card" id="section2">
-        <h1 class="average-steps"></h1>
+        <div class="step-text">
+          <h3>Your daily step goal: </h3>
+          <p class="user-step">xx,xxx</p>
+          <h3>The average daily step goal is: </h3>
+          <p class="average-step">x,xxx</p>
+          <canvas id="stepChart"></canvas>
+        </div>
       </section>
       <section class="water-main info-card" id="section3">
-
+        <div></div>
       </section>
       <section class="sleep-main info-card" id="section4">
-
+        <div></div>
       </section>
       <section class="account-main info-card" id="section5">
-
+        <div></div>
       </section>
     </main>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> -->
   </body>
 </html>

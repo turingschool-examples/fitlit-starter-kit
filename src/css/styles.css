@@ -87,25 +87,26 @@ section{
               -10px 10px 15px -1px rgba(255, 255, 255, 0.822)
 }
 
-#hydrationWidget {
-  height: 90%;
-}
-
 #infoCard {
   width: 95%;
   margin-bottom: 0;
   display: flex;
   flex-direction: row;
+  background-color: rgb(158, 175, 192);
 }
 
 #info,
 #friends {
-  width: 50%;
   text-align: center;
   margin-top: 2%;
 }
 
+#info {
+  width: 60%;
+}
+
 #friends {
+  width: 40%;
   overflow-x: auto;
 }
 
@@ -122,6 +123,50 @@ h3 {
 aside {
   display: flex;
   justify-content: space-evenly;
+}
+
+#hydrationWidget {
+  height: 90%;
+  background-color: #87b6e6;
+  flex-direction: column;
+  align-items: center;
+}
+
+#hydrationBottle,
+#hydrationDays,
+#hydrationDaysLabel,
+#hydrationBottleLabel {
+  width: 100%;
+}
+
+#hydrationBottle {
+  height: 70%;
+}
+
+#hydrationBottleLabel {
+  margin-top: 10%;
+}
+
+#hydrationDays,
+#hydrationDaysLabel,
+#hydrationBottleLabel {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  height: 10%;
+}
+
+.hydration-selector {
+  height: 40%;
+  width: 10%;
+  border: none;
+  border-radius: 1rem;
+  background-color: #466585;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: large;
+  font-weight: 600;
+  color: white;
 }
 
 

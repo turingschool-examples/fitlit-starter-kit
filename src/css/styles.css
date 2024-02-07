@@ -1,5 +1,6 @@
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  /* background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); */
+  background-color: #e3edf7;
   background-repeat: no-repeat;
   height: 100%;
   display:flex;
@@ -7,12 +8,9 @@ body, html {
   width: 100%;
 }
 section{
-  border:solid;
-  width:50%;
-  height:45%;
-  border-width: 3px;
   display:flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 #info{
   width: 50%;
@@ -51,3 +49,51 @@ section{
   text-align: center;
   background-color: azure;
 }
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+.left-area {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hydration-area {
+  height: 100%;
+  width: 30%;
+}
+
+.info-area,
+.sleep-area {
+  display: flex;
+  height: 50%;
+  width: 100%;
+}
+
+.widget {
+  display: flex;
+  height: 80%;
+  width: 90%;
+  margin: 2%;
+  border-radius: 3rem;
+  box-shadow: 10px 10px 12px -1px rgba(0, 0, 0, 0.61),
+              -10px 10px 15px -1px rgba(255, 255, 255, 0.822)
+}
+
+#hydrationWidget {
+  height: 90%;
+}
+
+#infoCard {
+  width: 95%;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+

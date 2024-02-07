@@ -5,15 +5,29 @@
     <title>Fitlit</title>
   </head>
   <body>
-    <section id = "infoCard">
-      <div id = "info">
-      </div>
-      <div id = "friends">
-        <h3>Friends</h3>
-      </div>
-      <img src="./images/turing-logo.png" alt="turing logo" height="80px" width="80px">
+    <section class="main">
+      <section class="left-area">
+          <section class="info-area">
+            <div class="widget" id="infoCard">
+              <article id="info">
+                <div id="friends">
+                  <h3>Friends</h3>
+                </div>
+                <img src="./images/turing-logo.png" alt="turing logo" height="80px" width="80px"> 
+              </article>
+            </div>
+          </section>
+          <section class="sleep-area">
+            <div class="widget" id="sleepQualityWidget"></div>
+            <div class="widget" id="sleepWidget"></div>
+          </section>
+      </section>
+      <section class="hydration-area">
+        <div class="widget" id="hydrationWidget"></div>
+      </section>
     </section>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>
 </html>
+

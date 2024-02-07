@@ -147,3 +147,195 @@ describe("getAverageSteps", function() {
 
 })
 
+describe("getAverageFluidOunces", function() {
+  let hydrationData;
+  this.beforeEach(() => {
+    hydrationData = [
+      {
+        "userID": 1,
+        "date": "2023/03/24",
+        "numOunces": 30
+      },
+      {
+        "userID": 2,
+        "date": "2023/03/24",
+        "numOunces": 45
+      },
+      {
+        "userID": 3,
+        "date": "2023/03/24",
+        "numOunces": 83
+      },
+      {
+        "userID": 1,
+        "date": "2023/06/30",
+        "numOunces": 70
+      },
+      {
+        "userID": 2,
+        "date": "2023/06/30",
+        "numOunces": 100
+      },
+      {
+        "userID": 3,
+        "date": "2023/06/30",
+        "numOunces": 42
+      },
+      {
+        "userID": 1,
+        "date": "2023/07/01",
+        "numOunces": 95
+      },
+      {
+        "userID": 2,
+        "date": "2023/07/01",
+        "numOunces": 67
+      },
+      {
+        "userID": 3,
+        "date": "2023/07/01",
+        "numOunces": 55
+      },
+    ];
+  });
+
+  it("should be a function", function() {
+    expect(getAverageFluidOunce).to.be.a("function");
+  });
+
+  it("should show the user's avg fluid ounces consumed per day all time", function() {
+    const ouncesUser1 = getAverageFluidOunce(1, hydrationData);
+    expect(ouncesUser1).to.equal(65);
+
+    const ouncesUser2 = getAverageFluidOunce(2, hydrationData);
+    expect(ouncesUser2).to.equal(71);
+
+    const ouncesUser3 = getAverageFluidOunce(3, hydrationData);
+    expect(ouncesUser3).to.equal(60);
+  });
+});
+
+describe("getFluidOuncesForDay", function() {
+  let hydrationData;
+  this.beforeEach(() => {
+    hydrationData = [
+      {
+        "userID": 1,
+        "date": "2023/03/24",
+        "numOunces": 30
+      },
+      {
+        "userID": 2,
+        "date": "2023/03/24",
+        "numOunces": 45
+      },
+      {
+        "userID": 3,
+        "date": "2023/03/24",
+        "numOunces": 83
+      },
+      {
+        "userID": 1,
+        "date": "2023/06/30",
+        "numOunces": 70
+      },
+      {
+        "userID": 2,
+        "date": "2023/06/30",
+        "numOunces": 100
+      },
+      {
+        "userID": 3,
+        "date": "2023/06/30",
+        "numOunces": 42
+      },
+      {
+        "userID": 1,
+        "date": "2023/07/01",
+        "numOunces": 95
+      },
+      {
+        "userID": 2,
+        "date": "2023/07/01",
+        "numOunces": 67
+      },
+      {
+        "userID": 3,
+        "date": "2023/07/01",
+        "numOunces": 55
+      },
+    ];
+  });
+
+  it("should be a function", function() {
+    expect(getFluidOunceForDay).to.be.a("function");
+  });
+
+  it("should show user's ounces consumed for a specific day", function() {
+    const ouncesSpecificDay = getFluidOunceForDay()
+  })
+
+});
+
+describe("getFluidOunceForWeek", function() {
+  let hydrationData;
+  this.beforeEach(() => {
+    hydrationData = [
+      {
+        "userID": 1,
+        "date": "2023/03/24",
+        "numOunces": 30
+      },
+      {
+        "userID": 2,
+        "date": "2023/03/24",
+        "numOunces": 45
+      },
+      {
+        "userID": 3,
+        "date": "2023/03/24",
+        "numOunces": 83
+      },
+      {
+        "userID": 1,
+        "date": "2023/06/30",
+        "numOunces": 70
+      },
+      {
+        "userID": 2,
+        "date": "2023/06/30",
+        "numOunces": 100
+      },
+      {
+        "userID": 3,
+        "date": "2023/06/30",
+        "numOunces": 42
+      },
+      {
+        "userID": 1,
+        "date": "2023/07/01",
+        "numOunces": 95
+      },
+      {
+        "userID": 2,
+        "date": "2023/07/01",
+        "numOunces": 67
+      },
+      {
+        "userID": 3,
+        "date": "2023/07/01",
+        "numOunces": 55
+      },
+    ];
+  });
+
+  it("should be a function", function() {
+    expect(getFluidOunceForWeek).to.be.a("function");
+  });
+
+  it("should show fluid ounces consumed each day over a week", function() {
+
+  })
+
+});
+

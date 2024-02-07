@@ -272,8 +272,27 @@ describe("getFluidOuncesForDay", function() {
   });
 
   it("should show user's ounces consumed for a specific day", function() {
-    const ouncesSpecificDay = getFluidOunceForDay()
-  })
+    const ouncesSpecificDay1 = getFluidOunceForDay(1, hydrationData, "2023/06/30");
+    expect(ouncesSpecificDay1).to.deep.equal({
+      "userID": 1,
+      "date": "2023/06/30",
+      "numOunces": 70
+    });
+
+    const ouncesSpecificDay2 = getFluidOunceForDay(2, hydrationData, "2023/07/01");
+    expect(ouncesSpecificDay2).to.deep.equal({
+      "userID": 2,
+      "date": "2023/07/01",
+      "numOunces": 67
+    });
+
+    const ouncesSpecificDay3 = getFluidOunceForDay(3, hydrationData, "2023/03/24");
+    expect(ouncesSpecificDay3).to.deep.equal({
+      "userID": 3,
+      "date": "2023/03/24",
+      "numOunces": 83
+    });
+  });
 
 });
 

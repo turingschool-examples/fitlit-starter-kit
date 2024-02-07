@@ -31,6 +31,8 @@ function getAverageStepGoal() {
 
 
 
+
+
 export { generateRandomUser, getAverageStepGoal };
 
 // function for IT 1.1

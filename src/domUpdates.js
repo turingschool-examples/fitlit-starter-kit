@@ -116,6 +116,8 @@ function setupEventListeners() {
 
   });
 
+  });
+
   // document.querySelector('.home-button').addEventListener('click', WhatEverWeWantLikehandleHomeButtonClick);
 }
 

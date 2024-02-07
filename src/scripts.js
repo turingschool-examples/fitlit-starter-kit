@@ -29,10 +29,9 @@ function getAverageStepGoal() {
   return totalStepsGoal / users.users.length;
 }
 
+
+
 export { generateRandomUser, getAverageStepGoal };
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   const randomUser = generateRandomUser();
-//   displayWelcomeMessage(randomUser);
-// });
-
+// function for IT 1.1
+// name: repurpose displayWelcomeMessage() with a new location and last name

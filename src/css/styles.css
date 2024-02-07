@@ -169,6 +169,7 @@ aside {
   font-size: large;
   font-weight: 600;
   color: white;
+  cursor: pointer;
 }
 
 #waterBottle {

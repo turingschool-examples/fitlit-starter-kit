@@ -38,7 +38,7 @@ function getAverageSteps(users) {
   return Math.round(totalSteps / users.length);
 }
 
-function getAverageFuildOunce(userID, hydrationData) {
+function getAverageFluidOunce(userID, hydrationData) {
   let count = 0 
   let totalOunces = hydrationData.reduce((total, hydrate) => {
     if(hydrate.userID === userID){
@@ -50,14 +50,14 @@ function getAverageFuildOunce(userID, hydrationData) {
   return Math.round(totalOunces / count);
 }
 
-function getFuildOunceForDay(userID, hydrationData, date) {
+function getFluidOunceForDay(userID, hydrationData, date) {
   let foundHydrationData = hydrationData.find((data) => {
     
     return data.userID === userID && data.date === date;
   });
   return foundHydrationData;
 }
-function getFuildOunceForWeek(userID, hydrationData) {
+function getFluidOunceForWeek(userID, hydrationData) {
   const usersWeekHydration = hydrationData.reduce(
     (usersHydration, data) => {
       if (data.userID === userID) {
@@ -76,7 +76,7 @@ function getFuildOunceForWeek(userID, hydrationData) {
 export {
   getUserData,
   getAverageSteps,
-  getAverageFuildOunce,
-  getFuildOunceForDay,
-  getFuildOunceForWeek
+  getAverageFluidOunce,
+  getFluidOunceForDay,
+  getFluidOunceForWeek
 };

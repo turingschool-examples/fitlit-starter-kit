@@ -1,7 +1,6 @@
 import userData from './data/users.js';
 import hydrationData from './data/hydration.js';
 import { generateRandomUser } from './scripts'
-
 import { Chart, registerables } from 'chart.js/auto';
 Chart.register(...registerables);
 
@@ -37,6 +36,61 @@ function getAverageStepGoal(users) {
   return totalStepGoal / users.length;
 }
 
+// account-name
+function updateAccountName(user) {
+  const accountName = document.querySelector('#account-name');
+  accountName.textContent = `${user.name}`;
+}
+
+// account-address
+function updateAccountAddress(user) {
+  const accountAddress = document.querySelector('#account-address');
+  accountAddress.textContent = `${user.address}`;
+}
+
+// account-email
+function updateAccountEmail(user) {
+  const accountEmail = document.querySelector('#account-email');
+  accountEmail.textContent = `${user.email}`;
+}
+
+// account-stride
+function updateAccountStride(user) {
+  const accountStride = document.querySelector('#account-stride');
+  accountStride.textContent = `${user.strideLength}ft`;
+}
+
+//account-step
+function updateAccountStep(user) {
+  const accountStep = document.querySelector('#account-step');
+  accountStep.textContent = `${user.dailyStepGoal}ft`;
+}
+
+// account-friends
+function updateAccountFriends(user) {
+  const accountFriends = document.querySelector('#account-friends');
+  accountFriends.textContent = `${friendIdsToNames(user)}`;
+}
+
+
+// function friendIdsToNames(user) {
+//   const friendNames = user.map(id => {
+//     const friend = users.find(user => user.id === id);
+//     return friend 
+//   })
+// }
+
+function friendIdsToNames(user) {
+  var friendArr = user.friends
+  var friendNames = userData.users.reduce((acc, account) => {
+    if (friendArr.includes(account.id)) {
+      acc.push(account.name)
+    }
+    return acc
+  }, [])
+  return friendNames.join(" - ")
+}
+
 
 // Event listener setup function
 function setupEventListeners() {
@@ -45,6 +99,12 @@ function setupEventListeners() {
     const randomUser = generateRandomUser();
     displayWelcomeMessage(randomUser);
     displayStepGoal(randomUser)
+    updateAccountName(randomUser)
+    updateAccountAddress(randomUser)
+    updateAccountEmail(randomUser)
+    updateAccountStride(randomUser)
+    updateAccountStep(randomUser)
+    updateAccountFriends(randomUser)
 
     const averageStepGoal = getAverageStepGoal(userData.users);
     compareStepGoalToAverage(averageStepGoal);
@@ -59,8 +119,8 @@ function setupEventListeners() {
   // document.querySelector('.home-button').addEventListener('click', WhatEverWeWantLikehandleHomeButtonClick);
 }
 
-setupEventListeners();
 
+setupEventListeners();
 
 const ctx = document.getElementById('stepChart').getContext('2d');
 
@@ -124,4 +184,3 @@ export {
   compareStepGoalToAverage,
   // ... any other functions you wish to export
 };
-

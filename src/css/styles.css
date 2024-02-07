@@ -54,7 +54,7 @@ nav a:hover {
 
 .info-card div {
   border: black solid;
-  background: #0000006b;
+  /* background: #0000006b; */
   width: 75%;
   height: 75%;
 }
@@ -81,4 +81,9 @@ article img {
 
 .section-text h3 {
   margin-bottom: 0;
+}
+
+#stepChart {
+  width: 100%;
+  mix-blend-mode: color-burn;
 }

@@ -31,13 +31,8 @@ function getAverageStepGoal() {
 
 export { generateRandomUser, getAverageStepGoal };
 
-document.addEventListener('DOMContentLoaded', () => {
-  const randomUser = generateRandomUser();
-  displayWelcomeMessage(randomUser);
-});
-
-// module.exports = {
-//     generateUser,
-//     getAverageStepGoal
-// }
+// document.addEventListener('DOMContentLoaded', () => {
+//   const randomUser = generateRandomUser();
+//   displayWelcomeMessage(randomUser);
+// });
 

@@ -1,42 +1,46 @@
 
 import { expect } from 'chai';
-import { getUserInfo } from '../src/scripts';
-// import { users } from './usersSampleData'
+import { getUserInfo, getRandomUser, calculateAverageSteps } from '../test/userInfo';
+import userData from './usersSampleData';
 
-// import userData from './usersSampleData';
-// const { users } = require('./usersSampleData')
+describe('find user info', () => {
+    let userInfo;
+    let trystanId;
 
-
-
-describe('User Repository', () => {
-  it('should run tests', function () {
-    expect(true).to.equal(true);
-  });
-});
-
-describe('get user info', () => {
-  it('should be a function', function () {
-    expect(getUserInfo()).to.be.a('function')
+  beforeEach(() => {
+      userInfo = userData
+      trystanId = 1
   })
-} )
 
-// describe('display user data', () => {
-//   it.skip('should be able to find user data using a user ID', function () {
-//     const userID = 2
+  it('should return user info based on ID', function () {
+      let userID = trystanId
+
+      expect(userInfo.users[0].id === userID).to.equal(true)
+      expect(userInfo.users[1].id === userID).to.equal(false)
+    
+      expect(getUserInfo(userID)).to.deep.equal({
+        "id": 1,
+        "name": "Trystan Gorczany",
+        "address": "9484 Lucas Flat, West Kittymouth WA 67504",
+        "email": "Taurean_Pollich31@gmail.com",
+        "strideLength": 4,
+        "dailyStepGoal": 7000,
+        "friends": [ 5, 43, 46, 11 ]
+    })
+  }) 
+
+  it('should randomly generate a userID', function () {
+      const randomUser1 = getRandomUser(userInfo.users)
+      const randomUser2 = getRandomUser(userInfo.users)
+
+      expect(randomUser1).to.be.a('number')
+      expect(randomUser2).to.be.a('number')
+      expect(randomUser1).to.not.equal(randomUser2) 
+  })
   
-//     expect(getUserInfo(userID).be.equal.to({
-//       "id": 2,
-//       "name": "Tyreek VonRueden",
-//       "address": "623 Koelpin Skyway, Lake Luigichester MN 77576-1678",
-//       "email": "Nicolette_Halvorson43@yahoo.com",
-//       "strideLength": 4.5,
-//       "dailyStepGoal": 9000,
-//       "friends": [
-//         13,
-//         19,
-//         3
-//       ]
-//     },))
+  it('should calculate average steps among all users', function () {
 
-//   })
-// })
+      expect(calculateAverageSteps(userInfo)).to.be.a('number')
+      expect(calculateAverageSteps(userInfo)).to.deep.equal(6600)
+  })
+});

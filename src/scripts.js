@@ -10,7 +10,6 @@ import './images/turing-logo.png';
 
 // An example of how you tell webpack to use a JS file
 import userData from './data/users';
-console.log("User Data:", userData);
 
 // Example of one way to import functions from the domUpdates file.  You will delete these examples.
 import { displayUserData } from './domUpdates';
@@ -30,8 +29,6 @@ function calculateAverageSteps(userData) {
     })
     return totalSteps / userData.users.length
 }
-
-// const randomUserId = (usersArr) => Math.floor(Math.random() * usersArr.length)
 
 function getRandomUser(usersArr) {
    let randomUserId = Math.floor(Math.random() * usersArr.length)

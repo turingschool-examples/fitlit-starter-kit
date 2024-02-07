@@ -72,13 +72,13 @@ article img {
   mix-blend-mode: color-burn;
 }
 
-.step-text {
+.section-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.step-text h3 {
+.section-text h3 {
   margin-bottom: 0;
 }

@@ -42,13 +42,36 @@ function averageOunces(hydration, id) {
         acc += user.numOunces
         return acc
     }, 0)
-   return Math.round(sum / targetUser.length)
+    return Math.round(sum / targetUser.length)
 }
 
+function dailyOunces(hydration, id) {
+    let targetUser = hydration.hydrationData.filter((user) => {
+        return user.userID === id
+    });
+    let index = targetUser.length - 1
+    return `${targetUser[index].date} : ${targetUser[index].numOunces}oz`
+};
+
+function weeklyOunces(hydration, id) {
+    let week = []
+    let targetUser = hydration.hydrationData.filter((user) => {
+        return user.userID === id
+    });
+    for (var i = 0; i < 7; i++) {
+        let day = {}
+        day.date = targetUser[i].date
+        day.numOunces = targetUser[i].numOunces
+        week.push(day)
+    }
+    return week
+};
 
 export {
     getUserInfo,
     calculateAverageSteps,
     getRandomUser,
     averageOunces,
+    dailyOunces,
+    weeklyOunces,
 }

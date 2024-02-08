@@ -1,8 +1,16 @@
 
 import { expect } from 'chai';
-import { getUserInfo, getRandomUser, calculateAverageSteps, averageOunces } from '../test/userInfo';
 import userData from './usersSampleData';
 import hydrationSample from './hydrationSample';
+import {
+    getUserInfo,
+    getRandomUser,
+    calculateAverageSteps,
+    averageOunces,
+    dailyOunces,
+    weeklyOunces,
+}
+    from '../test/userInfo';
 
 describe('find user info', () => {
     let userInfo;
@@ -51,8 +59,41 @@ describe('find user info', () => {
 
     describe('averageOunces', () => {
         it('should calculate average oz among single users', function () {
-            
-            expect(averageOunces(hydrationSample, 1)).to.equal(60)
+
+            expect(averageOunces(hydrationSample, 1)).to.equal(59)
+        });
+    });
+
+    describe('dailyOunces', () => {
+        it('should return a single users daily water intake', () => {
+            let e = dailyOunces(hydrationSample, 1)
+            expect(e).to.equal('2023/04/01 : 88oz')
+
+        });
+    });
+
+    describe('weeklyOunces', () => {
+        it('should calculate single users weekly ounces', () => {
+            let e = weeklyOunces(hydrationSample, 1)
+            expect(e).to.deep.equal(
+                [{ date: '2023/03/24', numOunces: 28 },
+                { date: '2023/03/25', numOunces: 50 },
+                { date: '2023/03/27', numOunces: 63 },
+                { date: '2023/03/28', numOunces: 97 },
+                { date: '2023/03/29', numOunces: 20 },
+                { date: '2023/03/30', numOunces: 76 },
+                { date: '2023/03/31', numOunces: 51 }])
+        });
+        it('should not go over 7 days', () => {
+            let e = weeklyOunces(hydrationSample, 1)
+            expect(e).to.not.equal(
+                [{ date: '2023/03/24', numOunces: 28 },
+                { date: '2023/03/25', numOunces: 50 },
+                { date: '2023/03/27', numOunces: 63 },
+                { date: '2023/03/28', numOunces: 97 },
+                { date: '2023/03/29', numOunces: 20 },
+                { date: '2023/03/30', numOunces: 76 },
+                { date: '2023/03/31', numOunces: 88 }])
         });
     });
 });

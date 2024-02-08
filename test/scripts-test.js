@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 
-import { getUserData, getAverageSteps } from '../src/scripts';
+import { getUserData, getAverageSteps } from '../src/users';
+import { getAverageFluidOunce, getFluidOunceForDay, getFluidOunceForWeek } from '../src/hydration';
 
 describe("getUserData", function() {
     let users;

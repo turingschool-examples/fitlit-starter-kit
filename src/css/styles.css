@@ -159,7 +159,8 @@ aside {
   height: 10%;
 }
 
-.hydration-selector {
+.hydration-selector,
+#hydrationBackButton {
   height: 40%;
   width: 10%;
   border: none;
@@ -169,6 +170,12 @@ aside {
   font-size: large;
   font-weight: 600;
   color: white;
+  cursor: pointer;
+}
+
+#hydrationBackButton {
+  height: 30%;
+  width: 40%;
 }
 
 #waterBottle {

@@ -30,14 +30,6 @@ function displayHydrationData(userId) {
     console.log(userHydration)
     console.log(userId)
     dailyHydration.innerText = dailyOunces(userId)
-    // weeklyHydration.innerHTML += `<dt class="weekly-sleep-label">
-    // ${userHydration[0].date} | ${userHydration[1].date} | ${userHydration[3].date} | 
-    // ${userHydration[4].date} | ${userHydration[5].date} | ${userHydration[6].date}<br>
-    // <div class="hydration-data-weekly">
-    // ${userHydration[0].numOunces} | ${userHydration[1].numOunces} | ${userHydration[3].numOunces} |
-    // ${userHydration[4].numOunces} | ${userHydration[5].numOunces} | ${userHydration[6].numOunces}
-    // </div>
-    // </dt>`
     weeklyHydrationLabel.innerText = `${userHydration[0].date} | ${userHydration[1].date} | ${userHydration[3].date} | ${userHydration[4].date} | ${userHydration[5].date} | ${userHydration[6].date}`
     weeklyHydrationData.innerText = `${userHydration[0].numOunces} | ${userHydration[1].numOunces} | ${userHydration[3].numOunces} | ${userHydration[4].numOunces} | ${userHydration[5].numOunces} | ${userHydration[6].numOunces}`
 }

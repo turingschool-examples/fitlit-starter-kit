@@ -7,7 +7,7 @@ import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/fitlit-logo.png';
-
+import './images/white-texture.png';
 // An example of how you tell webpack to use a JS file
 /*import userData from './data/users';
 console.log("User Data:", userData);*/
@@ -28,6 +28,26 @@ function generateRandomUser() {
 function getAverageStepGoal() {
   const totalStepsGoal = users.users.reduce((total, user) => total + user.dailyStepGoal, 0);
   return totalStepsGoal / users.users.length;
+}
+function getAverageDailyFluidOunces(userId, hydration) {
+  const userHydrationData = hydration.hydrationData.filter((userRecord) => userRecord.userId === userId);
+  const totalOunces = userHydrationData.reduce((acc, userRecord) => acc += userRecord.numOunces, 0);
+  return userHydrationData.length > 0 ? totalOunces / userHydrationData.length : 0;
+}
+getAverageDailyFluidOunces()
+
+function getSpecificDay(userId, date) {
+  const dayEntry = hydration.hydrationData.filter((userRecord) => userRecord.userID === userId);
+  const dayOunces = dayEntry.find((userRecord) => userRecord.date === date)
+  return dayOunces;
+}
+
+
+console.log(getSpecificDay(4, '2023/03/24'))
+console.log(getAverageDailyFluidOunces())
+
+function getWeeklyFluidOunces (userId, endDate, hydrationData) {
+  //findIndex, math.max, slice
 }
 
 

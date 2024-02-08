@@ -2,14 +2,20 @@
 import { initiateSleepFunctions } from "./sleepData"
 console.log('I will be a fetch request!')
 
-function getSleepData() {
+function getAllData() {
+fetch('https://fitlit-api.herokuapp.com/api/v1/users')
+    .then(resp => resp.json())
+    .then(userData => console.log('users!!!', userData))
+fetch('https://fitlit-api.herokuapp.com/api/v1/hydration')
+    .then(resp => resp.json())
+    .then(hydrationData => console.log('hydration!!!', hydrationData))
 fetch('https://fitlit-api.herokuapp.com/api/v1/sleep')
-  .then(resp => resp.json())
-  .then(data => initiateSleepFunctions(data))
+    .then(resp => resp.json())
+    .then(sleepData => initiateSleepFunctions(sleepData))
 }
 
-getSleepData()
+getAllData()
 
 export {
-    getSleepData,
+    getAllData,
 }

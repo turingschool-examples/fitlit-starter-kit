@@ -14,6 +14,8 @@ import userData from './data/users';
 // Example of one way to import functions from the domUpdates file.  You will delete these examples.
 import { displayUserData } from './domUpdates';
 
+import { displayHydrationData } from './domUpdates';
+
 import hydration from '../src/data/hydration';
 
 function getUserInfo(userID) {
@@ -33,10 +35,12 @@ function calculateAverageSteps(userData) {
 
 function getRandomUser(usersData) {
     let randomUserId = Math.floor(Math.random() * usersData.length)
-    return getUserInfo(randomUserId)
+    populateOnDom(randomUserId)
+    getUserInfo(randomUserId)
 }
+getRandomUser(userData.users)
 
-function averageOunces(hydration, id) {
+function averageOunces(id) {
     var targetUser = hydration.hydrationData.filter(user => user.userID === id)
     var sum = targetUser.reduce((acc, user) => {
         acc += user.numOunces
@@ -45,7 +49,7 @@ function averageOunces(hydration, id) {
     return Math.round(sum / targetUser.length)
 }
 
-function dailyOunces(hydration, id) {
+function dailyOunces(id) {
     let targetUser = hydration.hydrationData.filter((user) => {
         return user.userID === id
     });
@@ -53,7 +57,7 @@ function dailyOunces(hydration, id) {
     return `${targetUser[index].date} : ${targetUser[index].numOunces}oz`
 };
 
-function weeklyOunces(hydration, id) {
+function weeklyOunces(id) {
     let week = []
     let targetUser = hydration.hydrationData.filter((user) => {
         return user.userID === id
@@ -67,6 +71,10 @@ function weeklyOunces(hydration, id) {
     return week
 };
 
+function populateOnDom(userId) {
+    displayHydrationData(userId)
+}
+
 export {
     getUserInfo,
     calculateAverageSteps,
@@ -74,4 +82,5 @@ export {
     averageOunces,
     dailyOunces,
     weeklyOunces,
+    populateOnDom
 }

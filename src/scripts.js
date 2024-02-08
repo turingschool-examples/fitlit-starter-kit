@@ -14,10 +14,11 @@ import userData from './data/users';
 // Example of one way to import functions from the domUpdates file.  You will delete these examples.
 import { displayUserData } from './domUpdates';
 
+import hydration from '../src/data/hydration';
 
 function getUserInfo(userID) {
     let userInfo = userData.users.find((user) => {
-      return user.id === userID
+        return user.id === userID
     })
     return displayUserData(userInfo)
 }
@@ -30,15 +31,24 @@ function calculateAverageSteps(userData) {
     return totalSteps / userData.users.length
 }
 
-function getRandomUser(usersArr) {
-   let randomUserId = Math.floor(Math.random() * usersArr.length)
-   return getUserInfo(randomUserId)
+function getRandomUser(usersData) {
+    let randomUserId = Math.floor(Math.random() * usersData.length)
+    return getUserInfo(randomUserId)
 }
 
-getRandomUser(userData.users);
+function averageOunces(hydration, id) {
+    var targetUser = hydration.hydrationData.filter(user => user.userID === id)
+    var sum = targetUser.reduce((acc, user) => {
+        acc += user.numOunces
+        return acc
+    }, 0)
+   return Math.round(sum / targetUser.length)
+}
+
 
 export {
     getUserInfo,
     calculateAverageSteps,
-    getRandomUser
+    getRandomUser,
+    averageOunces,
 }

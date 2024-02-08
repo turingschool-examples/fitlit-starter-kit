@@ -2,7 +2,6 @@ import userData from '../src/data/users';
 
 import hydration from '../src/data/hydration';
 
-let todaysDate = new Date();
 
 function getUserInfo(userID) {
     let userInfo = userData.users.find((user) => {
@@ -38,7 +37,7 @@ function dailyOunces(hydration, id) {
         return user.userID === id
     });
     let index = targetUser.length - 1
-    return targetUser[index].numOunces
+    return `${targetUser[index].date} : ${targetUser[index].numOunces}oz`
 };
 
 

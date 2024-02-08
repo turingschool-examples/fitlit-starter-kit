@@ -50,7 +50,7 @@ function dailyOunces(hydration, id) {
         return user.userID === id
     });
     let index = targetUser.length - 1
-    return targetUser[index].numOunces
+    return `${targetUser[index].date} : ${targetUser[index].numOunces}oz`
 };
 
 function weeklyOunces(hydration, id) {

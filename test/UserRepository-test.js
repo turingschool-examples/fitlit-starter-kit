@@ -66,7 +66,7 @@ describe('find user info', () => {
     describe('dailyOunces', () => {
         it('should return a single users daily water intake', () => {
             let e = dailyOunces(hydrationSample, 1)
-            expect(e).to.equal(88)
+            expect(e).to.equal('2023/04/01 : 88oz')
 
         });
     });
@@ -74,7 +74,7 @@ describe('find user info', () => {
     describe('weeklyOunces', () => {
         it.skip('should calculate single users weekly ounces', () => {
             let e = weeklyOunces(hydrationSample, 1)
-            expect(weeklyOunces(hydrationSample, 1)).to.equal(60)
+            expect(e).to.equal(60)
         });
     });
 });

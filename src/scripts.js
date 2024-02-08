@@ -53,13 +53,13 @@ function dailyOunces(hydration, id) {
     return targetUser[index].numOunces
 };
 
-// function weeklyOunces() {
+function weeklyOunces(hydration, id) {
 
-// }
+}
 
 //return users weekly water intake
 /*
-    -params = 
+    -params = hydration info, userID
     -filter through users hydration
     -use a for loop (whaaaaat) ending < 7
     - create total = 0
@@ -72,5 +72,5 @@ export {
     getRandomUser,
     averageOunces,
     dailyOunces,
-    //weeklyOunces
+    weeklyOunces,
 }

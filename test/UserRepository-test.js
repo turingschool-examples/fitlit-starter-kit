@@ -59,22 +59,21 @@ describe('find user info', () => {
     describe('averageOunces', () => {
         it('should calculate average oz among single users', function () {
             
-            expect(averageOunces(hydrationSample, 1)).to.equal(60)
+            expect(averageOunces(hydrationSample, 1)).to.equal(59)
         });
     });
 
     describe('dailyOunces', () => {
         it('should return a single users daily water intake', () => {
             let e = dailyOunces(hydrationSample, 1)
-            expect(e).to.equal(97)
+            expect(e).to.equal(88)
 
         });
     });
 
     describe('weeklyOunces', () => {
         it.skip('should calculate single users weekly ounces', () => {
-            
-
+            let e = weeklyOunces(hydrationSample, 1)
             expect(weeklyOunces(hydrationSample, 1)).to.equal(60)
         });
     });

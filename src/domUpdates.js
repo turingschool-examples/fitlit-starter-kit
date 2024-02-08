@@ -1,8 +1,17 @@
 import userData from './data/users.js';
 import hydrationData from './data/hydration.js';
 import { generateRandomUser } from './scripts'
-import { Chart, registerables } from 'chart.js/auto';
-Chart.register(...registerables);
+import { stepChart } from './chartSetup.js'
+
+// ------------- * Event Listeners *
+// document.addEventListener("DOMContentLoaded", () => {
+//   displayWelcomeMessage(userObject)
+  
+  // displayUserInfo(userObject)
+  // compareStepGoal(userObject)
+// })
+
+
 
 // DOM update functions
 function displayWelcomeMessage(user) {
@@ -91,71 +100,18 @@ function setupEventListeners() {
     const averageStepGoal = getAverageStepGoal(userData.users);
     compareStepGoalToAverage(averageStepGoal);
 
-    myChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
-    myChart.options.scales.y.ticks.min = 0; // Assuming min value is 0
-    myChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 10
-    myChart.update();
-
-  });
-
-  };
+    stepChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
+    stepChart.options.scales.y.ticks.min = 0; // Assuming min value is 0
+    stepChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 10
+    stepChart.update();
+  })
+};
 
   // document.querySelector('.home-button').addEventListener('click', WhatEverWeWantLikehandleHomeButtonClick);
 
 
 
 setupEventListeners();
-
-const ctx = document.getElementById('stepChart').getContext('2d');
-
-ctx.canvas.height = 100;
-ctx.canvas.width = 500; 
-
-const stepChartData = {
-  labels: ['Your step goal', 'Average step goal'],
-  datasets: [{
-    label: '',
-    data: [],
-    backgroundColor: [
-      '#1a1a1a',
-      '#1a1a1a',
-    ],
-    borderColor: [
-      '#1a1a1a',
-      '#1a1a1a',
-    ],
-    borderWidth: 1
-  }]
-};
-
-const options = {
-  indexAxis: 'y',
-  scales: {
-    x: {
-      beginAtZero: true,
-      ticks: {
-        color: 'black'
-      }
-    },
-    y: {
-      beginAtZero: true,
-      ticks: {
-        color: 'black'
-      }
-    }
-  },
-  plugins: {
-    legend: {
-      display: false
-    }
-  }
-};
-
-const myChart = new Chart(ctx, {
-  type: 'bar', 
-  data: stepChartData,
-  options: options
-});
 
 export {
   displayWelcomeMessage,

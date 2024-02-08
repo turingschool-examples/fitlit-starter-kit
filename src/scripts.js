@@ -7,7 +7,7 @@ import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/fitlit-logo.png';
-
+import './images/white-texture.png';
 // An example of how you tell webpack to use a JS file
 /*import userData from './data/users';
 console.log("User Data:", userData);*/
@@ -29,14 +29,13 @@ function getAverageStepGoal() {
   const totalStepsGoal = users.users.reduce((total, user) => total + user.dailyStepGoal, 0);
   return totalStepsGoal / users.users.length;
 }
-function getAverageDailyFluidOunces(userId, hydrationData) {
+function getAverageDailyFluidOunces(userId, hydration) {
   const userHydrationData = hydration.hydrationData.filter((userRecord) => userRecord.userId === userId);
   const totalOunces = userHydrationData.reduce((acc, userRecord) => acc += userRecord.numOunces, 0);
-  return totalOunces / userHydrationData.length
+  return userHydrationData.length > 0 ? totalOunces / userHydrationData.length : 0;
 }
 getAverageDailyFluidOunces()
 
-//this keeps returning undefined for dayEntry (blank array). 
 function getSpecificDay(userId, date) {
   const dayEntry = hydration.hydrationData.filter((userRecord) => userRecord.userID === userId);
   const dayOunces = dayEntry.find((userRecord) => userRecord.date === date)
@@ -45,20 +44,12 @@ function getSpecificDay(userId, date) {
 
 
 console.log(getSpecificDay(4, '2023/03/24'))
-
 console.log(getAverageDailyFluidOunces())
-
-/*hydrationData: [
-  {
-    "userID": 1,
-    "date": "2023/03/24",
-    "numOunces": 28
-  }, */
-
 
 function getWeeklyFluidOunces (userId, endDate, hydrationData) {
   //findIndex, math.max, slice
 }
+
 
 export { generateRandomUser, getAverageStepGoal };
 

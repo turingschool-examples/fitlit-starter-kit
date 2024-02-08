@@ -51,46 +51,6 @@
     </main>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script>
-      var xValues = ["Your Step Goal", "Average Step Goal"];
-      var yValues = [11000, 6000];
-      var barColors = [
-        "#1a1a1a",
-        "#1a1a1a",
-      ];
-      
-      new Chart("stepChart", {
-        type: "horizontalBar",
-        data: {
-          labels: xValues,
-          datasets: [{
-            backgroundColor: barColors,
-            data: yValues
-          }]
-        },
-        options: {
-          scales: {
-            xAxes: [{
-              ticks: {min: 0, max:12000,
-              fontSize: 20},
-            }],
-            yAxes: [{
-                gridLines: {
-                  display: false
-                },
-                barThickness: 25,
-                barPercentage: 1,
-                categoryPercentage: 1,
-                ticks: {fontSize: 20}
-              }],
-          },
-          legend: {display: false},
-          title: {
-            display: true,
-          }
-        }
-      });
-      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
   </body>
 </html>

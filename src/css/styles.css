@@ -4,8 +4,8 @@
 }
 body, html {
   scroll-behavior: smooth;
-  background: url('../images/white-texture.jpg') repeat-x top, url('../images/white-texture-invert.jpg') repeat-x bottom;
-  background-size: 25% 50%, 25% 50%;
+  background: url('../images/white-texture.png') repeat-x;
+  background-size: 100% 100%;
 }
 main {
   scroll-behavior: smooth;
@@ -60,7 +60,9 @@ nav a:hover {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  box-shadow: #000000a1 12px 12px 20px 4px;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 
 article {

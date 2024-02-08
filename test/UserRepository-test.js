@@ -1,6 +1,6 @@
 
 import { expect } from 'chai';
-import { getUserInfo, getRandomUser, calculateAverageSteps, averageOunces } from '../test/userInfo';
+import { getUserInfo, getRandomUser, calculateAverageSteps, averageOunces, dailyOunces } from '../test/userInfo';
 import userData from './usersSampleData';
 import hydrationSample from './hydrationSample';
 
@@ -55,4 +55,11 @@ describe('find user info', () => {
             expect(averageOunces(hydrationSample, 1)).to.equal(60)
         });
     });
+
+    describe('', () => {
+        it('should return a users daily water intake', () => {
+            let e = dailyOunces(hydrationSample, 1, '2023/03/24')
+            expect(e).to.equal(28)
+        })
+    })
 });

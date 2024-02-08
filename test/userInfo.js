@@ -32,9 +32,18 @@ function averageOunces(hydration, id) {
    return Math.round(sum / targetUser.length) 
 }
 
+function dailyOunces(hydration, id, date) {
+    let targetUser = hydration.hydrationData.find((user) => {
+        return user.userID === id && user.date === date
+    });
+    return targetUser.numOunces
+};
+
+
  export {
      getUserInfo,
      calculateAverageSteps,
      getRandomUser,
      averageOunces,
+     dailyOunces
  }

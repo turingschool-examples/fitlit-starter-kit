@@ -7,6 +7,21 @@ import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
+import '../src/images/layered-dumbell.png'
+import '../src/images/light-dumbell.png'
+import '../src/images/profile-image1.png'
+import '../src/images/profile-image2.png'
+import '../src/images/profile-image3.png'
+import '../src/images/profile-image4.png'
+import '../src/images/profile-image5.png'
+import '../src/images/profile-image6.png'
+import '../src/images/profile-image7.png'
+import '../src/images/profile-image8.png'
+import '../src/images/profile-image9.png'
+import '../src/images/profile-image10.png'
+import '../src/images/water-drop.png'
+import '../src/images/sleepy-star.png'
+
 
 // An example of how you tell webpack to use a JS file
 import userData from './data/users';

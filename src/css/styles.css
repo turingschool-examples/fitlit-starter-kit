@@ -66,9 +66,7 @@ h1 {
   margin-bottom: 6em;
   margin-top: 3em;
   width: 25%;
-  border: black;
-  border-style: solid;
-  background: rgb(212 183 248 / 20%);
+  background: rgba(212, 183, 248, 0.24);
   padding-left: 3em;
 }
 
@@ -78,14 +76,21 @@ h1 {
 
 .address-cont {
   float: right;
+  padding-right: 2em;
+  padding-bottom: 2em;
 }
 
 .profile-image {
-  /* margin-left: -10em; */
   margin-bottom: 4em;
   display: flex;
   align-items: center;
   justify-content: left;
+}
+
+.more-data {
+  width: 11em;
+  height: 2em;
+  margin-bottom: 1em;
 }
 
 /*<> Right <>*/
@@ -166,7 +171,6 @@ dt {
 
 /*<><> Hydration <><>*/
 .hydration-container {
-  border: 1px orange solid;
   height: 70%;
 }
 

@@ -40,6 +40,20 @@ function dailyOunces(hydration, id) {
     return `${targetUser[index].date} : ${targetUser[index].numOunces}oz`
 };
 
+function weeklyOunces(hydration, id) {
+    let week = []
+    let targetUser = hydration.hydrationData.filter((user) => {
+        return user.userID === id
+    });
+    for(var i = 0; i < 7; i++) {
+        let day = {}
+        day.date = targetUser[i].date
+        day.numOunces = targetUser[i].numOunces
+        week.push(day)
+    }
+    return week
+};
+
 
  export {
      getUserInfo,
@@ -47,5 +61,5 @@ function dailyOunces(hydration, id) {
      getRandomUser,
      averageOunces,
      dailyOunces,
-     //weeklyOunces,
+     weeklyOunces,
  }

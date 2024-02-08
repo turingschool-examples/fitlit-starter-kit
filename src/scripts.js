@@ -42,7 +42,7 @@ function averageOunces(hydration, id) {
         acc += user.numOunces
         return acc
     }, 0)
-   return Math.round(sum / targetUser.length)
+    return Math.round(sum / targetUser.length)
 }
 
 function dailyOunces(hydration, id) {
@@ -54,18 +54,19 @@ function dailyOunces(hydration, id) {
 };
 
 function weeklyOunces(hydration, id) {
+    let week = []
+    let targetUser = hydration.hydrationData.filter((user) => {
+        return user.userID === id
+    });
+    for (var i = 0; i < 7; i++) {
+        let day = {}
+        day.date = targetUser[i].date
+        day.numOunces = targetUser[i].numOunces
+        week.push(day)
+    }
+    return week
+};
 
-}
-
-//return users weekly water intake
-/*
-    -params = hydration info, userID
-    -filter through users hydration
-    -use a for loop (whaaaaat) ending < 7
-    - create total = 0
-    - total += user.numOunces
-    -return total
-*/
 export {
     getUserInfo,
     calculateAverageSteps,

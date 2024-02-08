@@ -21,9 +21,9 @@ const hydrationWeekButtons = document.querySelector("#hydrationDays");
 
 
 const randomIndex = Math.floor(Math.random() * (usersData.users.length - 1)) + 1;
-const randomDay = Math.floor(Math.random() * 100);
 const user = getUserData(randomIndex, usersData.users);
 const flOzDays = getFluidOunceForWeek(user.id, hydration.hydrationData);
+const today = flOzDays.length - 1;
 let createdWaterMeter = new CircularFluidMeter(waterMeter, {
   borderWidth: 15,
   maxProgress: 100,
@@ -51,7 +51,7 @@ function updateUserInfo() {
   <h3 id="stepGoal">My Step Goal: ${user.dailyStepGoal} steps</h3>
   <h3 id="comparedStepGoal"> Avg Step Goal: ${avgStep} steps`;
   updateFriendsList(user.friends);
-  updateHydration(user, randomDay);
+  updateHydration(user, today);
 }
 
 function updateFriendsList(friends) {
@@ -77,11 +77,11 @@ window.addEventListener("load", function () {
 });
 
 hydrationWeekButtons.addEventListener("click", (event) => {
-  if(!flOzDays[(randomDay - Number(event.target.id))]) {
+  if(!flOzDays[(today - Number(event.target.id))]) {
     userHydrationDate.innerHTML = `<h1>No Data to Display...`;
     createdWaterMeter.progress = 0;
   } else {
-    updateHydration(user, (randomDay - Number(event.target.id)));
+    updateHydration(user, (today - Number(event.target.id)));
   }
 })
 

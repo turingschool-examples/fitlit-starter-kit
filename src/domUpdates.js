@@ -9,7 +9,9 @@ const strideData = document.querySelector('.stride-data')
 const stepGoal = document.querySelector('.steps-goal-data')
 const avgStepGoal = document.querySelector('.global-steps-goal-data')
 const dailyHydration = document.querySelector('.daily-hydration-label')
-const weeklyHydration = document.querySelector('.weekly-hydration-box')
+const weeklyHydrationLabel = document.querySelector('.weekly-hydration-label')
+const weeklyHydrationData = document.querySelector('.weekly-hydration-data')
+
 
 function displayUserData(userInfo) {
   username.innerText = userInfo.name
@@ -28,14 +30,16 @@ function displayHydrationData(userId) {
     console.log(userHydration)
     console.log(userId)
     dailyHydration.innerText = dailyOunces(userId)
-    weeklyHydration.innerHTML += `<dt class="weekly-sleep-label">
-    ${userHydration[0].date} | ${userHydration[1].date} | ${userHydration[3].date} | 
-    ${userHydration[4].date} | ${userHydration[5].date} | ${userHydration[6].date}<br>
-    <div class="hydration-data-weekly">
-    ${userHydration[0].numOunces} | ${userHydration[1].numOunces} | ${userHydration[3].numOunces} |
-    ${userHydration[4].numOunces} | ${userHydration[5].numOunces} | ${userHydration[6].numOunces}
-    </div>
-    </dt>`
+    // weeklyHydration.innerHTML += `<dt class="weekly-sleep-label">
+    // ${userHydration[0].date} | ${userHydration[1].date} | ${userHydration[3].date} | 
+    // ${userHydration[4].date} | ${userHydration[5].date} | ${userHydration[6].date}<br>
+    // <div class="hydration-data-weekly">
+    // ${userHydration[0].numOunces} | ${userHydration[1].numOunces} | ${userHydration[3].numOunces} |
+    // ${userHydration[4].numOunces} | ${userHydration[5].numOunces} | ${userHydration[6].numOunces}
+    // </div>
+    // </dt>`
+    weeklyHydrationLabel.innerText = `${userHydration[0].date} | ${userHydration[1].date} | ${userHydration[3].date} | ${userHydration[4].date} | ${userHydration[5].date} | ${userHydration[6].date}`
+    weeklyHydrationData.innerText = `${userHydration[0].numOunces} | ${userHydration[1].numOunces} | ${userHydration[3].numOunces} | ${userHydration[4].numOunces} | ${userHydration[5].numOunces} | ${userHydration[6].numOunces}`
 }
 
 export {

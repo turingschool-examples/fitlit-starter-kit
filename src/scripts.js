@@ -38,6 +38,7 @@ function getRandomUser(usersData) {
     populateOnDom(randomUserId)
     getUserInfo(randomUserId)
 }
+
 getRandomUser(userData.users)
 
 function averageOunces(id) {

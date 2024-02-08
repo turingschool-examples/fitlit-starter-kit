@@ -45,18 +45,32 @@ function averageOunces(hydration, id) {
    return Math.round(sum / targetUser.length)
 }
 
-function dailyOunces(hydration, id, date) {
-    let targetUser = hydration.hydrationData.find((user) => {
-        return user.userID === id && user.date === date
+function dailyOunces(hydration, id) {
+    let targetUser = hydration.hydrationData.filter((user) => {
+        return user.userID === id
     });
-    return targetUser.numOunces
+    let index = targetUser.length - 1
+    return targetUser[index].numOunces
 };
 
-//return users water intake for a single day
+// function weeklyOunces() {
+
+// }
+
+//return users weekly water intake
+/*
+    -params = 
+    -filter through users hydration
+    -use a for loop (whaaaaat) ending < 7
+    - create total = 0
+    - total += user.numOunces
+    -return total
+*/
 export {
     getUserInfo,
     calculateAverageSteps,
     getRandomUser,
     averageOunces,
-    dailyOunces
+    dailyOunces,
+    //weeklyOunces
 }

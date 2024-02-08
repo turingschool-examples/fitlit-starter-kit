@@ -2,6 +2,7 @@ import userData from '../src/data/users';
 
 import hydration from '../src/data/hydration';
 
+let todaysDate = new Date();
 
 function getUserInfo(userID) {
     let userInfo = userData.users.find((user) => {
@@ -32,11 +33,12 @@ function averageOunces(hydration, id) {
    return Math.round(sum / targetUser.length) 
 }
 
-function dailyOunces(hydration, id, date) {
-    let targetUser = hydration.hydrationData.find((user) => {
-        return user.userID === id && user.date === date
+function dailyOunces(hydration, id) {
+    let targetUser = hydration.hydrationData.filter((user) => {
+        return user.userID === id
     });
-    return targetUser.numOunces
+    let index = targetUser.length - 1
+    return targetUser[index].numOunces
 };
 
 
@@ -45,5 +47,6 @@ function dailyOunces(hydration, id, date) {
      calculateAverageSteps,
      getRandomUser,
      averageOunces,
-     dailyOunces
+     dailyOunces,
+     //weeklyOunces,
  }

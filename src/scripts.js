@@ -36,16 +36,15 @@ function getAverageDailyFluidOunces(userId, hydrationData) {
 }
 getAverageDailyFluidOunces()
 
-//this keeps returning undefined for dayEntry (blank array). figure out why then move on 
+//this keeps returning undefined for dayEntry (blank array). 
 function getSpecificDay(userId, date) {
-  const dayEntry = hydration.hydrationData.filter((userRecord) => userRecord.userId === userId);
+  const dayEntry = hydration.hydrationData.filter((userRecord) => userRecord.userID === userId);
   const dayOunces = dayEntry.find((userRecord) => userRecord.date === date)
-  console.log(dayEntry)
   return dayOunces;
 }
 
 
-console.log(getSpecificDay(3, '2023/03/24'))
+console.log(getSpecificDay(4, '2023/03/24'))
 
 console.log(getAverageDailyFluidOunces())
 
@@ -56,9 +55,6 @@ console.log(getAverageDailyFluidOunces())
     "numOunces": 28
   }, */
 
-function getSpecificDayFluidOunces (userId, date, hydrationData) {
-
-}
 
 function getWeeklyFluidOunces (userId, endDate, hydrationData) {
   //findIndex, math.max, slice

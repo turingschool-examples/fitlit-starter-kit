@@ -60,6 +60,7 @@ nav a:hover {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  box-shadow: #000000a1 12px 12px 20px 4px;
 }
 
 article {

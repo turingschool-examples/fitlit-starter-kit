@@ -4,6 +4,7 @@ import { generateRandomUser } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
 Chart.register(...registerables);
 
+
 // ------------- * Event Listeners *
 // document.addEventListener("DOMContentLoaded", () => {
 //   displayWelcomeMessage(userObject)
@@ -57,13 +58,13 @@ function updateAccountEmail(user) {
 // account-stride
 function updateAccountStride(user) {
   const accountStride = document.querySelector('#account-stride');
-  accountStride.textContent = `${user.strideLength}ft`;
+  accountStride.textContent = `${user.strideLength} ft.`;
 }
 
 //account-step
 function updateAccountStep(user) {
   const accountStep = document.querySelector('#account-step');
-  accountStep.textContent = `${user.dailyStepGoal}ft`;
+  accountStep.textContent = `${user.dailyStepGoal} steps`;
 }
 
 // account-friends
@@ -71,14 +72,6 @@ function updateAccountFriends(user) {
   const accountFriends = document.querySelector('#account-friends');
   accountFriends.textContent = `${friendIdsToNames(user)}`;
 }
-
-
-// function friendIdsToNames(user) {
-//   const friendNames = user.map(id => {
-//     const friend = users.find(user => user.id === id);
-//     return friend 
-//   })
-// }
 
 function friendIdsToNames(user) {
   var friendArr = user.friends
@@ -117,18 +110,16 @@ function setupEventListeners() {
   });
 
   // document.querySelector('.home-button').addEventListener('click', WhatEverWeWantLikehandleHomeButtonClick);
-}
+
 
 
 setupEventListeners();
 
 const ctx = document.getElementById('stepChart').getContext('2d');
 
-// Set custom height and width for the chart
-ctx.canvas.height = 100; // Set the height here
-ctx.canvas.width = 500; // Set the width here
+ctx.canvas.height = 100;
+ctx.canvas.width = 500; 
 
-// Define chart data
 const stepChartData = {
   labels: ['Your step goal', 'Average step goal'],
   datasets: [{
@@ -146,41 +137,43 @@ const stepChartData = {
   }]
 };
 
-// Define chart options
 const options = {
-  indexAxis: 'y', // This sets the orientation to horizontal
+  indexAxis: 'y',
   scales: {
     x: {
       beginAtZero: true,
       ticks: {
-        color: 'black' // Change font color here
+        color: 'black'
       }
     },
     y: {
       beginAtZero: true,
       ticks: {
-        color: 'black' // Change font color here
+        color: 'black'
       }
     }
   },
   plugins: {
     legend: {
-      display: false // Hide legend
+      display: false
     }
   }
 };
 
-// Create the horizontal bar chart
 const myChart = new Chart(ctx, {
-  type: 'bar', // Set chart type to bar
+  type: 'bar', 
   data: stepChartData,
   options: options
 });
 
-// Export all the functions you need to expose
 export {
   displayWelcomeMessage,
   displayStepGoal,
   compareStepGoalToAverage,
-  // ... any other functions you wish to export
+  updateAccountName,
+  updateAccountAddress,
+  updateAccountEmail,
+  updateAccountStride,
+  updateAccountStep,
+  updateAccountFriends
 };

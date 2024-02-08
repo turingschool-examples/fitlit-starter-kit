@@ -17,6 +17,7 @@ console.log("User Data:", userData);*/
 // Import DOM update functions and data
 import { displayWelcomeMessage } from './domUpdates';
 import users from './data/users';
+import hydration from './data/hydration';
 
 
 function generateRandomUser() {
@@ -28,9 +29,6 @@ function getAverageStepGoal() {
   const totalStepsGoal = users.users.reduce((total, user) => total + user.dailyStepGoal, 0);
   return totalStepsGoal / users.users.length;
 }
-
-
-
 
 
 export { generateRandomUser, getAverageStepGoal };

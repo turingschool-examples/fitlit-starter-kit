@@ -2,6 +2,7 @@ import userData from './data/users.js';
 import hydrationData from './data/hydration.js';
 import { generateRandomUser, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
+import { stepChart } from './chartSetup.js'
 Chart.register(...registerables);
 
 // DOM update functions
@@ -141,15 +142,7 @@ function updateChart(randomUser, allUsers) {
     stepChart.options.scales.y.ticks.min = 0; // Assuming min value is 0
     stepChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 10
     stepChart.update();
-  })
-};
-
-
-  myChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
-  myChart.options.scales.y.ticks.min = 0; // Assuming min value is 0
-  myChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 500; // Adjust as necessary
-  myChart.update();
-}
+  }
 
 setupEventListeners();
 

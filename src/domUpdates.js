@@ -1,9 +1,7 @@
 //NOTE: Your DOM manipulation will occur in this file
 import { getUserInfo, calculateAverageSteps, getRandomUser, dailyOunces, weeklyOunces } from './scripts.js';
-import userData from './data/users';
 
 import { getSleepData } from './apiCalls.js';
-import userHydrationData from './data/hydration';
 
 const username = document.querySelector('.user-name')
 const address = document.querySelector('.address-cont')

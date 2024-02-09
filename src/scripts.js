@@ -27,9 +27,7 @@ import '../src/images/sleepy-star.png'
 import userData from './data/users';
 
 // Example of one way to import functions from the domUpdates file.  You will delete these examples.
-import { displayUserData } from './domUpdates';
-
-import { displayHydrationData } from './domUpdates';
+import { displaySleepData, displayUserData, displayHydrationData } from './domUpdates';
 
 import hydration from '../src/data/hydration';
 
@@ -88,7 +86,8 @@ function weeklyOunces(id) {
 };
 
 function populateOnDom(userId) {
-    displayHydrationData(userId)
+    displayHydrationData(userId),
+    displaySleepData(userId)
 }
 
 export {

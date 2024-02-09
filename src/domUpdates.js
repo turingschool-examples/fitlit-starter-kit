@@ -38,37 +38,37 @@ function getAverageStepGoal(users) {
 // account-name
 function updateAccountName(user) {
   const accountName = document.querySelector('#account-name');
-  accountName.textContent = `${user.name}`;
+  accountName.textContent = `user: ${user.name}`;
 }
 
 // account-address
 function updateAccountAddress(user) {
   const accountAddress = document.querySelector('#account-address');
-  accountAddress.textContent = `${user.address}`;
+  accountAddress.textContent = `address: ${user.address}`;
 }
 
 // account-email
 function updateAccountEmail(user) {
   const accountEmail = document.querySelector('#account-email');
-  accountEmail.textContent = `${user.email}`;
+  accountEmail.textContent = `email: ${user.email}`;
 }
 
 // account-stride
 function updateAccountStride(user) {
   const accountStride = document.querySelector('#account-stride');
-  accountStride.textContent = `${user.strideLength} ft.`;
+  accountStride.textContent = `stride length: ${user.strideLength} ft.`;
 }
 
 //account-step
 function updateAccountStep(user) {
   const accountStep = document.querySelector('#account-step');
-  accountStep.textContent = `${user.dailyStepGoal} steps`;
+  accountStep.textContent = `step goal: ${user.dailyStepGoal} steps`;
 }
 
 // account-friends
 function updateAccountFriends(user) {
   const accountFriends = document.querySelector('#account-friends');
-  accountFriends.textContent = `${friendIdsToNames(user)}`;
+  accountFriends.textContent = `friends: ${friendIdsToNames(user)}`;
 }
 
 function friendIdsToNames(user) {
@@ -112,6 +112,7 @@ function setupEventListeners() {
 
 
 setupEventListeners();
+
 
 export {
   displayWelcomeMessage,

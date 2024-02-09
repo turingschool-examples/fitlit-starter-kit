@@ -53,16 +53,18 @@ nav a:hover {
 }
 
 .info-card div {
-  border: rgb(0, 0, 0) solid;
-  width: 75%;
-  height: 75%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  box-shadow: #000000a1 12px 12px 20px 4px;
-  flex-wrap: wrap;
-  overflow: hidden;
+    border: rgb(0, 0, 0) solid;
+    width: 75%;
+    height: 75%;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.631372549) 12px 12px 20px 4px;
+    overflow: hidden;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: space-around;
+    max-width: 75%;
+    align-items: center;
 }
 
 article {

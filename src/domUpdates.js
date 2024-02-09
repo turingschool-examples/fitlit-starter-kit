@@ -1,6 +1,8 @@
 //NOTE: Your DOM manipulation will occur in this file
 import { getUserInfo, calculateAverageSteps, getRandomUser, dailyOunces, weeklyOunces } from './scripts.js';
 import userData from './data/users';
+
+import { getSleepData } from './apiCalls.js';
 import userHydrationData from './data/hydration';
 
 const username = document.querySelector('.user-name')
@@ -11,6 +13,7 @@ const avgStepGoal = document.querySelector('.global-steps-goal-data')
 const dailyHydration = document.querySelector('.daily-hydration-label')
 const weeklyHydrationLabel = document.querySelector('.weekly-hydration-label')
 const weeklyHydrationData = document.querySelector('.weekly-hydration-data')
+
 
 
 function displayUserData(userInfo) {

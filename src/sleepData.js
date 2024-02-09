@@ -101,5 +101,6 @@ function findWeeklyQuality(sleep, id, day) {
 }
 
 export {
-    initiateSleepFunctions
+    initiateSleepFunctions,
+    calculateAvgHours
 }

@@ -175,7 +175,7 @@ dt {
   background-color: #FAC8EC;
   border-top: 3px black solid;
   border-bottom: 3px black solid;
-  height: 15%;
+  height: 10%;
   font-size: 1.45em;
   font-weight: 500;
   font-family: 'Sixtyfour', sans-serif;
@@ -185,7 +185,7 @@ dt {
 
 } */
 
-.card-heading {
+.hydration-heading {
   font-family: "Bungee Outline", sans-serif;
   /* font-family: 'Londrina Outline', sans-serif; */
   font-size: 4.5em;
@@ -194,10 +194,20 @@ dt {
   margin-top: 2.5vh;
 }
 
+.sleep-heading {
+  font-family: "Bungee Outline", sans-serif;
+  /* font-family: 'Londrina Outline', sans-serif; */
+  font-size: 4.5em;
+  text-align: left;
+  padding-left: 5vw;
+  margin-top: 2.5vh;
+  display: flex;
+}
+
 .daily-hydration-cont,
 .weekly-hydration-cont {
   display: flex;
-  height: 25%;
+  height: 50%;
 }
 
 .daily-hydration-cont {
@@ -210,7 +220,7 @@ dt {
   padding: 4vh 0vh;
   width: 35vw;
   margin: 2vh 0vh;
-  font-size: 1.5em 
+  font-size: 16px, 
   
 }
 .weekly-hydration-label {
@@ -218,16 +228,16 @@ dt {
   padding: 4vh 0vh;
   width: 42vw;
   margin: -10vh 0vh;
-  font-size: 1.5em;
+  font-size: 16px;
 }
 
 .daily-hydration-data {
-  font-size: 1.5em;
+  font-size: 16px;
   margin-top: 6vh;
 }
 
 .weekly-hydration-data {
-  font-size: 1.5em;
+  font-size: 16px;
   margin: -5.5vh 2vw;
 }
 
@@ -242,6 +252,6 @@ dt {
 /*<><> Sleep <><>*/
 
 .sleep-container {
-  border: 1px orange solid;
+  padding-top: 6vh;
   height: 50%;
 }

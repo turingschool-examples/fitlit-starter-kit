@@ -19,7 +19,6 @@ import { displayWelcomeMessage } from './domUpdates';
 import users from './data/users';
 import hydration from './data/hydration';
 
-
 function generateRandomUser() {
   const randomIndex = Math.floor(Math.random() * users.users.length);
   return users.users[randomIndex];
@@ -29,29 +28,41 @@ function getAverageStepGoal() {
   const totalStepsGoal = users.users.reduce((total, user) => total + user.dailyStepGoal, 0);
   return totalStepsGoal / users.users.length;
 }
-function getAverageDailyFluidOunces(userId, hydration) {
-  const userHydrationData = hydration.hydrationData.filter((userRecord) => userRecord.userId === userId);
+
+function getAverageDailyFluidOunces(userId) {
+  const userHydrationData = hydration.hydrationData.filter((userRecord) => userRecord.userID === userId);
   const totalOunces = userHydrationData.reduce((acc, userRecord) => acc += userRecord.numOunces, 0);
-  return userHydrationData.length > 0 ? totalOunces / userHydrationData.length : 0;
+  return totalOunces / userHydrationData.length;
 }
-getAverageDailyFluidOunces()
+
 
 function getSpecificDay(userId, date) {
-  const dayEntry = hydration.hydrationData.filter((userRecord) => userRecord.userID === userId);
-  const dayOunces = dayEntry.find((userRecord) => userRecord.date === date)
-  return dayOunces;
+  const dayEntry = hydration.hydrationData.find(userRecord => userRecord.userID === userId && userRecord.date === date);
+  return dayEntry ? dayEntry.numOunces : 0;
 }
 
-
-console.log(getSpecificDay(4, '2023/03/24'))
-console.log(getAverageDailyFluidOunces())
 
 function getWeeklyFluidOunces (userId, endDate, hydrationData) {
   //findIndex, math.max, slice
 }
 
 
+//console logs to test if we're getting the right info
+document.addEventListener('DOMContentLoaded', () => {
+  const currentUser = generateRandomUser(users);
+  console.log(`This users ID should be ${currentUser.id}`);
+
+  const averageOunces = getAverageDailyFluidOunces(currentUser.id)
+  console.log(averageOunces)
+
+  const testDate = '2023/03/24'
+  const ouncesForDay = getSpecificDay(currentUser.id, testDate)
+  console.log(`fl consumed by user on ${testDate}`, ouncesForDay)
+});
+
+
 export { generateRandomUser, getAverageStepGoal };
 
 // function for IT 1.1
 // name: repurpose displayWelcomeMessage() with a new location and last name
+

@@ -9,17 +9,28 @@ import './css/styles.css';
 import './images/turing-logo.png';
 
 // An example of how you tell webpack to use a JS file
-import userData from './data/users';
+// import userData from './data/users';
 
 // Example of one way to import functions from the domUpdates file.  You will delete these examples.
 import { displayUserData } from './domUpdates';
 
 import { displayHydrationData } from './domUpdates';
 
-import hydration from '../src/data/hydration';
+// import hydration from '../src/data/hydration';
 
-function getUserInfo(userID) {
-    let userInfo = userData.users.find((user) => {
+function initiateUserFunctions(userData) {
+    Promise.all([getRandomUser(userData.users), 
+    calculateAverageSteps(userData)]).then(console.log('hi userdata'))  
+}
+
+function initiateHydrationFunctions(hydrationData) {
+    Promise.all([averageOunces(hydrationData),
+    dailyOunces(hydrationData), dailyOunces(hydrationData),  displayHydrationData(hydrationData)])
+    .then(console.log('hi hydrationData'))  
+}
+
+function getUserInfo(userID, userData) {
+    let userInfo = userData.find((user) => {
         return user.id === userID
     })
     return displayUserData(userInfo)
@@ -33,16 +44,17 @@ function calculateAverageSteps(userData) {
     return totalSteps / userData.users.length
 }
 
-function getRandomUser(usersData) {
-    let randomUserId = Math.floor(Math.random() * usersData.length)
-    populateOnDom(randomUserId)
-    getUserInfo(randomUserId)
+var randomUserId; 
+
+function getRandomUser(userData) {
+    randomUserId = Math.floor(Math.random() * userData.length)
+    // populateOnDom(randomUserId)
+    getUserInfo(randomUserId, userData)
 }
 
-getRandomUser(userData.users)
 
-function averageOunces(id) {
-    var targetUser = hydration.hydrationData.filter(user => user.userID === id)
+function averageOunces(hydration) {
+    var targetUser = hydration.hydrationData.filter(user => user.userID === randomUserId)
     var sum = targetUser.reduce((acc, user) => {
         acc += user.numOunces
         return acc
@@ -50,18 +62,18 @@ function averageOunces(id) {
     return Math.round(sum / targetUser.length)
 }
 
-function dailyOunces(id) {
+function dailyOunces(hydration) {
     let targetUser = hydration.hydrationData.filter((user) => {
-        return user.userID === id
+        return user.userID === randomUserId
     });
     let index = targetUser.length - 1
     return `${targetUser[index].date} : ${targetUser[index].numOunces}oz`
 };
 
-function weeklyOunces(id) {
+function weeklyOunces(hydration) {
     let week = []
     let targetUser = hydration.hydrationData.filter((user) => {
-        return user.userID === id
+        return user.userID === randomUserId
     });
     for (var i = 0; i < 7; i++) {
         let day = {}
@@ -72,9 +84,10 @@ function weeklyOunces(id) {
     return week
 };
 
-function populateOnDom(userId) {
-    displayHydrationData(userId)
-}
+
+// function populateOnDom(userId) {
+//     displayHydrationData(userId)
+// }
 
 export {
     getUserInfo,
@@ -83,5 +96,7 @@ export {
     averageOunces,
     dailyOunces,
     weeklyOunces,
-    populateOnDom
+    // populateOnDom,
+    initiateUserFunctions,
+    initiateHydrationFunctions,
 }

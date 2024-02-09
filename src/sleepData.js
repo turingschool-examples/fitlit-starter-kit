@@ -24,7 +24,7 @@ function initiateSleepFunctions(sleepData) {
     calculateAvgQuality(sleepData, 2),
     findHoursSlept(sleepData, 2, '2023/03/24'),
     findSleepQuality(sleepData, 2, '2023/03/24'),
-    findRecentWeek(sleepData, 2)]).then(console.log('hi'))
+    findRecentWeek(sleepData, 2)]).then(console.log('sleep api works'))
 }
 
 function calculateAvgHours(sleep, id) {

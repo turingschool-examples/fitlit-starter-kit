@@ -23,7 +23,7 @@
           <p class="user-step">xx,xxx</p>
           <h3>The average daily step goal is: </h3>
           <p class="average-step">x,xxx</p>
-          <canvas id="stepChart" style="width:100%;max-width:700px"></canvas>
+          <canvas id="stepChart"></canvas>
         </div>
       </section>
       <section class="water-main info-card" id="waterCard">
@@ -31,18 +31,13 @@
         <div>
           <h3>Average Daily Hydration:</h3>
           <p id="averageDailyOunces">0 oz</p>
-        </div>
-        <div>
           <label for="specificDayInput">Hydration for a specific day:</label>
           <input type="date" id="specificDayInput">
           <p id="specificDayOunces">0 oz</p>
-        </div>
-        <div>
           <label for="weeklyStartDayInput">Start date for weekly hydration:</label>
           <input type="date" id="weeklyStartDayInput">
           <ul id="weeklyOuncesList">
-            <!-- list items dynamically added here -->
-          </ul>
+          <canvas id="hydChart"></canvas>
         </div>
       </section>
       <section class="sleep-main info-card" id="section4">
@@ -67,46 +62,5 @@
     </main>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script>
-      var xValues = ["Your Step Goal", "Average Step Goal"];
-      var yValues = [11000, 6000];
-      var barColors = [
-        "#1a1a1a",
-        "#1a1a1a",
-      ];
-      
-      new Chart("stepChart", {
-        type: "horizontalBar",
-        data: {
-          labels: xValues,
-          datasets: [{
-            backgroundColor: barColors,
-            data: yValues
-          }]
-        },
-        options: {
-          scales: {
-            xAxes: [{
-              ticks: {min: 0, max:12000,
-              fontSize: 20},
-            }],
-            yAxes: [{
-                gridLines: {
-                  display: false
-                },
-                barThickness: 25,
-                barPercentage: 1,
-                categoryPercentage: 1,
-                ticks: {fontSize: 20}
-              }],
-          },
-          legend: {display: false},
-          title: {
-            display: true,
-          }
-        }
-      });
-      </script>
   </body>
 </html>

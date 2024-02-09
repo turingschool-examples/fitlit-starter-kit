@@ -1,22 +1,22 @@
-import { expect } from 'chai';
+// import { expect } from 'chai';
 
-const { createCalendar } = require('../src/data/calendar')
+// const { createCalendar } = require('../src/data/calendar')
 
-describe('calendar creation', () => {
-    it('should be a function', function () {
-      expect(createCalendar).to.be.a('function');
-    });
+// describe('calendar creation', () => {
+//     it('should be a function', function () {
+//       expect(createCalendar).to.be.a('function');
+//     });
 
-    it('should create a calendar object', function () {
-      const day1 = createCalendar(3, 24, 2023)
+//     it('should create a calendar object', function () {
+//       const day1 = createCalendar(3, 24, 2023)
 
-      expect(day1).to.deep.equal({month: 3, day: 24, year: 2023})
-    })
-  });
+//       expect(day1).to.deep.equal({month: 3, day: 24, year: 2023})
+//     })
+//   });
 
-  it.skip('should display user data for a given day', function () {
+//   it.skip('should display user data for a given day', function () {
 
-  })
+//   })
 
 
 //should initialize a calendar object

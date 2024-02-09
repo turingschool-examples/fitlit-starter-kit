@@ -1,16 +1,43 @@
 //NOTE: Your DOM manipulation will occur in this file
+import { getUserInfo, calculateAverageSteps, getRandomUser, dailyOunces, weeklyOunces } from './scripts.js';
+import userData from './data/users';
 
-//Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.
-const exampleFunction1 = (person) => {
-  console.log(`oh hi there ${person}`)
+import { getSleepData } from './apiCalls.js';
+import userHydrationData from './data/hydration';
+
+const username = document.querySelector('.user-name')
+const address = document.querySelector('.address-cont')
+const strideData = document.querySelector('.stride-data')
+const stepGoal = document.querySelector('.steps-goal-data')
+const avgStepGoal = document.querySelector('.global-steps-goal-data')
+const dailyHydration = document.querySelector('.daily-hydration-label')
+const weeklyHydrationLabel = document.querySelector('.weekly-hydration-label')
+const weeklyHydrationData = document.querySelector('.weekly-hydration-data')
+
+
+
+function displayUserData(userInfo) {
+  username.innerText = userInfo.name
+  strideData.innerText = userInfo.strideLength
+  stepGoal.innerText = userInfo.dailyStepGoal
+  avgStepGoal.innerText = calculateAverageSteps(userData)
+  address.innerHTML +=
+  `<address class='contact-info'>
+    Email: ${userInfo.email} <br>
+    Address: ${userInfo.address} <br>
+  </address>`
 }
 
-const exampleFunction2 = (person) => {
-  console.log(`bye now ${person}`)
+function displayHydrationData(userId) {
+    var userHydration = weeklyOunces(userId)
+    console.log(userHydration)
+    console.log(userId)
+    dailyHydration.innerText = dailyOunces(userId)
+    weeklyHydrationLabel.innerText = `${userHydration[0].date} | ${userHydration[1].date} | ${userHydration[3].date} | ${userHydration[4].date} | ${userHydration[5].date} | ${userHydration[6].date}`
+    weeklyHydrationData.innerText = `${userHydration[0].numOunces} | ${userHydration[1].numOunces} | ${userHydration[3].numOunces} | ${userHydration[4].numOunces} | ${userHydration[5].numOunces} | ${userHydration[6].numOunces}`
 }
-
 
 export {
-  exampleFunction1,
-  exampleFunction2,
+  displayUserData,
+  displayHydrationData
 }

@@ -7,7 +7,7 @@ import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/fitlit-logo.png';
-
+import './images/white-texture.png';
 // An example of how you tell webpack to use a JS file
 /*import userData from './data/users';
 console.log("User Data:", userData);*/
@@ -18,7 +18,6 @@ console.log("User Data:", userData);*/
 import { displayWelcomeMessage, displayAverageDailyOunces, displaySpecificDayOunces, displayWeeklyHydration, setupHydrationInputListeners } from './domUpdates';
 import users from './data/users';
 import hydration from './data/hydration';
-
 
 function generateRandomUser() {
   const randomIndex = Math.floor(Math.random() * users.users.length);
@@ -34,7 +33,6 @@ function getAverageDailyFluidOunces(userId) {
   const totalOunces = userHydrationData.reduce((acc, userRecord) => acc += userRecord.numOunces, 0);
   return userHydrationData.length > 0 ? totalOunces / userHydrationData.length : 0;
 }
-getAverageDailyFluidOunces()
 
 function getSpecificDay(userId, date) {
   const dayEntry = hydration.hydrationData.find(entry => entry.userID === userId && entry.date === date);
@@ -90,5 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 export { generateRandomUser, getAverageStepGoal, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces };
 
+
 // function for IT 1.1
 // name: repurpose displayWelcomeMessage() with a new location and last name
+

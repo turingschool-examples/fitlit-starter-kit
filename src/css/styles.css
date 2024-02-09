@@ -4,8 +4,8 @@
 }
 body, html {
   scroll-behavior: smooth;
-  background: url('../images/white-texture.jpg') repeat-x top, url('../images/white-texture-invert.jpg') repeat-x bottom;
-  background-size: 25% 50%, 25% 50%;
+  background: url('../images/white-texture.png') repeat-x;
+  background-size: 100% 100%;
 }
 main {
   scroll-behavior: smooth;
@@ -53,14 +53,18 @@ nav a:hover {
 }
 
 .info-card div {
-  border: rgb(0, 0, 0) solid;
-  width: 75%;
-  height: 75%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
+    border: rgb(0, 0, 0) solid;
+    width: 75%;
+    height: 75%;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.631372549) 12px 12px 20px 4px;
+    overflow: hidden;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: space-around;
+    max-width: 75%;
+    align-items: center;
 }
 
 article {

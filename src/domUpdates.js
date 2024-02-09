@@ -29,37 +29,37 @@ function getAverageStepGoal(users) {
 // account-name
 function updateAccountName(user) {
   const accountName = document.querySelector('#account-name');
-  accountName.textContent = `${user.name}`;
+  accountName.textContent = `user: ${user.name}`;
 }
 
 // account-address
 function updateAccountAddress(user) {
   const accountAddress = document.querySelector('#account-address');
-  accountAddress.textContent = `${user.address}`;
+  accountAddress.textContent = `address: ${user.address}`;
 }
 
 // account-email
 function updateAccountEmail(user) {
   const accountEmail = document.querySelector('#account-email');
-  accountEmail.textContent = `${user.email}`;
+  accountEmail.textContent = `email: ${user.email}`;
 }
 
 // account-stride
 function updateAccountStride(user) {
   const accountStride = document.querySelector('#account-stride');
-  accountStride.textContent = `${user.strideLength} ft.`;
+  accountStride.textContent = `stride length: ${user.strideLength} ft.`;
 }
 
 //account-step
 function updateAccountStep(user) {
   const accountStep = document.querySelector('#account-step');
-  accountStep.textContent = `${user.dailyStepGoal} steps`;
+  accountStep.textContent = `step goal: ${user.dailyStepGoal} steps`;
 }
 
 // account-friends
 function updateAccountFriends(user) {
   const accountFriends = document.querySelector('#account-friends');
-  accountFriends.textContent = `${friendIdsToNames(user)}`;
+  accountFriends.textContent = `friends: ${friendIdsToNames(user)}`;
 }
 
 function friendIdsToNames(user) {
@@ -137,6 +137,14 @@ function updateChart(randomUser, allUsers) {
   const averageStepGoal = getAverageStepGoal(allUsers);
   compareStepGoalToAverage(averageStepGoal);
 
+    stepChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
+    stepChart.options.scales.y.ticks.min = 0; // Assuming min value is 0
+    stepChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 10
+    stepChart.update();
+  })
+};
+
+
   myChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
   myChart.options.scales.y.ticks.min = 0; // Assuming min value is 0
   myChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 500; // Adjust as necessary
@@ -145,56 +153,6 @@ function updateChart(randomUser, allUsers) {
 
 setupEventListeners();
 
-const ctx = document.getElementById('stepChart').getContext('2d');
-
-ctx.canvas.height = 100;
-ctx.canvas.width = 500; 
-
-const stepChartData = {
-  labels: ['Your step goal', 'Average step goal'],
-  datasets: [{
-    label: '',
-    data: [],
-    backgroundColor: [
-      '#1a1a1a',
-      '#1a1a1a',
-    ],
-    borderColor: [
-      '#1a1a1a',
-      '#1a1a1a',
-    ],
-    borderWidth: 1
-  }]
-};
-
-const options = {
-  indexAxis: 'y',
-  scales: {
-    x: {
-      beginAtZero: true,
-      ticks: {
-        color: 'black'
-      }
-    },
-    y: {
-      beginAtZero: true,
-      ticks: {
-        color: 'black'
-      }
-    }
-  },
-  plugins: {
-    legend: {
-      display: false
-    }
-  }
-};
-
-const myChart = new Chart(ctx, {
-  type: 'bar', 
-  data: stepChartData,
-  options: options
-});
 
 export {
   displayWelcomeMessage,

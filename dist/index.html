@@ -43,6 +43,7 @@
           <ul id="weeklyOuncesList">
             <!-- list items dynamically added here -->
           </ul>
+
         </div>
       </section>
       <section class="sleep-main info-card" id="section4">
@@ -50,63 +51,17 @@
       </section>
       <section class="account-main info-card" id="section5">
         <div class="section-text">
-          <h3>name</h3>
-          <p id="account-name"></p>
-          <h3>address</h3>
-          <p id="account-address"></p>
-          <h3>email</h3>
-          <p id="account-email"></p>
-          <h3>stride length</h3>
-          <p id="account-stride"></p>
-          <h3>daily step goal</h3>
-          <p id="account-step"></p>
-          <h3>friends</h3>
-          <p id="account-friends"></p>
+          <h3 id="account-name">name</h3>
+          <h3 id="account-address">address</h3>
+          <h3 id="account-email">email</h3>
+          <h3 id="account-stride">stride length</h3>
+          <h3 id="account-step">daily step goal</h3>
+          <h3 id="account-friends">friends</h3>
            </div>
       </section>
     </main>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script>
-      var xValues = ["Your Step Goal", "Average Step Goal"];
-      var yValues = [11000, 6000];
-      var barColors = [
-        "#1a1a1a",
-        "#1a1a1a",
-      ];
-      
-      new Chart("stepChart", {
-        type: "horizontalBar",
-        data: {
-          labels: xValues,
-          datasets: [{
-            backgroundColor: barColors,
-            data: yValues
-          }]
-        },
-        options: {
-          scales: {
-            xAxes: [{
-              ticks: {min: 0, max:12000,
-              fontSize: 20},
-            }],
-            yAxes: [{
-                gridLines: {
-                  display: false
-                },
-                barThickness: 25,
-                barPercentage: 1,
-                categoryPercentage: 1,
-                ticks: {fontSize: 20}
-              }],
-          },
-          legend: {display: false},
-          title: {
-            display: true,
-          }
-        }
-      });
-      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
   </body>
 </html>

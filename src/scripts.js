@@ -15,7 +15,7 @@ console.log("User Data:", userData);*/
 
 
 // Import DOM update functions and data
-import { displayWelcomeMessage } from './domUpdates';
+import { displayWelcomeMessage, displayAverageDailyOunces, displaySpecificDayOunces, displayWeeklyHydration, setupHydrationInputListeners } from './domUpdates';
 import users from './data/users';
 import hydration from './data/hydration';
 
@@ -28,40 +28,66 @@ function getAverageStepGoal() {
   const totalStepsGoal = users.users.reduce((total, user) => total + user.dailyStepGoal, 0);
   return totalStepsGoal / users.users.length;
 }
-
 function getAverageDailyFluidOunces(userId) {
   const userHydrationData = hydration.hydrationData.filter((userRecord) => userRecord.userID === userId);
   const totalOunces = userHydrationData.reduce((acc, userRecord) => acc += userRecord.numOunces, 0);
-  return totalOunces / userHydrationData.length;
+  return userHydrationData.length > 0 ? totalOunces / userHydrationData.length : 0;
 }
-
 
 function getSpecificDay(userId, date) {
-  const dayEntry = hydration.hydrationData.find(userRecord => userRecord.userID === userId && userRecord.date === date);
-  return dayEntry ? dayEntry.numOunces : 0;
+  const dayEntry = hydration.hydrationData.find(entry => entry.userID === userId && entry.date === date);
+  return dayEntry ? dayEntry.numOunces : 0; // return numOunces, or 0 if not found
 }
 
+  function getWeeklyFluidOunces(userId, endDate, hydrationData) {
+    // convert endDate to a Date object for easier comparison
+    const endDateObj = new Date(endDate);
+  
+    // then get the start date by subtracting 6 days from the endDate
+    const startDateObj = new Date(endDateObj);
+    startDateObj.setDate(startDateObj.getDate() - 6);
+  
+    // filter hydration data for the specific user and within the date range
+    const weeklyData = hydrationData.filter(userRecord => {
+      const recordDateObj = new Date(userRecord.date);
+      return userRecord.userID === userId && recordDateObj >= startDateObj && recordDateObj <= endDateObj;
+    });
+  
+    // sort the data by date if needed
+    weeklyData.sort((a, b) => new Date(a.date) - new Date(b.date));
+  
+    // return the filtered and sorted data
+    return weeklyData.map(userRecord => ({
+      date: userRecord.date,
+      numOunces: userRecord.numOunces
+    }));
+  }
 
-function getWeeklyFluidOunces (userId, endDate, hydrationData) {
-  //findIndex, math.max, slice
-}
 
 
-//console logs to test if we're getting the right info
 document.addEventListener('DOMContentLoaded', () => {
   const currentUser = generateRandomUser(users);
-  console.log(`This users ID should be ${currentUser.id}`);
+  console.log(`Testing for randomly selected user ID: ${currentUser.id}`);
 
-  const averageOunces = getAverageDailyFluidOunces(currentUser.id)
-  console.log(averageOunces)
+  const averageOunces = getAverageDailyFluidOunces(currentUser.id, hydration);
+  console.log(`Average daily fluid ounces for user ${currentUser.id}:`, averageOunces);
 
-  const testDate = '2023/03/24'
-  const ouncesForDay = getSpecificDay(currentUser.id, testDate)
-  console.log(`fl consumed by user on ${testDate}`, ouncesForDay)
+  const userId = currentUser.id; // ID of the current, randomly selected user
+  const date = '2023/03/24'; // specific date we're interested in
+  const ouncesForDay = getSpecificDay(userId, date, hydration.hydrationData);
+  console.log(`Fluid ounces consumed by user ${userId} on ${date}:`, ouncesForDay);
+
+  const endDate = '2023/03/31'; // the last date of the 7-day period you want to run back
+  const weeklyHydrationData = getWeeklyFluidOunces(userId, endDate, hydration.hydrationData);
+
+  console.log(`Weekly hydration data for user 47:`); //after obtaining the weeklyHydrationData, this should iterate through the array to log the date and numOunces for each entry
+  weeklyHydrationData.forEach(entry => {
+  console.log(`Date: ${entry.date}, Fluid Ounces: ${entry.numOunces}`);
+});
 });
 
+export { generateRandomUser, getAverageStepGoal, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces };
 
-export { generateRandomUser, getAverageStepGoal };
 
 // function for IT 1.1
 // name: repurpose displayWelcomeMessage() with a new location and last name

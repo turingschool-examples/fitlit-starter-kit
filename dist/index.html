@@ -26,10 +26,23 @@
           <canvas id="stepChart" style="width:100%;max-width:700px"></canvas>
         </div>
       </section>
-      <section class="water-main info-card" id="section3">
-        <div class="water-section-text">
-          <h3>Average Daily Fluid Ounces:<h3>
-          <p class ="average-fluid-ounces">x,xxx</p>
+      <section class="water-main info-card" id="waterCard">
+        <h2>Hydration Info</h2>
+        <div>
+          <h3>Average Daily Hydration:</h3>
+          <p id="averageDailyOunces">0 oz</p>
+        </div>
+        <div>
+          <label for="specificDayInput">Hydration for a specific day:</label>
+          <input type="date" id="specificDayInput">
+          <p id="specificDayOunces">0 oz</p>
+        </div>
+        <div>
+          <label for="weeklyStartDayInput">Start date for weekly hydration:</label>
+          <input type="date" id="weeklyStartDayInput">
+          <ul id="weeklyOuncesList">
+            <!-- list items dynamically added here -->
+          </ul>
 
         </div>
       </section>

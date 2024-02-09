@@ -2,6 +2,7 @@ import userData from './data/users.js';
 import hydrationData from './data/hydration.js';
 import { generateRandomUser, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
+import { stepChart, hydChart } from './chartSetup'
 Chart.register(...registerables);
 
 // DOM update functions
@@ -73,8 +74,7 @@ function friendIdsToNames(user) {
   return friendNames.join(" - ")
 }
 
-function displayAverageDailyOunces(userId, hydrationData) {
-  const ounces = getAverageDailyFluidOunces(userId, hydrationData);
+function displayAverageDailyOunces(ounces) {
   document.getElementById('averageDailyOunces').textContent = `${ounces.toFixed(2)} oz`;
 }
 
@@ -83,18 +83,16 @@ function displaySpecificDayOunces(ounces) {
 }
 
 // function to display weekly hydration data for the random user
-function displayWeeklyHydration(userId, startDate, hydrationData) {
-  const weeklyData = getWeeklyFluidOunces(userId, startDate, hydrationData);
+function displayWeeklyHydration(userId, startDate) {
+  const weeklyData = getWeeklyFluidOunces(userId, startDate);
   const weeklyOuncesList = document.getElementById('weeklyOuncesList');
   weeklyOuncesList.innerHTML = '';
   weeklyData.forEach(dayData => {
     const listItem = document.createElement('li');
     listItem.textContent = `Date: ${dayData.date}, Ounces: ${dayData.numOunces}`;
     weeklyOuncesList.appendChild(listItem);
-    console.log('<><><>', dayData)
   });
 }
-
 
 // Event listener setup function
 function setupEventListeners() {
@@ -108,10 +106,13 @@ function setupEventListeners() {
     updateAccountStride(randomUser);
     updateAccountStep(randomUser);
     updateAccountFriends(randomUser);
+    //displayAverageDailyOunces(randomUser);// not pushing?
+    //displaySpecificDayOunces(randomUser); // pushing [object Object]?
+    //displayWeeklyHydration(randomUser); // not pushing?
 
     // display the average daily fluid ounces for the loaded user
-    const averageOunces = getAverageDailyFluidOunces(randomUser.id);
-    displayAverageDailyOunces(averageOunces);
+    const averageOunces = getAverageDailyFluidOunces(randomUser.id); // Assuming getAverageDailyFluidOunces now correctly accesses hydration data internally
+displayAverageDailyOunces(averageOunces);
 
     // listener for specific day hydration input
     document.getElementById('specificDayInput').addEventListener('change', function() {
@@ -123,8 +124,7 @@ function setupEventListeners() {
     // listener for weekly hydration start date input
     document.getElementById('weeklyStartDayInput').addEventListener('change', function() {
       const startDate = this.value;
-      const weeklyHydrationData = getWeeklyFluidOunces(randomUser.id, startDate);
-      displayWeeklyHydration(weeklyHydrationData);
+      displayWeeklyHydration(randomUser.id, startDate); // Ensure this function is called with the correct arguments
     });
 
     // ipdate the chart with initial data
@@ -137,18 +137,14 @@ function updateChart(randomUser, allUsers) {
   const averageStepGoal = getAverageStepGoal(allUsers);
   compareStepGoalToAverage(averageStepGoal);
 
-    stepChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
-    stepChart.options.scales.y.ticks.min = 0; // Assuming min value is 0
-    stepChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 10
-    stepChart.update();
-  })
-};
-
-
-  myChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
-  myChart.options.scales.y.ticks.min = 0; // Assuming min value is 0
-  myChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 500; // Adjust as necessary
-  myChart.update();
+  stepChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
+  stepChart.options.scales.y.ticks.min = 0; // Assuming min value is 0
+  stepChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 500; // Adjust as necessary
+  stepChart.update();
+  hydChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
+  hydChart.options.scales.y.ticks.min = 0; // Assuming min value is 0
+  hydChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 500; // Adjust as necessary
+  hydChart.update();
 }
 
 setupEventListeners();

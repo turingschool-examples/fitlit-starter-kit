@@ -23,7 +23,7 @@
           <p class="user-step">xx,xxx</p>
           <h3>The average daily step goal is: </h3>
           <p class="average-step">x,xxx</p>
-          <canvas id="stepChart" style="width:100%;max-width:700px"></canvas>
+          <canvas id="stepChart"></canvas>
         </div>
       </section>
       <section class="water-main info-card" id="waterCard">
@@ -31,19 +31,13 @@
         <div>
           <h3>Average Daily Hydration:</h3>
           <p id="averageDailyOunces">0 oz</p>
-        </div>
-        <div>
           <label for="specificDayInput">Hydration for a specific day:</label>
           <input type="date" id="specificDayInput">
           <p id="specificDayOunces">0 oz</p>
-        </div>
-        <div>
           <label for="weeklyStartDayInput">Start date for weekly hydration:</label>
           <input type="date" id="weeklyStartDayInput">
           <ul id="weeklyOuncesList">
-            <!-- list items dynamically added here -->
-          </ul>
-
+          <canvas id="hydChart"></canvas>
         </div>
       </section>
       <section class="sleep-main info-card" id="section4">
@@ -62,6 +56,5 @@
     </main>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
   </body>
 </html>

@@ -48,7 +48,7 @@ function getSpecificDay(userId, date) {
     startDateObj.setDate(startDateObj.getDate() - 6);
   
     // filter hydration data for the specific user and within the date range
-    const weeklyData = hydrationData.filter(userRecord => {
+    const weeklyData = hydration.hydrationData.filter(userRecord => {
       const recordDateObj = new Date(userRecord.date);
       return userRecord.userID === userId && recordDateObj >= startDateObj && recordDateObj <= endDateObj;
     });

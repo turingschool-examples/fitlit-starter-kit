@@ -1,5 +1,247 @@
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #BC74F3;
   height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: 'Bungee', sans-serif;
+}
+
+main {
+  background-color: white;
+  height: 93%;
+  width: 93%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0;
+  background-color: #FFFCF8;
+  height: 5%;
+}
+
+h1 {
+  background-color: #FFFCF8;
+  /* font-family: 'DotGothic16', sans-serif; */
+  font-size: 2em;
+  margin-left: .5em;
+  margin-top: 0;
+  padding-top: .5em;
+}
+
+.dumbell-image {
+  margin-left: .5em;
+  margin-top: 1em;
+}
+
+/*<><> Main user Data <><>*/
+/*<> Left <>*/
+
+.user-container { 
+  background-color: #FFFCF8;
+  height: 50%;
+}
+
+.name-cont {
+  width: 20%;
+}
+
+.user-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.user-data-left {
+  display: flex;
+  flex-direction: column;
+  margin-left: 4em;
+  margin-bottom: 6em;
+  margin-top: 3em;
+  width: 25%;
+  background: rgba(212, 183, 248, 0.24);
+  padding-left: 3em;
+}
+
+.user-name {
+  font-size: 3em;
+}
+
+.address-cont {
+  float: right;
+  padding-right: 2em;
+  padding-bottom: 2em;
+}
+
+.profile-image {
+  margin-bottom: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+/*<> Right <>*/
+
+.user-data-right {
+  display: flex;
+  justify-content: right;
+  width: 40%;
+  margin-top: 4em;
+}
+
+dl {
+  display: flex;
+  flex-direction: column;
+}
+
+dt {
+  height: 45%;
+  margin-left: .5em;
+  text-align: center;
+}
+.stride-cont,
+.steps-goal-cont,
+.global-steps-goal-cont {
+  display: flex;
+  justify-content: baseline;
+  flex-direction: row-reverse;
+  height: 25%;
+  padding: 0;
+}
+
+.data {
+  padding-top: 15px;
+}
+
+/* animation: 3s linear 1s infinite running slidein; */
+@keyframes stride-animation {
+  from {width: 1vw;}
+  to {width: 15vw;}
+}
+
+@keyframes steps-goal-animation {
+  from {width: 1vw;}
+  to {width: 25vw;}
+}
+
+@keyframes global-steps-goal-animation {
+  from {width: 1vw;}
+  to {width: 35vw;}
+}
+
+.stride-label {
+  background-color: #D4B7F8;
+  padding-top: 15px;
+  width: 15vw;
+  animation-name: stride-animation;
+  animation-duration: 3s;
+  animation-direction: normal;
+}
+
+.steps-goal-label {
+  background-color: #FBE5A8;
+  padding-top: 15px;
+  width: 25vw;
+  animation-name: steps-goal-animation;
+  animation-duration: 3s;
+  animation-direction: normal;
+}
+
+.global-steps-goal-label {
+  background-color: #B7DAF7;
+  padding-top: 15px;
+  width: 35vw;
+  animation-name: global-steps-goal-animation;
+  animation-duration: 3s;
+  animation-direction: normal;
+}
+
+/*<><> Hydration <><>*/
+.hydration-container {
+  height: 70%;
+}
+
+.banner-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FAC8EC;
+  border-top: 3px black solid;
+  border-bottom: 3px black solid;
+  height: 15%;
+  font-size: 1.45em;
+  font-weight: 500;
+  font-family: 'Sixtyfour', sans-serif;
+}
+
+/* .user-hydration {
+
+} */
+
+.card-heading {
+  font-family: "Bungee Outline", sans-serif;
+  /* font-family: 'Londrina Outline', sans-serif; */
+  font-size: 4.5em;
+  text-align: right;
+  padding-right: 5vw;
+  margin-top: 2.5vh;
+}
+
+.daily-hydration-cont,
+.weekly-hydration-cont {
+  display: flex;
+  height: 25%;
+}
+
+.daily-hydration-cont {
+  display: flex;
+  justify-content: start;
+}
+
+.daily-hydration-label {
+  background-color: #B7DAF7;
+  padding: 4vh 0vh;
+  width: 35vw;
+  margin: 2vh 0vh;
+  font-size: 1.5em 
+  
+}
+.weekly-hydration-label {
+  background-color: #FBE5A8;
+  padding: 4vh 0vh;
+  width: 42vw;
+  margin: -10vh 0vh;
+  font-size: 1.5em;
+}
+
+.daily-hydration-data {
+  font-size: 1.5em;
+  margin-top: 6vh;
+}
+
+.weekly-hydration-data {
+  font-size: 1.5em;
+  margin: -5.5vh 2vw;
+}
+
+.hydration-png {
+  height: 29vh;
+  width: 31vh;
+  padding-left: 28vw;
+  padding-right: 5vw;
+  margin-top: -4vh;
+}
+
+/*<><> Sleep <><>*/
+
+.sleep-container {
+  border: 1px orange solid;
+  height: 50%;
 }

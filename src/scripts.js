@@ -28,6 +28,7 @@ function getAverageStepGoal() {
   const totalStepsGoal = users.users.reduce((total, user) => total + user.dailyStepGoal, 0);
   return totalStepsGoal / users.users.length;
 }
+
 function getAverageDailyFluidOunces(userId) {
   const userHydrationData = hydration.hydrationData.filter((userRecord) => userRecord.userID === userId);
   const totalOunces = userHydrationData.reduce((acc, userRecord) => acc += userRecord.numOunces, 0);

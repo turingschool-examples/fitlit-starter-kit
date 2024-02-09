@@ -1,6 +1,6 @@
 import userData from './data/users.js';
 import hydrationData from './data/hydration.js';
-import { generateRandomUser } from './scripts'
+import { generateRandomUser, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
 Chart.register(...registerables);
 
@@ -73,36 +73,75 @@ function friendIdsToNames(user) {
   return friendNames.join(" - ")
 }
 
+function displayAverageDailyOunces(userId, hydrationData) {
+  const ounces = getAverageDailyFluidOunces(userId, hydrationData);
+  document.getElementById('averageDailyOunces').textContent = `${ounces.toFixed(2)} oz`;
+}
+
+function displaySpecificDayOunces(ounces) {
+  document.getElementById('specificDayOunces').textContent = `${ounces} oz`;
+}
+
+// function to display weekly hydration data for the random user
+function displayWeeklyHydration(userId, startDate, hydrationData) {
+  const weeklyData = getWeeklyFluidOunces(userId, startDate, hydrationData);
+  const weeklyOuncesList = document.getElementById('weeklyOuncesList');
+  weeklyOuncesList.innerHTML = '';
+  weeklyData.forEach(dayData => {
+    const listItem = document.createElement('li');
+    listItem.textContent = `Date: ${dayData.date}, Ounces: ${dayData.numOunces}`;
+    weeklyOuncesList.appendChild(listItem);
+    console.log('<><><>', dayData)
+  });
+}
+
 
 // Event listener setup function
 function setupEventListeners() {
   document.addEventListener('DOMContentLoaded', () => {
-
     const randomUser = generateRandomUser();
     displayWelcomeMessage(randomUser);
-    displayStepGoal(randomUser)
-    updateAccountName(randomUser)
-    updateAccountAddress(randomUser)
-    updateAccountEmail(randomUser)
-    updateAccountStride(randomUser)
-    updateAccountStep(randomUser)
-    updateAccountFriends(randomUser)
+    displayStepGoal(randomUser);
+    updateAccountName(randomUser);
+    updateAccountAddress(randomUser);
+    updateAccountEmail(randomUser);
+    updateAccountStride(randomUser);
+    updateAccountStep(randomUser);
+    updateAccountFriends(randomUser);
 
-    const averageStepGoal = getAverageStepGoal(userData.users);
-    compareStepGoalToAverage(averageStepGoal);
+    // display the average daily fluid ounces for the loaded user
+    const averageOunces = getAverageDailyFluidOunces(randomUser.id);
+    displayAverageDailyOunces(averageOunces);
 
-    myChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
-    myChart.options.scales.y.ticks.min = 0; // Assuming min value is 0
-    myChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 10
-    myChart.update();
+    // listener for specific day hydration input
+    document.getElementById('specificDayInput').addEventListener('change', function() {
+      const selectedDate = this.value;
+      const ouncesForTheDay = getSpecificDay(randomUser.id, selectedDate);
+      displaySpecificDayOunces(ouncesForTheDay);
+    });
 
+    // listener for weekly hydration start date input
+    document.getElementById('weeklyStartDayInput').addEventListener('change', function() {
+      const startDate = this.value;
+      const weeklyHydrationData = getWeeklyFluidOunces(randomUser.id, startDate);
+      displayWeeklyHydration(weeklyHydrationData);
+    });
+
+    // ipdate the chart with initial data
+    updateChart(randomUser, userData.users); // You might need to implement or adjust this function based on your setup
   });
+}
 
-  };
+// function to update the chart with the user's step goal and the average step goal from chatgpt
+function updateChart(randomUser, allUsers) {
+  const averageStepGoal = getAverageStepGoal(allUsers);
+  compareStepGoalToAverage(averageStepGoal);
 
-  // document.querySelector('.home-button').addEventListener('click', WhatEverWeWantLikehandleHomeButtonClick);
-
-
+  myChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
+  myChart.options.scales.y.ticks.min = 0; // Assuming min value is 0
+  myChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 500; // Adjust as necessary
+  myChart.update();
+}
 
 setupEventListeners();
 
@@ -166,5 +205,9 @@ export {
   updateAccountEmail,
   updateAccountStride,
   updateAccountStep,
-  updateAccountFriends
+  updateAccountFriends,
+  displayAverageDailyOunces,
+  displaySpecificDayOunces,
+  displayWeeklyHydration,
+
 };

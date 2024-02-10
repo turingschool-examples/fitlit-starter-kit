@@ -7,7 +7,7 @@ import sleepSample from '../test/sleepTestUsers';
 
 function getUserInfo(userID) {
     let userInfo = userData.users.find((user) => {
-      return user.id === userID
+        return user.id === userID
     })
     return userInfo
 }
@@ -23,15 +23,15 @@ function calculateAverageSteps(userData) {
 function getRandomUser(usersData) {
     let randomUserId = Math.floor(Math.random() * usersData.length)
     return randomUserId
- }
- 
+}
+
 function averageOunces(id) {
     var targetUser = hydrationSample.hydrationData.filter(user => user.userID === id)
     var sum = targetUser.reduce((acc, user) => {
         acc += user.numOunces
         return acc
     }, 0)
-   return Math.round(sum / targetUser.length) 
+    return Math.round(sum / targetUser.length)
 }
 
 function dailyOunces(id) {
@@ -47,7 +47,7 @@ function weeklyOunces(id) {
     let targetUser = hydrationSample.hydrationData.filter((user) => {
         return user.userID === id
     });
-    for(var i = 0; i < 7; i++) {
+    for (var i = 0; i < 7; i++) {
         let day = {}
         day.date = targetUser[i].date
         day.numOunces = targetUser[i].numOunces
@@ -108,7 +108,6 @@ function findWeeklyHours(sleep, day) {
     return weeklySleep
 }
 
-
 function findWeeklyQuality(sleep, day) {
     let targetUser = sleepSample.sleepData.filter((user) => {
         return user.userID === 1
@@ -137,19 +136,19 @@ function findSleepQuality(sleep, day) {
     return targetUser.sleepQuality
 }
 
- export {
-     getUserInfo,
-     calculateAverageSteps,
-     getRandomUser,
-     averageOunces,
-     dailyOunces,
-     weeklyOunces,
-     findDailySleep,
-     calculateAvgHours,
-     calculateAvgQuality,
-     findRecentWeek,
-     findWeeklyHours,
-     findWeeklyQuality,
-     findHoursSlept,
-     findSleepQuality,
- }
+export {
+    getUserInfo,
+    calculateAverageSteps,
+    getRandomUser,
+    averageOunces,
+    dailyOunces,
+    weeklyOunces,
+    findDailySleep,
+    calculateAvgHours,
+    calculateAvgQuality,
+    findRecentWeek,
+    findWeeklyHours,
+    findWeeklyQuality,
+    findHoursSlept,
+    findSleepQuality,
+}

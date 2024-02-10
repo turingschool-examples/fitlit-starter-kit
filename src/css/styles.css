@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,7 +44,7 @@ h1 {
 /*<><> Main user Data <><>*/
 /*<> Left <>*/
 
-.user-container { 
+.user-container {
   background-color: #FFFCF8;
   height: 50%;
 }
@@ -106,6 +107,7 @@ dt {
   margin-left: .5em;
   text-align: center;
 }
+
 .stride-cont,
 .steps-goal-cont,
 .global-steps-goal-cont {
@@ -122,18 +124,33 @@ dt {
 
 /* animation: 3s linear 1s infinite running slidein; */
 @keyframes stride-animation {
-  from {width: 1vw;}
-  to {width: 15vw;}
+  from {
+    width: 1vw;
+  }
+
+  to {
+    width: 15vw;
+  }
 }
 
 @keyframes steps-goal-animation {
-  from {width: 1vw;}
-  to {width: 25vw;}
+  from {
+    width: 1vw;
+  }
+
+  to {
+    width: 25vw;
+  }
 }
 
 @keyframes global-steps-goal-animation {
-  from {width: 1vw;}
-  to {width: 35vw;}
+  from {
+    width: 1vw;
+  }
+
+  to {
+    width: 35vw;
+  }
 }
 
 .stride-label {
@@ -220,9 +237,10 @@ dt {
   padding: 4vh 0vh;
   width: 35vw;
   margin: 2vh 0vh;
-  font-size: 16px, 
-  
+  font-size: 16px,
+
 }
+
 .weekly-hydration-label {
   background-color: #FBE5A8;
   padding: 4vh 0vh;

@@ -29,29 +29,27 @@ function getAverageStepGoal() {
   return totalStepsGoal / users.users.length;
 }
 
-function getAverageDailyFluidOunces(userId) {
-  const userHydrationData = hydration.hydrationData.filter((userRecord) => userRecord.userID === users.userID);
+function getAverageDailyFluidOunces(randomUser) {
+  const userHydrationData = hydration.hydrationData.filter(userRecord => userRecord.userID === randomUser);
   const totalOunces = userHydrationData.reduce((acc, userRecord) => acc += userRecord.numOunces, 0);
   return totalOunces / userHydrationData.length
 }
 
 function getSpecificDay(userId) {
-
-  // const mostRecentRecord = userHydrationData.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
-  // return mostRecentRecord ? mostRecentRecord.numOunces : 0;
-  //const dayEntry = hydration.hydrationData.find(entry => entry.userID === userId && entry.date === date);
-  //return dayEntry ? dayEntry.numOunces : 0; // return numOunces, or 0 if not found
+  const userHydrationData = hydration.hydrationData.filter(record => record.userID === userId);
+  const mostRecentRecord = userHydrationData.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+  return mostRecentRecord ? mostRecentRecord.numOunces : 0;
 }
 
-  function getWeeklyFluidOunces(userId) {
-    const mostRecentWeek = hydration.hydrationData.filter((user) => {
-      return user.userID === 25
-    }).slice(-7);
-    let weeklyHydration = 0
-    mostRecentWeek.forEach((day) => {
-      weeklyHydration += day.numOunces
-    })
-    return weeklyHydration
+function getWeeklyFluidOunces(userId) {
+  const userHydrationData = hydration.hydrationData.filter(record => record.userID === userId);
+  userHydrationData.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const lastWeekData = userHydrationData.slice(0, 7);
+  return lastWeekData.map(record => ({
+    date: record.date,
+    numOunces: record.numOunces
+  }));
+}
     
     // // sort the date in descending order
     // userHydrationData.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -66,7 +64,7 @@ function getSpecificDay(userId) {
     // const lastWeekData = userHydrationData.filter(record => {
     //   const recordDate = new Date(record.date);
     //   return recordDate >= startDate && recordDate <= mostRecentDate
-    };
+    
 
 
 

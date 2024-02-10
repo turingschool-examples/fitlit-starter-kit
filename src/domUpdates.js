@@ -2,7 +2,7 @@ import userData from './data/users.js';
 import hydration from './data/hydration.js';
 import { generateRandomUser, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
-import { stepChart, hydChart } from './chartSetup'
+import { stepChart, wklyHydChart, hydChart } from './chartSetup'
 Chart.register(...registerables);
 
 // DOM update functions
@@ -74,21 +74,21 @@ function friendIdsToNames(user) {
   return friendNames.join(" - ")
 }
 
-function displayAverageDailyOunces(userId) {
-  const ounces = getAverageDailyFluidOunces(userId)
-  document.getElementById('averageDailyOunces').textContent = `${ounces.toFixed(2)} oz`;
+function displayAverageDailyOunces(averageOunces) {
+  document.getElementById('averageDailyOunces').textContent = `${averageOunces.toFixed(2)} oz`;
 }
 
-function displaySpecificDayOunces(ounces) {
-  const ouncesForMostRecent = getSpecificDay();
-  document.getElementById('specificDayOunces').textContent = `${ounces.toFixed(2)} oz`
+function displaySpecificDayOunces(userId) {
+  const ouncesForMostRecent = getSpecificDay(userId);
+  document.getElementById('specificDayOunces').textContent = `${ouncesForMostRecent.toFixed(2)} oz`
+  return ouncesForMostRecent.toFixed(2)
 }
 
 // function to display weekly hydration data for the random user
 function displayWeeklyHydration(userId) {
+  console.log(userId)
   const weeklyData = getWeeklyFluidOunces(userId);
-  const weeklyOuncesList = document.getElementById('weeklyOuncesList');
-  weeklyOuncesList.innerHTML = `${weeklyData} Oz`;
+  return weeklyData.map((day) => day.numOunces)
   // weeklyData.forEach(dayData => {
   //   const listItem = document.createElement('li');
   //   listItem.textContent = `Date: ${dayData.date}, Ounces: ${dayData.numOunces}`;
@@ -98,6 +98,43 @@ function displayWeeklyHydration(userId) {
 
 // Event listener setup function
 function setupEventListeners() {
+
+  // The debounce function receives our function as a parameter
+const debounce = (fn) => {
+
+  // This holds the requestAnimationFrame reference, so we can cancel it if we wish
+  let frame;
+
+  // The debounce function returns a new function that can receive a variable number of arguments
+  return (...params) => {
+    
+    // If the frame variable has been defined, clear it now, and queue for next frame
+    if (frame) { 
+      cancelAnimationFrame(frame);
+    }
+
+    // Queue our function call for the next frame
+    frame = requestAnimationFrame(() => {
+      
+      // Call our function and pass any params we received
+      fn(...params);
+    });
+
+  } 
+};
+
+const storeScroll = () => {
+  document.documentElement.dataset.scroll = window.scrollY;
+	//console.log(window.scrollY)
+}
+
+// Listen for new scroll events, here we debounce our `storeScroll` function
+document.addEventListener('scroll', debounce(storeScroll), { passive: true });
+
+// Update scroll position for first time
+storeScroll();
+
+
   document.querySelector('.nav-bar').addEventListener('click', (e) => {
     if(!e.target.classList.contains('home-button')){
       document.querySelector('img').classList.add('faded')
@@ -116,12 +153,12 @@ function setupEventListeners() {
     updateAccountStep(randomUser);
     updateAccountFriends(randomUser);
     displaySpecificDayOunces(randomUser.id);//fetch and display
-    displayWeeklyHydration(randomUser.id);//fetch and display
+    //displayWeeklyHydration(randomUser.id);//fetch and display
 
     // display the average daily fluid ounces for the loaded user
     const averageOunces = getAverageDailyFluidOunces(randomUser.id); 
     displayAverageDailyOunces(averageOunces);
-    const mostRecentOunces = 
+    // const mostRecentOunces = 
 
 
 
@@ -137,16 +174,20 @@ function updateChart(randomUser, allUsers) {
   const averageStepGoal = getAverageStepGoal(allUsers);
   compareStepGoalToAverage(averageStepGoal);
   const avgDailyHydration = getAverageDailyFluidOunces (randomUser.id);
-  const dailyHydration = 50
-  const weeklyHydration = 25
-
+  const dailyHydration = displaySpecificDayOunces (randomUser.id)
+  const weeklyHydration = displayWeeklyHydration(randomUser.id)
+  
   stepChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
   stepChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 500; // Adjust as necessary
 
-  hydChart.data.datasets[0].data = [avgDailyHydration, dailyHydration, weeklyHydration];
-  hydChart.options.scales.y.ticks.max = Math.max(dailyHydration) + 500; // Adjust as necessary
+  hydChart.data.datasets[0].data = [avgDailyHydration,dailyHydration];
+  hydChart.options.scales.x.ticks.max = Math.max(avgDailyHydration,dailyHydration) + 10; // Adjust as necessary
+
+  wklyHydChart.data.datasets[0].data = weeklyHydration;
+  wklyHydChart.options.scales.x.ticks.max = Math.max(weeklyHydration) + 10; // Adjust as necessary
   
   hydChart.update();
+  wklyHydChart.update();
   stepChart.update();
 }
 

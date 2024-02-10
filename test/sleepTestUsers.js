@@ -42,3 +42,14 @@ export default { sleepData: [
         "sleepQuality": 3.3
     },
 ]};
+
+
+[
+    {date: "2023/03/24", hours: 9.6},
+    {date: "2023/03/25", hours: 6.3},
+    {date: "2023/03/26", hours: 5.4},
+    {date: "2023/03/27", hours: 7.1},
+    {date: "2023/03/28", hours: 6},
+    {date: "2023/03/29", hours: 5.6},
+    {date: "2023/03/30", hours: 6.2},
+]

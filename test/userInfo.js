@@ -22,9 +22,6 @@ function calculateAverageSteps(userData) {
 
 function getRandomUser(usersData) {
     let randomUserId = Math.floor(Math.random() * usersData.length)
-    // averageOunces(randomUserId)
-    // dailyOunces(randomUserId)
-    // weeklyOunces(randomUserId)
     return randomUserId
  }
  
@@ -69,13 +66,13 @@ function findDailySleep(sleep) {
 
 function calculateAvgHours(sleep) {
     let totalHours = 0
-    let targetUser = sleepSample.sleepData.filter((user) => {
+    let userHoursSlept = sleepSample.sleepData.filter((user) => {
         return user.userID === 1
     }).map((day) => { return day.hoursSlept })
-    targetUser.forEach((day) => {
+    userHoursSlept.forEach((day) => {
         totalHours += day
     })
-    return Math.round(totalHours / targetUser.length)
+    return Math.round(totalHours / userHoursSlept.length)
 }
 
 function calculateAvgQuality(sleep) {
@@ -95,9 +92,6 @@ function findRecentWeek(sleep) {
     }).reverse()
     let recentWeekStart = targetUser[6].date
     return recentWeekStart
-    // console.log("weekly sleep", findWeeklyHours(sleep, recentWeekStart))
-    // findWeeklyQuality(sleep, recentWeekStart)
-    // findWeeklyHours(sleep,recentWeekStart)
 }
 
 function findWeeklyHours(sleep, day) {

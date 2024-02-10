@@ -117,6 +117,7 @@ describe('find user info', () => {
         it('should return the average hours slepts for all time', () => {
             let e = calculateAvgHours(sleepSample)
             expect(e).to.equal(7)
+            expect(e).to.not.equal(6.7)
         });
     });
     describe('calculateAvgQuality', () => {
@@ -126,9 +127,35 @@ describe('find user info', () => {
             expect(e).to.not.equal(3.6)
         });
     });
+    describe('findRecentWeek', () => {
+        it('should find the most recent week for a user', () => {
+            let e = findRecentWeek(sleepSample)
+            expect(e).to.equal('2023/03/24')
+        });
+    });
+    describe('findWeeklyHours', () => {
+        it('should create an array of objects with date and hours slept', () => {
+            let date = findRecentWeek(sleepSample)
+            let e = findWeeklyHours(sleepSample, date)
+            expect(e).to.deep.equal([
+                {date: "2023/03/24", hours: 9.6},
+                {date: "2023/03/25", hours: 6.3},
+                {date: "2023/03/26", hours: 5.4},
+                {date: "2023/03/27", hours: 7.1},
+                {date: "2023/03/28", hours: 6},
+                {date: "2023/03/29", hours: 5.6},
+                {date: "2023/03/30", hours: 6.2},
+            ])
+        });
+    });
     describe('', () => {
         it.skip('', () => {
-            
+
+        });
+    });
+    describe('', () => {
+        it.skip('', () => {
+
         });
     });
 });

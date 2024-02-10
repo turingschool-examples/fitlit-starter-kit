@@ -1,7 +1,8 @@
 
 import { expect } from 'chai';
 import userData from './usersSampleData';
-// import hydration from './hydrationSample';
+import hydrationSample from './hydrationSample';
+import sleepSample from './sleepTestUsers';
 
 import {
     getUserInfo,
@@ -10,9 +11,14 @@ import {
     averageOunces,
     dailyOunces,
     weeklyOunces,
+    findDailySleep,
+     calculateAvgHours,
+     calculateAvgQuality,
+     findRecentWeek,
+     findWeeklyHours,
+     findWeeklyQuality
 }
     from '../test/userInfo';
-import hydrationSample from './hydrationSample';
 
 describe('find user info', () => {
     let userInfo;
@@ -99,6 +105,30 @@ describe('find user info', () => {
                 { date: '2023/03/29', numOunces: 20 },
                 { date: '2023/03/30', numOunces: 76 },
                 { date: '2023/03/31', numOunces: 88 }])
+        });
+    });
+    describe('findDailySleep', () => {
+        it('should return users hours slept and sleep quality for a single day ', () => {
+            let e = findDailySleep(sleepSample)
+            expect(e).to.equal('2023/03/30 : 6.2hrs | Sleep Quality: 3.3')
+        });
+    });
+    describe('calculateAvgHours', () => {
+        it('should return the average hours slepts for all time', () => {
+            let e = calculateAvgHours(sleepSample)
+            expect(e).to.equal(7)
+        });
+    });
+    describe('calculateAvgQuality', () => {
+        it('should return the average hours slept for all time', () => {
+            let e = calculateAvgQuality(sleepSample)
+            expect(e).to.equal(4)
+            expect(e).to.not.equal(3.6)
+        });
+    });
+    describe('', () => {
+        it.skip('', () => {
+            
         });
     });
 });

@@ -1,6 +1,5 @@
 //NOTE: Your DOM manipulation will occur in this file
 import {  calculateAverageSteps, dailyOunces, weeklyOunces, findDailySleep, findWeeklyHours, findRecentWeek } from './scripts.js';
-import { calculateAvgHours } from '../src/sleepData.js';
 
 import { getAllData } from './apiCalls.js';
 
@@ -44,7 +43,7 @@ function displayHydrationData(hydration) {
 function displaySleepData(sleep) {
   let date = findRecentWeek(sleep)
   let weeklyHoursSlept = findWeeklyHours(sleep, date) 
-  let weeklySleepQuality = findWeeklyHours(sleep, date)
+  // let weeklySleepQuality = findWeeklyHours(sleep, date)
   dailySleep.innerText = findDailySleep(sleep)
   weeklySleepLabel.innerText = `${weeklyHoursSlept[0].date} | ${weeklyHoursSlept[1].date} | ${weeklyHoursSlept[2].date} | ${weeklyHoursSlept[3].date} | ${weeklyHoursSlept[4].date} | ${weeklyHoursSlept[5].date} | ${weeklyHoursSlept[6].date}`
   weeklySleepData.innerText = `${weeklyHoursSlept[0].hours} | ${weeklyHoursSlept[1].hours} | ${weeklyHoursSlept[2].hours} | ${weeklyHoursSlept[3].hours} | ${weeklyHoursSlept[4].hours} | ${weeklyHoursSlept[5].hours} | ${weeklyHoursSlept[5].hours}`

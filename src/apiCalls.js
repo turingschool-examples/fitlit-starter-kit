@@ -16,7 +16,7 @@ const sleep = fetch('https://fitlit-api.herokuapp.com/api/v1/sleep')
     Promise.all([users, hydration, sleep])
     .then((data) => {
         let [users, hydration, sleep] = data
-        console.log(users)
+        console.log('sleep',sleep)
         initiateUserFunctions(users)
         initiateHydrationFunctions(hydration)
         initiateSleepFunctions(sleep)

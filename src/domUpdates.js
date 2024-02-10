@@ -1,5 +1,5 @@
-import userData from './data/users.js';
-import hydration from './data/hydration.js';
+//import userData from './data/users.js';
+//import hydration from './data/hydration.js';
 import { generateRandomUser, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
 import { stepChart, wklyHydChart, hydChart } from './chartSetup'
@@ -89,57 +89,20 @@ function displayWeeklyHydration(userId) {
   console.log(userId)
   const weeklyData = getWeeklyFluidOunces(userId);
   return weeklyData.map((day) => day.numOunces)
-  // weeklyData.forEach(dayData => {
-  //   const listItem = document.createElement('li');
-  //   listItem.textContent = `Date: ${dayData.date}, Ounces: ${dayData.numOunces}`;
-  //   weeklyOuncesList.appendChild(listItem);
-  // });
 }
 
 // Event listener setup function
 function setupEventListeners() {
 
-  // The debounce function receives our function as a parameter
-const debounce = (fn) => {
-
-  // This holds the requestAnimationFrame reference, so we can cancel it if we wish
-  let frame;
-
-  // The debounce function returns a new function that can receive a variable number of arguments
-  return (...params) => {
-    
-    // If the frame variable has been defined, clear it now, and queue for next frame
-    if (frame) { 
-      cancelAnimationFrame(frame);
-    }
-
-    // Queue our function call for the next frame
-    frame = requestAnimationFrame(() => {
-      
-      // Call our function and pass any params we received
-      fn(...params);
-    });
-
-  } 
-};
-
-const storeScroll = () => {
-  document.documentElement.dataset.scroll = window.scrollY;
-	//console.log(window.scrollY)
-}
-
-// Listen for new scroll events, here we debounce our `storeScroll` function
-document.addEventListener('scroll', debounce(storeScroll), { passive: true });
-
-// Update scroll position for first time
-storeScroll();
-
-
   document.querySelector('.nav-bar').addEventListener('click', (e) => {
     if(!e.target.classList.contains('home-button')){
-      document.querySelector('img').classList.add('faded')
+      setTimeout(() => {
+        document.querySelector('img').classList.add('faded')
+      }, 250);
     } else {
-      document.querySelector('img').classList.remove('faded')
+      setTimeout(() => {
+        document.querySelector('img').classList.remove('faded')
+      }, 250);
     }
   })
   document.addEventListener('DOMContentLoaded', () => {
@@ -207,5 +170,4 @@ export {
   displayAverageDailyOunces,
   displaySpecificDayOunces,
   displayWeeklyHydration,
-
 };

@@ -30,19 +30,48 @@ function getAverageStepGoal() {
 }
 
 function getAverageDailyFluidOunces(userId) {
-  const userHydrationData = hydration.hydrationData.filter((userRecord) => userRecord.userID === userId);
+  const userHydrationData = hydration.hydrationData.filter((userRecord) => userRecord.userID === users.userID);
   const totalOunces = userHydrationData.reduce((acc, userRecord) => acc += userRecord.numOunces, 0);
-  return userHydrationData.length > 0 ? totalOunces / userHydrationData.length : 0;
+  return totalOunces / userHydrationData.length
 }
 
-function getSpecificDay(userId, date) {
-  const dayEntry = hydration.hydrationData.find(entry => entry.userID === userId && entry.date === date);
-  return dayEntry ? dayEntry.numOunces : 0; // return numOunces, or 0 if not found
+function getSpecificDay(userId) {
+
+  // const mostRecentRecord = userHydrationData.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+  // return mostRecentRecord ? mostRecentRecord.numOunces : 0;
+  //const dayEntry = hydration.hydrationData.find(entry => entry.userID === userId && entry.date === date);
+  //return dayEntry ? dayEntry.numOunces : 0; // return numOunces, or 0 if not found
 }
 
-  function getWeeklyFluidOunces(userId, endDate, hydrationData) {
+  function getWeeklyFluidOunces(userId) {
+    const mostRecentWeek = hydration.hydrationData.filter((user) => {
+      return user.userID === 25
+    }).slice(-7);
+    let weeklyHydration = 0
+    mostRecentWeek.forEach((day) => {
+      weeklyHydration += day.numOunces
+    })
+    return weeklyHydration
+    
+    // // sort the date in descending order
+    // userHydrationData.sort((a, b) => new Date(b.date) - new Date(a.date));
+    // const mostRecentDate = new Date(userHydrationData[0].date);
+
+    // // start date of last weeklong period
+    // const startDate = new Date(mostRecentDate);
+    // // use setDate method to modify the date object
+    // startDate.setDate(mostRecentDate.getDate() - 6);
+
+    // // filter for the last week
+    // const lastWeekData = userHydrationData.filter(record => {
+    //   const recordDate = new Date(record.date);
+    //   return recordDate >= startDate && recordDate <= mostRecentDate
+    };
+
+
+
     // convert endDate to a Date object for easier comparison
-    const endDateObj = new Date(endDate);
+    /*const endDateObj = new Date(endDate);
   
     // then get the start date by subtracting 6 days from the endDate
     const startDateObj = new Date(endDateObj);
@@ -61,30 +90,29 @@ function getSpecificDay(userId, date) {
     return weeklyData.map(userRecord => ({
       date: userRecord.date,
       numOunces: userRecord.numOunces
-    }));
-  }
+    })); */
+  
 
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const currentUser = generateRandomUser(users);
-  console.log(`Testing for randomly selected user ID: ${currentUser.id}`);
+  const currentUser = generateRandomUser();
+  // console.log(`Testing for randomly selected user ID: ${currentUser.id}`);
 
   const averageOunces = getAverageDailyFluidOunces(currentUser.id, hydration);
-  console.log(`Average daily fluid ounces for user ${currentUser.id}:`, averageOunces);
+  // console.log(`Average daily fluid ounces for user ${currentUser.id}:`, averageOunces);
 
   const userId = currentUser.id; // ID of the current, randomly selected user
   const date = '2023/03/24'; // specific date we're interested in
-  const ouncesForDay = getSpecificDay(userId, date, hydration.hydrationData);
-  console.log(`Fluid ounces consumed by user ${userId} on ${date}:`, ouncesForDay);
+  const ouncesForDay = getSpecificDay(userId,hydration);
+  // console.log(`Fluid ounces consumed by user ${userId} on ${date}:`, ouncesForDay);
 
   const endDate = '2023/03/31'; // the last date of the 7-day period you want to run back
   const weeklyHydrationData = getWeeklyFluidOunces(userId, endDate, hydration.hydrationData);
 
-  console.log(`Weekly hydration data for user 47:`); //after obtaining the weeklyHydrationData, this should iterate through the array to log the date and numOunces for each entry
-  weeklyHydrationData.forEach(entry => {
-  console.log(`Date: ${entry.date}, Fluid Ounces: ${entry.numOunces}`);
-});
+  // console.log(`Weekly hydration data for user 47:`); //after obtaining the weeklyHydrationData, this should iterate through the array to log the date and numOunces for each entry
+  //weeklyHydrationData.forEach(entry => {
+  // console.log(`Date: ${entry.date}, Fluid Ounces: ${entry.numOunces}`);
 });
 
 export { generateRandomUser, getAverageStepGoal, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces };

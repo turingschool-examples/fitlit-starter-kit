@@ -53,18 +53,20 @@ nav a:hover {
 }
 
 .info-card div {
-    border: rgb(0, 0, 0) solid;
-    width: 75%;
-    height: 75%;
-    display: flex;
-    box-shadow: rgba(0, 0, 0, 0.631372549) 12px 12px 20px 4px;
-    overflow: hidden;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: stretch;
-    justify-content: space-around;
-    max-width: 75%;
-    align-items: center;
+  border-radius: 5%;
+  width: 75%;
+  height: 75%;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.631372549) 12px 12px 20px 4px;
+  overflow: hidden;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: stretch;
+  justify-content: space-around;
+  max-width: 75%;
+  align-items: center;
+  padding: 10px;
+  background: transparent;
 }
 
 article {
@@ -76,9 +78,14 @@ article {
   height: 100vh;
 }
 
-article img {
+.full {
   mix-blend-mode: color-burn;
+  position: fixed;
 }
+
+.faded {
+  mix-blend-mode: soft-light;
+} 
 
 .step-text {
   display: flex;
@@ -94,4 +101,8 @@ article img {
 #stepChart {
   width: 10px;
   mix-blend-mode: color-burn;
+}
+
+.welcome-message{
+  margin-top: 20rem;
 }

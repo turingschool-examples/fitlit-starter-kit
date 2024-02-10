@@ -148,9 +148,19 @@ describe('find user info', () => {
             ])
         });
     });
-    describe('', () => {
-        it.skip('', () => {
-
+    describe('findWeeklyQuality', () => {
+        it('should create an array of objects with date and quality', () => {
+            let date = findRecentWeek(sleepSample)
+            let e = findWeeklyQuality(sleepSample, date)
+            expect(e).to.deep.equal([
+                {date: "2023/03/24", quality: 4.3},
+                {date: "2023/03/25", quality: 3.3},
+                {date: "2023/03/26", quality: 3.1},
+                {date: "2023/03/27", quality: 4.7},
+                {date: "2023/03/28", quality: 4.6},
+                {date: "2023/03/29", quality: 2.1},
+                {date: "2023/03/30", quality: 3.3},
+            ])
         });
     });
     describe('', () => {

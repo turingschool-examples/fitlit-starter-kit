@@ -111,7 +111,7 @@ function findWeeklyHours(sleep, day) {
 
 function findWeeklyQuality(sleep, day) {
     let targetUser = sleepSample.sleepData.filter((user) => {
-        return user.userID === sleep[0].userID
+        return user.userID === 1
     })
     let startDateIndex = targetUser.findIndex((log) => {
         return log.date === day

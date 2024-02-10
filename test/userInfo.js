@@ -123,6 +123,20 @@ function findWeeklyQuality(sleep, day) {
     return weeklyQuality
 }
 
+function findHoursSlept(sleep, day) {
+    let targetUser = sleepSample.sleepData.filter((user) => {
+        return user.userID === 1
+    }).find((user) => { return user.date === day })
+    return targetUser.hoursSlept
+}
+
+function findSleepQuality(sleep, day) {
+    let targetUser = sleepSample.sleepData.filter((user) => {
+        return user.userID === 1
+    }).find((user) => { return user.date === day })
+    return targetUser.sleepQuality
+}
+
  export {
      getUserInfo,
      calculateAverageSteps,
@@ -135,5 +149,7 @@ function findWeeklyQuality(sleep, day) {
      calculateAvgQuality,
      findRecentWeek,
      findWeeklyHours,
-     findWeeklyQuality
+     findWeeklyQuality,
+     findHoursSlept,
+     findSleepQuality,
  }

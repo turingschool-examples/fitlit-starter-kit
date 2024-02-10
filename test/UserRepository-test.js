@@ -16,7 +16,9 @@ import {
      calculateAvgQuality,
      findRecentWeek,
      findWeeklyHours,
-     findWeeklyQuality
+     findWeeklyQuality,
+     findHoursSlept,
+     findSleepQuality
 }
     from '../test/userInfo';
 
@@ -163,9 +165,16 @@ describe('find user info', () => {
             ])
         });
     });
-    describe('', () => {
-        it.skip('', () => {
-
+    describe('findHoursSlept', () => {
+        it('should return hour slept for specific day', () => {
+            let e = findHoursSlept(sleepSample, '2023/03/24')
+            expect(e).to.equal(9.6)
+        });
+    });
+    describe('findSleepQuality', () => {
+        it('should return sleep quality for specific day', () => {
+            let e = findSleepQuality(sleepSample, '2023/03/24')
+            expect(e).to.equal(4.3)
         });
     });
 });

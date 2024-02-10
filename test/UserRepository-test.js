@@ -12,13 +12,13 @@ import {
     dailyOunces,
     weeklyOunces,
     findDailySleep,
-     calculateAvgHours,
-     calculateAvgQuality,
-     findRecentWeek,
-     findWeeklyHours,
-     findWeeklyQuality,
-     findHoursSlept,
-     findSleepQuality
+    calculateAvgHours,
+    calculateAvgQuality,
+    findRecentWeek,
+    findWeeklyHours,
+    findWeeklyQuality,
+    findHoursSlept,
+    findSleepQuality
 }
     from '../test/userInfo';
 
@@ -140,13 +140,13 @@ describe('find user info', () => {
             let date = findRecentWeek(sleepSample)
             let e = findWeeklyHours(sleepSample, date)
             expect(e).to.deep.equal([
-                {date: "2023/03/24", hours: 9.6},
-                {date: "2023/03/25", hours: 6.3},
-                {date: "2023/03/26", hours: 5.4},
-                {date: "2023/03/27", hours: 7.1},
-                {date: "2023/03/28", hours: 6},
-                {date: "2023/03/29", hours: 5.6},
-                {date: "2023/03/30", hours: 6.2},
+                { date: "2023/03/24", hours: 9.6 },
+                { date: "2023/03/25", hours: 6.3 },
+                { date: "2023/03/26", hours: 5.4 },
+                { date: "2023/03/27", hours: 7.1 },
+                { date: "2023/03/28", hours: 6 },
+                { date: "2023/03/29", hours: 5.6 },
+                { date: "2023/03/30", hours: 6.2 },
             ])
         });
     });
@@ -155,13 +155,13 @@ describe('find user info', () => {
             let date = findRecentWeek(sleepSample)
             let e = findWeeklyQuality(sleepSample, date)
             expect(e).to.deep.equal([
-                {date: "2023/03/24", quality: 4.3},
-                {date: "2023/03/25", quality: 3.3},
-                {date: "2023/03/26", quality: 3.1},
-                {date: "2023/03/27", quality: 4.7},
-                {date: "2023/03/28", quality: 4.6},
-                {date: "2023/03/29", quality: 2.1},
-                {date: "2023/03/30", quality: 3.3},
+                { date: "2023/03/24", quality: 4.3 },
+                { date: "2023/03/25", quality: 3.3 },
+                { date: "2023/03/26", quality: 3.1 },
+                { date: "2023/03/27", quality: 4.7 },
+                { date: "2023/03/28", quality: 4.6 },
+                { date: "2023/03/29", quality: 2.1 },
+                { date: "2023/03/30", quality: 3.3 },
             ])
         });
     });

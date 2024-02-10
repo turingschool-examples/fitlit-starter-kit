@@ -1,5 +1,5 @@
 import userData from './data/users.js';
-import hydrationData from './data/hydration.js';
+import hydration from './data/hydration.js';
 import { generateRandomUser, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
 import { stepChart, hydChart } from './chartSetup'
@@ -74,28 +74,37 @@ function friendIdsToNames(user) {
   return friendNames.join(" - ")
 }
 
-function displayAverageDailyOunces(ounces) {
+function displayAverageDailyOunces(userId) {
+  const ounces = getAverageDailyFluidOunces(userId)
   document.getElementById('averageDailyOunces').textContent = `${ounces.toFixed(2)} oz`;
 }
 
 function displaySpecificDayOunces(ounces) {
-  document.getElementById('specificDayOunces').textContent = `${ounces} oz`;
+  const ouncesForMostRecent = getSpecificDay();
+  document.getElementById('specificDayOunces').textContent = `${ounces.toFixed(2)} oz`
 }
 
 // function to display weekly hydration data for the random user
-function displayWeeklyHydration(userId, startDate) {
-  const weeklyData = getWeeklyFluidOunces(userId, startDate);
+function displayWeeklyHydration(userId) {
+  const weeklyData = getWeeklyFluidOunces(userId);
   const weeklyOuncesList = document.getElementById('weeklyOuncesList');
-  weeklyOuncesList.innerHTML = '';
-  weeklyData.forEach(dayData => {
-    const listItem = document.createElement('li');
-    listItem.textContent = `Date: ${dayData.date}, Ounces: ${dayData.numOunces}`;
-    weeklyOuncesList.appendChild(listItem);
-  });
+  weeklyOuncesList.innerHTML = `${weeklyData} Oz`;
+  // weeklyData.forEach(dayData => {
+  //   const listItem = document.createElement('li');
+  //   listItem.textContent = `Date: ${dayData.date}, Ounces: ${dayData.numOunces}`;
+  //   weeklyOuncesList.appendChild(listItem);
+  // });
 }
 
 // Event listener setup function
 function setupEventListeners() {
+  document.querySelector('.nav-bar').addEventListener('click', (e) => {
+    if(!e.target.classList.contains('home-button')){
+      document.querySelector('img').classList.add('faded')
+    } else {
+      document.querySelector('img').classList.remove('faded')
+    }
+  })
   document.addEventListener('DOMContentLoaded', () => {
     const randomUser = generateRandomUser();
     displayWelcomeMessage(randomUser);
@@ -106,26 +115,17 @@ function setupEventListeners() {
     updateAccountStride(randomUser);
     updateAccountStep(randomUser);
     updateAccountFriends(randomUser);
-    //displayAverageDailyOunces(randomUser);// not pushing?
-    //displaySpecificDayOunces(randomUser); // pushing [object Object]?
-    //displayWeeklyHydration(randomUser); // not pushing?
+    displaySpecificDayOunces(randomUser.id);//fetch and display
+    displayWeeklyHydration(randomUser.id);//fetch and display
 
     // display the average daily fluid ounces for the loaded user
-    const averageOunces = getAverageDailyFluidOunces(randomUser.id); // Assuming getAverageDailyFluidOunces now correctly accesses hydration data internally
-displayAverageDailyOunces(averageOunces);
+    const averageOunces = getAverageDailyFluidOunces(randomUser.id); 
+    displayAverageDailyOunces(averageOunces);
+    const mostRecentOunces = 
 
-    // listener for specific day hydration input
-    document.getElementById('specificDayInput').addEventListener('change', function() {
-      const selectedDate = this.value;
-      const ouncesForTheDay = getSpecificDay(randomUser.id, selectedDate);
-      displaySpecificDayOunces(ouncesForTheDay);
-    });
 
-    // listener for weekly hydration start date input
-    document.getElementById('weeklyStartDayInput').addEventListener('change', function() {
-      const startDate = this.value;
-      displayWeeklyHydration(randomUser.id, startDate); // Ensure this function is called with the correct arguments
-    });
+
+
 
     // ipdate the chart with initial data
     updateChart(randomUser, userData.users); // You might need to implement or adjust this function based on your setup
@@ -136,15 +136,18 @@ displayAverageDailyOunces(averageOunces);
 function updateChart(randomUser, allUsers) {
   const averageStepGoal = getAverageStepGoal(allUsers);
   compareStepGoalToAverage(averageStepGoal);
+  const avgDailyHydration = getAverageDailyFluidOunces (randomUser.id);
+  const dailyHydration = 50
+  const weeklyHydration = 25
 
   stepChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
-  stepChart.options.scales.y.ticks.min = 0; // Assuming min value is 0
   stepChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 500; // Adjust as necessary
-  stepChart.update();
-  hydChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
-  hydChart.options.scales.y.ticks.min = 0; // Assuming min value is 0
-  hydChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 500; // Adjust as necessary
+
+  hydChart.data.datasets[0].data = [avgDailyHydration, dailyHydration, weeklyHydration];
+  hydChart.options.scales.y.ticks.max = Math.max(dailyHydration) + 500; // Adjust as necessary
+  
   hydChart.update();
+  stepChart.update();
 }
 
 setupEventListeners();

@@ -94,7 +94,7 @@ function dailyOunces(hydration) {
         return user.userID === randomUserId
     });
     let index = targetUser.length - 1
-    return `${targetUser[index].date} : ${targetUser[index].numOunces}oz`
+    return `${targetUser[index].numOunces} ounces of water!`
 };
 
 function weeklyOunces(hydration) {

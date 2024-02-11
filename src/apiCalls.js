@@ -52,13 +52,13 @@ function fetchData(endpoint) {
   function fetchUserData() {
     return fetchData('users');
   }
+
+  function fetchHydrationData() {
+    return fetchData('hydration');
+  }
   
   function fetchSleepData() {
     return fetchData('sleep');
-  }
-  
-  function fetchHydrationData() {
-    return fetchData('hydration');
   }
   
   function fetchActivityData() {

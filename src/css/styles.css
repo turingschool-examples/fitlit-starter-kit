@@ -85,7 +85,12 @@ article {
 
 .faded {
   mix-blend-mode: soft-light;
+  position: fixed;
 } 
+
+.shadow {
+  box-shadow: rgba(0, 0, 0, 0.631372549) 12px 12px 20px 4px;
+}
 
 .step-text {
   display: flex;
@@ -112,6 +117,7 @@ article {
   mix-blend-mode: luminosity;
   color: #00000061;
   text-shadow: 7px 4px 13px #000000b0;
+  margin-right: 10px;
 }
 
 .iconSection {
@@ -119,4 +125,11 @@ article {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  height: 35px;
+  align-items: baseline;
+}
+
+.dateSelector{
+  z-index: 1;
+  text-align: center;
 }

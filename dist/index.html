@@ -21,11 +21,8 @@
         <div class="section-text">
           <section class="iconSection">
             <p class="icon">&#128099;</p>
+            <h3>Activity Data</h3>
           </section>
-          <h3>Your daily step goal: </h3>
-          <p class="user-step">xx,xxx</p>
-          <h3>The average daily step goal is: </h3>
-          <p class="average-step">x,xxx</p>
           <canvas id="stepChart"></canvas>
         </div>
       </section>
@@ -33,11 +30,9 @@
         <div class="section-text">
           <section class="iconSection">
             <p class="icon">&#128167;</p>
+            <h3>Hydration Data</h3>
           </section>
-          <p>Average Daily Hydration:</p>
-          <p id="averageDailyOunces">0 oz</p>
-          <label for="specificDayInput">Hydration for a specific day:</label>
-          <p id="specificDayOunces">0 oz</p>
+          <p>Average Hydration Data</p>
             <canvas id="hydChart"></canvas>
           <p>Weekly Hydration Data</p>
             <canvas id="wklyHydChart"></canvas>
@@ -47,8 +42,14 @@
         <div>
           <section class="iconSection">
             <p class="icon">&#128719;</p>
+            <h3>Sleep Data</h3>
+          </section>
+          <section class="dateSection">
+            <label for="dateInput">Date</label>
+            <input type='text' id='date-input' name="dateInput" class="dateSelector">
           </section>
           <canvas id="sleepChart"></canvas>
+          <canvas id="wklySleepChart"></canvas>
           <canvas id="avgSleepChart"></canvas>
         </div>
       </section>
@@ -56,6 +57,7 @@
         <div class="section-text">
           <section class="iconSection">
             <p class="icon">&#128100;</p>
+            <h3>Account Details</h3>
           </section>
           <h3 id="account-name">name</h3>
           <h3 id="account-address">address</h3>

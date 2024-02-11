@@ -1,15 +1,22 @@
-//import userData from './data/users.js';
-//import hydration from './data/hydration.js';
-import { getAccountFriends, getAverageSleepQuality, getAverageSleepHours, generateRandomUser, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces, account, hydration, sleep, activity, } from './scripts'
+import { getAverageStepGoal, 
+  getAccountFriends, 
+  generateRandomUser, 
+  getAverageDailyFluidOunces, 
+  getSpecificDay, 
+  getWeeklyFluidOunces, 
+  getAverageSleepHours, 
+  getWeeklySleep, 
+  getWeeklySleepHours, 
+  getWeeklySleepQuality, 
+  getAverageSleepQuality, 
+  getMostRecentSleepHours,
+  getMostRecentSleepQuality } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
-import { stepChart, wklyHydChart, hydChart } from './chartSetup'
+import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleepChart,} from './chartSetup'
 Chart.register(...registerables);
 
-
-function setupEventListeners(randomUser, appState) {
-  console.log('DOM Update Random User', randomUser)
-  console.log(appState)
-
+function setupEventListeners(randomUser, allUsers) {
+  document.querySelector('.dateSelector').value = '2023/06/27'
     displayWelcomeMessage(randomUser);
     const averageOunces = getAverageDailyFluidOunces(randomUser.id); 
     displayAverageDailyOunces(averageOunces);
@@ -19,24 +26,42 @@ function setupEventListeners(randomUser, appState) {
     updateAccountEmail(randomUser);
     updateAccountStride(randomUser);
     updateAccountStep(randomUser);
+
     const userFriends = getAccountFriends(randomUser)
+
     updateAccountFriends(userFriends);
     displaySpecificDayOunces(randomUser.id);
     displayAverageSleepHours(randomUser)
+    updateChart(randomUser, allUsers);
     
-    updateChart(randomUser, appState.account.users); 
+    const debounce = (fn) => {
+      let frame;
+      return (...params) => {
+        if (frame) { 
+          cancelAnimationFrame(frame);
+        }
+        frame = requestAnimationFrame(() => {
+          fn(...params);
+        });
     
-    document.querySelector('.nav-bar').addEventListener('click', (e) => {
-      if(!e.target.classList.contains('home-button')){
-        setTimeout(() => {
-          document.querySelector('img').classList.add('faded')
-        }, 250);
+      } 
+    };
+    
+    const storeScroll = () => {
+      document.documentElement.dataset.scroll = window.scrollY;
+      // console.log(window.scrollY)
+      if(window.scrollY > 800){
+        document.querySelector('img').classList.remove('full')
+        document.querySelector('img').classList.add('faded')
+        document.querySelector('nav').classList.add('shadow')
       } else {
-        setTimeout(() => {
-          document.querySelector('img').classList.remove('faded')
-        }, 250);
+        document.querySelector('img').classList.add('full')
+        document.querySelector('img').classList.remove('faded')
+        document.querySelector('nav').classList.remove('shadow')
       }
-    }) 
+    }
+    document.addEventListener('scroll', debounce(storeScroll), { passive: true });
+    storeScroll();
 }
 
 
@@ -47,13 +72,7 @@ function displayWelcomeMessage(user) {
 }
 
 function displayStepGoal(user) {
-  const averageStepsElement = document.querySelector('.user-step');
-  averageStepsElement.textContent = `${user.dailyStepGoal}`;
-}
-
-function compareStepGoalToAverage(averageStepGoal) {
-  const stepGoalComparisonElement = document.querySelector('.average-step');
-  stepGoalComparisonElement.textContent = `${averageStepGoal}`;
+  return user.dailyStepGoal
 }
 
 function updateAccountName(user) {
@@ -87,45 +106,25 @@ function updateAccountFriends(friends) {
 }
 
 function displayAverageDailyOunces(averageOunces) {
-  document.getElementById('averageDailyOunces').textContent = `${averageOunces.toFixed(2)} oz`;
+  //document.getElementById('averageDailyOunces').textContent = `${averageOunces.toFixed(2)} oz`;
+  return averageOunces.toFixed(2)
 }
 
 function displaySpecificDayOunces(userId) {
   const ouncesForMostRecent = getSpecificDay(userId);
-  document.getElementById('specificDayOunces').textContent = `${ouncesForMostRecent.toFixed(2)} oz`;
-}
-
-function displayWeeklyHydration(userId) {
-  const weeklyOuncesList = document.getElementById('weeklyOuncesList');
-  if (!weeklyOuncesList) {
-    console.error('Weekly ounces list element not found.');
-    return;
-  }
-  const weeklyData = getWeeklyFluidOunces(userId);
-
-  // Clear the list before adding new items
-  weeklyOuncesList.innerHTML = '';
-
-  // Iterate over each day's data and append it to the list
-  weeklyData.forEach(dayData => {
-    const listItem = document.createElement('li');
-    listItem.textContent = `Date: ${dayData.date}, Ounces: ${dayData.numOunces}`;
-    weeklyOuncesList.appendChild(listItem);
-  });
+  //document.getElementById('specificDayOunces').textContent = `${ouncesForMostRecent.toFixed(2)} oz`;
+  return ouncesForMostRecent
 }
 
 function displayAverageSleepHours(user) {
-  console.log("getAverageSleepHours", getAverageSleepHours(user))
+  //console.log("getAverageSleepHours", getAverageSleepHours(user))
 }
-
-
 
 // Export all functions at the bottom as per your instructions
 export {
   setupEventListeners,
   displayWelcomeMessage,
   displayStepGoal,
-  compareStepGoalToAverage,
   updateAccountName,
   updateAccountAddress,
   updateAccountEmail,
@@ -133,46 +132,24 @@ export {
   updateAccountStep,
   updateAccountFriends,
   displaySpecificDayOunces,
-  displayWeeklyHydration
 };
-/*function handleFetchedData(randomUser, account, hydration, sleep, activity) {
-  
- const randomuser = generateRandomUser(account);//
- displayWelcomeMessage(randomUser)
- displayStepGoal(randomUser)
-} */
-
-// Event listener setup function
-
-
-/*function handleFetchedData(account, hydration, sleep, activity) {
-  // Here, use the fetched data to call your display/update functions
-  // For example, if you have a function to display user info:
-  const randomUser = generateRandomUser(account); // Assuming generateRandomUser is defined and properly imports 'account' data
-  displayWelcomeMessage(randomUser);
-  displayStepGoal(randomUser);
-  updateAccountName(randomUser);
-  updateAccountAddress(randomUser);
-  updateAccountEmail(randomUser);
-  updateAccountStride(randomUser);
-  updateAccountStep(randomUser);
-  updateAccountFriends(randomUser);
-  // Call more functions as needed with the appropriate data
-} */
-
-
-
-
-
 
 // function to update the chart with the user's step goal and the average step goal from chatgpt
 function updateChart(randomUser, allUsers) {
   const averageStepGoal = getAverageStepGoal(allUsers);
-  compareStepGoalToAverage(averageStepGoal);
   const avgDailyHydration = getAverageDailyFluidOunces (randomUser.id);
   const dailyHydration = displaySpecificDayOunces (randomUser.id)
-  const weeklyHydration = displayWeeklyHydration(randomUser.id)
-  const averageSleepHours = displayAverageSleepHours(randomUser.id)
+  const weeklyHydration = getWeeklyFluidOunces(randomUser.id)
+
+  const averageHoursSleptPerDay = getAverageSleepHours(randomUser)
+  const averageSleepQuality = getAverageSleepQuality(randomUser)
+  const hoursSleptRecentDay = getMostRecentSleepHours(randomUser)
+  const sleepQualityRecentDay = getMostRecentSleepQuality(randomUser)
+  const selectedDate = document.querySelector('.dateSelector').value
+  const sleepWeekAndDay = getWeeklySleep(randomUser, selectedDate)
+  console.log(sleepWeekAndDay)
+  const weeklySleepHoursPerDay = sleepWeekAndDay.weeklySleepHours
+  const weeklySleepQualityPerDay = sleepWeekAndDay.weeklySleepQuality
   
   stepChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
   stepChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 500; // Adjust as necessary
@@ -180,16 +157,22 @@ function updateChart(randomUser, allUsers) {
   hydChart.data.datasets[0].data = [avgDailyHydration,dailyHydration];
   hydChart.options.scales.x.ticks.max = Math.max(avgDailyHydration,dailyHydration) + 10; // Adjust as necessary
 
-  wklyHydChart.data.datasets[0].data = weeklyHydration;
+  wklyHydChart.data.datasets[0].data = weeklyHydration.map((day) => { return day.numOunces});
   wklyHydChart.options.scales.x.ticks.max = Math.max(weeklyHydration) + 10; // Adjust as necessary
   
-  avgSleepChart.data.datasets[0].data = [averageSleepHours];
-  avgSleepChart.options.scales.x.ticks.max = Math.max(weeklyHydration) + 10;
+  sleepChart.data.datasets[0].data = [hoursSleptRecentDay, sleepQualityRecentDay];
+  sleepChart.options.scales.x.ticks.max = Math.max(hoursSleptRecentDay, sleepQualityRecentDay) + 10;
+
+  wklySleepChart.data.datasets[0].data = [[weeklySleepHoursPerDay], [weeklySleepQualityPerDay]];
+  wklySleepChart.options.scales.x.ticks.max = Math.max(weeklySleepHoursPerDay, weeklySleepQualityPerDay) + 10;
+
+  avgSleepChart.data.datasets[0].data = [averageHoursSleptPerDay, averageSleepQuality];
+  avgSleepChart.options.scales.x.ticks.max = Math.max(averageHoursSleptPerDay, averageSleepQuality) + 10;
 
   avgSleepChart.update();
+  wklySleepChart.update();
+  sleepChart.update();
   hydChart.update();
   wklyHydChart.update();
   stepChart.update();
 }
-
-// setupEventListeners();

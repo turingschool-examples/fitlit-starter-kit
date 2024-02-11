@@ -1,13 +1,15 @@
 //import userData from './data/users.js';
 //import hydration from './data/hydration.js';
-import { getAverageSleepQuality, getAverageSleepHours, generateRandomUser, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces, account, hydration, sleep, activity, } from './scripts'
+import { getAccountFriends, getAverageSleepQuality, getAverageSleepHours, generateRandomUser, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces, account, hydration, sleep, activity, } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
 import { stepChart, wklyHydChart, hydChart } from './chartSetup'
 Chart.register(...registerables);
 
 
-function setupEventListeners(randomUser) {
+function setupEventListeners(randomUser, appState) {
   console.log('DOM Update Random User', randomUser)
+  console.log(appState)
+
     displayWelcomeMessage(randomUser);
     const averageOunces = getAverageDailyFluidOunces(randomUser.id); 
     displayAverageDailyOunces(averageOunces);
@@ -17,12 +19,13 @@ function setupEventListeners(randomUser) {
     updateAccountEmail(randomUser);
     updateAccountStride(randomUser);
     updateAccountStep(randomUser);
-    updateAccountFriends(randomUser);
+    const userFriends = getAccountFriends(randomUser)
+    updateAccountFriends(userFriends);
     displaySpecificDayOunces(randomUser.id);
     displayAverageSleepHours(randomUser)
     
-    updateChart(randomUser, userData.users); 
-
+    updateChart(randomUser, appState.account.users); 
+    
     document.querySelector('.nav-bar').addEventListener('click', (e) => {
       if(!e.target.classList.contains('home-button')){
         setTimeout(() => {
@@ -78,9 +81,9 @@ function updateAccountStep(user) {
   accountStep.textContent = `step goal: ${user.dailyStepGoal} steps`;
 }
 
-function updateAccountFriends(user) {
+function updateAccountFriends(friends) {
   const accountFriends = document.querySelector('#account-friends');
-  accountFriends.textContent = `friends: ${friendIdsToNames(user)}`;
+  accountFriends.textContent = `friends: ${friends}`;
 }
 
 function displayAverageDailyOunces(averageOunces) {

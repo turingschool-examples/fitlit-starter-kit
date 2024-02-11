@@ -35,9 +35,6 @@
 //     friends: user.friends
 // }));
 
-
-console.log('I will be a fetch request!')
-
 function fetchData(endpoint) {
     return fetch(`https://fitlit-api.herokuapp.com/api/v1/${endpoint}`)
       .then((response) => {

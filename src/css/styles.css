@@ -1,38 +1,46 @@
-body, html {
+html {
+display: flex;
+}
+
+body {
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #BC74F3;
+  color: #3d3d4e;
   height: 100%;
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
   font-family: 'Bungee', sans-serif;
+  transform: scale(0.90);
+  border: 5px solid #3d3d4e;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 main {
   background-color: white;
-  height: 93%;
-  width: 93%;
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
 header {
   display: flex;
-  flex-direction: row;
-  margin-top: 0;
+  /* margin-top: 0; */
   background-color: #FFFCF8;
   height: 5%;
+  justify-content: center;
+  position: relative;
 }
 
 h1 {
-  background-color: #FFFCF8;
+  /* background-color: #FFFCF8; */
   /* font-family: 'DotGothic16', sans-serif; */
   font-size: 2em;
   margin-left: .5em;
   margin-top: 0;
   padding-top: .5em;
+  display:flex;
+
 }
 
 .dumbell-image {
@@ -43,9 +51,16 @@ h1 {
 /*<><> Main user Data <><>*/
 /*<> Left <>*/
 
+.h1
 .user-container { 
-  background-color: #FFFCF8;
+  background-color: #f6f6f6;
   height: 50%;
+}
+
+.contact-info {
+  font-family: 'DotGothic16', sans-serif;
+  /* font-family: 'Londrina Outline', sans-serif; */
+  font-style: normal;
 }
 
 .name-cont {
@@ -66,7 +81,6 @@ h1 {
   margin-bottom: 6em;
   margin-top: 3em;
   width: 25%;
-  background: rgba(212, 183, 248, 0.24);
   padding-left: 3em;
 }
 
@@ -81,7 +95,6 @@ h1 {
 }
 
 .profile-image {
-  margin-bottom: 4em;
   display: flex;
   align-items: center;
   justify-content: left;
@@ -102,7 +115,7 @@ dl {
 }
 
 dt {
-  height: 45%;
+  height: 15%;
   margin-left: .5em;
   text-align: center;
 }
@@ -112,7 +125,7 @@ dt {
   display: flex;
   justify-content: baseline;
   flex-direction: row-reverse;
-  height: 25%;
+  height: 30%;
   padding: 0;
 }
 
@@ -141,7 +154,7 @@ dt {
   padding-top: 15px;
   width: 15vw;
   animation-name: stride-animation;
-  animation-duration: 3s;
+  animation-duration: .5s;
   animation-direction: normal;
 }
 
@@ -150,7 +163,7 @@ dt {
   padding-top: 15px;
   width: 25vw;
   animation-name: steps-goal-animation;
-  animation-duration: 3s;
+  animation-duration: 1s;
   animation-direction: normal;
 }
 
@@ -159,13 +172,8 @@ dt {
   padding-top: 15px;
   width: 35vw;
   animation-name: global-steps-goal-animation;
-  animation-duration: 3s;
+  animation-duration: 1.5s;
   animation-direction: normal;
-}
-
-/*<><> Hydration <><>*/
-.hydration-container {
-  height: 70%;
 }
 
 .banner-box {
@@ -173,85 +181,103 @@ dt {
   align-items: center;
   justify-content: center;
   background-color: #FAC8EC;
-  border-top: 3px black solid;
-  border-bottom: 3px black solid;
   height: 10%;
   font-size: 1.45em;
   font-weight: 500;
   font-family: 'Sixtyfour', sans-serif;
 }
 
-/* .user-hydration {
-
-} */
-
 .hydration-heading {
   font-family: "Bungee Outline", sans-serif;
   /* font-family: 'Londrina Outline', sans-serif; */
-  font-size: 4.5em;
+  font-size: 5em;
   text-align: right;
   padding-right: 5vw;
   margin-top: 2.5vh;
+  margin-bottom: 2.5vh;
+  color: #B0B0B0;
 }
 
 .sleep-heading {
   font-family: "Bungee Outline", sans-serif;
   /* font-family: 'Londrina Outline', sans-serif; */
-  font-size: 4.5em;
+  font-size: 5em;
   text-align: left;
   padding-left: 5vw;
   margin-top: 2.5vh;
   display: flex;
+  color: #B0B0B0;
+}
+
+.data-and-image-cont {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hydration-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.hydration-data {
+  display: flex;
+  flex-direction: row;
 }
 
 .daily-hydration-cont,
 .weekly-hydration-cont {
   display: flex;
-  height: 50%;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .daily-hydration-cont {
   display: flex;
-  justify-content: start;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 100px;
 }
 
+.weekly-hydration-cont {
+  display: flex;
+  flex-direction: column;
+}
+
+.weekly-hydration-label{
+  font-size: x-large;
+}
 .daily-hydration-label {
-  background-color: #B7DAF7;
-  padding: 4vh 0vh;
-  width: 35vw;
-  margin: 2vh 0vh;
-  font-size: 16px, 
-  
-}
-.weekly-hydration-label {
-  background-color: #FBE5A8;
-  padding: 4vh 0vh;
-  width: 42vw;
-  margin: -10vh 0vh;
-  font-size: 16px;
+  font-size: xx-large,
 }
 
-.daily-hydration-data {
-  font-size: 16px;
-  margin-top: 6vh;
+.weekly-hydration-data1 {
+  padding-top: 2.5vh;
 }
 
-.weekly-hydration-data {
-  font-size: 16px;
-  margin: -5.5vh 2vw;
+.star-img-cont
+.water-img-cont {
+  display: flex;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  transform: rotateY(180deg);
 }
 
-.hydration-png {
+.star-png {
   height: 29vh;
   width: 31vh;
-  padding-left: 28vw;
-  padding-right: 5vw;
-  margin-top: -4vh;
+  padding-right: 65vw;
 }
 
-/*<><> Sleep <><>*/
+.water-png {
+  height: 29vh;
+  width: 31vh;
+  float: right;
+}
 
-.sleep-container {
-  padding-top: 6vh;
-  height: 50%;
+/* MISC */
+
+.modal-hidden {
+  display: none;
 }

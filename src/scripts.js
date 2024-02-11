@@ -26,12 +26,10 @@ function fetchData() {
     appState.activity = activityData;
 
     appState.randomUser = generateRandomUser(appState.account);
-    console.log('Random user data:', appState);
 
     // Assuming domUpdates.js is prepared to handle the updated state
     displayWelcomeMessage(appState.randomUser);
     displaySpecificDayOunces(appState.randomUser.id);
-    displayWeeklyHydration(appState.randomUser.id);
     
     // It's essential to call any setup functions that rely on the fetched data
     setupEventListeners(appState.randomUser, appState.account.user);
@@ -109,12 +107,61 @@ function getAverageSleepQuality(randomUser) {
 }
 
 // Return a user’s sleep quality for a specific day
-function getMostRecentSleepQuality(randomUser) {
+function getMostRecentSleepHours(randomUser) {
   let sameUserSleepData = appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
-  let latestSleepData = sameUserSleepData.length - 1
-  console.log("latestSleepData", latestSleepData)
-  return latestSleepData
+  let latestSleepDataIndex = sameUserSleepData.length - 1
+  return sameUserSleepData[latestSleepDataIndex].hoursSlept
 }
 
+// Return a user’s sleep quality for a specific day
+function getMostRecentSleepQuality(randomUser) {
+  let sameUserSleepData = appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
+  let latestSleepDataIndex = sameUserSleepData.length - 1
+  return sameUserSleepData[latestSleepDataIndex].sleepQuality
+}
+
+// This function should be able to calculate this for any week, not just the latest week
+// NOTE: this function takes in this date format ---> "2023/06/27"
+function getWeeklySleep(randomUser, selectedDay) {
+  let selectedWeek = []
+  let sameUserSleepData = appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
+  for (let i = 0; i < sameUserSleepData.length; i++) {
+    if (sameUserSleepData[i].date === selectedDay) {
+      selectedWeek.push(sameUserSleepData.slice(i - 6, i + 1))
+    }
+  }
+  return {
+    weeklySleepHours: getWeeklySleepHours(selectedWeek),
+    weeklySleepQuality: getWeeklySleepQuality(selectedWeek)
+  }
+}
+
+// Return how many *hours* a user slept each day over the course of a given week (7 days)
+function getWeeklySleepHours(selectedWeek) {
+  console.log(selectedWeek)
+  return selectedWeek[0].map(day => day.hoursSlept)
+}
+
+// Return a user’s *sleep quality* for each day over the course of a given week (7 days)
+function getWeeklySleepQuality(selectedWeek) {
+  return selectedWeek[0].map(day => day.sleepQuality)
+}
+
+
+
 document.addEventListener('DOMContentLoaded', fetchData);
-export { appState, getAccountFriends, getAverageStepGoal, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces, getAverageSleepHours, getAverageSleepQuality, getMostRecentSleepQuality };
+export {
+  appState, 
+  getAccountFriends, 
+  getAverageStepGoal, 
+  getAverageDailyFluidOunces, 
+  getSpecificDay, 
+  getWeeklyFluidOunces, 
+  getAverageSleepHours, 
+  getAverageSleepQuality, 
+  getMostRecentSleepHours,
+  getMostRecentSleepQuality,
+  getWeeklySleep, 
+  getWeeklySleepHours, 
+  getWeeklySleepQuality
+};

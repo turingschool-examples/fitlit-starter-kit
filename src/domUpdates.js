@@ -1,29 +1,16 @@
 //import userData from './data/users.js';
 //import hydration from './data/hydration.js';
-import { generateRandomUser, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces, account, hydration, sleep, activity, } from './scripts'
+import { getAverageSleepQuality, getAverageSleepHours, generateRandomUser, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces, account, hydration, sleep, activity, } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
 import { stepChart, wklyHydChart, hydChart } from './chartSetup'
 Chart.register(...registerables);
 
 
-function setupEventListeners() {
-
-  document.querySelector('.nav-bar').addEventListener('click', (e) => {
-    if(!e.target.classList.contains('home-button')){
-      setTimeout(() => {
-        document.querySelector('img').classList.add('faded')
-      }, 250);
-    } else {
-      setTimeout(() => {
-        document.querySelector('img').classList.remove('faded')
-      }, 250);
-    }
-  }) 
-  window.onload = function () {
-    //console.log('sfsjf', randomUser)
-    // const randomUser = generateRandomUser();
-    // display the average daily fluid ounces for the loaded user
+function setupEventListeners(randomUser) {
+  console.log('DOM Update Random User', randomUser)
     displayWelcomeMessage(randomUser);
+    const averageOunces = getAverageDailyFluidOunces(randomUser.id); 
+    displayAverageDailyOunces(averageOunces);
     displayStepGoal(randomUser);
     updateAccountName(randomUser);
     updateAccountAddress(randomUser);
@@ -31,16 +18,22 @@ function setupEventListeners() {
     updateAccountStride(randomUser);
     updateAccountStep(randomUser);
     updateAccountFriends(randomUser);
-    displaySpecificDayOunces(randomUser.id);//fetch and display
-    //displayWeeklyHydration(randomUser.id);//fetch and display
-  
-    const averageOunces = getAverageDailyFluidOunces(randomUser.id); 
-    displayAverageDailyOunces(averageOunces);
-    // const mostRecentOunces = 
-  
-    // ipdate the chart with initial data
-    updateChart(randomUser, userData.users); // You might need to implement or adjust this function based on your setup
-  };
+    displaySpecificDayOunces(randomUser.id);
+    displayAverageSleepHours(randomUser)
+    
+    updateChart(randomUser, userData.users); 
+
+    document.querySelector('.nav-bar').addEventListener('click', (e) => {
+      if(!e.target.classList.contains('home-button')){
+        setTimeout(() => {
+          document.querySelector('img').classList.add('faded')
+        }, 250);
+      } else {
+        setTimeout(() => {
+          document.querySelector('img').classList.remove('faded')
+        }, 250);
+      }
+    }) 
 }
 
 
@@ -117,6 +110,13 @@ function displayWeeklyHydration(userId) {
     weeklyOuncesList.appendChild(listItem);
   });
 }
+
+function displayAverageSleepHours(user) {
+  console.log("getAverageSleepHours", getAverageSleepHours(user))
+}
+
+
+
 // Export all functions at the bottom as per your instructions
 export {
   setupEventListeners,
@@ -129,7 +129,6 @@ export {
   updateAccountStride,
   updateAccountStep,
   updateAccountFriends,
-  displayAverageDailyOunces,
   displaySpecificDayOunces,
   displayWeeklyHydration
 };
@@ -170,6 +169,7 @@ function updateChart(randomUser, allUsers) {
   const avgDailyHydration = getAverageDailyFluidOunces (randomUser.id);
   const dailyHydration = displaySpecificDayOunces (randomUser.id)
   const weeklyHydration = displayWeeklyHydration(randomUser.id)
+  const averageSleepHours = displayAverageSleepHours(randomUser.id)
   
   stepChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
   stepChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 500; // Adjust as necessary
@@ -180,6 +180,10 @@ function updateChart(randomUser, allUsers) {
   wklyHydChart.data.datasets[0].data = weeklyHydration;
   wklyHydChart.options.scales.x.ticks.max = Math.max(weeklyHydration) + 10; // Adjust as necessary
   
+  avgSleepChart.data.datasets[0].data = [averageSleepHours];
+  avgSleepChart.options.scales.x.ticks.max = Math.max(weeklyHydration) + 10;
+
+  avgSleepChart.update();
   hydChart.update();
   wklyHydChart.update();
   stepChart.update();

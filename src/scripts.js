@@ -1,7 +1,7 @@
 import './css/styles.css';
 import './images/fitlit-logo.png';
 import './images/white-texture.png';
-import { displayWelcomeMessage, displayAverageDailyOunces, displaySpecificDayOunces, displayWeeklyHydration, setupEventListeners } from './domUpdates';
+import { displayWelcomeMessage, displaySpecificDayOunces, displayWeeklyHydration, setupEventListeners } from './domUpdates';
 import { fetchUserData, fetchHydrationData, fetchSleepData, fetchActivityData } from './apiCalls';
 
 let appState = {
@@ -30,12 +30,12 @@ function fetchData() {
 
     // Assuming domUpdates.js is prepared to handle the updated state
     displayWelcomeMessage(appState.randomUser);
-    displayAverageDailyOunces(appState.randomUser.id);
     displaySpecificDayOunces(appState.randomUser.id);
     displayWeeklyHydration(appState.randomUser.id);
     
     // It's essential to call any setup functions that rely on the fetched data
-    setupEventListeners(appState);
+    console.log(appState)
+    setupEventListeners(appState.randomUser);
   })
   .catch(error => console.error("Error loading data:", error));
 }
@@ -74,6 +74,29 @@ function getWeeklyFluidOunces(userId) {
   }));
 }
 
-document.addEventListener('DOMContentLoaded', fetchData);
+// Return the user’s average number of hours slept per day
+function getAverageSleepHours(randomUser) {
+  let sameUserSleepData = appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
+  let averageSleepHours = 0
+  let totalSleepHours = 0
+  sameUserSleepData.forEach(obj => {
+    totalSleepHours += obj.hoursSlept
+  })
+  averageSleepHours = totalSleepHours / sameUserSleepData.length
+  return averageSleepHours.toFixed(2)
+}
 
-export { generateRandomUser, getAverageStepGoal, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces };
+function getAverageSleepQuality() {
+  let sameUserSleepData = appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
+  let averageSleepQuality = 0
+  let totalSleepQuality = 0
+  sameUserSleepData.forEach(obj => {
+    totalSleepQuality += obj.sleepQuality
+  })
+  averageSleepQuality = totalSleepQuality / sameUserSleepData.length
+  return averageSleepQuality.toFixed(2)
+}
+
+
+document.addEventListener('DOMContentLoaded', fetchData);
+export { generateRandomUser, getAverageStepGoal, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces, getAverageSleepHours, getAverageSleepQuality };

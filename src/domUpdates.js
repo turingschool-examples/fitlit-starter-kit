@@ -10,8 +10,14 @@ const strideData = document.querySelector('.stride-data')
 const stepGoal = document.querySelector('.steps-goal-data')
 const avgStepGoal = document.querySelector('.global-steps-goal-data')
 const dailyHydration = document.querySelector('.daily-hydration-label')
-const weeklyHydrationLabel = document.querySelector('.weekly-hydration-label')
-const weeklyHydrationData = document.querySelector('.weekly-hydration-data')
+// const weeklyHydrationLabel = document.querySelector('.weekly-hydration-label')
+const weeklyHydrationData1 = document.querySelector('.weekly-hydration-data1')
+const weeklyHydrationData2 = document.querySelector('.weekly-hydration-data2')
+const weeklyHydrationData3 = document.querySelector('.weekly-hydration-data3')
+const weeklyHydrationData4 = document.querySelector('.weekly-hydration-data4')
+const weeklyHydrationData5 = document.querySelector('.weekly-hydration-data5')
+const weeklyHydrationData6 = document.querySelector('.weekly-hydration-data6')
+const weeklyHydrationData7 = document.querySelector('.weekly-hydration-data7')
 const dailySleep = document.querySelector('.daily-sleep-label')
 const weeklySleepLabel = document.querySelector('.weekly-sleep-label')
 const weeklySleepData = document.querySelector('.weekly-sleep-data')
@@ -37,8 +43,13 @@ function displayHydrationData(hydration) {
     var userHydration = weeklyOunces(hydration)
     console.log('userHydration', userHydration)
     dailyHydration.innerText = dailyOunces(hydration)
-    weeklyHydrationLabel.innerText = `${userHydration[0].date} | ${userHydration[1].date} | ${userHydration[3].date} | ${userHydration[4].date} | ${userHydration[5].date} | ${userHydration[6].date}`
-    weeklyHydrationData.innerText = `${userHydration[0].numOunces} | ${userHydration[1].numOunces} | ${userHydration[3].numOunces} | ${userHydration[4].numOunces} | ${userHydration[5].numOunces} | ${userHydration[6].numOunces}`
+    weeklyHydrationData1.innerText = `${userHydration[0].date} - ${userHydration[0].numOunces}oz`
+    weeklyHydrationData2.innerText = `${userHydration[1].date} - ${userHydration[1].numOunces}oz`
+    weeklyHydrationData3.innerText = `${userHydration[2].date} - ${userHydration[2].numOunces}oz`
+    weeklyHydrationData4.innerText = `${userHydration[3].date} - ${userHydration[3].numOunces}oz`
+    weeklyHydrationData5.innerText = `${userHydration[4].date} - ${userHydration[4].numOunces}oz`
+    weeklyHydrationData6.innerText = `${userHydration[5].date} - ${userHydration[5].numOunces}oz`
+    weeklyHydrationData7.innerText = `${userHydration[6].date} - ${userHydration[6].numOunces}oz`
 }
 
 function displaySleepData(sleep) {

@@ -26,7 +26,7 @@ function fetchData() {
     appState.activity = activityData;
 
     appState.randomUser = generateRandomUser(appState.account);
-    console.log('Random user data:', appState.randomUser);
+    console.log('Random user data:', appState);
 
     // Assuming domUpdates.js is prepared to handle the updated state
     displayWelcomeMessage(appState.randomUser);
@@ -34,8 +34,7 @@ function fetchData() {
     displayWeeklyHydration(appState.randomUser.id);
     
     // It's essential to call any setup functions that rely on the fetched data
-    console.log(appState)
-    setupEventListeners(appState.randomUser);
+    setupEventListeners(appState.randomUser, appState.account.user);
   })
   .catch(error => console.error("Error loading data:", error));
 }
@@ -43,6 +42,17 @@ function fetchData() {
 function generateRandomUser(accountData) {
   const randomIndex = Math.floor(Math.random() * accountData.users.length);
   return accountData.users[randomIndex];
+}
+
+function getAccountFriends(user) {
+  var friendArr = user.friends
+  var friendNames = appState.account.users.reduce((acc, account) => {
+    if (friendArr.includes(account.id)) {
+      acc.push(account.name)
+    }
+    return acc
+  }, [])
+  return friendNames.join(" - ")
 }
 
 // Adjust this function as needed to use the appState data
@@ -86,7 +96,8 @@ function getAverageSleepHours(randomUser) {
   return averageSleepHours.toFixed(2)
 }
 
-function getAverageSleepQuality() {
+// Return the user’s average sleep quality per day over all time
+function getAverageSleepQuality(randomUser) {
   let sameUserSleepData = appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
   let averageSleepQuality = 0
   let totalSleepQuality = 0
@@ -97,6 +108,13 @@ function getAverageSleepQuality() {
   return averageSleepQuality.toFixed(2)
 }
 
+// Return a user’s sleep quality for a specific day
+function getMostRecentSleepQuality(randomUser) {
+  let sameUserSleepData = appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
+  let latestSleepData = sameUserSleepData.length - 1
+  console.log("latestSleepData", latestSleepData)
+  return latestSleepData
+}
 
 document.addEventListener('DOMContentLoaded', fetchData);
-export { generateRandomUser, getAverageStepGoal, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces, getAverageSleepHours, getAverageSleepQuality };
+export { appState, getAccountFriends, getAverageStepGoal, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces, getAverageSleepHours, getAverageSleepQuality, getMostRecentSleepQuality };

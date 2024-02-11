@@ -119,6 +119,7 @@ dt {
   margin-left: .5em;
   text-align: center;
 }
+
 .stride-cont,
 .steps-goal-cont,
 .global-steps-goal-cont {
@@ -135,18 +136,33 @@ dt {
 
 /* animation: 3s linear 1s infinite running slidein; */
 @keyframes stride-animation {
-  from {width: 1vw;}
-  to {width: 15vw;}
+  from {
+    width: 1vw;
+  }
+
+  to {
+    width: 15vw;
+  }
 }
 
 @keyframes steps-goal-animation {
-  from {width: 1vw;}
-  to {width: 25vw;}
+  from {
+    width: 1vw;
+  }
+
+  to {
+    width: 25vw;
+  }
 }
 
 @keyframes global-steps-goal-animation {
-  from {width: 1vw;}
-  to {width: 35vw;}
+  from {
+    width: 1vw;
+  }
+
+  to {
+    width: 35vw;
+  }
 }
 
 .stride-label {

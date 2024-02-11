@@ -1,11 +1,9 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
+
 import './apiCalls';
-
-// An example of how you tell webpack to use a CSS file
 import './css/styles.css';
+import { displayUserData, displayHydrationData, displaySteps, displaySleepData } from './domUpdates';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
+//(also need to link to it in the index.html)
 import './images/turing-logo.png';
 import '../src/images/layered-dumbell.png'
 import '../src/images/light-dumbell.png'
@@ -22,17 +20,11 @@ import '../src/images/profile-image10.png'
 import '../src/images/water-drop.png'
 import '../src/images/sleepy-star.png'
 
-// getAllData();
-// An example of how you tell webpack to use a JS file
-
-// Example of one way to import functions from the domUpdates file.  You will delete these examples.
-import { displayUserData, displayHydrationData, displaySteps, displaySleepData  } from './domUpdates';
-
+/* <><> API Data <><> */
 function initiateUserFunctions(userData) {
     getRandomUser(userData)
     calculateAverageSteps(userData)
     displaySteps(userData)
-    console.log('hi userdata')
 }
 
 function initiateHydrationFunctions(hydrationData) {
@@ -40,38 +32,16 @@ function initiateHydrationFunctions(hydrationData) {
     dailyOunces(hydrationData)
     dailyOunces(hydrationData)
     displayHydrationData(hydrationData)
-    console.log('hi hydrationData')
 }
 
 function initiateSleepFunctions(sleepData) {
     calculateAvgHours(sleepData)
     calculateAvgQuality(sleepData)
-    // findHoursSlept(sleepData, '2023/03/24')
-    // findSleepQuality(sleepData, '2023/03/24')
-    console.log('find recent week func', findRecentWeek(sleepData))
     findDailySleep(sleepData)
     displaySleepData(sleepData)
-    console.log('sleep api works')
 }
 
-function getUserInfo(randomUserId, userData) {
-    console.log('all users', userData.users)
-    console.log('all users??', userData)
-    let userInfo = userData.users.find((user) => {
-        return user.id === randomUserId
-    })
-        displayUserData(userInfo)
-}
-
-function calculateAverageSteps(userData) {
-    let totalSteps = 0
-    console.log('calc steps userData', userData)
-    userData.users.forEach(user => {
-        totalSteps += user.dailyStepGoal
-    })
-    return totalSteps / userData.users.length
-}
-
+/* <><> Main User Info <><> */
 var randomUserId;
 
 function getRandomUser(userData) {
@@ -79,7 +49,23 @@ function getRandomUser(userData) {
     getUserInfo(randomUserId, userData)
 }
 
+function getUserInfo(randomUserId, userData) {
+    let targetUser = userData.users.find((user) => {
+        return user.id === randomUserId
+    })
+    displayUserData(targetUser)
+}
 
+/* <><> Average Steps <><> */
+function calculateAverageSteps(userData) {
+    let totalSteps = 0
+    userData.users.forEach(user => {
+        totalSteps += user.dailyStepGoal
+    })
+    return totalSteps / userData.users.length
+}
+
+/* <><> Hydration Functions <><> */
 function averageOunces(hydration) {
     var targetUser = hydration.hydrationData.filter(user => user.userID === randomUserId)
     var sum = targetUser.reduce((acc, user) => {
@@ -111,8 +97,7 @@ function weeklyOunces(hydration) {
     return week
 };
 
-// sleep functions
-
+/* <><> Sleep Functions */
 function findDailySleep(sleep) {
     let targetUser = sleep.sleepData.filter((user) => {
         return user.userID === randomUserId
@@ -134,28 +119,14 @@ function calculateAvgHours(sleep) {
 
 function calculateAvgQuality(sleep) {
     let totalSleepQuality = 0
-    let userSleepQuality = sleep.sleepData.filter((user) => {
+    let targetUser = sleep.sleepData.filter((user) => {
         return user.userID === randomUserId
     }).map((day) => { return day.sleepQuality })
-    userSleepQuality.forEach((day) => {
+    targetUser.forEach((day) => {
         totalSleepQuality += day
     })
-    return Math.round(totalSleepQuality / userSleepQuality.length)
+    return Math.round(totalSleepQuality / targetUser.length)
 }
-
-// function findHoursSlept(sleep, day) {
-//     let targetUser = sleep.sleepData.filter((user) => {
-//         return user.userID === randomUserId
-//     }).find((user) => { return user.date === day })
-//     return targetUser.hoursSlept
-// }
-
-// function findSleepQuality(sleep, day) {
-//     let targetUser = sleep.sleepData.filter((user) => {
-//         return user.userID === randomUserId
-//     }).find((user) => { return user.date === day })
-//     return targetUser.sleepQuality
-// }
 
 function findRecentWeek(sleep) {
     let targetUser = sleep.sleepData.filter((user) => {
@@ -163,9 +134,6 @@ function findRecentWeek(sleep) {
     }).reverse()
     let recentWeekStart = targetUser[6].date
     return recentWeekStart
-    // console.log("weekly sleep", findWeeklyHours(sleep, recentWeekStart))
-    // findWeeklyQuality(sleep, recentWeekStart)
-    // findWeeklyHours(sleep,recentWeekStart)
 }
 
 function findWeeklyHours(sleep, day) {
@@ -182,7 +150,6 @@ function findWeeklyHours(sleep, day) {
     return weeklySleep
 }
 
-
 function findWeeklyQuality(sleep, day) {
     let targetUser = sleep.sleepData.filter((user) => {
         return user.userID === randomUserId
@@ -197,7 +164,22 @@ function findWeeklyQuality(sleep, day) {
     return weeklyQuality
 }
 
+/* <><> UNUSED FUNCS (required by project specs) <><>
 
+function findHoursSlept(sleep, day) {
+    let targetUser = sleep.sleepData.filter((user) => {
+        return user.userID === randomUserId
+    }).find((user) => { return user.date === day })
+    return targetUser.hoursSlept
+}
+
+function findSleepQuality(sleep, day) {
+    let targetUser = sleep.sleepData.filter((user) => {
+        return user.userID === randomUserId
+    }).find((user) => { return user.date === day })
+    return targetUser.sleepQuality
+}
+*/
 export {
     getUserInfo,
     calculateAverageSteps,

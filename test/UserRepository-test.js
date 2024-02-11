@@ -1,7 +1,8 @@
 
 import { expect } from 'chai';
 import userData from './usersSampleData';
-// import hydration from './hydrationSample';
+import hydrationSample from './hydrationSample';
+import sleepSample from './sleepTestUsers';
 
 import {
     getUserInfo,
@@ -10,9 +11,15 @@ import {
     averageOunces,
     dailyOunces,
     weeklyOunces,
-}
-    from '../test/userInfo';
-import hydrationSample from './hydrationSample';
+    findDailySleep,
+    calculateAvgHours,
+    calculateAvgQuality,
+    findRecentWeek,
+    findWeeklyHours,
+    findWeeklyQuality,
+    findHoursSlept,
+    findSleepQuality
+} from '../test/userInfo';
 
 describe('find user info', () => {
     let userInfo;
@@ -70,8 +77,8 @@ describe('find user info', () => {
         it('should return a single users daily water intake', () => {
             let user = hydrationSample.hydrationData[0].userID
             let e = dailyOunces(user)
-            expect(e).to.equal('2023/04/01 : 88oz')
 
+            expect(e).to.equal('2023/04/01 : 88oz')
         });
     });
 
@@ -79,6 +86,7 @@ describe('find user info', () => {
         it('should calculate single users weekly ounces', () => {
             let user = hydrationSample.hydrationData[0].userID
             let e = weeklyOunces(user)
+
             expect(e).to.deep.equal(
                 [{ date: '2023/03/24', numOunces: 28 },
                 { date: '2023/03/25', numOunces: 50 },
@@ -91,6 +99,7 @@ describe('find user info', () => {
         it('should not go over 7 days', () => {
             let user = hydrationSample.hydrationData[0].userID
             let e = weeklyOunces(user)
+
             expect(e).to.not.equal(
                 [{ date: '2023/03/24', numOunces: 28 },
                 { date: '2023/03/25', numOunces: 50 },
@@ -99,6 +108,90 @@ describe('find user info', () => {
                 { date: '2023/03/29', numOunces: 20 },
                 { date: '2023/03/30', numOunces: 76 },
                 { date: '2023/03/31', numOunces: 88 }])
+        });
+    });
+
+    describe('findDailySleep', () => {
+        it('should return users hours slept and sleep quality for a single day ', () => {
+            let e = findDailySleep(sleepSample)
+
+            expect(e).to.equal('2023/03/30 : 6.2hrs | Sleep Quality: 3.3')
+        });
+    });
+
+    describe('calculateAvgHours', () => {
+        it('should return the average hours slepts for all time', () => {
+            let e = calculateAvgHours(sleepSample)
+
+            expect(e).to.equal(7)
+            expect(e).to.not.equal(6.7)
+        });
+    });
+
+    describe('calculateAvgQuality', () => {
+        it('should return the average hours slept for all time', () => {
+            let e = calculateAvgQuality(sleepSample)
+
+            expect(e).to.equal(4)
+            expect(e).to.not.equal(3.6)
+        });
+    });
+
+    describe('findRecentWeek', () => {
+        it('should find the most recent week for a user', () => {
+            let e = findRecentWeek(sleepSample)
+
+            expect(e).to.equal('2023/03/24')
+        });
+    });
+
+    describe('findWeeklyHours', () => {
+        it('should create an array of objects with date and hours slept', () => {
+            let date = findRecentWeek(sleepSample)
+            let e = findWeeklyHours(sleepSample, date)
+
+            expect(e).to.deep.equal([
+                { date: "2023/03/24", hours: 9.6 },
+                { date: "2023/03/25", hours: 6.3 },
+                { date: "2023/03/26", hours: 5.4 },
+                { date: "2023/03/27", hours: 7.1 },
+                { date: "2023/03/28", hours: 6 },
+                { date: "2023/03/29", hours: 5.6 },
+                { date: "2023/03/30", hours: 6.2 },
+            ])
+        });
+    });
+
+    describe('findWeeklyQuality', () => {
+        it('should create an array of objects with date and quality', () => {
+            let date = findRecentWeek(sleepSample)
+            let e = findWeeklyQuality(sleepSample, date)
+
+            expect(e).to.deep.equal([
+                { date: "2023/03/24", quality: 4.3 },
+                { date: "2023/03/25", quality: 3.3 },
+                { date: "2023/03/26", quality: 3.1 },
+                { date: "2023/03/27", quality: 4.7 },
+                { date: "2023/03/28", quality: 4.6 },
+                { date: "2023/03/29", quality: 2.1 },
+                { date: "2023/03/30", quality: 3.3 },
+            ])
+        });
+    });
+
+    describe('findHoursSlept', () => {
+        it('should return hour slept for specific day', () => {
+            let e = findHoursSlept(sleepSample, '2023/03/24')
+
+            expect(e).to.equal(9.6)
+        });
+    });
+
+    describe('findSleepQuality', () => {
+        it('should return sleep quality for specific day', () => {
+            let e = findSleepQuality(sleepSample, '2023/03/24')
+
+            expect(e).to.equal(4.3)
         });
     });
 });

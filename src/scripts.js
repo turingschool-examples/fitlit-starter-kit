@@ -4,7 +4,13 @@ import './images/white-texture.png';
 import { displayWelcomeMessage, displayAverageDailyOunces, displaySpecificDayOunces, displayWeeklyHydration, setupEventListeners } from './domUpdates';
 import { fetchUserData, fetchHydrationData, fetchSleepData, fetchActivityData } from './apiCalls';
 
-let account, hydration, sleep, activity, randomUser;
+let appState = {
+  account: null,
+  hydration: null,
+  sleep: null,
+  activity: null,
+  randomUser: null,
+};
 
 function fetchData() {
   Promise.all([
@@ -14,66 +20,60 @@ function fetchData() {
     fetchActivityData(),
   ])
   .then(([userData, hydrationData, sleepData, activityData]) => {
-    account = userData;
-    hydration = hydrationData;
-    sleep = sleepData;
-    activity = activityData;
+    appState.account = userData;
+    appState.hydration = hydrationData;
+    appState.sleep = sleepData;
+    appState.activity = activityData;
 
+    appState.randomUser = generateRandomUser(appState.account);
+    console.log('Random user data:', appState.randomUser);
 
-    //call the handler in domUpdates
-    //handleFetchedData(randomUser, account, hydration, sleep, activity);
-
-    let randomUser = generateRandomUser();
-    console.log('Random user data:', randomUser);
-
-    displayWelcomeMessage(randomUser);
-    const averageOunces = getAverageDailyFluidOunces(randomUser.id);
-    displayAverageDailyOunces(averageOunces);
-
-    const mostRecentOunces = getSpecificDay(randomUser.id);
-    displaySpecificDayOunces(mostRecentOunces);
-
-    const weeklyHydrationData = getWeeklyFluidOunces(randomUser.id);
-    displayWeeklyHydration(weeklyHydrationData);
-
-    // setupEventListeners()
+    // Assuming domUpdates.js is prepared to handle the updated state
+    displayWelcomeMessage(appState.randomUser);
+    displayAverageDailyOunces(appState.randomUser.id);
+    displaySpecificDayOunces(appState.randomUser.id);
+    displayWeeklyHydration(appState.randomUser.id);
+    
+    // It's essential to call any setup functions that rely on the fetched data
+    setupEventListeners(appState);
   })
   .catch(error => console.error("Error loading data:", error));
 }
 
-function generateRandomUser() {
-  const randomIndex = Math.floor(Math.random() * account.users.length);
-  return account.users[randomIndex];
+function generateRandomUser(accountData) {
+  const randomIndex = Math.floor(Math.random() * accountData.users.length);
+  return accountData.users[randomIndex];
 }
 
+// Adjust this function as needed to use the appState data
 function getAverageStepGoal() {
-  const totalStepsGoal = account.users.reduce((total, user) => total + user.dailyStepGoal, 0);
-  return totalStepsGoal / account.users.length;
+  const totalStepsGoal = appState.account.users.reduce((total, user) => total + user.dailyStepGoal, 0);
+  return totalStepsGoal / appState.account.users.length;
 }
 
+// Ensure these functions are correctly accessing hydration data from appState
 function getAverageDailyFluidOunces(userId) {
-  const userHydrationData = hydration.hydrationData.filter(userRecord => userRecord.userID === userId);
+  const userHydrationData = appState.hydration.hydrationData.filter(userRecord => userRecord.userID === userId);
   const totalOunces = userHydrationData.reduce((acc, userRecord) => acc + userRecord.numOunces, 0);
   return totalOunces / userHydrationData.length;
 }
 
 function getSpecificDay(userId) {
-  const userHydrationData = hydration.hydrationData.filter(record => record.userID === userId);
+  const userHydrationData = appState.hydration.hydrationData.filter(record => record.userID === userId);
   const mostRecentRecord = userHydrationData.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
   return mostRecentRecord ? mostRecentRecord.numOunces : 0;
 }
 
 function getWeeklyFluidOunces(userId) {
-  const userHydrationData = hydration.hydrationData.filter(record => record.userID === userId);
+  const userHydrationData = appState.hydration.hydrationData.filter(record => record.userID === userId);
   userHydrationData.sort((a, b) => new Date(b.date) - new Date(a.date));
   const lastWeekData = userHydrationData.slice(0, 7);
   return lastWeekData.map(record => ({
     date: record.date,
     numOunces: record.numOunces
   }));
-
 }
 
 document.addEventListener('DOMContentLoaded', fetchData);
 
-export { generateRandomUser, getAverageStepGoal, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces, randomUser, account, hydration, sleep, activity };
+export { generateRandomUser, getAverageStepGoal, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces };

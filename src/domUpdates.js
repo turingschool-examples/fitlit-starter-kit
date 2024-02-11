@@ -1,6 +1,6 @@
 //import userData from './data/users.js';
 //import hydration from './data/hydration.js';
-import { generateRandomUser, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces, randomUser, account, hydration, sleep, activity, } from './scripts'
+import { generateRandomUser, getAverageDailyFluidOunces, getSpecificDay, getWeeklyFluidOunces, account, hydration, sleep, activity, } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
 import { stepChart, wklyHydChart, hydChart } from './chartSetup'
 Chart.register(...registerables);
@@ -47,71 +47,47 @@ function setupEventListeners() {
 // DOM update functions
 function displayWelcomeMessage(user) {
   const welcomeMessageElement = document.querySelector('.welcome-message');
-  console.log(user.name)
   welcomeMessageElement.textContent = `Welcome back, ${user.name.split(' ')[0]}!`;
 }
 
 function displayStepGoal(user) {
-  const averageStepsElement = document.querySelector('.user-step'); //add whatev we make the class
+  const averageStepsElement = document.querySelector('.user-step');
   averageStepsElement.textContent = `${user.dailyStepGoal}`;
 }
 
 function compareStepGoalToAverage(averageStepGoal) {
-  const stepGoalComparisonElement = document.querySelector('.average-step');//add whatev we make the class
+  const stepGoalComparisonElement = document.querySelector('.average-step');
   stepGoalComparisonElement.textContent = `${averageStepGoal}`;
 }
 
-// function to get average step goal from userData
-function getAverageStepGoal(users) {
-  const totalStepGoal = users.reduce((sum, user) => sum += user.dailyStepGoal, 0);
-  return totalStepGoal / users.length;
-}
-
-// account-name
 function updateAccountName(user) {
   const accountName = document.querySelector('#account-name');
   accountName.textContent = `user: ${user.name}`;
 }
 
-// account-address
 function updateAccountAddress(user) {
   const accountAddress = document.querySelector('#account-address');
   accountAddress.textContent = `address: ${user.address}`;
 }
 
-// account-email
 function updateAccountEmail(user) {
   const accountEmail = document.querySelector('#account-email');
   accountEmail.textContent = `email: ${user.email}`;
 }
 
-// account-stride
 function updateAccountStride(user) {
   const accountStride = document.querySelector('#account-stride');
   accountStride.textContent = `stride length: ${user.strideLength} ft.`;
 }
 
-//account-step
 function updateAccountStep(user) {
   const accountStep = document.querySelector('#account-step');
   accountStep.textContent = `step goal: ${user.dailyStepGoal} steps`;
 }
 
-// account-friends
 function updateAccountFriends(user) {
   const accountFriends = document.querySelector('#account-friends');
   accountFriends.textContent = `friends: ${friendIdsToNames(user)}`;
-}
-
-function friendIdsToNames(user) {
-  var friendArr = user.friends
-  var friendNames = userData.users.reduce((acc, account) => {
-    if (friendArr.includes(account.id)) {
-      acc.push(account.name)
-    }
-    return acc
-  }, [])
-  return friendNames.join(" - ")
 }
 
 function displayAverageDailyOunces(averageOunces) {
@@ -120,17 +96,43 @@ function displayAverageDailyOunces(averageOunces) {
 
 function displaySpecificDayOunces(userId) {
   const ouncesForMostRecent = getSpecificDay(userId);
-  document.getElementById('specificDayOunces').textContent = `${ouncesForMostRecent.toFixed(2)} oz`
-  return ouncesForMostRecent.toFixed(2)
+  document.getElementById('specificDayOunces').textContent = `${ouncesForMostRecent.toFixed(2)} oz`;
 }
 
-// function to display weekly hydration data for the random user
 function displayWeeklyHydration(userId) {
-  console.log(userId)
+  const weeklyOuncesList = document.getElementById('weeklyOuncesList');
+  if (!weeklyOuncesList) {
+    console.error('Weekly ounces list element not found.');
+    return;
+  }
   const weeklyData = getWeeklyFluidOunces(userId);
-  return weeklyData.map((day) => day.numOunces)
-}
 
+  // Clear the list before adding new items
+  weeklyOuncesList.innerHTML = '';
+
+  // Iterate over each day's data and append it to the list
+  weeklyData.forEach(dayData => {
+    const listItem = document.createElement('li');
+    listItem.textContent = `Date: ${dayData.date}, Ounces: ${dayData.numOunces}`;
+    weeklyOuncesList.appendChild(listItem);
+  });
+}
+// Export all functions at the bottom as per your instructions
+export {
+  setupEventListeners,
+  displayWelcomeMessage,
+  displayStepGoal,
+  compareStepGoalToAverage,
+  updateAccountName,
+  updateAccountAddress,
+  updateAccountEmail,
+  updateAccountStride,
+  updateAccountStep,
+  updateAccountFriends,
+  displayAverageDailyOunces,
+  displaySpecificDayOunces,
+  displayWeeklyHydration
+};
 /*function handleFetchedData(randomUser, account, hydration, sleep, activity) {
   
  const randomuser = generateRandomUser(account);//
@@ -184,22 +186,3 @@ function updateChart(randomUser, allUsers) {
 }
 
 // setupEventListeners();
-
-
-export {
-  displayWelcomeMessage,
-  displayStepGoal,
-  compareStepGoalToAverage,
-  updateAccountName,
-  updateAccountAddress,
-  updateAccountEmail,
-  updateAccountStride,
-  updateAccountStep,
-  updateAccountFriends,
-  displayAverageDailyOunces,
-  displaySpecificDayOunces,
-  displayWeeklyHydration,
-  setupEventListeners,
-  //handleFetchedData,
-
-};

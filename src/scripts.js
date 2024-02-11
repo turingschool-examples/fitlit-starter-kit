@@ -50,10 +50,10 @@ function getRandomUser(userData) {
 }
 
 function getUserInfo(randomUserId, userData) {
-    let userInfo = userData.users.find((user) => {
+    let targetUser = userData.users.find((user) => {
         return user.id === randomUserId
     })
-    displayUserData(userInfo)
+    displayUserData(targetUser)
 }
 
 /* <><> Average Steps <><> */
@@ -119,13 +119,13 @@ function calculateAvgHours(sleep) {
 
 function calculateAvgQuality(sleep) {
     let totalSleepQuality = 0
-    let userSleepQuality = sleep.sleepData.filter((user) => {
+    let targetUser = sleep.sleepData.filter((user) => {
         return user.userID === randomUserId
     }).map((day) => { return day.sleepQuality })
-    userSleepQuality.forEach((day) => {
+    targetUser.forEach((day) => {
         totalSleepQuality += day
     })
-    return Math.round(totalSleepQuality / userSleepQuality.length)
+    return Math.round(totalSleepQuality / targetUser.length)
 }
 
 function findRecentWeek(sleep) {

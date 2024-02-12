@@ -18,8 +18,8 @@ Additional enhancements could include:
 
 ### Screenshots
 
-### TDD
-Fitlit uses Mocha and Chai for all testing.
+### Technologies Used
+Fitlit relies on TDD using JavaScript and Mocha and Chai for all testing.
 
 ### Original Project Spec Page
 [Fitlit part 1](https://frontend.turing.edu/projects/module-2/fitlit-part-one-agile.html) from the Turing School of Software and Design

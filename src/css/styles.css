@@ -14,8 +14,17 @@ main {
   align-items: center;
 }
 
+input {
+  background-color: #7c7c7c;
+    border-radius: 7px;
+    box-shadow: 4px 7px 20px 2px #211e1ec2;
+    color: white;
+    font-family: "Baskerville Old Face";
+}
+
 h3 {
   font-weight: normal;
+  margin-right: 36px;
 }
 
 p {
@@ -145,18 +154,21 @@ canvas {
 .icon {
   font-size: 43px;
   mix-blend-mode: luminosity;
-  color: #00000061;
-  text-shadow: 7px 4px 13px #000000b0;
+  color: rgb(255 255 255);
+  text-shadow: 7px 4px 13px rgba(0, 0, 0, 0.6901960784);
   margin-right: 10px;
+  margin-left: 45px;
 }
 
 .iconSection {
   width: 90%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  height: 35px;
+  justify-content: space-between;
+  height: 59px;
   align-items: center;
+  background-color: #888787c7;
+  border-radius: 20px;
 }
 
 .dateSelector, .dateSection{

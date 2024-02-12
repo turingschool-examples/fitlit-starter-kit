@@ -40,11 +40,61 @@ function getAverageSleepHours(randomUser) {
   return averageSleepHours.toFixed(2)
 }
 
+function getAverageSleepQuality(randomUser) {
+  let sameUserSleepData = getUserSleepData(randomUser)
+  let averageSleepQuality = 0
+  let totalSleepQuality = 0
+  sameUserSleepData.forEach(obj => {
+    totalSleepQuality += obj.sleepQuality
+  })
+  averageSleepQuality = totalSleepQuality / sameUserSleepData.length
+  return averageSleepQuality.toFixed(2)
+}
+
+function getMostRecentSleepHours(randomUser) {
+  let sameUserSleepData = getUserSleepData(randomUser)
+  let latestSleepDataIndex = sameUserSleepData.length - 1
+  return sameUserSleepData[latestSleepDataIndex].hoursSlept
+}
+
+function getMostRecentSleepQuality(randomUser) {
+  let sameUserSleepData = getUserSleepData(randomUser)
+  let latestSleepDataIndex = sameUserSleepData.length - 1
+  return sameUserSleepData[latestSleepDataIndex].sleepQuality
+}
+
+function getWeeklySleep(randomUser, selectedDay) {
+  let selectedWeek = []
+  let sameUserSleepData = getUserSleepData(randomUser)
+  for (let i = 0; i < sameUserSleepData.length; i++) {
+    if (sameUserSleepData[i].date === selectedDay) {
+      selectedWeek.push(sameUserSleepData.slice(i - 6, i + 1))
+    }
+  }
+  return {
+    weeklySleepHours: getWeeklySleepHours(selectedWeek),
+    weeklySleepQuality: getWeeklySleepQuality(selectedWeek)
+  }
+}
+
+function getWeeklySleepHours(selectedWeek) {
+  console.log(selectedWeek)
+  return selectedWeek[0].map(day => day.hoursSlept)
+}
+
+function getWeeklySleepQuality(selectedWeek) {
+  return selectedWeek[0].map(day => day.sleepQuality)
+}
+
 export {
     generateRandomUser,
     getAverageStepGoal,
     getAverageDailyFluidOunces,
     getSpecificDay,
     getUserSleepData,
-    getAverageSleepHours
+    getAverageSleepHours,
+    getAverageSleepQuality,
+    getMostRecentSleepHours,
+    getMostRecentSleepQuality,
+    getWeeklySleep
 };

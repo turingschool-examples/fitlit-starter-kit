@@ -14,7 +14,18 @@ main {
   align-items: center;
 }
 
-nav {
+h3 {
+  font-weight: normal;
+}
+
+p {
+  font-family: "Baskerville Old Face";
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: larger;
+}
+
+.navBar {
     overflow: hidden;
     background:rgba(0, 0, 0, 0);
     color: #1a1a1a;
@@ -28,15 +39,28 @@ nav {
     align-items: center;
 }
 
+.sideNav {
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: fixed;
+    align-content: flex-start;
+    height: 35em;
+    margin-left: 17em;
+    top: 6em;
+    overflow: hidden;
+}
+
 nav a {
-  color: #000000;
+  color: black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 22px;
   font-variant: unicase;
   font-weight: bolder;
   margin: 10px;
+  mix-blend-mode: color-burn;
 }
 
 nav a:hover {
@@ -83,16 +107,19 @@ img {
   position: fixed;
 }
 
-.full {
-  mix-blend-mode: color-burn;
-}
-
-.faded {
-  mix-blend-mode: soft-light;
-} 
-
 .shadow {
   box-shadow: rgba(0, 0, 0, 0.631372549) 12px 12px 20px 4px;
+}
+
+span {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.full {
+  mix-blend-mode: color-burn;
 }
 
 .step-text {
@@ -113,6 +140,10 @@ img {
 
 .welcome-message{
   margin-top: 20rem;
+}
+
+canvas {
+  z-index: 2;
 }
 
 .icon {

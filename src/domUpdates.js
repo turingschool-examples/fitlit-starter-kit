@@ -48,20 +48,20 @@ function setupEventListeners(randomUser, allUsers) {
     
     const storeScroll = () => {
       document.documentElement.dataset.scroll = window.scrollY;
-      // console.log(window.scrollY)
-      if(window.scrollY > 800){
-        // document.querySelector('img').classList.remove('full')
-        // document.querySelector('img').classList.add('faded')
-        // document.querySelector('nav').classList.add('shadow')
+      let opacLevel = 1 - window.scrollY / 1000
+      let opacInvert = 1 + window.scrollY / 1000 -1
+      var navBar = document.getElementById('nav-bar')
+      var sideBar = document.getElementById('side-nav')
+      var logo = document.getElementById("logo")
+      navBar.style.opacity = opacLevel
+      sideBar.style.opacity = opacInvert
+      if(opacLevel > 0.2) {
+        logo.style.opacity = `${opacLevel}`
       } else {
-        // document.querySelector('img').classList.add('full')
-        // document.querySelector('img').classList.remove('faded')
-        // document.querySelector('nav').classList.remove('shadow')
+        logo.style.opacity = '0.2'
       }
     }
-    var image = document.querySelector('img')
-        image.style.opacity = window.scrollY / 1000
-        console.log(image.style.opacity)
+  
     document.addEventListener('scroll', debounce(storeScroll), { passive: true });
     storeScroll();
 }
@@ -79,32 +79,32 @@ function displayStepGoal(user) {
 
 function updateAccountName(user) {
   const accountName = document.querySelector('#account-name');
-  accountName.textContent = `user: ${user.name}`;
+  accountName.textContent = `${user.name}`;
 }
 
 function updateAccountAddress(user) {
   const accountAddress = document.querySelector('#account-address');
-  accountAddress.textContent = `address: ${user.address}`;
+  accountAddress.textContent = `${user.address}`;
 }
 
 function updateAccountEmail(user) {
   const accountEmail = document.querySelector('#account-email');
-  accountEmail.textContent = `email: ${user.email}`;
+  accountEmail.textContent = `${user.email}`;
 }
 
 function updateAccountStride(user) {
   const accountStride = document.querySelector('#account-stride');
-  accountStride.textContent = `stride length: ${user.strideLength} ft.`;
+  accountStride.textContent = `${user.strideLength} ft.`;
 }
 
 function updateAccountStep(user) {
   const accountStep = document.querySelector('#account-step');
-  accountStep.textContent = `step goal: ${user.dailyStepGoal} steps`;
+  accountStep.textContent = `${user.dailyStepGoal} steps`;
 }
 
 function updateAccountFriends(friends) {
   const accountFriends = document.querySelector('#account-friends');
-  accountFriends.textContent = `friends: ${friends}`;
+  accountFriends.textContent = `${friends}`;
 }
 
 function displayAverageDailyOunces(averageOunces) {

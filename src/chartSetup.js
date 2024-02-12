@@ -20,7 +20,7 @@ sleepCtx.canvas.height = 60;
 sleepCtx.canvas.width = 500;
 avgSleepCtx.canvas.height = 60;
 avgSleepCtx.canvas.width = 500;
-wklySleepCtx.canvas.height = 60;
+wklySleepCtx.canvas.height = 100;
 wklySleepCtx.canvas.width = 500;
 
 

@@ -1,5 +1,5 @@
 //NOTE: Your DOM manipulation will occur in this file
-import { calculateAverageSteps, dailyOunces, weeklyOunces, findDailySleep, findWeeklyHours, findRecentWeek } from './scripts.js';
+import { calculateAverageSteps, dailyOunces, weeklyOunces, findDailySleep, findWeeklyHours, findRecentWeek, findWeeklyQuality, calculateAvgQuality, calculateAvgHours } from './scripts.js';
 
 import { getAllData } from './apiCalls.js';
 
@@ -17,9 +17,39 @@ const weeklyHydrationData4 = document.querySelector('.weekly-hydration-data4')
 const weeklyHydrationData5 = document.querySelector('.weekly-hydration-data5')
 const weeklyHydrationData6 = document.querySelector('.weekly-hydration-data6')
 const weeklyHydrationData7 = document.querySelector('.weekly-hydration-data7')
-const dailySleep = document.querySelector('.daily-sleep-label')
-const weeklySleepLabel = document.querySelector('.weekly-sleep-label')
-const weeklySleepData = document.querySelector('.weekly-sleep-data')
+
+const weeklyDateData1 = document.querySelector('.weekly-date-data1')
+const weeklyDateData2 = document.querySelector('.weekly-date-data2')
+const weeklyDateData3 = document.querySelector('.weekly-date-data3')
+const weeklyDateData4 = document.querySelector('.weekly-date-data4')
+const weeklyDateData5 = document.querySelector('.weekly-date-data5')
+const weeklyDateData6 = document.querySelector('.weekly-date-data6')
+const weeklyDateData7 = document.querySelector('.weekly-date-data7')
+
+const weeklyHoursData1 = document.querySelector('.weekly-hours-data1')
+const weeklyHoursData2 = document.querySelector('.weekly-hours-data2')
+const weeklyHoursData3 = document.querySelector('.weekly-hours-data3')
+const weeklyHoursData4 = document.querySelector('.weekly-hours-data4')
+const weeklyHoursData5 = document.querySelector('.weekly-hours-data5')
+const weeklyHoursData6 = document.querySelector('.weekly-hours-data6')
+const weeklyHoursData7 = document.querySelector('.weekly-hours-data7')
+
+const weeklyQualityData1 = document.querySelector('.weekly-quality-data1')
+const weeklyQualityData2 = document.querySelector('.weekly-quality-data2')
+const weeklyQualityData3 = document.querySelector('.weekly-quality-data3')
+const weeklyQualityData4 = document.querySelector('.weekly-quality-data4')
+const weeklyQualityData5 = document.querySelector('.weekly-quality-data5')
+const weeklyQualityData6 = document.querySelector('.weekly-quality-data6')
+const weeklyQualityData7 = document.querySelector('.weekly-quality-data7')
+
+const avgQualityData = document.querySelector('.avg-quality-data')
+const avgHoursData = document.querySelector('.avg-hours-data')
+
+const dailySleep = document.querySelector('.daily-sleep-data')
+// const weeklySleepLabel = document.querySelector('.weekly-sleep-label')
+// const weeklySleepData = document.querySelector('.weekly-sleep-data')
+// const weeklySleepQuality = document.querySelector('.')
+
 
 window.addEventListener('load', getAllData)
 
@@ -54,14 +84,41 @@ function displayHydrationData(hydration) {
 function displaySleepData(sleep) {
   let date = findRecentWeek(sleep)
   let weeklyHoursSlept = findWeeklyHours(sleep, date)
+  let weeklyQualitySlept = findWeeklyQuality(sleep, date)
   dailySleep.innerText = findDailySleep(sleep)
-  weeklySleepLabel.innerText = `${weeklyHoursSlept[0].date} | ${weeklyHoursSlept[1].date} | ${weeklyHoursSlept[2].date} | ${weeklyHoursSlept[3].date} | ${weeklyHoursSlept[4].date} | ${weeklyHoursSlept[5].date} | ${weeklyHoursSlept[6].date}`
-  weeklySleepData.innerText = `${weeklyHoursSlept[0].hours} | ${weeklyHoursSlept[1].hours} | ${weeklyHoursSlept[2].hours} | ${weeklyHoursSlept[3].hours} | ${weeklyHoursSlept[4].hours} | ${weeklyHoursSlept[5].hours} | ${weeklyHoursSlept[5].hours}`
+  weeklyDateData1.innerText = `${weeklyHoursSlept[0].date} - `
+  weeklyDateData2.innerText = `${weeklyHoursSlept[1].date} - `
+  weeklyDateData3.innerText = `${weeklyHoursSlept[2].date} - `
+  weeklyDateData4.innerText = `${weeklyHoursSlept[3].date} - `
+  weeklyDateData5.innerText = `${weeklyHoursSlept[4].date} - `
+  weeklyDateData6.innerText = `${weeklyHoursSlept[5].date} - `
+  weeklyDateData7.innerText = `${weeklyHoursSlept[6].date} - `
+
+  weeklyHoursData1.innerText = `${weeklyHoursSlept[0].hours} - `
+  weeklyHoursData2.innerText = `${weeklyHoursSlept[1].hours} - `
+  weeklyHoursData3.innerText = `${weeklyHoursSlept[2].hours} - `
+  weeklyHoursData4.innerText = `${weeklyHoursSlept[3].hours} - `
+  weeklyHoursData5.innerText = `${weeklyHoursSlept[4].hours} - `
+  weeklyHoursData6.innerText = `${weeklyHoursSlept[5].hours} - `
+  weeklyHoursData7.innerText = `${weeklyHoursSlept[6].hours} - `
+
+  weeklyQualityData1.innerText = `${weeklyQualitySlept[0].quality}`
+  weeklyQualityData2.innerText = `${weeklyQualitySlept[1].quality}`
+  weeklyQualityData3.innerText = `${weeklyQualitySlept[2].quality}`
+  weeklyQualityData4.innerText = `${weeklyQualitySlept[3].quality}`
+  weeklyQualityData5.innerText = `${weeklyQualitySlept[4].quality}`
+  weeklyQualityData6.innerText = `${weeklyQualitySlept[5].quality}`
+  weeklyQualityData7.innerText = `${weeklyQualitySlept[6].quality}`
+
+  avgQualityData.innerText = calculateAvgQuality(sleep)
+
+  avgHoursData.innerText = calculateAvgHours(sleep)
 }
 
 export {
   displayUserData,
   displayHydrationData,
   displaySleepData,
-  displaySteps
+  displaySteps,
+  calculateAvgQuality,
 }

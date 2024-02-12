@@ -5,7 +5,11 @@ import {
     getAverageDailyFluidOunces,
     getSpecificDay,
     getUserSleepData,
-    getAverageSleepHours
+    getAverageSleepHours,
+    getAverageSleepQuality,
+    getMostRecentSleepHours,
+    getMostRecentSleepQuality,
+    getWeeklySleep
 } from '../src/functions';
 import sleep from '../src/data/sleep-test-data'
 import account from '../src/data/users-test-data'
@@ -33,12 +37,12 @@ describe('generateRandomUser()', () => {
     ]}
    
     it('should be an object', function () {
-        let person = generateRandomUser(people)
+        let person = generateRandomUser(account)
         expect(person).to.be.an('object');
     });
 
     it('should return a user within the users array', () => {
-        const usersSet = new Set(people.users);
+        const usersSet = new Set(account.users);
         const user = generateRandomUser(people);
         expect(usersSet.has(user)).to.be.true;
       });
@@ -178,3 +182,137 @@ describe('getUserSleepData()', () => {
     });
 
 });
+
+describe('getAverageSleepHours()', () => {
+
+    it('should calculate the correct average sleep hours for a given user', function() {
+        const user1 = account.users[1]
+        const averageSleepHours = getAverageSleepHours(user1);
+        expect(averageSleepHours).to.be.a('string');
+        const expectedAverage = (7.94).toFixed(2);
+        expect(averageSleepHours).to.equal(expectedAverage);
+    });
+    
+    it('should calculate the correct average sleep hours for a different user', function() {
+        const user2 = account.users[7]
+        const averageSleepHours = getAverageSleepHours(user2);
+        const expectedAverage = (8.67).toFixed(2); 
+        expect(averageSleepHours).to.equal(expectedAverage);
+    });
+
+    it('should handle cases with no sleep data for a given user', function() {
+        const randomUser = { id: 999 }; 
+        const averageSleepHours = getAverageSleepHours(randomUser);
+        expect(averageSleepHours).to.equal('NaN');
+        
+    });
+
+});
+
+describe('getAverageSleepQuality()', () => {
+
+    it('should calculate the correct average sleep quality for a given user', function() {
+        const userP = account.users[1]
+        const averageSleepQuality = getAverageSleepQuality(userP);
+        expect(averageSleepQuality).to.be.a('string');
+        const expectedAverage = (3.61).toFixed(2);
+        expect(averageSleepQuality).to.equal(expectedAverage);
+    });
+    
+    it('should calculate the correct average sleep quality for a different user', function() {
+        const userY = account.users[5]
+        const averageSleepQuality = getAverageSleepQuality(userY);
+        expect(averageSleepQuality).to.be.a('string');
+        const expectedAverage = (3.29).toFixed(2);
+        expect(averageSleepQuality).to.equal(expectedAverage);
+    });
+
+    it('should return "NaN" for a user with no sleep data', function() {
+        const nonExistentUser = { id: 999 };
+        const averageSleepQuality = getAverageSleepQuality(nonExistentUser);
+        expect(averageSleepQuality).to.equal('NaN');
+    });
+
+});
+
+describe('getMostRecentSleepHours()', () => {
+
+    it('should return the most recent sleep data entry for a user', function() {
+        const user444 = account.users[5];
+        const mostRecentSleepHours = getMostRecentSleepHours(user444);
+        expect(mostRecentSleepHours).to.be.a('number');
+        const expectedAverage = (7.3)
+        expect(mostRecentSleepHours).to.equal(expectedAverage);
+    });
+    
+    it('should return the most recent sleep data entry for a different user', function() {
+        const user000 = account.users[9];
+        const mostRecentSleepHours = getMostRecentSleepHours(user000);
+        const expectedAverage = (9.7)
+        expect(mostRecentSleepHours).to.equal(expectedAverage);
+    });
+
+
+    it('should return "NaN" for a user with no sleep data', function() {
+        const nonExistentUser = { id: 999 };
+        const averageSleepQuality = getAverageSleepQuality(nonExistentUser);
+        expect(averageSleepQuality).to.equal('NaN');
+    });
+    
+
+});
+
+describe('getMostRecentSleepQuality()', () => {
+
+    it('should return the most recent sleep data entry for a user', function() {
+        const userAFK = account.users[2];
+        const mostRecentSleepHours = getMostRecentSleepQuality(userAFK);
+        expect(mostRecentSleepHours).to.be.a('number');
+        const expectedAverage = (4.2)
+        expect(mostRecentSleepHours).to.equal(expectedAverage);
+    });
+    
+    it('should return the most recent sleep data entry for a different user', function() {
+        const user000 = account.users[6];
+        const mostRecentSleepHours = getMostRecentSleepQuality(user000);
+        const expectedAverage = (3.4)
+        expect(mostRecentSleepHours).to.equal(expectedAverage);
+    });
+
+
+    it('should return "NaN" for a user with no sleep data', function() {
+        const nonExistentUser = { id: 999 };
+        const averageSleepQuality = getAverageSleepQuality(nonExistentUser);
+        expect(averageSleepQuality).to.equal('NaN');
+    });
+    
+
+});
+
+describe('getWeeklySleep()', () => {
+
+    it('should return the most recent sleep data entry for a user', function() {
+        const userAFK = account.users[2];
+        const mostRecentSleepHours = getMostRecentSleepQuality(userAFK);
+        expect(mostRecentSleepHours).to.be.a('number');
+        const expectedAverage = (4.2)
+        expect(mostRecentSleepHours).to.equal(expectedAverage);
+    });
+    
+    it('should return the most recent sleep data entry for a different user', function() {
+        const user000 = account.users[6];
+        const mostRecentSleepHours = getMostRecentSleepQuality(user000);
+        const expectedAverage = (3.4)
+        expect(mostRecentSleepHours).to.equal(expectedAverage);
+    });
+
+
+    it('should return "NaN" for a user with no sleep data', function() {
+        const nonExistentUser = { id: 999 };
+        const averageSleepQuality = getAverageSleepQuality(nonExistentUser);
+        expect(averageSleepQuality).to.equal('NaN');
+    });
+    
+
+});
+

@@ -5,7 +5,14 @@
     <title>Fitlit</title>
   </head>
   <body>
-    <nav class="nav-bar"> 
+    <nav class="navBar" id="nav-bar"> 
+      <a class="top-home-button" href="#top">Home</a>
+      <a class="top-steps-button" href="#stepCard">Steps</a>
+      <a class="top-water-button" href="#waterCard">Water</a>
+      <a class="top-sleep-button" href="#sleepCard">Sleep</a>
+      <a class="top-account-button" href="#accountCard">Account</a>
+    </nav>
+    <nav class="sideNav" id="side-nav"> 
       <a class="home-button" href="#top">Home</a>
       <a class="steps-button" href="#stepCard">Steps</a>
       <a class="water-button" href="#waterCard">Water</a>
@@ -14,7 +21,7 @@
     </nav>
     <main id="top">
       <article>
-        <img class="full" src="./images/fitlit-logo.png">
+        <img class="full" src="./images/fitlit-logo.png" id="logo">
         <h1 class="welcome-message" id="welcomeMessage">welcome back (person.name)</h1>
       </article>
       <section class="steps-main info-card" id="stepCard">
@@ -59,12 +66,12 @@
             <p class="icon">&#128100;</p>
             <h3>Account Details</h3>
           </section>
-          <h3 id="account-name">name</h3>
-          <h3 id="account-address">address</h3>
-          <h3 id="account-email">email</h3>
-          <h3 id="account-stride">stride length</h3>
-          <h3 id="account-step">daily step goal</h3>
-          <h3 id="account-friends">friends</h3>
+          <span><p>User:</p><h3 id="account-name">name</h3></span>
+          <span><p>Address:</p><h3 id="account-address">address</h3></span>
+          <span><p>Email:</p><h3 id="account-email">email</h3></span>
+          <span><p>Stride Length:</p><h3 id="account-stride">stride length</h3></span>
+          <span><p>Daily Step Goal:</p><h3 id="account-step">daily step goal</h3></span>
+          <span><p>Friends:</p><h3 id="account-friends">friends</h3></span>
            </div>
       </section>
     </main>

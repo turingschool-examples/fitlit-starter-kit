@@ -1,6 +1,5 @@
 
 import { initiateUserFunctions, initiateHydrationFunctions, initiateSleepFunctions } from "./scripts"
-console.log('I will be a fetch request!')
 
 function getAllData() {
     const users = fetch('https://fitlit-api.herokuapp.com/api/v1/users')
@@ -15,7 +14,6 @@ function getAllData() {
     Promise.all([users, hydration, sleep])
         .then((data) => {
             let [users, hydration, sleep] = data
-            console.log('sleep', sleep)
             initiateUserFunctions(users)
             initiateHydrationFunctions(hydration)
             initiateSleepFunctions(sleep)

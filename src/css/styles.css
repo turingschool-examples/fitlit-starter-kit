@@ -1,5 +1,5 @@
 html {
-display: flex;
+  display: flex;
 }
 
 body {
@@ -10,28 +10,28 @@ body {
   color: #3d3d4e;
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
   font-family: 'Bungee', sans-serif;
   transform: scale(0.90);
   border: 5px solid #3d3d4e;
   border-radius: 8px;
-  box-sizing: border-box;
 }
 
 main {
+  overflow-wrap: break-word;
   background-color: white;
   width: 100%;
-  width: 100%;
+  height: 100%
 }
 
 header {
   display: flex;
-  /* margin-top: 0; */
-  background-color: #FFFCF8;
+  background-color: white;
   height: 5%;
   justify-content: center;
-  position: relative;
+  /* position: relative; */
 }
 
 h1 {
@@ -39,8 +39,7 @@ h1 {
   margin-left: .5em;
   margin-top: 0;
   padding-top: .5em;
-  display:flex;
-
+  display: flex;
 }
 
 .dumbell-image {
@@ -53,32 +52,33 @@ h1 {
 
 .h1
 .user-container { 
-  background-color: #f6f6f6;
   height: 50%;
 }
 
 .contact-info {
   font-family: 'DotGothic16', sans-serif;
-  /* font-family: 'Londrina Outline', sans-serif; */
   font-style: normal;
 }
 
 .name-cont {
-  width: 20%;
+  width: auto;
+  height: auto;
+  overflow-x: visible;
+  overflow-wrap: break-word;
 }
 
 .user-data {
-  background-color: #FFFCF8;
+  background-color: white;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 .user-data-left {
   display: flex;
   flex-direction: column;
-  margin-left: 4em;
+  margin-left: 4%;
   margin-bottom: 6em;
   margin-top: 3em;
   width: 25%;
@@ -86,13 +86,14 @@ h1 {
 }
 
 .user-name {
-  font-size: 3em;
+  font-size: 3rem;
 }
 
 .address-cont {
   float: right;
   padding-right: 2em;
   padding-bottom: 2em;
+  overflow-x: auto;
 }
 
 .profile-image {
@@ -119,16 +120,15 @@ dt {
   height: 15%;
   margin-left: .5em;
   text-align: center;
+  padding-bottom: .5em;
 }
 
 .stride-cont,
 .steps-goal-cont,
 .global-steps-goal-cont {
   display: flex;
-  justify-content: baseline;
   flex-direction: row-reverse;
   height: 30%;
-  padding-bottom: 0;
 }
 
 .data {
@@ -137,33 +137,18 @@ dt {
 
 /* animation: 3s linear 1s infinite running slidein; */
 @keyframes stride-animation {
-  from {
-    width: 1vw;
-  }
-
-  to {
-    width: 15vw;
-  }
+  from { width: 1vw; }
+  to { width: 15vw; }
 }
 
 @keyframes steps-goal-animation {
-  from {
-    width: 1vw;
-  }
-
-  to {
-    width: 25vw;
-  }
+  from { width: 1vw; }
+  to { width: 25vw; }
 }
 
 @keyframes global-steps-goal-animation {
-  from {
-    width: 1vw;
-  }
-
-  to {
-    width: 35vw;
-  }
+  from { width: 1vw; }
+  to { width: 35vw; }
 }
 
 .stride-label {
@@ -202,7 +187,12 @@ dt {
   font-size: 1.45em;
   font-weight: 500;
   font-family: 'Sixtyfour', sans-serif;
-  margin: 20px 0px;
+  margin-bottom: 20px;
+}
+
+#sleep-banner {
+  margin-bottom: 0;
+  margin-top: 1.4em;
 }
 
 .hydration-heading {
@@ -212,24 +202,23 @@ dt {
   padding-right: 5vw;
   margin-top: 2.5vh;
   margin-bottom: 2.5vh;
-  color: #B0B0B0;
+  color: #9d9d9d;
 }
 
 .sleep-heading {
   font-family: "Bungee Outline", sans-serif;
-  /* font-family: 'Londrina Outline', sans-serif; */
   font-size: 5em;
   text-align: left;
   padding-left: 5vw;
   margin-top: 2.5vh;
   margin-bottom: 2.5vh;
   display: flex;
-  color: #B0B0B0;
+  color: #9d9d9d;
 }
 
 .data-and-image-cont {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .hydration-container {
@@ -243,9 +232,7 @@ dt {
 }
 
 .weekly-hydration-cont {
-  display: flex;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  margin-left: 40px;
 }
 
 .daily-hydration-cont {
@@ -253,14 +240,15 @@ dt {
   flex-direction: column;
   padding-top: 10px;
   padding-bottom: 0px;
-  padding-left: 150px;
   padding-right: 0px;
+  margin-left: 30%;
 }
 
 .weekly-hydration-cont {
   display: flex;
   flex-direction: column;
   padding: 0px;
+  min-width: 30%;
 }
 
 .weekly-hydration-label{
@@ -284,19 +272,10 @@ dt {
   transform: rotateY(180deg);
 }
 
-.sleep-heading {
-  border-top:  2px solid #3d3d4e;
-  font-family: "Bungee Outline", sans-serif;
-  font-size: 5em;
-  text-align: left;
-  padding-left: 5vw;
-  margin-top: 2.5vh;
-  display: flex;
-  color: #B0B0B0;
-}
-
 .sleep-container {
-  background-color: #FFFCF8;
+    background-color: white;
+    height: 100%;
+    padding-top: 2em;
 }
 
 .star-png {

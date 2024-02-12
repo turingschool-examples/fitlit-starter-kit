@@ -29,10 +29,30 @@ function setupEventListeners(randomUser, allUsers) {
     const userFriends = getAccountFriends(randomUser)
 
     updateAccountFriends(userFriends);
-    displaySpecificDayOunces(randomUser.id);
-    displayAverageSleepHours(randomUser)
-    updateChart(randomUser, allUsers);
-    
+    // displaySpecificDayOunces(randomUser.id);
+    // //displayAverageSleepHours(randomUser)
+    // stepChartUpdate(randomUser, allUsers)
+    // hydrationChartUpdate(randomUser, allUsers)
+    sleepChartUpdate(randomUser, allUsers)
+    hydrationChartUpdate(randomUser, allUsers)
+    stepChartUpdate(randomUser, allUsers)
+
+    let topNavBar = document.querySelectorAll('.topNav a')
+    let sideNavBar = document.querySelectorAll('.sideNav a')
+    document.querySelectorAll('nav').forEach((elem) => {
+      elem.addEventListener('click', (e) => {
+      for(let i =0; i < topNavBar.length; i++) {
+        if(topNavBar[i].classList === e.target.classList || sideNavBar[i].classList === e.target.classList){
+          topNavBar[i].classList.add('underline')
+          sideNavBar[i].classList.add('underline')
+        } else {
+          topNavBar[i].classList.remove('underline')
+          sideNavBar[i].classList.remove('underline')
+        }
+      }
+    })
+  })
+  
     const debounce = (fn) => {
       let frame;
       return (...params) => {
@@ -118,11 +138,57 @@ function displaySpecificDayOunces(userId) {
   return ouncesForMostRecent
 }
 
-function displayAverageSleepHours(user) {
-  //console.log("getAverageSleepHours", getAverageSleepHours(user))
+function stepChartUpdate(randomUser, allUsers) {
+  const averageStepGoal = getAverageStepGoal(allUsers);
+
+  stepChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
+  stepChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 500;
+
+  stepChart.update();
 }
 
-// Export all functions at the bottom as per your instructions
+function hydrationChartUpdate(randomUser, allUsers) {
+  const avgDailyHydration = getAverageDailyFluidOunces (randomUser.id);
+  const dailyHydration = displaySpecificDayOunces (randomUser.id)
+  const weeklyHydration = getWeeklyFluidOunces(randomUser.id)
+
+  hydChart.data.datasets[0].data = [avgDailyHydration,dailyHydration];
+  hydChart.options.scales.x.ticks.max = Math.max(avgDailyHydration,dailyHydration) + 10;
+
+  wklyHydChart.data.datasets[0].data = weeklyHydration.map((day) => { return day.numOunces});
+  wklyHydChart.options.scales.x.ticks.max = Math.max(weeklyHydration) + 10;
+  
+  wklyHydChart.update()
+  hydChart.update()
+}
+
+function sleepChartUpdate(randomUser, allUsers) {
+  const averageHoursSleptPerDay = getAverageSleepHours(randomUser)
+  const averageSleepQuality = getAverageSleepQuality(randomUser)
+  const hoursSleptRecentDay = getMostRecentSleepHours(randomUser)
+  const sleepQualityRecentDay = getMostRecentSleepQuality(randomUser)
+
+  const selectedDate = document.querySelector('.dateSelector').value
+  const sleepWeekAndDay = getWeeklySleep(randomUser, selectedDate)
+  const weeklySleepHoursPerDay = sleepWeekAndDay.weeklySleepHours
+  const weeklySleepQualityPerDay = sleepWeekAndDay.weeklySleepQuality
+
+  sleepChart.data.datasets[0].data = [hoursSleptRecentDay, sleepQualityRecentDay];
+  sleepChart.options.scales.x.ticks.max = Math.max(hoursSleptRecentDay, sleepQualityRecentDay) + 10;
+
+  for(let i=0; i < 7; i++){
+  wklySleepChart.data.datasets[i].data[0] = weeklySleepHoursPerDay[i]
+  wklySleepChart.data.datasets[i].data[1] = weeklySleepQualityPerDay[i]
+  }
+
+  avgSleepChart.data.datasets[0].data = [averageHoursSleptPerDay, averageSleepQuality];
+  avgSleepChart.options.scales.x.ticks.max = Math.max(averageHoursSleptPerDay, averageSleepQuality) + 10;
+
+  avgSleepChart.update();
+  sleepChart.update();
+  wklySleepChart.update();
+}
+
 export {
   setupEventListeners,
   displayWelcomeMessage,
@@ -134,50 +200,5 @@ export {
   updateAccountStep,
   updateAccountFriends,
   displaySpecificDayOunces,
-  updateChart
+  sleepChartUpdate
 };
-
-// function to update the chart with the user's step goal and the average step goal from chatgpt
-function updateChart(randomUser, allUsers) {
-  const averageStepGoal = getAverageStepGoal(allUsers);
-  const avgDailyHydration = getAverageDailyFluidOunces (randomUser.id);
-  const dailyHydration = displaySpecificDayOunces (randomUser.id)
-  const weeklyHydration = getWeeklyFluidOunces(randomUser.id)
-
-  const averageHoursSleptPerDay = getAverageSleepHours(randomUser)
-  const averageSleepQuality = getAverageSleepQuality(randomUser)
-  const hoursSleptRecentDay = getMostRecentSleepHours(randomUser)
-  const sleepQualityRecentDay = getMostRecentSleepQuality(randomUser)
-
-  const selectedDate = document.querySelector('.dateSelector').value
-  const sleepWeekAndDay = getWeeklySleep(randomUser, selectedDate)
-  const weeklySleepHoursPerDay = sleepWeekAndDay.weeklySleepHours
-  const weeklySleepQualityPerDay = sleepWeekAndDay.weeklySleepQuality
-  
-  stepChart.data.datasets[0].data = [randomUser.dailyStepGoal, averageStepGoal];
-  stepChart.options.scales.y.ticks.max = Math.max(randomUser.dailyStepGoal, averageStepGoal) + 500; // Adjust as necessary
-
-  hydChart.data.datasets[0].data = [avgDailyHydration,dailyHydration];
-  hydChart.options.scales.x.ticks.max = Math.max(avgDailyHydration,dailyHydration) + 10; // Adjust as necessary
-
-  wklyHydChart.data.datasets[0].data = weeklyHydration.map((day) => { return day.numOunces});
-  wklyHydChart.options.scales.x.ticks.max = Math.max(weeklyHydration) + 10; // Adjust as necessary
-  
-  sleepChart.data.datasets[0].data = [hoursSleptRecentDay, sleepQualityRecentDay];
-  sleepChart.options.scales.x.ticks.max = Math.max(hoursSleptRecentDay, sleepQualityRecentDay) + 10;
-
- for(let i=0; i < 7; i++){
-  wklySleepChart.data.datasets[i].data[0] = weeklySleepHoursPerDay[i]
-  wklySleepChart.data.datasets[i].data[1] = weeklySleepQualityPerDay[i]
- }
-
-  avgSleepChart.data.datasets[0].data = [averageHoursSleptPerDay, averageSleepQuality];
-  avgSleepChart.options.scales.x.ticks.max = Math.max(averageHoursSleptPerDay, averageSleepQuality) + 10;
-
-  avgSleepChart.update();
-  sleepChart.update();
-  hydChart.update();
-  wklyHydChart.update();
-  stepChart.update();
-  wklySleepChart.update();
-}

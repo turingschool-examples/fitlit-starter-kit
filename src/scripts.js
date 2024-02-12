@@ -1,7 +1,7 @@
 import './css/styles.css';
 import './images/fitlit-logo.png';
 import './images/white-texture.png';
-import { displayWelcomeMessage, displaySpecificDayOunces, displayWeeklyHydration, setupEventListeners, updateChart } from './domUpdates';
+import { displayWelcomeMessage, displaySpecificDayOunces, displayWeeklyHydration, setupEventListeners, sleepChartUpdate } from './domUpdates';
 import { fetchUserData, fetchHydrationData, fetchSleepData, fetchActivityData } from './apiCalls';
 
 let appState = {
@@ -141,7 +141,6 @@ function getWeeklySleep(randomUser, selectedDay) {
 
 // Return how many *hours* a user slept each day over the course of a given week (7 days)
 function getWeeklySleepHours(selectedWeek) {
-  console.log(selectedWeek)
   return selectedWeek[0].map(day => day.hoursSlept)
 }
 
@@ -150,9 +149,24 @@ function getWeeklySleepQuality(selectedWeek) {
   return selectedWeek[0].map(day => day.sleepQuality)
 }
 
-
-
 document.addEventListener('DOMContentLoaded', fetchData);
+
+document.getElementById('date-input').addEventListener('keypress', function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+
+    const inputDate = this.value;
+    if (isNaN(Date.parse(inputDate))) {
+      alert("Invalid date format! Please try YYYY/MM/DD.");
+      return;
+    }
+
+    const randomUser = appState.randomUser;
+    const weeklySleepData = getWeeklySleep(randomUser, inputDate)
+    sleepChartUpdate(randomUser)
+  }  
+});
+
 export {
   appState, 
   getAccountFriends, 
@@ -168,22 +182,3 @@ export {
   getWeeklySleepHours, 
   getWeeklySleepQuality
 };
-
-
-document.getElementById('date-input').addEventListener('keypress', function(event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-
-    const inputDate = this.value;
-    if (isNaN(Date.parse(inputDate))) {
-      alert("Invalid date format! Please try YYYY/MM/DD.");
-      console.log('yoooo', inputDate)
-      return;
-    }
-
-    const randomUser = appState.randomUser;
-    const weeklySleepData = getWeeklySleep(randomUser, inputDate)
-    console.log('Weekly sleep info:', weeklySleepData)
-  }  
-});
-

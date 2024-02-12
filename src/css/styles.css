@@ -14,8 +14,17 @@ main {
   align-items: center;
 }
 
+input {
+  background-color: #7c7c7c;
+    border-radius: 7px;
+    box-shadow: 4px 7px 20px 2px #211e1ec2;
+    color: white;
+    font-family: "Baskerville Old Face";
+}
+
 h3 {
   font-weight: normal;
+  margin-right: 36px;
 }
 
 p {
@@ -25,7 +34,7 @@ p {
     font-size: larger;
 }
 
-.navBar {
+.topNav {
     overflow: hidden;
     background:rgba(0, 0, 0, 0);
     color: #1a1a1a;
@@ -41,14 +50,11 @@ p {
 
 .sideNav {
   display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    position: fixed;
-    align-content: flex-start;
-    height: 35em;
-    margin-left: 17em;
-    top: 6em;
-    overflow: hidden;
+  flex-direction: column;
+  position: fixed;
+  top: 7em;
+  width: 20%;
+  align-items: flex-end;
 }
 
 nav a {
@@ -107,6 +113,10 @@ img {
   position: fixed;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 .shadow {
   box-shadow: rgba(0, 0, 0, 0.631372549) 12px 12px 20px 4px;
 }
@@ -133,11 +143,6 @@ span {
   margin-bottom: 0;
 }
 
-#stepChart {
-  width: 10px;
-  mix-blend-mode: color-burn;
-}
-
 .welcome-message{
   margin-top: 20rem;
 }
@@ -149,18 +154,21 @@ canvas {
 .icon {
   font-size: 43px;
   mix-blend-mode: luminosity;
-  color: #00000061;
-  text-shadow: 7px 4px 13px #000000b0;
+  color: rgb(255 255 255);
+  text-shadow: 7px 4px 13px rgba(0, 0, 0, 0.6901960784);
   margin-right: 10px;
+  margin-left: 45px;
 }
 
 .iconSection {
   width: 90%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  height: 35px;
+  justify-content: space-between;
+  height: 59px;
   align-items: center;
+  background-color: #888787c7;
+  border-radius: 20px;
 }
 
 .dateSelector, .dateSection{

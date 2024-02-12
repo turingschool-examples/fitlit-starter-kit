@@ -37,7 +37,9 @@ const stepChartData = {
       '#1a1a1a',
       '#1a1a1a',
     ],
-    borderWidth: 1
+    borderWidth: 1,
+    borderRadius: 20,
+    hoverBorderColor: 'red'
   }]
 };
 
@@ -54,7 +56,9 @@ const wklyHydChartData = {
       '#1a1a1a',
       '#1a1a1a',
     ],
-    borderWidth: 1
+    borderWidth: 1,
+    borderRadius: 20,
+    hoverBorderColor: 'red'
   }]
 };
 
@@ -71,7 +75,9 @@ const hydChartData = {
       '#1a1a1a',
       '#1a1a1a',
     ],
-    borderWidth: 1
+    borderWidth: 1,
+    borderRadius: 20,
+    hoverBorderColor: 'red'
   }]
 };
 
@@ -185,7 +191,9 @@ const avgSleepChartData = {
       '#1a1a1a',
       '#1a1a1a',
     ],
-    borderWidth: 1
+    borderWidth: 1,
+    borderRadius: 20,
+    hoverBorderColor: 'red'
   }]
 };
 
@@ -202,32 +210,10 @@ const sleepChartData = {
       '#1a1a1a',
       '#1a1a1a',
     ],
-    borderWidth: 1
+    borderWidth: 1.5,
+    borderRadius: 20,
+    hoverBorderColor: 'red'
   }]
-};
-
-
-const horizOptions = {
-  indexAxis: 'y',
-  scales: {
-    x: {
-      beginAtZero: true,
-      ticks: {
-        color: 'black'
-      }
-    },
-    y: {
-      beginAtZero: true,
-      ticks: {
-        color: 'black'
-      }
-    }
-  },
-  plugins: {
-    legend: {
-      display: false
-    }
-  },
 };
 
 const vertOptions = {
@@ -256,7 +242,7 @@ const vertOptions = {
 const stepChart = new Chart(stepCtx, {
   type: 'bar', 
   data: stepChartData,
-  options: horizOptions
+  options: vertOptions
 });
 
 const wklyHydChart = new Chart(wklyHydCtx, {
@@ -323,7 +309,6 @@ export {
     stepChartData,
     wklyHydChartData,
     hydChartData,
-    horizOptions,
     vertOptions,
     stepChart,
     wklyHydChart,

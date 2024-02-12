@@ -1,5 +1,5 @@
 //NOTE: Your DOM manipulation will occur in this file
-import { calculateAverageSteps, dailyOunces, weeklyOunces, findDailySleep, findWeeklyHours, findRecentWeek } from './scripts.js';
+import { calculateAverageSteps, dailyOunces, weeklyOunces, findDailySleep, findWeeklyHours, findRecentWeek, findWeeklyQuality } from './scripts.js';
 
 import { getAllData } from './apiCalls.js';
 
@@ -17,9 +17,18 @@ const weeklyHydrationData4 = document.querySelector('.weekly-hydration-data4')
 const weeklyHydrationData5 = document.querySelector('.weekly-hydration-data5')
 const weeklyHydrationData6 = document.querySelector('.weekly-hydration-data6')
 const weeklyHydrationData7 = document.querySelector('.weekly-hydration-data7')
-const dailySleep = document.querySelector('.daily-sleep-label')
-const weeklySleepLabel = document.querySelector('.weekly-sleep-label')
-const weeklySleepData = document.querySelector('.weekly-sleep-data')
+const weeklydateData1 = document.querySelector('.weekly-date-data1')
+const weeklydateData2 = document.querySelector('.weekly-date-data2')
+const weeklydateData3 = document.querySelector('.weekly-date-data3')
+const weeklydateData4 = document.querySelector('.weekly-date-data4')
+const weeklydateData5 = document.querySelector('.weekly-date-data5')
+const weeklydateData6 = document.querySelector('.weekly-date-data6')
+const weeklydateData7 = document.querySelector('.weekly-date-data7')
+const dailySleep = document.querySelector('.daily-sleep-data')
+// const weeklySleepLabel = document.querySelector('.weekly-sleep-label')
+// const weeklySleepData = document.querySelector('.weekly-sleep-data')
+// const weeklySleepQuality = document.querySelector('.')
+
 
 window.addEventListener('load', getAllData)
 
@@ -54,9 +63,10 @@ function displayHydrationData(hydration) {
 function displaySleepData(sleep) {
   let date = findRecentWeek(sleep)
   let weeklyHoursSlept = findWeeklyHours(sleep, date)
+  let weeklyQualitySlept = findWeeklyQuality(sleep, data)
   dailySleep.innerText = findDailySleep(sleep)
-  weeklySleepLabel.innerText = `${weeklyHoursSlept[0].date} | ${weeklyHoursSlept[1].date} | ${weeklyHoursSlept[2].date} | ${weeklyHoursSlept[3].date} | ${weeklyHoursSlept[4].date} | ${weeklyHoursSlept[5].date} | ${weeklyHoursSlept[6].date}`
-  weeklySleepData.innerText = `${weeklyHoursSlept[0].hours} | ${weeklyHoursSlept[1].hours} | ${weeklyHoursSlept[2].hours} | ${weeklyHoursSlept[3].hours} | ${weeklyHoursSlept[4].hours} | ${weeklyHoursSlept[5].hours} | ${weeklyHoursSlept[5].hours}`
+
+
 }
 
 export {

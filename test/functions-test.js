@@ -3,8 +3,12 @@ import {
     generateRandomUser, 
     getAverageStepGoal,
     getAverageDailyFluidOunces,
-    getSpecificDay
+    getSpecificDay,
+    getUserSleepData,
+    getAverageSleepHours
 } from '../src/functions';
+import sleep from '../src/data/sleep-test-data'
+import account from '../src/data/users-test-data'
 
 
 // ------- * users * -------
@@ -150,6 +154,27 @@ describe('getSpecificDay()', () => {
     it('returns 0 when hydroData is empty', () => {
     const ounces = getSpecificDay(1, '2022-04-02', []);
     expect(ounces).to.equal(0);
+    });
+
+});
+
+describe('getUserSleepData()', () => {
+    
+    let randomUser = generateRandomUser()
+    
+    it('should return an empty array for a user with no sleep data', function() {
+        const nonExistentUser = { id: 999 };
+        const result = getUserSleepData(nonExistentUser);
+        expect(result).to.be.an('array').that.is.empty;
+    });
+
+    it('should return all sleep data entries for a given user', function() {
+        const result = getUserSleepData(randomUser);
+        expect(result).to.be.an('array');
+        expect(result).to.have.lengthOf.at.least(10); 
+        result.forEach(data => {
+            expect(data.userID).to.equal(randomUser.id);
+        });
     });
 
 });

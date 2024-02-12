@@ -77,19 +77,99 @@ const hydChartData = {
 
 const wklySleepChartData = {
   labels: ['Weekly Hours Slept Per Day', 'Weekly Sleep Quality Per Day'],
-  datasets: [{
-    label: '',
-    data: [],
-    backgroundColor: [
-      '#1a1a1a',
-      '#1a1a1a',
-    ],
-    borderColor: [
-      '#1a1a1a',
-      '#1a1a1a',
-    ],
-    borderWidth: 1
-  }]
+  datasets: [
+    {
+      label: 'Day1',
+      data: [10],
+      stack: 'Stack 0',
+      backgroundColor: [
+        '#1a1a1a',
+        '#1a1a1a',
+      ],
+      borderColor: [
+        '#1a1a1a',
+        '#1a1a1a',
+      ]
+    },
+    {
+      label: 'Day2',
+      data: [10],
+      stack: 'Stack 1',
+      backgroundColor: [
+        '#1a1a1a',
+        '#1a1a1a',
+      ],
+      borderColor: [
+        '#1a1a1a',
+        '#1a1a1a',
+      ]
+    },
+    {
+      label: 'Day3',
+      data: [10],
+      stack: 'Stack 2',
+      backgroundColor: [
+        '#1a1a1a',
+        '#1a1a1a',
+      ],
+      borderColor: [
+        '#1a1a1a',
+        '#1a1a1a',
+      ]
+    },
+    {
+      label: 'Day4',
+      data: [10],
+      stack: 'Stack 3',
+      backgroundColor: [
+        '#1a1a1a',
+        '#1a1a1a',
+      ],
+      borderColor: [
+        '#1a1a1a',
+        '#1a1a1a',
+      ]
+    },
+    {
+      label: 'Day5',
+      data: [10],
+      stack: 'Stack 4',
+      backgroundColor: [
+        '#1a1a1a',
+        '#1a1a1a',
+      ],
+      borderColor: [
+        '#1a1a1a',
+        '#1a1a1a',
+      ]
+    },
+    {
+      label: 'Day6',
+      data: [10],
+      stack: 'Stack 5',
+      backgroundColor: [
+        '#1a1a1a',
+        '#1a1a1a',
+      ],
+      borderColor: [
+        '#1a1a1a',
+        '#1a1a1a',
+      ]
+    },
+    {
+      label: 'Day7',
+      data: [10],
+      stack: 'Stack 6',
+      backgroundColor: [
+        '#1a1a1a',
+        '#1a1a1a',
+      ],
+      borderColor: [
+        '#1a1a1a',
+        '#1a1a1a',
+      ]
+    }
+  ]
 };
 
 const avgSleepChartData = {
@@ -191,12 +271,6 @@ const hydChart = new Chart(hydCtx, {
   options: vertOptions
 });
 
-const wklySleepChart = new Chart(wklySleepCtx, {
-  type: 'bar', 
-  data: wklySleepChartData,
-  options: vertOptions
-});
-
 const avgSleepChart = new Chart(avgSleepCtx, {
   type: 'bar', 
   data: avgSleepChartData,
@@ -208,6 +282,39 @@ const sleepChart = new Chart(sleepCtx, {
   data: sleepChartData,
   options: vertOptions
 });
+
+
+const wklySleepChart = new Chart(wklySleepCtx, {
+  type: 'bar',
+  data: wklySleepChartData,
+  options: {
+    plugins: {
+      title: {
+        display: true,
+      },
+    },
+    responsive: true,
+    interaction: {
+      intersect: false,
+    },
+    scales: {
+      x: {
+        stacked: true,
+        ticks: {
+          color: 'black',
+          max: 10
+        }
+      },
+      y: {
+        stacked: true,
+        ticks: {
+          color: 'black',
+          max: 10
+        }
+      }
+    }
+  }
+})
 
 export {
     wklyHydCtx,

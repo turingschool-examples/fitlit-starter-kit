@@ -12,11 +12,10 @@ import { getAverageStepGoal,
   getMostRecentSleepHours,
   getMostRecentSleepQuality } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
-import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleepChart,} from './chartSetup'
+import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleepChart} from './chartSetup'
 Chart.register(...registerables);
 
 function setupEventListeners(randomUser, allUsers) {
-  document.querySelector('.dateSelector').value = '2023/06/27'
     displayWelcomeMessage(randomUser);
     const averageOunces = getAverageDailyFluidOunces(randomUser.id); 
     displayAverageDailyOunces(averageOunces);
@@ -51,15 +50,18 @@ function setupEventListeners(randomUser, allUsers) {
       document.documentElement.dataset.scroll = window.scrollY;
       // console.log(window.scrollY)
       if(window.scrollY > 800){
-        document.querySelector('img').classList.remove('full')
-        document.querySelector('img').classList.add('faded')
-        document.querySelector('nav').classList.add('shadow')
+        // document.querySelector('img').classList.remove('full')
+        // document.querySelector('img').classList.add('faded')
+        // document.querySelector('nav').classList.add('shadow')
       } else {
-        document.querySelector('img').classList.add('full')
-        document.querySelector('img').classList.remove('faded')
-        document.querySelector('nav').classList.remove('shadow')
+        // document.querySelector('img').classList.add('full')
+        // document.querySelector('img').classList.remove('faded')
+        // document.querySelector('nav').classList.remove('shadow')
       }
     }
+    var image = document.querySelector('img')
+        image.style.opacity = window.scrollY / 1000
+        console.log(image.style.opacity)
     document.addEventListener('scroll', debounce(storeScroll), { passive: true });
     storeScroll();
 }
@@ -132,6 +134,7 @@ export {
   updateAccountStep,
   updateAccountFriends,
   displaySpecificDayOunces,
+  updateChart
 };
 
 // function to update the chart with the user's step goal and the average step goal from chatgpt
@@ -145,9 +148,9 @@ function updateChart(randomUser, allUsers) {
   const averageSleepQuality = getAverageSleepQuality(randomUser)
   const hoursSleptRecentDay = getMostRecentSleepHours(randomUser)
   const sleepQualityRecentDay = getMostRecentSleepQuality(randomUser)
+
   const selectedDate = document.querySelector('.dateSelector').value
   const sleepWeekAndDay = getWeeklySleep(randomUser, selectedDate)
-  console.log(sleepWeekAndDay)
   const weeklySleepHoursPerDay = sleepWeekAndDay.weeklySleepHours
   const weeklySleepQualityPerDay = sleepWeekAndDay.weeklySleepQuality
   
@@ -163,16 +166,18 @@ function updateChart(randomUser, allUsers) {
   sleepChart.data.datasets[0].data = [hoursSleptRecentDay, sleepQualityRecentDay];
   sleepChart.options.scales.x.ticks.max = Math.max(hoursSleptRecentDay, sleepQualityRecentDay) + 10;
 
-  wklySleepChart.data.datasets[0].data = [[weeklySleepHoursPerDay], [weeklySleepQualityPerDay]];
-  wklySleepChart.options.scales.x.ticks.max = Math.max(weeklySleepHoursPerDay, weeklySleepQualityPerDay) + 10;
+ for(let i=0; i < 7; i++){
+  wklySleepChart.data.datasets[i].data[0] = weeklySleepHoursPerDay[i]
+  wklySleepChart.data.datasets[i].data[1] = weeklySleepQualityPerDay[i]
+ }
 
   avgSleepChart.data.datasets[0].data = [averageHoursSleptPerDay, averageSleepQuality];
   avgSleepChart.options.scales.x.ticks.max = Math.max(averageHoursSleptPerDay, averageSleepQuality) + 10;
 
   avgSleepChart.update();
-  wklySleepChart.update();
   sleepChart.update();
   hydChart.update();
   wklyHydChart.update();
   stepChart.update();
+  wklySleepChart.update();
 }

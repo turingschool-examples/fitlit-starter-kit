@@ -1,4 +1,7 @@
-function generateRandomUser(account) {
+import sleep from '../src/data/sleep-test-data'
+import account from '../src/data/users-test-data'
+
+function generateRandomUser() {
     const randomIndex = Math.floor(Math.random() * account.users.length);
     return account.users[randomIndex];
 }
@@ -19,9 +22,29 @@ function getSpecificDay(userId, date, hydroData) {
   return dayEntry ? dayEntry.numOunces : 0; // return numOunces, or 0 if not found
 }
 
+
+// ----- * Sleep * ----- //
+
+function getUserSleepData(randomUser) {
+  return sleep.sleepData.filter(user => user.userID === randomUser.id)
+}
+
+function getAverageSleepHours(randomUser) {
+  let sameUserSleepData = getUserSleepData(randomUser)
+  let averageSleepHours = 0
+  let totalSleepHours = 0
+  sameUserSleepData.forEach(obj => {
+    totalSleepHours += obj.hoursSlept
+  })
+  averageSleepHours = totalSleepHours / sameUserSleepData.length
+  return averageSleepHours.toFixed(2)
+}
+
 export {
     generateRandomUser,
     getAverageStepGoal,
     getAverageDailyFluidOunces,
-    getSpecificDay
+    getSpecificDay,
+    getUserSleepData,
+    getAverageSleepHours
 };

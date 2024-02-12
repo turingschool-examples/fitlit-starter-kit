@@ -78,14 +78,17 @@ article {
   height: 100vh;
 }
 
+img {
+  z-index: 0;
+  position: fixed;
+}
+
 .full {
   mix-blend-mode: color-burn;
-  position: fixed;
 }
 
 .faded {
   mix-blend-mode: soft-light;
-  position: fixed;
 } 
 
 .shadow {
@@ -126,10 +129,10 @@ article {
   flex-direction: row;
   justify-content: flex-start;
   height: 35px;
-  align-items: baseline;
+  align-items: center;
 }
 
-.dateSelector{
-  z-index: 1;
+.dateSelector, .dateSection{
+  z-index: 2;
   text-align: center;
 }

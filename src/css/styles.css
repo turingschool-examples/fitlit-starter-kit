@@ -21,6 +21,7 @@ body {
 
 main {
   background-color: white;
+  width: 100%;
 }
 
 header {
@@ -127,7 +128,7 @@ dt {
   justify-content: baseline;
   flex-direction: row-reverse;
   height: 30%;
-  padding: 0;
+  padding-bottom: 0;
 }
 
 .data {
@@ -167,7 +168,7 @@ dt {
 
 .stride-label {
   background-color: #D4B7F8;
-  padding-top: 15px;
+  padding: 15px 0px;
   width: 15vw;
   animation-name: stride-animation;
   animation-duration: .5s;
@@ -176,7 +177,7 @@ dt {
 
 .steps-goal-label {
   background-color: #FBE5A8;
-  padding-top: 15px;
+  padding: 15px 0px;
   width: 25vw;
   animation-name: steps-goal-animation;
   animation-duration: 1s;
@@ -185,7 +186,7 @@ dt {
 
 .global-steps-goal-label {
   background-color: #B7DAF7;
-  padding-top: 15px;
+  padding: 15px 0px;
   width: 35vw;
   animation-name: global-steps-goal-animation;
   animation-duration: 1.5s;
@@ -201,6 +202,7 @@ dt {
   font-size: 1.45em;
   font-weight: 500;
   font-family: 'Sixtyfour', sans-serif;
+  margin: 20px 0px;
 }
 
 .hydration-heading {
@@ -221,6 +223,7 @@ dt {
   text-align: left;
   padding-left: 5vw;
   margin-top: 2.5vh;
+  margin-bottom: 2.5vh;
   display: flex;
   color: #B0B0B0;
 }
@@ -240,7 +243,6 @@ dt {
   flex-direction: row;
 }
 
-.daily-hydration-cont,
 .weekly-hydration-cont {
   display: flex;
   padding-top: 30px;
@@ -250,13 +252,16 @@ dt {
 .daily-hydration-cont {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-right: 100px;
+  padding-top: 10px;
+  padding-bottom: 0px;
+  padding-left: 150px;
+  padding-right: 0px;
 }
 
 .weekly-hydration-cont {
   display: flex;
   flex-direction: column;
+  padding: 0px;
 }
 
 .weekly-hydration-label{

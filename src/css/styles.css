@@ -1,5 +1,5 @@
 html {
-display: flex;
+  display: flex;
 }
 
 body {
@@ -10,13 +10,13 @@ body {
   color: #3d3d4e;
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
   font-family: 'Bungee', sans-serif;
   transform: scale(0.90);
   border: 5px solid #3d3d4e;
   border-radius: 8px;
-  box-sizing: border-box;
 }
 
 main {
@@ -27,11 +27,10 @@ main {
 
 header {
   display: flex;
-  /* margin-top: 0; */
-  background-color: #FFFCF8;
+  background-color: white;
   height: 5%;
   justify-content: center;
-  position: relative;
+  /* position: relative; */
 }
 
 h1 {
@@ -39,8 +38,7 @@ h1 {
   margin-left: .5em;
   margin-top: 0;
   padding-top: .5em;
-  display:flex;
-
+  display: flex;
 }
 
 .dumbell-image {
@@ -53,7 +51,7 @@ h1 {
 
 .h1
 .user-container { 
-  background-color: #f6f6f6;
+  /* background-color: #f6f6f6; */
   height: 50%;
 }
 
@@ -70,7 +68,7 @@ h1 {
 .user-data {
   background-color: #FFFCF8;
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   justify-content: space-between;
   min-height: 100%;
 }
@@ -125,10 +123,8 @@ dt {
 .steps-goal-cont,
 .global-steps-goal-cont {
   display: flex;
-  justify-content: baseline;
   flex-direction: row-reverse;
   height: 30%;
-  padding-bottom: 0;
 }
 
 .data {
@@ -137,33 +133,18 @@ dt {
 
 /* animation: 3s linear 1s infinite running slidein; */
 @keyframes stride-animation {
-  from {
-    width: 1vw;
-  }
-
-  to {
-    width: 15vw;
-  }
+  from { width: 1vw; }
+  to { width: 15vw; }
 }
 
 @keyframes steps-goal-animation {
-  from {
-    width: 1vw;
-  }
-
-  to {
-    width: 25vw;
-  }
+  from { width: 1vw; }
+  to { width: 25vw; }
 }
 
 @keyframes global-steps-goal-animation {
-  from {
-    width: 1vw;
-  }
-
-  to {
-    width: 35vw;
-  }
+  from { width: 1vw; }
+  to { width: 35vw; }
 }
 
 .stride-label {

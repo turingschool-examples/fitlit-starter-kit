@@ -150,9 +150,8 @@ function getWeeklySleepQuality(selectedWeek) {
   return selectedWeek[0].map(day => day.sleepQuality)
 }
 
-
-
 document.addEventListener('DOMContentLoaded', fetchData);
+
 export {
   appState, 
   getAccountFriends, 
@@ -177,13 +176,11 @@ document.getElementById('date-input').addEventListener('keypress', function(even
     const inputDate = this.value;
     if (isNaN(Date.parse(inputDate))) {
       alert("Invalid date format! Please try YYYY/MM/DD.");
-      console.log('yoooo', inputDate)
       return;
     }
 
     const randomUser = appState.randomUser;
     const weeklySleepData = getWeeklySleep(randomUser, inputDate)
-    console.log('Weekly sleep info:', weeklySleepData)
   }  
 });
 

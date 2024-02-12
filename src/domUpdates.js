@@ -32,7 +32,23 @@ function setupEventListeners(randomUser, allUsers) {
     displaySpecificDayOunces(randomUser.id);
     displayAverageSleepHours(randomUser)
     updateChart(randomUser, allUsers);
-    
+
+    let topNavBar = document.querySelectorAll('.topNav a')
+    let sideNavBar = document.querySelectorAll('.sideNav a')
+    document.querySelectorAll('nav').forEach((elem) => {
+      elem.addEventListener('click', (e) => {
+      for(let i =0; i < topNavBar.length; i++) {
+        if(topNavBar[i].classList === e.target.classList || sideNavBar[i].classList === e.target.classList){
+          topNavBar[i].classList.add('underline')
+          sideNavBar[i].classList.add('underline')
+        } else {
+          topNavBar[i].classList.remove('underline')
+          sideNavBar[i].classList.remove('underline')
+        }
+      }
+    })
+  })
+  
     const debounce = (fn) => {
       let frame;
       return (...params) => {

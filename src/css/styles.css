@@ -265,8 +265,11 @@ dt {
   transform: rotateY(180deg);
 }
 
+.main-sleep-container {
+  background-color: #FFFCF8;
+}
+
 .sleep-heading {
-  border-top:  2px solid #3d3d4e;
   font-family: "Bungee Outline", sans-serif;
   font-size: 5em;
   text-align: left;
@@ -276,14 +279,59 @@ dt {
   color: #B0B0B0;
 }
 
-.sleep-container {
-  background-color: #FFFCF8;
+.img-and-avg-data-cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.daily-sleep-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.daily-sleep-data {
+  font-size: x-large;
+  margin: 0,
+}
+
+.daily-sleep-label {
+  margin: 0;
+}
+
+.avg-sleep-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 20px;
+  margin-right: 2em;
+}
+
+.avg-quality-data {
+ margin: 0;
+ font-size: xx-large;
+}
+.avg-hours-data {
+ margin: 0;
+ font-size: xx-large;
+}
+
+.avg-hours-label {
+ margin-top: 20px; 
+ margin-left: 0;
+}
+
+.avg-quality-label {
+  margin: 0;
 }
 
 .star-png {
   height: 29vh;
   width: 31vh;
-  padding-right: 65vw;
+  padding-right: 1vw;
 }
 
 .water-png {

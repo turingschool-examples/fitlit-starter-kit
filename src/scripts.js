@@ -193,5 +193,7 @@ export {
     findDailySleep,
     findWeeklyHours,
     findWeeklyQuality,
-    findRecentWeek
+    findRecentWeek,
+    calculateAvgQuality,
+    calculateAvgHours
 }

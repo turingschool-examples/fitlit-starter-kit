@@ -1,5 +1,5 @@
 html {
-display: flex;
+  display: flex;
 }
 
 body {
@@ -10,36 +10,35 @@ body {
   color: #3d3d4e;
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
   font-family: 'Bungee', sans-serif;
   transform: scale(0.90);
   border: 5px solid #3d3d4e;
   border-radius: 8px;
-  box-sizing: border-box;
 }
 
 main {
   background-color: white;
+  width: 100%;
 }
 
 header {
   display: flex;
-  /* margin-top: 0; */
-  background-color: #FFFCF8;
+  background-color: white;
   height: 5%;
   justify-content: center;
-  position: relative;
+  /* position: relative; */
 }
 
 h1 {
   /* background-color: #FFFCF8; */
-  /* font-family: 'DotGothic16', sans-serif; */
+  display:flex;
   font-size: 2em;
   margin-left: .5em;
   margin-top: 0;
   padding-top: .5em;
-  display:flex;
 
 }
 
@@ -53,7 +52,7 @@ h1 {
 
 .h1
 .user-container { 
-  background-color: #f6f6f6;
+  /* background-color: #f6f6f6; */
   height: 50%;
 }
 
@@ -69,7 +68,7 @@ h1 {
 
 .user-data {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   justify-content: space-between;
   min-height: 100%;
 }
@@ -124,10 +123,8 @@ dt {
 .steps-goal-cont,
 .global-steps-goal-cont {
   display: flex;
-  justify-content: baseline;
   flex-direction: row-reverse;
   height: 30%;
-  padding: 0;
 }
 
 .data {
@@ -136,38 +133,23 @@ dt {
 
 /* animation: 3s linear 1s infinite running slidein; */
 @keyframes stride-animation {
-  from {
-    width: 1vw;
-  }
-
-  to {
-    width: 15vw;
-  }
+  from { width: 1vw; }
+  to { width: 15vw; }
 }
 
 @keyframes steps-goal-animation {
-  from {
-    width: 1vw;
-  }
-
-  to {
-    width: 25vw;
-  }
+  from { width: 1vw; }
+  to { width: 25vw; }
 }
 
 @keyframes global-steps-goal-animation {
-  from {
-    width: 1vw;
-  }
-
-  to {
-    width: 35vw;
-  }
+  from { width: 1vw; }
+  to { width: 35vw; }
 }
 
 .stride-label {
   background-color: #D4B7F8;
-  padding-top: 15px;
+  padding: 15px 0px;
   width: 15vw;
   animation-name: stride-animation;
   animation-duration: .5s;
@@ -176,7 +158,7 @@ dt {
 
 .steps-goal-label {
   background-color: #FBE5A8;
-  padding-top: 15px;
+  padding: 15px 0px;
   width: 25vw;
   animation-name: steps-goal-animation;
   animation-duration: 1s;
@@ -185,7 +167,7 @@ dt {
 
 .global-steps-goal-label {
   background-color: #B7DAF7;
-  padding-top: 15px;
+  padding: 15px 0px;
   width: 35vw;
   animation-name: global-steps-goal-animation;
   animation-duration: 1.5s;

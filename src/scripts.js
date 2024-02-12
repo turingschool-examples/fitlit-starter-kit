@@ -1,7 +1,7 @@
 import './css/styles.css';
 import './images/fitlit-logo.png';
 import './images/white-texture.png';
-import { displayWelcomeMessage, displaySpecificDayOunces, displayWeeklyHydration, setupEventListeners } from './domUpdates';
+import { displayWelcomeMessage, displaySpecificDayOunces, displayWeeklyHydration, setupEventListeners, updateChart } from './domUpdates';
 import { fetchUserData, fetchHydrationData, fetchSleepData, fetchActivityData } from './apiCalls';
 
 let appState = {
@@ -82,9 +82,12 @@ function getWeeklyFluidOunces(userId) {
   }));
 }
 
+function getUserSleepData(randomUser) {
+return appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
+}
 // Return the user’s average number of hours slept per day
 function getAverageSleepHours(randomUser) {
-  let sameUserSleepData = appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
+  let sameUserSleepData = getUserSleepData(randomUser)
   let averageSleepHours = 0
   let totalSleepHours = 0
   sameUserSleepData.forEach(obj => {
@@ -96,7 +99,7 @@ function getAverageSleepHours(randomUser) {
 
 // Return the user’s average sleep quality per day over all time
 function getAverageSleepQuality(randomUser) {
-  let sameUserSleepData = appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
+  let sameUserSleepData = getUserSleepData(randomUser)
   let averageSleepQuality = 0
   let totalSleepQuality = 0
   sameUserSleepData.forEach(obj => {
@@ -108,14 +111,14 @@ function getAverageSleepQuality(randomUser) {
 
 // Return a user’s sleep quality for a specific day
 function getMostRecentSleepHours(randomUser) {
-  let sameUserSleepData = appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
+  let sameUserSleepData = getUserSleepData(randomUser)
   let latestSleepDataIndex = sameUserSleepData.length - 1
   return sameUserSleepData[latestSleepDataIndex].hoursSlept
 }
 
 // Return a user’s sleep quality for a specific day
 function getMostRecentSleepQuality(randomUser) {
-  let sameUserSleepData = appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
+  let sameUserSleepData = getUserSleepData(randomUser)
   let latestSleepDataIndex = sameUserSleepData.length - 1
   return sameUserSleepData[latestSleepDataIndex].sleepQuality
 }
@@ -124,7 +127,7 @@ function getMostRecentSleepQuality(randomUser) {
 // NOTE: this function takes in this date format ---> "2023/06/27"
 function getWeeklySleep(randomUser, selectedDay) {
   let selectedWeek = []
-  let sameUserSleepData = appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
+  let sameUserSleepData = getUserSleepData(randomUser)
   for (let i = 0; i < sameUserSleepData.length; i++) {
     if (sameUserSleepData[i].date === selectedDay) {
       selectedWeek.push(sameUserSleepData.slice(i - 6, i + 1))
@@ -165,3 +168,22 @@ export {
   getWeeklySleepHours, 
   getWeeklySleepQuality
 };
+
+
+document.getElementById('date-input').addEventListener('keypress', function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+
+    const inputDate = this.value;
+    if (isNaN(Date.parse(inputDate))) {
+      alert("Invalid date format! Please try YYYY/MM/DD.");
+      console.log('yoooo', inputDate)
+      return;
+    }
+
+    const randomUser = appState.randomUser;
+    const weeklySleepData = getWeeklySleep(randomUser, inputDate)
+    console.log('Weekly sleep info:', weeklySleepData)
+  }  
+});
+

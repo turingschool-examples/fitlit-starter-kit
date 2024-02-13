@@ -1,48 +1,43 @@
-import { getAverageStepGoal, 
-  getAccountFriends, 
-  generateRandomUser, 
-  getAverageDailyFluidOunces, 
-  getSpecificDay, 
-  getWeeklyFluidOunces, 
-  getAverageSleepHours, 
-  getWeeklySleep, 
-  getWeeklySleepHours, 
-  getWeeklySleepQuality, 
-  getAverageSleepQuality, 
+import {
+  getAverageStepGoal,
+  getAccountFriends,
+  getAverageDailyFluidOunces,
+  getSpecificDay,
+  getWeeklyFluidOunces,
+  getAverageSleepHours,
+  getWeeklySleep,
+  getAverageSleepQuality,
   getMostRecentSleepHours,
-  getMostRecentSleepQuality } from './scripts'
+  getMostRecentSleepQuality
+} from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
-import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleepChart} from './chartSetup'
+import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleepChart } from './chartSetup'
 Chart.register(...registerables);
 
 function setupEventListeners(randomUser, allUsers) {
-    displayWelcomeMessage(randomUser);
-    const averageOunces = getAverageDailyFluidOunces(randomUser.id); 
-    displayAverageDailyOunces(averageOunces);
-    displayStepGoal(randomUser);
-    updateAccountName(randomUser);
-    updateAccountAddress(randomUser);
-    updateAccountEmail(randomUser);
-    updateAccountStride(randomUser);
-    updateAccountStep(randomUser);
+  displayWelcomeMessage(randomUser);
+  const averageOunces = getAverageDailyFluidOunces(randomUser.id);
+  displayAverageDailyOunces(averageOunces);
+  displayStepGoal(randomUser);
+  updateAccountName(randomUser);
+  updateAccountAddress(randomUser);
+  updateAccountEmail(randomUser);
+  updateAccountStride(randomUser);
+  updateAccountStep(randomUser);
 
-    const userFriends = getAccountFriends(randomUser)
+  const userFriends = getAccountFriends(randomUser)
 
-    updateAccountFriends(userFriends);
-    // displaySpecificDayOunces(randomUser.id);
-    // //displayAverageSleepHours(randomUser)
-    // stepChartUpdate(randomUser, allUsers)
-    // hydrationChartUpdate(randomUser, allUsers)
-    sleepChartUpdate(randomUser, allUsers)
-    hydrationChartUpdate(randomUser, allUsers)
-    stepChartUpdate(randomUser, allUsers)
+  updateAccountFriends(userFriends);
+  sleepChartUpdate(randomUser, allUsers)
+  hydrationChartUpdate(randomUser, allUsers)
+  stepChartUpdate(randomUser, allUsers)
 
-    let topNavBar = document.querySelectorAll('.topNav a')
-    let sideNavBar = document.querySelectorAll('.sideNav a')
-    document.querySelectorAll('nav').forEach((elem) => {
-      elem.addEventListener('click', (e) => {
-      for(let i =0; i < topNavBar.length; i++) {
-        if(topNavBar[i].classList === e.target.classList || sideNavBar[i].classList === e.target.classList){
+  let topNavBar = document.querySelectorAll('.topNav a')
+  let sideNavBar = document.querySelectorAll('.sideNav a')
+  document.querySelectorAll('nav').forEach((elem) => {
+    elem.addEventListener('click', (e) => {
+      for (let i = 0; i < topNavBar.length; i++) {
+        if (topNavBar[i].classList === e.target.classList || sideNavBar[i].classList === e.target.classList) {
           topNavBar[i].classList.add('underline')
           sideNavBar[i].classList.add('underline')
         } else {
@@ -52,38 +47,40 @@ function setupEventListeners(randomUser, allUsers) {
       }
     })
   })
-  
-    const debounce = (fn) => {
-      let frame;
-      return (...params) => {
-        if (frame) { 
-          cancelAnimationFrame(frame);
-        }
-        frame = requestAnimationFrame(() => {
-          fn(...params);
-        });
-    
-      } 
-    };
-    
-    const storeScroll = () => {
-      document.documentElement.dataset.scroll = window.scrollY;
-      let opacLevel = 1 - window.scrollY / 1000
-      let opacInvert = 1 + window.scrollY / 1000 -1
-      var navBar = document.getElementById('nav-bar')
-      var sideBar = document.getElementById('side-nav')
-      var logo = document.getElementById("logo")
-      navBar.style.opacity = opacLevel
-      sideBar.style.opacity = opacInvert
-      if(opacLevel > 0.2) {
-        logo.style.opacity = `${opacLevel}`
-      } else {
-        logo.style.opacity = '0.2'
+
+  const debounce = (fn) => {
+    let frame;
+    return (...params) => {
+      if (frame) {
+        cancelAnimationFrame(frame);
       }
+      frame = requestAnimationFrame(() => {
+        fn(...params);
+      });
+
     }
-  
-    document.addEventListener('scroll', debounce(storeScroll), { passive: true });
-    storeScroll();
+  };
+
+  const storeScroll = () => {
+    document.documentElement.dataset.scroll = window.scrollY;
+    let opacLevel = 1 - window.scrollY / 1000
+    let opacInvert = 1 + window.scrollY / 1000 - 1
+    var navBar = document.getElementById('nav-bar')
+    var sideBar = document.getElementById('side-nav')
+    var logo = document.getElementById("logo")
+    navBar.style.opacity = opacLevel
+    sideBar.style.opacity = opacInvert
+    if (opacLevel > 0.2) {
+      logo.style.opacity = `${opacLevel}`
+      navBar.classList.remove('hidden')
+    } else {
+      logo.style.opacity = '0.2'
+      navBar.classList.add('hidden')
+    }
+  }
+
+  document.addEventListener('scroll', debounce(storeScroll), { passive: true });
+  storeScroll();
 }
 
 
@@ -128,13 +125,11 @@ function updateAccountFriends(friends) {
 }
 
 function displayAverageDailyOunces(averageOunces) {
-  //document.getElementById('averageDailyOunces').textContent = `${averageOunces.toFixed(2)} oz`;
   return averageOunces.toFixed(2)
 }
 
 function displaySpecificDayOunces(userId) {
   const ouncesForMostRecent = getSpecificDay(userId);
-  //document.getElementById('specificDayOunces').textContent = `${ouncesForMostRecent.toFixed(2)} oz`;
   return ouncesForMostRecent
 }
 
@@ -148,16 +143,16 @@ function stepChartUpdate(randomUser, allUsers) {
 }
 
 function hydrationChartUpdate(randomUser, allUsers) {
-  const avgDailyHydration = getAverageDailyFluidOunces (randomUser.id);
-  const dailyHydration = displaySpecificDayOunces (randomUser.id)
+  const avgDailyHydration = getAverageDailyFluidOunces(randomUser.id);
+  const dailyHydration = displaySpecificDayOunces(randomUser.id)
   const weeklyHydration = getWeeklyFluidOunces(randomUser.id)
 
-  hydChart.data.datasets[0].data = [avgDailyHydration,dailyHydration];
-  hydChart.options.scales.x.ticks.max = Math.max(avgDailyHydration,dailyHydration) + 10;
+  hydChart.data.datasets[0].data = [avgDailyHydration, dailyHydration];
+  hydChart.options.scales.x.ticks.max = Math.max(avgDailyHydration, dailyHydration) + 10;
 
-  wklyHydChart.data.datasets[0].data = weeklyHydration.map((day) => { return day.numOunces});
+  wklyHydChart.data.datasets[0].data = weeklyHydration.map((day) => { return day.numOunces });
   wklyHydChart.options.scales.x.ticks.max = Math.max(weeklyHydration) + 10;
-  
+
   wklyHydChart.update()
   hydChart.update()
 }
@@ -176,9 +171,9 @@ function sleepChartUpdate(randomUser, allUsers) {
   sleepChart.data.datasets[0].data = [hoursSleptRecentDay, sleepQualityRecentDay];
   sleepChart.options.scales.x.ticks.max = Math.max(hoursSleptRecentDay, sleepQualityRecentDay) + 10;
 
-  for(let i=0; i < 7; i++){
-  wklySleepChart.data.datasets[i].data[0] = weeklySleepHoursPerDay[i]
-  wklySleepChart.data.datasets[i].data[1] = weeklySleepQualityPerDay[i]
+  for (let i = 0; i < 7; i++) {
+    wklySleepChart.data.datasets[i].data[0] = weeklySleepHoursPerDay[i]
+    wklySleepChart.data.datasets[i].data[1] = weeklySleepQualityPerDay[i]
   }
 
   avgSleepChart.data.datasets[0].data = [averageHoursSleptPerDay, averageSleepQuality];

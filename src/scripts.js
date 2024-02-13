@@ -180,6 +180,8 @@ function findSleepQuality(sleep, day) {
     return targetUser.sleepQuality
 }
 */
+
+
 export {
     getUserInfo,
     calculateAverageSteps,

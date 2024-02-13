@@ -9,7 +9,6 @@ const strideData = document.querySelector('.stride-data')
 const stepGoal = document.querySelector('.steps-goal-data')
 const avgStepGoal = document.querySelector('.global-steps-goal-data')
 const dailyHydration = document.querySelector('.daily-hydration-label')
-// const weeklyHydrationLabel = document.querySelector('.weekly-hydration-label')
 const weeklyHydrationData1 = document.querySelector('.weekly-hydration-data1')
 const weeklyHydrationData2 = document.querySelector('.weekly-hydration-data2')
 const weeklyHydrationData3 = document.querySelector('.weekly-hydration-data3')
@@ -46,9 +45,6 @@ const avgQualityData = document.querySelector('.avg-quality-data')
 const avgHoursData = document.querySelector('.avg-hours-data')
 
 const dailySleep = document.querySelector('.daily-sleep-data')
-// const weeklySleepLabel = document.querySelector('.weekly-sleep-label')
-// const weeklySleepData = document.querySelector('.weekly-sleep-data')
-// const weeklySleepQuality = document.querySelector('.')
 
 
 window.addEventListener('load', getAllData)
@@ -69,16 +65,15 @@ function displaySteps(userData) {
 }
 
 function displayHydrationData(hydration) {
-    var userHydration = weeklyOunces(hydration)
-    console.log('userHydration', userHydration)
-    dailyHydration.innerText = dailyOunces(hydration)
-    weeklyHydrationData1.innerText = `${userHydration[0].date} - ${userHydration[0].numOunces}oz`
-    weeklyHydrationData2.innerText = `${userHydration[1].date} - ${userHydration[1].numOunces}oz`
-    weeklyHydrationData3.innerText = `${userHydration[2].date} - ${userHydration[2].numOunces}oz`
-    weeklyHydrationData4.innerText = `${userHydration[3].date} - ${userHydration[3].numOunces}oz`
-    weeklyHydrationData5.innerText = `${userHydration[4].date} - ${userHydration[4].numOunces}oz`
-    weeklyHydrationData6.innerText = `${userHydration[5].date} - ${userHydration[5].numOunces}oz`
-    weeklyHydrationData7.innerText = `${userHydration[6].date} - ${userHydration[6].numOunces}oz`
+  var userHydration = weeklyOunces(hydration)
+  dailyHydration.innerText = dailyOunces(hydration)
+  weeklyHydrationData1.innerText = `${userHydration[0].date} - ${userHydration[0].numOunces}oz`
+  weeklyHydrationData2.innerText = `${userHydration[1].date} - ${userHydration[1].numOunces}oz`
+  weeklyHydrationData3.innerText = `${userHydration[2].date} - ${userHydration[2].numOunces}oz`
+  weeklyHydrationData4.innerText = `${userHydration[3].date} - ${userHydration[3].numOunces}oz`
+  weeklyHydrationData5.innerText = `${userHydration[4].date} - ${userHydration[4].numOunces}oz`
+  weeklyHydrationData6.innerText = `${userHydration[5].date} - ${userHydration[5].numOunces}oz`
+  weeklyHydrationData7.innerText = `${userHydration[6].date} - ${userHydration[6].numOunces}oz`
 }
 
 function displaySleepData(sleep) {

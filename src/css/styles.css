@@ -50,8 +50,7 @@ h1 {
 /*<><> Main user Data <><>*/
 /*<> Left <>*/
 
-.h1
-.user-container { 
+.h1 .user-container {
   height: 50%;
 }
 
@@ -137,18 +136,33 @@ dt {
 
 /* animation: 3s linear 1s infinite running slidein; */
 @keyframes stride-animation {
-  from { width: 1vw; }
-  to { width: 15vw; }
+  from {
+    width: 1vw;
+  }
+
+  to {
+    width: 15vw;
+  }
 }
 
 @keyframes steps-goal-animation {
-  from { width: 1vw; }
-  to { width: 25vw; }
+  from {
+    width: 1vw;
+  }
+
+  to {
+    width: 25vw;
+  }
 }
 
 @keyframes global-steps-goal-animation {
-  from { width: 1vw; }
-  to { width: 35vw; }
+  from {
+    width: 1vw;
+  }
+
+  to {
+    width: 35vw;
+  }
 }
 
 .stride-label {
@@ -252,9 +266,10 @@ dt {
   min-width: 30%;
 }
 
-.weekly-hydration-label{
+.weekly-hydration-label {
   font-size: x-large;
 }
+
 .daily-hydration-label {
   font-size: xx-large,
 }
@@ -263,8 +278,7 @@ dt {
   padding-top: 2.5vh;
 }
 
-.star-img-cont
-.water-img-cont {
+.star-img-cont .water-img-cont {
   display: flex;
   margin-block-start: 1em;
   margin-block-end: 1em;
@@ -306,17 +320,18 @@ dt {
 }
 
 .avg-quality-data {
- margin: 0;
- font-size: xx-large;
+  margin: 0;
+  font-size: xx-large;
 }
+
 .avg-hours-data {
- margin: 0;
- font-size: xx-large;
+  margin: 0;
+  font-size: xx-large;
 }
 
 .avg-hours-label {
- margin-top: 20px; 
- margin-left: 0;
+  margin-top: 20px;
+  margin-left: 0;
 }
 
 .avg-quality-label {
@@ -346,8 +361,8 @@ dt {
 .date-label,
 .weekly-hours-label,
 .weekly-quality-label {
-font-size: x-large;
-margin: 0;
+  font-size: x-large;
+  margin: 0;
 }
 
 .sleep-quality-cont {

@@ -16,6 +16,7 @@ Additional enhancements could include:
 - Display friends list on a separate page with their current goals, allowing interaction between friends.
 
 ### Screenshots
+![Screenshot 2024-02-12 at 5 44 21 PM](https://github.com/AsherSpurr/fitlit/assets/144856487/cefcfe08-ebfa-4fb5-a610-14ef913e60c0)
 
 ### Technologies Used
 Fitlit relies on TDD using JavaScript and Mocha and Chai for all testing.

@@ -1,5 +1,177 @@
+* {
+  font-family: "Libre Baskerville";
+  font-style: normal;
+}
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
-  height: 100%;
+  scroll-behavior: smooth;
+  background: url('../images/white-texture.png') repeat-x;
+  background-size: 100% 100%;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  background-color: #7c7c7c;
+    border-radius: 7px;
+    box-shadow: 4px 7px 20px 2px #211e1ec2;
+    color: white;
+}
+
+h3 {
+  font-weight: normal;
+  margin-right: 36px;
+}
+
+p {
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: larger;
+}
+
+.topNav {
+    overflow: hidden;
+    background:rgba(0, 0, 0, 0);
+    color: #1a1a1a;
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    height: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.sideNav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 7em;
+  width: 20%;
+  align-items: flex-end;
+}
+
+nav a {
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 22px;
+  font-variant: unicase;
+  font-weight: bolder;
+  margin: 10px;
+  mix-blend-mode: color-burn;
+}
+
+nav a:hover {
+  text-shadow: 0px 0px 11px rgb(0, 0, 0);
+}
+
+.info-card {
+    width: 75%;
+    height: 100vh;
+    padding: 6%;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.info-card div {
+    border-radius: 5%;
+    width: 75%;
+    height: 75%;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.631372549) 12px 12px 20px 4px;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 75%;
+    align-items: center;
+    padding: 10px;
+    background: transparent;
+}
+
+article {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 10em;
+  height: 100vh;
+}
+
+img {
+  z-index: 0;
+  position: fixed;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.shadow {
+  box-shadow: rgba(0, 0, 0, 0.631372549) 12px 12px 20px 4px;
+}
+
+span {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.full {
+  mix-blend-mode: color-burn;
+}
+
+.welcome-message{
+  margin-top: 20rem;
+}
+
+canvas {
+  z-index: 2;
+}
+
+.icon {
+  font-size: 43px;
+  mix-blend-mode: luminosity;
+  color: rgb(255 255 255);
+  text-shadow: 7px 4px 13px rgba(0, 0, 0, 0.6901960784);
+  margin-right: 10px;
+  margin-left: 45px;
+}
+
+.iconSection {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 59px;
+  align-items: center;
+  background-color: #888787c7;
+  border-radius: 20px;
+}
+
+.dateSelector{
+  z-index: 2;
+    width: 10rem;
+    text-align: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.dateSection {
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hidden {
+  display: none;
 }

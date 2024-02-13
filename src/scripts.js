@@ -104,7 +104,6 @@ function findDailySleep(sleep) {
     });
     let index = targetUser.length - 1
     return `${targetUser[index].hoursSlept}hrs | ${targetUser[index].sleepQuality} quality`
-    // return `${targetUser[index].date} : ${targetUser[index].hoursSlept}hrs  |  Sleep Quality: ${targetUser[index].sleepQuality}`
 };
 
 function calculateAvgHours(sleep) {

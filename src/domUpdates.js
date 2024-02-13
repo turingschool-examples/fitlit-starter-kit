@@ -86,21 +86,21 @@ function displaySleepData(sleep) {
   let weeklyHoursSlept = findWeeklyHours(sleep, date)
   let weeklyQualitySlept = findWeeklyQuality(sleep, date)
   dailySleep.innerText = findDailySleep(sleep)
-  weeklyDateData1.innerText = `${weeklyHoursSlept[0].date} - `
-  weeklyDateData2.innerText = `${weeklyHoursSlept[1].date} - `
-  weeklyDateData3.innerText = `${weeklyHoursSlept[2].date} - `
-  weeklyDateData4.innerText = `${weeklyHoursSlept[3].date} - `
-  weeklyDateData5.innerText = `${weeklyHoursSlept[4].date} - `
-  weeklyDateData6.innerText = `${weeklyHoursSlept[5].date} - `
-  weeklyDateData7.innerText = `${weeklyHoursSlept[6].date} - `
+  weeklyDateData1.innerText = `${weeklyHoursSlept[0].date}`
+  weeklyDateData2.innerText = `${weeklyHoursSlept[1].date}`
+  weeklyDateData3.innerText = `${weeklyHoursSlept[2].date}`
+  weeklyDateData4.innerText = `${weeklyHoursSlept[3].date}`
+  weeklyDateData5.innerText = `${weeklyHoursSlept[4].date}`
+  weeklyDateData6.innerText = `${weeklyHoursSlept[5].date}`
+  weeklyDateData7.innerText = `${weeklyHoursSlept[6].date}`
 
-  weeklyHoursData1.innerText = `${weeklyHoursSlept[0].hours} - `
-  weeklyHoursData2.innerText = `${weeklyHoursSlept[1].hours} - `
-  weeklyHoursData3.innerText = `${weeklyHoursSlept[2].hours} - `
-  weeklyHoursData4.innerText = `${weeklyHoursSlept[3].hours} - `
-  weeklyHoursData5.innerText = `${weeklyHoursSlept[4].hours} - `
-  weeklyHoursData6.innerText = `${weeklyHoursSlept[5].hours} - `
-  weeklyHoursData7.innerText = `${weeklyHoursSlept[6].hours} - `
+  weeklyHoursData1.innerText = `${weeklyHoursSlept[0].hours}`
+  weeklyHoursData2.innerText = `${weeklyHoursSlept[1].hours}`
+  weeklyHoursData3.innerText = `${weeklyHoursSlept[2].hours}`
+  weeklyHoursData4.innerText = `${weeklyHoursSlept[3].hours}`
+  weeklyHoursData5.innerText = `${weeklyHoursSlept[4].hours}`
+  weeklyHoursData6.innerText = `${weeklyHoursSlept[5].hours}`
+  weeklyHoursData7.innerText = `${weeklyHoursSlept[6].hours}`
 
   weeklyQualityData1.innerText = `${weeklyQualitySlept[0].quality}`
   weeklyQualityData2.innerText = `${weeklyQualitySlept[1].quality}`

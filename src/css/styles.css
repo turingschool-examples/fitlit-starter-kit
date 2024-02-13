@@ -282,11 +282,12 @@ dt {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  margin-bottom: 100px;
 }
 
 .daily-sleep-data {
-  font-size: x-large;
+  font-size: xx-large;
   margin: 0,
 }
 
@@ -299,7 +300,7 @@ dt {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  padding-bottom: 20px;
+  padding-bottom: 90px;
   margin-right: 2em;
 }
 
@@ -331,6 +332,25 @@ dt {
   height: 29vh;
   width: 31vh;
   float: right;
+  margin-right: 60%;
+}
+
+.sleep-table-cont {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+  margin-left: 150px;
+}
+
+.date-label,
+.weekly-hours-label,
+.weekly-quality-label {
+font-size: x-large;
+margin: 0;
+}
+
+.sleep-quality-cont {
+  margin-left: 50px;
 }
 
 /* MISC */

@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <title>Fitlit</title>
   </head>
   <body>
@@ -30,6 +33,7 @@
             <p class="icon">&#128099;</p>
             <h3>Activity Data</h3>
           </section>
+          <h3>Activity Data</h3>
           <canvas id="stepChart"></canvas>
         </div>
       </section>
@@ -39,9 +43,9 @@
             <p class="icon">&#128167;</p>
             <h3>Hydration Data</h3>
           </section>
-          <p>Average Hydration Data</p>
+          <p>Average Hydration Data (oz)</p>
             <canvas id="hydChart"></canvas>
-          <p>Weekly Hydration Data</p>
+          <p>Weekly Hydration Data (oz)</p>
             <canvas id="wklyHydChart"></canvas>
         </div>
       </section>
@@ -52,8 +56,10 @@
             <h3>Sleep Data</h3>
           </section>
           <section class="dateSection">
-            <label for="dateInput">Date</label>
-            <input type='text' id='date-input' name="dateInput" class="dateSelector" value="2023/06/27" placeholder="YYYY/MM/DD">
+            <label for="date-selector">Select date</label>
+            <select class="dateSelector" id="date-selector">
+              <option>2023/07/01</option>
+            </select>
           </section>
           <canvas id="sleepChart"></canvas>
           <canvas id="wklySleepChart"></canvas>

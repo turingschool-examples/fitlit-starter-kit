@@ -1,9 +1,11 @@
 import { expect } from 'chai';
 import { 
     generateRandomUser, 
+    getAccountFriends,
     getAverageStepGoal,
     getAverageDailyFluidOunces,
     getSpecificDay,
+    getWeeklyFluidOunces,
     getUserSleepData,
     getAverageSleepHours,
     getAverageSleepQuality,
@@ -15,7 +17,8 @@ import sleep from '../src/data/sleep-test-data'
 import account from '../src/data/users-test-data'
 
 
-// ------- * users * -------
+// ----- * Users * ----- //
+
 describe('generateRandomUser()', () => {
     var people = 
     { users: [
@@ -62,6 +65,12 @@ describe('generateRandomUser()', () => {
 
 });
 
+describe('getAccountFriends()', () => {
+    
+});
+
+// ----- * Steps * ----- //
+
 describe('getAverageStepGoal()', () => {
     
     it('should return the daily step goal for a single user', () => {
@@ -87,7 +96,8 @@ describe('getAverageStepGoal()', () => {
 
 });
 
-// ------- * hydration * -------
+// ----- * Water * ----- //
+
 describe('getAverageDailyFluidOunces()', () => {
     
     const account = [
@@ -161,6 +171,12 @@ describe('getSpecificDay()', () => {
     });
 
 });
+
+describe('getWeeklyFluidOunces()', () => {
+
+});
+
+// ----- * Sleep * ----- //
 
 describe('getUserSleepData()', () => {
     

@@ -1,15 +1,32 @@
 import sleep from '../src/data/sleep-test-data'
 import account from '../src/data/users-test-data'
 
+// ----- * Users * ----- //
+
 function generateRandomUser() {
     const randomIndex = Math.floor(Math.random() * account.users.length);
     return account.users[randomIndex];
 }
 
+    function getAccountFriends(user) {
+      var friendArr = user.friends
+      var friendNames = appState.account.users.reduce((acc, account) => {
+        if (friendArr.includes(account.id)) {
+          acc.push(account.name)
+        }
+        return acc
+      }, [])
+      return friendNames.join(" - ")
+    }
+
+// ----- * Steps * ----- //
+
 function getAverageStepGoal(account) {
   const totalStepsGoal = account.users.reduce((total, user) => total + user.dailyStepGoal, 0);
   return totalStepsGoal / account.users.length;
 }
+
+// ----- * Water * ----- //
 
 function getAverageDailyFluidOunces(userId, hydroData) {
   const userHydrationData = hydroData.filter((userRecord) => userRecord.userID === userId);
@@ -19,9 +36,18 @@ function getAverageDailyFluidOunces(userId, hydroData) {
 
 function getSpecificDay(userId, date, hydroData) {
   const dayEntry = hydroData.find(entry => entry.userID === userId && entry.date === date);
-  return dayEntry ? dayEntry.numOunces : 0; // return numOunces, or 0 if not found
+  return dayEntry ? dayEntry.numOunces : 0; 
 }
 
+    function getWeeklyFluidOunces(userId) {
+      const userHydrationData = appState.hydration.hydrationData.filter(record => record.userID === userId);
+      userHydrationData.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const lastWeekData = userHydrationData.slice(0, 7);
+      return lastWeekData.map(record => ({
+        date: record.date,
+        numOunces: record.numOunces
+      }));
+    }
 
 // ----- * Sleep * ----- //
 
@@ -77,20 +103,22 @@ function getWeeklySleep(randomUser, selectedDay) {
   }
 }
 
-function getWeeklySleepHours(selectedWeek) {
-  console.log(selectedWeek)
-  return selectedWeek[0].map(day => day.hoursSlept)
-}
+    function getWeeklySleepHours(selectedWeek) {
+      console.log(selectedWeek)
+      return selectedWeek[0].map(day => day.hoursSlept)
+    }
 
-function getWeeklySleepQuality(selectedWeek) {
-  return selectedWeek[0].map(day => day.sleepQuality)
-}
+    function getWeeklySleepQuality(selectedWeek) {
+      return selectedWeek[0].map(day => day.sleepQuality)
+    }
 
 export {
     generateRandomUser,
+    getAccountFriends,
     getAverageStepGoal,
     getAverageDailyFluidOunces,
     getSpecificDay,
+    getWeeklyFluidOunces,
     getUserSleepData,
     getAverageSleepHours,
     getAverageSleepQuality,

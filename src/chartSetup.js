@@ -63,7 +63,7 @@ const wklyHydChartData = {
 };
 
 const hydChartData = {
-  labels: ['Average Daily Hydration', 'Hydration For Specific Day'],
+  labels: ['Average Daily Hydration (oz)', 'Hydration For Specific Day (oz)'],
   datasets: [{
     label: '',
     data: [],
@@ -86,7 +86,7 @@ const wklySleepChartData = {
   datasets: [
     {
       label: 'Day1',
-      data: [10],
+      data: ['sleep'],
       stack: 'Stack 0',
       backgroundColor: [
         '#1a1a1a',
@@ -99,7 +99,7 @@ const wklySleepChartData = {
     },
     {
       label: 'Day2',
-      data: [10],
+      data: [],
       stack: 'Stack 1',
       backgroundColor: [
         '#1a1a1a',
@@ -112,7 +112,7 @@ const wklySleepChartData = {
     },
     {
       label: 'Day3',
-      data: [10],
+      data: [],
       stack: 'Stack 2',
       backgroundColor: [
         '#1a1a1a',
@@ -125,7 +125,7 @@ const wklySleepChartData = {
     },
     {
       label: 'Day4',
-      data: [10],
+      data: [],
       stack: 'Stack 3',
       backgroundColor: [
         '#1a1a1a',
@@ -138,7 +138,7 @@ const wklySleepChartData = {
     },
     {
       label: 'Day5',
-      data: [10],
+      data: [],
       stack: 'Stack 4',
       backgroundColor: [
         '#1a1a1a',
@@ -151,7 +151,7 @@ const wklySleepChartData = {
     },
     {
       label: 'Day6',
-      data: [10],
+      data: [],
       stack: 'Stack 5',
       backgroundColor: [
         '#1a1a1a',
@@ -164,7 +164,7 @@ const wklySleepChartData = {
     },
     {
       label: 'Day7',
-      data: [10],
+      data: [],
       stack: 'Stack 6',
       backgroundColor: [
         '#1a1a1a',
@@ -268,7 +268,6 @@ const sleepChart = new Chart(sleepCtx, {
   data: sleepChartData,
   options: vertOptions
 });
-
 
 const wklySleepChart = new Chart(wklySleepCtx, {
   type: 'bar',

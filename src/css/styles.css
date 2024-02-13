@@ -1,5 +1,5 @@
 * {
-  font-family: "Baskerville Old Face";
+  font-family: "Libre Baskerville";
   font-style: normal;
 }
 body, html {
@@ -8,7 +8,6 @@ body, html {
   background-size: 100% 100%;
 }
 main {
-  scroll-behavior: smooth;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +18,6 @@ input {
     border-radius: 7px;
     box-shadow: 4px 7px 20px 2px #211e1ec2;
     color: white;
-    font-family: "Baskerville Old Face";
 }
 
 h3 {
@@ -28,7 +26,6 @@ h3 {
 }
 
 p {
-  font-family: "Baskerville Old Face";
     font-weight: bold;
     margin-right: 10px;
     font-size: larger;
@@ -83,20 +80,18 @@ nav a:hover {
 }
 
 .info-card div {
-  border-radius: 5%;
-  width: 75%;
-  height: 75%;
-  display: flex;
-  box-shadow: rgba(0, 0, 0, 0.631372549) 12px 12px 20px 4px;
-  overflow: hidden;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: stretch;
-  justify-content: space-around;
-  max-width: 75%;
-  align-items: center;
-  padding: 10px;
-  background: transparent;
+    border-radius: 5%;
+    width: 75%;
+    height: 75%;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.631372549) 12px 12px 20px 4px;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 75%;
+    align-items: center;
+    padding: 10px;
+    background: transparent;
 }
 
 article {
@@ -132,17 +127,6 @@ span {
   mix-blend-mode: color-burn;
 }
 
-.step-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.step-text h3 {
-  margin-bottom: 0;
-}
-
 .welcome-message{
   margin-top: 20rem;
 }
@@ -171,7 +155,23 @@ canvas {
   border-radius: 20px;
 }
 
-.dateSelector, .dateSection{
+.dateSelector{
+  z-index: 2;
+    width: 10rem;
+    text-align: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.dateSection {
   z-index: 2;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hidden {
+  display: none;
 }

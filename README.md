@@ -6,8 +6,7 @@ This website was made with the goal of implementing the use of fetch API for the
 
 ### Deploy link
 XXXXX
-### APIs Used
-XXXX
+
 ### Next steps 
 Additional enhancements could include:
 - Incorporate user authorization for real people to use

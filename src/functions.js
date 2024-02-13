@@ -1,5 +1,6 @@
 import sleep from '../src/data/sleep-test-data'
 import account from '../src/data/users-test-data'
+import hydration from '../src/data/hydration-test-data'
 
 // ----- * Users * ----- //
 
@@ -10,7 +11,7 @@ function generateRandomUser() {
 
     function getAccountFriends(user) {
       var friendArr = user.friends
-      var friendNames = appState.account.users.reduce((acc, account) => {
+      var friendNames = account.users.reduce((acc, account) => {
         if (friendArr.includes(account.id)) {
           acc.push(account.name)
         }
@@ -39,15 +40,15 @@ function getSpecificDay(userId, date, hydroData) {
   return dayEntry ? dayEntry.numOunces : 0; 
 }
 
-    function getWeeklyFluidOunces(userId) {
-      const userHydrationData = appState.hydration.hydrationData.filter(record => record.userID === userId);
-      userHydrationData.sort((a, b) => new Date(b.date) - new Date(a.date));
-      const lastWeekData = userHydrationData.slice(0, 7);
-      return lastWeekData.map(record => ({
-        date: record.date,
-        numOunces: record.numOunces
-      }));
-    }
+function getWeeklyFluidOunces(userId) {
+  const userHydrationData = hydration.hydrationData.filter(record => record.userID === userId);
+  userHydrationData.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const lastWeekData = userHydrationData.slice(0, 7);
+  return lastWeekData.map(record => ({
+    date: record.date,
+    numOunces: record.numOunces
+  }));
+}
 
 // ----- * Sleep * ----- //
 
@@ -89,28 +90,13 @@ function getMostRecentSleepQuality(randomUser) {
   return sameUserSleepData[latestSleepDataIndex].sleepQuality
 }
 
-function getWeeklySleep(randomUser, selectedDay) {
-  let selectedWeek = []
-  let sameUserSleepData = getUserSleepData(randomUser)
-  for (let i = 0; i < sameUserSleepData.length; i++) {
-    if (sameUserSleepData[i].date === selectedDay) {
-      selectedWeek.push(sameUserSleepData.slice(i - 6, i + 1))
-    }
-  }
-  return {
-    weeklySleepHours: getWeeklySleepHours(selectedWeek),
-    weeklySleepQuality: getWeeklySleepQuality(selectedWeek)
-  }
+function getWeeklySleepHours(selectedWeek) {
+  return selectedWeek[0].map(day => day.hoursSlept)
 }
 
-    function getWeeklySleepHours(selectedWeek) {
-      console.log(selectedWeek)
-      return selectedWeek[0].map(day => day.hoursSlept)
-    }
-
-    function getWeeklySleepQuality(selectedWeek) {
-      return selectedWeek[0].map(day => day.sleepQuality)
-    }
+function getWeeklySleepQuality(selectedWeek) {
+  return selectedWeek[0].map(day => day.sleepQuality)
+}
 
 export {
     generateRandomUser,
@@ -124,5 +110,6 @@ export {
     getAverageSleepQuality,
     getMostRecentSleepHours,
     getMostRecentSleepQuality,
-    getWeeklySleep
+    getWeeklySleepHours,
+    getWeeklySleepQuality
 };

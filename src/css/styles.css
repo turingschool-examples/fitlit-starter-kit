@@ -154,6 +154,7 @@ dt {
 .stride-label {
   background-color: #D4B7F8;
   padding: 15px 0px;
+  padding: 15px 0px;
   width: 15vw;
   animation-name: stride-animation;
   animation-duration: .5s;
@@ -210,8 +211,8 @@ dt {
   font-size: 5em;
   text-align: left;
   padding-left: 5vw;
-  margin-top: 2.5vh;
-  margin-bottom: 2.5vh;
+  padding-top: 2em;
+  margin-top: 0vh;
   display: flex;
   color: #9d9d9d;
 }

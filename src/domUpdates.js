@@ -15,18 +15,16 @@ import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleep
 Chart.register(...registerables);
 
 function setupEventListeners(randomUser, allUsers) {
-  displayWelcomeMessage(randomUser);
+  const userFriends = getAccountFriends(randomUser)
   const averageOunces = getAverageDailyFluidOunces(randomUser.id);
+
+  displayWelcomeMessage(randomUser);
   displayAverageDailyOunces(averageOunces);
-  displayStepGoal(randomUser);
   updateAccountName(randomUser);
   updateAccountAddress(randomUser);
   updateAccountEmail(randomUser);
   updateAccountStride(randomUser);
   updateAccountStep(randomUser);
-
-  const userFriends = getAccountFriends(randomUser)
-
   updateAccountFriends(userFriends);
   sleepChartUpdate(randomUser, allUsers)
   hydrationChartUpdate(randomUser, allUsers)
@@ -83,15 +81,10 @@ function setupEventListeners(randomUser, allUsers) {
   storeScroll();
 }
 
-
 // DOM update functions
 function displayWelcomeMessage(user) {
   const welcomeMessageElement = document.querySelector('.welcome-message');
   welcomeMessageElement.textContent = `Welcome back, ${user.name.split(' ')[0]}!`;
-}
-
-function displayStepGoal(user) {
-  return user.dailyStepGoal
 }
 
 function updateAccountName(user) {
@@ -187,7 +180,6 @@ function sleepChartUpdate(randomUser, allUsers) {
 export {
   setupEventListeners,
   displayWelcomeMessage,
-  displayStepGoal,
   updateAccountName,
   updateAccountAddress,
   updateAccountEmail,

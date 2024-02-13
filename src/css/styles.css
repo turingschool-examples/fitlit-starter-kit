@@ -133,7 +133,10 @@ span {
 
 canvas {
   z-index: 2;
+  width: 500px;
 }
+
+
 
 .icon {
   font-size: 43px;

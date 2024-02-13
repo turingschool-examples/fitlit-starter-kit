@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap" rel="stylesheet">
-  <title>Fitlit</title>
+  <title>Fitlit - Track Your Fitness Data</title>
 </head>
 
 <body>
@@ -28,8 +28,7 @@
           <div class="name-cont">
             <h2 class="user-name">USER <br> NAME</h2>
           </div>
-          <div class="address-cont">
-          </div>
+          <div class="address-cont"></div>
         </article>
         <figure class="profile-image">
           <img src="./images/profile-image1.png" alt="sample profile picture" class="profile-png" height="200vh"
@@ -38,65 +37,107 @@
         <article class="user-data-right">
           <dl class="steps-data">
             <div class="stride-cont">
-              <dt class="stride-label"> My Stride Length</dt>
-              <dd class="stride-data data" style="white-space: pre;">N/A</dd>
+              <dt class="stride-label">Stride Length</dt>
+              <dd class="stride-data data" style="white-space: pre;">1234</dd>
             </div>
             <div class="steps-goal-cont">
               <dt class="steps-goal-label" style="white-space: pre;">My Step Goal</dt>
-              <dd class="steps-goal-data data">N/A</dd>
+              <dd class="steps-goal-data data">2345</dd>
             </div>
             <div class="global-steps-goal-cont">
-              <dt class="global-steps-goal-label">Average Step Goal Among Users</dt>
-              <dd class="global-steps-goal-data data">N/A</dd>
+              <dt class="global-steps-goal-label">Avg Step Goal Among Users</dt>
+              <dd class="global-steps-goal-data data">3456</dd>
             </div>
           </dl>
         </article>
       </article>
     </section>
-    <section class="hydration-container">
-      <section class="banner-box">
-        <p class="banner-text">GET SWOLE · GET SWOLE · GET SWOLE</p>
-      </section>
-      <article class="user-hydration">
-        <h2 class="hydration-heading" id="h2-hydration">Hydration</h2>
-        <dl class="hydration-list">
-          <div class="daily-hydration-cont">
-            <dt class="daily-hydration-label">Daily Hydration</dt>
-            <dd class="daily-hydration-data">N/A</dd>
-            <figure>
-              <img src="./images/water-drop.png" alt="happy water drop" class="hydration-png">
-            </figure>
-          </div>
-          <div class="weekly-hydration-cont">
-            <dt class="weekly-hydration-label">Weekly Hydration</dt>
-            <dd class="weekly-hydration-data">N/A</dd>
-          </div>
-        </dl>
-      </article>
+    <section class="banner-box">
+      <p class="banner-text">GET SWOLE · GET SWOLE · GET SWOLE</p>
     </section>
-    <section class="sleep-container">
+    <section class="hydration-container">
+      <h2 class="hydration-heading" id="h2-hydration">Hydration</h2>
+      <div class="data-and-image-cont">
+        <div class="hydration-data-cont">
+          <dl class="hydration-data">
+            <div class="weekly-hydration-cont">
+              <dt class="weekly-hydration-label">Weekly Hydration</dt>
+              <dd class="weekly-hydration-data1"></dd>
+              <dd class="weekly-hydration-data2"></dd>
+              <dd class="weekly-hydration-data3"></dd>
+              <dd class="weekly-hydration-data4"></dd>
+              <dd class="weekly-hydration-data5"></dd>
+              <dd class="weekly-hydration-data6"></dd>
+              <dd class="weekly-hydration-data7"></dd>
+            </div>
+            <div class="daily-hydration-cont">
+              <dt class="daily-hydration-label1">Today you drank</dt>
+              <dt class="daily-hydration-label">Daily Hydration</dt>
+            </div>
+          </dl>
+        </div>
+        <figure class="water-img-cont">
+          <img src="./images/water-drop.png" alt="happy water drop" class="water-png">
+        </figure>
+      </div>
+    </section>
+    <section class="banner-box" id="sleep-banner">
+      <p class="banner-text">· DONT LET YOUR DREAMS BE DREAMS ·</p>
+    </section>
+    <section class="main-sleep-container">
       <article class="user-sleep">
         <h2 class="sleep-heading" id="h2-sleep">Sleep</h2>
-        <dl class="sleep-list">
-          <div class="sleep-cont">
-            <dt class="daily-sleep-label">Daily Sleep</dt>
-            <dd class="daily-sleep-data">N/A</dd>
-          </div>
-          <div class="weekly-sleep-cont">
-            <dt class="weekly-sleep-label">Weekly Sleep</dt>
-            <dd class="weekly-sleep-data">N/A</dd>
+        <section class="img-and-avg-data-cont">
+          <figure class="star-img-cont">
+            <img src="./images/sleepy-star.png" alt="sleepy star" class="star-png">
+          </figure>
+          <div class="daily-sleep-cont">
+            <dt class="daily-sleep-label">Last Night You Slept</dt>
+            <dd class="daily-sleep-data">DAILY SLEEP DATA</dd>
           </div>
           <div class="avg-sleep-cont">
-            <dt class="avg-sleep-label">Avg Sleep</dt>
-            <dd class="avg-sleep-data">N/A</dd>
+            <dt class="avg-quality-label">Average Sleep Quality</dt>
+            <dd class="avg-quality-data">ALL TIME AVG SLEEP DATA</dd>
+            <dt class="avg-hours-label">Average Sleep Hours</dt>
+            <dd class="avg-hours-data">ALL TIME AVG SLEEP DATA</dd>
           </div>
-        </dl>
-        <figure>
-          <!-- insert image here -->
-        </figure>
+        </section>
+        <section class="sleep-table-cont">
+          <div class="date-cont">
+            <dt class="date-label">Date</dt>
+            <dd class="weekly-date-data1"></dd>
+            <dd class="weekly-date-data2"></dd>
+            <dd class="weekly-date-data3"></dd>
+            <dd class="weekly-date-data4"></dd>
+            <dd class="weekly-date-data5"></dd>
+            <dd class="weekly-date-data6"></dd>
+            <dd class="weekly-date-data7"></dd>
+          </div>
+          <div class="sleep-hours-cont">
+            <dt class="weekly-hours-label">Hours</dt>
+            <dd class="weekly-hours-data1"></dd>
+            <dd class="weekly-hours-data2"></dd>
+            <dd class="weekly-hours-data3"></dd>
+            <dd class="weekly-hours-data4"></dd>
+            <dd class="weekly-hours-data5"></dd>
+            <dd class="weekly-hours-data6"></dd>
+            <dd class="weekly-hours-data7"></dd>
+          </div>
+          <div class="sleep-quality-cont">
+            <dt class="weekly-quality-label">Quality</dt>
+            <dd class="weekly-quality-data1"></dd>
+            <dd class="weekly-quality-data2"></dd>
+            <dd class="weekly-quality-data3"></dd>
+            <dd class="weekly-quality-data4"></dd>
+            <dd class="weekly-quality-data5"></dd>
+            <dd class="weekly-quality-data6"></dd>
+            <dd class="weekly-quality-data7"></dd>
+          </div>
+        </section>
       </article>
     </section>
   </main>
   <script src="bundle.js"></script>
 </body>
+
 </html>

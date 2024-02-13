@@ -80,7 +80,7 @@ function dailyOunces(hydration) {
         return user.userID === randomUserId
     });
     let index = targetUser.length - 1
-    return `${targetUser[index].date} : ${targetUser[index].numOunces}oz`
+    return `${targetUser[index].numOunces} ounces of water!`
 };
 
 function weeklyOunces(hydration) {
@@ -103,7 +103,7 @@ function findDailySleep(sleep) {
         return user.userID === randomUserId
     });
     let index = targetUser.length - 1
-    return `${targetUser[index].date} : ${targetUser[index].hoursSlept}hrs  |  Sleep Quality: ${targetUser[index].sleepQuality}`
+    return `${targetUser[index].hoursSlept}hrs | ${targetUser[index].sleepQuality} quality`
 };
 
 function calculateAvgHours(sleep) {
@@ -180,6 +180,8 @@ function findSleepQuality(sleep, day) {
     return targetUser.sleepQuality
 }
 */
+
+
 export {
     getUserInfo,
     calculateAverageSteps,
@@ -193,5 +195,7 @@ export {
     findDailySleep,
     findWeeklyHours,
     findWeeklyQuality,
-    findRecentWeek
+    findRecentWeek,
+    calculateAvgQuality,
+    calculateAvgHours
 }

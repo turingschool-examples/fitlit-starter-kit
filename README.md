@@ -6,9 +6,10 @@ This website was made with the goal of implementing the use of fetch API for the
 
 ### Installation
 - Visit the [FitLit repository](https://github.com/AsherSpurr/fitlit)
-- $ git clone
-- $ npm install
-- $ npm start
+- $ `git clone git@github.com:AsherSpurr/fitlit.git`
+- $ `npm install`
+- $ `npm start`
+- Navigate to http://localhost:8080/ in your browser
 
 ### Next steps 
 Additional enhancements could include:

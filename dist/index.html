@@ -14,6 +14,16 @@
       <a class="waterButton" href="#waterCard">Water</a>
       <a class="sleepButton" href="#sleepCard">Sleep</a>
       <a class="accountButton" href="#accountCard">Account</a>
+      <div>
+        <input type="button" value="View Options" class="viewButton">
+        <div class="viewMenu hidden">
+          <ul>
+            <li class="lightDark">Toggle dark/light mode</li>
+            <li class="condMode">Toggle condensed/full view</li>
+            <li class="adminView">Admin View</li>
+          </ul>
+        </div>
+      </div>
     </nav>
     <nav class="sideNav navBar" id="side-nav"> 
       <a class="homeButton" href="#top">Home</a>
@@ -22,14 +32,14 @@
       <a class="sleepButton" href="#sleepCard">Sleep</a>
       <a class="accountButton" href="#accountCard">Account</a>
     </nav>
-    <main id="top">
+    <main class="mainContainer" id="top">
       <article>
         <img class="full" src="./images/fitlit-logo.png" id="logo" alt="FitLit Logo">
         <h1 class="welcome-message" id="welcomeMessage">welcome back (person.name)</h1>
       </article>
       <section class="steps-main info-card" id="stepCard">
         <div class="section-text">
-          <section class="iconSection">
+          <section class="iconSection" id="stepCardHeader">
             <p class="icon">&#128099;</p>
             <h3>Activity Data</h3>
           </section>
@@ -39,7 +49,7 @@
       </section>
       <section class="water-main info-card" id="waterCard">
         <div class="section-text">
-          <section class="iconSection">
+          <section class="iconSection" id="waterCardHeader">
             <p class="icon">&#128167;</p>
             <h3>Hydration Data</h3>
           </section>
@@ -51,7 +61,7 @@
       </section>
       <section class="sleep-main info-card" id="sleepCard">
         <div>
-          <section class="iconSection">
+          <section class="iconSection" id="sleepCardHeader">
             <p class="icon">&#128719;</p>
             <h3>Sleep Data</h3>
           </section>
@@ -68,7 +78,7 @@
       </section>
       <section class="account-main info-card" id="accountCard">
         <div class="section-text">
-          <section class="iconSection">
+          <section class="iconSection"  id="accoundCardHeader">
             <p class="icon">&#128100;</p>
             <h3>Account Details</h3>
           </section>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +17,7 @@
 <body>
   <main class="main">
     <header class="header">
-      <img src="./images/layered-dumbell.png" alt="dumbell" class="dumbell-image" height="35px" width="35px">
+      <img src="./images/layered-dumbell.png" alt="Purple dumbell clip-art" class="dumbell-image" height="35px" width="35px">
       <h1>Fitlit</h1>
     </header>
     <section class="user-container">
@@ -58,11 +57,10 @@
       <div class="hydration-right-cont">
         <h2 class="hydration-heading" id="h2-hydration">Hydration</h2>
         <figure class="water-img-cont">
-          <img src="./images/water-droplet.png" alt="water drop" class="water-png">
-          <!-- <div class="data-cont"> -->
+          <img src="./images/water-droplet.png" alt="Two overlapping water droplets" class="water-png">
           <p id="hydration-data">----</p>
-          <!-- </div> -->
         </figure>
+        </div>
       </div>
       <div class="hydration-left-cont">
         <div class="daily-hydration-cont">
@@ -85,24 +83,46 @@
       <p class="banner-text">· DONT LET YOUR DREAMS BE DREAMS ·</p>
     </section>
     <section class="main-sleep-container">
-      <article class="user-sleep">
+      <div class="sleep-cont-left">
         <h2 class="sleep-heading" id="h2-sleep">Sleep</h2>
-        <section class="img-and-avg-data-cont">
-          <figure class="star-img-cont">
-            <img src="./images/sleepy-star.png" alt="sleepy star" class="star-png">
-          </figure>
-          <div class="daily-sleep-cont">
-            <dt class="daily-sleep-label">Last Night You Slept</dt>
-            <dd class="daily-sleep-data">DAILY SLEEP DATA</dd>
-          </div>
-          <div class="avg-sleep-cont">
-            <dt class="avg-quality-label">Average Sleep Quality</dt>
-            <dd class="avg-quality-data">ALL TIME AVG SLEEP DATA</dd>
-            <dt class="avg-hours-label">Average Sleep Hours</dt>
-            <dd class="avg-hours-data">ALL TIME AVG SLEEP DATA</dd>
-          </div>
-        </section>
-        <section class="sleep-table-cont">
+        <figure class="star-img-cont">
+          <img src="./images/sleepy-star.png" alt="sleepy star drawing wearing sleep cap" class="star-png">
+        </figure>
+        <div class="sleep-data-cont">
+          <table class="sleep-data-table">
+            <tr>
+              <td>Hours</td>
+              <td>Quality</td>
+            </tr>
+            <tr>
+              <td class="hours-slept">---</td>
+              <td class="quality-slept">---</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <article class="sleep-cont-right">
+        <div class="daily-sleep-cont">
+          <dt class="daily-sleep-label">Last Night You Slept</dt>
+          <dd class="daily-sleep-data">DAILY SLEEP DATA</dd>
+        </div>
+        <div class="avg-sleep-cont">
+          <dt class="avg-quality-label">Average Sleep Quality</dt>
+          <dd class="avg-quality-data">N/A</dd>
+          <dt class="avg-hours-label">Average Sleep Hours</dt>
+          <dd class="avg-hours-data">N/A</dd>
+        </div>
+        <select class="weekly-sleep-select">
+          <option class="sleep-select">Click to Select a Date</option>
+          <option class="sleep-date" value="weekly-date-data1"></option>
+          <option class="sleep-date" value="weekly-date-data2"></option>
+          <option class="sleep-date" value="weekly-date-data3"></option>
+          <option class="sleep-date" value="weekly-date-data4"></option>
+          <option class="sleep-date" value="weekly-date-data5"></option>
+          <option class="sleep-date" value="weekly-date-data6"></option>
+          <option class="sleep-date" value="weekly-date-data6"></option>
+        </select>
+        <!-- <section class="sleep-table-cont">
           <div class="date-cont">
             <dt class="date-label">Date</dt>
             <dd class="weekly-date-data1"></dd>
@@ -133,7 +153,7 @@
             <dd class="weekly-quality-data6"></dd>
             <dd class="weekly-quality-data7"></dd>
           </div>
-        </section>
+        </section> -->
       </article>
     </section>
   </main>

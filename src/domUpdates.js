@@ -47,8 +47,8 @@ const avgHoursData = document.querySelector('.avg-hours-data')
 
 const dailySleep = document.querySelector('.daily-sleep-data')
 
-
 window.addEventListener('load', getAllData)
+
 
 function displayUserData(userInfo) {
   username.innerText = userInfo.name
@@ -68,23 +68,23 @@ function displaySteps(userData) {
 function displayHydrationData(hydration) {
   var userHydration = weeklyOunces(hydration)
   dailyHydration.innerText = dailyOunces(hydration)
-  // weeklyHydrationDate.forEach((option) => {
-  //   userHydration.forEach((object) => {
-  //     console.log(object.date)
-  //     option.innerText = object.date
-  //   })
-  // })
 
    let dates = userHydration.map((object) => {
     return object.date
   })
-  console.log(dates)
-  
-  weeklyHydrationDate.forEach((loc) => {
-   for(let i = 0; i < dates.length; i++) {
-     loc.innerText = dates[i]
-   }
+
+  let ounces = userHydration.map((object) => {
+    return object.numOunces
   })
+  
+    weeklyHydrationDate[0].innerText = dates[0]
+    weeklyHydrationDate[1].innerText = dates[1]
+    weeklyHydrationDate[2].innerText = dates[2]
+    weeklyHydrationDate[3].innerText = dates[3]
+    weeklyHydrationDate[4].innerText = dates[4]
+    weeklyHydrationDate[5].innerText = dates[5]
+    weeklyHydrationDate[6].innerText = dates[6]
+
 
   // weeklyHydrationData1.innerText = `${userHydration[0].date} - ${userHydration[0].numOunces}oz`
   // weeklyHydrationData2.innerText = `${userHydration[1].date} - ${userHydration[1].numOunces}oz`

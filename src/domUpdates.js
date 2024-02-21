@@ -11,13 +11,13 @@ import {
   getMostRecentSleepQuality
 } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
-import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleepChart } from './chartSetup'
+import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleepChart, setCharts } from './chartSetup'
 Chart.register(...registerables);
 
 function setupEventListeners(randomUser, allUsers) {
   const userFriends = getAccountFriends(randomUser)
   const averageOunces = getAverageDailyFluidOunces(randomUser.id);
-
+  setCharts()
   displayWelcomeMessage(randomUser);
   displayAverageDailyOunces(averageOunces);
   updateAccountName(randomUser);
@@ -116,6 +116,22 @@ function updateAccountFriends(friends) {
   const accountFriends = document.querySelector('#account-friends');
   accountFriends.textContent = `${friends}`;
 }
+
+        // refactor updateAccountFriends() + updateAccountStep() + updateAccountStride()
+        // + updateAccountName() + updateAccountEmail() + updateAccountAddress()
+        function updateAccountData(user) {
+          Object.keys(user).forEach(dataType => {
+            if (dataType === 'dailyStepGoal') {
+              document.querySelector(`#${dataType}`).textContent = `${user[dataType]} steps`;
+            } else if (dataType === 'strideLength') {
+              document.querySelector(`#${dataType}`).textContent = `${user[dataType]} ft.`;
+            } else if (dataType === 'id') { 
+              //don't do anything
+            } else { 
+              document.querySelector(`#${dataType}`).textContent = `${user[dataType]}`;
+            }
+          })
+        }
 
 function displayAverageDailyOunces(averageOunces) {
   return averageOunces.toFixed(2)

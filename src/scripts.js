@@ -4,6 +4,7 @@ import './images/white-texture.png';
 import { setupEventListeners, sleepChartUpdate } from './domUpdates';
 import { fetchUserData, fetchHydrationData, fetchSleepData, fetchActivityData } from './apiCalls';
 
+
 let appState = {
   account: null,
   hydration: null,
@@ -110,6 +111,18 @@ function getAverageSleepQuality(randomUser) {
   return averageSleepQuality.toFixed(2)
 }
 
+        // refactored getAverageSleepQuality() + getAverageSleepHours()
+        function getAverageSleepData(randomUser, sleepDataType) {
+          let sameUserSleepData = getUserSleepData(randomUser)
+          let averageSleep = 0
+          let totalSleep = 0
+          sameUserSleepData.forEach(obj => {
+            totalSleep += obj[sleepDataType]
+          })
+          averageSleep = totalSleep/ sameUserSleepData.length
+          return averageSleep.toFixed(2)
+        }
+
 function getMostRecentSleepHours(randomUser) {
   let sameUserSleepData = getUserSleepData(randomUser)
   let latestSleepDataIndex = sameUserSleepData.length - 1
@@ -121,6 +134,13 @@ function getMostRecentSleepQuality(randomUser) {
   let latestSleepDataIndex = sameUserSleepData.length - 1
   return sameUserSleepData[latestSleepDataIndex].sleepQuality
 }
+
+        // refactored getMostRecentSleepHours() + getMostRecentSleepQuality()
+        function getMostRecentSleepData(randomUser, sleepDataType) {
+          let sameUserSleepData = getUserSleepData(randomUser)
+          let latestSleepDataIndex = sameUserSleepData.length - 1
+          return sameUserSleepData[latestSleepDataIndex][sleepDataType]
+        }
 
 function getWeeklySleep(randomUser, selectedDay) {
   let selectedWeek = []
@@ -143,6 +163,11 @@ function getWeeklySleepHours(selectedWeek) {
 function getWeeklySleepQuality(selectedWeek) {
   return selectedWeek[0].map(day => day.sleepQuality)
 }
+
+        // refactored getWeeklySleepHours() + getWeeklySleepQuality()
+        function getWeeklySleepData(selectedWeek, sleepDataType) {
+          return selectedWeek[0].map(day => day[sleepDataType])
+        }
 
 document.addEventListener('DOMContentLoaded', fetchData);
 

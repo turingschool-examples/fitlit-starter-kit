@@ -218,6 +218,7 @@ dt {
   margin-top: 2.5vh;
   margin-bottom: 2.5vh;
   color: #9d9d9d;
+  height: min-content;
 }
 
 .sleep-heading {
@@ -231,6 +232,7 @@ dt {
   color: #9d9d9d;
 }
 
+/* current-working */
 .data-and-image-cont {
   display: flex;
   justify-content: space-between;
@@ -238,47 +240,47 @@ dt {
 
 .hydration-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
+  height: 80vh;
+  justify-content: space-between;
+  overflow-x: hidden;
+  width: 100%;
 }
 
-.hydration-data {
+.hydration-right-cont {
+  width: 50vw;
+  height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
-.weekly-hydration-cont {
-  margin-left: 40px;
+.hydration-left-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 0;
+  float: inline-start;
+}
+
+.weekly-hydration-select {
+    background-color: #D4B7F8;
+    /* padding: 15px 0px;
+    padding: 15px 0px; */
+    width: 45vw;
+    height: 20%;
 }
 
 .daily-hydration-cont {
-  display: flex;
-  flex-direction: column;
-  padding-top: 10px;
-  padding-bottom: 0px;
-  padding-right: 0px;
-  margin-left: 30%;
+  background-color: #B7DAF7;
+  /* padding: 15px 0px; */
+  width: 35vw;
+  height: 20%;
+  margin-bottom: 20%;
+  margin-top: 20%;
 }
 
-.weekly-hydration-cont {
-  display: flex;
-  flex-direction: column;
-  padding: 0px;
-  min-width: 30%;
-}
-
-.weekly-hydration-label {
-  font-size: x-large;
-}
-
-.daily-hydration-label {
-  font-size: xx-large,
-}
-
-.weekly-hydration-data1 {
-  padding-top: 2.5vh;
-}
-
-.star-img-cont .water-img-cont {
+.star-img-cont {
   display: flex;
   margin-block-start: 1em;
   margin-block-end: 1em;
@@ -286,6 +288,11 @@ dt {
   margin-inline-end: 40px;
   transform: rotateY(180deg);
 }
+
+/* .water-img-cont {
+  display: flex;
+  width: fit-content;
+} */
 
 .img-and-avg-data-cont {
   display: flex;
@@ -338,17 +345,11 @@ dt {
   margin: 0;
 }
 
-.star-png {
-  height: 29vh;
-  width: 31vh;
-  padding-right: 1vw;
-}
-
+.star-png,
 .water-png {
-  height: 29vh;
-  width: 31vh;
-  float: right;
-  margin-right: 60%;
+  height: 100%;
+  width: 100%;
+  padding-right: 1vw;
 }
 
 .sleep-table-cont {
@@ -374,3 +375,41 @@ dt {
 .modal-hidden {
   display: none;
 }
+
+
+/* .hydration-data {
+  display: flex;
+  flex-direction: row;
+} */
+
+/* .weekly-hydration-cont {
+  margin-left: 40px;
+} */
+
+/* .daily-hydration-cont {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-bottom: 0px;
+  padding-right: 0px;
+  margin-left: 30%;
+} */
+
+/* .weekly-hydration-cont {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  min-width: 30%;
+} */
+
+/* .weekly-hydration-label {
+  font-size: x-large;
+} */
+
+/* .daily-hydration-label {
+  font-size: xx-large,
+}
+
+.weekly-hydration-data1 {
+  padding-top: 2.5vh;
+} */

@@ -20,6 +20,7 @@ import '../src/images/profile-image10.png'
 import '../src/images/water-drop.png'
 import '../src/images/sleepy-star.png'
 
+
 /* <><> API Data <><> */
 function initiateUserFunctions(userData) {
     getRandomUser(userData)
@@ -163,6 +164,11 @@ function findWeeklyQuality(sleep, day) {
     }
     return weeklyQuality
 }
+
+// function checkIfSelected() {
+//     let x = document.getElementById('hydration-select').value
+//     document.getElementById('hydration-data').innerText = 
+// }
 
 /* <><> UNUSED FUNCS (required by project specs) <><>
 

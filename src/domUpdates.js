@@ -49,6 +49,7 @@ const dailySleep = document.querySelector('.daily-sleep-data')
 
 window.addEventListener('load', getAllData)
 
+// document.addEventListener('change', checkIfSelected)
 
 function displayUserData(userInfo) {
   username.innerText = userInfo.name
@@ -64,19 +65,36 @@ function displayUserData(userInfo) {
 function displaySteps(userData) {
   avgStepGoal.innerText = calculateAverageSteps(userData)
 }
+document.addEventListener('change', () => {checkIfSelected(userHydration)})
+
+function checkIfSelected(userHydration) {
+  let x = document.querySelector('.weekly-hydration-select').value
+  // let index = one.indexOf(x)
+  // console.log('index', index)
+  console.log('x', x)
+
+  let targetObj = userHydration.find((user) => {
+    return user.date === x
+  })
+  // let targetObj = userHydration
+  console.log('target user', targetObj)
+  let data = targetObj.numOunces
+  console.log('target ounces', targetObj.numOunces)
+  console.log('data', data)
+  let p = document.getElementById('hydration-data')
+  p.innerText = data
+}
+
+let userHydration;
 
 function displayHydrationData(hydration) {
-  var userHydration = weeklyOunces(hydration)
+  userHydration = weeklyOunces(hydration)
   dailyHydration.innerText = dailyOunces(hydration)
 
    let dates = userHydration.map((object) => {
     return object.date
   })
 
-  let ounces = userHydration.map((object) => {
-    return object.numOunces
-  })
-  
     weeklyHydrationDate[0].innerText = dates[0]
     weeklyHydrationDate[1].innerText = dates[1]
     weeklyHydrationDate[2].innerText = dates[2]
@@ -85,7 +103,35 @@ function displayHydrationData(hydration) {
     weeklyHydrationDate[5].innerText = dates[5]
     weeklyHydrationDate[6].innerText = dates[6]
 
+    weeklyHydrationDate[0].value = dates[0]
+    weeklyHydrationDate[1].value = dates[1]
+    weeklyHydrationDate[2].value = dates[2]
+    weeklyHydrationDate[3].value = dates[3]
+    weeklyHydrationDate[4].value = dates[4]
+    weeklyHydrationDate[5].value = dates[5]
+    weeklyHydrationDate[6].value = dates[6]
 
+//   document.addEventListener('change', () => {checkIfSelected(userHydration)})
+
+// function checkIfSelected(userHydration) {
+//   let x = document.getElementById('hydration-select').value
+//   // let index = one.indexOf(x)
+//   // console.log('index', index)
+//   console.log('x', x)
+
+//   let targetObj = userHydration.find((user) => {
+//     return dates.includes(user.date)
+//   })
+//   // let targetObj = userHydration
+//   console.log('target user', targetObj)
+//   let data = targetObj.numOunces
+//   console.log('target ounces', targetObj.numOunces)
+//   console.log('data', data)
+//   let p = document.getElementById('hydration-data')
+//   p.innerText = data
+// }
+
+  // document.getElementById('hydration-data').innerText = targetObj.numOunces
   // weeklyHydrationData1.innerText = `${userHydration[0].date} - ${userHydration[0].numOunces}oz`
   // weeklyHydrationData2.innerText = `${userHydration[1].date} - ${userHydration[1].numOunces}oz`
   // weeklyHydrationData3.innerText = `${userHydration[2].date} - ${userHydration[2].numOunces}oz`

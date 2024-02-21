@@ -64,14 +64,14 @@ function checkIfSelected(userHydration) {
   let p = document.getElementById('hydration-data')
   let x = document.querySelector('.weekly-hydration-select').value
   
-  if(x !== 'Select a Date') {
+  if(x !== 'Click to Select a Date') {
     let targetObj = userHydration.find((user) => {
       return user.date === x
     })
     let data = targetObj.numOunces
-    p.innerText = `${data} oz`
+    p.innerText = data
   } else {
-    p.innerText = '-- oz'
+    p.innerText = '----'
   }
 }
 

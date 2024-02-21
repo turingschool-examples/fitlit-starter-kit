@@ -275,7 +275,8 @@ h2 {
     height: 20%;
     font-family: 'Bungee', sans-serif;
     text-align: center;
-    font-size: 150%;
+    font-size: 200%;
+    color: #3d3d4e;
 }
 
 .daily-hydration-cont {
@@ -348,12 +349,19 @@ h2 {
 .avg-quality-label {
   margin: 0;
 }
+/* current-working */
+.water-img-cont {
+  position: relative;
+  margin-right: 20em;
+  text-align: center;
+  margin-top: 3em;
+}
 
 .star-png,
 .water-png {
   height: 100%;
   width: 100%;
-  padding-right: 1vw;
+  padding-right: 2vw;
 }
 
 .sleep-table-cont {
@@ -385,9 +393,12 @@ h2 {
   align-items: center;
   justify-content: end;
 }
-
+/* current-working */
 #hydration-data {
-  font-size: xx-large;
+  font-size: 6em;
+  position: absolute;
+  top: 35%;
+  left: 25%
 }
 
 .daily-hydration-label {

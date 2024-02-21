@@ -8,8 +8,10 @@ const address = document.querySelector('.address-cont')
 const strideData = document.querySelector('.stride-data')
 const stepGoal = document.querySelector('.steps-goal-data')
 const avgStepGoal = document.querySelector('.global-steps-goal-data')
+
 const dailyHydration = document.querySelector('.daily-hydration-label')
 const weeklyHydrationDate = document.querySelectorAll('.hydration-date')
+const hydrationSelect = document.querySelector('.weekly-hydration-select')
 
 const weeklyDateData1 = document.querySelector('.weekly-date-data1')
 const weeklyDateData2 = document.querySelector('.weekly-date-data2')
@@ -41,7 +43,7 @@ const avgHoursData = document.querySelector('.avg-hours-data')
 const dailySleep = document.querySelector('.daily-sleep-data')
 
 window.addEventListener('load', getAllData)
-document.addEventListener('change', () => { checkIfSelected(userHydration) })
+hydrationSelect.addEventListener('change', () => { checkIfSelected(userHydration) })
 
 function displayUserData(userInfo) {
   username.innerText = userInfo.name
@@ -59,14 +61,18 @@ function displaySteps(userData) {
 }
 
 function checkIfSelected(userHydration) {
-  let x = document.querySelector('.weekly-hydration-select').value
-
-  let targetObj = userHydration.find((user) => {
-    return user.date === x
-  })
-  let data = targetObj.numOunces
   let p = document.getElementById('hydration-data')
-  p.innerText = data
+  let x = document.querySelector('.weekly-hydration-select').value
+  
+  if(x !== 'Select a Date') {
+    let targetObj = userHydration.find((user) => {
+      return user.date === x
+    })
+    let data = targetObj.numOunces
+    p.innerText = `${data} oz`
+  } else {
+    p.innerText = '-- oz'
+  }
 }
 
 let userHydration;

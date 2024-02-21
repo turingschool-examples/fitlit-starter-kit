@@ -1,6 +1,23 @@
 import { Chart, registerables } from 'chart.js/auto';
 Chart.register(...registerables);
 
+function setCharts() {
+let chartCanvas = document.querySelectorAll('canvas');
+Array.from(chartCanvas).reduce((acc, chart) => {
+  let id = chart.id.replace('Chart', '') + 'Ctx';
+  acc[id] = {
+    ctx: chart.getContext('2d'),
+    canvas: {
+      width: chart.width,
+      height: chart.height,
+    }
+  };
+  console.log(acc)
+  return acc;
+}, {});
+console.log(stepCtx)
+}
+
 const stepCtx = document.getElementById('stepChart').getContext('2d');
 const wklyHydCtx = document.getElementById('wklyHydChart').getContext('2d');
 const hydCtx = document.getElementById('hydChart').getContext('2d');
@@ -8,12 +25,12 @@ const avgSleepCtx = document.getElementById('avgSleepChart').getContext('2d');
 const wklySleepCtx = document.getElementById('wklySleepChart').getContext('2d');
 const sleepCtx = document.getElementById('sleepChart').getContext('2d');
 
-stepCtx.canvas.height = 200; 
-wklyHydCtx.canvas.height = 100;
-hydCtx.canvas.height = 100;
-sleepCtx.canvas.height = 60;
-avgSleepCtx.canvas.height = 60;
-wklySleepCtx.canvas.height = 100;
+// stepCtx.canvas.height = 200; 
+// wklyHydCtx.canvas.height = 100;
+// hydCtx.canvas.height = 100;
+// sleepCtx.canvas.height = 60;
+// avgSleepCtx.canvas.height = 60;
+// wklySleepCtx.canvas.height = 100;
 
 const stepChartData = {
   labels: ['Your step goal', 'Average step goal'],
@@ -299,4 +316,5 @@ export {
     sleepChart,
     avgSleepChart,
     wklySleepChart,
+    setCharts
 }

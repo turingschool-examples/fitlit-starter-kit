@@ -34,7 +34,6 @@ header {
   height: 5%;
   justify-content: center;
   border-radius: 12px;
-  /* position: relative; */
 }
 
 h1 {
@@ -231,16 +230,12 @@ h2 {
   filter: drop-shadow(1px 105px 1px #a7a7a7);
 }
 
+/* current-working */
 .sleep-heading {
   text-align: left;
   padding-left: 5vw;
   margin-top: 4%;
-}
-
-/* current-working */
-.data-and-image-cont {
-  display: flex;
-  justify-content: space-between;
+  position: relative;
 }
 
 .hydration-container {
@@ -289,7 +284,7 @@ h2 {
   margin-bottom: 20%;
   margin-top: 20%;
 }
-
+/*current-working*/
 #hydration-data {
   font-size: 6em;
   position: absolute;
@@ -301,13 +296,11 @@ h2 {
   font-size: xx-large,
 }
 
-.star-img-cont {
+/*current-working*/
+.moon-img-cont {
   display: flex;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 40px;
+  margin-inline-start: 80px;
   margin-inline-end: 40px;
-  transform: rotateY(180deg);
 }
 
 .daily-sleep-cont {
@@ -359,7 +352,7 @@ h2 {
   margin-top: 3em;
 }
 
-.star-png,
+.moon-png,
 .water-png {
   height: 100%;
   width: 100%;
@@ -367,12 +360,9 @@ h2 {
 }
 
 .sleep-data-cont {
-  display: flex;
-  justify-content: space-around;
-  margin: 20px;
   margin-left: 200px;
   font-size: xx-large;
-}
+} 
 
 .date-label,
 .weekly-hours-label,
@@ -389,12 +379,12 @@ h2 {
   margin-left: 50px;
 }
 
+/* current-working */
 .sleep-cont-left {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-left: 0;
-  /* float: inline-end; */
   float: left;
 }
 
@@ -438,13 +428,19 @@ h2 {
   margin-right: 0;
 }
 
+table,
+tr,
+th {
+  padding: 10px 10px;
+  text-align: center;
+}
 
-/* MISC */
+.hours-slept {
+  border-right: 2px #3d3d4e solid;
+}
 
 .data-cont {
   display: flex;
   align-items: center;
   justify-content: end;
 }
-
-/* current-working */

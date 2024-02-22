@@ -20,6 +20,7 @@ import '../src/images/profile-image10.png'
 import '../src/images/water-drop.png'
 import '../src/images/sleepy-star.png'
 import '../src/images/water-droplet.png'
+import '../src/images/moon.png'
 
 
 /* <><> API Data <><> */

@@ -89,6 +89,7 @@ function getWeeklyFluidOunces(userId) {
 function getUserSleepData(randomUser) {
   return appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
 }
+
 function getAverageSleepHours(randomUser) {
   let sameUserSleepData = getUserSleepData(randomUser)
   let averageSleepHours = 0
@@ -137,6 +138,7 @@ function getMostRecentSleepQuality(randomUser) {
 
         // refactored getMostRecentSleepHours() + getMostRecentSleepQuality()
         function getMostRecentSleepData(randomUser, sleepDataType) {
+
           let sameUserSleepData = getUserSleepData(randomUser)
           let latestSleepDataIndex = sameUserSleepData.length - 1
           return sameUserSleepData[latestSleepDataIndex][sleepDataType]

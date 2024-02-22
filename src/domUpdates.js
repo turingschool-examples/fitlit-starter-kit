@@ -117,7 +117,7 @@ function updateAccountFriends(friends) {
   accountFriends.textContent = `${friends}`;
 }
 
-        // refactor updateAccountFriends() + updateAccountStep() + updateAccountStride()
+        // refactor updateAccountFriends() + updateAccountStep() + updateAccountStride() 
         // + updateAccountName() + updateAccountEmail() + updateAccountAddress()
         function updateAccountData(user) {
           Object.keys(user).forEach(dataType => {

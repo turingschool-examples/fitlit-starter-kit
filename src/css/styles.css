@@ -32,7 +32,7 @@ header {
   display: flex;
   background-color: #FBF5E7;
   height: 5%;
-  justify-content: center;
+  /* justify-content: center; */
   border-radius: 12px;
 }
 
@@ -49,12 +49,21 @@ h1 {
   margin-top: 1em;
 }
 
+nav {
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 1em;
+  align-items: center;
+}
+
+.link {
+  margin-left: 1em;
+  font-size: larger;
+  color: #BC74F3;
+}
 /*<><> Main user Data <><>*/
 /*<> Left <>*/
-
-/* .h1 .user-container {
-  height: 80vh;
-} */
 
 .contact-info {
   font-family: 'DotGothic16', sans-serif;
@@ -81,13 +90,13 @@ h1 {
   flex-direction: column;
   margin-left: 4%;
   margin-bottom: 6em;
-  margin-top: 3em;
+  margin-top: 15em;
   width: 25%;
   padding-left: 3em;
 }
 
 .user-name {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-family: 'Bungee', sans-serif;
   filter: none;
 }
@@ -97,6 +106,7 @@ h1 {
   padding-right: 2em;
   padding-bottom: 2em;
   overflow-x: auto;
+  font-size: 1.2em;
 }
 
 .profile-image {
@@ -180,6 +190,7 @@ dt {
   animation-name: stride-animation;
   animation-duration: .5s;
   animation-direction: normal;
+  box-shadow: 20px 20px #3d3d4e;
 }
 
 .steps-goal-label {
@@ -189,6 +200,7 @@ dt {
   animation-name: steps-goal-animation;
   animation-duration: 1s;
   animation-direction: normal;
+  box-shadow: 20px 20px #3d3d4e;
 }
 
 .global-steps-goal-label {
@@ -198,6 +210,7 @@ dt {
   animation-name: global-steps-goal-animation;
   animation-duration: 1.5s;
   animation-direction: normal;
+  box-shadow: 20px 20px #3d3d4e;
 }
 
 .banner-box {
@@ -272,6 +285,7 @@ h2 {
   text-align: center;
   font-size: 200%;
   color: #3d3d4e;
+  box-shadow: 20px 20px #3d3d4e;
 }
 
 .daily-hydration-cont {
@@ -283,8 +297,9 @@ h2 {
   height: 15%;
   margin-bottom: 20%;
   margin-top: 20%;
+  box-shadow: 20px 20px #3d3d4e;
 }
-/*current-working*/
+
 #hydration-data {
   font-size: 6em;
   position: absolute;
@@ -296,7 +311,6 @@ h2 {
   font-size: xx-large,
 }
 
-/*current-working*/
 .moon-img-cont {
   display: flex;
   margin-inline-start: 80px;
@@ -405,6 +419,7 @@ h2 {
   height: 12vh;
   margin-bottom: 0;
   margin-top: 10%;
+  box-shadow: 20px 20px #3d3d4e;
 }
 
 .weekly-sleep-select {
@@ -416,6 +431,7 @@ h2 {
   text-align: center;
   font-size: 200%;
   color: #3d3d4e;
+  box-shadow: 20px 20px #3d3d4e;
 }
 
 .avg-sleep-cont {
@@ -426,6 +442,7 @@ h2 {
   width: 46vw;
   height: 10vh;
   margin-right: 0;
+  box-shadow: 20px 20px #3d3d4e;
 }
 
 table,

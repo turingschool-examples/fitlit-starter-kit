@@ -243,7 +243,6 @@ h2 {
   filter: drop-shadow(1px 105px 1px #a7a7a7);
 }
 
-/* current-working */
 .sleep-heading {
   text-align: left;
   padding-left: 5vw;
@@ -358,7 +357,6 @@ h2 {
   margin-left: 0;
 }
 
-/* current-working */
 .water-img-cont {
   position: relative;
   margin-right: 20em;
@@ -393,7 +391,6 @@ h2 {
   margin-left: 50px;
 }
 
-/* current-working */
 .sleep-cont-left {
   display: flex;
   flex-direction: column;

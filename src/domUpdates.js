@@ -117,6 +117,22 @@ function updateAccountFriends(friends) {
   accountFriends.textContent = `${friends}`;
 }
 
+        // refactor updateAccountFriends() + updateAccountStep() + updateAccountStride() 
+        // + updateAccountName() + updateAccountEmail() + updateAccountAddress()
+        function updateAccountData(user) {
+          Object.keys(user).forEach(dataType => {
+            if (dataType === 'dailyStepGoal') {
+              document.querySelector(`#${dataType}`).textContent = `${user[dataType]} steps`;
+            } else if (dataType === 'strideLength') {
+              document.querySelector(`#${dataType}`).textContent = `${user[dataType]} ft.`;
+            } else if (dataType === 'id') { 
+              //don't do anything
+            } else { 
+              document.querySelector(`#${dataType}`).textContent = `${user[dataType]}`;
+            }
+          })
+        }
+
 function displayAverageDailyOunces(averageOunces) {
   return averageOunces.toFixed(2)
 }

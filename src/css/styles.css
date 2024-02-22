@@ -235,7 +235,7 @@ h2 {
   text-align: left;
   padding-left: 5vw;
   margin-top: 4%;
-} 
+}
 
 /* current-working */
 .data-and-image-cont {
@@ -270,13 +270,13 @@ h2 {
 
 .weekly-hydration-select {
   border-radius: 20px 20px 20px 0px;
-    background-color: #D4B7F8;
-    width: 45vw;
-    height: 20%;
-    font-family: 'Bungee', sans-serif;
-    text-align: center;
-    font-size: 200%;
-    color: #3d3d4e;
+  background-color: #D4B7F8;
+  width: 45vw;
+  height: 20%;
+  font-family: 'Bungee', sans-serif;
+  text-align: center;
+  font-size: 200%;
+  color: #3d3d4e;
 }
 
 .daily-hydration-cont {
@@ -290,6 +290,17 @@ h2 {
   margin-top: 20%;
 }
 
+#hydration-data {
+  font-size: 6em;
+  position: absolute;
+  top: 35%;
+  left: 25%
+}
+
+.daily-hydration-label {
+  font-size: xx-large,
+}
+
 .star-img-cont {
   display: flex;
   margin-block-start: 1em;
@@ -298,12 +309,6 @@ h2 {
   margin-inline-end: 40px;
   transform: rotateY(180deg);
 }
-/* current-working */
-/* .img-and-avg-data-cont {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-} */
 
 .daily-sleep-cont {
   display: flex;
@@ -361,11 +366,12 @@ h2 {
   padding-right: 2vw;
 }
 
-.sleep-table-cont {
+.sleep-data-cont {
   display: flex;
-  justify-content: center;
-  margin: 50px;
-  margin-left: 150px;
+  justify-content: space-around;
+  margin: 20px;
+  margin-left: 200px;
+  font-size: xx-large;
 }
 
 .date-label,
@@ -413,13 +419,13 @@ h2 {
 
 .weekly-sleep-select {
   border-radius: 20px 20px 0px 20px;
-    background-color: #D4B7F8;
-    width: 55vw;
-    height: 20vh;
-    font-family: 'Bungee', sans-serif;
-    text-align: center;
-    font-size: 200%;
-    color: #3d3d4e;
+  background-color: #D4B7F8;
+  width: 55vw;
+  height: 20vh;
+  font-family: 'Bungee', sans-serif;
+  text-align: center;
+  font-size: 200%;
+  color: #3d3d4e;
 }
 
 .avg-sleep-cont {
@@ -440,14 +446,5 @@ h2 {
   align-items: center;
   justify-content: end;
 }
-/* current-working */
-#hydration-data {
-  font-size: 6em;
-  position: absolute;
-  top: 35%;
-  left: 25%
-}
 
-.daily-hydration-label {
-  font-size: xx-large,
-}
+/* current-working */

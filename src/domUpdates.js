@@ -13,29 +13,8 @@ const dailyHydration = document.querySelector('.daily-hydration-label')
 const weeklyHydrationDate = document.querySelectorAll('.hydration-date')
 const hydrationSelect = document.querySelector('.weekly-hydration-select')
 
-const weeklyDateData1 = document.querySelector('.weekly-date-data1')
-const weeklyDateData2 = document.querySelector('.weekly-date-data2')
-const weeklyDateData3 = document.querySelector('.weekly-date-data3')
-const weeklyDateData4 = document.querySelector('.weekly-date-data4')
-const weeklyDateData5 = document.querySelector('.weekly-date-data5')
-const weeklyDateData6 = document.querySelector('.weekly-date-data6')
-const weeklyDateData7 = document.querySelector('.weekly-date-data7')
-
-const weeklyHoursData1 = document.querySelector('.weekly-hours-data1')
-const weeklyHoursData2 = document.querySelector('.weekly-hours-data2')
-const weeklyHoursData3 = document.querySelector('.weekly-hours-data3')
-const weeklyHoursData4 = document.querySelector('.weekly-hours-data4')
-const weeklyHoursData5 = document.querySelector('.weekly-hours-data5')
-const weeklyHoursData6 = document.querySelector('.weekly-hours-data6')
-const weeklyHoursData7 = document.querySelector('.weekly-hours-data7')
-
-const weeklyQualityData1 = document.querySelector('.weekly-quality-data1')
-const weeklyQualityData2 = document.querySelector('.weekly-quality-data2')
-const weeklyQualityData3 = document.querySelector('.weekly-quality-data3')
-const weeklyQualityData4 = document.querySelector('.weekly-quality-data4')
-const weeklyQualityData5 = document.querySelector('.weekly-quality-data5')
-const weeklyQualityData6 = document.querySelector('.weekly-quality-data6')
-const weeklyQualityData7 = document.querySelector('.weekly-quality-data7')
+const weeklySleepDate = document.querySelectorAll('.sleep-date')
+const sleepSelect = document.querySelector('.weekly-sleep-select')
 
 const avgQualityData = document.querySelector('.avg-quality-data')
 const avgHoursData = document.querySelector('.avg-hours-data')
@@ -43,7 +22,8 @@ const avgHoursData = document.querySelector('.avg-hours-data')
 const dailySleep = document.querySelector('.daily-sleep-data')
 
 window.addEventListener('load', getAllData)
-hydrationSelect.addEventListener('change', () => { checkIfSelected(userHydration) })
+hydrationSelect.addEventListener('change', () => { checkIfSelected(userHydration, weeklyHoursSlept, weeklyQualitySlept) })
+sleepSelect.addEventListener('change', () => { checkIfSelected(userHydration, weeklyHoursSlept, weeklyQualitySlept) })
 
 function displayUserData(userInfo) {
   username.innerText = userInfo.name
@@ -60,18 +40,38 @@ function displaySteps(userData) {
   avgStepGoal.innerText = calculateAverageSteps(userData)
 }
 
-function checkIfSelected(userHydration) {
+function checkIfSelected(a, b ,c) {
   let p = document.getElementById('hydration-data')
   let x = document.querySelector('.weekly-hydration-select').value
+  let tdHours = document.querySelector('.hours-slept')
+  let tdQuality = document.querySelector('.quality-slept')
+  let v = document.querySelector('.weekly-sleep-select').value
   
-  if(x !== 'Click to Select a Date') {
-    let targetObj = userHydration.find((user) => {
+  if(x !== 'Click to Select a Date' ) {
+    let targetObj = a.find((user) => {
       return user.date === x
     })
     let data = targetObj.numOunces
     p.innerText = data
   } else {
     p.innerText = '----'
+  }
+
+  if(v !== 'Click to Select a Date' ) {
+    let targetObjHours = b.find((user) => {
+      return user.date === v
+    })
+    let targetObjQuality = c.find((user) => {
+      return user.date === v
+    })
+    let dataHours = targetObjHours.hours
+    tdHours.innerText = dataHours
+
+    let dataQuality = targetObjQuality.quality
+    tdQuality.innerText = dataQuality
+  } else {
+    tdHours.innerText = '----'
+    tdQuality.innerText = '----'
   }
 }
 
@@ -101,34 +101,33 @@ function displayHydrationData(hydration) {
   weeklyHydrationDate[6].value = dates[6]
 }
 
+let weeklyHoursSlept;
+let  weeklyQualitySlept;
+
 function displaySleepData(sleep) {
   let date = findRecentWeek(sleep)
-  let weeklyHoursSlept = findWeeklyHours(sleep, date)
-  let weeklyQualitySlept = findWeeklyQuality(sleep, date)
+  weeklyHoursSlept = findWeeklyHours(sleep, date)
+  weeklyQualitySlept = findWeeklyQuality(sleep, date)
   dailySleep.innerText = findDailySleep(sleep)
-  weeklyDateData1.innerText = `${weeklyHoursSlept[0].date}`
-  weeklyDateData2.innerText = `${weeklyHoursSlept[1].date}`
-  weeklyDateData3.innerText = `${weeklyHoursSlept[2].date}`
-  weeklyDateData4.innerText = `${weeklyHoursSlept[3].date}`
-  weeklyDateData5.innerText = `${weeklyHoursSlept[4].date}`
-  weeklyDateData6.innerText = `${weeklyHoursSlept[5].date}`
-  weeklyDateData7.innerText = `${weeklyHoursSlept[6].date}`
 
-  weeklyHoursData1.innerText = `${weeklyHoursSlept[0].hours}`
-  weeklyHoursData2.innerText = `${weeklyHoursSlept[1].hours}`
-  weeklyHoursData3.innerText = `${weeklyHoursSlept[2].hours}`
-  weeklyHoursData4.innerText = `${weeklyHoursSlept[3].hours}`
-  weeklyHoursData5.innerText = `${weeklyHoursSlept[4].hours}`
-  weeklyHoursData6.innerText = `${weeklyHoursSlept[5].hours}`
-  weeklyHoursData7.innerText = `${weeklyHoursSlept[6].hours}`
+  let dates = weeklyHoursSlept.map((object) => {
+    return object.date
+  })
+  weeklySleepDate[0].innerText = dates[0]
+  weeklySleepDate[1].innerText = dates[1]
+  weeklySleepDate[2].innerText = dates[2]
+  weeklySleepDate[3].innerText = dates[3]
+  weeklySleepDate[4].innerText = dates[4]
+  weeklySleepDate[5].innerText = dates[5]
+  weeklySleepDate[6].innerText = dates[6]
 
-  weeklyQualityData1.innerText = `${weeklyQualitySlept[0].quality}`
-  weeklyQualityData2.innerText = `${weeklyQualitySlept[1].quality}`
-  weeklyQualityData3.innerText = `${weeklyQualitySlept[2].quality}`
-  weeklyQualityData4.innerText = `${weeklyQualitySlept[3].quality}`
-  weeklyQualityData5.innerText = `${weeklyQualitySlept[4].quality}`
-  weeklyQualityData6.innerText = `${weeklyQualitySlept[5].quality}`
-  weeklyQualityData7.innerText = `${weeklyQualitySlept[6].quality}`
+  weeklySleepDate[0].value = dates[0]
+  weeklySleepDate[1].value = dates[1]
+  weeklySleepDate[2].value = dates[2]
+  weeklySleepDate[3].value = dates[3]
+  weeklySleepDate[4].value = dates[4]
+  weeklySleepDate[5].value = dates[5]
+  weeklySleepDate[6].value = dates[6]
 
   avgQualityData.innerText = calculateAvgQuality(sleep)
 

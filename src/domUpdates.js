@@ -11,13 +11,13 @@ import {
   getMostRecentSleepQuality
 } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
-import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleepChart } from './chartSetup'
+import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleepChart, setCharts } from './chartSetup'
 Chart.register(...registerables);
 
 function setupEventListeners(randomUser, allUsers) {
   const userFriends = getAccountFriends(randomUser)
   const averageOunces = getAverageDailyFluidOunces(randomUser.id);
-
+  setCharts()
   displayWelcomeMessage(randomUser);
   displayAverageDailyOunces(averageOunces);
   updateAccountName(randomUser);

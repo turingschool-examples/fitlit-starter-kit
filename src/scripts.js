@@ -4,6 +4,7 @@ import './images/white-texture.png';
 import { setupEventListeners, sleepChartUpdate } from './domUpdates';
 import { fetchUserData, fetchHydrationData, fetchSleepData, fetchActivityData } from './apiCalls';
 
+
 let appState = {
   account: null,
   hydration: null,
@@ -136,7 +137,8 @@ function getMostRecentSleepQuality(randomUser) {
 }
 
         // refactored getMostRecentSleepHours() + getMostRecentSleepQuality()
-        function getMostRecentSleep(randomUser, sleepDataType) {
+        function getMostRecentSleepData(randomUser, sleepDataType) {
+
           let sameUserSleepData = getUserSleepData(randomUser)
           let latestSleepDataIndex = sameUserSleepData.length - 1
           return sameUserSleepData[latestSleepDataIndex][sleepDataType]

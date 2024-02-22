@@ -40,14 +40,14 @@ function displaySteps(userData) {
   avgStepGoal.innerText = calculateAverageSteps(userData)
 }
 
-function checkIfSelected(a, b ,c) {
+function checkIfSelected(a, b, c) {
   let p = document.getElementById('hydration-data')
   let x = document.querySelector('.weekly-hydration-select').value
   let tdHours = document.querySelector('.hours-slept')
   let tdQuality = document.querySelector('.quality-slept')
   let v = document.querySelector('.weekly-sleep-select').value
-  
-  if(x !== 'Click to Select a Date' ) {
+
+  if (x !== 'Click to Select a Date') {
     let targetObj = a.find((user) => {
       return user.date === x
     })
@@ -57,7 +57,7 @@ function checkIfSelected(a, b ,c) {
     p.innerText = '----'
   }
 
-  if(v !== 'Click to Select a Date' ) {
+  if (v !== 'Click to Select a Date') {
     let targetObjHours = b.find((user) => {
       return user.date === v
     })
@@ -102,7 +102,7 @@ function displayHydrationData(hydration) {
 }
 
 let weeklyHoursSlept;
-let  weeklyQualitySlept;
+let weeklyQualitySlept;
 
 function displaySleepData(sleep) {
   let date = findRecentWeek(sleep)

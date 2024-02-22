@@ -166,29 +166,6 @@ function findWeeklyQuality(sleep, day) {
     return weeklyQuality
 }
 
-// function checkIfSelected() {
-//     let x = document.getElementById('hydration-select').value
-//     document.getElementById('hydration-data').innerText = 
-// }
-
-/* <><> UNUSED FUNCS (required by project specs) <><>
-
-function findHoursSlept(sleep, day) {
-    let targetUser = sleep.sleepData.filter((user) => {
-        return user.userID === randomUserId
-    }).find((user) => { return user.date === day })
-    return targetUser.hoursSlept
-}
-
-function findSleepQuality(sleep, day) {
-    let targetUser = sleep.sleepData.filter((user) => {
-        return user.userID === randomUserId
-    }).find((user) => { return user.date === day })
-    return targetUser.sleepQuality
-}
-*/
-
-
 export {
     getUserInfo,
     calculateAverageSteps,

@@ -30,6 +30,66 @@ function setupEventListeners(randomUser, allUsers) {
   hydrationChartUpdate(randomUser, allUsers)
   stepChartUpdate(randomUser, allUsers)
 
+  const userSelect = document.querySelector('.userSelect')
+  const userList = document.querySelector('.userList')
+  const viewMenu = document.querySelector('.viewMenu')
+  const adminPanel = document.querySelector('.adminControls')
+  const adminView = document.querySelector('.adminView')
+
+  adminView.addEventListener('click', () => {
+    adminPanel.classList.toggle('collapsed')
+    viewMenu.classList.toggle('hidden')
+  })
+
+  const sortContainer = document.querySelector('.sortContainer');
+  const chartOptions = document.querySelector('.chartUpdate');
+
+  // Function to handle drag start event
+  function handleDragStart(event) {
+      event.dataTransfer.setData('text/plain', event.target.id);
+  }
+
+  // Function to handle drag over event
+  function handleDragOver(event) {
+      event.preventDefault();
+  }
+
+  // Function to handle drop event
+  function handleDrop(event) {
+      event.preventDefault();
+      const draggableElementId = event.dataTransfer.getData('text/plain');
+      const draggableElement = document.getElementById(draggableElementId);
+      if(draggableElement.classList.contains('chartOpt')){
+        chartOptions.appendChild(draggableElement)
+      } else {
+        sortContainer.appendChild(draggableElement);
+      }   
+  }
+
+  // Add event listeners to the sort container
+  sortContainer.addEventListener('dragover', handleDragOver);
+  sortContainer.addEventListener('drop', handleDrop);
+  chartOptions.addEventListener('dragover', handleDragOver);
+  chartOptions.addEventListener('drop', handleDrop);
+
+  // Add event listeners to draggable elements
+  const draggableElements = document.querySelectorAll('.draggable');
+  draggableElements.forEach(element => {
+      element.addEventListener('dragstart', handleDragStart);
+  });
+
+  const users = document.querySelectorAll(".delete")
+  userSelect.addEventListener('change', () => {
+    userList.innerHTML += `<p class="delete">${userSelect.value}&#x26D4</p>`
+      users.forEach((user) => {
+      user.addEventListener('dblclick', deleteUser(e))
+    })
+  })
+
+  function deleteUser(e) {
+    console.log(e.target)
+  }
+
   let topNavBar = document.querySelectorAll('.topNav a')
   let sideNavBar = document.querySelectorAll('.sideNav a')
   document.querySelectorAll('nav').forEach((elem) => {
@@ -203,5 +263,5 @@ export {
   updateAccountStep,
   updateAccountFriends,
   displaySpecificDayOunces,
-  sleepChartUpdate
+  sleepChartUpdate,
 };

@@ -78,7 +78,7 @@
           <canvas id="avgSleepChart"></canvas>
         </div>
       </section>
-      <section class="account-main info-card  draggable" draggable="true" id="accountCard">
+      <section class="account-main info-card" id="accountCard">
         <div class="section-text">
           <section class="iconSection"  id="accoundCardHeader">
             <p class="icon">&#128100;</p>
@@ -98,6 +98,26 @@
           <span><p>Daily Step Goal:</p><h3 id="dailyStepGoal">daily step goal</h3></span>
           <span><p>Friends:</p><h3 id="friends">friends</h3></span> -->
         </div>
+      </section>
+    </section>
+    <section class="adminControls">
+      <h1>ADMIN CONTROLS</h1>
+      <section class="chartOptions options">
+        <option class="draggable chartOpt" draggable="true" id="chartOptSleep" value="sleep">sleep</option>
+        <option class="draggable chartOpt" draggable="true" id="chartOptHydration" value="hydration">hydration</option>
+        <option class="draggable chartOpt" draggable="true" id="chartOptActivity"  value="activity">activity</option>
+      </section>
+      <section class="chartUpdate options">
+      </section>
+      <label>Select User</label>
+      <select class="userSelect">
+        <option>User1</option>
+        <option>User2</option>
+      </select>
+      <section class="userList options">
+      </section>
+      <section class="chartContainer">
+        <canvas id="adminChart"></canvas>
       </section>
     </section>
     </main>

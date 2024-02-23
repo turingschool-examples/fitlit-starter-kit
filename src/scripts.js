@@ -1,7 +1,7 @@
 import './css/styles.css';
 import './images/fitlit-logo.png';
 import './images/white-texture.png';
-import { setupEventListeners, sleepChartUpdate } from './domUpdates';
+import { updateDom, sleepChartUpdate, updateAccountData } from './domUpdates';
 import { fetchUserData, fetchHydrationData, fetchSleepData, fetchActivityData } from './apiCalls';
 
 
@@ -38,7 +38,7 @@ function fetchData() {
         document.getElementById('date-selector').innerHTML += `<option>${date}</option>`
       })
 
-      setupEventListeners(appState.randomUser, appState.account.user);
+      updateDom(appState.randomUser, appState.account.user);
     })
     .catch(error => console.error("Error loading data:", error));
 }
@@ -192,6 +192,7 @@ document.querySelector('.condMode').addEventListener('click', () => {
   document.querySelector('#top').classList.toggle('condensed')
 })
 
+
 export {
   appState,
   getAccountFriends,
@@ -207,3 +208,119 @@ export {
   getWeeklySleepHours,
   getWeeklySleepQuality
 };
+
+const userSelect = document.querySelector('.userSelect')
+const userList = document.querySelector('.userList')
+const viewMenu = document.querySelector('.viewMenu')
+const adminPanel = document.querySelector('.adminControls')
+const adminView = document.querySelector('.adminView')
+
+adminView.addEventListener('click', () => {
+  adminPanel.classList.toggle('collapsed')
+  viewMenu.classList.toggle('hidden')
+})
+
+const sortContainer = document.querySelector('.sortContainer');
+const chartUpdate = document.querySelector('.chartUpdate');
+
+// Function to handle drag start event
+function handleDragStart(event) {
+    event.dataTransfer.setData('text/plain', event.target.id);
+    
+}
+
+// Function to handle drag over event
+function handleDragOver(event) {
+  const draggableElementId = event.dataTransfer.getData('text/plain');
+  const draggableElement = document.getElementById(draggableElementId);
+    event.preventDefault();
+}
+
+// Function to handle drop event
+function handleDrop(event) {
+    event.preventDefault();
+    const draggableElementId = event.dataTransfer.getData('text/plain');
+    const draggableElement = document.getElementById(draggableElementId);
+    if(draggableElement.classList.contains('chartOpt')){
+      chartUpdate.appendChild(draggableElement)
+    } else {
+      sortContainer.appendChild(draggableElement);
+    }   
+}
+
+// Add event listeners to the sort container and chart options
+sortContainer.addEventListener('dragover', handleDragOver);
+sortContainer.addEventListener('drop', handleDrop);
+chartUpdate.addEventListener('dragover', handleDragOver);
+chartUpdate.addEventListener('drop', handleDrop);
+
+// Add event listeners to draggable elements
+const draggableElements = document.querySelectorAll('.draggable');
+draggableElements.forEach(element => {
+    element.addEventListener('dragstart', handleDragStart);
+});
+
+////////////////////////
+const users = document.querySelectorAll(".delete")
+userSelect.addEventListener('change', () => {
+  userList.innerHTML += `<p class="delete">${userSelect.value}&#x26D4</p>`
+    users.forEach((user) => {
+    user.addEventListener('dblclick', deleteUser(e))
+  })
+})
+
+function deleteUser(e) {
+  console.log(e.target)
+}
+
+///////////////////////
+
+let topNavBar = document.querySelectorAll('.topNav a')
+let sideNavBar = document.querySelectorAll('.sideNav a')
+document.querySelectorAll('nav').forEach((elem) => {
+  elem.addEventListener('click', (e) => {
+    for (let i = 0; i < topNavBar.length; i++) {
+      if (topNavBar[i].classList === e.target.classList || sideNavBar[i].classList === e.target.classList) {
+        topNavBar[i].classList.add('underline')
+        sideNavBar[i].classList.add('underline')
+      } else {
+        topNavBar[i].classList.remove('underline')
+        sideNavBar[i].classList.remove('underline')
+      }
+    }
+  })
+})
+
+const debounce = (fn) => {
+  let frame;
+  return (...params) => {
+    if (frame) {
+      cancelAnimationFrame(frame);
+    }
+    frame = requestAnimationFrame(() => {
+      fn(...params);
+    });
+
+  }
+};
+
+const storeScroll = () => {
+  document.documentElement.dataset.scroll = window.scrollY;
+  let opacLevel = 1 - window.scrollY / 1000
+  let opacInvert = 1 + window.scrollY / 1000 - 1
+  var navBar = document.getElementById('nav-bar')
+  var sideBar = document.getElementById('side-nav')
+  var logo = document.getElementById("logo")
+  navBar.style.opacity = opacLevel
+  sideBar.style.opacity = opacInvert
+  if (opacLevel > 0.2) {
+    logo.style.opacity = `${opacLevel}`
+    navBar.classList.remove('hidden')
+  } else {
+    logo.style.opacity = '0.2'
+    navBar.classList.add('hidden')
+  }
+}
+
+document.addEventListener('scroll', debounce(storeScroll), { passive: true });
+storeScroll();

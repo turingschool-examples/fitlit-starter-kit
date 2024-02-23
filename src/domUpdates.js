@@ -14,167 +14,22 @@ import { Chart, registerables } from 'chart.js/auto';
 import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleepChart, setCharts } from './chartSetup'
 Chart.register(...registerables);
 
-function setupEventListeners(randomUser, allUsers) {
+function updateDom(randomUser, allUsers) {
   const userFriends = getAccountFriends(randomUser)
   const averageOunces = getAverageDailyFluidOunces(randomUser.id);
   setCharts()
   displayWelcomeMessage(randomUser);
   displayAverageDailyOunces(averageOunces);
-  updateAccountName(randomUser);
-  updateAccountAddress(randomUser);
-  updateAccountEmail(randomUser);
-  updateAccountStride(randomUser);
-  updateAccountStep(randomUser);
-  updateAccountFriends(userFriends);
+  updateAccountData(randomUser)
   sleepChartUpdate(randomUser, allUsers)
   hydrationChartUpdate(randomUser, allUsers)
   stepChartUpdate(randomUser, allUsers)
-
-  const userSelect = document.querySelector('.userSelect')
-  const userList = document.querySelector('.userList')
-  const viewMenu = document.querySelector('.viewMenu')
-  const adminPanel = document.querySelector('.adminControls')
-  const adminView = document.querySelector('.adminView')
-
-  adminView.addEventListener('click', () => {
-    adminPanel.classList.toggle('collapsed')
-    viewMenu.classList.toggle('hidden')
-  })
-
-  const sortContainer = document.querySelector('.sortContainer');
-  const chartOptions = document.querySelector('.chartUpdate');
-
-  // Function to handle drag start event
-  function handleDragStart(event) {
-      event.dataTransfer.setData('text/plain', event.target.id);
-  }
-
-  // Function to handle drag over event
-  function handleDragOver(event) {
-      event.preventDefault();
-  }
-
-  // Function to handle drop event
-  function handleDrop(event) {
-      event.preventDefault();
-      const draggableElementId = event.dataTransfer.getData('text/plain');
-      const draggableElement = document.getElementById(draggableElementId);
-      if(draggableElement.classList.contains('chartOpt')){
-        chartOptions.appendChild(draggableElement)
-      } else {
-        sortContainer.appendChild(draggableElement);
-      }   
-  }
-
-  // Add event listeners to the sort container
-  sortContainer.addEventListener('dragover', handleDragOver);
-  sortContainer.addEventListener('drop', handleDrop);
-  chartOptions.addEventListener('dragover', handleDragOver);
-  chartOptions.addEventListener('drop', handleDrop);
-
-  // Add event listeners to draggable elements
-  const draggableElements = document.querySelectorAll('.draggable');
-  draggableElements.forEach(element => {
-      element.addEventListener('dragstart', handleDragStart);
-  });
-
-  const users = document.querySelectorAll(".delete")
-  userSelect.addEventListener('change', () => {
-    userList.innerHTML += `<p class="delete">${userSelect.value}&#x26D4</p>`
-      users.forEach((user) => {
-      user.addEventListener('dblclick', deleteUser(e))
-    })
-  })
-
-  function deleteUser(e) {
-    console.log(e.target)
-  }
-
-  let topNavBar = document.querySelectorAll('.topNav a')
-  let sideNavBar = document.querySelectorAll('.sideNav a')
-  document.querySelectorAll('nav').forEach((elem) => {
-    elem.addEventListener('click', (e) => {
-      for (let i = 0; i < topNavBar.length; i++) {
-        if (topNavBar[i].classList === e.target.classList || sideNavBar[i].classList === e.target.classList) {
-          topNavBar[i].classList.add('underline')
-          sideNavBar[i].classList.add('underline')
-        } else {
-          topNavBar[i].classList.remove('underline')
-          sideNavBar[i].classList.remove('underline')
-        }
-      }
-    })
-  })
-
-  const debounce = (fn) => {
-    let frame;
-    return (...params) => {
-      if (frame) {
-        cancelAnimationFrame(frame);
-      }
-      frame = requestAnimationFrame(() => {
-        fn(...params);
-      });
-
-    }
-  };
-
-  const storeScroll = () => {
-    document.documentElement.dataset.scroll = window.scrollY;
-    let opacLevel = 1 - window.scrollY / 1000
-    let opacInvert = 1 + window.scrollY / 1000 - 1
-    var navBar = document.getElementById('nav-bar')
-    var sideBar = document.getElementById('side-nav')
-    var logo = document.getElementById("logo")
-    navBar.style.opacity = opacLevel
-    sideBar.style.opacity = opacInvert
-    if (opacLevel > 0.2) {
-      logo.style.opacity = `${opacLevel}`
-      navBar.classList.remove('hidden')
-    } else {
-      logo.style.opacity = '0.2'
-      navBar.classList.add('hidden')
-    }
-  }
-
-  document.addEventListener('scroll', debounce(storeScroll), { passive: true });
-  storeScroll();
 }
 
 // DOM update functions
 function displayWelcomeMessage(user) {
   const welcomeMessageElement = document.querySelector('.welcome-message');
   welcomeMessageElement.textContent = `Welcome back, ${user.name.split(' ')[0]}!`;
-}
-
-function updateAccountName(user) {
-  const accountName = document.querySelector('#account-name');
-  accountName.textContent = `${user.name}`;
-}
-
-function updateAccountAddress(user) {
-  const accountAddress = document.querySelector('#account-address');
-  accountAddress.textContent = `${user.address}`;
-}
-
-function updateAccountEmail(user) {
-  const accountEmail = document.querySelector('#account-email');
-  accountEmail.textContent = `${user.email}`;
-}
-
-function updateAccountStride(user) {
-  const accountStride = document.querySelector('#account-stride');
-  accountStride.textContent = `${user.strideLength} ft.`;
-}
-
-function updateAccountStep(user) {
-  const accountStep = document.querySelector('#account-step');
-  accountStep.textContent = `${user.dailyStepGoal} steps`;
-}
-
-function updateAccountFriends(friends) {
-  const accountFriends = document.querySelector('#account-friends');
-  accountFriends.textContent = `${friends}`;
 }
 
         // refactor updateAccountFriends() + updateAccountStep() + updateAccountStride()
@@ -254,14 +109,9 @@ function sleepChartUpdate(randomUser, allUsers) {
 }
 
 export {
-  setupEventListeners,
+  updateDom,
   displayWelcomeMessage,
-  updateAccountName,
-  updateAccountAddress,
-  updateAccountEmail,
-  updateAccountStride,
-  updateAccountStep,
-  updateAccountFriends,
+  updateAccountData,
   displaySpecificDayOunces,
   sleepChartUpdate,
 };

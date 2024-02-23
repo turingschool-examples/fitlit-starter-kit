@@ -33,6 +33,7 @@ function displayWelcomeMessage(user) {
 }
 
         // refactor updateAccountFriends() + updateAccountStep() + updateAccountStride()
+
         // + updateAccountName() + updateAccountEmail() + updateAccountAddress()
         function updateAccountData(user) {
           Object.keys(user).forEach(dataType => {

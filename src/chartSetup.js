@@ -19,6 +19,8 @@ Array.from(chartCanvas).reduce((acc, chart) => {
 
 }
 
+//
+
 const stepCtx = document.getElementById('stepChart').getContext('2d');
 const wklyHydCtx = document.getElementById('wklyHydChart').getContext('2d');
 const hydCtx = document.getElementById('hydChart').getContext('2d');

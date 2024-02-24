@@ -18,7 +18,7 @@ import {
 import account from '../src/data/users-test-data'
 
 
-// ----- * Users * ----- //
+// ----- * Users * ----- ////
 
 describe('generateRandomUser()', () => {
     var people = 

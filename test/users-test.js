@@ -73,7 +73,7 @@ describe('getAccountFriends()', () => {
   
   });
 
-// ----- * Steps * ----- //
+// ----- * Steps * ----- ////
 
 describe('getAverageStepGoal()', () => {
     

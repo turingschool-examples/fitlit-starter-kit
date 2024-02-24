@@ -1,6 +1,8 @@
 import { Chart, registerables } from 'chart.js/auto';
 Chart.register(...registerables);
 
+const chartOptions = document.querySelector('.chartUpdate');
+
 function setCharts() {
 let chartCanvas = document.querySelectorAll('canvas');
 Array.from(chartCanvas).reduce((acc, chart) => {
@@ -24,6 +26,7 @@ const hydCtx = document.getElementById('hydChart').getContext('2d');
 const avgSleepCtx = document.getElementById('avgSleepChart').getContext('2d');
 const wklySleepCtx = document.getElementById('wklySleepChart').getContext('2d');
 const sleepCtx = document.getElementById('sleepChart').getContext('2d');
+const adminCtx = document.getElementById('adminChart').getContext('2d');
 
 // stepCtx.canvas.height = 200; 
 // wklyHydCtx.canvas.height = 100;
@@ -224,6 +227,25 @@ const sleepChartData = {
   }]
 };
 
+const adminChartData = {
+  labels: [``, 'Sleep Quality Per Recent Day'],
+  datasets: [{
+    label: '',
+    data: [],
+    backgroundColor: [
+      '#1a1a1a',
+      '#1a1a1a',
+    ],
+    borderColor: [
+      '#1a1a1a',
+      '#1a1a1a',
+    ],
+    borderWidth: 1.5,
+    borderRadius: 20,
+    hoverBorderColor: 'red'
+  }]
+};
+
 const vertOptions = {
   indexAxis: 'x',
   scales: {
@@ -277,6 +299,12 @@ const sleepChart = new Chart(sleepCtx, {
   options: vertOptions
 });
 
+const adminChart = new Chart(adminCtx, {
+  type: 'bar', 
+  data: adminChartData,
+  options: vertOptions
+});
+
 const wklySleepChart = new Chart(wklySleepCtx, {
   type: 'bar',
   data: wklySleepChartData,
@@ -316,5 +344,6 @@ export {
     sleepChart,
     avgSleepChart,
     wklySleepChart,
+    adminChart,
     setCharts
 }

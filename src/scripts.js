@@ -6,6 +6,7 @@ import { fetchUserData, fetchHydrationData, fetchSleepData, fetchActivityData, p
 import { adminChart,stepChart,sleepChart,hydChart } from './chartSetup';
 
 
+
 let appState = {
   account: null,
   hydration: null,
@@ -45,6 +46,7 @@ function fetchData() {
 
       updateDom(appState.randomUser, appState.account.user);
       generateUserList(justUsers)
+
     })
     .catch(error => console.error("Error loading data:", error));
 }
@@ -95,6 +97,7 @@ function getWeeklyFluidOunces(userId) {
 function getUserSleepData(randomUser) {
   return appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
 }
+
 function getAverageSleepHours(randomUser) {
   let sameUserSleepData = getUserSleepData(randomUser)
   let averageSleepHours = 0
@@ -171,6 +174,7 @@ function getMostRecentSleepQuality(randomUser) {
 
         // refactored getMostRecentSleepHours() + getMostRecentSleepQuality()
         function getMostRecentSleepData(randomUser, sleepDataType) {
+
           let sameUserSleepData = getUserSleepData(randomUser)
           let latestSleepDataIndex = sameUserSleepData.length - 1
           return sameUserSleepData[latestSleepDataIndex][sleepDataType]
@@ -262,6 +266,7 @@ document.getElementById('submitHydrationData').addEventListener('click', () => {
 
 
 /////////
+
 export {
   appState,
   getAccountFriends,
@@ -280,6 +285,7 @@ export {
   getTotalAverageNumOunces,
   getTotalAverageActivityData,
   adminChartUpdate,
+
 };
 
 const userSelect = document.querySelector('.userSelect')
@@ -289,6 +295,7 @@ const adminPanel = document.querySelector('.adminControls')
 const adminView = document.querySelector('.adminView')
 const chartOptions = document.querySelector('.chartOptions'); //add these to target the sections
 const chartUpdateSection = document.querySelector('.chartUpdate')
+
 
 adminView.addEventListener('click', () => {
   adminPanel.classList.toggle('collapsed')
@@ -325,6 +332,7 @@ function handleDrop(event) {
     } else {
       chartOptions.appendChild(draggableElement);
       }
+
     } else {
       sortContainer.appendChild(draggableElement);
     }   
@@ -338,12 +346,14 @@ function generateUserList(users) {
   })
 }
 
+
 // Add event listeners to the sort container and chart options
 sortContainer.addEventListener('dragover', handleDragOver);
 sortContainer.addEventListener('drop', handleDrop);
 chartUpdate.addEventListener('dragover', handleDragOver);
 chartUpdate.addEventListener('drop', handleDrop);
 chartUpdateSection.addEventListener('drop', handleDrop); // Added
+
 
 
 // Add event listeners to draggable elements
@@ -379,6 +389,7 @@ function deleteEvent(){
       e.target.remove()
     })
   })
+
 }
 
 ///////////////////////

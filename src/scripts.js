@@ -109,7 +109,7 @@ function getAverageSleepHours(randomUser) {
 }
 
 function adminChartUpdate() {
-  const totalAverageSleepQuality = getTotalAverageSleepData(appState.sleepData, 'sleepQuality')
+  /*const totalAverageSleepQuality = getTotalAverageSleepData(appState.sleepData, 'sleepQuality')
   const totalAverageSleepHours = getTotalAverageSleepData(appState.sleepData, 'hoursSlept')
   const totalAverageHydration = getTotalAverageNumOunces()
   const totalAverageActiveMins = getTotalAverageActivityData(appState.activityData, 'minutesActive')
@@ -133,7 +133,61 @@ function adminChartUpdate() {
   console.log('TEST', adminChart.data.datasets[0].data)
   adminChart.update()
 
+  */
+
+  let chartLabels = [];
+  let chartData = [];
+
+  const updateElements = document.querySelector('.chartUpdate').children;
+
+  Array.from(updateElements).forEach(element => {
+    const dataType = element.getAttribute('value');
+
+    switch (dataType) {
+      case 'allSleepHours':
+        chartLabels.push('Average Sleep Hours')
+        chartData.push(parseFloat(getTotalAverageSleepData(appState.sleepData, 'hoursSlept')))
+        break;
+
+      case 'allSleepQuality':
+        chartLabels.push('Average Sleep Quality')
+        chartData.push(getTotalAverageSleepData(appState.sleepData, 'sleepQuality'))
+        break;
+        
+      case 'allNumOunces':
+        chartLabels.push('Average Hydration (oz)')
+        chartData.push(getTotalAverageNumOunces(appState.hydrationData))
+        break;
+        
+      case 'allMinsActive':
+        chartLabels.push('Average Active Minutes')
+        chartData.push(getTotalAverageActivityData(appState.activityData, 'minutesActive'))
+        break;
+      
+      case 'allFlightsOfStepsTraveled':
+        chartLabels.push('Average Sleep Hours')
+        chartData.push(getTotalAverageActivityData(appState.activityData, 'flightsOfStairs'))
+        break;
+    }
+    
+  });
+
+  adminChart.data.labels = chartLabels;
+
+  if (adminChart.data.datasets.length > 0) {
+    adminChart.data.datasets[0].data = chartData;
+  } else {
+    adminChart.data.datasets.push({
+      label: 'Dataset',
+      data: chartData
+    })
+  }
+
+  adminChart.options.scales.x.ticks.max = Math.max(...chartData) + 10;
+  adminChart.update()
+
 }
+adminChartUpdate()
 
 /* example
 sleepChart.data.datasets[0].data = [hoursSleptRecentDay, sleepQualityRecentDay];
@@ -290,7 +344,7 @@ export {
   getTotalAverageNumOunces,
   getTotalAverageActivityData,
   adminChartUpdate,
-
+}
 
 const userSelect = document.querySelector('.userSelect')
 const userList = document.querySelector('.userList')
@@ -332,13 +386,17 @@ function handleDrop(event) {
   if(draggableElement.classList.contains('chartOpt')){
     if (target === chartUpdateSection || chartUpdateSection.contains(target)) { //this checks if dropped in the chartUpdateSection
       chartUpdateSection.appendChild(draggableElement);
-      adminChartUpdate(draggableElement.id); //call to update the admin chart - we need to flesh out logic for this
+      draggableElement.classList.add('remove')
+      removeEvent()
+      //adminChartUpdate(draggableElement.id); //call to update the admin chart - we need to flesh out logic for this
     } else {
-      chartOptions.appendChild(draggableElement);
-      }
 
-    } else {
+      addChartOpt(draggableElement)
+      
       sortContainer.appendChild(draggableElement);
+    }
+
+    // } else {
     }   
 }
 
@@ -350,10 +408,18 @@ function generateUserList(users) {
   fuzzySearch.innerHTML = userSelect.innerHTML
 let filterInput = document.querySelector(".filter-field")
 filterInput.addEventListener('click', () => {
-  fuzzySearch.classList.toggle('hidden')
+  fuzzySearch.classList.remove('hidden')
 })
 filterInput.addEventListener('keyup', (e) => {
   filterUsers(e)
+})
+fuzzySearch.addEventListener('mousedown', (e) => {
+  document.querySelector('.userList').innerHTML += `<p class="delete">${e.target.value}</p>`
+  fuzzySearch.classList.add('hidden')
+  deleteEvent()
+})
+filterInput.addEventListener('blur', () => {
+  fuzzySearch.classList.add('hidden')
 })
 }
 
@@ -376,28 +442,21 @@ chartUpdate.addEventListener('dragover', handleDragOver);
 chartUpdate.addEventListener('drop', handleDrop);
 chartUpdateSection.addEventListener('drop', handleDrop); // Added
 
-
+setDraggableElements()
 
 // Add event listeners to draggable elements
-const draggableElements = document.querySelectorAll('.draggable');
-draggableElements.forEach(element => {
-    element.addEventListener('dragstart', handleDragStart);
-});
+function setDraggableElements() {
+  const draggableElements = document.querySelectorAll('.draggable');
+  draggableElements.forEach(element => {
+      element.addEventListener('dragstart', handleDragStart);
+  });
+}
+
 
 ////////////////////////
-let dropButton = document.querySelector('.dropbtn')
-
-
-
-
-userSelect.addEventListener('change', () => {
-  userList.innerHTML += `<p class="delete">${userSelect.value}&#x26D4</p>`
-deleteEvent()
-})
 
 function deleteEvent(){
   let users = document.querySelectorAll(".delete")
-  console.log(users)
   users.forEach((user) => {
     user.addEventListener('dblclick', (e) => {
       e.target.remove()
@@ -405,6 +464,26 @@ function deleteEvent(){
   })
 
 }
+
+function removeEvent() {
+  let options = document.querySelectorAll(".remove");
+  options.forEach((option) => {
+    option.removeEventListener("dblclick", removeAndAppend);
+  });
+  options.forEach((option) => {
+    option.addEventListener("dblclick", removeAndAppend);
+  });
+}
+
+function removeAndAppend(e) {
+  const target = e.target;
+  const elementHTML = target.outerHTML;
+  target.classList.remove('remove');
+  chartOptions.innerHTML += elementHTML;
+  target.remove();
+  setDraggableElements();
+}
+
 
 ///////////////////////
 

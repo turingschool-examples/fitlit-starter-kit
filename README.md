@@ -1,78 +1,74 @@
-# FitLit Starter Kit
+# Fitlit
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+## About
+FitLit is a dynamic and interactive dashboard project designed to emulate the functionality of activity tracking apps like Fitbit or Strava. The core objective of this project is to provide users with a comprehensive view of their personal activity data, including steps taken, water consumption, sleep patterns, and more, over various time frames. This project is executed with a focus on several key goals:
 
-## Setup
+  - Data Manipulation: Utilize object and array prototype methods to effectively manipulate user activity data.
+  - User Interface: Develop a user-friendly interface that clearly displays information, making it accessible and easy to understand.
+  - Testing: Implement a thorough testing suite using Test-Driven Development (TDD) to ensure code reliability and functionality.
+  - Network Requests: Make network requests to fetch data, providing a real-world application scenario and dynamic user experience.
+  - Collaboration: Work collaboratively within a team to ensure all members contribute meaningfully, with a professional approach to project management and communication.
 
-1. Within your group, decide on **one** person to have the project repository (repo) on their GitHub account. Then, that person should *fork* this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `npm start` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page).  `Control + C` is the command to stop running the local server.  Closing the terminal without stopping the server first could allow the server to continue to run in the background and cause problems. This command is not specific to Webpack; make note of it for future use.   
-1. Make sure both members of your team are collaborators on the forked repo.  
-1. Do not run `npm audit fix --force`.  This will update to the latest version of packages.  We need to be using `webpack-dev-server@3.11.2` which is not the latest version.  If you start to run into Webpack errors, first check that all group members are using the correct version.  
+## Install
 
-## Testing
+1. Check Node.js Installation: 
+    * Ensure you have Node.js installed on your computer. If not, download and install it from the official Node.js website.
 
-Mocha and chai are already set up, with a boilerplate test for you..
-
-
-## Data Model
-
-**Users**
-
+2. Clone the Repository: 
+    * Clone the FitLit repository to your local machine by running the following command in your terminal:
 ```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
+git clone <repository-URL>
 ```
+3. Navigate to Project Directory:
 
-**Activity**
+    * Change into the cloned project directory with:
+```
+cd FitLit
+```
+4. Install Dependencies:
 
+    * Install all necessary dependencies by running:
 ```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
+npm install
 ```
+5. Start the Application:
 
-**Hydration**
+    * Launch the application by running:
+```
+npm start
+```
+6. Explore FitLit:
+    * You should now see the FitLit dashboard loaded in your browser, ready for you to explore the features and functionality.
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
 
-**Sleep**
+## Tech
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+  - Jacascript ES6+
+  - HTML
+  - CSS
+  - Webpack
+  - Mocha and Chai
+  - Fetch API
+  - Git and GitHub
+
+## Reflections
+
+  ### Wins
+One of our most significant achievements in the FitLit project was the successful implementation of charts that dynamically populate with user information. By utilizing Chart.js, we were able to create visually appealing graphs and charts that update in real-time as new data is fetched from the server. This dynamic visualization of activity data, such as steps taken, water consumption, and sleep patterns, not only provides users with a clear and engaging overview of their health metrics but also encourages deeper engagement with their data. The ability to see their progress represented graphically allows users to easily identify trends, set goals, and monitor their achievements over time. This win significantly contributes to the overall user experience, making the FitLit dashboard not just a tool for tracking health metrics but also a motivational platform for users to improve their daily habits and overall well-being.
+
+  ### Challenges
+Implementing network requests within the FitLit project presented a unique set of challenges that required careful consideration and strategic problem-solving. Managing the timing and dependencies between different data fetches was critical, as the dashboard's functionality heavily relied on the successful loading and synchronization of user activity data. This complexity was compounded by the need to gracefully handle potential errors or delays in network responses, ensuring the user experience remained unaffected by underlying data fetching processes. Moreover, integrating these network requests with the existing application logic and user interface updates demanded a deep understanding of promises and **Promice.all**.
+
+  ### Up Next
+In the future, we aim to implement a more comprehensive error catching strategy to enhance the robustness and user experience of the FitLit project. Recognizing that seamless error handling is crucial for maintaining application stability and user trust, our goal is to develop a layered approach to catch and manage errors at various points in the application's workflow. This includes network request failures, data parsing issues, and unexpected user input. Additionally, we intend to implement custom error handling functions that can intelligently respond to different types of errors, guiding users with appropriate messages or corrective actions. By proactively managing errors and providing clear, helpful feedback, we can minimize user frustration and ensure that the FitLit dashboard remains a valuable tool for tracking and improving personal health metrics.
+
+## Screenshots
+<img width="1407" alt="image" src="https://github.com/edwin-chalmers/fitlit/assets/149631946/c8ae73c4-4ab5-4201-94e1-c5ca2a88c256">
+<img width="1407" alt="image" src="https://github.com/edwin-chalmers/fitlit/assets/149631946/e9f605f3-a010-4e2f-954b-379746f5fd73">
+
+
+
+## Contributors
+- Edwin Chalmers : edwinchalmers@gmail.com : [github.com/edwin-chalmers](https://github.com/edwin-chalmers)
+- Tom Coney : tom.ce.coney@gmail.com : [github.com/tconey23](https://github.com/tconey23)
+- Theotis McCray : tlmccraycray@gmail.com : [github.com/Virulencies](https://github.com/Virulencies)

@@ -8,10 +8,14 @@ import {
   getWeeklySleep,
   getAverageSleepQuality,
   getMostRecentSleepHours,
-  getMostRecentSleepQuality
+  getMostRecentSleepQuality,
+  getTotalAverageSleepData,
+  getTotalAverageNumOunces,
+  getTotalAverageActivityData,
+  adminChartUpdate
 } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
-import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleepChart, setCharts } from './chartSetup'
+import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleepChart, setCharts, adminChart } from './chartSetup'
 Chart.register(...registerables);
 
 function updateDom(randomUser, allUsers) {
@@ -31,6 +35,7 @@ function displayWelcomeMessage(user) {
   const welcomeMessageElement = document.querySelector('.welcome-message');
   welcomeMessageElement.textContent = `Welcome back, ${user.name.split(' ')[0]}!`;
 }
+////////
 
         // refactor updateAccountFriends() + updateAccountStep() + updateAccountStride()
 
@@ -109,6 +114,20 @@ function sleepChartUpdate(randomUser, allUsers) {
   wklySleepChart.update();
 }
 
+//try to set up adminchart
+/*function adminChartUpdate() {
+  const totalAverageSleep = getTotalAverageSleepData()
+  const totalAverageHydration = getTotalAverageNumOunces()
+  const totalAverageActivity = getTotalAverageActivityData()
+
+  adminChart.data.datasets[0].data = [] //needs to be set
+  adminChart.options.scales.x.ticks.max = Math.max() + 10; //same here. outside of numsteps, it seems like minutesactive goes to the highest number
+
+  adminChart.update();
+
+} */
+
+
 export {
   updateDom,
   displayWelcomeMessage,
@@ -116,3 +135,4 @@ export {
   displaySpecificDayOunces,
   sleepChartUpdate,
 };
+

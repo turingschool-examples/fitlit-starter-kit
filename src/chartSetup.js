@@ -14,10 +14,9 @@ Array.from(chartCanvas).reduce((acc, chart) => {
       height: chart.height,
     }
   };
-  console.log(acc)
   return acc;
 }, {});
-console.log(stepCtx)
+
 }
 
 const stepCtx = document.getElementById('stepChart').getContext('2d');

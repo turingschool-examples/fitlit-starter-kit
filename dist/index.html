@@ -59,6 +59,11 @@
             <canvas id="hydChart"></canvas>
           <p>Weekly Hydration Data (oz)</p>
             <canvas id="wklyHydChart"></canvas>
+          <div id="hydrationInputContainer">
+            <input type="date" id="hydrationDate" placeholder="YYYY/MM/DD" required>
+            <input type="number" id="hydrationAmount" placeholder="Ounces" required>
+            <button id="submitHydrationData">Submit Hydration Data</button>
+          </div>  
         </div>
       </section>
       <section class="sleep-main info-card  draggable" draggable="true" id="sleepCard">
@@ -95,24 +100,39 @@
       </section>
     </section>
     <section class="adminControls">
-      <h1>ADMIN CONTROLS</h1>
-      <section class="chartOptions options">
-        <option class="draggable chartOpt" draggable="true" id="chartOptSleep" value="sleep">sleep</option>
-        <option class="draggable chartOpt" draggable="true" id="chartOptHydration" value="hydration">hydration</option>
-        <option class="draggable chartOpt" draggable="true" id="chartOptActivity"  value="activity">activity</option>
+      <section class="titleBlock">
+        <h1>ADMIN CONTROLS</h1>
       </section>
-      <section class="chartUpdate options">
+      <div class="container">
+      <section class="contentContainer">
+        <section class="chartOptions options">
+          <option class="draggable chartOpt" draggable="true" id="chartOptSleep" value="sleep">sleep</option>
+          <option class="draggable chartOpt" draggable="true" id="chartOptHydration" value="hyd">hydration</option>
+          <option class="draggable chartOpt" draggable="true" id="chartOptActivity"  value="step">activity</option>
+          <option class="draggable chartOpt" draggable="true" id="chartOptAllSleepHours" value="allSleepHours">Avg Sleep (Hr)</option>
+          <option class="draggable chartOpt" draggable="true" id="chartOptAllSleepQuality" value="allSleepQuality">Avg Sleep (Qlt)</option>
+          <option class="draggable chartOpt" draggable="true" id="chartOptAllNumOunces" value="allNumOunces">Avg Hyd (oz)</option>
+          <option class="draggable chartOpt" draggable="true" id="chartOptAllMinsActive" value="allMinsActive">Avg min active</option>
+          <option class="draggable chartOpt" draggable="true" id="chartOptAllFlightsOfStepsTraveled" value="allFlightsOfStepsTraveled">Avg <Flt>
+          <Strs></Strs></option>
+        </section>
+        <section class="chartUpdate options"></section>
       </section>
-      <label>Select User</label>
-      <select class="userSelect">
-        <option>User1</option>
-        <option>User2</option>
-      </select>
-      <section class="userList options">
+      <section class="contentContainer">
+        <label>Select User</label>
+        <div class="userSelectContainer">
+          <button class="dropbtn">Select User</button>
+          <div id="myDropdown" class="dropdown-content userSelect hidden">
+          <input type="text" placeholder="Search.." id="myInput">
+        </div>
+        </div>
+        <section class="userList options">
+        </section>
       </section>
-      <section class="chartContainer">
+      <section class="contentContainer">
         <canvas id="adminChart"></canvas>
       </section>
+    </div>
     </section>
     </main>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->

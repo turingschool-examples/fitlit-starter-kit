@@ -1,8 +1,9 @@
 import './css/styles.css';
 import './images/fitlit-logo.png';
 import './images/white-texture.png';
-import { updateDom, sleepChartUpdate, updateAccountData } from './domUpdates';
-import { fetchUserData, fetchHydrationData, fetchSleepData, fetchActivityData } from './apiCalls';
+import { updateDom, sleepChartUpdate, updateAccountData, } from './domUpdates';
+import { fetchUserData, fetchHydrationData, fetchSleepData, fetchActivityData, postHydrationData } from './apiCalls';
+import { adminChart,stepChart,sleepChart,hydChart } from './chartSetup';
 
 
 let appState = {
@@ -27,7 +28,6 @@ function fetchData() {
       appState.activity = activityData;
 
       appState.randomUser = generateRandomUser(appState.account);
-
       let dateData = []
       sleepData.sleepData.forEach((entry) => {
         if (!dateData.includes(entry.date)) {
@@ -38,7 +38,13 @@ function fetchData() {
         document.getElementById('date-selector').innerHTML += `<option>${date}</option>`
       })
 
+      const justUsers = userData.users.reduce((acc,user) => {
+        acc.push(user.name)
+        return acc
+      }, [])
+
       updateDom(appState.randomUser, appState.account.user);
+      generateUserList(justUsers)
     })
     .catch(error => console.error("Error loading data:", error));
 }
@@ -99,6 +105,34 @@ function getAverageSleepHours(randomUser) {
   averageSleepHours = totalSleepHours / sameUserSleepData.length
   return averageSleepHours.toFixed(2)
 }
+
+function adminChartUpdate() {
+  const totalAverageSleepQuality = getTotalAverageSleepData(appState.sleepData, 'sleepQuality')
+  const totalAverageSleepHours = getTotalAverageSleepData(appState.sleepData, 'hoursSlept')
+  const totalAverageHydration = getTotalAverageNumOunces()
+  const totalAverageActiveMins = getTotalAverageActivityData(appState.activityData, 'minutesActive')
+  const totalAverageFlightsOfStairs = getTotalAverageActivityData(appState.activityData, 'flightsOfStairs')
+
+  const charts = {
+    step: stepChart.data
+  }
+  console.log(charts.step.datasets[0].data)
+  const adminChartData = Object.values(chartUpdate.children).reduce((acc, child) => {
+    acc.push(child.value)
+    console.log(`${charts}.${child.value}`)
+    return acc
+},[])
+adminChart.data.datasets[0].data = charts.step.datasets[0].data = [totalAverageSleepQuality]
+adminChart.data.labels = charts.step.labels
+console.log('TEST', adminChart.data.datasets[0].data)
+adminChart.update()
+}
+
+/* example
+sleepChart.data.datasets[0].data = [hoursSleptRecentDay, sleepQualityRecentDay];
+  sleepChart.options.scales.x.ticks.max = Math.max(hoursSleptRecentDay, sleepQualityRecentDay) + 10;
+*/
+
 
 function getAverageSleepQuality(randomUser) {
   let sameUserSleepData = getUserSleepData(randomUser)
@@ -169,6 +203,28 @@ function getWeeklySleepQuality(selectedWeek) {
           return selectedWeek[0].map(day => day[sleepDataType])
         }
 
+function getTotalAverageSleepData(sleepData, propertyName) {
+  const total = appState.sleep.sleepData.reduce((sum, record) => sum + record[propertyName], 0);
+  const average = total / appState.sleep.sleepData.length;
+  return average.toFixed(2);
+}
+
+function getTotalAverageNumOunces() {
+  const totalAvgOunces = appState.hydration.hydrationData.reduce((total, record) => total + record.numOunces, 0);
+  return (totalAvgOunces / appState.hydration.hydrationData.length).toFixed(2);
+}
+
+function getTotalAverageActivityData(activityData, propertyName) {
+  const total = appState.activity.activityData.reduce((sum, record) => sum + record[propertyName], 0);
+  const average = total / appState.activity.activityData.length;
+  return average.toFixed(2);
+}
+
+
+
+
+        
+
 document.addEventListener('DOMContentLoaded', fetchData);
 
 document.getElementById('date-selector').addEventListener('change', function (event) {
@@ -192,6 +248,19 @@ document.querySelector('.condMode').addEventListener('click', () => {
   document.querySelector('#top').classList.toggle('condensed')
 })
 
+document.getElementById('submitHydrationData').addEventListener('click', () => {
+  const date = document.getElementById('hydrationDate').value;
+  const numOunces = parseInt(document.getElementById('hydrationAmount').value, 10);
+
+  if (!date || isNaN(numOunces)) {
+    alert('Please fill in both fields correctly.');//minds blanking on how to do this w/o an alert
+    return;
+  }
+
+  postHydrationData(randomUser.id, date, numOunces)
+});
+
+
 
 export {
   appState,
@@ -206,7 +275,11 @@ export {
   getMostRecentSleepQuality,
   getWeeklySleep,
   getWeeklySleepHours,
-  getWeeklySleepQuality
+  getWeeklySleepQuality,
+  getTotalAverageSleepData,
+  getTotalAverageNumOunces,
+  getTotalAverageActivityData,
+  adminChartUpdate,
 };
 
 const userSelect = document.querySelector('.userSelect')
@@ -214,6 +287,8 @@ const userList = document.querySelector('.userList')
 const viewMenu = document.querySelector('.viewMenu')
 const adminPanel = document.querySelector('.adminControls')
 const adminView = document.querySelector('.adminView')
+const chartOptions = document.querySelector('.chartOptions'); //add these to target the sections
+const chartUpdateSection = document.querySelector('.chartUpdate')
 
 adminView.addEventListener('click', () => {
   adminPanel.classList.toggle('collapsed')
@@ -236,16 +311,31 @@ function handleDragOver(event) {
     event.preventDefault();
 }
 
-// Function to handle drop event
+// Function to handle drop event - refactored
 function handleDrop(event) {
-    event.preventDefault();
-    const draggableElementId = event.dataTransfer.getData('text/plain');
-    const draggableElement = document.getElementById(draggableElementId);
-    if(draggableElement.classList.contains('chartOpt')){
-      chartUpdate.appendChild(draggableElement)
+  event.preventDefault();
+  const draggableElementId = event.dataTransfer.getData('text/plain');
+  const draggableElement = document.getElementById(draggableElementId);
+  const target = event.target;
+
+  if(draggableElement.classList.contains('chartOpt')){
+    if (target === chartUpdateSection || chartUpdateSection.contains(target)) { //this checks if dropped in the chartUpdateSection
+      chartUpdateSection.appendChild(draggableElement);
+      adminChartUpdate(draggableElement.id); //call to update the admin chart - we need to flesh out logic for this
+    } else {
+      chartOptions.appendChild(draggableElement);
+      }
     } else {
       sortContainer.appendChild(draggableElement);
     }   
+}
+
+
+
+function generateUserList(users) {
+  users.forEach((user) => {
+    userSelect.innerHTML += `<option>${user}</option>`
+  })
 }
 
 // Add event listeners to the sort container and chart options
@@ -253,6 +343,8 @@ sortContainer.addEventListener('dragover', handleDragOver);
 sortContainer.addEventListener('drop', handleDrop);
 chartUpdate.addEventListener('dragover', handleDragOver);
 chartUpdate.addEventListener('drop', handleDrop);
+chartUpdateSection.addEventListener('drop', handleDrop); // Added
+
 
 // Add event listeners to draggable elements
 const draggableElements = document.querySelectorAll('.draggable');
@@ -261,16 +353,32 @@ draggableElements.forEach(element => {
 });
 
 ////////////////////////
-const users = document.querySelectorAll(".delete")
-userSelect.addEventListener('change', () => {
-  userList.innerHTML += `<p class="delete">${userSelect.value}&#x26D4</p>`
-    users.forEach((user) => {
-    user.addEventListener('dblclick', deleteUser(e))
-  })
+let dropButton = document.querySelector('.dropbtn')
+let userDropDown = document.querySelector('.dropdown-content')
+let filterInput = document.getElementById("myInput")
+
+dropButton.addEventListener('click', () => {
+  userDropDown.classList.toggle('hidden')
+  filterInput.addEventListener('keydown', filterSearch())
 })
 
-function deleteUser(e) {
-  console.log(e.target)
+function filterSearch() {
+  console.log(filterInput.value)
+}
+
+userSelect.addEventListener('change', () => {
+  userList.innerHTML += `<p class="delete">${userSelect.value}&#x26D4</p>`
+deleteEvent()
+})
+
+function deleteEvent(){
+  let users = document.querySelectorAll(".delete")
+  console.log(users)
+  users.forEach((user) => {
+    user.addEventListener('dblclick', (e) => {
+      e.target.remove()
+    })
+  })
 }
 
 ///////////////////////

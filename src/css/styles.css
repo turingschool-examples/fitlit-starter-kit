@@ -205,7 +205,7 @@ canvas {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .condensed {
@@ -292,40 +292,30 @@ canvas {
         position: absolute;
         background-color: #f6f6f6;
         min-width: 230px;
-        overflow: auto;
+        overflow: scroll;
         border: 1px solid #ddd;
-        z-index: 1;
-        .dropdown-content a {
-          color: black;
-          padding: 12px 16px;
-          text-decoration: none;
-          display: block;
+        z-index: 10;
+        max-height: 360px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        option {
+          color: #FFFFFF !important;
+          font-size: 12px;
+          padding: 4px 40px;
+          border-radius: 6px;
+          border: 2px solid #B5B5B5;
+          background: linear-gradient(to top, #050A0D, #949494);
+          width: 100%;
+          text-align: center;
+          &:hover {
+            color: #000000 !important;
+            background: #CFCFCF;
+            background: linear-gradient(to top, #CFCFCF, #828282);
+            cursor: pointer;
         }
-        .dropdown a:hover {background-color: #ddd;}
-        .show {display: block;}
-        .dropbtn {
-          border: none;
-          cursor: pointer;
-        }
-        .dropbtn:hover, .dropbtn:focus {
-          background-color: #3e8e41;
-        }
-        #myInput {
-          box-sizing: border-box;
-          background-position: 14px 12px;
-          background-repeat: no-repeat;
-          font-size: 16px;
-          border: none;
-          border-bottom: 1px solid #ddd;
-        }
-        
-        #myInput:focus {outline: 3px solid #ddd;}
-        
-        .dropdown {
-          position: relative;
-          display: inline-block;
-        }
-        
+      }        
       }
       .userList {
         width: 200px;

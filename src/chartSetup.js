@@ -229,8 +229,9 @@ const sleepChartData = {
 const adminChartData = {
   labels: [``, 'Sleep Quality Per Recent Day'],
   datasets: [{
-    label: '',
+    label: 'Day1',
     data: [],
+    stack: 'Stack 0',
     backgroundColor: [
       '#1a1a1a',
       '#1a1a1a',
@@ -238,10 +239,7 @@ const adminChartData = {
     borderColor: [
       '#1a1a1a',
       '#1a1a1a',
-    ],
-    borderWidth: 1.5,
-    borderRadius: 20,
-    hoverBorderColor: 'red'
+    ]
   }]
 };
 

@@ -36,7 +36,9 @@ function displayWelcomeMessage(user) {
   welcomeMessageElement.textContent = `Welcome back, ${user.name.split(' ')[0]}!`;
 }
 //////////
+
         // refactor updateAccountFriends() + updateAccountStep() + updateAccountStride()
+
         // + updateAccountName() + updateAccountEmail() + updateAccountAddress()
         function updateAccountData(user) {
           Object.keys(user).forEach(dataType => {
@@ -133,3 +135,4 @@ export {
   displaySpecificDayOunces,
   sleepChartUpdate,
 };
+

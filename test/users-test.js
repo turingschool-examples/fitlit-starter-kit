@@ -75,6 +75,7 @@ describe('getAccountFriends()', () => {
 
 // ----- * Steps * ----- ////
 
+
 describe('getAverageStepGoal()', () => {
     
     it('should return the daily step goal for a single user', () => {

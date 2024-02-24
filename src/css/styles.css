@@ -217,6 +217,7 @@ canvas {
   .adminControls {
     display: flex;
     width: 60%;
+
     height: 500px;
     margin-top: 90px;
     margin-right: 150px;
@@ -225,6 +226,7 @@ canvas {
     align-items: center;
     position: absolute;
     left: 450px;
+
     top: -40px;
     background: white;
     z-index: 10;
@@ -317,6 +319,7 @@ canvas {
             cursor: pointer;
         }
       }        
+
       }
       .userList {
         width: 200px;
@@ -363,6 +366,7 @@ canvas {
   }
 }
 
+
 element.style {
   position: absolute;
   left: 60px;
@@ -373,6 +377,7 @@ element.style {
   height: 200px;
   padding-top: 10px;
     }
+
  .sortContainer{
   display: flex;
   width: 35%;
@@ -454,6 +459,6 @@ element.style {
       display:none;
     }
     }
-}
+
 
 

@@ -29,3 +29,4 @@ export {
     getAccountFriends,
     getAverageStepGoal,
 }
+

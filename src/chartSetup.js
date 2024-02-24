@@ -14,11 +14,12 @@ Array.from(chartCanvas).reduce((acc, chart) => {
       height: chart.height,
     }
   };
-  console.log(acc)
   return acc;
 }, {});
-console.log(stepCtx)
+
 }
+
+//
 
 const stepCtx = document.getElementById('stepChart').getContext('2d');
 const wklyHydCtx = document.getElementById('wklyHydChart').getContext('2d');
@@ -188,7 +189,7 @@ const wklySleepChartData = {
     }
   ]
 };
-
+//////
 const avgSleepChartData = {
   labels: ['Average Hours Slept Per Day', 'Average Sleep Quality Per Day'],
   datasets: [{
@@ -230,8 +231,9 @@ const sleepChartData = {
 const adminChartData = {
   labels: [``, 'Sleep Quality Per Recent Day'],
   datasets: [{
-    label: '',
+    label: 'Day1',
     data: [],
+    stack: 'Stack 0',
     backgroundColor: [
       '#1a1a1a',
       '#1a1a1a',
@@ -239,10 +241,7 @@ const adminChartData = {
     borderColor: [
       '#1a1a1a',
       '#1a1a1a',
-    ],
-    borderWidth: 1.5,
-    borderRadius: 20,
-    hoverBorderColor: 'red'
+    ]
   }]
 };
 

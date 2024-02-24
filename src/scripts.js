@@ -6,7 +6,6 @@ import { fetchUserData, fetchHydrationData, fetchSleepData, fetchActivityData, p
 import { adminChart,stepChart,sleepChart,hydChart } from './chartSetup';
 
 
-
 let appState = {
   account: null,
   hydration: null,
@@ -117,23 +116,29 @@ function adminChartUpdate() {
   const totalAverageFlightsOfStairs = getTotalAverageActivityData(appState.activityData, 'flightsOfStairs')
 
   const charts = {
-    step: stepChart.data
+    step: stepChart.data.datasets[0].data,
+    sleep: sleepChart.data.datasets[0].data
   }
-  console.log(charts.step.datasets[0].data)
   const adminChartData = Object.values(chartUpdate.children).reduce((acc, child) => {
-    acc.push(child.value)
-    console.log(`${charts}.${child.value}`)
+    acc.push(charts[child.value])
+    console.log(charts[child.value])
     return acc
-},[])
-adminChart.data.datasets[0].data = charts.step.datasets[0].data = [totalAverageSleepQuality]
-adminChart.data.labels = charts.step.labels
-console.log('TEST', adminChart.data.datasets[0].data)
-adminChart.update()
+  },[])
+  console.log(adminChart.data.datasets)
+  adminChart.data.datasets[0].data = adminChartData
+//adminChart.data.labels = charts.step.labels
+//adminChart.data.datasets[0].data = charts.step.datasets[0].data = [totalAverageSleepHours]
+
+
+  console.log('TEST', adminChart.data.datasets[0].data)
+  adminChart.update()
+
 }
 
 /* example
 sleepChart.data.datasets[0].data = [hoursSleptRecentDay, sleepQualityRecentDay];
-  sleepChart.options.scales.x.ticks.max = Math.max(hoursSleptRecentDay, sleepQualityRecentDay) + 10;
+sleepChart.options.scales.x.ticks.max = Math.max(hoursSleptRecentDay, sleepQualityRecentDay) + 10;
+
 */
 
 
@@ -265,8 +270,8 @@ document.getElementById('submitHydrationData').addEventListener('click', () => {
 });
 
 
-/////////
 
+/////////
 export {
   appState,
   getAccountFriends,
@@ -286,7 +291,6 @@ export {
   getTotalAverageActivityData,
   adminChartUpdate,
 
-};
 
 const userSelect = document.querySelector('.userSelect')
 const userList = document.querySelector('.userList')
@@ -295,6 +299,7 @@ const adminPanel = document.querySelector('.adminControls')
 const adminView = document.querySelector('.adminView')
 const chartOptions = document.querySelector('.chartOptions'); //add these to target the sections
 const chartUpdateSection = document.querySelector('.chartUpdate')
+const fuzzySearch = document.querySelector('#fuzzySearch')
 
 
 adminView.addEventListener('click', () => {
@@ -307,8 +312,7 @@ const chartUpdate = document.querySelector('.chartUpdate');
 
 // Function to handle drag start event
 function handleDragStart(event) {
-    event.dataTransfer.setData('text/plain', event.target.id);
-    
+    event.dataTransfer.setData('text/plain', event.target.id); 
 }
 
 // Function to handle drag over event
@@ -338,11 +342,29 @@ function handleDrop(event) {
     }   
 }
 
-
-
 function generateUserList(users) {
-  users.forEach((user) => {
+  let userList = users.sort()
+  userList.forEach((user) => {
     userSelect.innerHTML += `<option>${user}</option>`
+  })
+  fuzzySearch.innerHTML = userSelect.innerHTML
+let filterInput = document.querySelector(".filter-field")
+filterInput.addEventListener('click', () => {
+  fuzzySearch.classList.toggle('hidden')
+})
+filterInput.addEventListener('keyup', (e) => {
+  filterUsers(e)
+})
+}
+
+function filterUsers(e) {
+  fuzzySearch.innerHTML = ''
+  fuzzySearch.classList.remove('hidden')
+  Object.values(userSelect.children).forEach((user) => {
+    if(user.innerText.toLowerCase().includes(e.target.value.toLowerCase())){
+      console.log(user)
+      fuzzySearch.innerHTML += `<option>${user.innerText}</option>`
+    }
   })
 }
 
@@ -364,17 +386,9 @@ draggableElements.forEach(element => {
 
 ////////////////////////
 let dropButton = document.querySelector('.dropbtn')
-let userDropDown = document.querySelector('.dropdown-content')
-let filterInput = document.getElementById("myInput")
 
-dropButton.addEventListener('click', () => {
-  userDropDown.classList.toggle('hidden')
-  filterInput.addEventListener('keydown', filterSearch())
-})
 
-function filterSearch() {
-  console.log(filterInput.value)
-}
+
 
 userSelect.addEventListener('change', () => {
   userList.innerHTML += `<p class="delete">${userSelect.value}&#x26D4</p>`
@@ -443,3 +457,6 @@ const storeScroll = () => {
 
 document.addEventListener('scroll', debounce(storeScroll), { passive: true });
 storeScroll();
+
+//////////
+

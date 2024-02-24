@@ -28,3 +28,5 @@ export {
     generateRandomUser,
     getAccountFriends,
     getAverageStepGoal,
+}
+

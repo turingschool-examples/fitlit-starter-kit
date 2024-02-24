@@ -35,7 +35,7 @@ function displayWelcomeMessage(user) {
   const welcomeMessageElement = document.querySelector('.welcome-message');
   welcomeMessageElement.textContent = `Welcome back, ${user.name.split(' ')[0]}!`;
 }
-////////
+//////////
 
         // refactor updateAccountFriends() + updateAccountStep() + updateAccountStride()
 

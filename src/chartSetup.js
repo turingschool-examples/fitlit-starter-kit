@@ -187,7 +187,7 @@ const wklySleepChartData = {
     }
   ]
 };
-
+//////
 const avgSleepChartData = {
   labels: ['Average Hours Slept Per Day', 'Average Sleep Quality Per Day'],
   datasets: [{

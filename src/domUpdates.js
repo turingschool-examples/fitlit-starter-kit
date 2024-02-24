@@ -8,77 +8,26 @@ import {
   getWeeklySleep,
   getAverageSleepQuality,
   getMostRecentSleepHours,
-  getMostRecentSleepQuality
+  getMostRecentSleepQuality,
+  getTotalAverageSleepData,
+  getTotalAverageNumOunces,
+  getTotalAverageActivityData,
+  adminChartUpdate
 } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
-import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleepChart, setCharts } from './chartSetup'
+import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleepChart, setCharts, adminChart } from './chartSetup'
 Chart.register(...registerables);
 
-function setupEventListeners(randomUser, allUsers) {
+function updateDom(randomUser, allUsers) {
   const userFriends = getAccountFriends(randomUser)
   const averageOunces = getAverageDailyFluidOunces(randomUser.id);
   setCharts()
   displayWelcomeMessage(randomUser);
   displayAverageDailyOunces(averageOunces);
-  updateAccountName(randomUser);
-  updateAccountAddress(randomUser);
-  updateAccountEmail(randomUser);
-  updateAccountStride(randomUser);
-  updateAccountStep(randomUser);
-  updateAccountFriends(userFriends);
+  updateAccountData(randomUser)
   sleepChartUpdate(randomUser, allUsers)
   hydrationChartUpdate(randomUser, allUsers)
   stepChartUpdate(randomUser, allUsers)
-
-  let topNavBar = document.querySelectorAll('.topNav a')
-  let sideNavBar = document.querySelectorAll('.sideNav a')
-  document.querySelectorAll('nav').forEach((elem) => {
-    elem.addEventListener('click', (e) => {
-      for (let i = 0; i < topNavBar.length; i++) {
-        if (topNavBar[i].classList === e.target.classList || sideNavBar[i].classList === e.target.classList) {
-          topNavBar[i].classList.add('underline')
-          sideNavBar[i].classList.add('underline')
-        } else {
-          topNavBar[i].classList.remove('underline')
-          sideNavBar[i].classList.remove('underline')
-        }
-      }
-    })
-  })
-
-  const debounce = (fn) => {
-    let frame;
-    return (...params) => {
-      if (frame) {
-        cancelAnimationFrame(frame);
-      }
-      frame = requestAnimationFrame(() => {
-        fn(...params);
-      });
-
-    }
-  };
-
-  const storeScroll = () => {
-    document.documentElement.dataset.scroll = window.scrollY;
-    let opacLevel = 1 - window.scrollY / 1000
-    let opacInvert = 1 + window.scrollY / 1000 - 1
-    var navBar = document.getElementById('nav-bar')
-    var sideBar = document.getElementById('side-nav')
-    var logo = document.getElementById("logo")
-    navBar.style.opacity = opacLevel
-    sideBar.style.opacity = opacInvert
-    if (opacLevel > 0.2) {
-      logo.style.opacity = `${opacLevel}`
-      navBar.classList.remove('hidden')
-    } else {
-      logo.style.opacity = '0.2'
-      navBar.classList.add('hidden')
-    }
-  }
-
-  document.addEventListener('scroll', debounce(storeScroll), { passive: true });
-  storeScroll();
 }
 
 // DOM update functions
@@ -86,37 +35,7 @@ function displayWelcomeMessage(user) {
   const welcomeMessageElement = document.querySelector('.welcome-message');
   welcomeMessageElement.textContent = `Welcome back, ${user.name.split(' ')[0]}!`;
 }
-
-function updateAccountName(user) {
-  const accountName = document.querySelector('#account-name');
-  accountName.textContent = `${user.name}`;
-}
-
-function updateAccountAddress(user) {
-  const accountAddress = document.querySelector('#account-address');
-  accountAddress.textContent = `${user.address}`;
-}
-
-function updateAccountEmail(user) {
-  const accountEmail = document.querySelector('#account-email');
-  accountEmail.textContent = `${user.email}`;
-}
-
-function updateAccountStride(user) {
-  const accountStride = document.querySelector('#account-stride');
-  accountStride.textContent = `${user.strideLength} ft.`;
-}
-
-function updateAccountStep(user) {
-  const accountStep = document.querySelector('#account-step');
-  accountStep.textContent = `${user.dailyStepGoal} steps`;
-}
-
-function updateAccountFriends(friends) {
-  const accountFriends = document.querySelector('#account-friends');
-  accountFriends.textContent = `${friends}`;
-}
-
+////////
         // refactor updateAccountFriends() + updateAccountStep() + updateAccountStride()
         // + updateAccountName() + updateAccountEmail() + updateAccountAddress()
         function updateAccountData(user) {
@@ -193,15 +112,24 @@ function sleepChartUpdate(randomUser, allUsers) {
   wklySleepChart.update();
 }
 
+//try to set up adminchart
+/*function adminChartUpdate() {
+  const totalAverageSleep = getTotalAverageSleepData()
+  const totalAverageHydration = getTotalAverageNumOunces()
+  const totalAverageActivity = getTotalAverageActivityData()
+
+  adminChart.data.datasets[0].data = [] //needs to be set
+  adminChart.options.scales.x.ticks.max = Math.max() + 10; //same here. outside of numsteps, it seems like minutesactive goes to the highest number
+
+  adminChart.update();
+
+} */
+
+
 export {
-  setupEventListeners,
+  updateDom,
   displayWelcomeMessage,
-  updateAccountName,
-  updateAccountAddress,
-  updateAccountEmail,
-  updateAccountStride,
-  updateAccountStep,
-  updateAccountFriends,
+  updateAccountData,
   displaySpecificDayOunces,
-  sleepChartUpdate
+  sleepChartUpdate,
 };

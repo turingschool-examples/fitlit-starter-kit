@@ -1,5 +1,7 @@
 # Fitlit
 
+[Try it here!](http://example.com/)
+
 ## About
 FitLit is a dynamic and interactive dashboard project designed to emulate the functionality of activity tracking apps like Fitbit or Strava. The core objective of this project is to provide users with a comprehensive view of their personal activity data, including steps taken, water consumption, sleep patterns, and more, over various time frames. This project is executed with a focus on several key goals:
 
@@ -42,7 +44,6 @@ npm start
 
 
 ## Tech
-
   - Jacascript ES6+
   - HTML
   - CSS
@@ -50,6 +51,7 @@ npm start
   - Mocha and Chai
   - Fetch API
   - Git and GitHub
+  - chart.js
 
 ## Reflections
 
@@ -60,12 +62,14 @@ One of our most significant achievements in the FitLit project was the successfu
 Implementing network requests within the FitLit project presented a unique set of challenges that required careful consideration and strategic problem-solving. Managing the timing and dependencies between different data fetches was critical, as the dashboard's functionality heavily relied on the successful loading and synchronization of user activity data. This complexity was compounded by the need to gracefully handle potential errors or delays in network responses, ensuring the user experience remained unaffected by underlying data fetching processes. Moreover, integrating these network requests with the existing application logic and user interface updates demanded a deep understanding of promises and **Promice.all**.
 
   ### Up Next
-In the future, we aim to implement a more comprehensive error catching strategy to enhance the robustness and user experience of the FitLit project. Recognizing that seamless error handling is crucial for maintaining application stability and user trust, our goal is to develop a layered approach to catch and manage errors at various points in the application's workflow. This includes network request failures, data parsing issues, and unexpected user input. Additionally, we intend to implement custom error handling functions that can intelligently respond to different types of errors, guiding users with appropriate messages or corrective actions. By proactively managing errors and providing clear, helpful feedback, we can minimize user frustration and ensure that the FitLit dashboard remains a valuable tool for tracking and improving personal health metrics.
+In future iterations, we aim to implement a dynamic chart system that enhances user interactivity and data exploration capabilities. This advanced system will empower users to tailor their data visualization experience by allowing them to select the chart type that best represents the information they wish to analyze. Users will have the flexibility to compare any set of data, enabling them to uncover unique insights and patterns by juxtaposing different data metrics side by side. Additionally, the system will feature a customizable time frame selection, granting users the ability to specify the period over which their data is sampled. This level of customization and control ensures that users can derive meaningful conclusions from their data, tailored precisely to their analytical needs and temporal interests, thereby maximizing the utility and accessibility of data visualization.
 
 ## Screenshots
 <img width="1407" alt="image" src="https://github.com/edwin-chalmers/fitlit/assets/149631946/c8ae73c4-4ab5-4201-94e1-c5ca2a88c256">
 <img width="1407" alt="image" src="https://github.com/edwin-chalmers/fitlit/assets/149631946/e9f605f3-a010-4e2f-954b-379746f5fd73">
 
+## Project Board
+[See it here!](https://github.com/users/edwin-chalmers/projects/1)
 
 
 ## Contributors

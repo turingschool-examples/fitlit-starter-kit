@@ -229,7 +229,7 @@ const sleepChartData = {
 };
 
 const adminChartData = {
-  labels: [``, 'Sleep Quality Per Recent Day'],
+  labels: [],
   datasets: [{
     label: 'Day1',
     data: [],

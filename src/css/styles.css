@@ -8,6 +8,7 @@ body, html {
   background: url('../images/white-texture.png') repeat-x;
   background-size: 100% 100%;
 }
+
 main {
   .sortContainer{
     display: none;
@@ -47,7 +48,6 @@ main {
     align-items: center;
     padding: 10px;
     background: transparent;
-    
     .section-text {
       width: 75%;
       height: 100vh;
@@ -60,10 +60,10 @@ main {
 }
 
 input {
-  background-color: #7c7c7c;
-    border-radius: 7px;
-    box-shadow: 4px 7px 20px 2px #211e1ec2;
-    color: white;
+  background-color: white;
+  border-radius: 7px;
+  box-shadow: 4px 7px 20px 2px rgba(33, 30, 30, 0.7607843137);
+  color: black;
 }
 
 h3 {
@@ -89,6 +89,7 @@ p {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    z-index: 30;
 }
 
 .sideNav {
@@ -149,6 +150,7 @@ canvas {
   background: rgba(0, 0, 0, 0.3019607843);
   width: 217px;
   height: 68px;
+  z-index: 30;
   ul{
     list-style-type: none;
     margin-left: -37px;
@@ -217,7 +219,6 @@ canvas {
   .adminControls {
     display: flex;
     width: 60%;
-
     height: 500px;
     margin-top: 90px;
     margin-right: 150px;
@@ -226,7 +227,6 @@ canvas {
     align-items: center;
     position: absolute;
     left: 450px;
-
     top: -40px;
     background: white;
     z-index: 10;
@@ -303,6 +303,8 @@ canvas {
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: center;
+        margin-top: 24px;
+        left: 530px;
         option {
           color: #FFFFFF !important;
           font-size: 12px;
@@ -319,7 +321,7 @@ canvas {
             cursor: pointer;
         }
       }        
-
+    }
       }
       .userList {
         width: 200px;
@@ -364,9 +366,6 @@ canvas {
   .contentContainer {
     height: 360px;
   }
-}
-
-
 element.style {
   position: absolute;
   left: 60px;
@@ -459,6 +458,9 @@ element.style {
       display:none;
     }
     }
+}
 
-
+.collapsed {
+  display: none !important;
+}
 

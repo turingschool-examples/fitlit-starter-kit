@@ -46,7 +46,7 @@ function fetchData() {
 
       updateDom(appState.randomUser, appState.account.user);
       generateUserList(justUsers)
-
+      console.log(sleepData)
     })
     .catch(error => console.error("Error loading data:", error));
 }
@@ -96,17 +96,6 @@ function getWeeklyFluidOunces(userId) {
 
 function getUserSleepData(randomUser) {
   return appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
-}
-
-function getAverageSleepHours(randomUser) {
-  let sameUserSleepData = getUserSleepData(randomUser)
-  let averageSleepHours = 0
-  let totalSleepHours = 0
-  sameUserSleepData.forEach(obj => {
-    totalSleepHours += obj.hoursSlept
-  })
-  averageSleepHours = totalSleepHours / sameUserSleepData.length
-  return averageSleepHours.toFixed(2)
 }
 
 //Admin Chart Functions
@@ -200,49 +189,24 @@ function adminActivityChartUpdate(userId) {
   adminActivityChart.update();
 }
 
-// 
-function getAverageSleepQuality(randomUser) {
+// refactored getAverageSleepQuality() + getAverageSleepHours()
+function getAverageSleepData(randomUser, sleepDataType) {
   let sameUserSleepData = getUserSleepData(randomUser)
-  let averageSleepQuality = 0
-  let totalSleepQuality = 0
+  let averageSleep = 0
+  let totalSleep = 0
   sameUserSleepData.forEach(obj => {
-    totalSleepQuality += obj.sleepQuality
+    totalSleep += obj[sleepDataType]
   })
-  averageSleepQuality = totalSleepQuality / sameUserSleepData.length
-  return averageSleepQuality.toFixed(2)
+  averageSleep = totalSleep/ sameUserSleepData.length
+  return averageSleep.toFixed(2)
 }
 
-        // refactored getAverageSleepQuality() + getAverageSleepHours()
-        function getAverageSleepData(randomUser, sleepDataType) {
-          let sameUserSleepData = getUserSleepData(randomUser)
-          let averageSleep = 0
-          let totalSleep = 0
-          sameUserSleepData.forEach(obj => {
-            totalSleep += obj[sleepDataType]
-          })
-          averageSleep = totalSleep/ sameUserSleepData.length
-          return averageSleep.toFixed(2)
-        }
-
-function getMostRecentSleepHours(randomUser) {
+// refactored getMostRecentSleepHours() + getMostRecentSleepQuality()
+function getMostRecentSleepData(randomUser, sleepDataType) {
   let sameUserSleepData = getUserSleepData(randomUser)
   let latestSleepDataIndex = sameUserSleepData.length - 1
-  return sameUserSleepData[latestSleepDataIndex].hoursSlept
+  return sameUserSleepData[latestSleepDataIndex][sleepDataType]
 }
-
-function getMostRecentSleepQuality(randomUser) {
-  let sameUserSleepData = getUserSleepData(randomUser)
-  let latestSleepDataIndex = sameUserSleepData.length - 1
-  return sameUserSleepData[latestSleepDataIndex].sleepQuality
-}
-
-        // refactored getMostRecentSleepHours() + getMostRecentSleepQuality()
-        function getMostRecentSleepData(randomUser, sleepDataType) {
-
-          let sameUserSleepData = getUserSleepData(randomUser)
-          let latestSleepDataIndex = sameUserSleepData.length - 1
-          return sameUserSleepData[latestSleepDataIndex][sleepDataType]
-        }
 
 function getWeeklySleep(randomUser, selectedDay) {
   let selectedWeek = []
@@ -253,23 +217,16 @@ function getWeeklySleep(randomUser, selectedDay) {
     }
   }
   return {
-    weeklySleepHours: getWeeklySleepHours(selectedWeek),
-    weeklySleepQuality: getWeeklySleepQuality(selectedWeek)
+    weeklySleepHours: getWeeklySleepData(selectedWeek, 'hoursSlept'),
+    weeklySleepQuality: getWeeklySleepData(selectedWeek, 'sleepQuality')
   }
 }
 
-function getWeeklySleepHours(selectedWeek) {
-  return selectedWeek[0].map(day => day.hoursSlept)
-}
+// refactored getWeeklySleepHours() + getWeeklySleepQuality()
 
-function getWeeklySleepQuality(selectedWeek) {
-  return selectedWeek[0].map(day => day.sleepQuality)
+function getWeeklySleepData(selectedWeek, sleepDataType) {
+  return selectedWeek[0].map(day => day[sleepDataType])
 }
-
-        // refactored getWeeklySleepHours() + getWeeklySleepQuality()
-        function getWeeklySleepData(selectedWeek, sleepDataType) {
-          return selectedWeek[0].map(day => day[sleepDataType])
-        }
 
 function getTotalAverageSleepData(sleepData, propertyName) {
   const total = appState.sleep.sleepData.reduce((sum, record) => sum + record[propertyName], 0);
@@ -342,13 +299,9 @@ export {
   getAverageDailyFluidOunces,
   getSpecificDay,
   getWeeklyFluidOunces,
-  getAverageSleepHours,
-  getAverageSleepQuality,
-  getMostRecentSleepHours,
-  getMostRecentSleepQuality,
+  getAverageSleepData,
+  getMostRecentSleepData,
   getWeeklySleep,
-  getWeeklySleepHours,
-  getWeeklySleepQuality,
   getTotalAverageSleepData,
   getTotalAverageNumOunces,
   getTotalAverageActivityData,
@@ -426,6 +379,7 @@ filterInput.addEventListener('blur', () => {
 toolTips()
 }
 
+
 function filterUsers(e) {
   fuzzySearch.innerHTML = ''
   fuzzySearch.classList.remove('hidden')
@@ -440,10 +394,11 @@ function filterUsers(e) {
 function toolTips() {
   document.querySelectorAll('.fa').forEach((elem) => {
     elem.addEventListener('mouseover', (e) => {
-      e.target.children[0].classList.remove('hidden')
+      console.log(e.target)
+      e.target.classList.remove('hidden')
     })
     elem.addEventListener('mouseout', (e) => {
-      e.target.children[0].classList.add('hidden')
+      e.target.classList.add('hidden')
     })
   })
 }

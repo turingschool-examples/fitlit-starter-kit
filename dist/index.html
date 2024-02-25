@@ -44,8 +44,10 @@
               <p class="icon">&#128099;</p>
               <h3>Activity Data</h3>
             </section>
-            <h3>Activity Data</h3>
-            <canvas id="stepChart"></canvas>
+            <h3>Activity (steps)</h3>
+            <div class="chartContainer">
+            <canvas id="stepChart" responsive="true">
+          </div>
           </div>
         </section>
         <section class="water-main info-card  draggable" draggable="true" id="waterCard">
@@ -54,10 +56,14 @@
               <p class="icon">&#128167;</p>
               <h3>Hydration Data</h3>
             </section>
-            <p>Average Hydration Data (oz)</p>
-              <canvas id="hydChart"></canvas>
+            <h3>Average Hydration Data (oz)</h3>
+            <div class="chartContainer">
+              <canvas id="hydChart" responsive="true"></canvas>
+            </div>
             <p>Weekly Hydration Data (oz)</p>
-              <canvas id="wklyHydChart"></canvas>
+            <div class="chartContainer">
+              <canvas id="wklyHydChart" responsive="true"></canvas>
+            </div> 
             <div id="hydrationInputContainer">
               <input type="date" id="hydrationDate" placeholder="YYYY/MM/DD" required>
               <input type="number" id="hydrationAmount" placeholder="Ounces" required>
@@ -77,9 +83,15 @@
                 <option>2023/07/01</option>
               </select>
             </section>
-            <canvas id="sleepChart"></canvas>
-            <canvas id="wklySleepChart"></canvas>
-            <canvas id="avgSleepChart"></canvas>
+              <div class="chartContainer">
+                <canvas id="sleepChart" responsive="true"></canvas>
+              </div>
+              <div class="chartContainer">
+                <canvas id="wklySleepChart" responsive="true"></canvas>
+              </div>
+              <div class="chartContainer">
+                <canvas id="avgSleepChart" responsive="true"></canvas>
+              </div>
           </div>
         </section>
         <section class="account-main info-card" id="accountCard">

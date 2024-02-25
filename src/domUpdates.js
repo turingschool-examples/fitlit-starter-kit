@@ -4,15 +4,13 @@ import {
   getAverageDailyFluidOunces,
   getSpecificDay,
   getWeeklyFluidOunces,
-  getAverageSleepHours,
   getWeeklySleep,
-  getAverageSleepQuality,
-  getMostRecentSleepHours,
-  getMostRecentSleepQuality,
+  getAverageSleepData,
+  getMostRecentSleepData,
   getTotalAverageSleepData,
   getTotalAverageNumOunces,
   getTotalAverageActivityData,
-  adminChartUpdate
+  adminChartUpdate,
 } from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
 import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleepChart, setCharts, adminChart } from './chartSetup'
@@ -37,22 +35,21 @@ function displayWelcomeMessage(user) {
 }
 //////////
 
-        // refactor updateAccountFriends() + updateAccountStep() + updateAccountStride()
-
-        // + updateAccountName() + updateAccountEmail() + updateAccountAddress()
-        function updateAccountData(user) {
-          Object.keys(user).forEach(dataType => {
-            if (dataType === 'dailyStepGoal') {
-              document.querySelector(`#${dataType}`).textContent = `${user[dataType]} steps`;
-            } else if (dataType === 'strideLength') {
-              document.querySelector(`#${dataType}`).textContent = `${user[dataType]} ft.`;
-            } else if (dataType === 'id') { 
-              //don't do anything
-            } else { 
-              document.querySelector(`#${dataType}`).textContent = `${user[dataType]}`;
-            }
-          })
-        }
+// refactor updateAccountFriends() + updateAccountStep() + updateAccountStride()
+// + updateAccountName() + updateAccountEmail() + updateAccountAddress()
+function updateAccountData(user) {
+  Object.keys(user).forEach(dataType => {
+    if (dataType === 'dailyStepGoal') {
+      document.querySelector(`#${dataType}`).textContent = `${user[dataType]} steps`;
+    } else if (dataType === 'strideLength') {
+      document.querySelector(`#${dataType}`).textContent = `${user[dataType]} ft.`;
+    } else if (dataType === 'id') { 
+      //don't do anything
+    } else { 
+      document.querySelector(`#${dataType}`).textContent = `${user[dataType]}`;
+    }
+  })
+}
 
 function displayAverageDailyOunces(averageOunces) {
   return averageOunces.toFixed(2)
@@ -88,13 +85,14 @@ function hydrationChartUpdate(randomUser, allUsers) {
 }
 
 function sleepChartUpdate(randomUser, allUsers) {
-  const averageHoursSleptPerDay = getAverageSleepHours(randomUser)
-  const averageSleepQuality = getAverageSleepQuality(randomUser)
-  const hoursSleptRecentDay = getMostRecentSleepHours(randomUser)
-  const sleepQualityRecentDay = getMostRecentSleepQuality(randomUser)
+  const averageHoursSleptPerDay = getAverageSleepData(randomUser, 'hoursSlept')
+  const averageSleepQuality = getAverageSleepData(randomUser, 'sleepQuality')
+  const hoursSleptRecentDay = getMostRecentSleepData(randomUser, 'hoursSlept')
+  const sleepQualityRecentDay = getMostRecentSleepData(randomUser, 'sleepQuality')
 
   const selectedDate = document.querySelector('.dateSelector').value
   const sleepWeekAndDay = getWeeklySleep(randomUser, selectedDate)
+  console.log(selectedDate)
   const weeklySleepHoursPerDay = sleepWeekAndDay.weeklySleepHours
   const weeklySleepQualityPerDay = sleepWeekAndDay.weeklySleepQuality
 
@@ -113,6 +111,8 @@ function sleepChartUpdate(randomUser, allUsers) {
   sleepChart.update();
   wklySleepChart.update();
 }
+
+
 
 
 export {

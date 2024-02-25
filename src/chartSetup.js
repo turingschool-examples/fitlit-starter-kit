@@ -32,16 +32,16 @@ const adminSleepCtx = document.getElementById('adminSleepChart').getContext('2d'
 const adminHydrationCtx = document.getElementById('adminHydrationChart').getContext('2d');
 const adminActivityCtx = document.getElementById('adminActivityChart').getContext('2d');
 
-stepCtx.canvas.height = 100; 
-wklyHydCtx.canvas.height = 100;
-hydCtx.canvas.height = 100;
-sleepCtx.canvas.height = 60;
-avgSleepCtx.canvas.height = 150;
-wklySleepCtx.canvas.height = 80;
-adminCtx.canvas.height = 200;
-adminSleepCtx.canvas.height = 100;
-adminHydrationCtx.canvas.height = 100;
-adminActivityCtx.canvas.height = 100;
+// stepCtx.canvas.height = 100; 
+// wklyHydCtx.canvas.height = 100;
+// hydCtx.canvas.height = 100;
+// sleepCtx.canvas.height = 60;
+// avgSleepCtx.canvas.height = 150;
+// wklySleepCtx.canvas.height = 80;
+// adminCtx.canvas.height = 150;
+// adminSleepCtx.canvas.height = 150;
+// adminHydrationCtx.canvas.height = 150;
+// adminActivityCtx.canvas.height = 150;
 
 const stepChartData = {
   labels: ['Your step goal', 'Average step goal'],
@@ -82,7 +82,7 @@ const wklyHydChartData = {
 };
 
 const hydChartData = {
-  labels: ['Average Daily Hydration (oz)', 'Hydration For Specific Day (oz)'],
+  labels: ['Average Daily Hyd', 'Hydration For Spec Day'],
   datasets: [{
     label: '',
     data: [],
@@ -101,7 +101,7 @@ const hydChartData = {
 };
 
 const wklySleepChartData = {
-  labels: ['Weekly Hours Slept Per Day', 'Weekly Sleep Quality Per Day'],
+  labels: ['Wkly Hrs Slept / Day', 'Sleep Qual / Day'],
   datasets: [
     {
       label: 'Day1',
@@ -198,7 +198,7 @@ const wklySleepChartData = {
 };
 //////
 const avgSleepChartData = {
-  labels: ['Average Hours Slept Per Day', 'Average Sleep Quality Per Day'],
+  labels: ['Avg Hrs Slept / Day', 'Avg Sleep Qual / Day'],
   datasets: [{
     label: '',
     data: [],
@@ -217,7 +217,7 @@ const avgSleepChartData = {
 };
 
 const sleepChartData = {
-  labels: ['Hours Slept Per Recent Day', 'Sleep Quality Per Recent Day'],
+  labels: ['Hrs Slept / Rec Day', 'Sleep Qual / Rec Day'],
   datasets: [{
     label: '',
     data: [],

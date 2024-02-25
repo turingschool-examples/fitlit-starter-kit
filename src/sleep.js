@@ -26,6 +26,17 @@ averageSleepQuality = totalSleepQuality / sameUserSleepData.length
 return averageSleepQuality.toFixed(2)
 }
 
+function getAverageSleepData(randomUser, sleepDataType) {
+    let sameUserSleepData = getUserSleepData(randomUser)
+    let averageSleep = 0
+    let totalSleep = 0
+    sameUserSleepData.forEach(obj => {
+      totalSleep += obj[sleepDataType]
+    })
+    averageSleep = totalSleep/ sameUserSleepData.length
+    return averageSleep.toFixed(2)
+  }
+
 function getMostRecentSleepHours(randomUser) {
 let sameUserSleepData = getUserSleepData(randomUser)
 let latestSleepDataIndex = sameUserSleepData.length - 1
@@ -38,12 +49,25 @@ let latestSleepDataIndex = sameUserSleepData.length - 1
 return sameUserSleepData[latestSleepDataIndex].sleepQuality
 }
 
+// refactored getMostRecentSleepHours() + getMostRecentSleepQuality()
+function getMostRecentSleepData(randomUser, sleepDataType) {
+
+    let sameUserSleepData = getUserSleepData(randomUser)
+    let latestSleepDataIndex = sameUserSleepData.length - 1
+    return sameUserSleepData[latestSleepDataIndex][sleepDataType]
+}
+
 function getWeeklySleepHours(selectedWeek) {
 return selectedWeek[0].map(day => day.hoursSlept)
 }
 
 function getWeeklySleepQuality(selectedWeek) {
 return selectedWeek[0].map(day => day.sleepQuality)
+}
+
+// refactored getWeeklySleepHours() + getWeeklySleepQuality()
+function getWeeklySleepData(selectedWeek, sleepDataType) {
+    return selectedWeek[0].map(day => day[sleepDataType])
 }
 
 export {

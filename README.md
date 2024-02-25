@@ -1,6 +1,6 @@
 # Fitlit
 
-[Try it here!](http://example.com/)
+[Try it here!](https://edwin-chalmers.github.io/fitlit/)
 
 ## About
 FitLit is a dynamic and interactive dashboard project designed to emulate the functionality of activity tracking apps like Fitbit or Strava. The core objective of this project is to provide users with a comprehensive view of their personal activity data, including steps taken, water consumption, sleep patterns, and more, over various time frames. This project is executed with a focus on several key goals:

@@ -106,10 +106,10 @@ export {
     getSpecificDay,
     getWeeklyFluidOunces,
     getUserSleepData,
-    getAverageSleepHours,
-    getAverageSleepQuality,
+    getAverageSleepData,
     getMostRecentSleepHours,
     getMostRecentSleepQuality,
     getWeeklySleepHours,
-    getWeeklySleepQuality
+    getWeeklySleepQuality,
+    getWeeklySleepData
 };

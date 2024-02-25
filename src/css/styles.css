@@ -280,7 +280,12 @@ canvas {
         flex-wrap: wrap;
         flex-direction: row;
         align-items: center;
-        scroll-margin-top: 220px
+        scroll-margin-top: 220px;
+        
+        .chartContainer {
+          width: 95%;
+        }
+
       }
 
       .iconSection {
@@ -386,8 +391,8 @@ canvas {
 
         .fa > p {
           position: absolute;
-          top: 120px;
-          left: 143px;
+          top: 240px;
+          left: 140px;
         }
         .chartOptions,
         .options {
@@ -433,8 +438,8 @@ canvas {
 
         .fa > p {
           position: absolute;
-          top: 380px;
-          left: 370px;
+          top: 240px;
+          left: 700px;
         }
 
         input {

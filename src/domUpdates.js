@@ -114,18 +114,15 @@ function sleepChartUpdate(randomUser, allUsers) {
   wklySleepChart.update();
 }
 
-//try to set up adminchart
-/*function adminChartUpdate() {
-  const totalAverageSleep = getTotalAverageSleepData()
-  const totalAverageHydration = getTotalAverageNumOunces()
-  const totalAverageActivity = getTotalAverageActivityData()
+function adminSleepChartUpdate(userId) {
+  const userData = appState.sleep.sleepData.filter(data => data.userID === userId);
+  const sleepHours = userData.map(data => data.hoursSlept); 
+  const sleepQuality = userData.map(data => data.sleepQuality);
 
-  adminChart.data.datasets[0].data = [] //needs to be set
-  adminChart.options.scales.x.ticks.max = Math.max() + 10; //same here. outside of numsteps, it seems like minutesactive goes to the highest number
+  adminSleepChart.data.datasets[0].data = [average(sleepHours), average(sleepQuality)];
+  adminSleepChart.update();
+}
 
-  adminChart.update();
-
-} */
 
 
 export {
@@ -134,5 +131,6 @@ export {
   updateAccountData,
   displaySpecificDayOunces,
   sleepChartUpdate,
+  adminSleepChartUpdate,
 };
 

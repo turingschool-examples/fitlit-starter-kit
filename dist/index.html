@@ -103,16 +103,12 @@
     </section>
     <section class="adminControls">
       <section class="titleBlock">
-        <h1>ADMIN CONTROLS</h1>
+        <h1>ADMIN CONTROLS</h1> 
       </section>
       <div class="container">
       <section class="contentContainer">
-        <h1>Select chart options below</h1>
-        <i style="font-size:24px" title="drag and drop" class="fa">&#xf059;</i>
+        <h2>Select chart options below <i style="font-size:24px" title="drag and drop" class="fa">&#xf059;<p class="hidden">Drag options from the left container to the right container <br> Double click options to remove them</p></i></h2>
         <section class="chartOptions options">
-          <option class="draggable chartOpt" draggable="true" id="chartOptSleep" value="sleep">sleep</option>
-          <option class="draggable chartOpt" draggable="true" id="chartOptHydration" value="hyd">hydration</option>
-          <option class="draggable chartOpt" draggable="true" id="chartOptActivity"  value="step">activity</option>
           <option class="draggable chartOpt" draggable="true" id="chartOptAllSleepHours" value="allSleepHours">Avg Sleep (Hr)</option>
           <option class="draggable chartOpt" draggable="true" id="chartOptAllSleepQuality" value="allSleepQuality">Avg Sleep (Qlt)</option>
           <option class="draggable chartOpt" draggable="true" id="chartOptAllNumOunces" value="allNumOunces">Avg Hyd (oz)</option>
@@ -123,18 +119,20 @@
         <section class="chartUpdate options"></section>
       </section>
       <section class="contentContainer">
-        <label>Select User</label>
+        <label>Select User <i style="font-size:24px" title="drag and drop" class="fa">&#xf059;<p class="hidden">Add any number of users from the list below <br> Double click users to remove them</p></i></label>
         <div class="userSelectContainer">
           <div id="myDropdown" class="dropdown-content userSelect hidden"></div>
           <div id="fuzzySearch" class="dropdown-content userSelect hidden fuzzySearch"></div>
           <input type="text" placeholder="Search.." class="filter-field" id="filterField">
-
         </div>
         <section class="userList options">
         </section>
       </section>
       <section class="contentContainer">
         <canvas id="adminChart"></canvas>
+        <canvas id="sleepChartAdmin"></canvas>
+        <canvas id="hydrationChartAdmin"></canvas>
+        <canvas id="activityChartAdmin"></canvas> 
       </section>
     </div>
     </section>

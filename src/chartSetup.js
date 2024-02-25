@@ -28,13 +28,16 @@ const avgSleepCtx = document.getElementById('avgSleepChart').getContext('2d');
 const wklySleepCtx = document.getElementById('wklySleepChart').getContext('2d');
 const sleepCtx = document.getElementById('sleepChart').getContext('2d');
 const adminCtx = document.getElementById('adminChart').getContext('2d');
+const adminSleepCtx = document.getElementById('adminSleepChart').getContext('2d');
+const adminHydrationCtx = document.getElementById('adminHydrationChart').getContext('2d');
+const adminActivityCtx = document.getElementById('adminActivityChart').getContext('2d');
 
-// stepCtx.canvas.height = 200; 
-// wklyHydCtx.canvas.height = 100;
-// hydCtx.canvas.height = 100;
-// sleepCtx.canvas.height = 60;
-// avgSleepCtx.canvas.height = 60;
-// wklySleepCtx.canvas.height = 100;
+stepCtx.canvas.height = 200; 
+wklyHydCtx.canvas.height = 100;
+hydCtx.canvas.height = 100;
+sleepCtx.canvas.height = 60;
+avgSleepCtx.canvas.height = 60;
+wklySleepCtx.canvas.height = 100;
 
 const stepChartData = {
   labels: ['Your step goal', 'Average step goal'],
@@ -336,6 +339,52 @@ const wklySleepChart = new Chart(wklySleepCtx, {
   }
 })
 
+const adminSleepChart = new Chart(adminSleepCtx, {
+  type: 'bar', 
+  data: {
+      labels: ['Average Sleep Hours', 'Average Sleep Quality'], 
+      datasets: [{
+          label: 'Sleep Data',
+          data: [],
+          backgroundColor: ['#1a1a1a'],
+          borderColor: ['#1a1a1a'],
+          borderWidth: 1,
+      }]
+  },
+  options: vertOptions
+});
+
+
+const adminHydrationChart = new Chart(adminHydrationCtx, {
+  type: 'bar', 
+  data: {
+      labels: ['Average Ounces Drank'], 
+      datasets: [{
+          label: 'Hydration Data',
+          data: [],
+          backgroundColor: ['#1a1a1a'],
+          borderColor: ['#1a1a1a'],
+          borderWidth: 1,
+      }]
+  },
+  options: vertOptions
+});
+
+const adminActivityChart = new Chart(adminActivityCtx, {
+  type: 'bar', 
+  data: {
+      labels: ['Active Average', 'Flights of Steps Average'], 
+      datasets: [{
+          label: 'Sleep Data',
+          data: [],
+          backgroundColor: ['#1a1a1a'],
+          borderColor: ['#1a1a1a'],
+          borderWidth: 1,
+      }]
+  },
+  options: vertOptions
+});
+
 export {
     stepChart,
     wklyHydChart,
@@ -344,5 +393,8 @@ export {
     avgSleepChart,
     wklySleepChart,
     adminChart,
+    adminSleepChart,
+    adminHydrationChart,
+    adminActivityChart,
     setCharts
 }

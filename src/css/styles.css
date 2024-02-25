@@ -1,9 +1,6 @@
-/**/
-* {
+body, html {
   font-family: "Libre Baskerville";
   font-style: normal;
-}
-body, html {
   scroll-behavior: smooth;
   background: url('../images/white-texture.png') repeat-x;
   background-size: 100% 100%;
@@ -281,7 +278,7 @@ canvas {
         flex-direction: row;
         align-items: center;
         scroll-margin-top: 220px;
-        
+
         .chartContainer {
           width: 95%;
         }
@@ -436,6 +433,11 @@ canvas {
         justify-content: flex-start;
         /* padding-top: 11px; */
 
+        .userSelectContainer {
+          display: flex;
+          flex-direction: column-reverse
+        }
+
         .fa > p {
           position: absolute;
           top: 240px;
@@ -448,19 +450,16 @@ canvas {
         }
 
         .dropdown-content {
-          position: absolute;
           background-color: #f6f6f6;
           min-width: 230px;
           overflow: scroll;
           border: 1px solid #ddd;
-          z-index: 10;
           max-height: 360px;
           display: flex;
           flex-direction: column;
           flex-wrap: nowrap;
           align-items: center;
-          margin-top: 24px;
-          left: 200px;
+          margin-top: 58px;
 
           option {
             color: #FFFFFF !important;

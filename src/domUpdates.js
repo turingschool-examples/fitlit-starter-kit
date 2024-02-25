@@ -92,7 +92,6 @@ function sleepChartUpdate(randomUser, allUsers) {
 
   const selectedDate = document.querySelector('.dateSelector').value
   const sleepWeekAndDay = getWeeklySleep(randomUser, selectedDate)
-  console.log(selectedDate)
   const weeklySleepHoursPerDay = sleepWeekAndDay.weeklySleepHours
   const weeklySleepQualityPerDay = sleepWeekAndDay.weeklySleepQuality
 

@@ -1,4 +1,5 @@
 import hydration from '../src/data/hydration-test-data'
+import account from '../src/data/users-test-data'
 
 function getAverageDailyFluidOunces(userId, hydroData) {
     const userHydrationData = hydroData.filter((userRecord) => userRecord.userID === userId);

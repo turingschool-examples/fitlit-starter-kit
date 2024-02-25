@@ -1,5 +1,5 @@
-import './css/styles.css';
-// import './css/index.scss';
+// import './css/styles.css';
+import './css/index.scss';
 import './images/fitlit-logo.png';
 import './images/white-texture.png';
 import { updateDom, sleepChartUpdate, updateAccountData, } from './domUpdates';
@@ -39,14 +39,8 @@ function fetchData() {
         document.getElementById('date-selector').innerHTML += `<option>${date}</option>`
       })
 
-      const justUsers = userData.users.reduce((acc,user) => {
-        acc.push(user.name)
-        return acc
-      }, [])
-
       updateDom(appState.randomUser, appState.account.user);
-      generateUserList(justUsers)
-      console.log(sleepData)
+      // generateUserList(justUsers)
     })
     .catch(error => console.error("Error loading data:", error));
 }
@@ -356,9 +350,10 @@ function handleDrop(event) {
 }
 
 function generateUserList(users) {
+  console.log(users)
   let userList = users.sort()
   userList.forEach((user) => {
-    userSelect.innerHTML += `<option>${user}</option>`
+    userSelect.innerHTML += `<option value="${users}" data-user-id="${user.id}">${user.name}</option>`
   })
   fuzzySearch.innerHTML = userSelect.innerHTML
 let filterInput = document.querySelector(".filter-field")
@@ -394,11 +389,10 @@ function filterUsers(e) {
 function toolTips() {
   document.querySelectorAll('.fa').forEach((elem) => {
     elem.addEventListener('mouseover', (e) => {
-      console.log(e.target)
-      e.target.classList.remove('hidden')
+      e.target.children[0].classList.remove('hidden')
     })
     elem.addEventListener('mouseout', (e) => {
-      e.target.classList.add('hidden')
+      e.target.children[0].classList.add('hidden')
     })
   })
 }

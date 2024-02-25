@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import { 
-    generateRandomUser, 
     getAverageDailyFluidOunces,
     getSpecificDay,
     getWeeklyFluidOunces,
 } from '../src/hydration';
+import { generateRandomUser,} from '../src/users';
 import account from '../src/data/users-test-data'
 import hydration from '../src/data/hydration-test-data'
 

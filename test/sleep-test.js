@@ -1,15 +1,11 @@
 import { expect } from 'chai';
 import { 
-    generateRandomUser, 
     getUserSleepData,
-    getAverageSleepHours,
-    getAverageSleepQuality,
-    getMostRecentSleepHours,
-    getMostRecentSleepQuality,
-    getWeeklySleepHours,
-    getWeeklySleepQuality
-
-} from '../src/functions';
+    getAverageSleepData,
+    getMostRecentSleepData,
+    getWeeklySleepData
+} from '../src/sleep';
+import { generateRandomUser,} from '../src/users';
 import account from '../src/data/users-test-data'
 import sleep from '../src/data/sleep-test-data'
 
@@ -34,11 +30,11 @@ describe('getUserSleepData()', () => {
 
 });
 
-describe('getAverageSleepHours()', () => {
+describe('getAverageSleepData() --> Hours', () => {
 
     it('should calculate the correct average sleep hours for a given user', function() {
         const user1 = account.users[1]
-        const averageSleepHours = getAverageSleepHours(user1);
+        const averageSleepHours = getAverageSleepData(user1, 'hoursSlept');
         expect(averageSleepHours).to.be.a('string');
         const expectedAverage = (7.94).toFixed(2);
         expect(averageSleepHours).to.equal(expectedAverage);
@@ -46,25 +42,25 @@ describe('getAverageSleepHours()', () => {
     
     it('should calculate the correct average sleep hours for a different user', function() {
         const user2 = account.users[7]
-        const averageSleepHours = getAverageSleepHours(user2);
+        const averageSleepHours = getAverageSleepData(user2, 'hoursSlept');
         const expectedAverage = (8.67).toFixed(2); 
         expect(averageSleepHours).to.equal(expectedAverage);
     });
 
     it('should handle cases with no sleep data for a given user', function() {
         const randomUser = { id: 999 }; 
-        const averageSleepHours = getAverageSleepHours(randomUser);
+        const averageSleepHours = getAverageSleepData(randomUser, 'hoursSlept');
         expect(averageSleepHours).to.equal('NaN');
         
     });
 
 });
 
-describe('getAverageSleepQuality()', () => {
+describe('getAverageSleepData() --> Quality', () => {
 
     it('should calculate the correct average sleep quality for a given user', function() {
         const userP = account.users[1]
-        const averageSleepQuality = getAverageSleepQuality(userP);
+        const averageSleepQuality = getAverageSleepData(userP, 'sleepQuality');
         expect(averageSleepQuality).to.be.a('string');
         const expectedAverage = (3.61).toFixed(2);
         expect(averageSleepQuality).to.equal(expectedAverage);
@@ -72,7 +68,7 @@ describe('getAverageSleepQuality()', () => {
     
     it('should calculate the correct average sleep quality for a different user', function() {
         const userY = account.users[5]
-        const averageSleepQuality = getAverageSleepQuality(userY);
+        const averageSleepQuality = getAverageSleepData(userY, 'sleepQuality');
         expect(averageSleepQuality).to.be.a('string');
         const expectedAverage = (3.29).toFixed(2);
         expect(averageSleepQuality).to.equal(expectedAverage);
@@ -80,17 +76,17 @@ describe('getAverageSleepQuality()', () => {
 
     it('should return "NaN" for a user with no sleep data', function() {
         const nonExistentUser = { id: 999 };
-        const averageSleepQuality = getAverageSleepQuality(nonExistentUser);
+        const averageSleepQuality = getAverageSleepData(nonExistentUser, 'sleepQuality');
         expect(averageSleepQuality).to.equal('NaN');
     });
 
 });
 
-describe('getMostRecentSleepHours()', () => {
+describe('getMostRecentSleepData() --> Hours', () => {
 
     it('should return the most recent sleep data entry for a user', function() {
         const user444 = account.users[5];
-        const mostRecentSleepHours = getMostRecentSleepHours(user444);
+        const mostRecentSleepHours = getMostRecentSleepData(user444, 'hoursSlept');
         expect(mostRecentSleepHours).to.be.a('number');
         const expectedAverage = (7.3)
         expect(mostRecentSleepHours).to.equal(expectedAverage);
@@ -98,7 +94,7 @@ describe('getMostRecentSleepHours()', () => {
     
     it('should return the most recent sleep data entry for a different user', function() {
         const user000 = account.users[9];
-        const mostRecentSleepHours = getMostRecentSleepHours(user000);
+        const mostRecentSleepHours = getMostRecentSleepData(user000, 'hoursSlept');
         const expectedAverage = (9.7)
         expect(mostRecentSleepHours).to.equal(expectedAverage);
     });
@@ -106,26 +102,26 @@ describe('getMostRecentSleepHours()', () => {
 
     it('should return "NaN" for a user with no sleep data', function() {
         const nonExistentUser = { id: 999 };
-        const averageSleepQuality = getAverageSleepQuality(nonExistentUser);
+        const averageSleepQuality = getAverageSleepData(nonExistentUser, 'hoursSlept');
         expect(averageSleepQuality).to.equal('NaN');
     });
     
 
 });
 
-describe('getMostRecentSleepQuality()', () => {
+describe('getMostRecentSleepData() --> Quality', () => {
 
     it('should return the most recent sleep data entry for a user', function() {
         const userAFK = account.users[2];
-        const mostRecentSleepHours = getMostRecentSleepQuality(userAFK);
+        const mostRecentSleepHours = getMostRecentSleepData(userAFK, 'sleepQuality');
         expect(mostRecentSleepHours).to.be.a('number');
         const expectedAverage = (4.2)
         expect(mostRecentSleepHours).to.equal(expectedAverage);
     });
     
     it('should return the most recent sleep data entry for a different user', function() {
-        const user000 = account.users[6];
-        const mostRecentSleepHours = getMostRecentSleepQuality(user000);
+        const userLMO = account.users[6];
+        const mostRecentSleepHours = getMostRecentSleepData(userLMO, 'sleepQuality');
         const expectedAverage = (3.4)
         expect(mostRecentSleepHours).to.equal(expectedAverage);
     });
@@ -133,14 +129,14 @@ describe('getMostRecentSleepQuality()', () => {
 
     it('should return "NaN" for a user with no sleep data', function() {
         const nonExistentUser = { id: 999 };
-        const averageSleepQuality = getAverageSleepQuality(nonExistentUser);
+        const averageSleepQuality = getAverageSleepData(nonExistentUser, 'sleepQuality');
         expect(averageSleepQuality).to.equal('NaN');
     });
     
 
 });
 
-describe('getWeeklySleepHours()', () => {
+describe('getWeeklySleepData() --> Hours', () => {
 
     it('correctly extracts weekly sleep hours for a user', function() {
         const selectedWeek = [
@@ -155,24 +151,24 @@ describe('getWeeklySleepHours()', () => {
           ]
         ];
         const expectedHours = [4.8, 9.2, 6.2, 6.8, 7.5, 7.2, 7.8];
-        const result = getWeeklySleepHours(selectedWeek);
+        const result = getWeeklySleepData(selectedWeek, 'hoursSlept');
         expect(result).to.deep.equal(expectedHours);
-      });
+    });
 
     it('returns an empty array if selectedWeek data is empty', function() {
         const selectedWeek = [[]];
-        const result = getWeeklySleepHours(selectedWeek);
+        const result = getWeeklySleepData(selectedWeek, 'hoursSlept');
         expect(result).to.be.an('array').that.is.empty;
       });
 
     it('handles incorrect data structure gracefully', function() {
-    const incorrectData = {}; 
-    expect(() => getWeeklySleepHours(incorrectData)).to.throw();
+        const incorrectData = {}; 
+        expect(() => getWeeklySleepData(incorrectData, 'hoursSlept')).to.throw();
     });
 
 });
 
-describe('getWeeklySleepQuality()', () => {
+describe('getWeeklySleepData() --> Quality', () => {
 
     it('correctly extracts weekly sleep quality scores for a user', function() {
       const selectedWeek = [
@@ -187,19 +183,19 @@ describe('getWeeklySleepQuality()', () => {
         ]
       ];
       const expectedQualityScores = [2.5, 4.8, 2.5, 2.8, 2.3, 3.2, 3.8];
-      const result = getWeeklySleepQuality(selectedWeek);
+      const result = getWeeklySleepData(selectedWeek, 'sleepQuality');
       expect(result).to.deep.equal(expectedQualityScores);
     });
   
     it('returns an empty array if selectedWeek data is empty', function() {
       const selectedWeek = [[]];
-      const result = getWeeklySleepQuality(selectedWeek);
+      const result = getWeeklySleepData(selectedWeek, 'sleepQuality');
       expect(result).to.be.an('array').that.is.empty;
     });
 
     it('handles incorrect data structure gracefully', function() {
         const incorrectData = {}; 
-        expect(() => getWeeklySleepHours(incorrectData)).to.throw();
+        expect(() => getWeeklySleepData(incorrectData, 'sleepQuality')).to.throw();
         });
   
   });

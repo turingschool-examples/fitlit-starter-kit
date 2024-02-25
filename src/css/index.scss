@@ -1,0 +1,146 @@
+
+* {
+    font-family: "Libre Baskerville";
+    font-style: normal;
+  }
+  body, html {
+    scroll-behavior: smooth;
+    background: $main-background;
+    background-size: 100% 100%;
+  }
+
+  main{
+    @include main
+  }
+
+  .condensed{
+    @include condensed
+  }
+
+  input {
+    background-color: white;
+    border-radius: 7px;
+    box-shadow: 4px 7px 20px 2px rgba(33, 30, 30, 0.7607843137);
+    color: black;
+  }
+  
+  h3 {
+    font-weight: normal;
+    margin-right: 36px;
+  }
+  
+  p {
+      font-weight: bold;
+      margin-right: 10px;
+      font-size: larger;
+  }
+  
+  .topNav {
+      overflow: hidden;
+      background:rgba(0, 0, 0, 0);
+      color: #1a1a1a;
+      position: fixed;
+      top: 10px;
+      width: 100%;
+      height: 2em;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      z-index: 30;
+  }
+  
+  .sideNav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 7em;
+    width: 20%;
+    align-items: flex-end;
+  }
+  
+  nav a {
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 22px;
+    font-variant: unicase;
+    font-weight: bolder;
+    margin: 10px;
+    mix-blend-mode: color-burn;
+  }
+  
+  nav a:hover {
+    text-shadow: 0px 0px 11px rgb(0, 0, 0);
+  }
+  
+  .underline {
+    text-decoration: underline;
+  }
+  
+  .shadow {
+    box-shadow: rgba(0, 0, 0, 0.631372549) 12px 12px 20px 4px;
+  }
+  
+  span {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .full {
+    mix-blend-mode: color-burn;
+  }
+  
+  .welcome-message{
+    margin-top: 20rem;
+  }
+  
+  canvas {
+    z-index: 2;
+    width: 500px;
+  }
+  
+  .viewMenu {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.3019607843);
+    width: 217px;
+    height: 68px;
+    z-index: 30;
+    ul{
+      list-style-type: none;
+      margin-left: -37px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      :hover{
+        background-color: red;
+        color: white;
+      }
+      li{
+        margin-top: 1px;
+        margin-bottom: 1px;
+        width: 100%;
+        font-size: smaller;
+      }
+    }
+  }
+
+  .dateSelector{
+    z-index: 2;
+      width: 10rem;
+      text-align: center;
+      margin-left: 1rem;
+      margin-right: 1rem;
+  }
+  
+  .dateSection {
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }

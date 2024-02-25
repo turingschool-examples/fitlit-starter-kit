@@ -20,8 +20,7 @@
         <div class="viewMenu hidden">
           <ul>
             <li class="lightDark">Toggle dark/light mode</li>
-            <li class="condMode">Toggle condensed/full view</li>
-            <li class="adminView">Admin View</li>
+            <li class="condMode">Toggle Admin Mode</li>
           </ul>
         </div>
       </div>
@@ -38,101 +37,112 @@
         <img class="full" src="./images/fitlit-logo.png" id="logo" alt="FitLit Logo">
         <h1 class="welcome-message" id="welcomeMessage">welcome back (person.name)</h1>
       </article>
-      <section class="sortContainer"></section>
-      <section class="sizeableContainer">
-      <section class="steps-main info-card draggable" draggable="true" id="stepCard">
-        <div class="section-text">
-          <section class="iconSection" id="stepCardHeader">
-            <p class="icon">&#128099;</p>
+      <section class="sortContainer">
+        <section class="steps-main info-card draggable" draggable="true" id="stepCard">
+          <div class="section-text">
+            <section class="iconSection" id="stepCardHeader">
+              <p class="icon">&#128099;</p>
+              <h3>Activity Data</h3>
+            </section>
             <h3>Activity Data</h3>
-          </section>
-          <h3>Activity Data</h3>
-          <canvas id="stepChart"></canvas>
-        </div>
-      </section>
-      <section class="water-main info-card  draggable" draggable="true" id="waterCard">
-        <div class="section-text">
-          <section class="iconSection" id="waterCardHeader">
-            <p class="icon">&#128167;</p>
-            <h3>Hydration Data</h3>
-          </section>
-          <p>Average Hydration Data (oz)</p>
-            <canvas id="hydChart"></canvas>
-          <p>Weekly Hydration Data (oz)</p>
-            <canvas id="wklyHydChart"></canvas>
-          <div id="hydrationInputContainer">
-            <input type="date" id="hydrationDate" placeholder="YYYY/MM/DD" required>
-            <input type="number" id="hydrationAmount" placeholder="Ounces" required>
-            <button id="submitHydrationData">Submit Hydration Data</button>
-          </div>  
-        </div>
-      </section>
-      <section class="sleep-main info-card  draggable" draggable="true" id="sleepCard">
-        <div class="section-text">
-          <section class="iconSection" id="sleepCardHeader">
-            <p class="icon">&#128719;</p>
-            <h3>Sleep Data</h3>
-          </section>
-          <section class="dateSection">
-            <label for="date-selector">Select date</label>
-            <select class="dateSelector" id="date-selector">
-              <option>2023/07/01</option>
-            </select>
-          </section>
-          <canvas id="sleepChart"></canvas>
-          <canvas id="wklySleepChart"></canvas>
-          <canvas id="avgSleepChart"></canvas>
-        </div>
-      </section>
-      <section class="account-main info-card" id="accountCard">
-        <div class="section-text">
-          <section class="iconSection"  id="accoundCardHeader">
-            <p class="icon">&#128100;</p>
-            <h3>Account Details</h3>
-          </section>
-  <!-- Update HTML in Account Details section to be dynamic with UpdateAccount refactor -->
-          <span><p>User:</p><h3 id="name">name</h3></span>
+            <canvas id="stepChart"></canvas>
+          </div>
+        </section>
+        <section class="water-main info-card  draggable" draggable="true" id="waterCard">
+          <div class="section-text">
+            <section class="iconSection" id="waterCardHeader">
+              <p class="icon">&#128167;</p>
+              <h3>Hydration Data</h3>
+            </section>
+            <p>Average Hydration Data (oz)</p>
+              <canvas id="hydChart"></canvas>
+            <p>Weekly Hydration Data (oz)</p>
+              <canvas id="wklyHydChart"></canvas>
+            <div id="hydrationInputContainer">
+              <input type="date" id="hydrationDate" placeholder="YYYY/MM/DD" required>
+              <input type="number" id="hydrationAmount" placeholder="Ounces" required>
+              <button id="submitHydrationData">Submit Hydration Data</button>
+            </div>  
+          </div>
+        </section>
+        <section class="sleep-main info-card  draggable" draggable="true" id="sleepCard">
+          <div class="section-text">
+            <section class="iconSection" id="sleepCardHeader">
+              <p class="icon">&#128719;</p>
+              <h3>Sleep Data</h3>
+            </section>
+            <section class="dateSection">
+              <label for="date-selector">Select date</label>
+              <select class="dateSelector" id="date-selector">
+                <option>2023/07/01</option>
+              </select>
+            </section>
+            <canvas id="sleepChart"></canvas>
+            <canvas id="wklySleepChart"></canvas>
+            <canvas id="avgSleepChart"></canvas>
+          </div>
+        </section>
+        <section class="account-main info-card" id="accountCard">
+          <div class="section-text">
+            <section class="iconSection"  id="accoundCardHeader">
+              <p class="icon">&#128100;</p>
+              <h3>Account Details</h3>
+            </section>
+            <span><p>User:</p><h3 id="name">name</h3></span>
+            <span><p>Address:</p><h3 id="address">address</h3></span>
+            <span><p>Email:</p><h3 id="email">email</h3></span>
+            <span><p>Stride Length:</p><h3 id="strideLength">stride length</h3></span>
+            <span><p>Daily Step Goal:</p><h3 id="dailyStepGoal">daily step goal</h3></span>
+            <span><p>Friends:</p><h3 id="friends">friends</h3></span>
+          </div>
+        </section>
 
-          <span><p>Address:</p><h3 id="address">address</h3></span>
-          <span><p>Email:</p><h3 id="email">email</h3></span>
-          <span><p>Stride Length:</p><h3 id="strideLength">stride length</h3></span>
-          <span><p>Daily Step Goal:</p><h3 id="dailyStepGoal">daily step goal</h3></span>
-          <span><p>Friends:</p><h3 id="friends">friends</h3></span>
-        </div>
+        
       </section>
-    </section>
+      <!-- <section class="sizeableContainer">
+      </section> -->
     <section class="adminControls">
       <section class="titleBlock">
         <h1>ADMIN CONTROLS</h1> 
       </section>
       <div class="container">
+        <section class="contentContainer">
+          <label>Select chart options below <i style="font-size:24px" title="drag and drop" class="fa">&#xf059;<p class="hidden">Drag options from the left container to the right container <br> Double click options to remove them</p></i></label>
+          <!-- <div> -->
+            <section class="chartOptions options">
+              <option class="draggable chartOpt" draggable="true" id="chartOptAllSleepHours" value="allSleepHours">Avg Sleep (Hr)</option>
+              <option class="draggable chartOpt" draggable="true" id="chartOptAllSleepQuality" value="allSleepQuality">Avg Sleep (Qlt)</option>
+              <option class="draggable chartOpt" draggable="true" id="chartOptAllNumOunces" value="allNumOunces">Avg Hyd (oz)</option>
+              <option class="draggable chartOpt" draggable="true" id="chartOptAllMinsActive" value="allMinsActive">Avg min active</option>
+              <option class="draggable chartOpt" draggable="true" id="chartOptAllFlightsOfStepsTraveled" value="allFlightsOfStepsTraveled">Avg <Flt>
+                <Strs></Strs></option>
+            </section>
+              <section class="chartUpdate options"></section>
+          <!-- </div> -->
+            </section>
+            <section class="contentContainer">
+              <label>Select User <i style="font-size:24px" title="drag and drop" class="fa">&#xf059;<p class="hidden">Add any number of users from the list below <br> Double click users to remove them</p></i></label>
+              <div class="userSelectContainer">
+                <div id="myDropdown" class="dropdown-content userSelect hidden"></div>
+                <div id="fuzzySearch" class="dropdown-content userSelect hidden fuzzySearch"></div>
+                <input type="text" placeholder="Search.." class="filter-field" id="filterField">
+              </div>
+              <section class="userList options">
+              </section>
+            </section>
       <section class="contentContainer">
-        <h2>Select chart options below <i style="font-size:24px" title="drag and drop" class="fa">&#xf059;<p class="hidden">Drag options from the left container to the right container <br> Double click options to remove them</p></i></h2>
-        <section class="chartOptions options">
-          <option class="draggable chartOpt" draggable="true" id="chartOptAllSleepHours" value="allSleepHours">Avg Sleep (Hr)</option>
-          <option class="draggable chartOpt" draggable="true" id="chartOptAllSleepQuality" value="allSleepQuality">Avg Sleep (Qlt)</option>
-          <option class="draggable chartOpt" draggable="true" id="chartOptAllNumOunces" value="allNumOunces">Avg Hyd (oz)</option>
-          <option class="draggable chartOpt" draggable="true" id="chartOptAllMinsActive" value="allMinsActive">Avg min active</option>
-          <option class="draggable chartOpt" draggable="true" id="chartOptAllFlightsOfStepsTraveled" value="allFlightsOfStepsTraveled">Avg <Flt>
-          <Strs></Strs></option>
-        </section>
-        <section class="chartUpdate options"></section>
-      </section>
-      <section class="contentContainer">
-        <label>Select User <i style="font-size:24px" title="drag and drop" class="fa">&#xf059;<p class="hidden">Add any number of users from the list below <br> Double click users to remove them</p></i></label>
-        <div class="userSelectContainer">
-          <div id="myDropdown" class="dropdown-content userSelect hidden"></div>
-          <div id="fuzzySearch" class="dropdown-content userSelect hidden fuzzySearch"></div>
-          <input type="text" placeholder="Search.." class="filter-field" id="filterField">
+        <div class="chartContainer">
+          <canvas id="adminChart" responsive="true"></canvas>
         </div>
-        <section class="userList options">
-        </section>
-      </section>
-      <section class="contentContainer">
-        <canvas id="adminChart"></canvas>
-        <canvas id="sleepChartAdmin"></canvas>
-        <canvas id="hydrationChartAdmin"></canvas>
-        <canvas id="activityChartAdmin"></canvas> 
+        <div class="chartContainer">
+          <canvas id="adminSleepChart" responsive="true"></canvas>
+        </div>
+        <div class="chartContainer">
+          <canvas id="adminHydrationChart" responsive="true"></canvas>
+        </div>
+        <div class="chartContainer">
+         <canvas id="adminActivityChart" responsive="true"></canvas> 
+        </div>
       </section>
     </div>
     </section>

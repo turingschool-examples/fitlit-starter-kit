@@ -32,12 +32,16 @@ const adminSleepCtx = document.getElementById('adminSleepChart').getContext('2d'
 const adminHydrationCtx = document.getElementById('adminHydrationChart').getContext('2d');
 const adminActivityCtx = document.getElementById('adminActivityChart').getContext('2d');
 
-stepCtx.canvas.height = 200; 
+stepCtx.canvas.height = 100; 
 wklyHydCtx.canvas.height = 100;
 hydCtx.canvas.height = 100;
 sleepCtx.canvas.height = 60;
-avgSleepCtx.canvas.height = 60;
-wklySleepCtx.canvas.height = 100;
+avgSleepCtx.canvas.height = 150;
+wklySleepCtx.canvas.height = 80;
+adminCtx.canvas.height = 200;
+adminSleepCtx.canvas.height = 100;
+adminHydrationCtx.canvas.height = 100;
+adminActivityCtx.canvas.height = 100;
 
 const stepChartData = {
   labels: ['Your step goal', 'Average step goal'],

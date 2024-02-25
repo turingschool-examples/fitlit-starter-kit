@@ -114,16 +114,6 @@ function sleepChartUpdate(randomUser, allUsers) {
   wklySleepChart.update();
 }
 
-function adminSleepChartUpdate(userId) {
-  const userData = appState.sleep.sleepData.filter(data => data.userID === userId);
-  const sleepHours = userData.map(data => data.hoursSlept); 
-  const sleepQuality = userData.map(data => data.sleepQuality);
-
-  adminSleepChart.data.datasets[0].data = [average(sleepHours), average(sleepQuality)];
-  adminSleepChart.update();
-}
-
-
 
 export {
   updateDom,
@@ -131,6 +121,6 @@ export {
   updateAccountData,
   displaySpecificDayOunces,
   sleepChartUpdate,
-  adminSleepChartUpdate,
+  //adminSleepChartUpdate,
 };
 

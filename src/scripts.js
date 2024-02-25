@@ -1,9 +1,10 @@
 import './css/styles.css';
+// import './css/index.scss';
 import './images/fitlit-logo.png';
 import './images/white-texture.png';
 import { updateDom, sleepChartUpdate, updateAccountData, } from './domUpdates';
 import { fetchUserData, fetchHydrationData, fetchSleepData, fetchActivityData, postHydrationData } from './apiCalls';
-import { adminChart,stepChart,sleepChart,hydChart } from './chartSetup';
+import { adminChart,stepChart,sleepChart,hydChart,adminSleepChart,adminHydrationChart,adminActivityChart } from './chartSetup';
 
 
 let appState = {
@@ -108,33 +109,8 @@ function getAverageSleepHours(randomUser) {
   return averageSleepHours.toFixed(2)
 }
 
+//Admin Chart Functions
 function adminChartUpdate() {
-  /*const totalAverageSleepQuality = getTotalAverageSleepData(appState.sleepData, 'sleepQuality')
-  const totalAverageSleepHours = getTotalAverageSleepData(appState.sleepData, 'hoursSlept')
-  const totalAverageHydration = getTotalAverageNumOunces()
-  const totalAverageActiveMins = getTotalAverageActivityData(appState.activityData, 'minutesActive')
-  const totalAverageFlightsOfStairs = getTotalAverageActivityData(appState.activityData, 'flightsOfStairs')
-
-  const charts = {
-    step: stepChart.data.datasets[0].data,
-    sleep: sleepChart.data.datasets[0].data
-  }
-  const adminChartData = Object.values(chartUpdate.children).reduce((acc, child) => {
-    acc.push(charts[child.value])
-    console.log(charts[child.value])
-    return acc
-  },[])
-  console.log(adminChart.data.datasets)
-  adminChart.data.datasets[0].data = adminChartData
-//adminChart.data.labels = charts.step.labels
-//adminChart.data.datasets[0].data = charts.step.datasets[0].data = [totalAverageSleepHours]
-
-
-  console.log('TEST', adminChart.data.datasets[0].data)
-  adminChart.update()
-
-  */
-
   let chartLabels = [];
   let chartData = [];
 
@@ -188,13 +164,43 @@ function adminChartUpdate() {
 
 }
 
-/* example
-sleepChart.data.datasets[0].data = [hoursSleptRecentDay, sleepQualityRecentDay];
-sleepChart.options.scales.x.ticks.max = Math.max(hoursSleptRecentDay, sleepQualityRecentDay) + 10;
 
-*/
+function adminSleepChartUpdate(userId) {
 
+  const userSleepData = appState.sleep.sleepData.filter(data => data.userID === userId);
+  //console.log('USER SLEEP:', userSleepData)
+  const totalSleepHours = userSleepData.reduce((acc, curr) => acc + curr.hoursSlept, 0);
+  const averageSleepHours = totalSleepHours / userSleepData.length;
 
+  const totalSleepQuality = userSleepData.reduce((acc, curr) => acc + curr.sleepQuality, 0);
+  const averageSleepQuality = totalSleepQuality / userSleepData.length;
+
+  adminSleepChart.data.labels = ['Average Sleep Hours', 'Average Sleep Quality'];
+  adminSleepChart.data.datasets[0].data = [averageSleepHours, averageSleepQuality];
+  adminSleepChart.update();
+}
+
+function adminHydrationChartUpdate(userId) {
+  const userHydrationData = appState.hydration.hydrationData.filter(record => record.userID === userId);
+  const totalOunces = userHydrationData.reduce((acc, record) => acc + record.numOunces, 0);
+  const averageOunces = (totalOunces / userHydrationData.length).toFixed(2);
+
+  adminHydrationChart.data.datasets[0].data = [averageOunces];
+  adminHydrationChart.update();
+}
+
+function adminActivityChartUpdate(userId) {
+  const userActivityData = appState.activity.activityData.filter(record => record.userID === userId);
+  const totalMinutesActive = userActivityData.reduce((acc, record) => acc + record.minutesActive, 0);
+  const averageMinutesActive = (totalMinutesActive / userActivityData.length).toFixed(2);
+  const totalFlightsOfStairs = userActivityData.reduce((acc, record) => acc + record.flightsOfStairs, 0);
+  const averageFlightsOfStairs = (totalFlightsOfStairs / userActivityData.length).toFixed(2);
+
+  adminActivityChart.data.datasets[0].data = [averageMinutesActive, averageFlightsOfStairs];
+  adminActivityChart.update();
+}
+
+// 
 function getAverageSleepQuality(randomUser) {
   let sameUserSleepData = getUserSleepData(randomUser)
   let averageSleepQuality = 0
@@ -319,10 +325,14 @@ document.getElementById('submitHydrationData').addEventListener('click', () => {
     return;
   }
 
-  postHydrationData(randomUser.id, date, numOunces)
+  postHydrationData(appState.randomUser, date, numOunces)
 });
 
-
+document.querySelector('.userList').addEventListener('change', () => {
+  adminSleepChartUpdate(userId)
+  adminHydrationChartUpdate(userId)
+  adminActivityChartUpdate(userId)
+})
 
 /////////
 export {
@@ -349,16 +359,9 @@ const userSelect = document.querySelector('.userSelect')
 const userList = document.querySelector('.userList')
 const viewMenu = document.querySelector('.viewMenu')
 const adminPanel = document.querySelector('.adminControls')
-const adminView = document.querySelector('.adminView')
 const chartOptions = document.querySelector('.chartOptions'); //add these to target the sections
 const chartUpdateSection = document.querySelector('.chartUpdate')
 const fuzzySearch = document.querySelector('#fuzzySearch')
-
-
-adminView.addEventListener('click', () => {
-  adminPanel.classList.toggle('collapsed')
-  viewMenu.classList.toggle('hidden')
-})
 
 const sortContainer = document.querySelector('.sortContainer');
 const chartUpdate = document.querySelector('.chartUpdate');

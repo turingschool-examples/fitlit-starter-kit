@@ -187,7 +187,6 @@ function adminChartUpdate() {
   adminChart.update()
 
 }
-adminChartUpdate()
 
 /* example
 sleepChart.data.datasets[0].data = [hoursSleptRecentDay, sleepQualityRecentDay];
@@ -388,7 +387,7 @@ function handleDrop(event) {
       chartUpdateSection.appendChild(draggableElement);
       draggableElement.classList.add('remove')
       removeEvent()
-      //adminChartUpdate(draggableElement.id); //call to update the admin chart - we need to flesh out logic for this
+      adminChartUpdate(draggableElement.id); //call to update the admin chart - we need to flesh out logic for this
     } else {
 
       addChartOpt(draggableElement)
@@ -421,6 +420,7 @@ fuzzySearch.addEventListener('mousedown', (e) => {
 filterInput.addEventListener('blur', () => {
   fuzzySearch.classList.add('hidden')
 })
+toolTips()
 }
 
 function filterUsers(e) {
@@ -431,6 +431,17 @@ function filterUsers(e) {
       console.log(user)
       fuzzySearch.innerHTML += `<option>${user.innerText}</option>`
     }
+  })
+}
+
+function toolTips() {
+  document.querySelectorAll('.fa').forEach((elem) => {
+    elem.addEventListener('mouseover', (e) => {
+      e.target.children[0].classList.remove('hidden')
+    })
+    elem.addEventListener('mouseout', (e) => {
+      e.target.children[0].classList.add('hidden')
+    })
   })
 }
 
@@ -473,6 +484,7 @@ function removeEvent() {
   options.forEach((option) => {
     option.addEventListener("dblclick", removeAndAppend);
   });
+
 }
 
 function removeAndAppend(e) {
@@ -482,6 +494,7 @@ function removeAndAppend(e) {
   chartOptions.innerHTML += elementHTML;
   target.remove();
   setDraggableElements();
+  adminChartUpdate()
 }
 
 

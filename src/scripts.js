@@ -39,8 +39,15 @@ function fetchData() {
         document.getElementById('date-selector').innerHTML += `<option>${date}</option>`
       })
 
+      const justUsers = userData.users.reduce((acc, user) => {
+          acc.push({[user.id]: user.name})
+          return acc
+        }, [])
+
+        console.log(justUsers)
+
       updateDom(appState.randomUser, appState.account.user);
-      // generateUserList(justUsers)
+      generateUserList(justUsers)
     })
     .catch(error => console.error("Error loading data:", error));
 }
@@ -350,10 +357,14 @@ function handleDrop(event) {
 }
 
 function generateUserList(users) {
-  console.log(users)
-  let userList = users.sort()
+  const userList = users.sort((a, b) => {
+    const nameA = Object.values(a)[0];
+    const nameB = Object.values(b)[0];
+    return nameA.localeCompare(nameB);
+  });
   userList.forEach((user) => {
-    userSelect.innerHTML += `<option value="${users}" data-user-id="${user.id}">${user.name}</option>`
+    console.log(Object.values(user)[0])
+    userSelect.innerHTML += `<option value="${Object.values(user)[0]}" data-user-id="${Object.keys(user)[0]}">${Object.values(user)[0]}</option>`
   })
   fuzzySearch.innerHTML = userSelect.innerHTML
 let filterInput = document.querySelector(".filter-field")

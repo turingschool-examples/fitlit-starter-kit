@@ -347,15 +347,24 @@ const adminSleepChart = new Chart(adminSleepCtx, {
   type: 'bar', 
   data: {
       labels: ['Average Sleep Hours', 'Average Sleep Quality'], 
-      datasets: [{
-          label: 'Sleep Data',
-          data: [],
-          backgroundColor: ['#1a1a1a'],
-          borderColor: ['#1a1a1a'],
-          borderWidth: 1,
-      }]
+      datasets: []
   },
-  options: vertOptions
+  options: {
+    plugins: {
+      title: {
+        display: false,
+      },
+    },
+    responsive: true,
+    scales: {
+      x: {
+        stacked: true,
+      },
+      y: {
+        stacked: true
+      }
+    }
+  }
 });
 
 

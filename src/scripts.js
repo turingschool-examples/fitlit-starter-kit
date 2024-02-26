@@ -44,8 +44,6 @@ function fetchData() {
           return acc
         }, [])
 
-        console.log(justUsers)
-
       updateDom(appState.randomUser, appState.account.user);
       generateUserList(justUsers)
     })
@@ -103,12 +101,11 @@ function getUserSleepData(randomUser) {
 function adminChartUpdate() {
   let chartLabels = [];
   let chartData = [];
-
   const updateElements = document.querySelector('.chartUpdate').children;
 
   Array.from(updateElements).forEach(element => {
     const dataType = element.getAttribute('value');
-
+    
     switch (dataType) {
       case 'allSleepHours':
         chartLabels.push('Average Sleep Hours')
@@ -138,6 +135,8 @@ function adminChartUpdate() {
     
   });
 
+ 
+
   adminChart.data.labels = chartLabels;
 
   if (adminChart.data.datasets.length > 0) {
@@ -154,20 +153,54 @@ function adminChartUpdate() {
 
 }
 
+function getAdminUserData(userId, dataType) {
+  let returnedData
+  switch (dataType) {
+    case 'sleepData': returnedData = adminSleepChartUpdate(userId)
+    break;
+  }
+
+  console.log(returnedData)
+
+  return returnedData
+}
+
+
+function adminUserChartUpdate(userId) {
+  
+  adminSleepChart.data.datasets = []
+  userId.forEach((user) => {
+    adminSleepChart.data.datasets.push( {
+      label: `${user.value}'s sleep`,
+      data: [getAdminUserData(user.id, 'sleepData')],
+      backgroundColor: ['#1a1a1a'],
+      borderColor: ['#1a1a1a'],
+      borderWidth: 1,
+    })
+  })
+  adminSleepChart.update();
+}
 
 function adminSleepChartUpdate(userId) {
+  console.log(userId)
+  appState.sleep.sleepData.forEach((thingy) => {
+    if(thingy.userID === userId){
+    console.log(thingy.userID)
+    }
+  })
 
   const userSleepData = appState.sleep.sleepData.filter(data => data.userID === userId);
-  //console.log('USER SLEEP:', userSleepData)
+  console.log('USER SLEEP:', userSleepData)
   const totalSleepHours = userSleepData.reduce((acc, curr) => acc + curr.hoursSlept, 0);
   const averageSleepHours = totalSleepHours / userSleepData.length;
 
   const totalSleepQuality = userSleepData.reduce((acc, curr) => acc + curr.sleepQuality, 0);
   const averageSleepQuality = totalSleepQuality / userSleepData.length;
+ console.log(userSleepData)
+  return averageSleepHours
 
   adminSleepChart.data.labels = ['Average Sleep Hours', 'Average Sleep Quality'];
   adminSleepChart.data.datasets[0].data = [averageSleepHours, averageSleepQuality];
-  adminSleepChart.update();
 }
 
 function adminHydrationChartUpdate(userId) {
@@ -351,20 +384,17 @@ function handleDrop(event) {
       
       sortContainer.appendChild(draggableElement);
     }
-
-    // } else {
-    }   
+  }   
 }
 
 function generateUserList(users) {
-  const userList = users.sort((a, b) => {
+  let userList = users.sort((a, b) => {
     const nameA = Object.values(a)[0];
     const nameB = Object.values(b)[0];
     return nameA.localeCompare(nameB);
   });
   userList.forEach((user) => {
-    console.log(Object.values(user)[0])
-    userSelect.innerHTML += `<option value="${Object.values(user)[0]}" data-user-id="${Object.keys(user)[0]}">${Object.values(user)[0]}</option>`
+    userSelect.innerHTML += `<option value="${Object.values(user)[0]}" id="${Object.keys(user)[0]}">${Object.values(user)[0]}</option>`
   })
   fuzzySearch.innerHTML = userSelect.innerHTML
 let filterInput = document.querySelector(".filter-field")
@@ -375,9 +405,11 @@ filterInput.addEventListener('keyup', (e) => {
   filterUsers(e)
 })
 fuzzySearch.addEventListener('mousedown', (e) => {
-  document.querySelector('.userList').innerHTML += `<p class="delete">${e.target.value}</p>`
+  document.querySelector('.userList').innerHTML += `<option class="delete" value="${e.target.value}" id="${e.target.id}">${e.target.value}</option>`
+  findAndRemoveUser(e.target.value)
   fuzzySearch.classList.add('hidden')
   deleteEvent()
+  adminUserChartUpdate(Array.from(document.querySelector('.userList').children))
 })
 filterInput.addEventListener('blur', () => {
   fuzzySearch.classList.add('hidden')
@@ -385,16 +417,26 @@ filterInput.addEventListener('blur', () => {
 toolTips()
 }
 
+function findAndRemoveUser(currUser) {
+  const childrenArray = Array.from(userSelect.children);
+  childrenArray.forEach((user) => {
+    if (user.innerText === currUser) {
+      userSelect.removeChild(user);
+      fuzzySearch.innerHTML = userSelect.innerHTML;
+    }
+  });
+}
+
 
 function filterUsers(e) {
-  fuzzySearch.innerHTML = ''
-  fuzzySearch.classList.remove('hidden')
-  Object.values(userSelect.children).forEach((user) => {
-    if(user.innerText.toLowerCase().includes(e.target.value.toLowerCase())){
-      console.log(user)
-      fuzzySearch.innerHTML += `<option>${user.innerText}</option>`
-    }
-  })
+  const searchText = e.target.value.toLowerCase();
+  const filteredUsers = Array.from(userSelect.children).filter((user) => {
+    return user.innerText.toLowerCase().includes(searchText);
+  });
+  fuzzySearch.innerHTML = '';
+  filteredUsers.forEach((user) => {
+    fuzzySearch.appendChild(user.cloneNode(true));
+  });
 }
 
 function toolTips() {
@@ -433,10 +475,22 @@ function deleteEvent(){
   let users = document.querySelectorAll(".delete")
   users.forEach((user) => {
     user.addEventListener('dblclick', (e) => {
+      userSelect.innerHTML += `<option value="${e.target.value}" id="${e.target.id}">${e.target.value}</option>`
+      fuzzySearch.innerHTML = sortUsers(Array.from(userSelect.children)).join('')
       e.target.remove()
+      adminUserChartUpdate(Array.from(document.querySelector('.userList').children))
     })
   })
 
+}
+
+function sortUsers(parent) {
+  parent.sort((a,b) => a.textContent.localeCompare(b.textContent))
+  const children = parent.reduce((acc, child) => {
+    acc.push(`<option value="${child.value}" id="${child.id}">${child.value}</option>`)
+    return acc
+  }, [])
+  return children
 }
 
 function removeEvent() {

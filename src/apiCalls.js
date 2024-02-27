@@ -26,6 +26,12 @@ function fetchActivityData() {
 }
 
 function postHydrationData(userID, date, numOunces) {
+
+  const formattedDate = date.replace(/-/g, '/');
+
+  console.log('Posting hydration data:', { userID, date, numOunces });
+
+
   return fetch('http://localhost:3001/api/v1/hydration', {
     method: 'POST',
     headers: {
@@ -33,12 +39,13 @@ function postHydrationData(userID, date, numOunces) {
     },
     body: JSON.stringify({
       userID,
-      date,
+      date: formattedDate,
       numOunces,
     }),
   })
   .then(response => {
     if (!response.ok) {
+      console.error('Failed to post hydration data, response code:', response.status);
       throw new Error('Failed to post hydration data');
     }
     return response.json();

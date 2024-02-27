@@ -19,7 +19,6 @@
         <input type="button" value="View Options" class="viewButton">
         <div class="viewMenu hidden">
           <ul>
-            <li class="lightDark">Toggle dark/light mode</li>
             <li class="condMode">Toggle Admin Mode</li>
           </ul>
         </div>
@@ -32,7 +31,7 @@
       <a class="sleepButton" href="#sleepCard">Sleep</a>
       <a class="accountButton" href="#accountCard">Account</a>
     </nav>
-    <main class="mainContainer condensed" id="top">
+    <main class="mainContainer main" id="top">
       <article>
         <img class="full" src="./images/fitlit-logo.png" id="logo" alt="FitLit Logo">
         <h1 class="welcome-message" id="welcomeMessage">welcome back (person.name)</h1>
@@ -46,7 +45,7 @@
             </section>
             <h3>Activity (steps)</h3>
             <div class="chartContainer">
-            <canvas id="stepChart" responsive="true">
+            <canvas id="stepChart" class="chart-z-positon chart" maintainAspectRatio="true" responsive="true">
           </div>
           </div>
         </section>
@@ -58,20 +57,20 @@
             </section>
             <h3>Average Hydration Data (oz)</h3>
             <div class="chartContainer">
-              <canvas id="hydChart" responsive="true"></canvas>
+              <canvas id="hydChart" class="chart-z-positon chart" responsive="true"></canvas>
             </div>
             <p>Weekly Hydration Data (oz)</p>
             <div class="chartContainer">
-              <canvas id="wklyHydChart" responsive="true"></canvas>
+              <canvas id="wklyHydChart" class="chart-z-positon chart" responsive="true"></canvas>
             </div> 
             <div id="hydrationInputContainer">
               <input type="date" id="hydrationDate" placeholder="YYYY/MM/DD" required>
-              <input type="number" id="hydrationAmount" placeholder="Ounces" required>
+              <input type="number" id="hydrationAmount" placeholder="Ounces of H2O Drank" required>
               <button id="submitHydrationData">Submit Hydration Data</button>
             </div>  
           </div>
         </section>
-        <section class="sleep-main info-card  draggable" draggable="true" id="sleepCard">
+        <section class="sleep-main info-card  draggable chart" draggable="true" id="sleepCard">
           <div class="section-text">
             <section class="iconSection" id="sleepCardHeader">
               <p class="icon">&#128719;</p>
@@ -84,13 +83,13 @@
               </select>
             </section>
               <div class="chartContainer">
-                <canvas id="sleepChart" responsive="true"></canvas>
+                <canvas id="sleepChart" class="chart-z-positon chart" responsive="true"></canvas>
               </div>
               <div class="chartContainer">
-                <canvas id="wklySleepChart" responsive="true"></canvas>
+                <canvas id="wklySleepChart" class="chart-z-positon chart" responsive="true"></canvas>
               </div>
               <div class="chartContainer">
-                <canvas id="avgSleepChart" responsive="true"></canvas>
+                <canvas id="avgSleepChart" class="chart-z-positon chart" responsive="true"></canvas>
               </div>
           </div>
         </section>
@@ -126,8 +125,7 @@
               <option class="draggable chartOpt" draggable="true" id="chartOptAllSleepQuality" value="allSleepQuality">Avg Sleep (Qlt)</option>
               <option class="draggable chartOpt" draggable="true" id="chartOptAllNumOunces" value="allNumOunces">Avg Hyd (oz)</option>
               <option class="draggable chartOpt" draggable="true" id="chartOptAllMinsActive" value="allMinsActive">Avg min active</option>
-              <option class="draggable chartOpt" draggable="true" id="chartOptAllFlightsOfStepsTraveled" value="allFlightsOfStepsTraveled">Avg <Flt>
-                <Strs></Strs></option>
+              <option class="draggable chartOpt" draggable="true" id="chartOptAllFlightsOfStepsTraveled" value="allFlightsOfStepsTraveled">Avg Flt / Strs</option>
             </section>
               <section class="chartUpdate options"></section>
           <!-- </div> -->
@@ -144,16 +142,16 @@
             </section>
       <section class="contentContainer">
         <div class="chartContainer">
-          <canvas id="adminChart" responsive="true"></canvas>
+          <canvas id="adminChart" class="chart"></canvas>
         </div>
         <div class="chartContainer">
-          <canvas id="adminSleepChart" responsive="true"></canvas>
+          <canvas id="adminSleepChart" class="userChart chart"></canvas>
         </div>
         <div class="chartContainer">
-          <canvas id="adminHydrationChart" responsive="true"></canvas>
+          <canvas id="adminHydrationChart" class="userChart chart"></canvas>
         </div>
         <div class="chartContainer">
-         <canvas id="adminActivityChart" responsive="true"></canvas> 
+         <canvas id="adminActivityChart" class="userChart chart"></canvas> 
         </div>
       </section>
     </div>

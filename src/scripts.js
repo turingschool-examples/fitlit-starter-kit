@@ -4,8 +4,9 @@ import './images/fitlit-logo.png';
 import './images/white-texture.png';
 import { updateDom, sleepChartUpdate, updateAccountData, } from './domUpdates';
 import { fetchUserData, fetchHydrationData, fetchSleepData, fetchActivityData, postHydrationData } from './apiCalls';
-import { adminChart,stepChart,sleepChart,hydChart,adminSleepChart,adminHydrationChart,adminActivityChart } from './chartSetup';
+import { adminChart,stepChart,sleepChart,hydChart,adminSleepChart,adminHydrationChart,adminActivityChart, chartColors } from './chartSetup';
 
+let adminCharts = [adminSleepChart, adminHydrationChart, adminActivityChart]
 
 let appState = {
   account: null,
@@ -40,9 +41,9 @@ function fetchData() {
       })
 
       const justUsers = userData.users.reduce((acc, user) => {
-          acc.push({[user.id]: user.name})
-          return acc
-        }, [])
+        acc.push({ [user.id]: user.name })
+        return acc
+      }, [])
 
       updateDom(appState.randomUser, appState.account.user);
       generateUserList(justUsers)
@@ -97,6 +98,7 @@ function getUserSleepData(randomUser) {
   return appState.sleep.sleepData.filter(user => user.userID === randomUser.id)
 }
 
+
 //Admin Chart Functions
 function adminChartUpdate() {
   let chartLabels = [];
@@ -105,7 +107,7 @@ function adminChartUpdate() {
 
   Array.from(updateElements).forEach(element => {
     const dataType = element.getAttribute('value');
-    
+
     switch (dataType) {
       case 'allSleepHours':
         chartLabels.push('Average Sleep Hours')
@@ -116,26 +118,26 @@ function adminChartUpdate() {
         chartLabels.push('Average Sleep Quality')
         chartData.push(getTotalAverageSleepData(appState.sleepData, 'sleepQuality'))
         break;
-        
+
       case 'allNumOunces':
         chartLabels.push('Average Hydration (oz)')
         chartData.push(getTotalAverageNumOunces(appState.hydrationData))
         break;
-        
+
       case 'allMinsActive':
         chartLabels.push('Average Active Minutes')
         chartData.push(getTotalAverageActivityData(appState.activityData, 'minutesActive'))
         break;
-      
+
       case 'allFlightsOfStepsTraveled':
         chartLabels.push('Average Sleep Hours')
         chartData.push(getTotalAverageActivityData(appState.activityData, 'flightsOfStairs'))
         break;
     }
-    
+
   });
 
- 
+
 
   adminChart.data.labels = chartLabels;
 
@@ -156,74 +158,69 @@ function adminChartUpdate() {
 function getAdminUserData(userId, dataType) {
   let returnedData
   switch (dataType) {
-    case 'sleepData': returnedData = adminSleepChartUpdate(userId)
-    break;
+    case 'adminSleepChart': returnedData = adminSleepChartUpdate(userId)
+      break;
+    case 'adminHydrationChart': returnedData = adminHydrationChartUpdate(userId)
+      break;
+    case 'adminActivityChart': returnedData = adminActivityChartUpdate(userId)
+      break;
   }
-
-  console.log(returnedData)
-
   return returnedData
 }
 
 
 function adminUserChartUpdate(userId) {
-  
-  adminSleepChart.data.datasets = []
-  userId.forEach((user) => {
-    adminSleepChart.data.datasets.push( {
-      label: `${user.value}'s sleep`,
-      data: [getAdminUserData(user.id, 'sleepData')],
-      backgroundColor: ['#1a1a1a'],
-      borderColor: ['#1a1a1a'],
-      borderWidth: 1,
+  let colorNum = Math.floor(Math.random() * chartColors.length)
+
+  adminCharts.forEach((chart) => {
+    chart.data.datasets = []
+    userId.forEach((user) => {
+      let colorNum = Math.floor(Math.random() * chartColors.length)
+      chart.data.datasets.push({
+        label: `${user.value}'s sleep`,
+        data: [getAdminUserData(user.id, `${chart.canvas.id}`)[0], getAdminUserData(user.id, `${chart.canvas.id}`)[1]],
+        backgroundColor: [chartColors[colorNum]],
+        borderColor: ['#1a1a1a'],
+        borderWidth: 1,
+      })
     })
+    chart.update()
   })
-  adminSleepChart.update();
+
 }
 
 function adminSleepChartUpdate(userId) {
-  console.log(userId)
-  appState.sleep.sleepData.forEach((thingy) => {
-    if(thingy.userID === userId){
-    console.log(thingy.userID)
-    }
-  })
 
-  const userSleepData = appState.sleep.sleepData.filter(data => data.userID === userId);
-  console.log('USER SLEEP:', userSleepData)
+  const userSleepData = appState.sleep.sleepData.filter(data => data.userID == userId);
   const totalSleepHours = userSleepData.reduce((acc, curr) => acc + curr.hoursSlept, 0);
   const averageSleepHours = totalSleepHours / userSleepData.length;
 
   const totalSleepQuality = userSleepData.reduce((acc, curr) => acc + curr.sleepQuality, 0);
   const averageSleepQuality = totalSleepQuality / userSleepData.length;
- console.log(userSleepData)
-  return averageSleepHours
+  return [averageSleepHours, averageSleepQuality]
 
-  adminSleepChart.data.labels = ['Average Sleep Hours', 'Average Sleep Quality'];
-  adminSleepChart.data.datasets[0].data = [averageSleepHours, averageSleepQuality];
+
 }
 
 function adminHydrationChartUpdate(userId) {
-  const userHydrationData = appState.hydration.hydrationData.filter(record => record.userID === userId);
+  const userHydrationData = appState.hydration.hydrationData.filter(record => record.userID == userId);
   const totalOunces = userHydrationData.reduce((acc, record) => acc + record.numOunces, 0);
   const averageOunces = (totalOunces / userHydrationData.length).toFixed(2);
 
-  adminHydrationChart.data.datasets[0].data = [averageOunces];
-  adminHydrationChart.update();
+  return [totalOunces, '']
 }
 
 function adminActivityChartUpdate(userId) {
-  const userActivityData = appState.activity.activityData.filter(record => record.userID === userId);
+  const userActivityData = appState.activity.activityData.filter(record => record.userID == userId);
   const totalMinutesActive = userActivityData.reduce((acc, record) => acc + record.minutesActive, 0);
   const averageMinutesActive = (totalMinutesActive / userActivityData.length).toFixed(2);
   const totalFlightsOfStairs = userActivityData.reduce((acc, record) => acc + record.flightsOfStairs, 0);
   const averageFlightsOfStairs = (totalFlightsOfStairs / userActivityData.length).toFixed(2);
 
-  adminActivityChart.data.datasets[0].data = [averageMinutesActive, averageFlightsOfStairs];
-  adminActivityChart.update();
+  return [averageMinutesActive, averageFlightsOfStairs]
+
 }
 
-// refactored getAverageSleepQuality() + getAverageSleepHours()
 function getAverageSleepData(randomUser, sleepDataType) {
   let sameUserSleepData = getUserSleepData(randomUser)
   let averageSleep = 0
@@ -231,11 +228,10 @@ function getAverageSleepData(randomUser, sleepDataType) {
   sameUserSleepData.forEach(obj => {
     totalSleep += obj[sleepDataType]
   })
-  averageSleep = totalSleep/ sameUserSleepData.length
+  averageSleep = totalSleep / sameUserSleepData.length
   return averageSleep.toFixed(2)
 }
 
-// refactored getMostRecentSleepHours() + getMostRecentSleepQuality()
 function getMostRecentSleepData(randomUser, sleepDataType) {
   let sameUserSleepData = getUserSleepData(randomUser)
   let latestSleepDataIndex = sameUserSleepData.length - 1
@@ -256,7 +252,6 @@ function getWeeklySleep(randomUser, selectedDay) {
   }
 }
 
-// refactored getWeeklySleepHours() + getWeeklySleepQuality()
 
 function getWeeklySleepData(selectedWeek, sleepDataType) {
   return selectedWeek[0].map(day => day[sleepDataType])
@@ -281,9 +276,21 @@ function getTotalAverageActivityData(activityData, propertyName) {
 
 
 
+//Selectors
 
-        
+const userSelect = document.querySelector('.userSelect')
+const userList = document.querySelector('.userList')
+const viewMenu = document.querySelector('.viewMenu')
+const adminPanel = document.querySelector('.adminControls')
+const chartOptions = document.querySelector('.chartOptions');
+const chartUpdateSection = document.querySelector('.chartUpdate')
+const fuzzySearch = document.querySelector('#fuzzySearch')
+const sortContainer = document.querySelector('.sortContainer');
+const chartUpdate = document.querySelector('.chartUpdate');
+let topNavBar = document.querySelectorAll('.topNav a')
+let sideNavBar = document.querySelectorAll('.sideNav a')
 
+//Event Listeners        
 document.addEventListener('DOMContentLoaded', fetchData);
 
 document.getElementById('date-selector').addEventListener('change', function (event) {
@@ -297,14 +304,15 @@ document.getElementById('date-selector').addEventListener('change', function (ev
   sleepChartUpdate(randomUser)
 });
 
-
 document.querySelector(".viewButton").addEventListener('click', () => {
   document.querySelector(".viewMenu").classList.toggle('hidden')
 })
 
 document.querySelector('.condMode').addEventListener('click', () => {
   document.querySelector(".viewMenu").classList.toggle('hidden')
+  document.querySelector(".sideNav").classList.toggle('hidden')
   document.querySelector('#top').classList.toggle('condensed')
+  document.querySelector('#top').classList.toggle('main')
 })
 
 document.getElementById('submitHydrationData').addEventListener('click', () => {
@@ -312,11 +320,11 @@ document.getElementById('submitHydrationData').addEventListener('click', () => {
   const numOunces = parseInt(document.getElementById('hydrationAmount').value, 10);
 
   if (!date || isNaN(numOunces)) {
-    alert('Please fill in both fields correctly.');//minds blanking on how to do this w/o an alert
+    alert('If you can see this, idk what to tell you. You somehow selected a date wrong. Please try again.');
     return;
   }
 
-  postHydrationData(appState.randomUser, date, numOunces)
+  postHydrationData(appState.randomUser.id, date, numOunces)
 });
 
 document.querySelector('.userList').addEventListener('change', () => {
@@ -325,66 +333,45 @@ document.querySelector('.userList').addEventListener('change', () => {
   adminActivityChartUpdate(userId)
 })
 
-/////////
-export {
-  appState,
-  getAccountFriends,
-  getAverageStepGoal,
-  getAverageDailyFluidOunces,
-  getSpecificDay,
-  getWeeklyFluidOunces,
-  getAverageSleepData,
-  getMostRecentSleepData,
-  getWeeklySleep,
-  getTotalAverageSleepData,
-  getTotalAverageNumOunces,
-  getTotalAverageActivityData,
-  adminChartUpdate,
-}
 
-const userSelect = document.querySelector('.userSelect')
-const userList = document.querySelector('.userList')
-const viewMenu = document.querySelector('.viewMenu')
-const adminPanel = document.querySelector('.adminControls')
-const chartOptions = document.querySelector('.chartOptions'); //add these to target the sections
-const chartUpdateSection = document.querySelector('.chartUpdate')
-const fuzzySearch = document.querySelector('#fuzzySearch')
+//Sort Container and Drop Option Event Listeners
+sortContainer.addEventListener('dragover', handleDragOver);
+sortContainer.addEventListener('drop', handleDrop);
+chartUpdate.addEventListener('dragover', handleDragOver);
+chartUpdate.addEventListener('drop', handleDrop);
+chartUpdateSection.addEventListener('drop', handleDrop);
 
-const sortContainer = document.querySelector('.sortContainer');
-const chartUpdate = document.querySelector('.chartUpdate');
 
-// Function to handle drag start event
+// Additional Handlers
 function handleDragStart(event) {
-    event.dataTransfer.setData('text/plain', event.target.id); 
+  event.dataTransfer.setData('text/plain', event.target.id);
 }
 
-// Function to handle drag over event
 function handleDragOver(event) {
   const draggableElementId = event.dataTransfer.getData('text/plain');
   const draggableElement = document.getElementById(draggableElementId);
-    event.preventDefault();
+  event.preventDefault();
 }
 
-// Function to handle drop event - refactored
 function handleDrop(event) {
   event.preventDefault();
   const draggableElementId = event.dataTransfer.getData('text/plain');
   const draggableElement = document.getElementById(draggableElementId);
   const target = event.target;
-
-  if(draggableElement.classList.contains('chartOpt')){
-    if (target === chartUpdateSection || chartUpdateSection.contains(target)) { //this checks if dropped in the chartUpdateSection
+console.log(target)
+  if (draggableElement.classList.contains('chartOpt')) {
+    if (target === chartUpdateSection || chartUpdateSection.contains(target)) {
       chartUpdateSection.appendChild(draggableElement);
       draggableElement.classList.add('remove')
       removeEvent()
-      adminChartUpdate(draggableElement.id); //call to update the admin chart - we need to flesh out logic for this
+      adminChartUpdate(draggableElement.id);
     } else {
 
       addChartOpt(draggableElement)
-      
+
       sortContainer.appendChild(draggableElement);
     }
-  }   
+  }
 }
 
 function generateUserList(users) {
@@ -397,24 +384,27 @@ function generateUserList(users) {
     userSelect.innerHTML += `<option value="${Object.values(user)[0]}" id="${Object.keys(user)[0]}">${Object.values(user)[0]}</option>`
   })
   fuzzySearch.innerHTML = userSelect.innerHTML
-let filterInput = document.querySelector(".filter-field")
-filterInput.addEventListener('click', () => {
-  fuzzySearch.classList.remove('hidden')
-})
-filterInput.addEventListener('keyup', (e) => {
-  filterUsers(e)
-})
-fuzzySearch.addEventListener('mousedown', (e) => {
-  document.querySelector('.userList').innerHTML += `<option class="delete" value="${e.target.value}" id="${e.target.id}">${e.target.value}</option>`
-  findAndRemoveUser(e.target.value)
-  fuzzySearch.classList.add('hidden')
-  deleteEvent()
-  adminUserChartUpdate(Array.from(document.querySelector('.userList').children))
-})
-filterInput.addEventListener('blur', () => {
-  fuzzySearch.classList.add('hidden')
-})
-toolTips()
+  let filterInput = document.querySelector(".filter-field")
+  filterInput.addEventListener('click', () => {
+    fuzzySearch.classList.remove('hidden')
+  })
+  filterInput.addEventListener('keyup', (e) => {
+    filterUsers(e)
+  })
+  fuzzySearch.addEventListener('mousedown', (e) => {
+
+    if (e.target.value) {
+      document.querySelector('.userList').innerHTML += `<option class="delete" value="${e.target.value}" id="${e.target.id}">${e.target.value}</option>`
+      findAndRemoveUser(e.target.value)
+      fuzzySearch.classList.add('hidden')
+      deleteEvent()
+      adminUserChartUpdate(Array.from(document.querySelector('.userList').children))
+    }
+  })
+  filterInput.addEventListener('blur', () => {
+    fuzzySearch.classList.add('hidden')
+  })
+  toolTips()
 }
 
 function findAndRemoveUser(currUser) {
@@ -426,7 +416,6 @@ function findAndRemoveUser(currUser) {
     }
   });
 }
-
 
 function filterUsers(e) {
   const searchText = e.target.value.toLowerCase();
@@ -450,28 +439,15 @@ function toolTips() {
   })
 }
 
-
-// Add event listeners to the sort container and chart options
-sortContainer.addEventListener('dragover', handleDragOver);
-sortContainer.addEventListener('drop', handleDrop);
-chartUpdate.addEventListener('dragover', handleDragOver);
-chartUpdate.addEventListener('drop', handleDrop);
-chartUpdateSection.addEventListener('drop', handleDrop); // Added
-
-setDraggableElements()
-
-// Add event listeners to draggable elements
 function setDraggableElements() {
   const draggableElements = document.querySelectorAll('.draggable');
   draggableElements.forEach(element => {
-      element.addEventListener('dragstart', handleDragStart);
+    element.addEventListener('dragstart', handleDragStart);
   });
 }
+setDraggableElements()
 
-
-////////////////////////
-
-function deleteEvent(){
+function deleteEvent() {
   let users = document.querySelectorAll(".delete")
   users.forEach((user) => {
     user.addEventListener('dblclick', (e) => {
@@ -481,11 +457,10 @@ function deleteEvent(){
       adminUserChartUpdate(Array.from(document.querySelector('.userList').children))
     })
   })
-
 }
 
 function sortUsers(parent) {
-  parent.sort((a,b) => a.textContent.localeCompare(b.textContent))
+  parent.sort((a, b) => a.textContent.localeCompare(b.textContent))
   const children = parent.reduce((acc, child) => {
     acc.push(`<option value="${child.value}" id="${child.id}">${child.value}</option>`)
     return acc
@@ -501,7 +476,6 @@ function removeEvent() {
   options.forEach((option) => {
     option.addEventListener("dblclick", removeAndAppend);
   });
-
 }
 
 function removeAndAppend(e) {
@@ -514,11 +488,6 @@ function removeAndAppend(e) {
   adminChartUpdate()
 }
 
-
-///////////////////////
-
-let topNavBar = document.querySelectorAll('.topNav a')
-let sideNavBar = document.querySelectorAll('.sideNav a')
 document.querySelectorAll('nav').forEach((elem) => {
   elem.addEventListener('click', (e) => {
     for (let i = 0; i < topNavBar.length; i++) {
@@ -563,9 +532,19 @@ const storeScroll = () => {
     navBar.classList.add('hidden')
   }
 }
-
+//Debounce Needs to Remain Here Due to Init Order
 document.addEventListener('scroll', debounce(storeScroll), { passive: true });
 storeScroll();
 
-//////////
+export {
+  appState,
+  getAccountFriends,
+  getAverageStepGoal,
+  getAverageDailyFluidOunces,
+  getSpecificDay,
+  getWeeklyFluidOunces,
+  getAverageSleepData,
+  getMostRecentSleepData,
+  getWeeklySleep,
+}
 

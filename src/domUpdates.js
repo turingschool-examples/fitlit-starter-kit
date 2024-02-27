@@ -1,17 +1,5 @@
-import {
-  getAverageStepGoal,
-  getAccountFriends,
-  getAverageDailyFluidOunces,
-  getSpecificDay,
-  getWeeklyFluidOunces,
-  getWeeklySleep,
-  getAverageSleepData,
-  getMostRecentSleepData,
-  getTotalAverageSleepData,
-  getTotalAverageNumOunces,
-  getTotalAverageActivityData,
-  adminChartUpdate,
-} from './scripts'
+
+import {  getAverageStepGoal,  getAccountFriends,  getAverageDailyFluidOunces,  getSpecificDay,  getWeeklyFluidOunces,  getWeeklySleep,  getAverageSleepData,  getMostRecentSleepData,  getTotalAverageSleepData,  getTotalAverageNumOunces,  getTotalAverageActivityData,  adminChartUpdate,} from './scripts'
 import { Chart, registerables } from 'chart.js/auto';
 import { stepChart, wklyHydChart, hydChart, avgSleepChart, sleepChart, wklySleepChart, setCharts, adminChart } from './chartSetup'
 Chart.register(...registerables);
@@ -28,24 +16,23 @@ function updateDom(randomUser, allUsers) {
   stepChartUpdate(randomUser, allUsers)
 }
 
+
 // DOM update functions
 function displayWelcomeMessage(user) {
   const welcomeMessageElement = document.querySelector('.welcome-message');
   welcomeMessageElement.textContent = `Welcome back, ${user.name.split(' ')[0]}!`;
 }
-//////////
 
-// refactor updateAccountFriends() + updateAccountStep() + updateAccountStride()
-// + updateAccountName() + updateAccountEmail() + updateAccountAddress()
 function updateAccountData(user) {
   Object.keys(user).forEach(dataType => {
     if (dataType === 'dailyStepGoal') {
       document.querySelector(`#${dataType}`).textContent = `${user[dataType]} steps`;
     } else if (dataType === 'strideLength') {
       document.querySelector(`#${dataType}`).textContent = `${user[dataType]} ft.`;
-    } else if (dataType === 'id') { 
-      //don't do anything
-    } else { 
+    } else if (dataType === 'id') {
+    } else if (dataType === 'friends') {
+      document.querySelector(`#${dataType}`).textContent = getAccountFriends(user);
+    } else {
       document.querySelector(`#${dataType}`).textContent = `${user[dataType]}`;
     }
   })
@@ -111,15 +98,10 @@ function sleepChartUpdate(randomUser, allUsers) {
   wklySleepChart.update();
 }
 
-
-
-
 export {
   updateDom,
   displayWelcomeMessage,
   updateAccountData,
   displaySpecificDayOunces,
   sleepChartUpdate,
-  //adminSleepChartUpdate,
 };
-

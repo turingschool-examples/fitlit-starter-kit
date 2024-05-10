@@ -83,11 +83,13 @@ Mocha and chai are already set up, with a boilerplate test for you..
 ```
 npm i -D typescript ts-loader
 ```
-1. Create a `tsconfig.json` file in the root directory
+
+2. Create a `tsconfig.json` file in the root directory
 ```
 touch tsconfig.json
 ```
-1. Add the following to the `tsconfig.json` file:
+
+3. Add the following to the `tsconfig.json` file:
 ```js
 {
   "compilerOptions": {
@@ -101,7 +103,8 @@ touch tsconfig.json
   }
 }
 ```
-1. In your webpack.config.js file, update it to be:
+
+4. In your webpack.config.js file, update it to be:
 ```js
 const path = require('path');
 module.exports = {
@@ -150,5 +153,7 @@ module.exports = {
   },
 };
 ```
-1. Update all `.js` files to be `.ts` including `scripts.ts`.
-1. From here, you should now get some TypeScript errors when running `npm start` that you can begin working through.
+
+5. Update all `.js` files to be `.ts` including `scripts.ts`.
+
+6. From here, you should now get some TypeScript errors when running `npm start` that you can begin working through.

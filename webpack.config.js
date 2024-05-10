@@ -8,7 +8,9 @@ module.exports = {
     sourceMapFilename: "bundle.js.map"
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist')
+    static: {
+      directory: path.join(__dirname, 'dist')
+    }
   },
   "devtool": "source-map",
   // CSS and file (image) loaders

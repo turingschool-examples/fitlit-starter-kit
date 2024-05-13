@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 // import { getUserDataById } from './src/scripts.js'
-const { getUserDataById } = require('../src/scripts.js');
+const { getUserDataByID, avgSteps, } = require('../src/scripts.js');
 
 // import userData from './data/users';
 

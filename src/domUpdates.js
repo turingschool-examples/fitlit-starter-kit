@@ -12,5 +12,5 @@ const exampleFunction2 = (person) => {
 
 export {
   exampleFunction1,
-  exampleFunction2,
+  exampleFunction2, 
 }

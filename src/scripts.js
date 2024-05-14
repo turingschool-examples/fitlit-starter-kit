@@ -1,5 +1,8 @@
 //imports
 import users from './data/users';
+import './css/styles.css';
+import  displayUserInfo from './domUpdates.js'
+
 
 //Global 
 var usersArray = users.users
@@ -12,8 +15,8 @@ function getRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
 }
 
-function getUserDataByID(UserID, usersArray) {
-    const userData = usersArray.find((user) => user.id === UserID)
+function getUserDataByID(userID, usersArray) {
+    const userData = usersArray.find((user) => user.id === userID)
     return userData
 }
 
@@ -25,10 +28,11 @@ function avgSteps(userArray) {
     return userSteps
 }
 
+// console.log('line28', randomUser)
 
 
-module.export = {
-    getUserDataByID,
-    avgSteps,
+displayUserInfo(randomUser)
 
+export { 
+    userSteps, 
 }

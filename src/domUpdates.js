@@ -1,16 +1,27 @@
-//NOTE: Your DOM manipulation will occur in this file
+import { userSteps } from './scripts.js' 
 
-//Here are 2 example functions just to demonstrate one way you can export/import between the two js files. You'll want to delete these once you get your own code going.
-const exampleFunction1 = (person) => {
-  console.log(`oh hi there ${person}`)
+
+var userCard = document.querySelector('.card1')
+var welcomeUser = document.querySelector('.card-banner')
+
+export default function displayUserInfo (user) {
+  userCard.innerHTML = `
+  <section> 
+    User id is ${user.id}
+    ${user.name}'s daily step goal is ${user.dailyStepGoal} steps
+  </section>
+   The average step goal is ${userSteps}
+`
+welcomeUser.innerText = `Welcome, ${user.name}`
 }
 
-const exampleFunction2 = (person) => {
-  console.log(`bye now ${person}`)
-}
 
 
-export {
-  exampleFunction1,
-  exampleFunction2, 
-}
+
+
+
+
+
+
+
+

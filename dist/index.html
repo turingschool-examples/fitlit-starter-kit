@@ -2,11 +2,56 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Fitlit</title>
+    <title>Little Shop</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <aside>
+      <header>
+        <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+        <h1>Little Shop</h1>
+      </header>
+      <nav>
+        <h2>Merchants</h2>
+        <h2>Items</h2>
+      </nav>
+    </aside>
+      <!-- <form id="itemForm">
+        <div>
+            <input type="text" id="itemName" class="item-name-input" name="itemName" placeholder="🔍Item Name">
+          <div class="price-inputs">
+              <input type="number" id="minPrice" name="minPrice" placeholder="Min Price">
+              <input type="number" id="maxPrice" name="maxPrice" placeholder="Max Price">
+          </div>
+        </div>
+        <div>
+          <div>
+            <button>Find Items By Name</button>
+            <button>Find Best Match</button>
+          </div>
+          <div>
+            <button>Filter Items By Price</button>
+            <button>Find Give Me One</button>
+          </div>
+        </div>
+    </form> -->
+   <main>
+      <section id="merchants-view">
+          <!-- Data will be displayed here -->
+           <!-- <article>
+            <img src="" alt="">
+            <h2></h2>
+            <p></p>
+            <p></p><p></p>
+            <button></button>
+          </article> -->
+        </section>
+        <section id="items-view">
+          <!-- Data will be displayed here -->
+        </section>
+        <section id="single-merchant-view">
+          <!-- Data will be displayed here -->
+        </section>
+    </main>
 
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>

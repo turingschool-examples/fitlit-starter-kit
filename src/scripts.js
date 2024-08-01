@@ -9,8 +9,11 @@ import './css/styles.css';
 import './images/turing-logo.png';
 
 // An example of how you tell webpack to use a JS file
-import userData from './data/users';
-console.log("User Data:", userData);
+import merchantsData from './data/merchants';
+import itemsData from './data/items';
+
+console.log("merchantData :", merchantsData);
+console.log("itemsData :", itemsData);
 
 // Example of one way to import functions from the domUpdates file.  You will delete these examples.
 import { exampleFunction1, exampleFunction2 } from './domUpdates';

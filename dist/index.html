@@ -11,10 +11,16 @@
         <h1>Little Shop</h1>
       </header>
       <nav>
-        <h2>Merchants</h2>
-        <h2>Items</h2>
+        <button id="merchants-nav" class="active-nav">
+          <h2>Merchants</h2>
+        </button>
+        <button id="items-nav">
+          <h2>Items</h2>
+        </button>
       </nav>
     </aside>
+    <main>
+      <h2>Admin Portal</h2>
       <!-- <form id="itemForm">
         <div>
             <input type="text" id="itemName" class="item-name-input" name="itemName" placeholder="🔍Item Name">
@@ -34,8 +40,18 @@
           </div>
         </div>
     </form> -->
-   <main>
-      <section id="merchants-view">
+      <section class="display-options">
+        <h3>Showing: <span id="showing-text">All Merchants</span></h3>
+        <div>
+        <button>Add New</button>
+          <label for="sort-by">Sort By:</label>
+          <select id="sort-by" name="sort-by">
+            <option value="Name: A>Z">Name: A>Z</option>
+            <option value="Newest > Oldest">Newest > Oldest</option>
+          </select>
+        </div>
+      </section>
+      <section id="merchants-view" class="view">
           <!-- Data will be displayed here -->
            <!-- <article>
             <img src="" alt="">
@@ -45,11 +61,11 @@
             <button></button>
           </article> -->
         </section>
-        <section id="items-view">
-          <!-- Data will be displayed here -->
+        
+        <section id="items-view" class="view hidden">
         </section>
-        <section id="single-merchant-view">
-          <!-- Data will be displayed here -->
+
+        <section id="single-merchant-view" class="view hidden">
         </section>
     </main>
 

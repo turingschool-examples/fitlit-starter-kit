@@ -1,15 +1,22 @@
 body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  background-color: rebeccapurple;
   background-repeat: no-repeat;
   height: 100%;
+
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
 }
 
 aside {
   width: 25%;
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
   height: 100vh;
   margin: none;
-
+  padding: 10px 0px 0px 10px;
 }
 
 header {
@@ -29,13 +36,16 @@ nav {
   align-items: end;
 }
 
-nav > h2 {
-  border: 1px solid white;
-  padding: 15px;
+nav > button {
+  border: none;
   margin-bottom: 20px;
-  background-color: white;
+  background-color: rebeccapurple;
   width: 65%;
   text-align: center;
+}
+
+.active-nav {
+  background-color: white;
 }
 
 form {
@@ -83,7 +93,22 @@ form {
 }
 
 main {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 10px;
+  width: 75%;
+  background-color: white;
+}
 
+.view {
+  background-color: lightblue;
+  /* width: 40px; */
+}
+
+.display-options {
+  display: flex;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
 }

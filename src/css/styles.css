@@ -11,6 +11,10 @@ body {
   margin: 0px;
 }
 
+button {
+  cursor: pointer;
+}
+
 aside {
   width: 25%;
   /* border: 1px solid purple; */
@@ -107,6 +111,10 @@ main {
 .display-options {
   display: flex;
   align-items: center;
+}
+
+.merchant-name-in-item {
+  display: inline;
 }
 
 .hidden {

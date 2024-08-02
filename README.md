@@ -1,4 +1,14 @@
-# FitLit Starter Kit
+# Little Shop FE Starter
+
+## Credits
+<a href="https://www.flaticon.com/free-icons/delete" title="delete icons">Delete icons created by Ilham Fitrotul Hayat - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/edit" title="edit icons">Edit icons created by alkhalifi design - Flaticon</a>
+
+
+
+
+
 
 The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
 

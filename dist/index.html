@@ -43,13 +43,30 @@
       <section class="display-options">
         <h3>Showing: <span id="showing-text">All Merchants</span></h3>
         <div>
-        <button>Add New</button>
+        <button id="add-new-button" class="add-new-button" data-state="merchant">Add New</button>
           <label for="sort-by">Sort By:</label>
           <select id="sort-by" name="sort-by">
             <option value="Name: A>Z">Name: A>Z</option>
             <option value="Newest > Oldest">Newest > Oldest</option>
           </select>
         </div>
+      </section>
+      <section id="add-new-options">
+        <form id="new-merchant-form" class="hidden">
+          <label for="new-merchant-name">New Merchant Name</label>
+          <input id="new-merchant-name" name="new-merchant-name" type="text">
+          <button id="submit-merchant" class="submit">Submit</button>
+        </form>
+        <form id="new-merchant-form" class="hidden">
+          <label for="new-item-name">New Item Name</label>
+          <input id="new-item-name" name="new-item-name" type="text">
+          <label for="new-item-description">New Item Description</label>
+          <input id="new-item-description" name="new-item-description" type="text">
+          <label for="new-item-price">New Item Price</label>
+          <input id="new-item-price" name="new-item-price" type="text">
+          <button id="submit-item" class="submit">Submit</button>
+          <!-- how do we pass the merchant id?  can they only add from a merchant's page? -->
+        </form>
       </section>
       <section id="merchants-view" class="view">
           <!-- Data will be displayed here -->
